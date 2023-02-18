@@ -1,7 +1,7 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "chris-premades",
+  "title": "Chris's Premades",
+  "description": "Chris's premade items for high-automation midi-qol games.",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
@@ -12,20 +12,56 @@
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "Chris",
+      "url": "https://github.com/chrisk123999/chris-premades",
+      "discord": "Chris#8375",
+	  "ko-fi": "chrisk123999"
     }
   ],
   "relationships": {
-    "systems": [],
-    "requires": []
+    "systems": [{
+		"id": "dnd5e",
+		"type": "system",
+		"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+		"compatibility": {
+			"verified": "2.1.4"
+		}
+	}],
+    "requires": [{
+		"id": "midi-qol",
+		"type": "module",
+		"manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
+		"compatibility": {
+			"verified": "10.0.29"
+		}
+	},
+	{
+		"id": "warpgate",
+		"type": "module",
+		"manifest": "https://github.com/trioderegion/warpgate/blob/master/module.json",
+		"compatibility": {
+			"verified": "1.16.0"
+		}
+	},
+	{
+		"id": "effectmacro",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/effectmacro/blob/main/module.json",
+		"compatibility": {
+			"verified": "10.0.15"
+		}
+	},
+	{
+		"id": "templatemacro",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/templatemacro/blob/main/module.json",
+		"compatibility": {
+			"verified": "10.0.1"
+		}
+	}]
   },
   "esmodules": [
     "scripts/module.js"
-  ],
-  "scripts": [
-    "scripts/lib/lib.js"
   ],
   "styles": [
     "styles/module.css"
@@ -45,7 +81,7 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": ""
     }
   ]
 }
