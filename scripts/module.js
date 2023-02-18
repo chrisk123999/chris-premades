@@ -1,6 +1,6 @@
-import {registerSettings} from './scripts/settings.js';
-//import {macros} from './scripts/macros.js';
-import {chris as helpers} from './scripts/helperFunctions.js';
+import {registerSettings} from 'settings.js';
+//import {macros} from 'macros.js';
+import {chris as helpers} from 'helperFunctions.js';
 
 Hooks.once('init', async function() {
 	registerSettings();

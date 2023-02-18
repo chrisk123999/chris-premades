@@ -1,2 +1,2 @@
-import {test} from './scripts/macros/test.js';
+import {test} from 'macros/test.js';
 
