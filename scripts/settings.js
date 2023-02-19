@@ -9,7 +9,6 @@ export function registerSettings() {
 		'type': Boolean,
 		'default': false,
 		'onChange': value => {
-			console.log('Chris | Hook toggled!');
 			if (value) {
 				Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
 			} else {
