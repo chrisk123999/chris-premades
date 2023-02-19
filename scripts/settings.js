@@ -16,4 +16,38 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Condition Resistance', {
+		'name': 'Condition Resistance Mechanic',
+		'hint': 'Condition Resistance Mechanic',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+				Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
+			} else {
+				Hooks.off('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+				Hooks.off('midi-qol.RollComplete', macros.conditionResistanceLate);
+			}
+		}
+	})
+	game.settings.register(moduleName, 'Condition Vulnerability', {
+		'name': 'Condition Vulnerability Mechanic',
+		'hint': 'Condition Vulnerability Mechanic',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+				Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
+			} else {
+				Hooks.off('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+				Hooks.off('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
+			}
+		}
+	})
 }

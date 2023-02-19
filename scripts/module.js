@@ -8,6 +8,14 @@ Hooks.once('init', async function() {
 
 Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Armor of Agathys')) Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
+	if (game.settings.get('chris-premades', 'Condition Resistance')) {
+		Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+		Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
+	}
+	if (game.settings.get('chris-premades', 'Condition Vulnerability')) {
+		Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+		Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
+	}
 });
 
 globalThis['chrisPremades'] = {
