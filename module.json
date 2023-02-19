@@ -66,6 +66,22 @@
   "styles": [
     "styles/module.css"
   ],
+  "packs": [
+	  {
+		"name": "CPR Spells",
+		"label": "CPR Spells",
+		"path": "packs/cpr-spells.db",
+		"entity": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Spell Features",
+		"label": "CPR Spell Features",
+		"path": "packs/cpr-spell-features.db",
+		"entity": "Item",
+		"module": "chris-premades"
+	  }
+  ],
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
