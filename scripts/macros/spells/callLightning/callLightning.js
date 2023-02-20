@@ -4,6 +4,7 @@ export async function callLightning(workflow) {
 	let spellLevel = workflow.castData.castLevel;
 	if (storming) spellLevel += 1;
 	let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Bolt', false);
+	if (!featureData) return;
 	featureData.system.damage.parts = [
 		[
 			spellLevel + 'd10[lightning]',
