@@ -110,4 +110,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Sanctuary', {
+		'name': 'Sanctuary Automation',
+		'hint': 'Sanctuary Automation',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.AttackRollComplete', macros.sanctuary);
+			} else {
+				Hooks.off('midi-qol.AttackRollComplete', macros.sanctuary);
+			}
+		}
+	});
 }
