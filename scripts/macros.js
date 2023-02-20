@@ -11,6 +11,7 @@ import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
+import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -26,7 +27,8 @@ export let macros = {
 	'detectThoughts': detectThoughts,
 	'dragonsBreath': dragonsBreath,
 	'hex': hex,
-	'holyWeapon': holyWeapon
+	'holyWeapon': holyWeapon,
+	'lightningArrow': lightningArrow
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -69,6 +71,8 @@ async function createMacro(name, content, isGM) {
 export async function setupWorldMacros() {
 	await createMacro('chillTouch', actorOnUseMacro('chillTouch'), false);
 	await createMacro('hex', actorOnUseMacro('hex'), false);
+	await createMacro('lightningArrowAttack', actorOnUseMacro('lightningArrowAttack'), false);
+	await createMacro('lightningArrowDamage', actorOnUseMacro('lightningArrowDamage'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -80,6 +84,12 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'hex':
 			await hex.attack(workflow);
+			break;
+		case 'lightningArrowAttack':
+			await lightningArrow.attack(workflow);
+			break;
+		case 'lightningArrowDamage':
+			await lightningArrow.damage(workflow);
 			break;
 	}
 }
