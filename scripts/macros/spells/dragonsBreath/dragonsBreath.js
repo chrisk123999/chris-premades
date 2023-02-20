@@ -14,6 +14,7 @@ export async function dragonsBreath(workflow) {
         ]
     ];
     featureData.system.save.dc = chris.getSpellDC(workflow.item);
+    featureData.system.description.value = workflow.item.system.description.value;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Dragon Breath');
 	}
