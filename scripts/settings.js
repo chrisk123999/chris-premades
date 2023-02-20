@@ -65,4 +65,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Death Ward', {
+		'name': 'Death Ward',
+		'hint': 'Death Ward',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.damageApplied', macros.deathWard);
+			} else {
+				Hooks.off('midi-qol.damageApplied', macros.deathWard);
+			}
+		}
+	});
 }

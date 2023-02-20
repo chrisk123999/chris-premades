@@ -19,6 +19,7 @@ Hooks.once('ready', async function() {
 		Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
 	}
 	if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
+	if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.damageApplied', macros.deathWard);
 });
 globalThis['chrisPremades'] = {
 	helpers,

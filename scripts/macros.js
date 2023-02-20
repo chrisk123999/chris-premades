@@ -6,6 +6,7 @@ import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
 import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
 import {darkness} from './macros/spells/darkness/darkness.js';
+import {deathWard} from './macros/spells/deathWard/deathWard.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -16,7 +17,8 @@ export let macros = {
 	'charmPerson': charmPerson,
 	'actorOnUse': useActorOnUse,
 	'cloudkill': cloudkill,
-	'darkness': darkness
+	'darkness': darkness,
+	'deathWard': deathWard
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
