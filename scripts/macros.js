@@ -16,6 +16,7 @@ import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
+import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -36,7 +37,8 @@ export let macros = {
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
-	'sanctuary': sanctuary
+	'sanctuary': sanctuary,
+	'shadowBlade': shadowBlade
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
