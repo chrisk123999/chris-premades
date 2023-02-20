@@ -12,6 +12,7 @@ import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
+import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -28,7 +29,8 @@ export let macros = {
 	'dragonsBreath': dragonsBreath,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
-	'lightningArrow': lightningArrow
+	'lightningArrow': lightningArrow,
+	'massCureWounds': massCureWounds
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
