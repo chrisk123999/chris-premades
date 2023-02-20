@@ -9,6 +9,7 @@ import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {hex} from './macros/spells/hex/hex.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -22,7 +23,8 @@ export let macros = {
 	'darkness': darkness,
 	'deathWard': deathWard,
 	'detectThoughts': detectThoughts,
-	'dragonsBreath': dragonsBreath
+	'dragonsBreath': dragonsBreath,
+	'hex': hex
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -64,6 +66,7 @@ async function createMacro(name, content, isGM) {
 }
 export async function setupWorldMacros() {
 	await createMacro('chillTouch', actorOnUseMacro('chillTouch'), false);
+	await createMacro('hex', actorOnUseMacro('hex'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -72,6 +75,9 @@ async function useActorOnUse(workflow, itemName) {
 			return;
 		case 'chillTouch':
 			await chillTouch(workflow);
+			break;
+		case 'hex':
+			await hex.attack(workflow);
 			break;
 	}
 }
