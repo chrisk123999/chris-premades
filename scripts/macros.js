@@ -5,6 +5,7 @@ import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/
 import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
 import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
+import {darkness} from './macros/spells/darkness/darkness.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -14,7 +15,8 @@ export let macros = {
 	'conditionVulnerabilityLate': conditionVulnerabilityLate,
 	'charmPerson': charmPerson,
 	'actorOnUse': useActorOnUse,
-	'cloudkill': cloudkill
+	'cloudkill': cloudkill,
+	'darkness': darkness
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';

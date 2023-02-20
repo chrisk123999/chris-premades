@@ -32,7 +32,7 @@ export function registerSettings() {
 				Hooks.off('midi-qol.RollComplete', macros.conditionResistanceLate);
 			}
 		}
-	})
+	});
 	game.settings.register(moduleName, 'Condition Vulnerability', {
 		'name': 'Condition Vulnerability Mechanic',
 		'hint': 'Condition Vulnerability Mechanic',
@@ -49,5 +49,20 @@ export function registerSettings() {
 				Hooks.off('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
 			}
 		}
-	})
+	});
+	game.settings.register(moduleName, 'Darkness', {
+		'name': 'Darkness Spell',
+		'hint': 'Darkness Spell',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
+			} else {
+				Hooks.off('midi-qol.preAttackRoll', macros.darkness.hook);
+			}
+		}
+	});
 }

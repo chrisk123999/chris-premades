@@ -80,6 +80,13 @@
 		"path": "packs/cpr-spell-features.db",
 		"entity": "Item",
 		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Class Features",
+		"label": "CPR Class Features",
+		"path": "packs/cpr-class-features.db",
+		"entity": "Item",
+		"module": "chris-premades"
 	  }
   ],
   "url": "#{URL}#",
