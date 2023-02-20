@@ -51,8 +51,8 @@ export function registerSettings() {
 		}
 	});
 	game.settings.register(moduleName, 'Darkness', {
-		'name': 'Darkness Spell',
-		'hint': 'Darkness Spell',
+		'name': 'Darkness Spell Automation',
+		'hint': 'Darkness Spell Automation',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -66,8 +66,8 @@ export function registerSettings() {
 		}
 	});
 	game.settings.register(moduleName, 'Death Ward', {
-		'name': 'Death Ward',
-		'hint': 'Death Ward',
+		'name': 'Death Ward Automation',
+		'hint': 'Death Ward Automation',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -77,6 +77,21 @@ export function registerSettings() {
 				Hooks.on('midi-qol.damageApplied', macros.deathWard);
 			} else {
 				Hooks.off('midi-qol.damageApplied', macros.deathWard);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Mirror Image', {
+		'name': 'Mirror Image Automation',
+		'hint': 'Mirror Image Automation',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.AttackRollComplete', macros.mirrorImage);
+			} else {
+				Hooks.off('midi-qol.AttackRollComplete', macros.mirrorImage);
 			}
 		}
 	});
