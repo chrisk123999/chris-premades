@@ -8,6 +8,7 @@ import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
 import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
+import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -20,7 +21,8 @@ export let macros = {
 	'cloudkill': cloudkill,
 	'darkness': darkness,
 	'deathWard': deathWard,
-	'detectThoughts': detectThoughts
+	'detectThoughts': detectThoughts,
+	'dragonsBreath': dragonsBreath
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -38,7 +40,6 @@ export async function setupMacroFolder() {
 }
 async function createMacro(name, content, isGM) {
 	let macroFolder = game.folders.find((folder) => folder.name === 'CPR Macros' && folder.type === 'Macro');
-	console.log(macroFolder);
 	let data = {
 		'name': 'CPR-' + name,
 		'type': 'script',
