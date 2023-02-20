@@ -95,4 +95,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Protection from Evil and Good', {
+		'name': 'Protection from Evil and Good Automation',
+		'hint': 'Protection from Evil and Good Automation',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);
+			} else {
+				Hooks.off('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);
+			}
+		}
+	});
 }
