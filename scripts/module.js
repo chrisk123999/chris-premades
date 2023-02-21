@@ -8,6 +8,7 @@ Hooks.once('ready', async function() {
 	if (game.user.isGM) {
 		await setupMacroFolder();
 		await setupWorldMacros();
+		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 	}
 	if (game.settings.get('chris-premades', 'Armor of Agathys')) Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {
