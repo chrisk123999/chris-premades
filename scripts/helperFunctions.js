@@ -141,8 +141,19 @@ export let chris = {
 	'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, multiple) {
 		let generatedInputs = [];
 		let isFirst = true;
+		let number = 1;
 		for (let i of targets) {
-			let name = i.document.name;
+			let name;
+			if (game.settings.get('chris-premades', 'Show Names')) {
+				name = i.document.name;
+			} else {
+				if (i.document.disposition <= 0) {
+					name = 'Unknown Target (' + number + ')';
+					number++;
+				} else {
+					name = i.document.name;
+				}
+			}
 			let texture = i.document.texture.src;
 			let html = `<img src="` + texture + `" id="` + i.id + `" style="width:40px;height:40px;vertical-align:middle;"><span> ` + name + `</span>`;
 			let value = i.id;

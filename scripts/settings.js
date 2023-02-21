@@ -1,6 +1,14 @@
 import {macros} from './macros.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
+	game.settings.register(moduleName, 'Show Names', {
+		'name': 'Show Names',
+		'hint': 'Enabling this will show target names in the target selector dialog (Used for certain features and spells).',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': true
+	});
 	game.settings.register(moduleName, 'Armor of Agathys', {
 		'name': 'Armor of Agathys Automation',
 		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
