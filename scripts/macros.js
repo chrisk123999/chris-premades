@@ -1,4 +1,5 @@
 import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blink} from './macros/spells/blink/blink.js';
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
 import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
@@ -27,6 +28,7 @@ import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'armorOfAgathys': armorOfAgathys,
+	'bladeFlourish': bladeFlourish,
 	'bardicInspiration': bardicInspiration,
 	'blink': blink,
 	'callLightning': callLightning,
@@ -100,6 +102,7 @@ export async function setupWorldMacros() {
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('bardicInspirationAttack', actorOnUseMacro('bardicInspirationAttack'), false);
 	await createMacro('bardicInspirationDamage', actorOnUseMacro('bardicInspirationDamage'), false);
+	await createMacro('bladeFlourish', actorOnUseMacro('bladeFlourish'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -126,6 +129,9 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'bardicInspirationDamage':
 			await bardicInspiration.damage(workflow);
+			break;
+		case 'bladeFlourish':
+			await bladeFlourish(workflow);
 			break;
 	}
 }

@@ -7,8 +7,10 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 # Required Modules  
 - Midi-Qol (and it's own requirements)  
 - Automated Automations  
+- Build-a-Bonus  
 - DFreds Convenient Effects  
 - Effect Macro  
+- Item Macro  
 - Jules&Ben's Animated Assets  
 - Sequencer  
 - Template Macro  

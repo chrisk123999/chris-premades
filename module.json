@@ -82,6 +82,22 @@
 		"compatibility": {
 			"verified": "4.5.11"
 		}
+	},
+	{
+		"id": "babonus",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/babonus/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.3.6"
+		}
+	},
+	{
+		"id": "itemacro",
+		"type": "module",
+		"manifest": "https://github.com/Kekilla0/Item-Macro/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.8.0"
+		}
 	}],
 	"optional": [{
 		"id": "tidy5e-sheet",
