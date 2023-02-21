@@ -36,6 +36,14 @@
 		}
 	},
 	{
+		"id": "dfreds-convenient-effects",
+		"type": "module",
+		"manifest": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "3.1.1"
+		}
+	},
+	{
 		"id": "warpgate",
 		"type": "module",
 		"manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
