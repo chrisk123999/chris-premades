@@ -26,6 +26,7 @@ import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
+import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'armorOfAgathys': armorOfAgathys,
@@ -56,7 +57,8 @@ export let macros = {
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
 	'vampiricTouch': vampiricTouch,
-	'witherAndBloom': witherAndBloom
+	'witherAndBloom': witherAndBloom,
+	'armorModel': armorModel
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -105,6 +107,7 @@ export async function setupWorldMacros() {
 	await createMacro('bardicInspirationAttack', actorOnUseMacro('bardicInspirationAttack'), false);
 	await createMacro('bardicInspirationDamage', actorOnUseMacro('bardicInspirationDamage'), false);
 	await createMacro('bladeFlourish', actorOnUseMacro('bladeFlourish'), false);
+	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -134,6 +137,9 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'bladeFlourish':
 			await bladeFlourish(workflow);
+			break;
+		case 'thunderGauntlets':
+			await armorModel.thunderGauntlets(workflow);
 			break;
 	}
 }

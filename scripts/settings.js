@@ -133,4 +133,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Defensive Field', {
+		'name': 'Guardian Armor: Defensive Field',
+		'hint': 'Enabling this allows the Defensive Field feature to properly get reset during a long rest even if the Artificer does not have it toggled on.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
+			} else {
+				Hooks.off('dnd5e.restCompleted', macros.armorModel.longRest);
+			}
+		}
+	});
 }

@@ -24,6 +24,7 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Mirror Image')) Hooks.on('midi-qol.AttackRollComplete', macros.mirrorImage);
 	if (game.settings.get('chris-premades', 'Protection from Evil and Good')) Hooks.on('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);
 	if (game.settings.get('chris-premades', 'Sanctuary')) Hooks.on('midi-qol.AttackRollComplete', macros.sanctuary);
+	if (game.settings.get('chris-premades', 'Defensive Field')) Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
 });
 globalThis['chrisPremades'] = {
 	helpers,

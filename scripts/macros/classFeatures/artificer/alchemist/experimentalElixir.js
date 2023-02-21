@@ -33,7 +33,6 @@ export async function experimentalElixir(workflow) {
             'system.quantity': item.system.quantity + 1
         });
     } else {
-        
         let itemData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', itemName, false);
         if (!itemData) return;
         if (itemName === 'Experimental Elixir - Healing') {
