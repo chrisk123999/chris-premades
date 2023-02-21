@@ -1,10 +1,11 @@
 import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {blink} from './macros/spells/blink/blink.js';
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
-import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
-import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
 import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
 import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
+import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
+import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
 import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
@@ -17,22 +18,22 @@ import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
+import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
-import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
-import {blink} from './macros/spells/blink/blink.js';
 export let macros = {
+	'actorOnUse': useActorOnUse,
 	'armorOfAgathys': armorOfAgathys,
+	'blink': blink,
 	'callLightning': callLightning,
+	'charmPerson': charmPerson,
+	'cloudkill': cloudkill,
 	'conditionResistanceEarly': conditionResistanceEarly,
 	'conditionResistanceLate': conditionResistanceLate,
 	'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
 	'conditionVulnerabilityLate': conditionVulnerabilityLate,
-	'charmPerson': charmPerson,
-	'actorOnUse': useActorOnUse,
-	'cloudkill': cloudkill,
 	'darkness': darkness,
 	'deathWard': deathWard,
 	'detectThoughts': detectThoughts,
@@ -45,12 +46,11 @@ export let macros = {
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
+	'shockingGrasp': shockingGrasp,
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
 	'vampiricTouch': vampiricTouch,
-	'witherAndBloom': witherAndBloom,
-	'shockingGrasp': shockingGrasp,
-	'blink': blink
+	'witherAndBloom': witherAndBloom
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
