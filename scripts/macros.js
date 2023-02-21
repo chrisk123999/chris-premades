@@ -18,6 +18,7 @@ import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGo
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
+import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -40,7 +41,8 @@ export let macros = {
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
-	'spikeGrowth': spikeGrowth
+	'spikeGrowth': spikeGrowth,
+	'spiritShroud': spiritShroud
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -85,6 +87,7 @@ export async function setupWorldMacros() {
 	await createMacro('hex', actorOnUseMacro('hex'), false);
 	await createMacro('lightningArrowAttack', actorOnUseMacro('lightningArrowAttack'), false);
 	await createMacro('lightningArrowDamage', actorOnUseMacro('lightningArrowDamage'), false);
+	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -103,5 +106,7 @@ async function useActorOnUse(workflow, itemName) {
 		case 'lightningArrowDamage':
 			await lightningArrow.damage(workflow);
 			break;
+		case 'spiritShroud':
+			await spiritShroud.attack(workflow);
 	}
 }
