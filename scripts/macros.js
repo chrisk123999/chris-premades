@@ -1,4 +1,5 @@
 import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blink} from './macros/spells/blink/blink.js';
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
@@ -11,6 +12,7 @@ import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
@@ -24,12 +26,11 @@ import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
-import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'armorOfAgathys': armorOfAgathys,
-	'bladeFlourish': bladeFlourish,
 	'bardicInspiration': bardicInspiration,
+	'bladeFlourish': bladeFlourish,
 	'blink': blink,
 	'callLightning': callLightning,
 	'charmPerson': charmPerson,
@@ -42,6 +43,7 @@ export let macros = {
 	'deathWard': deathWard,
 	'detectThoughts': detectThoughts,
 	'dragonsBreath': dragonsBreath,
+	'experimentalElixir': experimentalElixir,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'lightningArrow': lightningArrow,

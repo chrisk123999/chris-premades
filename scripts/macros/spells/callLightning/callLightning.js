@@ -28,7 +28,7 @@ export async function callLightning(workflow) {
 				'onDelete': {
 					'script': chris.functionToString(effectMacro)
 				}
-			},
+			}
 		}
 	};
 	let updates = {
