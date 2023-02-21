@@ -1,3 +1,10 @@
+- Artificer Armorer: Armor Model
+- Artificer Alchemical Savant & Experimental Elixir
+- Description updates and Item Macro config warning.
+- Folder Fix 2
+- Folder fix
+- Fix Cloudkill folder and update module.json
+- Update Changelog
 - Blade Flourish
 - Bardic Inspiration & Magical Inspiration
 - Update Changelog
