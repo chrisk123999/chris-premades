@@ -20,6 +20,7 @@ import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
+import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -44,7 +45,8 @@ export let macros = {
 	'shadowBlade': shadowBlade,
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
-	'vampiricTouch': vampiricTouch
+	'vampiricTouch': vampiricTouch,
+	'witherAndBloom': witherAndBloom
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
