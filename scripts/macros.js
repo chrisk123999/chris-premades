@@ -19,6 +19,7 @@ import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
+import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'callLightning': callLightning,
@@ -42,7 +43,8 @@ export let macros = {
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
 	'spikeGrowth': spikeGrowth,
-	'spiritShroud': spiritShroud
+	'spiritShroud': spiritShroud,
+	'vampiricTouch': vampiricTouch
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -92,7 +94,7 @@ export async function setupWorldMacros() {
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
 		default:
-			console.log('Invalid actor onUse macro!');
+			ui.notifications.warn('Invalid actor onUse macro!');
 			return;
 		case 'chillTouch':
 			await chillTouch(workflow);
@@ -108,5 +110,6 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'spiritShroud':
 			await spiritShroud.attack(workflow);
+			break;
 	}
 }
