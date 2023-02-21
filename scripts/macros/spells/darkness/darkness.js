@@ -3,7 +3,6 @@ async function darknessItem(workflow) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
     await template.setFlag('chris-premades', 'spell.darkness', true);
-    if (!game.modules.get('token-attacher')?.active) return;
     let attachToken = await chris.dialog('Attach to self?', [['Yes', true], ['No', false]]) || false;
     if (!attachToken) return;
     let tokenObject = workflow.token;

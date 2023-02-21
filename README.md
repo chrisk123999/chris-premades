@@ -6,13 +6,15 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
   
 # Required Modules  
 - Midi-Qol (and it's own requirements)  
+- Automated Automations  
 - DFreds Convenient Effects  
-- Warpgate  
 - Effect Macro  
-- Template Macro  
+- Jules&Ben's Animated Assets  
 - Sequencer  
+- Template Macro  
+- Token Attacher  
+- Warpgate  
   
 # Optional supported modules:  
-- Automated Automations  
-- Tidy5e Sheet  
 - Custom Character Sheet Sections  
+- Tidy5e Sheet  

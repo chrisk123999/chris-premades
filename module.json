@@ -74,6 +74,14 @@
 		"compatibility": {
 			"verified": "10.0.0"
 		}
+	},
+	{
+		"id": "token-attacher",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/KayelGee/token-attacher/master/module.json",
+		"compatibility": {
+			"verified": "4.5.11"
+		}
 	}],
 	"optional": [{
 		"id": "tidy5e-sheet",
