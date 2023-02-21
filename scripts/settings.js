@@ -3,7 +3,7 @@ let moduleName = 'chris-premades';
 export function registerSettings() {
 	game.settings.register(moduleName, 'Armor of Agathys', {
 		'name': 'Armor of Agathys Automation',
-		'hint': 'Armor of Agathys Automation',
+		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -18,7 +18,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Condition Resistance', {
 		'name': 'Condition Resistance Mechanic',
-		'hint': 'Condition Resistance Mechanic',
+		'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -35,7 +35,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Condition Vulnerability', {
 		'name': 'Condition Vulnerability Mechanic',
-		'hint': 'Condition Vulnerability Mechanic',
+		'hint': 'Enabling this allows the automation condition vulnerability via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -52,7 +52,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Darkness', {
 		'name': 'Darkness Spell Automation',
-		'hint': 'Darkness Spell Automation',
+		'hint': 'Enabling this allows the automation of the Darkness spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -67,7 +67,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Death Ward', {
 		'name': 'Death Ward Automation',
-		'hint': 'Death Ward Automation',
+		'hint': 'Enabling this allows the automation of the Death Ward spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -82,7 +82,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Mirror Image', {
 		'name': 'Mirror Image Automation',
-		'hint': 'Mirror Image Automation',
+		'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -97,7 +97,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Protection from Evil and Good', {
 		'name': 'Protection from Evil and Good Automation',
-		'hint': 'Protection from Evil and Good Automation',
+		'hint': 'Enabling this allows the automation of the Protection from Evil and Good spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
@@ -112,7 +112,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Sanctuary', {
 		'name': 'Sanctuary Automation',
-		'hint': 'Sanctuary Automation',
+		'hint': 'Enabling this allows the automation of the Sanctuary spell via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,

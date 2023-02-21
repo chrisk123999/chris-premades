@@ -38,7 +38,7 @@
 	{
 		"id": "warpgate",
 		"type": "module",
-		"manifest": "https://github.com/trioderegion/warpgate/blob/master/module.json",
+		"manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "1.16.0"
 		}
@@ -46,7 +46,7 @@
 	{
 		"id": "effectmacro",
 		"type": "module",
-		"manifest": "https://github.com/krbz999/effectmacro/blob/main/module.json",
+		"manifest": "https://github.com/krbz999/effectmacro/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "10.0.15"
 		}
@@ -54,9 +54,33 @@
 	{
 		"id": "templatemacro",
 		"type": "module",
-		"manifest": "https://github.com/krbz999/templatemacro/blob/main/module.json",
+		"manifest": "https://github.com/krbz999/templatemacro/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "10.0.1"
+		}
+	},
+	{
+		"id": "sequencer",
+		"type": "module",
+		"manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
+		"compatibility": {
+			"verified": "10.0.0"
+		}
+	}],
+	"optional": [{
+		"id": "tidy5e-sheet",
+		"type": "module",
+		"manifest": "https://github.com/sdenec/tidy5e-sheet/releases/download/0.8.25/module.json",
+		"compatibility": {
+			"verified": "0.8.25"
+		}
+	},
+	{
+		"id": "custom-character-sheet-sections",
+		"type": "module",
+		"manifest": "https://github.com/jessev14/custom-character-sheet-sections/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.5.0"
 		}
 	}]
   },
