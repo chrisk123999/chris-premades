@@ -127,21 +127,21 @@
 		"name": "CPR Spells",
 		"label": "CPR Spells",
 		"path": "packs/cpr-spells.db",
-		"entity": "Item",
+		"type": "Item",
 		"module": "chris-premades"
 	  },
 	  {
 		"name": "CPR Spell Features",
 		"label": "CPR Spell Features",
 		"path": "packs/cpr-spell-features.db",
-		"entity": "Item",
+		"type": "Item",
 		"module": "chris-premades"
 	  },
 	  {
 		"name": "CPR Class Features",
 		"label": "CPR Class Features",
 		"path": "packs/cpr-class-features.db",
-		"entity": "Item",
+		"type": "Item",
 		"module": "chris-premades"
 	  }
   ],

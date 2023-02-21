@@ -111,6 +111,7 @@ export let chris = {
 	},
 	'addToRoll': async function _addToRoll(roll, addonFormula) {
 		let addonFormulaRoll = await new Roll('0 + ' + addonFormula).evaluate({async: true});
+		game.dice3d?.showForRoll(addonFormulaRoll);
 		for (let i = 1; i < addonFormulaRoll.terms.length; i++) {
 			roll.terms.push(addonFormulaRoll.terms[i]);
 		}
