@@ -1,3 +1,9 @@
+- Complete Order of the Lycan automation
+- Dragon's Breath Fix
+- Description Fix
+- Update README.md
+- Update journal.js
+- Update CHANGELOG.md
 - Update journal.js
 - Some Blood Hunter Features
 - Temporary Item Description Workaround & First Time Setup
