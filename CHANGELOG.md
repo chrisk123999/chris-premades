@@ -1,3 +1,7 @@
+- Update journal.js
+- Some Blood Hunter Features
+- Temporary Item Description Workaround & First Time Setup
+- Update CHANGELOG.md
 - Artificer Armorer: Armor Model
 - Artificer Alchemical Savant & Experimental Elixir
 - Description updates and Item Macro config warning.
