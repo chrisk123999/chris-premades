@@ -44,8 +44,6 @@ async function vampiricTouchItem(workflow) {
 		'description': featureData.name
 	};
 	await warpgate.mutate(workflow.token.document, updates, {}, options);
-    let feature = workflow.actor.items.getName('Vampiric Touch Attack');
-    if (feature && workflow.targets.size != 0) await feature.use();
 }
 async function vampiricTouchAttack(workflow) {
     if (workflow.hitTargets.size != 1) return;
