@@ -2,7 +2,7 @@ let welcomeText = `<p>Thank you for using my module! If you find any bugs or hav
 <p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works "as-is" from that module, it's unlikely I'll have it here.</p>
 <p>To get started you can find my automations inside the compendium folders that start with: "CPR."</p>
 <hr>
-<p>Any item, spell, or feature that is added to your sheet temporarily need a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating the module.</p>
+<p>Any item, spell, or feature that is added to your sheet temporarily need a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p>
 <hr>
 <a href="https://ko-fi.com/chrisk123999">
     <img src="https://ko-fi.com/img/githubbutton_sm.svg">
