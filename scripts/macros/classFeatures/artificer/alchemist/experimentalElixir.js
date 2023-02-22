@@ -35,6 +35,7 @@ export async function experimentalElixir(workflow) {
     } else {
         let itemData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', itemName, false);
         if (!itemData) return;
+        featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Class Feature Items', itemName);
         if (itemName === 'Experimental Elixir - Healing') {
             itemData.system.damage.parts = [
                 [

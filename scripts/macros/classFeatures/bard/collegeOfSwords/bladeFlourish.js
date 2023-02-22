@@ -1,5 +1,7 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function bladeFlourish(workflow) {
+    let itemName = workflow.item.name.toLowerCase()
+    if (itemName.search('booming blade') || itemName.search('green-flame Blade')) return;
     let sourceActor = workflow.actor;
     let effect1 = chris.findEffect(sourceActor, 'Blade Flourish Movement');
     if (workflow.item.type === 'weapon' && !effect1) {

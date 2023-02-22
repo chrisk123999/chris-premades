@@ -2,8 +2,6 @@ import {chris} from '../../../helperFunctions.js';
 async function holyWeaponItem(workflow) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Dragon Breath', false);
-    if (!featureData) return;
     async function effectMacro() {
         let damageDice = '2d8[radiant]';
         let generatedMenu = [];
@@ -25,7 +23,7 @@ async function holyWeaponItem(workflow) {
         let spellDC = chrisPremades.helpers.getSpellDC(origin);
         let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
         if (!featureData) return;
-        featureData.system.description.value = origin.system.description.value;
+        featureData.system.description.value = chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
         featureData.effects[0].changes[0].value = 'label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
         featureData.system.save.dc = spellDC;
         let updates = {

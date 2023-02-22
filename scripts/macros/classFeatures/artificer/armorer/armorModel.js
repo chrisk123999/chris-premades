@@ -13,6 +13,8 @@ async function guardianArmor(workflow) {
     if (!featureData || !featureData2) return;
     featureData.system.uses.value = fieldUses;
     featureData.system.uses.max = workflow.actor.system.attributes.prof;
+    featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Class Feature Items', 'Guardian Armor: Defensive Field');
+    featureData2.system.description.value = chris.getItemDescription('chris-premades.CPR Class Feature Items', 'Guardian Armor: Thunder Gauntlets');
     await workflow.actor.createEmbeddedDocuments('Item', [featureData, featureData2]);
     let effectData = {
 		'label': 'Arcane Armor: Guardian Model',
@@ -36,6 +38,7 @@ async function infiltratorArmor(workflow) {
         await feature2.delete();
     }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Infiltrator Armor: Lightning Launcher', false);
+    featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Class Feature Items', 'Infiltrator Armor: Lightning Launcher');
     if (!featureData) return;
     await workflow.actor.createEmbeddedDocuments('Item', [featureData]);
     let effectData = {

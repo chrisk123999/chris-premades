@@ -9,7 +9,7 @@ async function vampiricTouchItem(workflow) {
             'necrotic'
 		]
 	];
-    featureData.system.description.value = workflow.item.system.description.value;
+    featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Vampiric Touch Attack');
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Vampiric Touch');
 	}
@@ -55,7 +55,7 @@ async function vampiricTouchAttack(workflow) {
     if (hasImmunity) return;
     let hasResistance = chris.checkTrait(targetActor, 'dr', 'necrotic');
     if (hasResistance) damage = damage / 2;
-    damage = Math.ceil(damage);
+    damage = Math.floor(damage);
     if (damage != 0) await chris.applyDamage([workflow.token], damage, 'healing');
 }
 export let vampiricTouch = {

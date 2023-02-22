@@ -248,5 +248,17 @@ export let chris = {
 	},
 	'raceOrType': function _raceOrType(actor) {
 		return actor.type === "npc" ? actor.system.details?.type?.value : actor.system.details?.race;
+	},
+	'getItemDescription': async function _getItemDescription(key, name) {
+		let journalEntry = game.journal.getName(key);
+		if (journalEntry) {
+			ui.notifications.error('Item descriptions journal entry not found!');
+			return;
+		}
+		let page = journalEntry.pages.getName(name);
+		if (!page) {
+			ui.notifications.warn('Item description not found in journal!');
+		}
+		return page.text.content;
 	}
 };
