@@ -3,7 +3,7 @@ async function hexItem(workflow) {
     if (workflow.targets.size != 1) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Hex - Move', false);
     if (!featureData) return;
-    featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Hex - Move');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Hex - Move');
     let selection = await chris.dialog('What ability should have disadvantage?', [
         ['Strength', 'str'],
         ['Dexterity', 'dex'],

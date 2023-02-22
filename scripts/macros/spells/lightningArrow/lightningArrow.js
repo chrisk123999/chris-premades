@@ -39,9 +39,8 @@ async function lightningArrowDamage (workflow) {
 	if (effect) {
 		let originItem = await fromUuid(effect.origin);
 		itemData.system.save.dc = chris.getSpellDC(originItem);
-		itemData.system.description.value = originItem.system.description.value;
 	}
-	itemData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Lightning Arrow - Burst');
+	itemData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Lightning Arrow - Burst');
 	let areaFeature = new CONFIG.Item.documentClass(itemData, {parent: workflow.actor});
 	let newTargets = chris.findNearby(targetToken, 10, null);
 	let newTargetUuids =[];

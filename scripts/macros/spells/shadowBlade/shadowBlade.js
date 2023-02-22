@@ -26,7 +26,7 @@ export async function shadowBlade(workflow) {
 			'psychic'
 		]
 	];
-	weaponData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Shadow Blade Sword');
+	weaponData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Shadow Blade Sword');
 	async function effectMacro () {
 		await warpgate.revert(token.document, 'Shadow Blade Sword');
 	}

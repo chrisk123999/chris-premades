@@ -23,7 +23,7 @@ async function holyWeaponItem(workflow) {
         let spellDC = chrisPremades.helpers.getSpellDC(origin);
         let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
         if (!featureData) return;
-        featureData.system.description.value = chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
+        featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Holy Weapon - Burst', false);
         featureData.effects[0].changes[0].value = 'label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
         featureData.system.save.dc = spellDC;
         let updates = {

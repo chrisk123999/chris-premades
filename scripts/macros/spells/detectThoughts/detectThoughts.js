@@ -10,7 +10,7 @@ async function detectThoughtsItem(workflow) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Detect Thoughts - Probe Deeper', false);
     if (!featureData) return;
     featureData.system.save.dc = chris.getSpellDC(workflow.item);
-	featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Detect Thoughts - Probe Deeper');
+	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Detect Thoughts - Probe Deeper');
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Detect Thoughts - Probe Deeper');
 	}

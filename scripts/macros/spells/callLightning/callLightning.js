@@ -12,7 +12,7 @@ export async function callLightning(workflow) {
 		]
 	];
 	featureData.system.save.dc = chris.getSpellDC(workflow.item);
-	featureData.system.description.value = chris.getItemDescription('chris-premades.CPR Spell Features', 'Storm Bolt');
+	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Bolt');
 	async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Bolt');
 	}
