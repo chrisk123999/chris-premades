@@ -6,7 +6,7 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
   
 # Required Modules  
 - Midi-Qol (and it's own requirements)  
-- Automated Automations  
+- Automated Animations  
 - Build-a-Bonus  
 - DFreds Convenient Effects  
 - Effect Macro  
