@@ -8,7 +8,7 @@
 - Rogue: Evasion
 - Divine Soul sorcerer: Favored by the Gods
 - Warlock Invocation: One with Shadows
-- The Undead Warlock: Form of Dread, Form of Dread: Fear, and Grave Touched  
+- The Undead Warlock: Form of Dread, Form of Dread: Fear, and Grave Touched
 ## Bug fixes:  
 - Spirit Shroud
   
