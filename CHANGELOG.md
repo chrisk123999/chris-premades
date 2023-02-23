@@ -1,5 +1,5 @@
 # 0.0.21:
-##New Content:
+## New Content:
 - Samurai Fighter: Fighting Spirit
 - Way of Shadow Monk: Shadow Step
 - Monk: Evasion, Patient Defense, Quickened Healing, and Stunning Strike
@@ -9,7 +9,7 @@
 - Divine Soul sorcerer: Favored by the Gods
 - Warlock Invocation: One with Shadows
 - The Undead Warlock: Form of Dread, Form of Dread: Fear, and Grave Touched  
-##Bug fixes:  
+## Bug fixes:  
 - Spirit Shroud
   
 # 0.0.20:
