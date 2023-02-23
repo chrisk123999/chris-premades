@@ -16,10 +16,14 @@ import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
+import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
+import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
+import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
@@ -60,10 +64,14 @@ export let macros = {
 	'deathWard': deathWard,
 	'destructiveWrath': destructiveWrath,
 	'detectThoughts': detectThoughts,
+	'divineSmite': divineSmite,
 	'dragonsBreath': dragonsBreath,
+	'dreadAmbusher': dreadAmbusher,
 	'experimentalElixir': experimentalElixir,
 	'fallenPuppet': fallenPuppet,
 	'focusedAim': focusedAim,
+	'formOfDread': formOfDread,
+	'graveTouched': graveTouched,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hybridTransformation': hybridTransformation,
@@ -138,6 +146,9 @@ export async function setupWorldMacros() {
 	await createMacro('reaper', actorOnUseMacro('reaper'), false);
 	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
 	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
+	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
+	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
+	await createMacro('graveTouched', actorOnUseMacro('graveTouched'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -188,6 +199,15 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'focusedAim':
 			await focusedAim(workflow);
+			break;
+		case 'divineSmite':
+			await divineSmite(workflow);
+			break;
+		case 'formOfDread':
+			await formOfDread.attack(workflow);
+			break;
+		case 'graveTouched':
+			await graveTouched.attack(workflow);
 			break;
 	}
 }

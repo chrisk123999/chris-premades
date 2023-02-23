@@ -18,7 +18,9 @@ export async function focusedAim(workflow) {
     if (!useFeature) return;
     let updatedRoll = await chris.addToRoll(workflow.attackRoll, useFeature);
     workflow.setAttackRoll(updatedRoll);
-    let otherFeature = await workflow.actor.items.getName('Focused Aim');
     feature.update({'system.uses.value': featureUses - (useFeature / 2)});
-    await otherFeature.use();
+    let effect = chris.findEffect(workflow.actor, 'Focused Aim');
+    if (!effect) return;
+    let originItem = fromUuid(effect.origin);
+    await originItem.use();
 }

@@ -148,4 +148,20 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Ranged Smite', {
+		'name': 'Ranged Divine Smite',
+		'hint': 'Enabling this will allow the Divine Smite feature to be used on ranged attacks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false
+	});
+	game.settings.register(moduleName, 'Unarmed Strike Smite', {
+		'name': 'Unarmed Strike Divine Smite',
+		'hint': 'Enabling this will allow the Divine Smite feature to be used on unarmed Strikes.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false
+	});
 }

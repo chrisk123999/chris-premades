@@ -9,7 +9,7 @@ async function spiritShroudItem(workflow) {
     ];
     let selection = await chris.dialog('What damage type?', options);
     if (!selection) selection = 'necrotic';
-    await effect.setFlag('world', 'chris-premades.spiritShroud', selection);
+    await effect.setFlag('chris-premades', 'spell.spiritShroud', selection);
 }
 async function spiritShroudAttack(workflow) {
     if (workflow.hitTargets.size != 1) return;
