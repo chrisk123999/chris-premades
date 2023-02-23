@@ -1,67 +1,19 @@
-- Complete Order of the Lycan automation
-- Dragon's Breath Fix
-- Description Fix
-- Update README.md
-- Update journal.js
-- Update CHANGELOG.md
-- Update journal.js
-- Some Blood Hunter Features
-- Temporary Item Description Workaround & First Time Setup
-- Update CHANGELOG.md
-- Artificer Armorer: Armor Model
-- Artificer Alchemical Savant & Experimental Elixir
-- Description updates and Item Macro config warning.
-- Folder Fix 2
-- Folder fix
-- Fix Cloudkill folder and update module.json
-- Update Changelog
-- Blade Flourish
-- Bardic Inspiration & Magical Inspiration
-- Update Changelog
-- Update macros.js
-- Blink & Shocking Grasp Added
-- Update readme.
-- Delete old_README.md
-- Cleanup module.json for release
-- Wither and Bloom
-- Vampiric Touch
+# 0.0.21:
+New Content:
+- Samurai Fighter: Fighting Spirit
+- Way of Shadow Monk: Shadow Step
+- Monk: Evasion, Patient Defense, Quickened Healing, and Stunning Strike
+- Paladin: Divine Smite
+- Gloom Stalker: Dread Ambusher
+- Rogue: Evasion
+- Divine Soul sorcerer: Favored by the Gods
+- Warlock Invocation: One with Shadows
+- The Undead Warlock: Form of Dread, Form of Dread: Fear, and Grave Touched
+Bug fixes:
 - Spirit Shroud
-- Spike Growth
-- Update cpr-spells.db
-- Shadow Blade
-- Sanctuary
-- Protection from Evil and Good
-- Update cpr-spells.db
-- Mirror Image
-- Update cpr-spells.db
-- Mass Cure Wounds
-- Lightning Arrow
-- Create .gitignore
-- Holy Weapon
-- Hex
-- Dragon's Breath
-- Detect Thoughts
-- Death Ward
-- Darkness Spell
-- Cloudkill
-- Chill Touch
-- Charm Person
-- Conditions ADV/DIS
-- Delete Chris-DragonsBreath.js
-- Merge branch 'master' of https://github.com/chrisk123999/chris-premades
-- Added Call Lightning
-- Update armorOfAgathys.js
-- AoA
-- AoA Code Cleanup
-- Initial Testing
-- Update settings.js
-- Update settings.js
-- Update module.js
-- Fix
-- Merge branch 'master' of https://github.com/chrisk123999/chris-premades
-- Remove File
-- Update main.yml
-- Update main.yml
-- Initial Testing
-- Readme
-- Initial commit
+
+# 0.0.20:
+- Death Domain Cleric: Reaper
+- Peace Domain Cleric: Balm of Peace
+- Tempest Domain Cleric: Destructive Wrath & Wrath of the Storm
+- Monk: Focused Aim and Stillness of Mind
