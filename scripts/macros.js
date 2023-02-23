@@ -33,6 +33,7 @@ import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'armorModel': armorModel,
@@ -70,19 +71,20 @@ export let macros = {
 	'spiritShroud': spiritShroud,
 	'vampiricTouch': vampiricTouch,
 	'witherAndBloom': witherAndBloom,
-	'hybridTransformation': hybridTransformation
+	'hybridTransformation': hybridTransformation,
+	'reaper': reaper
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
 }
 export async function setupMacroFolder() {
-	let macroFolder = game.folders.find((folder) => folder.name === "CPR Macros" && folder.type === "Macro");
+	let macroFolder = game.folders.find((folder) => folder.name === 'CPR Macros' && folder.type === 'Macro');
 	if (!macroFolder) {
 		await Folder.create({
-		color: "#117e11",
-		name: "CPR Macros",
+		color: '#117e11',
+		name: 'CPR Macros',
 		parent: null,
-		type: "Macro"
+		type: 'Macro'
 		});
 	}
 }
@@ -123,6 +125,7 @@ export async function setupWorldMacros() {
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
+	await createMacro('reaper', actorOnUseMacro('reaper'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -164,5 +167,9 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'voracious':
 			await hybridTransformation.voracious(workflow);
+			break;
+		case 'reaper':
+			await reaper(workflow);
+			break;
 	}
 }
