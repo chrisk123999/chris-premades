@@ -60,6 +60,8 @@ async function infiltratorArmor(workflow) {
 }
 async function lightningLauncher(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.isFumble) return;
+    let selection = chris.dialog('Apply extra lightning damage?', [['Yes', true], ['No', false]]);
+    if (!selection) return;
     let doExtraDamage = false;
     if (game.combat === null || game.combat === undefined) {
         doExtraDamage = true;

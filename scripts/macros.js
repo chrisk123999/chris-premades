@@ -1,5 +1,6 @@
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blink} from './macros/spells/blink/blink.js';
@@ -13,31 +14,36 @@ import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
+import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
+import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
 import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
+import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
+import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
-import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
-import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'armorModel': armorModel,
 	'armorOfAgathys': armorOfAgathys,
+	'balmOfPeace': balmOfPeace,
 	'bardicInspiration': bardicInspiration,
 	'bladeFlourish': bladeFlourish,
 	'blink': blink,
@@ -52,27 +58,31 @@ export let macros = {
 	'crimsonRite': crimsonRite,
 	'darkness': darkness,
 	'deathWard': deathWard,
+	'destructiveWrath': destructiveWrath,
 	'detectThoughts': detectThoughts,
 	'dragonsBreath': dragonsBreath,
 	'experimentalElixir': experimentalElixir,
 	'fallenPuppet': fallenPuppet,
+	'focusedAim': focusedAim,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
+	'hybridTransformation': hybridTransformation,
 	'lightningArrow': lightningArrow,
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,
 	'muddledMind': muddledMind,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
+	'reaper': reaper,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
+	'stillnessOfMind': stillnessOfMind,
 	'vampiricTouch': vampiricTouch,
 	'witherAndBloom': witherAndBloom,
-	'hybridTransformation': hybridTransformation,
-	'reaper': reaper
+	'wrathOfTheStorm': wrathOfTheStorm
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -126,6 +136,8 @@ export async function setupWorldMacros() {
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
 	await createMacro('reaper', actorOnUseMacro('reaper'), false);
+	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
+	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -170,6 +182,12 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'reaper':
 			await reaper(workflow);
+			break;
+		case 'destructiveWrath':
+			await destructiveWrath(workflow);
+			break;
+		case 'focusedAim':
+			await focusedAim(workflow);
 			break;
 	}
 }
