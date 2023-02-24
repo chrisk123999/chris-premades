@@ -1,3 +1,10 @@
+# 0.0.22:
+## New Content:
+- The Celestial Warlock: Healing Light and Radiant Soul
+- School of Divination Wizard: Expert Divination
+- Storm Sorcery Sorcerer: Heart of the Storm
+- The Fiend Warlock: Dark One’s Blessing and Dark One’s Own Luck
+
 # 0.0.21:
 ## New Content:
 - Samurai Fighter: Fighting Spirit
@@ -9,10 +16,11 @@
 - Divine Soul sorcerer: Favored by the Gods
 - Warlock Invocation: One with Shadows
 - The Undead Warlock: Form of Dread, Form of Dread: Fear, and Grave Touched
-## Bug fixes:  
+## Bug fixes:
 - Spirit Shroud
   
 # 0.0.20:
+## New Content:
 - Death Domain Cleric: Reaper
 - Peace Domain Cleric: Balm of Peace
 - Tempest Domain Cleric: Destructive Wrath & Wrath of the Storm

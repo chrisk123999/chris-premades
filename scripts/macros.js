@@ -12,6 +12,7 @@ import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
+import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness/darkness.js';
 import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
@@ -20,10 +21,13 @@ import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
+import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
+import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
@@ -32,6 +36,7 @@ import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
+import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
@@ -45,6 +50,7 @@ import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 export let macros = {
 	'actorOnUse': useActorOnUse,
+	'actorOnUseMulti': actorOnUseMulti,
 	'armorModel': armorModel,
 	'armorOfAgathys': armorOfAgathys,
 	'balmOfPeace': balmOfPeace,
@@ -60,6 +66,7 @@ export let macros = {
 	'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
 	'conditionVulnerabilityLate': conditionVulnerabilityLate,
 	'crimsonRite': crimsonRite,
+	'darkOnesBlessing': darkOnesBlessing,
 	'darkness': darkness,
 	'deathWard': deathWard,
 	'destructiveWrath': destructiveWrath,
@@ -68,10 +75,13 @@ export let macros = {
 	'dragonsBreath': dragonsBreath,
 	'dreadAmbusher': dreadAmbusher,
 	'experimentalElixir': experimentalElixir,
+	'expertDivination': expertDivination,
 	'fallenPuppet': fallenPuppet,
 	'focusedAim': focusedAim,
 	'formOfDread': formOfDread,
 	'graveTouched': graveTouched,
+	'healingLight': healingLight,
+	'heartOfTheStorm': heartOfTheStorm,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hybridTransformation': hybridTransformation,
@@ -80,6 +90,7 @@ export let macros = {
 	'mirrorImage': mirrorImage,
 	'muddledMind': muddledMind,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
+	'radiantSoul': radiantSoul,
 	'reaper': reaper,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,
@@ -94,6 +105,9 @@ export let macros = {
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
+}
+function actorOnUseMultiPassMacro(itemName) {
+	return 'await chrisPremades.macros.actorOnUseMulti(this, "' + itemName + '", args[0].macroPass);'
 }
 export async function setupMacroFolder() {
 	let macroFolder = game.folders.find((folder) => folder.name === 'CPR Macros' && folder.type === 'Macro');
@@ -149,6 +163,10 @@ export async function setupWorldMacros() {
 	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
 	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
 	await createMacro('graveTouched', actorOnUseMacro('graveTouched'), false);
+	await createMacro('heartOfTheStorm', actorOnUseMacro('heartOfTheStorm'), false);
+	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
+	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
+	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -208,6 +226,25 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'graveTouched':
 			await graveTouched.attack(workflow);
+			break;
+		case 'heartOfTheStorm':
+			await heartOfTheStorm.attack(workflow);
+			break;
+		case 'darkOnesBlessing':
+			await darkOnesBlessing(workflow);
+			break;
+		case 'expertDivination':
+			await expertDivination(workflow);
+			break;
+	}
+}
+async function actorOnUseMulti(workflow, itemName, pass) {
+	switch (itemName) {
+		default:
+			ui.notifications.warn('Invalid actor onUse macro!');
+			return;
+		case 'radiantSoul': 
+			await radiantSoul(workflow, pass);
 			break;
 	}
 }
