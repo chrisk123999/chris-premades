@@ -1,3 +1,7 @@
+# 0.0.24:
+## Bug Fixes:
+- Detect Thoughts
+
 # 0.0.23:
 ## New Content:
 - Ring of Spell Storing
