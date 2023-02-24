@@ -56,7 +56,7 @@ async function lightningArrowDamage (workflow) {
 		'configureDialog': false,
 		'versatile': false,
 		'consumeResource': false,
-		'consumeSlot': false,
+		'consumeSlot': false
 	};
 	await MidiQOL.completeItemUse(areaFeature, {}, options);
 	if (effect) effect.delete();

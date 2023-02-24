@@ -50,6 +50,8 @@ import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
+import {fangedBite} from './macros/raceFeatures/dhampir/fangedBite.js';
+import {chainLightning} from './macros/spells/chainLightning/chainLightning.js';
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'actorOnUseMulti': actorOnUseMulti,
@@ -105,7 +107,9 @@ export let macros = {
 	'stillnessOfMind': stillnessOfMind,
 	'vampiricTouch': vampiricTouch,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'fangedBite': fangedBite,
+	'chainLightning': chainLightning
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
