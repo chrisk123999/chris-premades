@@ -1,10 +1,15 @@
+# 0.0.23:
+## New Content:
+- Ring of Spell Storing
+- DMG Cleave Mechanic
+  
 # 0.0.22:
 ## New Content:
 - The Celestial Warlock: Healing Light and Radiant Soul
 - School of Divination Wizard: Expert Divination
 - Storm Sorcery Sorcerer: Heart of the Storm
 - The Fiend Warlock: Dark One’s Blessing and Dark One’s Own Luck
-
+  
 # 0.0.21:
 ## New Content:
 - Samurai Fighter: Fighting Spirit
