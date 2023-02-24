@@ -8,6 +8,7 @@ import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCast
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
 import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
+import {cleave} from './macros/mechanics/cleave/cleave.js';
 import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
@@ -38,6 +39,7 @@ import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddle
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
@@ -60,6 +62,7 @@ export let macros = {
 	'brandOfCastigation': brandOfCastigation,
 	'callLightning': callLightning,
 	'charmPerson': charmPerson,
+	'cleave': cleave,
 	'cloudkill': cloudkill,
 	'conditionResistanceEarly': conditionResistanceEarly,
 	'conditionResistanceLate': conditionResistanceLate,
@@ -92,6 +95,7 @@ export let macros = {
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
 	'reaper': reaper,
+	'ringOfSpellStoring': ringOfSpellStoring,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
@@ -167,6 +171,8 @@ export async function setupWorldMacros() {
 	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
 	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
 	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
+	await createMacro('ringOfSpellStoringAttack', actorOnUseMacro('ringOfSpellStoringAttack'), false);
+	await createMacro('ringOfSpellStoringCast', actorOnUseMacro('ringOfSpellStoringCast'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -235,6 +241,12 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'expertDivination':
 			await expertDivination(workflow);
+			break;
+		case 'ringOfSpellStoringAttack':
+			await ringOfSpellStoring.attack(workflow);
+			break;
+		case 'ringOfSpellStoringSpell':
+			await ringOfSpellStoring.spell(workflow);
 			break;
 	}
 }

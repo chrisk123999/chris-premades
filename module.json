@@ -150,6 +150,13 @@
 		"path": "packs/cpr-class-feature-items.db",
 		"type": "Item",
 		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Class Items",
+		"label": "CPR Class Items",
+		"path": "packs/cpr-items.db",
+		"type": "Item",
+		"module": "chris-premades"
 	  }
   ],
   "url": "#{URL}#",

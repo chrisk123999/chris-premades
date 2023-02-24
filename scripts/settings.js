@@ -164,4 +164,19 @@ export function registerSettings() {
 		'type': Boolean,
 		'default': false
 	});
+	game.settings.register(moduleName, 'DMG Cleave', {
+		'name': 'DMG Cleave Mechanic',
+		'hint': 'Enabling this allows the automation of the cleave mechanic from the DMG workshop section via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.RollComplete', macros.cleave);
+			} else {
+				Hooks.off('midi-qol.RollComplete', macros.cleave);
+			}
+		}
+	});
 }
