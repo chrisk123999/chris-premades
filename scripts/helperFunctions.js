@@ -261,5 +261,19 @@ export let chris = {
 		}
 		let description = page.text.content;
 		return description;
+	},
+	'getDistance': function _getDistance(sourceToken, targetToken) {
+		return MidiQOL.getDistance(sourceToken, targetToken, {wallsBlock: false});
+	},
+	'totalDamageType': function _totalDamageType(actor, damageDetail, type) {
+		let total = 0;
+		let immune = chris.checkTrait(actor, 'di', type);
+		if (immune) return 0;
+		for (let i of damageDetail) {
+			if (i.type.toLowerCase() === type.toLowerCase()) total += i.damage;
+		}
+		let resistant = chris.checkTrait(actor, 'dr', type);
+		if (resistant) total = math.floor(total / 2);
+		return total;
 	}
 };

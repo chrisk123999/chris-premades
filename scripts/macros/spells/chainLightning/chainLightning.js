@@ -10,7 +10,7 @@ export async function chainLightning(workflow) {
     if (nearbyTokens.length > maxTargets) {
         let buttons = [
             {
-                'label': 'Ok',
+                'label': 'OK',
                 'value': true
             }, {
                 'label': 'Cancel',

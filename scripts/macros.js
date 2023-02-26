@@ -1,57 +1,65 @@
-import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
-import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
-import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
-import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
-import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
-import {blink} from './macros/spells/blink/blink.js';
-import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
-import {callLightning} from './macros/spells/callLightning/callLightning.js';
-import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
-import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
-import {cleave} from './macros/mechanics/cleave/cleave.js';
-import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
-import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
-import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
-import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
-import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
-import {darkness} from './macros/spells/darkness/darkness.js';
-import {deathWard} from './macros/spells/deathWard/deathWard.js';
-import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
-import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
-import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
-import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
-import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
-import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
-import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
-import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
-import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
-import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
-import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
-import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
-import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
-import {hex} from './macros/spells/hex/hex.js';
-import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
-import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
-import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
-import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
-import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
-import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
-import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
-import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
-import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
-import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
-import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
-import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
-import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
-import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
-import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
-import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
-import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
-import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
-import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
-import {fangedBite} from './macros/raceFeatures/dhampir/fangedBite.js';
+import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
+import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
+import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
+import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
+import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
+import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
+import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
+import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
+import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
+import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
+import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
+import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
+import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
+import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
+import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
+import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
+import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
+import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
+import {hex} from './macros/spells/hex/hex.js';
+import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
+import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
+import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
+import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
+import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
+import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
+import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
+import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
+import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
+import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
+import {deathWard} from './macros/spells/deathWard/deathWard.js';
+import {darkness} from './macros/spells/darkness/darkness.js';
+import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
+import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
+import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
+import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
+import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
+import {cleave} from './macros/mechanics/cleave/cleave.js';
+import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
+import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
+import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
+import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chainLightning} from './macros/spells/chainLightning/chainLightning.js';
+import {callLightning} from './macros/spells/callLightning/callLightning.js';
+import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
+import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
+import {blink} from './macros/spells/blink/blink.js';
+import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
+import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
+import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
+import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
+let monster = {
+	'bulette': bulette,
+	'chasme': chasme,
+	'clayGolem': clayGolem
+}
 export let macros = {
 	'actorOnUse': useActorOnUse,
 	'actorOnUseMulti': actorOnUseMulti,
@@ -63,6 +71,7 @@ export let macros = {
 	'blink': blink,
 	'brandOfCastigation': brandOfCastigation,
 	'callLightning': callLightning,
+	'chainLightning': chainLightning,
 	'charmPerson': charmPerson,
 	'cleave': cleave,
 	'cloudkill': cloudkill,
@@ -93,6 +102,7 @@ export let macros = {
 	'lightningArrow': lightningArrow,
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,
+	'monster': monster,
 	'muddledMind': muddledMind,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
@@ -105,11 +115,10 @@ export let macros = {
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
 	'stillnessOfMind': stillnessOfMind,
+	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'fangedBite': fangedBite,
-	'chainLightning': chainLightning
+	'wrathOfTheStorm': wrathOfTheStorm
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';

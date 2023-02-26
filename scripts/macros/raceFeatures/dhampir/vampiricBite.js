@@ -1,17 +1,18 @@
 import {chris} from '../../../helperFunctions.js';
-export async function fangedBite(workflow) {
+export async function vampiricBite(workflow) {
     if (workflow.hitTargets.size != 1) return;
     let selection = await chris.dialog('Fanged Bite', [['Restore HP', 'hp'], ['Skill Bonus', 'skill']]);
     if (!selection) selection = 'hp';
-    let damageDealt = workflow.damageList[0].appliedDamage;
+    let damage = chris.totalDamageType(workflow.targets.first().actor, workflow.damageDetail, 'piercing');
+    if (!damage) return;
     switch (selection) {
         case 'hp':
-            chris.applyDamage(workflow.token, damageDealt, 'healing');
+            chris.applyDamage(workflow.token, damage, 'healing');
             break;
         case 'skill':
             let effectData = {
-                'label': 'Fanged Bite',
-                'icon': 'icons/creatures/abilities/fang-tooth-blood-red.webp',
+                'label': 'Vampiric Bite',
+                'icon': workflow.item.img,
                 'duration': {
                     'seconds': 86400
                 },
@@ -19,13 +20,13 @@ export async function fangedBite(workflow) {
                     {
                         'key': 'system.bonuses.abilities.check',
                         'mode': 2,
-                        'value': damageDealt,
+                        'value': damage,
                         'priority': 20
                     },
                     {
                         'key': 'system.bonuses.All-Attacks',
                         'mode': 2,
-                        'value': damageDealt,
+                        'value': damage,
                         'priority': 20
                     }
                 ],

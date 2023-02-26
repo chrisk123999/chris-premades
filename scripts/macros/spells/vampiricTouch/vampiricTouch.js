@@ -47,14 +47,10 @@ async function vampiricTouchItem(workflow) {
 }
 async function vampiricTouchAttack(workflow) {
     if (workflow.hitTargets.size != 1) return;
-    let targetActor = workflow.hitTargets.first().actor;
-    let damage = workflow.damageTotal / 2;
-    let hasImmunity = chris.checkTrait(targetActor, 'di', 'necrotic');
-    if (hasImmunity) return;
-    let hasResistance = chris.checkTrait(targetActor, 'dr', 'necrotic');
-    if (hasResistance) damage = damage / 2;
-    damage = Math.floor(damage);
-    if (damage != 0) await chris.applyDamage([workflow.token], damage, 'healing');
+    let damage = chris.totalDamageType(workflow.targets.first().actor, workflow.damageDetail, 'necrotic');
+    if (!damage) return;
+	damage = Math.floor(damage / 2);
+    await chris.applyDamage([workflow.token], damage, 'healing');
 }
 export let vampiricTouch = {
     'item': vampiricTouchItem,
