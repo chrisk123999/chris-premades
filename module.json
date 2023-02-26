@@ -180,6 +180,13 @@
 		"path": "packs/cpr-monster-features.db",
 		"type": "Item",
 		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Race Features",
+		"label": "CPR Race Features",
+		"path": "packs/cpr-race-features.db",
+		"type": "Item",
+		"module": "chris-premades"
 	  }
   ],
   "url": "#{URL}#",
