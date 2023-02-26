@@ -8,6 +8,7 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Midi-Qol (and it's own requirements)  
 - Automated Animations  
 - Build-a-Bonus  
+- Compendium Folders  
 - DFreds Convenient Effects  
 - Effect Macro  
 - Item Macro  
@@ -20,3 +21,4 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 # Optional supported modules:  
 - Custom Character Sheet Sections  
 - Tidy5e Sheet  
+- Token Magic FX  
