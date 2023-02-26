@@ -2,11 +2,11 @@
 ## New Content:
 - Warforged: Constructed Resilience
 ## New Monster Content:
+- Dybbuk: Tentacle
 - Elder Brain: Break Concentration, Mind Blast, Psionic Anchor, Psionic Inspiration, Psychic Link, Psychic Pulse, Sever Psychic Link, and Tentacle
+- Intellect Devourer: Body Thief and Devour Intellect
 - Mind Flayer: Mind Blast
 - Ulitharid: Mind Blast
-- Intellect Devourer: Body Thief and Devour Intellect
-- Dybbuk: Tentacle
   
 # 0.0.25:
 ## New Content:
