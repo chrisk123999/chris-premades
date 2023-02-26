@@ -59,13 +59,15 @@ import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
+import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 let monster = {
 	'bulette': bulette,
 	'chasme': chasme,
 	'clayGolem': clayGolem,
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
-	'intellectDevourer': intellectDevourer
+	'intellectDevourer': intellectDevourer,
+	'elderOblex': elderOblex
 }
 export let macros = {
 	'actorOnUse': useActorOnUse,
