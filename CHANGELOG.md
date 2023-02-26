@@ -6,7 +6,6 @@
 - Mind Flayer: Mind Blast
 - Ulitharid: Mind Blast
 - Intellect Devourer: Body Thief and Devour Intellect
-## New Monster Content:
 - Dybbuk: Tentacle
   
 # 0.0.25:
