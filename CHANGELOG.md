@@ -1,7 +1,26 @@
+# 0.0.25:
+## New Content:
+- Elf: Fey Ancestry
+- Mark of Shadow Elf: Deductive Intuition
+- Chain Lightning Spell
+- Dhampir: Vampiric Bite
+- Lizardfok: Hungry Jaws
+- Giff: Astral Spark
+- Gnome Cunning
+- Mark of Making Human: Artisan's Intuition
+- Wildhunt Shifter: Shift
+- Verdan: Telepathic Insight
+## New Monster Content:
+- Bulette: Deadly Leap
+- Chasme: Proboscis
+- Clay Golem: Beserk, Haste, and Slam
+## Bug Fixes:
+- Vampiric Touch
+  
 # 0.0.24:
 ## Bug Fixes:
 - Detect Thoughts
-
+  
 # 0.0.23:
 ## New Content:
 - Ring of Spell Storing

@@ -98,6 +98,14 @@
 		"compatibility": {
 			"verified": "1.8.0"
 		}
+	},
+	{
+		"id": "compendium-folders",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
+		"compatibility": {
+			"verified": "2.5.7"
+		}
 	}],
 	"optional": [{
 		"id": "tidy5e-sheet",
@@ -113,6 +121,14 @@
 		"manifest": "https://github.com/jessev14/custom-character-sheet-sections/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "1.5.0"
+		}
+	},
+	{
+		"id": "tokenmagic",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/Feu-Secret/Tokenmagic/master/tokenmagic/module.json",
+		"compatibility": {
+			"verified": "0.6.1.2"
 		}
 	}]
   },
@@ -155,6 +171,13 @@
 		"name": "CPR Class Items",
 		"label": "CPR Class Items",
 		"path": "packs/cpr-items.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Monster Features",
+		"label": "CPR Monster Features",
+		"path": "packs/cpr-monster-features.db",
 		"type": "Item",
 		"module": "chris-premades"
 	  }

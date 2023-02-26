@@ -179,4 +179,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Wildhunt', {
+		'name': 'Shifter Wildhunt',
+		'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
+			} else {
+				Hooks.off('midi-qol.preAttackRoll', macros.wildhunt);
+			}
+		}
+	});
 }

@@ -1,6 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 export async function wildhunt(workflow) {
-    if (workflow.targets.size === 0 || !workflow.advantage || workflow.disadvanage) return;
+    if (workflow.targets.size === 0 || workflow.disadvanage) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let effect = chris.findEffect(targetActor, 'Wildhunt');
