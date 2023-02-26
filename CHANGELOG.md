@@ -1,3 +1,14 @@
+# 0.0.27:
+## New Content:
+- Warforged: Constructed Resilience
+## New Monster Content:
+- Elder Brain: Break Concentration, Mind Blast, Psionic Anchor, Psionic Inspiration, Psychic Link, Psychic Pulse, Sever Psychic Link, and Tentacle
+- Mind Flayer: Mind Blast
+- Ulitharid: Mind Blast
+- Intellect Devourer: Body Thief and Devour Intellect
+## New Monster Content:
+- Dybbuk: Tentacle
+  
 # 0.0.25:
 ## New Content:
 - Elf: Fey Ancestry

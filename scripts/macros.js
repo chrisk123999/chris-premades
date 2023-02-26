@@ -25,6 +25,8 @@ import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
+import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
+import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
@@ -36,6 +38,7 @@ import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/hear
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
 import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
@@ -59,7 +62,10 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 let monster = {
 	'bulette': bulette,
 	'chasme': chasme,
-	'clayGolem': clayGolem
+	'clayGolem': clayGolem,
+	'dybbuk': dybbuk,
+	'elderBrain': elderBrain,
+	'intellectDevourer': intellectDevourer
 }
 export let macros = {
 	'actorOnUse': useActorOnUse,
