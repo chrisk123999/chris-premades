@@ -31,20 +31,26 @@ export async function chainLightning(workflow) {
         }
     } else {
         for (let i of nearbyTokens) {
-            addedTargets.push(await fromUuid(i.document.uuid));
-            addedTargetUuids.push(i);
+            addedTargets.push(i);
+            addedTargetUuids.push(i.document.uuid);
         }
     }
     new Sequence().effect().atLocation(workflow.token).stretchTo(targetToken).file('jb2a.chain_lightning.secondary.blue').play();
     let previousToken = targetToken;
     for (let i of addedTargets) {
-        new Sequence().effect().atLocation(previousToken).stretchTo(i.object).file('jb2a.chain_lightning.secondary.blue').play();
+        new Sequence().effect().atLocation(previousToken).stretchTo(i).file('jb2a.chain_lightning.secondary.blue').play();
         previousToken = i;
     }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Chain Lightning Leap', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Chain Lightning Leap');
     featureData.system.save.dc = chris.getSpellDC(workflow.item);
+    featureData.system.damage.parts = [
+        [
+            workflow.damageTotal + '[lightning]',
+            'lightning'
+        ]
+    ];
     let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
 		'showFullCard': false,
