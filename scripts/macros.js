@@ -34,6 +34,7 @@ import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
+import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
@@ -72,6 +73,7 @@ let monster = {
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
+	'gallowsSpeaker': gallowsSpeaker,
 	'homunculus': homunculus,
 	'intellectDevourer': intellectDevourer,
 	'shadow': shadow,
