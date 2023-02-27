@@ -2,6 +2,7 @@ import {registerSettings} from './settings.js';
 import {macros, setupWorldMacros, setupMacroFolder} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
+import {createHeaderButton} from './item.js';
 Hooks.once('init', async function() {
 	registerSettings();
 });
@@ -11,6 +12,7 @@ Hooks.once('ready', async function() {
 		await setupWorldMacros();
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
+		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
 	}
 	if (game.settings.get('chris-premades', 'Armor of Agathys')) Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {

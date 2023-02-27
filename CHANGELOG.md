@@ -1,3 +1,9 @@
+# 0.0.29:
+## New Monster Content:
+- Elder Oblex: Eat Memories and Aversion to Fire
+## New Features:
+- Added an icon to items to allow you to update the item with my automation if one is available.
+  
 # 0.0.27:
 ## New Content:
 - Warforged: Constructed Resilience

@@ -4,6 +4,7 @@ import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blink} from './macros/spells/blink/blink.js';
+import {bloodSpear} from './macros/items/bloodSpear.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
@@ -27,6 +28,7 @@ import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
+import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
@@ -59,7 +61,6 @@ import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
-import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 let monster = {
 	'bulette': bulette,
 	'chasme': chasme,
@@ -78,6 +79,7 @@ export let macros = {
 	'bardicInspiration': bardicInspiration,
 	'bladeFlourish': bladeFlourish,
 	'blink': blink,
+	'bloodSpear': bloodSpear,
 	'brandOfCastigation': brandOfCastigation,
 	'callLightning': callLightning,
 	'chainLightning': chainLightning,

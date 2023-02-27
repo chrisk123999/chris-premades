@@ -42,7 +42,7 @@ export async function eatMemories(workflow) {
             },
             'changes': [
                 {
-                    'key': 'flags.world.feature.eatmemories',
+                    'key': 'flags.chris-premades.feature.eatmemories',
                     'mode': 5,
                     'value': diceSize,
                     'priority': 20
@@ -73,5 +73,47 @@ export async function eatMemories(workflow) {
             }
         };
         await chris.createEffect(targetActor, effectData);
+        let skillEffect = chris.findEffect(workflow.actor, workflow.item.name + ' Skills');
+        let changes;
+        if (skillEffect) {
+            changes = skillEffect.changes;
+        } else {
+            changes = [];
+        }
+        for (let [key, value] of Object.entries(targetActor.system.skills)) {
+            if (value.proficient > workflow.actor.system.skills[key].proficient) {
+                changes.push({
+                    'key': 'system.skills.' + key + '.value',
+                    'mode': 5,
+                    'value': value.proficient,
+                    'priority': 20
+                });
+            }
+        }
+        for (let i of Array.from(targetActor.system.traits.languages.value)) {
+            if (!workflow.actor.system.traits.languages.value.has(i)) {
+                changes.push({
+                    'key': 'system.traits.languages.value',
+                    'mode': 2,
+                    'value': i,
+                    'priority': 20
+                });
+            }
+        }
+        if (!skillEffect) {
+            let skillEffectData = {
+                'label': workflow.item.name + ' Skills',
+                'icon': 'icons/magic/symbols/circled-gem-pink.webp',
+                'origin': workflow.item.uuid,
+                'duration': {
+                    'seconds': 2628000
+                },
+                'changes': changes
+            }
+            await chris.createEffect(workflow.actor, skillEffectData);
+        } else {
+            let updates = {changes};
+            await chris.updateEffect(skillEffect, updates);
+        }
     }
 }

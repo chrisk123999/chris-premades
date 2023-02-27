@@ -168,8 +168,8 @@
 		"module": "chris-premades"
 	  },
 	  {
-		"name": "CPR Class Items",
-		"label": "CPR Class Items",
+		"name": "CPR Items",
+		"label": "CPR Items",
 		"path": "packs/cpr-items.db",
 		"type": "Item",
 		"module": "chris-premades"
