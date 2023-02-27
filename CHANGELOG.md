@@ -1,6 +1,6 @@
 # 0.0.32:
 ## New Monster Content:
-- Gallows Speaker: Fortelling Touch and Suffering Echoes
+- Gallows Speaker: Foretelling Touch and Suffering Echoes
 ## Bug Fixes:
 - Chain Lightning
   
