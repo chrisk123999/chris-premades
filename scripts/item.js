@@ -15,42 +15,54 @@ async function itemConfig(itemDocument) {
     let itemName = itemDocument.name;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
-    switch (itemType) {
-        case 'weapon':
-        case 'equipment':
-        case 'consumable':
-        case 'tool':
-        case 'backpack':
-        case 'loot':
-            searchCompendiums.push('chris-premades.CPR Items');
-            break;
-        case 'spell':
-            searchCompendiums.push('chris-premades.CPR Spells');
-            break;
-        case 'feat':
-            if (itemDocument.actor.type === 'character') {
+    let isNPC = false;
+    if (itemDocument.actor.type === 'npc') isNPC = true;
+    let compendiumItem;
+    if (!isNPC) {
+        switch (itemType) {
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                searchCompendiums.push('chris-premades.CPR Items');
+                break;
+            case 'spell':
+                searchCompendiums.push('chris-premades.CPR Spells');
+                break;
+            case 'feat':
                 searchCompendiums.push('chris-premades.CPR Race Features');
                 searchCompendiums.push('chris-premades.CPR Class Features');
-            } else if (itemDocument.actor.type === 'npc') {
-                searchCompendiums.push('chris-premades.CPR Monster Features');
-            }
-            break;
+                break;
+        }
+        switch (itemName) {
+            case 'Bardic Inspiration':
+                itemName = 'Bardic Inspiration & Magical Inspiration';
+                break;
+            case 'Form of Dread: Transform':
+                itemName = 'Form of Dread';
+                break;
+            case 'Ring of Spell Storing':
+                itemName = 'Ring of Spell Storing (0/5)';
+                break;
+        }
+        compendiumItem = await chris.getItemFromCompendium(searchCompendiums[0], itemName, true);
+        if (!compendiumItem && searchCompendiums.length == 2) compendiumItem = await chris.getItemFromCompendium(searchCompendiums[1], itemName , true);
+    } else if (itemDocument.actor.type === 'npc') {
+        let folderAPI = game.CF.FICFolderAPI;
+        let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
+        let monsterFolder = allFolders.find(f => f.name === itemDocument.actor.name);
+        if (!monsterFolder) {
+            ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
+            return;
+        }
+        compendiumItem = await chris.getItemFromCompendium('chris-premades.CPR Monster Features', itemName, true, monsterFolder.id)
+    } else {
+        ui.notifications.info('Automation detection for this actor type is not supported!');
     }
-    switch (itemName) {
-        case 'Bardic Inspiration':
-            itemName = 'Bardic Inspiration & Magical Inspiration';
-            break;
-        case 'Form of Dread: Transform':
-            itemName = 'Form of Dread';
-            break;
-        case 'Ring of Spell Storing':
-            itemName = 'Ring of Spell Storing (0/5)';
-            break;
-    }
-    let compendiumItem = await chris.getItemFromCompendium(searchCompendiums[0], itemName, true);
-    if (!compendiumItem && searchCompendiums.length == 2) compendiumItem = await chris.getItemFromCompendium(searchCompendiums[1], itemName , true);
     if (!compendiumItem) {
-        ui.notifications.info('No available automation (Or the item has another name)!');
+        ui.notifications.info('No available automation! (Or the item has different name)');
         return;
     }
     let options = [
@@ -73,7 +85,6 @@ async function itemConfig(itemDocument) {
         originalItem.system.equipped = itemDocument.system.equipped;
     }
     if (itemDocument.system.quantity) originalItem.system.quantity = itemDocument.system.quantity;
-    delete(originalItem.flags);
     originalItem.flags = compendiumItem.flags;
     if (itemDocument.flags['tidy5e-sheet']?.favorite) originalItem.flags['tidy5e-sheet'] = {
         'favorite': true

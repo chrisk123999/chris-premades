@@ -1,3 +1,12 @@
+# 0.0.31:
+## New Monster Content:
+- Homunculus: Bite
+- Shadow: Strength Drain
+- Shadow Demon: Claws
+- Incubus & Succubus: Draining Kiss
+## Updated Features:
+- Improvements to automation detection function for NPCs.
+  
 # 0.0.29:
 ## New Monster Content:
 - Elder Oblex: Eat Memories and Aversion to Fire

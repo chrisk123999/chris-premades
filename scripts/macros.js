@@ -39,6 +39,7 @@ import {healingLight} from './macros/classFeatures/warlock/celestial/healingLigh
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
+import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
@@ -52,10 +53,13 @@ import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
+import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
+import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
+import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
@@ -67,8 +71,12 @@ let monster = {
 	'clayGolem': clayGolem,
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
+	'elderOblex': elderOblex,
+	'homunculus': homunculus,
 	'intellectDevourer': intellectDevourer,
-	'elderOblex': elderOblex
+	'shadow': shadow,
+	'shadowDemon': shadowDemon,
+	'succubus': succubus
 }
 export let macros = {
 	'actorOnUse': useActorOnUse,

@@ -196,6 +196,7 @@
 		"module": "chris-premades"
 	  }
   ],
+  "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
