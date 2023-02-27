@@ -8,6 +8,10 @@ export function createHeaderButton(config, buttons) {
     });
 }
 async function itemConfig(itemDocument) {
+    if (!itemDocument.actor) {
+        ui.notifications.info('This feature may only be used on owned items.');
+        return;
+    }
     let itemName = itemDocument.name;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
