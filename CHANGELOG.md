@@ -1,4 +1,6 @@
 # 0.0.31:
+## New Content:
+- Chain Lightning
 ## New Monster Content:
 - Homunculus: Bite
 - Shadow: Strength Drain
