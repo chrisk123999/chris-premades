@@ -66,6 +66,18 @@ import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
+import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
+export async function onHitMacro(workflow) {
+	if (workflow.targets.size === 0) return;
+	let onHitName = workflow.targets.first().actor.flags['chris-premades']?.feature?.onHit;
+	if (!onHitName) return;
+	let onHitFunction = macros.onHit[onHitName];
+	if (typeof onHitFunction != 'function') {
+		ui.notifications.warn('Invalid actor onHit macro!');
+		return;
+	}
+	await onHitFunction(workflow);
+}
 let monster = {
 	'bulette': bulette,
 	'chasme': chasme,
@@ -78,7 +90,11 @@ let monster = {
 	'intellectDevourer': intellectDevourer,
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
-	'succubus': succubus
+	'succubus': succubus,
+	'fireElemental': fireElemental
+}
+let onHit = {
+	'fireForm': fireElemental.fireForm
 }
 export let macros = {
 	'actorOnUse': useActorOnUse,
@@ -140,7 +156,8 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'onHit': onHit
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';

@@ -1,5 +1,5 @@
 import {registerSettings} from './settings.js';
-import {macros, setupWorldMacros, setupMacroFolder} from './macros.js';
+import {macros, setupWorldMacros, setupMacroFolder, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
 import {createHeaderButton} from './item.js';
@@ -31,6 +31,7 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Defensive Field')) Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
 	if (game.settings.get('chris-premades', 'DMG Cleave')) Hooks.on('midi-qol.RollComplete', macros.cleave);
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
+	if (game.settings.get('chris-premades', 'On Hit')) Hooks.on('midi-qol.RollComplete', onHitMacro);
 });
 globalThis['chrisPremades'] = {
 	helpers,

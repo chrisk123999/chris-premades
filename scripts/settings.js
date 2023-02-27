@@ -1,4 +1,4 @@
-import {macros} from './macros.js';
+import {macros, onHitMacro} from './macros.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
 	game.settings.register(moduleName, 'Show Names', {
@@ -191,6 +191,21 @@ export function registerSettings() {
 				Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 			} else {
 				Hooks.off('midi-qol.preAttackRoll', macros.wildhunt);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'On Hit', {
+		'name': 'On Hit Automation',
+		'hint': 'Enabling this allows the automation for certain "On Hit" features.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.RollComplete', onHitMacro);
+			} else {
+				Hooks.off('midi-qol.RollComplete', onHitMacro);
 			}
 		}
 	});
