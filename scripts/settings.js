@@ -180,7 +180,7 @@ export function registerSettings() {
 		}
 	});
 	game.settings.register(moduleName, 'Wildhunt', {
-		'name': 'Shifter Wildhunt',
+		'name': 'Shifter Wildhunt Automation',
 		'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',
 		'scope': 'world',
 		'config': true,
@@ -206,6 +206,21 @@ export function registerSettings() {
 				Hooks.on('midi-qol.RollComplete', onHitMacro);
 			} else {
 				Hooks.off('midi-qol.RollComplete', onHitMacro);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Undead Fortitude', {
+		'name': 'Undead Fortitude Automation',
+		'hint': 'Enabling this allows the automation of the Undead Fortitude feature via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+			} else {
+				Hooks.off('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
 			}
 		}
 	});

@@ -1,3 +1,8 @@
+# 0.0.35:
+## New Monster Content:
+- Fire Elemental: Fire Form and Touch
+- Zombie: Undead Fortitude
+  
 # 0.0.32:
 ## New Monster Content:
 - Gallows Speaker: Foretelling Touch and Suffering Echoes
@@ -9,9 +14,9 @@
 - Chain Lightning
 ## New Monster Content:
 - Homunculus: Bite
-- Shadow: Strength Drain
-- Shadow Demon: Claws
 - Incubus & Succubus: Draining Kiss
+- Shadow Demon: Claws
+- Shadow: Strength Drain
 ## Updated Features:
 - Improvements to automation detection function for NPCs.
   

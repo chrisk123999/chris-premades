@@ -32,6 +32,7 @@ import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
@@ -66,9 +67,10 @@ import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
-import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
+import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
+	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
 	let onHitName = workflow.targets.first().actor.flags['chris-premades']?.feature?.onHit;
 	if (!onHitName) return;
 	let onHitFunction = macros.onHit[onHitName];
@@ -85,13 +87,14 @@ let monster = {
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
+	'fireElemental': fireElemental,
 	'gallowsSpeaker': gallowsSpeaker,
 	'homunculus': homunculus,
 	'intellectDevourer': intellectDevourer,
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
 	'succubus': succubus,
-	'fireElemental': fireElemental
+	'zombie': zombie
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm
@@ -141,6 +144,7 @@ export let macros = {
 	'mirrorImage': mirrorImage,
 	'monster': monster,
 	'muddledMind': muddledMind,
+	'onHit': onHit,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
 	'reaper': reaper,
@@ -156,8 +160,7 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'onHit': onHit
+	'wrathOfTheStorm': wrathOfTheStorm
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
