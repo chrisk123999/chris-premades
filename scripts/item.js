@@ -18,7 +18,7 @@ async function itemConfig(itemDocument) {
     let isNPC = false;
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
-    if (!isNPC) {
+    if (!isNPC || itemType === 'spell') {
         switch (itemType) {
             case 'weapon':
             case 'equipment':

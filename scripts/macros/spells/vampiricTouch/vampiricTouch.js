@@ -9,7 +9,7 @@ async function vampiricTouchItem(workflow) {
             'necrotic'
 		]
 	];
-    featureData.system.description.value = getItemDescription('CPR - Descriptions', 'Vampiric Touch Attack');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Vampiric Touch Attack');
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Vampiric Touch');
 	}
