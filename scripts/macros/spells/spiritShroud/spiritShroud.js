@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 async function spiritShroudItem(workflow) {
     let effect = chris.findEffect(workflow.actor, 'Spirit Shroud');
     if (!effect) return;
@@ -41,6 +42,8 @@ async function spiritShroudAttack(workflow) {
             break;
     }
     if (workflow.isCritical) diceNum = diceNum * 2;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'spiritShroud', 250);
+    if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
     let damageFormula = oldFormula + ' + ' + diceNum + 'd8[' + damageType + ']';
     let damageRoll = await new Roll(damageFormula).roll({async: true});

@@ -1,3 +1,12 @@
+# 0.0.37:
+## New Content:
+- Ray of Enfeeblement
+- Aasimar: Celestial Revelation (Radiant Soul)
+## Bug Fixes:
+- Melf’s Acid Arrow
+## New Features:
+- On Use Priority Queue: Automation macros from this module will execute in pre-determined priority for the purpose of compatibility between multiple macros that adjust attack and damage rolls. 
+  
 # 0.0.35:
 ## New Monster Content:
 - Fire Elemental: Fire Form and Touch

@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function item(workflow) {
     async function deleteSpells(actor, onlyEmpty) {
         let rossSpells =[];
@@ -195,8 +196,11 @@ async function item(workflow) {
 async function attack(workflow) {
     let mod = workflow.item.flags['chris-premades']?.item?.ross?.mod;
     if (!mod) mod = '0';
+    let queueSetup = await queue.setup(workflow.item.uuid, 'ringOfSpellStoring', 50);
+    if (!queueSetup) return;
     let updatedRoll = await new Roll('1d20' + mod).evaluate({async: true});
     workflow.setAttackRoll(updatedRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function cast(workflow) {
     workflow.config.consumeSpellSlot = false;

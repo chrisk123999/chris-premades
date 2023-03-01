@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 export async function divineSmite(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.item.type != 'weapon') return;
     if (workflow.item.name === 'Unarmed Strike' && !game.settings.get('chris-premades', 'Unarmed Strike Smite')) return;
@@ -8,6 +9,8 @@ export async function divineSmite(workflow) {
         validTypes.push('simpleR');
     }
     if (!validTypes.includes(workflow.item.system.weaponType)) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
+    if (!queueSetup) return;
     let spells = workflow.actor.system.spells;
     let pactSlots = spells.pact.value;
     let pactLevel = spells.pact.level;
@@ -32,10 +35,13 @@ export async function divineSmite(workflow) {
     if (spell5 > 0) menuOptions.push(['7th Level', 7]);
     if (spell5 > 0) menuOptions.push(['8th Level', 8]);
     if (spell5 > 0) menuOptions.push(['9th Level', 9]);
-    menuOptions.push(['No', 0]);
+    menuOptions.push(['No', false]);
     let title = 'Use Divine Smite?';
     let selectedOption = await chris.dialog(title, menuOptions);
-    if (!selectedOption || selectedOption === 0) return;
+    if (!selectedOption) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let update = {};
     let damageDiceNum;
     switch (selectedOption) {
@@ -91,7 +97,11 @@ export async function divineSmite(workflow) {
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
     let effect = chris.findEffect(workflow.actor, 'Divine Smite');
-    if (!effect) return;
+    if (!effect) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let originItem = await fromUuid(effect.origin);
     await originItem.use();
+    queue.remove(workflow.item.uuid);
 }

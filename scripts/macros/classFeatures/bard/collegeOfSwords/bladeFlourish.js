@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 export async function bladeFlourish(workflow) {
     let itemName = workflow.item.name.toLowerCase()
     if (itemName.search('booming blade') || itemName.search('green-flame Blade')) return;
@@ -17,6 +18,8 @@ export async function bladeFlourish(workflow) {
             ui.notifications.warn('Source actor does not appear to have a Bardic Inspiration feature!');
             return;
         }
+        let queueSetup = await queue.setup(workflow.item.uuid, 'bladeFlourish', 151);
+        if (!queueSetup) return;
         let bardicInspirationUses = bardicInspiration.system.uses.value;
         let classFeature = sourceActor.items.getName('Bard');
         let skipUses = false;
@@ -24,7 +27,10 @@ export async function bladeFlourish(workflow) {
             let levels = classFeature.system.levels;
             if (levels >= 14) skipUses = await chris.dialog('Use d6 instead of Bardic Inspiration for Blade Flourish?', [['Yes', true], ['No', false]]);
         }
-        if (bardicInspirationUses <= 0 && !skipUses) return;
+        if (bardicInspirationUses <= 0 && !skipUses) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
         let options = [
             ['Defensive Flourish', 'DF'],
             ['Mobile Flourish', 'MF'],
@@ -32,7 +38,10 @@ export async function bladeFlourish(workflow) {
             ['No', false]
         ];
         let selectedOption = await chris.dialog('Use a Blade Flourish?', options);
-        if (!selectedOption) return;
+        if (!selectedOption) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
         let effectData1 = {
             'label': 'Blade Flourish',
             'icon': 'icons/skills/melee/maneuver-sword-katana-yellow.webp',
@@ -52,6 +61,7 @@ export async function bladeFlourish(workflow) {
         if (skipUses) bardicInspirationDie = '1d6';
         if (!bardicInspirationDie) {
             ui.notifications.warn('Source actor does not appear to have a Bardic Inspiration scale!');
+            queue.remove(workflow.item.uuid);
             return;
         }
         if (workflow.isCritical) {
@@ -103,5 +113,6 @@ export async function bladeFlourish(workflow) {
                 await chris.applyDamage([nearbyTargets], bardicInspirationDieRoll, damageType);
                 break;
         }
+        queue.remove(workflow.item.uuid);
     }
 }

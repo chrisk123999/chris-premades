@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 export async function mirrorImage(workflow) {
     if (workflow.targets.size != 1) return;
     if (workflow.isFumble === true) return;
@@ -8,6 +9,8 @@ export async function mirrorImage(workflow) {
     if (!targetEffect) return;
     let duplicates = targetActor.flags['chris-premades']?.spell?.mirrorImage;
     if (!duplicates) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'mirrorImage', 49);
+    if (!queueSetup) return;
     let roll = await new Roll('1d20').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
@@ -27,7 +30,10 @@ export async function mirrorImage(workflow) {
             rollNeeded = 11;
             break;
     }
-    if (rollTotal < rollNeeded) return;
+    if (rollTotal < rollNeeded) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     workflow.isFumble = true;
     let duplicateAC = 10 + targetActor.system.abilities.dex.mod;
     if (workflow.attackTotal >= duplicateAC) {
@@ -62,4 +68,5 @@ export async function mirrorImage(workflow) {
             content: 'Attack targeted a duplicate and missed.'
         });
     }
+    queue.remove(workflow.item.uuid);
 }

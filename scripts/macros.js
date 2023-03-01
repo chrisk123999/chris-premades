@@ -1,3 +1,5 @@
+import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
+import {acidArrow} from './macros/spells/acidArrow/acidArrow.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
@@ -50,6 +52,7 @@ import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
+import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
@@ -100,6 +103,8 @@ let onHit = {
 	'fireForm': fireElemental.fireForm
 }
 export let macros = {
+	'aasimarRadiantSoul': aasimarRadiantSoul,
+	'acidArrow': acidArrow,
 	'actorOnUse': useActorOnUse,
 	'actorOnUseMulti': actorOnUseMulti,
 	'armorModel': armorModel,
@@ -147,6 +152,7 @@ export let macros = {
 	'onHit': onHit,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
+	'rayOfEnfeeblement': rayOfEnfeeblement,
 	'reaper': reaper,
 	'ringOfSpellStoring': ringOfSpellStoring,
 	'riteOfTheDawn': riteOfTheDawn,
@@ -204,30 +210,32 @@ async function createMacro(name, content, isGM) {
 	});
 }
 export async function setupWorldMacros() {
+	await createMacro('aasimarRadiantSoul', actorOnUseMultiPassMacro('aasimarRadiantSoul'), false);
 	await createMacro('bardicInspirationAttack', actorOnUseMacro('bardicInspirationAttack'), false);
 	await createMacro('bardicInspirationDamage', actorOnUseMacro('bardicInspirationDamage'), false);
 	await createMacro('bladeFlourish', actorOnUseMacro('bladeFlourish'), false);
 	await createMacro('brandOfCastigation', actorOnUseMacro('brandOfCastigation'), false);
 	await createMacro('chillTouch', actorOnUseMacro('chillTouch'), false);
+	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
+	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
+	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
+	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
+	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
+	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
+	await createMacro('graveTouched', actorOnUseMacro('graveTouched'), false);
+	await createMacro('heartOfTheStorm', actorOnUseMacro('heartOfTheStorm'), false);
 	await createMacro('hex', actorOnUseMacro('hex'), false);
 	await createMacro('lightningArrowAttack', actorOnUseMacro('lightningArrowAttack'), false);
 	await createMacro('lightningArrowDamage', actorOnUseMacro('lightningArrowDamage'), false);
+	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
+	await createMacro('rayOfEnfeeblement', actorOnUseMacro('rayOfEnfeeblement'), false);
+	await createMacro('reaper', actorOnUseMacro('reaper'), false);
+	await createMacro('ringOfSpellStoringAttack', actorOnUseMacro('ringOfSpellStoringAttack'), false);
+	await createMacro('ringOfSpellStoringCast', actorOnUseMacro('ringOfSpellStoringCast'), false);
 	await createMacro('riteOfTheDawn', actorOnUseMacro('riteOfTheDawn'), false);
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
-	await createMacro('reaper', actorOnUseMacro('reaper'), false);
-	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
-	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
-	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
-	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
-	await createMacro('graveTouched', actorOnUseMacro('graveTouched'), false);
-	await createMacro('heartOfTheStorm', actorOnUseMacro('heartOfTheStorm'), false);
-	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
-	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
-	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
-	await createMacro('ringOfSpellStoringAttack', actorOnUseMacro('ringOfSpellStoringAttack'), false);
-	await createMacro('ringOfSpellStoringCast', actorOnUseMacro('ringOfSpellStoringCast'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -303,6 +311,9 @@ async function useActorOnUse(workflow, itemName) {
 		case 'ringOfSpellStoringSpell':
 			await ringOfSpellStoring.spell(workflow);
 			break;
+		case 'rayOfEnfeeblement':
+			await rayOfEnfeeblement(workflow);
+			break;
 	}
 }
 async function actorOnUseMulti(workflow, itemName, pass) {
@@ -311,7 +322,10 @@ async function actorOnUseMulti(workflow, itemName, pass) {
 			ui.notifications.warn('Invalid actor onUse macro!');
 			return;
 		case 'radiantSoul': 
-			await radiantSoul(workflow, pass);
+			await radiantSoul.attack(workflow, pass);
+			break;
+		case 'aasimarRadiantSoul':
+			await aasimarRadiantSoul.attack(workflow, pass);
 			break;
 	}
 }

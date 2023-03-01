@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function attack(workflow) {
     if (workflow.hitTargets.size != 1) return;
     let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
@@ -14,11 +15,16 @@ async function attack(workflow) {
         if (workflow.token.id != game.combat.current.tokenId) return;
         currentTurn = game.combat.round + '-' + game.combat.turn;
         let previousTurn = feature2.flags['chris-premades']?.feature?.fod?.turn;
-        if (!previousTurn || previousTurn != currentTurn) doCheck = true;
+        if (previousTurn != currentTurn) doCheck = true;
     }
     if (!doCheck) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'formOfDread', 450);
+    if (!queueSetup) return;
     let selection = await chris.dialog('Attempt to fear target?', [['Yes', true], ['No', false]]);
-    if (!selection) return;
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     await feature2.setFlag('chris-premades', 'feature.fod.turn', currentTurn);
     let options = {
 		'showFullCard': false,
@@ -30,6 +36,7 @@ async function attack(workflow) {
 		'consumeSlot': false,
 	};
     await MidiQOL.completeItemUse(feature, {}, options);
+    queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
     await origin.setFlag('chris-premades', 'feature.fod.turn', '');

@@ -1,7 +1,10 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 async function lightningArrowDamage (workflow) {
 	if (workflow.item.name === 'Lightning Arrow - Burst') return;
 	if (workflow.targets.size != 1) return;
+	let queueSetup = await queue.setup(workflow.item.uuid, 'lightningArrow', 50);
+	if (!queueSetup) return;
 	let targetToken = workflow.targets.first();
 	if (!(workflow.item.system.properties?.thr || workflow.item.system.actionType === 'rwak')) return;
 	let diceNumber = 4;
@@ -23,10 +26,11 @@ async function lightningArrowDamage (workflow) {
 	}
 	let damageRoll = await new Roll(damageFormula).roll({async: true});
 	await workflow.setDamageRoll(damageRoll);
-	if (workflow.hitTargets.size === 0) await chris.applyDamage([targetToken], Math.ceil(damageRoll.total / 2), 'lightning');
+	if (workflow.hitTargets.size === 0) await chris.applyDamage([targetToken], Math.floor(damageRoll.total / 2), 'lightning');
 	let itemData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Lightning Arrow - Burst', false);
 	if (!itemData) {
 		if (effect) effect.delete();
+		queue.remove(workflow.item.uuid);
 		return;
 	}
 	let saveDiceNumber = castLevel - 1;
@@ -60,12 +64,16 @@ async function lightningArrowDamage (workflow) {
 	};
 	await MidiQOL.completeItemUse(areaFeature, {}, options);
 	if (effect) effect.delete();
+	queue.remove(workflow.item.uuid);
 }
 async function lightningArrowAttack(workflow) {
 	if (!workflow.isFumble) return;
+	let queueSetup = await queue.setup(workflow.item.uuid, 'lightningArrow', 50);
+	if (!queueSetup) return;
 	workflow.isFumble = false;
 	let updatedRoll = await new Roll('-100').evaluate({async: true});
 	workflow.setAttackRoll(updatedRoll);
+	queue.remove(workflow.item.uuid);
 }
 export let lightningArrow = {
 	'attack': lightningArrowAttack,

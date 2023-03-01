@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function guardianArmor(workflow) {
     let effect = chris.findEffect(workflow.actor, 'Arcane Armor: Guardian Model');
     if (effect) return;
@@ -73,11 +74,14 @@ async function lightningLauncher(workflow) {
         await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', currentTurn);
     }
     if (doExtraDamage) {
+        let queueSetup = await queue.setup(workflow.item.uuid, 'lightningLauncher', 50);
+        if (!queueSetup) return;
         let diceNumber = 1;
         if (workflow.isCritical) diceNumber = 2;
         let damageFormula = workflow.damageRoll._formula + ' + ' + diceNumber + 'd6[lightning]';
         let damageRoll = await new Roll(damageFormula).roll({async: true});
         await workflow.setDamageRoll(damageRoll);
+        queue.remove(workflow.item.uuid);
     }
 }
 async function thunderGauntlets(workflow) {
@@ -89,8 +93,11 @@ async function thunderGauntlets(workflow) {
     let originActorUuid = origin.actor.uuid;
     let targetActorUuid = workflow.targets.first().actor.uuid;
     if (originActorUuid === targetActorUuid) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'thunderGauntlets', 50);
+    if (!queueSetup) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution['Disadvantage: Thunder Gauntlets'] = true;
+    queue.remove(workflow.item.uuid);
 }
 async function longRest(actor, data) {
     if (!data.longRest) return;

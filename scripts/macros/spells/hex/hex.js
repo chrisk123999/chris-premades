@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 async function hexItem(workflow) {
     if (workflow.targets.size != 1) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Hex - Move', false);
@@ -118,12 +119,15 @@ async function hexAttack(workflow) {
     let hexedTarget = sourceActor.flags['chris-premades']?.spell?.hex;
     let targetToken = workflow.hitTargets.first();
     if (targetToken.id != hexedTarget) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'hex', 250);
+    if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
     let diceNum = 1;
     if (workflow.isCritical) diceNum = 2;
     let damageFormula = oldFormula + ' + ' + diceNum + 'd6[necrotic]';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function hexMoveItem(workflow) {
     if (workflow.targets.size != 1) return;

@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function bardicInspirationAttack(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.isFumble) return;
@@ -10,13 +11,18 @@ async function bardicInspirationAttack(workflow) {
 		ui.notifications.warn('Source actor does not appear to have a Bardic Inspiration scale!');
 		return;
 	}
+	let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
+	if (!queueSetup) return;
 	let selection = await chris.dialog('Use Bardic Inspiration? (Attack Total: ' + workflow.attackTotal + ')', [['Yes', true], ['No', false]]);
-	if (!selection) return;
+	if (!selection) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	await chris.removeEffect(effect);
 	let updatedRoll = await chris.addToRoll(workflow.attackRoll, bardDice);
 	workflow.setAttackRoll(updatedRoll);
+	queue.remove(workflow.item.uuid);
 }
-
 async function bardicInspirationDamage(workflow) {
 	if (workflow.targets.size === 0) return;
 	if ((workflow.item.system.actionType === 'msak' || workflow.item.system.actionType === 'rsak') && workflow.hitTargets.size === 0 && orkflow.item.type != 'spell') return;
@@ -28,6 +34,8 @@ async function bardicInspirationDamage(workflow) {
 		ui.notifications.warn('Source actor does not appear to have a Bardic Inspiration scale!');
 		return;
 	}
+	let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
+	if (!queueSetup) return;
 	let buttons = [
 		{
 			'label': 'Yes',
@@ -38,10 +46,16 @@ async function bardicInspirationDamage(workflow) {
 		}
 	];
 	let selection = await chris.selectTarget('Use Magical Inspiration?', buttons, workflow.targets, false);
-	if (selection.buttons === false) return;
+	if (selection.buttons === false) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	await chris.removeEffect(effect);
 	let targetTokenID = selection.inputs.find(id => id != false);
-	if (!targetTokenID) return;
+	if (!targetTokenID) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	let targetDamage = workflow.damageList.find(i => i.tokenId === targetTokenID);
 	let defaultDamageType = workflow.defaultDamageType;
 	let roll = await new Roll(bardDice + '[' + defaultDamageType + ']').roll({async: true});
@@ -51,12 +65,18 @@ async function bardicInspirationDamage(workflow) {
 		flavor: 'Magical Inspiration'
 	});
 	let targetActor = canvas.scene.tokens.get(targetDamage.tokenId).actor;
-	if (!targetActor) return;
+	if (!targetActor) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	let hasDI = chris.checkTrait(targetActor, 'di', defaultDamageType);
-	if (hasDI) return;
+	if (hasDI) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	let damageTotal = roll.total;
 	let hasDR = chris.checkTrait(targetActor, 'dr', defaultDamageType);
-	if (hasDR) damageTotal = Math.ceil(damageTotal / 2);
+	if (hasDR) damageTotal = Math.floor(damageTotal / 2);
 	targetDamage.damageDetail[0].push(
 		{
 			'damage': damageTotal,
@@ -83,6 +103,7 @@ async function bardicInspirationDamage(workflow) {
 			targetDamage.newHP -= damageTotal;
 		}
 	}
+	queue.remove(workflow.item.uuid);
 }
 export let bardicInspiration = {
 	'attack': bardicInspirationAttack,

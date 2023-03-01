@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 export async function reaper(workflow) {
 	if (workflow.targets.size != 1) return;
 	if (workflow.item.type != 'spell' || workflow.item.system.level != 0 || workflow.item.system.school != 'nec' || workflow.item.flags['chris-premades']?.reap) return;
@@ -14,10 +15,18 @@ export async function reaper(workflow) {
 			'value': false
 		}
 	];
+	let queueSetup = await queue.setup(workflow.item.uuid, 'reaper', 450);
+	if (!queueSetup) return;
 	let selected = await chris.selectTarget('Use Reaper?', buttons, nearbyTargets, true, false);
-	if (selected.buttons === false) return;
+	if (selected.buttons === false) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	let targetTokenUuid = selected.inputs.find(id => id != false);
-	if (!targetTokenUuid) return;
+	if (!targetTokenUuid) {
+		queue.remove(workflow.item.uuid);
+		return;
+	}
 	let effect = chris.findEffect(workflow.actor, 'Reaper');
 	let originItem = await fromUuid(effect.origin);
 	if (originItem)	await originItem.use();
@@ -36,4 +45,5 @@ export async function reaper(workflow) {
 	};
 	let spell = new CONFIG.Item.documentClass(spellData, {parent: workflow.actor});
 	await MidiQOL.completeItemUse(spell, {}, options);
+	queue.remove(workflow.item.uuid);
 }

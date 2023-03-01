@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
     let options = {
 		'showFullCard': false,
@@ -179,8 +180,11 @@ async function voracious(workflow) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     if (originItem.actor.uuid != workflow.actor.uuid) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'voracious',150);
+    if (!queueSetup) return;
     workflow.advantage = true;
     workflow.attackAdvAttribution['Brand of the Voracious'] = true;
+    queue.remove(workflow.item.uuid);
 }
 export let hybridTransformation = {
     'item': transformation,

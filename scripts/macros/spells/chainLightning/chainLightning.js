@@ -1,10 +1,13 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 export async function chainLightning(workflow) {
     if (workflow.targets.size != 1) return;
     let maxTargets = workflow.castData.castLevel - 3;
     let targetToken = workflow.targets.first();
     let nearbyTokens = chris.findNearby(targetToken, 30, 'ally');
     if (nearbyTokens.length === 0) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'chainLightning', 450);
+    if (!queueSetup) return;
     let addedTargets = [];
     let addedTargetUuids = [];
     if (nearbyTokens.length > maxTargets) {
@@ -18,7 +21,10 @@ export async function chainLightning(workflow) {
             }
         ];
         let selection = await chris.selectTarget('Where should the lightning bounce? Max: ' + maxTargets, buttons, nearbyTokens, true, true);
-        if (!selection.buttons) return;
+        if (!selection.buttons) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
         for (let i of selection.inputs) {
             if (i) {
                 addedTargets.push(await fromUuid(i));
@@ -27,6 +33,7 @@ export async function chainLightning(workflow) {
         }
         if (addedTargets.length > maxTargets) {
             ui.notifications.info('Too many targets selected!');
+            queue.remove(workflow.item.uuid);
             return;
         }
     } else {
@@ -42,7 +49,10 @@ export async function chainLightning(workflow) {
         previousToken = i;
     }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Chain Lightning Leap', false);
-    if (!featureData) return;
+    if (!featureData) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Chain Lightning Leap');
     featureData.system.save.dc = chris.getSpellDC(workflow.item);
     featureData.system.damage.parts = [
@@ -62,4 +72,5 @@ export async function chainLightning(workflow) {
 		'consumeSlot': false
 	};
     await MidiQOL.completeItemUse(feature, {}, options);
+    queue.remove(workflow.item.uuid);
 }

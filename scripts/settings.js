@@ -9,6 +9,14 @@ export function registerSettings() {
 		'type': Boolean,
 		'default': true
 	});
+	game.settings.register(moduleName, 'Priority Queue', {
+		'name': 'Priority Queue',
+		'hint': 'This setting allows macros from this module to have an on use priority order.  This prevents multiple pop-up dialogs from firing at the same time as well as applying damage modification changes in a certain order.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': true
+	});
 	game.settings.register(moduleName, 'Armor of Agathys', {
 		'name': 'Armor of Agathys Automation',
 		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',

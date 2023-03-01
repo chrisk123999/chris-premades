@@ -1,9 +1,9 @@
-import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 async function attack(workflow, pass) {
-    if (workflow.item.type != 'spell' || workflow.hitTargets.size === 0) return;
+    if (workflow.hitTargets.size === 0) return;
     if (!(pass === 'postDamageRoll' || pass === 'preDamageApplication')) return;
-    let effect = chris.findEffect(workflow.actor, 'Radiant Soul');
+    let effect = chris.findEffect(workflow.actor, 'Celestial Revelation (Radiant Soul)');
     if (!effect) return;
     let feature = await fromUuid(effect.origin);
     if (!feature) return;
@@ -14,41 +14,32 @@ async function attack(workflow, pass) {
         doExtraDamage = true;
     } else {
         inCombat = true;
+        if (workflow.token.id != game.combat.current.tokenId) return;
         currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = feature.flags['chris-premades']?.feature?.radiantSoul?.turn;
+        let previousTurn = feature.flags['chris-premades']?.feature?.aasimarRadiantSoul?.turn;
         if (previousTurn != currentTurn) doExtraDamage = true;
     }
     if (!doExtraDamage) return;
     switch (pass) {
         case 'postDamageRoll':
             if (workflow.hitTargets.size != 1) return;
-            let queueSetup = await queue.setup(workflow.item.uuid, 'radiantSoul', 250);
+            let queueSetup = await queue.setup(workflow.item.uuid, 'aasimarRadiantSoul', 249);
             if (!queueSetup) return;
-            let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-            if (!(damageTypes.has('fire') || damageTypes.has('radiant'))) {
-                queue.remove(workflow.item.uuid);
-                return;
-            }
-            let selected = await chris.dialog('Radiant Soul: Add extra damage?', [['Radiant', 'radiant'], ['Fire', 'fire'], ['No', false]]);
+            let selected = await chris.dialog('Celestial Revelation: Add extra damage?', [['Yes', true], ['No', false]]);
             if (!selected) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (inCombat) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', currentTurn);
-            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.abilities.cha.mod + '[' + selected + ']';
+            if (inCombat) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
+            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[radiant]';
             let damageRoll = await new Roll(damageFormula).roll({async: true});
             await workflow.setDamageRoll(damageRoll);
             queue.remove(workflow.item.uuid);
             return;
         case 'preDamageApplication':
             if (workflow.hitTargets.size <= 1) return;
-            let queueSetup2 = queue.setup(workflow.item.uuid, 'radiantSoul', 250);
+            let queueSetup2 = queue.setup(workflow.item.uuid, 'aasimarRadiantSoul', 249);
             if (!queueSetup2) return;
-            let damageTypes2 = chris.getRollDamageTypes(workflow.damageRoll);
-            if (!(damageTypes2.has('fire') || damageTypes2.has('radiant'))) {
-                queue.remove(workflow.item.uuid);
-                return;
-            }
             let buttons = [
                 {
                     'label': 'Yes',
@@ -58,37 +49,36 @@ async function attack(workflow, pass) {
                     'value': false
                 }
             ];
-            let selection = await chris.selectTarget('Radiant Soul: Add extra damage?', buttons, workflow.targets);
+            let selection = await chris.selectTarget('Celestial Revelation: Add extra damage?', buttons, workflow.targets);
             if (selection.buttons === false) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (inCombat) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', currentTurn);
+            if (inCombat) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
             let targetTokenID = selection.inputs.find(id => id != false);
             if (!targetTokenID) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
             let targetDamage = workflow.damageList.find(i => i.tokenId === targetTokenID);
-            let selected2 = await chris.dialog('Radiant Soul: What type of damage?', [['Radiant', 'radiant'], ['Fire', 'fire']]);
-            if (!selected2) selected2 = 'radiant';
             let targetActor = canvas.scene.tokens.get(targetDamage.tokenId).actor;
             if (!targetActor) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            let hasDI = chris.checkTrait(targetActor, 'di', selected2);
+            if (inCombat) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', currentTurn);
+            let hasDI = chris.checkTrait(targetActor, 'di', 'radiant');
             if (hasDI) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            let damageTotal = workflow.actor.system.abilities.cha.mod;
-            let hasDR = chris.checkTrait(targetActor, 'dr', selected2);
+            let damageTotal = workflow.actor.system.attributes.prof;
+            let hasDR = chris.checkTrait(targetActor, 'dr', 'radiant');
             if (hasDR) damageTotal = Math.floor(damageTotal / 2);
             targetDamage.damageDetail[0].push(
                 {
                     'damage': damageTotal,
-                    'type': selected2
+                    'type': 'radiant'
                 }
             );
             targetDamage.totalDamage += damageTotal;
@@ -109,10 +99,10 @@ async function attack(workflow, pass) {
             return;
     }
 }
-async function turn (origin) {
-    await origin.setFlag('chris-premades', 'feature.radiantSoul.turn', false);
+async function turn(origin) {
+    await origin.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', false);
 }
-export let radiantSoul = {
+export let aasimarRadiantSoul = {
     'attack': attack,
     'turn': turn
 }

@@ -1,6 +1,12 @@
+import {queue} from '../../../../queue.js';
 export async function destructiveWrath(workflow) {
+    let queueSetup = await queue.setup(workflow.item.uuid, 'destructiveWrath', 351);
+    if (!queueSetup) return;
     let oldDamageRoll = workflow.damageRoll;
-    if (oldDamageRoll.terms.length === 0) return;
+    if (oldDamageRoll.terms.length === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let newDamageRoll = '';
     for (let i = 0; oldDamageRoll.terms.length > i; i++) {
         let flavor = oldDamageRoll.terms[i].flavor;
@@ -13,4 +19,5 @@ export async function destructiveWrath(workflow) {
     }
     let damageRoll = await new Roll(newDamageRoll).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }

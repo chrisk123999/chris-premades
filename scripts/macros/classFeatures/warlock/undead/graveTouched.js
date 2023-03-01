@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function attack(workflow) {
     if (workflow.hitTargets.size != 1) return;
     let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
@@ -15,11 +16,16 @@ async function attack(workflow) {
         if (workflow.token.id != game.combat.current.tokenId) return;
         currentTurn = game.combat.round + '-' + game.combat.turn;
         let previousTurn = feature.flags['chris-premades']?.feature?.gt?.turn;
-        if (!previousTurn || previousTurn != currentTurn) doCheck = true;
+        if (!previousTurn != currentTurn) doCheck = true;
     }
     if (!doCheck) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'graveTouched', 350);
+    if (!queueSetup) return;
     let selection = await chris.dialog('Use Grave Touched?', [['Yes', true], ['No', false]]);
-    if (!selection) return;
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     await feature.use();
     await feature.setFlag('chris-premades', 'feature.gt.turn', currentTurn);
     let oldDamageRoll = workflow.damageRoll;
@@ -42,6 +48,7 @@ async function attack(workflow) {
     }
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
     await origin.setFlag('chris-premades', 'feature.gt.turn', '');

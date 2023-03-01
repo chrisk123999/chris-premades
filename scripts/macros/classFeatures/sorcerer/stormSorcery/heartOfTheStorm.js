@@ -1,13 +1,22 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 async function attack(workflow) {
     if (workflow.targets.size === 0 || workflow.item.type != 'spell' || workflow.item.system.level === 0) return;
-    let damageType = workflow.defaultDamageType;
-    let validTypes = ['lightning', 'thunder'];
-    if (!validTypes.includes(damageType)) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'heartOfTheStorm', 250);
+    if (!queueSetup) return;
+    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
+    if (!(damageTypes.has('lightning') || damageTypes.has('thunder'))) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let effect = chris.findEffect(workflow.actor, 'Heart of the Storm');
-    if (!effect) return;
+    if (!effect) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let originItem = await fromUuid(effect.origin);
     await originItem.use();
+    queue.remove(workflow.item.uuid);
 }
 async function item(workflow) {
     if (workflow.targets.size === 0) return;

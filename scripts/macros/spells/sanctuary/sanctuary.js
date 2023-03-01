@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {queue} from '../../../queue.js';
 export async function sanctuary(workflow) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
@@ -21,7 +22,13 @@ export async function sanctuary(workflow) {
         'consumeResource': false,
         'consumeSlot': false,
     };
+    let queueSetup = await queue.setup(workflow.item.uuid, 'sanctuary', 48);
+    if (!queueSetup) return;
     let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
-    if (spellWorkflow.failedSaves.size != 1) return;
+    if (spellWorkflow.failedSaves.size != 1) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     workflow.isFumble = true;
+    queue.remove(workflow.item.uuid);
 }

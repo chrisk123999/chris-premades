@@ -3,6 +3,7 @@ import {macros, setupWorldMacros, setupMacroFolder, onHitMacro} from './macros.j
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
 import {createHeaderButton} from './item.js';
+import {queue} from './queue.js';
 Hooks.once('init', async function() {
 	registerSettings();
 });
@@ -36,5 +37,6 @@ Hooks.once('ready', async function() {
 });
 globalThis['chrisPremades'] = {
 	helpers,
-	macros
+	macros,
+	queue
 }

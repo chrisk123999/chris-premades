@@ -283,5 +283,12 @@ export let chris = {
 	},
 	'getEffectCastLevel': function _getEffectCastLevel(effect) {
 		return effect.flags['midi-qol']?.castData?.castLevel;
+	},
+	'getRollDamageTypes': function _getRollDamageTypes(damageRoll) {
+		let types = new Set();
+		for (let i of damageRoll.terms) {
+			if (i.flavor != '') types.add(i.flavor);
+		}
+		return types;
 	}
 };

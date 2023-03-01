@@ -10,6 +10,11 @@ async function vampiricTouchItem(workflow) {
 		]
 	];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Vampiric Touch Attack');
+	featureData.flags['chris-premades'] = {
+		'spell': {
+			'vampiricTouchAttack': true
+		}
+	}
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Vampiric Touch');
 	}
@@ -44,6 +49,18 @@ async function vampiricTouchItem(workflow) {
 		'description': featureData.name
 	};
 	await warpgate.mutate(workflow.token.document, updates, {}, options);
+	let feature = workflow.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
+	if (!feature) return;
+	let options2 = {
+        'showFullCard': false,
+        'createWorkflow': true,
+        'targetUuids': [workflow.targets.first().document.uuid],
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeSlot': false,
+    };
+    await MidiQOL.completeItemUse(feature, {}, options2);
 }
 async function vampiricTouchAttack(workflow) {
     if (workflow.hitTargets.size != 1) return;
