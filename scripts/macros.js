@@ -71,6 +71,7 @@ import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
+import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -166,7 +167,8 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'ancestralProtectors': ancestralProtectors
 }
 function actorOnUseMacro(itemName) {
 	return 'await chrisPremades.macros.actorOnUse(this, "' + itemName + '");';
@@ -236,6 +238,8 @@ export async function setupWorldMacros() {
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
+	await createMacro('ancestralProtectorsSource', actorOnUseMacro('ancestralProtectorsSource'), false);
+	await createMacro('ancestralProtectorsTarget', actorOnUseMacro('ancestralProtectorsTarget'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -313,6 +317,11 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'rayOfEnfeeblement':
 			await rayOfEnfeeblement(workflow);
+			break;
+		case 'ancestralProtectorsSource':
+			await ancestralProtectors.sourceAttack(workflow);
+			break;
+		case 'ancestralProtectorsTarget': await ancestralProtectors.targetAttack(workflow);
 			break;
 	}
 }
