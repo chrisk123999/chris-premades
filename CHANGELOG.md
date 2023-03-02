@@ -1,3 +1,16 @@
+#0.0.41:
+# Bug Fixes:
+- Experimental Elixir
+- Heart of the Storm
+- Healing Light
+- Spirit Shroud
+  
+# 0.0.39:
+## New Content:
+- Path of the Ancestral Guardian: Ancestral Protectors
+## Bug Fixes:
+- Once per turn check fixes.
+
 # 0.0.37:
 ## New Content:
 - Ray of Enfeeblement
