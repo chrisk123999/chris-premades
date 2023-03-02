@@ -290,5 +290,13 @@ export let chris = {
 			if (i.flavor != '') types.add(i.flavor);
 		}
 		return types;
-	}
+	},
+	'perTurnCheck': function _perTurnCheck(originItem, type, name, ownTurnOnly, tokenId) {
+		if (game.combat === null || game.combat === undefined) return true;
+		if (ownTurnOnly && (tokenId != game.combat.current.tokenId)) return false;
+		let currentTurn = game.combat.round + '-' + game.combat.turn;
+        let previousTurn = originItem.flags['chris-premades']?.[type]?.[name]?.turn;
+		if (currentTurn != previousTurn) return true;
+		return false;
+	},
 };

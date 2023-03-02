@@ -61,28 +61,25 @@ async function infiltratorArmor(workflow) {
 }
 async function lightningLauncher(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.isFumble) return;
-    let selection = chris.dialog('Apply extra lightning damage?', [['Yes', true], ['No', false]]);
-    if (!selection) return;
-    let doExtraDamage = false;
-    if (game.combat === null || game.combat === undefined) {
-        doExtraDamage = true;
-    } else {
-        if (workflow.token.id != game.combat.current.tokenId) return;
-        let currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = item.flags.world?.feature?.lightningLauncher.turn;
-        if (!previousTurn || previousTurn != currentTurn) doExtraDamage = true;
-        await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', currentTurn);
-    }
-    if (doExtraDamage) {
-        let queueSetup = await queue.setup(workflow.item.uuid, 'lightningLauncher', 50);
-        if (!queueSetup) return;
-        let diceNumber = 1;
-        if (workflow.isCritical) diceNumber = 2;
-        let damageFormula = workflow.damageRoll._formula + ' + ' + diceNumber + 'd6[lightning]';
-        let damageRoll = await new Roll(damageFormula).roll({async: true});
-        await workflow.setDamageRoll(damageRoll);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'lightningLauncher', 50);
+    if (!queueSetup) return;
+    let doExtraDamage = chris.perTurnCheck(workflow.item, 'feature', 'lightningLauncher', true, workflow.token.id);
+    if (!doExtraDamage) {
         queue.remove(workflow.item.uuid);
+        return;
     }
+    let selection = await chris.dialog('Apply extra lightning damage?', [['Yes', true], ['No', false]]);
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    if (!(game.combat === null || game.combat === undefined)) await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
+    let diceNumber = 1;
+    if (workflow.isCritical) diceNumber = 2;
+    let damageFormula = workflow.damageRoll._formula + ' + ' + diceNumber + 'd6[lightning]';
+    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function thunderGauntlets(workflow) {
     if (workflow.targets.size != 1 || workflow.disadvantage) return;

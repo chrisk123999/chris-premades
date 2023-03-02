@@ -7,19 +7,8 @@ async function attack(workflow, pass) {
     if (!effect) return;
     let feature = await fromUuid(effect.origin);
     if (!feature) return;
-    let doExtraDamage = false;
-    let inCombat = false;
-    let currentTurn;
-    if (game.combat === null || game.combat === undefined) {
-        doExtraDamage = true;
-    } else {
-        inCombat = true;
-        if (workflow.token.id != game.combat.current.tokenId) return;
-        currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = feature.flags['chris-premades']?.feature?.aasimarRadiantSoul?.turn;
-        if (previousTurn != currentTurn) doExtraDamage = true;
-    }
-    if (!doExtraDamage) return;
+    let useFeature = chris.perTurnCheck(feature, 'feature', 'aasimarRadiantSoul', true, workflow.token.id);
+    if (!useFeature) return;
     switch (pass) {
         case 'postDamageRoll':
             if (workflow.hitTargets.size != 1) return;
@@ -30,7 +19,7 @@ async function attack(workflow, pass) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (inCombat) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', game.combat.round + '-' + game.combat.turn);
             let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[radiant]';
             let damageRoll = await new Roll(damageFormula).roll({async: true});
             await workflow.setDamageRoll(damageRoll);
@@ -54,7 +43,7 @@ async function attack(workflow, pass) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (inCombat) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', game.combat.round + '-' + game.combat.turn);
             let targetTokenID = selection.inputs.find(id => id != false);
             if (!targetTokenID) {
                 queue.remove(workflow.item.uuid);
@@ -66,7 +55,7 @@ async function attack(workflow, pass) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (inCombat) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', currentTurn);
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
             let hasDI = chris.checkTrait(targetActor, 'di', 'radiant');
             if (hasDI) {
                 queue.remove(workflow.item.uuid);

@@ -8,17 +8,8 @@ async function attack(workflow) {
     if (!effectFeature) return;
     let feature = await fromUuid(effectFeature.origin);
     if (!feature) return;
-    let currentTurn = '';
-    let doCheck = false;
-    if (game.combat === null || game.combat === undefined) {
-        doCheck = true;
-    } else {
-        if (workflow.token.id != game.combat.current.tokenId) return;
-        currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = feature.flags['chris-premades']?.feature?.gt?.turn;
-        if (!previousTurn != currentTurn) doCheck = true;
-    }
-    if (!doCheck) return;
+    let useFeature = chris.perTurnCheck(feature, 'feature', 'graveTouched,', true, workflow.token.id);
+    if (!useFeature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'graveTouched', 350);
     if (!queueSetup) return;
     let selection = await chris.dialog('Use Grave Touched?', [['Yes', true], ['No', false]]);
@@ -27,7 +18,7 @@ async function attack(workflow) {
         return;
     }
     await feature.use();
-    await feature.setFlag('chris-premades', 'feature.gt.turn', currentTurn);
+    if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
     let oldDamageRoll = workflow.damageRoll;
     let newDamageRoll = '';
     for (let i = 0; oldDamageRoll.terms.length > i; i++) {
@@ -51,7 +42,7 @@ async function attack(workflow) {
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
-    await origin.setFlag('chris-premades', 'feature.gt.turn', '');
+    await origin.setFlag('chris-premades', 'feature.graveTouched.turn', '');
 }
 export let graveTouched = {
     'attack': attack,

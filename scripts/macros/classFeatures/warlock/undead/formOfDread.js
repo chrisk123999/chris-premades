@@ -7,17 +7,8 @@ async function attack(workflow) {
     let feature = workflow.actor.items.getName('Form of Dread: Fear');
     let feature2 = workflow.actor.items.getName('Form of Dread');
     if (!feature || !feature2) return;
-    let currentTurn = '';
-    let doCheck = false;
-    if (game.combat === null || game.combat === undefined) {
-        doCheck = true;
-    } else {
-        if (workflow.token.id != game.combat.current.tokenId) return;
-        currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = feature2.flags['chris-premades']?.feature?.fod?.turn;
-        if (previousTurn != currentTurn) doCheck = true;
-    }
-    if (!doCheck) return;
+    let useFeature = chris.perTurnCheck(feature2, 'feature', 'formOfDread', true, workflow.token.id);
+    if (!useFeature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'formOfDread', 450);
     if (!queueSetup) return;
     let selection = await chris.dialog('Attempt to fear target?', [['Yes', true], ['No', false]]);
@@ -25,7 +16,7 @@ async function attack(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    await feature2.setFlag('chris-premades', 'feature.fod.turn', currentTurn);
+    if (!(game.combat === null || game.combat === undefined)) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
     let options = {
 		'showFullCard': false,
 		'createWorkflow': true,
@@ -39,7 +30,7 @@ async function attack(workflow) {
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
-    await origin.setFlag('chris-premades', 'feature.fod.turn', '');
+    await origin.setFlag('chris-premades', 'feature.formOfDread.turn', '');
 }
 export let formOfDread = {
     'attack': attack,
