@@ -72,6 +72,10 @@ import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+import {queue} from './queue.js';
+async function queueMacro(macroName, priority) {
+
+}
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -240,6 +244,7 @@ export async function setupWorldMacros() {
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
 	await createMacro('ancestralProtectorsSource', actorOnUseMacro('ancestralProtectorsSource'), false);
 	await createMacro('ancestralProtectorsTarget', actorOnUseMacro('ancestralProtectorsTarget'), false);
+	await createMacro('ancestralProtectorsTargetDamage', actorOnUseMacro('ancestralProtectorsTargetDamage'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -322,6 +327,8 @@ async function useActorOnUse(workflow, itemName) {
 			await ancestralProtectors.sourceAttack(workflow);
 			break;
 		case 'ancestralProtectorsTarget': await ancestralProtectors.targetAttack(workflow);
+			break;
+		case 'ancestralProtectorsTargetDamage': await ancestralProtectors.targetDamage(workflow);
 			break;
 	}
 }

@@ -26,6 +26,12 @@ async function sourceAttack(workflow) {
                 'mode': 0,
                 'value': 'CPR-ancestralProtectorsTarget,preAttackRoll',
                 'priority': 20
+            },
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'CPR-ancestralProtectorsTargetDamage,postDamageRoll',
+                'priority': 20
             }
         ],
         'flags': {
@@ -56,7 +62,25 @@ async function targetAttack(workflow) {
     workflow.attackAdvAttribution['Disadvantage: Ancestral Protectors'] = true;
     queue.remove(workflow.item.uuid);
 }
+async function targetDamage(workflow) {
+    if (workflow.hitTargets.size != 1) return;
+    let effect = chris.findEffect(workflow.actor, 'Ancestral Protectors Target');
+    if (!effect) return;
+    let origin = await fromUuid(effect.origin);
+    if (!origin) return;
+    let originActorUuid = origin.actor.uuid;
+    let targetActorUuid = workflow.targets.first().actor.uuid;
+    if (originActorUuid === targetActorUuid) return;
+    let queueSetup =  await queue.setup(workflow.item.uuid, 'ancestralProtectors', 475);
+    if (!queueSetup) return;
+    let damageFormula = 'floor((' + workflow.damageRoll._formula + ') / 2)';
+    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    console.log(damageRoll);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
+}
 export let ancestralProtectors = {
     'sourceAttack': sourceAttack,
-    'targetAttack': targetAttack
+    'targetAttack': targetAttack,
+    'targetDamage': targetDamage
 }
