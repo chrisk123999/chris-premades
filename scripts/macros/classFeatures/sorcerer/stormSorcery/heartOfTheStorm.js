@@ -20,12 +20,15 @@ async function attack(workflow) {
 }
 async function item(workflow) {
     if (workflow.targets.size === 0) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'heartOfTheStormItem', 50);
+    if (!queueSetup) return;
     let selection = await chris.dialog('What damage type?', [['Lightning', 'lightning'], ['Thunder', 'thunder']]);
     if (!selection) selection = 'lightning';
     let damageFormula = workflow.damageRoll._formula;
     damageFormula += '[' + selection + ']';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 export let heartOfTheStorm = {
     'attack': attack,

@@ -75,7 +75,6 @@ async function targetDamage(workflow) {
     if (!queueSetup) return;
     let damageFormula = 'floor((' + workflow.damageRoll._formula + ') / 2)';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    console.log(damageRoll);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

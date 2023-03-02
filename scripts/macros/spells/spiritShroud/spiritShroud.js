@@ -48,6 +48,7 @@ async function spiritShroudAttack(workflow) {
     let damageFormula = oldFormula + ' + ' + diceNum + 'd8[' + damageType + ']';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function spiritShroudSlow(token, origin) {
     let targetTokens = chris.findNearby(token, 10, 'enemy');
