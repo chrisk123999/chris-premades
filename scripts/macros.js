@@ -11,6 +11,7 @@ import {bloodSpear} from './macros/items/bloodSpear.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {callLightning} from './macros/spells/callLightning/callLightning.js';
+import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {chainLightning} from './macros/spells/chainLightning/chainLightning.js';
 import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
@@ -40,14 +41,17 @@ import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElementa
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
+import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {hex} from './macros/spells/hex/hex.js';
+import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
+import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
 import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
@@ -68,23 +72,21 @@ import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhosts
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
+import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
+import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
+import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
-import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
-import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
-import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
-import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
-import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -99,6 +101,7 @@ export async function onHitMacro(workflow) {
 }
 let monster = {
 	'bulette': bulette,
+	'catoblepas': catoblepas,
 	'chasme': chasme,
 	'clayGolem': clayGolem,
 	'dybbuk': dybbuk,
@@ -106,17 +109,18 @@ let monster = {
 	'elderOblex': elderOblex,
 	'fireElemental': fireElemental,
 	'gallowsSpeaker': gallowsSpeaker,
-	'homunculus': homunculus,
-	'intellectDevourer': intellectDevourer,
-	'shadow': shadow,
-	'shadowDemon': shadowDemon,
-	'succubus': succubus,
-	'zombie': zombie,
-	'troglodyte': troglodyte,
 	'ghast': ghast,
 	'hezrou': hezrou,
+	'homunculus': homunculus,
+	'intellectDevourer': intellectDevourer,
+	'leucrotta': leucrotta,
+	'shadow': shadow,
+	'shadowDemon': shadowDemon,
+	'shadowghast': shadowghast,
 	'stenchKow': stenchKow,
-	'shadowghast': shadowghast
+	'succubus': succubus,
+	'troglodyte': troglodyte,
+	'zombie': zombie
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm
