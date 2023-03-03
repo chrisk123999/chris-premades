@@ -84,6 +84,7 @@ import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
+import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -114,7 +115,8 @@ let monster = {
 	'troglodyte': troglodyte,
 	'ghast': ghast,
 	'hezrou': hezrou,
-	'stenchKow': stenchKow
+	'stenchKow': stenchKow,
+	'shadowghast': shadowghast
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm
