@@ -1,5 +1,5 @@
 #0.0.43:
-# New Content:
+# New Monster Content:
 - Hezrou, Stench Kow, Troglodyte, Catoblepas, and Leucrotta: Stench
 - Ghast and Shadowghast: Claws, Stench
   
