@@ -1,3 +1,8 @@
+#0.0.43:
+# New Content:
+- Hezrou, Stench Kow, Troglodyte, Catoblepas, and Leucrotta: Stench
+- Ghast and Shadowghast: Claws, Stench
+  
 #0.0.42:
 # New Content:
 - Elixir of Health

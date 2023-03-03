@@ -80,6 +80,10 @@ import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
+import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
+import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
+import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
+import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -106,7 +110,11 @@ let monster = {
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
 	'succubus': succubus,
-	'zombie': zombie
+	'zombie': zombie,
+	'troglodyte': troglodyte,
+	'ghast': ghast,
+	'hezrou': hezrou,
+	'stenchKow': stenchKow
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm
