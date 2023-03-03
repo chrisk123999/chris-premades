@@ -68,7 +68,7 @@ async function lightningLauncher(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    let selection = await chris.dialog('Apply extra lightning damage?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog('Lightning Launcher: Apply extra lightning damage?', [['Yes', true], ['No', false]]);
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

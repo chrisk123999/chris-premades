@@ -32,6 +32,7 @@ import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmb
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
+import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
@@ -51,6 +52,13 @@ import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
 import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
+import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
+import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
+import {potionOfGiantSize} from './macros/items/potionOfGiantSize.js';
+import {potionOfGrowth} from './macros/items/potionOfGrowth.js';
+import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
+import {potionOfPoison} from './macros/items/potionOfPoison.js';
+import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement/rayOfEnfeeblement.js';
@@ -135,6 +143,7 @@ export let macros = {
 	'divineSmite': divineSmite,
 	'dragonsBreath': dragonsBreath,
 	'dreadAmbusher': dreadAmbusher,
+	'elixirOfHealth': elixirOfHealth,
 	'experimentalElixir': experimentalElixir,
 	'expertDivination': expertDivination,
 	'fallenPuppet': fallenPuppet,
@@ -151,7 +160,14 @@ export let macros = {
 	'mirrorImage': mirrorImage,
 	'monster': monster,
 	'muddledMind': muddledMind,
+	'oilOfSharpness': oilOfSharpness,
 	'onHit': onHit,
+	'potionOfDiminution': potionOfDiminution,
+	'potionOfGiantSize': potionOfGiantSize,
+	'potionOfGrowth': potionOfGrowth,
+	'potionOfMaximumPower': potionOfMaximumPower,
+	'potionOfPoison': potionOfPoison,
+	'potionOfVitality': potionOfVitality,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
 	'rayOfEnfeeblement': rayOfEnfeeblement,
@@ -232,6 +248,8 @@ export async function setupWorldMacros() {
 	await createMacro('hex', actorOnUseMacro('hex'), false);
 	await createMacro('lightningArrowAttack', actorOnUseMacro('lightningArrowAttack'), false);
 	await createMacro('lightningArrowDamage', actorOnUseMacro('lightningArrowDamage'), false);
+	await createMacro('potionOfGiantSize', actorOnUseMacro('potionOfGiantSize'), false);
+	await createMacro('potionOfMaximumPower', actorOnUseMacro('potionOfMaximumPower'), false);
 	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
 	await createMacro('rayOfEnfeeblement', actorOnUseMacro('rayOfEnfeeblement'), false);
 	await createMacro('reaper', actorOnUseMacro('reaper'), false);
@@ -322,9 +340,17 @@ async function useActorOnUse(workflow, itemName) {
 		case 'ancestralProtectorsSource':
 			await ancestralProtectors.sourceAttack(workflow);
 			break;
-		case 'ancestralProtectorsTarget': await ancestralProtectors.targetAttack(workflow);
+		case 'ancestralProtectorsTarget':
+			await ancestralProtectors.targetAttack(workflow);
 			break;
-		case 'ancestralProtectorsTargetDamage': await ancestralProtectors.targetDamage(workflow);
+		case 'ancestralProtectorsTargetDamage':
+			await ancestralProtectors.targetDamage(workflow);
+			break;
+		case 'potionOfGiantSize':
+			await potionOfGiantSize.damage(workflow);
+			break;
+		case 'potionOfMaximumPower':
+			await potionOfMaximumPower(workflow);
 			break;
 	}
 }

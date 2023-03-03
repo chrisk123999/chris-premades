@@ -1,3 +1,20 @@
+#0.0.42:
+# New Content:
+- Elixir of Health
+- Oil of Sharpness
+- Potion of Advantage
+- Potion of Aqueous Form
+- Potion of Diminution
+- Potion of Giant Size
+- Potion of Growth
+- Potion of Heroism
+- Potion of Invisibility
+- Potion of Invulnerability
+- Potion of Maximum Power
+- Potion of Poison
+- Potion of Speed
+- Potion of Vitality
+  
 #0.0.41:
 # Bug Fixes:
 - Experimental Elixir
