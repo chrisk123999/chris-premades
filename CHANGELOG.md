@@ -1,10 +1,14 @@
+#0.0.46:
+## New Content:
+- Storm Sphere
+  
 #0.0.43:
-# New Monster Content:
+## New Monster Content:
 - Hezrou, Stench Kow, Troglodyte, Catoblepas, and Leucrotta: Stench
 - Ghast and Shadowghast: Claws, Stench
   
 #0.0.42:
-# New Content:
+## New Content:
 - Elixir of Health
 - Oil of Sharpness
 - Potion of Advantage
@@ -21,7 +25,7 @@
 - Potion of Vitality
   
 #0.0.41:
-# Bug Fixes:
+## Bug Fixes:
 - Experimental Elixir
 - Heart of the Storm
 - Healing Light
