@@ -79,6 +79,7 @@ import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
+import {stormSphere} from './macros/spells/stormSphere/stormSphere.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
@@ -194,6 +195,7 @@ export let macros = {
 	'spikeGrowth': spikeGrowth,
 	'spiritShroud': spiritShroud,
 	'stillnessOfMind': stillnessOfMind,
+	'stormSphere': stormSphere,
 	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
