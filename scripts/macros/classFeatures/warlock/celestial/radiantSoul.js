@@ -24,7 +24,7 @@ async function attack(workflow, pass) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', game.combat.round + '-' + game.combat.turn);
+            if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', game.combat.round + '-' + game.combat.turn);
             let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.abilities.cha.mod + '[' + selected + ']';
             let damageRoll = await new Roll(damageFormula).roll({async: true});
             await workflow.setDamageRoll(damageRoll);
@@ -53,7 +53,7 @@ async function attack(workflow, pass) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', game.combat.round + '-' + game.combat.turn);
+            if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', game.combat.round + '-' + game.combat.turn);
             let targetTokenID = selection.inputs.find(id => id != false);
             if (!targetTokenID) {
                 queue.remove(workflow.item.uuid);

@@ -76,6 +76,7 @@ import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
+import {spiritGuardians} from './macros/spells/spiritGuardians/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
@@ -125,6 +126,13 @@ let monster = {
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm
+}
+async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
+	switch (macroName) {
+		case 'spiritGuardians':
+			await spiritGuardians.moved(token, castLevel, spellDC, damage, damageType, tokenID);
+			break;
+	}
 }
 export let macros = {
 	'aasimarRadiantSoul': aasimarRadiantSoul,
@@ -177,6 +185,7 @@ export let macros = {
 	'muddledMind': muddledMind,
 	'oilOfSharpness': oilOfSharpness,
 	'onHit': onHit,
+	'onMove': onMove,
 	'potionOfDiminution': potionOfDiminution,
 	'potionOfGiantSize': potionOfGiantSize,
 	'potionOfGrowth': potionOfGrowth,
@@ -193,6 +202,7 @@ export let macros = {
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
 	'spikeGrowth': spikeGrowth,
+	'spiritGuardians': spiritGuardians,
 	'spiritShroud': spiritShroud,
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,

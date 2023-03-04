@@ -18,7 +18,7 @@ async function attack(workflow) {
         return;
     }
     await feature.use();
-    if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
+    if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
     let oldDamageRoll = workflow.damageRoll;
     let newDamageRoll = '';
     for (let i = 0; oldDamageRoll.terms.length > i; i++) {

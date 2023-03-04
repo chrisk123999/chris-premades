@@ -1,13 +1,20 @@
-#0.0.46:
+# 0.0.47:
+## New Content:
+- Spirit Guardians
+## Bug Fixess:
+- Heart of the Storm
+- Many in combat check fixes.
+  
+# 0.0.46:
 ## New Content:
 - Storm Sphere
   
-#0.0.43:
+# 0.0.43:
 ## New Monster Content:
 - Hezrou, Stench Kow, Troglodyte, Catoblepas, and Leucrotta: Stench
 - Ghast and Shadowghast: Claws, Stench
   
-#0.0.42:
+# 0.0.42:
 ## New Content:
 - Elixir of Health
 - Oil of Sharpness
@@ -24,7 +31,7 @@
 - Potion of Speed
 - Potion of Vitality
   
-#0.0.41:
+# 0.0.41:
 ## Bug Fixes:
 - Experimental Elixir
 - Heart of the Storm

@@ -16,7 +16,7 @@ async function attack(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    if (!(game.combat === null || game.combat === undefined)) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
+    if (chris.inCombat()) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
     let options = {
 		'showFullCard': false,
 		'createWorkflow': true,

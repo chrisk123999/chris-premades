@@ -4,6 +4,7 @@ import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
 import {createHeaderButton} from './item.js';
 import {queue} from './queue.js';
+import {tokenMove, tokenMoved, updateTriggers, combatUpdate} from './movement.js';
 Hooks.once('init', async function() {
 	registerSettings();
 });
@@ -14,6 +15,7 @@ Hooks.once('ready', async function() {
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
+		updateTriggers();
 	}
 	if (game.settings.get('chris-premades', 'Armor of Agathys')) Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {
@@ -34,9 +36,12 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 	if (game.settings.get('chris-premades', 'On Hit')) Hooks.on('midi-qol.RollComplete', onHitMacro);
 	if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+	if (game.settings.get('chris-premades', 'Movement Listener') || game.user.isGM) Hooks.on('updateToken', tokenMoved);
+	if (game.settings.get('chris-premades', 'Combat Listener') || game.user.isGM) Hooks.on('updateCombat', combatUpdate);
 });
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
-	queue
+	queue,
+	tokenMove
 }

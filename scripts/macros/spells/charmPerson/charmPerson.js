@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
 export async function charmPerson(workflow) {
 	if (workflow.targets.size === 0) return;
-	if (game.combat === null || game.combat === undefined) return;
+	if (!chris.inCombat()) return;
 	let effectData = {
 		'label': 'Condition Advantage',
 		'icon': 'icons/magic/time/arrows-circling-green.webp',

@@ -73,7 +73,7 @@ async function lightningLauncher(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    if (!(game.combat === null || game.combat === undefined)) await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
+    if (chris.inCombat()) await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
     let diceNumber = 1;
     if (workflow.isCritical) diceNumber = 2;
     let damageFormula = workflow.damageRoll._formula + ' + ' + diceNumber + 'd6[lightning]';

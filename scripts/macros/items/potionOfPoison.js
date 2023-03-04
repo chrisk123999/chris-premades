@@ -8,7 +8,7 @@ async function item(workflow) {
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
-    if (game.combat != undefined || game.combat != null) return;
+    if (chris.inCombat()) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let effect = chris.findEffect(targetActor, 'Potion of Poison');

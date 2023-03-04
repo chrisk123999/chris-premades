@@ -305,5 +305,8 @@ export let chris = {
 		let foundToken = containedTokens.find(i => i === token.id);
 		console.log(foundToken);
 		return foundToken;
+	},
+	'inCombat': function _inCombat() {
+		return !(game.combat === null || game.combat === undefined || game.combat?.started === false);
 	}
 };

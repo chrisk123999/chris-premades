@@ -1,4 +1,5 @@
 import {macros, onHitMacro} from './macros.js';
+import {tokenMoved, combatUpdate} from './movement.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
 	game.settings.register(moduleName, 'Show Names', {
@@ -16,6 +17,44 @@ export function registerSettings() {
 		'config': true,
 		'type': Boolean,
 		'default': true
+	});
+	game.settings.register(moduleName, 'Movement Listener', {
+		'name': 'Movement Listener',
+		'hint': 'This setting allows certain macros from this module to function on token movement.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value || game.user.isGM) {
+				Hooks.on('updateToken', tokenMoved);
+			} else if (game.user.isGM) {
+				Hooks.off('updateToken', tokenMoved);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Combat Listener', {
+		'name': 'Combat Listener',
+		'hint': 'This setting allows certain macros from this module to function on combat changes.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value || game.user.isGM) {
+				Hooks.on('updateCombat', combatUpdate);
+			} else if (game.user.isGM) {
+				Hooks.off('updateCombat', combatUpdate);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Movement Triggers', {
+		'name': 'Movement Triggers',
+		'hint': 'Used to sync the movement queue.',
+		'scope': 'world',
+		'config': false,
+		'type': Object,
+		'default': {}
 	});
 	game.settings.register(moduleName, 'Armor of Agathys', {
 		'name': 'Armor of Agathys Automation',

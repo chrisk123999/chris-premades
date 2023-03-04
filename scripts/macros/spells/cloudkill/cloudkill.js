@@ -168,7 +168,7 @@ async function cloudkillEntered(template, token) {
     if (!touchedTokens.includes(token.id)) touchedTokens.push(token.id);
     await template.setFlag('chris-premades', 'spell.cloudkill', {touchedTokens});
     let doDamage = false;
-    if (game.combat != null && game.combat != undefined) {
+    if (chris.inCombat()) {
         let combatTurn = game.combat.round + '-' + game.combat.turn;
         let tokenTurn = token.document.getFlag('chris-premades', `spell.cloudkill.${template.id}.turn`);
         if (tokenTurn != combatTurn) doDamage = true;
