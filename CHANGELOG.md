@@ -1,7 +1,7 @@
 # 0.0.47:
 ## New Content:
 - Spirit Guardians
-## Bug Fixess:
+## Bug Fixes:
 - Heart of the Storm
 - Many in combat check fixes.
   
