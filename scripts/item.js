@@ -71,6 +71,10 @@ async function itemConfig(itemDocument) {
     ];
     let selection = await chris.dialog('An automation is available for this, apply it?', options);
     if (!selection) return;
+    ChatMessage.create({
+        speaker: {alias: name},
+        content: '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
+    });
     let originalItem = duplicate(itemDocument.toObject());
     originalItem.name = compendiumItem.name;
     originalItem.effects = compendiumItem.effects;

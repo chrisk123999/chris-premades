@@ -1,3 +1,8 @@
+# 0.0.49:
+## New Content:
+- Dragon Vessel (Slumbering - Ascendant)
+- Dragon-Touched Focus (Slumbering - Stirring)
+  
 # 0.0.48:
 ## New Content:
 - Alchemist Artificer: Restorative Reagents

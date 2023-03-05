@@ -30,7 +30,7 @@ export async function dragonsBreath(workflow) {
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
-            },
+            }
         }
     };
     let updates = {

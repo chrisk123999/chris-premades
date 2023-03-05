@@ -5,6 +5,7 @@ import {chris as helpers} from './helperFunctions.js';
 import {createHeaderButton} from './item.js';
 import {queue} from './queue.js';
 import {tokenMove, tokenMoved, updateTriggers, combatUpdate} from './movement.js';
+import {bab} from './babHelpers.js';
 Hooks.once('init', async function() {
 	registerSettings();
 });
@@ -43,5 +44,6 @@ globalThis['chrisPremades'] = {
 	helpers,
 	macros,
 	queue,
-	tokenMove
+	tokenMove,
+	bab
 }

@@ -71,6 +71,14 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Item Compendium', {
+		'name': 'Personal Item Compendium',
+		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',
+		'scope': 'world',
+		'config': true,
+		'type': String,
+		'default': 'world.ddb-' + game.world.id + '-ddb-items'
+	});
 	game.settings.register(moduleName, 'Condition Resistance', {
 		'name': 'Condition Resistance Mechanic',
 		'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',

@@ -28,6 +28,7 @@ import {deathWard} from './macros/spells/deathWard/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
+import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
@@ -164,6 +165,7 @@ export let macros = {
 	'destructiveWrath': destructiveWrath,
 	'detectThoughts': detectThoughts,
 	'divineSmite': divineSmite,
+	'dragonVessel': dragonVessel,
 	'dragonsBreath': dragonsBreath,
 	'dreadAmbusher': dreadAmbusher,
 	'elixirOfHealth': elixirOfHealth,
