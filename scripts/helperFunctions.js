@@ -295,15 +295,13 @@ export let chris = {
 		if (game.combat === null || game.combat === undefined) return true;
 		if (ownTurnOnly && (tokenId != game.combat.current.tokenId)) return false;
 		let currentTurn = game.combat.round + '-' + game.combat.turn;
-        let previousTurn = originItem.flags['chris-premades']?.[type]?.[name]?.turn;
+		let previousTurn = originItem.flags['chris-premades']?.[type]?.[name]?.turn;
 		if (currentTurn != previousTurn) return true;
 		return false;
 	},
 	'tokenInTemplate': function _tokenInTemplate(token, template) {
 		let containedTokens = game.modules.get('templatemacro').api.findContained(template);
-		console.log(containedTokens);
 		let foundToken = containedTokens.find(i => i === token.id);
-		console.log(foundToken);
 		return foundToken;
 	},
 	'inCombat': function _inCombat() {

@@ -83,6 +83,8 @@ async function boltItem(workflow) {
     if (!templateUuid) return;
     let template = await fromUuid(templateUuid);
     if (!template) return;
+    let flag = workflow.actor.flags['midi-qol']?.ignoreNearbyFoes;
+    if (!flag) workflow.actor.flags['midi-qol'].ignoreNearbyFoes = 1;
     let position = canvas.grid.getSnappedPosition(template.object.center.x, template.object.center.y);
     let savedX = workflow.token.document.x;
     let savedY = workflow.token.document.y;
@@ -91,6 +93,7 @@ async function boltItem(workflow) {
     await MidiQOL.completeItemUse(feature, {}, options);
     workflow.token.document.x = savedX;
     workflow.token.document.y = savedY;
+    if (!flag) workflow.actor.flags['midi-qol'].ignoreNearbyFoes = 0;
     new Sequence().effect().atLocation(template.object).stretchTo(targetToken).file('jb2a.chain_lightning.primary.blue.60ft').play();
 }
 async function boltAttackItem(workflow) {

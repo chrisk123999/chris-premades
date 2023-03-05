@@ -1,3 +1,10 @@
+# 0.0.48:
+## New Content:
+- Alchemist Artificer: Restorative Reagents
+## Bug Fixes:
+- Storm Sphere
+- Spirit Guardians
+  
 # 0.0.47:
 ## New Content:
 - Spirit Guardians

@@ -44,6 +44,13 @@ export async function experimentalElixir(workflow) {
                 ]
             ];
         }
+        if (workflow.actor.classes.artificer.system.levels >= 9) {
+            if (!itemData.system.damage.parts) itemData.system.damage.parts = [];
+            itemData.system.damage.parts.push([
+                '2d6[healing] + ' + workflow.actor.system.abilities.int.mod,
+                'temphp'
+            ]);
+        }
         let effectData = {
             'label': itemData.name,
             'icon': '', //Blank to avoid showing up as a status icon.
