@@ -97,8 +97,16 @@ async function unequip(actor, origin, level) {
     }
     await chris.removeTempItems(actor, origin.id);
 }
+async function deleted(actor, effect) {
+    if (effect.disabled) return;
+    let originArray = effect.origin.split('Item.');
+    if (originArray.length != 2) return;
+    let originID = originArray[1];
+    await chris.removeTempItems(actor, originID);
+}
 export let grovelthrash = {
     'item': item,
     'equip': equip,
-    'unequip': unequip
+    'unequip': unequip,
+    'deleted': deleted
 }
