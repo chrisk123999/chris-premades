@@ -63,6 +63,22 @@ export function registerSettings() {
 		'type': Object,
 		'default': {}
 	});
+	game.settings.register(moduleName, 'Item Compendium', {
+		'name': 'Personal Item Compendium',
+		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',
+		'scope': 'world',
+		'config': true,
+		'type': String,
+		'default': 'world.ddb-' + game.world.id + '-ddb-items'
+	});
+	game.settings.register(moduleName, 'Spell Compendium', {
+		'name': 'Personal Spell Compendium',
+		'hint': 'An compendium full of spells to pick from (DDB spells compendium by default).',
+		'scope': 'world',
+		'config': true,
+		'type': String,
+		'default': 'world.ddb-' + game.world.id + '-ddb-spells'
+	});
 	game.settings.register(moduleName, 'Armor of Agathys', {
 		'name': 'Armor of Agathys Automation',
 		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
@@ -77,14 +93,6 @@ export function registerSettings() {
 				Hooks.off('midi-qol.RollComplete', macros.armorOfAgathys);
 			}
 		}
-	});
-	game.settings.register(moduleName, 'Item Compendium', {
-		'name': 'Personal Item Compendium',
-		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',
-		'scope': 'world',
-		'config': true,
-		'type': String,
-		'default': 'world.ddb-' + game.world.id + '-ddb-items'
 	});
 	game.settings.register(moduleName, 'Condition Resistance', {
 		'name': 'Condition Resistance Mechanic',

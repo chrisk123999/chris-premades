@@ -1,3 +1,7 @@
+# 0.0.51:
+## New Content:
+- Grovelthrash (Dormant - Exalted)
+  
 # 0.0.50:
 ## New Content:
 - Dragon's Wrath Weapon (Slumbering - Ascendant)

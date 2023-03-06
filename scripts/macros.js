@@ -45,6 +45,7 @@ import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js'
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {hex} from './macros/spells/hex/hex.js';
@@ -177,6 +178,7 @@ export let macros = {
 	'focusedAim': focusedAim,
 	'formOfDread': formOfDread,
 	'graveTouched': graveTouched,
+	'grovelthrash': grovelthrash,
 	'healingLight': healingLight,
 	'heartOfTheStorm': heartOfTheStorm,
 	'hex': hex,
