@@ -2,8 +2,8 @@ import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function item(workflow, level) {
     if (workflow.hitTargets.size != 1) return;
-    let setupQueue = await queue.setup(workflow.item.uuid, 'grovelthrash', 50);
-    if (!setupQueue) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'grovelthrash', 50);
+    if (!queueSetup) return;
     let selected = await chris.dialog('Activate Grovelthrash?', [['Yes', true], ['No', false]]);
     let damageDiceNum = 0;
     if (selected) {

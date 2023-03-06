@@ -1,3 +1,8 @@
+# 0.0.53:
+## New Monster Content:
+- Fire Snake: Heated Body
+- Salamander: Heated Body and Tail
+  
 # 0.0.51:
 ## New Content:
 - Grovelthrash (Dormant - Exalted)

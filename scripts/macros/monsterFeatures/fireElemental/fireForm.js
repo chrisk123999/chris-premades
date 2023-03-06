@@ -6,7 +6,9 @@ export async function fireForm(workflow) {
     let distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
     let targetActor = targetToken.actor;
-    let feature = targetActor.items.getName('Fire Form');
+    let effect = chris.findEffect(targetActor, 'Fire Form');
+    if (!effect) return;
+    let feature = await fromUuid(effect.origin);
     if (!feature) return;
     let options = {
         'showFullCard': false,

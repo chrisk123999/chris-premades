@@ -40,6 +40,7 @@ import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/exp
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
+import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
@@ -72,6 +73,7 @@ import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement/rayOfEnfeeble
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
+import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
@@ -113,12 +115,14 @@ let monster = {
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
 	'fireElemental': fireElemental,
+	'fireSnake': fireSnake,
 	'gallowsSpeaker': gallowsSpeaker,
 	'ghast': ghast,
 	'hezrou': hezrou,
 	'homunculus': homunculus,
 	'intellectDevourer': intellectDevourer,
 	'leucrotta': leucrotta,
+	'salamander': salamander,
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
 	'shadowghast': shadowghast,
@@ -128,7 +132,8 @@ let monster = {
 	'zombie': zombie
 }
 let onHit = {
-	'fireForm': fireElemental.fireForm
+	'fireForm': fireElemental.fireForm,
+	'heatedBody': fireSnake.heatedBody
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
 	switch (macroName) {
