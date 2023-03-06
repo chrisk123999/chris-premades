@@ -6,6 +6,7 @@ export function updateTriggers () {
     if (!triggers) triggers = {};
 }
 export function tokenMoved(token, changes) {
+    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y) return;
     for (let name of Object.values(triggers)) {
         let validSources = [];
@@ -25,6 +26,7 @@ export function tokenMoved(token, changes) {
     }
 }
 export function combatUpdate(combat, changes, context) {
+    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     let currentTurn = combat.current.turn;
     let previousTurn = context.effectmacro?.previousTR?.T;
     let currentRound = combat.current.round;

@@ -33,6 +33,13 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'LastGM', {
+		'name': 'LastGM',
+		'hint': 'Last GM to join the game.',
+		'scope': 'world',
+		'config': false,
+		'type': String
+	});
 	game.settings.register(moduleName, 'Combat Listener', {
 		'name': 'Combat Listener',
 		'hint': 'This setting allows certain macros from this module to function on combat changes.',

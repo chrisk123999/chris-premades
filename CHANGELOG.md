@@ -1,3 +1,7 @@
+# 0.0.50:
+## New Content:
+- Dragon's Wrath Weapon (Slumbering - Ascendant)
+  
 # 0.0.49:
 ## New Content:
 - Dragon Vessel (Slumbering - Ascendant)

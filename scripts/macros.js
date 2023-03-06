@@ -30,6 +30,7 @@ import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
@@ -167,6 +168,7 @@ export let macros = {
 	'divineSmite': divineSmite,
 	'dragonVessel': dragonVessel,
 	'dragonsBreath': dragonsBreath,
+	'dragonsWrath': dragonsWrath,
 	'dreadAmbusher': dreadAmbusher,
 	'elixirOfHealth': elixirOfHealth,
 	'experimentalElixir': experimentalElixir,

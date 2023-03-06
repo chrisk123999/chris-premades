@@ -306,5 +306,28 @@ export let chris = {
 	},
 	'inCombat': function _inCombat() {
 		return !(game.combat === null || game.combat === undefined || game.combat?.started === false);
+	},
+	'addTempItem': async function _addTempItem(actor, itemData, itemID, category, favorite, itemNumber) {
+		if (!itemData.flags['chris-premades']) itemData.flags['chris-premades'] = {}
+		itemData.flags['chris-premades'].tempItem = {
+			'source': itemID,
+			'itemNumber': itemNumber
+		}
+		if (category) itemData.flags['custom-character-sheet-sections'] = {
+            'sectionName': category
+        };
+		if (favorite) itemData.flags['tidy5e-sheet'] = {
+			'favorite': true
+		};
+		await actor.createEmbeddedDocuments('Item', [itemData]);
+	},
+	'removeTempItems': async function _removeTempItems(actor, itemID) {
+		let items = actor.items.filter(item => item.flags['chris-premades']?.tempItem?.source === itemID);
+		for (let i of items) {
+			await i.delete();
+		}
+	},
+	'getTempItem': function _getTempItem(actor, itemID, itemNumber) {
+		return actor.items.find(item => item.flags['chris-premades']?.tempItem?.source === itemID && item.flags['chris-premades']?.tempItem?.itemNumber === itemNumber);
 	}
 };
