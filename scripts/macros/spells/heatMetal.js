@@ -94,13 +94,26 @@ async function pulseItem(workflow) {
     if (!damageDice || !targetTokenUuid || !spellDC || !originUuid) return;
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
-    let damageRoll = await new Roll(damageDice).roll({async: true});
-    damageRoll.toMessage({
-        rollMode: 'roll',
-        speaker: {alias: name},
-        flavor: workflow.item.name
-    });
-    await chris.applyDamage([targetToken], damageRoll.total, 'fire');
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Heat Metal Damage', false);
+    if (!featureData) return;
+    featureData.system.damage.parts = [
+        [
+            damageDice,
+            'fire'
+        ]
+    ];
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Damage');
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let options = {
+        'showFullCard': false,
+        'createWorkflow': true,
+        'targetUuids': [targetTokenUuid],
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeSlot': false,
+    };
+    await MidiQOL.completeItemUse(feature, {}, options);
     let effectData = {
         'label': 'Heat Metal Dialogue',
         'icon': workflow.item.img,
