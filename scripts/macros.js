@@ -49,6 +49,7 @@ import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.j
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
+import {heatMetal} from './macros/spells/heatMetal.js';
 import {hex} from './macros/spells/hex/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
@@ -188,6 +189,7 @@ export let macros = {
 	'grovelthrash': grovelthrash,
 	'healingLight': healingLight,
 	'heartOfTheStorm': heartOfTheStorm,
+	'heatMetal': heatMetal,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hybridTransformation': hybridTransformation,

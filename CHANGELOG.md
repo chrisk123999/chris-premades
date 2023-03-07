@@ -1,3 +1,7 @@
+# 0.0.55:
+## New Content:
+- Heat Metal
+  
 # 0.0.54:
 ## New Content:
 - Potion of Fire Breath
