@@ -22,7 +22,13 @@ export async function dragonVessel(workflow, level) {
     }
     let selection = await chris.dialog('What item?', options);
     if (!selection) return;
-    let itemData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Item Compendium'), selection, false);
+    let itemData;
+    if (selection === 'Potion of Fire Breath') {
+        itemData = await chris.getItemFromCompendium('chris-premades.CPR Items', 'Potion of Fire Breath', false);
+        if (!itemData) return;
+        itemData.system.description.value = await chris.getCompendiumItemDescription('Potion of Fire Breath');
+    }
+    if (!itemData) itemData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Item Compendium'), selection, false);
     if (!itemData) return;
     itemData.name = workflow.item.name + ': ' + itemData.name;
     itemData.flags['tidy5e-sheet'] = {

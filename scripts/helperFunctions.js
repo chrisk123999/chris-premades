@@ -329,5 +329,9 @@ export let chris = {
 	},
 	'getTempItem': function _getTempItem(actor, itemID, itemNumber) {
 		return actor.items.find(item => item.flags['chris-premades']?.tempItem?.source === itemID && item.flags['chris-premades']?.tempItem?.itemNumber === itemNumber);
+	},
+	'getCompendiumItemDescription': async function _getCompendiumItemDescription(name) {
+		let itemData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Item Compendium'), name, false);
+		if (itemData) return itemData.system.description.value;
 	}
 };

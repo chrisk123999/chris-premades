@@ -79,21 +79,6 @@ export function registerSettings() {
 		'type': String,
 		'default': 'world.ddb-' + game.world.id + '-ddb-spells'
 	});
-	game.settings.register(moduleName, 'Armor of Agathys', {
-		'name': 'Armor of Agathys Automation',
-		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
-		'scope': 'world',
-		'config': true,
-		'type': Boolean,
-		'default': false,
-		'onChange': value => {
-			if (value) {
-				Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
-			} else {
-				Hooks.off('midi-qol.RollComplete', macros.armorOfAgathys);
-			}
-		}
-	});
 	game.settings.register(moduleName, 'Condition Resistance', {
 		'name': 'Condition Resistance Mechanic',
 		'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
@@ -125,6 +110,36 @@ export function registerSettings() {
 			} else {
 				Hooks.off('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
 				Hooks.off('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'On Hit', {
+		'name': 'On Hit Automation',
+		'hint': 'Enabling this allows the automation for certain "On Hit" features.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.RollComplete', onHitMacro);
+			} else {
+				Hooks.off('midi-qol.RollComplete', onHitMacro);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Armor of Agathys', {
+		'name': 'Armor of Agathys Automation',
+		'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
+			} else {
+				Hooks.off('midi-qol.RollComplete', macros.armorOfAgathys);
 			}
 		}
 	});
@@ -261,21 +276,6 @@ export function registerSettings() {
 				Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 			} else {
 				Hooks.off('midi-qol.preAttackRoll', macros.wildhunt);
-			}
-		}
-	});
-	game.settings.register(moduleName, 'On Hit', {
-		'name': 'On Hit Automation',
-		'hint': 'Enabling this allows the automation for certain "On Hit" features.',
-		'scope': 'world',
-		'config': true,
-		'type': Boolean,
-		'default': false,
-		'onChange': value => {
-			if (value) {
-				Hooks.on('midi-qol.RollComplete', onHitMacro);
-			} else {
-				Hooks.off('midi-qol.RollComplete', onHitMacro);
 			}
 		}
 	});

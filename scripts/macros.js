@@ -62,6 +62,7 @@ import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
+import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
 import {potionOfGiantSize} from './macros/items/potionOfGiantSize.js';
 import {potionOfGrowth} from './macros/items/potionOfGrowth.js';
 import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
@@ -86,6 +87,7 @@ import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere/stormSphere.js';
+import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
@@ -198,6 +200,7 @@ export let macros = {
 	'onHit': onHit,
 	'onMove': onMove,
 	'potionOfDiminution': potionOfDiminution,
+	'potionOfFireBreath': potionOfFireBreath,
 	'potionOfGiantSize': potionOfGiantSize,
 	'potionOfGrowth': potionOfGrowth,
 	'potionOfMaximumPower': potionOfMaximumPower,
@@ -217,6 +220,7 @@ export let macros = {
 	'spiritShroud': spiritShroud,
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
+	'stormgirdle': stormgirdle,
 	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
@@ -296,6 +300,7 @@ export async function setupWorldMacros() {
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
+	await createMacro('stormgirdle', actorOnUseMacro('stormgirdle'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -388,6 +393,9 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'potionOfMaximumPower':
 			await potionOfMaximumPower(workflow);
+			break;
+		case 'stormgirdle':
+			await stormgirdle.stormAvatar(workflow);
 			break;
 	}
 }

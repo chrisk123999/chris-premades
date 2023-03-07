@@ -1,3 +1,10 @@
+# 0.0.54:
+## New Content:
+- Potion of Fire Breath
+- Stormgirdle (Dormant - Exalted)
+## Bug Fixes:
+- Fire Elemental: Touch and Fire Form
+  
 # 0.0.53:
 ## New Monster Content:
 - Fire Snake: Heated Body
