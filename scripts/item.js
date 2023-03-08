@@ -9,7 +9,7 @@ export function createHeaderButton(config, buttons) {
 }
 async function itemConfig(itemDocument) {
     if (!itemDocument.actor) {
-        ui.notifications.info('This feature may only be used on owned items.');
+        ui.notifications.info('This feature must be used on an item that is on an actor!');
         return;
     }
     let itemName = itemDocument.name;

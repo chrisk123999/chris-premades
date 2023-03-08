@@ -1,35 +1,35 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
-import {acidArrow} from './macros/spells/acidArrow/acidArrow.js';
+import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
-import {armorOfAgathys} from './macros/spells/armorOfAgathys/armorOfAgathys.js';
+import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
-import {blink} from './macros/spells/blink/blink.js';
+import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
-import {callLightning} from './macros/spells/callLightning/callLightning.js';
+import {callLightning} from './macros/spells/callLightning.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
-import {chainLightning} from './macros/spells/chainLightning/chainLightning.js';
-import {charmPerson} from './macros/spells/charmPerson/charmPerson.js';
+import {chainLightning} from './macros/spells/chainLightning.js';
+import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
-import {chillTouch} from './macros/spells/chillTouch/chillTouch.js';
+import {chillTouch} from './macros/spells/chillTouch.js';
 import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
 import {cleave} from './macros/mechanics/cleave/cleave.js';
-import {cloudkill} from './macros/spells/cloudkill/cloudkill.js';
+import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
-import {darkness} from './macros/spells/darkness/darkness.js';
-import {deathWard} from './macros/spells/deathWard/deathWard.js';
+import {darkness} from './macros/spells/darkness.js';
+import {deathWard} from './macros/spells/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
-import {detectThoughts} from './macros/spells/detectThoughts/detectThoughts.js';
+import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
-import {dragonsBreath} from './macros/spells/dragonsBreath/dragonsBreath.js';
+import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
@@ -50,16 +50,17 @@ import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
-import {hex} from './macros/spells/hex/hex.js';
+import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
-import {holyWeapon} from './macros/spells/holyWeapon/holyWeapon.js';
+import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
-import {lightningArrow} from './macros/spells/lightningArrow/lightningArrow.js';
-import {massCureWounds} from './macros/spells/massCureWounds/massCureWounds.js';
-import {mirrorImage} from './macros/spells/mirrorImage/mirrorImage.js';
+import {lightningArrow} from './macros/spells/lightningArrow.js';
+import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
+import {massCureWounds} from './macros/spells/massCureWounds.js';
+import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
@@ -69,32 +70,32 @@ import {potionOfGrowth} from './macros/items/potionOfGrowth.js';
 import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
 import {potionOfPoison} from './macros/items/potionOfPoison.js';
 import {potionOfVitality} from './macros/items/potionOfVitality.js';
-import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood/protectionFromEvilAndGood.js';
+import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
-import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement/rayOfEnfeeblement.js';
+import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
-import {sanctuary} from './macros/spells/sanctuary/sanctuary.js';
-import {shadowBlade} from './macros/spells/shadowBlade/shadowBlade.js';
+import {sanctuary} from './macros/spells/sanctuary.js';
+import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
-import {shockingGrasp} from './macros/spells/shockingGrasp/shockingGrasp.js';
-import {spikeGrowth} from './macros/spells/spikeGrowth/spikeGrowth.js';
-import {spiritGuardians} from './macros/spells/spiritGuardians/spiritGuardians.js';
-import {spiritShroud} from './macros/spells/spiritShroud/spiritShroud.js';
+import {shockingGrasp} from './macros/spells/shockingGrasp.js';
+import {spikeGrowth} from './macros/spells/spikeGrowth.js';
+import {spiritGuardians} from './macros/spells/spiritGuardians.js';
+import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
-import {stormSphere} from './macros/spells/stormSphere/stormSphere.js';
+import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
-import {vampiricTouch} from './macros/spells/vampiricTouch/vampiricTouch.js';
+import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
-import {witherAndBloom} from './macros/spells/witherAndBloom/witherAndBloom.js';
+import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 export async function onHitMacro(workflow) {
@@ -194,6 +195,7 @@ export let macros = {
 	'holyWeapon': holyWeapon,
 	'hybridTransformation': hybridTransformation,
 	'lightningArrow': lightningArrow,
+	'maneuvers': maneuvers,
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,
 	'monster': monster,
@@ -291,6 +293,13 @@ export async function setupWorldMacros() {
 	await createMacro('hex', actorOnUseMacro('hex'), false);
 	await createMacro('lightningArrowAttack', actorOnUseMacro('lightningArrowAttack'), false);
 	await createMacro('lightningArrowDamage', actorOnUseMacro('lightningArrowDamage'), false);
+	await createMacro('maneuverGoadingAttack', actorOnUseMacro('maneuverGoadingAttack'), false);
+	await createMacro('maneuverGoadingTarget', actorOnUseMacro('maneuverGoadingTarget'), false);
+	await createMacro('maneuverMenacingAttack', actorOnUseMacro('maneuverMenacingAttack'), false);
+	await createMacro('maneuverPushingAttack', actorOnUseMacro('maneuverPushingAttack'), false);
+	await createMacro('maneuverRefund', actorOnUseMacro('maneuverRefund'), false);
+	await createMacro('maneuverSweepingAttack', actorOnUseMacro('maneuverSweepingAttack'), false);
+	await createMacro('maneuverTripAttack', actorOnUseMacro('maneuverTripAttack'), false);
 	await createMacro('potionOfGiantSize', actorOnUseMacro('potionOfGiantSize'), false);
 	await createMacro('potionOfMaximumPower', actorOnUseMacro('potionOfMaximumPower'), false);
 	await createMacro('radiantSoul', actorOnUseMultiPassMacro('radiantSoul'), false);
@@ -300,9 +309,9 @@ export async function setupWorldMacros() {
 	await createMacro('ringOfSpellStoringCast', actorOnUseMacro('ringOfSpellStoringCast'), false);
 	await createMacro('riteOfTheDawn', actorOnUseMacro('riteOfTheDawn'), false);
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
+	await createMacro('stormgirdle', actorOnUseMacro('stormgirdle'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
-	await createMacro('stormgirdle', actorOnUseMacro('stormgirdle'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -398,6 +407,27 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'stormgirdle':
 			await stormgirdle.stormAvatar(workflow);
+			break;
+		case 'maneuverRefund':
+			await maneuvers.refund(workflow);
+			break;
+		case 'maneuverGoadingTarget':
+			await maneuvers.goadingTarget(workflow);
+			break;
+		case 'maneuverGoadingAttack':
+			await maneuvers.goadingAttack(workflow);
+			break;
+		case 'maneuverMenacingAttack':
+			await maneuvers.menacingAttack(workflow);
+			break;
+		case 'maneuverPushingAttack':
+			await maneuvers.pushingAttack(workflow);
+			break;
+		case 'maneuverSweepingAttack':
+			await maneuvers.sweepingAttackItem(workflow);
+			break;
+		case 'maneuverTripAttack':
+			await maneuvers.tripAttack(workflow);
 			break;
 	}
 }

@@ -1,6 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 export async function strengthDrain(workflow) {
-    if (workflow.hitTargets.size != 1) return;
+    if (workflow.hitTargets.size != 1 || workflow.isFumble) return;
     let roll = await new Roll('1d4').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
