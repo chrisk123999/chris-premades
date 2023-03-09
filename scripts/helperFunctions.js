@@ -124,8 +124,11 @@ export let chris = {
 		let scaling = item.system.save.scaling;
 		if (scaling === 'spell') {
 			spellDC = item.actor.system.attributes.spelldc;
-		} else {
+		} else  if (scaling != 'flat') {
 			spellDC = item.actor.system.abilities[scaling].dc;
+		} else {
+			spellDC = item.system.save.dc;
+			if (!spellDC) spellDC = 10;
 		}
 		return spellDC;
 	},
