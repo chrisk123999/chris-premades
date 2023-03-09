@@ -23,7 +23,7 @@ export async function sanctuary(workflow) {
     spellItem.system.save.ability = 'wis';
     spellItem.system.preparation.mode = 'atwill';
     delete(spellItem.effects);
-    let spell = new CONFIG.Item.documentClass(spellItem, {parent: targetActor});
+    let spell = new CONFIG.Item.documentClass(spellItem, {parent: targetItem.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
