@@ -1,6 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 export async function cleave(workflow) {
-    if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak') return;
+    if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak' || !workflow.damageList) return;
     let newHP = workflow.damageList[0].newHP;
     if (newHP != 0) return;
     let oldHP = workflow.damageList[0].oldHP;

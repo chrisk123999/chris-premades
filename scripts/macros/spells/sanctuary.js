@@ -29,6 +29,6 @@ export async function sanctuary(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    workflow.isFumble = true;
     queue.remove(workflow.item.uuid);
+    return false;
 }

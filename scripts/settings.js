@@ -212,9 +212,9 @@ export function registerSettings() {
 		'default': false,
 		'onChange': value => {
 			if (value) {
-				Hooks.on('midi-qol.AttackRollComplete', macros.sanctuary);
+				Hooks.on('midi-qol.preItemRoll', macros.sanctuary);
 			} else {
-				Hooks.off('midi-qol.AttackRollComplete', macros.sanctuary);
+				Hooks.off('midi-qol.preItemRoll', macros.sanctuary);
 			}
 		}
 	});
