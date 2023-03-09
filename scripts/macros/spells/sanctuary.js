@@ -1,6 +1,17 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function sanctuary(workflow) {
+    let invalidTypes = [
+        'cone',
+        'cube',
+        'cylinder',
+        'line',
+        'radious',
+        'sphere',
+        'square',
+        'wall'
+    ];
+    if (invalidTypes.includes(workflow.item.system.target.type)) return;
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
