@@ -36,17 +36,7 @@ async function itemConfig(itemDocument) {
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 break;
         }
-        switch (itemName) {
-            case 'Bardic Inspiration':
-                itemName = 'Bardic Inspiration & Magical Inspiration';
-                break;
-            case 'Form of Dread: Transform':
-                itemName = 'Form of Dread';
-                break;
-            case 'Ring of Spell Storing':
-                itemName = 'Ring of Spell Storing (0/5)';
-                break;
-        }
+        itemName = getItemName(itemName);
         compendiumItem = await chris.getItemFromCompendium(searchCompendiums[0], itemName, true);
         if (!compendiumItem && searchCompendiums.length == 2) compendiumItem = await chris.getItemFromCompendium(searchCompendiums[1], itemName , true);
     } else if (itemDocument.actor.type === 'npc') {
@@ -100,4 +90,18 @@ async function itemConfig(itemDocument) {
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');
+}
+export function getItemName(itemName) {
+    switch (itemName) {
+        case 'Bardic Inspiration':
+            itemName = 'Bardic Inspiration & Magical Inspiration';
+            break;
+        case 'Form of Dread: Transform':
+            itemName = 'Form of Dread';
+            break;
+        case 'Ring of Spell Storing':
+            itemName = 'Ring of Spell Storing (0/5)';
+            break;
+    }
+    return itemName;
 }

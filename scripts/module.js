@@ -2,7 +2,7 @@ import {registerSettings} from './settings.js';
 import {macros, setupWorldMacros, setupMacroFolder, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createHeaderButton} from './item.js';
+import {createHeaderButton, getItemName} from './item.js';
 import {queue} from './queue.js';
 import {tokenMove, tokenMoved, updateTriggers, combatUpdate} from './movement.js';
 import {bab} from './babHelpers.js';
@@ -41,10 +41,14 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Movement Listener') || game.user.isGM) Hooks.on('updateToken', tokenMoved);
 	if (game.settings.get('chris-premades', 'Combat Listener') || game.user.isGM) Hooks.on('updateCombat', combatUpdate);
 });
+let ddb = {
+	'getItemName': getItemName
+}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
 	queue,
 	tokenMove,
-	bab
+	bab,
+	ddb
 }
