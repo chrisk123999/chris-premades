@@ -1,5 +1,5 @@
 # 0.0.63:
-## New Content:
+## New Monster Content:
 - Sprite: Shortbow
 ## Bug Fixes:
 - Heat Metal
