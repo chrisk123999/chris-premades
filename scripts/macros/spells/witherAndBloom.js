@@ -27,7 +27,7 @@ export async function witherAndBloom(workflow) {
 			'value': false
 		}
 	];
-	let selection = await chris.selectTarget('Heal a target?', buttons, healTargets, true);
+	let selection = await chris.selectTarget('Heal a target?', buttons, healTargets, true, 'one');
 	if (!selection.buttons) return;
 	let targetTokenUuid = selection.inputs.find(id => id != false);
 	if (!targetTokenUuid) return;

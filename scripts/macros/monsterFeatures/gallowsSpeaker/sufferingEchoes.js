@@ -16,7 +16,7 @@ export async function sufferingEchoes(workflow) {
         }
     ];
     if (nearbyTargets.length > 3) {
-        let selection = await chris.selectTarget('What additional targets? Max: 3', buttons, nearbyTargets, true, true);
+        let selection = await chris.selectTarget('What additional targets? Max: 3', buttons, nearbyTargets, true, 'multiple');
         if (!selection.buttons) return;
 		nearbyTargets = [];
         for (let i of selection.inputs) {

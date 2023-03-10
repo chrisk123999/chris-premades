@@ -55,6 +55,7 @@ import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
@@ -70,6 +71,7 @@ import {potionOfGrowth} from './macros/items/potionOfGrowth.js';
 import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
 import {potionOfPoison} from './macros/items/potionOfPoison.js';
 import {potionOfVitality} from './macros/items/potionOfVitality.js';
+import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
@@ -194,6 +196,7 @@ export let macros = {
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hybridTransformation': hybridTransformation,
+	'inspiringSmite': inspiringSmite,
 	'lightningArrow': lightningArrow,
 	'maneuvers': maneuvers,
 	'massCureWounds': massCureWounds,
@@ -210,6 +213,7 @@ export let macros = {
 	'potionOfMaximumPower': potionOfMaximumPower,
 	'potionOfPoison': potionOfPoison,
 	'potionOfVitality': potionOfVitality,
+	'preserveLife': preserveLife,
 	'protectionFromEvilAndGood': protectionFromEvilAndGood,
 	'radiantSoul': radiantSoul,
 	'rayOfEnfeeblement': rayOfEnfeeblement,

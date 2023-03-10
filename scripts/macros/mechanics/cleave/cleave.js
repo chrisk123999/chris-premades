@@ -22,7 +22,7 @@ export async function cleave(workflow) {
             'value': false
         }
     ];
-    let selection = await chris.selectTarget('Cleave nearby target?', buttons, overlappingTargets, true);
+    let selection = await chris.selectTarget('Cleave nearby target?', buttons, overlappingTargets, true, 'one');
     if (selection.buttons === false) return;
     let targetTokenID = selection.inputs.find(id => id != false);
     if (!targetTokenID) return;

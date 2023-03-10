@@ -20,7 +20,7 @@ export async function chainLightning(workflow) {
                 'value': false
             }
         ];
-        let selection = await chris.selectTarget('Where should the lightning bounce? Max: ' + maxTargets, buttons, nearbyTokens, true, true);
+        let selection = await chris.selectTarget('Where should the lightning bounce? Max: ' + maxTargets, buttons, nearbyTokens, true, 'multiple');
         if (!selection.buttons) {
             queue.remove(workflow.item.uuid);
             return;

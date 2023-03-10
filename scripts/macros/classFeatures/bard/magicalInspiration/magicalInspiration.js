@@ -45,7 +45,7 @@ async function bardicInspirationDamage(workflow) {
 			'value': false
 		}
 	];
-	let selection = await chris.selectTarget('Use Magical Inspiration?', buttons, workflow.targets, false);
+	let selection = await chris.selectTarget('Use Magical Inspiration?', buttons, workflow.targets, false, 'one');
 	if (selection.buttons === false) {
 		queue.remove(workflow.item.uuid);
 		return;

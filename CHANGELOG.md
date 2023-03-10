@@ -1,3 +1,8 @@
+# 0.0.62:
+## New Content:
+- Life Domain Cleric: Preserve Life
+- Oath of Glory Paladin: Inspiring Smite
+  
 # 0.0.57:
 ## New Content:
 - Battle Master Maneuvers: Ambush, Bait and Switch, Brace, Commander's Strike, Disarming Strike, Distracting Strike, Evasive Footwork, Feinting Attack, Goading Attack, Grappling Strike, Lunging Attack, Maneuvering Attack, Parry, Precision Attack, Pushing Attack, Quick Toss, Rally, Riposte, Sweeping Attack, Tactical Assessment, and Trip Attack

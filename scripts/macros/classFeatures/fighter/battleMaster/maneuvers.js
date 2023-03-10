@@ -273,7 +273,7 @@ async function sweepingAttackItem(workflow) {
                 'value': false
             }
         ];
-        let selection = await chris.selectTarget('What target?', buttons, overlappingTargets, true, false);
+        let selection = await chris.selectTarget('What target?', buttons, overlappingTargets, true, false, 'one');
         if (selection.buttons === false) {
             await refund(workflow);
             await chris.removeEffect(effect);

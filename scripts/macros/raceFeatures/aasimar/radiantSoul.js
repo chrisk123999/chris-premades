@@ -38,7 +38,7 @@ async function attack(workflow, pass) {
                     'value': false
                 }
             ];
-            let selection = await chris.selectTarget('Celestial Revelation: Add extra damage?', buttons, workflow.targets);
+            let selection = await chris.selectTarget('Celestial Revelation: Add extra damage?', buttons, workflow.targets, false, 'one');
             if (selection.buttons === false) {
                 queue.remove(workflow.item.uuid);
                 return;

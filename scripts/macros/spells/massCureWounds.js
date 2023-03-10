@@ -22,7 +22,7 @@ export async function massCureWounds(workflow) {
 				'value': false
 			}
 		];
-		let selection = await chris.selectTarget('What targets would you like to heal? Max: 6', buttons, targetTokens, true, true);
+		let selection = await chris.selectTarget('What targets would you like to heal? Max: 6', buttons, targetTokens, true, 'multiple');
 		if (!selection.buttons) return;
 		let selectedTokens = [];
 		for (let i of selection.inputs) {

@@ -142,7 +142,7 @@ export let chris = {
 		}
 		return spellMod;
 	},
-	'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, multiple) {
+	'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type) {
 		let generatedInputs = [];
 		let isFirst = true;
 		let number = 1;
@@ -162,14 +162,14 @@ export let chris = {
 			let html = `<img src="` + texture + `" id="` + i.id + `" style="width:40px;height:40px;vertical-align:middle;"><span> ` + name + `</span>`;
 			let value = i.id;
 			if (returnUuid) value = i.document.uuid;
-			if (multiple) {
+			if (type === 'multiple') {
 				generatedInputs.push({
 					'label': html,
 					'type': 'checkbox',
 					'options': false,
 					'value': value
 				});
-			} else {
+			} else if (type === 'one') {
 				generatedInputs.push({
 					'label': html,
 					'type': 'radio',
@@ -177,7 +177,12 @@ export let chris = {
 					'value': value
 				});
 				isFirst = false;
-			}
+			} else if (type === 'number') {
+				generatedInputs.push({
+					'label': html,
+					'type': 'number'
+				});
+			} else return {'buttons': false};
 		}
 		function dialogRender(html) {
 			let trs = html[0].getElementsByTagName('tr');
@@ -186,7 +191,7 @@ export let chris = {
 				t.style.flexFlow = 'row-reverse';
 				t.style.alignItems = 'center';
 				t.style.justifyContent = 'flex-end';
-				if (!multiple) t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true});
+				if (type === 'one') t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true});
 			}
 			let ths = html[0].getElementsByTagName('th');
 			for (let t of ths) {

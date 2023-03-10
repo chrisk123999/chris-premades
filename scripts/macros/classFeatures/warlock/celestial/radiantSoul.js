@@ -48,7 +48,7 @@ async function attack(workflow, pass) {
                     'value': false
                 }
             ];
-            let selection = await chris.selectTarget('Radiant Soul: Add extra damage?', buttons, workflow.targets);
+            let selection = await chris.selectTarget('Radiant Soul: Add extra damage?', buttons, workflow.targets, false, 'one');
             if (selection.buttons === false) {
                 queue.remove(workflow.item.uuid);
                 return;
