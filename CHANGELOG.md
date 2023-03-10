@@ -1,3 +1,9 @@
+# 0.0.63:
+## New Content:
+- Sprite: Shortbow
+## Bug Fixes:
+- Heat Metal
+  
 # 0.0.62:
 ## New Content:
 - Life Domain Cleric: Preserve Life

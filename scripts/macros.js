@@ -88,6 +88,7 @@ import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
+import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
@@ -132,6 +133,7 @@ let monster = {
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
 	'shadowghast': shadowghast,
+	'sprite': sprite,
 	'stenchKow': stenchKow,
 	'succubus': succubus,
 	'troglodyte': troglodyte,
