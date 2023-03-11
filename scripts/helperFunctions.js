@@ -341,5 +341,8 @@ export let chris = {
 	'getCompendiumItemDescription': async function _getCompendiumItemDescription(name) {
 		let itemData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Item Compendium'), name, false);
 		if (itemData) return itemData.system.description.value;
+	},
+	'updateTargets': function _updateTargets(targets) {
+		game.user.updateTokenTargets(targets);
 	}
 };

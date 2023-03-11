@@ -44,6 +44,7 @@ import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
+import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
@@ -95,13 +96,13 @@ import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
+import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
-import {generic} from './macros/monsterFeatures/generic/generic.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
@@ -125,6 +126,7 @@ let monster = {
 	'fireElemental': fireElemental,
 	'fireSnake': fireSnake,
 	'gallowsSpeaker': gallowsSpeaker,
+	'generic': generic,
 	'ghast': ghast,
 	'hezrou': hezrou,
 	'homunculus': homunculus,
@@ -138,8 +140,7 @@ let monster = {
 	'stenchKow': stenchKow,
 	'succubus': succubus,
 	'troglodyte': troglodyte,
-	'zombie': zombie,
-	'generic': generic
+	'zombie': zombie
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm,
@@ -233,6 +234,7 @@ export let macros = {
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
+	'turnUndead': turnUndead,
 	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,

@@ -1,6 +1,12 @@
+# 0.0.67:
+## New Content:
+- Channel Divinity: Turn Undead
+## New Monster Features:
+- Turn Resistance and Turn Immunity
+  
 # 0.0.65:
 ## New Monster Content:
-- Swarm of Cranium Rats, Swarm of Sorrowfish, Swarm of , Sahuagin Hatching Swarm, Swarm of Bats, , Swarm of Insects (Beetles, Spiders, and Wasps), Swarm of Quippers, Swarm of Ravens, Swarm of Animated Books, Swarm of Mechanical Spiders, Swarm of Campestris, and Skeletal Swarm: Swarm Damage
+- Swarm of Cranium Rats, Swarm of Sorrowfish, Swarm of , Sahuagin Hatching Swarm, Swarm of Bats, Swarm of Insects (Beetles, Spiders, and Wasps), Swarm of Quippers, Swarm of Ravens, Swarm of Animated Books, Swarm of Mechanical Spiders, Swarm of Campestris, and Skeletal Swarm: Swarm Damage
 - Azer: Heated Body
   
 # 0.0.63:
