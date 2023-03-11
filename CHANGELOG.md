@@ -4,7 +4,7 @@
 ## Bug Fixes:
 - Ancestral Protectors
 - Wither and Bloom
-- Compendium item fetch speed improvments (Thanks MrPrimate)
+- Compendium item fetch speed improvements (Thanks MrPrimate)
   
 # 0.0.67:
 ## New Content:
