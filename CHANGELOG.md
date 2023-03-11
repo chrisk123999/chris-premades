@@ -1,6 +1,6 @@
 # 0.0.69:
 ## New Content:
-- Twilight Sanctuary
+- Twilight Domain: Twilight Sanctuary
 ## Bug Fixes:
 - Ancestral Protectors
 - Wither and Bloom
