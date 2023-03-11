@@ -97,6 +97,7 @@ import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
+import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
@@ -235,6 +236,7 @@ export let macros = {
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
 	'turnUndead': turnUndead,
+	'twilightSanctuary': twilightSanctuary,
 	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,

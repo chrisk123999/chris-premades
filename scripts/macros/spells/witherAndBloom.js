@@ -71,7 +71,7 @@ export async function witherAndBloom(workflow) {
 				'value': false
 			}
 		];
-		let maxHitDice = effect.flags.world.spell.witherAndBloom;
+		let maxHitDice = effect.flags['chris-premades'].spell.witherAndBloom;
 		let selection = await chrisPremades.helpers.numberDialog('Heal using hit dice? Max: ' + maxHitDice, buttons, inputs);
 		if (!selection.buttons) {
 			effect.delete();
@@ -120,7 +120,7 @@ export async function witherAndBloom(workflow) {
 					'script': chris.functionToString(effectMacro)
 				}
 			},
-			'world': {
+			'chris-premades': {
 				'spell': {
 					'witherAndBloom': workflow.castData.castLevel - 1
 				}

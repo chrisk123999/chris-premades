@@ -1,3 +1,11 @@
+# 0.0.69:
+## New Content:
+- Twilight Sanctuary
+## Bug Fixes:
+- Ancestral Protectors
+- Wither and Bloom
+- Compendium item fetch speed improvments (Thanks MrPrimate)
+  
 # 0.0.67:
 ## New Content:
 - Channel Divinity: Turn Undead

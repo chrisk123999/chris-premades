@@ -38,7 +38,7 @@ async function sourceAttack(workflow) {
             'dae': {
                 'transfer': false,
                 'specialDuration': [
-                    'turnStart'
+                    'turnStartSource'
                 ],
                 'stackable': 'multi',
                 'macroRepeat': 'none'

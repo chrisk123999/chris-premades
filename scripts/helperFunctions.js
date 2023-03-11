@@ -246,7 +246,7 @@ export let chris = {
 			ui.notifications.warn('Invalid compendium specified!');
 			return false;
 		}
-		const packIndex = await gamePack.getIndex({ fields: ["name", "type", "flags.cf.id"] });
+		const packIndex = await gamePack.getIndex({fields: ['name', 'type', 'flags.cf.id']});
 		const match = packIndex.find(item => item.name === name 
 			&& (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
 		if (match) {
