@@ -18,6 +18,7 @@ async function itemConfig(itemDocument) {
     let isNPC = false;
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
+    itemName = getItemName(itemName);
     if (!isNPC || itemType === 'spell') {
         switch (itemType) {
             case 'weapon':
@@ -36,7 +37,6 @@ async function itemConfig(itemDocument) {
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 break;
         }
-        itemName = getItemName(itemName);
         compendiumItem = await chris.getItemFromCompendium(searchCompendiums[0], itemName, true);
         if (!compendiumItem && searchCompendiums.length == 2) compendiumItem = await chris.getItemFromCompendium(searchCompendiums[1], itemName , true);
     } else if (itemDocument.actor.type === 'npc') {
