@@ -241,23 +241,20 @@ export let chris = {
 		return `(${input.toString()})()`;
 	},
 	'getItemFromCompendium': async function _getItemFromCompendium(key, name, ignoreNotFound, packFolderId) {
-		let gamePack = game.packs.get(key);
+		const gamePack = game.packs.get(key);
 		if (!gamePack) {
 			ui.notifications.warn('Invalid compendium specified!');
 			return false;
 		}
-		let packItems = await gamePack.getDocuments();
-		let itemData;
-		if (!packFolderId) {
-			itemData = packItems.find(item => item.name === name);
+		const packIndex = await gamePack.getIndex();
+		const match = packIndex.find(item => item.name === name 
+			&& (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
+		if (match) {
+			return (await gamePack.getDocument(match._id))?.toObject();
 		} else {
-			itemData = packItems.find(item => item.name === name && item.flags.cf?.id === packFolderId)
-		}
-		if (!itemData) {
 			if (!ignoreNotFound) ui.notifications.warn('Item not found in specified compendium! Check spelling?');
-			return false;
+			return undefined;
 		}
-		return itemData.toObject();
 	},
 	'raceOrType': function _raceOrType(actor) {
 		return actor.type === "npc" ? actor.system.details?.type?.value : actor.system.details?.race;
