@@ -92,6 +92,9 @@ export let chris = {
 			null
 		);
 	},
+	'applyWorkflowDamage': async function _applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, flavor, itemCardId) {
+		new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {'flavor': flavor, 'itemCardId': itemCardId});
+	},
 	'findNearby': function _findNearby(tokenDoc, range, disposition) {
 		let dispositionValue;
 		switch (disposition) {

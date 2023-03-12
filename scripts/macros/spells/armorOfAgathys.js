@@ -1,6 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 export async function armorOfAgathys(workflow) {
-    if (workflow.hitTargets.size != 1) return;
+    if (workflow.hitTargets.size != 1 || !workflow.item) return;
     let attackType = workflow.item.system.actionType;
     if (!(attackType === 'mwak' || attackType === 'msak')) return;
 	let effect = chris.findEffect(workflow.hitTargets.first().actor, 'Armor of Agathys');

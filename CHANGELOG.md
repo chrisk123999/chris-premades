@@ -1,3 +1,7 @@
+# 0.0.74:
+## Bug Fixes:
+- Cleave, Fire Form, Heated Body, Armor of Agathys, Beacon of Hope, Mass Cure Wounds, and Wither and Bloom
+  
 # 0.0.73:
 ## Bug Fixes:
 - Beacon of Hope
@@ -24,7 +28,7 @@
   
 # 0.0.65:
 ## New Monster Content:
-- Swarm of Cranium Rats, Swarm of Sorrowfish, Swarm of , Sahuagin Hatching Swarm, Swarm of Bats, Swarm of Insects (Beetles, Spiders, and Wasps), Swarm of Quippers, Swarm of Ravens, Swarm of Animated Books, Swarm of Mechanical Spiders, Swarm of Campestris, and Skeletal Swarm: Swarm Damage
+- Swarm of Cranium Rats, Swarm of Sorrowfish, Sahuagin Hatching Swarm, Swarm of Bats, Swarm of Insects (Beetles, Spiders, and Wasps), Swarm of Quippers, Swarm of Ravens, Swarm of Animated Books, Swarm of Mechanical Spiders, Swarm of Campestris, and Skeletal Swarm: Swarm Damage
 - Azer: Heated Body
   
 # 0.0.63:

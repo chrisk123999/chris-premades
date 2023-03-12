@@ -1,8 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
-export async function fireForm(workflow) {
-    if (workflow.hitTargets.size != 1) return;
+export async function fireForm(workflow, targetToken) {
+    if (workflow.hitTargets.size === 0) return;
     if (!(workflow.item.system.actionType === 'mwak' || workflow.item.system.actionType === 'msak')) return;
-    let targetToken = workflow.targets.first();
     let distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
     let targetActor = targetToken.actor;

@@ -11,7 +11,7 @@ export async function massCureWounds(workflow) {
 	let damageFormula = diceNumber + 'd8[healing] + ' + chris.getSpellMod(workflow.item);
 	let damageRoll = await new Roll(damageFormula).roll({async: true});
 	if (targetTokens.length <= 6) {
-		chris.applyDamage(targetTokens, damageRoll.total, 'healing');
+		chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', targetTokens, workflow.item.name, workflow.itemCardId);
 	} else {
 		let buttons = [
 			{
@@ -32,11 +32,6 @@ export async function massCureWounds(workflow) {
 			ui.notifications.info('Too many targets selected!');
 			return;
 		}
-		chris.applyDamage(selectedTokens, damageRoll.total, 'healing');
+		chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', selectedTokens, workflow.item.name, workflow.itemCardId);
 	}
-	damageRoll.toMessage({
-		rollMode: 'roll',
-		speaker: {alias: name},
-		flavor: workflow.item.name
-	});
 }

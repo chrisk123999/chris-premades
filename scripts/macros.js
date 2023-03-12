@@ -108,15 +108,17 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
-	if (workflow.targets.first().document.uuid === workflow.token.document.uuid) return;
-	let onHitName = workflow.targets.first().actor.flags['chris-premades']?.feature?.onHit;
-	if (!onHitName) return;
-	let onHitFunction = macros.onHit[onHitName];
-	if (typeof onHitFunction != 'function') {
-		ui.notifications.warn('Invalid actor onHit macro!');
-		return;
-	}
-	await onHitFunction(workflow);
+	workflow.targets.forEach(async token => {
+		let onHitName = token.actor.flags['chris-premades']?.feature?.onHit;
+		if (!onHitName) return;
+		if (token.document.uuid === workflow.token.document.uuid) return;
+		let onHitFunction = macros.onHit[onHitName];
+		if (typeof onHitFunction != 'function') {
+			ui.notifications.warn('Invalid actor onHit macro!');
+			return;
+		}
+		await onHitFunction(workflow, token);
+	});
 }
 let monster = {
 	'bulette': bulette,

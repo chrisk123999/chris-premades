@@ -22,4 +22,5 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     if (healingDifference === 0) return;
     ditem.hpDamage -= healingDifference;
     ditem.newHP += healingDifference;
+    ditem.totalDamage = newHealingTotal;
 }

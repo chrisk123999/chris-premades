@@ -71,7 +71,7 @@ export async function witherAndBloom(workflow) {
 				'value': false
 			}
 		];
-		let maxHitDice = effect.flags['chris-premades'].spell.witherAndBloom;
+		let maxHitDice = effect.flags['chris-premades'].spell.witherAndBloom.castLevel;
 		let selection = await chrisPremades.helpers.numberDialog('Heal using hit dice? Max: ' + maxHitDice, buttons, inputs);
 		if (!selection.buttons) {
 			effect.delete();
@@ -93,12 +93,8 @@ export async function witherAndBloom(workflow) {
 		let spellcastingMod = chrisPremades.helpers.getSpellMod(origin);
 		healingFormula = healingFormula + '(' + selectedTotal + ' * ' + conMod + ') + ' + spellcastingMod;
 		let healingRoll = await new Roll(healingFormula).roll({async: true});
-		healingRoll.toMessage({
-			rollMode: 'roll',
-			speaker: {alias: name},
-			flavor: 'Wither and Bloom'
-		});
-		chrisPremades.helpers.applyDamage([token], healingRoll.total, 'healing');
+		let itemCardId = effect.flags['chris-premades'].spell.witherAndBloom.itemCardId;
+		await chrisPremades.helpers.applyWorkflowDamage(token, healingRoll, 'healing', [token], origin.name, itemCardId);
 		for (let i = 0; selection.inputs.length > i; i++) {
 			if (isNaN(selection.inputs[i])) continue;
 			await actor.classes[outputs[i].class].update({
@@ -122,7 +118,10 @@ export async function witherAndBloom(workflow) {
 			},
 			'chris-premades': {
 				'spell': {
-					'witherAndBloom': workflow.castData.castLevel - 1
+					'witherAndBloom': {
+						'castLevel': workflow.castData.castLevel - 1,
+						'itemCardId': workflow.itemCardId
+					}
 				}
 			}
 		}
