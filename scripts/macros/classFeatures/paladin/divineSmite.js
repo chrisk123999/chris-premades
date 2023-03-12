@@ -31,10 +31,10 @@ export async function divineSmite(workflow) {
     if (spell3 > 0) menuOptions.push(['3rd Level', 3]);
     if (spell4 > 0) menuOptions.push(['4th Level', 4]);
     if (spell5 > 0) menuOptions.push(['5th Level', 5]);
-    if (spell5 > 0) menuOptions.push(['6th Level', 6]);
-    if (spell5 > 0) menuOptions.push(['7th Level', 7]);
-    if (spell5 > 0) menuOptions.push(['8th Level', 8]);
-    if (spell5 > 0) menuOptions.push(['9th Level', 9]);
+    if (spell6 > 0) menuOptions.push(['6th Level', 6]);
+    if (spell7 > 0) menuOptions.push(['7th Level', 7]);
+    if (spell8 > 0) menuOptions.push(['8th Level', 8]);
+    if (spell9 > 0) menuOptions.push(['9th Level', 9]);
     menuOptions.push(['No', false]);
     let title = 'Use Divine Smite?';
     let selectedOption = await chris.dialog(title, menuOptions);
