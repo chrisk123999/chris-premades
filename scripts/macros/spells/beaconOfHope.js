@@ -10,7 +10,7 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
         let isDeterministic = workflow.damageRoll.terms[i].isDeterministic;
         if (flavor.toLowerCase() === 'healing' && !isDeterministic) {
             oldHealingTotal += workflow.damageRoll.terms[i].total;
-            newHealingTotal += workflow.damageRoll.terms[i].faces;
+            newHealingTotal += workflow.damageRoll.terms[i].faces * workflow.damageRoll.terms[i].results.length;
         } else {
             if (!isNaN(workflow.damageRoll.terms[i].total)) {
                 oldHealingTotal += workflow.damageRoll.terms[i].total;
