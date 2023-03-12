@@ -11,5 +11,5 @@ export async function bloodSpear(workflow) {
         speaker: {alias: name},
         flavor: workflow.item.name
     });
-    await chris.applyDamage(workflow.token, damageRoll.total, 'healing');
+    await chris.applyDamage(workflow.token, damageRoll.total, 'temphp');
 }
