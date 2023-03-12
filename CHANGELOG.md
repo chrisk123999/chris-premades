@@ -1,3 +1,8 @@
+# 0.0.73:
+## Bug Fixes:
+- Beacon of Hope
+- Divine Smite
+  
 # 0.0.72:
 ## New Content:
 - Beacon of Hope
