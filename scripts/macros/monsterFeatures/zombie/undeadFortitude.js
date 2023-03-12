@@ -4,6 +4,8 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     let targetActor = targetToken.actor;
     if (!targetActor.flags['chris-premades']?.feature?.undeadFortitude) return;
     if (workflow.isCritical || chris.checkTrait(targetActor, 'di', 'healing') || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'none')) return;
+    let effect = chris.findEffect('Undead Fortitude');
+    if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let featureData = duplicate(originItem.toObject());
