@@ -38,7 +38,7 @@ export async function crimsonRite(workflow) {
     weaponData.system.damage.parts.push([damageDice + '[' + damageType + ']', damageType]);
     let effectData = {
         'label': 'Crimson Rite: ' + weaponData.name,
-        'icon': 'icons/skills/melee/strike-sword-blood-red.webp',
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 604800
         },
@@ -56,7 +56,7 @@ export async function crimsonRite(workflow) {
                 'onDelete': {
                     'script': "warpgate.revert(token.document, '" + 'Crimson Rite: ' + weaponData._id + "');"
                 }
-            },
+            }
         }
     };
     if (damageType === 'radiant') {

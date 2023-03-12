@@ -5,7 +5,9 @@ import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
+import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
+import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
@@ -164,7 +166,9 @@ export let macros = {
 	'armorOfAgathys': armorOfAgathys,
 	'balmOfPeace': balmOfPeace,
 	'bardicInspiration': bardicInspiration,
+	'beaconOfHope': beaconOfHope,
 	'bladeFlourish': bladeFlourish,
+	'blessingOfTheForge': blessingOfTheForge,
 	'blink': blink,
 	'bloodSpear': bloodSpear,
 	'brandOfCastigation': brandOfCastigation,

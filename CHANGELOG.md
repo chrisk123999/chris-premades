@@ -1,3 +1,8 @@
+# 0.0.72:
+## New Content:
+- Beacon of Hope
+- Blessing of the Forge
+  
 # 0.0.69:
 ## New Content:
 - Twilight Domain: Twilight Sanctuary

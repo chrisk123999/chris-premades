@@ -143,6 +143,21 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Beacon of Hope', {
+		'name': 'Beacon of Hope Automation',
+		'hint': 'Enabling this allows the automation of the Beacon of Hope spell via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.damageApplied', macros.beaconOfHope);
+			} else {
+				Hooks.off('midi-qol.damageApplied', macros.beaconOfHope);
+			}
+		}
+	});
 	game.settings.register(moduleName, 'Darkness', {
 		'name': 'Darkness Spell Automation',
 		'hint': 'Enabling this allows the automation of the Darkness spell via the use of Midi-Qol hooks.',
