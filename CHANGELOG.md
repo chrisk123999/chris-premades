@@ -3,7 +3,7 @@
 - Drow: Hand Crossbow
 - Drow Inquisitor: Death Lance
 ## New Features:
-- Feature detection on monsters will now use the sidebar actor name for detection. (You can update features on renamed unlinked tokens that have been renamed now).
+- Feature detection on monsters will now use the sidebar actor name for detection. (You can update features on renamed unlinked actors that have been renamed now).
   
 # 0.0.75:
 ## New Content:
