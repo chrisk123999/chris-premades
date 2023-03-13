@@ -5,10 +5,11 @@ export async function slam(workflow) {
     if (damage === 0) return;
     let targetActor = workflow.targets.first().actor;
     let targetMaxHP = targetActor.system.attributes.hp.max;
-    let effect = chris.findEffect(targetActor, 'Clay Golem - Slam');
+    let effectName = targetActor.name + ' - ' + workflow.item.name;
+    let effect = chris.findEffect(targetActor, effectName);
     if (!effect) {
         let effectData = {
-            'label': 'Clay Golem - Slam',
+            'label': effectName,
             'icon': workflow.item.img,
             'duration': {
                 'seconds': 2628000
