@@ -102,6 +102,9 @@ export function getItemName(itemName) {
         case 'Ring of Spell Storing':
             itemName = 'Ring of Spell Storing (0/5)';
             break;
+        case 'Mutagencraft - Consume Mutagen':
+            itemName = 'Mutagencraft - Create Mutagen';
+            break;
     }
     return itemName;
 }

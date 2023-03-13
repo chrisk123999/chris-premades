@@ -66,6 +66,7 @@ import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.j
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
+import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
 import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
@@ -215,6 +216,7 @@ export let macros = {
 	'mirrorImage': mirrorImage,
 	'monster': monster,
 	'muddledMind': muddledMind,
+	'mutagencraft': mutagencraft,
 	'oilOfSharpness': oilOfSharpness,
 	'onHit': onHit,
 	'onMove': onMove,

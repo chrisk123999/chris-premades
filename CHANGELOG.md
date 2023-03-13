@@ -1,3 +1,7 @@
+# 0.0.75:
+## New Content:
+- Order of the Mutant Blood Hunter: Mutagencraft
+  
 # 0.0.74:
 ## Bug Fixes:
 - Cleave, Fire Form, Heated Body, Armor of Agathys, Beacon of Hope, Mass Cure Wounds, and Wither and Bloom
