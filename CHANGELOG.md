@@ -1,3 +1,8 @@
+# 0.0.76:
+## New Content:
+- Drow: Hand Crossbow
+- Drow Inquisitor: Death Lance
+  
 # 0.0.75:
 ## New Content:
 - Order of the Mutant Blood Hunter: Mutagencraft

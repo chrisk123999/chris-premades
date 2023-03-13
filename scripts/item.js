@@ -42,7 +42,11 @@ async function itemConfig(itemDocument) {
     } else if (itemDocument.actor.type === 'npc') {
         let folderAPI = game.CF.FICFolderAPI;
         let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
-        let monsterFolder = allFolders.find(f => f.name === itemDocument.actor.name);
+        let itemActor = itemDocument.actor;
+        let monsterName = itemActor.name;
+        let sourceActor = game.actors.get(itemActor.id);
+        if (sourceActor) monsterName = sourceActor.name;
+        let monsterFolder = allFolders.find(f => f.name === monsterName);
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;
