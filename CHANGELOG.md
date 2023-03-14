@@ -1,3 +1,11 @@
+# 0.0.77:
+## New Content:
+- Cleric: Divine Strike
+- Tempest Domain Cleric: Thunderbolt Strike
+- Plasmoid: Natural Resilience
+## Bug Fixes:
+- Lizardfolk: Hungry Jaws
+  
 # 0.0.76:
 ## New Content:
 - Drow: Hand Crossbow

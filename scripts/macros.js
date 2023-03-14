@@ -30,6 +30,7 @@ import {deathWard} from './macros/spells/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
+import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
@@ -100,6 +101,7 @@ import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
+import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
@@ -194,6 +196,7 @@ export let macros = {
 	'destructiveWrath': destructiveWrath,
 	'detectThoughts': detectThoughts,
 	'divineSmite': divineSmite,
+	'divineStrike': divineStrike,
 	'dragonVessel': dragonVessel,
 	'dragonsBreath': dragonsBreath,
 	'dragonsWrath': dragonsWrath,
@@ -247,6 +250,7 @@ export let macros = {
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
+	'thunderboltStrike': thunderboltStrike,
 	'turnUndead': turnUndead,
 	'twilightSanctuary': twilightSanctuary,
 	'vampiricBite': vampiricBite,
@@ -309,6 +313,7 @@ export async function setupWorldMacros() {
 	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
 	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
 	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
+	await createMacro('divineStrike', actorOnUseMacro('divineStrike'), false);
 	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
 	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
 	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
@@ -335,6 +340,7 @@ export async function setupWorldMacros() {
 	await createMacro('spiritShroud', actorOnUseMacro('spiritShroud'), false);
 	await createMacro('stormgirdle', actorOnUseMacro('stormgirdle'), false);
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
+	await createMacro('thunderboltStrike', actorOnUseMacro('thunderboltStrike'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
 }
 async function useActorOnUse(workflow, itemName) {
@@ -452,6 +458,12 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'maneuverTripAttack':
 			await maneuvers.tripAttack(workflow);
+			break;
+		case 'divineStrike':
+			await divineStrike.item(workflow);
+			break;
+		case 'thunderboltStrike': 
+			await thunderboltStrike(workflow);
 			break;
 	}
 }
