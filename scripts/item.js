@@ -124,9 +124,6 @@ export function setConfig() {
                 'Guardian Armor: Defensive Field',
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
-            ],
-            'Bardic Inspiration': [
-                'Magical Inspiration'
             ]
         }
     });
