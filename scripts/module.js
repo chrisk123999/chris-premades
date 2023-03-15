@@ -2,13 +2,14 @@ import {registerSettings} from './settings.js';
 import {macros, setupWorldMacros, setupMacroFolder, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createHeaderButton, getItemName} from './item.js';
+import {createHeaderButton, getItemName, setConfig} from './item.js';
 import {queue} from './queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './movement.js';
 import {bab} from './babHelpers.js';
 export let socket;
 Hooks.once('init', async function() {
 	registerSettings();
+	setConfig()
 });
 Hooks.once('socketlib.ready', async function() {
 	socket = socketlib.registerModule('chris-premades');
@@ -48,14 +49,10 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 });
-let ddb = {
-	'getItemName': getItemName
-}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
 	queue,
 	tokenMove,
-	bab,
-	ddb
+	bab
 }

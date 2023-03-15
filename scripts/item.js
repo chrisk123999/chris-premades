@@ -112,3 +112,32 @@ export function getItemName(itemName) {
     }
     return itemName;
 }
+export function setConfig() {
+    setProperty(CONFIG, 'chrisPremades', {
+        'module': 'chris-premades',
+        'renamedItems': {
+            'Bardic Inspiration': 'Bardic Inspiration & Magical Inspiration',
+            'Form of Dread: Transform': 'Form of Dread',
+            'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
+            'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen'
+        },
+        'additionalItems': {
+            'Blade Flourish': [
+                'Blade Flourish Movement'
+            ],
+            'Arcane Armor': [
+                'Arcane Armor: Guardian Model',
+                'Arcane Armor: Infiltrator Model'
+            ]
+        },
+        'removedItems': {
+            'Arcane Armor': [
+                'Guardian Armor: Thunder Gauntlets',
+                'Guardian Armor: Thunder Gauntlets (STR)',
+                'Guardian Armor: Defensive Field',
+                'Infiltrator Armor: Lightning Launcher',
+                'Infiltrator Armor: Lightning Launcher (DEX)'
+            ]
+        }
+    });
+}
