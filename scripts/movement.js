@@ -40,7 +40,7 @@ export function combatUpdate(combat, changes, context) {
     if (!changes.turn && !changes.round) return;
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
-    let token = canvas.tokens.get(combat.current.tokenId);
+    let token = game.combat.scene.tokens.get(combat.current.tokenId);
     if (!token) return;
     for (let name of Object.values(triggers)) {
         let validSources = [];
@@ -49,7 +49,7 @@ export function combatUpdate(combat, changes, context) {
             let sourceToken = canvas.tokens.get(spell.sourceTokenID);
             if (!sourceToken) continue;
             if (spell.ignoreSelf && sourceToken.id == token.id) continue;
-            if (spell.nonAllies && (token.document.disposition === sourceToken.document.disposition || token.document.disposition === 0)) continue;
+            if (spell.nonAllies && (token.disposition === sourceToken.disposition || token.disposition === 0)) continue;
             let distance = chris.getDistance(token, sourceToken);
             if (distance > spell.range) continue;
             validSources.push(spell);
@@ -57,7 +57,7 @@ export function combatUpdate(combat, changes, context) {
         let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
         let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
         if (!selectedSpell) return;
-        macros.onMove(selectedSpell.macro, token.document, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
+        macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
     }
 }
 async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn) {

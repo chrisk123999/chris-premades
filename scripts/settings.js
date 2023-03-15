@@ -26,7 +26,7 @@ export function registerSettings() {
 		'type': Boolean,
 		'default': false,
 		'onChange': value => {
-			if (value || game.user.isGM) {
+			if (value && game.user.isGM) {
 				Hooks.on('updateToken', tokenMoved);
 			} else if (game.user.isGM) {
 				Hooks.off('updateToken', tokenMoved);
@@ -48,7 +48,7 @@ export function registerSettings() {
 		'type': Boolean,
 		'default': false,
 		'onChange': value => {
-			if (value || game.user.isGM) {
+			if (value && game.user.isGM) {
 				Hooks.on('updateCombat', combatUpdate);
 			} else if (game.user.isGM) {
 				Hooks.off('updateCombat', combatUpdate);
