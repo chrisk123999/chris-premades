@@ -118,6 +118,7 @@ export function setConfig() {
         'renamedItems': {
             'Magical Inspiration': 'Bardic Inspiration & Magical Inspiration',
             'Form of Dread: Transform': 'Form of Dread',
+            'Form of Dread': 'Form of Dread: Fear',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
             'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen'
         },
