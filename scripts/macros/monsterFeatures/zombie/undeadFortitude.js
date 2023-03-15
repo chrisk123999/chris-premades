@@ -1,6 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 export async function undeadFortitude(targetToken, {workflow, ditem}) {
-    if (ditem.newHP != 0) return;
+    if (ditem.newHP != 0 || ditem.oldHP === 0) return;
     let targetActor = targetToken.actor;
     if (!targetActor.flags['chris-premades']?.feature?.undeadFortitude) return;
     if (workflow.isCritical || chris.checkTrait(targetActor, 'di', 'healing') || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'none')) return;

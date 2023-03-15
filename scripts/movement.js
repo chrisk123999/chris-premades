@@ -36,7 +36,7 @@ export function combatUpdate(combat, changes, context) {
     let currentTurn = combat.current.turn;
     let previousTurn = context.effectmacro?.previousTR?.T;
     let currentRound = combat.current.round;
-    let previousRound = context.effectmacro?.previousTR?.T;
+    let previousRound = context.effectmacro?.previousTR?.R;
     if (!changes.turn && !changes.round) return;
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
@@ -46,7 +46,7 @@ export function combatUpdate(combat, changes, context) {
         let validSources = [];
         for (let spell of name) {
             if (spell.turn != 'start') continue;
-            let sourceToken = canvas.tokens.get(spell.sourceTokenID);
+            let sourceToken = game.combat.scene.tokens.get(spell.sourceTokenID);
             if (!sourceToken) continue;
             if (spell.ignoreSelf && sourceToken.id == token.id) continue;
             if (spell.nonAllies && (token.disposition === sourceToken.disposition || token.disposition === 0)) continue;
