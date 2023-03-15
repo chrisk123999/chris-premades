@@ -116,7 +116,7 @@ export function setConfig() {
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
         'renamedItems': {
-            'Magical Inspiration': 'Bardic Inspiration & Magical Inspiration',
+            'Bardic Inspiration': 'Bardic Inspiration & Magical Inspiration',
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
@@ -139,8 +139,8 @@ export function setConfig() {
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
             ],
-            'Magical Inspiration': [
-                'Bardic Inspiration'
+            'Bardic Inspiration': [
+                'Magical Inspiration'
             ]
         }
     });
