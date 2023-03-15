@@ -116,7 +116,7 @@ export function setConfig() {
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
         'renamedItems': {
-            'Bardic Inspiration': 'Bardic Inspiration & Magical Inspiration',
+            'Magical Inspiration': 'Bardic Inspiration & Magical Inspiration',
             'Form of Dread: Transform': 'Form of Dread',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
             'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen'
@@ -137,6 +137,9 @@ export function setConfig() {
                 'Guardian Armor: Defensive Field',
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
+            ],
+            'Magical Inspiration': [
+                'Bardic Inspiration'
             ]
         }
     });
