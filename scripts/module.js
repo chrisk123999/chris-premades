@@ -49,10 +49,14 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 });
+let ddb = {
+	'getItemName': getItemName
+}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
 	queue,
 	tokenMove,
-	bab
+	bab,
+	ddb
 }

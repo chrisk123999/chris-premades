@@ -96,21 +96,7 @@ async function itemConfig(itemDocument) {
     ui.notifications.info('Item updated!');
 }
 export function getItemName(itemName) {
-    switch (itemName) {
-        case 'Bardic Inspiration':
-            itemName = 'Bardic Inspiration & Magical Inspiration';
-            break;
-        case 'Form of Dread: Transform':
-            itemName = 'Form of Dread';
-            break;
-        case 'Ring of Spell Storing':
-            itemName = 'Ring of Spell Storing (0/5)';
-            break;
-        case 'Mutagencraft - Consume Mutagen':
-            itemName = 'Mutagencraft - Create Mutagen';
-            break;
-    }
-    return itemName;
+    return CONFIG.chrisPremades.renamedItems[itemName] ?? itemName;
 }
 export function setConfig() {
     setProperty(CONFIG, 'chrisPremades', {
