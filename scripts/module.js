@@ -4,10 +4,16 @@ import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
 import {createHeaderButton, getItemName} from './item.js';
 import {queue} from './queue.js';
-import {tokenMove, tokenMoved, updateTriggers, combatUpdate} from './movement.js';
+import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './movement.js';
 import {bab} from './babHelpers.js';
+export let socket;
 Hooks.once('init', async function() {
 	registerSettings();
+});
+Hooks.once('socketlib.ready', async function() {
+	socket = socketlib.registerModule('chris-premades');
+	socket.register('updateMoveTriggers', updateMoveTriggers);
+	socket.register('updateGMTriggers', updateGMTriggers);
 });
 Hooks.once('ready', async function() {
 	if (game.user.isGM) {
@@ -16,9 +22,9 @@ Hooks.once('ready', async function() {
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
-		updateTriggers();
 		game.settings.set('chris-premades', 'LastGM', game.user.id);
 	}
+	loadTriggers();
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {
 		Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
 		Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);

@@ -1,7 +1,7 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 export async function thunderboltStrike(workflow) {
-    if (workflow.hitTargets.size === 0) return;
+    if (workflow.hitTargets.size === 0 || !workflow.damageRoll) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     if (!(targetActor.system.traits.size === 'lg' || targetActor.system.traits.size === 'med' || targetActor.system.traits.size === 'sm' || targetActor.system.traits.size === 'tiny')) return;

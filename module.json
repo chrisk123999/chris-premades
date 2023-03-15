@@ -4,6 +4,7 @@
   "description": "Chris's premade items for high-automation midi-qol games.",
   "version": "#{VERSION}#",
   "library": "false",
+  "socket": true,
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 10,
@@ -105,6 +106,14 @@
 		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
 		"compatibility": {
 			"verified": "2.5.7"
+		}
+	},
+	{
+		"id": "socketlib",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
+		"compatibility": {
+			"verified": "1.0.12"
 		}
 	}],
 	"optional": [{

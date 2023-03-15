@@ -1,3 +1,8 @@
+# 0.0.78:
+## Bug Fixes:
+- Spirit Guardians
+- Thunderbolt Strike
+  
 # 0.0.77:
 ## New Content:
 - Cleric: Divine Strike

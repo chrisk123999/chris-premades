@@ -1,9 +1,15 @@
 import {chris} from './helperFunctions.js';
 import {macros} from './macros.js';
+import {socket} from './module.js';
 let triggers = {};
-export function updateTriggers () {
+export function loadTriggers() {
     triggers = game.settings.get('chris-premades', 'Movement Triggers');
-    if (!triggers) triggers = {};
+}
+export async function updateMoveTriggers(updatedTriggers) {
+    triggers = updatedTriggers;
+}
+export async function updateGMTriggers(updatedTriggers) {
+    await game.settings.set('chris-premades', 'Movement Triggers', updatedTriggers);
 }
 export function tokenMoved(token, changes) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
@@ -69,20 +75,22 @@ async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTo
     }
     if (!triggers[name]) triggers[name] = [];
     triggers[name].push(spell);
-    await game.settings.set('chris-premades', 'Movement Triggers', triggers);
+    await socket.executeForEveryone('updateMoveTriggers', triggers);
+    await socket.executeAsGM('updateGMTriggers', triggers);
 }
 async function removeTrigger(name, sourceTokenID) {
     if (!triggers[name]) return;
     triggers[name] = triggers[name].filter(spell => spell.sourceTokenID != sourceTokenID);
     if (triggers[name].length === 0) delete(triggers[name]);
-    await game.settings.set('chris-premades', 'Movement Triggers', triggers);
+    await socket.executeForEveryone('updateMoveTriggers', triggers);
+    await socket.executeAsGM('updateGMTriggers', triggers);
 }
 function status() {
     return triggers;
 }
 async function purge() {
-    triggers = {};
-    await game.settings.set('chris-premades', 'Movement Triggers', triggers);
+    await socket.executeForEveryone('updateMoveTriggers', {});
+    await socket.executeAsGM('updateGMTriggers', {});
 }
 export let tokenMove = {
     'add': addTrigger,
