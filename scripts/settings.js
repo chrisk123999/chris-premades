@@ -63,6 +63,14 @@ export function registerSettings() {
 		'type': Object,
 		'default': {}
 	});
+	game.settings.register(moduleName, 'Movement Effect Triggers', {
+		'name': 'Movement Effect Triggers',
+		'hint': 'Used to sync the effect movement queue.',
+		'scope': 'world',
+		'config': false,
+		'type': Object,
+		'default': {}
+	});
 	game.settings.register(moduleName, 'Item Compendium', {
 		'name': 'Personal Item Compendium',
 		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',

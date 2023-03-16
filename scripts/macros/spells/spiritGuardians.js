@@ -54,7 +54,9 @@ async function item(workflow) {
         if (!damageType) damageType = 'radiant';        
     }
     let damage = castLevel + 'd8';
-    tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start');
+    let effect = chris.findEffect(workflow.actor, 'Spirit Guardians');
+    if (!effect) return;
+    tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
 }
 async function effectEnd(token) {
     tokenMove.remove('spiritGuardians', token.id);
