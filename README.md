@@ -162,6 +162,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Vampiric Bite  
 ### Elf:  
 - Fey Ancestry  
+#### Mark of Shadow:  
+- Cunning Intuition  
 ### Giff:  
 - Astral Spark  
 ### Gnome:  
@@ -299,6 +301,9 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 #### Drow Inquisitor:  
 - Death Lance  
 - Fey Ancestry  
+#### Duergar:  
+- Enlarge  
+- Invisibility  
 #### Troglodyte:  
 - Stench  
 ### Monstrosity:  
