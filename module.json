@@ -33,7 +33,7 @@
 		"type": "module",
 		"manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
 		"compatibility": {
-			"verified": "10.0.29"
+			"verified": "10.0.33"
 		}
 	},
 	{
@@ -41,7 +41,7 @@
 		"type": "module",
 		"manifest": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
 		"compatibility": {
-			"verified": "3.1.1"
+			"verified": "4.1.1"
 		}
 	},
 	{
@@ -89,7 +89,7 @@
 		"type": "module",
 		"manifest": "https://github.com/krbz999/babonus/releases/latest/download/module.json",
 		"compatibility": {
-			"verified": "10.3.6"
+			"verified": "10.4.6"
 		}
 	},
 	{
@@ -114,6 +114,22 @@
 		"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
 		"compatibility": {
 			"verified": "1.0.12"
+		}
+	},
+	{
+		"id": "dae",
+		"type": "module",
+		"manifest": "https://gitlab.com/tposney/dae/raw/v10/package/module.json",
+		"compatibility": {
+			"verified": "10.0.23"
+		}
+	},
+	{
+		"id": "autoanimations",
+		"type": "module",
+		"manifest": "https://github.com/otigon/automated-jb2a-animations/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "4.2.32"
 		}
 	}],
 	"optional": [{
