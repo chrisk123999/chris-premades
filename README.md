@@ -14,7 +14,7 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 | DFreds Convenient Effects | 4.1.1 |  
 | Effect Macro | 10.0.15 |  
 | Item Macro | 1.8.0 |  
-| Jules&Ben's Animated Assets | 0.5.2 |  
+| Jules & Ben's Animated Assets | 0.5.2 |  
 | Sequencer | 10.0.0 |  
 | Socket Lib | 1.0.12 |  
 | Template Macro | 10.0.1 |  
