@@ -36,6 +36,7 @@ import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
+import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
@@ -131,6 +132,7 @@ let monster = {
 	'chasme': chasme,
 	'clayGolem': clayGolem,
 	'drow': drow,
+	'duergar': duergar,
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
@@ -342,6 +344,7 @@ export async function setupWorldMacros() {
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('thunderboltStrike', actorOnUseMacro('thunderboltStrike'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
+	await createMacro('duergarEnlarge', actorOnUseMacro('duergarEnlarge'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -464,6 +467,9 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'thunderboltStrike': 
 			await thunderboltStrike(workflow);
+			break;
+		case 'duergarEnlarge':
+			await duergar.enlarge(workflow);
 			break;
 	}
 }

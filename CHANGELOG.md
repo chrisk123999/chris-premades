@@ -1,3 +1,10 @@
+# 0.0.85:  
+## New Monster Content:
+- Duergar: Enlarge, Invisibility, and Duergar Resilience
+## Bug Fixes:  
+- Mark of Shadow Elf: Cunning Intuition
+- Mark of Detection Half-Elf: Deductive Intuition
+  
 # 0.0.78:
 ## Bug Fixes:
 - Spirit Guardians
