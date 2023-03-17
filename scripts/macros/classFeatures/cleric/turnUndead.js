@@ -53,7 +53,8 @@ async function targets(workflow) {
     };
     let validTargets = [];
     for (let i of Array.from(workflow.targets)) {
-        if (!chris.raceOrType(i.actor) === 'undead') continue;
+        if (chris.raceOrType(i.actor) != 'undead') continue;
+        if (i.actor.system.attributes.hp.value === 0) continue;
         if (i.actor.flags['chris-premades']?.feature?.turnResistance) await chris.createEffect(i.actor, effectData);
         if (i.actor.flags['chris-premades']?.feature?.turnImmunity) await chris.createEffect(i.actor, effectData2);
         validTargets.push(i.id);
