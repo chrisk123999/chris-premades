@@ -46,7 +46,7 @@ async function setup(uuid, key, priority) {
     return await queue.wait(uuid, key);
 }
 function status() {
-    console.log(allQueues);
+    return allQueues;
 }
 export let queue = {
     'add': add,
