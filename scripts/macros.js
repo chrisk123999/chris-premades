@@ -23,6 +23,7 @@ import {cleave} from './macros/mechanics/cleave/cleave.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
+import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
@@ -131,6 +132,7 @@ let monster = {
 	'catoblepas': catoblepas,
 	'chasme': chasme,
 	'clayGolem': clayGolem,
+	'corpseFlower': corpseFlower,
 	'drow': drow,
 	'duergar': duergar,
 	'dybbuk': dybbuk,

@@ -1,3 +1,7 @@
+# 0.0.86:
+## New Monster Content:  
+- Corpse Flower: Stench of Death and Reanimate
+  
 # 0.0.85:  
 ## New Monster Content:
 - Duergar: Enlarge, Invisibility, and Duergar Resilience

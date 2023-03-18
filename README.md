@@ -322,6 +322,9 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Aversion to Fire  
 - Eat Memories  
 ### Plant:  
+#### Corpse Flower:  
+- Stench of Death  
+- Reanimate  
 #### Swarm of Campestris:  
 - Head Butts  
 ### Undead:  
