@@ -1,3 +1,7 @@
+# 0.0.89:
+## Bug Fixes:
+- Sweeping Attack  
+  
 # 0.0.88:
 ## New Content:  
 - Path of the Zealot Barbarian: Divine Fury
@@ -7,10 +11,10 @@
 ## New Monster Content:  
 - Corpse Flower: Stench of Death and Reanimate
   
-# 0.0.85:  
+# 0.0.85:
 ## New Monster Content:
 - Duergar: Enlarge, Invisibility, and Duergar Resilience
-## Bug Fixes:  
+## Bug Fixes:
 - Mark of Shadow Elf: Cunning Intuition
 - Mark of Detection Half-Elf: Deductive Intuition
   
