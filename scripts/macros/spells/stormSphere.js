@@ -111,7 +111,6 @@ async function boltAttackItem(workflow) {
 }
 async function turnStart(actor, effect) {
     let previousTurnId = game.combat.previous.tokenId;
-    console.log(previousTurnId);
     if (!previousTurnId) return;
     let templateUuid = effect.flags['chris-premades']?.spell?.stormSphere?.templateUuid;
     if (!templateUuid) return;

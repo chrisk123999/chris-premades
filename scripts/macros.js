@@ -18,6 +18,7 @@ import {chainLightning} from './macros/spells/chainLightning.js';
 import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
 import {chillTouch} from './macros/spells/chillTouch.js';
+import {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circleOfMortality.js';
 import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
 import {cleave} from './macros/mechanics/cleave/cleave.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
@@ -30,6 +31,7 @@ import {darkness} from './macros/spells/darkness.js';
 import {deathWard} from './macros/spells/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
+import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
@@ -187,6 +189,7 @@ export let macros = {
 	'callLightning': callLightning,
 	'chainLightning': chainLightning,
 	'charmPerson': charmPerson,
+	'circleOfMortality': circleOfMortality,
 	'cleave': cleave,
 	'cloudkill': cloudkill,
 	'conditionResistanceEarly': conditionResistanceEarly,
@@ -314,10 +317,13 @@ export async function setupWorldMacros() {
 	await createMacro('bladeFlourish', actorOnUseMacro('bladeFlourish'), false);
 	await createMacro('brandOfCastigation', actorOnUseMacro('brandOfCastigation'), false);
 	await createMacro('chillTouch', actorOnUseMacro('chillTouch'), false);
+	await createMacro('circleOfMortality', actorOnUseMacro('circleOfMortality'), false);
 	await createMacro('darkOnesBlessing', actorOnUseMacro('darkOnesBlessing'), false);
 	await createMacro('destructiveWrath', actorOnUseMacro('destructiveWrath'), false);
+	await createMacro('divineFury', actorOnUseMacro('divineFury'), false);
 	await createMacro('divineSmite', actorOnUseMacro('divineSmite'), false);
 	await createMacro('divineStrike', actorOnUseMacro('divineStrike'), false);
+	await createMacro('duergarEnlarge', actorOnUseMacro('duergarEnlarge'), false);
 	await createMacro('expertDivination', actorOnUseMacro('expertDivination'), false);
 	await createMacro('focusedAim', actorOnUseMacro('focusedAim'), false);
 	await createMacro('formOfDread', actorOnUseMacro('formOfDread'), false);
@@ -346,7 +352,6 @@ export async function setupWorldMacros() {
 	await createMacro('thunderGauntlets', actorOnUseMacro('thunderGauntlets'), false);
 	await createMacro('thunderboltStrike', actorOnUseMacro('thunderboltStrike'), false);
 	await createMacro('voracious', actorOnUseMacro('voracious'), false);
-	await createMacro('duergarEnlarge', actorOnUseMacro('duergarEnlarge'), false);
 }
 async function useActorOnUse(workflow, itemName) {
 	switch (itemName) {
@@ -472,6 +477,12 @@ async function useActorOnUse(workflow, itemName) {
 			break;
 		case 'duergarEnlarge':
 			await duergar.enlarge(workflow);
+			break;
+		case 'circleOfMortality':
+			await circleOfMortality(workflow);
+			break;
+		case 'divineFury':
+			await divineFury.attack(workflow);
 			break;
 	}
 }

@@ -81,6 +81,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 ### Barbarian:  
 #### Path of the Ancestral Guardian:  
 - Ancestral Protectors  
+#### Path of the Zealot:  
+- Divine Fury  
 ### Bard:  
 - Bardic Inspiration & Magical Inspiration  
 #### College of Swords:  
@@ -103,6 +105,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Reaper  
 #### Forge Domain:  
 - Blessing of the Forge  
+#### Grave Domain:  
+- Circle of Mortality   
 #### Life Domain:  
 - Channel Divinity: Preserve Life  
 #### Peace Domain:  

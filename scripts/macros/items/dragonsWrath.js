@@ -3,10 +3,8 @@ async function item(workflow, animation) {
     if (workflow.hitTargets.size != 1) return;
     let targetToken = workflow.targets.first();
     let damageType = workflow.item.system.damage.parts[1][1];
-    console.log(damageType);
     if (workflow.d20AttackRoll === 20) {
         let nearbyTargets = await chris.findNearby(targetToken, 5, 'ally');
-        console.log(nearbyTargets);
         new Sequence().wait(1250).effect().file(animation).atLocation(targetToken).belowTokens(true).play();
         if (nearbyTargets.length != 0) await chris.applyDamage(nearbyTargets, 5, damageType);
     }

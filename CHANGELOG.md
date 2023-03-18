@@ -1,3 +1,8 @@
+# 0.0.88:
+## New Content:  
+- Path of the Zealot Barbarian: Divine Fury
+- Grave Domain Cleric: Circle of Mortality
+  
 # 0.0.86:
 ## New Monster Content:  
 - Corpse Flower: Stench of Death and Reanimate
