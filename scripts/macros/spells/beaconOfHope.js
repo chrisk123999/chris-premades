@@ -3,24 +3,22 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     let effect = chris.findEffect(token.actor, 'Beacon of Hope');
     if (!effect) return;
     if (!workflow.damageRoll) return;
-    let oldHealingTotal = 0;
+    if (chris.checkTrait(token.actor, 'di', 'healing')) return;
     let newHealingTotal = 0;
     for (let i = 0; workflow.damageRoll.terms.length > i; i++) {
         let flavor = workflow.damageRoll.terms[i].flavor;
         let isDeterministic = workflow.damageRoll.terms[i].isDeterministic;
         if (flavor.toLowerCase() === 'healing' && !isDeterministic) {
-            oldHealingTotal += workflow.damageRoll.terms[i].total;
             newHealingTotal += workflow.damageRoll.terms[i].faces * workflow.damageRoll.terms[i].results.length;
         } else {
             if (!isNaN(workflow.damageRoll.terms[i].total)) {
-                oldHealingTotal += workflow.damageRoll.terms[i].total;
                 newHealingTotal += workflow.damageRoll.terms[i].total;
             }
         }
     }
-    let healingDifference = newHealingTotal - oldHealingTotal;
-    if (healingDifference === 0) return;
-    ditem.hpDamage -= healingDifference;
-    ditem.newHP += healingDifference;
+    if (chris.checkTrait(token.actor, 'dr', 'healing')) newHealingTotal = Math.floor(newHealingTotal / 2);
+    let maxHP = token.actor.system.attributes.hp.max;
+    ditem.hpDamage = -Math.clamped(newHealingTotal, 0, maxHP - ditem.oldHP);
+    ditem.newHP = Math.clamped(ditem.oldHP + newHealingTotal, 0, maxHP);
     ditem.totalDamage = newHealingTotal;
 }

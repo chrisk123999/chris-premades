@@ -1,14 +1,19 @@
+# 0.0.90:
+## Bug Fixes:
+- Circle of Mortality
+- Beacon of Hope
+  
 # 0.0.89:
 ## Bug Fixes:
-- Sweeping Attack  
+- Sweeping Attack
   
 # 0.0.88:
-## New Content:  
+## New Content:
 - Path of the Zealot Barbarian: Divine Fury
 - Grave Domain Cleric: Circle of Mortality
   
 # 0.0.86:
-## New Monster Content:  
+## New Monster Content:
 - Corpse Flower: Stench of Death and Reanimate
   
 # 0.0.85:
