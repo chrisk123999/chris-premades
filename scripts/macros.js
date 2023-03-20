@@ -187,6 +187,7 @@ export let macros = {
 	'callLightning': callLightning,
 	'chainLightning': chainLightning,
 	'charmPerson': charmPerson,
+	'chillTouch': chillTouch,
 	'circleOfMortality': circleOfMortality,
 	'cleave': cleave,
 	'cloudkill': cloudkill,
@@ -200,6 +201,7 @@ export let macros = {
 	'deathWard': deathWard,
 	'destructiveWrath': destructiveWrath,
 	'detectThoughts': detectThoughts,
+	'divineFury': divineFury,
 	'divineSmite': divineSmite,
 	'divineStrike': divineStrike,
 	'dragonVessel': dragonVessel,
@@ -262,7 +264,5 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'divineFury': divineFury,
-	'chillTouch': chillTouch
+	'wrathOfTheStorm': wrathOfTheStorm
 }
