@@ -61,7 +61,7 @@ async function boltItem({speaker, actor, token, character, item, args}) {
     if (!effect) return;
     let castLevel = effect.flags['chris-premades']?.spell?.stormSphere?.castLevel;
     if (!castLevel) castLevel = 4;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt Attack', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
     if (!featureData) return;
     featureData.system.damage.parts = [
         [
