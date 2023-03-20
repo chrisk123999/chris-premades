@@ -76,7 +76,7 @@ export async function crimsonRite({speaker, actor, token, character, item, args}
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'CPR-riteOfTheDawn,postDamageRoll',
+                'value': 'function.chrisPremades.macros.riteOfTheDawn,postDamageRoll',
                 'priority': 20
             }
         ];
