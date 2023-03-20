@@ -2,7 +2,7 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 export async function bladeFlourish({speaker, actor, token, character, item, args}) {
     let itemName = this.item.name.toLowerCase()
-    if (itemName.search('booming blade') || itemName.search('green-flame Blade')) return;
+    if (itemName.includes('booming blade') || itemName.includes('green-flame blade')) return;
     let sourceActor = this.actor;
     let effect1 = chris.findEffect(sourceActor, 'Blade Flourish Movement');
     if (this.item.type === 'weapon' && !effect1) {
