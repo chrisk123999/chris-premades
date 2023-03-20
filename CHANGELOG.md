@@ -1,3 +1,11 @@
+# 0.1.1:
+## New Features:
+- Added a feature to update all of an actor's items to my automations (Requires D&D Beyond Importer)
+## Update Notes:
+- This update requires Midi-Qol version 10.0.35 or higher.
+- All previously added items from this module on actors will need to be replaced to avoid errors.
+- The CPR Macros folder is no longer needed and is safe to be deleted.
+  
 # 0.0.90:
 ## Bug Fixes:
 - Circle of Mortality

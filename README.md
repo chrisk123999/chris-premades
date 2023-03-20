@@ -7,10 +7,11 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
-| Midi-Qol | 10.0.33 |  
+| Midi-Qol | 10.0.35 |  
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
 | Compendium Folders | 2.5.7 |  
+| D&D Beyond Importer | 3.4.5 |  
 | DFreds Convenient Effects | 4.1.1 |  
 | Effect Macro | 10.0.15 |  
 | Item Macro | 1.8.0 |  

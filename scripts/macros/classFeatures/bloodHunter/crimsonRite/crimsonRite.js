@@ -1,8 +1,8 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function crimsonRite(workflow) {
-    let tokenDoc = workflow.token.document;
-    let targetActor = workflow.actor;
-    if (workflow.targets.size != 1) return;
+export async function crimsonRite({speaker, actor, token, character, item, args}) {
+    let tokenDoc = this.token.document;
+    let targetActor = this.actor;
+    if (this.targets.size != 1) return;
     let damageDice = targetActor.system.scale['blood-hunter']['crimson-rite'];
     if (!damageDice) {
         ui.notifications.warn('Source actor does not appear to have a Crimson Rite scale!');
@@ -38,7 +38,7 @@ export async function crimsonRite(workflow) {
     weaponData.system.damage.parts.push([damageDice + '[' + damageType + ']', damageType]);
     let effectData = {
         'label': 'Crimson Rite: ' + weaponData.name,
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'duration': {
             'seconds': 604800
         },

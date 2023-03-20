@@ -1,26 +1,26 @@
 import {chris} from '../../helperFunctions.js';
-async function detectThoughtsProbeItem(workflow) {
-    if (workflow.failedSaves.size === 1) return;
-    let effect = chris.findEffect(workflow.actor, 'Detect Thoughts');
+async function detectThoughtsProbeItem({speaker, actor, token, character, item, args}) {
+    if (this.failedSaves.size === 1) return;
+    let effect = chris.findEffect(this.actor, 'Detect Thoughts');
     if (!effect) return;
     await chris.removeEffect(effect);
-    await chris.removeCondition(workflow.actor, 'Concentrating');
+    await chris.removeCondition(this.actor, 'Concentrating');
 }
-async function detectThoughtsItem(workflow) {
+async function detectThoughtsItem({speaker, actor, token, character, item, args}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Detect Thoughts - Probe Deeper', false);
     if (!featureData) return;
-    featureData.system.save.dc = chris.getSpellDC(workflow.item);
+    featureData.system.save.dc = chris.getSpellDC(this.item);
 	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Detect Thoughts - Probe Deeper');
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Detect Thoughts - Probe Deeper');
 	}
     let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+		'label': this.item.name,
+		'icon': this.item.img,
 		'duration': {
 			'seconds': 60
 		},
-		'origin': workflow.item.uuid,
+		'origin': this.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onDelete': {
@@ -35,7 +35,7 @@ async function detectThoughtsItem(workflow) {
 				[featureData.name]: featureData
 			},
 			'ActiveEffect': {
-				[workflow.item.name]: effectData
+				[this.item.name]: effectData
 			}
 		}
 	};
@@ -44,7 +44,7 @@ async function detectThoughtsItem(workflow) {
 		'name': featureData.name,
 		'description': featureData.name
 	};
-	await warpgate.mutate(workflow.token.document, updates, {}, options);
+	await warpgate.mutate(this.token.document, updates, {}, options);
 }
 export let detectThoughts = {
     'item': detectThoughtsItem,

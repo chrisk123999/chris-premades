@@ -1,11 +1,31 @@
 import {chris} from './helperFunctions.js';
 export function createHeaderButton(config, buttons) {
-    if (!config.object instanceof Item) return;
-    buttons.unshift({
-        class: 'chris-premades',
-        icon: 'fa-solid fa-kit-medical',
-        onclick: () => itemConfig(config.object)
-    });
+    if (config.object instanceof Item) {
+        buttons.unshift({
+            class: 'chris-premades',
+            icon: 'fa-solid fa-kit-medical',
+            onclick: () => itemConfig(config.object)
+        });
+    }
+}
+export function createActorHeaderButton(config, buttons) {
+    if (config.object instanceof Actor) {
+        buttons.unshift({
+            class: 'chris-premades',
+            icon: 'fa-solid fa-kit-medical',
+            onclick: () => actorConfig(config.object)
+        });
+    }
+}
+async function actorConfig(actorDocument) {
+    if (!(actorDocument.type === 'character' || actorDocument.type === 'npc')) {
+        ui.notifications.info('This feature must be used on a character or npc!');
+        return;
+    }
+    let selection = await chris.dialog('Apply all of Chris\'s automations to this actor?', [['Yes', true], ['No', false]]);
+    if (!selection) return;
+    await game.modules.get('ddb-importer').api.chris.adjustActor(actorDocument);
+    ui.notifications.info('Actor update complete!');
 }
 async function itemConfig(itemDocument) {
     if (!itemDocument.actor) {

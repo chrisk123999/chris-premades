@@ -1,18 +1,18 @@
 import {chris} from '../../../helperFunctions.js';
-export async function vampiricBite(workflow) {
-    if (workflow.hitTargets.size != 1) return;
+export async function vampiricBite({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1) return;
     let selection = await chris.dialog('Fanged Bite', [['Restore HP', 'hp'], ['Skill Bonus', 'skill']]);
     if (!selection) selection = 'hp';
-    let damage = chris.totalDamageType(workflow.targets.first().actor, workflow.damageDetail, 'piercing');
+    let damage = chris.totalDamageType(this.targets.first().actor, this.damageDetail, 'piercing');
     if (!damage) return;
     switch (selection) {
         case 'hp':
-            chris.applyDamage(workflow.token, damage, 'healing');
+            chris.applyDamage(this.token, damage, 'healing');
             break;
         case 'skill':
             let effectData = {
                 'label': 'Vampiric Bite',
-                'icon': workflow.item.img,
+                'icon': this.item.img,
                 'duration': {
                     'seconds': 86400
                 },
@@ -39,7 +39,7 @@ export async function vampiricBite(workflow) {
                     }
                 }
             };
-            await chris.createEffect(workflow.actor, effectData);
+            await chris.createEffect(this.actor, effectData);
             break;
     }
 }

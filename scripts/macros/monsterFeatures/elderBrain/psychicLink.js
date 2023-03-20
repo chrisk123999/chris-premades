@@ -1,17 +1,17 @@
 import {chris} from '../../../helperFunctions.js';
-async function saveItem(workflow) {
-    if (workflow.targets.size != 1 || workflow.failedSaves.size === 1) return;
-    let effect = chris.findEffect(workflow.actor, 'Psychic Link');
+async function saveItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1 || this.failedSaves.size === 1) return;
+    let effect = chris.findEffect(this.actor, 'Psychic Link');
     let damageRoll = await new Roll('3d6[psychic]').roll({async: true});
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},
         flavor: 'Psychic Link'
     });
-    await chris.applyDamage(workflow.token, damageRoll.total, 'psychic');
+    await chris.applyDamage(this.token, damageRoll.total, 'psychic');
     if (effect) chris.removeEffect(effect);
 }
-async function item(workflow) {
+async function item({speaker, actor, token, character, item, args}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Monster Feature Items', 'Break Psychic Link', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Break Psychic Link');
@@ -20,11 +20,11 @@ async function item(workflow) {
 	}
     let effectData = {
         'label': 'Psychic Link',
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -48,18 +48,18 @@ async function item(workflow) {
         'name': featureData.name,
         'description': featureData.name
     };
-    await warpgate.mutate(workflow.targets.first().document, updates, {}, options);
+    await warpgate.mutate(this.targets.first().document, updates, {}, options);
 }
-async function sever(workflow) {
-    if (workflow.targets.size != 1) return;
-    let effect = chris.findEffect(workflow.targets.first().actor, 'Psychic Link');
+async function sever({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let effect = chris.findEffect(this.targets.first().actor, 'Psychic Link');
     if (effect) await chris.removeEffect(effect);
 }
-async function pulse(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+async function pulse({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let nearbyTokens = chris.findNearby(targetToken, 30, 'ally');
-    await chris.applyDamage(nearbyTokens, workflow.damageRoll.total, 'psychic');
+    await chris.applyDamage(nearbyTokens, this.damageRoll.total, 'psychic');
 }
 export let psychicLink = {
     'item': item,

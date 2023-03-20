@@ -1,9 +1,9 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function preserveLife(workflow) {
-    let targets = await chris.findNearby(workflow.token, 30, 'ally');
-    if (workflow.token) targets.push(workflow.token);
+export async function preserveLife({speaker, actor, token, character, item, args}) {
+    let targets = await chris.findNearby(this.token, 30, 'ally');
+    if (this.token) targets.push(this.token);
     if (targets.length === 0) return;
-    let classLevels = workflow.actor.classes.cleric?.system.levels;
+    let classLevels = this.actor.classes.cleric?.system.levels;
     if (!classLevels) return;
     let maxHeal = classLevels * 5;
     let buttons = [

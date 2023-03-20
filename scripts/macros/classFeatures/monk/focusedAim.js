@@ -1,18 +1,18 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
-export async function focusedAim(workflow) {
-    if (workflow.targets.size != 1 || workflow.isFumble) return;
-    let feature = await workflow.actor.items.getName('Ki Points');
+export async function focusedAim({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1 || this.isFumble) return;
+    let feature = await this.actor.items.getName('Ki Points');
     if (!feature) return;
     let featureUses = feature.system.uses.value;
     if (featureUses === 0) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'focusedAim', 151);
+    let queueSetup = await queue.setup(this.item.uuid, 'focusedAim', 151);
     if (!queueSetup) return;
-    let attackTotal = workflow.attackTotal;
-    let target = workflow.targets.first();
+    let attackTotal = this.attackTotal;
+    let target = this.targets.first();
     let targetAC = target.actor.system.attributes.ac.value;
     if (targetAC <= attackTotal) {
-        queue.remove(workflow.item.uuid);
+        queue.remove(this.item.uuid);
         return;
     }
     let featureMenu = [['Yes (1 Ki / +2 to hit)', 2]];
@@ -21,18 +21,18 @@ export async function focusedAim(workflow) {
     featureMenu.push(['No', false]);
     let useFeature = await chris.dialog('Attack roll (' + attackTotal + ') missed.  Use Focused Aim?', featureMenu);
     if (!useFeature) {
-        queue.remove(workflow.item.uuid);
+        queue.remove(this.item.uuid);
         return;
     }
-    let updatedRoll = await chris.addToRoll(workflow.attackRoll, useFeature);
-    workflow.setAttackRoll(updatedRoll);
+    let updatedRoll = await chris.addToRoll(this.attackRoll, useFeature);
+    this.setAttackRoll(updatedRoll);
     feature.update({'system.uses.value': featureUses - (useFeature / 2)});
-    let effect = chris.findEffect(workflow.actor, 'Focused Aim');
+    let effect = chris.findEffect(this.actor, 'Focused Aim');
     if (!effect) {
-        queue.remove(workflow.item.uuid);
+        queue.remove(this.item.uuid);
         return;
     }
     let originItem = fromUuid(effect.origin);
     await originItem.use();
-    queue.remove(workflow.item.uuid);
+    queue.remove(this.item.uuid);
 }

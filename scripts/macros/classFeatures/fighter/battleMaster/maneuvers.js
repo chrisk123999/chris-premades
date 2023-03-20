@@ -1,28 +1,28 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
-async function baitAndSwitch(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
-    if (targetToken.id === workflow.token.id) return;
+async function baitAndSwitch({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
+    if (targetToken.id === this.token.id) return;
     let selection = await chris.dialog('Who gets the AC bonus?', [['Yourself', false], ['Target', true]]);
     if (selection === undefined) return;
     let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+		'label': this.item.name,
+		'icon': this.item.img,
         'changes': [
             {
                 'key': 'system.attributes.ac.bonus',
                 'mode': 2,
-                'value': workflow.damageTotal,
+                'value': this.damageTotal,
                 'priority': 20
             }
         ],
 		'duration': {
 			'rounds': 1
 		},
-		'origin': workflow.item.uuid
+		'origin': this.item.uuid
 	};
-    let sourceToken = workflow.token;
+    let sourceToken = this.token;
     let sourceUpdate = {
         'token': {
             'x': targetToken.x,
@@ -50,25 +50,26 @@ async function baitAndSwitch(workflow) {
     }
     let options = {
         'permanent': true,
-        'name': workflow.item.name,
-        'description': workflow.item.name
+        'name': this.item.name,
+        'description': this.item.name
     };
     await warpgate.mutate(sourceToken.document, sourceUpdate, {}, options);
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
 }
-async function refund(workflow) {
-    if (workflow.hitTargets.size != 0) return;
-    let effect = chris.findEffect(workflow.actor, 'Superiority Dice');
+async function refund({speaker, actor, token, character, item, args}) {
+    console.log(this);
+    if (this.hitTargets.size != 0) return;
+    let effect = chris.findEffect(this.actor, 'Superiority Dice');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     await originItem.update({'system.uses.value': originItem.system.uses.value + 1});
 }
-async function goadingAttack(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Goading Attack');
+async function goadingAttack({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Maneuvers: Goading Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
-        await refund(workflow);
+    if (this.hitTargets.size === 0) {
+        await refund.bind(this);
         await chris.removeEffect(effect);
         return;
     } else {
@@ -78,11 +79,11 @@ async function goadingAttack(workflow) {
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
-            'targetUuids': [workflow.targets.first().document.uuid],
+            'targetUuids': [this.targets.first().document.uuid],
             'configureDialog': false,
             'versatile': false,
             'consumeResource': false,
@@ -92,21 +93,21 @@ async function goadingAttack(workflow) {
         await MidiQOL.completeItemUse(feature, {}, options);
     }
 }
-async function goadingAttackTarget(workflow) {
-    if (workflow.targets.size != 1) return;
-    let sourceId = workflow.actor.flags['chris-premades']?.feature?.goadingAttack;
+async function goadingAttackTarget({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let sourceId = this.actor.flags['chris-premades']?.feature?.goadingAttack;
     if (!sourceId) return;
-    if (sourceId === workflow.targets.first().id) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'goadingAttack', 50);
+    if (sourceId === this.targets.first().id) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'goadingAttack', 50);
     if (!queueSetup) return;
-    workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Disadvantage: Goading Attack'] = true;
-    queue.remove(workflow.item.uuid);
+    this.disadvantage = true;
+    this.attackAdvAttribution['Disadvantage: Goading Attack'] = true;
+    queue.remove(this.item.uuid);
 }
-async function grapplingStrike(workflow) {
-    if (workflow.targets.size != 1) return;
-    let sourceRoll = await workflow.actor.rollSkill('ath');
-    let targetActor = workflow.targets.first().actor;
+async function grapplingStrike({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let sourceRoll = await this.actor.rollSkill('ath');
+    let targetActor = this.targets.first().actor;
     let targetRoll;
     if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
         targetRoll = await targetActor.rollSkill('acr');
@@ -114,12 +115,12 @@ async function grapplingStrike(workflow) {
         targetRoll = await targetActor.rollSkill('ath');
     }
     if (targetRoll.total > sourceRoll.total) return;
-    await chris.addCondition(targetActor, 'Grappled', false, workflow.item.uuid);
+    await chris.addCondition(targetActor, 'Grappled', false, this.item.uuid);
 }
-async function lungingAttack(workflow) {
-    if (workflow.targets.size != 1) return;
+async function lungingAttack({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
     let generatedMenu = [];
-    workflow.actor.items.forEach(item => {
+    this.actor.items.forEach(item => {
         if (item.type === 'weapon' && item.system.equipped === true) {
             generatedMenu.push([item.name, item.id]);
         }
@@ -129,19 +130,19 @@ async function lungingAttack(workflow) {
     if (generatedMenu.length === 1) selection = generatedMenu[0][1];
     if (!selection) selection = await chris.dialog('What weapon?', generatedMenu);
     if (!selection) return;
-    let weaponData = duplicate(workflow.actor.items.get(selection).toObject());
+    let weaponData = duplicate(this.actor.items.get(selection).toObject());
     weaponData.system.range.value += 5;
-    let weapon = new CONFIG.Item.documentClass(weaponData, {parent: workflow.actor});
+    let weapon = new CONFIG.Item.documentClass(weaponData, {parent: this.actor});
     let options = {
-        'targetUuids': [workflow.targets.first().document.uuid],
+        'targetUuids': [this.targets.first().document.uuid],
     };
     await MidiQOL.completeItemUse(weapon, {}, options);
 }
-async function menacingAttack(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Menacing Attack');
+async function menacingAttack({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Maneuvers: Menacing Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
-        await refund(workflow);
+    if (this.hitTargets.size === 0) {
+        await refund.bind(this);
         await chris.removeEffect(effect);
         return;
     } else {
@@ -151,11 +152,11 @@ async function menacingAttack(workflow) {
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
-            'targetUuids': [workflow.targets.first().document.uuid],
+            'targetUuids': [this.targets.first().document.uuid],
             'configureDialog': false,
             'versatile': false,
             'consumeResource': false,
@@ -179,11 +180,11 @@ async function parry(effect, origin) {
         flavor: origin.name
     });
 }
-async function pushingAttack(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Pushing Attack');
+async function pushingAttack({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Maneuvers: Pushing Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
-        await refund(workflow);
+    if (this.hitTargets.size === 0) {
+        await refund.bind(this);
         await chris.removeEffect(effect);
         return;
     } else {
@@ -193,8 +194,8 @@ async function pushingAttack(workflow) {
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
-        let targetToken = workflow.targets.first();
+        let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+        let targetToken = this.targets.first();
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -215,7 +216,7 @@ async function pushingAttack(workflow) {
         let hitsWall = true;
         while (hitsWall) {
             knockBackFactor = selection / canvas.dimensions.distance;
-            ray = new Ray(workflow.token.center, targetToken.center);
+            ray = new Ray(this.token.center, targetToken.center);
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
             if (hitsWall) {
@@ -235,24 +236,24 @@ async function pushingAttack(workflow) {
         };
         let options2 = {
             'permanent': true,
-            'name': workflow.item.name,
-            'description': workflow.item.name
+            'name': this.item.name,
+            'description': this.item.name
         };
         await warpgate.mutate(targetToken.document, targetUpdate, {}, options2);
     }
 }
-async function sweepingAttackItem(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Sweeping Attack');
+async function sweepingAttackItem({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Maneuvers: Sweeping Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
-        await refund(workflow);
+    if (this.hitTargets.size === 0) {
+        await refund.bind(this);
         await chris.removeEffect(effect);
         return;
     } else {
-        let sourceNearbyTargets = chris.findNearby(workflow.token, 5, 'enemy');
-        let targetNearbyTargets = chris.findNearby(workflow.targets.first(), 5, 'ally');
+        let sourceNearbyTargets = chris.findNearby(this.token, 5, 'enemy');
+        let targetNearbyTargets = chris.findNearby(this.targets.first(), 5, 'ally');
         if (sourceNearbyTargets.length === 0 || targetNearbyTargets.length === 0) {
-            await refund(workflow);
+            await refund.bind(this);
             await chris.removeEffect(effect);
             return;
         }
@@ -260,7 +261,7 @@ async function sweepingAttackItem(workflow) {
             return sourceNearbyTargets.indexOf(obj) !== -1;
         });
         if (overlappingTargets.length === 0) {
-            await refund(workflow);
+            await refund.bind(this);
             await chris.removeEffect(effect);
             return;
         }
@@ -275,13 +276,13 @@ async function sweepingAttackItem(workflow) {
         ];
         let selection = await chris.selectTarget('What target?', buttons, overlappingTargets, true, 'one');
         if (selection.buttons === false) {
-            await refund(workflow);
+            await refund.bind(this);
             await chris.removeEffect(effect);
             return;
         }
         let targetTokenID = selection.inputs.find(id => id != false);
         if (!targetTokenID) {
-            await refund(workflow);
+            await refund.bind(this);
             await chris.removeEffect(effect);
             return;
         }
@@ -290,16 +291,16 @@ async function sweepingAttackItem(workflow) {
         featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Maneuvers: Sweeping Attack');
         featureData.flags['chris-premades'] = {
             'feature': {
-                'sweepingAttackRoll': workflow.attackTotal
+                'sweepingAttackRoll': this.attackTotal
             }
         };
         featureData.system.damage.parts = [
             [
-                '@scale.battle-master.combat-superiority-die[' + workflow.defaultDamageType + ']',
-                workflow.defaultDamageType
+                '@scale.battle-master.combat-superiority-die[' + this.defaultDamageType + ']',
+                this.defaultDamageType
             ]
         ];
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -313,20 +314,20 @@ async function sweepingAttackItem(workflow) {
         await MidiQOL.completeItemUse(feature, {}, options);
     }
 }
-async function sweepingAttackAttack(workflow) {
-    let queueSetup = await queue.setup(workflow.item.uuid, 'sweepingAttack', 50);
+async function sweepingAttackAttack({speaker, actor, token, character, item, args}) {
+    let queueSetup = await queue.setup(this.item.uuid, 'sweepingAttack', 50);
 	if (!queueSetup) return;
-    let attackRoll = workflow.item.flags['chris-premades']?.feature?.sweepingAttackRoll;
+    let attackRoll = this.item.flags['chris-premades']?.feature?.sweepingAttackRoll;
     if (!attackRoll) return;
 	let updatedRoll = await new Roll(String(attackRoll)).evaluate({async: true});
-	workflow.setAttackRoll(updatedRoll);
-	queue.remove(workflow.item.uuid);
+	this.setAttackRoll(updatedRoll);
+	queue.remove(this.item.uuid);
 }
-async function tripAttack(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Trip Attack');
+async function tripAttack({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Maneuvers: Trip Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
-        await refund(workflow);
+    if (this.hitTargets.size === 0) {
+        await refund.bind(this);
         await chris.removeEffect(effect);
         return;
     } else {
@@ -336,8 +337,8 @@ async function tripAttack(workflow) {
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
-        let targetToken = workflow.targets.first();
+        let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+        let targetToken = this.targets.first();
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -352,7 +353,7 @@ async function tripAttack(workflow) {
         if (tripWorkflow.failedSaves.size != 1) return;
         let targetEffect = chris.findEffect(targetToken.actor, 'Prone');
         if (targetEffect) return;
-        await chris.addCondition(targetToken.actor, 'Prone', false, workflow.item.uuid);
+        await chris.addCondition(targetToken.actor, 'Prone', false, this.item.uuid);
     }
 }
 export let maneuvers = {

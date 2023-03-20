@@ -1,8 +1,8 @@
 import {chris} from '../../../helperFunctions.js';
-export async function eatMemories(workflow) {
-    if (workflow.failedSaves.size != 1) return;
+export async function eatMemories({speaker, actor, token, character, item, args}) {
+    if (this.failedSaves.size != 1) return;
     let diceSize = '1d4';
-    let targetActor = workflow.targets.first().actor;
+    let targetActor = this.targets.first().actor;
     let effect = chris.findEffect(targetActor,'Eat Memories');
     if (effect) {
         diceSize = effect.changes[0].value;
@@ -24,7 +24,7 @@ export async function eatMemories(workflow) {
                 break;
             case '1d20':
                 let condition = chris.findEffect(targetActor, 'Unconscious');
-                if (!condition) await chris.addCondition(targetActor, 'Unconscious', true, workflow.item.uuid);
+                if (!condition) await chris.addCondition(targetActor, 'Unconscious', true, this.item.uuid);
                 return;
         }
         let changes = effect.changes;
@@ -34,9 +34,9 @@ export async function eatMemories(workflow) {
         await chris.updateEffect(effect, {changes});
     } else {
         let effectData = {
-            'label': workflow.item.name,
-            'icon': workflow.item.img,
-            'origin': workflow.item.uuid,
+            'label': this.item.name,
+            'icon': this.item.img,
+            'origin': this.item.uuid,
             'duration': {
                 'seconds': 604800
             },
@@ -73,7 +73,7 @@ export async function eatMemories(workflow) {
             }
         };
         await chris.createEffect(targetActor, effectData);
-        let skillEffect = chris.findEffect(workflow.actor, workflow.item.name + ' Skills');
+        let skillEffect = chris.findEffect(this.actor, this.item.name + ' Skills');
         let changes;
         if (skillEffect) {
             changes = skillEffect.changes;
@@ -81,7 +81,7 @@ export async function eatMemories(workflow) {
             changes = [];
         }
         for (let [key, value] of Object.entries(targetActor.system.skills)) {
-            if (value.proficient > workflow.actor.system.skills[key].proficient) {
+            if (value.proficient > this.actor.system.skills[key].proficient) {
                 changes.push({
                     'key': 'system.skills.' + key + '.value',
                     'mode': 5,
@@ -91,7 +91,7 @@ export async function eatMemories(workflow) {
             }
         }
         for (let i of Array.from(targetActor.system.traits.languages.value)) {
-            if (!workflow.actor.system.traits.languages.value.has(i)) {
+            if (!this.actor.system.traits.languages.value.has(i)) {
                 changes.push({
                     'key': 'system.traits.languages.value',
                     'mode': 2,
@@ -102,15 +102,15 @@ export async function eatMemories(workflow) {
         }
         if (!skillEffect) {
             let skillEffectData = {
-                'label': workflow.item.name + ' Skills',
+                'label': this.item.name + ' Skills',
                 'icon': 'icons/magic/symbols/circled-gem-pink.webp',
-                'origin': workflow.item.uuid,
+                'origin': this.item.uuid,
                 'duration': {
                     'seconds': 2628000
                 },
                 'changes': changes
             }
-            await chris.createEffect(workflow.actor, skillEffectData);
+            await chris.createEffect(this.actor, skillEffectData);
         } else {
             let updates = {changes};
             await chris.updateEffect(skillEffect, updates);

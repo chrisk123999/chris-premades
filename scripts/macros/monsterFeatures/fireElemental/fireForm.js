@@ -20,14 +20,14 @@ export async function fireForm(workflow, targetToken) {
     };
     await MidiQOL.completeItemUse(feature, {}, options);
 }
-export async function douseFire(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Fire Form');
+export async function douseFire({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Fire Form');
     if (!effect) return;
     await chris.removeEffect(effect);
 }
-export async function item(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+export async function item({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
     let effect = chris.findEffect(targetActor, 'Douse Fire');
     if (effect) return;
@@ -43,7 +43,7 @@ export async function item(workflow) {
         'duration': {
             'seconds': 604800
         },
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {

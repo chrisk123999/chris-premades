@@ -1,6 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function item(workflow) {
+async function item({speaker, actor, token, character, item, args}) {
     async function deleteSpells(actor, onlyEmpty) {
         let rossSpells =[];
         actor.items.forEach(item => {
@@ -14,17 +14,17 @@ async function item(workflow) {
     }
     let pickOption = await chris.dialog('Ring of Spell Storing', [['Store a spell.', 'store'], ['Toggle showing stored spells.', 'toggle'], ['Clear used spells.', 'clear'], ['Reset stored spells.', 'reset']]);
     if (!pickOption) return;
-    let showSpells = workflow.item.flags['chris-premades']?.item?.ross?.showSpells
+    let showSpells = this.item.flags['chris-premades']?.item?.ross?.showSpells
     if (showSpells === undefined) showSpells = true;
     if (pickOption === 'store') {
-        let storedSpellLevels = workflow.item.flags['chris-premades']?.item?.ross?.spellSlots;
+        let storedSpellLevels = this.item.flags['chris-premades']?.item?.ross?.spellSlots;
         if (!storedSpellLevels) storedSpellLevels = 0;
         if (storedSpellLevels === 5) {
             ui.notifications.info('Ring is full!');
             return;
         }
         let generatedMenu = [];
-        workflow.actor.items.forEach(item => {
+        this.actor.items.forEach(item => {
             let prepared = item.system.preparation?.prepared;
             let mode = item.system.preparation?.mode;
             let hasUses = true;
@@ -63,7 +63,7 @@ async function item(workflow) {
                 spellData = generatedMenu[spellKey].toObject();
                 spellDC = chris.getSpellDC(generatedMenu[spellKey]);
                 if (generatedMenu[spellKey].system.actionType === 'rsak' || generatedMenu[spellKey].system.actionType === 'msak') {
-                    let dummyWorkflow = await (new MidiQOL.DummyWorkflow(workflow.actor, generatedMenu[spellKey], workflow.token, new Set([workflow.token])).simulateAttack(workflow.token));
+                    let dummyWorkflow = await (new MidiQOL.DummyWorkflow(this.actor, generatedMenu[spellKey], this.token, new Set([this.token])).simulateAttack(this.token));
                     spellMod = dummyWorkflow.attackRoll.formula.split('1d20')[1];
                 }
                 originalSpell = generatedMenu[spellKey];
@@ -73,12 +73,12 @@ async function item(workflow) {
         let castLevel;
         if (spellData.system.preparation.mode === 'prepared' || spellData.system.preparation.mode === 'pact' || spellData.system.preparation.mode === 'always') {
             let generatedCastMenu = [];
-            if (workflow.actor.system.spells.pact.value && 5 - storedSpellLevels >= workflow.actor.system.spells.pact.level && spellData.system.level <= workflow.actor.system.spells.pact.level) generatedCastMenu.push(['Pact', 'pact']);
-            if (workflow.actor.system.spells.spell1.value && 5 - storedSpellLevels >= 1 && spellData.system.level <= 1) generatedCastMenu.push(['1st Level', 'spell1']);
-            if (workflow.actor.system.spells.spell2.value && 5 - storedSpellLevels >= 2 && spellData.system.level <= 2) generatedCastMenu.push(['2nd Level', 'spell2']);
-            if (workflow.actor.system.spells.spell3.value && 5 - storedSpellLevels >= 3 && spellData.system.level <= 3) generatedCastMenu.push(['3rd Level', 'spell3']);
-            if (workflow.actor.system.spells.spell4.value && 5 - storedSpellLevels >= 4 && spellData.system.level <= 4) generatedCastMenu.push(['4th Level', 'spell4']);
-            if (workflow.actor.system.spells.spell5.value && 5 - storedSpellLevels >= 5 && spellData.system.level <= 5) generatedCastMenu.push(['5th Level', 'spell5']);
+            if (this.actor.system.spells.pact.value && 5 - storedSpellLevels >= this.actor.system.spells.pact.level && spellData.system.level <= this.actor.system.spells.pact.level) generatedCastMenu.push(['Pact', 'pact']);
+            if (this.actor.system.spells.spell1.value && 5 - storedSpellLevels >= 1 && spellData.system.level <= 1) generatedCastMenu.push(['1st Level', 'spell1']);
+            if (this.actor.system.spells.spell2.value && 5 - storedSpellLevels >= 2 && spellData.system.level <= 2) generatedCastMenu.push(['2nd Level', 'spell2']);
+            if (this.actor.system.spells.spell3.value && 5 - storedSpellLevels >= 3 && spellData.system.level <= 3) generatedCastMenu.push(['3rd Level', 'spell3']);
+            if (this.actor.system.spells.spell4.value && 5 - storedSpellLevels >= 4 && spellData.system.level <= 4) generatedCastMenu.push(['4th Level', 'spell4']);
+            if (this.actor.system.spells.spell5.value && 5 - storedSpellLevels >= 5 && spellData.system.level <= 5) generatedCastMenu.push(['5th Level', 'spell5']);
             if (generatedCastMenu.length === 0) {
                 ui.notifications.info('No spell slots available!');
                 return;
@@ -87,7 +87,7 @@ async function item(workflow) {
             if (!selection) return;
             switch (selection) {
                 case 'pact':
-                    castLevel = workflow.actor.system.spells.pact.level;
+                    castLevel = this.actor.system.spells.pact.level;
                     break;
                 case 'spell1':
                     castLevel = 1;
@@ -105,7 +105,7 @@ async function item(workflow) {
                     castLevel = 5;
                     break;
             }
-            await workflow.actor.update({['system.spells.' + selection +'.value']: workflow.actor.system.spells[selection].value - 1});
+            await this.actor.update({['system.spells.' + selection +'.value']: this.actor.system.spells[selection].value - 1});
         } else {
             castLevel = spellData.system.level;
         }
@@ -127,7 +127,7 @@ async function item(workflow) {
                     'castLevel': castLevel,
                     'dc': spellDC,
                     'mod': spellMod,
-                    'itemUuid': workflow.item.uuid
+                    'itemUuid': this.item.uuid
                 }
             }
         };
@@ -159,63 +159,63 @@ async function item(workflow) {
             'option': 'preCheckHits'
         });
         spellData.flags['midi-qol'].onUseMacroParts = onUseMacroParts;
-        let storedSpells = workflow.item.flags['chris-premades']?.item?.ross?.storedSpells;
+        let storedSpells = this.item.flags['chris-premades']?.item?.ross?.storedSpells;
         if (!storedSpells) storedSpells = [];
         storedSpells.push(spellData);
-        await workflow.item.setFlag('chris-premades', 'item.ross.storedSpells', storedSpells);
+        await this.item.setFlag('chris-premades', 'item.ross.storedSpells', storedSpells);
         let spellSlots = storedSpellLevels + castLevel;
-        await workflow.item.setFlag('chris-premades', 'item.ross.spellSlots', spellSlots);
-        if (showSpells) await workflow.actor.createEmbeddedDocuments('Item', [spellData]);
-        await workflow.item.update({'name': 'Ring of Spell Storing (' + spellSlots + '/5)'});
+        await this.item.setFlag('chris-premades', 'item.ross.spellSlots', spellSlots);
+        if (showSpells) await this.actor.createEmbeddedDocuments('Item', [spellData]);
+        await this.item.update({'name': 'Ring of Spell Storing (' + spellSlots + '/5)'});
         ui.notifications.info(originalSpell.name + ' stored.');
     } else if (pickOption === 'toggle') {
-        await workflow.item.setFlag('chris-premades', 'item.ross.showSpells', !showSpells);
+        await this.item.setFlag('chris-premades', 'item.ross.showSpells', !showSpells);
         if (showSpells) {
-            deleteSpells(workflow.actor);
+            deleteSpells(this.actor);
             ui.notifications.info('Spells toggled off.');
         } else {
-            let storedSpells = workflow.item.flags['chris-premades']?.item?.ross?.storedSpells;
+            let storedSpells = this.item.flags['chris-premades']?.item?.ross?.storedSpells;
             if (!storedSpells) return;
             ui.notifications.info('Spells toggled on.');
             if (storedSpells.length === 0) return;
             for (let i of storedSpells) {
-                i.flags['chris-premades'].item.ross.itemUuid = workflow.item.uuid;
+                i.flags['chris-premades'].item.ross.itemUuid = this.item.uuid;
             }
-            await workflow.actor.createEmbeddedDocuments('Item', storedSpells);
+            await this.actor.createEmbeddedDocuments('Item', storedSpells);
         }
     } else if (pickOption === 'reset') {
-        await workflow.item.setFlag('chris-premades', 'item.ross', {'storedSpells': [], 'spellSlots': 0, 'showSpells': true});
-        if (showSpells) deleteSpells(workflow.actor);
-        await workflow.item.update({'name': 'Ring of Spell Storing (0/5)'});
+        await this.item.setFlag('chris-premades', 'item.ross', {'storedSpells': [], 'spellSlots': 0, 'showSpells': true});
+        if (showSpells) deleteSpells(this.actor);
+        await this.item.update({'name': 'Ring of Spell Storing (0/5)'});
         ui.notifications.info('Ring Reset.');
     } else if (pickOption === 'clear') {
-        deleteSpells(workflow.actor, true);
+        deleteSpells(this.actor, true);
         ui.notifications.info('Used spells cleared.');
     }
 }
-async function attack(workflow) {
-    let mod = workflow.item.flags['chris-premades']?.item?.ross?.mod;
+async function attack({speaker, actor, token, character, item, args}) {
+    let mod = this.item.flags['chris-premades']?.item?.ross?.mod;
     if (!mod) mod = '0';
-    let queueSetup = await queue.setup(workflow.item.uuid, 'ringOfSpellStoring', 50);
+    let queueSetup = await queue.setup(this.item.uuid, 'ringOfSpellStoring', 50);
     if (!queueSetup) return;
     let updatedRoll = await new Roll('1d20' + mod).evaluate({async: true});
-    workflow.setAttackRoll(updatedRoll);
-    queue.remove(workflow.item.uuid);
+    this.setAttackRoll(updatedRoll);
+    queue.remove(this.item.uuid);
 }
-async function cast(workflow) {
-    workflow.config.consumeSpellSlot = false;
-    workflow.config.needsConfiguration = false;
-    workflow.options.configureDialog = false;
-    let castLevel = workflow.item.flags['chris-premades']?.item?.ross?.castLevel;
+async function cast({speaker, actor, token, character, item, args}) {
+    this.config.consumeSpellSlot = false;
+    this.config.needsConfiguration = false;
+    this.options.configureDialog = false;
+    let castLevel = this.item.flags['chris-premades']?.item?.ross?.castLevel;
     if (!castLevel) return;
-    workflow.config.consumeSpellLevel = castLevel;
-    let sourceItemUuid = workflow.item.flags['chris-premades']?.item?.ross?.itemUuid;
+    this.config.consumeSpellLevel = castLevel;
+    let sourceItemUuid = this.item.flags['chris-premades']?.item?.ross?.itemUuid;
     if (!sourceItemUuid) return;
     let sourceItem = await fromUuid(sourceItemUuid);
     if (!sourceItem) return;
     let storedSpells = sourceItem.flags['chris-premades']?.item?.ross?.storedSpells;
     if (!storedSpells) storedSpells = [];
-    let arrayIndex = storedSpells.findIndex(i => i.name === workflow.item.name);
+    let arrayIndex = storedSpells.findIndex(i => i.name === this.item.name);
     if (arrayIndex == -1) return;
     storedSpells.splice(arrayIndex, 1);
     await sourceItem.setFlag('chris-premades', 'item.ross.storedSpells', storedSpells);
@@ -228,9 +228,9 @@ async function cast(workflow) {
         await origin.delete();
     }
     let effectData = {
-        'label': workflow.item.name + ' Deletion',
+        'label': this.item.name + ' Deletion',
         'icon': '',
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'duration': {
             'seconds': 604800
         },
@@ -250,7 +250,7 @@ async function cast(workflow) {
             } */
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(this.actor, effectData);
 }
 export let ringOfSpellStoring = {
     'item': item,

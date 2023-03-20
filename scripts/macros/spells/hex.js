@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function hexItem(workflow) {
-    if (workflow.targets.size != 1) return;
+async function hexItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Hex - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Hex - Move');
@@ -15,7 +15,7 @@ async function hexItem(workflow) {
     ]);
     if (!selection) selection = 'str';
     let seconds;
-    switch (workflow.castData.castLevel) {
+    switch (this.castData.castLevel) {
         case 3:
         case 4:
             seconds = 28800;
@@ -33,7 +33,7 @@ async function hexItem(workflow) {
     let targetEffectData = {
         'label': 'Hexed',
         'icon': 'icons/magic/perception/silhouette-stealth-shadow.webp',
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'duration': {
             'seconds': seconds
         },
@@ -46,7 +46,7 @@ async function hexItem(workflow) {
             }
         ]
     };
-    await chris.createEffect(workflow.targets.first().actor, targetEffectData);
+    await chris.createEffect(this.targets.first().actor, targetEffectData);
     async function effectMacro() {
         await warpgate.revert(token.document, 'Hex');
         let targetTokenId = effect.changes[0].value;
@@ -59,12 +59,12 @@ async function hexItem(workflow) {
     }
     let sourceEffectData = {
         'label': 'Hex',
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'changes': [
             {
                 'key': 'flags.chris-premades.spell.hex',
                 'mode': 5,
-                'value': workflow.targets.first().id,
+                'value': this.targets.first().id,
                 'priority': 20
             },
             {
@@ -75,7 +75,7 @@ async function hexItem(workflow) {
             }
         ],
         'transfer': false,
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'duration': {
             'seconds': seconds
         },
@@ -102,8 +102,8 @@ async function hexItem(workflow) {
         'name': sourceEffectData.label,
         'description': sourceEffectData.label
     };
-    await warpgate.mutate(workflow.token.document, updates, {}, options);
-    let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
+    await warpgate.mutate(this.token.document, updates, {}, options);
+    let conEffect = chris.findEffect(this.actor, 'Concentrating');
     if (conEffect) {
         let updates = {
             'duration': {
@@ -113,27 +113,27 @@ async function hexItem(workflow) {
         await chris.updateEffect(conEffect, updates);
     }
 }
-async function hexAttack(workflow) {
-    if (workflow.hitTargets.size != 1) return;
-    let sourceActor = workflow.actor;
+async function hexAttack({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1) return;
+    let sourceActor = this.actor;
     let hexedTarget = sourceActor.flags['chris-premades']?.spell?.hex;
-    let targetToken = workflow.hitTargets.first();
+    let targetToken = this.hitTargets.first();
     if (targetToken.id != hexedTarget) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'hex', 250);
+    let queueSetup = await queue.setup(this.item.uuid, 'hex', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
+    let oldFormula = this.damageRoll._formula;
     let diceNum = 1;
-    if (workflow.isCritical) diceNum = 2;
+    if (this.isCritical) diceNum = 2;
     let damageFormula = oldFormula + ' + ' + diceNum + 'd6[necrotic]';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
-    queue.remove(workflow.item.uuid);
+    await this.setDamageRoll(damageRoll);
+    queue.remove(this.item.uuid);
 }
-async function hexMoveItem(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+async function hexMoveItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
-    let oldTargetTokenId = workflow.actor.flags['chris-premades']?.spell?.hex;
+    let oldTargetTokenId = this.actor.flags['chris-premades']?.spell?.hex;
     let oldTargetToken = canvas.scene.tokens.get(oldTargetTokenId);
     let oldTargetOrigin;
     let selection = 'flags.midi-qol.disadvantage.ability.check.str';
@@ -146,7 +146,7 @@ async function hexMoveItem(workflow) {
             selection = oldTargetEffect.changes[0].key;
         }
     }
-    let effect = chris.findEffect(workflow.actor, 'Hex');
+    let effect = chris.findEffect(this.actor, 'Hex');
     let duration = 3600;
     if (effect) duration = effect.duration.remaining;
     let effectData = {

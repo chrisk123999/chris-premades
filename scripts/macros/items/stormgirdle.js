@@ -1,15 +1,17 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function stormAvatar(workflow) {
-    if (workflow.hitTargets.size != 1 || workflow.item.type != 'weapon') return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'stormAvatar', 340);
+async function stormAvatar({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1 || this.item.type != 'weapon') return;
+    let queueSetup = await queue.setup(this.item.uuid, 'stormAvatar', 340);
     if (!queueSetup) return;
-    let damageFormula = workflow.damageRoll._formula.toLowerCase().replace('slashing', 'lightning').replace('piercing', 'lightning').replace('bludgeoning', 'thunder');
+    let damageFormula = this.damageRoll._formula.toLowerCase().replace('slashing', 'lightning').replace('piercing', 'lightning').replace('bludgeoning', 'thunder');
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
-    queue.remove(workflow.item.uuid);
+    await this.setDamageRoll(damageRoll);
+    queue.remove(this.item.uuid);
 }
-async function item(workflow, level) {
+async function item({speaker, actor, token, character, item, args}) {
+	let level = this.actor.flags['chris-premades']?.item?.stormgirdle?.level;
+	if (!level) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Storm Avatar Lightning', false);
     if (!featureData) return;
     let diceNumber = 3 + level;
@@ -64,7 +66,7 @@ async function item(workflow, level) {
         'duration': {
             'seconds': 60
         },
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -222,7 +224,7 @@ async function item(workflow, level) {
         'name': 'Storm Avatar',
         'description': featureData.name
     };
-    await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await warpgate.mutate(this.token.document, updates, {}, options);
 }
 async function equip(actor, origin) {
     let spellData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Spell Compendium'), 'Control Weather', false);

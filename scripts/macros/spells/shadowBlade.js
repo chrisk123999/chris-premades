@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function shadowBlade(workflow) {
-	let targetToken = workflow.token;
-	let spellLevel = workflow.castData.castLevel;
+export async function shadowBlade({speaker, actor, token, character, item, args}) {
+	let targetToken = this.token;
+	let spellLevel = this.castData.castLevel;
 	let weaponData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Shadow Blade Sword', false);
     if (!weaponData) return;
 	let diceNum = 2;
@@ -32,11 +32,11 @@ export async function shadowBlade(workflow) {
 	}
 	let effectData = {
 		'label': weaponData.name,
-		'icon': workflow.item.img,
+		'icon': this.item.img,
 		'duration': {
 			'seconds': 60
 		},
-		'origin': workflow.item.uuid,
+		'origin': this.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onDelete': {

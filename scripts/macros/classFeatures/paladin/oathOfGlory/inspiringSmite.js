@@ -1,16 +1,16 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function inspiringSmite(workflow) {
-    let targets = await chris.findNearby(workflow.token, 30, 'ally');
-    if (workflow.token) targets.push(workflow.token);
+export async function inspiringSmite({speaker, actor, token, character, item, args}) {
+    let targets = await chris.findNearby(this.token, 30, 'ally');
+    if (this.token) targets.push(this.token);
     if (targets.length === 0) return;
-    let classLevels = workflow.actor.classes.paladin?.system.levels;
+    let classLevels = this.actor.classes.paladin?.system.levels;
     if (!classLevels) return;
     let rollFormula = '2d8[temphp] + ' + classLevels;
     let damageRoll = await new Roll(String(rollFormula)).evaluate({async: true});
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},
-        flavor: workflow.item.name
+        flavor: this.item.name
     });
     let buttons = [
         {

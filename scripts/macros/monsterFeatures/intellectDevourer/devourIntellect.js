@@ -1,17 +1,17 @@
 import {chris} from '../../../helperFunctions.js';
-export async function devourIntellect(workflow) {
-	if (workflow.failedSaves.size != 1) return;
+export async function devourIntellect({speaker, actor, token, character, item, args}) {
+	if (this.failedSaves.size != 1) return;
 	let roll = await new Roll('3d6').roll({async: true});
 	roll.toMessage({
 		rollMode: 'roll',
 		speaker: {alias: name},
-		flavor: workflow.item.name
+		flavor: this.item.name
 	});
-	let targetActor = workflow.targets.first().actor;
+	let targetActor = this.targets.first().actor;
 	if (targetActor.system.abilities.int.value > roll.total) return;
 	let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+		'label': this.item.name,
+		'icon': this.item.img,
 		'duration': {
 			'seconds': 604800
 		},

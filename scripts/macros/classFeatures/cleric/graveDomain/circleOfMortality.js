@@ -1,19 +1,19 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function circleOfMortality(workflow) {
-    if (workflow.targets.size === 0 || !workflow.damageRoll) return;
-    for (let i of workflow.damageList) {
+export async function circleOfMortality({speaker, actor, token, character, item, args}) {
+    if (this.targets.size === 0 || !this.damageRoll) return;
+    for (let i of this.damageList) {
         if (i.oldHP != 0) continue;
         let targetActor = game.scenes.get(i.sceneId).tokens.get(i.tokenId).actor;
         if (chris.checkTrait(targetActor, 'di', 'healing')) continue;
         let newHealingTotal = 0;
-        for (let i = 0; workflow.damageRoll.terms.length > i; i++) {
-            let flavor = workflow.damageRoll.terms[i].flavor;
-            let isDeterministic = workflow.damageRoll.terms[i].isDeterministic;
+        for (let i = 0; this.damageRoll.terms.length > i; i++) {
+            let flavor = this.damageRoll.terms[i].flavor;
+            let isDeterministic = this.damageRoll.terms[i].isDeterministic;
             if (flavor.toLowerCase() === 'healing' && !isDeterministic) {
-                newHealingTotal += workflow.damageRoll.terms[i].faces * workflow.damageRoll.terms[i].results.length;
+                newHealingTotal += this.damageRoll.terms[i].faces * this.damageRoll.terms[i].results.length;
             } else {
-                if (!isNaN(workflow.damageRoll.terms[i].total)) {
-                    newHealingTotal += workflow.damageRoll.terms[i].total;
+                if (!isNaN(this.damageRoll.terms[i].total)) {
+                    newHealingTotal += this.damageRoll.terms[i].total;
                 }
             }
         }

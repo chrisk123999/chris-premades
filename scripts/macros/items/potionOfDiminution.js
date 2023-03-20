@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function potionOfDiminution(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+export async function potionOfDiminution({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
     let roll = await new Roll('1d4').roll({async: true});
     roll.toMessage({
@@ -75,8 +75,8 @@ export async function potionOfDiminution(workflow) {
         'value': size
     });
     let effectData = {
-        'label': workflow.item.name,
-        'icon': workflow.item.img,
+        'label': this.item.name,
+        'icon': this.item.img,
         'duration': {
             'seconds': 3600 * roll.total
         },

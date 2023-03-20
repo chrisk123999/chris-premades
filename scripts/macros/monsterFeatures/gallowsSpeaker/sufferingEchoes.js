@@ -1,10 +1,10 @@
 import {chris} from '../../../helperFunctions.js';
-export async function sufferingEchoes(workflow) {
-    if (workflow.failedSaves.size === 0) {
-        new Sequence().effect().atLocation(workflow.token).stretchTo(workflow.targets.first()).file('jb2a.eldritch_blast.purple.30ft').play();
+export async function sufferingEchoes({speaker, actor, token, character, item, args}) {
+    if (this.failedSaves.size === 0) {
+        new Sequence().effect().atLocation(this.token).stretchTo(this.targets.first()).file('jb2a.eldritch_blast.purple.30ft').play();
         return;
     }
-    let nearbyTargets = chris.findNearby(workflow.targets.first(), 30, 'ally');
+    let nearbyTargets = chris.findNearby(this.targets.first(), 30, 'ally');
     if (nearbyTargets.length === 0) return;
     let buttons = [
         {
@@ -31,12 +31,12 @@ export async function sufferingEchoes(workflow) {
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},
-        flavor: workflow.item.name
+        flavor: this.item.name
     });
     await chris.applyDamage(nearbyTargets, damageRoll.total, 'psychic');
-    new Sequence().effect().atLocation(workflow.token).stretchTo(workflow.targets.first()).file('jb2a.eldritch_blast.purple.30ft').play();
+    new Sequence().effect().atLocation(this.token).stretchTo(this.targets.first()).file('jb2a.eldritch_blast.purple.30ft').play();
     await warpgate.wait(1000);
     for (let i of nearbyTargets) {
-        new Sequence().effect().atLocation(workflow.targets.first()).stretchTo(i).file('jb2a.eldritch_blast.purple.30ft').play();
+        new Sequence().effect().atLocation(this.targets.first()).stretchTo(i).file('jb2a.eldritch_blast.purple.30ft').play();
     }
 }

@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-async function holyWeaponItem(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+async function holyWeaponItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     async function effectMacro() {
         let damageDice = '2d8[radiant]';
         let generatedMenu = [];
@@ -45,11 +45,11 @@ async function holyWeaponItem(workflow) {
     }
     let effectData = {
         'label': 'Holy Weapon',
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'duration': {
             'seconds': 600
         },
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'effectmacro': {
                 'onCreate': {
@@ -60,11 +60,11 @@ async function holyWeaponItem(workflow) {
     };
     await chris.createEffect(targetToken.actor, effectData);
 }
-async function holyWeaponBurstItem(workflow) {
-    let effect = chris.findEffect(workflow.actor, 'Holy Weapon');
+async function holyWeaponBurstItem({speaker, actor, token, character, item, args}) {
+    let effect = chris.findEffect(this.actor, 'Holy Weapon');
     if (!effect) return;
     await effect.delete();
-    await chris.removeCondition(workflow.actor, 'Concentrating');
+    await chris.removeCondition(this.actor, 'Concentrating');
 }
 export let holyWeapon = {
     'item': holyWeaponItem,

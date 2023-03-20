@@ -1,8 +1,8 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function item(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+async function item({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
     let effect = chris.findEffect(targetActor, 'Potion of Giant Size');
     if (!effect) return;
@@ -12,19 +12,19 @@ async function item(workflow) {
     await chris.updateEffect(effect, updates);
     await chris.applyDamage(targetToken, targetActor.system.attributes.hp.value, 'healing');
 }
-async function damage(workflow) {
-    if (workflow.hitTargets.size != 1) return;
-    if (workflow.item.type != 'weapon') return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'potionOfGiantSize', 375);
+async function damage({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1) return;
+    if (this.item.type != 'weapon') return;
+    let queueSetup = await queue.setup(this.item.uuid, 'potionOfGiantSize', 375);
     if (!queueSetup) return;
-    let bonusDamageNumber = workflow.damageRoll.terms[0].number * 3 - workflow.damageRoll.terms[0].number;
-    let bonusDamageDice = workflow.damageRoll.terms[0].faces;
-    let flavor = workflow.damageRoll.terms[0].options.flavor;
+    let bonusDamageNumber = this.damageRoll.terms[0].number * 3 - this.damageRoll.terms[0].number;
+    let bonusDamageDice = this.damageRoll.terms[0].faces;
+    let flavor = this.damageRoll.terms[0].options.flavor;
     let bonusDamageFormula = ' + ' + bonusDamageNumber + 'd' + bonusDamageDice + '[' + flavor + ']';
-    let damageFormula = workflow.damageRoll._formula + bonusDamageFormula;
+    let damageFormula = this.damageRoll._formula + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
-    queue.remove(workflow.item.uuid);
+    await this.setDamageRoll(damageRoll);
+    queue.remove(this.item.uuid);
 }
 async function end(token, actor) {
     let hpValue = actor.system.attributes.hp.value;

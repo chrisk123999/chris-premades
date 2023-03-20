@@ -3,7 +3,7 @@ import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
     let options = {
 		'showFullCard': false,
-		'createWorkflow': true,
+		'createthis': true,
 		'targetUuids': [token.document.uuid],
 		'configureDialog': false,
 		'versatile': false,
@@ -15,7 +15,7 @@ async function turnStart(token, actor) {
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {
         let featureData2 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Lycan Regeneration', false);
         featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Lycan Regeneration');
-        let feature2 = new CONFIG.Item.documentClass(featureData2, {parent: workflow.actor});
+        let feature2 = new CONFIG.Item.documentClass(featureData2, {parent: this.actor});
         if (levels >= 15) {
             let effectData2 = {
                 'label': 'Condition Advantage',
@@ -34,22 +34,22 @@ async function turnStart(token, actor) {
             }
             await chris.createEffect(actor, effectData2);
         }
-        let newWorkflow = await MidiQOL.completeItemUse(feature2, {}, options);
+        let featureWorkflow = await MidiQOL.completeItemUse(feature2, {}, options);
         if (levels >= 15) {
             let advEffect = chris.findEffect(actor, 'Condition Advantage')
             if (advEffect) await advEffect.delete();
         } 
-        bonusHealth = newWorkflow.damageTotal;
+        bonusHealth = featureWorkflow.damageTotal;
     }
     if ((actor.system.attributes.hp.max / 2) <= actor.system.attributes.hp.value + bonusHealth) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Bloodlust', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bloodlust');
     if (!featureData) return;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
-async function transformation(workflow, image) {
-    let levels = workflow.actor.classes['blood-hunter'].system.levels
+async function transformation({speaker, actor, token, character, item, args}) {
+    let levels = this.actor.classes['blood-hunter'].system.levels
     let weaponData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Predatory Strike', false);
     weaponData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Predatory Strike');
     if (levels >= 7) {
@@ -120,13 +120,13 @@ async function transformation(workflow, image) {
     }
     let effectData = {
         'label': 'Hybrid Transformation',
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'changes': changes,
         'disabled': false,
 		'duration': {
 			'seconds': seconds
 		},
-		'origin': workflow.item.uuid,
+		'origin': this.item.uuid,
         'flags': {
             'dae': {
                 'selfTarget': true,
@@ -158,6 +158,7 @@ async function transformation(workflow, image) {
             }
         }
     };
+	let image = this.actor.flags['chris-premades']?.feature?.hybridTransformation?.img;
     if (image != '') {
         updates.token = {
             'texture': {
@@ -170,21 +171,21 @@ async function transformation(workflow, image) {
         'name': effectData.label,
         'description': effectData.name
     };
-    await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await warpgate.mutate(this.token.document, updates, {}, options);
 }
-async function voracious(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetActor = workflow.targets.first().actor;
+async function voracious({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetActor = this.targets.first().actor;
     let effect = chris.findEffect(targetActor, 'Brand of Castigation');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    if (originItem.actor.uuid != workflow.actor.uuid) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'voracious',150);
+    if (originItem.actor.uuid != this.actor.uuid) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'voracious',150);
     if (!queueSetup) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution['Brand of the Voracious'] = true;
-    queue.remove(workflow.item.uuid);
+    this.advantage = true;
+    this.attackAdvAttribution['Brand of the Voracious'] = true;
+    queue.remove(this.item.uuid);
 }
 export let hybridTransformation = {
     'item': transformation,

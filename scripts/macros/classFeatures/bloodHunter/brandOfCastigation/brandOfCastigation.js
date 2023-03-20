@@ -1,14 +1,14 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function brandOfCastigation(workflow) {
-    if (workflow.hitTargets.size != 1) return;
-    let effect = chris.findEffect(workflow.actor, 'Brand of Castigation');
+export async function brandOfCastigation({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1) return;
+    let effect = chris.findEffect(this.actor, 'Brand of Castigation');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let damage = chris.getSpellMod(originItem);
     if (originItem.actor.classes['blood-hunter'].system.levels >= 13) damage = damage * 2;
     let applySelfDamage = false;
-    let targetToken = workflow.hitTargets.first();
+    let targetToken = this.hitTargets.first();
     if (!targetToken) return;
     if (targetToken.actor.id === originItem.actor.id) {
         applySelfDamage = true;
@@ -22,5 +22,5 @@ export async function brandOfCastigation(workflow) {
         }
     }
     if (!applySelfDamage) return;
-    await chris.applyDamage(workflow.token, damage, 'psychic')
+    await chris.applyDamage(this.token, damage, 'psychic')
 }

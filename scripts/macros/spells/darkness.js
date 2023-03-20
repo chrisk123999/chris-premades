@@ -1,11 +1,11 @@
 import {chris} from '../../helperFunctions.js';
-async function darknessItem(workflow) {
-    let template = canvas.scene.collections.templates.get(workflow.templateId);
+async function darknessItem({speaker, actor, token, character, item, args}) {
+    let template = canvas.scene.collections.templates.get(this.templateId);
     if (!template) return;
     await template.setFlag('chris-premades', 'spell.darkness', true);
     let attachToken = await chris.dialog('Attach to self?', [['Yes', true], ['No', false]]) || false;
     if (!attachToken) return;
-    let tokenObject = workflow.token;
+    let tokenObject = this.token;
     await template.update(
         {
             'x': tokenObject.center.x,

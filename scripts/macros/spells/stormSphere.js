@@ -1,6 +1,6 @@
 import {chris} from '../../helperFunctions.js';
-async function item(workflow) {
-    if (!workflow.templateUuid) return;
+async function item({speaker, actor, token, character, item, args}) {
+    if (!this.templateUuid) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Sphere Bolt');
@@ -12,11 +12,11 @@ async function item(workflow) {
     }
     let effectData = {
         'label': 'Storm Sphere Handler',
-        'icon': workflow.item.img,
+        'icon': this.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': workflow.item.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -29,9 +29,9 @@ async function item(workflow) {
             'chris-premades': {
                 'spell': {
                     'stormSphere': {
-                        'templateUuid': workflow.templateUuid,
-                        'castLevel': workflow.castData.castLevel,
-                        'spellSaveDC': chris.getSpellDC(workflow.item)
+                        'templateUuid': this.templateUuid,
+                        'castLevel': this.castData.castLevel,
+                        'spellSaveDC': chris.getSpellDC(this.item)
                     }
                 }
             }
@@ -52,12 +52,12 @@ async function item(workflow) {
         'name': effectData.label,
         'description': featureData.name
     };
-    await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await warpgate.mutate(this.token.document, updates, {}, options);
 }
-async function boltItem(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
-    let effect = chris.findEffect(workflow.actor, 'Storm Sphere Handler');
+async function boltItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
+    let effect = chris.findEffect(this.actor, 'Storm Sphere Handler');
     if (!effect) return;
     let castLevel = effect.flags['chris-premades']?.spell?.stormSphere?.castLevel;
     if (!castLevel) castLevel = 4;
@@ -69,7 +69,7 @@ async function boltItem(workflow) {
             'lightning'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -83,31 +83,31 @@ async function boltItem(workflow) {
     if (!templateUuid) return;
     let template = await fromUuid(templateUuid);
     if (!template) return;
-    let flag = workflow.actor.flags['midi-qol']?.ignoreNearbyFoes;
-    if (!flag) workflow.actor.flags['midi-qol'].ignoreNearbyFoes = 1;
+    let flag = this.actor.flags['midi-qol']?.ignoreNearbyFoes;
+    if (!flag) this.actor.flags['midi-qol'].ignoreNearbyFoes = 1;
     let position = canvas.grid.getSnappedPosition(template.object.center.x, template.object.center.y);
-    let savedX = workflow.token.document.x;
-    let savedY = workflow.token.document.y;
-    workflow.token.document.x = position.x;
-    workflow.token.document.y = position.y;
+    let savedX = this.token.document.x;
+    let savedY = this.token.document.y;
+    this.token.document.x = position.x;
+    this.token.document.y = position.y;
     await MidiQOL.completeItemUse(feature, {}, options);
-    workflow.token.document.x = savedX;
-    workflow.token.document.y = savedY;
-    if (!flag) workflow.actor.flags['midi-qol'].ignoreNearbyFoes = 0;
+    this.token.document.x = savedX;
+    this.token.document.y = savedY;
+    if (!flag) this.actor.flags['midi-qol'].ignoreNearbyFoes = 0;
     new Sequence().effect().atLocation(template.object).stretchTo(targetToken).file('jb2a.chain_lightning.primary.blue.60ft').play();
 }
-async function boltAttackItem(workflow) {
-    if (workflow.targets.size != 1) return;
-    let effect = chris.findEffect(workflow.actor, 'Storm Sphere Handler');
+async function boltAttackItem({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let effect = chris.findEffect(this.actor, 'Storm Sphere Handler');
     if (!effect) return;
     let templateUuid = effect.flags['chris-premades']?.spell?.stormSphere?.templateUuid;
     if (!templateUuid) return;
     let template = await fromUuid(templateUuid);
     if (!template) return;
-    let targetToken = workflow.targets.first();
+    let targetToken = this.targets.first();
     if (!chris.tokenInTemplate(targetToken.document, template)) return;
-    workflow.advantage = true;
-    workflow.attackAdvAttribution['Advantage: Storm Sphere'] = true;
+    this.advantage = true;
+    this.attackAdvAttribution['Advantage: Storm Sphere'] = true;
 }
 async function turnStart(actor, effect) {
     let previousTurnId = game.combat.previous.tokenId;

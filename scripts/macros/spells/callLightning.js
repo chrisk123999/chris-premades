@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function callLightning(workflow) {
+export async function callLightning({speaker, actor, token, character, item, args}) {
 	let storming = await chris.dialog('Is it already storming?', [['Yes', true], ['No', false]]);
-	let spellLevel = workflow.castData.castLevel;
+	let spellLevel = this.castData.castLevel;
 	if (storming) spellLevel += 1;
 	let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Bolt', false);
 	if (!featureData) return;
@@ -11,18 +11,18 @@ export async function callLightning(workflow) {
 			'lightning'
 		]
 	];
-	featureData.system.save.dc = chris.getSpellDC(workflow.item);
+	featureData.system.save.dc = chris.getSpellDC(this.item);
 	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Bolt');
 	async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Bolt');
 	}
 	let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+		'label': this.item.name,
+		'icon': this.item.img,
 		'duration': {
 			'seconds': 600
 		},
-		'origin': workflow.item.uuid,
+		'origin': this.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onDelete': {
@@ -37,7 +37,7 @@ export async function callLightning(workflow) {
 				[featureData.name]: featureData
 			},
 			'ActiveEffect': {
-				[workflow.item.name]: effectData
+				[this.item.name]: effectData
 			}
 		}
 	};
@@ -46,5 +46,5 @@ export async function callLightning(workflow) {
 		'name': featureData.name,
 		'description': featureData.name
 	};
-	await warpgate.mutate(workflow.token.document, updates, {}, options);
+	await warpgate.mutate(this.token.document, updates, {}, options);
 }

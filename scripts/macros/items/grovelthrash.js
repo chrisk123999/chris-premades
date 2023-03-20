@@ -1,35 +1,37 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function item(workflow, level) {
-    if (workflow.hitTargets.size != 1) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'grovelthrash', 50);
+async function item({speaker, actor, token, character, item, args}) {
+	let level = this.actor.flags['chris-premades']?.item?.grovelthrash?.level;
+	if (!level) return;
+    if (this.hitTargets.size != 1) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'grovelthrash', 50);
     if (!queueSetup) return;
     let selected = await chris.dialog('Activate Grovelthrash?', [['Yes', true], ['No', false]]);
     let damageDiceNum = 0;
     if (selected) {
         damageDiceNum = 2;
     }
-    if (level > 0) if (Math.floor(workflow.actor.system.attributes.hp.max / 2) > workflow.actor.system.attributes.hp.value) damageDiceNum += 2;
+    if (level > 0) if (Math.floor(this.actor.system.attributes.hp.max / 2) > this.actor.system.attributes.hp.value) damageDiceNum += 2;
     if (damageDiceNum === 0) {
-        queue.remove(workflow.item.uuid);
+        queue.remove(this.item.uuid);
         return;
     }
-    if (workflow.isCritical) damageDiceNum = damageDiceNum * 2;
+    if (this.isCritical) damageDiceNum = damageDiceNum * 2;
     let damageDice = damageDiceNum + 'd6[bludgeoning]';
-    let damageFormula = workflow.damageRoll._formula + ' + ' + damageDice;
+    let damageFormula = this.damageRoll._formula + ' + ' + damageDice;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await this.setDamageRoll(damageRoll);
     if (selected) {
         let selfDamageFormula = '1d6[psychic]';
         let selfDamageRoll = await new Roll(selfDamageFormula).roll({async: true});
         selfDamageRoll.toMessage({
             rollMode: 'roll',
             speaker: {alias: name},
-            flavor: workflow.item.name
+            flavor: this.item.name
         });
-        await chris.applyDamage([workflow.token], selfDamageRoll.total, 'psychic');
+        await chris.applyDamage([this.token], selfDamageRoll.total, 'psychic');
     }
-    queue.remove(workflow.item.uuid);
+    queue.remove(this.item.uuid);
 }
 async function equip(actor, origin, level) {
     let charges = origin.flags['chris-premades']?.item?.grovelthrash?.charges?.reaction;

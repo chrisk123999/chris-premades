@@ -1,7 +1,7 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function blessingOfTheForge(workflow) {
-    if (workflow.targets.size != 1) return;
-    let targetToken = workflow.targets.first();
+export async function blessingOfTheForge({speaker, actor, token, character, item, args}) {
+    if (this.targets.size != 1) return;
+    let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
     let generatedMenu = [];
     targetActor.items.forEach(item => {
@@ -22,8 +22,8 @@ export async function blessingOfTheForge(workflow) {
         itemData.system.armor.value += 1;
     }
     let effectData = {
-        'label': workflow.item.name,
-        'icon': workflow.item.img,
+        'label': this.item.name,
+        'icon': this.item.img,
         'duration': {
             'seconds': 604800
         },
@@ -46,7 +46,7 @@ export async function blessingOfTheForge(workflow) {
                 [itemData.name]: itemData
             },
             'ActiveEffect': {
-                [workflow.item.name]: effectData
+                [this.item.name]: effectData
             }
         }
     };

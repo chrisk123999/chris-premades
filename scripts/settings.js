@@ -2,6 +2,14 @@ import {macros, onHitMacro} from './macros.js';
 import {tokenMoved, combatUpdate} from './movement.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
+	game.settings.register(moduleName, 'Breaking Version Change', {
+		'name': 'Breaking Version Change',
+		'hint': 'Internal version number bumped when an update requires new imports.',
+		'scope': 'world',
+		'config': false,
+		'type': Number,
+		'default': 0
+	});
 	game.settings.register(moduleName, 'Show Names', {
 		'name': 'Show Names',
 		'hint': 'Enabling this will show target names in the target selector dialog (Used for certain features and spells).',

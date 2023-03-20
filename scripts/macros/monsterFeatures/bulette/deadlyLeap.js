@@ -1,8 +1,8 @@
-export async function deadlyLeap(workflow) {
-    if (workflow.targets.size === 0) return;
+export async function deadlyLeap({speaker, actor, token, character, item, args}) {
+    if (this.targets.size === 0) return;
     let dexSaves = [];
     let strSaves = [];
-    for (let targetToken of workflow.targets.values()) {
+    for (let targetToken of this.targets.values()) {
         let targetActor = targetToken.actor;
         if (targetActor.system.abilities.dex.save >= targetActor.system.abilities.str.save) {
             dexSaves.push(targetToken.document.uuid);
@@ -10,14 +10,14 @@ export async function deadlyLeap(workflow) {
             strSaves.push(targetToken.document.uuid);
         }
     }
-    let areaFeatureData = duplicate(workflow.item.toObject());
+    let areaFeatureData = duplicate(this.item.toObject());
     delete(areaFeatureData.effects);
     delete(areaFeatureData._id);
     delete(areaFeatureData.flags['midi-qol'].onUseMacroName);
     delete(areaFeatureData.flags['midi-qol'].onUseMacroParts);
     delete(areaFeatureData.flags.itemacro);
     areaFeatureData.system.actionType = 'save';
-    areaFeatureData.name = workflow.item.name + ': Dexterity';
+    areaFeatureData.name = this.item.name + ': Dexterity';
     areaFeatureData.system.damage.parts = [
         ['3d6[bludgeoning] + 4', 'bludgeoning'],
         ['3d6[slashing] + 4', 'slashing']
@@ -38,16 +38,16 @@ export async function deadlyLeap(workflow) {
                     'value': 'Prone'
                 }
             ],
-            'icon': workflow.item.img,
-            'label': workflow.item.name,
+            'icon': this.item.img,
+            'label': this.item.name,
             'transfer': false
         }
     ];
     let areaFeatureData2 = duplicate(areaFeatureData);
-    areaFeatureData2.name = workflow.item.name + ': Strength';
+    areaFeatureData2.name = this.item.name + ': Strength';
     areaFeatureData2.system.save.ability = 'str';
-    let areaFeature = new CONFIG.Item.documentClass(areaFeatureData, {parent: workflow.actor});
-    let areaFeature2 = new CONFIG.Item.documentClass(areaFeatureData2, {parent: workflow.actor});
+    let areaFeature = new CONFIG.Item.documentClass(areaFeatureData, {parent: this.actor});
+    let areaFeature2 = new CONFIG.Item.documentClass(areaFeatureData2, {parent: this.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

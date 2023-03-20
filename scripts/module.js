@@ -1,8 +1,8 @@
 import {registerSettings} from './settings.js';
-import {macros, setupWorldMacros, setupMacroFolder, onHitMacro} from './macros.js';
+import {macros, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createHeaderButton, getItemName, setConfig} from './item.js';
+import {createActorHeaderButton, createHeaderButton, getItemName, setConfig} from './item.js';
 import {queue} from './queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers, updateEffectTriggers, updateGMEffectTriggers, effectAura} from './movement.js';
 import {bab} from './babHelpers.js';
@@ -20,11 +20,20 @@ Hooks.once('socketlib.ready', async function() {
 });
 Hooks.once('ready', async function() {
 	if (game.user.isGM) {
-		await setupMacroFolder();
-		await setupWorldMacros();
+		let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
+		let currentVersion = 1;
+		if (oldVersion < currentVersion) {
+			let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
+			ChatMessage.create({
+				speaker: {alias: name},
+				content: message
+			});
+			await game.settings.set('chris-premades', 'Breaking Version Change', 1);
+		}
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
+		if (game.modules.get('ddb-importer').active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
 		game.settings.set('chris-premades', 'LastGM', game.user.id);
 		if (game.settings.get('chris-premades', 'Combat Listener') && game.user.isGM) Hooks.on('updateCombat', combatUpdate);
 		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) Hooks.on('updateToken', tokenMoved);

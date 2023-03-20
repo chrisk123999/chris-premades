@@ -1,15 +1,15 @@
 import {chris} from '../../../helperFunctions.js';
-export async function proboscis(workflow) {
-    if (workflow.hitTargets.size != 1) return;
-    let targetActor = workflow.targets.first().actor;
-    let damage = -chris.totalDamageType(targetActor, workflow.damageDetail, 'necrotic');
+export async function proboscis({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1) return;
+    let targetActor = this.targets.first().actor;
+    let damage = -chris.totalDamageType(targetActor, this.damageDetail, 'necrotic');
     if (damage === 0) return;
     let targetMaxHP = targetActor.system.attributes.hp.max;
     let effect = chris.findEffect(targetActor, 'Proboscis');
     if (!effect) {
         let effectData = {
             'label': 'Proboscis',
-            'icon': workflow.item.img,
+            'icon': this.item.img,
             'duration': {
                 'seconds': 2628000
             },

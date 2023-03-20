@@ -1,16 +1,16 @@
 import {chris} from '../../../helperFunctions.js';
-export async function slam(workflow) {
-    if (workflow.hitTargets.size != 1 || workflow.failedSaves.size != 1) return;
-    let damage = -workflow.damageList[0].appliedDamage;
+export async function slam({speaker, actor, token, character, item, args}) {
+    if (this.hitTargets.size != 1 || this.failedSaves.size != 1) return;
+    let damage = -this.damageList[0].appliedDamage;
     if (damage === 0) return;
-    let targetActor = workflow.targets.first().actor;
+    let targetActor = this.targets.first().actor;
     let targetMaxHP = targetActor.system.attributes.hp.max;
-    let effectName = targetActor.name + ' - ' + workflow.item.name;
+    let effectName = targetActor.name + ' - ' + this.item.name;
     let effect = chris.findEffect(targetActor, effectName);
     if (!effect) {
         let effectData = {
             'label': effectName,
-            'icon': workflow.item.img,
+            'icon': this.item.img,
             'duration': {
                 'seconds': 2628000
             },

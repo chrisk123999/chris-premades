@@ -1,10 +1,10 @@
 import {chris} from '../../helperFunctions.js';
-export async function witherAndBloom(workflow) {
-	if (workflow.targets.size === 0) return;
+export async function witherAndBloom({speaker, actor, token, character, item, args}) {
+	if (this.targets.size === 0) return;
 	let healTargets = [];
-	for (let target of workflow.damageList) {
+	for (let target of this.damageList) {
 		let targetToken = await fromUuid(target.tokenUuid);
-		if (workflow.token.document.disposition != targetToken.disposition) continue;
+		if (this.token.document.disposition != targetToken.disposition) continue;
 		target.damageDetail = [
 			{
 				'damage': 0,
@@ -104,12 +104,12 @@ export async function witherAndBloom(workflow) {
 		effect.delete();
 	}
 	let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+		'label': this.item.name,
+		'icon': this.item.img,
 		'duration': {
 			'seconds': 6
 		},
-		'origin': workflow.item.uuid,
+		'origin': this.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onCreate': {
@@ -119,8 +119,8 @@ export async function witherAndBloom(workflow) {
 			'chris-premades': {
 				'spell': {
 					'witherAndBloom': {
-						'castLevel': workflow.castData.castLevel - 1,
-						'itemCardId': workflow.itemCardId
+						'castLevel': this.castData.castLevel - 1,
+						'itemCardId': this.itemCardId
 					}
 				}
 			}

@@ -91,11 +91,11 @@ async function cloudKillTouched(tokenids) {
         }
     }
 }
-async function cloudkillItem(workflow) {
-    let template = canvas.scene.collections.templates.get(workflow.templateId);
+async function cloudkillItem({speaker, actor, token, character, item, args}) {
+    let template = canvas.scene.collections.templates.get(this.templateId);
     if (!template) return;
-    let spellLevel = workflow.castData.castLevel;
-    let spelldc = chris.getSpellDC(workflow.item);
+    let spellLevel = this.castData.castLevel;
+    let spelldc = chris.getSpellDC(this.item);
     let touchedTokens = await game.modules.get('templatemacro').api.findContained(template);
     await template.setFlag('chris-premades', 'spell.cloudkill', {spellLevel, spelldc, touchedTokens});
     await cloudKillTouched(touchedTokens);
@@ -126,10 +126,10 @@ async function cloudkillItem(workflow) {
     }
     let effectData = {
         'label': 'Cloudkill - Movement Handler',
-        'icon': workflow.item.img,
-        'origin': workflow.item.uuid,
+        'icon': this.item.img,
+        'origin': this.item.uuid,
         'duration': {
-            'seconds': 60 * workflow.item.system.duration.value
+            'seconds': 60 * this.item.system.duration.value
         },
         'flags': {
             'effectmacro': {
@@ -140,13 +140,13 @@ async function cloudkillItem(workflow) {
             'chris-premades': {
                 'spell': {
                     'cloudkill': {
-                        'templateId': workflow.templateId
+                        'templateId': this.templateId
                     }
                 }
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(this.actor, effectData);
 }
 async function cloudkillDeleted(template) {
     let touchedTokens = template.flags['chris-premades']?.spell?.cloudkill?.touchedTokens;

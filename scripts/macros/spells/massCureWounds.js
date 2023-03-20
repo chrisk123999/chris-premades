@@ -1,17 +1,17 @@
 import {chris} from '../../helperFunctions.js';
-export async function massCureWounds(workflow) {
-	if (workflow.targets.size === 0) return;
-	let sourceDisposition = workflow.token.document.disposition;
+export async function massCureWounds({speaker, actor, token, character, item, args}) {
+	if (this.targets.size === 0) return;
+	let sourceDisposition = this.token.document.disposition;
 	let targetTokens = [];
-	for (let i of workflow.targets) {
+	for (let i of this.targets) {
 		if (i.document.disposition === sourceDisposition) targetTokens.push(i);
 	}
 	if (targetTokens.length === 0) return;
-	let diceNumber = 8 - workflow.castData.castLevel;
-	let damageFormula = diceNumber + 'd8[healing] + ' + chris.getSpellMod(workflow.item);
+	let diceNumber = 8 - this.castData.castLevel;
+	let damageFormula = diceNumber + 'd8[healing] + ' + chris.getSpellMod(this.item);
 	let damageRoll = await new Roll(damageFormula).roll({async: true});
 	if (targetTokens.length <= 6) {
-		chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', targetTokens, workflow.item.name, workflow.itemCardId);
+		chris.applyWorkflowDamage(this.token, damageRoll, 'healing', targetTokens, this.item.name, this.itemCardId);
 	} else {
 		let buttons = [
 			{
@@ -32,6 +32,6 @@ export async function massCureWounds(workflow) {
 			ui.notifications.info('Too many targets selected!');
 			return;
 		}
-		chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', selectedTokens, workflow.item.name, workflow.itemCardId);
+		chris.applyWorkflowDamage(this.token, damageRoll, 'healing', selectedTokens, this.item.name, this.itemCardId);
 	}
 }

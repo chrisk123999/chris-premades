@@ -1,15 +1,15 @@
 import {queue} from '../../queue.js';
-export async function rayOfEnfeeblement(workflow) {
-    if (workflow.isFumble || workflow.item.type != 'weapon') return;
-    if (workflow.item.system.properties?.fin) {
-        let str = workflow.actor.system.abilities.str.value;
-        let dex = workflow.actor.system.abilities.dex.value;
+export async function rayOfEnfeeblement({speaker, actor, token, character, item, args}) {
+    if (this.isFumble || this.item.type != 'weapon') return;
+    if (this.item.system.properties?.fin) {
+        let str = this.actor.system.abilities.str.value;
+        let dex = this.actor.system.abilities.dex.value;
         if (str < dex) return;
     }
-    let queueSetup = await queue.setup(workflow.item.uuid, 'rayOfEnfeeblement', 360);
+    let queueSetup = await queue.setup(this.item.uuid, 'rayOfEnfeeblement', 360);
     if (!queueSetup) return;
-    let damageRollFormula = 'floor((' + workflow.damageRoll._formula + ')/2)';
+    let damageRollFormula = 'floor((' + this.damageRoll._formula + ')/2)';
     let damageRoll = await new Roll(damageRollFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
-    queue.remove(workflow.item.uuid);
+    await this.setDamageRoll(damageRoll);
+    queue.remove(this.item.uuid);
 }

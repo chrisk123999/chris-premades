@@ -33,7 +33,8 @@
 		"type": "module",
 		"manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
 		"compatibility": {
-			"verified": "10.0.33"
+			"verified": "10.0.35",
+			"minimum": "10.0.35"
 		}
 	},
 	{
@@ -154,6 +155,14 @@
 		"manifest": "https://raw.githubusercontent.com/Feu-Secret/Tokenmagic/master/tokenmagic/module.json",
 		"compatibility": {
 			"verified": "0.6.1.2"
+		}
+	},
+	{
+		"id": "ddb-importer",
+		"type": "module",
+		"manifest": "https://github.com/mrprimate/ddb-importer/releases/download/latest/module.json",
+		"compatibility": {
+			"verified": "3.4.5"
 		}
 	}]
   },
