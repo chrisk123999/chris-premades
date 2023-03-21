@@ -1,3 +1,7 @@
+# 0.1.7:
+## Bug Fixes:
+- Combat Maneuvers
+  
 # 0.1.6:
 ## New Features:
 - College of Creation Bard: Mote of Potential
