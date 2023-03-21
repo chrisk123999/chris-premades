@@ -33,7 +33,7 @@ Hooks.once('ready', async function() {
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
-		if (game.modules.get('ddb-importer').active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
+		if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
 		game.settings.set('chris-premades', 'LastGM', game.user.id);
 		if (game.settings.get('chris-premades', 'Combat Listener') && game.user.isGM) Hooks.on('updateCombat', combatUpdate);
 		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) Hooks.on('updateToken', tokenMoved);

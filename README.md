@@ -86,6 +86,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Divine Fury  
 ### Bard:  
 - Bardic Inspiration & Magical Inspiration  
+#### College of Creation:  
+- Mote of Potential  
 #### College of Swords:  
 - Blade Flourish  
 ### Blood Hunter:  

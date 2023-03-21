@@ -4,6 +4,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
 	if (this.targets.size === 0) return;
 	if (this.isFumble) return;
 	let effect = chris.findEffect(this.actor, 'Inspired');
+	if (!effect) effect = chris.findEffect(this.actor, 'Inspired (Mote of Potential)');
 	if (!effect) return;
 	let originItem = await fromUuid(effect.origin);
 	let bardDice = originItem.actor.system.scale?.bard['bardic-inspiration'];
@@ -21,6 +22,39 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
 	await chris.removeEffect(effect);
 	let updatedRoll = await chris.addToRoll(this.attackRoll, bardDice);
 	this.setAttackRoll(updatedRoll);
+	if (effect.label === 'Inspired (Mote of Potential)') {
+		let bardDie = updatedRoll.terms[updatedRoll.terms.length - 1].total;
+		let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Mote of Potential Attack', false);
+		if (!featureData) {
+			queue.remove(this.item.uuid);
+			return;
+		}
+		featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Mote of Potential Attack');
+		featureData.system.save.dc = chris.getSpellDC(originItem);
+		featureData.system.damage.parts = [
+			[
+				bardDie + '[thunder]',
+				'thunder'
+			]
+		];
+		let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+		let newTargets = await chris.findNearby(this.targets.first(), 5, 'ally');
+		newTargets.push(this.targets.first());
+		let addedTargetUuids = [];
+		for (let i of newTargets) {
+			addedTargetUuids.push(i.document.uuid);
+		}
+		let options = {
+			'showFullCard': false,
+			'createWorkflow': true,
+			'targetUuids': addedTargetUuids,
+			'configureDialog': false,
+			'versatile': false,
+			'consumeResource': false,
+			'consumeSlot': false
+		};
+		await MidiQOL.completeItemUse(feature, {}, options);
+	}
 	queue.remove(this.item.uuid);
 }
 async function bardicInspirationDamage({speaker, actor, token, character, item, args}) {

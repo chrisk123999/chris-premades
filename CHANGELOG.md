@@ -1,3 +1,7 @@
+# 0.1.6:
+## New Features:
+- College of Creation Bard: Mote of Potential
+  
 # 0.1.5:
 ## New Features:
 - Eladrin: Fey Step and Change Season

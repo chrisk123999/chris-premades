@@ -55,7 +55,6 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
         }
     };
     if (tokenArt != '' && tokenArt) {
-        console.log('token art');
         updates.token = {
             'texture': {
                 'src': tokenArt
@@ -70,7 +69,6 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
         }
     }
     if (avatarArt != '' && avatarArt) {
-        console.log('avatar art');
         if (!updates.actor) updates.actor = {};
         updates.actor.img = avatarArt;
     }
