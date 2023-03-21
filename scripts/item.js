@@ -135,6 +135,18 @@ export function setConfig() {
             'Arcane Armor': [
                 'Arcane Armor: Guardian Model',
                 'Arcane Armor: Infiltrator Model'
+            ],
+            'Eladrin Season: Autumn': [
+                'Change Season'
+            ],
+            'Eladrin Season: Winter': [
+                'Change Season'
+            ],
+            'Eladrin Season: Spring': [
+                'Change Season'
+            ],
+            'Eladrin Season: Summer': [
+                'Change Season'
             ]
         },
         'removedItems': {
@@ -144,6 +156,18 @@ export function setConfig() {
                 'Guardian Armor: Defensive Field',
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
+            ],
+            'Eladrin Season: Autumn': [
+                'Fey Step (Autumn)'
+            ],
+            'Eladrin Season: Winter': [
+                'Fey Step (Winter)'
+            ],
+            'Eladrin Season: Spring': [
+                'Fey Step (Spring)'
+            ],
+            'Eladrin Season: Summer': [
+                'Fey Step (Summer)'
             ]
         }
     });

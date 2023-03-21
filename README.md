@@ -167,6 +167,9 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Vampiric Bite  
 ### Elf:  
 - Fey Ancestry  
+### Eladrin:  
+- Fey Step  
+- Change Season  
 #### Mark of Shadow:  
 - Cunning Intuition  
 ### Giff:  

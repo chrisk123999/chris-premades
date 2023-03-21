@@ -41,6 +41,7 @@ import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmb
 import {drow} from './macros/monsterFeatures/drow/drow.js';
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
+import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
@@ -170,6 +171,9 @@ async function onMove(macroName, token, castLevel, spellDC, damage, damageType, 
 			break;
 	}
 }
+async function onMoveEffect(macroName, token, castLevel, spellDC, effectData, tokenID) {
+
+}
 export let macros = {
 	'aasimarRadiantSoul': aasimarRadiantSoul,
 	'acidArrow': acidArrow,
@@ -208,6 +212,7 @@ export let macros = {
 	'dragonsBreath': dragonsBreath,
 	'dragonsWrath': dragonsWrath,
 	'dreadAmbusher': dreadAmbusher,
+	'eladrinSeason': eladrinSeason,
 	'elixirOfHealth': elixirOfHealth,
 	'experimentalElixir': experimentalElixir,
 	'expertDivination': expertDivination,
@@ -234,6 +239,7 @@ export let macros = {
 	'oilOfSharpness': oilOfSharpness,
 	'onHit': onHit,
 	'onMove': onMove,
+	'onMoveEffect': onMoveEffect,
 	'potionOfDiminution': potionOfDiminution,
 	'potionOfFireBreath': potionOfFireBreath,
 	'potionOfGiantSize': potionOfGiantSize,

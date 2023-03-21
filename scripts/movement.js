@@ -51,7 +51,28 @@ export function tokenMoved(token, changes) {
         let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
         if (selectedSpell) macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
     }
-
+    for (let name of Object.values(effectTriggers)) {
+        let validSources = [];
+        for (let spell of name) {
+            let sourceToken = canvas.tokens.get(spell.sourceTokenID);
+            if (!sourceToken) continue;
+            switch (spell.targetDisposition) {
+                case 'ally':
+                    if (token.disposition != sourceToken.disposition) continue;
+                    break;
+                case 'enemy':
+                    if (token.disposition === sourceToken.disposition) continue;
+                    break;
+            }
+            let distance = chris.getDistance(token, sourceToken);
+            if (distance > spell.range) continue;
+            validSources.push(spell);
+        }
+        let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
+        let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
+        if (selectedSpell) macros.onMoveEffect(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.effectData, selectedSpell.sourceTokenID);
+        // delete effect here
+    }
 }
 export function combatUpdate(combat, changes, context) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
