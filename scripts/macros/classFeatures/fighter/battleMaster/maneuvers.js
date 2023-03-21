@@ -57,7 +57,6 @@ async function baitAndSwitch({speaker, actor, token, character, item, args}) {
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
 }
 async function refund({speaker, actor, token, character, item, args}) {
-    console.log(this);
     if (this.hitTargets.size != 0) return;
     let effect = chris.findEffect(this.actor, 'Superiority Dice');
     if (!effect) return;
@@ -69,7 +68,7 @@ async function goadingAttack({speaker, actor, token, character, item, args}) {
     let effect = chris.findEffect(this.actor, 'Maneuvers: Goading Attack');
     if (!effect) return;
     if (this.hitTargets.size === 0) {
-        await refund.bind(this);
+        await refund.bind(this)({speaker, actor, token, character, item, args});
         await chris.removeEffect(effect);
         return;
     } else {
@@ -142,7 +141,7 @@ async function menacingAttack({speaker, actor, token, character, item, args}) {
     let effect = chris.findEffect(this.actor, 'Maneuvers: Menacing Attack');
     if (!effect) return;
     if (this.hitTargets.size === 0) {
-        await refund.bind(this);
+        await refund.bind(this)({speaker, actor, token, character, item, args});
         await chris.removeEffect(effect);
         return;
     } else {
@@ -184,7 +183,7 @@ async function pushingAttack({speaker, actor, token, character, item, args}) {
     let effect = chris.findEffect(this.actor, 'Maneuvers: Pushing Attack');
     if (!effect) return;
     if (this.hitTargets.size === 0) {
-        await refund.bind(this);
+        await refund.bind(this)({speaker, actor, token, character, item, args});
         await chris.removeEffect(effect);
         return;
     } else {
@@ -246,14 +245,14 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args}
     let effect = chris.findEffect(this.actor, 'Maneuvers: Sweeping Attack');
     if (!effect) return;
     if (this.hitTargets.size === 0) {
-        await refund.bind(this);
+        await refund.bind(this)({speaker, actor, token, character, item, args});
         await chris.removeEffect(effect);
         return;
     } else {
         let sourceNearbyTargets = chris.findNearby(this.token, 5, 'enemy');
         let targetNearbyTargets = chris.findNearby(this.targets.first(), 5, 'ally');
         if (sourceNearbyTargets.length === 0 || targetNearbyTargets.length === 0) {
-            await refund.bind(this);
+            await refund.bind(this)({speaker, actor, token, character, item, args});
             await chris.removeEffect(effect);
             return;
         }
@@ -261,7 +260,7 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args}
             return sourceNearbyTargets.indexOf(obj) !== -1;
         });
         if (overlappingTargets.length === 0) {
-            await refund.bind(this);
+            await refund.bind(this)({speaker, actor, token, character, item, args});
             await chris.removeEffect(effect);
             return;
         }
@@ -276,13 +275,13 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args}
         ];
         let selection = await chris.selectTarget('What target?', buttons, overlappingTargets, true, 'one');
         if (selection.buttons === false) {
-            await refund.bind(this);
+            await refund.bind(this)({speaker, actor, token, character, item, args});
             await chris.removeEffect(effect);
             return;
         }
         let targetTokenID = selection.inputs.find(id => id != false);
         if (!targetTokenID) {
-            await refund.bind(this);
+            await refund.bind(this)({speaker, actor, token, character, item, args});
             await chris.removeEffect(effect);
             return;
         }
@@ -327,7 +326,7 @@ async function tripAttack({speaker, actor, token, character, item, args}) {
     let effect = chris.findEffect(this.actor, 'Maneuvers: Trip Attack');
     if (!effect) return;
     if (this.hitTargets.size === 0) {
-        await refund.bind(this);
+        await refund.bind(this)({speaker, actor, token, character, item, args});
         await chris.removeEffect(effect);
         return;
     } else {
