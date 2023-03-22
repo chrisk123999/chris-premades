@@ -151,11 +151,11 @@ async function item({speaker, actor, token, character, item, args}) {
         let onUseMacroParts = spellData.flags['midi-qol'].onUseMacroParts;
         if (!onUseMacroParts) onUseMacroParts = {'items': []};
         onUseMacroParts.items.push({
-            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.cast',
+            'macroName': 'function.await chrisPremades.macros.ringOfSpellStoring.cast',
             'option': 'preItemRoll'
         });
         onUseMacroParts.items.push({
-            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.attack',
+            'macroName': 'function.await chrisPremades.macros.ringOfSpellStoring.attack',
             'option': 'preCheckHits'
         });
         spellData.flags['midi-qol'].onUseMacroParts = onUseMacroParts;

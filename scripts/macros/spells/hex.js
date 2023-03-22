@@ -70,7 +70,7 @@ async function hexItem({speaker, actor, token, character, item, args}) {
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'function.chrisPremades.macros.hex.attack,postDamageRoll',
+                'value': 'function.await chrisPremades.macros.hex.attack,postDamageRoll',
                 'priority': 20
             }
         ],

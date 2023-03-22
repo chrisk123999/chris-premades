@@ -24,13 +24,13 @@ async function sourceAttack({speaker, actor, token, character, item, args}) {
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'function.chrisPremades.macros.ancestralProtectors.targetAttack,preAttackRoll',
+                'value': 'function.await chrisPremades.macros.ancestralProtectors.targetAttack,preAttackRoll',
                 'priority': 20
             },
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'function.chrisPremades.macros.ancestralProtectors.targetDamage,postDamageRoll',
+                'value': 'function.await chrisPremades.macros.ancestralProtectors.targetDamage,postDamageRoll',
                 'priority': 20
             }
         ],

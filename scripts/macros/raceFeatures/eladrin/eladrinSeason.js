@@ -63,7 +63,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
         updates.actor = {
             'prototypeToken': {
                 'texture': {
-                    'src': avatarArt
+                    'src': tokenArt
                 }
             }
         }

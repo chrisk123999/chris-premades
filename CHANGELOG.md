@@ -1,3 +1,13 @@
+# 0.1.8:
+## Bug Fixes:
+- Eladrin: Change Season
+- Ancenstral Protectors
+- Crimson Rite
+- Hybrid Transformation
+- Ring of Spell Storing
+- Stormgirdle
+- Hex
+  
 # 0.1.7:
 ## Bug Fixes:
 - Combat Maneuvers

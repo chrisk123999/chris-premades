@@ -41,7 +41,7 @@ async function item({speaker, actor, token, character, item, args}) {
         {
             'key': 'flags.midi-qol.onUseMacroName',
             'mode': 0,
-            'value': 'function.chrisPremades.macros.stormgirdle.stormAvatar,postDamageRoll',
+            'value': 'function.await chrisPremades.macros.stormgirdle.stormAvatar,postDamageRoll',
             'priority': 20
         }
     ];
