@@ -142,7 +142,7 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         };
         let onUseString = spellData.flags['midi-qol'].onUseMacroName;
-        let appendString = '[preItemRoll]function.chrisPremades.macros.ringOfSpellStoring.cast,[preCheckHits]function.chrisPremades.macros.ringOfSpellStoring.attack';
+        let appendString = '[preItemRoll]function.await chrisPremades.macros.ringOfSpellStoring.cast,[preCheckHits]function.await chrisPremades.macros.ringOfSpellStoring.attack';
         if (onUseString === undefined) {
             spellData.flags['midi-qol'].onUseMacroName = appendString;
         } else {
