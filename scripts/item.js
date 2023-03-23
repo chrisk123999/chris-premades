@@ -122,7 +122,6 @@ export function setConfig() {
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
         'renamedItems': {
-            'Bardic Inspiration': 'Bardic Inspiration & Magical Inspiration',
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
@@ -169,6 +168,46 @@ export function setConfig() {
             'Eladrin Season: Summer': [
                 'Fey Step (Summer)'
             ]
+        },
+        'restrictedItems ': {
+            'Bardic Inspiration': {
+                requiredClass: 'Bard',
+                requiredSubclass: null,
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [
+                    'Magical Inspiration'
+                ],
+                replacedItemName: 'Bardic Inspiration & Magical Inspiration',
+                removedItems: [],
+                additionalItems: [],
+                priority: 0
+            },
+            'Bardic Inspiration': {
+                requiredClass: 'Bard',
+                requiredSubclass: 'College of Creation',
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [
+                    'Magical Inspiration',
+                    'Mote of Potential'
+                ],
+                replacedItemName: 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
+                removedItems: [],
+                additionalItems: [],
+                priority: 1
+            },
+            'Radiant Soul': {
+                requiredClass: 'Warlock',
+                requiredSubclass: 'The Celestial',
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [],
+                replacedItemName: 'Radiant Soul',
+                removedItems: [],
+                additionalItems: [],
+                priority: 0
+            }
         }
     });
 }

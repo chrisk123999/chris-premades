@@ -126,7 +126,7 @@ async function transformation({speaker, actor, token, character, item, args}) {
 		'duration': {
 			'seconds': seconds
 		},
-		'origin': this.item.uuid,
+		'origin': this.actor.uuid,
         'flags': {
             'dae': {
                 'selfTarget': true,
