@@ -3,6 +3,7 @@ import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
+import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
@@ -172,7 +173,11 @@ async function onMove(macroName, token, castLevel, spellDC, damage, damageType, 
 	}
 }
 async function onMoveEffect(macroName, token, castLevel, spellDC, effectData, tokenID) {
-
+	switch (macroName) {
+		case 'auraOfPurity': 
+			await auraOfPurity.moved(token, castLevel, spellDC, effectData, tokenID);
+			break;
+	}
 }
 export let macros = {
 	'aasimarRadiantSoul': aasimarRadiantSoul,
@@ -270,5 +275,6 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'auraOfPurity': auraOfPurity
 }

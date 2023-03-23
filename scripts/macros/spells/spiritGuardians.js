@@ -56,10 +56,10 @@ async function item({speaker, actor, token, character, item, args}) {
     let damage = castLevel + 'd8';
     let effect = chris.findEffect(this.actor, 'Spirit Guardians');
     if (!effect) return;
-    tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
+    await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
 }
 async function effectEnd(token) {
-    tokenMove.remove('spiritGuardians', token.id);
+    await tokenMove.remove('spiritGuardians', token.id);
 }
 export let spiritGuardians = {
     'item': item,

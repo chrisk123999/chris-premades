@@ -1,3 +1,7 @@
+# 0.1.10:
+## New Content:
+- Aura of Purity
+  
 # 0.1.8:
 ## Bug Fixes:
 - Eladrin: Change Season
