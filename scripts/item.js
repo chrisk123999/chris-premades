@@ -169,8 +169,9 @@ export function setConfig() {
                 'Fey Step (Summer)'
             ]
         },
-        'restrictedItems ': {
-            'Bardic Inspiration': {
+        'restrictedItems': {
+            'Bardic Inspiration 1': {
+                originalName: 'Bardic Inspiration',
                 requiredClass: 'Bard',
                 requiredSubclass: null,
                 requiredRace: null,
@@ -183,7 +184,8 @@ export function setConfig() {
                 additionalItems: [],
                 priority: 0
             },
-            'Bardic Inspiration': {
+            'Bardic Inspiration 2': {
+                originalName: 'Bardic Inspiration',
                 requiredClass: 'Bard',
                 requiredSubclass: 'College of Creation',
                 requiredRace: null,
@@ -198,6 +200,7 @@ export function setConfig() {
                 priority: 1
             },
             'Radiant Soul': {
+                originalName: 'Radiant Soul',
                 requiredClass: 'Warlock',
                 requiredSubclass: 'The Celestial',
                 requiredRace: null,
