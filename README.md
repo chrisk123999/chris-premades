@@ -11,7 +11,6 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
 | Compendium Folders | 2.5.7 |  
-| D&D Beyond Importer | 3.4.5 |  
 | DFreds Convenient Effects | 4.1.1 |  
 | Effect Macro | 10.0.15 |  
 | Item Macro | 1.8.0 |  
@@ -24,13 +23,15 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
   
 # Optional supported modules:  
 - Custom Character Sheet Sections  
+- D&D Beyond Importer  
 - Tidy5e Sheet  
 - Token Magic FX  
-
+  
 # Automations:  
 ## Spells:  
 - Armor of Agathys  
 - Arms of Hadar  
+- Aura of Purity  
 - Beacon of Hope  
 - Blade Ward  
 - Blink  
@@ -136,6 +137,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 - Shadow Step
 ### Paladin:  
 - Divine Smite  
+- Aura of Protection  
+- Aura of Courage  
 #### Oath of Glory:  
 - Channel Divinity: Inspiring Smite  
 ### Ranger:  

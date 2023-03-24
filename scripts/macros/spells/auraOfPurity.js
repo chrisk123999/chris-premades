@@ -3,9 +3,10 @@ import {effectAura} from '../../movement.js';
 async function item({speaker, actor, token, character, item, args}) {
     let castLevel = this.castData.castLevel;
     let spellDC = chris.getSpellDC(this.item);
-    let sourceTokenID = this.token.id;
+    let sourceActorUuid = this.actor.uuid;
     let range = 30;
     let targetDisposition = 'ally';
+    let conscious = false;
     let effectData = {
         'label': 'Aura of Purity',
         'icon': this.item.img,
@@ -72,10 +73,10 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     let effect = chris.findEffect(this.actor, 'Aura of Purity - Aura');
     if (!effect) return;
-    await effectAura.add('auraOfPurity', castLevel, spellDC, sourceTokenID, range, targetDisposition, effectData, effect.uuid)
+    await effectAura.add('auraOfPurity', castLevel, spellDC, sourceActorUuid, range, targetDisposition, conscious, effectData, effect.uuid)
     await effectAura.refresh(null);
 }
-async function moved(token, castLevel, spellDC, effectData, tokenID) {
+async function moved(token, castLevel, spellDC, effectData) {
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;
     if (effect) await chris.removeEffect(effect);
@@ -83,7 +84,7 @@ async function moved(token, castLevel, spellDC, effectData, tokenID) {
 }
 async function effectEnd(token, effect) {
     await effectAura.refresh(effect.uuid);
-    await effectAura.remove('auraOfPurity', token.id);
+    await effectAura.remove('auraOfPurity', token.actor.uuid);
 }
 export let auraOfPurity = {
     'item': item,

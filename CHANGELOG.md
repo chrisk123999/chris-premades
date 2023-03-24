@@ -1,3 +1,9 @@
+# 0.1.11:
+## New Content:
+- Paladin: Aura of Protection and Aura of Courage
+## Bug Fixes:
+- Aura of Purity
+  
 # 0.1.10:
 ## New Content:
 - Aura of Purity

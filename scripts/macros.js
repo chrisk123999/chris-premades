@@ -3,6 +3,8 @@ import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
+import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
+import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
@@ -172,10 +174,16 @@ async function onMove(macroName, token, castLevel, spellDC, damage, damageType, 
 			break;
 	}
 }
-async function onMoveEffect(macroName, token, castLevel, spellDC, effectData, tokenID) {
+async function onMoveEffect(macroName, token, castLevel, spellDC, effectData) {
 	switch (macroName) {
 		case 'auraOfPurity': 
-			await auraOfPurity.moved(token, castLevel, spellDC, effectData, tokenID);
+			await auraOfPurity.moved(token, castLevel, spellDC, effectData);
+			break;
+		case 'auraOfProtection':
+			await auraOfProtection.moved(token, castLevel, spellDC, effectData);
+			break;
+		case 'auraOfCourage':
+			await auraOfCourage.moved(token, castLevel, spellDC, effectData);
 			break;
 	}
 }
@@ -185,6 +193,9 @@ export let macros = {
 	'ancestralProtectors': ancestralProtectors,
 	'armorModel': armorModel,
 	'armorOfAgathys': armorOfAgathys,
+	'auraOfCourage': auraOfCourage,
+	'auraOfProtection': auraOfProtection,
+	'auraOfPurity': auraOfPurity,
 	'balmOfPeace': balmOfPeace,
 	'bardicInspiration': bardicInspiration,
 	'beaconOfHope': beaconOfHope,
@@ -275,6 +286,5 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'auraOfPurity': auraOfPurity
+	'wrathOfTheStorm': wrathOfTheStorm
 }

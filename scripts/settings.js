@@ -1,5 +1,5 @@
 import {macros, onHitMacro} from './macros.js';
-import {tokenMoved, combatUpdate} from './movement.js';
+import {tokenMoved, combatUpdate, preActorUpdate, actorUpdate, tokenPlaced} from './movement.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
 	game.settings.register(moduleName, 'Breaking Version Change', {
@@ -36,8 +36,27 @@ export function registerSettings() {
 		'onChange': value => {
 			if (value && game.user.isGM) {
 				Hooks.on('updateToken', tokenMoved);
+				Hooks.on('createToken ', tokenPlaced);
 			} else if (game.user.isGM) {
 				Hooks.off('updateToken', tokenMoved);
+				Hooks.off('createToken ', tokenPlaced);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Actor Listener', {
+		'name': 'Actor Listener',
+		'hint': 'This setting allows certain macros from this module to function on actor updates.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value && game.user.isGM) {
+				Hooks.on('preUpdateActor', preActorUpdate);
+				Hooks.on('updateActor', actorUpdate);
+			} else if (game.user.isGM) {
+				Hooks.off('preUpdateActor', preActorUpdate);
+				Hooks.off('updateActor', actorUpdate);
 			}
 		}
 	});

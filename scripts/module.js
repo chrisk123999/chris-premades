@@ -2,9 +2,9 @@ import {registerSettings} from './settings.js';
 import {macros, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createActorHeaderButton, createHeaderButton, getItemName, setConfig} from './item.js';
+import {createActorHeaderButton, createHeaderButton, setConfig} from './item.js';
 import {queue} from './queue.js';
-import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers, updateEffectTriggers, updateGMEffectTriggers, effectAura} from './movement.js';
+import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers, updateEffectTriggers, updateGMEffectTriggers, effectAura, preActorUpdate, actorUpdate, tokenPlaced} from './movement.js';
 import {bab} from './babHelpers.js';
 export let socket;
 Hooks.once('init', async function() {
@@ -36,7 +36,14 @@ Hooks.once('ready', async function() {
 		if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
 		game.settings.set('chris-premades', 'LastGM', game.user.id);
 		if (game.settings.get('chris-premades', 'Combat Listener') && game.user.isGM) Hooks.on('updateCombat', combatUpdate);
-		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) Hooks.on('updateToken', tokenMoved);
+		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) {
+			Hooks.on('createToken', tokenPlaced);
+			Hooks.on('updateToken', tokenMoved);
+		}
+		if (game.settings.get('chris-premades', 'Actor Listener') && game.user.isGM) {
+			Hooks.on('preUpdateActor', preActorUpdate);
+			Hooks.on('updateActor', actorUpdate);
+		}
 	}
 	await loadTriggers();
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {
