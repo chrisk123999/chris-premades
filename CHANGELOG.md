@@ -1,3 +1,7 @@
+# 0.1.12:
+## New Content:
+- Fey Wanderer Ranger: Beguiling Twist
+  
 # 0.1.11:
 ## New Content:
 - Paladin: Aura of Protection and Aura of Courage

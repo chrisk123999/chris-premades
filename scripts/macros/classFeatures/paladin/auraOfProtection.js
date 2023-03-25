@@ -34,6 +34,7 @@ async function moved(token, castLevel, spellDC, effectData) {
     await chris.createEffect(token.actor, effectData);
 }
 async function effectEnd(token ,effect) {
+    if (!token) return;
     await effectAura.refresh(effect.uuid);
     await effectAura.remove('auraOfProtection', token.actor.uuid);
 }

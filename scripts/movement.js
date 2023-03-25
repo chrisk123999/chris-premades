@@ -217,6 +217,9 @@ export function actorUpdate(actor, updates, options) {
 export function tokenPlaced(token) {
     if (token.actor.flags['chris-premades']?.aura) refreshEffects(null);
 }
+export function sceneReady(){
+    
+}
 export let effectAura = {
     'add': addEffectAura,
     'remove': removeEffectAura,

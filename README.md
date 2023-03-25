@@ -142,6 +142,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
 #### Oath of Glory:  
 - Channel Divinity: Inspiring Smite  
 ### Ranger:  
+#### Fey Wanderer:  
+- Beguiling Twist  
 #### Gloom Stalker:  
 - Dread Ambusher  
 ### Rogue:  
