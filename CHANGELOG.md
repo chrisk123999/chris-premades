@@ -1,3 +1,8 @@
+# 0.1.14:
+## Bug Fixes:
+- Turn Undead
+- Dark One's Blessing
+  
 # 0.1.13:
 ## Bug Fixes:
 - Storm Sphere
