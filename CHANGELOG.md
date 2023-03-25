@@ -1,3 +1,8 @@
+# 0.1.13:
+## Bug Fixes:
+- Storm Sphere
+- Monk: Evasion
+  
 # 0.1.12:
 ## New Content:
 - Fey Wanderer Ranger: Beguiling Twist
