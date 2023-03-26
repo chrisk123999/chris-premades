@@ -4,6 +4,8 @@ You will need to fill in your own item descriptions.  Any bugs from this module 
   
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O5G582S)  
   
+Additional support and feature requests can be made on my Discord server: https://discord.gg/BumxBcQDrT
+  
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
