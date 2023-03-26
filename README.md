@@ -344,6 +344,10 @@ Additional support and feature requests can be made on my Discord server: https:
 - Reanimate  
 #### Swarm of Campestris:  
 - Head Butts  
+#### Shambling Mound:  
+- Slam  
+- Engulf  
+- Lightning Absorption  
 ### Undead:  
 #### Avatar of Death:  
 - Turning Immunity  

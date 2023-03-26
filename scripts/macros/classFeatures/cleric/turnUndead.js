@@ -59,7 +59,6 @@ async function targets({speaker, actor, token, character, item, args}) {
         if (i.actor.flags['chris-premades']?.feature?.turnImmunity) await chris.createEffect(i.actor, effectData2);
         validTargets.push(i.id);
     }
-    if (validTargets.length === 0) return;
     chris.updateTargets(validTargets);
 }
 async function saves({speaker, actor, token, character, item, args}) {

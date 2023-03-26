@@ -6,6 +6,7 @@ import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
+import {auraOfVitality} from './macros/spells/auraOfVitality.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
@@ -100,6 +101,7 @@ import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
+import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
@@ -158,6 +160,7 @@ let monster = {
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
 	'shadowghast': shadowghast,
+	'shamblingMound': shamblingMound,
 	'sprite': sprite,
 	'stenchKow': stenchKow,
 	'succubus': succubus,
@@ -197,6 +200,7 @@ export let macros = {
 	'auraOfCourage': auraOfCourage,
 	'auraOfProtection': auraOfProtection,
 	'auraOfPurity': auraOfPurity,
+	'auraOfVitality': auraOfVitality,
 	'balmOfPeace': balmOfPeace,
 	'bardicInspiration': bardicInspiration,
 	'beaconOfHope': beaconOfHope,

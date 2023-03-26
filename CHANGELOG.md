@@ -1,3 +1,11 @@
+# 0.1.16:
+## New Content:
+- Aura of Vitality
+## New Monster Content:
+- Shambling Mound: Slam, Engulf, and Lightning Absorption
+## Bug Fixes:
+- Turn Undead
+  
 # 0.1.15:
 ## Bug Fixes:
 - Favored By The Gods
