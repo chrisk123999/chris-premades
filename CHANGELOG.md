@@ -1,3 +1,7 @@
+# 0.1.15:
+## Bug Fixes:
+- Favored By The Gods
+  
 # 0.1.14:
 ## Bug Fixes:
 - Turn Undead
