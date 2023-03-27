@@ -122,6 +122,7 @@ import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
+import {blight} from './macros/spells/blight.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	workflow.targets.forEach(async token => {
@@ -292,5 +293,6 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'blight': blight
 }

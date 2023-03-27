@@ -36,6 +36,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Aura of Purity  
 - Beacon of Hope  
 - Blade Ward  
+- Blight  
 - Blink  
 - Call Lightning  
 - Chain Lightning  
@@ -61,6 +62,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Melf's Acid Arrow  
 - Mind Sliver  
 - Mirror Image  
+- Pass Without Trace  
 - Protection from Evil and Good  
 - Raulothim's Psychic Lance  
 - Ray of Enfeeblement  
@@ -162,6 +164,8 @@ Additional support and feature requests can be made on my Discord server: https:
 #### The Fiend:  
 - Dark One's Blessing  
 - Dark One's Own Luck  
+#### The Genie:  
+- Genie's Wrath  
 #### The Undead:  
 - Form of Dread  
 - Grave Touched  

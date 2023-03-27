@@ -1,3 +1,9 @@
+# 0.2.2:
+## New Content:
+- Blight
+- The Genie Warlock: Genie's Wrath
+- Pass Without Trace
+  
 # 0.2.0:
 ## Bug Fixes:
 - Effect Auras reworked.
