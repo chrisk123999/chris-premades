@@ -115,7 +115,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Additional Compendiums', {
 		'name': 'Additional Compendiums',
-		'hint': 'This should be a comma seperated list of compendium keys.  The item replacer from this module will check these compendiums as well.  Highest prioirity should be on the left.',
+		'hint': 'This should be a comma seperated list of compendium keys.  Highest prioirity should be on the left.',
 		'scope': 'world',
 		'config': true,
 		'type': String,
@@ -123,7 +123,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Item Compendium', {
 		'name': 'Personal Item Compendium',
-		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',
+		'hint': 'A compendium full of items to pick from (DDB items compendium by default).',
 		'scope': 'world',
 		'config': true,
 		'type': String,
@@ -131,7 +131,7 @@ export function registerSettings() {
 	});
 	game.settings.register(moduleName, 'Spell Compendium', {
 		'name': 'Personal Spell Compendium',
-		'hint': 'An compendium full of spells to pick from (DDB spells compendium by default).',
+		'hint': 'A compendium full of spells to pick from (DDB spells compendium by default).',
 		'scope': 'world',
 		'config': true,
 		'type': String,
