@@ -1,8 +1,8 @@
 # 0.2.2:
 ## New Content:
 - Blight
-- The Genie Warlock: Genie's Wrath
 - Pass Without Trace
+- The Genie Warlock: Genie's Wrath
   
 # 0.2.0:
 ## Bug Fixes:
