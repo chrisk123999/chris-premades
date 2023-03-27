@@ -178,16 +178,16 @@ async function onMove(macroName, token, castLevel, spellDC, damage, damageType, 
 			break;
 	}
 }
-async function onMoveEffect(macroName, token, castLevel, spellDC, effectData) {
+async function onMoveEffect(macroName, token, selectedAura) {
 	switch (macroName) {
 		case 'auraOfPurity': 
-			await auraOfPurity.moved(token, castLevel, spellDC, effectData);
+			await auraOfPurity.move(token, selectedAura);
 			break;
 		case 'auraOfProtection':
-			await auraOfProtection.moved(token, castLevel, spellDC, effectData);
+			await auraOfProtection(token, selectedAura);
 			break;
 		case 'auraOfCourage':
-			await auraOfCourage.moved(token, castLevel, spellDC, effectData);
+			await auraOfCourage(token, selectedAura);
 			break;
 	}
 }

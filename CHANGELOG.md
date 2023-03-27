@@ -1,3 +1,9 @@
+# 0.2.0:
+## Bug Fixes:
+- Effect Auras reworked.
+## Update Notes:
+- You will need to replace the following items after updating: Aura of Protection, Aura of Courage, and Aura of Purity.
+  
 # 0.1.16:
 ## New Content:
 - Aura of Vitality

@@ -1,5 +1,6 @@
 import {macros, onHitMacro} from './macros.js';
-import {tokenMoved, combatUpdate, preActorUpdate, actorUpdate, tokenPlaced} from './movement.js';
+import {tokenMoved, combatUpdate} from './movement.js';
+import {effectAuraHooks} from './utility/effectAuras.js';
 let moduleName = 'chris-premades';
 export function registerSettings() {
 	game.settings.register(moduleName, 'Breaking Version Change', {
@@ -8,7 +9,7 @@ export function registerSettings() {
 		'scope': 'world',
 		'config': false,
 		'type': Number,
-		'default': 0
+		'default': 2
 	});
 	game.settings.register(moduleName, 'Show Names', {
 		'name': 'Show Names',
@@ -36,27 +37,33 @@ export function registerSettings() {
 		'onChange': value => {
 			if (value && game.user.isGM) {
 				Hooks.on('updateToken', tokenMoved);
-				Hooks.on('createToken ', tokenPlaced);
 			} else if (game.user.isGM) {
 				Hooks.off('updateToken', tokenMoved);
-				Hooks.off('createToken ', tokenPlaced);
 			}
 		}
 	});
-	game.settings.register(moduleName, 'Actor Listener', {
-		'name': 'Actor Listener',
-		'hint': 'This setting allows certain macros from this module to function on actor updates.',
+	game.settings.register(moduleName, 'Effect Auras', {
+		'name': 'Effect Auras',
+		'hint': 'This setting allows certain macros from this module to function.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,
 		'default': false,
 		'onChange': value => {
 			if (value && game.user.isGM) {
-				Hooks.on('preUpdateActor', preActorUpdate);
-				Hooks.on('updateActor', actorUpdate);
+				Hooks.on('preUpdateActor', effectAuraHooks.preActorUpdate);
+				Hooks.on('updateActor', effectAuraHooks.actorUpdate);
+				Hooks.on('canvasReady', effectAuraHooks.canvasReady);
+				Hooks.on('updateToken', effectAuraHooks.updateToken);
+				Hooks.on('createToken', effectAuraHooks.createToken);
+				Hooks.on('deleteToken', effectAuraHooks.deleteToken);
 			} else if (game.user.isGM) {
-				Hooks.off('preUpdateActor', preActorUpdate);
-				Hooks.off('updateActor', actorUpdate);
+				Hooks.off('preUpdateActor', effectAuraHooks.preActorUpdate);
+				Hooks.off('updateActor', effectAuraHooks.actorUpdate);
+				Hooks.off('canvasReady', effectAuraHooks.canvasReady);
+				Hooks.off('updateToken', effectAuraHooks.updateToken);
+				Hooks.off('createToken', effectAuraHooks.createToken);
+				Hooks.off('deleteToken', effectAuraHooks.deleteToken);
 			}
 		}
 	});

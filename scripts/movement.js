@@ -33,52 +33,6 @@ export async function updateMoveTriggers(updatedTriggers) {
 export async function updateGMTriggers(updatedTriggers) {
     await game.settings.set('chris-premades', 'Movement Triggers', updatedTriggers);
 }
-async function effectMove(token, changes, ignoredUuid) {
-    let distaceMap = {};
-    for (let name of Object.values(effectTriggers)) {
-        let validSources = [];
-        for (let spell of name) {
-            if (spell.effectUuid === ignoredUuid) continue;
-            let sourceActor = await fromUuid(spell.sourceActorUuid);
-            if (!sourceActor) continue;
-            let sourceTokens = sourceActor.getActiveTokens();
-            if (sourceTokens.length === 0) continue;
-            let sourceToken = sourceTokens[0];
-            if (spell.conscious) {
-                let sourceHP = sourceToken.actor.system.attributes.hp.value;
-                if (sourceHP === 0) continue;
-            }
-            switch (spell.targetDisposition) {
-                case 'ally':
-                    if (token.disposition != sourceToken.document.disposition) continue;
-                    break;
-                case 'enemy':
-                    if (token.disposition === sourceToken.document.disposition) continue;
-                    break;
-            }
-            let distance = distaceMap[sourceToken.id];
-            if (!distance) {
-                distance = chris.getDistance(token, sourceToken);
-                distaceMap[sourceToken.id] = distance;
-            }
-            if (distance > spell.range) continue;
-            validSources.push(spell);
-        }
-        let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
-        let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
-        if (selectedSpell) macros.onMoveEffect(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.effectData);
-        if (!selectedSpell) {
-            let effect = chris.findEffect(token.actor, name[0].effectData.label);
-            if (effect) chris.removeEffect(effect);
-        }
-        await warpgate.wait(100);
-    }
-}
-async function refreshEffects(ignoredUuid) {
-    for (let token of game.canvas.scene.tokens.contents) {
-        effectMove(token, null, ignoredUuid);
-    }
-}
 export function tokenMoved(token, changes) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
@@ -96,11 +50,6 @@ export function tokenMoved(token, changes) {
         let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
         let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
         if (selectedSpell) macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
-    }
-    if (token.actor.flags['chris-premades']?.aura) {
-        refreshEffects(null);
-    } else {
-        effectMove(token, changes, null);
     }
 }
 export function combatUpdate(combat, changes, context) {
@@ -164,68 +113,6 @@ function status() {
 async function purge() {
     await socket.executeForEveryone('updateMoveTriggers', {});
     await socket.executeAsGM('updateGMTriggers', {});
-}
-async function addEffectAura(name, castLevel, spellDC, sourceActorUuid, range, targetDisposition, conscious, effectData, effectUuid) {
-    let spell = {
-        'macro': name,
-        'castLevel': castLevel,
-        'spellDC': spellDC,
-        'sourceActorUuid': sourceActorUuid,
-        'range': range,
-        'targetDisposition': targetDisposition,
-        'conscious': conscious,
-        'effectData': effectData,
-        'effectUuid': effectUuid
-    }
-    if (!effectTriggers[name]) effectTriggers[name] = [];
-    effectTriggers[name].push(spell);
-    await socket.executeForEveryone('updateEffectTriggers', effectTriggers);
-    await socket.executeAsGM('updateGMEffectTriggers', effectTriggers);
-}
-async function removeEffectAura(name, sourceActorUuid) {
-    if (!effectTriggers[name]) return;
-    effectTriggers[name] = effectTriggers[name].filter(spell => spell.sourceActorUuid != sourceActorUuid);
-    if (effectTriggers[name].length === 0) delete(effectTriggers[name]);
-    await socket.executeForEveryone('updateEffectTriggers', effectTriggers);
-    await socket.executeAsGM('updateGMEffectTriggers', effectTriggers);
-}
-function effectStatus() {
-    return effectTriggers;
-}
-async function effectPurge() {
-    await socket.executeForEveryone('updateEffectTriggers', {});
-    await socket.executeAsGM('updateGMEffectTriggers', {});
-}
-export async function updateEffectTriggers(updatedTriggers) {
-    effectTriggers = updatedTriggers;
-}
-export async function updateGMEffectTriggers(updatedTriggers) {
-    await game.settings.set('chris-premades', 'Movement Effect Triggers', updatedTriggers);
-}
-export function preActorUpdate(actor, updates, options) {
-    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
-    if (!actor.flags['chris-premades']?.aura) return;
-    if (!updates.system?.attributes?.hp) return;
-    let oldHP = actor.system.attributes.hp.value;
-    let newHP = updates.system.attributes.hp.value;
-    if (oldHP > 0 && newHP === 0) foundry.utils.setProperty(options, 'chris-premades.refreshEffects', true);
-    if (newHP > 0 && oldHP === 0) foundry.utils.setProperty(options, 'chris-premades.refreshEffects', true);
-}
-export function actorUpdate(actor, updates, options) {
-    if (options['chris-premades']?.refreshEffects) refreshEffects(null);
-}
-export function tokenPlaced(token) {
-    if (token.actor.flags['chris-premades']?.aura) refreshEffects(null);
-}
-export function sceneReady(){
-    
-}
-export let effectAura = {
-    'add': addEffectAura,
-    'remove': removeEffectAura,
-    'status': effectStatus,
-    'purge': effectPurge,
-    'refresh': refreshEffects
 }
 export let tokenMove = {
     'add': addTrigger,

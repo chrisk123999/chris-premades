@@ -4,8 +4,9 @@ import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
 import {createActorHeaderButton, createHeaderButton, setConfig} from './item.js';
 import {queue} from './queue.js';
-import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers, updateEffectTriggers, updateGMEffectTriggers, effectAura, preActorUpdate, actorUpdate, tokenPlaced} from './movement.js';
+import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './movement.js';
 import {bab} from './babHelpers.js';
+import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 export let socket;
 Hooks.once('init', async function() {
 	registerSettings();
@@ -15,20 +16,30 @@ Hooks.once('socketlib.ready', async function() {
 	socket = socketlib.registerModule('chris-premades');
 	socket.register('updateMoveTriggers', updateMoveTriggers);
 	socket.register('updateGMTriggers', updateGMTriggers);
-	socket.register('updateEffectTriggers', updateEffectTriggers);
-	socket.register('updateGMEffectTriggers', updateGMEffectTriggers);
+	socket.register('remoteAddEffectAura', effectSockets.remoteAdd);
+	socket.register('remoteRemoveEffectAura', effectSockets.remoteRemove);
 });
 Hooks.once('ready', async function() {
 	if (game.user.isGM) {
 		let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
-		let currentVersion = 1;
-		if (oldVersion < currentVersion) {
+		let currentVersion = 2;
+		if (oldVersion < currentVersion && oldVersion === 0) {
 			let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
 			ChatMessage.create({
 				speaker: {alias: name},
 				content: message
 			});
 			await game.settings.set('chris-premades', 'Breaking Version Change', 1);
+			oldVersion = 1;
+		}
+		if (oldVersion < currentVersion && oldVersion === 1) {
+			let message2 = '<hr><p>This update to Chris\'s Premades requires the following items to be updated if you are using them:</p><hr><p>Aura of Protection, Aura of Courage, and Aura of Purity.</p>';
+			ChatMessage.create({
+				speaker: {alias: name},
+				content: message2
+			});
+			await game.settings.set('chris-premades', 'Breaking Version Change', 2);
+			oldVersion = 2;
 		}
 		await setupJournalEntry();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
@@ -36,13 +47,15 @@ Hooks.once('ready', async function() {
 		if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
 		game.settings.set('chris-premades', 'LastGM', game.user.id);
 		if (game.settings.get('chris-premades', 'Combat Listener') && game.user.isGM) Hooks.on('updateCombat', combatUpdate);
-		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) {
-			Hooks.on('createToken', tokenPlaced);
-			Hooks.on('updateToken', tokenMoved);
-		}
-		if (game.settings.get('chris-premades', 'Actor Listener') && game.user.isGM) {
-			Hooks.on('preUpdateActor', preActorUpdate);
-			Hooks.on('updateActor', actorUpdate);
+		if (game.settings.get('chris-premades', 'Movement Listener') && game.user.isGM) Hooks.on('updateToken', tokenMoved);
+		if (game.settings.get('chris-premades', 'Effect Auras') && game.user.isGM) {
+			Hooks.on('preUpdateActor', effectAuraHooks.preActorUpdate);
+			Hooks.on('updateActor', effectAuraHooks.actorUpdate);
+			Hooks.on('canvasReady', effectAuraHooks.canvasReady);
+			Hooks.on('updateToken', effectAuraHooks.updateToken);
+			Hooks.on('createToken', effectAuraHooks.createToken);
+			Hooks.on('deleteToken', effectAuraHooks.deleteToken);
+			effectAuras.registerAll();
 		}
 	}
 	await loadTriggers();
@@ -72,6 +85,6 @@ globalThis['chrisPremades'] = {
 	macros,
 	queue,
 	tokenMove,
-	effectAura,
+	effectAuras,
 	bab
 }

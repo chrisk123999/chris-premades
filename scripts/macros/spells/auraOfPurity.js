@@ -1,16 +1,17 @@
 import {chris} from '../../helperFunctions.js';
-import {effectAura} from '../../movement.js';
-async function item({speaker, actor, token, character, item, args}) {
-    let castLevel = this.castData.castLevel;
-    let spellDC = chris.getSpellDC(this.item);
-    let sourceActorUuid = this.actor.uuid;
-    let range = 30;
-    let targetDisposition = 'ally';
-    let conscious = false;
+import {effectAuras} from '../../utility/effectAuras.js';
+async function move(token, selectedAura) {
+    let originToken = await fromUuid(selectedAura.tokenUuid);
+    if (!originToken) return;
+    let originActor = originToken.actor;
+    let auraEffect = chris.findEffect(originActor, 'Aura of Purity - Aura');
+    if (!auraEffect) return;
+    let originItem = await fromUuid(auraEffect.origin);
+    if (!originItem) return;
     let effectData = {
         'label': 'Aura of Purity',
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'icon': originItem.img,
+        'origin': originItem.uuid,
         'duration': {
             'seconds': 604800
         },
@@ -71,23 +72,29 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         ]
     }
-    let effect = chris.findEffect(this.actor, 'Aura of Purity - Aura');
-    if (!effect) return;
-    await effectAura.add('auraOfPurity', castLevel, spellDC, sourceActorUuid, range, targetDisposition, conscious, effectData, effect.uuid)
-    await effectAura.refresh(null);
-}
-async function moved(token, castLevel, spellDC, effectData) {
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;
     if (effect) await chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);
 }
-async function effectEnd(token, effect) {
-    await effectAura.refresh(effect.uuid);
-    await effectAura.remove('auraOfPurity', token.actor.uuid);
+async function item({speaker, actor, token, character, item, args}) {
+    let flagAuras = {
+        'auraOfPurity': {
+            'name': 'auraOfPurity',
+            'castLevel': 'castLevel',
+            'range': 30,
+            'disposition': 'ally',
+            'effectName': 'Aura of Purity',
+            'macroName': 'auraOfPurity'
+        }
+    }
+    effectAuras.add(flagAuras, this.token.document.uuid, true);
+}
+async function end(token) {
+    effectAuras.remove('auraOfPurity', token.document.uuid);
 }
 export let auraOfPurity = {
+    'move': move,
     'item': item,
-    'moved': moved,
-    'end': effectEnd
+    'end': end
 }

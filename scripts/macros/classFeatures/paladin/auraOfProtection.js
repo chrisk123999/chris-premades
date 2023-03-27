@@ -1,18 +1,16 @@
 import {chris} from '../../../helperFunctions.js';
-import {effectAura} from '../../../movement.js';
-async function effectCreation(token, actor, effect, origin) {
-    let castLevel = actor.system.abilities.cha.mod;
-    let sourceActorUuid = actor.uuid;
-    let range = 10;
-    let paladinLevels = actor.classes.paladin?.system?.levels;
-    if (!paladinLevels) return;
-    if (paladinLevels >= 18) range = 30;
-    let targetDisposition = 'ally';
-    let conscious = true;
+export async function auraOfProtection(token, selectedAura) {
+    let originToken = await fromUuid(selectedAura.tokenUuid);
+    if (!originToken) return;
+    let originActor = originToken.actor;
+    let auraEffect = chris.findEffect(originActor, 'Aura of Protection - Aura');
+    if (!auraEffect) return;
+    let originItem = await fromUuid(auraEffect.origin);
+    if (!originItem) return;
     let effectData = {
         'label': 'Aura of Protection',
-        'icon': origin.img,
-        'origin': origin.uuid,
+        'icon': originItem.img,
+        'origin': originItem.uuid,
         'duration': {
             'seconds': 604800
         },
@@ -20,26 +18,13 @@ async function effectCreation(token, actor, effect, origin) {
             {
                 'key': 'system.bonuses.abilities.save',
                 'mode': 2,
-                'value': '+' + actor.system.abilities.cha.mod,
+                'value': '+' + selectedAura.castLevel,
                 'priority': 20
             }
         ]
     }
-    await effectAura.add('auraOfProtection', castLevel, 10, sourceActorUuid, range, targetDisposition, conscious, effectData, effect.uuid);
-}
-async function moved(token, castLevel, spellDC, effectData) {
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);
-}
-async function effectEnd(token ,effect) {
-    if (!token) return;
-    await effectAura.refresh(effect.uuid);
-    await effectAura.remove('auraOfProtection', token.actor.uuid);
-}
-export let auraOfProtection = {
-    'start': effectCreation,
-    'moved': moved,
-    'end': effectEnd
 }
