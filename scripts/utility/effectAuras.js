@@ -138,7 +138,6 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                     break;
             }
             validSources.push(aura);
-            console.log(validSources);
         }
         let maxLevel = Math.max(...validSources.map(aura => aura.castLevel));
         let selectedAura = validSources.find(aura => aura.castLevel === maxLevel);
