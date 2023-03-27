@@ -2,7 +2,7 @@
 ## New Content:
 - The Genie Warlock: Elemental Gift
 ## New Features:
-- The item replacer can now check additional compendiums. 	
+- The item replacer can now check additional compendiums (The bulk actor replacer does not include this).
   
 # 0.2.2:
 ## New Content:
