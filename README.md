@@ -166,6 +166,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Dark One's Own Luck  
 #### The Genie:  
 - Genie's Wrath  
+- Elemental Gift  
 #### The Undead:  
 - Form of Dread  
 - Grave Touched  

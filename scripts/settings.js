@@ -105,6 +105,22 @@ export function registerSettings() {
 		'type': Object,
 		'default': {}
 	});
+	game.settings.register(moduleName, 'Use Additional Compendiums', {
+		'name': 'Use Additional Compendiums',
+		'hint': 'Should the item replacer check additional compendiums?',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false
+	});
+	game.settings.register(moduleName, 'Additional Compendiums', {
+		'name': 'Additional Compendiums',
+		'hint': 'This should be a comma seperated list of compendium keys.  The item replacer from this module will check these compendiums as well.  Highest prioirity should be on the left.',
+		'scope': 'world',
+		'config': true,
+		'type': String,
+		'default': 'midi-srd.Midi SRD Feats, midi-srd.Midi SRD Spells, midi-srd.Midi SRD Items, midi-qol.midiqol-sample-items'
+	});
 	game.settings.register(moduleName, 'Item Compendium', {
 		'name': 'Personal Item Compendium',
 		'hint': 'An compendium full of items to pick from (DDB items compendium by default).',

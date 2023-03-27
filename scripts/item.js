@@ -32,12 +32,15 @@ async function itemConfig(itemDocument) {
         ui.notifications.info('This feature must be used on an item that is on an actor!');
         return;
     }
+    let additionalCompendiumString = game.settings.get('chris-premades', 'Additional Compendiums');
+    let additionalCompendiums = additionalCompendiumString.split(', ');
     let itemName = itemDocument.name;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
     let isNPC = false;
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
+    let foundCompendiumName;
     itemName = getItemName(itemName);
     if (!isNPC || itemType === 'spell') {
         switch (itemType) {
@@ -57,8 +60,22 @@ async function itemConfig(itemDocument) {
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 break;
         }
-        compendiumItem = await chris.getItemFromCompendium(searchCompendiums[0], itemName, true);
-        if (!compendiumItem && searchCompendiums.length == 2) compendiumItem = await chris.getItemFromCompendium(searchCompendiums[1], itemName , true);
+        if (game.settings.get('chris-premades', 'Use Additional Compendiums')) {
+            for (let i of additionalCompendiums) {
+                searchCompendiums.push(i);
+            }
+        }
+        for (let compendium of searchCompendiums) {
+            if (!game.packs.get(compendium)) {
+                ui.notifications.warn('And invalid compendium key was specified! (Check your "Additional Compendiums" setting)');
+                continue;
+            }
+            compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
+            if (compendiumItem) {
+                foundCompendiumName = game.packs.get(compendium).metadata.label;
+                break;
+            }
+        }
     } else if (itemDocument.actor.type === 'npc') {
         let folderAPI = game.CF.FICFolderAPI;
         let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
@@ -83,7 +100,7 @@ async function itemConfig(itemDocument) {
         ['Yes', true],
         ['No', false]
     ];
-    let selection = await chris.dialog('An automation is available for this, apply it?', options);
+    let selection = await chris.dialog('Automation found, apply it? (' + foundCompendiumName + ')', options);
     if (!selection) return;
     ChatMessage.create({
         speaker: {alias: name},
