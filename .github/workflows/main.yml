@@ -79,7 +79,7 @@ jobs:
       # "version" key required for a valid module manifest.
       - name: Extract Version From Tag
         id: get_version
-        uses: battila7/get-version-action@v2
+        uses: CarterChen247/version-retriever@v1
 
 
       # Modify "module.json" with values specific to the release.
