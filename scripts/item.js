@@ -88,7 +88,8 @@ async function itemConfig(itemDocument) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;
         }
-        compendiumItem = await chris.getItemFromCompendium('chris-premades.CPR Monster Features', itemName, true, monsterFolder.id)
+        compendiumItem = await chris.getItemFromCompendium('chris-premades.CPR Monster Features', itemName, true, monsterFolder.id);
+        foundCompendiumName = 'Chris\'s Premades';
     } else {
         ui.notifications.info('Automation detection for this actor type is not supported!');
     }

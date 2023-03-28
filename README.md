@@ -125,6 +125,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Wrath of the Storm  
 #### Twilight Domain:  
 - Channel Divinity: Twilight Sanctuary  
+- Eyes of Night  
+- Steps of Night  
+- Vigilant Blessing  
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  
@@ -145,6 +148,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Aura of Courage  
 #### Oath of Glory:  
 - Channel Divinity: Inspiring Smite  
+- Channel Divinity: Peerless Athlete  
 ### Ranger:  
 #### Fey Wanderer:  
 - Beguiling Twist  

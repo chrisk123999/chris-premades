@@ -1,3 +1,9 @@
+# 0.2.5:
+## New Content:
+- Twilight Domain Cleric: Eyes of Night, Steps of Night, and Vigilant Blessing
+- Oath of Glory Paladin: Peerless Athlete
+- Help Action
+  
 # 0.2.3:
 ## New Content:
 - The Genie Warlock: Elemental Gift

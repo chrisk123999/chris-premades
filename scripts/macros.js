@@ -13,6 +13,7 @@ import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
+import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
@@ -65,6 +66,7 @@ import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
+import {help} from './macros/mechanics/help/help.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
@@ -122,7 +124,6 @@ import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
-import {blight} from './macros/spells/blight.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	workflow.targets.forEach(async token => {
@@ -208,6 +209,7 @@ export let macros = {
 	'beguilingTwist': beguilingTwist,
 	'bladeFlourish': bladeFlourish,
 	'blessingOfTheForge': blessingOfTheForge,
+	'blight': blight,
 	'blink': blink,
 	'bloodSpear': bloodSpear,
 	'brandOfCastigation': brandOfCastigation,
@@ -247,6 +249,7 @@ export let macros = {
 	'healingLight': healingLight,
 	'heartOfTheStorm': heartOfTheStorm,
 	'heatMetal': heatMetal,
+	'help': help,
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hungryJaws': hungryJaws,
@@ -293,6 +296,5 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'blight': blight
+	'wrathOfTheStorm': wrathOfTheStorm
 }
