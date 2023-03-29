@@ -1,3 +1,9 @@
+# 0.2.8:
+## New Content:
+- Elemental Adept
+## Bug Fixes:
+- Beacon of Hope
+  
 # 0.2.6:
 ## New Content:
 - The Archfey Warlock: Fey Presence and Misty Escape

@@ -242,6 +242,13 @@
 		"path": "packs/cpr-race-feature-items.db",
 		"type": "Item",
 		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Feats",
+		"label": "CPR Feats",
+		"path": "packs/cpr-feats.db",
+		"type": "Item",
+		"module": "chris-premades"
 	  }
   ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",

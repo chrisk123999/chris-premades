@@ -50,6 +50,7 @@ import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
+import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
@@ -240,6 +241,7 @@ export let macros = {
 	'dragonsWrath': dragonsWrath,
 	'dreadAmbusher': dreadAmbusher,
 	'eladrinSeason': eladrinSeason,
+	'elementalAdept': elementalAdept,
 	'elixirOfHealth': elixirOfHealth,
 	'experimentalElixir': experimentalElixir,
 	'expertDivination': expertDivination,

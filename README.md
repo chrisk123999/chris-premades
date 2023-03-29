@@ -181,6 +181,9 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Wizard:  
 #### School of Divination:  
 - Expert Divination  
+
+### Feats:  
+- Elemental Adept  
   
 ## Race Features:  
 ### Aasimar:  

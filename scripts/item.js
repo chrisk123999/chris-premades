@@ -58,6 +58,7 @@ async function itemConfig(itemDocument) {
             case 'feat':
                 searchCompendiums.push('chris-premades.CPR Race Features');
                 searchCompendiums.push('chris-premades.CPR Class Features');
+                searchCompendiums.push('chris-premades.CPR Feats');
                 break;
         }
         if (game.settings.get('chris-premades', 'Use Additional Compendiums')) {

@@ -1,10 +1,13 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 export async function beaconOfHope(token, {item, workflow, ditem}) {
     let effect = chris.findEffect(token.actor, 'Beacon of Hope');
     if (!effect) return;
     if (!workflow.damageRoll) return;
     if (chris.checkTrait(token.actor, 'di', 'healing')) return;
     let newHealingTotal = 0;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'beaconOfHope', 351);
+    if (!queueSetup) return;
     for (let i = 0; workflow.damageRoll.terms.length > i; i++) {
         let flavor = workflow.damageRoll.terms[i].flavor;
         let isDeterministic = workflow.damageRoll.terms[i].isDeterministic;
@@ -21,4 +24,5 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     ditem.hpDamage = -Math.clamped(newHealingTotal, 0, maxHP - ditem.oldHP);
     ditem.newHP = Math.clamped(ditem.oldHP + newHealingTotal, 0, maxHP);
     ditem.totalDamage = newHealingTotal;
+    queue.remove(workflow.item.uuid);
 }

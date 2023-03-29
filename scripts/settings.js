@@ -279,6 +279,21 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Elemental Adept', {
+		'name': 'Elemental Adept Automation',
+		'hint': 'Enabling this allows the automation of the Elemental Adept feat via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.damageApplied', macros.elementalAdept);
+			} else {
+				Hooks.off('midi-qol.damageApplied', macros.elementalAdept);
+			}
+		}
+	});
 	game.settings.register(moduleName, 'Mirror Image', {
 		'name': 'Mirror Image Automation',
 		'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
