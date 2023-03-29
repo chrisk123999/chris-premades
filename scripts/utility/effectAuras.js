@@ -33,9 +33,10 @@ function add(flagAuras, tokenUuid, doRefresh) {
         let disposition = aura.disposition || 'all';
         let conscious = aura.conscious || false;
         let effectName = aura.effectName;
-        let effectData = aura.effectData;
+        let worldMacro = aura.worldMacro;
+        let globalFunction = aura.globalFunction;
         let macroName = aura.macroName;
-        if (!tokenUuid || !name || !range || !effectName || (!macroName && !effectData)) {
+        if (!tokenUuid || !name || !range || !effectName || (!macroName && !worldMacro && !globalFunction)) {
             ui.notifications.warn('Invalid aura data found!');
             console.log(aura);
             continue;
@@ -49,7 +50,8 @@ function add(flagAuras, tokenUuid, doRefresh) {
             'range': range,
             'disposition': disposition,
             'conscious': conscious,
-            'effectData': effectData,
+            'worldMacro': worldMacro,
+            'globalFunction': globalFunction,
             'macroName': macroName,
             'effectName': effectName
         });
@@ -145,6 +147,19 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
             console.log('Chris | Adding aura effect ' + selectedAura.effectName + ' to: ' + token.actor.name);
             if (selectedAura.macroName) {
                 macros.onMoveEffect(selectedAura.macroName, token, selectedAura);
+            } else if (selectedAura.globalFunction) {
+
+            } else if (selectedAura.worldMacro) {
+                let macro = game.macros?.getName(selectedAura.worldMacro.replaceAll('"', ''));
+                let macroCommand = macro?.command ?? `console.warn('Chris | No world macro ${selectedAura.worldMacro.replaceAll('"', '')} found!')`;
+                let body = `return (async () => {${macroCommand}})()`;
+                let fn = Function('{token, aura}={}', body);
+                try {
+                    fn.call(selectedAura, {token, selectedAura});
+                } catch (error) {
+                    ui.notifications?.error('There was an error running your macro. See the console (F12) for details');
+                    error('Error evaluating macro ', error);
+                }
             }
         } else {
             let effect = chris.findEffect(token.actor, auraName[0].effectName);
