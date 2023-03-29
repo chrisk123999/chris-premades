@@ -54,6 +54,7 @@ import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
@@ -95,6 +96,7 @@ import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGo
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+import {removeTemplate} from './macros/generic/removeTemplate.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
@@ -242,6 +244,7 @@ export let macros = {
 	'experimentalElixir': experimentalElixir,
 	'expertDivination': expertDivination,
 	'fallenPuppet': fallenPuppet,
+	'feyPresence': feyPresence,
 	'focusedAim': focusedAim,
 	'formOfDread': formOfDread,
 	'graveTouched': graveTouched,
@@ -278,6 +281,7 @@ export let macros = {
 	'radiantSoul': radiantSoul,
 	'rayOfEnfeeblement': rayOfEnfeeblement,
 	'reaper': reaper,
+	'removeTemplate': removeTemplate,
 	'ringOfSpellStoring': ringOfSpellStoring,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,

@@ -1,3 +1,14 @@
+# 0.2.6:
+## New Content:
+- The Archfey Warlock: Fey Presence and Misty Escape
+- Vitriolic Sphere
+## Bug Fixes:
+- Hold Person
+- Hypnotic Pattern
+- Ray of Enfeeblement
+## New Features:
+- Added a setting to disable the V10 changes to Invisibility and Blinded.
+  
 # 0.2.5:
 ## New Content:
 - Twilight Domain Cleric: Eyes of Night, Steps of Night, and Vigilant Blessing

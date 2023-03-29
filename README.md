@@ -75,6 +75,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Vampiric Touch  
+- Vitriolic Sphere  
 - Wither and Bloom  
   
 ## Class Features:  
@@ -162,6 +163,9 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Warlock:  
 - Devil's Sight  
 - One with Shadows  
+#### The Archfey:  
+- Fey Presence  
+- Misty Escape  
 #### The Celestial:  
 - Healing Light  
 - Radiant Soul  

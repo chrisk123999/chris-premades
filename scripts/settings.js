@@ -1,7 +1,10 @@
 import {macros, onHitMacro} from './macros.js';
+import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
+import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 let moduleName = 'chris-premades';
+let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
 export function registerSettings() {
 	game.settings.register(moduleName, 'Breaking Version Change', {
 		'name': 'Breaking Version Change',
@@ -64,6 +67,36 @@ export function registerSettings() {
 				Hooks.off('updateToken', effectAuraHooks.updateToken);
 				Hooks.off('createToken', effectAuraHooks.createToken);
 				Hooks.off('deleteToken', effectAuraHooks.deleteToken);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Active Effect Additions', {
+		'name': 'Active Effect Additions',
+		'hint': 'This setting allows active effects to have additional properties.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': true,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
+			} else {
+				Hooks.off('preCreateActiveEffect', preCreateActiveEffect);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Condition Fixes', {
+		'name': 'Condition Fixes',
+		'hint': 'This setting removes the V10 changes to invisible and blinded.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				removeDumbV10Effects();
+			} else {
+				debouncedReload();
 			}
 		}
 	});
