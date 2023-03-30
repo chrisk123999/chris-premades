@@ -32,7 +32,7 @@ export async function focusedAim({speaker, actor, token, character, item, args})
         queue.remove(this.item.uuid);
         return;
     }
-    let originItem = fromUuid(effect.origin);
+    let originItem = await fromUuid(effect.origin);
     await originItem.use();
     queue.remove(this.item.uuid);
 }
