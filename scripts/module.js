@@ -85,11 +85,16 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
 	if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
 });
+async function test(token) {
+	console.log(this);
+	console.log(token);
+}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
 	queue,
 	tokenMove,
 	effectAuras,
-	bab
+	bab,
+	test
 }

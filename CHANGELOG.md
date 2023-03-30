@@ -1,3 +1,11 @@
+# 0.2.10:
+## New Features:
+- Effect Auras can now run a world macro or function.
+  
+# 0.2.9:
+## Bug Fixes:
+- Monk: Focused Aim
+  
 # 0.2.8:
 ## New Content:
 - Elemental Adept

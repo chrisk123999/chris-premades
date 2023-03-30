@@ -145,17 +145,20 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
         let selectedAura = validSources.find(aura => aura.castLevel === maxLevel);
         if (selectedAura) {
             console.log('Chris | Adding aura effect ' + selectedAura.effectName + ' to: ' + token.actor.name);
+            let macroCommand;
             if (selectedAura.macroName) {
                 macros.onMoveEffect(selectedAura.macroName, token, selectedAura);
             } else if (selectedAura.globalFunction) {
-
+                macroCommand = `await ${selectedAura.globalFunction.trim()}.bind(this)({token})`;
             } else if (selectedAura.worldMacro) {
                 let macro = game.macros?.getName(selectedAura.worldMacro.replaceAll('"', ''));
-                let macroCommand = macro?.command ?? `console.warn('Chris | No world macro ${selectedAura.worldMacro.replaceAll('"', '')} found!')`;
+                macroCommand = macro?.command ?? `console.warn('Chris | No world macro ${selectedAura.worldMacro.replaceAll('"', '')} found!')`;
+            }
+            if (macroCommand) {
                 let body = `return (async () => {${macroCommand}})()`;
-                let fn = Function('{token, aura}={}', body);
+                let fn = Function('{token}={}', body);
                 try {
-                    fn.call(selectedAura, {token, selectedAura});
+                    fn.call(selectedAura, {token});
                 } catch (error) {
                     ui.notifications?.error('There was an error running your macro. See the console (F12) for details');
                     error('Error evaluating macro ', error);
