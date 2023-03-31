@@ -51,10 +51,13 @@ async function spiritShroudAttack({speaker, actor, token, character, item, args}
     queue.remove(this.item.uuid);
 }
 async function spiritShroudSlow(token, origin) {
-    let targetTokens = chris.findNearby(token, 10, 'enemy');
-    if (targetTokens.length === 0) return;
-    let targetToken =  targetTokens.find(i => i.id === game.combat.current.tokenId);
+    let targetToken = game.canvas.tokens.get(game.combat.current.tokenId);
     if (!targetToken) return;
+    if (targetToken.document.disposition === token.document.disposition) return;
+    let distance = chris.getDistance(token, targetToken);
+    if (distance > 10) return;
+    let effect = chris.findEffect(targetToken.actor, 'Spirit Shroud - Slow');
+    if (effect) await chris.removeEffect(effect);
     let effectData = {
         'label': 'Spirit Shroud - Slow',
         'icon': origin.img,

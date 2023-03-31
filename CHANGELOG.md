@@ -1,3 +1,11 @@
+# 0.2.12;
+## New Content:
+- Grave Domain Cleric: Path to the Grave
+- Light Domain Cleric: Radiance of the Dawn
+- Oath of Glory Paladin: Aura of Alacrity
+## Bug Fixes:
+- Spirit Shroud
+  
 # 0.2.11:
 ## New Features:
 - Added a setting to enable the homebrew rule for exploding healing dice.

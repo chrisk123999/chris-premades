@@ -115,9 +115,12 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Forge Domain:  
 - Blessing of the Forge  
 #### Grave Domain:  
+- Path to the Grave  
 - Circle of Mortality   
 #### Life Domain:  
 - Channel Divinity: Preserve Life  
+#### Light Domain:  
+- Radiance of the Dawn  
 #### Peace Domain:  
 - Channel Divinity: Balm of Peace  
 #### Tempest Domain:  
@@ -150,6 +153,7 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Oath of Glory:  
 - Channel Divinity: Inspiring Smite  
 - Channel Divinity: Peerless Athlete  
+- Aura of Alacrity  
 ### Ranger:  
 #### Fey Wanderer:  
 - Beguiling Twist  

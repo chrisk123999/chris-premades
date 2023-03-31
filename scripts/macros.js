@@ -3,6 +3,7 @@ import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
+import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
@@ -204,6 +205,7 @@ export let macros = {
 	'ancestralProtectors': ancestralProtectors,
 	'armorModel': armorModel,
 	'armorOfAgathys': armorOfAgathys,
+	'auraOfAlacrity': auraOfAlacrity,
 	'auraOfCourage': auraOfCourage,
 	'auraOfProtection': auraOfProtection,
 	'auraOfPurity': auraOfPurity,
