@@ -1,3 +1,9 @@
+# 0.2.13:
+## Updated Content:
+- Spike Growth
+## Bug Fixes:
+- Elemental Adept
+  
 # 0.2.12:
 ## New Content:
 - Grave Domain Cleric: Path to the Grave

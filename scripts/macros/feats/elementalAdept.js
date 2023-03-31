@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function elementalAdept(token, {item, workflow, ditem}) {
-    if (!workflow.actor.flags['chris-premades']?.feat?.elementalAdept || !workflow.damageRoll || workflow.item?.type != 'spell') return;
+    if (!workflow.actor?.flags?.['chris-premades']?.feat?.elementalAdept || !workflow.damageRoll || workflow.item?.type != 'spell') return;
     let acidAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.acid;
     let coldAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.cold;
     let fireAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.fire;

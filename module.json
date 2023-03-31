@@ -66,7 +66,7 @@
 		"type": "module",
 		"manifest": "https://github.com/krbz999/templatemacro/releases/latest/download/module.json",
 		"compatibility": {
-			"verified": "10.0.1"
+			"verified": "10.0.2"
 		}
 	},
 	{
