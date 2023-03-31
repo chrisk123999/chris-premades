@@ -1,4 +1,4 @@
-# 0.2.12;
+# 0.2.12:
 ## New Content:
 - Grave Domain Cleric: Path to the Grave
 - Light Domain Cleric: Radiance of the Dawn
