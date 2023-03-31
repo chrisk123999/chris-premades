@@ -415,4 +415,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Exploding Heals', {
+		'name': 'Exploding Heals',
+		'hint': 'Enabling this allows the automation of the homebrew rule to have exploding dice for all healing rolls via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
+			} else {
+				Hooks.off('midi-qol.preDamageRollComplete', macros.explodingHeals);
+			}
+		}
+	});
 }

@@ -84,6 +84,7 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 	if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
 	if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
+	if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
 });
 async function test(token) {
 	console.log(this);

@@ -54,6 +54,7 @@ import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
+import {explodingHeals} from './macros/mechanics/explodingHeals/explodingHeals.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
@@ -85,6 +86,7 @@ import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
+import {orcishFury} from './macros/feats/orcishFury.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
 import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
 import {potionOfGiantSize} from './macros/items/potionOfGiantSize.js';
@@ -245,6 +247,7 @@ export let macros = {
 	'elixirOfHealth': elixirOfHealth,
 	'experimentalElixir': experimentalElixir,
 	'expertDivination': expertDivination,
+	'explodingHeals': explodingHeals,
 	'fallenPuppet': fallenPuppet,
 	'feyPresence': feyPresence,
 	'focusedAim': focusedAim,
@@ -271,6 +274,7 @@ export let macros = {
 	'onHit': onHit,
 	'onMove': onMove,
 	'onMoveEffect': onMoveEffect,
+	'orcishFury': orcishFury,
 	'potionOfDiminution': potionOfDiminution,
 	'potionOfFireBreath': potionOfFireBreath,
 	'potionOfGiantSize': potionOfGiantSize,

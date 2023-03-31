@@ -1,3 +1,9 @@
+# 0.2.11:
+## New Features:
+- Added a setting to enable the homebrew rule for exploding healing dice.
+## New Content:
+- Feat: Orcish Fury
+  
 # 0.2.10:
 ## New Features:
 - Effect Auras can now run a world macro or function.
