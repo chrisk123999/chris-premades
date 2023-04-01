@@ -1,3 +1,7 @@
+# 0.2.14:
+## Bug Fixes:
+- Effect Hook
+  
 # 0.2.13:
 ## Updated Content:
 - Spike Growth
