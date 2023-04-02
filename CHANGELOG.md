@@ -1,3 +1,10 @@
+# 0.2.16:
+## New Content:
+- Feat: Piercer
+## Bug Fixes:
+- Death Ward
+- Elemental Adept
+  
 # 0.2.14:
 ## Bug Fixes:
 - Effect Hook

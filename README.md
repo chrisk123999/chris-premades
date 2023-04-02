@@ -189,6 +189,7 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Feats:  
 - Elemental Adept  
 - Orcish Fury  
+- Piercer  
   
 ## Race Features:  
 ### Aasimar:  

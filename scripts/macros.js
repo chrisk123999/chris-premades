@@ -88,6 +88,7 @@ import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddle
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
+import {piercer} from './macros/feats/piercer.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
 import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
 import {potionOfGiantSize} from './macros/items/potionOfGiantSize.js';
@@ -277,6 +278,7 @@ export let macros = {
 	'onMove': onMove,
 	'onMoveEffect': onMoveEffect,
 	'orcishFury': orcishFury,
+	'piercer': piercer,
 	'potionOfDiminution': potionOfDiminution,
 	'potionOfFireBreath': potionOfFireBreath,
 	'potionOfGiantSize': potionOfGiantSize,

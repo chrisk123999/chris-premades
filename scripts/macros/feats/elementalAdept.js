@@ -26,7 +26,11 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
                 termTotal += Math.max(j.result, 2);
             }
             if (!chris.checkTrait(token.actor, 'di', i.flavor)) {
-                hpDamageTotal += termTotal;
+                if (chris.checkTrait(token.actor, 'dv', i.flavor)) {
+                    hpDamageTotal += termTotal * 2;
+                } else {
+                    hpDamageTotal += termTotal;
+                }
             }
             newDamageTotal += termTotal;
         } else {
