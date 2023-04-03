@@ -1,3 +1,5 @@
+import { crusher } from './macros/feats/crusher.js';
+import { zealousPresence } from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
@@ -233,6 +235,7 @@ export let macros = {
 	'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
 	'conditionVulnerabilityLate': conditionVulnerabilityLate,
 	'crimsonRite': crimsonRite,
+	'crusher': crusher,
 	'darkOnesBlessing': darkOnesBlessing,
 	'darkness': darkness,
 	'deathWard': deathWard,
@@ -310,5 +313,6 @@ export let macros = {
 	'vampiricTouch': vampiricTouch,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm
+	'wrathOfTheStorm': wrathOfTheStorm,
+	'zealousPresence': zealousPresence
 }

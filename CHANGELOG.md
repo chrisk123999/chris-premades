@@ -1,3 +1,11 @@
+# 0.2.18:
+## New Content:
+- Path of the Zealot Barbarian: Zealous Presence
+- Feat: Crusher Critical Hit
+## Bug Fixes:
+- Paladin: Aura of Protection
+- Paladin: Aura of Courage
+  
 # 0.2.17:
 ## New Content:
 - Pallid Elf: Incisive Sense

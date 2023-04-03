@@ -30,6 +30,7 @@ function add(flagAuras, tokenUuid, doRefresh) {
         let castLevel = aura.castLevel || 0;
         let spellDC = aura.spellDC || null;
         let range = aura.range;
+        console.log(range);
         let disposition = aura.disposition || 'all';
         let conscious = aura.conscious || false;
         let effectName = aura.effectName;
@@ -62,13 +63,13 @@ function remoteAdd(flagAuras, tokenUuid, doRefresh) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     add(flagAuras, tokenUuid, doRefresh);
 }
-async function remove(name, tokenUuid) {
+async function remove(name, tokenUuid, noRefresh) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) {
         socket.executeForAllGMs('remoteRemoveEffectAura', name, tokenUuid);
         return;
     }
     if (!auras[name]) return;
-    await refreshEffects(tokenUuid, name);
+    if (!noRefresh) await refreshEffects(tokenUuid, name);
     auras[name] = auras[name].filter(aura => aura.tokenUuid != tokenUuid);
     if (auras[name].length === 0) delete(auras[name]);
 }
@@ -105,12 +106,22 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
         for (let aura of auraName) {
             if (aura.tokenUuid === ignoredUuid && (ignoredAura === aura.name || ignoredAura === 'all')) continue;
             let sourceToken = await fromUuid(aura.tokenUuid);
+            if (!sourceToken) continue;
             let distance = distaceMap[sourceToken.id];
             if (!distance) {
                 distance = chris.getDistance(token, sourceToken);
                 distaceMap[sourceToken.id] = distance;
             }
-            if (distance > aura.range) continue;
+            let testDistance = aura.range;
+            if (testDistance === 'paladin') {
+                let paladinLevels = sourceToken.actor.classes?.paladin?.system?.levels;
+                if (paladinLevels >= 18) {
+                    testDistance = 30;
+                } else {
+                    testDistance = 10;
+                }
+            }
+            if (distance > testDistance) continue;
             if (aura.conscious) {
                 let sourceHP = sourceToken.actor.system.attributes.hp.value;
                 if (sourceHP === 0) continue;
@@ -199,10 +210,12 @@ function createToken(token, options, id) {
 }
 function deleteToken(token, options, id) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
-    let aura = token.actor.flags['chris-premades']?.aura;
-    if (aura) {
-        if (aura.name && aura.tokenUuid) remove(aura.name, aura.tokenUuid);
+    let flagAuras = token.actor.flags['chris-premades']?.aura;
+    if (flagAuras) {
         refreshEffects(token.uuid, 'all');
+        for (let aura of Object.values(flagAuras)) {
+            remove(aura.name, token.uuid, true);
+        }
     }
     // delete effects on actor?
 }

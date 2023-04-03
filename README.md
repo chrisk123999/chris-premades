@@ -90,6 +90,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Ancestral Protectors  
 #### Path of the Zealot:  
 - Divine Fury  
+- Zealous Presence  
 ### Bard:  
 - Bardic Inspiration & Magical Inspiration  
 #### College of Creation:  
@@ -187,6 +188,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Expert Divination  
 
 ### Feats:  
+- Crusher  
 - Elemental Adept  
 - Orcish Fury  
 - Piercer  
