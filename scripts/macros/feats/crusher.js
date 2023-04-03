@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import { queue } from '../../queue.js';
+import {queue} from '../../queue.js';
 async function critical({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1 || !this.damageRoll || !this.isCritical) return;
     let queueSetup = await queue.setup(this.item.uuid, 'crusherCritical', 450);

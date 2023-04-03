@@ -286,7 +286,7 @@ export let chris = {
 			if (i.type.toLowerCase() === type.toLowerCase()) total += i.damage;
 		}
 		let resistant = chris.checkTrait(actor, 'dr', type);
-		if (resistant) total = math.floor(total / 2);
+		if (resistant) total = Math.floor(total / 2);
 		return total;
 	},
 	'getEffectCastLevel': function _getEffectCastLevel(effect) {

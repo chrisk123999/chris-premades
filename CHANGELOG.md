@@ -1,3 +1,7 @@
+# 0.2.19:
+## Bug Fixes:
+- Vampiric Touch
+  
 # 0.2.18:
 ## New Content:
 - Path of the Zealot Barbarian: Zealous Presence

@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function vampiricTouchItem({speaker, actor, token, character, item, args}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Vampiric Touch Attack', false);
     if (!featureData) return;
@@ -64,10 +65,16 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
 }
 async function vampiricTouchAttack({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1) return;
+	let queueSetup = await queue.setup(this.item.uuid, 'vampiricTouchAttack', 450);
+	if (!queueSetup) return;
     let damage = chris.totalDamageType(this.targets.first().actor, this.damageDetail, 'necrotic');
-    if (!damage) return;
+    if (!damage) {
+		queue.remove(this.item.uuid);
+		return;
+	}
 	damage = Math.floor(damage / 2);
     await chris.applyDamage([this.token], damage, 'healing');
+	queue.remove(this.item.uuid);
 }
 export let vampiricTouch = {
     'item': vampiricTouchItem,
