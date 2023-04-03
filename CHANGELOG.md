@@ -1,3 +1,10 @@
+# 0.2.17:
+## New Content:
+- Pallid Elf: Incisive Sense
+## Bug Fixes:
+- Paladin: Aura of Courage
+- Artificer: Armor Model
+  
 # 0.2.16:
 ## New Content:
 - Feat: Piercer

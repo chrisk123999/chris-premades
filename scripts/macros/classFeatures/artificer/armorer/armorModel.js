@@ -52,6 +52,12 @@ async function infiltratorArmor({speaker, actor, token, character, item, args}) 
                 'value': '+5',
                 'mode': 2,
                 'priority': 20
+            },
+            {
+                'key': 'flags.midi-qol.advantage.skill.ste',
+                'value': 1,
+                'mode': 0,
+                'priority': 20
             }
         ]
 	};

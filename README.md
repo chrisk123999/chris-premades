@@ -203,6 +203,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Change Season  
 #### Mark of Shadow:  
 - Cunning Intuition  
+#### Palid:  
+- Incisive Sense  
 ### Giff:  
 - Astral Spark  
 ### Gnome:  
