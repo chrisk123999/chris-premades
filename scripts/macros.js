@@ -13,6 +13,7 @@ import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
+import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
@@ -224,6 +225,7 @@ export let macros = {
 	'beaconOfHope': beaconOfHope,
 	'beguilingTwist': beguilingTwist,
 	'bladeFlourish': bladeFlourish,
+	'blessedStrikes': blessedStrikes,
 	'blessingOfTheForge': blessingOfTheForge,
 	'blight': blight,
 	'blink': blink,

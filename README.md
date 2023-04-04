@@ -112,6 +112,7 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Cleric:  
 - Channel Divinity: Turn Undead  
 - Divine Strike  
+- Blessed Strikes
 #### Death Domain:  
 - Reaper  
 #### Forge Domain:  

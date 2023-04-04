@@ -1,3 +1,7 @@
+# 0.2.24:
+## New Content:
+- Cleric: Blessed Strikes
+  
 # 0.2.23:
 ## New Content:
 - School of Necromancy Wizard: Grim Harvest

@@ -16,7 +16,6 @@ async function allTurns(token, origin) {
     await MidiQOL.completeItemUse(origin, {}, options);
 }
 async function turnStart(origin) {
-    console.log('here');
     let roll = await new Roll('1d8').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
