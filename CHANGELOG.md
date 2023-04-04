@@ -1,3 +1,8 @@
+# 0.2.20:
+## New Content:
+- Feat: Slasher
+- Spell: Guiding Bolt
+  
 # 0.2.19:
 ## Bug Fixes:
 - Vampiric Touch

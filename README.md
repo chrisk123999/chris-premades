@@ -52,6 +52,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Dragon's Breath  
 - Earth Tremor  
 - Gaseous Form  
+- Guiding Bolt  
 - Heat Metal  
 - Hex  
 - Hold Person  
@@ -192,6 +193,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Elemental Adept  
 - Orcish Fury  
 - Piercer  
+- Slasher  
   
 ## Race Features:  
 ### Aasimar:  

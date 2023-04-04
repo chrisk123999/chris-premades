@@ -5,6 +5,7 @@ async function reroll({speaker, actor, token, character, item, args}) {
     let effect = chris.findEffect(this.actor, 'Piercer: Reroll Damage');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
+    if (!originItem) return;
     let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'piercer', false, this.token.id);
     if (!doExtraDamage) return;
     let queueSetup = await queue.setup(this.item.uuid, 'piercerReroll', 390);

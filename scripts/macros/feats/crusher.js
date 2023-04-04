@@ -23,7 +23,7 @@ async function critical({speaker, actor, token, character, item, args}) {
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {
-            'rounds': 1
+            'seconds': 12
         },
         'changes': [
             {

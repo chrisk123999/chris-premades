@@ -30,7 +30,6 @@ function add(flagAuras, tokenUuid, doRefresh) {
         let castLevel = aura.castLevel || 0;
         let spellDC = aura.spellDC || null;
         let range = aura.range;
-        console.log(range);
         let disposition = aura.disposition || 'all';
         let conscious = aura.conscious || false;
         let effectName = aura.effectName;

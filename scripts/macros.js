@@ -1,5 +1,3 @@
-import { crusher } from './macros/feats/crusher.js';
-import { zealousPresence } from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
@@ -35,6 +33,7 @@ import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechan
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
+import {crusher} from './macros/feats/crusher.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
 import {deathWard} from './macros/spells/deathWard.js';
@@ -114,6 +113,7 @@ import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
+import {slasher} from './macros/feats/slasher.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
@@ -132,6 +132,7 @@ import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
+import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
@@ -300,6 +301,7 @@ export let macros = {
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
+	'slasher': slasher,
 	'spikeGrowth': spikeGrowth,
 	'spiritGuardians': spiritGuardians,
 	'spiritShroud': spiritShroud,
