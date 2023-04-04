@@ -61,6 +61,12 @@ export async function chainLightning({speaker, actor, token, character, item, ar
             'lightning'
         ]
     ];
+    featureData.flags['chris-premades'] = {
+		'spell': {
+			'castData': this.castData
+		}
+	}
+	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
     let options = {
 		'showFullCard': false,

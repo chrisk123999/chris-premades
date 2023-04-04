@@ -45,6 +45,12 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
 		itemData.system.save.dc = chris.getSpellDC(originItem);
 	}
 	itemData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Lightning Arrow - Burst');
+	itemData.flags['chris-premades'] = {
+		'spell': {
+			'castData': this.castData
+		}
+	}
+	itemData.flags['chris-premades'].spell.castData.school = this.item.system.school;
 	let areaFeature = new CONFIG.Item.documentClass(itemData, {parent: this.actor});
 	let newTargets = chris.findNearby(targetToken, 10, null);
 	let newTargetUuids =[];

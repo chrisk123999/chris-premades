@@ -15,9 +15,11 @@ async function item({speaker, actor, token, character, item, args}) {
                 'targetUuid': targetUuid,
                 'spellDC': spellDC,
                 'originUuid': this.item.uuid
-            }
+            },
+            'castData': this.castData
         }
     };
+    featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Heat Metal');
         await chrisPremades.macros.heatMetal.removed(effect);

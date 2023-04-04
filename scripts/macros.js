@@ -69,6 +69,7 @@ import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
@@ -264,6 +265,7 @@ export let macros = {
 	'focusedAim': focusedAim,
 	'formOfDread': formOfDread,
 	'graveTouched': graveTouched,
+	'grimHarvest': grimHarvest,
 	'grovelthrash': grovelthrash,
 	'healingLight': healingLight,
 	'heartOfTheStorm': heartOfTheStorm,

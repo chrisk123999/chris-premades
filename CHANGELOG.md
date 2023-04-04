@@ -1,3 +1,13 @@
+# 0.2.23:
+## New Content:
+- School of Necromancy Wizard: Grim Harvest
+- Dwarf: Dwarven Resilience
+## Bug Fixes:
+- Experimental Elixirs
+- Vampiric Touch
+## New Features:
+- Added cast data flags to temporary items created by spells.
+  
 # 0.2.21:
 ## New Monster Content:
 - Dream Eater: Engulfing Nightmare and Ghastly Visions

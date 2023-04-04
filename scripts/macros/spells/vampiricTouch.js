@@ -13,9 +13,11 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Vampiric Touch Attack');
 	featureData.flags['chris-premades'] = {
 		'spell': {
-			'vampiricTouchAttack': true
+			'vampiricTouchAttack': true,
+			'castData': this.castData
 		}
 	}
+	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Vampiric Touch');
 	}
@@ -52,6 +54,7 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
 	await warpgate.mutate(this.token.document, updates, {}, options);
 	let feature = this.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
 	if (!feature) return;
+	if (this.targets.size === 0) return;
 	let options2 = {
         'showFullCard': false,
         'createWorkflow': true,

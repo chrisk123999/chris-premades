@@ -187,7 +187,9 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Wizard:  
 #### School of Divination:  
 - Expert Divination  
-
+#### School of Necromancy:  
+- Grim Harvest  
+  
 ### Feats:  
 - Crusher  
 - Elemental Adept  
@@ -200,6 +202,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Celestial Revelation (Radiant Soul)  
 ### Dhampir:  
 - Vampiric Bite  
+### Dwarf:  
+- Dwarven Resilience  
 ### Elf:  
 - Fey Ancestry  
 ### Eladrin:  

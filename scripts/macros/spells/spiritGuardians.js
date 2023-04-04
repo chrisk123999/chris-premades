@@ -24,6 +24,16 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         ]
     ];
     featureData.system.save.dc = spellDC;
+    featureData.flags['chris-premades'] = {
+		'spell': {
+			'castData': {
+                'baseLevel': 3,
+                'castLevel': castLevel,
+                'school': 'con'
+            }
+		}
+	}
+	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

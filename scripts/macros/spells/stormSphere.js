@@ -4,6 +4,12 @@ async function item({speaker, actor, token, character, item, args}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Sphere Bolt');
+    featureData.flags['chris-premades'] = {
+		'spell': {
+			'castData': this.castData
+		}
+	}
+	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Sphere Handler');
 	}

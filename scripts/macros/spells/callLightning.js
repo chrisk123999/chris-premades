@@ -13,6 +13,12 @@ export async function callLightning({speaker, actor, token, character, item, arg
 	];
 	featureData.system.save.dc = chris.getSpellDC(this.item);
 	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Bolt');
+	featureData.flags['chris-premades'] = {
+		'spell': {
+			'castData': this.castData
+		}
+	}
+	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
 	async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Bolt');
 	}
