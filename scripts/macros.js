@@ -46,6 +46,7 @@ import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
+import {dreamEater} from './macros/monsterFeatures/dreamEater/dreamEater.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
@@ -66,6 +67,7 @@ import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js'
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
+import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
@@ -154,6 +156,7 @@ let monster = {
 	'chasme': chasme,
 	'clayGolem': clayGolem,
 	'corpseFlower': corpseFlower,
+	'dreamEater': dreamEater,
 	'drow': drow,
 	'duergar': duergar,
 	'dybbuk': dybbuk,
@@ -164,6 +167,7 @@ let monster = {
 	'gallowsSpeaker': gallowsSpeaker,
 	'generic': generic,
 	'ghast': ghast,
+	'gibberingMouther': gibberingMouther,
 	'hezrou': hezrou,
 	'homunculus': homunculus,
 	'intellectDevourer': intellectDevourer,

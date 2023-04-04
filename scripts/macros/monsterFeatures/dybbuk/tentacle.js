@@ -25,7 +25,17 @@ export async function tentacle({speaker, actor, token, character, item, args}) {
                     'value': Math.max(damage, -targetMaxHP),
                     'priority': 20
                 }
-            ]
+            ],
+            'flags': {
+                'dae': {
+                    'transfer': false,
+                    'specialDuration': [
+                        'shortRest'
+                    ],
+                    'stackable': 'multi',
+                    'macroRepeat': 'none'
+                }
+            }
         };
         await chris.createEffect(targetActor, effectData);
     } else {

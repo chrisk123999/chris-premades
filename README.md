@@ -266,6 +266,9 @@ Additional support and feature requests can be made on my Discord server: https:
   
 ## Monster Features:  
 ### Aberration:  
+#### Dream Eater:  
+- Engulfing Nightmare  
+- Ghastly Visions  
 #### Elder Brain:
 - Break Concentration  
 - Mind Blast  
@@ -275,16 +278,21 @@ Additional support and feature requests can be made on my Discord server: https:
 - Psychic Pulse  
 - Sever Psychic Link  
 - Tentacle  
-### Intellect Devourer:  
+#### Gibbering Mouther:  
+- Aberrant Ground  
+- Bite  
+- Blinding Spittle  
+- Gibbering  
+#### Intellect Devourer:  
 - Body Thief  
 - Devour Intellect  
-### Mind Flayer:  
+#### Mind Flayer:  
 - Mind Blast  
-### Swarm of Cranium Rats:  
+#### Swarm of Cranium Rats:  
 - Bites  
-### Swarm of Sorrowfish:  
+#### Swarm of Sorrowfish:  
 - Swarm of Bites  
-### Ulitharid:  
+#### Ulitharid:  
 - Mind Blast  
 ### Beast:  
 #### Sahugain Hatchling Swarm:  

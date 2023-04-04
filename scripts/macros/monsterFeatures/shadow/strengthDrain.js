@@ -24,7 +24,17 @@ export async function strengthDrain({speaker, actor, token, character, item, arg
                     'value': damage,
                     'priority': 20
                 }
-            ]
+            ],
+            'flags': {
+                'dae': {
+                    'transfer': false,
+                    'specialDuration': [
+                        'shortRest'
+                    ],
+                    'stackable': 'multi',
+                    'macroRepeat': 'none'
+                }
+            }
         };
         await chris.createEffect(targetActor, effectData);
     } else {

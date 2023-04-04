@@ -1,3 +1,11 @@
+# 0.2.21:
+## New Monster Content:
+- Dream Eater: Engulfing Nightmare and Ghastly Visions
+- Gibbering Mouther: Aberrant Ground, Bite, Blinding Spittle, and Gibbering
+## Bug Fixes:
+- Dybbuk: Tentacle
+- Shadow: Strength Drain
+  
 # 0.2.20:
 ## New Content:
 - Feat: Slasher
