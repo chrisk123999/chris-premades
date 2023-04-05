@@ -81,6 +81,7 @@ import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
+import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
@@ -276,6 +277,7 @@ export let macros = {
 	'hex': hex,
 	'holyWeapon': holyWeapon,
 	'hungryJaws': hungryJaws,
+	'huntersMark': huntersMark,
 	'hybridTransformation': hybridTransformation,
 	'inspiringSmite': inspiringSmite,
 	'lightningArrow': lightningArrow,

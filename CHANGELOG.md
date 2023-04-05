@@ -1,3 +1,7 @@
+# 0.2.25:
+## New Content:
+- Spell: Hunter's Mark
+  
 # 0.2.24:
 ## New Content:
 - Cleric: Blessed Strikes
