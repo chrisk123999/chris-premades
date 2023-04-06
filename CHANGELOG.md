@@ -1,3 +1,8 @@
+# 0.2.27:
+## New Content:
+- Spell: Toll the Dead
+- Warlock Eldritch Invocations: Agonizing Blast and Repelling Blast
+  
 # 0.2.26:
 ## Bug Fixes:
 - Ancestral Protectors

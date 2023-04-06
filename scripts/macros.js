@@ -1,5 +1,6 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
+import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
@@ -108,6 +109,7 @@ import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
+import {repellingBlast} from './macros/classFeatures/warlock/invocations/repellingBlast.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
@@ -129,6 +131,7 @@ import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
+import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
@@ -213,6 +216,7 @@ async function onMoveEffect(macroName, token, selectedAura) {
 export let macros = {
 	'aasimarRadiantSoul': aasimarRadiantSoul,
 	'acidArrow': acidArrow,
+	'agonizingBlast': agonizingBlast,
 	'ancestralProtectors': ancestralProtectors,
 	'armorModel': armorModel,
 	'armorOfAgathys': armorOfAgathys,
@@ -306,6 +310,7 @@ export let macros = {
 	'rayOfEnfeeblement': rayOfEnfeeblement,
 	'reaper': reaper,
 	'removeTemplate': removeTemplate,
+	'repellingBlast': repellingBlast,
 	'ringOfSpellStoring': ringOfSpellStoring,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,
@@ -319,6 +324,7 @@ export let macros = {
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
 	'thunderboltStrike': thunderboltStrike,
+	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,
 	'twilightSanctuary': twilightSanctuary,
 	'vampiricBite': vampiricBite,

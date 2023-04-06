@@ -75,6 +75,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Storm Sphere  
 - Tasha's Caustic Brew  
 - Tidal Wave  
+- Toll the Dead  
 - Vampiric Touch  
 - Vitriolic Sphere  
 - Wither and Bloom  
@@ -168,8 +169,10 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Divine Soul:    
 - Favored by the Gods  
 ### Warlock:  
+- Agonizing Blast  
 - Devil's Sight  
 - One with Shadows  
+- Repelling Blast  
 #### The Archfey:  
 - Fey Presence  
 - Misty Escape  
