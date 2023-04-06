@@ -1,3 +1,7 @@
+# 0.2.26:
+## Bug Fixes:
+- Ancestral Protectors
+  
 # 0.2.25:
 ## New Content:
 - Spell: Hunter's Mark

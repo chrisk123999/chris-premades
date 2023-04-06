@@ -46,6 +46,7 @@ async function sourceAttack({speaker, actor, token, character, item, args}) {
         }
     };
     await chris.createEffect(this.targets.first().actor, effectData);
+    if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.ancestralProtectors.turn', game.combat.round + '-' + game.combat.turn);
     queue.remove(this.item.uuid);
 }
 async function targetAttack({speaker, actor, token, character, item, args}) {
@@ -78,8 +79,12 @@ async function targetDamage({speaker, actor, token, character, item, args}) {
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);
 }
+async function combatEnd(origin) {
+    await origin.setFlag('chris-premades', 'feature.ancestralProtectors', '');
+}
 export let ancestralProtectors = {
     'sourceAttack': sourceAttack,
     'targetAttack': targetAttack,
-    'targetDamage': targetDamage
+    'targetDamage': targetDamage,
+    'combatEnd': combatEnd
 }
