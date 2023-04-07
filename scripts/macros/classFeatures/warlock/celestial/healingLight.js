@@ -3,7 +3,7 @@ import {queue} from '../../../../queue.js';
 export async function healingLight({speaker, actor, token, character, item, args}) {
     if (this.targets.size != 1) return;
     let queueSetup = await queue.setup(this.uuid, 'healingLight', 50);
-    if (queueSetup) return;
+    if (!queueSetup) return;
     let healingLightFeatureUses = this.item.system.uses.value + 1;
     let healingLightMenuUses = Math.min(Math.max(1, this.actor.system.abilities.cha.mod), healingLightFeatureUses);
     let lightMenu = [];
