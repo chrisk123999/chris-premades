@@ -142,7 +142,7 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         };
         let onUseString = spellData.flags['midi-qol'].onUseMacroName;
-        let appendString = '[preItemRoll]function.await chrisPremades.macros.ringOfSpellStoring.cast,[preCheckHits]function.await chrisPremades.macros.ringOfSpellStoring.attack';
+        let appendString = '[preItemRoll]function.chrisPremades.macros.ringOfSpellStoring.cast,[preCheckHits]function.chrisPremades.macros.ringOfSpellStoring.attack';
         if (onUseString === undefined) {
             spellData.flags['midi-qol'].onUseMacroName = appendString;
         } else {
@@ -151,11 +151,11 @@ async function item({speaker, actor, token, character, item, args}) {
         let onUseMacroParts = spellData.flags['midi-qol'].onUseMacroParts;
         if (!onUseMacroParts) onUseMacroParts = {'items': []};
         onUseMacroParts.items.push({
-            'macroName': 'function.await chrisPremades.macros.ringOfSpellStoring.cast',
+            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.cast',
             'option': 'preItemRoll'
         });
         onUseMacroParts.items.push({
-            'macroName': 'function.await chrisPremades.macros.ringOfSpellStoring.attack',
+            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.attack',
             'option': 'preCheckHits'
         });
         spellData.flags['midi-qol'].onUseMacroParts = onUseMacroParts;

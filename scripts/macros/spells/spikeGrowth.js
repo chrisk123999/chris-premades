@@ -31,7 +31,7 @@ async function spikeGrowthEnterLeave(data, template) {
         diceRoll.toMessage({
             rollMode: 'roll',
             speaker: {alias: name},
-            flavor: 'Spike Growth Damage'
+            flavor: 'Spike Growth'
         });
         let token = canvas.tokens.get(data.tokenId);
         await chris.applyDamage([token], diceRoll.total, 'piercing');
@@ -69,7 +69,7 @@ async function spikeGrowthStaying(data, template) {
         diceRoll.toMessage({
             rollMode: 'roll',
             speaker: {alias: name},
-            flavor: 'Spike Growth Damage'
+            flavor: 'Spike Growth'
         });
         let token = canvas.tokens.get(data.tokenId);
         await chris.applyDamage([token], diceRoll.total, 'piercing');

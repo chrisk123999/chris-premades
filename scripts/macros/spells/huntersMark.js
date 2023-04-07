@@ -53,7 +53,7 @@ async function item({speaker, actor, token, character, item, args}) {
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'function.await chrisPremades.macros.huntersMark.attack,postDamageRoll',
+                'value': 'function.chrisPremades.macros.huntersMark.attack,postDamageRoll',
                 'priority': 20
             }
         ],

@@ -1,3 +1,8 @@
+# 0.3.0:
+## Update Notes:
+- This version requires Midi-Qol version 10.0.36 or higher.
+- Updating automations from this module on actors is reccomended but technically not required.
+  
 # 0.2.28:
 ## New Content:
 - Spell: Lightning Lure
