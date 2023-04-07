@@ -1,3 +1,7 @@
+# 0.3.4:
+## Bug Fixes:
+- Fixed movement auras not properly being removed.
+  
 # 0.3.3:
 ## Bug Fixes:
 - Spirit Guardians
