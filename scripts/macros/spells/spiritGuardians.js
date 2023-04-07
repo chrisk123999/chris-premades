@@ -33,7 +33,7 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
             }
 		}
 	}
-	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
+	featureData.flags['chris-premades'].spell.castData.school = 'con';
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

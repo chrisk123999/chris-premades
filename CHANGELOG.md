@@ -1,3 +1,7 @@
+# 0.3.3:
+## Bug Fixes:
+- Spirit Guardians
+  
 # 0.3.2:
 ## Bug Fixes:
 - Healing Light
