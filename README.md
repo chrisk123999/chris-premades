@@ -59,6 +59,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Holy Weapon  
 - Hypnotic Pattern  
 - Lightning Arrow  
+- Lightning Lure  
 - Mass Cure Wounds  
 - Melf's Acid Arrow  
 - Mind Sliver  
@@ -171,6 +172,7 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Warlock:  
 - Agonizing Blast  
 - Devil's Sight  
+- Grasp of Hadar  
 - One with Shadows  
 - Repelling Blast  
 #### The Archfey:  

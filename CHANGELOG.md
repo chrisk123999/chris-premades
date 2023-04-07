@@ -1,3 +1,8 @@
+# 0.2.28:
+## New Content:
+- Spell: Lightning Lure
+- Warlock Eldritch Invocation: Grasp of Hadar
+  
 # 0.2.27:
 ## New Content:
 - Spell: Toll the Dead

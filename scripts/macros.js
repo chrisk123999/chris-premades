@@ -70,6 +70,7 @@ import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpe
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
+import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
@@ -88,6 +89,7 @@ import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiri
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
+import {lightningLure} from './macros/spells/lightningLure.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
@@ -271,6 +273,7 @@ export let macros = {
 	'feyPresence': feyPresence,
 	'focusedAim': focusedAim,
 	'formOfDread': formOfDread,
+	'graspOfHadar': graspOfHadar,
 	'graveTouched': graveTouched,
 	'grimHarvest': grimHarvest,
 	'grovelthrash': grovelthrash,
@@ -285,6 +288,7 @@ export let macros = {
 	'hybridTransformation': hybridTransformation,
 	'inspiringSmite': inspiringSmite,
 	'lightningArrow': lightningArrow,
+	'lightningLure': lightningLure,
 	'maneuvers': maneuvers,
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,
