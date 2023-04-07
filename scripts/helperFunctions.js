@@ -312,6 +312,9 @@ export let chris = {
 		let foundToken = containedTokens.find(i => i === token.id);
 		return foundToken;
 	},
+	'tokenTemplates': function _tokenTemplates(token) {
+		return game.modules.get('templatemacro').api.findContainers(token);
+	},
 	'inCombat': function _inCombat() {
 		return !(game.combat === null || game.combat === undefined || game.combat?.started === false);
 	},

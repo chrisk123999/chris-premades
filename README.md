@@ -80,6 +80,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Vampiric Touch  
 - Vitriolic Sphere  
 - Wither and Bloom  
+- Zone of Truth  
   
 ## Class Features:  
 ### Artificer:  

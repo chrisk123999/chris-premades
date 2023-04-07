@@ -1,3 +1,7 @@
+# 0.3.1:
+## New Content:
+- Zone of Truth
+  
 # 0.3.0:
 ## Update Notes:
 - This version requires Midi-Qol version 10.0.36 or higher.
