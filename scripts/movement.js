@@ -100,9 +100,9 @@ async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTo
     await socket.executeForEveryone('updateMoveTriggers', triggers);
     await socket.executeAsGM('updateGMTriggers', triggers);
 }
-async function removeTrigger(name, sourceActorUuid) {
+async function removeTrigger(name, sourceTokenID) {
     if (!triggers[name]) return;
-    triggers[name] = triggers[name].filter(spell => spell.sourceActorUuid != sourceActorUuid);
+    triggers[name] = triggers[name].filter(spell => spell.sourceTokenID != sourceTokenID);
     if (triggers[name].length === 0) delete(triggers[name]);
     await socket.executeForEveryone('updateMoveTriggers', triggers);
     await socket.executeAsGM('updateGMTriggers', triggers);
