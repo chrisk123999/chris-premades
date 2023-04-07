@@ -1,3 +1,7 @@
+# 0.3.2:
+## Bug Fixes:
+- Healing Light
+  
 # 0.3.1:
 ## New Content:
 - Spell: Zone of Truth
