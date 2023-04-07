@@ -33,8 +33,8 @@
 		"type": "module",
 		"manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
 		"compatibility": {
-			"verified": "10.0.35",
-			"minimum": "10.0.35"
+			"verified": "10.0.36",
+			"minimum": "10.0.36"
 		}
 	},
 	{
