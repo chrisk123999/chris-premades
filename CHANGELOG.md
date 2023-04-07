@@ -1,6 +1,6 @@
 # 0.3.1:
 ## New Content:
-- Zone of Truth
+- Spell: Zone of Truth
   
 # 0.3.0:
 ## Update Notes:
