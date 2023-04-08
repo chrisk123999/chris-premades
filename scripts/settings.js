@@ -130,14 +130,6 @@ export function registerSettings() {
 		'type': Object,
 		'default': {}
 	});
-	game.settings.register(moduleName, 'Movement Effect Triggers', {
-		'name': 'Movement Effect Triggers',
-		'hint': 'Used to sync the effect movement queue.',
-		'scope': 'world',
-		'config': false,
-		'type': Object,
-		'default': {}
-	});
 	game.settings.register(moduleName, 'Use Additional Compendiums', {
 		'name': 'Use Additional Compendiums',
 		'hint': 'Should the item replacer check additional compendiums?',

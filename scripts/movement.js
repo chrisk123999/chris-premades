@@ -2,10 +2,8 @@ import {chris} from './helperFunctions.js';
 import {macros} from './macros.js';
 import {socket} from './module.js';
 let triggers = {};
-let effectTriggers = {};
 export async function loadTriggers() {
     triggers = game.settings.get('chris-premades', 'Movement Triggers');
-    effectTriggers = game.settings.get('chris-premades', 'Movement Effect Triggers');
     if (game.user.isGM) {
         for (let name of Object.values(triggers)) {
             for (let spell of name) {
@@ -13,15 +11,6 @@ export async function loadTriggers() {
                 if (!effect) {
                     console.log('Chris | Removing stale movement trigger for ' + spell.macro);
                     await removeTrigger(spell.macro, spell.sourceTokenID);
-                }
-            }
-        }
-        for (let name of Object.values(effectTriggers)) {
-            for (let spell of name) {
-                let effect = await fromUuid(spell.effectUuid)
-                if (!effect) {
-                    console.log('Chris | Removing stale effect aura for ' + spell.macro);
-                    await removeEffectAura(spell.macro, spell.sourceActorUuid);
                 }
             }
         }

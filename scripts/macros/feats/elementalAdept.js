@@ -17,7 +17,7 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
     if (chris.totalDamageType(token.actor, workflow.damageDetail, 'temphp') > 0 || chris.totalDamageType(token.actor, workflow.damageDetail, 'healing') > 0) return; 
     let newDamageTotal = 0;
     let hpDamageTotal = 0;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'elementalAdept', 350);
+    let queueSetup = await queue.setup(workflow.uuid, 'elementalAdept', 350);
     if (!queueSetup) return;
     for (let i of workflow.damageRoll.terms) {
         if (validTypes.has(i.flavor.toLowerCase()) && !i.isDeterministic && !isNaN(i.total)) {
@@ -44,7 +44,7 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
         }
     }
     if (ditem.totalDamage === newDamageTotal) {
-        queue.remove(workflow.item.uuid);
+        queue.remove(workflow.uuid);
         return;
     }
     if (ditem.oldTempHP > 0) {
@@ -64,5 +64,5 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
     }
     ditem.appliedDamage = hpDamageTotal;
     ditem.totalDamage = newDamageTotal;
-    queue.remove(workflow.item.uuid);
+    queue.remove(workflow.uuid);
 }

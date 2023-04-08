@@ -6,7 +6,7 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     if (!workflow.damageRoll) return;
     if (chris.checkTrait(token.actor, 'di', 'healing')) return;
     let newHealingTotal = 0;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'beaconOfHope', 351);
+    let queueSetup = await queue.setup(workflow.uuid, 'beaconOfHope', 351);
     if (!queueSetup) return;
     for (let i = 0; workflow.damageRoll.terms.length > i; i++) {
         let flavor = workflow.damageRoll.terms[i].flavor;
@@ -24,5 +24,5 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     ditem.hpDamage = -Math.clamped(newHealingTotal, 0, maxHP - ditem.oldHP);
     ditem.newHP = Math.clamped(ditem.oldHP + newHealingTotal, 0, maxHP);
     ditem.totalDamage = newHealingTotal;
-    queue.remove(workflow.item.uuid);
+    queue.remove(workflow.uuid);
 }

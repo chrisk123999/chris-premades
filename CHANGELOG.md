@@ -1,3 +1,10 @@
+# 0.3.5:
+## Bug Fixes:
+- Elemental Adept
+- Undead Fortitude
+- Beacon of Hope
+- Death Ward
+  
 # 0.3.4:
 ## Bug Fixes:
 - Fixed movement auras not properly being removed.
