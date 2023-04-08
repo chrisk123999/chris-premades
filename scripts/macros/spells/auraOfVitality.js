@@ -6,7 +6,6 @@ export async function auraOfVitality({speaker, actor, token, character, item, ar
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Aura of Vitality Healing');
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Aura of Vitality');
-        await chrisPremades.macros.heatMetal.removed(effect);
 	}
     let effectData = {
         'label': 'Aura of Vitality',
