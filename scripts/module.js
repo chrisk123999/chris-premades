@@ -9,6 +9,7 @@ import {bab} from './babHelpers.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
+import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 export let socket;
 Hooks.once('init', async function() {
 	registerSettings();
@@ -92,6 +93,8 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
 	if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
 	if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
+	if (game.settings.get('chris-premades', 'Automatic VAE Descriptions')) Hooks.on('preCreateActiveEffect', vaeEffectDescription);
+	if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
 	if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
 	if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
 });

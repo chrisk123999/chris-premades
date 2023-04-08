@@ -27,6 +27,11 @@ async function detectThoughtsItem({speaker, actor, token, character, item, args}
 					'script': chris.functionToString(effectMacro)
 				}
 			},
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
+            }
 		}
 	};
 	let updates = {

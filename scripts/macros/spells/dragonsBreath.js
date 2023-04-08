@@ -36,6 +36,11 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
+            },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
             }
         }
     };

@@ -3,6 +3,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js'
 import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
+import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
 let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
 export function registerSettings() {
@@ -82,6 +83,44 @@ export function registerSettings() {
 				Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
 			} else {
 				Hooks.off('preCreateActiveEffect', preCreateActiveEffect);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'Automatic VAE Descriptions', {
+		'name': 'Automatic VAE Descriptions',
+		'hint': 'When enabled, this setting will automatically fill in VAE effect descriptions when possible.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('preCreateActiveEffect', vaeEffectDescription);
+			} else {
+				Hooks.off('preCreateActiveEffect', vaeEffectDescription);
+			}
+		}
+	});
+	game.settings.register(moduleName, 'No NPC VAE Descriptions', {
+		'name': 'No NPC VAE Descriptions',
+		'hint': 'If enabled, automatic VAE descriptions will ignore effects created from NPCs.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false
+	});
+	game.settings.register(moduleName, 'VAE Temporary Item Buttons', {
+		'name': 'VAE Temporary Item Buttons',
+		'hint': 'When enabled, this setting will add a button to use temporary items via VAE.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
+			} else {
+				Hooks.off('visual-active-effects.createEffectButtons', vaeTempItemButton);
 			}
 		}
 	});

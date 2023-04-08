@@ -43,6 +43,11 @@ export async function shadowBlade({speaker, actor, token, character, item, args}
 					'script': chris.functionToString(effectMacro)
 				}
 			},
+            'chris-premades': {
+                'vae': {
+                    'button': weaponData.name
+                }
+            }
 		}
 	};
 	let updates = {

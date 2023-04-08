@@ -39,6 +39,9 @@ async function item({speaker, actor, token, character, item, args}) {
                         'castLevel': this.castData.castLevel,
                         'spellSaveDC': chris.getSpellDC(this.item)
                     }
+                },
+                'vae': {
+                    'button': featureData.name
                 }
             }
         }

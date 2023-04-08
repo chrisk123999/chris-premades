@@ -34,6 +34,11 @@ export async function callLightning({speaker, actor, token, character, item, arg
 				'onDelete': {
 					'script': chris.functionToString(effectMacro)
 				}
+			},
+			'chris-premades': {
+				'vae': {
+					'button': featureData.name
+				}
 			}
 		}
 	};

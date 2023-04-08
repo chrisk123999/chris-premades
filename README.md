@@ -9,7 +9,7 @@ Additional support and feature requests can be made on my Discord server: https:
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
-| Midi-Qol | 10.0.35 |  
+| Midi-Qol | 10.0.36 |  
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
 | Compendium Folders | 2.5.7 |  
@@ -28,6 +28,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - D&D Beyond Importer  
 - Tidy5e Sheet  
 - Token Magic FX  
+- Visual Active Effects  
   
 # Automations:  
 ## Spells:  

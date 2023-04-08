@@ -42,6 +42,9 @@ async function item({speaker, actor, token, character, item, args}) {
                     'heatMetal': {
                         'targetTokenUuid': targetUuid
                     }
+                },
+                'vae': {
+                    'button': featureData.name
                 }
             }
         }

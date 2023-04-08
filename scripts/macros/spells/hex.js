@@ -84,6 +84,11 @@ async function hexItem({speaker, actor, token, character, item, args}) {
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
+            },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
             }
         }
     }

@@ -1,3 +1,10 @@
+# 0.3.6:
+## New Features:
+- Added support for Visual Active Effects:
+- Added a optional setting for temporary items to have a button in VAE.
+- Added a optional setting to automatically add descriptions to effects in VAE from the item description or Convenient Effect description. This will only apply if the description isn't set.
+- Added a optional setting to ignore effects created by NPCs when adding automatic descriptions.
+  
 # 0.3.5:
 ## Bug Fixes:
 - Elemental Adept

@@ -56,6 +56,11 @@ async function holyWeaponItem({speaker, actor, token, character, item, args}) {
                     'script': chris.functionToString(effectMacro)
                 }
             },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
+            }
         }
     };
     await chris.createEffect(targetToken.actor, effectData);

@@ -3,7 +3,6 @@ export async function preCreateActiveEffect(effect, updates, options, id) {
     if (!updates.changes || !effect.parent || !effect.origin) return;
     if (updates.changes.length === 0) return;
     if (effect.parent.constructor.name != 'Actor5e') return;
-    if (!effect.origin) return;
     let origin = fromUuidSync(effect.origin);
     if (!origin) return;
     if (origin.constructor.name != 'Item5e') return;

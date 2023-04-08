@@ -164,6 +164,14 @@
 		"compatibility": {
 			"verified": "3.4.5"
 		}
+	},
+	{
+		"id": "visual-active-effects",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/visual-active-effects/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.0.14"
+		}
 	}]
   },
   "esmodules": [
