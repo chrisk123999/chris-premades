@@ -78,6 +78,7 @@ import {healingLight} from './macros/classFeatures/warlock/celestial/healingLigh
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
 import {help} from './macros/mechanics/help/help.js';
+import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
@@ -90,6 +91,7 @@ import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/inte
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
 import {lightningLure} from './macros/spells/lightningLure.js';
+import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
@@ -283,6 +285,7 @@ export let macros = {
 	'heatMetal': heatMetal,
 	'help': help,
 	'hex': hex,
+	'hexbladesCurse': hexbladesCurse,
 	'holyWeapon': holyWeapon,
 	'hungryJaws': hungryJaws,
 	'huntersMark': huntersMark,
@@ -290,6 +293,7 @@ export let macros = {
 	'inspiringSmite': inspiringSmite,
 	'lightningArrow': lightningArrow,
 	'lightningLure': lightningLure,
+	'maddeningHex': maddeningHex,
 	'maneuvers': maneuvers,
 	'massCureWounds': massCureWounds,
 	'mirrorImage': mirrorImage,

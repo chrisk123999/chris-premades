@@ -1,8 +1,9 @@
 export function vaeEffectDescription(effect, updates, options, id) {
     if (!effect.parent) return;
     if (effect.parent.constructor.name != 'Actor5e') return;
-    if (updates.flags?.['dfreds-convenient-effects']?.description) {
-        setProperty(updates, 'flags.visual-active-effects.data.content', updates.flags['dfreds-convenient-effects']?.description);
+    let CEDescription = updates.flags?.['dfreds-convenient-effects']?.description;
+    if (CEDescription && CEDescription != 'test') {
+        setProperty(updates, 'flags.visual-active-effects.data.content', CEDescription);
     } else if (effect.origin) {
         let origin = fromUuidSync(effect.origin);
         if (!origin) return;

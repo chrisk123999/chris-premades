@@ -1,3 +1,10 @@
+# 0.3.9:
+## New Content:
+- The Hexblade Warlock: Hexblade's Curse
+- Warlock Invocations: Maddening Hex and Relentless Hex
+## Bug Fixes:
+- Ray of Enfeeblement
+  
 # 0.3.7:
 ## Bug Fixes:
 - Added missing VAE button for Aura of Vitality

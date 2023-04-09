@@ -175,7 +175,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Agonizing Blast  
 - Devil's Sight  
 - Grasp of Hadar  
+- Maddening Hex  
 - One with Shadows  
+- Relentless Hex  
 - Repelling Blast  
 #### The Archfey:  
 - Fey Presence  
@@ -189,6 +191,8 @@ Additional support and feature requests can be made on my Discord server: https:
 #### The Genie:  
 - Genie's Wrath  
 - Elemental Gift  
+#### The Hexblade:  
+- Hexblade's Curse  
 #### The Undead:  
 - Form of Dread  
 - Grave Touched  
