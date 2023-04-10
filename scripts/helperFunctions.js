@@ -347,5 +347,21 @@ export let chris = {
 	},
 	'updateTargets': function _updateTargets(targets) {
 		game.user.updateTokenTargets(targets);
+	},
+	'increaseExhaustion': async function _increaseExhaustion(actor, originUuid) {
+		let effect = actor.effects.find(eff => eff.label.includes('Exhaustion'));
+		if (!effect) {
+			await chris.addCondition(actor, 'Exhaustion 1', false, originUuid);
+			return;
+		}
+		let level = Number(effect.label.substring(11));
+		if (isNaN(level)) return;
+		if (level >= 5) {
+			await chris.addCondition(actor, 'Dead', true, originUuid);
+			return;
+		}
+		let conditionName = effect.label.substring(0, 11) + (level + 1);
+		await chris.removeEffect(effect);
+		await chris.addCondition(actor, conditionName, false, originUuid);
 	}
 };

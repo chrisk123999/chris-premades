@@ -383,6 +383,12 @@ Additional support and feature requests can be made on my Discord server: https:
 - Enlarge  
 - Invisibility  
 - Duergar Resilience  
+#### Shadar-kai Soul Monger:
+- Fey Ancestry  
+- Shadow Dagger  
+- Soul Thirst  
+- Wave of Weariness  
+- Weight of Ages  
 #### Troglodyte:  
 - Stench  
 ### Monstrosity:  

@@ -126,6 +126,7 @@ import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {slasher} from './macros/feats/slasher.js';
+import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
@@ -189,6 +190,7 @@ let monster = {
 	'shadowDemon': shadowDemon,
 	'shadowghast': shadowghast,
 	'shamblingMound': shamblingMound,
+	'soulMonger': soulMonger,
 	'sprite': sprite,
 	'stenchKow': stenchKow,
 	'succubus': succubus,
@@ -197,7 +199,8 @@ let monster = {
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm,
-	'heatedBody': fireSnake.heatedBody
+	'heatedBody': fireSnake.heatedBody,
+	'soulThirst': soulMonger.soulThirst.onHit
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
 	switch (macroName) {
