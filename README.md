@@ -59,6 +59,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Hold Person  
 - Holy Weapon  
 - Hypnotic Pattern  
+- Life Transference  
 - Lightning Arrow  
 - Lightning Lure  
 - Mass Cure Wounds  
@@ -232,6 +233,8 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Half-Elf:
 #### Mark of Detection:  
 - Deductive Intuition  
+### Half-Orc:  
+- Savage Attacks  
 ### Human:  
 #### Mark of Making:  
 - Artisan's Intuition  

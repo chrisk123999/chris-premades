@@ -92,7 +92,7 @@ function canvasReady() {
     auras = {};
     let sceneTokens = game.canvas.scene.tokens.contents;
     for (let token of sceneTokens) {
-        let flagAuras = token.actor.flags['chris-premades']?.aura;
+        let flagAuras = token.actor?.flags?.['chris-premades']?.aura;
         if (!flagAuras) continue;
         add(flagAuras, token.uuid, false);
     }

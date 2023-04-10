@@ -1,3 +1,8 @@
+# 0.3.11:
+## New Content:
+- Spell: Life Transference
+- Half-Orc: Savage Attacks
+  
 # 0.3.10:
 ## Bug Fixes:
 - Storm Sphere
