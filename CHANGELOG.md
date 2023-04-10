@@ -1,3 +1,7 @@
+# 0.3.12:
+## Bug Fixes:
+- Holy Weapon
+  
 # 0.3.11:
 ## New Content:
 - Spell: Life Transference

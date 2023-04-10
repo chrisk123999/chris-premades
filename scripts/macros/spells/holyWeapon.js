@@ -58,7 +58,7 @@ async function holyWeaponItem({speaker, actor, token, character, item, args}) {
             },
             'chris-premades': {
                 'vae': {
-                    'button': featureData.name
+                    'button': 'Holy Weapon - Burst'
                 }
             }
         }
