@@ -4,12 +4,6 @@ async function item({speaker, actor, token, character, item, args}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Sphere Bolt');
-    featureData.flags['chris-premades'] = {
-		'spell': {
-			'castData': this.castData
-		}
-	}
-	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Sphere Handler');
 	}
@@ -70,7 +64,7 @@ async function boltItem({speaker, actor, token, character, item, args}) {
     if (!effect) return;
     let castLevel = effect.flags['chris-premades']?.spell?.stormSphere?.castLevel;
     if (!castLevel) castLevel = 4;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt Attack', false);
     if (!featureData) return;
     featureData.system.damage.parts = [
         [
@@ -78,6 +72,14 @@ async function boltItem({speaker, actor, token, character, item, args}) {
             'lightning'
         ]
     ];
+    featureData.flags['chris-premades'] = {
+		'spell': {
+			'castData': {
+                'castLevel': castLevel,
+                'school': 'evo'
+            }
+		}
+	};
     let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
     let options = {
         'showFullCard': false,
@@ -92,6 +94,8 @@ async function boltItem({speaker, actor, token, character, item, args}) {
     if (!templateUuid) return;
     let template = await fromUuid(templateUuid);
     if (!template) return;
+    let chatMessage = game.messages.get(this.itemCardId);
+    if (chatMessage) await chatMessage.delete();
     let flag = this.actor.flags['midi-qol']?.ignoreNearbyFoes;
     if (!flag) this.actor.flags['midi-qol'].ignoreNearbyFoes = 1;
     let position = canvas.grid.getSnappedPosition(template.object.center.x, template.object.center.y);

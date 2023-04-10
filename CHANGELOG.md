@@ -1,3 +1,7 @@
+# 0.3.10:
+## Bug Fixes:
+- Storm Sphere
+  
 # 0.3.9:
 ## New Content:
 - The Hexblade Warlock: Hexblade's Curse
