@@ -1,3 +1,11 @@
+# 0.3.13:
+## New Monster Content:
+- Drow House Captain: Hand Crossbow
+- Drow Shadowblade: Hand Crossbow
+## Bug Fixes:
+- Holy Weapon
+- Savage Attacks
+  
 # 0.3.12:
 ## Bug Fixes:
 - Holy Weapon

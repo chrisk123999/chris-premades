@@ -373,6 +373,12 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Drow Inquisitor:  
 - Death Lance  
 - Fey Ancestry  
+#### Drow House Captain:  
+- Fey Ancestry  
+- Hand Crossbow  
+## Drow Shadowblade:  
+- Fey Ancestry  
+- Hand Crossbow  
 #### Duergar:  
 - Enlarge  
 - Invisibility  

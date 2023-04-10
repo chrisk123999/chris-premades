@@ -91,7 +91,7 @@ async function hexItem({speaker, actor, token, character, item, args}) {
                 }
             }
         }
-    }
+    };
     let updates = {
         'embedded': {
             'Item': {

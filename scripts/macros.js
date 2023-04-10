@@ -119,7 +119,6 @@ import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
-import {savageAttacks} from './macros/raceFeatures/halfOrc/savageAttacks.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
@@ -326,7 +325,6 @@ export let macros = {
 	'ringOfSpellStoring': ringOfSpellStoring,
 	'riteOfTheDawn': riteOfTheDawn,
 	'sanctuary': sanctuary,
-	'saveAttacks': savageAttacks,
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
 	'slasher': slasher,

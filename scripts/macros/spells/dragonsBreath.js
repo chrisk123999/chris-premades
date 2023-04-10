@@ -19,7 +19,7 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
         'spell': {
             'castData': this.castData
         }
-    }
+    };
     featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
     async function effectMacro () {
         await warpgate.revert(token.document, 'Dragon Breath');

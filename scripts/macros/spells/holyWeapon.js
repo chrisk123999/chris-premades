@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-async function holyWeaponItem({speaker, actor, token, character, item, args}) {
+async function item({speaker, actor, token, character, item, args}) {
     if (this.targets.size != 1) return;
     let targetToken = this.targets.first();
     async function effectMacro() {
@@ -20,17 +20,10 @@ async function holyWeaponItem({speaker, actor, token, character, item, args}) {
         let weaponData = actor.items.get(selection).toObject();
         weaponData.system.damage.parts.push([damageDice, 'radiant']);
         weaponData.system.properties.mgc = true;
-        let spellDC = chrisPremades.helpers.getSpellDC(origin);
-        let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
-        if (!featureData) return;
-        featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Holy Weapon - Burst', false);
-        featureData.effects[0].changes[0].value = 'label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
-        featureData.system.save.dc = spellDC;
         let updates = {
             'embedded': {
                 'Item': {
-                    [weaponData.name]: weaponData,
-                    [featureData.name]: featureData
+                    [weaponData.name]: weaponData
                 }
             }
         };
@@ -47,7 +40,7 @@ async function holyWeaponItem({speaker, actor, token, character, item, args}) {
         'label': 'Holy Weapon',
         'icon': this.item.img,
         'duration': {
-            'seconds': 600
+            'seconds': 3600
         },
         'origin': this.item.uuid,
         'flags': {
@@ -55,23 +48,97 @@ async function holyWeaponItem({speaker, actor, token, character, item, args}) {
                 'onCreate': {
                     'script': chris.functionToString(effectMacro)
                 }
-            },
-            'chris-premades': {
-                'vae': {
-                    'button': 'Holy Weapon - Burst'
-                }
             }
         }
     };
     await chris.createEffect(targetToken.actor, effectData);
+    let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Dismiss', false);
+    if (!featureData) return;
+    featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Holy Weapon - Dismiss', false);
+    featureData.flags['chris-premades'] = {
+        'spell': {
+            'castData': this.castData
+        }
+    };
+    async function effectMacro2() {
+        await warpgate.revert(token.document, 'Holy Weapon - Dismiss');
+    }
+    let effectData2 = {
+        'label': featureData.name,
+        'icon': this.item.img,
+        'duration': {
+            'seconds': 3600
+        },
+        'origin': this.item.uuid,
+        'changes': [
+            {
+                'key': 'flags.chris-premades.spell.holyWeapon',
+                'mode': 5,
+                'value': this.targets.first().document.uuid,
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'effectmacro': {
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro2)
+                }
+            },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
+            }
+        }
+    };
+    let updates = {
+        'embedded': {
+            'Item': {
+                [featureData.name]: featureData
+            },
+            'ActiveEffect': {
+                [featureData.name]: effectData2
+            }
+        }
+    };
+    let options = {
+        'permanent': false,
+        'name': featureData.name,
+        'description': featureData.name
+    };
+    await warpgate.mutate(this.token.document, updates, {}, options);
 }
-async function holyWeaponBurstItem({speaker, actor, token, character, item, args}) {
-    let effect = chris.findEffect(this.actor, 'Holy Weapon');
+async function dismiss({speaker, actor, token, character, item, args}) {
+    let targetTokenUuid = this.actor.flags['chris-premades']?.spell?.holyWeapon;
+    if (!targetTokenUuid) return;
+    let targetToken = await fromUuid(targetTokenUuid);
+    if (!targetToken) return;
+    let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
+    if (!featureData) return;
+    let effect = chris.findEffect(this.actor, 'Holy Weapon - Dismiss');
     if (!effect) return;
-    await effect.delete();
+    let originItem = await fromUuid(effect.origin);
+    if (!originItem) return;
+    let spellDC = chris.getSpellDC(originItem);
+    featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Holy Weapon - Burst', false);
+    featureData.effects[0].changes[0].value = 'label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
+    featureData.system.save.dc = spellDC;
+    featureData.flags['chris-premades'] = {
+        'spell': {
+            'castData': {
+                'castLevel': 5,
+                'school': originItem.system.school
+            }
+        }
+    };
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: targetToken.actor});
+    await feature.use();
+    await chris.removeEffect(effect);
+    let effect2 = chris.findEffect(targetToken.actor, 'Holy Weapon');
+    if (effect2) chris.removeEffect(effect2);
     await chris.removeCondition(this.actor, 'Concentrating');
 }
 export let holyWeapon = {
-    'item': holyWeaponItem,
-    'burst': holyWeaponBurstItem
+    'item': item,
+    'dismiss': dismiss
 }
