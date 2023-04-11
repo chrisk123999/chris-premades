@@ -1,3 +1,7 @@
+# 0.3.15:
+## New Content:
+- Spell: Bestow Curse
+  
 # 0.3.14:
 ## New Monster Content:
 - Shadar-kai Soul Monger: Fey Ancestry, Soul Thirst, Weight of Ages, Shadow Dagger, Wave of Weariness

@@ -36,6 +36,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Arms of Hadar  
 - Aura of Purity  
 - Beacon of Hope  
+- Bestow Curse  
 - Blade Ward  
 - Blight  
 - Blink  

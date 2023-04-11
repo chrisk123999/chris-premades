@@ -1,8 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function protectionFromEvilAndGood(workflow) {
-	if (workflow.targets.size != 1) return;
-	if (workflow.disadvantage === true) return;
+	if (workflow.targets.size != 1 || workflow.disadvantage) return;
 	let targetToken = workflow.targets.first();
 	let targetActor = targetToken.actor;
 	let targetEffect = chris.findEffect(targetActor, 'Protection from Evil and Good');
