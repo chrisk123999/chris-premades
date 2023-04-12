@@ -1,4 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
 export async function grimHarvest({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.length === 0 || !this.damageList) return;
     let doHealing = false;
@@ -13,6 +14,8 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
         }
     }
     if (!doHealing) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'grimHarvest', 450);
+    if (!queueSetup) return;
     let spellLevel;
     let spellSchool;
     if (this.item.type === 'spell') {
@@ -22,11 +25,20 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
         spellLevel = this.item.flags['chris-premades']?.spell?.castData?.castLevel;
         spellSchool = this.item.flags['chris-premades']?.spell?.castData?.school;
     }
-    if (!spellSchool || !spellLevel) return;
+    if (!spellSchool || !spellLevel) {
+        queue.remove(this.item.uuid);
+        return;
+    }
     let effect = chris.findEffect(this.actor, 'Grim Harvest');
-    if (!effect) return;
+    if (!effect) {
+        queue.remove(this.item.uuid);
+        return;
+    }
     let originItem = await fromUuid(effect.origin);
-    if (!originItem) return;
+    if (!originItem) {
+        queue.remove(this.item.uuid);
+        return;
+    }
     let featureData = duplicate(originItem.toObject());
     let healingFormula = spellLevel * 2;
     if (spellSchool === 'nec') healingFormula = spellLevel * 3;
@@ -47,4 +59,5 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
         'consumeSlot': false,
     };
     await MidiQOL.completeItemUse(feature, {}, options);
+    queue.remove(this.item.uuid);
 }

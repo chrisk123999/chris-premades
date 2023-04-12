@@ -1,9 +1,9 @@
 import {chris} from '../../../helperFunctions.js';
-async function allTurns(token, origin) {
+async function allTurns(token, origin, range) {
     let targetToken = game.combat.scene.tokens.get(game.combat.current.tokenId);
     if (!targetToken || targetToken?.id === token.id) return;
     let distance = chris.getDistance(token, targetToken);
-    if (distance > 10) return;
+    if (distance > range) return;
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -15,7 +15,7 @@ async function allTurns(token, origin) {
     };
     await MidiQOL.completeItemUse(origin, {}, options);
 }
-async function turnStart(origin) {
+async function effectCreation(origin) {
     let roll = await new Roll('1d8').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
@@ -25,5 +25,5 @@ async function turnStart(origin) {
 }
 export let gibbering = {
     'allTurns': allTurns,
-    'turnStart': turnStart
+    'effectCreation': effectCreation
 }
