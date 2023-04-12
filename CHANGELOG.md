@@ -1,9 +1,9 @@
-# 0.3.16:
+# 0.3.17:
 ## Bug Fixes:
 - Grim Havest
 - Gibbering Mouther: Aberrant Ground, Gibbering, Blinding Spittle 
   
-# 0.3.15:
+# 0.3.16:
 ## Bug Fixes:
 - Bestow Curse
 - Aura of Vitality
