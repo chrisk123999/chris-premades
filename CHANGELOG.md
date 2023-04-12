@@ -1,4 +1,9 @@
 # 0.3.15:
+## Bug Fixes:
+- Bestow Curse
+- Aura of Vitality
+  
+# 0.3.15:
 ## New Content:
 - Spell: Bestow Curse
   

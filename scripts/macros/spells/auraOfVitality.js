@@ -19,11 +19,11 @@ export async function auraOfVitality({speaker, actor, token, character, item, ar
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
-            }
-        },
-        'chris-premades': {
-            'vae': {
-                'button': featureData.name
+            },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
+                }
             }
         }
     };

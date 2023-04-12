@@ -106,7 +106,7 @@ async function item({speaker, actor, token, character, item, args}) {
             break;
         case 'Turn':
             let saveDC = chris.getSpellDC(this.item);
-            featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"'
+            featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"'
             break;
     }
     let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
