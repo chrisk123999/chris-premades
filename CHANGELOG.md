@@ -1,3 +1,7 @@
+# 0.3.18:
+## Bug Fixes:
+- Hexblade's Curse
+  
 # 0.3.17:
 ## Bug Fixes:
 - Grim Havest
