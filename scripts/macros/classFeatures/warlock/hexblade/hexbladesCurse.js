@@ -58,7 +58,13 @@ async function damageApplication({speaker, actor, token, character, item, args})
     queue.remove(this.item.uuid);
 }
 async function attack({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1 || !(this.item.system.actionType === 'mwak' || this.item.system.actionType === 'msak')) return;
+    let validTypes = [
+        'mwak',
+        'msak',
+        'rwak',
+        'rsak'
+    ];
+    if (this.targets.size != 1 || !validTypes.includes(this.item.system.actionType)) return;
     let targetId = this.actor.flags['chris-premades']?.feature?.hexbladesCurse;
     if (!targetId) return;
     if (this.targets.first().id != targetId) return;
