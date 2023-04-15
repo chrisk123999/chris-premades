@@ -1,4 +1,5 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
+import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSpirit.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
@@ -24,6 +25,7 @@ import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCast
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {callLightning} from './macros/spells/callLightning.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
+import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
 import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
@@ -34,6 +36,7 @@ import {cleave} from './macros/mechanics/cleave/cleave.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability/conditionVulnerability.js';
+import {constructSpirit} from './macros/monsterFeatures/constructSpirit/constructSpirit.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
@@ -137,6 +140,10 @@ import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
+import {summonAberration} from './macros/spells/summonAberration.js';
+import {summonBeast} from './macros/spells/summonBeast.js';
+import {summonCelestial} from './macros/spells/summonCelestial.js';
+import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -165,10 +172,13 @@ export async function onHitMacro(workflow) {
 	});
 }
 let monster = {
+	'aberrantSpirit': aberrantSpirit,
 	'bulette': bulette,
 	'catoblepas': catoblepas,
+	'celestialSpirit': celestialSpirit,
 	'chasme': chasme,
 	'clayGolem': clayGolem,
+	'constructSpirit': constructSpirit,
 	'corpseFlower': corpseFlower,
 	'dreamEater': dreamEater,
 	'drow': drow,
@@ -339,6 +349,10 @@ export let macros = {
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
+	'summonAberration': summonAberration,
+	'summonBeast': summonBeast,
+	'summonCelestial': summonCelestial,
+	'summonConstruct': summonConstruct,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,

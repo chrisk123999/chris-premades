@@ -10,6 +10,7 @@ import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras
 import {preCreateActiveEffect} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
+import {tashaSummon} from './utility/tashaSummon.js';
 export let socket;
 Hooks.once('init', async function() {
 	registerSettings();
@@ -21,6 +22,7 @@ Hooks.once('socketlib.ready', async function() {
 	socket.register('updateGMTriggers', updateGMTriggers);
 	socket.register('remoteAddEffectAura', effectSockets.remoteAdd);
 	socket.register('remoteRemoveEffectAura', effectSockets.remoteRemove);
+	socket.register('createCombatant', tashaSummon.createCombatant);
 });
 Hooks.once('ready', async function() {
 	if (game.user.isGM) {
@@ -54,6 +56,7 @@ Hooks.once('ready', async function() {
 			oldVersion = 3;
 		}
 		await setupJournalEntry();
+		await tashaSummon.setupFolder();
 		if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
 		Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
 		if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
@@ -98,10 +101,6 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
 	if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
 });
-async function test(token) {
-	console.log(this);
-	console.log(token);
-}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
@@ -109,5 +108,5 @@ globalThis['chrisPremades'] = {
 	tokenMove,
 	effectAuras,
 	bab,
-	test
+	tashaSummon
 }

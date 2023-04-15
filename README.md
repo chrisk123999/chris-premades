@@ -77,6 +77,10 @@ Additional support and feature requests can be made on my Discord server: https:
 - Spirit Guardians  
 - Spirit Shroud  
 - Storm Sphere  
+- Summon Aberration  
+- Summon Beast  
+- Summon Celestial  
+- Summon Construct  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  

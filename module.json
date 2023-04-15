@@ -257,6 +257,20 @@
 		"path": "packs/cpr-feats.db",
 		"type": "Item",
 		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Summons",
+		"label": "CPR Summons",
+		"path": "packs/cpr-summons.db",
+		"type": "Actor",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Summon Features",
+		"label": "CPR Summon Features",
+		"path": "packs/cpr-summon-features.db",
+		"type": "Item",
+		"module": "chris-premades"
 	  }
   ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",

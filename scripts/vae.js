@@ -1,3 +1,4 @@
+import {chris} from './helperFunctions.js';
 export function vaeEffectDescription(effect, updates, options, id) {
     if (!effect.parent) return;
     if (effect.parent.constructor.name != 'Actor5e') return;
@@ -24,11 +25,20 @@ export function vaeEffectDescription(effect, updates, options, id) {
 export async function vaeTempItemButton(effect, buttons) {
     let name = effect.flags['chris-premades']?.vae?.button;
     if (!name) return;
-    buttons.push({
-        'label': 'Use: ' + name,
-        'callback': async function(){
-            let item = effect.parent.items.getName(name);
-            if (item) await item.use();
-        }
-    });
+    if (name === 'Dismiss Summon') {
+        buttons.push({
+            'label': name,
+            'callback': async function(){
+                await chris.removeEffect(effect);
+            }
+        });
+    } else {
+        buttons.push({
+            'label': 'Use: ' + name,
+            'callback': async function(){
+                let item = effect.parent.items.getName(name);
+                if (item) await item.use();
+            }
+        });
+    }
 }

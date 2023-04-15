@@ -1,3 +1,11 @@
+# 0.3.20:
+## New Content:
+- Spells: Summon Aberration, Summon Beast, Summon Celestial, Summon Construct
+## Bug Fixes:
+- Maneuver: Bait and Switch
+## Other Notes:
+- Other Tasha's Summoning spells will be added soon.  As well as a summoning animation.
+  
 # 0.3.19:
 ## Bug Fixes:
 - Hexblade's Curse
