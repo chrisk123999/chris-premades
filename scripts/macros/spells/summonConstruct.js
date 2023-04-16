@@ -45,10 +45,18 @@ export async function summonConstruct({speaker, actor, token, character, item, a
         'embedded': {
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
-                [slamData.name]: slamData
+                [slamData.name]: slamData,
+                'Configure Images': warpgate.CONST.DELETE
             }
         }
     };
+    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
+    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     switch (selection) {
         case 'Clay':
             let beserkLashingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Berserk Lashing (Clay Only)', false);

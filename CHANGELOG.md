@@ -1,3 +1,8 @@
+# 0.3.21:
+## Update Notes:
+- Automatic import and updates to Tasha summon actors is now an optional setting.
+- Added a way to customize the summon avatars and images.
+  
 # 0.3.20:
 ## New Content:
 - Spells: Summon Aberration, Summon Beast, Summon Celestial, Summon Construct

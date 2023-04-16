@@ -42,10 +42,18 @@ export async function summonAberration({speaker, actor, token, character, item, 
         },
         'embedded': {
             'Item': {
-                [multiAttackFeatureData.name]: multiAttackFeatureData
+                [multiAttackFeatureData.name]: multiAttackFeatureData,
+                'Configure Images': warpgate.CONST.DELETE
             }
         }
     };
+    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
+    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     switch (selection) {
         case 'Beholderkin':
             let eyeRayData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Eye Ray (Beholderkin Only)', false);

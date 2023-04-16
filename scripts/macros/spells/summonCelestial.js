@@ -44,10 +44,18 @@ export async function summonCelestial({speaker, actor, token, character, item, a
         'embedded': {
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
-                [healingTouchData.name]: healingTouchData
+                [healingTouchData.name]: healingTouchData,
+                'Configure Images': warpgate.CONST.DELETE
             }
         }
     };
+    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
+    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     switch (selection) {
         case 'Avenger':
             let radiantBowData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Radiant Bow (Avenger Only)', false);

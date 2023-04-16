@@ -43,10 +43,18 @@ export async function summonBeast({speaker, actor, token, character, item, args}
         'embedded': {
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
-                [maulData.name]: maulData
+                [maulData.name]: maulData,
+                'Configure Images': warpgate.CONST.DELETE
             }
         }
     };
+    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
+    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     switch (selection) {
         case 'Air':
             let flybyData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Flyby (Air Only)', false);

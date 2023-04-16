@@ -3,6 +3,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js'
 import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
+import {tashaSummon} from './utility/tashaSummon.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
 let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
@@ -44,6 +45,17 @@ export function registerSettings() {
 			} else if (game.user.isGM) {
 				Hooks.off('updateToken', tokenMoved);
 			}
+		}
+	});
+	game.settings.register(moduleName, 'Tasha Actors', {
+		'name': 'Keep Tasha Actors Updated',
+		'hint': 'This setting will keep the Tasha\'s Cauldron Of Everything actors from this module updated in the sidebar.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': async value => {
+			if (value && game.user.isGM) await tashaSummon.setupFolder();
 		}
 	});
 	game.settings.register(moduleName, 'Effect Auras', {
