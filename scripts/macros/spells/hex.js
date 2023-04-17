@@ -120,6 +120,8 @@ async function hexItem({speaker, actor, token, character, item, args}) {
 }
 async function hexAttack({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1) return;
+    let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
+    if (!validTypes.includes(this.item.system.actionType)) return;
     let sourceActor = this.actor;
     let hexedTarget = sourceActor.flags['chris-premades']?.spell?.hex;
     let targetToken = this.hitTargets.first();

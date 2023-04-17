@@ -45,7 +45,7 @@ async function turnStart(token, actor) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Bloodlust', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bloodlust');
     if (!featureData) return;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: token.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
 async function transformation({speaker, actor, token, character, item, args}) {
@@ -145,6 +145,11 @@ async function transformation({speaker, actor, token, character, item, args}) {
                 'onDelete': {
 					'script': chris.functionToString(effectMacro)
 				}
+            },
+            'visual-active-effects': {
+                'data': {
+                    'content': this.item.system.description.value
+                }
             }
         }
     }

@@ -1,3 +1,9 @@
+# 0.3.22:
+## Bug Fixes:
+- Hex
+- Hybrid Transformation
+- Predatory Strike
+  
 # 0.3.21:
 ## Update Notes:
 - Automatic import and updates to Tasha summon actors is now an optional setting.
