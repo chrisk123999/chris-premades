@@ -14,7 +14,7 @@ export async function sanctuary(workflow) {
     if (invalidTypes.includes(workflow.item.system.target.type)) return;
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
-    if (targetToken.document.disposition === this.token.document.disposition) return;
+    if (targetToken.document.disposition === workflow.token.document.disposition) return;
     let targetActor = targetToken.actor;
     let targetEffect = chris.findEffect(targetActor, 'Sanctuary');
     if (!targetEffect) return;
