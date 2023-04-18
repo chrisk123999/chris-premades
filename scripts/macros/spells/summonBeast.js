@@ -16,9 +16,10 @@ export async function summonBeast({speaker, actor, token, character, item, args}
     maulData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack);
     maulData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula;
+    let name = 'Bestial Spirit (' + selection + ')';
     let updates = {
         'actor': {
-            'name': 'Bestial Spirit (' + selection + ')',
+            'name': name,
             'system': {
                 'details': {
                     'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
@@ -29,16 +30,12 @@ export async function summonBeast({speaker, actor, token, character, item, args}
                     }
                 }
             },
-            'flags': {
-                'chris-premades': {
-                    'tashaSummon': {
-                        'scaling': this.item.system.save.scaling
-                    }
-                }
+            'prototypeToken': {
+                'name': name
             }
         },
         'token': {
-            'name': 'Bestial Spirit (' + selection + ')'
+            'name': name
         },
         'embedded': {
             'Item': {

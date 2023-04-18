@@ -1,3 +1,13 @@
+# 0.3.23:
+## New Content:
+- Spell: Summon Elemental
+## Bug Fixes:
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Hybrid Transformation
+  
 # 0.3.22:
 ## Bug Fixes:
 - Hex

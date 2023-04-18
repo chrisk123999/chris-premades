@@ -11,9 +11,10 @@ export async function summonAberration({speaker, actor, token, character, item, 
     let attacks = Math.floor(this.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let hpFormula = 40 + ((this.castData.castLevel - 4) * 10);
+    let name = 'Aberrant Spirit (' + selection + ')';
     let updates = {
         'actor': {
-            'name': 'Aberrant Spirit (' + selection + ')',
+            'name': name,
             'system': {
                 'details': {
                     'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
@@ -29,16 +30,12 @@ export async function summonAberration({speaker, actor, token, character, item, 
                     }
                 }
             },
-            'flags': {
-                'chris-premades': {
-                    'tashaSummon': {
-                        'scaling': this.item.system.save.scaling
-                    }
-                }
+            'prototypeToken': {
+                'name': name
             }
         },
         'token': {
-            'name': 'Aberrant Spirit (' + selection + ')'
+            'name': name
         },
         'embedded': {
             'Item': {

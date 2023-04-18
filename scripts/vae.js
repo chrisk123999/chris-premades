@@ -2,21 +2,15 @@ import {chris} from './helperFunctions.js';
 export function vaeEffectDescription(effect, updates, options, id) {
     if (!effect.parent) return;
     if (effect.parent.constructor.name != 'Actor5e') return;
-    let CEDescription = updates.flags?.['dfreds-convenient-effects']?.description;
-    if (CEDescription && CEDescription != 'test') {
-        setProperty(updates, 'flags.visual-active-effects.data.content', CEDescription);
-    } else if (effect.origin) {
-        let origin = fromUuidSync(effect.origin);
-        if (!origin) return;
-        if (origin.constructor.name != 'Item5e') return;
-        if (!updates.flags?.['visual-active-effects']?.data?.content) {
-            if (game.settings.get('chris-premades', 'No NPC VAE Descriptions')) {
-                if (origin.actor?.type === 'npc' && origin.actor.id != effect.parent.id) return;
-            }
-            setProperty(updates, 'flags.visual-active-effects.data.content', origin.system.description.value);
-        } else {
-            return;
+    if (!effect.origin) return;
+    let origin = fromUuidSync(effect.origin);
+    if (!origin) return;
+    if (origin.constructor.name != 'Item5e') return;
+    if (!updates.flags?.['visual-active-effects']?.data?.content) {
+        if (game.settings.get('chris-premades', 'No NPC VAE Descriptions')) {
+            if (origin.actor?.type === 'npc' && origin.actor.id != effect.parent.id) return;
         }
+        setProperty(updates, 'flags.visual-active-effects.data.content', origin.system.description.value);
     } else {
         return;
     }

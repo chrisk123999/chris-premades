@@ -92,7 +92,7 @@ async function transformation({speaker, actor, token, character, item, args}) {
         {
             'key': 'system.traits.dr.custom',
             'mode': 0,
-            'value': 'Non-Silver Physical',
+            'value': 'Non-Magical Damage',
             'priority': 20
         },
         {

@@ -15,9 +15,10 @@ export async function summonCelestial({speaker, actor, token, character, item, a
     healingTouchData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Healing Touch (Celestial Spirit)');
     healingTouchData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula = 40 + ((this.castData.castLevel - 5) * 10);
+    let name = 'Celestial Spirit (' + selection + ')';
     let updates = {
         'actor': {
-            'name': 'Celestial Spirit (' + selection + ')',
+            'name': name,
             'system': {
                 'details': {
                     'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
@@ -30,16 +31,12 @@ export async function summonCelestial({speaker, actor, token, character, item, a
                     }
                 }
             },
-            'flags': {
-                'chris-premades': {
-                    'tashaSummon': {
-                        'scaling': this.item.system.save.scaling
-                    }
-                }
+            'prototypeToken': {
+                'name': name
             }
         },
         'token': {
-            'name': 'Celestial Spirit (' + selection + ')'
+            'name': name
         },
         'embedded': {
             'Item': {

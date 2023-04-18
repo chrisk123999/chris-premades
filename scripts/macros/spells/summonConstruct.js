@@ -16,9 +16,10 @@ export async function summonConstruct({speaker, actor, token, character, item, a
     slamData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack);
     slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula = 40 + ((this.castData.castLevel - 4) * 15);
+    let name = 'Construct Spirit (' + selection + ')';
     let updates = {
         'actor': {
-            'name': 'Construct Spirit (' + selection + ')',
+            'name': name,
             'system': {
                 'details': {
                     'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
@@ -31,16 +32,12 @@ export async function summonConstruct({speaker, actor, token, character, item, a
                     }
                 }
             },
-            'flags': {
-                'chris-premades': {
-                    'tashaSummon': {
-                        'scaling': this.item.system.save.scaling
-                    }
-                }
+            'prototypeToken': {
+                'name': name
             }
         },
         'token': {
-            'name': 'Construct Spirit (' + selection + ')'
+            'name': name
         },
         'embedded': {
             'Item': {

@@ -144,6 +144,7 @@ import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
+import {summonElemental} from './macros/spells/summonElemental.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -353,6 +354,7 @@ export let macros = {
 	'summonBeast': summonBeast,
 	'summonCelestial': summonCelestial,
 	'summonConstruct': summonConstruct,
+	'summonElemental': summonElemental,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,

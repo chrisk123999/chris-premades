@@ -17,18 +17,21 @@ async function setupFolder() {
         let folderActor = folder.contents.find(act => act.name === actor.name);
         let avatarImg;
         let tokenImg;
+        let imageFlags;
         if (folderActor) {
             let folderVersion = folderActor.flags['chris-premades']?.version;
             let documentVersion = actor.flags['chris-premades']?.version;
             if (folderVersion && folderVersion === documentVersion) continue;
             avatarImg = folderActor.img;
             tokenImg = folderActor.prototypeToken.texture.src;
+            imageFlags = folderActor.flags['chris-premades']?.summon;
             await folderActor.delete();
         }
         let actorData = actor.toObject();
         actorData.folder = folder.id;
         if (avatarImg) actorData.img = avatarImg;
         if (tokenImg) actorData.prototypeToken.texture.src = tokenImg;
+        if (imageFlags) actorData.flags['chris-premades'].summon = imageFlags;
         await Actor.create(actorData);
     }
 }
