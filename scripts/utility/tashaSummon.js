@@ -1,5 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
+import {queue} from '../queue.js';
 async function setupFolder() {
     let folder = game.folders.getName('Chris Premades');
     if (!folder) {
@@ -130,9 +131,29 @@ async function createCombatant (tokenId, actorId, sceneId, initiative) {
         'initiative': initiative
     }]);
 }
+async function meleeAttack({speaker, actor, token, character, item, args}) {
+    let attackBonus = this.actor.flags['chris-premades']?.summon?.attackBonus?.melee;
+    if (!attackBonus) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'tashaMeleeAttack', 50);
+    if (!queueSetup) return;
+    let attackRoll = await chris.addToRoll(this.attackRoll, attackBonus);
+    await this.setAttackRoll(attackRoll);
+    queue.remove(this.item.uuid);
+}
+async function rangedAttack({speaker, actor, token, character, item, args}) {
+    let attackBonus = this.actor.flags['chris-premades']?.summon?.attackBonus?.ranged;
+    if (!attackBonus) return;
+    let queueSetup = await queue.setup(this.item.uuid, 'tashaRangedAttack', 50);
+    if (!queueSetup) return;
+    let attackRoll = await chris.addToRoll(this.attackRoll, attackBonus);
+    await this.setAttackRoll(attackRoll);
+    queue.remove(this.item.uuid);
+}
 export let tashaSummon = {
     'setupFolder': setupFolder,
     'getCR': getCR,
     'spawn': spawn,
-    'createCombatant': createCombatant
+    'createCombatant': createCombatant,
+    'meleeAttack': meleeAttack,
+    'rangedAttack': rangedAttack
 };

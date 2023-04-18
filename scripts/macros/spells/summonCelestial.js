@@ -33,6 +33,16 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             },
             'prototypeToken': {
                 'name': name
+            },
+            'flags': {
+                'chris-premades': {
+                    'summon': {
+                        'attackBonus': {
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.rsak.attack)
+                        }
+                    }
+                }
             }
         },
         'token': {
@@ -58,7 +68,6 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             let radiantBowData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Radiant Bow (Avenger Only)', false);
             if (!radiantBowData) return;
             radiantBowData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Radiant Bow (Avenger Only)');
-            radiantBowData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.rsak.attack);
             updates.embedded.Item[radiantBowData.name] = radiantBowData;
             updates.actor.system.attributes.ac = {
                 'flat': 11 + this.castData.castLevel

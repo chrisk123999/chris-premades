@@ -13,7 +13,6 @@ export async function summonConstruct({speaker, actor, token, character, item, a
     let slamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Slam (Construct Spirit)', false);
     if (!slamData) return;
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Construct Spirit)');
-    slamData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack);
     slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula = 40 + ((this.castData.castLevel - 4) * 15);
     let name = 'Construct Spirit (' + selection + ')';
@@ -29,11 +28,26 @@ export async function summonConstruct({speaker, actor, token, character, item, a
                         'formula': hpFormula,
                         'max': hpFormula,
                         'value': hpFormula
+                    },
+                    'attributes': {
+                        'ac': {
+                            'flat': 13 + this.castData.castLevel
+                        }
                     }
                 }
             },
             'prototypeToken': {
                 'name': name
+            },
+            'flags': {
+                'chris-premades': {
+                    'summon': {
+                        'attackBonus': {
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                        }
+                    }
+                }
             }
         },
         'token': {
@@ -59,7 +73,6 @@ export async function summonConstruct({speaker, actor, token, character, item, a
             let beserkLashingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Berserk Lashing (Clay Only)', false);
             if (!beserkLashingData) return;
             beserkLashingData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Berserk Lashing (Clay Only)');
-            beserkLashingData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.rsak.attack);
             updates.embedded.Item[beserkLashingData.name] = beserkLashingData;
             break;
         case 'Metal':

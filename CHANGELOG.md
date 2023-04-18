@@ -1,3 +1,12 @@
+# 0.3.24:
+## Bug Fixes:
+- Sanctuary
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Elemental
+  
 # 0.3.23:
 ## New Content:
 - Spell: Summon Elemental

@@ -13,7 +13,6 @@ export async function summonElemental({speaker, actor, token, character, item, a
     let slamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Slam (Elemental Spirit)', false);
     if (!slamData) return;
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Elemental Spirit)');
-    slamData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack);
     slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula = 50 + ((this.castData.castLevel - 4) * 10);
     let name = 'Elemental Spirit (' + selection + ')';
@@ -29,11 +28,26 @@ export async function summonElemental({speaker, actor, token, character, item, a
                         'formula': hpFormula,
                         'max': hpFormula,
                         'value': hpFormula
+                    },
+                    'attributes': {
+                        'ac': {
+                            'flat': 11 + this.castData.castLevel
+                        }
                     }
                 }
             },
             'prototypeToken': {
                 'name': name
+            },
+            'flags': {
+                'chris-premades': {
+                    'summon': {
+                        'attackBonus': {
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                        }
+                    }
+                }
             }
         },
         'token': {

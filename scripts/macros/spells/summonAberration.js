@@ -32,6 +32,16 @@ export async function summonAberration({speaker, actor, token, character, item, 
             },
             'prototypeToken': {
                 'name': name
+            },
+            'flags': {
+                'chris-premades': {
+                    'summon': {
+                        'attackBonus': {
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.int.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.int.mod + Number(this.actor.system.bonuses.rsak.attack)
+                        }
+                    }
+                }
             }
         },
         'token': {
@@ -56,7 +66,6 @@ export async function summonAberration({speaker, actor, token, character, item, 
             let eyeRayData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Eye Ray (Beholderkin Only)', false);
             if (!eyeRayData) return;
             eyeRayData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Eye Ray (Beholderkin Only)');
-            eyeRayData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.int.mod + Number(this.actor.system.bonuses.rsak.attack);
             eyeRayData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
             updates.embedded.Item[eyeRayData.name] = eyeRayData;
             updates.actor.system.attributes.movement = {
@@ -69,7 +78,6 @@ export async function summonAberration({speaker, actor, token, character, item, 
             let clawsData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Claws (Slaad Only)', false);
             if (!clawsData) return;
             clawsData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Claws (Slaad Only)');
-            clawsData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.int.mod + Number(this.actor.system.bonuses.msak.attack);
             clawsData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
             updates.embedded.Item[clawsData.name] = clawsData;
             let regenerationData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Regeneration (Slaad Only)', false);
@@ -81,7 +89,6 @@ export async function summonAberration({speaker, actor, token, character, item, 
             let slamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Psychic Slam (Star Spawn Only)', false);
             if (!slamData) return;
             slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Psychic Slam (Star Spawn Only)');
-            slamData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.int.mod + Number(this.actor.system.bonuses.msak.attack);
             slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
             updates.embedded.Item[slamData.name] = slamData;
             let auraData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Whispering Aura (Star Spawn Only)', false);

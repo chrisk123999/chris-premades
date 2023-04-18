@@ -13,7 +13,6 @@ export async function summonBeast({speaker, actor, token, character, item, args}
     let maulData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Maul (Bestial Spirit)', false);
     if (!maulData) return;
     maulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Maul (Bestial Spirit)');
-    maulData.system.attackBonus = chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack);
     maulData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     let hpFormula;
     let name = 'Bestial Spirit (' + selection + ')';
@@ -32,6 +31,16 @@ export async function summonBeast({speaker, actor, token, character, item, args}
             },
             'prototypeToken': {
                 'name': name
+            },
+            'flags': {
+                'chris-premades': {
+                    'summon': {
+                        'attackBonus': {
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                        }
+                    }
+                }
             }
         },
         'token': {
