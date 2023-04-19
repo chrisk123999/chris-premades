@@ -31,7 +31,7 @@ async function item({speaker, actor, token, character, item, args}) {
             let uses = Number(item.system.uses?.value || 0);
             let max = Number(item.system.uses?.max || 0);
             if (max > 0 && uses === 0) hasUses = false;
-            if (mode === 'atwill' || mode === 'innate' || mode === 'pact') prepared = true;
+            if (mode === 'atwill' || mode === 'innate' || mode === 'pact' || mode === 'always') prepared = true;
             if (item.type === 'spell' && item.system.level > 0 && 5 - storedSpellLevels >= item.system.level && prepared && hasUses) generatedMenu.push(item);
         });
         if (generatedMenu.length === 0) {

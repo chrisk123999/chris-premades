@@ -1,3 +1,7 @@
+# 0.3.27:
+## Bug Fixes:
+- Ring of Spell Storing
+  
 # 0.3.26:
 ## Bug Fixes:
 - Synthetic items will now auto-roll damage to prevent errors.
