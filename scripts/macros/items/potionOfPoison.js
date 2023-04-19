@@ -39,6 +39,10 @@ async function item({speaker, actor, token, character, item, args}) {
             'versatile': false,
             'consumeResource': false,
             'consumeSlot': false,
+            'workflowOptions': {
+                'autoRollDamage': 'always',
+                'autoFastDamage': true
+            }
         };
         let feature = new CONFIG.Item.documentClass(featureData, {parent: targetActor});
         let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);

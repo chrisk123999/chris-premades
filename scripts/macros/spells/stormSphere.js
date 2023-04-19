@@ -89,6 +89,10 @@ async function boltItem({speaker, actor, token, character, item, args}) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let templateUuid = effect.flags['chris-premades']?.spell?.stormSphere?.templateUuid;
     if (!templateUuid) return;

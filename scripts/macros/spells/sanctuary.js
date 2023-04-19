@@ -33,6 +33,10 @@ export async function sanctuary(workflow) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let queueSetup = await queue.setup(workflow.item.uuid, 'sanctuary', 48);
     if (!queueSetup) return;

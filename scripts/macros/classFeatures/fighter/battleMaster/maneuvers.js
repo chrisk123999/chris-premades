@@ -87,6 +87,10 @@ async function goadingAttack({speaker, actor, token, character, item, args}) {
             'versatile': false,
             'consumeResource': false,
             'consumeSlot': false,
+            'workflowOptions': {
+                'autoRollDamage': 'always',
+                'autoFastDamage': true
+            }
         };
         await chris.removeEffect(effect);
         await MidiQOL.completeItemUse(feature, {}, options);
@@ -134,6 +138,10 @@ async function lungingAttack({speaker, actor, token, character, item, args}) {
     let weapon = new CONFIG.Item.documentClass(weaponData, {parent: this.actor});
     let options = {
         'targetUuids': [this.targets.first().document.uuid],
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(weapon, {}, options);
 }

@@ -66,7 +66,11 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
 		'configureDialog': false,
 		'versatile': false,
 		'consumeResource': false,
-		'consumeSlot': false
+		'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
 	};
 	await MidiQOL.completeItemUse(areaFeature, {}, options);
 	if (effect) effect.delete();

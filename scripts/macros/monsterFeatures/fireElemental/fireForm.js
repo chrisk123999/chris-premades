@@ -17,6 +17,10 @@ export async function fireForm(workflow, targetToken) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
 }

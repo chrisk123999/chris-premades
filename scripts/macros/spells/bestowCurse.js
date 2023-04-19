@@ -118,6 +118,10 @@ async function item({speaker, actor, token, character, item, args}) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
     let targetEffect = chris.findEffect(this.targets.first().actor, 'Bestow Curse - ' + selection);

@@ -9,6 +9,10 @@ async function turnStart(token, actor) {
 		'versatile': false,
 		'consumeResource': false,
 		'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
 	};
     let levels = actor.classes['blood-hunter'].system.levels
     let bonusHealth = 0;

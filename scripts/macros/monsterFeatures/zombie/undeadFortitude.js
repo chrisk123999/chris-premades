@@ -23,6 +23,10 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (featureWorkflow.failedSaves.size === 1) {

@@ -117,6 +117,10 @@ async function pulseItem({speaker, actor, token, character, item, args}) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
     let effectData = {
@@ -165,6 +169,10 @@ async function dialogue(token, actor, effect, origin) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let heatMetalWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
     if (heatMetalWorkflow.failedSaves.size != 0 && selection != 'unable') {

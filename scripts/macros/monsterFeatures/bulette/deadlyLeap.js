@@ -56,6 +56,10 @@ export async function deadlyLeap({speaker, actor, token, character, item, args})
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     if (dexSaves.length > 0) await MidiQOL.completeItemUse(areaFeature, {}, options);
     options.targetUuids = strSaves;

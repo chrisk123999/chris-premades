@@ -12,6 +12,10 @@ async function blinkTurnStart(token, actor, origin, effect) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
     await effect.delete();

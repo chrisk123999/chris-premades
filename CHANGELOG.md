@@ -1,3 +1,7 @@
+# 0.3.26:
+## Bug Fixes:
+- Synthetic items will now auto-roll damage to prevent errors.
+  
 # 0.3.25:
 ## Bug Fixes:
 - Sanctuary

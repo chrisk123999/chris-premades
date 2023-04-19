@@ -75,6 +75,10 @@ async function inZone(token, template) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
     if (spellWorkflow.failedSaves.size != 1) return;

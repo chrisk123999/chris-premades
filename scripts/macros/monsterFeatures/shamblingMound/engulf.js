@@ -21,6 +21,10 @@ export async function engulf(origin, token, actor) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let feature = new CONFIG.Item.documentClass(featureData, {parent: origin.actor});
     await MidiQOL.completeItemUse(feature, {}, options);

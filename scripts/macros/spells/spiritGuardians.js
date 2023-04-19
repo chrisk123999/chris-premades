@@ -42,6 +42,10 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;

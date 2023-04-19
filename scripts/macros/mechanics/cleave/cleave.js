@@ -80,6 +80,10 @@ export async function cleave(workflow) {
         'versatile': false,
         'consumeResource': false,
         'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
     };
     await MidiQOL.completeItemUse(weaponAttack, {}, options);
 }
