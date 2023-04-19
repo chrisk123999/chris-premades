@@ -29,10 +29,8 @@ export async function summonConstruct({speaker, actor, token, character, item, a
                         'max': hpFormula,
                         'value': hpFormula
                     },
-                    'attributes': {
-                        'ac': {
-                            'flat': 13 + this.castData.castLevel
-                        }
+                    'ac': {
+                        'flat': 13 + this.castData.castLevel
                     }
                 }
             },

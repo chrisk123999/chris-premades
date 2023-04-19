@@ -1,3 +1,8 @@
+# 0.3.28:
+## Bug Fixes:
+- Summon Construct
+- Summon Elemental
+  
 # 0.3.27:
 ## Bug Fixes:
 - Ring of Spell Storing
