@@ -20,7 +20,7 @@ export async function summonFey({speaker, actor, token, character, item, args}){
     shortSwordData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
     shortSwordData.name = 'Shortsword';
     let hpFormula = 30 + ((this.castData.castLevel - 3) * 10);
-    let name = 'Elemental Spirit (' + selection + ')';
+    let name = 'Fey Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

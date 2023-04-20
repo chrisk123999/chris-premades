@@ -1,3 +1,7 @@
+# 0.3.30:
+## Bug Fixes:
+- Summon Fey
+  
 # 0.3.29:
 ## New Content:
 - Summon Fey
