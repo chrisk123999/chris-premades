@@ -129,6 +129,7 @@ import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
+import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {slasher} from './macros/feats/slasher.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
@@ -346,6 +347,7 @@ export let macros = {
 	'sanctuary': sanctuary,
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
+	'sickeningRadiance': sickeningRadiance,
 	'slasher': slasher,
 	'spikeGrowth': spikeGrowth,
 	'spiritGuardians': spiritGuardians,
