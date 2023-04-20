@@ -1,5 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 async function darknessItem({speaker, actor, token, character, item, args}) {
+	if (!this.templateId) return;
     let template = canvas.scene.collections.templates.get(this.templateId);
     if (!template) return;
     await template.setFlag('chris-premades', 'spell.darkness', true);

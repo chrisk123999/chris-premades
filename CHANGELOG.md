@@ -1,3 +1,10 @@
+# 0.3.29:
+## New Content:
+- Summon Fey
+## Bug Fixes:
+- Summon Elemental
+- Darkness
+  
 # 0.3.28:
 ## Bug Fixes:
 - Summon Construct

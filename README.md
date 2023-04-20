@@ -82,6 +82,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Celestial  
 - Summon Construct  
 - Summon Elemental  
+- Summon Fey  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  

@@ -1,7 +1,7 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
 export async function summonElemental({speaker, actor, token, character, item, args}){
-    let selection = await chris.dialog('What type?', [['Air ', 'Air'], ['Earth', 'Earth'], ['Fire', 'Fire'], ['Water', 'Water']]);
+    let selection = await chris.dialog('What type?', [['Air', 'Air'], ['Earth', 'Earth'], ['Fire', 'Fire'], ['Water', 'Water']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Elemental Spirit');
     if (!sourceActor) return;
