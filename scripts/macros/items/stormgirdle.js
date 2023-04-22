@@ -11,7 +11,7 @@ async function stormAvatar({speaker, actor, token, character, item, args}) {
 }
 async function item({speaker, actor, token, character, item, args}) {
 	let level = this.actor.flags['chris-premades']?.item?.stormgirdle?.level;
-	if (!level) return;
+	if (level === undefined) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Storm Avatar Lightning', false);
     if (!featureData) return;
     let diceNumber = 3 + level;

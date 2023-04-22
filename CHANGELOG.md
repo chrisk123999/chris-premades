@@ -1,3 +1,9 @@
+# 0.3.31:
+## Bug Fixes:
+- Regeneration
+- Dragon Vessel
+- Stormgirdle
+  
 # 0.3.30:
 ## Bug Fixes:
 - Summon Fey
