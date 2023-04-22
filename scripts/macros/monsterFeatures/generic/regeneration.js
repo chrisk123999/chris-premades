@@ -1,3 +1,3 @@
 export async function regeneration(actor, origin) {
-    if (actor.system.attriburtes.hp.value != 0) await origin.use();
+    if (actor.system.attributes.hp.value != 0) await origin.use();
 }

@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 export async function dragonVessel({speaker, actor, token, character, item, args}) {
 	let level = this.actor.flags['chris-premades']?.item?.dragonVessel?.level;
-	if (!level) return;
+	if (level === undefined) return;
     let options = [
         ['Ale', false],
         ['Olive Oil', false],

@@ -66,6 +66,7 @@ import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination
 import {explodingHeals} from './macros/mechanics/explodingHeals/explodingHeals.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
+import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
@@ -145,6 +146,7 @@ import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
+import {summonFey} from './macros/spells/summonFey.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -158,8 +160,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
-import {summonFey} from './macros/spells/summonFey.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	workflow.targets.forEach(async token => {
@@ -189,6 +189,7 @@ let monster = {
 	'dybbuk': dybbuk,
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
+	'feySpirit': feySpirit,
 	'fireElemental': fireElemental,
 	'fireSnake': fireSnake,
 	'gallowsSpeaker': gallowsSpeaker,
@@ -209,8 +210,7 @@ let monster = {
 	'stenchKow': stenchKow,
 	'succubus': succubus,
 	'troglodyte': troglodyte,
-	'zombie': zombie,
-	'feySpirit': feySpirit
+	'zombie': zombie
 }
 let onHit = {
 	'fireForm': fireElemental.fireForm,
@@ -358,6 +358,7 @@ export let macros = {
 	'summonCelestial': summonCelestial,
 	'summonConstruct': summonConstruct,
 	'summonElemental': summonElemental,
+	'summonFey': summonFey,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,
@@ -368,6 +369,5 @@ export let macros = {
 	'witherAndBloom': witherAndBloom,
 	'wrathOfTheStorm': wrathOfTheStorm,
 	'zealousPresence': zealousPresence,
-	'zoneOfTruth': zoneOfTruth,
-	'summonFey': summonFey
+	'zoneOfTruth': zoneOfTruth
 }
