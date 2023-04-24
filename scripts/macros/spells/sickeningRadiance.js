@@ -1,4 +1,5 @@
 import { chris } from '../../helperFunctions.js';
+const overtimeKey = 'flags.midi-qol.OverTime';
 async function sickeningRadianceTouched(tokenids) {
     for (let i = 0; tokenids.length > i; i++) {
         let tokenDoc = canvas.scene.tokens.get(tokenids[i]);
@@ -8,71 +9,46 @@ async function sickeningRadianceTouched(tokenids) {
         let createEffect = false;
         let deleteEffect = false;
         let inRadiance = false;
+        let changedTemplate = false;
         let spellLevel = -100;
         let spelldc = -100;
-        let oldSpellLevel;
         let oldSpelldc;
+        let oldTemplateId;
         let templateid;
         if (effect) {
-            oldSpellLevel = effect.flags['chris-premades']?.spell?.sickeningradiance?.spellLevel;
             oldSpelldc = effect.flags['chris-premades']?.spell?.sickeningradiance?.spelldc;
             templateid = effect.flags['chris-premades']?.spell?.sickeningradiance?.templateid;
         }
+        oldTemplateId = templateid;
         for (let j = 0; tokenInTemplates.length > j; j++) {
             let testTemplate = canvas.scene.collections.templates.get(tokenInTemplates[j]);
             if (!testTemplate) continue;
             let sickeningradiance = testTemplate.flags['chris-premades']?.spell?.sickeningradiance;
             if (!sickeningradiance) continue;
             inRadiance = true;
-            let testSpellLevel = sickeningradiance.spellLevel;
             let testSpelldc = sickeningradiance.spelldc;
-            if (testSpellLevel > spellLevel) {
-                spellLevel = testSpellLevel;
-                templateid = tokenInTemplates[j];
-            }
             if (testSpelldc > spelldc) {
                 spelldc = testSpelldc;
                 templateid = tokenInTemplates[j];
             }
         }
-        if (!inRadiance) {
-            deleteEffect = true;
-        } else {
-            if (oldSpellLevel != spellLevel || oldSpelldc != spelldc) {
-                createEffect = true;
-                deleteEffect = true;
-            }
+        changedTemplate = oldTemplateId != templateid;
+
+        let damageRoll = '4d10';
+        let templateDoc = canvas.scene.collections.templates.get(templateid);
+        console.log(templateDoc);
+        let origin = templateDoc.flags?.dnd5e?.origin;
+        async function effectMacro() {
+            let combatTurn = game.combat.round + '-' + game.combat.turn;
+            let templateid = effect.flags['chris-premades']?.spell?.sickeningradiance?.templateid;
+            token.document.setFlag('chris-premades', `spell.sickeningradiance.${templateid}.turn`, combatTurn);
         }
-        if (deleteEffect && effect) {
-            try {
-                await effect.delete();
-            } catch { }
-        }
-        if (createEffect && inRadiance && (oldSpellLevel != spellLevel || oldSpelldc != spelldc)) {
-            let damageRoll = '4d10';
-            let templateDoc = canvas.scene.collections.templates.get(templateid);
-            let origin = templateDoc.flags?.dnd5e?.origin;
-            async function effectMacro() {
-                let combatTurn = game.combat.round + '-' + game.combat.turn;
-                let templateid = effect.flags['chris-premades']?.spell?.sickeningradiance?.templateid;
-                token.document.setFlag('chris-premades', `spell.sickeningradiance.${templateid}.turn`, combatTurn);
-            }
+        console.log(effect);
+        if (!effect) {
             let effectData = {
                 'label': 'Sickening Radiance',
                 'icon': 'icons/magic/air/fog-gas-smoke-swirling-green.webp',
-                'changes': [
-                    {
-                        'key': 'flags.midi-qol.OverTime',
-                        'mode': 5,
-                        'value': 'label="Sickening Radiance", turn=start, rollType=save, saveAbility= con, saveDamage= nodamage, saveRemove= false, saveMagic=true, damageType= poison, damageRoll= ' + damageRoll + ', saveDC = ' + spelldc,
-                        'priority': 20
-                    },
-                    {
-                        'key': 'system.traits.ci.value',
-                        'value': 'invisible',
-                        'priority': 20
-                    }
-                ],
+                'changes': [],
                 'origin': origin,
                 'duration': { 'seconds': 86400 },
                 'flags': {
@@ -84,7 +60,6 @@ async function sickeningRadianceTouched(tokenids) {
                     'chris-premades': {
                         'spell': {
                             'sickeningradiance': {
-                                'spellLevel': spellLevel,
                                 'spelldc': spelldc,
                                 'templateid': templateDoc.id
                             }
@@ -92,17 +67,44 @@ async function sickeningRadianceTouched(tokenids) {
                     }
                 }
             };
+            console.log(effectData);
             await chris.createEffect(tokenDoc.actor, effectData);
+            effect = chris.findEffect(tokenDoc.actor, 'Sickening Radiance');
+            console.log(effect);
+        } else if (changedTemplate) {
+            await effect.setFlag('chris-premades', 'spell.sickeningradiance', { spelldc, templateid });
+        }
+        console.log(inRadiance, changedTemplate);
+        if (!inRadiance || changedTemplate) {
+            let removeOvertime = effect.changes.filter(c => c['key'] != overtimeKey);
+            await chris.updateEffect(effect, {
+                changes: removeOvertime
+            });
+        }
+        if (inRadiance){
+            if (!effect.changes.some(c => c['key'] === overtimeKey)) {
+                let addOvertime = [...effect.changes];
+                console.log(addOvertime);
+                addOvertime.push({
+                    'key': overtimeKey,
+                        'mode': 5,
+                        'value': 'label="Sickening Radiance", turn=start, rollType=save, saveAbility= con, saveDamage= nodamage, saveRemove= false, saveMagic=true, damageType= poison, damageRoll= ' + damageRoll + ', saveDC = ' + spelldc + ', macro',
+                        'priority': 20
+                });
+                console.log(addOvertime);
+                await chris.updateEffect(effect, {
+                    changes: addOvertime
+                });
+            }
         }
     }
 }
 async function sickeningRadianceItem({ speaker, actor, token, character, item, args }) {
     let template = canvas.scene.collections.templates.get(this.templateId);
     if (!template) return;
-    let spellLevel = this.castData.castLevel;
     let spelldc = chris.getSpellDC(this.item);
     let touchedTokens = await game.modules.get('templatemacro').api.findContained(template);
-    await template.setFlag('chris-premades', 'spell.sickeningradiance', { spellLevel, spelldc, touchedTokens });
+    await template.setFlag('chris-premades', 'spell.sickeningradiance', { spelldc, touchedTokens });
     await sickeningRadianceTouched(touchedTokens);
 }
 async function sickeningRadianceDeleted(template) {
@@ -141,9 +143,13 @@ async function sickeningRadianceEntered(template, token) {
 async function sickeningRadianceLeft(token) {
     await sickeningRadianceTouched([token.id]);
 }
+async function sickeningRadianceFailedSave() {
+
+}
 export let sickeningRadiance = {
     'item': sickeningRadianceItem,
     'deleted': sickeningRadianceDeleted,
     'entered': sickeningRadianceEntered,
-    'left': sickeningRadianceLeft
+    'left': sickeningRadianceLeft,
+    'failedSave': sickeningRadianceFailedSave
 }
