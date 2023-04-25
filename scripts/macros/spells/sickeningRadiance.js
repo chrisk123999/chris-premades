@@ -190,13 +190,15 @@ async function sickeningRadianceFailedSave({ speaker, actor, token, character, i
     await effect.setFlag('chris-premades', 'spell.sickeningradiance.affectedby', affectedBy);
 
     if (!effect.changes.some(c => c['key'] === 'system.traits.ci.value')) {
-        let addImmunity = [...effect.changes];
-        addImmunity.push({
-            'key': 'system.traits.ci.value',
-                   'value': 'invisible',
-                   'priority': 20
-        });
-        await chris.updateEffect(effect,{changes: addImmunity});
+        let addEffects = [...effect.changes];
+        addEffects.push(
+            {
+                'key': 'system.traits.ci.value',
+                'value': 'invisible',
+                'priority': 20
+            },
+        );
+        await chris.updateEffect(effect, { changes: addEffects });
     }
     let exhaustionAdded = effect.getFlag('chris-premades', `spell.sickeningradiance.${templateid}.exhaustion`);
     if(!exhaustionAdded) {
