@@ -1,6 +1,6 @@
 # 0.3.32:
 ## New Content:
-- Summon Fiend
+- Spell: Summon Fiend
 ## Bug Fixes:
 - Hybrid Transformation
 - Patient Defense
@@ -19,7 +19,7 @@
   
 # 0.3.29:
 ## New Content:
-- Summon Fey
+- Spell: Summon Fey
 ## Bug Fixes:
 - Summon Elemental
 - Darkness
