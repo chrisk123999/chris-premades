@@ -1,3 +1,7 @@
+# 0.3.33:
+## Bug Fixes:
+- Summon Fiend
+  
 # 0.3.32:
 ## New Content:
 - Spell: Summon Fiend
