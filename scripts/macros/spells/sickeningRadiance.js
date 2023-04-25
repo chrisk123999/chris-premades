@@ -46,7 +46,6 @@ async function sickeningRadianceTouched(tokenids) {
         }
         console.log(effect);
         if (!effect) {
-            await tokenDoc.unsetFlag('chris-premades', 'spell.sickeningradiance');
             let effectData = {
                 'label': 'Sickening Radiance',
                 'icon': 'icons/magic/air/fog-gas-smoke-swirling-green.webp',
