@@ -26,7 +26,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
         'duration': {
             'seconds': 604800
         },
-        'origin': this.actor.uuid,
+        'origin': this.item.uuid,
         'flags': {
             'dae': {
                 'selfTarget': true,
@@ -36,7 +36,8 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
                 'macroRepeat': 'none',
                 'specialDuration': [
                     'longRest'
-                ]
+                ],
+                'transfer': true
             },
             'effectmacro': {
                 'onDelete': {

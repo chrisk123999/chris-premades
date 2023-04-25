@@ -73,7 +73,7 @@ async function item({speaker, actor, token, character, item, args}) {
             effectData = {
                 'label': featureData.name,
                 'icon': featureData.img,
-                'origin': this.actor.uuid,
+                'origin': this.item.uuid,
                 'duration': {
                     'seconds': null,
                 },
@@ -96,7 +96,12 @@ async function item({speaker, actor, token, character, item, args}) {
                         'value': this.targets.first().id,
                         'priority': 20
                     }
-                ]
+                ],
+                'flags': {
+                    'dae': {
+                        'transfer': true
+                    }
+                }
             };
             if (!isNaN(duration)) effectData.duration.seconds = duration;
             await chris.createEffect(this.actor, effectData);

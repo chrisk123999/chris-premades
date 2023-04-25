@@ -130,7 +130,7 @@ async function transformation({speaker, actor, token, character, item, args}) {
 		'duration': {
 			'seconds': seconds
 		},
-		'origin': this.actor.uuid,
+		'origin': this.item.uuid,
         'flags': {
             'dae': {
                 'selfTarget': true,
@@ -150,10 +150,8 @@ async function transformation({speaker, actor, token, character, item, args}) {
 					'script': chris.functionToString(effectMacro)
 				}
             },
-            'visual-active-effects': {
-                'data': {
-                    'content': this.item.system.description.value
-                }
+            'dae': {
+                'transfer': true
             }
         }
     }

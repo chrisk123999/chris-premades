@@ -83,6 +83,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Construct  
 - Summon Elemental  
 - Summon Fey  
+- Summon Fiend  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  

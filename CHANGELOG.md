@@ -1,3 +1,12 @@
+# 0.3.32:
+## New Content:
+- Summon Fiend
+## Bug Fixes:
+- Hybrid Transformation
+- Patient Defense
+- Bestow Curse
+- Eladrin Season
+  
 # 0.3.31:
 ## Bug Fixes:
 - Regeneration

@@ -67,6 +67,7 @@ import {explodingHeals} from './macros/mechanics/explodingHeals/explodingHeals.j
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
+import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSpirit.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
@@ -147,6 +148,7 @@ import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
+import {summonFiend} from './macros/spells/summonFiend.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -190,6 +192,7 @@ let monster = {
 	'elderBrain': elderBrain,
 	'elderOblex': elderOblex,
 	'feySpirit': feySpirit,
+	'fiendishSpirit': fiendishSpirit,
 	'fireElemental': fireElemental,
 	'fireSnake': fireSnake,
 	'gallowsSpeaker': gallowsSpeaker,
@@ -359,6 +362,7 @@ export let macros = {
 	'summonConstruct': summonConstruct,
 	'summonElemental': summonElemental,
 	'summonFey': summonFey,
+	'summonFiend': summonFiend,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,
