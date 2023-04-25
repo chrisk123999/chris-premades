@@ -36,6 +36,7 @@ async function sickeningRadianceTouched(tokenids) {
 
         let damageRoll = '4d10';
         let templateDoc = canvas.scene.collections.templates.get(templateid);
+        if( !templateDoc) { continue; }
         console.log(templateDoc);
         let origin = templateDoc.flags?.dnd5e?.origin;
         async function effectMacro() {
@@ -45,6 +46,7 @@ async function sickeningRadianceTouched(tokenids) {
         }
         console.log(effect);
         if (!effect) {
+            await tokenDoc.unsetFlag('chris-premades', 'spell.sickeningradiance');
             let effectData = {
                 'label': 'Sickening Radiance',
                 'icon': 'icons/magic/air/fog-gas-smoke-swirling-green.webp',
@@ -71,7 +73,8 @@ async function sickeningRadianceTouched(tokenids) {
             await chris.createEffect(tokenDoc.actor, effectData);
             effect = chris.findEffect(tokenDoc.actor, 'Sickening Radiance');
             console.log(effect);
-        } else if (changedTemplate) {
+        }
+        if (changedTemplate) {
             await effect.setFlag('chris-premades', 'spell.sickeningradiance', { spelldc, templateid });
         }
         console.log(inRadiance, changedTemplate);
@@ -88,7 +91,8 @@ async function sickeningRadianceTouched(tokenids) {
                 addOvertime.push({
                     'key': overtimeKey,
                         'mode': 5,
-                        'value': 'label="Sickening Radiance", turn=start, rollType=save, saveAbility= con, saveDamage= nodamage, saveRemove= false, saveMagic=true, damageType= poison, damageRoll= ' + damageRoll + ', saveDC = ' + spelldc + ', macro',
+                        'value': 'label="Sickening Radiance", turn=start, rollType=save, saveAbility= con, saveDamage= nodamage, saveRemove= false, saveMagic=true, damageType= poison, damageRoll= ' + damageRoll + ', saveDC = ' + spelldc +
+                        ', macro=function.chrisPremades.macros.sickeningRadiance.failedSave',
                         'priority': 20
                 });
                 console.log(addOvertime);
@@ -113,7 +117,33 @@ async function sickeningRadianceDeleted(template) {
     for (let i = 0; touchedTokens.length > i; i++) {
         let tokenDoc = canvas.scene.tokens.get(touchedTokens[i]);
         if (!tokenDoc) continue;
-        await tokenDoc.unsetFlag('chris-premades', 'spell.sickeningradiance.' + template.id);
+        let effect = chris.findEffect(tokenDoc.actor, 'Sickening Radiance');
+        if (!effect) { return; }
+        let exhaustionAdded = effect.getFlag('chris-premades', `spell.sickeningradiance.${template.id}.exhaustion`);
+        let exhaustionEffect = tokenDoc.actor.effects.find(eff => eff.label.includes('Exhaustion'));
+        if (exhaustionEffect) {
+            let newExhaustion = Number(exhaustionEffect.label.substring(11));
+            newExhaustion -= exhaustionAdded;
+            if (newExhaustion < 0) {
+                newExhaustion = 0;
+            }
+            await chris.removeEffect(exhaustionEffect);
+            if (newExhaustion > 0) {
+                let conditionName = 'Exhaustion ' + newExhaustion;
+                await chris.addCondition(tokenDoc.actor, conditionName, false, effect.origin);
+            }
+
+        }
+        let affectedBy = effect.flags['chris-premades'].spell.sickeningradiance.affectedby;
+        affectedBy = affectedBy.filter(e => e != template.id)
+        await effect.setFlag('chris-premades', 'spell.sickeningradiance.affectedby', affectedBy);
+        let templateKey = 'spell.sickeningradiance.' + template.id;
+        await effect.unsetFlag('chris-premades', templateKey);
+        await tokenDoc.unsetFlag('chris-premades', templateKey);
+        if (affectedBy.length === 0) {
+            await chris.removeEffect(effect);
+        }
+
     }
     await sickeningRadianceTouched(touchedTokens);
 }
@@ -143,8 +173,42 @@ async function sickeningRadianceEntered(template, token) {
 async function sickeningRadianceLeft(token) {
     await sickeningRadianceTouched([token.id]);
 }
-async function sickeningRadianceFailedSave() {
+async function sickeningRadianceFailedSave({ speaker, actor, token, character, item, args }) {
+    if (this.failedSaves.size === 0) return;
+    let effect = chris.findEffect(token.actor, 'Sickening Radiance');
+    if (!effect) { return; }
+    let templateid = effect.flags['chris-premades']?.spell?.sickeningradiance?.templateid;
+    if (!templateid) {return; }
 
+    let affectedBy = effect.flags['chris-premades']?.spell?.sickeningradiance?.affectedby;
+    if (!affectedBy) {
+        affectedBy = [];
+    }
+    if (!affectedBy.includes(templateid)) {
+        affectedBy.push(templateid);
+    }
+    await effect.setFlag('chris-premades', 'spell.sickeningradiance.affectedby', affectedBy);
+
+    if (!effect.changes.some(c => c['key'] === 'system.traits.ci.value')) {
+        let addImmunity = [...effect.changes];
+        addImmunity.push({
+            'key': 'system.traits.ci.value',
+                   'value': 'invisible',
+                   'priority': 20
+        });
+        await chris.updateEffect(effect,{changes: addImmunity});
+    }
+    let exhaustionAdded = effect.getFlag('chris-premades', `spell.sickeningradiance.${templateid}.exhaustion`);
+    if(!exhaustionAdded) {
+        exhaustionAdded = 0;
+    }
+    if(exhaustionAdded < 5) {
+        exhaustionAdded += 1;
+    }
+    if(exhaustionAdded <=5) {
+        await effect.setFlag('chris-premades', `spell.sickeningradiance.${templateid}.exhaustion`,exhaustionAdded);
+        chris.increaseExhaustion(actor,effect.origin);
+    }   
 }
 export let sickeningRadiance = {
     'item': sickeningRadianceItem,
