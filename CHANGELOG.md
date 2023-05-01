@@ -1,3 +1,7 @@
+# 0.3.35:
+## New Content:
+- Spell: Summon Shadowspawn
+  
 #0.3.34:
 ## Bug Fixes:
 - Shadowblade

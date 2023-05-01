@@ -127,6 +127,7 @@ import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
+import {shadowSpirit} from './macros/monsterFeatures/shadowSpirit/shadowSpirit.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
@@ -149,6 +150,7 @@ import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
+import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -206,6 +208,7 @@ let monster = {
 	'salamander': salamander,
 	'shadow': shadow,
 	'shadowDemon': shadowDemon,
+	'shadowSpirit': shadowSpirit,
 	'shadowghast': shadowghast,
 	'shamblingMound': shamblingMound,
 	'soulMonger': soulMonger,
@@ -363,6 +366,7 @@ export let macros = {
 	'summonElemental': summonElemental,
 	'summonFey': summonFey,
 	'summonFiend': summonFiend,
+	'summonShadowspawn': summonShadowspawn,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,
