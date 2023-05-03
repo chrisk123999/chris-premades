@@ -1,3 +1,11 @@
+# 0.3.37:
+## New Content:
+- Spell: Summon Undead
+- School of Necromancy Wizard: Undead Thralls
+## Bug Fixes:
+- Crimson Rite
+- Eyes of Night
+  
 # 0.3.35:
 ## New Content:
 - Spell: Summon Shadowspawn

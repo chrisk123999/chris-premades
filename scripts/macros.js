@@ -151,11 +151,13 @@ import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
+import {summonUndead} from './macros/spells/summonUndead.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
+import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
@@ -216,6 +218,7 @@ let monster = {
 	'stenchKow': stenchKow,
 	'succubus': succubus,
 	'troglodyte': troglodyte,
+	'undeadSpirit': undeadSpirit,
 	'zombie': zombie
 }
 let onHit = {
@@ -367,6 +370,7 @@ export let macros = {
 	'summonFey': summonFey,
 	'summonFiend': summonFiend,
 	'summonShadowspawn': summonShadowspawn,
+	'summonUndead': summonUndead,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,

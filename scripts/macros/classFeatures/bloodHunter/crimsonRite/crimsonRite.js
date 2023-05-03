@@ -36,6 +36,7 @@ export async function crimsonRite({speaker, actor, token, character, item, args}
     if (!damageType) return;
     let weaponData = targetActor.items.get(selection).toObject();
     weaponData.system.damage.parts.push([damageDice + '[' + damageType + ']', damageType]);
+    weaponData.system.properties.mgc = true;
     let effectData = {
         'label': 'Crimson Rite: ' + weaponData.name,
         'icon': this.item.img,

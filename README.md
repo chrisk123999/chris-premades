@@ -85,6 +85,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Fey  
 - Summon Fiend  
 - Summon Shadowspawn  
+- Summon Undead  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  
@@ -211,6 +212,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Expert Divination  
 #### School of Necromancy:  
 - Grim Harvest  
+- Undead Thralls  
   
 ### Feats:  
 - Crusher  
