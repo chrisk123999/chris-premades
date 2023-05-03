@@ -1,3 +1,7 @@
+#0.3.34:
+## Bug Fixes:
+- Shadowblade
+  
 # 0.3.33:
 ## Bug Fixes:
 - Summon Fiend
