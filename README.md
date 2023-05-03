@@ -85,6 +85,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Elemental  
 - Summon Fey  
 - Summon Fiend  
+- Summon Shadowspawn  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  
