@@ -363,5 +363,8 @@ export let chris = {
 		let conditionName = effect.label.substring(0, 11) + (level + 1);
 		await chris.removeEffect(effect);
 		await chris.addCondition(actor, conditionName, false, originUuid);
+	},
+	'itemDuration': function _itemDuration(item) {
+		return DAE.convertDuration(item.system.duration, chris.inCombat());
 	}
 };

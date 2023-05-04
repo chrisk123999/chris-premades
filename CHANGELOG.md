@@ -1,3 +1,7 @@
+# 0.3.38:
+## New Features:
+- Quick Insert Summon: Added a method to summon any actor using the Quick Insert module.
+  
 # 0.3.37:
 ## New Content:
 - Spell: Summon Undead

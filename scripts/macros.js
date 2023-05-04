@@ -152,6 +152,7 @@ import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
+import {summon} from './macros/generic/summon.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -362,6 +363,7 @@ export let macros = {
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
+	'summon': summon,
 	'summonAberration': summonAberration,
 	'summonBeast': summonBeast,
 	'summonCelestial': summonCelestial,
