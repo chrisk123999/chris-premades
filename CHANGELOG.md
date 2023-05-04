@@ -1,3 +1,7 @@
+# 0.3.40:
+## Bug Fixes:
+- Summon Undead
+  
 # 0.3.38:
 ## New Features:
 - Quick Insert Summon: Added a method to summon any actor using the Quick Insert module.
@@ -14,7 +18,7 @@
 ## New Content:
 - Spell: Summon Shadowspawn
   
-#0.3.34:
+# 0.3.34:
 ## Bug Fixes:
 - Shadowblade
   
