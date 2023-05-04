@@ -18,6 +18,11 @@ async function spawn(item, updates, prefill) {
         allowMultiple: false,
         restrictTypes: ['Actor'],
         onSubmit: async (selected) => {
+            if (!selected) return;
+            if (selected.uuid === item.actor.uuid) {
+                ui.notifications.warn('You cannot summon yourself!');
+                return;
+            }
             selectedActor = await fromUuid(selected.uuid);
             if (selectedActor.compendium) {
                 ui.notifications.warn('The actor must not be in a compendium!');
