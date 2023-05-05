@@ -473,4 +473,19 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Shield Guardian', {
+		'name': 'Shield Guardian Automation',
+		'hint': 'Enabling this allows the automation of the Shield Guardian\'s Bound feature via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.damageApplied', macros.mastersAmulet);
+			} else {
+				Hooks.off('midi-qol.damageApplied', macros.mastersAmulet);
+			}
+		}
+	});
 }

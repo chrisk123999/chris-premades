@@ -101,6 +101,7 @@ import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
+import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
@@ -327,6 +328,7 @@ export let macros = {
 	'maddeningHex': maddeningHex,
 	'maneuvers': maneuvers,
 	'massCureWounds': massCureWounds,
+	'mastersAmulet': mastersAmulet,
 	'mirrorImage': mirrorImage,
 	'monster': monster,
 	'muddledMind': muddledMind,

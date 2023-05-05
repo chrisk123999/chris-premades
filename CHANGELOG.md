@@ -1,3 +1,7 @@
+# 0.3.41:
+## New Monster Content:
+- Shield Guardian: Bound and Regeneration
+  
 # 0.3.40:
 ## Bug Fixes:
 - Summon Undead
@@ -127,7 +131,7 @@
   
 # 0.3.14:
 ## New Monster Content:
-- Shadar-kai Soul Monger: Fey Ancestry, Soul Thirst, Weight of Ages, Shadow Dagger, Wave of Weariness
+- Shadar-kai Soul Monger: Fey Ancestry, Soul Thirst, Weight of Ages, Shadow Dagger, and Wave of Weariness
   
 # 0.3.13:
 ## New Monster Content:
