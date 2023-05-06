@@ -139,6 +139,7 @@ import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
+import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
@@ -362,6 +363,7 @@ export let macros = {
 	'spikeGrowth': spikeGrowth,
 	'spiritGuardians': spiritGuardians,
 	'spiritShroud': spiritShroud,
+	'starryForm': starryForm,
 	'stillnessOfMind': stillnessOfMind,
 	'stormSphere': stormSphere,
 	'stormgirdle': stormgirdle,
