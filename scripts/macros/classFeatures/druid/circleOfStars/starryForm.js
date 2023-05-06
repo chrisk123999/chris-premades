@@ -1,4 +1,4 @@
-import {chris} from '../../helperFunctions.js';
+import {chris} from '../../../../helperFunctions.js';
 export async function starryForm({speaker, actor, token, character, item, args}) {
 
     let form = await chris.dialog('Which Constellation?', [['Starry Form: Archer', 'Archer'], ['Starry Form: Dragon', 'Dragon'], ['Starry Form: Chalice', 'Chalice']]);
