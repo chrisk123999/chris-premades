@@ -186,6 +186,11 @@ export function setConfig() {
             ],
             'Eladrin Season: Summer': [
                 'Fey Step (Summer)'
+            ],
+            'Starry Form': [
+                'Starry Form: Archer',
+                'Starry Form: Chalice',
+                'Starry Form: Dragon'
             ]
         },
         'restrictedItems': {

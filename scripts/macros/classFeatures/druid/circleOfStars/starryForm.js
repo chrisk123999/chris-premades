@@ -1,93 +1,169 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function starryForm({speaker, actor, token, character, item, args}) {
-
-    let form = await chris.dialog('Which Constellation?', [['Starry Form: Archer', 'Archer'], ['Starry Form: Dragon', 'Dragon'], ['Starry Form: Chalice', 'Chalice']]);
-    let starry = actor.items.find(i => i.name === 'Starry Form');
-    const tier = actor.classes.druid.system.levels > 13 ? 3 : actor._classes.druid.system.levels > 9 ? 2 : 1;
-
+    let effect = chris.findEffect(this.actor, 'Starry Form - Passive');
+    if (!effect) return;
+    let starry = await fromUuid(effect.origin);
+    if (!starry) return;
+    let selection = await chris.dialog('Starry Form: Which Constellation?', [['Archer', 'Archer'], ['Dragon', 'Dragon'], ['Chalice', 'Chalice']]);
+    let tier = this.actor.classes.druid.system.levels > 13 ? 3 : this.actor.classes.druid.system.levels > 9 ? 2 : 1;
     let featureData;
-    if (form === 'Archer') { featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Starry Form: Luminous Arrow', false); }
-    if (form === 'Chalice') { featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Starry Form: Healing Chalice', false); }
-
-    async function effectMacro () {
+    switch (selection) {
+        case 'Archer':
+            featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Starry Form: Luminous Arrow', false);
+            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Starry Form: Luminous Arrow');
+            break;
+        case 'Dragon':
+            featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Starry Form: Wise Dragon', false);
+            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Starry Form: Wise Dragon');
+            break;
+        case 'Chalice':
+            featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Starry Form: Healing Chalice', false);
+            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Starry Form: Healing Chalice');
+            break;
+    }
+    async function effectMacro() {
         await warpgate.revert(token.document, 'Starry Form');
     }
-    async function everyTurn () {
-        let change = await chris.dialog('Change Constellation?', [['Yes', true], ['No', false]]);
+    async function turnStart() {
+        let change = await chrisPremades.helpers.dialog('Twinkling Constellations: Change Constellation?', [['Yes', true], ['No', false]]);
         if (!change) return;
-        let item = actor.items.find(i => i.name === 'Starry Form');
-        item.executeMacro();
+        let otherEffect = chrisPremades.helpers.findEffect(actor, 'Twinkling Constellations');
+        if (!otherEffect) return;
+        let otherEffectItem = await fromUuid(otherEffect.origin);
+        if (!otherEffectItem) return;
+        await otherEffectItem.use();
     }
-
     let changes = [
-        { key: "ATL.light.bright", value: "10", mode: 5, priority: null },
-        { key: "ATL.light.dim", value: "20", mode: 5, priority: null },
-        { key: "ATL.light.color", value: "#ffffff", mode: 5, priority: null },
-        { key: "ATL.light.alpha", value: "0.25", mode: 5, priority: null },
-        { key: "ATL.light.animation", value: "{\"type\": \"starlight\", \"speed\": 1,\"intensity\": 3}", mode: 5, priority: null }]
-
-    if (tier === 3){
-        changes.push({ key: "system.traits.dr.value", value: "slashing", mode: 2, priority: null});
-        changes.push({ key: "system.traits.dr.value", value: "piercing", mode: 2, priority: null});
-        changes.push({ key: "system.traits.dr.value", value: "bludgeoning", mode: 2, priority: null});
+        {
+            'key': 'ATL.light.bright',
+            'value': '10',
+            'mode': 5,
+            'priority': 20
+        },
+        {
+            'key': 'ATL.light.dim',
+            'value': '20',
+            'mode': 5,
+            'priority': 20
+        },
+        {
+            'key': 'ATL.light.color',
+            'value': '#ffffff',
+            'mode': 5,
+            'priority': 20
+        },
+        {
+            'key': 'ATL.light.alpha',
+            'value': '0.25',
+            'mode': 5,
+            'priority': 20
+        },
+        {
+            'key': 'ATL.light.animation',
+            'value': '{\'type\': \'starlight\', \'speed\': 1,\'intensity\': 3}',
+            'mode': 5,
+            'priority': 20
         }
-    if (form === "Dragon"){
-        changes.push({ key: "flags.midi-qol.min.ability.check.wis", value: "10", mode: 5, priority: null});
-        changes.push({ key: "flags.midi-qol.min.ability.check.int", value: "10", mode: 5, priority: null});
-        changes.push({ key: "flags.midi-qol.min.ability.save.con", value: "10", mode: 5, priority: null});
+    ];
+    if (tier === 3) {
+        changes.push({
+            'key': 'system.traits.dr.value',
+            'value': 'slashing',
+            'mode': 2,
+            'priority': 20
+        });
+        changes.push({
+            'key': 'system.traits.dr.value',
+            'value': 'piercing',
+            'mode': 2,
+            'priority': 20
+        });
+        changes.push({
+            'key': 'system.traits.dr.value',
+            'value': 'bludgeoning',
+            'mode': 2,
+            'priority': 20
+        });
+    }
+    if (selection === 'Dragon') {
+        changes.push({
+            'key': 'flags.midi-qol.min.ability.check.wis',
+            'value': '10',
+            'mode': 5,
+            'priority': 20
+        });
+        changes.push({
+            'key': 'flags.midi-qol.min.ability.check.int',
+            'value': '10',
+            'mode': 5,
+            'priority': 20
+        });
+        changes.push({
+            'key': 'flags.midi-qol.min.ability.save.con',
+            'value': '10',
+            'mode': 5,
+            'priority': 20
+        });
         if (tier > 1){
-            changes.push({ key: "system.attributes.movement.fly", value: "20", mode: 4, priority: 25});
+            changes.push({
+                'key': 'system.attributes.movement.fly',
+                'value': '20',
+                'mode': 4,
+                'priority': 20
+            });
         }
     }
-
     let effectData = {
-        changes: changes,
-        origin: starry.uuid,
-        disabled: false,
-        duration: { "seconds": 600, "duration": 600, "remaining": 600, "label": "600Seconds"},
-        icon: starry.img,
-        label: starry.name,
-        flags: { 
-                    effectmacro: { onDelete: { script: chris.functionToString(effectMacro) }}
+        'changes': changes,
+        'origin': starry.uuid,
+        'disabled': false,
+        'duration': {
+            'seconds': 600
+        },
+        'icon': starry.img,
+        'label': starry.name + ': ' + selection,
+        'flags': {
+            'effectmacro': {
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
                 }
+            },
+            'dae': {
+                'transfer': true
+            },
+            'chris-premades': {
+                'feature': {
+                    'starryForm': true
+                }
+            }
+        }
     }
     if (tier > 1){
-        effectData.flags['effectmacro'].onTurnStart = {'script': chris.functionToString(everyTurn)};
+        effectData.flags['effectmacro'].onTurnStart = {
+            'script': chris.functionToString(turnStart)
+        };
     }
-
-    let itemUpdates = {
+    if (selection != 'Dragon') {
+        effectData.flags['chris-premades'].vae = {
+            'button': featureData.name
+        };
+    }
+    let updates = {
         'embedded': {
-        },
-    };
-    let itemDetails = {
-        'permanent': false,
-        'name': `${starry.name}`,
-        'description': `${starry.name}`
-    };
-    if (form != 'Dragon'){
-        effectData.flags['chris-premades'] = { 'vae': { 'button': featureData.name }}
-        itemUpdates.embedded['Item'] = { [featureData.name]: featureData }
-    }
-
-    let existing = actor.effects.find(ef => ef.label.includes("Starry Form"))
-    if (existing){
-        let label = `${starry.name}: ${form}`;
-        await warpgate.revert(token.document, `${starry.name}`);
-        let updates = { 'changes': changes, 'label': label };
-        await chris.updateEffect(existing, updates);
-
-        if (form != "Dragon"){
-            await warpgate.mutate(token.document, itemUpdates, {}, itemDetails);
-            existing.setFlag('chris-premades', 'vae', { 'button': featureData.name });
+            'Item': {
+                [featureData.name]: featureData
+            },
+            'ActiveEffect': {
+                [effectData.label]: effectData
             }
-        else {        
-            existing.unsetFlag('chris-premades', 'vae');
         }
-    }
-    else {
-    await chris.createEffect(actor, effectData);
-        if (form != 'Dragon'){
-            await warpgate.mutate(token.document, itemUpdates, {}, itemDetails);
-        }
-    }
+    };
+    let options = {
+        'permanent': false,
+        'name': 'Starry Form',
+        'description': 'Starry Form'
+    };
+    let existing = this.actor.effects.find(eff => eff.flags['chris-premades']?.feature?.starryForm === true);
+    if (existing) await warpgate.revert(this.token.document, 'Starry Form');
+    await warpgate.mutate(this.token.document, updates, {}, options);
 }

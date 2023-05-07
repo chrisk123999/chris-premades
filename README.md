@@ -150,6 +150,10 @@ Additional support and feature requests can be made on my Discord server: https:
 - Eyes of Night  
 - Steps of Night  
 - Vigilant Blessing  
+### Druid:  
+#### Circle of Stars:  
+- Starry Form  
+- Twinkling Constellations  
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  
