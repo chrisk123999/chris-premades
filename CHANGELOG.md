@@ -1,3 +1,7 @@
+# 0.3.44:
+## Bug Fixes:
+- Starry Form
+  
 # 0.3.43:
 ## New Content:
 - Circle of Stars Druid: Starry Form and Twinkling Constellations (Thanks @Wolfe)
