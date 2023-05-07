@@ -1,3 +1,7 @@
+# 0.3.42:
+## Bug Fixes:
+- Elemental Adept
+  
 # 0.3.41:
 ## New Monster Content:
 - Shield Guardian: Bound and Regeneration
