@@ -1,10 +1,16 @@
+# 0.3.45:
+## New Content:
+- Generic Actions: Dash, Disengage, Dodge, Grapple, Hide, Ready Action, Ready Spell, Search, Shove
+## Bug Fixes:
+- Twinkling Constellations
+  
 # 0.3.44:
 ## Bug Fixes:
 - Starry Form
   
 # 0.3.43:
 ## New Content:
-- Circle of Stars Druid: Starry Form and Twinkling Constellations (Thanks @Wolfe)
+- Circle of Stars Druid: Starry Form and Twinkling Constellations (Thanks Wolfe)
   
 # 0.3.42:
 ## Bug Fixes:
