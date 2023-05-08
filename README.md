@@ -55,6 +55,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Earth Tremor  
 - Gaseous Form  
 - Guiding Bolt  
+- Hail of Thorns  
 - Heat Metal  
 - Hex  
 - Hold Person  
@@ -93,6 +94,18 @@ Additional support and feature requests can be made on my Discord server: https:
 - Vitriolic Sphere  
 - Wither and Bloom  
 - Zone of Truth  
+  
+## Generic Actions:  
+- Dash  
+- Disengage  
+- Dodge  
+- Grapple  
+- Help  
+- Hide  
+- Ready Action  
+- Ready Spell  
+- Search  
+- Shove  
   
 ## Class Features:  
 ### Artificer:  

@@ -1,3 +1,9 @@
+# 0.3.46:
+## New Content:
+- Spell: Hail of Thorns
+## Bug Fixes:
+- Commanding Strike
+  
 # 0.3.45:
 ## New Content:
 - Generic Actions: Dash, Disengage, Dodge, Grapple, Hide, Ready Action, Ready Spell, Search, Shove

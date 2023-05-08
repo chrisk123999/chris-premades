@@ -80,6 +80,7 @@ import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHa
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
+import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
@@ -312,6 +313,7 @@ export let macros = {
 	'graveTouched': graveTouched,
 	'grimHarvest': grimHarvest,
 	'grovelthrash': grovelthrash,
+	'hailOfThorns': hailOfThorns,
 	'healingLight': healingLight,
 	'heartOfTheStorm': heartOfTheStorm,
 	'heatMetal': heatMetal,
