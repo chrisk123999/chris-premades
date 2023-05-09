@@ -3,6 +3,7 @@ export async function shove({speaker, actor, token, character, item, args}) {
     if (this.targets.size != 1) return;
     let skipCheck = false;
     let targetActor = this.targets.first().actor;
+    if (this.actor.uuid === targetActor.uuid) return;
     let effect = chris.findEffect(targetActor, 'Prone');
     if (effect) skipCheck = true;
     if (!skipCheck) {

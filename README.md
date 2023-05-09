@@ -446,6 +446,10 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Undead:  
 #### Avatar of Death:  
 - Turning Immunity  
+#### Bodak:  
+- Aura of Annihilation  
+- Death Gaze  
+- Sunlight Hypersensitivity  
 #### Crawling Claw:  
 - Turning Immunity  
 #### Devkarin Lich:  

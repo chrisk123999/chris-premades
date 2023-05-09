@@ -21,6 +21,7 @@ import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/bles
 import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
+import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {callLightning} from './macros/spells/callLightning.js';
@@ -186,6 +187,7 @@ export async function onHitMacro(workflow) {
 }
 let monster = {
 	'aberrantSpirit': aberrantSpirit,
+	'bodak': bodak,
 	'bulette': bulette,
 	'catoblepas': catoblepas,
 	'celestialSpirit': celestialSpirit,

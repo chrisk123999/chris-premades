@@ -1,3 +1,10 @@
+# 0.3.47:
+## New Monster Content:
+- Bodak: Death Gaze, Sunlight Hypersensitivity, Aura of Annihilation
+## Bug Fixes:
+- Shove
+- Sanctuary
+  
 # 0.3.46:
 ## New Content:
 - Spell: Hail of Thorns
