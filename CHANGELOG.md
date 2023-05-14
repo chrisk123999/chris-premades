@@ -1,3 +1,8 @@
+# 0.3.48:
+## Bug Fixes:
+- Summon Undead
+- Aura Of Annihilation
+  
 # 0.3.47:
 ## New Monster Content:
 - Bodak: Death Gaze, Sunlight Hypersensitivity, Aura of Annihilation

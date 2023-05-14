@@ -1,5 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 export async function auraOfAnnihilation(token, origin) {
+    if (token.actor.system.attributes.hp.value === 0) return;
     if (!game.combat.previous.tokenId) return;
     let targetToken = game.canvas.tokens.get(game.combat.previous.tokenId);
     if (!targetToken) return;
