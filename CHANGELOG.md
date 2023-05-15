@@ -1,3 +1,7 @@
+# 0.3.49:
+## Bug Fixes:
+- Cleave
+  
 # 0.3.48:
 ## Bug Fixes:
 - Summon Undead
