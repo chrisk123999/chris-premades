@@ -73,6 +73,7 @@ import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElementa
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
+import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
@@ -205,6 +206,7 @@ let monster = {
 	'fiendishSpirit': fiendishSpirit,
 	'fireElemental': fireElemental,
 	'fireSnake': fireSnake,
+	'fragmentOfKrokulmar': fragmentOfKrokulmar,
 	'gallowsSpeaker': gallowsSpeaker,
 	'generic': generic,
 	'ghast': ghast,

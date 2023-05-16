@@ -325,6 +325,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Psychic Pulse  
 - Sever Psychic Link  
 - Tentacle  
+#### Fragment of Krokulmar:  
+- Psionic Revitalization  
+- Squirming Dodge  
 #### Gibbering Mouther:  
 - Aberrant Ground  
 - Bite  

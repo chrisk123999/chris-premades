@@ -1,3 +1,9 @@
+## 0.3.50:
+## New Monster Content:
+- Fragment of Krokulmar: Psionic Revitalization and Squirming Dodge
+## Bug Fixes:
+- Mass Cure Wounds
+  
 # 0.3.49:
 ## Bug Fixes:
 - Cleave
