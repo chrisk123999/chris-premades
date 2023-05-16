@@ -43,10 +43,6 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
             newDamageTotal += i.total;
         }
     }
-    if (ditem.totalDamage === newDamageTotal) {
-        queue.remove(workflow.uuid);
-        return;
-    }
     if (ditem.oldTempHP > 0) {
         if (hpDamageTotal > ditem.oldTempHP) {
             ditem.newTempHP = 0;

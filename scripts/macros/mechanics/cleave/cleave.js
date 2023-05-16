@@ -29,7 +29,7 @@ export async function cleave(workflow) {
     let weaponData = duplicate(workflow.item.toObject());
     delete(weaponData.effects);
     delete(weaponData._id);
-    weaponData.flags['midi-qol'].onUseMacroName = '[preCheckHits]ItemMacro';
+    setProperty(weaponData, 'flags.midi-qol.onUseMacroName', '[preCheckHits]ItemMacro');
     weaponData.flags['midi-qol'].onUseMacroParts = {
     'items': [
             {

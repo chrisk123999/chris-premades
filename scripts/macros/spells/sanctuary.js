@@ -23,6 +23,7 @@ export async function sanctuary(workflow) {
     let spellItem = duplicate(targetItem.toObject());
     spellItem.system.save.ability = 'wis';
     spellItem.system.preparation.mode = 'atwill';
+    spellItem.system.activation.type = 'special';
     delete(spellItem.effects);
     let spell = new CONFIG.Item.documentClass(spellItem, {parent: targetItem.actor});
     let options = {

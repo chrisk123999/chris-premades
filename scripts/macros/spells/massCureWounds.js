@@ -11,7 +11,7 @@ export async function massCureWounds({speaker, actor, token, character, item, ar
 	let damageFormula = diceNumber + 'd8[healing] + ' + chris.getSpellMod(this.item);
 	let damageRoll = await new Roll(damageFormula).roll({async: true});
 	if (targetTokens.length <= 6) {
-		chris.applyWorkflowDamage(this.token, damageRoll, 'healing', targetTokens, this.item.name, this.itemCardId);
+		await chris.applyWorkflowDamage(this.token, damageRoll, 'healing', targetTokens, this.item.name, this.itemCardId);
 	} else {
 		let buttons = [
 			{

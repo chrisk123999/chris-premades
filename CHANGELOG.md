@@ -1,8 +1,74 @@
+## 0.3.50:
+## New Monster Content:
+- Fragment of Krokulmar: Psionic Revitalization and Squirming Dodge
+## Bug Fixes:
+- Mass Cure Wounds
+  
+# 0.3.49:
+## Bug Fixes:
+- Cleave
+  
+# 0.3.48:
+## Bug Fixes:
+- Summon Undead
+- Aura Of Annihilation
+  
+# 0.3.47:
+## New Monster Content:
+- Bodak: Death Gaze, Sunlight Hypersensitivity, Aura of Annihilation
+## Bug Fixes:
+- Shove
+- Sanctuary
+  
+# 0.3.46:
+## New Content:
+- Spell: Hail of Thorns
+## Bug Fixes:
+- Commanding Strike
+  
+# 0.3.45:
+## New Content:
+- Generic Actions: Dash, Disengage, Dodge, Grapple, Hide, Ready Action, Ready Spell, Search, Shove
+## Bug Fixes:
+- Twinkling Constellations
+  
+# 0.3.44:
+## Bug Fixes:
+- Starry Form
+  
+# 0.3.43:
+## New Content:
+- Circle of Stars Druid: Starry Form and Twinkling Constellations (Thanks Wolfe)
+  
+# 0.3.42:
+## Bug Fixes:
+- Elemental Adept
+  
+# 0.3.41:
+## New Monster Content:
+- Shield Guardian: Bound and Regeneration
+  
+# 0.3.40:
+## Bug Fixes:
+- Summon Undead
+  
+# 0.3.38:
+## New Features:
+- Quick Insert Summon: Added a method to summon any actor using the Quick Insert module.
+  
+# 0.3.37:
+## New Content:
+- Spell: Summon Undead
+- School of Necromancy Wizard: Undead Thralls
+## Bug Fixes:
+- Crimson Rite
+- Eyes of Night
+  
 # 0.3.35:
 ## New Content:
 - Spell: Summon Shadowspawn
   
-#0.3.34:
+# 0.3.34:
 ## Bug Fixes:
 - Shadowblade
   
@@ -111,7 +177,7 @@
   
 # 0.3.14:
 ## New Monster Content:
-- Shadar-kai Soul Monger: Fey Ancestry, Soul Thirst, Weight of Ages, Shadow Dagger, Wave of Weariness
+- Shadar-kai Soul Monger: Fey Ancestry, Soul Thirst, Weight of Ages, Shadow Dagger, and Wave of Weariness
   
 # 0.3.13:
 ## New Monster Content:

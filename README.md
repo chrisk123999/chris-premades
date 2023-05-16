@@ -55,6 +55,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Earth Tremor  
 - Gaseous Form  
 - Guiding Bolt  
+- Hail of Thorns  
 - Heat Metal  
 - Hex  
 - Hold Person  
@@ -86,6 +87,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Fey  
 - Summon Fiend  
 - Summon Shadowspawn  
+- Summon Undead  
 - Tasha's Caustic Brew  
 - Tidal Wave  
 - Toll the Dead  
@@ -93,6 +95,18 @@ Additional support and feature requests can be made on my Discord server: https:
 - Vitriolic Sphere  
 - Wither and Bloom  
 - Zone of Truth  
+  
+## Generic Actions:  
+- Dash  
+- Disengage  
+- Dodge  
+- Grapple  
+- Help  
+- Hide  
+- Ready Action  
+- Ready Spell  
+- Search  
+- Shove  
   
 ## Class Features:  
 ### Artificer:  
@@ -150,6 +164,10 @@ Additional support and feature requests can be made on my Discord server: https:
 - Eyes of Night  
 - Steps of Night  
 - Vigilant Blessing  
+### Druid:  
+#### Circle of Stars:  
+- Starry Form  
+- Twinkling Constellations  
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  
@@ -212,6 +230,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Expert Divination  
 #### School of Necromancy:  
 - Grim Harvest  
+- Undead Thralls  
   
 ### Feats:  
 - Crusher  
@@ -307,6 +326,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Psychic Pulse  
 - Sever Psychic Link  
 - Tentacle  
+#### Fragment of Krokulmar:  
+- Psionic Revitalization  
+- Squirming Dodge  
 #### Gibbering Mouther:  
 - Aberrant Ground  
 - Bite  
@@ -428,6 +450,10 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Undead:  
 #### Avatar of Death:  
 - Turning Immunity  
+#### Bodak:  
+- Aura of Annihilation  
+- Death Gaze  
+- Sunlight Hypersensitivity  
 #### Crawling Claw:  
 - Turning Immunity  
 #### Devkarin Lich:  
