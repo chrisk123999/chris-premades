@@ -20,13 +20,14 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
     let queueSetup = await queue.setup(workflow.uuid, 'elementalAdept', 350);
     if (!queueSetup) return;
     for (let i of workflow.damageRoll.terms) {
-        if (validTypes.has(i.flavor.toLowerCase()) && !i.isDeterministic && !isNaN(i.total)) {
+        let flavor = i.flavor.toLowerCase();
+        if (validTypes.has(flavor) && !i.isDeterministic && !isNaN(i.total)) {
             let termTotal = 0;
             for (let j of i.results) {
                 termTotal += Math.max(j.result, 2);
             }
-            if (!chris.checkTrait(token.actor, 'di', i.flavor)) {
-                if (chris.checkTrait(token.actor, 'dv', i.flavor)) {
+            if (!chris.checkTrait(token.actor, 'di', flavor)) {
+                if (chris.checkTrait(token.actor, 'dv', flavor)) {
                     hpDamageTotal += termTotal * 2;
                 } else {
                     hpDamageTotal += termTotal;
@@ -35,9 +36,9 @@ export async function elementalAdept(token, {item, workflow, ditem}) {
             newDamageTotal += termTotal;
         } else {
             if (isNaN(i.total)) continue;
-            if (chris.checkTrait(token.actor, 'dr', i.flavor)) {
+            if (chris.checkTrait(token.actor, 'dr', flavor)) {
                 hpDamageTotal += Math.floor(i.total / 2);
-            } else if (!chris.checkTrait(token.actor, 'di', i.flavor)) {
+            } else if (!chris.checkTrait(token.actor, 'di', flavor)) {
                 hpDamageTotal += i.total;
             }
             newDamageTotal += i.total;

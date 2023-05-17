@@ -1,4 +1,8 @@
-## 0.3.50:
+## 0.3.51:
+## Bug Fixes:
+- Elemental Adept
+  
+# 0.3.50:
 ## New Monster Content:
 - Fragment of Krokulmar: Psionic Revitalization and Squirming Dodge
 ## Bug Fixes:
