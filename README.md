@@ -68,6 +68,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Melf's Acid Arrow  
 - Mind Sliver  
 - Mirror Image  
+- Misty Step  
 - Pass Without Trace  
 - Protection from Evil and Good  
 - Raulothim's Psychic Lance  

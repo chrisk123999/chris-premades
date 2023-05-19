@@ -1,3 +1,7 @@
+# 0.3.53:
+## New Content:
+- Spell: Misty Step
+  
 # 0.3.52:
 ## New Content:
 - Spell: Summon Draconic Spirit
