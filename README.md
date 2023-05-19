@@ -82,6 +82,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Beast  
 - Summon Celestial  
 - Summon Construct  
+- Summon Draconic Spirit  
 - Summon Elemental  
 - Summon Fey  
 - Summon Fiend  

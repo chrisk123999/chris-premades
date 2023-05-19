@@ -49,6 +49,7 @@ import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
+import {draconicSpirit} from './macros/monsterFeatures/draconicSpirit/draconicSpirit.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
@@ -152,6 +153,7 @@ import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
+import {summonDraconicSpirit} from './macros/spells/summonDraconicSpirit.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
@@ -196,6 +198,7 @@ let monster = {
 	'clayGolem': clayGolem,
 	'constructSpirit': constructSpirit,
 	'corpseFlower': corpseFlower,
+	'draconicSpirit': draconicSpirit,
 	'dreamEater': dreamEater,
 	'drow': drow,
 	'duergar': duergar,
@@ -378,6 +381,7 @@ export let macros = {
 	'summonBeast': summonBeast,
 	'summonCelestial': summonCelestial,
 	'summonConstruct': summonConstruct,
+	'summonDraconicSpirit': summonDraconicSpirit,
 	'summonElemental': summonElemental,
 	'summonFey': summonFey,
 	'summonFiend': summonFiend,

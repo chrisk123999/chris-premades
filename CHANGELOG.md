@@ -1,4 +1,8 @@
-## 0.3.51:
+# 0.3.52:
+## New Content:
+- Spell: Summon Draconic Spirit
+  
+# 0.3.51:
 ## Bug Fixes:
 - Elemental Adept
   
