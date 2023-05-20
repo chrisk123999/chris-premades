@@ -48,8 +48,8 @@ export function registerSettings() {
 		}
 	});
 	game.settings.register(moduleName, 'Tasha Actors', {
-		'name': 'Keep Tasha Actors Updated',
-		'hint': 'This setting will keep the Tasha\'s Cauldron Of Everything actors from this module updated in the sidebar.',
+		'name': 'Keep Summon Actors Updated',
+		'hint': 'This setting will keep actors from this module updated in the sidebar.',
 		'scope': 'world',
 		'config': true,
 		'type': Boolean,

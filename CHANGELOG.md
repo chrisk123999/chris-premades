@@ -1,6 +1,8 @@
 # 0.3.54:
 ## New Content:
 - Spell: Healing Spirit
+## Other Notes:
+- Renamed update summon actor setting.
   
 # 0.3.53:
 ## New Content:
