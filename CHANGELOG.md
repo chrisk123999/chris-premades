@@ -1,3 +1,7 @@
+# 0.3.54:
+## New Content:
+- Spell: Healing Spirit
+  
 # 0.3.53:
 ## New Content:
 - Spell: Misty Step

@@ -85,6 +85,7 @@ import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grim
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
+import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
 import {help} from './macros/mechanics/help/help.js';
@@ -322,6 +323,7 @@ export let macros = {
 	'grovelthrash': grovelthrash,
 	'hailOfThorns': hailOfThorns,
 	'healingLight': healingLight,
+	'healingSpirit': healingSpirit,
 	'heartOfTheStorm': heartOfTheStorm,
 	'heatMetal': heatMetal,
 	'help': help,

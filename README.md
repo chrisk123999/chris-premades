@@ -56,6 +56,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Gaseous Form  
 - Guiding Bolt  
 - Hail of Thorns  
+- Healing Spirit  
 - Heat Metal  
 - Hex  
 - Hold Person  

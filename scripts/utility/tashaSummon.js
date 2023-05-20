@@ -82,12 +82,12 @@ async function spawn(sourceActor, updates, duration, originItem) {
                 }
             }
         }
-    }
+    };
     if (!updates) updates = {};
     setProperty(updates, 'embedded.ActiveEffect.Summoned Creature', effectData);
     let options = {
         'controllingActor': originItem.actor
-    }
+    };
     let tokenDocument = await sourceActor.getTokenDocument();
     let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
     if (!spawnedTokens) return;
@@ -114,7 +114,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
                 }
             }
         }
-    }
+    };
     await chris.createEffect(originItem.actor, casterEffectData);
     if (!chris.inCombat()) return;
     let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
