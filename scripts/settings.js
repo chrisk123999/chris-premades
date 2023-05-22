@@ -488,4 +488,21 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Warding Bond', {
+		'name': 'Warding Bond Automation',
+		'hint': 'Enabling this allows the automation of the Warding Bond spell via the use of hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value && game.user.isGM) {
+				Hooks.on('updateToken', macros.wardingBond.moveTarget);
+				Hooks.on('updateToken', macros.wardingBond.moveSource);
+			} else if (game.user.isGM) {
+				Hooks.off('updateToken', macros.wardingBond.moveTarget);
+				Hooks.off('updateToken', macros.wardingBond.moveSource);
+			}
+		}
+	});
 }

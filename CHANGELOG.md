@@ -1,3 +1,9 @@
+# 0.3.56:
+## New Content:
+- Spell: Warding Bond
+## Bug Fixes:
+- Piercer
+  
 # 0.3.55:
 ## Bug Fixes:
 - Beacon of Hope

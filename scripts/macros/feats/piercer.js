@@ -11,7 +11,7 @@ async function reroll({speaker, actor, token, character, item, args}) {
     let queueSetup = await queue.setup(this.item.uuid, 'piercerReroll', 390);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(this.damageRoll);
-    if (!damageTypes.has('piercing')) {
+    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
         queue.remove(this.item.uuid);
         return;
     }
@@ -61,7 +61,7 @@ async function critical({speaker, actor, token, character, item, args}) {
     let queueSetup = await queue.setup(this.item.uuid, 'piercerCritical', 250);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(this.damageRoll);
-    if (!damageTypes.has('piercing')) {
+    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
         queue.remove(this.item.uuid);
         return;
     }

@@ -72,6 +72,10 @@ Hooks.once('ready', async function() {
 			Hooks.on('deleteToken', effectAuraHooks.deleteToken);
 			effectAuras.registerAll();
 		}
+		if (game.settings.get('chris-premades', 'Warding Bond')) {
+			Hooks.on('updateToken', macros.wardingBond.moveTarget);
+			Hooks.on('updateToken', macros.wardingBond.moveSource);
+		}
 	}
 	await loadTriggers();
 	if (game.settings.get('chris-premades', 'Condition Resistance')) {

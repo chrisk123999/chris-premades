@@ -169,6 +169,7 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
+import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
@@ -236,7 +237,8 @@ let monster = {
 let onHit = {
 	'fireForm': fireElemental.fireForm,
 	'heatedBody': fireSnake.heatedBody,
-	'soulThirst': soulMonger.soulThirst.onHit
+	'soulThirst': soulMonger.soulThirst.onHit,
+	'wardingBond': wardingBond.onHit
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
 	switch (macroName) {
@@ -395,6 +397,7 @@ export let macros = {
 	'twilightSanctuary': twilightSanctuary,
 	'vampiricBite': vampiricBite,
 	'vampiricTouch': vampiricTouch,
+	'wardingBond': wardingBond,
 	'wildhunt': wildhunt,
 	'witherAndBloom': witherAndBloom,
 	'wrathOfTheStorm': wrathOfTheStorm,
