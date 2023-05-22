@@ -12,7 +12,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
     if (!targetToken) return;
     let queueSetup = await queue.setup(workflow.uuid, 'mastersAmulet', 400);
     if (!queueSetup) return;
-    if (ditem.newHP > ditem.oldHP) {
+    if (ditem.newHP >= ditem.oldHP) {
         queue.remove(workflow.uuid);
         return;
     }

@@ -144,7 +144,11 @@ export function setConfig() {
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
-            'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen'
+            'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen',
+            'Reaper: Chill Touch': 'Reaper',
+            'Reaper: Sapping Sting': 'Reaper',
+            'Reaper: Spare the Dying': 'Reaper',
+            'Reaper: Toll the Dead': 'Reaper'
         },
         'additionalItems': {
             'Blade Flourish': [

@@ -1,3 +1,9 @@
+# 0.3.55:
+## Bug Fixes:
+- Beacon of Hope
+- Shield Guardian: Bound
+- Reaper
+  
 # 0.3.54:
 ## New Content:
 - Spell: Healing Spirit
