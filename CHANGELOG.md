@@ -1,3 +1,7 @@
+# 0.3.59:
+## Bug Fixes:
+- Hunter's Mark
+  
 # 0.3.58:
 ## Bug Fixes:
 - Rakish Audacity

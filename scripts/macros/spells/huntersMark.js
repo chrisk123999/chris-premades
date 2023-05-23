@@ -103,7 +103,7 @@ async function item({speaker, actor, token, character, item, args}) {
 }
 async function attack({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1) return;
-    let attackType = workflow.item.system.actionType;
+    let attackType = this.item.system.actionType;
     if (!(attackType === 'mwak' || attackType === 'rwak')) return;
     let sourceActor = this.actor;
     let markedTarget = sourceActor.flags['chris-premades']?.spell?.huntersMark;
