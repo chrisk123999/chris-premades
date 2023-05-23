@@ -1,3 +1,7 @@
+# 0.3.58:
+## Bug Fixes:
+- Rakish Audacity
+  
 # 0.3.57:
 ## New Content:
 - Rogue: Sneak Attack

@@ -20,7 +20,7 @@ async function attack({speaker, actor, token, character, item, args}) {
         if (nearbyTokens.length != 0) doSneak = true;
     }
     let rakishAudacity = this.actor.flags['chris-premades']?.feature?.rakishAudacity;
-    if (rakishAudacity && !this.disadvantage && !doSneak) {
+    if (rakishAudacity && !this.disadvantage && !doSneak && (chris.getDistance(this.token, targetToken) <= 5)) {
         let rNearbyTokens = await chris.findNearby(this.token, 5, 'all', true).filter(t => t.id != targetToken.id);
         if (rNearbyTokens.length === 0) {
             doSneak = true;
