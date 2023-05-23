@@ -103,10 +103,12 @@ async function item({speaker, actor, token, character, item, args}) {
 }
 async function attack({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1) return;
+    let attackType = workflow.item.system.actionType;
+    if (!(attackType === 'mwak' || attackType === 'rwak')) return;
     let sourceActor = this.actor;
-    let hexedTarget = sourceActor.flags['chris-premades']?.spell?.huntersMark;
+    let markedTarget = sourceActor.flags['chris-premades']?.spell?.huntersMark;
     let targetToken = this.hitTargets.first();
-    if (targetToken.id != hexedTarget) return;
+    if (targetToken.id != markedTarget) return;
     let queueSetup = await queue.setup(this.item.uuid, 'huntersMark', 250);
     if (!queueSetup) return;
     let oldFormula = this.damageRoll._formula;

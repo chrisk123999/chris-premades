@@ -1,3 +1,12 @@
+# 0.3.57:
+## New Content:
+- Rogue: Sneak Attack
+- Swashbuckler Rogue: Rakish Audacity
+## New Monster Content:
+- Andras, Assassin, Bag of Nails, Black Viper, Corrin Delmaco, Dark Tide Knight,Darz Helgar, Droki, Drow Assassin, Duergar Spy, Garret Levistusson, Ghald, Grumink the Renegade, Half-Green Dragon Assassin, Jarlaxle Baenre, Khalessa Draga, Lords' Alliance Spy, Master Thief, Mirt, Obmi, Orvex Ocrammas, Portentia Dran, Raezil, Samara Strongbones, Shalvus Martholio, Spy, Torbit, Two Dry Cloaks, Urstul Floxin, and Viari: Sneak Attack
+## Bug Fixes:
+- Hunter's Mark
+  
 # 0.3.56:
 ## New Content:
 - Spell: Warding Bond

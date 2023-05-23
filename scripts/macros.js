@@ -139,6 +139,7 @@ import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {slasher} from './macros/feats/slasher.js';
+import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
@@ -373,6 +374,7 @@ export let macros = {
 	'shadowBlade': shadowBlade,
 	'shockingGrasp': shockingGrasp,
 	'slasher': slasher,
+	'sneakAttack': sneakAttack,
 	'spikeGrowth': spikeGrowth,
 	'spiritGuardians': spiritGuardians,
 	'spiritShroud': spiritShroud,

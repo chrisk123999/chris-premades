@@ -200,6 +200,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Dread Ambusher  
 ### Rogue:  
 - Evasion  
+- Sneak Attack  
+#### Swashbuckler:  
+- Rakish Audacity  
 ### Sorcerer:  
 #### Divine Soul:    
 - Favored by the Gods  
