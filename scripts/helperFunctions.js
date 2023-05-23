@@ -367,5 +367,8 @@ export let chris = {
 	},
 	'itemDuration': function _itemDuration(item) {
 		return DAE.convertDuration(item.system.duration, chris.inCombat());
+	},
+	'getCriticalFormula': function _getCriticalFormula(formula) {
+		return new CONFIG.Dice.DamageRoll(formula,	{}, {'critical': true, 'powerfulCritical': game.settings.get('dnd5e', 'criticalDamageMaxDice'), 'multiplyNumeric': game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
 	}
 };

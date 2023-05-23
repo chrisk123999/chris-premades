@@ -153,9 +153,9 @@ async function damage({speaker, actor, token, character, item, args}) {
     let queueSetup = await queue.setup(this.item.uuid, 'bestowCurse', 250);
     if (!queueSetup) return;
     let oldFormula = this.damageRoll._formula;
-    let diceNum = 1;
-    if (this.isCritical) diceNum = 2;
-    let damageFormula = oldFormula + ' + ' + diceNum + 'd8[necrotic]';
+    let bonusDamageFormula = '1d8[necrotic]';
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

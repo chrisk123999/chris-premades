@@ -16,8 +16,8 @@ async function item({speaker, actor, token, character, item, args}) {
         queue.remove(this.item.uuid);
         return;
     }
-    if (this.isCritical) damageDiceNum = damageDiceNum * 2;
     let damageDice = damageDiceNum + 'd6[bludgeoning]';
+    if (this.isCritical) damageDice = chris.getCriticalFormula(damageDice);
     let damageFormula = this.damageRoll._formula + ' + ' + damageDice;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);

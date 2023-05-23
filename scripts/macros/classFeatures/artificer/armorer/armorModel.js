@@ -80,9 +80,9 @@ async function lightningLauncher({speaker, actor, token, character, item, args})
         return;
     }
     if (chris.inCombat()) await this.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
-    let diceNumber = 1;
-    if (this.isCritical) diceNumber = 2;
-    let damageFormula = this.damageRoll._formula + ' + ' + diceNumber + 'd6[lightning]';
+    let bonusDamageFormula = '1d6[lightning]';
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

@@ -1,3 +1,11 @@
+# 0.3.61:
+## Update Notes:
+- All automations that modify damage rolls now properly take into account your critical roll settings from the 5E system.
+## Bug Fixes:
+- Armor Model, Divine Fury, Blade Flourish, Rite of the Dawn, Divine Strike, Divine Smite, Sneak Attack, Grave Touched, Groveltrash, Shadow Demon Claws, Bestow Curse, Hex, Hunter's Mark, Lightning Arrow, and Spirit Shroud
+## Other Notes:
+- This module will not function on v11 of Foundry.  Update at your own risk.  V11 support will happen in a future update.
+  
 # 0.3.60:
 ## Bug Fixes:
 - Sneak Attack

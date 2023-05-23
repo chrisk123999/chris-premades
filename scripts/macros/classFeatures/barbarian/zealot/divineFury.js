@@ -26,10 +26,9 @@ async function attack({speaker, actor, token, character, item, args}) {
         return;
     }
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.divineFury.turn', game.combat.round + '-' + game.combat.turn);
-    let diceNumber = 1;
-    if (this.isCritical) diceNumber = 2;
-    let bonusDamage = 'd6[' + damageType + '] + ' + barbDamage;
-    let damageFormula = this.damageRoll._formula + ' + ' + diceNumber + bonusDamage;
+    let bonusDamage = '1d6[' + damageType + '] + ' + barbDamage;
+    if (this.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
+    let damageFormula = this.damageRoll._formula + ' + ' + bonusDamage;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

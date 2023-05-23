@@ -91,8 +91,8 @@ export async function divineSmite({speaker, actor, token, character, item, args}
     let targetActor = targetToken.actor;
     let type = chris.raceOrType(targetActor);
     if (type === 'undead' || type === 'fiend') damageDiceNum += 1;
-    if (this.isCritical) damageDiceNum = damageDiceNum * 2;
     let damageDice = damageDiceNum + 'd8[radiant]';
+    if (this.isCritical) damageDice = chris.getCriticalFormula(damageDice);
     let damageFormula = this.damageRoll._formula + ' + ' + damageDice;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);

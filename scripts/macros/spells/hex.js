@@ -129,9 +129,9 @@ async function hexAttack({speaker, actor, token, character, item, args}) {
     let queueSetup = await queue.setup(this.item.uuid, 'hex', 250);
     if (!queueSetup) return;
     let oldFormula = this.damageRoll._formula;
-    let diceNum = 1;
-    if (this.isCritical) diceNum = 2;
-    let damageFormula = oldFormula + ' + ' + diceNum + 'd6[necrotic]';
+    let bonusDamageFormula = '1d6[necrotic]';
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

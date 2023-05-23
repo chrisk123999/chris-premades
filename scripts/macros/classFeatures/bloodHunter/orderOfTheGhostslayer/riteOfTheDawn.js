@@ -15,8 +15,9 @@ export async function riteOfTheDawn({speaker, actor, token, character, item, arg
     }
     let queueSetup = await queue.setup(this.item.uuid, 'riteOfTheDawn', 250);
     if (!queueSetup) return;
-    if (this.isCritical) damageDice = 2 + damageDice.substring(1);
-    let damageFormula = this.damageRoll._formula + ' + ' + damageDice + '[radiant]';
+    let bonusDamageFormula = damageDice.formula + '[radiant]';
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

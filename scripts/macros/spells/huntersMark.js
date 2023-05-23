@@ -112,9 +112,9 @@ async function attack({speaker, actor, token, character, item, args}) {
     let queueSetup = await queue.setup(this.item.uuid, 'huntersMark', 250);
     if (!queueSetup) return;
     let oldFormula = this.damageRoll._formula;
-    let diceNum = 1;
-    if (this.isCritical) diceNum = 2;
-    let damageFormula = oldFormula + ' + ' + diceNum + 'd6[' + this.defaultDamageType + ']';
+    let bonusDamageFormula = '1d6[' + this.defaultDamageType + ']'
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

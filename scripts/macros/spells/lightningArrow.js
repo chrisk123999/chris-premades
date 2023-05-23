@@ -8,7 +8,6 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
 	let targetToken = this.targets.first();
 	if (!(this.item.system.properties?.thr || this.item.system.actionType === 'rwak')) return;
 	let diceNumber = 4;
-	if (this.isCritical) diceNumber = 8;
 	let itemAbility = this.item.system.ability;
 	if (itemAbility === '') {
 		itemAbility = 'str';
@@ -21,9 +20,9 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
 	if (effect) {
 		castLevel = effect.flags['midi-qol'].castData.castLevel;
 		let extraDiceNumber = castLevel - 3;
-		if (this.isCritical) extraDiceNumber = extraDiceNumber * 2;
 		if (castLevel > 3) damageFormula = damageFormula + ' + ' + extraDiceNumber + 'd8[lightning]';
 	}
+	if (this.isCritical) damageFormula = chris.getCriticalFormula(damageFormula);
 	let damageRoll = await new Roll(damageFormula).roll({async: true});
 	await this.setDamageRoll(damageRoll);
 	if (this.hitTargets.size === 0) await chris.applyDamage([targetToken], Math.floor(damageRoll.total / 2), 'lightning');

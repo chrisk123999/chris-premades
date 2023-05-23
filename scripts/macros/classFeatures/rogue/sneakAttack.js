@@ -45,7 +45,6 @@ async function attack({speaker, actor, token, character, item, args}) {
             let scale = this.actor.system.scale?.rogue?.['sneak-attack'];
             if (scale) {
                 let number = scale.number;
-                if (this.isCritical) number = number * 2;
                 bonusDamageFormula = number + 'd' + scale.faces + '[' + this.defaultDamageType + ']';
             } else {
                 ui.notifications.warn('Actor does not appear to have a Sneak Attack scale!');
@@ -54,12 +53,12 @@ async function attack({speaker, actor, token, character, item, args}) {
             }
         } else if (this.actor.type === 'npc') {
             let number = Math.ceil(this.actor.system.details.cr) / 2;
-            if (this.isCritical) number = number * 2;
             bonusDamageFormula = number + 'd6[' + this.defaultDamageType + ']';
         }
     } else {
         bonusDamageFormula += '[' + this.defaultDamageType + ']';
     }
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);

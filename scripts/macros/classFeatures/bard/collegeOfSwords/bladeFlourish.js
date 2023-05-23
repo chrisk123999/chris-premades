@@ -64,11 +64,10 @@ export async function bladeFlourish({speaker, actor, token, character, item, arg
             queue.remove(this.item.uuid);
             return;
         }
-        if (this.isCritical) {
-            bardicInspirationDie = 2 + bardicInspirationDie.substring(1);
-        }
         let damageType = this.item.system.damage.parts[0][1];
-        let damageFormula = this.damageRoll._formula + ' + ' + bardicInspirationDie + '[' + damageType + ']';
+        let bonusDamageFormula = bardicInspirationDie.formula + '[' + damageType + ']'
+        if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+        let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
         let damageRoll = await new Roll(damageFormula).roll({async: true});
         let bardicInspirationDieRoll = damageRoll.dice[damageRoll.dice.length - 1].total;
         await this.setDamageRoll(damageRoll);

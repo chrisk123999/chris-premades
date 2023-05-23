@@ -58,8 +58,9 @@ async function item({speaker, actor, token, character, item, args}) {
             break;
     }
     if (classLevels >= 14) diceNumber += 1;
-    if (this.isCritical) diceNumber = diceNumber * 2;
-    let damageFormula = this.damageRoll._formula + ' + ' + diceNumber + 'd8[' + damageType + ']';
+    let bonusDamageFormula = diceNumber + 'd8[' + damageType + ']';
+    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await this.setDamageRoll(damageRoll);
     queue.remove(this.item.uuid);

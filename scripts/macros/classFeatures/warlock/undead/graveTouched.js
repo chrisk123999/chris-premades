@@ -32,9 +32,8 @@ async function attack({speaker, actor, token, character, item, args}) {
     let damageFormula = newDamageRoll;
     let effect = chris.findEffect(this.actor, 'Form of Dread');
     if (effect) {
-        let diceNum = 1;
-        if (this.isCritical) diceNum = 2;
-        let extraDice = '+ ' + diceNum + 'd' + this.damageRoll.dice[0].faces + '[necrotic]';
+        let extraDice = '+ 1d' + this.damageRoll.dice[0].faces + '[necrotic]';
+        if (this.isCritical) extraDice = chris.getCriticalFormula(extraDice);
         damageFormula = newDamageRoll + extraDice;
     }
     let damageRoll = await new Roll(damageFormula).roll({async: true});
