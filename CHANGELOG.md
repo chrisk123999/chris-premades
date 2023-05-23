@@ -1,3 +1,7 @@
+# 0.3.60:
+## Bug Fixes:
+- Sneak Attack
+  
 # 0.3.59:
 ## Bug Fixes:
 - Hunter's Mark

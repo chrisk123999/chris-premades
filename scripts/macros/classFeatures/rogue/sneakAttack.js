@@ -2,7 +2,7 @@ import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
 async function attack({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1) return;
-    if (!(this.item.system.actionType === 'rwak' || this.item.system.properties.fin)) return;
+    if (!(this.item.system.actionType === 'rwak' || this.item.system.properties?.fin)) return;
     let effect = chris.findEffect(this.actor, 'Sneak Attack');
     if (!effect) return;
     let originFeature = await fromUuid(effect.origin);
