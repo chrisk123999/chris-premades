@@ -1,3 +1,7 @@
+# 0.3.62:
+## Bug Fixes:
+- Sanctuary
+  
 # 0.3.61:
 ## Update Notes:
 - All automations that modify damage rolls now properly take into account your critical roll settings from the 5E system.
