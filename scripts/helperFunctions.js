@@ -146,7 +146,7 @@ export let chris = {
 		}
 		return spellMod;
 	},
-	'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type) {
+	'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, options) {
 		let generatedInputs = [];
 		let isFirst = true;
 		let number = 1;
@@ -185,6 +185,13 @@ export let chris = {
 				generatedInputs.push({
 					'label': html,
 					'type': 'number'
+				});
+			} else if (type === 'select') {
+				generatedInputs.push({
+					'label': html,
+					'type': 'select',
+					'options': options,
+					'value': value
 				});
 			} else return {'buttons': false};
 		}
