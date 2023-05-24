@@ -197,12 +197,14 @@ export let chris = {
 		}
 		function dialogRender(html) {
 			let trs = html[0].getElementsByTagName('tr');
-			for (let t of trs) {
-				t.style.display = 'flex';
-				t.style.flexFlow = 'row-reverse';
-				t.style.alignItems = 'center';
-				t.style.justifyContent = 'flex-end';
-				if (type === 'one') t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true});
+			if (type != 'select') {
+				for (let t of trs) {
+					t.style.display = 'flex';
+					t.style.flexFlow = 'row-reverse';
+					t.style.alignItems = 'center';
+					t.style.justifyContent = 'flex-end';
+					if (type === 'one') t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true});
+				}
 			}
 			let ths = html[0].getElementsByTagName('th');
 			for (let t of ths) {
