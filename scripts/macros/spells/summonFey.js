@@ -95,6 +95,7 @@ export async function summonFey({speaker, actor, token, character, item, args}){
             let mirthfulData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mirthful', false);
             if (!mirthfulData) return;
             mirthfulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Mirthful');
+            mirthfulData.system.save.dc = chris.getSpellDC(this.item);
             updates.embedded.Item[mirthfulData.name] = mirthfulData;
             break;
         case 'Tricksy':

@@ -1,3 +1,7 @@
+# 0.3.67:
+## Bug Fixes:
+- Summon Fey
+  
 # 0.3.66:
 ## Bug Fixes:
 - Blade Flourish
