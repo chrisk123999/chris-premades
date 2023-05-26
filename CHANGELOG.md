@@ -1,3 +1,7 @@
+# 0.3.66:
+## Bug Fixes:
+- Blade Flourish
+  
 # 0.3.64:
 ## Bug Fixes:
 - Elemental Adept

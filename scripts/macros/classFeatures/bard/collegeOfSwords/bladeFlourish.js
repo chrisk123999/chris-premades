@@ -58,7 +58,7 @@ export async function bladeFlourish({speaker, actor, token, character, item, arg
         await chris.createEffect(sourceActor, effectData1);
         if (!skipUses) bardicInspiration.update({'system.uses.value': bardicInspirationUses - 1});
         let bardicInspirationDie = sourceActor.system.scale.bard['bardic-inspiration'];
-        if (skipUses) bardicInspirationDie = '1d6';
+        if (skipUses) bardicInspirationDie = {'formula': '1d6'};
         if (!bardicInspirationDie) {
             ui.notifications.warn('Source actor does not appear to have a Bardic Inspiration scale!');
             queue.remove(this.item.uuid);
