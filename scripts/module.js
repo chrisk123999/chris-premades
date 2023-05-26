@@ -92,7 +92,11 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
 	if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.damageApplied', macros.deathWard);
 	if (game.settings.get('chris-premades', 'Defensive Field')) Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
-	if (game.settings.get('chris-premades', 'Elemental Adept')) Hooks.on('midi-qol.damageApplied', macros.elementalAdept);
+	if (game.settings.get('chris-premades', 'Elemental Adept')) {
+		Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
+		Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
+		Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
+	}
 	if (game.settings.get('chris-premades', 'Mirror Image')) Hooks.on('midi-qol.AttackRollComplete', macros.mirrorImage);
 	if (game.settings.get('chris-premades', 'On Hit')) Hooks.on('midi-qol.RollComplete', onHitMacro);
 	if (game.settings.get('chris-premades', 'Protection from Evil and Good')) Hooks.on('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);
@@ -106,6 +110,41 @@ Hooks.once('ready', async function() {
 	if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
 	if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
 });
+function troubleshoot() {
+	console.log('/////////////// Game Information ///////////////');
+	console.log('                        Foundry Version: ' + game.version);
+	console.log('                         System Version: ' + game.system.version);
+	console.log('               Chris\'s Premades Version: ' + game.modules.get('chris-premades')?.version);
+	console.log('');
+	console.log('                     About Time Version: ' + game.modules.get('about-time')?.version);
+	console.log('         Advanced Token Effects Version: ' + game.modules.get('ATL')?.version);
+	console.log('           Automated Animations Version: ' + game.modules.get('autoanimations')?.version);
+	console.log('                  Build A Bonus Version: ' + game.modules.get('babonus')?.version);
+	console.log('             Compendium Folders Version: ' + game.modules.get('compendium-folders')?.version);
+	console.log('Custom Character Sheet Sections Version: ' + game.modules.get('autoanimations')?.version);
+	console.log('         Dynamic Active Effects Version: ' + game.modules.get('dae')?.version);
+	console.log('            D&D Beyond Importer Version: ' + game.modules.get('ddb-importer')?.version);
+	console.log('         Dynamic Active Effects Version: ' + game.modules.get('dae')?.version);
+	console.log('      DFreds Convenient Effects Version: ' + game.modules.get('dfreds-convenient-effects')?.version);
+	console.log('                   Effect Macro Version: ' + game.modules.get('effectmacro')?.version);
+	console.log('                Simple Calendar Version: ' + game.modules.get('foundryvtt-simple-calendar')?.version);
+	console.log('                       FXMaster Version: ' + game.modules.get('fxmaster')?.version);
+	console.log('                     Item Macro Version: ' + game.modules.get('itemacro')?.version);
+	console.log('Jules&Ben\'s Animated Assets Version (P): ' + game.modules.get('jb2a_patreon')?.version);
+	console.log('Jules&Ben\'s Animated Assets Version (F): ' + game.modules.get('jb2a_dnd5e')?.version);
+	console.log('                     libWrapper Version: ' + game.modules.get('lib-wrapper')?.version);
+	console.log('                       Midi-Qol Version: ' + game.modules.get('midi-qol')?.version);
+	console.log('                   Quick Insert Version: ' + game.modules.get('quick-insert')?.version);
+	console.log('                     Small Time Version: ' + game.modules.get('smalltime')?.version);
+	console.log('                      Socketlib Version: ' + game.modules.get('socketlib')?.version);
+	console.log('                 Template Macro Version: ' + game.modules.get('templatemacro')?.version);
+	console.log('                  Tidy 5e Sheet Version: ' + game.modules.get('tidy5e-sheet')?.version);
+	console.log('                       Times Up Version: ' + game.modules.get('times-up')?.version);
+	console.log('                 Token Attacher Version: ' + game.modules.get('token-attacher')?.version);
+	console.log('          Visual Active Effects Version: ' + game.modules.get('visual-active-effects')?.version);
+	console.log('                       Warpgate Version: ' + game.modules.get('warpgate')?.version);
+	console.log('////////////////////////////////////////////////');
+}
 globalThis['chrisPremades'] = {
 	helpers,
 	macros,
@@ -113,5 +152,6 @@ globalThis['chrisPremades'] = {
 	tokenMove,
 	effectAuras,
 	bab,
-	tashaSummon
+	tashaSummon,
+	troubleshoot
 }

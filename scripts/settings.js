@@ -331,9 +331,13 @@ export function registerSettings() {
 		'default': false,
 		'onChange': value => {
 			if (value) {
-				Hooks.on('midi-qol.damageApplied', macros.elementalAdept);
+				Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
+				Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
+				Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
 			} else {
-				Hooks.off('midi-qol.damageApplied', macros.elementalAdept);
+				Hooks.off('midi-qol.preambleComplete', macros.elementalAdept.early);
+				Hooks.off('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
+				Hooks.off('midi-qol.RollComplete', macros.elementalAdept.late);
 			}
 		}
 	});

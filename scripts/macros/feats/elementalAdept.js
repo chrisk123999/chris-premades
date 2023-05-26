@@ -1,65 +1,84 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-export async function elementalAdept(token, {item, workflow, ditem}) {
-    if (!workflow.actor?.flags?.['chris-premades']?.feat?.elementalAdept || !workflow.damageRoll || workflow.item?.type != 'spell') return;
-    let acidAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.acid;
-    let coldAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.cold;
-    let fireAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.fire;
-    let lightningAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.lightning;
-    let thunderAdept = workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.thunder;
-    let validTypes = new Set([]);
-    if (acidAdept) validTypes.add('acid');
-    if (coldAdept) validTypes.add('cold');
-    if (fireAdept) validTypes.add('fire');
-    if (lightningAdept) validTypes.add('lightning');
-    if (thunderAdept) validTypes.add('thunder');
-    if (validTypes.size === 0) return;
-    if (chris.totalDamageType(token.actor, workflow.damageDetail, 'temphp') > 0 || chris.totalDamageType(token.actor, workflow.damageDetail, 'healing') > 0) return; 
-    let newDamageTotal = 0;
-    let hpDamageTotal = 0;
-    let queueSetup = await queue.setup(workflow.uuid, 'elementalAdept', 350);
+async function early(workflow) {
+    if (workflow.targets.size === 0) return;
+    let spellFlag = workflow.item.flags['chris-premades']?.spell;
+    if (!(workflow.item.type === 'spell' || spellFlag)) return;
+    let values = [];
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.acid) values.push('acid');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.cold) values.push('cold');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.fire) values.push('fire');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.lightning) values.push('lightning');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.thunder) values.push('thunder');
+    if (values.length === 0) return;
+    let changes = [];
+    for (let i of values) {
+        changes.push({
+            'key': 'system.traits.dv.value',
+            'mode': 0,
+            'value': i,
+            'priority': 20
+        });
+    }
+    let effectData = {
+        'label': 'Elemental Adept',
+        'icon': 'icons/magic/time/arrows-circling-green.webp',
+        'origin': workflow.actor.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'changes': changes,
+        'transfer': true
+    }
+    workflow.targets.forEach(async function(token, key, set) {
+        for (let i of values) {
+            if (chris.checkTrait(token.actor, 'dr', i)) {
+                await chris.createEffect(token.actor, effectData);
+                break;
+            }
+        }
+    });
+}
+async function late(workflow) {
+    if (workflow.targets.size === 0) return;
+    workflow.targets.forEach(async function(token, key, set) {
+        let effect = chris.findEffect(token.actor, 'Elemental Adept');
+        if (effect) await chris.removeEffect(effect);
+    });
+}
+async function damage(workflow) {
+    if (workflow.targets.size === 0) return;
+    let spellFlag = workflow.item.flags['chris-premades']?.spell;
+    if (!(workflow.item.type === 'spell' || spellFlag)) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'elementalAdept', 320);
     if (!queueSetup) return;
-    for (let i of workflow.damageRoll.terms) {
-        let flavor = i.flavor.toLowerCase();
-        if (validTypes.has(flavor) && !i.isDeterministic && !isNaN(i.total)) {
-            let termTotal = 0;
-            for (let j of i.results) {
-                termTotal += Math.max(j.result, 2);
-            }
-            if (!chris.checkTrait(token.actor, 'di', flavor)) {
-                if (chris.checkTrait(token.actor, 'dv', flavor)) {
-                    hpDamageTotal += termTotal * 2;
-                } else {
-                    hpDamageTotal += termTotal;
-                }
-            }
-            newDamageTotal += termTotal;
+    let values = [];
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.acid) values.push('acid');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.cold) values.push('cold');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.fire) values.push('fire');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.lightning) values.push('lightning');
+    if (workflow.actor.flags['chris-premades']?.feat?.elementalAdept?.thunder) values.push('thunder');
+    if (values.length === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    let oldDamageRoll = workflow.damageRoll;
+    let newDamageRoll = '';
+    for (let i = 0; oldDamageRoll.terms.length > i; i++) {
+        let flavor = oldDamageRoll.terms[i].flavor;
+        let isDeterministic = oldDamageRoll.terms[i].isDeterministic;
+        if (!values.includes(flavor.toLowerCase()) || isDeterministic === true) {
+            newDamageRoll += oldDamageRoll.terms[i].formula;
         } else {
-            if (isNaN(i.total)) continue;
-            if (chris.checkTrait(token.actor, 'dr', flavor)) {
-                hpDamageTotal += Math.floor(i.total / 2);
-            } else if (!chris.checkTrait(token.actor, 'di', flavor)) {
-                hpDamageTotal += i.total;
-            }
-            newDamageTotal += i.total;
+            newDamageRoll += '{' + oldDamageRoll.terms[i].expression + ', ' + (oldDamageRoll.terms[i].results.length * 2) + '}kh[' + flavor + ']'
         }
     }
-    if (ditem.oldTempHP > 0) {
-        if (hpDamageTotal > ditem.oldTempHP) {
-            ditem.newTempHP = 0;
-            hpDamageTotal -= ditem.oldTempHP;
-            ditem.tempDamage = ditem.oldTempHP;
-        } else {
-            ditem.newTempHP = ditem.oldTempHP - hpDamageTotal;
-            ditem.tempDamage = hpDamageTotal;
-        }
-    }
-    if (hpDamageTotal > 0) {
-        let maxHP = token.actor.system.attributes.hp.max;
-        ditem.hpDamage = Math.clamped(hpDamageTotal, 0, maxHP);
-        ditem.newHP = Math.clamped(ditem.oldHP - hpDamageTotal, 0, maxHP);
-    }
-    ditem.appliedDamage = hpDamageTotal;
-    ditem.totalDamage = newDamageTotal;
-    queue.remove(workflow.uuid);
+    let damageRoll = await new Roll(newDamageRoll).roll({async: true});
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
+}
+export let elementalAdept = {
+    'early': early,
+    'late': late,
+    'damage': damage
 }

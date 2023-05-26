@@ -1,3 +1,8 @@
+# 0.3.64:
+## Bug Fixes:
+- Elemental Adept
+- Healing Spirit
+  
 # 0.3.63:
 ## Bug Fixes:
 - Sanctuary

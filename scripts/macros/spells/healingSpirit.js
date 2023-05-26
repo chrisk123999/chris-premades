@@ -6,7 +6,7 @@ async function item({speaker, actor, token, character, item, args}) {
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Healing Spirit - Heal');
     featureData.system.damage.parts[0][0] = (this.castData.castLevel - 1) + 'd6[healing]';
-    let uses = Math.min(2, chris.getSpellMod(this.item));
+    let uses = Math.max(2, chris.getSpellMod(this.item) + 1);
     featureData.system.uses.max = uses;
     featureData.system.uses.value = uses;
     setProperty(featureData, 'flags.chris-premades.spell.healingSpirit.name', this.item.name);
