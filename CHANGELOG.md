@@ -1,3 +1,7 @@
+# 0.3.68:
+## Bug Fixes:
+- Summon Celestial
+  
 # 0.3.67:
 ## Bug Fixes:
 - Summon Fey

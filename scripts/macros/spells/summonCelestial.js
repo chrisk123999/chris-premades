@@ -38,7 +38,7 @@ export async function summonCelestial({speaker, actor, token, character, item, a
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.msak.attack),
+                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
                             'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.wis.mod + Number(this.actor.system.bonuses.rsak.attack)
                         }
                     }
@@ -68,6 +68,7 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             let radiantBowData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Radiant Bow (Avenger Only)', false);
             if (!radiantBowData) return;
             radiantBowData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Radiant Bow (Avenger Only)');
+            radiantBowData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
             updates.embedded.Item[radiantBowData.name] = radiantBowData;
             updates.actor.system.attributes.ac = {
                 'flat': 11 + this.castData.castLevel
@@ -77,6 +78,7 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             let radiantMaceData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Radiant Mace (Defender Only)', false);
             if (!radiantMaceData) return;
             radiantMaceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Radiant Mace (Defender Only)');
+            radiantMaceData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
             updates.embedded.Item[radiantMaceData.name] = radiantMaceData;
             updates.actor.system.attributes.ac = {
                 'flat': 11 + this.castData.castLevel + 2
