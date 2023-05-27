@@ -1,3 +1,7 @@
+# 0.3.70 Release:
+## Bug Fixes:
+- Elemental Adept
+  
 # 0.3.68:
 ## Bug Fixes:
 - Summon Celestial

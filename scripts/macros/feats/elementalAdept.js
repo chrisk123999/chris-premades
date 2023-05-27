@@ -70,7 +70,7 @@ async function damage(workflow) {
         if (!values.includes(flavor.toLowerCase()) || isDeterministic === true) {
             newDamageRoll += oldDamageRoll.terms[i].formula;
         } else {
-            newDamageRoll += '{' + oldDamageRoll.terms[i].expression + ', ' + (oldDamageRoll.terms[i].results.length * 2) + '}kh[' + flavor + ']'
+            newDamageRoll += oldDamageRoll.terms[i].expression + 'min2[' + flavor + ']'
         }
     }
     let damageRoll = await new Roll(newDamageRoll).roll({async: true});
