@@ -48,7 +48,8 @@ async function item({speaker, actor, token, character, item, args}) {
                 {
                     'key': 'flags.chris-premades.feature.onHit',
                     'mode': 5,
-                    'value': 'blackrazor'
+                    'value': 'blackrazor',
+                    'priority': 20
                 }
             ],
             'transfer': true
