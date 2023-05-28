@@ -1,18 +1,11 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-export async function lightningLure({speaker, actor, token, character, item, args}) {
+export async function telekinetic({speaker, actor, token, character, item, args}) {
     if (this.failedSaves.size != 1) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'lightningLure', 50);
-    if (!queueSetup) return;
     let targetToken = this.targets.first();
     let distance = chris.getDistance(this.token, targetToken);
-    let selection = -10;
-    if (distance <= 5) {
-        queue.remove(this.item.uuid);
-        return;
-    } else if (distance > 5 && distance <= 10) {
-        selection = -5;
-    }
+    let selection = await chris.dialog('Which way?', [['Toward', -5], ['Away', 5]]);
+    if (!selection) return;
     let knockBackFactor;
     let ray;
     let newCenter;
@@ -50,9 +43,4 @@ export async function lightningLure({speaker, actor, token, character, item, arg
     };
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
     distance = chris.getDistance(this.token, targetToken);
-    if (distance > 5) {
-        let damageRoll = await new Roll('0').roll({async: true});
-        await this.setDamageRoll(damageRoll);
-    }
-    queue.remove(this.item.uuid);
 }

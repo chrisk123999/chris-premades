@@ -31,6 +31,11 @@ export async function shove({speaker, actor, token, character, item, args}) {
         while (hitsWall) {
             knockBackFactor = distance / canvas.dimensions.distance;
             ray = new Ray(this.token.center, targetToken.center);
+            if (ray.distance === 0) {
+                ui.notifications.info('Target is unable to be moved!');
+                queue.remove(this.item.uuid);
+                return;
+            }
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
             if (hitsWall) {

@@ -41,6 +41,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
 import {deathWard} from './macros/spells/deathWard.js';
@@ -162,6 +163,7 @@ import {summonFiend} from './macros/spells/summonFiend.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
 import {summon} from './macros/generic/summon.js';
+import {telekinetic} from './macros/feats/telekinetic.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -177,7 +179,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {danseMacabre} from './macros/spells/danseMacabre.js';
 export async function onHitMacro(workflow) {
 	if (workflow.targets.size === 0) return;
 	workflow.targets.forEach(async token => {
@@ -299,6 +300,7 @@ export let macros = {
 	'conditionVulnerabilityLate': conditionVulnerabilityLate,
 	'crimsonRite': crimsonRite,
 	'crusher': crusher,
+	'danseMacabre': danseMacabre,
 	'darkOnesBlessing': darkOnesBlessing,
 	'darkness': darkness,
 	'deathWard': deathWard,
@@ -394,6 +396,7 @@ export let macros = {
 	'summonFiend': summonFiend,
 	'summonShadowspawn': summonShadowspawn,
 	'summonUndead': summonUndead,
+	'telekentic': telekinetic,
 	'thunderboltStrike': thunderboltStrike,
 	'tollTheDead': tollTheDead,
 	'turnUndead': turnUndead,
@@ -405,6 +408,5 @@ export let macros = {
 	'witherAndBloom': witherAndBloom,
 	'wrathOfTheStorm': wrathOfTheStorm,
 	'zealousPresence': zealousPresence,
-	'zoneOfTruth': zoneOfTruth,
-	'danseMacabre': danseMacabre
+	'zoneOfTruth': zoneOfTruth
 }

@@ -1,3 +1,9 @@
+# 0.3.71 Release:
+## New Content:
+- Telekinetic: Shove (Thanks Autumn)
+## Bug Fixes:
+- Shove, Lightning Lure, Pushing Attack, Maneuver
+  
 # 0.3.70 Release:
 ## Bug Fixes:
 - Elemental Adept
