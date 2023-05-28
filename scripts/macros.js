@@ -15,6 +15,7 @@ import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bestowCurse} from './macros/spells/bestowCurse.js';
+import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
@@ -238,6 +239,7 @@ let monster = {
 	'zombie': zombie
 }
 let onHit = {
+	'blackrazor': blackrazor.onHit,
 	'fireForm': fireElemental.fireForm,
 	'heatedBody': fireSnake.heatedBody,
 	'soulThirst': soulMonger.soulThirst.onHit,
@@ -280,6 +282,7 @@ export let macros = {
 	'beaconOfHope': beaconOfHope,
 	'beguilingTwist': beguilingTwist,
 	'bestowCurse': bestowCurse,
+	'blackrazor': blackrazor,
 	'bladeFlourish': bladeFlourish,
 	'blessedStrikes': blessedStrikes,
 	'blessingOfTheForge': blessingOfTheForge,

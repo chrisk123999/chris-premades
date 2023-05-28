@@ -1,3 +1,9 @@
+# 0.3.72 Release:
+## New Content:
+- Magic Item: Black Razor
+## Bug Fixes:
+- Dark One's Blessing
+  
 # 0.3.71 Release:
 ## New Content:
 - Telekinetic: Shove (Thanks Autumn)
