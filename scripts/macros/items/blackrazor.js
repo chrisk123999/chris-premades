@@ -3,7 +3,9 @@ async function item({speaker, actor, token, character, item, args}) {
     if (this.hitTargets.size != 1 || !this.damageList) return;
     let targetToken = this.targets.first();
     let targetActor = targetToken.actor;
+    let targetRace = chris.raceOrType(targetActor);
     if (chris.raceOrType(targetActor) != 'undead') {
+        if (targetRace === 'construct') return;
         let doHealing = false;
         for (let i of this.damageList) {
             if (i.oldHP != 0 && i.newHP === 0) {
