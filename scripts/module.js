@@ -97,6 +97,7 @@ Hooks.once('ready', async function() {
 		Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
 		Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
 	}
+	if (game.settings.get('chris-premades', 'Fog Cloud')) Hooks.on('midi-qol.preAttackRoll', macros.fogCloud.hook);
 	if (game.settings.get('chris-premades', 'Mirror Image')) Hooks.on('midi-qol.AttackRollComplete', macros.mirrorImage);
 	if (game.settings.get('chris-premades', 'On Hit')) Hooks.on('midi-qol.RollComplete', onHitMacro);
 	if (game.settings.get('chris-premades', 'Protection from Evil and Good')) Hooks.on('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);

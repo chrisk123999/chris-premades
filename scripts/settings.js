@@ -307,6 +307,21 @@ export function registerSettings() {
 			}
 		}
 	});
+	game.settings.register(moduleName, 'Fog Cloud', {
+		'name': 'Fog Cloud Spell Automation',
+		'hint': 'Enabling this allows the automation of the Fog Cloud spell via the use of Midi-Qol hooks.',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false,
+		'onChange': value => {
+			if (value) {
+				Hooks.on('midi-qol.preAttackRoll', macros.fogCloud.hook);
+			} else {
+				Hooks.off('midi-qol.preAttackRoll', macros.fogCloud.hook);
+			}
+		}
+	});
 	game.settings.register(moduleName, 'Death Ward', {
 		'name': 'Death Ward Automation',
 		'hint': 'Enabling this allows the automation of the Death Ward spell via the use of Midi-Qol hooks.',

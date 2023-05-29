@@ -1,6 +1,12 @@
+# 0.3.73 Release:
+## New Content:
+- Spell: Fog Cloud
+## Bug Fixes:
+- Darkness
+  
 # 0.3.72 Release:
 ## New Content:
-- Magic Item: Black Razor
+- Magic Item: Blackrazor
 ## Bug Fixes:
 - Dark One's Blessing
   

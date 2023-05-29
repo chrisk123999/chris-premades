@@ -75,6 +75,7 @@ import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSp
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
+import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
@@ -325,6 +326,7 @@ export let macros = {
 	'fallenPuppet': fallenPuppet,
 	'feyPresence': feyPresence,
 	'focusedAim': focusedAim,
+	'fogCloud': fogCloud,
 	'formOfDread': formOfDread,
 	'graspOfHadar': graspOfHadar,
 	'graveTouched': graveTouched,

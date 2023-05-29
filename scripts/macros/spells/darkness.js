@@ -43,7 +43,7 @@ async function darknessHook(workflow) {
 		}
 	}
 	if (!sourceInDarkness && !targetInDarkness) return;
-	let distance = MidiQOL.getDistance(sourceToken, targetToken, {wallsBlock: false});
+	let distance = chris.getDistance(sourceToken, targetToken);
 	let sourceCanSeeTarget = false;
 	let targetCanSeeSource = false;
 	let sourceActor = sourceToken.actor;
