@@ -24,7 +24,18 @@ async function actorConfig(actor) {
     }
     let selection = await chris.dialog('Apply all of Chris\'s automations to this actor?', [['Yes', true], ['No', false]]);
     if (!selection) return;
-    await game.modules.get('ddb-importer').api.chris.adjustActor(actor);
+    let changes = await game.modules.get('ddb-importer').api.chris.adjustActor(actor);
+    if (changes && changes?.length) {
+        let list = '';
+        for (let i of changes.sort()) {
+            list += '- ' + i + '<br>'
+        }
+        ChatMessage.create({
+            'speaker': {alias: name},
+            'whisper': [game.user.id],
+            'content': '<hr><b>Updated Items:</b><br><hr>' + list
+        });
+    }
     ui.notifications.info('Actor update complete!');
 }
 async function itemConfig(itemDocument) {

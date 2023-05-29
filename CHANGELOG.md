@@ -1,3 +1,7 @@
+# 0.4.1 Release:
+## Update Notes:
+- Actor updater will now list the updated items (Requires DDB Importer version 3.4.24 or higher).
+  
 # 0.4.0 Release:
 ## Update Notes:
 - This module requires Midi-Qol version 10.0.45 or higher in preparation of Midi-Qol macro changes for v11.
