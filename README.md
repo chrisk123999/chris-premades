@@ -53,6 +53,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Detect Thoughts  
 - Dragon's Breath  
 - Earth Tremor  
+- Fog Cloud  
 - Gaseous Form  
 - Guiding Bolt  
 - Hail of Thorns  

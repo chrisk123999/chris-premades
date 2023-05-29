@@ -1,3 +1,7 @@
+# 0.3.77 Release:
+## Bug Fixes:
+- Fog Cloud
+  
 # 0.3.76 Release:
 ## New Content:
 - Spell: Fog Cloud
