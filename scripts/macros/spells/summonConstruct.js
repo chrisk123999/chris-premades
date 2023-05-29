@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonConstruct({speaker, actor, token, character, item, args}){
+export async function summonConstruct({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await chris.dialog('What type?', [['Clay ', 'Clay'], ['Metal', 'Metal'], ['Stone', 'Stone']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Construct Spirit');
@@ -8,20 +8,20 @@ export async function summonConstruct({speaker, actor, token, character, item, a
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Construct Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Construct Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let slamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Slam (Construct Spirit)', false);
     if (!slamData) return;
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Construct Spirit)');
-    slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
-    let hpFormula = 40 + ((this.castData.castLevel - 4) * 15);
+    slamData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
+    let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 15);
     let name = 'Construct Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'hp': {
@@ -30,7 +30,7 @@ export async function summonConstruct({speaker, actor, token, character, item, a
                         'value': hpFormula
                     },
                     'ac': {
-                        'flat': 13 + this.castData.castLevel
+                        'flat': 13 + workflow.castData.castLevel
                     }
                 }
             },
@@ -41,8 +41,8 @@ export async function summonConstruct({speaker, actor, token, character, item, a
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -83,9 +83,9 @@ export async function summonConstruct({speaker, actor, token, character, item, a
             let stoneLethargyData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Stone Lethargy (Stone Only)', false);
             if (!stoneLethargyData) return;
             stoneLethargyData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Stone Lethargy (Stone Only)');
-            stoneLethargyData.system.save.dc = chris.getSpellDC(this.item);
+            stoneLethargyData.system.save.dc = chris.getSpellDC(workflow.item);
             updates.embedded.Item[stoneLethargyData.name] = stoneLethargyData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
 }

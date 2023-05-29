@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function callLightning({speaker, actor, token, character, item, args}) {
+export async function callLightning({speaker, actor, token, character, item, args, scope, workflow}) {
 	let storming = await chris.dialog('Is it already storming?', [['Yes', true], ['No', false]]);
-	let spellLevel = this.castData.castLevel;
+	let spellLevel = workflow.castData.castLevel;
 	if (storming) spellLevel += 1;
 	let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Bolt', false);
 	if (!featureData) return;
@@ -11,24 +11,24 @@ export async function callLightning({speaker, actor, token, character, item, arg
 			'lightning'
 		]
 	];
-	featureData.system.save.dc = chris.getSpellDC(this.item);
+	featureData.system.save.dc = chris.getSpellDC(workflow.item);
 	featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Bolt');
 	featureData.flags['chris-premades'] = {
 		'spell': {
-			'castData': this.castData
+			'castData': workflow.castData
 		}
 	}
-	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
+	featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
 	async function effectMacro () {
 		await warpgate.revert(token.document, 'Storm Bolt');
 	}
 	let effectData = {
-		'label': this.item.name,
-		'icon': this.item.img,
+		'label': workflow.item.name,
+		'icon': workflow.item.img,
 		'duration': {
 			'seconds': 600
 		},
-		'origin': this.item.uuid,
+		'origin': workflow.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onDelete': {
@@ -48,7 +48,7 @@ export async function callLightning({speaker, actor, token, character, item, arg
 				[featureData.name]: featureData
 			},
 			'ActiveEffect': {
-				[this.item.name]: effectData
+				[workflow.item.name]: effectData
 			}
 		}
 	};
@@ -57,5 +57,5 @@ export async function callLightning({speaker, actor, token, character, item, arg
 		'name': featureData.name,
 		'description': featureData.name
 	};
-	await warpgate.mutate(this.token.document, updates, {}, options);
+	await warpgate.mutate(workflow.token.document, updates, {}, options);
 }

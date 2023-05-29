@@ -1,10 +1,10 @@
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let targetToken = this.targets.first();
-    let damageType = this.item.system.damage.parts[1][1];
-    if (this.d20AttackRoll === 20) {
-		let animation = this.actor.flags['chris-premades']?.item?.dragonsWrathWeapon?.animation;
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let targetToken = workflow.targets.first();
+    let damageType = workflow.item.system.damage.parts[1][1];
+    if (workflow.d20AttackRoll === 20) {
+		let animation = workflow.actor.flags['chris-premades']?.item?.dragonsWrathWeapon?.animation;
 		if (!animation) return;
         let nearbyTargets = await chris.findNearby(targetToken, 5, 'ally');
         new Sequence().wait(1250).effect().file(animation).atLocation(targetToken).belowTokens(true).play();

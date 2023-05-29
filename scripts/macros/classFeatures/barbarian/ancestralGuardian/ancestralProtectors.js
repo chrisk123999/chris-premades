@@ -1,17 +1,17 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
-async function sourceAttack({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let effect = chris.findEffect(this.actor, 'Rage');
+async function sourceAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let effect = chris.findEffect(workflow.actor, 'Rage');
     if (!effect) return;
     let validTypes = new Set(['mwak', 'rwak', 'msak', 'rsak']);
-    if (!validTypes.has(this.item.system.actionType)) return;
-    let effect2 = chris.findEffect(this.actor, 'Ancestral Protectors');
+    if (!validTypes.has(workflow.item.system.actionType)) return;
+    let effect2 = chris.findEffect(workflow.actor, 'Ancestral Protectors');
     if (!effect2) return;
     let originItem = await fromUuid(effect2.origin);
-    let useFeature = chris.perTurnCheck(originItem, 'feature', 'ancestralProtectors', true, this.token.id);
+    let useFeature = chris.perTurnCheck(originItem, 'feature', 'ancestralProtectors', true, workflow.token.id);
     if (!useFeature) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'ancestralProtectors', 450);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'ancestralProtectors', 450);
     if (!queueSetup) return;
     let effectData = {
         'label': 'Ancestral Protectors Target',
@@ -45,39 +45,39 @@ async function sourceAttack({speaker, actor, token, character, item, args}) {
             }
         }
     };
-    await chris.createEffect(this.targets.first().actor, effectData);
+    await chris.createEffect(workflow.targets.first().actor, effectData);
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.ancestralProtectors.turn', game.combat.round + '-' + game.combat.turn);
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }
-async function targetAttack({speaker, actor, token, character, item, args}) {
-    let effect = chris.findEffect(this.actor, 'Ancestral Protectors Target');
+async function targetAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effect = chris.findEffect(workflow.actor, 'Ancestral Protectors Target');
     if (!effect) return;
     let origin = await fromUuid(effect.origin);
     if (!origin) return;
     let originActorUuid = origin.actor.uuid;
-    let targetActorUuid = this.targets.first().actor.uuid;
+    let targetActorUuid = workflow.targets.first().actor.uuid;
     if (originActorUuid === targetActorUuid) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'ancestralProtectors', 50);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'ancestralProtectors', 50);
     if (!queueSetup) return;
-    this.disadvantage = true;
-    this.attackAdvAttribution['Disadvantage: Ancestral Protectors'] = true;
-    queue.remove(this.item.uuid);
+    workflow.disadvantage = true;
+    workflow.attackAdvAttribution['Disadvantage: Ancestral Protectors'] = true;
+    queue.remove(workflow.item.uuid);
 }
-async function targetDamage({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let effect = chris.findEffect(this.actor, 'Ancestral Protectors Target');
+async function targetDamage({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let effect = chris.findEffect(workflow.actor, 'Ancestral Protectors Target');
     if (!effect) return;
     let origin = await fromUuid(effect.origin);
     if (!origin) return;
     let originActorUuid = origin.actor.uuid;
-    let targetActorUuid = this.targets.first().actor.uuid;
+    let targetActorUuid = workflow.targets.first().actor.uuid;
     if (originActorUuid === targetActorUuid) return;
-    let queueSetup =  await queue.setup(this.item.uuid, 'ancestralProtectors', 475);
+    let queueSetup =  await queue.setup(workflow.item.uuid, 'ancestralProtectors', 475);
     if (!queueSetup) return;
-    let damageFormula = 'floor((' + this.damageRoll._formula + ') / 2)';
+    let damageFormula = 'floor((' + workflow.damageRoll._formula + ') / 2)';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function combatEnd(origin) {
     await origin.setFlag('chris-premades', 'feature.ancestralProtectors', '');

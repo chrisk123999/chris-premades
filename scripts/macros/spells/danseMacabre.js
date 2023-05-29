@@ -1,12 +1,12 @@
 import {chris} from '../../helperFunctions.js';
-export async function danseMacabre({speaker, actor, token, character, item, args}) {
+export async function danseMacabre({speaker, actor, token, character, item, args, scope, workflow}) {
     let zombieActor = game.actors.getName('CPR - Zombie');
     let skeletonActor = game.actors.getName('CPR - Skeleton');
     if (!zombieActor || !skeletonActor) {
         ui.notifications.warn('Missing required sidebar actor!');
         return;
     }
-    let nearbyTokens = await chris.findNearby(this.token, 60, 'all', true).filter(t => t.actor.system.attributes.hp.value === 0 && !chris.findEffect(t.actor, 'Unconscious'));
+    let nearbyTokens = await chris.findNearby(workflow.token, 60, 'all', true).filter(t => t.actor.system.attributes.hp.value === 0 && !chris.findEffect(t.actor, 'Unconscious'));
     if (nearbyTokens.length === 0) return;
     let buttons = [
 		{
@@ -22,7 +22,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         'Skeleton',
         'Zombie'
     ];
-    let maxTargets = 5 + ((this.castData.castLevel - 5) * 2);
+    let maxTargets = 5 + ((workflow.castData.castLevel - 5) * 2);
     let selection = await chris.selectTarget('Select your targets. (Max: ' + maxTargets + ')', buttons, nearbyTokens, true, 'select', options);
     if (!selection.buttons) return;
     let totalSelected = selection.inputs.filter(i => i != 'Ignore').length;
@@ -49,7 +49,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     delete zombieTokenUpdates.x;
     delete zombieTokenUpdates.y;
     delete zombieTokenUpdates._id;
-    zombieTokenUpdates.disposition = this.token.document.disposition;
+    zombieTokenUpdates.disposition = workflow.token.document.disposition;
     let zombieItems = zombieActor.getEmbeddedCollection('Item').reduce( (acc, element) => {acc[element.id] = element.toObject(); return acc;}, {});
     let skeletonActorUpdates = skeletonActor.toObject();
     delete skeletonActorUpdates.token;
@@ -70,7 +70,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     delete skeletonTokenUpdates.x;
     delete skeletonTokenUpdates.y;
     delete skeletonTokenUpdates._id;
-    skeletonTokenUpdates.disposition = this.token.document.disposition;
+    skeletonTokenUpdates.disposition = workflow.token.document.disposition;
     let skeletonItems = skeletonActor.getEmbeddedCollection('Item').reduce( (acc, element) => {acc[element.id] = element.toObject(); return acc;}, {});
     console.log(skeletonTokenUpdates);
     let mutationName = 'Danse Macabre';
@@ -84,12 +84,12 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         await warpgate.revert(token.document, 'Danse Macabre');
     }
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {

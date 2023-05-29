@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.failedSaves.size != 1) return;
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.failedSaves.size != 1) return;
     let choices  = [
         ['Disadvantage on Ability Score', 'Ability'],
         ['Disadvantage on Attacks', 'Attack'],
@@ -11,7 +11,7 @@ async function item({speaker, actor, token, character, item, args}) {
     ];
     let selection = await chris.dialog('What curse do you bestow?', choices);
     if (!selection) return;
-    let castLevel = this.castData.castLevel;
+    let castLevel = workflow.castData.castLevel;
     let duration = 60;
     let concentration = true;
     let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bestow Curse - ' + selection, false);
@@ -73,7 +73,7 @@ async function item({speaker, actor, token, character, item, args}) {
             effectData = {
                 'label': featureData.name,
                 'icon': featureData.img,
-                'origin': this.item.uuid,
+                'origin': workflow.item.uuid,
                 'duration': {
                     'seconds': null,
                 },
@@ -93,7 +93,7 @@ async function item({speaker, actor, token, character, item, args}) {
                     {
                         'key': 'flags.chris-premades.spell.bestowCurse.damage.target',
                         'mode': 5,
-                        'value': this.targets.first().id,
+                        'value': workflow.targets.first().id,
                         'priority': 20
                     }
                 ],
@@ -104,21 +104,21 @@ async function item({speaker, actor, token, character, item, args}) {
                 }
             };
             if (!isNaN(duration)) effectData.duration.seconds = duration;
-            await chris.createEffect(this.actor, effectData);
+            await chris.createEffect(workflow.actor, effectData);
             break;
         case 'Attack':
-            featureData.effects[0].changes[0].value = this.token.actor.uuid;
+            featureData.effects[0].changes[0].value = workflow.token.actor.uuid;
             break;
         case 'Turn':
-            let saveDC = chris.getSpellDC(this.item);
+            let saveDC = chris.getSpellDC(workflow.item);
             featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"'
             break;
     }
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
-        'targetUuids': [this.targets.first().document.uuid],
+        'targetUuids': [workflow.targets.first().document.uuid],
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
@@ -129,11 +129,11 @@ async function item({speaker, actor, token, character, item, args}) {
         }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
-    let targetEffect = chris.findEffect(this.targets.first().actor, 'Bestow Curse - ' + selection);
+    let targetEffect = chris.findEffect(workflow.targets.first().actor, 'Bestow Curse - ' + selection);
     if (!targetEffect) return;
     await chris.updateEffect(targetEffect,
         {
-            'origin': this.item.uuid,
+            'origin': workflow.item.uuid,
             'flags': {
                 'chris-premades': {
                     'spell': {
@@ -147,30 +147,30 @@ async function item({speaker, actor, token, character, item, args}) {
         }
     );
 }
-async function damage({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    if (this.actor.flags['chris-premades']?.spell?.bestowCurse?.damage?.target != this.hitTargets.first().id) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'bestowCurse', 250);
+async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    if (workflow.actor.flags['chris-premades']?.spell?.bestowCurse?.damage?.target != workflow.hitTargets.first().id) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 250);
     if (!queueSetup) return;
-    let oldFormula = this.damageRoll._formula;
+    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '1d8[necrotic]';
-    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
-async function damageApplication({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size < 2) return;
-    let targetId = this.actor.flags['chris-premades']?.spell?.bestowCurse?.damage.target;
+async function damageApplication({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size < 2) return;
+    let targetId = workflow.actor.flags['chris-premades']?.spell?.bestowCurse?.damage.target;
     if (!targetId) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'bestowCurse', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 250);
     if (!queueSetup) return;
-    let targetDamage = this.damageList.find(i => i.tokenId === targetId);
+    let targetDamage = workflow.damageList.find(i => i.tokenId === targetId);
     if (!targetDamage) return;
     let targetActor = canvas.scene.tokens.get(targetDamage.tokenId).actor;
     if (!targetActor) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let damageRoll = await new Roll('1d8[necrotic]').roll({async: true});
@@ -181,7 +181,7 @@ async function damageApplication({speaker, actor, token, character, item, args})
     });
     let hasDI = chris.checkTrait(targetActor, 'di', 'necrotic');
     if (hasDI) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let damageTotal = damageRoll.total;
@@ -207,18 +207,18 @@ async function damageApplication({speaker, actor, token, character, item, args})
     } else {
         targetDamage.newHP -= damageTotal;
     }
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }
-async function attack({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1 || this.disadvantage) return;
-    let targetUuid = this.actor.flags['chris-premades']?.spell?.bestowCurse?.attack.target;
+async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1 || workflow.disadvantage) return;
+    let targetUuid = workflow.actor.flags['chris-premades']?.spell?.bestowCurse?.attack.target;
     if (!targetUuid) return;
-    if (targetUuid != this.targets.first().actor.uuid) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'bestowCurse', 50);
+    if (targetUuid != workflow.targets.first().actor.uuid) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 50);
 	if (!queueSetup) return;
-    this.disadvantage = true;
-    this.attackAdvAttribution['Bestow Curse'] = true;
-    queue.remove(this.item.uuid);
+    workflow.disadvantage = true;
+    workflow.attackAdvAttribution['Bestow Curse'] = true;
+    queue.remove(workflow.item.uuid);
 }
 async function remove(effect, origin, token) {
     let curseFlags = effect.flags['chris-premades']?.spell?.bestowCurse

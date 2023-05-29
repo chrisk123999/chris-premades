@@ -43,7 +43,7 @@ export async function cleave(workflow) {
             'name': workflow.item.name,
             'type': 'script',
             'scope': 'global',
-            'command': `let roll = await new Roll('` + workflow.attackTotal + `').evaluate({async: true});\nthis.setAttackRoll(roll);`,
+            'command': `let roll = await new Roll('` + workflow.attackTotal + `').evaluate({async: true});\nworkflow.setAttackRoll(roll);`,
             'author': game.userId,
             '_id': null,
             'img': 'icons/svg/dice-target.svg',

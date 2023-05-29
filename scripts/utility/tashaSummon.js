@@ -131,23 +131,23 @@ async function createCombatant (tokenId, actorId, sceneId, initiative) {
         'initiative': initiative
     }]);
 }
-async function meleeAttack({speaker, actor, token, character, item, args}) {
-    let attackBonus = this.actor.flags['chris-premades']?.summon?.attackBonus?.melee;
+async function meleeAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    let attackBonus = workflow.actor.flags['chris-premades']?.summon?.attackBonus?.melee;
     if (!attackBonus) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'tashaMeleeAttack', 50);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'tashaMeleeAttack', 50);
     if (!queueSetup) return;
-    let attackRoll = await chris.addToRoll(this.attackRoll, attackBonus);
-    await this.setAttackRoll(attackRoll);
-    queue.remove(this.item.uuid);
+    let attackRoll = await chris.addToRoll(workflow.attackRoll, attackBonus);
+    await workflow.setAttackRoll(attackRoll);
+    queue.remove(workflow.item.uuid);
 }
-async function rangedAttack({speaker, actor, token, character, item, args}) {
-    let attackBonus = this.actor.flags['chris-premades']?.summon?.attackBonus?.ranged;
+async function rangedAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    let attackBonus = workflow.actor.flags['chris-premades']?.summon?.attackBonus?.ranged;
     if (!attackBonus) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'tashaRangedAttack', 50);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'tashaRangedAttack', 50);
     if (!queueSetup) return;
-    let attackRoll = await chris.addToRoll(this.attackRoll, attackBonus);
-    await this.setAttackRoll(attackRoll);
-    queue.remove(this.item.uuid);
+    let attackRoll = await chris.addToRoll(workflow.attackRoll, attackBonus);
+    await workflow.setAttackRoll(attackRoll);
+    queue.remove(workflow.item.uuid);
 }
 export let tashaSummon = {
     'setupFolder': setupFolder,

@@ -52,12 +52,12 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
     let feature = new CONFIG.Item.documentClass(featureData, {parent: sourceToken.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
-async function item({speaker, actor, token, character, item, args}) {
-    let castLevel = this.castData.castLevel;
-    let spellDC = chris.getSpellDC(this.item);
-    let sourceTokenID = this.token.id;
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let castLevel = workflow.castData.castLevel;
+    let spellDC = chris.getSpellDC(workflow.item);
+    let sourceTokenID = workflow.token.id;
     let range = 15;
-    let alignment = this.actor.system.details.alignment.toLowerCase();
+    let alignment = workflow.actor.system.details.alignment.toLowerCase();
     let damageType;
     if (alignment.includes('good') || alignment.includes('neutral')) {
         damageType = 'radiant';
@@ -68,7 +68,7 @@ async function item({speaker, actor, token, character, item, args}) {
         if (!damageType) damageType = 'radiant';        
     }
     let damage = castLevel + 'd8';
-    let effect = chris.findEffect(this.actor, 'Spirit Guardians');
+    let effect = chris.findEffect(workflow.actor, 'Spirit Guardians');
     if (!effect) return;
     await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
 }

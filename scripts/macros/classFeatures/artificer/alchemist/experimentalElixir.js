@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function experimentalElixir({speaker, actor, token, character, item, args}) {
+export async function experimentalElixir({speaker, actor, token, character, item, args, scope, workflow}) {
     let roll = await new Roll('1d6').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
@@ -27,7 +27,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
             itemName = 'Experimental Elixir - Transformation';
             break;
     }
-    let feature = this.actor.items.getName(itemName);
+    let feature = workflow.actor.items.getName(itemName);
     if (feature) {
         feature.update({
             'system.quantity': item.system.quantity + 1
@@ -39,15 +39,15 @@ export async function experimentalElixir({speaker, actor, token, character, item
         if (itemName === 'Experimental Elixir - Healing') {
             itemData.system.damage.parts = [
                 [
-                    '2d4[healing] + ' + this.actor.system.abilities.int.mod,
+                    '2d4[healing] + ' + workflow.actor.system.abilities.int.mod,
                     'healing'
                 ]
             ];
         }
-        if (this.actor.classes.artificer?.system?.levels >= 9) {
+        if (workflow.actor.classes.artificer?.system?.levels >= 9) {
             if (!itemData.system.damage.parts) itemData.system.damage.parts = [];
             itemData.system.damage.parts.push([
-                '2d6[healing] + ' + this.actor.system.abilities.int.mod,
+                '2d6[healing] + ' + workflow.actor.system.abilities.int.mod,
                 'temphp'
             ]);
         }
@@ -57,7 +57,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
             'duration': {
                 'seconds': 604800
             },
-            'origin': this.item.uuid,
+            'origin': workflow.item.uuid,
             'flags': {
                 'effectmacro': {
                     'onDelete': {
@@ -89,6 +89,6 @@ export async function experimentalElixir({speaker, actor, token, character, item
             'name': itemData.name,
             'description': itemData.name
         };
-        await warpgate.mutate(this.token.document, updates, {}, options);
+        await warpgate.mutate(workflow.token.document, updates, {}, options);
     }
 }

@@ -1,12 +1,12 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function feyPresence({speaker, actor, token, character, item, args}) {
-    if (this.failedSaves.size === 0) return;
+export async function feyPresence({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.failedSaves.size === 0) return;
     let selection = await chris.dialog('What condition?', [['Charmed', 'Charmed'], ['Frightened', 'Frightened']]);
     if (!selection) selection = 'Charmed';
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'duration': {
             'seconds': 12
         },
@@ -29,7 +29,7 @@ export async function feyPresence({speaker, actor, token, character, item, args}
             }
         }
     }
-    for (let token of this.failedSaves) {
+    for (let token of workflow.failedSaves) {
         await chris.createEffect(token.actor, effectData);
     }
 }

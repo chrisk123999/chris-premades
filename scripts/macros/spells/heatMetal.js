@@ -1,36 +1,36 @@
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetToken = this.targets.first();
-    let damageDice = this.castData.castLevel + 'd8[fire]';
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first();
+    let damageDice = workflow.castData.castLevel + 'd8[fire]';
     let targetUuid = targetToken.document.uuid;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Heat Metal Pulse', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Pulse');
-    let spellDC = chris.getSpellDC(this.item);
+    let spellDC = chris.getSpellDC(workflow.item);
     featureData.flags['chris-premades'] = {
         'spell': {
             'heatMetal': {
                 'damageDice': damageDice,
                 'targetUuid': targetUuid,
                 'spellDC': spellDC,
-                'originUuid': this.item.uuid
+                'originUuid': workflow.item.uuid
             },
-            'castData': this.castData
+            'castData': workflow.castData
         }
     };
-    featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
+    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Heat Metal');
         await chrisPremades.macros.heatMetal.removed(effect);
 	}
     let effectData = {
         'label': 'Heat Metal',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -63,16 +63,16 @@ async function item({speaker, actor, token, character, item, args}) {
         'permanent': false,
         'name': effectData.label,
         'description': featureData.name,
-        'origin': this.item.uuid
+        'origin': workflow.item.uuid
     };
-    await warpgate.mutate(this.token.document, updates, {}, options);
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
     let effectData2 = {
         'label': 'Heat Metal Dialogue',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 6
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onCreate': {
@@ -83,7 +83,7 @@ async function item({speaker, actor, token, character, item, args}) {
                 'spell': {
                     'heatMetal': {
                         'spellDC': spellDC,
-                        'originUuid': this.item.uuid
+                        'originUuid': workflow.item.uuid
                     }
                 }
             }
@@ -91,11 +91,11 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     await chris.createEffect(targetToken.actor, effectData2);
 }
-async function pulseItem({speaker, actor, token, character, item, args}) {
-    let targetTokenUuid = this.item.flags['chris-premades']?.spell?.heatMetal?.targetUuid;
-    let damageDice = this.item.flags['chris-premades']?.spell?.heatMetal?.damageDice;
-    let spellDC = this.item.flags['chris-premades']?.spell?.heatMetal?.spellDC;
-    let originUuid = this.item.flags['chris-premades']?.spell?.heatMetal?.originUuid;
+async function pulseItem({speaker, actor, token, character, item, args, scope, workflow}) {
+    let targetTokenUuid = workflow.item.flags['chris-premades']?.spell?.heatMetal?.targetUuid;
+    let damageDice = workflow.item.flags['chris-premades']?.spell?.heatMetal?.damageDice;
+    let spellDC = workflow.item.flags['chris-premades']?.spell?.heatMetal?.spellDC;
+    let originUuid = workflow.item.flags['chris-premades']?.spell?.heatMetal?.originUuid;
     if (!damageDice || !targetTokenUuid || !spellDC || !originUuid) return;
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
@@ -108,7 +108,7 @@ async function pulseItem({speaker, actor, token, character, item, args}) {
         ]
     ];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Damage');
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -125,7 +125,7 @@ async function pulseItem({speaker, actor, token, character, item, args}) {
     await MidiQOL.completeItemUse(feature, {}, options);
     let effectData = {
         'label': 'Heat Metal Dialogue',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 6
         },
@@ -183,7 +183,7 @@ async function dialogue(token, actor, effect, origin) {
     if (!originUuid) return;
     let effectData = {
         'label': 'Heat Metal Held',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'changes': [
             {
                 'key': 'flags.midi-qol.disadvantage.attack.all',

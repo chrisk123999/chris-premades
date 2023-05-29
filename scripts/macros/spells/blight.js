@@ -1,13 +1,13 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function damage({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'blight', 50);
+async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'blight', 50);
     if (!queueSetup) return;
-    let creatureType = chris.raceOrType(this.targets.first().actor);
+    let creatureType = chris.raceOrType(workflow.targets.first().actor);
     let newDamageRoll = '';
     if (creatureType === 'plant') {
-        let oldDamageRoll = this.damageRoll;
+        let oldDamageRoll = workflow.damageRoll;
         for (let i = 0; oldDamageRoll.terms.length > i; i++) {
             let flavor = oldDamageRoll.terms[i].flavor;
             let isDeterministic = oldDamageRoll.terms[i].isDeterministic;
@@ -18,18 +18,18 @@ async function damage({speaker, actor, token, character, item, args}) {
             }
         }
     } else if (creatureType === 'undead' || creatureType === 'construct') {
-        newDamageRoll = '0[' + this.defaultDamageType + ']';
+        newDamageRoll = '0[' + workflow.defaultDamageType + ']';
     } else {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let damageRoll = await new Roll(newDamageRoll).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
-async function early({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let creatureType = chris.raceOrType(this.targets.first().actor);
+async function early({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let creatureType = chris.raceOrType(workflow.targets.first().actor);
     if (creatureType != 'plant') return;
 	let effectData = {
 		'label': 'Condition Disadvantage',
@@ -53,7 +53,7 @@ async function early({speaker, actor, token, character, item, args}) {
 			}
 		}
 	};
-	await chris.createEffect(this.targets.first().actor, effectData);
+	await chris.createEffect(workflow.targets.first().actor, effectData);
 }
 export let blight = {
     'early': early,

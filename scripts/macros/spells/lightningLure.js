@@ -1,14 +1,14 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-export async function lightningLure({speaker, actor, token, character, item, args}) {
-    if (this.failedSaves.size != 1) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'lightningLure', 50);
+export async function lightningLure({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.failedSaves.size != 1) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'lightningLure', 50);
     if (!queueSetup) return;
-    let targetToken = this.targets.first();
-    let distance = chris.getDistance(this.token, targetToken);
+    let targetToken = workflow.targets.first();
+    let distance = chris.getDistance(workflow.token, targetToken);
     let selection = -10;
     if (distance <= 5) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     } else if (distance > 5 && distance <= 10) {
         selection = -5;
@@ -19,10 +19,10 @@ export async function lightningLure({speaker, actor, token, character, item, arg
     let hitsWall = true;
     while (hitsWall) {
         knockBackFactor = selection / canvas.dimensions.distance;
-        ray = new Ray(this.token.center, targetToken.center);
+        ray = new Ray(workflow.token.center, targetToken.center);
         if (ray.distance === 0) {
             ui.notifications.info('Target is unable to be moved!');
-            queue.remove(this.item.uuid);
+            queue.remove(workflow.item.uuid);
             return;
         }
         newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
@@ -31,7 +31,7 @@ export async function lightningLure({speaker, actor, token, character, item, arg
             selection -= 5;
             if (selection === 0) {
                 ui.notifications.info('Target is unable to be moved!');
-                queue.remove(this.item.uuid);
+                queue.remove(workflow.item.uuid);
                 return;
             }
         }
@@ -45,14 +45,14 @@ export async function lightningLure({speaker, actor, token, character, item, arg
     };
     let options = {
         'permanent': true,
-        'name': this.item.name,
-        'description': this.item.name
+        'name': workflow.item.name,
+        'description': workflow.item.name
     };
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
-    distance = chris.getDistance(this.token, targetToken);
+    distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) {
         let damageRoll = await new Roll('0').roll({async: true});
-        await this.setDamageRoll(damageRoll);
+        await workflow.setDamageRoll(damageRoll);
     }
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }

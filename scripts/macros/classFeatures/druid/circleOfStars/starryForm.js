@@ -1,11 +1,11 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function starryForm({speaker, actor, token, character, item, args}) {
-    let effect = chris.findEffect(this.actor, 'Starry Form - Passive');
+export async function starryForm({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effect = chris.findEffect(workflow.actor, 'Starry Form - Passive');
     if (!effect) return;
     let starry = await fromUuid(effect.origin);
     if (!starry) return;
     let selection = await chris.dialog('Starry Form: Which Constellation?', [['Archer', 'Archer'], ['Dragon', 'Dragon'], ['Chalice', 'Chalice']]);
-    let tier = this.actor.classes.druid.system.levels > 13 ? 3 : this.actor.classes.druid.system.levels > 9 ? 2 : 1;
+    let tier = workflow.actor.classes.druid.system.levels > 13 ? 3 : workflow.actor.classes.druid.system.levels > 9 ? 2 : 1;
     let featureData;
     switch (selection) {
         case 'Archer':
@@ -114,7 +114,7 @@ export async function starryForm({speaker, actor, token, character, item, args})
         }
     }
     let duration = 600;
-    let existing = this.actor.effects.find(eff => eff.flags['chris-premades']?.feature?.starryForm === true);
+    let existing = workflow.actor.effects.find(eff => eff.flags['chris-premades']?.feature?.starryForm === true);
     if (existing) {
         duration = existing.duration.remaining;
     }
@@ -168,6 +168,6 @@ export async function starryForm({speaker, actor, token, character, item, args})
         'name': 'Starry Form',
         'description': 'Starry Form'
     };
-    if (existing) await warpgate.revert(this.token.document, 'Starry Form');
-    await warpgate.mutate(this.token.document, updates, {}, options);
+    if (existing) await warpgate.revert(workflow.token.document, 'Starry Form');
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
 }

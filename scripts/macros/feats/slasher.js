@@ -1,25 +1,25 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function slow({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1 || !this.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(this.item.system.actionType)) return;
-    let effect = chris.findEffect(this.actor, 'Slasher: Reduce Speed');
+async function slow({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
+    let effect = chris.findEffect(workflow.actor, 'Slasher: Reduce Speed');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'slasher', false, this.token.id);
+    let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'slasher', false, workflow.token.id);
     if (!doExtraDamage) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'slasherSlow', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'slasherSlow', 250);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(this.damageRoll);
+    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
     if (!damageTypes.has('slashing')) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
-    let autoSlasher = this.actor.flags['chris-premades']?.feat?.slasher?.auto;
+    let autoSlasher = workflow.actor.flags['chris-premades']?.feat?.slasher?.auto;
     if (!autoSlasher) {
         let selection = await chris.dialog('Slasher: Slow target?', [['Yes', true], ['No', false]]);
         if (!selection) {
-            queue.remove(this.item.uuid);
+            queue.remove(workflow.item.uuid);
             return;
         }
     }
@@ -50,20 +50,20 @@ async function slow({speaker, actor, token, character, item, args}) {
             }
         }
     }
-    await chris.createEffect(this.targets.first().actor, effectData);
-    queue.remove(this.item.uuid);
+    await chris.createEffect(workflow.targets.first().actor, effectData);
+    queue.remove(workflow.item.uuid);
 }
-async function critical({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1 || !this.isCritical || !this.damageRoll) return;
-    let effect = chris.findEffect(this.actor, 'Slasher: Critical Hit');
+async function critical({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || !workflow.isCritical || !workflow.damageRoll) return;
+    let effect = chris.findEffect(workflow.actor, 'Slasher: Critical Hit');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'slasherCritical', 251);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'slasherCritical', 251);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(this.damageRoll);
+    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
     if (!damageTypes.has('slashing')) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let effectData = {
@@ -92,8 +92,8 @@ async function critical({speaker, actor, token, character, item, args}) {
             }
         }
     }
-    await chris.createEffect(this.targets.first().actor, effectData);
-    queue.remove(this.item.uuid);
+    await chris.createEffect(workflow.targets.first().actor, effectData);
+    queue.remove(workflow.item.uuid);
 }
 export let slasher = {
     'slow': slow,

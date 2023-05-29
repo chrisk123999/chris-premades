@@ -1,15 +1,15 @@
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Healing Spirit');
     if (!sourceActor) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Healing Spirit - Heal', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Healing Spirit - Heal');
-    featureData.system.damage.parts[0][0] = (this.castData.castLevel - 1) + 'd6[healing]';
-    let uses = Math.max(2, chris.getSpellMod(this.item) + 1);
+    featureData.system.damage.parts[0][0] = (workflow.castData.castLevel - 1) + 'd6[healing]';
+    let uses = Math.max(2, chris.getSpellMod(workflow.item) + 1);
     featureData.system.uses.max = uses;
     featureData.system.uses.value = uses;
-    setProperty(featureData, 'flags.chris-premades.spell.healingSpirit.name', this.item.name);
+    setProperty(featureData, 'flags.chris-premades.spell.healingSpirit.name', workflow.item.name);
     async function effectMacro() {
         let originActor = origin.actor;
         await warpgate.dismiss(token.id);
@@ -17,12 +17,12 @@ async function item({speaker, actor, token, character, item, args}) {
         if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
     }
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -38,13 +38,13 @@ async function item({speaker, actor, token, character, item, args}) {
     };
     let updates = {
         'actor': {
-            'name': this.item.name,
+            'name': workflow.item.name,
             'prototypeToken': {
-                'name': this.item.name
+                'name': workflow.item.name
             }
         },
         'token': {
-            'name': this.item.name
+            'name': workflow.item.name
         },
         'embedded': {
             'Item': {
@@ -56,22 +56,22 @@ async function item({speaker, actor, token, character, item, args}) {
         }
     };
     let options = {
-        'controllingActor': this.token.actor
+        'controllingActor': workflow.token.actor
     };
     let tokenDocument = await sourceActor.getTokenDocument();
     let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;
-    let targetEffect = chris.findEffect(spawnedToken.actor, this.item.name);
+    let targetEffect = chris.findEffect(spawnedToken.actor, workflow.item.name);
     if (!targetEffect) return;
     let casterEffectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -103,7 +103,7 @@ async function item({speaker, actor, token, character, item, args}) {
         'name': 'Healing Spirit',
         'description': 'Healing Spirit'
     };
-    await warpgate.mutate(this.token.document, updates2, {}, options2);
+    await warpgate.mutate(workflow.token.document, updates2, {}, options2);
     let command = 'await chrisPremades.macros.healingSpirit.template(template, token);';
     let templateData = {
         'angle': 0,
@@ -130,10 +130,10 @@ async function item({speaker, actor, token, character, item, args}) {
                 }
             },
             'dnd5e': {
-                'origin': this.item.uuid
+                'origin': workflow.item.uuid
             },
             'midi-qol': {
-                'originUuid': this.item.uuid
+                'originUuid': workflow.item.uuid
             },
             'chris-premades': {
                 'spell': {
@@ -179,11 +179,11 @@ async function template(template, token) {
         await template.setFlag('chris-premades', 'spell.healingSpirit.touchedTokens', touchedTokens);
     }
 }
-async function healing({speaker, actor, token, character, item, args}) {
-    if (this.item.system.uses.value != 0) return;
-    let effectName = this.item.flags['chris-premades']?.spell?.healingSpirit?.name;
+async function healing({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.item.system.uses.value != 0) return;
+    let effectName = workflow.item.flags['chris-premades']?.spell?.healingSpirit?.name;
     if (!effectName) return;
-    let effect = chris.findEffect(this.actor, effectName);
+    let effect = chris.findEffect(workflow.actor, effectName);
     if (!effect) return;
     await chris.removeEffect(effect);
 }

@@ -1,18 +1,18 @@
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let templateData = {
         't': 'circle',
         'user': game.user,
-        'distance': this.castData.castLevel * 20,
+        'distance': workflow.castData.castLevel * 20,
         'direction': 0,
         'fillColor': game.user.color,
         'flags': {
             'dnd5e': {
-                'origin': this.item.uuid
+                'origin': workflow.item.uuid
             },
             'templatemacro': {},
             'midi-qol': {
-                'originUuid': this.item.uuid
+                'originUuid': workflow.item.uuid
             },
             'chris-premades': {
                 'spell': {
@@ -25,11 +25,11 @@ async function item({speaker, actor, token, character, item, args}) {
     let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {parent: canvas.scene});
     let template = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
     let[finalTemplate] = await template.drawPreview();
-	new Sequence().effect().file('jb2a.fog_cloud.1.white').scale(this.castData.castLevel).aboveLighting().opacity(0.5).persist(true).attachTo(finalTemplate).play();
+	new Sequence().effect().file('jb2a.fog_cloud.1.white').scale(workflow.castData.castLevel).aboveLighting().opacity(0.5).persist(true).attachTo(finalTemplate).play();
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'changes': [
             {
                 'key': 'flags.dae.deleteUuid',
@@ -39,10 +39,10 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         ],
         'duration': {
-            'seconds': chris.itemDuration(this.item).seconds
+            'seconds': chris.itemDuration(workflow.item).seconds
         }
     };
-    await chris.createEffect(this.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData);
 }
 async function hook(workflow) {
     if (workflow.targets.size != 1) return;

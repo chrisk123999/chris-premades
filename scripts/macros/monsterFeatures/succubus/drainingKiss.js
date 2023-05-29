@@ -1,15 +1,15 @@
 import {chris} from '../../../helperFunctions.js';
-export async function drainingKiss({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetActor = this.targets.first().actor;
-    let damage = -this.damageList[0].appliedDamage;
+export async function drainingKiss({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetActor = workflow.targets.first().actor;
+    let damage = -workflow.damageList[0].appliedDamage;
     if (damage === 0) return;
     let targetMaxHP = targetActor.system.attributes.hp.max;
-    let effect = chris.findEffect(targetActor, this.item.name);
+    let effect = chris.findEffect(targetActor, workflow.item.name);
     if (!effect) {
         let effectData = {
-            'label': this.item.name,
-            'icon': this.item.img,
+            'label': workflow.item.name,
+            'icon': workflow.item.img,
             'duration': {
                 'seconds': 604800
             },

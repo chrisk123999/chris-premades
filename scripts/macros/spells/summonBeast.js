@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonBeast({speaker, actor, token, character, item, args}){
+export async function summonBeast({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await chris.dialog('What type?', [['Air', 'Air'], ['Land', 'Land'], ['Water', 'Water']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Bestial Spirit');
@@ -8,12 +8,12 @@ export async function summonBeast({speaker, actor, token, character, item, args}
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Bestial Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Bestial Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let maulData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Maul (Bestial Spirit)', false);
     if (!maulData) return;
     maulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Maul (Bestial Spirit)');
-    maulData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
+    maulData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let hpFormula;
     let name = 'Bestial Spirit (' + selection + ')';
     let updates = {
@@ -21,11 +21,11 @@ export async function summonBeast({speaker, actor, token, character, item, args}
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'ac': {
-                        'flat': 11 + this.castData.castLevel
+                        'flat': 11 + workflow.castData.castLevel
                     }
                 }
             },
@@ -36,8 +36,8 @@ export async function summonBeast({speaker, actor, token, character, item, args}
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -71,7 +71,7 @@ export async function summonBeast({speaker, actor, token, character, item, args}
                 'walk': 30,
                 'fly': 60
             };
-            hpFormula = 20 + ((this.castData.castLevel - 2) * 5);
+            hpFormula = 20 + ((workflow.castData.castLevel - 2) * 5);
             updates.actor.system.attributes.hp = {
                 'formula': hpFormula,
                 'max': hpFormula,
@@ -87,7 +87,7 @@ export async function summonBeast({speaker, actor, token, character, item, args}
                 'walk': 30,
                 'climb': 30
             };
-            hpFormula = 30 + ((this.castData.castLevel - 2) * 5);
+            hpFormula = 30 + ((workflow.castData.castLevel - 2) * 5);
             updates.actor.system.attributes.hp = {
                 'formula': hpFormula,
                 'max': hpFormula,
@@ -103,7 +103,7 @@ export async function summonBeast({speaker, actor, token, character, item, args}
                 'walk': 30,
                 'swim': 30
             };
-            hpFormula = 30 + ((this.castData.castLevel - 2) * 5);
+            hpFormula = 30 + ((workflow.castData.castLevel - 2) * 5);
             updates.actor.system.attributes.hp = {
                 'formula': hpFormula,
                 'max': hpFormula,
@@ -111,5 +111,5 @@ export async function summonBeast({speaker, actor, token, character, item, args}
             };
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
 }

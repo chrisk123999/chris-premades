@@ -1,12 +1,12 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Hunter\'s Mark - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Hunter\'s Mark - Move');
     let seconds;
-    switch (this.castData.castLevel) {
+    switch (workflow.castData.castLevel) {
         case 3:
         case 4:
             seconds = 28800;
@@ -23,13 +23,13 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     let targetEffectData = {
         'label': 'Marked',
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'duration': {
             'seconds': seconds
         }
     };
-    await chris.createEffect(this.targets.first().actor, targetEffectData);
+    await chris.createEffect(workflow.targets.first().actor, targetEffectData);
     async function effectMacro() {
         await warpgate.revert(token.document, 'Hunter\'s Mark');
         let targetTokenId = effect.changes[0].value;
@@ -42,12 +42,12 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     let sourceEffectData = {
         'label': 'Hunter\'s Mark',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'changes': [
             {
                 'key': 'flags.chris-premades.spell.huntersMark',
                 'mode': 5,
-                'value': this.targets.first().id,
+                'value': workflow.targets.first().id,
                 'priority': 20
             },
             {
@@ -58,7 +58,7 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         ],
         'transfer': false,
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'duration': {
             'seconds': seconds
         },
@@ -90,8 +90,8 @@ async function item({speaker, actor, token, character, item, args}) {
         'name': sourceEffectData.label,
         'description': sourceEffectData.label
     };
-    await warpgate.mutate(this.token.document, updates, {}, options);
-    let conEffect = chris.findEffect(this.actor, 'Concentrating');
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
+    let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
     if (conEffect) {
         let updates = {
             'duration': {
@@ -101,29 +101,29 @@ async function item({speaker, actor, token, character, item, args}) {
         await chris.updateEffect(conEffect, updates);
     }
 }
-async function attack({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let attackType = this.item.system.actionType;
+async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let attackType = workflow.item.system.actionType;
     if (!(attackType === 'mwak' || attackType === 'rwak')) return;
-    let sourceActor = this.actor;
+    let sourceActor = workflow.actor;
     let markedTarget = sourceActor.flags['chris-premades']?.spell?.huntersMark;
-    let targetToken = this.hitTargets.first();
+    let targetToken = workflow.hitTargets.first();
     if (targetToken.id != markedTarget) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'huntersMark', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'huntersMark', 250);
     if (!queueSetup) return;
-    let oldFormula = this.damageRoll._formula;
-    let bonusDamageFormula = '1d6[' + this.defaultDamageType + ']'
-    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let oldFormula = workflow.damageRoll._formula;
+    let bonusDamageFormula = '1d6[' + workflow.defaultDamageType + ']'
+    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
-async function move({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetToken = this.targets.first();
+async function move({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
-    let oldTargetTokenId = this.actor.flags['chris-premades']?.spell?.huntersMark;
+    let oldTargetTokenId = workflow.actor.flags['chris-premades']?.spell?.huntersMark;
     let oldTargetToken = canvas.scene.tokens.get(oldTargetTokenId);
     let oldTargetOrigin;
     if (oldTargetToken) {
@@ -134,12 +134,12 @@ async function move({speaker, actor, token, character, item, args}) {
             oldTargetOrigin = oldTargetEffect.origin;
         }
     }
-    let effect = chris.findEffect(this.actor, 'Hunter\'s Mark');
+    let effect = chris.findEffect(workflow.actor, 'Hunter\'s Mark');
     let duration = 3600;
     if (effect) duration = effect.duration.remaining;
     let effectData = {
         'label': 'Marked',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'origin': oldTargetOrigin,
         'duration': {
             'seconds': duration

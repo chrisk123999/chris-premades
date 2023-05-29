@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetToken = this.targets.first();
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first();
     async function effectMacro() {
         let damageDice = '2d8[radiant]';
         let generatedMenu = [];
@@ -38,11 +38,11 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     let effectData = {
         'label': 'Holy Weapon',
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onCreate': {
@@ -57,7 +57,7 @@ async function item({speaker, actor, token, character, item, args}) {
     featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Holy Weapon - Dismiss', false);
     featureData.flags['chris-premades'] = {
         'spell': {
-            'castData': this.castData
+            'castData': workflow.castData
         }
     };
     async function effectMacro2() {
@@ -65,16 +65,16 @@ async function item({speaker, actor, token, character, item, args}) {
     }
     let effectData2 = {
         'label': featureData.name,
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'changes': [
             {
                 'key': 'flags.chris-premades.spell.holyWeapon',
                 'mode': 5,
-                'value': this.targets.first().document.uuid,
+                'value': workflow.targets.first().document.uuid,
                 'priority': 20
             }
         ],
@@ -106,16 +106,16 @@ async function item({speaker, actor, token, character, item, args}) {
         'name': featureData.name,
         'description': featureData.name
     };
-    await warpgate.mutate(this.token.document, updates, {}, options);
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
 }
-async function dismiss({speaker, actor, token, character, item, args}) {
-    let targetTokenUuid = this.actor.flags['chris-premades']?.spell?.holyWeapon;
+async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
+    let targetTokenUuid = workflow.actor.flags['chris-premades']?.spell?.holyWeapon;
     if (!targetTokenUuid) return;
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
     let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Burst', false);
     if (!featureData) return;
-    let effect = chris.findEffect(this.actor, 'Holy Weapon - Dismiss');
+    let effect = chris.findEffect(workflow.actor, 'Holy Weapon - Dismiss');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
@@ -136,7 +136,7 @@ async function dismiss({speaker, actor, token, character, item, args}) {
     await chris.removeEffect(effect);
     let effect2 = chris.findEffect(targetToken.actor, 'Holy Weapon');
     if (effect2) chris.removeEffect(effect2);
-    await chris.removeCondition(this.actor, 'Concentrating');
+    await chris.removeCondition(workflow.actor, 'Concentrating');
 }
 export let holyWeapon = {
     'item': item,

@@ -1,9 +1,9 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
-export async function grimHarvest({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.length === 0 || !this.damageList) return;
+export async function grimHarvest({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.length === 0 || !workflow.damageList) return;
     let doHealing = false;
-    for (let i of this.damageList) {
+    for (let i of workflow.damageList) {
         if (i.oldHP != 0 && i.newHP === 0) {
             let targetToken = await fromUuid(i.tokenUuid);
             if (!targetToken) continue;
@@ -14,29 +14,29 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
         }
     }
     if (!doHealing) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'grimHarvest', 450);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'grimHarvest', 450);
     if (!queueSetup) return;
     let spellLevel;
     let spellSchool;
-    if (this.item.type === 'spell') {
-        spellLevel = this.castData.castLevel;
-        spellSchool = this.item.system.school;
-    } else if (this.item.type === 'feat') {
-        spellLevel = this.item.flags['chris-premades']?.spell?.castData?.castLevel;
-        spellSchool = this.item.flags['chris-premades']?.spell?.castData?.school;
+    if (workflow.item.type === 'spell') {
+        spellLevel = workflow.castData.castLevel;
+        spellSchool = workflow.item.system.school;
+    } else if (workflow.item.type === 'feat') {
+        spellLevel = workflow.item.flags['chris-premades']?.spell?.castData?.castLevel;
+        spellSchool = workflow.item.flags['chris-premades']?.spell?.castData?.school;
     }
     if (!spellSchool || !spellLevel) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
-    let effect = chris.findEffect(this.actor, 'Grim Harvest');
+    let effect = chris.findEffect(workflow.actor, 'Grim Harvest');
     if (!effect) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let originItem = await fromUuid(effect.origin);
     if (!originItem) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let featureData = duplicate(originItem.toObject());
@@ -48,11 +48,11 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
             'healing'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
-        'targetUuids': [this.token.document.uuid],
+        'targetUuids': [workflow.token.document.uuid],
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
@@ -63,5 +63,5 @@ export async function grimHarvest({speaker, actor, token, character, item, args}
         }
     };
     await MidiQOL.completeItemUse(feature, {}, options);
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }

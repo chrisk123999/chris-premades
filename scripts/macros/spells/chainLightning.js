@@ -1,12 +1,12 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-export async function chainLightning({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let maxTargets = this.castData.castLevel - 3;
-    let targetToken = this.targets.first();
+export async function chainLightning({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let maxTargets = workflow.castData.castLevel - 3;
+    let targetToken = workflow.targets.first();
     let nearbyTokens = chris.findNearby(targetToken, 30, 'ally');
     if (nearbyTokens.length === 0) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'chainLightning', 450);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'chainLightning', 450);
     if (!queueSetup) return;
     let addedTargets = [];
     let addedTargetUuids = [];
@@ -22,7 +22,7 @@ export async function chainLightning({speaker, actor, token, character, item, ar
         ];
         let selection = await chris.selectTarget('Where should the lightning bounce? Max: ' + maxTargets, buttons, nearbyTokens, true, 'multiple');
         if (!selection.buttons) {
-            queue.remove(this.item.uuid);
+            queue.remove(workflow.item.uuid);
             return;
         }
         for (let i of selection.inputs) {
@@ -33,7 +33,7 @@ export async function chainLightning({speaker, actor, token, character, item, ar
         }
         if (addedTargets.length > maxTargets) {
             ui.notifications.info('Too many targets selected!');
-            queue.remove(this.item.uuid);
+            queue.remove(workflow.item.uuid);
             return;
         }
     } else {
@@ -42,7 +42,7 @@ export async function chainLightning({speaker, actor, token, character, item, ar
             addedTargetUuids.push(i.document.uuid);
         }
     }
-    new Sequence().effect().atLocation(this.token).stretchTo(targetToken).file('jb2a.chain_lightning.secondary.blue').play();
+    new Sequence().effect().atLocation(workflow.token).stretchTo(targetToken).file('jb2a.chain_lightning.secondary.blue').play();
     let previousToken = targetToken;
     for (let i of addedTargets) {
         new Sequence().effect().atLocation(previousToken).stretchTo(i).file('jb2a.chain_lightning.secondary.blue').play();
@@ -50,24 +50,24 @@ export async function chainLightning({speaker, actor, token, character, item, ar
     }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Chain Lightning Leap', false);
     if (!featureData) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Chain Lightning Leap');
-    featureData.system.save.dc = chris.getSpellDC(this.item);
+    featureData.system.save.dc = chris.getSpellDC(workflow.item);
     featureData.system.damage.parts = [
         [
-            this.damageTotal + '[lightning]',
+            workflow.damageTotal + '[lightning]',
             'lightning'
         ]
     ];
     featureData.flags['chris-premades'] = {
 		'spell': {
-			'castData': this.castData
+			'castData': workflow.castData
 		}
 	}
-	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: this.actor});
+	featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
+    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
 		'showFullCard': false,
 		'createWorkflow': true,
@@ -82,5 +82,5 @@ export async function chainLightning({speaker, actor, token, character, item, ar
         }
 	};
     await MidiQOL.completeItemUse(feature, {}, options);
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }

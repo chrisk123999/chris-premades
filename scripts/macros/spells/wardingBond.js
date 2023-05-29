@@ -1,20 +1,20 @@
 import {chris} from '../../helperFunctions.js'
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let effect = chris.findEffect(this.targets.first().actor, 'Warding Bond - Target');
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let effect = chris.findEffect(workflow.targets.first().actor, 'Warding Bond - Target');
     if (effect) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Dismiss Warding Bond', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dismiss Warding Bond');
-    let targetToken = this.targets.first();
+    let targetToken = workflow.targets.first();
     featureData.name = 'Dismis Warding Bond: ' + targetToken.actor.name;
     let effectData = {
         'label': featureData.name,
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 60
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -49,11 +49,11 @@ async function item({speaker, actor, token, character, item, args}) {
         'name': 'Warding Bond: ' + targetToken.uuid,
         'description': featureData.name
     };
-    await warpgate.mutate(this.token.document, updates, {}, options);
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
     let effectData2 = {
         'label': 'Warding Bond - Target',
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'duration': {
             'seconds': 3600
         },
@@ -79,7 +79,7 @@ async function item({speaker, actor, token, character, item, args}) {
             {
                 'key': 'flags.chris-premades.spell.wardingBond.sourceUuid',
                 'mode': 5,
-                'value': this.token.document.uuid,
+                'value': workflow.token.document.uuid,
                 'priority': 20
             },
             {
@@ -91,16 +91,16 @@ async function item({speaker, actor, token, character, item, args}) {
         ],
         'transfer': true
     };
-    await chris.createEffect(this.targets.first().actor, effectData2);
+    await chris.createEffect(workflow.targets.first().actor, effectData2);
 }
-async function dismiss({speaker, actor, token, character, item, args}) {
-    let targetTokenUuid = this.item.flags['chris-premades']?.spell?.wardingBond?.targetUuid;
+async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
+    let targetTokenUuid = workflow.item.flags['chris-premades']?.spell?.wardingBond?.targetUuid;
     if (!targetTokenUuid) return;
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
     let targetEffect = chris.findEffect(targetToken.actor, 'Warding Bond - Target');
     if (targetEffect) await chris.removeEffect(targetEffect);
-    let sourceEffect = chris.findEffect(this.actor, 'Warding Bond:' + targetActor.name);
+    let sourceEffect = chris.findEffect(workflow.actor, 'Warding Bond:' + targetActor.name);
     if (!sourceEffect) return;
     await chris.removeEffect(sourceEffect);
 }

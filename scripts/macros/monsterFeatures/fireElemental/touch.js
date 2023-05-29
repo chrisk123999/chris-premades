@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
-export async function touch({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let targetToken = this.targets.first();
+export async function touch({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let effect = chris.findEffect(targetActor, 'Douse Fire');
     if (effect) return;
@@ -17,7 +17,7 @@ export async function touch({speaker, actor, token, character, item, args}) {
         'duration': {
             'seconds': 604800
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -49,7 +49,7 @@ export async function touch({speaker, actor, token, character, item, args}) {
             'duration': {
                 'seconds': 604800
             },
-            'origin': this.item.uuid,
+            'origin': workflow.item.uuid,
             'flags': {
                 'effectmacro': {
                     'onDelete': {

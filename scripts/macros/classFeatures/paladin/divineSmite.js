@@ -1,17 +1,17 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
-export async function divineSmite({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1 || this.item.type != 'weapon') return;
-    if (this.item.name === 'Unarmed Strike' && !game.settings.get('chris-premades', 'Unarmed Strike Smite')) return;
+export async function divineSmite({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || workflow.item.type != 'weapon') return;
+    if (workflow.item.name === 'Unarmed Strike' && !game.settings.get('chris-premades', 'Unarmed Strike Smite')) return;
     let validTypes = ['martialM', 'simpleM'];
     if (game.settings.get('chris-premades', 'Ranged Smite')) {
         validTypes.push('martialR');
         validTypes.push('simpleR');
     }
-    if (!validTypes.includes(this.item.system.weaponType)) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'divineSmite', 250);
+    if (!validTypes.includes(workflow.item.system.weaponType)) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
     if (!queueSetup) return;
-    let spells = this.actor.system.spells;
+    let spells = workflow.actor.system.spells;
     let pactSlots = spells.pact.value;
     let pactLevel = spells.pact.level;
     let spell1 = spells.spell1.value;
@@ -39,7 +39,7 @@ export async function divineSmite({speaker, actor, token, character, item, args}
     let title = 'Use Divine Smite?';
     let selectedOption = await chris.dialog(title, menuOptions);
     if (!selectedOption) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let update = {};
@@ -86,22 +86,22 @@ export async function divineSmite({speaker, actor, token, character, item, args}
             damageDiceNum = 5;
             break;
     }
-    await this.actor.update(update);
-    let targetToken = this.targets.first();
+    await workflow.actor.update(update);
+    let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let type = chris.raceOrType(targetActor);
     if (type === 'undead' || type === 'fiend') damageDiceNum += 1;
     let damageDice = damageDiceNum + 'd8[radiant]';
-    if (this.isCritical) damageDice = chris.getCriticalFormula(damageDice);
-    let damageFormula = this.damageRoll._formula + ' + ' + damageDice;
+    if (workflow.isCritical) damageDice = chris.getCriticalFormula(damageDice);
+    let damageFormula = workflow.damageRoll._formula + ' + ' + damageDice;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    let effect = chris.findEffect(this.actor, 'Divine Smite');
+    await workflow.setDamageRoll(damageRoll);
+    let effect = chris.findEffect(workflow.actor, 'Divine Smite');
     if (!effect) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let originItem = await fromUuid(effect.origin);
     await originItem.use();
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }

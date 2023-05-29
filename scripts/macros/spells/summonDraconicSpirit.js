@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonDraconicSpirit({speaker, actor, token, character, item, args}) {
+export async function summonDraconicSpirit({speaker, actor, token, character, item, args, scope, workflow}) {
     let selection = await chris.dialog('What dragon type?', [['Chromatic ', 'Chromatic'], ['Metallic', 'Metallic'], ['Gem', 'Gem']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Draconic Spirit');
@@ -8,25 +8,25 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Draconic Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Draconic Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let rendData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Rend (Draconic Spirit)', false);
     if (!rendData) return;
     rendData.name = 'Rend';
     rendData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rend (Draconic Spirit)');
-    rendData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
+    rendData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let breathData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Breath Weapon', false);
     if (!breathData) return;
     breathData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Breath Weapon');
-    breathData.system.save.dc = chris.getSpellDC(this.item);
-    let hpFormula = 50 + ((this.castData.castLevel - 5) * 10);
+    breathData.system.save.dc = chris.getSpellDC(workflow.item);
+    let hpFormula = 50 + ((workflow.castData.castLevel - 5) * 10);
     let name = 'Draconic Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'hp': {
@@ -35,7 +35,7 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
                         'value': hpFormula
                     },
                     'ac': {
-                        'flat': 14 + this.castData.castLevel
+                        'flat': 14 + workflow.castData.castLevel
                     }
                 }
             },
@@ -46,8 +46,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     },
                     'draconicSpirit': {
@@ -104,7 +104,7 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
     let options;
     switch (selection) {
         case 'Chromatic':
@@ -117,7 +117,7 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
     }
     let selection2 = await chris.dialog('Shared Resistances: What damage type?', options);
     if (!selection2) return;
-    let effect = chris.findEffect(this.actor, this.item.name);
+    let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (!effect) return;
     let effectUpdates = {
         'changes': [

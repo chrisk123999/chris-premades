@@ -1,19 +1,19 @@
 import {chris} from '../../../helperFunctions.js';
-export async function strengthDrain({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1 || this.isFumble) return;
+export async function strengthDrain({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || workflow.isFumble) return;
     let roll = await new Roll('1d4').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},
-        flavor: this.item.name
+        flavor: workflow.item.name
     });
     let damage = -roll.total;
-    let targetActor = this.targets.first().actor;
-    let effect = chris.findEffect(targetActor, this.item.name);
+    let targetActor = workflow.targets.first().actor;
+    let effect = chris.findEffect(targetActor, workflow.item.name);
     if (!effect) {
         let effectData = {
-            'label': this.item.name,
-            'icon': this.item.img,
+            'label': workflow.item.name,
+            'icon': workflow.item.img,
             'duration': {
                 'seconds': 604800
             },

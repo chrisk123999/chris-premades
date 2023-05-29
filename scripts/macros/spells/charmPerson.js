@@ -1,6 +1,6 @@
 import {chris} from '../../helperFunctions.js';
-export async function charmPerson({speaker, actor, token, character, item, args}) {
-	if (this.targets.size === 0) return;
+export async function charmPerson({speaker, actor, token, character, item, args, scope, workflow}) {
+	if (workflow.targets.size === 0) return;
 	if (!chris.inCombat()) return;
 	let effectData = {
 		'label': 'Condition Advantage',
@@ -24,7 +24,7 @@ export async function charmPerson({speaker, actor, token, character, item, args}
 			}
 		}
 	};
-	let targets = Array.from(this.targets);
+	let targets = Array.from(workflow.targets);
 	for (let i of targets) {
 		await chris.createEffect(i.actor, effectData);
 	}

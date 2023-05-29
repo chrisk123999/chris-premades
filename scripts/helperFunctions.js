@@ -33,6 +33,10 @@ export let chris = {
 		return actor.effects.find(eff => eff.label === name);
 	},
 	'createEffect': async function _createEffect(actor, effectData) {
+		if (isNewerVersion(game.version, '11.293') && effectData.label) {
+			effectData.name = effectData.label;
+			delete effectData.label;
+		}
 		if (game.user.isGM) {
 			await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
 		} else {
@@ -260,8 +264,7 @@ export let chris = {
 			return false;
 		}
 		const packIndex = await gamePack.getIndex({fields: ['name', 'type', 'flags.cf.id']});
-		const match = packIndex.find(item => item.name === name 
-			&& (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
+		const match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
 		if (match) {
 			return (await gamePack.getDocument(match._id))?.toObject();
 		} else {

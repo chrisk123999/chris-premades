@@ -1,3 +1,10 @@
+# 0.4.0 Release:
+## Update Notes:
+- This module requires Midi-Qol version 10.0.45 or higher in preparation of Midi-Qol macro changes for v11.
+- Updated required DnD5e system version to 2.2.1.
+## Bug Fixes:
+- Blackrazor
+  
 # 0.3.77 Release:
 ## Bug Fixes:
 - Fog Cloud

@@ -77,7 +77,7 @@ async function move(token, selectedAura) {
     if (effect) await chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);
 }
-async function item({speaker, actor, token, character, item, args}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let flagAuras = {
         'auraOfPurity': {
             'name': 'auraOfPurity',
@@ -88,7 +88,7 @@ async function item({speaker, actor, token, character, item, args}) {
             'macroName': 'auraOfPurity'
         }
     }
-    effectAuras.add(flagAuras, this.token.document.uuid, true);
+    effectAuras.add(flagAuras, workflow.token.document.uuid, true);
 }
 async function end(token) {
     effectAuras.remove('auraOfPurity', token.document.uuid);

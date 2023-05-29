@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
-export async function radiantMace({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let nearbyTargets = chris.findNearby(this.targets.first(), 10, 'enemy');
+export async function radiantMace({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let nearbyTargets = chris.findNearby(workflow.targets.first(), 10, 'enemy');
     if (nearbyTargets.length === 0) return;
     let targetToken;
     if (nearbyTargets.length === 1) targetToken = nearbyTargets[0];
@@ -25,7 +25,7 @@ export async function radiantMace({speaker, actor, token, character, item, args}
 	roll.toMessage({
 		rollMode: 'roll',
 		speaker: {alias: name},
-		flavor: this.item.name
+		flavor: workflow.item.name
 	});
     await chris.applyDamage([targetToken], roll.total, 'temphp');
 }

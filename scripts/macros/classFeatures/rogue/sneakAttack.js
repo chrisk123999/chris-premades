@@ -1,9 +1,9 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
-async function attack({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    if (!(this.item.system.actionType === 'rwak' || this.item.system.properties?.fin)) return;
-    let effect = chris.findEffect(this.actor, 'Sneak Attack');
+async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties?.fin)) return;
+    let effect = chris.findEffect(workflow.actor, 'Sneak Attack');
     if (!effect) return;
     let originFeature = await fromUuid(effect.origin);
     if (!originFeature) return;
@@ -13,64 +13,64 @@ async function attack({speaker, actor, token, character, item, args}) {
     }
     let doSneak = false;
     let displayRakish = false;
-    if (this.advantage) doSneak = true;
-    let targetToken = this.targets.first();
-    if (!doSneak && !this.disadvantage) {
-        let nearbyTokens = await chris.findNearby(targetToken, 5, 'enemy').filter(t => t.id != this.token.id);
+    if (workflow.advantage) doSneak = true;
+    let targetToken = workflow.targets.first();
+    if (!doSneak && !workflow.disadvantage) {
+        let nearbyTokens = await chris.findNearby(targetToken, 5, 'enemy').filter(t => t.id != workflow.token.id);
         if (nearbyTokens.length != 0) doSneak = true;
     }
-    let rakishAudacity = this.actor.flags['chris-premades']?.feature?.rakishAudacity;
-    if (rakishAudacity && !this.disadvantage && !doSneak && (chris.getDistance(this.token, targetToken) <= 5)) {
-        let rNearbyTokens = await chris.findNearby(this.token, 5, 'all', true).filter(t => t.id != targetToken.id);
+    let rakishAudacity = workflow.actor.flags['chris-premades']?.feature?.rakishAudacity;
+    if (rakishAudacity && !workflow.disadvantage && !doSneak && (chris.getDistance(workflow.token, targetToken) <= 5)) {
+        let rNearbyTokens = await chris.findNearby(workflow.token, 5, 'all', true).filter(t => t.id != targetToken.id);
         if (rNearbyTokens.length === 0) {
             doSneak = true;
             displayRakish = true;
         }
     }
     if (!doSneak) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'sneakAttack', 215);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'sneakAttack', 215);
     if (!queueSetup) return;
-    let autoSneak = this.actor.flags['chris-premades']?.feature?.sneakAttack?.auto;
+    let autoSneak = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.auto;
     if (!autoSneak) {
         let selection = await chris.dialog('Use sneak attack?', [['Yes', true], ['No', false]]);
         if (!selection) {
-            queue.remove(this.item.uuid);
+            queue.remove(workflow.item.uuid);
             return;
         }
     }
     if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.sneakAttack.turn', game.combat.round + '-' + game.combat.turn);
-    let bonusDamageFormula = this.actor.flags['chris-premades']?.feature?.sneakAttack?.customFormula;
+    let bonusDamageFormula = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.customFormula;
     if (!bonusDamageFormula) {
-        if (this.actor.type === 'character') {
-            let scale = this.actor.system.scale?.rogue?.['sneak-attack'];
+        if (workflow.actor.type === 'character') {
+            let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
             if (scale) {
                 let number = scale.number;
-                bonusDamageFormula = number + 'd' + scale.faces + '[' + this.defaultDamageType + ']';
+                bonusDamageFormula = number + 'd' + scale.faces + '[' + workflow.defaultDamageType + ']';
             } else {
                 ui.notifications.warn('Actor does not appear to have a Sneak Attack scale!');
-                queue.remove(this.item.uuid);
+                queue.remove(workflow.item.uuid);
                 return;
             }
-        } else if (this.actor.type === 'npc') {
-            let number = Math.ceil(this.actor.system.details.cr) / 2;
-            bonusDamageFormula = number + 'd6[' + this.defaultDamageType + ']';
+        } else if (workflow.actor.type === 'npc') {
+            let number = Math.ceil(workflow.actor.system.details.cr) / 2;
+            bonusDamageFormula = number + 'd6[' + workflow.defaultDamageType + ']';
         }
     } else {
-        bonusDamageFormula += '[' + this.defaultDamageType + ']';
+        bonusDamageFormula += '[' + workflow.defaultDamageType + ']';
     }
-    if (this.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = this.damageRoll._formula + ' + ' + bonusDamageFormula;
+    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
+    await workflow.setDamageRoll(damageRoll);
     await originFeature.use();
     if (displayRakish) {
-        let rEffect = chris.findEffect(this.actor, 'Rakish Audacity');
+        let rEffect = chris.findEffect(workflow.actor, 'Rakish Audacity');
         if (rEffect) {
             let rFeature = await fromUuid(rEffect.origin);
             if (rFeature) await rFeature.use();
         }
     }
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }
 async function combatEnd(origin) {
     await origin.setFlag('chris-premades', 'feature.sneakAttack.turn', '');

@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonElemental({speaker, actor, token, character, item, args}){
+export async function summonElemental({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await chris.dialog('What type?', [['Air', 'Air'], ['Earth', 'Earth'], ['Fire', 'Fire'], ['Water', 'Water']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Elemental Spirit');
@@ -8,20 +8,20 @@ export async function summonElemental({speaker, actor, token, character, item, a
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Elemental Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Elemental Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let slamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Slam (Elemental Spirit)', false);
     if (!slamData) return;
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Elemental Spirit)');
-    slamData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
-    let hpFormula = 50 + ((this.castData.castLevel - 4) * 10);
+    slamData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
+    let hpFormula = 50 + ((workflow.castData.castLevel - 4) * 10);
     let name = 'Elemental Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'hp': {
@@ -30,7 +30,7 @@ export async function summonElemental({speaker, actor, token, character, item, a
                         'value': hpFormula
                     },
                     'ac': {
-                        'flat': 11 + this.castData.castLevel
+                        'flat': 11 + workflow.castData.castLevel
                     }
                 }
             },
@@ -41,8 +41,8 @@ export async function summonElemental({speaker, actor, token, character, item, a
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.str.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -108,5 +108,5 @@ export async function summonElemental({speaker, actor, token, character, item, a
             setProperty(updates, 'actor.system.traits.dr.value', ['acid']);
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
 }

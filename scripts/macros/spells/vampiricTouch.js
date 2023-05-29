@@ -1,9 +1,9 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function vampiricTouchItem({speaker, actor, token, character, item, args}) {
+async function vampiricTouchItem({speaker, actor, token, character, item, args, scope, workflow}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Vampiric Touch Attack', false);
     if (!featureData) return;
-    let spellLevel = this.castData.castLevel;
+    let spellLevel = workflow.castData.castLevel;
     featureData.system.damage.parts = [
 		[
             spellLevel + 'd6[necrotic]',
@@ -14,20 +14,20 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
 	featureData.flags['chris-premades'] = {
 		'spell': {
 			'vampiricTouchAttack': true,
-			'castData': this.castData
+			'castData': workflow.castData
 		}
 	}
-	featureData.flags['chris-premades'].spell.castData.school = this.item.system.school;
+	featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     async function effectMacro () {
 		await warpgate.revert(token.document, 'Vampiric Touch');
 	}
     let effectData = {
-		'label': this.item.name,
-		'icon': this.item.img,
+		'label': workflow.item.name,
+		'icon': workflow.item.img,
 		'duration': {
 			'seconds': 60
 		},
-		'origin': this.item.uuid,
+		'origin': workflow.item.uuid,
 		'flags': {
 			'effectmacro': {
 				'onDelete': {
@@ -47,23 +47,23 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
 				[featureData.name]: featureData
 			},
 			'ActiveEffect': {
-				[this.item.name]: effectData
+				[workflow.item.name]: effectData
 			}
 		}
 	};
 	let options = {
 		'permanent': false,
-		'name': this.item.name,
+		'name': workflow.item.name,
 		'description': featureData.name
 	};
-	await warpgate.mutate(this.token.document, updates, {}, options);
-	let feature = this.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
+	await warpgate.mutate(workflow.token.document, updates, {}, options);
+	let feature = workflow.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
 	if (!feature) return;
-	if (this.targets.size === 0) return;
+	if (workflow.targets.size === 0) return;
 	let options2 = {
         'showFullCard': false,
         'createWorkflow': true,
-        'targetUuids': [this.targets.first().document.uuid],
+        'targetUuids': [workflow.targets.first().document.uuid],
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
@@ -75,18 +75,18 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args})
     };
     await MidiQOL.completeItemUse(feature, {}, options2);
 }
-async function vampiricTouchAttack({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-	let queueSetup = await queue.setup(this.item.uuid, 'vampiricTouchAttack', 450);
+async function vampiricTouchAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+	let queueSetup = await queue.setup(workflow.item.uuid, 'vampiricTouchAttack', 450);
 	if (!queueSetup) return;
-    let damage = chris.totalDamageType(this.targets.first().actor, this.damageDetail, 'necrotic');
+    let damage = chris.totalDamageType(workflow.targets.first().actor, workflow.damageDetail, 'necrotic');
     if (!damage) {
-		queue.remove(this.item.uuid);
+		queue.remove(workflow.item.uuid);
 		return;
 	}
 	damage = Math.floor(damage / 2);
-    await chris.applyDamage([this.token], damage, 'healing');
-	queue.remove(this.item.uuid);
+    await chris.applyDamage([workflow.token], damage, 'healing');
+	queue.remove(workflow.item.uuid);
 }
 export let vampiricTouch = {
     'item': vampiricTouchItem,

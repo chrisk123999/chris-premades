@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function potionOfVitality({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetActor = this.targets.first().actor;
+export async function potionOfVitality({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetActor = workflow.targets.first().actor;
     await chris.removeCondition(targetActor, 'Poisoned');
     await chris.removeCondition(targetActor, 'Exhaustion 1');
     await chris.removeCondition(targetActor, 'Exhaustion 2');
