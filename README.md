@@ -47,6 +47,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Cloudkill  
 - Crown of Madness  
 - Crusaders's Mantle  
+- Danse Macabre  
 - Darkness  
 - Death Ward  
 - Detect Magic  
