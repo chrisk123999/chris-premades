@@ -382,5 +382,74 @@ export let chris = {
 	},
 	'getCriticalFormula': function _getCriticalFormula(formula) {
 		return new CONFIG.Dice.DamageRoll(formula,	{}, {'critical': true, 'powerfulCritical': game.settings.get('dnd5e', 'criticalDamageMaxDice'), 'multiplyNumeric': game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
-	}
+	},
+	'getSize': function _getSize(actor, sizeToString) {
+		let sizeValue;
+		let sizeString;
+		switch (actor.system.traits.size) {
+			case 'tiny':
+				sizeValue = 0;
+				sizeString = 'tiny';
+				break;
+			case 'sm':
+				sizeValue = 1;
+				sizeString = 'small';
+				break;
+			case 'med':
+				sizeValue = 2;
+				sizeString = 'medium';
+				break;
+			case 'lg':
+				sizeValue = 3;
+				sizeString = 'large';
+				break;
+			case 'huge':
+				sizeValue = 4;
+				sizeString = 'huge';
+				break;
+			case 'grg':
+				sizeValue = 5;
+				sizeString = 'gargantuan'
+				break;
+		}
+		if (sizeToString === true) return sizeString;
+		else return sizeValue;
+
+	},
+	'sizeStringValue': function _sizeStringValue(sizeString){
+		let sizeValue;
+		switch (sizeString.toLowerCase()) {
+			case 'tiny':
+				sizeValue = 0;
+				break;
+			case 'small':
+				sizeValue = 1;
+				break;
+			case 'medium':
+				sizeValue = 2;
+				break;
+			case 'large':
+				sizeValue = 3;
+				break;
+			case 'huge':
+				sizeValue = 4;
+				break;
+			case 'gargantuan':
+				sizeValue = 5;
+				break;
+			case 'sm':
+				sizeValue = 1;
+				break;
+			case 'med':
+				sizeValue = 2;
+				break;
+			case 'lg':
+				sizeValue = 3;
+				break;
+			case 'grg':
+				sizeValue = 5;
+				break;
+		}
+		return sizeValue;
+	},
 };
