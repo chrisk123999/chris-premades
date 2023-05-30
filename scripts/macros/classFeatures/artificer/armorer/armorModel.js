@@ -18,10 +18,10 @@ async function guardianArmor({speaker, actor, token, character, item, args, scop
     featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian Armor: Thunder Gauntlets');
     await workflow.actor.createEmbeddedDocuments('Item', [featureData, featureData2]);
     let effectData = {
-		'label': 'Arcane Armor: Guardian Model',
-		'icon': workflow.item.img,
-		'origin': workflow.item.uuid
-	};
+        'label': 'Arcane Armor: Guardian Model',
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid
+    };
     await chris.createEffect(workflow.actor, effectData);
     let effect2 = chris.findEffect(workflow.actor, 'Arcane Armor: Infiltrator Model');
     if (effect2) await effect2.delete();
@@ -43,9 +43,9 @@ async function infiltratorArmor({speaker, actor, token, character, item, args, s
     if (!featureData) return;
     await workflow.actor.createEmbeddedDocuments('Item', [featureData]);
     let effectData = {
-		'label': 'Arcane Armor: Infiltrator Model',
-		'icon': workflow.item.img,
-		'origin': workflow.item.uuid,
+        'label': 'Arcane Armor: Infiltrator Model',
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'changes': [
             {
                 'key': 'system.attributes.movement.walk',
@@ -60,7 +60,7 @@ async function infiltratorArmor({speaker, actor, token, character, item, args, s
                 'priority': 20
             }
         ]
-	};
+    };
     await chris.createEffect(workflow.actor, effectData);
     let effect2 = chris.findEffect(workflow.actor, 'Arcane Armor: Guardian Model');
     if (effect2) await effect2.delete();

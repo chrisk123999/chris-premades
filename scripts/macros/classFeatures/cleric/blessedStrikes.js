@@ -13,7 +13,7 @@ async function onUse({speaker, actor, token, character, item, args, scope, workf
         if (featureUsed) return;
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'blessedStrikes', 150);
-	if (!queueSetup) return;
+    if (!queueSetup) return;
     let selection = await chris.dialog('Use Blessed Strikes?', [['Yes', true], ['No', false]]);
     if (!selection) {
         queue.remove(workflow.item.uuid);

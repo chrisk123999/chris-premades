@@ -4,7 +4,7 @@ export async function tollTheDead({speaker, actor, token, character, item, args,
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let queueSetup = await queue.setup(workflow.item.uuid, 'tollTheDead', 50);
-	if (!queueSetup) return;
+    if (!queueSetup) return;
     if (targetActor.system.attributes.hp.value === targetActor.system.attributes.hp.max) {
         queue.remove(workflow.item.uuid);
         return;

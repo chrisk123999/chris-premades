@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-	let pass = args[0].macroPass;
+    let pass = args[0].macroPass;
     if (workflow.hitTargets.size === 0) return;
     if (!(pass === 'postDamageRoll' || pass === 'preDamageApplication')) return;
     let effect = chris.findEffect(workflow.actor, 'Celestial Revelation (Radiant Soul)');

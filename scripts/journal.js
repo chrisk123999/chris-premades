@@ -10,8 +10,8 @@ let welcomeText = `<p>Thank you for using my module! If you find any bugs or hav
 </a>`;
 export async function setupJournalEntry() {
     let journalName = 'CPR - Descriptions';
-	let journalEntry = game.journal.getName(journalName);
-	if (!journalEntry) {
+    let journalEntry = game.journal.getName(journalName);
+    if (!journalEntry) {
         journalEntry = await JournalEntry.create({
             'name': journalName,
             'pages': [
@@ -33,7 +33,7 @@ export async function setupJournalEntry() {
             'ownership': {
                 'default': 2
             }
-	    });
+        });
         let message = 'To get started with using Chris\'s premades click here: @UUID[JournalEntry.' + journalEntry.id + ']{Read Me}';
         ChatMessage.create({
             speaker: {alias: name},
@@ -47,22 +47,22 @@ export async function setupJournalEntry() {
             })
         }
     }
-	async function addPage(journalEntry, pageName, text) {
-		await JournalEntryPage.create({
-			name: pageName, 
-			text: {'content': text}, 
-			title: {'show': false, 'level': 1}, 
-			sort: journalEntry.sheet._pages.at(-1).sort + CONST.SORT_INTEGER_DENSITY
-		}, 
-		{
-			'parent': journalEntry
-		});
-	}
-	async function checkPage(journalEntry, name) {
-		if (!journalEntry.pages.getName(name)) {
+    async function addPage(journalEntry, pageName, text) {
+        await JournalEntryPage.create({
+            name: pageName, 
+            text: {'content': text}, 
+            title: {'show': false, 'level': 1}, 
+            sort: journalEntry.sheet._pages.at(-1).sort + CONST.SORT_INTEGER_DENSITY
+        }, 
+        {
+            'parent': journalEntry
+        });
+    }
+    async function checkPage(journalEntry, name) {
+        if (!journalEntry.pages.getName(name)) {
             addPage(journalEntry, name, '');
         }
-	}
+    }
     async function preparePages(journalEntry, packKey) {
         let gamePack = game.packs.get(packKey);
         if (!gamePack) {

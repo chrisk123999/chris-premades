@@ -5,8 +5,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Sphere Bolt');
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Storm Sphere Handler');
-	}
+        await warpgate.revert(token.document, 'Storm Sphere Handler');
+    }
     async function effectMacro2() {
         await chrisPremades.macros.stormSphere.turnStart(actor, effect);
     }
@@ -73,13 +73,13 @@ async function boltItem({speaker, actor, token, character, item, args, scope, wo
         ]
     ];
     featureData.flags['chris-premades'] = {
-		'spell': {
-			'castData': {
+        'spell': {
+            'castData': {
                 'castLevel': castLevel,
                 'school': 'evo'
             }
-		}
-	};
+        }
+    };
     let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
     let options = {
         'showFullCard': false,

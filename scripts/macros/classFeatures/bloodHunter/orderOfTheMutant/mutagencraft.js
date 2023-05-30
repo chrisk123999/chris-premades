@@ -31,10 +31,10 @@ async function celerity({speaker, actor, token, character, item, args, scope, wo
                 'macroRepeat': 'none'
             },
             'effectmacro': {
-				'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
-			}
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
         }
     }
     if (classLevels >= 11 && classLevels < 18) effectData.changes[0].value = '+4';
@@ -76,10 +76,10 @@ async function mobility({speaker, actor, token, character, item, args, scope, wo
                 'macroRepeat': 'none'
             },
             'effectmacro': {
-				'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
-			}
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
         }
     }
     if (classLevels >= 11 && classLevels < 18) effectData.changes.push({
@@ -119,10 +119,10 @@ async function potency({speaker, actor, token, character, item, args, scope, wor
                 'macroRepeat': 'none'
             },
             'effectmacro': {
-				'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
-			}
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
         }
     }
     if (classLevels >= 11 && classLevels < 18) effectData.changes[0].value = '+4';
@@ -158,10 +158,10 @@ async function rapidity({speaker, actor, token, character, item, args, scope, wo
                 'macroRepeat': 'none'
             },
             'effectmacro': {
-				'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
-			}
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
         }
     }
     if (classLevels >= 11 && classLevels < 18) effectData.changes[0].value = '+4';
@@ -203,10 +203,10 @@ async function sagacity({speaker, actor, token, character, item, args, scope, wo
                 'macroRepeat': 'none'
             },
             'effectmacro': {
-				'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
-			}
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
         }
     }
     if (classLevels >= 11 && classLevels < 18) effectData.changes[0].value = '+4';
@@ -282,10 +282,10 @@ async function strangeMetabolism({speaker, actor, token, character, item, args, 
         },
         'flags': {
             'effectmacro': {
-				'onDelete': {
-					'script': 'await actor.effects.get("' + selection + '").update({"disabled": false});'
-				}
-			}
+                'onDelete': {
+                    'script': 'await actor.effects.get("' + selection + '").update({"disabled": false});'
+                }
+            }
         }
     }
     await chris.createEffect(workflow.actor, effectData);

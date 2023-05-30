@@ -7,8 +7,8 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
     let selection = await chris.dialog('Who gets the AC bonus?', [['Yourself', false], ['Target', true]]);
     if (selection === undefined) return;
     let effectData = {
-		'label': workflow.item.name,
-		'icon': workflow.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'changes': [
             {
                 'key': 'system.attributes.ac.bonus',
@@ -17,11 +17,11 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
                 'priority': 20
             }
         ],
-		'duration': {
-			'rounds': 1
-		},
-		'origin': workflow.item.uuid
-	};
+        'duration': {
+            'rounds': 1
+        },
+        'origin': workflow.item.uuid
+    };
     let sourceToken = workflow.token;
     let sourceUpdate = {
         'token': {
@@ -328,12 +328,12 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args,
 }
 async function sweepingAttackAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'sweepingAttack', 50);
-	if (!queueSetup) return;
+    if (!queueSetup) return;
     let attackRoll = workflow.item.flags['chris-premades']?.feature?.sweepingAttackRoll;
     if (!attackRoll) return;
-	let updatedRoll = await new Roll(String(attackRoll)).evaluate({async: true});
-	workflow.setAttackRoll(updatedRoll);
-	queue.remove(workflow.item.uuid);
+    let updatedRoll = await new Roll(String(attackRoll)).evaluate({async: true});
+    workflow.setAttackRoll(updatedRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function tripAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Maneuvers: Trip Attack');

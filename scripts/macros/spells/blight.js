@@ -31,29 +31,29 @@ async function early({speaker, actor, token, character, item, args, scope, workf
     if (workflow.targets.size != 1) return;
     let creatureType = chris.raceOrType(workflow.targets.first().actor);
     if (creatureType != 'plant') return;
-	let effectData = {
-		'label': 'Condition Disadvantage',
-		'icon': 'icons/magic/time/arrows-circling-green.webp',
-		'duration': {
-			'turns': 1
-		},
-		'changes': [
-			{
-				'key': 'flags.midi-qol.disadvantage.ability.save.all',
-				'value': '1',
-				'mode': 5,
-				'priority': 120
-			}
-		],
-		'flags': {
-			'dae': {
-				'specialDuration': [
-					'isSave'
-				]
-			}
-		}
-	};
-	await chris.createEffect(workflow.targets.first().actor, effectData);
+    let effectData = {
+        'label': 'Condition Disadvantage',
+        'icon': 'icons/magic/time/arrows-circling-green.webp',
+        'duration': {
+            'turns': 1
+        },
+        'changes': [
+            {
+                'key': 'flags.midi-qol.disadvantage.ability.save.all',
+                'value': '1',
+                'mode': 5,
+                'priority': 120
+            }
+        ],
+        'flags': {
+            'dae': {
+                'specialDuration': [
+                    'isSave'
+                ]
+            }
+        }
+    };
+    await chris.createEffect(workflow.targets.first().actor, effectData);
 }
 export let blight = {
     'early': early,

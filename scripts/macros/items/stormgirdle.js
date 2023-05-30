@@ -10,8 +10,8 @@ async function stormAvatar({speaker, actor, token, character, item, args, scope,
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-	let level = workflow.actor.flags['chris-premades']?.item?.stormgirdle?.level;
-	if (level === undefined) return;
+    let level = workflow.actor.flags['chris-premades']?.item?.stormgirdle?.level;
+    if (level === undefined) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Storm Avatar Lightning', false);
     if (!featureData) return;
     let diceNumber = 3 + level;
@@ -23,8 +23,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     ];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Storm Avatar Lightning');
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Storm Avatar');
-	}
+        await warpgate.revert(token.document, 'Storm Avatar');
+    }
     let changes = [
         {
             'key': 'system.traits.di.value',

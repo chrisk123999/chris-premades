@@ -39,8 +39,8 @@ export async function item({speaker, actor, token, character, item, args, scope,
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Douse Fire');
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Douse Fire');
-	}
+        await warpgate.revert(token.document, 'Douse Fire');
+    }
     let effectData = {
         'label': 'Douse Fire',
         'icon': featureData.img,

@@ -16,8 +16,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Break Psychic Link');
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Break Psychic Link');
-	}
+        await warpgate.revert(token.document, 'Break Psychic Link');
+    }
     let effectData = {
         'label': 'Psychic Link',
         'icon': workflow.item.img,

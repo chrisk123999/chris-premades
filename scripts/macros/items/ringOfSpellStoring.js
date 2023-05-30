@@ -240,7 +240,7 @@ async function cast({speaker, actor, token, character, item, args, scope, workfl
                     'script': chris.functionToString(effectMacro)
                 }
             }
-    /*		  'dae': {
+    /*          'dae': {
                 'transfer': false,
                 'specialDuration': [
                     'longRest'

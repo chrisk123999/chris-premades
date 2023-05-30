@@ -5,8 +5,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Fire Breath Attack');
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Potion of Fire Breath');
-	}
+        await warpgate.revert(token.document, 'Potion of Fire Breath');
+    }
     let effectData = {
         'label': 'Potion of Fire Breath',
         'icon': workflow.item.img,
