@@ -72,7 +72,6 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     delete skeletonTokenUpdates._id;
     skeletonTokenUpdates.disposition = workflow.token.document.disposition;
     let skeletonItems = skeletonActor.getEmbeddedCollection('Item').reduce( (acc, element) => {acc[element.id] = element.toObject(); return acc;}, {});
-    console.log(skeletonTokenUpdates);
     let mutationName = 'Danse Macabre';
     let mutateOptions =  {
         'name': mutationName,
@@ -82,10 +81,26 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     };
     async function effectMacro () {
         await warpgate.revert(token.document, 'Danse Macabre');
+        if (actor.type === 'character') await chrisPremades.helpers.addCondition(actor, 'Dead', true);
     }
+    let spellMod = '+ ' + chris.getSpellMod(workflow.item);
     let effectData = {
         'label': workflow.item.name,
         'icon': workflow.item.img,
+        'changes': [
+            {
+                'key': 'system.bonuses.All-Damage',
+                'mode': 2,
+                'value': spellMod,
+                'priority': 20
+            },
+            {
+                'key': 'system.bonuses.All-Attacks',
+                'mode': 2,
+                'value': spellMod,
+                'priority': 20
+            }
+        ],
         'duration': {
             'seconds': 3600
         },
@@ -96,40 +111,99 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                     'script': chris.functionToString(effectMacro)
                 }
             }
-        }
+        },
+        'transfer': true
     };
+    let proneEffect = game.dfreds.effectInterface.findEffectByName('Prone').toObject();
+    let targetTokens = [];
     for (let i = 0; nearbyTokens.length > i; i++) {
         if (selection.inputs[i] === 'Ignore') continue;
+        let turnToken = nearbyTokens[i];
+        targetTokens.push(turnToken.document.uuid);
+        if (turnToken.actor.type === 'character') await chris.removeCondition(turnToken.actor, 'Dead');
         let newItems;
         let updates;
         let itemUpdates;
         if (selection.inputs[i] === 'Zombie') {
             newItems = zombieItems;
-            itemUpdates = nearbyTokens[i].actor.items.reduce( (acc, val) => {acc[val.id] = warpgate.CONST.DELETE; return acc;}, newItems);
+            itemUpdates = turnToken.actor.items.reduce( (acc, val) => {acc[val.id] = warpgate.CONST.DELETE; return acc;}, newItems);
             updates = {
                 'token': zombieTokenUpdates,
                 'actor': zombieActorUpdates,
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData
+                        [effectData.label]: effectData,
+                        [proneEffect.label]: proneEffect
                     }
                 }
             };
         } else if (selection.inputs[i] === 'Skeleton') {
             newItems = skeletonItems;
-            itemUpdates = nearbyTokens[i].actor.items.reduce( (acc, val) => {acc[val.id] = warpgate.CONST.DELETE; return acc;}, newItems);
+            itemUpdates = turnToken.actor.items.reduce( (acc, val) => {acc[val.id] = warpgate.CONST.DELETE; return acc;}, newItems);
             updates = {
                 'token': skeletonTokenUpdates,
                 'actor': skeletonActorUpdates,
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData
+                        [effectData.label]: effectData,
+                        [proneEffect.label]: proneEffect
                     }
                 }
             };
         }
-        await warpgate.mutate(nearbyTokens[i].document, updates, {}, mutateOptions);
+        await warpgate.mutate(turnToken.document, updates, {}, mutateOptions);
     }
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Danse Macabre - Command Undead', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Danse Macabre - Command Undead');
+    async function effectMacro2 () {
+        let targetTokens = effect.flags['chris-premades']?.spell?.danseMacabre;
+        if (targetTokens) {
+            for (let i of targetTokens) {
+                let targetToken = await fromUuid(i);
+                if (!targetToken) continue;
+                let targetEffect = chrisPremades.helpers.findEffect(targetToken.actor, 'Danse Macabre');
+                if (targetEffect) chrisPremades.helpers.removeEffect(targetEffect);
+            }
+        }
+        await warpgate.revert(token.document, 'Danse Macabre - Command Undead');
+    }
+    let effectData2 = {
+        'label': workflow.item.name + ' - Caster',
+        'icon': workflow.item.img,
+        'duration': {
+            'seconds': 3600
+        },
+        'origin': workflow.item.uuid,
+        'flags': {
+            'effectmacro': {
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro2)
+                }
+            },
+            'chris-premades': {
+                'spell': {
+                    'danseMacabre': targetTokens
+                }
+            }
+        }
+    };
+    let updates2 = {
+        'embedded': {
+            'Item': {
+                [featureData.name]: featureData
+            },
+            'ActiveEffect': {
+                [effectData2.label]: effectData2
+            }
+        }
+    };
+    let options2 = {
+        'permanent': false,
+        'name': 'Danse Macabre - Command Undead',
+        'description': featureData.name
+    };
+    await warpgate.mutate(workflow.token.document, updates2, {}, options2);
 }

@@ -58,6 +58,14 @@ export function registerSettings() {
 			if (value && game.user.isGM) await tashaSummon.setupFolder();
 		}
 	});
+	game.settings.register(moduleName, 'Tasha Initiative', {
+		'name': 'Minions use caster\'s initiative',
+		'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s',
+		'scope': 'world',
+		'config': true,
+		'type': Boolean,
+		'default': false
+	});
 	game.settings.register(moduleName, 'Effect Auras', {
 		'name': 'Effect Auras',
 		'hint': 'This setting allows certain macros from this module to function.',

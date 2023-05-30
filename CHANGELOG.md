@@ -1,3 +1,7 @@
+# 0.4.2 Release:
+## New Content:
+- Spell: Danse Macabre
+  
 # 0.4.1 Release:
 ## Update Notes:
 - Actor updater will now list the updated items (Requires DDB Importer version 3.4.24 or higher).
