@@ -384,6 +384,7 @@ export let macros = {
     'sanctuary': sanctuary,
     'shadowBlade': shadowBlade,
     'shockingGrasp': shockingGrasp,
+    'sickeningRadiance': sickeningRadiance,
     'slasher': slasher,
     'sneakAttack': sneakAttack,
     'spikeGrowth': spikeGrowth,
