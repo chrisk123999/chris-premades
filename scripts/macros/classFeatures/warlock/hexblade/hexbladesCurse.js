@@ -1,44 +1,44 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
-async function damage({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
-    let targetId = this.actor.flags['chris-premades']?.feature?.hexbladesCurse;
+async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    let targetId = workflow.actor.flags['chris-premades']?.feature?.hexbladesCurse;
     if (!targetId) return;
-    let targetToken = this.hitTargets.first();
+    let targetToken = workflow.hitTargets.first();
     if (targetId != targetToken.id) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'hexbladesCurse', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
-    let damageFormula = this.damageRoll._formula + ' + ' + this.actor.system.attributes.prof + '[' + this.defaultDamageType + ']';
+    let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[' + workflow.defaultDamageType + ']';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
     return;
 }
-async function damageApplication({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size < 2) return;
-    let targetId = this.actor.flags['chris-premades']?.feature?.hexbladesCurse;
+async function damageApplication({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size < 2) return;
+    let targetId = workflow.actor.flags['chris-premades']?.feature?.hexbladesCurse;
     if (!targetId) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'hexbladesCurse', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
-    let targetDamage = this.damageList.find(i => i.tokenId === targetId);
+    let targetDamage = workflow.damageList.find(i => i.tokenId === targetId);
     if (!targetDamage) return;
     let targetActor = canvas.scene.tokens.get(targetDamage.tokenId).actor;
     if (!targetActor) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
-    let hasDI = chris.checkTrait(targetActor, 'di', this.defaultDamageType);
+    let hasDI = chris.checkTrait(targetActor, 'di', workflow.defaultDamageType);
     if (hasDI) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
-    let damageTotal = this.actor.system.attributes.prof;
-    let hasDR = chris.checkTrait(targetActor, 'dr', this.defaultDamageType);
+    let damageTotal = workflow.actor.system.attributes.prof;
+    let hasDR = chris.checkTrait(targetActor, 'dr', workflow.defaultDamageType);
     if (hasDR) damageTotal = Math.floor(damageTotal / 2);
     targetDamage.damageDetail[0].push(
         {
             'damage': damageTotal,
-            'type': this.defaultDamageType
+            'type': workflow.defaultDamageType
         }
     );
     targetDamage.totalDamage += damageTotal;
@@ -55,20 +55,20 @@ async function damageApplication({speaker, actor, token, character, item, args})
     } else {
         targetDamage.newHP -= damageTotal;
     }
-    queue.remove(this.item.uuid);
+    queue.remove(workflow.item.uuid);
 }
-async function attack({speaker, actor, token, character, item, args}) {
+async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     let validTypes = [
         'mwak',
         'msak',
         'rwak',
         'rsak'
     ];
-    if (this.targets.size != 1 || !validTypes.includes(this.item.system.actionType)) return;
-    let targetId = this.actor.flags['chris-premades']?.feature?.hexbladesCurse;
+    if (workflow.targets.size != 1 || !validTypes.includes(workflow.item.system.actionType)) return;
+    let targetId = workflow.actor.flags['chris-premades']?.feature?.hexbladesCurse;
     if (!targetId) return;
-    if (this.targets.first().id != targetId) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'hexbladesCurse', 250);
+    if (workflow.targets.first().id != targetId) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
     let effectData = {
         'label': 'Critical Threshold',
@@ -95,19 +95,19 @@ async function attack({speaker, actor, token, character, item, args}) {
             }
         }
     }
-    await chris.createEffect(this.targets.first().actor, effectData);
-    queue.remove(this.item.uuid);
+    await chris.createEffect(workflow.targets.first().actor, effectData);
+    queue.remove(workflow.item.uuid);
 }
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'changes': [
             {
                 'key': 'flags.chris-premades.feature.hexbladesCurse',
                 'mode': 5,
-                'value': this.targets.first().id,
+                'value': workflow.targets.first().id,
                 'priority': 20
             },
             {
@@ -129,7 +129,7 @@ async function item({speaker, actor, token, character, item, args}) {
                 'priority': 20
             }
         ],
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'duration': {
             'seconds': 60
         },
@@ -144,7 +144,7 @@ async function item({speaker, actor, token, character, item, args}) {
             }
         }
     }
-    await chris.createEffect(this.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData);
 }
 async function defeated(origin, effect) {
     await warpgate.wait(100);

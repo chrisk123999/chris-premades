@@ -1,10 +1,10 @@
 import {chris} from '../../helperFunctions.js';
-export async function oilOfSharpness({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let tokenDoc = this.targets.first().document;
+export async function oilOfSharpness({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let tokenDoc = workflow.targets.first().document;
     let generatedMenu = [];
     let mutationStack = warpgate.mutationStack(tokenDoc);
-    let targetActor = this.targets.first().actor;
+    let targetActor = workflow.targets.first().actor;
     targetActor.items.forEach(item => {
         if (item.type === 'weapon' && item.system.equipped === true) {
             let mutateItem = mutationStack.getName('Oil of Sharpness: ' + item.name);
@@ -47,7 +47,7 @@ export async function oilOfSharpness({speaker, actor, token, character, item, ar
     await warpgate.mutate(tokenDoc, updates, {}, options);
     let effectData = {
         'label': 'Oil of Sharpness: ' + weaponData.name,
-        'icon': this.item.img,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
         },

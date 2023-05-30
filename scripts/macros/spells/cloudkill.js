@@ -91,11 +91,11 @@ async function cloudKillTouched(tokenids) {
         }
     }
 }
-async function cloudkillItem({speaker, actor, token, character, item, args}) {
-    let template = canvas.scene.collections.templates.get(this.templateId);
+async function cloudkillItem({speaker, actor, token, character, item, args, scope, workflow}) {
+    let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
-    let spellLevel = this.castData.castLevel;
-    let spelldc = chris.getSpellDC(this.item);
+    let spellLevel = workflow.castData.castLevel;
+    let spelldc = chris.getSpellDC(workflow.item);
     let touchedTokens = await game.modules.get('templatemacro').api.findContained(template);
     await template.setFlag('chris-premades', 'spell.cloudkill', {spellLevel, spelldc, touchedTokens});
     await cloudKillTouched(touchedTokens);
@@ -126,10 +126,10 @@ async function cloudkillItem({speaker, actor, token, character, item, args}) {
     }
     let effectData = {
         'label': 'Cloudkill - Movement Handler',
-        'icon': this.item.img,
-        'origin': this.item.uuid,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
         'duration': {
-            'seconds': 60 * this.item.system.duration.value
+            'seconds': 60 * workflow.item.system.duration.value
         },
         'flags': {
             'effectmacro': {
@@ -140,13 +140,13 @@ async function cloudkillItem({speaker, actor, token, character, item, args}) {
             'chris-premades': {
                 'spell': {
                     'cloudkill': {
-                        'templateId': this.templateId
+                        'templateId': workflow.templateId
                     }
                 }
             }
         }
     };
-    await chris.createEffect(this.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData);
 }
 async function cloudkillDeleted(template) {
     let touchedTokens = template.flags['chris-premades']?.spell?.cloudkill?.touchedTokens;

@@ -37,6 +37,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Aura of Purity  
 - Beacon of Hope  
 - Bestow Curse  
+- Bigby's Hand  
 - Blade Ward  
 - Blight  
 - Blink  
@@ -47,15 +48,18 @@ Additional support and feature requests can be made on my Discord server: https:
 - Cloudkill  
 - Crown of Madness  
 - Crusaders's Mantle  
+- Danse Macabre  
 - Darkness  
 - Death Ward  
 - Detect Magic  
 - Detect Thoughts  
 - Dragon's Breath  
 - Earth Tremor  
+- Fog Cloud  
 - Gaseous Form  
 - Guiding Bolt  
 - Hail of Thorns  
+- Healing Spirit  
 - Heat Metal  
 - Hex  
 - Hold Person  
@@ -68,6 +72,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Melf's Acid Arrow  
 - Mind Sliver  
 - Mirror Image  
+- Misty Step  
 - Pass Without Trace  
 - Protection from Evil and Good  
 - Raulothim's Psychic Lance  
@@ -83,6 +88,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Beast  
 - Summon Celestial  
 - Summon Construct  
+- Summon Draconic Spirit  
 - Summon Elemental  
 - Summon Fey  
 - Summon Fiend  
@@ -93,6 +99,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Toll the Dead  
 - Vampiric Touch  
 - Vitriolic Sphere  
+- Warding Bond  
 - Wither and Bloom  
 - Zone of Truth  
   
@@ -197,6 +204,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Dread Ambusher  
 ### Rogue:  
 - Evasion  
+- Sneak Attack  
+#### Swashbuckler:  
+- Rakish Audacity  
 ### Sorcerer:  
 #### Divine Soul:    
 - Favored by the Gods  

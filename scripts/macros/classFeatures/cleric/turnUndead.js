@@ -1,6 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
-async function targets({speaker, actor, token, character, item, args}) {
-    if (this.targets.size === 0) return;
+async function targets({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size === 0) return;
     let effectData = {
         'label': 'Turn Advantage',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
@@ -52,7 +52,7 @@ async function targets({speaker, actor, token, character, item, args}) {
         }
     };
     let validTargets = [];
-    for (let i of Array.from(this.targets)) {
+    for (let i of Array.from(workflow.targets)) {
         if (chris.raceOrType(i.actor) != 'undead') continue;
         if (i.actor.system.attributes.hp.value === 0) continue;
         if (i.actor.flags['chris-premades']?.feature?.turnResistance) await chris.createEffect(i.actor, effectData);
@@ -61,9 +61,9 @@ async function targets({speaker, actor, token, character, item, args}) {
     }
     chris.updateTargets(validTargets);
 }
-async function saves({speaker, actor, token, character, item, args}) {
-    if (this.failedSaves.size === 0) return;
-    let clericLevels = this.actor.classes.cleric?.system?.levels;
+async function saves({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.failedSaves.size === 0) return;
+    let clericLevels = workflow.actor.classes.cleric?.system?.levels;
     if (!clericLevels) return;
     let destroyLevel;
     if (clericLevels >= 17) {
@@ -79,7 +79,7 @@ async function saves({speaker, actor, token, character, item, args}) {
     }
     if (!destroyLevel) return;
     let destroyTokens = [];
-    for (let i of Array.from(this.failedSaves)) {
+    for (let i of Array.from(workflow.failedSaves)) {
         let CR = i.actor.system.details?.cr;
         if (!CR) continue;
         if (CR > destroyLevel) continue;

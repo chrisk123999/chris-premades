@@ -1,9 +1,9 @@
 import {chris} from '../../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args}) {
-    if (this.failedSaves.size != 1) return;
-    let targetToken = this.targets.first();
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.failedSaves.size != 1) return;
+    let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
-    await chris.addCondition(targetActor, 'Reaction', false, this.item.uuid);
+    await chris.addCondition(targetActor, 'Reaction', false, workflow.item.uuid);
 }
 async function turnStart(token, origin) {
     let targetToken = game.canvas.tokens.get(game.combat.current.tokenId);

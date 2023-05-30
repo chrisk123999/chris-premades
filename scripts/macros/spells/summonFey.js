@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonFey({speaker, actor, token, character, item, args}){
+export async function summonFey({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await chris.dialog('What type?', [['Fuming', 'Fuming'], ['Mirthful', 'Mirthful'], ['Tricksy', 'Tricksy']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Fey Spirit');
@@ -8,7 +8,7 @@ export async function summonFey({speaker, actor, token, character, item, args}){
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Fey Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Fey Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let feyStepData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Fey Step (Fey Spirit)', false);
     if (!feyStepData) return;
@@ -17,16 +17,16 @@ export async function summonFey({speaker, actor, token, character, item, args}){
     let shortSwordData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Shortsword (Fey Spirit)', false);
     if (!shortSwordData) return;
     shortSwordData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Shortsword (Fey Spirit)');
-    shortSwordData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
+    shortSwordData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     shortSwordData.name = 'Shortsword';
-    let hpFormula = 30 + ((this.castData.castLevel - 3) * 10);
+    let hpFormula = 30 + ((workflow.castData.castLevel - 3) * 10);
     let name = 'Fey Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'hp': {
@@ -35,7 +35,7 @@ export async function summonFey({speaker, actor, token, character, item, args}){
                         'value': hpFormula
                     },
                     'ac': {
-                        'flat': 12 + this.castData.castLevel
+                        'flat': 12 + workflow.castData.castLevel
                     }
                 }
             },
@@ -46,8 +46,8 @@ export async function summonFey({speaker, actor, token, character, item, args}){
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.dex.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.dex.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -95,6 +95,7 @@ export async function summonFey({speaker, actor, token, character, item, args}){
             let mirthfulData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mirthful', false);
             if (!mirthfulData) return;
             mirthfulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Mirthful');
+            mirthfulData.system.save.dc = chris.getSpellDC(workflow.item);
             updates.embedded.Item[mirthfulData.name] = mirthfulData;
             break;
         case 'Tricksy':
@@ -104,5 +105,5 @@ export async function summonFey({speaker, actor, token, character, item, args}){
             updates.embedded.Item[tricksyData.name] = tricksyData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
 }

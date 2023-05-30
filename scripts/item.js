@@ -17,14 +17,25 @@ export function createActorHeaderButton(config, buttons) {
         });
     }
 }
-async function actorConfig(actorDocument) {
-    if (!(actorDocument.type === 'character' || actorDocument.type === 'npc')) {
+async function actorConfig(actor) {
+    if (!(actor.type === 'character' || actor.type === 'npc')) {
         ui.notifications.info('This feature must be used on a character or npc!');
         return;
     }
     let selection = await chris.dialog('Apply all of Chris\'s automations to this actor?', [['Yes', true], ['No', false]]);
     if (!selection) return;
-    await game.modules.get('ddb-importer').api.chris.adjustActor(actorDocument);
+    let changes = await game.modules.get('ddb-importer').api.chris.adjustActor(actor);
+    if (changes && changes?.length) {
+        let list = '';
+        for (let i of changes.sort()) {
+            list += '- ' + i + '<br>'
+        }
+        ChatMessage.create({
+            'speaker': {alias: name},
+            'whisper': [game.user.id],
+            'content': '<hr><b>Updated Items:</b><br><hr>' + list
+        });
+    }
     ui.notifications.info('Actor update complete!');
 }
 async function itemConfig(itemDocument) {
@@ -105,8 +116,9 @@ async function itemConfig(itemDocument) {
     let selection = await chris.dialog('Automation found, apply it? (' + foundCompendiumName + ')', options);
     if (!selection) return;
     ChatMessage.create({
-        speaker: {alias: name},
-        content: '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
+        'speaker': {alias: name},
+        'whisper': [game.user.id],
+        'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
     let originalItem = duplicate(itemDocument.toObject());
     originalItem.name = compendiumItem.name;
@@ -144,7 +156,11 @@ export function setConfig() {
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear',
             'Ring of Spell Storing': 'Ring of Spell Storing (0/5)',
-            'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen'
+            'Mutagencraft - Consume Mutagen': 'Mutagencraft - Create Mutagen',
+            'Reaper: Chill Touch': 'Reaper',
+            'Reaper: Sapping Sting': 'Reaper',
+            'Reaper: Spare the Dying': 'Reaper',
+            'Reaper: Toll the Dead': 'Reaper'
         },
         'additionalItems': {
             'Blade Flourish': [

@@ -15,6 +15,8 @@ import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bestowCurse} from './macros/spells/bestowCurse.js';
+import {bigbysHand} from './macros/spells/bigbysHand.js';
+import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
@@ -41,6 +43,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
 import {deathWard} from './macros/spells/deathWard.js';
@@ -49,6 +52,7 @@ import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
+import {draconicSpirit} from './macros/monsterFeatures/draconicSpirit/draconicSpirit.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
@@ -72,6 +76,7 @@ import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSp
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
+import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
@@ -84,6 +89,7 @@ import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grim
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
+import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
 import {help} from './macros/mechanics/help/help.js';
@@ -138,6 +144,7 @@ import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingM
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {slasher} from './macros/feats/slasher.js';
+import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
@@ -153,12 +160,14 @@ import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
+import {summonDraconicSpirit} from './macros/spells/summonDraconicSpirit.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
 import {summon} from './macros/generic/summon.js';
+import {telekinetic} from './macros/feats/telekinetic.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -167,6 +176,7 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
+import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
@@ -174,226 +184,237 @@ import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPr
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export async function onHitMacro(workflow) {
-	if (workflow.targets.size === 0) return;
-	workflow.targets.forEach(async token => {
-		let onHitName = token.actor.flags['chris-premades']?.feature?.onHit;
-		if (!onHitName) return;
-		if (token.document.uuid === workflow.token.document.uuid) return;
-		let onHitFunction = macros.onHit[onHitName];
-		if (typeof onHitFunction != 'function') {
-			ui.notifications.warn('Invalid actor onHit macro!');
-			return;
-		}
-		await onHitFunction(workflow, token);
-	});
+    if (workflow.targets.size === 0) return;
+    workflow.targets.forEach(async token => {
+        let onHitName = token.actor.flags['chris-premades']?.feature?.onHit;
+        if (!onHitName) return;
+        if (token.document.uuid === workflow.token.document.uuid) return;
+        let onHitFunction = macros.onHit[onHitName];
+        if (typeof onHitFunction != 'function') {
+            ui.notifications.warn('Invalid actor onHit macro!');
+            return;
+        }
+        await onHitFunction(workflow, token);
+    });
 }
 let monster = {
-	'aberrantSpirit': aberrantSpirit,
-	'bodak': bodak,
-	'bulette': bulette,
-	'catoblepas': catoblepas,
-	'celestialSpirit': celestialSpirit,
-	'chasme': chasme,
-	'clayGolem': clayGolem,
-	'constructSpirit': constructSpirit,
-	'corpseFlower': corpseFlower,
-	'dreamEater': dreamEater,
-	'drow': drow,
-	'duergar': duergar,
-	'dybbuk': dybbuk,
-	'elderBrain': elderBrain,
-	'elderOblex': elderOblex,
-	'feySpirit': feySpirit,
-	'fiendishSpirit': fiendishSpirit,
-	'fireElemental': fireElemental,
-	'fireSnake': fireSnake,
-	'fragmentOfKrokulmar': fragmentOfKrokulmar,
-	'gallowsSpeaker': gallowsSpeaker,
-	'generic': generic,
-	'ghast': ghast,
-	'gibberingMouther': gibberingMouther,
-	'hezrou': hezrou,
-	'homunculus': homunculus,
-	'intellectDevourer': intellectDevourer,
-	'leucrotta': leucrotta,
-	'salamander': salamander,
-	'shadow': shadow,
-	'shadowDemon': shadowDemon,
-	'shadowSpirit': shadowSpirit,
-	'shadowghast': shadowghast,
-	'shamblingMound': shamblingMound,
-	'soulMonger': soulMonger,
-	'sprite': sprite,
-	'stenchKow': stenchKow,
-	'succubus': succubus,
-	'troglodyte': troglodyte,
-	'undeadSpirit': undeadSpirit,
-	'zombie': zombie
+    'aberrantSpirit': aberrantSpirit,
+    'bodak': bodak,
+    'bulette': bulette,
+    'catoblepas': catoblepas,
+    'celestialSpirit': celestialSpirit,
+    'chasme': chasme,
+    'clayGolem': clayGolem,
+    'constructSpirit': constructSpirit,
+    'corpseFlower': corpseFlower,
+    'draconicSpirit': draconicSpirit,
+    'dreamEater': dreamEater,
+    'drow': drow,
+    'duergar': duergar,
+    'dybbuk': dybbuk,
+    'elderBrain': elderBrain,
+    'elderOblex': elderOblex,
+    'feySpirit': feySpirit,
+    'fiendishSpirit': fiendishSpirit,
+    'fireElemental': fireElemental,
+    'fireSnake': fireSnake,
+    'fragmentOfKrokulmar': fragmentOfKrokulmar,
+    'gallowsSpeaker': gallowsSpeaker,
+    'generic': generic,
+    'ghast': ghast,
+    'gibberingMouther': gibberingMouther,
+    'hezrou': hezrou,
+    'homunculus': homunculus,
+    'intellectDevourer': intellectDevourer,
+    'leucrotta': leucrotta,
+    'salamander': salamander,
+    'shadow': shadow,
+    'shadowDemon': shadowDemon,
+    'shadowSpirit': shadowSpirit,
+    'shadowghast': shadowghast,
+    'shamblingMound': shamblingMound,
+    'soulMonger': soulMonger,
+    'sprite': sprite,
+    'stenchKow': stenchKow,
+    'succubus': succubus,
+    'troglodyte': troglodyte,
+    'undeadSpirit': undeadSpirit,
+    'zombie': zombie
 }
 let onHit = {
-	'fireForm': fireElemental.fireForm,
-	'heatedBody': fireSnake.heatedBody,
-	'soulThirst': soulMonger.soulThirst.onHit
+    'blackrazor': blackrazor.onHit,
+    'fireForm': fireElemental.fireForm,
+    'heatedBody': fireSnake.heatedBody,
+    'soulThirst': soulMonger.soulThirst.onHit,
+    'wardingBond': wardingBond.onHit
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
-	switch (macroName) {
-		case 'spiritGuardians':
-			await spiritGuardians.moved(token, castLevel, spellDC, damage, damageType, tokenID);
-			break;
-	}
+    switch (macroName) {
+        case 'spiritGuardians':
+            await spiritGuardians.moved(token, castLevel, spellDC, damage, damageType, tokenID);
+            break;
+    }
 }
 async function onMoveEffect(macroName, token, selectedAura) {
-	switch (macroName) {
-		case 'auraOfPurity': 
-			await auraOfPurity.move(token, selectedAura);
-			break;
-		case 'auraOfProtection':
-			await auraOfProtection(token, selectedAura);
-			break;
-		case 'auraOfCourage':
-			await auraOfCourage(token, selectedAura);
-			break;
-	}
+    switch (macroName) {
+        case 'auraOfPurity': 
+            await auraOfPurity.move(token, selectedAura);
+            break;
+        case 'auraOfProtection':
+            await auraOfProtection(token, selectedAura);
+            break;
+        case 'auraOfCourage':
+            await auraOfCourage(token, selectedAura);
+            break;
+    }
 }
 export let macros = {
-	'aasimarRadiantSoul': aasimarRadiantSoul,
-	'acidArrow': acidArrow,
-	'agonizingBlast': agonizingBlast,
-	'ancestralProtectors': ancestralProtectors,
-	'armorModel': armorModel,
-	'armorOfAgathys': armorOfAgathys,
-	'auraOfAlacrity': auraOfAlacrity,
-	'auraOfCourage': auraOfCourage,
-	'auraOfProtection': auraOfProtection,
-	'auraOfPurity': auraOfPurity,
-	'auraOfVitality': auraOfVitality,
-	'balmOfPeace': balmOfPeace,
-	'bardicInspiration': bardicInspiration,
-	'beaconOfHope': beaconOfHope,
-	'beguilingTwist': beguilingTwist,
-	'bestowCurse': bestowCurse,
-	'bladeFlourish': bladeFlourish,
-	'blessedStrikes': blessedStrikes,
-	'blessingOfTheForge': blessingOfTheForge,
-	'blight': blight,
-	'blink': blink,
-	'bloodSpear': bloodSpear,
-	'brandOfCastigation': brandOfCastigation,
-	'callLightning': callLightning,
-	'chainLightning': chainLightning,
-	'charmPerson': charmPerson,
-	'chillTouch': chillTouch,
-	'circleOfMortality': circleOfMortality,
-	'cleave': cleave,
-	'cloudkill': cloudkill,
-	'conditionResistanceEarly': conditionResistanceEarly,
-	'conditionResistanceLate': conditionResistanceLate,
-	'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
-	'conditionVulnerabilityLate': conditionVulnerabilityLate,
-	'crimsonRite': crimsonRite,
-	'crusher': crusher,
-	'darkOnesBlessing': darkOnesBlessing,
-	'darkness': darkness,
-	'deathWard': deathWard,
-	'destructiveWrath': destructiveWrath,
-	'detectThoughts': detectThoughts,
-	'divineFury': divineFury,
-	'divineSmite': divineSmite,
-	'divineStrike': divineStrike,
-	'dragonVessel': dragonVessel,
-	'dragonsBreath': dragonsBreath,
-	'dragonsWrath': dragonsWrath,
-	'dreadAmbusher': dreadAmbusher,
-	'eladrinSeason': eladrinSeason,
-	'elementalAdept': elementalAdept,
-	'elixirOfHealth': elixirOfHealth,
-	'experimentalElixir': experimentalElixir,
-	'expertDivination': expertDivination,
-	'explodingHeals': explodingHeals,
-	'fallenPuppet': fallenPuppet,
-	'feyPresence': feyPresence,
-	'focusedAim': focusedAim,
-	'formOfDread': formOfDread,
-	'graspOfHadar': graspOfHadar,
-	'graveTouched': graveTouched,
-	'grimHarvest': grimHarvest,
-	'grovelthrash': grovelthrash,
-	'hailOfThorns': hailOfThorns,
-	'healingLight': healingLight,
-	'heartOfTheStorm': heartOfTheStorm,
-	'heatMetal': heatMetal,
-	'help': help,
-	'hex': hex,
-	'hexbladesCurse': hexbladesCurse,
-	'holyWeapon': holyWeapon,
-	'hungryJaws': hungryJaws,
-	'huntersMark': huntersMark,
-	'hybridTransformation': hybridTransformation,
-	'inspiringSmite': inspiringSmite,
-	'lifeTransference': lifeTransference,
-	'lightningArrow': lightningArrow,
-	'lightningLure': lightningLure,
-	'maddeningHex': maddeningHex,
-	'maneuvers': maneuvers,
-	'massCureWounds': massCureWounds,
-	'mastersAmulet': mastersAmulet,
-	'mirrorImage': mirrorImage,
-	'monster': monster,
-	'muddledMind': muddledMind,
-	'mutagencraft': mutagencraft,
-	'oilOfSharpness': oilOfSharpness,
-	'onHit': onHit,
-	'onMove': onMove,
-	'onMoveEffect': onMoveEffect,
-	'orcishFury': orcishFury,
-	'piercer': piercer,
-	'potionOfDiminution': potionOfDiminution,
-	'potionOfFireBreath': potionOfFireBreath,
-	'potionOfGiantSize': potionOfGiantSize,
-	'potionOfGrowth': potionOfGrowth,
-	'potionOfMaximumPower': potionOfMaximumPower,
-	'potionOfPoison': potionOfPoison,
-	'potionOfVitality': potionOfVitality,
-	'preserveLife': preserveLife,
-	'protectionFromEvilAndGood': protectionFromEvilAndGood,
-	'radiantSoul': radiantSoul,
-	'rayOfEnfeeblement': rayOfEnfeeblement,
-	'reaper': reaper,
-	'removeTemplate': removeTemplate,
-	'repellingBlast': repellingBlast,
-	'ringOfSpellStoring': ringOfSpellStoring,
-	'riteOfTheDawn': riteOfTheDawn,
-	'sanctuary': sanctuary,
-	'shadowBlade': shadowBlade,
-	'shockingGrasp': shockingGrasp,
-	'sickeningRadiance': sickeningRadiance,
-	'slasher': slasher,
-	'spikeGrowth': spikeGrowth,
-	'spiritGuardians': spiritGuardians,
-	'spiritShroud': spiritShroud,
-	'starryForm': starryForm,
-	'stillnessOfMind': stillnessOfMind,
-	'stormSphere': stormSphere,
-	'stormgirdle': stormgirdle,
-	'summon': summon,
-	'summonAberration': summonAberration,
-	'summonBeast': summonBeast,
-	'summonCelestial': summonCelestial,
-	'summonConstruct': summonConstruct,
-	'summonElemental': summonElemental,
-	'summonFey': summonFey,
-	'summonFiend': summonFiend,
-	'summonShadowspawn': summonShadowspawn,
-	'summonUndead': summonUndead,
-	'thunderboltStrike': thunderboltStrike,
-	'tollTheDead': tollTheDead,
-	'turnUndead': turnUndead,
-	'twilightSanctuary': twilightSanctuary,
-	'vampiricBite': vampiricBite,
-	'vampiricTouch': vampiricTouch,
-	'wildhunt': wildhunt,
-	'witherAndBloom': witherAndBloom,
-	'wrathOfTheStorm': wrathOfTheStorm,
-	'zealousPresence': zealousPresence,
-	'zoneOfTruth': zoneOfTruth
+    'aasimarRadiantSoul': aasimarRadiantSoul,
+    'acidArrow': acidArrow,
+    'agonizingBlast': agonizingBlast,
+    'ancestralProtectors': ancestralProtectors,
+    'armorModel': armorModel,
+    'armorOfAgathys': armorOfAgathys,
+    'auraOfAlacrity': auraOfAlacrity,
+    'auraOfCourage': auraOfCourage,
+    'auraOfProtection': auraOfProtection,
+    'auraOfPurity': auraOfPurity,
+    'auraOfVitality': auraOfVitality,
+    'balmOfPeace': balmOfPeace,
+    'bardicInspiration': bardicInspiration,
+    'bigbysHand': bigbysHand,
+    'beaconOfHope': beaconOfHope,
+    'beguilingTwist': beguilingTwist,
+    'bestowCurse': bestowCurse,
+    'blackrazor': blackrazor,
+    'bladeFlourish': bladeFlourish,
+    'blessedStrikes': blessedStrikes,
+    'blessingOfTheForge': blessingOfTheForge,
+    'blight': blight,
+    'blink': blink,
+    'bloodSpear': bloodSpear,
+    'brandOfCastigation': brandOfCastigation,
+    'callLightning': callLightning,
+    'chainLightning': chainLightning,
+    'charmPerson': charmPerson,
+    'chillTouch': chillTouch,
+    'circleOfMortality': circleOfMortality,
+    'cleave': cleave,
+    'cloudkill': cloudkill,
+    'conditionResistanceEarly': conditionResistanceEarly,
+    'conditionResistanceLate': conditionResistanceLate,
+    'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
+    'conditionVulnerabilityLate': conditionVulnerabilityLate,
+    'crimsonRite': crimsonRite,
+    'crusher': crusher,
+    'danseMacabre': danseMacabre,
+    'darkOnesBlessing': darkOnesBlessing,
+    'darkness': darkness,
+    'deathWard': deathWard,
+    'destructiveWrath': destructiveWrath,
+    'detectThoughts': detectThoughts,
+    'divineFury': divineFury,
+    'divineSmite': divineSmite,
+    'divineStrike': divineStrike,
+    'dragonVessel': dragonVessel,
+    'dragonsBreath': dragonsBreath,
+    'dragonsWrath': dragonsWrath,
+    'dreadAmbusher': dreadAmbusher,
+    'eladrinSeason': eladrinSeason,
+    'elementalAdept': elementalAdept,
+    'elixirOfHealth': elixirOfHealth,
+    'experimentalElixir': experimentalElixir,
+    'expertDivination': expertDivination,
+    'explodingHeals': explodingHeals,
+    'fallenPuppet': fallenPuppet,
+    'feyPresence': feyPresence,
+    'focusedAim': focusedAim,
+    'fogCloud': fogCloud,
+    'formOfDread': formOfDread,
+    'graspOfHadar': graspOfHadar,
+    'graveTouched': graveTouched,
+    'grimHarvest': grimHarvest,
+    'grovelthrash': grovelthrash,
+    'hailOfThorns': hailOfThorns,
+    'healingLight': healingLight,
+    'healingSpirit': healingSpirit,
+    'heartOfTheStorm': heartOfTheStorm,
+    'heatMetal': heatMetal,
+    'help': help,
+    'hex': hex,
+    'hexbladesCurse': hexbladesCurse,
+    'holyWeapon': holyWeapon,
+    'hungryJaws': hungryJaws,
+    'huntersMark': huntersMark,
+    'hybridTransformation': hybridTransformation,
+    'inspiringSmite': inspiringSmite,
+    'lifeTransference': lifeTransference,
+    'lightningArrow': lightningArrow,
+    'lightningLure': lightningLure,
+    'maddeningHex': maddeningHex,
+    'maneuvers': maneuvers,
+    'massCureWounds': massCureWounds,
+    'mastersAmulet': mastersAmulet,
+    'mirrorImage': mirrorImage,
+    'monster': monster,
+    'muddledMind': muddledMind,
+    'mutagencraft': mutagencraft,
+    'oilOfSharpness': oilOfSharpness,
+    'onHit': onHit,
+    'onMove': onMove,
+    'onMoveEffect': onMoveEffect,
+    'orcishFury': orcishFury,
+    'piercer': piercer,
+    'potionOfDiminution': potionOfDiminution,
+    'potionOfFireBreath': potionOfFireBreath,
+    'potionOfGiantSize': potionOfGiantSize,
+    'potionOfGrowth': potionOfGrowth,
+    'potionOfMaximumPower': potionOfMaximumPower,
+    'potionOfPoison': potionOfPoison,
+    'potionOfVitality': potionOfVitality,
+    'preserveLife': preserveLife,
+    'protectionFromEvilAndGood': protectionFromEvilAndGood,
+    'radiantSoul': radiantSoul,
+    'rayOfEnfeeblement': rayOfEnfeeblement,
+    'reaper': reaper,
+    'removeTemplate': removeTemplate,
+    'repellingBlast': repellingBlast,
+    'ringOfSpellStoring': ringOfSpellStoring,
+    'riteOfTheDawn': riteOfTheDawn,
+    'sanctuary': sanctuary,
+    'shadowBlade': shadowBlade,
+    'shockingGrasp': shockingGrasp,
+    'slasher': slasher,
+    'sneakAttack': sneakAttack,
+    'spikeGrowth': spikeGrowth,
+    'spiritGuardians': spiritGuardians,
+    'spiritShroud': spiritShroud,
+    'starryForm': starryForm,
+    'stillnessOfMind': stillnessOfMind,
+    'stormSphere': stormSphere,
+    'stormgirdle': stormgirdle,
+    'summon': summon,
+    'summonAberration': summonAberration,
+    'summonBeast': summonBeast,
+    'summonCelestial': summonCelestial,
+    'summonConstruct': summonConstruct,
+    'summonDraconicSpirit': summonDraconicSpirit,
+    'summonElemental': summonElemental,
+    'summonFey': summonFey,
+    'summonFiend': summonFiend,
+    'summonShadowspawn': summonShadowspawn,
+    'summonUndead': summonUndead,
+    'telekentic': telekinetic,
+    'thunderboltStrike': thunderboltStrike,
+    'tollTheDead': tollTheDead,
+    'turnUndead': turnUndead,
+    'twilightSanctuary': twilightSanctuary,
+    'vampiricBite': vampiricBite,
+    'vampiricTouch': vampiricTouch,
+    'wardingBond': wardingBond,
+    'wildhunt': wildhunt,
+    'witherAndBloom': witherAndBloom,
+    'wrathOfTheStorm': wrathOfTheStorm,
+    'zealousPresence': zealousPresence,
+    'zoneOfTruth': zoneOfTruth
 }

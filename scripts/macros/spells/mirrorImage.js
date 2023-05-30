@@ -46,19 +46,19 @@ export async function mirrorImage(workflow) {
         } else {
             let updates = {
                 'changes': [
-			        {
-				        'key': 'macro.tokenMagic',
-				        'mode': 0,
-				        'value': 'images',
-				        'priority': 20
-			        },
-			        {
-				        'key': 'flags.chris-premades.spell.mirrorImage',
-				        'mode': 5,
-				        'value': duplicates - 1,
-				        'priority': 20
-			        }
-		        ]
+                    {
+                        'key': 'macro.tokenMagic',
+                        'mode': 0,
+                        'value': 'images',
+                        'priority': 20
+                    },
+                    {
+                        'key': 'flags.chris-premades.spell.mirrorImage',
+                        'mode': 5,
+                        'value': duplicates - 1,
+                        'priority': 20
+                    }
+                ]
             };
             await chris.updateEffect(targetEffect, updates);
         }

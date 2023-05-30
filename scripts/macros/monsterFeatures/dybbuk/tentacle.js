@@ -1,20 +1,20 @@
 import {chris} from '../../../helperFunctions.js';
-export async function tentacle({speaker, actor, token, character, item, args}) {
-	if (this.hitTargets.size != 1 || this.failedSaves.size != 1) return;
-	let damageRoll = await new Roll('1d6').roll({async: true});
-	damageRoll.toMessage({
-		rollMode: 'roll',
-		speaker: {alias: name},
-		flavor: this.item.name
-	});
-	let damage = -damageRoll.total;
-    let targetActor = this.targets.first().actor;
+export async function tentacle({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || workflow.failedSaves.size != 1) return;
+    let damageRoll = await new Roll('1d6').roll({async: true});
+    damageRoll.toMessage({
+        rollMode: 'roll',
+        speaker: {alias: name},
+        flavor: workflow.item.name
+    });
+    let damage = -damageRoll.total;
+    let targetActor = workflow.targets.first().actor;
     let targetMaxHP = targetActor.system.attributes.hp.max;
     let effect = chris.findEffect(targetActor, 'Dybbuk - Tentacle');
     if (!effect) {
         let effectData = {
             'label': 'Dybbuk - Tentacle',
-            'icon': this.item.img,
+            'icon': workflow.item.img,
             'duration': {
                 'seconds': 2628000
             },

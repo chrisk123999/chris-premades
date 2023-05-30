@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function potionOfGrowth({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetToken = this.targets.first();
+export async function potionOfGrowth({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let roll = await new Roll('1d4').roll({async: true});
     roll.toMessage({
@@ -73,8 +73,8 @@ export async function potionOfGrowth({speaker, actor, token, character, item, ar
         'value': size
     });
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 3600 * roll.total
         },

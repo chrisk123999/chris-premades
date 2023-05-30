@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {tashaSummon} from '../../utility/tashaSummon.js';
-async function item({speaker, actor, token, character, item, args}) {
-    await spawn(this.item, {}, '');
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    await spawn(workflow.item, {}, '');
 }
 async function spawn(item, updates, prefill) {
     if (!game.modules.get('quick-insert')?.active) {

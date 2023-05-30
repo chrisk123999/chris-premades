@@ -1,21 +1,21 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
-async function critical({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1 || !this.damageRoll || !this.isCritical) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'crusherCritical', 450);
+async function critical({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !workflow.isCritical) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'crusherCritical', 450);
     if (!queueSetup) return;
-    if (!chris.getRollDamageTypes(this.damageRoll).has('bludgeoning')) {
-        queue.remove(this.item.uuid);
+    if (!chris.getRollDamageTypes(workflow.damageRoll).has('bludgeoning')) {
+        queue.remove(workflow.item.uuid);
         return;
     }
-    let effect = chris.findEffect(this.actor, 'Crusher: Critical');
+    let effect = chris.findEffect(workflow.actor, 'Crusher: Critical');
     if (!effect) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let originItem = await fromUuid(effect.origin);
     if (!originItem) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     let effetData = {
@@ -44,7 +44,7 @@ async function critical({speaker, actor, token, character, item, args}) {
             }
         }
     }
-    await chris.createEffect(this.targets.first().actor, effetData);
+    await chris.createEffect(workflow.targets.first().actor, effetData);
 }
 export let crusher = {
     'critical': critical

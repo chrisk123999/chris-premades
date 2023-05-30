@@ -1,25 +1,25 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
-async function attack({speaker, actor, token, character, item, args}) {
-    if (this.hitTargets.size != 1) return;
+async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
     let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
-    if (!validTypes.includes(this.item.system.actionType)) return;
-    let effectFeature = chris.findEffect(this.actor, 'Grave Touched');
+    if (!validTypes.includes(workflow.item.system.actionType)) return;
+    let effectFeature = chris.findEffect(workflow.actor, 'Grave Touched');
     if (!effectFeature) return;
     let feature = await fromUuid(effectFeature.origin);
     if (!feature) return;
-    let useFeature = chris.perTurnCheck(feature, 'feature', 'graveTouched,', true, this.token.id);
+    let useFeature = chris.perTurnCheck(feature, 'feature', 'graveTouched,', true, workflow.token.id);
     if (!useFeature) return;
-    let queueSetup = await queue.setup(this.item.uuid, 'graveTouched', 350);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'graveTouched', 350);
     if (!queueSetup) return;
     let selection = await chris.dialog('Use Grave Touched?', [['Yes', true], ['No', false]]);
     if (!selection) {
-        queue.remove(this.item.uuid);
+        queue.remove(workflow.item.uuid);
         return;
     }
     await feature.use();
     if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
-    let oldDamageRoll = this.damageRoll;
+    let oldDamageRoll = workflow.damageRoll;
     let newDamageRoll = '';
     for (let i = 0; oldDamageRoll.terms.length > i; i++) {
         let isDeterministic = oldDamageRoll.terms[i].isDeterministic;
@@ -30,16 +30,15 @@ async function attack({speaker, actor, token, character, item, args}) {
         }
     }
     let damageFormula = newDamageRoll;
-    let effect = chris.findEffect(this.actor, 'Form of Dread');
+    let effect = chris.findEffect(workflow.actor, 'Form of Dread');
     if (effect) {
-        let diceNum = 1;
-        if (this.isCritical) diceNum = 2;
-        let extraDice = '+ ' + diceNum + 'd' + this.damageRoll.dice[0].faces + '[necrotic]';
+        let extraDice = '+ 1d' + workflow.damageRoll.dice[0].faces + '[necrotic]';
+        if (workflow.isCritical) extraDice = chris.getCriticalFormula(extraDice);
         damageFormula = newDamageRoll + extraDice;
     }
     let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await this.setDamageRoll(damageRoll);
-    queue.remove(this.item.uuid);
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
     await origin.setFlag('chris-premades', 'feature.graveTouched.turn', '');

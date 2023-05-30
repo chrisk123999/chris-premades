@@ -1,16 +1,16 @@
 import {chris} from '../../../helperFunctions.js';
-export async function help({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
-    let targetToken = this.targets.first();
-    if (targetToken.id === this.token.id) return;
+export async function help({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first();
+    if (targetToken.id === workflow.token.id) return;
     let effectData;
     let targetDisposition = targetToken.document.disposition;
-    let selfDisposition = this.token.document.disposition;
+    let selfDisposition = workflow.token.document.disposition;
     if (targetDisposition === selfDisposition) {
         effectData = {
-            'label': this.item.name,
-            'icon': this.item.img,
-            'origin': this.item.uuid,
+            'label': workflow.item.name,
+            'icon': workflow.item.img,
+            'origin': workflow.item.uuid,
             'duration': {
                 'seconds': 3600
             },
@@ -35,9 +35,9 @@ export async function help({speaker, actor, token, character, item, args}) {
         }
     } else {
         effectData = {
-            'label': this.item.name,
-            'icon': this.item.img,
-            'origin': this.item.uuid,
+            'label': workflow.item.name,
+            'icon': workflow.item.img,
+            'origin': workflow.item.uuid,
             'duration': {
                 'seconds': 12
             },

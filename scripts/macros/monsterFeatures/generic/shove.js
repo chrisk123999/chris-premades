@@ -1,13 +1,13 @@
 import {chris} from '../../../helperFunctions.js';
-export async function shove({speaker, actor, token, character, item, args}) {
-    if (this.targets.size != 1) return;
+export async function shove({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
     let skipCheck = false;
-    let targetActor = this.targets.first().actor;
-    if (this.actor.uuid === targetActor.uuid) return;
+    let targetActor = workflow.targets.first().actor;
+    if (workflow.actor.uuid === targetActor.uuid) return;
     let effect = chris.findEffect(targetActor, 'Prone');
     if (effect) skipCheck = true;
     if (!skipCheck) {
-        let sourceRoll = await this.actor.rollSkill('ath');
+        let sourceRoll = await workflow.actor.rollSkill('ath');
         let targetRoll;
         if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
             targetRoll = await targetActor.rollSkill('acr');
@@ -27,10 +27,15 @@ export async function shove({speaker, actor, token, character, item, args}) {
         let ray;
         let newCenter;
         let hitsWall = true;
-        let targetToken = this.targets.first();
+        let targetToken = workflow.targets.first();
         while (hitsWall) {
             knockBackFactor = distance / canvas.dimensions.distance;
-            ray = new Ray(this.token.center, targetToken.center);
+            ray = new Ray(workflow.token.center, targetToken.center);
+            if (ray.distance === 0) {
+                ui.notifications.info('Target is unable to be moved!');
+                queue.remove(workflow.item.uuid);
+                return;
+            }
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
             if (hitsWall) {
@@ -50,8 +55,8 @@ export async function shove({speaker, actor, token, character, item, args}) {
         };
         let options2 = {
             'permanent': true,
-            'name': this.item.name,
-            'description': this.item.name
+            'name': workflow.item.name,
+            'description': workflow.item.name
         };
         await warpgate.mutate(targetToken.document, targetUpdate, {}, options2);
     }

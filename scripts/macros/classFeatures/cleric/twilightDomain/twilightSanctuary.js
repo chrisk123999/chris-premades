@@ -13,25 +13,25 @@ async function turnStart(token, origin) {
         await chrisPremades.macros.twilightSanctuary.dialog(token, actor, effect);
     }
     let effectData = {
-		'label': origin.name,
-		'icon': origin.img,
-		'duration': {
-			'seconds': 6
-		},
-		'origin': token.actor.uuid,
-		'flags': {
-			'effectmacro': {
-				'onCreate': {
-					'script': chris.functionToString(effectMacro)
-				}
-			},
-			'chris-premades': {
-				'feature': {
-					'twilightSanctuary': '1d6[temphp] + ' + originClassLevels
-				}
-			}
-		}
-	};
+        'label': origin.name,
+        'icon': origin.img,
+        'duration': {
+            'seconds': 6
+        },
+        'origin': token.actor.uuid,
+        'flags': {
+            'effectmacro': {
+                'onCreate': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            },
+            'chris-premades': {
+                'feature': {
+                    'twilightSanctuary': '1d6[temphp] + ' + originClassLevels
+                }
+            }
+        }
+    };
     await chris.createEffect(targetToken.actor, effectData);
 }
 async function dialog(token, actor, effect) {

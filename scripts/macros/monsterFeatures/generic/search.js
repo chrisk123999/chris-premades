@@ -1,3 +1,3 @@
-export async function search({speaker, actor, token, character, item, args}) {
-    await this.actor.rollSkill('prc');
+export async function search({speaker, actor, token, character, item, args, scope, workflow}) {
+    await workflow.actor.rollSkill('prc');
 }

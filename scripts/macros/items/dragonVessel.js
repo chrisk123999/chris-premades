@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
-export async function dragonVessel({speaker, actor, token, character, item, args}) {
-	let level = this.actor.flags['chris-premades']?.item?.dragonVessel?.level;
-	if (level === undefined) return;
+export async function dragonVessel({speaker, actor, token, character, item, args, scope, workflow}) {
+    let level = workflow.actor.flags['chris-premades']?.item?.dragonVessel?.level;
+    if (level === undefined) return;
     let options = [
         ['Ale', false],
         ['Olive Oil', false],
@@ -32,20 +32,20 @@ export async function dragonVessel({speaker, actor, token, character, item, args
     }
     if (!itemData) itemData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Item Compendium'), selection, false);
     if (!itemData) return;
-    itemData.name = this.item.name + ': ' + itemData.name;
+    itemData.name = workflow.item.name + ': ' + itemData.name;
     itemData.flags['tidy5e-sheet'] = {
         'favorite': true
     }
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Dragon Vessel');
-	}
+        await warpgate.revert(token.document, 'Dragon Vessel');
+    }
     let effectData = {
-        'label': this.item.name,
-        'icon': this.item.img,
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
         'duration': {
             'seconds': 604800
         },
-        'origin': this.item.uuid,
+        'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -76,5 +76,5 @@ export async function dragonVessel({speaker, actor, token, character, item, args
         'name': 'Dragon Vessel',
         'description': itemData.name
     };
-    await warpgate.mutate(this.token.document, updates, {}, optionsW);
+    await warpgate.mutate(workflow.token.document, updates, {}, optionsW);
 }

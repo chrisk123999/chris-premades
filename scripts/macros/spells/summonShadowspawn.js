@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
-export async function summonShadowspawn({speaker, actor, token, character, item, args}){
+export async function summonShadowspawn({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await chris.dialog('What type?', [['Fury', 'Fury'], ['Despair', 'Despair'], ['Fear', 'Fear']]);
     if (!selection) return;
     let sourceActor = game.actors.getName('CPR - Shadow Spirit');
@@ -8,24 +8,24 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
     let multiAttackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Multiattack (Shadow Spirit)', false);
     if (!multiAttackFeatureData) return;
     multiAttackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Multiattack (Shadow Spirit)');
-    let attacks = Math.floor(this.castData.castLevel / 2);
+    let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let chillingRendData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Chilling Rend', false);
     if (!chillingRendData) return;
     chillingRendData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Chilling Rend');
-    chillingRendData.system.damage.parts[0][0] += ' + ' + this.castData.castLevel;
+    chillingRendData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let dreadfulScreamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Dreadful Scream', false);
     if (!dreadfulScreamData) return;
     dreadfulScreamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dreadful Scream');
-    dreadfulScreamData.system.save.dc = chris.getSpellDC(this.item);
-    let hpFormula = 35 + ((this.castData.castLevel - 3) * 15);
+    dreadfulScreamData.system.save.dc = chris.getSpellDC(workflow.item);
+    let hpFormula = 35 + ((workflow.castData.castLevel - 3) * 15);
     let name = 'Shadow Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
             'system': {
                 'details': {
-                    'cr': tashaSummon.getCR(this.actor.system.attributes.prof)
+                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
                 },
                 'attributes': {
                     'hp': {
@@ -34,7 +34,7 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
                         'value': hpFormula
                     },
                     'ac': {
-                        'flat': 11 + this.castData.castLevel
+                        'flat': 11 + workflow.castData.castLevel
                     }
                 }
             },
@@ -45,8 +45,8 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(this.item) - sourceActor.system.abilities.dex.mod + Number(this.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(this.item) - sourceActor.system.abilities.dex.mod + Number(this.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -91,5 +91,5 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
             updates.embedded.Item[shadowStealthData.name] = shadowStealthData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, this.item);
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
 }

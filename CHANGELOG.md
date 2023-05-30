@@ -1,4 +1,129 @@
-## 0.3.50:
+# 0.4.4 Release:
+## New Content:
+- Spell: Bigby's Hand (Thanks Autumn)
+  
+# 0.4.2 Release:
+## New Content:
+- Spell: Danse Macabre
+  
+# 0.4.1 Release:
+## Update Notes:
+- Actor updater will now list the updated items (Requires DDB Importer version 3.4.24 or higher).
+  
+# 0.4.0 Release:
+## Update Notes:
+- This module requires Midi-Qol version 10.0.45 or higher in preparation of Midi-Qol macro changes for v11.
+- Updated required DnD5e system version to 2.2.1.
+## Bug Fixes:
+- Blackrazor
+  
+# 0.3.77 Release:
+## Bug Fixes:
+- Fog Cloud
+  
+# 0.3.76 Release:
+## New Content:
+- Spell: Fog Cloud
+## Bug Fixes:
+- Darkness
+  
+# 0.3.72 Release:
+## New Content:
+- Magic Item: Blackrazor
+## Bug Fixes:
+- Dark One's Blessing
+  
+# 0.3.71 Release:
+## New Content:
+- Telekinetic: Shove (Thanks Autumn)
+## Bug Fixes:
+- Shove, Lightning Lure, Pushing Attack Maneuver
+  
+# 0.3.70 Release:
+## Bug Fixes:
+- Elemental Adept
+  
+# 0.3.68:
+## Bug Fixes:
+- Summon Celestial
+  
+# 0.3.67:
+## Bug Fixes:
+- Summon Fey
+  
+# 0.3.66:
+## Bug Fixes:
+- Blade Flourish
+  
+# 0.3.64:
+## Bug Fixes:
+- Elemental Adept
+- Healing Spirit
+  
+# 0.3.63:
+## Bug Fixes:
+- Sanctuary
+  
+# 0.3.61:
+## Update Notes:
+- All automations that modify damage rolls now properly take into account your critical roll settings from the 5E system.
+## Bug Fixes:
+- Armor Model, Divine Fury, Blade Flourish, Rite of the Dawn, Divine Strike, Divine Smite, Sneak Attack, Grave Touched, Grovelthrash, Shadow Demon Claws, Bestow Curse, Hex, Hunter's Mark, Lightning Arrow, and Spirit Shroud
+## Other Notes:
+- This module will not function on v11 of Foundry.  Update at your own risk.  V11 support will happen in a future update.
+  
+# 0.3.60:
+## Bug Fixes:
+- Sneak Attack
+  
+# 0.3.59:
+## Bug Fixes:
+- Hunter's Mark
+  
+# 0.3.58:
+## Bug Fixes:
+- Rakish Audacity
+  
+# 0.3.57:
+## New Content:
+- Rogue: Sneak Attack
+- Swashbuckler Rogue: Rakish Audacity
+## New Monster Content:
+- Andras, Assassin, Bag of Nails, Black Viper, Corrin Delmaco, Dark Tide Knight,Darz Helgar, Droki, Drow Assassin, Duergar Spy, Garret Levistusson, Ghald, Grumink the Renegade, Half-Green Dragon Assassin, Jarlaxle Baenre, Khalessa Draga, Lords' Alliance Spy, Master Thief, Mirt, Obmi, Orvex Ocrammas, Portentia Dran, Raezil, Samara Strongbones, Shalvus Martholio, Spy, Torbit, Two Dry Cloaks, Urstul Floxin, and Viari: Sneak Attack
+## Bug Fixes:
+- Hunter's Mark
+  
+# 0.3.56:
+## New Content:
+- Spell: Warding Bond
+## Bug Fixes:
+- Piercer
+  
+# 0.3.55:
+## Bug Fixes:
+- Beacon of Hope
+- Shield Guardian: Bound
+- Reaper
+  
+# 0.3.54:
+## New Content:
+- Spell: Healing Spirit
+## Other Notes:
+- Renamed update summon actor setting.
+  
+# 0.3.53:
+## New Content:
+- Spell: Misty Step
+  
+# 0.3.52:
+## New Content:
+- Spell: Summon Draconic Spirit
+  
+# 0.3.51:
+## Bug Fixes:
+- Elemental Adept
+  
+# 0.3.50:
 ## New Monster Content:
 - Fragment of Krokulmar: Psionic Revitalization and Squirming Dodge
 ## Bug Fixes:

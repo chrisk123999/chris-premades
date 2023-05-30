@@ -1,5 +1,5 @@
-import {maneuvers} from '../../classFeatures/fighter/battleMaster/maneuvers.js';
-import {autoGrapple} from './grapple.js';
+import {grapple} from './grapple.js';
+import {autoGrapple} from './autoGrapple.js';
 import {regeneration} from './regeneration.js';
 import {search} from './search.js';
 import {shove} from './shove.js';
@@ -11,6 +11,6 @@ export let generic = {
     'regeneration': regeneration,
     'stealthCheck': stealthCheck,
     'search': search,
-    'grapple': maneuvers.grapplingStrike,
+    'grapple': grapple,
     'shove': shove
 }
