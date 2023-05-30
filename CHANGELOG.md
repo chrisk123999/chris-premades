@@ -1,3 +1,7 @@
+# 0.4.3 Release:
+## New Content:
+- Spell: Bigby's Hand (Thanks Autumn)
+  
 # 0.4.2 Release:
 ## New Content:
 - Spell: Danse Macabre

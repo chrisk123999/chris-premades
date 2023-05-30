@@ -9,14 +9,14 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     let nearbyTokens = await chris.findNearby(workflow.token, 60, 'all', true).filter(t => t.actor.system.attributes.hp.value === 0 && !chris.findEffect(t.actor, 'Unconscious'));
     if (nearbyTokens.length === 0) return;
     let buttons = [
-		{
-			'label': 'Ok',
-			'value': true
-		}, {
-			'label': 'Cancel',
-			'value': false
-		}
-	];
+        {
+            'label': 'Ok',
+            'value': true
+        }, {
+            'label': 'Cancel',
+            'value': false
+        }
+    ];
     let options = [
         'Ignore',
         'Skeleton',

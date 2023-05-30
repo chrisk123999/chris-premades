@@ -4,8 +4,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let targetToken = workflow.targets.first();
     let damageType = workflow.item.system.damage.parts[1][1];
     if (workflow.d20AttackRoll === 20) {
-		let animation = workflow.actor.flags['chris-premades']?.item?.dragonsWrathWeapon?.animation;
-		if (!animation) return;
+        let animation = workflow.actor.flags['chris-premades']?.item?.dragonsWrathWeapon?.animation;
+        if (!animation) return;
         let nearbyTargets = await chris.findNearby(targetToken, 5, 'ally');
         new Sequence().wait(1250).effect().file(animation).atLocation(targetToken).belowTokens(true).play();
         if (nearbyTargets.length != 0) await chris.applyDamage(nearbyTargets, 5, damageType);

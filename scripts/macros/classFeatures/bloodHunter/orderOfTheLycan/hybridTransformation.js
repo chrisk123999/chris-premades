@@ -2,18 +2,18 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
     let options = {
-		'showFullCard': false,
-		'createthis': true,
-		'targetUuids': [token.document.uuid],
-		'configureDialog': false,
-		'versatile': false,
-		'consumeResource': false,
-		'consumeSlot': false,
+        'showFullCard': false,
+        'createthis': true,
+        'targetUuids': [token.document.uuid],
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',
             'autoFastDamage': true
         }
-	};
+    };
     let levels = actor.classes['blood-hunter'].system.levels
     let bonusHealth = 0;
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {
@@ -60,9 +60,9 @@ async function transformation({speaker, actor, token, character, item, args, sco
         weaponData.system.attackBonus = '+1';
         weaponData.system.properties.mgc = true;
     }
-	async function effectMacro () {
-		await warpgate.revert(token.document, 'Hybrid Transformation');
-	}
+    async function effectMacro () {
+        await warpgate.revert(token.document, 'Hybrid Transformation');
+    }
     let bonuses = '+1';
     if (levels >= 11) {
         bonuses = '+2';
@@ -127,10 +127,10 @@ async function transformation({speaker, actor, token, character, item, args, sco
         'icon': workflow.item.img,
         'changes': changes,
         'disabled': false,
-		'duration': {
-			'seconds': seconds
-		},
-		'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': seconds
+        },
+        'origin': workflow.item.uuid,
         'flags': {
             'dae': {
                 'selfTarget': true,
@@ -147,15 +147,15 @@ async function transformation({speaker, actor, token, character, item, args, sco
                     'script': 'await chrisPremades.macros.hybridTransformation.turnStart(token, actor);'
                 },
                 'onDelete': {
-					'script': chris.functionToString(effectMacro)
-				}
+                    'script': chris.functionToString(effectMacro)
+                }
             },
             'dae': {
                 'transfer': true
             }
         }
     }
-	let updates = {
+    let updates = {
         'embedded': {
             'Item': {
                 [weaponData.name]: weaponData
@@ -165,7 +165,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
             }
         }
     };
-	let image = workflow.actor.flags['chris-premades']?.feature?.hybridTransformation?.img;
+    let image = workflow.actor.flags['chris-premades']?.feature?.hybridTransformation?.img;
     if (image != '') {
         updates.token = {
             'texture': {

@@ -1,12 +1,12 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-	if (!workflow.isFumble) return;
+    if (!workflow.isFumble) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'acidArrow', 50);
     if (!queueSetup) return;
-	workflow.isFumble = false;
-	let updatedRoll = await new Roll('-100').evaluate({async: true});
-	workflow.setAttackRoll(updatedRoll);
+    workflow.isFumble = false;
+    let updatedRoll = await new Roll('-100').evaluate({async: true});
+    workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {

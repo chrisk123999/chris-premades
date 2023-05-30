@@ -1,18 +1,18 @@
 import {chris} from '../../../helperFunctions.js';
 let effectData = {
-	'label': 'Condition Advantage',
-	'icon': 'icons/magic/time/arrows-circling-green.webp',
-	'duration': {
-		'turns': 1
-	},
-	'changes': [
-		{
-			'key': 'flags.midi-qol.advantage.ability.save.all',
-			'value': '1',
-			'mode': 5,
-			'priority': 120
-		}
-	]
+    'label': 'Condition Advantage',
+    'icon': 'icons/magic/time/arrows-circling-green.webp',
+    'duration': {
+        'turns': 1
+    },
+    'changes': [
+        {
+            'key': 'flags.midi-qol.advantage.ability.save.all',
+            'value': '1',
+            'mode': 5,
+            'priority': 120
+        }
+    ]
 };
 let cleanUpList =[];
 export async function conditionResistanceEarly(workflow) {

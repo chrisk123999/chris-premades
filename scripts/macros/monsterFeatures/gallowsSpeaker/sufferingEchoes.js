@@ -18,14 +18,14 @@ export async function sufferingEchoes({speaker, actor, token, character, item, a
     if (nearbyTargets.length > 3) {
         let selection = await chris.selectTarget('What additional targets? Max: 3', buttons, nearbyTargets, true, 'multiple');
         if (!selection.buttons) return;
-		nearbyTargets = [];
+        nearbyTargets = [];
         for (let i of selection.inputs) {
-			if (i) nearbyTargets.push(await fromUuid(i));
-		}
+            if (i) nearbyTargets.push(await fromUuid(i));
+        }
         if (nearbyTargets.length > 3) {
-			ui.notifications.info('Too many targets selected!');
-			return;
-		}
+            ui.notifications.info('Too many targets selected!');
+            return;
+        }
     }
     let damageRoll = await new Roll('3d8[psychic]').roll({async: true});
     damageRoll.toMessage({

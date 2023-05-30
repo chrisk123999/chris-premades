@@ -22,10 +22,10 @@ export async function radiantMace({speaker, actor, token, character, item, args,
         targetToken = await fromUuid(targetTokenID);
     }
     let roll = await new Roll('1d10[temphp]').roll({async: true});
-	roll.toMessage({
-		rollMode: 'roll',
-		speaker: {alias: name},
-		flavor: workflow.item.name
-	});
+    roll.toMessage({
+        rollMode: 'roll',
+        speaker: {alias: name},
+        flavor: workflow.item.name
+    });
     await chris.applyDamage([targetToken], roll.total, 'temphp');
 }

@@ -1,8 +1,8 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-	let level = workflow.actor.flags['chris-premades']?.item?.grovelthrash?.level;
-	if (!level) return;
+    let level = workflow.actor.flags['chris-premades']?.item?.grovelthrash?.level;
+    if (!level) return;
     if (workflow.hitTargets.size != 1) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'grovelthrash', 50);
     if (!queueSetup) return;

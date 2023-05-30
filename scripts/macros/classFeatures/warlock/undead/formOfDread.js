@@ -18,18 +18,18 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
     if (chris.inCombat()) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
     let options = {
-		'showFullCard': false,
-		'createWorkflow': true,
-		'targetUuids': [workflow.targets.first().document.uuid],
-		'configureDialog': false,
-		'versatile': false,
-		'consumeResource': false,
-		'consumeSlot': false,
+        'showFullCard': false,
+        'createWorkflow': true,
+        'targetUuids': [workflow.targets.first().document.uuid],
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',
             'autoFastDamage': true
         }
-	};
+    };
     await MidiQOL.completeItemUse(feature, {}, options);
     queue.remove(workflow.item.uuid);
 }

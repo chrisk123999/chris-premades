@@ -21,9 +21,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Heat Metal');
+        await warpgate.revert(token.document, 'Heat Metal');
         await chrisPremades.macros.heatMetal.removed(effect);
-	}
+    }
     let effectData = {
         'label': 'Heat Metal',
         'icon': workflow.item.img,

@@ -37,6 +37,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Aura of Purity  
 - Beacon of Hope  
 - Bestow Curse  
+- Bigby's Hand  
 - Blade Ward  
 - Blight  
 - Blink  

@@ -215,7 +215,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!targetUuid) return;
     if (targetUuid != workflow.targets.first().actor.uuid) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 50);
-	if (!queueSetup) return;
+    if (!queueSetup) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution['Bestow Curse'] = true;
     queue.remove(workflow.item.uuid);

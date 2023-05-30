@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 export async function dragonVessel({speaker, actor, token, character, item, args, scope, workflow}) {
-	let level = workflow.actor.flags['chris-premades']?.item?.dragonVessel?.level;
-	if (level === undefined) return;
+    let level = workflow.actor.flags['chris-premades']?.item?.dragonVessel?.level;
+    if (level === undefined) return;
     let options = [
         ['Ale', false],
         ['Olive Oil', false],
@@ -37,8 +37,8 @@ export async function dragonVessel({speaker, actor, token, character, item, args
         'favorite': true
     }
     async function effectMacro () {
-		await warpgate.revert(token.document, 'Dragon Vessel');
-	}
+        await warpgate.revert(token.document, 'Dragon Vessel');
+    }
     let effectData = {
         'label': workflow.item.name,
         'icon': workflow.item.img,
