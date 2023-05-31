@@ -1,6 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
-export async function berserk(actor, origin) {
-    if (actor.system.attributes.hp.value > 60) return;
+export async function berserk(actor, origin, hp) {
+    if (!hp) hp = 60;
+    if (actor.system.attributes.hp.value > hp) return;
     let effect = chris.findEffect(actor, 'Beserk');
     if (effect) return;
     let workflow = await MidiQOL.completeItemUse(origin);

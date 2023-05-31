@@ -1,3 +1,7 @@
+# 0.4.7 Release:
+## New Monster Content:
+- Flesh Golem: Beserk
+  
 # 0.4.6 Release:
 ## New Content:
 - Spell: Dawn
