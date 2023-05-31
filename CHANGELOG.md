@@ -1,3 +1,9 @@
+# 0.4.5 Release:
+## New Content:
+- Artificer Infusion: Homunculus Servant (Thanks Autumn)
+## Bug Fixes:
+- Danse Macabre
+  
 # 0.4.4 Release:
 ## New Content:
 - Spell: Bigby's Hand (Thanks Autumn)

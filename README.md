@@ -121,6 +121,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Experimental Elixir  
 #### Armorer:  
 - Arcane Armor  
+#### Infusions:  
+- Homunculus Servant  
 ### Barbarian:  
 #### Path of the Ancestral Guardian:  
 - Ancestral Protectors  

@@ -78,24 +78,29 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     let options = {
         'permanent': false,
-        'name': featureData.name,
+        'name': name,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    let effectData = chris.findEffect(workflow.actor, 'Bigby\'s Hand');
-    if (!effectData) return;
-    let currentScript = effectData.flags.effectmacro.onDelete.script;
+    let effect = chris.findEffect(workflow.actor, 'Bigby\'s Hand');
+    if (!effect) return;
+    let currentScript = effect.flags.effectmacro?.onDelete?.script;
     if (!currentScript) return;
     let effectUpdates = {
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': `${currentScript} await warpgate.revert(token.document, \'Bigby\\'s Hand - Move\');`
+                    'script': currentScript + ' await warpgate.revert(token.document, "' + name + '");'
+                }
+            },
+            'chris-premades': {
+                'vae': {
+                    'button': featureData.name
                 }
             }
         }
     };
-    await chris.updateEffect(effectData, effectUpdates);
+    await chris.updateEffect(effect, effectUpdates);
 }
 async function forcefulHand({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
