@@ -7,11 +7,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let clenchedFistData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Clenched Fist', false);
     if (!clenchedFistData) return;
     clenchedFistData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Clenched Fist');
-    clenchedFistData.system.damage.parts[0][0] = (4 + (damageScale)) + 'd8[force]';
+    clenchedFistData.system.damage.parts[0][0] = (4 + damageScale) + 'd8[force]';
     let forcefulHandData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Forceful Hand', false);
     if (!forcefulHandData) return;
     forcefulHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Forceful Hand');
-    forcefulHandData.name = 'Forceful Hand (' + ((chris.getSpellMod(workflow.item)*5) + 5) + ' feet)';
+    forcefulHandData.name = 'Forceful Hand (' + ((chris.getSpellMod(workflow.item) * 5) + 5) + ' feet)';
     let graspingHandData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Grasping Hand', false);
     if (!graspingHandData) return;
     graspingHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Grasping Hand');

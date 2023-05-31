@@ -99,6 +99,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Toll the Dead  
 - Vampiric Touch  
 - Vitriolic Sphere  
+- Vortex Warp  
 - Warding Bond  
 - Wither and Bloom  
 - Zone of Truth  

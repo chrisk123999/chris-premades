@@ -1,3 +1,9 @@
+# 0.4.8 Release:
+## New Content:
+- Spell: Vortex Warp
+## Bug Fixes:
+- Bigby's Hand
+  
 # 0.4.7 Release:
 ## New Monster Content:
 - Flesh Golem: Berserk
