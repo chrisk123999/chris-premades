@@ -50,6 +50,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Crusaders's Mantle  
 - Danse Macabre  
 - Darkness  
+- Dawn  
 - Death Ward  
 - Detect Magic  
 - Detect Thoughts  

@@ -11,6 +11,7 @@ import {preCreateActiveEffect} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {tashaSummon} from './utility/tashaSummon.js';
+import {templates} from './utility/templateEffect.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -72,6 +73,10 @@ Hooks.once('ready', async function() {
         game.settings.set('chris-premades', 'LastGM', game.user.id);
         if (game.settings.get('chris-premades', 'Combat Listener')) Hooks.on('updateCombat', combatUpdate);
         if (game.settings.get('chris-premades', 'Movement Listener')) Hooks.on('updateToken', tokenMoved);
+        if (game.settings.get('chris-premades', 'Template Listener')) {
+            Hooks.on('updateToken', templates.move);
+            Hooks.on('updateCombat', templates.combat);
+        }
         if (game.settings.get('chris-premades', 'Effect Auras')) {
             Hooks.on('preUpdateActor', effectAuraHooks.preActorUpdate);
             Hooks.on('updateActor', effectAuraHooks.actorUpdate);

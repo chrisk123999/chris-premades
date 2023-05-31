@@ -1,3 +1,7 @@
+# 0.4.6 Release:
+## New Content:
+- Spell: Dawn
+  
 # 0.4.5 Release:
 ## New Content:
 - Artificer Infusion: Homunculus Servant (Thanks Autumn)

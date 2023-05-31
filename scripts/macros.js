@@ -46,6 +46,7 @@ import {crusher} from './macros/feats/crusher.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
+import {dawn} from './macros/spells/dawn.js';
 import {deathWard} from './macros/spells/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
@@ -97,8 +98,8 @@ import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesC
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
-import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
+import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
@@ -268,6 +269,13 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
     }
 }
+async function templateTrigger(macroName, token, trigger) {
+    switch (macroName) {
+        case 'dawn':
+            await dawn.trigger(token, trigger);
+            break;
+    }
+}
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
@@ -282,10 +290,10 @@ export let macros = {
     'auraOfVitality': auraOfVitality,
     'balmOfPeace': balmOfPeace,
     'bardicInspiration': bardicInspiration,
-    'bigbysHand': bigbysHand,
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
     'bestowCurse': bestowCurse,
+    'bigbysHand': bigbysHand,
     'blackrazor': blackrazor,
     'bladeFlourish': bladeFlourish,
     'blessedStrikes': blessedStrikes,
@@ -305,11 +313,12 @@ export let macros = {
     'conditionResistanceLate': conditionResistanceLate,
     'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
     'conditionVulnerabilityLate': conditionVulnerabilityLate,
-	'crimsonRite': crimsonRite,
+    'crimsonRite': crimsonRite,
     'crusher': crusher,
     'danseMacabre': danseMacabre,
     'darkOnesBlessing': darkOnesBlessing,
     'darkness': darkness,
+    'dawn': dawn,
     'deathWard': deathWard,
     'destructiveWrath': destructiveWrath,
     'detectThoughts': detectThoughts,
@@ -344,7 +353,7 @@ export let macros = {
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
     'holyWeapon': holyWeapon,
-	'homunculusServant': homunculusServant,
+    'homunculusServant': homunculusServant,
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
@@ -406,6 +415,7 @@ export let macros = {
     'summonShadowspawn': summonShadowspawn,
     'summonUndead': summonUndead,
     'telekentic': telekinetic,
+    'templateTrigger': templateTrigger,
     'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'turnUndead': turnUndead,
