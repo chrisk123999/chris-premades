@@ -105,7 +105,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
         'flags': {
             'effectmacro': {
                 'onDelete': {
-                    'script': 'let effect = await fromUuid("' + targetEffect.uuid + '"); if (!effect) return; await chrisPremades.helpers.removeEffect(effect);'
+                    'script': 'let effect = await fromUuid("' + targetEffect.uuid + '"); if (effect) await chrisPremades.helpers.removeEffect(effect);'
                 }
             },
             'chris-premades': {

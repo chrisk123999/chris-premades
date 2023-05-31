@@ -69,36 +69,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bigby\'s Hand - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bigby\'s Hand - Move');
-    async function effectMacro () {
-        await warpgate.revert(token.document, 'Bigby\'s Hand - Move');
-    }
-    let effectData = {
-        'label': featureData.name,
-        'icon': workflow.item.img,
-        'duration': {
-            'seconds': 60
-        },
-        'origin': workflow.item.uuid,
-        'flags': {
-            'effectmacro': {
-                'onDelete': {
-                    'script': chris.functionToString(effectMacro)
-                }
-            },
-            'chris-premades': {
-                'vae': {
-                    'button': featureData.name
-                }
-            }
-        }
-    };
     let updates2 = {
         'embedded': {
             'Item': {
                 [featureData.name]: featureData
-            },
-            'ActiveEffect': {
-                [featureData.name]: effectData
             }
         }
     };
@@ -108,6 +82,20 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
+    let effectData = chris.findEffect(workflow.actor, 'Bigby\'s Hand');
+    if (!effectData) return;
+    let currentScript = effectData.flags.effectmacro.onDelete.script;
+    if (!currentScript) return;
+    let effectUpdates = {
+        'flags': {
+            'effectmacro': {
+                'onDelete': { 
+                    'script': `${currentScript} await warpgate.revert(token.document, \'Bigby\\'s Hand - Move\');`
+                }
+            }
+        }
+    };
+    await chris.updateEffect(effectData, effectUpdates);
 }
 async function forcefulHand({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
