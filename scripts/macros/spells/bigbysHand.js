@@ -3,7 +3,7 @@ import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Bigby\'s Hand');
     if (!sourceActor) return;
-    let damageScale = ((workflow.castData.castLevel - 4) * 2)
+    let damageScale = ((workflow.castData.castLevel - 5) * 2)
     let clenchedFistData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Clenched Fist', false);
     if (!clenchedFistData) return;
     clenchedFistData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Clenched Fist');
