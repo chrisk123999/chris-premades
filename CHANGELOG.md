@@ -1,6 +1,6 @@
 # 0.4.7 Release:
 ## New Monster Content:
-- Flesh Golem: Beserk
+- Flesh Golem: Berserk
   
 # 0.4.6 Release:
 ## New Content:
@@ -840,7 +840,7 @@
 ## New Monster Content:
 - Bulette: Deadly Leap
 - Chasme: Proboscis
-- Clay Golem: Beserk, Haste, and Slam
+- Clay Golem: Berserk, Haste, and Slam
 ## Bug Fixes:
 - Vampiric Touch
   
