@@ -6,7 +6,10 @@ export async function vortexWarp({speaker, actor, token, character, item, args, 
     let icon = targetToken.document.texture.src;
     await workflow.actor.sheet.minimize();
     let position = await chris.aimCrosshair(workflow.token, maxRange, icon);
-    if (position.cancelled) return;
+    if (position.cancelled) {
+        await workflow.actor.sheet.maximize();
+        return;
+    }
     await new Sequence().effect().file('jb2a.misty_step.01.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(750).animation().on(targetToken).opacity(0.0).waitUntilFinished().play();
     let newCenter = canvas.grid.getSnappedPosition(position.x - targetToken.w / 2, position.y - targetToken.h / 2, 1);
     let targetUpdate = {
