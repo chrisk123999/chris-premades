@@ -22,15 +22,13 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         'Skeleton',
         'Zombie'
     ];
-    
-      let hpFormula = 0;
-  let damageBonus = 0;
-  if (workflow.actor.flags["chris-premades"]?.feature?.undeadThralls) {
-    let wizardLevels = workflow.actor.classes.wizard?.system?.levels;
-    if (wizardLevels) hpFormula += wizardLevels;
-    damageBonus = workflow.actor.system.attributes.prof;
-  }
-
+    let bonusHP = 0;
+    let damageBonus;
+    if (workflow.actor.flags["chris-premades"]?.feature?.undeadThralls) {
+        let wizardLevels = workflow.actor.classes.wizard?.system?.levels;
+        if (wizardLevels) bonusHP += wizardLevels;
+        damageBonus = workflow.actor.system.attributes.prof;
+    }
     let maxTargets = 5 + ((workflow.castData.castLevel - 5) * 2);
     let selection = await chris.selectTarget('Select your targets. (Max: ' + maxTargets + ')', buttons, nearbyTokens, true, 'select', options);
     if (!selection.buttons) return;
@@ -47,8 +45,9 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     delete zombieActorUpdates.flags;
     delete zombieActorUpdates.folder;
     zombieActorUpdates.name = 'Zombie';
-      zombieActorUpdates.system.attributes.hp.value += hpFormula;
-  zombieActorUpdates.system.attributes.hp.max += hpFormula;
+    zombieActorUpdates.system.attributes.hp.value += bonusHP;
+    zombieActorUpdates.system.attributes.hp.max += bonusHP;
+    zombieActorUpdates.system.attributes.hp.formula += bonusHP;
     delete zombieActorUpdates.sort;
     delete zombieActorUpdates._id;
     delete zombieActorUpdates._stats;
@@ -70,8 +69,9 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     delete skeletonActorUpdates.flags;
     delete skeletonActorUpdates.folder;
     skeletonActorUpdates.name = 'Skeleton';
-      skeletonActorUpdates.system.attributes.hp.value += hpFormula;
-  skeletonActorUpdates.system.attributes.hp.max += hpFormula;
+    skeletonActorUpdates.system.attributes.hp.value += bonusHP;
+    skeletonActorUpdates.system.attributes.hp.max += bonusHP;
+    skeletonActorUpdates.system.attributes.hp.formula += bonusHP;
     delete skeletonActorUpdates.sort;
     delete skeletonActorUpdates._id;
     delete skeletonActorUpdates._stats;
@@ -97,6 +97,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         if (actor.type === 'character') await chrisPremades.helpers.addCondition(actor, 'Dead', true);
     }
     let spellMod = '+ ' + chris.getSpellMod(workflow.item);
+    if (damageBonus) spellMod += ' + ' + damageBonus;
     let effectData = {
         'label': workflow.item.name,
         'icon': workflow.item.img,
@@ -104,7 +105,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
             {
                 'key': 'system.bonuses.All-Damage',
                 'mode': 2,
-        value: spellMod + " + " + damageBonus,
+                'value': spellMod,
                 'priority': 20
             },
             {
