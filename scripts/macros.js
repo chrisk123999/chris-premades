@@ -98,6 +98,7 @@ import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
+import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
@@ -304,7 +305,7 @@ export let macros = {
     'conditionResistanceLate': conditionResistanceLate,
     'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
     'conditionVulnerabilityLate': conditionVulnerabilityLate,
-    'crimsonRite': crimsonRite,
+	'crimsonRite': crimsonRite,
     'crusher': crusher,
     'danseMacabre': danseMacabre,
     'darkOnesBlessing': darkOnesBlessing,
@@ -343,6 +344,7 @@ export let macros = {
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
     'holyWeapon': holyWeapon,
+	'homunculusServant': homunculusServant,
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
