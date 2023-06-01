@@ -412,9 +412,11 @@ export let chris = {
                 sizeString = 'gargantuan'
                 break;
         }
-        if (sizeToString === true) return sizeString;
-        else return sizeValue;
-
+        if (sizeToString) {
+            return sizeString;
+        } else {
+            return sizeValue;
+        }
     },
     'sizeStringValue': function _sizeStringValue(sizeString){
         let sizeValue;
@@ -452,4 +454,32 @@ export let chris = {
         }
         return sizeValue;
     },
+    'aimCrosshair': async function _aimCrosshair(token, maxRange, icon) {
+        let distance = 0;
+        let ray;
+        let checkDistance = async (crosshairs) => {
+            while (crosshairs.inFlight) {
+                await warpgate.wait(100);
+                ray = new Ray(token.center, crosshairs);
+                distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
+                if (token.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
+                    crosshairs.icon = 'icons/svg/hazard.svg';
+                } else {
+                    crosshairs.icon = icon;
+                }
+                crosshairs.draw();
+                crosshairs.label = distance + '/' + maxRange + 'ft.';
+            }
+        }
+        let callbacks = {
+            'show': checkDistance
+        }
+        let options = {
+            'size': token.document.width,
+            'icon': token.document.texture.src,
+            'label': '0 ft.',
+            'interval': -1
+        }
+        return await warpgate.crosshairs.show(options, callbacks);
+    }
 };

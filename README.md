@@ -50,6 +50,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Crusaders's Mantle  
 - Danse Macabre  
 - Darkness  
+- Dawn  
 - Death Ward  
 - Detect Magic  
 - Detect Thoughts  
@@ -98,6 +99,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Toll the Dead  
 - Vampiric Touch  
 - Vitriolic Sphere  
+- Vortex Warp  
 - Warding Bond  
 - Wither and Bloom  
 - Zone of Truth  
@@ -121,6 +123,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Experimental Elixir  
 #### Armorer:  
 - Arcane Armor  
+#### Infusions:  
+- Homunculus Servant  
 ### Barbarian:  
 #### Path of the Ancestral Guardian:  
 - Ancestral Protectors  
@@ -372,6 +376,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Berserk  
 - Haste  
 - Slam  
+#### Flesh Golem:  
+- Berserk  
 #### Hommunculus:  
 - Bite  
 #### Swarm of Animated Books: 

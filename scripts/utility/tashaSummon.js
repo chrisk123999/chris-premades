@@ -121,6 +121,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
     if (!casterCombatant) return;
     let initiative = casterCombatant.initiative - 0.01;
     await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative);
+    return spawnedToken;
 }
 async function createCombatant (tokenId, actorId, sceneId, initiative) {
     await game.combat.createEmbeddedDocuments('Combatant', [{

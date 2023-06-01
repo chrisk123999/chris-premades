@@ -4,6 +4,7 @@ import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {tashaSummon} from './utility/tashaSummon.js';
+import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
 let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
@@ -47,6 +48,23 @@ export function registerSettings() {
             }
         }
     });
+    game.settings.register(moduleName, 'Template Listener', {
+        'name': 'Template Listener',
+        'hint': 'This setting allows certain macros from this module to function when tokens interact with templates.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value && game.user.isGM) {
+                Hooks.on('updateToken', templates.move);
+                Hooks.on('updateCombat', templates.combat);
+            } else if (game.user.isGM) {
+                Hooks.off('updateToken', templates.move);
+                Hooks.on('updateCombat', templates.combat);
+            }
+        }
+    });
     game.settings.register(moduleName, 'Tasha Actors', {
         'name': 'Keep Summon Actors Updated',
         'hint': 'This setting will keep actors from this module updated in the sidebar.',
@@ -60,7 +78,7 @@ export function registerSettings() {
     });
     game.settings.register(moduleName, 'Tasha Initiative', {
         'name': 'Minions use caster\'s initiative',
-        'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s',
+        'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s Cauldron Of Everything',
         'scope': 'world',
         'config': true,
         'type': Boolean,

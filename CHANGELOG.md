@@ -1,3 +1,23 @@
+# 0.4.8 Release:
+## New Content:
+- Spell: Vortex Warp
+## Bug Fixes:
+- Bigby's Hand
+  
+# 0.4.7 Release:
+## New Monster Content:
+- Flesh Golem: Berserk
+  
+# 0.4.6 Release:
+## New Content:
+- Spell: Dawn
+  
+# 0.4.5 Release:
+## New Content:
+- Artificer Infusion: Homunculus Servant (Thanks Autumn)
+## Bug Fixes:
+- Danse Macabre
+  
 # 0.4.4 Release:
 ## New Content:
 - Spell: Bigby's Hand (Thanks Autumn)
@@ -826,7 +846,7 @@
 ## New Monster Content:
 - Bulette: Deadly Leap
 - Chasme: Proboscis
-- Clay Golem: Beserk, Haste, and Slam
+- Clay Golem: Berserk, Haste, and Slam
 ## Bug Fixes:
 - Vampiric Touch
   

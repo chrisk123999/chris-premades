@@ -10,7 +10,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'dnd5e': {
                 'origin': workflow.item.uuid
             },
-            'templatemacro': {},
             'midi-qol': {
                 'originUuid': workflow.item.uuid
             },
