@@ -1,3 +1,7 @@
+# 0.4.9 Release:
+## Bug Fixes:
+- Bigby's Hand
+  
 # 0.4.8 Release:
 ## New Content:
 - Spell: Vortex Warp
