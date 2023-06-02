@@ -162,6 +162,7 @@ import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {summonDraconicSpirit} from './macros/spells/summonDraconicSpirit.js';
+import {summonDrakeCompanion} from './macros/classFeatures/ranger/drakeWarden/summonDrakeCompanion.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
@@ -410,6 +411,7 @@ export let macros = {
     'summonCelestial': summonCelestial,
     'summonConstruct': summonConstruct,
     'summonDraconicSpirit': summonDraconicSpirit,
+	'summonDrakeCompanion': summonDrakeCompanion,
     'summonElemental': summonElemental,
     'summonFey': summonFey,
     'summonFiend': summonFiend,

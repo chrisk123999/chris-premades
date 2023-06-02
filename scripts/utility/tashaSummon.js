@@ -116,7 +116,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
         }
     };
     await chris.createEffect(originItem.actor, casterEffectData);
-    if (!chris.inCombat()) return;
+    if (!chris.inCombat()) return spawnedToken;
     let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
     if (!casterCombatant) return;
     let initiative = casterCombatant.initiative - 0.01;
