@@ -2,7 +2,7 @@ import {queue} from '../../../queue.js';
 export async function swarmDamage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     let hp = workflow.actor.system.attributes.hp.value;
-    let maxhp = workflow.actor.system.attributes.hp.value;
+    let maxhp = workflow.actor.system.attributes.hp.max;
     if (hp < Math.floor(maxhp / 2)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'swarmDamage', 50);
     if (!queueSetup) return;

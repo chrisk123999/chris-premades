@@ -46,6 +46,10 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     }
     await chris.createEffect(workflow.targets.first().actor, effetData);
 }
+async function move ({speaker, actor, token, character, item, args, scope, workflow}) {
+    
+}
 export let crusher = {
-    'critical': critical
+    'critical': critical,
+    'move': move
 }
