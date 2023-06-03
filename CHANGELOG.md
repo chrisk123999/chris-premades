@@ -1,6 +1,6 @@
 # 0.4.10 Release:
 ## New Content:
-- Drakewarden Ranger: Drake Companion: Summon
+- Drakewarden Ranger: Drake Companion: Summon (Thanks Autumn)
 ## Bug Fixes:
 - Dread Ambusher
 - Swarm Damage 
