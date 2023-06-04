@@ -33,14 +33,19 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!resistanceUsesValue && drakeUpgrades == 2) actor.setFlag('chris-premades', 'feature.reflexiveResistance', actor.system.attributes.prof);
     resistanceData.system.uses.value = resistanceUsesValue;
     resistanceData.system.uses.max = workflow.actor.system.attributes.prof;
+    let heighWidth = 1;
+    let scale = '0.8';
     switch (drakeUpgrades) {
         case 1: 
             biteData.system.damage.parts[1][0] = '1d6[' + selection + ']';
             biteData.system.damage.parts[1][1] = selection;
+            scale = '1';
         break;
         case 2:
             biteData.system.damage.parts[1][0] = '2d6[' + selection + ']';
             biteData.system.damage.parts[1][1] = selection;
+            scale = '1';
+            heighWidth = 2;
     }
     let hpFormula = 5 + (rangerLevel * 5);
     let name = 'Drake Companion (' + selection + ')';
@@ -79,7 +84,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'height': heighWidth,
+            'width': heighWidth,
+            'texture': {
+                'scaleX': scale,
+                'scaleY': scale
+            }
         },
         'embedded': {
             'Item': {

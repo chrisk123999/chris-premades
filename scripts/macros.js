@@ -3,6 +3,7 @@ import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSp
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -283,6 +284,7 @@ export let macros = {
     'acidArrow': acidArrow,
     'agonizingBlast': agonizingBlast,
     'ancestralProtectors': ancestralProtectors,
+	'animatingPerformance': animatingPerformance,
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
     'auraOfAlacrity': auraOfAlacrity,
