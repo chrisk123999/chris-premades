@@ -1,29 +1,46 @@
 import {tashaSummon} from '../../../../utility/tashaSummon.js';
-import {chris} from '../../../helperFunctions.js';
-//Creation of actual animated object, main item
+import {chris} from '../../../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let sourceActor = game.actors.getName('CPR - Homunculus Servant');
+    let selection = await chris.dialog('What item size?', [['Large', 'lg'], ['Medium', 'med'], ['Small', 'sm'], ['Tiny','tiny']]);
+    if (!selection) return;
+    let sourceActor = game.actors.getName('CPR - Dancing Item');
     if (!sourceActor) return;
-    let mendingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mending', false);
-    if (!mendingData) return;
-    mendingData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Mending');
-    let forceStrikeData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Force Strike', false);
-    if (!forceStrikeData) return;
-    forceStrikeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Force Strike');
-    let channelMagicData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Channel Magic', false);
-    if (!channelMagicData) return;
-    channelMagicData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Channel Magic');
-    let evasionData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Evasion', false);
-    if (!evasionData) return;
-    evasionData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Evasion');
+    let irrpressibleFormData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Irrepressible Dance', false);
+    if (!irrpressibleFormData) return;
+    irrpressibleFormData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Irrepressible Dance');
+    let immutableFormData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Immutable Form', false);
+    if (!immutableFormData) return;
+    immutableFormData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Immutable Form');
+    let forceEmpoweredSlamData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Force-Empowered Slam', false);
+    if (!forceEmpoweredSlamData) return;
+    forceEmpoweredSlamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Force-Empowered Slam');
     let dodgeData = await chris.getItemFromCompendium('chris-premades.CPR Actions', 'Dodge', false);
     if (!dodgeData) return;
     dodgeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dodge');
-    let artificerLevel = workflow.actor.classes?.artificer?.system?.levels;
-    if (!artificerLevel) return;
-    let hpFormula = artificerLevel + 'd4 + ' + (1 + chris.getSpellMod(workflow.item));
-    let hpValue = await new Roll(hpFormula).evaluate({async: true});
-    let name = 'Homunculus Servant';
+    let bardLevel = workflow.actor.classes?.bard?.system?.levels;
+    if (!bardLevel) return;
+    let hpFormula = 10 + 5 * bardLevel;
+    let heighWidth;
+    let scale;
+    switch (selection) {
+        case 'tiny': 
+            scale = '0.5';
+            heighWidth = '1';
+            break;  
+        case 'sm':
+            scale = '0.8';
+            heighWidth = '1';
+            break;
+        case 'med':
+            scale = '1';
+            heighWidth = '1';
+            break;
+        case 'lg':
+            scale = '1';
+            heighWidth = 2;
+            break;
+    }
+    let name = 'Dancing Item';
     let updates = {
         'actor': {
             'name': name,
@@ -34,8 +51,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'attributes': {
                     'hp': {
                         'formula': hpFormula,
-                        'max': hpValue.total,
-                        'value': hpValue.total
+                        'max': hpFormula,
+                        'value': hpFormula
                     }
                 }
             },
@@ -51,24 +68,32 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                         }
                     }
                 }
-            }
+            },
+            'traits': {
+                'size': selection
+            },
         },
         'token': {
-            'name': name
+            'name': name,
+            'height': heighWidth,
+            'width': heighWidth,
+            'texture': {
+                'scaleX': scale,
+                'scaleY': scale
+            }
         },
         'embedded': {
             'Item': {
-                [mendingData.name]: mendingData,
-                [forceStrikeData.name]: forceStrikeData,
-                [channelMagicData.name]: channelMagicData,
-                [evasionData.name]: evasionData,
+                [irrpressibleFormData.name]: irrpressibleFormData,
+                [immutableFormData.name]: immutableFormData,
+                [forceEmpoweredSlamData.name]: forceEmpoweredSlamData,
                 [dodgeData.name]: dodgeData,
             }
         }
     };
-    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Homunculus Servant - Command', false);
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Animating Performance - Command', false);
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Animating Performance - Command');
     if (!featureData) return;
     let updates2 = {
         'embedded': {
@@ -83,7 +108,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    let effect = chris.findEffect(workflow.actor, 'Create Homunculus Servant');
+    let effect = chris.findEffect(workflow.actor, 'Animating Performance');
     if (!effect) return;
     let currentScript = effect.flags.effectmacro?.onDelete?.script;
     if (!currentScript) return;
@@ -103,7 +128,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.updateEffect(effect, effectUpdates);
 }
-//Aura shit
 async function irrepressibleDance(token, origin) {
     if (token.actor.system.attributes.hp.value === 0) return;
     if (!game.combat.current.tokenId) return;
@@ -112,48 +136,41 @@ async function irrepressibleDance(token, origin) {
     if (targetToken.id === token.id) return;
     let distance = chris.getDistance(token, targetToken);
     if (distance > 10) return;
-    let featureData = duplicate(origin.toObject());
-    console.log(featureData)
-    featureData.system.activation.type = 'special';
-    featureData.system.target.type = 'creature';
-    featureData.system.damage.parts = [
-        [
-            '5[necrotic]',
-            'necrotic'
-        ]
-    ];
-    delete(featureData.effects);
-    featureData.system.duration = {
-        'units': 'inst',
-        'value': ''
-    };
-    /*let feature = new CONFIG.Item.documentClass(featureData, {parent: token.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
+    let speedValue = 10;
+    console.log(targetToken);
+    let disposition = targetToken.document.disposition;
+    if (disposition == -1) speedValue = -10;
+    let effect = chris.findEffect(targetToken.actor, 'Irrepressible Dance');
+    if (effect) await chris.removeEffect(effect);
+    let effectData = {
+        'label': 'Irrepressible Dance',
+        'icon': origin.img,
+        'origin': origin.uuid,
+        'duration': {
+            'turns': 1
+        },
+        'changes': [
+            {
+                'key': 'system.attributes.movement.walk',
+                'mode': 2,
+                'value': speedValue,
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'dae': {
+                'transfer': false,
+                'specialDuration': [
+                    'combatEnd'
+                ],
+                'stackable': 'none',
+                'macroRepeat': 'none'
+            }
         }
-    };
-    await MidiQOL.completeItemUse(feature, {}, options);
-    */
+    }
+    await chris.createEffect(targetToken.actor, effectData);
 }
-//Reset on longrest bit
-async function longRest(actor, data) {
-    if (!data.longRest) return;
-    let item = actor.items.getName('Armorer');
-    if (!item) return;
-    if (item.type != 'subclass') return;
-    actor.setFlag('chris-premades', 'feature.defensiveField', actor.system.attributes.prof);
-}
-export let summonDrakeCompanion = {
+export let animatingPerformance = {
     'item': item,
     'irrepressibleDance': irrepressibleDance,
-    'longRest': longRest,
 }

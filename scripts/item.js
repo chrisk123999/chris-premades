@@ -184,6 +184,10 @@ export function setConfig() {
             ]
         },
         'removedItems': {
+            'Animating Performance': [
+                'Animating Performance: Animate',
+                'Animating Performance: Dancing Item'
+            ],
             'Arcane Armor': [
                 'Guardian Armor: Thunder Gauntlets',
                 'Guardian Armor: Thunder Gauntlets (STR)',
