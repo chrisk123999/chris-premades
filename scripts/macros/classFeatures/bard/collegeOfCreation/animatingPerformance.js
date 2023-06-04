@@ -20,24 +20,24 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let bardLevel = workflow.actor.classes?.bard?.system?.levels;
     if (!bardLevel) return;
     let hpFormula = 10 + 5 * bardLevel;
-    let heighWidth;
+    let heightWidth;
     let scale;
     switch (selection) {
         case 'tiny': 
             scale = '0.5';
-            heighWidth = '1';
+            heightWidth = '1';
             break;  
         case 'sm':
             scale = '0.8';
-            heighWidth = '1';
+            heightWidth = '1';
             break;
         case 'med':
             scale = '1';
-            heighWidth = '1';
+            heightWidth = '1';
             break;
         case 'lg':
             scale = '1';
-            heighWidth = 2;
+            heightWidth = 2;
             break;
     }
     let name = 'Dancing Item';
@@ -75,8 +75,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'token': {
             'name': name,
-            'height': heighWidth,
-            'width': heighWidth,
+            'height': heightWidth,
+            'width': heightWidth,
             'texture': {
                 'scaleX': scale,
                 'scaleY': scale
@@ -137,9 +137,8 @@ async function irrepressibleDance(token, origin) {
     let distance = chris.getDistance(token, targetToken);
     if (distance > 10) return;
     let speedValue = 10;
-    console.log(targetToken);
     let disposition = targetToken.document.disposition;
-    if (disposition == -1) speedValue = -10;
+    if (disposition === -1) speedValue = -10;
     let effect = chris.findEffect(targetToken.actor, 'Irrepressible Dance');
     if (effect) await chris.removeEffect(effect);
     let effectData = {

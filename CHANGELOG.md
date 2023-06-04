@@ -1,3 +1,9 @@
+# 0.4.11 Release:
+## New Content:
+- College of Creation Bard: Animating Performance (Thanks Autumn)
+## Bug Fixes:
+- Summon Dreak Companion
+  
 # 0.4.10 Release:
 ## New Content:
 - Drakewarden Ranger: Drake Companion: Summon (Thanks Autumn)
