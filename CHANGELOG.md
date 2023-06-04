@@ -2,7 +2,7 @@
 ## New Content:
 - College of Creation Bard: Animating Performance (Thanks Autumn)
 ## Bug Fixes:
-- Summon Dreak Companion
+- Summon Drake Companion
   
 # 0.4.10 Release:
 ## New Content:
