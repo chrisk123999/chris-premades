@@ -163,10 +163,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function longRest(actor, data) {
     if (!data.longRest) return;
+    if (actor.classes?.ranger?.system?.levels < 15) return;
     let item = actor.items.getName('Drakewarden');
     if (!item) return;
     if (item.type != 'subclass') return;
-    if (actor.classes?.ranger?.system?.levels < 15) return;
     actor.setFlag('chris-premades', 'feature.reflexiveResistance', actor.system.attributes.prof);
 }
 async function onSummon({speaker, actor, token, character, item, args, scope, workflow}) {

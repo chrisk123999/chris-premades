@@ -279,6 +279,13 @@
 		  "path": "packs/cpr-actions.db",
 		  "type": "Item",
 		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Miscellaneous",
+		  "label": "CPR Miscellaneous",
+		  "path": "packs/cpr-miscellaneous.db",
+		  "type": "Item",
+		  "module": "chris-premades"
 	  }
   ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",

@@ -112,12 +112,12 @@ async function forcefulHand({speaker, actor, token, character, item, args, scope
 async function graspingHand({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetActor = workflow.targets.first().actor;
-    if ((chris.getSize(targetActor)) > (chris.sizeStringValue('huge'))) {
+    if (chris.getSize(targetActor) > chris.sizeStringValue('huge')) {
         ui.notifications.info('Target is too big!');
         return;
     }
     let hasAdvantage = (chris.getSize(targetActor) <=  (chris.sizeStringValue('medium')));
-    let sourceRoll = await workflow.actor.rollSkill('ath', {advantage: hasAdvantage});
+    let sourceRoll = await workflow.actor.rollSkill('ath', {'advantage': hasAdvantage});
     let targetRoll;
     if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
         targetRoll = await targetActor.rollSkill('acr');

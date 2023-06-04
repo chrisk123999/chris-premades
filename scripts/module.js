@@ -12,6 +12,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js'
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
+import {rest} from './utility/rest.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -105,7 +106,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'DMG Cleave')) Hooks.on('midi-qol.RollComplete', macros.cleave);
     if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
     if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.damageApplied', macros.deathWard);
-    if (game.settings.get('chris-premades', 'Defensive Field')) Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
+    if (game.settings.get('chris-premades', 'Rest Listener')) Hooks.on('dnd5e.restCompleted', rest);
     if (game.settings.get('chris-premades', 'Elemental Adept')) {
         Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
         Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);

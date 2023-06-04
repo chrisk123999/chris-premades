@@ -3,6 +3,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js'
 import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
+import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
@@ -196,6 +197,21 @@ export function registerSettings() {
                 Hooks.on('updateCombat', combatUpdate);
             } else if (game.user.isGM) {
                 Hooks.off('updateCombat', combatUpdate);
+            }
+        }
+    });
+    game.settings.register(moduleName, 'Rest Listener', {
+        'name': 'Short / Long Rest Listener',
+        'hint': 'Enabling this allows the certain macros to function on short and long rests.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.restCompleted', rest);
+            } else {
+                Hooks.off('dnd5e.restCompleted', rest);
             }
         }
     });
@@ -424,21 +440,6 @@ export function registerSettings() {
                 Hooks.on('midi-qol.preItemRoll', macros.sanctuary);
             } else {
                 Hooks.off('midi-qol.preItemRoll', macros.sanctuary);
-            }
-        }
-    });
-    game.settings.register(moduleName, 'Defensive Field', {
-        'name': 'Guardian Armor: Defensive Field',
-        'hint': 'Enabling this allows the Defensive Field feature to properly get reset during a long rest even if the Artificer does not have it toggled on.',
-        'scope': 'world',
-        'config': true,
-        'type': Boolean,
-        'default': false,
-        'onChange': value => {
-            if (value) {
-                Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
-            } else {
-                Hooks.off('dnd5e.restCompleted', macros.armorModel.longRest);
             }
         }
     });

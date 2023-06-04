@@ -116,11 +116,13 @@ async function spawn(sourceActor, updates, duration, originItem) {
         }
     };
     await chris.createEffect(originItem.actor, casterEffectData);
-    if (!chris.inCombat()) return spawnedToken;
-    let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
-    if (!casterCombatant) return;
-    let initiative = casterCombatant.initiative - 0.01;
-    await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative);
+    if (chris.inCombat()) {
+        let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
+        if (casterCombatant) {
+            let initiative = casterCombatant.initiative - 0.01;
+            await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative);
+        }
+    }
     return spawnedToken;
 }
 async function createCombatant (tokenId, actorId, sceneId, initiative) {

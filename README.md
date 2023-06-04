@@ -201,6 +201,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Channel Divinity: Peerless Athlete  
 - Aura of Alacrity  
 ### Ranger:  
+#### Drakewarden:  
+- Drake Companion: Summon  
 #### Fey Wanderer:  
 - Beguiling Twist  
 #### Gloom Stalker:  
