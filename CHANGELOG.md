@@ -1,3 +1,8 @@
+# 0.4.12 Release:
+## Bug Fixes:
+- Animating Performance
+- Drow Hand Crossbow
+  
 # 0.4.11 Release:
 ## New Content:
 - College of Creation Bard: Animating Performance (Thanks Autumn)
