@@ -134,6 +134,7 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Bard:  
 - Bardic Inspiration & Magical Inspiration  
 #### College of Creation:  
+- Animating Performance  
 - Mote of Potential  
 #### College of Swords:  
 - Blade Flourish  
