@@ -20,24 +20,24 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let bardLevel = workflow.actor.classes?.bard?.system?.levels;
     if (!bardLevel) return;
     let hpFormula = 10 + 5 * bardLevel;
-    let heightWidth;
+    let heighWidth;
     let scale;
     switch (selection) {
         case 'tiny': 
             scale = '0.5';
-            heightWidth = '1';
+            heighWidth = '1';
             break;  
         case 'sm':
             scale = '0.8';
-            heightWidth = '1';
+            heighWidth = '1';
             break;
         case 'med':
             scale = '1';
-            heightWidth = '1';
+            heighWidth = '1';
             break;
         case 'lg':
             scale = '1';
-            heightWidth = 2;
+            heighWidth = 2;
             break;
     }
     let name = 'Dancing Item';
@@ -63,8 +63,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + Number(workflow.actor.system.bonuses.msak.attack),
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + Number(workflow.actor.system.bonuses.rsak.attack)
                         }
                     }
                 }
@@ -75,8 +75,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'token': {
             'name': name,
-            'height': heightWidth,
-            'width': heightWidth,
+            'height': heighWidth,
+            'width': heighWidth,
             'texture': {
                 'scaleX': scale,
                 'scaleY': scale
@@ -137,8 +137,9 @@ async function irrepressibleDance(token, origin) {
     let distance = chris.getDistance(token, targetToken);
     if (distance > 10) return;
     let speedValue = 10;
+    console.log(targetToken);
     let disposition = targetToken.document.disposition;
-    if (disposition === -1) speedValue = -10;
+    if (disposition == -1) speedValue = -10;
     let effect = chris.findEffect(targetToken.actor, 'Irrepressible Dance');
     if (effect) await chris.removeEffect(effect);
     let effectData = {
