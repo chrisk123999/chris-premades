@@ -1,3 +1,7 @@
+# 0.4.13 Release:
+## Bug Fixes:
+- Animating Performance
+  
 # 0.4.12 Release:
 ## Bug Fixes:
 - Animating Performance

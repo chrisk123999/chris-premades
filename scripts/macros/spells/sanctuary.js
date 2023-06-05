@@ -1,6 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function sanctuary(workflow) {
+    if (!workflow.token) return;
     if (workflow.targets.size != 1) return;
     let invalidTypes = [
         'cone',
