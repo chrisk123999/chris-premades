@@ -52,7 +52,7 @@ export async function setupJournalEntry() {
             name: pageName, 
             text: {'content': text}, 
             title: {'show': false, 'level': 1}, 
-            sort: journalEntry.sheet._pages.at(-1).sort + CONST.SORT_INTEGER_DENSITY
+            sort: journalEntry.pages.contents.at(-1).sort + CONST.SORT_INTEGER_DENSITY
         }, 
         {
             'parent': journalEntry
@@ -60,7 +60,7 @@ export async function setupJournalEntry() {
     }
     async function checkPage(journalEntry, name) {
         if (!journalEntry.pages.getName(name)) {
-            addPage(journalEntry, name, '');
+            await addPage(journalEntry, name, '');
         }
     }
     async function preparePages(journalEntry, packKey) {

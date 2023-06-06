@@ -1,3 +1,8 @@
+# 0.4.14 Release:
+## Update Notes:
+- Initial support for v11.  Needs more testing before use in a live game.
+- Module will continue to function on v10.
+  
 # 0.4.13 Release:
 ## Bug Fixes:
 - Animating Performance
