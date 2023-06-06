@@ -1,3 +1,7 @@
+# 0.4.15 Release:
+## Bug Fixes:
+- Effect Auras
+  
 # 0.4.14 Release:
 ## Update Notes:
 - Initial support for v11.  Needs more testing before use in a live game.
