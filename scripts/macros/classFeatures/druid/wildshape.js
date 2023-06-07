@@ -98,13 +98,42 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                 'width': wildshapeActor.prototypeToken.width,
                 'height': wildshapeActor.prototypeToken.height
             }
-            delete wildshapeActor.prototypeToken;
             wildshapeActor.prototypeToken = wildshapeToken;
             wildshapeActor.system.abilities.cha = workflow.actor.system.abilities.cha;
             wildshapeActor.system.abilities.int = workflow.actor.system.abilities.int;
             wildshapeActor.system.abilities.wis = workflow.actor.system.abilities.wis;
             wildshapeActor.system.attributes.prof = workflow.actor.system.attributes.prof;
-            // prof stuff here
+            delete wildshapeActor.system.attributes.attunement;
+            delete wildshapeActor.system.attributes.death;
+            delete wildshapeActor.system.attributes.encumbrance;
+            delete wildshapeActor.system.attributes.exhuastion;
+            delete wildshapeActor.system.attributes.hd;
+            delete wildshapeActor.system.attributes.init;
+            delete wildshapeActor.system.attributes.inspiration;
+            delete wildshapeActor.system.attributes.movement;
+            let senses = {};
+            console.log(wildshapeActor.system.attributes.senses);
+            if (wildshapeActor.system.attributes.senses.blindsight > workflow.actor.system.attributes.senses.blindsight) senses.blindsight = wildshapeActor.system.attributes.senses.blindsight;
+            if (wildshapeActor.system.attributes.senses.darkvision > workflow.actor.system.attributes.senses.darkvision) senses.darkvision = wildshapeActor.system.attributes.senses.darkvision;
+            if (wildshapeActor.system.attributes.senses.tremorsense > workflow.actor.system.attributes.senses.tremorsense) senses.tremorsense = wildshapeActor.system.attributes.senses.tremorsense;
+            if (wildshapeActor.system.attributes.senses.truesight > workflow.actor.system.attributes.senses.truesight) senses.truesight = wildshapeActor.system.attributes.senses.truesight;
+            wildshapeActor.system.attributes.senses = senses;
+            delete wildshapeActor.system.attributes.spellcasting;
+            delete wildshapeActor.system.attributes.spelldc;
+            delete wildshapeActor.system.bonuses;
+            delete wildshapeActor.system.currency;
+            delete wildshapeActor.system.details;
+            delete wildshapeActor.system.resources;
+            delete wildshapeActor.system.scale;
+            let sourceSkills = workflow.actor.system.skills;
+            let targetSkills = selectedActor.system.skills;
+            let skills = {};
+            for (let i of Object.keys(sourceSkills)) {
+                if (targetSkills[i].proficient > sourceSkills[i].proficient) skills[i] = {'value': targetSkills[i].proficient};
+            }
+            wildshapeActor.system.skills = skills;
+            delete wildshapeActor.system.tools;
+            // fis this mess
             let mutateOptions = {
                 'name': 'Wildshape',
             }

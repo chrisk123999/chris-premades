@@ -62,12 +62,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let healTargetToken = await fromUuid(healTargetTokenUuid);
         let damageDice = scale + '[healing]';
         let diceRoll = await new Roll(damageDice).roll({async: true});
-        diceRoll.toMessage({
-            rollMode: 'roll',
-            speaker: {alias: name},
-            flavor: 'Arcane Jolt Healing'
-        });
-        await chris.applyDamage([healTargetToken], diceRoll.total, 'healing');
+        await chris.applyWorkflowDamage(workflow.token, diceRoll, 'healing', [healTargetToken], workflow.item.name, workflow.itemCardId);
         await originFeature.use();
         queue.remove(workflow.item.uuid);
     }
@@ -81,7 +76,7 @@ async function updateUses({speaker, actor, token, character, item, args, scope, 
         if (!originFeature) return;
         let effect2 = chris.findEffect(workflow.actor, 'Steel Defender');
         if (!effect2) return;
-        let spawnedTokenUuid = effect2.flags?.['chris-premades']?.feature?.spawnedTokenUuid;
+        let spawnedTokenUuid = effect2.flags?.['chris-premades']?.feature?.steelDefender?.spawnedTokenUuid;
         if (!spawnedTokenUuid) return;
         let spawnedToken = await fromUuid(spawnedTokenUuid);
         if (!spawnedToken) return;

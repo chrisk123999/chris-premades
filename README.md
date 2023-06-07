@@ -123,6 +123,9 @@ Additional support and feature requests can be made on my Discord server: https:
 - Experimental Elixir  
 #### Armorer:  
 - Arcane Armor  
+#### Battle Smith:  
+- Arcane Jolt  
+- Steel Defender  
 #### Infusions:  
 - Homunculus Servant  
 ### Barbarian:  

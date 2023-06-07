@@ -122,7 +122,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    if (artificerLevel > 8) setProperty(effectUpdates, 'flags.chris-premades.feature.spawnedTokenUuid', spawnedToken.uuid);
+    if (artificerLevel > 8) setProperty(effectUpdates, 'flags.chris-premades.feature.steelDefender.spawnedTokenUuid', spawnedToken.uuid);
     await chris.updateEffect(effect, effectUpdates);
 
 }

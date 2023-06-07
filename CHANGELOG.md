@@ -1,3 +1,7 @@
+# 0.4.16 Release:
+## New Content:
+- Battle Smith Artificer: Steel Defender and Arcane Jolt (Thanks Autumn)
+  
 # 0.4.15 Release:
 ## Bug Fixes:
 - Effect Auras
