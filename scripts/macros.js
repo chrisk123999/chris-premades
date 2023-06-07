@@ -4,6 +4,7 @@ import {acidArrow} from './macros/spells/acidArrow.js';
 import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
+import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -153,6 +154,7 @@ import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
+import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
@@ -285,6 +287,7 @@ export let macros = {
     'agonizingBlast': agonizingBlast,
     'ancestralProtectors': ancestralProtectors,
     'animatingPerformance': animatingPerformance,
+    'arcaneJolt': arcaneJolt,
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
     'auraOfAlacrity': auraOfAlacrity,
@@ -404,6 +407,7 @@ export let macros = {
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,
     'starryForm': starryForm,
+    'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
     'stormSphere': stormSphere,
     'stormgirdle': stormgirdle,
