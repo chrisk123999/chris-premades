@@ -1,7 +1,7 @@
 # 0.4.17 Release:
 ## New Content:
 - Druid: Wild Shape (Beta)
-- Circle of the Moon: Circle Forms and Primal Strike
+- Circle of the Moon Druid: Circle Forms and Primal Strike
 - Item: Insignia of Claws
 ## Bug Fixes:
 - Steel Defender
