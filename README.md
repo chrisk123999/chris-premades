@@ -179,9 +179,13 @@ Additional support and feature requests can be made on my Discord server: https:
 - Steps of Night  
 - Vigilant Blessing  
 ### Druid:  
+- Wild Shape  
 #### Circle of Stars:  
 - Starry Form  
 - Twinkling Constellations  
+#### Circle of the Moon:  
+- Circle Forms  
+- Primal Strike  
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  

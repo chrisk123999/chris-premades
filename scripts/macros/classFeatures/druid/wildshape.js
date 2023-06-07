@@ -1,7 +1,13 @@
 import {chris} from '../../../helperFunctions.js';
-export async function wildshape({speaker, actor, token, character, item, args, scope, workflow}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!game.modules.get('quick-insert')?.active) {
         ui.notifications.warn('This feature requires the Quick Insert module to be active!');
+        return;
+    }
+    let mutationStack = warpgate.mutationStack(workflow.token.document);
+    let mutateItem = mutationStack.getName('Wild Shape');
+    if (mutateItem) {
+        ui.notifications.warn('Revert forms before using this feature again!');
         return;
     }
     let filter = 'wildshape';
@@ -16,8 +22,8 @@ export async function wildshape({speaker, actor, token, character, item, args, s
         'filter': filter,
         'onSubmit': async (selected) => {
             if (!selected) return;
-            if (selected.uuid === item.actor.uuid) {
-                ui.notifications.warn('You cannot wildshape into yourself!');
+            if (selected.uuid === workflow.item.actor.uuid) {
+                ui.notifications.warn('You cannot Wild Shape into yourself!');
                 return;
             }
             selectedActor = await fromUuid(selected.uuid);
@@ -26,7 +32,6 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                 return;
             }
             if (!selectedActor) return;
-            let durationSeconds = chris.itemDuration(item).seconds;
             let equipedItems = workflow.actor.items.filter(i => i.system.equipped);
             let selection;
             if (equipedItems.length > 0) {
@@ -79,21 +84,20 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                 if (!selection) return;
             }
             let wildshapeActor = selectedActor.toObject();
-            console.log(wildshapeActor);
             delete wildshapeActor.token;
             delete wildshapeActor.items;
             delete wildshapeActor.effects;
             delete wildshapeActor.type;
             delete wildshapeActor.flags;
             delete wildshapeActor.folder;
-            wildshapeActor.name += ' (' + workflow.actor.name + ')';
+            delete wildshapeActor.name;
             delete wildshapeActor.sort;
             delete wildshapeActor._id;
             delete wildshapeActor._stats;
             delete wildshapeActor.ownership;
             let texture = wildshapeActor.prototypeToken.texture;
             let wildshapeToken = {
-                'name': wildshapeActor.name,
+                'name': selectedActor.name + ' (' + workflow.actor.name + ')',
                 'texture': texture,
                 'width': wildshapeActor.prototypeToken.width,
                 'height': wildshapeActor.prototypeToken.height
@@ -110,14 +114,6 @@ export async function wildshape({speaker, actor, token, character, item, args, s
             delete wildshapeActor.system.attributes.hd;
             delete wildshapeActor.system.attributes.init;
             delete wildshapeActor.system.attributes.inspiration;
-            delete wildshapeActor.system.attributes.movement;
-            let senses = {};
-            console.log(wildshapeActor.system.attributes.senses);
-            if (wildshapeActor.system.attributes.senses.blindsight > workflow.actor.system.attributes.senses.blindsight) senses.blindsight = wildshapeActor.system.attributes.senses.blindsight;
-            if (wildshapeActor.system.attributes.senses.darkvision > workflow.actor.system.attributes.senses.darkvision) senses.darkvision = wildshapeActor.system.attributes.senses.darkvision;
-            if (wildshapeActor.system.attributes.senses.tremorsense > workflow.actor.system.attributes.senses.tremorsense) senses.tremorsense = wildshapeActor.system.attributes.senses.tremorsense;
-            if (wildshapeActor.system.attributes.senses.truesight > workflow.actor.system.attributes.senses.truesight) senses.truesight = wildshapeActor.system.attributes.senses.truesight;
-            wildshapeActor.system.attributes.senses = senses;
             delete wildshapeActor.system.attributes.spellcasting;
             delete wildshapeActor.system.attributes.spelldc;
             delete wildshapeActor.system.bonuses;
@@ -133,18 +129,23 @@ export async function wildshape({speaker, actor, token, character, item, args, s
             }
             wildshapeActor.system.skills = skills;
             delete wildshapeActor.system.tools;
-            // fis this mess
+            wildshapeActor.system.traits = {
+                'size': selectedActor.system.traits.size
+            };
+            delete wildshapeActor.system.spells;
             let mutateOptions = {
-                'name': 'Wildshape',
+                'name': 'Wild Shape',
             }
             async function effectMacro() {
-                await warpgate.revert(token.document, 'Wildshape');
+                await warpgate.revert(token.document, 'Wild Shape');
             }
+            let druidLevels = workflow.actor.classes.druid?.system?.levels;
+            if (!druidLevels) return;
             let effectData = {
-                'label': workflow.item.name,
+                'label': 'Wild Shape',
                 'icon': workflow.item.img,
                 'duration': {
-                    'seconds': durationSeconds
+                    'seconds': Math.min(druidLevels / 2) * 3600
                 },
                 'changes': [
                     {
@@ -176,7 +177,7 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                 },
                 'transfer': true
             };
-            if (workflow.actor.classes.druid?.system?.level === 20) delete effectData.changes;
+            if (druidLevels === 20) delete effectData.changes;
             let invalidTypes = [
                 'weapon',
                 'equipment',
@@ -198,10 +199,26 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                     }
                 }
             }
+            let primalStrike = workflow.actor.flags['chris-premades']?.feature?.primalStrike;
+            let insigniaOfClaws = workflow.actor.flags['chris-premades']?.item?.insigniaOfClaws;
             let targetItems = selectedActor.items.contents;
             for (let i of targetItems) {
                 itemUpdates[i.name] = i.toObject();
+                if (primalStrike && itemUpdates[i.name].type === 'weapon') setProperty(itemUpdates[i.name], 'system.properties.mgc', true);
+                if (insigniaOfClaws && itemUpdates[i.name].type === 'weapon') {
+                    try {
+                        itemUpdates[i.name].system.damage.parts[0][0] += ' + 1';
+                    } catch (error) {}
+                    itemUpdates[i.name].system.attackBonus = 1;
+                }
+                itemUpdates[i.name].flags['tidy5e-sheet'] = {'favorite': true};
+                if (invalidTypes.includes(itemUpdates[i.name].type)) continue;
+                itemUpdates[i.name].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'}
             }
+            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Wild Shape - Revert', false);
+            if (!featureData) return;
+            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Wild Shape - Revert');
+            itemUpdates[featureData.name] = featureData;
             let updates = {
                 'token': wildshapeToken,
                 'actor': wildshapeActor,
@@ -212,8 +229,20 @@ export async function wildshape({speaker, actor, token, character, item, args, s
                     }
                 }
             }
-            console.log(updates);
             await warpgate.mutate(workflow.token.document, updates, {}, mutateOptions);
         }
     });
+}
+async function hook() {
+    //handle rollover damage
+}
+async function revert({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effect = chris.findEffect(workflow.token.actor, 'Wild Shape');
+    if (!effect) return;
+    await chris.removeEffect(effect);
+}
+export let wildShape = {
+    'item': item,
+    'hook': hook,
+    'revert': revert
 }

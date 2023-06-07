@@ -184,7 +184,7 @@ import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
-import {wildshape} from './macros/classFeatures/druid/wildshape.js';
+import {wildShape} from './macros/classFeatures/druid/wildshape.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
@@ -435,7 +435,7 @@ export let macros = {
     'vortexWarp': vortexWarp,
     'wardingBond': wardingBond,
     'wildhunt': wildhunt,
-    'wildshape': wildshape,
+    'wildShape': wildShape,
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
