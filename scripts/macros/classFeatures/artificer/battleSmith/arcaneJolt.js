@@ -21,10 +21,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (selection === false) return;
     let selection2 = await chris.dialog('Harm or Heal?', [['Harm', 'harm'], ['Heal', 'heal']]);
     if (!selection2) return;
-    if (selection2 === 'harm') { //harm section
+    if (selection2 === 'harm') {
         let queueSetup = await queue.setup(workflow.item.uuid, 'arcaneJolt', 250);
         if (!queueSetup) return;
-        if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.arcaneJolt.turn', game.combat.round + '-' + game.combat.turn); //make sure this is in heal too
+        if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.arcaneJolt.turn', game.combat.round + '-' + game.combat.turn);
         let bonusDamageFormula = scale + '[force]';
         if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
         let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
@@ -79,7 +79,7 @@ async function updateUses({speaker, actor, token, character, item, args, scope, 
         if (!effect) return;
         let originFeature = await fromUuid(effect.origin);
         if (!originFeature) return;
-        let effect2 = chris.findEffect(workflow.actor, 'Create Steel Defender');
+        let effect2 = chris.findEffect(workflow.actor, 'Steel Defender');
         if (!effect2) return;
         let spawnedTokenUuid = effect2.flags?.['chris-premades']?.feature?.spawnedTokenUuid;
         if (!spawnedTokenUuid) return;

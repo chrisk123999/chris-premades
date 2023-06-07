@@ -32,7 +32,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let arcaneJoltItem = workflow.actor.items.getName('Arcane Jolt');
     if (arcaneJoltItem) arcaneJoltData.system.uses = arcaneJoltItem.system.uses;
     let hpValue = (2 + chris.getSpellMod(workflow.item)) + (artificerLevel * 5);
-    let name = 'Steel Defender'; //scaling
+    let name = 'Steel Defender';
     let updates = {
         'actor': {
             'name': name,
@@ -127,14 +127,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 
 }
 async function longRest(actor, data) {
-    console.log("started long rest");
     if (!data.longRest) return;
     if (actor.classes?.arificer?.system?.levels < 3) return;
     let item = actor.items.getName('Battle Smith');
     if (!item) return;
     if (item.type != 'subclass') return;
     actor.setFlag('chris-premades', 'feature.steelDefenderRepair', 3);
-    console.log("completed long rest");
 }
 async function repair({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Summoned Creature');
