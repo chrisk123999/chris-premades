@@ -1,4 +1,4 @@
-let welcomeText = `<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>Chris#8375</strong> on Discord or make a <a href="https://github.com/chrisk123999/chris-premades">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p>
+let welcomeText = `<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href="https://github.com/chrisk123999/chris-premades">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p>
 <p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works "as-is" from that module, it's unlikely I'll have it here.</p>
 <p>To get started you can find my automations inside the compendiums that start with: "CPR."</p>
 <p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p>

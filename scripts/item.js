@@ -270,6 +270,18 @@ export function setConfig() {
                 additionalItems: [],
                 priority: 0
             }
+        },
+        'correctedItems': {
+            'Steel Defender': {
+                'system': {
+                    'uses': {
+                        'max': 1,
+                        'per': 'lr',
+                        'recovery': '',
+                        'value': 1
+                    }
+                }
+            }
         }
     });
 }

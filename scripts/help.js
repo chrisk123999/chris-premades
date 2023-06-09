@@ -46,6 +46,7 @@ export function troubleshoot() {
     let output = '';
     function addLine(text) {
         output += '\n' + text;
+        console.log(text);
     }
     function checkModule(name) {
         let module = game.modules.get(name);
