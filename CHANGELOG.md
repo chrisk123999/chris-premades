@@ -1,3 +1,11 @@
+# 0.4.18 Release:
+## New Content:
+- Barbarian: Rage
+- Path of the Totem Warrior Barbarian: Totem Spirit: Bear
+- Kalashtar: Dual Mind and Mental Discipline
+## Bug Fixes:
+- Wildshape
+  
 # 0.4.17 Release:
 ## New Content:
 - Druid: Wild Shape (Beta)

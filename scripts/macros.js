@@ -131,6 +131,7 @@ import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
+import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
@@ -183,8 +184,8 @@ import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
-import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
+import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
@@ -393,6 +394,7 @@ export let macros = {
     'preserveLife': preserveLife,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
     'radiantSoul': radiantSoul,
+    'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,
     'reaper': reaper,
     'removeTemplate': removeTemplate,
@@ -434,8 +436,8 @@ export let macros = {
     'vampiricTouch': vampiricTouch,
     'vortexWarp': vortexWarp,
     'wardingBond': wardingBond,
-    'wildhunt': wildhunt,
     'wildShape': wildShape,
+    'wildhunt': wildhunt,
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,

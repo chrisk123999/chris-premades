@@ -141,6 +141,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
             let druidLevels = workflow.actor.classes.druid?.system?.levels;
             if (!druidLevels) return;
+            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Wild Shape - Revert', false);
+            if (!featureData) return;
+            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Wild Shape - Revert');
             let effectData = {
                 'label': 'Wild Shape',
                 'icon': workflow.item.img,
@@ -172,6 +175,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'effectmacro': {
                         'onDelete': {
                             'script': chris.functionToString(effectMacro)
+                        }
+                    },
+                    'chris-premades': {
+                        'vae': {
+                            'button': featureData.name
                         }
                     }
                 },
@@ -215,9 +223,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 if (invalidTypes.includes(itemUpdates[i.name].type)) continue;
                 itemUpdates[i.name].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'}
             }
-            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Wild Shape - Revert', false);
-            if (!featureData) return;
-            featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Wild Shape - Revert');
             itemUpdates[featureData.name] = featureData;
             let updates = {
                 'token': wildshapeToken,

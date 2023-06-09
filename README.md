@@ -129,8 +129,11 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Infusions:  
 - Homunculus Servant  
 ### Barbarian:  
+- Rage
 #### Path of the Ancestral Guardian:  
 - Ancestral Protectors  
+#### Path of the Totem Warrior:  
+- Totem Spirit: Bear  
 #### Path of the Zealot:  
 - Divine Fury  
 - Zealous Presence  
@@ -290,6 +293,9 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Human:  
 #### Mark of Making:  
 - Artisan's Intuition  
+### Kalashtar:  
+- Dual Mind  
+- Mental Discipline  
 ### Lizardfok:  
 - Hungry Jaws  
 ### Plasmoid:  
