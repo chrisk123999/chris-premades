@@ -240,6 +240,8 @@ Additional support and feature requests can be made on my Discord server: https:
 #### The Celestial:  
 - Healing Light  
 - Radiant Soul  
+#### The Fathomless:  
+- Tentacle of the Deeps  
 #### The Fiend:  
 - Dark One's Blessing  
 - Dark One's Own Luck  

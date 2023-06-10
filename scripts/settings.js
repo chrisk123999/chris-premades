@@ -1,4 +1,5 @@
 import {macros, onHitMacro} from './macros.js';
+import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
@@ -548,6 +549,21 @@ export function registerSettings() {
             } else if (game.user.isGM) {
                 Hooks.off('updateToken', macros.wardingBond.moveTarget);
                 Hooks.off('updateToken', macros.wardingBond.moveSource);
+            }
+        }
+    });
+    game.settings.register(moduleName, 'Attack Listener', {
+        'name': 'Attack Listener',
+        'hint': 'This setting is required for certain macros to help with removing flanking and canceling attacks.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preAttackRoll', flanking);
+            } else {
+                Hooks.off('midi-qol.preAttackRoll', flanking);
             }
         }
     });

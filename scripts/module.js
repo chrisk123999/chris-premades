@@ -14,6 +14,7 @@ import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {rest} from './utility/rest.js';
 import {troubleshoot} from './help.js';
+import {flanking} from './macros/generic/syntheticAttack.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -126,6 +127,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
     if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
     if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
+    if (game.settings.get('chris-premades', 'Attack Listener')) Hooks.on('midi-qol.preAttackRoll', flanking);
 });
 globalThis['chrisPremades'] = {
     helpers,

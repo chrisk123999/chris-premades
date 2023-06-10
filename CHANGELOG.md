@@ -1,3 +1,7 @@
+# 0.4.19 Release:
+## New Content:
+- The Fathomless Warlock: Tentacle of the Deeps
+  
 # 0.4.18 Release:
 ## New Content:
 - Barbarian: Rage
