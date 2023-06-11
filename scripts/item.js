@@ -160,8 +160,7 @@ export function setConfig() {
             'Reaper: Chill Touch': 'Reaper',
             'Reaper: Sapping Sting': 'Reaper',
             'Reaper: Spare the Dying': 'Reaper',
-            'Reaper: Toll the Dead': 'Reaper',
-            'Tentacle of the Deeps: Summon': 'Tentacle of the Deeps'
+            'Reaper: Toll the Dead': 'Reaper'
         },
         'additionalItems': {
             'Blade Flourish': [
@@ -228,7 +227,7 @@ export function setConfig() {
                 'Starry Form: Chalice',
                 'Starry Form: Dragon'
             ],
-            'Tentacle of the Deeps': [
+            'Tentacle of the Deeps: Summon': [
                 'Tentacle of the Deeps: Move'
             ]
         },
