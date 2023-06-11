@@ -243,13 +243,17 @@ export let chris = {
             'title': title,
             'render': dialogRender
         };
-        return await warpgate.menu(
+        let selection = await warpgate.menu(
             {
                 'inputs': generatedInputs,
                 'buttons': buttons
             },
             config
         );
+        for (let i = 0; i < selection.inputs.length; i++) {
+            if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
+        }
+        return selection;
     },
     'checkTrait': function _checkTrait(actor, type, trait) {
         return actor.system.traits[type].value.has(trait);

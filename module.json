@@ -56,7 +56,7 @@
 		"type": "module",
 		"manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
 		"compatibility": {
-			"verified": "1.16.0"
+			"verified": "1.17.2"
 		}
 	},
 	{

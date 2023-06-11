@@ -1,3 +1,7 @@
+# 0.5.1 Release:
+## Update Notes:
+- Bug fix for for Warpgate menu changes.  This module now requires version 1.17.2.
+  
 # 0.4.19 Release:
 ## New Content:
 - The Fathomless Warlock: Tentacle of the Deeps

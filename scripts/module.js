@@ -31,7 +31,7 @@ Hooks.once('socketlib.ready', async function() {
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
         let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
-        let currentVersion = 4;
+        let currentVersion = 5;
         if (oldVersion < currentVersion && oldVersion === 0) {
             let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
             ChatMessage.create({
@@ -67,6 +67,15 @@ Hooks.once('ready', async function() {
             });
             await game.settings.set('chris-premades', 'Breaking Version Change', 4);
             oldVersion = 4;
+        }
+        if (oldVersion < currentVersion && oldVersion === 4) {
+            let message2 = '<hr><p>This update to Chris\'s Premades requires you to be using Warpgate version 1.17.2 or higher.</p>';
+            ChatMessage.create({
+                speaker: {alias: name},
+                content: message2
+            });
+            await game.settings.set('chris-premades', 'Breaking Version Change', 5);
+            oldVersion = 5;
         }
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
