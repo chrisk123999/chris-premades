@@ -1,9 +1,12 @@
 import {macros, onHitMacro} from './macros.js';
+import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
+import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
+import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
 let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
@@ -14,7 +17,7 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': Number,
-        'default': 4
+        'default': 5
     });
     game.settings.register(moduleName, 'Show Names', {
         'name': 'Show Names',
@@ -47,6 +50,23 @@ export function registerSettings() {
             }
         }
     });
+    game.settings.register(moduleName, 'Template Listener', {
+        'name': 'Template Listener',
+        'hint': 'This setting allows certain macros from this module to function when tokens interact with templates.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value && game.user.isGM) {
+                Hooks.on('updateToken', templates.move);
+                Hooks.on('updateCombat', templates.combat);
+            } else if (game.user.isGM) {
+                Hooks.off('updateToken', templates.move);
+                Hooks.on('updateCombat', templates.combat);
+            }
+        }
+    });
     game.settings.register(moduleName, 'Tasha Actors', {
         'name': 'Keep Summon Actors Updated',
         'hint': 'This setting will keep actors from this module updated in the sidebar.',
@@ -60,7 +80,7 @@ export function registerSettings() {
     });
     game.settings.register(moduleName, 'Tasha Initiative', {
         'name': 'Minions use caster\'s initiative',
-        'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s',
+        'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s Cauldron Of Everything',
         'scope': 'world',
         'config': true,
         'type': Boolean,
@@ -178,6 +198,21 @@ export function registerSettings() {
                 Hooks.on('updateCombat', combatUpdate);
             } else if (game.user.isGM) {
                 Hooks.off('updateCombat', combatUpdate);
+            }
+        }
+    });
+    game.settings.register(moduleName, 'Rest Listener', {
+        'name': 'Short / Long Rest Listener',
+        'hint': 'Enabling this allows the certain macros to function on short and long rests.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.restCompleted', rest);
+            } else {
+                Hooks.off('dnd5e.restCompleted', rest);
             }
         }
     });
@@ -409,21 +444,6 @@ export function registerSettings() {
             }
         }
     });
-    game.settings.register(moduleName, 'Defensive Field', {
-        'name': 'Guardian Armor: Defensive Field',
-        'hint': 'Enabling this allows the Defensive Field feature to properly get reset during a long rest even if the Artificer does not have it toggled on.',
-        'scope': 'world',
-        'config': true,
-        'type': Boolean,
-        'default': false,
-        'onChange': value => {
-            if (value) {
-                Hooks.on('dnd5e.restCompleted', macros.armorModel.longRest);
-            } else {
-                Hooks.off('dnd5e.restCompleted', macros.armorModel.longRest);
-            }
-        }
-    });
     game.settings.register(moduleName, 'Ranged Smite', {
         'name': 'Ranged Divine Smite',
         'hint': 'Enabling this will allow the Divine Smite feature to be used on ranged attacks.',
@@ -531,5 +551,28 @@ export function registerSettings() {
                 Hooks.off('updateToken', macros.wardingBond.moveSource);
             }
         }
+    });
+    game.settings.register(moduleName, 'Attack Listener', {
+        'name': 'Attack Listener',
+        'hint': 'This setting is required for certain macros to help with removing flanking and canceling attacks.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preAttackRoll', flanking);
+            } else {
+                Hooks.off('midi-qol.preAttackRoll', flanking);
+            }
+        }
+    });
+    game.settings.register(moduleName, 'Magic Missile Toggle', {
+        'name': 'Magic Missile Toggle',
+        'hint': 'Enabling this has the Magic Missile spell roll the dice once for damage.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': true
     });
 }

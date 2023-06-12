@@ -3,15 +3,15 @@ import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Bigby\'s Hand');
     if (!sourceActor) return;
-    let damageScale = ((workflow.castData.castLevel - 4) * 2)
+    let damageScale = ((workflow.castData.castLevel - 5) * 2)
     let clenchedFistData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Clenched Fist', false);
     if (!clenchedFistData) return;
     clenchedFistData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Clenched Fist');
-    clenchedFistData.system.damage.parts[0][0] = (4 + (damageScale)) + 'd8[force]';
+    clenchedFistData.system.damage.parts[0][0] = (4 + damageScale) + 'd8[force]';
     let forcefulHandData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Forceful Hand', false);
     if (!forcefulHandData) return;
     forcefulHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Forceful Hand');
-    forcefulHandData.name = 'Forceful Hand (' + ((chris.getSpellMod(workflow.item)*5) + 5) + ' feet)';
+    forcefulHandData.name = 'Forceful Hand (' + ((chris.getSpellMod(workflow.item) * 5) + 5) + ' feet)';
     let graspingHandData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Grasping Hand', false);
     if (!graspingHandData) return;
     graspingHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Grasping Hand');
@@ -69,20 +69,28 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bigby\'s Hand - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bigby\'s Hand - Move');
-    async function effectMacro () {
-        await warpgate.revert(token.document, 'Bigby\'s Hand - Move');
-    }
-    let effectData = {
-        'label': featureData.name,
-        'icon': workflow.item.img,
-        'duration': {
-            'seconds': 60
-        },
-        'origin': workflow.item.uuid,
+    let updates2 = {
+        'embedded': {
+            'Item': {
+                [featureData.name]: featureData
+            }
+        }
+    };
+    let options = {
+        'permanent': false,
+        'name': name,
+        'description': featureData.name
+    };
+    await warpgate.mutate(workflow.token.document, updates2, {}, options);
+    let effect = chris.findEffect(workflow.actor, 'Bigby\'s Hand');
+    if (!effect) return;
+    let currentScript = effect.flags.effectmacro?.onDelete?.script;
+    if (!currentScript) return;
+    let effectUpdates = {
         'flags': {
             'effectmacro': {
-                'onDelete': {
-                    'script': chris.functionToString(effectMacro)
+                'onDelete': { 
+                    'script': currentScript + ' await warpgate.revert(token.document, "' + name + '");'
                 }
             },
             'chris-premades': {
@@ -92,22 +100,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let updates2 = {
-        'embedded': {
-            'Item': {
-                [featureData.name]: featureData
-            },
-            'ActiveEffect': {
-                [featureData.name]: effectData
-            }
-        }
-    };
-    let options = {
-        'permanent': false,
-        'name': featureData.name,
-        'description': featureData.name
-    };
-    await warpgate.mutate(workflow.token.document, updates2, {}, options);
+    await chris.updateEffect(effect, effectUpdates);
 }
 async function forcefulHand({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -119,12 +112,12 @@ async function forcefulHand({speaker, actor, token, character, item, args, scope
 async function graspingHand({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetActor = workflow.targets.first().actor;
-    if ((chris.getSize(targetActor)) > (chris.sizeStringValue('huge'))) {
+    if (chris.getSize(targetActor) > chris.sizeStringValue('huge')) {
         ui.notifications.info('Target is too big!');
         return;
     }
     let hasAdvantage = (chris.getSize(targetActor) <=  (chris.sizeStringValue('medium')));
-    let sourceRoll = await workflow.actor.rollSkill('ath', {advantage: hasAdvantage});
+    let sourceRoll = await workflow.actor.rollSkill('ath', {'advantage': hasAdvantage});
     let targetRoll;
     if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
         targetRoll = await targetActor.rollSkill('acr');

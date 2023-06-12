@@ -9,7 +9,7 @@ Additional support and feature requests can be made on my Discord server: https:
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
-| Midi-Qol | 10.0.36 |  
+| Midi-Qol | 10.0.45 |  
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
 | Compendium Folders | 2.5.7 |  
@@ -21,7 +21,7 @@ Additional support and feature requests can be made on my Discord server: https:
 | Socket Lib | 1.0.12 |  
 | Template Macro | 10.0.1 |  
 | Token Attacher | 4.5.11 |  
-| Warpgate | 1.16.0 |  
+| Warpgate | 1.17.2 |  
   
 # Optional supported modules:  
 - Custom Character Sheet Sections  
@@ -50,6 +50,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Crusaders's Mantle  
 - Danse Macabre  
 - Darkness  
+- Dawn  
 - Death Ward  
 - Detect Magic  
 - Detect Thoughts  
@@ -68,6 +69,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Life Transference  
 - Lightning Arrow  
 - Lightning Lure  
+- Magic Missile  
 - Mass Cure Wounds  
 - Melf's Acid Arrow  
 - Mind Sliver  
@@ -78,7 +80,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Raulothim's Psychic Lance  
 - Ray of Enfeeblement  
 - Santuary  
-- Shadow Blade
+- Scorching Ray  
+- Shadow Blade  
 - Sickening Radiance  
 - Spike Growth  
 - Spirit Guardians  
@@ -99,6 +102,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Toll the Dead  
 - Vampiric Touch  
 - Vitriolic Sphere  
+- Vortex Warp  
 - Warding Bond  
 - Wither and Bloom  
 - Zone of Truth  
@@ -122,15 +126,24 @@ Additional support and feature requests can be made on my Discord server: https:
 - Experimental Elixir  
 #### Armorer:  
 - Arcane Armor  
+#### Battle Smith:  
+- Arcane Jolt  
+- Steel Defender  
+#### Infusions:  
+- Homunculus Servant  
 ### Barbarian:  
+- Rage
 #### Path of the Ancestral Guardian:  
 - Ancestral Protectors  
+#### Path of the Totem Warrior:  
+- Totem Spirit: Bear  
 #### Path of the Zealot:  
 - Divine Fury  
 - Zealous Presence  
 ### Bard:  
 - Bardic Inspiration & Magical Inspiration  
 #### College of Creation:  
+- Animating Performance  
 - Mote of Potential  
 #### College of Swords:  
 - Blade Flourish  
@@ -172,9 +185,13 @@ Additional support and feature requests can be made on my Discord server: https:
 - Steps of Night  
 - Vigilant Blessing  
 ### Druid:  
+- Wild Shape  
 #### Circle of Stars:  
 - Starry Form  
 - Twinkling Constellations  
+#### Circle of the Moon:  
+- Circle Forms  
+- Primal Strike  
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  
@@ -198,6 +215,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Channel Divinity: Peerless Athlete  
 - Aura of Alacrity  
 ### Ranger:  
+#### Drakewarden:  
+- Drake Companion: Summon  
 #### Fey Wanderer:  
 - Beguiling Twist  
 #### Gloom Stalker:  
@@ -224,6 +243,8 @@ Additional support and feature requests can be made on my Discord server: https:
 #### The Celestial:  
 - Healing Light  
 - Radiant Soul  
+#### The Fathomless:  
+- Tentacle of the Deeps  
 #### The Fiend:  
 - Dark One's Blessing  
 - Dark One's Own Luck  
@@ -277,6 +298,9 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Human:  
 #### Mark of Making:  
 - Artisan's Intuition  
+### Kalashtar:  
+- Dual Mind  
+- Mental Discipline  
 ### Lizardfok:  
 - Hungry Jaws  
 ### Plasmoid:  
@@ -373,6 +397,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Berserk  
 - Haste  
 - Slam  
+#### Flesh Golem:  
+- Berserk  
 #### Hommunculus:  
 - Bite  
 #### Swarm of Animated Books: 

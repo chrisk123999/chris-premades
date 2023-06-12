@@ -184,12 +184,31 @@ export function setConfig() {
             ]
         },
         'removedItems': {
+            'Animating Performance': [
+                'Animating Performance: Animate',
+                'Animating Performance: Dancing Item'
+            ],
             'Arcane Armor': [
                 'Guardian Armor: Thunder Gauntlets',
                 'Guardian Armor: Thunder Gauntlets (STR)',
                 'Guardian Armor: Defensive Field',
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
+            ],
+            'Drake Companion: Summon': [
+                'Bond of Fang and Scale: Acid Resistance',
+                'Bond of Fang and Scale: Cold Resistance',
+                'Bond of Fang and Scale: Fire Resistance',
+                'Bond of Fang and Scale: Lightning Resistance',
+                'Bond of Fang and Scale: Poison Resistance',
+                'Drake Companion',
+                'Drake Companion: Command',
+                'Drake Companion: Drake Companion (Acid)',
+                'Drake Companion: Drake Companion (Cold)',
+                'Drake Companion: Drake Companion (Fire)',
+                'Drake Companion: Drake Companion (Lightning)',
+                'Drake Companion: Drake Companion (Poison)',
+                'Reflexive Resistance',
             ],
             'Eladrin Season: Autumn': [
                 'Fey Step (Autumn)'
@@ -207,6 +226,9 @@ export function setConfig() {
                 'Starry Form: Archer',
                 'Starry Form: Chalice',
                 'Starry Form: Dragon'
+            ],
+            'Tentacle of the Deeps: Summon': [
+                'Tentacle of the Deeps: Move'
             ]
         },
         'restrictedItems': {
@@ -250,6 +272,18 @@ export function setConfig() {
                 removedItems: [],
                 additionalItems: [],
                 priority: 0
+            }
+        },
+        'correctedItems': {
+            'Steel Defender': {
+                'system': {
+                    'uses': {
+                        'max': 1,
+                        'per': 'lr',
+                        'recovery': '',
+                        'value': 1
+                    }
+                }
             }
         }
     });

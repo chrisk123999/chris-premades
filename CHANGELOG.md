@@ -1,3 +1,95 @@
+# 0.5.2 Release:
+## New Content:
+- Magic Missile
+- Scorching Ray
+  
+# 0.5.1 Release:
+## Update Notes:
+- Bug fix for for Warpgate menu changes.  This module now requires version 1.17.2.
+  
+# 0.4.19 Release:
+## New Content:
+- The Fathomless Warlock: Tentacle of the Deeps
+  
+# 0.4.18 Release:
+## New Content:
+- Barbarian: Rage
+- Path of the Totem Warrior Barbarian: Totem Spirit: Bear
+- Kalashtar: Dual Mind and Mental Discipline
+## Bug Fixes:
+- Wild Shape
+  
+# 0.4.17 Release:
+## New Content:
+- Druid: Wild Shape (Beta)
+- Circle of the Moon Druid: Circle Forms and Primal Strike
+- Item: Insignia of Claws
+## Bug Fixes:
+- Steel Defender
+## Update Notes:
+- Wild Shape may still need some more adjustments / fixes.  Make a backup of your actor before use and report any bugs.
+  
+# 0.4.16 Release:
+## New Content:
+- Battle Smith Artificer: Steel Defender and Arcane Jolt (Thanks Autumn)
+  
+# 0.4.15 Release:
+## Bug Fixes:
+- Effect Auras
+  
+# 0.4.14 Release:
+## Update Notes:
+- Initial support for v11.  Needs more testing before use in a live game.
+- Module will continue to function on v10.
+  
+# 0.4.13 Release:
+## Bug Fixes:
+- Animating Performance
+  
+# 0.4.12 Release:
+## Bug Fixes:
+- Animating Performance
+- Drow Hand Crossbow
+  
+# 0.4.11 Release:
+## New Content:
+- College of Creation Bard: Animating Performance (Thanks Autumn)
+## Bug Fixes:
+- Summon Drake Companion
+  
+# 0.4.10 Release:
+## New Content:
+- Drakewarden Ranger: Drake Companion: Summon (Thanks Autumn)
+## Bug Fixes:
+- Dread Ambusher
+- Swarm Damage 
+## Other Notes:
+- Removed the Defensive Field setting and replaced it with a generic short / long rest setting.
+  
+# 0.4.9 Release:
+## Bug Fixes:
+- Bigby's Hand
+  
+# 0.4.8 Release:
+## New Content:
+- Spell: Vortex Warp
+## Bug Fixes:
+- Bigby's Hand
+  
+# 0.4.7 Release:
+## New Monster Content:
+- Flesh Golem: Berserk
+  
+# 0.4.6 Release:
+## New Content:
+- Spell: Dawn
+  
+# 0.4.5 Release:
+## New Content:
+- Artificer Infusion: Homunculus Servant (Thanks Autumn)
+## Bug Fixes:
+- Danse Macabre
+  
 # 0.4.4 Release:
 ## New Content:
 - Spell: Bigby's Hand (Thanks Autumn)
@@ -826,7 +918,7 @@
 ## New Monster Content:
 - Bulette: Deadly Leap
 - Chasme: Proboscis
-- Clay Golem: Beserk, Haste, and Slam
+- Clay Golem: Berserk, Haste, and Slam
 ## Bug Fixes:
 - Vampiric Touch
   

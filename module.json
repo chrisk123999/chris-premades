@@ -7,16 +7,21 @@
   "socket": true,
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
-    "maximum": 11
+    "minimum": "10",
+    "verified": "10",
+    "maximum": "11"
   },
   "authors": [
     {
       "name": "Chris",
       "url": "https://github.com/chrisk123999/chris-premades",
-      "discord": "Chris#8375",
+      "discord": "chrisk123999",
 	  "ko-fi": "chrisk123999"
+    },
+	{
+      "name": "Autumn",
+      "url": "https://github.com/Autumn225",
+      "discord": "Autumn225#7194"
     }
   ],
   "relationships": {
@@ -51,7 +56,7 @@
 		"type": "module",
 		"manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
 		"compatibility": {
-			"verified": "1.16.0"
+			"verified": "1.17.2"
 		}
 	},
 	{
@@ -277,6 +282,13 @@
 		  "name": "CPR Actions",
 		  "label": "CPR Actions",
 		  "path": "packs/cpr-actions.db",
+		  "type": "Item",
+		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Miscellaneous",
+		  "label": "CPR Miscellaneous",
+		  "path": "packs/cpr-miscellaneous.db",
 		  "type": "Item",
 		  "module": "chris-premades"
 	  }

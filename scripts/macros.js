@@ -3,6 +3,8 @@ import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSp
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
+import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -46,6 +48,7 @@ import {crusher} from './macros/feats/crusher.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
+import {dawn} from './macros/spells/dawn.js';
 import {deathWard} from './macros/spells/deathWard.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
@@ -97,6 +100,7 @@ import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesC
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
+import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
@@ -108,6 +112,7 @@ import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
 import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
+import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
@@ -127,6 +132,7 @@ import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
+import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
@@ -135,6 +141,7 @@ import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
+import {scorchingRay} from './macros/spells/scorchingRay.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowSpirit} from './macros/monsterFeatures/shadowSpirit/shadowSpirit.js';
@@ -151,6 +158,7 @@ import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
+import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
@@ -161,6 +169,7 @@ import {summonBeast} from './macros/spells/summonBeast.js';
 import {summonCelestial} from './macros/spells/summonCelestial.js';
 import {summonConstruct} from './macros/spells/summonConstruct.js';
 import {summonDraconicSpirit} from './macros/spells/summonDraconicSpirit.js';
+import {summonDrakeCompanion} from './macros/classFeatures/ranger/drakeWarden/summonDrakeCompanion.js';
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
@@ -168,6 +177,7 @@ import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
 import {summon} from './macros/generic/summon.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
+import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -176,7 +186,9 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
+import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
+import {wildShape} from './macros/classFeatures/druid/wildshape.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
@@ -268,11 +280,20 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
     }
 }
+async function templateTrigger(macroName, token, trigger) {
+    switch (macroName) {
+        case 'dawn':
+            await dawn.trigger(token, trigger);
+            break;
+    }
+}
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
     'agonizingBlast': agonizingBlast,
     'ancestralProtectors': ancestralProtectors,
+    'animatingPerformance': animatingPerformance,
+    'arcaneJolt': arcaneJolt,
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
     'auraOfAlacrity': auraOfAlacrity,
@@ -282,10 +303,10 @@ export let macros = {
     'auraOfVitality': auraOfVitality,
     'balmOfPeace': balmOfPeace,
     'bardicInspiration': bardicInspiration,
-    'bigbysHand': bigbysHand,
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
     'bestowCurse': bestowCurse,
+    'bigbysHand': bigbysHand,
     'blackrazor': blackrazor,
     'bladeFlourish': bladeFlourish,
     'blessedStrikes': blessedStrikes,
@@ -310,6 +331,7 @@ export let macros = {
     'danseMacabre': danseMacabre,
     'darkOnesBlessing': darkOnesBlessing,
     'darkness': darkness,
+    'dawn': dawn,
     'deathWard': deathWard,
     'destructiveWrath': destructiveWrath,
     'detectThoughts': detectThoughts,
@@ -344,6 +366,7 @@ export let macros = {
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
     'holyWeapon': holyWeapon,
+    'homunculusServant': homunculusServant,
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
@@ -352,6 +375,7 @@ export let macros = {
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,
     'maddeningHex': maddeningHex,
+    'magicMissile': magicMissile,
     'maneuvers': maneuvers,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
@@ -375,6 +399,7 @@ export let macros = {
     'preserveLife': preserveLife,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
     'radiantSoul': radiantSoul,
+    'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,
     'reaper': reaper,
     'removeTemplate': removeTemplate,
@@ -382,6 +407,7 @@ export let macros = {
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
     'sanctuary': sanctuary,
+    'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,
     'shockingGrasp': shockingGrasp,
     'sickeningRadiance': sickeningRadiance,
@@ -391,6 +417,7 @@ export let macros = {
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,
     'starryForm': starryForm,
+    'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
     'stormSphere': stormSphere,
     'stormgirdle': stormgirdle,
@@ -400,19 +427,24 @@ export let macros = {
     'summonCelestial': summonCelestial,
     'summonConstruct': summonConstruct,
     'summonDraconicSpirit': summonDraconicSpirit,
+    'summonDrakeCompanion': summonDrakeCompanion,
     'summonElemental': summonElemental,
     'summonFey': summonFey,
     'summonFiend': summonFiend,
     'summonShadowspawn': summonShadowspawn,
     'summonUndead': summonUndead,
     'telekentic': telekinetic,
+    'templateTrigger': templateTrigger,
+    'tentacleOfTheDeeps': tentacleOfTheDeeps,
     'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'turnUndead': turnUndead,
     'twilightSanctuary': twilightSanctuary,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
+    'vortexWarp': vortexWarp,
     'wardingBond': wardingBond,
+    'wildShape': wildShape,
     'wildhunt': wildhunt,
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,

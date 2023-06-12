@@ -19,7 +19,7 @@ export async function telekinetic({speaker, actor, token, character, item, args,
             return;
         }
         newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
-        hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
+        hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
         if (hitsWall) {
             selection -= 5;
             if (selection === 0) {
