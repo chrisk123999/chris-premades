@@ -569,7 +569,7 @@ export function registerSettings() {
     });
     game.settings.register(moduleName, 'Magic Missile Toggle', {
         'name': 'Magic Missile Toggle',
-        'hint': 'Enabling this has the Magic Missile roll the dice once for damage.',
+        'hint': 'Enabling this has the Magic Missile spell roll the dice once for damage.',
         'scope': 'world',
         'config': true,
         'type': Boolean,
