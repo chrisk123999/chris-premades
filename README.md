@@ -9,7 +9,7 @@ Additional support and feature requests can be made on my Discord server: https:
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
-| Midi-Qol | 10.0.36 |  
+| Midi-Qol | 10.0.45 |  
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
 | Compendium Folders | 2.5.7 |  
@@ -21,7 +21,7 @@ Additional support and feature requests can be made on my Discord server: https:
 | Socket Lib | 1.0.12 |  
 | Template Macro | 10.0.1 |  
 | Token Attacher | 4.5.11 |  
-| Warpgate | 1.16.0 |  
+| Warpgate | 1.17.2 |  
   
 # Optional supported modules:  
 - Custom Character Sheet Sections  
@@ -69,6 +69,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Life Transference  
 - Lightning Arrow  
 - Lightning Lure  
+- Magic Missile  
 - Mass Cure Wounds  
 - Melf's Acid Arrow  
 - Mind Sliver  
@@ -79,6 +80,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Raulothim's Psychic Lance  
 - Ray of Enfeeblement  
 - Santuary  
+- Scorching Ray  
 - Shadow Blade  
 - Spike Growth  
 - Spirit Guardians  

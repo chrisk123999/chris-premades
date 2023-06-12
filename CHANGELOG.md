@@ -1,3 +1,8 @@
+# 0.5.2 Release:
+## New Content:
+- Magic Missile
+- Scorching Ray
+  
 # 0.5.1 Release:
 ## Update Notes:
 - Bug fix for for Warpgate menu changes.  This module now requires version 1.17.2.

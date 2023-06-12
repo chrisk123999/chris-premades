@@ -112,6 +112,7 @@ import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
 import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
+import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
@@ -140,6 +141,7 @@ import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
+import {scorchingRay} from './macros/spells/scorchingRay.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowSpirit} from './macros/monsterFeatures/shadowSpirit/shadowSpirit.js';
@@ -372,6 +374,7 @@ export let macros = {
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,
     'maddeningHex': maddeningHex,
+    'magicMissile': magicMissile,
     'maneuvers': maneuvers,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
@@ -403,6 +406,7 @@ export let macros = {
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
     'sanctuary': sanctuary,
+    'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,
     'shockingGrasp': shockingGrasp,
     'slasher': slasher,

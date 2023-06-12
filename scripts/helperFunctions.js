@@ -250,8 +250,10 @@ export let chris = {
             },
             config
         );
-        for (let i = 0; i < selection.inputs.length; i++) {
-            if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
+        if (type != 'number') {
+            for (let i = 0; i < selection.inputs.length; i++) {
+                if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
+            }
         }
         return selection;
     },
