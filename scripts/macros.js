@@ -130,6 +130,7 @@ import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
 import {potionOfPoison} from './macros/items/potionOfPoison.js';
 import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
+import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rage} from './macros/classFeatures/barbarian/rage.js';
@@ -396,6 +397,7 @@ export let macros = {
     'potionOfPoison': potionOfPoison,
     'potionOfVitality': potionOfVitality,
     'preserveLife': preserveLife,
+    'primalCompanion': primalCompanion,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
     'radiantSoul': radiantSoul,
     'rage': rage,
