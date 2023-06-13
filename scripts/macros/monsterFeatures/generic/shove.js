@@ -4,6 +4,10 @@ export async function shove({speaker, actor, token, character, item, args, scope
     let skipCheck = false;
     let targetActor = workflow.targets.first().actor;
     if (workflow.actor.uuid === targetActor.uuid) return;
+    if ((chris.getSize(targetActor)) > (chris.getSize(actor) + 1)) {
+        ui.notifications.info('Target is too big!');
+        return;
+    }
     let effect = chris.findEffect(targetActor, 'Prone');
     if (effect) skipCheck = true;
     if (!skipCheck) {
