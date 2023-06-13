@@ -130,6 +130,7 @@ import {potionOfMaximumPower} from './macros/items/potionOfMaximumPower.js';
 import {potionOfPoison} from './macros/items/potionOfPoison.js';
 import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
+import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rage} from './macros/classFeatures/barbarian/rage.js';
@@ -178,6 +179,7 @@ import {summonUndead} from './macros/spells/summonUndead.js';
 import {summon} from './macros/generic/summon.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
+import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
@@ -397,6 +399,7 @@ export let macros = {
     'potionOfPoison': potionOfPoison,
     'potionOfVitality': potionOfVitality,
     'preserveLife': preserveLife,
+    'primalCompanion': primalCompanion,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
     'radiantSoul': radiantSoul,
     'rage': rage,
@@ -436,6 +439,7 @@ export let macros = {
     'telekentic': telekinetic,
     'templateTrigger': templateTrigger,
     'tentacleOfTheDeeps': tentacleOfTheDeeps,
+    'thornWhip': thornWhip,
     'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'turnUndead': turnUndead,

@@ -1,3 +1,10 @@
+# 0.5.4 Release:
+## New Content:
+- Beast Master Ranger: Primal Companion (Thanks Autumn)
+- Thorn Whip (Thanks Autumn)
+## Bug Fixes:
+- Warding Bond
+  
 # 0.5.2 Release:
 ## New Content:
 - Magic Missile
