@@ -97,6 +97,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Summon Shadowspawn  
 - Summon Undead  
 - Tasha's Caustic Brew  
+- Thorn Whip  
 - Tidal Wave  
 - Toll the Dead  
 - Vampiric Touch  
@@ -214,6 +215,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Channel Divinity: Peerless Athlete  
 - Aura of Alacrity  
 ### Ranger:  
+#### Beast Master:  
+- Primal Companion  
 #### Drakewarden:  
 - Drake Companion: Summon  
 #### Fey Wanderer:  

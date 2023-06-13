@@ -7,7 +7,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dismiss Warding Bond');
     let targetToken = workflow.targets.first();
-    featureData.name = 'Dismis Warding Bond: ' + targetToken.actor.name;
+    featureData.name = 'Dismiss Warding Bond: ' + targetToken.actor.name;
     let effectData = {
         'label': featureData.name,
         'icon': workflow.item.img,
