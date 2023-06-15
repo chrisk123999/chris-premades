@@ -3,10 +3,9 @@ import {queue} from '../../../queue.js';
 export async function undeadFortitude(targetToken, {workflow, ditem}) {
     if (ditem.newHP != 0 || ditem.oldHP === 0) return;
     let targetActor = targetToken.actor;
-    if (!targetActor.flags['chris-premades']?.feature?.undeadFortitude) return;
-    if (workflow.isCritical || chris.checkTrait(targetActor, 'di', 'healing') || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'none')) return;
     let effect = chris.findEffect(targetActor, 'Undead Fortitude');
     if (!effect) return;
+    if (workflow.isCritical || chris.checkTrait(targetActor, 'di', 'healing') || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'none')) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let queueSetup = await queue.setup(workflow.uuid, 'undeadFortitude', 389);
@@ -14,6 +13,7 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     let featureData = duplicate(originItem.toObject());
     let damageDealt = ditem.appliedDamage;
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
+    delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {parent: targetActor});
     let options = {
         'showFullCard': false,
@@ -22,11 +22,7 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
+        'consumeSlot': false
     };
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (featureWorkflow.failedSaves.size === 1) {
