@@ -575,4 +575,19 @@ export function registerSettings() {
         'type': Boolean,
         'default': true
     });
+    game.settings.register(moduleName, 'Strength of the Grave', {
+        'name': 'Strength of the Grave Automation',
+        'hint': 'Enabling this allows the automation of the Strength of the Grave feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.damageApplied', macros.strengthOfTheGrave);
+            } else {
+                Hooks.off('midi-qol.damageApplied', macros.strengthOfTheGrave);
+            }
+        }
+    });
 }

@@ -163,6 +163,7 @@ import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
+import {strengthOfTheGrave} from './macros/classFeatures/sorcerer/shadowMagic/strengthOfTheGrave.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
@@ -422,6 +423,7 @@ export let macros = {
     'stillnessOfMind': stillnessOfMind,
     'stormSphere': stormSphere,
     'stormgirdle': stormgirdle,
+    'strengthOfTheGrave': strengthOfTheGrave,
     'summon': summon,
     'summonAberration': summonAberration,
     'summonBeast': summonBeast,

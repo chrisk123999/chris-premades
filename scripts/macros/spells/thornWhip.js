@@ -1,5 +1,4 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
 export async function thornWhip({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     let targetToken = workflow.targets.first();
@@ -8,9 +7,9 @@ export async function thornWhip({speaker, actor, token, character, item, args, s
         return;
     }
     let distance = chris.getDistance(workflow.token, targetToken);
-    let selection = -10;
+    let selection = await chris.dialog('How far do you pull the target?', [['0 ft.', false], ['5 ft.', -5], ['10 ft.', -10]]);
+    if (!selection) return;
     if (distance <= 5) {
-        queue.remove(workflow.item.uuid);
         return;
     } else if (distance > 5 && distance <= 10) {
         selection = -5;
@@ -24,7 +23,6 @@ export async function thornWhip({speaker, actor, token, character, item, args, s
         ray = new Ray(workflow.token.center, targetToken.center);
         if (ray.distance === 0) {
             ui.notifications.info('Target is unable to be moved!');
-            queue.remove(workflow.item.uuid);
             return;
         }
         newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
@@ -33,7 +31,6 @@ export async function thornWhip({speaker, actor, token, character, item, args, s
             selection -= 5;
             if (selection === 0) {
                 ui.notifications.info('Target is unable to be moved!');
-                queue.remove(workflow.item.uuid);
                 return;
             }
         }
