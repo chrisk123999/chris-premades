@@ -22,6 +22,7 @@ import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
+import {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
 import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
@@ -313,6 +314,7 @@ export let macros = {
     'bladeFlourish': bladeFlourish,
     'blessedStrikes': blessedStrikes,
     'blessingOfTheForge': blessingOfTheForge,
+    'blessingOfTheRavenQueen': blessingOfTheRavenQueen,
     'blight': blight,
     'blink': blink,
     'bloodSpear': bloodSpear,

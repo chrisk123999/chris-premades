@@ -195,6 +195,9 @@ export function setConfig() {
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
             ],
+            'Blessing of the Raven Queen': [
+                'Blessing of the Raven Queen (Resistance)'
+            ],
             'Drake Companion: Summon': [
                 'Bond of Fang and Scale: Acid Resistance',
                 'Bond of Fang and Scale: Cold Resistance',
