@@ -231,6 +231,8 @@ Additional support and feature requests can be made on my Discord server: https:
 ### Sorcerer:  
 #### Divine Soul:    
 - Favored by the Gods  
+#### Shadow Magic:  
+- Strength of the Grave  
 ### Warlock:  
 - Agonizing Blast  
 - Devil's Sight  

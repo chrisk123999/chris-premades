@@ -24,6 +24,8 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',
@@ -31,6 +33,9 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
         }
     };
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+    await originItem.update({
+        'system.uses.value': originItem.system.uses.value -1
+    });
     if (featureWorkflow.failedSaves.size === 1) {
         queue.remove(workflow.uuid);
         return;

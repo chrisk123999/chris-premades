@@ -22,6 +22,8 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false
     };
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);

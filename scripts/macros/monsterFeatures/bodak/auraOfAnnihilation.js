@@ -31,6 +31,8 @@ export async function auraOfAnnihilation(token, origin) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',

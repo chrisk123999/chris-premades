@@ -56,6 +56,8 @@ export async function grimHarvest({speaker, actor, token, character, item, args,
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',

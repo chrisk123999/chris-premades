@@ -1,3 +1,18 @@
+# 0.5.5 Release:
+## New Content:
+- Shadow Magic Sorcerer: Strength of the Grave (Thanks Autumn)
+## Bug Fixes:
+- Cleave
+- Deadly Leap
+- Goading Attack
+- Grim Harvest
+- Reaper
+- Santuary
+- Storm Sphere
+- Thorn Whip
+- Undead Fortitude
+- Zone of Truth
+  
 # 0.5.4 Release:
 ## New Content:
 - Beast Master Ranger: Primal Companion (Thanks Autumn)

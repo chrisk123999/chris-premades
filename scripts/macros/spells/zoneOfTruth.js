@@ -74,6 +74,8 @@ async function inZone(token, template) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',

@@ -111,7 +111,7 @@ async function boltItem({speaker, actor, token, character, item, args, scope, wo
     workflow.token.document.x = savedX;
     workflow.token.document.y = savedY;
     if (!flag) workflow.actor.flags['midi-qol'].ignoreNearbyFoes = 0;
-    new Sequence().effect().atLocation(template.object).stretchTo(targetToken).file('jb2a.chain_lightning.primary.blue.60ft').play();
+    new Sequence().effect().atLocation(template.object).stretchTo(targetToken).file('jb2a.chain_lightning.primary.blue').play();
 }
 async function boltAttackItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -135,7 +135,7 @@ async function turnStart(actor, effect) {
     if (!template) return;
     let targetToken = game.canvas.tokens.get(previousTurnId);
     if (!chris.tokenInTemplate(targetToken, template)) return;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Turn', false);
     if (!featureData) return;
     let stormSphere = effect.flags['chris-premades']?.spell?.stormSphere;
     if (!stormSphere) return;

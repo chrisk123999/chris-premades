@@ -231,7 +231,8 @@ export function setConfig() {
                 'Starry Form: Dragon'
             ],
             'Tentacle of the Deeps: Summon': [
-                'Tentacle of the Deeps: Move'
+                'Tentacle of the Deeps: Move',
+                'Tentacle of the Deeps: Attack'
             ]
         },
         'restrictedItems': {
