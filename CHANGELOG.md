@@ -1,4 +1,4 @@
-# 0.5.5 Release:
+# 0.5.6 Release:
 ## New Content:
 - Shadow Magic Sorcerer: Strength of the Grave (Thanks Autumn)
 ## Bug Fixes:
