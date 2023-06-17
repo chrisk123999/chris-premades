@@ -7,7 +7,7 @@
 - Goading Attack
 - Grim Harvest
 - Reaper
-- Santuary
+- Sanctuary
 - Storm Sphere
 - Thorn Whip
 - Undead Fortitude
