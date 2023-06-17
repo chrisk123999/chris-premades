@@ -226,7 +226,6 @@ async function pushingAttack({speaker, actor, token, character, item, args, scop
             ray = new Ray(workflow.token.center, targetToken.center);
             if (ray.distance === 0) {
                 ui.notifications.info('Target is unable to be moved!');
-                queue.remove(workflow.item.uuid);
                 return;
             }
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));

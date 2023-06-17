@@ -22,6 +22,7 @@ import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
+import {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
 import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
@@ -163,6 +164,7 @@ import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
+import {strengthOfTheGrave} from './macros/classFeatures/sorcerer/shadowMagic/strengthOfTheGrave.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
@@ -312,6 +314,7 @@ export let macros = {
     'bladeFlourish': bladeFlourish,
     'blessedStrikes': blessedStrikes,
     'blessingOfTheForge': blessingOfTheForge,
+    'blessingOfTheRavenQueen': blessingOfTheRavenQueen,
     'blight': blight,
     'blink': blink,
     'bloodSpear': bloodSpear,
@@ -422,6 +425,7 @@ export let macros = {
     'stillnessOfMind': stillnessOfMind,
     'stormSphere': stormSphere,
     'stormgirdle': stormgirdle,
+    'strengthOfTheGrave': strengthOfTheGrave,
     'summon': summon,
     'summonAberration': summonAberration,
     'summonBeast': summonBeast,
