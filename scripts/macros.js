@@ -137,6 +137,7 @@ import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.
 import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+import {relentlessEndurance} from './macros/raceFeatures/orc/relentlessEndurance.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
 import {repellingBlast} from './macros/classFeatures/warlock/invocations/repellingBlast.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
@@ -407,6 +408,7 @@ export let macros = {
     'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,
     'reaper': reaper,
+    'relentlessEndurance': relentlessEndurance,
     'removeTemplate': removeTemplate,
     'repellingBlast': repellingBlast,
     'ringOfSpellStoring': ringOfSpellStoring,

@@ -590,4 +590,19 @@ export function registerSettings() {
             }
         }
     });
+    game.settings.register(moduleName, 'Relentless Endurance', {
+        'name': 'Relentless Endurance Automation',
+        'hint': 'Enabling this allows the automation of the Relentless Endurance feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': true,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.damageApplied', macros.relentlessEndurance);
+            } else {
+                Hooks.off('midi-qol.damageApplied', macros.relentlessEndurance);
+            }
+        }
+    });
 }

@@ -8,7 +8,7 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
     if (workflow.isCritical || chris.checkTrait(tokenActor, 'di', 'healing') || chris.totalDamageType(tokenActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(tokenActor, ditem.damageDetail[0], 'none')) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    if (originItem.system.uses === 0) return;
+    if (originItem.system.uses.value === 0) return;
     let selection = await chris.dialog('Use Strength of the Grave?', [['Yes', true], ['No', false]]);
     if (!selection || selection === false) return;
     let queueSetup = await queue.setup(workflow.uuid, 'strengthOfTheGrave', 389);

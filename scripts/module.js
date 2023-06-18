@@ -138,6 +138,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
     if (game.settings.get('chris-premades', 'Attack Listener')) Hooks.on('midi-qol.preAttackRoll', flanking);
     if (game.settings.get('chris-premades', 'Strength of the Grave')) Hooks.on('midi-qol.damageApplied', macros.strengthOfTheGrave);
+    if (game.settings.get('chris-premades', 'Relentless Endurance')) Hooks.on('midi-qol.damageApplied', macros.relentlessEndurance);
 });
 globalThis['chrisPremades'] = {
     helpers,
