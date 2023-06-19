@@ -1,7 +1,8 @@
 # 0.5.7 Release:
 ## New Content:
 - Spell: Moonbeam
-- Shadar-kai: Blessing of the Raven Queen
+- Shadar-kai: Blessing of the Raven Queen (Thanks Autumn)
+- Orc: Relentless Endurance (Thanks Autumn)
 ## Bug Fixes:
 - Vortex Warp
   
