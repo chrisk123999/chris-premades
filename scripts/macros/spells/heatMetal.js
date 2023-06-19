@@ -108,7 +108,7 @@ async function pulseItem({speaker, actor, token, character, item, args, scope, w
         ]
     ];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Damage');
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -160,7 +160,7 @@ async function dialogue(token, actor, effect, origin) {
     let spellDC = effect.flags['chris-premades']?.spell?.heatMetal?.spellDC;
     if (!spellDC) return;
     featureData.system.save.dc = spellDC;
-    let spell = new CONFIG.Item.documentClass(featureData, {parent: origin.actor});
+    let spell = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

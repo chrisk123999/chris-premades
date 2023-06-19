@@ -49,7 +49,7 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
     };
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: sourceToken.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': sourceToken.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {

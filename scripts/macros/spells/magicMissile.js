@@ -46,7 +46,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
             ]
         ];
     }
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

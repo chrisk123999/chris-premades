@@ -19,7 +19,7 @@ async function turnStart(token, actor) {
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {
         let featureData2 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Lycan Regeneration', false);
         featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Lycan Regeneration');
-        let feature2 = new CONFIG.Item.documentClass(featureData2, {parent: workflow.actor});
+        let feature2 = new CONFIG.Item.documentClass(featureData2, {'parent': workflow.actor});
         if (levels >= 15) {
             let effectData2 = {
                 'label': 'Condition Advantage',
@@ -49,7 +49,7 @@ async function turnStart(token, actor) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Bloodlust', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bloodlust');
     if (!featureData) return;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: token.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
 async function transformation({speaker, actor, token, character, item, args, scope, workflow}) {

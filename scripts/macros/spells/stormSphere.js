@@ -80,7 +80,7 @@ async function boltItem({speaker, actor, token, character, item, args, scope, wo
             }
         }
     };
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -146,7 +146,7 @@ async function turnStart(actor, effect) {
             'bludgeoning'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

@@ -78,7 +78,7 @@ async function goadingAttack({speaker, actor, token, character, item, args, scop
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -137,7 +137,7 @@ async function lungingAttack({speaker, actor, token, character, item, args, scop
     if (!selection) return;
     let weaponData = duplicate(workflow.actor.items.get(selection).toObject());
     weaponData.system.range.value += 5;
-    let weapon = new CONFIG.Item.documentClass(weaponData, {parent: workflow.actor});
+    let weapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
     let options = {
         'targetUuids': [workflow.targets.first().document.uuid],
         'workflowOptions': {
@@ -161,7 +161,7 @@ async function menacingAttack({speaker, actor, token, character, item, args, sco
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -203,7 +203,7 @@ async function pushingAttack({speaker, actor, token, character, item, args, scop
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let targetToken = workflow.targets.first();
         let options = {
             'showFullCard': false,
@@ -313,7 +313,7 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args,
                 workflow.defaultDamageType
             ]
         ];
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let options = {
             'showFullCard': false,
             'createWorkflow': true,
@@ -350,7 +350,7 @@ async function tripAttack({speaker, actor, token, character, item, args, scope, 
         let originItem = await fromUuid(effect.origin);
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let targetToken = workflow.targets.first();
         let options = {
             'showFullCard': false,

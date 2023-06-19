@@ -10,7 +10,7 @@ export async function rottingClaw({speaker, actor, token, character, item, args,
     let spellDC = workflow.item.flags['chris-premades']?.feature?.rottingClaw?.dc;
     if (!spellDC) return;
     featureData.system.save.dc = spellDC;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

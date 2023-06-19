@@ -16,7 +16,7 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
     let featureData = duplicate(originItem.toObject());
     let damageDealt = ditem.appliedDamage;
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: tokenActor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': tokenActor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

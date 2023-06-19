@@ -5,6 +5,6 @@ export async function claws({speaker, actor, token, character, item, args, scope
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Claws (Yugoloth Only) - Teleport', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Claws (Yugoloth Only) - Teleport');
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     await feature.use();
 }

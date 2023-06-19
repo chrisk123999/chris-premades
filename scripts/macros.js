@@ -118,6 +118,7 @@ import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.j
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
+import {moonbeam} from './macros/spells/moonBeam.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
@@ -289,6 +290,9 @@ async function templateTrigger(macroName, token, trigger) {
         case 'dawn':
             await dawn.trigger(token, trigger);
             break;
+        case 'moonbeam':
+            await moonbeam.trigger(token, trigger);
+            break;
     }
 }
 export let macros = {
@@ -386,6 +390,7 @@ export let macros = {
     'mastersAmulet': mastersAmulet,
     'mirrorImage': mirrorImage,
     'monster': monster,
+    'moonbeam': moonbeam,
     'muddledMind': muddledMind,
     'mutagencraft': mutagencraft,
     'oilOfSharpness': oilOfSharpness,

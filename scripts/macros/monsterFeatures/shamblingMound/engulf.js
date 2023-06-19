@@ -26,6 +26,6 @@ export async function engulf(origin, token, actor) {
             'autoFastDamage': true
         }
     };
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: origin.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }
