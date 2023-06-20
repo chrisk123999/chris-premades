@@ -114,7 +114,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"'
             break;
     }
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

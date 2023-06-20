@@ -50,7 +50,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         }
     }
     itemData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
-    let areaFeature = new CONFIG.Item.documentClass(itemData, {parent: workflow.actor});
+    let areaFeature = new CONFIG.Item.documentClass(itemData, {'parent': workflow.actor});
     let newTargets = chris.findNearby(targetToken, 10, null);
     let newTargetUuids =[];
     new Sequence().effect().atLocation(workflow.token).stretchTo(targetToken).file('jb2a.chain_lightning.secondary.blue').play();

@@ -14,7 +14,7 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     let damageDealt = ditem.appliedDamage;
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
     delete featureData._id;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: targetActor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

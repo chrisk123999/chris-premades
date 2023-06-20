@@ -45,7 +45,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
             'none'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: targetToken.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

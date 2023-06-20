@@ -44,7 +44,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'autoFastDamage': true
             }
         };
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: targetActor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
         let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
         if (featureWorkflow.failedSaves.size === 0) {
             stacks -= 1;
@@ -100,7 +100,7 @@ async function turnEnd(token, actor, effect, origin) {
         'consumeResource': false,
         'consumeSlot': false,
     };
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (featureWorkflow.failedSaves.size === 0) {
         stacks -= 1;

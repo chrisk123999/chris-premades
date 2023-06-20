@@ -66,7 +66,7 @@ async function inZone(token, template) {
         'scaling': 'flat'
     }
     spellObject.system.preparation.mode = 'atwill';
-    let spell = new CONFIG.Item.documentClass(spellObject, {parent: originItem.actor});
+    let spell = new CONFIG.Item.documentClass(spellObject, {'parent': originItem.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

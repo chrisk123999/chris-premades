@@ -56,6 +56,6 @@ export async function expertDivination({speaker, actor, token, character, item, 
     let originItem = await fromUuid(effect.origin);
     let tempItem = duplicate(originItem.toObject());
     tempItem.system.description.value = tempItem.system.description.value + '\n<hr><p>' + messageString + '</p>'
-    let feature = new CONFIG.Item.documentClass(tempItem, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(tempItem, {'parent': workflow.actor});
     await feature.use();
 }

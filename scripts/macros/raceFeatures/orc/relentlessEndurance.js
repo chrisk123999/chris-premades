@@ -12,7 +12,7 @@ export async function relentlessEndurance(token, {item, workflow, ditem}) {
     if (!originItem) return;
     if (originItem.system.uses.value === 0) return;
     let selection = await chris.dialog('Use Relentless Endurance?', [['Yes', true], ['No', false]]);
-    if (!selection || selection === false) return;
+    if (!selection) return;
     let queueSetup = await queue.setup(workflow.uuid, 'relentlessEndurance', 389);
     if (!queueSetup) return;
     await originItem.update({

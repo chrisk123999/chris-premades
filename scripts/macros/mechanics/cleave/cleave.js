@@ -71,7 +71,7 @@ export async function cleave(workflow) {
             'cleave': true
         }
     };
-    let weaponAttack = new CONFIG.Item.documentClass(weaponData, {parent: workflow.actor});
+    let weaponAttack = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

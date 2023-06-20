@@ -48,7 +48,7 @@ export async function grimHarvest({speaker, actor, token, character, item, args,
             'healing'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

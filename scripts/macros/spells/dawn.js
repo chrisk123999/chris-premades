@@ -66,7 +66,7 @@ async function trigger(token, trigger) {
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dawn - End Turn');
     featureData.system.save.dc = trigger.saveDC;
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: originItem.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
@@ -74,6 +74,8 @@ async function trigger(token, trigger) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
         'consumeSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',

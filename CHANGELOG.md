@@ -1,3 +1,15 @@
+# 0.5.8 Release:
+## Bug Fixes:
+- Moonbeam
+  
+# 0.5.7 Release:
+## New Content:
+- Spell: Moonbeam
+- Shadar-kai: Blessing of the Raven Queen (Thanks Autumn)
+- Orc: Relentless Endurance (Thanks Autumn)
+## Bug Fixes:
+- Vortex Warp
+  
 # 0.5.6 Release:
 ## New Content:
 - Shadow Magic Sorcerer: Strength of the Grave (Thanks Autumn)

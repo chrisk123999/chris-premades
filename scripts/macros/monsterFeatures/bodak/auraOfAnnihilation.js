@@ -23,7 +23,7 @@ export async function auraOfAnnihilation(token, origin) {
         'units': 'inst',
         'value': ''
     };
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: token.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,

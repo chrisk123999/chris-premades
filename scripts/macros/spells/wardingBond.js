@@ -122,7 +122,7 @@ async function onHit(workflow, targetToken) {
             'none'
         ]
     ];
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: targetToken.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
     let options = {

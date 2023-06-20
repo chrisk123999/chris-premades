@@ -5,6 +5,7 @@ import {search} from './search.js';
 import {shove} from './shove.js';
 import {stealthCheck} from './stealth.js';
 import {swarmDamage} from './swarm.js';
+import {prone} from './prone.js';
 export let generic = {
     'autoGrapple': autoGrapple,
     'swarmDamage': swarmDamage,
@@ -12,5 +13,6 @@ export let generic = {
     'stealthCheck': stealthCheck,
     'search': search,
     'grapple': grapple,
-    'shove': shove
+    'shove': shove,
+    'prone': prone
 }

@@ -131,7 +131,7 @@ async function dismiss({speaker, actor, token, character, item, args, scope, wor
             }
         }
     };
-    let feature = new CONFIG.Item.documentClass(featureData, {parent: targetToken.actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     await feature.use();
     await chris.removeEffect(effect);
     let effect2 = chris.findEffect(targetToken.actor, 'Holy Weapon');

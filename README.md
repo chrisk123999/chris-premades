@@ -75,6 +75,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Mind Sliver  
 - Mirror Image  
 - Misty Step  
+- Moonbeam  
 - Pass Without Trace  
 - Protection from Evil and Good  
 - Raulothim's Psychic Lance  
@@ -309,6 +310,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Hungry Jaws  
 ### Plasmoid:  
 - Natural Resilience  
+### Shadar-kai:  
+- Blessing of the Raven Queen  
 ### Shifter:  
 #### Wildhunt:  
 - Shift  

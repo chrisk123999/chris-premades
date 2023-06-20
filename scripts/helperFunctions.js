@@ -460,7 +460,7 @@ export let chris = {
         }
         return sizeValue;
     },
-    'aimCrosshair': async function _aimCrosshair(token, maxRange, icon) {
+    'aimCrosshair': async function _aimCrosshair(token, maxRange, icon, interval, size) {
         let distance = 0;
         let ray;
         let checkDistance = async (crosshairs) => {
@@ -481,10 +481,10 @@ export let chris = {
             'show': checkDistance
         }
         let options = {
-            'size': token.document.width,
-            'icon': token.document.texture.src,
+            'size': size,
+            'icon': icon,
             'label': '0 ft.',
-            'interval': -1
+            'interval': interval
         }
         return await warpgate.crosshairs.show(options, callbacks);
     }

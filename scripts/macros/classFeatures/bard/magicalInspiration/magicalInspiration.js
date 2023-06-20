@@ -37,7 +37,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
                 'thunder'
             ]
         ];
-        let feature = new CONFIG.Item.documentClass(featureData, {parent: workflow.actor});
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let newTargets = await chris.findNearby(workflow.targets.first(), 5, 'ally');
         newTargets.push(workflow.targets.first());
         let addedTargetUuids = [];

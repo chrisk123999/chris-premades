@@ -46,8 +46,8 @@ export async function deadlyLeap({speaker, actor, token, character, item, args, 
     let areaFeatureData2 = duplicate(areaFeatureData);
     areaFeatureData2.name = workflow.item.name + ': Strength';
     areaFeatureData2.system.save.ability = 'str';
-    let areaFeature = new CONFIG.Item.documentClass(areaFeatureData, {parent: workflow.actor});
-    let areaFeature2 = new CONFIG.Item.documentClass(areaFeatureData2, {parent: workflow.actor});
+    let areaFeature = new CONFIG.Item.documentClass(areaFeatureData, {'parent': workflow.actor});
+    let areaFeature2 = new CONFIG.Item.documentClass(areaFeatureData2, {'parent': workflow.actor});
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
