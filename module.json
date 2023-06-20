@@ -100,14 +100,6 @@
 		}
 	},
 	{
-		"id": "itemacro",
-		"type": "module",
-		"manifest": "https://github.com/Kekilla0/Item-Macro/releases/latest/download/module.json",
-		"compatibility": {
-			"verified": "1.8.0"
-		}
-	},
-	{
 		"id": "compendium-folders",
 		"type": "module",
 		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
@@ -177,6 +169,14 @@
 		"manifest": "https://github.com/krbz999/visual-active-effects/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "10.0.14"
+		}
+	},
+	{
+		"id": "itemacro",
+		"type": "module",
+		"manifest": "https://github.com/Kekilla0/Item-Macro/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.8.0"
 		}
 	}]
   },

@@ -1,3 +1,7 @@
+# 0.5.10 Release:
+## Update Notes:
+- Moved Item Macro from a required dependency to an optional dependency.
+  
 # 0.5.9 Release:
 ## New Content:
 - Spells: Destructive Wave, Sapping Sting, and Sickening Radiance
@@ -40,8 +44,7 @@
   
 # 0.5.2 Release:
 ## New Content:
-- Magic Missile
-- Scorching Ray
+- Spells: Magic Missile and Scorching Ray
   
 # 0.5.1 Release:
 ## Update Notes:
