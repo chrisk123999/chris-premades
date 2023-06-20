@@ -118,7 +118,7 @@ import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.j
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
-import {moonbeam} from './macros/spells/moonBeam.js';
+import {moonbeam} from './macros/spells/moonbeam.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';

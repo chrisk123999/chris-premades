@@ -1,3 +1,7 @@
+# 0.5.8 Release:
+## Bug Fixes:
+- Moonbeam
+  
 # 0.5.7 Release:
 ## New Content:
 - Spell: Moonbeam
