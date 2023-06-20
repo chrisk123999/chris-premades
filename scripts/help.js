@@ -28,14 +28,15 @@ let names = {
     'warpgate': 'Warpgate'
 }
 let optionalModules = [
-    'about-time',
     'ATL',
+    'about-time',
     'custom-character-sheet-sections',
     'ddb-importer',
     'foundryvtt-simple-calendar',
     'fxmaster',
-    'jb2a_patreon',
+    'itemacro',
     'jb2a_dnd5e',
+    'jb2a_patreon',
     'quick-insert',
     'smalltime',
     'tidy5e-sheet',
