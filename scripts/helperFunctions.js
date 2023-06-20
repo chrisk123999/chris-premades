@@ -334,6 +334,9 @@ export let chris = {
     'tokenTemplates': function _tokenTemplates(token) {
         return game.modules.get('templatemacro').api.findContainers(token);
     },
+    'findGrids': function _findGrids(previousCoords, coords, templateDoc) {
+        return game.modules.get('templatemacro').api.findGrids(previousCoords, coords, templateDoc);
+    },
     'inCombat': function _inCombat() {
         return !(game.combat === null || game.combat === undefined || game.combat?.started === false);
     },

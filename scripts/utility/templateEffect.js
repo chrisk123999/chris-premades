@@ -1,9 +1,16 @@
 import {chris} from '../helperFunctions.js';
 import {macros} from '../macros.js';
-function updateToken(token, changes) {
+function updateToken(token, changes, context, userId) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
-    let templates = chris.tokenTemplates(token);
+    let coords = {'x': token.x, 'y': token.y};
+    let previousCoords = foundry.utils.getProperty(context, 'templatemacro.coords.previous');
+    let templates = token.parent.templates.reduce((acc, templateDoc) => {
+        let cells = chris.findGrids(previousCoords, coords, templateDoc);
+        if (!cells.length) return acc;
+        acc.push(templateDoc.id);
+        return acc;
+    }, []);
     if (templates.length === 0) return;
     let allTriggers = {};
     for (let i of templates) {

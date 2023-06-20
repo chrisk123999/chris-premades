@@ -1,3 +1,9 @@
+# 0.5.9 Release:
+## New Content:
+- Spells: Destructive Wave, Sapping Sting, and Sickening Radiance
+## Bug Fixes:
+- Cloudkill
+  
 # 0.5.8 Release:
 ## Bug Fixes:
 - Moonbeam

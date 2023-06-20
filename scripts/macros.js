@@ -154,6 +154,7 @@ import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
+import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {slasher} from './macros/feats/slasher.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
@@ -294,6 +295,12 @@ async function templateTrigger(macroName, token, trigger) {
         case 'moonbeam':
             await moonbeam.trigger(token, trigger);
             break;
+        case 'cloudkill':
+            await cloudkill.trigger(token, trigger);
+            break;
+        case 'sickeningRadiance':
+            await sickeningRadiance.trigger(token, trigger);
+            break;
     }
 }
 export let macros = {
@@ -424,6 +431,7 @@ export let macros = {
     'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,
     'shockingGrasp': shockingGrasp,
+    'sickeningRadiance': sickeningRadiance,
     'slasher': slasher,
     'sneakAttack': sneakAttack,
     'spikeGrowth': spikeGrowth,

@@ -81,8 +81,10 @@ Additional support and feature requests can be made on my Discord server: https:
 - Raulothim's Psychic Lance  
 - Ray of Enfeeblement  
 - Santuary  
+- Sapping Sting  
 - Scorching Ray  
 - Shadow Blade  
+- Sickening Radiance  
 - Spike Growth  
 - Spirit Guardians  
 - Spirit Shroud  
