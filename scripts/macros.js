@@ -51,6 +51,7 @@ import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBle
 import {darkness} from './macros/spells/darkness.js';
 import {dawn} from './macros/spells/dawn.js';
 import {deathWard} from './macros/spells/deathWard.js';
+import {destructiveWave} from './macros/spells/destructiveWave.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
 import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
@@ -338,6 +339,7 @@ export let macros = {
     'darkness': darkness,
     'dawn': dawn,
     'deathWard': deathWard,
+    'destructiveWave': destructiveWave,
     'destructiveWrath': destructiveWrath,
     'detectThoughts': detectThoughts,
     'divineFury': divineFury,
