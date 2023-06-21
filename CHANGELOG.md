@@ -1,3 +1,8 @@
+# 0.5.11 Release:
+## Update Notes:
+- Reorganized module settings into menus.
+- Reversed Magic Missile homebrew setting.
+  
 # 0.5.10 Release:
 ## Update Notes:
 - Moved Item Macro from a required dependency to an optional dependency.

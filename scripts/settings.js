@@ -646,7 +646,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',
-        hint: 'General settings.',
+        hint: 'General settings for most automations.',
         icon: 'fas fa-gears',
         type: chrisSettingsGeneral,
         restricted: true
@@ -654,7 +654,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Compendiums', {
         name: 'Compendium',
         label: 'Compendium',
-        hint: 'Compendium settings.',
+        hint: 'Compendium settings item replacement and macros.',
         icon: 'fas fa-atlas',
         type: chrisSettingsCompendiums,
         restricted: true
@@ -662,7 +662,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Mechanics', {
         name: 'Mechanics',
         label: 'Mechanics',
-        hint: 'Mechanic settings.',
+        hint: 'Settings related to game mechanics.',
         icon: 'fas fa-dice',
         type: chrisSettingsMechanics,
         restricted: true
@@ -670,7 +670,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Spells', {
         name: 'Spells',
         label: 'Spells',
-        hint: 'Spell settings.',
+        hint: 'Settings for specific spell automations.',
         icon: 'fas fa-wand-magic',
         type: chrisSettingsSpells,
         restricted: true
@@ -678,7 +678,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Feats', {
         name: 'Feats',
         label: 'Feats',
-        hint: 'Feat settings.',
+        hint: 'Settings for specific feat automations.',
         icon: 'fas fa-crystal-ball',
         type: chrisSettingsFeats,
         restricted: true
@@ -686,7 +686,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Class Features', {
         name: 'Class Features',
         label: 'Class Features',
-        hint: 'Class feature settings.',
+        hint: 'Settings for specific class features.',
         icon: 'fas fa-swords',
         type: chrisSettingsClassFeats,
         restricted: true
@@ -694,7 +694,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Race Features', {
         name: 'Race Features',
         label: 'Race Features',
-        hint: 'Race feature settings.',
+        hint: 'Settings for specific race features.',
         icon: 'fas fa-solid fa-nesting-dolls',
         type: chrisSettingsRaceFeats,
         restricted: true
@@ -702,7 +702,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Monster Features', {
         name: 'Monster Features',
         label: 'Monster Features',
-        hint: 'Monster feature settings.',
+        hint: 'Settings for specific monster features.',
         icon: 'fas fa-dragon',
         type: chrisSettingsMonsterFeats,
         restricted: true
@@ -710,7 +710,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Summons', {
         name: 'Summons',
         label: 'Summons',
-        hint: 'Summon settings.',
+        hint: 'Settings related to summons.',
         icon: 'fas fa-hand-holding-magic',
         type: chrisSettingsSummons,
         restricted: true
@@ -718,7 +718,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Homebrew', {
         name: 'Homebrew',
         label: 'Homebrew',
-        hint: 'Homebrew settings.',
+        hint: 'Optional settings for homebrew features.',
         icon: 'fas fa-cauldron',
         type: chrisSettingsHomewbrew,
         restricted: true
@@ -726,7 +726,7 @@ export function registerSettings() {
     game.settings.registerMenu(moduleName, 'Module Integration', {
         name: 'Module Integration',
         label: 'Module Integration',
-        hint: 'Module integration settings.',
+        hint: 'Settings for integrations with other modules.',
         icon: 'fas fa-puzzle-piece',
         type: chrisSettingsModule,
         restricted: true

@@ -175,7 +175,14 @@ export async function fixSettings() {
         }
         if (updateMidiSettings) await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
     }
-    if (changedSettings.length === 0) return;
+    if (changedSettings.length === 0) {
+        ChatMessage.create({
+            'speaker': {alias: name},
+            'whisper': [game.user.id],
+            'content': '<hr><b>Updated Settings:</b><br><hr>Nothing!'
+        });
+        return;
+    }
     let list = '';
     if (changedSettings.includes('IM-CharSheet')) {
         list += '- Item Macro: Character Sheet Hook: false<br>';
