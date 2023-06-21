@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
-import {addMenuSetting} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {rest} from './utility/rest.js';
@@ -10,7 +10,6 @@ import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
-let debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
 export function registerSettings() {
     game.settings.register(moduleName, 'Breaking Version Change', {
         'name': 'Breaking Version Change',
@@ -24,7 +23,7 @@ export function registerSettings() {
         'name': 'Show Names',
         'hint': 'Enabling this will show target names in the target selector dialog (Used for certain features and spells).',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': true
     });
@@ -33,7 +32,7 @@ export function registerSettings() {
         'name': 'Priority Queue',
         'hint': 'This setting allows macros from this module to have an on use priority order.  This prevents multiple pop-up dialogs from firing at the same time as well as applying damage modification changes in a certain order.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': true
     });
@@ -42,7 +41,7 @@ export function registerSettings() {
         'name': 'Movement Listener',
         'hint': 'This setting allows certain macros from this module to function on token movement.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -58,7 +57,7 @@ export function registerSettings() {
         'name': 'Template Listener',
         'hint': 'This setting allows certain macros from this module to function when tokens interact with templates.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -76,28 +75,28 @@ export function registerSettings() {
         'name': 'Keep Summon Actors Updated',
         'hint': 'This setting will keep actors from this module updated in the sidebar.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': async value => {
             if (value && game.user.isGM) await tashaSummon.setupFolder();
         }
     });
-    addMenuSetting('Tasha Actors', 'General');
+    addMenuSetting('Tasha Actors', 'Summons');
     game.settings.register(moduleName, 'Tasha Initiative', {
         'name': 'Minions use caster\'s initiative',
         'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s Cauldron Of Everything',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false
     });
-    addMenuSetting('Tasha Initiative', 'General');
+    addMenuSetting('Tasha Initiative', 'Summons');
     game.settings.register(moduleName, 'Effect Auras', {
         'name': 'Effect Auras',
-        'hint': 'This setting allows certain macros from this module to function.',
+        'hint': 'This setting allows certain macros from this module to apply effect auras.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -123,7 +122,7 @@ export function registerSettings() {
         'name': 'Active Effect Additions',
         'hint': 'This setting allows active effects to have additional properties.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': true,
         'onChange': value => {
@@ -139,7 +138,7 @@ export function registerSettings() {
         'name': 'Automatic VAE Descriptions',
         'hint': 'When enabled, this setting will automatically fill in VAE effect descriptions when possible.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -150,21 +149,21 @@ export function registerSettings() {
             }
         }
     });
-    addMenuSetting('Active Effect Additions', 'General');
+    addMenuSetting('Automatic VAE Descriptions', 'Module Integration');
     game.settings.register(moduleName, 'No NPC VAE Descriptions', {
         'name': 'No NPC VAE Descriptions',
         'hint': 'If enabled, automatic VAE descriptions will ignore effects created from NPCs.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false
     });
-    addMenuSetting('No NPC VAE Descriptions', 'General');
+    addMenuSetting('No NPC VAE Descriptions', 'Module Integration');
     game.settings.register(moduleName, 'VAE Temporary Item Buttons', {
         'name': 'VAE Temporary Item Buttons',
         'hint': 'When enabled, this setting will add a button to use temporary items via VAE.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -175,23 +174,19 @@ export function registerSettings() {
             }
         }
     });
-    addMenuSetting('VAE Temporary Item Buttons', 'General');
+    addMenuSetting('VAE Temporary Item Buttons', 'Module Integration');
     game.settings.register(moduleName, 'Condition Fixes', {
-        'name': 'Condition Fixes',
-        'hint': 'This setting removes the V10 changes to invisible and blinded.',
+        'name': 'Blinded and Invisibility Changes',
+        'hint': 'This setting restores the blinded and invisibility conditions to how they worked in version 9 of Foundry.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
-            if (value) {
-                removeDumbV10Effects();
-            } else {
-                debouncedReload();
-            }
+            if (value) removeDumbV10Effects();
         }
     });
-    addMenuSetting('Condition Fixes', 'General');
+    addMenuSetting('Condition Fixes', 'Mechanics');
     game.settings.register(moduleName, 'LastGM', {
         'name': 'LastGM',
         'hint': 'Last GM to join the game.',
@@ -203,7 +198,7 @@ export function registerSettings() {
         'name': 'Combat Listener',
         'hint': 'This setting allows certain macros from this module to function on combat changes.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -219,7 +214,7 @@ export function registerSettings() {
         'name': 'Short / Long Rest Listener',
         'hint': 'Enabling this allows the certain macros to function on short and long rests.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -243,43 +238,43 @@ export function registerSettings() {
         'name': 'Use Additional Compendiums',
         'hint': 'Should the item replacer check additional compendiums?',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false
     });
-    addMenuSetting('Use Additional Compendiums', 'General');
+    addMenuSetting('Use Additional Compendiums', 'Compendiums');
     game.settings.register(moduleName, 'Additional Compendiums', {
         'name': 'Additional Compendiums',
         'hint': 'This should be a comma seperated list of compendium keys.  Highest prioirity should be on the left.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': String,
         'default': 'midi-srd.Midi SRD Feats, midi-srd.Midi SRD Spells, midi-srd.Midi SRD Items, midi-qol.midiqol-sample-items'
     });
-    addMenuSetting('Additional Compendiums', 'General');
+    addMenuSetting('Additional Compendiums', 'Compendiums');
     game.settings.register(moduleName, 'Item Compendium', {
         'name': 'Personal Item Compendium',
         'hint': 'A compendium full of items to pick from (DDB items compendium by default).',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': String,
         'default': 'world.ddb-' + game.world.id + '-ddb-items'
     });
-    addMenuSetting('Item Compendium', 'General');
+    addMenuSetting('Item Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Spell Compendium', {
         'name': 'Personal Spell Compendium',
         'hint': 'A compendium full of spells to pick from (DDB spells compendium by default).',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': String,
         'default': 'world.ddb-' + game.world.id + '-ddb-spells'
     });
-    addMenuSetting('Spell Compendium', 'General');
+    addMenuSetting('Spell Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Condition Resistance', {
         'name': 'Condition Resistance Mechanic',
         'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -297,7 +292,7 @@ export function registerSettings() {
         'name': 'Condition Vulnerability Mechanic',
         'hint': 'Enabling this allows the automation condition vulnerability via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -315,7 +310,7 @@ export function registerSettings() {
         'name': 'On Hit Automation',
         'hint': 'Enabling this allows the automation for certain "On Hit" features.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -331,7 +326,7 @@ export function registerSettings() {
         'name': 'Armor of Agathys Automation',
         'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -347,7 +342,7 @@ export function registerSettings() {
         'name': 'Beacon of Hope Automation',
         'hint': 'Enabling this allows the automation of the Beacon of Hope spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -363,7 +358,7 @@ export function registerSettings() {
         'name': 'Darkness Spell Automation',
         'hint': 'Enabling this allows the automation of the Darkness spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -379,7 +374,7 @@ export function registerSettings() {
         'name': 'Fog Cloud Spell Automation',
         'hint': 'Enabling this allows the automation of the Fog Cloud spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -395,7 +390,7 @@ export function registerSettings() {
         'name': 'Death Ward Automation',
         'hint': 'Enabling this allows the automation of the Death Ward spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -411,7 +406,7 @@ export function registerSettings() {
         'name': 'Elemental Adept Automation',
         'hint': 'Enabling this allows the automation of the Elemental Adept feat via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -431,7 +426,7 @@ export function registerSettings() {
         'name': 'Mirror Image Automation',
         'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -447,7 +442,7 @@ export function registerSettings() {
         'name': 'Protection from Evil and Good Automation',
         'hint': 'Enabling this allows the automation of the Protection from Evil and Good spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -463,7 +458,7 @@ export function registerSettings() {
         'name': 'Sanctuary Automation',
         'hint': 'Enabling this allows the automation of the Sanctuary spell via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -479,7 +474,7 @@ export function registerSettings() {
         'name': 'Ranged Divine Smite',
         'hint': 'Enabling this will allow the Divine Smite feature to be used on ranged attacks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false
     });
@@ -488,7 +483,7 @@ export function registerSettings() {
         'name': 'Unarmed Strike Divine Smite',
         'hint': 'Enabling this will allow the Divine Smite feature to be used on unarmed Strikes.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false
     });
@@ -497,7 +492,7 @@ export function registerSettings() {
         'name': 'DMG Cleave Mechanic',
         'hint': 'Enabling this allows the automation of the cleave mechanic from the DMG workshop section via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -513,7 +508,7 @@ export function registerSettings() {
         'name': 'Shifter Wildhunt Automation',
         'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -529,7 +524,7 @@ export function registerSettings() {
         'name': 'Undead Fortitude Automation',
         'hint': 'Enabling this allows the automation of the Undead Fortitude feature via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -545,7 +540,7 @@ export function registerSettings() {
         'name': 'Exploding Heals',
         'hint': 'Enabling this allows the automation of the homebrew rule to have exploding dice for all healing rolls via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -561,7 +556,7 @@ export function registerSettings() {
         'name': 'Shield Guardian Automation',
         'hint': 'Enabling this allows the automation of the Shield Guardian\'s Bound feature via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -577,7 +572,7 @@ export function registerSettings() {
         'name': 'Warding Bond Automation',
         'hint': 'Enabling this allows the automation of the Warding Bond spell via the use of hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -595,7 +590,7 @@ export function registerSettings() {
         'name': 'Attack Listener',
         'hint': 'This setting is required for certain macros to help with removing flanking and canceling attacks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -611,16 +606,16 @@ export function registerSettings() {
         'name': 'Magic Missile Toggle',
         'hint': 'Enabling this has the Magic Missile spell roll the dice once for damage.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': true
     });
-    addMenuSetting('Magic Missile Toggle', 'Homewbrew');
+    addMenuSetting('Magic Missile Toggle', 'Homebrew');
     game.settings.register(moduleName, 'Strength of the Grave', {
         'name': 'Strength of the Grave Automation',
         'hint': 'Enabling this allows the automation of the Strength of the Grave feature via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -636,7 +631,7 @@ export function registerSettings() {
         'name': 'Relentless Endurance Automation',
         'hint': 'Enabling this allows the automation of the Relentless Endurance feature via the use of Midi-Qol hooks.',
         'scope': 'world',
-        'config': true,
+        'config': false,
         'type': Boolean,
         'default': false,
         'onChange': value => {
@@ -648,4 +643,100 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Relentless Endurance', 'Race Features');
+    game.settings.registerMenu(moduleName, 'General', {
+        name: 'General',
+        label: 'General',
+        hint: 'General settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsGeneral,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Compendiums', {
+        name: 'Compendium',
+        label: 'Compendium',
+        hint: 'Compendium settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsCompendiums,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Mechanics', {
+        name: 'Mechanics',
+        label: 'Mechanics',
+        hint: 'Mechanic settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsMechanics,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Spells', {
+        name: 'Spells',
+        label: 'Spells',
+        hint: 'Spell settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsSpells,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Feats', {
+        name: 'Feats',
+        label: 'Feats',
+        hint: 'Feat settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsFeats,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Class Features', {
+        name: 'Class Features',
+        label: 'Class Features',
+        hint: 'Class feature settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsClassFeats,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Race Features', {
+        name: 'Race Features',
+        label: 'Race Features',
+        hint: 'Race feature settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsRaceFeats,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Monster Features', {
+        name: 'Monster Features',
+        label: 'Monster Features',
+        hint: 'Monster feature settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsMonsterFeats,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Summons', {
+        name: 'Summons',
+        label: 'Summons',
+        hint: 'Summon settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsSummons,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Homebrew', {
+        name: 'Homebrew',
+        label: 'Homebrew',
+        hint: 'Homebrew settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsHomewbrew,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Module Integration', {
+        name: 'Module Integration',
+        label: 'Module Integration',
+        hint: 'Module integration settings.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsModule,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Troubleshooter', {
+        name: 'Troubleshooter',
+        label: 'Troubleshooter',
+        hint: 'Used to troubleshoot issues with this module.',
+        icon: 'fas fa-bars',
+        type: chrisSettingsTroubleshoot,
+        restricted: true
+    });
 }
