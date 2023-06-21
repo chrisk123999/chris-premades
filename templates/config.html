@@ -1,0 +1,45 @@
+<form class="categories flexcol" autocomplete="off">
+    <h2 class="border">{{this.title}}</h2>
+    {{#each this.settings}}
+    <div class="form-group">
+        <label>{{this.name}}</label>
+        <div class="form-fields">
+
+            {{#if this.isCheckbox}}
+            <input type="checkbox" name="{{this.id}}" data-dtype="Boolean" {{checked this.value}}/>
+
+            {{else if this.isSelect}}
+            <select name="{{this.id}}" data-dtype="{{this.type}}">
+                {{#select this.value}}
+                {{#each this.choices as |name k|}}
+                <option value="{{k}}">{{localize name}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+
+            {{else if this.isRange}}
+            <input type="range" name="{{this.id}}" data-dtype="Number" value="{{ this.value }}"
+                min="{{ this.range.min }}" max="{{ this.range.max }}" step="{{ this.range.step }}"/>
+            <span class="range-value">{{this.value}}</span>
+
+            {{else if this.filePicker}}
+            {{filePicker target=this.id type=this.filePickerType}}
+            <input type="text" name="{{this.id}}" value="{{this.value}}" data-dtype="{{this.type}}"/>
+
+            {{else if this.isNumber}}
+            {{numberInput this.value name=this.id}}
+
+            {{else}}
+            <input type="text" name="{{this.id}}" value="{{this.value}}" data-dtype="{{this.type}}"/>
+            {{/if}}
+        </div>
+
+        <p class="notes">{{this.hint}}</p>
+    </div>
+    {{/each}}
+    <footer class="sheet-footer flexrow">
+        <button type="submit" name="submit">
+            <i class="fa fa-check"></i> OK
+        </button>
+    </footer>
+</form>

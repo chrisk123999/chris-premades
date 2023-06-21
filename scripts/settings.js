@@ -2,6 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
+import {addMenuSetting} from './settingsMenu.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {rest} from './utility/rest.js';
@@ -27,6 +28,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': true
     });
+    addMenuSetting('Show Names', 'General');
     game.settings.register(moduleName, 'Priority Queue', {
         'name': 'Priority Queue',
         'hint': 'This setting allows macros from this module to have an on use priority order.  This prevents multiple pop-up dialogs from firing at the same time as well as applying damage modification changes in a certain order.',
@@ -35,6 +37,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': true
     });
+    addMenuSetting('Priority Queue', 'General');
     game.settings.register(moduleName, 'Movement Listener', {
         'name': 'Movement Listener',
         'hint': 'This setting allows certain macros from this module to function on token movement.',
@@ -50,6 +53,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Movement Listener', 'General');
     game.settings.register(moduleName, 'Template Listener', {
         'name': 'Template Listener',
         'hint': 'This setting allows certain macros from this module to function when tokens interact with templates.',
@@ -67,6 +71,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Template Listener', 'General');
     game.settings.register(moduleName, 'Tasha Actors', {
         'name': 'Keep Summon Actors Updated',
         'hint': 'This setting will keep actors from this module updated in the sidebar.',
@@ -78,6 +83,7 @@ export function registerSettings() {
             if (value && game.user.isGM) await tashaSummon.setupFolder();
         }
     });
+    addMenuSetting('Tasha Actors', 'General');
     game.settings.register(moduleName, 'Tasha Initiative', {
         'name': 'Minions use caster\'s initiative',
         'hint': 'Enabling this will have minions summoned from this module to use the caster\'s initiative instead of rolling their own.  Similar to the summon spells from Tasha\'s Cauldron Of Everything',
@@ -86,6 +92,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': false
     });
+    addMenuSetting('Tasha Initiative', 'General');
     game.settings.register(moduleName, 'Effect Auras', {
         'name': 'Effect Auras',
         'hint': 'This setting allows certain macros from this module to function.',
@@ -111,6 +118,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Effect Auras', 'General');
     game.settings.register(moduleName, 'Active Effect Additions', {
         'name': 'Active Effect Additions',
         'hint': 'This setting allows active effects to have additional properties.',
@@ -126,6 +134,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Active Effect Additions', 'General');
     game.settings.register(moduleName, 'Automatic VAE Descriptions', {
         'name': 'Automatic VAE Descriptions',
         'hint': 'When enabled, this setting will automatically fill in VAE effect descriptions when possible.',
@@ -141,6 +150,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Active Effect Additions', 'General');
     game.settings.register(moduleName, 'No NPC VAE Descriptions', {
         'name': 'No NPC VAE Descriptions',
         'hint': 'If enabled, automatic VAE descriptions will ignore effects created from NPCs.',
@@ -149,6 +159,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': false
     });
+    addMenuSetting('No NPC VAE Descriptions', 'General');
     game.settings.register(moduleName, 'VAE Temporary Item Buttons', {
         'name': 'VAE Temporary Item Buttons',
         'hint': 'When enabled, this setting will add a button to use temporary items via VAE.',
@@ -164,6 +175,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('VAE Temporary Item Buttons', 'General');
     game.settings.register(moduleName, 'Condition Fixes', {
         'name': 'Condition Fixes',
         'hint': 'This setting removes the V10 changes to invisible and blinded.',
@@ -179,6 +191,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Condition Fixes', 'General');
     game.settings.register(moduleName, 'LastGM', {
         'name': 'LastGM',
         'hint': 'Last GM to join the game.',
@@ -201,6 +214,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Combat Listener', 'General');
     game.settings.register(moduleName, 'Rest Listener', {
         'name': 'Short / Long Rest Listener',
         'hint': 'Enabling this allows the certain macros to function on short and long rests.',
@@ -216,6 +230,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Rest Listener', 'General');
     game.settings.register(moduleName, 'Movement Triggers', {
         'name': 'Movement Triggers',
         'hint': 'Used to sync the movement queue.',
@@ -232,6 +247,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': false
     });
+    addMenuSetting('Use Additional Compendiums', 'General');
     game.settings.register(moduleName, 'Additional Compendiums', {
         'name': 'Additional Compendiums',
         'hint': 'This should be a comma seperated list of compendium keys.  Highest prioirity should be on the left.',
@@ -240,6 +256,7 @@ export function registerSettings() {
         'type': String,
         'default': 'midi-srd.Midi SRD Feats, midi-srd.Midi SRD Spells, midi-srd.Midi SRD Items, midi-qol.midiqol-sample-items'
     });
+    addMenuSetting('Additional Compendiums', 'General');
     game.settings.register(moduleName, 'Item Compendium', {
         'name': 'Personal Item Compendium',
         'hint': 'A compendium full of items to pick from (DDB items compendium by default).',
@@ -248,6 +265,7 @@ export function registerSettings() {
         'type': String,
         'default': 'world.ddb-' + game.world.id + '-ddb-items'
     });
+    addMenuSetting('Item Compendium', 'General');
     game.settings.register(moduleName, 'Spell Compendium', {
         'name': 'Personal Spell Compendium',
         'hint': 'A compendium full of spells to pick from (DDB spells compendium by default).',
@@ -256,6 +274,7 @@ export function registerSettings() {
         'type': String,
         'default': 'world.ddb-' + game.world.id + '-ddb-spells'
     });
+    addMenuSetting('Spell Compendium', 'General');
     game.settings.register(moduleName, 'Condition Resistance', {
         'name': 'Condition Resistance Mechanic',
         'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
@@ -273,6 +292,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Condition Resistance', 'Mechanics');
     game.settings.register(moduleName, 'Condition Vulnerability', {
         'name': 'Condition Vulnerability Mechanic',
         'hint': 'Enabling this allows the automation condition vulnerability via the use of Midi-Qol hooks.',
@@ -290,6 +310,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Condition Vulnerability', 'Mechanics');
     game.settings.register(moduleName, 'On Hit', {
         'name': 'On Hit Automation',
         'hint': 'Enabling this allows the automation for certain "On Hit" features.',
@@ -305,6 +326,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('On Hit', 'General');
     game.settings.register(moduleName, 'Armor of Agathys', {
         'name': 'Armor of Agathys Automation',
         'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
@@ -320,6 +342,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Armor of Agathys', 'Spells');
     game.settings.register(moduleName, 'Beacon of Hope', {
         'name': 'Beacon of Hope Automation',
         'hint': 'Enabling this allows the automation of the Beacon of Hope spell via the use of Midi-Qol hooks.',
@@ -335,6 +358,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Beacon of Hope', 'Spells');
     game.settings.register(moduleName, 'Darkness', {
         'name': 'Darkness Spell Automation',
         'hint': 'Enabling this allows the automation of the Darkness spell via the use of Midi-Qol hooks.',
@@ -350,6 +374,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Darkness', 'Spells');
     game.settings.register(moduleName, 'Fog Cloud', {
         'name': 'Fog Cloud Spell Automation',
         'hint': 'Enabling this allows the automation of the Fog Cloud spell via the use of Midi-Qol hooks.',
@@ -365,6 +390,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Fog Cloud', 'Spells');
     game.settings.register(moduleName, 'Death Ward', {
         'name': 'Death Ward Automation',
         'hint': 'Enabling this allows the automation of the Death Ward spell via the use of Midi-Qol hooks.',
@@ -380,6 +406,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Death Ward', 'Spells');
     game.settings.register(moduleName, 'Elemental Adept', {
         'name': 'Elemental Adept Automation',
         'hint': 'Enabling this allows the automation of the Elemental Adept feat via the use of Midi-Qol hooks.',
@@ -399,6 +426,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Elemental Adept', 'Feats');
     game.settings.register(moduleName, 'Mirror Image', {
         'name': 'Mirror Image Automation',
         'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
@@ -414,6 +442,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Mirror Image', 'Spells');
     game.settings.register(moduleName, 'Protection from Evil and Good', {
         'name': 'Protection from Evil and Good Automation',
         'hint': 'Enabling this allows the automation of the Protection from Evil and Good spell via the use of Midi-Qol hooks.',
@@ -429,6 +458,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Protection from Evil and Good', 'Spells');
     game.settings.register(moduleName, 'Sanctuary', {
         'name': 'Sanctuary Automation',
         'hint': 'Enabling this allows the automation of the Sanctuary spell via the use of Midi-Qol hooks.',
@@ -444,6 +474,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Sanctuary', 'Spells');
     game.settings.register(moduleName, 'Ranged Smite', {
         'name': 'Ranged Divine Smite',
         'hint': 'Enabling this will allow the Divine Smite feature to be used on ranged attacks.',
@@ -452,6 +483,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': false
     });
+    addMenuSetting('Ranged Smite', 'Homebrew');
     game.settings.register(moduleName, 'Unarmed Strike Smite', {
         'name': 'Unarmed Strike Divine Smite',
         'hint': 'Enabling this will allow the Divine Smite feature to be used on unarmed Strikes.',
@@ -460,6 +492,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': false
     });
+    addMenuSetting('Unarmed Strike Smite', 'Homebrew');
     game.settings.register(moduleName, 'DMG Cleave', {
         'name': 'DMG Cleave Mechanic',
         'hint': 'Enabling this allows the automation of the cleave mechanic from the DMG workshop section via the use of Midi-Qol hooks.',
@@ -475,6 +508,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('DMG Cleave', 'Mechanics');
     game.settings.register(moduleName, 'Wildhunt', {
         'name': 'Shifter Wildhunt Automation',
         'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',
@@ -490,6 +524,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Wildhunt', 'Race Features');
     game.settings.register(moduleName, 'Undead Fortitude', {
         'name': 'Undead Fortitude Automation',
         'hint': 'Enabling this allows the automation of the Undead Fortitude feature via the use of Midi-Qol hooks.',
@@ -505,6 +540,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Undead Fortitude', 'Monster Features');
     game.settings.register(moduleName, 'Exploding Heals', {
         'name': 'Exploding Heals',
         'hint': 'Enabling this allows the automation of the homebrew rule to have exploding dice for all healing rolls via the use of Midi-Qol hooks.',
@@ -520,6 +556,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Exploding Heals', 'Homebrew');
     game.settings.register(moduleName, 'Shield Guardian', {
         'name': 'Shield Guardian Automation',
         'hint': 'Enabling this allows the automation of the Shield Guardian\'s Bound feature via the use of Midi-Qol hooks.',
@@ -535,6 +572,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Shield Guardian', 'Monster Features');
     game.settings.register(moduleName, 'Warding Bond', {
         'name': 'Warding Bond Automation',
         'hint': 'Enabling this allows the automation of the Warding Bond spell via the use of hooks.',
@@ -552,6 +590,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Warding Bond', 'Spells');
     game.settings.register(moduleName, 'Attack Listener', {
         'name': 'Attack Listener',
         'hint': 'This setting is required for certain macros to help with removing flanking and canceling attacks.',
@@ -567,6 +606,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Attack Listener', 'General');
     game.settings.register(moduleName, 'Magic Missile Toggle', {
         'name': 'Magic Missile Toggle',
         'hint': 'Enabling this has the Magic Missile spell roll the dice once for damage.',
@@ -575,6 +615,7 @@ export function registerSettings() {
         'type': Boolean,
         'default': true
     });
+    addMenuSetting('Magic Missile Toggle', 'Homewbrew');
     game.settings.register(moduleName, 'Strength of the Grave', {
         'name': 'Strength of the Grave Automation',
         'hint': 'Enabling this allows the automation of the Strength of the Grave feature via the use of Midi-Qol hooks.',
@@ -590,6 +631,7 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Strength of the Grave', 'Class Features');
     game.settings.register(moduleName, 'Relentless Endurance', {
         'name': 'Relentless Endurance Automation',
         'hint': 'Enabling this allows the automation of the Relentless Endurance feature via the use of Midi-Qol hooks.',
@@ -605,4 +647,5 @@ export function registerSettings() {
             }
         }
     });
+    addMenuSetting('Relentless Endurance', 'Race Features');
 }
