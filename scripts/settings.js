@@ -604,11 +604,11 @@ export function registerSettings() {
     addMenuSetting('Attack Listener', 'General');
     game.settings.register(moduleName, 'Magic Missile Toggle', {
         'name': 'Magic Missile Toggle',
-        'hint': 'Enabling this has the Magic Missile spell roll the dice once for damage.',
+        'hint': 'Enabling this has the Magic Missile spell roll the dice multiple times for damage.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
-        'default': true
+        'default': false
     });
     addMenuSetting('Magic Missile Toggle', 'Homebrew');
     game.settings.register(moduleName, 'Strength of the Grave', {
@@ -647,7 +647,7 @@ export function registerSettings() {
         name: 'General',
         label: 'General',
         hint: 'General settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-gears',
         type: chrisSettingsGeneral,
         restricted: true
     });
@@ -655,7 +655,7 @@ export function registerSettings() {
         name: 'Compendium',
         label: 'Compendium',
         hint: 'Compendium settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-atlas',
         type: chrisSettingsCompendiums,
         restricted: true
     });
@@ -663,7 +663,7 @@ export function registerSettings() {
         name: 'Mechanics',
         label: 'Mechanics',
         hint: 'Mechanic settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-dice',
         type: chrisSettingsMechanics,
         restricted: true
     });
@@ -671,7 +671,7 @@ export function registerSettings() {
         name: 'Spells',
         label: 'Spells',
         hint: 'Spell settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-wand-magic',
         type: chrisSettingsSpells,
         restricted: true
     });
@@ -679,7 +679,7 @@ export function registerSettings() {
         name: 'Feats',
         label: 'Feats',
         hint: 'Feat settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-crystal-ball',
         type: chrisSettingsFeats,
         restricted: true
     });
@@ -687,7 +687,7 @@ export function registerSettings() {
         name: 'Class Features',
         label: 'Class Features',
         hint: 'Class feature settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-swords',
         type: chrisSettingsClassFeats,
         restricted: true
     });
@@ -695,7 +695,7 @@ export function registerSettings() {
         name: 'Race Features',
         label: 'Race Features',
         hint: 'Race feature settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-solid fa-nesting-dolls',
         type: chrisSettingsRaceFeats,
         restricted: true
     });
@@ -703,7 +703,7 @@ export function registerSettings() {
         name: 'Monster Features',
         label: 'Monster Features',
         hint: 'Monster feature settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-dragon',
         type: chrisSettingsMonsterFeats,
         restricted: true
     });
@@ -711,7 +711,7 @@ export function registerSettings() {
         name: 'Summons',
         label: 'Summons',
         hint: 'Summon settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-hand-holding-magic',
         type: chrisSettingsSummons,
         restricted: true
     });
@@ -719,7 +719,7 @@ export function registerSettings() {
         name: 'Homebrew',
         label: 'Homebrew',
         hint: 'Homebrew settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-cauldron',
         type: chrisSettingsHomewbrew,
         restricted: true
     });
@@ -727,7 +727,7 @@ export function registerSettings() {
         name: 'Module Integration',
         label: 'Module Integration',
         hint: 'Module integration settings.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-puzzle-piece',
         type: chrisSettingsModule,
         restricted: true
     });
@@ -735,7 +735,7 @@ export function registerSettings() {
         name: 'Troubleshooter',
         label: 'Troubleshooter',
         hint: 'Used to troubleshoot issues with this module.',
-        icon: 'fas fa-bars',
+        icon: 'fas fa-screwdriver-wrench',
         type: chrisSettingsTroubleshoot,
         restricted: true
     });

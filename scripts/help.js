@@ -132,9 +132,62 @@ export function troubleshoot() {
         addLine('Configure Tokens: ' + game.permissions.TOKEN_CONFIGURE.includes(1));
         addLine('Browse Files: ' + game.permissions.FILES_BROWSE.includes(1));
     }
+    if (game.modules.get('plutonium')?.active || game.modules.get('plutonium-addon-automation')?.active) {
+        addLine('');
+        addLine('/////////////// Other ///////////////');
+        addLine('Unsupported Importer: true');
+    }
     let filename = 'CPR-Troubleshoot.txt';
     let blob = new Blob([output], {
         'type': 'text/plain;charset=utf-8'
     });
     saveAs(blob, filename);
+}
+export async function fixSettings() {
+    let changedSettings = [];
+    if (game.modules.get('itemacro')?.active) {
+        if (game.settings.get('itemacro', 'charsheet')) {
+            await game.settings.set('itemacro', 'charsheet', false);
+            changedSettings.push('IM-CharSheet');
+        }
+    }
+    if (game.modules.get('midi-qol')?.active) {
+        if (!game.settings.get('midi-qol', 'EnableWorkflow')) {
+            await game.settings.set('midi-qol', 'EnableWorkflow', true);
+            changedSettings.push('MQ-EnableWorkflow');
+        }
+        let updateMidiSettings = false;
+        let midiSettings = duplicate(game.settings.get('midi-qol', 'ConfigSettings'));
+        if (midiSettings.autoCEEffects != 'itempri') {
+            midiSettings.autoCEEffects = 'itempri';
+            changedSettings.push('MQ-autoCEEffects');
+            updateMidiSettings = true;
+        }
+        if (midiSettings.attackPerTarget === true) {
+            midiSettings.attackPerTarget = false;
+            changedSettings.push('MQ-attackPerTarget');
+            updateMidiSettings = true;
+        }
+        if (midiSettings.mergeCard === false) {
+            midiSettings.mergeCard = true;
+            changedSettings.push('MQ-mergeCard');
+            updateMidiSettings = true;
+        }
+        if (updateMidiSettings) await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
+    }
+    if (changedSettings.length === 0) return;
+    let list = '';
+    if (changedSettings.includes('IM-CharSheet')) {
+        list += '- Item Macro: Character Sheet Hook: false<br>';
+        ui.notifications.warn('Do not press "Save Changes" if the settings dialog is still open!');
+    }
+    if (changedSettings.includes('MQ-EnableWorkflow')) list += '- Midi-Qol: Roll Automation Support: true<br>';
+    if (changedSettings.includes('MQ-autoCEEffects')) list += '- Midi-Qol: Apply Convenient Effects: Prefer Item Effect<br>';
+    if (changedSettings.includes('MQ-attackPerTarget')) list += '- Midi-Qol: Roll Seperate Attack Per Target: false<br>';
+    if (changedSettings.includes('MQ-mergeCard')) list += '- Midi-Qol: Merge Card: true<br>';
+    ChatMessage.create({
+        'speaker': {alias: name},
+        'whisper': [game.user.id],
+        'content': '<hr><b>Updated Settings:</b><br><hr>' + list
+    });
 }

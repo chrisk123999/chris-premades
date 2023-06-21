@@ -1,5 +1,4 @@
-import {troubleshoot} from './help.js';
-
+import {fixSettings, troubleshoot} from './help.js';
 let settingCategories = {};
 export function addMenuSetting(key, category) {
     setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -159,7 +158,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
                     'id': 'fix',
                     'value': false,
                     'isCheckbox': true,
-                    'hint': 'Checking this will have the module automatically apply my reccomended setting changes.'
+                    'hint': 'Checking this will have the module automatically apply reccomended setting changes.'
                 }
             ]
         }
@@ -168,10 +167,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
         super.activateListeners(html);
     }
     async _updateObject(event, formData) {
-        console.log(formData);
         if (formData.trouble) troubleshoot();
-        if (formData.fix) {
-            
-        }
+        if (formData.fix) fixSettings();
     }
 }
