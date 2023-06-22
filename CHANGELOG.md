@@ -1,3 +1,10 @@
+# 0.5.12 Release:
+## New Content:
+- Spell: Shadow of Moil
+## Bug Fixes:
+- Heated Body
+- Fire Form
+
 # 0.5.11 Release:
 ## Update Notes:
 - Reorganized module settings into menus.

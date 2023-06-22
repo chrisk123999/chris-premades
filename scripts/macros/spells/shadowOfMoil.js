@@ -1,0 +1,74 @@
+import {chris} from '../../helperFunctions.js';
+async function hook(workflow) {
+    if (workflow.targets.size != 1) return;
+    let targetToken = workflow.targets.first().document;
+    if (!targetToken) return;
+    let sourceToken = workflow.token.document;
+    let targetActor = targetToken.actor;
+    let sourceActor = sourceToken.actor;
+    let targetEffect = chris.findEffect(targetActor, 'Shadow of Moil');
+    let sourceEffect = chris.findEffect(sourceActor, 'Shadow of Moil');
+    if (!targetEffect && !sourceEffect) return;
+    let distance = chris.getDistance(sourceToken, targetToken);
+    let sourceCanSeeTarget = false;
+    let targetCanSeeSource = false;
+    if (sourceEffect) sourceCanSeeTarget = true;
+    if (targetEffect) targetCanSeeSource = true;
+    if (sourceEffect && targetEffect) {
+        sourceCanSeeTarget = false;
+        targetCanSeeSource = false;
+    }
+    let sourceSenses = sourceToken.actor.system.attributes.senses;
+    let targetSenses = targetToken.actor.system.attributes.senses;
+    if ((sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance)) sourceCanSeeTarget = true;
+    if ((targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance)) targetCanSeeSource = true;
+    if (sourceCanSeeTarget && targetCanSeeSource) return;
+    if (sourceCanSeeTarget && !targetCanSeeSource) {
+        workflow.advantage = true;
+        workflow.attackAdvAttribution['Shadow of Moil: Target Can\'t See Source'] = true;
+    }
+    if (!sourceCanSeeTarget && targetCanSeeSource) {
+        workflow.disadvantage = true;
+        workflow.flankingAdvantage = false;
+        workflow.attackAdvAttribution['Shadow of Moil: Source Can\'t See Target'] = true;
+    }
+    if (!sourceCanSeeTarget && !targetCanSeeSource) {
+        workflow.advantage = true;
+        workflow.disadvantage = true;
+        workflow.attackAdvAttribution['Shadow of Moil: Target And Source Can\'t See Eachother'] = true;
+    }
+}
+async function onHit(workflow, targetToken) {
+    if (workflow.hitTargets.size === 0) return;
+    let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
+    if (!validTypes.includes(workflow.item.system.actionType)) return;
+    let distance = chris.getDistance(workflow.token, targetToken);
+    if (distance > 10) return;
+    let targetActor = targetToken.actor;
+    let effect = chris.findEffect(targetActor, 'Shadow of Moil');
+    if (!effect) return;
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Shadow of Moil Damage', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Shadow of Moil Damage');
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    if (!feature) return;
+    let options = {
+        'showFullCard': false,
+        'createWorkflow': true,
+        'targetUuids': [workflow.token.document.uuid],
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
+    };
+    await warpgate.wait(100);
+    await MidiQOL.completeItemUse(feature, {}, options);
+}
+export let shadowOfMoil = {
+    'hook': hook,
+    'onHit': onHit,
+}

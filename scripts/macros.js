@@ -151,6 +151,7 @@ import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowSpirit} from './macros/monsterFeatures/shadowSpirit/shadowSpirit.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
+import {shadowOfMoil} from './macros/spells/shadowOfMoil.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
@@ -264,6 +265,7 @@ let onHit = {
     'blackrazor': blackrazor.onHit,
     'fireForm': fireElemental.fireForm,
     'heatedBody': fireSnake.heatedBody,
+    'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
     'wardingBond': wardingBond.onHit
 }
@@ -430,6 +432,7 @@ export let macros = {
     'sanctuary': sanctuary,
     'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,
+    'shadowOfMoil': shadowOfMoil,
     'shockingGrasp': shockingGrasp,
     'sickeningRadiance': sickeningRadiance,
     'slasher': slasher,

@@ -643,6 +643,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Relentless Endurance', 'Race Features');
+    game.settings.register(moduleName, 'Shadow of Moil', {
+        'name': 'Shadow of Moil Spell Automation',
+        'hint': 'Enabling this allows the automation of the Shadow of Moil spell via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preAttackRoll', macros.shadowOfMoil.hook);
+            } else {
+                Hooks.off('midi-qol.preAttackRoll', macros.shadowOfMoil.hook);
+            }
+        }
+    });
+    addMenuSetting('Shadow of Moil', 'Spells');
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',

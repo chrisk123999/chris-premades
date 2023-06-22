@@ -22,6 +22,7 @@ export async function fireForm(workflow, targetToken) {
             'autoFastDamage': true
         }
     };
+    await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
 }
 export async function douseFire({speaker, actor, token, character, item, args, scope, workflow}) {

@@ -22,5 +22,6 @@ export async function heatedBody(workflow, targetToken) {
             'autoFastDamage': true
         }
     };
+    await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
 }
