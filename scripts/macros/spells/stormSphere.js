@@ -125,7 +125,7 @@ async function boltAttackItem({speaker, actor, token, character, item, args, sco
     let targetToken = workflow.targets.first();
     if (!chris.tokenInTemplate(targetToken.document, template)) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution['Advantage: Storm Sphere'] = true;
+    workflow.attackAdvAttribution.add('Advantage: Storm Sphere');
 }
 async function turnStart(actor, effect) {
     let previousTurnId = game.combat.previous.tokenId;

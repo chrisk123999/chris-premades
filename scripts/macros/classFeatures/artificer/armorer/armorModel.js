@@ -99,7 +99,7 @@ async function thunderGauntlets({speaker, actor, token, character, item, args, s
     let queueSetup = await queue.setup(workflow.item.uuid, 'thunderGauntlets', 50);
     if (!queueSetup) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Disadvantage: Thunder Gauntlets'] = true;
+    workflow.attackAdvAttribution.add('Disadvantage: Thunder Gauntlets');
     queue.remove(workflow.item.uuid);
 }
 async function longRest(actor, data) {

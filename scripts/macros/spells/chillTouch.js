@@ -9,5 +9,5 @@ export async function chillTouch({speaker, actor, token, character, item, args, 
     let sourceActorId = sourceActor.actor.id;
     if (workflow.targets.first().actor.id != sourceActorId) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Disadvantage: Chill Touch'] = true;
+    workflow.attackAdvAttribution.add('Disadvantage: Chill Touch');
 }

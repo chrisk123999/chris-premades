@@ -11,6 +11,6 @@ export async function protectionFromEvilAndGood(workflow) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'protectionFromEvilAndGood', 49);
     if (!queueSetup) return;
     if (races.includes(actorRace)) workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Protection From Evil And Good'] = true;
+    workflow.attackAdvAttribution.add('Protection From Evil And Good');
     queue.remove(workflow.item.uuid);
 }

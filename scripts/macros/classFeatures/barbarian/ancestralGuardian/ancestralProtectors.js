@@ -60,7 +60,7 @@ async function targetAttack({speaker, actor, token, character, item, args, scope
     let queueSetup = await queue.setup(workflow.item.uuid, 'ancestralProtectors', 50);
     if (!queueSetup) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Disadvantage: Ancestral Protectors'] = true;
+    workflow.attackAdvAttribution.add('Disadvantage: Ancestral Protectors');
     queue.remove(workflow.item.uuid);
 }
 async function targetDamage({speaker, actor, token, character, item, args, scope, workflow}) {

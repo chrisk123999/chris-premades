@@ -10,5 +10,5 @@ export async function wildhunt(workflow) {
     workflow.advantage = false;
     workflow.rollOptions.advantage = false;
     workflow.flankingAdvantage = false;
-    workflow.attackAdvAttribution['Wildhunt'] = true;
+    workflow.attackAdvAttribution.add('Wildhunt');
 }

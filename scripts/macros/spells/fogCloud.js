@@ -81,17 +81,17 @@ async function hook(workflow) {
     if (sourceCanSeeTarget && targetCanSeeSource) return;
     if (sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
-        workflow.attackAdvAttribution['Fog Cloud: Target Can\'t See Source'] = true;
+        workflow.attackAdvAttribution.add('Fog Cloud: Target Can\'t See Source');
     }
     if (!sourceCanSeeTarget && targetCanSeeSource) {
         workflow.disadvantage = true;
         workflow.flankingAdvantage = false;
-        workflow.attackAdvAttribution['Fog Cloud: Source Can\'t See Target'] = true;
+        workflow.attackAdvAttribution.add('Fog Cloud: Source Can\'t See Target');
     }
     if (!sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
         workflow.disadvantage = true;
-        workflow.attackAdvAttribution['Fog Cloud: Target And Source Can\'t See Eachother'] = true;
+        workflow.attackAdvAttribution.add('Fog Cloud: Target And Source Can\'t See Eachother');
     }
 }
 export let fogCloud = {

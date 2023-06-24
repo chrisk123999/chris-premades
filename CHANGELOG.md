@@ -1,3 +1,61 @@
+# 0.5.13 Release:
+## Bug Fixes:
+- Ancestral Protectors
+- Armor Model
+- Aura of Annihilation
+- Bait and Switch
+- Balm of Peace
+- Bestow Curse
+- Blink
+- Chain Lightning
+- Chill Touch
+- Cleave
+- Cloudkill
+- Darkness
+- Dawn
+- Deadly Leap
+- Dread Ambusher
+- Engulf
+- Fire Form
+- Fog Cloud
+- Form of Dread
+- Gibbering
+- Goading Attack
+- Grim Harvest
+- Hail of Thorns
+- Healing Spirit
+- Heat Metal
+- Heated Body
+- Hybrid Transformation
+- Lightning Arrow
+- Magic Missile
+- Magical Inspiration
+- Master's Amulet
+- Moonbeam
+- Potion of Poison
+- Protection from Evil and Good
+- Reaper
+- Rotting Claws
+- Sanctuary
+- Scorching Ray
+- Shadow of Moil
+- Sickening Radiance
+- Slam
+- Spirit Guardians
+- Stench
+- Stony Lethargy
+- Storm Sphere
+- Strength of the Grave
+- Terror Frenzy
+- Undead Fortitude
+- Vampiric Touch
+- Warding Bond
+- Weight of Sorrow
+- Wildhunt
+- Zone of Truth
+## Update Notes:
+- This module requires Midi-Qol version 10.0.46 or higher now.
+  
 # 0.5.12 Release:
 ## New Content:
 - Spell: Shadow of Moil

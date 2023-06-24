@@ -4,5 +4,5 @@ export async function terrorFrenzy({speaker, actor, token, character, item, args
     let effect = chris.findEffect(workflow.targets.first().actor, 'Frightened');
     if (!effect) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution['Terror Frenzy'] = true;
+    workflow.attackAdvAttribution.add('Terror Frenzy');
 }

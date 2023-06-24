@@ -107,7 +107,7 @@ async function goadingAttackTarget({speaker, actor, token, character, item, args
     let queueSetup = await queue.setup(workflow.item.uuid, 'goadingAttack', 50);
     if (!queueSetup) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution['Disadvantage: Goading Attack'] = true;
+    workflow.attackAdvAttribution.add('Disadvantage: Goading Attack');
     queue.remove(workflow.item.uuid);
 }
 async function grapplingStrike({speaker, actor, token, character, item, args, scope, workflow}) {

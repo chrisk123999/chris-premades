@@ -26,18 +26,19 @@ async function hook(workflow) {
     if (sourceCanSeeTarget && targetCanSeeSource) return;
     if (sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
-        workflow.attackAdvAttribution['Shadow of Moil: Target Can\'t See Source'] = true;
+        workflow.attackAdvAttribution.add('Shadow of Moil: Target Can\'t See Source');
     }
     if (!sourceCanSeeTarget && targetCanSeeSource) {
         workflow.disadvantage = true;
         workflow.flankingAdvantage = false;
-        workflow.attackAdvAttribution['Shadow of Moil: Source Can\'t See Target'] = true;
+        workflow.attackAdvAttribution.add('Shadow of Moil: Source Can\'t See Target');
     }
     if (!sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
         workflow.disadvantage = true;
-        workflow.attackAdvAttribution['Shadow of Moil: Target And Source Can\'t See Eachother'] = true;
+        workflow.attackAdvAttribution.add('Shadow of Moil: Target And Source Can\'t See Eachother');
     }
+    console.log(workflow);
 }
 async function onHit(workflow, targetToken) {
     if (workflow.hitTargets.size === 0) return;
