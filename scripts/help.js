@@ -31,6 +31,7 @@ let optionalModules = [
     'ATL',
     'about-time',
     'custom-character-sheet-sections',
+    'compendium-folders',
     'ddb-importer',
     'foundryvtt-simple-calendar',
     'fxmaster',

@@ -89,19 +89,28 @@ async function itemConfig(itemDocument) {
             }
         }
     } else if (itemDocument.actor.type === 'npc') {
-        let folderAPI = game.CF.FICFolderAPI;
-        let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
         let itemActor = itemDocument.actor;
         let monsterName = itemActor.name;
         let sourceActor = game.actors.get(itemActor.id);
+        let monsterFolder;
+        foundCompendiumName = 'Chris\'s Premades';
         if (sourceActor) monsterName = sourceActor.name;
-        let monsterFolder = allFolders.find(f => f.name === monsterName);
+        if (!isNewerVersion(game.version, '11.293')) {
+            if (!game.modules.get('compendium-folders')?.active) {
+                ui.notifications.warn('Compendium Folders module is required for this feature in v10!');
+                return;
+            }
+            let folderAPI = game.CF.FICFolderAPI;
+            let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
+            monsterFolder = allFolders.find(f => f.name === monsterName);
+        } else {
+            monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
+        }
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;
         }
         compendiumItem = await chris.getItemFromCompendium('chris-premades.CPR Monster Features', itemName, true, monsterFolder.id);
-        foundCompendiumName = 'Chris\'s Premades';
     } else {
         ui.notifications.info('Automation detection for this actor type is not supported!');
     }

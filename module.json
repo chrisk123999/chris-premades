@@ -100,14 +100,6 @@
 		}
 	},
 	{
-		"id": "compendium-folders",
-		"type": "module",
-		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
-		"compatibility": {
-			"verified": "2.5.7"
-		}
-	},
-	{
 		"id": "socketlib",
 		"type": "module",
 		"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
@@ -177,6 +169,14 @@
 		"manifest": "https://github.com/Kekilla0/Item-Macro/releases/latest/download/module.json",
 		"compatibility": {
 			"verified": "1.8.0"
+		}
+	},
+	{
+		"id": "compendium-folders",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
+		"compatibility": {
+			"verified": "2.5.7"
 		}
 	}]
   },

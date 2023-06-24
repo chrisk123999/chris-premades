@@ -1,3 +1,7 @@
+# 0.5.14 Release:
+## Update Notes:
+- Removed Compendium Folders as a hard dependency.  This module is still required for the monster item replacer in V10.
+  
 # 0.5.13 Release:
 ## Bug Fixes:
 - Ancestral Protectors

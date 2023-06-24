@@ -269,8 +269,15 @@ export let chris = {
             ui.notifications.warn('Invalid compendium specified!');
             return false;
         }
-        const packIndex = await gamePack.getIndex({fields: ['name', 'type', 'flags.cf.id']});
-        const match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
+        let packIndex;
+        let match;
+        if (!isNewerVersion(game.version, '11.293')) {
+            packIndex = await gamePack.getIndex({fields: ['name', 'type', 'flags.cf.id']});
+            match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
+        } else {
+            packIndex = await gamePack.getIndex({fields: ['name', 'type', 'folder']});
+            match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.folder === packFolderId)));
+        }
         if (match) {
             return (await gamePack.getDocument(match._id))?.toObject();
         } else {
