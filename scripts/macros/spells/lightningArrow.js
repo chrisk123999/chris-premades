@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function lightningArrowDamage({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -58,19 +59,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         newTargetUuids.push(i.document.uuid);
         new Sequence().effect().atLocation(targetToken).stretchTo(i).file('jb2a.chain_lightning.secondary.blue').play();
     }
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': newTargetUuids,
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions(newTargetUuids);
     await MidiQOL.completeItemUse(areaFeature, {}, options);
     if (effect) effect.delete();
     queue.remove(workflow.item.uuid);

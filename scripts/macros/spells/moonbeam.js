@@ -1,4 +1,4 @@
-import {disadvantageEffectData} from '../../constants.js';
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
@@ -86,21 +86,11 @@ async function trigger(token, trigger) {
     ];
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
     let changeShape = token.actor.items.getName('Change Shape');
     let shapechanger = token.actor.items.getName('Shapechanger');
     if (changeShape || shapechanger) {
-        await chris.createEffect(token.actor, disadvantageEffectData);
+        await chris.createEffect(token.actor, constants.disadvantageEffectData);
     }
     await MidiQOL.completeItemUse(feature, {}, options);
     if (shapechanger || shapechanger) {

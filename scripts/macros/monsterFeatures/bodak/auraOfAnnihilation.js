@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function auraOfAnnihilation(token, origin) {
     if (token.actor.system.attributes.hp.value === 0) return;
@@ -24,20 +25,6 @@ export async function auraOfAnnihilation(token, origin) {
         'value': ''
     };
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
 }

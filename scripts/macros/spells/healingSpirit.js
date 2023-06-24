@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Healing Spirit');
@@ -164,15 +165,7 @@ async function template(template, token) {
     if (!selection) return;
     let feature = sourceToken.actor.items.getName('Healing Spirit - Heal');
     if (!feature) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': true,
-        'consumeSlot': false
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     if (chris.inCombat()) {
         touchedTokens[token.id] = game.combat.round + '-' + game.combat.turn;

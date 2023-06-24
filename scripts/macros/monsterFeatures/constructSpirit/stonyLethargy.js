@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
@@ -11,19 +12,7 @@ async function turnStart(token, origin) {
     if (targetToken.document.disposition === token.document.disposition) return;
     let distance = chris.getDistance(token, targetToken);
     if (distance > 10) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(origin, {}, options);
 }
 export let stoneLethargy = {

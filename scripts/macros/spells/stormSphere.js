@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.templateUuid) return;
@@ -142,20 +143,12 @@ async function turnStart(actor, effect) {
     featureData.system.save.dc = stormSphere.spellSaveDC;
     featureData.system.damage.parts = [
         [
-            stormSphere.castLevel + 'd6[bludgeoning]',
+            (stormSphere.castLevel - 2) + 'd6[bludgeoning]',
             'bludgeoning'
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
 }
 export let stormSphere = {

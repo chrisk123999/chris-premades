@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 export async function grimHarvest({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -49,21 +50,7 @@ export async function grimHarvest({speaker, actor, token, character, item, args,
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [workflow.token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     queue.remove(workflow.item.uuid);
 }

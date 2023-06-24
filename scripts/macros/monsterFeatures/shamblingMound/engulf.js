@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function engulf(origin, token, actor) {
     let sourceTokenId = actor.flags['chris-premades']?.monster?.shamblingMound?.engulf
@@ -13,19 +14,7 @@ export async function engulf(origin, token, actor) {
         ]
     ];
     featureData.system.save.dc = chris.getSpellDC(origin);
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
     await MidiQOL.completeItemUse(feature, {}, options);
 }

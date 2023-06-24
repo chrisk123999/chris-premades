@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function mastersAmulet(token, {item, workflow, ditem}) {
@@ -46,19 +47,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     queue.remove(workflow.uuid);
 }

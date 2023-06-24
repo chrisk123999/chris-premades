@@ -1,4 +1,4 @@
-export const advantageEffectData = {
+const advantageEffectData = {
     'label': 'Save Advantage',
     'icon': 'icons/magic/time/arrows-circling-green.webp',
     'duration': {
@@ -13,7 +13,7 @@ export const advantageEffectData = {
         }
     ]
 };
-export const disadvantageEffectData = {
+const disadvantageEffectData = {
     'label': 'Save Disadvantage',
     'icon': 'icons/magic/time/arrows-circling-green.webp',
     'duration': {
@@ -28,3 +28,25 @@ export const disadvantageEffectData = {
         }
     ]
 };
+function syntheticItemWorkflowOptions(targets) {
+    return {
+        'showFullCard': false,
+        'createWorkflow': true,
+        'targetUuids': targets,
+        'configureDialog': false,
+        'versatile': false,
+        'consumeResource': false,
+        'consumeQuantity': false,
+        'consumeUsage': false,
+        'consumeSlot': false,
+        'workflowOptions': {
+            'autoRollDamage': 'always',
+            'autoFastDamage': true
+        }
+    };
+}
+export let constants = {
+    'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
+    'disadvantageEffectData': disadvantageEffectData,
+    'advantageEffectData': advantageEffectData
+}

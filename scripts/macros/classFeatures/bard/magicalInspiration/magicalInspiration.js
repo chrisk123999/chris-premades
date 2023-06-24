@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function bardicInspirationAttack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -44,15 +45,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
         for (let i of newTargets) {
             addedTargetUuids.push(i.document.uuid);
         }
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': addedTargetUuids,
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false
-        };
+        let options = constants.syntheticItemWorkflowOptions(addedTargetUuids);
         await MidiQOL.completeItemUse(feature, {}, options);
     }
     queue.remove(workflow.item.uuid);

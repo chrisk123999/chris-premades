@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 export async function magicMissile({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
@@ -47,15 +48,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
         ];
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false
-    };
+    let options = constants.syntheticItemWorkflowOptions([]);
     for (let i = 0; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i]) || selection.inputs[i] === 0) continue;
         options.targetUuids = [targets[i].document.uuid];

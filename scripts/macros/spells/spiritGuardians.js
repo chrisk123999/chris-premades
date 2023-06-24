@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {tokenMove} from '../../movement.js';
 async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenID) {
@@ -34,19 +35,7 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         }
     }
     featureData.flags['chris-premades'].spell.castData.school = 'con';
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': sourceToken.actor});

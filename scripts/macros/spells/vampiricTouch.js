@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function vampiricTouchItem({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -60,19 +61,7 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args, 
     let feature = workflow.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
     if (!feature) return;
     if (workflow.targets.size === 0) return;
-    let options2 = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [workflow.targets.first().document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options2 = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options2);
 }
 async function vampiricTouchAttack({speaker, actor, token, character, item, args, scope, workflow}) {

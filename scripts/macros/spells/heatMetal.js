@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -109,19 +110,7 @@ async function pulseItem({speaker, actor, token, character, item, args, scope, w
     ];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Damage');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetTokenUuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     let effectData = {
         'label': 'Heat Metal Dialogue',

@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function baitAndSwitch({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -162,15 +163,7 @@ async function menacingAttack({speaker, actor, token, character, item, args, sco
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [workflow.targets.first().document.uuid],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false,
-        };
+        let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
         await chris.removeEffect(effect);
         await MidiQOL.completeItemUse(feature, {}, options);
     }

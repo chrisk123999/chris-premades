@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function bestZone(token) {
     let templates = chris.tokenTemplates(token.document);
@@ -67,21 +68,7 @@ async function inZone(token, template) {
     }
     spellObject.system.preparation.mode = 'atwill';
     let spell = new CONFIG.Item.documentClass(spellObject, {'parent': originItem.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
     if (spellWorkflow.failedSaves.size != 1) return;
     await chris.createEffect(token.actor, effectData);

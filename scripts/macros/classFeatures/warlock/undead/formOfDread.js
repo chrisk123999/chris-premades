@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -17,19 +18,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         return;
     }
     if (chris.inCombat()) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [workflow.targets.first().document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     queue.remove(workflow.item.uuid);
 }

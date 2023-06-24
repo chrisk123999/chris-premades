@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function weightOfSorrow(token, origin) {
     let targetToken = game.canvas.tokens.get(game.combat.current.tokenId);
@@ -9,18 +10,6 @@ export async function weightOfSorrow(token, origin) {
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (originItem.actor.id === targetToken.actor.id) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(origin, {}, options);
 }

@@ -1,22 +1,11 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function blinkTurnStart(token, actor, origin, effect) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Blink Landing', false);
     if (!featureData) return;
     if (origin?.type === 'spell') featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Blink Landing');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
     await MidiQOL.completeItemUse(feature, {}, options);
     await effect.delete();
 }

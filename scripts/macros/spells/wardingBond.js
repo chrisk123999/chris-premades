@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js'
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -125,19 +126,7 @@ async function onHit(workflow, targetToken) {
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [sourceToken.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([sourceToken.uuid]);
     let damageWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (damageWorkflow.targets.first().actor.system.attributes.hp.value != 0) return;
     await chris.removeEffect(effect);

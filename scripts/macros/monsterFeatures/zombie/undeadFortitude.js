@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
 export async function undeadFortitude(targetToken, {workflow, ditem}) {
@@ -15,17 +16,7 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (featureWorkflow.failedSaves.size === 1) {
         queue.remove(workflow.uuid);

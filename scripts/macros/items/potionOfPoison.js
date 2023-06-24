@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -31,19 +32,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'poison'
             ]
         ];
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [workflow.token.document.uuid],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false,
-            'workflowOptions': {
-                'autoRollDamage': 'always',
-                'autoFastDamage': true
-            }
-        };
+        let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
         let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
         if (featureWorkflow.failedSaves.size === 0) {

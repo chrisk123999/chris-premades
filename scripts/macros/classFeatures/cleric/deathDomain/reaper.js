@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 export async function reaper({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -30,21 +31,7 @@ export async function reaper({speaker, actor, token, character, item, args, scop
     let effect = chris.findEffect(workflow.actor, 'Reaper');
     let originItem = await fromUuid(effect.origin);
     if (originItem)    await originItem.use();
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetTokenUuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
     let spellData = duplicate(workflow.item.toObject());
     spellData.flags['chris-premades'] = {
         'reap': true

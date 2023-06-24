@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function sanctuary(workflow) {
@@ -27,21 +28,7 @@ export async function sanctuary(workflow) {
     spellItem.system.activation.type = 'special';
     delete(spellItem.effects);
     let spell = new CONFIG.Item.documentClass(spellItem, {'parent': targetItem.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [workflow.token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     let queueSetup = await queue.setup(workflow.item.uuid, 'sanctuary', 48);
     if (!queueSetup) return;
     let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);

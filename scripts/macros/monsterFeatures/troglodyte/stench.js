@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
 export async function stench(token, origin, range, duration, monsterName, originItem) {
@@ -20,19 +21,7 @@ export async function stench(token, origin, range, duration, monsterName, origin
         queue.remove(origin.uuid);
         return;
     }
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
     let featureWorkflow = await MidiQOL.completeItemUse(originItem, {}, options);
     if (featureWorkflow.failedSaves.size != 0) {
         queue.remove(origin.uuid);

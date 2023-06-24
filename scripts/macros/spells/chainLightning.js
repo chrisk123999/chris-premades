@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function chainLightning({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -68,19 +69,7 @@ export async function chainLightning({speaker, actor, token, character, item, ar
     }
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': addedTargetUuids,
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions(addedTargetUuids);
     await MidiQOL.completeItemUse(feature, {}, options);
     queue.remove(workflow.item.uuid);
 }

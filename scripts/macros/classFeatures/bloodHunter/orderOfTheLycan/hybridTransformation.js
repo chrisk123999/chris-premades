@@ -1,19 +1,8 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
-    let options = {
-        'showFullCard': false,
-        'createthis': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let levels = actor.classes['blood-hunter'].system.levels
     let bonusHealth = 0;
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {

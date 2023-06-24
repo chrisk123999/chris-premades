@@ -1,22 +1,11 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 async function allTurns(token, origin, range) {
     let targetToken = game.combat.scene.tokens.get(game.combat.current.tokenId);
     if (!targetToken || targetToken?.id === token.id) return;
     let distance = chris.getDistance(token, targetToken);
     if (distance > range) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
     await MidiQOL.completeItemUse(origin, {}, options);
 }
 async function effectCreation(origin) {

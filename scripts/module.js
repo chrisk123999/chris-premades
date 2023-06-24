@@ -15,6 +15,7 @@ import {templates} from './utility/templateEffect.js';
 import {rest} from './utility/rest.js';
 import {troubleshoot} from './help.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
+import {constants} from './constants.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -149,5 +150,6 @@ globalThis['chrisPremades'] = {
     effectAuras,
     bab,
     tashaSummon,
-    troubleshoot
+    troubleshoot,
+    constants
 }

@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function cleave(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.item?.system?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
@@ -72,20 +73,6 @@ export async function cleave(workflow) {
         }
     };
     let weaponAttack = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetTokenID],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([targetTokenID]);
     await MidiQOL.completeItemUse(weaponAttack, {}, options);
 }

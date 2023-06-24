@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function fireForm(workflow, targetToken) {
     if (workflow.hitTargets.size === 0) return;
@@ -9,19 +10,7 @@ export async function fireForm(workflow, targetToken) {
     if (!effect) return;
     let feature = await fromUuid(effect.origin);
     if (!feature) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [workflow.token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
 }

@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
@@ -31,17 +32,7 @@ async function trigger(token, trigger) {
     featureData.system.save.dc = trigger.saveDC;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
     let workflow = await MidiQOL.completeItemUse(feature, {}, options);
     if (workflow.failedSaves.size === 0) return;
     let exhaustionLevel = template.flags['chris-premades']?.spell?.sickeningRadiance?.[token.id]?.exhaustionLevel;

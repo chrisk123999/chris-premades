@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
@@ -17,21 +18,7 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
     let damageDealt = ditem.appliedDamage;
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': tokenActor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
     await originItem.update({
         'system.uses.value': originItem.system.uses.value -1
