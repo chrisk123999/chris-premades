@@ -1,4 +1,4 @@
-import {chris} from '../../../helperFunctions.js';
+import {chris} from '../../helperFunctions.js';
 export async function help({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();

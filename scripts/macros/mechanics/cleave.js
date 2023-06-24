@@ -1,5 +1,5 @@
-import {constants} from '../../../constants.js';
-import {chris} from '../../../helperFunctions.js';
+import {constants} from '../../constants.js';
+import {chris} from '../../helperFunctions.js';
 export async function cleave(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.item?.system?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
     let newHP = workflow.damageList[0].newHP;

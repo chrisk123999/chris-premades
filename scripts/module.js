@@ -8,7 +8,7 @@ import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTrigger
 import {bab} from './babHelpers.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 import {preCreateActiveEffect} from './utility/effect.js';
-import {removeDumbV10Effects} from './macros/mechanics/conditions/conditions.js';
+import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';

@@ -1,5 +1,5 @@
-import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 export async function explodingHeals(workflow) {
     if (!workflow.damageRoll) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'explodingHeals', 350);

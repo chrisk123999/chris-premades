@@ -1,4 +1,4 @@
-import {chris} from '../../../helperFunctions.js';
+import {chris} from '../../helperFunctions.js';
 let effectData = {
     'label': 'Condition Advantage',
     'icon': 'icons/magic/time/arrows-circling-green.webp',
