@@ -58,7 +58,7 @@
   
 # 0.5.12 Release:
 ## New Content:
-- Spell: Shadow of Moil
+- Spell: Shadow of Moil (Thanks Autumn)
 ## Bug Fixes:
 - Heated Body
 - Fire Form
