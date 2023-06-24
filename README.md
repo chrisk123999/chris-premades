@@ -9,10 +9,9 @@ Additional support and feature requests can be made on my Discord server: https:
 # Required Modules  
 | Module | Verified Version |  
 | --- | --- |  
-| Midi-Qol | 10.0.45 |  
+| Midi-Qol | 10.0.46 |  
 | Automated Animations | 4.2.32 |  
 | Build-a-Bonus | 10.4.6 |  
-| Compendium Folders | 2.5.7 |  
 | DFreds Convenient Effects | 4.1.1 |  
 | Effect Macro | 10.0.15 |  
 | Item Macro | 1.8.0 |  
@@ -25,6 +24,7 @@ Additional support and feature requests can be made on my Discord server: https:
   
 # Optional supported modules:  
 - Custom Character Sheet Sections  
+- Compendium Folders  
 - D&D Beyond Importer  
 - Tidy5e Sheet  
 - Token Magic FX  
