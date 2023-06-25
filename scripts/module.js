@@ -19,7 +19,7 @@ import {constants} from './constants.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
-    setConfig()
+    setConfig();
 });
 Hooks.once('socketlib.ready', async function() {
     socket = socketlib.registerModule('chris-premades');
