@@ -16,6 +16,7 @@ import {rest} from './utility/rest.js';
 import {troubleshoot} from './help.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {constants} from './constants.js';
+import {patching} from './patching.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -152,8 +153,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Shadow of Moil')) Hooks.on('midi-qol.preAttackRoll', macros.shadowOfMoil.hook);
     if (game.settings.get('chris-premades', 'Manual Rolls')) {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
-        Hooks.on('midi-qol.preDamageRollComplete', macros.manualRolls.damageRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+        await patching();
     }
 });
 globalThis['chrisPremades'] = {

@@ -15,12 +15,12 @@ function dialogRender(html) {
 }
 let buttons = [
     {
-        'label': 'Ok',
-        'value': true
-    },
-    {
         'label': 'Cancel',
         'value': false
+    },
+    {
+        'label': 'Ok',
+        'value': true
     }
 ];
 async function attackRoll(workflow) {
@@ -33,6 +33,10 @@ async function attackRoll(workflow) {
     if (!queueSetup) return;
     let selection = await warpgate.menu({
         'inputs': [
+            {
+                'label': workflow.attackRoll._formula,
+                'type': 'info'
+            },
             {
                 'label': 'Roll Total:',
                 'type': 'number'
@@ -51,11 +55,11 @@ async function attackRoll(workflow) {
         queue.remove(workflow.uuid);
         return;
     }
-    if (isNaN(selection.inputs[0])) {
+    if (isNaN(selection.inputs[1])) {
         queue.remove(workflow.uuid);
         return;
     }
-    let attackRollNumber = selection.inputs[0];
+    let attackRollNumber = selection.inputs[1];
     workflow.attackRoll.terms = [
         {
             'class': 'NumericTerm',
@@ -75,14 +79,19 @@ async function damageRoll(workflow) {
         let firstOwner = warpgate.util.firstOwner(workflow.token);
         if (firstOwner.isGM) return;
     }
-    let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
+    let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 1000);
     if (!queueSetup) return;
     let damageTypes = new Set([]);
     for (let i of workflow.damageRoll.terms) {
         if (i.flavor) damageTypes.add(i.flavor.toLowerCase());
     }
-    let generatedMenu = [];
-    let damageTypeArray = [];
+    let generatedMenu = [
+        {
+            'label': workflow.damageRoll._formula,
+            'type': 'info'
+        }
+    ];
+    let damageTypeArray = ['skip'];
     for (let i of Array.from(damageTypes)) {
         generatedMenu.push({
             'label': i.charAt(0).toUpperCase() + i.slice(1) + ':',
@@ -106,10 +115,14 @@ async function damageRoll(workflow) {
         return;
     }
     let damageFormula = '';
-    for (let i = 0; i < selection.inputs.length; i++) {
+    for (let i = 1; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i])) continue;
         if (damageFormula != '') damageFormula += ' + ';
         damageFormula += selection.inputs[i] + '[' + damageTypeArray[i] + ']';
+    }
+    if (damageFormula === '') {
+        queue.remove(workflow.uuid);
+        return
     }
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);

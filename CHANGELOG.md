@@ -1,3 +1,7 @@
+# 0.5.17 Release:
+## Bug Fixes:
+- Manual Rolls
+  
 # 0.5.16 Release:
 ## Bug Fixes:
 - Manual Rolls

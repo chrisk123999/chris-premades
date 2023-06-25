@@ -2,6 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
+import {patching} from './patching.js';
 import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
@@ -669,11 +670,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
-                Hooks.on('midi-qol.preDamageRollComplete', macros.manualRolls.damageRoll);
                 Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+                patching();
             } else {
                 Hooks.off('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
-                Hooks.off('midi-qol.preDamageRollComplete', macros.manualRolls.damageRoll);
                 Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
             }
         }
