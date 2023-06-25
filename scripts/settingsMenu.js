@@ -127,6 +127,12 @@ export class chrisSettingsModule extends chrisSettingsBase {
         this.category = 'Module Integration';
     }
 }
+export class chrisSettingsManualRolling extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'Manual Rolling';
+    }
+}
 export class chrisSettingsTroubleshoot extends FormApplication {
     constructor() {
         super();
@@ -154,11 +160,11 @@ export class chrisSettingsTroubleshoot extends FormApplication {
                     'hint': 'Checking this box will export a file used to help troubleshoot issues with this module on my Discord server.'
                 },
                 {
-                    'name': 'Apply reccomended setting fixes?',
+                    'name': 'Apply recommended setting fixes?',
                     'id': 'fix',
                     'value': false,
                     'isCheckbox': true,
-                    'hint': 'Checking this will have the module automatically apply reccomended setting changes.'
+                    'hint': 'Checking this will have the module automatically apply recommended setting changes.'
                 }
             ]
         }

@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
-import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {preCreateActiveEffect} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {rest} from './utility/rest.js';
@@ -659,6 +659,35 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Shadow of Moil', 'Spells');
+    game.settings.register(moduleName, 'Manual Rolls', {
+        'name': 'Manual Rolls',
+        'hint': 'Enabling this will prompt the GM to input attack, save, and damage totals. This only applies to rolls that involve Midi-Qol.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
+                Hooks.on('midi-qol.preDamageRollComplete', macros.manualRolls.damageRoll);
+                Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+            } else {
+                Hooks.off('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
+                Hooks.off('midi-qol.preDamageRollComplete', macros.manualRolls.damageRoll);
+                Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+            }
+        }
+    });
+    addMenuSetting('Manual Rolls', 'Manual Rolling');
+    game.settings.register(moduleName, 'Ignore GM', {
+        'name': 'Ignore GM Rolls',
+        'hint': 'Do no prompt when there are no player owned tokens involved.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true
+    });
+    addMenuSetting('Ignore GM', 'Manual Rolling');
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',
@@ -745,6 +774,14 @@ export function registerSettings() {
         hint: 'Settings for integrations with other modules.',
         icon: 'fas fa-puzzle-piece',
         type: chrisSettingsModule,
+        restricted: true
+    });
+    game.settings.registerMenu(moduleName, 'Manual Rolling', {
+        name: 'Manual Rolling',
+        label: 'Manual Rolling',
+        hint: 'Settings for manual rolling.',
+        icon: 'fas fa-calculator',
+        type: chrisSettingsManualRolling,
         restricted: true
     });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {

@@ -36,9 +36,10 @@ function syntheticItemWorkflowOptions(targets) {
         'configureDialog': false,
         'versatile': false,
         'consumeResource': false,
+        'consumeRecharge': false,
         'consumeQuantity': false,
         'consumeUsage': false,
-        'consumeSlot': false,
+        'consumeSpellSlot': false,
         'workflowOptions': {
             'autoRollDamage': 'always',
             'autoFastDamage': true

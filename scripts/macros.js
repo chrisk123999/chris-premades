@@ -116,6 +116,7 @@ import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
+import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
@@ -149,9 +150,9 @@ import {sanctuary} from './macros/spells/sanctuary.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
+import {shadowOfMoil} from './macros/spells/shadowOfMoil.js';
 import {shadowSpirit} from './macros/monsterFeatures/shadowSpirit/shadowSpirit.js';
 import {shadowghast} from './macros/monsterFeatures/shadowghast/shadowghast.js';
-import {shadowOfMoil} from './macros/spells/shadowOfMoil.js';
 import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
@@ -397,6 +398,7 @@ export let macros = {
     'maddeningHex': maddeningHex,
     'magicMissile': magicMissile,
     'maneuvers': maneuvers,
+    'manualRolls': manualRolls,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
     'mirrorImage': mirrorImage,
