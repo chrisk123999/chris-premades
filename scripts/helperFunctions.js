@@ -321,7 +321,7 @@ export let chris = {
     'getRollDamageTypes': function _getRollDamageTypes(damageRoll) {
         let types = new Set();
         for (let i of damageRoll.terms) {
-            if (i.flavor != '') types.add(i.flavor);
+            if (i.flavor != '') types.add(i.flavor.toLowerCase());
         }
         return types;
     },

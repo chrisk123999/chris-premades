@@ -25,8 +25,10 @@ let buttons = [
 ];
 async function attackRoll(workflow) {
     if (!workflow.attackRoll) return;
-    let firstOwner = warpgate.util.firstOwner(workflow.token);
-    if (firstOwner.isGM) return;
+    if (game.settings.get('chris-premades', 'Ignore GM')) {
+        let firstOwner = warpgate.util.firstOwner(workflow.token);
+        if (firstOwner.isGM) return;
+    }
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
     if (!queueSetup) return;
     let selection = await warpgate.menu({
@@ -69,8 +71,10 @@ async function attackRoll(workflow) {
 }
 async function damageRoll(workflow) {
     if (!workflow.damageRoll) return;
-    let firstOwner = warpgate.util.firstOwner(workflow.token);
-    if (firstOwner.isGM) return;
+    if (game.settings.get('chris-premades', 'Ignore GM')) {
+        let firstOwner = warpgate.util.firstOwner(workflow.token);
+        if (firstOwner.isGM) return;
+    }
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
     if (!queueSetup) return;
     let damageTypes = new Set([]);
@@ -113,14 +117,16 @@ async function damageRoll(workflow) {
 }
 async function saveRoll(workflow) {
     if (!workflow.saveResults) return;
-    let hasPlayer = false;
-    for (let i of Array.from(workflow.hitTargets)) {
-        let firstOwner = warpgate.util.firstOwner(i);
-        if (firstOwner.isGM) continue;
-        hasPlayer = true;
-        break;
+    if (game.settings.get('chris-premades', 'Ignore GM')) {
+        let hasPlayer = false;
+        for (let i of Array.from(workflow.hitTargets)) {
+            let firstOwner = warpgate.util.firstOwner(i);
+            if (firstOwner.isGM) continue;
+            hasPlayer = true;
+            break;
+        }
+        if (!hasPlayer) return;
     }
-    if (!hasPlayer) return;
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
     if (!queueSetup) return;
     let generatedMenu = [];
