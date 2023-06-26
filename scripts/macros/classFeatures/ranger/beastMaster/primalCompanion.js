@@ -57,8 +57,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'embedded': {
             'Item': {
                 [primalBondData.name]: primalBondData,
-                [dodgeData.name]: dodgeData,
-                'Configure Images': warpgate.CONST.DELETE
+                [dodgeData.name]: dodgeData
             }
         }
     }
@@ -180,14 +179,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         break;
     }
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    updates = mergeObject(updates, updates2, {recursive: true})
+    updates = mergeObject(updates, updates2, {'recursive': true})
     await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
     let updates3 = {
         'embedded': {

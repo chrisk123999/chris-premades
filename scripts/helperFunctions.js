@@ -497,5 +497,8 @@ export let chris = {
             'interval': interval
         }
         return await warpgate.crosshairs.show(options, callbacks);
+    },
+    'getConfiguration': function _getConfiguration(item, key) {
+        return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
     }
 };

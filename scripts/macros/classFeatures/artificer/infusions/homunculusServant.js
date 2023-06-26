@@ -65,6 +65,13 @@ export async function homunculusServant({speaker, actor, token, character, item,
             }
         }
     };
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
+    if (avatarImg) updates.actor.img = avatarImg;
+    let tokenImg = chris.getConfiguration(workflow.item, 'token');
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Homunculus Servant - Command', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');

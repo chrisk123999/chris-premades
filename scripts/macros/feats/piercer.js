@@ -15,7 +15,8 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
         queue.remove(workflow.item.uuid);
         return;
     }
-    let autoPiercer = workflow.actor.flags['chris-premades']?.feat?.piercer?.auto;
+    let autoPiercer = chris.getConfiguration(originItem, 'auto') ?? false;
+    if (autoPiercer) autoPiercer = chris.getConfiguration(originItem, 'reroll') ?? false;
     let lowRoll = null;
     let lowRollDice = null;
     let resultI;

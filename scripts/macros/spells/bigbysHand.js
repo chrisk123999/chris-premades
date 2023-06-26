@@ -61,10 +61,17 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [clenchedFistData.name]: clenchedFistData,
                 [forcefulHandData.name]: forcefulHandData,
                 [graspingHandData.name]: graspingHandData,
-                [interposingHandData.name]: interposingHandData,
+                [interposingHandData.name]: interposingHandData
             }
         }
     };
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
+    if (avatarImg) updates.actor.img = avatarImg;
+    let tokenImg = chris.getConfiguration(workflow.item, 'token');
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     await tashaSummon.spawn(sourceActor, updates, 60, workflow.item);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bigby\'s Hand - Move', false);
     if (!featureData) return;

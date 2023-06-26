@@ -38,6 +38,24 @@ export function registerSettings() {
         'default': true
     });
     addMenuSetting('Priority Queue', 'General');
+    game.settings.register(moduleName, 'Item Replacer Access', {
+        'name': 'Item Replacer Access',
+        'hint': 'If enabled, players can replace their own items.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Item Replacer Access', 'General');
+    game.settings.register(moduleName, 'Item Configuration Access', {
+        'name': 'Item Configuration Access',
+        'hint': 'If enabled, players can configure their own items.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Item Configuration Access', 'General');
     game.settings.register(moduleName, 'Movement Listener', {
         'name': 'Movement Listener',
         'hint': 'This setting allows certain macros from this module to function on token movement.',

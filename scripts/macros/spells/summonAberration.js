@@ -49,13 +49,12 @@ export async function summonAberration({speaker, actor, token, character, item, 
         },
         'embedded': {
             'Item': {
-                [multiAttackFeatureData.name]: multiAttackFeatureData,
-                'Configure Images': warpgate.CONST.DELETE
+                [multiAttackFeatureData.name]: multiAttackFeatureData
             }
         }
     };
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);

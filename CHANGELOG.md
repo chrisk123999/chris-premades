@@ -1,3 +1,9 @@
+# 0.5.20 Release:
+## Update Notes:
+- Added item configuration dialog (accessed via the medkit).  The following items have been updated to make use of this:
+- Animating Performance, Bigby's Hand, Healing Spirit, Homunculus Servant, Hybrid Transformation, Magic Missile, Piercer, Primal Companion, Sneak Attack, Steel Defender, Summon Aberration, Summon Beast, Summon Celestial, Summon Construct, Summon Draconic Spirit, Summon Drake Companion, Summon Elemental, Summon Fey, Summon Fiend, Summon Shadowspawn, Summon Undead, and Tentacle of the Deeps
+- Added the option to allow players to replacer and configure their items.
+  
 # 0.5.19 Release:
 ## Bug Fixes:
 - Scorching Ray

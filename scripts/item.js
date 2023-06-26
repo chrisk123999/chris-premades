@@ -1,6 +1,6 @@
 import {chris} from './helperFunctions.js';
 export function createHeaderButton(config, buttons) {
-    if (config.object instanceof Item) {
+    if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
             class: 'chris-premades',
             icon: 'fa-solid fa-kit-medical',
@@ -39,10 +39,24 @@ async function actorConfig(actor) {
     ui.notifications.info('Actor update complete!');
 }
 async function itemConfig(itemDocument) {
-    if (!itemDocument.actor) {
-        ui.notifications.info('This feature must be used on an item that is on an actor!');
-        return;
+    let replacerAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access');
+    let configurationAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Configuration Access');
+    let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.name];
+    if (replacerAccess && configurationAccess) {
+        let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, [['🔎 Update / Replace', 'update'], ['🛠️ Configure', 'configure']]);
+        if (!selection) return;
+        if (selection === 'update') {
+            await updateItem(itemDocument);
+        } else if (selection === 'configure') {
+            await configureItem(itemDocument, configuration);
+        }
+    } else if (replacerAccess && !configurationAccess) {
+        await updateItem(itemDocument);
+    } else if (!replacerAccess && configurationAccess && configuration) {
+        await configureItem(itemDocument, configuration);
     }
+}
+async function updateItem(itemDocument) {
     let additionalCompendiumString = game.settings.get('chris-premades', 'Additional Compendiums');
     let additionalCompendiums = additionalCompendiumString.split(', ');
     let itemName = itemDocument.name;
@@ -151,9 +165,81 @@ async function itemConfig(itemDocument) {
         'sectionName': itemDocument.flags['custom-character-sheet-sections'].sectionName
     }
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
+    if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');
+}
+async function configureItem(item, configuration) {
+    function dialogRender(html) {
+        let ths = html[0].getElementsByTagName('th');
+        for (let t of ths) {
+            t.style.width = 'auto';
+            t.style.textAlign = 'left';
+        }
+        let tds = html[0].getElementsByTagName('td');
+        for (let t of tds) {
+            t.style.width = '200px';
+            t.style.textAlign = 'right';
+            t.style.paddingRight = '5px';
+        }
+    }
+    let buttons = [,
+        {
+            'label': 'Cancel',
+            'value': false
+        },
+        {
+            'label': 'Ok',
+            'value': true
+        }
+    ];
+    let generatedMenu = [];
+    let inputKeys = [];
+    for (let [key, value] of Object.entries(configuration)) {
+        switch (key) {
+            case 'checkbox':
+            case 'text':
+            case 'number':
+                for (let [key2, value2] of Object.entries(value)) {
+                    generatedMenu.push({
+                        'label': value2.label,
+                        'type': key,
+                        'options': item.flags['chris-premades']?.configuration?.[key2] ?? value2.default
+                    });
+                    inputKeys.push('flags.chris-premades.configuration.' + key2);
+                }
+                break;
+            case 'select':
+                for (let [key2, value2] of Object.entries(value)) {
+                    generatedMenu.push({
+                        'label': value2.label,
+                        'type': 'select',
+                        'options': [{'value': '-', 'html': '-'}].concat(value2.values)
+                    });
+                    inputKeys.push('flags.chris-premades.configuration.' + key2);
+                }
+                break;
+        }
+    }
+    let config = {
+        'title': 'Configure: ' + item.name,
+        'render': dialogRender
+    }
+    let selection = await warpgate.menu(
+        {
+            'inputs': generatedMenu,
+            'buttons': buttons
+        },
+        config
+    );
+    if (!selection.buttons) return;
+    let updates = {};
+    for (let i = 0; i < inputKeys.length; i++) {
+        if (selection.inputs[i] === '-') continue;
+        setProperty(updates, inputKeys[i], selection.inputs[i]);
+    }
+    await item.update(updates);
 }
 export function getItemName(itemName) {
     return CONFIG.chrisPremades.renamedItems[itemName] ?? itemName;
@@ -295,6 +381,491 @@ export function setConfig() {
                         'per': 'lr',
                         'recovery': '',
                         'value': 1
+                    }
+                }
+            }
+        },
+        'itemConfiguration': {
+            'Magic Missile': {
+                'checkbox': {
+                    'homebrew': {
+                        'label': 'Roll multiple dice?',
+                        'default': false
+                    }
+                },
+                'select': {
+                    'color': {
+                        'label': 'What color?',
+                        'default': 'purple',
+                        'values': [
+                            {'value': 'white', 'html': 'White'},
+                            {'value': 'red', 'html': 'Red'},
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'yellow', 'html': 'Yellow'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'purple', 'html': 'Purple'},
+                            {'value': 'cycle', 'html': 'Cycle'},
+                            {'value': 'random', 'html': 'Random'}
+                        ]
+                    }
+                }
+            },
+            'Healing Spirit': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Aberration': {
+                'text': {
+                    'token-beholderkin': {
+                        'label': 'Beholderkin Token:',
+                        'default': ''
+                    },
+                    'avatar-beholderkin': {
+                        'label': 'Beholderkin Avatar:',
+                        'default': ''
+                    },
+                    'token-slaad': {
+                        'label': 'Slaad Token:',
+                        'default': ''
+                    },
+                    'avatar-slaad': {
+                        'label': 'Slaad Avatar:',
+                        'default': ''
+                    },
+                    'token-star-spawn': {
+                        'label': 'Star Spawn Token:',
+                        'default': ''
+                    },
+                    'avatar-star-spawn': {
+                        'label': 'Star Spawn Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Beast': {
+                'text': {
+                    'token-air': {
+                        'label': 'Air Token:',
+                        'default': ''
+                    },
+                    'avatar-air': {
+                        'label': 'Air Avatar:',
+                        'default': ''
+                    },
+                    'token-land': {
+                        'label': 'Land Token:',
+                        'default': ''
+                    },
+                    'avatar-land': {
+                        'label': 'Land Avatar:',
+                        'default': ''
+                    },
+                    'token-water': {
+                        'label': 'Water Token:',
+                        'default': ''
+                    },
+                    'avatar-water': {
+                        'label': 'Water Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Celestial': {
+                'text': {
+                    'token-avenger': {
+                        'label': 'Avenger Token:',
+                        'default': ''
+                    },
+                    'avatar-air': {
+                        'label': 'Avenger Avatar:',
+                        'default': ''
+                    },
+                    'token-defender': {
+                        'label': 'Defender Token:',
+                        'default': ''
+                    },
+                    'avatar-defender': {
+                        'label': 'Defender Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Construct': {
+                'text': {
+                    'token-clay': {
+                        'label': 'Clay Token:',
+                        'default': ''
+                    },
+                    'avatar-clay': {
+                        'label': 'Clay Avatar:',
+                        'default': ''
+                    },
+                    'token-metal': {
+                        'label': 'Metal Token:',
+                        'default': ''
+                    },
+                    'avatar-metal': {
+                        'label': 'Metal Avatar:',
+                        'default': ''
+                    },
+                    'token-stone': {
+                        'label': 'Stone Token:',
+                        'default': ''
+                    },
+                    'avatar-stone': {
+                        'label': 'Stone Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Draconic Spirit': {
+                'text': {
+                    'token-chromatic': {
+                        'label': 'Chromatic Token:',
+                        'default': ''
+                    },
+                    'avatar-chromatic': {
+                        'label': 'Chromatic Avatar:',
+                        'default': ''
+                    },
+                    'token-metallic': {
+                        'label': 'Metallic Token:',
+                        'default': ''
+                    },
+                    'avatar-metallic': {
+                        'label': 'Metallic Avatar:',
+                        'default': ''
+                    },
+                    'token-gem': {
+                        'label': 'Gem Token:',
+                        'default': ''
+                    },
+                    'avatar-gem': {
+                        'label': 'Gem Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Elemental': {
+                'text': {
+                    'token-air': {
+                        'label': 'Air Token:',
+                        'default': ''
+                    },
+                    'avatar-air': {
+                        'label': 'Air Avatar:',
+                        'default': ''
+                    },
+                    'token-earth': {
+                        'label': 'Earth Token:',
+                        'default': ''
+                    },
+                    'avatar-earth': {
+                        'label': 'Earth Avatar:',
+                        'default': ''
+                    },
+                    'token-fire': {
+                        'label': 'Fire Token:',
+                        'default': ''
+                    },
+                    'avatar-fire': {
+                        'label': 'Fire Avatar:',
+                        'default': ''
+                    },
+                    'token-water': {
+                        'label': 'Water Token:',
+                        'default': ''
+                    },
+                    'avatar-water': {
+                        'label': 'Water Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Fey': {
+                'text': {
+                    'token-fuming': {
+                        'label': 'Fuming Token:',
+                        'default': ''
+                    },
+                    'avatar-fuming': {
+                        'label': 'Fuming Avatar:',
+                        'default': ''
+                    },
+                    'token-mirthful': {
+                        'label': 'Mirthful Token:',
+                        'default': ''
+                    },
+                    'avatar-mirthful': {
+                        'label': 'Mirthful Avatar:',
+                        'default': ''
+                    },
+                    'token-tricksy': {
+                        'label': 'Tricksy Token:',
+                        'default': ''
+                    },
+                    'avatar-tricksy': {
+                        'label': 'Tricksy Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Fiend': {
+                'text': {
+                    'token-demon': {
+                        'label': 'Demon Token:',
+                        'default': ''
+                    },
+                    'avatar-demon': {
+                        'label': 'Demon Avatar:',
+                        'default': ''
+                    },
+                    'token-devil': {
+                        'label': 'Devil Token:',
+                        'default': ''
+                    },
+                    'avatar-devil': {
+                        'label': 'Devil Avatar:',
+                        'default': ''
+                    },
+                    'token-yugoloth': {
+                        'label': 'Yugoloth Token:',
+                        'default': ''
+                    },
+                    'avatar-yugoloth': {
+                        'label': 'Yugoloth Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Shadowspawn': {
+                'text': {
+                    'token-fury': {
+                        'label': 'Fury Token:',
+                        'default': ''
+                    },
+                    'avatar-fury': {
+                        'label': 'Fury Avatar:',
+                        'default': ''
+                    },
+                    'token-despair': {
+                        'label': 'Despair Token:',
+                        'default': ''
+                    },
+                    'avatar-despair': {
+                        'label': 'Despair Avatar:',
+                        'default': ''
+                    },
+                    'token-fear': {
+                        'label': 'Fear Token:',
+                        'default': ''
+                    },
+                    'avatar-fear': {
+                        'label': 'Fear Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Undead': {
+                'text': {
+                    'token-ghostly': {
+                        'label': 'Ghostly Token:',
+                        'default': ''
+                    },
+                    'avatar-ghostly': {
+                        'label': 'Ghostly Avatar:',
+                        'default': ''
+                    },
+                    'token-putrid': {
+                        'label': 'Putrid Token:',
+                        'default': ''
+                    },
+                    'avatar-putrid': {
+                        'label': 'Putrid Avatar:',
+                        'default': ''
+                    },
+                    'token-skeletal': {
+                        'label': 'Skeletal Token:',
+                        'default': ''
+                    },
+                    'avatar-skeletal': {
+                        'label': 'Skeletal Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Bigby\'s Hand': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Animating Performance': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Drake Companion: Summon': {
+                'text': {
+                    'token-acid': {
+                        'label': 'Acid Token:',
+                        'default': ''
+                    },
+                    'avatar-acid': {
+                        'label': 'Acid Avatar:',
+                        'default': ''
+                    },
+                    'token-cold': {
+                        'label': 'Cold Token:',
+                        'default': ''
+                    },
+                    'avatar-cold': {
+                        'label': 'Cold Avatar:',
+                        'default': ''
+                    },
+                    'token-fire': {
+                        'label': 'Fire Token:',
+                        'default': ''
+                    },
+                    'avatar-fire': {
+                        'label': 'Fire Avatar:',
+                        'default': ''
+                    },
+                    'token-lightning': {
+                        'label': 'Lightning Token:',
+                        'default': ''
+                    },
+                    'avatar-lightning': {
+                        'label': 'Lightning Avatar:',
+                        'default': ''
+                    },
+                    'token-poison': {
+                        'label': 'Poison Token:',
+                        'default': ''
+                    },
+                    'avatar-poison': {
+                        'label': 'Poison Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Create Homunculus Servant': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Primal Companion': {
+                'text': {
+                    'token-land': {
+                        'label': 'Land Token:',
+                        'default': ''
+                    },
+                    'avatar-land': {
+                        'label': 'Land Avatar:',
+                        'default': ''
+                    },
+                    'token-sea': {
+                        'label': 'Sea Token:',
+                        'default': ''
+                    },
+                    'avatar-sea': {
+                        'label': 'Sea Avatar:',
+                        'default': ''
+                    },
+                    'token-sky': {
+                        'label': 'Sky Token:',
+                        'default': ''
+                    },
+                    'avatar-sky': {
+                        'label': 'Sky Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Tentacle of the Deeps: Summon': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Steel Defender': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Piercer: Reroll Damage': {
+                'checkbox': {
+                    'auto': {
+                        'label': 'Auto Reroll?',
+                        'default': false
+                    }
+                },
+                'number': {
+                    'reroll': {
+                        'label': 'Auto reroll at:',
+                        'default': 1
+                    }
+                }
+            },
+            'Hybrid Transformation': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Sneak Attack': {
+                'checkbox': {
+                    'auto': {
+                        'label': 'Auto Sneak Attack?',
+                        'default': false
                     }
                 }
             }

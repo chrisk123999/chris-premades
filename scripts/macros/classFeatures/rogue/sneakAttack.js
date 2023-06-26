@@ -30,7 +30,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!doSneak) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'sneakAttack', 215);
     if (!queueSetup) return;
-    let autoSneak = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.auto;
+    let autoSneak = chris.getConfiguration(originFeature, 'auto') ?? false;
     if (!autoSneak) {
         let selection = await chris.dialog('Use sneak attack?', [['Yes', true], ['No', false]]);
         if (!selection) {

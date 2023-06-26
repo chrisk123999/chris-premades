@@ -54,13 +54,12 @@ export async function summonConstruct({speaker, actor, token, character, item, a
         'embedded': {
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
-                [slamData.name]: slamData,
-                'Configure Images': warpgate.CONST.DELETE
+                [slamData.name]: slamData
             }
         }
     };
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);

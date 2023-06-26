@@ -154,13 +154,12 @@ async function transformation({speaker, actor, token, character, item, args, sco
             }
         }
     };
-    let image = workflow.actor.flags['chris-premades']?.feature?.hybridTransformation?.img;
-    if (image != '') {
-        updates.token = {
-            'texture': {
-                'src': image
-            }
-        }
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
+    if (avatarImg) updates.actor.img = avatarImg;
+    let tokenImg = chris.getConfiguration(workflow.item, 'token');
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
     }
     let options = {
         'permanent': false,

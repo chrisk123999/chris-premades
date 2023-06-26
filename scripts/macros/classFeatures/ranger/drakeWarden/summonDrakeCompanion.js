@@ -97,8 +97,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [biteData.name]: biteData,
                 [dodgeData.name]: dodgeData,
                 [essenceData.name]: essenceData,
-                [strikesData.name]: strikesData,
-                'Configure Images': warpgate.CONST.DELETE
+                [strikesData.name]: strikesData
             }
         }
     }
@@ -113,8 +112,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             setProperty(resistanceData, 'flags.midi-qol.onUseMacroName', (resistanceMacro + 'Summon'));
             setProperty(updates, 'embedded.Item.Reflexive Resistance', resistanceData);
     }
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);

@@ -45,6 +45,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
+    if (avatarImg) updates.actor.img = avatarImg;
+    let tokenImg = chris.getConfiguration(workflow.item, 'token');
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
+    }
     let options = {
         'controllingActor': workflow.token.actor
     };

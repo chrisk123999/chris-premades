@@ -33,7 +33,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
     }
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     delete featureData._id;
-    if (!game.settings.get('chris-premades', 'Magic Missile Toggle')) {
+    if (!game.settings.get('chris-premades', 'Magic Missile Toggle') && !chris.getConfiguration(workflow.item, 'homebrew')) {
         let damageRoll = await new Roll('1d4[force] + 1').roll({async: true});
         damageRoll.toMessage({
             rollMode: 'roll',
@@ -49,11 +49,33 @@ export async function magicMissile({speaker, actor, token, character, item, args
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let options = constants.syntheticItemWorkflowOptions([]);
+    let colors = [
+        'grey',
+        'dark_red',
+        'orange',
+        'yellow',
+        'green',
+        'blue',
+        'purple'
+    ];
+    let colorSelection = chris.getConfiguration(workflow.item, 'color') ?? 'purple';
+    if (colorSelection === 'random' || colorSelection === 'cycle') await Sequencer.Preloader.preload('jb2a.magic_missile');
+    let lastColor = Math.floor(Math.random() * colors.length);
     for (let i = 0; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i]) || selection.inputs[i] === 0) continue;
         options.targetUuids = [targets[i].document.uuid];
-        new Sequence().effect().file('jb2a.magic_missile.purple').atLocation(workflow.token).stretchTo(targets[i]).repeats(selection.inputs[i], 200, 200).randomizeMirrorY().play();
         for (let j = 0; j < selection.inputs[i]; j++) {
+            let path = 'jb2a.magic_missile.';
+            if (colorSelection === 'random') {
+                path += colors[Math.floor((Math.random() * colors.length))];
+            } else if (colorSelection === 'cycle') {
+                path += colors[lastColor];
+                lastColor++;
+                if (lastColor >= colors.length) lastColor = 0;
+            } else {
+                path += colorSelection;
+            }
+            new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targets[i]).randomizeMirrorY().play();
             await MidiQOL.completeItemUse(feature, {}, options);
         }
     }

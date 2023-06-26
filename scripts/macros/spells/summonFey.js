@@ -60,13 +60,12 @@ export async function summonFey({speaker, actor, token, character, item, args, s
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
                 [feyStepData.name]: feyStepData,
-                [shortSwordData.name]: shortSwordData,
-                'Configure Images': warpgate.CONST.DELETE
+                [shortSwordData.name]: shortSwordData
             }
         }
     };
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);

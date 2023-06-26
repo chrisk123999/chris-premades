@@ -63,8 +63,7 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
             'Item': {
                 [multiAttackFeatureData.name]: multiAttackFeatureData,
                 [rendData.name]: rendData,
-                [breathData.name]: breathData,
-                'Configure Images': warpgate.CONST.DELETE
+                [breathData.name]: breathData
             }
         }
     };
@@ -97,8 +96,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
             }
         }
     }
-    let avatarImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.avatar;
-    let tokenImg = sourceActor.flags['chris-premades']?.summon?.image?.[selection]?.token;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
