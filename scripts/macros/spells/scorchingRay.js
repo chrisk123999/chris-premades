@@ -26,7 +26,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Scorching Ray Bolt', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Scorching Ray Bolt');
-    featureData.system.ability = chris.getSpellMod(workflow.item);
+    featureData.system.ability = workflow.item.system.ability;
     featureData.flags['chris-premades'] = {
         'spell': {
             'castData': workflow.castData
@@ -35,6 +35,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    console.log(feature);
     let options = constants.syntheticItemWorkflowOptions([]);
     for (let i = 0; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i]) || selection.inputs[i] === 0) continue;

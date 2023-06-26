@@ -1,3 +1,7 @@
+# 0.5.19 Release:
+## Bug Fixes:
+- Scorching Ray
+  
 # 0.5.18 Release:
 ## Bug Fixes:
 - Fixed setting check when Item Macro is not active.
