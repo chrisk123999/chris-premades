@@ -1,3 +1,7 @@
+# 0.5.18 Release:
+## Bug Fixes:
+- Fixed setting check when Item Macro is not active.
+  
 # 0.5.17 Release:
 ## Bug Fixes:
 - Manual Rolls

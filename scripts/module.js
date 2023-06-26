@@ -90,7 +90,9 @@ Hooks.once('ready', async function() {
         }
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
-        if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
+        if (game.modules.get('itemacro')?.active) {
+            if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');
+        }
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
         if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
         game.settings.set('chris-premades', 'LastGM', game.user.id);
