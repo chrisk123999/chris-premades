@@ -1,3 +1,7 @@
+# 0.5.21 Release:
+## Bug Fixes:
+- Dragon Vessel
+  
 # 0.5.20 Release:
 ## Update Notes:
 - Added item configuration dialog (accessed via the medkit).  The following items have been updated to make use of this:

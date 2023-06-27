@@ -5,7 +5,8 @@ export async function dragonVessel({speaker, actor, token, character, item, args
     let options = [
         ['Ale', false],
         ['Olive Oil', false],
-        ['Potion of Healing (Normal)', 'Potion of Healing (Normal)']
+        ['Potion of Healing (Normal)', 'Potion of Healing (Normal)'],
+        ['Potion of Climbing', 'Potion of Climbing']
     ];
     if (level > 0) {
         options.push(['Mead', false]);
