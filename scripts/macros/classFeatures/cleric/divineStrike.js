@@ -23,39 +23,41 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageType;
-    switch (subClassIdentifier) {
-        case 'death-domain':
-            damageType = 'necrotic';
-            break;
-        case 'forge-domain':
-            damageType = 'fire';
-            break;
-        case 'light-domain':
-            damageType = 'radiant';
-            break;
-        case 'nature-domain':
-            damageType = await chris.dialog('What damage type?', [['Acid', 'acid'], ['Cold', 'cold'], ['Fire', 'fire'], ['Lightning', 'lightning'], ['Thunder', 'thunder']]);
-            if (!damageType) {
-                queue.remove(workflow.item.uuid);
-                return;
-            }
-            break;
-        case 'order-domain':
-            damageType = 'psychic';
-            break;
-        case 'tempest-domain':
-            damageType = 'thunder';
-            break;
-        case 'trickery-domain':
-            damageType = 'poison';
-            break;
-        case 'war-domain':
-            damageType = workflow.defaultDamageType;
-            break;
-        default:
-            damageType = 'radiant';
-            break;
+    let damageType = chris.getConfiguration(feature, 'damageType');
+    if (!damageType || damageType === 'default') {
+        switch (subClassIdentifier) {
+            case 'death-domain':
+                damageType = 'necrotic';
+                break;
+            case 'forge-domain':
+                damageType = 'fire';
+                break;
+            case 'light-domain':
+                damageType = 'radiant';
+                break;
+            case 'nature-domain':
+                damageType = await chris.dialog('What damage type?', [['Acid', 'acid'], ['Cold', 'cold'], ['Fire', 'fire'], ['Lightning', 'lightning'], ['Thunder', 'thunder']]);
+                if (!damageType) {
+                    queue.remove(workflow.item.uuid);
+                    return;
+                }
+                break;
+            case 'order-domain':
+                damageType = 'psychic';
+                break;
+            case 'tempest-domain':
+                damageType = 'thunder';
+                break;
+            case 'trickery-domain':
+                damageType = 'poison';
+                break;
+            case 'war-domain':
+                damageType = workflow.defaultDamageType;
+                break;
+            default:
+                damageType = 'radiant';
+                break;
+        }
     }
     if (classLevels >= 14) diceNumber += 1;
     let bonusDamageFormula = diceNumber + 'd8[' + damageType + ']';

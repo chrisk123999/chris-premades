@@ -868,6 +868,72 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Change Season': {
+                'checkbox': {
+                    'showIcon': {
+                        'label': 'Hide effect icon?',
+                        'default': false
+                    }
+                },
+                'text': {
+                    'token-spring': {
+                        'label': 'Spring Token:',
+                        'default': ''
+                    },
+                    'avatar-spring': {
+                        'label': 'Spring Avatar:',
+                        'default': ''
+                    },
+                    'token-summer': {
+                        'label': 'Summer Token:',
+                        'default': ''
+                    },
+                    'avatar-summer': {
+                        'label': 'Summer Avatar:',
+                        'default': ''
+                    },
+                    'token-autumn': {
+                        'label': 'Autumn Token:',
+                        'default': ''
+                    },
+                    'avatar-autumn': {
+                        'label': 'Autumn Avatar:',
+                        'default': ''
+                    },
+                    'token-winter': {
+                        'label': 'Winter Token:',
+                        'default': ''
+                    },
+                    'avatar-winter': {
+                        'label': 'Winter Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Divine Strike': {
+                'select': {
+                    'damageType': {
+                        'label': 'Override damage type?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'acid', 'html': 'Acid'},
+                            {'value': 'bludgeoning', 'html': 'Bludgeoning'},
+                            {'value': 'cold', 'html': 'Cold'},
+                            {'value': 'fire', 'html': 'Fire'},
+                            {'value': 'force', 'html': 'Force'},
+                            {'value': 'lightning', 'html': 'Lightning'},
+                            {'value': 'necrotic', 'html': 'Necrotic'},
+                            {'value': 'piercing', 'html': 'Piercing'},
+                            {'value': 'poison', 'html': 'Poison'},
+                            {'value': 'psychic', 'html': 'Psychic'},
+                            {'value': 'radiant', 'html': 'Radiant'},
+                            {'value': 'slashing', 'html': 'Slashing'},
+                            {'value': 'thunder', 'html': 'Thunder'}
+                        ]
+                    }
+                }
             }
         }
     });

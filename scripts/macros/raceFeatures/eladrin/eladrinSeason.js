@@ -46,8 +46,8 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
             }
         }
     }
-    let tokenArt = workflow.actor.flags['chris-premades']?.race?.eladrin?.art?.token?.[selection];
-    let avatarArt = workflow.actor.flags['chris-premades']?.race?.eladrin?.art?.avatar?.[selection];
+    let hideIcon = chris.getConfiguration(workflow.item, 'showIcon');
+    if (hideIcon) effectData.icon = '';
     let updates = {
         'embedded': {
             'ActiveEffect': {
@@ -55,23 +55,12 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
             }
         }
     };
-    if (tokenArt != '' && tokenArt) {
-        updates.token = {
-            'texture': {
-                'src': tokenArt
-            }
-        }
-        updates.actor = {
-            'prototypeToken': {
-                'texture': {
-                    'src': tokenArt
-                }
-            }
-        }
-    }
-    if (avatarArt != '' && avatarArt) {
-        if (!updates.actor) updates.actor = {};
-        updates.actor.img = avatarArt;
+    let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
+    let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        setProperty(updates, 'token.texture.src', tokenImg);
     }
     if (workflow.actor.system.details.level >= 3) {
         let featureData = await chris.getItemFromCompendium('chris-premades.CPR Race Feature Items', 'Fey Step (' + selection + ')', false);
