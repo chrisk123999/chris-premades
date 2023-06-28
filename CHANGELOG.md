@@ -1,6 +1,6 @@
 # 0.5.22 Release:
 ## Update Notes:
-- Added configuration dialoge for the following items:
+- Added configuration dialog for the following items:
 - Eladrin Change Season and Divine Strike
   
 # 0.5.21 Release:
