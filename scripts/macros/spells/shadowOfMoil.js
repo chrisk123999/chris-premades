@@ -1,5 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function hook(workflow) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first().document;
@@ -24,6 +25,8 @@ async function hook(workflow) {
     if ((sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance)) sourceCanSeeTarget = true;
     if ((targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance)) targetCanSeeSource = true;
     if (sourceCanSeeTarget && targetCanSeeSource) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'shadowOfMoil', 50);
+    if (!queueSetup) return;
     if (sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
         workflow.attackAdvAttribution.add('Shadow of Moil: Target Can\'t See Source');
@@ -38,7 +41,7 @@ async function hook(workflow) {
         workflow.disadvantage = true;
         workflow.attackAdvAttribution.add('Shadow of Moil: Target And Source Can\'t See Eachother');
     }
-    console.log(workflow);
+    queue.remove(workflow.item.uuid);
 }
 async function onHit(workflow, targetToken) {
     if (workflow.hitTargets.size === 0) return;

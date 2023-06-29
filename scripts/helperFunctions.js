@@ -115,7 +115,7 @@ export let chris = {
                 dispositionValue = null;
         }
         let options = {'includeIncapacitated': includeIncapacitated};
-        return MidiQOL.findNearby(dispositionValue, tokenDoc, range, options);
+        return MidiQOL.findNearby(dispositionValue, tokenDoc, range, options).filter(i => !i.document.hidden);
     },
     'addToRoll': async function _addToRoll(roll, addonFormula) {
         let addonFormulaRoll = await new Roll('0 + ' + addonFormula).evaluate({async: true});

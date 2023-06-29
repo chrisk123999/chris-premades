@@ -1,3 +1,22 @@
+# 0.5.24 Release:
+## New Content:
+- Spell: Chromatic Orb
+## New Monster Content:
+- Many Creatures: Pack Tactics
+- Kobold Scale Sorcerer: Chromatic Bolt
+## Bug Fixes:
+- Bestow Curse
+- Chill Touch
+- Darkness
+- Fog Cloud
+- Hybrid Transformation
+- Protection from Evil and Good
+- Shadow of Moil
+- Storm Sphere
+- Suffering Echoes
+- Terror Frenzy
+- Wildhunt
+  
 # 0.5.23 Release:
 ## New Content:
 - Warlock Invocation: Eldritch Smite
@@ -337,7 +356,7 @@
 - Rogue: Sneak Attack
 - Swashbuckler Rogue: Rakish Audacity
 ## New Monster Content:
-- Andras, Assassin, Bag of Nails, Black Viper, Corrin Delmaco, Dark Tide Knight,Darz Helgar, Droki, Drow Assassin, Duergar Spy, Garret Levistusson, Ghald, Grumink the Renegade, Half-Green Dragon Assassin, Jarlaxle Baenre, Khalessa Draga, Lords' Alliance Spy, Master Thief, Mirt, Obmi, Orvex Ocrammas, Portentia Dran, Raezil, Samara Strongbones, Shalvus Martholio, Spy, Torbit, Two Dry Cloaks, Urstul Floxin, and Viari: Sneak Attack
+- Many Creatures: Sneak Attack
 ## Bug Fixes:
 - Hunter's Mark
   

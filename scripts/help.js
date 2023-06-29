@@ -36,7 +36,7 @@ let optionalModules = [
     'foundryvtt-simple-calendar',
     'fxmaster',
     'itemacro',
-    'jb2a_dnd5e',
+    'JB2A_DnD5e',
     'jb2a_patreon',
     'quick-insert',
     'smalltime',

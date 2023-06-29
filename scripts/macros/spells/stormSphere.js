@@ -1,5 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.templateUuid) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);
@@ -124,8 +125,11 @@ async function boltAttackItem({speaker, actor, token, character, item, args, sco
     if (!template) return;
     let targetToken = workflow.targets.first();
     if (!chris.tokenInTemplate(targetToken.document, template)) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'stormSphere', 50);
+    if (!queueSetup) return;
     workflow.advantage = true;
     workflow.attackAdvAttribution.add('Advantage: Storm Sphere');
+    queue.remove(workflow.item.uuid);
 }
 async function turnStart(actor, effect) {
     let previousTurnId = game.combat.previous.tokenId;

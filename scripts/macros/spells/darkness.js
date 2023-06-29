@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function darknessItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);
@@ -55,6 +56,8 @@ async function darknessHook(workflow) {
     if ((sourceDS && distance <= 120) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance)) sourceCanSeeTarget = true;
     if ((targetDS && distance <= 120) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance)) targetCanSeeSource = true;
     if (sourceCanSeeTarget && targetCanSeeSource) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'darkness', 50);
+    if (!queueSetup) return;
     if (sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
         workflow.attackAdvAttribution.add('Darkness: Target Can\'t See Source');
@@ -69,6 +72,7 @@ async function darknessHook(workflow) {
         workflow.disadvantage = true;
         workflow.attackAdvAttribution.add('Darkness: Target And Source Can\'t See Eachother');
     }
+    queue.remove(workflow.item.uuid);
 }
 export let darkness = {
     'item': darknessItem,

@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let templateData = {
         't': 'circle',
@@ -79,6 +80,8 @@ async function hook(workflow) {
     if ((sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance)) sourceCanSeeTarget = true;
     if ((targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance)) targetCanSeeSource = true;
     if (sourceCanSeeTarget && targetCanSeeSource) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'fogCloud', 50);
+    if (!queueSetup) return;
     if (sourceCanSeeTarget && !targetCanSeeSource) {
         workflow.advantage = true;
         workflow.attackAdvAttribution.add('Fog Cloud: Target Can\'t See Source');
@@ -93,6 +96,7 @@ async function hook(workflow) {
         workflow.disadvantage = true;
         workflow.attackAdvAttribution.add('Fog Cloud: Target And Source Can\'t See Eachother');
     }
+    queue.remove(workflow.item.uuid);
 }
 export let fogCloud = {
     'item': item,

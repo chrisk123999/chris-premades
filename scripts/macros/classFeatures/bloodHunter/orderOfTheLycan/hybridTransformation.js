@@ -179,7 +179,7 @@ async function voracious({speaker, actor, token, character, item, args, scope, w
     let queueSetup = await queue.setup(workflow.item.uuid, 'voracious',150);
     if (!queueSetup) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution.add('Brand of the Voracious');
+    workflow.attackAdvAttribution.add('Advantage: Brand of the Voracious');
     queue.remove(workflow.item.uuid);
 }
 export let hybridTransformation = {

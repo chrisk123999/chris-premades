@@ -45,6 +45,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Chain Lightning  
 - Charm Person  
 - Chill Touch  
+- Chromatic Orb  
 - Cloudkill  
 - Crown of Madness  
 - Crusaders's Mantle  

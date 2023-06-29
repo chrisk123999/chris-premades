@@ -34,9 +34,9 @@ export async function sufferingEchoes({speaker, actor, token, character, item, a
         flavor: workflow.item.name
     });
     await chris.applyDamage(nearbyTargets, damageRoll.total, 'psychic');
-    new Sequence().effect().atLocation(workflow.token).stretchTo(workflow.targets.first()).file('jb2a.eldritch_blast.purple.30ft').play();
+    new Sequence().effect().atLocation(workflow.token).stretchTo(workflow.targets.first()).file('jb2a.eldritch_blast.purple').play();
     await warpgate.wait(1000);
     for (let i of nearbyTargets) {
-        new Sequence().effect().atLocation(workflow.targets.first()).stretchTo(i).file('jb2a.eldritch_blast.purple.30ft').play();
+        new Sequence().effect().atLocation(workflow.targets.first()).stretchTo(i).file('jb2a.eldritch_blast.purple').play();
     }
 }
