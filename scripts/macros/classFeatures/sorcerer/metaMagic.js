@@ -156,8 +156,7 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
         ui.notifications.warn('No Sorcery Points Available!');
         return;
     }
-    let max = workflow.actor.system.abilities?.cha?.mod;
-    if (!max) return;
+    let max = workflow.actor.system.abilities.cha.mod;
     let selectedTargets = Array.from(workflow.targets);
     let buttons = [
         {
@@ -274,11 +273,7 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
         let optionsPush = [];
         for (let i = 0; arr.length > i; i++) {
             if (typeof arr[i] != 'string') return;
-            let firstLetter = arr[i].charAt(0);
-            let firstLetterCap = firstLetter.toUpperCase();
-            let remainingLetters = arr[i].slice(1);
-            let capitalizedWord = firstLetterCap + remainingLetters;
-            optionsPush.push([capitalizedWord, arr[i]]);
+            optionsPush.push([arr[i].charAt(0).toUpperCase() + arr[i].slice(1), arr[i]]);
         }
         return optionsPush;
     }
@@ -301,7 +296,7 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);
 }
-async function twinnedSpell ({speaker, actor, token, character, item, args, scope, workflow}) {
+async function twinnedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     if (workflow.item.type != 'spell' || workflow.item.system.range.units === 'self' || workflow.item.flags['chris-premades']?.metaMagic) return;
     let spellLevel = workflow.castData?.castLevel;
@@ -317,8 +312,11 @@ async function twinnedSpell ({speaker, actor, token, character, item, args, scop
     }
     let itemRange = workflow.item.system?.range?.value;
     if (!itemRange) {
-        if (workflow.item.system.range.units === 'touch') itemRange = 5;
-        else return;
+        if (workflow.item.system.range.units === 'touch') {
+            itemRange = 5;
+        } else {
+            return;
+        }
     }
     let actionType = workflow.item.system.actionType;
     if (!actionType) return;
@@ -374,10 +372,10 @@ async function twinnedSpell ({speaker, actor, token, character, item, args, scop
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(spell, {}, options);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - spellLevel});
-        if (workflow.item.system.components.concentration) {
-            let concentrationsTargets = workflow.actor?.flags['midi-qol']['concentration-data']?.targets;
-            concentrationsTargets.splice(0, 0, {tokenUuid: targetTokenUuid, actorUuid: targetTokenUuid});
-            await workflow.actor.setFlag("midi-qol", "concentration-data.targets", concentrationsTargets);
+    if (workflow.item.system.components.concentration) {
+        let concentrationsTargets = workflow.actor?.flags['midi-qol']['concentration-data']?.targets;
+        concentrationsTargets.splice(0, 0, {'tokenUuid': targetTokenUuid, 'actorUuid': targetTokenUuid});
+        await workflow.actor.setFlag('midi-qol', 'concentration-data.targets', concentrationsTargets);
     }
     queue.remove(workflow.item.uuid);
 }
