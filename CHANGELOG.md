@@ -1,3 +1,7 @@
+# 0.5.24 Release:
+## New Content:
+- Order of Scribes Wizard: Awakened Spellbook
+
 # 0.5.23 Release:
 ## New Content:
 - Warlock Invocation: Eldritch Smite

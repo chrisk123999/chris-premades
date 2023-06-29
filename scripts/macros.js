@@ -12,6 +12,7 @@ import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
+import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
@@ -120,6 +121,7 @@ import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.j
 import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
+import {metaMagic} from './macros/classFeatures/sorcerer/metaMagic.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
@@ -321,6 +323,7 @@ export let macros = {
     'auraOfProtection': auraOfProtection,
     'auraOfPurity': auraOfPurity,
     'auraOfVitality': auraOfVitality,
+    'awakenedSpellbook': awakenedSpellbook,
     'balmOfPeace': balmOfPeace,
     'bardicInspiration': bardicInspiration,
     'beaconOfHope': beaconOfHope,
@@ -403,6 +406,7 @@ export let macros = {
     'manualRolls': manualRolls,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
+    'metaMagic': metaMagic,
     'mirrorImage': mirrorImage,
     'monster': monster,
     'moonbeam': moonbeam,
