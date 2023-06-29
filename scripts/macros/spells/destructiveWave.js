@@ -1,8 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function destructiveWave({speaker, actor, token, character, item, args, scope, workflow}) {
-    console.log(workflow);
-    console.log(workflow.failedSaves);
     if (!(workflow.failedSaves.size > 0)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'destructiveWave', 50);
     if (!queueSetup) return;
