@@ -1,3 +1,7 @@
+# 0.5.23 Release:
+## New Content:
+- Warlock Invocation: Eldritch Smite
+  
 # 0.5.22 Release:
 ## Update Notes:
 - Added configuration dialog for the following items:

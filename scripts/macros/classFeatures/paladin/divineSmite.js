@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
 export async function divineSmite({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.hitTargets.size != 1 || workflow.item.type != 'weapon') return;
+    if (workflow.hitTargets.size != 1) return;
     if (workflow.item.name === 'Unarmed Strike' && !game.settings.get('chris-premades', 'Unarmed Strike Smite')) return;
     let validTypes = ['martialM', 'simpleM'];
     if (game.settings.get('chris-premades', 'Ranged Smite')) {
@@ -9,8 +9,6 @@ export async function divineSmite({speaker, actor, token, character, item, args,
         validTypes.push('simpleR');
     }
     if (!validTypes.includes(workflow.item.system.weaponType)) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
-    if (!queueSetup) return;
     let spells = workflow.actor.system.spells;
     let pactSlots = spells.pact.value;
     let pactLevel = spells.pact.level;
@@ -24,6 +22,8 @@ export async function divineSmite({speaker, actor, token, character, item, args,
     let spell8 = spells.spell8.value;
     let spell9 = spells.spell9.value;
     if (pactSlots + spell1 + spell2 + spell3 + spell4 + spell5 + spell6 + spell7 + spell8 + spell9 === 0) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
+    if (!queueSetup) return;
     let menuOptions = [];
     if (pactSlots > 0) menuOptions.push(['Pact (' + pactLevel + ')', 'p']);
     if (spell1 > 0) menuOptions.push(['1st Level', 1]);
