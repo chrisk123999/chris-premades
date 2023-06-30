@@ -934,6 +934,62 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Regeneration': {
+                'checkbox': {
+                    'acid': {
+                        'label': 'Acid damage prevents healing?',
+                        'default': false
+                    },
+                    'bludgeoning': {
+                        'label': 'Bludgeoning damage prevents healing?',
+                        'default': false
+                    },
+                    'cold': {
+                        'label': 'Cold damage prevents healing?',
+                        'default': false
+                    },
+                    'fire': {
+                        'label': 'Fire damage prevents healing?',
+                        'default': false
+                    },
+                    'force': {
+                        'label': 'Force damage prevents healing?',
+                        'default': false
+                    },
+                    'lightning': {
+                        'label': 'Lightning damage prevents healing?',
+                        'default': false
+                    },
+                    'piercing': {
+                        'label': 'Piercing damage prevents healing?',
+                        'default': false
+                    },
+                    'poison': {
+                        'label': 'Poison damage prevents healing?',
+                        'default': false
+                    },
+                    'psychic': {
+                        'label': 'Psychic damage prevents healing?',
+                        'default': false
+                    },
+                    'radiant': {
+                        'label': 'Radiant damage prevents healing?',
+                        'default': false
+                    },
+                    'slashing': {
+                        'label': 'Slashing damage prevents healing?',
+                        'default': false
+                    },
+                    'thunder': {
+                        'label': 'Thunder damage prevents healing?',
+                        'default': false
+                    },
+                    'zeroHP': {
+                        'label': 'Don\'t regenerate at zero HP?',
+                        'default': false
+                    }
+                }
             }
         }
     });

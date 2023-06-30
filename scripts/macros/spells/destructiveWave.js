@@ -1,14 +1,21 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 export async function destructiveWave({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (!(workflow.failedSaves.size > 0)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'destructiveWave', 50);
     if (!queueSetup) return;
     let selection = await chris.dialog('What damage type?', [['Radiant', 'radiant'], ['Necrotic', 'necrotic']]);
     if (!selection) selection = 'radiant';
+    let animation = 'jb2a.thunderwave.center.blue';
+    if (game.modules.get('jb2a_patreon')?.active) {
+        if (selection === 'radiant') {
+            animation = 'jb2a.thunderwave.center.dark_purple';
+        } else {
+            animation = 'jb2a.thunderwave.center.orange'
+        }
+    }
+    new Sequence().effect().atLocation(workflow.token).file(animation).scale(2.2).playbackRate(0.5).play();
     let damageFormula = workflow.damageRoll._formula.replace('none', selection);
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
-    new Sequence().effect().atLocation(workflow.token).file('jb2a.thunderwave.center.blue').scale(2.2).playbackRate(0.5).play();
     queue.remove(workflow.item.uuid);
 }

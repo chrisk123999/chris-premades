@@ -46,8 +46,14 @@ function syntheticItemWorkflowOptions(targets) {
         }
     };
 }
+let damageTypes;
+function damageTypeMenu() {
+    if (!damageTypes) damageTypes = Object.entries(CONFIG.DND5E.damageTypes).filter(i => i[0] != 'midi-none').map(j => [j[1], j[0]]);
+    return damageTypes;
+}
 export let constants = {
     'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
     'disadvantageEffectData': disadvantageEffectData,
-    'advantageEffectData': advantageEffectData
+    'advantageEffectData': advantageEffectData,
+    'damageTypeMenu': damageTypeMenu
 }

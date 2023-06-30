@@ -209,12 +209,13 @@ import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {chromaticOrb} from './macros/spells/chromaticOrb.js';
+import {troll} from './macros/monsterFeatures/troll/troll.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
         let onHitName = token.actor.flags['chris-premades']?.feature?.onHit;
         if (!onHitName) return;
-        if (token.document.uuid === workflow.token.document.uuid) return;
+        if (token.id === workflow.token.id) return;
         let onHitFunction = macros.onHit[onHitName];
         if (typeof onHitFunction != 'function') {
             ui.notifications.warn('Invalid actor onHit macro!');
@@ -266,7 +267,8 @@ let monster = {
     'troglodyte': troglodyte,
     'undeadSpirit': undeadSpirit,
     'zombie': zombie,
-    'kobold': kobold
+    'kobold': kobold,
+    'troll': troll
 }
 let onHit = {
     'blackrazor': blackrazor.onHit,
@@ -274,7 +276,8 @@ let onHit = {
     'heatedBody': fireSnake.heatedBody,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit
+    'wardingBond': wardingBond.onHit,
+    'regeneration': monster.troll.regeneration.onHit
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
     switch (macroName) {
