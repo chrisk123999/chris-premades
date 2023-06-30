@@ -3,7 +3,7 @@ async function postHit({speaker, actor, token, character, item, args, scope, wor
     if (workflow.hitTargets.size != 1) return;
     let target = workflow.hitTargets.first();
     let effectData = {
-        'label': 'Grell Tentacles Grapple (Escape DC 15)',
+        'label': 'Grell Tentacles Grapple',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 86400
@@ -24,14 +24,14 @@ async function postHit({speaker, actor, token, character, item, args, scope, wor
                 ]
             }
         }
-    }
+    };
     if (chris.getSize(target.actor) <= chris.sizeStringValue('medium')) {
         let restrainedData = {
             'key': 'macro.CE',
             'mode': 0,
             'value': 'Restrained',
             'priority': 20
-        }
+        };
         effectData.changes.push(restrainedData);
     }
     await chris.createEffect(target.actor, effectData);
@@ -39,7 +39,7 @@ async function postHit({speaker, actor, token, character, item, args, scope, wor
 async function preHit({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let target = workflow.targets.first();
-    let effect = chris.findEffect(target.actor, 'Grell Tentacles Grapple (Escape DC 15)');
+    let effect = chris.findEffect(target.actor, 'Grell Tentacles Grapple');
     if (!effect) return;
     let effectData = {
         'label': 'Grell Tentacles Advantage',

@@ -98,16 +98,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetTokenUuid = workflow.item.flags['chris-premades']?.spell?.wardingBond?.targetUuid;
     if (!targetTokenUuid) return;
-    console.log('here');
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
-    console.log('here');
     let targetEffect = chris.findEffect(targetToken.actor, 'Warding Bond - Target');
     if (targetEffect) await chris.removeEffect(targetEffect);
-    console.log('Warding Bond: ' + targetToken.actor.name);
     let sourceEffect = chris.findEffect(workflow.actor, 'Warding Bond: ' + targetToken.actor.name);
     if (!sourceEffect) return;
-    console.log('here');
     await chris.removeEffect(sourceEffect);
 }
 async function onHit(workflow, targetToken) {

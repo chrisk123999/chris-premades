@@ -17,6 +17,7 @@ import {troubleshoot} from './help.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {constants} from './constants.js';
 import {patching} from './patching.js';
+import {runAsGM} from './runAsGM.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -29,6 +30,7 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('remoteAddEffectAura', effectSockets.remoteAdd);
     socket.register('remoteRemoveEffectAura', effectSockets.remoteRemove);
     socket.register('createCombatant', tashaSummon.createCombatant);
+    socket.register('updateCombatant', runAsGM.updateCombatant);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {

@@ -37,6 +37,7 @@ import {chainLightning} from './macros/spells/chainLightning.js';
 import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
 import {chillTouch} from './macros/spells/chillTouch.js';
+import {chromaticOrb} from './macros/spells/chromaticOrb.js';
 import {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circleOfMortality.js';
 import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
 import {cleave} from './macros/mechanics/cleave.js';
@@ -113,6 +114,7 @@ import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
+import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
@@ -196,6 +198,7 @@ import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thu
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
+import {troll} from './macros/monsterFeatures/troll/troll.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
@@ -210,9 +213,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
-import {chromaticOrb} from './macros/spells/chromaticOrb.js';
-import {troll} from './macros/monsterFeatures/troll/troll.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -258,6 +258,7 @@ let monster = {
     'hezrou': hezrou,
     'homunculus': homunculus,
     'intellectDevourer': intellectDevourer,
+    'kobold': kobold,
     'leucrotta': leucrotta,
     'salamander': salamander,
     'shadow': shadow,
@@ -271,19 +272,19 @@ let monster = {
     'succubus': succubus,
     'tixieTockworth': tixieTockworth,
     'troglodyte': troglodyte,
+    'troll': troll,
     'undeadSpirit': undeadSpirit,
-    'zombie': zombie,
-    'kobold': kobold,
-    'troll': troll
+    'zombie': zombie
 }
 let onHit = {
     'blackrazor': blackrazor.onHit,
     'fireForm': fireElemental.fireForm,
+    'forceField': monster.tixieTockworth.forceField.onHit,
     'heatedBody': fireSnake.heatedBody,
+    'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit,
-    'regeneration': monster.troll.regeneration.onHit
+    'wardingBond': wardingBond.onHit
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
     switch (macroName) {
@@ -355,6 +356,7 @@ export let macros = {
     'chainLightning': chainLightning,
     'charmPerson': charmPerson,
     'chillTouch': chillTouch,
+    'chromaticOrb': chromaticOrb,
     'circleOfMortality': circleOfMortality,
     'cleave': cleave,
     'cloudkill': cloudkill,
@@ -495,6 +497,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'chromaticOrb': chromaticOrb
+    'zoneOfTruth': zoneOfTruth
 }

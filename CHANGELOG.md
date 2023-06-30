@@ -3,7 +3,11 @@
 - Clockwork Defender: Electrified Bite
 - Grell: Tentacles
 - Tixie Tockworth: Force Field
-
+- Troll: Regeneration
+## Bug Fixes:
+- Warding Bond
+- Destructive Wave
+  
 # 0.5.24 Release:
 ## New Content:
 - Spell: Chromatic Orb

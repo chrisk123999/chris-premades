@@ -1,3 +1,4 @@
+import {socket} from './module.js';
 export let chris = {
     'dialog': async function _dialog(title, options) {
         let buttons = options.map(([label,value]) => ({label,value}));
@@ -500,5 +501,15 @@ export let chris = {
     },
     'getConfiguration': function _getConfiguration(item, key) {
         return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
+    },
+    'updateCombatant': async function _updateCombatant(combatant, updates) {
+        if (game.user.isGM) {
+            await combatant.update(updates);
+        } else {
+            await socket.executeAsGM('updateCombatant', combatant.id, updates);
+        }
+    },
+    'getCombatant': function _getCombatant(token) {
+        return game.combat?.combatants?.find(i => i.tokenId === token.id);
     }
 };

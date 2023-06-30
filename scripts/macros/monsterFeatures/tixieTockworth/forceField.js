@@ -1,13 +1,26 @@
 import {chris} from '../../../helperFunctions.js';
-export async function forceField(token, origin) {
-    let turnToken = game.combat.scene.tokens.get(game.combat.current.tokenId);
-    let turnActor = turnToken.actor;
-    let originActor = origin.actor;
-    if (originActor.id != turnActor.id) return;
-    let item = await originActor.items.getName(origin.name);
-    if (item) item.use();
-    await chris.applyDamage([token], 15, 'temphp');
-    await chris.removeCondition(token.actor, 'Grappled');
-    await chris.removeCondition(token.actor, 'Restrained');
-    await chris.removeCondition(token.actor, 'Stunned');
+import {constants} from '../../../constants.js';
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    await chris.removeCondition(workflow.actor, 'Grappled');
+    await chris.removeCondition(workflow.actor, 'Restrained');
+    await chris.removeCondition(workflow.actor, 'Stunned');
+}
+async function turnStart(token, origin) {
+    if (token.actor.system.attributes.hp.value === 0) return;
+    let featureData = duplicate(origin.toObject());
+    delete featureData._id;
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
+    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, {}, options);
+}
+async function onHit(workflow, targetToken) {
+    if (!workflow.damageRoll || targetToken.actor.system.attributes.hp.temp > 0) return;
+    let effect = chris.findEffect(targetToken.actor, 'Force Field');
+    if (!effect) return;
+    await chris.removeEffect(effect);
+}
+export let forceField = {
+    'item': item,
+    'turnStart': turnStart,
+    'onHit': onHit
 }
