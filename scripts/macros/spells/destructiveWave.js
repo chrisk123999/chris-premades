@@ -7,7 +7,7 @@ export async function destructiveWave({speaker, actor, token, character, item, a
     if (!selection) selection = 'radiant';
     let animation = 'jb2a.thunderwave.center.blue';
     if (game.modules.get('jb2a_patreon')?.active) {
-        if (selection === 'radiant') {
+        if (selection === 'necrotic') {
             animation = 'jb2a.thunderwave.center.dark_purple';
         } else {
             animation = 'jb2a.thunderwave.center.orange'
