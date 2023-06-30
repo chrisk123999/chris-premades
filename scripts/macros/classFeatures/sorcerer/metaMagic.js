@@ -236,10 +236,8 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
     if (!options) return;
     options.workflowOptions.spellLevel = spellLevel;
-    spellData.flags['chris-premades'] = {
-        'metaMagic': true,
-        'seekingSpell': damageRoll,
-    };
+    setProperty(spellData, 'flags.chris-premades.metaMagic', true);
+    setProperty(spellData, 'flags.chris-premades.seekingSpell', damageRoll);
     spellData.name = workflow.item.name + ' Re-Roll';
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     await MidiQOL.completeItemUse(spell, {}, options);

@@ -40,6 +40,7 @@ import {chillTouch} from './macros/spells/chillTouch.js';
 import {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circleOfMortality.js';
 import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
 import {cleave} from './macros/mechanics/cleave.js';
+import {clockworkDefender} from './macros/monsterFeatures/clockworkDefender/clockworkDefender.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability.js';
@@ -92,6 +93,7 @@ import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
@@ -191,6 +193,7 @@ import {telekinetic} from './macros/feats/telekinetic.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
+import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
@@ -232,6 +235,7 @@ let monster = {
     'celestialSpirit': celestialSpirit,
     'chasme': chasme,
     'clayGolem': clayGolem,
+    'clockworkDefender': clockworkDefender,
     'constructSpirit': constructSpirit,
     'corpseFlower': corpseFlower,
     'draconicSpirit': draconicSpirit,
@@ -250,6 +254,7 @@ let monster = {
     'generic': generic,
     'ghast': ghast,
     'gibberingMouther': gibberingMouther,
+    'grell': grell,
     'hezrou': hezrou,
     'homunculus': homunculus,
     'intellectDevourer': intellectDevourer,
@@ -264,6 +269,7 @@ let monster = {
     'sprite': sprite,
     'stenchKow': stenchKow,
     'succubus': succubus,
+    'tixieTockworth': tixieTockworth,
     'troglodyte': troglodyte,
     'undeadSpirit': undeadSpirit,
     'zombie': zombie,

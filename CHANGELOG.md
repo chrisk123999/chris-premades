@@ -1,3 +1,9 @@
+# 0.5.25 Release:
+## New Monster Content:
+- Clockwork Defender: Electrified Bite
+- Grell: Tentacles
+- Tixie Tockworth: Force Field
+
 # 0.5.24 Release:
 ## New Content:
 - Spell: Chromatic Orb
