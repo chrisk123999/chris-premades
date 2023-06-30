@@ -9,8 +9,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dismiss Warding Bond');
     let targetToken = workflow.targets.first();
     featureData.name = 'Dismiss Warding Bond: ' + targetToken.actor.name;
+    setProperty(featureData, 'flags.chris-premades.spell.wardingBond.targetUuid', targetToken.document.uuid);
     let effectData = {
-        'label': featureData.name,
+        'label': 'Warding Bond: ' + targetToken.actor.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -41,7 +42,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [featureData.name]: effectData
+                [effectData.label]: effectData
             }
         }
     };
@@ -97,12 +98,16 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetTokenUuid = workflow.item.flags['chris-premades']?.spell?.wardingBond?.targetUuid;
     if (!targetTokenUuid) return;
+    console.log('here');
     let targetToken = await fromUuid(targetTokenUuid);
     if (!targetToken) return;
+    console.log('here');
     let targetEffect = chris.findEffect(targetToken.actor, 'Warding Bond - Target');
     if (targetEffect) await chris.removeEffect(targetEffect);
-    let sourceEffect = chris.findEffect(workflow.actor, 'Warding Bond:' + targetActor.name);
+    console.log('Warding Bond: ' + targetToken.actor.name);
+    let sourceEffect = chris.findEffect(workflow.actor, 'Warding Bond: ' + targetToken.actor.name);
     if (!sourceEffect) return;
+    console.log('here');
     await chris.removeEffect(sourceEffect);
 }
 async function onHit(workflow, targetToken) {
