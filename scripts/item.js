@@ -320,6 +320,30 @@ export function setConfig() {
             'Eladrin Season: Summer': [
                 'Fey Step (Summer)'
             ],
+            'Metamagic - Careful Spell': [
+                'Metamagic: Careful Spell'
+            ],
+            'Metamagic - Distant Spell': [
+                'Metamagic: Distant Spell'
+            ],
+            'Metamagic - Empowered Spell': [
+                'Metamagic: Empowered Spell'
+            ],
+            'Metamagic - Extended Spell': [
+                'Metamagic: Extended Spell'
+            ],
+            'Metamagic - Heightened Spell': [
+                'Metamagic: Heightened Spell'
+            ],
+            'Metamagic - Quickened Spell': [
+                'Metamagic: Quickened Spell'
+            ],
+            'Metamagic - Subtle Spell': [
+                'Metamagic: Subtle Spell'
+            ],
+            'Metamagic - Twinned Spell': [
+                'Metamagic: Twinned Spell'
+            ],
             'Starry Form': [
                 'Starry Form: Archer',
                 'Starry Form: Chalice',

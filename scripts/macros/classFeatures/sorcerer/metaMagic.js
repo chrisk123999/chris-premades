@@ -1,14 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../queue.js';
-/*
-Heightened Spell - Give one target disadvantage for first save, either prompt or just apply effect
-**Empowered Spell** - Reroll up to cha mod dice, must use new rolls, doing to have to give dialog with all dice, something like piercer
-Seeking Spell - On miss, can reroll the d20 and use the new roll
-Transmuted spell - change from acid cold fire poison thunder to acid cold fire lightning poison thunder, just replacing damage die after dialog
-Careful spell - allow up to cha mod creatures to auto save on next spell you cast
-Twinned spell - points equal to spells level to target another creature (use find creature) with single target only spell
-*/
 async function carefulSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
@@ -17,6 +9,10 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
     if (sorcPointsValue < 1) return;
+    if (!sorcPointsValue) {
+        ui.notifications.info('No Sorcery Points Available!');
+        return;
+    }
     let max = workflow.actor.system.abilities.cha.mod;
     if (!max) return;
     let targets = Array.from(workflow.targets);
@@ -209,7 +205,7 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 3) {
-        ui.notifications.warn('No Sorcery Points Available!');
+        ui.notifications.info('No Sorcery Points Available!');
         return;
     }
     let max = workflow.actor.system.abilities.cha.mod;
@@ -276,7 +272,7 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 2) {
-        ui.notifications.warn('No Sorcery Points Available!');
+        ui.notifications.info('No Sorcery Points Available!');
         return;
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'seekingSpell', 360);
@@ -291,9 +287,8 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     let damageRoll = workflow.damageRoll;
     if (!damageRoll) return;
     let spellData = duplicate(workflow.item.toObject());
-    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid], false, spellLevel);
     if (!options) return;
-    options.workflowOptions.spellLevel = spellLevel;
     setProperty(spellData, 'flags.chris-premades.metaMagic', true);
     setProperty(spellData, 'flags.chris-premades.seekingSpell', damageRoll);
     spellData.name = workflow.item.name + ' Re-Roll';
@@ -314,7 +309,7 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (!sorcPointsValue) {
-        ui.notifications.warn('No Sorcery Points Available!');
+        ui.notifications.info('No Sorcery Points Available!');
         return;
     }
     let values = ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'];
@@ -358,14 +353,16 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     if (workflow.targets.size != 1) return;
     if (workflow.item.type != 'spell' || workflow.item.system.range.units === 'self' || workflow.item.flags['chris-premades']?.metaMagic) return;
     let spellLevel = workflow.castData.castLevel;
-    if (spellLevel === 0) spellLevel = 1;
-    if (!spellLevel) return;
+    if (spellLevel === undefined) return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
     if (!effect) return;
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
-    if (!sorcPointsValue) return;
+    if (!sorcPointsValue) {
+        ui.notifications.info('No Sorcery Points Available!');
+        return;
+    }
     if (sorcPointsValue < spellLevel) return;
     let itemRange = workflow.item.system?.range?.value;
     if (!itemRange) {
@@ -426,6 +423,7 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(spell, config, options);
+    if (spellLevel === 0) spellLevel = 1;
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - spellLevel});
     if (workflow.item.system.components.concentration) {
         let concentrationsTargets = workflow.actor?.flags['midi-qol']['concentration-data']?.targets;
@@ -435,10 +433,10 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     queue.remove(workflow.item.uuid);
 }
 export let metaMagic = {
-    carefulSpell: carefulSpell, //completed, onUse preSave
-    empoweredSpell: empoweredSpell, //Complete and looked over. - Chris
-    heightenedSpell: heightenedSpell, //completed, onUse preSave
-    seekingSpell: seekingSpell, //completed, unsure about queue values, will be a passive effect, onUse postDamageRoll
-    transmutedSpell: transmutedSpell, //completed, onUse postDamageRoll
-    twinnedSpell: twinnedSpell //Complete and looked over. - Chris
+    carefulSpell: carefulSpell,
+    empoweredSpell: empoweredSpell,
+    heightenedSpell: heightenedSpell,
+    seekingSpell: seekingSpell,
+    transmutedSpell: transmutedSpell,
+    twinnedSpell: twinnedSpell
 }

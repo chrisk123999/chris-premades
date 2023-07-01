@@ -4,42 +4,48 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
     if (workflow.targets.size === 0 || workflow.item.type != 'spell') return;
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'awakenedSpellbook', 101);
+    if (!queueSetup) return;
     let oldDamageRoll = workflow.damageRoll;
     let oldFlavor = [];
-    for (let i = 0; oldDamageRoll.terms.length > i; i++) {
+    for (let i = 0; oldDamageRoll?.terms?.length > i; i++) {
         if (oldDamageRoll.terms[i].isDeterministic === false) {
             oldFlavor.push(oldDamageRoll.terms[i].flavor);
         }
     }
-    let spells = workflow.actor.items.filter(i => (i.type === 'spell') && (i.system?.level === spellLevel) && (i.system?.damage?.parts?.length > 0));
+    let spells = workflow.actor.items.filter(i => i.type === 'spell' && i.system?.level === spellLevel && i.system?.damage?.parts?.length > 0);
     let values = [];
     for (let i = 0; spells.length > i; i++) {
         let currentItem = spells[i];
         for (let j = 0; currentItem.system.damage.parts.length > j; j++) {
-                let flavor = currentItem.system.damage.parts[j][1];
-                if (values.includes(flavor.toLowerCase()) === false && flavor != 'healing') values.push(flavor);
-            }
-
+            let flavor = currentItem.system.damage.parts[j][1];
+            if (!flavor) break;
+            if (values.includes(flavor.toLowerCase()) === false && flavor != 'healing' && flavor != 'temphp' && flavor != 'none' && flavor != 'midi-none') values.push(flavor);
+        }
     }
-    if (values.length === 0) return;
+    if (values.length === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     function valuesToOptions(arr){
         let optionsPush = [];
         for (let i = 0; arr.length > i; i++) {
             if (typeof arr[i] != 'string') return;
-            let firstLetter = arr[i].charAt(0);
-            let firstLetterCap = firstLetter.toUpperCase();
-            let remainingLetters = arr[i].slice(1);
-            let capitalizedWord = firstLetterCap + remainingLetters;
-            optionsPush.push([capitalizedWord, arr[i]]);
+            optionsPush.push([arr[i].charAt(0).toUpperCase() + arr[i].slice(1), arr[i]]);
         }
         return optionsPush;
     }
     let options = valuesToOptions(values);
+    if (options.length < 2) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     options.push(['No', false]);
     let selection = await chris.dialog('Change damage type for ' + workflow.item.name + '?', options);
-    if (!selection) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'awakenedSpellbook', 101);
-    if (!queueSetup) return;
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let damageFormula; 
     for (let i = 0; oldFlavor.length > i; i++) {
         damageFormula = workflow.damageRoll._formula.replace(oldFlavor[i], selection);
