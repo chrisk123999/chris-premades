@@ -1,3 +1,7 @@
+# 0.5.27 Release:
+## New Monster Content:
+- Many Creatures: Regeneration
+  
 # 0.5.26 Release:
 ## Bug Fixes:
 - Synthetic item roll fixes.
