@@ -7,12 +7,7 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
     let queueSetup = await queue.setup(workflow.item.uuid, 'awakenedSpellbook', 101);
     if (!queueSetup) return;
     let oldDamageRoll = workflow.damageRoll;
-    let oldFlavor = [];
-    for (let i = 0; oldDamageRoll?.terms?.length > i; i++) {
-        if (oldDamageRoll.terms[i].isDeterministic === false) {
-            oldFlavor.push(oldDamageRoll.terms[i].flavor);
-        }
-    }
+    let oldFlavor = oldDamageRoll.terms?.map(term=>term?.flavor)
     let spells = workflow.actor.items.filter(i => i.type === 'spell' && i.system?.level === spellLevel && i.system?.damage?.parts?.length > 0);
     let values = [];
     for (let i = 0; spells.length > i; i++) {
@@ -46,11 +41,12 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula; 
     for (let i = 0; oldFlavor.length > i; i++) {
-        damageFormula = workflow.damageRoll._formula.replace(oldFlavor[i], selection);
+        workflow.damageRoll.terms[i].options.flavor = selection;
+        if(oldFlavor[i]){
+            workflow.damageRoll._formula = workflow.damageRoll._formula.replace(oldFlavor[i], selection);
+        }
     }
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await workflow.setDamageRoll(workflow.damageRoll);
     queue.remove(workflow.item.uuid);
 }
