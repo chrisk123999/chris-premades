@@ -961,6 +961,10 @@ export function setConfig() {
                         'label': 'Lightning damage prevents healing?',
                         'default': false
                     },
+                    'necrotic': {
+                        'label': 'Necrotic damage prevents healing?',
+                        'default': false
+                    },
                     'piercing': {
                         'label': 'Piercing damage prevents healing?',
                         'default': false
@@ -985,9 +989,19 @@ export function setConfig() {
                         'label': 'Thunder damage prevents healing?',
                         'default': false
                     },
+                    'critical': {
+                        'label': 'Critical hit prevents healing?',
+                        'default': false
+                    },
                     'zeroHP': {
                         'label': 'Don\'t regenerate at zero HP?',
                         'default': false
+                    }
+                },
+                'number': {
+                    'threshold': {
+                        'label': 'Reduced healing threshold:',
+                        'default': 0
                     }
                 }
             }
