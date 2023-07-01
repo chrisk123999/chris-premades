@@ -355,7 +355,6 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     queue.remove(workflow.item.uuid);
 }
 async function twinnedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
-    console.log(workflow);
     if (workflow.targets.size != 1) return;
     if (workflow.item.type != 'spell' || workflow.item.system.range.units === 'self' || workflow.item.flags['chris-premades']?.metaMagic) return;
     let spellLevel = workflow.castData.castLevel;
