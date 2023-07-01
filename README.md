@@ -233,6 +233,13 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Swashbuckler:  
 - Rakish Audacity  
 ### Sorcerer:  
+#### Metamagic:  
+- Careful Spell  
+- Twinned Spell  
+- Transmuated Spell  
+- Seeking Spell  
+- Heightened Spell  
+- Empowered Spell  
 #### Divine Soul:    
 - Favored by the Gods  
 #### Shadow Magic:  
@@ -265,6 +272,8 @@ Additional support and feature requests can be made on my Discord server: https:
 - Form of Dread  
 - Grave Touched  
 ### Wizard:  
+#### Order of Scribes:  
+- Awakened Spellbook: Replace Damage  
 #### School of Divination:  
 - Expert Divination  
 #### School of Necromancy:  
