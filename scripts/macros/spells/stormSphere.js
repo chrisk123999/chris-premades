@@ -152,8 +152,8 @@ async function turnStart(actor, effect) {
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 export let stormSphere = {
     'item': item,

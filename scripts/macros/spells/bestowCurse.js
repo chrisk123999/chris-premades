@@ -116,8 +116,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             break;
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     let targetEffect = chris.findEffect(workflow.targets.first().actor, 'Bestow Curse - ' + selection);
     if (!targetEffect) return;
     await chris.updateEffect(targetEffect,

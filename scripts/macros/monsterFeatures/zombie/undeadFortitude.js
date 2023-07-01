@@ -16,8 +16,8 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     if (featureWorkflow.failedSaves.size === 1) {
         queue.remove(workflow.uuid);
         return;

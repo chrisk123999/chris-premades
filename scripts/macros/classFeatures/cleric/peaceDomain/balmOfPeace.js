@@ -5,8 +5,9 @@ export async function balmOfPeace({speaker, actor, token, character, item, args,
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Balm of Peace', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Balm of Peace');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    let [config, options] = constants.syntheticItemWorkflowOptions([]);
     for (let targetToken of workflow.targets.values()) {
-        let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-        await MidiQOL.completeItemUse(feature, {}, options);
+        options.targetUuids = [targetToken.document.uuid];
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }

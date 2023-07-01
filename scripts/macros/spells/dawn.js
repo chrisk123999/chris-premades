@@ -68,8 +68,8 @@ async function trigger(token, trigger) {
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dawn - End Turn');
     featureData.system.save.dc = trigger.saveDC;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 export let dawn = {
     'item': item,

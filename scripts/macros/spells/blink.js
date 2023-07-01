@@ -5,8 +5,8 @@ async function blinkTurnStart(token, actor, origin, effect) {
     if (!featureData) return;
     if (origin?.type === 'spell') featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Blink Landing');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     await effect.delete();
 }
 async function blinkTurnEnd(actor) {

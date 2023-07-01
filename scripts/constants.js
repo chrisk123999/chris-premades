@@ -28,23 +28,27 @@ const disadvantageEffectData = {
         }
     ]
 };
-function syntheticItemWorkflowOptions(targets) {
-    return {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': targets,
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeRecharge': false,
-        'consumeQuantity': false,
-        'consumeUsage': false,
-        'consumeSpellSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
+function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel) {
+    return [
+        {
+            'showFullCard': false,
+            'createWorkflow': true,
+            'configureDialog': false,
+            'consumeResource': false,
+            'consumeRecharge': false,
+            'consumeQuantity': false,
+            'consumeUsage': false,
+            'consumeSpellSlot': useSpellSlot ?? false,
+            'consumeSpellLevel': castLevel ?? false
+        },
+        {
+            'targetUuids': targets,
+            'workflowOptions': {
+                'autoRollDamage': 'always',
+                'autoFastDamage': true
+            }
         }
-    };
+    ];
 }
 let damageTypes;
 function damageTypeMenu() {

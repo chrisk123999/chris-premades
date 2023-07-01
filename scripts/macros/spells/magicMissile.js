@@ -48,7 +48,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
         ];
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([]);
     let colors = [
         'grey',
         'dark_red',
@@ -76,7 +76,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
                 path += colorSelection;
             }
             new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targets[i]).randomizeMirrorY().play();
-            await MidiQOL.completeItemUse(feature, {}, options);
+            await MidiQOL.completeItemUse(feature, config, options);
         }
     }
 }

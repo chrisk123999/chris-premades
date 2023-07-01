@@ -10,6 +10,6 @@ export async function slam({speaker, actor, token, character, item, args, scope,
     if (!engulfEffect) return;
     let feature = await fromUuid(engulfEffect.origin);
     if (!feature) return;
-    let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }

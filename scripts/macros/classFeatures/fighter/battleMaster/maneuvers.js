@@ -80,23 +80,9 @@ async function goadingAttack({speaker, actor, token, character, item, args, scop
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [workflow.targets.first().document.uuid],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeQuantity': false,
-            'consumeUsage': false,
-            'consumeSlot': false,
-            'workflowOptions': {
-                'autoRollDamage': 'always',
-                'autoFastDamage': true
-            }
-        };
         await chris.removeEffect(effect);
-        await MidiQOL.completeItemUse(feature, {}, options);
+        let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }
 async function goadingAttackTarget({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -163,9 +149,9 @@ async function menacingAttack({speaker, actor, token, character, item, args, sco
         if (!originItem) return;
         featureData.system.save.dc = chris.getSpellDC(originItem);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-        let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+        let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
         await chris.removeEffect(effect);
-        await MidiQOL.completeItemUse(feature, {}, options);
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }
 async function parry(effect, origin) {

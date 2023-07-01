@@ -22,7 +22,7 @@ export async function hailOfThorns({speaker, actor, token, character, item, args
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let targetToken = workflow.targets.first();
     let targetUuids = await chris.findNearby(targetToken, 5).concat(targetToken).map(t=>t.document.uuid);
-    let options = constants.syntheticItemWorkflowOptions(targetUuids);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions(targetUuids);
+    await MidiQOL.completeItemUse(feature, config, options);
     await chris.removeCondition(workflow.actor, 'Concentrating');
 }

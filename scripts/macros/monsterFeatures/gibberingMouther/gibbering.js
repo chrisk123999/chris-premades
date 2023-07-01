@@ -5,8 +5,8 @@ async function allTurns(token, origin, range) {
     if (!targetToken || targetToken?.id === token.id) return;
     let distance = chris.getDistance(token, targetToken);
     if (distance > range) return;
-    let options = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
-    await MidiQOL.completeItemUse(origin, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
+    await MidiQOL.completeItemUse(origin, config, options);
 }
 async function effectCreation(origin) {
     let roll = await new Roll('1d8').roll({async: true});

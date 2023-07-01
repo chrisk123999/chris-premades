@@ -31,12 +31,12 @@ export async function reaper({speaker, actor, token, character, item, args, scop
     let effect = chris.findEffect(workflow.actor, 'Reaper');
     let originItem = await fromUuid(effect.origin);
     if (originItem)    await originItem.use();
-    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
     let spellData = duplicate(workflow.item.toObject());
     spellData.flags['chris-premades'] = {
         'reap': true
     };
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
-    await MidiQOL.completeItemUse(spell, {}, options);
+    await MidiQOL.completeItemUse(spell, config, options);
     queue.remove(workflow.item.uuid);
 }

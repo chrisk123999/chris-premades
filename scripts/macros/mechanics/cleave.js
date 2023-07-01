@@ -73,6 +73,6 @@ export async function cleave(workflow) {
         }
     };
     let weaponAttack = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([targetTokenID]);
-    await MidiQOL.completeItemUse(weaponAttack, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenID]);
+    await MidiQOL.completeItemUse(weaponAttack, config, options);
 }

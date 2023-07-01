@@ -14,7 +14,7 @@ export async function engulf(origin, token, actor) {
         ]
     ];
     featureData.system.save.dc = chris.getSpellDC(origin);
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }

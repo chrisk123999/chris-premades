@@ -21,8 +21,8 @@ export async function stench(token, origin, range, duration, monsterName, origin
         queue.remove(origin.uuid);
         return;
     }
-    let options = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
-    let featureWorkflow = await MidiQOL.completeItemUse(originItem, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.uuid]);
+    let featureWorkflow = await MidiQOL.completeItemUse(originItem, config, options);
     if (featureWorkflow.failedSaves.size != 0) {
         queue.remove(origin.uuid);
         return;

@@ -10,7 +10,7 @@ export async function heatedBody(workflow, targetToken) {
     if (!effect) return;
     let feature = await fromUuid(effect.origin);
     if (!feature) return;
-    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     await warpgate.wait(100);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    await MidiQOL.completeItemUse(feature, config, options);
 }

@@ -11,14 +11,13 @@ Twinned spell - points equal to spells level to target another creature (use fin
 */
 async function carefulSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
-    let sorcPointsValue = sorcPointsItem.system?.uses?.value;
-    if (sorcPointsValue < 1) {
-        ui.notifications.warn('No Sorcery Points Available!');
-        return;
-    }
-    let max = workflow.actor.system.abilities?.cha?.mod;
+    let sorcPointsValue = sorcPointsItem.system.uses.value;
+    if (sorcPointsValue < 1) return;
+    let max = workflow.actor.system.abilities.cha.mod;
     if (!max) return;
     let targets = Array.from(workflow.targets);
     let selectedTargets = [];
@@ -56,7 +55,7 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
             {
                 'key': 'flags.midi-qol.min.ability.save.all',
                 'mode': 5,
-                'value': '999', //Not sure on this value, though i think the opposite is what the force fail save looks like after rolled? But at least 100 should be safe
+                'value': '100',
                 'priority': 120
             }
         ],
@@ -73,23 +72,19 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
     }
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
 }
-//Over here vvv
 async function empoweredSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.hitTargets.size === 0 ||  workflow.item.type != 'spell') return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
-    let sorcPointsValue = sorcPointsItem.system?.uses?.value;
-    if (!sorcPointsValue) {
-        ui.notifications.warn('No Sorcery Points Available!');
-        return;
-    }
-    let max = workflow.actor.system.abilities?.cha?.mod;
-    if (!max) return;
-    let newDamageRoll = workflow.damageRoll;
-    console.log(newDamageRoll);
-    let lowest = [];
+    let sorcPointsValue = sorcPointsItem.system.uses.value;
+    if (!sorcPointsValue) return;
+    let max = workflow.actor.system.abilities.cha.mod;
     let queueSetup = await queue.setup(workflow.item.uuid, 'empoweredSpell', 350);
     if (!queueSetup) return;
+    let newDamageRoll = workflow.damageRoll;
+    let lowest = [];
     for (let i = 0; newDamageRoll.terms.length > i; i++) {
         if (newDamageRoll.terms[i].isDeterministic === false) {
             let currentTerm = newDamageRoll.terms[i];
@@ -97,19 +92,40 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
             for (let j = 0; currentTerm.values.length > j; j++) {
                 let modifiers = currentTerm.modifiers?.toString();
                 if (lowest.length === 0) {
-                    lowest.push({result: currentTerm.values[j], position: j, faces: faces, term: i, modifiers: modifiers})
+                    lowest.push({
+                        'result': currentTerm.values[j],
+                        'position': j,
+                        'faces': faces,
+                        'term': i,
+                        'modifiers': modifiers,
+                        'flavor': currentTerm.flavor
+                    });
                 }
                 else if (lowest.length > 0) {
                     for (let k = 0; lowest.length > k; k++) {
                         if (currentTerm.values[j] <= lowest[k].result) {
-                            lowest.splice(k, 0, {result: currentTerm.values[j], position: j, faces: faces, term: i, modifiers: modifiers})
+                            lowest.splice(k, 0, {
+                                'result': currentTerm.values[j],
+                                'position': j,
+                                'faces': faces,
+                                'term': i,
+                                'modifiers': modifiers,
+                                'flavor': currentTerm.flavor
+                            });
                             if (lowest.length > max) {
                                 lowest.splice(max, 1);
                             }
                             break;
                         }
                         if (currentTerm.values[j] > lowest[lowest.length - 1].result && lowest.length != max) {
-                            lowest.push({result: currentTerm.values[j], position: j, faces: faces, term: i, modifiers: modifiers})
+                            lowest.push({
+                                'result': currentTerm.values[j],
+                                'position': j,
+                                'faces': faces,
+                                'term': i,
+                                'modifiers': modifiers,
+                                'flavor': currentTerm.flavor
+                            });
                             break;
                         }
                     }
@@ -117,39 +133,79 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
             }
         }
     }
-    console.log(lowest);
-    /*
-    selection = etc
-
-    [lowest] is an array of objects {result, position, faces, term, modifiers}
-    should either be 'reroll how many die?, lowest[i].result... ' or 'reroll how many die?, lowest[i].result + '(d' + faces + ')'' ex '3(d8)'
-    (max) is the max amount that can be chosen, [lowest] is the lowest from the damage roll to (max) die
-    i just need the positions of the selected ones in the lowest array
-    dice in the selection should be in order from the array, and just return the selections positions in the array.
-    */
-    let selection = [0, 1, 2]; //for testing
-    for (let i = 0; selection.length > i; i++) {
-        let currentDie = lowest[selection[i]];
+    function dialogRender(html) {
+        let ths = html[0].getElementsByTagName('th');
+        for (let t of ths) {
+            t.style.width = 'auto';
+            t.style.textAlign = 'left';
+        }
+        let tds = html[0].getElementsByTagName('td');
+        for (let t of tds) {
+            t.style.width = '200px';
+            t.style.textAlign = 'right';
+            t.style.paddingRight = '5px';
+        }
+    }
+    let buttons = [,
+        {
+            'label': 'No',
+            'value': false
+        },
+        {
+            'label': 'Yes',
+            'value': true
+        }
+    ];
+    let generatedMenu = [];
+    for (let i of lowest) {
+        generatedMenu.push({
+            'label': '1d' + i.faces + '[' + i.flavor + ']: ' + i.result,
+            'type': 'checkbox',
+            'options': false
+        });
+    }
+    let config = {
+        'title': 'Empowered Spell: Reroll lowest dice?',
+        'render': dialogRender
+    };
+    let selection = await warpgate.menu(
+        {
+            'inputs': generatedMenu,
+            'buttons': buttons
+        },
+        config
+    );
+    if (!selection.buttons) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    if (selection.inputs.filter(i => i != false).length === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    for (let i = 0; lowest.length > i; i++) {
+        if (!selection.inputs[i]) continue;
+        let currentDie = lowest[i];
         let damageFormula = '1d' + currentDie.faces + currentDie.modifiers;
         let damageRoll = await new Roll(damageFormula).roll({async: true});
         let messageData = {
-            speaker: ChatMessage.getSpeaker(workflow.actor), 
-            flavor: 'Re-Rolling Die Result of ' + currentDie.result, 
-            rollMode: game.settings.get("core", "rollMode")
+            'speaker': ChatMessage.getSpeaker(workflow.actor), 
+            'flavor': 'Rerolling: ' + currentDie.result, 
+            'rollMode': game.settings.get('core', 'rollMode')
         }
         await damageRoll.toMessage(messageData);
         newDamageRoll.terms[currentDie.term].results[currentDie.position].result = damageRoll.total;
     }
     newDamageRoll._total = newDamageRoll._evaluateTotal();
-    console.log(newDamageRoll.total);
     await workflow.setDamageRoll(newDamageRoll);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);
-
 }
 async function heightenedSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 3) {
@@ -214,7 +270,9 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
         queue.remove(workflow.item.uuid);
     }
     if (workflow.targets.size === 0 || workflow.targets.size === workflow.hitTargets.size || workflow.item.flags['chris-premades']?.seekingSpell || workflow.item.type != 'spell') return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 2) {
@@ -250,7 +308,9 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
 async function transmutedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
     if (workflow.item.type != 'spell' || workflow.item.flags['chris-premades']?.metaMagic) return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (!sorcPointsValue) {
@@ -295,19 +355,19 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     queue.remove(workflow.item.uuid);
 }
 async function twinnedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
+    console.log(workflow);
     if (workflow.targets.size != 1) return;
     if (workflow.item.type != 'spell' || workflow.item.system.range.units === 'self' || workflow.item.flags['chris-premades']?.metaMagic) return;
-    let spellLevel = workflow.castData?.castLevel;
+    let spellLevel = workflow.castData.castLevel;
     if (spellLevel === 0) spellLevel = 1;
     if (!spellLevel) return;
-    let sorcPointsItem = workflow.actor.items.getName('Sorcery Points');
+    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
+    if (!effect) return;
+    let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
-    let sorcPointsValue = sorcPointsItem.system?.uses?.value;
+    let sorcPointsValue = sorcPointsItem.system.uses.value;
     if (!sorcPointsValue) return;
-    if (sorcPointsValue < spellLevel) {
-        ui.notifications.warn('No Sorcery Points Available!');
-        return;
-    }
+    if (sorcPointsValue < spellLevel) return;
     let itemRange = workflow.item.system?.range?.value;
     if (!itemRange) {
         if (workflow.item.system.range.units === 'touch') {
@@ -333,8 +393,13 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
             disposition = null;
             break;
     }
+    let queueSetup = await queue.setup(workflow.item.uuid, 'twinnedSpell', 450);
+    if (!queueSetup) return;
     let nearbyTargets = chris.findNearby(workflow.token, itemRange, disposition).filter(t => t.id != workflow.targets.first().id);
-    if (nearbyTargets.length === 0) return;
+    if (nearbyTargets.length === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let buttons = [
         {
             'label': 'Yes',
@@ -344,8 +409,6 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
             'value': false
         }
     ];
-    let queueSetup = await queue.setup(workflow.item.uuid, 'twinnedSpell', 450);
-    if (!queueSetup) return;
     let selected = await chris.selectTarget('Use Twinned Spell?', buttons, nearbyTargets, true, 'one');
     if (selected.buttons === false) {
         queue.remove(workflow.item.uuid);
@@ -357,18 +420,13 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
         return;
     }
     let spellData = duplicate(workflow.item.toObject());
-    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
-    options.workflowOptions.spellLevel = spellLevel;
-    spellData.flags['chris-premades'] = {
-        'metaMagic': true
-    };
-    workflow.item.flags['chris-premades'] = {
-        'metaMagic': true
-    };
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid], false, spellLevel);
+    setProperty(spellData, 'flags.chris-premades.metaMagic', true);
+    setProperty(workflow.item, 'flags.chris-premades.metaMagic', true);
     spellData.system.components.concentration = false;
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     await warpgate.wait(100);
-    await MidiQOL.completeItemUse(spell, {}, options);
+    await MidiQOL.completeItemUse(spell, config, options);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - spellLevel});
     if (workflow.item.system.components.concentration) {
         let concentrationsTargets = workflow.actor?.flags['midi-qol']['concentration-data']?.targets;
@@ -379,9 +437,9 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
 }
 export let metaMagic = {
     carefulSpell: carefulSpell, //completed, onUse preSave
-    empoweredSpell: empoweredSpell, //needs dialog, will be a passive effect, onUse postDamageRoll
+    empoweredSpell: empoweredSpell, //Complete and looked over. - Chris
     heightenedSpell: heightenedSpell, //completed, onUse preSave
     seekingSpell: seekingSpell, //completed, unsure about queue values, will be a passive effect, onUse postDamageRoll
     transmutedSpell: transmutedSpell, //completed, onUse postDamageRoll
-    twinnedSpell: twinnedSpell //has issues with consuming spell slots, onUse postActiveEffects
+    twinnedSpell: twinnedSpell //Complete and looked over. - Chris
 }

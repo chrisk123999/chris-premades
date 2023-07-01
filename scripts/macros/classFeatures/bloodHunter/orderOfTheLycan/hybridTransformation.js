@@ -2,7 +2,7 @@ import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let levels = actor.classes['blood-hunter'].system.levels
     let bonusHealth = 0;
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {
@@ -27,7 +27,7 @@ async function turnStart(token, actor) {
             }
             await chris.createEffect(actor, effectData2);
         }
-        let featureWorkflow = await MidiQOL.completeItemUse(feature2, {}, options);
+        let featureWorkflow = await MidiQOL.completeItemUse(feature2, config, options);
         if (levels >= 15) {
             let advEffect = chris.findEffect(actor, 'Condition Advantage')
             if (advEffect) await advEffect.delete();
@@ -39,7 +39,7 @@ async function turnStart(token, actor) {
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bloodlust');
     if (!featureData) return;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
-    await MidiQOL.completeItemUse(feature, {}, options);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 async function transformation({speaker, actor, token, character, item, args, scope, workflow}) {
     let levels = workflow.actor.classes['blood-hunter'].system.levels

@@ -12,6 +12,6 @@ export async function rottingClaw({speaker, actor, token, character, item, args,
     if (!spellDC) return;
     featureData.system.save.dc = spellDC;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }

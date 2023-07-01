@@ -69,7 +69,7 @@ export async function chainLightning({speaker, actor, token, character, item, ar
     }
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions(addedTargetUuids);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions(addedTargetUuids);
+    await MidiQOL.completeItemUse(feature, config, options);
     queue.remove(workflow.item.uuid);
 }

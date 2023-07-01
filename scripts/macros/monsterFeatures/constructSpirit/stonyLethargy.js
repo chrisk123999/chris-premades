@@ -12,8 +12,8 @@ async function turnStart(token, origin) {
     if (targetToken.document.disposition === token.document.disposition) return;
     let distance = chris.getDistance(token, targetToken);
     if (distance > 10) return;
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(origin, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(origin, config, options);
 }
 export let stoneLethargy = {
     'item': item,

@@ -35,11 +35,11 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         }
     }
     featureData.flags['chris-premades'].spell.castData.school = 'con';
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': sourceToken.actor});
-    await MidiQOL.completeItemUse(feature, {}, options);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let castLevel = workflow.castData.castLevel;

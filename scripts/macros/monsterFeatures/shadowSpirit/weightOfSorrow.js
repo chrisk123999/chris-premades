@@ -10,6 +10,6 @@ export async function weightOfSorrow(token, origin) {
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (originItem.actor.id === targetToken.actor.id) return;
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(origin, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(origin, config, options);
 }

@@ -35,14 +35,13 @@ export async function scorchingRay({speaker, actor, token, character, item, args
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    console.log(feature);
-    let options = constants.syntheticItemWorkflowOptions([]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([]);
     for (let i = 0; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i]) || selection.inputs[i] === 0) continue;
         options.targetUuids = [targets[i].document.uuid];
         new Sequence().effect().file('jb2a.scorching_ray.01.orange').atLocation(workflow.token).stretchTo(targets[i]).play();
         for (let j = 0; j < selection.inputs[i]; j++) {
-            await MidiQOL.completeItemUse(feature, {}, options);
+            await MidiQOL.completeItemUse(feature, config, options);
         }
     }
 }

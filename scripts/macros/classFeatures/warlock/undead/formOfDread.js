@@ -18,8 +18,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         return;
     }
     if (chris.inCombat()) await feature2.setFlag('chris-premades', 'feature.formOfDread.turn', game.combat.round + '-' + game.combat.turn);
-    let options = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {

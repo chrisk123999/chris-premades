@@ -59,8 +59,8 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         newTargetUuids.push(i.document.uuid);
         new Sequence().effect().atLocation(targetToken).stretchTo(i).file('jb2a.chain_lightning.secondary.blue').play();
     }
-    let options = constants.syntheticItemWorkflowOptions(newTargetUuids);
-    await MidiQOL.completeItemUse(areaFeature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions(newTargetUuids);
+    await MidiQOL.completeItemUse(areaFeature, config, options);
     if (effect) effect.delete();
     queue.remove(workflow.item.uuid);
 }

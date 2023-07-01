@@ -172,8 +172,8 @@ async function template(template, token) {
     if (!selection) return;
     let feature = sourceToken.actor.items.getName('Healing Spirit - Heal');
     if (!feature) return;
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     if (chris.inCombat()) {
         touchedTokens[token.id] = game.combat.round + '-' + game.combat.turn;
         await template.setFlag('chris-premades', 'spell.healingSpirit.touchedTokens', touchedTokens);

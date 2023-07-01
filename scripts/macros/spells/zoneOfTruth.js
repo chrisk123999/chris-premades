@@ -68,8 +68,8 @@ async function inZone(token, template) {
     }
     spellObject.system.preparation.mode = 'atwill';
     let spell = new CONFIG.Item.documentClass(spellObject, {'parent': originItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
-    let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let spellWorkflow = await MidiQOL.completeItemUse(spell, config, options);
     if (spellWorkflow.failedSaves.size != 1) return;
     await chris.createEffect(token.actor, effectData);
 }

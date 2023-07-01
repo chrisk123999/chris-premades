@@ -28,10 +28,10 @@ export async function sanctuary(workflow) {
     spellItem.system.activation.type = 'special';
     delete(spellItem.effects);
     let spell = new CONFIG.Item.documentClass(spellItem, {'parent': targetItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     let queueSetup = await queue.setup(workflow.item.uuid, 'sanctuary', 48);
     if (!queueSetup) return;
-    let spellWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
+    let spellWorkflow = await MidiQOL.completeItemUse(spell, config, options);
     if (spellWorkflow.failedSaves.size != 1) {
         queue.remove(workflow.item.uuid);
         return;

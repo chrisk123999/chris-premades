@@ -70,7 +70,7 @@ async function turnStart(token, origin) {
     let featureData = duplicate(origin.toObject());
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     setProperty(options, 'workflowOptions.allowIncapacitated', true);
     if (hp === 0) {
         let effect3 = chris.findEffect(token.actor, 'Dead?');
@@ -78,7 +78,7 @@ async function turnStart(token, origin) {
             await chris.removeEffect(effect3);
         }
     }
-    await MidiQOL.completeItemUse(feature, {}, options);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 
 export let regeneration = {

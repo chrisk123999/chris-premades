@@ -10,8 +10,8 @@ async function turnStart(token, origin) {
     let featureData = duplicate(origin.toObject());
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 async function onHit(workflow, targetToken) {
     if (!workflow.damageRoll || targetToken.actor.system.attributes.hp.temp > 0) return;

@@ -9,18 +9,6 @@ export async function festeringAura(token, origin) {
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
     if (originItem.actor.id === targetToken.actor.id) return;
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [targetToken.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
-    await MidiQOL.completeItemUse(origin, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(origin, config, options);
 }

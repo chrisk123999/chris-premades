@@ -5,6 +5,8 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Hex - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Hex - Move');
+    let queueSetup = await queue.setup(workflow.item.uuid, 'hex', 50);
+    if (!queueSetup) return;
     let selection = await chris.dialog('What ability should have disadvantage?', [
         ['Strength', 'str'],
         ['Dexterity', 'dex'],
@@ -117,6 +119,7 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
         };
         await chris.updateEffect(conEffect, updates);
     }
+    queue.remove(workflow.item.uuid);
 }
 async function hexAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;

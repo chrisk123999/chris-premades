@@ -127,8 +127,8 @@ async function onHit(workflow, targetToken) {
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
-    let options = constants.syntheticItemWorkflowOptions([sourceToken.uuid]);
-    let damageWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([sourceToken.uuid]);
+    let damageWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     if (damageWorkflow.targets.first().actor.system.attributes.hp.value != 0) return;
     await chris.removeEffect(effect);
     let sourceEffect = sourceToken.actor.effects.find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === targetToken.document.uuid);

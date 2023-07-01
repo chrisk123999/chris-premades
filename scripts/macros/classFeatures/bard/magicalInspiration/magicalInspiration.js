@@ -45,8 +45,8 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
         for (let i of newTargets) {
             addedTargetUuids.push(i.document.uuid);
         }
-        let options = constants.syntheticItemWorkflowOptions(addedTargetUuids);
-        await MidiQOL.completeItemUse(feature, {}, options);
+        let [config, options] = constants.syntheticItemWorkflowOptions(addedTargetUuids);
+        await MidiQOL.completeItemUse(feature, config, options);
     }
     queue.remove(workflow.item.uuid);
 }

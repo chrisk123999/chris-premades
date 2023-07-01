@@ -64,8 +64,8 @@ async function trigger(token, trigger) {
     ];
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }
 async function move(effect, token) {
     function getAllowedMoveLocation(casterToken, template, maxSquares) {

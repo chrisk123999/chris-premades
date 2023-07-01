@@ -50,8 +50,8 @@ export async function deadlyLeap({speaker, actor, token, character, item, args, 
     areaFeatureData2.system.save.ability = 'str';
     let areaFeature = new CONFIG.Item.documentClass(areaFeatureData, {'parent': workflow.actor});
     let areaFeature2 = new CONFIG.Item.documentClass(areaFeatureData2, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions(dexSaves);
-    if (dexSaves.length > 0) await MidiQOL.completeItemUse(areaFeature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions(dexSaves);
+    if (dexSaves.length > 0) await MidiQOL.completeItemUse(areaFeature, config, options);
     options.targetUuids = strSaves;
-    if (strSaves.length > 0) await MidiQOL.completeItemUse(areaFeature2, {}, options);
+    if (strSaves.length > 0) await MidiQOL.completeItemUse(areaFeature2, config, options);
 }

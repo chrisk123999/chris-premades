@@ -61,8 +61,8 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args, 
     let feature = workflow.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
     if (!feature) return;
     if (workflow.targets.size === 0) return;
-    let options2 = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options2);
+    let [config, options2] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options2);
 }
 async function vampiricTouchAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;

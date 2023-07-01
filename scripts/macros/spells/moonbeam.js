@@ -86,13 +86,13 @@ async function trigger(token, trigger) {
     ];
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     let changeShape = token.actor.items.getName('Change Shape');
     let shapechanger = token.actor.items.getName('Shapechanger');
     if (changeShape || shapechanger) {
         await chris.createEffect(token.actor, constants.disadvantageEffectData);
     }
-    await MidiQOL.completeItemUse(feature, {}, options);
+    await MidiQOL.completeItemUse(feature, config, options);
     if (shapechanger || shapechanger) {
         let effect = chris.findEffect(token.actor, 'Save Disadvantage');
         if (effect) await chris.removeEffect(effect);

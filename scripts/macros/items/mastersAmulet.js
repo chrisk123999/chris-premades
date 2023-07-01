@@ -47,7 +47,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     queue.remove(workflow.uuid);
 }

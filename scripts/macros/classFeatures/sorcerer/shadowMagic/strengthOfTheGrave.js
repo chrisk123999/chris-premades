@@ -18,8 +18,8 @@ export async function strengthOfTheGrave(token, {item, workflow, ditem}) {
     let damageDealt = ditem.appliedDamage;
     featureData.system.save.dc = damageDealt + featureData.system.save.dc;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': tokenActor});
-    let options = constants.syntheticItemWorkflowOptions([token.document.uuid]);
-    let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     await originItem.update({
         'system.uses.value': originItem.system.uses.value -1
     });

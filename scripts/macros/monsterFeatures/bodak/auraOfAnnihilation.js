@@ -25,6 +25,6 @@ export async function auraOfAnnihilation(token, origin) {
         'value': ''
     };
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': token.actor});
-    let options = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
 }

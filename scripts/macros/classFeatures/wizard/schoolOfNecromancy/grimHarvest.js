@@ -50,7 +50,7 @@ export async function grimHarvest({speaker, actor, token, character, item, args,
         ]
     ];
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     queue.remove(workflow.item.uuid);
 }

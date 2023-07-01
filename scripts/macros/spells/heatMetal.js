@@ -110,8 +110,8 @@ async function pulseItem({speaker, actor, token, character, item, args, scope, w
     ];
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Heat Metal Damage');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let options = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
-    await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
     let effectData = {
         'label': 'Heat Metal Dialogue',
         'icon': workflow.item.img,

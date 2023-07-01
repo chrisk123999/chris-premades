@@ -32,8 +32,8 @@ async function trigger(token, trigger) {
     featureData.system.save.dc = trigger.saveDC;
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
-    let options = constants.syntheticItemWorkflowOptions([token.uuid]);
-    let workflow = await MidiQOL.completeItemUse(feature, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
+    let workflow = await MidiQOL.completeItemUse(feature, config, options);
     if (workflow.failedSaves.size === 0) return;
     let exhaustionLevel = template.flags['chris-premades']?.spell?.sickeningRadiance?.[token.id]?.exhaustionLevel;
     if (exhaustionLevel === undefined) {

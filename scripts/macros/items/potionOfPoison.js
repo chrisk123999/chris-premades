@@ -32,9 +32,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'poison'
             ]
         ];
-        let options = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
+        let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
-        let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+        let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
         if (featureWorkflow.failedSaves.size === 0) {
             stacks -= 1;
         }
