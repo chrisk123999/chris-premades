@@ -343,8 +343,8 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     let selection = await chris.dialog('Change to what damage type?', options)
     let queueSetup = await queue.setup(workflow.item.uuid, 'transmutedSpell', 50);
     if (!queueSetup) return;
-    let damageFormula = workflow.damageRoll._formula.replace(selectionOriginal, selection);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    workflow.damageRoll._formula = workflow.damageRoll._formula.replace(selectionOriginal, selection);
+    workflow.damageRoll.terms.forEach(term=>term.options.flavor=term.options?.flavor?.replace(selectionOriginal,selection))
     await workflow.setDamageRoll(damageRoll);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);
