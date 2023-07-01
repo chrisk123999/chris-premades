@@ -293,7 +293,7 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     setProperty(spellData, 'flags.chris-premades.seekingSpell', damageRoll);
     spellData.name = workflow.item.name + ' Re-Roll';
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
-    await MidiQOL.completeItemUse(spell, {}, options);
+    await MidiQOL.completeItemUse(spell, config, options);
     let damageFormula = ('0');
     let newDamageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(newDamageRoll);

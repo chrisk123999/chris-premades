@@ -30,7 +30,7 @@ export async function magicMissile({speaker, actor, token, character, item, args
         'spell': {
             'castData': workflow.castData
         }
-    }
+    };
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     delete featureData._id;
     if (!game.settings.get('chris-premades', 'Magic Missile Toggle') && !chris.getConfiguration(workflow.item, 'homebrew')) {

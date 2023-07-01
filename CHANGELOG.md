@@ -1,3 +1,8 @@
+# 0.5.28 Release:
+## New Content:
+- Sorcerer Metamagic: Careful Spell, Twinned Spell, Transmuted Spell, Seeking Spell, Heightened Spell, and Empowered Spell (Thanks Autumn)
+- Order of Scribes Awakened Spellbook: Replace Damage (Thanks Autumn)
+  
 # 0.5.27 Release:
 ## New Monster Content:
 - Many Creatures: Regeneration
