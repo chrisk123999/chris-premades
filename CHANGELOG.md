@@ -1,3 +1,9 @@
+# 0.5.26 Release:
+## Bug Fixes:
+- Synthetic item roll fixes.
+- Ray of Enfeeblement
+- Engulf 
+  
 # 0.5.25 Release:
 ## New Monster Content:
 - Clockwork Defender: Electrified Bite
