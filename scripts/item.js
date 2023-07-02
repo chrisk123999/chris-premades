@@ -42,7 +42,6 @@ async function itemConfig(itemDocument) {
     let replacerAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access');
     let configurationAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Configuration Access');
     let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.name];
-    console.log(configuration);
     if (replacerAccess && configurationAccess && configuration) {
         let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, [['🔎 Update / Replace', 'update'], ['🛠️ Configure', 'configure']]);
         if (!selection) return;
