@@ -63,9 +63,7 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
             }
         }
     }
-    for (let i = 0; selectedTargets.length > i; i++) {
-        await chris.createEffect(selectedTargets[i].actor, effectData);
-    }
+    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData))
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
 }
 async function empoweredSpell({speaker, actor, token, character, item, args, scope, workflow}){
@@ -253,9 +251,7 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
             }
         }
     }
-    for (let i = 0; selectedTargets.length > i; i++) {
-        await chris.createEffect(selectedTargets[i].actor, effectData);
-    }
+    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData))
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 3});
 }
 async function seekingSpell({speaker, actor, token, character, item, args, scope, workflow}){
@@ -315,11 +311,10 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     let values = ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'];
     let oldDamageRoll = workflow.damageRoll;
     let oldFlavor = [];
-    for (let i = 0; oldDamageRoll.terms.length > i; i++) {
-        let flavor = oldDamageRoll.terms[i].flavor;
-        let isDeterministic = oldDamageRoll.terms[i].isDeterministic;
-        if (values.includes(flavor.toLowerCase()) && isDeterministic === false) {
-            oldFlavor.push(flavor);
+    for (let i of oldDamageRoll.terms) {
+        let isDeterministic = i.isDeterministic;
+        if (values.includes(i.flavor.toLowerCase()) && isDeterministic === false) {
+            oldFlavor.push(i.flavor);
         }
     }
     function valuesToOptions(arr){
@@ -334,9 +329,9 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     let selectionOriginal = await chris.dialog('Change what damage type?', optionsOriginal);
     if (!selectionOriginal) return;
     let options = []
-    for (let i = 0; values.length > i; i++) {
-        if (values[i] != selectionOriginal) {
-            options.push(values[i]);
+    for (let i of values) {
+        if (i != selectionOriginal) {
+            options.push(i);
         }
     }
     options = valuesToOptions(options);
@@ -344,8 +339,8 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     let queueSetup = await queue.setup(workflow.item.uuid, 'transmutedSpell', 50);
     if (!queueSetup) return;
     workflow.damageRoll._formula = workflow.damageRoll._formula.replace(selectionOriginal, selection);
-    workflow.damageRoll.terms.forEach(term=>term.options.flavor=term.options?.flavor?.replace(selectionOriginal,selection))
-    await workflow.setDamageRoll(damageRoll);
+    workflow.damageRoll.terms.forEach(term => term.options.flavor = term.options?.flavor?.replace(selectionOriginal, selection))
+    await workflow.setDamageRoll(workflow.damageRoll);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);
 }

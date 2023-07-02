@@ -121,7 +121,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
-    if(!effect) return;
+    if (!effect) return;
     if (drakeUpgrades > 0 ) {
         let effectUpdates = {
             'changes': [
@@ -147,7 +147,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'name': name,
         'description': commandData.name
     };
-    if (drakeUpgrades = 2) {
+    if (drakeUpgrades === 2) {
         setProperty(resistanceData, 'flags.midi-qol.onUseMacroName', (resistanceMacro + 'Actor'));
         setProperty(resistanceData, 'flags.chris-premades.feature.spawnedTokenUuid', spawnedToken.uuid);
         setProperty(updates2, 'embedded.Item.Reflexive Resistance', resistanceData);

@@ -59,6 +59,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [primalBondData.name]: primalBondData,
                 [dodgeData.name]: dodgeData
             }
+        },
+        'token': {
+            'name': name
         }
     }
     let updates2 = {};
@@ -186,7 +189,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    updates = mergeObject(updates, updates2, {'recursive': true})
+    updates = mergeObject(updates, updates2, {'recursive': true});
     await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
     let updates3 = {
         'embedded': {

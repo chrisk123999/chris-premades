@@ -1,3 +1,10 @@
+# 0.5.29 Release:
+## Bug Fixes:
+- Awakened Spellbook
+- Drake Companion
+- Meta Magic
+- Primal Companion
+
 # 0.5.28 Release:
 ## New Content:
 - Sorcerer Metamagic: Careful Spell, Twinned Spell, Transmuted Spell, Seeking Spell, Heightened Spell, and Empowered Spell (Thanks Autumn)

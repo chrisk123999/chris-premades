@@ -22,7 +22,7 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
         queue.remove(workflow.item.uuid);
         return;
     }
-    function valuesToOptions(arr){
+    function valuesToOptions(arr) {
         let optionsPush = [];
         for (let i = 0; arr.length > i; i++) {
             if (typeof arr[i] != 'string') return;
@@ -43,7 +43,7 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
     }
     for (let i = 0; oldFlavor.length > i; i++) {
         workflow.damageRoll.terms[i].options.flavor = selection;
-        if(oldFlavor[i]){
+        if (oldFlavor[i]) {
             workflow.damageRoll._formula = workflow.damageRoll._formula.replace(oldFlavor[i], selection);
         }
     }
