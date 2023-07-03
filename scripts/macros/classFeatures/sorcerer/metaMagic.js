@@ -4,7 +4,10 @@ import {queue} from '../../../queue.js';
 async function carefulSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
@@ -69,7 +72,10 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
 async function empoweredSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.hitTargets.size === 0 ||  workflow.item.type != 'spell') return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
@@ -198,7 +204,10 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
 async function heightenedSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
@@ -263,7 +272,10 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     }
     if (workflow.targets.size === 0 || workflow.targets.size === workflow.hitTargets.size || workflow.item.flags['chris-premades']?.seekingSpell || workflow.item.type != 'spell') return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
@@ -298,9 +310,12 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
 }
 async function transmutedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
-    if (workflow.item.type != 'spell' || workflow.item.flags['chris-premades']?.metaMagic) return;
+    if (workflow.item.type != 'spell') return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
@@ -350,7 +365,10 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     let spellLevel = workflow.castData.castLevel;
     if (spellLevel === undefined) return;
     let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) return;
+    if (!effect) {
+        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+        return;
+    }
     let sorcPointsItem = await fromUuid(effect.origin);
     if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
@@ -413,7 +431,6 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     let spellData = duplicate(workflow.item.toObject());
     let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid], false, spellLevel);
     setProperty(spellData, 'flags.chris-premades.metaMagic', true);
-    setProperty(workflow.item, 'flags.chris-premades.metaMagic', true);
     spellData.system.components.concentration = false;
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     await warpgate.wait(100);

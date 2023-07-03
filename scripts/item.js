@@ -343,6 +343,9 @@ export function setConfig() {
             'Metamagic - Subtle Spell': [
                 'Metamagic: Subtle Spell'
             ],
+            'Metamagic - Transmuted Spell': [
+                'Metamagic: Transmuted Spell'
+            ],
             'Metamagic - Twinned Spell': [
                 'Metamagic: Twinned Spell'
             ],
@@ -400,6 +403,60 @@ export function setConfig() {
             }
         },
         'correctedItems': {
+            'Careful Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
+            'Empowered Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
+            'Heightened Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
+            'Seeking Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
+            'Transmuted Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
+            'Twinned Spell': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
             'Steel Defender': {
                 'system': {
                     'uses': {
