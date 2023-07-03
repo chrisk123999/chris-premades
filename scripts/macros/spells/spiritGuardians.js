@@ -77,7 +77,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         ];
         color = colors[Math.floor(Math.random() * colors.length)];
     }
-    new Sequence().effect().file('jb2a.spirit_guardians.' + color).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
+    console.log(workflow.token.document.width + 6);
+    new Sequence().effect().file('jb2a.spirit_guardians.' + color).size(workflow.token.document.width + 6, {'gridUnits': true}).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
 async function effectEnd(token) {
     await tokenMove.remove('spiritGuardians', token.id);
