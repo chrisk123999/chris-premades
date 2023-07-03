@@ -1,3 +1,9 @@
+# 0.5.30 Release:
+## Update Notes:
+- Added configuration for Spirit Guardians.
+## Bug Fixes:
+- Spirit Guardians
+  
 # 0.5.29 Release:
 ## Bug Fixes:
 - Awakened Spellbook

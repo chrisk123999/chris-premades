@@ -60,9 +60,28 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let effect = chris.findEffect(workflow.actor, 'Spirit Guardians');
     if (!effect) return;
     await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
+    let color = chris.getConfiguration(workflow.item, 'color') ?? 'blueyellow';
+    if (color === 'random') {
+        let colors = [
+            'blueyellow',
+            'blue.ring',
+            'dark_black.ring',
+            'dark_blue.ring',
+            'dark_purple.ring',
+            'dark_red.ring',
+            'dark_whiteblue.ring',
+            'green.ring',
+            'orange.ring',
+            'greenorange.ring',
+            'pinkpurple.ring'
+        ];
+        color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    new Sequence().effect().file('jb2a.spirit_guardians.' + color).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
 async function effectEnd(token) {
     await tokenMove.remove('spiritGuardians', token.id);
+    Sequencer.EffectManager.endEffects({ 'name': 'SpiritGuardians-' + token.id, 'object': token});
 }
 export let spiritGuardians = {
     'item': item,

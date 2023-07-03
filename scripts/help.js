@@ -13,7 +13,7 @@ let names = {
     'fxmaster': 'FXMaster',
     'itemacro': 'Item Macro',
     'jb2a_patreon': 'Jules&Ben\'s Animated Assets (P)',
-    'jb2a_dnd5e': 'Jules&Ben\'s Animated Assets (F)',
+    'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
     'lib-wrapper': 'libWrapper',
     'midi-qol': 'Midi-Qol',
     'quick-insert': 'Quick Insert',

@@ -7,7 +7,7 @@ import {queue} from './queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './movement.js';
 import {bab} from './babHelpers.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
-import {preCreateActiveEffect} from './utility/effect.js';
+import {fixOrigin, itemDC} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {tashaSummon} from './utility/tashaSummon.js';
@@ -145,7 +145,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Shield Guardian')) Hooks.on('midi-qol.damageApplied', macros.mastersAmulet);
     if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
     if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
-    if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
+    if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', itemDC);
+    if (game.settings.get('chris-premades', 'Active Effect Origin Fix')) Hooks.on('createToken', fixOrigin);
     if (game.settings.get('chris-premades', 'Automatic VAE Descriptions')) Hooks.on('preCreateActiveEffect', vaeEffectDescription);
     if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
     if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();

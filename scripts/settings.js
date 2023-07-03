@@ -4,7 +4,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
 import {patching} from './patching.js';
 import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
-import {preCreateActiveEffect} from './utility/effect.js';
+import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
@@ -146,13 +146,29 @@ export function registerSettings() {
         'default': true,
         'onChange': value => {
             if (value) {
-                Hooks.on('preCreateActiveEffect', preCreateActiveEffect);
+                Hooks.on('preCreateActiveEffect', itemDC);
             } else {
-                Hooks.off('preCreateActiveEffect', preCreateActiveEffect);
+                Hooks.off('preCreateActiveEffect', itemDC);
             }
         }
     });
     addMenuSetting('Active Effect Additions', 'General');
+    game.settings.register(moduleName, 'Active Effect Origin Fix', {
+        'name': 'Active Effect Origin Fix',
+        'hint': 'This setting corrects the origin of effects on unlinked actors.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('createToken', fixOrigin);
+            } else {
+                Hooks.off('createToken', fixOrigin);
+            }
+        }
+    });
+    addMenuSetting('Active Effect Origin Fix', 'General');
     game.settings.register(moduleName, 'Automatic VAE Descriptions', {
         'name': 'Automatic VAE Descriptions',
         'hint': 'When enabled, this setting will automatically fill in VAE effect descriptions when possible.',

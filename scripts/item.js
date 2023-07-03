@@ -1030,6 +1030,28 @@ export function setConfig() {
                         'default': 0
                     }
                 }
+            },
+            'Spirit Guardians': {
+                'select': {
+                    'color': {
+                        'label': 'What color?',
+                        'default': 'blueyellow',
+                        'values': [
+                            {'value': 'blueyellow', 'html': 'Blue-Yellow'},
+                            {'value': 'blue.ring', 'html': 'Blue'},
+                            {'value': 'dark_black.ring', 'html': 'Black'},
+                            {'value': 'dark_blue', 'html': 'Dark Blue'},
+                            {'value': 'dark_purple.ring', 'html': 'Purple'},
+                            {'value': 'dark_red.ring', 'html': 'Red'},
+                            {'value': 'dark_whiteblue.ring', 'html': 'White-Blue'},
+                            {'value': 'green.ring', 'html': 'Green'},
+                            {'value': 'orange.ring', 'html': 'Orange'},
+                            {'value': 'greenorange.ring', 'html': 'Green-Orange'},
+                            {'value': 'pinkpurple.ring', 'html': 'Pink-Purple'},
+                            {'value': 'random', 'html': 'Random'}
+                        ]
+                    }
+                }
             }
         }
     });
