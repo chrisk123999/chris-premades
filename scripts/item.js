@@ -403,7 +403,7 @@ export function setConfig() {
             }
         },
         'correctedItems': {
-            'Careful Spell': {
+            'Metamagic - Careful Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
@@ -412,7 +412,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Empowered Spell': {
+            'Metamagic - Empowered Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
@@ -421,7 +421,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Heightened Spell': {
+            'Metamagic - Heightened Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
@@ -430,7 +430,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Seeking Spell': {
+            'Metamagic - Seeking Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
@@ -439,7 +439,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Transmuted Spell': {
+            'Metamagic - Transmuted Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
@@ -448,7 +448,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Twinned Spell': {
+            'Metamagic - Twinned Spell': {
                 'system': {
                     'consume': {
                         'amount': null,
