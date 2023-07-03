@@ -1,3 +1,8 @@
+# 0.5.33 Release
+## Bug Fixes:
+- Chromatic Orb
+- Metamagic
+  
 # 0.5.32 Release:
 ## Update Notes:
 - Added configuration option for Turn Undead to allow custom class identifiers.

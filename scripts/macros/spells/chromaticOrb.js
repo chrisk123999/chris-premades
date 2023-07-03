@@ -4,7 +4,7 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
     if (workflow.hitTargets.size != 1) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'chromaticOrb', 50);
     if (!queueSetup) return;
-    let selection = await chris.dialog('What damage type?', [['🧪 Acid', 'acid'], ['❄️ Cold', 'cold'], ['🔥 Fire', 'fire'], ['⚡ Lightning', 'lightning'], ['☁️ Thunder', 'thunder']]);
+    let selection = await chris.dialog('What damage type?', [['🧪 Acid', 'acid'], ['❄️ Cold', 'cold'], ['🔥 Fire', 'fire'], ['⚡ Lightning', 'lightning'], ['☠️ Poison', 'poison'], ['☁️ Thunder', 'thunder']]);
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -18,6 +18,7 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
         animation = 'jb2a.guiding_bolt.02.';
         switch(selection) {
             case 'acid':
+            case 'poison':
                 animation += 'greenorange';
                 break;
             case 'cold':
