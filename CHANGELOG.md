@@ -1,3 +1,7 @@
+# 0.5.32 Release:
+## Update Notes:
+- Added configuration option for Turn Undead to allow custom class identifiers.
+  
 # 0.5.31 Release:
 ## Bug Fixes:
 - Spirit Guardians

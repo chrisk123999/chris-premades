@@ -1052,6 +1052,14 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Channel Divinity: Turn Undead': {
+                'text': {
+                    'identifier': {
+                        'label': 'Class Identifier:',
+                        'default': 'cleric'
+                    }
+                }
             }
         }
     });

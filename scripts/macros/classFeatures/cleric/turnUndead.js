@@ -63,7 +63,8 @@ async function targets({speaker, actor, token, character, item, args, scope, wor
 }
 async function saves({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size === 0) return;
-    let clericLevels = workflow.actor.classes.cleric?.system?.levels;
+    let classIdentifier = chris.getConfiguration(workflow.item, 'identifier') ?? 'cleric';
+    let clericLevels = workflow.actor.classes[classIdentifier]?.system?.levels;
     if (!clericLevels) return;
     let destroyLevel;
     if (clericLevels >= 17) {
