@@ -498,9 +498,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preItemRoll', macros.sanctuary);
+                Hooks.on('midi-qol.preItemRoll', macros.sanctuary.hook);
             } else {
-                Hooks.off('midi-qol.preItemRoll', macros.sanctuary);
+                Hooks.off('midi-qol.preItemRoll', macros.sanctuary.hook);
             }
         }
     });

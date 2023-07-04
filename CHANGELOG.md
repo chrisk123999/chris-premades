@@ -1,3 +1,7 @@
+# 0.5.34 Release:
+## Bug Fixes:
+- Sanctuary
+  
 # 0.5.33 Release
 ## Bug Fixes:
 - Chromatic Orb
