@@ -65,6 +65,41 @@ async function refund({speaker, actor, token, character, item, args, scope, work
     if (!originItem) return;
     await originItem.update({'system.uses.value': originItem.system.uses.value + 1});
 }
+async function distractingStrike({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effect = chris.findEffect(workflow.actor, 'Maneuvers: Distracting Strike');
+    if (!effect) return;
+    if (workflow.hitTargets.size === 0) {
+        await refund.bind(this)({speaker, actor, token, character, item, args, scope, workflow});
+        await chris.removeEffect(effect);
+        return;
+    }
+    let targetToken = workflow.hitTargets.first();
+    let effectData = {
+        'label': effect.label,
+        'icon': effect.icon,
+        'changes': [
+            {
+                'key': 'flags.midi-qol.grants.advantage.attack.all',
+                'mode': 0,
+                'value': 'workflow.token.id != "' + workflow.token.id + '"',
+                'priority': 20
+            }
+        ],
+        'duration': {
+            'rounds': 1
+        },
+        'flags': {
+            'dae': {
+                'specialDuration': [
+                    'turnStartSource'
+                ]
+            }
+        },
+        'origin': workflow.actor.uuid
+    };
+    await chris.createEffect(targetToken.actor, effectData);
+    await chris.removeEffect(effect);
+}
 async function goadingAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Maneuvers: Goading Attack');
     if (!effect) return;
@@ -351,6 +386,7 @@ async function tripAttack({speaker, actor, token, character, item, args, scope, 
 export let maneuvers = {
     'baitAndSwitch': baitAndSwitch,
     'refund': refund,
+    'distractingStrike': distractingStrike,
     'goadingTarget': goadingAttackTarget,
     'goadingAttack': goadingAttack,
     'grapplingStrike': grapplingStrike,
