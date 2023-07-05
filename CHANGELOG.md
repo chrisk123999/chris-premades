@@ -1,6 +1,6 @@
 # 0.5.35 Release:
 ## New Content:
-- Circle of Wildfire Druid: Summon Wildfire Spirit
+- Circle of Wildfire Druid: Summon Wildfire Spirit (Thanks Autumn)
 ## Bug Fixes:
 - Maneuver: Distracting Strike
 - Dread Ambusher
