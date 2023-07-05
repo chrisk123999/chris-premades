@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Eladrin Change Season
 - Hybrid Transformation
+- Weight of Sorrow
   
 # 0.5.35 Release:
 ## New Content:
