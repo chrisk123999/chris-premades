@@ -354,6 +354,9 @@ export function setConfig() {
                 'Starry Form: Chalice',
                 'Starry Form: Dragon'
             ],
+            'Summon Wildfire Spirit': [
+                'Summon Wildfire Spirit: Command'
+            ],
             'Tentacle of the Deeps: Summon': [
                 'Tentacle of the Deeps: Move',
                 'Tentacle of the Deeps: Attack'
@@ -466,7 +469,16 @@ export function setConfig() {
                         'value': 1
                     }
                 }
-            }
+            },
+            'Summon Wildfire Spirit': {
+                'system': {
+                    'consume': {
+                        'amount': null,
+                        'target': '',
+                        'type': '',
+                    }
+                }
+            },
         },
         'itemConfiguration': {
             'Magic Missile': {
@@ -782,6 +794,18 @@ export function setConfig() {
                     },
                     'avatar-skeletal': {
                         'label': 'Skeletal Avatar:',
+                        'default': ''
+                    }
+                }
+            },
+            'Summon Wildfire Spirit': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
                         'default': ''
                     }
                 }

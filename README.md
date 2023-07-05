@@ -196,6 +196,8 @@ Additional support and feature requests can be made on my Discord server: https:
 #### Circle of the Moon:  
 - Circle Forms  
 - Primal Strike  
+#### Circle of Wildfire:
+- Summon Wildfire Spirit
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  

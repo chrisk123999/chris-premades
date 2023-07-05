@@ -205,7 +205,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(workflow.token.document, updates3, {}, options);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
-    if(!effect) return;
+    if (!effect) return;
     let currentScript = effect.flags.effectmacro?.onDelete?.script;
     if (!currentScript) return;
     let effectUpdates = {

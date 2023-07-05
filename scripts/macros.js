@@ -190,6 +190,7 @@ import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
+import {summonWildfireSpirit} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
 import {summon} from './macros/generic/summon.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
@@ -480,6 +481,7 @@ export let macros = {
     'summonFiend': summonFiend,
     'summonShadowspawn': summonShadowspawn,
     'summonUndead': summonUndead,
+    'summonWildfireSpirit': summonWildfireSpirit,
     'telekentic': telekinetic,
     'templateTrigger': templateTrigger,
     'tentacleOfTheDeeps': tentacleOfTheDeeps,

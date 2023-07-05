@@ -25,7 +25,7 @@ export async function vortexWarp({speaker, actor, token, character, item, args, 
         'updateOpts': {'token': {'animate': false}}
     };
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
-    await new Sequence().effect().file('jb2a.misty_step.02.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(1500).animation().on(targetToken).opacity(1.0).play();-
+    await new Sequence().effect().file('jb2a.misty_step.02.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(1500).animation().on(targetToken).opacity(1.0).play();
     await warpgate.wait(1000);
     await workflow.actor.sheet.maximize();
 }
