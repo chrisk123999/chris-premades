@@ -1,3 +1,8 @@
+# 0.5.36 Release:
+## Bug Fixes:
+- Eladrin Change Season
+- Hybrid Transformation
+  
 # 0.5.35 Release:
 ## New Content:
 - Circle of Wildfire Druid: Summon Wildfire Spirit (Thanks Autumn)

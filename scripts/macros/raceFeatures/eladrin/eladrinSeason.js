@@ -57,7 +57,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
     };
     let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + selection);
     let tokenImg = chris.getConfiguration(workflow.item, 'token-' + selection);
-    if (avatarImg) updates.actor.img = avatarImg;
+    if (avatarImg) setProperty(updates, 'actor.img', avatarImg);
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);

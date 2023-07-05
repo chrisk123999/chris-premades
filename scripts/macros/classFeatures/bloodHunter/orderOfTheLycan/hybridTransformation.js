@@ -3,7 +3,8 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../queue.js';
 async function turnStart(token, actor) {
     let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
-    let levels = actor.classes['blood-hunter'].system.levels
+    let levels = actor.classes['blood-hunter'].system.levels;
+    if (!levels) return;
     let bonusHealth = 0;
     if (levels >= 11 && (actor.system.attributes.hp.max / 2) > actor.system.attributes.hp.value) {
         let featureData2 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Lycan Regeneration', false);
@@ -42,8 +43,10 @@ async function turnStart(token, actor) {
     await MidiQOL.completeItemUse(feature, config, options);
 }
 async function transformation({speaker, actor, token, character, item, args, scope, workflow}) {
-    let levels = workflow.actor.classes['blood-hunter'].system.levels
+    let levels = workflow.actor.classes['blood-hunter'].system.levels;
+    if (!levels) return;
     let weaponData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Predatory Strike', false);
+    if (!weaponData) return;
     weaponData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Predatory Strike');
     if (levels >= 7) {
         weaponData.system.attackBonus = '+1';
@@ -155,7 +158,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
         }
     };
     let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
-    if (avatarImg) updates.actor.img = avatarImg;
+    if (avatarImg) setProperty(updates, 'actor.img', avatarImg);
     let tokenImg = chris.getConfiguration(workflow.item, 'token');
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
