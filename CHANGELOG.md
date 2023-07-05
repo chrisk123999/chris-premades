@@ -4,7 +4,7 @@
 ## Bug Fixes:
 - Maneuver: Distracting Strike
 - Dread Ambusher
-
+  
 # 0.5.34 Release:
 ## Bug Fixes:
 - Sanctuary
