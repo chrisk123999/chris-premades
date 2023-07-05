@@ -5,7 +5,7 @@ export async function weightOfSorrow(token, origin) {
     if (!targetToken) return;
     if (targetToken.id === token.id) return;
     let distance = chris.getDistance(token, targetToken);
-    if (distance > 30) return;
+    if (distance > 5) return;
     let effect = chris.findEffect(token.actor, 'Summoned Creature');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
