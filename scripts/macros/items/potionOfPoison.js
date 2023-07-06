@@ -12,15 +12,15 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (chris.inCombat()) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
-    let effect = chris.findEffect(targetActor, 'Potion of Poison');
-    if (!effect) return;
     let stacks = 3;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Potion of Poison', false);
     if (!featureData) return;
     featureData.system.save.dc = workflow.item.system.save.dc;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison');
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
     while (stacks > 0) {
-        if (targetActor.system.attributes.hp.value <= 0) break;
+        if (targetActor.system.attributes.hp.value === 0) break;
         let damageList = {
             3: '3d6[poison]',
             2: '2d6[poison]',
@@ -32,17 +32,18 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'poison'
             ]
         ];
-        let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
-        let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
+        await warpgate.wait(100);
         let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
         if (featureWorkflow.failedSaves.size === 0) {
             stacks -= 1;
         }
         if (stacks === 0) {
-            await chris.removeEffect(effect);
+            let effect = chris.findEffect(targetActor, 'Potion of Poison');
+            if (effect) await chris.removeEffect(effect);
+            // This doesn't work!  Macro still running before effects applied I guess?
             break;
         }
-        await warpgate.wait(500);
+        await warpgate.wait(400);
     }
 }
 async function turnStart(token, actor, effect, origin) {
@@ -80,17 +81,9 @@ async function turnEnd(token, actor, effect, origin) {
     featureData.system.save.dc = origin.system.save.dc;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison');
     featureData.system.damage.parts = [];
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-    };
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
-    let featureWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+    let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     if (featureWorkflow.failedSaves.size === 0) {
         stacks -= 1;
         if (stacks === 0) {
