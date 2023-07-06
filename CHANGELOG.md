@@ -1,6 +1,8 @@
 # 0.5.37 Release:
 ## Update Notes:
 - Added configuration option for custom names for summon spells and class features.
+## Bug Fixes:
+- Potion of Poison
   
 # 0.5.36 Release:
 ## Bug Fixes:

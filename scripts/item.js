@@ -1321,7 +1321,23 @@ export function setConfig() {
                         'default': 'cleric'
                     }
                 }
-            }
+            },
+            'Spiritual Weapon': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
         }
     });
 }

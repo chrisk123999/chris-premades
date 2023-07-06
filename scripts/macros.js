@@ -170,6 +170,7 @@ import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
+import {spiritualWeapon} from './macros/spells/spiritualWeapon.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
@@ -463,6 +464,7 @@ export let macros = {
     'spikeGrowth': spikeGrowth,
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,
+    'spiritualWeapon': spiritualWeapon,
     'starryForm': starryForm,
     'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
