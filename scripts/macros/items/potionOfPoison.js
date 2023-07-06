@@ -2,23 +2,16 @@ import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let queueSetup = await queue.setup(workflow.item.uuid, 'potionOfPoison', 50);
-    if (!queueSetup) return;
-    if (workflow.targets.size != 1) return;
-    let damageFormula = '3d6[poison]';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
-    queue.remove(workflow.item.uuid);
-    if (chris.inCombat()) return;
+    if (workflow.failedSaves.size === 0 || chris.inCombat()) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
     let stacks = 3;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Potion of Poison', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Potion of Poison - Damage', false);
     if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison - Damage');
     featureData.system.save.dc = workflow.item.system.save.dc;
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison');
+    delete featureData._id;
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
-    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
     while (stacks > 0) {
         if (targetActor.system.attributes.hp.value === 0) break;
         let damageList = {
@@ -32,7 +25,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'poison'
             ]
         ];
-        await warpgate.wait(100);
+        let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetActor});
+        await warpgate.wait(500);
         let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
         if (featureWorkflow.failedSaves.size === 0) {
             stacks -= 1;
@@ -40,11 +34,18 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (stacks === 0) {
             let effect = chris.findEffect(targetActor, 'Potion of Poison');
             if (effect) await chris.removeEffect(effect);
-            // This doesn't work!  Macro still running before effects applied I guess?
-            break;
+            return;
         }
-        await warpgate.wait(400);
     }
+}
+async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
+    let queueSetup = await queue.setup(workflow.item.uuid, 'potionOfPoison', 50);
+    if (!queueSetup) return;
+    if (workflow.targets.size != 1) return;
+    let damageFormula = '3d6[poison]';
+    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    await workflow.setDamageRoll(damageRoll);
+    queue.remove(workflow.item.uuid);
 }
 async function turnStart(token, actor, effect, origin) {
     let poisonedEffect = chris.findEffect(actor, 'Poisoned');
@@ -76,10 +77,11 @@ async function turnEnd(token, actor, effect, origin) {
     }
     let stacks = await effect.getFlag('chris-premades', 'item.potionOfPosion.stacks');
     if (!stacks) stacks = 3;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Potion of Poison', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Item Features', 'Potion of Poison - Damage', false);
     if (!featureData) return;
     featureData.system.save.dc = origin.system.save.dc;
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Potion of Poison - Damage');
+    featureData.name = 'Potion of Poision';
     featureData.system.damage.parts = [];
     let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
@@ -96,5 +98,6 @@ async function turnEnd(token, actor, effect, origin) {
 export let potionOfPoison = {
     'item': item,
     'turnStart': turnStart,
-    'turnEnd': turnEnd
+    'turnEnd': turnEnd,
+    'damage': damage
 }
