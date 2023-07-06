@@ -11,7 +11,7 @@ export async function summonAberration({speaker, actor, token, character, item, 
     let attacks = Math.floor(workflow.castData.castLevel / 2);
     multiAttackFeatureData.name = 'Multiattack (' + attacks + ' Attacks)';
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 10);
-    let name = 'Aberrant Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

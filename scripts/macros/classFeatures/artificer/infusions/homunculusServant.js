@@ -22,7 +22,7 @@ export async function homunculusServant({speaker, actor, token, character, item,
     if (!artificerLevel) return;
     let hpFormula = artificerLevel + 'd4 + ' + (1 + chris.getSpellMod(workflow.item));
     let hpValue = await new Roll(hpFormula).evaluate({async: true});
-    let name = 'Homunculus Servant';
+    let name = chris.getConfiguration(workflow.item, 'name') ?? 'Homunculus Servant';
     let updates = {
         'actor': {
             'name': name,

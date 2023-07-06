@@ -508,6 +508,10 @@ export function setConfig() {
             },
             'Healing Spirit': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -520,6 +524,10 @@ export function setConfig() {
             },
             'Summon Aberration': {
                 'text': {
+                    'name-beholderkin': {
+                        'label': 'Beholderkin Custom Name:',
+                        'default': ''
+                    },
                     'token-beholderkin': {
                         'label': 'Beholderkin Token:',
                         'default': ''
@@ -528,12 +536,20 @@ export function setConfig() {
                         'label': 'Beholderkin Avatar:',
                         'default': ''
                     },
+                    'name-slaad': {
+                        'label': 'Slaad Custom Name:',
+                        'default': ''
+                    },
                     'token-slaad': {
                         'label': 'Slaad Token:',
                         'default': ''
                     },
                     'avatar-slaad': {
                         'label': 'Slaad Avatar:',
+                        'default': ''
+                    },
+                    'name-star-spawn': {
+                        'label': 'Star Spawn Custom Name:',
                         'default': ''
                     },
                     'token-star-spawn': {
@@ -548,6 +564,10 @@ export function setConfig() {
             },
             'Summon Beast': {
                 'text': {
+                    'name-air': {
+                        'label': 'Air Custom Name:',
+                        'default': ''
+                    },
                     'token-air': {
                         'label': 'Air Token:',
                         'default': ''
@@ -556,12 +576,20 @@ export function setConfig() {
                         'label': 'Air Avatar:',
                         'default': ''
                     },
+                    'name-land': {
+                        'label': 'Land Custom Name:',
+                        'default': ''
+                    },
                     'token-land': {
                         'label': 'Land Token:',
                         'default': ''
                     },
                     'avatar-land': {
                         'label': 'Land Avatar:',
+                        'default': ''
+                    },
+                    'name-water': {
+                        'label': 'Water Custom Name:',
                         'default': ''
                     },
                     'token-water': {
@@ -576,12 +604,20 @@ export function setConfig() {
             },
             'Summon Celestial': {
                 'text': {
+                    'name-avenger': {
+                        'label': 'Avenger Custom Name:',
+                        'default': ''
+                    },
                     'token-avenger': {
                         'label': 'Avenger Token:',
                         'default': ''
                     },
                     'avatar-air': {
                         'label': 'Avenger Avatar:',
+                        'default': ''
+                    },
+                    'name-defender': {
+                        'label': 'Defender Custom Name:',
                         'default': ''
                     },
                     'token-defender': {
@@ -596,6 +632,10 @@ export function setConfig() {
             },
             'Summon Construct': {
                 'text': {
+                    'name-clay': {
+                        'label': 'Clay Custom Name:',
+                        'default': ''
+                    },
                     'token-clay': {
                         'label': 'Clay Token:',
                         'default': ''
@@ -604,12 +644,20 @@ export function setConfig() {
                         'label': 'Clay Avatar:',
                         'default': ''
                     },
+                    'name-metal': {
+                        'label': 'Metal Custom Name:',
+                        'default': ''
+                    },
                     'token-metal': {
                         'label': 'Metal Token:',
                         'default': ''
                     },
                     'avatar-metal': {
                         'label': 'Metal Avatar:',
+                        'default': ''
+                    },
+                    'name-stone': {
+                        'label': 'Stone Custom Name:',
                         'default': ''
                     },
                     'token-stone': {
@@ -624,6 +672,10 @@ export function setConfig() {
             },
             'Summon Draconic Spirit': {
                 'text': {
+                    'name-chromatic': {
+                        'label': 'Chromatic Custom Name:',
+                        'default': ''
+                    },
                     'token-chromatic': {
                         'label': 'Chromatic Token:',
                         'default': ''
@@ -632,12 +684,20 @@ export function setConfig() {
                         'label': 'Chromatic Avatar:',
                         'default': ''
                     },
+                    'name-metallic': {
+                        'label': 'Metallic Custom Name:',
+                        'default': ''
+                    },
                     'token-metallic': {
                         'label': 'Metallic Token:',
                         'default': ''
                     },
                     'avatar-metallic': {
                         'label': 'Metallic Avatar:',
+                        'default': ''
+                    },
+                    'name-gem': {
+                        'label': 'Gem Custom Name:',
                         'default': ''
                     },
                     'token-gem': {
@@ -652,12 +712,20 @@ export function setConfig() {
             },
             'Summon Elemental': {
                 'text': {
+                    'name-air': {
+                        'label': 'Air Custom Name:',
+                        'default': ''
+                    },
                     'token-air': {
                         'label': 'Air Token:',
                         'default': ''
                     },
                     'avatar-air': {
                         'label': 'Air Avatar:',
+                        'default': ''
+                    },
+                    'name-earth': {
+                        'label': 'Earth Custom Name:',
                         'default': ''
                     },
                     'token-earth': {
@@ -668,12 +736,20 @@ export function setConfig() {
                         'label': 'Earth Avatar:',
                         'default': ''
                     },
+                    'name-fire': {
+                        'label': 'Fire Custom Name:',
+                        'default': ''
+                    },
                     'token-fire': {
                         'label': 'Fire Token:',
                         'default': ''
                     },
                     'avatar-fire': {
                         'label': 'Fire Avatar:',
+                        'default': ''
+                    },
+                    'name-water': {
+                        'label': 'Water Custom Name:',
                         'default': ''
                     },
                     'token-water': {
@@ -688,6 +764,10 @@ export function setConfig() {
             },
             'Summon Fey': {
                 'text': {
+                    'name-fuming': {
+                        'label': 'Fuming Custom Name:',
+                        'default': ''
+                    },
                     'token-fuming': {
                         'label': 'Fuming Token:',
                         'default': ''
@@ -696,12 +776,20 @@ export function setConfig() {
                         'label': 'Fuming Avatar:',
                         'default': ''
                     },
+                    'name-mirthful': {
+                        'label': 'Mirthful Custom Name:',
+                        'default': ''
+                    },
                     'token-mirthful': {
                         'label': 'Mirthful Token:',
                         'default': ''
                     },
                     'avatar-mirthful': {
                         'label': 'Mirthful Avatar:',
+                        'default': ''
+                    },
+                    'name-tricksy': {
+                        'label': 'Tricksy Custom Name:',
                         'default': ''
                     },
                     'token-tricksy': {
@@ -716,6 +804,10 @@ export function setConfig() {
             },
             'Summon Fiend': {
                 'text': {
+                    'name-demon': {
+                        'label': 'Demon Custom Name:',
+                        'default': ''
+                    },
                     'token-demon': {
                         'label': 'Demon Token:',
                         'default': ''
@@ -724,12 +816,20 @@ export function setConfig() {
                         'label': 'Demon Avatar:',
                         'default': ''
                     },
+                    'name-devil': {
+                        'label': 'Devil Custom Name:',
+                        'default': ''
+                    },
                     'token-devil': {
                         'label': 'Devil Token:',
                         'default': ''
                     },
                     'avatar-devil': {
                         'label': 'Devil Avatar:',
+                        'default': ''
+                    },
+                    'name-yugoloth': {
+                        'label': 'Yugoloth Custom Name:',
                         'default': ''
                     },
                     'token-yugoloth': {
@@ -744,6 +844,10 @@ export function setConfig() {
             },
             'Summon Shadowspawn': {
                 'text': {
+                    'name-fury': {
+                        'label': 'Fury Custom Name:',
+                        'default': ''
+                    },
                     'token-fury': {
                         'label': 'Fury Token:',
                         'default': ''
@@ -752,12 +856,20 @@ export function setConfig() {
                         'label': 'Fury Avatar:',
                         'default': ''
                     },
+                    'name-despair': {
+                        'label': 'Despair Custom Name:',
+                        'default': ''
+                    },
                     'token-despair': {
                         'label': 'Despair Token:',
                         'default': ''
                     },
                     'avatar-despair': {
                         'label': 'Despair Avatar:',
+                        'default': ''
+                    },
+                    'name-fear': {
+                        'label': 'Fear Custom Name:',
                         'default': ''
                     },
                     'token-fear': {
@@ -772,6 +884,10 @@ export function setConfig() {
             },
             'Summon Undead': {
                 'text': {
+                    'name-ghostly': {
+                        'label': 'Ghostly Custom Name:',
+                        'default': ''
+                    },
                     'token-ghostly': {
                         'label': 'Ghostly Token:',
                         'default': ''
@@ -780,12 +896,20 @@ export function setConfig() {
                         'label': 'Ghostly Avatar:',
                         'default': ''
                     },
+                    'name-putrid': {
+                        'label': 'Putrid Custom Name:',
+                        'default': ''
+                    },
                     'token-putrid': {
                         'label': 'Putrid Token:',
                         'default': ''
                     },
                     'avatar-putrid': {
                         'label': 'Putrid Avatar:',
+                        'default': ''
+                    },
+                    'name-skeletal': {
+                        'label': 'Skeletal Custom Name:',
                         'default': ''
                     },
                     'token-skeletal': {
@@ -800,6 +924,10 @@ export function setConfig() {
             },
             'Summon Wildfire Spirit': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -812,6 +940,10 @@ export function setConfig() {
             },
             'Bigby\'s Hand': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -824,6 +956,10 @@ export function setConfig() {
             },
             'Animating Performance': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -836,12 +972,20 @@ export function setConfig() {
             },
             'Drake Companion: Summon': {
                 'text': {
+                    'name-acid': {
+                        'label': 'Acid Custom Name:',
+                        'default': ''
+                    },
                     'token-acid': {
                         'label': 'Acid Token:',
                         'default': ''
                     },
                     'avatar-acid': {
                         'label': 'Acid Avatar:',
+                        'default': ''
+                    },
+                    'name-cold': {
+                        'label': 'Cold Custom Name:',
                         'default': ''
                     },
                     'token-cold': {
@@ -852,6 +996,10 @@ export function setConfig() {
                         'label': 'Cold Avatar:',
                         'default': ''
                     },
+                    'name-fire': {
+                        'label': 'Fire Custom Name:',
+                        'default': ''
+                    },
                     'token-fire': {
                         'label': 'Fire Token:',
                         'default': ''
@@ -860,12 +1008,20 @@ export function setConfig() {
                         'label': 'Fire Avatar:',
                         'default': ''
                     },
+                    'name-lightning': {
+                        'label': 'Lightning Custom Name:',
+                        'default': ''
+                    },
                     'token-lightning': {
                         'label': 'Lightning Token:',
                         'default': ''
                     },
                     'avatar-lightning': {
                         'label': 'Lightning Avatar:',
+                        'default': ''
+                    },
+                    'name-poison': {
+                        'label': 'Poison Custom Name:',
                         'default': ''
                     },
                     'token-poison': {
@@ -880,6 +1036,10 @@ export function setConfig() {
             },
             'Create Homunculus Servant': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -892,6 +1052,10 @@ export function setConfig() {
             },
             'Primal Companion': {
                 'text': {
+                    'name-land': {
+                        'label': 'Land Custom Name:',
+                        'default': ''
+                    },
                     'token-land': {
                         'label': 'Land Token:',
                         'default': ''
@@ -900,12 +1064,20 @@ export function setConfig() {
                         'label': 'Land Avatar:',
                         'default': ''
                     },
+                    'name-sea': {
+                        'label': 'Sea Custom Name:',
+                        'default': ''
+                    },
                     'token-sea': {
                         'label': 'Sea Token:',
                         'default': ''
                     },
                     'avatar-sea': {
                         'label': 'Sea Avatar:',
+                        'default': ''
+                    },
+                    'name-sky': {
+                        'label': 'Sky Custom Name:',
                         'default': ''
                     },
                     'token-sky': {
@@ -920,6 +1092,10 @@ export function setConfig() {
             },
             'Tentacle of the Deeps: Summon': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''
@@ -932,6 +1108,10 @@ export function setConfig() {
             },
             'Steel Defender': {
                 'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
                     'avatar': {
                         'label': 'Custom Avatar:',
                         'default': ''

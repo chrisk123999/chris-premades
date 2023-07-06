@@ -15,7 +15,7 @@ export async function summonConstruct({speaker, actor, token, character, item, a
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Construct Spirit)');
     slamData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 15);
-    let name = 'Construct Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Construct Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

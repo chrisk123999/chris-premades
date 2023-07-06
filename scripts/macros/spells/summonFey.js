@@ -20,7 +20,7 @@ export async function summonFey({speaker, actor, token, character, item, args, s
     shortSwordData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     shortSwordData.name = 'Shortsword';
     let hpFormula = 30 + ((workflow.castData.castLevel - 3) * 10);
-    let name = 'Fey Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Fey Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

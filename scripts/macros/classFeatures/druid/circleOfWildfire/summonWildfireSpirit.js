@@ -33,7 +33,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!dodgeData) return;
     dodgeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dodge');
     let hpFormula = 5 + (druidLevel * 5);
-    let name = 'Wildfire Spirit';
+    let name = chris.getConfiguration(workflow.item, 'name') ?? 'Wildfire Spirit';
     let updates = {
         'actor': {
             'name': name,

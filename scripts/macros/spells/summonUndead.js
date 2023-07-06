@@ -17,7 +17,7 @@ export async function summonUndead({speaker, actor, token, character, item, args
         if (wizardLevels) hpFormula += wizardLevels;
         damageBonus = workflow.actor.system.attributes.prof;
     }
-    let name = 'Undead Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Undead Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

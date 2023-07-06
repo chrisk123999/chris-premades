@@ -48,7 +48,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             heighWidth = 2;
     }
     let hpFormula = 5 + (rangerLevel * 5);
-    let name = 'Drake Companion (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Drake Companion (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

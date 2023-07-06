@@ -20,7 +20,7 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
     breathData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Breath Weapon');
     breathData.system.save.dc = chris.getSpellDC(workflow.item);
     let hpFormula = 50 + ((workflow.castData.castLevel - 5) * 10);
-    let name = 'Draconic Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Draconic Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

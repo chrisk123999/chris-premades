@@ -19,7 +19,7 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
     dreadfulScreamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dreadful Scream');
     dreadfulScreamData.system.save.dc = chris.getSpellDC(workflow.item);
     let hpFormula = 35 + ((workflow.castData.castLevel - 3) * 15);
-    let name = 'Shadow Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Shadow Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

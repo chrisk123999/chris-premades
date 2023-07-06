@@ -15,7 +15,7 @@ export async function summonElemental({speaker, actor, token, character, item, a
     slamData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Slam (Elemental Spirit)');
     slamData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let hpFormula = 50 + ((workflow.castData.castLevel - 4) * 10);
-    let name = 'Elemental Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Elemental Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

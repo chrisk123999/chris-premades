@@ -32,7 +32,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let arcaneJoltItem = workflow.actor.items.getName('Arcane Jolt');
     if (arcaneJoltItem) arcaneJoltData.system.uses = arcaneJoltItem.system.uses;
     let hpValue = (2 + chris.getSpellMod(workflow.item)) + (artificerLevel * 5);
-    let name = 'Steel Defender';
+    let name = chris.getConfiguration(workflow.item, 'name') ?? 'Steel Defender';
     let updates = {
         'actor': {
             'name': name,

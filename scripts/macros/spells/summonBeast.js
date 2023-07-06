@@ -15,7 +15,7 @@ export async function summonBeast({speaker, actor, token, character, item, args,
     maulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Maul (Bestial Spirit)');
     maulData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let hpFormula;
-    let name = 'Bestial Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Bestial Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

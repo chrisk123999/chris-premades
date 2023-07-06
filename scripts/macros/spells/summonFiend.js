@@ -15,7 +15,7 @@ export async function summonFiend({speaker, actor, token, character, item, args,
     magicReistanceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Magic Resistance (Fiendish Spirit)');
     magicReistanceData.name = 'Magic Resistance';
     let hpFormula;
-    let name = 'Fiendish Spirit (' + selection + ')';
+    let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Fiendish Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
