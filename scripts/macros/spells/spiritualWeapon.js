@@ -52,41 +52,42 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let selection3;
         let selectedImg = '';
         if (game.modules.get('jb2a_patreon')?.active) {
-            selection = await chris.dialog('What Style?', [['Flaming', 'Flaming'], ['Dark', 'Dark']]);
+            selection = await chris.dialog('What Style?', [['Flaming', 'flaming'], ['Dark', 'dark']]);
             if (!selection) return;
-            if (selection === 'Flaming') {
-                selection2 = await chris.dialog('What Weapon?', [['Mace', 'Mace01_01_'], ['Maul', 'Maul01_01_'], ['Sword', 'Sword01_01_']]);
+            if (selection === 'flaming') {
+                selection2 = await chris.dialog('What Weapon?', [['Mace', 'mace'], ['Maul', 'maul'], ['Sword', 'sword']]);
                 if (!selection2) return;
                 selection3 = await chris.dialog('What Color?', [
-                    ['Blue', '_Blue'], 
-                    ['Green', '_Green'], 
-                    ['Yellow', '_Yellow'], 
-                    ['Orange', '_Orange'], 
-                    ['Red', '_Red'], 
-                    ['Purple', '_Purple']
+                    ['Blue', 'blue'], 
+                    ['Green', 'green'], 
+                    ['Yellow', 'yellow'], 
+                    ['Orange', 'orange'], 
+                    ['Red', 'red'], 
+                    ['Purple', 'purple']
                 ]);
                 if (!selection3) return;
             }
-            if (selection === 'Dark') {
-                selection2 = await chris.dialog('What Weapon?', [['Scythe', 'Scythe01_02_'], ['Sword', 'Sword01_01_']]);
+            if (selection === 'dark') {
+                selection2 = await chris.dialog('What Weapon?', [['Scythe', 'scythe'], ['Sword', 'sword']]);
                 if (!selection2) return;
                 selection3 = await chris.dialog('What Color?', [
-                    ['Green', '_Green'], 
-                    ['Blue', '_Blue'], 
-                    ['Purple', '_Purple'], 
-                    ['Red', '_Red'], 
-                    ['White', '_White']
+                    ['Green', 'green'], 
+                    ['Blue', 'blue'], 
+                    ['Purple', 'purple'], 
+                    ['Red', 'red'], 
+                    ['White', 'white']
                 ]);
                 if (!selection3) return;
             }
-            selectedImg = 'modules/jb2a_patreon/Library/2nd_Level/Spiritual_Weapon/SpiritualWeapon_' + selection2 + selection + selection3 + '_200x200.webm';
+            selectedImg = 'jb2a.spiritual_weapon.' + selection2 + '.' + selection + '.' + selection3;
         } else {
-            selection = await chris.dialog('What Weapon?', [['Mace', 'Mace'], ['Maul', 'Maul']]);
+            selection = await chris.dialog('What Weapon?', [['Mace', 'mace'], ['Maul', 'maul']]);
             if (!selection) return;
-            selection2 = await chris.dialog('What Color?', [['Blue', 'Spectral_Blue'], ['Yellow', 'Flaming_Yellow']]);
+            selection2 = await chris.dialog('What Color?', [['Blue', 'spectral.blue'], ['Yellow', 'flaming.yellow']]);
             if (!selection2) return;
-            selectedImg = 'modules/JB2A_DnD5e/Library/2nd_Level/Spiritual_Weapon/SpiritualWeapon_' + selection + '01_01_' + selection2 + '_200x200.webm';
+            selectedImg = 'jb2a.spiritual_weapon.' + selection + '.' + selection2;;
         }
+        selectedImg = await Sequencer.Database.getEntry(selectedImg).file;
         return selectedImg;
     }
     let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
