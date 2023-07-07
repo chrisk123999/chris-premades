@@ -20,6 +20,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     interposingHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Interposing Hand');
     let hpFormula = workflow.actor.system.attributes.hp.max;
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Bigby\'s Hand';
+    if (name === '') name = 'Bigby\'s Hand';
     let updates = {
         'actor': {
             'name': name,

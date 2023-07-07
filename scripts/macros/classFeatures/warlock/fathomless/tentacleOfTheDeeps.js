@@ -93,7 +93,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let attackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Tentacle of the Deeps - Attack', false);
     if (!attackFeatureData) return;
     attackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Tentacle of the Deeps - Attack');
-    attackFeatureData.system.ability = chris.getSpellMod(workflow.item);
+    attackFeatureData.system.ability = workflow.item.system.ability;
     let updates2 = {
         'embedded': {
             'Item': {

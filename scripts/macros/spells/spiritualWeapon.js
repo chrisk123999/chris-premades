@@ -29,6 +29,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Spiritual Weapon';
+    if (name === '') name = 'Spiritual Weapon';
     let updates = {
         'actor': {
             'name': name,
@@ -51,7 +52,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let selection3;
         let selectedImg = '';
         if (game.modules.get('jb2a_patreon')?.active) {
-            selection - await chris.dialog('What Style?', [['Flaming', 'Flaming'], ['Dark', 'Dark']]);
+            selection = await chris.dialog('What Style?', [['Flaming', 'Flaming'], ['Dark', 'Dark']]);
             if (!selection) return;
             if (selection === 'Flaming') {
                 selection2 = await chris.dialog('What Weapon?', [['Mace', 'Mace01_01_'], ['Maul', 'Maul01_01_'], ['Sword', 'Sword01_01_']]);
@@ -137,7 +138,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let attackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spiritual Weapon - Attack', false);
     if (!attackFeatureData) return;
     attackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spiritual Weapon - Attack');
-    attackFeatureData.system.ability = chris.getSpellMod(workflow.item);
+    attackFeatureData.system.ability = workflow.item.system.ability;
+    let spellLevel = workflow.castData?.castLevel;
+    if (!spellLevel) return;
+    let scaling = Math.floor(spellLevel / 2);
+    attackFeatureData.system.damage.parts[0] = scaling + 'd8[force] + @mod';
     let updates2 = {
         'embedded': {
             'Item': {

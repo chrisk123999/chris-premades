@@ -16,6 +16,7 @@ export async function summonCelestial({speaker, actor, token, character, item, a
     healingTouchData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let hpFormula = 40 + ((workflow.castData.castLevel - 5) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Celestial Spirit (' + selection + ')';
+    if (name === '') name = 'Celestial Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,

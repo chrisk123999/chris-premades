@@ -41,6 +41,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             break;
     }
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Dancing Item';
+    if (name === '') name = 'Dancing Item';
     let updates = {
         'actor': {
             'name': name,

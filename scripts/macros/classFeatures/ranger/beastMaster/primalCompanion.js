@@ -19,6 +19,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     dodgeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dodge');
     let hpFormula = 5 + (rangerLevel * 5);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Beast of the ' + selection;
+    if (name === '') name = 'Beast of the ' + selection;
     let updates = {
         'actor': {
             'name': name,

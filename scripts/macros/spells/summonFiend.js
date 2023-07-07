@@ -16,6 +16,7 @@ export async function summonFiend({speaker, actor, token, character, item, args,
     magicReistanceData.name = 'Magic Resistance';
     let hpFormula;
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Fiendish Spirit (' + selection + ')';
+    if (name === '') name = 'Fiend Spirit (' + selection + ')';
     let updates = {
         'actor': {
             'name': name,
