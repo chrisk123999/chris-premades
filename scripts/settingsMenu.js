@@ -1,7 +1,11 @@
 import {fixSettings, troubleshoot} from './help.js';
+import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
 export function addMenuSetting(key, category) {
     setProperty(settingCategories, key.split(' ').join('-'), category);
+}
+let labels = {
+    'Humanoid-Randomizer-Settings': 'Configure'
 }
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -37,6 +41,8 @@ class chrisSettingsBase extends FormApplication {
             s.isRange = (setting.type === Number) && s.range;
             s.isNumber = setting.type === Number;
             s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
+            s.isButton = setting.type instanceof Object && setting.type.name != 'String';
+            s.label = labels[key];
             generatedOptions.push(s);
 	    }
         return {'settings': generatedOptions.sort(function (a, b) {
@@ -133,6 +139,12 @@ export class chrisSettingsManualRolling extends chrisSettingsBase {
         this.category = 'Manual Rolling';
     }
 }
+export class chrisSettingsRandomizer extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'Randomizer';
+    }
+}
 export class chrisSettingsTroubleshoot extends FormApplication {
     constructor() {
         super();
@@ -142,7 +154,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
             'classes': ['form'],
             'popOut': true,
             'template': 'modules/chris-premades/templates/config.html',
-            'id': 'chris-premades-settings',
+            'id': 'chris-troubleshoot-settings',
             'title': 'Chris\'s Troubleshooter',
             'width': 800,
             'height': 'auto',
@@ -150,21 +162,23 @@ export class chrisSettingsTroubleshoot extends FormApplication {
         });
     }
     getData() {
-        return {'settings':
-            [
+        return {
+            'settings': [
                 {
-                    'name': 'Run Troubleshooter?',
+                    'name': 'Run Troubleshooter:',
                     'id': 'trouble',
-                    'value': false,
-                    'isCheckbox': true,
-                    'hint': 'Checking this box will export a file used to help troubleshoot issues with this module on my Discord server.'
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'Will export a file used to help troubleshoot issues with this module on my Discord server.',
+                    'label': 'Go'
                 },
                 {
-                    'name': 'Apply recommended setting fixes?',
+                    'name': 'Apply recommended setting fixes:',
                     'id': 'fix',
-                    'value': false,
-                    'isCheckbox': true,
-                    'hint': 'Checking this will have the module automatically apply recommended setting changes.'
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'This will have the module automatically apply recommended setting changes.',
+                    'label': 'Go'
                 }
             ]
         }
@@ -173,7 +187,79 @@ export class chrisSettingsTroubleshoot extends FormApplication {
         super.activateListeners(html);
     }
     async _updateObject(event, formData) {
-        if (formData.trouble) troubleshoot();
-        if (formData.fix) fixSettings();
+
+    }
+}
+export class chrisSettingsRandomizerHumanoid extends FormApplication {
+    constructor() {
+        super();
+    }
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            'classes': ['form'],
+            'popOut': true,
+            'template': 'modules/chris-premades/templates/config.html',
+            'id': 'chris-humanoid-randomizer-settings',
+            'title': 'Chris\'s Humanoid Randomizer Settings',
+            'width': 800,
+            'height': 'auto',
+            'closeOnSubmit': true
+        });
+    }
+    getData() {
+        let generatedOptions = [];
+        let humanoidSettings = game.settings.get('chris-premades', 'Humanoid Randomizer Settings');
+        for (let i of Object.values(allRaces)) {
+            let id = i.name.toLowerCase().split(' ').join('-');
+            generatedOptions.push(
+                {
+                    'name': i.name + ' enabled:',
+                    'id': id + '.enabled',
+                    'value': humanoidSettings?.[id]?.enabled ?? allRaces[id].enabled,
+                    'isCheckbox': true,
+                    'hint': 'Enable use of the ' + i.name + ' race?'
+                },
+                {
+                    'name': i.name + ' weight:',
+                    'id': id + '.weight',
+                    'value': humanoidSettings?.[id]?.weight ?? allRaces[id].weight,
+                    'isRange': true,
+                    'range': {
+                        'min': 1,
+                        'max': 100,
+                        'step': 1
+                    },
+                    'hint': 'Weighted chance for ' + i.name + ' to be selected.'
+                }
+            );
+        }
+        return {'settings': generatedOptions};
+    }
+    activateListeners(html) {
+        super.activateListeners(html);
+    }
+    async _updateObject(event, formData) {
+        let updates = {};
+        for (let [key, value] of Object.entries(formData)) {
+            setProperty(updates, key, value);
+        }
+        let setting = mergeObject(allRaces, game.settings.get('chris-premades', 'Humanoid Randomizer Settings'));
+        mergeObject(setting, updates);
+        game.settings.set('chris-premades', 'Humanoid Randomizer Settings', setting);
+    }
+}
+export async function settingButton(id) {
+    switch (id) {
+        case 'Humanoid Randomizer Settings':
+            await new chrisSettingsRandomizerHumanoid().render(true);
+            break;
+        case 'trouble':
+            try {
+                troubleshoot();
+            } catch {}
+            break;
+        case 'fix':
+            fixSettings();
+            break;
     }
 }

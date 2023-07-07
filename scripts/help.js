@@ -187,7 +187,6 @@ export async function fixSettings() {
     let list = '';
     if (changedSettings.includes('IM-CharSheet')) {
         list += '- Item Macro: Character Sheet Hook: false<br>';
-        ui.notifications.warn('Do not press "Save Changes" if the settings dialog is still open!');
     }
     if (changedSettings.includes('MQ-EnableWorkflow')) list += '- Midi-Qol: Roll Automation Support: true<br>';
     if (changedSettings.includes('MQ-autoCEEffects')) list += '- Midi-Qol: Apply Convenient Effects: Prefer Item Effect<br>';

@@ -1338,6 +1338,52 @@ export function setConfig() {
                     }
                 }
             },
+            'CPR - Randomizer': {
+                'checkbox': {
+                    'humanoid': {
+                        'label': 'Random Humanoid:',
+                        'default': false
+                    }
+                },
+                'select': {
+                    'abilities': {
+                        'label': 'Humanoid Ability Merge:',
+                        'default': 'upgrade',
+                        'values': [
+                            {'value': 'source', 'html': 'Keep Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'upgrade', 'html': 'Upgrade'},
+                            {'value': 'downgrade', 'html': 'Downgrade'}
+                        ]
+                    },
+                    'skills': {
+                        'label': 'Humanoid Skill Merge:',
+                        'default': 'upgrade',
+                        'values': [
+                            {'value': 'source', 'html': 'Keep Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'upgrade', 'html': 'Upgrade'},
+                            {'value': 'downgrade', 'html': 'Downgrade'}
+                        ]
+                    },
+                    'avatar': {
+                        'label': 'Humanoid Avatar Merge:',
+                        'default': 'source',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Use Target'}
+                        ]
+                    },
+                    'token': {
+                        'label': 'Humanoid Token Merge:',
+                        'default': 'source',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Use Target'}
+                        ]
+                    }
+                }
+            }
         }
     });
 }

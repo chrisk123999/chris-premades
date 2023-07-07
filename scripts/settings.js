@@ -3,14 +3,16 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './movement.js';
 import {patching} from './patching.js';
-import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
+import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
 import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 let moduleName = 'chris-premades';
+export let humanoidSettings = {};
 export function registerSettings() {
     game.settings.register(moduleName, 'Breaking Version Change', {
         'name': 'Breaking Version Change',
@@ -305,6 +307,15 @@ export function registerSettings() {
         'default': 'world.ddb-' + game.world.id + '-ddb-spells'
     });
     addMenuSetting('Spell Compendium', 'Compendiums');
+    game.settings.register(moduleName, 'Monster Compendium', {
+        'name': 'Personal Monster Compendium',
+        'hint': 'A compendium full of monsters to pick from (DDB monster compendium by default).',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': 'world.ddb-' + game.world.id + '-ddb-monsters'
+    });
+    addMenuSetting('Monster Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Condition Resistance', {
         'name': 'Condition Resistance Mechanic',
         'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
@@ -722,6 +733,34 @@ export function registerSettings() {
         'default': true
     });
     addMenuSetting('Ignore GM', 'Manual Rolling');
+    game.settings.register(moduleName, 'Use Randomizer', {
+        'name': 'Randomizer',
+        'hint': 'Change this.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('createToken', npcRandomizer);
+            } else {
+                Hooks.off('createToken', npcRandomizer);
+            }
+        }
+    });
+    addMenuSetting('Use Randomizer', 'Randomizer');
+    game.settings.register(moduleName, 'Humanoid Randomizer Settings', {
+        'name': 'Humanoid Randomizer Settings',
+        'hint': 'Change this.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': allRaces,
+        'onChange': value => {
+            if (value) updateChanceTable();
+        }
+    });
+    addMenuSetting('Humanoid Randomizer Settings', 'Randomizer');
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',
@@ -818,6 +857,14 @@ export function registerSettings() {
         type: chrisSettingsManualRolling,
         restricted: true
     });
+//    game.settings.registerMenu(moduleName, 'Randomizer', {
+//        name: 'Randomizer',
+//        label: 'Randomizer',
+//        hint: 'Optional settings for randomizer features.',
+//        icon: 'fas fa-dice',
+//        type: chrisSettingsRandomizer,
+//        restricted: true
+//    });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
         name: 'Troubleshooter',
         label: 'Troubleshooter',

@@ -18,6 +18,8 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {constants} from './constants.js';
 import {patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
+import {npcRandomizer} from './utility/npcRandomizer.js';
+import {settingButton} from './settingsMenu.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -163,6 +165,7 @@ Hooks.once('ready', async function() {
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     }
+    if (game.settings.get('chris-premades', 'Use Randomizer')) Hooks.on('createToken', npcRandomizer);
 });
 globalThis['chrisPremades'] = {
     helpers,
@@ -173,5 +176,6 @@ globalThis['chrisPremades'] = {
     bab,
     tashaSummon,
     troubleshoot,
-    constants
+    constants,
+    settingButton
 }

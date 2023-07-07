@@ -1,6 +1,8 @@
 # 0.5.37 Release:
 ## New Content:
-- Spiritual Weapon
+- Spiritual Weapon (Thanks Autumn)
+## New Monster Content:
+- Aarakocra: Dive Attack
 ## Update Notes:
 - Added configuration option for custom names for summon spells and class features.
 ## Bug Fixes:

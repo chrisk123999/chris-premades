@@ -28,6 +28,11 @@
             {{else if this.isNumber}}
             {{numberInput this.value name=this.id}}
 
+            {{else if this.isButton}}
+            <button type="button" onClick="chrisPremades.settingButton('{{this.id}}')">
+                <label>{{this.label}}</label>
+            </button>
+
             {{else}}
             <input type="text" name="{{this.id}}" value="{{this.value}}" data-dtype="{{this.type}}"/>
             {{/if}}
