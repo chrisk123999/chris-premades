@@ -1390,6 +1390,87 @@ export function setConfig() {
                             {'value': 'target', 'html': 'Keep Target'},
                             {'value': 'merge', 'html': 'Merge'}
                         ]
+                    },
+                    'conditionimmunity': {
+                        'label': 'Condition Immunities',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
+                        ]
+                    },
+                    'damageimmunity': {
+                        'label': 'Damage Immunities',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
+                        ]
+                    },
+                    'damageresistance': {
+                        'label': 'Damage Resistances',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
+                        ]
+                    },
+                    'damagevulnerability': {
+                        'label': 'Damage Vulnerabilities',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
+                        ]
+                    },
+                    'languages': {
+                        'label': 'Languages',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
+                        ]
+                    },
+                    'name': {
+                        'label': 'Name',
+                        'default': 'before',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'before', 'html': 'Prepend'},
+                            {'value': 'after', 'html': 'Append'}
+                        ]
+                    },
+                    'ac': {
+                        'label': 'Armor Calculation',
+                        'default': 'source',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'}
+                        ]
+                    },
+                    'movement': {
+                        'label': 'Movement',
+                        'default': 'upgrade',
+                        'values': [
+                            {'value': 'source', 'html': 'Keep Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'upgrade', 'html': 'Upgrade'},
+                            {'value': 'downgrade', 'html': 'Downgrade'}
+                        ]
+                    },
+                    'senses': {
+                        'label': 'Senses',
+                        'default': 'source',
+                        'values': [
+                            {'value': 'source', 'html': 'Keep Source'},
+                            {'value': 'target', 'html': 'Keep Target'}
+                        ]
                     }
                 }
             },

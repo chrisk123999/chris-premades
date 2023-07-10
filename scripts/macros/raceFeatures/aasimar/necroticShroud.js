@@ -4,32 +4,31 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let pass = args[0].macroPass;
     if (workflow.hitTargets.size === 0) return;
     if (!(pass === 'postDamageRoll' || pass === 'preDamageApplication')) return;
-    let effect = chris.findEffect(workflow.actor, 'Celestial Revelation (Radiant Soul)');
-    if (!effect) effect = chris.findEffect(workflow.actor, 'Celestial Revelation (Radiant Consumption)');
+    let effect = chris.findEffect(workflow.actor, 'Celestial Revelation (Necrotic Shroud)');
     if (!effect) return;
     let feature = await fromUuid(effect.origin);
     if (!feature) return;
-    let useFeature = chris.perTurnCheck(feature, 'feature', 'aasimarRadiantSoul', true, workflow.token.id);
+    let useFeature = chris.perTurnCheck(feature, 'feature', 'necroticShroud', true, workflow.token.id);
     if (!useFeature) return;
     switch (pass) {
         case 'postDamageRoll':
             if (workflow.hitTargets.size != 1) return;
-            let queueSetup = await queue.setup(workflow.item.uuid, 'aasimarRadiantSoul', 249);
+            let queueSetup = await queue.setup(workflow.item.uuid, 'necroticShroud', 249);
             if (!queueSetup) return;
             let selected = await chris.dialog('Celestial Revelation: Add extra damage?', [['Yes', true], ['No', false]]);
             if (!selected) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', game.combat.round + '-' + game.combat.turn);
-            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[radiant]';
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.necroticShroud.turn', game.combat.round + '-' + game.combat.turn);
+            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[necrotic]';
             let damageRoll = await new Roll(damageFormula).roll({async: true});
             await workflow.setDamageRoll(damageRoll);
             queue.remove(workflow.item.uuid);
             return;
         case 'preDamageApplication':
             if (workflow.hitTargets.size <= 1) return;
-            let queueSetup2 = queue.setup(workflow.item.uuid, 'aasimarRadiantSoul', 249);
+            let queueSetup2 = queue.setup(workflow.item.uuid, 'necroticShroud', 249);
             if (!queueSetup2) return;
             let buttons = [
                 {
@@ -45,7 +44,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', game.combat.round + '-' + game.combat.turn);
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.necroticShroud.turn', game.combat.round + '-' + game.combat.turn);
             let targetTokenID = selection.inputs.find(id => id != false);
             if (!targetTokenID) {
                 queue.remove(workflow.item.uuid);
@@ -57,19 +56,19 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', currentTurn);
-            let hasDI = chris.checkTrait(targetActor, 'di', 'radiant');
+            if (!(game.combat === null || game.combat === undefined)) await feature.setFlag('chris-premades', 'feature.necroticShroud.turn', currentTurn);
+            let hasDI = chris.checkTrait(targetActor, 'di', 'necrotic');
             if (hasDI) {
                 queue.remove(workflow.item.uuid);
                 return;
             }
             let damageTotal = workflow.actor.system.attributes.prof;
-            let hasDR = chris.checkTrait(targetActor, 'dr', 'radiant');
+            let hasDR = chris.checkTrait(targetActor, 'dr', 'necrotic');
             if (hasDR) damageTotal = Math.floor(damageTotal / 2);
             targetDamage.damageDetail[0].push(
                 {
                     'damage': damageTotal,
-                    'type': 'radiant'
+                    'type': 'necrotic'
                 }
             );
             targetDamage.totalDamage += damageTotal;
@@ -90,10 +89,31 @@ async function attack({speaker, actor, token, character, item, args, scope, work
             return;
     }
 }
-async function turn(origin) {
-    await origin.setFlag('chris-premades', 'feature.aasimarRadiantSoul.turn', false);
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effectData = {
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
+        'changes': [
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'function.chrisPremades.macros.necroticShroud.attack,all',
+                'priority': 20
+            }
+        ],
+        'transfer': false,
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 60
+        }
+    };
+    await chris.createEffect(workflow.actor, effectData);
 }
-export let aasimarRadiantSoul = {
+async function turn(origin) {
+    await origin.setFlag('chris-premades', 'feature.necroticShroud.turn', false);
+}
+export let necroticShroud = {
     'attack': attack,
-    'turn': turn
+    'turn': turn,
+    'item': item
 }

@@ -1,3 +1,10 @@
+# 0.5.39 Release:
+## New Content:
+- Aasimar Celestial Revelation (Necrotic Shroud)
+- Aasimar Celestial Revelation (Radiant Consumption)
+## Bug Fixes:
+- Heat Metal
+  
 # 0.5.38 Release:
 ## New Content:
 - Eldritch Blast

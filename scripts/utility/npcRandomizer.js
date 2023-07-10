@@ -4,11 +4,24 @@ export let allRaces = {
     {
         'name': 'Aarakocra',
         'weight': 5,
+        'enabled': true,
+        'monster': 'Aarakocra'
+    },
+    'fallen-aasimar': 
+    {
+        'name': 'Fallen Aasimar',
+        'weight': 5,
         'enabled': true
     },
-    'aasimar': 
+    'protector-aasimar': 
     {
-        'name': 'Aasimar',
+        'name': 'Protector Aasimar',
+        'weight': 5,
+        'enabled': true
+    },
+    'scourge-aasimar': 
+    {
+        'name': 'Scourge Aasimar',
         'weight': 5,
         'enabled': true
     },
@@ -704,10 +717,13 @@ async function humanoid(targetActor, updates, item) {
     let race = 'aarakocra';
     console.log(race);
     let sourceActor;
-    switch(race) {
-        case 'aarakocra':
-            sourceActor = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Monster Compendium'), 'Aarakocra', false);
+    if (allRaces[race].monster) {
+        sourceActor = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Monster Compendium'), allRaces[race].monster, false);
+    } else {
+        
     }
+
+
     if (!sourceActor) return;
     let abilities = chris.getConfiguration(item, 'abilities') ?? 'upgrade';
     for (let i of Object.keys(CONFIG.DND5E.abilities)) {
@@ -760,15 +776,64 @@ async function humanoid(targetActor, updates, item) {
         }
         for (let item of sourceActor.items) setProperty(updates, 'embedded.Item.' + item.name, item);
     }
-    setProperty(updates, 'system.details.type.subtype', sourceActor.system.details.type.subtype);
-    let conditionImmunity = chris.getConfiguration(item, 'conditionImmunity') ?? 'merge';
-    let conditionResistance = chris.getCompendiumItemDescription(item, 'conditionResistance') ?? 'upgrade';
-    
-
-
-
+    setProperty(updates, 'actor.system.details.type.subtype', sourceActor.system.details.type.subtype);
+    let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
+    if (conditionImmunity === 'source' || conditionImmunity === 'merge') setProperty(updates, 'actor.system.traits.ci.value', sourceActor.system.traits.ci.value);
+    let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
+    if (damageImmunity === 'source' || damageImmunity === 'merge') setProperty(updates, 'actor.system.traits.di.value', sourceActor.system.traits.di.value);
+    let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';
+    if (damageResistance === 'source' || damageResistance === 'merge') setProperty(updates, 'actor.system.traits.dr.value', sourceActor.system.traits.dr.value);
+    let damageVulnerability = chris.getConfiguration(item, 'damagevulnerability') ?? 'merge';
+    if (damageVulnerability === 'source' || damageVulnerability === 'merge') setProperty(updates, 'actor.system.traits.dv.value', sourceActor.system.traits.dv.value);
     let languages = chris.getConfiguration(item, 'languages') ?? 'merge';
-    if (languages === 'merge') {
-
+    if (languages === 'source' || languages === 'merge') setProperty(updates, 'actor.system.traits.languages.value', sourceActor.system.traits.languages.value);
+    let name = chris.getConfiguration(item, 'name') ?? 'before';
+    switch (name) {
+        case 'source':
+            setProperty(updates, 'actor.name', sourceActor.name);
+            setProperty(updates, 'token.name', sourceActor.name);
+            setProperty(updates, 'actor.prototypeToken.name', sourceActor.name);
+            break;
+        case 'before':
+            setProperty(updates, 'actor.name', sourceActor.name + ' ' + targetActor.name);
+            setProperty(updates, 'token.name', sourceActor.name + ' ' + targetActor.name);
+            setProperty(updates, 'actor.prototypeToken.name', sourceActor.name + ' ' + targetActor.name);
+            break;
+        case 'after':
+            setProperty(updates, 'actor.name', targetActor.name + ' ' + sourceActor.name);
+            setProperty(updates, 'token.name', targetActor.name + ' ' + sourceActor.name);
+            setProperty(updates, 'actor.prototypeToken.name', targetActor.name + ' ' + sourceActor.name);
+            break;
+    }
+    console.log(sourceActor);
+    let ac = chris.getConfiguration(item, 'ac') ?? 'source';
+    if (ac === 'source') setProperty(updates, 'actor.system.attributes.ac', sourceActor.system.attributes.ac);
+    let movement = chris.getConfiguration(item, 'movement') ?? 'source';
+    switch (movement) {
+        case 'source':
+            setProperty(updates, 'actor.system.attributes.movement', sourceActor.system.attributes.movement);
+            break;
+        case 'upgrade':
+            if (sourceActor.system.attributes.movement.burrow > targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
+            if (sourceActor.system.attributes.movement.climb > targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
+            if (sourceActor.system.attributes.movement.fly > targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
+            if (sourceActor.system.attributes.movement.swim > targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
+            if (sourceActor.system.attributes.movement.walk > targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
+            if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            break;
+        case 'downgrade':
+            if (sourceActor.system.attributes.movement.burrow < targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
+            if (sourceActor.system.attributes.movement.climb < targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
+            if (sourceActor.system.attributes.movement.fly < targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
+            if (sourceActor.system.attributes.movement.swim < targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
+            if (sourceActor.system.attributes.movement.walk < targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
+            if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            break;
+    }
+    let senses = chris.getConfiguration(item, 'senses') ?? 'source';
+    if (senses === 'source') {
+        setProperty(updates, 'actor.system.attributes.senses', sourceActor.system.attributes.senses);
+        setProperty(updates, 'actor.prototypeToken.sight', sourceActor.prototypeToken.sight);
+        setProperty(updates, 'token.sight', sourceActor.prototypeToken.sight);
     }
 }

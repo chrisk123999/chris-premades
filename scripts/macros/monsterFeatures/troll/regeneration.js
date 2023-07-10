@@ -13,7 +13,6 @@ async function onHit(workflow, targetToken) {
     let reducedHeal = false;
     let hp = targetToken.actor.system.attributes.hp.value;
     let oldHP = workflow.damageList.find(i => i.tokenUuid === targetToken.document.uuid).oldHP;
-    console.log(oldHP);
     for (let i of Object.keys(CONFIG.DND5E.damageTypes).filter(i => i != 'midi-none')) {
         if (chris.getConfiguration(originItem, i) && chris.getRollDamageTypes(workflow.damageRoll).has(i) && !chris.checkTrait(targetToken.actor, 'di', i)) {
             let threshold = chris.getConfiguration(originItem, 'threshold') ?? false;

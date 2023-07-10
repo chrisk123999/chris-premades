@@ -130,6 +130,7 @@ import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
+import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
 import {piercer} from './macros/feats/piercer.js';
@@ -143,6 +144,7 @@ import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
+import {radiantConsumption} from './macros/raceFeatures/aasimar/radiantConsumption.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
@@ -428,6 +430,7 @@ export let macros = {
     'moonbeam': moonbeam,
     'muddledMind': muddledMind,
     'mutagencraft': mutagencraft,
+    'necroticShroud': necroticShroud,
     'oilOfSharpness': oilOfSharpness,
     'onHit': onHit,
     'onMove': onMove,
@@ -444,6 +447,7 @@ export let macros = {
     'preserveLife': preserveLife,
     'primalCompanion': primalCompanion,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
+    'radiantConsumption': radiantConsumption,
     'radiantSoul': radiantSoul,
     'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,

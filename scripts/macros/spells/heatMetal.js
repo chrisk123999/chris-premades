@@ -150,20 +150,8 @@ async function dialogue(token, actor, effect, origin) {
     if (!spellDC) return;
     featureData.system.save.dc = spellDC;
     let spell = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
-    let options = {
-        'showFullCard': false,
-        'createWorkflow': true,
-        'targetUuids': [token.document.uuid],
-        'configureDialog': false,
-        'versatile': false,
-        'consumeResource': false,
-        'consumeSlot': false,
-        'workflowOptions': {
-            'autoRollDamage': 'always',
-            'autoFastDamage': true
-        }
-    };
-    let heatMetalWorkflow = await MidiQOL.completeItemUse(spell, {}, options);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let heatMetalWorkflow = await MidiQOL.completeItemUse(spell, config, options);
     if (heatMetalWorkflow.failedSaves.size != 0 && selection != 'unable') {
         await effect.delete();
         return;
