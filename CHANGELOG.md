@@ -1,3 +1,11 @@
+# 0.5.38 Release:
+## New Content:
+- Eldritch Blast
+## Bug Fixes:
+- Agonizing Blast
+- Potion of Poison
+- Spiritual Weapon
+  
 # 0.5.37 Release:
 ## New Content:
 - Spiritual Weapon (Thanks Autumn)

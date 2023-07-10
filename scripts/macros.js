@@ -1,7 +1,6 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSpirit.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
-import {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
@@ -72,6 +71,7 @@ import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
+import {eldritchBlast} from './macros/spells/eldritchBlast.js';
 import {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
@@ -327,7 +327,6 @@ async function templateTrigger(macroName, token, trigger) {
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
-    'agonizingBlast': agonizingBlast,
     'ancestralProtectors': ancestralProtectors,
     'animatingPerformance': animatingPerformance,
     'arcaneJolt': arcaneJolt,
@@ -384,6 +383,7 @@ export let macros = {
     'dragonsWrath': dragonsWrath,
     'dreadAmbusher': dreadAmbusher,
     'eladrinSeason': eladrinSeason,
+    'eldritchBlast': eldritchBlast,
     'eldritchSmite': eldritchSmite,
     'elementalAdept': elementalAdept,
     'elixirOfHealth': elixirOfHealth,

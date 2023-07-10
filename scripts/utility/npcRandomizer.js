@@ -690,7 +690,14 @@ export async function npcRandomizer(token, options, user) {
     let actor = token.actor;
     let updates = {};
     if (chris.getConfiguration(item, 'humanoid')) await humanoid(actor, updates, item) ?? false;
+    setProperty(updates, 'embedded.Item.CPR - Randomizer', warpgate.CONST.DELETE);
     console.log(updates);
+    let warpgateOptions = {
+        'permanent': true,
+        'name': 'CPR - Randomzier',
+        'description': 'CPR - Randomzier'
+    };
+    await warpgate.mutate(token, updates, {}, warpgateOptions);
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
@@ -740,5 +747,28 @@ async function humanoid(targetActor, updates, item) {
     if (token === 'source') {
         setProperty(updates, 'actor.prototypeToken.texture.src', sourceActor.prototypeToken.texture.src);
         setProperty(updates, 'token.texture.src', sourceActor.prototypeToken.texture.src);
+    }
+    let features = chris.getConfiguration(item, 'features') ?? 'merge';
+    if (features === 'merge') {
+        for (let item of sourceActor.items) {
+            if (updates.embedded?.Item?.[item.name]) continue;
+            setProperty(updates, 'embedded.Item.' + item.name, item);
+        }
+    } else if (features === 'source') {
+        for (let item of targetActor.items) {
+            setProperty(updates, 'embedded.Item.' + item.name, warpgate.CONST.DELETE)
+        }
+        for (let item of sourceActor.items) setProperty(updates, 'embedded.Item.' + item.name, item);
+    }
+    setProperty(updates, 'system.details.type.subtype', sourceActor.system.details.type.subtype);
+    let conditionImmunity = chris.getConfiguration(item, 'conditionImmunity') ?? 'merge';
+    let conditionResistance = chris.getCompendiumItemDescription(item, 'conditionResistance') ?? 'upgrade';
+    
+
+
+
+    let languages = chris.getConfiguration(item, 'languages') ?? 'merge';
+    if (languages === 'merge') {
+
     }
 }

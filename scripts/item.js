@@ -1371,7 +1371,7 @@ export function setConfig() {
                         'default': 'source',
                         'values': [
                             {'value': 'source', 'html': 'Use Source'},
-                            {'value': 'target', 'html': 'Use Target'}
+                            {'value': 'target', 'html': 'Keep Target'}
                         ]
                     },
                     'token': {
@@ -1379,11 +1379,47 @@ export function setConfig() {
                         'default': 'source',
                         'values': [
                             {'value': 'source', 'html': 'Use Source'},
-                            {'value': 'target', 'html': 'Use Target'}
+                            {'value': 'target', 'html': 'Keep Target'}
+                        ]
+                    },
+                    'features': {
+                        'label': 'Feature Merge',
+                        'default': 'merge',
+                        'values': [
+                            {'value': 'source', 'html': 'Use Source'},
+                            {'value': 'target', 'html': 'Keep Target'},
+                            {'value': 'merge', 'html': 'Merge'}
                         ]
                     }
                 }
-            }
+            },
+            'Eldritch Blast': {
+                'checkbox': {
+                    'agonizingblast': {
+                        'label': 'Force Apply Agonizing Blast?',
+                        'default': false
+                    }
+                },
+                'select': {
+                    'color': {
+                        'label': 'What color?',
+                        'default': 'purple',
+                        'values': [
+                            {'value': 'dark_green', 'html': 'Dark Green'},
+                            {'value': 'dark_red', 'html': 'Red'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'lightblue', 'html': 'Blue'},
+                            {'value': 'lightgreen', 'html': 'Light Green'},
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'pink', 'html': 'Pink'},
+                            {'value': 'yellow', 'html': 'Yellow'},
+                            {'value': 'rainbow', 'html': 'Rainbow'},
+                            {'value': 'cycle', 'html': 'Cycle'},
+                            {'value': 'random', 'html': 'Random'}
+                        ]
+                    }
+                }
+            },
         }
     });
 }
