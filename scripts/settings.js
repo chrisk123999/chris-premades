@@ -316,6 +316,15 @@ export function registerSettings() {
         'default': 'world.ddb-' + game.world.id + '-ddb-monsters'
     });
     addMenuSetting('Monster Compendium', 'Compendiums');
+    game.settings.register(moduleName, 'Racial Trait Compendium', {
+        'name': 'Personal Racial Trait Compendium',
+        'hint': 'A compendium full of racial traits to pick from (DDB monster compendium by default).',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': 'world.ddb-' + game.world.id + '-ddb-racial-traits'
+    });
+    addMenuSetting('Racial Trait Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Condition Resistance', {
         'name': 'Condition Resistance Mechanic',
         'hint': 'Enabling this allows the automation condition resistance via the use of Midi-Qol hooks.',
@@ -857,14 +866,14 @@ export function registerSettings() {
         type: chrisSettingsManualRolling,
         restricted: true
     });
-//    game.settings.registerMenu(moduleName, 'Randomizer', {
-//        name: 'Randomizer',
-//        label: 'Randomizer',
-//        hint: 'Optional settings for randomizer features.',
-//        icon: 'fas fa-dice',
-//        type: chrisSettingsRandomizer,
-//        restricted: true
-//    });
+    game.settings.registerMenu(moduleName, 'Randomizer', {
+        name: 'Randomizer',
+        label: 'Randomizer',
+        hint: 'Optional settings for randomizer features.',
+        icon: 'fas fa-dice',
+        type: chrisSettingsRandomizer,
+        restricted: true
+    });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
         name: 'Troubleshooter',
         label: 'Troubleshooter',

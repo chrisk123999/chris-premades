@@ -11,19 +11,37 @@ export let allRaces = {
     {
         'name': 'Fallen Aasimar',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Celestial Revelation (Necrotic Shroud)',
+                'description': 'Celestial Revelation'
+            }
+        ]
     },
     'protector-aasimar': 
     {
         'name': 'Protector Aasimar',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Celestial Revelation (Radiant Soul)',
+                'description': 'Celestial Revelation'
+            }
+        ]
     },
     'scourge-aasimar': 
     {
         'name': 'Scourge Aasimar',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Celestial Revelation (Radiant Consumption)',
+                'description': 'Celestial Revelation'
+            }
+        ]
     },
     'air-genasi': 
     {
@@ -714,16 +732,23 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'aarakocra';
+    let race = 'fallen-aasimar';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
-        sourceActor = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Monster Compendium'), allRaces[race].monster, false);
+        sourceActor = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Monster Compendium'), allRaces[race].monster, true);
+    } else if (allRaces[race].features) {
+        for (let i of allRaces[race].features) {
+            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Race Features', i.name, false);
+            if (!featureData) continue;
+            let descriptionItem = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.description, false);
+            if (descriptionItem) featureData.system.description.value = descriptionItem.system.description.value;
+            setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
+        }
+        return;
     } else {
-        
+        return;
     }
-
-
     if (!sourceActor) return;
     let abilities = chris.getConfiguration(item, 'abilities') ?? 'upgrade';
     for (let i of Object.keys(CONFIG.DND5E.abilities)) {
