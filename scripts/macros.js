@@ -75,6 +75,7 @@ import {eldritchBlast} from './macros/spells/eldritchBlast.js';
 import {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
+import {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {explodingHeals} from './macros/mechanics/explodingHeals.js';
@@ -389,6 +390,7 @@ export let macros = {
     'eldritchSmite': eldritchSmite,
     'elementalAdept': elementalAdept,
     'elixirOfHealth': elixirOfHealth,
+    'enhancedBond': enhancedBond,
     'experimentalElixir': experimentalElixir,
     'expertDivination': expertDivination,
     'explodingHeals': explodingHeals,

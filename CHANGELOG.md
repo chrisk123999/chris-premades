@@ -1,3 +1,7 @@
+# 0.5.40 Release:
+## New Content:
+- Circle of Wildfire Druid: Enhanced Bond
+  
 # 0.5.39 Release:
 ## New Content:
 - Aasimar Celestial Revelation (Necrotic Shroud)

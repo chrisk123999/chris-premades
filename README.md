@@ -198,6 +198,7 @@ Additional support and feature requests can be made on my Discord server: https:
 - Primal Strike  
 #### Circle of Wildfire:
 - Summon Wildfire Spirit
+- Enhanced Bond
 ### Fighter:  
 #### Battle Master:  
 - Maneuvers  
