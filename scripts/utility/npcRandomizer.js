@@ -17,7 +17,21 @@ export let allRaces = {
                 'name': 'Celestial Revelation (Necrotic Shroud)',
                 'description': 'Celestial Revelation'
             }
-        ]
+        ],
+        'dr': [
+            'necrotic',
+            'radiant'
+        ],
+        'languages': [
+            'celestial'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'protector-aasimar': 
     {
@@ -29,7 +43,25 @@ export let allRaces = {
                 'name': 'Celestial Revelation (Radiant Soul)',
                 'description': 'Celestial Revelation'
             }
-        ]
+        ],
+        'dr': [
+            'necrotic',
+            'radiant'
+        ],
+        'dr': [
+            'necrotic',
+            'radiant'
+        ],
+        'languages': [
+            'celestial'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'scourge-aasimar': 
     {
@@ -41,19 +73,68 @@ export let allRaces = {
                 'name': 'Celestial Revelation (Radiant Consumption)',
                 'description': 'Celestial Revelation'
             }
-        ]
+        ],
+        'dr': [
+            'necrotic',
+            'radiant'
+        ],
+        'dr': [
+            'necrotic',
+            'radiant'
+        ],
+        'languages': [
+            'celestial'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'air-genasi': 
     {
         'name': 'Air Genasi',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Unending Breath'
+            }
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'walk': 35
+        },
+        'dr': [
+            'lightning'
+        ]
     },
     'astral-elf': 
     {
         'name': 'Astral Elf',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Starlight Step',
+                'description': 'Starlight Step'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Astral Elf)'
+            },
+            {
+                'name': 'Astral Trance'
+            }
+        ]
     },
     'autognome': 
     {
@@ -732,133 +813,175 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'fallen-aasimar';
+    let race = 'astral-elf';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
         sourceActor = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Monster Compendium'), allRaces[race].monster, true);
-    } else if (allRaces[race].features) {
-        for (let i of allRaces[race].features) {
-            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Race Features', i.name, false);
-            if (!featureData) continue;
-            let descriptionItem = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.description, false);
-            if (descriptionItem) featureData.system.description.value = descriptionItem.system.description.value;
-            setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
-        }
-        return;
-    } else {
-        return;
+        if (!sourceActor) return;
     }
-    if (!sourceActor) return;
-    let abilities = chris.getConfiguration(item, 'abilities') ?? 'upgrade';
-    for (let i of Object.keys(CONFIG.DND5E.abilities)) {
-        let sourceAbility = sourceActor.system.abilities[i].value;
-        let targetAbility = targetActor.system.abilities[i].value;
-        switch (abilities) {
-            case 'source':
-                setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
-                break;
-            case 'upgrade':
-                if (sourceAbility > targetAbility) setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
-                break;
-            case 'downgrade':
-                if (sourceAbility < targetAbility) setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
-                break;
+    if (sourceActor) {
+        let abilities = chris.getConfiguration(item, 'abilities') ?? 'upgrade';
+        for (let i of Object.keys(CONFIG.DND5E.abilities)) {
+            let sourceAbility = sourceActor.system.abilities[i].value;
+            let targetAbility = targetActor.system.abilities[i].value;
+            switch (abilities) {
+                case 'source':
+                    setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
+                    break;
+                case 'upgrade':
+                    if (sourceAbility > targetAbility) setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
+                    break;
+                case 'downgrade':
+                    if (sourceAbility < targetAbility) setProperty(updates, 'actor.system.abilities.' + i + '.value', sourceAbility);
+                    break;
+            }
         }
-    }
-    let skills = chris.getConfiguration(item, 'skills') ?? 'upgrade';
-    for (let i of Object.keys(CONFIG.DND5E.skills)) {
-        let sourceSkill = sourceActor.system.skills[i].value;
-        let targetSkill = targetActor.system.skills[i].value;
-        switch (skills) {
-            case 'source':
-                setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
-                break;
-            case 'upgrade':
-                if (sourceSkill > targetSkill) setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
-                break;
-            case 'downgrade':
-                if (sourceSkill < targetSkill) setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
-                break;
+        let skills = chris.getConfiguration(item, 'skills') ?? 'upgrade';
+        for (let i of Object.keys(CONFIG.DND5E.skills)) {
+            let sourceSkill = sourceActor.system.skills[i].value;
+            let targetSkill = targetActor.system.skills[i].value;
+            switch (skills) {
+                case 'source':
+                    setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
+                    break;
+                case 'upgrade':
+                    if (sourceSkill > targetSkill) setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
+                    break;
+                case 'downgrade':
+                    if (sourceSkill < targetSkill) setProperty(updates, 'actor.system.skills.' + i + '.value', sourceSkill);
+                    break;
+            }
         }
-    }
-    let avatar = chris.getConfiguration(item, 'avatar') ?? 'source';
-    if (avatar === 'source') setProperty(updates, 'actor.img', sourceActor.img);
-    let token = chris.getConfiguration(item, 'token') ?? 'source';
-    if (token === 'source') {
-        setProperty(updates, 'actor.prototypeToken.texture.src', sourceActor.prototypeToken.texture.src);
-        setProperty(updates, 'token.texture.src', sourceActor.prototypeToken.texture.src);
+        let avatar = chris.getConfiguration(item, 'avatar') ?? 'source';
+        if (avatar === 'source') setProperty(updates, 'actor.img', sourceActor.img);
+        let token = chris.getConfiguration(item, 'token') ?? 'source';
+        if (token === 'source') {
+            setProperty(updates, 'actor.prototypeToken.texture.src', sourceActor.prototypeToken.texture.src);
+            setProperty(updates, 'token.texture.src', sourceActor.prototypeToken.texture.src);
+        }
+        setProperty(updates, 'actor.system.details.type.subtype', sourceActor.system.details.type.subtype);
     }
     let features = chris.getConfiguration(item, 'features') ?? 'merge';
-    if (features === 'merge') {
+    if (features === 'merge' && sourceActor) {
         for (let item of sourceActor.items) {
             if (updates.embedded?.Item?.[item.name]) continue;
             setProperty(updates, 'embedded.Item.' + item.name, item);
         }
-    } else if (features === 'source') {
+    } else if (features === 'source' && sourceActor) {
         for (let item of targetActor.items) {
             setProperty(updates, 'embedded.Item.' + item.name, warpgate.CONST.DELETE)
         }
         for (let item of sourceActor.items) setProperty(updates, 'embedded.Item.' + item.name, item);
+    } else if (features === 'merge' && !sourceActor && allRaces[race].features) {
+        for (let i of allRaces[race].features) {
+            let featureData = await chris.getItemFromCompendium('chris-premades.CPR Race Features', i.name, true);
+            if (!featureData) featureData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.name, true);
+            if (!featureData) continue;
+            if (i.description) {
+                let descriptionItem = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.description, true);
+                if (descriptionItem) featureData.system.description.value = descriptionItem.system.description.value;
+            }
+            setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
+        }
     }
-    setProperty(updates, 'actor.system.details.type.subtype', sourceActor.system.details.type.subtype);
     let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
-    if (conditionImmunity === 'source' || conditionImmunity === 'merge') setProperty(updates, 'actor.system.traits.ci.value', sourceActor.system.traits.ci.value);
     let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
-    if (damageImmunity === 'source' || damageImmunity === 'merge') setProperty(updates, 'actor.system.traits.di.value', sourceActor.system.traits.di.value);
     let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';
-    if (damageResistance === 'source' || damageResistance === 'merge') setProperty(updates, 'actor.system.traits.dr.value', sourceActor.system.traits.dr.value);
     let damageVulnerability = chris.getConfiguration(item, 'damagevulnerability') ?? 'merge';
-    if (damageVulnerability === 'source' || damageVulnerability === 'merge') setProperty(updates, 'actor.system.traits.dv.value', sourceActor.system.traits.dv.value);
     let languages = chris.getConfiguration(item, 'languages') ?? 'merge';
-    if (languages === 'source' || languages === 'merge') setProperty(updates, 'actor.system.traits.languages.value', sourceActor.system.traits.languages.value);
+    if (sourceActor) {
+        if (conditionImmunity === 'source' || conditionImmunity === 'merge') setProperty(updates, 'actor.system.traits.ci.value', sourceActor.system.traits.ci.value);
+        if (damageImmunity === 'source' || damageImmunity === 'merge') setProperty(updates, 'actor.system.traits.di.value', sourceActor.system.traits.di.value);
+        if (damageResistance === 'source' || damageResistance === 'merge') setProperty(updates, 'actor.system.traits.dr.value', sourceActor.system.traits.dr.value);
+        if (damageVulnerability === 'source' || damageVulnerability === 'merge') setProperty(updates, 'actor.system.traits.dv.value', sourceActor.system.traits.dv.value);
+        if (languages === 'source' || languages === 'merge') setProperty(updates, 'actor.system.traits.languages.value', sourceActor.system.traits.languages.value);
+    } else {
+        if (allRaces[race].ci && (conditionImmunity === 'source' || conditionImmunity === 'merge')) setProperty(updates, 'actor.system.traits.ci.value', allRaces[race].ci);
+        if (allRaces[race].di && (damageImmunity === 'source' || damageImmunity === 'merge')) setProperty(updates, 'actor.system.traits.di.value', allRaces[race].di);
+        if (allRaces[race].dr && (damageResistance === 'source' || damageResistance === 'merge')) setProperty(updates, 'actor.system.traits.dr.value', allRaces[race].dr);
+        if (allRaces[race].dv && (damageVulnerability === 'source' || damageVulnerability === 'merge')) setProperty(updates, 'actor.system.traits.dv.value', allRaces[race].dv);
+        if (allRaces[race].languages && (languages === 'source' || languages === 'merge')) setProperty(updates, 'actor.system.traits.languages.value', allRaces[race].languages);
+    }
     let name = chris.getConfiguration(item, 'name') ?? 'before';
+    let sourceName = sourceActor?.name ?? allRaces[race].name;
     switch (name) {
         case 'source':
-            setProperty(updates, 'actor.name', sourceActor.name);
-            setProperty(updates, 'token.name', sourceActor.name);
-            setProperty(updates, 'actor.prototypeToken.name', sourceActor.name);
+            setProperty(updates, 'actor.name', sourceName);
+            setProperty(updates, 'token.name', sourceName);
+            setProperty(updates, 'actor.prototypeToken.name', sourceName);
             break;
         case 'before':
-            setProperty(updates, 'actor.name', sourceActor.name + ' ' + targetActor.name);
-            setProperty(updates, 'token.name', sourceActor.name + ' ' + targetActor.name);
-            setProperty(updates, 'actor.prototypeToken.name', sourceActor.name + ' ' + targetActor.name);
+            setProperty(updates, 'actor.name', sourceName + ' ' + targetActor.name);
+            setProperty(updates, 'token.name', sourceName + ' ' + targetActor.name);
+            setProperty(updates, 'actor.prototypeToken.name', sourceName + ' ' + targetActor.name);
             break;
         case 'after':
-            setProperty(updates, 'actor.name', targetActor.name + ' ' + sourceActor.name);
-            setProperty(updates, 'token.name', targetActor.name + ' ' + sourceActor.name);
-            setProperty(updates, 'actor.prototypeToken.name', targetActor.name + ' ' + sourceActor.name);
+            setProperty(updates, 'actor.name', targetActor.name + ' ' + sourceName);
+            setProperty(updates, 'token.name', targetActor.name + ' ' + sourceName);
+            setProperty(updates, 'actor.prototypeToken.name', targetActor.name + ' ' + sourceName);
             break;
     }
-    console.log(sourceActor);
     let ac = chris.getConfiguration(item, 'ac') ?? 'source';
-    if (ac === 'source') setProperty(updates, 'actor.system.attributes.ac', sourceActor.system.attributes.ac);
+    if (ac === 'source' && sourceActor) {
+        setProperty(updates, 'actor.system.attributes.ac', sourceActor.system.attributes.ac);
+    } else if (allRaces[race].ac && ac === 'source') {
+        setProperty(updates, 'actor.system.attributes.ac.bonus',allRaces[race].ac);
+    }
     let movement = chris.getConfiguration(item, 'movement') ?? 'source';
     switch (movement) {
         case 'source':
-            setProperty(updates, 'actor.system.attributes.movement', sourceActor.system.attributes.movement);
+            if (sourceActor) {
+                setProperty(updates, 'actor.system.attributes.movement', sourceActor.system.attributes.movement);
+            } else if (allRaces[race].movement) {
+                setProperty(updates, 'actor.system.attributes.movement', allRaces[race].movement);
+            }
             break;
         case 'upgrade':
-            if (sourceActor.system.attributes.movement.burrow > targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
-            if (sourceActor.system.attributes.movement.climb > targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
-            if (sourceActor.system.attributes.movement.fly > targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
-            if (sourceActor.system.attributes.movement.swim > targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
-            if (sourceActor.system.attributes.movement.walk > targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
-            if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            if (sourceActor) {
+                if (sourceActor.system.attributes.movement.burrow > targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
+                if (sourceActor.system.attributes.movement.climb > targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
+                if (sourceActor.system.attributes.movement.fly > targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
+                if (sourceActor.system.attributes.movement.swim > targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
+                if (sourceActor.system.attributes.movement.walk > targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
+                if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            } else if (allRaces[race].movement) {
+                if (allRaces[race].movement.burrow > targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', allRaces[race].movement.burrow);
+                if (allRaces[race].movement.climb > targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', allRaces[race].movement.climb);
+                if (allRaces[race].movement.fly > targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', allRaces[race].movement.fly);
+                if (allRaces[race].movement.swim > targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', allRaces[race].movement.swim);
+                if (allRaces[race].movement.walk > targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', allRaces[race].movement.walk);
+                if (allRaces[race].movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            }
             break;
         case 'downgrade':
-            if (sourceActor.system.attributes.movement.burrow < targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
-            if (sourceActor.system.attributes.movement.climb < targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
-            if (sourceActor.system.attributes.movement.fly < targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
-            if (sourceActor.system.attributes.movement.swim < targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
-            if (sourceActor.system.attributes.movement.walk < targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
-            if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            if (sourceActor) {
+                if (sourceActor.system.attributes.movement.burrow < targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', sourceActor.system.attributes.movement.burrow);
+                if (sourceActor.system.attributes.movement.climb < targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', sourceActor.system.attributes.movement.climb);
+                if (sourceActor.system.attributes.movement.fly < targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', sourceActor.system.attributes.movement.fly);
+                if (sourceActor.system.attributes.movement.swim < targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', sourceActor.system.attributes.movement.swim);
+                if (sourceActor.system.attributes.movement.walk < targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', sourceActor.system.attributes.movement.walk);
+                if (sourceActor.system.attributes.movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            } else if (allRaces[race].movement) {
+                if (allRaces[race].movement.burrow < targetActor.system.attributes.movement.burrow) setProperty(updates, 'actor.system.attributes.movement.burrow', allRaces[race].movement.burrow);
+                if (allRaces[race].movement.climb < targetActor.system.attributes.movement.climb) setProperty(updates, 'actor.system.attributes.movement.climb', allRaces[race].movement.climb);
+                if (allRaces[race].movement.fly < targetActor.system.attributes.movement.fly) setProperty(updates, 'actor.system.attributes.movement.fly', allRaces[race].movement.fly);
+                if (allRaces[race].movement.swim < targetActor.system.attributes.movement.swim) setProperty(updates, 'actor.system.attributes.movement.swim', allRaces[race].movement.swim);
+                if (allRaces[race].movement.walk < targetActor.system.attributes.movement.walk) setProperty(updates, 'actor.system.attributes.movement.walk', allRaces[race].movement.walk);
+                if (allRaces[race].movement.hover) setProperty(updates, 'actor.system.attributes.movement.hover', true);
+            }
             break;
     }
     let senses = chris.getConfiguration(item, 'senses') ?? 'source';
     if (senses === 'source') {
-        setProperty(updates, 'actor.system.attributes.senses', sourceActor.system.attributes.senses);
-        setProperty(updates, 'actor.prototypeToken.sight', sourceActor.prototypeToken.sight);
-        setProperty(updates, 'token.sight', sourceActor.prototypeToken.sight);
+        if (sourceActor) {
+            setProperty(updates, 'actor.system.attributes.senses', sourceActor.system.attributes.senses);
+            setProperty(updates, 'actor.prototypeToken.sight', sourceActor.prototypeToken.sight);
+            setProperty(updates, 'token.sight', sourceActor.prototypeToken.sight);
+        } else if (allRaces[race].senses && allRaces[race].sight) {
+            setProperty(updates, 'actor.system.attributes.senses', allRaces[race].senses);
+            setProperty(updates, 'actor.prototypeToken.sight', allRaces[race].sight);
+            setProperty(updates, 'token.sight', allRaces[race].sight);
+        }
     }
 }
