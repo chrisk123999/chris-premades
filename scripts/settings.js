@@ -866,14 +866,14 @@ export function registerSettings() {
         type: chrisSettingsManualRolling,
         restricted: true
     });
-    game.settings.registerMenu(moduleName, 'Randomizer', {
-        name: 'Randomizer',
-        label: 'Randomizer',
-        hint: 'Optional settings for randomizer features.',
-        icon: 'fas fa-dice',
-        type: chrisSettingsRandomizer,
-        restricted: true
-    });
+//    game.settings.registerMenu(moduleName, 'Randomizer', {
+//        name: 'Randomizer',
+//        label: 'Randomizer',
+//        hint: 'Optional settings for randomizer features.',
+//        icon: 'fas fa-dice',
+//        type: chrisSettingsRandomizer,
+//        restricted: true
+//    });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
         name: 'Troubleshooter',
         label: 'Troubleshooter',

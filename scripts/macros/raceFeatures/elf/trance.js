@@ -68,5 +68,17 @@ export async function trance({speaker, actor, token, character, item, args, scop
     if (!selection.buttons) return;
     let effect = chris.findEffect(workflow.actor, 'Trance');
     if (effect) await chris.removeEffect(effect);
-    console.log(selection);
+    let effectData = {
+        'label': 'Trance',
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
+        'changes': [
+            {
+                'key': 'system.skills.' + selection.inputs[0] +'.value',
+                'mode': 4,
+                'value': '1',
+                'priority': 20
+            }
+        ]
+    }
 }

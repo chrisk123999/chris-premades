@@ -1,3 +1,8 @@
+# 0.5.41 Release:
+## New Content:
+- Generic Action: Fall
+- Astral Elf: Starlight Step
+  
 # 0.5.40 Release:
 ## New Content:
 - Circle of Wildfire Druid: Enhanced Bond
