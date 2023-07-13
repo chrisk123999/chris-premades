@@ -20,7 +20,7 @@ import {patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
-import {remoteDialog} from './utility/remoteDIalog.js';
+import {remoteDialog} from './utility/remoteDialog.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();

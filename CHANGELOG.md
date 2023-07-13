@@ -1,3 +1,7 @@
+# 0.5.42 Release:
+## Bug Fixes:
+- Fix file name for Linux
+  
 # 0.5.41 Release:
 ## Bug Fixes:
 - Item Name Fixes for DDB
