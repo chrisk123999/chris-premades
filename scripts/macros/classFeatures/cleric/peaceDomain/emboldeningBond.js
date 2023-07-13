@@ -52,17 +52,17 @@ let effectData = {
     }
 };
 async function turn(token, origin, effect) {
-    let queueSetup = await queue.setup(origin.uuid, 'emboldeningBond', 50);
-    if (!queueSetup) return; // This queue isn't working for some reason.
+    let queueSetup = await queue.setup('emboldeningBond', effect.uuid, 50);
+    if (!queueSetup) return;
     let effect2 = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
     if (effect2) {
-        queue.remove(origin.uuid);
+        queue.remove('emboldeningBond');
         return;
     }
     let maxDistance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
     let nearbyTargets = await chris.findNearby(token, maxDistance, 'all', true).concat(token).filter(i => i.actor.effects.find(j => j.origin === origin.uuid && j.label === 'Emboldening Bond'));
-    if (nearbyTargets.length === 0) {
-        queue.remove(origin.uuid);
+    if (nearbyTargets.length < 2) {
+        queue.remove('emboldeningBond');
         return;
     }
     let effectData2 = duplicate(effectData);
@@ -72,22 +72,29 @@ async function turn(token, origin, effect) {
     setProperty(effectData2, 'duration.seconds', effect.duration.seconds);
     if (token.actor.flags['chris-premades']?.feature?.expansiveBond) setProperty(effectData2, 'flags.chris-premades.feature.emboldeningBond.expansiveBond', 60);
     await chris.createEffect(token.actor, effectData2);
-    queue.remove(origin.uuid);
+    queue.remove('emboldeningBond');
 }
 async function checkBonus(token) {
     let effects = token.actor.effects.filter(i => i.label === 'Emboldening Bond');
     if (effects.length === 0) return;
-    let effect = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
-    if (effect) {
-        let sourceTokenUuid = effect.flags['chris-premades']?.feature?.emboldeningBond?.sourceTokenUuid;
-        let sourceToken;
-        if (sourceTokenUuid) sourceToken = await fromUuid(sourceTokenUuid);
-        if (sourceToken) {
+    let effect2 = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
+    let targetMap = {};
+    if (effect2) {
+        for (let effect of effects) {
             let maxDistance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
-            let distance = chris.getDistance(token, sourceToken);
-            if (distance < maxDistance) return;
+            let origin;
+            if (effect.origin) origin = await fromUuid(effect.origin);
+            if (!origin) continue;
+            let nearbyTargets = targetMap[effect.uuid];
+            if (!nearbyTargets) {
+                targetMap[effect.uuid] = await chris.findNearby(token.object, maxDistance, 'all', true).concat(token.object).filter(i => i.actor.effects.find(j => j.origin === origin.uuid && j.label === 'Emboldening Bond'));
+                nearbyTargets = targetMap[effect.uuid];
+            }
+            if (nearbyTargets.length < 2) continue;
+            return;
         }
-        await chris.removeEffect(effect);
+        await chris.updateEffect(effect2, {'disabled': true});
+        await chris.removeEffect(effect2);
     }
     for (let effect of effects) {
         if (chris.inCombat()) {
@@ -99,8 +106,12 @@ async function checkBonus(token) {
         let origin;
         if (effect.origin) origin = await fromUuid(effect.origin);
         if (!origin) continue;
-        let nearbyTargets = await chris.findNearby(token.object, maxDistance, 'all', true).concat(token.object).filter(i => i.actor.effects.find(j => j.origin === origin.uuid && j.label === 'Emboldening Bond'));
-        if (nearbyTargets.length === 0) continue;
+        let nearbyTargets = targetMap[effect.uuid];
+        if (!nearbyTargets) {
+            targetMap[effect.uuid] = await chris.findNearby(token.object, maxDistance, 'all', true).concat(token.object).filter(i => i.actor.effects.find(j => j.origin === origin.uuid && j.label === 'Emboldening Bond'));
+            nearbyTargets = targetMap[effect.uuid];
+        }
+        if (nearbyTargets.length < 2) continue;
         let effectData2 = duplicate(effectData);
         setProperty(effectData2, 'flags.chris-premades.feature.emboldeningBond.sourceTokenUuid', token.uuid);
         setProperty(effectData2, 'origin', origin.uuid);
