@@ -1,3 +1,7 @@
+# 0.5.41 Release:
+## Bug Fixes:
+- Item Name Fixes for DDB
+  
 # 0.5.40 Release:
 ## New Content:
 - Generic Action: Fall

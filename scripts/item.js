@@ -364,45 +364,69 @@ export function setConfig() {
         },
         'restrictedItems': {
             'Bardic Inspiration 1': {
-                originalName: 'Bardic Inspiration',
-                requiredClass: 'Bard',
-                requiredSubclass: null,
-                requiredRace: null,
-                requiredEquipment: [],
-                requiredFeatures: [
+                'originalName': 'Bardic Inspiration',
+                'requiredClass': 'Bard',
+                'requiredSubclass': null,
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [
                     'Magical Inspiration'
                 ],
-                replacedItemName: 'Bardic Inspiration & Magical Inspiration',
-                removedItems: [],
-                additionalItems: [],
-                priority: 0
+                'replacedItemName': 'Bardic Inspiration & Magical Inspiration',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
             },
             'Bardic Inspiration 2': {
-                originalName: 'Bardic Inspiration',
-                requiredClass: 'Bard',
-                requiredSubclass: 'College of Creation',
-                requiredRace: null,
-                requiredEquipment: [],
-                requiredFeatures: [
+                'originalName': 'Bardic Inspiration',
+                'requiredClass': 'Bard',
+                'requiredSubclass': 'College of Creation',
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [
                     'Magical Inspiration',
                     'Mote of Potential'
                 ],
-                replacedItemName: 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
-                removedItems: [],
-                additionalItems: [],
-                priority: 1
+                'replacedItemName': 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 1
             },
             'Radiant Soul': {
-                originalName: 'Radiant Soul',
-                requiredClass: 'Warlock',
-                requiredSubclass: 'The Celestial',
-                requiredRace: null,
-                requiredEquipment: [],
-                requiredFeatures: [],
-                replacedItemName: 'Radiant Soul',
-                removedItems: [],
-                additionalItems: [],
-                priority: 0
+                'originalName': 'Radiant Soul',
+                'requiredClass': 'Warlock',
+                'requiredSubclass': 'The Celestial',
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Radiant Soul',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
+            },
+            'Unarmored Defense 1': {
+                'originalName': 'Unarmored Defense',
+                'requiredClass': 'Barbarian',
+                'requiredSubclass': null,
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Unarmored Defense (Barbarian)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
+            },
+            'Unarmored Defense 2': {
+                'originalName': 'Unarmored Defense',
+                'requiredClass': 'Monk',
+                'requiredSubclass': null,
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Unarmored Defense (Monk)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
             }
         },
         'correctedItems': {
