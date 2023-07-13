@@ -714,6 +714,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Shadow of Moil', 'Spells');
+    game.settings.register(moduleName, 'Emboldening Bond', {
+        'name': 'Emboldening Bond',
+        'hint': 'Enabling this allows the automation of the Shadow of Moil spell via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value && game.user.isGM) {
+                Hooks.on('updateToken', macros.emboldeningBond.move);
+            } else if (game.user.isGM) {
+                Hooks.off('updateToken', macros.emboldeningBond.move);
+            }
+        }
+    });
+    addMenuSetting('Emboldening Bond', 'Class Features');
     game.settings.register(moduleName, 'Manual Rolls', {
         'name': 'Manual Rolls',
         'hint': 'Enabling this will prompt the GM to input attack, save, and damage totals. This only applies to rolls that involve Midi-Qol.',

@@ -20,6 +20,7 @@ import {patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
+import {remoteDialog} from './utility/remoteDIalog.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -33,6 +34,7 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('remoteRemoveEffectAura', effectSockets.remoteRemove);
     socket.register('createCombatant', tashaSummon.createCombatant);
     socket.register('updateCombatant', runAsGM.updateCombatant);
+    socket.register('remoteDialog', remoteDialog);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
@@ -101,6 +103,7 @@ Hooks.once('ready', async function() {
         game.settings.set('chris-premades', 'LastGM', game.user.id);
         if (game.settings.get('chris-premades', 'Combat Listener')) Hooks.on('updateCombat', combatUpdate);
         if (game.settings.get('chris-premades', 'Movement Listener')) Hooks.on('updateToken', tokenMoved);
+        if (game.settings.get('chris-premades', 'Emboldening Bond')) Hooks.on('updateToken', macros.emboldeningBond.move);
         if (game.settings.get('chris-premades', 'Template Listener')) {
             Hooks.on('updateToken', templates.move);
             Hooks.on('updateCombat', templates.combat);

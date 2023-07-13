@@ -511,5 +511,8 @@ export let chris = {
     },
     'getCombatant': function _getCombatant(token) {
         return game.combat?.combatants?.find(i => i.tokenId === token.id);
+    },
+    'remoteDialog': async function _remoteDialog(title, options, userId) {
+        return await socket.executeAsUser('remoteDialog', userId, title, options)
     }
 };
