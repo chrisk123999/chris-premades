@@ -716,7 +716,7 @@ export function registerSettings() {
     addMenuSetting('Shadow of Moil', 'Spells');
     game.settings.register(moduleName, 'Emboldening Bond', {
         'name': 'Emboldening Bond',
-        'hint': 'Enabling this allows the automation of the Shadow of Moil spell via the use of Foundry hooks.',
+        'hint': 'Enabling this allows the automation of the Emboldening Bond via the use of Foundry and Midi-Qol hooks.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
