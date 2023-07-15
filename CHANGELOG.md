@@ -1,3 +1,7 @@
+# 0.5.44 Release:
+## Bug Fixes:
+- Emboldening Bond
+  
 # 0.5.43 Release:
 ## New Content:
 - Cleric: Potent Spellcasting

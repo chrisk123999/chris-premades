@@ -177,17 +177,31 @@ async function damage(targetToken, {workflow, ditem}) {
         if (owner.isGM) title = '[' + token.actor.name + '] ' + title;
         let selection = await chris.remoteDialog(title, [['Yes', true], ['No', false]], chris.firstOwner(token.document).id);
         if (!selection) continue;
-        let featureDamage = workflow.damageRoll.total;
+        let featureDamage = 0;
+        let damages = {};
+        for (let term of workflow.damageRoll.terms) {
+            if (isNaN(term.total)) continue;
+            let flavor = term.flavor.toLowerCase();
+            if (!damages[flavor]) damages[flavor] = 0;
+            damages[flavor] += term.total;
+        }
+        let forceDR = !!effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond;
+        for (let [key, value] of Object.entries(damages)) {
+            if (chris.checkTrait(token.actor, 'di', key)) continue;
+            let dr = chris.checkTrait(token.actor, 'dr', key);
+            if (forceDR) dr = true;
+            let dv = chris.checkTrait(token.actor, 'dv', key);
+            if (dr && !dv) featureDamage += Math.floor(value / 2);
+            if (!dr && dv) featureDamage += value * 2;
+            if (!dr && !dv) featureDamage += value;
+        }
         let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Protective Bond - Damage', false);
         if (!featureData) {
             queue.remove(workflow.uuid);
             return;
         }
         delete featureData._id;
-        if (effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond) {
-            featureDamage = Math.floor(featureDamage / 2);
-            setProperty(featureData, 'flags.autoanimations.data.options.range', 60);
-        }
+        if (effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond) setProperty(featureData, 'flags.autoanimations.data.options.range', 60);
         featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Protective Bond - Damage');
         featureData.system.damage.parts = [
             [
