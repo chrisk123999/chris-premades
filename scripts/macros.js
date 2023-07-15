@@ -75,6 +75,7 @@ import {eldritchBlast} from './macros/spells/eldritchBlast.js';
 import {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
+import {emboldeningBond} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 import {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
@@ -219,7 +220,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {emboldeningBond} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -392,6 +392,7 @@ export let macros = {
     'eldritchSmite': eldritchSmite,
     'elementalAdept': elementalAdept,
     'elixirOfHealth': elixirOfHealth,
+    'emboldeningBond': emboldeningBond,
     'enhancedBond': enhancedBond,
     'experimentalElixir': experimentalElixir,
     'expertDivination': expertDivination,
@@ -510,6 +511,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'emboldeningBond': emboldeningBond
+    'zoneOfTruth': zoneOfTruth
 }

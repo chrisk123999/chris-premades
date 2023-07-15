@@ -1,3 +1,8 @@
+# 0.5.43 Release:
+## New Content:
+- Cleric: Potent Spellcasting
+- Peace Domain Cleric: Emboldening Bond, Protective Bond, and Expansive Bond
+  
 # 0.5.42 Release:
 ## Bug Fixes:
 - Fix file name for Linux

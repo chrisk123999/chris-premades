@@ -722,10 +722,12 @@ export function registerSettings() {
         'type': Boolean,
         'default': false,
         'onChange': value => {
-            if (value && game.user.isGM) {
-                Hooks.on('updateToken', macros.emboldeningBond.move);
-            } else if (game.user.isGM) {
-                Hooks.off('updateToken', macros.emboldeningBond.move);
+            if (value) {
+                if (game.user.isGM) Hooks.on('updateToken', macros.emboldeningBond.move);
+                Hooks.on('midi-qol.damageApplied', macros.emboldeningBond.damage);
+            } else {
+                if (game.user.isGM) Hooks.off('updateToken', macros.emboldeningBond.move);
+                Hooks.off('midi-qol.damageApplied', macros.emboldeningBond.damage);
             }
         }
     });

@@ -1,4 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
+import {queue} from '../../../../queue.js';
+import {constants} from '../../../../constants.js';
 async function effectMacro() {
     await chrisPremades.macros.emboldeningBond.remove(token);
 }
@@ -53,8 +55,8 @@ let effectData = {
 async function turn(token, origin, effect) {
     let effect2 = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
     if (effect2) return;
-    let maxDistance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
-    let nearbyTargets = await chris.findNearby(token, maxDistance, 'all', true).concat(token).filter(t => t.actor.effects.find(e => e.origin === origin.uuid && e.label === 'Emboldening Bond'));
+    let distance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
+    let nearbyTargets = chris.findNearby(token, distance, 'all', true).concat(token).filter(t => t.actor.effects.find(e => e.origin === origin.uuid && e.label === 'Emboldening Bond'));
     if (nearbyTargets.length < 2) return;
     let effectData2 = duplicate(effectData);
     setProperty(effectData2, 'flags.chris-premades.feature.emboldeningBond.sourceTokenUuid', token.document.uuid);
@@ -111,6 +113,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     async function effectMacro() {
         await chrisPremades.macros.emboldeningBond.turn(token, origin, effect);
     }
+    async function effectMacro2() {
+        await chrisPremades.macros.emboldeningBond.removeBonus(token);
+    }
     let effectData3 = {
         'label': 'Emboldening Bond',
         'icon': workflow.item.img,
@@ -122,6 +127,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'effectmacro': {
                 'onEachTurn': {
                     'script': chris.functionToString(effectMacro)
+                },
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro2)
                 }
             },
             'chris-premades': {
@@ -137,6 +145,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(effectData2, 'flags.chris-premades.feature.emboldeningBond.expansiveBond', 60);
         setProperty(effectData3, 'flags.chris-premades.feature.emboldeningBond.expansiveBond', 60);
     }
+    if (workflow.actor.flags['chris-premades']?.feature?.emboldeningBond?.protectiveBond) {
+        setProperty(effectData3, 'flags.chris-premades.feature.emboldeningBond.protectiveBond', true);
+    }
     for (let token of Array.from(workflow.targets)) {
         await chris.createEffect(token.actor, effectData3);
         await chris.createEffect(token.actor, effectData2);
@@ -147,9 +158,105 @@ async function remove(token) {
     if (!effect) return;
     await effect.setFlag('chris-premades', 'feature.emboldeningBond.turn', game.combat.round + '-' + game.combat.turn);
 }
+async function damage(targetToken, {workflow, ditem}) {
+    if (!workflow) return;
+    if (workflow.item?.flags?.['chris-premades']?.feature?.protectiveBond) return;
+    let effect = chris.findEffect(targetToken.actor, 'Emboldening Bond');
+    if (!effect) return;
+    if (!effect.flags['chris-premades']?.feature?.emboldeningBond?.protectiveBond) return;
+    if (chris.findEffect(targetToken.actor, 'Reaction')) return;
+    let distance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
+    let nearbyTargets = chris.findNearby(targetToken, distance, 'all', true).filter(t => t.actor.effects.find(e => e.origin === effect.origin && e.label === 'Emboldening Bond') && !chris.findEffect(t.actor, 'Reaction'));
+    if (nearbyTargets.length === 0) return;
+    let queueSetup = await queue.setup(workflow.uuid, 'protectiveBond', 400);
+    if (!queueSetup) return;
+    for (let token of nearbyTargets) {
+        let owner = chris.firstOwner(token.document);
+        if (!owner) continue;
+        let title = 'Protective Bond: Protect Target?';
+        if (owner.isGM) title = '[' + token.actor.name + '] ' + title;
+        let selection = await chris.remoteDialog(title, [['Yes', true], ['No', false]], chris.firstOwner(token.document).id);
+        if (!selection) continue;
+        let featureDamage = workflow.damageRoll.total;
+        let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Protective Bond - Damage', false);
+        if (!featureData) {
+            queue.remove(workflow.uuid);
+            return;
+        }
+        delete featureData._id;
+        if (effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond) {
+            featureDamage = Math.floor(featureDamage / 2);
+            setProperty(featureData, 'flags.autoanimations.data.options.range', 60);
+        }
+        featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Protective Bond - Damage');
+        featureData.system.damage.parts = [
+            [
+                featureDamage,
+                'none'
+            ]
+        ];
+        setProperty(featureData, 'flags.chris-premades.feature.protectiveBond', true);
+        async function effectMacro() {
+            await chrisPremades.macros.emboldeningBond.teleport(token);
+        }
+        let effectData = {
+            'label': featureData.name,
+            'icon': featureData.img,
+            'duration': {
+                'seconds': 1
+            },
+            'origin': workflow.item.uuid,
+            'flags': {
+                'effectmacro': {
+                    'onCreate': {
+                        'script': chris.functionToString(effectMacro)
+                    }
+                }
+            }
+        };
+        let updates = {
+            'embedded': {
+                'Item': {
+                    [featureData.name]: featureData
+                },
+                'ActiveEffect': {
+                    [effectData.label]: effectData
+                }
+            }
+        };
+        let options = {
+            'permanent': false,
+            'name': featureData.name,
+            'description': featureData.name
+        };
+        await warpgate.mutate(token.document, updates, {}, options);
+        ditem.appliedDamage = 0;
+        ditem.hpDamage = 0;
+        ditem.newHP = ditem.oldHP;
+        ditem.newTempHP = ditem.oldTempHP;
+        ditem.newVitality = ditem.oldVitality;
+        ditem.tempDamage = 0;
+        ditem.totalDamage = 0;
+        break;
+    }
+    queue.remove(workflow.uuid);
+}
+async function teleport(token) {
+    let feature = token.actor.items.find(i => i.flags['chris-premades']?.feature?.protectiveBond);
+    if (feature) await feature.use();
+    await warpgate.revert(token.document, 'Protective Bond - Damage');
+}
+async function removeBonus(token) {
+    let effect = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
+    if (!effect) return;
+    await chris.removeEffect(effect);
+}
 export let emboldeningBond = {
     'turn': turn,
     'move': move,
     'item': item,
-    'remove': remove
+    'remove': remove,
+    'damage': damage,
+    'teleport': teleport,
+    'removeBonus': removeBonus
 }

@@ -45,7 +45,7 @@ export let chris = {
         }
     },
     'removeEffect': async function _removeEffect(effect) {
-        if (game.user.isGM) {
+        if (chris.firstOwner(effect).id === game.user.id) {
             await effect.delete();
         } else {
             await MidiQOL.socket().executeAsGM('removeEffects', {'actorUuid': effect.parent.uuid, 'effects': [effect.id]});
@@ -513,6 +513,12 @@ export let chris = {
         return game.combat?.combatants?.find(i => i.tokenId === token.id);
     },
     'remoteDialog': async function _remoteDialog(title, options, userId) {
+        console.log(userId);
+        console.log(game.user.id);
+        if (userId === game.user.id) return await chris.dialog(title, options);
         return await socket.executeAsUser('remoteDialog', userId, title, options)
+    },
+    'firstOwner': function _firstOwner(document) {
+        return warpgate.util.firstOwner(document);
     }
 };

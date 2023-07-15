@@ -160,6 +160,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Strength of the Grave')) Hooks.on('midi-qol.damageApplied', macros.strengthOfTheGrave);
     if (game.settings.get('chris-premades', 'Relentless Endurance')) Hooks.on('midi-qol.damageApplied', macros.relentlessEndurance);
     if (game.settings.get('chris-premades', 'Shadow of Moil')) Hooks.on('midi-qol.preAttackRoll', macros.shadowOfMoil.hook);
+    if (game.settings.get('chris-premades', 'Emboldening Bond')) Hooks.on('midi-qol.damageApplied', macros.emboldeningBond.damage);
     if (game.settings.get('chris-premades', 'Manual Rolls')) {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
