@@ -1,3 +1,7 @@
+# 0.5.45 Release:
+## Bug Fixes:
+- Swarm Damage
+  
 # 0.5.44 Release:
 ## Bug Fixes:
 - Emboldening Bond
