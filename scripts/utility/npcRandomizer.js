@@ -132,7 +132,8 @@ export let allRaces = {
                 'description': 'Fey Ancestry (Astral Elf)'
             },
             {
-                'name': 'Astral Trance'
+                'name': 'Astral Trance',
+                'description': 'Astral Trance'
             }
         ]
     },

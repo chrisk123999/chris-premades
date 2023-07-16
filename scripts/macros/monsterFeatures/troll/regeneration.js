@@ -1,7 +1,6 @@
 import {chris} from '../../../helperFunctions.js';
 import {constants} from '../../../constants.js';
 async function onHit(workflow, targetToken) {
-    console.log(workflow);
     if (!workflow.damageRoll || !workflow.hitTargets.has(targetToken)) return;
     let effect = chris.findEffect(targetToken.actor, 'Regeneration');
     if (!effect) return;

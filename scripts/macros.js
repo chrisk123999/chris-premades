@@ -11,6 +11,7 @@ import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
+import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
@@ -99,6 +100,7 @@ import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.j
 import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
+import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {healingSpirit} from './macros/spells/healingSpirit.js';
@@ -220,7 +222,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -237,6 +238,7 @@ export async function onHitMacro(workflow) {
 }
 let monster = {
     'aberrantSpirit': aberrantSpirit,
+    'autoGnome': autoGnome,
     'bodak': bodak,
     'bulette': bulette,
     'catoblepas': catoblepas,
@@ -292,7 +294,8 @@ let onHit = {
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit
+    'wardingBond': wardingBond.onHit,
+    'malfunction': autoGnome.malfunction
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
     switch (macroName) {
@@ -410,6 +413,7 @@ export let macros = {
     'graveTouched': graveTouched,
     'grimHarvest': grimHarvest,
     'grovelthrash': grovelthrash,
+    'guardianOfFaith': guardianOfFaith,
     'hailOfThorns': hailOfThorns,
     'healingLight': healingLight,
     'healingSpirit': healingSpirit,
@@ -515,6 +519,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'guardianOfFaith': guardianOfFaith
+    'zoneOfTruth': zoneOfTruth
 }

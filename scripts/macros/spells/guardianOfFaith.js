@@ -91,7 +91,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     new Sequence().effect().file('jb2a.bless.400px.loop.' + color).size(spawnedToken.width + 6, {'gridUnits': true}).attachTo(spawnedToken).persist().name('GuardianOfFaith-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.item.system.uses.value != 0) return;
+    let appliedDamage = workflow.damageList[0].appliedDamage;
+    if (!appliedDamage) return;
+    await workflow.item.update({'system.uses.value': workflow.item.system.uses.value - appliedDamage});
+    if (workflow.item.system.uses.value > 0) return;
     let effect = chris.findEffect(workflow.actor, 'Guardian of Faith');
     if (!effect) return;
     await chris.removeEffect(effect);
@@ -121,7 +124,6 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
     let attacker = canvas.scene.tokens.get(sourceTokenID);
     if (!attacker) return;
     let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
-    config.consumeUsage = true;
     let feature = attacker.actor.items.getName('Guardian of Faith - Damage');
     if (!feature) return;
     await MidiQOL.completeItemUse(feature, config, options);

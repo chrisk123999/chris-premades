@@ -1,3 +1,11 @@
+# 0.5.47 Release:
+## New Content:
+- Astral Elf: Astral Trance
+## New Monster Content:
+- Autognome: Malfunction
+## Bug Fixes:
+- Guardian of Faith
+  
 # 0.5.46 Release:
 ## New Content:
 - Spell: Guardian of Faith

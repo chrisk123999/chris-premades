@@ -66,8 +66,9 @@ export async function trance({speaker, actor, token, character, item, args, scop
         'render': dialogRender
     });
     if (!selection.buttons) return;
-    let effect = chris.findEffect(workflow.actor, 'Trance');
-    if (effect) await chris.removeEffect(effect);
+    async function effectMacro () {
+        await warpgate.revert(token.document, 'Trance');
+    }
     let effectData = {
         'label': 'Trance',
         'icon': workflow.item.img,
@@ -79,6 +80,38 @@ export async function trance({speaker, actor, token, character, item, args, scop
                 'value': '1',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'effectmacro': {
+                'onDelete': {
+                    'script': chris.functionToString(effectMacro)
+                }
+            }
+        }
+    };
+    let updates = {}
+    if (Object.keys(CONFIG.DND5E.weaponIds).includes(selection.inputs[1])) {
+        effectData.changes.push({
+            'key': 'system.traits.weaponProf.value',
+            'mode': 2,
+            'value': selection.inputs[1],
+            'priority': 20
+        });
+    } else {
+        let ability = await chris.dialog('What ability for the tool?', Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]));
+        if (!ability) return;
+        setProperty(updates, 'actor.system.tools.' + selection.inputs[1], {
+            'ability': ability,
+            'value': 1
+        });
     }
+    setProperty(updates, 'embedded.ActiveEffect.Trance', effectData);
+    let effect = chris.findEffect(workflow.actor, 'Trance');
+    if (effect) await chris.removeEffect(effect);
+    let options = {
+        'permanent': false,
+        'name': 'Trance',
+        'description': 'Trance'
+    };
+    await warpgate.mutate(workflow.token.document, updates, {}, options);
 }
