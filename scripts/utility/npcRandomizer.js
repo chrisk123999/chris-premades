@@ -141,13 +141,15 @@ export let allRaces = {
     {
         'name': 'Autognome',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'monster': 'Autognome'
     },
     'bugbear': 
     {
         'name': 'Bugbear',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Bugbear'
     },
     'centaur': 
     {
@@ -814,7 +816,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'astral-elf';
+    let race = 'bugbear';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -886,6 +888,7 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
         }
     }
+//    if (allRaces[race].special) await allRaces[race].special(token, sourceActor, features, updates);
     let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
     let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
     let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';

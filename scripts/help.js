@@ -44,6 +44,26 @@ let optionalModules = [
     'times-up',
     'visual-active-effects'
 ];
+let incompatibleModules = [
+    'ready-set-roll-5e',
+    'betterrolls5e',
+    'rollgroups',
+    'faster-rolling-by-default-5e',
+    'quick-rolls',
+    'dice-tooltip',
+    'gm-paranoia-taragnor',
+    'wire',
+    'mre-dnd5e',
+    'retroactive-advantage-5e',
+    'max-crit',
+    'multiattack-5e',
+    'effective-transferral',
+    'attack-roll-check-5e',
+    'advancedspelleffects',
+    'obsidian',
+    'heartbeat',
+    'dice-rng-protector'
+]
 export function troubleshoot() {
     let output = '';
     function addLine(text) {
@@ -93,6 +113,11 @@ export function troubleshoot() {
         addLine(checkModule(id));
     });
     addLine('');
+    addLine('/////////////// Incompatible Modules ///////////////');
+    incompatibleModules.forEach(id => {
+        if (game.modules.get(id)) addLine(checkModule(id));
+    });
+    addLine('');
     addLine('/////////////// CPR Settings ///////////////');
     let cprSettings = Array.from(game.settings.settings).filter(i => i[0].includes('chris-premades') && i[1].namespace === 'chris-premades');
     cprSettings.forEach(i => {
@@ -138,11 +163,13 @@ export function troubleshoot() {
         addLine('/////////////// Other ///////////////');
         addLine('Unsupported Importer: true');
     }
-    let filename = 'CPR-Troubleshoot.txt';
-    let blob = new Blob([output], {
-        'type': 'text/plain;charset=utf-8'
-    });
-    saveAs(blob, filename);
+    try {
+        let filename = 'CPR-Troubleshoot.txt';
+        let blob = new Blob([output], {
+            'type': 'text/plain;charset=utf-8'
+        });
+        saveAs(blob, filename);
+    } catch (error) {};
 }
 export async function fixSettings() {
     let changedSettings = [];
