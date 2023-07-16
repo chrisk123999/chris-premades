@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 export async function repellingBlast({speaker, actor, token, character, item, args, scope, workflow}) {
     let spellName = workflow.actor.flags['chris-premades']?.feature?.repellingBlast?.name;
     if (!spellName) spellName = 'Eldritch Blast';

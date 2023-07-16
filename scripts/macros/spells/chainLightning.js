@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 export async function chainLightning({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let maxTargets = workflow.castData.castLevel - 3;

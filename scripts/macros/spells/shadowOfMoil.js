@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function hook(workflow) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first().document;

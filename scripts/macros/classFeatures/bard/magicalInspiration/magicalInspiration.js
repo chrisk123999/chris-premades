@@ -1,6 +1,6 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 async function bardicInspirationAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
     if (workflow.isFumble) return;

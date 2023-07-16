@@ -1,5 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {queue} from '../../../utility/queue.js';
 export async function breathWeapon({speaker, actor, token, character, item, args, scope, workflow}) {
     let dragonType = workflow.actor.flags['chris-premades']?.draconicSpirit?.type;
     if (!dragonType) return;

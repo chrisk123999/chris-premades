@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.templateUuid) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Storm Sphere Bolt', false);

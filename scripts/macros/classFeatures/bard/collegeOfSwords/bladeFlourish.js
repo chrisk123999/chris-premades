@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 export async function bladeFlourish({speaker, actor, token, character, item, args, scope, workflow}) {
     let itemName = workflow.item.name.toLowerCase()
     if (itemName.includes('booming blade') || itemName.includes('green-flame blade')) return;

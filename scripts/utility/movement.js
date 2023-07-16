@@ -1,6 +1,6 @@
-import {chris} from './helperFunctions.js';
-import {macros} from './macros.js';
-import {socket} from './module.js';
+import {chris} from '../helperFunctions.js';
+import {macros} from '../macros.js';
+import {socket} from '../module.js';
 let triggers = {};
 export async function loadTriggers() {
     triggers = game.settings.get('chris-premades', 'Movement Triggers');

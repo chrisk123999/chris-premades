@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function darknessItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);

@@ -1,6 +1,6 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 export async function grimHarvest({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.length === 0 || !workflow.damageList) return;
     let doHealing = false;

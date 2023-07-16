@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function lightningArrowDamage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.name === 'Lightning Arrow - Burst') return;
     if (workflow.targets.size != 1) return;

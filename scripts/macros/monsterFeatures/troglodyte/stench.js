@@ -1,6 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {queue} from '../../../utility/queue.js';
 export async function stench(token, origin, range, duration, monsterName, originItem) {
     let targetToken = game.combat.scene.tokens.get(game.combat.current.tokenId);
     if (!targetToken) return;

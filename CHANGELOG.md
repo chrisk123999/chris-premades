@@ -1,3 +1,9 @@
+# 0.5.46 Release:
+## New Content:
+- Spell: Guardian of Faith
+## Bug Fixes:
+- Fey Step
+  
 # 0.5.45 Release:
 ## Bug Fixes:
 - Swarm Damage

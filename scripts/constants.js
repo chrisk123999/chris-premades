@@ -33,7 +33,6 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel) {
         {
             'showFullCard': false,
             'createWorkflow': true,
-            'configureDialog': false,
             'consumeResource': false,
             'consumeRecharge': false,
             'consumeQuantity': false,
@@ -43,6 +42,7 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel) {
         },
         {
             'targetUuids': targets,
+            'configureDialog': false,
             'workflowOptions': {
                 'autoRollDamage': 'always',
                 'autoFastDamage': true

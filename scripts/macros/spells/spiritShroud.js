@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function spiritShroudItem({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Spirit Shroud');
     if (!effect) return;

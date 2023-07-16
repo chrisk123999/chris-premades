@@ -1,5 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {queue} from '../../../utility/queue.js';
 export async function focusedAim({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1 || workflow.isFumble) return;
     let feature = await workflow.actor.items.getName('Ki Points');

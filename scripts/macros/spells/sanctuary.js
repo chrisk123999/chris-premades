@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function hook(workflow) {
     if (!workflow.token) return;
     if (workflow.targets.size != 1) return;

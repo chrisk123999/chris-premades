@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {tokenMove} from '../../movement.js';
+import {tokenMove} from '../../utility/movement.js';
 async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenID) {
     let doDamage = false;
     if (!chris.inCombat()) {

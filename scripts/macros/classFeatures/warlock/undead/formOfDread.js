@@ -1,6 +1,6 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];

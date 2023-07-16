@@ -3,10 +3,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let sourceActor = game.actors.getName('CPR - Spectral Tentacle');
     if (!sourceActor) return;
     async function effectMacro() {
-        let originActor = origin.actor;
-        await warpgate.dismiss(token.id);
-        let castEffect = chrisPremades.helpers.findEffect(originActor, origin.name);
-        if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
+        await chrisPremades.macros.tentacleOfTheDeeps.remove(token, origin);
     }
     let effectData = {
         'label': workflow.item.name,
@@ -130,8 +127,15 @@ async function attackLate({speaker, actor, token, character, item, args, scope, 
     workflow.token.document.x = position.x;
     workflow.token.document.y = position.y;
 }
+async function remove(token, origin) {
+    let originActor = origin.actor;
+    await warpgate.dismiss(token.id);
+    let castEffect = chrisPremades.helpers.findEffect(originActor, origin.name);
+    if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
+}
 export let tentacleOfTheDeeps = {
     'item': item,
     'attackEarly': attackEarly,
-    'attackLate': attackLate
+    'attackLate': attackLate,
+    'remove': remove
 }

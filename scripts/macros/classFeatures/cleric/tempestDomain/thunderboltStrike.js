@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 export async function thunderboltStrike({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll) return;
     let targetToken = workflow.targets.first();

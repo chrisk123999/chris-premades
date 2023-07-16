@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 export async function riteOfTheDawn({speaker, actor, token, character, item, args, scope, workflow}) {
     let hasFeature = workflow.item.flags['chris-premades']?.feature?.rotd;
     if (!hasFeature) return;

@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 export async function protectionFromEvilAndGood(workflow) {
     if (workflow.targets.size != 1 || workflow.disadvantage) return;
     let targetToken = workflow.targets.first();

@@ -1,6 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {queue} from '../../../utility/queue.js';
 export async function undeadFortitude(targetToken, {workflow, ditem}) {
     if (ditem.newHP != 0 || ditem.oldHP === 0) return;
     let targetActor = targetToken.actor;

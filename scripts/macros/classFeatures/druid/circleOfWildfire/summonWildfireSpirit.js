@@ -1,7 +1,7 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {tashaSummon} from '../../../../utility/tashaSummon.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Wildfire Spirit');
     if (!sourceActor) return;

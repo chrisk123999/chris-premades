@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 export async function beaconOfHope(token, {item, workflow, ditem}) {
     let effect = chris.findEffect(token.actor, 'Beacon of Hope');
     if (!effect) return;

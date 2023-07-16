@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 async function early(workflow) {
     if (workflow.targets.size === 0) return;
     let spellFlag = workflow.item.flags['chris-premades']?.spell;

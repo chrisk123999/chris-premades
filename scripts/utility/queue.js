@@ -1,4 +1,4 @@
-import Heap from './heap/priority-queue.js';
+import Heap from '../heap/priority-queue.js';
 let allQueues = {};
 function add(uuid, key, priority) {
     if (!game.settings.get('chris-premades', 'Priority Queue')) return;

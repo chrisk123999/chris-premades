@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     let pass = args[0].macroPass;
     if (workflow.item.type != 'spell' || workflow.hitTargets.size === 0) return;

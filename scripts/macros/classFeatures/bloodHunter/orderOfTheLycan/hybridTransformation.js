@@ -1,6 +1,6 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 async function turnStart(token, actor) {
     let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     let levels = actor.classes['blood-hunter'].system.levels;

@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 function dialogRender(html) {
     let ths = html[0].getElementsByTagName('th');
     for (let t of ths) {

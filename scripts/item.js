@@ -1525,6 +1525,34 @@ export function setConfig() {
                     }
                 }
             },
+            'Guardian of Faith': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'color': {
+                        'label': 'What animation color?',
+                        'default': 'yellow',
+                        'values': [
+                            {'value': 'yellow', 'html': 'Yellow'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'purple', 'html': 'Purple'}
+                        ]
+                    }
+                }
+            }
         }
     });
 }

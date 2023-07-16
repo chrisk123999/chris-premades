@@ -1,5 +1,5 @@
 import {chris} from '../../../../helperFunctions.js';
-import {queue} from '../../../../queue.js';
+import {queue} from '../../../../utility/queue.js';
 import {constants} from '../../../../constants.js';
 async function effectMacro() {
     await chrisPremades.macros.emboldeningBond.remove(token);

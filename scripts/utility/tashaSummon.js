@@ -1,6 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-import {queue} from '../queue.js';
+import {queue} from './queue.js';
 async function setupFolder() {
     let folder = game.folders.getName('Chris Premades');
     if (!folder) {

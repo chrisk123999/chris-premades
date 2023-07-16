@@ -1,5 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
-import {queue} from '../../../queue.js';
+import {queue} from '../../../utility/queue.js';
 export async function wildhunt(workflow) {
     if (workflow.targets.size === 0 || workflow.disadvanage) return;
     let targetToken = workflow.targets.first();

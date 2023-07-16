@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 export async function orcishFury({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || workflow.item.type != 'weapon') {
         let effect = chris.findEffect(workflow.actor, 'Orcish Fury - Extra Damage');

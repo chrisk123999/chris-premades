@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {queue} from '../../queue.js';
+import {queue} from '../../utility/queue.js';
 export async function mastersAmulet(token, {item, workflow, ditem}) {
     if (!workflow) return;
     let effect = chris.findEffect(token.actor, 'Shield Guardian - Bound');
