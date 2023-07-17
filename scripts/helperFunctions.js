@@ -514,9 +514,9 @@ export let chris = {
     'getCombatant': function _getCombatant(token) {
         return game.combat?.combatants?.find(i => i.tokenId === token.id);
     },
-    'remoteDialog': async function _remoteDialog(title, options, userId) {
-        if (userId === game.user.id) return await chris.dialog(title, options);
-        return await socket.executeAsUser('remoteDialog', userId, title, options)
+    'remoteDialog': async function _remoteDialog(title, options, userId, content) {
+        if (userId === game.user.id) return await chris.dialog(title, options, content);
+        return await socket.executeAsUser('remoteDialog', userId, title, options, content)
     },
     'firstOwner': function _firstOwner(document) {
         return warpgate.util.firstOwner(document);

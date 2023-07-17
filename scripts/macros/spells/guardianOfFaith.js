@@ -87,7 +87,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.createEffect(workflow.actor, casterEffectData);
     await tokenMove.add('guardianOfFaith', workflow.castData.castLevel, spellDC, null, null, spawnedToken.id, 10, true, true, null, targetEffect.uuid);
-    let color = chris.getConfiguration(workflow.item, 'color') ?? yellow;
+    let color = chris.getConfiguration(workflow.item, 'color') ?? 'yellow';
     new Sequence().effect().file('jb2a.bless.400px.loop.' + color).size(spawnedToken.width + 6, {'gridUnits': true}).attachTo(spawnedToken).persist().name('GuardianOfFaith-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
