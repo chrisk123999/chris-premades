@@ -54,7 +54,6 @@ export async function fall({speaker, actor, token, character, item, args, scope,
         'render': render
     });
     if (!selection.buttons) return;
-    console.log(selection);
     let diceNum = Math.min((Math.floor(selection.inputs[0] / 10) * 10), 200) / 10;
     if (diceNum === 0) return;
     let damageFormula = diceNum + 'd6[bludgeoning]';

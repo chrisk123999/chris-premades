@@ -1552,6 +1552,58 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Awakened Spellbook: Replace Damage': {
+                'checkbox': {
+                    'cromaticorb': {
+                        'label': 'Has Chromatic Orb?',
+                        'default': false
+                    },
+                    'magicmissile': {
+                        'label': 'Has Magic Missile?',
+                        'default': false
+                    },
+                    'dragonsbreath': {
+                        'label': 'Has Dragon\'s Breath?',
+                        'default': false
+                    },
+                    'glyphofwarding': {
+                        'label': 'Has Glyph of Warding?',
+                        'default': false
+                    },
+                    'protectionfromenergy': {
+                        'label': 'Has Protection from Energy?',
+                        'default': false
+                    },
+                    'spiritshroud': {
+                        'label': 'Has Spirit Shroud?',
+                        'default': false
+                    },
+                    'vampirictouch': {
+                        'label': 'Has Vampiric Touch?',
+                        'default': false
+                    },
+                    'elementalbane': {
+                        'label': 'Has Elemental Bane?',
+                        'default': false
+                    },
+                    'cloudkill': {
+                        'label': 'Has Cloudkill?',
+                        'default': false
+                    },
+                    'primasticspray': {
+                        'label': 'Has Prismatic Spray?',
+                        'default': false
+                    },
+                    'illusorydragon': {
+                        'label': 'Has Illusory Dragon?',
+                        'default': false
+                    },
+                    'prismaticwall': {
+                        'label': 'Has Prismatic Wall?',
+                        'default': false
+                    }
+                }
             }
         }
     });
