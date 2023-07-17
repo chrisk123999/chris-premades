@@ -57,6 +57,7 @@ import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBle
 import {darkness} from './macros/spells/darkness.js';
 import {dawn} from './macros/spells/dawn.js';
 import {deathWard} from './macros/spells/deathWard.js';
+import {deepGnome} from './macros/monsterFeatures/deepGnome/deepGnome.js';
 import {destructiveWave} from './macros/spells/destructiveWave.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
@@ -124,6 +125,7 @@ import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTh
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
+import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
@@ -253,6 +255,7 @@ let monster = {
     'clockworkDefender': clockworkDefender,
     'constructSpirit': constructSpirit,
     'corpseFlower': corpseFlower,
+    'deepGnome': deepGnome,
     'draconicSpirit': draconicSpirit,
     'dreamEater': dreamEater,
     'drow': drow,
@@ -306,7 +309,8 @@ let onHit = {
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
     'eyesOfMinuteSeeing': eyesOfMinuteSeeing,
-    'eyesOfTheEagle': eyesOfTheEagle
+    'eyesOfTheEagle': eyesOfTheEagle,
+    'stoneCamouflage': deepGnome.stoneCamouflage
 }
 export let saves = {
     'dangerSense': dangerSense
@@ -331,6 +335,9 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
         case 'auraOfCourage':
             await auraOfCourage(token, selectedAura);
+            break;
+        case 'lanternOfRevealing':
+            await lanternOfRevealing.aura(token, selectedAura);
             break;
     }
 }
@@ -442,6 +449,7 @@ export let macros = {
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
     'inspiringSmite': inspiringSmite,
+    'lanternOfRevealing': lanternOfRevealing,
     'lifeTransference': lifeTransference,
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,

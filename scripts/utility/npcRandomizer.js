@@ -155,19 +155,22 @@ export let allRaces = {
     {
         'name': 'Centaur',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Centaur'
     },
     'changeling': 
     {
         'name': 'Changeling',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Changeling'
     },
     'deep-gnome': 
     {
         'name': 'Deep Gnome',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Deep Gnome (Svirfneblin)'
     },
     'dhampir': 
     {
@@ -816,7 +819,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'bugbear';
+    let race = 'deep-gnome';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {

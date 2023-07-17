@@ -81,7 +81,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let flagAuras = {
         'auraOfPurity': {
             'name': 'auraOfPurity',
-            'castLevel': 'castLevel',
+            'castLevel': workflow.castData.castLevel,
             'range': 30,
             'disposition': 'ally',
             'effectName': 'Aura of Purity',

@@ -1,3 +1,13 @@
+# 0.5.50 Release:
+## New Content:
+- Lantern of Revealing
+## New Monster Content:
+- Deep Gnome (Svirfneblin): Stone Camouflage, Gnome Cunning, Poisoned Dart
+- Centaur: Charge
+- Changeling: Unsettling Visage
+## Bug Fixes:
+- Aura of Purity
+  
 # 0.5.49 Release:
 ## Bug Fixes:
 - Awakened Spellbook
