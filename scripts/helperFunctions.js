@@ -520,8 +520,5 @@ export let chris = {
     },
     'firstOwner': function _firstOwner(document) {
         return warpgate.util.firstOwner(document);
-    },
-    'descriptiveDialog': async function _descriptiveDialog(title, description, options) {
-        
     }
 };
