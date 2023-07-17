@@ -5,7 +5,7 @@
 - Eyes of Minute Seeing
 - Eyes of the Eagle
 ## New Monster Content:
-- Bugbear: Brute, Surpise Attack
+- Bugbear: Brute, Surprise Attack
 ## Bug Fixes:
 - On Hit Automation
 - Distracting Strike
