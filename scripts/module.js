@@ -16,7 +16,7 @@ import {rest} from './utility/rest.js';
 import {troubleshoot} from './help.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {constants} from './constants.js';
-import {patching} from './patching.js';
+import {patchSaves, patchSkills, patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
@@ -170,6 +170,8 @@ Hooks.once('ready', async function() {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     }
     if (game.settings.get('chris-premades', 'Use Randomizer')) Hooks.on('createToken', npcRandomizer);
+    if (game.settings.get('chris-premades', 'Skill Patching')) patchSkills(true);
+    if (game.settings.get('chris-premades', 'Save Patching')) patchSaves(true);
 });
 globalThis['chrisPremades'] = {
     helpers,

@@ -28,7 +28,9 @@ import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
+import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
+import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {callLightning} from './macros/spells/callLightning.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
@@ -49,6 +51,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
 import {darkness} from './macros/spells/darkness.js';
@@ -81,6 +84,8 @@ import {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhanc
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {explodingHeals} from './macros/mechanics/explodingHeals.js';
+import {eyesOfMinuteSeeing} from './macros/items/eyesOfMinuteSeeing.js';
+import {eyesOfTheEagle} from './macros/items/eyesOfTheEagle.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
@@ -222,25 +227,24 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
-        let onHitName = token.actor.flags['chris-premades']?.feature?.onHit;
-        if (!onHitName) return;
+        let flags = token.actor.flags['chris-premades']?.feature?.onHit;
+        if (!flags) return;
         if (token.id === workflow.token.id) return;
-        let onHitFunction = macros.onHit[onHitName];
-        if (typeof onHitFunction != 'function') {
-            ui.notifications.warn('Invalid actor onHit macro!');
-            return;
+        for (let [key, value] of Object.entries(flags)) {
+            if (!value) continue;
+            if (typeof onHit[key] != 'function') continue;
+            await onHit[key](workflow, token);
         }
-        await onHitFunction(workflow, token);
     });
 }
 let monster = {
     'aberrantSpirit': aberrantSpirit,
     'autoGnome': autoGnome,
     'bodak': bodak,
+    'bugbear': bugbear,
     'bulette': bulette,
     'catoblepas': catoblepas,
     'celestialSpirit': celestialSpirit,
@@ -285,19 +289,27 @@ let monster = {
     'troglodyte': troglodyte,
     'troll': troll,
     'undeadSpirit': undeadSpirit,
-    'zombie': zombie,
-    'bugbear': bugbear
+    'zombie': zombie
 }
 let onHit = {
     'blackrazor': blackrazor.onHit,
+    'distractingStrike': maneuvers.distractingStrikeOnHit,
     'fireForm': fireElemental.fireForm,
     'forceField': monster.tixieTockworth.forceField.onHit,
     'heatedBody': fireSnake.heatedBody,
+    'malfunction': autoGnome.malfunction,
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit,
-    'malfunction': autoGnome.malfunction
+    'wardingBond': wardingBond.onHit
+}
+export let skills = {
+    'bootsOfElvenkind': bootsOfElvenkind,
+    'eyesOfMinuteSeeing': eyesOfMinuteSeeing,
+    'eyesOfTheEagle': eyesOfTheEagle
+}
+export let saves = {
+    'dangerSense': dangerSense
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
     switch (macroName) {

@@ -1,3 +1,17 @@
+# 0.5.48 Release:
+## New Content:
+- Barbarian: Danger Sense
+- Boots of Elvenkind
+- Eyes of Minute Seeing
+- Eyes of the Eagle
+## New Monster Content:
+- Bugbear: Brute, Surpise Attack
+## Bug Fixes:
+- On Hit Automation
+- Distracting Strike
+## Update Notes:
+- The following items must be updated to continue to function: Blackrazor, Distracting Strike, Fire Form, Force Field, Heated Body, Malfunction, Regeneration, Shadow of Moil, Soul Thirst, Warding Bond
+  
 # 0.5.47 Release:
 ## New Content:
 - Astral Elf: Astral Trance

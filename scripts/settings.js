@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
-import {patching} from './patching.js';
+import {patchSaves, patchSkills, patching} from './patching.js';
 import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
@@ -171,6 +171,30 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Active Effect Origin Fix', 'General');
+    game.settings.register(moduleName, 'Skill Patching', {
+        'name': 'Skill Patching',
+        'hint': 'This setting allows certain macros to modify skill checks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            patchSkills(value);
+        }
+    });
+    addMenuSetting('Skill Patching', 'General');
+    game.settings.register(moduleName, 'Save Patching', {
+        'name': 'Save Patching',
+        'hint': 'This setting allows certain macros to modify ability saves.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            patchSaves(value);
+        }
+    });
+    addMenuSetting('Save Patching', 'General');
     game.settings.register(moduleName, 'Automatic VAE Descriptions', {
         'name': 'Automatic VAE Descriptions',
         'hint': 'When enabled, this setting will automatically fill in VAE effect descriptions when possible.',

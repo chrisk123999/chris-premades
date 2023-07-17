@@ -1,11 +1,13 @@
 import {socket} from './module.js';
 export let chris = {
-    'dialog': async function _dialog(title, options) {
-        let buttons = options.map(([label,value]) => ({label,value}));
+    'dialog': async function _dialog(title, options, content) {
+        if (content) content = '<center>' + content + '</center>';
+        let buttons = options.map(([label, value]) => ({label, value}));
         let selected = await warpgate.buttonDialog(
             {
                 buttons,
                 title,
+                content
             },
             'column'
         );
@@ -518,5 +520,8 @@ export let chris = {
     },
     'firstOwner': function _firstOwner(document) {
         return warpgate.util.firstOwner(document);
+    },
+    'descriptiveDialog': async function _descriptiveDialog(title, description, options) {
+        
     }
 };

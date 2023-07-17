@@ -85,9 +85,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'priority': 20
             },
             {
-                'key': 'flags.chris-premades.feature.onHit',
+                'key': 'flags.chris-premades.feature.onHit.wardingBond',
                 'mode': 5,
-                'value': 'wardingBond',
+                'value': true,
                 'priority': 20
             }
         ],

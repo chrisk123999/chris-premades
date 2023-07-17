@@ -83,6 +83,12 @@ async function distractingStrike({speaker, actor, token, character, item, args, 
                 'mode': 0,
                 'value': 'workflow.token.id != "' + workflow.token.id + '"',
                 'priority': 20
+            },
+            {
+                'key': 'flags.chris-premades.feature.onHit.distractingStrike',
+                'mode': 5,
+                'value': true,
+                'priority': 20
             }
         ],
         'duration': {
@@ -98,6 +104,13 @@ async function distractingStrike({speaker, actor, token, character, item, args, 
         'origin': workflow.actor.uuid
     };
     await chris.createEffect(targetToken.actor, effectData);
+    await chris.removeEffect(effect);
+}
+async function distractingStrikeOnHit(workflow, targetToken) {
+    if (workflow.hitTargets.size != 1) return;
+    let effect = chris.findEffect(targetToken.actor, 'Maneuvers: Distracting Strike');
+    if (!effect) return;
+    if (effect.origin === workflow.actor.uuid) return;
     await chris.removeEffect(effect);
 }
 async function goadingAttack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -219,17 +232,9 @@ async function pushingAttack({speaker, actor, token, character, item, args, scop
         featureData.system.save.dc = chris.getSpellDC(originItem);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let targetToken = workflow.targets.first();
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [targetToken.document.uuid],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false,
-        };
+        let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
         await chris.removeEffect(effect);
-        let pushWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+        let pushWorkflow = await MidiQOL.completeItemUse(feature, config, options);
         if (pushWorkflow.failedSaves.size != 1) return;
         let selection = await chris.dialog('How far do you push the target?', [['5 ft.', 5], ['10 ft.', 10], ['15 ft.', 15]]);
         if (!selection) return;
@@ -328,17 +333,9 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args,
             ]
         ];
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [targetTokenID],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false,
-        };
+        let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenID]);
         await chris.removeEffect(effect);
-        await MidiQOL.completeItemUse(feature, {}, options);
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }
 async function sweepingAttackAttack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -366,17 +363,9 @@ async function tripAttack({speaker, actor, token, character, item, args, scope, 
         featureData.system.save.dc = chris.getSpellDC(originItem);
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
         let targetToken = workflow.targets.first();
-        let options = {
-            'showFullCard': false,
-            'createWorkflow': true,
-            'targetUuids': [targetToken.document.uuid],
-            'configureDialog': false,
-            'versatile': false,
-            'consumeResource': false,
-            'consumeSlot': false,
-        };
+        let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
         await chris.removeEffect(effect);
-        let tripWorkflow = await MidiQOL.completeItemUse(feature, {}, options);
+        let tripWorkflow = await MidiQOL.completeItemUse(feature, config, options);
         if (tripWorkflow.failedSaves.size != 1) return;
         let targetEffect = chris.findEffect(targetToken.actor, 'Prone');
         if (targetEffect) return;
@@ -396,5 +385,6 @@ export let maneuvers = {
     'pushingAttack': pushingAttack,
     'sweepingAttackItem': sweepingAttackItem,
     'sweepingAttackAttack': sweepingAttackAttack,
-    'tripAttack': tripAttack
+    'tripAttack': tripAttack,
+    'distractingStrikeOnHit': distractingStrikeOnHit
 }

@@ -47,9 +47,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'priority': 20
                 },
                 {
-                    'key': 'flags.chris-premades.feature.onHit',
+                    'key': 'flags.chris-premades.feature.onHit.blackrazor',
                     'mode': 5,
-                    'value': 'blackrazor',
+                    'value': 'true',
                     'priority': 20
                 }
             ],
