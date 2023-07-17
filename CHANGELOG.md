@@ -1,3 +1,9 @@
+# 0.5.49 Release:
+## Bug Fixes:
+- Awakened Spellbook
+- Guardian of Faith
+- Holy Weapon
+  
 # 0.5.48 Release:
 ## New Content:
 - Barbarian: Danger Sense
