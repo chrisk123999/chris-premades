@@ -68,6 +68,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Dismiss', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Holy Weapon - Dismiss', false);
+    setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
+    setProperty(featureData, 'flags.chris-premades.spell.castData.school', workflow.item.system.school);
     async function effectMacro2 () {
         await warpgate.revert(token.document, 'Holy Weapon');
     }
