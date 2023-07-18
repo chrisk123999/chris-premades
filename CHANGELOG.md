@@ -1,3 +1,7 @@
+# 0.5.51 Release:
+## New Content:
+- Spell: Thunder Step
+  
 # 0.5.50 Release:
 ## New Content:
 - Lantern of Revealing

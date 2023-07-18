@@ -51,7 +51,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let selection2;
         let selection3;
         let selectedImg = '';
-        if (game.modules.get('jb2a_patreon')?.active) {
+        if (!chris.jb2aCheck()) {
+            return;
+        }
+        if (chris.jb2aCheck() === 'patreon') {
             selection = await chris.dialog('What Style?', [['Flaming', 'flaming'], ['Dark', 'dark']]);
             if (!selection) return;
             if (selection === 'flaming') {

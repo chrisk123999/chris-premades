@@ -6,7 +6,7 @@ export async function destructiveWave({speaker, actor, token, character, item, a
     let selection = await chris.dialog('What damage type?', [['Radiant', 'radiant'], ['Necrotic', 'necrotic']]);
     if (!selection) selection = 'radiant';
     let animation = 'jb2a.thunderwave.center.blue';
-    if (game.modules.get('jb2a_patreon')?.active) {
+    if (chris.jb2aCheck() === 'patreon') {
         if (selection === 'necrotic') {
             animation = 'jb2a.thunderwave.center.dark_purple';
         } else {

@@ -14,7 +14,7 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
     let animation;
-    if (game.modules.get('jb2a_patreon')?.active) {
+    if (chris.jb2aCheck() === 'patreon') {
         animation = 'jb2a.guiding_bolt.02.';
         switch(selection) {
             case 'acid':
