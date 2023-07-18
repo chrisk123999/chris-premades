@@ -135,8 +135,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function fieryTeleportation({speaker, actor, token, character, item, args, scope, workflow}) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'fieryTeleportation', 450);
     if (!queueSetup) return;
-    let nearbyEnemies = chris.findNearby(workflow.token, 5, 'enemy').filter(t => t.id != workflow.token.id);
-    let nearbyTargets = chris.findNearby(workflow.token, 5, 'ally').filter(t => t.id != workflow.token.id);
+    let nearbyEnemies = chris.findNearby(workflow.token, 5, 'enemy');
+    let nearbyTargets = chris.findNearby(workflow.token, 5, 'ally');
     let selection;
     let selectedTargets = [];
     if (nearbyTargets.length > 0) {
