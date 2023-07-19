@@ -4,7 +4,7 @@
 ## Bug Fixes:
 - Summon Wildfire Spirit: Fiery Teleportation
 ## Update Notes:
-- Added setting for Dice So Nice compatability under "Module Integration."
+- Added setting for Dice So Nice compatibility under "Module Integration."
   
 # 0.5.51 Release:
 ## New Content:
