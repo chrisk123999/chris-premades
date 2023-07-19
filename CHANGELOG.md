@@ -1,3 +1,10 @@
+# 0.5.52 Release:
+## Bug Fixes:
+- Summon Wildfire Spirit: Fiery Teleportation
+- Thunder Step
+## Update Notes:
+- Added setting for Dice So Nice compatability under 'Module Integration'
+  
 # 0.5.51 Release:
 ## New Content:
 - Spell: Thunder Step

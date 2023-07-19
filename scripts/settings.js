@@ -812,6 +812,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Humanoid Randomizer Settings', 'Randomizer');
+    game.settings.register(moduleName, 'Dice So Nice', {
+        'name': 'Dice So Nice Compatability',
+        'hint': 'Accounts for damage roll changes for DSN rolls through use of Midi-QoL hooks',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+    });
+    addMenuSetting('Dice So Nice', 'Module Integration');
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',

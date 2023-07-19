@@ -138,7 +138,7 @@ async function fieryTeleportation({speaker, actor, token, character, item, args,
     let nearbyEnemies = chris.findNearby(workflow.token, 5, 'enemy');
     let nearbyTargets = chris.findNearby(workflow.token, 5, 'ally');
     let selection;
-    let selectedTargets = [];
+    let selectedTargets = [workflow.token];
     if (nearbyTargets.length > 0) {
         let buttons = [
             {
@@ -150,18 +150,11 @@ async function fieryTeleportation({speaker, actor, token, character, item, args,
             }
         ];
         selection = await chris.selectTarget('Teleport Which Creatures?', buttons, nearbyTargets, true, 'multiple');
-        if (!selection.buttons) {
-            queue.remove(workflow.item.uuid);
-            return;
-        }
-        for (let i of selection.inputs) {
+        if (selection.buttons) {
+            for (let i of selection.inputs) {
             if (i) selectedTargets.push((await fromUuid(i)).object);
+            }
         }
-    }
-    selectedTargets.push(workflow.token);
-    if (!selectedTargets) {
-        queue.remove(workflow.item.uuid);
-        return;
     }
     await workflow.actor.sheet.minimize();
     let icon = workflow.token.document.texture.src;
@@ -171,21 +164,11 @@ async function fieryTeleportation({speaker, actor, token, character, item, args,
         queue.remove(workflow.item.uuid);
         return;
     }
+    queue.remove(workflow.item.uuid);
     let difference = {x: workflow.token.x, y: workflow.token.y};
-    for (let i = 0; selectedTargets.length > i; i++) {
-        let targetToken = selectedTargets[i];
-        await new Sequence()
-            .effect()
-                .file('jb2a.misty_step.01.blue')
-                .atLocation(targetToken)
-                .randomRotation()
-                .scaleToObject(2)
-                .wait(750)
-                .animation()
-                .on(targetToken)
-                .opacity(0.0)
-                .waitUntilFinished()
-            .play();
+    await new Sequence().effect().file('jb2a.thunderwave.center.blue').atLocation(workflow.token).randomRotation().animation().play();
+    async function teleport(targetToken) {
+        await new Sequence().effect().file('jb2a.misty_step.01.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(750).animation().on(targetToken).opacity(0.0).waitUntilFinished().play();
         let diffX = targetToken.x - difference.x;
         let diffY = targetToken.y - difference.y;
         let newCenter = canvas.grid.getSnappedPosition(position.x - targetToken.w / 2, position.y - targetToken.h / 2, 1);
@@ -202,31 +185,14 @@ async function fieryTeleportation({speaker, actor, token, character, item, args,
             'updateOpts': {'token': {'animate': false}}
         };
         await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
-        await new Sequence()
-            .effect()
-                .file('jb2a.misty_step.02.blue')
-                .atLocation(targetToken)
-                .randomRotation()
-                .scaleToObject(2)
-                .wait(500)
-                .animation()
-                .on(targetToken)
-                .opacity(1.0)
-            .play();
-        await warpgate.wait(100);
+        await new Sequence().effect().file('jb2a.misty_step.02.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(500).animation().on(targetToken).opacity(1.0).play();
     }
+    for (let i = 0; selectedTargets.length > i; i++) {
+        let targetToken = selectedTargets[i];
+        teleport(targetToken);
+    }
+    await warpgate.wait(2000);
     await workflow.actor.sheet.maximize();
-    if (nearbyEnemies.length > 0) {
-        let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Fiery Teleportation - Damage', false);
-        if (!featureData) return;
-        featureData.system.save.dc = chris.getSpellDC(workflow.item);
-        let targetTokens = nearbyEnemies.map(token => token.document.uuid);
-        let [config, options] = constants.syntheticItemWorkflowOptions(targetTokens, false);
-        let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-        await warpgate.wait(100);
-        await MidiQOL.completeItemUse(feature, config, options);
-    }
-    queue.remove(workflow.item.uuid);
 }
 export let summonWildfireSpirit = {
     item: item,

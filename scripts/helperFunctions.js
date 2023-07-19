@@ -533,4 +533,4 @@ export let chris = {
         ui.notifications.info('No JB2A Module Active');
         return false;
     }
-};
+}

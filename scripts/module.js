@@ -21,6 +21,7 @@ import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog} from './utility/remoteDialog.js';
+import {diceSoNice} from './utility/diceSoNice.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -172,6 +173,10 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Use Randomizer')) Hooks.on('createToken', npcRandomizer);
     if (game.settings.get('chris-premades', 'Skill Patching')) patchSkills(true);
     if (game.settings.get('chris-premades', 'Save Patching')) patchSaves(true);
+    if (game.settings.get('chris-premades', 'Dice So Nice')) {
+        Hooks.on('midi-qol.preItemRoll', diceSoNice.early);
+        Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late)
+    }
 });
 globalThis['chrisPremades'] = {
     helpers,
