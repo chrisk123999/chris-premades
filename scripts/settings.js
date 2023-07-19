@@ -11,6 +11,7 @@ import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
+import {diceSoNice} from './diceSoNice.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -819,6 +820,15 @@ export function registerSettings() {
         'config': false,
         'type': Boolean,
         'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preItemRoll', diceSoNice.early);
+                Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late);
+            } else {
+                Hooks.off('midi-qol.preItemRoll', diceSoNice.early);
+                Hooks.off('midi-qol.DamageRollComplete', diceSoNice.late);
+            }
+        }
     });
     addMenuSetting('Dice So Nice', 'Module Integration');
     game.settings.registerMenu(moduleName, 'General', {

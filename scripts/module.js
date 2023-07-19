@@ -21,7 +21,7 @@ import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog} from './utility/remoteDialog.js';
-import {diceSoNice} from './utility/diceSoNice.js';
+import {diceSoNice} from './diceSoNice.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
