@@ -1,18 +1,14 @@
-# 0.5.53 Release:
+# 0.5.52 Release:
 # New Monster Content:
 - Scarecrow: Claw, Terrifying Glare
   
-# 0.5.52 Release:
+# 0.5.51 Release:
 ## New Content:
 - Spell: Thunder Step
 ## Bug Fixes:
 - Summon Wildfire Spirit: Fiery Teleportation
 ## Update Notes:
 - Added setting for Dice So Nice compatibility under "Module Integration."
-  
-# 0.5.51 Release:
-## New Content:
-- Spell: Thunder Step
   
 # 0.5.50 Release:
 ## New Content:
