@@ -1,3 +1,7 @@
+# 0.5.53 Release:
+# New Monster Content:
+- Scarecrow: Claw, Terrifying Glare
+  
 # 0.5.52 Release:
 ## New Content:
 - Spell: Thunder Step
