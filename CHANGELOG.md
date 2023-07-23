@@ -1,6 +1,10 @@
 # 0.5.52 Release:
-# New Monster Content:
+## New Content:
+- Item: Dancing Sword
+## New Monster Content:
 - Scarecrow: Claw, Terrifying Glare
+## Update Notes:
+- Added item description note for items using configuration settings.
   
 # 0.5.51 Release:
 ## New Content:

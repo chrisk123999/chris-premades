@@ -1604,6 +1604,86 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Dancing Greatsword': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Dancing Longsword': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Dancing Rapier': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Dancing Scimitar': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
+            'Dancing Shortsword': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
             }
         }
     });

@@ -51,6 +51,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {dancingSword} from './macros/items/dancingSword.js';
 import {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
 import {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
@@ -401,6 +402,7 @@ export let macros = {
     'conditionVulnerabilityLate': conditionVulnerabilityLate,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
+    'dancingSword': dancingSword,
     'danseMacabre': danseMacabre,
     'darkOnesBlessing': darkOnesBlessing,
     'darkness': darkness,
