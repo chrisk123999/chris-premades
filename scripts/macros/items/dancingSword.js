@@ -60,7 +60,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             try {
                 tokenImg = await Sequencer.Database.getEntry('jb2a.spiritual_weapon.' + weaponType + '.01.spectral.02.green').file;
             } catch {}
-            if (!tokenImg) {await Sequencer.Database.getEntry('jb2a.spiritual_weapon.greatsword.01.spectral.02.green').file}
+            if (!tokenImg) await Sequencer.Database.getEntry('jb2a.spiritual_weapon.greatsword.01.spectral.02.green').file;
         }
     }
     if (tokenImg) {
@@ -109,7 +109,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!attackFeatureData) return;
     attackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dancing Sword - Attack');
     attackFeatureData.system.ability = originItem.system.ability;
-    if (originItem.system.properties.fin === true && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) attackFeatureData.system.ability = 'dex';
+    if (originItem.system.properties.fin && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) attackFeatureData.system.ability = 'dex';
     attackFeatureData.system.damage.parts = originItem.system.damage.parts;
     attackFeatureData.img = originItem.img;
     let updates2 = {
