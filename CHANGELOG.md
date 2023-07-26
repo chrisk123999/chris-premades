@@ -3,6 +3,8 @@
 - Item: Dancing Sword
 ## New Monster Content:
 - Scarecrow: Claw, Terrifying Glare
+## Bug Fixes:
+- Experimental Elixir
 ## Update Notes:
 - Added item description note for items using configuration settings.
   

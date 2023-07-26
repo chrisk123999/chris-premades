@@ -83,6 +83,7 @@ export async function summonUndead({speaker, actor, token, character, item, args
             if (!deathlyTouchData) return;
             deathlyTouchData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Deathly Touch (Ghostly Only)');
             deathlyTouchData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
+            deathlyTouchData.system.save.dc = chris.getSpellDC(workflow.item);
             if (damageBonus) deathlyTouchData.system.damage.parts[0][0] += ' + ' + damageBonus;
             updates.embedded.Item[deathlyTouchData.name] = deathlyTouchData;
             break;

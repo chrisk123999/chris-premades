@@ -47,7 +47,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
         if (workflow.actor.classes.artificer?.system?.levels >= 9) {
             if (!itemData.system.damage.parts) itemData.system.damage.parts = [];
             itemData.system.damage.parts.push([
-                '2d6[healing] + ' + workflow.actor.system.abilities.int.mod,
+                '2d6[temphp] + ' + workflow.actor.system.abilities.int.mod,
                 'temphp'
             ]);
         }
