@@ -138,7 +138,7 @@ async function graspingHand({speaker, actor, token, character, item, args, scope
     let ghcFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Grasping Hand - Crush', false);
     if (!ghcFeatureData) return;
     let damageScale = workflow.actor.flags['chris-premades']?.spell?.damageScale;
-    if (!damageScale) return;
+    if (!damageScale === undefined) return;
     let spellMod = workflow.actor.flags['chris-premades']?.spell?.casterSpellMod;
     if (!spellMod) return;
     ghcFeatureData.system.damage.parts[0][0] = (2 + (damageScale)) + 'd6[bludgeoning] + ' + spellMod;

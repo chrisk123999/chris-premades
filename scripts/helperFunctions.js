@@ -253,7 +253,7 @@ export let chris = {
             },
             config
         );
-        if (type != 'number') {
+        if (type != 'number' && type != 'select') {
             for (let i = 0; i < selection.inputs.length; i++) {
                 if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
             }
@@ -532,5 +532,83 @@ export let chris = {
         if (free) return 'free';
         ui.notifications.info('No JB2A Module Active');
         return false;
+    },
+    'selectDocument': async function selectDocument(documents, title) {
+        return await new Promise(async (resolve) => {
+            let buttons = {},
+                dialog;
+            for (i of documents) {
+                buttons[i.name] = {
+                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'> ${i.name} </p>`,
+                    callback: () => resolve(i)
+                }
+            }
+            let height = (Object.keys(buttons).length * 56 + 46);
+            if (Object.keys(buttons).length > 14 ) height = 850;
+            dialog = new Dialog(
+                {
+                    title: title,
+                    buttons,
+                    close: () => resolve(false)
+                },
+                {
+                    height: height
+                }
+            );
+            await dialog._render(true);
+            dialog.element.find(".dialog-buttons").css({
+                "flex-direction": 'column',
+            })
+        })
+    },
+    'selectDocuments': async function selectDocuments(documents, title) {
+        return await new Promise(async (resolve) => {
+            let buttons = {cancel: {label: `Cancel`, callback: () => resolve(false)}, confirm: {label: `Confirm`, callback: (html) => getDocuments(html, documents)}},
+                dialog;
+            let content = `<form>`;
+            content += `<datalist id = 'defaultNumbers'>`;
+            for (let i = 0; i < 33; i++) {
+                content += `<option value = '${i}'></option>`
+            }
+            content += `</datalist>`;
+            for (let i = 0; documents.length > i; i++) {
+                content += 
+                    `<div class = 'form-group'>
+                        <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
+                        <label> 
+                            <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name} </p>
+                        </label>
+                    </div>
+                `;
+            }
+            content += `</form>`;
+            let height = (documents.length * 53 + 83);
+            if (documents.length > 14 ) height = 850;
+            dialog = new Dialog(
+                {
+                    title: title,
+                    content: content,
+                    buttons: buttons,
+                    close: () => resolve(false)
+                },
+                {
+                    height: height
+                }
+            );
+            await dialog._render(true);
+            function getDocuments(html, documents) {
+                let returns = [];
+                for (let i = 0; documents.length > i; i++) {
+                    let current = html[0].querySelector(`input[id='${i}']`)?.value;
+                    if (current > 0) {
+                        for (let j = 0; current > j; j++) {
+                            returns.push(documents[i]);
+                        }
+                    }
+                }
+                resolve(returns);
+            }
+        })
     }
 }

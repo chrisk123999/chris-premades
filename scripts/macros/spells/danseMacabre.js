@@ -88,6 +88,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     let mutationName = 'Danse Macabre';
     let mutateOptions =  {
         'name': mutationName,
+        'permanent': false,
         'comparisonKeys': {
             'Item': 'id'
         }
@@ -128,7 +129,6 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         },
         'transfer': true
     };
-    let proneEffect = game.dfreds.effectInterface.findEffectByName('Prone').toObject();
     let targetTokens = [];
     for (let i = 0; nearbyTokens.length > i; i++) {
         if (selection.inputs[i] === 'Ignore') continue;
@@ -147,8 +147,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData,
-                        [proneEffect.label]: proneEffect
+                        [effectData.label]: effectData
                     }
                 }
             };
@@ -161,8 +160,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData,
-                        [proneEffect.label]: proneEffect
+                        [effectData.label]: effectData
                     }
                 }
             };
