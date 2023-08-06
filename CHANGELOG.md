@@ -1,3 +1,8 @@
+# 0.5.54 Release:
+## Bug Fixes
+- Bigby's Hand
+- Danse Macabre
+  
 # 0.5.52 Release:
 ## New Content:
 - Item: Dancing Sword
