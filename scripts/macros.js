@@ -2,6 +2,7 @@ import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSpirit.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+import {animateDead} from './macros/spells/animateDead.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
@@ -47,6 +48,7 @@ import {clockworkDefender} from './macros/monsterFeatures/clockworkDefender/cloc
 import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability.js';
+import {conjureAnimals} from './macros/spells/conjureAnimals.js';
 import {constructSpirit} from './macros/monsterFeatures/constructSpirit/constructSpirit.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
@@ -363,6 +365,7 @@ export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
     'ancestralProtectors': ancestralProtectors,
+    'animateDead': animateDead,
     'animatingPerformance': animatingPerformance,
     'arcaneJolt': arcaneJolt,
     'armorModel': armorModel,
@@ -400,6 +403,7 @@ export let macros = {
     'conditionResistanceLate': conditionResistanceLate,
     'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
     'conditionVulnerabilityLate': conditionVulnerabilityLate,
+    'conjureAnimals': conjureAnimals,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
     'dancingSword': dancingSword,
