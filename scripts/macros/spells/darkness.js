@@ -11,25 +11,17 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
             darkness: true,
           },
         },
-        'limits': {
+        limits: {
           sight: {
-            basicSight: {
-              range: 0,
-              enabled: true,
-            },
-            lightPerception: {
-              range: 0,
-              enabled: true,
-            },
-            devilsSight: {
-              range: null,
-              enabled: true,
-            },
+            basicSight: { enabled: true, range: 0 }, // Darkvision
+            ghostlyGaze: { enabled: true, range: 0 }, // Ghostly Gaze
+            lightPerception: { enabled: true, range: 0 }, // Light Perception
           },
-          light: {
-            enabled: true,
-            range: 0
-          }
+          light: { enabled: true, range: 0 },
+        },
+        walledtemplates: {
+            wallRestriction: "move",
+            wallsBlock: "recurse",
         },
       },
     });
