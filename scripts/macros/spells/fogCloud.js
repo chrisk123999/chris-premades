@@ -18,7 +18,20 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'spell': {
                     'fogCloud': true
                 }
-            }
+            },
+            'limits': {
+                'sight': {
+                    'blindsight': { 'enabled': true, 'range': 0 }, // Blindsight
+                    'basicSight': { 'enabled': true, 'range': 0 }, // Darkvision
+                    'devilsSight': { 'enabled': true, 'range': 0 }, // Devil's Sight
+                    'lightPerception': { 'enabled': true, 'range': 0 }, // Light Perception
+                    'seeAll': { 'enabled': true, 'range': 0 }, // Truesight
+                },
+            },
+            'walledtemplates': {
+                'wallRestriction': "move",
+                'wallsBlock': "recurse",
+            },
         },
         'angle': 0
     };
