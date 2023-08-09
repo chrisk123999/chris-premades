@@ -4,19 +4,33 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
-    await template.setFlag('chris-premades', 'spell.darkness', true);
-    await template.setFlag('limits', 'sight', {
-      basicSight: {
-        range: 0,
-        enabled: true,
-      },
-      lightPerception: {
-        range: 0,
-        enabled: true,
-      },
-      devilsSight: {
-        range: null,
-        enabled: true,
+    await template.update({
+      flags: {
+        'chris-premades': {
+          spell: {
+            darkness: true,
+          },
+        },
+        'limits': {
+          sight: {
+            basicSight: {
+              range: 0,
+              enabled: true,
+            },
+            lightPerception: {
+              range: 0,
+              enabled: true,
+            },
+            devilsSight: {
+              range: null,
+              enabled: true,
+            },
+          },
+          light: {
+            enabled: true,
+            range: 0
+          }
+        },
       },
     });
     let attachToken = await chris.dialog('Attach to self?', [['Yes', true], ['No', false]]) || false;
