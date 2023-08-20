@@ -533,14 +533,14 @@ export let chris = {
         ui.notifications.info('No JB2A Module Active');
         return false;
     },
-    'selectDocument': async function selectDocument(documents, title) {
+    'selectDocument': async function selectDocument(title, documents) {
         return await new Promise(async (resolve) => {
             let buttons = {},
                 dialog;
-            for (i of documents) {
+            for (let i of documents) {
                 buttons[i.name] = {
                     label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'> ${i.name} </p>`,
-                    callback: () => resolve(i)
+                    callback: () => resolve([i])
                 }
             }
             let height = (Object.keys(buttons).length * 56 + 46);
@@ -561,7 +561,7 @@ export let chris = {
             })
         })
     },
-    'selectDocuments': async function selectDocuments(documents, title) {
+    'selectDocuments': async function selectDocuments(title, documents) {
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {label: `Cancel`, callback: () => resolve(false)}, confirm: {label: `Confirm`, callback: (html) => getDocuments(html, documents)}},
                 dialog;
@@ -610,5 +610,13 @@ export let chris = {
                 resolve(returns);
             }
         })
-    }
+    },
+    'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents) {
+        if (userId === game.user.id) return await chris.selectDocument(title, documents);
+        return await socket.executeAsUser('remoteDocumentDialog', userId, title, documents)
+    },
+    'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents) {
+        if (userId === game.user.id) return await chris.selectDocuments(title, documents);
+        return await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents)
+    },
 }

@@ -20,7 +20,7 @@ import {patchSaves, patchSkills, patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
-import {remoteDialog} from './utility/remoteDialog.js';
+import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
 export let socket;
 Hooks.once('init', async function() {
@@ -36,6 +36,8 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('createCombatant', tashaSummon.createCombatant);
     socket.register('updateCombatant', runAsGM.updateCombatant);
     socket.register('remoteDialog', remoteDialog);
+    socket.register('remoteDocumentDialog', remoteDocumentDialog);
+    socket.register('remoteDocumentsDialog', remoteDocumentsDialog);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
