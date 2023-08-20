@@ -104,6 +104,7 @@ import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpe
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
+import {giftOfTheChromaticDragon} from './macros/feats/giftOfTheChromaticDragon.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grell} from './macros/monsterFeatures/grell/grell.js';
@@ -212,8 +213,8 @@ import {summon} from './macros/generic/summon.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 import {thornWhip} from './macros/spells/thornWhip.js';
-import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {thunderStep} from './macros/spells/thunderStep.js';
+import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {trance} from './macros/raceFeatures/elf/trance.js';
@@ -437,6 +438,7 @@ export let macros = {
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
+    'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
     'graspOfHadar': graspOfHadar,
     'graveTouched': graveTouched,
     'grimHarvest': grimHarvest,
@@ -534,8 +536,8 @@ export let macros = {
     'templateTrigger': templateTrigger,
     'tentacleOfTheDeeps': tentacleOfTheDeeps,
     'thornWhip': thornWhip,
-    'thunderboltStrike': thunderboltStrike,
     'thunderStep': thunderStep,
+    'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'trance': trance,
     'turnUndead': turnUndead,

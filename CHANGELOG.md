@@ -1,3 +1,9 @@
+# 0.5.55 Release:
+## New Content:
+- Gift of the Chromatic Dragon (Thanks jlowry)
+## Bug Fixes:
+- Call Lightning
+  
 # 0.5.54 Release:
 ## Bug Fixes
 - Bigby's Hand
