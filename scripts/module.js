@@ -179,6 +179,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.preItemRoll', diceSoNice.early);
         Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late)
     }
+    if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
 });
 globalThis['chrisPremades'] = {
     helpers,

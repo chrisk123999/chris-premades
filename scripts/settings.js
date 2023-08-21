@@ -831,6 +831,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Dice So Nice', 'Module Integration');
+    game.settings.register(moduleName, 'Arcane Ward', {
+        'name': 'Arcane Ward Automation',
+        'hint': 'Enabling this allows the automation of the Arcane Ward feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
+            } else {
+                Hooks.off('midi-qol.damageApplied', macros.arcaneWard.damage);
+            }
+        }
+    });
+    addMenuSetting('Arcane Ward', 'Class Features');
     game.settings.registerMenu(moduleName, 'General', {
         name: 'General',
         label: 'General',

@@ -1,3 +1,7 @@
+# 0.5.56 Release:
+## New Content:
+- School of Abjuration Wizard: Arcane Ward and Projected Ward
+  
 # 0.5.55 Release:
 ## New Content:
 - Gift of the Chromatic Dragon (Thanks jlowry)

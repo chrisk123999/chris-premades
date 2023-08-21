@@ -5,6 +5,7 @@ import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGua
 import {animateDead} from './macros/spells/animateDead.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
+import {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcaneWard.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -369,6 +370,7 @@ export let macros = {
     'animateDead': animateDead,
     'animatingPerformance': animatingPerformance,
     'arcaneJolt': arcaneJolt,
+    'arcaneWard': arcaneWard,
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
     'auraOfAlacrity': auraOfAlacrity,
