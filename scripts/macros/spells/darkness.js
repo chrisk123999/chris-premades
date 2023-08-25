@@ -4,7 +4,7 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
-    await template.updaet({
+    await template.update({
         'flags': {
             'chris-premades': {
                 'spell': {
