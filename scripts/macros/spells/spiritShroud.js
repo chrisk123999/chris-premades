@@ -41,11 +41,10 @@ async function spiritShroudAttack({speaker, actor, token, character, item, args,
             diceNum = 4;
             break;
     }
-    if (workflow.isCritical) diceNum = diceNum * 2;
     let queueSetup = await queue.setup(workflow.item.uuid, 'spiritShroud', 250);
     if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
-    let bonusDamageFormula = '1d8[' + damageType + ']';
+    let bonusDamageFormula = diceNum + 'd8[' + damageType + ']';
     if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});

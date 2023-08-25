@@ -1,3 +1,7 @@
+## 0.5.57 Release:
+## Bug Fixes:
+- Spirit Shroud
+  
 # 0.5.56 Release:
 ## New Content:
 - School of Abjuration Wizard: Arcane Ward and Projected Ward
