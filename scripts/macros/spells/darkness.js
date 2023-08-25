@@ -4,7 +4,39 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
-    await template.setFlag('chris-premades', 'spell.darkness', true);
+    await template.updaet({
+        'flags': {
+            'chris-premades': {
+                'spell': {
+                    'darkness': true
+                }
+            },
+            'limits': {
+                'sight': {
+                    'basicSight': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'ghostlyGaze': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'lightPerception': {
+                        'enabled': true,
+                        'range': 0
+                    }
+                },
+                'light': {
+                    'enabled': true,
+                    'range': 0
+                }
+            },
+            'walledtemplates': {
+                'wallRestriction': 'move',
+                'wallsBlock': 'recurse'
+            }
+        }
+    });
     let attachToken = await chris.dialog('Attach to self?', [['Yes', true], ['No', false]]) || false;
     if (!attachToken) return;
     let tokenObject = workflow.token;
