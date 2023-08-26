@@ -12,9 +12,26 @@ import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {diceSoNice} from './diceSoNice.js';
+import {info} from './info.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
+    game.settings.register(moduleName, 'Automation Verification', {
+        'name': 'Automation Verification',
+        'hint': 'When enabled the module will verify the automation is up to date and has the correct settings enabled.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preItemRoll', info);
+            } else {
+                Hooks.off('midi-qol.preItemRoll', info);
+            }
+        }
+    });
+    addMenuSetting('Automation Verification', 'General');
     game.settings.register(moduleName, 'Breaking Version Change', {
         'name': 'Breaking Version Change',
         'hint': 'Internal version number bumped when an update requires new imports.',

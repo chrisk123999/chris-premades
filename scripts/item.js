@@ -1,12 +1,31 @@
 import {chris} from './helperFunctions.js';
+import {automations} from './info.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
-            class: 'chris-premades',
-            icon: 'fa-solid fa-kit-medical',
-            onclick: () => itemConfig(config.object)
+            'class': 'chris-premades',
+            'icon': 'fa-solid fa-kit-medical',
+            'onclick': () => itemConfig(config.object)
         });
     }
+}
+export function updateItemButton(app, [elem], options) {
+    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades');
+    if (!headerButton) return;
+    let itemName = app.object?.name;
+    if (!itemName) return;
+    let automation = automations[itemName];
+    if (!automation) return;
+    let itemVersion = app.object.flags['chris-premades']?.info?.version;
+    if (!itemVersion) {
+        headerButton.style.color = 'purple';
+        return;
+    }
+    if (automation.version != itemVersion) {
+        headerButton.style.color = 'red';
+        return;
+    }
+    headerButton.style.color = 'green';
 }
 export function createActorHeaderButton(config, buttons) {
     if (config.object instanceof Actor) {
@@ -149,6 +168,8 @@ async function updateItem(itemDocument) {
     originalItem.name = compendiumItem.name;
     originalItem.effects = compendiumItem.effects;
     originalItem.system = compendiumItem.system;
+    let info;
+    if (compendiumItem.flags['chris-premades']?.info) info = duplicate(compendiumItem.flags['chris-premades'].info);
     originalItem.system.description = itemDocument.system.description;
     originalItem.system.uses = itemDocument.system.uses;
     if (itemType === 'spell') {
@@ -168,6 +189,7 @@ async function updateItem(itemDocument) {
     }
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
+    if (itemDocument.flags['chris-premades']?.info) setProperty(originalItem, 'flags.chris-premades.info', info);
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');

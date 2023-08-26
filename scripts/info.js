@@ -1,6 +1,6 @@
 import {chris} from './helperFunctions.js';
 export async function info({speaker, actor, token, character, item, args, scope, workflow}) {
-    let info = workflow?.item?.flags?.['chris-premades']?.info;
+    let info = item?.flags?.['chris-premades']?.info;
     if (!info) return;
     let message = '';
     let cancel = false;
@@ -89,6 +89,7 @@ export async function setItemInfo(itemUuid) {
     let item = await fromUuid(itemUuid);
     if (!item) return;
     let updates = {};
+    setProperty(updates, 'flags.chris-premades.info.name', item.name);
     let selection = await warpgate.menu({
         'inputs': [
             {
@@ -221,14 +222,48 @@ export async function setItemInfo(itemUuid) {
     }
     await item.update(updates);
 }
-let automations = {
-    'armorOfAgathys': {
+export let automations = {
+    'Armor of Agathys': {
+        'name': 'Armor of Agathys',
         'version': '0.6.01',
         'settings': [
             'Armor of Agathys'
         ]
     },
-    'acidArrow': {
+    'Arms of Hadar': {
+        'name': 'Arms of Hadar',
         'version': '0.6.01'
+    },
+    'Aura of Purity': {
+        'name': 'Aura of Purity',
+        'version': '0.6.01',
+        'settings': [
+            'Effect Auras'
+        ]
+    },
+    'Aura of Vitality': {
+        'name': 'Aura of Vitality',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Aura of Vitality'
+        }
+    },
+    'Beacon of Hope': {
+        'name': 'Beacon of Hope',
+        'version': '0.6.01',
+        'settings': [
+            'Beacon of Hope'
+        ]
+    },
+    'Bestow Curse': {
+        'name': 'Bestow Curse',
+        'version': '0.6.01',
+    },
+    'Bigby\'s Hand': {
+        'name': 'Bigby\'s Hand',
+        'version': '0.6.01',
+        'actors': [
+            'CPR - Bigby\'s Hand'
+        ]
     }
 }

@@ -2,7 +2,7 @@ import {registerSettings} from './settings.js';
 import {macros, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createActorHeaderButton, createHeaderButton, setConfig} from './item.js';
+import {createActorHeaderButton, createHeaderButton, setConfig, updateItemButton} from './item.js';
 import {queue} from './utility/queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
 import {bab} from './utility/babHelpers.js';
@@ -22,7 +22,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
-import {setItemInfo} from './info.js';
+import {info, setItemInfo} from './info.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -172,6 +172,7 @@ Hooks.once('ready', async function() {
     }
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
+        Hooks.on('renderItemSheet', updateItemButton);
     }
     if (game.settings.get('chris-premades', 'Use Randomizer')) Hooks.on('createToken', npcRandomizer);
     if (game.settings.get('chris-premades', 'Skill Patching')) patchSkills(true);
@@ -181,6 +182,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late)
     }
     if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
+    if (game.settings.get('chris-premades', 'Automation Verification')) Hooks.on('midi-qol.preItemRoll', info);
 });
 globalThis['chrisPremades'] = {
     helpers,
