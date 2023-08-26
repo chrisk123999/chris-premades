@@ -22,6 +22,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
+import {setItemInfo} from './info.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -191,5 +192,6 @@ globalThis['chrisPremades'] = {
     tashaSummon,
     troubleshoot,
     constants,
-    settingButton
+    settingButton,
+    setItemInfo
 }
