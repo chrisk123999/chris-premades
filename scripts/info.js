@@ -265,5 +265,84 @@ export let automations = {
         'actors': [
             'CPR - Bigby\'s Hand'
         ]
+    },
+    'Blade Ward': {
+        'name': 'Blade Ward',
+        'version': '0.6.01'
+    },
+    'Blight': {
+        'name': 'Blight',
+        'version': '0.6.01'
+    },
+    'Blink': {
+        'name': 'Blink',
+        'version': '0.6.01'
+    },
+    'Call Lightning': {
+        'name': 'Call Lightning',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Storm Bolt'
+        }
+    },
+    'Chain Lightning': {
+        'name': 'Chain Lightning',
+        'version': '0.6.01'
+    },
+    'Charm Person': {
+        'name': 'Charm Person',
+        'version': '0.6.01'
+    },
+    'Chill Touch': {
+        'name': 'Chill Touch',
+        'version': '0.6.01'
+    },
+    'Chromatic Orb': {
+        'name': 'Chromatic Orb',
+        'version': '0.6.01'
+    },
+    'Cloudkill': {
+        'name': 'Cloudkill',
+        'version': '0.6.01',
+        'settings': [
+            'Template Listener'
+        ]
+    },
+    'Crown of Madness': {
+        'name': 'Crown of Madness',
+        'version': '0.6.01'
+    },
+    'Crusader\'s Mantle': {
+        'name': 'Crusader\'s Mantle',
+        'version': '0.6.01'
+    },
+    'Danse Macabre': {
+        'name': 'Danse Macabre',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Danse Macabre'
+        },
+        'actors': [
+            'CPR - Skeleton',
+            'CPR - Zombie'
+        ]
+    },
+    'Darkness': {
+        'name': 'Darkness',
+        'version': '0.6.01'
+    },
+    'Dawn': {
+        'name': 'Dawn',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Dawn'
+        }
+    },
+    'Death Ward': {
+        'name': 'Death Ward',
+        'version': '0.6.01',
+        'settings': [
+            'Death Ward'
+        ]
     }
 }
