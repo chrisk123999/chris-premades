@@ -18,7 +18,7 @@ export function updateItemButton(app, [elem], options) {
     if (!automation) return;
     let itemVersion = app.object.flags['chris-premades']?.info?.version;
     if (!itemVersion) {
-        headerButton.style.color = 'purple';
+        headerButton.style.color = 'yellow';
         return;
     }
     if (automation.version != itemVersion) {
