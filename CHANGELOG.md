@@ -1,8 +1,12 @@
-## 0.5.58 Release:
+# 0.5.59 Release:
+## New Content:
+- Spells: Animate Dead, Conjure Animals, Conjure Celestial, Conjure Elemental, Conjure Fey, Conjure Minor Elementals, Conjure Woodland Beings
+  
+# 0.5.58 Release:
 ## Bug Fixes:
 - Active Effect Origin Fix
   
-## 0.5.57 Release:
+# 0.5.57 Release:
 ## Bug Fixes:
 - Spirit Shroud
   

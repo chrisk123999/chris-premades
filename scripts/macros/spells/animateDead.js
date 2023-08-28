@@ -11,7 +11,7 @@ export async function animateDead({speaker, actor, token, character, item, args,
     if (!spellLevel) return;
     let totalSummons = 1 + (spellLevel - 3) * 2;
     if (!totalSummons || totalSummons < 1) return;
-    let sourceActors = await chris.selectDocuments([zombieActor, skeletonActor], 'Select Summons (Max ' + totalSummons + ')');
+    let sourceActors = await chris.selectDocuments('Select Summons (Max ' + totalSummons + ')', [zombieActor, skeletonActor]);
     if (!sourceActors) return;
     if (sourceActors.length > totalSummons) {
         ui.notifications.info('Too many selected, try again!');
@@ -47,7 +47,7 @@ export async function animateDead({speaker, actor, token, character, item, args,
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "' + effect.label + '");'
+                    'script': currentScript + '; await warpgate.revert(token.document, "' + effect.label + '");'
                 }
             },
             'chris-premades': {

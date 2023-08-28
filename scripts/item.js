@@ -1706,6 +1706,54 @@ export function setConfig() {
                         'default': ''
                     }
                 }
+            },
+            'Conjure Animals': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            },
+            'Conjure Celestial': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            },
+            'Conjure Elemental': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            },
+            'Conjure Fey': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            },
+            'Conjure Minor Elementals': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            },
+            'Conjure Woodland Beings': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
             }
         }
     });

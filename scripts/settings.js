@@ -131,6 +131,15 @@ export function registerSettings() {
         'default': false
     });
     addMenuSetting('Tasha Initiative', 'Summons');
+    game.settings.register(moduleName, 'Player Choses Conjures', {
+        'name': 'Player choses creatures for conjure spells',
+        'hint': 'Enabling this will have players chose the creatures summoned for conjure spells, instead of the Sage Advice ruling that the DM choses the creatures.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Player Choses Conjures', 'Summons');
     game.settings.register(moduleName, 'Effect Auras', {
         'name': 'Effect Auras',
         'hint': 'This setting allows certain macros from this module to apply effect auras.',

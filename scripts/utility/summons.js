@@ -1,10 +1,10 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem) {
+async function spawn(sourceActors, updates, duration, originItem, useActorOrigin) {
     async function effectMacro () {
-        let summons = effect.flags['chris-premades'].summons.ids[effect.label];
+        let summons = effect.flags['chris-premades']?.summons?.ids[effect.label];
         if (!summons) return;
-        for (let i of summons) await warpgate.dismiss(i);
+        for (let i of summons) {await warpgate.dismiss(i)};
     }
     let effect = chris.findEffect(originItem.actor, originItem.name);
     if (!effect) {
@@ -28,6 +28,7 @@ async function spawn(sourceActors, updates, duration, originItem) {
                 }
             }
         };
+        if (useActorOrigin) casterEffectData.origin = originItem.actor.uuid;
         await chris.createEffect(originItem.actor, casterEffectData);
         effect = chris.findEffect(originItem.actor, originItem.name);
     }
@@ -96,19 +97,3 @@ async function spawn(sourceActors, updates, duration, originItem) {
 export let summons = {
     'spawn': spawn,
 };
-/*
-Conjure spells:
-Animals - fucky selection
-//
-Celestial - one of filter
-Elemental - one of filter - becomes hostile
-Fey - one of filter - becomes hostile
-minor elementals - fucky selection
-woodland beasts - fucky selection
-Summons:
-Greater demons - one of filter - might attack
-Lesser demons - rolls then prompts dm for the selection, then summon is from player, all hostile, can only protect your spot. template?
-animate:
-dead - only skeleton or zombie, amount of them OR refresh them, not sure if that matters
-objects - whole math of objects and shit
-*/

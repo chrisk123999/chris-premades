@@ -50,6 +50,11 @@ import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability.js';
 import {conjureAnimals} from './macros/spells/conjureAnimals.js';
+import {conjureCelestial} from './macros/spells/conjureCelestial.js';
+import {conjureElemental} from './macros/spells/conjureElemental.js';
+import {conjureFey} from './macros/spells/conjureFey.js';
+import {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js';
+import {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js'
 import {constructSpirit} from './macros/monsterFeatures/constructSpirit/constructSpirit.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
@@ -407,6 +412,11 @@ export let macros = {
     'conditionVulnerabilityEarly': conditionVulnerabilityEarly,
     'conditionVulnerabilityLate': conditionVulnerabilityLate,
     'conjureAnimals': conjureAnimals,
+    'conjureCelestial': conjureCelestial,
+    'conjureElemental': conjureElemental,
+    'conjureFey': conjureFey,
+    'conjureMinorElementals': conjureMinorElementals,
+    'conjureWoodlandBeings': conjureWoodlandBeings,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
     'dancingSword': dancingSword,

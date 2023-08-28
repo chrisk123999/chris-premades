@@ -1,19 +1,19 @@
 import {summons} from '../../utility/summons.js';
 import {chris} from '../../helperFunctions.js';
-export async function conjureAnimals({speaker, actor, token, character, item, args, scope, workflow}) {
+export async function conjureMinorElementals({speaker, actor, token, character, item, args, scope, workflow}) {
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
-    let totalSummons = Math.floor(1 * ((spellLevel - 1) / 2));
+    let totalSummons = Math.floor(1 * ((spellLevel - 2) / 2));
     if (!totalSummons || totalSummons < 1) return;
-    let selection = await chris.dialog('How many beasts?', [
-        [totalSummons + ' beasts of CR 2 or lower', 2], 
-        [(totalSummons * 2) + ' beasts of CR 1 or lower', 1], 
-        [(totalSummons * 4) + ' beasts of CR 1/2 or lower', 0.5], 
-        [(totalSummons * 8) + ' beasts of CR 1/4 or lower', 0.25]
+    let selection = await chris.dialog('How many elementals?', [
+        [totalSummons + ' elementals of CR 2 or lower', 2], 
+        [(totalSummons * 2) + ' elementals of CR 1 or lower', 1], 
+        [(totalSummons * 4) + ' elementals of CR 1/2 or lower', 0.5], 
+        [(totalSummons * 8) + ' elementals of CR 1/4 or lower', 0.25]
     ]);
     if (!selection) return;
     let folder = chris.getConfiguration(workflow.item, 'folder') ?? 'Chris Premades';
-    let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'beast').filter(i => i.system?.details?.cr <= selection);
+    let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'elemental').filter(i => i.system?.details?.cr <= selection);
     if (!actors) {
         ui.notifications.warn('No matching actors found in specified folder!');
         return;
@@ -28,15 +28,6 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
         return;
     }
     let updates = {
-        'actor': {
-            'system': {
-                'details': {
-                    'type': {
-                        'value': 'fey'
-                    }
-                }
-            }
-        },
         'token': {
             'disposition': 1 
         }
