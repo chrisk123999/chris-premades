@@ -19,7 +19,7 @@ export async function itemDC(effect, updates, options, user) {
 }
 export async function fixOrigin(token, options, user) {
     if ((game.user.id !== user) || token.actorLink) return;
-    let updates = token.actor.effects.reduce(async (updates, effect) => {
+    let updates = await token.actor.effects.reduce(async (updates, effect) => {
         if (!effect.origin) return updates;
         let origin = await fromUuid(effect.origin);
         if (!origin instanceof Item) return updates;
@@ -27,5 +27,6 @@ export async function fixOrigin(token, options, user) {
         if (item) updates.push({'_id': effect.id, 'origin': item.uuid});
         return updates;
     }, []);
+    if (Object.keys(updates).length === 0) return;
     await token.actor.updateEmbeddedDocuments('ActiveEffect', updates);
 }

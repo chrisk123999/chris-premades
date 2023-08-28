@@ -1,3 +1,7 @@
+## 0.5.58 Release:
+## Bug Fixes:
+- Active Effect Origin Fix
+  
 ## 0.5.57 Release:
 ## Bug Fixes:
 - Spirit Shroud
