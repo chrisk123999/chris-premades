@@ -3,7 +3,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
 import {patchSaves, patchSkills, patching} from './patching.js';
-import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
@@ -874,115 +874,123 @@ export function registerSettings() {
     });
     addMenuSetting('Arcane Ward', 'Class Features');
     game.settings.registerMenu(moduleName, 'General', {
-        name: 'General',
-        label: 'General',
-        hint: 'General settings for most automations.',
-        icon: 'fas fa-gears',
-        type: chrisSettingsGeneral,
-        restricted: true
+        'name': 'General',
+        'label': 'General',
+        'hint': 'General settings for most automations.',
+        'icon': 'fas fa-gears',
+        'type': chrisSettingsGeneral,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Compendiums', {
-        name: 'Compendium',
-        label: 'Compendium',
-        hint: 'Compendium settings item replacement and macros.',
-        icon: 'fas fa-atlas',
-        type: chrisSettingsCompendiums,
-        restricted: true
+        'name': 'Compendium',
+        'label': 'Compendium',
+        'hint': 'Compendium settings item replacement and macros.',
+        'icon': 'fas fa-atlas',
+        'type': chrisSettingsCompendiums,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Mechanics', {
-        name: 'Mechanics',
-        label: 'Mechanics',
-        hint: 'Settings related to game mechanics.',
-        icon: 'fas fa-dice',
-        type: chrisSettingsMechanics,
-        restricted: true
+        'name': 'Mechanics',
+        'label': 'Mechanics',
+        'hint': 'Settings related to game mechanics.',
+        'icon': 'fas fa-dice',
+        'type': chrisSettingsMechanics,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Spells', {
-        name: 'Spells',
-        label: 'Spells',
-        hint: 'Settings for specific spell automations.',
-        icon: 'fas fa-wand-magic',
-        type: chrisSettingsSpells,
-        restricted: true
+        'name': 'Spells',
+        'label': 'Spells',
+        'hint': 'Settings for specific spell automations.',
+        'icon': 'fas fa-wand-magic',
+        'type': chrisSettingsSpells,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Feats', {
-        name: 'Feats',
-        label: 'Feats',
-        hint: 'Settings for specific feat automations.',
-        icon: 'fas fa-crystal-ball',
-        type: chrisSettingsFeats,
-        restricted: true
+        'name': 'Feats',
+        'label': 'Feats',
+        'hint': 'Settings for specific feat automations.',
+        'icon': 'fas fa-crystal-ball',
+        'type': chrisSettingsFeats,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Class Features', {
-        name: 'Class Features',
-        label: 'Class Features',
-        hint: 'Settings for specific class features.',
-        icon: 'fas fa-swords',
-        type: chrisSettingsClassFeats,
-        restricted: true
+        'name': 'Class Features',
+        'label': 'Class Features',
+        'hint': 'Settings for specific class features.',
+        'icon': 'fas fa-swords',
+        'type': chrisSettingsClassFeats,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Race Features', {
-        name: 'Race Features',
-        label: 'Race Features',
-        hint: 'Settings for specific race features.',
-        icon: 'fas fa-solid fa-nesting-dolls',
-        type: chrisSettingsRaceFeats,
-        restricted: true
+        'name': 'Race Features',
+        'label': 'Race Features',
+        'hint': 'Settings for specific race features.',
+        'icon': 'fas fa-solid fa-nesting-dolls',
+        'type': chrisSettingsRaceFeats,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Monster Features', {
-        name: 'Monster Features',
-        label: 'Monster Features',
-        hint: 'Settings for specific monster features.',
-        icon: 'fas fa-dragon',
-        type: chrisSettingsMonsterFeats,
-        restricted: true
+        'name': 'Monster Features',
+        'label': 'Monster Features',
+        'hint': 'Settings for specific monster features.',
+        'icon': 'fas fa-dragon',
+        'type': chrisSettingsMonsterFeats,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Summons', {
-        name: 'Summons',
-        label: 'Summons',
-        hint: 'Settings related to summons.',
-        icon: 'fas fa-hand-holding-magic',
-        type: chrisSettingsSummons,
-        restricted: true
+        'name': 'Summons',
+        'label': 'Summons',
+        'hint': 'Settings related to summons.',
+        'icon': 'fas fa-hand-holding-magic',
+        'type': chrisSettingsSummons,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Homebrew', {
-        name: 'Homebrew',
-        label: 'Homebrew',
-        hint: 'Optional settings for homebrew features.',
-        icon: 'fas fa-cauldron',
-        type: chrisSettingsHomewbrew,
-        restricted: true
+        'name': 'Homebrew',
+        'label': 'Homebrew',
+        'hint': 'Optional settings for homebrew features.',
+        'icon': 'fas fa-cauldron',
+        'type': chrisSettingsHomewbrew,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Module Integration', {
-        name: 'Module Integration',
-        label: 'Module Integration',
-        hint: 'Settings for integrations with other modules.',
-        icon: 'fas fa-puzzle-piece',
-        type: chrisSettingsModule,
-        restricted: true
+        'name': 'Module Integration',
+        'label': 'Module Integration',
+        'hint': 'Settings for integrations with other modules.',
+        'icon': 'fas fa-puzzle-piece',
+        'type': chrisSettingsModule,
+        'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Manual Rolling', {
-        name: 'Manual Rolling',
-        label: 'Manual Rolling',
-        hint: 'Settings for manual rolling.',
-        icon: 'fas fa-calculator',
-        type: chrisSettingsManualRolling,
-        restricted: true
+        'name': 'Manual Rolling',
+        'label': 'Manual Rolling',
+        'hint': 'Settings for manual rolling.',
+        'icon': 'fas fa-calculator',
+        'type': chrisSettingsManualRolling,
+        'restricted': true
     });
 //    game.settings.registerMenu(moduleName, 'Randomizer', {
-//        name: 'Randomizer',
-//        label: 'Randomizer',
-//        hint: 'Optional settings for randomizer features.',
-//        icon: 'fas fa-dice',
-//        type: chrisSettingsRandomizer,
-//        restricted: true
+//        'name': 'Randomizer',
+//        'label': 'Randomizer',
+//        'hint': 'Optional settings for randomizer features.',
+//        'icon': 'fas fa-dice',
+//        'type': chrisSettingsRandomizer,
+//        'restricted': true
 //    });
+    game.settings.registerMenu(moduleName, 'NPC Updater', {
+        'name': 'NPC Updater',
+        'label': 'NPC Updater',
+        'hint': 'Used to bulk update NPCs in your world.',
+        'icon': 'fas fa-folder-open',
+        'type': chrisSettingsNPCUpdate,
+        'restricted': true
+    });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
-        name: 'Troubleshooter',
-        label: 'Troubleshooter',
-        hint: 'Used to troubleshoot issues with this module.',
-        icon: 'fas fa-screwdriver-wrench',
-        type: chrisSettingsTroubleshoot,
-        restricted: true
+        'name': 'Troubleshooter',
+        'label': 'Troubleshooter',
+        'hint': 'Used to troubleshoot issues with this module.',
+        'icon': 'fas fa-screwdriver-wrench',
+        'type': chrisSettingsTroubleshoot,
+        'restricted': true
     });
 }

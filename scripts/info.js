@@ -344,5 +344,27 @@ export let automations = {
         'settings': [
             'Death Ward'
         ]
+    },
+    'Destructive Wave': {
+        'name': 'Destructive Wave',
+        'version': '0.6.01'
+    },
+    'Detect Magic': {
+        'name': 'Detect Magic',
+        'version': '0.6.01'
+    },
+    'Detect Thoughts': {
+        'name': 'Detect Thoughts',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Detect Thoughts - Probe Deeper'
+        }
+    },
+    'Dragon\'s Breath': {
+        'name': 'Dragon\'s Breath',
+        'version': '0.6.01',
+        'mutation': {
+            'self': 'Dragon Breath'
+        }
     }
 }

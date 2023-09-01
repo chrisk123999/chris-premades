@@ -1,3 +1,7 @@
+# 0.5.60 Release:
+## Update Notes:
+- Added a menu to the settings to bulk update actors with automations from this module.
+  
 # 0.5.59 Release:
 ## New Content:
 - Spells: Animate Dead, Conjure Animals, Conjure Celestial, Conjure Elemental, Conjure Fey, Conjure Minor Elementals, Conjure Woodland Beings

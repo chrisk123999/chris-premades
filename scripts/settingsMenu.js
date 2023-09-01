@@ -1,3 +1,4 @@
+import {updateSceneNPCs, updateSidebarNPCs} from './actor.js';
 import {fixSettings, troubleshoot} from './help.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
@@ -261,5 +262,56 @@ export async function settingButton(id) {
         case 'fix':
             fixSettings();
             break;
+        case 'sidebarNPCs':
+            await updateSidebarNPCs();
+            break;
+        case 'sceneNPCs':
+            await updateSceneNPCs();
+            break;
+    }
+}
+export class chrisSettingsNPCUpdate extends FormApplication {
+    constructor() {
+        super();
+    }
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            'classes': ['form'],
+            'popOut': true,
+            'template': 'modules/chris-premades/templates/config.html',
+            'id': 'chris-npc-updater',
+            'title': 'Chris\'s NPC Updater',
+            'width': 800,
+            'height': 'auto',
+            'closeOnSubmit': true
+        });
+    }
+    getData() {
+        return {
+            'settings': [
+                {
+                    'name': 'Update Sidebar NPCs:',
+                    'id': 'sidebarNPCs',
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'This will use the D&D Beyond Importer API to update all sidebar NPCs with automations from this module.  Use with care!',
+                    'label': 'Go'
+                },
+                {
+                    'name': 'Update Scene NPCs:',
+                    'id': 'sceneNPCs',
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'This will use the D&D Beyond Importer API to update the NPCs on the current scene with automations from this module.  Use with care!',
+                    'label': 'Go'
+                }
+            ]
+        }
+    }
+    activateListeners(html) {
+        super.activateListeners(html);
+    }
+    async _updateObject(event, formData) {
+
     }
 }

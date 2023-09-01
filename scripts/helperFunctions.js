@@ -33,6 +33,7 @@ export let chris = {
         );
     },
     'findEffect': function _findEffect(actor, name) {
+        if (isNewerVersion(game.version, '11.293')) return actor.effects.getName(name);
         return actor.effects.find(eff => eff.label === name);
     },
     'createEffect': async function _createEffect(actor, effectData) {
