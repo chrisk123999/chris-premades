@@ -1,3 +1,11 @@
+# 0.5.62 Release:
+## Bug Fixes:
+- Heat Metal
+
+# 0.5.61 Release:
+## Bug Fixes:
+- Bulk Actor Updater
+  
 # 0.5.60 Release:
 ## Update Notes:
 - Added a menu to the settings to bulk update actors with automations from this module.

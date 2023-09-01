@@ -160,7 +160,7 @@ async function dialogue(token, actor, effect, origin) {
     if (!originUuid) return;
     let effectData = {
         'label': 'Heat Metal Held',
-        'icon': workflow.item.img,
+        'icon': origin.img,
         'changes': [
             {
                 'key': 'flags.midi-qol.disadvantage.attack.all',
