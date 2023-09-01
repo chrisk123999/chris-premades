@@ -21,7 +21,7 @@ export async function updateSceneNPCs() {
     }
     ui.notifications.info('Starting scene NPC updater!');
     if (canvas.scene) {
-        let actors = canvas.scene.tokens.map(i => i.actor);
+        let actors = canvas.scene.tokens.map(i => i.actor).filter(e => e.type !== 'character');
         if (actors.length != 0) await update(actors);
     }
     ui.notifications.info('Scene NPC updater complete!');
