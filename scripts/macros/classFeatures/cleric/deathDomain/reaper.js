@@ -37,6 +37,8 @@ export async function reaper({speaker, actor, token, character, item, args, scop
         'reap': true
     };
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
+    spell.prepareData();
+    spell.prepareFinalAttributes();
     await MidiQOL.completeItemUse(spell, config, options);
     queue.remove(workflow.item.uuid);
 }

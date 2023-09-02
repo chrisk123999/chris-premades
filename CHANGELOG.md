@@ -1,3 +1,9 @@
+# 0.5.63 Release:
+## Bug Fixes:
+- Reaper
+- Scorching Ray
+- Storm Sphere
+  
 # 0.5.62 Release:
 ## Bug Fixes:
 - Heat Metal
@@ -12,7 +18,7 @@
   
 # 0.5.59 Release:
 ## New Content:
-- Spells: Animate Dead, Conjure Animals, Conjure Celestial, Conjure Elemental, Conjure Fey, Conjure Minor Elementals, Conjure Woodland Beings
+- Spells: Animate Dead, Conjure Animals, Conjure Celestial, Conjure Elemental, Conjure Fey, Conjure Minor Elementals, Conjure Woodland Beings (Thanks Autumn)
   
 # 0.5.58 Release:
 ## Bug Fixes:

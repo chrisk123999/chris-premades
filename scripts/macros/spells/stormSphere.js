@@ -83,6 +83,8 @@ async function boltItem({speaker, actor, token, character, item, args, scope, wo
         }
     };
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    feature.prepareData();
+    feature.prepareFinalAttributes();
     let options = {
         'showFullCard': false,
         'createWorkflow': true,
