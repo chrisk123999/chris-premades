@@ -366,5 +366,17 @@ export let automations = {
         'mutation': {
             'self': 'Dragon Breath'
         }
+    },
+    'Strike of the Giants: Frost Strike': {
+        'name': 'Strike of the Giants: Frost Strike',
+        'version': '0.6.01'
+    },
+    'Strike of the Giants: Storm Strike': {
+        'name': 'Strike of the Giants: Storm Strike',
+        'version': '0.6.01'
+    },
+    'Strike of the Giants: Cloud Strike': {
+        'name': 'Strike of the Giants: Cloud Strike',
+        'version': '0.6.01'
     }
 }

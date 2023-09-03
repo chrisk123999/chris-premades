@@ -26,3 +26,15 @@ export async function updateSceneNPCs() {
     }
     ui.notifications.info('Scene NPC updater complete!');
 }
+export async function updateAllSceneNPCs() {
+    if (!game.modules.get('ddb-importer')?.active) {
+        ui.notifications.info('This feature requires the D&D Beyond Importer module to be active!');
+        return;
+    }
+    ui.notifications.info('Starting all scenes NPC updater!');
+    for (let scene of game.scenes) {
+        let actors = scene.tokens.map(i => i.actor).filter(e => e.type !== 'character');
+        if (actors.length != 0) await update(actors);
+    }
+    ui.notifications.info('All scenes NPC updater complete!');
+}

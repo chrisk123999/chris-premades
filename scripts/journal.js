@@ -82,4 +82,5 @@ export async function setupJournalEntry() {
     await preparePages(journalEntry, 'chris-premades.CPR Race Feature Items');
     await preparePages(journalEntry, 'chris-premades.CPR Summon Features');
     await preparePages(journalEntry, 'chris-premades.CPR Actions');
+    await preparePages(journalEntry, 'chris-premades.CPR Feat Features');
 }

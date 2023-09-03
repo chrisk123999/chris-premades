@@ -1,4 +1,4 @@
-import {updateSceneNPCs, updateSidebarNPCs} from './actor.js';
+import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
 import {fixSettings, troubleshoot} from './help.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
@@ -268,6 +268,9 @@ export async function settingButton(id) {
         case 'sceneNPCs':
             await updateSceneNPCs();
             break;
+        case 'allSceneNPCs':
+            await updateAllSceneNPCs();
+            break;
     }
 }
 export class chrisSettingsNPCUpdate extends FormApplication {
@@ -294,15 +297,23 @@ export class chrisSettingsNPCUpdate extends FormApplication {
                     'id': 'sidebarNPCs',
                     'value': {},
                     'isButton': true,
-                    'hint': 'This will use the D&D Beyond Importer API to update all sidebar NPCs with automations from this module.  Use with care!',
+                    'hint': 'This will use the D&D Beyond Importer API to update all sidebar NPCs with automations from this module. Use with care!',
                     'label': 'Go'
                 },
                 {
-                    'name': 'Update Scene NPCs:',
+                    'name': 'Update Current Scene NPCs:',
                     'id': 'sceneNPCs',
                     'value': {},
                     'isButton': true,
-                    'hint': 'This will use the D&D Beyond Importer API to update the NPCs on the current scene with automations from this module.  Use with care!',
+                    'hint': 'This will use the D&D Beyond Importer API to update the NPCs on the current scene with automations from this module. Use with care!',
+                    'label': 'Go'
+                },
+                {
+                    'name': 'Update All Scene NPCs',
+                    'id': 'allSceneNPCs',
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'This will use the D&D Beyond Importer API to update all NPCs on all scenes with automations from this module. Use with care!',
                     'label': 'Go'
                 }
             ]

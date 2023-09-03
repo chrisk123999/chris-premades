@@ -620,4 +620,7 @@ export let chris = {
         if (userId === game.user.id) return await chris.selectDocuments(title, documents);
         return await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents)
     },
+    'getItem': function _getItem(actor, name) {
+        return actor.items.find(i => i.flags['chris-premades']?.info?.name === name);
+    }
 }

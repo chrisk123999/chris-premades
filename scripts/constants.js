@@ -28,15 +28,15 @@ const disadvantageEffectData = {
         }
     ]
 };
-function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel) {
+function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel, consume) {
     return [
         {
             'showFullCard': false,
             'createWorkflow': true,
-            'consumeResource': false,
-            'consumeRecharge': false,
-            'consumeQuantity': false,
-            'consumeUsage': false,
+            'consumeResource': consume ?? false,
+            'consumeRecharge': consume ?? false,
+            'consumeQuantity': consume ?? false,
+            'consumeUsage': consume ?? false,
             'consumeSpellSlot': useSpellSlot ?? false,
             'consumeSpellLevel': castLevel ?? false
         },

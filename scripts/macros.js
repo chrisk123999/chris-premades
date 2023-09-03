@@ -46,6 +46,7 @@ import {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circl
 import {clayGolem} from './macros/monsterFeatures/clayGolem/clayGolem.js';
 import {cleave} from './macros/mechanics/cleave.js';
 import {clockworkDefender} from './macros/monsterFeatures/clockworkDefender/clockworkDefender.js';
+import {cloudStrike} from './macros/feats/strikeOfTheGiants/cloudStrike.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability.js';
@@ -106,6 +107,7 @@ import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
+import {frostStrike} from './macros/feats/strikeOfTheGiants/frostStrike.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
@@ -200,6 +202,7 @@ import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelD
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
+import {stormStrike} from './macros/feats/strikeOfTheGiants/stormStrike.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {strengthOfTheGrave} from './macros/classFeatures/sorcerer/shadowMagic/strengthOfTheGrave.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
@@ -406,6 +409,7 @@ export let macros = {
     'chromaticOrb': chromaticOrb,
     'circleOfMortality': circleOfMortality,
     'cleave': cleave,
+    'cloudStrike': cloudStrike,
     'cloudkill': cloudkill,
     'conditionResistanceEarly': conditionResistanceEarly,
     'conditionResistanceLate': conditionResistanceLate,
@@ -450,6 +454,7 @@ export let macros = {
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
+    'frostStrike': frostStrike,
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
     'graspOfHadar': graspOfHadar,
     'graveTouched': graveTouched,
@@ -529,6 +534,7 @@ export let macros = {
     'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
     'stormSphere': stormSphere,
+    'stormStrike': stormStrike,
     'stormgirdle': stormgirdle,
     'strengthOfTheGrave': strengthOfTheGrave,
     'summon': summon,

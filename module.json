@@ -291,6 +291,13 @@
 		  "path": "packs/cpr-miscellaneous.db",
 		  "type": "Item",
 		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Feat Features",
+		  "label": "CPR Feat Features",
+		  "path": "packs/cpr-feat-features.db",
+		  "type": "Item",
+		  "module": "chris-premades"
 	  }
   ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",

@@ -1,3 +1,11 @@
+# 0.5.64 Release:
+## Update Notes
+- Added a button to update all tokens on all scenes with automations from this module.
+## New Content:
+- Strike of the Giants (Frost)
+- Strike of the Giants (Storm)
+- Strike of the Giants (Cloud)
+  
 # 0.5.63 Release:
 ## Bug Fixes:
 - Reaper
