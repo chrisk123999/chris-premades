@@ -1,3 +1,7 @@
+# 0.5.66 Release:
+## Bug Fixes:
+- Strike of the Giants (Hill)
+  
 # 0.5.65 Release:
 ## New Content:
 - Feats: Strike of the Giants (Fire), Strike of the Giants (Hill), Strike of the Giants (Stone)
