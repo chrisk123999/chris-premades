@@ -1,3 +1,7 @@
+# 0.5.65 Release:
+## New Content:
+- Feats: Strike of the Giants (Fire), Strike of the Giants (Hill), Strike of the Giants (Stone)
+  
 # 0.5.64 Release:
 ## Update Notes
 - Added a button to update all tokens on all scenes with automations from this module.

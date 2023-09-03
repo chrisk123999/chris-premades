@@ -378,5 +378,17 @@ export let automations = {
     'Strike of the Giants: Cloud Strike': {
         'name': 'Strike of the Giants: Cloud Strike',
         'version': '0.6.01'
+    },
+    'Strike of the Giants: Fire Strike': {
+        'name': 'Strike of the Giants: Fire Strike',
+        'version': '0.6.01'
+    },
+    'Strike of the Giants: Hill Strike': {
+        'name': 'Strike of the Giants: Hill Strike',
+        'version': '0.6.01'
+    },
+    'Strike of the Giants: Stone Strike': {
+        'name': 'Strike of the Giants: Stone Strike',
+        'version': '0.6.01'
     }
 }
