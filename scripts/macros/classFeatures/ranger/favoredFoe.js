@@ -10,9 +10,22 @@ async function favoredFoe({speaker, actor, token, character, item, args, scope, 
     if (uses === 0) return;
     let targetToken = workflow.targets.first();
     let effect = targetToken.actor.effects.find(e => e.label === 'Favored Foe' && e.origin === originItem.uuid);
-    if (effect) return;
     let queueSetup = await queue.setup(workflow.item.uuidk, 'favoredFoe', 250);
     if (!queueSetup) return;
+    if (effect) {
+        let damageFormula = workflow.damageRoll._formula;
+        let scale = workflow.actor.system.scale?.ranger?.['favored-foe']?.formula;
+        if (!scale) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
+        let bonusDamageFormula = scale + '[' + workflow.defaultDamageType + ']';
+        if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+        let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamageFormula).roll({async: true});
+        await workflow.setDamageRoll(damageRoll);
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let selection = await chris.dialog(originItem.name, [['Yes,', true], ['No', false]], 'Use Favored Foe?');
     if (!selection) {
         queue.remove(workflow.item.uuid);

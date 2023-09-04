@@ -4,7 +4,7 @@
 ## Bug Fixes:
 - Homunculus Servant
 - Fire Elemental: Fire Form
-## Update Notes
+## Update Notes:
 - Global setting added for Other Summons Folder. Individual item configuration will overwrite this.
   
 # 0.5.66 Release:
