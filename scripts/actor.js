@@ -10,7 +10,7 @@ export async function updateSidebarNPCs() {
         return;
     }
     ui.notifications.info('Starting sidebar NPC updater!');
-    let actors = game.actors.filter(e => e.type !== 'character');
+    let actors = game.actors.filter(e => e && e.type !== 'character');
     if (actors.length != 0) await update(actors);
     ui.notifications.info('Sidebar NPC updater complete!');
 }
@@ -21,7 +21,7 @@ export async function updateSceneNPCs() {
     }
     ui.notifications.info('Starting scene NPC updater!');
     if (canvas.scene) {
-        let actors = canvas.scene.tokens.map(i => i.actor).filter(e => e.type !== 'character');
+        let actors = canvas.scene.tokens.map(i => i.actor).filter(e => e && e.type !== 'character');
         if (actors.length != 0) await update(actors);
     }
     ui.notifications.info('Scene NPC updater complete!');
@@ -33,7 +33,7 @@ export async function updateAllSceneNPCs() {
     }
     ui.notifications.info('Starting all scenes NPC updater!');
     for (let scene of game.scenes) {
-        let actors = scene.tokens.map(i => i.actor).filter(e => e.type !== 'character');
+        let actors = scene.tokens.map(i => i.actor).filter(e => e && e.type !== 'character');
         if (actors.length != 0) await update(actors);
     }
     ui.notifications.info('All scenes NPC updater complete!');
