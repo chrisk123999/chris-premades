@@ -5,11 +5,10 @@ export async function fireForm(workflow, targetToken) {
     if (!(workflow.item.system.actionType === 'mwak' || workflow.item.system.actionType === 'msak')) return;
     let distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
-    let targetActor = targetToken.actor;
-    let effect = chris.findEffect(targetActor, 'Fire Form');
-    if (!effect) return;
-    let feature = await fromUuid(effect.origin);
-    if (!feature) return;
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Monster Feature Items', 'Fire Form', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Fire Form');
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.token.document.uuid]);
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, config, options);
