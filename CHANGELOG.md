@@ -1,4 +1,6 @@
 # 0.5.68 Release:
+## Bug Fixes:
+- Homunculus Servant
 ## Update Notes
 - Global setting added for Other Summons Folder. Individual item configuration will overwrite this.
   

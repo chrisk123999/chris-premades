@@ -20,7 +20,7 @@ export async function homunculusServant({speaker, actor, token, character, item,
     dodgeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dodge');
     let artificerLevel = workflow.actor.classes?.artificer?.system?.levels;
     if (!artificerLevel) return;
-    let hpFormula = artificerLevel + 'd4 + ' + (1 + chris.getSpellMod(workflow.item));
+    let hpFormula = artificerLevel + ' + ' + (1 + chris.getSpellMod(workflow.item));
     let hpValue = await new Roll(hpFormula).evaluate({async: true});
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Homunculus Servant';
     if (name === '') name = 'Homunculus Servant';
