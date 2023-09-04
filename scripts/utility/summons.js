@@ -1,6 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem, useActorOrigin) {
+async function spawn(sourceActors, updates, duration, originItem, overwriteInitiative = false, useActorOrigin = false) {
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.label];
         if (!summons) return;
@@ -71,7 +71,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
             let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
             if (casterCombatant) {
                 let initiative;
-                if (game.settings.get('chris-premades', 'Tasha Initiative') === true) {
+                if (game.settings.get('chris-premades', 'Tasha Initiative') != overwriteInitiative) {
                     initiative = casterCombatant.initiative - 0.01;
                     await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative)
                 } else {

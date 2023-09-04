@@ -1713,6 +1713,12 @@ export function setConfig() {
                         'label': 'Custom Folder:',
                         'default': ''
                     }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
+                    }
                 }
             },
             'Conjure Celestial': {
@@ -1720,6 +1726,12 @@ export function setConfig() {
                     'folder': {
                         'label': 'Custom Folder:',
                         'default': ''
+                    }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
                     }
                 }
             },
@@ -1729,6 +1741,12 @@ export function setConfig() {
                         'label': 'Custom Folder:',
                         'default': ''
                     }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
+                    }
                 }
             },
             'Conjure Fey': {
@@ -1736,6 +1754,12 @@ export function setConfig() {
                     'folder': {
                         'label': 'Custom Folder:',
                         'default': ''
+                    }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
                     }
                 }
             },
@@ -1745,6 +1769,12 @@ export function setConfig() {
                         'label': 'Custom Folder:',
                         'default': ''
                     }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
+                    }
                 }
             },
             'Conjure Woodland Beings': {
@@ -1752,6 +1782,12 @@ export function setConfig() {
                     'folder': {
                         'label': 'Custom Folder:',
                         'default': ''
+                    }
+                },
+                'checkbox': {
+                    'overwriteInitiative': {
+                        'label': 'Overwrite initiative setting? Default Seperate Initiative',
+                        'default': false
                     }
                 }
             }

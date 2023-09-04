@@ -5,7 +5,8 @@ export async function conjureCelestial({speaker, actor, token, character, item, 
     if (!spellLevel) return;
     let cr = 4;
     if (spellLevel === 9) cr = 5;
-    let folder = chris.getConfiguration(workflow.item, 'folder') ?? 'Chris Premades';
+    let folder = chris.getConfiguration(workflow.item, 'folder') ?? games.settings.get('chris-premades', 'Summons Folder');
+    if (!folder && folder === '') folder = 'Chris Premades';
     let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'beast').filter(i => i.system?.details?.cr <= cr);
     if (!actors) {
         ui.notifications.warn('No matching actors found in specified folder!');
@@ -18,8 +19,9 @@ export async function conjureCelestial({speaker, actor, token, character, item, 
     if (!sourceActors) return;
     let updates = {
         'token': {
-            'disposition': 1 
+            'disposition': workflow.token.document.disposition
         }
     };
-    await summons.spawn(sourceActors, updates, 3600, workflow.item);
+    let initiative = chris.getConfiguration(workflow.item, 'overwriteInitiative');
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, initiative);
 }

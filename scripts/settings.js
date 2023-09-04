@@ -873,6 +873,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Arcane Ward', 'Class Features');
+    game.settings.register(moduleName, 'Other Summons Folder', {
+        'name': 'Summons Folder',
+        'hint': 'This is the name of the folder that will be used for other summon spells, including "Conjure" spells and "Find" spells',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': 'Chris Premades'
+    });
+    addMenuSetting('Summons Folder', 'Summons');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
