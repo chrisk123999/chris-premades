@@ -38,15 +38,15 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel, consume)
             'consumeQuantity': consume ?? false,
             'consumeUsage': consume ?? false,
             'consumeSpellSlot': useSpellSlot ?? false,
-            'consumeSpellLevel': castLevel ?? false
-        },
-        {
-            'targetUuids': targets,
-            'configureDialog': false,
+            'consumeSpellLevel': castLevel ?? false,
             'workflowOptions': {
                 'autoRollDamage': 'always',
                 'autoFastDamage': true
             }
+        },
+        {
+            'targetUuids': targets,
+            'configureDialog': false
         }
     ];
 }

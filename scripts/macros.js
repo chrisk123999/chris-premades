@@ -103,6 +103,7 @@ import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
 import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSpirit.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
+import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
@@ -128,6 +129,7 @@ import {help} from './macros/mechanics/help.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
+import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
@@ -201,6 +203,7 @@ import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.
 import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
+import {stoneStrike} from './macros/feats/strikeOfTheGiants/stoneStrike.js';
 import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormStrike} from './macros/feats/strikeOfTheGiants/stormStrike.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
@@ -234,6 +237,7 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
+import {vigorOfTheHillGiant} from './macros/feats/vigorOfTheHillGiant.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
@@ -243,9 +247,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
-import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
-import {stoneStrike} from './macros/feats/strikeOfTheGiants/stoneStrike.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -454,6 +455,7 @@ export let macros = {
     'explodingHeals': explodingHeals,
     'fallenPuppet': fallenPuppet,
     'feyPresence': feyPresence,
+    'fireStrike': fireStrike,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
@@ -472,6 +474,7 @@ export let macros = {
     'help': help,
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
+    'hillStrike': hillStrike,
     'holyWeapon': holyWeapon,
     'homunculusServant': homunculusServant,
     'hungryJaws': hungryJaws,
@@ -536,6 +539,7 @@ export let macros = {
     'starryForm': starryForm,
     'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
+    'stoneStrike': stoneStrike,
     'stormSphere': stormSphere,
     'stormStrike': stormStrike,
     'stormgirdle': stormgirdle,
@@ -565,6 +569,7 @@ export let macros = {
     'twilightSanctuary': twilightSanctuary,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
+    'vigorOfTheHillGiant': vigorOfTheHillGiant,
     'vortexWarp': vortexWarp,
     'wardingBond': wardingBond,
     'wildShape': wildShape,
@@ -572,8 +577,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'fireStrike': fireStrike,
-    'hillStrike': hillStrike,
-    'stoneStrike': stoneStrike
+    'zoneOfTruth': zoneOfTruth
 }

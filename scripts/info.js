@@ -390,5 +390,25 @@ export let automations = {
     'Strike of the Giants: Stone Strike': {
         'name': 'Strike of the Giants: Stone Strike',
         'version': '0.6.01'
+    },
+    'Guile of the Cloud Giant: Cloudy Escape': {
+        'name': 'Guile of the Cloud Giant: Cloudy Escape',
+        'version': '0.6.01'
+    },
+    'Vigor of the Hill Giant: Bulwark': {
+        'name': 'Vigor of the Hill Giant: Bulwark',
+        'version': '0.6.01'
+    },
+    'Ember of the Fire Giant: Searing Ignition': {
+        'name': 'Ember of the Fire Giant: Searing Ignition',
+        'version': '0.6.01'
+    },
+    'Fury of the Frost Giant: Frigid Retaliation': {
+        'name': 'Fury of the Frost Giant: Frigid Retaliation',
+        'version': '0.6.01'
+    },
+    'Keenness of the Stone Giant: Stone Throw': {
+        'name': 'Keenness of the Stone Giant: Stone Throw',
+        'version': '0.6.01'
     }
 }
