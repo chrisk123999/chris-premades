@@ -55,9 +55,16 @@ function damageTypeMenu() {
     if (!damageTypes) damageTypes = Object.entries(CONFIG.DND5E.damageTypes).filter(i => i[0] != 'midi-none').map(j => [j[1], j[0]]);
     return damageTypes;
 }
+const attacks = [
+    'mwak',
+    'rwak',
+    'msak',
+    'rsak'
+]
 export let constants = {
     'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
     'disadvantageEffectData': disadvantageEffectData,
     'advantageEffectData': advantageEffectData,
-    'damageTypeMenu': damageTypeMenu
+    'damageTypeMenu': damageTypeMenu,
+    'attacks': attacks
 }
