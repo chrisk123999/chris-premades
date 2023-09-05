@@ -873,7 +873,7 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Arcane Ward', 'Class Features');
-    game.settings.register(moduleName, 'Other Summons Folder', {
+    game.settings.register(moduleName, 'Summons Folder', {
         'name': 'Summons Folder',
         'hint': 'This is the name of the folder that will be used for other summon spells, including "Conjure" spells and "Find" spells',
         'scope': 'world',
