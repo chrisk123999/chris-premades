@@ -1,6 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem, overwriteInitiative = false, useActorOrigin = false) {
+async function spawn(sourceActors, updates, duration, originItem, useActorOrigin = false) {
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.label];
         if (!summons) return;
@@ -59,6 +59,7 @@ async function spawn(sourceActors, updates, duration, originItem, overwriteIniti
         'controllingActor': originItem.actor
     };
     let summonsIds = effect.flags['chris-premades']?.summons?.ids[originItem.name] ?? [];
+    let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
     for (let i of sourceActors) {
         let tokenDocument = await i.getTokenDocument();
         setProperty(updates, 'actor.name', i.prototypeToken.name);

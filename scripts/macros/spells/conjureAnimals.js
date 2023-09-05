@@ -12,7 +12,7 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
         [(totalSummons * 8) + ' beasts of CR 1/4 or lower', 0.25]
     ]);
     if (!selection) return;
-    let folder = chris.getConfiguration(workflow.item, 'folder') ?? games.settings.get('chris-premades', 'Summons Folder');
+    let folder = chris.getConfiguration(workflow.item, 'folder') ?? game.settings.get('chris-premades', 'Summons Folder');
     if (!folder && folder === '') folder = 'Chris Premades';
     let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'beast').filter(i => i.system?.details?.cr <= selection);
     if (!actors) {
@@ -42,6 +42,5 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
             'disposition': workflow.token.document.disposition 
         }
     };
-    let initiative = chris.getConfiguration(workflow.item, 'overwriteInitiative');
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, initiative);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item);
 }

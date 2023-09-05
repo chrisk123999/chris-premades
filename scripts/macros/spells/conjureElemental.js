@@ -4,7 +4,7 @@ export async function conjureElemental({speaker, actor, token, character, item, 
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let cr = spellLevel;
-    let folder = chris.getConfiguration(workflow.item, 'folder') ?? games.settings.get('chris-premades', 'Summons Folder');
+    let folder = chris.getConfiguration(workflow.item, 'folder') ?? game.settings.get('chris-premades', 'Summons Folder');
     if (!folder && folder === '') folder = 'Chris Premades';
     let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'elemental').filter(i => i.system?.details?.cr <= cr);
     if (!actors) {
@@ -21,8 +21,7 @@ export async function conjureElemental({speaker, actor, token, character, item, 
             'disposition': workflow.token.document.disposition
         }
     };
-    let initiative = chris.getConfiguration(workflow.item, 'overwriteInitiative');
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, initiative, true);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, true);
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
     if (!effect) return;
     async function effectMacro () {
