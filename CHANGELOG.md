@@ -1,3 +1,7 @@
+# 0.5.69 Release:
+## Bug Fixes:
+- Eldritch Smite
+  
 # 0.5.67 Release:
 ## New Content:
 - Feats: Guile of the Cloud Giant: Cloudy Escape, Vigor of the Hill Giant: Bulwark, Ember of the Fire Giant: Searing Ignition, Fury of the Frost Giant: Frigid Retaliation, Keenness of the Stone Giant: Stone Throw
