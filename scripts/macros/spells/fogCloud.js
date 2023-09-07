@@ -21,11 +21,26 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             },
             'limits': {
                 'sight': {
-                    'blindsight': { 'enabled': true, 'range': 0 }, // Blindsight
-                    'basicSight': { 'enabled': true, 'range': 0 }, // Darkvision
-                    'devilsSight': { 'enabled': true, 'range': 0 }, // Devil's Sight
-                    'lightPerception': { 'enabled': true, 'range': 0 }, // Light Perception
-                    'seeAll': { 'enabled': true, 'range': 0 }, // Truesight
+                    'blindsight': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'basicSight': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'devilsSight': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'lightPerception': {
+                        'enabled': true,
+                        'range': 0
+                    },
+                    'seeAll': {
+                        'enabled': true,
+                        'range': 0
+                    },
                 },
             },
             'walledtemplates': {
