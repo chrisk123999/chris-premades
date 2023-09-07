@@ -44,8 +44,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 },
             },
             'walledtemplates': {
-                'wallRestriction': "move",
-                'wallsBlock': "recurse",
+                'wallRestriction': 'move',
+                'wallsBlock': 'recurse',
             },
         },
         'angle': 0
