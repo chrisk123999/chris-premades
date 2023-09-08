@@ -1,9 +1,18 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
-async function favoredFoe({speaker, actor, token, character, item, args, scope, workflow}) {
+async function extraDamage(workflow) {
+    let damageFormula = workflow.damageRoll._formula;
+    let scale = workflow.actor.system.scale?.ranger?.['favored-foe']?.formula;
+    if (!scale) return;
+    let bonusDamageFormula = scale + '[' + workflow.defaultDamageType + ']';
+    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+    let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamageFormula).roll({async: true});
+    await workflow.setDamageRoll(damageRoll);
+}
+export async function favoredFoe({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (!constants.attacks.includes(workflow.item.actionType)) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     let originItem = chris.getItem(workflow.actor, 'Favored Foe');
     if (!originItem) return;
     let uses = originItem.system.uses.value;
@@ -13,16 +22,7 @@ async function favoredFoe({speaker, actor, token, character, item, args, scope, 
     let queueSetup = await queue.setup(workflow.item.uuidk, 'favoredFoe', 250);
     if (!queueSetup) return;
     if (effect) {
-        let damageFormula = workflow.damageRoll._formula;
-        let scale = workflow.actor.system.scale?.ranger?.['favored-foe']?.formula;
-        if (!scale) {
-            queue.remove(workflow.item.uuid);
-            return;
-        }
-        let bonusDamageFormula = scale + '[' + workflow.defaultDamageType + ']';
-        if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-        let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamageFormula).roll({async: true});
-        await workflow.setDamageRoll(damageRoll);
+        await extraDamage(workflow);
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -31,8 +31,10 @@ async function favoredFoe({speaker, actor, token, character, item, args, scope, 
         queue.remove(workflow.item.uuid);
         return;
     }
+    let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
+    await warpgate.wait(100);
+    await MidiQOL.completeItemUse(originItem, config, options);
     await originItem.update({'system.uses.value': uses - 1});
-    let concentrationEffect = chris.findEffect(workflow.actor, 'Concentrating');
-    if (concentrationEffect) await chris.removeEffect(concentrationEffect);
-    
+    await extraDamage(workflow);
+    queue.remove(workflow.item.uuid);
 }
