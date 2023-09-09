@@ -88,11 +88,13 @@ function preActorUpdate(actor, updates, options) {
 function actorUpdate(actor, updates, options) {
     if (options['chris-premades']?.refreshAuras) refreshEffects();
 }
-function canvasReady() {
+async function canvasReady() {
     auras = {};
     let sceneTokens = game.canvas.scene.tokens?.contents;
     if (sceneTokens) {
         for (let token of sceneTokens) {
+            let effects = token.actor?.effects?.filter(e => e.flags?.['chris-premades']?.aura === true);
+            if (effects.length > 0) for (let effect of effects) await chris.removeEffect(effect);
             let flagAuras = token.actor?.flags?.['chris-premades']?.aura;
             if (!flagAuras) continue;
             add(flagAuras, token.uuid, false);
@@ -200,8 +202,10 @@ function updateToken(token, changes) {
         tokenMoved(token);
     }
 }
-function createToken(token, options, id) {
+async function createToken(token, options, id) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    let effects = token.actor?.effects?.filter(e => e.flags?.['chris-premades']?.aura === true);
+    if (effects.length > 0) for (let effect of effects) await chris.removeEffect(effect);
     let aura = token.actor.flags['chris-premades']?.aura;
     if (aura) {
         add(aura, token.uuid, true);

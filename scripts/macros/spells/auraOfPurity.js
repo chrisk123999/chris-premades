@@ -70,7 +70,12 @@ async function move(token, selectedAura) {
                 'value': '1',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true
+            }
+        }
     }
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;

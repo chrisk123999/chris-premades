@@ -21,7 +21,12 @@ export async function auraOfCourage(token, selectedAura) {
                 'value': 'frightened',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true
+            }
+        }
     }
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;

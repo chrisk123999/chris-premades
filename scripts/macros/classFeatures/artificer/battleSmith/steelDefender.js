@@ -108,7 +108,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     let options = {
         'permanent': false,
-        'name': name,
+        'name': 'Steel Defender',
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
@@ -120,7 +120,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "' + name + '");'
+                    'script': currentScript + ' await warpgate.revert(token.document, "Steel Defender");'
                 }
             },
             'chris-premades': {

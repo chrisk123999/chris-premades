@@ -21,7 +21,12 @@ export async function auraOfProtection(token, selectedAura) {
                 'value': '+' + selectedAura.castLevel,
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true
+            }
+        }
     }
     let effect = chris.findEffect(token.actor, effectData.label);
     if (effect?.origin === effectData.origin) return;

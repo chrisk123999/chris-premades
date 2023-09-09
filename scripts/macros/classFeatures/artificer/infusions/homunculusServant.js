@@ -86,7 +86,7 @@ export async function homunculusServant({speaker, actor, token, character, item,
     };
     let options = {
         'permanent': false,
-        'name': name,
+        'name': 'Homunculus Servant',
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
@@ -98,7 +98,7 @@ export async function homunculusServant({speaker, actor, token, character, item,
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "' + name + '");'
+                    'script': currentScript + ' await warpgate.revert(token.document, "Homunculus Servant");'
                 }
             },
             'chris-premades': {

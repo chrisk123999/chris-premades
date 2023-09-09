@@ -24,7 +24,12 @@ export async function auraOfAlacrity(token, origin) {
                 'value': '+10',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true
+            }
+        }
     }
     await chris.createEffect(targetToken.actor, effectData);
 }

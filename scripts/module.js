@@ -22,7 +22,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
-import {info, setItemInfo, setCompendiumItemInfo} from './info.js';
+import {info, setCompendiumItemInfo} from './info.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -43,7 +43,7 @@ Hooks.once('socketlib.ready', async function() {
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
         let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
-        let currentVersion = 6;
+        let currentVersion = 7;
         if (oldVersion < currentVersion && oldVersion === 0) {
             let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
             ChatMessage.create({
@@ -97,6 +97,15 @@ Hooks.once('ready', async function() {
             });
             await game.settings.set('chris-premades', 'Breaking Version Change', 6);
             oldVersion = 6;
+        }
+        if (oldVersion < currentVersion && oldVersion === 6) {
+            let message2 = '<hr><p>This update to Chris\'s Premades added version checking to all automations.  It is recommended to re-apply all automations.</p>';
+            ChatMessage.create({
+                speaker: {alias: name},
+                content: message2
+            });
+            await game.settings.set('chris-premades', 'Breaking Version Change', 7);
+            oldVersion = 7;
         }
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
@@ -195,6 +204,5 @@ globalThis['chrisPremades'] = {
     troubleshoot,
     constants,
     settingButton,
-    setItemInfo,
     setCompendiumItemInfo
 }

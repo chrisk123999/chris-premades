@@ -1,3 +1,32 @@
+# 0.7.01 Release:
+## Update Notes:
+- Added version info to all automations and added a setting to verify automations that are being run are up to date.  It is recommended to re-apply all automations.  Monster automation version checking will be included in a future update.
+- The medkit icon in the title bar will change colors depending on automation status.  Green: Up to date, Yellow: Automation available or the version on the item is unknown, Red: Automation is out of date.
+- Added support for "Limits" and "Walled Templates" for the following spells: Darkness, Summon Fey, and Fog Cloud (Thanks txm3278).
+## New Content:
+- Favored Foe
+## Bug Fixes:
+- Animating Performance
+- Aura of Alacrity
+- Aura of Courage
+- Aura of Protection
+- Aura of Purity
+- Conjure Animals
+- Conjure Celestial
+- Conjure Elemental
+- Conjure Fey
+- Conjure Minor Elementals
+- Conjure Woodland Beings
+- Darkness
+- Eldritch Smite
+- Fog Cloud
+- Lantern of Revealing
+- Primal Companion
+- Steel Defender
+- Summon Drake Companion
+- Summon Fey
+- Summon Wildfire Spirit
+  
 # 0.5.69 Release:
 ## Bug Fixes:
 - Eldritch Smite

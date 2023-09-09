@@ -145,7 +145,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     let options = {
         'permanent': false,
-        'name': name,
+        'name': 'Drake Companion',
         'description': commandData.name
     };
     if (drakeUpgrades === 2) {
@@ -160,7 +160,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "' + name + '");'
+                    'script': currentScript + ' await warpgate.revert(token.document, "Drake Companion");'
                 }
             },
             'chris-premades': {
