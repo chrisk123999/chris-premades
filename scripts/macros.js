@@ -82,6 +82,7 @@ import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmb
 import {dreamEater} from './macros/monsterFeatures/dreamEater/dreamEater.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
+import {durableMagic} from './macros/classFeatures/wizard/warMagic/durableMagic.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
 import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
@@ -98,6 +99,7 @@ import {explodingHeals} from './macros/mechanics/explodingHeals.js';
 import {eyesOfMinuteSeeing} from './macros/items/eyesOfMinuteSeeing.js';
 import {eyesOfTheEagle} from './macros/items/eyesOfTheEagle.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
 import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSpirit.js';
@@ -247,7 +249,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -444,6 +445,7 @@ export let macros = {
     'dragonsBreath': dragonsBreath,
     'dragonsWrath': dragonsWrath,
     'dreadAmbusher': dreadAmbusher,
+    'durableMagic': durableMagic,
     'eladrinSeason': eladrinSeason,
     'eldritchBlast': eldritchBlast,
     'eldritchSmite': eldritchSmite,
@@ -455,6 +457,7 @@ export let macros = {
     'expertDivination': expertDivination,
     'explodingHeals': explodingHeals,
     'fallenPuppet': fallenPuppet,
+    'favoredFoe': favoredFoe,
     'feyPresence': feyPresence,
     'fireStrike': fireStrike,
     'focusedAim': focusedAim,
@@ -578,6 +581,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'favoredFoe': favoredFoe
+    'zoneOfTruth': zoneOfTruth
 }

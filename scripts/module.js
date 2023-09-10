@@ -193,6 +193,9 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
     if (game.settings.get('chris-premades', 'Automation Verification')) Hooks.on('midi-qol.preItemRoll', info);
 });
+let dev = {
+    'setCompendiumItemInfo': setCompendiumItemInfo
+}
 globalThis['chrisPremades'] = {
     helpers,
     macros,
@@ -204,5 +207,5 @@ globalThis['chrisPremades'] = {
     troubleshoot,
     constants,
     settingButton,
-    setCompendiumItemInfo
+    dev
 }

@@ -2295,5 +2295,9 @@ export let automations = {
     'Shove': {
         'name': 'Shove',
         'version': '0.7.01'
+    },
+    'Durable Magic': {
+        'name': 'Durable Magic',
+        'version': '0.7.02'
     }
 }
