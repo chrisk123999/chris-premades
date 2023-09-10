@@ -1,3 +1,10 @@
+# 0.7.02 Release:
+## New Features:
+- War Magic Wizard: Durable Magic
+## Bug Fixes:
+- Conjure Celestial
+- Preserve Life
+  
 # 0.7.01 Release:
 ## Update Notes:
 - Added version info to all automations and added a setting to verify automations that are being run are up to date.  It is recommended to re-apply all automations.  Monster automation version checking will be included in a future update.

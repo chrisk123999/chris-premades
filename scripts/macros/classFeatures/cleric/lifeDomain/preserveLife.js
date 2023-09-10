@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function preserveLife({speaker, actor, token, character, item, args, scope, workflow}) {
-    let targets = await chris.findNearby(workflow.token, 30, 'ally');
+    let targets = await chris.findNearby(workflow.token, 30, 'ally', true);
     if (workflow.token) targets.push(workflow.token);
     if (targets.length === 0) return;
     let classLevels = workflow.actor.classes.cleric?.system.levels;
