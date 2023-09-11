@@ -2310,7 +2310,6 @@ export let automations = {
         'name': 'Durable Magic',
         'version': '0.7.02'
     },
-	{
     'Find Familiar': {
         'name': 'Find Familiar',
         'version': '0.7.03',

@@ -1,3 +1,19 @@
+# 0.7.03 Release:
+## Update Notes:
+- The medkit can now update renamed items that have previously had an automation applied (from v0.7.01 or higher).
+## New Content:
+- Spells: Find Familiar and Shield of Faith
+- Actions: Squeeze and Underwater
+- Eldritch Invocation: Investment of the Chain Master
+## Bug Fixes:
+- Conjure Animals
+- Conjure Celestial
+- Conjure Elemental
+- Conjure Fey
+- Conjure Minor Elementals
+- Conjure Woodland Beings
+- Guardian of Faith
+  
 # 0.7.02 Release:
 ## New Features:
 - War Magic Wizard: Durable Magic
