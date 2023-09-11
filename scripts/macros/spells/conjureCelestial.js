@@ -8,7 +8,7 @@ export async function conjureCelestial({speaker, actor, token, character, item, 
     let folder = chris.getConfiguration(workflow.item, 'folder') ?? game.settings.get('chris-premades', 'Summons Folder');
     if (!folder && folder === '') folder = 'Chris Premades';
     let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase() === 'celestial').filter(i => i.system?.details?.cr <= cr);
-    if (!actors) {
+    if (actors.length < 1) {
         ui.notifications.warn('No matching actors found in specified folder!');
         return;
     }

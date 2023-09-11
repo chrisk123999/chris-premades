@@ -1790,6 +1790,18 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Find Familiar': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    },
+                    'name': {
+                        'label': 'Familiar Name:',
+                        'default': ''
+                    }
+                }
             }
         }
     });

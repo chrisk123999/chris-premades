@@ -28,13 +28,13 @@ export async function info({speaker, actor, token, character, item, args, scope,
     }
     if (info.mutation) {
         if (info.mutation.self) {
-            if (!workflow.token) {
+            if (!token) {
                 if (message != '') message += '<hr>';
                 message += 'This automation requires your token to be on the scene.';
                 cancel = true;
             } else {
-                let mutationStack = warpgate.mutationStack(workflow.token.document);
-                if (mutationStack.getName(info.mutation.self)) await warpgate.revert(workflow.token.document, info.mutation.self);
+                let mutationStack = warpgate.mutationStack(token.document);
+                if (mutationStack.getName(info.mutation.self)) await warpgate.revert(token.document, info.mutation.self);
                 console.warn('A duplicate CPR Warpgate mutation was detected and removed!');
             }
         }
@@ -2299,5 +2299,16 @@ export let automations = {
     'Durable Magic': {
         'name': 'Durable Magic',
         'version': '0.7.02'
+    },
+    'Find Familiar': {
+        'name': 'Find Familiar',
+        'version': '0.7.03',
+        'mutation': {
+            'self': 'Find Familiar'
+        }
+    },
+    'Eldritch Invocations: Investment of the Chain Master': {
+        'name': 'Eldritch Invocations: Investment of the Chain Master',
+        'version': '0.7.03'
     }
 }

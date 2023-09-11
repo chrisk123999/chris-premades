@@ -103,6 +103,7 @@ import {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
 import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSpirit.js';
+import {findFamiliar} from './macros/spells/findFamiliar.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
@@ -140,6 +141,7 @@ import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
+import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
@@ -459,6 +461,7 @@ export let macros = {
     'fallenPuppet': fallenPuppet,
     'favoredFoe': favoredFoe,
     'feyPresence': feyPresence,
+    'findFamiliar': findFamiliar,
     'fireStrike': fireStrike,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
@@ -485,6 +488,7 @@ export let macros = {
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
     'inspiringSmite': inspiringSmite,
+    'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'lanternOfRevealing': lanternOfRevealing,
     'lifeTransference': lifeTransference,
     'lightningArrow': lightningArrow,
