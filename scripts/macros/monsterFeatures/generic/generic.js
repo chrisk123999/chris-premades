@@ -7,6 +7,7 @@ import {stealthCheck} from './stealth.js';
 import {swarmDamage} from './swarm.js';
 import {prone} from './prone.js';
 import {fall} from './fall.js';
+import {underwater} from './underwater.js';
 export let generic = {
     'autoGrapple': autoGrapple,
     'swarmDamage': swarmDamage,
@@ -16,5 +17,6 @@ export let generic = {
     'grapple': grapple,
     'shove': shove,
     'prone': prone,
-    'fall': fall
+    'fall': fall,
+    'underwater': underwater
 }

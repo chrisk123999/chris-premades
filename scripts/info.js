@@ -70,6 +70,13 @@ export async function setCompendiumItemInfo(key) {
         }
     }
 }
+export async function stripUnusedFlags(key) {
+    let gamePack = game.packs.get(key);
+    await gamePack.getDocuments();
+    for (let i of gamePack.contents) {
+        await i.update({'flags.-=ddbimporter': null});
+    }
+}
 export let automations = {
     'Armor of Agathys': {
         'name': 'Armor of Agathys',
@@ -671,10 +678,13 @@ export let automations = {
     },
     'Guardian of Faith': {
         'name': 'Guardian of Faith',
-        'version': '0.7.01',
+        'version': '0.7.03',
         'settings': [
             'Movement Listener',
             'Combat Listener'
+        ],
+        'actors': [
+            'CPR - Guardian of Faith'
         ]
     },
     'Magic Missile': {
@@ -2300,6 +2310,7 @@ export let automations = {
         'name': 'Durable Magic',
         'version': '0.7.02'
     },
+	{
     'Find Familiar': {
         'name': 'Find Familiar',
         'version': '0.7.03',
@@ -2309,6 +2320,18 @@ export let automations = {
     },
     'Eldritch Invocations: Investment of the Chain Master': {
         'name': 'Eldritch Invocations: Investment of the Chain Master',
+		'version': '0.7.03',
+	},
+    'Underwater': {
+        'name': 'Underwater',
+        'version': '0.7.03'
+    },
+    'Squeeze': {
+        'name': 'Squeeze',
+        'version': '0.7.03'
+    },
+    'Shield of Faith': {
+        'name': 'Shield of Faith',
         'version': '0.7.03'
     }
 }

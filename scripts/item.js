@@ -14,7 +14,7 @@ export function updateItemButton(app, [elem], options) {
     if (!headerButton) return;
     let itemName = app.object?.name;
     if (!itemName) return;
-    let automation = automations[itemName];
+    let automation = automations[app.object.flags['chris-premades']?.info?.name ?? itemName];
     if (!automation) return;
     let itemVersion = app.object.flags['chris-premades']?.info?.version;
     if (!itemVersion) {
@@ -60,7 +60,7 @@ async function actorConfig(actor) {
 async function itemConfig(itemDocument) {
     let replacerAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access');
     let configurationAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Configuration Access');
-    let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.name];
+    let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name];
     if (replacerAccess && configurationAccess && configuration) {
         let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, [['🔎 Update / Replace', 'update'], ['🛠️ Configure', 'configure']]);
         if (!selection) return;
@@ -80,7 +80,7 @@ async function itemConfig(itemDocument) {
 async function updateItem(itemDocument) {
     let additionalCompendiumString = game.settings.get('chris-premades', 'Additional Compendiums');
     let additionalCompendiums = additionalCompendiumString.split(', ');
-    let itemName = itemDocument.name;
+    let itemName = itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
     let isNPC = false;

@@ -22,7 +22,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
-import {info, setCompendiumItemInfo} from './info.js';
+import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -194,7 +194,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Automation Verification')) Hooks.on('midi-qol.preItemRoll', info);
 });
 let dev = {
-    'setCompendiumItemInfo': setCompendiumItemInfo
+    'setCompendiumItemInfo': setCompendiumItemInfo,
+    'stripUnusedFlags': stripUnusedFlags
 }
 globalThis['chrisPremades'] = {
     helpers,
