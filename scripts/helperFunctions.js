@@ -534,14 +534,20 @@ export let chris = {
         ui.notifications.info('No JB2A Module Active');
         return false;
     },
-    'selectDocument': async function selectDocument(title, documents) {
+    'selectDocument': async function selectDocument(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
             let buttons = {},
                 dialog;
             for (let i of documents) {
                 buttons[i.name] = {
                     label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'> ${i.name} </p>`,
-                    callback: () => resolve([i])
+                    callback: () => {
+                        if (useUuids) {
+                            resolve([i.uuid]);
+                        } else {
+                            resolve([i])
+                        }
+                    }
                 }
             }
             let height = (Object.keys(buttons).length * 56 + 46);
@@ -562,7 +568,7 @@ export let chris = {
             })
         })
     },
-    'selectDocuments': async function selectDocuments(title, documents) {
+    'selectDocuments': async function selectDocuments(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {label: `Cancel`, callback: () => resolve(false)}, confirm: {label: `Confirm`, callback: (html) => getDocuments(html, documents)}},
                 dialog;
@@ -604,7 +610,11 @@ export let chris = {
                     let current = html[0].querySelector(`input[id='${i}']`)?.value;
                     if (current > 0) {
                         for (let j = 0; current > j; j++) {
-                            returns.push(documents[i]);
+                            if (useUuids) {
+                                returns.push(documents[i].uuid);
+                            } else {
+                                returns.push(documents[i]);
+                            }
                         }
                     }
                 }
@@ -614,11 +624,23 @@ export let chris = {
     },
     'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents) {
         if (userId === game.user.id) return await chris.selectDocument(title, documents);
-        return await socket.executeAsUser('remoteDocumentDialog', userId, title, documents)
+        let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid));
+        if (!uuids) return false;
+        let returns = [];
+        for (let i of uuids) {
+            returns.push(await fromUuid(i));
+        }
+        return returns;
     },
     'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents) {
         if (userId === game.user.id) return await chris.selectDocuments(title, documents);
-        return await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents)
+        let uuids = await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents.map(i => i.uuid));
+        if (!uuids) return false;
+        let returns = [];
+        for (let i of uuids) {
+            returns.push(await fromUuid(i));
+        }
+        return returns;
     },
     'getItem': function _getItem(actor, name) {
         return actor.items.find(i => i.flags['chris-premades']?.info?.name === name);

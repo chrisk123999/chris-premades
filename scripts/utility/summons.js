@@ -62,7 +62,6 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
     for (let i of sourceActors) {
         let tokenDocument = await i.getTokenDocument();
-        console.log(updates, 'in summons');
         let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
         if (!spawnedTokens) return;
         let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);

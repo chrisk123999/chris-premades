@@ -1,3 +1,7 @@
+# 0.7.04 Release:
+## Bug Fixes:
+- Fix for remote document dialogs.
+  
 # 0.7.03 Release:
 ## Update Notes:
 - The medkit can now update renamed items that have previously had an automation applied (from v0.7.01 or higher).
