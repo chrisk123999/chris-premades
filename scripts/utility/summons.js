@@ -62,7 +62,16 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
     for (let i of sourceActors) {
         let tokenDocument = await i.getTokenDocument();
-        let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
+        let updates2 = duplicate(updates);
+        
+        if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls) {
+            let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
+            if (wizardLevels) {
+                setProperty(updates2, 'actor.system.attributes.hp.formula', i.system.attributes.hp.formula + ' + ' + wizardLevels);
+                setProperty(updates2, 'actor.system.bonuses.All-Damage', originItem.actor.system.attributes.prof);
+            }
+        }
+        let spawnedTokens = await warpgate.spawn(tokenDocument, updates2, {}, options);
         if (!spawnedTokens) return;
         let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
         if (!spawnedToken) return;
