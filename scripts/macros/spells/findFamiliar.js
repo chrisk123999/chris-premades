@@ -32,7 +32,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'disposition': workflow.token.document.disposition
         }
     };
-    console.log(duplicate(updates));
     let attackData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Find Familiar - Attack', false);
     if (!attackData) return;
     attackData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Find Familiar - Attack');
@@ -80,13 +79,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Find Familiar'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    console.log(updates);
-    await summons.spawn(sourceActor, updates, 3600, workflow.item);
+    await summons.spawn(sourceActor, updates, 86400, workflow.item);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     await chris.updateEffect(effect, updates3);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar === true);
+    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.spell?.findFamiliar === true);
     if (!effect) return;
     let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.label][0];
     if (!familiarId) return;
