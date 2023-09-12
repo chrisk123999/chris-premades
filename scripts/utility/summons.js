@@ -63,12 +63,12 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     for (let i of sourceActors) {
         let tokenDocument = await i.getTokenDocument();
         let updates2 = duplicate(updates);
-        
         if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls) {
             let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
             if (wizardLevels) {
                 setProperty(updates2, 'actor.system.attributes.hp.formula', i.system.attributes.hp.formula + ' + ' + wizardLevels);
-                setProperty(updates2, 'actor.system.bonuses.All-Damage', originItem.actor.system.attributes.prof);
+                setProperty(updates2, 'actor.system.bonuses.mwak.damage', originItem.actor.system.attributes.prof);
+                setProperty(updates2, 'actor.system.bonuses.rwak.damage', originItem.actor.system.attributes.prof);
             }
         }
         let spawnedTokens = await warpgate.spawn(tokenDocument, updates2, {}, options);
