@@ -1,3 +1,7 @@
+# 0.7.05 Release:
+## New Content:
+- Spells: Grease
+  
 # 0.7.04 Release:
 ## Bug Fixes:
 - Fix for remote document dialogs.

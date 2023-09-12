@@ -74,7 +74,10 @@ export async function stripUnusedFlags(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
-        await i.update({'flags.-=ddbimporter': null});
+        await i.update({
+            'flags.-=ddbimporter': null,
+            'flags.-=itemacro': null
+        });
     }
 }
 export let automations = {
@@ -2332,5 +2335,12 @@ export let automations = {
     'Shield of Faith': {
         'name': 'Shield of Faith',
         'version': '0.7.03'
+    },
+    'Grease': {
+        'name': 'Grease',
+        'version': '0.7.04',
+        'settings': [
+            'Template Listener'
+        ]
     }
 }

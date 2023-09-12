@@ -119,6 +119,7 @@ import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibber
 import {giftOfTheChromaticDragon} from './macros/feats/giftOfTheChromaticDragon.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
+import {grease} from './macros/spells/grease.js';
 import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
@@ -377,6 +378,9 @@ async function templateTrigger(macroName, token, trigger) {
         case 'sickeningRadiance':
             await sickeningRadiance.trigger(token, trigger);
             break;
+        case 'grease':
+            await grease.trigger(token, trigger);
+            break;
     }
 }
 export let macros = {
@@ -470,6 +474,7 @@ export let macros = {
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
     'graspOfHadar': graspOfHadar,
     'graveTouched': graveTouched,
+    'grease': grease,
     'grimHarvest': grimHarvest,
     'grovelthrash': grovelthrash,
     'guardianOfFaith': guardianOfFaith,
