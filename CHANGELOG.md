@@ -1,3 +1,7 @@
+# 0.7.06 Release:
+## Bug Fixes:
+- Find Familiar
+  
 # 0.7.05 Release:
 ## New Content:
 - Spells: Grease
