@@ -1,3 +1,12 @@
+# 0.7.07 Release:
+## New Content:
+- Crystal Blade
+## Bug Fixes:
+- Grease
+- Squeeze
+- Underwater
+- Expert Divination
+  
 # 0.7.06 Release:
 ## Bug Fixes:
 - Find Familiar

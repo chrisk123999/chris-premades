@@ -1802,6 +1802,46 @@ export function setConfig() {
                         'default': ''
                     }
                 }
+            },
+            'Crystal Greatsword': {
+                'checkbox': {
+                    'healprompt': {
+                        'label': 'Prompt to use heal?',
+                        'default': true
+                    }
+                }
+            },
+            'Crystal Longsword': {
+                'checkbox': {
+                    'healprompt': {
+                        'label': 'Prompt to use heal?',
+                        'default': true
+                    }
+                }
+            },
+            'Crystal Rapier': {
+                'checkbox': {
+                    'healprompt': {
+                        'label': 'Prompt to use heal?',
+                        'default': true
+                    }
+                }
+            },
+            'Crystal Scimitar': {
+                'checkbox': {
+                    'healprompt': {
+                        'label': 'Prompt to use heal?',
+                        'default': true
+                    }
+                }
+            },
+            'Crystal Shortsword': {
+                'checkbox': {
+                    'healprompt': {
+                        'label': 'Prompt to use heal?',
+                        'default': true
+                    }
+                }
             }
         }
     });

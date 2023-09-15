@@ -60,6 +60,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {crystalBlade} from './macros/items/crystalBlade.js';
 import {dancingSword} from './macros/items/dancingSword.js';
 import {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
@@ -435,6 +436,7 @@ export let macros = {
     'conjureWoodlandBeings': conjureWoodlandBeings,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
+    'crystalBlade': crystalBlade,
     'dancingSword': dancingSword,
     'danseMacabre': danseMacabre,
     'darkOnesBlessing': darkOnesBlessing,

@@ -13,6 +13,7 @@ import {templates} from './utility/templateEffect.js';
 import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {diceSoNice} from './diceSoNice.js';
 import {info} from './info.js';
+import {itemFeatures, itemFeaturesDelete} from './equipment.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -882,6 +883,24 @@ export function registerSettings() {
         'default': 'Chris Premades'
     });
     addMenuSetting('Summons Folder', 'Summons');
+    game.settings.register(moduleName, 'Item Features', {
+        'name': 'Item Features',
+        'hint': 'When enabled, certain items from this module will be able add additional features to your character sheet when an item is equipped or attuned.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('preUpdateItem', itemFeatures);
+                Hooks.on('preDeleteItem', itemFeaturesDelete);
+            } else {
+                Hooks.off('preUpdateItem', itemFeatures);
+                Hooks.off('preDeleteItem', itemFeaturesDelete);
+            }
+        }
+    });
+    addMenuSetting('Item Features', 'General');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

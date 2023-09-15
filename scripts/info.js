@@ -1769,7 +1769,7 @@ export let automations = {
     },
     'Expert Divination': {
         'name': 'Expert Divination',
-        'version': '0.7.01'
+        'version': '0.7.07'
     },
     'Grim Harvest': {
         'name': 'Grim Harvest',
