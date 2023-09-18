@@ -93,7 +93,7 @@ async function canvasReady() {
     let sceneTokens = game.canvas.scene.tokens?.contents;
     if (sceneTokens) {
         for (let token of sceneTokens) {
-            let effects = token.actor?.effects?.filter(e => e.flags?.['chris-premades']?.aura === true);
+            let effects = token.actor.effects.filter(e => e.flags?.['chris-premades']?.aura === true);
             if (effects.length > 0) for (let effect of effects) await chris.removeEffect(effect);
             let flagAuras = token.actor?.flags?.['chris-premades']?.aura;
             if (!flagAuras) continue;
@@ -195,6 +195,7 @@ async function refreshEffects(ignoredUuid, ignoredAura) {
 }
 function updateToken(token, changes) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    if (!token.actor) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
     if (token.actor.flags['chris-premades']?.aura) {
         refreshEffects();

@@ -7,7 +7,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (workflow.item.system.actionType != 'mwak') return;
     let originFeature = chris.getItem(workflow.actor, 'Strike of the Giants: Stone Strike');
     if (!originFeature) return;
-    if (originFeature.system.uses.value === 0) return;
+    if (!originFeature.system.uses.value) return;
     let turnCheck = chris.perTurnCheck(originFeature, 'feat', 'stoneStrike', false, workflow.token.id);
     if (!turnCheck) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'stoneStrike', 150);

@@ -1,3 +1,13 @@
+# 0.7.08 Release:
+## Bug Fixes:
+- Cloud Strike
+- Fire Strike
+- Frost Strike
+- Hill Strike
+- Stone Strike
+- Storm Strike
+- Effect Auras
+  
 # 0.7.07 Release:
 ## New Content:
 - Crystal Blade
