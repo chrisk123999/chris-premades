@@ -1,3 +1,7 @@
+# 0.7.10 Release:
+## Bug Fixes:
+- Bestow Curse
+  
 # 0.7.09 Release:
 ## Bug Fixes:
 - Cloud Strike

@@ -3,6 +3,8 @@ import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 50);
+    if (!queueSetup) return;
     let choices  = [
         ['Disadvantage on Ability Score', 'Ability'],
         ['Disadvantage on Attacks', 'Attack'],
@@ -11,13 +13,19 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         ['Other', 'Other']
     ];
     let selection = await chris.dialog('What curse do you bestow?', choices);
-    if (!selection) return;
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let castLevel = workflow.castData.castLevel;
     let duration = 60;
     let concentration = true;
-    let featureData = await chrisPremades.helpers.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bestow Curse - ' + selection, false);
-    if (!featureData) return;
-    featureData.system.description.value = chrisPremades.helpers.getItemDescription('CPR - Descriptions', 'Bestow Curse - ' + selection, false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bestow Curse - ' + selection, false);
+    if (!featureData) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bestow Curse - ' + selection, false);
     let effectData;
     switch (castLevel) {
         case 4:
@@ -66,7 +74,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 ['Charisma', 'cha']
             ];
             let ability = await chris.dialog('What ability?', abilityChoices);
-            if (!ability) return;
+            if (!ability) {
+                queue.remove(workflow.item.uuid);
+                return;
+            }
             featureData.effects[0].changes[0].key += ability;
             featureData.effects[0].changes[1].key += ability;
             break;
@@ -119,7 +130,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
     let targetEffect = chris.findEffect(workflow.targets.first().actor, 'Bestow Curse - ' + selection);
-    if (!targetEffect) return;
+    if (!targetEffect) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     await chris.updateEffect(targetEffect,
         {
             'origin': workflow.item.uuid,
@@ -135,6 +149,18 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     );
+    if (concentration) {
+        let concentrationEffect = chris.findEffect(workflow.actor, 'Concentrating');
+        if (!concentrationEffect) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
+        await chris.updateEffect(concentrationEffect, {'origin': workflow.item.uuid, 'flags.midi-qol.isConcentration': workflow.item.uuid});
+        await workflow.actor.setFlag('midi-qol', 'concentration-data.uuid', workflow.item.uuid);
+
+    }
+    queue.remove(workflow.item.uuid);
+
 }
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
@@ -212,12 +238,14 @@ async function attack({speaker, actor, token, character, item, args, scope, work
 async function remove(effect, origin, token) {
     let curseFlags = effect.flags['chris-premades']?.spell?.bestowCurse
     if (!curseFlags) return;
+    await warpgate.wait(200);
     if (curseFlags.type === 'Damage') {
         let damageEffect = origin.actor.effects.find(eff => eff.label === 'Bestow Curse - Damage' && eff.changes?.[2]?.value === token.id);
         if (damageEffect) await chris.removeEffect(damageEffect);
     }
     if (curseFlags.level < 5) {
-        await chris.removeCondition(origin.actor, 'Concentrating');
+        let effect2 = chris.findEffect(origin.actor, 'Concentrating');
+        if (effect2) await chris.removeEffect(effect2);
     }
 }
 export let bestowCurse = {
