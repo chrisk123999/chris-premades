@@ -1,4 +1,4 @@
-# 0.7.08 Release:
+# 0.7.09 Release:
 ## Bug Fixes:
 - Cloud Strike
 - Fire Strike
