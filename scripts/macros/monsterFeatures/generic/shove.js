@@ -1,24 +1,24 @@
 import {chris} from '../../../helperFunctions.js';
+import {translate} from '../../../translations.js';
 export async function shove({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let skipCheck = false;
-    let targetActor = workflow.targets.first().actor;
+    let targetToken = workflow.targets.first();
+    let targetActor = targetToken.actor;
     if (workflow.actor.uuid === targetActor.uuid) return;
     if ((chris.getSize(targetActor)) > (chris.getSize(actor) + 1)) {
-        ui.notifications.info('Target is too big!');
+        ui.notifications.info('Target is too big to shove!');
         return;
     }
-    let effect = chris.findEffect(targetActor, 'Prone');
+    let effect = chris.findEffect(targetActor, 'Incapacitated');
     if (effect) skipCheck = true;
     if (!skipCheck) {
-        let sourceRoll = await workflow.actor.rollSkill('ath');
-        let targetRoll;
-        if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
-            targetRoll = await targetActor.rollSkill('acr');
-        } else {
-            targetRoll = await targetActor.rollSkill('ath');
+        let selection = await chris.remoteDialog(workflow.item.name, [[translate.skills('acr'), 'acr'], [translate.skills('ath'), 'ath'], ['Uncontested', false]], chris.firstOwner(targetToken).id, 'How would you like to contest the shove?');
+        if (selection) {
+            let sourceRoll = await workflow.actor.rollSkill('ath');
+            let targetRoll = await chris.rollRequest(targetToken, 'skill', selection);
+            if (targetRoll.total >= sourceRoll.total) return;
         }
-        if (targetRoll.total > sourceRoll.total) return;
     }
     let selection = await chris.dialog('What do you want to do?', [['Move', 'move'], ['Knock Prone', 'prone']]);
     if (!selection) return;

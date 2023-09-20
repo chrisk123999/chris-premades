@@ -2342,5 +2342,57 @@ export let automations = {
         'settings': [
             'Template Listener'
         ]
+    },
+    'Dash': {
+        'name': 'Dash',
+        'version': '0.7.11'
+    },
+    'Disengage': {
+        'name': 'Disengage',
+        'version': '0.7.11'
+    },
+    'Dodge': {
+        'name': 'Dodge',
+        'version': '0.7.11'
+    },
+    'Fall': {
+        'name': 'Fall',
+        'version': '0.7.11'
+    },
+    'Grapple': {
+        'name': 'Grapple',
+        'version': '0.7.11'
+    },
+    'Help': {
+        'name': 'Help',
+        'version': '0.7.11'
+    },
+    'Hide': {
+        'name': 'Hide',
+        'version': '0.7.11'
+    },
+    'Ready Action': {
+        'name': 'Ready Action',
+        'version': '0.7.11'
+    },
+    'Ready Spell': {
+        'name': 'Ready Spell',
+        'version': '0.7.11'
+    },
+    'Search': {
+        'name': 'Search',
+        'version': '0.7.11'
+    },
+    'Shove': {
+        'name': 'Shove',
+        'version': '0.7.11'
+    },
+    'Squeeze': {
+        'name': 'Squeeze',
+        'version': '0.7.11'
+    },
+    'Underwater': {
+        'name': 'Underwater',
+        'version': '0.7.11'
     }
 }

@@ -1,3 +1,9 @@
+# 0.7.11 Release:
+## Bug Fixes:
+- Grapple
+- Shove
+- Grappling Strike
+  
 # 0.7.10 Release:
 ## Bug Fixes:
 - Bestow Curse

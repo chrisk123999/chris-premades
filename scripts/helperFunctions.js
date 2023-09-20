@@ -644,5 +644,14 @@ export let chris = {
     },
     'getItem': function _getItem(actor, name) {
         return actor.items.find(i => i.flags['chris-premades']?.info?.name === name);
+    },
+    'rollRequest': async function _rollRequest(token, request, ability) {
+        let userID = chris.firstOwner(token).id;
+        let data = {
+            'targetUuid': token.document.uuid,
+            'request': request,
+            'ability': ability
+        };
+        return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
     }
 }

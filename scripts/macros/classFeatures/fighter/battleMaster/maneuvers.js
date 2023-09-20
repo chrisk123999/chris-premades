@@ -1,6 +1,7 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
+import {grapple} from '../../../monsterFeatures/generic/grapple.js';
 async function baitAndSwitch({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
@@ -143,19 +144,6 @@ async function goadingAttackTarget({speaker, actor, token, character, item, args
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add('Disadvantage: Goading Attack');
     queue.remove(workflow.item.uuid);
-}
-async function grapplingStrike({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size != 1) return;
-    let sourceRoll = await workflow.actor.rollSkill('ath');
-    let targetActor = workflow.targets.first().actor;
-    let targetRoll;
-    if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
-        targetRoll = await targetActor.rollSkill('acr');
-    } else {
-        targetRoll = await targetActor.rollSkill('ath');
-    }
-    if (targetRoll.total > sourceRoll.total) return;
-    await chris.addCondition(targetActor, 'Grappled', false, workflow.item.uuid);
 }
 async function lungingAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -378,7 +366,7 @@ export let maneuvers = {
     'distractingStrike': distractingStrike,
     'goadingTarget': goadingAttackTarget,
     'goadingAttack': goadingAttack,
-    'grapplingStrike': grapplingStrike,
+    'grapplingStrike': grapple,
     'lungingAttack': lungingAttack,
     'menacingAttack': menacingAttack,
     'parry': parry,
