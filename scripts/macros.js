@@ -164,6 +164,7 @@ import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/
 import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
+import {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
 import {piercer} from './macros/feats/piercer.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
 import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
@@ -518,6 +519,7 @@ export let macros = {
     'onMove': onMove,
     'onMoveEffect': onMoveEffect,
     'orcishFury': orcishFury,
+    'overchannel': overchannel,
     'piercer': piercer,
     'potionOfDiminution': potionOfDiminution,
     'potionOfFireBreath': potionOfFireBreath,

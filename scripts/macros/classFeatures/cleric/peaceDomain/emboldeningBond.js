@@ -160,6 +160,7 @@ async function remove(token) {
 }
 async function damage(targetToken, {workflow, ditem}) {
     if (!workflow) return;
+    if (workflow.defaultDamageType === 'healing' || workflow.defaultDamageType === 'temphp') return;
     if (workflow.item?.flags?.['chris-premades']?.feature?.protectiveBond) return;
     let effect = chris.findEffect(targetToken.actor, 'Emboldening Bond');
     if (!effect) return;

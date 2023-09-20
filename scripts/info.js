@@ -2394,5 +2394,21 @@ export let automations = {
     'Underwater': {
         'name': 'Underwater',
         'version': '0.7.11'
+    },
+    'Sculpt Spells': {
+        'name': 'Sculpt Spells',
+        'version': '0.7.12'
+    },
+    'Potent Cantrip': {
+        'name': 'Potent Cantrip',
+        'version': '0.7.12'
+    },
+    'Empowered Evocation': {
+        'name': 'Empowered Evocation',
+        'version': '0.7.12'
+    },
+    'Overchannel': {
+        'name': 'Overchannel',
+        'version': '0.7.12'
     }
 }

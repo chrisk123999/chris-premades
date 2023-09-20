@@ -93,6 +93,7 @@ async function canvasReady() {
     let sceneTokens = game.canvas.scene.tokens?.contents;
     if (sceneTokens) {
         for (let token of sceneTokens) {
+            if (!token.actor) continue;
             let effects = token.actor.effects.filter(e => e.flags?.['chris-premades']?.aura === true);
             if (effects.length > 0) for (let effect of effects) await chris.removeEffect(effect);
             let flagAuras = token.actor?.flags?.['chris-premades']?.aura;

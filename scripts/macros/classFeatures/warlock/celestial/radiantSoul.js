@@ -20,7 +20,11 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            let selected = await chris.dialog('Radiant Soul: Add extra damage?', [['Radiant', 'radiant'], ['Fire', 'fire'], ['No', false]]);
+            let options = [];
+            if (damageTypes.has('fire')) options.push(['Yes (Fire)', 'fire']);
+            if (damageTypes.has('radiant')) options.push(['Yes (Radiant)', 'radiant']);
+            options.push(['No', false]);
+            let selected = await chris.dialog('Radiant Soul', options, 'Radiant Soul: Add extra damage?');
             if (!selected) {
                 queue.remove(workflow.item.uuid);
                 return;
@@ -61,7 +65,17 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 return;
             }
             let targetDamage = workflow.damageList.find(i => i.tokenId === targetTokenID);
-            let selected2 = await chris.dialog('Radiant Soul: What type of damage?', [['Radiant', 'radiant'], ['Fire', 'fire']]);
+            let options2 = [];
+            if (damageTypes2.has('fire')) options2.push(['Yes (Fire)', 'fire']);
+            if (damageTypes2.has('radiant')) options2.push(['Yes (Radiant)', 'radiant']);
+            let selected2;
+            if (options2.length === 2) {
+                selected2 = await chris.dialog('Radiant Soul', options2, 'What damage type?');
+            } else if (damageTypes2.has('fire')) {
+                selected2 = 'fire';
+            } else {
+                selected2 = 'radiant';
+            }
             if (!selected2) selected2 = 'radiant';
             let targetActor = canvas.scene.tokens.get(targetDamage.tokenId).actor;
             if (!targetActor) {

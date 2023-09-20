@@ -1,3 +1,11 @@
+# 0.7.12 Release:
+## New Content:
+- School of Evocation Wizard: Sculpt Spells, Potent Cantrip, Empowered Evocation, and Overchannel
+## Bug Fixes:
+- Radiant Soul (Warlock)
+- Emboldening Bond
+- Effect Auras
+  
 # 0.7.11 Release:
 ## Bug Fixes:
 - Grapple
