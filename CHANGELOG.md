@@ -1,3 +1,7 @@
+# 0.7.13 Release:
+## New Content:
+- Oath of Devotion Paladin: Sacred Weapon, Aura of Devotion, Purity of Spirit, Holy Nimbus
+  
 # 0.7.12 Release:
 ## New Content:
 - School of Evocation Wizard: Sculpt Spells, Potent Cantrip, Empowered Evocation, and Overchannel

@@ -10,6 +10,7 @@ import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
+import {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
@@ -135,6 +136,7 @@ import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesC
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
+import {holyNimbus} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
@@ -186,6 +188,7 @@ import {removeTemplate} from './macros/generic/removeTemplate.js';
 import {repellingBlast} from './macros/classFeatures/warlock/invocations/repellingBlast.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
+import {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
@@ -338,7 +341,8 @@ export let skills = {
     'stoneCamouflage': deepGnome.stoneCamouflage
 }
 export let saves = {
-    'dangerSense': dangerSense
+    'dangerSense': dangerSense,
+    'holyNimbus': holyNimbus.save
 }
 async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
     switch (macroName) {
@@ -363,6 +367,9 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
         case 'lanternOfRevealing':
             await lanternOfRevealing.aura(token, selectedAura);
+            break;
+        case 'auraOfDevotion':
+            await auraOfDevotion(token, selectedAura);
             break;
     }
 }
@@ -397,6 +404,7 @@ export let macros = {
     'armorOfAgathys': armorOfAgathys,
     'auraOfAlacrity': auraOfAlacrity,
     'auraOfCourage': auraOfCourage,
+    'auraOfDevotion': auraOfDevotion,
     'auraOfProtection': auraOfProtection,
     'auraOfPurity': auraOfPurity,
     'auraOfVitality': auraOfVitality,
@@ -490,6 +498,7 @@ export let macros = {
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
     'hillStrike': hillStrike,
+    'holyNimbus': holyNimbus,
     'holyWeapon': holyWeapon,
     'homunculusServant': homunculusServant,
     'hungryJaws': hungryJaws,
@@ -541,6 +550,7 @@ export let macros = {
     'repellingBlast': repellingBlast,
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
+    'sacredWeapon': sacredWeapon,
     'sanctuary': sanctuary,
     'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,

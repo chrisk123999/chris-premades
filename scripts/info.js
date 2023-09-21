@@ -2410,5 +2410,53 @@ export let automations = {
     'Overchannel': {
         'name': 'Overchannel',
         'version': '0.7.12'
+    },
+    'Aura of Devotion': {
+        'name': 'Aura of Devotion',
+        'version': '0.7.13',
+        'settings': [
+            'Effect Auras'
+        ]
+    },
+    'Channel Divinity: Sacred Weapon': {
+        'name': 'Channel Divinity: Sacred Weapon',
+        'version': '0.7.13',
+        'mutation': {
+            'self': 'Sacred Weapon'
+        }
+    },
+    'Holy Nimbus': {
+        'name': 'Holy Nimbus',
+        'version': '0.7.13',
+        'settings': [
+            'Save Patching'
+        ]
+    },
+    'Purity of Spirit': {
+        'name': 'Purity of Spirit',
+        'version': '0.7.13',
+        'settings': [
+            'Protection from Evil and Good'
+        ]
+    },
+    'Crystal Greatsword': {
+        'name': 'Crystal Greatsword',
+        'version': '0.7.13'
+    },
+    'Crystal Longsword': {
+        'name': 'Crystal Longsword',
+        'version': '0.7.13'
+    },
+    'Crystal Rapier': {
+        'name': 'Crystal Rapier',
+        'version': '0.7.13'
+    },
+    'Crystal Scimitar': {
+        'name': 'Crystal Scimitar',
+        'version': '0.7.13'
+    },
+    'Crystal Shortsword': {
+        'name': 'Crystal Shortsword',
+        'version': '0.7.13'
     }
 }
