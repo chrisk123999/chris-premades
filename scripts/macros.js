@@ -106,6 +106,8 @@ import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
 import {fiendishSpirit} from './macros/monsterFeatures/fiendishSpirit/fiendishSpirit.js';
 import {findFamiliar} from './macros/spells/findFamiliar.js';
+import {findGreaterSteed} from './macros/spells/findGreaterSteed.js';
+import {findSteed} from './macros/spells/findSteed.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
@@ -477,6 +479,8 @@ export let macros = {
     'favoredFoe': favoredFoe,
     'feyPresence': feyPresence,
     'findFamiliar': findFamiliar,
+    'findGreaterSteed': findGreaterSteed,
+    'findSteed': findSteed,
     'fireStrike': fireStrike,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,

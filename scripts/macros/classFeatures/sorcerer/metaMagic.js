@@ -404,7 +404,7 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'twinnedSpell', 450);
     if (!queueSetup) return;
-    let nearbyTargets = chris.findNearby(workflow.token, itemRange, disposition).filter(t => t.id != workflow.targets.first().id);
+    let nearbyTargets = chris.findNearby(workflow.token, itemRange, disposition, false, true).filter(t => t.id != workflow.targets.first().id);
     if (nearbyTargets.length === 0) {
         queue.remove(workflow.item.uuid);
         return;

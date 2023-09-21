@@ -103,7 +103,7 @@ export let chris = {
     'applyWorkflowDamage': async function _applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, flavor, itemCardId) {
         new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {'flavor': flavor, 'itemCardId': itemCardId});
     },
-    'findNearby': function _findNearby(tokenDoc, range, disposition, includeIncapacitated) {
+    'findNearby': function _findNearby(tokenDoc, range, disposition, includeIncapacitated = false, includeToken = false) {
         let dispositionValue;
         switch (disposition) {
             case 'ally':
@@ -118,7 +118,7 @@ export let chris = {
             default:
                 dispositionValue = null;
         }
-        let options = {'includeIncapacitated': includeIncapacitated};
+        let options = {'includeIncapacitated': includeIncapacitated, 'includeToken': includeToken};
         return MidiQOL.findNearby(dispositionValue, tokenDoc, range, options).filter(i => !i.document.hidden);
     },
     'addToRoll': async function _addToRoll(roll, addonFormula) {

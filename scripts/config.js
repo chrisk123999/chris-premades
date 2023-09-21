@@ -1586,6 +1586,30 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Find Steed': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    },
+                    'name': {
+                        'label': 'Steed Name:',
+                        'default': ''
+                    }
+                }
+            },
+            'Find Greater Steed': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    },
+                    'name': {
+                        'label': 'Greater Steed Name:',
+                        'default': ''
+                    }
+                }
             }
         },
         'automations': {
@@ -3966,6 +3990,14 @@ export function setConfig() {
             'Crystal Shortsword': {
                 'name': 'Crystal Shortsword',
                 'version': '0.7.13'
+            },
+            'Find Steed': {
+                'name': 'Find Steed',
+                'version': '0.7.14'
+            },
+            'Find Greater Steed': {
+                'name': 'Find Greater Steed',
+                'version': '0.7.14'
             }
         }
     });

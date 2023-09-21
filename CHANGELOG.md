@@ -1,3 +1,9 @@
+# 0.7.14 Release:
+## New Content:
+- Spells: Find Steed, Find Greater Steed
+## Bug Fixes:
+- Twinned Spell
+  
 # 0.7.13 Release:
 ## New Content:
 - Oath of Devotion Paladin: Sacred Weapon, Aura of Devotion, Purity of Spirit, Holy Nimbus
