@@ -2,7 +2,7 @@ import {registerSettings} from './settings.js';
 import {macros, onHitMacro} from './macros.js';
 import {setupJournalEntry} from './journal.js';
 import {chris as helpers} from './helperFunctions.js';
-import {createActorHeaderButton, createHeaderButton, setConfig, updateItemButton} from './item.js';
+import {createActorHeaderButton, createHeaderButton, updateItemButton} from './item.js';
 import {queue} from './utility/queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
 import {bab} from './utility/babHelpers.js';
@@ -24,6 +24,7 @@ import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utili
 import {diceSoNice} from './diceSoNice.js';
 import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
+import {setConfig} from './config.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
