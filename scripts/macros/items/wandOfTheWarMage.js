@@ -12,7 +12,7 @@ export async function wandOfTheWarMage({speaker, actor, token, character, item, 
         queue.remove(workflow.item.uuid);
         return;
     }
-    let updatedRoll = await chris.addToRoll(workflow.attackRoll, -2);
+    let updatedRoll = await chris.addToRoll(workflow.attackRoll, 2);
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }
