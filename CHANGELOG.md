@@ -1,6 +1,7 @@
 # 0.7.14 Release:
 ## New Content:
 - Spells: Find Steed, Find Greater Steed
+- Artificer Infusions: Arcane Propulsion Armor, Armor of Magical Strength
 ## Bug Fixes:
 - Twinned Spell
   

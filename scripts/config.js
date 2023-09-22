@@ -3998,6 +3998,14 @@ export function setConfig() {
             'Find Greater Steed': {
                 'name': 'Find Greater Steed',
                 'version': '0.7.14'
+            },
+            'Arcane Propulsion Armor': {
+                'name': 'Arcane Propulsion Armor',
+                'version': '0.7.14'
+            },
+            'Armor of Magical Strength': {
+                'name': 'Armor of Magical Strength',
+                'version': '0.7.14'
             }
         }
     });

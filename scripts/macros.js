@@ -8,6 +8,7 @@ import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJol
 import {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcaneWard.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
+import {armorOfMagicalStrength} from './macros/classFeatures/artificer/infusions/armorOfMagicalStrength.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
@@ -404,6 +405,7 @@ export let macros = {
     'arcaneWard': arcaneWard,
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
+    'armorOfMagicalStrength': armorOfMagicalStrength,
     'auraOfAlacrity': auraOfAlacrity,
     'auraOfCourage': auraOfCourage,
     'auraOfDevotion': auraOfDevotion,

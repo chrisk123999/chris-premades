@@ -50,13 +50,9 @@ export async function applyEquipmentFlag(uuid) {
     let updates = {
         'flags.chris-premades.equipment.items': [
             {
-                'name': 'Crystal Blade - Heal',
-                'key': 'chris-premades.CPR Item Features',
-                'uniqueName': 'crystalBladeHeal'
-            },
-            {
-                'name': 'Crystal Blade - Light',
-                'key': 'chris-premades.CPR Item Features'
+                'name': 'Arcane Propulsion Gauntlet',
+                'key': 'chris-premades.CPR Class Feature Items',
+                'uniqueName': 'arcanePropulsionGauntlet'
             }
         ]
     };
