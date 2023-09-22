@@ -63,7 +63,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     for (let i of sourceActors) {
         let tokenDocument = await i.getTokenDocument();
         let updates2 = duplicate(updates);
-        if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls) {
+        if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls && originItem.system.school === 'nec') {
             let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
             if (wizardLevels) {
                 setProperty(updates2, 'actor.system.attributes.hp.formula', i.system.attributes.hp.formula + ' + ' + wizardLevels);

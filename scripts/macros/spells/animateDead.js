@@ -10,6 +10,7 @@ export async function animateDead({speaker, actor, token, character, item, args,
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let totalSummons = 1 + (spellLevel - 3) * 2;
+    if (workflow.actor.flags['chris-premades']?.feature?.undeadThralls) totalSummons += 1;
     if (!totalSummons || totalSummons < 1) return;
     let sourceActors = await chris.selectDocuments('Select Summons (Max ' + totalSummons + ')', [zombieActor, skeletonActor]);
     if (!sourceActors) return;

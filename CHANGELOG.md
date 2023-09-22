@@ -1,3 +1,11 @@
+# 0.7.15 Release:
+## New Content:
+- Items: Wand of the War Mage
+- Artificer Infusions: Boots of the Winding Path and Enhanced Arcane Focus
+## Bug Fixes:
+- Animate Dead
+- Toll the Dead
+  
 # 0.7.14 Release:
 ## New Content:
 - Spells: Find Steed, Find Greater Steed

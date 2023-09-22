@@ -252,6 +252,7 @@ import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {vigorOfTheHillGiant} from './macros/feats/vigorOfTheHillGiant.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
+import {wandOfTheWarMage} from './macros/items/wandOfTheWarMage.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
@@ -604,6 +605,7 @@ export let macros = {
     'vampiricTouch': vampiricTouch,
     'vigorOfTheHillGiant': vigorOfTheHillGiant,
     'vortexWarp': vortexWarp,
+    'wandOfTheWarMage': wandOfTheWarMage,
     'wardingBond': wardingBond,
     'wildShape': wildShape,
     'wildhunt': wildhunt,

@@ -1807,7 +1807,7 @@ export function setConfig() {
             },
             'Toll the Dead': {
                 'name': 'Toll the Dead',
-                'version': '0.7.01'
+                'version': '0.7.15'
             },
             'Ray of Enfeeblement': {
                 'name': 'Ray of Enfeeblement',
@@ -4006,6 +4006,30 @@ export function setConfig() {
             'Armor of Magical Strength': {
                 'name': 'Armor of Magical Strength',
                 'version': '0.7.14'
+            },
+            'Boots of the Winding Path': {
+                'name': 'Boots of the Winding Path',
+                'version': '0.7.15'
+            },
+            'Wand of the War Mage, +1': {
+                'name': 'Wand of the War Mage, +1',
+                'version': '0.7.15'
+            },
+            'Wand of the War Mage, +2': {
+                'name': 'Wand of the War Mage, +2',
+                'version': '0.7.15'
+            },
+            'Wand of the War Mage, +3': {
+                'name': 'Wand of the War Mage, +3',
+                'version': '0.7.15'
+            },
+            'Enhanced Arcane Focus, +1': {
+                'name': 'Enhanced Arcane Focus, +1',
+                'version': '0.7.15'
+            },
+            'Enhanced Arcane Focus, +2': {
+                'name': 'Enhanced Arcane Focus, +2',
+                'version': '0.7.15'
             }
         }
     });
