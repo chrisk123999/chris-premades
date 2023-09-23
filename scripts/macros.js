@@ -184,12 +184,17 @@ import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalC
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 import {radiantConsumption} from './macros/raceFeatures/aasimar/radiantConsumption.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
+import {radiantWeapon} from './macros/classFeatures/artificer/infusions/radiantWeapon.js';
 import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {relentlessEndurance} from './macros/raceFeatures/orc/relentlessEndurance.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
+import {repeatingShot} from './macros/classFeatures/artificer/infusions/repeatingShot.js';
 import {repellingBlast} from './macros/classFeatures/warlock/invocations/repellingBlast.js';
+import {repulsionShield} from './macros/classFeatures/artificer/infusions/repulsionShield.js';
+import {resistantArmor} from './macros/classFeatures/artificer/infusions/resistantArmor.js';
+import {returningWeapon} from './macros/classFeatures/artificer/infusions/returningWeapon.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
@@ -208,6 +213,7 @@ import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {slasher} from './macros/feats/slasher.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
+import {spellRefuelingRing} from './macros/classFeatures/artificer/infusions/spellRefuelingRing.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
@@ -551,12 +557,17 @@ export let macros = {
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
     'radiantConsumption': radiantConsumption,
     'radiantSoul': radiantSoul,
+    'radiantWeapon': radiantWeapon,
     'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,
     'reaper': reaper,
     'relentlessEndurance': relentlessEndurance,
     'removeTemplate': removeTemplate,
+    'repeatingShot': repeatingShot,
     'repellingBlast': repellingBlast,
+    'repulsionShield': repulsionShield,
+    'resistantArmor': resistantArmor,
+    'returningWeapon': returningWeapon,
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
     'sacredWeapon': sacredWeapon,
@@ -568,6 +579,7 @@ export let macros = {
     'sickeningRadiance': sickeningRadiance,
     'slasher': slasher,
     'sneakAttack': sneakAttack,
+    'spellRefuelingRing': spellRefuelingRing,
     'spikeGrowth': spikeGrowth,
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,

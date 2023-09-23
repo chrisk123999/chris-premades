@@ -50,9 +50,14 @@ export async function applyEquipmentFlag(uuid) {
     let updates = {
         'flags.chris-premades.equipment.items': [
             {
-                'name': 'Arcane Propulsion Gauntlet',
+                'name': 'Radiant Weapon - Blind',
                 'key': 'chris-premades.CPR Class Feature Items',
-                'uniqueName': 'arcanePropulsionGauntlet'
+                'uniqueName': 'radiantWeaponBlind'
+            },
+            {
+                'name': 'Radiant Weapon - Light',
+                'key': 'chris-premades.CPR Class Feature Items',
+                'uniqueName': 'radiantWeaponLight'
             }
         ]
     };

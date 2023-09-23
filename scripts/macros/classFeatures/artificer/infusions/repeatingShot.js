@@ -1,39 +1,38 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let infusionId = workflow.item.flags['chris-premades']?.feature?.infusion?.enhancedWeapon?.id;
+    let infusionId = workflow.item.flags['chris-premades']?.feature?.infusion?.repeatingShot?.id;
     if (!infusionId) {
-        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc);
+        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc && i.system.properties?.lod);
         if (validWeapons.length === 0) {
             ui.notifications.info('No valid weapon to infuse!');
             return;
         }
         let [selection] = await chris.selectDocument('Infuse what weapon?', validWeapons, false);
         if (!selection) return;
-        await workflow.item.setFlag('chris-premades', 'feature.infusion.enhancedWeapon.id', selection.id);
+        await workflow.item.setFlag('chris-premades', 'feature.infusion.repeatingShot.id', selection.id);
     } else {
-        let selection = await chris.dialog(workflow.item.name, [['Yes', true], ['No', false]], 'Remove enhanced weapon infusion?');
+        let selection = await chris.dialog(workflow.item.name, [['Yes', true], ['No', false]], 'Remove repeating shot infusion?');
         if (!selection) return;
-        await workflow.item.setFlag('chris-premades', 'feature.infusion.enhancedWeapon.id', null);
+        await workflow.item.setFlag('chris-premades', 'feature.infusion.repeatingShot.id', null);
     }
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    let originItem = chris.getItem(workflow.actor, 'Enhanced Weapon, +2') ?? chris.getItem(workflow.actor, 'Enhanced Weapon, +1');
+    let originItem = chris.getItem(workflow.actor, 'Repeating Shot');
     if (!originItem) return;
-    if (workflow.item.id != originItem.flags['chris-premades']?.feature?.infusion?.enhancedWeapon?.id) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'enhancedWeapon', 150);
+    if (workflow.item.id != originItem.flags['chris-premades']?.feature?.infusion?.repeatingShot?.id) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'repeatingShot', 150);
     if (!queueSetup) return;
     let parts = duplicate(workflow.item.system.damage.parts);
-    let level = chris.getConfiguration(originItem, 'level') ?? 1;
-    parts[0][0] = parts[0][0] + ' + ' + level;
+    parts[0][0] = parts[0][0] + ' + 1';
     let properties = duplicate(workflow.item.system.properties);
     let attackBonus = duplicate(workflow.item.system.attackBonus);
-    attackBonus = level;
+    attackBonus = 1;
     properties.mgc = true;
     workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attackBonus': attackBonus}, {'keepId': true});
     queue.remove(workflow.item.uuid);
 }
-export let enhancedWeapon = {
+export let repeatingShot = {
     'item': item,
     'attack': attack
 }

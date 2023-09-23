@@ -1,12 +1,10 @@
-import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
-export async function repellingBlast({speaker, actor, token, character, item, args, scope, workflow}) {
-    let spellName = workflow.actor.flags['chris-premades']?.feature?.repellingBlast?.name;
-    if (!spellName) spellName = 'Eldritch Blast';
-    if (workflow.item.name != spellName || workflow.hitTargets.size != 1) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'repellingBlast', 450);
+import {chris} from '../../../../helperFunctions.js';
+export async function repulsionShield({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'repulsionShield', 50);
     if (!queueSetup) return;
-    let selection = await chris.dialog('Repelling Blast', [['10 ft.', 10], ['5 ft.', 5], ['0 ft.', false]], 'How far do you push the target?');
+    let selection = await chris.dialog(workflow.item.name, [['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], 'How far do you push the target?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -43,10 +41,5 @@ export async function repellingBlast({speaker, actor, token, character, item, ar
         'description': workflow.item.name
     };
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
-    let effect = chris.findEffect(workflow.actor, 'Eldritch Invocations: Repelling Blast');
-    if (effect) {
-        let originItem = await fromUuid(effect.origin);
-        if (originItem) await originItem.use();
-    }
     queue.remove(workflow.item.uuid);
 }

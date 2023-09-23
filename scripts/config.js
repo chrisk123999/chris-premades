@@ -1626,6 +1626,34 @@ export function setConfig() {
                         'default': 2
                     }
                 }
+            },
+            'Radiant Weapon': {
+                'number': {
+                    'savedc': {
+                        'label': 'Save DC:',
+                        'default': 10
+                    }
+                }
+            },
+            'Resistant Armor': {
+                'select': {
+                    'resistance': {
+                        'label': 'What resistance?',
+                        'default': 'acid',
+                        'values': [
+                            {'value': 'acid', 'html': 'Acid'},
+                            {'value': 'cold', 'html': 'Cold'},
+                            {'value': 'fire', 'html': 'Fire'},
+                            {'value': 'force', 'html': 'Force'},
+                            {'value': 'lightning', 'html': 'Lightning'},
+                            {'value': 'necrotic', 'html': 'Necrotic'},
+                            {'value': 'poison', 'html': 'Poison'},
+                            {'value': 'psychic', 'html': 'Psychic'},
+                            {'value': 'radiant', 'html': 'Radiant'},
+                            {'value': 'thunder', 'html': 'Thunder'}
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -4054,6 +4082,26 @@ export function setConfig() {
             'Enhanced Weapon, +2': {
                 'name': 'Enhanced Weapon, +2',
                 'version': '0.7.16'
+            },
+            'Radiant Weapon': {
+                'name': 'Radiant Weapon',
+                'version': '0.7.18'
+            },
+            'Repeating Shot': {
+                'name': 'Repeating Shot',
+                'version': '0.7.18'
+            },
+            'Repulsion Shield': {
+                'name': 'Repulsion Shield',
+                'version': '0.7.18'
+            },
+            'Resistant Armor': {
+                'name': 'Resistant Armor',
+                'version': '0.7.18'
+            },
+            'Returning Weapon': {
+                'name': 'Returning Weapon',
+                'version': '0.7.18'
             }
         }
     });
