@@ -824,7 +824,7 @@ export function setConfig() {
                     }
                 }
             },
-            'Create Homunculus Servant': {
+            'Homunculus Servant': {
                 'text': {
                     'name': {
                         'label': 'Custom Name:',
@@ -1610,6 +1610,22 @@ export function setConfig() {
                         'default': ''
                     }
                 }
+            },
+            'Enhanced Weapon, +1': {
+                'number': {
+                    'level': {
+                        'label': 'Level:',
+                        'default': 1
+                    }
+                }
+            },
+            'Enhanced Weapon, +2': {
+                'number': {
+                    'level': {
+                        'label': 'Level:',
+                        'default': 2
+                    }
+                }
             }
         },
         'automations': {
@@ -2171,9 +2187,9 @@ export function setConfig() {
             },
             'Summon Elemental': {
                 'name': 'Summon Elemental',
-                'version': '0.7.01',
+                'version': '0.7.16',
                 'actors': [
-                    'CPR - Elemental'
+                    'CPR - Elemental Spirit'
                 ]
             },
             'Gaseous Form': {
@@ -2386,9 +2402,9 @@ export function setConfig() {
                     'self': 'Steel Defender'
                 }
             },
-            'Create Homunculus Servant': {
-                'name': 'Create Homunculus Servant',
-                'version': '0.7.01',
+            'Homunculus Servant': {
+                'name': 'Homunculus Servant',
+                'version': '0.7.16',
                 'actors': [
                     'CPR - Homunculus Servant'
                 ],
@@ -4030,6 +4046,14 @@ export function setConfig() {
             'Enhanced Arcane Focus, +2': {
                 'name': 'Enhanced Arcane Focus, +2',
                 'version': '0.7.15'
+            },
+            'Enhanced Weapon, +1': {
+                'name': 'Enhanced Weapon, +1',
+                'version': '0.7.16'
+            },
+            'Enhanced Weapon, +2': {
+                'name': 'Enhanced Weapon, +2',
+                'version': '0.7.16'
             }
         }
     });

@@ -25,7 +25,8 @@ let names = {
     'times-up': 'Times Up',
     'token-attacher': 'Token Attacher',
     'visual-active-effects': 'Visual Active Effects',
-    'warpgate': 'Warpgate'
+    'warpgate': 'Warpgate',
+    'foundryvtt-dice-so-nice': 'Dice So Nice'
 }
 let optionalModules = [
     'ATL',
@@ -42,7 +43,8 @@ let optionalModules = [
     'smalltime',
     'tidy5e-sheet',
     'times-up',
-    'visual-active-effects'
+    'visual-active-effects',
+    'foundryvtt-dice-so-nice'
 ];
 let incompatibleModules = [
     'ready-set-roll-5e',
@@ -62,7 +64,8 @@ let incompatibleModules = [
     'advancedspelleffects',
     'obsidian',
     'heartbeat',
-    'dice-rng-protector'
+    'dice-rng-protector',
+    'concentrationnotifier'
 ]
 export function troubleshoot() {
     let output = '';

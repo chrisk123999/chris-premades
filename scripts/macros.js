@@ -96,6 +96,7 @@ import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {emboldeningBond} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 import {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
+import {enhancedWeapon} from './macros/classFeatures/artificer/infusions/enhancedWeapon.js';
 import {experimentalElixir} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js'
 import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 import {explodingHeals} from './macros/mechanics/explodingHeals.js';
@@ -475,6 +476,7 @@ export let macros = {
     'elixirOfHealth': elixirOfHealth,
     'emboldeningBond': emboldeningBond,
     'enhancedBond': enhancedBond,
+    'enhancedWeapon': enhancedWeapon,
     'experimentalElixir': experimentalElixir,
     'expertDivination': expertDivination,
     'explodingHeals': explodingHeals,

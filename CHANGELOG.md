@@ -1,3 +1,10 @@
+# 0.7.17 Release:
+## New Content:
+- Artificer Infusions: Enhanced Defense, Enhanced Weapon, Helm of Awareness, Mind Sharpener
+## Bug Fixes:
+- Arcane Propulsion Armor
+- Summon Elemental
+  
 # 0.7.15 Release:
 ## New Content:
 - Items: Wand of the War Mage
