@@ -4106,6 +4106,18 @@ export function setConfig() {
             'Backbreaker': {
                 'name': 'Backbreaker',
                 'version': '0.7.19'
+            },
+            'Brace': {
+                'name': 'Brace',
+                'version': '0.7.19'
+            },
+            'Cleave': {
+                'name': 'Cleave',
+                'version': '0.7.19'
+            },
+            'Concussive Smash': {
+                'name': 'Concussive Smash',
+                'version': '0.7.19'
             }
         }
     });
