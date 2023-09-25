@@ -4102,6 +4102,10 @@ export function setConfig() {
             'Returning Weapon': {
                 'name': 'Returning Weapon',
                 'version': '0.7.18'
+            },
+            'Backbreaker': {
+                'name': 'Backbreaker',
+                'version': '0.7.19'
             }
         }
     });
