@@ -4118,6 +4118,18 @@ export function setConfig() {
             'Concussive Smash': {
                 'name': 'Concussive Smash',
                 'version': '0.7.19'
+            },
+            'Crippling Strike': {
+                'name': 'Crippling Strike',
+                'version': '0.7.19'
+            },
+            'Flourish': {
+                'name': 'Flourish',
+                'version': '0.7.19'
+            },
+            'Heartstopper': {
+                'name': 'Heartstopper',
+                'version': '0.7.19'
             }
         }
     });

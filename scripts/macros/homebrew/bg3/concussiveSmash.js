@@ -8,7 +8,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function save({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
     let effectData = {
-        'label': workflow.item.name,
+        'label': 'Dazed',
         'icon': workflow.item.img,
         'changes': [
             {
@@ -31,7 +31,6 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let heavyArmor = workflow.targets.first().actor.items.filter(i => i.system.armor?.type === 'heavy' && i.system.equipped);
-    console.log(heavyArmor);
     if (!heavyArmor.length) effectData.changes.push({
         'key': 'system.attributes.ac.bonus',
         'mode': 2,

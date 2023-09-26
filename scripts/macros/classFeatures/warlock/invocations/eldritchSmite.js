@@ -1,9 +1,12 @@
-import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 export async function eldritchSmite({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let validTypes = [
+        'mwak',
+        'rwak'
+    ]
+    if (!validTypes.includes(workflow.item.system.actionType)) return;
     let pactSlots = workflow.actor.system.spells.pact.value;
     if (pactSlots === 0) return;
     let pactLevel = workflow.actor.system.spells.pact.level;
