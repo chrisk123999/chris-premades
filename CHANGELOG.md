@@ -1,3 +1,9 @@
+# 0.7.19 Release:
+## Bug Fixes:
+- Empowered Evocation
+- Tasha's Caustic Brew
+- Sorcery Points
+  
 # 0.7.18 Release:
 ## New Content:
 - Artificer Infusions: Radiant Weapon, Repeating Shot, Repulsion Shield, Resistant Armor, Returning Weapon, and Spell-Refueling Ring
