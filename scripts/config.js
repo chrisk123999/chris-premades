@@ -1885,7 +1885,7 @@ export function setConfig() {
             },
             'Tasha\'s Caustic Brew': {
                 'name': 'Tasha\'s Caustic Brew',
-                'version': '0.7.01'
+                'version': '0.7.19'
             },
             'Crown of Madness': {
                 'name': 'Crown of Madness',
@@ -3981,7 +3981,7 @@ export function setConfig() {
             },
             'Empowered Evocation': {
                 'name': 'Empowered Evocation',
-                'version': '0.7.12'
+                'version': '0.7.19'
             },
             'Overchannel': {
                 'name': 'Overchannel',
