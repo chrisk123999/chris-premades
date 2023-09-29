@@ -901,6 +901,30 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Item Features', 'General');
+    game.settings.register(moduleName, 'Baldur\'s Gate 3 Weapon Actions', {
+        'name': 'Baldur\'s Gate 3 Weapon Actions',
+        'hint': 'When enabled Baldur\'s Gate 3 Weapon Actions will be automatically added to actor features.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('preUpdateItem', macros.bg3.addFeatures);
+                Hooks.on('preDeleteItem', macros.bg3.removeFeatures);
+                Hooks.on('midi-qol.preDamageRollComplete', macros.bg3.piercingStrike.damage);
+                Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
+                Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
+            } else {
+                Hooks.off('preUpdateItem', macros.bg3.addFeatures);
+                Hooks.off('preDeleteItem', macros.bg3.removeFeatures);
+                Hooks.off('midi-qol.postDamageRoll', macros.bg3.piercingStrike.damage);
+                Hooks.off('dnd5e.restCompleted', macros.bg3.rest);
+                Hooks.off('midi-qol.RollComplete', macros.bg3.healing);
+            }
+        }
+    });
+    addMenuSetting('Baldur\'s Gate 3 Weapon Actions', 'Homebrew');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

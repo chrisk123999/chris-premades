@@ -22,6 +22,7 @@ import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bestowCurse} from './macros/spells/bestowCurse.js';
+import {bg3} from './macros/homebrew/bg3/bg3.js';
 import {bigbysHand} from './macros/spells/bigbysHand.js';
 import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
@@ -268,7 +269,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {bg3} from './macros/homebrew/bg3/bg3.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -427,6 +427,7 @@ export let macros = {
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
     'bestowCurse': bestowCurse,
+    'bg3': bg3,
     'bigbysHand': bigbysHand,
     'blackrazor': blackrazor,
     'bladeFlourish': bladeFlourish,
@@ -627,6 +628,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'bg3': bg3
+    'zoneOfTruth': zoneOfTruth
 }

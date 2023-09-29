@@ -31,29 +31,45 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.createEffect(workflow.targets.first().actor, effectData);
 }
-async function turn(effect) {
-    let turn = effect.flags['chris-premades']?.feature?.heartstopper ?? 0;
+async function turnStart(origin, token) {
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Homebrew Feature Items', 'Bleeding', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bleeding');
+    delete (featureData._id);
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': origin.actor});
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
+}
+async function turnEnd(effect) {
+    let turn = effect.flags['chris-premades']?.feature?.lacerate ?? 0;
     if (turn >= 1) {
         await chris.removeEffect(effect);
         return;
     } 
     let updates = {
-        'flags.chris-premades.feature.heartstopper': turn + 1
+        'flags.chris-premades.feature.lacerate': turn + 1
     };
     await chris.updateEffect(effect, updates);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak') return;
     let validTypes = [
-        'morningstar'
+        'handaxe',
+        'scimitar',
+        'battleaxe',
+        'longsword',
+        'glaive',
+        'greataxe',
+        'greatsword',
+        'halberd'
     ];
     if (!validTypes.includes(workflow.item.system.baseItem)) return;
-    let feature = chris.getItem(workflow.actor, 'Heartstopper');
+    let feature = chris.getItem(workflow.actor, 'Lacerate');
     if (!feature) return;
     if (!feature.system.uses.value) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'heartstopper', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'lacerate', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Heartstopper?');
+    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Lacerate?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -64,11 +80,18 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let feature2 = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await warpgate.wait(100);
-    await MidiQOL.completeItemUse(feature2, config, options);
+    let targetWorkflow = await MidiQOL.completeItemUse(feature2, config, options);
+    if (targetWorkflow.failedSaves.size != 1) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    let effect = chris.findEffect(workflow.targets.first().actor, 'Bleeding');
+    if (effect) await chris.updateEffect(effect, {'origin': feature.uuid});
     queue.remove(workflow.item.uuid);
 }
-export let heartstopper = {
+export let lacerate = {
     'item': item,
-    'turn': turn,
+    'turnStart': turnStart,
+    'turnEnd': turnEnd,
     'attack': attack
 }

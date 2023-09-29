@@ -19,54 +19,36 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
             }
         ],
         'duration': {
-            'seconds': 12
+            'seconds': 18
         },
         'origin': workflow.item.uuid,
         'flags': {
-            'dae': {
-                'specialDuration': [
-                    'turnEndSource'
-                ]
+            'effectmacro': {
+                'onTurnEnd': {
+                    'script': 'await chrisPremades.macros.bg3.concussiveSmash.turn(effect);'
+                }
+            },
+            'chris-premades': {
+                'feature': {
+                    'concussiveSmash': 0
+                }
             }
         }
     };
-    let heavyArmor = workflow.targets.first().actor.items.filter(i => i.system.armor?.type === 'heavy' && i.system.equipped);
-    if (!heavyArmor.length) effectData.changes.push({
+    let armorTypes = [
+        'light',
+        'medium',
+        'heavy'
+    ];
+    let armor = workflow.targets.first().actor.items.find(i => armorTypes.includes(i.system.armor?.type) && i.system.equipped);
+    let dex = armor?.system?.armor?.dex ?? workflow.targets.first().actor.system.abilities.dex.mod
+    effectData.changes.push({
         'key': 'system.attributes.ac.bonus',
         'mode': 2,
-        'value': -workflow.targets.first().actor.system.abilities.dex.mod,
+        'value': -dex,
         'priority': 20
     });
     await chris.createEffect(workflow.targets.first().actor, effectData);
-    let effectData2 = {
-        'duration': {
-            'seconds': 12
-        },
-        'icon': 'modules/dfreds-convenient-effects/images/reaction.svg',
-        'label': 'Reaction',
-        'origin': workflow.item.uuid,
-        'flags': {
-            'core': {
-                'statusId': 'Convenient Effect: Reaction'
-            },
-            'dfreds-convenient-effects': {
-                'description': 'No active effects and expires on turn start',
-                'isConvenient': true,
-                'isDynamic': false,
-                'isViewable': true,
-                'nestedEffects': [],
-                'subEffects': []
-            },
-            'dae': {
-                'specialDuration': [
-                    'turnEndSource',
-                    'shortRest',
-                    'longRest'
-                ]
-            }
-        }
-    };
-    await chris.createEffect(workflow.targets.first().actor, effectData2);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak') return;
@@ -99,8 +81,20 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     await MidiQOL.completeItemUse(feature2, config, options);
     queue.remove(workflow.item.uuid);
 }
+async function turn(effect) {
+    let turn = effect.flags['chris-premades']?.feature?.concussiveSmash ?? 0;
+    if (turn >= 1) {
+        await chris.removeEffect(effect);
+        return;
+    } 
+    let updates = {
+        'flags.chris-premades.feature.concussiveSmash': turn + 1
+    };
+    await chris.updateEffect(effect, updates);
+}
 export let concussiveSmash = {
     'item': item,
     'save': save,
-    'attack': attack
+    'attack': attack,
+    'turn': turn
 }

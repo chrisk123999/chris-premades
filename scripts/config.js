@@ -4119,8 +4119,8 @@ export function setConfig() {
                 'name': 'Concussive Smash',
                 'version': '0.7.19'
             },
-            'Crippling Strike': {
-                'name': 'Crippling Strike',
+            'Maiming Strike': {
+                'name': 'Maiming Strike',
                 'version': '0.7.19'
             },
             'Flourish': {
@@ -4129,6 +4129,50 @@ export function setConfig() {
             },
             'Heartstopper': {
                 'name': 'Heartstopper',
+                'version': '0.7.19'
+            },
+            'Lacerate': {
+                'name': 'Lacerate',
+                'version': '0.7.19'
+            },
+            'Piercing Strike': {
+                'name': 'Piercing Strike',
+                'version': '0.7.19'
+            },
+            'Piercing Shot': {
+                'name': 'Piercing Shot',
+                'version': '0.7.19'
+            },
+            'Pommel Strike': {
+                'name': 'Pommel Strike',
+                'version': '0.7.19'
+            },
+            'Prepare': {
+                'name': 'Prepare',
+                'version': '0.7.19'
+            },
+            'Rush Attack': {
+                'name': 'Rush Attack',
+                'version': '0.7.19'
+            },
+            'Tenacity': {
+                'name': 'Tenacity',
+                'version': '0.7.19'
+            },
+            'Topple': {
+                'name': 'Topple',
+                'version': '0.7.19'
+            },
+            'Hamstring Shot': {
+                'name': 'Hamstring Shot',
+                'version': '0.7.19'
+            },
+            'Mobile Shot': {
+                'name': 'Mobile Shot',
+                'version': '0.7.19'
+            },
+            'Weakening Strike': {
+                'name': 'Weakening Strike',
                 'version': '0.7.19'
             }
         }

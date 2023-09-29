@@ -198,6 +198,13 @@ Hooks.once('ready', async function() {
         Hooks.on('preUpdateItem', itemFeatures);
         Hooks.on('preDeleteItem', itemFeaturesDelete);
     }
+    if (game.settings.get('chris-premades', 'Baldur\'s Gate 3 Weapon Actions')) {
+        Hooks.on('preUpdateItem', macros.bg3.addFeatures);
+        Hooks.on('preDeleteItem', macros.bg3.removeFeatures);
+        Hooks.on('midi-qol.preDamageRollComplete', macros.bg3.piercingStrike.damage);
+        Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
+        Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
+    }
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

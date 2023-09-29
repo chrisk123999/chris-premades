@@ -32,19 +32,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function save({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
-    async function effectMacro() {
-        let turns = effect.flags['chris-premades'].feature.cripplingStrike;
-        if (turns === 1) {
-            await chrisPremades.helpers.removeEffect(effect);
-            return;
-        } 
-        let updates = {
-            'flags.chris-premades.feature.cripplingStrike': turns + 1
-        };
-        await chrisPremades.helpers.updateEffect(effect, updates);
-    }
     let effectData = {
-        'label': 'Crippled',
+        'label': 'Maimed',
         'icon': workflow.item.img,
         'changes': [
             {
@@ -67,14 +56,14 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
         'flags': {
             'chris-premades': {
                 'feature': {
-                    'cripplingStrike': 0
+                    'maimingStrike': 0
                 }
             },
             'effectmacro': {
-                'onTurnStart': {
-                    'script': chris.functionToString(effectMacro)
+                'onTurnEnd': {
+                    'script': 'await chrisPremades.macros.bg3.maimingStrike.turn(effect);'
                 }
-            }
+            },
         }
     };
     await chris.createEffect(workflow.targets.first().actor, effectData);
@@ -87,12 +76,12 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         'trident'
     ];
     if (!validTypes.includes(workflow.item.system.baseItem)) return;
-    let feature = chris.getItem(workflow.actor, 'Crippling Strike');
+    let feature = chris.getItem(workflow.actor, 'Maiming Strike');
     if (!feature) return;
     if (!feature.system.uses.value) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'cripplingStrike', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'maimingStrike', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Crippling Strike?');
+    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Maiming Strike?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -106,8 +95,20 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     await MidiQOL.completeItemUse(feature2, config, options);
     queue.remove(workflow.item.uuid);
 }
-export let cripplingStrike = {
+async function turn(effect) {
+    let turn = effect.flags['chris-premades']?.feature?.maimingStrike ?? 0;
+    if (turn >= 1) {
+        await chris.removeEffect(effect);
+        return;
+    } 
+    let updates = {
+        'flags.chris-premades.feature.maimingStrike': turn + 1
+    };
+    await chris.updateEffect(effect, updates);
+}
+export let maimingStrike = {
     'item': item,
     'save': save,
-    'attack': attack
+    'attack': attack,
+    'turn': turn
 }

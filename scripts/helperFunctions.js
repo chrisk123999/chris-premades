@@ -301,6 +301,7 @@ export let chris = {
         let page = journalEntry.pages.getName(name);
         if (!page) {
             ui.notifications.warn('Item description not found in journal!');
+            return;
         }
         let description = page.text.content;
         return description;

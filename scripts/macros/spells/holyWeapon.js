@@ -5,11 +5,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let targetWeapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
     if (targetWeapons.length === 0) return;
     let selection;
-    if (targetWeapons.length === 1) selection = targetWeapons[0].name;
-    if (!selection) selection = await chris.remoteDialog(workflow.item.name, targetWeapons.map(i => [i.name, i.name]), chris.firstOwner(targetToken).id, 'What weapon gets imbued?');
+    if (targetWeapons.length === 1) selection = targetWeapons[0];
+    if (!selection) [selection] = await chris.remoteDocumentDialog(chris.firstOwner(targetToken).id, 'What weapon gets imbued?', targetWeapons);
     if (!selection) return;
-    let weapon = targetToken.actor.items.getName(selection);
-    if (!weapon) return;
     async function effectMacro () {
         await warpgate.revert(token.document, 'Holy Weapon - Target');
     }
@@ -42,12 +40,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let damageParts = weapon.system.damage.parts;
+    let damageParts = selection.system.damage.parts;
     damageParts.push(['2d8[radiant]']);
     let updates = {
         'embedded': {
             'Item': {
-                [selection]: {
+                [selection.name]: {
                     'system': {
                         'damage.parts': damageParts,
                         'properties.mgc': true
@@ -144,8 +142,6 @@ async function dismiss({speaker, actor, token, character, item, args, scope, wor
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     await feature.use();
     await chris.removeEffect(effect);
-    let effect2 = chris.findEffect(targetToken.actor, 'Holy Weapon - Target');
-    if (effect2) chris.removeEffect(effect2);
     await chris.removeCondition(workflow.actor, 'Concentrating');
 }
 export let holyWeapon = {
