@@ -2,8 +2,11 @@ import {chris} from '../../../helperFunctions.js';
 import {constants} from '../../../constants.js';
 import {queue} from '../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let queueSetup = await queue.setup(workflow.item.uuid, 'topple', 50);
+    if (!queueSetup) return;
     if (workflow.actor.system.abilities.dex.save < workflow.actor.system.abilities.str.save) return;
     workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+    queue.remove(workflow.item.uuid);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1 || workflow.item.system.actionType != 'mwak') return;

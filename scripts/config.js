@@ -4174,6 +4174,10 @@ export function setConfig() {
             'Weakening Strike': {
                 'name': 'Weakening Strike',
                 'version': '0.7.19'
+            },
+            'Tasha\'s Otherworldly Guise': {
+                'name': 'Tasha\'s Otherworldly Guise',
+                'version': '0.7.22'
             }
         }
     });

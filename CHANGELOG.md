@@ -1,3 +1,9 @@
+# 0.7.22 Release:
+## New Content:
+- Tasha's Otherworldly Guise
+## Bug Fixes:
+- Relentless Endurance
+  
 # 0.7.21 Release:
 ## Bug Fixes:
 - Piercing Shot

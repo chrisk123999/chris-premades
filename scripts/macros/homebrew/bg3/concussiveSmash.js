@@ -2,8 +2,10 @@ import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 import {constants} from '../../../constants.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.actor.system.abilities.dex.save < workflow.actor.system.abilities.str.save) return;
-    workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+    let queueSetup = queue.setup(workflow.item.uuid, 'concussiveSmash', 50);
+    if (!queueSetup) return;
+    if (workflow.actor.system.abilities.dex.save > workflow.actor.system.abilities.str.save) workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+    queue.remove(workflow.item.uuid);
 }
 async function save({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
