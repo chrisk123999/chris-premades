@@ -1,3 +1,7 @@
+# 0.7.21 Release:
+## Bug Fixes:
+- Piercing Shot
+  
 # 0.7.19 Release:
 ## New Homebrew Content:
 - Baldur's Gate 3 Weapon Actions: Backbreaker, Brace, Cleave, Concussive Smash, Flourish, Hamstring Shot, Heartstopper, Lacerate, Maiming Strike, Mobile Shot, Piercing Shot, Piercing Strike, Pommel Strike, Prepare, Rush Attack, Tenacity, Topple, Weakening Strike

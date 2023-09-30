@@ -97,6 +97,8 @@ async function shot({speaker, actor, token, character, item, args, scope, workfl
     await feature.update({'system.uses.value': 0});
     let featureData = duplicate(feature.toObject());
     delete (featureData._id);
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    let feature2 = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let targetWorkflow = await MidiQOL.completeItemUse(feature2, config, options);
     if (targetWorkflow.failedSaves.size != 1) {
         queue.remove(workflow.item.uuid);
