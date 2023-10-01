@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let queueSetup = queue.setup(workflow.item.uuid, 'pommelStrike', 50);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'pommelStrike', 50);
     if (!queueSetup) return;
     if (workflow.actor.system.abilities.dex.save > workflow.actor.system.abilities.str.save) workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
     queue.remove(workflow.item.uuid);

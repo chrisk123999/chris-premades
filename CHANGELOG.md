@@ -1,3 +1,9 @@
+# 0.7.23 Release:
+## Bug Fixes:
+- Concussive Smash
+- Pommel Strike
+- Rush Attack
+  
 # 0.7.22 Release:
 ## New Content:
 - Tasha's Otherworldly Guise
