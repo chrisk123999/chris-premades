@@ -26,7 +26,7 @@ let names = {
     'token-attacher': 'Token Attacher',
     'visual-active-effects': 'Visual Active Effects',
     'warpgate': 'Warpgate',
-    'foundryvtt-dice-so-nice': 'Dice So Nice'
+    'dice-so-nice': 'Dice So Nice!'
 }
 let optionalModules = [
     'ATL',
@@ -161,10 +161,12 @@ export function troubleshoot() {
         addLine('Configure Tokens: ' + game.permissions.TOKEN_CONFIGURE.includes(1));
         addLine('Browse Files: ' + game.permissions.FILES_BROWSE.includes(1));
     }
-    if (game.modules.get('plutonium')?.active || game.modules.get('plutonium-addon-automation')?.active) {
+    if (game.modules.get('plutonium') || game.modules.get('plutonium-addon-automation')) {
         addLine('');
         addLine('/////////////// Other ///////////////');
-        addLine('Unsupported Importer: true');
+        if (!game.modules.get('plutonium')?.active) {
+            addLine('Unsupported Importer: true (Disabled)');
+        } else addLine('Unsupported Importer: true');
     }
     try {
         let filename = 'CPR-Troubleshoot.txt';
