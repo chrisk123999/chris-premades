@@ -127,13 +127,64 @@ let weapons = {
     ],
     'quarterstaff': [
         'Topple'
+    ],
+    'sickle': [
+        'Lacerate'
     ]
 };
+let simpleWeapons = [
+    'club',
+    'dagger',
+    'greatclub',
+    'handaxe',
+    'javelin',
+    'lightcrossbow',
+    'lighthammer',
+    'mace',
+    'quarterstaff',
+    'shortbow',
+    'sickle',
+    'sling',
+    'spear'
+];
+let martialWeapons = [
+    'battleaxe',
+    'blowgun',
+    'flail',
+    'glaive',
+    'greataxe',
+    'greatsword',
+    'halberd',
+    'handcrossbow',
+    'heavycrossbow',
+    'lance',
+    'longbow',
+    'longsword',
+    'maul',
+    'morningstar',
+    'net',
+    'pike',
+    'rapier',
+    'scimitar',
+    'shortsword',
+    'trident',
+    'warpick',
+    'warhammer',
+    'whip'
+];
 async function addFeatures(item, updates, options, id) {
     if (item.type != 'weapon') return;
     let actor = item.actor;
     if (!actor) return;
-    if (!item.system.proficient) return;
+    let proficient = item.system.proficient;
+    let baseItem = item.system.baseItem;
+    if (!baseItem) return;
+    if (!proficient && isNewerVersion(game.version, '11.293')) {
+        proficient = item.actor.system.traits.weaponProf.value.has(baseItem);
+        if (simpleWeapons.includes(baseItem) && item.actor.system.traits.weaponProf.value.has('sim')) proficient = true;
+        if (martialWeapons.includes(baseItem) && item.actor.system.traits.weaponProf.value.has('mar')) proficient = true;
+    }
+    if (!proficient) return;
     let currentlyEquipped = updates.system?.equipped ?? item.system.equipped;
     let previouslyEquipped = item.system?.equipped;
     if (currentlyEquipped === previouslyEquipped) return;
@@ -141,9 +192,9 @@ async function addFeatures(item, updates, options, id) {
         await removeFeatures(item);
         return;
     }
-    if (!weapons[item.system.baseItem]) return;
+    if (!weapons[baseItem]) return;
     let items = [];
-    for (let i of weapons[item.system.baseItem]) {
+    for (let i of weapons[baseItem]) {
         if (chris.getItem(actor, i)) continue;
         let featureData = await chris.getItemFromCompendium('chris-premades.CPR Homebrew Feature Items', i, false);
         if (!featureData) continue;

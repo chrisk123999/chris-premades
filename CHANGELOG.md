@@ -1,3 +1,7 @@
+# 0.7.24 Release:
+## Bug Fixes:
+- BG3 weapon action proficiency detection in v11
+  
 # 0.7.23 Release:
 ## Bug Fixes:
 - Concussive Smash
