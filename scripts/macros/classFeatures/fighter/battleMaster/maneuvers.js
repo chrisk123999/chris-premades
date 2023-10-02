@@ -60,9 +60,7 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
 }
 async function refund({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 0) return;
-    let effect = chris.findEffect(workflow.actor, 'Superiority Dice');
-    if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = chris.getItem('Superiority Dice');
     if (!originItem) return;
     await originItem.update({'system.uses.value': originItem.system.uses.value + 1});
 }

@@ -1,5 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
@@ -58,7 +59,7 @@ async function trigger(token, trigger) {
     featureData.system.save.dc = trigger.saveDC;
     featureData.system.damage.parts = [
         [
-            trigger.castLevel + 'd8[poison]',
+            trigger.castLevel + 'd8[' + translate.damageType('poison') + ']',
             'poison'
         ]
     ];

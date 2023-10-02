@@ -4179,6 +4179,25 @@ export function setConfig() {
             'Tasha\'s Otherworldly Guise': {
                 'name': 'Tasha\'s Otherworldly Guise',
                 'version': '0.7.22'
+            },
+            'Guardian of Nature': {
+                'name': 'Guardian of Nature',
+                'version': '0.7.27'
+            },
+            'Lucky Footwork': {
+                'name': 'Lucky Footwork',
+                'version': '0.7.27'
+            },
+            'Relentless': {
+                'name': 'Relentless',
+                'version': '0.7.27'
+            },
+            'Insect Plague': {
+                'name': 'Insect Plague',
+                'version': '0.7.27',
+                'settings': [
+                    'Template Listener'
+                ]
             }
         }
     });

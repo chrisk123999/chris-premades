@@ -19,6 +19,18 @@ function updateToken(token, changes, context, userId) {
         let flag = template.flags['chris-premades']?.template;
         if (!flag?.name) continue;
         if (flag.ignoreMove) continue;
+        if (flag.ignoreStart && chris.inCombat()) {
+            let {'x': tokx, 'y': toky} = previousCoords;
+            let {'x': tempx, 'y': tempy} = template;
+            let startX = token.width >= 1 ? 0.5 : token.width / 2;
+            let startY = token.height >= 1 ? 0.5 : token.height / 2;
+            let curr = {
+                'x': tokx + startX * token.parent.grid.size - tempx,
+                'y': toky + startY * token.parent.grid.size - tempy
+            };
+            let contains = template.object.shape.contains(curr.x, curr.y);
+            if (contains) continue;
+        }
         if (!allTriggers[flag.name]) allTriggers[flag.name] = [];
         allTriggers[flag.name].push(flag);
     }

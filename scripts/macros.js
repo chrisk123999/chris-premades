@@ -132,6 +132,7 @@ import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
 import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
+import {guardianOfNature} from './macros/spells/guardianOfNature.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {healingSpirit} from './macros/spells/healingSpirit.js';
@@ -149,6 +150,7 @@ import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {insectPlague} from './macros/spells/insectPlague.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
@@ -191,6 +193,7 @@ import {rage} from './macros/classFeatures/barbarian/rage.js';
 import {rayOfEnfeeblement} from './macros/spells/rayOfEnfeeblement.js';
 import {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 import {relentlessEndurance} from './macros/raceFeatures/orc/relentlessEndurance.js';
+import {relentless} from './macros/classFeatures/fighter/battleMaster/relentless.js';
 import {removeTemplate} from './macros/generic/removeTemplate.js';
 import {repeatingShot} from './macros/classFeatures/artificer/infusions/repeatingShot.js';
 import {repellingBlast} from './macros/classFeatures/warlock/invocations/repellingBlast.js';
@@ -406,6 +409,9 @@ async function templateTrigger(macroName, token, trigger) {
         case 'grease':
             await grease.trigger(token, trigger);
             break;
+        case 'insectPlague':
+            await insectPlague.trigger(token, trigger);
+            break;
     }
 }
 export let macros = {
@@ -510,6 +516,7 @@ export let macros = {
     'grimHarvest': grimHarvest,
     'grovelthrash': grovelthrash,
     'guardianOfFaith': guardianOfFaith,
+    'guardianOfNature': guardianOfNature,
     'hailOfThorns': hailOfThorns,
     'healingLight': healingLight,
     'healingSpirit': healingSpirit,
@@ -525,6 +532,7 @@ export let macros = {
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
+    'insectPlague': insectPlague,
     'inspiringSmite': inspiringSmite,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'lanternOfRevealing': lanternOfRevealing,
@@ -567,6 +575,7 @@ export let macros = {
     'rage': rage,
     'rayOfEnfeeblement': rayOfEnfeeblement,
     'reaper': reaper,
+    'relentless': relentless,
     'relentlessEndurance': relentlessEndurance,
     'removeTemplate': removeTemplate,
     'repeatingShot': repeatingShot,

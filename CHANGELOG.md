@@ -1,3 +1,12 @@
+# 0.7.27 Release:
+## New Content:
+- Spells: Guardian of Nature and Insect Plague
+- Harengon: Lucky Footwork
+- Battle Master Fighter: Relentless
+## Bug Fixes:
+- Cloudkill
+- Maneuvers
+  
 # 0.7.26 Release:
 ## Bug Fixes:
 - Steel Defender
