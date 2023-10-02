@@ -85,6 +85,7 @@ import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 import {dreamEater} from './macros/monsterFeatures/dreamEater/dreamEater.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
+import {duergarMindMaster} from './macros/monsterFeatures/duergarMindMaster/duergarMindMaster.js';
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {durableMagic} from './macros/classFeatures/wizard/warMagic/durableMagic.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
@@ -201,6 +202,7 @@ import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhosts
 import {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
+import {saveConditionImmune} from './macros/generic/saveConditionImmune.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
@@ -301,6 +303,7 @@ let monster = {
     'dreamEater': dreamEater,
     'drow': drow,
     'duergar': duergar,
+    'duergarMindMaster': duergarMindMaster,
     'dybbuk': dybbuk,
     'elderBrain': elderBrain,
     'elderOblex': elderOblex,
@@ -575,6 +578,7 @@ export let macros = {
     'riteOfTheDawn': riteOfTheDawn,
     'sacredWeapon': sacredWeapon,
     'sanctuary': sanctuary,
+    'saveConditionImmune': saveConditionImmune,
     'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,
     'shadowOfMoil': shadowOfMoil,

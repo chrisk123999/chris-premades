@@ -1,3 +1,9 @@
+# 0.7.25 Release:
+## New Monster Content:
+- Duergar Mind Master: Duergar Resilience, Mind-Poison Dagger, Invisibility, Mind Mastery, Reduce
+## Bug Fixes:
+- Favored Foe
+  
 # 0.7.24 Release:
 ## Bug Fixes:
 - BG3 weapon action proficiency detection in v11

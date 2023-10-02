@@ -15,17 +15,20 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     let originItem = chris.getItem(workflow.actor, 'Favored Foe');
     if (!originItem) return;
-    let uses = originItem.system.uses.value;
-    if (uses === 0) return;
+    let turnCheck = chris.perTurnCheck(originItem, 'feature', 'favoredFoe', true, workflow.token.id);
+    if (!turnCheck) return;
     let targetToken = workflow.targets.first();
     let effect = targetToken.actor.effects.find(e => e.label === 'Favored Foe' && e.origin === originItem.uuid);
     let queueSetup = await queue.setup(workflow.item.uuidk, 'favoredFoe', 250);
     if (!queueSetup) return;
     if (effect) {
         await extraDamage(workflow);
+        await originItem.setFlag('chris-premades', 'feature.favoredFoe.turn', game.combat.round + '-' + game.combat.turn);
         queue.remove(workflow.item.uuid);
         return;
     }
+    let uses = originItem.system.uses.value;
+    if (uses === 0) return;
     let selection = await chris.dialog(originItem.name, [['Yes,', true], ['No', false]], 'Use Favored Foe?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
@@ -36,5 +39,6 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
     await MidiQOL.completeItemUse(originItem, config, options);
     await originItem.update({'system.uses.value': uses - 1});
     await extraDamage(workflow);
+    await originItem.setFlag('chris-premades', 'feature.favoredFoe.turn', game.combat.round + '-' + game.combat.turn);
     queue.remove(workflow.item.uuid);
 }
