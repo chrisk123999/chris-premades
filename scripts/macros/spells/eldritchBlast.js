@@ -11,7 +11,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'orange',
         'pink',
         'rainbow',
-        'yellow'
+        'yellow',
+        'purple'
     ]
     if (color === 'cycle') {
         let lastColor = workflow.item.flags['chris-premades']?.spell?.eldritchBlast?.lastColor ?? Math.floor(Math.random() * colors.length);

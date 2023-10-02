@@ -44,12 +44,14 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
     ];
     let armor = workflow.targets.first().actor.items.find(i => armorTypes.includes(i.system.armor?.type) && i.system.equipped);
     let dex = armor?.system?.armor?.dex ?? workflow.targets.first().actor.system.abilities.dex.mod
-    effectData.changes.push({
-        'key': 'system.attributes.ac.bonus',
-        'mode': 2,
-        'value': -dex,
-        'priority': 20
-    });
+    if (dex > 0) {
+        effectData.changes.push({
+            'key': 'system.attributes.ac.bonus',
+            'mode': 2,
+            'value': -dex,
+            'priority': 20
+        });
+    }
     await chris.createEffect(workflow.targets.first().actor, effectData);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {

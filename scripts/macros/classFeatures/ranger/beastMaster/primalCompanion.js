@@ -42,7 +42,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -62,7 +63,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         }
     }
     let updates2 = {};

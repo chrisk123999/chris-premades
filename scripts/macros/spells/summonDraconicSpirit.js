@@ -41,7 +41,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -58,7 +59,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         },
         'embedded': {
             'Item': {

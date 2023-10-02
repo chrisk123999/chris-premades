@@ -3,7 +3,7 @@ import {chris} from '../../../helperFunctions.js';
 export async function cleave({speaker, actor, token, character, item, args, scope, workflow}) {
     let validTypes = [
         'battleaxe',
-        'greateaxe',
+        'greataxe',
         'halberd',
         'greatsword'
     ];

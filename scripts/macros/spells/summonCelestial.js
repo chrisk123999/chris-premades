@@ -33,7 +33,8 @@ export async function summonCelestial({speaker, actor, token, character, item, a
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -47,7 +48,8 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         },
         'embedded': {
             'Item': {

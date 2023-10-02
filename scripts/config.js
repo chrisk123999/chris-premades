@@ -1276,6 +1276,7 @@ export function setConfig() {
                         'label': 'What color?',
                         'default': 'purple',
                         'values': [
+                            {'value': 'purple', 'html': 'Purple'},
                             {'value': 'dark_green', 'html': 'Dark Green'},
                             {'value': 'dark_red', 'html': 'Red'},
                             {'value': 'green', 'html': 'Green'},

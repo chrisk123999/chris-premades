@@ -41,7 +41,8 @@ export async function summonFey({speaker, actor, token, character, item, args, s
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -55,7 +56,8 @@ export async function summonFey({speaker, actor, token, character, item, args, s
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         },
         'embedded': {
             'Item': {

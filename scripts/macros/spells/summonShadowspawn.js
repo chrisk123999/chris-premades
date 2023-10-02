@@ -40,7 +40,8 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -54,7 +55,8 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         },
         'embedded': {
             'Item': {

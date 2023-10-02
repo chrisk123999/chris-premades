@@ -1,3 +1,24 @@
+# 0.7.26 Release:
+## Bug Fixes:
+- Steel Defender
+- Homunculus Servant
+- Animating Performance
+- Summon Wildfire Spirit
+- Primal Companion
+- Cleave
+- Concussive Smash
+- Pommel Strike
+- Eldritch Blast
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Draconic Spirit
+- Summon Elemental
+- Summon Fey
+- Summon Fiend
+- Summon Shadowspawn
+  
 # 0.7.25 Release:
 ## New Monster Content:
 - Duergar Mind Master: Duergar Resilience, Mind-Poison Dagger, Invisibility, Mind Mastery, Reduce

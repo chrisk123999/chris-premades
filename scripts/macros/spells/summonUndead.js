@@ -33,7 +33,8 @@ export async function summonUndead({speaker, actor, token, character, item, args
                 }
             },
             'prototypeToken': {
-                'name': name
+                'name': name,
+                'disposition': workflow.token.document.disposition
             },
             'flags': {
                 'chris-premades': {
@@ -47,7 +48,8 @@ export async function summonUndead({speaker, actor, token, character, item, args
             }
         },
         'token': {
-            'name': name
+            'name': name,
+            'disposition': workflow.token.document.disposition
         },
         'embedded': {
             'Item': {
