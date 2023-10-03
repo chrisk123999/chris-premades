@@ -1655,6 +1655,20 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Savage Attacker': {
+                'checkbox': {
+                    'auto': {
+                        'label': 'Auto Reroll?',
+                        'default': false
+                    }
+                },
+                'number': {
+                    'reroll': {
+                        'label': 'Auto reroll at:',
+                        'default': 1
+                    }
+                }
             }
         },
         'automations': {
@@ -4198,6 +4212,10 @@ export function setConfig() {
                 'settings': [
                     'Template Listener'
                 ]
+            },
+            'Savage Attacker': {
+                'name': 'Savage Attacker',
+                'version': '0.7.28'
             }
         }
     });

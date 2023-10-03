@@ -205,6 +205,7 @@ import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhosts
 import {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
+import {savageAttacker} from './macros/feats/savageAttacker.js';
 import {saveConditionImmune} from './macros/generic/saveConditionImmune.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
@@ -587,6 +588,7 @@ export let macros = {
     'riteOfTheDawn': riteOfTheDawn,
     'sacredWeapon': sacredWeapon,
     'sanctuary': sanctuary,
+    'savageAttacker': savageAttacker,
     'saveConditionImmune': saveConditionImmune,
     'scorchingRay': scorchingRay,
     'shadowBlade': shadowBlade,

@@ -1,3 +1,7 @@
+# 0.7.28 Release:
+## New Content:
+- Feat: Savage Attacker
+  
 # 0.7.27 Release:
 ## New Content:
 - Spells: Guardian of Nature and Insect Plague
