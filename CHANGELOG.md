@@ -1,3 +1,10 @@
+# 0.7.30 Release:
+## Bug Fixes:
+- Fog Cloud
+- Concussive Smash
+- Lacerate
+- Backbreaker
+  
 # 0.7.29 Release:
 ## New Content:
 - Feat: Crusher

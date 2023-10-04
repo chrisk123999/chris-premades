@@ -4130,7 +4130,7 @@ export function setConfig() {
             },
             'Backbreaker': {
                 'name': 'Backbreaker',
-                'version': '0.7.19'
+                'version': '0.7.30'
             },
             'Brace': {
                 'name': 'Brace',

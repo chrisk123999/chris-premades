@@ -63,7 +63,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         'mace',
         'maul',
         'morningstar',
-        'warhammer'
+        'warhammer',
+        'club'
     ];
     if (!validTypes.includes(workflow.item.system.baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Concussive Smash');

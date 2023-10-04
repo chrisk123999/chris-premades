@@ -25,6 +25,7 @@ import {diceSoNice} from './diceSoNice.js';
 import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {setConfig} from './config.js';
+import {compendiumRender} from './compendium.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -205,6 +206,7 @@ Hooks.once('ready', async function() {
         Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
+    Hooks.on('renderCompendium', compendiumRender);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,
