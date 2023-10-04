@@ -50,7 +50,7 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
     };
     let xray = game.settings.get('chris-premades', 'Show Limits Animations');
     if(game.modules.get('walledtemplates')?.active) {
-        new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).mask(finalTemplate).persist(true).attachTo(template).play();
+        new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).mask(template).persist(true).attachTo(template).play();
     } else {
         new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(template).play();
     }
