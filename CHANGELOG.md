@@ -3,7 +3,7 @@
 - Feat: Crusher
 ## Bug Fixes:
 - Crusher: critical
-- Vortext Warp
+- Vortex Warp
 - Darkness (Thanks TMinz)
 - Fog Cloud (Thanks TMinz)
 - Spirit Guardians (Thanks TMinz)
