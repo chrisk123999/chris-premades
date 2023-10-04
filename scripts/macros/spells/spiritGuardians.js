@@ -61,23 +61,30 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!effect) return;
     await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
     let color = chris.getConfiguration(workflow.item, 'color') ?? 'blueyellow';
+    let variation = `.${chris.getConfiguration(workflow.item, 'variation') ?? 'ring'}`;
     if (color === 'random') {
         let colors = [
             'blueyellow',
-            'blue.ring',
-            'dark_black.ring',
-            'dark_blue.ring',
-            'dark_purple.ring',
-            'dark_red.ring',
-            'dark_whiteblue.ring',
-            'green.ring',
-            'orange.ring',
-            'greenorange.ring',
-            'pinkpurple.ring'
+            'blue',
+            'dark_black',
+            'dark_blue',
+            'dark_purple',
+            'dark_red',
+            'dark_whiteblue',
+            'green',
+            'orange',
+            'greenorange',
+            'pinkpurple'
         ];
         color = colors[Math.floor(Math.random() * colors.length)];
     }
-    new Sequence().effect().file('jb2a.spirit_guardians.' + color).size(workflow.token.document.width + 6, {'gridUnits': true}).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
+    if (chris.jb2aCheck() === 'free') {
+        color = 'blueyellow';
+    }
+    if (color === 'blueyellow' || color === 'dark_blue') {
+        variation = '';
+    }
+    new Sequence().effect().file('jb2a.spirit_guardians.' + color + variation).size(workflow.token.document.width + 6, {'gridUnits': true}).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
 async function effectEnd(token) {
     await tokenMove.remove('spiritGuardians', token.id);

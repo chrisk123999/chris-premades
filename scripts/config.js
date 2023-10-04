@@ -1089,17 +1089,27 @@ export function setConfig() {
                         'default': 'blueyellow',
                         'values': [
                             {'value': 'blueyellow', 'html': 'Blue-Yellow'},
-                            {'value': 'blue.ring', 'html': 'Blue'},
-                            {'value': 'dark_black.ring', 'html': 'Black'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'dark_black', 'html': 'Black'},
                             {'value': 'dark_blue', 'html': 'Dark Blue'},
-                            {'value': 'dark_purple.ring', 'html': 'Purple'},
-                            {'value': 'dark_red.ring', 'html': 'Red'},
-                            {'value': 'dark_whiteblue.ring', 'html': 'White-Blue'},
-                            {'value': 'green.ring', 'html': 'Green'},
-                            {'value': 'orange.ring', 'html': 'Orange'},
-                            {'value': 'greenorange.ring', 'html': 'Green-Orange'},
-                            {'value': 'pinkpurple.ring', 'html': 'Pink-Purple'},
+                            {'value': 'dark_purple', 'html': 'Purple'},
+                            {'value': 'dark_red', 'html': 'Red'},
+                            {'value': 'dark_whiteblue', 'html': 'White-Blue'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'greenorange', 'html': 'Green-Orange'},
+                            {'value': 'pinkpurple', 'html': 'Pink-Purple'},
                             {'value': 'random', 'html': 'Random'}
+                        ]
+                    },
+                    'variation': {
+                        'label': 'What variation?',
+                        'default': 'ring',
+                        'values': [
+                            {'value': 'ring', 'html': 'Ring'},
+                            {'value': 'no_ring', 'html': 'No Ring'},
+                            {'value': 'particles', 'html': 'Particles'},
+                            {'value': 'spirits', 'html': 'Spirits'}
                         ]
                     }
                 }
