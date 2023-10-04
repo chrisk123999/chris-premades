@@ -53,7 +53,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {'parent': canvas.scene});
     let template = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
     let[finalTemplate] = await template.drawPreview();
-    new Sequence().effect().file('jb2a.fog_cloud.1.white').scale(workflow.castData.castLevel).aboveLighting().opacity(0.5).persist(true).attachTo(finalTemplate).play();
+    let xray = game.settings.get('chris-premades', 'See Limits Animations');
+    new Sequence().effect().file('jb2a.fog_cloud.1.white').scale(workflow.castData.castLevel).aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(finalTemplate).play();
     let effectData = {
         'label': workflow.item.name,
         'icon': workflow.item.img,
