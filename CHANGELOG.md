@@ -1,3 +1,7 @@
+# 0.7.31 Release:
+## Bug Fixes:
+- Darkness
+  
 # 0.7.30 Release:
 ## Bug Fixes:
 - Fog Cloud
