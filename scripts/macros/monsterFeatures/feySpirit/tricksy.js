@@ -37,6 +37,8 @@ export async function tricksy({speaker, actor, token, character, item, args, sco
         }
     });
 
+    let xray = game.settings.get('chris-premades', 'Show Limits Animations');
+    new Sequence().effect().file('jb2a.darkness.black').scaleToObject(1.25).aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(template).play();
     let effect = chris.findEffect(workflow.actor, workflow.item.name + ' Template');
     if (!effect) return;
     if (!chris.inCombat()) return;

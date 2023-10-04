@@ -38,15 +38,22 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
         }
     });
     let attachToken = await chris.dialog('Attach to self?', [['Yes', true], ['No', false]]) || false;
-    if (!attachToken) return;
-    let tokenObject = workflow.token;
-    await template.update(
-        {
-            'x': tokenObject.center.x,
-            'y': tokenObject.center.y
-        }
-    );
-    await tokenAttacher.attachElementsToToken([template], tokenObject, false);
+    if (attachToken) {
+        let tokenObject = workflow.token;
+        await template.update(
+            {
+                'x': tokenObject.center.x,
+                'y': tokenObject.center.y
+            }
+        );
+        await tokenAttacher.attachElementsToToken([template], tokenObject, false);
+    };
+    let xray = game.settings.get('chris-premades', 'Show Limits Animations');
+    if(game.modules.get('walledtemplates')) {
+        new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).mask(finalTemplate).persist(true).attachTo(template).play();
+    } else {
+        new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(template).play();
+    }
 }
 async function darknessHook(workflow) {
     if (workflow.targets.size != 1) return;
