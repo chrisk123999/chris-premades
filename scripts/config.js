@@ -1788,7 +1788,7 @@ export function setConfig() {
             },
             'Darkness': {
                 'name': 'Darkness',
-                'version': '0.7.01'
+                'version': '0.7.29'
             },
             'Dawn': {
                 'name': 'Dawn',
@@ -4226,6 +4226,10 @@ export function setConfig() {
             'Savage Attacker': {
                 'name': 'Savage Attacker',
                 'version': '0.7.28'
+            },
+            'Crusher': {
+                'name': 'Crusher',
+                'version': '0.7.29'
             }
         }
     });

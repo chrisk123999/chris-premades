@@ -1,3 +1,13 @@
+# 0.7.29 Release:
+## New Content:
+- Feat: Crusher
+## Bug Fixes:
+- Crusher: critical
+- Vortext Warp
+- Darkness (Thanks TMinz)
+- Fog Cloud (Thanks TMinz)
+- Spirit Guardians (Thanks TMinz)
+  
 # 0.7.28 Release:
 ## New Content:
 - Feat: Savage Attacker

@@ -4,8 +4,10 @@ export async function vortexWarp({speaker, actor, token, character, item, args, 
     let targetToken = workflow.targets.first();
     let maxRange = 90 + (30 * (workflow.castData.castLevel - 2));
     let icon = targetToken.document.texture.src;
+    let interval = -1;
+    if (chris.getSize(targetToken.actor, false) > 2) interval = 1;
     await workflow.actor.sheet.minimize();
-    let position = await chris.aimCrosshair(workflow.token, maxRange, icon, -1, targetToken.document.width);
+    let position = await chris.aimCrosshair(workflow.token, maxRange, icon, interval, targetToken.document.width);
     if (position.cancelled) {
         await workflow.actor.sheet.maximize();
         return;

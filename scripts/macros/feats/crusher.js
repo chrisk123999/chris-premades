@@ -1,4 +1,6 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function critical({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !workflow.isCritical) return;
@@ -8,20 +10,15 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         queue.remove(workflow.item.uuid);
         return;
     }
-    let effect = chris.findEffect(workflow.actor, 'Crusher: Critical');
-    if (!effect) {
-        queue.remove(workflow.item.uuid);
-        return;
-    }
-    let originItem = await fromUuid(effect.origin);
-    if (!originItem) {
+    let feature = chris.getItem(workflow.actor, 'Crusher: Critical');
+    if (!feature) {
         queue.remove(workflow.item.uuid);
         return;
     }
     let effetData = {
-        'label': originItem.name,
-        'icon': originItem.img,
-        'origin': originItem.uuid,
+        'label': feature.name,
+        'icon': feature.img,
+        'origin': feature.uuid,
         'duration': {
             'seconds': 12
         },
@@ -45,9 +42,57 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         }
     }
     await chris.createEffect(workflow.targets.first().actor, effetData);
+    await feature.use();
+    queue.remove(workflow.item.uuid);
 }
-async function move ({speaker, actor, token, character, item, args, scope, workflow}) {
-    
+async function move({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1 || !workflow.damageRoll) return;
+    let targetToken = workflow.targets.first();
+    let targetSize = chris.getSize(targetToken.actor, false);
+    console.log(targetSize);
+    if (targetSize > (chris.getSize(workflow.actor, false) + 1)) return;
+    let feature = chris.getItem(workflow.actor, 'Crusher');
+    if (!feature) return;
+    let turnCheck = chris.perTurnCheck(feature, 'feat', 'crusher', false);
+    if (!turnCheck) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'crusherCritical', 450);
+    if (!queueSetup) return;
+    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
+    if (!damageTypes.has(translate.damageType('bludgeoning'))) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Move target?');
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    await workflow.actor.sheet.minimize();
+    let icon = targetToken.document.texture.src;
+    let interval = -1;
+    if (targetSize > 2) interval = 1;
+    let position = await chris.aimCrosshair(targetToken, 5, icon, interval, targetToken.document.width);
+    if (position.cancelled) {
+        await workflow.actor.sheet.maximize();
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    let newCenter = canvas.grid.getSnappedPosition(position.x - targetToken.w / 2, position.y - targetToken.h / 2, 1);
+    let targetUpdate = {
+        'token': {
+            'x': newCenter.x,
+            'y': newCenter.y
+        }
+    };
+    let options = {
+        'permanent': true,
+        'name': feature.name,
+        'description': feature.name
+    };
+    await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
+    await workflow.actor.sheet.maximize();
+    await feature.use();
+    queue.remove(workflow.item.uuid);
 }
 export let crusher = {
     'critical': critical,

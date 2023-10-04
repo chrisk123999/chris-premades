@@ -60,11 +60,16 @@ const attacks = [
     'rwak',
     'msak',
     'rsak'
-]
+];
+const yesNo = [
+    ['Yes', true],
+    ['No', false]
+];
 export let constants = {
     'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
     'disadvantageEffectData': disadvantageEffectData,
     'advantageEffectData': advantageEffectData,
     'damageTypeMenu': damageTypeMenu,
-    'attacks': attacks
+    'attacks': attacks,
+    'yesNo': yesNo
 }

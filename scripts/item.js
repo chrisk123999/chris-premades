@@ -170,6 +170,7 @@ async function updateItem(itemDocument) {
     let info;
     if (compendiumItem.flags['chris-premades']?.info) info = duplicate(compendiumItem.flags['chris-premades'].info);
     originalItem.system.description = itemDocument.system.description;
+    originalItem.system.chatFlavor = itemDocument.system.chatFlavor;
     originalItem.system.uses = itemDocument.system.uses;
     if (itemType === 'spell') {
         originalItem.system.preparation = itemDocument.system.preparation;
