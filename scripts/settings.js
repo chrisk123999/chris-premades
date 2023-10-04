@@ -264,15 +264,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('VAE Temporary Item Buttons', 'Module Integration');
-    game.settings.register(moduleName, 'See Limits Animations', {
-        'name': 'See Limits Animations',
+    game.settings.register(moduleName, 'Show Limits Animations', {
+        'name': 'Show Limits Animations',
         'hint': 'When enabled, this setting allows Sequencer effects to be displayed over vision blocking templates.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
         'default': false,
     });
-    addMenuSetting('See Limits Animations', 'Module Integration');
+    addMenuSetting('Show Limits Animations', 'Module Integration');
     game.settings.register(moduleName, 'Condition Fixes', {
         'name': 'Blinded and Invisibility Changes',
         'hint': 'This setting restores the blinded and invisibility conditions to how they worked in version 9 of Foundry.',
