@@ -2,7 +2,7 @@
 ## New Content:
 - Feat: Crusher
 ## Bug Fixes:
-- Crusher: critical
+- Crusher: Critical
 - Vortex Warp
 - Darkness (Thanks TMinz)
 - Fog Cloud (Thanks TMinz)
