@@ -69,8 +69,7 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     }
     await workflow.actor.sheet.minimize();
     let icon = targetToken.document.texture.src;
-    let interval = -1;
-    if (targetSize > 2) interval = 1;
+    let interval = targetToken.document.width % 2 === 0 ? 1 : -1;
     let position = await chris.aimCrosshair(targetToken, 5, icon, interval, targetToken.document.width);
     if (position.cancelled) {
         await workflow.actor.sheet.maximize();

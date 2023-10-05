@@ -524,8 +524,8 @@ export let chris = {
         return warpgate.util.firstOwner(document);
     },
     'jb2aCheck': function _jb2aCheck() {
-        let patreon = (game.modules.get('jb2a_patreon')?.active);
-        let free = (game.modules.get('JB2A_DnD5e')?.active);
+        let patreon = game.modules.get('jb2a_patreon')?.active;
+        let free = game.modules.get('JB2A_DnD5e')?.active;
         if (patreon && free) {
             ui.notifications.info('Both JB2A Modules are Active Please Disable the Free Version.');
             return 'patreon';
@@ -534,6 +534,10 @@ export let chris = {
         if (free) return 'free';
         ui.notifications.info('No JB2A Module Active');
         return false;
+    },
+    'aseCheck': function _aseCheck() {
+        let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
+        return cartoon;
     },
     'selectDocument': async function selectDocument(title, documents, useUuids) {
         return await new Promise(async (resolve) => {

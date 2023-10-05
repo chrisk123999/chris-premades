@@ -178,6 +178,14 @@
 		"compatibility": {
 			"verified": "2.5.7"
 		}
+	},
+	{
+		"id": "animated-spell-effects-cartoon",
+		"type": "module",
+		"manifest": "https://github.com/jackkerouac/animated-spell-effects-cartoon/releases/download/latest/module.json",
+		"compatibility": {
+			"verified": "0.4.5"
+		}
 	}]
   },
   "esmodules": [

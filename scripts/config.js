@@ -284,7 +284,7 @@ export function setConfig() {
                         'default': 'purple',
                         'values': [
                             {'value': 'white', 'html': 'White'},
-                            {'value': 'red', 'html': 'Red'},
+                            {'value': 'dark_red', 'html': 'Red'},
                             {'value': 'orange', 'html': 'Orange'},
                             {'value': 'yellow', 'html': 'Yellow'},
                             {'value': 'green', 'html': 'Green'},
@@ -1679,6 +1679,82 @@ export function setConfig() {
                         'default': 1
                     }
                 }
+            },
+            'Rage': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'lightning', 'html': 'Purple Lightning'},
+                            {'value': 'saiyan', 'html': 'Super Saiyan'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Burning Hands': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Fly': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Faerie Fire': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'green',
+                        'values': [
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'purple', 'html': 'Violet'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Vortex Warp': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'simple', 'html': 'Simple'}
+                        ]
+                    }
+                }
+            },
+            'Disintegrate': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -2471,7 +2547,7 @@ export function setConfig() {
             },
             'Rage': {
                 'name': 'Rage',
-                'version': '0.7.01',
+                'version': '0.7.31',
                 'mutation': {
                     'self': 'Rage'
                 }
@@ -4230,6 +4306,22 @@ export function setConfig() {
             'Crusher': {
                 'name': 'Crusher',
                 'version': '0.7.29'
+            },
+            'Burning Hands': {
+                'name': 'Burning Hands',
+                'version': '0.7.32'
+            },
+            'Fly': {
+                'name': 'Fly',
+                'version': '0.7.32'
+            },
+            'Faerie Fire': {
+                'name': 'Faerie Fire',
+                'version': '0.7.32'
+            },
+            'Disintegrate': {
+                'name': 'Disintegrate',
+                'version': '0.7.32'
             }
         }
     });

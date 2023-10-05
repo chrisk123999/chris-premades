@@ -30,3 +30,4 @@ Additional support and feature requests can be made on my Discord server: https:
 - Tidy5e Sheet
 - Token Magic FX
 - Visual Active Effects
+- Animated Spell Effects: Animated Spell Effects: Cartoon
