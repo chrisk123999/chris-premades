@@ -31,16 +31,16 @@ let names = {
 }
 let optionalModules = [
     'ATL',
-    'JB2A_DnD5e',
     'about-time',
     'animated-spell-effects-cartoon',
     'compendium-folders',
     'custom-character-sheet-sections',
     'ddb-importer',
-    'foundryvtt-dice-so-nice',
+    'dice-so-nice',
     'foundryvtt-simple-calendar',
     'fxmaster',
     'itemacro',
+    'JB2A_DnD5e',
     'jb2a_patreon',
     'quick-insert',
     'smalltime',

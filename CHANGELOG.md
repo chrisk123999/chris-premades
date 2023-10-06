@@ -1,3 +1,7 @@
+# 0.7.33 Release:
+## Bug Fixes:
+- Slasher: Reduce Speed
+
 # 0.7.32 Release:
 ## New Content:
 - Spells: Burning Hands, Disintegrate, Faerie Fire, and Fly

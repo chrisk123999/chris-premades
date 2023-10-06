@@ -2244,7 +2244,8 @@ export function setConfig() {
                 'name': 'Shadow of Moil',
                 'version': '0.7.01',
                 'settings': [
-                    'Shadow of Moil'
+                    'Shadow of Moil',
+                    'On Hit'
                 ]
             },
             'Conjure Minor Elementals': {
@@ -3914,6 +3915,10 @@ export function setConfig() {
             },
             'Slasher: Critical Hit': {
                 'name': 'Slasher: Critical Hit',
+                'version': '0.7.01'
+            },
+            'Slasher: Reduce Speed': {
+                'name': 'Slasher: Reduce Speed',
                 'version': '0.7.01'
             },
             'Strike of the Giants: Cloud Strike': {
