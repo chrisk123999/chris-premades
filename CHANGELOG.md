@@ -1,6 +1,7 @@
 # 0.7.33 Release:
 ## Bug Fixes:
 - Slasher: Reduce Speed
+- Beacon of Hope
 
 # 0.7.32 Release:
 ## New Content:

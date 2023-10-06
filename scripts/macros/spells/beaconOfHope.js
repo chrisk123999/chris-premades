@@ -1,18 +1,19 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
+import {translate} from '../../../translations.js';
 export async function beaconOfHope(token, {item, workflow, ditem}) {
     let effect = chris.findEffect(token.actor, 'Beacon of Hope');
     if (!effect) return;
     if (!workflow.damageRoll) return;
-    if (workflow.defaultDamageType != 'healing') return;
-    if (chris.checkTrait(token.actor, 'di', 'healing')) return;
+    if (workflow.defaultDamageType != translate.damageType('healing')) return;
+    if (chris.checkTrait(token.actor, 'di', translate.damageType('healing'))) return;
     let newHealingTotal = 0;
     let queueSetup = await queue.setup(workflow.uuid, 'beaconOfHope', 351);
     if (!queueSetup) return;
     for (let i = 0; workflow.damageRoll.terms.length > i; i++) {
         let flavor = workflow.damageRoll.terms[i].flavor;
         let isDeterministic = workflow.damageRoll.terms[i].isDeterministic;
-        if (flavor.toLowerCase() === 'healing' && !isDeterministic) {
+        if (flavor.toLowerCase() === translate.damageType('healing') && !isDeterministic) {
             newHealingTotal += workflow.damageRoll.terms[i].faces * workflow.damageRoll.terms[i].results.length;
         } else {
             if (!isNaN(workflow.damageRoll.terms[i].total)) {
@@ -20,7 +21,7 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
             }
         }
     }
-    if (chris.checkTrait(token.actor, 'dr', 'healing')) newHealingTotal = Math.floor(newHealingTotal / 2);
+    if (chris.checkTrait(token.actor, 'dr', translate.damageType('healing'))) newHealingTotal = Math.floor(newHealingTotal / 2);
     let maxHP = token.actor.system.attributes.hp.max;
     ditem.hpDamage = -Math.clamped(newHealingTotal, 0, maxHP - ditem.oldHP);
     ditem.newHP = Math.clamped(ditem.oldHP + newHealingTotal, 0, maxHP);
