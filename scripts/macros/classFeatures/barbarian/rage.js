@@ -92,8 +92,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     }
-    let totem = workflow.actor.flags['chris-premades']?.feature?.totemSpirit;
-    if (totem === 'bear') {
+    let totemBear = chris.getItem(workflow.actor, 'Totem Spirit: Bear');
+    if (totemBear) {
         effectData.changes = effectData.changes.concat([
             {
                 'key': 'system.traits.dr.value',
@@ -161,6 +161,25 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
+    let formOfBeastFeature = chris.getItem(workflow.actor, 'Form of the Beast');
+    if (formOfBeastFeature) {
+        let selection = await chris.dialog(formOfBeastFeature.name, [['Bite', 'Form of the Beast: Bite'], ['Claws', 'Form of the Beast: Claws'], ['Tail', 'Form of the Beast: Tail'], ['None', false]], 'Manifest a natural weapon?');
+        if (selection) {
+            let featureData2 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', selection);
+            if (!featureData2) return;
+            featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', selection);
+            if (chris.getItem(workflow.actor, 'Bestial Soul')) setProperty(featureData2, 'flags.midiProperties.magicdam', true);
+            setProperty(featureData2, 'flags.chris-premades.feature.formOfTheBeast.natural', true);
+            updates.embedded.Item[selection] = featureData2;
+            if (selection === 'Form of the Beast: Tail') {
+                let featureData3 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Form of the Beast: Tail Reaction');
+                if (!featureData3) return;
+                featureData3.system.description.value = chris.getItemDescription('CPR - Descriptions', featureData3.name);
+                updates.embedded.Item[featureData3.name] = featureData3;
+            }
+            await formOfBeastFeature.use();
+        }
+    }
     let options = {
         'permanent': false,
         'name': 'Rage',
@@ -417,6 +436,12 @@ async function animationEnd(token, origin) {
     let animation = chris.getConfiguration(origin, 'animation') ?? 'none';
     if (animation === 'none') return;
     await Sequencer.EffectManager.endEffects({'name': 'Rage', 'object': token});
+    new Sequence()
+        .animation()
+        .on(token)
+        .opacity(1)
+
+        .play();
 }
 export let rage = {
     'item': item,

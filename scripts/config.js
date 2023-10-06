@@ -112,6 +112,12 @@ export function setConfig() {
             'Tentacle of the Deeps: Summon': [
                 'Tentacle of the Deeps: Move',
                 'Tentacle of the Deeps: Attack'
+            ],
+            'Bestial Soul': [
+                'Form of the Beast: Bite',
+                'Form of the Beast: Claws',
+                'Form of the Beast: Tail',
+                'Form of the Beast: Tail (reaction)'
             ]
         },
         'restrictedItems': {
@@ -2554,7 +2560,7 @@ export function setConfig() {
             },
             'Totem Spirit: Bear': {
                 'name': 'Totem Spirit: Bear',
-                'version': '0.7.01'
+                'version': '0.7.33'
             },
             'Danger Sense': {
                 'name': 'Danger Sense',
@@ -4322,6 +4328,18 @@ export function setConfig() {
             'Disintegrate': {
                 'name': 'Disintegrate',
                 'version': '0.7.32'
+            },
+            'Form of the Beast': {
+                'name': 'Form of the Beast',
+                'version': '0.7.33'
+            },
+            'Bestial Soul': {
+                'name': 'Bestial Soul',
+                'version': '0.7.33'
+            },
+            'Infectious Fury': {
+                'name': 'Infectious Fury',
+                'version': '0.7.33'
             }
         }
     });

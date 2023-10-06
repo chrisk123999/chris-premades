@@ -280,6 +280,8 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
+import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -653,5 +655,7 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'bestialSoul': bestialSoul,
+    'infectiousFury': infectiousFury
 }
