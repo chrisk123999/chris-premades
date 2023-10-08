@@ -206,6 +206,7 @@ import {resistantArmor} from './macros/classFeatures/artificer/infusions/resista
 import {returningWeapon} from './macros/classFeatures/artificer/infusions/returningWeapon.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
+import {rugOfSmothering} from './macros/monsterFeatures/rugOfSmothering/rugOfSmothering.js';
 import {sacredWeapon} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 import {salamander} from './macros/monsterFeatures/salamander/salamander.js';
 import {sanctuary} from './macros/spells/sanctuary.js';
@@ -332,6 +333,7 @@ let monster = {
     'intellectDevourer': intellectDevourer,
     'kobold': kobold,
     'leucrotta': leucrotta,
+    'rugOfSmothering': rugOfSmothering,
     'salamander': salamander,
     'shadow': shadow,
     'shadowDemon': shadowDemon,
