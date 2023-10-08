@@ -23,7 +23,18 @@ export async function smother({speaker, actor, token, character, item, args, sco
     if (!workflow.hitTargets.size) return
     let targetToken = workflow.targets.first();
     if(game.modules.get('Rideable')?.active) {
-        await MidiQOL.moveToken(workflow.token, {x: targetToken.x, y: targetToken.y});
+        let targetUpdate = {
+            'token': {
+                'x': targetToken.x,
+                'y': targetToken.y
+            }
+        };
+        let options = {
+            'permanent': true,
+            'name': workflow.item.name,
+            'description': workflow.item.name
+        };
+        await warpgate.mutate(workflow.token.document, targetUpdate, {}, options);
         game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true});
     }
 }
