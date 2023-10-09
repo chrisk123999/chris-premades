@@ -112,6 +112,12 @@ export function setConfig() {
             'Tentacle of the Deeps: Summon': [
                 'Tentacle of the Deeps: Move',
                 'Tentacle of the Deeps: Attack'
+            ],
+            'Bestial Soul': [
+                'Form of the Beast: Bite',
+                'Form of the Beast: Claws',
+                'Form of the Beast: Tail',
+                'Form of the Beast: Tail (reaction)'
             ]
         },
         'restrictedItems': {
@@ -284,7 +290,7 @@ export function setConfig() {
                         'default': 'purple',
                         'values': [
                             {'value': 'white', 'html': 'White'},
-                            {'value': 'red', 'html': 'Red'},
+                            {'value': 'dark_red', 'html': 'Red'},
                             {'value': 'orange', 'html': 'Orange'},
                             {'value': 'yellow', 'html': 'Yellow'},
                             {'value': 'green', 'html': 'Green'},
@@ -1679,6 +1685,82 @@ export function setConfig() {
                         'default': 1
                     }
                 }
+            },
+            'Rage': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'lightning', 'html': 'Purple Lightning'},
+                            {'value': 'saiyan', 'html': 'Super Saiyan'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Burning Hands': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Fly': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Faerie Fire': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'green',
+                        'values': [
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'purple', 'html': 'Violet'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
+            'Vortex Warp': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'simple', 'html': 'Simple'}
+                        ]
+                    }
+                }
+            },
+            'Disintegrate': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -2162,7 +2244,8 @@ export function setConfig() {
                 'name': 'Shadow of Moil',
                 'version': '0.7.01',
                 'settings': [
-                    'Shadow of Moil'
+                    'Shadow of Moil',
+                    'On Hit'
                 ]
             },
             'Conjure Minor Elementals': {
@@ -2471,14 +2554,14 @@ export function setConfig() {
             },
             'Rage': {
                 'name': 'Rage',
-                'version': '0.7.01',
+                'version': '0.7.31',
                 'mutation': {
                     'self': 'Rage'
                 }
             },
             'Totem Spirit: Bear': {
                 'name': 'Totem Spirit: Bear',
-                'version': '0.7.01'
+                'version': '0.7.33'
             },
             'Danger Sense': {
                 'name': 'Danger Sense',
@@ -3834,6 +3917,10 @@ export function setConfig() {
                 'name': 'Slasher: Critical Hit',
                 'version': '0.7.01'
             },
+            'Slasher: Reduce Speed': {
+                'name': 'Slasher: Reduce Speed',
+                'version': '0.7.01'
+            },
             'Strike of the Giants: Cloud Strike': {
                 'name': 'Strike of the Giants: Cloud Strike',
                 'version': '0.7.01'
@@ -4230,6 +4317,34 @@ export function setConfig() {
             'Crusher': {
                 'name': 'Crusher',
                 'version': '0.7.29'
+            },
+            'Burning Hands': {
+                'name': 'Burning Hands',
+                'version': '0.7.32'
+            },
+            'Fly': {
+                'name': 'Fly',
+                'version': '0.7.32'
+            },
+            'Faerie Fire': {
+                'name': 'Faerie Fire',
+                'version': '0.7.32'
+            },
+            'Disintegrate': {
+                'name': 'Disintegrate',
+                'version': '0.7.32'
+            },
+            'Form of the Beast': {
+                'name': 'Form of the Beast',
+                'version': '0.7.33'
+            },
+            'Bestial Soul': {
+                'name': 'Bestial Soul',
+                'version': '0.7.33'
+            },
+            'Infectious Fury': {
+                'name': 'Infectious Fury',
+                'version': '0.7.33'
             }
         }
     });

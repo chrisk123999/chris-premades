@@ -104,6 +104,7 @@ async function updateItem(itemDocument) {
                 searchCompendiums.push('chris-premades.CPR Race Features');
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 searchCompendiums.push('chris-premades.CPR Feats');
+                searchCompendiums.push('chris-premades.CPR Actions');
                 break;
         }
         if (game.settings.get('chris-premades', 'Use Additional Compendiums')) {
@@ -113,7 +114,7 @@ async function updateItem(itemDocument) {
         }
         for (let compendium of searchCompendiums) {
             if (!game.packs.get(compendium)) {
-                ui.notifications.warn('And invalid compendium key was specified! (Check your "Additional Compendiums" setting)');
+                ui.notifications.warn('And invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
                 continue;
             }
             compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);

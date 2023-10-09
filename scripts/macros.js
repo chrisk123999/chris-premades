@@ -37,6 +37,7 @@ import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
+import {burningHands} from './macros/spells/burningHands.js';
 import {callLightning} from './macros/spells/callLightning.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
@@ -75,6 +76,7 @@ import {deepGnome} from './macros/monsterFeatures/deepGnome/deepGnome.js';
 import {destructiveWave} from './macros/spells/destructiveWave.js';
 import {destructiveWrath} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 import {detectThoughts} from './macros/spells/detectThoughts.js';
+import {disintegrate} from './macros/spells/disintegrate.js';
 import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
@@ -104,6 +106,7 @@ import {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination
 import {explodingHeals} from './macros/mechanics/explodingHeals.js';
 import {eyesOfMinuteSeeing} from './macros/items/eyesOfMinuteSeeing.js';
 import {eyesOfTheEagle} from './macros/items/eyesOfTheEagle.js';
+import {faerieFire} from './macros/spells/faerieFire.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
 import {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
@@ -115,6 +118,7 @@ import {findSteed} from './macros/spells/findSteed.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
+import {fly} from './macros/spells/fly.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
@@ -276,6 +280,8 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
+import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -449,6 +455,7 @@ export let macros = {
     'blink': blink,
     'bloodSpear': bloodSpear,
     'brandOfCastigation': brandOfCastigation,
+    'burningHands': burningHands,
     'callLightning': callLightning,
     'chainLightning': chainLightning,
     'charmPerson': charmPerson,
@@ -480,6 +487,7 @@ export let macros = {
     'destructiveWave': destructiveWave,
     'destructiveWrath': destructiveWrath,
     'detectThoughts': detectThoughts,
+    'disintegrate': disintegrate,
     'divineFury': divineFury,
     'divineSmite': divineSmite,
     'divineStrike': divineStrike,
@@ -499,6 +507,7 @@ export let macros = {
     'experimentalElixir': experimentalElixir,
     'expertDivination': expertDivination,
     'explodingHeals': explodingHeals,
+    'faerieFire': faerieFire,
     'fallenPuppet': fallenPuppet,
     'favoredFoe': favoredFoe,
     'feyPresence': feyPresence,
@@ -506,6 +515,7 @@ export let macros = {
     'findGreaterSteed': findGreaterSteed,
     'findSteed': findSteed,
     'fireStrike': fireStrike,
+    'fly': fly,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
@@ -645,5 +655,7 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'bestialSoul': bestialSoul,
+    'infectiousFury': infectiousFury
 }

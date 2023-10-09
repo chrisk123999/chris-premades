@@ -1,3 +1,26 @@
+# 0.7.33 Release:
+## Bug Fixes:
+- Slasher: Reduce Speed
+- Beacon of Hope
+
+# 0.7.32 Release:
+## New Content:
+- Spells: Burning Hands, Disintegrate, Faerie Fire, and Fly
+## Bug Fixes:
+- Crusher
+- Magic Missile
+- Rage
+- Vortex Warp
+## New Enhanced Animations (Thanks Eskiemoh):
+- Burning Hands
+- Disintegrate
+- Faerie Fire
+- Fly
+- Rage
+- Vortex Warp
+## Update Notes:
+- Added "Animated Spell Effects: Cartoon" as an optional module requirement. This module is required for many of the new enhanced animations.
+  
 # 0.7.31 Release:
 ## Bug Fixes:
 - Darkness

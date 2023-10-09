@@ -1,6 +1,8 @@
 let names = {
-    'about-time': 'About Time',
     'ATL': 'Advanced Token Effects',
+    'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
+    'about-time': 'About Time',
+    'animated-spell-effects-cartoon': 'Animated Spell Effects: Cartoon',
     'autoanimations': 'Automated Animations',
     'babonus': 'Build A Bonus',
     'compendium-folders': 'Compendium Folders',
@@ -8,12 +10,12 @@ let names = {
     'dae': 'Dynamic Active Effects',
     'ddb-importer': 'D&D Beyond Importer',
     'dfreds-convenient-effects': 'DFreds Convenient Effects',
+    'dice-so-nice': 'Dice So Nice!',
     'effectmacro': 'Effect Macro',
     'foundryvtt-simple-calendar': 'Simple Calendar',
     'fxmaster': 'FXMaster',
     'itemacro': 'Item Macro',
     'jb2a_patreon': 'Jules&Ben\'s Animated Assets (P)',
-    'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
     'lib-wrapper': 'libWrapper',
     'midi-qol': 'Midi-Qol',
     'quick-insert': 'Quick Insert',
@@ -25,15 +27,16 @@ let names = {
     'times-up': 'Times Up',
     'token-attacher': 'Token Attacher',
     'visual-active-effects': 'Visual Active Effects',
-    'warpgate': 'Warpgate',
-    'dice-so-nice': 'Dice So Nice!'
+    'warpgate': 'Warpgate'
 }
 let optionalModules = [
     'ATL',
     'about-time',
-    'custom-character-sheet-sections',
+    'animated-spell-effects-cartoon',
     'compendium-folders',
+    'custom-character-sheet-sections',
     'ddb-importer',
+    'dice-so-nice',
     'foundryvtt-simple-calendar',
     'fxmaster',
     'itemacro',
@@ -43,29 +46,28 @@ let optionalModules = [
     'smalltime',
     'tidy5e-sheet',
     'times-up',
-    'visual-active-effects',
-    'foundryvtt-dice-so-nice'
+    'visual-active-effects'
 ];
 let incompatibleModules = [
-    'ready-set-roll-5e',
-    'betterrolls5e',
-    'rollgroups',
-    'faster-rolling-by-default-5e',
-    'quick-rolls',
-    'dice-tooltip',
-    'gm-paranoia-taragnor',
-    'wire',
-    'mre-dnd5e',
-    'retroactive-advantage-5e',
-    'max-crit',
-    'multiattack-5e',
-    'effective-transferral',
-    'attack-roll-check-5e',
     'advancedspelleffects',
-    'obsidian',
-    'heartbeat',
+    'attack-roll-check-5e',
+    'betterrolls5e',
+    'concentrationnotifier',
     'dice-rng-protector',
-    'concentrationnotifier'
+    'dice-tooltip',
+    'effective-transferral',
+    'faster-rolling-by-default-5e',
+    'gm-paranoia-taragnor',
+    'heartbeat',
+    'max-crit',
+    'mre-dnd5e',
+    'multiattack-5e',
+    'obsidian',
+    'quick-rolls',
+    'ready-set-roll-5e',
+    'retroactive-advantage-5e',
+    'rollgroups',
+    'wire'
 ]
 export function troubleshoot() {
     let output = '';

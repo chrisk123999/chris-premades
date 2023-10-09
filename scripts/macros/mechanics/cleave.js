@@ -4,6 +4,7 @@ export async function cleave(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.item?.system?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
     let newHP = workflow.damageList[0].newHP;
     if (newHP != 0) return;
+    if (workflow.targets.first().actor.items.getName('Minion')) return;
     let oldHP = workflow.damageList[0].oldHP;
     let leftoverDamage = workflow.damageList[0].appliedDamage - (oldHP - newHP);
     if (leftoverDamage === 0) return;

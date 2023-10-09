@@ -14,5 +14,9 @@ export async function grapple({speaker, actor, token, character, item, args, sco
         let targetRoll = await chris.rollRequest(targetToken, 'skill', selection);
         if (targetRoll.total >= sourceRoll.total) return;
     }
-    await chris.addCondition(targetActor, 'Grappled', false, workflow.item.uuid);
+    if(game.modules.get('Rideable')?.active) {
+        game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true})
+    } else {
+        await chris.addCondition(targetActor, 'Grappled', false, workflow.item.uuid);
+    }
 }
