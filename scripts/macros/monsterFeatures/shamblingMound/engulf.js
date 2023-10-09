@@ -1,5 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
+import {translate} from '../../../translations.js';
 export async function engulf(origin, token, actor) {
     let sourceTokenId = actor.flags['chris-premades']?.monster?.shamblingMound?.engulf
     if (!sourceTokenId) return;
@@ -9,7 +10,7 @@ export async function engulf(origin, token, actor) {
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Shambling Mound - Engulf');
     featureData.system.damage.parts = [
         [
-            '2d8[bludgeoning]',
+            '2d8[' + translate.damageType('bludgeoning') + ']',
             'bludgeoning'
         ]
     ];
