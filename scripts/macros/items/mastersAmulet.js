@@ -13,12 +13,12 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
     if (!targetToken) return;
     let queueSetup = await queue.setup(workflow.uuid, 'mastersAmulet', 400);
     if (!queueSetup) return;
-    if (ditem.newHP >= ditem.oldHP) {
+    if (ditem.newHP > ditem.oldHP) {
         queue.remove(workflow.uuid);
         return;
     }
     let keptDamage = Math.floor(ditem.appliedDamage / 2);
-    let guardianDamage = Math.ceil(ditem.appliedDamage / 2);
+    let originalDamage = duplicate(keptDamage);
     if (ditem.oldTempHP > 0) {
         if (keptDamage > ditem.oldTempHP) {
             ditem.newTempHP = 0;
@@ -27,6 +27,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
         } else {
             ditem.newTempHP = ditem.oldTempHP - keptDamage;
             ditem.tempDamage = keptDamage;
+            keptDamage = 0;
         }
     }
     let maxHP = token.actor.system.attributes.hp.max;
@@ -42,7 +43,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Shield Guardian - Bound');
     featureData.system.damage.parts = [
         [
-            guardianDamage,
+            originalDamage,
             'none'
         ]
     ];

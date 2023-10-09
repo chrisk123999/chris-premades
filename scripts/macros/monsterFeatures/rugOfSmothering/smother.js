@@ -1,5 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
+import {translate} from '../../../translations.js';
 export async function smotherDamage(origin, token, actor) {
     let sourceTokenId = actor.flags['chris-premades']?.monster?.rugOfSmothering?.smother
     if (!sourceTokenId) return;
@@ -9,7 +10,7 @@ export async function smotherDamage(origin, token, actor) {
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rug of Smothering - Smother');
     featureData.system.damage.parts = [
         [
-            '2d6+3[bludgeoning]',
+            '2d6+3[' + translate.damageType('bludgeoning') + ']',
             'bludgeoning'
         ]
     ];
@@ -18,11 +19,10 @@ export async function smotherDamage(origin, token, actor) {
     let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
 }
-
 export async function smother({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.hitTargets.size) return
     let targetToken = workflow.targets.first();
-    if(game.modules.get('Rideable')?.active) {
+    if (game.modules.get('Rideable')?.active) {
         let targetUpdate = {
             'token': {
                 'x': targetToken.x,

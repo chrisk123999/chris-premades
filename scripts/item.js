@@ -241,7 +241,7 @@ async function configureItem(item, configuration) {
                     let options = foundry.utils.duplicate(value2.values);
                     options.forEach(item => {
                         if (item.value === current) {
-                          item.selected = true;
+                            item.selected = true;
                         }
                       });
                     generatedMenu.push({
