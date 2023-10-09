@@ -237,10 +237,17 @@ async function configureItem(item, configuration) {
                 break;
             case 'select':
                 for (let [key2, value2] of Object.entries(value)) {
+                    let current = item.flags['chris-premades']?.configuration?.[key2];
+                    let options = foundry.utils.duplicate(value2.values);
+                    options.forEach(item => {
+                        if (item.value === current) {
+                          item.selected = true;
+                        }
+                      });
                     generatedMenu.push({
                         'label': value2.label,
                         'type': 'select',
-                        'options': [{'value': '-', 'html': '-'}].concat(value2.values)
+                        'options': options
                     });
                     inputKeys.push('flags.chris-premades.configuration.' + key2);
                 }
