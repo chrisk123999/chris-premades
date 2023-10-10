@@ -6,6 +6,7 @@
 ## Bug Fixes:
 - Slasher: Reduce Speed
 - Beacon of Hope
+- Lightning Lure
 ## Update Notes:
 - Warpgate version 1.19.0 or higher is now required.
 - Grapple Action will now use the module "Ridable" for grappling when active (Thanks TMinz).
