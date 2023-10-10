@@ -20,7 +20,7 @@ Additional support and feature requests can be made on my Discord server: https:
 | Socket Lib | 1.0.12 |  
 | Template Macro | 10.0.2 |  
 | Token Attacher | 4.5.12 |  
-| Warpgate | 1.17.2 |  
+| Warpgate | 1.19.0 |  
   
 # Optional supported modules:  
 - Compendium Folders

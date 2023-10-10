@@ -1,8 +1,15 @@
 # 0.7.33 Release:
+## New Content:
+- Path of the Beast Barbarian: Form of the Beast, Bestial Soul, Infectious Fury, and Call the Hunt
+## New Monster Content:
+- Rug of Smothering: Damage Transfer and Smother (Thanks TMinz)
 ## Bug Fixes:
 - Slasher: Reduce Speed
 - Beacon of Hope
-
+## Update Notes:
+- Warpgate version 1.19.0 or higher is now required.
+- Grapple Action will now use the module "Ridable" for grappling when active (Thanks TMinz).
+  
 # 0.7.32 Release:
 ## New Content:
 - Spells: Burning Hands, Disintegrate, Faerie Fire, and Fly

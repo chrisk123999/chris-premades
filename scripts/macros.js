@@ -21,6 +21,7 @@ import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace
 import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
+import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
 import {bestowCurse} from './macros/spells/bestowCurse.js';
 import {bg3} from './macros/homebrew/bg3/bg3.js';
 import {bigbysHand} from './macros/spells/bigbysHand.js';
@@ -39,6 +40,7 @@ import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {burningHands} from './macros/spells/burningHands.js';
 import {callLightning} from './macros/spells/callLightning.js';
+import {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
@@ -154,6 +156,7 @@ import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 import {insectPlague} from './macros/spells/insectPlague.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
@@ -281,8 +284,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
-import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -445,6 +446,7 @@ export let macros = {
     'bardicInspiration': bardicInspiration,
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
+    'bestialSoul': bestialSoul,
     'bestowCurse': bestowCurse,
     'bg3': bg3,
     'bigbysHand': bigbysHand,
@@ -459,6 +461,7 @@ export let macros = {
     'brandOfCastigation': brandOfCastigation,
     'burningHands': burningHands,
     'callLightning': callLightning,
+    'callTheHunt': callTheHunt,
     'chainLightning': chainLightning,
     'charmPerson': charmPerson,
     'chillTouch': chillTouch,
@@ -545,6 +548,7 @@ export let macros = {
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
+    'infectiousFury': infectiousFury,
     'insectPlague': insectPlague,
     'inspiringSmite': inspiringSmite,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
@@ -657,7 +661,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'bestialSoul': bestialSoul,
-    'infectiousFury': infectiousFury
+    'zoneOfTruth': zoneOfTruth
 }

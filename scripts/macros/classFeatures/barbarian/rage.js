@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
@@ -7,6 +8,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rage - End');
     async function effectMacro () {
+        if (chrisPremades.helpers.getItem(actor, 'Call the Hunt')) await chrisPremades.macros.callTheHunt.rageEnd(effect);
         await warpgate.revert(token.document, 'Rage');
         await chrisPremades.macros.rage.animationEnd(token, origin);
     }
@@ -186,6 +188,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
+    let callTheHunt = chris.getItem(workflow.actor, 'Call the Hunt');
+    if (callTheHunt) {
+        if (callTheHunt.system.uses.value) {
+            let selection = await chris.dialog(callTheHunt.name, constants.yesNo, 'Use ' + callTheHunt.name + '?');
+            if (selection) await callTheHunt.use();
+        }
+    }
 }
 async function end({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor) return;

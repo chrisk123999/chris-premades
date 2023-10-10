@@ -51,8 +51,12 @@ export async function lightningLure({speaker, actor, token, character, item, arg
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
     distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) {
-        let damageRoll = await new Roll('0').roll({async: true});
-        await workflow.setDamageRoll(damageRoll);
+        workflow.damageItem.appliedDamage = 0;
+        workflow.damageItem.hpDamage = 0;
+        workflow.damageItem.newHP = workflow.damageItem.oldHP;
+        workflow.damageItem.newTempHP = workflow.damageItem.oldTempHP;
+        workflow.damageItem.tempDamage = 0;
+        workflow.damageItem.totalDamage = 0;
     }
     queue.remove(workflow.item.uuid);
 }

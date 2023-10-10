@@ -2400,7 +2400,7 @@ export function setConfig() {
             },
             'Lightning Lure': {
                 'name': 'Lightning Lure',
-                'version': '0.7.01'
+                'version': '0.7.33'
             },
             'Spiritual Weapon': {
                 'name': 'Spiritual Weapon',
@@ -4344,6 +4344,10 @@ export function setConfig() {
             },
             'Infectious Fury': {
                 'name': 'Infectious Fury',
+                'version': '0.7.33'
+            },
+            'Call the Hunt': {
+                'name': 'Call the Hunt',
                 'version': '0.7.33'
             }
         }
