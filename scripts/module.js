@@ -26,6 +26,7 @@ import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {setConfig} from './config.js';
 import {compendiumRender} from './compendium.js';
+import {translate} from './translations.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -214,15 +215,16 @@ let dev = {
     'applyEquipmentFlag': applyEquipmentFlag
 }
 globalThis['chrisPremades'] = {
+    bab,
+    constants,
+    dev,
+    effectAuras,
     helpers,
     macros,
     queue,
-    tokenMove,
-    effectAuras,
-    bab,
-    tashaSummon,
-    troubleshoot,
-    constants,
     settingButton,
-    dev
+    tashaSummon,
+    tokenMove,
+    translate,
+    troubleshoot
 }

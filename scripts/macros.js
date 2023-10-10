@@ -119,6 +119,7 @@ import {findGreaterSteed} from './macros/spells/findGreaterSteed.js';
 import {findSteed} from './macros/spells/findSteed.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
+import {fireStorm} from './macros/spells/fireStorm.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
 import {fly} from './macros/spells/fly.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
@@ -519,6 +520,7 @@ export let macros = {
     'findFamiliar': findFamiliar,
     'findGreaterSteed': findGreaterSteed,
     'findSteed': findSteed,
+    'fireStorm': fireStorm,
     'fireStrike': fireStrike,
     'fly': fly,
     'focusedAim': focusedAim,

@@ -346,6 +346,9 @@ export let chris = {
     'tokenTemplates': function _tokenTemplates(token) {
         return game.modules.get('templatemacro').api.findContainers(token);
     },
+    'templateTokens': function _templateTokens(template) {
+        return game.modules.get('templatemacro').api.findContained(template);
+    },
     'findGrids': function _findGrids(previousCoords, coords, templateDoc) {
         return game.modules.get('templatemacro').api.findGrids(previousCoords, coords, templateDoc);
     },

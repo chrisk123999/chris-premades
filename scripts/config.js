@@ -3438,7 +3438,7 @@ export function setConfig() {
             },
             'Arcane Ward': {
                 'name': 'Arcane Ward',
-                'version': '0.7.01',
+                'version': '0.7.34',
                 'settings': [
                     'Rest Listener',
                     'Arcane Ward'
@@ -4349,6 +4349,10 @@ export function setConfig() {
             'Call the Hunt': {
                 'name': 'Call the Hunt',
                 'version': '0.7.33'
+            },
+            'Fire Storm': {
+                'name': 'Fire Storm',
+                'version': '0.7.34'
             }
         }
     });

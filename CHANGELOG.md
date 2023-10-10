@@ -1,3 +1,10 @@
+# 0.7.34 Release:
+## New Content:
+- Spell: Fire Storm
+## Bug Fixes:
+- Faerie Fire
+- Arcane Ward
+  
 # 0.7.33 Release:
 ## New Content:
 - Path of the Beast Barbarian: Form of the Beast, Bestial Soul, Infectious Fury, and Call the Hunt
@@ -7,6 +14,7 @@
 - Slasher: Reduce Speed
 - Beacon of Hope
 - Lightning Lure
+- Shield Guardian: Bound
 ## Update Notes:
 - Warpgate version 1.19.0 or higher is now required.
 - Grapple Action will now use the module "Ridable" for grappling when active (Thanks TMinz).

@@ -47,14 +47,14 @@ async function damage(targetToken, {workflow, ditem}) {
     }
     let queueSetup = await queue.setup(workflow.uuid, 'arcaneWard', 350);
     if (!queueSetup) return;
-    if (targetToken.actor.classes?.wizard?.subclass?.name === 'School of Abjuration') {
+    if (targetToken.actor.classes?.wizard?.subclass?.system?.identifier === 'school-of-abjuration') {
         let shielded = await check(targetToken);
         if (shielded) {
             queue.remove(workflow.uuid);
             return;
         }
     }
-    let tokens = chris.findNearby(targetToken, 30, 'ally').filter(i => i.actor.classes?.wizard?.subclass?.name === 'School of Abjuration' && i.actor.classes?.wizard?.system?.levels >= 6 && !chris.findEffect(i.actor, 'Reaction'));
+    let tokens = chris.findNearby(targetToken, 30, 'ally').filter(i => i.actor.classes?.wizard?.subclass?.system?.identifier === 'school-of-abjuration' && i.actor.classes?.wizard?.system?.levels >= 6 && !chris.findEffect(i.actor, 'Reaction'));
     if (tokens.length === 0) {
         queue.remove(workflow.uuid);
         return;
