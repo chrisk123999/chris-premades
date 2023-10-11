@@ -3781,7 +3781,7 @@ export function setConfig() {
             },
             'Savage Attacks': {
                 'name': 'Savage Attacks',
-                'version': '0.7.01'
+                'version': '0.7.35'
             },
             'Artisan\'s Intuition': {
                 'name': 'Artisan\'s Intuition',
@@ -4353,6 +4353,10 @@ export function setConfig() {
             'Fire Storm': {
                 'name': 'Fire Storm',
                 'version': '0.7.34'
+            },
+            'Teleport': {
+                'name': 'Teleport',
+                'version': '0.7.35'
             }
         }
     });

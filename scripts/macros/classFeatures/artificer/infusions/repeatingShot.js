@@ -1,9 +1,10 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let infusionId = workflow.item.flags['chris-premades']?.feature?.infusion?.repeatingShot?.id;
     if (!infusionId) {
-        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc && i.system.properties?.lod);
+        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc && i.system.properties?.amm);
         if (validWeapons.length === 0) {
             ui.notifications.info('No valid weapon to infuse!');
             return;
@@ -12,7 +13,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (!selection) return;
         await workflow.item.setFlag('chris-premades', 'feature.infusion.repeatingShot.id', selection.id);
     } else {
-        let selection = await chris.dialog(workflow.item.name, [['Yes', true], ['No', false]], 'Remove repeating shot infusion?');
+        let selection = await chris.dialog(workflow.item.name, constants.yesNo, 'Remove repeating shot infusion?');
         if (!selection) return;
         await workflow.item.setFlag('chris-premades', 'feature.infusion.repeatingShot.id', null);
     }

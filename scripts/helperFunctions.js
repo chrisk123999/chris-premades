@@ -504,6 +504,7 @@ export let chris = {
             'label': '0 ft.',
             'interval': interval
         }
+        if (!maxRange) return await warpgate.crosshairs.show(options);
         return await warpgate.crosshairs.show(options, callbacks);
     },
     'getConfiguration': function _getConfiguration(item, key) {
@@ -661,5 +662,30 @@ export let chris = {
             'ability': ability
         };
         return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
+    },
+    'remoteAimCrosshair': async function _remoteAimCrosshair(token, maxRange, icon, interval, size, userId) {
+        if (userId === game.user.id) return await chris.aimCrosshair(token, maxRange, icon, interval, size);
+        return await socket.executeAsUser('remoteAimCrosshair', userId, token.document.uuid, maxRange, icon, interval, size);
+    },
+    'menu': async function _menu(title, buttons, inputs, useSpecialRender) {
+        function render(html) {
+            let ths = html[0].getElementsByTagName('th');
+            for (let t of ths) {
+                t.style.width = 'auto';
+                t.style.textAlign = 'left';
+            }
+            let tds = html[0].getElementsByTagName('td');
+            for (let t of tds) {
+                t.style.width = '50px';
+                t.style.textAlign = 'center';
+                t.style.paddingRight = '5px';
+            }
+        }
+        if (useSpecialRender) return await warpgate.menu({'inputs': inputs, 'buttons': buttons}, {'title': title, 'render': render});
+        return await warpgate.menu({'inputs': inputs, 'buttons': buttons}, {'title': title});
+    },
+    'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId) {
+        if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender);
+        return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender);
     }
 }

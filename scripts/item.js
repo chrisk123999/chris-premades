@@ -114,7 +114,7 @@ async function updateItem(itemDocument) {
         }
         for (let compendium of searchCompendiums) {
             if (!game.packs.get(compendium)) {
-                ui.notifications.warn('And invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
+                ui.notifications.warn('An invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
                 continue;
             }
             compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
@@ -160,7 +160,7 @@ async function updateItem(itemDocument) {
     let selection = await chris.dialog('Automation found, apply it? (' + foundCompendiumName + ')', options);
     if (!selection) return;
     ChatMessage.create({
-        'speaker': {alias: name},
+        'speaker': {'alias': name},
         'whisper': [game.user.id],
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });

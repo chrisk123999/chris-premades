@@ -65,11 +65,22 @@ const yesNo = [
     ['Yes', true],
     ['No', false]
 ];
+const okCancel = [
+    {
+        'label': 'Cancel',
+        'value': false
+    },
+    {
+        'label': 'Ok',
+        'value': true
+    }
+];
 export let constants = {
     'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
     'disadvantageEffectData': disadvantageEffectData,
     'advantageEffectData': advantageEffectData,
     'damageTypeMenu': damageTypeMenu,
     'attacks': attacks,
-    'yesNo': yesNo
+    'yesNo': yesNo,
+    'okCancel': okCancel
 }

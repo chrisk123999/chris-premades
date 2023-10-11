@@ -16,3 +16,10 @@ export async function remoteDocumentsDialog(title, uuids) {
     }
     return await chris.selectDocuments(title, documents, true);
 }
+export async function remoteAimCrosshair(tokenUuid, maxRange, icon, interval, size) {
+    let token = await fromUuid(tokenUuid);
+    return await chris.aimCrosshair(token, maxRange, icon, interval, size);
+}
+export async function remoteMenu(title, buttons, inputs, useSpecialRender) {
+    return await chris.menu(title, buttons, inputs, useSpecialRender);
+}

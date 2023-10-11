@@ -49,7 +49,8 @@ export async function fall({speaker, actor, token, character, item, args, scope,
                 'value': true
             }
         ]
-    }, {
+    },
+    {
         'title': 'Fall Damage',
         'render': render
     });

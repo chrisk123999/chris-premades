@@ -20,7 +20,7 @@ import {patchSaves, patchSkills, patching} from './patching.js';
 import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
-import {remoteDialog, remoteDocumentDialog, remoteDocumentsDialog} from './utility/remoteDialog.js';
+import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
 import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
@@ -43,6 +43,8 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('remoteDialog', remoteDialog);
     socket.register('remoteDocumentDialog', remoteDocumentDialog);
     socket.register('remoteDocumentsDialog', remoteDocumentsDialog);
+    socket.register('remoteAimCrosshair', remoteAimCrosshair);
+    socket.register('remoteMenu', remoteMenu);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {

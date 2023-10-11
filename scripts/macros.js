@@ -260,6 +260,7 @@ import {summonWildfireSpirit} from './macros/classFeatures/druid/circleOfWildfir
 import {summon} from './macros/generic/summon.js';
 import {tashasOtherworldlyGuise} from './macros/spells/tashasOtherworldlyGuise.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
+import {teleport} from './macros/spells/teleport.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderStep} from './macros/spells/thunderStep.js';
@@ -643,6 +644,7 @@ export let macros = {
     'summonWildfireSpirit': summonWildfireSpirit,
     'tashasOtherworldlyGuise': tashasOtherworldlyGuise,
     'telekentic': telekinetic,
+    'teleport': teleport,
     'templateTrigger': templateTrigger,
     'tentacleOfTheDeeps': tentacleOfTheDeeps,
     'thornWhip': thornWhip,

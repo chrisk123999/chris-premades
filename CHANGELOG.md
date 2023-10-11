@@ -1,3 +1,10 @@
+# 0.7.35 Release:
+## New Content:
+- Spell: Teleport
+## Bug Fixes:
+- Savage Attacks
+- Repeating Shot
+  
 # 0.7.34 Release:
 ## New Content:
 - Spell: Fire Storm
