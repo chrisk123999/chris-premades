@@ -1,9 +1,15 @@
+# 0.7.36 Release:
+## Bug Fixes:
+- Fire Storm
+  
 # 0.7.35 Release:
 ## New Content:
 - Spell: Teleport
 ## Bug Fixes:
 - Savage Attacks
 - Repeating Shot
+## New Enhanced Animations (Thanks Eskiemoh):
+- Teleport
   
 # 0.7.34 Release:
 ## New Content:

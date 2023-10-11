@@ -190,7 +190,7 @@ async function updateItem(itemDocument) {
     }
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
-    if (itemDocument.flags['chris-premades']?.info) setProperty(originalItem, 'flags.chris-premades.info', info);
+    if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');

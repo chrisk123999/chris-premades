@@ -1,6 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 export async function fireStorm({speaker, actor, token, character, item, args, scope, workflow}) {
+    let playAnimation = chris.getConfiguration(workflow.item, 'animation') ?? true;
     let queueSetup = await queue.setup(workflow.item.uuid, 'fireStorm', 50);
     if (!queueSetup) return;
     let templateData = {
@@ -39,12 +40,14 @@ export async function fireStorm({speaker, actor, token, character, item, args, s
     let targets = new Set();
     for (let i of templates) {
         let position = i.object.ray.project(0.5);
-        new Sequence()
-            .effect()
-            .file('jb2a.explosion.01.orange')
-            .atLocation(position)
-            .scale(2)
-            .play();
+        if (playAnimation) {
+            new Sequence()
+                .effect()
+                .file('jb2a.explosion.01.orange')
+                .atLocation(position)
+                .scale(2)
+                .play();
+        }
         let tokens = chris.templateTokens(i);
         if (!tokens.length) continue;
         for (let j of tokens) targets.add(j);

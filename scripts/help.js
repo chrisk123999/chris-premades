@@ -93,6 +93,7 @@ export function troubleshoot() {
     addLine('/////////////// Game Information ///////////////');
     addLine('Foundry: ' + game.version);
     addLine('System: ' + game.system.version);
+    addLine('Language: ' + game.settings.get('core', 'language'));
     let cpr = game.modules.get('chris-premades');
     if (cpr.version === '#{VERSION}#') {
         addLine('Chris\'s Premades: Development');
@@ -154,7 +155,8 @@ export function troubleshoot() {
         }
         addLine('Roll Seperate Attack Per Target: ' + midiSettings.attackPerTarget);
         addLine('Merge Card: ' + midiSettings.mergeCard);
-
+        addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
+        addLine('Item On Use: ' + midiSettings.allowUseMacro);
     }
     if (game.modules.get('warpgate')?.active) {
         addLine('');

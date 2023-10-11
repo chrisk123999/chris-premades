@@ -1761,6 +1761,14 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Fire Storm': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {
