@@ -1790,13 +1790,35 @@ export function setConfig() {
                     }
                 }
             },
+            'Shocking Grasp': {
+                'select': {
+                    'color': {
+                        'label': 'What color?',
+                        'default': 'blue',
+                        'values': [
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'blue02', 'html': 'Alternate Blue'},
+                            {'value': 'dark_purple', 'html': 'Dark Purple'},
+                            {'value': 'dark_red', 'html': 'Dark Red'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'green02', 'html': 'Alternate Green'},
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'purple', 'html': 'Purple'},
+                            {'value': 'red', 'html': 'Red'},
+                            {'value': 'yellow', 'html': 'Yellow'},
+                            {'value': 'random', 'html': 'Random'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    }
+                }
+            },
         },
         'automations': {
             'Armor of Agathys': {
                 'name': 'Armor of Agathys',
-                'version': '0.7.01',
+                'version': '0.7.40',
                 'settings': [
-                    'Armor of Agathys'
+                    'On Hit'
                 ]
             },
             'Arms of Hadar': {
@@ -1994,7 +2016,7 @@ export function setConfig() {
             },
             'Shocking Grasp': {
                 'name': 'Shocking Grasp',
-                'version': '0.7.01'
+                'version': '0.7.40'
             },
             'Sanctuary': {
                 'name': 'Sanctuary',

@@ -366,7 +366,8 @@ let onHit = {
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit
+    'wardingBond': wardingBond.onHit,
+    'armorOfAgathys': armorOfAgathys.onHit
 }
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,

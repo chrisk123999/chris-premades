@@ -150,7 +150,6 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
     }
-    if (game.settings.get('chris-premades', 'Armor of Agathys')) Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
     if (game.settings.get('chris-premades', 'Beacon of Hope')) Hooks.on('midi-qol.damageApplied', macros.beaconOfHope);
     if (game.settings.get('chris-premades', 'DMG Cleave')) Hooks.on('midi-qol.RollComplete', macros.cleave);
     if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);

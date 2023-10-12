@@ -1,3 +1,7 @@
+# 0.7.40 Release:
+## New Enhanced Animations (Thanks Eskiemoh):
+- Shocking Grasp
+  
 # 0.7.39 Release:
 ## Bug Fixes:
 - Rage

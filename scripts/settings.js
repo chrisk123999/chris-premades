@@ -438,22 +438,6 @@ export function registerSettings() {
         }
     });
     addMenuSetting('On Hit', 'General');
-    game.settings.register(moduleName, 'Armor of Agathys', {
-        'name': 'Armor of Agathys Automation',
-        'hint': 'Enabling this allows the automation of the Armor of Agathys spell via the use of Midi-Qol hooks.',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': false,
-        'onChange': value => {
-            if (value) {
-                Hooks.on('midi-qol.RollComplete', macros.armorOfAgathys);
-            } else {
-                Hooks.off('midi-qol.RollComplete', macros.armorOfAgathys);
-            }
-        }
-    });
-    addMenuSetting('Armor of Agathys', 'Spells');
     game.settings.register(moduleName, 'Beacon of Hope', {
         'name': 'Beacon of Hope Automation',
         'hint': 'Enabling this allows the automation of the Beacon of Hope spell via the use of Midi-Qol hooks.',
