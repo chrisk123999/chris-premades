@@ -1812,6 +1812,14 @@ export function setConfig() {
                     }
                 }
             },
+            'Summon Lesser Demons': {
+                'text': {
+                    'folder': {
+                        'label': 'Custom Folder:',
+                        'default': ''
+                    }
+                }
+            }
         },
         'automations': {
             'Armor of Agathys': {
@@ -4424,7 +4432,14 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Far Step'
                 }
-            }
+            },
+            'Summon Lesser Demons': {
+                'name': 'Summon Lesser Demons',
+                'version': '0.7.40',
+                'mutation': {
+                    'self': 'Summon Lesser Demons'
+                }
+            },
         }
     });
 }

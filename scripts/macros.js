@@ -256,6 +256,7 @@ import {summonDrakeCompanion} from './macros/classFeatures/ranger/drakeWarden/su
 import {summonElemental} from './macros/spells/summonElemental.js';
 import {summonFey} from './macros/spells/summonFey.js';
 import {summonFiend} from './macros/spells/summonFiend.js';
+import {summonLesserDemons} from './macros/spells/summonLesserDemons.js';
 import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
 import {summonWildfireSpirit} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
@@ -645,6 +646,7 @@ export let macros = {
     'summonElemental': summonElemental,
     'summonFey': summonFey,
     'summonFiend': summonFiend,
+    'summonLesserDemons': summonLesserDemons,
     'summonShadowspawn': summonShadowspawn,
     'summonUndead': summonUndead,
     'summonWildfireSpirit': summonWildfireSpirit,

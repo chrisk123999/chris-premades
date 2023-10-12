@@ -1,4 +1,6 @@
 # 0.7.40 Release:
+## New Content:
+- Spell: Summon Lesser Demons
 ## New Enhanced Animations (Thanks Eskiemoh):
 - Shocking Grasp
   

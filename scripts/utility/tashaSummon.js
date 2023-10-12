@@ -85,10 +85,13 @@ async function spawn(sourceActor, updates, duration, originItem) {
     };
     if (!updates) updates = {};
     setProperty(updates, 'embedded.ActiveEffect.Summoned Creature', effectData);
-    let options = {
-        'controllingActor': originItem.actor
-    };
     let tokenDocument = await sourceActor.getTokenDocument();
+    let options = {
+        'controllingActor': originItem.actor,
+        'crosshairs': {
+            'interval': tokenDocument.width % 2 === 0 ? 1 : -1
+        }
+    };
     let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);

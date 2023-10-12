@@ -593,12 +593,13 @@ export let chris = {
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
                         <label> 
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
-                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name} </p>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
                     </div>
                 `;
             }
             content += `</form>`;
+            console.log(content);
             let height = (documents.length * 53 + 83);
             if (documents.length > 14 ) height = 850;
             dialog = new Dialog(
@@ -687,5 +688,13 @@ export let chris = {
     'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId) {
         if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender);
         return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender);
+    },
+    'decimalToFraction': function _decimalToFraction(decimal) {
+        if (Number(decimal) > 1) {
+            return Number(decimal);
+        } else {
+            let fraction = '1/' + 1 / Number(decimal);
+            return fraction;
+        }
     }
 }
