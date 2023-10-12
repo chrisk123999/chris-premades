@@ -1,18 +1,16 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    let validTypes = ['msak', 'rsak', 'mwak', 'rwak'];
-    if (!validTypes.includes(workflow.item.system.actionType)) return;
-    let effectFeature = chris.findEffect(workflow.actor, 'Grave Touched');
-    if (!effectFeature) return;
-    let feature = await fromUuid(effectFeature.origin);
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let feature = chris.getItem('Grave Touched');
     if (!feature) return;
     let useFeature = chris.perTurnCheck(feature, 'feature', 'graveTouched,', true, workflow.token.id);
     if (!useFeature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'graveTouched', 350);
     if (!queueSetup) return;
-    let selection = await chris.dialog('Use Grave Touched?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use ' + feature.name + '?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

@@ -110,6 +110,7 @@ import {eyesOfMinuteSeeing} from './macros/items/eyesOfMinuteSeeing.js';
 import {eyesOfTheEagle} from './macros/items/eyesOfTheEagle.js';
 import {faerieFire} from './macros/spells/faerieFire.js';
 import {fallenPuppet} from './macros/classFeatures/bloodHunter/bloodCurses/fallenPuppet.js';
+import {farStep} from './macros/spells/farStep.js';
 import {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 import {feyPresence} from './macros/classFeatures/warlock/archfey/feyPresence.js';
 import {feySpirit} from './macros/monsterFeatures/feySpirit/feySpirit.js';
@@ -118,6 +119,7 @@ import {findFamiliar} from './macros/spells/findFamiliar.js';
 import {findGreaterSteed} from './macros/spells/findGreaterSteed.js';
 import {findSteed} from './macros/spells/findSteed.js';
 import {fireElemental} from './macros/monsterFeatures/fireElemental/fireElemental.js';
+import {fireShield} from './macros/spells/fireShield.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStorm} from './macros/spells/fireStorm.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
@@ -286,7 +288,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {fireShield} from './macros/spells/fireShield.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -358,14 +359,14 @@ let onHit = {
     'blackrazor': blackrazor.onHit,
     'distractingStrike': maneuvers.distractingStrikeOnHit,
     'fireForm': fireElemental.fireForm,
+    'fireShield': fireShield.onHit,
     'forceField': monster.tixieTockworth.forceField.onHit,
     'heatedBody': fireSnake.heatedBody,
     'malfunction': autoGnome.malfunction,
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
-    'wardingBond': wardingBond.onHit,
-    'fireShield': fireShield.onHit
+    'wardingBond': wardingBond.onHit
 }
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
@@ -518,11 +519,13 @@ export let macros = {
     'explodingHeals': explodingHeals,
     'faerieFire': faerieFire,
     'fallenPuppet': fallenPuppet,
+    'farStep': farStep,
     'favoredFoe': favoredFoe,
     'feyPresence': feyPresence,
     'findFamiliar': findFamiliar,
     'findGreaterSteed': findGreaterSteed,
     'findSteed': findSteed,
+    'fireShield': fireShield,
     'fireStorm': fireStorm,
     'fireStrike': fireStrike,
     'fly': fly,
@@ -667,6 +670,5 @@ export let macros = {
     'witherAndBloom': witherAndBloom,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'fireShield': fireShield
+    'zoneOfTruth': zoneOfTruth
 }

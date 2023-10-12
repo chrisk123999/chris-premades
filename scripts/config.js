@@ -1777,7 +1777,19 @@ export function setConfig() {
                         'default': true
                     }
                 }
-            }
+            },
+            'Far Step': {
+                'select': {
+                    'animation': {
+                        'label': 'What animation?',
+                        'default': 'default',
+                        'values': [
+                            {'value': 'default', 'html': 'Default'},
+                            {'value': 'simple', 'html': 'Simple'}
+                        ]
+                    }
+                }
+            },
         },
         'automations': {
             'Armor of Agathys': {
@@ -3438,15 +3450,15 @@ export function setConfig() {
             },
             'Form of Dread': {
                 'name': 'Form of Dread',
-                'version': '0.7.01'
+                'version': '0.7.38'
             },
             'Form of Dread: Fear': {
                 'name': 'Form of Dread: Fear',
-                'version': '0.7.01'
+                'version': '0.7.38'
             },
             'Grave Touched': {
                 'name': 'Grave Touched',
-                'version': '0.7.01'
+                'version': '0.7.38'
             },
             'Awakened Spellbook: Replace Damage': {
                 'name': 'Awakened Spellbook: Replace Damage',
@@ -4376,12 +4388,19 @@ export function setConfig() {
             },
             'Fire Shield': {
                 'name': 'Fire Shield',
-                'version': '0.7.37',
+                'version': '0.7.38',
                 'settings': [
                     'On Hit'
                 ],
                 'mutation': {
                     'self': 'Fire Shield'
+                }
+            },
+            'Far Step': {
+                'name': 'Far Step',
+                'version': '0.7.38',
+                'mutation': {
+                    'self': 'Far Step'
                 }
             }
         }

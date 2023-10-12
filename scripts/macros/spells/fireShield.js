@@ -3,10 +3,18 @@ import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.token) return;
+    let queueSetup = queue.setup(workflow.item.uuid, 'fireShield', 50);
+    if (!queueSetup) return;
     let selection = await chris.dialog(workflow.item.name, [['Warm Shield', 'fire'], ['Cold Shield', 'cold']], 'What kind of shield?');
-    if (!selection) return;
+    if (!selection) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Fire Shield - Dismiss', false);
-    if (!featureData) return;
+    if (!featureData) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Fire Shield - Dismiss');
     async function effectMacro() {
         await chrisPremades.macros.fireShield.end(token, origin);
@@ -34,6 +42,18 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'mode': 5,
                 'value': true,
                 'priority': 20
+            },
+            {
+                'key': 'ATL.light.dim',
+                'mode': 4,
+                'value': '20',
+                'priority': 20
+            },
+            {
+                'key': 'ATL.light.bright',
+                'mode': 4,
+                'value': '10',
+                'priority': 20
             }
         ],
         'flags': {
@@ -49,6 +69,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'vae': {
                     'button': featureData.name
                 }
+            },
+            'autoanimations': {
+                'isEnabled': false,
+                'version': 5
             }
         }
     };
@@ -69,6 +93,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
+    queue.remove(workflow.item.uuid);
     if (!animation) return;
     let colors = {
         'fire': 'orange',
@@ -157,7 +182,9 @@ async function stop({speaker, actor, token, character, item, args, scope, workfl
 }
 async function onHit(workflow, targetToken) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let distance = chris.getDistance(workflow.token, targetToken);
+    if (distance > 5) return;
+    if (!constants.meleeAttacks.includes(workflow.item.system.actionType)) return;
     let effect = targetToken.actor.effects.find(i => i.flags['chris-premades']?.spell?.fireShield);
     if (!effect) return;
     let type = effect.flags['chris-premades'].spell.fireShield;

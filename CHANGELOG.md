@@ -1,3 +1,14 @@
+# 0.7.38 Release:
+## New Content:
+- Far Step
+## Bug Fixes:
+- Form of Dread
+- Grave Touched
+- Form of Dread: Fear
+- Fire Shield
+## New Enhanced Animations (Thanks Eskiemoh):
+- Far Step
+  
 # 0.7.37 Release:
 ## New Content:
 - Spell: Fire Shield
