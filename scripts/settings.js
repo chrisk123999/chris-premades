@@ -3,7 +3,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
 import {patchSaves, patchSkills, patching} from './patching.js';
-import {addMenuSetting, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
@@ -14,6 +14,7 @@ import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
 import {diceSoNice} from './diceSoNice.js';
 import {info} from './info.js';
 import {itemFeatures, itemFeaturesDelete} from './equipment.js';
+import {cast} from './macros/animations/cast.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -918,6 +919,158 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Baldur\'s Gate 3 Weapon Actions', 'Homebrew');
+    game.settings.register(moduleName, 'Cast Animations', {
+        'name': ' Cast Animations',
+        'hint': 'Enable to automatically play JB2A spell cast animations for all spells.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preambleComplete', cast);
+            } else {
+                Hooks.off('midi-qol.preambleComplete', cast);
+            }
+        }
+    });
+    addMenuSetting('Cast Animations', 'Animations');
+    game.settings.register(moduleName, 'abj_color', {
+        'name': 'Abjuration Color',
+        'hint': 'Color to use for abjuration spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'blue',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('abj_color', 'Animations');
+    game.settings.register(moduleName, 'con_color', {
+        'name': 'Conjuration Color',
+        'hint': 'Color to use for conjuration spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'yellow',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('con_color', 'Animations');
+    game.settings.register(moduleName, 'div_color', {
+        'name': 'Divination Color',
+        'hint': 'Color to use for divination spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'blue',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('div_color', 'Animations');
+    game.settings.register(moduleName, 'enc_color', {
+        'name': 'Enchantment Color',
+        'hint': 'Color to use for enchantment spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'pink',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('enc_color', 'Animations');
+    game.settings.register(moduleName, 'evo_color', {
+        'name': 'Evocation Color',
+        'hint': 'Color to use for evocation spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'red',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('evo_color', 'Animations');
+    game.settings.register(moduleName, 'ill_color', {
+        'name': 'Illusion Color',
+        'hint': 'Color to use for illusion spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'purple',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('ill_color', 'Animations');
+    game.settings.register(moduleName, 'nec_color', {
+        'name': 'Necromancy Color',
+        'hint': 'Color to use for necromancy spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'green',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('nec_color', 'Animations');
+    game.settings.register(moduleName, 'trs_color', {
+        'name': 'Transmutation Color',
+        'hint': 'Color to use for transmutation spells.',
+        'scope': 'client',
+        'config': false,
+        'type': String,
+        'default': 'yellow',
+        'choices': {
+            'blue': 'Blue',
+            'green': 'Green',
+            'pink': 'Pink',
+            'purple': 'Purple',
+            'red': 'Red',
+            'yellow': 'Yellow'
+        }
+    });
+    addMenuSetting('trs_color', 'Animations');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
@@ -925,6 +1078,14 @@ export function registerSettings() {
         'icon': 'fas fa-gears',
         'type': chrisSettingsGeneral,
         'restricted': true
+    });
+    game.settings.registerMenu(moduleName, 'Animations', {
+        'name': 'Animations',
+        'label': 'Animations',
+        'hint': 'Settings for animation automation.',
+        'icon': 'fas fa-film',
+        'type': chrisSettingsAnimations,
+        'restricted': false
     });
     game.settings.registerMenu(moduleName, 'Compendiums', {
         'name': 'Compendium',

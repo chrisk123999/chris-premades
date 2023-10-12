@@ -32,6 +32,7 @@ class chrisSettingsBase extends FormApplication {
             let key = setting.key.split(' ').join('-');
             if (settingCategories[key] != this.category) continue;
             const s = foundry.utils.deepClone(setting);
+            if (s.scope === 'world' && !game.user.isGM) continue;
             s.id = `${s.key}`;
             s.name = game.i18n.localize(s.name);
             s.hint = game.i18n.localize(s.hint);
@@ -144,6 +145,12 @@ export class chrisSettingsRandomizer extends chrisSettingsBase {
     constructor() {
         super();
         this.category = 'Randomizer';
+    }
+}
+export class chrisSettingsAnimations extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'Animations';
     }
 }
 export class chrisSettingsTroubleshoot extends FormApplication {

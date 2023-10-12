@@ -27,6 +27,7 @@ import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.
 import {setConfig} from './config.js';
 import {compendiumRender} from './compendium.js';
 import {translate} from './translations.js';
+import {cast} from './macros/animations/cast.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -208,6 +209,7 @@ Hooks.once('ready', async function() {
         Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
+    if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
     Hooks.on('renderCompendium', compendiumRender);
 });
 let dev = {

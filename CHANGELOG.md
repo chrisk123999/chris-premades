@@ -1,8 +1,12 @@
 # 0.7.40 Release:
 ## New Content:
 - Spell: Summon Lesser Demons
+- Generic Cast Animations
+## Bug Fixes:
+- Armor of Agathys
 ## New Enhanced Animations (Thanks Eskiemoh):
 - Shocking Grasp
+- Armor of Agathys
   
 # 0.7.39 Release:
 ## Bug Fixes:
