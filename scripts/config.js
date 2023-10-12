@@ -1769,6 +1769,14 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Fire Shield': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {
@@ -4365,6 +4373,16 @@ export function setConfig() {
             'Teleport': {
                 'name': 'Teleport',
                 'version': '0.7.35'
+            },
+            'Fire Shield': {
+                'name': 'Fire Shield',
+                'version': '0.7.37',
+                'settings': [
+                    'On Hit'
+                ],
+                'mutation': {
+                    'self': 'Fire Shield'
+                }
             }
         }
     });

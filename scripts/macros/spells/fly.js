@@ -1,5 +1,4 @@
 import {chris} from '../../helperFunctions.js';
-
 async function animationStart(token, origin) {
     //Animations by: eskiemoh
     let animation = chris.getConfiguration(origin, 'animation') ?? 'default';

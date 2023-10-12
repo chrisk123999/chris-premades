@@ -1,3 +1,9 @@
+# 0.7.37 Release:
+## New Content:
+- Spell: Fire Shield
+## New Enhanced Animations (Thanks Eskiemoh):
+- Fire Shield
+  
 # 0.7.36 Release:
 ## Bug Fixes:
 - Fire Storm
