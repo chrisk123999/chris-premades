@@ -1,3 +1,8 @@
+# 0.7.39 Release:
+## Bug Fixes:
+- Rage
+- Combat Maneuvers
+  
 # 0.7.38 Release:
 ## New Content:
 - Far Step

@@ -3073,7 +3073,7 @@ export function setConfig() {
             },
             'Maneuvers: Pushing Attack': {
                 'name': 'Maneuvers: Pushing Attack',
-                'version': '0.7.01',
+                'version': '0.7.39',
                 'classes': [
                     'fighter'
                 ],

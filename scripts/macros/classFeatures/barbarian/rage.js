@@ -442,7 +442,7 @@ async function animationStart(token, origin) {
     }
 }
 async function animationEnd(token, origin) {
-    let animation = chris.getConfiguration(origin, 'animation') ?? 'none';
+    let animation = chris.getConfiguration(origin, 'animation') ?? 'default';
     if (animation === 'none') return;
     await Sequencer.EffectManager.endEffects({'name': 'Rage', 'object': token});
     new Sequence()
