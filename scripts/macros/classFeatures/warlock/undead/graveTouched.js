@@ -4,7 +4,7 @@ import {queue} from '../../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
-    let feature = chris.getItem('Grave Touched');
+    let feature = chris.getItem(workflow.actor, 'Grave Touched');
     if (!feature) return;
     let useFeature = chris.perTurnCheck(feature, 'feature', 'graveTouched,', true, workflow.token.id);
     if (!useFeature) return;
