@@ -173,6 +173,7 @@ import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
+import {manifestMind} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js'
 import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
@@ -569,6 +570,7 @@ export let macros = {
     'maddeningHex': maddeningHex,
     'magicMissile': magicMissile,
     'maneuvers': maneuvers,
+    'manifestMind': manifestMind,
     'manualRolls': manualRolls,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,

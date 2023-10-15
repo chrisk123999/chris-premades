@@ -29,8 +29,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!resistanceData) return;
     let resistanceMacro = resistanceData.flags['midi-qol'].onUseMacroName;
     resistanceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Reflexive Resistance');
-    let resistanceUsesValue = actor.flags['chris-premades']?.feature?.reflexiveResistance;
-    if (!resistanceUsesValue && drakeUpgrades == 2) actor.setFlag('chris-premades', 'feature.reflexiveResistance', actor.system.attributes.prof);
+    let resistanceUsesValue = workflow.actor.flags['chris-premades']?.feature?.reflexiveResistance;
+    if (!resistanceUsesValue && drakeUpgrades == 2) {
+        resistanceUsesValue = workflow.actor.system.attributes.prof
+        workflow.actor.setFlag('chris-premades', 'feature.reflexiveResistance', resistanceUsesValue);
+    }
     resistanceData.system.uses.value = resistanceUsesValue;
     resistanceData.system.uses.max = workflow.actor.system.attributes.prof;
     let heighWidth = 1;
@@ -196,8 +199,8 @@ async function onSummon({speaker, actor, token, character, item, args, scope, wo
     await itemToUpdate.update({'system.uses.value': workflow.item.system?.uses?.value});
 }
 async function onActor({speaker, actor, token, character, item, args, scope, workflow}) {
-    actor.setFlag('chris-premades', 'feature.reflexiveResistance', workflow.item.system?.uses?.value)
-    await chris.addCondition(actor, 'Reaction');
+    workflow.actor.setFlag('chris-premades', 'feature.reflexiveResistance', workflow.item.system?.uses?.value)
+    await chris.addCondition(workflow.actor, 'Reaction');
     let spawnedToken = await fromUuid(item.flags['chris-premades']?.feature?.spawnedTokenUuid);
     if (!spawnedToken) return;
     let itemToUpdate = spawnedToken.actor.items.getName('Reflexive Resistance');

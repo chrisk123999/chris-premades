@@ -290,7 +290,7 @@ export let chris = {
         }
     },
     'raceOrType': function _raceOrType(actor) {
-        return actor.type === "npc" ? actor.system.details?.type?.value : actor.system.details?.race;
+        return actor.type === 'npc' ? actor.system.details?.type?.value : actor.system.details?.race;
     },
     'getItemDescription': function _getItemDescription(key, name) {
         let journalEntry = game.journal.getName(key);
@@ -695,6 +695,23 @@ export let chris = {
         } else {
             let fraction = '1/' + 1 / Number(decimal);
             return fraction;
+        }
+    },
+    'animationCheck': function _animationCheck(item) {
+        if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
+        let name = item.name;
+        let autorecSettings = [
+            game.settings.get('autoanimations', 'aaAutorec-melee'),
+            game.settings.get('autoanimations', 'aaAutorec-range'),
+            game.settings.get('autoanimations', 'aaAutorec-ontoken'),
+            game.settings.get('autoanimations', 'aaAutorec-templatefx'),
+            game.settings.get('autoanimations', 'aaAutorec-aura'),
+            game.settings.get('autoanimations', 'aaAutorec-preset'),
+            game.settings.get('autoanimations', 'aaAutorec-aefx'),
+        ]
+        autorecSettings.forEach(setting => check(setting));
+        function check(setting) {
+            if (setting.find(autorec => autorec.label === name)) return true;
         }
     }
 }

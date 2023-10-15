@@ -74,6 +74,10 @@ export function setConfig() {
             'Eladrin Season: Summer': [
                 'Fey Step (Summer)'
             ],
+            'Manifest Mind: Summon': [
+                'Manifest Mind: Cast Spell',
+                'Manifest Mind: Move'
+            ],
             'Metamagic - Careful Spell': [
                 'Metamagic: Careful Spell'
             ],
@@ -1819,7 +1823,23 @@ export function setConfig() {
                         'default': ''
                     }
                 }
-            }
+            },
+            'Manifest Mind: Summon': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                }
+            },
         },
         'automations': {
             'Armor of Agathys': {
@@ -2598,7 +2618,7 @@ export function setConfig() {
             },
             'Homunculus Servant': {
                 'name': 'Homunculus Servant',
-                'version': '0.7.16',
+                'version': '0.7.43',
                 'actors': [
                     'CPR - Homunculus Servant'
                 ],
@@ -4439,6 +4459,19 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Summon Lesser Demons'
                 }
+            },
+            'Manifest Mind: Summon': {
+                'name': 'Manifest Mind: Summon',
+                'version': '0.7.43',
+                'actors': [
+                    'CPR - Manifest Mind'
+                ],
+                'mutation': {
+                    'self': 'Manifest Mind'
+                },
+                'settings': [
+                    'Rest Listener'
+                ],
             },
         }
     });

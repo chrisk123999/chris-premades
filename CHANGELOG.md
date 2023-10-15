@@ -1,3 +1,10 @@
+# 0.7.43 Release:
+## New Content:
+- Order of Scribes Wizard: Manfest Mind
+- Homunculus Servant: Channel Magic
+## New Monster Content:
+- Many creatures: Parry and Leadership
+
 # 0.7.40 Release:
 ## New Content:
 - Spell: Summon Lesser Demons

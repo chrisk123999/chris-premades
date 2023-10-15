@@ -1,6 +1,6 @@
 import {tashaSummon} from '../../../../utility/tashaSummon.js';
 import {chris} from '../../../../helperFunctions.js';
-export async function homunculusServant({speaker, actor, token, character, item, args, scope, workflow}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Homunculus Servant');
     if (!sourceActor) return;
     let mendingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mending', false);
@@ -75,13 +75,18 @@ export async function homunculusServant({speaker, actor, token, character, item,
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let homunculusToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Homunculus Servant - Command', false);
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');
     if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');
+    let channelMagicCasterData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Channel Magic (Caster)', false);
+    if (!channelMagicCasterData) return;
+    channelMagicCasterData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Channel Magic (Caster)');
+    channelMagicCasterData.name = 'Channel Magic'
     let updates2 = {
         'embedded': {
             'Item': {
+                [channelMagicCasterData.name]: channelMagicCasterData,
                 [featureData.name]: featureData
             }
         }
@@ -92,7 +97,7 @@ export async function homunculusServant({speaker, actor, token, character, item,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    let effect = chris.findEffect(workflow.actor, 'Create Homunculus Servant');
+    let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (!effect) return;
     let currentScript = effect.flags.effectmacro?.onDelete?.script;
     if (!currentScript) return;
@@ -106,9 +111,76 @@ export async function homunculusServant({speaker, actor, token, character, item,
             'chris-premades': {
                 'vae': {
                     'button': featureData.name
+                },
+                'feature': {
+                    'homunculusServant': homunculusToken.id
                 }
             }
         }
     };
     await chris.updateEffect(effect, effectUpdates);
+}
+async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
+    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    if (!effect) return;
+    let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
+    if (!homunculusId) return;
+    let homunculusToken = canvas.scene.tokens.get(homunculusId);
+    if (!homunculusToken) return;
+    if (chris.getDistance(workflow.token, homunculusToken) > 120) {
+        ui.notifications.info('Homunculus Too Far Away!');
+        return;
+    }
+    let effectData = {
+        'label': 'Channel Magic',
+        'icon': '',
+        'origin': effect.origin.uuid,
+        'duration': {
+            'turns': 1
+        },
+        'changes': [
+            {
+                'key': 'flags.midi-qol.rangeOverride.attack.all',
+                'mode': 0,
+                'value': 1,
+                'priority': 20
+            },
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'priority': 20,
+                'value': 'function.chrisPremades.macros.homunculusServant.attackEarly,preambleComplete'
+            }
+        ],
+        'flags': {
+            'dae': {
+                'transfer': false,
+                'specialDuration': [
+                    '1Attack'
+                ],
+                'stackable': 'none',
+                'macroRepeat': 'none'
+            }
+        }
+    }
+    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(homunculusToken.actor, effectData);
+}
+async function attackEarly({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.item.type != 'spell' || workflow.item.system.range.units != 'touch') {
+        ui.notifications.info('Invalid Spell Type!');
+        return false;
+    }
+    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    if (!effect) return;
+    let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
+    if (!homunculusId) return;
+    let homunculusToken = canvas.scene.tokens.get(homunculusId);
+    if (!homunculusToken) return;
+    await chris.addCondition(homunculusToken.actor, 'Reaction');
+}
+export let homunculusServant = {
+    'item': item,
+    'attackApply': attackApply,
+    'attackEarly': attackEarly
 }
