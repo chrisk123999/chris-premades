@@ -42,7 +42,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
-    await origin.setFlag('chris-premades', 'feat.stormStrike.turn', null);
+    await origin.setFlag('chris-premades', 'feat.stormStrike.turn', '');
 }
 export let stormStrike = {
     'damage': damage,

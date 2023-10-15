@@ -5,7 +5,6 @@ import {chris as helpers} from './helperFunctions.js';
 import {createActorHeaderButton, createHeaderButton, updateItemButton} from './item.js';
 import {queue} from './utility/queue.js';
 import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
-import {bab} from './utility/babHelpers.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
@@ -22,7 +21,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
 import {diceSoNice} from './diceSoNice.js';
-import {info, setCompendiumItemInfo, stripUnusedFlags} from './info.js';
+import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {setConfig} from './config.js';
 import {compendiumRender} from './compendium.js';
@@ -215,10 +214,12 @@ Hooks.once('ready', async function() {
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,
     'stripUnusedFlags': stripUnusedFlags,
-    'applyEquipmentFlag': applyEquipmentFlag
+    'applyEquipmentFlag': applyEquipmentFlag,
+    'setItemName': setItemName,
+    'removeFolderFlag': removeFolderFlag,
+    'setFolder': setFolder
 }
 globalThis['chrisPremades'] = {
-    bab,
     constants,
     dev,
     effectAuras,

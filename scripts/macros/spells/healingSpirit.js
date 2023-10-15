@@ -153,9 +153,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let changes = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
-    let templateDoc = changes[0];
-    await tokenAttacher.attachElementsToToken([templateDoc], spawnedToken.object, false);
+    let template = await chris.createTemplate(templateData);
+    await tokenAttacher.attachElementsToToken([template], spawnedToken.object, false);
 }
 async function template(template, token) {
     let sourceToken = await fromUuid(template.flags['chris-premades'].spell.healingSpirit.origin);

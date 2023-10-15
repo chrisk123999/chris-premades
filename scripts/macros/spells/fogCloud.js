@@ -50,18 +50,19 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'angle': 0
     };
-    let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {'parent': canvas.scene});
-    let template = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
-    let [finalTemplate] = await template.drawPreview();
+    await workflow.actor.sheet.minimize();
+    let template = await chris.placeTemplate(templateData);
+    await workflow.actor.sheet.maximize();
+    if (!template) return;
     let xray = game.settings.get('chris-premades', 'Show Limits Animations');
     let path = 'jb2a.fog_cloud.01.white';
     if (game.modules.get('jb2a_patreon')?.active) {
         if (isNewerVersion('0.6.1', game.modules.get('jb2a_patreon').version)) path = 'jb2a.fog_cloud.1.white';
     }
     if (game.modules.get('walledtemplates')) {
-        new Sequence().effect().file(path).scaleToObject().aboveLighting().opacity(0.5).mask(finalTemplate).xray(xray).persist(true).attachTo(finalTemplate).play();
+        new Sequence().effect().file(path).scaleToObject().aboveLighting().opacity(0.5).mask(template).xray(xray).persist(true).attachTo(template).play();
     } else {
-        new Sequence().effect().file(path).scaleToObject().aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(finalTemplate).play();
+        new Sequence().effect().file(path).scaleToObject().aboveLighting().opacity(0.5).xray(xray).persist(true).attachTo(template).play();
     }
     let effectData = {
         'label': workflow.item.name,
@@ -72,7 +73,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'key': 'flags.dae.deleteUuid',
                 'mode': 5,
                 'priority': 20,
-                'value': finalTemplate.uuid
+                'value': template.uuid
             }
         ],
         'duration': {

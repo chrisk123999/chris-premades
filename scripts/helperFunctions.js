@@ -276,10 +276,10 @@ export let chris = {
         let packIndex;
         let match;
         if (!isNewerVersion(game.version, '11.293')) {
-            packIndex = await gamePack.getIndex({fields: ['name', 'type', 'flags.cf.id']});
+            packIndex = await gamePack.getIndex({'fields': ['name', 'type', 'flags.cf.id']});
             match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
         } else {
-            packIndex = await gamePack.getIndex({fields: ['name', 'type', 'folder']});
+            packIndex = await gamePack.getIndex({'fields': ['name', 'type', 'folder']});
             match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.folder === packFolderId)));
         }
         if (match) {
@@ -713,5 +713,23 @@ export let chris = {
         function check(setting) {
             if (setting.find(autorec => autorec.label === name)) return true;
         }
+    },
+    'createTemplate': async function _createTemplate(templateData, returnTokens) {
+        let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
+        if (!returnTokens) return template;
+        let tokens = await game.modules.get('templatemacro').api.findContained(template).map(t => template.parent.tokens.get(t));
+        return {'template': template, 'tokens': tokens};
+    },
+    'placeTemplate': async function _placeTemplate(templateData, returnTokens) {
+        let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {'parent': canvas.scene});
+        let template = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
+        let finalTemplate = false;
+        try {
+            [finalTemplate] = await template.drawPreview();
+        } catch {};
+        if (!returnTokens) return finalTemplate;
+        if (!finalTemplate) return {'template': null, 'tokens': []};
+        let tokens = await game.modules.get('templatemacro').api.findContained(finalTemplate).map(t => finalTemplate.parent.tokens.get(t));
+        return {'template': finalTemplate, 'tokens': tokens};
     }
 }

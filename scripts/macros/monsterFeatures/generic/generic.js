@@ -9,6 +9,7 @@ import {prone} from './prone.js';
 import {fall} from './fall.js';
 import {underwater} from './underwater.js';
 import {nonLethal} from './nonLethal.js';
+import {parry} from './parry.js';
 export let generic = {
     'autoGrapple': autoGrapple,
     'swarmDamage': swarmDamage,
@@ -20,5 +21,6 @@ export let generic = {
     'prone': prone,
     'fall': fall,
     'underwater': underwater,
-    'nonLethal': nonLethal
+    'nonLethal': nonLethal,
+    'parry': parry
 }

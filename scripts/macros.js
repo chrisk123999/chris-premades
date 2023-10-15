@@ -152,6 +152,7 @@ import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesC
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
 import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
+import {hobgoblin} from './macros/monsterFeatures/hobgoblin/hobgoblin.js';
 import {holyNimbus} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
@@ -336,6 +337,7 @@ let monster = {
     'gibberingMouther': gibberingMouther,
     'grell': grell,
     'hezrou': hezrou,
+    'hobgoblin': hobgoblin,
     'homunculus': homunculus,
     'intellectDevourer': intellectDevourer,
     'kobold': kobold,

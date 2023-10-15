@@ -68,7 +68,15 @@ const meleeAttacks = [
 const rangedAttacks = [
     'rwak',
     'rsak'
-]
+];
+const weaponAttacks = [
+    'mwak',
+    'rwak'
+];
+const spellAttacks = [
+    'msak',
+    'rsak'
+];
 const yesNo = [
     ['Yes', true],
     ['No', false]
@@ -92,5 +100,7 @@ export let constants = {
     'yesNo': yesNo,
     'okCancel': okCancel,
     'meleeAttacks': meleeAttacks,
-    'rangedAttacks': rangedAttacks
+    'rangedAttacks': rangedAttacks,
+    'weaponAttacks': weaponAttacks,
+    'spellAttacks': spellAttacks
 }

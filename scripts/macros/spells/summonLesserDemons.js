@@ -56,8 +56,8 @@ export async function summonLesserDemons({speaker, actor, token, character, item
         x: workflow.token.center.x,
         y: workflow.token.center.y,
         borderColor: '#941010'
-    }
-    let template = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
+    };
+    let template = await chris.createTemplate(templateData);
     new Sequence()
         .effect()
             .atLocation(template[0])

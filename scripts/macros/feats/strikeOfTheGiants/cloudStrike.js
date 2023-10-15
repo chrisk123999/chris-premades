@@ -12,7 +12,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (!turnCheck) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'cloudStrike', 150);
     if (!queueSetup) return;
-    let selection = await chris.dialog(originFeature.name, [['Yes', true], ['No', false]], 'Use ' + originFeature.name + '?');
+    let selection = await chris.dialog(originFeature.name, constants.yesNo, 'Use ' + originFeature.name + '?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -90,7 +90,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
-    await origin.setFlag('chris-premades', 'feat.cloudStrike.turn', null);
+    await origin.setFlag('chris-premades', 'feat.cloudStrike.turn', '');
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1 || workflow.disadvantage) return;

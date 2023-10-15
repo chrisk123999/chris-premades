@@ -1840,6 +1840,14 @@ export function setConfig() {
                     }
                 }
             },
+            'Parry': {
+                'text': {
+                    'acbonus': {
+                        'label': 'AC Bonus:',
+                        'default': '2'
+                    }
+                }
+            }
         },
         'automations': {
             'Armor of Agathys': {
