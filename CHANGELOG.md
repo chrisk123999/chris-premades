@@ -1,7 +1,7 @@
 # 0.7.43 Release:
 ## New Content:
-- Order of Scribes Wizard: Manfest Mind
-- Homunculus Servant: Channel Magic
+- Order of Scribes Wizard: Manfest Mind (Thanks Autumn)
+- Homunculus Servant: Channel Magic (Thanks Autumn)
 ## New Monster Content:
 - Many creatures: Parry and Leadership
   
