@@ -1,3 +1,7 @@
+# 0.7.45 Release:
+## Bug Fixes:
+- Manifest Mind
+  
 # 0.7.44 Release:
 ## New Content:
 - Spell: Enlarge/Reduce

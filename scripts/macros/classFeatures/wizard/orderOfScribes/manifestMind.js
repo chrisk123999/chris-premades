@@ -65,6 +65,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             },
             'chris-premades': {
+                'vae': {
+                    'button': 'castData.name'
+                },
                 'feature': {
                     'manifestMind': manifestMindToken.id
                 }
@@ -80,12 +83,12 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
     if (!manifestMindId) return;
     let manifestMindToken = canvas.scene.tokens.get(manifestMindId);
     if (!manifestMindToken) return;
-    if (chris.getDistance(workflow.token, manifestMindToken) > 100) {
-        ui.notifications.info('Familiar Too Far Away!');
+    if (chris.getDistance(workflow.token, manifestMindToken) > 300) {
+        ui.notifications.info('Manifest Mind Too Far Away!');
         return;
     }
     let effectData = {
-        'label': 'Find Familiar Attack',
+        'label': 'Manifest Mind Spell',
         'icon': '',
         'origin': effect.origin.uuid,
         'duration': {
@@ -102,7 +105,7 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
                 'priority': 20,
-                'value': 'function.chrisPremades.macros.findFamiliar.attackEarly,preambleComplete'
+                'value': 'function.chrisPremades.macros.manifestMind.attackEarly,preambleComplete'
             }
         ],
         'flags': {
