@@ -1,6 +1,10 @@
 # 0.7.44 Release:
+## New Content:
+- Spell: Enlarge/Reduce
 ## Bug Fixes:
 - Manifest Mind
+## New Enhanced Animations (Thanks Eskiemoh):
+- Enlage/Reduce
   
 # 0.7.43 Release:
 ## New Content:

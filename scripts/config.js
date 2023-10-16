@@ -1847,7 +1847,15 @@ export function setConfig() {
                         'default': '2'
                     }
                 }
-            }
+            },
+            'Enlarge/Reduce': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
         },
         'automations': {
             'Armor of Agathys': {
@@ -4481,6 +4489,13 @@ export function setConfig() {
                     'Rest Listener'
                 ],
             },
+            'Enlarge/Reduce': {
+                'name': 'Enlarge/Reduce',
+                'version': '0.7.44',
+                'mutation': {
+                    'target': 'Enlarge/Reduce'
+                }
+            }
         }
     });
 }
