@@ -4470,7 +4470,7 @@ export function setConfig() {
             },
             'Manifest Mind: Summon': {
                 'name': 'Manifest Mind: Summon',
-                'version': '0.7.43',
+                'version': '0.7.44',
                 'actors': [
                     'CPR - Manifest Mind'
                 ],

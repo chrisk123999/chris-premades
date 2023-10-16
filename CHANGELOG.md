@@ -1,3 +1,7 @@
+# 0.7.44 Release:
+## Bug Fixes:
+- Manifest Mind
+  
 # 0.7.43 Release:
 ## New Content:
 - Order of Scribes Wizard: Manfest Mind (Thanks Autumn)
