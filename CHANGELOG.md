@@ -4,7 +4,7 @@
 ## Bug Fixes:
 - Manifest Mind
 ## New Enhanced Animations (Thanks Eskiemoh):
-- Enlage/Reduce
+- Enlarge/Reduce
   
 # 0.7.43 Release:
 ## New Content:
