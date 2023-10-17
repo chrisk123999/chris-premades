@@ -1087,7 +1087,7 @@ export function registerSettings() {
             }
         }
     });
-    addMenuSetting('Cast Animations', 'Animations');
+    addMenuSetting('Generic Spell Animations', 'Animations');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
