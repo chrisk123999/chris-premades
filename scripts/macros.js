@@ -129,6 +129,7 @@ import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
 import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
+import {frostFingers} from './macros/spells/frostFingers.js';
 import {frostStrike} from './macros/feats/strikeOfTheGiants/frostStrike.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
 import {generic} from './macros/monsterFeatures/generic/generic.js';
@@ -539,6 +540,7 @@ export let macros = {
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
+    'frostFingers': frostFingers,
     'frostStrike': frostStrike,
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
     'graspOfHadar': graspOfHadar,

@@ -731,5 +731,21 @@ export let chris = {
         if (!finalTemplate) return {'template': null, 'tokens': []};
         let tokens = await game.modules.get('templatemacro').api.findContained(finalTemplate).map(t => finalTemplate.parent.tokens.get(t));
         return {'template': finalTemplate, 'tokens': tokens};
+    },
+    'animationCheck': async function _animationCheck(item) {
+        if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
+        let state = false;
+        let name = item.name;
+        let autorecSettings = {
+            melee: game.settings.get('autoanimations', 'aaAutorec-melee'),
+            range: game.settings.get('autoanimations', 'aaAutorec-range'),
+            ontoken: game.settings.get('autoanimations', 'aaAutorec-ontoken'),
+            templatefx: game.settings.get('autoanimations', 'aaAutorec-templatefx'),
+            aura: game.settings.get('autoanimations', 'aaAutorec-aura'),
+            preset: game.settings.get('autoanimations', 'aaAutorec-preset'),
+            aefx: game.settings.get('autoanimations', 'aaAutorec-aefx'),
+        }
+        Object.entries(autorecSettings).forEach(setting => setting[1].forEach(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase()) ? state = true : ''));
+        return state;
     }
 }

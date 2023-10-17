@@ -1,6 +1,11 @@
 # 0.7.45 Release:
+## New Content:
+- Spell: Frost Fingers
+- Generic Spell Animations. These only require JB2A free.
 ## Bug Fixes:
 - Manifest Mind
+## Update Notes:
+- Spells that have CPR animations must be updated via the medkit to not overlap with generic spell animations.
   
 # 0.7.44 Release:
 ## New Content:

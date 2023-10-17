@@ -15,6 +15,7 @@ import {diceSoNice} from './diceSoNice.js';
 import {info} from './info.js';
 import {itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {cast} from './macros/animations/cast.js';
+import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1071,6 +1072,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('trs_color', 'Animations');
+    game.settings.register(moduleName, 'Generic Spell Animations', {
+        'name': ' Generic Spell Animations',
+        'hint': 'Enable to automatically play animations for spells without an AutoAnimations entry or CPR animation.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preambleComplete', spellsAnimations);
+            } else {
+                Hooks.off('midi-qol.preambleComplete', spellsAnimations);
+            }
+        }
+    });
+    addMenuSetting('Cast Animations', 'Animations');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

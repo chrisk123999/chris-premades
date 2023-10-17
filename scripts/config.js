@@ -1860,10 +1860,11 @@ export function setConfig() {
         'automations': {
             'Armor of Agathys': {
                 'name': 'Armor of Agathys',
-                'version': '0.7.40',
+                'version': '0.7.45',
                 'settings': [
                     'On Hit'
-                ]
+                ],
+                'hasAnimation': true
             },
             'Arms of Hadar': {
                 'name': 'Arms of Hadar',
@@ -1922,7 +1923,8 @@ export function setConfig() {
             },
             'Chain Lightning': {
                 'name': 'Chain Lightning',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Charm Person': {
                 'name': 'Charm Person',
@@ -1934,7 +1936,8 @@ export function setConfig() {
             },
             'Chromatic Orb': {
                 'name': 'Chromatic Orb',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Cloudkill': {
                 'name': 'Cloudkill',
@@ -1964,7 +1967,8 @@ export function setConfig() {
             },
             'Darkness': {
                 'name': 'Darkness',
-                'version': '0.7.29'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Dawn': {
                 'name': 'Dawn',
@@ -1982,7 +1986,8 @@ export function setConfig() {
             },
             'Destructive Wave': {
                 'name': 'Destructive Wave',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Detect Magic': {
                 'name': 'Detect Magic',
@@ -2060,11 +2065,13 @@ export function setConfig() {
             },
             'Shocking Grasp': {
                 'name': 'Shocking Grasp',
-                'version': '0.7.40'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Sanctuary': {
                 'name': 'Sanctuary',
-                'version': '0.7.01',
+                'version': '0.7.45',
+                'hasAnimation': true,
                 'settings': [
                     'Sanctuary'
                 ]
@@ -2082,7 +2089,8 @@ export function setConfig() {
             },
             'Vortex Warp': {
                 'name': 'Vortex Warp',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Tasha\'s Caustic Brew': {
                 'name': 'Tasha\'s Caustic Brew',
@@ -2138,7 +2146,8 @@ export function setConfig() {
             },
             'Storm Sphere': {
                 'name': 'Storm Sphere',
-                'version': '0.7.01',
+                'version': '0.7.45',
+                'hasAnimation': true,
                 'mutation': {
                     'self': 'Storm Sphere Handler'
                 }
@@ -2239,7 +2248,8 @@ export function setConfig() {
             },
             'Eldritch Blast': {
                 'name': 'Eldritch Blast',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Summon Aberration': {
                 'name': 'Summon Aberration',
@@ -2250,7 +2260,8 @@ export function setConfig() {
             },
             'Spirit Guardians': {
                 'name': 'Spirit Guardians',
-                'version': '0.7.01',
+                'version': '0.7.45',
+                'hasAnimation': true,
                 'settings': [
                     'Movement Listener',
                     'Combat Listener'
@@ -2292,7 +2303,8 @@ export function setConfig() {
             },
             'Scorching Ray': {
                 'name': 'Scorching Ray',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Chain Lightning': {
                 'name': 'Chain Lightning',
@@ -2365,7 +2377,8 @@ export function setConfig() {
             },
             'Thunder Step': {
                 'name': 'Thunder Step',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Death Ward': {
                 'name': 'Death Ward',
@@ -2459,7 +2472,8 @@ export function setConfig() {
             },
             'Guardian of Faith': {
                 'name': 'Guardian of Faith',
-                'version': '0.7.03',
+                'version': '0.7.45',
+                'hasAnimation': true,
                 'settings': [
                     'Movement Listener',
                     'Combat Listener'
@@ -2470,11 +2484,13 @@ export function setConfig() {
             },
             'Magic Missile': {
                 'name': 'Magic Missile',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Lightning Arrow': {
                 'name': 'Lightning Arrow',
-                'version': '0.7.01',
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Thorn Whip': {
                 'name': 'Thorn Whip',
@@ -2577,7 +2593,8 @@ export function setConfig() {
             },
             'Fog Cloud': {
                 'name': 'Fog Cloud',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Spirit Shroud': {
                 'name': 'Spirit Shroud',
@@ -2648,10 +2665,11 @@ export function setConfig() {
             },
             'Rage': {
                 'name': 'Rage',
-                'version': '0.7.31',
+                'version': '0.7.45',
                 'mutation': {
                     'self': 'Rage'
-                }
+                },
+                'hasAnimation': true
             },
             'Totem Spirit: Bear': {
                 'name': 'Totem Spirit: Bear',
@@ -2877,7 +2895,8 @@ export function setConfig() {
             },
             'Channel Divinity: Preserve Life': {
                 'name': 'Channel Divinity: Preserve Life',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Channel Divinity: Radiance of the Dawn': {
                 'name': 'Channel Divinity: Radiance of the Dawn',
@@ -2942,7 +2961,8 @@ export function setConfig() {
             },
             'Channel Divinity: Turn Undead': {
                 'name': 'Channel Divinity: Turn Undead',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Divine Strike': {
                 'name': 'Divine Strike',
@@ -3271,7 +3291,8 @@ export function setConfig() {
             },
             'Channel Divinity: Inspiring Smite': {
                 'name': 'Channel Divinity: Inspiring Smite',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Channel Divinity: Peerless Athlete': {
                 'name': 'Channel Divinity: Peerless Athlete',
@@ -3767,19 +3788,23 @@ export function setConfig() {
             },
             'Dragon\'s Wrath Weapon (Ascendant)': {
                 'name': 'Dragon\'s Wrath Weapon (Ascendant)',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Dragon\'s Wrath Weapon (Slumbering)': {
                 'name': 'Dragon\'s Wrath Weapon (Slumbering)',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Dragon\'s Wrath Weapon (Stirring)': {
                 'name': 'Dragon\'s Wrath Weapon (Stirring)',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Dragon\'s Wrath Weapon (Wakened)': {
                 'name': 'Dragon\'s Wrath Weapon (Wakened)',
-                'version': '0.7.01'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Grovelthrash (Awakened)': {
                 'name': 'Grovelthrash (Awakened)',
@@ -4414,19 +4439,23 @@ export function setConfig() {
             },
             'Burning Hands': {
                 'name': 'Burning Hands',
-                'version': '0.7.32'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Fly': {
                 'name': 'Fly',
-                'version': '0.7.32'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Faerie Fire': {
                 'name': 'Faerie Fire',
-                'version': '0.7.32'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Disintegrate': {
                 'name': 'Disintegrate',
-                'version': '0.7.32'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Form of the Beast': {
                 'name': 'Form of the Beast',
@@ -4446,7 +4475,8 @@ export function setConfig() {
             },
             'Fire Storm': {
                 'name': 'Fire Storm',
-                'version': '0.7.34'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Teleport': {
                 'name': 'Teleport',
@@ -4454,24 +4484,27 @@ export function setConfig() {
             },
             'Fire Shield': {
                 'name': 'Fire Shield',
-                'version': '0.7.38',
+                'version': '0.7.45',
                 'settings': [
                     'On Hit'
                 ],
                 'mutation': {
                     'self': 'Fire Shield'
-                }
+                },
+                'hasAnimation': true
             },
             'Far Step': {
                 'name': 'Far Step',
-                'version': '0.7.38',
+                'version': '0.7.45',
                 'mutation': {
                     'self': 'Far Step'
-                }
+                },
+                'hasAnimation': true
             },
             'Summon Lesser Demons': {
                 'name': 'Summon Lesser Demons',
-                'version': '0.7.40',
+                'version': '0.7.45',
+                'hasAnimation': true,
                 'mutation': {
                     'self': 'Summon Lesser Demons'
                 }
@@ -4491,10 +4524,16 @@ export function setConfig() {
             },
             'Enlarge/Reduce': {
                 'name': 'Enlarge/Reduce',
-                'version': '0.7.44',
+                'version': '0.7.45',
                 'mutation': {
                     'target': 'Enlarge/Reduce'
-                }
+                },
+                'hasAnimation': true
+            },
+            'Frost Fingers': {
+                'name': 'Frost Fingers',
+                'version': '0.7.45',
+                'hasAnimation': true
             }
         }
     });

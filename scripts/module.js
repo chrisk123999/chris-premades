@@ -27,6 +27,7 @@ import {setConfig} from './config.js';
 import {compendiumRender} from './compendium.js';
 import {translate} from './translations.js';
 import {cast} from './macros/animations/cast.js';
+import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -209,6 +210,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
+    if (game.settings.get('chris-premades', 'Generic Spell Animations')) Hooks.on('midi-qol.preambleComplete', spellsAnimations);
     Hooks.on('renderCompendium', compendiumRender);
 });
 let dev = {
