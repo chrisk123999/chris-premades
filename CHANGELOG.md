@@ -4,6 +4,8 @@
 - Generic Spell Animations. These only require JB2A free.
 ## Bug Fixes:
 - Manifest Mind
+## New Enhanced Animations (Thanks Eskiemoh):
+- Lightning Lure
 ## Update Notes:
 - When using generic spell animations, spells that have CPR animations must be updated via the medkit to not overlap.
   
