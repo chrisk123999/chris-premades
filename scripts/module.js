@@ -8,7 +8,7 @@ import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTrigger
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
-import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
+import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
 import {rest} from './utility/rest.js';
@@ -20,7 +20,7 @@ import {runAsGM} from './runAsGM.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {settingButton} from './settingsMenu.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
-import {diceSoNice} from './diceSoNice.js';
+import {diceSoNice} from './integrations/diceSoNice.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {setConfig} from './config.js';
@@ -28,6 +28,7 @@ import {compendiumRender} from './compendium.js';
 import {translate} from './translations.js';
 import {cast} from './macros/animations/cast.js';
 import {spellsAnimations} from './macros/animations/spellsAnimations.js';
+import {addDAEFlags} from './integrations/dae.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -212,6 +213,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
     if (game.settings.get('chris-premades', 'Generic Spell Animations')) Hooks.on('midi-qol.preambleComplete', spellsAnimations);
     Hooks.on('renderCompendium', compendiumRender);
+    if (game.modules.get('dae')?.active) addDAEFlags();
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

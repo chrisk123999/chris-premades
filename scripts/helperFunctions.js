@@ -747,5 +747,51 @@ export let chris = {
         }
         Object.entries(autorecSettings).forEach(setting => setting[1].forEach(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase()) ? state = true : ''));
         return state;
+    },
+    'pushToken': async function _pushToken(sourceToken, targetToken, distance) {
+        let knockBackFactor;
+        let ray;
+        let newCenter;
+        let hitsWall = true;
+        while (hitsWall) {
+            knockBackFactor = distance / canvas.dimensions.distance;
+            ray = new Ray(sourceToken.center, targetToken.center);
+            if (ray.distance === 0) {
+                ui.notifications.info('Target is unable to be moved!');
+                return;
+            }
+            newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
+            hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
+            if (hitsWall) {
+                distance -= 5;
+                if (distance === 0) {
+                    ui.notifications.info('Target is unable to be moved!');
+                    return;
+                }
+            }
+        }
+        newCenter = canvas.grid.getSnappedPosition(newCenter.x - targetToken.w / 2, newCenter.y - targetToken.h / 2, 1);
+        let targetUpdate = {
+            'token': {
+                'x': newCenter.x,
+                'y': newCenter.y
+            }
+        };
+        let options = {
+            'permanent': true,
+            'name': 'Move Token',
+            'description': 'Move Token'
+        };
+        await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
+    },
+    'getGridBetweenTokens': function _getGridBetweenTokens(sourceToken, targetToken, distance) {
+        let knockBackFactor = distance / canvas.dimensions.distance;
+        let ray = new Ray(sourceToken.center, targetToken.center);
+        let extra = 1;
+        if (Math.abs(ray.slope) === 1) extra = 1.41;    //todo: Make this less dumb.
+        if (ray.distance === 0) return {'x': sourceToken.x, 'y': sourceToken.y};
+        let newCenter = ray.project(1 + ((canvas.dimensions.size * extra * knockBackFactor) / ray.distance));
+        let cornerPosition = canvas.grid.getTopLeft(newCenter.x, newCenter.y, 1);
+        return {'x': cornerPosition[0], 'y': cornerPosition[1]};
     }
 }

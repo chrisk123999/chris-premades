@@ -130,6 +130,9 @@ let weapons = {
     ],
     'sickle': [
         'Lacerate'
+    ],
+    'dagger': [
+        'Piercing Strike'
     ]
 };
 let simpleWeapons = [

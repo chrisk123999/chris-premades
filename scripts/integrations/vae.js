@@ -1,4 +1,4 @@
-import {chris} from './helperFunctions.js';
+import {chris} from '../helperFunctions.js';
 export function vaeEffectDescription(effect, updates, options, id) {
     if (!effect.parent) return;
     if (effect.parent.constructor.name != 'Actor5e') return;

@@ -3,17 +3,8 @@ import {chris} from '../../helperFunctions.js';
 export async function magicMissile({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
     let maxMissiles = 3 + (workflow.castData.castLevel - 1);
-    let buttons = [
-        {
-            'label': 'Ok',
-            'value': true
-        }, {
-            'label': 'Cancel',
-            'value': false
-        }
-    ];
     let targets = Array.from(workflow.targets);
-    let selection = await chris.selectTarget('How many? (Max: ' + maxMissiles + ')', buttons, targets, true, 'number');
+    let selection = await chris.selectTarget('How many? (Max: ' + maxMissiles + ')', constants.okCancel, targets, true, 'number');
     if (!selection.buttons) return;
     let total = 0;
     for (let i of selection.inputs) {

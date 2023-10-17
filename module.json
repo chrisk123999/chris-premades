@@ -316,7 +316,7 @@
 	  }
   ],
   "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
-  "url": "#{URL}#",
+  "url": "https://github.com/chrisk123999/chris-premades/",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "license": "LICENSE",

@@ -10,8 +10,8 @@ import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomize
 import {rest} from './utility/rest.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
-import {vaeEffectDescription, vaeTempItemButton} from './vae.js';
-import {diceSoNice} from './diceSoNice.js';
+import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
+import {diceSoNice} from './integrations/diceSoNice.js';
 import {info} from './info.js';
 import {itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {cast} from './macros/animations/cast.js';

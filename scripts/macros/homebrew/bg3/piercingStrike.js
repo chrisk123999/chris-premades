@@ -52,7 +52,8 @@ async function strike({speaker, actor, token, character, item, args, scope, work
         'rapier',
         'shortsword',
         'trident',
-        'pike'
+        'pike',
+        'dagger'
     ];
     if (!validTypes.includes(workflow.item.system.baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Piercing Strike');
