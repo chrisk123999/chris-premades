@@ -2510,7 +2510,8 @@ export function setConfig() {
             },
             'Lightning Lure': {
                 'name': 'Lightning Lure',
-                'version': '0.7.33'
+                'version': '0.7.45',
+                'hasAnimation': true
             },
             'Spiritual Weapon': {
                 'name': 'Spiritual Weapon',
@@ -4368,11 +4369,11 @@ export function setConfig() {
             },
             'Piercing Strike': {
                 'name': 'Piercing Strike',
-                'version': '0.7.19'
+                'version': '0.7.45'
             },
             'Piercing Shot': {
                 'name': 'Piercing Shot',
-                'version': '0.7.19'
+                'version': '0.7.45'
             },
             'Pommel Strike': {
                 'name': 'Pommel Strike',

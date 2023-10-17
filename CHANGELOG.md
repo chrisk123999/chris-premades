@@ -5,7 +5,7 @@
 ## Bug Fixes:
 - Manifest Mind
 ## Update Notes:
-- Spells that have CPR animations must be updated via the medkit to not overlap with generic spell animations.
+- When using generic spell animations, spells that have CPR animations must be updated via the medkit to not overlap.
   
 # 0.7.44 Release:
 ## New Content:

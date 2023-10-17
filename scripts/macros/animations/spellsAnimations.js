@@ -1,6 +1,7 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {colorMatrix} from './colorMatrix.js';
-const spellSchools = {
+let spellSchools = {
     'abj': {
         'name': 'abjuration',
         'color': 'blue'
@@ -44,13 +45,25 @@ export async function spellsAnimations(workflow) {
     let damageTypes = [];
     for (let i = 0; workflow.item.system.damage.parts.length > i; i++) {
         let flavor = workflow.item.system.damage.parts[i][1];
-        if (!flavor) break;
+        if (!flavor) continue;
         if (damageTypes.includes(flavor.toLowerCase()) === false && flavor != 'healing' && flavor != 'temphp' && flavor != 'none' && flavor != 'midi-none') damageTypes.push(flavor);
     }
-    if (workflow.item.system.actionType === 'save' && distance > 5) await saveRanged();
-    if (workflow.item.system.actionType === 'heal') await heal();
-    if (distance === 5) await melee();
-    if (['rsak', 'msak'].includes(workflow.item.system.actionType)) await ranged();
+    if (workflow.item.system.actionType === 'save' && distance > 5) {
+        await saveRanged();
+        return;
+    }
+    if (workflow.item.system.actionType === 'heal') {
+        await heal();
+        return;
+    }
+    if (distance === 5) {
+        await melee();
+        return;
+    }
+    if (constants.spellAttacks.includes(workflow.item.system.actionType)) {
+        await ranged();
+        return;
+    }
     async function melee() {
         for (let i of workflow.targets) {
             new Sequence()
