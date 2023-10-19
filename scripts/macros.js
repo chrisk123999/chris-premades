@@ -25,6 +25,7 @@ import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js
 import {bestowCurse} from './macros/spells/bestowCurse.js';
 import {bg3} from './macros/homebrew/bg3/bg3.js';
 import {bigbysHand} from './macros/spells/bigbysHand.js';
+import {binding} from './macros/classFeatures/bloodHunter/bloodCurses/binding.js';
 import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
@@ -462,6 +463,7 @@ export let macros = {
     'bestowCurse': bestowCurse,
     'bg3': bg3,
     'bigbysHand': bigbysHand,
+    'binding': binding,
     'blackrazor': blackrazor,
     'bladeFlourish': bladeFlourish,
     'blessedStrikes': blessedStrikes,
