@@ -1,6 +1,7 @@
 # 0.7.46 Release:
 ## New Content:
 - Inquisitive Rogue: Insightful Fighting, Eye for Weakness
+- Blood Hunter: Blood Curse of Binding
 - Feats: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Planar Wanderer: Portal Cracker, Planar Wanderer: Planar Adaptation, Righteous Heritor: Soothe Pain, Soul of the Storm Giant: Maelstrom Aura
 ## Bug Fixes:
 - Strange Metabolism
