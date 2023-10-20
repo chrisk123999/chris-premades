@@ -47,6 +47,9 @@ export function setConfig() {
                 'Infiltrator Armor: Lightning Launcher',
                 'Infiltrator Armor: Lightning Launcher (DEX)'
             ],
+            'Arcane Ward': [
+                'Arcane Ward - Hit Points'
+            ],
             'Blessing of the Raven Queen': [
                 'Blessing of the Raven Queen (Resistance)'
             ],
