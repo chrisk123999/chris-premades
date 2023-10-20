@@ -258,7 +258,7 @@ async function remove(origin) {
     );
 }
 async function strangeMetabolism({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effects = workflow.actor.effects.filter(effect => effect.label.includes('Mutagen - '))
+    let effects = workflow.actor.effects.filter(effect => effect.label.includes('Mutagen - ') && effect.label.includes('Negative Effects'));
     let generatedMenu = [];
     for (let i of effects) {
         let originItem = await fromUuid(i.origin);

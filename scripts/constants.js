@@ -91,6 +91,21 @@ const okCancel = [
         'value': true
     }
 ];
+const yesNoButton = [
+    {
+        'label': 'No',
+        'value': false
+    },
+    {
+        'label': 'Yes',
+        'value': true
+    }
+];
+const nonDamageTypes = [
+    'healing',
+    'temphp',
+    'midi-none'
+];
 export let constants = {
     'syntheticItemWorkflowOptions': syntheticItemWorkflowOptions,
     'disadvantageEffectData': disadvantageEffectData,
@@ -102,5 +117,7 @@ export let constants = {
     'meleeAttacks': meleeAttacks,
     'rangedAttacks': rangedAttacks,
     'weaponAttacks': weaponAttacks,
-    'spellAttacks': spellAttacks
+    'spellAttacks': spellAttacks,
+    'yesNoButton': yesNoButton,
+    'nonDamageTypes': nonDamageTypes
 }

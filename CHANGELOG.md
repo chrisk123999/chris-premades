@@ -1,3 +1,18 @@
+# 0.7.46 Release:
+## New Content:
+- Inquisitive Rogue: Insightful Fighting, Eye for Weakness
+- Feats: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Planar Wanderer: Portal Cracker, Planar Wanderer: Planar Adaptation, Righteous Heritor: Soothe Pain, Soul of the Storm Giant: Maelstrom Aura
+## Bug Fixes:
+- Strange Metabolism
+- Emboldening Bond
+- Sneak Attack
+- Manifest Mind
+- Arcane Ward
+## New Enhanced Animations (Thanks Eskiemoh):
+- Sneak Attack
+## Update Notes:
+- 3rd Party Reactions will now display a message to the GM while waiting for the reaction dialog.
+  
 # 0.7.45 Release:
 ## New Content:
 - Spell: Frost Fingers

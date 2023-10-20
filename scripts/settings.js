@@ -869,6 +869,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Arcane Ward', 'Class Features');
+    game.settings.register(moduleName, 'Righteous Heritor', {
+        'name': 'Righteous Heritor Automation',
+        'hint': 'Enabling this allows the automation of the Righteous Heritor feat via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.damageApplied', macros.soothePain);
+            } else {
+                Hooks.off('midi-qol.damageApplied', macros.soothePain);
+            } 
+        }
+    });
+    addMenuSetting('Righteous Heritor', 'Feats');
     game.settings.register(moduleName, 'Summons Folder', {
         'name': 'Other Summons Folder',
         'hint': 'This is the name of the folder that will be used for other summon spells, including "Conjure" spells and "Find" spells',

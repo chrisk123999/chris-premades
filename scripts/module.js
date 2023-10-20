@@ -212,6 +212,7 @@ Hooks.once('ready', async function() {
     }
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
     if (game.settings.get('chris-premades', 'Generic Spell Animations')) Hooks.on('midi-qol.preambleComplete', spellsAnimations);
+    if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.damageApplied', macros.soothePain);
     Hooks.on('renderCompendium', compendiumRender);
     if (game.modules.get('dae')?.active) addDAEFlags();
 });

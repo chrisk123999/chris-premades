@@ -137,6 +137,7 @@ import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
 import {giftOfTheChromaticDragon} from './macros/feats/giftOfTheChromaticDragon.js';
+import {graspOfAvarice} from './macros/feats/graspOfAvarice.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grease} from './macros/spells/grease.js';
@@ -165,6 +166,7 @@ import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
 import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 import {insectPlague} from './macros/spells/insectPlague.js';
+import {insightfulFighting} from './macros/classFeatures/rogue/inquisitive/insightfulFighting.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
@@ -175,6 +177,7 @@ import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
 import {lightningLure} from './macros/spells/lightningLure.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
+import {maelstromAura} from './macros/feats/maelstromAura.js';
 import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 import {manifestMind} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js'
@@ -191,6 +194,7 @@ import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
 import {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
 import {piercer} from './macros/feats/piercer.js';
+import {planarWanderer} from './macros/feats/planarWanderer.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
 import {potionOfFireBreath} from './macros/items/potionOfFireBreath.js';
 import {potionOfGiantSize} from './macros/items/potionOfGiantSize.js';
@@ -235,6 +239,7 @@ import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {slasher} from './macros/feats/slasher.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
+import {soothePain} from './macros/feats/soothePain.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spellRefuelingRing} from './macros/classFeatures/artificer/infusions/spellRefuelingRing.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
@@ -243,6 +248,7 @@ import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {spiritualWeapon} from './macros/spells/spiritualWeapon.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
+import {stasisStrike} from './macros/feats/stasisStrike.js';
 import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
@@ -545,6 +551,7 @@ export let macros = {
     'frostFingers': frostFingers,
     'frostStrike': frostStrike,
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
+    'graspOfAvarice': graspOfAvarice,
     'graspOfHadar': graspOfHadar,
     'graveTouched': graveTouched,
     'grease': grease,
@@ -569,6 +576,7 @@ export let macros = {
     'hybridTransformation': hybridTransformation,
     'infectiousFury': infectiousFury,
     'insectPlague': insectPlague,
+    'insightfulFighting': insightfulFighting,
     'inspiringSmite': inspiringSmite,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'lanternOfRevealing': lanternOfRevealing,
@@ -576,6 +584,7 @@ export let macros = {
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,
     'maddeningHex': maddeningHex,
+    'maelstromAura': maelstromAura,
     'magicMissile': magicMissile,
     'maneuvers': maneuvers,
     'manifestMind': manifestMind,
@@ -596,6 +605,7 @@ export let macros = {
     'orcishFury': orcishFury,
     'overchannel': overchannel,
     'piercer': piercer,
+    'planarWanderer': planarWanderer,
     'potionOfDiminution': potionOfDiminution,
     'potionOfFireBreath': potionOfFireBreath,
     'potionOfGiantSize': potionOfGiantSize,
@@ -633,12 +643,14 @@ export let macros = {
     'sickeningRadiance': sickeningRadiance,
     'slasher': slasher,
     'sneakAttack': sneakAttack,
+    'soothePain': soothePain,
     'spellRefuelingRing': spellRefuelingRing,
     'spikeGrowth': spikeGrowth,
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,
     'spiritualWeapon': spiritualWeapon,
     'starryForm': starryForm,
+    'stasisStrike': stasisStrike,
     'steelDefender': steelDefender,
     'stillnessOfMind': stillnessOfMind,
     'stoneStrike': stoneStrike,

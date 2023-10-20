@@ -30,6 +30,9 @@ export function setConfig() {
             ],
             'Eladrin Season: Summer': [
                 'Change Season'
+            ],
+            'Planar Wanderer': [
+                'Planar Wanderer: Planar Adaptation'
             ]
         },
         'removedItems': {
@@ -953,6 +956,10 @@ export function setConfig() {
                     'auto': {
                         'label': 'Auto Sneak Attack?',
                         'default': false
+                    },
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
                     }
                 }
             },
@@ -1855,7 +1862,7 @@ export function setConfig() {
                         'default': true
                     }
                 }
-            },
+            }
         },
         'automations': {
             'Armor of Agathys': {
@@ -2652,7 +2659,7 @@ export function setConfig() {
             },
             'Homunculus Servant': {
                 'name': 'Homunculus Servant',
-                'version': '0.7.43',
+                'version': '0.7.46',
                 'actors': [
                     'CPR - Homunculus Servant'
                 ],
@@ -3382,7 +3389,7 @@ export function setConfig() {
             },
             'Sneak Attack': {
                 'name': 'Sneak Attack',
-                'version': '0.7.01'
+                'version': '0.7.46'
             },
             'Favored by the Gods': {
                 'name': 'Favored by the Gods',
@@ -4535,6 +4542,65 @@ export function setConfig() {
                 'name': 'Frost Fingers',
                 'version': '0.7.45',
                 'hasAnimation': true
+            },
+            'Eye for Weakness': {
+                'name': 'Eye for Weakness',
+                'version': '0.7.46'
+            },
+            'Insightful Fighting': {
+                'name': 'Insightful Fighting',
+                'version': '0.7.46'
+            },
+            'Soul of the Storm Giant: Maelstrom Aura': {
+                'name': 'Soul of the Storm Giant: Maelstrom Aura',
+                'version': '0.7.46'
+            },
+            'Agent of Order: Stasis Strike': {
+                'name': 'Agent of Order: Stasis Strike',
+                'version': '0.7.46'
+            },
+            'Baleful Scion: Grasp of Avarice': {
+                'name': 'Baleful Scion: Grasp of Avarice',
+                'version': '0.7.46'
+            },
+            'Righteous Heritor: Soothe Pain': {
+                'name': 'Righteous Heritor: Soothe Pain',
+                'version': '0.7.46',
+                'settings': [
+                    'Righteous Heritor'
+                ]
+            },
+            'Planar Wanderer: Planar Adaptation': {
+                'name': 'Planar Wanderer: Planar Adaptation',
+                'version': '0.7.46'
+            },
+            'Planar Wanderer: Portal Cracker': {
+                'name': 'Planar Wanderer: Portal Cracker',
+                'version': '0.7.46'
+            },
+            'Scion of the Outer Planes (Chaotic Outer Plane)': {
+                'name': 'Scion of the Outer Planes (Chaotic Outer Plane)',
+                'version': '0.7.46'
+            },
+            'Scion of the Outer Planes (Evil Outer Plane)': {
+                'name': 'Scion of the Outer Planes (Evil Outer Plane)',
+                'version': '0.7.46'
+            },
+            'Scion of the Outer Planes (Good Outer Plane)': {
+                'name': 'Scion of the Outer Planes (Good Outer Plane)',
+                'version': '0.7.46'
+            },
+            'Scion of the Outer Planes (Lawful Outer Plane)': {
+                'name': 'Scion of the Outer Planes (Lawful Outer Plane)',
+                'version': '0.7.46'
+            },
+            'Scion of the Outer Planes (The Outlands)': {
+                'name': 'Scion of the Outer Planes (The Outlands)',
+                'version': '0.7.46'
+            },
+            'Blood Curse of Binding': {
+                'name': 'Blood Curse of Binding',
+                'version': '0.7.46'
             }
         }
     });

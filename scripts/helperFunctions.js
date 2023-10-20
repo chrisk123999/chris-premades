@@ -331,12 +331,17 @@ export let chris = {
         return types;
     },
     'perTurnCheck': function _perTurnCheck(originItem, type, name, ownTurnOnly, tokenId) {
-        if (game.combat === null || game.combat === undefined) return true;
+        if (!chris.inCombat()) return true;
         if (ownTurnOnly && (tokenId != game.combat.current.tokenId)) return false;
         let currentTurn = game.combat.round + '-' + game.combat.turn;
         let previousTurn = originItem.flags['chris-premades']?.[type]?.[name]?.turn;
         if (currentTurn != previousTurn) return true;
         return false;
+    },
+    'setTurnCheck': async function _setTurnCheck(originItem, type, name, reset) {
+        let turn = '';
+        if (chris.inCombat() && !reset) turn = game.combat.round + '-' + game.combat.turn;
+        await originItem.setFlag('chris-premades', type + '.' + name + '.turn', turn);
     },
     'tokenInTemplate': function _tokenInTemplate(token, template) {
         let containedTokens = game.modules.get('templatemacro').api.findContained(template);
@@ -793,5 +798,81 @@ export let chris = {
         let newCenter = ray.project(1 + ((canvas.dimensions.size * extra * knockBackFactor) / ray.distance));
         let cornerPosition = canvas.grid.getTopLeft(newCenter.x, newCenter.y, 1);
         return {'x': cornerPosition[0], 'y': cornerPosition[1]};
+    },
+    'addDamageDetailDamage': function _addDamageDetailDamage(targetToken, damageTotal, damageType, workflow) {
+        let targetDamage = workflow.damageList.find(t => t.tokenId === targetToken.id);
+        let targetActor = targetToken.actor;
+        if (chris.checkTrait(targetActor, 'di', damageType)) return;
+        if (chris.checkTrait(targetActor, 'dr', damageType)) damageTotal = Math.floor(damageTotal / 2);
+        targetDamage.damageDetail[0].push(
+            {
+                'damage': damageTotal,
+                'type': damageType
+            }
+        );
+        targetDamage.totalDamage += damageTotal;
+        if (workflow.defaultDamageType === 'healing') {
+            targetDamage.newHP += roll.total;
+            targetDamage.hpDamage -= damageTotal;
+            targetDamage.appliedDamage -= damageTotal;
+        } else {
+            targetDamage.appliedDamage += damageTotal;
+            targetDamage.hpDamage += damageTotal;
+            if (targetDamage.oldTempHP > 0) {
+                if (targetDamage.oldTempHP >= damageTotal) {
+                    targetDamage.newTempHP -= damageTotal;
+                } else {
+                    let leftHP = damageTotal - targetDamage.oldTempHP;
+                    targetDamage.newTempHP = 0;
+                    targetDamage.newHP -= leftHP;
+                }
+            } else {
+                targetDamage.newHP -= damageTotal;
+            }
+        }
+    },
+    'removeDamageDetailDamage': function _removeDamageDetailDamage(ditem, targetToken, reduction) {
+        let absorbed = Math.min(ditem.appliedDamage, reduction);
+        let keptDamage = ditem.appliedDamage - absorbed;
+        if (ditem.oldTempHP > 0) {
+            if (keptDamage > ditem.oldTempHP) {
+                ditem.newTempHP = 0;
+                keptDamage -= ditem.oldTempHP;
+                ditem.tempDamage = ditem.oldTempHP;
+            } else {
+                ditem.newTempHP = ditem.oldTempHP - keptDamage;
+                ditem.tempDamage = keptDamage;
+            }
+        }
+        let maxHP = targetToken.actor.system.attributes.hp.max;
+        ditem.hpDamage = Math.clamped(keptDamage, 0, maxHP);
+        ditem.newHP = Math.clamped(ditem.oldHP - keptDamage, 0, maxHP);
+        ditem.appliedDamage = keptDamage;
+        ditem.totalDamage = keptDamage;
+    },
+    'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user) {
+        console.log(user);
+        let playerName = user.name;
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
+        let message = '<hr>Waiting for a 3rd party reaction from:<br><b>' + playerName + '</b>';
+        if (lastMessage) {
+            await lastMessage.update({'content': message});
+        } else {
+            ChatMessage.create({
+                'speaker': {'alias': name},
+                'content': message,
+                'whisper': game.users.filter(u => u.isGM).map(u => u.id),
+                'blind': false,
+                'flags': {
+                    'chris-premades': {
+                        'thirdPartyReactionMessage': true
+                    }
+                }
+            });
+        }
+    },
+    'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
+        if (lastMessage) await lastMessage.delete();
     }
 }

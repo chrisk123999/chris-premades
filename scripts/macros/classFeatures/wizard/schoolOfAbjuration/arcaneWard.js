@@ -60,7 +60,11 @@ async function damage(targetToken, {workflow, ditem}) {
         return;
     }
     for (let token of tokens) {
-        let selection = await chris.remoteDialog('Arcane Ward', [['Yes', true], ['No', false]], chris.firstOwner(token).id, 'Protect ' + targetToken.actor.name + ' with your arcane ward?');
+        let firstOwner = chris.firstOwner(token);
+        await chris.thirdPartyReactionMessage(firstOwner);
+        let message = 'Protect ' + targetToken.actor.name + ' with your arcane ward?';
+        if (firstOwner.isGM) message = '[' + token.actor.name + '] ' + message;
+        let selection = await chris.remoteDialog('Arcane Ward', constants.yesNo, firstOwner.id, message);
         if (!selection) continue;
         let shielded = check(token);
         if (shielded) {
@@ -73,6 +77,7 @@ async function damage(targetToken, {workflow, ditem}) {
             await originItem.use();
         }
     }
+    await chris.clearThirdPartyReactionMessage();
     queue.remove(workflow.uuid);
 }
 async function spell({speaker, actor, token, character, item, args, scope, workflow}) {

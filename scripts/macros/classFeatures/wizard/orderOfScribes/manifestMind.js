@@ -66,7 +66,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             },
             'chris-premades': {
                 'vae': {
-                    'button': 'castData.name'
+                    'button': castData.name
                 },
                 'feature': {
                     'manifestMind': manifestMindToken.id

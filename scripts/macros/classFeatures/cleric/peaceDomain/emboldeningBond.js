@@ -1,3 +1,4 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function effectMacro() {
@@ -39,6 +40,12 @@ let effectData = {
         {
             'key': 'flags.midi-qol.optional.emboldeningBond.skill.all',
             'mode': 0,
+            'value': '+ 1d4',
+            'priority': 20
+        },
+        {
+            'key': 'system.attributes.init.bonus',
+            'mode': 2,
             'value': '+ 1d4',
             'priority': 20
         }
@@ -175,7 +182,9 @@ async function damage(targetToken, {workflow, ditem}) {
         if (!owner) continue;
         let title = 'Protective Bond: Protect Target?';
         if (owner.isGM) title = '[' + token.actor.name + '] ' + title;
-        let selection = await chris.remoteDialog(title, [['Yes', true], ['No', false]], chris.firstOwner(token.document).id);
+        let firstOwner = chris.firstOwner(token.document).id;
+        await chris.thirdPartyReactionMessage(firstOwner);
+        let selection = await chris.remoteDialog('Protective Bond', constants.yesNo, firstOwner, title);
         if (!selection) continue;
         let featureDamage = 0;
         let damages = {};
@@ -253,6 +262,7 @@ async function damage(targetToken, {workflow, ditem}) {
         ditem.totalDamage = 0;
         break;
     }
+    await chris.clearThirdPartyReactionMessage();
     queue.remove(workflow.uuid);
 }
 async function teleport(token) {
