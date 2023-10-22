@@ -22,9 +22,10 @@ export async function updateMoveTriggers(updatedTriggers) {
 export async function updateGMTriggers(updatedTriggers) {
     await game.settings.set('chris-premades', 'Movement Triggers', updatedTriggers);
 }
-export function tokenMoved(token, changes) {
+export async function tokenMoved(token, changes) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
+    await token.object._animation;
     for (let name of Object.values(triggers)) {
         let validSources = [];
         for (let spell of name) {

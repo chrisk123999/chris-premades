@@ -107,6 +107,7 @@ async function move(token, changes) {
     if (!changes.x && !changes.y && !changes.elevation) return;
     let effect = chris.findEffect(token.actor, 'Emboldening Bond');
     if (!effect) return;
+    await token.object._animation;
     checkBonus(effect);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {

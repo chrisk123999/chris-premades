@@ -1,3 +1,15 @@
+# 0.7.47 Release:
+## New Content:
+- Spell: Compelled Duel
+- Kobold: Draconic Cry (Thanks SaltyJ)
+## Bug Fixes:
+- Arcane Ward
+- Emboldening Bond
+- Experimental Elixir
+- Warding Bond
+## Update Notes:
+- Added more module integration settings for Automated Animations and Build A Bonus.
+  
 # 0.7.46 Release:
 ## New Content:
 - Inquisitive Rogue: Insightful Fighting, Eye for Weakness

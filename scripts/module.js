@@ -29,6 +29,8 @@ import {translate} from './translations.js';
 import {cast} from './macros/animations/cast.js';
 import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {addDAEFlags} from './integrations/dae.js';
+import {automatedAnimations} from './integrations/automatedAnimations.js';
+import {buildABonus} from './integrations/buildABonus.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -142,6 +144,7 @@ Hooks.once('ready', async function() {
             Hooks.on('updateToken', macros.wardingBond.moveTarget);
             Hooks.on('updateToken', macros.wardingBond.moveSource);
         }
+        if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('updateToken', macros.compelledDuel.movement);
     }
     await loadTriggers();
     if (game.settings.get('chris-premades', 'Condition Resistance')) {
@@ -213,8 +216,18 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
     if (game.settings.get('chris-premades', 'Generic Spell Animations')) Hooks.on('midi-qol.preambleComplete', spellsAnimations);
     if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.damageApplied', macros.soothePain);
+    if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('midi-qol.RollComplete', macros.compelledDuel.attacked);
     Hooks.on('renderCompendium', compendiumRender);
     if (game.modules.get('dae')?.active) addDAEFlags();
+    if (game.settings.get('chris-premades', 'Colorize Automated Animations')) {
+        automatedAnimations.sortAutoRec();
+        Hooks.on('renderItemSheet', automatedAnimations.titleBarButton);
+    }
+    if (game.settings.get('chris-premades', 'Colorize Build A Bonus')) {
+        Hooks.on('renderItemSheet', buildABonus.titleBarButton);
+        Hooks.on('renderDAEActiveEffectConfig', buildABonus.daeTitleBarButton);
+        Hooks.on('renderActorSheet5e', buildABonus.actorTitleBarButtons);
+    }
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

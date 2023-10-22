@@ -284,6 +284,16 @@ export function setConfig() {
                         'type': ''
                     }
                 }
+            },
+            'Arcane Ward': {
+                'system': {
+                    'uses': {
+                        'max': 1,
+                        'per': 'charges',
+                        'recovery': '',
+                        'value': 0
+                    }
+                }
             }
         },
         'itemConfiguration': {
@@ -4604,6 +4614,17 @@ export function setConfig() {
             'Blood Curse of Binding': {
                 'name': 'Blood Curse of Binding',
                 'version': '0.7.46'
+            },
+            'Compelled Duel': {
+                'name': 'Compelled Duel',
+                'version': '0.7.47',
+                'settings': [
+                    'Compelled Duel'
+                ]
+            },
+            'Draconic Cry': {
+                'name': 'Draconic Cry',
+                'version': '0.7.47'
             }
         }
     });

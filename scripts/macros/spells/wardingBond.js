@@ -144,9 +144,10 @@ async function moveTarget(token, changes) {
     if (!bondTokenUuid) return;
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
+    await token.object._animation;
     let distance = chris.getDistance(token, sourceToken);
     if (distance <= 60) return;
-    let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', constants.yesNo);
     if (!selection) return;
     await chris.removeEffect(effect);
     let sourceEffect = sourceToken.actor.effects.find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === token.uuid);
@@ -163,7 +164,7 @@ async function moveSource(token, changes) {
         if (!targetToken) continue;
         let distance = chris.getDistance(token, targetToken);
         if (distance <= 60) continue;
-        let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', [['Yes', true], ['No', false]]);
+        let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', constants.yesNo);
         if (!selection) continue;
         await chris.removeEffect(i);
         let targetEffect = chris.findEffect(targetToken.actor, 'Warding Bond - Target');

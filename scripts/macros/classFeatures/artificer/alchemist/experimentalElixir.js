@@ -52,7 +52,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
             ]);
         }
         let effectData = {
-            'label': itemData.name,
+            'label': itemData.name + ' Item',
             'icon': '', //Blank to avoid showing up as a status icon.
             'duration': {
                 'seconds': 604800
@@ -61,7 +61,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
             'flags': {
                 'effectmacro': {
                     'onDelete': {
-                        'script': "warpgate.revert(token.document, '" + itemData.name + "');"
+                        'script': "warpgate.revert(token.document, '" + itemData.name + " Item');"
                     }
                 },
                 'dae': {
@@ -80,14 +80,14 @@ export async function experimentalElixir({speaker, actor, token, character, item
                     [itemData.name]: itemData
                 },
                 'ActiveEffect': {
-                    [itemData.name]: effectData
+                    [effectData.label]: effectData
                 }
             }
         };
         let options = {
             'permanent': false,
-            'name': itemData.name,
-            'description': itemData.name
+            'name': effectData.label,
+            'description': effectData.label
         };
         await warpgate.mutate(workflow.token.document, updates, {}, options);
     }

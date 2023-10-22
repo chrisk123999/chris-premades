@@ -16,6 +16,8 @@ import {info} from './info.js';
 import {itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {cast} from './macros/animations/cast.js';
 import {spellsAnimations} from './macros/animations/spellsAnimations.js';
+import {automatedAnimations} from './integrations/automatedAnimations.js';
+import {buildABonus} from './integrations/buildABonus.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1104,6 +1106,61 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Generic Spell Animations', 'Animations');
+    game.settings.register(moduleName, 'Compelled Duel', {
+        'name': 'Compelled Duel Automation',
+        'hint': 'Enabling this allows the automation of the spell Compelled Duel via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                if (game.user.isGM) Hooks.on('updateToken', macros.compelledDuel.movement);
+                Hooks.on('midi-qol.RollComplete', macros.compelledDuel.attacked);
+            } else {
+                if (game.user.isGM) Hooks.off('updateToken', macros.compelledDuel.movement);
+                Hooks.off('midi-qol.RollComplete', macros.compelledDuel.attacked);
+            }
+        }
+    });
+    addMenuSetting('Compelled Duel', 'Spells');
+    game.settings.register(moduleName, 'Colorize Automated Animations', {
+        'name': 'Colorize Automated Animations Title Bar Button',
+        'hint': 'Enabling this will make colorize the Automated Animations title bar button.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                automatedAnimations.sortAutoRec();
+                Hooks.on('renderItemSheet', automatedAnimations.titleBarButton);
+            } else {
+                Hooks.off('renderItemSheet', automatedAnimations.titleBarButton);
+            }
+        }
+    });
+    addMenuSetting('Colorize Automated Animations', 'Module Integration');
+    game.settings.register(moduleName, 'Colorize Build A Bonus', {
+        'name': 'Colorize Build A Bonus Title Bar Button',
+        'hint': 'Enabling this will make colorize the Build A Bonus title bar button.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('renderItemSheet', buildABonus.titleBarButton);
+                Hooks.on('renderDAEActiveEffectConfig', buildABonus.daeTitleBarButton);
+                Hooks.on('renderActorSheet5e', buildABonus.actorTitleBarButtons);
+            } else {
+                Hooks.off('renderItemSheet', buildABonus.titleBarButton);
+                Hooks.off('renderDAEActiveEffectConfig', buildABonus.daeTitleBarButton);
+                Hooks.off('renderActorSheet5e', buildABonus.actorTitleBarButtons);
+            }
+        }
+    });
+    addMenuSetting('Colorize Build A Bonus', 'Module Integration');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

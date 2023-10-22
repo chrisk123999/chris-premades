@@ -88,7 +88,7 @@ export async function spellsAnimations(workflow) {
                 .playbackRate(0.75)
                 .waitUntilFinished()
             .play();
-        Hooks.once('midi-qol.preDamageRoll', async function() {
+        Hooks.once('midi-qol.DamageRollComplete', async function() {
             if (workflow.isFumble) return;
             let missed = (workflow.hitTargets.size < 1);
             for (let i of workflow.targets) {

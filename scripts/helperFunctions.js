@@ -704,20 +704,19 @@ export let chris = {
     },
     'animationCheck': function _animationCheck(item) {
         if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
+        let state = false;
         let name = item.name;
-        let autorecSettings = [
-            game.settings.get('autoanimations', 'aaAutorec-melee'),
-            game.settings.get('autoanimations', 'aaAutorec-range'),
-            game.settings.get('autoanimations', 'aaAutorec-ontoken'),
-            game.settings.get('autoanimations', 'aaAutorec-templatefx'),
-            game.settings.get('autoanimations', 'aaAutorec-aura'),
-            game.settings.get('autoanimations', 'aaAutorec-preset'),
-            game.settings.get('autoanimations', 'aaAutorec-aefx'),
-        ]
-        autorecSettings.forEach(setting => check(setting));
-        function check(setting) {
-            if (setting.find(autorec => autorec.label === name)) return true;
+        let autorecSettings = {
+            melee: game.settings.get('autoanimations', 'aaAutorec-melee'),
+            range: game.settings.get('autoanimations', 'aaAutorec-range'),
+            ontoken: game.settings.get('autoanimations', 'aaAutorec-ontoken'),
+            templatefx: game.settings.get('autoanimations', 'aaAutorec-templatefx'),
+            aura: game.settings.get('autoanimations', 'aaAutorec-aura'),
+            preset: game.settings.get('autoanimations', 'aaAutorec-preset'),
+            aefx: game.settings.get('autoanimations', 'aaAutorec-aefx'),
         }
+        Object.entries(autorecSettings).forEach(setting => setting[1].forEach(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase()) ? state = true : ''));
+        return state;
     },
     'createTemplate': async function _createTemplate(templateData, returnTokens) {
         let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
@@ -874,5 +873,11 @@ export let chris = {
     'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
         let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
         if (lastMessage) await lastMessage.delete();
+    },
+    'lastGM': function _lastGM() {
+        return game.settings.get('chris-premades', 'LastGM');
+    },
+    'isLastGM': function _isLastGM() {
+        return game.user.id === chris.lastGM() ? true : false;
     }
 }

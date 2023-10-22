@@ -55,6 +55,7 @@ import {cleave} from './macros/mechanics/cleave.js';
 import {clockworkDefender} from './macros/monsterFeatures/clockworkDefender/clockworkDefender.js';
 import {cloudStrike} from './macros/feats/strikeOfTheGiants/cloudStrike.js';
 import {cloudkill} from './macros/spells/cloudkill.js';
+import {compelledDuel} from './macros/spells/compelledDuel.js';
 import {conditionResistanceEarly, conditionResistanceLate} from './macros/mechanics/conditionResistance.js';
 import {conditionVulnerabilityEarly, conditionVulnerabilityLate} from './macros/mechanics/conditionVulnerability.js';
 import {conjureAnimals} from './macros/spells/conjureAnimals.js';
@@ -490,6 +491,7 @@ export let macros = {
     'cleave': cleave,
     'cloudStrike': cloudStrike,
     'cloudkill': cloudkill,
+    'compelledDuel': compelledDuel,
     'conditionResistanceEarly': conditionResistanceEarly,
     'conditionResistanceLate': conditionResistanceLate,
     'conditionVulnerabilityEarly': conditionVulnerabilityEarly,

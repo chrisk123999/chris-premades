@@ -104,6 +104,7 @@ async function canvasReady() {
     refreshEffects();
 }
 async function tokenMoved(token, ignoredUuid, ignoredAura) {
+    await token.object._animation;
     let distaceMap = {};
     for (let auraName of Object.values(auras)) {
         let validSources = [];
