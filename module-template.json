@@ -1,0 +1,330 @@
+{
+  "id": "chris-premades",
+  "title": "Chris's Premades",
+  "description": "Chris's premade items for high-automation midi-qol games.",
+  "version": "#{VERSION}#",
+  "library": "false",
+  "socket": true,
+  "manifestPlusVersion": "1.2.0",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10",
+    "maximum": "11"
+  },
+  "authors": [
+    {
+      "name": "Chris",
+      "url": "https://github.com/chrisk123999",
+      "discord": "chrisk123999",
+	  "ko-fi": "chrisk123999"
+    },
+	{
+      "name": "Autumn",
+      "url": "https://github.com/Autumn225",
+      "discord": "autumn225"
+    }
+  ],
+  "relationships": {
+    "systems": [{
+		"id": "dnd5e",
+		"type": "system",
+		"manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+		"compatibility": {
+			"minimum": "2.2.1",
+			"verified": "2.2.2"
+		}
+	}],
+    "requires": [{
+		"id": "midi-qol",
+		"type": "module",
+		"manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
+		"compatibility": {
+			"verified": "10.0.57",
+			"minimum": "10.0.46"
+		}
+	},
+	{
+		"id": "dfreds-convenient-effects",
+		"type": "module",
+		"manifest": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "4.2.1"
+		}
+	},
+	{
+		"id": "warpgate",
+		"type": "module",
+		"manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.19.0"
+		}
+	},
+	{
+		"id": "effectmacro",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/effectmacro/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.0.15"
+		}
+	},
+	{
+		"id": "templatemacro",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/templatemacro/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.0.2"
+		}
+	},
+	{
+		"id": "sequencer",
+		"type": "module",
+		"manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
+		"compatibility": {
+			"verified": "3.0.6"
+		}
+	},
+	{
+		"id": "token-attacher",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/KayelGee/token-attacher/master/module.json",
+		"compatibility": {
+			"verified": "4.5.12"
+		}
+	},
+	{
+		"id": "babonus",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/babonus/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.5.4"
+		}
+	},
+	{
+		"id": "socketlib",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
+		"compatibility": {
+			"verified": "3.0.6"
+		}
+	},
+	{
+		"id": "dae",
+		"type": "module",
+		"manifest": "https://gitlab.com/tposney/dae/raw/v10/package/module.json",
+		"compatibility": {
+			"verified": "10.0.23"
+		}
+	},
+	{
+		"id": "autoanimations",
+		"type": "module",
+		"manifest": "https://github.com/otigon/automated-jb2a-animations/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "4.2.51"
+		}
+	}],
+	"optional": [{
+		"id": "tidy5e-sheet",
+		"type": "module",
+		"manifest": "https://github.com/sdenec/tidy5e-sheet/releases/download/0.8.25/module.json",
+		"compatibility": {
+			"verified": "0.8.25"
+		}
+	},
+	{
+		"id": "custom-character-sheet-sections",
+		"type": "module",
+		"manifest": "https://github.com/jessev14/custom-character-sheet-sections/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.5.0"
+		}
+	},
+	{
+		"id": "tokenmagic",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/Feu-Secret/Tokenmagic/master/tokenmagic/module.json",
+		"compatibility": {
+			"verified": "0.6.1.2"
+		}
+	},
+	{
+		"id": "ddb-importer",
+		"type": "module",
+		"manifest": "https://github.com/mrprimate/ddb-importer/releases/download/latest/module.json",
+		"compatibility": {
+			"verified": "3.4.5"
+		}
+	},
+	{
+		"id": "visual-active-effects",
+		"type": "module",
+		"manifest": "https://github.com/krbz999/visual-active-effects/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "10.0.14"
+		}
+	},
+	{
+		"id": "itemacro",
+		"type": "module",
+		"manifest": "https://github.com/Kekilla0/Item-Macro/releases/latest/download/module.json",
+		"compatibility": {
+			"verified": "1.8.0"
+		}
+	},
+	{
+		"id": "compendium-folders",
+		"type": "module",
+		"manifest": "https://raw.githubusercontent.com/earlSt1/vtt-compendium-folders/10x-update/module.json",
+		"compatibility": {
+			"verified": "2.5.7"
+		}
+	},
+	{
+		"id": "animated-spell-effects-cartoon",
+		"type": "module",
+		"manifest": "https://github.com/jackkerouac/animated-spell-effects-cartoon/releases/download/latest/module.json",
+		"compatibility": {
+			"verified": "0.4.5"
+		}
+	}]
+  },
+  "esmodules": [
+    "dist/main.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "packs": [
+	  {
+		"name": "CPR Spells",
+		"label": "CPR Spells",
+		"path": "packs/cpr-spells.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Spell Features",
+		"label": "CPR Spell Features",
+		"path": "packs/cpr-spell-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Class Features",
+		"label": "CPR Class Features",
+		"path": "packs/cpr-class-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Class Feature Items",
+		"label": "CPR Class Feature Items",
+		"path": "packs/cpr-class-feature-items.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Items",
+		"label": "CPR Items",
+		"path": "packs/cpr-items.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Monster Features",
+		"label": "CPR Monster Features",
+		"path": "packs/cpr-monster-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Race Features",
+		"label": "CPR Race Features",
+		"path": "packs/cpr-race-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Monster Feature Items",
+		"label": "CPR Monster Feature Items",
+		"path": "packs/cpr-monster-feature-items.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Item Features",
+		"label": "CPR Item Features",
+		"path": "packs/cpr-item-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Race Feature Items",
+		"label": "CPR Race Feature Items",
+		"path": "packs/cpr-race-feature-items.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Feats",
+		"label": "CPR Feats",
+		"path": "packs/cpr-feats.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Summons",
+		"label": "CPR Summons",
+		"path": "packs/cpr-summons.db",
+		"type": "Actor",
+		"module": "chris-premades"
+	  },
+	  {
+		"name": "CPR Summon Features",
+		"label": "CPR Summon Features",
+		"path": "packs/cpr-summon-features.db",
+		"type": "Item",
+		"module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Actions",
+		  "label": "CPR Actions",
+		  "path": "packs/cpr-actions.db",
+		  "type": "Item",
+		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Miscellaneous",
+		  "label": "CPR Miscellaneous",
+		  "path": "packs/cpr-miscellaneous.db",
+		  "type": "Item",
+		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Feat Features",
+		  "label": "CPR Feat Features",
+		  "path": "packs/cpr-feat-features.db",
+		  "type": "Item",
+		  "module": "chris-premades"
+	  },
+	  {
+		  "name": "CPR Homebrew Feature Items",
+		  "label": "CPR Homebrew Feature Items",
+		  "path": "packs/cpr-homebrew-feature-items.db",
+		  "type": "Item",
+		  "module": "chris-premades"
+	  }
+  ],
+  "changelog": "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md",
+  "url": "https://github.com/chrisk123999/chris-premades/",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "media": [
+    {
+      "type": "icon",
+      "url": ""
+    }
+  ]
+}

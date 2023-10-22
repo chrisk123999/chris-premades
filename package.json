@@ -1,0 +1,27 @@
+{
+  "name": "chris-premades",
+  "version": "0.0.1",
+  "description": "Chris's premade items for high-automation midi-qol games.",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisk123999/chris-premades.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisk123999/chris-premades/issues"
+  },
+  "homepage": "https://github.com/chrisk123999/chris-premades#readme",
+  "dependencies": {
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
