@@ -1,3 +1,7 @@
+# 0.7.48 Release:
+## Update Notes:
+- Module is now bundled for better performance (Thanks MrPrimate).
+  
 # 0.7.47 Release:
 ## New Content:
 - Spell: Compelled Duel
