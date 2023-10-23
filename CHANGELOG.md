@@ -1,3 +1,7 @@
+# 0.7.50 Release:
+## Bug Fixes:
+- Eldritch Blast
+  
 # 0.7.49 Release:
 ## Bug Fixes:
 - Lightning Lure

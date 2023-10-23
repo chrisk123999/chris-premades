@@ -1327,7 +1327,8 @@ export function setConfig() {
                             {'value': 'yellow', 'html': 'Yellow'},
                             {'value': 'rainbow', 'html': 'Rainbow'},
                             {'value': 'cycle', 'html': 'Cycle'},
-                            {'value': 'random', 'html': 'Random'}
+                            {'value': 'random', 'html': 'Random'},
+                            {'value': 'none', 'html': 'None'}
                         ]
                     }
                 }

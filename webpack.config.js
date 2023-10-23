@@ -7,7 +7,7 @@ module.exports = {
   optimization: {
     // change minimize to false, we are shipping a map file as well so people
     // viewing in chrome dev console will see and uncompressed version of the file for debugging
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
