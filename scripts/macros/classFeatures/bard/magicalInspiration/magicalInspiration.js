@@ -15,7 +15,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
     if (!queueSetup) return;
-    let selection = await chris.dialog('Use Bardic Inspiration? (Attack Total: ' + workflow.attackTotal + ')', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog('Use Bardic Inspiration? (Attack Total: ' + workflow.attackTotal + ')', constants.yesNo);
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -52,7 +52,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
 }
 async function bardicInspirationDamage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
-    if ((workflow.item.system.actionType === 'msak' || workflow.item.system.actionType === 'rsak') && workflow.hitTargets.size === 0 && orkflow.item.type != 'spell') return;
+    if (!constants.spellAttacks.includes(workflow.item.system.actionType) || workflow.hitTargets.size === 0 || workflow.item.type != 'spell') return;
     let effect = chris.findEffect(workflow.actor, 'Inspired');
     if (!effect) return;
     let originItem = await fromUuid(effect.origin);
@@ -63,16 +63,7 @@ async function bardicInspirationDamage({speaker, actor, token, character, item, 
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
     if (!queueSetup) return;
-    let buttons = [
-        {
-            'label': 'Yes',
-            'value': true
-        }, {
-            'label': 'No',
-            'value': false
-        }
-    ];
-    let selection = await chris.selectTarget('Use Magical Inspiration?', buttons, workflow.targets, false, 'one');
+    let selection = await chris.selectTarget('Use Magical Inspiration?', constants.yesNoButton, workflow.targets, false, 'one');
     if (selection.buttons === false) {
         queue.remove(workflow.item.uuid);
         return;

@@ -1,3 +1,10 @@
+# 0.7.49 Release:
+## Bug Fixes:
+- Lightning Lure
+- Magical Inspiration
+## Update Notes:
+- Added module integration setting for D&D5E Animations.
+  
 # 0.7.48 Release:
 ## Update Notes:
 - Module is now bundled for better performance (Thanks MrPrimate).

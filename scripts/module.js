@@ -31,6 +31,7 @@ import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {addDAEFlags} from './integrations/dae.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
+import {dndAnimations} from './integrations/dndAnimations.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -227,6 +228,12 @@ Hooks.once('ready', async function() {
         Hooks.on('renderItemSheet', buildABonus.titleBarButton);
         Hooks.on('renderDAEActiveEffectConfig', buildABonus.daeTitleBarButton);
         Hooks.on('renderActorSheet5e', buildABonus.actorTitleBarButtons);
+    }
+    if (game.settings.get('chris-premades', 'D&D5E Animations Sounds')) {
+        dndAnimations.sortAutoRec();
+        Hooks.on('midi-qol.AttackRollComplete', dndAnimations.attackDone);
+        Hooks.on('midi-qol.DamageRollComplete', dndAnimations.damageDone);
+        Hooks.on('midi-qol.RollComplete', dndAnimations.rollDone);
     }
 });
 let dev = {

@@ -8,7 +8,6 @@ export async function lightningLure({speaker, actor, token, character, item, arg
     let sourceToken = workflow.token;
     let useAnimation = chris.getConfiguration(workflow.item, 'animation') ?? chris.aseCheck();
     let mDistance = chris.getDistance(workflow.token, target);
-    console.log(mDistance);
     let pullDistance = 0;
     if (workflow.failedSaves.size) {
         if (mDistance >= 0 && mDistance <= 5) {
@@ -83,7 +82,6 @@ export async function lightningLure({speaker, actor, token, character, item, arg
             .playIf(() => {
                 let distanceToTargetX = Math.abs(sourceToken.x - position.x);
                 let distanceToTargetY = Math.abs(sourceToken.y - position.y);
-                console.log(distanceToTargetX <= canvas.grid.size && distanceToTargetY <= canvas.grid.size);
                 return distanceToTargetX <= canvas.grid.size && distanceToTargetY <= canvas.grid.size;
             })
 
@@ -97,7 +95,6 @@ export async function lightningLure({speaker, actor, token, character, item, arg
             .playIf(() => {
                 let distanceToTargetX = Math.abs(sourceToken.x - position.x);
                 let distanceToTargetY = Math.abs(sourceToken.y - position.y);
-                console.log(canvas.grid.size && distanceToTargetY <= canvas.grid.size);
                 return distanceToTargetX <= canvas.grid.size && distanceToTargetY <= canvas.grid.size;
             })
 

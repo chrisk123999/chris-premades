@@ -18,6 +18,7 @@ import {cast} from './macros/animations/cast.js';
 import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
+import {dndAnimations} from './integrations/dndAnimations.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1161,6 +1162,27 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Colorize Build A Bonus', 'Module Integration');
+    game.settings.register(moduleName, 'D&D5E Animations Sounds', {
+        'name': 'D&D5E Animations Sounds',
+        'hint': 'Play sounds from the D&D5E Animations module (when available).',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                dndAnimations.sortAutoRec();
+                Hooks.on('midi-qol.AttackRollComplete', dndAnimations.attackDone);
+                Hooks.on('midi-qol.DamageRollComplete', dndAnimations.damageDone);
+                Hooks.on('midi-qol.RollComplete', dndAnimations.rollDone);
+            } else {
+                Hooks.off('midi-qol.AttackRollComplete', dndAnimations.attackDone);
+                Hooks.off('midi-qol.DamageRollComplete', dndAnimations.damageDone);
+                Hooks.off('midi-qol.RollComplete', dndAnimations.rollDone);
+            }
+        }
+    });
+    addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

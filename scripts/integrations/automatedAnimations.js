@@ -44,5 +44,6 @@ function titleBarButton(app, [elem], options) {
 }
 export let automatedAnimations = {
     'titleBarButton': titleBarButton,
-    'sortAutoRec': sortAutoRec
+    'sortAutoRec': sortAutoRec,
+    'autoRecs': autoRecs
 }
