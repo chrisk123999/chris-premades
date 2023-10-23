@@ -2,7 +2,7 @@ import {chris} from '../helperFunctions.js';
 let autoRecs;
 function sortAutoRec() {
     function addItems(setting) {
-        game.settings.get('autoanimations', setting).filter(i => i.metaData.name === '5e Animations').filter(i => i.primary?.sound?.enable || i.secondary?.sound?.enable).forEach(i => autoRecNames.add({'name': i.label.toLowerCase(), 'soundOne': i.primary.sound, 'soundTwo': i.secondary.sound}));
+        game.settings.get('autoanimations', setting).filter(i => i.metaData?.name === '5e Animations').filter(i => i.primary?.sound?.enable || i.secondary?.sound?.enable).forEach(i => autoRecNames.add({'name': i.label.toLowerCase(), 'soundOne': i.primary.sound, 'soundTwo': i.secondary.sound}));
     }
     let settings = [
         'aaAutorec-melee',
@@ -27,6 +27,7 @@ function playItem(item) {
     let isCustomized = item.flags?.autoanimations?.isCustomized ?? false;
     let itemName = item.name.toLowerCase();
     let autoRec = autoRecs.find(i => i.name.includes(itemName));
+    if (!autoRec) return;
     let soundOneEnabled = autoRec.soundOne?.enable ?? false;
     let soundTwoEnabled = autoRec.soundTwo?.enable ?? false;
     if (!soundOneEnabled && !soundTwoEnabled) return;

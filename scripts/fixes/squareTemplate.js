@@ -34,7 +34,7 @@ function MeasuredTemplate_getRectShape(direction, distance, adjustForRoundingErr
 function MeasuredTemplate_refreshRulerText(wrapped) {
     wrapped();
     // Overwrite the text for the "rect" type
-    if (this.document.t === "rect") {
+    if (this.document.t === 'rect') {
         // Use simple Pythagoras to calculate the square's size from the diagonal "distance".
         const size = Math.sqrt((this.document.distance * this.document.distance) / 2).toFixed(1);
         const text = `${size}${canvas.scene.grid.units}`;

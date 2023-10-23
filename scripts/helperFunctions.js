@@ -733,6 +733,7 @@ export let chris = {
         } catch {};
         if (!returnTokens) return finalTemplate;
         if (!finalTemplate) return {'template': null, 'tokens': []};
+        await warpgate.wait(100);
         let tokens = await game.modules.get('templatemacro').api.findContained(finalTemplate).map(t => finalTemplate.parent.tokens.get(t));
         return {'template': finalTemplate, 'tokens': tokens};
     },

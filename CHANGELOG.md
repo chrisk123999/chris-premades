@@ -1,3 +1,9 @@
+# 0.7.51 Release:
+## Bug Fixes:
+- D&D5E Animations module integration
+## Update Notes:
+- Added square template rotation patch.
+  
 # 0.7.50 Release:
 ## Bug Fixes:
 - Eldritch Blast
