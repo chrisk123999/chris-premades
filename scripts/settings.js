@@ -19,6 +19,7 @@ import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
+import {squareTemplate} from './fixes/squareTemplate.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1183,6 +1184,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
+    game.settings.register(moduleName, 'Fix Square Templates', {
+        'name': 'Fix Square Templates',
+        'hint': 'Patches square templates to allow rotation.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                squareTemplate.patch();
+            } else {
+                squareTemplate.unpatch();
+            }
+        }
+    });
+    addMenuSetting('Fix Square Templates', 'Mechanics');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

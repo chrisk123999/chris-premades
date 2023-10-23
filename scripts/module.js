@@ -32,6 +32,7 @@ import {addDAEFlags} from './integrations/dae.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
+import {squareTemplate} from './fixes/squareTemplate.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -235,6 +236,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.DamageRollComplete', dndAnimations.damageDone);
         Hooks.on('midi-qol.RollComplete', dndAnimations.rollDone);
     }
+    if (game.settings.get('chris-premades', 'Fix Square Templates')) squareTemplate.patch();
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,
