@@ -1,6 +1,6 @@
 # 0.7.52 Release:
 ## Bug Fixes:
-- Ancenstral Protectors
+- Ancestral Protectors
 - Divine Fury
 - Template rotation patch for V11
   
