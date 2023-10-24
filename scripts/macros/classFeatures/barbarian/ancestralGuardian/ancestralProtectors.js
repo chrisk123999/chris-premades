@@ -1,14 +1,13 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function sourceAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     let effect = chris.findEffect(workflow.actor, 'Rage');
     if (!effect) return;
-    let validTypes = new Set(['mwak', 'rwak', 'msak', 'rsak']);
-    if (!validTypes.has(workflow.item.system.actionType)) return;
-    let effect2 = chris.findEffect(workflow.actor, 'Ancestral Protectors');
-    if (!effect2) return;
-    let originItem = await fromUuid(effect2.origin);
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let originItem = chris.getItem(workflow.actor, 'Ancestral Protectors');
+    if (!originItem) return;
     let useFeature = chris.perTurnCheck(originItem, 'feature', 'ancestralProtectors', true, workflow.token.id);
     if (!useFeature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'ancestralProtectors', 450);
@@ -36,17 +35,14 @@ async function sourceAttack({speaker, actor, token, character, item, args, scope
         ],
         'flags': {
             'dae': {
-                'transfer': false,
                 'specialDuration': [
                     'turnStartSource'
-                ],
-                'stackable': 'multi',
-                'macroRepeat': 'none'
+                ]
             }
         }
     };
     await chris.createEffect(workflow.targets.first().actor, effectData);
-    if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.ancestralProtectors.turn', game.combat.round + '-' + game.combat.turn);
+    await chris.setTurnCheck(originItem, 'feature', 'ancestralProtectors');
     queue.remove(workflow.item.uuid);
 }
 async function targetAttack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -80,7 +76,7 @@ async function targetDamage({speaker, actor, token, character, item, args, scope
     queue.remove(workflow.item.uuid);
 }
 async function combatEnd(origin) {
-    await origin.setFlag('chris-premades', 'feature.ancestralProtectors', '');
+    await chris.setTurnCheck(origin, 'feature', 'ancestralProtectors', true);
 }
 export let ancestralProtectors = {
     'sourceAttack': sourceAttack,

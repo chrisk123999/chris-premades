@@ -1,11 +1,16 @@
+//Copied and updated from DF Template Enhancements
 function patch() {
     if (game.modules.get('df-templates')?.active) return;
-    libWrapper.register('chris-premades', 'MeasuredTemplate.prototype._getRectShape', MeasuredTemplate_getRectShape, 'OVERRIDE');
+    let path = 'MeasuredTemplate.prototype._getRectShape';
+    if (isNewerVersion(game.version, '11')) path = 'MeasuredTemplate.getRectShape';
+    libWrapper.register('chris-premades', path, MeasuredTemplate_getRectShape, 'OVERRIDE');
     libWrapper.register('chris-premades', 'MeasuredTemplate.prototype._refreshRulerText', MeasuredTemplate_refreshRulerText, 'WRAPPER');
 }
 function unPatch() {
     if (game.modules.get('df-templates')?.active) return;
-    libWrapper.unregister('chris-premades', 'MeasuredTemplate.prototype._getRectShape', false);
+    let path = 'MeasuredTemplate.prototype._getRectShape';
+    if (isNewerVersion(game.version, '11')) path = 'MeasuredTemplate.getRectShape';
+    libWrapper.unregister('chris-premades', path, false);
     libWrapper.unregister('chris-premades', 'MeasuredTemplate.prototype._refreshRulerText', false);
 }
 function MeasuredTemplate_getRectShape(direction, distance, adjustForRoundingError = false) {

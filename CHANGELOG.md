@@ -1,3 +1,9 @@
+# 0.7.52 Release:
+## Bug Fixes:
+- Ancenstral Protectors
+- Divine Fury
+- Template rotation patch for V11
+  
 # 0.7.51 Release:
 ## Bug Fixes:
 - D&D5E Animations module integration

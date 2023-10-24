@@ -20,12 +20,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         queue.remove(workflow.item.uuid);
         return;
     }
-    let selection = await chris.dialog('Divine Fury: Apply extra damage?', [['Yes', true], ['No', false]]);
-    if (!selection) {
-        queue.remove(workflow.item.uuid);
-        return;
-    }
-    if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.divineFury.turn', game.combat.round + '-' + game.combat.turn);
+    await chris.setTurnCheck(originItem, 'feature', 'divineFury');
     let bonusDamage = '1d6[' + damageType + '] + ' + barbDamage;
     if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
     let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamage;
@@ -34,7 +29,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {
-    await origin.setFlag('chris-premades', 'feature.divineFury.turn', '');
+    await chris.setTurnCheck(origin, 'feature', 'divineFury', true);
 }
 export let divineFury = {
     'attack': attack,
