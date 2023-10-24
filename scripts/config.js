@@ -3854,11 +3854,11 @@ export function setConfig() {
             },
             'Celestial Revelation (Radiant Consumption)': {
                 'name': 'Celestial Revelation (Radiant Consumption)',
-                'version': '0.7.01'
+                'version': '0.7.53'
             },
             'Celestial Revelation (Radiant Soul)': {
                 'name': 'Celestial Revelation (Radiant Soul)',
-                'version': '0.7.01'
+                'version': '0.7.53'
             },
             'Astral Trance': {
                 'name': 'Astral Trance',
@@ -4626,6 +4626,14 @@ export function setConfig() {
             'Draconic Cry': {
                 'name': 'Draconic Cry',
                 'version': '0.7.47'
+            },
+            'Divine Fury: Necrotic': {
+                'name': 'Divine Fury: Necrotic',
+                'version': '0.7.53'
+            },
+            'Divine Fury: Radiant': {
+                'name': 'Divine Fury: Radiant',
+                'version': '0.7.53'
             }
         }
     });

@@ -1,3 +1,8 @@
+# 0.7.53 Release:
+## Bug Fixes:
+- Aasimar Radiant Soul
+- Aasimar Radiant Consumption
+  
 # 0.7.52 Release:
 ## Bug Fixes:
 - Ancestral Protectors
