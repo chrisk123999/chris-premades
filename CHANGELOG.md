@@ -1,3 +1,13 @@
+# 0.7.54 Release:
+## New Content:
+- Way of the Ascendant Dragon Monk: Draconic Strike, Breath of the Dragon, Augment Breath
+- Monk: Ki Points and Unarmed Strike
+- Aasimar: Healing Hands
+- Nature Domain Cleric: Channel Divinity: Charm Animals and Plants
+## Bug Fixes:
+- Focused Aim
+- Necrotic Shroud
+  
 # 0.7.53 Release:
 ## Bug Fixes:
 - Aasimar Radiant Soul
@@ -44,9 +54,9 @@
   
 # 0.7.46 Release:
 ## New Content:
-- Inquisitive Rogue: Insightful Fighting, Eye for Weakness
+- Inquisitive Rogue: Insightful Fighting and Eye for Weakness
 - Blood Hunter: Blood Curse of Binding
-- Feats: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Planar Wanderer: Portal Cracker, Planar Wanderer: Planar Adaptation, Righteous Heritor: Soothe Pain, Soul of the Storm Giant: Maelstrom Aura
+- Feats: Agent of Order: Stasis Strike, Baleful Scion: Grasp of Avarice, Planar Wanderer: Portal Cracker, Planar Wanderer: Planar Adaptation, Righteous Heritor: Soothe Pain, and Soul of the Storm Giant: Maelstrom Aura
 ## Bug Fixes:
 - Strange Metabolism
 - Emboldening Bond

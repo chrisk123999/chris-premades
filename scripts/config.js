@@ -195,6 +195,18 @@ export function setConfig() {
                 'removedItems': [],
                 'additionalItems': [],
                 'priority': 0
+            },
+            'Unarmed Strike': {
+                'originalName': 'Unarmed Strike',
+                'requiredClass': 'Monk',
+                'requiredSubclass': null,
+                'requiredRace': null,
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Unarmed Strike (Monk)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
             }
         },
         'correctedItems': {
@@ -1870,6 +1882,14 @@ export function setConfig() {
                 }
             },
             'Enlarge/Reduce': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Breath of the Dragon': {
                 'checkbox': {
                     'animation': {
                         'label': 'Play Animation?',
@@ -4634,6 +4654,34 @@ export function setConfig() {
             'Divine Fury: Radiant': {
                 'name': 'Divine Fury: Radiant',
                 'version': '0.7.53'
+            },
+            'Healing Hands': {
+                'name': 'Healing Hands',
+                'version': '0.7.54'
+            },
+            'Channel Divinity: Charm Animals and Plants': {
+                'name': 'Channel Divinity: Charm Animals and Plants',
+                'version': '0.7.54'
+            },
+            'Unarmed Strike (Monk)': {
+                'name': 'Unarmed Strike (Monk)',
+                'version': '0.7.54'
+            },
+            'Draconic Strike': {
+                'name': 'Draconic Strike',
+                'version': '0.7.54'
+            },
+            'Breath of the Dragon': {
+                'name': 'Breath of the Dragon',
+                'version': '0.7.54'
+            },
+            'Ki Points': {
+                'name': 'Ki Points',
+                'version': '0.7.54'
+            },
+            'Augment Breath': {
+                'name': 'Augment Breath',
+                'version': '0.7.54'
             }
         }
     });

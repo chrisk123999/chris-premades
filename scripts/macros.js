@@ -37,6 +37,7 @@ import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
+import {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
 import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {burningHands} from './macros/spells/burningHands.js';
@@ -45,6 +46,7 @@ import {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
+import {charmAnimalsAndPlants} from './macros/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
 import {chillTouch} from './macros/spells/chillTouch.js';
@@ -85,6 +87,7 @@ import {divineFury} from './macros/classFeatures/barbarian/zealot/divineFury.js'
 import {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 import {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
 import {draconicSpirit} from './macros/monsterFeatures/draconicSpirit/draconicSpirit.js';
+import {draconicStrike} from './macros/classFeatures/monk/wayOfTheAscendantDragon/draconicStrike.js';
 import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
@@ -480,10 +483,12 @@ export let macros = {
     'blink': blink,
     'bloodSpear': bloodSpear,
     'brandOfCastigation': brandOfCastigation,
+    'breathOfTheDragon': breathOfTheDragon,
     'burningHands': burningHands,
     'callLightning': callLightning,
     'callTheHunt': callTheHunt,
     'chainLightning': chainLightning,
+    'charmAnimalsAndPlants': charmAnimalsAndPlants,
     'charmPerson': charmPerson,
     'chillTouch': chillTouch,
     'chromaticOrb': chromaticOrb,
@@ -518,6 +523,7 @@ export let macros = {
     'divineFury': divineFury,
     'divineSmite': divineSmite,
     'divineStrike': divineStrike,
+    'draconicStrike': draconicStrike,
     'dragonVessel': dragonVessel,
     'dragonsBreath': dragonsBreath,
     'dragonsWrath': dragonsWrath,
