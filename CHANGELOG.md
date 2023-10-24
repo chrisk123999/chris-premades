@@ -1,6 +1,6 @@
 # 0.7.54 Release:
 ## New Content:
-- Way of the Ascendant Dragon Monk: Draconic Strike, Breath of the Dragon, Augment Breath
+- Way of the Ascendant Dragon Monk: Draconic Strike, Breath of the Dragon, and Augment Breath
 - Monk: Ki Points and Unarmed Strike
 - Aasimar: Healing Hands
 - Nature Domain Cleric: Channel Divinity: Charm Animals and Plants
