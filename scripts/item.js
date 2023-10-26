@@ -1,3 +1,4 @@
+import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
@@ -40,7 +41,7 @@ async function actorConfig(actor) {
         ui.notifications.info('This feature must be used on a character or npc!');
         return;
     }
-    let selection = await chris.dialog('Apply all of Chris\'s automations to this actor?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog('Actor Updater', constants.yesNo, 'Apply all of Chris\'s Premades automations to this actor?');
     if (!selection) return;
     let changes = await game.modules.get('ddb-importer').api.chris.adjustActor(actor);
     if (changes && changes?.length) {
@@ -77,8 +78,8 @@ async function itemConfig(itemDocument) {
     }
 }
 async function updateItem(itemDocument) {
-    let additionalCompendiumString = game.settings.get('chris-premades', 'Additional Compendiums');
-    let additionalCompendiums = additionalCompendiumString.split(', ');
+    let additionalCompendiums = game.settings.get('chris-premades', 'Additional Compendiums');
+    let additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
     let itemName = itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
@@ -107,11 +108,16 @@ async function updateItem(itemDocument) {
                 searchCompendiums.push('chris-premades.CPR Actions');
                 break;
         }
-        if (game.settings.get('chris-premades', 'Use Additional Compendiums')) {
-            for (let i of additionalCompendiums) {
-                searchCompendiums.push(i);
-            }
-        }
+        for (let i of additionalCompendiums) searchCompendiums.push(i);
+        let packs = [
+            'chris-premades.CPR Items',
+            'chris-premades.CPR Spells',
+            'chris-premades.CPR Race Features',
+            'chris-premades.CPR Class Features',
+            'chris-premades.CPR Feats',
+            'chris-premades.CPR Actions'
+        ];
+        searchCompendiums.sort((a, b) => (packs.includes(a) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[a] ?? 10) - (packs.includes(b) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[b] ?? additionalCompendiumPriority[b] ?? 10));
         for (let compendium of searchCompendiums) {
             if (!game.packs.get(compendium)) {
                 ui.notifications.warn('An invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
@@ -153,11 +159,7 @@ async function updateItem(itemDocument) {
         ui.notifications.info('No available automation! (Or the item has different name)');
         return;
     }
-    let options = [
-        ['Yes', true],
-        ['No', false]
-    ];
-    let selection = await chris.dialog('Automation found, apply it? (' + foundCompendiumName + ')', options);
+    let selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
     if (!selection) return;
     ChatMessage.create({
         'speaker': {'alias': name},
@@ -191,6 +193,7 @@ async function updateItem(itemDocument) {
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
+    if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');

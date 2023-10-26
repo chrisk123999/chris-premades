@@ -1,3 +1,11 @@
+# 0.8.01 Release:
+## Update Notes:
+- Added a GUI to the "Additional Compendiums" setting for the item updater (Medkit).  You will need to re-select your compendiums after updating.
+- Added a setting to prioritize additional compendiums, including prioritizing them over ones from this module.
+- No longer using exported Midi-Qol functions for updating effects, creating effects, and deleting effects on unowned actors.
+## Bug Fixes:
+- Eladrin: Change Season
+  
 # 0.7.54 Release:
 ## New Content:
 - Way of the Ascendant Dragon Monk: Draconic Strike, Breath of the Dragon, and Augment Breath

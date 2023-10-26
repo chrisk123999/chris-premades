@@ -46,7 +46,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
             }
         }
     }
-    let hideIcon = chris.getConfiguration(workflow.item, 'showIcon');
+    let hideIcon = chris.getConfiguration(workflow.item, 'showicon') ?? false;
     if (hideIcon) effectData.icon = '';
     let updates = {
         'embedded': {

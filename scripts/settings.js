@@ -45,7 +45,7 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': Number,
-        'default': 7
+        'default': 8
     });
     game.settings.register(moduleName, 'Show Names', {
         'name': 'Show Names',
@@ -338,24 +338,30 @@ export function registerSettings() {
         'type': Object,
         'default': {}
     });
-    game.settings.register(moduleName, 'Use Additional Compendiums', {
-        'name': 'Use Additional Compendiums',
-        'hint': 'Should the item replacer check additional compendiums?',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': false
-    });
-    addMenuSetting('Use Additional Compendiums', 'Compendiums');
     game.settings.register(moduleName, 'Additional Compendiums', {
         'name': 'Additional Compendiums',
-        'hint': 'This should be a comma seperated list of compendium keys.  Highest prioirity should be on the left.',
+        'hint': 'Select the additional compendiums the medkit will check in.',
         'scope': 'world',
         'config': false,
-        'type': String,
-        'default': 'midi-srd.Midi SRD Feats, midi-srd.Midi SRD Spells, midi-srd.Midi SRD Items, midi-qol.midiqol-sample-items'
+        'type': Array,
+        'default': ['midi-srd.Midi SRD Feats', 'midi-srd.Midi SRD Spells', 'midi-srd.Midi SRD Items', 'midi-qol.midiqol-sample-items']
     });
     addMenuSetting('Additional Compendiums', 'Compendiums');
+    game.settings.register(moduleName, 'Additional Compendium Priority', {
+        'name': 'Additional Compendium Priority',
+        'hint': 'Select the priority of additional compendiums.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {
+            'CPR': 0,
+            'midi-srd.Midi SRD Feats': 1,
+            'midi-srd.Midi SRD Spells': 2,
+            'midi-srd.Midi SRD Items': 3,
+            'midi-qol.midiqol-sample-items': 4
+        }
+    });
+    addMenuSetting('Additional Compendium Priority', 'Compendiums');
     game.settings.register(moduleName, 'Item Compendium', {
         'name': 'Personal Item Compendium',
         'hint': 'A compendium full of items to pick from (DDB items compendium by default).',

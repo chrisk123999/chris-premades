@@ -990,7 +990,7 @@ export function setConfig() {
             },
             'Change Season': {
                 'checkbox': {
-                    'showIcon': {
+                    'showicon': {
                         'label': 'Hide effect icon?',
                         'default': false
                     }

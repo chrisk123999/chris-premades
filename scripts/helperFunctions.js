@@ -44,14 +44,16 @@ export let chris = {
         if (game.user.isGM) {
             await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         } else {
-            await MidiQOL.socket().executeAsGM('createEffects', {'actorUuid': actor.uuid, 'effects': [effectData]});
+//            await MidiQOL.socket().executeAsGM('createEffects', {'actorUuid': actor.uuid, 'effects': [effectData]});
+            await socket.executeAsGM('createEffect', actor.uuid, effectData);
         }
     },
     'removeEffect': async function _removeEffect(effect) {
         if (chris.firstOwner(effect).id === game.user.id) {
             await effect.delete();
         } else {
-            await MidiQOL.socket().executeAsGM('removeEffects', {'actorUuid': effect.parent.uuid, 'effects': [effect.id]});
+//            await MidiQOL.socket().executeAsGM('removeEffects', {'actorUuid': effect.parent.uuid, 'effects': [effect.id]});
+            await socket.executeAsGM('removeEffect', effect.uuid);
         }
     },
     'updateEffect': async function _updateEffect(effect, updates) {
@@ -59,7 +61,8 @@ export let chris = {
             await effect.update(updates);
         } else {
             updates._id = effect.id;
-            await MidiQOL.socket().executeAsGM('updateEffects', {'actorUuid': effect.parent.uuid, 'updates': [updates]});
+//            await MidiQOL.socket().executeAsGM('updateEffects', {'actorUuid': effect.parent.uuid, 'updates': [updates]});
+            await socket.executeAsGM('updateEffect', effect.uuid, updates);
         }
     },
     'addCondition': async function _addCondition(actor, name, overlay, origin) {

@@ -51,11 +51,14 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('remoteDocumentsDialog', remoteDocumentsDialog);
     socket.register('remoteAimCrosshair', remoteAimCrosshair);
     socket.register('remoteMenu', remoteMenu);
+    socket.register('updateEffect', runAsGM.updateEffect);
+    socket.register('createEffect', runAsGM.createEffect);
+    socket.register('removeEffect', runAsGM.removeEffect);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
         let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
-        let currentVersion = 7;
+        let currentVersion = 8;
         if (oldVersion < currentVersion && oldVersion === 0) {
             let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
             ChatMessage.create({
@@ -118,6 +121,16 @@ Hooks.once('ready', async function() {
             });
             await game.settings.set('chris-premades', 'Breaking Version Change', 7);
             oldVersion = 7;
+        }
+        if (oldVersion < currentVersion && oldVersion === 7) {
+            let message2 = '<hr><p>This update to Chris\'s Premades has reset the additional compendiums setting to default. You may wish to reconfigure it.</p>';
+            ChatMessage.create({
+                speaker: {alias: name},
+                content: message2
+            });
+            await game.settings.set('chris-premades', 'Breaking Version Change', 8);
+            await game.settings.set('chris-premades', 'Additional Compendiums', ['midi-srd.Midi SRD Feats', 'midi-srd.Midi SRD Spells', 'midi-srd.Midi SRD Items', 'midi-qol.midiqol-sample-items']);
+            oldVersion = 8;
         }
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
