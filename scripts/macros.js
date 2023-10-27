@@ -191,9 +191,11 @@ import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {metaMagic} from './macros/classFeatures/sorcerer/metaMagic.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
+import {mudMephit} from './macros/monsterFeatures/mudMephit/mudMephit.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
+import {nightwalker} from './macros/monsterFeatures/nightwalker/nightwalker.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
 import {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
@@ -355,6 +357,8 @@ let monster = {
     'intellectDevourer': intellectDevourer,
     'kobold': kobold,
     'leucrotta': leucrotta,
+    'mudMephit': mudMephit,
+    'nightwalker': nightwalker,
     'rugOfSmothering': rugOfSmothering,
     'salamander': salamander,
     'shadow': shadow,

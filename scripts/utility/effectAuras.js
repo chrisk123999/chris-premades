@@ -192,6 +192,7 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
 }
 async function refreshEffects(ignoredUuid, ignoredAura) {
     for (let token of game.canvas.scene.tokens.contents) {
+        if (!token.actor) continue;
         tokenMoved(token, ignoredUuid, ignoredAura);
     }
 }

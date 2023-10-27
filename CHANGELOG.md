@@ -1,3 +1,11 @@
+# 0.8.02 Release:
+## New Monster Content:
+- Mud Mephit: Death Burst and Mud Breath
+- Nightwalker: Annihilating Aura, Life Eater, Enervating Focus, and Finger of Doom
+## Bug Fixes:
+- Effect Origin Fixer
+- Effect Auras
+  
 # 0.8.01 Release:
 ## Update Notes:
 - Added a GUI to the "Additional Compendiums" setting for the item updater (Medkit).  You will need to re-select your compendiums after updating.
