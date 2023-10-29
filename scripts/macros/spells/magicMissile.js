@@ -23,8 +23,6 @@ export async function magicMissile({speaker, actor, token, character, item, args
         }
     };
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
-    setProperty(featureData, 'type', 'spell');
-    setProperty(featureData, 'system.school', workflow.item.system.school);
     delete featureData._id;
     if (!game.settings.get('chris-premades', 'Magic Missile Toggle') && !chris.getConfiguration(workflow.item, 'homebrew')) {
         let damageRoll = await new Roll('1d4[force] + 1').roll({async: true});

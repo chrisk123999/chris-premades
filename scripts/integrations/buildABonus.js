@@ -39,8 +39,15 @@ function actorTitleBarButton(app, [elem], options) {
     if (!bonuses) return;
     headerButton.style.color = 'green';
 }
+function spellFeature(item) {
+    return item.type === 'spell' || item.flags?.['chris-premades']?.spell?.castData;
+}
+let filters = {
+    'spellFeature': spellFeature
+}
 export let buildABonus = {
     'titleBarButton': titleBarButton,
     'daeTitleBarButton': daeTitleBarButton,
-    'actorTitleBarButtons': actorTitleBarButton
+    'actorTitleBarButtons': actorTitleBarButton,
+    'filters': filters
 }

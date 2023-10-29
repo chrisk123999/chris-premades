@@ -4267,7 +4267,7 @@ export function setConfig() {
             },
             'Empowered Evocation': {
                 'name': 'Empowered Evocation',
-                'version': '0.7.19'
+                'version': '0.8.05'
             },
             'Overchannel': {
                 'name': 'Overchannel',

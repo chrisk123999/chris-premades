@@ -1,3 +1,8 @@
+# 0.8.05 Release:
+## Bug Fixes:
+- Magic Missile
+- Empowered Evocation
+  
 # 0.8.04 Release:
 ## New Content:
 - Wraps of Dyamak
