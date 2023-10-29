@@ -1896,6 +1896,19 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Wraps of Dyamak': {
+                'select': {
+                    'tier': {
+                        'label': 'Tier:',
+                        'default': 1,
+                        'values': [
+                            {'value': 1, 'html': '1'},
+                            {'value': 2, 'html': '2'},
+                            {'value': 3, 'html': '3'},
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -4682,6 +4695,10 @@ export function setConfig() {
             'Augment Breath': {
                 'name': 'Augment Breath',
                 'version': '0.7.54'
+            },
+            'Wraps of Dyamak':  {
+                'name': 'Wraps of Dyamak',
+                'version': '0.8.04'
             }
         }
     });

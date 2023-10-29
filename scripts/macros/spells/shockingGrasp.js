@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 export async function shockingGrasp({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetToken = workflow.targets.first();
-    if (workflow.hitTargets.size != 1) {
+    if (workflow.hitTargets.size) {
         let effect = chris.findEffect(targetToken.actor, 'Reaction');
         if (!effect) await chris.addCondition(targetToken.actor, 'Reaction', false, workflow.item.uuid);
     }

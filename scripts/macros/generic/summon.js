@@ -19,7 +19,7 @@ async function spawn(item, updates, prefill) {
         restrictTypes: ['Actor'],
         onSubmit: async (selected) => {
             if (!selected) return;
-            if (selected.uuid === workflow.item.actor.uuid) {
+            if (selected.uuid === item.actor.uuid) {
                 ui.notifications.warn('You cannot summon yourself!');
                 return;
             }

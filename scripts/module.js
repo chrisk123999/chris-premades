@@ -1,38 +1,39 @@
-import {registerSettings} from './settings.js';
-import {macros, onHitMacro} from './macros.js';
-import {setupJournalEntry} from './journal.js';
-import {chris as helpers} from './helperFunctions.js';
-import {createActorHeaderButton, createHeaderButton, updateItemButton} from './item.js';
-import {queue} from './utility/queue.js';
-import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
-import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
-import {fixOrigin, itemDC} from './utility/effect.js';
-import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
-import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
-import {tashaSummon} from './utility/tashaSummon.js';
-import {templates} from './utility/templateEffect.js';
-import {rest} from './utility/rest.js';
-import {troubleshoot} from './help.js';
-import {flanking} from './macros/generic/syntheticAttack.js';
-import {constants} from './constants.js';
-import {patchSaves, patchSkills, patching} from './patching.js';
-import {runAsGM} from './runAsGM.js';
-import {npcRandomizer} from './utility/npcRandomizer.js';
-import {settingButton} from './settingsMenu.js';
-import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
-import {diceSoNice} from './integrations/diceSoNice.js';
-import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
-import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
-import {setConfig} from './config.js';
-import {compendiumRender} from './compendium.js';
-import {translate} from './translations.js';
-import {cast} from './macros/animations/cast.js';
-import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {addDAEFlags} from './integrations/dae.js';
+import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
+import {cast} from './macros/animations/cast.js';
+import {chris as helpers} from './helperFunctions.js';
+import {compendiumRender} from './compendium.js';
+import {constants} from './constants.js';
+import {createActorHeaderButton, createHeaderButton, updateItemButton} from './item.js';
+import {diceSoNice} from './integrations/diceSoNice.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
+import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
+import {fixOrigin, itemDC} from './utility/effect.js';
+import {flanking} from './macros/generic/syntheticAttack.js';
+import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
+import {macros, onHitMacro} from './macros.js';
+import {npcRandomizer} from './utility/npcRandomizer.js';
+import {patchSaves, patchSkills, patching} from './patching.js';
+import {queue} from './utility/queue.js';
+import {registerSettings} from './settings.js';
+import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
+import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
+import {rest} from './utility/rest.js';
+import {runAsGM} from './runAsGM.js';
+import {setConfig} from './config.js';
+import {settingButton} from './settingsMenu.js';
+import {setupJournalEntry} from './journal.js';
+import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {squareTemplate} from './fixes/squareTemplate.js';
+import {summons} from './utility/summons.js';
+import {tashaSummon} from './utility/tashaSummon.js';
+import {templates} from './utility/templateEffect.js';
+import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
+import {translate} from './translations.js';
+import {troubleshoot} from './help.js';
+import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -267,6 +268,7 @@ globalThis['chrisPremades'] = {
     macros,
     queue,
     settingButton,
+    summons,
     tashaSummon,
     tokenMove,
     translate,

@@ -7,14 +7,15 @@ export async function draconicStrike({speaker, actor, token, character, item, ar
     if (workflow.item.uuid != unarmedStrike.uuid) return;
     let feature = chris.getItem(workflow.actor, 'Draconic Strike');
     if (!feature) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'draconicStrike', 350);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'draconicStrike', 50);
     if (!queueSetup) return;
     let options = [
         ['🧪 Acid', 'acid'],
         ['❄️ Cold', 'cold'],
         ['🔥 Fire', 'fire'],
         ['⚡ Lightning', 'lightning'],
-        ['☠️ Poison', 'poison']
+        ['☠️ Poison', 'poison'],
+        ['Unchanged', false]
     ];
     let selection = await chris.dialog(feature.name, options, 'Change ' + workflow.item.name + '\'s damage type?');
     if (!selection) {

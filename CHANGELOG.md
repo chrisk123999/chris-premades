@@ -1,3 +1,10 @@
+# 0.8.04 Release:
+## New Content:
+- Wraps of Dyamak
+## Bug Fixes:
+- Thunderbolt Strike
+- Shocking Grasp
+  
 # 0.8.02 Release:
 ## New Monster Content:
 - Mud Mephit: Death Burst and Mud Breath
