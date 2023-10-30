@@ -157,7 +157,7 @@ export let chris = {
         }
         return spellMod;
     },
-    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets) {
+    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description) {
         let generatedInputs = [];
         let isFirst = true;
         let number = 1;
@@ -214,6 +214,10 @@ export let chris = {
                 'value': true
             })
         }
+        if (description) generatedInputs.unshift({
+            'label': description,
+            'type': 'info'
+        });
         function dialogRender(html) {
             let trs = html[0].getElementsByTagName('tr');
             if (type != 'select') {
@@ -232,9 +236,10 @@ export let chris = {
             }
             let tds = html[0].getElementsByTagName('td');
             for (let t of tds) {
-                t.style.width = '50px';
                 t.style.textAlign = 'center';
                 t.style.paddingRight = '5px';
+                if (t.attributes?.colspan?.value == 2) continue;
+                t.style.width = '50px';
             }
             let imgs = html[0].getElementsByTagName('img');
             for (let i of imgs) {
@@ -259,6 +264,7 @@ export let chris = {
             'render': dialogRender
         };
         let selection = await warpgate.menu({'inputs': generatedInputs, 'buttons': buttons}, config);
+        if (description) selection.inputs?.shift();
         if (type != 'number' && type != 'select') {
             for (let i = 0; i < !fixTargets ? selection.inputs.length : selection.inputs.length - 1; i++) {
                 if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
@@ -678,7 +684,7 @@ export let chris = {
         if (userId === game.user.id) return await chris.aimCrosshair(token, maxRange, icon, interval, size);
         return await socket.executeAsUser('remoteAimCrosshair', userId, token.document.uuid, maxRange, icon, interval, size);
     },
-    'menu': async function _menu(title, buttons, inputs, useSpecialRender) {
+    'menu': async function _menu(title, buttons, inputs, useSpecialRender, info, header) {
         function render(html) {
             let ths = html[0].getElementsByTagName('th');
             for (let t of ths) {
@@ -687,13 +693,20 @@ export let chris = {
             }
             let tds = html[0].getElementsByTagName('td');
             for (let t of tds) {
-                t.style.width = '50px';
                 t.style.textAlign = 'center';
                 t.style.paddingRight = '5px';
+                if (t.attributes?.colspan?.value == 2) continue;
+                t.style.width = '50px';
             }
         }
-        if (useSpecialRender) return await warpgate.menu({'inputs': inputs, 'buttons': buttons}, {'title': title, 'render': render});
-        return await warpgate.menu({'inputs': inputs, 'buttons': buttons}, {'title': title});
+        if (header) inputs.unshift({'label': header, 'type': 'header'});
+        if (info) inputs.unshift({'label': info, 'type': 'info'});
+        let options = {'title': title};
+        if (useSpecialRender) options.render = render;
+        let selection = await warpgate.menu({'inputs': inputs, 'buttons': buttons}, options);
+        if (header) selection?.inputs?.shift();
+        if (info) selection?.inputs?.shift();
+        return selection;
     },
     'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId) {
         if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender);

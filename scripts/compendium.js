@@ -18,7 +18,7 @@ export async function additionalCompendiums() {
     let packs = game.packs.filter(i => !i.metadata.id.includes('chris-premades.') && i.metadata.type === 'Item');
     let oldSettings = game.settings.get('chris-premades', 'Additional Compendiums');
     let inputs = packs.map(i => ({'label': i.metadata.label, 'type': 'checkbox', 'options': oldSettings.includes(i.metadata.id)}));
-    let selection = await chris.menu('Select Additional Compendiums', constants.okCancel, inputs, true);
+    let selection = await chris.menu('Additional Compendiums', constants.okCancel, inputs, true);
     if (!selection.buttons) return;
     let newPacks = [];
     for (let i = 0; selection.inputs.length > i; i++) {
@@ -36,7 +36,7 @@ export async function additionalCompendiumPriority() {
     let oldSettings = game.settings.get('chris-premades', 'Additional Compendium Priority');
     let inputs = packs.map(i => ({'label': game.packs.get(i)?.metadata?.label ?? 'Unknown (' + i + ')', 'type': 'number', 'options': oldSettings[i] ?? 100}));
     inputs.unshift({'label': 'Chris\'s Premades', 'type': 'number', 'options': oldSettings['CPR'] ?? 0});
-    let selection = await chris.menu('Configure Compendium Priority', constants.okCancel, inputs, true);
+    let selection = await chris.menu('Additional Compendium Priority', constants.okCancel, inputs, true, 'Lower Number = Higher Priority');
     if (!selection.buttons) return;
     let newSettings = {};
     for (let i = 1; inputs.length > i; i++) {

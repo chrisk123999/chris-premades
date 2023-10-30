@@ -2,7 +2,7 @@ import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 export async function scorchingRay({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.token) return;
     let maxRays = 3 + (workflow.castData.castLevel - 2);
     let skipDead = false;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Scorching Ray Bolt', false);
@@ -87,8 +87,9 @@ export async function scorchingRay({speaker, actor, token, character, item, args
         lastColor = Math.floor(Math.random() * colors.length);
     }
     while (maxRays > 0) {
-        let targets = skipDead ? Array.from(workflow.targets).filter(i => i.actor.system.attributes.hp.value > 0) : Array.from(workflow.targets);
-        let selection = await chris.selectTarget('How many? (Max: ' + maxRays + ')', constants.okCancel, targets, true, 'number', null, true);
+        let nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value, 'enemy', true);
+        let targets = skipDead ? nearbyTargets.filter(i => i.actor.system.attributes.hp.value > 0) : nearbyTargets;
+        let selection = await chris.selectTarget(workflow.item.name, constants.okCancel, targets, true, 'number', null, true, 'Select your targets (max: ' + maxRays + '):');
         if (!selection.buttons) {
             queue.remove(workflow.item.uuid);
             await Sequencer.EffectManager.endEffects({'name': 'Scorching Ray', 'object': workflow.token});
