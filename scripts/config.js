@@ -1909,6 +1909,34 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Scorching Ray': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'complex',
+                        'values': [
+                            {'value': 'complex', 'html': 'Complex'},
+                            {'value': 'simple', 'html': 'Simple'},
+                            {'value': 'none', 'html': 'None'}
+                        ]
+                    },
+                    'color': {
+                        'label': 'Color:',
+                        'default': 'orange',
+                        'values': [
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'pink', 'html': 'Pink'},
+                            {'value': 'purple', 'html': 'Purple'},
+                            {'value': 'rainbow01', 'html': 'Rainbow'},
+                            {'value': 'rainbow02', 'html': 'Rainbow Alternate'},
+                            {'value': 'cycle', 'html': 'Cycle'},
+                            {'value': 'random', 'html': 'Random'}
+                        ]
+                    }
+                }
             }
         },
         'automations': {

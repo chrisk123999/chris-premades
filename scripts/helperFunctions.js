@@ -157,7 +157,7 @@ export let chris = {
         }
         return spellMod;
     },
-    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, options) {
+    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets) {
         let generatedInputs = [];
         let isFirst = true;
         let number = 1;
@@ -201,10 +201,18 @@ export let chris = {
                 generatedInputs.push({
                     'label': html,
                     'type': 'select',
-                    'options': options,
+                    'options': selectOptions,
                     'value': value
                 });
             } else return {'buttons': false};
+        }
+        if (fixTargets) {
+            generatedInputs.push({
+                'label': 'Skip Dead & Unconscious?',
+                'type': 'checkbox',
+                'options': true,
+                'value': true
+            })
         }
         function dialogRender(html) {
             let trs = html[0].getElementsByTagName('tr');
@@ -250,15 +258,9 @@ export let chris = {
             'title': title,
             'render': dialogRender
         };
-        let selection = await warpgate.menu(
-            {
-                'inputs': generatedInputs,
-                'buttons': buttons
-            },
-            config
-        );
+        let selection = await warpgate.menu({'inputs': generatedInputs, 'buttons': buttons}, config);
         if (type != 'number' && type != 'select') {
-            for (let i = 0; i < selection.inputs.length; i++) {
+            for (let i = 0; i < !fixTargets ? selection.inputs.length : selection.inputs.length - 1; i++) {
                 if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
             }
         }

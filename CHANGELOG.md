@@ -1,3 +1,9 @@
+# 0.8.06 Release:
+## Bug Fixes:
+- Scorching Ray
+## New Enhanced Animations (Thanks Eskiemoh):
+- Scorching Ray
+  
 # 0.8.05 Release:
 ## Bug Fixes:
 - Magic Missile
