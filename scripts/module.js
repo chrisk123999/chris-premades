@@ -229,7 +229,6 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
-    if (game.settings.get('chris-premades', 'Generic Spell Animations')) Hooks.on('midi-qol.preambleComplete', spellsAnimations);
     if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.damageApplied', macros.soothePain);
     if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('midi-qol.RollComplete', macros.compelledDuel.attacked);
     Hooks.on('renderCompendium', compendiumRender);
