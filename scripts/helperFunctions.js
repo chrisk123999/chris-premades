@@ -266,7 +266,7 @@ export let chris = {
         let selection = await warpgate.menu({'inputs': generatedInputs, 'buttons': buttons}, config);
         if (description) selection.inputs?.shift();
         if (type != 'number' && type != 'select') {
-            for (let i = 0; i < !fixTargets ? selection.inputs.length : selection.inputs.length - 1; i++) {
+            for (let i = 0; i < (!fixTargets ? selection.inputs.length : selection.inputs.length - 1); i++) {
                 if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
             }
         }

@@ -22,7 +22,7 @@ export async function thunderboltStrike({speaker, actor, token, character, item,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let pushTargets = selection.inputs.map(i => fromUuidSync(i).object);
+    let pushTargets = selection.inputs.filter(i => i).map(i => fromUuidSync(i).object);
     if (!pushTargets.length) {
         queue.remove(workflow.item.uuid);
         return;
