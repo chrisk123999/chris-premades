@@ -1,3 +1,7 @@
+# 0.8.07 Release:
+## Update Notes:
+- Generic Spell Animations have been removed and are now part of Autumn's new module [Universal Animations](https://foundryvtt.com/packages/universal-animations)
+  
 # 0.8.06 Release:
 ## Bug Fixes:
 - Scorching Ray

@@ -1098,22 +1098,6 @@ export function registerSettings() {
         }
     });
     addMenuSetting('trs_color', 'Animations');
-    game.settings.register(moduleName, 'Generic Spell Animations', {
-        'name': ' Generic Spell Animations',
-        'hint': 'Enable to automatically play animations for spells without an AutoAnimations entry or CPR animation.',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': false,
-        'onChange': value => {
-            if (value) {
-                Hooks.on('midi-qol.preambleComplete', spellsAnimations);
-            } else {
-                Hooks.off('midi-qol.preambleComplete', spellsAnimations);
-            }
-        }
-    });
-    addMenuSetting('Generic Spell Animations', 'Animations');
     game.settings.register(moduleName, 'Compelled Duel', {
         'name': 'Compelled Duel Automation',
         'hint': 'Enabling this allows the automation of the spell Compelled Duel via the use of Foundry hooks.',
