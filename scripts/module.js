@@ -25,7 +25,6 @@ import {runAsGM} from './runAsGM.js';
 import {setConfig} from './config.js';
 import {settingButton} from './settingsMenu.js';
 import {setupJournalEntry} from './journal.js';
-import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {squareTemplate} from './fixes/squareTemplate.js';
 import {summons} from './utility/summons.js';
 import {tashaSummon} from './utility/tashaSummon.js';
