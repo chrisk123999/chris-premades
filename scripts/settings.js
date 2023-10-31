@@ -15,7 +15,6 @@ import {diceSoNice} from './integrations/diceSoNice.js';
 import {info} from './info.js';
 import {itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {cast} from './macros/animations/cast.js';
-import {spellsAnimations} from './macros/animations/spellsAnimations.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
