@@ -80,9 +80,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     if (chris.jb2aCheck() === 'free') {
         color = 'blueyellow';
-    }
-    if (color === 'blueyellow' || color === 'dark_blue') {
-        variation = '';
+        variation = '.ring'
     }
     new Sequence().effect().file('jb2a.spirit_guardians.' + color + variation).size(workflow.token.document.width + 6, {'gridUnits': true}).attachTo(workflow.token).persist().name('SpiritGuardians-' + workflow.token.id).fadeIn(300).fadeOut(300).play();
 }
