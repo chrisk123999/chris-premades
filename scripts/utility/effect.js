@@ -1,5 +1,5 @@
 import {chris} from '../helperFunctions.js';
-export async function itemDC(effect, updates, options, user) {
+export function itemDC(effect, updates, options, user) {
     if (!updates.changes || !effect.parent || !effect.origin) return;
     if (updates.changes.length === 0) return;
     if (effect.parent.constructor.name != 'Actor5e') return;

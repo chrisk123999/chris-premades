@@ -308,6 +308,8 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {hungerOfHadar} from './macros/spells/hungerOfHadar.js';
+import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -396,7 +398,8 @@ export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
     'eyesOfMinuteSeeing': eyesOfMinuteSeeing,
     'eyesOfTheEagle': eyesOfTheEagle,
-    'stoneCamouflage': deepGnome.stoneCamouflage
+    'stoneCamouflage': deepGnome.stoneCamouflage,
+    'labyrinthineRecall': labyrinthineRecall
 }
 export let saves = {
     'dangerSense': dangerSense,
@@ -431,25 +434,28 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
     }
 }
-async function templateTrigger(macroName, token, trigger) {
+async function templateTrigger(macroName, token, trigger, reason) {
     switch (macroName) {
         case 'dawn':
-            await dawn.trigger(token, trigger);
+            await dawn.trigger(token, trigger, reason);
             break;
         case 'moonbeam':
-            await moonbeam.trigger(token, trigger);
+            await moonbeam.trigger(token, trigger, reason);
             break;
         case 'cloudkill':
-            await cloudkill.trigger(token, trigger);
+            await cloudkill.trigger(token, trigger, reason);
             break;
         case 'sickeningRadiance':
-            await sickeningRadiance.trigger(token, trigger);
+            await sickeningRadiance.trigger(token, trigger, reason);
             break;
         case 'grease':
-            await grease.trigger(token, trigger);
+            await grease.trigger(token, trigger, reason);
             break;
         case 'insectPlague':
-            await insectPlague.trigger(token, trigger);
+            await insectPlague.trigger(token, trigger, reason);
+            break;
+        case 'hungerOfHadar':
+            await hungerOfHadar.trigger(token, trigger, reason);
             break;
     }
 }
@@ -711,5 +717,6 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'hungerOfHadar': hungerOfHadar
 }

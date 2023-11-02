@@ -15,7 +15,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
 import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
-import {patchSaves, patchSkills, patching} from './patching.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
 import {queue} from './utility/queue.js';
 import {registerSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
@@ -188,7 +188,10 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Shield Guardian')) Hooks.on('midi-qol.damageApplied', macros.mastersAmulet);
     if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
     if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
-    if (game.settings.get('chris-premades', 'Active Effect Additions')) Hooks.on('preCreateActiveEffect', itemDC);
+    if (game.settings.get('chris-premades', 'Active Effect Additions')) {
+        Hooks.on('preCreateActiveEffect', itemDC);  
+        patchActiveEffectSourceName(true);
+    }
     if (game.settings.get('chris-premades', 'Active Effect Origin Fix')) Hooks.on('createToken', fixOrigin);
     if (game.settings.get('chris-premades', 'Automatic VAE Descriptions')) Hooks.on('preCreateActiveEffect', vaeEffectDescription);
     if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);

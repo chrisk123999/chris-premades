@@ -36,7 +36,7 @@ async function updateToken(token, changes, context, userId) {
         allTriggers[flag.name].push(flag);
     }
     if (allTriggers.length === 0) return;
-    runTriggers(allTriggers, token);
+    runTriggers(allTriggers, token, 'move');
 }
 function combat(combat, changes, context) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
@@ -58,12 +58,12 @@ function combat(combat, changes, context) {
                 let flag = template.flags['chris-premades']?.template;
                 if (!flag?.name) continue;
                 if (!flag.turn) continue;
-                if (flag.turn === 'end') continue;
+                if (!(flag.turn === 'start' || flag.turn === 'both')) continue;
                 if (!allTriggers[flag.name]) allTriggers[flag.name] = [];
                 allTriggers[flag.name].push(flag);
             }
             if (allTriggers.length === 0) return;
-            runTriggers(allTriggers, token);
+            runTriggers(allTriggers, token, 'turnStart');
         }
     }
     let previousToken = game.combat.scene.tokens.get(combat.previous.tokenId);
@@ -77,16 +77,16 @@ function combat(combat, changes, context) {
                 let flag = template.flags['chris-premades']?.template;
                 if (!flag?.name) continue;
                 if (!flag.turn) continue;
-                if (flag.turn === 'start') continue;
+                if (!(flag.turn === 'end' || flag.turn === 'both')) continue;
                 if (!allTriggers[flag.name]) allTriggers[flag.name] = [];
                 allTriggers[flag.name].push(flag);
             }
             if (allTriggers.length === 0) return;
-            runTriggers(allTriggers, previousToken); 
+            runTriggers(allTriggers, previousToken, 'turnEnd'); 
         }
     }
 }
-async function runTriggers(allTriggers, token) {
+async function runTriggers(allTriggers, token, reason) {
     for (let triggerName of Object.values(allTriggers)) {
         let maxLevel = Math.max(...triggerName.map(trigger => trigger.castLevel));
         let maxDC = Math.max(...triggerName.map(trigger => trigger.saveDC));
@@ -97,17 +97,17 @@ async function runTriggers(allTriggers, token) {
         } else {
             selectedTrigger = triggerName.find(trigger => trigger.castLevel === maxLevel);
         }
-        await executeFunction(selectedTrigger, token);
+        await executeFunction(selectedTrigger, token, reason);
         await warpgate.wait(100);
     }
 }
-async function executeFunction(selectedTrigger, token) {
+async function executeFunction(selectedTrigger, token, reason) {
     console.log('Chris | Executing template trigger for ' + selectedTrigger.name + ' to: ' + token.actor.name);
     let macroCommand;
     if (selectedTrigger.macroName) {
-        macros.templateTrigger(selectedTrigger.macroName, token, selectedTrigger);
+        macros.templateTrigger(selectedTrigger.macroName, token, selectedTrigger, reason);
     } else if (selectedTrigger.globalFunction) {
-        macroCommand = `await ${selectedTrigger.globalFunction.trim()}.bind(this)({token})`;
+        macroCommand = `await ${selectedTrigger.globalFunction.trim()}.bind(this)({token, reason})`;
     } else if (selectedTrigger.worldMacro) {
         let macro = game.macros?.getName(selectedTrigger.worldMacro.replaceAll('"', ''));
         macroCommand = macro?.command ?? `console.warn('Chris | No world macro ${selectedTrigger.worldMacro.replaceAll('"', '')} found!')`;
@@ -116,7 +116,7 @@ async function executeFunction(selectedTrigger, token) {
         let body = `return (async () => {${macroCommand}})()`;
         let fn = Function('{token}={}', body);
         try {
-            fn.call(selectedTrigger, {token});
+            fn.call(selectedTrigger, {token, reason});
         } catch (error) {
             ui.notifications?.error('There was an error running your macro. See the console (F12) for details');
             error('Error evaluating macro ', error);

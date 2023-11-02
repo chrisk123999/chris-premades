@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
-import {patchSaves, patchSkills, patching} from './patching.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
@@ -185,6 +185,7 @@ export function registerSettings() {
             } else {
                 Hooks.off('preCreateActiveEffect', itemDC);
             }
+            patchActiveEffectSourceName(value);
         }
     });
     addMenuSetting('Active Effect Additions', 'General');

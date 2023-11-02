@@ -4727,6 +4727,20 @@ export function setConfig() {
             'Wraps of Dyamak':  {
                 'name': 'Wraps of Dyamak',
                 'version': '0.8.04'
+            },
+            'Hunger of Hadar': {
+                'name': 'Hunger of Hadar',
+                'version': '0.8.11',
+                'settings': [
+                    'Template Listener'
+                ]
+            },
+            'Labyrinthine Recall': {
+                'name': 'Labyrinthine Recall',
+                'version': '0.8.11',
+                'settings': [
+                    'Skill Patching'
+                ]
             }
         }
     });

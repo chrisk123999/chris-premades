@@ -1,3 +1,14 @@
+# 0.8.11 Release:
+## New Content:
+- Spell: Hunger of Hadar
+- Minotaur: Labyrinthine Recall
+## Bug Fixes:
+- Danger Sense
+- Holy Nimbus
+- Boots of Elvenkind
+- Eyes of the Eagle
+- Stone Camouflage
+  
 # 0.8.10 Release:
 ## Bug Fixes:
 - Thunderbolt Strike

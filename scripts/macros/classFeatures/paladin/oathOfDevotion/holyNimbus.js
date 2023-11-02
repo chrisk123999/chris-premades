@@ -1,10 +1,7 @@
 import {chris} from '../../../../helperFunctions.js';
 import {constants} from '../../../../constants.js';
-async function save(saveId, options) {
-    if (options.advantage) return;
-    let selection = await chris.dialog('Holy Nimbus', [['Yes', true], ['No', false]], 'Is this a save from a spell cast by a fiend or undead?');
-    if (!selection) return;
-    options.advantage = true;
+function save(saveId, options) {
+    return {'label': 'This a save is from a spell cast by a fiend or undead.', 'type': 'advantage'};
 }
 async function turn(token) {
     let targetToken = game.canvas.tokens.get(game.combat.current.tokenId);
