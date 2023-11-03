@@ -1,3 +1,7 @@
+# 0.8.14 Relase
+## Bug Fixes:
+- Effect Origin Patch
+  
 # 0.8.13 Release:
 ## New Content:
 - Spell: Aura of Life

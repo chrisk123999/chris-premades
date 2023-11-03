@@ -134,16 +134,18 @@ export function patchActiveEffectSourceName(enabled) {
 function sourceName(wrapped, ...args) {
     let name = wrapped();
     if (name === 'Unknown' && this.origin != '') {
-        let origin = fromUuidSync(this.origin);
-        if (origin) {
-            if (origin.constructor.name === 'MeasuredTemplateDocument') {
-                let orginUuid = origin.flags?.dnd5e?.origin;
-                if (orginUuid) {
-                    let originItem = fromUuidSync(orginUuid);
-                    if (originItem) {
-                        if (originItem.constructor.name === 'Item5e') name = originItem.name + ' Template';
-                    }
-                } else name = 'Unknown Template';
+        if (!this.origin.contains('Compendium.')) {
+            let origin = fromUuidSync(this.origin);
+            if (origin) {
+                if (origin.constructor.name === 'MeasuredTemplateDocument') {
+                    let orginUuid = origin.flags?.dnd5e?.origin;
+                    if (orginUuid) {
+                        let originItem = fromUuidSync(orginUuid);
+                        if (originItem) {
+                            if (originItem.constructor.name === 'Item5e') name = originItem.name + ' Template';
+                        }
+                    } else name = 'Unknown Template';
+                }
             }
         }
     }
