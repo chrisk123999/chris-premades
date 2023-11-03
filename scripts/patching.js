@@ -134,7 +134,7 @@ export function patchActiveEffectSourceName(enabled) {
 function sourceName(wrapped, ...args) {
     let name = wrapped();
     if (name === 'Unknown' && this.origin != '') {
-        if (!this.origin.contains('Compendium.')) {
+        if (!this.origin.includes('Compendium.')) {
             let origin = fromUuidSync(this.origin);
             if (origin) {
                 if (origin.constructor.name === 'MeasuredTemplateDocument') {
