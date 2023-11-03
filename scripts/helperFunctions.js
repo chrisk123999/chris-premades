@@ -896,5 +896,11 @@ export let chris = {
     },
     'isLastGM': function _isLastGM() {
         return game.user.id === chris.lastGM() ? true : false;
+    },
+    'nth': function _nth(number) {
+        return number + ['st','nd','rd'][((number+90)%100-10)%10-1]||'th';
+    },
+    'levelOrCR': function _levelOrCR(actor) {
+        return actor.type === 'character' ? actor.system.details.level : actor.system.details.cr ?? 0;
     }
 }

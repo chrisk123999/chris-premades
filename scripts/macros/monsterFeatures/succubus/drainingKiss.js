@@ -13,6 +13,7 @@ export async function drainingKiss({speaker, actor, token, character, item, args
             'duration': {
                 'seconds': 604800
             },
+            'origin': workflow.item.uuid,
             'changes': [
                 {
                     'key': 'system.attributes.hp.tempmax',

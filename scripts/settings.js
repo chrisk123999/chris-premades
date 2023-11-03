@@ -468,7 +468,7 @@ export function registerSettings() {
     });
     addMenuSetting('Beacon of Hope', 'Spells');
     game.settings.register(moduleName, 'Darkness', {
-        'name': 'Darkness Spell Automation',
+        'name': 'Darkness Automation',
         'hint': 'Enabling this allows the automation of the Darkness spell via the use of Midi-Qol hooks.',
         'scope': 'world',
         'config': false,
@@ -484,7 +484,7 @@ export function registerSettings() {
     });
     addMenuSetting('Darkness', 'Spells');
     game.settings.register(moduleName, 'Fog Cloud', {
-        'name': 'Fog Cloud Spell Automation',
+        'name': 'Fog Cloud Automation',
         'hint': 'Enabling this allows the automation of the Fog Cloud spell via the use of Midi-Qol hooks.',
         'scope': 'world',
         'config': false,
@@ -757,7 +757,7 @@ export function registerSettings() {
     });
     addMenuSetting('Relentless Endurance', 'Race Features');
     game.settings.register(moduleName, 'Shadow of Moil', {
-        'name': 'Shadow of Moil Spell Automation',
+        'name': 'Shadow of Moil Automation',
         'hint': 'Enabling this allows the automation of the Shadow of Moil spell via the use of Midi-Qol hooks.',
         'scope': 'world',
         'config': false,
@@ -1207,6 +1207,24 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Fix Square Templates', 'Mechanics');
+    game.settings.register(moduleName, 'Aura of Life', {
+        'name': 'Aura of Life Spell Automation',
+        'hint': 'Enabling this allows the automation of the Aura of Life spell via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('preCreateActiveEffect', macros.auraOfLife.effect);
+                Hooks.on('updateActiveEffect', macros.auraOfLife.effect);
+            } else {
+                Hooks.off('preCreateActiveEffect', macros.auraOfLife.effect);
+                Hooks.off('updateActiveEffect', macros.auraOfLife.effect);
+            }
+        }
+    });
+    addMenuSetting('Aura of Life', 'Spells');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
@@ -1311,14 +1329,14 @@ export function registerSettings() {
         'type': chrisSettingsManualRolling,
         'restricted': true
     });
-//    game.settings.registerMenu(moduleName, 'Randomizer', {
-//        'name': 'Randomizer',
-//        'label': 'Randomizer',
-//        'hint': 'Optional settings for randomizer features.',
-//        'icon': 'fas fa-dice',
-//        'type': chrisSettingsRandomizer,
-//        'restricted': true
-//    });
+/*    game.settings.registerMenu(moduleName, 'Randomizer', {
+        'name': 'Randomizer',
+        'label': 'Randomizer',
+        'hint': 'Optional settings for randomizer features.',
+        'icon': 'fas fa-dice',
+        'type': chrisSettingsRandomizer,
+        'restricted': true
+    }); */
     game.settings.registerMenu(moduleName, 'NPC Updater', {
         'name': 'NPC Updater',
         'label': 'NPC Updater',

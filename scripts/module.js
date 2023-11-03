@@ -253,6 +253,10 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', dndAnimations.rollDone);
     }
     if (game.settings.get('chris-premades', 'Fix Square Templates')) squareTemplate.patch();
+    if (game.settings.get('chris-premades', 'Aura of Life')) {
+        Hooks.on('preCreateActiveEffect', macros.auraOfLife.effect);
+        Hooks.on('updateActiveEffect', macros.auraOfLife.effect);
+    }
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

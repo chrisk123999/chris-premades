@@ -4741,6 +4741,129 @@ export function setConfig() {
                 'settings': [
                     'Skill Patching'
                 ]
+            },
+            'Harness Divine Power': {
+                'name': 'Harness Divine Power',
+                'version': '0.8.13'
+            },
+            'Aura of Life': {
+                'name': 'Aura of Life',
+                'version': '0.8.13',
+                'settings': [
+                    'Aura of Life'
+                ]
+            },
+            'Spider Climb': {
+                'name': 'Spider Climb',
+                'version': '0.8.13'
+            },
+            'Acid Breath Weapon': {
+                'name': 'Acid Breath Weapon',
+                'version': '0.8.13'
+            },
+            'Lightning Breath Weapon': {
+                'name': 'Lightning Breath Weapon',
+                'version': '0.8.13'
+            },
+            'Poison Breath Weapon': {
+                'name': 'Poison Breath Weapon',
+                'version': '0.8.13'
+            },
+            'Fire Breath Weapon': {
+                'name': 'Fire Breath Weapon',
+                'version': '0.8.13'
+            },
+            'Cold Breath Weapon': {
+                'name': 'Cold Breath Weapon',
+                'version': '0.8.13'
+            },
+            'Chromatic Warding (Acid)': {
+                'name': 'Chromatic Warding (Acid)',
+                'version': '0.8.13'
+            },
+            'Chromatic Warding (Cold)': {
+                'name': 'Chromatic Warding (Cold)',
+                'version': '0.8.13'
+            },
+            'Chromatic Warding (Fire)': {
+                'name': 'Chromatic Warding (Fire)',
+                'version': '0.8.13'
+            },
+            'Chromatic Warding (Lightning)': {
+                'name': 'Chromatic Warding (Lightning)',
+                'version': '0.8.13'
+            },
+            'Chromatic Warding (Poison)': {
+                'name': 'Chromatic Warding (Poison)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Black)': {
+                'name': 'Breath Weapon (Black)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Blue)': {
+                'name': 'Breath Weapon (Blue)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Brass)': {
+                'name': 'Breath Weapon (Brass)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Bronze)': {
+                'name': 'Breath Weapon (Bronze)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Copper)': {
+                'name': 'Breath Weapon (Copper)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Gold)': {
+                'name': 'Breath Weapon (Gold)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Green)': {
+                'name': 'Breath Weapon (Green)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Red)': {
+                'name': 'Breath Weapon (Red)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Silver)': {
+                'name': 'Breath Weapon (Silver)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (White)': {
+                'name': 'Breath Weapon (White)',
+                'version': '0.8.13'
+            },
+            'Forceful Presence': {
+                'name': 'Forceful Presence',
+                'version': '0.8.13'
+            },
+            'Gem Flight': {
+                'name': 'Gem Flight',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Force)': {
+                'name': 'Breath Weapon (Force)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Necrotic)': {
+                'name': 'Breath Weapon (Necrotic)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Psychic)': {
+                'name': 'Breath Weapon (Psychic)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Radiant)': {
+                'name': 'Breath Weapon (Radiant)',
+                'version': '0.8.13'
+            },
+            'Breath Weapon (Thunder)': {
+                'name': 'Breath Weapon (Thunder)',
+                'version': '0.8.13'
             }
         }
     });

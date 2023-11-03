@@ -176,24 +176,357 @@ export let allRaces = {
     {
         'name': 'Dhampir',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'movement': {
+            'walk': 35
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'features': [
+            {
+                'name': 'Deathless Nature',
+                'description': 'Deathless Nature'
+            },
+            {
+                'name': 'Spider Climb',
+                'description': 'Spider Climb'
+            },
+            {
+                'name': 'Vampiric Bite',
+                'description': 'Vampiric Bite'
+            }
+        ]
     },
-    'chromatic-dragonborn': 
+    'black-chromatic-dragonborn':
     {
-        'name': 'Chromatic Dragonborn',
-        'weight': 50,
-        'enabled': true
-    },
-    'draconblood-dragonborn':
-    {
-        'name': 'Draconblood Dragonborn',
-        'weight': 50,
-        'enabled': false
-    },
-    'gem-dragonborn':
-    {
-        'name': 'Gem Dragonborn',
+        'name': 'Black Chromatic Dragonborn',
         'weight': 10,
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Chromatic Ancestry',
+                'description': 'Chromatic Ancestry'
+            },
+            {
+                'name': 'Draconic Resistance',
+                'description': 'Draconic Resistance'
+            },
+            {
+                'name': 'Acid Breath Weapon',
+                'description': 'Breath Weapon (Chromatic Dragonborn)'
+            },
+            {
+                'name': 'Chromatic Warding (Acid)',
+                'description': 'Chromatic Warding'
+            }
+        ],
+        'dr': [
+            'acid'
+        ]
+    },
+    'blue-chromatic-dragonborn':
+    {
+        'name': 'Blue Chromatic Dragonborn',
+        'weight': 10,
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Chromatic Ancestry',
+                'description': 'Chromatic Ancestry'
+            },
+            {
+                'name': 'Draconic Resistance',
+                'description': 'Draconic Resistance'
+            },
+            {
+                'name': 'Lightning Breath Weapon',
+                'description': 'Breath Weapon (Chromatic Dragonborn)'
+            },
+            {
+                'name': 'Chromatic Warding (Lightning)',
+                'description': 'Chromatic Warding'
+            }
+        ],
+        'dr': [
+            'lightning'
+        ]
+    },
+    'green-chromatic-dragonborn':
+    {
+        'name': 'Green Chromatic Dragonborn',
+        'weight': 10,
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Chromatic Ancestry',
+                'description': 'Chromatic Ancestry'
+            },
+            {
+                'name': 'Draconic Resistance',
+                'description': 'Draconic Resistance'
+            },
+            {
+                'name': 'Poision Breath Weapon',
+                'description': 'Breath Weapon (Chromatic Dragonborn)'
+            },
+            {
+                'name': 'Chromatic Warding (Poision)',
+                'description': 'Chromatic Warding'
+            }
+        ],
+        'dr': [
+            'poision'
+        ]
+    },
+    'red-chromatic-dragonborn':
+    {
+        'name': 'Red Chromatic Dragonborn',
+        'weight': 10,
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Chromatic Ancestry',
+                'description': 'Chromatic Ancestry'
+            },
+            {
+                'name': 'Draconic Resistance',
+                'description': 'Draconic Resistance'
+            },
+            {
+                'name': 'Fire Breath Weapon',
+                'description': 'Breath Weapon (Chromatic Dragonborn)'
+            },
+            {
+                'name': 'Chromatic Warding (Fire)',
+                'description': 'Chromatic Warding'
+            }
+        ],
+        'dr': [
+            'fire'
+        ]
+    },
+    'white-chromatic-dragonborn':
+    {
+        'name': 'White Chromatic Dragonborn',
+        'weight': 10,
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Chromatic Ancestry',
+                'description': 'Chromatic Ancestry'
+            },
+            {
+                'name': 'Draconic Resistance',
+                'description': 'Draconic Resistance'
+            },
+            {
+                'name': 'Cold Breath Weapon',
+                'description': 'Breath Weapon (Chromatic Dragonborn)'
+            },
+            {
+                'name': 'Chromatic Warding (Cold)',
+                'description': 'Chromatic Warding'
+            }
+        ],
+        'dr': [
+            'Cold'
+        ]
+    },
+    'black-draconblood-dragonborn':
+    {
+        'name': 'Black Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Black)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'blue-draconblood-dragonborn':
+    {
+        'name': 'Blue Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Blue)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'brass-draconblood-dragonborn':
+    {
+        'name': 'Brass Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Brass)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'bronze-draconblood-dragonborn':
+    {
+        'name': 'Bronze Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Bronze)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'copper-draconblood-dragonborn':
+    {
+        'name': 'Copper Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Copper)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'gold-draconblood-dragonborn':
+    {
+        'name': 'Gold Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Gold)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'green-draconblood-dragonborn':
+    {
+        'name': 'Green Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Green)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'red-draconblood-dragonborn':
+    {
+        'name': 'Red Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Red)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'silver-draconblood-dragonborn':
+    {
+        'name': 'Silver Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Silver)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'white-draconblood-dragonborn':
+    {
+        'name': 'White Draconblood Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (White)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Forceful Presence',
+                'description': 'Forceful Presence'
+            },
+            {
+                'name': 'Draconic Ancestry'
+            }
+        ]
+    },
+    'amethyst-gem-dragonborn':
+    {
+        'name': 'Amethyst Gem Dragonborn',
+        'weight': 2,
         'enabled': false
     },
     'metallic-dragonborn':
@@ -819,7 +1152,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'deep-gnome';
+    let race = 'dhampir';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -891,7 +1224,7 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
         }
     }
-//    if (allRaces[race].special) await allRaces[race].special(token, sourceActor, features, updates);
+    if (allRaces[race].special) await allRaces[race].special(token, sourceActor, features, updates);
     let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
     let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
     let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';

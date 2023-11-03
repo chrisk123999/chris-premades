@@ -1,3 +1,15 @@
+# 0.8.13 Release:
+## New Content:
+- Spell: Aura of Life
+- Cleric: Harness Divine Power
+- Chromatic Dragonborn: Breath Weapon and Chromatic Warding
+- Draconblood Dragonborn: Forceful Presence
+- Gem Dragonborn: Breath Weapon and Gem Flight
+- Legacy Dragonborn: Breath Weapon
+## Bug Fixes:
+- Brute
+- Draining Kiss
+  
 # 0.8.12 Release:
 ## Bug Fixes:
 - Spike Growth

@@ -12,6 +12,7 @@ import {armorOfMagicalStrength} from './macros/classFeatures/artificer/infusions
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
+import {auraOfLife} from './macros/spells/auraOfLife.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
@@ -38,6 +39,7 @@ import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
+import {breathWeapon} from './macros/raceFeatures/dragonborn/chromatic/breathWeapon.js';
 import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
 import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {burningHands} from './macros/spells/burningHands.js';
@@ -152,6 +154,7 @@ import {grovelthrash} from './macros/items/grovelthrash.js';
 import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 import {guardianOfNature} from './macros/spells/guardianOfNature.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
+import {harnessDivinePower} from './macros/classFeatures/cleric/harnessDivinePower.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
@@ -200,6 +203,7 @@ import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/
 import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
 import {nightwalker} from './macros/monsterFeatures/nightwalker/nightwalker.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
+import {oldBreathWeapon} from './macros/raceFeatures/dragonborn/oldBreathWeapon.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
 import {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
 import {piercer} from './macros/feats/piercer.js';
@@ -432,6 +436,9 @@ async function onMoveEffect(macroName, token, selectedAura) {
         case 'auraOfDevotion':
             await auraOfDevotion(token, selectedAura);
             break;
+        case 'auraOfLife':
+            await auraOfLife.aura(token, selectedAura);
+            break;
     }
 }
 async function templateTrigger(macroName, token, trigger, reason) {
@@ -473,6 +480,7 @@ export let macros = {
     'auraOfAlacrity': auraOfAlacrity,
     'auraOfCourage': auraOfCourage,
     'auraOfDevotion': auraOfDevotion,
+    'auraOfLife': auraOfLife,
     'auraOfProtection': auraOfProtection,
     'auraOfPurity': auraOfPurity,
     'auraOfVitality': auraOfVitality,
@@ -496,6 +504,7 @@ export let macros = {
     'bloodSpear': bloodSpear,
     'brandOfCastigation': brandOfCastigation,
     'breathOfTheDragon': breathOfTheDragon,
+    'breathWeapon': breathWeapon,
     'burningHands': burningHands,
     'callLightning': callLightning,
     'callTheHunt': callTheHunt,
@@ -581,6 +590,7 @@ export let macros = {
     'guardianOfFaith': guardianOfFaith,
     'guardianOfNature': guardianOfNature,
     'hailOfThorns': hailOfThorns,
+    'harnessDivinePower': harnessDivinePower,
     'healingLight': healingLight,
     'healingSpirit': healingSpirit,
     'heartOfTheStorm': heartOfTheStorm,
@@ -621,6 +631,7 @@ export let macros = {
     'mutagencraft': mutagencraft,
     'necroticShroud': necroticShroud,
     'oilOfSharpness': oilOfSharpness,
+    'oldBreathWeapon': oldBreathWeapon,
     'onHit': onHit,
     'onMove': onMove,
     'onMoveEffect': onMoveEffect,
