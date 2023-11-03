@@ -21,10 +21,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             },
             'limits': {
                 'sight': {
-                    'blindsight': {
-                        'enabled': true,
-                        'range': 0
-                    },
                     'basicSight': {
                         'enabled': true,
                         'range': 0

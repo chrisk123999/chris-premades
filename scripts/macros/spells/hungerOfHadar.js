@@ -3,13 +3,29 @@ import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
-    await template.setFlag('chris-premades', 'template', {
-        'name': 'hungerOfHadar',
-        'castLevel': workflow.castData.castLevel,
-        'saveDC': chris.getSpellDC(workflow.item),
-        'macroName': 'hungerOfHadar',
-        'templateUuid': template.uuid,
-        'turn': 'both'
+    await template.update({
+        'flags': {
+            'chris-premades': {
+                'template': {
+                    'name': 'hungerOfHadar',
+                    'castLevel': workflow.castData.castLevel,
+                    'saveDC': chris.getSpellDC(workflow.item),
+                    'macroName': 'hungerOfHadar',
+                    'templateUuid': template.uuid,
+                    'turn': 'both'
+                }
+            },
+            'limits': {
+                'light': {
+                    'enabled': true,
+                    'range': 0
+                }
+            },
+            'walledtemplates': {
+                'wallRestriction': 'move',
+                'wallsBlock': 'walled'
+            }
+        }
     });
     let tokens = chris.templateTokens(template).map(i => game.canvas.scene.tokens.get(i)).filter(j => !chris.findEffect(j.actor, 'Hunger of Hadar'));
     let effectData = {
