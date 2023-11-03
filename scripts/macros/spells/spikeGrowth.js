@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function spikeGrowthEnterLeave(data, template) {
     if (canvas.scene.grid.units != 'ft') return;
@@ -25,16 +26,20 @@ async function spikeGrowthEnterLeave(data, template) {
     let scale = Math.ceil(canvas.scene.grid.distance / 5);
     let distance = cellDistance * scale;
     if (distance <= 0) return;
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spike Growth - Thorns', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spike Growth - Thorns');
+    let originUuid = template.flags.dnd5e?.origin;
+    if (!originUuid) return;
+    let originItem = await fromUuid(originUuid);
+    if (!originItem) return;
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
+    let token = canvas.tokens.get(data.tokenId);
+    if (!token) return;
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     for (let i = 0; i < distance; i++) {
-        let damageDice = '2d4[piercing]';
-        let diceRoll = await new Roll(damageDice).roll({async: true});
-        diceRoll.toMessage({
-            rollMode: 'roll',
-            speaker: {alias: name},
-            flavor: 'Spike Growth'
-        });
-        let token = canvas.tokens.get(data.tokenId);
-        await chris.applyDamage([token], diceRoll.total, 'piercing');
+        if (i > 0) await (warpgate.wait(100));
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }
 async function spikeGrowthStaying(data, template) {
@@ -63,16 +68,20 @@ async function spikeGrowthStaying(data, template) {
     let scale = Math.ceil(canvas.scene.grid.distance / 5);
     let distance = cellDistance * scale;
     if (distance <= 0) return;
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spike Growth - Thorns', false);
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spike Growth - Thorns');
+    let originUuid = template.flags.dnd5e?.origin;
+    if (!originUuid) return;
+    let originItem = await fromUuid(originUuid);
+    if (!originItem) return;
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
+    let token = canvas.tokens.get(data.tokenId);
+    if (!token) return;
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     for (let i = 0; i < distance; i++) {
-        let damageDice = '2d4[piercing]';
-        let diceRoll = await new Roll(damageDice).roll({async: true});
-        diceRoll.toMessage({
-            rollMode: 'roll',
-            speaker: {alias: name},
-            flavor: 'Spike Growth'
-        });
-        let token = canvas.tokens.get(data.tokenId);
-        await chris.applyDamage([token], diceRoll.total, 'piercing');
+        if (i > 0) await (warpgate.wait(100));
+        await MidiQOL.completeItemUse(feature, config, options);
     }
 }
 export let spikeGrowth = {

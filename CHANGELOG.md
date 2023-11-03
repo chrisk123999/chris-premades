@@ -1,3 +1,8 @@
+# 0.8.12 Release:
+## Bug Fixes:
+- Spike Growth
+- Hunger of Hadar
+  
 # 0.8.11 Release:
 ## New Content:
 - Spell: Hunger of Hadar

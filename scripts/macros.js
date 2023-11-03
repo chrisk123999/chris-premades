@@ -166,6 +166,7 @@ import {holyNimbus} from './macros/classFeatures/paladin/oathOfDevotion/holyNimb
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js'
 import {homunculus} from './macros/monsterFeatures/homunculus/homunculus.js';
+import {hungerOfHadar} from './macros/spells/hungerOfHadar.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
@@ -176,6 +177,7 @@ import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiri
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
 import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
+import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
@@ -308,8 +310,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {hungerOfHadar} from './macros/spells/hungerOfHadar.js';
-import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -592,6 +592,7 @@ export let macros = {
     'holyNimbus': holyNimbus,
     'holyWeapon': holyWeapon,
     'homunculusServant': homunculusServant,
+    'hungerOfHadar': hungerOfHadar,
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
@@ -717,6 +718,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'hungerOfHadar': hungerOfHadar
+    'zoneOfTruth': zoneOfTruth
 }

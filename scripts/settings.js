@@ -19,6 +19,7 @@ import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
 import {squareTemplate} from './fixes/squareTemplate.js';
+import {colorizeDAETitleBarButton} from './integrations/dae.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1153,6 +1154,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Colorize Build A Bonus', 'Module Integration');
+    game.settings.register(moduleName, 'Colorize Dynamic Active Effects', {
+        'name': 'Colorize Build A Bonus Title Bar Button',
+        'hint': 'Enabling this will make colorize the Dynamic Active Effects title bar button.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('renderItemSheet', colorizeDAETitleBarButton);
+            } else {
+                Hooks.off('renderItemSheet', colorizeDAETitleBarButton);
+            }
+        }
+    });
+    addMenuSetting('Colorize Dynamic Active Effects', 'Module Integration');
     game.settings.register(moduleName, 'D&D5E Animations Sounds', {
         'name': 'D&D5E Animations Sounds',
         'hint': 'Play sounds from the D&D5E Animations module (when available).',

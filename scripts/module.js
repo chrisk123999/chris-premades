@@ -1,4 +1,4 @@
-import {addDAEFlags} from './integrations/dae.js';
+import {addDAEFlags, colorizeDAETitleBarButton} from './integrations/dae.js';
 import {applyEquipmentFlag, itemFeatures, itemFeaturesDelete} from './equipment.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
@@ -245,6 +245,7 @@ Hooks.once('ready', async function() {
         Hooks.on('renderDAEActiveEffectConfig', buildABonus.daeTitleBarButton);
         Hooks.on('renderActorSheet5e', buildABonus.actorTitleBarButtons);
     }
+    if (game.settings.get('chris-premades', 'Colorize Dynamic Active Effects')) Hooks.on('renderItemSheet', colorizeDAETitleBarButton);
     if (game.settings.get('chris-premades', 'D&D5E Animations Sounds')) {
         dndAnimations.sortAutoRec();
         Hooks.on('midi-qol.AttackRollComplete', dndAnimations.attackDone);
