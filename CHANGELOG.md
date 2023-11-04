@@ -1,3 +1,10 @@
+# 0.8.16 Release:
+## New Content:
+- Metallic Dragonborn: Breath Weapon and Metallic Breath Weapon
+- Mark of Warding Dwarf: Warder’s Intuition
+## Bug Fixes:
+- Goading Attack
+  
 # 0.8.14 Relase
 ## Bug Fixes:
 - Effect Origin Patch

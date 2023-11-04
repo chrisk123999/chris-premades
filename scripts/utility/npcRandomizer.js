@@ -14,8 +14,17 @@ export let allRaces = {
         'enabled': true,
         'features': [
             {
+                'name': 'Healing Hands',
+                'description': 'Healing Hands'
+            },
+            {
+                'name': 'Light Bearer',
+                'spellcasting': true
+            },
+            {
                 'name': 'Celestial Revelation (Necrotic Shroud)',
-                'description': 'Celestial Revelation'
+                'description': 'Celestial Revelation',
+                'level': 3
             }
         ],
         'dr': [
@@ -31,7 +40,13 @@ export let allRaces = {
         'sight': {
             'range': 60,
             'visionMode': 'darkvision'
-        }
+        },
+        'spells': [
+            {
+                'name': 'Light',
+                'ability': 'cha'
+            }
+        ]
     },
     'protector-aasimar': 
     {
@@ -40,8 +55,17 @@ export let allRaces = {
         'enabled': true,
         'features': [
             {
+                'name': 'Healing Hands',
+                'description': 'Healing Hands'
+            },
+            {
+                'name': 'Light Bearer',
+                'spellcasting': true
+            },
+            {
                 'name': 'Celestial Revelation (Radiant Soul)',
-                'description': 'Celestial Revelation'
+                'description': 'Celestial Revelation',
+                'level': 3
             }
         ],
         'dr': [
@@ -61,7 +85,13 @@ export let allRaces = {
         'sight': {
             'range': 60,
             'visionMode': 'darkvision'
-        }
+        },
+        'spells': [
+            {
+                'name': 'Light',
+                'ability': 'cha'
+            }
+        ]
     },
     'scourge-aasimar': 
     {
@@ -70,8 +100,17 @@ export let allRaces = {
         'enabled': true,
         'features': [
             {
+                'name': 'Healing Hands',
+                'description': 'Healing Hands'
+            },
+            {
+                'name': 'Light Bearer',
+                'spellcasting': true
+            },
+            {
                 'name': 'Celestial Revelation (Radiant Consumption)',
-                'description': 'Celestial Revelation'
+                'description': 'Celestial Revelation',
+                'level': 3
             }
         ],
         'dr': [
@@ -91,7 +130,13 @@ export let allRaces = {
         'sight': {
             'range': 60,
             'visionMode': 'darkvision'
-        }
+        },
+        'spells': [
+            {
+                'name': 'Light',
+                'ability': 'cha'
+            }
+        ]
     },
     'air-genasi': 
     {
@@ -101,6 +146,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Unending Breath'
+            },
+            {
+                'name': 'Mingle with the Wind',
+                'spellcasting': true
             }
         ],
         'senses': {
@@ -115,6 +164,47 @@ export let allRaces = {
         },
         'dr': [
             'lightning'
+        ],
+        'spells': [
+            {
+                'name': 'Shocking Grasp'
+            },
+            {
+                'name': 'Feather Fall',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Levitate',
+                'level': 5,
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Feather Fall',
+                'level': 3
+            },
+            {
+                'name': 'Levitate',
+                'level': 5
+            }
         ]
     },
     'astral-elf': 
@@ -134,6 +224,21 @@ export let allRaces = {
             {
                 'name': 'Astral Trance',
                 'description': 'Astral Trance'
+            },
+            {
+                'name': 'Astral Fire',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Dancing Lights'
+            },
+            {
+                'name': 'Light'
+            },
+            {
+                'name': 'Sacred Flame'
             }
         ]
     },
@@ -202,7 +307,7 @@ export let allRaces = {
     {
         'name': 'Black Chromatic Dragonborn',
         'weight': 10,
-        'enabled': true,
+        'enabled': false,
         'features': [
             {
                 'name': 'Chromatic Ancestry',
@@ -210,7 +315,7 @@ export let allRaces = {
             },
             {
                 'name': 'Draconic Resistance',
-                'description': 'Draconic Resistance'
+                'description': 'Draconic Resistance (Chromatic Dragonborn)'
             },
             {
                 'name': 'Acid Breath Weapon',
@@ -229,7 +334,7 @@ export let allRaces = {
     {
         'name': 'Blue Chromatic Dragonborn',
         'weight': 10,
-        'enabled': true,
+        'enabled': false,
         'features': [
             {
                 'name': 'Chromatic Ancestry',
@@ -237,7 +342,7 @@ export let allRaces = {
             },
             {
                 'name': 'Draconic Resistance',
-                'description': 'Draconic Resistance'
+                'description': 'Draconic Resistance (Chromatic Dragonborn)'
             },
             {
                 'name': 'Lightning Breath Weapon',
@@ -256,7 +361,7 @@ export let allRaces = {
     {
         'name': 'Green Chromatic Dragonborn',
         'weight': 10,
-        'enabled': true,
+        'enabled': false,
         'features': [
             {
                 'name': 'Chromatic Ancestry',
@@ -264,7 +369,7 @@ export let allRaces = {
             },
             {
                 'name': 'Draconic Resistance',
-                'description': 'Draconic Resistance'
+                'description': 'Draconic Resistance (Chromatic Dragonborn)'
             },
             {
                 'name': 'Poision Breath Weapon',
@@ -283,7 +388,7 @@ export let allRaces = {
     {
         'name': 'Red Chromatic Dragonborn',
         'weight': 10,
-        'enabled': true,
+        'enabled': false,
         'features': [
             {
                 'name': 'Chromatic Ancestry',
@@ -291,7 +396,7 @@ export let allRaces = {
             },
             {
                 'name': 'Draconic Resistance',
-                'description': 'Draconic Resistance'
+                'description': 'Draconic Resistance (Chromatic Dragonborn)'
             },
             {
                 'name': 'Fire Breath Weapon',
@@ -310,7 +415,7 @@ export let allRaces = {
     {
         'name': 'White Chromatic Dragonborn',
         'weight': 10,
-        'enabled': true,
+        'enabled': false,
         'features': [
             {
                 'name': 'Chromatic Ancestry',
@@ -318,7 +423,7 @@ export let allRaces = {
             },
             {
                 'name': 'Draconic Resistance',
-                'description': 'Draconic Resistance'
+                'description': 'Draconic Resistance (Chromatic Dragonborn)'
             },
             {
                 'name': 'Cold Breath Weapon',
@@ -527,19 +632,411 @@ export let allRaces = {
     {
         'name': 'Amethyst Gem Dragonborn',
         'weight': 2,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Force)',
+                'description': 'Breath Weapon (Gem Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Gem Dragonborn)'
+            },
+            {
+                'name': 'Psionic Mind'
+            },
+            {
+                'name': 'Gem Flight',
+                'description': 'Gem Flight',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'force'
+        ]
     },
-    'metallic-dragonborn':
+    'crystal-gem-dragonborn':
     {
-        'name': 'Metallic Dragonborn',
-        'weight': 25,
-        'enabled': false
+        'name': 'Crystal Gem Dragonborn',
+        'weight': 2,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Radiant)',
+                'description': 'Breath Weapon (Gem Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Gem Dragonborn)'
+            },
+            {
+                'name': 'Psionic Mind'
+            },
+            {
+                'name': 'Gem Flight',
+                'description': 'Gem Flight',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'radiant'
+        ]
     },
-    'ravenite-dragonborn':
+    'emerald-gem-dragonborn':
     {
-        'name': 'Ravenite Dragonborn',
-        'weight': 50,
-        'enabled': false
+        'name': 'Emerald Gem Dragonborn',
+        'weight': 2,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Psychic)',
+                'description': 'Breath Weapon (Gem Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Gem Dragonborn)'
+            },
+            {
+                'name': 'Psionic Mind'
+            },
+            {
+                'name': 'Gem Flight',
+                'description': 'Gem Flight',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'psychic'
+        ]
+    },
+    'sapphire-gem-dragonborn':
+    {
+        'name': 'Sapphire Gem Dragonborn',
+        'weight': 2,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Thunder)',
+                'description': 'Breath Weapon (Gem Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Gem Dragonborn)'
+            },
+            {
+                'name': 'Psionic Mind'
+            },
+            {
+                'name': 'Gem Flight',
+                'description': 'Gem Flight',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'thunder'
+        ]
+    },
+    'topaz-gem-dragonborn':
+    {
+        'name': 'Topaz Gem Dragonborn',
+        'weight': 2,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Necrotic)',
+                'description': 'Breath Weapon (Gem Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Gem Dragonborn)'
+            },
+            {
+                'name': 'Psionic Mind'
+            },
+            {
+                'name': 'Gem Flight',
+                'description': 'Gem Flight',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'necrotic'
+        ]
+    },
+    'brass-metallic-dragonborn':
+    {
+        'name': 'Brass Metallic Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Metallic Ancestry'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Breath Weapon (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Metallic Breath Weapon',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'fire'
+        ]
+    },
+    'bronze-metallic-dragonborn':
+    {
+        'name': 'Bronze Metallic Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Metallic Ancestry'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Breath Weapon (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Metallic Breath Weapon',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'lightning'
+        ]
+    },
+    'copper-metallic-dragonborn':
+    {
+        'name': 'Copper Metallic Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Metallic Ancestry'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Breath Weapon (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Metallic Breath Weapon',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'acid'
+        ]
+    },
+    'gold-metallic-dragonborn':
+    {
+        'name': 'Gold Metallic Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Metallic Ancestry'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Breath Weapon (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Metallic Breath Weapon',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'fire'
+        ]
+    },
+    'silver-metallic-dragonborn':
+    {
+        'name': 'Silver Metallic Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Metallic Ancestry'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Breath Weapon (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Draconic Resistance (Metallic Dragonborn)'
+            },
+            {
+                'name': 'Metallic Breath Weapon',
+                'description': 'Metallic Breath Weapon',
+                'level': 5
+            }
+        ],
+        'dr': [
+            'cold'
+        ]
+    },
+    'black-ravenite-dragonborn':
+    {
+        'name': 'Black Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Black)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'blue-ravenite-dragonborn':
+    {
+        'name': 'Blue Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Blue)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'brass-ravenite-dragonborn':
+    {
+        'name': 'Brass Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Brass)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'bronze-ravenite-dragonborn':
+    {
+        'name': 'Bronze Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Bronze)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'copper-ravenite-dragonborn':
+    {
+        'name': 'Copper Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Copper)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'gold-ravenite-dragonborn':
+    {
+        'name': 'Gold Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Gold)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'green-ravenite-dragonborn':
+    {
+        'name': 'Green Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Green)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'red-ravenite-dragonborn':
+    {
+        'name': 'Red Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Red)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'silver-ravenite-dragonborn':
+    {
+        'name': 'Silver Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (Silver)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
+    },
+    'white-ravenite-dragonborn':
+    {
+        'name': 'White Ravenite Dragonborn',
+        'weight': 5,
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Breath Weapon (White)',
+                'description': 'Breath Weapon (Dragonborn)'
+            },
+            {
+                'name': 'Vengeful Assault'
+            }
+        ]
     },
     'duergar':
     {
@@ -551,19 +1048,236 @@ export let allRaces = {
     {
         'name': 'Hill Dwarf',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Dwarven Resilience',
+                'description': 'Dwarven Resilience'
+            },
+            {
+                'name': 'Dwarven Combat Training'
+            },
+            {
+                'name': 'Stonecunning',
+                'description': 'Stonecunning'
+            },
+            {
+                'name': 'Dwarven Toughness'
+            }
+        ],
+        'languages': [
+            'dwarvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'special': function(actor, updates) {
+            let bonusHP = Math.ceil(chris.levelOrCR(actor));
+            let currentHP = updates.actor?.system?.attributes?.hp?.value ?? actor.system.attributes.hp.max;
+            setProperty(updates, 'actor.system.attributes.hp.max', currentHP + bonusHP);
+            setProperty(updates, 'actor.system.attributes.hp.value', currentHP + bonusHP);
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('battleaxe')) weaponProf.push('battleaxe');
+            if (!weaponProf.includes('handaxe')) weaponProf.push('handaxe');
+            if (!weaponProf.includes('lighthammer')) weaponProf.push('lighthammer');
+            if (!weaponProf.includes('warhammer')) weaponProf.push('warhammer');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+        }
     },
     'mountain-dwarf':
     {
         'name': 'Mountain Dwarf',
         'weight': 50,
-        'enabled': true
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Dwarven Resilience',
+                'description': 'Dwarven Resilience'
+            },
+            {
+                'name': 'Dwarven Combat Training'
+            },
+            {
+                'name': 'Stonecunning',
+                'description': 'Stonecunning'
+            },
+            {
+                'name': 'Dwarven Armor Training'
+            }
+        ],
+        'languages': [
+            'dwarvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'special': function(actor, updates) {
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('battleaxe')) weaponProf.push('battleaxe');
+            if (!weaponProf.includes('handaxe')) weaponProf.push('handaxe');
+            if (!weaponProf.includes('lighthammer')) weaponProf.push('lighthammer');
+            if (!weaponProf.includes('warhammer')) weaponProf.push('warhammer');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+            let armorProf = updates.actor?.system?.traits?.armorProf?.value ?? actor.system.traits?.armorProf?.value ? Array.from(actor.system.traits.armorProf.value) : [];
+            if (!armorProf.includes('lgt')) armorProf.push('lgt');
+            if (!armorProf.includes('med')) armorProf.push('med');
+            setProperty(updates, 'actor.system.traits.armorProf.value', armorProf);
+        }
     },
     'mark-of-warding-dwarf':
     {
         'name': 'Mark of Warding Dwarf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Dwarven Resilience',
+                'description': 'Dwarven Resilience'
+            },
+            {
+                'name': 'Dwarven Combat Training'
+            },
+            {
+                'name': 'Stonecunning',
+                'description': 'Stonecunning'
+            },
+            {
+                'name': 'Warder\'s Intuition',
+                'description': 'Warder\'s Intuition'
+            },
+            {
+                'name': 'Wards and Seals',
+                'description': 'Wards and Seals',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Alarm',
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Mage Armor',
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Arcane Lock',
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Alarm',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Armor of Agathys',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Arcane Lock',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Knock',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Glyph of Warding',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Magic Circle',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Leomund\'s Secret Chest',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Mordenkainen\'s Faithful Hound',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Antilife Shell',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ]
     },
     'earth-genasi':
     {
@@ -1152,7 +1866,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'dhampir';
+    let race = 'mark-of-warding-dwarf';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -1202,6 +1916,7 @@ async function humanoid(targetActor, updates, item) {
         setProperty(updates, 'actor.system.details.type.subtype', sourceActor.system.details.type.subtype);
     }
     let features = chris.getConfiguration(item, 'features') ?? 'merge';
+    let spells = chris.getConfiguration(item, 'spells') ?? true;
     if (features === 'merge' && sourceActor) {
         for (let item of sourceActor.items) {
             if (updates.embedded?.Item?.[item.name]) continue;
@@ -1214,6 +1929,10 @@ async function humanoid(targetActor, updates, item) {
         for (let item of sourceActor.items) setProperty(updates, 'embedded.Item.' + item.name, item);
     } else if (features === 'merge' && !sourceActor && allRaces[race].features) {
         for (let i of allRaces[race].features) {
+            if (i.spellcasting && !spells) continue;
+            if (i.level) {
+                if (i.level > chris.levelOrCR(targetActor)) continue;
+            }
             let featureData = await chris.getItemFromCompendium('chris-premades.CPR Race Features', i.name, true);
             if (!featureData) featureData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.name, true);
             if (!featureData) continue;
@@ -1223,8 +1942,25 @@ async function humanoid(targetActor, updates, item) {
             }
             setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
         }
+        for (let i of allRaces[race].spells) {
+            if (i.level) {
+                if (i.level > chris.levelOrCR(targetActor)) continue;
+            }
+            let spellData = await chris.getItemFromCompendium('chris-premades.CPR Spells', i.name, true);
+            if (!spellData) spellData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Spell Compendium'), i.name, true);
+            if (!spellData) continue;
+            if (i.uses) setProperty(spellData, 'system.uses', i.uses);
+            if (i.preparation) {
+                setProperty(spellData, 'system.preparation', i.preparation);
+                if (i.preparation.mode != 'prepared') spellData.name += ' (' + chris.titleCase(i.preparation.mode) + ')';
+            } else {
+                setProperty(spellData, 'system.preparation.prepared', true);
+            }
+            if (i.ability) setProperty(spellData, 'system.ability', i.ability);
+            setProperty(updates, 'embedded.Item.' + spellData.name, spellData);
+        }
     }
-    if (allRaces[race].special) await allRaces[race].special(token, sourceActor, features, updates);
+    if (allRaces[race].special) await allRaces[race].special(targetActor, updates);
     let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
     let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
     let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';
@@ -1324,4 +2060,6 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'token.sight', allRaces[race].sight);
         }
     }
+
+
 }

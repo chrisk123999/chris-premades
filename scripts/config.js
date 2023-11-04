@@ -1183,13 +1183,17 @@ export function setConfig() {
             'CPR - Randomizer': {
                 'checkbox': {
                     'humanoid': {
-                        'label': 'Random Humanoid:',
+                        'label': 'Disabled:',
                         'default': false
+                    },
+                    'spells': {
+                        'label': 'Include Spellcasting:',
+                        'default': true
                     }
                 },
                 'select': {
                     'abilities': {
-                        'label': 'Humanoid Ability Merge:',
+                        'label': 'Abilities:',
                         'default': 'upgrade',
                         'values': [
                             {'value': 'source', 'html': 'Keep Source'},
@@ -1199,7 +1203,7 @@ export function setConfig() {
                         ]
                     },
                     'skills': {
-                        'label': 'Humanoid Skill Merge:',
+                        'label': 'Skills:',
                         'default': 'upgrade',
                         'values': [
                             {'value': 'source', 'html': 'Keep Source'},
@@ -1209,7 +1213,7 @@ export function setConfig() {
                         ]
                     },
                     'avatar': {
-                        'label': 'Humanoid Avatar Merge:',
+                        'label': 'Avatar Image:',
                         'default': 'source',
                         'values': [
                             {'value': 'source', 'html': 'Use Source'},
@@ -1217,7 +1221,7 @@ export function setConfig() {
                         ]
                     },
                     'token': {
-                        'label': 'Humanoid Token Merge:',
+                        'label': 'Token Image:',
                         'default': 'source',
                         'values': [
                             {'value': 'source', 'html': 'Use Source'},
@@ -1225,7 +1229,7 @@ export function setConfig() {
                         ]
                     },
                     'features': {
-                        'label': 'Feature Merge',
+                        'label': 'Features',
                         'default': 'merge',
                         'values': [
                             {'value': 'source', 'html': 'Use Source'},
@@ -4864,6 +4868,14 @@ export function setConfig() {
             'Breath Weapon (Thunder)': {
                 'name': 'Breath Weapon (Thunder)',
                 'version': '0.8.13'
+            },
+            'Metallic Breath Weapon': {
+                'name': 'Metallic Breath Weapon',
+                'version': '0.8.16'
+            },
+            'Warder\'s Intuition': {
+                'name': 'Warder\'s Intuition',
+                'version': '0.8.16'
             }
         }
     });

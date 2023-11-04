@@ -1,7 +1,7 @@
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 export async function oldBreathWeapon({speaker, actor, token, character, item, args, scope, workflow}) {
-    let level = chris.levelOrCR(workflow.actor);
+    let level = Math.max(chris.levelOrCR(workflow.actor), 1);
     if (level < 6) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'oldBreathWeapon', 50);
     if (!queueSetup) return;

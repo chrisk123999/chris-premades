@@ -362,7 +362,7 @@ export let maneuvers = {
     'baitAndSwitch': baitAndSwitch,
     'refund': refund,
     'distractingStrike': distractingStrike,
-    'goadingTarget': goadingAttackTarget,
+    'goadingAttackTarget': goadingAttackTarget,
     'goadingAttack': goadingAttack,
     'grapplingStrike': grapple,
     'lungingAttack': lungingAttack,

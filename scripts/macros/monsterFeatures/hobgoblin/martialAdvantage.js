@@ -4,7 +4,6 @@ import {queue} from '../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
-    console.log('here');
     let feature = chris.getItem(workflow.actor, 'Martial Advantage');
     if (!feature) return;
     let turnCheck = chris.perTurnCheck(feature, 'feature', 'martialAdvantage', false);

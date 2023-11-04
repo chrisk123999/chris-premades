@@ -902,5 +902,8 @@ export let chris = {
     },
     'levelOrCR': function _levelOrCR(actor) {
         return actor.type === 'character' ? actor.system.details.level : actor.system.details.cr ?? 0;
+    },
+    'titleCase': function _titleCase(inputString) {
+        return inputString.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
     }
 }

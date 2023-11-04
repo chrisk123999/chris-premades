@@ -195,6 +195,7 @@ import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {metaMagic} from './macros/classFeatures/sorcerer/metaMagic.js';
+import {metallicBreathWeapon} from './macros/raceFeatures/dragonborn/metallic/metallicBreathWeapon.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
 import {mudMephit} from './macros/monsterFeatures/mudMephit/mudMephit.js';
@@ -624,6 +625,7 @@ export let macros = {
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
     'metaMagic': metaMagic,
+    'metallicBreathWeapon': metallicBreathWeapon,
     'mirrorImage': mirrorImage,
     'monster': monster,
     'moonbeam': moonbeam,
