@@ -1,5 +1,5 @@
-import {chris} from '../../../helperFunctions.js';
-import {translate} from '../../../translations.js';
+import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 export async function shove({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let skipCheck = false;

@@ -1,14 +1,14 @@
-import {grapple} from './grapple.js';
+import {grapple} from '../../actions/grapple.js';
 import {autoGrapple} from './autoGrapple.js';
 import {regeneration} from './regeneration.js';
-import {search} from './search.js';
-import {shove} from './shove.js';
-import {stealthCheck} from './stealth.js';
+import {search} from '../../actions/search.js';
+import {shove} from '../../actions/shove.js';
+import {stealthCheck} from '../../actions/stealth.js';
 import {swarmDamage} from './swarm.js';
 import {prone} from './prone.js';
-import {fall} from './fall.js';
-import {underwater} from './underwater.js';
-import {nonLethal} from './nonLethal.js';
+import {fall} from '../../actions/fall.js';
+import {underwater} from '../../actions/underwater.js';
+import {nonLethal} from '../../actions/nonLethal.js';
 import {parry} from './parry.js';
 export let generic = {
     'autoGrapple': autoGrapple,

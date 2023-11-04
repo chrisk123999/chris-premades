@@ -1225,6 +1225,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Aura of Life', 'Spells');
+    game.settings.register(moduleName, 'Check For Updates', {
+        'name': 'Check for Updates',
+        'hint': 'Display a message when an update is available.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true
+    });
+    addMenuSetting('Check For Updates', 'General');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

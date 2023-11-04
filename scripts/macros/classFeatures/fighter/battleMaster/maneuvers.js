@@ -1,7 +1,7 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
-import {grapple} from '../../../monsterFeatures/generic/grapple.js';
+import {grapple} from '../../../actions/grapple.js';
 async function baitAndSwitch({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();

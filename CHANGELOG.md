@@ -1,3 +1,9 @@
+# 0.8.17 Release:
+## New Content:
+- Actions: Check Cover
+## Update Notes:
+- Added Optional Update Checker
+  
 # 0.8.16 Release:
 ## New Content:
 - Metallic Dragonborn: Breath Weapon and Metallic Breath Weapon

@@ -1,6 +1,7 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
 import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSpirit.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
+import {actions} from './macros/actions/actions.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {animateDead} from './macros/spells/animateDead.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
@@ -159,7 +160,6 @@ import {healingLight} from './macros/classFeatures/warlock/celestial/healingLigh
 import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
-import {help} from './macros/mechanics/help.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
@@ -470,6 +470,7 @@ async function templateTrigger(macroName, token, trigger, reason) {
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
+    'actions': actions,
     'ancestralProtectors': ancestralProtectors,
     'animateDead': animateDead,
     'animatingPerformance': animatingPerformance,
@@ -596,7 +597,6 @@ export let macros = {
     'healingSpirit': healingSpirit,
     'heartOfTheStorm': heartOfTheStorm,
     'heatMetal': heatMetal,
-    'help': help,
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
     'hillStrike': hillStrike,

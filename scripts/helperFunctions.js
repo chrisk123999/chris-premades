@@ -157,7 +157,7 @@ export let chris = {
         }
         return spellMod;
     },
-    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description) {
+    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover) {
         let generatedInputs = [];
         let isFirst = true;
         let number = 1;
@@ -172,6 +172,11 @@ export let chris = {
                 } else {
                     name = i.document.name;
                 }
+            }
+            if (coverToken && !reverseCover) {
+                name += ' [' + chris.checkCover(coverToken, i, undefined, true) + ']';
+            } else if (coverToken) {
+                name += ' [' + chris.checkCover(i, coverToken, undefined, true) + ']';
             }
             let texture = i.document.texture.src;
             let html = `<img src="` + texture + `" id="` + i.id + `" style="width:40px;height:40px;vertical-align:middle;"><span> ` + name + `</span>`;
@@ -212,7 +217,7 @@ export let chris = {
                 'type': 'checkbox',
                 'options': true,
                 'value': true
-            })
+            });
         }
         if (description) generatedInputs.unshift({
             'label': description,
@@ -264,10 +269,11 @@ export let chris = {
             'render': dialogRender
         };
         let selection = await warpgate.menu({'inputs': generatedInputs, 'buttons': buttons}, config);
+        if (!selection.buttons) return {'buttons': false};
         if (description) selection.inputs?.shift();
         if (type != 'number' && type != 'select') {
             for (let i = 0; i < (!fixTargets ? selection.inputs.length : selection.inputs.length - 1); i++) {
-                if (selection.inputs[i]) selection.inputs[i] = generatedInputs[i].value;
+                if (selection.inputs[i]) selection.inputs[i] =  generatedInputs[description ? i + 1 : i].value;
             }
         }
         return selection;
@@ -615,7 +621,6 @@ export let chris = {
                 `;
             }
             content += `</form>`;
-            console.log(content);
             let height = (documents.length * 53 + 83);
             if (documents.length > 14 ) height = 850;
             dialog = new Dialog(
@@ -867,7 +872,6 @@ export let chris = {
         ditem.totalDamage = keptDamage;
     },
     'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user) {
-        console.log(user);
         let playerName = user.name;
         let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
         let message = '<hr>Waiting for a 3rd party reaction from:<br><b>' + playerName + '</b>';
@@ -905,5 +909,24 @@ export let chris = {
     },
     'titleCase': function _titleCase(inputString) {
         return inputString.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+    },
+    'checkCover': function _checkCover(token, target, item, displayName) {
+        let cover = MidiQOL.computeCoverBonus(token, target, item);
+        if (!displayName) return cover;
+        switch (cover) {
+            case 0:
+                return 'No Cover';
+            case 2:
+                return 'Half Cover';
+            case 5:
+                return 'Three-Quarters Cover';
+            case 999:
+                return 'Full Cover'
+            default:
+                return 'Unknown Cover';
+        }
+    },
+    'canSense': function _canSense(token, target) {
+        return MidiQOL.canSense(token, target);
     }
 }

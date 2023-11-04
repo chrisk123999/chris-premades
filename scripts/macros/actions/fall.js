@@ -1,4 +1,4 @@
-import {chris} from '../../../helperFunctions.js';
+import {chris} from '../../helperFunctions.js';
 export async function fall({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetToken = game.user.targets.first();
     function render(html) {

@@ -4173,19 +4173,19 @@ export function setConfig() {
             },
             'Fall': {
                 'name': 'Fall',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Grapple': {
                 'name': 'Grapple',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Help': {
                 'name': 'Help',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Hide': {
                 'name': 'Hide',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Ready Action': {
                 'name': 'Ready Action',
@@ -4197,11 +4197,11 @@ export function setConfig() {
             },
             'Search': {
                 'name': 'Search',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Shove': {
                 'name': 'Shove',
-                'version': '0.7.01'
+                'version': '0.8.17'
             },
             'Durable Magic': {
                 'name': 'Durable Magic',
@@ -4220,7 +4220,7 @@ export function setConfig() {
             },
             'Underwater': {
                 'name': 'Underwater',
-                'version': '0.7.03'
+                'version': '0.8.17'
             },
             'Squeeze': {
                 'name': 'Squeeze',
@@ -4876,6 +4876,10 @@ export function setConfig() {
             'Warder\'s Intuition': {
                 'name': 'Warder\'s Intuition',
                 'version': '0.8.16'
+            },
+            'Check Cover': {
+                'name': 'Check Cover',
+                'version': '0.8.17'
             }
         }
     });

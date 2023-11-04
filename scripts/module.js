@@ -33,6 +33,7 @@ import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTrigger
 import {translate} from './translations.js';
 import {troubleshoot} from './help.js';
 import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
+import {checkUpdate} from './update.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -160,6 +161,7 @@ Hooks.once('ready', async function() {
             Hooks.on('updateToken', macros.wardingBond.moveSource);
         }
         if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('updateToken', macros.compelledDuel.movement);
+        if (game.settings.get('chris-premades', 'Check For Updates')) checkUpdate();
     }
     await loadTriggers();
     if (game.settings.get('chris-premades', 'Condition Resistance')) {
@@ -264,7 +266,8 @@ let dev = {
     'applyEquipmentFlag': applyEquipmentFlag,
     'setItemName': setItemName,
     'removeFolderFlag': removeFolderFlag,
-    'setFolder': setFolder
+    'setFolder': setFolder,
+    'checkUpdate': checkUpdate
 }
 globalThis['chrisPremades'] = {
     constants,
