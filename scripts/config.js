@@ -4558,7 +4558,7 @@ export function setConfig() {
             },
             'Call the Hunt': {
                 'name': 'Call the Hunt',
-                'version': '0.7.33'
+                'version': '0.8.18'
             },
             'Fire Storm': {
                 'name': 'Fire Storm',

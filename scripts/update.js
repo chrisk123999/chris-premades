@@ -5,7 +5,7 @@ export async function checkUpdate() {
         let info = await reponse.json();
         let currentVersion = game.modules.get('chris-premades').version;
         if (currentVersion === '#{VERSION}#') return;
-        if (isNewerVersion(currentVersion, info.tag_name)) return;
+        if (!isNewerVersion(info.tag_name, currentVersion)) return;
         let body = info.body.replaceAll('\r\n\r\n', '<hr>')
             .replaceAll('\r\n', '<br>')
             .replaceAll('New Content:', '<b><u>New Content:</u></b>')

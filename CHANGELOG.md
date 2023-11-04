@@ -1,3 +1,8 @@
+# 0.8.18 Release:
+## Bug Fixes:
+- Call the Hunt: Bite
+- Update Checker
+  
 # 0.8.17 Release:
 ## New Content:
 - Actions: Check Cover

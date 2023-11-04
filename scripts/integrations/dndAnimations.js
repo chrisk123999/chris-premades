@@ -47,16 +47,16 @@ function playItem(item) {
 }
 async function attackDone(workflow) {
     let playOnDamage = game.settings.get('autoanimations', 'playonDamage');
-    if (workflow.item?.hasAreaTarget || (workflow.item?.hasDamage && playOnDamage)) return;
+    if (!workflow.item || workflow.item?.hasAreaTarget || (workflow.item?.hasDamage && playOnDamage)) return;
     playItem(workflow.item);
 }
 async function damageDone(workflow) {
     let playOnDamage = game.settings.get('autoanimations', 'playonDamage');
-    if (workflow.item?.hasAreaTarget || (!playOnDamage && workflow.item?.hasAttack)) return;
+    if (!workflow.item || workflow.item?.hasAreaTarget || (!playOnDamage && workflow.item?.hasAttack)) return;
     playItem(workflow.item);
 }
 async function rollDone(workflow) {
-    if (workflow.item?.hasAreaTarget || workflow.item?.hasAttack || workflow.item?.hasDamage) return;
+    if (!workflow.item || workflow.item?.hasAreaTarget || workflow.item?.hasAttack || workflow.item?.hasDamage) return;
     playItem(workflow.item);
 }
 export let dndAnimations = {
