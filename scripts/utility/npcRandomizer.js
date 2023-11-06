@@ -174,7 +174,7 @@ export let allRaces = {
                 'level': 3,
                 'uses': {
                     'max': 1,
-                    'per': 'day',
+                    'per': 'lr',
                     'recovery': '',
                     'value': 1
                 },
@@ -188,7 +188,7 @@ export let allRaces = {
                 'level': 5,
                 'uses': {
                     'max': 1,
-                    'per': 'day',
+                    'per': 'lr',
                     'recovery': '',
                     'value': 1
                 },
@@ -1169,7 +1169,7 @@ export let allRaces = {
                 'name': 'Alarm',
                 'uses': {
                     'max': 1,
-                    'per': 'day',
+                    'per': 'lr',
                     'recovery': '',
                     'value': 1
                 },
@@ -1182,7 +1182,7 @@ export let allRaces = {
                 'name': 'Mage Armor',
                 'uses': {
                     'max': 1,
-                    'per': 'day',
+                    'per': 'lr',
                     'recovery': '',
                     'value': 1
                 },
@@ -1195,7 +1195,7 @@ export let allRaces = {
                 'name': 'Arcane Lock',
                 'uses': {
                     'max': 1,
-                    'per': 'day',
+                    'per': 'lr',
                     'recovery': '',
                     'value': 1
                 },
@@ -1283,31 +1283,143 @@ export let allRaces = {
     {
         'name': 'Earth Genasi',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Earth Walk',
+                'description': 'Earth Walk'
+            },
+            {
+                'name': 'Merge with Stone',
+                'description': 'Merge with Stone',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Blade Ward',
+                'activation': {
+                    'condition': '',
+                    'cost': 1,
+                    'type': 'bonus'
+                },
+                'uses': {
+                    'max': '@prof',
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Blade Ward',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Pass without Trace',
+                'uses': {
+                    'max': 1,
+                    'per': 'day',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Pass without Trace',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            }
+        ]
     },
     'autumn-eladrin':
     {
         'name': 'Autumn Eladrin',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Autumn Eladrin',
+        'special': function (actor, updates) {
+            let level = chris.levelOrCR(actor);
+            let bonusDamageDice = Math.max(Math.ceil(level / 2), 1);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[psychic]', 'psychic']]);
+            setProperty(updates, 'embedded.Item.Longbow.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[psychic]', 'psychic']]);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.versatile', '1d10[slashing] + @mod ' + bonusDamageDice + 'd8[psychic]', 'psychic');
+            let averageDamage = bonusDamageDice * 4;
+            let descriptionLongsword = getProperty(updates, 'embedded.Item.Longsword.system.description.value')?.replace('22 (5d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            let descriptionLongbow = getProperty(updates, 'embedded.Item.Longbow.system.description.value')?.replace('22 (5d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            setProperty(updates, 'embedded.Item.Longsword.system.description.value', descriptionLongsword);
+            setProperty(updates, 'embedded.Item.Longbow.system.description.value', descriptionLongbow);
+        }
     },
     'winter-eladrin':
     {
         'name': 'Winter Eladrin',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Winter Eladrin',
+        'special': function (actor, updates) {
+            let level = chris.levelOrCR(actor);
+            let bonusDamageDice = Math.max(Math.floor(level /3), 1);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[cold]', 'cold']]);
+            setProperty(updates, 'embedded.Item.Longbow.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[cold]', 'cold']]);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.versatile', '1d10[slashing] + @mod ' + bonusDamageDice + 'd8[cold]', 'cold');
+            let averageDamage = bonusDamageDice * 4;
+            let descriptionLongsword = getProperty(updates, 'embedded.Item.Longsword.system.description.value')?.replace('13 (3d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            let descriptionLongbow = getProperty(updates, 'embedded.Item.Longbow.system.description.value')?.replace('13 (3d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            setProperty(updates, 'embedded.Item.Longsword.system.description.value', descriptionLongsword);
+            setProperty(updates, 'embedded.Item.Longbow.system.description.value', descriptionLongbow);
+        }
     },
     'spring-eladrin':
     {
         'name': 'Spring Eladrin',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Spring Eladrin',
+        'special': function (actor, updates) {
+            let level = chris.levelOrCR(actor);
+            let bonusDamageDice = Math.max(Math.ceil(level / 2), 1);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[psychic]', 'psychic']]);
+            setProperty(updates, 'embedded.Item.Longbow.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[psychic]', 'psychic']]);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.versatile', '1d10[slashing] + @mod ' + bonusDamageDice + 'd8[psychic]', 'psychic');
+            let averageDamage = bonusDamageDice * 4;
+            let descriptionLongsword = getProperty(updates, 'embedded.Item.Longsword.system.description.value')?.replace('22 (5d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            let descriptionLongbow = getProperty(updates, 'embedded.Item.Longbow.system.description.value')?.replace('22 (5d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            setProperty(updates, 'embedded.Item.Longsword.system.description.value', descriptionLongsword);
+            setProperty(updates, 'embedded.Item.Longbow.system.description.value', descriptionLongbow);
+        }
     },
     'summer-eladrin':
     {
         'name': 'Summer Eladrin',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Summer Eladrin',
+        'special': function (actor, updates) {
+            let level = chris.levelOrCR(actor);
+            let bonusDamageDice = Math.max(Math.floor(level /5), 1);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[fire]', 'fire']]);
+            setProperty(updates, 'embedded.Item.Longbow.system.damage.parts', [['1d8[slashing] + @mod', 'slashing'], [bonusDamageDice + 'd8[fire]', 'fire']]);
+            setProperty(updates, 'embedded.Item.Longsword.system.damage.versatile', '1d10[slashing] + @mod ' + bonusDamageDice + 'd8[fire]', 'fire');
+            let averageDamage = bonusDamageDice * 4;
+            let descriptionLongsword = getProperty(updates, 'embedded.Item.Longsword.system.description.value')?.replace('9 (2d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            let descriptionLongbow = getProperty(updates, 'embedded.Item.Longbow.system.description.value')?.replace('9 (2d8)', averageDamage + ' (' + bonusDamageDice + 'd8)');
+            setProperty(updates, 'embedded.Item.Longsword.system.description.value', descriptionLongsword);
+            setProperty(updates, 'embedded.Item.Longbow.system.description.value', descriptionLongbow);
+        }
     },
     'aereni-high-elf':
     {
@@ -1866,7 +1978,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'mark-of-warding-dwarf';
+    let race = 'summer-eladrin';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -1949,7 +2061,10 @@ async function humanoid(targetActor, updates, item) {
             let spellData = await chris.getItemFromCompendium('chris-premades.CPR Spells', i.name, true);
             if (!spellData) spellData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Spell Compendium'), i.name, true);
             if (!spellData) continue;
-            if (i.uses) setProperty(spellData, 'system.uses', i.uses);
+            if (i.uses) {
+                setProperty(spellData, 'system.uses', i.uses);
+                if (spellData.system.uses.max === '@prof') setProperty(spellData, 'system.uses.value', targetActor.system.attributes.prof);
+            }
             if (i.preparation) {
                 setProperty(spellData, 'system.preparation', i.preparation);
                 if (i.preparation.mode != 'prepared') spellData.name += ' (' + chris.titleCase(i.preparation.mode) + ')';
@@ -1960,7 +2075,6 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'embedded.Item.' + spellData.name, spellData);
         }
     }
-    if (allRaces[race].special) await allRaces[race].special(targetActor, updates);
     let conditionImmunity = chris.getConfiguration(item, 'conditionimmunity') ?? 'merge';
     let damageImmunity = chris.getConfiguration(item, 'damageimmunity') ?? 'merge';
     let damageResistance = chris.getConfiguration(item, 'damageresistance') ?? 'merge';
@@ -2060,6 +2174,7 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'token.sight', allRaces[race].sight);
         }
     }
+    if (allRaces[race].special) await allRaces[race].special(targetActor, updates);
 
 
 }

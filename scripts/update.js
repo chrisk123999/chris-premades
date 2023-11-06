@@ -14,8 +14,9 @@ export async function checkUpdate() {
             .replaceAll('Update Notes:', '<b><u>Update Notes:</u></b>');
         let message = '<hr>Chris\'s Premades update <b>' + info.tag_name + '</b> available!<hr>' + body;
         await ChatMessage.create({
-            speaker: {'alias': name},
-            content: message
+            'speaker': {'alias': name},
+            'content': message,
+            'whisper': [game.user.id],
         });
     } catch {};
 }

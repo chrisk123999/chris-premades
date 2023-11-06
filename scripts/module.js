@@ -12,7 +12,7 @@ import {dndAnimations} from './integrations/dndAnimations.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
 import {fixOrigin, itemDC} from './utility/effect.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
-import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags} from './info.js';
+import {info, removeFolderFlag, setCompendiumItemInfo, setFolder, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
@@ -267,7 +267,8 @@ let dev = {
     'setItemName': setItemName,
     'removeFolderFlag': removeFolderFlag,
     'setFolder': setFolder,
-    'checkUpdate': checkUpdate
+    'checkUpdate': checkUpdate,
+    'updateAllCompendiums': updateAllCompendiums
 }
 globalThis['chrisPremades'] = {
     constants,

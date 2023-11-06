@@ -66,7 +66,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
             ]
         ];
     }
-    let seconds = 600;
+    let seconds = 3600;
     if (levels >= 18) {
         bonuses = '+3';
         weaponData.system.attackBonus = '+3';

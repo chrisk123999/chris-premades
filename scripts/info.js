@@ -94,6 +94,14 @@ export async function removeFolderFlag(uuid) {
         'flags.-=cf': null
     });
 }
+export async function updateAllCompendiums() {
+    let packs = game.packs.filter(i => i.metadata.label.includes('CPR') && i.metadata.packageType === 'world');
+    for (let i of packs) {
+        await stripUnusedFlags(i.metadata.id);
+        await setCompendiumItemInfo(i.metadata.id);
+    }
+    return 'Done!';
+}
 export async function setFolder(monsterName, type) {
     let folderAPI = game.CF.FICFolderAPI;
     let allFolders = await folderAPI.loadFolders('world.cpr-monster-features');

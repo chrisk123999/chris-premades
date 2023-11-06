@@ -3601,19 +3601,19 @@ export function setConfig() {
             },
             'Genie\'s Vessel: Genie\'s Wrath (Dao)': {
                 'name': 'Genie\'s Vessel: Genie\'s Wrath (Dao)',
-                'version': '0.7.01'
+                'version': '0.8.19'
             },
             'Genie\'s Vessel: Genie\'s Wrath (Djinni)': {
                 'name': 'Genie\'s Vessel: Genie\'s Wrath (Djinni)',
-                'version': '0.7.01'
+                'version': '0.8.19'
             },
             'Genie\'s Vessel: Genie\'s Wrath (Efreeti)': {
                 'name': 'Genie\'s Vessel: Genie\'s Wrath (Efreeti)',
-                'version': '0.7.01'
+                'version': '0.8.19'
             },
             'Genie\'s Vessel: Genie\'s Wrath (Marid)': {
                 'name': 'Genie\'s Vessel: Genie\'s Wrath (Marid)',
-                'version': '0.7.01'
+                'version': '0.8.19'
             },
             'Hexblade\'s Curse': {
                 'name': 'Hexblade\'s Curse',
@@ -4503,7 +4503,7 @@ export function setConfig() {
             },
             'Lucky Footwork': {
                 'name': 'Lucky Footwork',
-                'version': '0.7.27'
+                'version': '0.8.19'
             },
             'Relentless': {
                 'name': 'Relentless',

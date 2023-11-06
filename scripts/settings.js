@@ -1155,7 +1155,7 @@ export function registerSettings() {
     });
     addMenuSetting('Colorize Build A Bonus', 'Module Integration');
     game.settings.register(moduleName, 'Colorize Dynamic Active Effects', {
-        'name': 'Colorize Build A Bonus Title Bar Button',
+        'name': 'Colorize Dynamic Active Effects Title Bar Button',
         'hint': 'Enabling this will make colorize the Dynamic Active Effects title bar button.',
         'scope': 'world',
         'config': false,

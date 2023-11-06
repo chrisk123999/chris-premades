@@ -2,7 +2,7 @@ import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
 import {queue} from './queue.js';
 async function setupFolder() {
-    let folder = game.folders.getName('Chris Premades');
+    let folder = game.folders.find(i => i.name === 'Chris Premades' && i.type === 'Actor');
     if (!folder) {
         folder = await Folder.create({
             'name': 'Chris Premades',

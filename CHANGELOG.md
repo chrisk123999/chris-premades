@@ -1,3 +1,10 @@
+# 0.8.19 Release:
+## Bug Fixes:
+- Tasha Summons
+- Hybrid Transformation
+- Genie's Vessel
+- Lucky Footwork
+  
 # 0.8.18 Release:
 ## Bug Fixes:
 - Call the Hunt: Bite
