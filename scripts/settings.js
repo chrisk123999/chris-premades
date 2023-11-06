@@ -20,6 +20,7 @@ import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
 import {squareTemplate} from './fixes/squareTemplate.js';
 import {colorizeDAETitleBarButton} from './integrations/dae.js';
+import {firearm} from './macros/mechanics/firearm.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1234,6 +1235,16 @@ export function registerSettings() {
         'default': true
     });
     addMenuSetting('Check For Updates', 'General');
+    game.settings.register(moduleName, 'Critical Role Firearm Support', {
+        'name': 'Critical Role Firearm Support',
+        'hint': 'Add firearm support to the D&D 5E system.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {firearm.setup(value)}
+    });
+    addMenuSetting('Critical Role Firearm Support', 'Mechanics');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

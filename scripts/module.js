@@ -34,6 +34,7 @@ import {translate} from './translations.js';
 import {troubleshoot} from './help.js';
 import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
 import {checkUpdate} from './update.js';
+import {firearm} from './macros/mechanics/firearm.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -259,6 +260,7 @@ Hooks.once('ready', async function() {
         Hooks.on('preCreateActiveEffect', macros.auraOfLife.effect);
         Hooks.on('updateActiveEffect', macros.auraOfLife.effect);
     }
+    if (game.settings.get('chris-premades', 'Critical Role Firearm Support')) firearm.setup(true);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

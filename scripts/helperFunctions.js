@@ -532,6 +532,9 @@ export let chris = {
     'getConfiguration': function _getConfiguration(item, key) {
         return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
     },
+    'setConfiguration': async function _setConfiguration(item, key, value) {
+        return await item.setFlag('chris-premades', 'configuration.' + key.toLowerCase().split(' ').join('-').toLowerCase(), value);
+    },
     'updateCombatant': async function _updateCombatant(combatant, updates) {
         if (game.user.isGM) {
             await combatant.update(updates);

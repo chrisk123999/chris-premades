@@ -1941,6 +1941,25 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Firearm (CR)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
             }
         },
         'automations': {
