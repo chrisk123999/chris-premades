@@ -133,10 +133,12 @@ import {fireShield} from './macros/spells/fireShield.js';
 import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStorm} from './macros/spells/fireStorm.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
+import {firearm} from './macros/mechanics/firearm.js';
 import {fly} from './macros/spells/fly.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
 import {formOfDread} from './macros/classFeatures/warlock/undead/formOfDread.js';
+import {formOfTheBeast} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
 import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/fragmentOfKrokulmar.js';
 import {frostFingers} from './macros/spells/frostFingers.js';
 import {frostStrike} from './macros/feats/strikeOfTheGiants/frostStrike.js';
@@ -203,6 +205,7 @@ import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddle
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
 import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
 import {nightwalker} from './macros/monsterFeatures/nightwalker/nightwalker.js';
+import {noConfiguration} from './macros/generic/noConfiguration.js';
 import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {oldBreathWeapon} from './macros/raceFeatures/dragonborn/oldBreathWeapon.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
@@ -296,6 +299,7 @@ import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thu
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {trance} from './macros/raceFeatures/elf/trance.js';
+import {trickShots} from './macros/classFeatures/fighter/gunslinger/trickShots.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {troll} from './macros/monsterFeatures/troll/troll.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
@@ -303,6 +307,7 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
+import {viciousIntent} from './macros/classFeatures/fighter/gunslinger/viciousIntent.js';
 import {vigorOfTheHillGiant} from './macros/feats/vigorOfTheHillGiant.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wandOfTheWarMage} from './macros/items/wandOfTheWarMage.js';
@@ -315,8 +320,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {formOfTheBeast} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
-import {firearm} from './macros/mechanics/firearm.js';
 export async function onHitMacro(workflow) {
     if (workflow.targets.size === 0) return;
     workflow.targets.forEach(async token => {
@@ -578,10 +581,12 @@ export let macros = {
     'fireShield': fireShield,
     'fireStorm': fireStorm,
     'fireStrike': fireStrike,
+    'firearm': firearm,
     'fly': fly,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
     'formOfDread': formOfDread,
+    'formOfTheBeast': formOfTheBeast,
     'frostFingers': frostFingers,
     'frostStrike': frostStrike,
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
@@ -634,6 +639,7 @@ export let macros = {
     'muddledMind': muddledMind,
     'mutagencraft': mutagencraft,
     'necroticShroud': necroticShroud,
+    'noConfiguration': noConfiguration,
     'oilOfSharpness': oilOfSharpness,
     'oldBreathWeapon': oldBreathWeapon,
     'onHit': onHit,
@@ -719,10 +725,12 @@ export let macros = {
     'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'trance': trance,
+    'trickShots': trickShots,
     'turnUndead': turnUndead,
     'twilightSanctuary': twilightSanctuary,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
+    'viciousIntent': viciousIntent,
     'vigorOfTheHillGiant': vigorOfTheHillGiant,
     'vortexWarp': vortexWarp,
     'wandOfTheWarMage': wandOfTheWarMage,
@@ -733,7 +741,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'formOfTheBeast': formOfTheBeast,
-    'firearm': firearm
+    'zoneOfTruth': zoneOfTruth
 }

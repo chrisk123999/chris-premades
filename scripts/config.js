@@ -33,6 +33,10 @@ export function setConfig() {
             ],
             'Planar Wanderer': [
                 'Planar Wanderer: Planar Adaptation'
+            ],
+            'Gunslinger': [
+                'Reload Firearm',
+                'Repair Firearm'
             ]
         },
         'removedItems': {
@@ -4899,6 +4903,111 @@ export function setConfig() {
             'Check Cover': {
                 'name': 'Check Cover',
                 'version': '0.8.17'
+            },
+            'Adept Marksman': {
+                'name': 'Adept Marksman',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Bullying Shot': {
+                'name': 'Bullying Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Dazing Shot': {
+                'name': 'Dazing Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Deadeye Shot': {
+                'name': 'Deadeye Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Disarming Shot': {
+                'name': 'Disarming Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Forceful Shot': {
+                'name': 'Forceful Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Winging Shot': {
+                'name': 'Winging Shot',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Hemorrhaging Critical': {
+                'name': 'Hemorrhaging Critical',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Quickdraw': {
+                'name': 'Quickdraw',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Reload Firearm': {
+                'name': 'Reload Firearm',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Repair Firearm': {
+                'name': 'Repair Firearm',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Vicious Intent': {
+                'name': 'Vicious Intent',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Firearm (CR)': {
+                'name': 'Firearm (CR)',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Lightning Reload': {
+                'name': 'Lightning Reload',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Rapid Repair': {
+                'name': 'Rapid Repair',
+                'version': '0.8.20',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
             }
         }
     });

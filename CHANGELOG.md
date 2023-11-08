@@ -1,3 +1,10 @@
+# 0.8.20 Release:
+## New Content:
+- Gunslinger Fighter: Adept Marksman, Hemorrhaging Critical, Lightning Reload, Quickdraw, Rapid Repair, Vicious Intent, Bullying Shot, Dazing Shot, Deadeye Shot, Disarming Shot, Forceful Shot, Winging Shot, Repair Firearm, and Reload Firearm
+- Item: Firearm (CR)
+## Update Notes:
+- Piercing Shot and Violent Shot will be in a future update.
+  
 # 0.8.19 Release:
 ## Bug Fixes:
 - Tasha Summons
