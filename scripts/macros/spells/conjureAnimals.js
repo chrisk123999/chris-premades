@@ -20,7 +20,7 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
         return;
     }
     let userId = game.settings.get('chris-premades', 'LastGM');
-    if (game.settings.get('chris-premades', 'Player Choses Conjures')) userId = game.userId;
+    if (game.settings.get('chris-premades', 'Player Chooses Conjures')) userId = game.userId;
     if (!userId) return;
     let sourceActors = await chris.remoteDocumentsDialog(userId, 'Select Summons (Max ' + (totalSummons * 2 / selection) + ')', actors);
     if (!sourceActors) return;

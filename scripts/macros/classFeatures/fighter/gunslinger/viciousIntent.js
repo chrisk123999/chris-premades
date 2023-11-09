@@ -4,7 +4,10 @@ export async function viciousIntent({speaker, actor, token, character, item, arg
     let queueSetup = await queue.setup(workflow.item.uuid, 'viciousIntent', 50);
     if (!queueSetup) return;
     let critical = duplicate(workflow.item.system.critical);
-    if (critical.threshold <= 19) return;
+    if ((critical.threshold ?? 20) <= 19) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     critical.threshold = 19;
     workflow.item = workflow.item.clone({'system.critical': critical}, {'keepId': true});
     queue.remove(workflow.item.uuid);

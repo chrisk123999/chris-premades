@@ -12,7 +12,7 @@ export async function conjureElemental({speaker, actor, token, character, item, 
         return;
     }
     let userId = game.settings.get('chris-premades', 'LastGM');
-    if (game.settings.get('chris-premades', 'Player Choses Conjures')) userId = game.userId;
+    if (game.settings.get('chris-premades', 'Player Chooses Conjures')) userId = game.userId;
     if (!userId) return;
     let sourceActors = await chris.remoteDocumentDialog(userId, 'Select Summon', actors);
     if (!sourceActors) return;

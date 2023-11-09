@@ -1,3 +1,11 @@
+# 0.8.21 Release:
+## New Content:
+- Gunslinger Fighter: Piercing Shot and Violent Shot
+- Spell: Thunderwave
+## Bug Fixes:
+- Vicious Intent
+- Spelling and grammar in the settings (Thanks BarovianBadass)
+  
 # 0.8.20 Release:
 ## New Content:
 - Gunslinger Fighter: Adept Marksman, Hemorrhaging Critical, Lightning Reload, Quickdraw, Rapid Repair, Vicious Intent, Bullying Shot, Dazing Shot, Deadeye Shot, Disarming Shot, Forceful Shot, Winging Shot, Repair Firearm, and Reload Firearm

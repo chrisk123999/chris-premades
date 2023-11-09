@@ -295,6 +295,7 @@ import {teleport} from './macros/spells/teleport.js';
 import {tentacleOfTheDeeps} from './macros/classFeatures/warlock/fathomless/tentacleOfTheDeeps.js';
 import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderStep} from './macros/spells/thunderStep.js';
+import {thunderWave} from './macros/spells/thunderwave.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
@@ -722,6 +723,7 @@ export let macros = {
     'tentacleOfTheDeeps': tentacleOfTheDeeps,
     'thornWhip': thornWhip,
     'thunderStep': thunderStep,
+    'thunderWave': thunderWave,
     'thunderboltStrike': thunderboltStrike,
     'tollTheDead': tollTheDead,
     'trance': trance,

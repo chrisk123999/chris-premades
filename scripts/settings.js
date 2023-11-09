@@ -26,7 +26,7 @@ export let humanoidSettings = {};
 export function registerSettings() {
     game.settings.register(moduleName, 'Automation Verification', {
         'name': 'Automation Verification',
-        'hint': 'When enabled the module will verify the automation is up to date and has the correct settings enabled.',
+        'hint': 'When enabled, the module will verify the automation is up to date and has the correct settings enabled.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
@@ -139,15 +139,15 @@ export function registerSettings() {
         'default': false
     });
     addMenuSetting('Tasha Initiative', 'Summons');
-    game.settings.register(moduleName, 'Player Choses Conjures', {
-        'name': 'Player choses creatures for conjure spells',
+    game.settings.register(moduleName, 'Player Chooses Conjures', {
+        'name': 'Player choose creatures for conjure spells',
         'hint': 'Enabling this will have players chose the creatures summoned for conjure spells, instead of the Sage Advice ruling that the DM choses the creatures.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
         'default': false
     });
-    addMenuSetting('Player Choses Conjures', 'Summons');
+    addMenuSetting('Player Chooses Conjures', 'Summons');
     game.settings.register(moduleName, 'Effect Auras', {
         'name': 'Effect Auras',
         'hint': 'This setting allows certain macros from this module to apply effect auras.',
@@ -318,7 +318,7 @@ export function registerSettings() {
     addMenuSetting('Combat Listener', 'General');
     game.settings.register(moduleName, 'Rest Listener', {
         'name': 'Short / Long Rest Listener',
-        'hint': 'Enabling this allows the certain macros to function on short and long rests.',
+        'hint': 'Enabling this allows certain macros to function on short and long rests.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
@@ -812,7 +812,7 @@ export function registerSettings() {
     addMenuSetting('Manual Rolls', 'Manual Rolling');
     game.settings.register(moduleName, 'Ignore GM', {
         'name': 'Ignore GM Rolls',
-        'hint': 'Do no prompt when there are no player owned tokens involved.',
+        'hint': 'Do not prompt when there are no player owned tokens involved.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
@@ -908,7 +908,7 @@ export function registerSettings() {
     addMenuSetting('Summons Folder', 'Summons');
     game.settings.register(moduleName, 'Item Features', {
         'name': 'Item Features',
-        'hint': 'When enabled, certain items from this module will be able add additional features to your character sheet when an item is equipped or attuned.',
+        'hint': 'When enabled, certain items from this module will be able to add additional features to your character sheet when an item is equipped or attuned.',
         'scope': 'world',
         'config': false,
         'type': Boolean,

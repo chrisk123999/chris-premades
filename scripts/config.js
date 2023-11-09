@@ -4983,7 +4983,7 @@ export function setConfig() {
             },
             'Vicious Intent': {
                 'name': 'Vicious Intent',
-                'version': '0.8.20',
+                'version': '0.8.21',
                 'settings': [
                     'Critical Role Firearm Support'
                 ]
@@ -5008,6 +5008,17 @@ export function setConfig() {
                 'settings': [
                     'Critical Role Firearm Support'
                 ]
+            },
+            'Violent Shot': {
+                'name': 'Violent Shot',
+                'version': '0.8.21',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Thunderwave': {
+                'name': 'Thunderwave',
+                'version': '0.8.21'
             }
         }
     });

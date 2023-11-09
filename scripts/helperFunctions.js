@@ -41,7 +41,7 @@ export let chris = {
             effectData.name = effectData.label;
             delete effectData.label;
         }
-        if (game.user.isGM) {
+        if (chris.firstOwner(actor).id === game.user.id) {
             await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         } else {
 //            await MidiQOL.socket().executeAsGM('createEffects', {'actorUuid': actor.uuid, 'effects': [effectData]});
