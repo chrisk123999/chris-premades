@@ -134,6 +134,7 @@ import {fireSnake} from './macros/monsterFeatures/fireSnake/fireSnake.js';
 import {fireStorm} from './macros/spells/fireStorm.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
 import {firearm} from './macros/mechanics/firearm.js';
+import {flameBlade} from './macros/spells/flameBlade.js';
 import {fly} from './macros/spells/fly.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
@@ -165,6 +166,7 @@ import {heatMetal} from './macros/spells/heatMetal.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
+import {hiddenStep} from './macros/raceFeatures/firbolg/hiddenStep.js';
 import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
 import {hobgoblin} from './macros/monsterFeatures/hobgoblin/hobgoblin.js';
 import {holyNimbus} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
@@ -583,6 +585,7 @@ export let macros = {
     'fireStorm': fireStorm,
     'fireStrike': fireStrike,
     'firearm': firearm,
+    'flameBlade': flameBlade,
     'fly': fly,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,
@@ -607,6 +610,7 @@ export let macros = {
     'heatMetal': heatMetal,
     'hex': hex,
     'hexbladesCurse': hexbladesCurse,
+    'hiddenStep': hiddenStep,
     'hillStrike': hillStrike,
     'holyNimbus': holyNimbus,
     'holyWeapon': holyWeapon,

@@ -5019,6 +5019,17 @@ export function setConfig() {
             'Thunderwave': {
                 'name': 'Thunderwave',
                 'version': '0.8.21'
+            },
+            'Flame Blade': {
+                'name': 'Flame Blade',
+                'version': '0.8.22',
+                'mutation': {
+                    'self': 'Flame Blade'
+                }
+            },
+            'Hidden Step': {
+                'name': 'Hidden Step',
+                'version': '0.8.22'
             }
         }
     });

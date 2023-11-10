@@ -1489,7 +1489,7 @@ export let allRaces = {
             },
             {
                 'name': 'Spells of the Mark',
-                'description': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Warding Dwarf)',
                 'spellcasting': true
             },
             {
@@ -1508,7 +1508,8 @@ export let allRaces = {
                 'preparation': {
                     'mode': 'innate',
                     'prepared': true
-                }
+                },
+                'ability': 'int'
             },
             {
                 'name': 'Mage Armor',
@@ -1521,7 +1522,8 @@ export let allRaces = {
                 'preparation': {
                     'mode': 'innate',
                     'prepared': true
-                }
+                },
+                'ability': 'int'
             },
             {
                 'name': 'Arcane Lock',
@@ -1535,7 +1537,8 @@ export let allRaces = {
                     'mode': 'innate',
                     'prepared': true
                 },
-                'level': 3
+                'level': 3,
+                'ability': 'int'
             },
             {
                 'name': 'Alarm',
@@ -1848,6 +1851,9 @@ export let allRaces = {
         'abilities': {
             'dex': 2,
             'int': 1
+        },
+        'skills': {
+            'prc': 1
         }
     },
     'aereni-wood-elf':
@@ -1901,6 +1907,9 @@ export let allRaces = {
         'abilities': {
             'dex': 2,
             'wis': 1
+        },
+        'skills': {
+            'per': 1
         }
     },
     'drow':
@@ -1914,55 +1923,699 @@ export let allRaces = {
     {
         'name': 'High Elf',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (High Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Elf Weapon Training'
+            },
+            {
+                'name': 'Cantrip (High Elf)',
+                'rename': 'Cantrip',
+                'spellcasting': true
+            }
+        ],
+        'spellcasting': {
+            'wizard': {
+                'cantrip': 1
+            }
+        },
+        'languages': [
+            'elvish'
+        ],
+        'extraLanguages': [
+            {
+                'name': 'any',
+                'count': 1
+            }
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'dex': 2,
+            'int': 1
+        },
+        'special': function(actor, updates) {
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('longsword')) weaponProf.push('longsword');
+            if (!weaponProf.includes('shortsword')) weaponProf.push('shortsword');
+            if (!weaponProf.includes('shortbow')) weaponProf.push('shortbow');
+            if (!weaponProf.includes('longbow')) weaponProf.push('longbow');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+        },
+        'skills': {
+            'prc': 1
+        }
     },
     'mark-of-shadow-elf':
     {
         'name': 'Mark of Shadow Elf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Mark of Shadow Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Cunning Intuition',
+                'description': 'Cunning Intuition'
+            },
+            {
+                'name': 'Shape Shadows',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Shadow Elf)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Minor Illusion'
+            },
+            {
+                'name': 'Invisibility',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'cha'
+            },
+            {
+                'name': 'Disguise Self',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Silent Image',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Darkness',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Pass without Trace',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Clairvoyance',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Major Image',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Greater Invisibility',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Hallucinatory Terrain',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Mislead',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'languages': [
+            'elvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'dex': 2,
+            'cha': 1
+        },
+        'skills': {
+            'prc': 1
+        }
     },
     'pallid-elf':
     {
         'name': 'Pallid Elf',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Pallid Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Incisive Sense',
+                'description': 'Incisive Sense'
+            },
+            {
+                'name': 'Blessing of the Moon Weaver',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Light',
+                'ability': 'wis'
+            },
+            {
+                'name': 'Sleep',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Invisibility',
+                'level': 5,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'target': {
+                    'type': 'self',
+                    'units': null,
+                    'value': null,
+                    'width': null
+                },
+                'range': {
+                    'long': null,
+                    'units': 'self',
+                    'value': null
+                },
+                'ability': 'wis'
+            }
+        ],
+        'languages': [
+            'elvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        },
+        'skills': {
+            'prc': 1
+        }
     },
     'valenar-high-elf':
     {
         'name': 'Valenar High Elf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Valenar High Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Valenar Elf'
+            },
+            {
+                'name': 'Cantrip (High Elf)',
+                'rename': 'Cantrip',
+                'spellcasting': true
+            }
+        ],
+        'spellcasting': {
+            'wizard': {
+                'cantrip': 1
+            }
+        },
+        'languages': [
+            'elvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'dex': 2,
+            'int': 1
+        },
+        'special': function(actor, updates) {
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('scimitar')) weaponProf.push('scimitar');
+            if (!weaponProf.includes('longbow')) weaponProf.push('longbow');
+            if (!weaponProf.includes('shortbow')) weaponProf.push('shortbow');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+        },
+        'skills': {
+            'prc': 1
+        }
     },
     'valenar-wood-elf':
     {
         'name': 'Valenar Wood Elf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Valenar Wood Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Valenar Elf'
+            },
+            {
+                'name': 'Fleet of Foot'
+            },
+            {
+                'name': 'Mask of the Wild'
+            }
+        ],
+        'languages': [
+            'elvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'extraSkills': {
+            'expertise': {
+                'name': 'any',
+                'count': 1
+            }
+        },
+        'movement': {
+            'walk': 35
+        },
+        'skills': {
+            'prc': 1
+        },
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        },
+        'skills': {
+            'per': 1
+        },
+        'special': function(actor, updates) {
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('scimitar')) weaponProf.push('scimitar');
+            if (!weaponProf.includes('longbow')) weaponProf.push('longbow');
+            if (!weaponProf.includes('shortbow')) weaponProf.push('shortbow');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+        }
     },
     'wood-elf':
     {
         'name': 'Wood Elf',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Keen Senses'
+            },
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Wood Elf)'
+            },
+            {
+                'name': 'Trance'
+            },
+            {
+                'name': 'Elf Weapon Training'
+            },
+            {
+                'name': 'Fleet of Foot'
+            },
+            {
+                'name': 'Mask of the Wild'
+            }
+        ],
+        'languages': [
+            'elvish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'extraSkills': {
+            'expertise': {
+                'name': 'any',
+                'count': 1
+            }
+        },
+        'movement': {
+            'walk': 35
+        },
+        'skills': {
+            'prc': 1
+        },
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        },
+        'skills': {
+            'per': 1
+        },
+        'special': function(actor, updates) {
+            let weaponProf = updates.actor?.system?.traits?.weaponProf?.value ?? actor.system.traits?.weaponProf?.value ? Array.from(actor.system.traits.weaponProf.value) : [];
+            if (!weaponProf.includes('longsword')) weaponProf.push('longsword');
+            if (!weaponProf.includes('shortsword')) weaponProf.push('shortsword');
+            if (!weaponProf.includes('shortbow')) weaponProf.push('shortbow');
+            if (!weaponProf.includes('longbow')) weaponProf.push('longbow');
+            setProperty(updates, 'actor.system.traits.weaponProf.value', weaponProf);
+        }
     },
     'fairy':
     {
         'name': 'Fairy',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fairy Magic',
+                'spellcasting': true
+            },
+            {
+                'name': 'Flight (Fairy)'
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Faerie Fire',
+                'level': 3,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Faerie Fire',
+                'level': 3,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Enlarge/Reduce',
+                'level': 5,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Enlarge/Reduce',
+                'level': 5,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            }
+        ],
+        'size': 'small',
+        'movement': {
+            'fly': 30
+        }
     },
     'firbolg':
     {
         'name': 'Firbolg',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Firbolg Magic',
+                'spellcasting': true
+            },
+            {
+                'name': 'Hidden Step',
+                'description': 'Hidden Step'
+            },
+            {
+                'name': 'Powerful Build'
+            },
+            {
+                'name': 'Speech of Beast and Leaf'
+            }
+        ],
+        'special': function (actor, updates) {
+            let uses = actor.system.attributes.prof;
+            setProperty(updates, 'embedded.Item.Hidden Step.system.uses.value', uses);
+            setProperty(updates, 'embedded.Item.Hidden Step.system.uses.max', uses);
+        },
+        'spells': [
+            {
+                'name': 'Detect Magic',
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Disguise Self',
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Detect Magic',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Disguise Self',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            }
+        ],
+        'languages': [
+            'elvish',
+            'giant'
+        ],
+        'abilities': {
+            'wis': 2,
+            'str': 1
+        }
     },
     'fire-genasi':
     {
         'name': 'Fire Genasi',
         'weight': 25,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fire Resistance'
+            },
+            {
+                'name': 'Reach to the Blaze',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Produce Flame'
+            },
+            {
+                'name': 'Burning Hands',
+                'level': 3,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Flame Blade',
+                'level': 5,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Burning Hands',
+                'level': 3,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Flame Blade',
+                'level': 5,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            }
+        ],
+        'dr': [
+            'fire'
+        ],
+        'languages': [
+            'primordial',
+            'ignan'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'con': 2,
+            'int': 1
+        }
     },
     'giff':
     {
@@ -2449,7 +3102,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'aereni-wood-elf';
+    let race = 'fire-genasi';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -2531,8 +3184,7 @@ async function humanoid(targetActor, updates, item) {
                 if (i.level) {
                     if (i.level > chris.levelOrCR(targetActor)) continue;
                 }
-                let spellData = await chris.getItemFromCompendium('chris-premades.CPR Spells', i.name, true);
-                if (!spellData) spellData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Spell Compendium'), i.name, true);
+                let spellData = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Spell Compendium'), i.name, true);
                 if (!spellData) continue;
                 if (i.uses) {
                     setProperty(spellData, 'system.uses', i.uses);
@@ -2546,6 +3198,8 @@ async function humanoid(targetActor, updates, item) {
                 }
                 if (i.ability) setProperty(spellData, 'system.ability', i.ability);
                 setProperty(updates, 'embedded.Item.' + spellData.name, spellData);
+                if (i.target) setProperty(spellData, 'system.target', i.target);
+                if (i.range) setProperty(spellData, 'system.range', i.range);
             }
         }
         if (allRaces[race].skills) {
@@ -2666,6 +3320,17 @@ async function humanoid(targetActor, updates, item) {
             setProperty(updates, 'actor.system.attributes.senses', allRaces[race].senses);
             setProperty(updates, 'actor.prototypeToken.sight', allRaces[race].sight);
             setProperty(updates, 'token.sight', allRaces[race].sight);
+        }
+    }
+    if (allRaces[race].size) {
+        switch (allRaces[race].size) {
+            case 'small':
+                setProperty(updates, 'actor.system.traits.size', 'sm');
+                setProperty(updates, 'token.texture.scaleX', 0.8);
+                setProperty(updates, 'token.texture.scaleY', 0.8);
+                setProperty(updates, 'actor.prototypeToken.texture.scaleX', 0.8)
+                setProperty(updates, 'actor.prototypeToken.texture.scaleY', 0.8)
+                break;
         }
     }
     if (allRaces[race].special) await allRaces[race].special(targetActor, updates);

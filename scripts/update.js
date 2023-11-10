@@ -1,4 +1,5 @@
 export async function checkUpdate() {
+    if (game.messages.contents.find(i => i.flags?.['chris-premades']?.update)) return;
     try {
         let reponse = await fetch('https://api.github.com/repos/chrisk123999/chris-premades/releases/latest');
         if (!reponse.ok) return;
@@ -17,6 +18,11 @@ export async function checkUpdate() {
             'speaker': {'alias': name},
             'content': message,
             'whisper': [game.user.id],
+            'flags': {
+                'chris-premades': {
+                    'update': true
+                }
+            }
         });
     } catch {};
 }

@@ -1,3 +1,8 @@
+# 0.8.22 Release:
+## New Content:
+- Firbolg: Hidden Step
+- Spell: Flame Blade
+  
 # 0.8.21 Release:
 ## New Content:
 - Gunslinger Fighter: Piercing Shot and Violent Shot
