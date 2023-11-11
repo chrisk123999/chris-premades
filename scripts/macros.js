@@ -291,6 +291,7 @@ import {summonShadowspawn} from './macros/spells/summonShadowspawn.js';
 import {summonUndead} from './macros/spells/summonUndead.js';
 import {summonWildfireSpirit} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
 import {summon} from './macros/generic/summon.js';
+import {synapticStatic} from './macros/spells/synapticStatic.js';
 import {tashasOtherworldlyGuise} from './macros/spells/tashasOtherworldlyGuise.js';
 import {telekinetic} from './macros/feats/telekinetic.js';
 import {teleport} from './macros/spells/teleport.js';
@@ -720,6 +721,7 @@ export let macros = {
     'summonShadowspawn': summonShadowspawn,
     'summonUndead': summonUndead,
     'summonWildfireSpirit': summonWildfireSpirit,
+    'synapticStatic': synapticStatic,
     'tashasOtherworldlyGuise': tashasOtherworldlyGuise,
     'telekentic': telekinetic,
     'teleport': teleport,

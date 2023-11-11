@@ -3495,7 +3495,7 @@ export function setConfig() {
             },
             'Favored by the Gods': {
                 'name': 'Favored by the Gods',
-                'version': '0.7.01'
+                'version': '0.8.23'
             },
             'Metamagic - Careful Spell': {
                 'name': 'Metamagic - Careful Spell',
@@ -3964,7 +3964,7 @@ export function setConfig() {
             },
             'Starlight Step': {
                 'name': 'Starlight Step',
-                'version': '0.7.01'
+                'version': '0.8.23'
             },
             'Vampiric Bite': {
                 'name': 'Vampiric Bite',
@@ -5030,6 +5030,13 @@ export function setConfig() {
             'Hidden Step': {
                 'name': 'Hidden Step',
                 'version': '0.8.22'
+            },
+            'Synaptic Static': {
+                'name': 'Synaptic Static',
+                'version': '0.8.23',
+                'settings': [
+                    'Active Effect Additions'
+                ]
             }
         }
     });

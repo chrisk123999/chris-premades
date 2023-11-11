@@ -1,3 +1,10 @@
+# 0.8.23 Release:
+## New Content:
+- Spell: Synaptic Static
+## Bug Fixes:
+- Starlight Step
+- Favored by the Gods
+  
 # 0.8.22 Release:
 ## New Content:
 - Firbolg: Hidden Step

@@ -2621,7 +2621,8 @@ export let allRaces = {
     {
         'name': 'Giff',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'monster': 'Giff'
     },
     'githyanki':
     {
