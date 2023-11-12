@@ -1,3 +1,7 @@
+# 0.8.25 Release:
+## Bug Fixes:
+- Thunderwave
+  
 # 0.8.24 Release:
 ## Bug Fixes:
 - Trick Shot

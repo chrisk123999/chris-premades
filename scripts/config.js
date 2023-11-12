@@ -5018,7 +5018,7 @@ export function setConfig() {
             },
             'Thunderwave': {
                 'name': 'Thunderwave',
-                'version': '0.8.21'
+                'version': '0.8.25'
             },
             'Flame Blade': {
                 'name': 'Flame Blade',
