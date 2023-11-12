@@ -5,7 +5,7 @@ async function runFeature(workflow, featureName) {
     if (workflow.hitTargets.size != 1 || workflow.item.system.baseItem != 'firearmCR') return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', featureName, false);
     if (!featureData) return;
-    featureData.system.description.value = chris.getItemDescription(featureName);
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', featureName);
     let originItem = chris.getItem(workflow.actor, featureName);
     if (!originItem) return;
     featureData._id = originItem.id;

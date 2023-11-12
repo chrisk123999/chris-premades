@@ -1,3 +1,7 @@
+# 0.8.24 Release:
+## Bug Fixes:
+- Trick Shot
+  
 # 0.8.23 Release:
 ## New Content:
 - Spell: Synaptic Static
