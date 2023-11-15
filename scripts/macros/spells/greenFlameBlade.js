@@ -13,7 +13,7 @@ export async function greenFlameBlade({speaker, actor, token, character, item, a
     if (!selection) [selection] = await chris.selectDocument('Attack with what weapon?', weapons);
     if (!selection) return;
     let level = chris.levelOrCR(workflow.actor);
-    let diceNumber = 1 + Math.floor((level + 1) / 6);
+    let diceNumber = Math.floor((level + 1) / 6);
     let weapon;
     if (level > 4) {
         let weaponData = duplicate(selection.toObject());

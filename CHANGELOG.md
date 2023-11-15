@@ -1,3 +1,8 @@
+# 0.8.27 Release:
+## Bug Fixes:
+- Booming Blade
+- Green-Flame Blade
+  
 # 0.8.26 Release:
 ## New Content:
 - Spells: Booming Blade and Green-Flame Blade
