@@ -1,3 +1,10 @@
+# 0.8.26 Release:
+## New Content:
+- Spells: Booming Blade and Green-Flame Blade
+## Bug Fixes:
+- Check Cover
+- Firearm Critical
+  
 # 0.8.25 Release:
 ## Bug Fixes:
 - Thunderwave

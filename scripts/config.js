@@ -1964,6 +1964,29 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Booming Blade': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'blue',
+                        'values': [
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'blue02', 'html': 'Alternate Blue'},
+                            {'value': 'dark_purple', 'html': 'Dark Purple'},
+                            {'value': 'dark_red', 'html': 'Dark Red'},
+                            {'value': 'green', 'html': 'Green'},
+                            {'value': 'green02', 'html': 'Alternate Green'},
+                            {'value': 'orange', 'html': 'Orange'},
+                            {'value': 'red', 'html': 'Red'},
+                            {'value': 'purple', 'html': 'Purple'},
+                            {'value': 'yellow', 'html': 'Yellow'},
+                            {'value': 'blue', 'html': 'Blue'},
+                            {'value': 'random', 'html': 'Random'},
+                            {'value': 'none', 'html': 'None'},
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -5037,6 +5060,18 @@ export function setConfig() {
                 'settings': [
                     'Active Effect Additions'
                 ]
+            },
+            'Booming Blade': {
+                'name': 'Booming Blade',
+                'version': '0.8.26',
+                'settings': [
+                    'Booming Blade'
+                ],
+                'hasAnimation': true
+            },
+            'Green-Flame Blade': {
+                'name': 'Green-Flame Blade',
+                'version': '0.8.26'
             }
         }
     });

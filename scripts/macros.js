@@ -37,6 +37,7 @@ import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
+import {boomingBlade} from './macros/spells/boomingBlade.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
@@ -152,6 +153,7 @@ import {graspOfAvarice} from './macros/feats/graspOfAvarice.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 import {grease} from './macros/spells/grease.js';
+import {greenFlameBlade} from './macros/spells/greenFlameBlade.js';
 import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
@@ -325,7 +327,7 @@ import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPr
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export async function onHitMacro(workflow) {
-    if (workflow.targets.size === 0) return;
+    if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
         let flags = token.actor.flags['chris-premades']?.feature?.onHit;
         if (!flags) return;
@@ -513,6 +515,7 @@ export let macros = {
     'blight': blight,
     'blink': blink,
     'bloodSpear': bloodSpear,
+    'boomingBlade': boomingBlade,
     'brandOfCastigation': brandOfCastigation,
     'breathOfTheDragon': breathOfTheDragon,
     'breathWeapon': breathWeapon,
@@ -599,6 +602,7 @@ export let macros = {
     'graspOfHadar': graspOfHadar,
     'graveTouched': graveTouched,
     'grease': grease,
+    'greenFlameBlade': greenFlameBlade,
     'grimHarvest': grimHarvest,
     'grovelthrash': grovelthrash,
     'guardianOfFaith': guardianOfFaith,

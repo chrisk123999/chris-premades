@@ -5,7 +5,7 @@ export async function checkCover({speaker, actor, token, character, item, args, 
     let reverseCover = workflow.targets.has(workflow.token);
     let targets;
     if (!workflow.targets.size || (workflow.targets.size === 1 && workflow.targets.has(workflow.token))) {
-        targets = game.canvas.scene.tokens.map(i => i.object).filter(j => chris.canSense(workflow.token, j) && j.document.uuid != workflow.token.document.uuid);
+        targets = game.canvas.scene.tokens.map(i => i.object).filter(j => chris.canSense(workflow.token, j) && j.document.uuid != workflow.token.document.uuid && !chris.findEffect(j.actor, 'Dead') && !chris.findEffect(j.actor, 'Unconscious'));
     } else {
         targets = Array.from(workflow.targets);
     }

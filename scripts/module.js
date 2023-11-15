@@ -261,6 +261,7 @@ Hooks.once('ready', async function() {
         Hooks.on('updateActiveEffect', macros.auraOfLife.effect);
     }
     if (game.settings.get('chris-premades', 'Critical Role Firearm Support')) firearm.setup(true);
+    if (game.settings.get('chris-premades', 'Booming Blade')) Hooks.on('updateToken', macros.boomingBlade.moved);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

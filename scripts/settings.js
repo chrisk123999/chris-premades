@@ -1226,6 +1226,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Aura of Life', 'Spells');
+    game.settings.register(moduleName, 'Booming Blade', {
+        'name': 'Booming Blade Automation',
+        'hint': 'Enabling this allows the automation of the Booming Blade spell via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('updateToken', macros.boomingBlade.moved);
+            } else {
+                Hooks.off('updateToken', macros.boomingBlade.moved);
+            }
+        }
+    });
+    addMenuSetting('Booming Blade', 'Spells');
     game.settings.register(moduleName, 'Check For Updates', {
         'name': 'Check for Updates',
         'hint': 'Display a message when an update is available.',

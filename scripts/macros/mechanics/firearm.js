@@ -135,6 +135,7 @@ async function grit(workflow) {
     ui.notifications.info('Grit regained! (+' + regain + ')');
 }
 async function critical(workflow) {
+    if (!workflow.item) return;
     let baseItem = workflow.item.system.baseItem;
     if (baseItem != 'firearmCR') return;
     if (!workflow.isCritical || !workflow.damageRoll || workflow.targets.size != 1) return;
