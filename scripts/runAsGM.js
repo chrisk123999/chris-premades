@@ -7,6 +7,8 @@ async function updateCombatant(tokenId, updates) {
 async function createEffect(actorUuid, effectData) {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
+    if (actor instanceof TokenDocument) actor = actor.actor;
+    if (!actor) return;
     await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
 }
 async function removeEffect(effectUuid) {

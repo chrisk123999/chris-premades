@@ -1,3 +1,7 @@
+# 0.8.29 Release:
+## Bug Fixes:
+- Fixed effect creation for non-gms
+  
 # 0.8.28 Release:
 ## New Content:
 - Spells: Antagonize and Spray of Cards
