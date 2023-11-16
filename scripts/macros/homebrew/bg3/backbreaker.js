@@ -13,7 +13,7 @@ export async function backbreaker({speaker, actor, token, character, item, args,
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'backbreaker', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Backbreaker?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Backbreaker?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

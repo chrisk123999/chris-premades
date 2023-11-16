@@ -14,7 +14,7 @@ export async function mirrorImage(workflow) {
     let roll = await new Roll('1d20').roll({async: true});
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: 'Mirror Image'
     });
     let rollTotal = roll.total;
@@ -38,7 +38,7 @@ export async function mirrorImage(workflow) {
     let duplicateAC = 10 + targetActor.system.abilities.dex.mod;
     if (workflow.attackTotal >= duplicateAC) {
         ChatMessage.create({
-            speaker: {alias: name},
+            speaker: {'alias': name},
             content: 'Attack hit a duplicate and destroyed it.'
         });
         if (duplicates === 1) {
@@ -64,7 +64,7 @@ export async function mirrorImage(workflow) {
         }
     } else {
         ChatMessage.create({
-            speaker: {alias: name},
+            speaker: {'alias': name},
             content: 'Attack targeted a duplicate and missed.'
         });
     }

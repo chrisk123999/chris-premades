@@ -1,3 +1,4 @@
+import {chris} from './helperFunctions.js';
 async function updateCombatant(tokenId, updates) {
     let combatant = game.combat?.combatants?.get(tokenId);
     if (!combatant) return;
@@ -23,4 +24,12 @@ export let runAsGM = {
     'updateEffect': updateEffect,
     'createEffect': createEffect,
     'removeEffect': removeEffect
+}
+async function rollItem(itemUuid, config, options) {
+    let item = await fromUuid(itemUuid);
+    if (!item) return;
+    return await chris.rollItem(item, config, options);
+}
+export let runAsUser = {
+    'rollItem': rollItem
 }

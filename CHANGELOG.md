@@ -1,3 +1,20 @@
+# 0.8.28 Release:
+## New Content:
+- Spells: Antagonize and Spray of Cards
+- Feat: Cartomancer
+## Bug Fixes:
+- Enhanced Weapon
+- Radiant Weapon
+- Repeating Shot
+- Returning Weapon
+- Vicious Intent
+- Breath of the Dragon
+- BG3 Weapon Actions
+- Breath Weapon
+- Metallic Breath Weapon
+- Breath Weapon (Legacy)
+- Tasha's Otherworldly Guise
+  
 # 0.8.27 Release:
 ## Bug Fixes:
 - Booming Blade

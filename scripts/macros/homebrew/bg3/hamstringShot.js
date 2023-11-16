@@ -24,7 +24,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'hamstringShot', 450);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Hamstring Shot?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Hamstring Shot?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

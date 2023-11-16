@@ -21,7 +21,7 @@ import {registerSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {rest} from './utility/rest.js';
-import {runAsGM} from './runAsGM.js';
+import {runAsGM, runAsUser} from './runAsGM.js';
 import {setConfig} from './config.js';
 import {settingButton} from './settingsMenu.js';
 import {setupJournalEntry} from './journal.js';
@@ -56,6 +56,7 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('updateEffect', runAsGM.updateEffect);
     socket.register('createEffect', runAsGM.createEffect);
     socket.register('removeEffect', runAsGM.removeEffect);
+    socket.register('rollItem', runAsUser.rollItem);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {

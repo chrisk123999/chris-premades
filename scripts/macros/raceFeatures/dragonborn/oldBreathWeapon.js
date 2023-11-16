@@ -9,5 +9,7 @@ export async function oldBreathWeapon({speaker, actor, token, character, item, a
     let parts = duplicate(workflow.item.system.damage.parts);
     parts[0][0] = dice + 'd6[' + parts[0][1] + ']';
     workflow.item = workflow.item.clone({'system.damage.parts': parts}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }

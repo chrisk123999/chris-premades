@@ -895,7 +895,7 @@ export let chris = {
         }
     },
     'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
-        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage && m.user.id === game.user.id);
         if (lastMessage) await lastMessage.delete();
     },
     'lastGM': function _lastGM() {
@@ -931,5 +931,35 @@ export let chris = {
     },
     'canSense': function _canSense(token, target) {
         return MidiQOL.canSense(token, target);
+    },
+    'gmDialogMessage': async function _gmDialogMessage() {
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.gmDialogMessage);
+        let message = '<hr>Waiting for GM dialogue selection...';
+        if (lastMessage) {
+            await lastMessage.update({'content': message});
+        } else {
+            ChatMessage.create({
+                'speaker': {'alias': name},
+                'content': message,
+                'whisper': game.users.filter(u => u.isGM).map(u => u.id),
+                'blind': false,
+                'flags': {
+                    'chris-premades': {
+                        'gmDialogMessage': true
+                    }
+                }
+            });
+        }
+    },
+    'clearGMDialogMessage': async function _clearThirdPartyReactionMessage() {
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.gmDialogMessage && m.user.id === game.user.id);
+        if (lastMessage) await lastMessage.delete();
+    },
+    'rollItem': async function _rollItem(item, config, options) {
+        return await MidiQOL.completeItemUse(item, config, options);
+    },
+    'remoteRollItem': async function _remoteRollItem(item, config, options, userId) {
+        if (chris.firstOwner(item.actor).id === userId) return await chris.rollItem(item, config, options);
+        return await socket.executeAsUser('rollItem', userId, item.uuid, config, options);
     }
 }

@@ -4469,75 +4469,75 @@ export function setConfig() {
             },
             'Backbreaker': {
                 'name': 'Backbreaker',
-                'version': '0.7.30'
+                'version': '0.8.28'
             },
             'Brace': {
                 'name': 'Brace',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Cleave': {
                 'name': 'Cleave',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Concussive Smash': {
                 'name': 'Concussive Smash',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Maiming Strike': {
                 'name': 'Maiming Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Flourish': {
                 'name': 'Flourish',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Heartstopper': {
                 'name': 'Heartstopper',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Lacerate': {
                 'name': 'Lacerate',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Piercing Strike': {
                 'name': 'Piercing Strike',
-                'version': '0.7.45'
+                'version': '0.8.28'
             },
             'Piercing Shot': {
                 'name': 'Piercing Shot',
-                'version': '0.7.45'
+                'version': '0.8.28'
             },
             'Pommel Strike': {
                 'name': 'Pommel Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Prepare': {
                 'name': 'Prepare',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Rush Attack': {
                 'name': 'Rush Attack',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Tenacity': {
                 'name': 'Tenacity',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Topple': {
                 'name': 'Topple',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Hamstring Shot': {
                 'name': 'Hamstring Shot',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Mobile Shot': {
                 'name': 'Mobile Shot',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Weakening Strike': {
                 'name': 'Weakening Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Tasha\'s Otherworldly Guise': {
                 'name': 'Tasha\'s Otherworldly Guise',
@@ -5072,6 +5072,14 @@ export function setConfig() {
             'Green-Flame Blade': {
                 'name': 'Green-Flame Blade',
                 'version': '0.8.26'
+            },
+            'Spray of Cards': {
+                'name': 'Spray of Cards',
+                'version': '0.8.28'
+            },
+            'Antagonize': {
+                'name': 'Antagonize',
+                'version': '0.8.28'
             }
         }
     });

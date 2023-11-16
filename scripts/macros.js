@@ -5,6 +5,7 @@ import {actions} from './macros/actions/actions.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {animateDead} from './macros/spells/animateDead.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
+import {antagonize} from './macros/spells/antagonize.js';
 import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 import {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcaneWard.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
@@ -47,6 +48,7 @@ import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {burningHands} from './macros/spells/burningHands.js';
 import {callLightning} from './macros/spells/callLightning.js';
 import {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
+import {cartomancer} from './macros/feats/cartomancer.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
@@ -485,6 +487,7 @@ export let macros = {
     'ancestralProtectors': ancestralProtectors,
     'animateDead': animateDead,
     'animatingPerformance': animatingPerformance,
+    'antagonize': antagonize,
     'arcaneJolt': arcaneJolt,
     'arcaneWard': arcaneWard,
     'armorModel': armorModel,
@@ -522,6 +525,7 @@ export let macros = {
     'burningHands': burningHands,
     'callLightning': callLightning,
     'callTheHunt': callTheHunt,
+    'cartomancer': cartomancer,
     'chainLightning': chainLightning,
     'charmAnimalsAndPlants': charmAnimalsAndPlants,
     'charmPerson': charmPerson,

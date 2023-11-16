@@ -12,6 +12,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         ability = 'str';
     }
     workflow.item = workflow.item.clone({'system.save.ability': ability}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 async function save({speaker, actor, token, character, item, args, scope, workflow}) {
