@@ -35,6 +35,7 @@ import {troubleshoot} from './help.js';
 import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
 import {checkUpdate} from './update.js';
 import {firearm} from './macros/mechanics/firearm.js';
+import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -250,6 +251,7 @@ Hooks.once('ready', async function() {
         Hooks.on('renderActorSheet5e', buildABonus.actorTitleBarButtons);
     }
     if (game.settings.get('chris-premades', 'Colorize Dynamic Active Effects')) Hooks.on('renderItemSheet', colorizeDAETitleBarButton);
+    if (game.settings.get('chris-premades', 'Colorize Template Macro')) Hooks.on('renderItemSheet', templateMacroTitleBarButton);
     if (game.settings.get('chris-premades', 'D&D5E Animations Sounds')) {
         dndAnimations.sortAutoRec();
         Hooks.on('midi-qol.AttackRollComplete', dndAnimations.attackDone);

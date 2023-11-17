@@ -132,6 +132,9 @@ export function setConfig() {
                 'Form of the Beast: Claws',
                 'Form of the Beast: Tail',
                 'Form of the Beast: Tail (reaction)'
+            ],
+            'Cartomancer: Hidden Ace - Imbue Card': [
+                'Cartomancer: Hidden Ace - Flourish Imbued Card'
             ]
         },
         'restrictedItems': {
@@ -5080,6 +5083,13 @@ export function setConfig() {
             'Antagonize': {
                 'name': 'Antagonize',
                 'version': '0.8.28'
+            },
+            'Cartomancer: Hidden Ace - Imbue Card': {
+                'name': 'Cartomancer: Hidden Ace - Imbue Card',
+                'version': '0.8.30',
+                'mutation': {
+                    'self': 'Cartomancer'
+                }
             }
         }
     });

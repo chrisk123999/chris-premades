@@ -1,3 +1,9 @@
+# 0.8.30 Release:
+## Bug Fixes:
+- Cartomancer
+## Update Notes:
+- Support for D&D system version 2.4.0 will be in a future release.
+  
 # 0.8.29 Release:
 ## Bug Fixes:
 - Fixed effect creation for non-gms

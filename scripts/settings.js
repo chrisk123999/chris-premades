@@ -21,6 +21,7 @@ import {dndAnimations} from './integrations/dndAnimations.js';
 import {squareTemplate} from './fixes/squareTemplate.js';
 import {colorizeDAETitleBarButton} from './integrations/dae.js';
 import {firearm} from './macros/mechanics/firearm.js';
+import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -1171,6 +1172,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Colorize Dynamic Active Effects', 'Module Integration');
+    game.settings.register(moduleName, 'Colorize Template Macro', {
+        'name': 'Colorize Template Macro Title Bar Button',
+        'hint': 'Enabling this will make colorize the Template Macro title bar button.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('renderItemSheet', templateMacroTitleBarButton);
+            } else {
+                Hooks.off('renderItemSheet', templateMacroTitleBarButton);
+            }
+        }
+    });
+    addMenuSetting('Colorize Template Macro', 'Module Integration');
     game.settings.register(moduleName, 'D&D5E Animations Sounds', {
         'name': 'D&D5E Animations Sounds',
         'hint': 'Play sounds from the D&D5E Animations module (when available).',

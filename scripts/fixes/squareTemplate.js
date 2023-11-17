@@ -1,6 +1,7 @@
 //Copied and updated from DF Template Enhancements
 function patch() {
     if (game.modules.get('df-templates')?.active) return;
+    if (isNewerVersion(game.system.version, '2.3.1')) return;
     let path = 'MeasuredTemplate.prototype._getRectShape';
     if (isNewerVersion(game.version, '11')) path = 'MeasuredTemplate.getRectShape';
     libWrapper.register('chris-premades', path, MeasuredTemplate_getRectShape, 'OVERRIDE');
