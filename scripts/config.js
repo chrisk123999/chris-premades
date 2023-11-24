@@ -214,6 +214,30 @@ export function setConfig() {
                 'removedItems': [],
                 'additionalItems': [],
                 'priority': 0
+            },
+            'Mental Discipline 1': {
+                'originalName': 'Mental Discipline',
+                'requiredClass': null,
+                'requiredSubclass': null,
+                'requiredRace': 'Kalashtar',
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Mental Discipline (Kalashtar)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
+            },
+            'Mental Discipline 2': {
+                'originalName': 'Mental Discipline',
+                'requiredClass': null,
+                'requiredSubclass': null,
+                'requiredRace': 'Githzerai',
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Mental Discipline (Githzerai)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
             }
         },
         'correctedItems': {
@@ -4046,10 +4070,6 @@ export function setConfig() {
                 'name': 'Dual Mind',
                 'version': '0.7.01'
             },
-            'Mental Discipline': {
-                'name': 'Mental Discipline',
-                'version': '0.7.01'
-            },
             'Hungry Jaws': {
                 'name': 'Hungry Jaws',
                 'version': '0.7.01'
@@ -5090,7 +5110,19 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Cartomancer'
                 }
-            }
+            },
+            'Astral Knowledge': {
+                'name': 'Astral Knowledge',
+                'version': '0.8.31'
+            },
+            'Mental Discipline (Githzerai)': {
+                'name': 'Mental Discipline (Githzerai)',
+                'version': '0.8.31'
+            },
+            'Mental Discipline (Kalashtar)': {
+                'name': 'Mental Discipline (Kalashtar)',
+                'version': '0.8.31'
+            },
         }
     });
 }

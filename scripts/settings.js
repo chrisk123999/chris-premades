@@ -18,7 +18,6 @@ import {cast} from './macros/animations/cast.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
-import {squareTemplate} from './fixes/squareTemplate.js';
 import {colorizeDAETitleBarButton} from './integrations/dae.js';
 import {firearm} from './macros/mechanics/firearm.js';
 import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
@@ -1209,22 +1208,6 @@ export function registerSettings() {
         }
     });
     addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
-    game.settings.register(moduleName, 'Fix Square Templates', {
-        'name': 'Fix Square Templates',
-        'hint': 'Patches square templates to allow rotation.',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': false,
-        'onChange': value => {
-            if (value) {
-                squareTemplate.patch();
-            } else {
-                squareTemplate.unpatch();
-            }
-        }
-    });
-    addMenuSetting('Fix Square Templates', 'Mechanics');
     game.settings.register(moduleName, 'Aura of Life', {
         'name': 'Aura of Life Spell Automation',
         'hint': 'Enabling this allows the automation of the Aura of Life spell via the use of Foundry hooks.',

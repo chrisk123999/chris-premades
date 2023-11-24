@@ -2628,19 +2628,196 @@ export let allRaces = {
     {
         'name': 'Githyanki',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Astral Knowledge',
+                'description': 'Astral Knowledge'
+            },
+            {
+                'name': 'Githyanki Psionics',
+                'spellcasting': true
+            },
+            {
+                'name': 'Psychic Resilience'
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Mage Hand'
+            },
+            {
+                'name': 'Jump',
+                'level': 3,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Misty Step',
+                'level': 5,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Jump',
+                'level': 3,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Misty Step',
+                'level': 5,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            }
+        ],
+        'dr': [
+            'psychic'
+        ],
+        'languages': [
+            'gith'
+        ],
+        'abilities': {
+            'int': 1,
+            'str': 2
+        }
     },
     'githzerai':
     {
         'name': 'Githzerai',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Mental Discipline (Githzerai)',
+                'description': 'Mental Discipline (Githzerai)'
+            },
+            {
+                'name': 'Githyanki Psionics',
+                'spellcasting': true
+            },
+            {
+                'name': 'Psychic Resilience'
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Mage Hand'
+            },
+            {
+                'name': 'Shield',
+                'level': 3,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Detect Thoughts',
+                'level': 5,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                }
+            },
+            {
+                'name': 'Shield',
+                'level': 3,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Detect Thoughts',
+                'level': 5,
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                }
+            }
+        ],
+        'dr': [
+            'psychic'
+        ],
+        'languages': [
+            'gith'
+        ],
+        'abilities': {
+            'int': 1,
+            'wis': 2
+        }
     },
     'forest-gnome':
     {
         'name': 'Forest Gnome',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Natural Illusionist',
+                'spellcasting': true
+            },
+            {
+                'name': 'Speak with Small Beasts'
+            },
+            {
+                'name': 'Gnome Cunning',
+                'description': 'Gnome Cunning'
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Minor Illusion',
+                'ability': 'int'
+            }
+        ],
+        'languages': [
+            'gnomish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'walk': 25
+        },
+        'size': 'small'
     },
     'mark-of-scribing-gnome':
     {
@@ -3103,7 +3280,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'fire-genasi';
+    let race = 'forest-gnome';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {

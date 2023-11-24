@@ -25,7 +25,6 @@ import {runAsGM, runAsUser} from './runAsGM.js';
 import {setConfig} from './config.js';
 import {settingButton} from './settingsMenu.js';
 import {setupJournalEntry} from './journal.js';
-import {squareTemplate} from './fixes/squareTemplate.js';
 import {summons} from './utility/summons.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
@@ -62,80 +61,7 @@ Hooks.once('socketlib.ready', async function() {
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
         let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
-        let currentVersion = 8;
-        if (oldVersion < currentVersion && oldVersion === 0) {
-            let message = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.35 or higher.</p><hr><p><b>All previously added items from this module on actors will need to be replaced to avoid errors.</b></p><hr><p>The CPR Macros folder is no longer needed and is safe to delete.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 1);
-            oldVersion = 1;
-        }
-        if (oldVersion < currentVersion && oldVersion === 1) {
-            let message2 = '<hr><p>This update to Chris\'s Premades requires the following items to be updated if you are using them:</p><hr><p>Aura of Protection, Aura of Courage, and Aura of Purity.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 2);
-            oldVersion = 2;
-        }
-        if (oldVersion < currentVersion && oldVersion === 2) {
-            let message2 = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.36 or higher.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 3);
-            oldVersion = 3;
-        }
-        if (oldVersion < currentVersion && oldVersion === 3) {
-            let message2 = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.45 or higher.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 4);
-            oldVersion = 4;
-        }
-        if (oldVersion < currentVersion && oldVersion === 4) {
-            let message2 = '<hr><p>This update to Chris\'s Premades requires you to be using Warpgate version 1.17.2 or higher.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 5);
-            oldVersion = 5;
-        }
-        if (oldVersion < currentVersion && oldVersion === 5) {
-            let message2 = '<hr><p>This update to Chris\'s Premades requires you to be using Midi-Qol version 10.0.46 or higher.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 6);
-            oldVersion = 6;
-        }
-        if (oldVersion < currentVersion && oldVersion === 6) {
-            let message2 = '<hr><p>This update to Chris\'s Premades added version checking to all automations.  It is recommended to re-apply all automations.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 7);
-            oldVersion = 7;
-        }
-        if (oldVersion < currentVersion && oldVersion === 7) {
-            let message2 = '<hr><p>This update to Chris\'s Premades has reset the additional compendiums setting to default. You may wish to reconfigure it.</p>';
-            ChatMessage.create({
-                speaker: {alias: name},
-                content: message2
-            });
-            await game.settings.set('chris-premades', 'Breaking Version Change', 8);
-            await game.settings.set('chris-premades', 'Additional Compendiums', ['midi-srd.Midi SRD Feats', 'midi-srd.Midi SRD Spells', 'midi-srd.Midi SRD Items', 'midi-qol.midiqol-sample-items']);
-            oldVersion = 8;
-        }
+        let currentVersion = 9;
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
         if (game.modules.get('itemacro')?.active) {
@@ -258,7 +184,6 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.DamageRollComplete', dndAnimations.damageDone);
         Hooks.on('midi-qol.RollComplete', dndAnimations.rollDone);
     }
-    if (game.settings.get('chris-premades', 'Fix Square Templates')) squareTemplate.patch();
     if (game.settings.get('chris-premades', 'Aura of Life')) {
         Hooks.on('preCreateActiveEffect', macros.auraOfLife.effect);
         Hooks.on('updateActiveEffect', macros.auraOfLife.effect);

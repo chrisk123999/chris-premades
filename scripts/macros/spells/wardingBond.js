@@ -144,7 +144,7 @@ async function moveTarget(token, changes) {
     if (!bondTokenUuid) return;
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
-    await token.object._animation;
+    await token.object?._animation;
     let distance = chris.getDistance(token, sourceToken);
     if (distance <= 60) return;
     let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', constants.yesNo);

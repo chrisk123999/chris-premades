@@ -1,3 +1,14 @@
+# 0.9.0 Release:
+## New Content:
+- Githyanki: Astral Knowledge
+- Githzerai: Mental Discipline
+## Bug Fixes:
+- Template Effects
+- Effect Auras
+## Update Notes:
+- V10 Foundry support has been dropped.
+- Support for D&D system version 2.4.0.
+  
 # 0.8.30 Release:
 ## Bug Fixes:
 - Cartomancer

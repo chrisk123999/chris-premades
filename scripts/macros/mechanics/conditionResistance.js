@@ -37,7 +37,7 @@ export async function conditionResistanceEarly(workflow) {
 }
 export async function conditionResistanceLate(workflow) {
     for (let i=0; cleanUpList.length > i; i++) {
-        let effect = cleanUpList[i].effects.find(eff => eff.label === 'Condition Advantage');
+        let effect = cleanUpList[i].effects.find(eff => eff.name === 'Condition Advantage');
         if (!effect) continue;
         await chris.removeEffect(effect);
     }

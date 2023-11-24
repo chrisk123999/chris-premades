@@ -133,20 +133,9 @@ async function updateItem(itemDocument) {
         let itemActor = itemDocument.actor;
         let monsterName = itemActor.name;
         let sourceActor = game.actors.get(itemActor.id);
-        let monsterFolder;
+        let monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
         foundCompendiumName = 'Chris\'s Premades';
         if (sourceActor) monsterName = sourceActor.name;
-        if (!isNewerVersion(game.version, '11.293')) {
-            if (!game.modules.get('compendium-folders')?.active) {
-                ui.notifications.warn('Compendium Folders module is required for this feature in v10!');
-                return;
-            }
-            let folderAPI = game.CF.FICFolderAPI;
-            let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
-            monsterFolder = allFolders.find(f => f.name === monsterName);
-        } else {
-            monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
-        }
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;

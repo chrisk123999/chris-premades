@@ -94,7 +94,7 @@ async function moved(token, changes) {
     if (!changes.x && !changes.y && !changes.elevation) return;
     let effect = token.actor.effects.find(i => i.flags['chris-premades']?.spell?.boomingBlade);
     if (!effect) return;
-    await token.object._animation;
+    await token.object?._animation;
     let selection = await chris.dialog(effect.label, constants.yesNo, 'Did ' + token.actor.name + ' move willingly?');
     if (!selection) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Booming Blade - Movement', false);

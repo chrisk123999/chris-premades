@@ -33,18 +33,16 @@ export let chris = {
         );
     },
     'findEffect': function _findEffect(actor, name) {
-        if (isNewerVersion(game.version, '11.293')) return actor.effects.getName(name);
-        return actor.effects.find(eff => eff.label === name);
+        return actor.effects.getName(name);
     },
     'createEffect': async function _createEffect(actor, effectData) {
-        if (isNewerVersion(game.version, '11.293') && effectData.label) {
+        if (effectData.label) {
             effectData.name = effectData.label;
             delete effectData.label;
         }
         if (chris.firstOwner(actor).id === game.user.id) {
             await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         } else {
-//            await MidiQOL.socket().executeAsGM('createEffects', {'actorUuid': actor.uuid, 'effects': [effectData]});
             await socket.executeAsGM('createEffect', actor.uuid, effectData);
         }
     },
@@ -52,7 +50,6 @@ export let chris = {
         if (chris.firstOwner(effect).id === game.user.id) {
             await effect.delete();
         } else {
-//            await MidiQOL.socket().executeAsGM('removeEffects', {'actorUuid': effect.parent.uuid, 'effects': [effect.id]});
             await socket.executeAsGM('removeEffect', effect.uuid);
         }
     },
@@ -61,7 +58,6 @@ export let chris = {
             await effect.update(updates);
         } else {
             updates._id = effect.id;
-//            await MidiQOL.socket().executeAsGM('updateEffects', {'actorUuid': effect.parent.uuid, 'updates': [updates]});
             await socket.executeAsGM('updateEffect', effect.uuid, updates);
         }
     },
@@ -290,15 +286,8 @@ export let chris = {
             ui.notifications.warn('Invalid compendium specified!');
             return false;
         }
-        let packIndex;
-        let match;
-        if (!isNewerVersion(game.version, '11.293')) {
-            packIndex = await gamePack.getIndex({'fields': ['name', 'type', 'flags.cf.id']});
-            match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.flags.cf?.id === packFolderId)));
-        } else {
-            packIndex = await gamePack.getIndex({'fields': ['name', 'type', 'folder']});
-            match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.folder === packFolderId)));
-        }
+        let packIndex = await gamePack.getIndex({'fields': ['name', 'type', 'folder']});
+        let match = packIndex.find(item => item.name === name && (!packFolderId || (packFolderId && item.folder === packFolderId)));
         if (match) {
             return (await gamePack.getDocument(match._id))?.toObject();
         } else {
@@ -306,8 +295,8 @@ export let chris = {
             return undefined;
         }
     },
-    'raceOrType': function _raceOrType(actor) {
-        return actor.type === 'npc' ? actor.system.details?.type?.value : actor.system.details?.race;
+    'raceOrType': function _raceOrType(entity) {
+        return MidiQOL.typeOrRace(entity);
     },
     'getItemDescription': function _getItemDescription(key, name) {
         let journalEntry = game.journal.getName(key);

@@ -3,7 +3,7 @@ import {macros} from '../macros.js';
 async function updateToken(token, changes, context, userId) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
-    await token.object._animation;
+    await token.object?._animation;
     let coords = {'x': token.x, 'y': token.y};
     let previousCoords = foundry.utils.getProperty(context, 'templatemacro.coords.previous');
     let templates = token.parent.templates.reduce((acc, templateDoc) => {
