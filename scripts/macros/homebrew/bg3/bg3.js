@@ -179,8 +179,8 @@ async function addFeatures(item, updates, options, id) {
     if (item.type != 'weapon') return;
     let actor = item.actor;
     if (!actor) return;
-    let proficient = item.system.proficient || item.actor.system.traits.weaponProf.value.has(baseItem);
     let baseItem = item.system.baseItem;
+    let proficient = item.system.proficient || item.actor.system.traits.weaponProf.value.has(baseItem);
     if (!baseItem) return;
     if (!proficient) {
         if (simpleWeapons.includes(baseItem) && item.actor.system.traits.weaponProf.value.has('sim')) proficient = true;

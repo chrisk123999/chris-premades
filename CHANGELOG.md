@@ -1,3 +1,7 @@
+# 0.9.1 Release:
+## Bug Fixes:
+- BG3 Weapon Actions
+  
 # 0.9.0 Release:
 ## New Content:
 - Githyanki: Astral Knowledge
