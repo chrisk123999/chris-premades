@@ -1,3 +1,10 @@
+# 0.9.3 Release:
+## New Content:
+- Spells: Ice Storm and Rime’s Binding Ice
+## New Enhanced Animations:
+- Ice Storm (Thanks Eskiemoh)
+- Rime’s Binding Ice (Thanks Eskiemoh)
+  
 # 0.9.2 Release:
 ## New Content:
 - Spell: Thunderous Smite

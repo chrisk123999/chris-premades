@@ -1,5 +1,5 @@
-2023/11/24-17:29:30.117 255c Recovering log #83
-2023/11/24-17:29:30.117 255c Level-0 table #85: started
-2023/11/24-17:29:30.124 255c Level-0 table #85: 56779 bytes OK
-2023/11/24-17:29:30.136 255c Delete type=0 #83
-2023/11/24-17:29:30.136 255c Delete type=3 #82
+2023/11/24-21:53:51.735 1de4 Recovering log #94
+2023/11/24-21:53:51.736 1de4 Level-0 table #96: started
+2023/11/24-21:53:51.742 1de4 Level-0 table #96: 56779 bytes OK
+2023/11/24-21:53:51.755 1de4 Delete type=0 #94
+2023/11/24-21:53:51.755 1de4 Delete type=3 #93

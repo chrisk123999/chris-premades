@@ -181,6 +181,7 @@ import {hungerOfHadar} from './macros/spells/hungerOfHadar.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {iceStorm} from './macros/spells/iceStorm.js';
 import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 import {insectPlague} from './macros/spells/insectPlague.js';
 import {insightfulFighting} from './macros/classFeatures/rogue/inquisitive/insightfulFighting.js';
@@ -242,6 +243,7 @@ import {repellingBlast} from './macros/classFeatures/warlock/invocations/repelli
 import {repulsionShield} from './macros/classFeatures/artificer/infusions/repulsionShield.js';
 import {resistantArmor} from './macros/classFeatures/artificer/infusions/resistantArmor.js';
 import {returningWeapon} from './macros/classFeatures/artificer/infusions/returningWeapon.js';
+import {rimesBindingIce} from './macros/spells/rimesBindingIce.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {rugOfSmothering} from './macros/monsterFeatures/rugOfSmothering/rugOfSmothering.js';
@@ -629,6 +631,7 @@ export let macros = {
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
+    'iceStorm': iceStorm,
     'infectiousFury': infectiousFury,
     'insectPlague': insectPlague,
     'insightfulFighting': insightfulFighting,
@@ -688,6 +691,7 @@ export let macros = {
     'repulsionShield': repulsionShield,
     'resistantArmor': resistantArmor,
     'returningWeapon': returningWeapon,
+    'rimesBindingIce': rimesBindingIce,
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
     'sacredWeapon': sacredWeapon,

@@ -2014,6 +2014,14 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Rime\'s Binding Ice': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {
@@ -5126,6 +5134,16 @@ export function setConfig() {
             'Thunderous Smite': {
                 'name': 'Thunderous Smite',
                 'version': '0.9.2'
+            },
+            'Rime\'s Binding Ice': {
+                'name': 'Rime\'s Binding Ice',
+                'version': '0.9.3',
+                'hasAnimation': true
+            },
+            'Ice Storm': {
+                'name': 'Ice Storm',
+                'version': '0.9.3',
+                'hasAnimation': true
             }
         }
     });
