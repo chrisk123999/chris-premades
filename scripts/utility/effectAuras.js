@@ -102,6 +102,7 @@ async function canvasReady() {
     refreshEffects();
 }
 async function tokenMoved(token, ignoredUuid, ignoredAura) {
+    if (token.parent.id != canvas.scene.id) return;
     await token.object?._animation;
     let distaceMap = {};
     for (let auraName of Object.values(auras)) {

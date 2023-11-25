@@ -136,7 +136,8 @@ async function onHit(workflow, targetToken) {
     await chris.removeEffect(sourceEffect);
 }
 async function moveTarget(token, changes) {
-    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    if (!chris.isLastGM()) return;
+    if (token.parent.id != canvas.scene.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
     let effect = chris.findEffect(token.actor, 'Warding Bond - Target');
     if (!effect) return;

@@ -1,3 +1,16 @@
+# 0.9.2 Release:
+## New Content:
+- Spell: Thunderous Smite
+## Bug Fixes:
+- Emboldening Bond
+- Booming Blade
+- Compelled Duel
+- Warding Bond
+- Effect Auras
+- Template Effects
+## Update Notes:
+- Added a module integration setting to have Build-A-Bonus auras follow overlapping effect rules.
+  
 # 0.9.1 Release:
 ## Bug Fixes:
 - BG3 Weapon Actions

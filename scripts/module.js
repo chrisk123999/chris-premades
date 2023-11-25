@@ -190,6 +190,7 @@ Hooks.once('ready', async function() {
     }
     if (game.settings.get('chris-premades', 'Critical Role Firearm Support')) firearm.setup(true);
     if (game.settings.get('chris-premades', 'Booming Blade')) Hooks.on('updateToken', macros.boomingBlade.moved);
+    if (game.settings.get('chris-premades', 'Build A Bonus Overlapping Effects')) Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

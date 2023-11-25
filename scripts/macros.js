@@ -304,6 +304,7 @@ import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderStep} from './macros/spells/thunderStep.js';
 import {thunderWave} from './macros/spells/thunderwave.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
+import {thunderousSmite} from './macros/spells/thunderousSmite.js';
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {trance} from './macros/raceFeatures/elf/trance.js';
@@ -739,6 +740,7 @@ export let macros = {
     'thunderStep': thunderStep,
     'thunderWave': thunderWave,
     'thunderboltStrike': thunderboltStrike,
+    'thunderousSmite': thunderousSmite,
     'tollTheDead': tollTheDead,
     'trance': trance,
     'trickShots': trickShots,

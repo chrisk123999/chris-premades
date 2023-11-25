@@ -77,6 +77,7 @@ async function attacked(workflow) {
 }
 async function movement(token, updates, diff, id) {
     if (!chris.isLastGM()) return;
+    if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation || !diff.animate) return;
     let effect = chris.findEffect(token.actor, 'Compelled Duel - Target');
     if (!effect) return;

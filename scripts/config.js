@@ -5123,6 +5123,10 @@ export function setConfig() {
                 'name': 'Mental Discipline (Kalashtar)',
                 'version': '0.8.31'
             },
+            'Thunderous Smite': {
+                'name': 'Thunderous Smite',
+                'version': '0.9.2'
+            }
         }
     });
 }

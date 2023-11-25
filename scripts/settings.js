@@ -1208,6 +1208,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
+    game.settings.register(moduleName, 'Build A Bonus Overlapping Effects', {
+        'name': 'Build A Bonus Overlapping Effects',
+        'hint': 'When enabled Build A Bonus auras will respect the overlapping spell effect and combining game effects rules.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': true,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
+            } else {
+                Hooks.off('babonus.filterBonuses', buildABonus.overlappingEffects);
+            }
+        }
+    });
+    addMenuSetting('Build A Bonus Overlapping Effects', 'Module Integration');
     game.settings.register(moduleName, 'Aura of Life', {
         'name': 'Aura of Life Spell Automation',
         'hint': 'Enabling this allows the automation of the Aura of Life spell via the use of Foundry hooks.',

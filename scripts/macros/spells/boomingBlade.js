@@ -91,6 +91,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function moved(token, changes) {
     if (!chris.isLastGM()) return;
+    if (token.parent.id != canvas.scene.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
     let effect = token.actor.effects.find(i => i.flags['chris-premades']?.spell?.boomingBlade);
     if (!effect) return;
