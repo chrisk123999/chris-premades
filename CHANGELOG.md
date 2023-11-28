@@ -1,3 +1,9 @@
+# 0.9.4 Release:
+## New Content:
+- Spell: Searing Smite
+## Bug Fixes:
+- Aura of Warding
+  
 # 0.9.3 Release:
 ## New Content:
 - Spells: Ice Storm and Rime’s Binding Ice

@@ -119,10 +119,7 @@ async function updateItem(itemDocument) {
         ];
         searchCompendiums.sort((a, b) => (packs.includes(a) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[a] ?? 10) - (packs.includes(b) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[b] ?? additionalCompendiumPriority[b] ?? 10));
         for (let compendium of searchCompendiums) {
-            if (!game.packs.get(compendium)) {
-                ui.notifications.warn('An invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
-                continue;
-            }
+            if (!game.packs.get(compendium)) continue;
             compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
             if (compendiumItem) {
                 foundCompendiumName = game.packs.get(compendium).metadata.label;

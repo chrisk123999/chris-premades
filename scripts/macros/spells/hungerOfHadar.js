@@ -47,7 +47,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     for (let t of tokens) await chris.createEffect(t.actor, effectData);
 }
 async function trigger(token, trigger, reason) {
-    console.log(trigger);
     let template = await fromUuid(trigger.templateUuid);
     if (!template) return;
     let originUuid = template.flags.dnd5e?.origin;

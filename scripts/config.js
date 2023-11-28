@@ -3468,7 +3468,7 @@ export function setConfig() {
             },
             'Aura of Warding': {
                 'name': 'Aura of Warding',
-                'version': '0.7.01',
+                'version': '0.9.4',
                 'settings': [
                     'Effect Auras'
                 ]
@@ -5144,6 +5144,10 @@ export function setConfig() {
                 'name': 'Ice Storm',
                 'version': '0.9.3',
                 'hasAnimation': true
+            },
+            'Searing Smite': {
+                'name': 'Searing Smite',
+                'version': '0.9.4'
             }
         }
     });

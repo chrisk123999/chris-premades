@@ -18,6 +18,7 @@ import {auraOfLife} from './macros/spells/auraOfLife.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
+import {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/auraOfWarding.js';
 import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
@@ -253,6 +254,7 @@ import {sanctuary} from './macros/spells/sanctuary.js';
 import {savageAttacker} from './macros/feats/savageAttacker.js';
 import {saveConditionImmune} from './macros/generic/saveConditionImmune.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
+import {searingSmite} from './macros/spells/searingSmite.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowOfMoil} from './macros/spells/shadowOfMoil.js';
@@ -455,6 +457,9 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
         case 'auraOfLife':
             await auraOfLife.aura(token, selectedAura);
+            break;
+        case 'auraOfWarding':
+            await auraOfWarding(token, selectedAura);
             break;
     }
 }
@@ -699,6 +704,7 @@ export let macros = {
     'savageAttacker': savageAttacker,
     'saveConditionImmune': saveConditionImmune,
     'scorchingRay': scorchingRay,
+    'searingSmite': searingSmite,
     'shadowBlade': shadowBlade,
     'shadowOfMoil': shadowOfMoil,
     'shockingGrasp': shockingGrasp,

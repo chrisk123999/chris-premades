@@ -41,9 +41,10 @@ export let chris = {
             delete effectData.label;
         }
         if (chris.firstOwner(actor).id === game.user.id) {
-            await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
+            let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
+            return effects[0];
         } else {
-            await socket.executeAsGM('createEffect', actor.uuid, effectData);
+            return await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
         }
     },
     'removeEffect': async function _removeEffect(effect) {
