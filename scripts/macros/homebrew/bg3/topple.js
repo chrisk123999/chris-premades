@@ -4,8 +4,11 @@ import {queue} from '../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'topple', 50);
     if (!queueSetup) return;
-    if (workflow.actor.system.abilities.dex.save < workflow.actor.system.abilities.str.save) return;
-    workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+    if (workflow.actor.system.abilities.dex.save > workflow.actor.system.abilities.str.save) {
+        workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+        workflow.item.prepareData();
+        workflow.item.prepareFinalAttributes();
+    }
     queue.remove(workflow.item.uuid);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -19,7 +22,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'topple', 450);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Topple?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Topple?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

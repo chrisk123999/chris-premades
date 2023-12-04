@@ -14,7 +14,7 @@ export async function tenacity({speaker, actor, token, character, item, args, sc
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'rushAttack', 450);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Tenacity?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Tenacity?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

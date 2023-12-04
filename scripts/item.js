@@ -119,10 +119,7 @@ async function updateItem(itemDocument) {
         ];
         searchCompendiums.sort((a, b) => (packs.includes(a) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[a] ?? 10) - (packs.includes(b) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[b] ?? additionalCompendiumPriority[b] ?? 10));
         for (let compendium of searchCompendiums) {
-            if (!game.packs.get(compendium)) {
-                ui.notifications.warn('An invalid compendium key was specified! (' + compendium + ') Check your "Additional Compendiums" setting)');
-                continue;
-            }
+            if (!game.packs.get(compendium)) continue;
             compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
             if (compendiumItem) {
                 foundCompendiumName = game.packs.get(compendium).metadata.label;
@@ -133,20 +130,9 @@ async function updateItem(itemDocument) {
         let itemActor = itemDocument.actor;
         let monsterName = itemActor.name;
         let sourceActor = game.actors.get(itemActor.id);
-        let monsterFolder;
+        let monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
         foundCompendiumName = 'Chris\'s Premades';
         if (sourceActor) monsterName = sourceActor.name;
-        if (!isNewerVersion(game.version, '11.293')) {
-            if (!game.modules.get('compendium-folders')?.active) {
-                ui.notifications.warn('Compendium Folders module is required for this feature in v10!');
-                return;
-            }
-            let folderAPI = game.CF.FICFolderAPI;
-            let allFolders = await folderAPI.loadFolders('chris-premades.CPR Monster Features');
-            monsterFolder = allFolders.find(f => f.name === monsterName);
-        } else {
-            monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
-        }
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;

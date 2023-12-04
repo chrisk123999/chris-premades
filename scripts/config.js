@@ -132,6 +132,9 @@ export function setConfig() {
                 'Form of the Beast: Claws',
                 'Form of the Beast: Tail',
                 'Form of the Beast: Tail (reaction)'
+            ],
+            'Cartomancer: Hidden Ace - Imbue Card': [
+                'Cartomancer: Hidden Ace - Flourish Imbued Card'
             ]
         },
         'restrictedItems': {
@@ -208,6 +211,30 @@ export function setConfig() {
                 'requiredEquipment': [],
                 'requiredFeatures': [],
                 'replacedItemName': 'Unarmed Strike (Monk)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
+            },
+            'Mental Discipline 1': {
+                'originalName': 'Mental Discipline',
+                'requiredClass': null,
+                'requiredSubclass': null,
+                'requiredRace': 'Kalashtar',
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Mental Discipline (Kalashtar)',
+                'removedItems': [],
+                'additionalItems': [],
+                'priority': 0
+            },
+            'Mental Discipline 2': {
+                'originalName': 'Mental Discipline',
+                'requiredClass': null,
+                'requiredSubclass': null,
+                'requiredRace': 'Githzerai',
+                'requiredEquipment': [],
+                'requiredFeatures': [],
+                'replacedItemName': 'Mental Discipline (Githzerai)',
                 'removedItems': [],
                 'additionalItems': [],
                 'priority': 0
@@ -1987,6 +2014,34 @@ export function setConfig() {
                         ]
                     }
                 }
+            },
+            'Rime\'s Binding Ice': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Wild Surge': {
+                'text': {
+                    'flumph-avatar': {
+                        'label': 'Flumph Avatar',
+                        'default': ''
+                    },
+                    'flumph-token': {
+                        'label': 'Flumph Token',
+                        'default': ''
+                    },
+                    'pixie-avatar': {
+                        'label': 'Pixie Avatar',
+                        'default': ''
+                    },
+                    'pixie-token': {
+                        'label': 'Pixie Token',
+                        'default': ''
+                    }
+                }
             }
         },
         'automations': {
@@ -3433,7 +3488,7 @@ export function setConfig() {
             },
             'Aura of Warding': {
                 'name': 'Aura of Warding',
-                'version': '0.7.01',
+                'version': '0.9.4',
                 'settings': [
                     'Effect Auras'
                 ]
@@ -4043,10 +4098,6 @@ export function setConfig() {
                 'name': 'Dual Mind',
                 'version': '0.7.01'
             },
-            'Mental Discipline': {
-                'name': 'Mental Discipline',
-                'version': '0.7.01'
-            },
             'Hungry Jaws': {
                 'name': 'Hungry Jaws',
                 'version': '0.7.01'
@@ -4469,75 +4520,75 @@ export function setConfig() {
             },
             'Backbreaker': {
                 'name': 'Backbreaker',
-                'version': '0.7.30'
+                'version': '0.8.28'
             },
             'Brace': {
                 'name': 'Brace',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Cleave': {
                 'name': 'Cleave',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Concussive Smash': {
                 'name': 'Concussive Smash',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Maiming Strike': {
                 'name': 'Maiming Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Flourish': {
                 'name': 'Flourish',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Heartstopper': {
                 'name': 'Heartstopper',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Lacerate': {
                 'name': 'Lacerate',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Piercing Strike': {
                 'name': 'Piercing Strike',
-                'version': '0.7.45'
+                'version': '0.8.28'
             },
             'Piercing Shot': {
                 'name': 'Piercing Shot',
-                'version': '0.7.45'
+                'version': '0.8.28'
             },
             'Pommel Strike': {
                 'name': 'Pommel Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Prepare': {
                 'name': 'Prepare',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Rush Attack': {
                 'name': 'Rush Attack',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Tenacity': {
                 'name': 'Tenacity',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Topple': {
                 'name': 'Topple',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Hamstring Shot': {
                 'name': 'Hamstring Shot',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Mobile Shot': {
                 'name': 'Mobile Shot',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Weakening Strike': {
                 'name': 'Weakening Strike',
-                'version': '0.7.19'
+                'version': '0.8.28'
             },
             'Tasha\'s Otherworldly Guise': {
                 'name': 'Tasha\'s Otherworldly Guise',
@@ -5072,6 +5123,70 @@ export function setConfig() {
             'Green-Flame Blade': {
                 'name': 'Green-Flame Blade',
                 'version': '0.8.26'
+            },
+            'Spray of Cards': {
+                'name': 'Spray of Cards',
+                'version': '0.8.28'
+            },
+            'Antagonize': {
+                'name': 'Antagonize',
+                'version': '0.8.28'
+            },
+            'Cartomancer: Hidden Ace - Imbue Card': {
+                'name': 'Cartomancer: Hidden Ace - Imbue Card',
+                'version': '0.8.30',
+                'mutation': {
+                    'self': 'Cartomancer'
+                }
+            },
+            'Astral Knowledge': {
+                'name': 'Astral Knowledge',
+                'version': '0.8.31'
+            },
+            'Mental Discipline (Githzerai)': {
+                'name': 'Mental Discipline (Githzerai)',
+                'version': '0.8.31'
+            },
+            'Mental Discipline (Kalashtar)': {
+                'name': 'Mental Discipline (Kalashtar)',
+                'version': '0.8.31'
+            },
+            'Thunderous Smite': {
+                'name': 'Thunderous Smite',
+                'version': '0.9.2'
+            },
+            'Rime\'s Binding Ice': {
+                'name': 'Rime\'s Binding Ice',
+                'version': '0.9.3',
+                'hasAnimation': true
+            },
+            'Ice Storm': {
+                'name': 'Ice Storm',
+                'version': '0.9.3',
+                'hasAnimation': true
+            },
+            'Searing Smite': {
+                'name': 'Searing Smite',
+                'version': '0.9.4'
+            },
+            'Wild Surge': {
+                'name': 'Wild Surge',
+                'version': '0.9.5',
+                'actors': [
+                    'CPR - Intangible Spirit'
+                ]
+            },
+            'Controlled Surge': {
+                'name': 'Controlled Surge',
+                'version': '0.9.5'
+            },
+            'Unstable Backlash': {
+                'name': 'Unstable Backlash',
+                'version': '0.9.5'
+            },
+            'Bolstering Magic': {
+                'name': 'Bolstering Magic',
+                'version': '0.9.5'
             }
         }
     });

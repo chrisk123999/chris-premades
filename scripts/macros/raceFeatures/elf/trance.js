@@ -70,9 +70,12 @@ export async function trance({speaker, actor, token, character, item, args, scop
         await warpgate.revert(token.document, 'Trance');
     }
     let effectData = {
-        'label': 'Trance',
+        'label': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 604800
+        },
         'changes': [
             {
                 'key': 'system.skills.' + selection.inputs[0] +'.value',
@@ -86,6 +89,11 @@ export async function trance({speaker, actor, token, character, item, args, scop
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
+            },
+            'dae': {
+                'specialDuration': [
+                    'longRest'
+                ]
             }
         }
     };
@@ -105,8 +113,8 @@ export async function trance({speaker, actor, token, character, item, args, scop
             'value': 1
         });
     }
-    setProperty(updates, 'embedded.ActiveEffect.Trance', effectData);
-    let effect = chris.findEffect(workflow.actor, 'Trance');
+    setProperty(updates, 'embedded.ActiveEffect.' + workflow.item.name, effectData);
+    let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (effect) await chris.removeEffect(effect);
     let options = {
         'permanent': false,

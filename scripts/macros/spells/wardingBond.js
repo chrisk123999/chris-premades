@@ -136,7 +136,8 @@ async function onHit(workflow, targetToken) {
     await chris.removeEffect(sourceEffect);
 }
 async function moveTarget(token, changes) {
-    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    if (!chris.isLastGM()) return;
+    if (token.parent.id != canvas.scene.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
     let effect = chris.findEffect(token.actor, 'Warding Bond - Target');
     if (!effect) return;
@@ -144,7 +145,7 @@ async function moveTarget(token, changes) {
     if (!bondTokenUuid) return;
     let sourceToken = await fromUuid(bondTokenUuid);
     if (!sourceToken) return;
-    await token.object._animation;
+    await token.object?._animation;
     let distance = chris.getDistance(token, sourceToken);
     if (distance <= 60) return;
     let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', constants.yesNo);

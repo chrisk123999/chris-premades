@@ -23,16 +23,7 @@ export async function cleave({speaker, actor, token, character, item, args, scop
     }
     let targets;
     if (nearbyFoes.length > 3) {
-        let buttons = [
-            {
-                'label': 'Ok',
-                'value': true
-            }, {
-                'label': 'Cancel',
-                'value': false
-            }
-        ];
-        let selectedTargets = await chris.selectTarget('Choose your targets (Max: 3)', buttons, nearbyFoes, true, 'multiple');
+        let selectedTargets = await chris.selectTarget('Choose your targets (Max: 3)', constants.okCancel, nearbyFoes, true, 'multiple');
         if (!selectedTargets.buttons) return;
         if (selectedTargets.inputs.filter(i => !!i).length > 3) {
             ui.notifications.info('Too many targets selected!');

@@ -23,17 +23,8 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
     for (let i of targets) {
         if (i.document.disposition === workflow.token.document.disposition) selectedTargets.push(i);
     }
-    let buttons = [
-        {
-            'label': 'OK',
-            'value': true
-        }, {
-            'label': 'Cancel',
-            'value': false
-        }
-    ];
     if (selectedTargets.length > max) {
-        let selection = await chris.selectTarget('What targets automatically save? (Max ' + max + ')', buttons, selectedTargets, true, 'multiple');
+        let selection = await chris.selectTarget('What targets automatically save? (Max ' + max + ')', constants.okCancel, selectedTargets, true, 'multiple');
         if (!selection.buttons) return;
         selectedTargets = [];
         for (let i of selection.inputs) {
@@ -146,16 +137,6 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
             t.style.paddingRight = '5px';
         }
     }
-    let buttons = [,
-        {
-            'label': 'No',
-            'value': false
-        },
-        {
-            'label': 'Yes',
-            'value': true
-        }
-    ];
     let generatedMenu = [];
     for (let i of lowest) {
         generatedMenu.push({
@@ -171,7 +152,7 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
     let selection = await warpgate.menu(
         {
             'inputs': generatedMenu,
-            'buttons': buttons
+            'buttons': constants.yesNoButton
         },
         config
     );
@@ -217,17 +198,8 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
     }
     let max = workflow.actor.system.abilities.cha.mod;
     let selectedTargets = Array.from(workflow.targets);
-    let buttons = [
-        {
-            'label': 'OK',
-            'value': true
-        }, {
-            'label': 'Cancel',
-            'value': false
-        }
-    ];
     if (selectedTargets.length > max) {
-        let selection = await chris.selectTarget('Give what targets disadvantage? (Max ' + max + ')', buttons, selectedTargets, true, 'multiple');
+        let selection = await chris.selectTarget('Give what targets disadvantage? (Max ' + max + ')', constants.okCancel, selectedTargets, true, 'multiple');
         if (!selection.buttons) return;
         selectedTargets = [];
         for (let i of selection.inputs) {
@@ -409,21 +381,12 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
         queue.remove(workflow.item.uuid);
         return;
     }
-    let buttons = [
-        {
-            'label': 'Yes',
-            'value': true
-        }, {
-            'label': 'No',
-            'value': false
-        }
-    ];
-    let selected = await chris.selectTarget('Use Twinned Spell?', buttons, nearbyTargets, true, 'one');
-    if (selected.buttons === false) {
+    let selected = await chris.selectTarget('Use Twinned Spell?', constants.yesNoButton, nearbyTargets, true, 'one');
+    if (!selected.buttons) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    let targetTokenUuid = selected.inputs.find(id => id != false);
+    let targetTokenUuid = selected.inputs.find(id => id);
     if (!targetTokenUuid) {
         queue.remove(workflow.item.uuid);
         return;

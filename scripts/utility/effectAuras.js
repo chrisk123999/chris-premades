@@ -1,9 +1,7 @@
 import {chris} from '../helperFunctions.js';
 import {macros} from '../macros.js';
 import {socket} from '../module.js';
-
 let auras = {};
-
 export let effectAuras = {
     'add': add,
     'remove': remove,
@@ -104,7 +102,8 @@ async function canvasReady() {
     refreshEffects();
 }
 async function tokenMoved(token, ignoredUuid, ignoredAura) {
-    await token.object._animation;
+    if (token.parent.id != canvas.scene.id) return;
+    await token.object?._animation;
     let distaceMap = {};
     for (let auraName of Object.values(auras)) {
         let validSources = [];

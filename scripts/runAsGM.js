@@ -1,3 +1,4 @@
+import {chris} from './helperFunctions.js';
 async function updateCombatant(tokenId, updates) {
     let combatant = game.combat?.combatants?.get(tokenId);
     if (!combatant) return;
@@ -6,7 +7,10 @@ async function updateCombatant(tokenId, updates) {
 async function createEffect(actorUuid, effectData) {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
-    await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
+    if (actor instanceof TokenDocument) actor = actor.actor;
+    if (!actor) return;
+    let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
+    return effects[0].uuid;
 }
 async function removeEffect(effectUuid) {
     let effect = await fromUuid(effectUuid);
@@ -23,4 +27,12 @@ export let runAsGM = {
     'updateEffect': updateEffect,
     'createEffect': createEffect,
     'removeEffect': removeEffect
+}
+async function rollItem(itemUuid, config, options) {
+    let item = await fromUuid(itemUuid);
+    if (!item) return;
+    return await chris.rollItem(item, config, options);
+}
+export let runAsUser = {
+    'rollItem': rollItem
 }

@@ -5,6 +5,7 @@ import {actions} from './macros/actions/actions.js';
 import {ancestralProtectors} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 import {animateDead} from './macros/spells/animateDead.js';
 import {animatingPerformance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
+import {antagonize} from './macros/spells/antagonize.js';
 import {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 import {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcaneWard.js';
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
@@ -17,6 +18,7 @@ import {auraOfLife} from './macros/spells/auraOfLife.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
 import {auraOfVitality} from './macros/spells/auraOfVitality.js';
+import {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/auraOfWarding.js';
 import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
@@ -37,6 +39,7 @@ import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
+import {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
 import {boomingBlade} from './macros/spells/boomingBlade.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
@@ -47,6 +50,7 @@ import {bulette} from './macros/monsterFeatures/bulette/bulette.js';
 import {burningHands} from './macros/spells/burningHands.js';
 import {callLightning} from './macros/spells/callLightning.js';
 import {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
+import {cartomancer} from './macros/feats/cartomancer.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
@@ -179,6 +183,7 @@ import {hungerOfHadar} from './macros/spells/hungerOfHadar.js';
 import {hungryJaws} from './macros/raceFeatures/lizardfolk/hungryJaws.js';
 import {huntersMark} from './macros/spells/huntersMark.js';
 import {hybridTransformation} from './macros/classFeatures/bloodHunter/orderOfTheLycan/hybridTransformation.js';
+import {iceStorm} from './macros/spells/iceStorm.js';
 import {infectiousFury} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 import {insectPlague} from './macros/spells/insectPlague.js';
 import {insightfulFighting} from './macros/classFeatures/rogue/inquisitive/insightfulFighting.js';
@@ -240,6 +245,7 @@ import {repellingBlast} from './macros/classFeatures/warlock/invocations/repelli
 import {repulsionShield} from './macros/classFeatures/artificer/infusions/repulsionShield.js';
 import {resistantArmor} from './macros/classFeatures/artificer/infusions/resistantArmor.js';
 import {returningWeapon} from './macros/classFeatures/artificer/infusions/returningWeapon.js';
+import {rimesBindingIce} from './macros/spells/rimesBindingIce.js';
 import {ringOfSpellStoring} from './macros/items/ringOfSpellStoring.js';
 import {riteOfTheDawn} from './macros/classFeatures/bloodHunter/orderOfTheGhostslayer/riteOfTheDawn.js';
 import {rugOfSmothering} from './macros/monsterFeatures/rugOfSmothering/rugOfSmothering.js';
@@ -249,6 +255,7 @@ import {sanctuary} from './macros/spells/sanctuary.js';
 import {savageAttacker} from './macros/feats/savageAttacker.js';
 import {saveConditionImmune} from './macros/generic/saveConditionImmune.js';
 import {scorchingRay} from './macros/spells/scorchingRay.js';
+import {searingSmite} from './macros/spells/searingSmite.js';
 import {shadowBlade} from './macros/spells/shadowBlade.js';
 import {shadowDemon} from './macros/monsterFeatures/shadowDemon/shadowDemon.js';
 import {shadowOfMoil} from './macros/spells/shadowOfMoil.js';
@@ -302,6 +309,7 @@ import {thornWhip} from './macros/spells/thornWhip.js';
 import {thunderStep} from './macros/spells/thunderStep.js';
 import {thunderWave} from './macros/spells/thunderwave.js';
 import {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
+import {thunderousSmite} from './macros/spells/thunderousSmite.js';
 import {tixieTockworth} from './macros/monsterFeatures/tixieTockworth/tixieTockworth.js';
 import {tollTheDead} from './macros/spells/tollTheDead.js';
 import {trance} from './macros/raceFeatures/elf/trance.js';
@@ -319,6 +327,7 @@ import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wandOfTheWarMage} from './macros/items/wandOfTheWarMage.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
+import {wildSurge} from './macros/classFeatures/barbarian/wildMagic/wildSurge.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrapsOffDyamak} from './macros/items/wrapsOffDyamak.js';
@@ -408,7 +417,8 @@ let onHit = {
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
     'wardingBond': wardingBond.onHit,
-    'armorOfAgathys': armorOfAgathys.onHit
+    'armorOfAgathys': armorOfAgathys.onHit,
+    'wildSurgeRetribution': wildSurge.retribution
 }
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
@@ -451,6 +461,12 @@ async function onMoveEffect(macroName, token, selectedAura) {
         case 'auraOfLife':
             await auraOfLife.aura(token, selectedAura);
             break;
+        case 'auraOfWarding':
+            await auraOfWarding(token, selectedAura);
+            break;
+        case 'protectiveLights':
+            await wildSurge.protectiveLights.aura(token, selectedAura);
+            break;
     }
 }
 async function templateTrigger(macroName, token, trigger, reason) {
@@ -485,6 +501,7 @@ export let macros = {
     'ancestralProtectors': ancestralProtectors,
     'animateDead': animateDead,
     'animatingPerformance': animatingPerformance,
+    'antagonize': antagonize,
     'arcaneJolt': arcaneJolt,
     'arcaneWard': arcaneWard,
     'armorModel': armorModel,
@@ -515,6 +532,7 @@ export let macros = {
     'blight': blight,
     'blink': blink,
     'bloodSpear': bloodSpear,
+    'bolsteringMagic': bolsteringMagic,
     'boomingBlade': boomingBlade,
     'brandOfCastigation': brandOfCastigation,
     'breathOfTheDragon': breathOfTheDragon,
@@ -522,6 +540,7 @@ export let macros = {
     'burningHands': burningHands,
     'callLightning': callLightning,
     'callTheHunt': callTheHunt,
+    'cartomancer': cartomancer,
     'chainLightning': chainLightning,
     'charmAnimalsAndPlants': charmAnimalsAndPlants,
     'charmPerson': charmPerson,
@@ -624,6 +643,7 @@ export let macros = {
     'hungryJaws': hungryJaws,
     'huntersMark': huntersMark,
     'hybridTransformation': hybridTransformation,
+    'iceStorm': iceStorm,
     'infectiousFury': infectiousFury,
     'insectPlague': insectPlague,
     'insightfulFighting': insightfulFighting,
@@ -683,6 +703,7 @@ export let macros = {
     'repulsionShield': repulsionShield,
     'resistantArmor': resistantArmor,
     'returningWeapon': returningWeapon,
+    'rimesBindingIce': rimesBindingIce,
     'ringOfSpellStoring': ringOfSpellStoring,
     'riteOfTheDawn': riteOfTheDawn,
     'sacredWeapon': sacredWeapon,
@@ -690,6 +711,7 @@ export let macros = {
     'savageAttacker': savageAttacker,
     'saveConditionImmune': saveConditionImmune,
     'scorchingRay': scorchingRay,
+    'searingSmite': searingSmite,
     'shadowBlade': shadowBlade,
     'shadowOfMoil': shadowOfMoil,
     'shockingGrasp': shockingGrasp,
@@ -735,6 +757,7 @@ export let macros = {
     'thunderStep': thunderStep,
     'thunderWave': thunderWave,
     'thunderboltStrike': thunderboltStrike,
+    'thunderousSmite': thunderousSmite,
     'tollTheDead': tollTheDead,
     'trance': trance,
     'trickShots': trickShots,
@@ -748,6 +771,7 @@ export let macros = {
     'wandOfTheWarMage': wandOfTheWarMage,
     'wardingBond': wardingBond,
     'wildShape': wildShape,
+    'wildSurge': wildSurge,
     'wildhunt': wildhunt,
     'witherAndBloom': witherAndBloom,
     'wrapsOffDyamak': wrapsOffDyamak,

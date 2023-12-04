@@ -89,6 +89,8 @@ export async function breathOfTheDragon({speaker, actor, token, character, item,
         await ki.update({'system.uses.value': ki.system.uses.value - 1});
     }
     workflow.item = workflow.item.clone({'system.damage.parts': parts}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     let templateData = {
         'user': game.user,
         't': target.type === 'cone' ? 'cone' : 'ray',

@@ -30,6 +30,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     attackBonus = 1;
     properties.mgc = true;
     workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attackBonus': attackBonus}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 async function blind({speaker, actor, token, character, item, args, scope, workflow}) {

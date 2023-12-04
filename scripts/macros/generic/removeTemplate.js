@@ -3,8 +3,12 @@ export async function removeTemplate({speaker, actor, token, character, item, ar
     let effect = chris.findEffect(workflow.actor, workflow.item.name + ' Template');
     if (!effect) return;
     let updates = {
-        'duration': {
-            'seconds': 1
+        'flags': {
+            'effectmacro': {
+                'onTurnEnd': {
+                    'script': 'await effect.delete();'
+                }
+            }
         }
     };
     await chris.updateEffect(effect, updates);

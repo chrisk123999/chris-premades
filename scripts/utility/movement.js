@@ -23,7 +23,8 @@ export async function updateGMTriggers(updatedTriggers) {
     await game.settings.set('chris-premades', 'Movement Triggers', updatedTriggers);
 }
 export async function tokenMoved(token, changes) {
-    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    if (token.parent.id != canvas.scene.id) return;
+    if (!chris.isLastGM()) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
     await token.object._animation;
     for (let name of Object.values(triggers)) {
@@ -43,7 +44,7 @@ export async function tokenMoved(token, changes) {
     }
 }
 export function combatUpdate(combat, changes, context) {
-    if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
+    if (!chris.isLastGM()) return;
     let currentTurn = combat.current.turn;
     let previousTurn = context.effectmacro?.previousTR?.T;
     let currentRound = combat.current.round;

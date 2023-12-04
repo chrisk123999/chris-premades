@@ -28,7 +28,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let name = 'Guardian of Faith';
+    let name = chris.getConfiguration(workflow.item, 'name') ?? 'Guardian of Faith';
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Guardian of Faith - Damage', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian of Faith - Damage');

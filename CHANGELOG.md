@@ -1,3 +1,86 @@
+# 0.9.6 Release:
+## Bug Fixes:
+- Wild Surge
+  
+# 0.9.5 Release:
+## New Content:
+- Path of Wild Magic Barbarian: Wild Surge, Bolstering Magic, Unstable Backlash, Controlled Surge
+## Bug Fixes:
+- Guardian of Faith
+- Eldritch Blast
+- Cleave
+- Twinned Spell
+## Update Notes:
+- Added a setting to automatically add generic actions upon token drop.
+  
+# 0.9.4 Release:
+## New Content:
+- Spell: Searing Smite
+## Bug Fixes:
+- Aura of Warding
+  
+# 0.9.3 Release:
+## New Content:
+- Spells: Ice Storm and Rime’s Binding Ice
+## New Enhanced Animations:
+- Ice Storm (Thanks Eskiemoh)
+- Rime’s Binding Ice (Thanks Eskiemoh)
+  
+# 0.9.2 Release:
+## New Content:
+- Spell: Thunderous Smite
+## Bug Fixes:
+- Emboldening Bond
+- Booming Blade
+- Compelled Duel
+- Warding Bond
+- Effect Auras
+- Template Effects
+## Update Notes:
+- Added a module integration setting to have Build-A-Bonus auras follow overlapping effect rules.
+  
+# 0.9.1 Release:
+## Bug Fixes:
+- BG3 Weapon Actions
+  
+# 0.9.0 Release:
+## New Content:
+- Githyanki: Astral Knowledge
+- Githzerai: Mental Discipline
+## Bug Fixes:
+- Template Effects
+- Effect Auras
+## Update Notes:
+- V10 Foundry support has been dropped.
+- Support for D&D system version 2.4.0.
+  
+# 0.8.30 Release:
+## Bug Fixes:
+- Cartomancer
+## Update Notes:
+- Support for D&D system version 2.4.0 will be in a future release.
+  
+# 0.8.29 Release:
+## Bug Fixes:
+- Fixed effect creation for non-gms
+  
+# 0.8.28 Release:
+## New Content:
+- Spells: Antagonize and Spray of Cards
+- Feat: Cartomancer
+## Bug Fixes:
+- Enhanced Weapon
+- Radiant Weapon
+- Repeating Shot
+- Returning Weapon
+- Vicious Intent
+- Breath of the Dragon
+- BG3 Weapon Actions
+- Breath Weapon
+- Metallic Breath Weapon
+- Breath Weapon (Legacy)
+- Tasha's Otherworldly Guise
+  
 # 0.8.27 Release:
 ## Bug Fixes:
 - Booming Blade

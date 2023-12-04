@@ -60,8 +60,7 @@ async function misfire(workflow) {
     if (!workflow.item) return;
     let baseItem = workflow.item.system.baseItem;
     if (baseItem != 'firearmCR') return;
-    let proficient = workflow.item.system.proficient;
-    if (!proficient && isNewerVersion(game.version, '11.293')) proficient = workflow.item.actor.system.traits.weaponProf.value.has(baseItem);
+    let proficient = workflow.item.system.proficient || workflow.item.actor.system.traits.weaponProf.value.has(baseItem);
     let misfireScore = chris.getConfiguration(workflow.item, 'misfire') ?? 1;
     if (!proficient) misfireScore += 1;
     if (workflow.attackRoll.terms[0].total > misfireScore) return;

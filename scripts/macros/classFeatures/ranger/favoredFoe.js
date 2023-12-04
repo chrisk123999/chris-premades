@@ -18,7 +18,7 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
     let turnCheck = chris.perTurnCheck(originItem, 'feature', 'favoredFoe', true, workflow.token.id);
     if (!turnCheck) return;
     let targetToken = workflow.targets.first();
-    let effect = targetToken.actor.effects.find(e => e.label === 'Favored Foe' && e.origin === originItem.uuid);
+    let effect = targetToken.actor.effects.find(e => e.name === 'Favored Foe' && e.origin === originItem.uuid);
     let queueSetup = await queue.setup(workflow.item.uuidk, 'favoredFoe', 250);
     if (!queueSetup) return;
     if (effect) {
@@ -29,7 +29,7 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
     }
     let uses = originItem.system.uses.value;
     if (uses === 0) return;
-    let selection = await chris.dialog(originItem.name, [['Yes,', true], ['No', false]], 'Use Favored Foe?');
+    let selection = await chris.dialog(originItem.name, constants.yesNo, 'Use Favored Foe?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

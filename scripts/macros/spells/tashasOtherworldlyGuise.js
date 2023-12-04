@@ -78,6 +78,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let ability = duplicate(workflow.item.system.ability);
     if (workflow.actor.system.abilities[itemScaling].mod < workflow.actor.system.abilities[scaling].mod) ability = scaling;
     workflow.item = workflow.item.clone({'system.properties': properties, 'system.ability': ability}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 export let tashasOtherworldlyGuise = {

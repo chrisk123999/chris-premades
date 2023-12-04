@@ -240,7 +240,7 @@ async function remove(effect, origin, token) {
     if (!curseFlags) return;
     await warpgate.wait(200);
     if (curseFlags.type === 'Damage') {
-        let damageEffect = origin.actor.effects.find(eff => eff.label === 'Bestow Curse - Damage' && eff.changes?.[2]?.value === token.id);
+        let damageEffect = origin.actor.effects.find(eff => eff.name === 'Bestow Curse - Damage' && eff.changes?.[2]?.value === token.id);
         if (damageEffect) await chris.removeEffect(damageEffect);
     }
     if (curseFlags.level < 5) {

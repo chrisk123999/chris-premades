@@ -5,7 +5,11 @@ import {translate} from '../../../translations.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercingStrike', 50);
     if (!queueSetup) return;
-    if (workflow.actor.system.abilities.dex.save > workflow.actor.system.abilities.str.save) workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+    if (workflow.actor.system.abilities.dex.save > workflow.actor.system.abilities.str.save) {
+        workflow.item = workflow.item.clone({'system.save.scaling': 'dex'}, {'keepId': true});
+        workflow.item.prepareData();
+        workflow.item.prepareFinalAttributes();
+    }
     queue.remove(workflow.item.uuid);
     if (workflow.targets.size != 1) return;
     let race = chris.raceOrType(workflow.targets.first().actor);
@@ -61,7 +65,7 @@ async function strike({speaker, actor, token, character, item, args, scope, work
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercingstrike', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Piercing Strike?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Piercing Strike?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -93,7 +97,7 @@ async function shot({speaker, actor, token, character, item, args, scope, workfl
     if (!feature.system.uses.value) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercingShot', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog(feature.name, [['Yes', true], ['No', false]], 'Use Piercing Shot?');
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Use Piercing Shot?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;

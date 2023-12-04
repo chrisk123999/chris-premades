@@ -18,9 +18,10 @@ import {cast} from './macros/animations/cast.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
-import {squareTemplate} from './fixes/squareTemplate.js';
 import {colorizeDAETitleBarButton} from './integrations/dae.js';
 import {firearm} from './macros/mechanics/firearm.js';
+import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
+import {addActions} from './macros/actions/token.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -948,6 +949,25 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Baldur\'s Gate 3 Weapon Actions', 'Homebrew');
+    game.settings.register(moduleName, 'Add Generic Actions', {
+        'name': 'Add Generic Actions',
+        'hint': 'When enabled special actions will be added to the actor on token drop.',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': 'none',
+        'choices': {
+            'none': 'None',
+            'all': 'All Actors',
+            'npc': 'All NPC Actors',
+            'character': 'All Character Actors',
+            'uNpc': 'Unlinked NPC Actors',
+            'uCharacter': 'Unlinked Character Actors',
+            'lNpc': 'Linked NPC Actors',
+            'lCharacter': 'Linked Character Actors'
+        }
+    });
+    addMenuSetting('Add Generic Actions', 'General');
     game.settings.register(moduleName, 'Cast Animations', {
         'name': ' Cast Animations',
         'hint': 'Enable to automatically play JB2A spell cast animations for all spells.',
@@ -1171,6 +1191,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Colorize Dynamic Active Effects', 'Module Integration');
+    game.settings.register(moduleName, 'Colorize Template Macro', {
+        'name': 'Colorize Template Macro Title Bar Button',
+        'hint': 'Enabling this will make colorize the Template Macro title bar button.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('renderItemSheet', templateMacroTitleBarButton);
+            } else {
+                Hooks.off('renderItemSheet', templateMacroTitleBarButton);
+            }
+        }
+    });
+    addMenuSetting('Colorize Template Macro', 'Module Integration');
     game.settings.register(moduleName, 'D&D5E Animations Sounds', {
         'name': 'D&D5E Animations Sounds',
         'hint': 'Play sounds from the D&D5E Animations module (when available).',
@@ -1192,22 +1228,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
-    game.settings.register(moduleName, 'Fix Square Templates', {
-        'name': 'Fix Square Templates',
-        'hint': 'Patches square templates to allow rotation.',
+    game.settings.register(moduleName, 'Build A Bonus Overlapping Effects', {
+        'name': 'Build A Bonus Overlapping Effects',
+        'hint': 'When enabled Build A Bonus auras will respect the overlapping spell effect and combining game effects rules.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
-        'default': false,
+        'default': true,
         'onChange': value => {
             if (value) {
-                squareTemplate.patch();
+                Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
             } else {
-                squareTemplate.unpatch();
+                Hooks.off('babonus.filterBonuses', buildABonus.overlappingEffects);
             }
         }
     });
-    addMenuSetting('Fix Square Templates', 'Mechanics');
+    addMenuSetting('Build A Bonus Overlapping Effects', 'Module Integration');
     game.settings.register(moduleName, 'Aura of Life', {
         'name': 'Aura of Life Spell Automation',
         'hint': 'Enabling this allows the automation of the Aura of Life spell via the use of Foundry hooks.',

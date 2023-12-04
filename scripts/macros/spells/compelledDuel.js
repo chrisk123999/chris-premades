@@ -77,6 +77,7 @@ async function attacked(workflow) {
 }
 async function movement(token, updates, diff, id) {
     if (!chris.isLastGM()) return;
+    if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation || !diff.animate) return;
     let effect = chris.findEffect(token.actor, 'Compelled Duel - Target');
     if (!effect) return;
@@ -94,7 +95,7 @@ async function movement(token, updates, diff, id) {
         }
     };
     let oldDistance = chris.getDistance(sourceToken, fakeTargetToken);
-    await token.object._animation;
+    await token.object?._animation;
     let distance = chris.getDistance(sourceToken, token);
     if (oldDistance >= distance || distance <= 30) return;
     let turnCheck = chris.perTurnCheck(effect, 'spell', 'compelledDuel');

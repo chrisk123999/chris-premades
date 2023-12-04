@@ -10,5 +10,7 @@ export async function viciousIntent({speaker, actor, token, character, item, arg
     }
     critical.threshold = 19;
     workflow.item = workflow.item.clone({'system.critical': critical}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }

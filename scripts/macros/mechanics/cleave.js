@@ -8,25 +8,11 @@ export async function cleave(workflow) {
     let oldHP = workflow.damageList[0].oldHP;
     let leftoverDamage = workflow.damageList[0].appliedDamage - (oldHP - newHP);
     if (leftoverDamage === 0) return;
-    let sourceNearbyTargets = chris.findNearby(workflow.token, 5, 'enemy');
-    let targetNearbyTargets = chris.findNearby(workflow.targets.first(), 5, 'ally');
-    if (sourceNearbyTargets.length === 0 || targetNearbyTargets.length === 0) return;
-    let overlappingTargets = targetNearbyTargets.filter(function (obj) {
-        return sourceNearbyTargets.indexOf(obj) !== -1;
-    });
-    if (overlappingTargets.length === 0) return;
-    let buttons = [
-        {
-            'label': 'Yes',
-            'value': true
-        }, {
-            'label': 'No',
-            'value': false
-        }
-    ];
-    let selection = await chris.selectTarget('Cleave nearby target?', buttons, overlappingTargets, true, 'one');
+    let nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value ?? 5, 'enemy');
+    if (nearbyTargets.length === 0) return;
+    let selection = await chris.selectTarget('Cleave', constants.yesNoButton, nearbyTargets, true, 'one', false, false, 'Cleave a nearby target?');
     if (selection.buttons === false) return;
-    let targetTokenID = selection.inputs.find(id => id != false);
+    let targetTokenID = selection.inputs.find(i => i);
     if (!targetTokenID) return;
     let weaponData = duplicate(workflow.item.toObject());
     delete(weaponData.effects);

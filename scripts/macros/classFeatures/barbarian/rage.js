@@ -195,6 +195,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             if (selection) await callTheHunt.use();
         }
     }
+    let wildSurge = chris.getItem(workflow.actor, 'Wild Surge');
+    if (wildSurge) await wildSurge.use();
 }
 async function end({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor) return;
