@@ -737,6 +737,7 @@ export let chris = {
     'createTemplate': async function _createTemplate(templateData, returnTokens) {
         let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
         if (!returnTokens) return template;
+        await warpgate.wait(200);
         let tokens = await game.modules.get('templatemacro').api.findContained(template).map(t => template.parent.tokens.get(t));
         return {'template': template, 'tokens': tokens};
     },

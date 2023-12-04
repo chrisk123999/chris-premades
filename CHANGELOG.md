@@ -1,3 +1,14 @@
+# 0.9.5 Release:
+## New Content:
+- Path of Wild Magic Barbarian: Wild Surge, Bolstering Magic, Unstable Backlash, Controlled Surge
+## Bug Fixes:
+- Guardian of Faith
+- Eldritch Blast
+- Cleave
+- Twinned Spell
+## Update Notes:
+- Added a setting to automatically add generic actions to upon token drop.
+  
 # 0.9.4 Release:
 ## New Content:
 - Spell: Searing Smite

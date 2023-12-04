@@ -28,6 +28,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     new Sequence().effect().atLocation(workflow.token).stretchTo(workflow.targets.first()).file(animation).missed(workflow.hitTargets.size === 0).play();
 }
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (!workflow.damageRoll) return;
     let agonizingBlast = workflow.actor.flags['chris-premades']?.feature?.agonizingBlast ?? chris.getConfiguration(workflow.item, 'agonizingblast');
     if (!agonizingBlast) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'agonizingBlast', 50);

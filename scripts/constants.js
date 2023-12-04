@@ -38,7 +38,8 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel, consume)
             'consumeQuantity': consume ?? false,
             'consumeUsage': consume ?? false,
             'consumeSpellSlot': useSpellSlot ?? false,
-            'consumeSpellLevel': castLevel ?? false
+            'consumeSpellLevel': castLevel ?? false,
+            'slotLevel': castLevel ?? false
         },
         {
             'targetUuids': targets,

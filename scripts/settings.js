@@ -21,6 +21,7 @@ import {dndAnimations} from './integrations/dndAnimations.js';
 import {colorizeDAETitleBarButton} from './integrations/dae.js';
 import {firearm} from './macros/mechanics/firearm.js';
 import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
+import {addActions} from './macros/actions/token.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 export function registerSettings() {
@@ -948,6 +949,25 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Baldur\'s Gate 3 Weapon Actions', 'Homebrew');
+    game.settings.register(moduleName, 'Add Generic Actions', {
+        'name': 'Add Generic Actions',
+        'hint': 'When enabled special actions will be added to the actor on token drop.',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': 'none',
+        'choices': {
+            'none': 'None',
+            'all': 'All Actors',
+            'npc': 'All NPC Actors',
+            'character': 'All Character Actors',
+            'uNpc': 'Unlinked NPC Actors',
+            'uCharacter': 'Unlinked Character Actors',
+            'lNpc': 'Linked NPC Actors',
+            'lCharacter': 'Linked Character Actors'
+        }
+    });
+    addMenuSetting('Add Generic Actions', 'General');
     game.settings.register(moduleName, 'Cast Animations', {
         'name': ' Cast Animations',
         'hint': 'Enable to automatically play JB2A spell cast animations for all spells.',

@@ -381,21 +381,12 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
         queue.remove(workflow.item.uuid);
         return;
     }
-    let buttons = [
-        {
-            'label': 'Yes',
-            'value': true
-        }, {
-            'label': 'No',
-            'value': false
-        }
-    ];
-    let selected = await chris.selectTarget('Use Twinned Spell?', buttons, nearbyTargets, true, 'one');
-    if (selected.buttons === false) {
+    let selected = await chris.selectTarget('Use Twinned Spell?', constants.yesNoButton, nearbyTargets, true, 'one');
+    if (!selected.buttons) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    let targetTokenUuid = selected.inputs.find(id => id != false);
+    let targetTokenUuid = selected.inputs.find(id => id);
     if (!targetTokenUuid) {
         queue.remove(workflow.item.uuid);
         return;

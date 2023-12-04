@@ -2022,6 +2022,26 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Wild Surge': {
+                'text': {
+                    'flumph-avatar': {
+                        'label': 'Flumph Avatar',
+                        'default': ''
+                    },
+                    'flumph-token': {
+                        'label': 'Flumph Token',
+                        'default': ''
+                    },
+                    'pixie-avatar': {
+                        'label': 'Pixie Avatar',
+                        'default': ''
+                    },
+                    'pixie-token': {
+                        'label': 'Pixie Token',
+                        'default': ''
+                    }
+                }
             }
         },
         'automations': {
@@ -5148,6 +5168,22 @@ export function setConfig() {
             'Searing Smite': {
                 'name': 'Searing Smite',
                 'version': '0.9.4'
+            },
+            'Wild Surge': {
+                'name': 'Wild Surge',
+                'version': '0.9.5'
+            },
+            'Controlled Surge': {
+                'name': 'Controlled Surge',
+                'version': '0.9.5'
+            },
+            'Unstable Backlash': {
+                'name': 'Unstable Backlash',
+                'version': '0.9.5'
+            },
+            'Bolstering Magic': {
+                'name': 'Bolstering Magic',
+                'version': '0.9.5'
             }
         }
     });

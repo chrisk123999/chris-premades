@@ -39,6 +39,7 @@ import {blight} from './macros/spells/blight.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
+import {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
 import {boomingBlade} from './macros/spells/boomingBlade.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
@@ -326,6 +327,7 @@ import {vortexWarp} from './macros/spells/vortexWarp.js';
 import {wandOfTheWarMage} from './macros/items/wandOfTheWarMage.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
+import {wildSurge} from './macros/classFeatures/barbarian/wildMagic/wildSurge.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wrapsOffDyamak} from './macros/items/wrapsOffDyamak.js';
@@ -415,7 +417,8 @@ let onHit = {
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
     'wardingBond': wardingBond.onHit,
-    'armorOfAgathys': armorOfAgathys.onHit
+    'armorOfAgathys': armorOfAgathys.onHit,
+    'wildSurgeRetribution': wildSurge.retribution
 }
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
@@ -460,6 +463,9 @@ async function onMoveEffect(macroName, token, selectedAura) {
             break;
         case 'auraOfWarding':
             await auraOfWarding(token, selectedAura);
+            break;
+        case 'protectiveLights':
+            await wildSurge.protectiveLights.aura(token, selectedAura);
             break;
     }
 }
@@ -526,6 +532,7 @@ export let macros = {
     'blight': blight,
     'blink': blink,
     'bloodSpear': bloodSpear,
+    'bolsteringMagic': bolsteringMagic,
     'boomingBlade': boomingBlade,
     'brandOfCastigation': brandOfCastigation,
     'breathOfTheDragon': breathOfTheDragon,
@@ -764,6 +771,7 @@ export let macros = {
     'wandOfTheWarMage': wandOfTheWarMage,
     'wardingBond': wardingBond,
     'wildShape': wildShape,
+    'wildSurge': wildSurge,
     'wildhunt': wildhunt,
     'witherAndBloom': witherAndBloom,
     'wrapsOffDyamak': wrapsOffDyamak,
