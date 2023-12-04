@@ -5171,7 +5171,10 @@ export function setConfig() {
             },
             'Wild Surge': {
                 'name': 'Wild Surge',
-                'version': '0.9.5'
+                'version': '0.9.5',
+                'actors': [
+                    'CPR - Intangible Spirit'
+                ]
             },
             'Controlled Surge': {
                 'name': 'Controlled Surge',

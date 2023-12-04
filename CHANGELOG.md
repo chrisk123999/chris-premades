@@ -1,3 +1,7 @@
+# 0.9.6 Release:
+## Bug Fixes:
+- Wild Surge
+  
 # 0.9.5 Release:
 ## New Content:
 - Path of Wild Magic Barbarian: Wild Surge, Bolstering Magic, Unstable Backlash, Controlled Surge
@@ -7,7 +11,7 @@
 - Cleave
 - Twinned Spell
 ## Update Notes:
-- Added a setting to automatically add generic actions to upon token drop.
+- Added a setting to automatically add generic actions upon token drop.
   
 # 0.9.4 Release:
 ## New Content:
