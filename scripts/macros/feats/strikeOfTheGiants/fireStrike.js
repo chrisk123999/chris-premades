@@ -24,6 +24,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
     let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamage).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
+    await originFeature.displayCard();
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {

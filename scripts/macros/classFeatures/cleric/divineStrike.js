@@ -1,16 +1,15 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.isFumble || workflow.item.type != 'weapon') return;
-    let effect = chris.findEffect(workflow.actor, 'Divine Strike');
-    if (!effect) return;
-    let feature = await fromUuid(effect.origin);
+    let feature = chris.getItem(workflow.actor, 'Divine Strike')
     if (!feature) return;
     let doExtraDamage = chris.perTurnCheck(feature, 'feature', 'divineStrike', true, workflow.token.id);
     if (!doExtraDamage) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'divineStrike', 250);
     if (!queueSetup) return;
-    let selection = await chris.dialog('Divine Strike: Apply extra damage?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog(feature.name, constants.yesNo, 'Divine Strike: Apply extra damage?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
@@ -23,7 +22,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageType = chris.getConfiguration(feature, 'damageType');
+    let damageType = chris.getConfiguration(feature, 'damagetype');
     if (!damageType || damageType === 'default') {
         switch (subClassIdentifier) {
             case 'death-domain':

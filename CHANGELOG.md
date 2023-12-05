@@ -1,3 +1,7 @@
+# 0.9.7 Release:
+## Bug Fixes:
+- Divine Strike
+  
 # 0.9.6 Release:
 ## Bug Fixes:
 - Wild Surge

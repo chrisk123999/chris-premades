@@ -1063,7 +1063,7 @@ export function setConfig() {
             },
             'Divine Strike': {
                 'select': {
-                    'damageType': {
+                    'damagetype': {
                         'label': 'Override damage type?',
                         'default': 'default',
                         'values': [
