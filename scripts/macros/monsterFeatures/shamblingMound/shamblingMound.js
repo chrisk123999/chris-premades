@@ -1,6 +1,7 @@
-import {engulf} from './engulf.js';
+import {engulf, engulfGrapple} from './engulf.js';
 import {slam} from './slam.js';
 export let shamblingMound = {
     'engulf': engulf,
-    'slam': slam
+    'slam': slam,
+    'engulfGrapple': engulfGrapple
 }

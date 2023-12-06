@@ -2,9 +2,6 @@ import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {translate} from '../../../translations.js';
 export async function smotherDamage(origin, token, actor) {
-    let sourceTokenId = actor.flags['chris-premades']?.monster?.rugOfSmothering?.smother
-    if (!sourceTokenId) return;
-    if (game.combat.current.tokenId != sourceTokenId) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Monster Feature Items', 'Rug of Smothering - Smother', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rug of Smothering - Smother');
@@ -35,6 +32,6 @@ export async function smother({speaker, actor, token, character, item, args, sco
             'description': workflow.item.name
         };
         await warpgate.mutate(workflow.token.document, targetUpdate, {}, options);
-        game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true});
+        game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true, 'MountingEffectsOverride': []});
     }
 }
