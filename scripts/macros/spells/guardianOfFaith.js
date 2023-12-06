@@ -9,7 +9,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let spellDC = chris.getSpellDC(workflow.item);
     let effectData = {
-        'label': 'Guardian of Faith',
+        'name': 'Guardian of Faith',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 28800
@@ -46,7 +46,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'embedded': {
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             },
             'Item': {
                 [featureData.name]: featureData
@@ -71,7 +71,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let targetEffect = chris.findEffect(spawnedToken.actor, 'Guardian of Faith');
     if (!targetEffect) return;
     let casterEffectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 28800

@@ -22,7 +22,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             seconds = 3600;
     }
     let targetEffectData = {
-        'label': 'Marked',
+        'name': 'Marked',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -41,7 +41,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await chrisPremades.helpers.removeEffect(targetEffect);
     }
     let sourceEffectData = {
-        'label': 'Hunter\'s Mark',
+        'name': 'Hunter\'s Mark',
         'icon': workflow.item.img,
         'changes': [
             {
@@ -81,14 +81,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [sourceEffectData.label]: sourceEffectData
+                [sourceEffectData.name]: sourceEffectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': sourceEffectData.label,
-        'description': sourceEffectData.label
+        'name': sourceEffectData.name,
+        'description': sourceEffectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
@@ -138,7 +138,7 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     let duration = 3600;
     if (effect) duration = effect.duration.remaining;
     let effectData = {
-        'label': 'Marked',
+        'name': 'Marked',
         'icon': workflow.item.img,
         'origin': oldTargetOrigin,
         'duration': {

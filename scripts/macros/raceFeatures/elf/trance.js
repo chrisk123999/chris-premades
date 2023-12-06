@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 export async function trance({speaker, actor, token, character, item, args, scope, workflow}) {
     let tools = {
@@ -51,16 +52,7 @@ export async function trance({speaker, actor, token, character, item, args, scop
                 'options': Object.keys(CONFIG.DND5E.weaponIds).map(i => ({'value': i, 'html': i.charAt(0).toUpperCase() + i.slice(1)})).concat(Object.keys(tools).map(i => ({'value': i, 'html': tools[i]})))
             }
         ],
-        'buttons': [
-            {
-                'label': 'Cancel',
-                'value': false
-            },
-            {
-                'label': 'OK',
-                'value': true
-            }
-        ]
+        'buttons': constants.okCancel
     }, {
         'title': workflow.item.name,
         'render': dialogRender
@@ -70,7 +62,7 @@ export async function trance({speaker, actor, token, character, item, args, scop
         await warpgate.revert(token.document, 'Trance');
     }
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

@@ -20,7 +20,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 await chrisPremades.macros.lanternOfRevealing.end(token);
             }
             effectData = {
-                'label': 'Lantern Of Revealing - Aura',
+                'name': 'Lantern Of Revealing - Aura',
                 'icon': workflow.item.img,
                 'duration': {
                     'seconds': 21600
@@ -110,7 +110,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 await chris.removeEffect(effect);
             }
             effectData = {
-                'label': 'Lantern Of Revealing - Aura',
+                'name': 'Lantern Of Revealing - Aura',
                 'icon': workflow.item.img,
                 'duration': {
                     'seconds': 21600
@@ -150,7 +150,7 @@ async function aura(token, selectedAura) {
     let originItem = await fromUuid(auraEffect.origin);
     if (!originItem) return;
     let effectData = {
-        'label': 'Lantern Of Revealing - Revealed',
+        'name': 'Lantern Of Revealing - Revealed',
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {
@@ -170,7 +170,7 @@ async function aura(token, selectedAura) {
             }
         }
     }
-    let effect = chris.findEffect(token.actor, effectData.label);
+    let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);

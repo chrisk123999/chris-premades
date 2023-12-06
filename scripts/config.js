@@ -5187,6 +5187,21 @@ export function setConfig() {
             'Bolstering Magic': {
                 'name': 'Bolstering Magic',
                 'version': '0.9.5'
+            },
+            'Piercing Shot CR': {
+                'name': 'Piercing Shot CR',
+                'version': '0.9.6',
+                'settings': [
+                    'Critical Role Firearm Support'
+                ]
+            },
+            'Borrowed Knowledge': {
+                'name': 'Borrowed Knowledge',
+                'version': '0.9.6'
+            },
+            'Skill Empowerment': {
+                'name': 'Skill Empowerment',
+                'version': '0.9.6'
             }
         }
     });

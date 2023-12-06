@@ -18,7 +18,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Sacred Weapon');
     }
     let effectData = {
-        'label': 'Sacred Weapon',
+        'name': 'Sacred Weapon',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -74,7 +74,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

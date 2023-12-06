@@ -6,7 +6,7 @@ async function celerity({speaker, actor, token, character, item, args, scope, wo
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;
     if (!classLevels) return;
     let effectData = {
-        'label': 'Mutagen - Celerity: Positive Effects',
+        'name': 'Mutagen - Celerity: Positive Effects',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -45,7 +45,7 @@ async function mobility({speaker, actor, token, character, item, args, scope, wo
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;
     if (!classLevels) return;
     let effectData = {
-        'label': 'Mutagen - Mobility: Positive Effects',
+        'name': 'Mutagen - Mobility: Positive Effects',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -94,7 +94,7 @@ async function potency({speaker, actor, token, character, item, args, scope, wor
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;
     if (!classLevels) return;
     let effectData = {
-        'label': 'Mutagen - Potency: Positive Effects',
+        'name': 'Mutagen - Potency: Positive Effects',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -133,7 +133,7 @@ async function rapidity({speaker, actor, token, character, item, args, scope, wo
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;
     if (!classLevels) return;
     let effectData = {
-        'label': 'Mutagen - Rapidity: Positive Effects',
+        'name': 'Mutagen - Rapidity: Positive Effects',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -178,7 +178,7 @@ async function sagacity({speaker, actor, token, character, item, args, scope, wo
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;
     if (!classLevels) return;
     let effectData = {
-        'label': 'Mutagen - Sagacity: Positive Effects',
+        'name': 'Mutagen - Sagacity: Positive Effects',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -258,7 +258,7 @@ async function remove(origin) {
     );
 }
 async function strangeMetabolism({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effects = workflow.actor.effects.filter(effect => effect.label.includes('Mutagen - ') && effect.label.includes('Negative Effects'));
+    let effects = workflow.actor.effects.filter(effect => effect.name.includes('Mutagen - ') && effect.name.includes('Negative Effects'));
     let generatedMenu = [];
     for (let i of effects) {
         let originItem = await fromUuid(i.origin);
@@ -274,7 +274,7 @@ async function strangeMetabolism({speaker, actor, token, character, item, args, 
     if (!effect) return;
     await effect.update({'disabled': true});
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

@@ -19,7 +19,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Break Psychic Link');
     }
     let effectData = {
-        'label': 'Psychic Link',
+        'name': 'Psychic Link',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -44,7 +44,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

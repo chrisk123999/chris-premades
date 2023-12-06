@@ -14,7 +14,7 @@ async function chromaticInfusion({speaker, actor, token, character, item, args, 
         await warpgate.revert(token.document, 'Chromatic Infusion');
     }
     let effectData = {
-        'label': 'Chromatic Infusion',
+        'name': 'Chromatic Infusion',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -40,7 +40,7 @@ async function chromaticInfusion({speaker, actor, token, character, item, args, 
                 }
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
@@ -55,7 +55,7 @@ async function reactiveResistance({speaker, actor, token, character, item, args,
     let selection = await chris.dialog(workflow.item.name, [['🧪 Acid', 'acid'], ['❄️ Cold', 'cold'], ['🔥 Fire', 'fire'], ['⚡ Lightning', 'lightning'], ['☠️ Poision', 'poison']], 'What damage type?');
     if (!selection) return;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

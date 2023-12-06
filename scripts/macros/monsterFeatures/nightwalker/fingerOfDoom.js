@@ -13,7 +13,7 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
     let monsterName = sourceActor.name.split(' ').join('-').toLowerCase();
     let featureName = workflow.item.name.split(' ').join('-').toLowerCase();
     let effectData1 = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -42,7 +42,7 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let effectData2 = {
-        'label': workflow.item.name + ' Immune',
+        'name': workflow.item.name + ' Immune',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -59,14 +59,14 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
     }
     for (let i of workflow.targets) {
         if (workflow.failedSaves.has(i)) {
-            let effect = chris.findEffect(i.actor, effectData1.label);
+            let effect = chris.findEffect(i.actor, effectData1.name);
             if (effect) {
                 await chris.updateEffect(effect, {'duration.seconds': effectData1.duration.seconds});
             } else {
                 if (!chris.checkTrait(i.actor, 'ci', 'frightened')) await chris.createEffect(i.actor, effectData1);
             }
         } else {
-            let effect = chris.findEffect(i.actor, effectData2.label);
+            let effect = chris.findEffect(i.actor, effectData2.name);
             if (effect) {
                 await chris.updateEffect(effect, {'duration.seconds': effectData2.duration.seconds});
             } else {

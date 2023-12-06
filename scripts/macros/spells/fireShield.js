@@ -24,7 +24,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'cold': 'fire'
     };
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -82,7 +82,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

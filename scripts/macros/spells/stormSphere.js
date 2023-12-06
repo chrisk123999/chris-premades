@@ -13,7 +13,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await chrisPremades.macros.stormSphere.turnStart(actor, effect);
     }
     let effectData = {
-        'label': 'Storm Sphere Handler',
+        'name': 'Storm Sphere Handler',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -48,13 +48,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': effectData.label,
+        'name': effectData.name,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);

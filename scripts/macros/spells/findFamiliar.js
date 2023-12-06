@@ -89,7 +89,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.spell?.findFamiliar === true);
     if (!effect) return;
-    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.label][0];
+    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;
     let familiarToken = canvas.scene.tokens.get(familiarId);
     if (!familiarToken) return;
@@ -98,7 +98,7 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
         return;
     }
     let effectData = {
-        'label': 'Find Familiar Attack',
+        'name': 'Find Familiar Attack',
         'icon': '',
         'origin': effect.origin.uuid,
         'duration': {
@@ -139,7 +139,7 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
     }
     let effect = workflow.actor.effects.find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar === true);
     if (!effect) return;
-    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.label][0];
+    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;
     let familiarToken = canvas.scene.tokens.get(familiarId);
     if (!familiarToken) return;

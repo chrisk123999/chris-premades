@@ -12,7 +12,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Holy Weapon - Target');
     }
     let effectData = {
-        'label': 'Holy Weapon - Target',
+        'name': 'Holy Weapon - Target',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
@@ -53,7 +53,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
@@ -72,7 +72,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Holy Weapon');
     }
     let effectData2 = {
-        'label': 'Holy Weapon',
+        'name': 'Holy Weapon',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
@@ -105,7 +105,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData2.label]: effectData2
+                [effectData2.name]: effectData2
             }
         }
     };

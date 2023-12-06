@@ -1,3 +1,11 @@
+# 0.9.8 Release:
+## New Content:
+- Borrowed Knowledge (Thanks SagaTympana)
+- Skill Empowerment
+## Bug Fixes:
+- Trickshot 
+- Updated all macros to use effect names instead of labels.
+  
 # 0.9.7 Release:
 ## Bug Fixes:
 - Divine Strike

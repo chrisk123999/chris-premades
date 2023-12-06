@@ -11,7 +11,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     featureData.name = 'Dismiss Warding Bond: ' + targetToken.actor.name;
     setProperty(featureData, 'flags.chris-premades.spell.wardingBond.targetUuid', targetToken.document.uuid);
     let effectData = {
-        'label': 'Warding Bond: ' + targetToken.actor.name,
+        'name': 'Warding Bond: ' + targetToken.actor.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -42,7 +42,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
@@ -53,7 +53,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let effectData2 = {
-        'label': 'Warding Bond - Target',
+        'name': 'Warding Bond - Target',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

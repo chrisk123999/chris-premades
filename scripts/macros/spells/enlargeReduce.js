@@ -225,7 +225,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             await chrisPremades.macros.enlargeReduce.end(token);
         }
         let effectData = {
-            'label': workflow.item.name,
+            'name': workflow.item.name,
             'icon': workflow.item.img,
             'origin': workflow.item.uuid,
             'duration': {
@@ -309,7 +309,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'actor': actor,
             'embedded': {
                 'ActiveEffect': {
-                    [effectData.label]: effectData
+                    [effectData.name]: effectData
                 }
             }
         };
@@ -328,7 +328,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             await chrisPremades.macros.enlargeReduce.end(token);
         }
         let effectData = {
-            'label': workflow.item.name,
+            'name': workflow.item.name,
             'icon': workflow.item.img,
             'origin': workflow.item.uuid,
             'duration': {
@@ -411,7 +411,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'actor': actor,
             'embedded': {
                 'ActiveEffect': {
-                    [effectData.label]: effectData
+                    [effectData.name]: effectData
                 }
             }
         };

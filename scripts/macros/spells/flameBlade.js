@@ -28,7 +28,7 @@ export async function flameBlade({speaker, actor, token, character, item, args, 
         await warpgate.revert(token.document, 'Flame Blade');
     }
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 600
@@ -68,7 +68,7 @@ export async function flameBlade({speaker, actor, token, character, item, args, 
                 [featureData2.name]: featureData2
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

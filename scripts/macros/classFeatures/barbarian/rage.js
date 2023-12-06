@@ -76,7 +76,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'seconds': 60
         },
         'icon': workflow.item.img,
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'origin': workflow.item.uuid,
         'flags': {
             'effectmacro': {
@@ -159,7 +159,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

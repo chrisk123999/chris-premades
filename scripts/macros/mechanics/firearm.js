@@ -2,7 +2,7 @@ import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 function setup(enabled) {
     if (enabled) {
-        CONFIG.DND5E.weaponIds['firearmCR'] = 'chris-premades.CPR Item Features.OAl2Qv4lKE0qJoJP';
+        CONFIG.DND5E.weaponIds['firearmCR'] = 'chris-premades.CPR Item Features.rOfrToXtvyjWSD8B';
         CONFIG.DND5E.featureTypes.class.subtypes.trickShot = 'Trick Shot';
         Hooks.on('midi-qol.preItemRoll', status);
         Hooks.on('midi-qol.preCheckHits', misfire);

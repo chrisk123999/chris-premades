@@ -26,7 +26,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await chrisPremades.macros.heatMetal.removed(effect);
     }
     let effectData = {
-        'label': 'Heat Metal',
+        'name': 'Heat Metal',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -56,19 +56,19 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': effectData.label,
+        'name': effectData.name,
         'description': featureData.name,
         'origin': workflow.item.uuid
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let effectData2 = {
-        'label': 'Heat Metal Dialogue',
+        'name': 'Heat Metal Dialogue',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 6
@@ -113,7 +113,7 @@ async function pulseItem({speaker, actor, token, character, item, args, scope, w
     let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid]);
     await MidiQOL.completeItemUse(feature, config, options);
     let effectData = {
-        'label': 'Heat Metal Dialogue',
+        'name': 'Heat Metal Dialogue',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 6
@@ -159,7 +159,7 @@ async function dialogue(token, actor, effect, origin) {
     let originUuid = effect.flags['chris-premades']?.spell?.heatMetal?.originUuid;
     if (!originUuid) return;
     let effectData = {
-        'label': 'Heat Metal Held',
+        'name': 'Heat Metal Held',
         'icon': origin.img,
         'changes': [
             {

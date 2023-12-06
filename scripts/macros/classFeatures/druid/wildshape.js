@@ -1,3 +1,4 @@
+import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!game.modules.get('quick-insert')?.active) {
@@ -35,15 +36,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             let equipedItems = workflow.actor.items.filter(i => i.system.equipped);
             let selection;
             if (equipedItems.length > 0) {
-                let buttons = [
-                    {
-                        'label': 'Ok',
-                        'value': true
-                    }, {
-                        'label': 'Cancel',
-                        'value': false
-                    }
-                ];
                 let options = [
                     'Merge / Drop',
                     'Wear'
@@ -77,7 +69,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 selection = await warpgate.menu(
                     {
                         'inputs': generatedInputs,
-                        'buttons': buttons
+                        'buttons': constants.okCancel
                     },
                     config
                 );
@@ -145,7 +137,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             if (!featureData) return;
             featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Wild Shape - Revert');
             let effectData = {
-                'label': 'Wild Shape',
+                'name': 'Wild Shape',
                 'icon': workflow.item.img,
                 'duration': {
                     'seconds': Math.min(druidLevels / 2) * 3600
@@ -230,7 +222,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData
+                        [effectData.name]: effectData
                     }
                 }
             }

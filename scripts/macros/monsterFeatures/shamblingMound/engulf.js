@@ -19,7 +19,6 @@ export async function engulf(origin, token, actor) {
     let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
 }
-
 export async function engulfGrapple({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.hitTargets.size) return
     let targetToken = workflow.targets.first();
@@ -32,7 +31,6 @@ export async function engulfGrapple({speaker, actor, token, character, item, arg
             'name': workflow.item.name,
             'description': workflow.item.name
         };
-        console.log(targetToken);
         await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
         game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true, 'MountingEffectsOverride': []});
     }

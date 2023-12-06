@@ -19,7 +19,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Moonbeam');
     }
     let effectData = {
-        'label': 'Moonbeam',
+        'name': 'Moonbeam',
         'icon': workflow.item.img,
         'transfer': false,
         'origin': workflow.item.uuid,
@@ -50,14 +50,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': effectData.label,
-        'description': effectData.label
+        'name': effectData.name,
+        'description': effectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
 }

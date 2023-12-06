@@ -23,7 +23,7 @@ async function bardicInspirationAttack({speaker, actor, token, character, item, 
     await chris.removeEffect(effect);
     let updatedRoll = await chris.addToRoll(workflow.attackRoll, bardDice);
     workflow.setAttackRoll(updatedRoll);
-    if (effect.label === 'Inspired (Mote of Potential)') {
+    if (effect.name === 'Inspired (Mote of Potential)') {
         let bardDie = updatedRoll.terms[updatedRoll.terms.length - 1].total;
         let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Mote of Potential Attack', false);
         if (!featureData) {

@@ -31,7 +31,7 @@ export async function item({speaker, actor, token, character, item, args, scope,
         await warpgate.revert(token.document, 'Douse Fire');
     }
     let effectData = {
-        'label': 'Douse Fire',
+        'name': 'Douse Fire',
         'icon': featureData.img,
         'duration': {
             'seconds': 604800
@@ -56,7 +56,7 @@ export async function item({speaker, actor, token, character, item, args, scope,
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

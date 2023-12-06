@@ -37,6 +37,7 @@ export let chris = {
     },
     'createEffect': async function _createEffect(actor, effectData) {
         if (effectData.label) {
+            console.warn('The effect "' + effectData.label + '" has effect data with a label instead of a name!');
             effectData.name = effectData.label;
             delete effectData.label;
         }
@@ -398,18 +399,18 @@ export let chris = {
         game.user.updateTokenTargets(targets);
     },
     'increaseExhaustion': async function _increaseExhaustion(actor, originUuid) {
-        let effect = actor.effects.find(eff => eff.label.includes('Exhaustion'));
+        let effect = actor.effects.find(eff => eff.name.includes('Exhaustion'));
         if (!effect) {
             await chris.addCondition(actor, 'Exhaustion 1', false, originUuid);
             return;
         }
-        let level = Number(effect.label.substring(11));
+        let level = Number(effect.name.substring(11));
         if (isNaN(level)) return;
         if (level >= 5) {
             await chris.addCondition(actor, 'Dead', true, originUuid);
             return;
         }
-        let conditionName = effect.label.substring(0, 11) + (level + 1);
+        let conditionName = effect.name.substring(0, 11) + (level + 1);
         await chris.removeEffect(effect);
         await chris.addCondition(actor, conditionName, false, originUuid);
     },
@@ -594,7 +595,7 @@ export let chris = {
     },
     'selectDocuments': async function selectDocuments(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
-            let buttons = {cancel: {label: `Cancel`, callback: () => resolve(false)}, confirm: {label: `Confirm`, callback: (html) => getDocuments(html, documents)}},
+            let buttons = {cancel: {'label': `Cancel`, callback: () => resolve(false)}, 'confirm': {'label': `Confirm`, callback: (html) => getDocuments(html, documents)}},
                 dialog;
             let content = `<form>`;
             content += `<datalist id = 'defaultNumbers'>`;

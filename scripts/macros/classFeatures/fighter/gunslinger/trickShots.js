@@ -10,7 +10,7 @@ async function runFeature(workflow, featureName) {
     if (!originItem) return;
     featureData._id = originItem.id;
     featureData.system.save.dc = chris.getSpellDC(originItem);
-    let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await warpgate.wait(100);
     return await MidiQOL.completeItemUse(feature, config, options);

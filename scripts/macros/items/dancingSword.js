@@ -13,7 +13,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
     }
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -46,7 +46,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'embedded': {
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
@@ -78,7 +78,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let targetEffect = chris.findEffect(spawnedToken.actor, workflow.item.name);
     if (!targetEffect) return;
     let casterEffectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -118,7 +118,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [attackFeatureData.name]: attackFeatureData
             },
             'ActiveEffect': {
-                [casterEffectData.label]: casterEffectData
+                [casterEffectData.name]: casterEffectData
             }
         }
     };

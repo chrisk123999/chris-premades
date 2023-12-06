@@ -21,7 +21,7 @@ export async function cartomancer({speaker, actor, token, character, item, args,
         await warpgate.revert(token.document, 'Cartomancer');
     }
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -51,7 +51,7 @@ export async function cartomancer({speaker, actor, token, character, item, args,
                 [spellData.name]: spellData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

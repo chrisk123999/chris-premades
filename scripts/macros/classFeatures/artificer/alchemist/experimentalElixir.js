@@ -52,7 +52,7 @@ export async function experimentalElixir({speaker, actor, token, character, item
             ]);
         }
         let effectData = {
-            'label': itemData.name + ' Item',
+            'name': itemData.name + ' Item',
             'icon': '', //Blank to avoid showing up as a status icon.
             'duration': {
                 'seconds': 604800
@@ -80,14 +80,14 @@ export async function experimentalElixir({speaker, actor, token, character, item
                     [itemData.name]: itemData
                 },
                 'ActiveEffect': {
-                    [effectData.label]: effectData
+                    [effectData.name]: effectData
                 }
             }
         };
         let options = {
             'permanent': false,
-            'name': effectData.label,
-            'description': effectData.label
+            'name': effectData.name,
+            'description': effectData.name
         };
         await warpgate.mutate(workflow.token.document, updates, {}, options);
     }

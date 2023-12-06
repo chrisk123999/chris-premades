@@ -7,14 +7,14 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Hex - Move');
     let queueSetup = await queue.setup(workflow.item.uuid, 'hex', 50);
     if (!queueSetup) return;
-    let selection = await chris.dialog('What ability should have disadvantage?', [
+    let selection = await chris.dialog(workflow.item.name, [
         ['Strength', 'str'],
         ['Dexterity', 'dex'],
         ['Constitution', 'con'],
         ['Intelligence', 'int'],
         ['Wisdom', 'wis'],
         ['Charisma', 'cha']
-    ]);
+    ], 'What ability should have disadvantage?');
     if (!selection) selection = 'str';
     let seconds;
     switch (workflow.castData.castLevel) {
@@ -33,7 +33,7 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
             seconds = 3600;
     }
     let targetEffectData = {
-        'label': 'Hexed',
+        'name': 'Hexed',
         'icon': 'icons/magic/perception/silhouette-stealth-shadow.webp',
         'origin': workflow.item.uuid,
         'duration': {
@@ -60,7 +60,7 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
         await chrisPremades.helpers.removeEffect(targetEffect);
     }
     let sourceEffectData = {
-        'label': 'Hex',
+        'name': 'Hex',
         'icon': workflow.item.img,
         'changes': [
             {
@@ -100,14 +100,14 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [sourceEffectData.label]: sourceEffectData
+                [sourceEffectData.name]: sourceEffectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': sourceEffectData.label,
-        'description': sourceEffectData.label
+        'name': sourceEffectData.name,
+        'description': sourceEffectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
@@ -160,7 +160,7 @@ async function hexMoveItem({speaker, actor, token, character, item, args, scope,
     let duration = 3600;
     if (effect) duration = effect.duration.remaining;
     let effectData = {
-        'label': 'Hexed',
+        'name': 'Hexed',
         'icon': 'icons/magic/perception/silhouette-stealth-shadow.webp',
         'origin': oldTargetOrigin,
         'duration': {

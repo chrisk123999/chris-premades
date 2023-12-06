@@ -12,7 +12,7 @@ async function turnStart(token, actor) {
         let feature2 = new CONFIG.Item.documentClass(featureData2, {'parent': workflow.actor});
         if (levels >= 15) {
             let effectData2 = {
-                'label': 'Condition Advantage',
+                'name': 'Condition Advantage',
                 'icon': 'icons/magic/time/arrows-circling-green.webp',
                 'duration': {
                     'seconds': 1,
@@ -115,7 +115,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
         );
     }
     let effectData = {
-        'label': 'Hybrid Transformation',
+        'name': 'Hybrid Transformation',
         'icon': workflow.item.img,
         'changes': changes,
         'disabled': false,
@@ -153,7 +153,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
                 [weaponData.name]: weaponData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
@@ -166,7 +166,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
     }
     let options = {
         'permanent': false,
-        'name': effectData.label,
+        'name': effectData.name,
         'description': effectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);

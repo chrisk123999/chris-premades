@@ -8,7 +8,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await warpgate.revert(token.document, 'Potion of Fire Breath');
     }
     let effectData = {
-        'label': 'Potion of Fire Breath',
+        'name': 'Potion of Fire Breath',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
@@ -28,13 +28,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': effectData.label,
+        'name': effectData.name,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);

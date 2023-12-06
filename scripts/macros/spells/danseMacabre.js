@@ -1,22 +1,11 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 export async function danseMacabre({speaker, actor, token, character, item, args, scope, workflow}) {
     let zombieActor = game.actors.getName('CPR - Zombie');
     let skeletonActor = game.actors.getName('CPR - Skeleton');
-    if (!zombieActor || !skeletonActor) {
-        ui.notifications.warn('Missing required sidebar actor!');
-        return;
-    }
+    if (!zombieActor || !skeletonActor) return;
     let nearbyTokens = await chris.findNearby(workflow.token, 60, 'all', true).filter(t => t.actor.system.attributes.hp.value === 0 && !chris.findEffect(t.actor, 'Unconscious'));
-    if (nearbyTokens.length === 0) return;
-    let buttons = [
-        {
-            'label': 'Ok',
-            'value': true
-        }, {
-            'label': 'Cancel',
-            'value': false
-        }
-    ];
+    if (!nearbyTokens.length) return;
     let options = [
         'Ignore',
         'Skeleton',
@@ -30,7 +19,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         damageBonus = workflow.actor.system.attributes.prof;
     }
     let maxTargets = 5 + ((workflow.castData.castLevel - 5) * 2);
-    let selection = await chris.selectTarget('Select your targets. (Max: ' + maxTargets + ')', buttons, nearbyTokens, true, 'select', options);
+    let selection = await chris.selectTarget('Select your targets. (Max: ' + maxTargets + ')', constants.okCancel, nearbyTokens, true, 'select', options);
     if (!selection.buttons) return;
     let totalSelected = selection.inputs.filter(i => i != 'Ignore').length;
     if (totalSelected > maxTargets) {
@@ -100,7 +89,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     let spellMod = '+ ' + chris.getSpellMod(workflow.item);
     if (damageBonus) spellMod += ' + ' + damageBonus;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'changes': [
             {
@@ -147,7 +136,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData
+                        [effectData.name]: effectData
                     }
                 }
             };
@@ -160,7 +149,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                 'embedded': {
                     'Item': itemUpdates,
                     'ActiveEffect': {
-                        [effectData.label]: effectData
+                        [effectData.name]: effectData
                     }
                 }
             };
@@ -183,7 +172,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         await warpgate.revert(token.document, 'Danse Macabre - Command Undead');
     }
     let effectData2 = {
-        'label': workflow.item.name + ' - Caster',
+        'name': workflow.item.name + ' - Caster',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 3600
@@ -208,7 +197,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData2.label]: effectData2
+                [effectData2.name]: effectData2
             }
         }
     };

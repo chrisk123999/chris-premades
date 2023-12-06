@@ -41,7 +41,7 @@ async function aura(token, selectedAura) {
     let originItem = await fromUuid(auraEffect.origin);
     if (!originItem) return;
     let effectData = {
-        'label': 'Aura of Life',
+        'name': 'Aura of Life',
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {
@@ -56,7 +56,7 @@ async function aura(token, selectedAura) {
             }
         ]
     };
-    let effect = chris.findEffect(token.actor, effectData.label);
+    let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) await chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);

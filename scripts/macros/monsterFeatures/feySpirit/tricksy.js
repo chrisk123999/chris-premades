@@ -43,7 +43,7 @@ export async function tricksy({speaker, actor, token, character, item, args, sco
     if (!effect) return;
     if (!chris.inCombat()) return;
     await effect.update({
-        'label': effect.label + ' (' + game.combat.round + '-' + game.combat.turn + ')',
+        'name': effect.name + ' (' + game.combat.round + '-' + game.combat.turn + ')',
         'origin': workflow.actor.uuid,
         'flags': {
             'dae': {

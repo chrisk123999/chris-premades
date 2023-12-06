@@ -5,7 +5,7 @@ async function effectMacro() {
     await chrisPremades.macros.emboldeningBond.remove(token);
 }
 let effectData = {
-    'label': 'Emboldening Bond Bonus',
+    'name': 'Emboldening Bond Bonus',
     'changes': [
         {
             'key': 'flags.midi-qol.optional.emboldeningBond.count',
@@ -125,7 +125,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         await chrisPremades.macros.emboldeningBond.removeBonus(token);
     }
     let effectData3 = {
-        'label': 'Emboldening Bond',
+        'name': 'Emboldening Bond',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 600,
@@ -225,7 +225,7 @@ async function damage(targetToken, {workflow, ditem}) {
             await chrisPremades.macros.emboldeningBond.teleport(token);
         }
         let effectData = {
-            'label': featureData.name,
+            'name': featureData.name,
             'icon': featureData.img,
             'duration': {
                 'seconds': 1
@@ -245,7 +245,7 @@ async function damage(targetToken, {workflow, ditem}) {
                     [featureData.name]: featureData
                 },
                 'ActiveEffect': {
-                    [effectData.label]: effectData
+                    [effectData.name]: effectData
                 }
             }
         };

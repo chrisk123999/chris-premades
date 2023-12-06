@@ -13,7 +13,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
         await warpgate.revert(token.document, 'Eladrin Season');
     }
     let effectData = {
-        'label': 'Eladrin Season',
+        'name': 'Eladrin Season',
         'icon': workflow.item.img,
         'changes': [
             {
@@ -51,7 +51,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
     let updates = {
         'embedded': {
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

@@ -12,7 +12,7 @@ export async function touch({speaker, actor, token, character, item, args, scope
         await warpgate.revert(token.document, 'Douse Fire');
     }
     let effectData = {
-        'label': 'Douse Fire',
+        'name': 'Douse Fire',
         'icon': featureData.img,
         'duration': {
             'seconds': 604800
@@ -26,11 +26,11 @@ export async function touch({speaker, actor, token, character, item, args, scope
             },
         }
     };
-    let effects = {[effectData.label]: effectData};
+    let effects = {[effectData.name]: effectData};
     let effect2 = chris.findEffect(targetActor, 'Fire Form');
     if (!effect2) {
         let effect2Data = {
-            'label': 'Fire Form',
+            'name': 'Fire Form',
             'icon': 'icons/magic/fire/projectile-embers-orange.webp',
             'changes': [
                 {
@@ -58,7 +58,7 @@ export async function touch({speaker, actor, token, character, item, args, scope
                 }
             }
         }
-        effects[effect2Data.label] = effect2Data;
+        effects[effect2Data.name] = effect2Data;
     }
     let updates = {
         'embedded': {

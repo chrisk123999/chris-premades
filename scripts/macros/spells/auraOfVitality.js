@@ -8,7 +8,7 @@ export async function auraOfVitality({speaker, actor, token, character, item, ar
         await warpgate.revert(token.document, 'Aura of Vitality');
     }
     let effectData = {
-        'label': 'Aura of Vitality',
+        'name': 'Aura of Vitality',
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -33,13 +33,13 @@ export async function auraOfVitality({speaker, actor, token, character, item, ar
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };
     let options = {
         'permanent': false,
-        'name': effectData.label,
+        'name': effectData.name,
         'description': featureData.name,
         'origin': workflow.item.uuid
     };

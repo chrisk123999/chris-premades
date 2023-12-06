@@ -2,14 +2,14 @@ import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
 async function spawn(sourceActors, updates, duration, originItem, useActorOrigin = false, groupInitiative = false) {
     async function effectMacro () {
-        let summons = effect.flags['chris-premades']?.summons?.ids[effect.label];
+        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
         for (let i of summons) {await warpgate.dismiss(i)};
     }
     let effect = chris.findEffect(originItem.actor, originItem.name);
     if (!effect) {
         let casterEffectData = {
-            'label': originItem.name,
+            'name': originItem.name,
             'icon': originItem.img,
             'duration': {
                 'seconds': duration
@@ -34,7 +34,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     }
     if (!effect) return;
     let effectData = {
-        'label': 'Summoned Creature',
+        'name': 'Summoned Creature',
         'icon': originItem.img,
         'duration': {
             'seconds': duration

@@ -60,7 +60,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         });
     }
     let effectData = {
-        'label': 'Storm Avatar',
+        'name': 'Storm Avatar',
         'icon': 'icons/magic/lightning/fist-unarmed-strike-blue.webp',
         'changes': changes,
         'duration': {
@@ -215,7 +215,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

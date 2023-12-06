@@ -10,7 +10,7 @@ async function reaction({speaker, actor, token, character, item, args, scope, wo
     await workflow.item.update({'system.uses.max': 1});
 }
 async function turnStart(effect) {
-    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.label][0];
+    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;
     let familiarToken = canvas.scene.tokens.get(familiarId);
     if (!familiarToken) return;

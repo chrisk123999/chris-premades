@@ -42,6 +42,7 @@ import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
 import {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
 import {boomingBlade} from './macros/spells/boomingBlade.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
+import {borrowedKnowledge} from './macros/spells/borrowedKnowledge.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
 import {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
 import {breathWeapon} from './macros/raceFeatures/dragonborn/chromatic/breathWeapon.js';
@@ -265,6 +266,7 @@ import {shadow} from './macros/monsterFeatures/shadow/shadow.js';
 import {shamblingMound} from './macros/monsterFeatures/shamblingMound/shamblingMound.js';
 import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
+import {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
 import {slasher} from './macros/feats/slasher.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soothePain} from './macros/feats/soothePain.js';
@@ -534,6 +536,7 @@ export let macros = {
     'bloodSpear': bloodSpear,
     'bolsteringMagic': bolsteringMagic,
     'boomingBlade': boomingBlade,
+    'borrowedKnowledge': borrowedKnowledge,
     'brandOfCastigation': brandOfCastigation,
     'breathOfTheDragon': breathOfTheDragon,
     'breathWeapon': breathWeapon,
@@ -716,6 +719,7 @@ export let macros = {
     'shadowOfMoil': shadowOfMoil,
     'shockingGrasp': shockingGrasp,
     'sickeningRadiance': sickeningRadiance,
+    'skillEmpowerment': skillEmpowerment,
     'slasher': slasher,
     'sneakAttack': sneakAttack,
     'soothePain': soothePain,

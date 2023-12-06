@@ -64,8 +64,9 @@ export async function setCompendiumItemInfo(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
-        if (CONFIG.chrisPremades.automations[i.name]) {
-            await i.setFlag('chris-premades', 'info', CONFIG.chrisPremades.automations[i.name]);
+        let name = i.flags['chris-premades']?.info?.name ?? i.name;
+        if (CONFIG.chrisPremades.automations[name]) {
+            await i.setFlag('chris-premades', 'info', CONFIG.chrisPremades.automations[name]);
         }
     }
 }
@@ -101,39 +102,4 @@ export async function updateAllCompendiums() {
         await setCompendiumItemInfo(i.metadata.id);
     }
     return 'Done!';
-}
-export async function setFolder(monsterName, type) {
-    let folderAPI = game.CF.FICFolderAPI;
-    let allFolders = await folderAPI.loadFolders('world.cpr-monster-features');
-    if (!allFolders) return 'Failed! (Step 1)';
-    let monsterFolder = allFolders.find(f => f.name === monsterName);
-    let typeFolder = allFolders.find(f => f.name === type);
-    if (!type) return 'Failed! (Step 2)';
-    if (!monsterFolder) {
-        let folderData = {
-            'name': monsterName,
-            'color': '#000000',
-            'icon': '',
-            'fontColor': '#FFFFFF'
-        };
-        await folderAPI.createFolderWithParentData(typeFolder, folderData);
-        let count = 0;
-        while (count < 5) {
-            allFolders = await folderAPI.loadFolders('world.cpr-monster-features');
-            await warpgate.wait(1000);
-            count += 1;
-            if (allFolders) break;
-        }
-        if (!allFolders) return 'Failed! (Step 3)';
-        monsterFolder = allFolders.find(f => f.name === monsterName);
-    }
-    let gamePack = game.packs.get('world.cpr-monster-features');
-    let allDocumentsInFolders = allFolders.map(f => f.contents).deepFlatten();
-    let index = await gamePack.getIndex();
-    let allDocuments = index.filter(i => i.name != game.CF.TEMP_ENTITY_NAME).map(i => i._id);
-    let noFolderIds = [];
-    for (let document of allDocuments) if (!allDocumentsInFolders.includes(document)) noFolderIds.push(document);
-    for (let i of noFolderIds) await folderAPI.moveDocumentIntoFolder(i, monsterFolder);
-    folderAPI.clearCache();
-    return 'Success!'
 }

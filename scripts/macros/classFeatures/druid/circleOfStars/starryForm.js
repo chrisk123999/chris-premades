@@ -126,7 +126,7 @@ export async function starryForm({speaker, actor, token, character, item, args, 
             'seconds': duration
         },
         'icon': starry.img,
-        'label': starry.name + ': ' + selection,
+        'name': starry.name + ': ' + selection,
         'flags': {
             'effectmacro': {
                 'onDelete': {
@@ -159,7 +159,7 @@ export async function starryForm({speaker, actor, token, character, item, args, 
                 [featureData.name]: featureData
             },
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     };

@@ -58,7 +58,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     if (!attackWorkflow.hitTargets.size) return;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 12
@@ -79,7 +79,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let effect = chris.findEffect(attackWorkflow.targets.first().actor, effectData.label);
+    let effect = chris.findEffect(attackWorkflow.targets.first().actor, effectData.name);
     if (effect) {
         if (effect.flags['chris-premades']?.spell?.boomingBlade?.diceNumber > diceNumber) {
             return;
@@ -96,7 +96,7 @@ async function moved(token, changes) {
     let effect = token.actor.effects.find(i => i.flags['chris-premades']?.spell?.boomingBlade);
     if (!effect) return;
     await token.object?._animation;
-    let selection = await chris.dialog(effect.label, constants.yesNo, 'Did ' + token.actor.name + ' move willingly?');
+    let selection = await chris.dialog(effect.name, constants.yesNo, 'Did ' + token.actor.name + ' move willingly?');
     if (!selection) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Booming Blade - Movement', false);
     if (!featureData) return;

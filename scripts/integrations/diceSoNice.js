@@ -3,6 +3,7 @@ async function early(workflow) {
 }
 async function late(workflow) {
     MidiQOL.displayDSNForRoll(workflow.damageRoll, 'damageRoll');
+    if(workflow.bonusDamageRoll) MidiQOL.displayDSNForRoll(workflow.bonusDamageRoll, 'damageRoll');
 }
 export let diceSoNice = {
     early: early,

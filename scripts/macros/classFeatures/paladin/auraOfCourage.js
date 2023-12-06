@@ -8,7 +8,7 @@ export async function auraOfCourage(token, selectedAura) {
     let originItem = await fromUuid(auraEffect.origin);
     if (!originItem) return;
     let effectData = {
-        'label': 'Aura of Courage',
+        'name': 'Aura of Courage',
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {
@@ -28,7 +28,7 @@ export async function auraOfCourage(token, selectedAura) {
             }
         }
     }
-    let effect = chris.findEffect(token.actor, effectData.label);
+    let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);
     await chris.createEffect(token.actor, effectData);

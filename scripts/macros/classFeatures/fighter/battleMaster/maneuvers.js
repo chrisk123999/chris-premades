@@ -9,7 +9,7 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
     let selection = await chris.dialog('Who gets the AC bonus?', [['Yourself', false], ['Target', true]]);
     if (selection === undefined) return;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'changes': [
             {
@@ -40,13 +40,13 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
     if (selection) {
         targetUpdate['embedded'] = {
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     } else {
         sourceUpdate['embedded'] = {
             'ActiveEffect': {
-                [effectData.label]: effectData
+                [effectData.name]: effectData
             }
         }
     }
@@ -74,7 +74,7 @@ async function distractingStrike({speaker, actor, token, character, item, args, 
     }
     let targetToken = workflow.hitTargets.first();
     let effectData = {
-        'label': effect.label,
+        'name': effect.name,
         'icon': effect.icon,
         'changes': [
             {
@@ -283,16 +283,7 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args,
             await chris.removeEffect(effect);
             return;
         }
-        let buttons = [
-            {
-                'label': 'Ok',
-                'value': true
-            }, {
-                'label': 'Cancel',
-                'value': false
-            }
-        ];
-        let selection = await chris.selectTarget('What target?', buttons, overlappingTargets, true, 'one');
+        let selection = await chris.selectTarget('What target?', constants.okCancel, overlappingTargets, true, 'one');
         if (selection.buttons === false) {
             await refund.bind(this)({speaker, actor, token, character, item, args, scope, workflow});
             await chris.removeEffect(effect);

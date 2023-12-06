@@ -48,7 +48,7 @@ export async function animateDead({speaker, actor, token, character, item, args,
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + '; await warpgate.revert(token.document, "' + effect.label + '");'
+                    'script': currentScript + '; await warpgate.revert(token.document, "' + effect.name + '");'
                 }
             },
             'chris-premades': {
