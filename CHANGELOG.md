@@ -2,7 +2,7 @@
 ## Bug Fixes:
 - Magic Missile
 - Empowered Evocation
-- Crystal Greatsword
+- Crystal Weapon
 ## Update Notes:
 - Empowered Evocation will need to have the item updated to continue to work.
   
