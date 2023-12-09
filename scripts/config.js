@@ -4396,7 +4396,7 @@ export function setConfig() {
             },
             'Empowered Evocation': {
                 'name': 'Empowered Evocation',
-                'version': '0.8.05'
+                'version': '0.9.9'
             },
             'Overchannel': {
                 'name': 'Overchannel',
@@ -4432,23 +4432,23 @@ export function setConfig() {
             },
             'Crystal Greatsword': {
                 'name': 'Crystal Greatsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Longsword': {
                 'name': 'Crystal Longsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Rapier': {
                 'name': 'Crystal Rapier',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Scimitar': {
                 'name': 'Crystal Scimitar',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Shortsword': {
                 'name': 'Crystal Shortsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Find Steed': {
                 'name': 'Find Steed',

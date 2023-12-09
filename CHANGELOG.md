@@ -1,3 +1,11 @@
+# 0.9.9 Release:
+## Bug Fixes:
+- Magic Missile
+- Empowered Evocation
+- Crystal Greatsword
+## Update Notes:
+- Empowered Evocation will need to have the item updated to continue to work.
+  
 # 0.9.8 Release:
 ## New Content:
 - Borrowed Knowledge (Thanks SagaTympana)
