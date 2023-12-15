@@ -25,7 +25,7 @@
 - Summon Elemental
 - Summon Fey
 - Summon Fiend
-- Summon Lesser Demonds
+- Summon Lesser Demons
 - Summon Shadowspawn
 - Summon Undead
 - Quick Insert Summon
