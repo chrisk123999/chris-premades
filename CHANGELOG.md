@@ -5,7 +5,7 @@
 - Charm Person
 ## Update Notes:
 - Midi-Qol version 11.3.4 or higher is required for this module now.
-- All summons now have enhanced spawn animations from Eskiemoh. These can be added to your own warpgate summons by using the summon API from this module or using the exported callback functions.
+- All summons now have enhanced spawn animations from Eskiemoh. These can be added to your own Warpgate summons by using the summon API from this module or using the exported callback functions.
 ## New Enhanced Animations:
 - Bigby's Hand
 - Conjure Animals
