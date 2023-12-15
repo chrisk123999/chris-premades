@@ -193,7 +193,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'token.texture.src', tokenImg);
     }
     updates = mergeObject(updates, updates2, {'recursive': true});
-    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let defaultAnimations = {
+        'Sky': 'air',
+        'Land': 'earth',
+        'Sea': 'water'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[selection] : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 30, workflow.token, animation);
     let updates3 = {
         'embedded': {
             'Item': {

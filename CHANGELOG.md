@@ -1,3 +1,35 @@
+# 0.9.10 Release:
+## Bug Fixes:
+- Sanctuary
+- Beacon of Hope
+- Charm Person
+## Update Notes:
+- Midi-Qol version 11.3.4 or higher is required for this module now.
+- All summons now have enhanced spawn animations from Eskiemoh. These can be added to your own warpgate summons by using the summon API from this module or using the exported callback functions.
+## New Enhanced Animations:
+- Bigby's Hand
+- Conjure Animals
+- Conjure Celestial
+- Conjure Elemental
+- Conjure Fey
+- Conjure Minor Elementals
+- Conjure Woodland Beings
+- Find Familiar
+- Find Greater Steed
+- Find Steed
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Draconic Spirit
+- Summon Elemental
+- Summon Fey
+- Summon Fiend
+- Summon Lesser Demonds
+- Summon Shadowspawn
+- Summon Undead
+- Quick Insert Summon
+  
 # 0.9.9 Release:
 ## Bug Fixes:
 - Magic Missile

@@ -97,7 +97,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         updates.embedded.Item['Arcane Jolt'] = arcaneJoltData;
         sourceActor.setFlag('chris-premades', 'feature.arcaneJoltScale', workflow.actor.system?.scale?.['battle-smith']?.['arcane-jolt'].formula);;
     }
-    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'default' : 'none';
+    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 120, workflow.token, animation);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Steel Defender - Command', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Steel Defender - Command');
     if (!featureData) return;

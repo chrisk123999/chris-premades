@@ -314,8 +314,8 @@ export let chris = {
         let description = page.text.content;
         return description;
     },
-    'getDistance': function _getDistance(sourceToken, targetToken) {
-        return MidiQOL.getDistance(sourceToken, targetToken, {wallsBlock: false});
+    'getDistance': function _getDistance(sourceToken, targetToken, wallsBlock) {
+        return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
     },
     'totalDamageType': function _totalDamageType(actor, damageDetail, type) {
         let total = 0;

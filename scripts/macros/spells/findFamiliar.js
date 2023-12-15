@@ -82,7 +82,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Find Familiar'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    await summons.spawn(sourceActor, updates, 86400, workflow.item);
+    let defaultAnimations = {
+        'celestial': 'celestial',
+        'fey': 'nature',
+        'fiend': 'fire'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[creatureType] : 'none';
+    await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 10, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     await chris.updateEffect(effect, updates3);
 }

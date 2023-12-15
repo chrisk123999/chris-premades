@@ -121,5 +121,6 @@ export async function summonFiend({speaker, actor, token, character, item, args,
             updates.embedded.Item[clawsData.name] = clawsData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'fire' : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

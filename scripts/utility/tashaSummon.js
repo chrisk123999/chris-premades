@@ -1,6 +1,7 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
 import {queue} from './queue.js';
+import {summonEffects} from '../macros/animations/summonEffects.js';
 async function setupFolder() {
     let folder = game.folders.find(i => i.name === 'Chris Premades' && i.type === 'Actor');
     if (!folder) {
@@ -56,7 +57,7 @@ function getCR(prof) {
             return 29;
     }
 }
-async function spawn(sourceActor, updates, duration, originItem) {
+async function spawn(sourceActor, updates, duration, originItem, maxRange, casterToken, spawnAnimation, callbacks) {
     async function effectMacro() {
         let originActor = origin.actor;
         await warpgate.dismiss(token.id);
@@ -64,7 +65,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
         if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
     }
     let effectData = {
-        'label': 'Summoned Creature',
+        'name': 'Summoned Creature',
         'icon': originItem.img,
         'duration': {
             'seconds': duration
@@ -92,14 +93,41 @@ async function spawn(sourceActor, updates, duration, originItem) {
             'interval': tokenDocument.width % 2 === 0 ? 1 : -1
         }
     };
-    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
+    if (!callbacks && maxRange && casterToken) {
+        callbacks = {
+            'show': async (crosshairs) => {
+                let distance = 0;
+                let ray;
+                while (crosshairs.inFlight) {
+                    await warpgate.wait(100);
+                    ray = new Ray(casterToken.center, crosshairs);
+                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
+                    if (casterToken.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
+                        crosshairs.icon = 'icons/svg/hazard.svg';
+                    } else {
+                        crosshairs.icon = tokenDocument.texture.src;
+                    }
+                    crosshairs.draw();
+                    crosshairs.label = distance + '/' + maxRange + 'ft.';
+                }
+            }
+        }
+    }
+    if (!callbacks.post && spawnAnimation && spawnAnimation != 'none') {
+        let callbackFunction = summonEffects[spawnAnimation];
+        if (typeof callbackFunction === 'function' && chris.jb2aCheck() === 'patreon' && chris.aseCheck()) {
+            callbacks.post = callbackFunction;
+            setProperty(updates, 'token.alpha', 0);
+        }
+    }
+    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, callbacks, options);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;
     let targetEffect = chris.findEffect(spawnedToken.actor, 'Summoned Creature');
     if (!targetEffect) return;
     let casterEffectData = {
-        'label': originItem.name,
+        'name': originItem.name,
         'icon': originItem.img,
         'duration': {
             'seconds': duration
@@ -128,7 +156,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
     }
     return spawnedToken;
 }
-async function createCombatant (tokenId, actorId, sceneId, initiative) {
+async function createCombatant(tokenId, actorId, sceneId, initiative) {
     await game.combat.createEmbeddedDocuments('Combatant', [{
         'tokenId': tokenId,
         'sceneId': sceneId,

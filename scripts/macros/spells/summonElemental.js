@@ -110,5 +110,12 @@ export async function summonElemental({speaker, actor, token, character, item, a
             setProperty(updates, 'actor.system.traits.dr.value', ['acid']);
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let defaultAnimations = {
+        'Air': 'air',
+        'Earth': 'earth',
+        'Fire': 'fire',
+        'Water': 'water'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[selection] : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

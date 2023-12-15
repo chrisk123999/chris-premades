@@ -6,7 +6,7 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     if (!effect) return;
     if (!workflow.damageRoll) return;
     if (workflow.defaultDamageType != translate.healingType('healing')) return;
-    if (chris.checkTrait(token.actor, 'di', translate.healingType('healing'))) return;
+    if (chris.checkTrait(token.actor, 'di', 'healing')) return;
     let newHealingTotal = 0;
     let queueSetup = await queue.setup(workflow.uuid, 'beaconOfHope', 351);
     if (!queueSetup) return;

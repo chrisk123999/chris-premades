@@ -113,5 +113,11 @@ export async function summonBeast({speaker, actor, token, character, item, args,
             };
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let defaultAnimations = {
+        'Air': 'air',
+        'Land': 'earth',
+        'Water': 'water'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[selection] : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

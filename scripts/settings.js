@@ -462,9 +462,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.beaconOfHope);
+                Hooks.on('midi-qol.isHealed', macros.beaconOfHope);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.beaconOfHope);
+                Hooks.off('midi-qol.isHealed', macros.beaconOfHope);
             }
         }
     });
@@ -510,9 +510,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.deathWard);
+                Hooks.on('midi-qol.isDamaged', macros.deathWard);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.deathWard);
+                Hooks.off('midi-qol.isDamaged', macros.deathWard);
             }
         }
     });
@@ -644,9 +644,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+                Hooks.on('midi-qol.isDamaged', macros.monster.zombie.undeadFortitude);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+                Hooks.off('midi-qol.isDamaged', macros.monster.zombie.undeadFortitude);
             }
         }
     });
@@ -676,9 +676,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.mastersAmulet);
+                Hooks.on('midi-qol.isDamaged', macros.mastersAmulet);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.mastersAmulet);
+                Hooks.off('midi-qol.isDamaged', macros.mastersAmulet);
             }
         }
     });
@@ -735,9 +735,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.strengthOfTheGrave);
+                Hooks.on('midi-qol.isDamaged', macros.strengthOfTheGrave);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.strengthOfTheGrave);
+                Hooks.off('midi-qol.isDamaged', macros.strengthOfTheGrave);
             }
         }
     });
@@ -751,9 +751,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.relentlessEndurance);
+                Hooks.on('midi-qol.isDamaged', macros.relentlessEndurance);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.relentlessEndurance);
+                Hooks.off('midi-qol.isDamaged', macros.relentlessEndurance);
             }
         }
     });
@@ -784,10 +784,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 if (game.user.isGM) Hooks.on('updateToken', macros.emboldeningBond.move);
-                Hooks.on('midi-qol.damageApplied', macros.emboldeningBond.damage);
+                Hooks.on('midi-qol.isDamaged', macros.emboldeningBond.damage);
             } else {
                 if (game.user.isGM) Hooks.off('updateToken', macros.emboldeningBond.move);
-                Hooks.off('midi-qol.damageApplied', macros.emboldeningBond.damage);
+                Hooks.off('midi-qol.isDamaged', macros.emboldeningBond.damage);
             }
         }
     });
@@ -875,9 +875,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
+                Hooks.on('midi-qol.isDamaged', macros.arcaneWard.damage);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.arcaneWard.damage);
+                Hooks.off('midi-qol.isDamaged', macros.arcaneWard.damage);
             }
         }
     });
@@ -891,9 +891,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.soothePain);
+                Hooks.on('midi-qol.isDamaged', macros.soothePain);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.soothePain);
+                Hooks.off('midi-qol.isDamaged', macros.soothePain);
             } 
         }
     });
@@ -1278,6 +1278,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Booming Blade', 'Spells');
+//    game.settings.register(moduleName, 'Metric Distance', {
+//        'name': 'Use Metric Distance',
+//        'hint': 'When enabled macros from this module will use metric for distance calculations.',
+//        'scope': 'world',
+//        'config': false,
+//        'type': Boolean,
+//        'default': false
+//    });
+//    addMenuSetting('Metric Distance', 'General');
     game.settings.register(moduleName, 'Check For Updates', {
         'name': 'Check for Updates',
         'hint': 'Display a message when an update is available.',

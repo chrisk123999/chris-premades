@@ -107,5 +107,6 @@ export async function summonFey({speaker, actor, token, character, item, args, s
             updates.embedded.Item[tricksyData.name] = tricksyData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'nature' : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

@@ -101,7 +101,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'default' : 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 30, workflow.token, animation);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Animating Performance - Command', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Animating Performance - Command');
     if (!featureData) return;

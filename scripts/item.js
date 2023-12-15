@@ -226,7 +226,7 @@ async function configureItem(item, configuration) {
                 break;
             case 'select':
                 for (let [key2, value2] of Object.entries(value)) {
-                    let current = item.flags['chris-premades']?.configuration?.[key2];
+                    let current = item.flags['chris-premades']?.configuration?.[key2] ?? value2.default;
                     let options = foundry.utils.duplicate(value2.values);
                     options.forEach(item => {
                         if (item.value === current) {

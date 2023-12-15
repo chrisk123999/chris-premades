@@ -1,4 +1,17 @@
 export function setConfig() {
+    let summonEffectOptions = [
+        {'value': 'none', 'html': 'None'},
+        {'value': 'default', 'html': 'Default'},
+        {'value': 'celestial', 'html': 'Celestial'},
+        {'value': 'fiend', 'html': 'Fiend'},
+        {'value': 'fire', 'html': 'Fire'},
+        {'value': 'water', 'html': 'Water'},
+        {'value': 'air', 'html': 'Air'},
+        {'value': 'earth', 'html': 'Earth'},
+        {'value': 'nature', 'html': 'Nature'},
+        {'value': 'shadow', 'html': 'Shadow'},
+        {'value': 'future', 'html': 'Future'}
+    ];
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
         'renamedItems': {
@@ -419,6 +432,23 @@ export function setConfig() {
                         'label': 'Star Spawn Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-beholderkin': {
+                        'label': 'Beholderkin Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-slaad': {
+                        'label': 'Slaad Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-star-spawn': {
+                        'label': 'Star Spawn Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Beast': {
@@ -459,6 +489,23 @@ export function setConfig() {
                         'label': 'Water Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-air': {
+                        'label': 'Air Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    },
+                    'animation-land': {
+                        'label': 'Land Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-water': {
+                        'label': 'Water Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Celestial': {
@@ -471,7 +518,7 @@ export function setConfig() {
                         'label': 'Avenger Token:',
                         'default': ''
                     },
-                    'avatar-air': {
+                    'avatar-avenger': {
                         'label': 'Avenger Avatar:',
                         'default': ''
                     },
@@ -486,6 +533,18 @@ export function setConfig() {
                     'avatar-defender': {
                         'label': 'Defender Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-avenger': {
+                        'label': 'Avenger Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-defender': {
+                        'label': 'Defender Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -527,6 +586,23 @@ export function setConfig() {
                         'label': 'Stone Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-clay': {
+                        'label': 'Clay Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-metal': {
+                        'label': 'Metal Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-stone': {
+                        'label': 'Stone Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Draconic Spirit': {
@@ -566,6 +642,23 @@ export function setConfig() {
                     'avatar-gem': {
                         'label': 'Gem Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-chromatic': {
+                        'label': 'Chromatic Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-metallic': {
+                        'label': 'Metallic Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-gem': {
+                        'label': 'Gem Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -619,6 +712,28 @@ export function setConfig() {
                         'label': 'Water Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-air': {
+                        'label': 'Air Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    },
+                    'animation-earth': {
+                        'label': 'Earth Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fire': {
+                        'label': 'Fire Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-water': {
+                        'label': 'Water Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Fey': {
@@ -658,6 +773,23 @@ export function setConfig() {
                     'avatar-tricksy': {
                         'label': 'Tricksy Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-fuming': {
+                        'label': 'Fuming Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-mirthful': {
+                        'label': 'Mirthful Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-tricksy': {
+                        'label': 'Tricksy Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -699,6 +831,23 @@ export function setConfig() {
                         'label': 'Yugoloth Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-demon': {
+                        'label': 'Demon Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-devil': {
+                        'label': 'Devil Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-yugoloth': {
+                        'label': 'Yugoloth Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Shadowspawn': {
@@ -738,6 +887,23 @@ export function setConfig() {
                     'avatar-fear': {
                         'label': 'Fear Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-fury': {
+                        'label': 'Fury Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-despair': {
+                        'label': 'Despair Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fear': {
+                        'label': 'Fear Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -779,6 +945,23 @@ export function setConfig() {
                         'label': 'Skeletal Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-ghostly': {
+                        'label': 'Ghostly Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-putrid': {
+                        'label': 'Putrid Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-skeletal': {
+                        'label': 'Skeletal Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Wildfire Spirit': {
@@ -794,6 +977,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -811,6 +1001,13 @@ export function setConfig() {
                         'label': 'Custom Token:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Animating Performance': {
@@ -826,6 +1023,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -891,6 +1095,33 @@ export function setConfig() {
                         'label': 'Poison Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-acid': {
+                        'label': 'Acid Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-cold': {
+                        'label': 'Cold Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fire': {
+                        'label': 'Fire Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-lightning': {
+                        'label': 'Lightning Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-poision': {
+                        'label': 'Poision Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Homunculus Servant': {
@@ -906,6 +1137,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -947,6 +1185,23 @@ export function setConfig() {
                         'label': 'Sky Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-land': {
+                        'label': 'Land Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-sea': {
+                        'label': 'Sea Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    },
+                    'animation-sky': {
+                        'label': 'Sky Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Tentacle of the Deeps: Summon': {
@@ -978,6 +1233,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1552,6 +1814,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Celestial': {
@@ -1565,6 +1834,13 @@ export function setConfig() {
                     'overwriteInitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1580,6 +1856,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Fey': {
@@ -1593,6 +1876,13 @@ export function setConfig() {
                     'overwriteInitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1608,6 +1898,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Woodland Beings': {
@@ -1622,6 +1919,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Find Familiar': {
@@ -1633,6 +1937,23 @@ export function setConfig() {
                     'name': {
                         'label': 'Familiar Name:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1686,6 +2007,23 @@ export function setConfig() {
                         'label': 'Steed Name:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Find Greater Steed': {
@@ -1697,6 +2035,23 @@ export function setConfig() {
                     'name': {
                         'label': 'Greater Steed Name:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1890,6 +2245,13 @@ export function setConfig() {
                         'label': 'Custom Folder:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Manifest Mind: Summon': {
@@ -1905,6 +2267,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -2040,6 +2409,30 @@ export function setConfig() {
                     'pixie-token': {
                         'label': 'Pixie Token',
                         'default': ''
+                    }
+                }
+            },
+            'Quick Insert Summon': {
+                'text': {
+                    'prefill': {
+                        'label': 'Prefill Text:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
+                }
+            },
+            'Animate Dead': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
                     }
                 }
             }
@@ -5202,6 +5595,10 @@ export function setConfig() {
             'Skill Empowerment': {
                 'name': 'Skill Empowerment',
                 'version': '0.9.6'
+            },
+            'Quick Insert Summon': {
+                'name': 'Quick Insert Summon',
+                'version': '0.9.10'
             }
         }
     });
