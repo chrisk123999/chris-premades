@@ -1659,7 +1659,7 @@ export function setConfig() {
                 },
                 'select': {
                     'color': {
-                        'label': 'What animation color?',
+                        'label': 'Animation Color:',
                         'default': 'yellow',
                         'values': [
                             {'value': 'yellow', 'html': 'Yellow'},
@@ -1667,6 +1667,11 @@ export function setConfig() {
                             {'value': 'green', 'html': 'Green'},
                             {'value': 'purple', 'html': 'Purple'}
                         ]
+                    },
+                    'animation': {
+                        'label': 'Summon Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },

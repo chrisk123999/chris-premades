@@ -57,7 +57,7 @@ function getCR(prof) {
             return 29;
     }
 }
-async function spawn(sourceActor, updates, duration, originItem, maxRange, casterToken, spawnAnimation, callbacks) {
+async function spawn(sourceActor, updates = {}, duration, originItem, maxRange, casterToken, spawnAnimation, callbacks) {
     async function effectMacro() {
         let originActor = origin.actor;
         await warpgate.dismiss(token.id);
@@ -86,41 +86,7 @@ async function spawn(sourceActor, updates, duration, originItem, maxRange, caste
     };
     if (!updates) updates = {};
     setProperty(updates, 'embedded.ActiveEffect.Summoned Creature', effectData);
-    let tokenDocument = await sourceActor.getTokenDocument();
-    let options = {
-        'controllingActor': originItem.actor,
-        'crosshairs': {
-            'interval': tokenDocument.width % 2 === 0 ? 1 : -1
-        }
-    };
-    if (!callbacks && maxRange && casterToken) {
-        callbacks = {
-            'show': async (crosshairs) => {
-                let distance = 0;
-                let ray;
-                while (crosshairs.inFlight) {
-                    await warpgate.wait(100);
-                    ray = new Ray(casterToken.center, crosshairs);
-                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                    if (casterToken.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
-                        crosshairs.icon = 'icons/svg/hazard.svg';
-                    } else {
-                        crosshairs.icon = tokenDocument.texture.src;
-                    }
-                    crosshairs.draw();
-                    crosshairs.label = distance + '/' + maxRange + 'ft.';
-                }
-            }
-        }
-    }
-    if (!callbacks.post && spawnAnimation && spawnAnimation != 'none') {
-        let callbackFunction = summonEffects[spawnAnimation];
-        if (typeof callbackFunction === 'function' && chris.jb2aCheck() === 'patreon' && chris.aseCheck()) {
-            callbacks.post = callbackFunction;
-            setProperty(updates, 'token.alpha', 0);
-        }
-    }
-    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, callbacks, options);
+    let spawnedTokens = await chris.spawn(sourceActor, updates, callbacks, casterToken, maxRange, spawnAnimation);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;

@@ -33,6 +33,7 @@ export async function conjureWoodlandBeings({speaker, actor, token, character, i
             'disposition': workflow.token.document.disposition
         }
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'nature' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'nature';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 60, workflow.token, animation);
 }

@@ -87,6 +87,7 @@ export async function summonCelestial({speaker, actor, token, character, item, a
             }
             break;
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'celestial' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'celestial';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

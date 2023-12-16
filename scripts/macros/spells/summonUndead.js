@@ -124,6 +124,7 @@ export async function summonUndead({speaker, actor, token, character, item, args
             updates.embedded.Item[graveBoltData.name] = graveBoltData;
             break;
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'shadow' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'shadow';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

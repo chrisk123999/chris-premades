@@ -21,7 +21,8 @@ export async function conjureFey({speaker, actor, token, character, item, args, 
             'disposition': workflow.token.document.disposition
         }
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'nature' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'nature';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActors, updates, 3600, workflow.item, true, undefined, 90, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
     if (!effect) return;

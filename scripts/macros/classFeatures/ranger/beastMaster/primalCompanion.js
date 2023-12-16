@@ -198,7 +198,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'Land': 'earth',
         'Sea': 'water'
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[selection] : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? defaultAnimations[selection];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 30, workflow.token, animation);
     let updates3 = {
         'embedded': {

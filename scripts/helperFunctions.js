@@ -1,3 +1,4 @@
+import {summonEffects} from './macros/animations/summonEffects.js';
 import {socket} from './module.js';
 export let chris = {
     'dialog': async function _dialog(title, options, content) {
@@ -953,5 +954,43 @@ export let chris = {
     'remoteRollItem': async function _remoteRollItem(item, config, options, userId) {
         if (chris.firstOwner(item.actor).id === userId) return await chris.rollItem(item, config, options);
         return await socket.executeAsUser('rollItem', userId, item.uuid, config, options);
+    },
+    'spawn': async function _spawn(sourceActor, updates = {}, callbacks = {}, summonerToken, range, animation = 'default') {
+        let tokenDocument = await sourceActor.getTokenDocument();
+        let options = {};
+        if (summonerToken?.actor) {
+            options = {
+                'controllingActor': summonerToken.actor,
+                'crosshairs': {
+                    'interval': tokenDocument.width % 2 === 0 ? 1 : -1
+                }
+            };
+        }
+        if (animation != 'none' && !callbacks.post) {
+            let callbackFunction = summonEffects[animation];
+            if (typeof callbackFunction === 'function' && chris.jb2aCheck() === 'patreon' && chris.aseCheck()) {
+                callbacks.post = callbackFunction;
+                setProperty(updates, 'token.alpha', 0);
+            }
+        }
+        if (!callbacks.show) {
+            callbacks.show = async (crosshairs) => {
+                let distance = 0;
+                let ray;
+                while (crosshairs.inFlight) {
+                    await warpgate.wait(100);
+                    ray = new Ray(summonerToken.center, crosshairs);
+                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
+                    if (summonerToken.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > range) {
+                        crosshairs.icon = 'icons/svg/hazard.svg';
+                    } else {
+                        crosshairs.icon = tokenDocument.texture.src;
+                    }
+                    crosshairs.draw();
+                    crosshairs.label = distance + '/' + range + 'ft.';
+                }
+            }
+        }
+        return await warpgate.spawn(tokenDocument, updates, callbacks, options);
     }
 }

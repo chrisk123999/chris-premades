@@ -49,7 +49,8 @@ export async function summonLesserDemons({speaker, actor, token, character, item
             'disposition': -1 
         }
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'fire' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'fire';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActors, updates, 3600, workflow.item, false, true, 60, workflow.token, animation);
     let templateData = {
         t: CONST.MEASURED_TEMPLATE_TYPES.CIRCLE,

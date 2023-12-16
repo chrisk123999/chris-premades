@@ -68,7 +68,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'fey': 'nature',
         'fiend': 'fire'
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? defaultAnimations[creatureType] : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? defaultAnimations[creatureType];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 30, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     await chris.updateEffect(effect, updates2);

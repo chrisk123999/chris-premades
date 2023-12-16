@@ -93,6 +93,7 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
             updates.embedded.Item[shadowStealthData.name] = shadowStealthData;
             break;
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'shadow' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'shadow';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

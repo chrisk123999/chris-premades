@@ -89,6 +89,7 @@ export async function summonConstruct({speaker, actor, token, character, item, a
             updates.embedded.Item[stoneLethargyData.name] = stoneLethargyData;
             break;
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'earth' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'earth';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

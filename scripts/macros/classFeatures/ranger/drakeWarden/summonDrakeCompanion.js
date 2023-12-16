@@ -125,7 +125,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'default' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'default';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 30, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (!effect) return;

@@ -106,7 +106,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'fire' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'fire';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 60, workflow.token, animation);
     let options;
     switch (selection) {

@@ -33,8 +33,10 @@ export async function info({speaker, actor, token, character, item, args, scope,
                 cancel = true;
             } else {
                 let mutationStack = warpgate.mutationStack(token.document);
-                if (mutationStack.getName(info.mutation.self)) await warpgate.revert(token.document, info.mutation.self);
-                console.warn('A duplicate CPR Warpgate mutation was detected and removed!');
+                if (mutationStack.getName(info.mutation.self)) {
+                    await warpgate.revert(token.document, info.mutation.self);
+                    console.warn('A duplicate CPR Warpgate mutation was detected and removed!');
+                }
             }
         }
     }

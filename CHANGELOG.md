@@ -1,3 +1,14 @@
+# 0.9.11 Release:
+## Bug Fixes:
+- Summon Animations
+## New Enhanced Animations:
+- Guardian of Faith
+- Steel Defender
+- Homunculus Servant
+- Primal Companion
+- Drake Companion
+- Manifest Mind
+  
 # 0.9.10 Release:
 ## Bug Fixes:
 - Sanctuary

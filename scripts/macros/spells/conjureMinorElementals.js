@@ -33,6 +33,7 @@ export async function conjureMinorElementals({speaker, actor, token, character, 
             'disposition': workflow.token.document.disposition 
         }
     };
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'default' : 'none';
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 90, workflow.token, animation);
 }
