@@ -1,3 +1,8 @@
+# 0.9.12 Release:
+## Bug Fixes:
+- Savage Attacker
+- Eldritch Smite
+  
 # 0.9.11 Release:
 ## Bug Fixes:
 - Summon Animations

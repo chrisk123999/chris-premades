@@ -20,7 +20,8 @@ export async function info({speaker, actor, token, character, item, args, scope,
             if (message != '') message += '<hr>';
             message += 'This automation requires the following settings to be enabled:';
             for (let i of missingSettings) {
-                message += '<br>' + i;
+                let settingName = game.settings.settings.get('chris-premades.' + i).name;
+                message += '<br>' + settingName;
             }
             cancel = true;
         }
@@ -56,7 +57,7 @@ export async function info({speaker, actor, token, character, item, args, scope,
     }
     if (cancel) {
         ChatMessage.create({
-            'speaker': {alias: name},
+            'speaker': {'alias': 'Chris\'s Premades'},
             'content': message
         });
         return false;

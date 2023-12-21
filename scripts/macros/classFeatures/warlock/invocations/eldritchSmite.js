@@ -44,4 +44,5 @@ export async function eldritchSmite({speaker, actor, token, character, item, arg
         return;
     }
     await chris.addCondition(targetActor, 'Prone', false, null);
+    queue.remove(workflow.item.uuid);
 }
