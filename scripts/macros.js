@@ -267,6 +267,7 @@ import {shockingGrasp} from './macros/spells/shockingGrasp.js';
 import {sickeningRadiance} from './macros/spells/sickeningRadiance.js';
 import {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
 import {slasher} from './macros/feats/slasher.js';
+import {sleetStorm} from './macros/spells/sleetStorm.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {soothePain} from './macros/feats/soothePain.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
@@ -493,6 +494,10 @@ async function templateTrigger(macroName, token, trigger, reason) {
         case 'hungerOfHadar':
             await hungerOfHadar.trigger(token, trigger, reason);
             break;
+        case 'sleetStorm': {
+            await sleetStorm.trigger(token, trigger, reason);
+            break;
+        }
     }
 }
 export let macros = {
@@ -719,6 +724,7 @@ export let macros = {
     'sickeningRadiance': sickeningRadiance,
     'skillEmpowerment': skillEmpowerment,
     'slasher': slasher,
+    'sleetStorm': sleetStorm,
     'sneakAttack': sneakAttack,
     'soothePain': soothePain,
     'spellRefuelingRing': spellRefuelingRing,

@@ -36,13 +36,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'seeAll': {
                         'enabled': true,
                         'range': 0
-                    },
-                },
+                    }
+                }
             },
             'walledtemplates': {
                 'wallRestriction': 'move',
                 'wallsBlock': 'recurse',
-            },
+            }
         },
         'angle': 0
     };

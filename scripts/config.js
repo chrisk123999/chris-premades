@@ -5604,6 +5604,10 @@ export function setConfig() {
             'Quick Insert Summon': {
                 'name': 'Quick Insert Summon',
                 'version': '0.9.10'
+            },
+            'Sleet Storm': {
+                'name': 'Sleet Storm',
+                'version': '0.9.13'
             }
         }
     });

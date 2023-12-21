@@ -1,7 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
 import {queue} from './queue.js';
-import {summonEffects} from '../macros/animations/summonEffects.js';
 async function setupFolder() {
     let folder = game.folders.find(i => i.name === 'Chris Premades' && i.type === 'Actor');
     if (!folder) {

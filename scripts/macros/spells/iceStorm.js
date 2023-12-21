@@ -5,6 +5,7 @@ export async function iceStorm({speaker, actor, token, character, item, args, sc
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId)?.object;
     if (!template) return;
+    //Animations by: eskiemoh
     await new Sequence()
         .effect()
         .file('jb2a.magic_signs.circle.02.evocation.loop.blue')
