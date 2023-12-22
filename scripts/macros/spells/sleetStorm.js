@@ -1,8 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
-    if (!animation) return
     if (!workflow.templateId) return;
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;

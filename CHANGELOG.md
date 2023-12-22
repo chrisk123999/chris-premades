@@ -1,3 +1,7 @@
+# 0.9.14 Release:
+## Bug Fixes:
+- Sleet Storm
+  
 # 0.9.13 Release:
 ## New Content:
 - Spell: Sleet Storm

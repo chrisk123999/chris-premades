@@ -5607,7 +5607,10 @@ export function setConfig() {
             },
             'Sleet Storm': {
                 'name': 'Sleet Storm',
-                'version': '0.9.13'
+                'version': '0.9.14',
+                'settings': [
+                    'Template Listener'
+                ]
             }
         }
     });
