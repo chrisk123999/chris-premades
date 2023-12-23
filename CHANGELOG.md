@@ -1,3 +1,8 @@
+# 0.9.15 Release:
+## Bug Fixes:
+- Cleave
+- Find Familiar
+  
 # 0.9.14 Release:
 ## Bug Fixes:
 - Sleet Storm

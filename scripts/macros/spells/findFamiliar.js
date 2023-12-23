@@ -12,7 +12,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!sourceActor) return;
     let creatureType = await chris.dialog('What creature type?', [['Celestial', 'celestial'], ['Fey', 'fey'], ['Fiend', 'fiend']]);
     if (!creatureType) return;
-    let name = await chris.getConfiguration(workflow.item, 'name') ?? sourceActor.name + ' Familiar';
+    let name = await chris.getConfiguration(workflow.item, 'name');
+    if (!name || name === '') name = sourceActor[0].name + ' Familiar';
     let updates = {
         'actor': {
             'name': name,
@@ -50,7 +51,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 },
                 'vae': {
                     'button': attackData.name
-                },
+                }
             }
         }
     }
@@ -91,6 +92,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 10, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
+    setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Find Familiar");');
     await chris.updateEffect(effect, updates3);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
