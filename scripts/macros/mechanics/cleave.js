@@ -8,6 +8,11 @@ export async function cleave(workflow) {
     let oldHP = workflow.damageList[0].oldHP;
     let leftoverDamage = workflow.damageList[0].totalDamage - (oldHP - newHP);
     if (!leftoverDamage) return;
+    let fullHealthSetting = game.settings.get('chris-premades', 'DMG Cleave Full Health');
+    if (!fullHealthSetting) {
+        let targetMaxHP = workflow.targets.first().actor.system.attributes.hp.max;
+        if (oldHP != targetMaxHP) return;
+    }
     let nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value ?? 5, 'enemy');
     if (!nearbyTargets.length) return;
     let selection = await chris.selectTarget('Cleave', constants.yesNoButton, nearbyTargets, true, 'one', false, false, 'Cleave a nearby target?');

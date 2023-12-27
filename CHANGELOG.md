@@ -1,3 +1,12 @@
+# 0.9.16 Release:
+## Bug Fixes:
+- DMG Cleave
+- Hunger of Haddar
+- Stunning Strike
+## Update Notes:
+- Added config option to Stunning Strike to prompt on hit.
+- Corrected DMG Cleave mechanic to only work on full health targets and added a setting to allow it to work on non-full health targets.
+  
 # 0.9.15 Release:
 ## Bug Fixes:
 - Cleave

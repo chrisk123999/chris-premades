@@ -619,6 +619,15 @@ export function registerSettings() {
         }
     });
     addMenuSetting('DMG Cleave', 'Mechanics');
+    game.settings.register(moduleName, 'DMG Cleave Full Health', {
+        'name': 'DMG Cleave Damaged Tokens',
+        'hint': 'When enabled the DMG cleave will also prompt on a target even if they didn\'t start with full health.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('DMG Cleave Full Health', 'Mechanics');
     game.settings.register(moduleName, 'Wildhunt', {
         'name': 'Shifter Wildhunt Automation',
         'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',

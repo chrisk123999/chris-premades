@@ -37,6 +37,7 @@ import {firearm} from './macros/mechanics/firearm.js';
 import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
 import {summonEffects} from './macros/animations/summonEffects.js';
+import {actionsTab} from './integrations/tidy5eSheet.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -193,6 +194,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Build A Bonus Overlapping Effects')) Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
     Hooks.on('createToken', addActions);
 });
+//Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,
     'stripUnusedFlags': stripUnusedFlags,

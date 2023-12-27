@@ -287,6 +287,7 @@ import {stormSphere} from './macros/spells/stormSphere.js';
 import {stormStrike} from './macros/feats/strikeOfTheGiants/stormStrike.js';
 import {stormgirdle} from './macros/items/stormgirdle.js';
 import {strengthOfTheGrave} from './macros/classFeatures/sorcerer/shadowMagic/strengthOfTheGrave.js';
+import {stunningStrike} from './macros/classFeatures/monk/stunningStrike.js';
 import {succubus} from './macros/monsterFeatures/succubus/succubus.js';
 import {summonAberration} from './macros/spells/summonAberration.js';
 import {summonBeast} from './macros/spells/summonBeast.js';
@@ -741,6 +742,7 @@ export let macros = {
     'stormStrike': stormStrike,
     'stormgirdle': stormgirdle,
     'strengthOfTheGrave': strengthOfTheGrave,
+    'stunningStrike': stunningStrike,
     'summon': summon,
     'summonAberration': summonAberration,
     'summonBeast': summonBeast,

@@ -2440,6 +2440,14 @@ export function setConfig() {
                         'values': summonEffectOptions
                     }
                 }
+            },
+            'Stunning Strike': {
+                'checkbox': {
+                    'onhit': {
+                        'label': 'Prompt on hit?',
+                        'default': false
+                    }
+                }
             }
         },
         'automations': {
@@ -3865,7 +3873,7 @@ export function setConfig() {
             },
             'Stunning Strike': {
                 'name': 'Stunning Strike',
-                'version': '0.7.01'
+                'version': '0.9.16'
             },
             'Unarmored Defense (Monk)': {
                 'name': 'Unarmored Defense (Monk)',
