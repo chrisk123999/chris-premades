@@ -94,7 +94,7 @@ async function repair({speaker, actor, token, character, item, args, scope, work
         return;
     }
     let roll = await workflow.actor.rollToolCheck('tinker');
-    let misfireDC = 8 + chris.getConfiguration(weapon, 'misfire') ?? 1;
+    let misfireDC = 8 + (chris.getConfiguration(weapon, 'misfire') ?? 1);
     let updates;
     if (roll.total >= misfireDC) {
         updates = {
