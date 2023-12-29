@@ -79,6 +79,7 @@ import {constructSpirit} from './macros/monsterFeatures/constructSpirit/construc
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
+import {crushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 import {crystalBlade} from './macros/items/crystalBlade.js';
 import {dancingSword} from './macros/items/dancingSword.js';
 import {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
@@ -113,6 +114,7 @@ import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 import {eldritchBlast} from './macros/spells/eldritchBlast.js';
 import {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 import {elementalAdept} from './macros/feats/elementalAdept.js';
+import {elementalCleaver} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
 import {elixirOfHealth} from './macros/items/elixirOfHealth.js';
 import {emboldeningBond} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 import {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
@@ -207,6 +209,7 @@ import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
 import {metaMagic} from './macros/classFeatures/sorcerer/metaMagic.js';
 import {metallicBreathWeapon} from './macros/raceFeatures/dragonborn/metallic/metallicBreathWeapon.js';
+import {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
 import {mudMephit} from './macros/monsterFeatures/mudMephit/mudMephit.js';
@@ -571,6 +574,7 @@ export let macros = {
     'conjureWoodlandBeings': conjureWoodlandBeings,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
+    'crushingThrow': crushingThrow,
     'crystalBlade': crystalBlade,
     'dancingSword': dancingSword,
     'danseMacabre': danseMacabre,
@@ -595,6 +599,7 @@ export let macros = {
     'eldritchBlast': eldritchBlast,
     'eldritchSmite': eldritchSmite,
     'elementalAdept': elementalAdept,
+    'elementalCleaver': elementalCleaver,
     'elixirOfHealth': elixirOfHealth,
     'emboldeningBond': emboldeningBond,
     'enhancedBond': enhancedBond,
@@ -670,6 +675,7 @@ export let macros = {
     'mastersAmulet': mastersAmulet,
     'metaMagic': metaMagic,
     'metallicBreathWeapon': metallicBreathWeapon,
+    'mightyImpel': mightyImpel,
     'mirrorImage': mirrorImage,
     'monster': monster,
     'moonbeam': moonbeam,

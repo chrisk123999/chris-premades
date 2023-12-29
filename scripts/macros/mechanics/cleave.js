@@ -13,7 +13,7 @@ export async function cleave(workflow) {
         let targetMaxHP = workflow.targets.first().actor.system.attributes.hp.max;
         if (oldHP != targetMaxHP) return;
     }
-    let nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value ?? 5, 'enemy');
+    let nearbyTargets = chris.findNearby(workflow.token, workflow.rangeDetails.range ?? 5, 'enemy');
     if (!nearbyTargets.length) return;
     let selection = await chris.selectTarget('Cleave', constants.yesNoButton, nearbyTargets, true, 'one', false, false, 'Cleave a nearby target?');
     if (!selection.buttons) return;

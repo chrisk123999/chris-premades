@@ -1,5 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
+import {enlargeReduce} from '../../spells/enlargeReduce.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
@@ -11,6 +12,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (chrisPremades.helpers.getItem(actor, 'Call the Hunt')) await chrisPremades.macros.callTheHunt.rageEnd(effect);
         await warpgate.revert(token.document, 'Rage');
         await chrisPremades.macros.rage.animationEnd(token, origin);
+        if (chrisPremades.helpers.getItem(actor, 'Giant\'s Havoc: Giant Stature')) await warpgate.revert(token.document, 'Giant Stature');
+        let effect2 = chrisPremades.helpers.findEffect(actor, 'Elemental Cleaver');
+        if (effect2) await chrisPremades.helpers.removeEffect(effect2);
     }
     async function effectMacro2 () {
         await chrisPremades.macros.rage.animationStart(token, origin);
@@ -153,6 +157,56 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         ]);
     }
+    let crushingThrow = chris.getItem(workflow.actor, 'Giant\'s Havoc: Crushing Throw');
+    if (crushingThrow) {
+        effectData.changes = effectData.changes.concat([
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'function.chrisPremades.macros.crushingThrow,postDamageRoll',
+                'priority': 20
+            }
+        ]);
+    }
+    let giantStature = chris.getItem(workflow.actor, 'Giant\'s Havoc: Giant Stature');
+    let demiurgicColossus = chris.getItem(workflow.actor, 'Demiurgic Colossus');
+    let dCSelection = 'lg';
+    if (demiurgicColossus) dCSelection = await chris.dialog(demiurgicColossus.name, [['Large', 'lg'], ['Huge', 'huge']], 'What size?') ?? 'lg';
+    if (dCSelection === 'huge') await demiurgicColossus.displayCard();
+    if (giantStature && workflow.token.document.width < 2) {
+        let updates2 = {
+            'token': {
+                'width': dCSelection === 'lg' ? 2 : 3,
+                'height': dCSelection === 'lg' ? 2 : 3
+            },
+            'actor': {
+                'system': {
+                    'traits': {
+                        'size': dCSelection
+                    }
+                }
+            }
+        }
+        if (chris.jb2aCheck() === 'patreon') {
+            await enlargeReduce.enlargeAnimation(workflow.token, updates2, 'Giant Stature');
+        } else {
+            let options = {
+                'permanent': false,
+                'name': 'Giant Stature',
+                'description': 'Giant Stature'
+            };
+            await warpgate.mutate(workflow.token.document, updates2, {}, options);
+        }
+        effectData.changes = effectData.changes.concat([
+            {
+                'key': 'flags.midi-qol.range.mwak',
+                'mode': 2,
+                'value': (demiurgicColossus ? 10 : 5),
+                'priority': 20
+            }
+        ]);
+        await giantStature.displayCard();
+    }
     let updates = {
         'embedded': {
             'Item': {
@@ -197,6 +251,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let wildSurge = chris.getItem(workflow.actor, 'Wild Surge');
     if (wildSurge) await wildSurge.use();
+    let elementalCleaver = chris.getItem(workflow.actor, 'Elemental Cleaver');
+    if (elementalCleaver) await elementalCleaver.use();
 }
 async function end({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor) return;

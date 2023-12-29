@@ -25,7 +25,7 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
         await warpgate.revert(token.document, 'Dragon Breath');
     }
     let effectData = {
-        'label': featureData.name,
+        'name': featureData.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60

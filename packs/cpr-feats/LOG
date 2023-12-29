@@ -1,3 +1,5 @@
-2023/12/26-20:17:20.732 7ac Recovering log #278
-2023/12/26-20:17:20.746 7ac Delete type=0 #278
-2023/12/26-20:17:20.746 7ac Delete type=3 #277
+2023/12/28-22:39:01.740 7bc Recovering log #290
+2023/12/28-22:39:01.740 7bc Level-0 table #292: started
+2023/12/28-22:39:01.749 7bc Level-0 table #292: 54410 bytes OK
+2023/12/28-22:39:01.762 7bc Delete type=0 #290
+2023/12/28-22:39:01.763 7bc Delete type=3 #289

@@ -1,3 +1,10 @@
+# 0.9.17 Release:'
+## New Content:
+- Path of the Giant Barbarian: Giant’s Havoc: Crushing Throw, Giant’s Havoc: Giant Stature, Elemental Cleaver, Mighty Impel, and Demiurgic Colossus
+## Bug Fixes:
+- Enlarge/Reduce
+- DMG Cleave
+  
 # 0.9.16 Release:
 ## Bug Fixes:
 - DMG Cleave

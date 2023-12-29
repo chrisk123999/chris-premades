@@ -148,6 +148,9 @@ export function setConfig() {
             ],
             'Cartomancer: Hidden Ace - Imbue Card': [
                 'Cartomancer: Hidden Ace - Flourish Imbued Card'
+            ],
+            'Elemental Cleaver': [
+                'Elemental Cleaver: Change Damage Type'
             ]
         },
         'restrictedItems': {
@@ -5619,6 +5622,29 @@ export function setConfig() {
                 'settings': [
                     'Template Listener'
                 ]
+            },
+            'Giant\'s Havoc: Crushing Throw': {
+                'name': 'Giant\'s Havoc: Crushing Throw',
+                'version': '0.9.17'
+            },
+            'Giant\'s Havoc: Giant Stature': {
+                'name': 'Giant\'s Havoc: Giant Stature',
+                'version': '0.9.17'
+            },
+            'Demiurgic Colossus': {
+                'name': 'Demiurgic Colossus',
+                'version': '0.9.17'
+            },
+            'Elemental Cleaver': {
+                'name': 'Elemental Cleaver',
+                'version': '0.9.17',
+                'mutation': {
+                    'self': 'Elemental Cleaver'
+                }
+            },
+            'Mighty Impel': {
+                'name': 'Mighty Impel',
+                'version': '0.9.17'
             }
         }
     });

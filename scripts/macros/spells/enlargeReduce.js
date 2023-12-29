@@ -11,7 +11,7 @@ async function enlargeAnimation(token, updates, name) {
             scale = 0.5;
             break;
     }
-    new Sequence()
+    await new Sequence()
         .effect()
         .file('jb2a.static_electricity.03.orange')
         .atLocation(token)
@@ -121,7 +121,7 @@ async function reduceAnimation(token, updates, name) {
             scale = 0.25;
             break;
     }
-    new Sequence()
+    await new Sequence()
         .effect()
         .file('jb2a.static_electricity.03.orange')
         .atLocation(token)
