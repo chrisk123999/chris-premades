@@ -1,4 +1,10 @@
-# 0.9.17 Release:'
+# 0.9.18 Release:
+## Bug Fixes:
+- Firearm
+- Animate Dead
+- Spirit Guardians
+  
+# 0.9.17 Release:
 ## New Content:
 - Path of the Giant Barbarian: Giant’s Havoc: Crushing Throw, Giant’s Havoc: Giant Stature, Elemental Cleaver, Mighty Impel, and Demiurgic Colossus
 ## Bug Fixes:
