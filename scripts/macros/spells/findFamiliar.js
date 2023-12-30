@@ -108,10 +108,10 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
     }
     let effectData = {
         'name': 'Find Familiar Attack',
-        'icon': '',
+        'icon': workflow.item.img,
         'origin': effect.origin.uuid,
         'duration': {
-            'turns': 1
+            'seconds': 1
         },
         'changes': [
             {

@@ -78,6 +78,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'earth';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     let homunculusToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 120, workflow.token, animation);
+    if (!homunculusToken) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Homunculus Servant - Command', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');
@@ -134,11 +135,11 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
         return;
     }
     let effectData = {
-        'label': 'Channel Magic',
-        'icon': '',
+        'name': 'Channel Magic',
+        'icon': workflow.item.img,
         'origin': effect.origin.uuid,
         'duration': {
-            'turns': 1
+            'seconds': 1
         },
         'changes': [
             {

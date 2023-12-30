@@ -1,3 +1,8 @@
+# 0.9.19 Release:
+## Bug Fixes:
+- Find Familiar
+- Homunculus Servant
+  
 # 0.9.18 Release:
 ## Bug Fixes:
 - Firearm
