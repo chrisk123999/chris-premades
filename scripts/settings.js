@@ -526,11 +526,11 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
+                Hooks.on('midi-qol.postPreambleComplete', macros.elementalAdept.early);
                 Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
                 Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
             } else {
-                Hooks.off('midi-qol.preambleComplete', macros.elementalAdept.early);
+                Hooks.off('midi-qol.postPreambleComplete', macros.elementalAdept.early);
                 Hooks.off('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
                 Hooks.off('midi-qol.RollComplete', macros.elementalAdept.late);
             }
@@ -986,9 +986,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preambleComplete', cast);
+                Hooks.on('midi-qol.postPreambleComplete', cast);
             } else {
-                Hooks.off('midi-qol.preambleComplete', cast);
+                Hooks.off('midi-qol.postPreambleComplete', cast);
             }
         }
     });

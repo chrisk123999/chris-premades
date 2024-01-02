@@ -108,7 +108,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.isDamaged', macros.deathWard);
     if (game.settings.get('chris-premades', 'Rest Listener')) Hooks.on('dnd5e.restCompleted', rest);
     if (game.settings.get('chris-premades', 'Elemental Adept')) {
-        Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
+        Hooks.on('midi-qol.postPreambleComplete', macros.elementalAdept.early);
         Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
         Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
     }
@@ -163,7 +163,7 @@ Hooks.once('ready', async function() {
         Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
-    if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.preambleComplete', cast);
+    if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.postPreambleComplete', cast);
     if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.isDamaged', macros.soothePain);
     if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('midi-qol.RollComplete', macros.compelledDuel.attacked);
     Hooks.on('renderCompendium', compendiumRender);

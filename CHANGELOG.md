@@ -1,3 +1,9 @@
+# 0.9.20 Release:
+## Bug Fixes:
+- Elemental Adept
+- Cast Animations
+- Find Familiar
+  
 # 0.9.19 Release:
 ## Bug Fixes:
 - Find Familiar
