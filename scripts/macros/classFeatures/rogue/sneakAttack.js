@@ -203,7 +203,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 return;
             }
         } else if (workflow.actor.type === 'npc') {
-            let number = Math.ceil(workflow.actor.system.details.cr) / 2;
+            let number = Math.ceil(workflow.actor.system.details.cr / 2);
             bonusDamageFormula = number + 'd6[' + workflow.defaultDamageType + ']';
         }
     } else {
