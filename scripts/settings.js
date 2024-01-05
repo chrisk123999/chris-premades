@@ -462,9 +462,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isHealed', macros.beaconOfHope);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
             } else {
-                Hooks.off('midi-qol.isHealed', macros.beaconOfHope);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
             }
         }
     });
@@ -510,9 +510,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.deathWard);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.deathWard);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.deathWard);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.deathWard);
             }
         }
     });
@@ -653,9 +653,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.monster.zombie.undeadFortitude);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.monster.zombie.undeadFortitude);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.monster.zombie.undeadFortitude);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.monster.zombie.undeadFortitude);
             }
         }
     });
@@ -685,9 +685,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.mastersAmulet);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.mastersAmulet);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.mastersAmulet);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.mastersAmulet);
             }
         }
     });
@@ -744,9 +744,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.strengthOfTheGrave);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.strengthOfTheGrave);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.strengthOfTheGrave);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.strengthOfTheGrave);
             }
         }
     });
@@ -760,9 +760,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.relentlessEndurance);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.relentlessEndurance);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.relentlessEndurance);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.relentlessEndurance);
             }
         }
     });
@@ -793,10 +793,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 if (game.user.isGM) Hooks.on('updateToken', macros.emboldeningBond.move);
-                Hooks.on('midi-qol.isDamaged', macros.emboldeningBond.damage);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.emboldeningBond.damage);
             } else {
                 if (game.user.isGM) Hooks.off('updateToken', macros.emboldeningBond.move);
-                Hooks.off('midi-qol.isDamaged', macros.emboldeningBond.damage);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.emboldeningBond.damage);
             }
         }
     });
@@ -884,9 +884,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.arcaneWard.damage);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.arcaneWard.damage);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
             }
         }
     });
@@ -900,9 +900,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.isDamaged', macros.soothePain);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.soothePain);
             } else {
-                Hooks.off('midi-qol.isDamaged', macros.soothePain);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.soothePain);
             } 
         }
     });

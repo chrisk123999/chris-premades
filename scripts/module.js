@@ -102,10 +102,10 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
     }
-    if (game.settings.get('chris-premades', 'Beacon of Hope')) Hooks.on('midi-qol.isHealed', macros.beaconOfHope);
+    if (game.settings.get('chris-premades', 'Beacon of Hope')) Hooks.on('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
     if (game.settings.get('chris-premades', 'DMG Cleave')) Hooks.on('midi-qol.RollComplete', macros.cleave);
     if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
-    if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.isDamaged', macros.deathWard);
+    if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.preTargetDamageApplication', macros.deathWard);
     if (game.settings.get('chris-premades', 'Rest Listener')) Hooks.on('dnd5e.restCompleted', rest);
     if (game.settings.get('chris-premades', 'Elemental Adept')) {
         Hooks.on('midi-qol.postPreambleComplete', macros.elementalAdept.early);
@@ -117,8 +117,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'On Hit')) Hooks.on('midi-qol.RollComplete', onHitMacro);
     if (game.settings.get('chris-premades', 'Protection from Evil and Good')) Hooks.on('midi-qol.preAttackRoll', macros.protectionFromEvilAndGood);
     if (game.settings.get('chris-premades', 'Sanctuary')) Hooks.on('midi-qol.preItemRoll', macros.sanctuary.hook);
-    if (game.settings.get('chris-premades', 'Shield Guardian')) Hooks.on('midi-qol.isDamaged', macros.mastersAmulet);
-    if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.isDamaged', macros.monster.zombie.undeadFortitude);
+    if (game.settings.get('chris-premades', 'Shield Guardian')) Hooks.on('midi-qol.preTargetDamageApplication', macros.mastersAmulet);
+    if (game.settings.get('chris-premades', 'Undead Fortitude')) Hooks.on('midi-qol.preTargetDamageApplication', macros.monster.zombie.undeadFortitude);
     if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
     if (game.settings.get('chris-premades', 'Active Effect Additions')) {
         Hooks.on('preCreateActiveEffect', itemDC);  
@@ -130,10 +130,10 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();
     if (game.settings.get('chris-premades', 'Exploding Heals')) Hooks.on('midi-qol.preDamageRollComplete', macros.explodingHeals);
     if (game.settings.get('chris-premades', 'Attack Listener')) Hooks.on('midi-qol.preAttackRoll', flanking);
-    if (game.settings.get('chris-premades', 'Strength of the Grave')) Hooks.on('midi-qol.isDamaged', macros.strengthOfTheGrave);
-    if (game.settings.get('chris-premades', 'Relentless Endurance')) Hooks.on('midi-qol.isDamaged', macros.relentlessEndurance);
+    if (game.settings.get('chris-premades', 'Strength of the Grave')) Hooks.on('midi-qol.preTargetDamageApplication', macros.strengthOfTheGrave);
+    if (game.settings.get('chris-premades', 'Relentless Endurance')) Hooks.on('midi-qol.preTargetDamageApplication', macros.relentlessEndurance);
     if (game.settings.get('chris-premades', 'Shadow of Moil')) Hooks.on('midi-qol.preAttackRoll', macros.shadowOfMoil.hook);
-    if (game.settings.get('chris-premades', 'Emboldening Bond')) Hooks.on('midi-qol.isDamaged', macros.emboldeningBond.damage);
+    if (game.settings.get('chris-premades', 'Emboldening Bond')) Hooks.on('midi-qol.preTargetDamageApplication', macros.emboldeningBond.damage);
     if (game.settings.get('chris-premades', 'Manual Rolls')) {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
@@ -150,7 +150,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.preItemRoll', diceSoNice.early);
         Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late)
     }
-    if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.isDamaged', macros.arcaneWard.damage);
+    if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
     if (game.settings.get('chris-premades', 'Automation Verification')) Hooks.on('midi-qol.preItemRoll', info);
     if (game.settings.get('chris-premades', 'Item Features')) {
         Hooks.on('preUpdateItem', itemFeatures);
@@ -164,7 +164,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
     if (game.settings.get('chris-premades', 'Cast Animations')) Hooks.on('midi-qol.postPreambleComplete', cast);
-    if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.isDamaged', macros.soothePain);
+    if (game.settings.get('chris-premades', 'Righteous Heritor')) Hooks.on('midi-qol.preTargetDamageApplication', macros.soothePain);
     if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('midi-qol.RollComplete', macros.compelledDuel.attacked);
     Hooks.on('renderCompendium', compendiumRender);
     if (game.modules.get('dae')?.active) addDAEFlags();

@@ -1,3 +1,7 @@
+# 0.9.21 Release:
+## Update Notes:
+- Midi-Qol version 11.3.12 is now required due to changes in hook names.
+  
 # 0.9.20 Release:
 ## Bug Fixes:
 - Elemental Adept
