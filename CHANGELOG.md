@@ -1,3 +1,15 @@
+# 0.9.22 Release:
+## New Content:
+- Spells: Investiture of Flame, Investiture of Ice, and Investiture of Stone
+## Bug Fixes:
+- Tasha's Otherworldly Guise
+- Spirit Guardians
+- Fire Shield
+- Twinned spell
+## New Enhanced Animations:
+- Investiture of Flame
+- Investiture of Ice
+  
 # 0.9.21 Release:
 ## Update Notes:
 - Midi-Qol version 11.3.12 is now required due to changes in hook names.

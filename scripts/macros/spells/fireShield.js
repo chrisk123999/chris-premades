@@ -92,9 +92,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Fire Shield'
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
     queue.remove(workflow.item.uuid);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
     if (!animation) return;
+    await animation(workflow.token, selection, 'Fire Shield');
+}
+async function animation(token, selection, name) {
     let colors = {
         'fire': 'orange',
         'cold': 'blue'
@@ -107,13 +110,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     new Sequence()
         .effect()
         .file('jb2a.impact.ground_crack.' + colors[selection] + '.01')
-        .atLocation(workflow.token)
+        .atLocation(token)
         .belowTokens()
         .scaleToObject(3)
 
         .effect()
         .file('jb2a.particles.outward.' + colors[selection] + '.01.03')
-        .atLocation(workflow.token)
+        .atLocation(token)
         .delay(200)
         .scaleIn(0.5, 250)
         .fadeOut(3000)
@@ -124,7 +127,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 
         .effect()
         .file('jb2a.energy_strands.in.' + altColors[selection] + '.01.2')
-        .atLocation(workflow.token)
+        .atLocation(token)
         .delay(200)
         .scaleIn(0.5, 250)
         .duration(2000)
@@ -135,37 +138,37 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 
         .effect()
         .file('jb2a.token_border.circle.spinning.' + colors[selection] + '.004')
-        .atLocation(workflow.token)
+        .atLocation(token)
         .scaleToObject(2.2)
         .playbackRate(1)
-        .attachTo(workflow.token)
+        .attachTo(token)
         .persist()
-        .name('Fire Shield')
+        .name(name)
 
         .effect()
         .file('jb2a.shield_themed.below.fire.03.' + colors[selection])
-        .atLocation(workflow.token)
+        .atLocation(token)
         .delay(1000)
         .persist()
         .fadeIn(500)
-        .attachTo(workflow.token)
+        .attachTo(token)
         .fadeOut(200)
         .belowTokens()
         .scaleToObject(1.7)
         .playbackRate(1)
-        .name('Fire Shield')
+        .name(name)
 
         .effect()
         .file('jb2a.shield_themed.above.fire.03.' + colors[selection])
-        .atLocation(workflow.token)
+        .atLocation(token)
         .persist()
         .fadeIn(3500)
-        .attachTo(workflow.token)
+        .attachTo(token)
         .fadeOut(200)
         .scaleToObject(1.7)
         .zIndex(0)
         .playbackRate(1)
-        .name('Fire Shield')
+        .name(name)
 
         .play();
 }
@@ -208,5 +211,6 @@ export let fireShield = {
     'item': item,
     'end': end,
     'stop': stop,
-    'onHit': onHit
+    'onHit': onHit,
+    'animation': animation
 }

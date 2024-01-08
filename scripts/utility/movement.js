@@ -9,7 +9,7 @@ export async function loadTriggers() {
             for (let spell of name) {
                 let effect = await fromUuid(spell.effectUuid)
                 if (!effect) {
-                    console.log('Chris | Removing stale movement trigger for ' + spell.macro);
+                    console.log('Chris Premades | Removing stale movement trigger for ' + spell.macro);
                     await removeTrigger(spell.macro, spell.sourceTokenID);
                 }
             }
@@ -40,7 +40,7 @@ export async function tokenMoved(token, changes) {
         }
         let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
         let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
-        if (selectedSpell) macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
+        if (selectedSpell) macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID, 'move');
     }
 }
 export function combatUpdate(combat, changes, context) {
@@ -53,23 +53,42 @@ export function combatUpdate(combat, changes, context) {
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
     let token = game.combat.scene.tokens.get(combat.current.tokenId);
-    if (!token) return;
-    for (let name of Object.values(triggers)) {
-        let validSources = [];
-        for (let spell of name) {
-            if (spell.turn != 'start') continue;
-            let sourceToken = game.combat.scene.tokens.get(spell.sourceTokenID);
-            if (!sourceToken) continue;
-            if (spell.ignoreSelf && sourceToken.id == token.id) continue;
-            if (spell.nonAllies && (token.disposition === sourceToken.disposition || token.disposition === 0)) continue;
-            let distance = chris.getDistance(token, sourceToken);
-            if (distance > spell.range) continue;
-            validSources.push(spell);
+    let lastToken = game.combat.scene.tokens.get(combat.previous.tokenId);
+    if (token) {
+        for (let name of Object.values(triggers)) {
+            let validSources = [];
+            for (let spell of name) {
+                if (spell.turn != 'start') continue;
+                let sourceToken = game.combat.scene.tokens.get(spell.sourceTokenID);
+                if (!sourceToken) continue;
+                if (spell.ignoreSelf && sourceToken.id == token.id) continue;
+                if (spell.nonAllies && (token.disposition === sourceToken.disposition || token.disposition === 0)) continue;
+                let distance = chris.getDistance(token, sourceToken);
+                if (distance > spell.range) continue;
+                validSources.push(spell);
+            }
+            let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
+            let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
+            if (selectedSpell) macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID, 'start');
         }
-        let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
-        let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
-        if (!selectedSpell) return;
-        macros.onMove(selectedSpell.macro, token, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID);
+    }
+    if (lastToken) {
+        for (let name of Object.values(triggers)) {
+            let validSources = [];
+            for (let spell of name) {
+                if (spell.turn != 'end') continue;
+                let sourceToken = game.combat.scene.tokens.get(spell.sourceTokenID);
+                if (!sourceToken) continue;
+                if (spell.ignoreSelf && sourceToken.id == lastToken.id) continue;
+                if (spell.nonAllies && (lastToken.disposition === sourceToken.disposition || lastToken.disposition === 0)) continue;
+                let distance = chris.getDistance(lastToken, sourceToken);
+                if (distance > spell.range) continue;
+                validSources.push(spell);
+            }
+            let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
+            let selectedSpell = validSources.find(spell => spell.castLevel === maxLevel);
+            if (selectedSpell) macros.onMove(selectedSpell.macro, lastToken, selectedSpell.castLevel, selectedSpell.spellDC, selectedSpell.damage, selectedSpell.damageType, selectedSpell.sourceTokenID, 'end');
+        }
     }
 }
 async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn, effectUuid) {

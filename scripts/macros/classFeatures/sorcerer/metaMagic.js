@@ -396,6 +396,8 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     setProperty(spellData, 'flags.chris-premades.metaMagic', true);
     spellData.system.components.concentration = false;
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
+    spell.prepareData();
+    spell.prepareFinalAttributes();
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(spell, config, options);
     if (spellLevel === 0) spellLevel = 1;

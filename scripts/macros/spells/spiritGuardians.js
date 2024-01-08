@@ -34,7 +34,6 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
             }
         }
     }
-    featureData.flags['chris-premades'].spell.castData.school = 'con';
     let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;

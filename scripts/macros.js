@@ -191,6 +191,9 @@ import {insectPlague} from './macros/spells/insectPlague.js';
 import {insightfulFighting} from './macros/classFeatures/rogue/inquisitive/insightfulFighting.js';
 import {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 import {intellectDevourer} from './macros/monsterFeatures/intellectDevourer/intellectDevourer.js';
+import {investitureOfFlame} from './macros/spells/investitureOfFlame.js';
+import {investitureOfIce} from './macros/spells/investitureOfIce.js';
+import {investitureOfStone} from './macros/spells/investitureOfStone.js';
 import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
@@ -437,13 +440,16 @@ export let saves = {
     'dangerSense': dangerSense,
     'holyNimbus': holyNimbus.save
 }
-async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID) {
+async function onMove(macroName, token, castLevel, spellDC, damage, damageType, tokenID, reason) {
     switch (macroName) {
         case 'spiritGuardians':
-            await spiritGuardians.moved(token, castLevel, spellDC, damage, damageType, tokenID);
+            await spiritGuardians.moved(token, castLevel, spellDC, damage, damageType, tokenID, reason);
             break;
         case 'guardianOfFaith':
-            await guardianOfFaith.moved(token, castLevel, spellDC, damage, damageType, tokenID);
+            await guardianOfFaith.moved(token, castLevel, spellDC, damage, damageType, tokenID, reason);
+            break;
+        case 'investitureOfFlame':
+            await investitureOfFlame.moved(token, castLevel, spellDC, damage, damageType, tokenID, reason);
             break;
     }
 }
@@ -660,6 +666,9 @@ export let macros = {
     'insectPlague': insectPlague,
     'insightfulFighting': insightfulFighting,
     'inspiringSmite': inspiringSmite,
+    'investitureOfFlame': investitureOfFlame,
+    'investitureOfIce': investitureOfIce,
+    'investitureOfStone': investitureOfStone,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'lanternOfRevealing': lanternOfRevealing,
     'lifeTransference': lifeTransference,

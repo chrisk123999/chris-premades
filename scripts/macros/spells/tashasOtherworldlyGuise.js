@@ -4,7 +4,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let selection = await chris.dialog(workflow.item.name, [['Lower Planes', 'lower'], ['Upper Planes', 'upper']], 'What planes do you draw magic from?');
     if (!selection) return;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

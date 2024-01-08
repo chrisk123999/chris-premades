@@ -2451,6 +2451,22 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Investiture of Flame': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Investiture of Ice': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {
@@ -5645,6 +5661,27 @@ export function setConfig() {
             'Mighty Impel': {
                 'name': 'Mighty Impel',
                 'version': '0.9.17'
+            },
+            'Investiture of Flame': {
+                'name': 'Investiture of Flame',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Flame'
+                }
+            },
+            'Investiture of Ice': {
+                'name': 'Investiture of Ice',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Ice'
+                }
+            },
+            'Investiture of Stone': {
+                'name': 'Investiture of Stone',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Stone'
+                }
             }
         }
     });
