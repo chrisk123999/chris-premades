@@ -1,3 +1,7 @@
+# 0.9.23 Release:
+## Bug Fixes:
+- Cleave
+  
 # 0.9.22 Release:
 ## New Content:
 - Spells: Investiture of Flame, Investiture of Ice, and Investiture of Stone

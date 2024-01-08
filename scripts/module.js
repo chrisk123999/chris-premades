@@ -103,7 +103,11 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
     }
     if (game.settings.get('chris-premades', 'Beacon of Hope')) Hooks.on('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
-    if (game.settings.get('chris-premades', 'DMG Cleave')) Hooks.on('midi-qol.RollComplete', macros.cleave);
+    if (game.settings.get('chris-premades', 'DMG Cleave')) {
+        Hooks.on('midi-qol.RollComplete', macros.cleave.hit);
+        Hooks.on('midi-qol.preCheckHits', macros.cleave.attack);
+        Hooks.on('midi-qol.preDamageRollComplete', macros.cleave.damage);
+    }
     if (game.settings.get('chris-premades', 'Darkness')) Hooks.on('midi-qol.preAttackRoll', macros.darkness.hook);
     if (game.settings.get('chris-premades', 'Death Ward')) Hooks.on('midi-qol.preTargetDamageApplication', macros.deathWard);
     if (game.settings.get('chris-premades', 'Rest Listener')) Hooks.on('dnd5e.restCompleted', rest);

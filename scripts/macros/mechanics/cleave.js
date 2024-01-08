@@ -1,6 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-export async function cleave(workflow) {
+async function hit(workflow) {
     if (workflow.hitTargets.size != 1 || workflow.item?.system?.actionType != 'mwak' || !workflow.damageList || !workflow.item) return;
     let newHP = workflow.damageList[0].newHP;
     if (newHP != 0) return;
@@ -20,31 +20,40 @@ export async function cleave(workflow) {
     let targetTokenID = selection.inputs.find(i => i);
     if (!targetTokenID) return;
     let weaponData = duplicate(workflow.item.toObject());
-    delete(weaponData.effects);
     delete(weaponData._id);
-    setProperty(weaponData, 'flags.midi-qol.onUseMacroName', '[preCheckHits]ItemMacro');
-    weaponData.flags['midi-qol'].onUseMacroParts = {
-    'items': [
-            {
-                'macroName': 'ItemMacro',
-                'option': 'preCheckHits'
-            }
-        ]
-    };
-    weaponData.flags.itemacro = {
-        'macro': {
-            'command': `let roll = await new Roll('` + workflow.attackTotal + `').evaluate({async: true}); workflow.setAttackRoll(roll);`
-        }
-    };
-    if (!workflow.item.flags['chris-premades']?.mechanic?.cleave) weaponData.name = workflow.item.name + ': Cleave';
+    if (!workflow.item.flags['chris-premades']?.mechanic?.cleave?.named) weaponData.name = workflow.item.name + ': Cleave';
     weaponData.system.damage.parts = [[leftoverDamage + '[' + workflow.defaultDamageType + ']', workflow.defaultDamageType]];
     weaponData.system.consume.amount = 0;
     weaponData.flags['chris-premades'] = {
         'mechanic': {
-            'cleave': true
+            'cleave': {
+                'attack': workflow.attackRoll.total,
+                'damage': leftoverDamage + '[' + workflow.defaultDamageType + ']',
+                'named': true
+            }
         }
     };
     let weaponAttack = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenID]);
     await MidiQOL.completeItemUse(weaponAttack, config, options);
+}
+async function attack(workflow) {
+    let flag = workflow.item?.flags?.['chris-premades']?.mechanic?.cleave;
+    if (!flag) return;
+    if (!flag.attack) return;
+    let roll = await new Roll(String(flag.attack)).evaluate({async: true});
+    await workflow.setAttackRoll(roll);
+}
+async function damage(workflow) {
+    if (!workflow.damageRoll) return;
+    let flag = workflow.item?.flags?.['chris-premades']?.mechanic?.cleave;
+    if (!flag) return;
+    if (!flag.damage) return;
+    let roll = await new Roll(String(flag.damage)).evaluate({async: true});
+    await workflow.setDamageRoll(roll);
+}
+export let cleave = {
+    'hit': hit,
+    'attack': attack,
+    'damage': damage
 }

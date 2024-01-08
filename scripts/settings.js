@@ -612,9 +612,13 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.RollComplete', macros.cleave);
+                Hooks.on('midi-qol.RollComplete', macros.cleave.hit);
+                Hooks.on('midi-qol.preCheckHits', macros.cleave.attack);
+                Hooks.on('midi-qol.preDamageRollComplete', macros.cleave.damage);
             } else {
-                Hooks.off('midi-qol.RollComplete', macros.cleave);
+                Hooks.off('midi-qol.RollComplete', macros.cleave.hit);
+                Hooks.off('midi-qol.preCheckHits', macros.cleave.attack);
+                Hooks.off('midi-qol.preDamageRollComplete', macros.cleave.damage);
             }
         }
     });
