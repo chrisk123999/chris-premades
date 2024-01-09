@@ -15,10 +15,10 @@ export async function hexWarrior({speaker, actor, token, character, item, args, 
     let cha = workflow.actor.system.abilities.cha.mod;
     let ability = weaponData.system.ability === '' ? 'str' : weaponData.system.ability;
     let score = workflow.actor.system.abilities[ability].mod;
-    let dex = workflow.actor.system.abilities.str.mod;
+    let dex = workflow.actor.system.abilities.dex.mod;
     let changed = false;
     if (weaponData.system.properties.fin) {
-        let mod = dex > score ? dex : str;
+        let mod = dex > score ? dex : score;
         if (mod <= cha) {
             ability = 'cha';
             changed = true;

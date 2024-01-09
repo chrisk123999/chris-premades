@@ -1,3 +1,8 @@
+# 0.9.26 Release:
+## Bug Fixes:
+- Create Pact Weapon
+- Hex Warrior
+  
 # 0.9.25 Release:
 ## Bug Fixes:
 - Create Pact Weapon

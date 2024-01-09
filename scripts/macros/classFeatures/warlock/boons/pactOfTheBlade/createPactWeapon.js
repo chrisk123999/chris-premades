@@ -67,10 +67,10 @@ async function create({speaker, actor, token, character, item, args, scope, work
         let cha = workflow.actor.system.abilities.cha.mod;
         let ability = selection[0].system.ability === '' ? 'str' : selection[0].system.ability;
         let score = workflow.actor.system.abilities[ability].mod;
-        let dex = workflow.actor.system.abilities.str.mod;
+        let dex = workflow.actor.system.abilities.dex.mod;
         let changed = false;
         if (selection[0].system.properties.fin) {
-            let mod = dex > score ? dex : str;
+            let mod = dex > score ? dex : score;
             if (mod <= cha) {
                 ability = 'cha';
                 changed = true;
