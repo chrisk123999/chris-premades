@@ -371,7 +371,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-items'
+        'default': 'world.ddb-' + game.world.id + '-ddb-items',
+        'select': true
     });
     addMenuSetting('Item Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Spell Compendium', {
@@ -380,7 +381,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-spells'
+        'default': 'world.ddb-' + game.world.id + '-ddb-spells',
+        'select': true
     });
     addMenuSetting('Spell Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Monster Compendium', {
@@ -389,7 +391,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-monsters'
+        'default': 'world.ddb-' + game.world.id + '-ddb-monsters',
+        'select': true
     });
     addMenuSetting('Monster Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Racial Trait Compendium', {
@@ -398,7 +401,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-racial-traits'
+        'default': 'world.ddb-' + game.world.id + '-ddb-racial-traits',
+        'select': true
     });
     addMenuSetting('Racial Trait Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Condition Resistance', {

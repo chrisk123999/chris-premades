@@ -198,16 +198,6 @@ async function configureItem(item, configuration) {
             t.style.paddingRight = '5px';
         }
     }
-    let buttons = [,
-        {
-            'label': 'Cancel',
-            'value': false
-        },
-        {
-            'label': 'Ok',
-            'value': true
-        }
-    ];
     let generatedMenu = [];
     let inputKeys = [];
     for (let [key, value] of Object.entries(configuration)) {
@@ -250,7 +240,7 @@ async function configureItem(item, configuration) {
     let selection = await warpgate.menu(
         {
             'inputs': generatedMenu,
-            'buttons': buttons
+            'buttons': constants.okCancel
         },
         config
     );

@@ -1,3 +1,11 @@
-2024/01/07-21:46:10.002 2ea0 Recovering log #351
-2024/01/07-21:46:10.025 2ea0 Delete type=0 #351
-2024/01/07-21:46:10.025 2ea0 Delete type=3 #350
+2024/01/09-01:58:40.532 60a8 Recovering log #380
+2024/01/09-01:58:40.533 60a8 Level-0 table #382: started
+2024/01/09-01:58:40.545 60a8 Level-0 table #382: 246748 bytes OK
+2024/01/09-01:58:40.557 60a8 Delete type=0 #380
+2024/01/09-01:58:40.557 60a8 Delete type=3 #379
+2024/01/09-02:14:46.520 1aa8 Compacting 1@0 + 1@1 files
+2024/01/09-02:14:46.540 1aa8 Generated table #384@0: 472 keys, 298174 bytes
+2024/01/09-02:14:46.540 1aa8 Compacted 1@0 + 1@1 files => 298174 bytes
+2024/01/09-02:14:46.544 1aa8 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/09-02:14:46.545 1aa8 Delete type=2 #372
+2024/01/09-02:14:46.545 1aa8 Delete type=2 #382

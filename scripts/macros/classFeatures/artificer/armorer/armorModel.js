@@ -18,7 +18,7 @@ async function guardianArmor({speaker, actor, token, character, item, args, scop
     featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian Armor: Thunder Gauntlets');
     await workflow.actor.createEmbeddedDocuments('Item', [featureData, featureData2]);
     let effectData = {
-        'label': 'Arcane Armor: Guardian Model',
+        'name': 'Arcane Armor: Guardian Model',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid
     };
@@ -43,7 +43,7 @@ async function infiltratorArmor({speaker, actor, token, character, item, args, s
     if (!featureData) return;
     await workflow.actor.createEmbeddedDocuments('Item', [featureData]);
     let effectData = {
-        'label': 'Arcane Armor: Infiltrator Model',
+        'name': 'Arcane Armor: Infiltrator Model',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'changes': [

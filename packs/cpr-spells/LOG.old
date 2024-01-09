@@ -1,7 +1,9 @@
-2024/01/07-21:46:09.933 2ea0 Recovering log #353
-2024/01/07-21:46:09.949 2ea0 Delete type=0 #353
-2024/01/07-21:46:09.949 2ea0 Delete type=3 #351
-2024/01/07-21:46:51.494 4afc Compacting 2@0 + 1@1 files
-2024/01/07-21:46:51.520 4afc Generated table #356@0: 174 keys, 219951 bytes
-2024/01/07-21:46:51.520 4afc Compacted 2@0 + 1@1 files => 219951 bytes
-2024/01/07-21:46:51.526 4afc compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/09-01:58:40.448 60a8 Recovering log #382
+2024/01/09-01:58:40.448 60a8 Level-0 table #384: started
+2024/01/09-01:58:40.472 60a8 Level-0 table #384: 205636 bytes OK
+2024/01/09-01:58:40.486 60a8 Delete type=0 #382
+2024/01/09-01:58:40.486 60a8 Delete type=3 #381
+2024/01/09-02:14:44.347 1aa8 Compacting 1@0 + 1@1 files
+2024/01/09-02:14:44.384 1aa8 Generated table #386@0: 175 keys, 222486 bytes
+2024/01/09-02:14:44.384 1aa8 Compacted 1@0 + 1@1 files => 222486 bytes
+2024/01/09-02:14:44.390 1aa8 compacted to: files[ 0 1 0 0 0 0 0 ]

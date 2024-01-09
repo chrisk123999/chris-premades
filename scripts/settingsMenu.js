@@ -1,5 +1,5 @@
 import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
-import {additionalCompendiumPriority, additionalCompendiums} from './compendium.js';
+import {additionalCompendiumPriority, additionalCompendiums, selectCompendium} from './compendium.js';
 import {fixSettings, troubleshoot} from './help.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
@@ -9,7 +9,11 @@ export function addMenuSetting(key, category) {
 let labels = {
     'Humanoid-Randomizer-Settings': 'Configure',
     'Additional-Compendiums': 'Configure',
-    'Additional-Compendium-Priority': 'Configure'
+    'Additional-Compendium-Priority': 'Configure',
+    'Item-Compendium': 'Select',
+    'Spell-Compendium': 'Select',
+    'Monster-Compendium': 'Select',
+    'Racial-Trait-Compendium': 'Select'
 }
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -47,6 +51,7 @@ class chrisSettingsBase extends FormApplication {
             s.isNumber = setting.type === Number;
             s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
             s.isButton = (setting.type instanceof Object || setting.type instanceof Array) && setting.type.name != 'String';
+            if (s.select) s.isButton = true;
             s.label = labels[key];
             generatedOptions.push(s);
 	    }
@@ -286,6 +291,12 @@ export async function settingButton(id) {
             break;
         case 'Additional Compendium Priority':
             await additionalCompendiumPriority();
+            break;
+        case 'Item Compendium':
+        case 'Spell Compendium':
+        case 'Monster Compendium':
+        case 'Racial Trait Compendium':
+            await selectCompendium(id);
             break;
     }
 }

@@ -592,7 +592,7 @@ export let chris = {
             dialog.element.find(".dialog-buttons").css({
                 "flex-direction": 'column',
             })
-        })
+        });
     },
     'selectDocuments': async function selectDocuments(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
@@ -646,7 +646,7 @@ export let chris = {
                 }
                 resolve(returns);
             }
-        })
+        });
     },
     'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents) {
         if (userId === game.user.id) return await chris.selectDocument(title, documents);
@@ -992,5 +992,52 @@ export let chris = {
             }
         }
         return await warpgate.spawn(tokenDocument, updates, callbacks, options);
+    },
+    'safeMutate': async function _safeMutate(actor, updates, callbacks = {}, options = {}) {
+        let tokens = actor.getActiveTokens();
+        let tokenDoc;
+        let remove = false;
+        if (!tokens.length) {
+            if (actor.prototypeToken.actorLink) {
+                let doc = await actor.getTokenDocument({
+                    'x': 0,
+                    'y': 0
+                });
+                let tokenData = doc.toObject();
+                [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
+                remove = true;
+            } else {
+                ui.notifications.warn('A mutation was attempted on a unlinked actor with no token and has been canceled!');
+                return false;
+            }
+        } else {
+            tokenDoc = tokens[0].document;
+        }
+        await warpgate.mutate(tokenDoc, updates, callbacks, options);
+        if (remove) await tokenDoc.delete();
+        return true;
+    },
+    'safeRevert': async function _safeRevert(actor, mutationName, options) {
+        let tokens = actor.getActiveTokens();
+        let tokenDoc;
+        let remove = false;
+        if (!tokens.length) {
+            if (actor.prototypeToken.actorLink) {
+                let doc = await actor.getTokenDocument({
+                    'x': 0,
+                    'y': 0
+                });
+                let tokenData = doc.toObject();
+                [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
+                remove = true;
+            } else {
+                ui.notifications.warn('A mutation revert was attempted on a unlinked actor with no token and has been canceled!');
+                return false;
+            }
+        } else {
+            tokenDoc = tokens[0].document;
+        }
+        await warpgate.revert(tokenDoc, mutationName, options);
+        return true;
     }
 }

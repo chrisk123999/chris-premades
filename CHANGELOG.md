@@ -1,3 +1,13 @@
+# 0.9.24 Release:
+## New Content:
+- Pact of the Blade Warlock: Create Pact Weapon and Pact Boon: Pact of the Blade
+- The Hexblade Warlock: Hex Warrior
+- Eldritch Invocation: Improved Pact Weapon
+## Bug Fixes:
+- Radiant Weapon
+## Update Notes:
+- Compendium Selection settings have been improved.
+  
 # 0.9.23 Release:
 ## Bug Fixes:
 - Cleave

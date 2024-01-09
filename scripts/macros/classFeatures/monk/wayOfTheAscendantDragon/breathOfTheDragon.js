@@ -127,7 +127,7 @@ export async function breathOfTheDragon({speaker, actor, token, character, item,
     };
     await chris.createEffect(workflow.actor, effectData);
     queue.remove(workflow.item.uuid);
-    if (!chris.getConfiguration(workflow.item, 'playAnimation') ?? true) return;
+    if (!chris.getConfiguration(workflow.item, 'animation') ?? true) return;
     let file = '';
     if (type === 'cone') {
         switch (damageType) {
