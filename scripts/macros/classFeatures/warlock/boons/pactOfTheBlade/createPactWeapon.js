@@ -37,8 +37,8 @@ async function create({speaker, actor, token, character, item, args, scope, work
         'Warhammer',
         'Whip'
     ];
-    let pactOfTheBlade = chris.getItem(workflow.actor, 'Pact Boon: Pact of the Blade');
-    if (pactOfTheBlade) {
+    let improvedPactWeapon = chris.getItem(workflow.actor, 'Eldritch Invocations: Improved Pact Weapon');
+    if (improvedPactWeapon) {
         weapons = weapons.concat([
             'Shortbow',
             'Longbow',
@@ -83,7 +83,6 @@ async function create({speaker, actor, token, character, item, args, scope, work
         }
         if (changed) selection[0].system.ability = ability;
     }
-    let improvedPactWeapon = chris.getItem(workflow.actor, 'Eldritch Invocations: Improved Pact Weapon');
     if (improvedPactWeapon) {
         selection[0].system.attackBonus = 1;
         selection[0].system.damage.parts[0][0] += ' + 1';

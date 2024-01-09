@@ -5687,10 +5687,6 @@ export function setConfig() {
                 'name': 'Create Pact Weapon',
                 'version': '0.9.24'
             },
-            'Pact Boon: Pact of the Blade': {
-                'name': 'Pact Boon: Pact of the Blade',
-                'version': '0.9.24'
-            },
             'Eldritch Invocations: Improved Pact Weapon': {
                 'name': 'Eldritch Invocations: Improved Pact Weapon',
                 'version': '0.9.24'

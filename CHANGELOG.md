@@ -1,6 +1,10 @@
+# 0.9.25 Release:
+## Bug Fixes:
+- Create Pact Weapon
+  
 # 0.9.24 Release:
 ## New Content:
-- Pact of the Blade Warlock: Create Pact Weapon and Pact Boon: Pact of the Blade
+- Pact of the Blade Warlock: Create Pact Weapon
 - The Hexblade Warlock: Hex Warrior
 - Eldritch Invocation: Improved Pact Weapon
 ## Bug Fixes:

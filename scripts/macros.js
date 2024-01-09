@@ -77,6 +77,7 @@ import {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js'
 import {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js'
 import {constructSpirit} from './macros/monsterFeatures/constructSpirit/constructSpirit.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
+import {createPactWeapon} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
 import {crusher} from './macros/feats/crusher.js';
 import {crushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
@@ -171,6 +172,7 @@ import {healingLight} from './macros/classFeatures/warlock/celestial/healingLigh
 import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
+import {hexWarrior} from './macros/classFeatures/warlock/hexblade/hexWarrior.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
@@ -344,8 +346,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {createPactWeapon} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
-import {hexWarrior} from './macros/classFeatures/warlock/hexblade/hexWarrior.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -580,6 +580,7 @@ export let macros = {
     'conjureFey': conjureFey,
     'conjureMinorElementals': conjureMinorElementals,
     'conjureWoodlandBeings': conjureWoodlandBeings,
+    'createPactWeapon': createPactWeapon,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
     'crushingThrow': crushingThrow,
@@ -653,6 +654,7 @@ export let macros = {
     'heartOfTheStorm': heartOfTheStorm,
     'heatMetal': heatMetal,
     'hex': hex,
+    'hexWarrior': hexWarrior,
     'hexbladesCurse': hexbladesCurse,
     'hiddenStep': hiddenStep,
     'hillStrike': hillStrike,
@@ -804,7 +806,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'createPactWeapon': createPactWeapon,
-    'hexWarrior': hexWarrior
+    'zoneOfTruth': zoneOfTruth
 }
