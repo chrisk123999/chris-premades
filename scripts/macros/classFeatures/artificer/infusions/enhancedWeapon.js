@@ -4,6 +4,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let infusionId = workflow.item.flags['chris-premades']?.feature?.infusion?.enhancedWeapon?.id;
     if (!infusionId) {
         let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc);
+        if (chris.getItem(actor, 'Armor Modifications')) {
+            let gauntlets = chris.getItem(workflow.actor, 'Guardian Armor: Thunder Gauntlets');
+            if (gauntlets) validWeapons.push(gauntlets);
+            let launcher = chris.getItem(workflow.actor, 'Infiltrator Armor: Lightning Launcher');
+            if (launcher) validWeapons.push(launcher);
+        }
         if (validWeapons.length === 0) {
             ui.notifications.info('No valid weapon to infuse!');
             return;

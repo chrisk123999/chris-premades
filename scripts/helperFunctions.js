@@ -785,7 +785,7 @@ export let chris = {
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
             if (hitsWall) {
-                distance -= 5;
+                distance += distance > 0 ? -5 : 5;
                 if (distance === 0) {
                     ui.notifications.info('Target is unable to be moved!');
                     return;

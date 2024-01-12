@@ -3972,7 +3972,7 @@ export function setConfig() {
             },
             'Dread Ambusher': {
                 'name': 'Dread Ambusher',
-                'version': '0.7.01'
+                'version': '0.9.27'
             },
             'Favored Foe': {
                 'name': 'Favored Foe',
@@ -5694,6 +5694,10 @@ export function setConfig() {
             'Hex Warrior': {
                 'name': 'Hex Warrior',
                 'version': '0.9.24'
+            },
+            'Armor Modifications': {
+                'name': 'Armor Modifications',
+                'version': '0.9.27'
             }
         }
     });

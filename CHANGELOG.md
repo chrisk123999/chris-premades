@@ -1,3 +1,14 @@
+# 0.9.27 Release:
+## New Content:
+- Armorer Artificer: Armor Modifications
+## Bug Fixes:
+- Armor Model
+- Enhanced Weapon
+- Radiant Weapon
+- Dread Ambusher
+## Update Notes:
+- Arcane Armorer actors should have their Thunder Gauntlets, Defensive Field, and Lightning Launcher manually deleted after updating. You should then re-select your armor model.
+
 # 0.9.26 Release:
 ## Bug Fixes:
 - Create Pact Weapon
