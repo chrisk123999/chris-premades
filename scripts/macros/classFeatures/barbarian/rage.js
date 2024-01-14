@@ -95,8 +95,36 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'vae': {
                     'button': featureData.name
                 }
+            },
+            'dae': {
+                'specialDuration': [
+                    'zeroHP'
+                ]
             }
         }
+    }
+    if (!chris.getItem(actor, 'Persistent Rage')) {
+        effectData.changes = effectData.changes.concat([
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'function.chrisPremades.macros.rage.attack,postActiveEffects',
+                'priority': 20
+            },
+            {
+                'key': 'flags.chris-premades.feature.onHit.rage',
+                'mode': 5,
+                'value': true,
+                'priority': 20
+            }
+        ]);
+        effectData.flags.effectmacro.onTurnEnd = {
+            'script': 'await chrisPremades.macros.rage.turnEnd(effect, actor);'
+        }
+        effectData.flags.effectmacro.onCombatStart = {
+            'script': 'await chrisPremades.macros.rage.combatStart(effect);'
+        }
+        if (chris.inCombat()) setProperty(effectData, 'flags.chris-premades.feature.rage.attackOrAttacked', {'turn': game.combat.turn, 'round': game.combat.round});
     }
     let totemBear = chris.getItem(workflow.actor, 'Totem Spirit: Bear');
     if (totemBear) {
@@ -261,10 +289,54 @@ async function end({speaker, actor, token, character, item, args, scope, workflo
     await chris.removeEffect(effect);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    //todo: Automate keeping track of attacks and being attacked.
+    let effect = chris.findEffect(workflow.actor, 'Rage');
+    if (!effect) return;
+    if (!chris.inCombat()) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    await effect.setFlag('chris-premades', 'feature.rage.attackOrAttacked', {'turn': game.combat.turn, 'round': game.combat.round});
 }
-async function attacked({speaker, actor, token, character, item, args, scope, workflow}) {
-
+async function attacked(workflow, token) {
+    let effect = chris.findEffect(token.actor, 'Rage');
+    if (!effect) return;
+    if (!chris.inCombat()) return;
+    if (!workflow.damageRoll) return;
+    let damageItem = workflow.damageList.find(i => i.tokenId === token.id);
+    if (!damageItem) return;
+    if (damageItem.newHP >= damageItem.oldHP) return;
+    let updates = {
+        'flags': {
+            'chris-premades': {
+                'feature': {
+                    'rage': {
+                        'attackOrAttacked': {
+                            'turn': game.combat.turn,
+                            'round': game.combat.round
+                        }
+                    }
+                }
+            }
+        }
+    };
+    await chris.updateEffect(effect, updates);
+}
+async function turnEnd(effect, actor) {
+    let lastRound = effect.flags['chris-premades']?.feature?.rage?.attackOrAttacked?.round;
+    let lastTurn = effect.flags['chris-premades']?.feature?.rage?.attackOrAttacked?.turn;
+    if (lastRound === undefined || lastTurn === undefined) return;
+    let currentRound = game.combat.previous.round;
+    let currentTurn = game.combat.previous.turn;
+    let roundDiff = currentRound - lastRound;
+    if (roundDiff >= 1) {
+        if (currentTurn >= lastTurn) {
+            let userId = chris.lastGM();
+            let selection = await chris.remoteDialog('Rage', constants.yesNo, userId, actor.name + ' has not attacked an enemy or taken damage since their last turn. Remove Rage?');
+            if (!selection) return;
+            await chris.removeEffect(effect);
+        }
+    }
+}
+async function combatStart(effect) {
+    await effect.setFlag('chris-premades', 'feature.rage.attackOrAttacked', {'turn': 0, 'round': 0});
 }
 async function animationStart(token, origin) {
     //Animations by: eskiemoh
@@ -514,5 +586,9 @@ export let rage = {
     'item': item,
     'end': end,
     'animationStart': animationStart,
-    'animationEnd': animationEnd
+    'animationEnd': animationEnd,
+    'attack': attack,
+    'attacked': attacked,
+    'turnEnd': turnEnd,
+    'combatStart': combatStart
 }

@@ -2467,6 +2467,14 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Long-Limbed': {
+                'checkbox': {
+                    'displaycard': {
+                        'label': 'Display Chat Card?',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {
@@ -3282,7 +3290,10 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Rage'
                 },
-                'hasAnimation': true
+                'hasAnimation': true,
+                'settings': [
+                    'On Hit'
+                ]
             },
             'Totem Spirit: Bear': {
                 'name': 'Totem Spirit: Bear',
@@ -5698,6 +5709,14 @@ export function setConfig() {
             'Armor Modifications': {
                 'name': 'Armor Modifications',
                 'version': '0.9.27'
+            },
+            'Persistent Rage': {
+                'name': 'Persistent Rage',
+                'version': '0.9.28'
+            },
+            'Long-Limbed': {
+                'name': 'Long-Limbed',
+                'version': '0.9.28'
             }
         }
     });

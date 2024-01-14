@@ -1,3 +1,14 @@
+# 0.9.28 Relase:
+## New Content:
+- Bugbear: Long-Limbed
+- Barbarian: Persistent Rage
+## Bug Fixes:
+- Armor of Agathys
+- Rage
+- Sneak Attack
+## Update Notes:
+- Rage will now prompt the GM to remove the effect when the Barbarian fails to attack or take damage.
+  
 # 0.9.27 Release:
 ## New Content:
 - Armorer Artificer: Armor Modifications

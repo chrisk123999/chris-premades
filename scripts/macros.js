@@ -204,6 +204,7 @@ import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
 import {lightningLure} from './macros/spells/lightningLure.js';
+import {longLimbed} from './macros/raceFeatures/bugbear/longLimbed.js';
 import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddeningHex.js';
 import {maelstromAura} from './macros/feats/maelstromAura.js';
 import {magicMissile} from './macros/spells/magicMissile.js';
@@ -429,7 +430,8 @@ let onHit = {
     'soulThirst': soulMonger.soulThirst.onHit,
     'wardingBond': wardingBond.onHit,
     'armorOfAgathys': armorOfAgathys.onHit,
-    'wildSurgeRetribution': wildSurge.retribution
+    'wildSurgeRetribution': wildSurge.retribution,
+    'rage': rage.attacked
 }
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
@@ -678,6 +680,7 @@ export let macros = {
     'lifeTransference': lifeTransference,
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,
+    'longLimbed': longLimbed,
     'maddeningHex': maddeningHex,
     'maelstromAura': maelstromAura,
     'magicMissile': magicMissile,
