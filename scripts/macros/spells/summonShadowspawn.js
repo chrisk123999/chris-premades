@@ -21,6 +21,8 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
     let hpFormula = 35 + ((workflow.castData.castLevel - 3) * 15);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Shadow Spirit (' + selection + ')';
     if (name === '') name = 'Shadow Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -47,8 +49,8 @@ export async function summonShadowspawn({speaker, actor, token, character, item,
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + rangedAttackBonus.total
                         }
                     }
                 }

@@ -1,3 +1,24 @@
+# 0.9.29 Release:
+## New Content:
+- Spell: Elemental Weapon
+## Bug Fixes:
+- Steel Defender
+- Homunculus Servant
+- Animating Performance
+- Summon Wildfire Spirit
+- Primal Companion
+- Bigby's Hand
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Draconic Spirit
+- Summon Elemental
+- Summon Fey
+- Summon Fiend
+- Summon Shadowspawn
+- Summon Undead
+  
 # 0.9.28 Relase:
 ## New Content:
 - Bugbear: Long-Limbed

@@ -1,14 +1,14 @@
-2024/01/13-15:05:35.355 3ee8 Recovering log #410
-2024/01/13-15:05:35.369 3ee8 Delete type=0 #410
-2024/01/13-15:05:35.369 3ee8 Delete type=3 #409
-2024/01/13-16:33:26.223 4ee0 Level-0 table #414: started
-2024/01/13-16:33:26.223 4ee0 Level-0 table #414: 0 bytes OK
-2024/01/13-16:33:26.228 4ee0 Delete type=0 #412
-2024/01/13-16:33:26.254 4ee0 Manual compaction at level-0 from '!folders!0EnT8hiSaSWI4llJ' @ 72057594037927935 : 1 .. '!items.effects!zqmgcdJ4gPEwpTyi.e42aHCihrl7W4XmC' @ 0 : 0; will stop at '!items!zqmgcdJ4gPEwpTyi' @ 10898 : 1
-2024/01/13-16:33:26.254 4ee0 Compacting 1@0 + 1@1 files
-2024/01/13-16:33:26.265 4ee0 Generated table #415@0: 785 keys, 390881 bytes
-2024/01/13-16:33:26.265 4ee0 Compacted 1@0 + 1@1 files => 390881 bytes
-2024/01/13-16:33:26.271 4ee0 compacted to: files[ 0 1 0 0 0 0 0 ]
-2024/01/13-16:33:26.271 4ee0 Delete type=2 #401
-2024/01/13-16:33:26.272 4ee0 Delete type=2 #403
-2024/01/13-16:33:26.278 4ee0 Manual compaction at level-0 from '!items!zqmgcdJ4gPEwpTyi' @ 10898 : 1 .. '!items.effects!zqmgcdJ4gPEwpTyi.e42aHCihrl7W4XmC' @ 0 : 0; will stop at (end)
+2024/01/13-19:27:58.998 59f0 Recovering log #422
+2024/01/13-19:27:59.011 59f0 Delete type=0 #422
+2024/01/13-19:27:59.011 59f0 Delete type=3 #421
+2024/01/13-20:43:07.352 1b48 Level-0 table #426: started
+2024/01/13-20:43:07.352 1b48 Level-0 table #426: 0 bytes OK
+2024/01/13-20:43:07.358 1b48 Delete type=0 #424
+2024/01/13-20:43:07.403 1b48 Manual compaction at level-0 from '!folders!0EnT8hiSaSWI4llJ' @ 72057594037927935 : 1 .. '!items.effects!zqmgcdJ4gPEwpTyi.e42aHCihrl7W4XmC' @ 0 : 0; will stop at '!items!zqmgcdJ4gPEwpTyi' @ 11209 : 1
+2024/01/13-20:43:07.403 1b48 Compacting 1@0 + 1@1 files
+2024/01/13-20:43:07.416 1b48 Generated table #427@0: 785 keys, 390824 bytes
+2024/01/13-20:43:07.416 1b48 Compacted 1@0 + 1@1 files => 390824 bytes
+2024/01/13-20:43:07.426 1b48 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/13-20:43:07.426 1b48 Delete type=2 #415
+2024/01/13-20:43:07.427 1b48 Delete type=2 #419
+2024/01/13-20:43:07.442 1b48 Manual compaction at level-0 from '!items!zqmgcdJ4gPEwpTyi' @ 11209 : 1 .. '!items.effects!zqmgcdJ4gPEwpTyi.e42aHCihrl7W4XmC' @ 0 : 0; will stop at (end)

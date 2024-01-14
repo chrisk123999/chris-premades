@@ -13,6 +13,8 @@ export async function summonAberration({speaker, actor, token, character, item, 
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')';
     if (name === '') name = 'Aberrant Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -39,8 +41,8 @@ export async function summonAberration({speaker, actor, token, character, item, 
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + rangedAttackBonus.total
                         }
                     }
                 }

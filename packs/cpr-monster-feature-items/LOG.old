@@ -1,16 +1,14 @@
-2024/01/13-15:05:35.392 468c Recovering log #396
-2024/01/13-15:05:35.405 468c Delete type=0 #396
-2024/01/13-15:05:35.406 468c Delete type=3 #395
-2024/01/13-16:33:26.189 4ee0 Level-0 table #400: started
-2024/01/13-16:33:26.189 4ee0 Level-0 table #400: 0 bytes OK
-2024/01/13-16:33:26.198 4ee0 Delete type=0 #398
-2024/01/13-16:33:26.205 4ee0 Manual compaction at level-0 from '!items!ByRRKA64sxYqvyw4' @ 72057594037927935 : 1 .. '!items!pdcMpeN0Mm7c5D7W' @ 0 : 0; will stop at '!items!pdcMpeN0Mm7c5D7W' @ 161 : 1
-2024/01/13-16:33:26.205 4ee0 Compacting 3@0 + 1@1 files
-2024/01/13-16:33:26.216 4ee0 Generated table #401@0: 6 keys, 3994 bytes
-2024/01/13-16:33:26.216 4ee0 Compacted 3@0 + 1@1 files => 3994 bytes
-2024/01/13-16:33:26.222 4ee0 compacted to: files[ 0 1 0 0 0 0 0 ]
-2024/01/13-16:33:26.222 4ee0 Delete type=2 #379
-2024/01/13-16:33:26.223 4ee0 Delete type=2 #383
-2024/01/13-16:33:26.223 4ee0 Delete type=2 #386
-2024/01/13-16:33:26.223 4ee0 Delete type=2 #389
-2024/01/13-16:33:26.254 4ee0 Manual compaction at level-0 from '!items!pdcMpeN0Mm7c5D7W' @ 161 : 1 .. '!items!pdcMpeN0Mm7c5D7W' @ 0 : 0; will stop at (end)
+2024/01/13-19:27:59.020 e38 Recovering log #408
+2024/01/13-19:27:59.033 e38 Delete type=0 #408
+2024/01/13-19:27:59.033 e38 Delete type=3 #407
+2024/01/13-20:43:07.343 1b48 Level-0 table #412: started
+2024/01/13-20:43:07.343 1b48 Level-0 table #412: 0 bytes OK
+2024/01/13-20:43:07.351 1b48 Delete type=0 #410
+2024/01/13-20:43:07.381 1b48 Manual compaction at level-0 from '!items!ByRRKA64sxYqvyw4' @ 72057594037927935 : 1 .. '!items!pdcMpeN0Mm7c5D7W' @ 0 : 0; will stop at '!items!pdcMpeN0Mm7c5D7W' @ 179 : 1
+2024/01/13-20:43:07.381 1b48 Compacting 1@0 + 1@1 files
+2024/01/13-20:43:07.397 1b48 Generated table #413@0: 6 keys, 3992 bytes
+2024/01/13-20:43:07.397 1b48 Compacted 1@0 + 1@1 files => 3992 bytes
+2024/01/13-20:43:07.403 1b48 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/13-20:43:07.403 1b48 Delete type=2 #401
+2024/01/13-20:43:07.403 1b48 Delete type=2 #405
+2024/01/13-20:43:07.442 1b48 Manual compaction at level-0 from '!items!pdcMpeN0Mm7c5D7W' @ 179 : 1 .. '!items!pdcMpeN0Mm7c5D7W' @ 0 : 0; will stop at (end)

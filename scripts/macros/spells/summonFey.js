@@ -22,6 +22,8 @@ export async function summonFey({speaker, actor, token, character, item, args, s
     let hpFormula = 30 + ((workflow.castData.castLevel - 3) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Fey Spirit (' + selection + ')';
     if (name === '') name = 'Fey Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -48,8 +50,8 @@ export async function summonFey({speaker, actor, token, character, item, args, s
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + rangedAttackBonus.total
                         }
                     }
                 }

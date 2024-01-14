@@ -5717,6 +5717,10 @@ export function setConfig() {
             'Long-Limbed': {
                 'name': 'Long-Limbed',
                 'version': '0.9.28'
+            },
+            'Elemental Weapon': {
+                'name': 'Elemental Weapon',
+                'version': '0.9.29'
             }
         }
     });

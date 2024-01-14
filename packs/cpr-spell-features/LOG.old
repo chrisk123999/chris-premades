@@ -1,16 +1,14 @@
-2024/01/13-15:05:35.184 3650 Recovering log #408
-2024/01/13-15:05:35.198 3650 Delete type=0 #408
-2024/01/13-15:05:35.198 3650 Delete type=3 #407
-2024/01/13-16:33:26.099 4ee0 Level-0 table #412: started
-2024/01/13-16:33:26.099 4ee0 Level-0 table #412: 0 bytes OK
-2024/01/13-16:33:26.106 4ee0 Delete type=0 #410
-2024/01/13-16:33:26.114 4ee0 Manual compaction at level-0 from '!items!0BGAxwK7COlU7lfE' @ 72057594037927935 : 1 .. '!items.effects!zkxagi5MNc9Rry3p.XuRLr1RfsMGophvq' @ 0 : 0; will stop at '!items!zkxagi5MNc9Rry3p' @ 1801 : 1
-2024/01/13-16:33:26.114 4ee0 Compacting 3@0 + 1@1 files
-2024/01/13-16:33:26.122 4ee0 Generated table #413@0: 75 keys, 68897 bytes
-2024/01/13-16:33:26.122 4ee0 Compacted 3@0 + 1@1 files => 68897 bytes
-2024/01/13-16:33:26.129 4ee0 compacted to: files[ 0 1 0 0 0 0 0 ]
-2024/01/13-16:33:26.129 4ee0 Delete type=2 #391
-2024/01/13-16:33:26.129 4ee0 Delete type=2 #395
-2024/01/13-16:33:26.130 4ee0 Delete type=2 #398
-2024/01/13-16:33:26.130 4ee0 Delete type=2 #401
-2024/01/13-16:33:26.158 4ee0 Manual compaction at level-0 from '!items!zkxagi5MNc9Rry3p' @ 1801 : 1 .. '!items.effects!zkxagi5MNc9Rry3p.XuRLr1RfsMGophvq' @ 0 : 0; will stop at (end)
+2024/01/13-19:27:58.910 3988 Recovering log #420
+2024/01/13-19:27:58.922 3988 Delete type=0 #420
+2024/01/13-19:27:58.922 3988 Delete type=3 #419
+2024/01/13-20:43:07.228 1b48 Level-0 table #424: started
+2024/01/13-20:43:07.228 1b48 Level-0 table #424: 0 bytes OK
+2024/01/13-20:43:07.232 1b48 Delete type=0 #422
+2024/01/13-20:43:07.249 1b48 Manual compaction at level-0 from '!items!0BGAxwK7COlU7lfE' @ 72057594037927935 : 1 .. '!items.effects!zkxagi5MNc9Rry3p.XuRLr1RfsMGophvq' @ 0 : 0; will stop at '!items!zkxagi5MNc9Rry3p' @ 1996 : 1
+2024/01/13-20:43:07.249 1b48 Compacting 1@0 + 1@1 files
+2024/01/13-20:43:07.256 1b48 Generated table #425@0: 75 keys, 68933 bytes
+2024/01/13-20:43:07.256 1b48 Compacted 1@0 + 1@1 files => 68933 bytes
+2024/01/13-20:43:07.265 1b48 compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/01/13-20:43:07.265 1b48 Delete type=2 #413
+2024/01/13-20:43:07.265 1b48 Delete type=2 #417
+2024/01/13-20:43:07.329 1b48 Manual compaction at level-0 from '!items!zkxagi5MNc9Rry3p' @ 1996 : 1 .. '!items.effects!zkxagi5MNc9Rry3p.XuRLr1RfsMGophvq' @ 0 : 0; will stop at (end)
