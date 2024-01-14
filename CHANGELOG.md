@@ -1,3 +1,7 @@
+# 0.9.30 Release:
+## Bug Fixes:
+- Summon Beast
+  
 # 0.9.29 Release:
 ## New Content:
 - Spell: Elemental Weapon

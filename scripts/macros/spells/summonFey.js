@@ -22,8 +22,8 @@ export async function summonFey({speaker, actor, token, character, item, args, s
     let hpFormula = 30 + ((workflow.castData.castLevel - 3) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Fey Spirit (' + selection + ')';
     if (name === '') name = 'Fey Spirit (' + selection + ')';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,

@@ -42,8 +42,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Dancing Item';
     if (name === '') name = 'Dancing Item';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,

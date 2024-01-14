@@ -17,8 +17,8 @@ export async function summonElemental({speaker, actor, token, character, item, a
     let hpFormula = 50 + ((workflow.castData.castLevel - 4) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Elemental Spirit (' + selection + ')';
     if (name === '') name = 'Elemental Spirit (' + selection + ')';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0').roll({async: true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0').roll({async: true});
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
