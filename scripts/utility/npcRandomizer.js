@@ -250,7 +250,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Starlight Step',
-                'description': 'Starlight Step'
+                'description': 'Starlight Step',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Fey Ancestry',
@@ -331,8 +334,7 @@ export let allRaces = {
         },
         'features': [
             {
-                'name': 'Deathless Nature',
-                'description': 'Deathless Nature'
+                'name': 'Deathless Nature'
             },
             {
                 'name': 'Spider Climb',
@@ -340,11 +342,11 @@ export let allRaces = {
             },
             {
                 'name': 'Vampiric Bite',
-                'description': 'Vampiric Bite'
+                'description': 'Vampiric Bite',
+                'uses': {
+                    'max': '@prof'
+                }
             }
-        ],
-        'languages': [
-            'draconic'
         ],
         'abilities': {
             'dex': 2,
@@ -367,7 +369,10 @@ export let allRaces = {
             },
             {
                 'name': 'Acid Breath Weapon',
-                'description': 'Breath Weapon (Chromatic Dragonborn)'
+                'description': 'Breath Weapon (Chromatic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Chromatic Warding (Acid)',
@@ -401,7 +406,10 @@ export let allRaces = {
             },
             {
                 'name': 'Lightning Breath Weapon',
-                'description': 'Breath Weapon (Chromatic Dragonborn)'
+                'description': 'Breath Weapon (Chromatic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Chromatic Warding (Lightning)',
@@ -435,7 +443,10 @@ export let allRaces = {
             },
             {
                 'name': 'Poision Breath Weapon',
-                'description': 'Breath Weapon (Chromatic Dragonborn)'
+                'description': 'Breath Weapon (Chromatic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Chromatic Warding (Poision)',
@@ -469,7 +480,10 @@ export let allRaces = {
             },
             {
                 'name': 'Fire Breath Weapon',
-                'description': 'Breath Weapon (Chromatic Dragonborn)'
+                'description': 'Breath Weapon (Chromatic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Chromatic Warding (Fire)',
@@ -503,7 +517,10 @@ export let allRaces = {
             },
             {
                 'name': 'Cold Breath Weapon',
-                'description': 'Breath Weapon (Chromatic Dragonborn)'
+                'description': 'Breath Weapon (Chromatic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Chromatic Warding (Cold)',
@@ -789,7 +806,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Breath Weapon (Force)',
-                'description': 'Breath Weapon (Gem Dragonborn)'
+                'description': 'Breath Weapon (Gem Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Gem Dragonborn)'
@@ -822,7 +842,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Breath Weapon (Radiant)',
-                'description': 'Breath Weapon (Gem Dragonborn)'
+                'description': 'Breath Weapon (Gem Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Gem Dragonborn)'
@@ -855,7 +878,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Breath Weapon (Psychic)',
-                'description': 'Breath Weapon (Gem Dragonborn)'
+                'description': 'Breath Weapon (Gem Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Gem Dragonborn)'
@@ -888,7 +914,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Breath Weapon (Thunder)',
-                'description': 'Breath Weapon (Gem Dragonborn)'
+                'description': 'Breath Weapon (Gem Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Gem Dragonborn)'
@@ -921,7 +950,10 @@ export let allRaces = {
         'features': [
             {
                 'name': 'Breath Weapon (Necrotic)',
-                'description': 'Breath Weapon (Gem Dragonborn)'
+                'description': 'Breath Weapon (Gem Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Gem Dragonborn)'
@@ -956,8 +988,11 @@ export let allRaces = {
                 'name': 'Metallic Ancestry'
             },
             {
-                'name': 'Metallic Breath Weapon',
-                'description': 'Breath Weapon (Metallic Dragonborn)'
+                'name': 'Breath Weapon (Fire)',
+                'description': 'Breath Weapon (Metallic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Metallic Dragonborn)'
@@ -989,8 +1024,11 @@ export let allRaces = {
                 'name': 'Metallic Ancestry'
             },
             {
-                'name': 'Metallic Breath Weapon',
-                'description': 'Breath Weapon (Metallic Dragonborn)'
+                'name': 'Breath Weapon (Lightning)',
+                'description': 'Breath Weapon (Metallic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Metallic Dragonborn)'
@@ -1022,8 +1060,11 @@ export let allRaces = {
                 'name': 'Metallic Ancestry'
             },
             {
-                'name': 'Metallic Breath Weapon',
-                'description': 'Breath Weapon (Metallic Dragonborn)'
+                'name': 'Breath Weapon (Acid)',
+                'description': 'Breath Weapon (Metallic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Metallic Dragonborn)'
@@ -1055,8 +1096,11 @@ export let allRaces = {
                 'name': 'Metallic Ancestry'
             },
             {
-                'name': 'Metallic Breath Weapon',
-                'description': 'Breath Weapon (Metallic Dragonborn)'
+                'name': 'Breath Weapon (Fire)',
+                'description': 'Breath Weapon (Metallic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Metallic Dragonborn)'
@@ -1088,8 +1132,11 @@ export let allRaces = {
                 'name': 'Metallic Ancestry'
             },
             {
-                'name': 'Metallic Breath Weapon',
-                'description': 'Breath Weapon (Metallic Dragonborn)'
+                'name': 'Breath Weapon (Cold)',
+                'description': 'Breath Weapon (Metallic Dragonborn)',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Draconic Resistance (Metallic Dragonborn)'
@@ -2470,7 +2517,10 @@ export let allRaces = {
             },
             {
                 'name': 'Hidden Step',
-                'description': 'Hidden Step'
+                'description': 'Hidden Step',
+                'uses': {
+                    'max': '@prof'
+                }
             },
             {
                 'name': 'Powerful Build'
@@ -2479,11 +2529,6 @@ export let allRaces = {
                 'name': 'Speech of Beast and Leaf'
             }
         ],
-        'special': function (actor, updates) {
-            let uses = actor.system.attributes.prof;
-            setProperty(updates, 'embedded.Item.Hidden Step.system.uses.value', uses);
-            setProperty(updates, 'embedded.Item.Hidden Step.system.uses.max', uses);
-        },
         'spells': [
             {
                 'name': 'Detect Magic',
@@ -2817,61 +2862,460 @@ export let allRaces = {
         'movement': {
             'walk': 25
         },
-        'size': 'small'
+        'size': 'small',
+        'abilities': {
+            'dex': 1,
+            'int': 2
+        }
     },
     'mark-of-scribing-gnome':
     {
         'name': 'Mark of Scribing Gnome',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Gnome Cunning',
+                'description': 'Gnome Cunning'
+            },
+            {
+                'name': 'Gifted Scribe',
+                'description': 'Gifted Scribe'
+            },
+            {
+                'name': 'Scribe\'s Insight'
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Scribing Gnome)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Message',
+                'ability': 'int'
+            },
+            {
+                'name': 'Comprehend Languages',
+                'ability': 'int',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Magic Mouth',
+                'level': 3,
+                'ability': 'int',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Comprehend Languages',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Illusory Script',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Animal Messenger',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Silence',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Sending',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Tongues',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Arcane Eye',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Confusion',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Dream',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'languages': [
+            'gnomish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'walk': 25
+        },
+        'size': 'small',
+        'abilities': {
+            'cha': 1,
+            'int': 2
+        }
     },
     'rock-gnome':
     {
         'name': 'Rock Gnome',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Artificer\'s Lore'
+            },
+            {
+                'name': 'Tinker'
+            },
+            {
+                'name': 'Gnome Cunning',
+                'description': 'Gnome Cunning'
+            }
+        ],
+        'languages': [
+            'gnomish'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'walk': 25
+        },
+        'size': 'small',
+        'abilities': {
+            'con': 1,
+            'int': 2
+        }
     },
     'goblin':
     {
         'name': 'Goblin',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'monster': 'Goblin'
     },
     'goliath':
     {
         'name': 'Goliath',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Little Giant'
+            },
+            {
+                'name': 'Mountain Born'
+            },
+            {
+                'name': 'Stone\'s Endurance',
+                'description': 'Stone\'s Endurance',
+                'uses': {
+                    'max': '@prof'
+                }
+            }
+        ],
+        'languages': [
+            'giant'
+        ],
+        'abilities': {
+            'str': 2,
+            'con': 1
+        },
+        'dr': [
+            'cold'
+        ],
+        'specialTraits': {
+            'powerfulBuild': true
+        },
+        'skills': {
+            'ath': 1
+        }
     },
     'grung':
     {
         'name': 'Grung',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Arboreal Alertness'
+            },
+            {
+                'name': 'Amphibious',
+                'description': 'Amphibious (Grung)'
+            },
+            {
+                'name': 'Poison Immunity'
+            },
+            {
+                'name': 'Poisonous Skin',
+                'description': 'Poisonous Skin'
+            },
+            {
+                'name': 'Grung Poison',
+                'description': 'Grung Poison'
+            },
+            {
+                'name': 'Standing Leap'
+            },
+            {
+                'name': 'Water Dependency'
+            }
+        ],
+        'di': [
+            'poison'
+        ],
+        'ci': [
+            'poisoned'
+        ],
+        'special': async function (actor, updates) {
+            let customLanguages = actor.system.traits.languages.custom;
+            let addedLanguages = customLanguages === '' ? 'Grung' : ' ;Grung';
+            setProperty(updates, 'actor.system.traits.languages.custom', customLanguages + addedLanguages);
+        },
+        'abilities': {
+            'dex': 2,
+            'con': 1
+        },
+        'skills': {
+            'prc': 1
+        }
     },
     'hadozee':
     {
         'name': 'Hadozee',
         'weight': 5,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Dexterous Feet'
+            },
+            {
+                'name': 'Glide'
+            },
+            {
+                'name': 'Hadozee Dodge',
+                'description': 'Hadozee Dodge',
+                'uses': {
+                    'max': '@prof'
+                }
+            }
+        ]
     },
     'aquatic-half-elf':
     {
         'name': 'Aquatic Half-Elf',
         'weight': 5,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Aquatic Half-Elf)'
+            },
+            {
+                'name': 'Aquatic Heritage'
+            }
+        ],
+        'languages': [
+            'common',
+            'elvish',
+            'primordial'
+        ],
+        'abilities': {
+            'cha': 2
+        },
+        'unassignedAbilities': {
+            'one': 2
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'swim': 30
+        }
     },
     'drow-half-elf':
     {
         'name': 'Drow Half-Elf',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Drow Half-Elf)'
+            },
+            {
+                'name': 'Drow Magic',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Dancing Lights'
+            },
+            {
+                'name': 'Faerie Fire',
+                'level': 3,
+                'ability': 'cha',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            },
+            {
+                'name': 'Darkness',
+                'level': 5,
+                'ability': 'cha',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                }
+            }
+        ],
+        'languages': [
+            'common',
+            'elvish',
+            'undercommon'
+        ],
+        'abilities': {
+            'cha': 2
+        },
+        'unassignedAbilities': {
+            'one': 2
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'high-half-elf':
     {
         'name': 'High Half-Elf',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (High Half-Elf)'
+            },
+            {
+                'name': 'High Elf Descent',
+                'spellcasting': true
+            }
+        ],
+        'spellcasting': {
+            'wizard': {
+                'cantrip': 1
+            }
+        },
+        'extraLanguages': [
+            {
+                'name': 'any',
+                'count': 1
+            }
+        ],
+        'languages': [
+            'common',
+            'elvish'
+        ],
+        'abilities': {
+            'cha': 2
+        },
+        'unassignedAbilities': {
+            'one': 2
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'mark-of-detection-half-elf':
     {
@@ -3280,7 +3724,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'forest-gnome';
+    let race = 'high-half-elf';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
@@ -3354,6 +3798,10 @@ async function humanoid(targetActor, updates, item) {
                 let descriptionItem = await chris.getItemFromCompendium(game.settings.get('chris-premades', 'Racial Trait Compendium'), i.description, true);
                 if (descriptionItem) featureData.system.description.value = descriptionItem.system.description.value;
             }
+            if (i.uses) {
+                if (i.uses.max === '@prof') setProperty(featureData, 'system.uses.value', targetActor.system.attributes.prof);
+            }
+            if (!featureData.img) featureData.img = 'icons/sundries/gaming/dice-runed-brown.webp';
             if (i.rename) featureData.name = i.rename;
             setProperty(updates, 'embedded.Item.' + featureData.name, featureData);
         }
@@ -3512,6 +3960,6 @@ async function humanoid(targetActor, updates, item) {
         }
     }
     if (allRaces[race].special) await allRaces[race].special(targetActor, updates);
-
+    if (allRaces[race].specialTraits) setProperty(updates, 'actor.flags.dnd5e', allRaces[race].specialTraits);
 
 }

@@ -25,7 +25,11 @@ export function updateItemButton(app, [elem], options) {
         headerButton.style.color = 'red';
         return;
     }
-    headerButton.style.color = 'green';
+    if (CONFIG.chrisPremades.itemConfiguration[automation.name]) {
+        headerButton.style.color = 'dodgerblue';
+    } else {
+        headerButton.style.color = 'green';
+    }
 }
 export function createActorHeaderButton(config, buttons) {
     if (config.object instanceof Actor) {

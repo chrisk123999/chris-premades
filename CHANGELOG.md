@@ -1,3 +1,13 @@
+# 0.9.31 Release:
+## New Content:
+- Mark of Scribing Gnome: Gifted Scribes
+- Grung: Gung Poison and Poisonous Skin
+- Hadoze: Hadozee Dodge
+- Goliath: Stone's Endurance
+- Metallic Dragonborn: Breath Weapon
+## Update Notes:
+- The medkit icon will now turn blue if an item can be configured (and is up to date).
+  
 # 0.9.30 Release:
 ## Bug Fixes:
 - Summon Beast

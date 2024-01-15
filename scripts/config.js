@@ -2475,6 +2475,14 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Grung Poison': {
+                'checkbox': {
+                    'prompt': {
+                        'label': 'Prompt on each valid attack?',
+                        'default': false
+                    }
+                }
             }
         },
         'automations': {
@@ -5721,6 +5729,42 @@ export function setConfig() {
             'Elemental Weapon': {
                 'name': 'Elemental Weapon',
                 'version': '0.9.29'
+            },
+            'Gifted Scribe': {
+                'name': 'Gifted Scribe',
+                'version': '0.9.31'
+            },
+            'Grung Poison': {
+                'name': 'Grung Poison',
+                'version': '0.9.31'
+            },
+            'Poisonous Skin': {
+                'name': 'Poisonous Skin',
+                'version': '0.9.31'
+            },
+            'Hadozee Dodge': {
+                'name': 'Hadozee Dodge',
+                'version': '0.9.31'
+            },
+            'Stone\'s Endurance': {
+                'name': 'Stone\'s Endurance',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Acid)': {
+                'name': 'Breath Weapon (Acid)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Cold)': {
+                'name': 'Breath Weapon (Cold)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Fire)': {
+                'name': 'Breath Weapon (Fire)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Lightning)': {
+                'name': 'Breath Weapon (Lightning)',
+                'version': '0.9.31'
             }
         }
     });

@@ -165,6 +165,7 @@ import {greenFlameBlade} from './macros/spells/greenFlameBlade.js';
 import {grell} from './macros/monsterFeatures/grell/grell.js';
 import {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 import {grovelthrash} from './macros/items/grovelthrash.js';
+import {grungPoison} from './macros/raceFeatures/grung/grungPoison.js';
 import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 import {guardianOfNature} from './macros/spells/guardianOfNature.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
@@ -649,6 +650,7 @@ export let macros = {
     'greenFlameBlade': greenFlameBlade,
     'grimHarvest': grimHarvest,
     'grovelthrash': grovelthrash,
+    'grungPoison': grungPoison,
     'guardianOfFaith': guardianOfFaith,
     'guardianOfNature': guardianOfNature,
     'hailOfThorns': hailOfThorns,

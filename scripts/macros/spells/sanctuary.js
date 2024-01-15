@@ -51,7 +51,6 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!remove && workflow.item.type === 'spell') {
         for (let i of Array.from(workflow.targets)) {
             if (workflow.token.document.disposition != i.document.disposition) {
-                console.log(i.disposition);
                 remove = true;
                 break;
             }
