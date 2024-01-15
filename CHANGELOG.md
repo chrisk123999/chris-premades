@@ -1,6 +1,6 @@
 # 0.9.31 Release:
 ## New Content:
-- Mark of Scribing Gnome: Gifted Scribes
+- Mark of Scribing Gnome: Gifted Scribe
 - Grung: Gung Poison and Poisonous Skin
 - Hadoze: Hadozee Dodge
 - Goliath: Stone's Endurance
