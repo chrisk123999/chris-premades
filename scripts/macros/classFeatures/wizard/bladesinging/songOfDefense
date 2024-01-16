@@ -1,5 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
-  export async function songOfDefense({speaker, actor, token, character, item, args, scope, workflow}) {
+export async function songOfDefense({speaker, actor, token, character, item, args, scope, workflow}) {
   if(!actor.effects.getName('Bladesong'))
   {
     ui.notifications.info('You must be bladesinging to use this feature!');
