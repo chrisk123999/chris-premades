@@ -3609,7 +3609,13 @@ export function setConfig() {
                 'version': '0.7.01',
                 'mutation': {
                     'self': 'Starry Form'
-                }
+                },
+                'scales': [
+                    'circle-of-stars'
+                ],
+                'classes': [
+                    'druid'
+                ]
             },
             'Twinkling Constellations': {
                 'name': 'Twinkling Constellations',
@@ -5765,6 +5771,10 @@ export function setConfig() {
             'Breath Weapon (Lightning)': {
                 'name': 'Breath Weapon (Lightning)',
                 'version': '0.9.31'
+            },
+            'Windwright\'s Intuition': {
+                'name': 'Windwright\'s Intuition',
+                'version': '0.9.32'
             }
         }
     });

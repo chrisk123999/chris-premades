@@ -3321,13 +3321,312 @@ export let allRaces = {
     {
         'name': 'Mark of Detection Half-Elf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Mark of Detection Half-Elf)'
+            },
+            {
+                'name': 'Deductive Intuition',
+                'description': 'Deductive Intuition'
+            },
+            {
+                'name': 'Magical Detection',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Detection Half-Elf)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Detect Magic',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Detect Poison and Disease',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Detect Poison and Disease',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Detect Evil and Good',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Detect Poison and Disease',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Detect Thoughts',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Find Traps',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Clairvoyance',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Nondetection',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Arcane Eye',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Divination',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Legend Lore',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'extraLanguages': [
+            {
+                'name': 'any',
+                'count': 1
+            }
+        ],
+        'languages': [
+            'common',
+            'elvish'
+        ],
+        'abilities': {
+            'wis': 2
+        },
+        'unassignedAbilities': {
+            'one': 1
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        }
     },
     'mark-of-storm-half-elf':
     {
         'name': 'Mark of Storm Half-Elf',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Mark of Storm Half-Elf)'
+            },
+            {
+                'name': 'Windwright\'s Intuition',
+                'description': 'Windwright\'s Intuition'
+            },
+            {
+                'name': 'Storm\'s Boon'
+            },
+            {
+                'name': 'Headwinds',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Storm Half-Elf)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Gust'
+            },
+            {
+                'name': 'Gust of Wind',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'cha'
+            },
+            {
+                'name': 'Feather Fall',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Fog Cloud',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Gust of Wind',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Levitate',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Sleet Storm',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Wind Wall',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Conjure Minor Elementals',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Control Water',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Conjure Elemental',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'extraLanguages': [
+            {
+                'name': 'any',
+                'count': 1
+            }
+        ],
+        'languages': [
+            'common',
+            'elvish'
+        ],
+        'abilities': {
+            'cha': 2
+        },
+        'unassignedAbilities': {
+            'one': 1
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'dr': [
+            'lightning'
+        ]
     },
     'wood-half-elf':
     {
@@ -3724,7 +4023,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'high-half-elf';
+    let race = 'mark-of-storm-half-elf';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {

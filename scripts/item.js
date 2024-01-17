@@ -1,5 +1,6 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
+import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
@@ -65,16 +66,38 @@ async function itemConfig(itemDocument) {
     let replacerAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access');
     let configurationAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Configuration Access');
     let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name];
-    if (replacerAccess && configurationAccess && configuration) {
-        let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, [['🔎 Update / Replace', 'update'], ['🛠️ Configure', 'configure']]);
+    if (replacerAccess && configurationAccess) {
+        let options = [['🔎 Update / Replace Item', 'update']];
+        if (configuration) options.push(['🛠️ Configure', 'configure']);
+        if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {
+            let identifier = itemDocument.system.identifier;
+            if (scale.scaleData[identifier]) options.push(['⚖️ Add Scale', 'scale']);
+        }
+        let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
         if (!selection) return;
         if (selection === 'update') {
             await updateItem(itemDocument);
         } else if (selection === 'configure') {
             await configureItem(itemDocument, configuration);
+        } else if (selection === 'scale') {
+            await scale.addScale(itemDocument);
         }
     } else if (replacerAccess && (!configurationAccess || !configuration)) {
-        await updateItem(itemDocument);
+        if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {
+            let identifier = itemDocument.system.identifier;
+            if (scale.scaleData[identifier]) {
+                let options = [['🔎 Update / Replace Item', 'update'], ['⚖️ Add Scale', 'scale']];
+                let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
+                if (!selection) return;
+                if (selection === 'update') {
+                    await updateItem(itemDocument);
+                } else if (selection === 'scale') {
+                    await scale.addScale(itemDocument);
+                }
+            }
+        } else {
+            await updateItem(itemDocument);
+        }
     } else if (!replacerAccess && configurationAccess && configuration) {
         await configureItem(itemDocument, configuration);
     } else {

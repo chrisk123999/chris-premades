@@ -1,3 +1,9 @@
+# 0.9.32 Release:
+## New Content:
+- Mark of Storm Half-Elf: Windwright's Intuition
+## Update Notes:
+- Added a function to the medkit to add needed scale values to supported classes and sub-classes.
+  
 # 0.9.31 Release:
 ## New Content:
 - Mark of Scribing Gnome: Gifted Scribe
