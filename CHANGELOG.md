@@ -1,6 +1,6 @@
 # 0.9.33 Release:
 ## New Content:
-- Bladesinging Wizard: Bladesong, Song of Defense, and Song of Victory (Thanks TagaTympana)
+- Bladesinging Wizard: Bladesong, Song of Defense, and Song of Victory (Thanks SagaTympana)
   
 # 0.9.32 Release:
 ## New Content:
