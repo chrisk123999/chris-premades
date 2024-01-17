@@ -1,3 +1,7 @@
+# 0.9.33 Release:
+## New Content:
+- Bladesinging Wizard: Bladesong, Song of Defense, and Song of Victory (Thanks TagaTympana)
+  
 # 0.9.32 Release:
 ## New Content:
 - Mark of Storm Half-Elf: Windwright's Intuition

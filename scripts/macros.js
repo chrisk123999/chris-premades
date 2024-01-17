@@ -32,6 +32,7 @@ import {bigbysHand} from './macros/spells/bigbysHand.js';
 import {binding} from './macros/classFeatures/bloodHunter/bloodCurses/binding.js';
 import {blackrazor} from './macros/items/blackrazor.js';
 import {bladeFlourish} from './macros/classFeatures/bard/collegeOfSwords/bladeFlourish.js'
+import {bladesong} from './macros/classFeatures/wizard/bladesinging/bladesong.js';
 import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 import {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
@@ -280,6 +281,7 @@ import {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
 import {slasher} from './macros/feats/slasher.js';
 import {sleetStorm} from './macros/spells/sleetStorm.js';
 import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
+import {songOfDefense} from './macros/classFeatures/wizard/bladesinging/songOfDefense.js';
 import {soothePain} from './macros/feats/soothePain.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
 import {spellRefuelingRing} from './macros/classFeatures/artificer/infusions/spellRefuelingRing.js';
@@ -548,6 +550,7 @@ export let macros = {
     'binding': binding,
     'blackrazor': blackrazor,
     'bladeFlourish': bladeFlourish,
+    'bladesong': bladesong,
     'blessedStrikes': blessedStrikes,
     'blessingOfTheForge': blessingOfTheForge,
     'blessingOfTheRavenQueen': blessingOfTheRavenQueen,
@@ -753,6 +756,7 @@ export let macros = {
     'slasher': slasher,
     'sleetStorm': sleetStorm,
     'sneakAttack': sneakAttack,
+    'songOfDefense': songOfDefense,
     'soothePain': soothePain,
     'spellRefuelingRing': spellRefuelingRing,
     'spikeGrowth': spikeGrowth,

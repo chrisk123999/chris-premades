@@ -5775,6 +5775,18 @@ export function setConfig() {
             'Windwright\'s Intuition': {
                 'name': 'Windwright\'s Intuition',
                 'version': '0.9.32'
+            },
+            'Bladesong': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
+            },
+            'Song of Defense': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
+            },
+            'Song of Victory': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
             }
         }
     });
