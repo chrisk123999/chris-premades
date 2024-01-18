@@ -13,6 +13,24 @@ export async function bladesong({speaker, actor, token, character, item, args, s
                 'mode': 2,
                 'value': '+' + workflow.actor.system.abilities.int.mod,
                 'priority': 20
+            },
+            {
+                'key': 'system.attributes.movement.walk',
+                'mode': 2,
+                'value': '+10',
+                'priority': 20
+			},
+            {
+                'key': 'flags.midi-qol.advantage.skill.acr',
+                'mode': 0,
+                'value': 'true',
+                'priority': 20
+            },
+			{
+                'key': 'flags.midi-qol.concentrationSaveBonus',
+                'mode': 2,
+                'value': '+' + workflow.actor.system.abilities.int.mod,
+                'priority': 20
             }
         ],
         'flags': {
@@ -23,7 +41,8 @@ export async function bladesong({speaker, actor, token, character, item, args, s
             },
             'dae': {
                 'specialDuration': [
-                    'zeroHP'
+                    'zeroHP',
+                    'combatEnd'
                 ]
             }
         }
