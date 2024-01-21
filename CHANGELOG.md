@@ -1,3 +1,7 @@
+# 0.9.37 Release:
+## Bug Fixes:
+- Item Updater
+  
 # 0.9.36 Release:
 ## Bug Fixes:
 - Bardic Inspiration

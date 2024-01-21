@@ -107,7 +107,10 @@ async function itemConfig(itemDocument) {
 async function updateItem(itemDocument) {
     let additionalCompendiums = game.settings.get('chris-premades', 'Additional Compendiums');
     let additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
-    let itemName = itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name;
+    let flagName = itemDocument.flags?.['chris-premades']?.info?.name;
+    let automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
+    let itemName = itemDocument.name;
+    if (automation && flagName) itemName = flagName;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
     let isNPC = false;
