@@ -22,7 +22,7 @@ import {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/au
 import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
-import {bardicInspiration} from './macros/classFeatures/bard/magicalInspiration/magicalInspiration.js'
+import {bardicInspiration} from './macros/classFeatures/bard/bardicInspiration.js';
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';

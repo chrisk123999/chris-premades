@@ -1,3 +1,20 @@
+# 0.9.35 Release:
+## Bug Fixes:
+- Danse Macabre
+- Bugbear (Monster): Brute
+- Bladesong
+- Bardic Bardic
+- Magical Inspiration
+- Mote of Potential
+- Maneuvering Attack
+- Stone's Endurance
+## Update Notes:
+- Bardic Bardic, Mote of Potential, and Magical Inspiration have been split into seperate items. You will need to replace the features for them to continue to work.
+  
+# 0.9.34 Release:
+## Bug Fixes:
+- Bladesong (Thanks Malea)
+  
 # 0.9.33 Release:
 ## New Content:
 - Bladesinging Wizard: Bladesong, Song of Defense, and Song of Victory (Thanks SagaTympana)

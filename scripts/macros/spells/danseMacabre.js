@@ -36,7 +36,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     zombieActorUpdates.name = 'Zombie';
     zombieActorUpdates.system.attributes.hp.value += bonusHP;
     zombieActorUpdates.system.attributes.hp.max += bonusHP;
-    zombieActorUpdates.system.attributes.hp.formula += bonusHP;
+    zombieActorUpdates.system.attributes.hp.formula += ' + ' + bonusHP;
     delete zombieActorUpdates.sort;
     delete zombieActorUpdates._id;
     delete zombieActorUpdates._stats;
@@ -60,7 +60,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     skeletonActorUpdates.name = 'Skeleton';
     skeletonActorUpdates.system.attributes.hp.value += bonusHP;
     skeletonActorUpdates.system.attributes.hp.max += bonusHP;
-    skeletonActorUpdates.system.attributes.hp.formula += bonusHP;
+    skeletonActorUpdates.system.attributes.hp.formula += ' + ' + bonusHP;
     delete skeletonActorUpdates.sort;
     delete skeletonActorUpdates._id;
     delete skeletonActorUpdates._stats;

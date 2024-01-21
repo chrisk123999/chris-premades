@@ -1,6 +1,6 @@
 import {queue} from '../../../utility/queue.js';
 export async function brute({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (!workflow.item.system.actionType != 'mwak') return;
+    if (workflow.item.system.actionType != 'mwak') return;
     if (!workflow.damageRoll) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'brute', 101);
     if (!queueSetup) return;

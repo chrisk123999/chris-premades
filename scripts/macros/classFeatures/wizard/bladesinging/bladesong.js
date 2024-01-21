@@ -23,7 +23,7 @@ export async function bladesong({speaker, actor, token, character, item, args, s
             {
                 'key': 'flags.midi-qol.advantage.skill.acr',
                 'mode': 0,
-                'value': 'true',
+                'value': '1',
                 'priority': 20
             },
             {

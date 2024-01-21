@@ -154,35 +154,6 @@ export function setConfig() {
             ]
         },
         'restrictedItems': {
-            'Bardic Inspiration 1': {
-                'originalName': 'Bardic Inspiration',
-                'requiredClass': 'Bard',
-                'requiredSubclass': null,
-                'requiredRace': null,
-                'requiredEquipment': [],
-                'requiredFeatures': [
-                    'Magical Inspiration'
-                ],
-                'replacedItemName': 'Bardic Inspiration & Magical Inspiration',
-                'removedItems': [],
-                'additionalItems': [],
-                'priority': 0
-            },
-            'Bardic Inspiration 2': {
-                'originalName': 'Bardic Inspiration',
-                'requiredClass': 'Bard',
-                'requiredSubclass': 'College of Creation',
-                'requiredRace': null,
-                'requiredEquipment': [],
-                'requiredFeatures': [
-                    'Magical Inspiration',
-                    'Mote of Potential'
-                ],
-                'replacedItemName': 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
-                'removedItems': [],
-                'additionalItems': [],
-                'priority': 1
-            },
             'Radiant Soul': {
                 'originalName': 'Radiant Soul',
                 'requiredClass': 'Warlock',
@@ -3328,16 +3299,6 @@ export function setConfig() {
                     'self': 'Dancing Item'
                 }
             },
-            'Bardic Inspiration, Magical Inspiration, & Mote of Potential': {
-                'name': 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
-                'version': '0.7.01',
-                'classes': [
-                    'bard'
-                ],
-                'scales': [
-                    'bardic-inspiration'
-                ]
-            },
             'Blade Flourish': {
                 'name': 'Blade Flourish',
                 'version': '0.7.01',
@@ -3757,7 +3718,7 @@ export function setConfig() {
             },
             'Maneuvers: Maneuvering Attack': {
                 'name': 'Maneuvers: Maneuvering Attack',
-                'version': '0.7.01',
+                'version': '0.9.35',
                 'classes': [
                     'fighter'
                 ],
@@ -5754,7 +5715,7 @@ export function setConfig() {
             },
             'Stone\'s Endurance': {
                 'name': 'Stone\'s Endurance',
-                'version': '0.9.31'
+                'version': '0.9.35'
             },
             'Breath Weapon (Acid)': {
                 'name': 'Breath Weapon (Acid)',
@@ -5787,6 +5748,18 @@ export function setConfig() {
             'Song of Victory': {
                 'name': 'Bladesong',
                 'version': '0.9.33'
+            },
+            'Mote of Potential': {
+                'name': 'Mote of Potential',
+                'version': '0.9.35'
+            },
+            'Magical Inspiration': {
+                'name': 'Magical Inspiration',
+                'version': '0.9.35'
+            },
+            'Bardic Inspiration': {
+                'name': 'Bardic Inspiration',
+                'version': '0.9.35'
             }
         }
     });
