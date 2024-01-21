@@ -47,7 +47,7 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': Number,
-        'default': 8
+        'default': 9
     });
     game.settings.register(moduleName, 'Show Names', {
         'name': 'Show Names',

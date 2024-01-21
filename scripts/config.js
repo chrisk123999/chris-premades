@@ -2454,6 +2454,18 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Bardic Inspiration': {
+                'text': {
+                    'classidentifier': {
+                        'label': 'Class Identifier',
+                        'default': 'bard'
+                    },
+                    'scaleidentifier': {
+                        'label': 'Scale Identifier',
+                        'default': 'bardic-inspiration'
+                    }
+                }
             }
         },
         'automations': {

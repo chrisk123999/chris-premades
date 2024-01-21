@@ -63,6 +63,17 @@ Hooks.once('socketlib.ready', async function() {
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
+        let oldVersion = game.settings.get('chris-premades', 'Breaking Version Change');
+        let currentVersion = 9;
+        if (oldVersion < currentVersion && oldVersion === 8) {
+            let message = '<hr><p>Bardic Inspiration, Mote of Potential, and Magical Inspiration have been split into separate items. You will need to replace the features for them to continue to work.</p>';
+            ChatMessage.create({
+                'speaker': {'alias': 'Chris\'s Premades'},
+                'content': message
+            });
+            await game.settings.set('chris-premades', 'Breaking Version Change', 9);
+            oldVersion = 1;
+        }
         await setupJournalEntry();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
         if (game.modules.get('itemacro')?.active) {

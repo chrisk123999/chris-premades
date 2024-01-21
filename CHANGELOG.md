@@ -1,15 +1,19 @@
+# 0.9.36 Release:
+## Bug Fixes:
+- Bardic Inspiration
+  
 # 0.9.35 Release:
 ## Bug Fixes:
 - Danse Macabre
 - Bugbear (Monster): Brute
 - Bladesong
-- Bardic Bardic
+- Bardic Inspiration
 - Magical Inspiration
 - Mote of Potential
 - Maneuvering Attack
 - Stone's Endurance
 ## Update Notes:
-- Bardic Bardic, Mote of Potential, and Magical Inspiration have been split into seperate items. You will need to replace the features for them to continue to work.
+- Bardic Inspiration, Mote of Potential, and Magical Inspiration have been split into seperate items. You will need to replace the features for them to continue to work.
   
 # 0.9.34 Release:
 ## Bug Fixes:
