@@ -1,5 +1,7 @@
-2024/01/20-23:27:37.872 df4 Recovering log #499
-2024/01/20-23:27:37.873 df4 Level-0 table #501: started
-2024/01/20-23:27:37.901 df4 Level-0 table #501: 207295 bytes OK
-2024/01/20-23:27:37.920 df4 Delete type=0 #499
-2024/01/20-23:27:37.920 df4 Delete type=3 #498
+2024/01/20-23:29:33.871 15e4 Recovering log #502
+2024/01/20-23:29:33.886 15e4 Delete type=0 #502
+2024/01/20-23:29:33.887 15e4 Delete type=3 #500
+2024/01/20-23:30:01.063 4a3c Compacting 1@0 + 1@1 files
+2024/01/20-23:30:01.093 4a3c Generated table #505@0: 176 keys, 224148 bytes
+2024/01/20-23:30:01.093 4a3c Compacted 1@0 + 1@1 files => 224148 bytes
+2024/01/20-23:30:01.099 4a3c compacted to: files[ 0 1 0 0 0 0 0 ]
