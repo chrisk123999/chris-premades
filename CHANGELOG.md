@@ -1,3 +1,8 @@
+# 0.9.38 Release:
+## Bug Fixes:
+- Piercing Shot
+- Gunslinger Firearm Support
+  
 # 0.9.37 Release:
 ## Bug Fixes:
 - Item Updater

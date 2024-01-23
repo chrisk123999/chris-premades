@@ -66,17 +66,42 @@ async function misfire(workflow) {
     if (workflow.attackRoll.terms[0].total > misfireScore) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'misfire', 50);
     if (!queueSetup) return;
-    workflow.isFumble = true;
     await ChatMessage.create({
         speaker: {'alias': name},
         content: workflow.item.name + ' has misfired!'
     });
-    let updates = {
-        'flags.chris-premades.configuration.status': 1,
-        'name': workflow.item.name += ' (Damaged)'
+    if (workflow.item.id) {
+        let updates = {
+            'flags.chris-premades.configuration.status': 1,
+            'name': workflow.item.name += ' (Damaged)'
+        }
+        await workflow.item.update(updates);
     }
-    await workflow.item.update(updates);
     queue.remove(workflow.item.uuid);
+    let effectData = {
+        'icon': 'icons/magic/time/arrows-circling-green.webp',
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'name': 'Misfire',
+        'changes': [
+            {
+                'key': 'flags.midi-qol.fail.all',
+                'mode': 0,
+                'value': '1',
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'dae': {
+                'specialDuration': [
+                    '1Attack'
+                ]
+            }
+        }
+    };
+    await chris.createEffect(workflow.actor, effectData);
 }
 async function repair({speaker, actor, token, character, item, args, scope, workflow}) {
     let repairFirearms = workflow.actor.items.filter(i => chris.getConfiguration(i, 'status') === 1);
