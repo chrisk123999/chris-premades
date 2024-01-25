@@ -1,3 +1,7 @@
+# 0.9.40 Release:
+## New Content:
+- Echo Knight Fighter: Manifest Echo, Unleash Incarnation, Echo Avatar, Reclaim Potential, and Legion of One
+  
 # 0.9.39 Release:
 ## Bug Fixes:
 - Faerie Fire

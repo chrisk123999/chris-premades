@@ -151,6 +151,11 @@ export function setConfig() {
             ],
             'Elemental Cleaver': [
                 'Elemental Cleaver: Change Damage Type'
+            ],
+            'Manifest Echo': [
+                'Manifest Echo - Attack',
+                'Manifest Echo - Teleport',
+                'Manifest Echo - Opportunity Attack'
             ]
         },
         'restrictedItems': {
@@ -2464,6 +2469,29 @@ export function setConfig() {
                     'scaleidentifier': {
                         'label': 'Scale Identifier',
                         'default': 'bardic-inspiration'
+                    }
+                }
+            },
+            'Manifest Echo': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             }
@@ -5772,6 +5800,26 @@ export function setConfig() {
             'Bardic Inspiration': {
                 'name': 'Bardic Inspiration',
                 'version': '0.9.35'
+            },
+            'Echo Avatar': {
+                'name': 'Echo Avatar',
+                'version': '0.9.40'
+            },
+            'Legion of One': {
+                'name': 'Legion of One',
+                'version': '0.9.40'
+            },
+            'Manifest Echo': {
+                'name': 'Manifest Echo',
+                'version': '0.9.40'
+            },
+            'Reclaim Potential': {
+                'name': 'Reclaim Potential',
+                'version': '0.9.40'
+            },
+            'Unleash Incarnation': {
+                'name': 'Unleash Incarnation',
+                'version': '0.9.40'
             }
         }
     });

@@ -203,6 +203,7 @@ import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocat
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
+import {legionOfOne} from './macros/classFeatures/fighter/echoKnight/legionOfOne.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
 import {lightningArrow} from './macros/spells/lightningArrow.js';
@@ -212,6 +213,7 @@ import {maddeningHex} from './macros/classFeatures/warlock/invocations/maddening
 import {maelstromAura} from './macros/feats/maelstromAura.js';
 import {magicMissile} from './macros/spells/magicMissile.js';
 import {maneuvers} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
+import {manifestEcho} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
 import {manifestMind} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js'
 import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
@@ -684,6 +686,7 @@ export let macros = {
     'investitureOfStone': investitureOfStone,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'lanternOfRevealing': lanternOfRevealing,
+    'legionOfOne': legionOfOne,
     'lifeTransference': lifeTransference,
     'lightningArrow': lightningArrow,
     'lightningLure': lightningLure,
@@ -692,6 +695,7 @@ export let macros = {
     'maelstromAura': maelstromAura,
     'magicMissile': magicMissile,
     'maneuvers': maneuvers,
+    'manifestEcho': manifestEcho,
     'manifestMind': manifestMind,
     'manualRolls': manualRolls,
     'massCureWounds': massCureWounds,
