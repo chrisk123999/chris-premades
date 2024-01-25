@@ -1,3 +1,8 @@
+# 0.9.39 Release:
+## Bug Fixes:
+- Faerie Fire
+- Combat Maneuvers Scale
+  
 # 0.9.38 Release:
 ## Bug Fixes:
 - Piercing Shot

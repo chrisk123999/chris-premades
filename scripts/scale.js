@@ -177,36 +177,37 @@ let scaleData = {
         {
             'type': 'ScaleValue',
             'configuration': {
-                'identifier': 'combat-superiority',
-                'type': 'dice',
                 'distance': {
                     'units': ''
                 },
+                'identifier': 'combat-superiority-die',
+                'type': 'dice',
                 'scale': {
                     '1': {
-                        'number': 4,
+                        'number': 1,
                         'faces': 8
                     },
                     '7': {
-                        'number': 5,
+                        'number': 1,
                         'faces': 8
                     },
                     '10': {
-                        'number': 5,
+                        'number': 1,
                         'faces': 10
                     },
                     '15': {
-                        'number': 6,
+                        'number': 1,
                         'faces': 10
                     },
                     '18': {
-                        'number': 6,
+                        'number': 1,
                         'faces': 12
                     }
                 }
             },
             'value': {},
-            'title': 'Combat Superiority'
+            'title': 'Combat Superiority (Die)',
+            'icon': null
         }
     ],
     'way-of-the-ascendant-dragon': [

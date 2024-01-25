@@ -87,7 +87,7 @@
       {
         "id": "sequencer",
         "type": "module",
-        "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
+        "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
         "compatibility": {
           "verified": "3.1.4"
         }
