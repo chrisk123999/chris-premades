@@ -1,3 +1,7 @@
+# 0.9.42 Release:
+## Bug Fixes:
+- Manifest Echo
+  
 # 0.9.41 Release:
 ## Bug Fixes:
 - Manifest Echo

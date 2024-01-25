@@ -224,25 +224,31 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     } else {
         feature = features[0];
     }
-    let oldTargetPosition = {'x': duplicate(targetToken.x), 'y': duplicate(targetToken.y), 'elevation': duplicate(targetToken.elevation)};
-    let oldTokenPosition = {'x': duplicate(workflow.token.document.x), 'y': duplicate(workflow.token.document.y), 'elevation': duplicate(workflow.token.document.elevation)};
-    workflow.token.document.x = oldTargetPosition.x;
-    workflow.token.document.y = oldTargetPosition.y;
-    workflow.token.document.elevation = oldTargetPosition.elevation;
-    targetToken.x = oldTokenPosition.x;
-    targetToken.y = oldTokenPosition.y;
-    targetToken.elevation = oldTokenPosition.elevation;
+    let effectData = {
+        'icon': 'icons/magic/time/arrows-circling-green.webp',
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'name': 'Manifeste Echo - Range Override',
+        'changes': [
+            {
+                'key': 'flags.midi-qol.rangeOverride.attack.all',
+                'mode': 0,
+                'value': '1',
+                'priority': 20
+            }
+        ]
+    };
+    let effect = await chris.createEffect(workflow.actor, effectData);
+    let effect2 = await chris.createEffect(targetToken.actor, effectData);
     let options = {
         'targetUuids': [workflow.targets.first().document.uuid]
     }
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
-    workflow.token.document.x = oldTokenPosition.x;
-    workflow.token.document.y = oldTokenPosition.y;
-    workflow.token.document.elevation = oldTokenPosition.elevation;
-    targetToken.x = oldTargetPosition.x;
-    targetToken.y = oldTargetPosition.y;
-    targetToken.elevation = oldTargetPosition.elevation;
+    await chris.removeEffect(effect);
+    await chris.removeEffect(effect2);
 }
 async function turnEnd(token) {
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === token.actor.uuid);
