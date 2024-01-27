@@ -32,11 +32,8 @@ let scaleData = {
         {
             'type': 'ScaleValue',
             'configuration': {
-                'identifier': 'rage',
+                'identifier': 'rage-damage',
                 'type': 'number',
-                'distance': {
-                    'units': ''
-                },
                 'scale': {
                     '1': {
                         'value': 2
@@ -47,10 +44,13 @@ let scaleData = {
                     '16': {
                         'value': 4
                     }
+                },
+                'distance': {
+                    'units': ''
                 }
             },
             'value': {},
-            'title': 'Rage'
+            'title': 'Rage Damage'
         }
     ],
     'blood-hunter': [

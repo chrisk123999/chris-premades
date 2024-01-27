@@ -1295,6 +1295,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Booming Blade', 'Spells');
+    game.settings.register(moduleName, 'Manifest Echo', {
+        'name': 'Manifest Echo Automation',
+        'hint': 'Enabling this allows the automation of the Manifest Echo feature via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.rollAbilitySave', macros.manifestEcho.save);
+            } else {
+                Hooks.off('dnd5e.rollAbilitySave', macros.manifestEcho.save);
+            }
+        }
+    });
+    addMenuSetting('Manifest Echo', 'Class Features');
 //    game.settings.register(moduleName, 'Metric Distance', {
 //        'name': 'Use Metric Distance',
 //        'hint': 'When enabled macros from this module will use metric for distance calculations.',

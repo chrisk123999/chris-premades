@@ -1,3 +1,11 @@
+# 0.9.43 Release:
+## Bug Fixes:
+- Elemental Gift - Flight
+- Manifest Echo
+- Barbarian Rage Damage Scale
+## New Enhanced Animations:
+- Manifest Echo
+  
 # 0.9.42 Release:
 ## Bug Fixes:
 - Manifest Echo

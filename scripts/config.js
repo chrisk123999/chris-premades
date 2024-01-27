@@ -2493,6 +2493,12 @@ export function setConfig() {
                         'default': 'default',
                         'values': summonEffectOptions
                     }
+                },
+                'checkbox': {
+                    'filter': {
+                        'label': 'Apply Token Magic Filter?',
+                        'default': true
+                    }
                 }
             }
         },
@@ -4133,7 +4139,7 @@ export function setConfig() {
             },
             'Elemental Gift - Flight': {
                 'name': 'Elemental Gift - Flight',
-                'version': '0.7.01'
+                'version': '0.9.43'
             },
             'Elemental Gift: Elemental Gift (Dao)': {
                 'name': 'Elemental Gift: Elemental Gift (Dao)',

@@ -152,7 +152,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Manual Rolls')) {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
-        await patching();
+        patching();
     }
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
@@ -207,6 +207,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Critical Role Firearm Support')) firearm.setup(true);
     if (game.settings.get('chris-premades', 'Booming Blade')) Hooks.on('updateToken', macros.boomingBlade.moved);
     if (game.settings.get('chris-premades', 'Build A Bonus Overlapping Effects')) Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
+    if (game.settings.get('chris-premades', 'Manifest Echo')) Hooks.on('dnd5e.rollAbilitySave', macros.manifestEcho.save);
     Hooks.on('createToken', addActions);
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
