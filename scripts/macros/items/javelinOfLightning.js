@@ -68,6 +68,7 @@ export async function javelinOfLightning({speaker, actor, token, character, item
         return;
     }
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Javelin of Lightning - Bolt');
+    delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions(targets.map(i => i.uuid));
     await warpgate.wait(100);
