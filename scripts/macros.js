@@ -200,6 +200,7 @@ import {investitureOfFlame} from './macros/spells/investitureOfFlame.js';
 import {investitureOfIce} from './macros/spells/investitureOfIce.js';
 import {investitureOfStone} from './macros/spells/investitureOfStone.js';
 import {investmentOfTheChainMaster} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
+import {javelinOfLightning} from './macros/items/javelinOfLightning.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
@@ -685,6 +686,7 @@ export let macros = {
     'investitureOfIce': investitureOfIce,
     'investitureOfStone': investitureOfStone,
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
+    'javelinOfLightning': javelinOfLightning,
     'lanternOfRevealing': lanternOfRevealing,
     'legionOfOne': legionOfOne,
     'lifeTransference': lifeTransference,

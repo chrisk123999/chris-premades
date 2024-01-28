@@ -1,3 +1,7 @@
+# 0.9.45 Release:
+## New Content:
+- Items: Bad News, Blunderbuss, Musket, Palm Pistol, Pepperbox, Pistol, and Javelin Of Lightning
+  
 # 0.9.44 Release:
 ## Bug Fixes:
 - Effect Origin Fixer

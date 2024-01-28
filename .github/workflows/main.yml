@@ -59,6 +59,7 @@ jobs:
         body: ${{ github.event.release.body }}
     - name: FoundryVTT AutoPublish
       uses: fjogeleit/http-request-action@v1
+      continue-on-error: true
       with:
         url: 'https://api.foundryvtt.com/_api/packages/release_version'
         method: 'POST'

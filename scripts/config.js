@@ -2345,6 +2345,120 @@ export function setConfig() {
                     }
                 }
             },
+            'Palm Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Bad News (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 3
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Blunderbuss (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Musket (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pepperbox (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
             'Booming Blade': {
                 'select': {
                     'animation': {
@@ -5826,6 +5940,34 @@ export function setConfig() {
             'Unleash Incarnation': {
                 'name': 'Unleash Incarnation',
                 'version': '0.9.40'
+            },
+            'Palm Pistol (Exandria)': {
+                'name': 'Palm Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Bad News (Exandria)': {
+                'name': 'Bad News (Exandria)',
+                'version': '0.9.45'
+            },
+            'Blunderbuss (Exandria)': {
+                'name': 'Blunderbuss (Exandria)',
+                'version': '0.9.45'
+            },
+            'Musket (Exandria)': {
+                'name': 'Musket (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pepperbox (Exandria)': {
+                'name': 'Pepperbox (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pistol (Exandria)': {
+                'name': 'Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Javelin of Lightning': {
+                'name': 'Javelin of Lightning',
+                'version': '0.9.45'
             }
         }
     });
