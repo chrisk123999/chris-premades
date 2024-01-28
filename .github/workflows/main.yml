@@ -50,10 +50,22 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: true # set this to false if you want to prevent updating existing releases
-        name: ${{ github.event.release.name }}
+        name: ${{github.event.release.name}}
         draft: false
         prerelease: false
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{secrets.GITHUB_TOKEN}}
         artifacts: './module.json, ./module.zip'
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
+    - name: Foundry Release
+        id: foundry-release
+        run: node ./update-foundry-package.js
+        env:
+          FOUNDRY_API_TOKEN: ${{secrets.FOUNDRY_API_TOKEN}}
+          PACKAGE_ID: 'chris-premades'
+          PACKAGE_VERSION: '${{env.VERSION}}'
+          MANIFEST_URL: 'https://github.com/chrisk123999/chris-premades/releases/download/${{env.VERSION}}/module.json'
+          RELEASE_NOTES_URL: 'https://github.com/chrisk123999/chris-premades/releases/tag/${{env.VERSION}}'
+          FOUNDRY_MIN_VERSION: '11'
+          FOUNDRY_VERIFIED_VERSION: '11'
+          FOUNDRY_MAX_VERSION: '11'

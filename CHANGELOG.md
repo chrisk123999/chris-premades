@@ -1,3 +1,7 @@
+# 0.9.44 Release:
+## Bug Fixes:
+- Effect Origin Fixer
+  
 # 0.9.43 Release:
 ## Bug Fixes:
 - Elemental Gift - Flight
