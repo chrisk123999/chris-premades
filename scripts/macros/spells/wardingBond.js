@@ -14,7 +14,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'name': 'Warding Bond: ' + targetToken.actor.name,
         'icon': workflow.item.img,
         'duration': {
-            'seconds': 60
+            'seconds': 3600
         },
         'origin': workflow.item.uuid,
         'flags': {

@@ -78,7 +78,7 @@ async function mutate(workflow, selected) {
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.flags['chris-premades']?.info?.name != 'Unarmed Strike');
     if (!weapons.length) return;
     let selected;
     if (weapons.length === 1) {

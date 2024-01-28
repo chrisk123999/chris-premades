@@ -1,3 +1,9 @@
+# 0.9.47 Release:
+## Bug Fixes:
+- Manifest Echo
+- Elemental Cleaver
+- Warding Bond
+  
 # 0.9.46 Release:
 ## Bug Fixes:
 - Javelin Of Lightning
