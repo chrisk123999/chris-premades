@@ -19,7 +19,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     # Install dependencies
     - run: npm ci
-    - run: npm install node-fetch
     - name: Webpack build
       run: npm run build
 
@@ -58,15 +57,10 @@ jobs:
         artifacts: './module.json, ./module.zip'
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
-    - name: Foundry Release
-      id: foundry-release
-      run: node ./update-foundry-package.js
-      env:
-        FOUNDRY_API_TOKEN: ${{secrets.FOUNDRY_API_TOKEN}}
-        PACKAGE_ID: 'chris-premades'
-        PACKAGE_VERSION: '${{env.VERSION}}'
-        MANIFEST_URL: 'https://github.com/chrisk123999/chris-premades/releases/download/${{env.VERSION}}/module.json'
-        RELEASE_NOTES_URL: 'https://github.com/chrisk123999/chris-premades/releases/tag/${{env.VERSION}}'
-        FOUNDRY_MIN_VERSION: '11'
-        FOUNDRY_VERIFIED_VERSION: '11'
-        FOUNDRY_MAX_VERSION: '11'
+    - name: FoundryVTT AutoPublish
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://api.foundryvtt.com/_api/packages/release_version'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
+        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "11", "verified": "11", "maximum": "11"} } }'
