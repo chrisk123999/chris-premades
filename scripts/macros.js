@@ -287,6 +287,7 @@ import {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 import {songOfDefense} from './macros/classFeatures/wizard/bladesinging/songOfDefense.js';
 import {soothePain} from './macros/feats/soothePain.js';
 import {soulMonger} from './macros/monsterFeatures/soulMonger/soulMonger.js';
+import {spectator} from './macros/monsterFeatures/spectator/spectator.js';
 import {spellRefuelingRing} from './macros/classFeatures/artificer/infusions/spellRefuelingRing.js';
 import {spikeGrowth} from './macros/spells/spikeGrowth.js';
 import {spiritGuardians} from './macros/spells/spiritGuardians.js';
@@ -409,6 +410,7 @@ let monster = {
     'nightwalker': nightwalker,
     'rugOfSmothering': rugOfSmothering,
     'salamander': salamander,
+    'spectator': spectator,
     'shadow': shadow,
     'shadowDemon': shadowDemon,
     'shadowSpirit': shadowSpirit,
