@@ -4,3 +4,4 @@ packs/V11 Module Packs.lnk
 packs/World Packs.lnk
 dist/
 module.json
+node_modules/
