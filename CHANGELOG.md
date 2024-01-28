@@ -1,3 +1,7 @@
+# 0.9.46 Release:
+## Bug Fixes:
+- Javelin Of Lightning
+
 # 0.9.45 Release:
 ## New Content:
 - Items: Bad News, Blunderbuss, Musket, Palm Pistol, Pepperbox, Pistol, and Javelin Of Lightning

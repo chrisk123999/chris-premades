@@ -5967,7 +5967,7 @@ export function setConfig() {
             },
             'Javelin of Lightning': {
                 'name': 'Javelin of Lightning',
-                'version': '0.9.45'
+                'version': '0.9.46'
             }
         }
     });
