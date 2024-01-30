@@ -74,6 +74,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'attributes': {
                     'ac': {
                         'flat': 14 + workflow.actor.system.attributes.prof
+                    },
+                    'senses':{
+                        'blindsight': workflow.actor.system.attributes.blindsight,
+                        'darkvision': workflow.actor.system.attributes.darkvision,
+                        'special': workflow.actor.system.attributes.senses.special,
+                        'tremorsense': workflow.actor.system.attributes.senses.tremorsense,
+                        'truesight': workflow.actor.system.attributes.senses.truesight,
+                        'units': workflow.actor.system.attributes.senses.units
                     }
                 }
             },
