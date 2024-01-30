@@ -36,7 +36,7 @@ export function updateItemButton(app, [elem], options) {
             return true;
         }
     }
-    function gpr(item) {
+    function gps(item) {
         let automation = CONFIG['gambits-premades']?.automations[item.name];
         if (!automation) return;
         let itemVersion = item.flags['chris-premades']?.info?.gambit?.version;
@@ -69,8 +69,8 @@ export function updateItemButton(app, [elem], options) {
             case 'CPR':
                 cpr(item);
                 return;
-            case 'GPR':
-                gpr(item);
+            case 'GPS':
+                gps(item);
                 return;
             case 'MISC':
                 misc(item);
@@ -171,7 +171,7 @@ async function updateItem(itemDocument) {
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
     let foundCompendiumName;
-    let gambitItems = game.modules.get('gambits-premades')?.active ? game.settings.get('chris-premades', 'GPR Support') : false;
+    let gambitItems = game.modules.get('gambits-premades')?.active ? game.settings.get('chris-premades', 'GPS Support') : false;
     let miscItems = game.modules.get('midi-item-showcase-community')?.active ? game.settings.get('chris-premades', 'MISC Support') : false;
     itemName = getItemName(itemName);
     let sourceModule;
@@ -234,8 +234,8 @@ async function updateItem(itemDocument) {
             let numB = additionalCompendiumPriority[b] ?? 10;
             if (packs.includes(a)) numA = additionalCompendiumPriority['CPR'];
             if (packs.includes(b)) numB = additionalCompendiumPriority['CPR'];
-            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPR'];
-            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPR'];
+            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
+            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
             if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
             if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
             return numA - numB;
@@ -310,7 +310,7 @@ async function updateItem(itemDocument) {
             break;
         case 'gambits-premades':
             setProperty(originalItem, 'flags.chris-premades.info.gambit', CONFIG['gambits-premades']?.automations?.[itemName]);
-            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPR');
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
         case 'chris-premades':
             setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');

@@ -366,7 +366,7 @@ export function registerSettings() {
         'type': Object,
         'default': {
             'CPR': 0,
-            'GPR': 1,
+            'GPS': 1,
             'MISC': 2,
             'midi-srd.Midi SRD Feats': 3,
             'midi-srd.Midi SRD Spells': 4,
@@ -374,7 +374,7 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Additional Compendium Priority', 'Compendiums');
-    game.settings.register(moduleName, 'GPR Support', {
+    game.settings.register(moduleName, 'GPS Support', {
         'name': 'Gambit\'s Premades Support',
         'hint': 'Include Gambit\'s premades in the medkit.',
         'scope': 'world',
@@ -387,7 +387,7 @@ export function registerSettings() {
             2: 'Yes | Include Everything'
         }
     });
-    addMenuSetting('GPR Support', 'Compendiums');
+    addMenuSetting('GPS Support', 'Compendiums');
     game.settings.register(moduleName, 'MISC Support', {
         'name': 'Midi Item Showcase - Community Support',
         'hint': 'Include Midi Item Showcase in the medkit.',

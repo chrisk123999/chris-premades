@@ -34,7 +34,7 @@ export async function additionalCompendiums() {
 }
 export async function additionalCompendiumPriority() {
     let packs = game.settings.get('chris-premades', 'Additional Compendiums');
-    let gambitItems = game.modules.get('gambits-premades')?.active ? !!game.settings.get('chris-premades', 'GPR Support') : false;
+    let gambitItems = game.modules.get('gambits-premades')?.active ? !!game.settings.get('chris-premades', 'GPS Support') : false;
     let miscItems = game.modules.get('midi-item-showcase-community')?.active ? !!game.settings.get('chris-premades', 'MISC Support') : false;
     if (!packs.length && !gambitItems && !miscItems) {
         ui.notifications.info('There are no compendiums selected in the "Additional Compendiums" setting!');
@@ -43,7 +43,7 @@ export async function additionalCompendiumPriority() {
     let oldSettings = game.settings.get('chris-premades', 'Additional Compendium Priority');
     let inputs = packs.map(i => ({'label': game.packs.get(i)?.metadata?.label ?? 'Unknown (' + i + ')', 'type': 'number', 'options': oldSettings[i] ?? 100}));
     if (miscItems) inputs.unshift({'label': 'Midi Item Showcase', 'type': 'number', 'options': oldSettings['MISC'] ?? 2});
-    if (gambitItems) inputs.unshift({'label': 'Gambit\'s Premades', 'type': 'number', 'options': oldSettings['GPR'] ?? 1});
+    if (gambitItems) inputs.unshift({'label': 'Gambit\'s Premades', 'type': 'number', 'options': oldSettings['GPS'] ?? 1});
     inputs.unshift({'label': 'Chris\'s Premades', 'type': 'number', 'options': oldSettings['CPR'] ?? 0});
     let selection = await chris.menu('Additional Compendium Priority', constants.okCancel, inputs, true, 'Lower Number = Higher Priority');
     if (!selection.buttons) return;
@@ -56,11 +56,11 @@ export async function additionalCompendiumPriority() {
     }
     newSettings['CPR'] = selection.inputs[0];
     if (gambitItems && !miscItems) {
-        newSettings['GPR'] = selection.inputs[1];
+        newSettings['GPS'] = selection.inputs[1];
     } else if (!gambitItems && miscItems) {
         newSettings['MISC'] = selection.inputs[1];
     } else if (gambitItems && miscItems) {
-        newSettings['GPR'] = selection.inputs[1];
+        newSettings['GPS'] = selection.inputs[1];
         newSettings['MISC'] = selection.inputs[2];
     }
     await game.settings.set('chris-premades', 'Additional Compendium Priority', newSettings);
