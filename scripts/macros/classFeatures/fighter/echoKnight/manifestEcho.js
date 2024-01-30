@@ -1,6 +1,7 @@
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {tashaSummon} from '../../../../utility/tashaSummon.js';
+
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Echo Knight');
     if (!sourceActor) return;
@@ -8,9 +9,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let name = chris.getConfiguration(workflow.item, 'name');
     if (name === '' || !name) name = workflow.actor.name + ' Echo';
     let actorData = duplicate(workflow.actor.toObject());
+
     async function effectMacro3() {
         await chrisPremades.macros.manifestEcho.defeated(token, effect);
     }
+
     let effectData2 = {
         'name': workflow.item.name,
         'icon': workflow.item.img,
@@ -74,14 +77,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'attributes': {
                     'ac': {
                         'flat': 14 + workflow.actor.system.attributes.prof
-                    },
-                    'senses':{
-                        'blindsight': workflow.actor.system.attributes.blindsight,
-                        'darkvision': workflow.actor.system.attributes.darkvision,
-                        'special': workflow.actor.system.attributes.senses.special,
-                        'tremorsense': workflow.actor.system.attributes.senses.tremorsense,
-                        'truesight': workflow.actor.system.attributes.senses.truesight,
-                        'units': workflow.actor.system.attributes.senses.units
                     }
                 }
             },
@@ -117,7 +112,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (tokenImg && tokenImg != '') {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
-    } else {
+    }
+    else {
         setProperty(updates, 'token.texture.src', workflow.token.document.texture.src);
         setProperty(updates, 'actor.prototypeToken.texture.src', workflow.token.document.texture.src);
     }
@@ -152,21 +148,21 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'vignettingAlpha': 0.6,
                 'vignettingBlur': 0.2,
                 'animated':
-                {
-                    'seed': { 
-                        'active': true, 
-                        'animType': 'randomNumber', 
-                        'val1': 0, 
-                        'val2': 1 
-                    },
-                    'vignetting': { 
-                        'active': true, 
-                        'animType': 'syncCosOscillation' , 
-                        'loopDuration': 2000, 
-                        'val1': 0.2, 
-                        'val2': 0.4
+                    {
+                        'seed': {
+                            'active': true,
+                            'animType': 'randomNumber',
+                            'val1': 0,
+                            'val2': 1
+                        },
+                        'vignetting': {
+                            'active': true,
+                            'animType': 'syncCosOscillation',
+                            'loopDuration': 2000,
+                            'val1': 0.2,
+                            'val2': 0.4
+                        }
                     }
-                }
             },
             {
                 'filterType': 'outline',
@@ -174,7 +170,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'color': 0x000000,
                 'thickness': 0,
                 'zOrder': 61
-            ,
+
             },
             {
                 'filterType': 'fog',
@@ -185,10 +181,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'dimX': 1,
                 'dimY': 1,
                 'animated': {
-                    'time': { 
-                        'active': true, 
-                        'speed': 2.2, 
-                        'animType': 'move' 
+                    'time': {
+                        'active': true,
+                        'speed': 2.2,
+                        'animType': 'move'
                     }
                 }
             }
@@ -197,11 +193,15 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     if (sceneEchos.length) {
         let legionOfOne = chris.getItem(workflow.actor, 'Legion of One');
-        let max = legionOfOne ? 2: 1;
-        if (sceneEchos.length >= max) for (let i of sceneEchos) {
-            animation(i);
-            await warpgate.wait(700);
-            await warpgate.dismiss(i.id);
+        let max = legionOfOne
+                  ? 2
+                  : 1;
+        if (sceneEchos.length >= max) {
+            for (let i of sceneEchos) {
+                animation(i);
+                await warpgate.wait(700);
+                await warpgate.dismiss(i.id);
+            }
         }
     }
     let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.feature?.manifestEcho);
@@ -217,12 +217,15 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let featureData3 = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Manifest Echo - Attack', false);
     if (!featureData3) return;
     featureData3.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Manifest Echo - Attack');
-    async function effectMacro () {
+
+    async function effectMacro() {
         await chrisPremades.macros.manifestEcho.dismiss({'workflow': {actor, token}});
     }
+
     async function effectMacro2() {
         await chrisPremades.macros.manifestEcho.turnEnd(token);
     }
+
     let effectData = {
         'name': workflow.item.name,
         'icon': workflow.item.img,
@@ -268,6 +271,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
 }
+
 async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === workflow.actor.uuid);
     if (!sceneEchos.length) return;
@@ -278,6 +282,7 @@ async function dismiss({speaker, actor, token, character, item, args, scope, wor
     }
     await warpgate.revert(workflow.token.document, 'Manifest Echo');
 }
+
 async function teleport({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.token) return;
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === workflow.actor.uuid);
@@ -290,26 +295,28 @@ async function teleport({speaker, actor, token, character, item, args, scope, wo
         if (!targetTokenUuid) return;
         targetToken = await fromUuid(targetTokenUuid);
         if (!targetToken) return;
-    } else {
+    }
+    else {
         targetToken = sceneEchos[0];
     }
     if (chris.jb2aCheck() === 'patreon') {
         await swapAnimation(workflow.token, targetToken.object);
-    } else {
+    }
+    else {
         let updates = {
             'token': {
                 'x': targetToken.x,
                 'y': targetToken.y,
                 'elevation': targetToken.elevation
             }
-        }
+        };
         let updates2 = {
             'token': {
                 'x': workflow.token.document.x,
                 'y': workflow.token.document.y,
                 'elevation': workflow.token.document.elevation
             }
-        }
+        };
         let options = {
             'permanent': true,
             'name': 'Manifest Echo - Teleport',
@@ -323,6 +330,7 @@ async function teleport({speaker, actor, token, character, item, args, scope, wo
         warpgate.mutate(targetToken, updates2, {}, options);
     }
 }
+
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size) return;
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === workflow.actor.uuid);
@@ -335,21 +343,29 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         if (!targetTokenUuid) return;
         let targetToken = await fromUuid(targetTokenUuid);
         if (!targetToken) return;
-    } else {
+    }
+    else {
         targetToken = sceneEchos[0];
     }
-    let features = workflow.actor.items.filter(i => constants.weaponAttacks.includes(i.system.actionType) && (i.type === 'weapon' ? i.system.equipped : true));
+    let features = workflow.actor.items.filter(i => constants.weaponAttacks.includes(i.system.actionType) && (
+        i.type === 'weapon'
+        ? i.system.equipped
+        : true
+    ));
     let feature;
     if (!features.length) {
         ui.notifications.info('You have no equipped weapons to attack with!');
         return;
-    } else if (features.length > 1) {
+    }
+    else if (features.length > 1) {
         let selection = await chris.selectDocument(workflow.item.name, features);
         if (!selection) return;
         feature = selection[0];
-    } else {
+    }
+    else {
         feature = features[0];
     }
+    let v5e = chris.v5eCheck();
     let effectData = {
         'icon': 'icons/magic/time/arrows-circling-green.webp',
         'origin': workflow.item.uuid,
@@ -373,20 +389,77 @@ async function attack({speaker, actor, token, character, item, args, scope, work
             }
         }
     };
+    let visionData = {
+        'icon': 'icons/svg/eye.svg',
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'name': 'Manifest Echo - Senses Override',
+        'changes': [
+            {
+                'key': 'system.attributes.senses.blindsight',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.blindsight,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.darkvision',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.darkvision,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.special',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.special,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.tremorsense',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.tremorsense,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.units',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.units,
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
+    };
     let effect = await chris.createEffect(workflow.actor, effectData);
     let effect2 = await chris.createEffect(targetToken.actor, effectData);
+    let effect3;
+    if (v5e) {
+        effect3 = await chris.createEffect(targetToken.actor, visionData);
+    }
     let options = {
         'targetUuids': [workflow.targets.first().document.uuid]
-    }
+    };
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
     await chris.removeEffect(effect);
     await chris.removeEffect(effect2);
+    if (v5e) {
+        await chris.removeEffect(effect3);
+    }
 }
+
 async function turnEnd(token) {
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === token.actor.uuid);
     if (!sceneEchos.length) return;
-    let maxRange = chris.findEffect(token.actor, 'Echo Avatar') ? 1000 : 30;
+    let maxRange = chris.findEffect(token.actor, 'Echo Avatar')
+                   ? 1000
+                   : 30;
     let echosLeft = sceneEchos.length;
     for (let i of sceneEchos) {
         let distance = chris.getDistance(token, i, false);
@@ -399,6 +472,7 @@ async function turnEnd(token) {
     }
     if (!echosLeft) await warpgate.revert(token.document, 'Manifest Echo');
 }
+
 async function save(actor, roll, ability) {
     let ownerUuid = actor.flags['chris-premades']?.feature?.manifestEcho?.ownerUuid;
     if (!ownerUuid) return;
@@ -417,6 +491,7 @@ async function save(actor, roll, ability) {
     roll._total += newRoll.total;
     roll._formula = roll._formula + formula;
 }
+
 async function defeated(token, effect) {
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === token.actor.flags['chris-premades'].feature.manifestEcho.ownerUuid && i.id != token.id);
     if (!sceneEchos.length) {
@@ -434,8 +509,11 @@ async function defeated(token, effect) {
     await warpgate.wait(700);
     warpgate.dismiss(token.id);
 }
+
 async function animation(token) {
-    let animationName = chris.jb2aCheck() === 'patreon' ? 'jb2a.misty_step.01.grey' : 'jb2a.misty_step.01.blue'
+    let animationName = chris.jb2aCheck() === 'patreon'
+                        ? 'jb2a.misty_step.01.grey'
+                        : 'jb2a.misty_step.01.blue';
     new Sequence()
         .effect()
         .file(animationName)
@@ -444,8 +522,9 @@ async function animation(token) {
         .scaleToObject(2)
         .play();
 }
+
 async function swapAnimation(source, target) {
-    async function swap(source, target){
+    async function swap(source, target) {
         new Sequence()
             .effect()
             .file('jb2a.misty_step.01.grey')
@@ -468,7 +547,7 @@ async function swapAnimation(source, target) {
             .waitUntilFinished()
             .effect()
             .file('jb2a.misty_step.02.grey')
-            .attachTo( source )
+            .attachTo(source)
             .randomRotation()
             .scaleToObject(2)
             .wait(1500)
@@ -477,9 +556,11 @@ async function swapAnimation(source, target) {
             .opacity(1.0)
             .play();
     }
+
     await swap(source, target);
     await swap(target, source);
 }
+
 export let manifestEcho = {
     'item': item,
     'dismiss': dismiss,

@@ -560,6 +560,10 @@ export let chris = {
         let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
         return cartoon;
     },
+    'v5eCheck': function _v5eCheck() {
+        let v5e = game.modules.get('vision-5e')?.active;
+        return v5e;
+    },
     'selectDocument': async function selectDocument(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
             let buttons = {},
