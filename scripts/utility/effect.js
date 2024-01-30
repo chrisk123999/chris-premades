@@ -1,3 +1,4 @@
+import {constants} from '../constants.js';
 import {chris} from '../helperFunctions.js';
 export function itemDC(effect, updates, options, user) {
     if (!updates.changes || !effect.parent || !effect.origin) return;
@@ -36,4 +37,51 @@ export function noEffectAnimationCreate(effect, updates,  options, userId) {
 }
 export function noEffectAnimationDelete(effect,  options, userId) {
     if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
+}
+export function effectTitleBar(config, buttons) {
+    if (config.object.parent instanceof Item) {
+        buttons.unshift({
+            'class': 'chris-premades',
+            'icon': 'fa-solid fa-kit-medical',
+            'onclick': () => effectConfig(config.object)
+        });
+    }
+}
+async function effectConfig(effect) {
+    let disableAnimation = effect.flags['chris-premades']?.effect?.noAnimation;
+    let vaeButton = effect.flags['chris-premades']?.vae?.button ?? '';
+    let inputs = [
+        {
+            'label': 'Disable Animation:',
+            'type': 'checkbox',
+            'options': disableAnimation ?? false
+        },
+        {
+            'label': 'VAE Button',
+            'type': 'text',
+            'options': vaeButton
+        }
+    ]
+    let selection = await chris.menu('CPR Effect Options', constants.okCancel, inputs, true);
+    if (!selection.buttons) return;
+    let refreshedEffect = await fromUuid(effect.uuid);
+    if (!refreshedEffect) return;
+    let updates = {
+        'effects': [
+            {
+                '_id': refreshedEffect.id,
+                'flags': {
+                    'chris-premades': {
+                        'effect': {
+                            'noAnimation': selection.inputs[0]
+                        },
+                        'vae': {
+                            'button': selection.inputs[1] === '' ? null : selection.inputs[1]
+                        }
+                    }
+                }
+            }
+        ]
+    }
+    await effect.parent.update(updates);
 }

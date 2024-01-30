@@ -10,7 +10,7 @@ import {createActorHeaderButton, createHeaderButton, updateItemButton} from './i
 import {diceSoNice} from './integrations/diceSoNice.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
-import {fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
+import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
@@ -141,6 +141,7 @@ Hooks.once('ready', async function() {
         Hooks.on('preCreateActiveEffect', itemDC);  
         Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
         Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
+        Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
         patchActiveEffectSourceName(true);
     }
     if (game.settings.get('chris-premades', 'Active Effect Origin Fix')) Hooks.on('createToken', fixOrigin);

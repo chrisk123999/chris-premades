@@ -1,3 +1,9 @@
+# 0.9.49 Release:
+## Bug Fixes:
+- Blessed Strikes
+## Update Notes:
+- Added the medkit to the effect editor on items. You can disable the scrolling text animation and set a VAE button with this dialog.
+  
 # 0.9.48 Release:
 ## Bug Fixes:
 - Wild Surge

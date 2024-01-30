@@ -4,7 +4,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
-import {fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
+import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
 import {rest} from './utility/rest.js';
@@ -191,10 +191,12 @@ export function registerSettings() {
                 Hooks.on('preCreateActiveEffect', itemDC);
                 Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
                 Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
             } else {
                 Hooks.off('preCreateActiveEffect', itemDC);
                 Hooks.off('preCreateActiveEffect', noEffectAnimationCreate);
                 Hooks.off('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.off('getActiveEffectConfigHeaderButtons', effectTitleBar);
             }
             patchActiveEffectSourceName(value);
         }

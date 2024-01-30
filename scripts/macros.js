@@ -224,6 +224,7 @@ import {metallicBreathWeapon} from './macros/raceFeatures/dragonborn/metallic/me
 import {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 import {mirrorImage} from './macros/spells/mirrorImage.js';
 import {moonbeam} from './macros/spells/moonbeam.js';
+import {moteOfPotential} from './macros/classFeatures/bard/collegeOfCreation/moteOfPotential.js';
 import {mudMephit} from './macros/monsterFeatures/mudMephit/mudMephit.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
@@ -708,6 +709,7 @@ export let macros = {
     'mirrorImage': mirrorImage,
     'monster': monster,
     'moonbeam': moonbeam,
+    'moteOfPotential': moteOfPotential,
     'muddledMind': muddledMind,
     'mutagencraft': mutagencraft,
     'necroticShroud': necroticShroud,
