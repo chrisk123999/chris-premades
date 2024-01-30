@@ -1,6 +1,7 @@
 import {chris} from '../helperFunctions.js';
 import {macros} from '../macros.js';
 import {socket} from '../module.js';
+import {translate} from '../translations.js';
 let auras = {};
 export let effectAuras = {
     'add': add,
@@ -129,6 +130,7 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
             if (aura.conscious) {
                 let sourceHP = sourceToken.actor.system.attributes.hp.value;
                 if (sourceHP === 0) continue;
+                if (chris.findEffect(sourceToken.actor, translate.conditions('unconscious'))) continue;
             }
             switch (aura.disposition) {
                 case 'ally':
@@ -227,13 +229,19 @@ function deleteToken(token, options, id) {
     }
     // delete effects on actor?
 }
+async function createRemoveEffect(effect, updates, userId) {
+    if (!effect.parent || effect.name != translate.conditions('unconscious')) return;
+    if (!effect.parent.flags['chris-premades']?.aura) return;
+    refreshEffects();
+}
 export let effectAuraHooks = {
     'preActorUpdate': preActorUpdate,
     'actorUpdate': actorUpdate,
     'canvasReady': canvasReady,
     'updateToken': updateToken,
     'createToken': createToken,
-    'deleteToken': deleteToken
+    'deleteToken': deleteToken,
+    'createRemoveEffect': createRemoveEffect
 }
 export let effectSockets = {
     'remoteAdd': remoteAdd,

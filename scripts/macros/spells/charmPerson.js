@@ -21,6 +21,11 @@ export async function charmPerson({speaker, actor, token, character, item, args,
                 'specialDuration': [
                     'isSave'
                 ]
+            },
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
     };

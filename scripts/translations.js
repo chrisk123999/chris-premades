@@ -7,8 +7,12 @@ function healingType(type) {
 function skills(skill) {
     return CONFIG.DND5E.skills[skill].label;
 }
+function conditions(condition) {
+    return CONFIG.DND5E.conditionTypes[condition];
+}
 export let translate = {
     'damageType': damageType,
     'healingType': healingType,
-    'skills': skills
+    'skills': skills,
+    'conditions': conditions
 }

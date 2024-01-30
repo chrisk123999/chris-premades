@@ -10,7 +10,7 @@ import {createActorHeaderButton, createHeaderButton, updateItemButton} from './i
 import {diceSoNice} from './integrations/diceSoNice.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
-import {fixOrigin, itemDC} from './utility/effect.js';
+import {fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
@@ -95,6 +95,8 @@ Hooks.once('ready', async function() {
             Hooks.on('updateToken', effectAuraHooks.updateToken);
             Hooks.on('createToken', effectAuraHooks.createToken);
             Hooks.on('deleteToken', effectAuraHooks.deleteToken);
+            Hooks.on('createActiveEffect', effectAuraHooks.createRemoveEffect);
+            Hooks.on('deleteActiveEffect', effectAuraHooks.createRemoveEffect);
             effectAuras.registerAll();
         }
         if (game.settings.get('chris-premades', 'Warding Bond')) {
@@ -137,6 +139,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Wildhunt')) Hooks.on('midi-qol.preAttackRoll', macros.wildhunt);
     if (game.settings.get('chris-premades', 'Active Effect Additions')) {
         Hooks.on('preCreateActiveEffect', itemDC);  
+        Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
+        Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
         patchActiveEffectSourceName(true);
     }
     if (game.settings.get('chris-premades', 'Active Effect Origin Fix')) Hooks.on('createToken', fixOrigin);

@@ -1,3 +1,11 @@
+# 0.9.48 Release:
+## Bug Fixes:
+- Wild Surge
+- Aura of Life
+- Effect Auras
+## Update Notes:
+- Initial Medkit support for Gambit's Premades and Midi Item Showcase - Community
+  
 # 0.9.47 Release:
 ## Bug Fixes:
 - Manifest Echo

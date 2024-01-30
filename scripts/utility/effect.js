@@ -31,3 +31,9 @@ export async function fixOrigin(token, options, user) {
     if (Object.keys(updates).length === 0) return;
     await token.actor.updateEmbeddedDocuments('ActiveEffect', updates);
 }
+export function noEffectAnimationCreate(effect, updates,  options, userId) {
+    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
+}
+export function noEffectAnimationDelete(effect,  options, userId) {
+    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
+}

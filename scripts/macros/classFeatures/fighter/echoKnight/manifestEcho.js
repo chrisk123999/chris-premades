@@ -356,7 +356,14 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 'value': '1',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
     };
     let effect = await chris.createEffect(workflow.actor, effectData);
     let effect2 = await chris.createEffect(targetToken.actor, effectData);

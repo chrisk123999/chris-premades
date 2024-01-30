@@ -332,7 +332,15 @@ async function protectiveLightsAura(token, selectedAura) {
                 'value': '+1',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
     };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;

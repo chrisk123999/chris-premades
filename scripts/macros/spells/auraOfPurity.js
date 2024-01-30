@@ -73,7 +73,10 @@ async function move(token, selectedAura) {
         ],
         'flags': {
             'chris-premades': {
-                'aura': true
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
     }
