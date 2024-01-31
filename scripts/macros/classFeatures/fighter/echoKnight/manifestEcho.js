@@ -367,48 +367,48 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
   };
   let visionData = {
-    icon: "icons/svg/eye.svg",
-    origin: workflow.item.uuid,
-    duration: {
-      seconds: 1,
+    'icon': "icons/svg/eye.svg",
+    'origin': workflow.item.uuid,
+    'duration': {
+      'seconds': 1,
     },
-    name: "Manifest Echo - Senses Override",
-    changes: [
+    'name': "Manifest Echo - Senses Override",
+    'changes': [
       {
-        key: "system.attributes.senses.blindsight",
-        mode: 5,
-        value: workflow.actor.system.attributes.blindsight,
-        priority: 20,
+        'key': "system.attributes.senses.blindsight",
+        'mode': 5,
+        'value': workflow.actor.system.attributes.blindsight,
+        'priority': 20,
       },
       {
-        key: "system.attributes.senses.darkvision",
-        mode: 5,
-        value: workflow.actor.system.attributes.darkvision,
-        priority: 20,
+        'key': "system.attributes.senses.darkvision",
+        'mode': 5,
+        'value': workflow.actor.system.attributes.darkvision,
+        'priority': 20,
       },
       {
-        key: "system.attributes.senses.special",
-        mode: 5,
-        value: workflow.actor.system.attributes.special,
-        priority: 20,
+        'key': "system.attributes.senses.special",
+        'mode': 5,
+        'value': workflow.actor.system.attributes.special,
+        'priority': 20,
       },
       {
-        key: "system.attributes.senses.tremorsense",
-        mode: 5,
-        value: workflow.actor.system.attributes.tremorsense,
-        priority: 20,
+        'key': "system.attributes.senses.tremorsense",
+        'mode': 5,
+        'value': workflow.actor.system.attributes.tremorsense,
+        'priority': 20,
       },
       {
-        key: "system.attributes.senses.units",
-        mode: 5,
-        value: workflow.actor.system.attributes.units,
-        priority: 20,
+        'key': "system.attributes.senses.units",
+        'mode': 5,
+        'value': workflow.actor.system.attributes.units,
+        'priority': 20,
       },
     ],
-    flags: {
+    'flags': {
       "chris-premades": {
-        effect: {
-          noAnimation: true,
+        'effect': {
+          'noAnimation': true,
         },
       },
     },
