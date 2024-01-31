@@ -52,7 +52,7 @@ async function effectConfig(effect) {
     let vaeButton = effect.flags['chris-premades']?.vae?.button ?? '';
     let inputs = [
         {
-            'label': 'Disable Animation:',
+            'label': 'Disable Text Animation:',
             'type': 'checkbox',
             'options': disableAnimation ?? false
         },

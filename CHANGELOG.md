@@ -1,3 +1,9 @@
+# 0.9.50 Release:
+## Bug Fixes:
+- Crusher
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.49 Release:
 ## Bug Fixes:
 - Blessed Strikes

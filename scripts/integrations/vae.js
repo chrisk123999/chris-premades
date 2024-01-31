@@ -31,7 +31,11 @@ export async function vaeTempItemButton(effect, buttons) {
             'label': 'Use: ' + name,
             'callback': async function(){
                 let item = effect.parent.items.getName(name);
-                if (item) await item.use();
+                if (item) {
+                    await item.use();
+                } else {
+                    ui.notifications.warn(name + ' item not found!');
+                }
             }
         });
     }
