@@ -18,9 +18,9 @@ export let chris = {
         let inputs = [];
         for (let i of options) {
             inputs.push({
-                'label': i,
-                'type': 'number'
-            });
+                            'label': i,
+                            'type': 'number'
+                        });
         }
         let config = {
             'title': title
@@ -183,45 +183,45 @@ export let chris = {
             if (returnUuid) value = i.document.uuid;
             if (type === 'multiple') {
                 generatedInputs.push({
-                    'label': html,
-                    'type': 'checkbox',
-                    'options': false,
-                    'value': value
-                });
+                                         'label': html,
+                                         'type': 'checkbox',
+                                         'options': false,
+                                         'value': value
+                                     });
             } else if (type === 'one') {
                 generatedInputs.push({
-                    'label': html,
-                    'type': 'radio',
-                    'options': ['group1', isFirst],
-                    'value': value
-                });
+                                         'label': html,
+                                         'type': 'radio',
+                                         'options': ['group1', isFirst],
+                                         'value': value
+                                     });
                 isFirst = false;
             } else if (type === 'number') {
                 generatedInputs.push({
-                    'label': html,
-                    'type': 'number'
-                });
+                                         'label': html,
+                                         'type': 'number'
+                                     });
             } else if (type === 'select') {
                 generatedInputs.push({
-                    'label': html,
-                    'type': 'select',
-                    'options': selectOptions,
-                    'value': value
-                });
+                                         'label': html,
+                                         'type': 'select',
+                                         'options': selectOptions,
+                                         'value': value
+                                     });
             } else return {'buttons': false};
         }
         if (fixTargets) {
             generatedInputs.push({
-                'label': 'Skip Dead & Unconscious?',
-                'type': 'checkbox',
-                'options': true,
-                'value': true
-            });
+                                     'label': 'Skip Dead & Unconscious?',
+                                     'type': 'checkbox',
+                                     'options': true,
+                                     'value': true
+                                 });
         }
         if (description) generatedInputs.unshift({
-            'label': description,
-            'type': 'info'
-        });
+                                                     'label': description,
+                                                     'type': 'info'
+                                                 });
         function dialogRender(html) {
             let trs = html[0].getElementsByTagName('tr');
             if (type != 'select') {
@@ -560,6 +560,9 @@ export let chris = {
         let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
         return cartoon;
     },
+    'v5eCheck': function _v5eCheck() {
+        return game.modules.get('vision-5e')?.active;
+    },
     'selectDocument': async function selectDocument(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
             let buttons = {},
@@ -590,8 +593,8 @@ export let chris = {
             );
             await dialog._render(true);
             dialog.element.find(".dialog-buttons").css({
-                "flex-direction": 'column',
-            })
+                                                           "flex-direction": 'column',
+                                                       })
         });
     },
     'selectDocuments': async function selectDocuments(title, documents, useUuids) {
@@ -605,12 +608,12 @@ export let chris = {
             }
             content += `</datalist>`;
             for (let i = 0; documents.length > i; i++) {
-                content += 
+                content +=
                     `<div class = 'form-group'>
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
                         <label> 
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
-                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
                     </div>
                 `;
@@ -875,16 +878,16 @@ export let chris = {
             await lastMessage.update({'content': message});
         } else {
             ChatMessage.create({
-                'speaker': {'alias': name},
-                'content': message,
-                'whisper': game.users.filter(u => u.isGM).map(u => u.id),
-                'blind': false,
-                'flags': {
-                    'chris-premades': {
-                        'thirdPartyReactionMessage': true
-                    }
-                }
-            });
+                                   'speaker': {'alias': name},
+                                   'content': message,
+                                   'whisper': game.users.filter(u => u.isGM).map(u => u.id),
+                                   'blind': false,
+                                   'flags': {
+                                       'chris-premades': {
+                                           'thirdPartyReactionMessage': true
+                                       }
+                                   }
+                               });
         }
     },
     'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
@@ -932,16 +935,16 @@ export let chris = {
             await lastMessage.update({'content': message});
         } else {
             ChatMessage.create({
-                'speaker': {'alias': name},
-                'content': message,
-                'whisper': game.users.filter(u => u.isGM).map(u => u.id),
-                'blind': false,
-                'flags': {
-                    'chris-premades': {
-                        'gmDialogMessage': true
-                    }
-                }
-            });
+                                   'speaker': {'alias': name},
+                                   'content': message,
+                                   'whisper': game.users.filter(u => u.isGM).map(u => u.id),
+                                   'blind': false,
+                                   'flags': {
+                                       'chris-premades': {
+                                           'gmDialogMessage': true
+                                       }
+                                   }
+                               });
         }
     },
     'clearGMDialogMessage': async function _clearThirdPartyReactionMessage() {
@@ -1000,9 +1003,9 @@ export let chris = {
         if (!tokens.length) {
             if (actor.prototypeToken.actorLink) {
                 let doc = await actor.getTokenDocument({
-                    'x': 0,
-                    'y': 0
-                });
+                                                           'x': 0,
+                                                           'y': 0
+                                                       });
                 let tokenData = doc.toObject();
                 [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
                 remove = true;
@@ -1024,9 +1027,9 @@ export let chris = {
         if (!tokens.length) {
             if (actor.prototypeToken.actorLink) {
                 let doc = await actor.getTokenDocument({
-                    'x': 0,
-                    'y': 0
-                });
+                                                           'x': 0,
+                                                           'y': 0
+                                                       });
                 let tokenData = doc.toObject();
                 [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
                 remove = true;

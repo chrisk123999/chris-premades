@@ -144,21 +144,21 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'vignettingAlpha': 0.6,
                 'vignettingBlur': 0.2,
                 'animated':
-                {
-                    'seed': { 
-                        'active': true, 
-                        'animType': 'randomNumber', 
-                        'val1': 0, 
-                        'val2': 1 
-                    },
-                    'vignetting': { 
-                        'active': true, 
-                        'animType': 'syncCosOscillation' , 
-                        'loopDuration': 2000, 
-                        'val1': 0.2, 
-                        'val2': 0.4
+                    {
+                        'seed': {
+                            'active': true,
+                            'animType': 'randomNumber',
+                            'val1': 0,
+                            'val2': 1
+                        },
+                        'vignetting': {
+                            'active': true,
+                            'animType': 'syncCosOscillation' ,
+                            'loopDuration': 2000,
+                            'val1': 0.2,
+                            'val2': 0.4
+                        }
                     }
-                }
             },
             {
                 'filterType': 'outline',
@@ -166,7 +166,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'color': 0x000000,
                 'thickness': 0,
                 'zOrder': 61
-            ,
+                ,
             },
             {
                 'filterType': 'fog',
@@ -177,10 +177,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'dimX': 1,
                 'dimY': 1,
                 'animated': {
-                    'time': { 
-                        'active': true, 
-                        'speed': 2.2, 
-                        'animType': 'move' 
+                    'time': {
+                        'active': true,
+                        'speed': 2.2,
+                        'animType': 'move'
                     }
                 }
             }
@@ -365,15 +365,66 @@ async function attack({speaker, actor, token, character, item, args, scope, work
             }
         }
     };
+    let sensesData = {
+        'icon': 'icons/svg/eye.svg',
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'name': 'Manifest Echo - Senses Override',
+        'changes': [
+            {
+                'key': 'system.attributes.senses.blindsight',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.blindsight,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.darkvision',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.darkvision,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.special',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.special,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.tremorsense',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.tremorsense,
+                'priority': 20
+            },
+            {
+                'key': 'system.attributes.senses.units',
+                'mode': 5,
+                'value': workflow.actor.system.attributes.units,
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
+    };
+    let v5e = chris.v5eCheck();
     let effect = await chris.createEffect(workflow.actor, effectData);
     let effect2 = await chris.createEffect(targetToken.actor, effectData);
+    let effect3;
+    if (v5e) effect3 = await chris.createEffect(targetToken.actor, sensesData);
     let options = {
         'targetUuids': [workflow.targets.first().document.uuid]
-    }
+    };
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, {}, options);
     await chris.removeEffect(effect);
     await chris.removeEffect(effect2);
+    if (v5e) await chris.removeEffect(effect3);
 }
 async function turnEnd(token) {
     let sceneEchos = canvas.scene.tokens.filter(i => i.actor?.flags?.['chris-premades']?.feature?.manifestEcho?.ownerUuid === token.actor.uuid);
