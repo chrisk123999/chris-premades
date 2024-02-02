@@ -1,7 +1,7 @@
 # 0.9.51 Release:
 ## Bug Fixes:
 - Additional Item Compendiums
-- GPR Support
+- GPS Support
 ## Update Notes:
 - Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
