@@ -10,7 +10,7 @@ export function createHeaderButton(config, buttons) {
         });
     }
 }
-export function updateItemButton(app, [elem], options) {
+export async function updateItemButton(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades');
     if (!headerButton) return;
     let item = app.object;
@@ -36,8 +36,8 @@ export function updateItemButton(app, [elem], options) {
             return true;
         }
     }
-    function gps(item) {
-        let automation = CONFIG['gambits-premades']?.automations[item.name];
+    async function gps(item) {
+        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
         if (!automation) return;
         let itemVersion = item.flags['chris-premades']?.info?.gambit?.version;
         if (!itemVersion) {
@@ -51,7 +51,7 @@ export function updateItemButton(app, [elem], options) {
         headerButton.style.color = 'orchid';
     }
     function misc(item) {
-        let automation = CONFIG['midi-item-showcase-community']?.automations[item.name];
+        let automation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
         if (!automation) return;
         let itemVersion = item.flags['chris-premades']?.info?.misc?.version;
         if (!itemVersion) {
@@ -70,19 +70,19 @@ export function updateItemButton(app, [elem], options) {
                 cpr(item);
                 return;
             case 'GPS':
-                gps(item);
+                await gps(item);
                 return;
             case 'MISC':
                 misc(item);
                 return;
             default:
-                headerButton.style.color = 'yellow';
+                headerButton.style.color = 'pink';
                 return;
         }
     } else {
         let found = cpr(item);
         if (found) return;
-        let automation = CONFIG['gambits-premades']?.automations[item.name] ?? CONFIG['midi-item-showcase-community']?.automations[item.name];
+        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name] ?? CONFIG['midi-item-showcase-community']?.automations?.[item.name];
         if (automation) headerButton.style.color = 'yellow';
     }
 }
