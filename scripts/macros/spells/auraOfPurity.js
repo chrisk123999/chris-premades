@@ -79,7 +79,7 @@ async function move(token, selectedAura) {
                 }
             }
         }
-    }
+    };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) await chris.removeEffect(effect);
@@ -95,7 +95,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'effectName': 'Aura of Purity',
             'macroName': 'auraOfPurity'
         }
-    }
+    };
     effectAuras.add(flagAuras, workflow.token.document.uuid, true);
 }
 async function end(token) {

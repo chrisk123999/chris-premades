@@ -156,6 +156,9 @@ export function setConfig() {
                 'Manifest Echo - Attack',
                 'Manifest Echo - Teleport',
                 'Manifest Echo - Opportunity Attack'
+            ],
+            'Dread Lord': [
+                'Dread Lord Shadow Attack'
             ]
         },
         'restrictedItems': {
@@ -2611,6 +2614,40 @@ export function setConfig() {
                 'checkbox': {
                     'filter': {
                         'label': 'Apply Token Magic Filter?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Control Undead': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Dread Lord': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
                         'default': true
                     }
                 }
@@ -5968,6 +6005,24 @@ export function setConfig() {
             'Javelin of Lightning': {
                 'name': 'Javelin of Lightning',
                 'version': '0.9.46'
+            },
+            'Channel Divinity: Control Undead': {
+                'name': 'Channel Divinity: Control Undead',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'name': 'Channel Divinity: Dreadful Aspect',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Dread Lord': {
+                'name': 'Dread Lord',
+                'version': '0.9.52',
+                'settings': [
+                    'Effect Auras'
+                ],
+                'hasAnimation': true
             }
         }
     });

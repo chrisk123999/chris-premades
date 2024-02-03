@@ -74,7 +74,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'attributes': {
                     'ac': {
                         'flat': 14 + workflow.actor.system.attributes.prof
-                    }
+                    },
+                    'senses': workflow.actor.system.senses
                 }
             },
             'prototypeToken': {

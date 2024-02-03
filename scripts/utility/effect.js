@@ -10,10 +10,16 @@ export function itemDC(effect, updates, options, user) {
     let changed = false;
     for (let i of updates.changes) {
         if (typeof i.value !== 'string') continue;
-        if (!i.value.includes('$chris.itemDC')) continue;
-        let itemDC = chris.getSpellDC(origin);
-        i.value = i.value.replace('$chris.itemDC', itemDC);
-        changed = true;
+        if (i.value.includes('$chris.itemDC')) {
+            let itemDC = chris.getSpellDC(origin);
+            i.value = i.value.replace('$chris.itemDC', itemDC);
+            changed = true;
+        }
+        if (i.value.includes('$chris.itemMod')) {
+            let itemMod = chris.getSpellMod(origin);
+            i.value = i.value.replace('$chris.itemMod', itemMod);
+            changed = true;
+        }
     }
     if (!changed) return;
     effect.updateSource({'changes': updates.changes});

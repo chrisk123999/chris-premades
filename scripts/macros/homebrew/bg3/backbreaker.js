@@ -2,7 +2,7 @@ import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 export async function backbreaker({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size != 1 || workflow.item.system.actionType != 'mwak') return;
+    if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak') return;
     let validTypes = [
         'maul',
         'warhammer'

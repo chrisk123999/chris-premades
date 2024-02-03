@@ -1,9 +1,22 @@
+# 0.9.52 Release:
+## New Content:
+- Oathbreaker Paladin: Channel Divinity: Control Undead, Channel Divinity: Dreadful Aspect, and Dread Lord
+## Bug Fixes:
+- Backbreaker
+- Eldritch Smite
+- Divine Smite
+- Manifest Echo
+## New Enhanced Animations:
+- Paladin: Channel Divinity: Control Undead (Thanks Eskiemoh)
+- Channel Divinity: Dreadful Aspect (Thanks Eskiemoh)
+- Dread Lord (Thanks Eskiemoh)
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.51 Release:
 ## Bug Fixes:
 - Additional Item Compendiums
 - GPS Support
-## Update Notes:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.50 Release:
 ## Bug Fixes:

@@ -522,7 +522,12 @@ export let chris = {
         return await warpgate.crosshairs.show(options, callbacks);
     },
     'getConfiguration': function _getConfiguration(item, key) {
-        return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
+        let keyName = key.toLowerCase().split(' ').join('-').toLowerCase();
+        let keyItem = item.flags['chris-premades']?.configuration?.[keyName];
+        if (keyItem != undefined) return keyItem === '' ? false : keyItem;
+        let itemName = item.flags['chris-premades']?.info?.name ?? item.name;
+        let keyDefault = CONFIG.chrisPremades.itemConfiguration?.[itemName]?.text?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.select?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.checkbox?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.number?.[keyName]?.default;
+        return keyDefault === '' ? false : keyDefault;
     },
     'setConfiguration': async function _setConfiguration(item, key, value) {
         return await item.setFlag('chris-premades', 'configuration.' + key.toLowerCase().split(' ').join('-').toLowerCase(), value);

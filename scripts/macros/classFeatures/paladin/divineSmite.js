@@ -9,6 +9,10 @@ export async function divineSmite({speaker, actor, token, character, item, args,
         validTypes.push('simpleR');
     }
     if (!validTypes.includes(workflow.item.system.weaponType)) return;
+    let feature = chris.getItem(workflow.actor, 'Divine Smite');
+    if (!feature) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
+    if (!queueSetup) return;
     let spells = workflow.actor.system.spells;
     let pactSlots = spells.pact.value;
     let pactLevel = spells.pact.level;
@@ -21,9 +25,10 @@ export async function divineSmite({speaker, actor, token, character, item, args,
     let spell7 = spells.spell7.value;
     let spell8 = spells.spell8.value;
     let spell9 = spells.spell9.value;
-    if (pactSlots + spell1 + spell2 + spell3 + spell4 + spell5 + spell6 + spell7 + spell8 + spell9 === 0) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);
-    if (!queueSetup) return;
+    if (pactSlots + spell1 + spell2 + spell3 + spell4 + spell5 + spell6 + spell7 + spell8 + spell9 === 0) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let menuOptions = [];
     if (pactSlots > 0) menuOptions.push(['Pact (' + pactLevel + ')', 'p']);
     if (spell1 > 0) menuOptions.push(['1st Level', 1]);
@@ -36,8 +41,7 @@ export async function divineSmite({speaker, actor, token, character, item, args,
     if (spell8 > 0) menuOptions.push(['8th Level', 8]);
     if (spell9 > 0) menuOptions.push(['9th Level', 9]);
     menuOptions.push(['No', false]);
-    let title = 'Use Divine Smite?';
-    let selectedOption = await chris.dialog(title, menuOptions);
+    let selectedOption = await chris.dialog(feature.name, menuOptions, 'Use ' + feature.name + '?');
     if (!selectedOption) {
         queue.remove(workflow.item.uuid);
         return;
@@ -96,12 +100,6 @@ export async function divineSmite({speaker, actor, token, character, item, args,
     let damageFormula = workflow.damageRoll._formula + ' + ' + damageDice;
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
-    let effect = chris.findEffect(workflow.actor, 'Divine Smite');
-    if (!effect) {
-        queue.remove(workflow.item.uuid);
-        return;
-    }
-    let originItem = await fromUuid(effect.origin);
-    await originItem.use();
+    await feature.displayCard();
     queue.remove(workflow.item.uuid);
 }

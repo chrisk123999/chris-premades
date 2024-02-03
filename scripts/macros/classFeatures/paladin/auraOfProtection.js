@@ -30,7 +30,7 @@ export async function auraOfProtection(token, selectedAura) {
                 }
             }
         }
-    }
+    };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);

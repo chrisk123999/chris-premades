@@ -355,6 +355,10 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {controlUndead} from './macros/classFeatures/paladin/oathbreaker/controlUndead.js';
+import {dreadfulAspect} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
+import {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
+import {dreadLord} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -491,6 +495,20 @@ async function onMoveEffect(macroName, token, selectedAura) {
         case 'protectiveLights':
             await wildSurge.protectiveLights.aura(token, selectedAura);
             break;
+        case 'auraOfHate':
+            await auraOfHate.aura(token, selectedAura);
+            break;
+        case 'dreadLord':
+            await dreadLord.aura(token, selectedAura);
+            break;
+    }
+}
+async function onMoveSpecial(name, sourceToken, targetToken) {
+    switch(name) {
+        case 'auraOfHate':
+            return await auraOfHate.special(sourceToken, targetToken);
+        default:
+            return false;
     }
 }
 async function templateTrigger(macroName, token, trigger, reason) {
@@ -825,5 +843,10 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'controlUndead': controlUndead,
+    'dreadfulAspect': dreadfulAspect,
+    'auraOfHate': auraOfHate,
+    'onMoveSpecial': onMoveSpecial,
+    'dreadLord': dreadLord
 }

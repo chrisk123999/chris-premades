@@ -35,6 +35,8 @@ function add(flagAuras, tokenUuid, doRefresh) {
         let worldMacro = aura.worldMacro;
         let globalFunction = aura.globalFunction;
         let macroName = aura.macroName;
+        let special = aura.special;
+        let self = aura.self;
         if (!tokenUuid || !name || !range || !effectName || (!macroName && !worldMacro && !globalFunction)) {
             ui.notifications.warn('Invalid aura data found!');
             console.log(aura);
@@ -52,7 +54,9 @@ function add(flagAuras, tokenUuid, doRefresh) {
             'worldMacro': worldMacro,
             'globalFunction': globalFunction,
             'macroName': macroName,
-            'effectName': effectName
+            'effectName': effectName,
+            'special': special,
+            'self': self
         });
     }
     if (doRefresh) refreshEffects();
@@ -127,6 +131,7 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                 }
             }
             if (distance > testDistance) continue;
+            if (aura.self != undefined && !aura.self && aura.tokenUuid === token.uuid) continue;
             if (aura.conscious) {
                 let sourceHP = sourceToken.actor.system.attributes.hp.value;
                 if (sourceHP === 0) continue;
@@ -155,6 +160,10 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                     aura.castLevel = chris.getEffectCastLevel(auraEffect);
                     if (!aura.castLevel) continue;
                     break;
+            }
+            if (aura.special) {
+                let check = await macros.onMoveSpecial(aura.special, sourceToken, token);
+                if (!check) continue;
             }
             validSources.push(aura);
         }
