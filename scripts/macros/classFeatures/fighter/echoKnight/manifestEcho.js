@@ -74,7 +74,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'attributes': {
                     'ac': {
                         'flat': 14 + workflow.actor.system.attributes.prof
-                    }
+                    },
+                    'senses': workflow.actor.system.senses
                 }
             },
             'prototypeToken': {
@@ -116,7 +117,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let animationName = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animationName = 'none';
     let spawnedTokens = await chris.spawn(sourceActor, updates, {}, workflow.token, 15, animationName);
-    if (!spawnedTokens.length) return;
+    if (!spawnedTokens) return;
     let spawnedToken = canvas.tokens.get(spawnedTokens[0]);
     if (animationName != 'none') {
         new Sequence()
@@ -348,7 +349,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         'duration': {
             'seconds': 1
         },
-        'name': 'Manifeste Echo - Range Override',
+        'name': 'Manifest Echo - Range Override',
         'changes': [
             {
                 'key': 'flags.midi-qol.rangeOverride.attack.all',
@@ -356,7 +357,14 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 'value': '1',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
     };
     let effect = await chris.createEffect(workflow.actor, effectData);
     let effect2 = await chris.createEffect(targetToken.actor, effectData);

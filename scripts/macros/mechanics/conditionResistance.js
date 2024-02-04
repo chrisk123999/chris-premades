@@ -12,7 +12,14 @@ let effectData = {
             'mode': 5,
             'priority': 120
         }
-    ]
+    ],
+    'flags': {
+        'chris-premades': {
+            'effect': {
+                'noAnimation': true
+            }
+        }
+    }
 };
 let cleanUpList =[];
 export async function conditionResistanceEarly(workflow) {

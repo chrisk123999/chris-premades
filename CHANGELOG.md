@@ -1,3 +1,59 @@
+# 0.9.52 Release:
+## New Content:
+- Oathbreaker Paladin: Channel Divinity: Control Undead, Channel Divinity: Dreadful Aspect, and Dread Lord
+## Bug Fixes:
+- Backbreaker
+- Eldritch Smite
+- Divine Smite
+- Manifest Echo
+## New Enhanced Animations:
+- Paladin: Channel Divinity: Control Undead (Thanks Eskiemoh)
+- Channel Divinity: Dreadful Aspect (Thanks Eskiemoh)
+- Dread Lord (Thanks Eskiemoh)
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
+# 0.9.51 Release:
+## Bug Fixes:
+- Additional Item Compendiums
+- GPS Support
+  
+# 0.9.50 Release:
+## Bug Fixes:
+- Crusher
+  
+# 0.9.49 Release:
+## Bug Fixes:
+- Blessed Strikes
+## Update Notes:
+- Added the medkit to the effect editor on items. You can disable the scrolling text animation and set a VAE button with this dialog.
+  
+# 0.9.48 Release:
+## Bug Fixes:
+- Wild Surge
+- Aura of Life
+- Effect Auras
+## Update Notes:
+- Initial Medkit support for Gambit's Premades and Midi Item Showcase - Community
+  
+# 0.9.47 Release:
+## Bug Fixes:
+- Manifest Echo
+- Elemental Cleaver
+- Warding Bond
+  
+# 0.9.46 Release:
+## Bug Fixes:
+- Javelin Of Lightning
+
+# 0.9.45 Release:
+## New Content:
+- Items: Bad News, Blunderbuss, Musket, Palm Pistol, Pepperbox, Pistol, and Javelin Of Lightning
+  
+# 0.9.44 Release:
+## Bug Fixes:
+- Effect Origin Fixer
+  
 # 0.9.43 Release:
 ## Bug Fixes:
 - Elemental Gift - Flight

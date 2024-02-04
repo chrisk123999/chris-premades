@@ -156,6 +156,9 @@ export function setConfig() {
                 'Manifest Echo - Attack',
                 'Manifest Echo - Teleport',
                 'Manifest Echo - Opportunity Attack'
+            ],
+            'Dread Lord': [
+                'Dread Lord Shadow Attack'
             ]
         },
         'restrictedItems': {
@@ -2345,6 +2348,120 @@ export function setConfig() {
                     }
                 }
             },
+            'Palm Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Bad News (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 3
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Blunderbuss (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Musket (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pepperbox (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
             'Booming Blade': {
                 'select': {
                     'animation': {
@@ -2497,6 +2614,40 @@ export function setConfig() {
                 'checkbox': {
                     'filter': {
                         'label': 'Apply Token Magic Filter?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Control Undead': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Dread Lord': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
                         'default': true
                     }
                 }
@@ -5826,6 +5977,52 @@ export function setConfig() {
             'Unleash Incarnation': {
                 'name': 'Unleash Incarnation',
                 'version': '0.9.40'
+            },
+            'Palm Pistol (Exandria)': {
+                'name': 'Palm Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Bad News (Exandria)': {
+                'name': 'Bad News (Exandria)',
+                'version': '0.9.45'
+            },
+            'Blunderbuss (Exandria)': {
+                'name': 'Blunderbuss (Exandria)',
+                'version': '0.9.45'
+            },
+            'Musket (Exandria)': {
+                'name': 'Musket (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pepperbox (Exandria)': {
+                'name': 'Pepperbox (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pistol (Exandria)': {
+                'name': 'Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Javelin of Lightning': {
+                'name': 'Javelin of Lightning',
+                'version': '0.9.46'
+            },
+            'Channel Divinity: Control Undead': {
+                'name': 'Channel Divinity: Control Undead',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'name': 'Channel Divinity: Dreadful Aspect',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Dread Lord': {
+                'name': 'Dread Lord',
+                'version': '0.9.52',
+                'settings': [
+                    'Effect Auras'
+                ],
+                'hasAnimation': true
             }
         }
     });

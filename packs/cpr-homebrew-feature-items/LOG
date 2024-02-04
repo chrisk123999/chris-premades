@@ -1,3 +1,5 @@
-2024/01/27-01:41:26.420 6bcc Recovering log #544
-2024/01/27-01:41:26.439 6bcc Delete type=0 #544
-2024/01/27-01:41:26.439 6bcc Delete type=3 #543
+2024/02/03-12:09:49.989 4ea8 Recovering log #625
+2024/02/03-12:09:49.989 4ea8 Level-0 table #627: started
+2024/02/03-12:09:49.995 4ea8 Level-0 table #627: 13170 bytes OK
+2024/02/03-12:09:50.009 4ea8 Delete type=0 #625
+2024/02/03-12:09:50.009 4ea8 Delete type=3 #624

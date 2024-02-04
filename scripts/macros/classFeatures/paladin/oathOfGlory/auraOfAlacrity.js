@@ -27,7 +27,10 @@ export async function auraOfAlacrity(token, origin) {
         ],
         'flags': {
             'chris-premades': {
-                'aura': true
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
     }

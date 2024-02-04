@@ -1,3 +1,5 @@
-2024/01/27-01:41:26.141 6bcc Recovering log #559
-2024/01/27-01:41:26.161 6bcc Delete type=0 #559
-2024/01/27-01:41:26.161 6bcc Delete type=3 #558
+2024/02/03-12:09:49.707 3cb8 Recovering log #642
+2024/02/03-12:09:49.708 3cb8 Level-0 table #644: started
+2024/02/03-12:09:49.716 3cb8 Level-0 table #644: 70585 bytes OK
+2024/02/03-12:09:49.728 3cb8 Delete type=0 #642
+2024/02/03-12:09:49.728 3cb8 Delete type=3 #641

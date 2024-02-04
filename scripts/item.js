@@ -10,26 +10,80 @@ export function createHeaderButton(config, buttons) {
         });
     }
 }
-export function updateItemButton(app, [elem], options) {
+export async function updateItemButton(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades');
     if (!headerButton) return;
-    let itemName = app.object?.name;
-    if (!itemName) return;
-    let automation = CONFIG.chrisPremades.automations[app.object.flags['chris-premades']?.info?.name ?? itemName];
-    if (!automation) return;
-    let itemVersion = app.object.flags['chris-premades']?.info?.version;
-    if (!itemVersion) {
-        headerButton.style.color = 'yellow';
-        return;
+    let item = app.object;
+    if (!item) return;
+    let source = item.flags['chris-premades']?.info?.source;
+    function cpr(item) {
+        let automation = CONFIG.chrisPremades.automations[item.flags['chris-premades']?.info?.name ?? getItemName(item.name)];
+        if (!automation) return false;
+        let itemVersion = item.flags['chris-premades']?.info?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return true;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'red';
+            return true;
+        }
+        if (CONFIG.chrisPremades.itemConfiguration[automation.name]) {
+            headerButton.style.color = 'dodgerblue';
+            return true;
+        } else {
+            headerButton.style.color = 'green';
+            return true;
+        }
     }
-    if (automation.version != itemVersion) {
-        headerButton.style.color = 'red';
-        return;
+    async function gps(item) {
+        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
+        if (!automation) return;
+        let itemVersion = item.flags['chris-premades']?.info?.gambit?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'orange';
+            return;
+        }
+        headerButton.style.color = 'orchid';
     }
-    if (CONFIG.chrisPremades.itemConfiguration[automation.name]) {
-        headerButton.style.color = 'dodgerblue';
+    function misc(item) {
+        let automation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
+        if (!automation) return;
+        let itemVersion = item.flags['chris-premades']?.info?.misc?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'orange';
+            return;
+        }
+        headerButton.style.color = 'orchid';
+    }
+    if (source) {
+        switch(source) {
+            case 'CPR':
+                cpr(item);
+                return;
+            case 'GPS':
+                await gps(item);
+                return;
+            case 'MISC':
+                misc(item);
+                return;
+            default:
+                headerButton.style.color = 'pink';
+                return;
+        }
     } else {
-        headerButton.style.color = 'green';
+        let found = cpr(item);
+        if (found) return;
+        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name] ?? CONFIG['midi-item-showcase-community']?.automations?.[item.name];
+        if (automation) headerButton.style.color = 'yellow';
     }
 }
 export function createActorHeaderButton(config, buttons) {
@@ -55,7 +109,7 @@ async function actorConfig(actor) {
             list += '- ' + i + '<br>'
         }
         ChatMessage.create({
-            'speaker': {alias: name},
+            'speaker': {'alias': 'Chris\'s Premades'},
             'whisper': [game.user.id],
             'content': '<hr><b>Updated Items:</b><br><hr>' + list
         });
@@ -117,7 +171,10 @@ async function updateItem(itemDocument) {
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
     let foundCompendiumName;
+    let gambitItems = game.modules.get('gambits-premades')?.active ? game.settings.get('chris-premades', 'GPS Support') : false;
+    let miscItems = game.modules.get('midi-item-showcase-community')?.active ? game.settings.get('chris-premades', 'MISC Support') : false;
     itemName = getItemName(itemName);
+    let sourceModule;
     if (!isNPC || itemType === 'spell') {
         switch (itemType) {
             case 'weapon':
@@ -127,15 +184,36 @@ async function updateItem(itemDocument) {
             case 'backpack':
             case 'loot':
                 searchCompendiums.push('chris-premades.CPR Items');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-items');
+                if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-items');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-items');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
                 break;
             case 'spell':
                 searchCompendiums.push('chris-premades.CPR Spells');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-spells');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-spells');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
                 break;
             case 'feat':
                 searchCompendiums.push('chris-premades.CPR Race Features');
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 searchCompendiums.push('chris-premades.CPR Feats');
                 searchCompendiums.push('chris-premades.CPR Actions');
+                if (gambitItems) {
+                    searchCompendiums.push('gambits-premades.gps-class-features');
+                    searchCompendiums.push('gambits-premades.gps-generic-features');
+                    if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-features');
+                }
+                if (miscItems) {
+                    searchCompendiums.push('midi-item-showcase-community.misc-class-features');
+                    searchCompendiums.push('midi-item-showcase-community.misc-feats');
+                    searchCompendiums.push('midi-item-showcase-community.misc-race-features');
+                    if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                    if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
+                }
                 break;
         }
         for (let i of additionalCompendiums) searchCompendiums.push(i);
@@ -147,12 +225,28 @@ async function updateItem(itemDocument) {
             'chris-premades.CPR Feats',
             'chris-premades.CPR Actions'
         ];
-        searchCompendiums.sort((a, b) => (packs.includes(a) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[a] ?? 10) - (packs.includes(b) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[b] ?? additionalCompendiumPriority[b] ?? 10));
-        for (let compendium of searchCompendiums) {
-            if (!game.packs.get(compendium)) continue;
-            compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
+        let gambitPacks = [];
+        if (gambitItems && game.modules.get('gambits-premades')?.active) gambitPacks = Array.from(game.modules.get('gambits-premades').packs).map(i => i.id)
+        let miscPacks = [];
+        if (miscItems && game.modules.get('midi-item-showcase-community')?.active) miscPacks = Array.from(game.modules.get('midi-item-showcase-community').packs).map(i => i.id);
+        searchCompendiums.sort((a, b) => {
+            let numA = additionalCompendiumPriority[a] ?? 10;
+            let numB = additionalCompendiumPriority[b] ?? 10;
+            if (packs.includes(a)) numA = additionalCompendiumPriority['CPR'];
+            if (packs.includes(b)) numB = additionalCompendiumPriority['CPR'];
+            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
+            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
+            if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
+            if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
+            return numA - numB;
+        });
+        for (let compendiumId of searchCompendiums) {
+            let compendium = game.packs.get(compendiumId);
+            if (!compendium) continue;
+            compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
             if (compendiumItem) {
-                foundCompendiumName = game.packs.get(compendium).metadata.label;
+                foundCompendiumName = compendium.metadata.label;
+                sourceModule = compendium.metadata.packageType === 'module' ? compendium.metadata.packageName : 'world';
                 break;
             }
         }
@@ -178,7 +272,7 @@ async function updateItem(itemDocument) {
     let selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
     if (!selection) return;
     ChatMessage.create({
-        'speaker': {'alias': name},
+        'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
@@ -209,6 +303,22 @@ async function updateItem(itemDocument) {
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
+    switch (sourceModule) {
+        case 'midi-item-showcase-community':
+            setProperty(originalItem, 'flags.chris-premades.info.misc', CONFIG['midi-item-showcase-community']?.automations?.[itemName]);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
+            break;
+        case 'gambits-premades':
+            setProperty(originalItem, 'flags.chris-premades.info.gambit', CONFIG['gambits-premades']?.automations?.[itemName]);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
+            break;
+        case 'chris-premades':
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
+            break;
+        default:
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
+            break;
+    }
     if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();

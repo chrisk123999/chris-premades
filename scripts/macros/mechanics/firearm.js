@@ -67,8 +67,8 @@ async function misfire(workflow) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'misfire', 50);
     if (!queueSetup) return;
     await ChatMessage.create({
-        speaker: {'alias': name},
-        content: workflow.item.name + ' has misfired!'
+        'speaker': {'alias': name},
+        'content': workflow.item.name + ' has misfired!'
     });
     if (workflow.item.id) {
         let updates = {

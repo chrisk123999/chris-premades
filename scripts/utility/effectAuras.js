@@ -1,6 +1,7 @@
 import {chris} from '../helperFunctions.js';
 import {macros} from '../macros.js';
 import {socket} from '../module.js';
+import {translate} from '../translations.js';
 let auras = {};
 export let effectAuras = {
     'add': add,
@@ -34,6 +35,8 @@ function add(flagAuras, tokenUuid, doRefresh) {
         let worldMacro = aura.worldMacro;
         let globalFunction = aura.globalFunction;
         let macroName = aura.macroName;
+        let special = aura.special;
+        let self = aura.self;
         if (!tokenUuid || !name || !range || !effectName || (!macroName && !worldMacro && !globalFunction)) {
             ui.notifications.warn('Invalid aura data found!');
             console.log(aura);
@@ -51,7 +54,9 @@ function add(flagAuras, tokenUuid, doRefresh) {
             'worldMacro': worldMacro,
             'globalFunction': globalFunction,
             'macroName': macroName,
-            'effectName': effectName
+            'effectName': effectName,
+            'special': special,
+            'self': self
         });
     }
     if (doRefresh) refreshEffects();
@@ -126,9 +131,11 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                 }
             }
             if (distance > testDistance) continue;
+            if (aura.self != undefined && !aura.self && aura.tokenUuid === token.uuid) continue;
             if (aura.conscious) {
                 let sourceHP = sourceToken.actor.system.attributes.hp.value;
                 if (sourceHP === 0) continue;
+                if (chris.findEffect(sourceToken.actor, translate.conditions('unconscious'))) continue;
             }
             switch (aura.disposition) {
                 case 'ally':
@@ -153,6 +160,10 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                     aura.castLevel = chris.getEffectCastLevel(auraEffect);
                     if (!aura.castLevel) continue;
                     break;
+            }
+            if (aura.special) {
+                let check = await macros.onMoveSpecial(aura.special, sourceToken, token);
+                if (!check) continue;
             }
             validSources.push(aura);
         }
@@ -227,13 +238,19 @@ function deleteToken(token, options, id) {
     }
     // delete effects on actor?
 }
+async function createRemoveEffect(effect, updates, userId) {
+    if (!effect.parent || effect.name != translate.conditions('unconscious')) return;
+    if (!effect.parent.flags['chris-premades']?.aura) return;
+    refreshEffects();
+}
 export let effectAuraHooks = {
     'preActorUpdate': preActorUpdate,
     'actorUpdate': actorUpdate,
     'canvasReady': canvasReady,
     'updateToken': updateToken,
     'createToken': createToken,
-    'deleteToken': deleteToken
+    'deleteToken': deleteToken,
+    'createRemoveEffect': createRemoveEffect
 }
 export let effectSockets = {
     'remoteAdd': remoteAdd,

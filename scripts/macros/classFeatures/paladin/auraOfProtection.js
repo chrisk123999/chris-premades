@@ -24,10 +24,13 @@ export async function auraOfProtection(token, selectedAura) {
         ],
         'flags': {
             'chris-premades': {
-                'aura': true
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
-    }
+    };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);

@@ -4,7 +4,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
-import {fixOrigin, itemDC} from './utility/effect.js';
+import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
 import {rest} from './utility/rest.js';
@@ -164,6 +164,8 @@ export function registerSettings() {
                 Hooks.on('updateToken', effectAuraHooks.updateToken);
                 Hooks.on('createToken', effectAuraHooks.createToken);
                 Hooks.on('deleteToken', effectAuraHooks.deleteToken);
+                Hooks.on('createActiveEffect', effectAuraHooks.createRemoveEffect);
+                Hooks.on('deleteActiveEffect', effectAuraHooks.createRemoveEffect);
             } else if (game.user.isGM) {
                 Hooks.off('preUpdateActor', effectAuraHooks.preActorUpdate);
                 Hooks.off('updateActor', effectAuraHooks.actorUpdate);
@@ -171,6 +173,8 @@ export function registerSettings() {
                 Hooks.off('updateToken', effectAuraHooks.updateToken);
                 Hooks.off('createToken', effectAuraHooks.createToken);
                 Hooks.off('deleteToken', effectAuraHooks.deleteToken);
+                Hooks.off('createActiveEffect', effectAuraHooks.createRemoveEffect);
+                Hooks.off('deleteActiveEffect', effectAuraHooks.createRemoveEffect);
             }
         }
     });
@@ -185,8 +189,14 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 Hooks.on('preCreateActiveEffect', itemDC);
+                Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
+                Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
             } else {
                 Hooks.off('preCreateActiveEffect', itemDC);
+                Hooks.off('preCreateActiveEffect', noEffectAnimationCreate);
+                Hooks.off('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.off('getActiveEffectConfigHeaderButtons', effectTitleBar);
             }
             patchActiveEffectSourceName(value);
         }
@@ -358,13 +368,44 @@ export function registerSettings() {
         'type': Object,
         'default': {
             'CPR': 0,
-            'midi-srd.Midi SRD Feats': 1,
-            'midi-srd.Midi SRD Spells': 2,
-            'midi-srd.Midi SRD Items': 3,
-            'midi-qol.midiqol-sample-items': 4
+            'GPS': 1,
+            'MISC': 2,
+            'midi-srd.Midi SRD Feats': 3,
+            'midi-srd.Midi SRD Spells': 4,
+            'midi-srd.Midi SRD Items': 5
         }
     });
     addMenuSetting('Additional Compendium Priority', 'Compendiums');
+    game.settings.register(moduleName, 'GPS Support', {
+        'name': 'Gambit\'s Premades Support',
+        'hint': 'Include Gambit\'s premades in the medkit.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Yes | Exclude Homebrew',
+            2: 'Yes | Include Everything'
+        }
+    });
+    addMenuSetting('GPS Support', 'Compendiums');
+    game.settings.register(moduleName, 'MISC Support', {
+        'name': 'Midi Item Showcase - Community Support',
+        'hint': 'Include Midi Item Showcase in the medkit.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Yes | Exclude Homebrew',
+            2: 'Yes | Exclude Unearthed Arcana',
+            3: 'Yes | Exclude Homebrew and Unearthed Arcana',
+            4: 'Yes | Include Everything'
+        }
+    });
+    addMenuSetting('MISC Support', 'Compendiums');
     game.settings.register(moduleName, 'Item Compendium', {
         'name': 'Personal Item Compendium',
         'hint': 'A compendium full of items to pick from (DDB items compendium by default).',

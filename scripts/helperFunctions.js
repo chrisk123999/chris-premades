@@ -522,7 +522,12 @@ export let chris = {
         return await warpgate.crosshairs.show(options, callbacks);
     },
     'getConfiguration': function _getConfiguration(item, key) {
-        return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
+        let keyName = key.toLowerCase().split(' ').join('-').toLowerCase();
+        let keyItem = item.flags['chris-premades']?.configuration?.[keyName];
+        if (keyItem != undefined) return keyItem === '' ? false : keyItem;
+        let itemName = item.flags['chris-premades']?.info?.name ?? item.name;
+        let keyDefault = CONFIG.chrisPremades.itemConfiguration?.[itemName]?.text?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.select?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.checkbox?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.number?.[keyName]?.default;
+        return keyDefault === '' ? false : keyDefault;
     },
     'setConfiguration': async function _setConfiguration(item, key, value) {
         return await item.setFlag('chris-premades', 'configuration.' + key.toLowerCase().split(' ').join('-').toLowerCase(), value);
@@ -610,7 +615,7 @@ export let chris = {
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
                         <label> 
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
-                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
                     </div>
                 `;

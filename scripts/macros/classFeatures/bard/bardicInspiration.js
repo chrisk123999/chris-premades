@@ -59,7 +59,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'mode': 5,
                 'value': '2' + scale.die + 'kh',
                 'priority': 20
-            } 
+            } ,
+            {
+                'key': 'flags.midi-qol.optional.bardicInspiration.macroToCall',
+                'mode': 5,
+                'value': 'function.chrisPremades.macros.moteOfPotential',
+                'priority': 20
+            }
         );
         setProperty(effectData, 'flags.chris-premades.feature.moteOfPotential', chris.getSpellDC(workflow.item));
     } else {

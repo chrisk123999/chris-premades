@@ -1,7 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 export async function holdPerson({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size) return;
-    
     let effectData = {
         'name': 'Invalid Target',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
@@ -21,6 +20,11 @@ export async function holdPerson({speaker, actor, token, character, item, args, 
                 'specialDuration': [
                     'isSave'
                 ]
+            },
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
     };

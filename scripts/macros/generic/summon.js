@@ -29,7 +29,8 @@ async function spawn(item, updates, prefill, casterToken) {
                 return;
             }
             let durationSeconds = chris.itemDuration(item).seconds;
-            let animation = chris.getConfiguration(item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'default' : 'none';
+            let animation = chris.getConfiguration(item, 'animation');
+            if (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) animation = 'none';
             await tashaSummon.spawn(selectedActor, updates, durationSeconds, item, item.system.range.value ?? 120, casterToken, animation);
         }
     });

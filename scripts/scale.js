@@ -388,7 +388,7 @@ async function addScale(item) {
     if (!scale) return;
     advancementData.push(scale);
     await item.update({'system.advancement': advancementData});
-    ui.notifications.info(scale.tile + ' scale added!');
+    ui.notifications.info(scale.title + ' scale added!');
 }
 export let scale = {
     'scaleData': scaleData,
