@@ -175,7 +175,7 @@ async function registerTours() {
             {
                 'id': 'chris-premades.tour.8',
                 'title': 'The Medkit',
-                'selector': '[class="header-button control chris-premades item"]',
+                'selector': '[class="header-button control chris-premades-item"]',
                 'content': 'As an alternative to copying items out of the compendiums, you can use the medkit button on the title bar.\nThis button is only available on items that are on actors (Not items in your items directory!).\nThe medkit will automatically search the compendiums and locate an automation for you (if one is available).\nThis search is based on the type of the item and it\'s name.'
             },
             {

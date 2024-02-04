@@ -4,14 +4,15 @@ import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
-            'class': 'chris-premades item',
+            'class': 'chris-premades-item',
             'icon': 'fa-solid fa-kit-medical',
             'onclick': () => itemConfig(config.object)
         });
     }
 }
 export async function updateItemButton(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades');
+    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
+    console.log(headerButton);
     if (!headerButton) return;
     let item = app.object;
     if (!item) return;
@@ -89,7 +90,7 @@ export async function updateItemButton(app, [elem], options) {
 export function createActorHeaderButton(config, buttons) {
     if (config.object instanceof Actor) {
         buttons.unshift({
-            class: 'chris-premades actor',
+            class: 'chris-premades-actor',
             icon: 'fa-solid fa-kit-medical',
             onclick: () => actorConfig(config.object)
         });
