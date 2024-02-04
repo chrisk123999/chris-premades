@@ -1,3 +1,9 @@
+# 0.9.54 Release:
+## Bug Fixes:
+- Guided tour
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.53 Relase:
 ## Bug Fixes:
 - Sanctuary
@@ -5,7 +11,6 @@
 - Equipment Utilities (Thanks p4535992)
 ## Update Notes:
 - Added a guided tour of the module features.
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.52 Release:
 ## New Content:

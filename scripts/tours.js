@@ -169,7 +169,7 @@ async function registerTours() {
             {
                 'id': 'chris-premades.tour.7',
                 'title': 'Settings',
-                'selector': '[data-settings-key="chris-premades.General"]',
+                'selector': '[data-key="chris-premades.General"]',
                 'content': '"On Hit Automation" is located in this category, along with many other useful settings.'
             },
             {
