@@ -1,3 +1,12 @@
+# 0.9.53 Relase:
+## Bug Fixes:
+- Sanctuary
+- Blink
+- Equipment Utilities (Thanks p4535992)
+## Update Notes:
+- Added a guided tour of the module features.
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.52 Release:
 ## New Content:
 - Oathbreaker Paladin: Channel Divinity: Control Undead, Channel Divinity: Dreadful Aspect, and Dread Lord
@@ -10,8 +19,6 @@
 - Paladin: Channel Divinity: Control Undead (Thanks Eskiemoh)
 - Channel Divinity: Dreadful Aspect (Thanks Eskiemoh)
 - Dread Lord (Thanks Eskiemoh)
-## Update Notes:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.51 Release:
 ## Bug Fixes:

@@ -2866,7 +2866,7 @@ export function setConfig() {
             },
             'Sanctuary': {
                 'name': 'Sanctuary',
-                'version': '0.7.45',
+                'version': '0.9.53',
                 'hasAnimation': true,
                 'settings': [
                     'Sanctuary'

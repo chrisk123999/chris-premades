@@ -38,6 +38,7 @@ import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
 import {summonEffects} from './macros/animations/summonEffects.js';
 import {actionsTab} from './integrations/tidy5eSheet.js';
+import {tours} from './tours.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -75,6 +76,7 @@ Hooks.once('ready', async function() {
             oldVersion = 1;
         }
         await setupJournalEntry();
+        await tours.checkTour();
         if (game.settings.get('chris-premades', 'Tasha Actors')) await tashaSummon.setupFolder();
         if (game.modules.get('itemacro')?.active) {
             if (game.settings.get('itemacro', 'charsheet')) ui.notifications.error('Chris\'s Premades & Midi-Qol requires "Character Sheet Hook" in Item Macro\'s module settings to be turned off!');

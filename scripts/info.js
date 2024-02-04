@@ -6,7 +6,6 @@ export async function info({speaker, actor, token, character, item, args, scope,
     if (info.version) {
         let currentVersion = CONFIG.chrisPremades.automations[info.name].version;
         let itemVersion = info.version;
-        console.log(currentVersion, itemVersion);
         if (isNewerVersion(currentVersion, itemVersion)) {
             message += '@UUID[' + item.uuid + ']{' + item.name + '} automation is out of date!<br>Item Version: ' + itemVersion + '<br>Updated Version: ' + currentVersion;
             cancel = true;

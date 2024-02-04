@@ -5,17 +5,13 @@ export async function itemFeatures(item, updates, options, id) {
     if (!chrisFeatures) return;
     let currentlyEquipped = updates.system?.equipped ?? item.system.equipped;
     let currentlyAttuned = updates.system?.attunement ?? item.system.attunement;
-    // Current Chris Premades Equipment from this item
     let currentItems = item.actor.items.filter(i => i.flags?.['chris-premades']?.equipmentFeature?.id === item.id) || [];
     if (!currentlyAttuned && !currentlyEquipped && currentItems.length === 0) return;
     let previouslyEquipped = item.system?.equipped;
     let previouslyAttuned = item.system?.attunement;
     let previousState = previouslyEquipped && (previouslyAttuned === 0 || previouslyAttuned === 2);
     let currentState = currentlyEquipped && (currentlyAttuned === 0 || currentlyAttuned === 2);
-
-    let currentSource = foundry.utils.getProperty(item, "system.source");
     let currentSourceUuid = foundry.utils.getProperty(item, "flags.core.sourceId");
-
     if (previousState === currentState) return;
     if (previousState && !currentState) {
         let removeItems = currentItems;
@@ -25,12 +21,9 @@ export async function itemFeatures(item, updates, options, id) {
         await item.update(updates);
         await item.actor.deleteEmbeddedDocuments('Item', removeItems.map(i => i.id));
     } else if (!previousState && currentState) {
-        let addItemsUniqueNames = currentItems
-            .map(i => {return i.flags?.['chris-premades']?.equipmentFeature?.uniqueName});
+        let addItemsUniqueNames = currentItems.map(i => {return i.flags?.['chris-premades']?.equipmentFeature?.uniqueName});
         let items = [];
         for (let i of chrisFeatures.items) {
-            // Do not add the same feature more than once on the same actor
-            // at least based on the uniqueName property
             if(addItemsUniqueNames.includes(i.uniqueName)) continue;
             let itemData = await chris.getItemFromCompendium(i.key, i.name);
             if (!itemData) continue;
@@ -41,10 +34,10 @@ export async function itemFeatures(item, updates, options, id) {
             setProperty(itemData, 'flags.core.sourceId', item.uuid || currentSourceUuid);
             setProperty(itemData, 'system.source.custom', item.name);
             if (i.uniqueName) setProperty(itemData, 'flags.chris-premades.equipmentFeature.uniqueName', i.uniqueName);
-            else console.warn("chris-premades | You must set a uniqueName for the Chris Premades Equipment", i, item);
+            else console.warn('chris-premades | You must set a uniqueName for the Chris Premades Equipment', i, item);
             items.push(itemData);
         }
-        if (items.length === 0) return;
+        if (!items.length) return;
         await item.actor.createEmbeddedDocuments('Item', items);
     }
 }

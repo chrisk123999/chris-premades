@@ -34,34 +34,32 @@ export async function setupJournalEntry() {
                 'default': 2
             }
         });
-        let message = 'To get started with using Chris\'s premades click here: @UUID[JournalEntry.' + journalEntry.id + ']{Read Me}';
+        let message = '<hr>View Chris\'s premades readme here: @UUID[JournalEntry.' + journalEntry.id + ']{Read Me}';
         ChatMessage.create({
-            speaker: {alias: name},
-            content: message
+            'speaker': {'alias': 'Chris\'s Premades'},
+            'content': message
         });
     } else {
         let page = journalEntry.pages.getName('Info');
         if (page) {
             await page.update({
                 'text.content': welcomeText
-            })
+            });
         }
     }
     async function addPage(journalEntry, pageName, text) {
         await JournalEntryPage.create({
-            name: pageName, 
-            text: {'content': text}, 
-            title: {'show': false, 'level': 1}, 
-            sort: journalEntry.pages.contents.at(-1).sort + CONST.SORT_INTEGER_DENSITY
+            'name': pageName, 
+            'text': {'content': text}, 
+            'title': {'show': false, 'level': 1}, 
+            'sort': journalEntry.pages.contents.at(-1).sort + CONST.SORT_INTEGER_DENSITY
         }, 
         {
             'parent': journalEntry
         });
     }
     async function checkPage(journalEntry, name) {
-        if (!journalEntry.pages.getName(name)) {
-            await addPage(journalEntry, name, '');
-        }
+        if (!journalEntry.pages.getName(name)) await addPage(journalEntry, name, '');
     }
     async function preparePages(journalEntry, packKey) {
         let gamePack = game.packs.get(packKey);

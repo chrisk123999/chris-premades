@@ -49,6 +49,14 @@ export function registerSettings() {
         'type': Number,
         'default': 9
     });
+    game.settings.register(moduleName, 'Tour Message', {
+        'name': 'Tour Message',
+        'hint': 'Check if the GM has seen the tour message.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
     game.settings.register(moduleName, 'Show Names', {
         'name': 'Show Names',
         'hint': 'Enabling this will show target names in the target selector dialog (Used for certain features and spells).',
@@ -1501,8 +1509,8 @@ export function registerSettings() {
         'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
-        'name': 'Troubleshooter',
-        'label': 'Troubleshooter',
+        'name': 'Help',
+        'label': 'Help',
         'hint': 'Used to troubleshoot issues with this module.',
         'icon': 'fas fa-screwdriver-wrench',
         'type': chrisSettingsTroubleshoot,

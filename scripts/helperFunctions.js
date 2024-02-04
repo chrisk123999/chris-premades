@@ -1044,5 +1044,8 @@ export let chris = {
         }
         await warpgate.revert(tokenDoc, mutationName, options);
         return true;
+    },
+    'vision5e': function _vision5e() {
+        return !!game.modules.get('vision-5e')?.active;
     }
 }

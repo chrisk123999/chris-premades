@@ -1,6 +1,7 @@
 import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
 import {additionalCompendiumPriority, additionalCompendiums, selectCompendium} from './compendium.js';
 import {fixSettings, troubleshoot} from './help.js';
+import {tours} from './tours.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
 export function addMenuSetting(key, category) {
@@ -171,7 +172,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
             'popOut': true,
             'template': 'modules/chris-premades/templates/config.html',
             'id': 'chris-troubleshoot-settings',
-            'title': 'Chris\'s Troubleshooter',
+            'title': 'Help',
             'width': 800,
             'height': 'auto',
             'closeOnSubmit': true
@@ -180,6 +181,14 @@ export class chrisSettingsTroubleshoot extends FormApplication {
     getData() {
         return {
             'settings': [
+                {
+                    'name': 'Tour Features',
+                    'id': 'tour',
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'Start a guided tour of Chris\'s Premades.',
+                    'label': 'Go'
+                },
                 {
                     'name': 'Run Troubleshooter:',
                     'id': 'trouble',
@@ -297,6 +306,13 @@ export async function settingButton(id) {
         case 'Monster Compendium':
         case 'Racial Trait Compendium':
             await selectCompendium(id);
+            break;
+        case 'tour':
+            game.settings.sheet.close();
+            let dialogApp = Object.values(ui.windows).find(i => i.id === 'chris-troubleshoot-settings');
+            if (dialogApp) dialogApp.close();
+            await warpgate.wait(100);
+            await tours.guidedTour();
             break;
     }
 }

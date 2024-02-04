@@ -4,7 +4,7 @@ import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
-            'class': 'chris-premades',
+            'class': 'chris-premades item',
             'icon': 'fa-solid fa-kit-medical',
             'onclick': () => itemConfig(config.object)
         });
@@ -89,7 +89,7 @@ export async function updateItemButton(app, [elem], options) {
 export function createActorHeaderButton(config, buttons) {
     if (config.object instanceof Actor) {
         buttons.unshift({
-            class: 'chris-premades',
+            class: 'chris-premades actor',
             icon: 'fa-solid fa-kit-medical',
             onclick: () => actorConfig(config.object)
         });
