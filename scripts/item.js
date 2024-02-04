@@ -12,7 +12,6 @@ export function createHeaderButton(config, buttons) {
 }
 export async function updateItemButton(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
-    console.log(headerButton);
     if (!headerButton) return;
     let item = app.object;
     if (!item) return;
