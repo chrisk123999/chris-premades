@@ -8,14 +8,14 @@ let states = {
     2: async () => {
         let journalEntry = game.journal.getName('CPR - Descriptions');
         if (journalEntry) journalEntry.sheet.render(true);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     3: async () => {
         let journalEntry = game.journal.getName('CPR - Descriptions');
         if (journalEntry && journalEntry.sheet.rendered) journalEntry.sheet.close();
         await ui.sidebar.expand();
         await ui.sidebar.tabs.compendium.activate();
-        await warpgate.wait(100);
+        await warpgate.wait(250);
         let compendiumFolder = game.folders.find(i => i.name === 'Chris\'s Premades' && i.type === 'Compendium');
         if (compendiumFolder && !compendiumFolder.expanded) document.querySelector('[data-uuid="' + compendiumFolder.uuid + '"]').classList.remove('collapsed');
     },
@@ -23,7 +23,7 @@ let states = {
         let pack = game.packs.get('chris-premades.CPR Spells');
         if (!pack) return;
         pack.render(true);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     5: async () => {
         let pack = game.packs.get('chris-premades.CPR Spells');
@@ -33,7 +33,7 @@ let states = {
         if (!fireShield) return;
         let document = await pack.getDocument(fireShield._id);
         document.sheet.render(true);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     6: async () => {
         let pack = game.packs.get('chris-premades.CPR Spells');
@@ -46,7 +46,7 @@ let states = {
         let compendiumApp = Object.values(ui.windows).find(i => i.metadata?.label === 'CPR Spells');
         if (compendiumApp) compendiumApp.close();
         game.settings.sheet.render(true, {'activeCategory': 'chris-premades'});
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     8: async () => {
         game.settings.sheet.close();
@@ -58,15 +58,15 @@ let states = {
         let document = await pack.getDocument(rogue._id);
         if (!document) return;
         document.sheet.render(true);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
         let feature = document.items.getName('Sneak Attack')
         if (!feature) return;
         feature.sheet.render(true);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     9: async () => {
         chris.dialog('Item Configuration: Example', [['🔎 Update / Replace Item', false], ['🛠️ Configure', false], ['⚖️ Add Scale', false]]);
-        await warpgate.wait(100);
+        await warpgate.wait(250);
     },
     12: async () => {
         let dialogApp = Object.values(ui.windows).find(i => i.data?.title === 'Item Configuration: Example');
@@ -223,7 +223,7 @@ async function checkTour() {
                 }
             }
         });
-        await warpgate.wait(100);
+        await warpgate.wait(250);
         game.settings.set('chris-premades', 'Tour Message', true);
     }
     if (!chatMessage) return;
