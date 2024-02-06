@@ -82,8 +82,10 @@ export async function updateItemButton(app, [elem], options) {
     } else {
         let found = cpr(item);
         if (found) return;
-        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name] ?? CONFIG['midi-item-showcase-community']?.automations?.[item.name];
-        if (automation) headerButton.style.color = 'yellow';
+        let gambitAutomation;
+        let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];;
+        if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name]; 
+        if (gambitAutomation || miscAutomation) headerButton.style.color = 'yellow';
     }
 }
 export function createActorHeaderButton(config, buttons) {
