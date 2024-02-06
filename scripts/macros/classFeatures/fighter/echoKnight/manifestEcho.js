@@ -80,7 +80,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             },
             'prototypeToken': {
                 'name': name,
-                'disposition': workflow.token.document.disposition,
                 'sight': actorData.prototypeToken.sight
             },
             'flags': {
@@ -95,7 +94,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         },
         'token': {
             'name': name,
-            'disposition': workflow.token.document.disposition,
             'sight': actorData.prototypeToken.sight
         },
         'embedded': {

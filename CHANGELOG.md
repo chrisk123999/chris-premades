@@ -1,3 +1,8 @@
+# 0.9.56 Release:
+## Bug Fixes:
+- Manifest Echo
+- Item configuration
+  
 # 0.9.55 Release:
 ## Bug Fixes:
 - Medkit

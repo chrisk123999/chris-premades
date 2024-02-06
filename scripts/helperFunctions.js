@@ -524,10 +524,10 @@ export let chris = {
     'getConfiguration': function _getConfiguration(item, key) {
         let keyName = key.toLowerCase().split(' ').join('-').toLowerCase();
         let keyItem = item.flags['chris-premades']?.configuration?.[keyName];
-        if (keyItem != undefined) return keyItem === '' ? false : keyItem;
+        if (keyItem != undefined) return keyItem === '' ? undefined : keyItem;
         let itemName = item.flags['chris-premades']?.info?.name ?? item.name;
         let keyDefault = CONFIG.chrisPremades.itemConfiguration?.[itemName]?.text?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.select?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.checkbox?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.number?.[keyName]?.default;
-        return keyDefault === '' ? false : keyDefault;
+        return keyDefault === '' ? undefined : keyDefault;
     },
     'setConfiguration': async function _setConfiguration(item, key, value) {
         return await item.setFlag('chris-premades', 'configuration.' + key.toLowerCase().split(' ').join('-').toLowerCase(), value);
