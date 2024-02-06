@@ -2,12 +2,12 @@
 ## Bug Fixes:
 - Manifest Echo
 - Item configuration
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.55 Release:
 ## Bug Fixes:
 - Medkit
-## Update Notes:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.54 Release:
 ## Bug Fixes:
