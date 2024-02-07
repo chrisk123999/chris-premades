@@ -3,8 +3,8 @@
 - Favored Foe
 - Slasher
 ## Update Notes:
-- Manual Rolling has been updated. Each user can now be individually configured.
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet. This setting will still only effect attacks, saves, and damage rolls from midi-qol workflows.
+- Manual Rolling has been updated. Each user can now be individually configured.  This setting will still only effect attacks, saves, and damage rolls from midi-qol workflows.
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.56 Release:
 ## Bug Fixes:
