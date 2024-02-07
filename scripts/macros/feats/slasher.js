@@ -25,7 +25,7 @@ async function slow({speaker, actor, token, character, item, args, scope, workfl
     }
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feat.slasher.turn', game.combat.round + '-' + game.combat.turn);
     let effectData = {
-        'label': originItem.name,
+        'name': originItem.name,
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {
@@ -67,7 +67,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         return;
     }
     let effectData = {
-        'label': originItem.name,
+        'name': originItem.name,
         'icon': originItem.img,
         'origin': originItem.uuid,
         'duration': {

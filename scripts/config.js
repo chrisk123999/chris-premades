@@ -2651,6 +2651,28 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Gathered Swarm': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation',
+                        'default': 'fairies',
+                        'values': [
+                            {'value': 'fairies', 'html': 'Fairies'},
+                            {'value': 'butterflies', 'html': 'Butterflies'},
+                            {'value': false, 'html': 'None'}
+                        ]
+                    },
+                    'color': {
+                        'label': 'Color',
+                        'default': 'bluepurple',
+                        'values': [
+                            {'value': 'bluepurple', 'html': 'Blue-Purple'},
+                            {'value': 'greenyellow', 'html': 'Green-Yellow'},
+                            {'value': 'white', 'html': 'White'}
+                        ]
+                    }
+                }
             }
         },
         'automations': {
@@ -6023,6 +6045,10 @@ export function setConfig() {
                     'Effect Auras'
                 ],
                 'hasAnimation': true
+            },
+            'Gathered Swarm': {
+                'name': 'Gathered Swarm',
+                'version': '0.9.55'
             }
         }
     });

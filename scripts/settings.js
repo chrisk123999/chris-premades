@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate} from './utility/movement.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
@@ -869,10 +869,11 @@ export function registerSettings() {
             if (value) {
                 Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
-                patching();
+                Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
             } else {
                 Hooks.off('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+                Hooks.off('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
             }
         }
     });
@@ -886,6 +887,15 @@ export function registerSettings() {
         'default': true
     });
     addMenuSetting('Ignore GM', 'Manual Rolling');
+    game.settings.register(moduleName, 'Manual Rolling Players', {
+        'name': 'Player Settings',
+        'hint': 'Set rolling options per-player here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {}
+    });
+    addMenuSetting('Manual Rolling Players', 'Manual Rolling');
     game.settings.register(moduleName, 'Use Randomizer', {
         'name': 'Randomizer',
         'hint': 'Change this.',

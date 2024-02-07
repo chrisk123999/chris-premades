@@ -689,7 +689,7 @@ export let chris = {
         if (userId === game.user.id) return await chris.aimCrosshair(token, maxRange, icon, interval, size);
         return await socket.executeAsUser('remoteAimCrosshair', userId, token.document.uuid, maxRange, icon, interval, size);
     },
-    'menu': async function _menu(title, buttons, inputs, useSpecialRender, info, header) {
+    'menu': async function _menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions = {}) {
         function render(html) {
             let ths = html[0].getElementsByTagName('th');
             for (let t of ths) {
@@ -704,18 +704,20 @@ export let chris = {
                 t.style.width = '50px';
             }
         }
-        if (header) inputs.unshift({'label': header, 'type': 'header'});
-        if (info) inputs.unshift({'label': info, 'type': 'info'});
+        let newInputs = duplicate(inputs);
+        if (header) newInputs.unshift({'label': header, 'type': 'header'});
+        if (info) newInputs.unshift({'label': info, 'type': 'info'});
         let options = {'title': title};
+        options = mergeObject(options, extraOptions);
         if (useSpecialRender) options.render = render;
-        let selection = await warpgate.menu({'inputs': inputs, 'buttons': buttons}, options);
+        let selection = await warpgate.menu({'inputs': newInputs, 'buttons': buttons}, options);
         if (header) selection?.inputs?.shift();
         if (info) selection?.inputs?.shift();
         return selection;
     },
-    'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId) {
-        if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender);
-        return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender);
+    'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId, info, header, extraOptions) {
+        if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions);
+        return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender, info, header, extraOptions);
     },
     'decimalToFraction': function _decimalToFraction(decimal) {
         if (Number(decimal) > 1) {
@@ -872,28 +874,29 @@ export let chris = {
         ditem.appliedDamage = keptDamage;
         ditem.totalDamage = keptDamage;
     },
-    'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user) {
+    'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user, dialogMessage, key = true) {
         let playerName = user.name;
         let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
-        let message = '<hr>Waiting for a 3rd party reaction from:<br><b>' + playerName + '</b>';
+        let subMessage = dialogMessage ? 'a dialog selection' : 'a 3rd party reaction';
+        let message = '<hr>Waiting for a ' + subMessage + ' from:<br><b>' + playerName + '</b>';
         if (lastMessage) {
             await lastMessage.update({'content': message});
         } else {
-            ChatMessage.create({
-                'speaker': {'alias': name},
+            await ChatMessage.create({
+                'speaker': {'alias': 'Chris\'s Premades'},
                 'content': message,
                 'whisper': game.users.filter(u => u.isGM).map(u => u.id),
                 'blind': false,
                 'flags': {
                     'chris-premades': {
-                        'thirdPartyReactionMessage': true
+                        'thirdPartyReactionMessage': key
                     }
                 }
             });
         }
     },
-    'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
-        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage && m.user.id === game.user.id);
+    'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage(key = true) {
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage === key && m.user.id === game.user.id);
         if (lastMessage) await lastMessage.delete();
     },
     'lastGM': function _lastGM() {

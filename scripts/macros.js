@@ -14,6 +14,7 @@ import {armorOfMagicalStrength} from './macros/classFeatures/artificer/infusions
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
+import {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
 import {auraOfLife} from './macros/spells/auraOfLife.js';
 import {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 import {auraOfPurity} from './macros/spells/auraOfPurity.js';
@@ -77,6 +78,7 @@ import {conjureFey} from './macros/spells/conjureFey.js';
 import {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js';
 import {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js'
 import {constructSpirit} from './macros/monsterFeatures/constructSpirit/constructSpirit.js';
+import {controlUndead} from './macros/classFeatures/paladin/oathbreaker/controlUndead.js';
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {createPactWeapon} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
@@ -104,6 +106,8 @@ import {dragonVessel} from './macros/items/dragonVessel.js';
 import {dragonsBreath} from './macros/spells/dragonsBreath.js';
 import {dragonsWrath} from './macros/items/dragonsWrath.js';
 import {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
+import {dreadLord} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
+import {dreadfulAspect} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 import {dreamEater} from './macros/monsterFeatures/dreamEater/dreamEater.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
 import {duergarMindMaster} from './macros/monsterFeatures/duergarMindMaster/duergarMindMaster.js';
@@ -154,6 +158,7 @@ import {fragmentOfKrokulmar} from './macros/monsterFeatures/fragmentOfKrokulmar/
 import {frostFingers} from './macros/spells/frostFingers.js';
 import {frostStrike} from './macros/feats/strikeOfTheGiants/frostStrike.js';
 import {gallowsSpeaker} from './macros/monsterFeatures/gallowsSpeaker/gallowsSpeaker.js';
+import {gatheredSwarm} from './macros/classFeatures/ranger/swarmKeeper/gatheredSwarm.js';
 import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
@@ -355,10 +360,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {controlUndead} from './macros/classFeatures/paladin/oathbreaker/controlUndead.js';
-import {dreadfulAspect} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
-import {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
-import {dreadLord} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -556,6 +557,7 @@ export let macros = {
     'auraOfAlacrity': auraOfAlacrity,
     'auraOfCourage': auraOfCourage,
     'auraOfDevotion': auraOfDevotion,
+    'auraOfHate': auraOfHate,
     'auraOfLife': auraOfLife,
     'auraOfProtection': auraOfProtection,
     'auraOfPurity': auraOfPurity,
@@ -609,6 +611,7 @@ export let macros = {
     'conjureFey': conjureFey,
     'conjureMinorElementals': conjureMinorElementals,
     'conjureWoodlandBeings': conjureWoodlandBeings,
+    'controlUndead': controlUndead,
     'createPactWeapon': createPactWeapon,
     'crimsonRite': crimsonRite,
     'crusher': crusher,
@@ -632,6 +635,8 @@ export let macros = {
     'dragonsBreath': dragonsBreath,
     'dragonsWrath': dragonsWrath,
     'dreadAmbusher': dreadAmbusher,
+    'dreadLord': dreadLord,
+    'dreadfulAspect': dreadfulAspect,
     'durableMagic': durableMagic,
     'eladrinSeason': eladrinSeason,
     'eldritchBlast': eldritchBlast,
@@ -667,6 +672,7 @@ export let macros = {
     'formOfTheBeast': formOfTheBeast,
     'frostFingers': frostFingers,
     'frostStrike': frostStrike,
+    'gatheredSwarm': gatheredSwarm,
     'giftOfTheChromaticDragon': giftOfTheChromaticDragon,
     'graspOfAvarice': graspOfAvarice,
     'graspOfHadar': graspOfHadar,
@@ -737,6 +743,7 @@ export let macros = {
     'onHit': onHit,
     'onMove': onMove,
     'onMoveEffect': onMoveEffect,
+    'onMoveSpecial': onMoveSpecial,
     'orcishFury': orcishFury,
     'overchannel': overchannel,
     'piercer': piercer,
@@ -843,10 +850,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'controlUndead': controlUndead,
-    'dreadfulAspect': dreadfulAspect,
-    'auraOfHate': auraOfHate,
-    'onMoveSpecial': onMoveSpecial,
-    'dreadLord': dreadLord
+    'zoneOfTruth': zoneOfTruth
 }

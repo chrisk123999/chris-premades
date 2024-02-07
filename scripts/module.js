@@ -15,7 +15,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills} from './patching.js';
 import {queue} from './utility/queue.js';
 import {registerSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
@@ -159,7 +159,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Manual Rolls')) {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
-        patching();
+        Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
     }
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);

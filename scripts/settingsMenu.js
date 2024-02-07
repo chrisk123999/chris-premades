@@ -1,6 +1,7 @@
 import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
 import {additionalCompendiumPriority, additionalCompendiums, selectCompendium} from './compendium.js';
 import {fixSettings, troubleshoot} from './help.js';
+import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {tours} from './tours.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
@@ -14,7 +15,8 @@ let labels = {
     'Item-Compendium': 'Select',
     'Spell-Compendium': 'Select',
     'Monster-Compendium': 'Select',
-    'Racial-Trait-Compendium': 'Select'
+    'Racial-Trait-Compendium': 'Select',
+    'Manual-Rolling-Players': 'Configure'
 }
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -313,6 +315,9 @@ export async function settingButton(id) {
             if (dialogApp) dialogApp.close();
             await warpgate.wait(100);
             await tours.guidedTour();
+            break;
+        case 'Manual Rolling Players':
+            await manualRolls.userOptions();
             break;
     }
 }
