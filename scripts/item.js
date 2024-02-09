@@ -311,7 +311,8 @@ async function updateItem(itemDocument) {
             setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
             break;
         case 'gambits-premades':
-            setProperty(originalItem, 'flags.chris-premades.info.gambit', CONFIG['gambits-premades']?.automations?.[itemName]);
+            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
+            setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
             setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
         case 'chris-premades':
