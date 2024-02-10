@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-async function enlargeAnimation(token, updates, name) {
+async function enlargeAnimation(token, updates, name, callbacks) {
     //Animations by: eskiemoh
     let scale = 1;
     let size = chris.getSize(token.actor, true);
@@ -46,14 +46,14 @@ async function enlargeAnimation(token, updates, name) {
         .waitUntilFinished(-200)
         .zIndex(0)
         
-        .thenDo(async function() {
+        .thenDo(async () => {
             let options = {
                 'permanent': false,
                 'name': name,
                 'description': name,
                 'updateOpts': {'token': {'animate': false}}
             };
-            await warpgate.mutate(token.document, updates, {}, options);
+            await warpgate.mutate(token.document, updates, callbacks, options);
         })
         
         .wait(200)
@@ -155,7 +155,7 @@ async function reduceAnimation(token, updates, name) {
         .waitUntilFinished(-200)
         .zIndex(0)
 
-        .thenDo(async function() {
+        .thenDo(async () => {
             let options = {
                 'permanent': false,
                 'name': name,
@@ -272,37 +272,59 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         };
         let token = {};
         let actor = {};
+        let doGrow = true;
         let targetSize = targetToken.actor.system.traits.size;
-        switch (targetSize) {
-            case 'tiny':
-                setProperty(token, 'texture.scaleX', '0.8');
-                setProperty(token, 'texture.scaleY', '0.8');
-                setProperty(actor, 'system.traits.size', 'sm');
-                break;
-            case 'sm':
-                setProperty(token, 'texture.scaleX', '1');
-                setProperty(token, 'texture.scaleY', '1');
-                setProperty(actor, 'system.traits.size', 'med');
-                break;
-            case 'med':
-                setProperty(token, 'height', targetToken.document.height + 1);
-                setProperty(token, 'width', targetToken.document.width + 1);
-                setProperty(actor, 'system.traits.size', 'lg');
-                break;
-            case 'lg':
-                setProperty(token, 'height', targetToken.document.height + 1);
-                setProperty(token, 'width', targetToken.document.width + 1);
-                setProperty(actor, 'system.traits.size', 'huge');
-                break;
-            case 'huge':
-                setProperty(token, 'height', targetToken.document.height + 1);
-                setProperty(token, 'width', targetToken.document.width + 1);
-                setProperty(actor, 'system.traits.size', 'grg');
-                break;
-            case 'grg':
-                setProperty(token, 'height', targetToken.document.height + 1);
-                setProperty(token, 'width', targetToken.document.width + 1);
-                break;
+        if (targetSize != 'tiny' || targetSize != 'sm') {
+            let room = chris.checkForRoom(targetToken, 1);
+            let direction = chris.findDirection(room);
+            switch(direction) {
+                case 'none':
+                    doGrow = false;
+                    break;
+                case 'ne':
+                    setProperty(token, 'y', targetToken.y - canvas.grid.size);
+                    break;
+                case 'sw':
+                    setProperty(token, 'x', targetToken.x - canvas.grid.size);
+                    break;
+                case 'nw':
+                    setProperty(token, 'x', targetToken.x - canvas.grid.size);
+                    setProperty(token, 'y', targetToken.y - canvas.grid.size);
+                    break;
+            }
+        }
+        if (doGrow) {
+            switch (targetSize) {
+                case 'tiny':
+                    setProperty(token, 'texture.scaleX', '0.8');
+                    setProperty(token, 'texture.scaleY', '0.8');
+                    setProperty(actor, 'system.traits.size', 'sm');
+                    break;
+                case 'sm':
+                    setProperty(token, 'texture.scaleX', '1');
+                    setProperty(token, 'texture.scaleY', '1');
+                    setProperty(actor, 'system.traits.size', 'med');
+                    break;
+                case 'med':
+                    setProperty(token, 'height', targetToken.document.height + 1);
+                    setProperty(token, 'width', targetToken.document.width + 1);
+                    setProperty(actor, 'system.traits.size', 'lg');
+                    break;
+                case 'lg':
+                    setProperty(token, 'height', targetToken.document.height + 1);
+                    setProperty(token, 'width', targetToken.document.width + 1);
+                    setProperty(actor, 'system.traits.size', 'huge');
+                    break;
+                case 'huge':
+                    setProperty(token, 'height', targetToken.document.height + 1);
+                    setProperty(token, 'width', targetToken.document.width + 1);
+                    setProperty(actor, 'system.traits.size', 'grg');
+                    break;
+                case 'grg':
+                    setProperty(token, 'height', targetToken.document.height + 1);
+                    setProperty(token, 'width', targetToken.document.width + 1);
+                    break;
+            }
         }
         let updates = {
             'token': token,
@@ -313,15 +335,21 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             }
         };
+        let callbacks = {
+            'delta': (delta, tokenDoc) => {
+                if ('x' in delta.token) delete delta.token.x;
+                if ('y' in delta.token) delete delta.token.y;
+            }
+        };
         if (animate) {
-            await enlargeAnimation(targetToken, updates, 'Enlarge/Reduce');
+            await enlargeAnimation(targetToken, updates, 'Enlarge/Reduce', callbacks);
         } else {
             let options = {
                 'permanent': false,
                 'name': 'Enlarge/Reduce',
                 'description': 'Enlarge/Reduce'
             };
-            await warpgate.mutate(targetToken.document, updates, {}, options);
+            await warpgate.mutate(targetToken.document, updates, callbacks, options);
         }
     } else {
         async function effectMacro() {

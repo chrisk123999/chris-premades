@@ -1,9 +1,15 @@
+# 0.9.59 Release:
+## Bug Fixes:
+- Document Selector Dialog
+- Rage
+- Enlarge/Reduce
+## Update Note:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.58 Relaese:
 ## Bug Fixes:
 - Guided Tour
 - GPS Support
-## Update Note:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.57 Release:
 ## Bug Fixes:

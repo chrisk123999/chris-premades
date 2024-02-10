@@ -198,42 +198,77 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let giantStature = chris.getItem(workflow.actor, 'Giant\'s Havoc: Giant Stature');
     let demiurgicColossus = chris.getItem(workflow.actor, 'Demiurgic Colossus');
-    let dCSelection = 'lg';
-    if (demiurgicColossus) dCSelection = await chris.dialog(demiurgicColossus.name, [['Large', 'lg'], ['Huge', 'huge']], 'What size?') ?? 'lg';
-    if (dCSelection === 'huge') await demiurgicColossus.displayCard();
-    if (giantStature && workflow.token.document.width < 2) {
-        let updates2 = {
-            'token': {
-                'width': dCSelection === 'lg' ? 2 : 3,
-                'height': dCSelection === 'lg' ? 2 : 3
-            },
-            'actor': {
-                'system': {
-                    'traits': {
-                        'size': dCSelection
+    if (giantStature && chris.getSize(workflow.actor) < (demiurgicColossus ? 4 : 3)) {
+        let lrgRoom = chris.checkForRoom(workflow.token, 1);
+        let lrgDirection = chris.findDirection(lrgRoom);
+        if (lrgDirection != 'none') {
+            let hgRoom;
+            let hgDirection;
+            let dCSelection = 'lg';
+            if (demiurgicColossus) {
+                hgRoom = chris.checkForRoom(workflow.token, 2);
+                if (!lrgRoom.n && !lrgRoom.e && !lrgRoom.s && !lrgRoom.w) hgDirection = 'outward';
+                if (hgDirection != 'outward') hgDirection = chris.findDirection(hgRoom);
+                if (hgDirection != 'none') dCSelection = await chris.dialog(demiurgicColossus.name, [['Large', 'lg'], ['Huge', 'huge']], 'What size?') ?? 'lg';
+            }
+            if (dCSelection === 'huge') await demiurgicColossus.displayCard();
+            let updates2 = {
+                'token': {
+                    'width': dCSelection === 'lg' ? 2 : 3,
+                    'height': dCSelection === 'lg' ? 2 : 3
+                },
+                'actor': {
+                    'system': {
+                        'traits': {
+                            'size': dCSelection
+                        }
                     }
                 }
             }
-        }
-        if (chris.jb2aCheck() === 'patreon') {
-            await enlargeReduce.enlargeAnimation(workflow.token, updates2, 'Giant Stature');
-        } else {
-            let options = {
-                'permanent': false,
-                'name': 'Giant Stature',
-                'description': 'Giant Stature'
-            };
-            await warpgate.mutate(workflow.token.document, updates2, {}, options);
-        }
-        effectData.changes = effectData.changes.concat([
-            {
-                'key': 'flags.midi-qol.range.mwak',
-                'mode': 2,
-                'value': (demiurgicColossus ? 10 : 5),
-                'priority': 20
+            let direction = dCSelection === 'lg' ? lrgDirection : hgDirection;
+            let scale = dCSelection === 'lg' ? 1 : 2;
+            switch(direction) {
+                case 'none':
+                    break;
+                case 'ne':
+                    setProperty(updates2.token, 'y', workflow.token.y - canvas.grid.size * scale);
+                    break;
+                case 'sw':
+                    setProperty(updates2.token, 'x', workflow.token.x - canvas.grid.size * scale);
+                    break;
+                case 'outward':
+                    scale = 1;
+                case 'nw':
+                    setProperty(updates2.token, 'x', workflow.token.x - canvas.grid.size * scale);
+                    setProperty(updates2.token, 'y', workflow.token.y - canvas.grid.size * scale);
+                    break;
             }
-        ]);
-        await giantStature.displayCard();
+            let callbacks = {
+                'delta': (delta, tokenDoc) => {
+                    if ('x' in delta.token) delete delta.token.x;
+                    if ('y' in delta.token) delete delta.token.y;
+                }
+            };
+            if (chris.jb2aCheck() === 'patreon') {
+                await enlargeReduce.enlargeAnimation(workflow.token, updates2, 'Giant Stature', callbacks);
+            } else {
+                let options = {
+                    'permanent': false,
+                    'name': 'Giant Stature',
+                    'description': 'Giant Stature'
+                };
+                await warpgate.mutate(workflow.token.document, updates2, callbacks, options);
+            }
+            effectData.changes = effectData.changes.concat([
+                {
+                    'key': 'flags.midi-qol.range.mwak',
+                    'mode': 2,
+                    'value': (demiurgicColossus ? 10 : 5),
+                    'priority': 20
+                }
+            ]);
+            await giantStature.displayCard();
+        }
     }
     let updates = {
         'embedded': {

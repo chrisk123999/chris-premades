@@ -500,7 +500,7 @@ export let chris = {
                 await warpgate.wait(100);
                 ray = new Ray(token.center, crosshairs);
                 distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                if (token.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
+                if (token.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
                     crosshairs.icon = 'icons/svg/hazard.svg';
                 } else {
                     crosshairs.icon = icon;
@@ -720,12 +720,9 @@ export let chris = {
         return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender, info, header, extraOptions);
     },
     'decimalToFraction': function _decimalToFraction(decimal) {
-        if (Number(decimal) > 1) {
-            return Number(decimal);
-        } else {
-            let fraction = '1/' + 1 / Number(decimal);
-            return fraction;
-        }
+        if (!decimal) return 0;
+        if (Number(decimal) >= 1) return Number(decimal);
+        return '1/' + 1 / Number(decimal);
     },
     'animationCheck': function _animationCheck(item) {
         if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
@@ -989,7 +986,7 @@ export let chris = {
                     await warpgate.wait(100);
                     ray = new Ray(summonerToken.center, crosshairs);
                     distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                    if (summonerToken.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > range) {
+                    if (summonerToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > range) {
                         crosshairs.icon = 'icons/svg/hazard.svg';
                     } else {
                         crosshairs.icon = tokenDocument.texture.src;
@@ -1050,5 +1047,41 @@ export let chris = {
     },
     'vision5e': function _vision5e() {
         return !!game.modules.get('vision-5e')?.active;
+    },
+    'checkForRoom': function _checkForRoom(token, distance) {
+        let point = {'x': token.center.x, 'y': token.center.y};
+        let padding = token.w / 2 - canvas.grid.size / 2;
+        let pixelDistance = distance * canvas.grid.size + padding;
+        function check(direction) {
+            let newPoint = duplicate(point);
+            switch (direction) {
+                case 'n':
+                    newPoint.y -= pixelDistance;
+                    break;
+                case 'e':
+                    newPoint.x += pixelDistance;
+                    break;
+                case 's':
+                    newPoint.y += pixelDistance;
+                    break;
+                case 'w':
+                    newPoint.x -= pixelDistance;
+                    break;
+            }
+            return token.checkCollision(newPoint, {'origin': point, 'type': 'move', 'mode': 'any'});
+        }
+        return {
+            'n': check('n'),
+            'e': check('e'),
+            's': check('s'),
+            'w': check('w')
+        };
+    },
+    'findDirection': function _findDirection(room) {
+        if (!room.s && !room.e) return 'se';
+        if (!room.n && !room.e) return 'ne';
+        if (!room.s && !room.w) return 'sw';
+        if (!room.w && !room.n) return 'nw';
+        return 'none';
     }
 }
