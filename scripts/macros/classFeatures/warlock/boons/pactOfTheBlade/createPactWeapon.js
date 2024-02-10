@@ -65,7 +65,7 @@ async function create({speaker, actor, token, character, item, args, scope, work
     let hexWarrior = chris.getItem(workflow.actor, 'Hex Warrior');
     if (hexWarrior) {
         let cha = workflow.actor.system.abilities.cha.mod;
-        let ability = selection[0].system.ability === '' ? 'str' : selection[0].system.ability;
+        let ability = (selection[0].system.ability === '' || selection[0].system.ability === null) ? 'str' : selection[0].system.ability;
         let score = workflow.actor.system.abilities[ability].mod;
         let dex = workflow.actor.system.abilities.dex.mod;
         let changed = false;

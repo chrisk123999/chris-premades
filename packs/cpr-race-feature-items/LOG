@@ -1,3 +1,5 @@
-2024/02/07-01:27:44.633 4eec Recovering log #671
-2024/02/07-01:27:44.641 4eec Delete type=0 #671
-2024/02/07-01:27:44.641 4eec Delete type=3 #670
+2024/02/09-23:52:10.978 4aa8 Recovering log #685
+2024/02/09-23:52:10.978 4aa8 Level-0 table #687: started
+2024/02/09-23:52:10.984 4aa8 Level-0 table #687: 3373 bytes OK
+2024/02/09-23:52:10.999 4aa8 Delete type=0 #685
+2024/02/09-23:52:10.999 4aa8 Delete type=3 #684

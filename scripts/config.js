@@ -5934,7 +5934,7 @@ export function setConfig() {
             },
             'Stone\'s Endurance': {
                 'name': 'Stone\'s Endurance',
-                'version': '0.9.35'
+                'version': '0.9.60'
             },
             'Breath Weapon (Acid)': {
                 'name': 'Breath Weapon (Acid)',
@@ -6049,6 +6049,26 @@ export function setConfig() {
             'Gathered Swarm': {
                 'name': 'Gathered Swarm',
                 'version': '0.9.55'
+            },
+            'Brave': {
+                'name': 'Brave',
+                'version': '0.9.60'
+            },
+            'Lucky': {
+                'name': 'Lucky',
+                'version': '0.9.60'
+            },
+            'Medical Intuition': {
+                'name': 'Medical Intuition',
+                'version': '0.9.60'
+            },
+            'Ever Hospitable': {
+                'name': 'Ever Hospitable',
+                'version': '0.9.60'
+            },
+            'Stout Resilience': {
+                'name': 'Stout Resilience',
+                'version': '0.9.60'
             }
         }
     });

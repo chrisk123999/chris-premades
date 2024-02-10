@@ -2045,8 +2045,7 @@ export let allRaces = {
                 'name': 'Trance'
             },
             {
-                'name': 'Cunning Intuition',
-                'description': 'Cunning Intuition'
+                'name': 'Cunning Intuition'
             },
             {
                 'name': 'Shape Shadows',
@@ -3183,7 +3182,6 @@ export let allRaces = {
             }
         ],
         'languages': [
-            'common',
             'elvish',
             'primordial'
         ],
@@ -3255,7 +3253,6 @@ export let allRaces = {
             }
         ],
         'languages': [
-            'common',
             'elvish',
             'undercommon'
         ],
@@ -3300,7 +3297,6 @@ export let allRaces = {
             }
         ],
         'languages': [
-            'common',
             'elvish'
         ],
         'abilities': {
@@ -3465,7 +3461,6 @@ export let allRaces = {
             }
         ],
         'languages': [
-            'common',
             'elvish'
         ],
         'abilities': {
@@ -3608,7 +3603,6 @@ export let allRaces = {
             }
         ],
         'languages': [
-            'common',
             'elvish'
         ],
         'abilities': {
@@ -3632,55 +3626,651 @@ export let allRaces = {
     {
         'name': 'Wood Half-Elf',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Fey Ancestry',
+                'description': 'Fey Ancestry (Wood Half-Elf)'
+            },
+            {
+                'name': 'Fleet of Foot'
+            }
+        ],
+        'languages': [
+            'elvish'
+        ],
+        'abilities': {
+            'cha': 2
+        },
+        'unassignedAbilities': {
+            'one': 2
+        },
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'movement': {
+            'walk': 35
+        }
     },
     'half-orc':
     {
         'name': 'Half-Orc',
         'weight': 10,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Menacing'
+            },
+            {
+                'name': 'Relentless Endurance',
+                'description': 'Relentless Endurance'
+            },
+            {
+                'name': 'Savage Attacks',
+                'description': 'Savage Attacks'
+            }
+        ],
+        'languages': [
+            'orc'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'skills': {
+            'itm': 1
+        },
+        'abilitie': {
+            'str': 2,
+            'cont': 1
+        }
     },
     'mark-of-finding-half-orc':
     {
         'name': 'Mark of Finding Half-Orc',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Hunter\'s Intuition',
+                'description': 'Hunter\'s Intuition'
+            },
+            {
+                'name': 'Finder\'s Magic',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Finding Human)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Hunter\'s Mark',
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Locate Object',
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'level': 3,
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Faerie Fire',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Longstrider',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Locate Animals or Plants',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Locate Object',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Clairvoyance',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Speak with Plants',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Divination',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Locate Creature',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Commune with Nature',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'languages': [
+            'orc'
+        ],
+        'senses': {
+            'darkvision': 60
+        },
+        'sight': {
+            'range': 60,
+            'visionMode': 'darkvision'
+        },
+        'abilities': {
+            'wis': 2,
+            'con': 1
+        }
     },
     'ghostwise-halfling':
     {
         'name': 'Ghostwise Halfling',
         'weight': 10,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Silent Speech'
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        }
     },
     'lightfoot-halfling':
     {
         'name': 'Lightfoot Halfling',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Naturally Stealthy'
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'cha': 1
+        }
     },
     'lotusden-halfling':
     {
         'name': 'Lotusden Halfling',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Child of the Wood',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Druidcraft'
+            },
+            {
+                'name': 'Entangle',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Spike Growth',
+                'level': 5,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        }
     },
     'mark-of-healing-halfling':
     {
         'name': 'Mark of Healing Halfling',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Medical Intuition'
+            },
+            {
+                'name': 'Healing Touch',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Healing Halfling)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Cure Wounds',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Lesser Restoration',
+                'level': 3,
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'wis'
+            },
+            {
+                'name': 'Cure Wounds',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Healing Word',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': ' Lesser Restoration',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Prayer of Healing',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Aura of Vitality',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Mass Healing Word',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': ' Aura of Purity',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Aura of Life',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Greater Restoration',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'wis': 1
+        }
     },
     'mark-of-hospitality-halfling':
     {
         'name': 'Mark of Hospitality Halfling',
         'weight': 25,
-        'enabled': false
+        'enabled': false,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Ever Hospitable',
+                'description': 'Ever Hospitable'
+            },
+            {
+                'name': 'Innkeeper\'s Magic',
+                'spellcasting': true
+            },
+            {
+                'name': 'Spells of the Mark',
+                'description': 'Spells of the Mark (Mark of Hospitality Halfling)',
+                'spellcasting': true
+            }
+        ],
+        'spells': [
+            {
+                'name': 'Prestidigitation'
+            },
+            {
+                'name': 'Purify Food and Drink',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'cha'
+            },
+            {
+                'name': 'Unseen Servant',
+                'uses': {
+                    'max': 1,
+                    'per': 'lr',
+                    'recovery': '',
+                    'value': 1
+                },
+                'preparation': {
+                    'mode': 'innate',
+                    'prepared': true
+                },
+                'ability': 'cha'
+            },
+            {
+                'name': 'Goodberry',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': 'Sleep',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 1
+            },
+            {
+                'name': ' Aid',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Calm Emotions',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 3
+            },
+            {
+                'name': 'Create Food and Water',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': 'Leomund\'s Tiny Hut',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 5
+            },
+            {
+                'name': ' Aura of Purity',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': ' Mordenkainen\'s Private Sanctum',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 7
+            },
+            {
+                'name': 'Hallow',
+                'preparation': {
+                    'mode': 'prepared',
+                    'prepared': true
+                },
+                'level': 9
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'cha': 1
+        }
     },
     'stout-halfling':
     {
         'name': 'Stout Halfling',
         'weight': 50,
-        'enabled': true
+        'enabled': true,
+        'features': [
+            {
+                'name': 'Brave',
+                'description': 'Brave'
+            },
+            {
+                'name': 'Lucky',
+                'description': 'Lucky'
+            },
+            {
+                'name': 'Halfling Nimbleness'
+            },
+            {
+                'name': 'Stout Resilience',
+                'description': 'Stout Resilience'
+            }
+        ],
+        'languages': [
+            'halfling'
+        ],
+        'abilities': {
+            'dex': 2,
+            'con': 1
+        }
     },
     'harengon':
     {
@@ -4023,7 +4613,7 @@ export async function npcRandomizer(token, options, user) {
 }
 async function humanoid(targetActor, updates, item) {
 //    let race = pickRace();
-    let race = 'mark-of-storm-half-elf';
+    let race = 'stout-halfling';
     console.log(race);
     let sourceActor;
     if (allRaces[race].monster) {
