@@ -1,4 +1,10 @@
-## 0.9.60 Release:
+# 0.9.61 Release:
+## Bug Fixes:
+- Stone's Endurance
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
+# 0.9.60 Release:
 ## New Content:
 - Halfling: Brave and Lucky
 - Mark of Healing Halfling: Medical Intuition
@@ -7,8 +13,6 @@
 ## Bug Fixes:
 - Create Pact Weapon
 - Stone's Endurance
-## Update Notes:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.59 Release:
 ## Bug Fixes:

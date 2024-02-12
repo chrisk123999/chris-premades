@@ -169,8 +169,10 @@ export function troubleshoot() {
         addLine('');
         addLine('/////////////// Other ///////////////');
         if (!game.modules.get('plutonium')?.active) {
-            addLine('Unsupported Importer: true (Disabled)');
-        } else addLine('Unsupported Importer: true');
+            addLine('Unsupported Importer: false');
+        } else {
+            addLine('Unsupported Importer: true');
+        }
     }
     try {
         let filename = 'CPR-Troubleshoot.txt';

@@ -227,11 +227,10 @@ async function checkTour() {
         game.settings.set('chris-premades', 'Tour Message', true);
     }
     if (!chatMessage) return;
-    try {
-        let messageElement = document.querySelector('[data-message-id="' + chatMessage.id + '"]');
-        let button = messageElement.querySelector('[type="button"]');
-        button.onclick = guidedTour;
-    } catch {}
+    let messageElement = document.querySelector('[data-message-id="' + chatMessage.id + '"]');
+    if (!messageElement) return;
+    let button = messageElement.querySelector('[type="button"]');
+    if (button) button.onclick = guidedTour;
 
 }
 export let tours = {

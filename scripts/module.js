@@ -39,6 +39,7 @@ import {addActions} from './macros/actions/token.js';
 import {summonEffects} from './macros/animations/summonEffects.js';
 import {actionsTab} from './integrations/tidy5eSheet.js';
 import {tours} from './tours.js';
+import {addChatButton} from './chat.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -109,6 +110,7 @@ Hooks.once('ready', async function() {
         }
         if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('updateToken', macros.compelledDuel.movement);
         if (game.settings.get('chris-premades', 'Check For Updates')) checkUpdate();
+        Hooks.on('createChatMessage', addChatButton);
     }
     await loadTriggers();
     if (game.settings.get('chris-premades', 'Condition Resistance')) {

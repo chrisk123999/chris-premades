@@ -5334,7 +5334,7 @@ export function setConfig() {
                 },
                 'settings': [
                     'Rest Listener'
-                ],
+                ]
             },
             'Enlarge/Reduce': {
                 'name': 'Enlarge/Reduce',

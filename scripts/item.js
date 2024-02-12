@@ -160,7 +160,7 @@ async function itemConfig(itemDocument) {
         ui.notifications.info('Nothing to do!');
     }
 }
-async function updateItem(itemDocument) {
+export async function updateItem(itemDocument) {
     let additionalCompendiums = game.settings.get('chris-premades', 'Additional Compendiums');
     let additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
     let flagName = itemDocument.flags?.['chris-premades']?.info?.name;
