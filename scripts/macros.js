@@ -163,6 +163,7 @@ import {generic} from './macros/monsterFeatures/generic/generic.js';
 import {ghast} from './macros/monsterFeatures/ghast/ghast.js';
 import {gibberingMouther} from './macros/monsterFeatures/gibberingMouther/gibberingMouther.js';
 import {giftOfTheChromaticDragon} from './macros/feats/giftOfTheChromaticDragon.js';
+import {grapple} from './macros/generic/grapple.js';
 import {graspOfAvarice} from './macros/feats/graspOfAvarice.js';
 import {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 import {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
@@ -450,8 +451,10 @@ export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
     'eyesOfMinuteSeeing': eyesOfMinuteSeeing,
     'eyesOfTheEagle': eyesOfTheEagle,
-    'stoneCamouflage': deepGnome.stoneCamouflage,
-    'labyrinthineRecall': labyrinthineRecall
+    'grappleEscape': grapple.escape,
+    'grappleInitiate': grapple.initiate,
+    'labyrinthineRecall': labyrinthineRecall,
+    'stoneCamouflage': deepGnome.stoneCamouflage
 }
 export let saves = {
     'dangerSense': dangerSense,

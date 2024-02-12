@@ -58,7 +58,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let damage = castLevel + 'd8';
     let effect = chris.findEffect(workflow.actor, 'Spirit Guardians');
     if (!effect) return;
-    await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
+    await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid, true);
     let color = chris.getConfiguration(workflow.item, 'color') ?? 'blueyellow';
     let variation = '.' + (chris.getConfiguration(workflow.item, 'variation') ?? 'ring');
     if (color === 'random') {

@@ -10,6 +10,7 @@ export function patchSkills(enabled) {
 }
 async function doRollSkill(wrapped, ...args) {
     let [skillId, options] = args;
+    if (!options) options = {};
     let flags = this.flags['chris-premades']?.skill;
     if (flags) {
         let selections = [];

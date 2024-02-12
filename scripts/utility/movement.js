@@ -22,7 +22,14 @@ export async function updateMoveTriggers(updatedTriggers) {
 export async function updateGMTriggers(updatedTriggers) {
     await game.settings.set('chris-premades', 'Movement Triggers', updatedTriggers);
 }
-export async function tokenMoved(token, changes) {
+export async function tokenMovedEarly(token, updates, options, userId) {
+    if (token.parent.id != canvas.scene.id) return;
+    if (!updates.x && !updates.y && !updates.elevation) return;
+    setProperty(options, 'chris-premades.coords.previous.x', token.x);
+    setProperty(options, 'chris-premades.coords.previous.y', token.y);
+    setProperty(options, 'chris-premades.coords.previous.elevation', token.elevation);
+}
+export async function tokenMoved(token, changes, options, userId) {
     if (token.parent.id != canvas.scene.id) return;
     if (!chris.isLastGM()) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
@@ -36,6 +43,11 @@ export async function tokenMoved(token, changes) {
             if (spell.nonAllies && (token.disposition === sourceToken.document.disposition || token.disposition === 0)) continue;
             let distance = chris.getDistance(token, sourceToken);
             if (distance > spell.range) continue;
+            if (spell.offTurnMoveSpecial && chris.inCombat()) {
+                if (game.combat.current.tokenId != token.id) {
+                    //Finish this!
+                }
+            }
             validSources.push(spell);
         }
         let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
@@ -91,7 +103,7 @@ export function combatUpdate(combat, changes, context) {
         }
     }
 }
-async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn, effectUuid) {
+async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn, effectUuid, offTurnMoveSpecial) {
     let spell = {
         'castLevel': castLevel,
         'spellDC': spellDC,
@@ -103,7 +115,8 @@ async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTo
         'nonAllies': nonAllies,
         'turn': turn,
         'macro': name,
-        'effectUuid': effectUuid
+        'effectUuid': effectUuid,
+        'offTurnMoveSpecial': offTurnMoveSpecial
     }
     if (!triggers[name]) triggers[name] = [];
     triggers[name].push(spell);

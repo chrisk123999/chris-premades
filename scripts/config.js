@@ -6069,6 +6069,13 @@ export function setConfig() {
             'Stout Resilience': {
                 'name': 'Stout Resilience',
                 'version': '0.9.60'
+            },
+            'Amorphous': {
+                'name': 'Amorphous',
+                'version': '0.9.62',
+                'settings': [
+                    'Skill Patching'
+                ]
             }
         }
     });

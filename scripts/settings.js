@@ -1,7 +1,7 @@
 import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
-import {tokenMoved, combatUpdate} from './utility/movement.js';
+import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchSaves, patchSkills} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
@@ -103,8 +103,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value && game.user.isGM) {
                 Hooks.on('updateToken', tokenMoved);
+                Hooks.on('preUpdateToken', tokenMovedEarly);
             } else if (game.user.isGM) {
                 Hooks.off('updateToken', tokenMoved);
+                Hooks.off('preUpdateToken', tokenMovedEarly);
             }
         }
     });

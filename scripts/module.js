@@ -28,7 +28,7 @@ import {setupJournalEntry} from './journal.js';
 import {summons} from './utility/summons.js';
 import {tashaSummon} from './utility/tashaSummon.js';
 import {templates} from './utility/templateEffect.js';
-import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers} from './utility/movement.js';
+import {tokenMove, tokenMoved, combatUpdate, updateMoveTriggers, updateGMTriggers, loadTriggers, tokenMovedEarly} from './utility/movement.js';
 import {translate} from './translations.js';
 import {troubleshoot} from './help.js';
 import {vaeEffectDescription, vaeTempItemButton} from './integrations/vae.js';
@@ -87,7 +87,10 @@ Hooks.once('ready', async function() {
         if (game.modules.get('ddb-importer')?.active) Hooks.on('getActorSheet5eHeaderButtons', createActorHeaderButton);
         game.settings.set('chris-premades', 'LastGM', game.user.id);
         if (game.settings.get('chris-premades', 'Combat Listener')) Hooks.on('updateCombat', combatUpdate);
-        if (game.settings.get('chris-premades', 'Movement Listener')) Hooks.on('updateToken', tokenMoved);
+        if (game.settings.get('chris-premades', 'Movement Listener')) {
+            Hooks.on('preUpdateToken', tokenMovedEarly);
+            Hooks.on('updateToken', tokenMoved);
+        }
         if (game.settings.get('chris-premades', 'Emboldening Bond')) Hooks.on('updateToken', macros.emboldeningBond.move);
         if (game.settings.get('chris-premades', 'Template Listener')) {
             Hooks.on('updateToken', templates.move);
