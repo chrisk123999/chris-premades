@@ -2,7 +2,7 @@ import {constants} from '../../../../constants.js'
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function attack(workflow) {
-    if (workflow.targets.size != 1 || !workflow.item || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (workflow.targets.size != 1 || !workflow.item || !constants.attacks.includes(workflow.item?.system?.actionType)) return;
     let targetToken = workflow.targets.first();
     let coverBonus = MidiQOL.computeCoverBonus(workflow.token, targetToken, workflow.item);
     if (coverBonus >= 2) return;
