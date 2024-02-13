@@ -110,6 +110,7 @@ import {dreadLord} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js
 import {dreadfulAspect} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 import {dreamEater} from './macros/monsterFeatures/dreamEater/dreamEater.js';
 import {drow} from './macros/monsterFeatures/drow/drow.js';
+import {dualWielder} from './macros/feats/dualWielder.js';
 import {duergarMindMaster} from './macros/monsterFeatures/duergarMindMaster/duergarMindMaster.js';
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {durableMagic} from './macros/classFeatures/wizard/warMagic/durableMagic.js';
@@ -344,6 +345,7 @@ import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {troll} from './macros/monsterFeatures/troll/troll.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
+import {twilightShroud} from './macros/classFeatures/cleric/twilightDomain/twilightShroud.js';
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
@@ -640,6 +642,7 @@ export let macros = {
     'dreadAmbusher': dreadAmbusher,
     'dreadLord': dreadLord,
     'dreadfulAspect': dreadfulAspect,
+    'dualWielder': dualWielder,
     'durableMagic': durableMagic,
     'eladrinSeason': eladrinSeason,
     'eldritchBlast': eldritchBlast,
@@ -839,6 +842,7 @@ export let macros = {
     'trickShots': trickShots,
     'turnUndead': turnUndead,
     'twilightSanctuary': twilightSanctuary,
+    'twilightShroud': twilightShroud,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
     'viciousIntent': viciousIntent,

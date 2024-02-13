@@ -592,6 +592,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Elemental Adept', 'Feats');
+    game.settings.register(moduleName, 'Dual Wielder', {
+        'name': 'Dual Wielder Automation',
+        'hint': 'Enabling this allows the automation of the Dual Wielder feat via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('updateItem', macros.dualWielder);
+            } else {
+                Hooks.off('updateItem', macros.dualWielder);
+            }
+        }
+    });
+    addMenuSetting('Dual Wielder', 'Feats');
     game.settings.register(moduleName, 'Mirror Image', {
         'name': 'Mirror Image Automation',
         'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
@@ -1372,6 +1388,26 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Manifest Echo', 'Class Features');
+    game.settings.register(moduleName, 'Twilight Shroud', {
+        'name': 'Twilight Shroud Automation',
+        'hint': 'Enabling this allows the automation of the Twilight Shroud feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preCheckHits', macros.twilightShroud.attack);
+                Hooks.on('midi-qol.preambleComplete', macros.twilightShroud.saveEarly);
+                Hooks.on('midi-qol.RollComplete', macros.twilightShroud.saveLate);
+            } else {
+                Hooks.off('midi-qol.preCheckHits', macros.twilightShroud.attack);
+                Hooks.off('midi-qol.preambleComplete', macros.twilightShroud.saveEarly);
+                Hooks.off('midi-qol.RollComplete', macros.twilightShroud.saveLate);
+            }
+        }
+    });
+    addMenuSetting('Twilight Shroud', 'Class Features');
 //    game.settings.register(moduleName, 'Metric Distance', {
 //        'name': 'Use Metric Distance',
 //        'hint': 'When enabled macros from this module will use metric for distance calculations.',

@@ -3753,7 +3753,7 @@ export function setConfig() {
             },
             'Channel Divinity: Twilight Sanctuary': {
                 'name': 'Channel Divinity: Twilight Sanctuary',
-                'version': '0.7.01'
+                'version': '0.9.63'
             },
             'Eyes of Night': {
                 'name': 'Eyes of Night',
@@ -6076,6 +6076,14 @@ export function setConfig() {
                 'settings': [
                     'Skill Patching'
                 ]
+            },
+            'Dual Wielder': {
+                'name': 'Dual Wielder',
+                'version': '0.9.63'
+            },
+            'Twilight Shroud': {
+                'name': 'Twilight Shroud',
+                'version': '0.9.63'
             }
         }
     });

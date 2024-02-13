@@ -222,6 +222,12 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Booming Blade')) Hooks.on('updateToken', macros.boomingBlade.moved);
     if (game.settings.get('chris-premades', 'Build A Bonus Overlapping Effects')) Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
     if (game.settings.get('chris-premades', 'Manifest Echo')) Hooks.on('dnd5e.rollAbilitySave', macros.manifestEcho.save);
+    if (game.settings.get('chris-premades', 'Dual Wielder')) Hooks.on('updateItem', macros.dualWielder);
+    if (game.settings.get('chris-premades', 'Twilight Shroud')) {
+        Hooks.on('midi-qol.preCheckHits', macros.twilightShroud.attack);
+        Hooks.on('midi-qol.preambleComplete', macros.twilightShroud.saveEarly);
+        Hooks.on('midi-qol.RollComplete', macros.twilightShroud.saveLate);
+    }
     Hooks.on('createToken', addActions);
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);

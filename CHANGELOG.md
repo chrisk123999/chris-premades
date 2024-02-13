@@ -1,10 +1,17 @@
+# 0.9.63 Release:
+## New Content:
+- Twilight Domain Cleric: Twilight Shroud
+- Feat: Dual Wielder
+## Bug Fixes:
+- Channel Divinity: Twilight Sanctuary
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
 # 0.9.62 Release:
 ## New Content:
 - Plasmoid: Amorphous
 ## Bug Fixes:
 - Skill Patching
-## Update Notes:
-- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
   
 # 0.9.61 Release:
 ## Bug Fixes:

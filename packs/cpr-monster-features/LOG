@@ -1,11 +1,3 @@
-2024/02/12-00:24:30.193 24f8 Recovering log #728
-2024/02/12-00:24:30.194 24f8 Level-0 table #731: started
-2024/02/12-00:24:30.215 24f8 Level-0 table #731: 287744 bytes OK
-2024/02/12-00:24:30.231 24f8 Delete type=2 #721
-2024/02/12-00:24:30.232 24f8 Delete type=2 #723
-2024/02/12-00:24:30.232 24f8 Delete type=0 #728
-2024/02/12-00:24:30.232 24f8 Delete type=3 #727
-2024/02/12-00:24:57.570 4dbc Compacting 1@0 + 1@1 files
-2024/02/12-00:24:57.594 4dbc Generated table #733@0: 785 keys, 390981 bytes
-2024/02/12-00:24:57.594 4dbc Compacted 1@0 + 1@1 files => 390981 bytes
-2024/02/12-00:24:57.602 4dbc compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/02/12-22:41:40.034 56e4 Recovering log #753
+2024/02/12-22:41:40.054 56e4 Delete type=0 #753
+2024/02/12-22:41:40.054 56e4 Delete type=3 #752
