@@ -41,11 +41,18 @@ export async function tokenMoved(token, changes, options, userId) {
             if (!sourceToken) continue;
             if (spell.ignoreSelf && sourceToken.id == token.id) continue;
             if (spell.nonAllies && (token.disposition === sourceToken.document.disposition || token.disposition === 0)) continue;
-            let distance = chris.getDistance(token, sourceToken);
+            let distance = chris.getDistance(token.object, sourceToken);
             if (distance > spell.range) continue;
             if (spell.offTurnMoveSpecial && chris.inCombat()) {
                 if (game.combat.current.tokenId != token.id) {
-                    //Finish this!
+                    let oldDistance = chris.getCoordDistance(sourceToken, {
+                        'width': token.width,
+                        'height': token.height,
+                        'x': options['chris-premades'].coords.previous.x,
+                        'y': options['chris-premades'].coords.previous.y,
+                        'elevation': options['chris-premades'].coords.previous.elevation
+                    });
+                    if (oldDistance <= distance) continue;
                 }
             }
             validSources.push(spell);

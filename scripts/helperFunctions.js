@@ -1083,5 +1083,98 @@ export let chris = {
         if (!room.s && !room.w) return 'sw';
         if (!room.w && !room.n) return 'nw';
         return 'none';
+    },
+    'getCoordDistance': function _getCoordDistance(t1, targetPos) {
+        //Adapted from Midi-Qol
+        if (!canvas || !canvas.scene) return -1;
+        if (!canvas.grid || !canvas.dimensions) return -1;
+        let t2 = {
+            'document': {
+                'height': targetPos.height ?? t1.document.height,
+                'width': targetPos.width ?? t1.document.width,
+                'x': targetPos.x,
+                'y': targetPos.y,
+                'elevation': targetPos.elevation
+            }
+        }
+        if (!t1 || !t2) return -1;
+        if (!canvas || !canvas.grid || !canvas.dimensions) return -1;
+        let t1StartX = t1.document.width >= 1 ? 0.5 : t1.document.width / 2;
+        let t1StartY = t1.document.height >= 1 ? 0.5 : t1.document.height / 2;
+        let t2StartX = t2.document.width >= 1 ? 0.5 : t2.document.width / 2;
+        let t2StartY = t2.document.height >= 1 ? 0.5 : t2.document.height / 2;
+        let t1Elevation = t1.document.elevation ?? 0;
+        let t2Elevation = t2.document.elevation ?? 0;
+        let t1TopElevation = t1Elevation + Math.max(t1.document.height, t1.document.width) * (canvas?.dimensions?.distance ?? 5);
+        let t2TopElevation = t2Elevation + Math.min(t2.document.height, t2.document.width) * (canvas?.dimensions?.distance ?? 5);
+        let x, x1, y, y1, segments = [], rdistance, distance;
+        for (x = t1StartX; x < t1.document.width; x++) {
+            for (y = t1StartY; y < t1.document.height; y++) {
+                let origin = new PIXI.Point(...canvas.grid.getCenter(Math.round(t1.document.x + (canvas.dimensions.size * x)), Math.round(t1.document.y + (canvas.dimensions.size * y))));
+                for (x1 = t2StartX; x1 < t2.document.width; x1++) {
+                    for (y1 = t2StartY; y1 < t2.document.height; y1++) {
+                        let dest = new PIXI.Point(...canvas.grid.getCenter(Math.round(t2.document.x + (canvas.dimensions.size * x1)), Math.round(t2.document.y + (canvas.dimensions.size * y1))));
+                        let r = new Ray(origin, dest);
+                        segments.push({'ray': r});
+                    }
+                }
+            }
+        }
+        if (segments.length === 0) {
+            return -1;
+        }
+        function midiMeasureDistances(segments, options = {}) {
+            if (canvas?.grid?.grid.constructor.name !== "BaseGrid" || !options.gridSpaces) {
+                let distances = canvas?.grid?.measureDistances(segments, options);
+                return distances;
+            }
+            let rule = canvas?.grid.diagonalRule;
+            if (!configSettings.gridlessFudge || !options.gridSpaces || !["555", "5105", "EUCL"].includes(rule)) return canvas?.grid?.measureDistances(segments, options);
+            let nDiagonal = 0;
+            let d = canvas?.dimensions;
+            let grid = canvas?.scene?.grid;
+            if (!d || !d.size) return 0;
+            let fudgeFactor = configSettings.gridlessFudge / d.distance;
+            return segments.map(s => {
+                let r = s.ray;
+                let nx = Math.ceil(Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor));
+                let ny = Math.ceil(Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor));
+                let nd = Math.min(nx, ny);
+                let ns = Math.abs(ny - nx);
+                nDiagonal += nd;
+                if (rule === "5105") {
+                    let nd10 = Math.floor(nDiagonal / 2) - Math.floor((nDiagonal - nd) / 2);
+                    let spaces = (nd10 * 2) + (nd - nd10) + ns;
+                    return spaces * d.distance;
+                }
+                else if (rule === "EUCL") {
+                    let nx = Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor);
+                    let ny = Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor);
+                    return Math.ceil(Math.hypot(nx, ny) * grid?.distance);
+                }
+                else return Math.max(nx, ny) * grid.distance;
+            });
+        }
+        rdistance = segments.map(ray => midiMeasureDistances([ray], {'gridSpaces': true }));
+        distance = Math.min(...rdistance);
+        let heightDifference = 0;
+        let t1ElevationRange = Math.max(t1.document.height, t1.document.width) * (canvas?.dimensions?.distance ?? 5);
+        if (Math.abs(t2Elevation - t1Elevation) < t1ElevationRange) {
+            heightDifference = 0;
+        } else if (t1Elevation < t2Elevation) {
+            heightDifference = t2Elevation - t1TopElevation;
+        } else if (t1Elevation > t2Elevation) {
+            heightDifference = t1Elevation - t2TopElevation;
+        }
+        let rule = canvas.grid.diagonalRule
+        if (['555', '5105'].includes(rule)) {
+            let nd = Math.min(distance, heightDifference);
+            let ns = Math.abs(distance - heightDifference);
+            distance = nd + ns;
+            let dimension = canvas?.dimensions?.distance ?? 5;
+            if (rule === '5105') distance = distance + Math.floor(nd / 2 / dimension) * dimension;
+        }
+        distance = Math.sqrt(heightDifference * heightDifference + distance * distance);
+        return distance;
     }
 }

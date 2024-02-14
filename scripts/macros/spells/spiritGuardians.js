@@ -15,9 +15,9 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         }
     }
     if (!doDamage) return;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spirit Guardians', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spirit Guardians - Damage', false);
     if (!featureData) return;
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spirit Guardians');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spirit Guardians - Damage');
     featureData.system.damage.parts = [
         [
             damage + '[' + damageType + ']',

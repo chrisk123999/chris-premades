@@ -5410,9 +5410,10 @@ export function setConfig() {
             },
             'Compelled Duel': {
                 'name': 'Compelled Duel',
-                'version': '0.7.47',
+                'version': '0.9.64',
                 'settings': [
-                    'Compelled Duel'
+                    'Compelled Duel',
+                    'Movement Listener'
                 ]
             },
             'Draconic Cry': {

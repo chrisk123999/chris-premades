@@ -1,3 +1,7 @@
-2024/02/12-22:21:42.248 39c Recovering log #759
-2024/02/12-22:21:42.279 39c Delete type=0 #759
-2024/02/12-22:21:42.279 39c Delete type=3 #756
+2024/02/13-19:31:47.789 5ea8 Recovering log #770
+2024/02/13-19:31:47.817 5ea8 Delete type=0 #770
+2024/02/13-19:31:47.817 5ea8 Delete type=3 #769
+2024/02/13-19:32:36.826 4b4c Compacting 1@0 + 1@1 files
+2024/02/13-19:32:36.856 4b4c Generated table #773@0: 176 keys, 226264 bytes
+2024/02/13-19:32:36.856 4b4c Compacted 1@0 + 1@1 files => 226264 bytes
+2024/02/13-19:32:36.862 4b4c compacted to: files[ 0 1 0 0 0 0 0 ]
