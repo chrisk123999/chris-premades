@@ -23,7 +23,7 @@ async function reload({speaker, actor, token, character, item, args, scope, work
         ui.notifications.info('You have no ammunition!');
         return;
     }
-    let weapons = workflow.actor.items.filter(i => i.system.baseItem === 'firearmCR' && i.system.uses.value != i.system.uses.max);
+    let weapons = workflow.actor.items.filter(i => i.system.type?.baseItem === 'firearmCR' && i.system.uses.value != i.system.uses.max);
     if (!weapons.length) {
         ui.notifications.info('You have no firearms to reload!');
         return;
@@ -58,7 +58,7 @@ async function status(workflow) {
 }
 async function misfire(workflow) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem ;
     if (baseItem != 'firearmCR') return;
     let proficient = workflow.item.system.proficient || workflow.item.actor.system.traits.weaponProf.value.has(baseItem);
     let misfireScore = chris.getConfiguration(workflow.item, 'misfire') ?? 1;
@@ -113,7 +113,7 @@ async function repair({speaker, actor, token, character, item, args, scope, work
     if (repairFirearms.length === 1) weapon = repairFirearms[0];
     if (!weapon) weapon = await chris.selectDocument(workflow.item.name, repairFirearms);
     if (!weapon) return;
-    let tinker = workflow.actor.items.find(i => i.system.baseItem === 'tinker');
+    let tinker = workflow.actor.items.find(i => i.system.type?.baseItem === 'tinker');
     if (!tinker) {
         ui.notifications.info('You have no Tinker\'s Tools to make the repair with!');
         return;
@@ -137,7 +137,7 @@ async function repair({speaker, actor, token, character, item, args, scope, work
 async function grit(workflow) {
     if (!workflow.item) return;
     if (workflow.hitTargets.size != 1) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
     let regain = 0;
     if (workflow.d20AttackRoll === 20 || (chris.getItem(workflow.actor, 'Vicious Intent') && workflow.d20AttackRoll === 19)) {
@@ -160,7 +160,7 @@ async function grit(workflow) {
 }
 async function critical(workflow) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
     if (!workflow.isCritical || !workflow.damageRoll || workflow.targets.size != 1) return;
     let feature = chris.getItem(workflow.actor, 'Hemorrhaging Critical');

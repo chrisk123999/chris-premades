@@ -1,11 +1,10 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 export async function crushingThrow({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.hitTargets.size != 1 || !workflow.item.system.properties.thr) return;
+    if (workflow.hitTargets.size != 1 || !workflow.item.system.properties.has('thr')) return;
     if (!(workflow.item.system.ability === '' || workflow.item.system.ability === 'str')) return;
-    if (workflow.item.system.properties.fin && workflow.item.system.ability === '') {
-        if (workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) return;
-    }
+    let isFin = workflow.item.system.properties.has('fin') && workflow.item.system.ability === '';
+    if (isFin && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) return;
     let distance = chris.getDistance(workflow.token, workflow.targets.first());
     let demiurgicColossus = chris.getItem(workflow.actor, 'Demiurgic Colossus');
     if (distance <= (demiurgicColossus ? 15 : 10)) return;

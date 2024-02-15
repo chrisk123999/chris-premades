@@ -7,7 +7,8 @@ export async function backbreaker({speaker, actor, token, character, item, args,
         'maul',
         'warhammer'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Backbreaker');
     if (!feature) return;
     if (!feature.system.uses.value) return;

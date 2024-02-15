@@ -59,7 +59,8 @@ async function strike({speaker, actor, token, character, item, args, scope, work
         'pike',
         'dagger'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Piercing Strike');
     if (!feature) return;
     if (!feature.system.uses.value) return;
@@ -91,7 +92,8 @@ async function shot({speaker, actor, token, character, item, args, scope, workfl
         'handcrossbow',
         'heavycrossbow'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Piercing Shot');
     if (!feature) return;
     if (!feature.system.uses.value) return;

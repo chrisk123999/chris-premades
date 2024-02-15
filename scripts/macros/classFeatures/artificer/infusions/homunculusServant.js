@@ -126,7 +126,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     await chris.updateEffect(effect, effectUpdates);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
     if (!effect) return;
     let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
     if (!homunculusId) return;
@@ -176,7 +176,7 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
         ui.notifications.info('Invalid Spell Type!');
         return false;
     }
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
     if (!effect) return;
     let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
     if (!homunculusId) return;

@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function songOfDefense({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.feature?.bladesong);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.feature?.bladesong);
     if (!effect) {
         ui.notifications.info('You must be Bladesinging to use this feature!');
         return;

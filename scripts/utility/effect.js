@@ -26,7 +26,7 @@ export function itemDC(effect, updates, options, user) {
 }
 export async function fixOrigin(token, options, user) {
     if ((game.user.id !== user) || token.actorLink) return;
-    let updates = await token.actor.effects.reduce(async (updates, effect) => {
+    let updates = await chris.getEffects(token.actor).reduce(async (updates, effect) => {
         if (!effect.origin) return updates;
         let origin = await fromUuid(effect.origin);
         if (!origin) return updates;

@@ -195,7 +195,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             await warpgate.dismiss(i.id);
         }
     }
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.feature?.manifestEcho);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.feature?.manifestEcho);
     if (effect) return;
     let mutationStack = warpgate.mutationStack(workflow.token.document);
     if (mutationStack.getName('Manifest Echo')) await warpgate.revert(workflow.token.document, 'Manifest Echo');
@@ -415,7 +415,7 @@ async function defeated(token, effect) {
         if (ownerTokenUuid) {
             let ownerToken = await fromUuid(ownerTokenUuid);
             if (ownerToken) {
-                let effect2 = ownerToken.actor.effects.find(i => i.flags['chris-premades']?.feature?.manifestEcho);
+                let effect2 = chris.getEffects(ownerToken.actor).find(i => i.flags['chris-premades']?.feature?.manifestEcho);
                 if (effect2) await chris.removeEffect(effect2);
                 return;
             }

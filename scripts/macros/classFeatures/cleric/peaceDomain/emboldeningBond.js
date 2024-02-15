@@ -62,7 +62,7 @@ async function turn(token, origin, effect) {
     let effect2 = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
     if (effect2) return;
     let distance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
-    let nearbyTargets = chris.findNearby(token, distance, 'all', true).concat(token).filter(t => t.actor.effects.find(e => e.origin === origin.uuid && e.name === 'Emboldening Bond'));
+    let nearbyTargets = chris.findNearby(token, distance, 'all', true).concat(token).filter(t => chris.getEffects(t.actor).find(e => e.origin === origin.uuid && e.name === 'Emboldening Bond'));
     if (nearbyTargets.length < 2) return;
     let effectData2 = duplicate(effectData);
     setProperty(effectData2, 'flags.chris-premades.feature.emboldeningBond.sourceTokenUuid', token.document.uuid);
@@ -74,11 +74,11 @@ async function turn(token, origin, effect) {
 }
 async function checkBonus(effect) {
     if (!effect.origin) return;
-    let tokens = canvas.scene.tokens.filter(t => t.actor.effects.find(e => e.name == 'Emboldening Bond' && e.origin === effect.origin));
+    let tokens = canvas.scene.tokens.filter(t => chris.getEffects(t.actor).find(e => e.name == 'Emboldening Bond' && e.origin === effect.origin));
     for (let token of tokens) {
         let effect3 = chris.findEffect(token.actor, 'Emboldening Bond');
         let distance = effect3.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
-        let nearbyTargets = chris.findNearby(token.object, distance, 'all', true).concat(token.object).filter(t => t.actor.effects.find(e => e.name === 'Emboldening Bond'));
+        let nearbyTargets = chris.findNearby(token.object, distance, 'all', true).concat(token.object).filter(t => chris.getEffects(t.actor).find(e => e.name === 'Emboldening Bond'));
         let effect2 = chris.findEffect(token.actor, 'Emboldening Bond Bonus');
         if (nearbyTargets.length < 2) {
             if (effect2) {
@@ -175,7 +175,7 @@ async function damage(targetToken, {workflow, ditem}) {
     if (!effect.flags['chris-premades']?.feature?.emboldeningBond?.protectiveBond) return;
     if (chris.findEffect(targetToken.actor, 'Reaction')) return;
     let distance = effect.flags['chris-premades']?.feature?.emboldeningBond?.expansiveBond ?? 30;
-    let nearbyTargets = chris.findNearby(targetToken, distance, 'all', true).filter(t => t.actor.effects.find(e => e.origin === effect.origin && e.name === 'Emboldening Bond') && !chris.findEffect(t.actor, 'Reaction'));
+    let nearbyTargets = chris.findNearby(targetToken, distance, 'all', true).filter(t => chris.getEffects(t.actor).find(e => e.origin === effect.origin && e.name === 'Emboldening Bond') && !chris.findEffect(t.actor, 'Reaction'));
     if (nearbyTargets.length === 0) return;
     let queueSetup = await queue.setup(workflow.uuid, 'protectiveBond', 400);
     if (!queueSetup) return;

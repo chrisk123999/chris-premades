@@ -19,7 +19,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let weaponData = duplicate(selection.toObject());
         delete weaponData._id;
         weaponData.system.damage.parts.push([diceNumber + 'd8[' + translate.damageType('thunder') + ']', 'thunder']);
-        weaponData.system.properties.mgc = true;
+        weaponData.system.properties.push('mgc');
         weapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
         weapon.prepareData();
         weapon.prepareFinalAttributes();
@@ -93,7 +93,7 @@ async function moved(token, changes) {
     if (!chris.isLastGM()) return;
     if (token.parent.id != canvas.scene.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
-    let effect = token.actor.effects.find(i => i.flags['chris-premades']?.spell?.boomingBlade);
+    let effect = chris.getEffects(token.actor).find(i => i.flags['chris-premades']?.spell?.boomingBlade);
     if (!effect) return;
     await token.object?._animation;
     let selection = await chris.dialog(effect.name, constants.yesNo, 'Did ' + token.actor.name + ' move willingly?');

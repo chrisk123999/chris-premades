@@ -179,7 +179,7 @@ async function end(token, origin) {
     await Sequencer.EffectManager.endEffects({'name': 'Fire Shield', 'object': token});
 }
 async function stop({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.spell?.fireShield);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.fireShield);
     if (!effect) return;
     await chris.removeEffect(effect);
 }
@@ -188,7 +188,7 @@ async function onHit(workflow, targetToken) {
     let distance = chris.getDistance(workflow.token, targetToken);
     if (distance > 5) return;
     if (!constants.meleeAttacks.includes(workflow.item.system.actionType)) return;
-    let effect = targetToken.actor.effects.find(i => i.flags['chris-premades']?.spell?.fireShield);
+    let effect = chris.getEffects(targetToken.actor).find(i => i.flags['chris-premades']?.spell?.fireShield);
     if (!effect) return;
     let type = effect.flags['chris-premades'].spell.fireShield;
     let featureNames = {

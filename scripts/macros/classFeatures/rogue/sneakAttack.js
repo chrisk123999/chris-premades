@@ -149,7 +149,7 @@ async function animation(target, token, attackType) {
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties?.fin)) return;
+    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties.has('fin'))) return;
     let originFeature = chris.getItem(workflow.actor, 'Sneak Attack');
     if (!originFeature) return;
     if (!chris.perTurnCheck(originFeature, 'feature', 'sneakAttack')) return;

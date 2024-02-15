@@ -34,7 +34,7 @@ export let chris = {
         );
     },
     'findEffect': function _findEffect(actor, name) {
-        return actor.effects.getName(name);
+        return chris.getEffects(actor).find(i => i.name === name);
     },
     'createEffect': async function _createEffect(actor, effectData) {
         if (effectData.label) {
@@ -400,7 +400,8 @@ export let chris = {
         game.user.updateTokenTargets(targets);
     },
     'increaseExhaustion': async function _increaseExhaustion(actor, originUuid) {
-        let effect = actor.effects.find(eff => eff.name.includes('Exhaustion'));
+
+        let effect = chris.getEffects(actor).find(eff => eff.name.includes('Exhaustion'));
         if (!effect) {
             await chris.addCondition(actor, 'Exhaustion 1', false, originUuid);
             return;
@@ -1176,5 +1177,8 @@ export let chris = {
         }
         distance = Math.sqrt(heightDifference * heightDifference + distance * distance);
         return distance;
+    },
+    'getEffects': function _getEffects(actor) {
+        return Array.from(actor.allApplicableEffects());
     }
 }

@@ -131,7 +131,7 @@ async function onHit(workflow, targetToken) {
     let damageWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     if (damageWorkflow.targets.first().actor.system.attributes.hp.value != 0) return;
     await chris.removeEffect(effect);
-    let sourceEffect = sourceToken.actor.effects.find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === targetToken.document.uuid);
+    let sourceEffect = chris.getEffects(sourceToken.actor).find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === targetToken.document.uuid);
     if (!sourceEffect) return;
     await chris.removeEffect(sourceEffect);
 }
@@ -151,14 +151,14 @@ async function moveTarget(token, changes) {
     let selection = await chris.dialog('Warding Bond: Distance over 60 feet, remove effect?', constants.yesNo);
     if (!selection) return;
     await chris.removeEffect(effect);
-    let sourceEffect = sourceToken.actor.effects.find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === token.uuid);
+    let sourceEffect = chris.getEffects(sourceToken.actor).find(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid === token.uuid);
     if (!sourceEffect) return;
     await chris.removeEffect(sourceEffect);
 }
 async function moveSource(token, changes) {
     if (game.settings.get('chris-premades', 'LastGM') != game.user.id) return;
     if (!changes.x && !changes.y && !changes.elevation) return;
-    let effects = token.actor.effects.filter(eff => eff.flags['chris-premades']?.spell?.wardingBond?.targetUuid);
+    let effects = chris.getEffects(token.actor).filter(i => i.flags['chris-premades']?.spell?.wardingBond?.targetUuid);
     if (effects.length === 0) return;
     for (let i of effects) {
         let targetToken = await fromUuid(i.flags['chris-premades']?.spell?.wardingBond?.targetUuid);

@@ -6,9 +6,7 @@ export async function dualWielder(item, updates, options, userId) {
     let effect = chris.findEffect(actor, 'Dual Wielder');
     if (!effect) return;
     let items = actor.items.filter(i => i.type==='weapon' && i.system.equipped);
-    console.log(items);
-    let shields = actor.items.filter(i => i.system.armor?.type === 'shield' && i.system.equipped);
-    console.log(shields);
+    let shields = actor.items.filter(i => i.system.type.value === 'shield' && i.system.equipped);
     if (shields.length) {
         if (!effect.disabled) await effect.update({'disabled': true});
         return;

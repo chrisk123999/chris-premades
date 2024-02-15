@@ -8,7 +8,7 @@ export async function divineSmite({speaker, actor, token, character, item, args,
         validTypes.push('martialR');
         validTypes.push('simpleR');
     }
-    if (!validTypes.includes(workflow.item.system.weaponType)) return;
+    if (!validTypes.includes(workflow.item.system.type.value)) return;
     let feature = chris.getItem(workflow.actor, 'Divine Smite');
     if (!feature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'divineSmite', 250);

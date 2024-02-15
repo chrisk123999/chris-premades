@@ -258,7 +258,7 @@ async function remove(origin) {
     );
 }
 async function strangeMetabolism({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effects = workflow.actor.effects.filter(effect => effect.name.includes('Mutagen - ') && effect.name.includes('Negative Effects'));
+    let effects = chris.getEffects(workflow.actor).filter(effect => effect.name.includes('Mutagen - ') && effect.name.includes('Negative Effects'));
     let generatedMenu = [];
     for (let i of effects) {
         let originItem = await fromUuid(i.origin);
@@ -270,7 +270,7 @@ async function strangeMetabolism({speaker, actor, token, character, item, args, 
     if (generatedMenu.length === 1) selection = generatedMenu[0][1];
     if (!selection) selection = await chris.dialog('What Mutagen?', generatedMenu);
     if (!selection) return;
-    let effect = workflow.actor.effects.get(selection);
+    let effect = chris.getEffects(workflow.actor).find(i => i.id = selection);
     if (!effect) return;
     await effect.update({'disabled': true});
     let effectData = {
@@ -283,7 +283,7 @@ async function strangeMetabolism({speaker, actor, token, character, item, args, 
         'flags': {
             'effectmacro': {
                 'onDelete': {
-                    'script': 'await actor.effects.get("' + selection + '").update({"disabled": false});'
+                    'script': 'await chrisPremades.helpers.getEffects(actor).find(i => i.id === "' + selection + '").update({"disabled": false});'
                 }
             }
         }

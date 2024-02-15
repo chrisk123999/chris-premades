@@ -51,10 +51,8 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel, consume)
         }
     ];
 }
-let damageTypes;
 function damageTypeMenu() {
-    if (!damageTypes) damageTypes = Object.entries(CONFIG.DND5E.damageTypes).filter(i => i[0] != 'midi-none').map(j => [j[1], j[0]]);
-    return damageTypes;
+    return Object.entries(CONFIG.DND5E.damageTypes).filter(i => i[0] != 'midi-none').map(j => [j[1].label, j[0]]);
 }
 const attacks = [
     'mwak',

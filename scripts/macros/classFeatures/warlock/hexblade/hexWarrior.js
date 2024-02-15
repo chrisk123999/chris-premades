@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function hexWarrior({speaker, actor, token, character, item, args, scope, workflow}) {
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.two && i.system.equipped);
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('two') && i.system.equipped);
     if (!weapons.length) {
         ui.notifications.info('No valid equipped weapons to pick!');
     }
@@ -17,7 +17,8 @@ export async function hexWarrior({speaker, actor, token, character, item, args, 
     let score = workflow.actor.system.abilities[ability].mod;
     let dex = workflow.actor.system.abilities.dex.mod;
     let changed = false;
-    if (weaponData.system.properties.fin) {
+    let isFin = weaponData.system.properties.includes('fin');
+    if (isFin) {
         let mod = dex > score ? dex : score;
         if (mod <= cha) {
             ability = 'cha';

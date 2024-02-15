@@ -3,7 +3,7 @@ import {chris} from '../../helperFunctions.js';
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
     if (workflow.item.system.actionType != 'mwak') return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.spell?.searingSmite);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.searingSmite);
     if (!effect) return;
     if (effect.flags['chris-premades'].spell.searingSmite.used) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'searingSmite', 250);

@@ -3,7 +3,7 @@ export async function elementalWeapon({speaker, actor, token, character, item, a
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
-    let weapons = targetActor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc && i.system.equipped);
+    let weapons = targetActor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
     if (!weapons.length) {
         ui.notifications.warn('Target has no valid non-magical equipped weapons!');
         return;

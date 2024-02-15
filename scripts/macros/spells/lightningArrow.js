@@ -7,7 +7,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
     let queueSetup = await queue.setup(workflow.item.uuid, 'lightningArrow', 50);
     if (!queueSetup) return;
     let targetToken = workflow.targets.first();
-    if (!(workflow.item.system.properties?.thr || workflow.item.system.actionType === 'rwak')) return;
+    if (!(workflow.item.properties.has('thr') || workflow.item.system.actionType === 'rwak')) return;
     let diceNumber = 4;
     let itemAbility = workflow.item.system.ability;
     if (itemAbility === '') {

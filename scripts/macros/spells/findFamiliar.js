@@ -60,7 +60,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let weaponItems = sourceActor[0].items.filter(i => i.type === 'weapon');
         let saveItems = sourceActor[0].items.filter(i => i.system.save.dc != null);
         for (let i of weaponItems) {
-            setProperty(updates, 'embedded.Item.' + i.name + '.system.properties.mgc', true);
+            let properties = getProperty(updates, 'embedded.Item.' + i.name + '.system.properties');
+            properties.push('mgc');
+            setProperty(updates, 'embedded.Item.' + i.name + '.system.properties', properties);
         }
         let saveDC = chris.getSpellDC(workflow.item);
         for (let i of saveItems) {
@@ -96,7 +98,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     await chris.updateEffect(effect, updates3);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.spell?.findFamiliar === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliar);
     if (!effect) return;
     let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;
@@ -144,7 +146,7 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
         ui.notifications.info('Invalid Spell Type!');
         return false;
     }
-    let effect = workflow.actor.effects.find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar);
     if (!effect) return;
     let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;

@@ -38,7 +38,7 @@ async function trigger(token, trigger) {
     let exhaustionLevel = template.flags['chris-premades']?.spell?.sickeningRadiance?.[token.id]?.exhaustionLevel;
     if (exhaustionLevel === undefined) {
         let originalLevel = 0;
-        let effect = token.actor.effects.find(eff => eff.name.includes('Exhaustion'));
+        let effect = chris.getEffects(token.actor).find(i => i.name.includes('Exhaustion'));
         if (effect) {
             originalLevel = Number(effect.name.substring(11));
             if (isNaN(originalLevel)) originalLevel = 0;
@@ -53,7 +53,7 @@ async function removed(template) {
     for (let [key, value] of Object.entries(tokens)) {
         let token = game.canvas.tokens.get(key);
         if (!token) continue;
-        let effect = token.actor.effects.find(eff => eff.name.includes('Exhaustion'));
+        let effect = chris.getEffects(token.actor).find(eff => eff.name.includes('Exhaustion'));
         if (!effect) continue;
         await chris.removeEffect(effect);
         if (value.exhaustionLevel === 0) continue;

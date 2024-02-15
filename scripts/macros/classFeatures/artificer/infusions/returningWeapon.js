@@ -3,7 +3,7 @@ import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let infusionId = workflow.item.flags['chris-premades']?.feature?.infusion?.returningWeapon?.id;
     if (!infusionId) {
-        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties?.mgc && i.system.properties?.thr);
+        let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.properties?.thr);
         if (validWeapons.length === 0) {
             ui.notifications.info('No valid weapon to infuse!');
             return;
@@ -28,7 +28,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let properties = duplicate(workflow.item.system.properties);
     let attackBonus = duplicate(workflow.item.system.attackBonus);
     attackBonus = 1;
-    properties.mgc = true;
+    properties.add('mgc');
+    properties = Array.from(properties);
     workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attackBonus': attackBonus}, {'keepId': true});
     workflow.item.prepareData();
     workflow.item.prepareFinalAttributes();

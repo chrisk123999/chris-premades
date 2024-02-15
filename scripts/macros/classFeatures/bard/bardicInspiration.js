@@ -100,7 +100,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size || workflow.isFumble) return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.feature?.bardicInspiration);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.feature?.bardicInspiration);
     if (!effect) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
     if (!queueSetup) return;
@@ -140,7 +140,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size || workflow.item.type != 'spell') return;
     if ((workflow.item.system.actionType === 'rsak' || workflow.item.system.actionType === 'msak') && !workflow.hitTargets.size) return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.feature?.bardicInspiration);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.feature?.bardicInspiration);
     if (!effect) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'bardicInspiration', 150);
     if (!queueSetup) return;

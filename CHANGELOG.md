@@ -1,3 +1,9 @@
+# 0.10.0 Release:
+## Update Notes:
+- Initial beta support for D&D system version 3.0.2.
+- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
+- Do not update to this version unless unless you have all the required up to date dependency modules.
+  
 # 0.9.64 Release:
 ## Bug Fixes:
 - Spirit Guardians

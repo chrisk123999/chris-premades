@@ -103,7 +103,7 @@ async function trigger(token, trigger, reason) {
     }
 }
 async function removed(template) {
-    let tokens = game.canvas.scene.tokens.filter(i => i.actor.effects.find(j => j.origin === template.uuid));
+    let tokens = game.canvas.scene.tokens.filter(i => chris.getEffects(i.actor).find(j => j.origin === template.uuid));
     for (let token of tokens) {
         let templates = chris.tokenTemplates(token).map(i => canvas.scene.templates.get(i)).filter(j => j.flags.dnd5e?.origin != template.flags.dnd5e.origin);
         if (templates.length) return;

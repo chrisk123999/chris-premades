@@ -78,7 +78,7 @@ async function onUse({speaker, actor, token, character, item, args, scope, workf
     if (workflow.item.type != 'spell') return;
     if (workflow.targets.size != 1) return;
     if (workflow.targets.first().id != workflow.token.id) return;
-    let effect = Array.from(workflow.actor.effects).find((e) => e.flags['chris-premades']?.spell?.findGreaterSteed === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e.flags['chris-premades']?.spell?.findGreaterSteed);
     if (!effect) return;
     let steedId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!steedId) return;

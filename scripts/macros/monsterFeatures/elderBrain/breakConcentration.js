@@ -6,7 +6,7 @@ export async function breakConcentration({speaker, actor, token, character, item
     if (!conEffect) return;
     let conOriginUuid = conEffect.flags['midi-qol']?.isConcentration;
     if (!conOriginUuid) return;
-    let effect = targetActor.effects.find(eff => eff.flags['midi-qol']?.castData?.itemUuid === conOriginUuid);
+    let effect = chris.getEffects(targetActor).find(eff => eff.flags['midi-qol']?.castData?.itemUuid === conOriginUuid);
     if (!effect) return;
     let castLevel = chris.getEffectCastLevel(effect);
     if (!castLevel) return;

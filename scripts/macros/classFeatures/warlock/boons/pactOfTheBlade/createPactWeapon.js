@@ -61,7 +61,7 @@ async function create({speaker, actor, token, character, item, args, scope, work
     if (!selection) return;
     selection[0].name += ' (Pact Weapon)';
     selection[0].system.proficient = true;
-    selection[0].system.properties.mgc = true;
+    selection[0].system.properties.push('mgc');
     let hexWarrior = chris.getItem(workflow.actor, 'Hex Warrior');
     if (hexWarrior) {
         let cha = workflow.actor.system.abilities.cha.mod;
@@ -69,7 +69,8 @@ async function create({speaker, actor, token, character, item, args, scope, work
         let score = workflow.actor.system.abilities[ability].mod;
         let dex = workflow.actor.system.abilities.dex.mod;
         let changed = false;
-        if (selection[0].system.properties.fin) {
+        let isFin = selection[0].system.properties.includes('fin');
+        if (isFin) {
             let mod = dex > score ? dex : score;
             if (mod <= cha) {
                 ability = 'cha';

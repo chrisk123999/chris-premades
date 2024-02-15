@@ -54,7 +54,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let validTypes = [
         'morningstar'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Heartstopper');
     if (!feature) return;
     if (!feature.system.uses.value) return;

@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function reroll({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
@@ -11,7 +12,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerReroll', 390);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
+    if (!damageTypes.has(translate.damageType('piercing'))) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -62,7 +63,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerCritical', 250);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
+    if (!damageTypes.has(translate.damageType('piercing'))) {
         queue.remove(workflow.item.uuid);
         return;
     }

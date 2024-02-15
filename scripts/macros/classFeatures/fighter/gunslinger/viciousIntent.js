@@ -1,6 +1,7 @@
 import {queue} from '../../../../utility/queue.js';
 export async function viciousIntent({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.item?.system?.baseItem != 'firearmCR') return;
+    let baseItem = workflow.item?.system?.type?.baseItem;
+    if (baseItem != 'firearmCR') return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'viciousIntent', 50);
     if (!queueSetup) return;
     let critical = duplicate(workflow.item.system.critical);

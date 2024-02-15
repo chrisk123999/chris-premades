@@ -37,9 +37,8 @@
         "type": "system",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
-          "minimum": "2.4.0",
-          "verified": "2.4.1",
-		  "maximum": "2.4.1"
+          "minimum": "3.0.2",
+          "verified": "3.0.2"
         }
       }
     ],
@@ -49,8 +48,8 @@
         "type": "module",
         "manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
         "compatibility": {
-          "verified": "11.3.12",
-          "minimum": "11.3.12"
+          "minimum": "11.4.1",
+          "verified": "11.4.1"
         }
       },
       {
@@ -58,7 +57,8 @@
         "type": "module",
         "manifest": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "6.0.0"
+          "minimum": "6.0.3",
+          "verified": "6.0.3"
         }
       },
       {
@@ -66,7 +66,8 @@
         "type": "module",
         "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "1.19.0"
+          "minimum": "1.19.2",
+          "verified": "1.19.2"
         }
       },
       {
@@ -74,7 +75,8 @@
         "type": "module",
         "manifest": "https://github.com/krbz999/effectmacro/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "11.0.3"
+          "minimum": "11.2.1",
+          "verified": "11.2.1"
         }
       },
       {
@@ -82,7 +84,8 @@
         "type": "module",
         "manifest": "https://github.com/krbz999/templatemacro/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "11.0.1"
+          "minimum": "11.0.1",
+		  "verified": "11.0.1"
         }
       },
       {
@@ -90,6 +93,7 @@
         "type": "module",
         "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
         "compatibility": {
+          "minimum": "3.1.4",
           "verified": "3.1.4"
         }
       },
@@ -98,7 +102,8 @@
         "type": "module",
         "manifest": "https://raw.githubusercontent.com/KayelGee/token-attacher/master/module.json",
         "compatibility": {
-          "verified": "4.5.13"
+          "minimum": "v4.5.15",
+          "verified": "v4.5.15"
         }
       },
       {
@@ -106,7 +111,8 @@
         "type": "module",
         "manifest": "https://github.com/krbz999/babonus/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "11.5.3"
+          "minimum": "11.8.0",
+          "verified": "11.8.0"
         }
       },
       {
@@ -114,6 +120,7 @@
         "type": "module",
         "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
         "compatibility": {
+          "minimum": "1.0.13",
           "verified": "1.0.13"
         }
       },
@@ -122,7 +129,8 @@
         "type": "module",
         "manifest": "https://gitlab.com/tposney/dae/raw/v10/package/module.json",
         "compatibility": {
-          "verified": "11.1.3"
+          "minimum": "11.3.0.5",
+          "verified": "11.3.0.5"
         }
       },
       {
@@ -130,7 +138,17 @@
         "type": "module",
         "manifest": "https://github.com/otigon/automated-jb2a-animations/releases/latest/download/module.json",
         "compatibility": {
-          "verified": "4.2.69"
+          "minimum": "4.2.71",
+          "verified": "4.2.71"
+        }
+      },
+      {
+        "id": "times-up",
+        "type": "module",
+        "manifest": "https://gitlab.com/tposney/times-up/raw/dndv3/package/module.json",
+        "compatibility": {
+          "verified": "11.3.1",
+          "verified": "11.3.1"
         }
       }
     ],
@@ -181,6 +199,14 @@
         "manifest": "https://github.com/jackkerouac/animated-spell-effects-cartoon/releases/download/latest/module.json",
         "compatibility": {
           "verified": "0.4.5"
+        }
+      },
+      {
+        "id": "universal-animations",
+        "type": "module",
+        "manifest": "https://github.com/Autumn225/universal-animations/releases/latest/download/module.json",
+        "compatibility": {
+          "verified": "0.2.0"
         }
       }
     ]

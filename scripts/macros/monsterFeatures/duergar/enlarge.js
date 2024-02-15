@@ -1,7 +1,8 @@
 import {queue} from '../../../utility/queue.js';
 export async function enlarge({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.item.type != 'weapon') return;
-    if (workflow.item.system.properties?.fin) {
+    let isFin = workflow.item.system.properties.has('fin');
+    if (isFin) {
         let str = workflow.actor.system.abilities.str.value;
         let dex = workflow.actor.system.abilities.dex.value;
         if (str < dex) return;

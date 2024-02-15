@@ -4,7 +4,7 @@ import {constants} from '../../constants.js';
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
     if (workflow.item.system.actionType != 'mwak') return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.spell?.thunderousSmite);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.thunderousSmite);
     if (!effect) return;
     let targetToken = workflow.targets.first();
     let queueSetup = await queue.setup(workflow.item.uuid, 'thunderousSmite', 250);
