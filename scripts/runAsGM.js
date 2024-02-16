@@ -9,7 +9,6 @@ async function createEffect(actorUuid, effectData) {
     if (!actor) return;
     if (actor instanceof TokenDocument) actor = actor.actor;
     if (!actor) return;
-    effectData.transfer = true;
     let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
     return effects[0].uuid;
 }
