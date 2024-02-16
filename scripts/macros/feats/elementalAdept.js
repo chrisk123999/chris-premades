@@ -27,8 +27,7 @@ async function early(workflow) {
         'duration': {
             'seconds': 1
         },
-        'changes': changes,
-        'transfer': true
+        'changes': changes
     }
     workflow.targets.forEach(async function(token, key, set) {
         for (let i of values) {

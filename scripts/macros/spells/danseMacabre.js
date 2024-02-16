@@ -115,8 +115,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
                     'script': chris.functionToString(effectMacro)
                 }
             }
-        },
-        'transfer': true
+        }
     };
     let targetTokens = [];
     for (let i = 0; nearbyTokens.length > i; i++) {

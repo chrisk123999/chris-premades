@@ -67,8 +67,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     ],
                     'macroRepeat': 'none'
                 }
-            },
-            'transfer': true
+            }
         };
         await chris.createEffect(workflow.actor, effectData);
     } else {

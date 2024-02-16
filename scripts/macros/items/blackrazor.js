@@ -52,8 +52,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'value': 'true',
                     'priority': 20
                 }
-            ],
-            'transfer': true
+            ]
         };
         await chris.createEffect(workflow.actor, effectData);
     } else {

@@ -174,8 +174,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                             'button': featureData.name
                         }
                     }
-                },
-                'transfer': true
+                }
             };
             if (druidLevels === 20) delete effectData.changes;
             let invalidTypes = [

@@ -133,9 +133,6 @@ export async function starryForm({speaker, actor, token, character, item, args, 
                     'script': chris.functionToString(effectMacro)
                 }
             },
-            'dae': {
-                'transfer': true
-            },
             'chris-premades': {
                 'feature': {
                     'starryForm': true

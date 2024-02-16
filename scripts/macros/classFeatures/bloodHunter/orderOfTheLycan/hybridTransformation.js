@@ -141,9 +141,6 @@ async function transformation({speaker, actor, token, character, item, args, sco
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
-            },
-            'dae': {
-                'transfer': true
             }
         }
     }

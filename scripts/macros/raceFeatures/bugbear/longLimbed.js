@@ -14,8 +14,7 @@ export async function longLimbed(origin, actor) {
                 'value': '+5',
                 'priority': 20
             }
-        ],
-        'transfer': true
+        ]
     };
     await chris.createEffect(actor, effectData);
     if (chris.getConfiguration(origin, 'displaycard') ?? true) await origin.displayCard();

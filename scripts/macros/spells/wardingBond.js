@@ -33,8 +33,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     }
                 }
             }
-        },
-        'transfer': true
+        }
     };
     let updates = {
         'embedded': {
@@ -90,8 +89,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'value': true,
                 'priority': 20
             }
-        ],
-        'transfer': true
+        ]
     };
     await chris.createEffect(workflow.targets.first().actor, effectData2);
 }

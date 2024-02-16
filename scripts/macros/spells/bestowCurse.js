@@ -108,12 +108,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                         'value': workflow.targets.first().id,
                         'priority': 20
                     }
-                ],
-                'flags': {
-                    'dae': {
-                        'transfer': true
-                    }
-                }
+                ]
             };
             if (!isNaN(duration)) effectData.duration.seconds = duration;
             await chris.createEffect(workflow.actor, effectData);
