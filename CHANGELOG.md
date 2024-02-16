@@ -1,5 +1,6 @@
 # 0.10.1 Release:
 - Added user interface settings.
+- Macro fixes.
   
 # 0.10.0 Release:
 ## Update Notes:
