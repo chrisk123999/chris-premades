@@ -2,8 +2,8 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills} from './patching.js';
-import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
+import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
@@ -1408,6 +1408,37 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Twilight Shroud', 'Class Features');
+    game.settings.register(moduleName, 'Display Temporary Effects', {
+        'name': 'Display Temporary Effects',
+        'hint': 'When enabled temporary effects will displayed in the "Status Effects" window, allowing you to delete them from there.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Enabled (Confirm Deletion)',
+            2: 'Enabled'
+        },
+        'onChange': value => {
+            if (value) {
+                patchToggleEffect(true);
+            } else {
+                patchToggleEffect(false);
+            }
+        }
+    });
+    addMenuSetting('Display Temporary Effects', 'User Interface');
+    game.settings.register(moduleName, 'Display Sidebar Macros', {
+        'name': 'Display Sidebar Macros',
+        'hint': 'When enabled a macros directory will be added to the sidebar.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': () => debouncedReload()
+    });
+    addMenuSetting('Display Sidebar Macros', 'User Interface');
 //    game.settings.register(moduleName, 'Metric Distance', {
 //        'name': 'Use Metric Distance',
 //        'hint': 'When enabled macros from this module will use metric for distance calculations.',
@@ -1538,6 +1569,14 @@ export function registerSettings() {
         'hint': 'Settings for manual rolling.',
         'icon': 'fas fa-calculator',
         'type': chrisSettingsManualRolling,
+        'restricted': true
+    });
+    game.settings.registerMenu(moduleName, 'User Interface', {
+        'name': 'User Interface',
+        'label': 'User Interface',
+        'hint': 'Settings that modify the user interface.',
+        'icon': 'fas fa-display',
+        'type': chrisSettingsInterface,
         'restricted': true
     });
 /*    game.settings.registerMenu(moduleName, 'Randomizer', {

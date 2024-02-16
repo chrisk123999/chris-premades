@@ -15,7 +15,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills} from './patching.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {queue} from './utility/queue.js';
 import {registerSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
@@ -40,10 +40,12 @@ import {summonEffects} from './macros/animations/summonEffects.js';
 import {actionsTab} from './integrations/tidy5eSheet.js';
 import {tours} from './tours.js';
 import {addChatButton} from './chat.js';
+import {enableMacroSidebar} from './userInterface.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
     setConfig();
+    if (game.settings.get('chris-premades', 'Display Sidebar Macros')) enableMacroSidebar();
 });
 Hooks.once('socketlib.ready', async function() {
     socket = socketlib.registerModule('chris-premades');
@@ -229,6 +231,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.RollComplete', macros.twilightShroud.saveLate);
     }
     Hooks.on('createToken', addActions);
+    if (game.settings.get('chris-premades', 'Display Temporary Effects')) await patchToggleEffect(true);
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

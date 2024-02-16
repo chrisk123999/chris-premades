@@ -1,3 +1,6 @@
+# 0.10.1 Release:
+- Added user interface settings.
+  
 # 0.10.0 Release:
 ## Update Notes:
 - Initial beta support for D&D system version 3.0.2.

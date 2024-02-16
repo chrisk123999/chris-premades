@@ -164,6 +164,12 @@ export class chrisSettingsAnimations extends chrisSettingsBase {
         this.category = 'Animations';
     }
 }
+export class chrisSettingsInterface extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'User Interface';
+    }
+}
 export class chrisSettingsTroubleshoot extends FormApplication {
     constructor() {
         super();

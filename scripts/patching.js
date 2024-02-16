@@ -1,6 +1,7 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 import {saves, skills} from './macros.js';
+import {tempEffectHUD} from './userInterface.js';
 export function patchSkills(enabled) {
     if (enabled) {
         libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill', doRollSkill, 'WRAPPER');
@@ -134,4 +135,36 @@ function sourceName(wrapped, ...args) {
         }
     }
     return name;
+}
+let toggleEffectPatched = false;
+export async function patchToggleEffect(enabled) {
+    if (enabled) {
+        if (toggleEffectPatched) return;
+        libWrapper.register('chris-premades', 'TokenHUD.prototype._onToggleEffect', toggleEffect, 'MIXED');
+        libWrapper.ignore_conflicts('chris-premades', 'dfreds-convenient-effects', 'TokenHUD.prototype._onToggleEffect');
+        Hooks.on('renderTokenHUD', tempEffectHUD);
+        toggleEffectPatched = true;
+    } else {
+        if (!toggleEffectPatched) return;
+        libWrapper.unregister('chris-premades', 'TokenHUD.prototype._onToggleEffect');
+        Hooks.off('renderTokenHUD', tempEffectHUD);
+        toggleEffectPatched = false;
+    }
+}
+async function toggleEffect(wrapped, ...args) {
+    let [event] = args;
+    let img = event.currentTarget;
+    let effectUuid = img.dataset.effectUuid;
+    if (effectUuid) {
+        let effect = await fromUuid(effectUuid);
+        if (effect) {
+            if (game.settings.get('chris-premades', 'Display Temporary Effects') === 1) {
+                let selection = await chris.dialog(effect.name, constants.yesNo, 'Delete "' + effect.name + '" effect?');
+                if (!selection) return;
+            }
+            await chris.removeEffect(effect);
+        }
+    } else {
+        wrapped(event);
+    }
 }

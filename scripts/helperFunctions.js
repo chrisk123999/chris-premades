@@ -42,6 +42,7 @@ export let chris = {
             effectData.name = effectData.label;
             delete effectData.label;
         }
+        effectData.transfer = true;
         if (chris.firstOwner(actor).id === game.user.id) {
             let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
             return effects[0];
