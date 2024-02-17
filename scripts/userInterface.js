@@ -7,7 +7,8 @@ export function tempEffectHUD(app, html, data) {
     statusEffects.append(effectIcons);
 }
 function macroSidebar(app, html, data) {
-    html[0].querySelector('#sidebar-tabs').style.setProperty('--sidebar-tab-width', `${Math.floor(parseInt(getComputedStyle(html[0]).getPropertyValue('--sidebar-width')) / (document.querySelector("#sidebar-tabs").childElementCount + 1))}px`);
+	let width = Math.floor(parseInt(getComputedStyle(html[0]).getPropertyValue('--sidebar-width')) / (document.querySelector('#sidebar-tabs').childElementCount + 1));
+    html[0].querySelector('#sidebar-tabs').style.setProperty('--sidebar-tab-width', width + 'px');
     let tab = document.createElement('a');
     tab.classList.add('item');
 	tab.dataset.tab = 'macros';

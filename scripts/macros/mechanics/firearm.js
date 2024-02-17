@@ -166,6 +166,7 @@ async function critical(workflow) {
     let feature = chris.getItem(workflow.actor, 'Hemorrhaging Critical');
     if (!feature) return;
     let damage = Math.floor(workflow.damageItem.appliedDamage / 2);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
     let effectData = {
         'label': feature.name,
         'icon': feature.img,
@@ -177,7 +178,7 @@ async function critical(workflow) {
             {
                 'key': 'flags.midi-qol.OverTime',
                 'mode': 0,
-                'value': 'turn=end,damageRoll=' + damage + ',damageType=' + workflow.defaultDamageType + ',label=Hemorrhaging Critical',
+                'value': 'turn=end,damageRoll=' + damage + ',damageType=' + defaultDamageType + ',label=Hemorrhaging Critical',
                 'priority': 20
             }
         ],

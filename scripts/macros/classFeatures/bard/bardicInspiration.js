@@ -157,7 +157,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         return;
     }
     let targetDamage = workflow.damageList.find(i => i.tokenId === targetTokenID);
-    let defaultDamageType = workflow.defaultDamageType;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
     let roll = await new Roll(bardDice + '[' + defaultDamageType + ']').roll({async: true});
     roll.toMessage({
         'rollMode': 'roll',
@@ -184,7 +184,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         }
     );
     targetDamage.totalDamage += damageTotal;
-    if (workflow.defaultDamageType === 'healing') {
+    if (defaultDamageType === 'healing') {
         targetDamage.newHP += roll.total;
         targetDamage.hpDamage -= damageTotal;
         targetDamage.appliedDamage -= damageTotal;

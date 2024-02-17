@@ -51,7 +51,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 damageType = 'poison';
                 break;
             case 'war-domain':
-                damageType = workflow.defaultDamageType;
+                damageType = workflow.damageRolls[0].terms[0].flavor;
                 break;
             default:
                 damageType = 'radiant';

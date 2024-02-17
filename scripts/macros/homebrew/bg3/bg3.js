@@ -267,7 +267,8 @@ let effects = [
 ];
 async function healing(workflow) {
     if (!workflow.targets.size) return;
-    if (workflow.defaultDamageType != 'healing') return;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    if (defaultDamageType != 'healing') return;
     for (let i of Array.from(workflow.targets)) {
         for (let j of effects) {
             let effect = chris.findEffect(i.actor, j);

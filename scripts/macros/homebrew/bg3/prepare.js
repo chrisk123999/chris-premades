@@ -7,7 +7,8 @@ export async function prepare({speaker, actor, token, character, item, args, sco
     let queueSetup = await queue.setup(workflow.item.uuid, 'prepare', 250);
     if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
-    let bonusDamageFormula = workflow.actor.system.abilities.str.mod + '[' + workflow.defaultDamageType + ']';
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let bonusDamageFormula = workflow.actor.system.abilities.str.mod + '[' + defaultDamageType + ']';
     if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
     let damageRoll = await new Roll(damageFormula).roll({async: true});

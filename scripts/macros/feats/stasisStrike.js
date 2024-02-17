@@ -4,7 +4,8 @@ import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.token || !workflow.damageRoll) return;
-    if (constants.nonDamageTypes.includes(workflow.defaultDamageType)) return;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    if (constants.nonDamageTypes.includes(defaultDamageType)) return;
     let targetToken = workflow.targets.first();
     if (chris.getDistance(workflow.token, targetToken) > 60) return;
     let feature = chris.getItem(workflow.actor, 'Agent of Order: Stasis Strike');
@@ -38,7 +39,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
 }
 async function damageMany({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size < 2 || !workflow.token || !workflow.damageRoll) return;
-    if (constants.nonDamageTypes.includes(workflow.defaultDamageType)) return;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    if (constants.nonDamageTypes.includes(defaultDamageType)) return;
     let feature = chris.getItem(workflow.actor, 'Agent of Order: Stasis Strike');
     if (!feature) return;
     if (!feature.system.uses.value) return;

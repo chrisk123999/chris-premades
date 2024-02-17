@@ -8,7 +8,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (targetId != targetToken.id) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
-    let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[' + workflow.defaultDamageType + ']';
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[' + defaultDamageType + ']';
     let damageRoll = await new Roll(damageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
@@ -27,18 +28,19 @@ async function damageApplication({speaker, actor, token, character, item, args, 
         queue.remove(workflow.item.uuid);
         return;
     }
-    let hasDI = chris.checkTrait(targetActor, 'di', workflow.defaultDamageType);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let hasDI = chris.checkTrait(targetActor, 'di', defaultDamageType);
     if (hasDI) {
         queue.remove(workflow.item.uuid);
         return;
     }
     let damageTotal = workflow.actor.system.attributes.prof;
-    let hasDR = chris.checkTrait(targetActor, 'dr', workflow.defaultDamageType);
+    let hasDR = chris.checkTrait(targetActor, 'dr', defaultDamageType);
     if (hasDR) damageTotal = Math.floor(damageTotal / 2);
     targetDamage.damageDetail[0].push(
         {
             'damage': damageTotal,
-            'type': workflow.defaultDamageType
+            'type': defaultDamageType
         }
     );
     targetDamage.totalDamage += damageTotal;

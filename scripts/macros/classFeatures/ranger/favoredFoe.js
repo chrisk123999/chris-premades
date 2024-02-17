@@ -5,7 +5,8 @@ async function extraDamage(workflow) {
     let damageFormula = workflow.damageRoll._formula;
     let scale = workflow.actor.system.scale?.ranger?.['favored-foe']?.formula;
     if (!scale) return;
-    let bonusDamageFormula = scale + '[' + workflow.defaultDamageType + ']';
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let bonusDamageFormula = scale + '[' + defaultDamageType + ']';
     if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamageFormula).roll({async: true});
     await workflow.setDamageRoll(damageRoll);

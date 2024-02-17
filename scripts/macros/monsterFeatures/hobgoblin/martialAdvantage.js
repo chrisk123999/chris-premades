@@ -19,7 +19,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
     if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.martialAdvantage.turn', game.combat.round + '-' + game.combat.turn);
     let damageFormula = workflow.damageRoll._formula;
-    let bonusDamage = feature.system.damage.parts[0][0] + '[' + workflow.defaultDamageType + ']';
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let bonusDamage = feature.system.damage.parts[0][0] + '[' + defaultDamageType + ']';
     if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
     let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamage).roll({async: true});
     await workflow.setDamageRoll(damageRoll);

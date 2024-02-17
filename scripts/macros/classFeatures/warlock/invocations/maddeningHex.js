@@ -3,5 +3,6 @@ export async function maddeningHex({speaker, actor, token, character, item, args
     if (workflow.targets.size != 1) return;
     let targets = chris.findNearby(workflow.targets.first(), 5, 'ally');
     if (targets.length === 0) return;
-    await chris.applyDamage(targets, workflow.damageTotal, workflow.defaultDamageType);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    await chris.applyDamage(targets, workflow.damageTotal, defaultDamageType);
 }
