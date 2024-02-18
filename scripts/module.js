@@ -119,11 +119,11 @@ Hooks.once('ready', async function() {
     }
     await loadTriggers();
     if (game.settings.get('chris-premades', 'Condition Resistance')) {
-        Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+        Hooks.on('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
     }
     if (game.settings.get('chris-premades', 'Condition Vulnerability')) {
-        Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+        Hooks.on('midi-qol.postPreambleComplete', macros.conditionVulnerabilityEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
     }
     if (game.settings.get('chris-premades', 'Beacon of Hope')) Hooks.on('midi-qol.preTargetDamageApplication', macros.beaconOfHope);

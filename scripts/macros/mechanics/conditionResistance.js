@@ -33,14 +33,14 @@ export async function conditionResistanceEarly(workflow) {
         });
     });
     if (!itemConditions.size) return;
-    workflow.targets.forEach(tokenDoc => {
-        itemConditions.forEach(async condition => {
-            if (tokenDoc.document.actor.flags['chris-premades']?.CR?.[condition] === 1) {
+    await Promise.all(workflow.targets.map(async tokenDoc => {
+        await Promise.all(itemConditions.map(async condition => {
+            if (tokenDoc.document.actor.flags['chris-premades']?.CR?.[condition]) {
                 await chris.createEffect(tokenDoc.document.actor, effectData);
                 cleanUpList.push(tokenDoc.document.actor);
             }
-        });
-    });
+        }));
+    }));
 }
 export async function conditionResistanceLate(workflow) {
     for (let i of cleanUpList) {

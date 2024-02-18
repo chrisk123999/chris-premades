@@ -465,10 +465,10 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+                Hooks.on('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
                 Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
             } else {
-                Hooks.off('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+                Hooks.off('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
                 Hooks.off('midi-qol.RollComplete', macros.conditionResistanceLate);
             }
         }
@@ -483,10 +483,10 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+                Hooks.on('midi-qol.postPreambleComplete', macros.conditionVulnerabilityEarly);
                 Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
             } else {
-                Hooks.off('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+                Hooks.off('midi-qol.postPreambleComplete', macros.conditionVulnerabilityEarly);
                 Hooks.off('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
             }
         }
