@@ -27,10 +27,10 @@ export async function magicMissile({speaker, actor, token, character, item, args
     if (!game.settings.get('chris-premades', 'Magic Missile Toggle') && !chris.getConfiguration(workflow.item, 'homebrew')) {
         let damageFormula = '1d4[force] + 1';
         if (chris.getItem(workflow.actor, 'Empowered Evocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
-        let damageRoll = await new Roll(damageFormula).roll({async: true});
+        let damageRoll = await new Roll(damageFormula).roll({'async': true});
         damageRoll.toMessage({
             rollMode: 'roll',
-            speaker: {alias: name},
+            speaker: {'alias': name},
             flavor: workflow.item.name
         });
         featureData.system.damage.parts = [
