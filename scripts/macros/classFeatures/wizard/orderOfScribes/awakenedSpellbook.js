@@ -1,7 +1,7 @@
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 export async function awakenedSpellbook({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size === 0) return;
+    if (!workflow.targets.size) return;
     if (workflow.item.type != 'spell') {
         if (workflow.item.type === 'feat') {
             if (!workflow.item.flags['chris-premades']?.spell?.castData) return;
@@ -15,10 +15,11 @@ export async function awakenedSpellbook({speaker, actor, token, character, item,
     let oldFlavor = oldDamageRoll.terms?.map(term=>term?.flavor)
     let spells = workflow.actor.items.filter(i => i.type === 'spell' && i.system?.level === spellLevel && i.system?.damage?.parts?.length > 0);
     let values = [];
-    let effect = chris.findEffect(workflow.actor, 'Awakened Spellbook: Replace Damage');
-    if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
-    if (!originItem) return;
+    let originItem = chris.getItem(workflow.actor, 'Awakened Spellbook: Replace Damage');
+    if (!originItem) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     switch (spellLevel){
         case 1:
             if (actor.items.getName('Magic Missile') || chris.getConfiguration(originItem, 'magicmissile')) values.push('force');

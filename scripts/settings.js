@@ -1,10 +1,10 @@
 import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
-import {tokenMoved, combatUpdate} from './utility/movement.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills, patching} from './patching.js';
-import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
-import {fixOrigin, itemDC} from './utility/effect.js';
+import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
+import {patchActiveEffectSourceName, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
+import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
 import {rest} from './utility/rest.js';
@@ -47,7 +47,15 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': Number,
-        'default': 8
+        'default': 9
+    });
+    game.settings.register(moduleName, 'Tour Message', {
+        'name': 'Tour Message',
+        'hint': 'Check if the GM has seen the tour message.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
     });
     game.settings.register(moduleName, 'Show Names', {
         'name': 'Show Names',
@@ -95,8 +103,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value && game.user.isGM) {
                 Hooks.on('updateToken', tokenMoved);
+                Hooks.on('preUpdateToken', tokenMovedEarly);
             } else if (game.user.isGM) {
                 Hooks.off('updateToken', tokenMoved);
+                Hooks.off('preUpdateToken', tokenMovedEarly);
             }
         }
     });
@@ -164,6 +174,8 @@ export function registerSettings() {
                 Hooks.on('updateToken', effectAuraHooks.updateToken);
                 Hooks.on('createToken', effectAuraHooks.createToken);
                 Hooks.on('deleteToken', effectAuraHooks.deleteToken);
+                Hooks.on('createActiveEffect', effectAuraHooks.createRemoveEffect);
+                Hooks.on('deleteActiveEffect', effectAuraHooks.createRemoveEffect);
             } else if (game.user.isGM) {
                 Hooks.off('preUpdateActor', effectAuraHooks.preActorUpdate);
                 Hooks.off('updateActor', effectAuraHooks.actorUpdate);
@@ -171,6 +183,8 @@ export function registerSettings() {
                 Hooks.off('updateToken', effectAuraHooks.updateToken);
                 Hooks.off('createToken', effectAuraHooks.createToken);
                 Hooks.off('deleteToken', effectAuraHooks.deleteToken);
+                Hooks.off('createActiveEffect', effectAuraHooks.createRemoveEffect);
+                Hooks.off('deleteActiveEffect', effectAuraHooks.createRemoveEffect);
             }
         }
     });
@@ -185,8 +199,14 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 Hooks.on('preCreateActiveEffect', itemDC);
+                Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
+                Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
             } else {
                 Hooks.off('preCreateActiveEffect', itemDC);
+                Hooks.off('preCreateActiveEffect', noEffectAnimationCreate);
+                Hooks.off('preDeleteActiveEffect', noEffectAnimationDelete);
+                Hooks.off('getActiveEffectConfigHeaderButtons', effectTitleBar);
             }
             patchActiveEffectSourceName(value);
         }
@@ -358,20 +378,52 @@ export function registerSettings() {
         'type': Object,
         'default': {
             'CPR': 0,
-            'midi-srd.Midi SRD Feats': 1,
-            'midi-srd.Midi SRD Spells': 2,
-            'midi-srd.Midi SRD Items': 3,
-            'midi-qol.midiqol-sample-items': 4
+            'GPS': 1,
+            'MISC': 2,
+            'midi-srd.Midi SRD Feats': 3,
+            'midi-srd.Midi SRD Spells': 4,
+            'midi-srd.Midi SRD Items': 5
         }
     });
     addMenuSetting('Additional Compendium Priority', 'Compendiums');
+    game.settings.register(moduleName, 'GPS Support', {
+        'name': 'Gambit\'s Premades Support',
+        'hint': 'Include Gambit\'s premades in the medkit.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Yes | Exclude Homebrew',
+            2: 'Yes | Include Everything'
+        }
+    });
+    addMenuSetting('GPS Support', 'Compendiums');
+    game.settings.register(moduleName, 'MISC Support', {
+        'name': 'Midi Item Showcase - Community Support',
+        'hint': 'Include Midi Item Showcase in the medkit.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Yes | Exclude Homebrew',
+            2: 'Yes | Exclude Unearthed Arcana',
+            3: 'Yes | Exclude Homebrew and Unearthed Arcana',
+            4: 'Yes | Include Everything'
+        }
+    });
+    addMenuSetting('MISC Support', 'Compendiums');
     game.settings.register(moduleName, 'Item Compendium', {
         'name': 'Personal Item Compendium',
         'hint': 'A compendium full of items to pick from (DDB items compendium by default).',
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-items'
+        'default': 'world.ddb-' + game.world.id + '-ddb-items',
+        'select': true
     });
     addMenuSetting('Item Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Spell Compendium', {
@@ -380,7 +432,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-spells'
+        'default': 'world.ddb-' + game.world.id + '-ddb-spells',
+        'select': true
     });
     addMenuSetting('Spell Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Monster Compendium', {
@@ -389,7 +442,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-monsters'
+        'default': 'world.ddb-' + game.world.id + '-ddb-monsters',
+        'select': true
     });
     addMenuSetting('Monster Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Racial Trait Compendium', {
@@ -398,7 +452,8 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': String,
-        'default': 'world.ddb-' + game.world.id + '-ddb-racial-traits'
+        'default': 'world.ddb-' + game.world.id + '-ddb-racial-traits',
+        'select': true
     });
     addMenuSetting('Racial Trait Compendium', 'Compendiums');
     game.settings.register(moduleName, 'Condition Resistance', {
@@ -410,10 +465,10 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+                Hooks.on('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
                 Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
             } else {
-                Hooks.off('midi-qol.preItemRoll', macros.conditionResistanceEarly);
+                Hooks.off('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
                 Hooks.off('midi-qol.RollComplete', macros.conditionResistanceLate);
             }
         }
@@ -428,10 +483,10 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+                Hooks.on('midi-qol.postPreambleComplete', macros.conditionVulnerabilityEarly);
                 Hooks.on('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
             } else {
-                Hooks.off('midi-qol.preItemRoll', macros.conditionVulnerabilityEarly);
+                Hooks.off('midi-qol.postPreambleComplete', macros.conditionVulnerabilityEarly);
                 Hooks.off('midi-qol.RollComplete', macros.conditionVulnerabilityLate);
             }
         }
@@ -462,9 +517,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.beaconOfHope);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.beaconOfHope);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.beaconOfHope);
             }
         }
     });
@@ -510,9 +565,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.deathWard);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.deathWard);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.deathWard);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.deathWard);
             }
         }
     });
@@ -526,17 +581,33 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preambleComplete', macros.elementalAdept.early);
+                Hooks.on('midi-qol.postPreambleComplete', macros.elementalAdept.early);
                 Hooks.on('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
                 Hooks.on('midi-qol.RollComplete', macros.elementalAdept.late);
             } else {
-                Hooks.off('midi-qol.preambleComplete', macros.elementalAdept.early);
+                Hooks.off('midi-qol.postPreambleComplete', macros.elementalAdept.early);
                 Hooks.off('midi-qol.preDamageRollComplete', macros.elementalAdept.damage);
                 Hooks.off('midi-qol.RollComplete', macros.elementalAdept.late);
             }
         }
     });
     addMenuSetting('Elemental Adept', 'Feats');
+    game.settings.register(moduleName, 'Dual Wielder', {
+        'name': 'Dual Wielder Automation',
+        'hint': 'Enabling this allows the automation of the Dual Wielder feat via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('updateItem', macros.dualWielder);
+            } else {
+                Hooks.off('updateItem', macros.dualWielder);
+            }
+        }
+    });
+    addMenuSetting('Dual Wielder', 'Feats');
     game.settings.register(moduleName, 'Mirror Image', {
         'name': 'Mirror Image Automation',
         'hint': 'Enabling this allows the automation of the Mirror Image spell via the use of Midi-Qol hooks.',
@@ -612,13 +683,26 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.RollComplete', macros.cleave);
+                Hooks.on('midi-qol.RollComplete', macros.cleave.hit);
+                Hooks.on('midi-qol.preCheckHits', macros.cleave.attack);
+                Hooks.on('midi-qol.preDamageRollComplete', macros.cleave.damage);
             } else {
-                Hooks.off('midi-qol.RollComplete', macros.cleave);
+                Hooks.off('midi-qol.RollComplete', macros.cleave.hit);
+                Hooks.off('midi-qol.preCheckHits', macros.cleave.attack);
+                Hooks.off('midi-qol.preDamageRollComplete', macros.cleave.damage);
             }
         }
     });
     addMenuSetting('DMG Cleave', 'Mechanics');
+    game.settings.register(moduleName, 'DMG Cleave Full Health', {
+        'name': 'DMG Cleave Damaged Tokens',
+        'hint': 'When enabled the DMG cleave will also prompt on a target even if they didn\'t start with full health.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('DMG Cleave Full Health', 'Mechanics');
     game.settings.register(moduleName, 'Wildhunt', {
         'name': 'Shifter Wildhunt Automation',
         'hint': 'Enabling this allows the automation of the Shifter Wildhunt feature via the use of Midi-Qol hooks.',
@@ -644,9 +728,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.monster.zombie.undeadFortitude);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.monster.zombie.undeadFortitude);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.monster.zombie.undeadFortitude);
             }
         }
     });
@@ -676,9 +760,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.mastersAmulet);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.mastersAmulet);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.mastersAmulet);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.mastersAmulet);
             }
         }
     });
@@ -735,9 +819,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.strengthOfTheGrave);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.strengthOfTheGrave);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.strengthOfTheGrave);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.strengthOfTheGrave);
             }
         }
     });
@@ -751,9 +835,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.relentlessEndurance);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.relentlessEndurance);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.relentlessEndurance);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.relentlessEndurance);
             }
         }
     });
@@ -784,10 +868,10 @@ export function registerSettings() {
         'onChange': value => {
             if (value) {
                 if (game.user.isGM) Hooks.on('updateToken', macros.emboldeningBond.move);
-                Hooks.on('midi-qol.damageApplied', macros.emboldeningBond.damage);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.emboldeningBond.damage);
             } else {
                 if (game.user.isGM) Hooks.off('updateToken', macros.emboldeningBond.move);
-                Hooks.off('midi-qol.damageApplied', macros.emboldeningBond.damage);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.emboldeningBond.damage);
             }
         }
     });
@@ -803,10 +887,11 @@ export function registerSettings() {
             if (value) {
                 Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
-                patching();
+                Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
             } else {
                 Hooks.off('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
+                Hooks.off('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
             }
         }
     });
@@ -820,6 +905,15 @@ export function registerSettings() {
         'default': true
     });
     addMenuSetting('Ignore GM', 'Manual Rolling');
+    game.settings.register(moduleName, 'Manual Rolling Players', {
+        'name': 'Player Settings',
+        'hint': 'Set rolling options per-player here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {}
+    });
+    addMenuSetting('Manual Rolling Players', 'Manual Rolling');
     game.settings.register(moduleName, 'Use Randomizer', {
         'name': 'Randomizer',
         'hint': 'Change this.',
@@ -875,9 +969,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.arcaneWard.damage);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.arcaneWard.damage);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
             }
         }
     });
@@ -891,9 +985,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.damageApplied', macros.soothePain);
+                Hooks.on('midi-qol.preTargetDamageApplication', macros.soothePain);
             } else {
-                Hooks.off('midi-qol.damageApplied', macros.soothePain);
+                Hooks.off('midi-qol.preTargetDamageApplication', macros.soothePain);
             } 
         }
     });
@@ -977,9 +1071,9 @@ export function registerSettings() {
         'default': false,
         'onChange': value => {
             if (value) {
-                Hooks.on('midi-qol.preambleComplete', cast);
+                Hooks.on('midi-qol.postPreambleComplete', cast);
             } else {
-                Hooks.off('midi-qol.preambleComplete', cast);
+                Hooks.off('midi-qol.postPreambleComplete', cast);
             }
         }
     });
@@ -1278,6 +1372,82 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Booming Blade', 'Spells');
+    game.settings.register(moduleName, 'Manifest Echo', {
+        'name': 'Manifest Echo Automation',
+        'hint': 'Enabling this allows the automation of the Manifest Echo feature via the use of Foundry hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.rollAbilitySave', macros.manifestEcho.save);
+            } else {
+                Hooks.off('dnd5e.rollAbilitySave', macros.manifestEcho.save);
+            }
+        }
+    });
+    addMenuSetting('Manifest Echo', 'Class Features');
+    game.settings.register(moduleName, 'Twilight Shroud', {
+        'name': 'Twilight Shroud Automation',
+        'hint': 'Enabling this allows the automation of the Twilight Shroud feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preCheckHits', macros.twilightShroud.attack);
+                Hooks.on('midi-qol.preambleComplete', macros.twilightShroud.saveEarly);
+                Hooks.on('midi-qol.RollComplete', macros.twilightShroud.saveLate);
+            } else {
+                Hooks.off('midi-qol.preCheckHits', macros.twilightShroud.attack);
+                Hooks.off('midi-qol.preambleComplete', macros.twilightShroud.saveEarly);
+                Hooks.off('midi-qol.RollComplete', macros.twilightShroud.saveLate);
+            }
+        }
+    });
+    addMenuSetting('Twilight Shroud', 'Class Features');
+    game.settings.register(moduleName, 'Display Temporary Effects', {
+        'name': 'Display Temporary Effects',
+        'hint': 'When enabled temporary effects will displayed in the "Status Effects" window, allowing you to delete them from there.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Enabled (Confirm Deletion)',
+            2: 'Enabled'
+        },
+        'onChange': value => {
+            if (value) {
+                patchToggleEffect(true);
+            } else {
+                patchToggleEffect(false);
+            }
+        }
+    });
+    addMenuSetting('Display Temporary Effects', 'User Interface');
+    game.settings.register(moduleName, 'Display Sidebar Macros', {
+        'name': 'Display Sidebar Macros',
+        'hint': 'When enabled a macros directory will be added to the sidebar.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': () => debouncedReload()
+    });
+    addMenuSetting('Display Sidebar Macros', 'User Interface');
+//    game.settings.register(moduleName, 'Metric Distance', {
+//        'name': 'Use Metric Distance',
+//        'hint': 'When enabled macros from this module will use metric for distance calculations.',
+//        'scope': 'world',
+//        'config': false,
+//        'type': Boolean,
+//        'default': false
+//    });
+//    addMenuSetting('Metric Distance', 'General');
     game.settings.register(moduleName, 'Check For Updates', {
         'name': 'Check for Updates',
         'hint': 'Display a message when an update is available.',
@@ -1401,6 +1571,14 @@ export function registerSettings() {
         'type': chrisSettingsManualRolling,
         'restricted': true
     });
+    game.settings.registerMenu(moduleName, 'User Interface', {
+        'name': 'User Interface',
+        'label': 'User Interface',
+        'hint': 'Settings that modify the user interface.',
+        'icon': 'fas fa-display',
+        'type': chrisSettingsInterface,
+        'restricted': true
+    });
 /*    game.settings.registerMenu(moduleName, 'Randomizer', {
         'name': 'Randomizer',
         'label': 'Randomizer',
@@ -1418,8 +1596,8 @@ export function registerSettings() {
         'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Troubleshooter', {
-        'name': 'Troubleshooter',
-        'label': 'Troubleshooter',
+        'name': 'Help',
+        'label': 'Help',
         'hint': 'Used to troubleshoot issues with this module.',
         'icon': 'fas fa-screwdriver-wrench',
         'type': chrisSettingsTroubleshoot,

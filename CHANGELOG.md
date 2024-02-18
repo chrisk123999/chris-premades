@@ -1,3 +1,420 @@
+# 0.10.5 Release:
+## Bug Fixes:
+- Awakened Spellbook
+## Update Notes:
+- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
+- This is a beta version for the 3.0.2 D&D system. Do not update to this version unless unless you have all the required up to date dependency modules.
+  
+# 0.10.4 Release:
+## Bug Fixes:
+- Condition Resistance and Condition Vulnerability
+  
+# 0.10.3 Release:
+## Update Notes:
+- More macro fixes.
+  
+# 0.10.2 Release:
+## Update Notes:
+- Macro fixes for default damage types.
+  
+# 0.10.1 Release:
+## Update Notes:
+- Added user interface settings.
+  
+# 0.10.0 Release:
+## Update Notes:
+- Initial beta support for D&D system version 3.0.2.
+  
+# 0.9.64 Release:
+## Bug Fixes:
+- Spirit Guardians
+- Compelled Duel
+## Update Notes:
+- Support for D&D system version 3.0.0 will be in a future update. Do not update your system yet.
+  
+# 0.9.63 Release:
+## New Content:
+- Twilight Domain Cleric: Twilight Shroud
+- Feat: Dual Wielder
+## Bug Fixes:
+- Channel Divinity: Twilight Sanctuary
+  
+# 0.9.62 Release:
+## New Content:
+- Plasmoid: Amorphous
+## Bug Fixes:
+- Skill Patching
+  
+# 0.9.61 Release:
+## Bug Fixes:
+- Stone's Endurance
+  
+# 0.9.60 Release:
+## New Content:
+- Halfling: Brave and Lucky
+- Mark of Healing Halfling: Medical Intuition
+- Mark of Hospitality Halfling: Ever Hospitable
+- Stout Halfling: Stout Resilience
+## Bug Fixes:
+- Create Pact Weapon
+- Stone's Endurance
+  
+# 0.9.59 Release:
+## Bug Fixes:
+- Document Selector Dialog
+- Rage
+- Enlarge/Reduce
+  
+# 0.9.58 Relaese:
+## Bug Fixes:
+- Guided Tour
+- GPS Support
+  
+# 0.9.57 Release:
+## Bug Fixes:
+- Favored Foe
+- Slasher
+## Update Notes:
+- Manual Rolling has been updated. Each user can now be individually configured.  This setting will still only effect attacks, saves, and damage rolls from midi-qol workflows.
+  
+# 0.9.56 Release:
+## Bug Fixes:
+- Manifest Echo
+- Item Configuration
+  
+# 0.9.55 Release:
+## Bug Fixes:
+- Medkit
+  
+# 0.9.54 Release:
+## Bug Fixes:
+- Guided Tour
+  
+# 0.9.53 Relase:
+## Bug Fixes:
+- Sanctuary
+- Blink
+- Equipment Utilities (Thanks p4535992)
+## Update Notes:
+- Added a guided tour of the module features.
+  
+# 0.9.52 Release:
+## New Content:
+- Oathbreaker Paladin: Channel Divinity: Control Undead, Channel Divinity: Dreadful Aspect, and Dread Lord
+## Bug Fixes:
+- Backbreaker
+- Eldritch Smite
+- Divine Smite
+- Manifest Echo
+## New Enhanced Animations:
+- Paladin: Channel Divinity: Control Undead (Thanks Eskiemoh)
+- Channel Divinity: Dreadful Aspect (Thanks Eskiemoh)
+- Dread Lord (Thanks Eskiemoh)
+  
+# 0.9.51 Release:
+## Bug Fixes:
+- Additional Item Compendiums
+- GPS Support
+  
+# 0.9.50 Release:
+## Bug Fixes:
+- Crusher
+  
+# 0.9.49 Release:
+## Bug Fixes:
+- Blessed Strikes
+## Update Notes:
+- Added the medkit to the effect editor on items. You can disable the scrolling text animation and set a VAE button with this dialog.
+  
+# 0.9.48 Release:
+## Bug Fixes:
+- Wild Surge
+- Aura of Life
+- Effect Auras
+## Update Notes:
+- Initial Medkit support for Gambit's Premades and Midi Item Showcase - Community
+  
+# 0.9.47 Release:
+## Bug Fixes:
+- Manifest Echo
+- Elemental Cleaver
+- Warding Bond
+  
+# 0.9.46 Release:
+## Bug Fixes:
+- Javelin Of Lightning
+
+# 0.9.45 Release:
+## New Content:
+- Items: Bad News, Blunderbuss, Musket, Palm Pistol, Pepperbox, Pistol, and Javelin Of Lightning
+  
+# 0.9.44 Release:
+## Bug Fixes:
+- Effect Origin Fixer
+  
+# 0.9.43 Release:
+## Bug Fixes:
+- Elemental Gift - Flight
+- Manifest Echo
+- Barbarian Rage Damage Scale
+## New Enhanced Animations:
+- Manifest Echo
+  
+# 0.9.42 Release:
+## Bug Fixes:
+- Manifest Echo
+  
+# 0.9.41 Release:
+## Bug Fixes:
+- Manifest Echo
+  
+# 0.9.40 Release:
+## New Content:
+- Echo Knight Fighter: Manifest Echo, Unleash Incarnation, Echo Avatar, Reclaim Potential, and Legion of One
+  
+# 0.9.39 Release:
+## Bug Fixes:
+- Faerie Fire
+- Combat Maneuvers Scale
+  
+# 0.9.38 Release:
+## Bug Fixes:
+- Piercing Shot
+- Gunslinger Firearm Support
+  
+# 0.9.37 Release:
+## Bug Fixes:
+- Item Updater
+  
+# 0.9.36 Release:
+## Bug Fixes:
+- Bardic Inspiration
+  
+# 0.9.35 Release:
+## Bug Fixes:
+- Danse Macabre
+- Bugbear (Monster): Brute
+- Bladesong
+- Bardic Inspiration
+- Magical Inspiration
+- Mote of Potential
+- Maneuvering Attack
+- Stone's Endurance
+## Update Notes:
+- Bardic Inspiration, Mote of Potential, and Magical Inspiration have been split into seperate items. You will need to replace the features for them to continue to work.
+  
+# 0.9.34 Release:
+## Bug Fixes:
+- Bladesong (Thanks Malea)
+  
+# 0.9.33 Release:
+## New Content:
+- Bladesinging Wizard: Bladesong, Song of Defense, and Song of Victory (Thanks SagaTympana)
+  
+# 0.9.32 Release:
+## New Content:
+- Mark of Storm Half-Elf: Windwright's Intuition
+## Update Notes:
+- Added a function to the medkit to add needed scale values to supported classes and sub-classes.
+  
+# 0.9.31 Release:
+## New Content:
+- Mark of Scribing Gnome: Gifted Scribe
+- Grung: Gung Poison and Poisonous Skin
+- Hadoze: Hadozee Dodge
+- Goliath: Stone's Endurance
+- Metallic Dragonborn: Breath Weapon
+## Update Notes:
+- The medkit icon will now turn blue if an item can be configured (and is up to date).
+  
+# 0.9.30 Release:
+## Bug Fixes:
+- Summon Beast
+  
+# 0.9.29 Release:
+## New Content:
+- Spell: Elemental Weapon
+## Bug Fixes:
+- Steel Defender
+- Homunculus Servant
+- Animating Performance
+- Summon Wildfire Spirit
+- Primal Companion
+- Bigby's Hand
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Draconic Spirit
+- Summon Elemental
+- Summon Fey
+- Summon Fiend
+- Summon Shadowspawn
+- Summon Undead
+  
+# 0.9.28 Relase:
+## New Content:
+- Bugbear: Long-Limbed
+- Barbarian: Persistent Rage
+## Bug Fixes:
+- Armor of Agathys
+- Rage
+- Sneak Attack
+## Update Notes:
+- Rage will now prompt the GM to remove the effect when the Barbarian fails to attack or take damage.
+  
+# 0.9.27 Release:
+## New Content:
+- Armorer Artificer: Armor Modifications
+## Bug Fixes:
+- Armor Model
+- Enhanced Weapon
+- Radiant Weapon
+- Dread Ambusher
+## Update Notes:
+- Arcane Armorer actors should have their Thunder Gauntlets, Defensive Field, and Lightning Launcher manually deleted after updating. You should then re-select your armor model.
+
+# 0.9.26 Release:
+## Bug Fixes:
+- Create Pact Weapon
+- Hex Warrior
+  
+# 0.9.25 Release:
+## Bug Fixes:
+- Create Pact Weapon
+  
+# 0.9.24 Release:
+## New Content:
+- Pact of the Blade Warlock: Create Pact Weapon
+- The Hexblade Warlock: Hex Warrior
+- Eldritch Invocation: Improved Pact Weapon
+## Bug Fixes:
+- Radiant Weapon
+## Update Notes:
+- Compendium Selection settings have been improved.
+  
+# 0.9.23 Release:
+## Bug Fixes:
+- Cleave
+  
+# 0.9.22 Release:
+## New Content:
+- Spells: Investiture of Flame, Investiture of Ice, and Investiture of Stone
+## Bug Fixes:
+- Tasha's Otherworldly Guise
+- Spirit Guardians
+- Fire Shield
+- Twinned spell
+## New Enhanced Animations:
+- Investiture of Flame
+- Investiture of Ice
+  
+# 0.9.21 Release:
+## Update Notes:
+- Midi-Qol version 11.3.12 is now required due to changes in hook names.
+  
+# 0.9.20 Release:
+## Bug Fixes:
+- Elemental Adept
+- Cast Animations
+- Find Familiar
+  
+# 0.9.19 Release:
+## Bug Fixes:
+- Find Familiar
+- Homunculus Servant
+  
+# 0.9.18 Release:
+## Bug Fixes:
+- Firearm
+- Animate Dead
+- Spirit Guardians
+  
+# 0.9.17 Release:
+## New Content:
+- Path of the Giant Barbarian: Giant’s Havoc: Crushing Throw, Giant’s Havoc: Giant Stature, Elemental Cleaver, Mighty Impel, and Demiurgic Colossus
+## Bug Fixes:
+- Enlarge/Reduce
+- DMG Cleave
+  
+# 0.9.16 Release:
+## Bug Fixes:
+- DMG Cleave
+- Hunger of Haddar
+- Stunning Strike
+## Update Notes:
+- Added config option to Stunning Strike to prompt on hit.
+- Corrected DMG Cleave mechanic to only work on full health targets and added a setting to allow it to work on non-full health targets.
+  
+# 0.9.15 Release:
+## Bug Fixes:
+- Cleave
+- Find Familiar
+  
+# 0.9.14 Release:
+## Bug Fixes:
+- Sleet Storm
+  
+# 0.9.13 Release:
+## New Content:
+- Spell: Sleet Storm
+  
+# 0.9.12 Release:
+## Bug Fixes:
+- Savage Attacker
+- Eldritch Smite
+  
+# 0.9.11 Release:
+## Bug Fixes:
+- Summon Animations
+## New Enhanced Animations:
+- Guardian of Faith
+- Steel Defender
+- Homunculus Servant
+- Primal Companion
+- Drake Companion
+- Manifest Mind
+  
+# 0.9.10 Release:
+## Bug Fixes:
+- Sanctuary
+- Beacon of Hope
+- Charm Person
+## Update Notes:
+- Midi-Qol version 11.3.4 or higher is required for this module now.
+- All summons now have enhanced spawn animations from Eskiemoh. These can be added to your own Warpgate summons by using the summon API from this module or using the exported callback functions.
+## New Enhanced Animations:
+- Bigby's Hand
+- Conjure Animals
+- Conjure Celestial
+- Conjure Elemental
+- Conjure Fey
+- Conjure Minor Elementals
+- Conjure Woodland Beings
+- Find Familiar
+- Find Greater Steed
+- Find Steed
+- Summon Aberration
+- Summon Beast
+- Summon Celestial
+- Summon Construct
+- Summon Draconic Spirit
+- Summon Elemental
+- Summon Fey
+- Summon Fiend
+- Summon Lesser Demons
+- Summon Shadowspawn
+- Summon Undead
+- Quick Insert Summon
+  
+# 0.9.9 Release:
+## Bug Fixes:
+- Magic Missile
+- Empowered Evocation
+- Crystal Weapon
+## Update Notes:
+- Empowered Evocation will need to have the item updated to continue to work.
+  
 # 0.9.8 Release:
 ## New Content:
 - Borrowed Knowledge (Thanks SagaTympana)

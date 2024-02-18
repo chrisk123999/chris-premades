@@ -1,97 +1,86 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
-function dialogRender(html) {
-    let ths = html[0].getElementsByTagName('th');
-    for (let t of ths) {
-        t.style.width = 'auto';
-        t.style.textAlign = 'left';
+class chrisRoll extends Roll {
+    get isCritical() {
+        if (this.options.fakeType === 'critical') return true;
+        return false;
     }
-    let tds = html[0].getElementsByTagName('td');
-    for (let t of tds) {
-        t.style.width = '50px';
-        t.style.textAlign = 'center';
-        t.style.paddingRight = '5px';
+    get isFumble() {
+        if (this.options.fakeType === 'fumble') return true;
+        return false;
     }
 }
-let buttons = [
-    {
-        'label': 'Cancel',
-        'value': false
-    },
-    {
-        'label': 'Ok',
-        'value': true
-    }
-];
 async function attackRoll(workflow) {
     if (!workflow.attackRoll) return;
-    if (game.settings.get('chris-premades', 'Ignore GM')) {
-        let firstOwner = warpgate.util.firstOwner(workflow.token);
-        if (firstOwner.isGM) return;
-    }
+    let firstOwner = warpgate.util.firstOwner(workflow.token);
+    let ignoreGM = game.settings.get('chris-premades', 'Ignore GM');
+    if (ignoreGM && firstOwner.isGM) return;
+    let rollSettings = game.settings.get('chris-premades', 'Manual Rolling Players');
+    let rollSetting = rollSettings[firstOwner.id] ?? 'default';
+    if (rollSetting === 'default') return;
+    let targetUser = (rollSetting === 'player') ? firstOwner : game.users.get(chris.lastGM());
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
     if (!queueSetup) return;
-    let selection = await warpgate.menu({
-        'inputs': [
-            {
-                'label': workflow.attackRoll._formula,
-                'type': 'info'
-            },
-            {
-                'label': 'Roll Total:',
-                'type': 'number'
-            }
-        ],
-        'buttons': buttons
-    },
-    {
-        'title': 'What is the attack total?',
-        'render': dialogRender,
-        'options': {
-            'width': '300px'
+    let inputs = [
+        {
+            'label': 'Roll Total:',
+            'type': 'number'
+        },
+        {
+            'label': 'Type:',
+            'type': 'select',
+            'options': [
+                {'value': 'fumble', 'html': 'Fumble'},
+                {'value': 'normal', 'html': 'Normal', 'selected': true},
+                {'value': 'critical', 'html': 'Critical'}
+            ]
         }
-    });
+    ];
+    if (game.user.id != targetUser.id) await chris.thirdPartyReactionMessage(targetUser, true);
+    let selection = await chris.remoteMenu('Attack Roll', constants.okCancel, inputs, true, targetUser.id, workflow.attackRoll._formula, null);
+    if (game.user.id != targetUser.id) await chris.clearThirdPartyReactionMessage();
     if (!selection.buttons) {
         queue.remove(workflow.uuid);
         return;
     }
-    if (isNaN(selection.inputs[1])) {
+    if (isNaN(selection.inputs[0])) {
         queue.remove(workflow.uuid);
         return;
     }
-    let attackRollNumber = selection.inputs[1];
-    workflow.attackRoll.terms = [
-        {
-            'class': 'NumericTerm',
-            'options': {},
-            'evaluated': true,
-            'number': attackRollNumber
-        }
-    ];
-    workflow.attackRoll._formula = String(attackRollNumber);
-    workflow.attackRoll._total = attackRollNumber;
-    await workflow.setAttackRoll(workflow.attackRoll);
+    let attackRollNumber = selection.inputs[0];
+    let attackRoll = await new chrisRoll(String(attackRollNumber), {}, {'fakeType': selection.inputs[0]}).evaluate();
+    if (selection.inputs[1] === 'critical' && !workflow.actor.flags['midi-qol']?.critical?.all) {
+        await workflow.actor.setFlag('midi-qol', 'critical.all', true);
+        Hooks.once('midi-qol.RollComplete', async () => {
+            await workflow.actor.unsetFlag('midi-qol', 'critical.all');
+        });
+    } else if (selection.inputs[1] === 'fumble' && !workflow.actor.flags['midi-qol']?.fail?.attack?.all) {
+        await workflow.actor.setFlag('midi-qol', 'fail.attack.all', true);
+        Hooks.once('midi-qol.RollComplete', async () => {
+            await workflow.actor.unsetFlag('midi-qol', 'fail.attack.all');
+        });
+    }
+    await workflow.setAttackRoll(attackRoll);
     queue.remove(workflow.uuid);
 }
 async function damageRoll(workflow) {
-    if (!workflow.damageRoll) return;
-    if (game.settings.get('chris-premades', 'Ignore GM')) {
-        let firstOwner = warpgate.util.firstOwner(workflow.token);
-        if (firstOwner.isGM) return;
-    }
+    if (!workflow.damageRoll || !workflow.hitTargets.size) return;
+    let firstOwner = warpgate.util.firstOwner(workflow.token);
+    let ignoreGM = game.settings.get('chris-premades', 'Ignore GM');
+    if (ignoreGM && firstOwner.isGM) return;
+    let rollSettings = game.settings.get('chris-premades', 'Manual Rolling Players');
+    let rollSetting = rollSettings[firstOwner.id] ?? 'default';
+    if (rollSetting === 'default') return;
+    let targetUser = (rollSetting === 'player') ? firstOwner : game.users.get(chris.lastGM());
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 1000);
     if (!queueSetup) return;
     let damageTypes = new Set([]);
     for (let i of workflow.damageRoll.terms) {
         if (i.flavor) damageTypes.add(i.flavor.toLowerCase());
     }
-    let generatedMenu = [
-        {
-            'label': workflow.damageRoll._formula,
-            'type': 'info'
-        }
-    ];
-    let damageTypeArray = ['skip'];
+    let generatedMenu = [];
+    let damageTypeArray = [];
     for (let i of Array.from(damageTypes)) {
         generatedMenu.push({
             'label': i.charAt(0).toUpperCase() + i.slice(1) + ':',
@@ -99,95 +88,115 @@ async function damageRoll(workflow) {
         });
         damageTypeArray.push(i);
     }
-    let selection = await warpgate.menu({
-        'inputs': generatedMenu,
-        'buttons': buttons
-    },
-    {
-        'title': 'What are the damage totals?',
-        'render': dialogRender,
-        'options': {
-            'width': '300px'
-        }
-    });
+    if (game.user.id != targetUser.id) await chris.thirdPartyReactionMessage(targetUser, true);
+    let selection = await chris.remoteMenu('Damage Roll', constants.okCancel, generatedMenu, true, targetUser.id, workflow.damageRoll._formula);
+    if (game.user.id != targetUser.id) await chris.clearThirdPartyReactionMessage();
     if (!selection.buttons) {
         queue.remove(workflow.uuid);
         return;
     }
     let damageFormula = '';
-    for (let i = 1; i < selection.inputs.length; i++) {
+    for (let i = 0; i < selection.inputs.length; i++) {
         if (isNaN(selection.inputs[i])) continue;
         if (damageFormula != '') damageFormula += ' + ';
-        damageFormula += selection.inputs[i] + '[' + damageTypeArray[i] + ']';
+        let input = selection.inputs[i];
+        damageFormula += (input != '' ? input : '0') + '[' + damageTypeArray[i] + ']';
     }
     if (damageFormula === '') {
         queue.remove(workflow.uuid);
         return
     }
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.uuid);
 }
 async function saveRoll(workflow) {
     if (!workflow.saveResults) return;
-    if (game.settings.get('chris-premades', 'Ignore GM')) {
-        let hasPlayer = false;
-        for (let i of Array.from(workflow.hitTargets)) {
-            let firstOwner = warpgate.util.firstOwner(i);
-            if (firstOwner.isGM) continue;
-            hasPlayer = true;
-            break;
-        }
-        if (!hasPlayer) return;
-    }
     let queueSetup = await queue.setup(workflow.uuid, 'manualRoll', 0);
     if (!queueSetup) return;
-    let generatedMenu = [];
+    let rollSettings = game.settings.get('chris-premades', 'Manual Rolling Players');
+    let userTargets = {};
+    let gmTargets = [];
     for (let i of Array.from(workflow.hitTargets)) {
-        generatedMenu.push({
-            'label': i.name,
-            'type': 'number'
-        });
-    }
-    let selection = await warpgate.menu({
-        'inputs': generatedMenu,
-        'buttons': buttons
-    },
-    {
-        'title': 'What are the save totals?',
-        'render': dialogRender,
-        'options': {
-            'width': '300px'
+        let firstOwner = warpgate.util.firstOwner(i);
+        let rollSetting = rollSettings[firstOwner.id] ?? 'default';
+        if (rollSetting === 'default' || rollSetting === 'gm') {
+            gmTargets.push(i);
+        } else {
+            if (!userTargets[firstOwner.id]) userTargets[firstOwner.id] = [];
+            userTargets[firstOwner.id].push(i);
         }
-    });
-    if (!selection.buttons) {
-        queue.remove(workflow.uuid);
-        return;
     }
+    let ignoreGM = game.settings.get('chris-premades', 'Ignore GM');
+    if (!Object.keys(userTargets).length && ignoreGM) return;
+    userTargets[chris.lastGM()] = gmTargets;
+    let results = {};
+    let info = CONFIG.DND5E.abilities[workflow.item.system.save.ability].label + ' Saving Throw';
     let dc = chris.getSpellDC(workflow.item);
+    await Promise.all(Object.keys(userTargets).map(async userId => {
+        let tokens = userTargets[userId];
+        let inputs = tokens.map(i => ({'label': i.name, 'type': 'number', 'tokenId': i.id}));
+        let user = game.users.get(userId);
+        let message = user.isGM ? info + '(DC: ' + dc + ')' : info;
+        if (game.user.id != userId) await chris.thirdPartyReactionMessage(user, true, userId);
+        let selection = await chris.remoteMenu('Save Rolls', constants.okCancel, inputs, true, userId, message);
+        if (game.user.id != userId) await chris.clearThirdPartyReactionMessage(userId);
+        if (!selection.buttons) return;
+        for (let i = 0; inputs.length > i; i++) {
+            let result = selection.inputs[i];
+            if (isNaN(result)) continue;
+            let tokenId = inputs[i].tokenId;
+            results[tokenId] = result;
+        }
+    }));
     let tokens = Array.from(workflow.hitTargets);
-    for (let i = 0; i < selection.inputs.length; i++) {
-        let value = selection.inputs[i];
-        if (isNaN(value)) continue;
-        if (value >= dc) {
+    for (let i = 0; i < tokens.length; i++) {
+        let tokenId = tokens[i].id;
+        if (!results[tokenId]) continue;
+        let result = results[tokenId];
+        if (result >= dc) {
             workflow.failedSaves.delete(tokens[i]);
             workflow.saves.add(tokens[i]);
             workflow.saveDisplayData[i].saveString = ' succeeds';
             workflow.saveDisplayData[i].saveStyle = 'color: green;'
-            workflow.saveDisplayData[i].rollTotal = value;
+            workflow.saveDisplayData[i].rollTotal = result;
         } else {
             workflow.failedSaves.add(tokens[i]);
             workflow.saveDisplayData[i].saveString = ' fails';
             workflow.saveDisplayData[i].saveStyle = 'color: red;';
-            workflow.saveDisplayData[i].rollTotal = value;
+            workflow.saveDisplayData[i].rollTotal = result;
         }
-        workflow.saveResults[i].total = selection.inputs[i];
+        workflow.saveResults[i]._total = result;
     }
     await workflow.displaySaves(false, true);
     queue.remove(workflow.uuid);
 }
+async function userOptions() {
+    let users = game.users.filter(i => !i.isGM);
+    if (!users.length) {
+        ui.notifications.info('There are no players to configure!');
+        return;
+    }
+    let oldSettings = game.settings.get('chris-premades', 'Manual Rolling Players');
+    function getOptions(userId) {
+        let oldSetting = oldSettings[userId];
+        let options = [
+            {'value': 'default', 'html': 'Auto / Default', 'selected': oldSetting === 'default' ?? true},
+            {'value': 'player', 'html': 'Prompt Player', 'selected': oldSetting === 'player' ?? false},
+            {'value': 'gm', 'html': 'Prompt Game Master', 'selected': oldSetting === 'gm' ?? false}
+        ];
+        return options;
+    }
+    let inputs = users.map(i => ({'label': i.name, 'type': 'select', 'options': getOptions(i.id), 'id': i.id}));
+    let selection = await chris.menu('Player Options', constants.okCancel, inputs, true);
+    if (!selection) return;
+    let newSettings = {};
+    for (let i = 0; inputs.length > i; i++) setProperty(newSettings, inputs[i].id, selection.inputs[i]);
+    await game.settings.set('chris-premades', 'Manual Rolling Players', newSettings);
+}
 export let manualRolls = {
     'attackRoll': attackRoll,
     'damageRoll': damageRoll,
-    'saveRolls': saveRoll
+    'saveRolls': saveRoll,
+    'userOptions': userOptions
 }

@@ -93,7 +93,7 @@ async function trigger(token, trigger) {
         await chris.createEffect(token.actor, constants.disadvantageEffectData);
     }
     await MidiQOL.completeItemUse(feature, config, options);
-    if (shapechanger || shapechanger) {
+    if (changeShape || shapechanger) {
         let effect = chris.findEffect(token.actor, 'Save Disadvantage');
         if (effect) await chris.removeEffect(effect);
     }

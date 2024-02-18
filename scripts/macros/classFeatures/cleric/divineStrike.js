@@ -51,7 +51,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 damageType = 'poison';
                 break;
             case 'war-domain':
-                damageType = workflow.defaultDamageType;
+                damageType = workflow.damageRolls[0].terms[0].flavor;
                 break;
             default:
                 damageType = 'radiant';
@@ -60,10 +60,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     if (classLevels >= 14) diceNumber += 1;
     let bonusDamageFormula = diceNumber + 'd8[' + damageType + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function combatEnd(origin) {

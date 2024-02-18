@@ -1,4 +1,17 @@
 export function setConfig() {
+    let summonEffectOptions = [
+        {'value': 'none', 'html': 'None'},
+        {'value': 'default', 'html': 'Default'},
+        {'value': 'celestial', 'html': 'Celestial'},
+        {'value': 'fiend', 'html': 'Fiend'},
+        {'value': 'fire', 'html': 'Fire'},
+        {'value': 'water', 'html': 'Water'},
+        {'value': 'air', 'html': 'Air'},
+        {'value': 'earth', 'html': 'Earth'},
+        {'value': 'nature', 'html': 'Nature'},
+        {'value': 'shadow', 'html': 'Shadow'},
+        {'value': 'future', 'html': 'Future'}
+    ];
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
         'renamedItems': {
@@ -135,38 +148,20 @@ export function setConfig() {
             ],
             'Cartomancer: Hidden Ace - Imbue Card': [
                 'Cartomancer: Hidden Ace - Flourish Imbued Card'
+            ],
+            'Elemental Cleaver': [
+                'Elemental Cleaver: Change Damage Type'
+            ],
+            'Manifest Echo': [
+                'Manifest Echo - Attack',
+                'Manifest Echo - Teleport',
+                'Manifest Echo - Opportunity Attack'
+            ],
+            'Dread Lord': [
+                'Dread Lord Shadow Attack'
             ]
         },
         'restrictedItems': {
-            'Bardic Inspiration 1': {
-                'originalName': 'Bardic Inspiration',
-                'requiredClass': 'Bard',
-                'requiredSubclass': null,
-                'requiredRace': null,
-                'requiredEquipment': [],
-                'requiredFeatures': [
-                    'Magical Inspiration'
-                ],
-                'replacedItemName': 'Bardic Inspiration & Magical Inspiration',
-                'removedItems': [],
-                'additionalItems': [],
-                'priority': 0
-            },
-            'Bardic Inspiration 2': {
-                'originalName': 'Bardic Inspiration',
-                'requiredClass': 'Bard',
-                'requiredSubclass': 'College of Creation',
-                'requiredRace': null,
-                'requiredEquipment': [],
-                'requiredFeatures': [
-                    'Magical Inspiration',
-                    'Mote of Potential'
-                ],
-                'replacedItemName': 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
-                'removedItems': [],
-                'additionalItems': [],
-                'priority': 1
-            },
             'Radiant Soul': {
                 'originalName': 'Radiant Soul',
                 'requiredClass': 'Warlock',
@@ -419,6 +414,23 @@ export function setConfig() {
                         'label': 'Star Spawn Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-beholderkin': {
+                        'label': 'Beholderkin Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-slaad': {
+                        'label': 'Slaad Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-star-spawn': {
+                        'label': 'Star Spawn Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Beast': {
@@ -459,6 +471,23 @@ export function setConfig() {
                         'label': 'Water Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-air': {
+                        'label': 'Air Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    },
+                    'animation-land': {
+                        'label': 'Land Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-water': {
+                        'label': 'Water Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Celestial': {
@@ -471,7 +500,7 @@ export function setConfig() {
                         'label': 'Avenger Token:',
                         'default': ''
                     },
-                    'avatar-air': {
+                    'avatar-avenger': {
                         'label': 'Avenger Avatar:',
                         'default': ''
                     },
@@ -486,6 +515,18 @@ export function setConfig() {
                     'avatar-defender': {
                         'label': 'Defender Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-avenger': {
+                        'label': 'Avenger Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-defender': {
+                        'label': 'Defender Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -527,6 +568,23 @@ export function setConfig() {
                         'label': 'Stone Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-clay': {
+                        'label': 'Clay Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-metal': {
+                        'label': 'Metal Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-stone': {
+                        'label': 'Stone Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Draconic Spirit': {
@@ -566,6 +624,23 @@ export function setConfig() {
                     'avatar-gem': {
                         'label': 'Gem Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-chromatic': {
+                        'label': 'Chromatic Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-metallic': {
+                        'label': 'Metallic Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-gem': {
+                        'label': 'Gem Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -619,6 +694,28 @@ export function setConfig() {
                         'label': 'Water Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-air': {
+                        'label': 'Air Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    },
+                    'animation-earth': {
+                        'label': 'Earth Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fire': {
+                        'label': 'Fire Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-water': {
+                        'label': 'Water Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Fey': {
@@ -658,6 +755,23 @@ export function setConfig() {
                     'avatar-tricksy': {
                         'label': 'Tricksy Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-fuming': {
+                        'label': 'Fuming Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-mirthful': {
+                        'label': 'Mirthful Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-tricksy': {
+                        'label': 'Tricksy Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -699,6 +813,23 @@ export function setConfig() {
                         'label': 'Yugoloth Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-demon': {
+                        'label': 'Demon Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-devil': {
+                        'label': 'Devil Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    },
+                    'animation-yugoloth': {
+                        'label': 'Yugoloth Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Shadowspawn': {
@@ -738,6 +869,23 @@ export function setConfig() {
                     'avatar-fear': {
                         'label': 'Fear Avatar:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-fury': {
+                        'label': 'Fury Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-despair': {
+                        'label': 'Despair Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fear': {
+                        'label': 'Fear Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -779,6 +927,23 @@ export function setConfig() {
                         'label': 'Skeletal Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-ghostly': {
+                        'label': 'Ghostly Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-putrid': {
+                        'label': 'Putrid Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    },
+                    'animation-skeletal': {
+                        'label': 'Skeletal Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Summon Wildfire Spirit': {
@@ -794,6 +959,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -811,6 +983,13 @@ export function setConfig() {
                         'label': 'Custom Token:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Animating Performance': {
@@ -826,6 +1005,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -891,6 +1077,33 @@ export function setConfig() {
                         'label': 'Poison Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-acid': {
+                        'label': 'Acid Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-cold': {
+                        'label': 'Cold Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fire': {
+                        'label': 'Fire Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-lightning': {
+                        'label': 'Lightning Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    },
+                    'animation-poision': {
+                        'label': 'Poision Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Homunculus Servant': {
@@ -906,6 +1119,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -947,6 +1167,23 @@ export function setConfig() {
                         'label': 'Sky Avatar:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-land': {
+                        'label': 'Land Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    },
+                    'animation-sea': {
+                        'label': 'Sea Animation:',
+                        'default': 'water',
+                        'values': summonEffectOptions
+                    },
+                    'animation-sky': {
+                        'label': 'Sky Animation:',
+                        'default': 'air',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Tentacle of the Deeps: Summon': {
@@ -978,6 +1215,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1397,7 +1641,7 @@ export function setConfig() {
                 },
                 'select': {
                     'color': {
-                        'label': 'What animation color?',
+                        'label': 'Animation Color:',
                         'default': 'yellow',
                         'values': [
                             {'value': 'yellow', 'html': 'Yellow'},
@@ -1405,6 +1649,11 @@ export function setConfig() {
                             {'value': 'green', 'html': 'Green'},
                             {'value': 'purple', 'html': 'Purple'}
                         ]
+                    },
+                    'animation': {
+                        'label': 'Summon Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1552,6 +1801,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Celestial': {
@@ -1565,6 +1821,13 @@ export function setConfig() {
                     'overwriteInitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1580,6 +1843,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Fey': {
@@ -1593,6 +1863,13 @@ export function setConfig() {
                     'overwriteInitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1608,6 +1885,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Conjure Woodland Beings': {
@@ -1622,6 +1906,13 @@ export function setConfig() {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Find Familiar': {
@@ -1633,6 +1924,23 @@ export function setConfig() {
                     'name': {
                         'label': 'Familiar Name:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1686,6 +1994,23 @@ export function setConfig() {
                         'label': 'Steed Name:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Find Greater Steed': {
@@ -1697,6 +2022,23 @@ export function setConfig() {
                     'name': {
                         'label': 'Greater Steed Name:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation-celestial': {
+                        'label': 'Celestial Animation:',
+                        'default': 'celestial',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fey': {
+                        'label': 'Fey Animation:',
+                        'default': 'nature',
+                        'values': summonEffectOptions
+                    },
+                    'animation-fiend': {
+                        'label': 'Fiend Animation:',
+                        'default': 'fire',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1890,6 +2232,13 @@ export function setConfig() {
                         'label': 'Custom Folder:',
                         'default': ''
                     }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
                 }
             },
             'Manifest Mind: Summon': {
@@ -1905,6 +2254,13 @@ export function setConfig() {
                     'token': {
                         'label': 'Custom Token:',
                         'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
                     }
                 }
             },
@@ -1992,6 +2348,120 @@ export function setConfig() {
                     }
                 }
             },
+            'Palm Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Bad News (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 3
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Blunderbuss (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Musket (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pepperbox (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 2
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
+            'Pistol (Exandria)': {
+                'number': {
+                    'misfire': {
+                        'label': 'Misfire Score:',
+                        'default': 1
+                    }
+                },
+                'select': {
+                    'status': {
+                        'label': 'Status:',
+                        'default': 0,
+                        'values': [
+                            {'value': 0, 'html': 'Normal'},
+                            {'value': 1, 'html': 'Damaged'},
+                            {'value': 2, 'html': 'Broken'},
+                        ]
+                    }
+                }
+            },
             'Booming Blade': {
                 'select': {
                     'animation': {
@@ -2040,6 +2510,167 @@ export function setConfig() {
                     'pixie-token': {
                         'label': 'Pixie Token',
                         'default': ''
+                    }
+                }
+            },
+            'Quick Insert Summon': {
+                'text': {
+                    'prefill': {
+                        'label': 'Prefill Text:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
+                }
+            },
+            'Animate Dead': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'shadow',
+                        'values': summonEffectOptions
+                    }
+                }
+            },
+            'Stunning Strike': {
+                'checkbox': {
+                    'onhit': {
+                        'label': 'Prompt on hit?',
+                        'default': false
+                    }
+                }
+            },
+            'Investiture of Flame': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Investiture of Ice': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Long-Limbed': {
+                'checkbox': {
+                    'displaycard': {
+                        'label': 'Display Chat Card?',
+                        'default': true
+                    }
+                }
+            },
+            'Grung Poison': {
+                'checkbox': {
+                    'prompt': {
+                        'label': 'Prompt on each valid attack?',
+                        'default': false
+                    }
+                }
+            },
+            'Bardic Inspiration': {
+                'text': {
+                    'classidentifier': {
+                        'label': 'Class Identifier',
+                        'default': 'bard'
+                    },
+                    'scaleidentifier': {
+                        'label': 'Scale Identifier',
+                        'default': 'bardic-inspiration'
+                    }
+                }
+            },
+            'Manifest Echo': {
+                'text': {
+                    'name': {
+                        'label': 'Custom Name:',
+                        'default': ''
+                    },
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'default',
+                        'values': summonEffectOptions
+                    }
+                },
+                'checkbox': {
+                    'filter': {
+                        'label': 'Apply Token Magic Filter?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Control Undead': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Dread Lord': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play animation?',
+                        'default': true
+                    }
+                }
+            },
+            'Gathered Swarm': {
+                'select': {
+                    'animation': {
+                        'label': 'Animation',
+                        'default': 'fairies',
+                        'values': [
+                            {'value': 'fairies', 'html': 'Fairies'},
+                            {'value': 'butterflies', 'html': 'Butterflies'},
+                            {'value': false, 'html': 'None'}
+                        ]
+                    },
+                    'color': {
+                        'label': 'Color',
+                        'default': 'bluepurple',
+                        'values': [
+                            {'value': 'bluepurple', 'html': 'Blue-Purple'},
+                            {'value': 'greenyellow', 'html': 'Green-Yellow'},
+                            {'value': 'white', 'html': 'White'}
+                        ]
                     }
                 }
             }
@@ -2257,7 +2888,7 @@ export function setConfig() {
             },
             'Sanctuary': {
                 'name': 'Sanctuary',
-                'version': '0.7.45',
+                'version': '0.9.53',
                 'hasAnimation': true,
                 'settings': [
                     'Sanctuary'
@@ -2857,7 +3488,10 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Rage'
                 },
-                'hasAnimation': true
+                'hasAnimation': true,
+                'settings': [
+                    'On Hit'
+                ]
             },
             'Totem Spirit: Bear': {
                 'name': 'Totem Spirit: Bear',
@@ -2883,16 +3517,6 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Dancing Item'
                 }
-            },
-            'Bardic Inspiration, Magical Inspiration, & Mote of Potential': {
-                'name': 'Bardic Inspiration, Magical Inspiration, & Mote of Potential',
-                'version': '0.7.01',
-                'classes': [
-                    'bard'
-                ],
-                'scales': [
-                    'bardic-inspiration'
-                ]
             },
             'Blade Flourish': {
                 'name': 'Blade Flourish',
@@ -3129,7 +3753,7 @@ export function setConfig() {
             },
             'Channel Divinity: Twilight Sanctuary': {
                 'name': 'Channel Divinity: Twilight Sanctuary',
-                'version': '0.7.01'
+                'version': '0.9.63'
             },
             'Eyes of Night': {
                 'name': 'Eyes of Night',
@@ -3165,7 +3789,13 @@ export function setConfig() {
                 'version': '0.7.01',
                 'mutation': {
                     'self': 'Starry Form'
-                }
+                },
+                'scales': [
+                    'circle-of-stars'
+                ],
+                'classes': [
+                    'druid'
+                ]
             },
             'Twinkling Constellations': {
                 'name': 'Twinkling Constellations',
@@ -3307,7 +3937,7 @@ export function setConfig() {
             },
             'Maneuvers: Maneuvering Attack': {
                 'name': 'Maneuvers: Maneuvering Attack',
-                'version': '0.7.01',
+                'version': '0.9.35',
                 'classes': [
                     'fighter'
                 ],
@@ -3467,7 +4097,7 @@ export function setConfig() {
             },
             'Stunning Strike': {
                 'name': 'Stunning Strike',
-                'version': '0.7.01'
+                'version': '0.9.16'
             },
             'Unarmored Defense (Monk)': {
                 'name': 'Unarmored Defense (Monk)',
@@ -3547,7 +4177,7 @@ export function setConfig() {
             },
             'Dread Ambusher': {
                 'name': 'Dread Ambusher',
-                'version': '0.7.01'
+                'version': '0.9.27'
             },
             'Favored Foe': {
                 'name': 'Favored Foe',
@@ -3682,7 +4312,7 @@ export function setConfig() {
             },
             'Elemental Gift - Flight': {
                 'name': 'Elemental Gift - Flight',
-                'version': '0.7.01'
+                'version': '0.9.43'
             },
             'Elemental Gift: Elemental Gift (Dao)': {
                 'name': 'Elemental Gift: Elemental Gift (Dao)',
@@ -4396,7 +5026,7 @@ export function setConfig() {
             },
             'Empowered Evocation': {
                 'name': 'Empowered Evocation',
-                'version': '0.8.05'
+                'version': '0.9.9'
             },
             'Overchannel': {
                 'name': 'Overchannel',
@@ -4432,23 +5062,23 @@ export function setConfig() {
             },
             'Crystal Greatsword': {
                 'name': 'Crystal Greatsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Longsword': {
                 'name': 'Crystal Longsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Rapier': {
                 'name': 'Crystal Rapier',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Scimitar': {
                 'name': 'Crystal Scimitar',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Crystal Shortsword': {
                 'name': 'Crystal Shortsword',
-                'version': '0.7.13'
+                'version': '0.9.9'
             },
             'Find Steed': {
                 'name': 'Find Steed',
@@ -4500,7 +5130,7 @@ export function setConfig() {
             },
             'Radiant Weapon': {
                 'name': 'Radiant Weapon',
-                'version': '0.7.18'
+                'version': '0.9.24'
             },
             'Repeating Shot': {
                 'name': 'Repeating Shot',
@@ -4704,7 +5334,7 @@ export function setConfig() {
                 },
                 'settings': [
                     'Rest Listener'
-                ],
+                ]
             },
             'Enlarge/Reduce': {
                 'name': 'Enlarge/Reduce',
@@ -4780,9 +5410,10 @@ export function setConfig() {
             },
             'Compelled Duel': {
                 'name': 'Compelled Duel',
-                'version': '0.7.47',
+                'version': '0.9.64',
                 'settings': [
-                    'Compelled Duel'
+                    'Compelled Duel',
+                    'Movement Listener'
                 ]
             },
             'Draconic Cry': {
@@ -5202,6 +5833,258 @@ export function setConfig() {
             'Skill Empowerment': {
                 'name': 'Skill Empowerment',
                 'version': '0.9.6'
+            },
+            'Quick Insert Summon': {
+                'name': 'Quick Insert Summon',
+                'version': '0.9.10'
+            },
+            'Sleet Storm': {
+                'name': 'Sleet Storm',
+                'version': '0.9.14',
+                'settings': [
+                    'Template Listener'
+                ]
+            },
+            'Giant\'s Havoc: Crushing Throw': {
+                'name': 'Giant\'s Havoc: Crushing Throw',
+                'version': '0.9.17'
+            },
+            'Giant\'s Havoc: Giant Stature': {
+                'name': 'Giant\'s Havoc: Giant Stature',
+                'version': '0.9.17'
+            },
+            'Demiurgic Colossus': {
+                'name': 'Demiurgic Colossus',
+                'version': '0.9.17'
+            },
+            'Elemental Cleaver': {
+                'name': 'Elemental Cleaver',
+                'version': '0.9.17',
+                'mutation': {
+                    'self': 'Elemental Cleaver'
+                }
+            },
+            'Mighty Impel': {
+                'name': 'Mighty Impel',
+                'version': '0.9.17'
+            },
+            'Investiture of Flame': {
+                'name': 'Investiture of Flame',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Flame'
+                }
+            },
+            'Investiture of Ice': {
+                'name': 'Investiture of Ice',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Ice'
+                }
+            },
+            'Investiture of Stone': {
+                'name': 'Investiture of Stone',
+                'version': '0.9.22',
+                'mutation': {
+                    'self': 'Investiture of Stone'
+                }
+            },
+            'Create Pact Weapon': {
+                'name': 'Create Pact Weapon',
+                'version': '0.9.24'
+            },
+            'Eldritch Invocations: Improved Pact Weapon': {
+                'name': 'Eldritch Invocations: Improved Pact Weapon',
+                'version': '0.9.24'
+            },
+            'Hex Warrior': {
+                'name': 'Hex Warrior',
+                'version': '0.9.24'
+            },
+            'Armor Modifications': {
+                'name': 'Armor Modifications',
+                'version': '0.9.27'
+            },
+            'Persistent Rage': {
+                'name': 'Persistent Rage',
+                'version': '0.9.28'
+            },
+            'Long-Limbed': {
+                'name': 'Long-Limbed',
+                'version': '0.9.28'
+            },
+            'Elemental Weapon': {
+                'name': 'Elemental Weapon',
+                'version': '0.9.29'
+            },
+            'Gifted Scribe': {
+                'name': 'Gifted Scribe',
+                'version': '0.9.31'
+            },
+            'Grung Poison': {
+                'name': 'Grung Poison',
+                'version': '0.9.31'
+            },
+            'Poisonous Skin': {
+                'name': 'Poisonous Skin',
+                'version': '0.9.31'
+            },
+            'Hadozee Dodge': {
+                'name': 'Hadozee Dodge',
+                'version': '0.9.31'
+            },
+            'Stone\'s Endurance': {
+                'name': 'Stone\'s Endurance',
+                'version': '0.9.60'
+            },
+            'Breath Weapon (Acid)': {
+                'name': 'Breath Weapon (Acid)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Cold)': {
+                'name': 'Breath Weapon (Cold)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Fire)': {
+                'name': 'Breath Weapon (Fire)',
+                'version': '0.9.31'
+            },
+            'Breath Weapon (Lightning)': {
+                'name': 'Breath Weapon (Lightning)',
+                'version': '0.9.31'
+            },
+            'Windwright\'s Intuition': {
+                'name': 'Windwright\'s Intuition',
+                'version': '0.9.32'
+            },
+            'Bladesong': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
+            },
+            'Song of Defense': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
+            },
+            'Song of Victory': {
+                'name': 'Bladesong',
+                'version': '0.9.33'
+            },
+            'Mote of Potential': {
+                'name': 'Mote of Potential',
+                'version': '0.9.35'
+            },
+            'Magical Inspiration': {
+                'name': 'Magical Inspiration',
+                'version': '0.9.35'
+            },
+            'Bardic Inspiration': {
+                'name': 'Bardic Inspiration',
+                'version': '0.9.35'
+            },
+            'Echo Avatar': {
+                'name': 'Echo Avatar',
+                'version': '0.9.40'
+            },
+            'Legion of One': {
+                'name': 'Legion of One',
+                'version': '0.9.40'
+            },
+            'Manifest Echo': {
+                'name': 'Manifest Echo',
+                'version': '0.9.40'
+            },
+            'Reclaim Potential': {
+                'name': 'Reclaim Potential',
+                'version': '0.9.40'
+            },
+            'Unleash Incarnation': {
+                'name': 'Unleash Incarnation',
+                'version': '0.9.40'
+            },
+            'Palm Pistol (Exandria)': {
+                'name': 'Palm Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Bad News (Exandria)': {
+                'name': 'Bad News (Exandria)',
+                'version': '0.9.45'
+            },
+            'Blunderbuss (Exandria)': {
+                'name': 'Blunderbuss (Exandria)',
+                'version': '0.9.45'
+            },
+            'Musket (Exandria)': {
+                'name': 'Musket (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pepperbox (Exandria)': {
+                'name': 'Pepperbox (Exandria)',
+                'version': '0.9.45'
+            },
+            'Pistol (Exandria)': {
+                'name': 'Pistol (Exandria)',
+                'version': '0.9.45'
+            },
+            'Javelin of Lightning': {
+                'name': 'Javelin of Lightning',
+                'version': '0.9.46'
+            },
+            'Channel Divinity: Control Undead': {
+                'name': 'Channel Divinity: Control Undead',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Channel Divinity: Dreadful Aspect': {
+                'name': 'Channel Divinity: Dreadful Aspect',
+                'version': '0.9.52',
+                'hasAnimation': true
+            },
+            'Dread Lord': {
+                'name': 'Dread Lord',
+                'version': '0.9.52',
+                'settings': [
+                    'Effect Auras'
+                ],
+                'hasAnimation': true
+            },
+            'Gathered Swarm': {
+                'name': 'Gathered Swarm',
+                'version': '0.9.55'
+            },
+            'Brave': {
+                'name': 'Brave',
+                'version': '0.9.60'
+            },
+            'Lucky': {
+                'name': 'Lucky',
+                'version': '0.9.60'
+            },
+            'Medical Intuition': {
+                'name': 'Medical Intuition',
+                'version': '0.9.60'
+            },
+            'Ever Hospitable': {
+                'name': 'Ever Hospitable',
+                'version': '0.9.60'
+            },
+            'Stout Resilience': {
+                'name': 'Stout Resilience',
+                'version': '0.9.60'
+            },
+            'Amorphous': {
+                'name': 'Amorphous',
+                'version': '0.9.62',
+                'settings': [
+                    'Skill Patching'
+                ]
+            },
+            'Dual Wielder': {
+                'name': 'Dual Wielder',
+                'version': '0.9.63'
+            },
+            'Twilight Shroud': {
+                'name': 'Twilight Shroud',
+                'version': '0.9.63'
             }
         }
     });

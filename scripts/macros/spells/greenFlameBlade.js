@@ -19,7 +19,7 @@ export async function greenFlameBlade({speaker, actor, token, character, item, a
         let weaponData = duplicate(selection.toObject());
         delete weaponData._id;
         weaponData.system.damage.parts.push([diceNumber + 'd8[' + translate.damageType('fire') + ']', 'fire']);
-        weaponData.system.properties.mgc = true;
+        weaponData.system.properties.push('mgc');
         weapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
         weapon.prepareData();
         weapon.prepareFinalAttributes();

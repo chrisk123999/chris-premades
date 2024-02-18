@@ -98,7 +98,7 @@ export async function fall({speaker, actor, token, character, item, args, scope,
             break;
     }
     await ground(workflow.actor);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageRoll = chris.damageRoll(workflow, damageFormula);
+    await workflow.setDamageRolls([damageRoll]);
     if (otherTarget) await chris.applyDamage([targetToken], damageRoll.total, 'bludgeoning');
 }

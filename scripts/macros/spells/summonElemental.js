@@ -17,6 +17,8 @@ export async function summonElemental({speaker, actor, token, character, item, a
     let hpFormula = 50 + ((workflow.castData.castLevel - 4) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Elemental Spirit (' + selection + ')';
     if (name === '') name = 'Elemental Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -43,8 +45,8 @@ export async function summonElemental({speaker, actor, token, character, item, a
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -110,5 +112,13 @@ export async function summonElemental({speaker, actor, token, character, item, a
             setProperty(updates, 'actor.system.traits.dr.value', ['acid']);
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let defaultAnimations = {
+        'Air': 'air',
+        'Earth': 'earth',
+        'Fire': 'fire',
+        'Water': 'water'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? defaultAnimations[selection];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

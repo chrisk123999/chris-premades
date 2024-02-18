@@ -63,7 +63,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await summons.spawn(sourceActor, updates, 86400, workflow.item);
+    let defaultAnimations = {
+        'celestial': 'celestial',
+        'fey': 'nature',
+        'fiend': 'fire'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? defaultAnimations[creatureType];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 30, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     await chris.updateEffect(effect, updates2);
 }
@@ -71,7 +78,7 @@ async function onUse({speaker, actor, token, character, item, args, scope, workf
     if (workflow.item.type != 'spell') return;
     if (workflow.targets.size != 1) return;
     if (workflow.targets.first().id != workflow.token.id) return;
-    let effect = Array.from(workflow.actor.effects).find((e) => e.flags['chris-premades']?.spell?.findGreaterSteed === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e.flags['chris-premades']?.spell?.findGreaterSteed);
     if (!effect) return;
     let steedId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!steedId) return;

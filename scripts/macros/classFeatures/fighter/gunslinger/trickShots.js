@@ -2,7 +2,8 @@ import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js'
 import {queue} from '../../../../utility/queue.js';
 async function runFeature(workflow, featureName) {
-    if (workflow.hitTargets.size != 1 || workflow.item.system.baseItem != 'firearmCR') return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (workflow.hitTargets.size != 1 || baseItem != 'firearmCR') return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', featureName, false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', featureName);
@@ -31,9 +32,9 @@ async function dazingShot({speaker, actor, token, character, item, args, scope, 
 }
 async function piercingShot({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.token) return;
-    let weapons = workflow.actor.items.filter(i => i.system.baseItem === 'firearmCR' && i.system.uses.value);
+    let weapons = workflow.actor.items.filter(i => i.system.type?.baseItem === 'firearmCR' && i.system.uses.value && i.system.equipped && !chris.getConfiguration(i, 'status'));
     if (!weapons.length) {
-        ui.notifications.info('You have no firearms with ammo!');
+        ui.notifications.info('You have no equipped firearms with ammo!');
         return;
     }
     let weapon;
@@ -71,7 +72,7 @@ async function piercingShot({speaker, actor, token, character, item, args, scope
     let misfireScore = (chris.getConfiguration(weapon, 'misfire') ?? 1) + 1;
     setProperty(weaponData, 'flags.chris-premades.configuration.misfire', misfireScore);
     delete weaponData._id;
-    let [config, options] = constants.syntheticItemWorkflowOptions(closestTarget.uuid);
+    let [config, options] = constants.syntheticItemWorkflowOptions([closestTarget.uuid]);
     let newWeapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
     await weapon.update({'system.uses.value': weapon.system.uses.value - 1});
     await warpgate.wait(100);
@@ -79,6 +80,11 @@ async function piercingShot({speaker, actor, token, character, item, args, scope
     if (weaponWorkflow.attackRoll.terms[0].total <= misfireScore) {
         await template.delete();
         await workflow.actor.sheet.maximize();
+        let updates = {
+            'flags.chris-premades.configuration.status': 1,
+            'name': weapon.name += ' (Damaged)'
+        }
+        await weapon.update(updates);
         return;
     }
     let otherTargets = tokens.filter(i => closestTarget.uuid != i.uuid);
@@ -88,7 +94,7 @@ async function piercingShot({speaker, actor, token, character, item, args, scope
         return;
     }
     let effectData = {
-        'label': 'Piercing Shot - Disadvantage',
+        'name': 'Piercing Shot - Disadvantage',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
         'origin': workflow.item.uuid,
         'duration': {
@@ -103,7 +109,7 @@ async function piercingShot({speaker, actor, token, character, item, args, scope
             }
         ]
     };
-    await chris.createEffect(workflow.actor, effectData);
+    let effect = await chris.createEffect(workflow.actor, effectData);
     setProperty(weaponData, 'flags.chris-premades.configuration.misfire', -100);
     newWeapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
     for (let i of otherTargets) {
@@ -112,8 +118,7 @@ async function piercingShot({speaker, actor, token, character, item, args, scope
         await MidiQOL.completeItemUse(newWeapon, config, options);
     }
     await template.delete();
-    let effect = chris.findEffect(workflow.actor, 'Piercing Shot - Disadvantage');
-    if (effect) await chris.removeEffect(effect);
+    await chris.removeEffect(effect);
     await workflow.actor.sheet.maximize();
 }
 async function violentShotFeature({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -161,7 +166,7 @@ async function violentShotFeature({speaker, actor, token, character, item, args,
 }
 async function violentShot({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
     let effect = chris.findEffect(workflow.actor, 'Violent Shot');
     if (!effect) return;

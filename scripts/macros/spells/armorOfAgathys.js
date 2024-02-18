@@ -3,7 +3,7 @@ import {chris} from '../../helperFunctions.js';
 import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function onHit(workflow, targetToken) {
-    if (!workflow.hitTargets.size != 1);
+    if (workflow.hitTargets.size != 1) return;
     if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
     let effect = chris.findEffect(targetToken.actor, 'Armor of Agathys');
     if (!effect) return;

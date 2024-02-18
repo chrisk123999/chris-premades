@@ -22,5 +22,7 @@ export async function conjureCelestial({speaker, actor, token, character, item, 
             'disposition': workflow.token.document.disposition
         }
     };
-    await summons.spawn(sourceActors, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'celestial';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 90, workflow.token, animation);
 }

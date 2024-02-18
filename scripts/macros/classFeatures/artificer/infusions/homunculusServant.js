@@ -24,6 +24,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpValue = await new Roll(hpFormula).evaluate({async: true});
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Homunculus Servant';
     if (name === '') name = 'Homunculus Servant';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -47,8 +49,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -75,7 +77,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let homunculusToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'earth';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    let homunculusToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 120, workflow.token, animation);
+    if (!homunculusToken) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Homunculus Servant - Command', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Homunculus Servant - Command');
@@ -121,7 +126,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     await chris.updateEffect(effect, effectUpdates);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
     if (!effect) return;
     let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
     if (!homunculusId) return;
@@ -132,11 +137,11 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
         return;
     }
     let effectData = {
-        'label': 'Channel Magic',
-        'icon': '',
+        'name': 'Channel Magic',
+        'icon': workflow.item.img,
         'origin': effect.origin.uuid,
         'duration': {
-            'turns': 1
+            'seconds': 1
         },
         'changes': [
             {
@@ -171,7 +176,7 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
         ui.notifications.info('Invalid Spell Type!');
         return false;
     }
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.feature?.homunculusServant);
     if (!effect) return;
     let homunculusId = effect.flags['chris-premades']?.feature?.homunculusServant;
     if (!homunculusId) return;

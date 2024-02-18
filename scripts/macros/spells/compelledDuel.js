@@ -86,15 +86,13 @@ async function movement(token, updates, diff, id) {
     let sourceToken = fromUuidSync(sourceUuid);
     if (!sourceToken) return;
     let fakeTargetToken = {
-        'document': {
-            'width': token.width,
-            'height': token.height,
-            'elevation': duplicate(token.elevation),
-            'x': duplicate(token.object.x),
-            'y': duplicate(token.object.y)
-        }
+        'width': token.width,
+        'height': token.height,
+        'x': diff['chris-premades'].coords.previous.x,
+        'y': diff['chris-premades'].coords.previous.y,
+        'elevation': diff['chris-premades'].coords.previous.elevation
     };
-    let oldDistance = chris.getDistance(sourceToken, fakeTargetToken);
+    let oldDistance = chris.getCoordDistance(sourceToken.object, fakeTargetToken);
     await token.object?._animation;
     let distance = chris.getDistance(sourceToken, token);
     if (oldDistance >= distance || distance <= 30) return;
@@ -116,40 +114,25 @@ async function movement(token, updates, diff, id) {
     }
     await new Sequence()
         .effect()
-        .file('jb2a.misty_step.01.blue')
-        .atLocation(token)
-        .randomRotation()
-        .scaleToObject(2)
-        .wait(750)
+            .file('jb2a.misty_step.01.blue')
+            .atLocation(token)
+            .randomRotation()
+            .scaleToObject(2)
+            .wait(750)
         .animation()
-        .on(token)
-        .opacity(0.0)
-        .waitUntilFinished()
-        .play();
-    let updates2 = {
-        'token': {
-            'x': fakeTargetToken.document.x,
-            'y': fakeTargetToken.document.y,
-            'elevation': fakeTargetToken.document.elevation
-        }
-    }
-    let options2 = {
-        'permanent': true,
-        'name': 'Compelled Duel',
-        'description': 'Compelled Duel',
-        'updateOpts': {'token': {'animate': false}}
-    };
-    await warpgate.mutate(token, updates2, {}, options2);
-    await new Sequence()
+            .on(token)
+            .opacity(0.0)
+            .teleportTo(fakeTargetToken)
+            .wait(50)
         .effect()
-        .file('jb2a.misty_step.02.blue')
-        .atLocation(token)
-        .randomRotation()
-        .scaleToObject(2)
-        .wait(1500)
+            .file('jb2a.misty_step.02.blue')
+            .atLocation(token)
+            .randomRotation()
+            .scaleToObject(2)
+            .wait(1500)
         .animation()
-        .on(token)
-        .opacity(1.0)
+            .on(token)
+            .opacity(1.0)
         .play();
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {

@@ -114,7 +114,7 @@ export async function starryForm({speaker, actor, token, character, item, args, 
         }
     }
     let duration = 600;
-    let existing = workflow.actor.effects.find(eff => eff.flags['chris-premades']?.feature?.starryForm === true);
+    let existing = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.feature?.starryForm);
     if (existing) {
         duration = existing.duration.remaining;
     }
@@ -132,9 +132,6 @@ export async function starryForm({speaker, actor, token, character, item, args, 
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
-            },
-            'dae': {
-                'transfer': true
             },
             'chris-premades': {
                 'feature': {

@@ -1,23 +1,7 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 import {saves, skills} from './macros.js';
-import {manualRolls} from './macros/mechanics/manualRolls.js';
-let patchingDone = false;
-export function patching() {
-    if (patchingDone) return;
-    console.log('Chris Premades | Patching Midi-Qol!');
-    libWrapper.register('chris-premades', 'MidiQOL.Workflow.prototype.callMacros', workflow, 'WRAPPER');
-    patchingDone = true;
-}
-async function workflow(wrapped, ...args) {
-    let result = wrapped(...args);
-    if (!game.settings.get('chris-premades', 'Manual Rolls')) return result;
-    if (args[3] != 'postDamageRoll') return result;
-    let workflow =  MidiQOL.Workflow.getWorkflow(args[0].uuid);
-    if (!workflow) return result;
-    await manualRolls.damageRoll(workflow);
-    return result;
-}
+import {tempEffectHUD} from './userInterface.js';
 export function patchSkills(enabled) {
     if (enabled) {
         libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill', doRollSkill, 'WRAPPER');
@@ -27,6 +11,7 @@ export function patchSkills(enabled) {
 }
 async function doRollSkill(wrapped, ...args) {
     let [skillId, options] = args;
+    if (!options) options = {};
     let flags = this.flags['chris-premades']?.skill;
     if (flags) {
         let selections = [];
@@ -150,4 +135,36 @@ function sourceName(wrapped, ...args) {
         }
     }
     return name;
+}
+let toggleEffectPatched = false;
+export async function patchToggleEffect(enabled) {
+    if (enabled) {
+        if (toggleEffectPatched) return;
+        libWrapper.register('chris-premades', 'TokenHUD.prototype._onToggleEffect', toggleEffect, 'MIXED');
+        libWrapper.ignore_conflicts('chris-premades', 'dfreds-convenient-effects', 'TokenHUD.prototype._onToggleEffect');
+        Hooks.on('renderTokenHUD', tempEffectHUD);
+        toggleEffectPatched = true;
+    } else {
+        if (!toggleEffectPatched) return;
+        libWrapper.unregister('chris-premades', 'TokenHUD.prototype._onToggleEffect');
+        Hooks.off('renderTokenHUD', tempEffectHUD);
+        toggleEffectPatched = false;
+    }
+}
+async function toggleEffect(wrapped, ...args) {
+    let [event] = args;
+    let img = event.currentTarget;
+    let effectUuid = img.dataset.effectUuid;
+    if (effectUuid) {
+        let effect = await fromUuid(effectUuid);
+        if (effect) {
+            if (game.settings.get('chris-premades', 'Display Temporary Effects') === 1) {
+                let selection = await chris.dialog(effect.name, constants.yesNo, 'Delete "' + effect.name + '" effect?');
+                if (!selection) return;
+            }
+            await chris.removeEffect(effect);
+        }
+    } else {
+        wrapped(event);
+    }
 }

@@ -23,7 +23,7 @@ async function reload({speaker, actor, token, character, item, args, scope, work
         ui.notifications.info('You have no ammunition!');
         return;
     }
-    let weapons = workflow.actor.items.filter(i => i.system.baseItem === 'firearmCR' && i.system.uses.value != i.system.uses.max);
+    let weapons = workflow.actor.items.filter(i => i.system.type?.baseItem === 'firearmCR' && i.system.uses.value != i.system.uses.max);
     if (!weapons.length) {
         ui.notifications.info('You have no firearms to reload!');
         return;
@@ -58,7 +58,7 @@ async function status(workflow) {
 }
 async function misfire(workflow) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem ;
     if (baseItem != 'firearmCR') return;
     let proficient = workflow.item.system.proficient || workflow.item.actor.system.traits.weaponProf.value.has(baseItem);
     let misfireScore = chris.getConfiguration(workflow.item, 'misfire') ?? 1;
@@ -66,17 +66,42 @@ async function misfire(workflow) {
     if (workflow.attackRoll.terms[0].total > misfireScore) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'misfire', 50);
     if (!queueSetup) return;
-    workflow.isFumble = true;
     await ChatMessage.create({
-        speaker: {'alias': name},
-        content: workflow.item.name + ' has misfired!'
+        'speaker': {'alias': name},
+        'content': workflow.item.name + ' has misfired!'
     });
-    let updates = {
-        'flags.chris-premades.configuration.status': 1,
-        'name': workflow.item.name += ' (Damaged)'
+    if (workflow.item.id) {
+        let updates = {
+            'flags.chris-premades.configuration.status': 1,
+            'name': workflow.item.name += ' (Damaged)'
+        }
+        await workflow.item.update(updates);
     }
-    await workflow.item.update(updates);
     queue.remove(workflow.item.uuid);
+    let effectData = {
+        'icon': 'icons/magic/time/arrows-circling-green.webp',
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'name': 'Misfire',
+        'changes': [
+            {
+                'key': 'flags.midi-qol.fail.all',
+                'mode': 0,
+                'value': '1',
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'dae': {
+                'specialDuration': [
+                    '1Attack'
+                ]
+            }
+        }
+    };
+    await chris.createEffect(workflow.actor, effectData);
 }
 async function repair({speaker, actor, token, character, item, args, scope, workflow}) {
     let repairFirearms = workflow.actor.items.filter(i => chris.getConfiguration(i, 'status') === 1);
@@ -88,13 +113,13 @@ async function repair({speaker, actor, token, character, item, args, scope, work
     if (repairFirearms.length === 1) weapon = repairFirearms[0];
     if (!weapon) weapon = await chris.selectDocument(workflow.item.name, repairFirearms);
     if (!weapon) return;
-    let tinker = workflow.actor.items.find(i => i.system.baseItem === 'tinker');
+    let tinker = workflow.actor.items.find(i => i.system.type?.baseItem === 'tinker');
     if (!tinker) {
         ui.notifications.info('You have no Tinker\'s Tools to make the repair with!');
         return;
     }
     let roll = await workflow.actor.rollToolCheck('tinker');
-    let misfireDC = 8 + chris.getConfiguration(weapon, 'misfire') ?? 1;
+    let misfireDC = 8 + (chris.getConfiguration(weapon, 'misfire') ?? 1);
     let updates;
     if (roll.total >= misfireDC) {
         updates = {
@@ -112,7 +137,7 @@ async function repair({speaker, actor, token, character, item, args, scope, work
 async function grit(workflow) {
     if (!workflow.item) return;
     if (workflow.hitTargets.size != 1) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
     let regain = 0;
     if (workflow.d20AttackRoll === 20 || (chris.getItem(workflow.actor, 'Vicious Intent') && workflow.d20AttackRoll === 19)) {
@@ -135,12 +160,13 @@ async function grit(workflow) {
 }
 async function critical(workflow) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.baseItem;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
     if (!workflow.isCritical || !workflow.damageRoll || workflow.targets.size != 1) return;
     let feature = chris.getItem(workflow.actor, 'Hemorrhaging Critical');
     if (!feature) return;
     let damage = Math.floor(workflow.damageItem.appliedDamage / 2);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
     let effectData = {
         'label': feature.name,
         'icon': feature.img,
@@ -152,7 +178,7 @@ async function critical(workflow) {
             {
                 'key': 'flags.midi-qol.OverTime',
                 'mode': 0,
-                'value': 'turn=end,damageRoll=' + damage + ',damageType=' + workflow.defaultDamageType + ',label=Hemorrhaging Critical',
+                'value': 'turn=end,damageRoll=' + damage + ',damageType=' + defaultDamageType + ',label=Hemorrhaging Critical',
                 'priority': 20
             }
         ],

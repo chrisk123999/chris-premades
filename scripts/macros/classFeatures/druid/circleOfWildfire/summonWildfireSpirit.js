@@ -35,6 +35,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpFormula = 5 + (druidLevel * 5);
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Wildfire Spirit';
     if (name === '') name = 'Wildfire Spirit';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -61,8 +63,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -87,7 +89,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? (chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'fire' : 'none';
+    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 30, workflow.token, animation);
     let updates2 = {
         'embedded': {
             'Item': {
@@ -137,21 +140,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function fieryTeleportation({speaker, actor, token, character, item, args, scope, workflow}) {
     let queueSetup = await queue.setup(workflow.item.uuid, 'fieryTeleportation', 450);
     if (!queueSetup) return;
-    let nearbyEnemies = chris.findNearby(workflow.token, 5, 'enemy');
     let nearbyTargets = chris.findNearby(workflow.token, 5, 'ally');
     let selection;
     let selectedTargets = [workflow.token];
     if (nearbyTargets.length > 0) {
-        let buttons = [
-            {
-                'label': 'Yes',
-                'value': true
-            }, {
-                'label': 'No',
-                'value': false
-            }
-        ];
-        selection = await chris.selectTarget('Teleport Which Creatures?', buttons, nearbyTargets, true, 'multiple');
+        selection = await chris.selectTarget('Teleport Which Creatures?', constants.yesNoButton, nearbyTargets, true, 'multiple');
         if (selection.buttons) {
             for (let i of selection.inputs) {
             if (i) selectedTargets.push((await fromUuid(i)).object);

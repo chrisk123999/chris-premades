@@ -1,26 +1,34 @@
+import {chris} from './helperFunctions.js';
+import {updateItem} from './item.js';
 export async function info({speaker, actor, token, character, item, args, scope, workflow}) {
     let info = item?.flags?.['chris-premades']?.info;
     if (!info) return;
     let message = '';
+    let gmMessage = '<hr>';
     let cancel = false;
+    let updateItem = false;
     if (info.version) {
         let currentVersion = CONFIG.chrisPremades.automations[info.name].version;
         let itemVersion = info.version;
         if (isNewerVersion(currentVersion, itemVersion)) {
-            message += 'Automation is out of date!<br>Item Version: ' + itemVersion + '<br>Updated Version: ' + currentVersion;
+            message += '<hr>@UUID[' + item.uuid + ']{' + item.name + '} automation is out of date!<br>Item Version: ' + itemVersion + '<br>Updated Version: ' + currentVersion;
+            gmMessage += '<button class="chris-item-button">Update Item</button>'
             cancel = true;
+            updateItem = true;
         }
     }
+    let missingSettings = [];
     if (info.settings) {
-        let missingSettings = [];
         for (let i of info.settings) {
             if (!game.settings.get('chris-premades', i)) missingSettings.push(i);
         }
         if (missingSettings.length > 0) {
             if (message != '') message += '<hr>';
             message += 'This automation requires the following settings to be enabled:';
+            gmMessage += '<button class="chris-settings-button">Enable Required Settings</button>'
             for (let i of missingSettings) {
-                message += '<br>' + i;
+                let settingName = game.settings.settings.get('chris-premades.' + i).name;
+                message += '<br>' + settingName;
             }
             cancel = true;
         }
@@ -33,19 +41,22 @@ export async function info({speaker, actor, token, character, item, args, scope,
                 cancel = true;
             } else {
                 let mutationStack = warpgate.mutationStack(token.document);
-                if (mutationStack.getName(info.mutation.self)) await warpgate.revert(token.document, info.mutation.self);
-                console.warn('A duplicate CPR Warpgate mutation was detected and removed!');
+                if (mutationStack.getName(info.mutation.self)) {
+                    await warpgate.revert(token.document, info.mutation.self);
+                    console.warn('A duplicate CPR Warpgate mutation was detected and removed!');
+                }
             }
         }
     }
+    let missingActors = [];
     if (info.actors) {
-        let missingActors = [];
         for (let i of info.actors) {
             if (!game.actors.getName(i)) missingActors.push(i);
         }
         if (missingActors.length > 0) {
             if (message != '') message += '<hr>';
             message += 'This automation requires the following sidebar actors:';
+            gmMessage += '<button class="chris-actors-button">Import Missing Actors</button>'
             for (let i of missingActors) {
                 message += '<br>' + i;
             }
@@ -53,21 +64,56 @@ export async function info({speaker, actor, token, character, item, args, scope,
         }
     }
     if (cancel) {
-        ChatMessage.create({
-            'speaker': {alias: name},
+        await ChatMessage.create({
+            'speaker': {'alias': 'Chris\'s Premades'},
             'content': message
         });
+        let messageData = {
+            'speaker': {'alias': 'Chris\'s Premades'},
+            'blind': true,
+            'content': gmMessage
+        };
+        if (missingSettings.length) setProperty(messageData, 'flags.chris-premades.message.button.settings', missingSettings);
+        if (missingActors.length) setProperty(messageData, 'flags.chris-premades.message.button.actors', missingActors);
+        if (updateItem) setProperty(messageData, 'flags.chris-premades.message.button.item', item.uuid);
+        await ChatMessage.create(messageData);
         return false;
     }
+}
+export async function buttonSettings(settings, element, message) {
+    await Promise.all(settings.map(async setting => {
+        await game.settings.set('chris-premades', setting, true);
+    }));
+    ui.notifications.info('Settings updated!');
+}
+export async function buttonActors(actors, element, message) {
+    let folder = game.folders.find(i => i.name === 'Chris Premades' && i.type === 'Actor');
+    if (!folder) {
+        folder = await Folder.create({
+            'name': 'Chris Premades',
+            'type': 'Actor',
+            'color': '#348f2d'
+        });
+    }
+    await Promise.all(actors.map(async actor => {
+        let actorData = await chris.getItemFromCompendium('chris-premades.CPR Summons', actor);
+        if (!actorData) return;
+        actorData.folder = folder.id;
+        await Actor.create(actorData);
+    }));
+    ui.notifications.info('Actors imported!');
+}
+export async function buttonItem(itemUuid, element, message) {
+    let item = await fromUuid(itemUuid);
+    if (!item) return;
+    await updateItem(item);
 }
 export async function setCompendiumItemInfo(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
         let name = i.flags['chris-premades']?.info?.name ?? i.name;
-        if (CONFIG.chrisPremades.automations[name]) {
-            await i.setFlag('chris-premades', 'info', CONFIG.chrisPremades.automations[name]);
-        }
+        if (CONFIG.chrisPremades.automations[name]) await i.setFlag('chris-premades', 'info', CONFIG.chrisPremades.automations[name]);
     }
 }
 export async function stripUnusedFlags(key) {
@@ -97,9 +143,9 @@ export async function removeFolderFlag(uuid) {
 }
 export async function updateAllCompendiums() {
     let packs = game.packs.filter(i => i.metadata.label.includes('CPR') && i.metadata.packageType === 'world');
-    for (let i of packs) {
+    await Promise.all(packs.map(async i => {
         await stripUnusedFlags(i.metadata.id);
         await setCompendiumItemInfo(i.metadata.id);
-    }
+    }));
     return 'Done!';
 }

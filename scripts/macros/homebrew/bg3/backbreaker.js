@@ -2,12 +2,13 @@ import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 export async function backbreaker({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size != 1 || workflow.item.system.actionType != 'mwak') return;
+    if (workflow.hitTargets.size != 1 || workflow.item.system.actionType != 'mwak') return;
     let validTypes = [
         'maul',
         'warhammer'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Backbreaker');
     if (!feature) return;
     if (!feature.system.uses.value) return;

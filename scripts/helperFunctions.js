@@ -1,3 +1,4 @@
+import {summonEffects} from './macros/animations/summonEffects.js';
 import {socket} from './module.js';
 export let chris = {
     'dialog': async function _dialog(title, options, content) {
@@ -33,7 +34,7 @@ export let chris = {
         );
     },
     'findEffect': function _findEffect(actor, name) {
-        return actor.effects.getName(name);
+        return chris.getEffects(actor).find(i => i.name === name);
     },
     'createEffect': async function _createEffect(actor, effectData) {
         if (effectData.label) {
@@ -314,8 +315,8 @@ export let chris = {
         let description = page.text.content;
         return description;
     },
-    'getDistance': function _getDistance(sourceToken, targetToken) {
-        return MidiQOL.getDistance(sourceToken, targetToken, {wallsBlock: false});
+    'getDistance': function _getDistance(sourceToken, targetToken, wallsBlock) {
+        return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
     },
     'totalDamageType': function _totalDamageType(actor, damageDetail, type) {
         let total = 0;
@@ -399,7 +400,8 @@ export let chris = {
         game.user.updateTokenTargets(targets);
     },
     'increaseExhaustion': async function _increaseExhaustion(actor, originUuid) {
-        let effect = actor.effects.find(eff => eff.name.includes('Exhaustion'));
+
+        let effect = chris.getEffects(actor).find(eff => eff.name.includes('Exhaustion'));
         if (!effect) {
             await chris.addCondition(actor, 'Exhaustion 1', false, originUuid);
             return;
@@ -418,7 +420,7 @@ export let chris = {
         return DAE.convertDuration(item.system.duration, chris.inCombat());
     },
     'getCriticalFormula': function _getCriticalFormula(formula) {
-        return new CONFIG.Dice.DamageRoll(formula,    {}, {'critical': true, 'powerfulCritical': game.settings.get('dnd5e', 'criticalDamageMaxDice'), 'multiplyNumeric': game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
+        return new CONFIG.Dice.DamageRoll(formula, {}, {'critical': true, 'powerfulCritical': game.settings.get('dnd5e', 'criticalDamageMaxDice'), 'multiplyNumeric': game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
     },
     'getSize': function _getSize(actor, sizeToString) {
         let sizeValue;
@@ -499,7 +501,7 @@ export let chris = {
                 await warpgate.wait(100);
                 ray = new Ray(token.center, crosshairs);
                 distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                if (token.checkCollision(ray, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
+                if (token.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > maxRange) {
                     crosshairs.icon = 'icons/svg/hazard.svg';
                 } else {
                     crosshairs.icon = icon;
@@ -521,7 +523,12 @@ export let chris = {
         return await warpgate.crosshairs.show(options, callbacks);
     },
     'getConfiguration': function _getConfiguration(item, key) {
-        return item.flags['chris-premades']?.configuration?.[key.toLowerCase().split(' ').join('-').toLowerCase()];
+        let keyName = key.toLowerCase().split(' ').join('-').toLowerCase();
+        let keyItem = item.flags['chris-premades']?.configuration?.[keyName];
+        if (keyItem != undefined) return keyItem === '' ? undefined : keyItem;
+        let itemName = item.flags['chris-premades']?.info?.name ?? item.name;
+        let keyDefault = CONFIG.chrisPremades.itemConfiguration?.[itemName]?.text?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.select?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.checkbox?.[keyName]?.default ?? CONFIG.chrisPremades.itemConfiguration?.[itemName]?.number?.[keyName]?.default;
+        return keyDefault === '' ? undefined : keyDefault;
     },
     'setConfiguration': async function _setConfiguration(item, key, value) {
         return await item.setFlag('chris-premades', 'configuration.' + key.toLowerCase().split(' ').join('-').toLowerCase(), value);
@@ -591,7 +598,7 @@ export let chris = {
             dialog.element.find(".dialog-buttons").css({
                 "flex-direction": 'column',
             })
-        })
+        });
     },
     'selectDocuments': async function selectDocuments(title, documents, useUuids) {
         return await new Promise(async (resolve) => {
@@ -609,7 +616,7 @@ export let chris = {
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
                         <label> 
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
-                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
                     </div>
                 `;
@@ -645,7 +652,7 @@ export let chris = {
                 }
                 resolve(returns);
             }
-        })
+        });
     },
     'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents) {
         if (userId === game.user.id) return await chris.selectDocument(title, documents);
@@ -683,7 +690,7 @@ export let chris = {
         if (userId === game.user.id) return await chris.aimCrosshair(token, maxRange, icon, interval, size);
         return await socket.executeAsUser('remoteAimCrosshair', userId, token.document.uuid, maxRange, icon, interval, size);
     },
-    'menu': async function _menu(title, buttons, inputs, useSpecialRender, info, header) {
+    'menu': async function _menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions = {}) {
         function render(html) {
             let ths = html[0].getElementsByTagName('th');
             for (let t of ths) {
@@ -698,26 +705,25 @@ export let chris = {
                 t.style.width = '50px';
             }
         }
-        if (header) inputs.unshift({'label': header, 'type': 'header'});
-        if (info) inputs.unshift({'label': info, 'type': 'info'});
+        let newInputs = duplicate(inputs);
+        if (header) newInputs.unshift({'label': header, 'type': 'header'});
+        if (info) newInputs.unshift({'label': info, 'type': 'info'});
         let options = {'title': title};
+        options = mergeObject(options, extraOptions);
         if (useSpecialRender) options.render = render;
-        let selection = await warpgate.menu({'inputs': inputs, 'buttons': buttons}, options);
+        let selection = await warpgate.menu({'inputs': newInputs, 'buttons': buttons}, options);
         if (header) selection?.inputs?.shift();
         if (info) selection?.inputs?.shift();
         return selection;
     },
-    'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId) {
-        if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender);
-        return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender);
+    'remoteMenu': async function _remoteMenu(title, buttons, inputs, useSpecialRender, userId, info, header, extraOptions) {
+        if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions);
+        return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender, info, header, extraOptions);
     },
     'decimalToFraction': function _decimalToFraction(decimal) {
-        if (Number(decimal) > 1) {
-            return Number(decimal);
-        } else {
-            let fraction = '1/' + 1 / Number(decimal);
-            return fraction;
-        }
+        if (!decimal) return 0;
+        if (Number(decimal) >= 1) return Number(decimal);
+        return '1/' + 1 / Number(decimal);
     },
     'animationCheck': function _animationCheck(item) {
         if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
@@ -784,7 +790,7 @@ export let chris = {
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
             if (hitsWall) {
-                distance -= 5;
+                distance += distance > 0 ? -5 : 5;
                 if (distance === 0) {
                     ui.notifications.info('Target is unable to be moved!');
                     return;
@@ -827,7 +833,8 @@ export let chris = {
             }
         );
         targetDamage.totalDamage += damageTotal;
-        if (workflow.defaultDamageType === 'healing') {
+        let defaultDamageType = chris.getDefaultDamage(workflow.damageRolls);
+        if (defaultDamageType === 'healing') {
             targetDamage.newHP += roll.total;
             targetDamage.hpDamage -= damageTotal;
             targetDamage.appliedDamage -= damageTotal;
@@ -866,28 +873,29 @@ export let chris = {
         ditem.appliedDamage = keptDamage;
         ditem.totalDamage = keptDamage;
     },
-    'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user) {
+    'thirdPartyReactionMessage': async function _thirdPartyReactionMessage(user, dialogMessage, key = true) {
         let playerName = user.name;
         let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage);
-        let message = '<hr>Waiting for a 3rd party reaction from:<br><b>' + playerName + '</b>';
+        let subMessage = dialogMessage ? 'a dialog selection' : 'a 3rd party reaction';
+        let message = '<hr>Waiting for a ' + subMessage + ' from:<br><b>' + playerName + '</b>';
         if (lastMessage) {
             await lastMessage.update({'content': message});
         } else {
-            ChatMessage.create({
-                'speaker': {'alias': name},
+            await ChatMessage.create({
+                'speaker': {'alias': 'Chris\'s Premades'},
                 'content': message,
                 'whisper': game.users.filter(u => u.isGM).map(u => u.id),
                 'blind': false,
                 'flags': {
                     'chris-premades': {
-                        'thirdPartyReactionMessage': true
+                        'thirdPartyReactionMessage': key
                     }
                 }
             });
         }
     },
-    'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage() {
-        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage && m.user.id === game.user.id);
+    'clearThirdPartyReactionMessage': async function _clearThirdPartyReactionMessage(key = true) {
+        let lastMessage = game.messages.find(m => m.flags?.['chris-premades']?.thirdPartyReactionMessage === key && m.user.id === game.user.id);
         if (lastMessage) await lastMessage.delete();
     },
     'lastGM': function _lastGM() {
@@ -897,7 +905,7 @@ export let chris = {
         return game.user.id === chris.lastGM() ? true : false;
     },
     'nth': function _nth(number) {
-        return number + ['st','nd','rd'][((number+90)%100-10)%10-1]||'th';
+        return number + (['st','nd','rd'][((number+90)%100-10)%10-1]||'th');
     },
     'levelOrCR': function _levelOrCR(actor) {
         return actor.type === 'character' ? actor.system.details.level : actor.system.details.cr ?? 0;
@@ -953,5 +961,238 @@ export let chris = {
     'remoteRollItem': async function _remoteRollItem(item, config, options, userId) {
         if (chris.firstOwner(item.actor).id === userId) return await chris.rollItem(item, config, options);
         return await socket.executeAsUser('rollItem', userId, item.uuid, config, options);
+    },
+    'spawn': async function _spawn(sourceActor, updates = {}, callbacks = {}, summonerToken, range, animation = 'default') {
+        let tokenDocument = await sourceActor.getTokenDocument();
+        let options = {};
+        if (summonerToken?.actor) {
+            options = {
+                'controllingActor': summonerToken.actor,
+                'crosshairs': {
+                    'interval': tokenDocument.width % 2 === 0 ? 1 : -1
+                }
+            };
+        }
+        if (animation != 'none' && !callbacks.post) {
+            let callbackFunction = summonEffects[animation];
+            if (typeof callbackFunction === 'function' && chris.jb2aCheck() === 'patreon' && chris.aseCheck()) {
+                callbacks.post = callbackFunction;
+                setProperty(updates, 'token.alpha', 0);
+            }
+        }
+        if (!callbacks.show) {
+            callbacks.show = async (crosshairs) => {
+                let distance = 0;
+                let ray;
+                while (crosshairs.inFlight) {
+                    await warpgate.wait(100);
+                    ray = new Ray(summonerToken.center, crosshairs);
+                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
+                    if (summonerToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > range) {
+                        crosshairs.icon = 'icons/svg/hazard.svg';
+                    } else {
+                        crosshairs.icon = tokenDocument.texture.src;
+                    }
+                    crosshairs.draw();
+                    crosshairs.label = distance + '/' + range + 'ft.';
+                }
+            }
+        }
+        return await warpgate.spawn(tokenDocument, updates, callbacks, options);
+    },
+    'safeMutate': async function _safeMutate(actor, updates, callbacks = {}, options = {}) {
+        let tokens = actor.getActiveTokens();
+        let tokenDoc;
+        let remove = false;
+        if (!tokens.length) {
+            if (actor.prototypeToken.actorLink) {
+                let doc = await actor.getTokenDocument({
+                    'x': 0,
+                    'y': 0
+                });
+                let tokenData = doc.toObject();
+                [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
+                remove = true;
+            } else {
+                ui.notifications.warn('A mutation was attempted on a unlinked actor with no token and has been canceled!');
+                return false;
+            }
+        } else {
+            tokenDoc = tokens[0].document;
+        }
+        await warpgate.mutate(tokenDoc, updates, callbacks, options);
+        if (remove) await tokenDoc.delete();
+        return true;
+    },
+    'safeRevert': async function _safeRevert(actor, mutationName, options) {
+        let tokens = actor.getActiveTokens();
+        let tokenDoc;
+        let remove = false;
+        if (!tokens.length) {
+            if (actor.prototypeToken.actorLink) {
+                let doc = await actor.getTokenDocument({
+                    'x': 0,
+                    'y': 0
+                });
+                let tokenData = doc.toObject();
+                [tokenDoc] = await canvas.scene.createEmbeddedDocuments('Token', [tokenData]);
+                remove = true;
+            } else {
+                ui.notifications.warn('A mutation revert was attempted on a unlinked actor with no token and has been canceled!');
+                return false;
+            }
+        } else {
+            tokenDoc = tokens[0].document;
+        }
+        await warpgate.revert(tokenDoc, mutationName, options);
+        return true;
+    },
+    'vision5e': function _vision5e() {
+        return !!game.modules.get('vision-5e')?.active;
+    },
+    'checkForRoom': function _checkForRoom(token, distance) {
+        let point = {'x': token.center.x, 'y': token.center.y};
+        let padding = token.w / 2 - canvas.grid.size / 2;
+        let pixelDistance = distance * canvas.grid.size + padding;
+        function check(direction) {
+            let newPoint = duplicate(point);
+            switch (direction) {
+                case 'n':
+                    newPoint.y -= pixelDistance;
+                    break;
+                case 'e':
+                    newPoint.x += pixelDistance;
+                    break;
+                case 's':
+                    newPoint.y += pixelDistance;
+                    break;
+                case 'w':
+                    newPoint.x -= pixelDistance;
+                    break;
+            }
+            return token.checkCollision(newPoint, {'origin': point, 'type': 'move', 'mode': 'any'});
+        }
+        return {
+            'n': check('n'),
+            'e': check('e'),
+            's': check('s'),
+            'w': check('w')
+        };
+    },
+    'findDirection': function _findDirection(room) {
+        if (!room.s && !room.e) return 'se';
+        if (!room.n && !room.e) return 'ne';
+        if (!room.s && !room.w) return 'sw';
+        if (!room.w && !room.n) return 'nw';
+        return 'none';
+    },
+    'getCoordDistance': function _getCoordDistance(t1, targetPos) {
+        //Adapted from Midi-Qol
+        if (!canvas || !canvas.scene) return -1;
+        if (!canvas.grid || !canvas.dimensions) return -1;
+        let t2 = {
+            'document': {
+                'height': targetPos.height ?? t1.document.height,
+                'width': targetPos.width ?? t1.document.width,
+                'x': targetPos.x,
+                'y': targetPos.y,
+                'elevation': targetPos.elevation
+            }
+        }
+        if (!t1 || !t2) return -1;
+        if (!canvas || !canvas.grid || !canvas.dimensions) return -1;
+        let t1StartX = t1.document.width >= 1 ? 0.5 : t1.document.width / 2;
+        let t1StartY = t1.document.height >= 1 ? 0.5 : t1.document.height / 2;
+        let t2StartX = t2.document.width >= 1 ? 0.5 : t2.document.width / 2;
+        let t2StartY = t2.document.height >= 1 ? 0.5 : t2.document.height / 2;
+        let t1Elevation = t1.document.elevation ?? 0;
+        let t2Elevation = t2.document.elevation ?? 0;
+        let t1TopElevation = t1Elevation + Math.max(t1.document.height, t1.document.width) * (canvas?.dimensions?.distance ?? 5);
+        let t2TopElevation = t2Elevation + Math.min(t2.document.height, t2.document.width) * (canvas?.dimensions?.distance ?? 5);
+        let x, x1, y, y1, segments = [], rdistance, distance;
+        for (x = t1StartX; x < t1.document.width; x++) {
+            for (y = t1StartY; y < t1.document.height; y++) {
+                let origin = new PIXI.Point(...canvas.grid.getCenter(Math.round(t1.document.x + (canvas.dimensions.size * x)), Math.round(t1.document.y + (canvas.dimensions.size * y))));
+                for (x1 = t2StartX; x1 < t2.document.width; x1++) {
+                    for (y1 = t2StartY; y1 < t2.document.height; y1++) {
+                        let dest = new PIXI.Point(...canvas.grid.getCenter(Math.round(t2.document.x + (canvas.dimensions.size * x1)), Math.round(t2.document.y + (canvas.dimensions.size * y1))));
+                        let r = new Ray(origin, dest);
+                        segments.push({'ray': r});
+                    }
+                }
+            }
+        }
+        if (segments.length === 0) {
+            return -1;
+        }
+        function midiMeasureDistances(segments, options = {}) {
+            if (canvas?.grid?.grid.constructor.name !== "BaseGrid" || !options.gridSpaces) {
+                let distances = canvas?.grid?.measureDistances(segments, options);
+                return distances;
+            }
+            let rule = canvas?.grid.diagonalRule;
+            if (!configSettings.gridlessFudge || !options.gridSpaces || !["555", "5105", "EUCL"].includes(rule)) return canvas?.grid?.measureDistances(segments, options);
+            let nDiagonal = 0;
+            let d = canvas?.dimensions;
+            let grid = canvas?.scene?.grid;
+            if (!d || !d.size) return 0;
+            let fudgeFactor = configSettings.gridlessFudge / d.distance;
+            return segments.map(s => {
+                let r = s.ray;
+                let nx = Math.ceil(Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor));
+                let ny = Math.ceil(Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor));
+                let nd = Math.min(nx, ny);
+                let ns = Math.abs(ny - nx);
+                nDiagonal += nd;
+                if (rule === "5105") {
+                    let nd10 = Math.floor(nDiagonal / 2) - Math.floor((nDiagonal - nd) / 2);
+                    let spaces = (nd10 * 2) + (nd - nd10) + ns;
+                    return spaces * d.distance;
+                }
+                else if (rule === "EUCL") {
+                    let nx = Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor);
+                    let ny = Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor);
+                    return Math.ceil(Math.hypot(nx, ny) * grid?.distance);
+                }
+                else return Math.max(nx, ny) * grid.distance;
+            });
+        }
+        rdistance = segments.map(ray => midiMeasureDistances([ray], {'gridSpaces': true }));
+        distance = Math.min(...rdistance);
+        let heightDifference = 0;
+        let t1ElevationRange = Math.max(t1.document.height, t1.document.width) * (canvas?.dimensions?.distance ?? 5);
+        if (Math.abs(t2Elevation - t1Elevation) < t1ElevationRange) {
+            heightDifference = 0;
+        } else if (t1Elevation < t2Elevation) {
+            heightDifference = t2Elevation - t1TopElevation;
+        } else if (t1Elevation > t2Elevation) {
+            heightDifference = t1Elevation - t2TopElevation;
+        }
+        let rule = canvas.grid.diagonalRule
+        if (['555', '5105'].includes(rule)) {
+            let nd = Math.min(distance, heightDifference);
+            let ns = Math.abs(distance - heightDifference);
+            distance = nd + ns;
+            let dimension = canvas?.dimensions?.distance ?? 5;
+            if (rule === '5105') distance = distance + Math.floor(nd / 2 / dimension) * dimension;
+        }
+        distance = Math.sqrt(heightDifference * heightDifference + distance * distance);
+        return distance;
+    },
+    'getEffects': function _getEffects(actor) {
+        return Array.from(actor.allApplicableEffects());
+    },
+    'addToDamageRoll': async function _addToDamageRoll(workflow, bonusDamageFormula, ignoreCrit = false) {
+        if (workflow.isCritical && !ignoreCrit) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+        let bonusDamageRoll = await new CONFIG.Dice.DamageRoll(bonusDamageFormula, workflow.actor.getRollData()).evaluate();
+        workflow.damageRolls.push(bonusDamageRoll);
+        await workflow.setDamageRolls(workflow.damageRolls);
+    },
+    'damageRoll': async function _damageRoll(workflow, damageFormula, options = {}, ignoreCrit = false) {
+        if (workflow.isCritical && !ignoreCrit) damageFormula = chris.getCriticalFormula(damageFormula);
+        return await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), options).evaluate();
+    },
+    'damageRolls': async function _damageRolls(workflow, damageFormulas = []) {
+        return damageFormulas.map(i => chris.damageRoll(workflow, i));
     }
 }

@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function early(workflow) {
-    if (workflow.targets.size === 0) return;
+    if (!workflow.targets.size) return;
     let spellFlag = workflow.item.flags['chris-premades']?.spell;
     if (!(workflow.item.type === 'spell' || spellFlag)) return;
     let values = [];
@@ -27,8 +27,7 @@ async function early(workflow) {
         'duration': {
             'seconds': 1
         },
-        'changes': changes,
-        'transfer': true
+        'changes': changes
     }
     workflow.targets.forEach(async function(token, key, set) {
         for (let i of values) {
@@ -47,7 +46,7 @@ async function late(workflow) {
     });
 }
 async function damage(workflow) {
-    if (workflow.targets.size === 0) return;
+    if (!workflow.targets.size) return;
     let spellFlag = workflow.item.flags['chris-premades']?.spell;
     if (!(workflow.item.type === 'spell' || spellFlag)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'elementalAdept', 320);
@@ -62,19 +61,21 @@ async function damage(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    let oldDamageRoll = workflow.damageRoll;
-    let newDamageRoll = '';
-    for (let i = 0; oldDamageRoll.terms.length > i; i++) {
-        let flavor = oldDamageRoll.terms[i].flavor;
-        let isDeterministic = oldDamageRoll.terms[i].isDeterministic;
-        if (!values.includes(flavor.toLowerCase()) || isDeterministic === true) {
-            newDamageRoll += oldDamageRoll.terms[i].formula;
-        } else {
-            newDamageRoll += oldDamageRoll.terms[i].expression + 'min2[' + flavor + ']'
+    await Promise.all(workflow.damageRolls.map(async (damageRoll, i, arr) => {
+        if (!values.includes(damageRoll.options.type.toLowerCase())) return;
+        let newDamageFormula = '';
+        for (let i = 0; damageRoll.terms.length > i; i++) {
+            let flavor = damageRoll.terms[i].flavor;
+            let isDeterministic = damageRoll.terms[i].isDeterministic;
+            if (isDeterministic === true) {
+                newDamageFormula += damageRoll.terms[i].formula;
+            } else {
+                newDamageFormula += damageRoll.terms[i].expression + 'min2[' + flavor + ']'
+            }
         }
-    }
-    let damageRoll = await new Roll(newDamageRoll).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+        arr[i] = await chris.damageRoll(workflow, newDamageFormula, damageRoll.options, true);
+    }));
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
 }
 export let elementalAdept = {

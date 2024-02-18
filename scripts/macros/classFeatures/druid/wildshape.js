@@ -174,8 +174,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                             'button': featureData.name
                         }
                     }
-                },
-                'transfer': true
+                }
             };
             if (druidLevels === 20) delete effectData.changes;
             let invalidTypes = [
@@ -204,7 +203,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             let targetItems = selectedActor.items.contents;
             for (let i of targetItems) {
                 itemUpdates[i.name] = i.toObject();
-                if (primalStrike && itemUpdates[i.name].type === 'weapon') setProperty(itemUpdates[i.name], 'system.properties.mgc', true);
+                if (primalStrike && itemUpdates[i.name].type === 'weapon') {
+                    itemUpdates[i.name].system.properties.push('mgc');
+                }
                 if (insigniaOfClaws && itemUpdates[i.name].type === 'weapon') {
                     try {
                         itemUpdates[i.name].system.damage.parts[0][0] += ' + 1';

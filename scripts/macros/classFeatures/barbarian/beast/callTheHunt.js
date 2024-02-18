@@ -73,12 +73,9 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         };
         await chris.updateEffect(effect, updates);
     }
-    let bonusDamageFormula = '1d8[' + workflow.defaultDamageType + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let oldFormula = workflow.damageRoll._formula;
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let bonusDamageFormula = '1d8[' + defaultDamageType + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function rageEnd(effect) {

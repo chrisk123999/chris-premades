@@ -1,36 +1,97 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
+import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
         buttons.unshift({
-            'class': 'chris-premades',
+            'class': 'chris-premades-item',
             'icon': 'fa-solid fa-kit-medical',
             'onclick': () => itemConfig(config.object)
         });
     }
 }
-export function updateItemButton(app, [elem], options) {
-    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades');
+export async function updateItemButton(app, [elem], options) {
+    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
     if (!headerButton) return;
-    let itemName = app.object?.name;
-    if (!itemName) return;
-    let automation = CONFIG.chrisPremades.automations[app.object.flags['chris-premades']?.info?.name ?? itemName];
-    if (!automation) return;
-    let itemVersion = app.object.flags['chris-premades']?.info?.version;
-    if (!itemVersion) {
-        headerButton.style.color = 'yellow';
-        return;
+    let item = app.object;
+    if (!item) return;
+    let source = item.flags['chris-premades']?.info?.source;
+    function cpr(item) {
+        let automation = CONFIG.chrisPremades.automations[item.flags['chris-premades']?.info?.name ?? getItemName(item.name)];
+        if (!automation) return false;
+        let itemVersion = item.flags['chris-premades']?.info?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return true;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'red';
+            return true;
+        }
+        if (CONFIG.chrisPremades.itemConfiguration[automation.name]) {
+            headerButton.style.color = 'dodgerblue';
+            return true;
+        } else {
+            headerButton.style.color = 'green';
+            return true;
+        }
     }
-    if (automation.version != itemVersion) {
-        headerButton.style.color = 'red';
-        return;
+    async function gps(item) {
+        let automation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
+        if (!automation) return;
+        let itemVersion = item.flags['chris-premades']?.info?.gambit?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'orange';
+            return;
+        }
+        headerButton.style.color = 'orchid';
     }
-    headerButton.style.color = 'green';
+    function misc(item) {
+        let automation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
+        if (!automation) return;
+        let itemVersion = item.flags['chris-premades']?.info?.misc?.version;
+        if (!itemVersion) {
+            headerButton.style.color = 'yellow';
+            return;
+        }
+        if (automation.version != itemVersion) {
+            headerButton.style.color = 'orange';
+            return;
+        }
+        headerButton.style.color = 'orchid';
+    }
+    if (source) {
+        switch(source) {
+            case 'CPR':
+                cpr(item);
+                return;
+            case 'GPS':
+                await gps(item);
+                return;
+            case 'MISC':
+                misc(item);
+                return;
+            default:
+                headerButton.style.color = 'pink';
+                return;
+        }
+    } else {
+        let found = cpr(item);
+        if (found) return;
+        let gambitAutomation;
+        let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];;
+        if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name]; 
+        if (gambitAutomation || miscAutomation) headerButton.style.color = 'yellow';
+    }
 }
 export function createActorHeaderButton(config, buttons) {
     if (config.object instanceof Actor) {
         buttons.unshift({
-            class: 'chris-premades',
+            class: 'chris-premades-actor',
             icon: 'fa-solid fa-kit-medical',
             onclick: () => actorConfig(config.object)
         });
@@ -50,7 +111,7 @@ async function actorConfig(actor) {
             list += '- ' + i + '<br>'
         }
         ChatMessage.create({
-            'speaker': {alias: name},
+            'speaker': {'alias': 'Chris\'s Premades'},
             'whisper': [game.user.id],
             'content': '<hr><b>Updated Items:</b><br><hr>' + list
         });
@@ -61,33 +122,61 @@ async function itemConfig(itemDocument) {
     let replacerAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access');
     let configurationAccess = game.user.isGM || game.settings.get('chris-premades', 'Item Configuration Access');
     let configuration = CONFIG.chrisPremades.itemConfiguration[itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name];
-    if (replacerAccess && configurationAccess && configuration) {
-        let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, [['🔎 Update / Replace', 'update'], ['🛠️ Configure', 'configure']]);
+    if (replacerAccess && configurationAccess) {
+        let options = [['🔎 Update / Replace Item', 'update']];
+        if (configuration) options.push(['🛠️ Configure', 'configure']);
+        if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {
+            let identifier = itemDocument.system.identifier;
+            if (scale.scaleData[identifier]) options.push(['⚖️ Add Scale', 'scale']);
+        }
+        let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
         if (!selection) return;
         if (selection === 'update') {
             await updateItem(itemDocument);
         } else if (selection === 'configure') {
             await configureItem(itemDocument, configuration);
+        } else if (selection === 'scale') {
+            await scale.addScale(itemDocument);
         }
     } else if (replacerAccess && (!configurationAccess || !configuration)) {
-        await updateItem(itemDocument);
+        if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {
+            let identifier = itemDocument.system.identifier;
+            if (scale.scaleData[identifier]) {
+                let options = [['🔎 Update / Replace Item', 'update'], ['⚖️ Add Scale', 'scale']];
+                let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
+                if (!selection) return;
+                if (selection === 'update') {
+                    await updateItem(itemDocument);
+                } else if (selection === 'scale') {
+                    await scale.addScale(itemDocument);
+                }
+            }
+        } else {
+            await updateItem(itemDocument);
+        }
     } else if (!replacerAccess && configurationAccess && configuration) {
         await configureItem(itemDocument, configuration);
     } else {
         ui.notifications.info('Nothing to do!');
     }
 }
-async function updateItem(itemDocument) {
+export async function updateItem(itemDocument) {
     let additionalCompendiums = game.settings.get('chris-premades', 'Additional Compendiums');
     let additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
-    let itemName = itemDocument.flags?.['chris-premades']?.info?.name ?? itemDocument.name;
+    let flagName = itemDocument.flags?.['chris-premades']?.info?.name;
+    let automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
+    let itemName = itemDocument.name;
+    if (automation && flagName) itemName = flagName;
     let itemType = itemDocument.type;
     let searchCompendiums = [];
     let isNPC = false;
     if (itemDocument.actor.type === 'npc') isNPC = true;
     let compendiumItem;
     let foundCompendiumName;
+    let gambitItems = game.modules.get('gambits-premades')?.active ? game.settings.get('chris-premades', 'GPS Support') : false;
+    let miscItems = game.modules.get('midi-item-showcase-community')?.active ? game.settings.get('chris-premades', 'MISC Support') : false;
     itemName = getItemName(itemName);
+    let sourceModule;
     if (!isNPC || itemType === 'spell') {
         switch (itemType) {
             case 'weapon':
@@ -97,15 +186,36 @@ async function updateItem(itemDocument) {
             case 'backpack':
             case 'loot':
                 searchCompendiums.push('chris-premades.CPR Items');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-items');
+                if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-items');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-items');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
                 break;
             case 'spell':
                 searchCompendiums.push('chris-premades.CPR Spells');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-spells');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-spells');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
                 break;
             case 'feat':
                 searchCompendiums.push('chris-premades.CPR Race Features');
                 searchCompendiums.push('chris-premades.CPR Class Features');
                 searchCompendiums.push('chris-premades.CPR Feats');
                 searchCompendiums.push('chris-premades.CPR Actions');
+                if (gambitItems) {
+                    searchCompendiums.push('gambits-premades.gps-class-features');
+                    searchCompendiums.push('gambits-premades.gps-generic-features');
+                    if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-features');
+                }
+                if (miscItems) {
+                    searchCompendiums.push('midi-item-showcase-community.misc-class-features');
+                    searchCompendiums.push('midi-item-showcase-community.misc-feats');
+                    searchCompendiums.push('midi-item-showcase-community.misc-race-features');
+                    if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                    if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
+                }
                 break;
         }
         for (let i of additionalCompendiums) searchCompendiums.push(i);
@@ -117,12 +227,28 @@ async function updateItem(itemDocument) {
             'chris-premades.CPR Feats',
             'chris-premades.CPR Actions'
         ];
-        searchCompendiums.sort((a, b) => (packs.includes(a) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[a] ?? 10) - (packs.includes(b) ? additionalCompendiumPriority['CPR'] : additionalCompendiumPriority[b] ?? additionalCompendiumPriority[b] ?? 10));
-        for (let compendium of searchCompendiums) {
-            if (!game.packs.get(compendium)) continue;
-            compendiumItem = await chris.getItemFromCompendium(compendium, itemName, true);
+        let gambitPacks = [];
+        if (gambitItems && game.modules.get('gambits-premades')?.active) gambitPacks = Array.from(game.modules.get('gambits-premades').packs).map(i => i.id)
+        let miscPacks = [];
+        if (miscItems && game.modules.get('midi-item-showcase-community')?.active) miscPacks = Array.from(game.modules.get('midi-item-showcase-community').packs).map(i => i.id);
+        searchCompendiums.sort((a, b) => {
+            let numA = additionalCompendiumPriority[a] ?? 10;
+            let numB = additionalCompendiumPriority[b] ?? 10;
+            if (packs.includes(a)) numA = additionalCompendiumPriority['CPR'];
+            if (packs.includes(b)) numB = additionalCompendiumPriority['CPR'];
+            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
+            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
+            if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
+            if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
+            return numA - numB;
+        });
+        for (let compendiumId of searchCompendiums) {
+            let compendium = game.packs.get(compendiumId);
+            if (!compendium) continue;
+            compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
             if (compendiumItem) {
-                foundCompendiumName = game.packs.get(compendium).metadata.label;
+                foundCompendiumName = compendium.metadata.label;
+                sourceModule = compendium.metadata.packageType === 'module' ? compendium.metadata.packageName : 'world';
                 break;
             }
         }
@@ -148,7 +274,7 @@ async function updateItem(itemDocument) {
     let selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
     if (!selection) return;
     ChatMessage.create({
-        'speaker': {'alias': name},
+        'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
@@ -179,6 +305,23 @@ async function updateItem(itemDocument) {
     if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
+    switch (sourceModule) {
+        case 'midi-item-showcase-community':
+            setProperty(originalItem, 'flags.chris-premades.info.misc', CONFIG['midi-item-showcase-community']?.automations?.[itemName]);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
+            break;
+        case 'gambits-premades':
+            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
+            setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
+            break;
+        case 'chris-premades':
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
+            break;
+        default:
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
+            break;
+    }
     if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
@@ -198,16 +341,6 @@ async function configureItem(item, configuration) {
             t.style.paddingRight = '5px';
         }
     }
-    let buttons = [,
-        {
-            'label': 'Cancel',
-            'value': false
-        },
-        {
-            'label': 'Ok',
-            'value': true
-        }
-    ];
     let generatedMenu = [];
     let inputKeys = [];
     for (let [key, value] of Object.entries(configuration)) {
@@ -226,7 +359,7 @@ async function configureItem(item, configuration) {
                 break;
             case 'select':
                 for (let [key2, value2] of Object.entries(value)) {
-                    let current = item.flags['chris-premades']?.configuration?.[key2];
+                    let current = item.flags['chris-premades']?.configuration?.[key2] ?? value2.default;
                     let options = foundry.utils.duplicate(value2.values);
                     options.forEach(item => {
                         if (item.value === current) {
@@ -250,7 +383,7 @@ async function configureItem(item, configuration) {
     let selection = await warpgate.menu(
         {
             'inputs': generatedMenu,
-            'buttons': buttons
+            'buttons': constants.okCancel
         },
         config
     );

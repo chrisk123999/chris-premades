@@ -131,12 +131,8 @@ async function hexAttack({speaker, actor, token, character, item, args, scope, w
     if (targetToken.id != hexedTarget) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'hex', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '1d6[necrotic]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function hexMoveItem({speaker, actor, token, character, item, args, scope, workflow}) {

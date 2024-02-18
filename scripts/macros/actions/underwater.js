@@ -1,6 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
+    let baseItem = workflow.item.system.type?.baseItem;
     switch (workflow.item.system.actionType) {
         case 'mwak':
             if (workflow.actor.system.attributes.movement.swim > 0) return;
@@ -11,7 +12,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 'spear',
                 'trident'
             ]
-            if (validMeleeTypes.includes(workflow.item.system.baseItem)) return;
+            if (validMeleeTypes.includes(baseItem)) return;
             break;;
         case 'rwak':
             let validRangedTypes = [
@@ -24,7 +25,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 'trident',
                 'dart'
             ]
-            if (validRangedTypes.includes(workflow.item.system.baseItem)) return;
+            if (validRangedTypes.includes(baseItem)) return;
             break;
         default:
             return;

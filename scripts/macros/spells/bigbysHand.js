@@ -21,6 +21,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpFormula = workflow.actor.system.attributes.hp.max;
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Bigby\'s Hand';
     if (name === '') name = 'Bigby\'s Hand';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -43,8 +45,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.int.mod + rangedAttackBonus.total
                         }
                     },
                     'spell': {
@@ -73,7 +75,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    await tashaSummon.spawn(sourceActor, updates, 60, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'earth';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await tashaSummon.spawn(sourceActor, updates, 60, workflow.item, 120, workflow.token, animation);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Bigby\'s Hand - Move', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Bigby\'s Hand - Move');

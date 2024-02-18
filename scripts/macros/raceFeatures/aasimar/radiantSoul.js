@@ -23,9 +23,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 return;
             }
             await chris.setTurnCheck(feature, 'feature', 'aasimarRadiantSoul');
-            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[radiant]';
-            let damageRoll = await new Roll(damageFormula).roll({async: true});
-            await workflow.setDamageRoll(damageRoll);
+            let damageFormula = workflow.actor.system.attributes.prof + '[radiant]';
+            await chris.addToDamageRoll(workflow, damageFormula);
             await feature.displayCard();
             queue.remove(workflow.item.uuid);
             return;

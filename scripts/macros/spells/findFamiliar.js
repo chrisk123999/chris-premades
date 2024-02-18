@@ -12,7 +12,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!sourceActor) return;
     let creatureType = await chris.dialog('What creature type?', [['Celestial', 'celestial'], ['Fey', 'fey'], ['Fiend', 'fiend']]);
     if (!creatureType) return;
-    let name = await chris.getConfiguration(workflow.item, 'name') ?? sourceActor.name + ' Familiar';
+    let name = await chris.getConfiguration(workflow.item, 'name');
+    if (!name || name === '') name = sourceActor[0].name + ' Familiar';
     let updates = {
         'actor': {
             'name': name,
@@ -50,7 +51,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 },
                 'vae': {
                     'button': attackData.name
-                },
+                }
             }
         }
     }
@@ -59,7 +60,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let weaponItems = sourceActor[0].items.filter(i => i.type === 'weapon');
         let saveItems = sourceActor[0].items.filter(i => i.system.save.dc != null);
         for (let i of weaponItems) {
-            setProperty(updates, 'embedded.Item.' + i.name + '.system.properties.mgc', true);
+            let properties = getProperty(updates, 'embedded.Item.' + i.name + '.system.properties');
+            properties.push('mgc');
+            setProperty(updates, 'embedded.Item.' + i.name + '.system.properties', properties);
         }
         let saveDC = chris.getSpellDC(workflow.item);
         for (let i of saveItems) {
@@ -82,12 +85,20 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Find Familiar'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    await summons.spawn(sourceActor, updates, 86400, workflow.item);
+    let defaultAnimations = {
+        'celestial': 'celestial',
+        'fey': 'nature',
+        'fiend': 'fire'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? defaultAnimations[creatureType];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 10, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
+    setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Find Familiar");');
     await chris.updateEffect(effect, updates3);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = workflow.actor.effects.find((e) => e?.flags['chris-premades']?.spell?.findFamiliar === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliar);
     if (!effect) return;
     let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;
@@ -99,10 +110,10 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
     }
     let effectData = {
         'name': 'Find Familiar Attack',
-        'icon': '',
+        'icon': workflow.item.img,
         'origin': effect.origin.uuid,
         'duration': {
-            'turns': 1
+            'seconds': 1
         },
         'changes': [
             {
@@ -123,9 +134,7 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
                 'transfer': false,
                 'specialDuration': [
                     '1Attack'
-                ],
-                'stackable': 'none',
-                'macroRepeat': 'none'
+                ]
             }
         }
     }
@@ -137,7 +146,7 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
         ui.notifications.info('Invalid Spell Type!');
         return false;
     }
-    let effect = workflow.actor.effects.find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar === true);
+    let effect = chris.getEffects(workflow.actor).find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar);
     if (!effect) return;
     let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
     if (!familiarId) return;

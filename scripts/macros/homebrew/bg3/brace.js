@@ -8,11 +8,12 @@ export async function brace({speaker, actor, token, character, item, args, scope
         'pike',
         'dart'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'brace', 350);
     if (!queueSetup) return;
     let damageFormula = 'max(' + workflow.damageRoll._formula + ', ' + workflow.damageRoll._formula + ')';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

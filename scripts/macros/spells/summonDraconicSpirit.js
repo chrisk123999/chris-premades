@@ -22,6 +22,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
     let hpFormula = 50 + ((workflow.castData.castLevel - 5) * 10);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Draconic Spirit (' + selection + ')';
     if (name === '') name = 'Draconic Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -48,8 +50,8 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + rangedAttackBonus.total
                         }
                     },
                     'draconicSpirit': {
@@ -106,7 +108,9 @@ export async function summonDraconicSpirit({speaker, actor, token, character, it
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'fire';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 60, workflow.token, animation);
     let options;
     switch (selection) {
         case 'Chromatic':

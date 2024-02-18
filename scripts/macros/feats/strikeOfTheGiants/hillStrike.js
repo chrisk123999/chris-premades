@@ -19,11 +19,9 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     await originFeature.update({'system.uses.value': originFeature.system.uses.value - 1});
     if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feat.hillStrike.turn', game.combat.round + '-' + game.combat.turn);
-    let damageFormula = workflow.damageRoll._formula;
-    let bonusDamage = '1d6[' + translate.damageType(workflow.defaultDamageType) + ']';
-    if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
-    let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamage).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let defaultDamageType = workflow.defaultDamageType;
+    let bonusDamage = '1d6[' + translate.damageType(defaultDamageType) + ']';
+    await chris.addToDamageRoll(workflow, bonusDamage);
     let saveDC = Math.max(workflow.actor.system.abilities.con.dc, workflow.actor.system.abilities.str.dc);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Feat Features', 'Strike of the Giants: Hill Strike', false);
     if (!featureData) {

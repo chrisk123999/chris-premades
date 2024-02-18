@@ -16,7 +16,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         return;
     }
     let effetData = {
-        'label': feature.name,
+        'name': feature.name,
         'icon': feature.img,
         'origin': feature.uuid,
         'duration': {
@@ -49,7 +49,6 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     if (workflow.targets.size != 1 || !workflow.damageRoll) return;
     let targetToken = workflow.targets.first();
     let targetSize = chris.getSize(targetToken.actor, false);
-    console.log(targetSize);
     if (targetSize > (chris.getSize(workflow.actor, false) + 1)) return;
     let feature = chris.getItem(workflow.actor, 'Crusher');
     if (!feature) return;
@@ -90,7 +89,7 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
     await workflow.actor.sheet.maximize();
-    await feature.use();
+    await feature.displayCard();
     queue.remove(workflow.item.uuid);
 }
 export let crusher = {

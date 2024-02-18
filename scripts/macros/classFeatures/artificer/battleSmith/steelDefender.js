@@ -34,6 +34,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpValue = (2 + chris.getSpellMod(workflow.item)) + (artificerLevel * 5);
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Steel Defender';
     if (name === '') name = 'Steel Defender';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -60,8 +62,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -97,7 +99,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         updates.embedded.Item['Arcane Jolt'] = arcaneJoltData;
         sourceActor.setFlag('chris-premades', 'feature.arcaneJoltScale', workflow.actor.system?.scale?.['battle-smith']?.['arcane-jolt'].formula);;
     }
-    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 120, workflow.token, animation);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Steel Defender - Command', false);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Steel Defender - Command');
     if (!featureData) return;

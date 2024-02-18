@@ -4,7 +4,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let selection = await chris.dialog(workflow.item.name, [['Lower Planes', 'lower'], ['Upper Planes', 'upper']], 'What planes do you draw magic from?');
     if (!selection) return;
     let effectData = {
-        'label': workflow.item.name,
+        'name': workflow.item.name,
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
@@ -65,7 +65,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.type != 'weapon') return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.spell?.tashasOtherworldlyGuise);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.tashasOtherworldlyGuise);
     if (!effect) return;
     let scaling = effect.flags['chris-premades'].spell.tashasOtherworldlyGuise;
     if (scaling === 'spell') scaling = workflow.actor.system.attributes.spellcasting;
@@ -74,7 +74,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'tashasOtherworldlyGuise', 50);
     if (!queueSetup) return;
     let properties = duplicate(workflow.item.system.properties);
-    properties.mgc = true;
+    properties.add('mgc');
+    properties = Array.from(properties);
     let ability = duplicate(workflow.item.system.ability);
     if (workflow.actor.system.abilities[itemScaling].mod < workflow.actor.system.abilities[scaling].mod) ability = scaling;
     workflow.item = workflow.item.clone({'system.properties': properties, 'system.ability': ability}, {'keepId': true});

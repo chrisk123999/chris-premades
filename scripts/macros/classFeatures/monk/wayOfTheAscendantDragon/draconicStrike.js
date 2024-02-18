@@ -22,10 +22,11 @@ export async function draconicStrike({speaker, actor, token, character, item, ar
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageRoll = workflow.damageRoll
+    let damageRoll = workflow.damageRolls[0];
     damageRoll.terms[0].options.flavor = selection;
     damageRoll.terms[2].options.flavor = selection;
-    damageRoll._formula = damageRoll._formula.replace(workflow.defaultDamageType, selection);
-    await workflow.setDamageRoll(damageRoll);
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    damageRoll._formula = damageRoll._formula.replace(defaultDamageType, selection);
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
 }

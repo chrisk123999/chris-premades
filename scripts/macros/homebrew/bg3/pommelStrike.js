@@ -45,7 +45,7 @@ async function save({speaker, actor, token, character, item, args, scope, workfl
             'medium',
             'heavy'
         ];
-        let armor = workflow.targets.first().actor.items.find(i => armorTypes.includes(i.system.armor?.type) && i.system.equipped);
+        let armor = workflow.targets.first().actor.items.find(i => armorTypes.includes(i.system.type.value) && i.system.equipped);
         let dex = armor?.system?.armor?.dex ?? workflow.targets.first().actor.system.abilities.dex.mod
         if (dex > 0) {
             effectData.changes.push({

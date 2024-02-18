@@ -2,7 +2,7 @@ import {chris} from '../../helperFunctions.js';
 export async function dragonsBreath({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
-    let damageType = await chris.dialog('What damage type?', [['🧪 Acid', 'acid'], ['❄️ Cold', 'cold'], ['🔥 Fire', 'fire'], ['⚡ Lightning', 'lightning'], ['☠️ Poison', 'poison']]);
+    let damageType = await chris.dialog(workflow.item.name, [['🧪 Acid', 'acid'], ['❄️ Cold', 'cold'], ['🔥 Fire', 'fire'], ['⚡ Lightning', 'lightning'], ['☠️ Poison', 'poison']], 'What damage type?');
     if (!damageType) damageType = 'fire';
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Dragon Breath', false);
     if (!featureData) return;
@@ -25,7 +25,7 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
         await warpgate.revert(token.document, 'Dragon Breath');
     }
     let effectData = {
-        'label': featureData.name,
+        'name': featureData.name,
         'icon': workflow.item.img,
         'duration': {
             'seconds': 60
@@ -56,8 +56,8 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
     };
     let options = {
         'permanent': false,
-        'name': featureData.name,
-        'description': featureData.name
+        'name': 'Dragon Breath',
+        'description': 'Dragon Breath'
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
 }

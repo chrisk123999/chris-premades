@@ -19,6 +19,8 @@ export async function summonUndead({speaker, actor, token, character, item, args
     }
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Undead Spirit (' + selection + ')';
     if (name === '') name = 'Undead Spirit (' + selection + ')';
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -40,8 +42,8 @@ export async function summonUndead({speaker, actor, token, character, item, args
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.dex.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -124,5 +126,7 @@ export async function summonUndead({speaker, actor, token, character, item, args
             updates.embedded.Item[graveBoltData.name] = graveBoltData;
             break;
     }
-    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item);
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? 'shadow';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await tashaSummon.spawn(sourceActor, updates, 3600, workflow.item, 90, workflow.token, animation);
 }

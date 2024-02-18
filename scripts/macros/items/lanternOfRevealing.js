@@ -166,7 +166,10 @@ async function aura(token, selectedAura) {
         ],
         'flags': {
             'chris-premades': {
-                'aura': true
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
             }
         }
     }

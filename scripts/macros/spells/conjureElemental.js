@@ -21,7 +21,9 @@ export async function conjureElemental({speaker, actor, token, character, item, 
             'disposition': workflow.token.document.disposition
         }
     };
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, true);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, true, undefined, undefined, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
     if (!effect) return;
     async function effectMacro () {

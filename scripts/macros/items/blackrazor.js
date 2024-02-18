@@ -52,8 +52,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'value': 'true',
                     'priority': 20
                 }
-            ],
-            'transfer': true
+            ]
         };
         await chris.createEffect(workflow.actor, effectData);
     } else {
@@ -69,9 +68,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'blackrazor', 50);
     if (!queueSetup) return;
     let damageFormula = '1d10[healing]';
-    if (workflow.isCritical) damageFormula = chris.getCriticalFormula(damageFormula);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageRoll = await chris.damageRoll(workflow, damageFormula);
+    await workflow.setDamageRolls([damageRoll]);
     queue.remove(workflow.item.uuid);
 }
 async function onHit(workflow, targetToken) {

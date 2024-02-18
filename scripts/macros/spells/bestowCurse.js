@@ -108,12 +108,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                         'value': workflow.targets.first().id,
                         'priority': 20
                     }
-                ],
-                'flags': {
-                    'dae': {
-                        'transfer': true
-                    }
-                }
+                ]
             };
             if (!isNaN(duration)) effectData.duration.seconds = duration;
             await chris.createEffect(workflow.actor, effectData);
@@ -169,10 +164,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '1d8[necrotic]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function damageApplication({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -240,7 +232,7 @@ async function remove(effect, origin, token) {
     if (!curseFlags) return;
     await warpgate.wait(200);
     if (curseFlags.type === 'Damage') {
-        let damageEffect = origin.actor.effects.find(eff => eff.name === 'Bestow Curse - Damage' && eff.changes?.[2]?.value === token.id);
+        let damageEffect = chris.getEffects(origin.actor).find(i => i.name === 'Bestow Curse - Damage' && i.changes?.[2]?.value === token.id);
         if (damageEffect) await chris.removeEffect(damageEffect);
     }
     if (curseFlags.level < 5) {

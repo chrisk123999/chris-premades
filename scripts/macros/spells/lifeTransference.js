@@ -13,7 +13,7 @@ export async function lifeTransference({speaker, actor, token, character, item, 
     let queueSetup = await queue.setup(workflow.item.uuid, 'lifeTransference', 50);
     if (!queueSetup) return;
     let healing = damageRoll.total * 2;
-    let healingRoll = await new Roll(healing + '[healing]').roll({async: true});
+    let healingRoll = await new Roll(healing + '[healing]').roll({'async': true});
     await workflow.setDamageRoll(healingRoll);
     queue.remove(workflow.item.uuid);
 }

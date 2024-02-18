@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -6,7 +7,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (workflow.hitTargets.size != 1) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'grovelthrash', 50);
     if (!queueSetup) return;
-    let selected = await chris.dialog('Activate Grovelthrash?', [['Yes', true], ['No', false]]);
+    let selected = await chris.dialog(workflow.item.name, constants.yesNo, 'Activate Grovelthrash?');
     let damageDiceNum = 0;
     if (selected) {
         damageDiceNum = 2;
@@ -17,16 +18,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         return;
     }
     let damageDice = damageDiceNum + 'd6[bludgeoning]';
-    if (workflow.isCritical) damageDice = chris.getCriticalFormula(damageDice);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + damageDice;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, damageDice);
     if (selected) {
         let selfDamageFormula = '1d6[psychic]';
-        let selfDamageRoll = await new Roll(selfDamageFormula).roll({async: true});
+        let selfDamageRoll = await new Roll(selfDamageFormula).roll({'async': true});
         selfDamageRoll.toMessage({
             rollMode: 'roll',
-            speaker: {alias: name},
+            speaker: {'alias': name},
             flavor: workflow.item.name
         });
         await chris.applyDamage([workflow.token], selfDamageRoll.total, 'psychic');

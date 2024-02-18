@@ -3,7 +3,7 @@ import {queue} from '../../../../utility/queue.js';
 async function guardianArmor({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Arcane Armor: Guardian Model');
     if (effect) return;
-    let feature = workflow.actor.items.getName('Infiltrator Armor: Lightning Launcher');
+    let feature = chris.getItem(workflow.actor, 'Infiltrator Armor: Lightning Launcher');
     if (feature) {
         await feature.delete();
     }
@@ -15,10 +15,12 @@ async function guardianArmor({speaker, actor, token, character, item, args, scop
     featureData.system.uses.value = fieldUses;
     featureData.system.uses.max = workflow.actor.system.attributes.prof;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian Armor: Defensive Field');
+    setProperty(featureData, 'flags.chris-premades.info.name', 'Guardian Armor: Defensive Field');
+    setProperty(featureData2, 'flags.chris-premades.info.name', 'Guardian Armor: Thunder Gauntlets')
     featureData2.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian Armor: Thunder Gauntlets');
     await workflow.actor.createEmbeddedDocuments('Item', [featureData, featureData2]);
     let effectData = {
-        'label': 'Arcane Armor: Guardian Model',
+        'name': 'Arcane Armor: Guardian Model',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid
     };
@@ -29,7 +31,7 @@ async function guardianArmor({speaker, actor, token, character, item, args, scop
 async function infiltratorArmor({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Arcane Armor: Infiltrator Model');
     if (effect) return;
-    let feature = workflow.actor.items.getName('Guardian Armor: Defensive Field');
+    let feature = chris.getItem(workflow.actor, 'Guardian Armor: Defensive Field');
     if (feature) {
         workflow.actor.setFlag('chris-premades', 'feature.defensiveField', feature.system.uses.value);
         await feature.delete();
@@ -39,11 +41,12 @@ async function infiltratorArmor({speaker, actor, token, character, item, args, s
         await feature2.delete();
     }
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Infiltrator Armor: Lightning Launcher', false);
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Infiltrator Armor: Lightning Launcher');
     if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Infiltrator Armor: Lightning Launcher');
+    setProperty(featureData, 'flags.chris-premades.info.name', 'Infiltrator Armor: Lightning Launcher');
     await workflow.actor.createEmbeddedDocuments('Item', [featureData]);
     let effectData = {
-        'label': 'Arcane Armor: Infiltrator Model',
+        'name': 'Arcane Armor: Infiltrator Model',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'changes': [
@@ -81,10 +84,7 @@ async function lightningLauncher({speaker, actor, token, character, item, args, 
     }
     if (chris.inCombat()) await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
     let bonusDamageFormula = '1d6[lightning]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function thunderGauntlets({speaker, actor, token, character, item, args, scope, workflow}) {

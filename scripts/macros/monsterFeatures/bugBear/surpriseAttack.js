@@ -11,8 +11,7 @@ export async function surpriseAttack({speaker, actor, token, character, item, ar
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula = workflow.damageRoll._formula + ' + 2d6[' + workflow.defaultDamageType + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = '2d6[' + workflow.defaultDamageType + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }

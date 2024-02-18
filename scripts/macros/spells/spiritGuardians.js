@@ -15,9 +15,9 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
         }
     }
     if (!doDamage) return;
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spirit Guardians', false);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spirit Guardians - Damage', false);
     if (!featureData) return;
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spirit Guardians');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spirit Guardians - Damage');
     featureData.system.damage.parts = [
         [
             damage + '[' + damageType + ']',
@@ -34,7 +34,6 @@ async function moved(token, castLevel, spellDC, damage, damageType, sourceTokenI
             }
         }
     }
-    featureData.flags['chris-premades'].spell.castData.school = 'con';
     let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     let sourceToken = canvas.tokens.get(sourceTokenID);
     if (!sourceToken) return;
@@ -59,9 +58,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let damage = castLevel + 'd8';
     let effect = chris.findEffect(workflow.actor, 'Spirit Guardians');
     if (!effect) return;
-    await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid);
+    await tokenMove.add('spiritGuardians', castLevel, spellDC, damage, damageType, sourceTokenID, range, true, true, 'start', effect.uuid, true);
     let color = chris.getConfiguration(workflow.item, 'color') ?? 'blueyellow';
-    let variation = '.' + chris.getConfiguration(workflow.item, 'variation') ?? '.ring';
+    let variation = '.' + (chris.getConfiguration(workflow.item, 'variation') ?? 'ring');
     if (color === 'random') {
         let colors = [
             'blueyellow',

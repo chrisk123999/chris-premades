@@ -54,7 +54,15 @@ async function aura(token, selectedAura) {
                 'value': 'necrotic',
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'aura': true,
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
     };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;

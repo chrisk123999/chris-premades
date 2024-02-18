@@ -3,29 +3,28 @@ import {chris} from '../../helperFunctions.js';
 async function blinkTurnStart(token, actor, origin, effect) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Blink Landing', false);
     if (!featureData) return;
-    if (origin?.type === 'spell') featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Blink Landing');
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Blink Landing');
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
-    await effect.delete();
+    await chris.removeEffect(effect);
 }
 async function blinkTurnEnd(actor) {
     let blinkRoll = await new Roll('1d20').roll({async: true});
     blinkRoll.toMessage({
-        rollMode: 'roll',
-        speaker: {alias: name},
-        flavor: 'Blink'
+        'rollMode': 'roll',
+        'speaker': {'alias': name},
+        'flavor': 'Blink'
     });
     if (blinkRoll.total < 11) return;
     async function effectMacro() {
         await chrisPremades.macros.blink.start(token, actor, origin, effect);
     }
     let blinkEffect = chris.findEffect(actor, 'Blink');
-    let originUuid;
-    if (blinkEffect) originUuid = blinkEffect.origin;
+    let originUuid = blinkEffect.origin;
     let effectData = {
-        'label': 'Blinked Away',
-        'icon': 'icons/magic/air/wind-stream-purple.webp',
+        'name': 'Blinked Away',
+        'icon': origin.img,
         'duration': {
             'rounds': 2
         },
@@ -70,6 +69,14 @@ async function blinkTurnEnd(actor) {
             }
         }
     };
+    if (chris.vision5e()) effectData.changes.push(
+        {
+            'key': 'macro.CE',
+            'value': 'Ethereal',
+            'mode': 0,
+            'priority': 20
+        }
+    );
     await chris.createEffect(actor, effectData);
 }
 export let blink = {

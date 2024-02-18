@@ -59,7 +59,8 @@ async function strike({speaker, actor, token, character, item, args, scope, work
         'pike',
         'dagger'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Piercing Strike');
     if (!feature) return;
     if (!feature.system.uses.value) return;
@@ -91,7 +92,8 @@ async function shot({speaker, actor, token, character, item, args, scope, workfl
         'handcrossbow',
         'heavycrossbow'
     ];
-    if (!validTypes.includes(workflow.item.system.baseItem)) return;
+    let baseItem = workflow.item.system.type?.baseItem;
+    if (!validTypes.includes(baseItem)) return;
     let feature = chris.getItem(workflow.actor, 'Piercing Shot');
     if (!feature) return;
     if (!feature.system.uses.value) return;
@@ -123,11 +125,8 @@ async function damage(workflow) {
     if (!effect) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercingStrike', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '2[' + translate.damageType('piercing') + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

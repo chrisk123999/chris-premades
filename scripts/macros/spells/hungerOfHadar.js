@@ -1,5 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let template = canvas.scene.collections.templates.get(workflow.templateId);
     if (!template) return;
@@ -84,19 +85,25 @@ async function trigger(token, trigger, reason) {
             await chris.createEffect(token.actor, effectData);
         }
     } else {
+        let queueSetup = await queue.setup(trigger.templateUuid, 'hunterOfHadar-' + reason, 50);
+        if (!queueSetup) return;
         let itemName = reason === 'turnStart' ? 'Hunger of Hadar - Cold' : 'Hunger of Hadar - Tentacles';
         let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', itemName, false);
-        if (!featureData) return;
+        if (!featureData) {
+            queue.remove(trigger.templateUuid);
+            return;
+        }
         featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', itemName);
         if (itemName === 'Hunger of Hadar - Tentacles') featureData.system.save.dc = trigger.saveDC;
         delete featureData._id;
         let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
         let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
         await MidiQOL.completeItemUse(feature, config, options);
+        queue.remove(trigger.templateUuid);
     }
 }
 async function removed(template) {
-    let tokens = game.canvas.scene.tokens.filter(i => i.actor.effects.find(j => j.origin === template.uuid));
+    let tokens = game.canvas.scene.tokens.filter(i => chris.getEffects(i.actor).find(j => j.origin === template.uuid));
     for (let token of tokens) {
         let templates = chris.tokenTemplates(token).map(i => canvas.scene.templates.get(i)).filter(j => j.flags.dnd5e?.origin != template.flags.dnd5e.origin);
         if (templates.length) return;

@@ -179,7 +179,7 @@ async function addFeatures(item, updates, options, id) {
     if (item.type != 'weapon') return;
     let actor = item.actor;
     if (!actor) return;
-    let baseItem = item.system.baseItem;
+    let baseItem = item.system.type?.baseItem;
     let proficient = item.system.proficient || item.actor.system.traits.weaponProf.value.has(baseItem);
     if (!baseItem) return;
     if (!proficient) {
@@ -211,7 +211,7 @@ async function removeFeatures(item, options, id) {
     if (item.type != 'weapon') return;
     let actor = item.actor;
     if (!actor) return;
-    let baseItem = item.system.baseItem;
+    let baseItem = item.system.type?.baseItem;
     if (!weapons[baseItem]) return;
     let otherItems = actor.items.filter(i => i.system.baseItem === baseItem && i.system.equipped);
     if (otherItems.length > 1) return;
@@ -267,7 +267,8 @@ let effects = [
 ];
 async function healing(workflow) {
     if (!workflow.targets.size) return;
-    if (workflow.defaultDamageType != 'healing') return;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    if (defaultDamageType != 'healing') return;
     for (let i of Array.from(workflow.targets)) {
         for (let j of effects) {
             let effect = chris.findEffect(i.actor, j);

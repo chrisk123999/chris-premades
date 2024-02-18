@@ -149,7 +149,7 @@ async function animation(target, token, attackType) {
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties?.fin)) return;
+    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties.has('fin'))) return;
     let originFeature = chris.getItem(workflow.actor, 'Sneak Attack');
     if (!originFeature) return;
     if (!chris.perTurnCheck(originFeature, 'feature', 'sneakAttack')) return;
@@ -191,30 +191,28 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
     await chris.setTurnCheck(originFeature, 'feature', 'sneakAttack');
     let bonusDamageFormula = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.customFormula;
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
     if (!bonusDamageFormula) {
         if (workflow.actor.type === 'character') {
             let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];
             if (scale) {
                 let number = scale.number;
-                bonusDamageFormula = number + 'd' + scale.faces + '[' + workflow.defaultDamageType + ']';
+                bonusDamageFormula = number + 'd' + scale.faces + '[' + defaultDamageType + ']';
             } else {
                 ui.notifications.warn('Actor does not appear to have a Sneak Attack scale!');
                 queue.remove(workflow.item.uuid);
                 return;
             }
         } else if (workflow.actor.type === 'npc') {
-            let number = Math.ceil(workflow.actor.system.details.cr) / 2;
-            bonusDamageFormula = number + 'd6[' + workflow.defaultDamageType + ']';
+            let number = Math.ceil(workflow.actor.system.details.cr / 2);
+            bonusDamageFormula = number + 'd6[' + defaultDamageType + ']';
         }
     } else {
-        bonusDamageFormula += '[' + workflow.defaultDamageType + ']';
+        bonusDamageFormula += '[' + defaultDamageType + ']';
     }
     let eyeFeature = chris.getItem(workflow.actor, 'Eye for Weakness');
-    if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6[' + workflow.defaultDamageType + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6[' + defaultDamageType + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     await originFeature.use();
     if (displayRakish) await rakishAudacity.use();
     if (iTarget) {
@@ -228,7 +226,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!playAnimation) return;
     let animationType;
     if (chris.getDistance(workflow.token, targetToken) > 5) animationType = 'ranged';
-    if (!animationType) animationType = workflow.defaultDamageType;
+    if (!animationType) animationType = defaultDamageType;
     await animation(targetToken, workflow.token, animationType);
 }
 async function combatEnd(origin) {

@@ -31,7 +31,7 @@ export async function oilOfSharpness({speaker, actor, token, character, item, ar
             weaponData.system.damage.parts[0][0] =+ ' + 1';
             break;
     }
-    weaponData.system.properties.mgc = true;
+    weaponData.system.properties.push('mgc');
     let updates = {
         'embedded': {
             'Item': {

@@ -1,6 +1,8 @@
 import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
-import {additionalCompendiumPriority, additionalCompendiums} from './compendium.js';
+import {additionalCompendiumPriority, additionalCompendiums, selectCompendium} from './compendium.js';
 import {fixSettings, troubleshoot} from './help.js';
+import {manualRolls} from './macros/mechanics/manualRolls.js';
+import {tours} from './tours.js';
 import {allRaces} from './utility/npcRandomizer.js';
 let settingCategories = {};
 export function addMenuSetting(key, category) {
@@ -9,7 +11,12 @@ export function addMenuSetting(key, category) {
 let labels = {
     'Humanoid-Randomizer-Settings': 'Configure',
     'Additional-Compendiums': 'Configure',
-    'Additional-Compendium-Priority': 'Configure'
+    'Additional-Compendium-Priority': 'Configure',
+    'Item-Compendium': 'Select',
+    'Spell-Compendium': 'Select',
+    'Monster-Compendium': 'Select',
+    'Racial-Trait-Compendium': 'Select',
+    'Manual-Rolling-Players': 'Configure'
 }
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -47,6 +54,7 @@ class chrisSettingsBase extends FormApplication {
             s.isNumber = setting.type === Number;
             s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
             s.isButton = (setting.type instanceof Object || setting.type instanceof Array) && setting.type.name != 'String';
+            if (s.select) s.isButton = true;
             s.label = labels[key];
             generatedOptions.push(s);
 	    }
@@ -156,6 +164,12 @@ export class chrisSettingsAnimations extends chrisSettingsBase {
         this.category = 'Animations';
     }
 }
+export class chrisSettingsInterface extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'User Interface';
+    }
+}
 export class chrisSettingsTroubleshoot extends FormApplication {
     constructor() {
         super();
@@ -166,7 +180,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
             'popOut': true,
             'template': 'modules/chris-premades/templates/config.html',
             'id': 'chris-troubleshoot-settings',
-            'title': 'Chris\'s Troubleshooter',
+            'title': 'Help',
             'width': 800,
             'height': 'auto',
             'closeOnSubmit': true
@@ -175,6 +189,14 @@ export class chrisSettingsTroubleshoot extends FormApplication {
     getData() {
         return {
             'settings': [
+                {
+                    'name': 'Tour Features',
+                    'id': 'tour',
+                    'value': {},
+                    'isButton': true,
+                    'hint': 'Start a guided tour of Chris\'s Premades.',
+                    'label': 'Go'
+                },
                 {
                     'name': 'Run Troubleshooter:',
                     'id': 'trouble',
@@ -286,6 +308,22 @@ export async function settingButton(id) {
             break;
         case 'Additional Compendium Priority':
             await additionalCompendiumPriority();
+            break;
+        case 'Item Compendium':
+        case 'Spell Compendium':
+        case 'Monster Compendium':
+        case 'Racial Trait Compendium':
+            await selectCompendium(id);
+            break;
+        case 'tour':
+            game.settings.sheet.close();
+            let dialogApp = Object.values(ui.windows).find(i => i.id === 'chris-troubleshoot-settings');
+            if (dialogApp) dialogApp.close();
+            await warpgate.wait(100);
+            await tours.guidedTour();
+            break;
+        case 'Manual Rolling Players':
+            await manualRolls.userOptions();
             break;
     }
 }

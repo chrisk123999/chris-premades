@@ -25,7 +25,7 @@ export async function lightningLure({speaker, actor, token, character, item, arg
         return;
     } else {
         let position = chris.getGridBetweenTokens(sourceToken, target, pullDistance);
-        new Sequence()
+        await new Sequence()
             .effect()
             .atLocation(sourceToken)
             .file('animated-spell-effects-cartoon.electricity.discharge.03')

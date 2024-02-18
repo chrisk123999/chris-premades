@@ -44,18 +44,11 @@ async function hook(workflow) {
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.flags['chris-premades']?.spell?.sanctuary?.ignore) return;
     let remove = false;
-    if (workflow.damageRoll && (workflow.defaultDamageType != 'healing' || workflow.defaultDamageType != 'temphp')) {
+    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    if (workflow.damageRoll && !(defaultDamageType === 'healing' || defaultDamageType === 'temphp')) {
         remove = true;
     }
-    if (!remove) {
-        let validTypes = [
-            'mwak',
-            'rwak',
-            'msak',
-            'rsak'
-        ];
-        if (validTypes.includes(workflow.item.system.actionType)) remove = true;
-    }
+    if (!remove && constants.attacks.includes(workflow.item.system.actionType)) remove = true;
     if (!remove && workflow.item.type === 'spell') {
         for (let i of Array.from(workflow.targets)) {
             if (workflow.token.document.disposition != i.document.disposition) {
@@ -72,7 +65,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let effectData = {
-        'label': 'Sanctuary',
+        'name': 'Sanctuary',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

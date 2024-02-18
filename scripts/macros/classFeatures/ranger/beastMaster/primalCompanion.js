@@ -20,6 +20,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpFormula = 5 + (rangerLevel * 5);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Beast of the ' + selection;
     if (name === '') name = 'Beast of the ' + selection;
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
     let updates = {
         'actor': {
             'name': name,
@@ -49,8 +51,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'chris-premades': {
                     'summon': {
                         'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + Number(workflow.actor.system.bonuses.msak.attack),
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + Number(workflow.actor.system.bonuses.rsak.attack)
+                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + meleeAttackBonus.total,
+                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.wis.mod + rangedAttackBonus.total
                         }
                     }
                 }
@@ -193,7 +195,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'token.texture.src', tokenImg);
     }
     updates = mergeObject(updates, updates2, {'recursive': true});
-    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item);
+    let defaultAnimations = {
+        'Sky': 'air',
+        'Land': 'earth',
+        'Sea': 'water'
+    };
+    let animation = chris.getConfiguration(workflow.item, 'animation-' + selection) ?? defaultAnimations[selection];
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 30, workflow.token, animation);
     let updates3 = {
         'embedded': {
             'Item': {
@@ -233,9 +242,10 @@ async function bindingStrike({speaker, actor, token, character, item, args, scop
     if (!queueSetup) return;
     let selection = await chris.dialog('What damage type?', [['Piercing', 'piercing'], ['Bludgeoning', 'bludgeoning']]);
     if (!selection) selection = 'piercing';
-    let damageFormula = workflow.damageRoll._formula.replace('none', selection);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageFormula = workflow.damageRolls[0]._formula.replace('none', selection);
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, {}, true);
+    workflow.damageRolls[0] = damageRoll;
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
 }
 export let primalCompanion = {

@@ -1,4 +1,5 @@
 import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function reroll({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
@@ -11,7 +12,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerReroll', 390);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
+    if (!damageTypes.has(translate.damageType('piercing'))) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -46,7 +47,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
         }
     }
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feat.piercer.turn', game.combat.round + '-' + game.combat.turn);
-    let roll = await new Roll('1d' + lowRollDice).roll({async: true});
+    let roll = await new Roll('1d' + lowRollDice).roll({'async': true});
     let newDamageRoll = workflow.damageRoll;
     newDamageRoll.terms[resultI].results[resultJ].result = roll.total;
     newDamageRoll._total = newDamageRoll._evaluateTotal();
@@ -62,7 +63,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerCritical', 250);
     if (!queueSetup) return;
     let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(CONFIG.DND5E.damageTypes.piercing.toLowerCase())) {
+    if (!damageTypes.has(translate.damageType('piercing'))) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -75,7 +76,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         flavor = i.flavor.toLowerCase();
     }
     let damageFormula = workflow.damageRoll._formula + ' + 1d' + largeDice + '[' + flavor + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     let effect = chris.findEffect(workflow.actor, 'Piercer: Critical Hit');
     if (effect) {

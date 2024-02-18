@@ -4,7 +4,7 @@ export async function mobileShot({speaker, actor, token, character, item, args, 
     let validTypes = [
         'handcrossbow'
     ];
-    let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && validTypes.includes(i.system.baseItem) && i.system.equipped);
+    let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && validTypes.includes(i.system.type?.baseItem) && i.system.equipped);
     if (!validWeapons.length) {
         ui.notifications.info('No valid equipped weapons!');
         return;

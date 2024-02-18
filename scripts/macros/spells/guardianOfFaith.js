@@ -1,6 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {tokenMove} from '../../utility/movement.js';
 import {constants} from '../../constants.js';
+import {summonEffects} from '../animations/summonEffects.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Guardian of Faith');
     if (!sourceActor) return;
@@ -29,6 +30,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Guardian of Faith';
+    if (name === '') name = 'Guardian of Faith';
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Guardian of Faith - Damage', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Guardian of Faith - Damage');
@@ -60,11 +62,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let options = {
-        'controllingActor': workflow.token.actor
-    };
-    let tokenDocument = await sourceActor.getTokenDocument();
-    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
+    let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'celestial';
+    if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
+    let spawnedTokens = await chris.spawn(sourceActor, updates, {}, workflow.token, 30, animation);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;

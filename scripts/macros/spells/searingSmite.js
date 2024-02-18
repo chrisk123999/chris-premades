@@ -3,17 +3,14 @@ import {chris} from '../../helperFunctions.js';
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
     if (workflow.item.system.actionType != 'mwak') return;
-    let effect = workflow.actor.effects.find(i => i.flags['chris-premades']?.spell?.searingSmite);
+    let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.searingSmite);
     if (!effect) return;
     if (effect.flags['chris-premades'].spell.searingSmite.used) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'searingSmite', 250);
     if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = effect.flags['chris-premades'].spell.searingSmite.level + 'd6[fire]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     async function effectMacro() {
         let originEffect = await fromUuid(effect.origin);
         if (!originEffect) return;

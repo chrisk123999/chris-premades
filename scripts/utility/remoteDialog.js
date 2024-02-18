@@ -20,6 +20,6 @@ export async function remoteAimCrosshair(tokenUuid, maxRange, icon, interval, si
     let token = await fromUuid(tokenUuid);
     return await chris.aimCrosshair(token, maxRange, icon, interval, size);
 }
-export async function remoteMenu(title, buttons, inputs, useSpecialRender) {
-    return await chris.menu(title, buttons, inputs, useSpecialRender);
+export async function remoteMenu(title, buttons, inputs, useSpecialRender, info, header, extraOptions) {
+    return await chris.menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions);
 }

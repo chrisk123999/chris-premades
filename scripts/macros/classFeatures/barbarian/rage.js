@@ -1,5 +1,6 @@
 import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
+import {enlargeReduce} from '../../spells/enlargeReduce.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
@@ -11,6 +12,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (chrisPremades.helpers.getItem(actor, 'Call the Hunt')) await chrisPremades.macros.callTheHunt.rageEnd(effect);
         await warpgate.revert(token.document, 'Rage');
         await chrisPremades.macros.rage.animationEnd(token, origin);
+        if (chrisPremades.helpers.getItem(actor, 'Giant\'s Havoc: Giant Stature')) await warpgate.revert(token.document, 'Giant Stature');
+        let effect2 = chrisPremades.helpers.findEffect(actor, 'Elemental Cleaver');
+        if (effect2) await chrisPremades.helpers.removeEffect(effect2);
     }
     async function effectMacro2 () {
         await chrisPremades.macros.rage.animationStart(token, origin);
@@ -91,8 +95,36 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'vae': {
                     'button': featureData.name
                 }
+            },
+            'dae': {
+                'specialDuration': [
+                    'zeroHP'
+                ]
             }
         }
+    }
+    if (!chris.getItem(actor, 'Persistent Rage')) {
+        effectData.changes = effectData.changes.concat([
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'function.chrisPremades.macros.rage.attack,postActiveEffects',
+                'priority': 20
+            },
+            {
+                'key': 'flags.chris-premades.feature.onHit.rage',
+                'mode': 5,
+                'value': true,
+                'priority': 20
+            }
+        ]);
+        effectData.flags.effectmacro.onTurnEnd = {
+            'script': 'await chrisPremades.macros.rage.turnEnd(effect, actor);'
+        }
+        effectData.flags.effectmacro.onCombatStart = {
+            'script': 'await chrisPremades.macros.rage.combatStart(effect);'
+        }
+        if (chris.inCombat()) setProperty(effectData, 'flags.chris-premades.feature.rage.attackOrAttacked', {'turn': game.combat.turn, 'round': game.combat.round});
     }
     let totemBear = chris.getItem(workflow.actor, 'Totem Spirit: Bear');
     if (totemBear) {
@@ -153,6 +185,91 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         ]);
     }
+    let crushingThrow = chris.getItem(workflow.actor, 'Giant\'s Havoc: Crushing Throw');
+    if (crushingThrow) {
+        effectData.changes = effectData.changes.concat([
+            {
+                'key': 'flags.midi-qol.onUseMacroName',
+                'mode': 0,
+                'value': 'function.chrisPremades.macros.crushingThrow,postDamageRoll',
+                'priority': 20
+            }
+        ]);
+    }
+    let giantStature = chris.getItem(workflow.actor, 'Giant\'s Havoc: Giant Stature');
+    let demiurgicColossus = chris.getItem(workflow.actor, 'Demiurgic Colossus');
+    if (giantStature && chris.getSize(workflow.actor) < (demiurgicColossus ? 4 : 3)) {
+        let lrgRoom = chris.checkForRoom(workflow.token, 1);
+        let lrgDirection = chris.findDirection(lrgRoom);
+        if (lrgDirection != 'none') {
+            let hgRoom;
+            let hgDirection;
+            let dCSelection = 'lg';
+            if (demiurgicColossus) {
+                hgRoom = chris.checkForRoom(workflow.token, 2);
+                if (!lrgRoom.n && !lrgRoom.e && !lrgRoom.s && !lrgRoom.w) hgDirection = 'outward';
+                if (hgDirection != 'outward') hgDirection = chris.findDirection(hgRoom);
+                if (hgDirection != 'none') dCSelection = await chris.dialog(demiurgicColossus.name, [['Large', 'lg'], ['Huge', 'huge']], 'What size?') ?? 'lg';
+            }
+            if (dCSelection === 'huge') await demiurgicColossus.displayCard();
+            let updates2 = {
+                'token': {
+                    'width': dCSelection === 'lg' ? 2 : 3,
+                    'height': dCSelection === 'lg' ? 2 : 3
+                },
+                'actor': {
+                    'system': {
+                        'traits': {
+                            'size': dCSelection
+                        }
+                    }
+                }
+            }
+            let direction = dCSelection === 'lg' ? lrgDirection : hgDirection;
+            let scale = dCSelection === 'lg' ? 1 : 2;
+            switch(direction) {
+                case 'none':
+                    break;
+                case 'ne':
+                    setProperty(updates2.token, 'y', workflow.token.y - canvas.grid.size * scale);
+                    break;
+                case 'sw':
+                    setProperty(updates2.token, 'x', workflow.token.x - canvas.grid.size * scale);
+                    break;
+                case 'outward':
+                    scale = 1;
+                case 'nw':
+                    setProperty(updates2.token, 'x', workflow.token.x - canvas.grid.size * scale);
+                    setProperty(updates2.token, 'y', workflow.token.y - canvas.grid.size * scale);
+                    break;
+            }
+            let callbacks = {
+                'delta': (delta, tokenDoc) => {
+                    if ('x' in delta.token) delete delta.token.x;
+                    if ('y' in delta.token) delete delta.token.y;
+                }
+            };
+            if (chris.jb2aCheck() === 'patreon') {
+                await enlargeReduce.enlargeAnimation(workflow.token, updates2, 'Giant Stature', callbacks);
+            } else {
+                let options = {
+                    'permanent': false,
+                    'name': 'Giant Stature',
+                    'description': 'Giant Stature'
+                };
+                await warpgate.mutate(workflow.token.document, updates2, callbacks, options);
+            }
+            effectData.changes = effectData.changes.concat([
+                {
+                    'key': 'flags.midi-qol.range.mwak',
+                    'mode': 2,
+                    'value': (demiurgicColossus ? 10 : 5),
+                    'priority': 20
+                }
+            ]);
+            await giantStature.displayCard();
+        }
+    }
     let updates = {
         'embedded': {
             'Item': {
@@ -197,6 +314,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     }
     let wildSurge = chris.getItem(workflow.actor, 'Wild Surge');
     if (wildSurge) await wildSurge.use();
+    let elementalCleaver = chris.getItem(workflow.actor, 'Elemental Cleaver');
+    if (elementalCleaver) await elementalCleaver.use();
 }
 async function end({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor) return;
@@ -205,10 +324,54 @@ async function end({speaker, actor, token, character, item, args, scope, workflo
     await chris.removeEffect(effect);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    //todo: Automate keeping track of attacks and being attacked.
+    let effect = chris.findEffect(workflow.actor, 'Rage');
+    if (!effect) return;
+    if (!chris.inCombat()) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    await effect.setFlag('chris-premades', 'feature.rage.attackOrAttacked', {'turn': game.combat.turn, 'round': game.combat.round});
 }
-async function attacked({speaker, actor, token, character, item, args, scope, workflow}) {
-
+async function attacked(workflow, token) {
+    let effect = chris.findEffect(token.actor, 'Rage');
+    if (!effect) return;
+    if (!chris.inCombat()) return;
+    if (!workflow.damageRoll) return;
+    let damageItem = workflow.damageList.find(i => i.tokenId === token.id);
+    if (!damageItem) return;
+    if (damageItem.newHP >= damageItem.oldHP) return;
+    let updates = {
+        'flags': {
+            'chris-premades': {
+                'feature': {
+                    'rage': {
+                        'attackOrAttacked': {
+                            'turn': game.combat.turn,
+                            'round': game.combat.round
+                        }
+                    }
+                }
+            }
+        }
+    };
+    await chris.updateEffect(effect, updates);
+}
+async function turnEnd(effect, actor) {
+    let lastRound = effect.flags['chris-premades']?.feature?.rage?.attackOrAttacked?.round;
+    let lastTurn = effect.flags['chris-premades']?.feature?.rage?.attackOrAttacked?.turn;
+    if (lastRound === undefined || lastTurn === undefined) return;
+    let currentRound = game.combat.previous.round;
+    let currentTurn = game.combat.previous.turn;
+    let roundDiff = currentRound - lastRound;
+    if (roundDiff >= 1) {
+        if (currentTurn >= lastTurn) {
+            let userId = chris.lastGM();
+            let selection = await chris.remoteDialog('Rage', constants.yesNo, userId, actor.name + ' has not attacked an enemy or taken damage since their last turn. Remove Rage?');
+            if (!selection) return;
+            await chris.removeEffect(effect);
+        }
+    }
+}
+async function combatStart(effect) {
+    await effect.setFlag('chris-premades', 'feature.rage.attackOrAttacked', {'turn': 0, 'round': 0});
 }
 async function animationStart(token, origin) {
     //Animations by: eskiemoh
@@ -458,5 +621,9 @@ export let rage = {
     'item': item,
     'end': end,
     'animationStart': animationStart,
-    'animationEnd': animationEnd
+    'animationEnd': animationEnd,
+    'attack': attack,
+    'attacked': attacked,
+    'turnEnd': turnEnd,
+    'combatStart': combatStart
 }

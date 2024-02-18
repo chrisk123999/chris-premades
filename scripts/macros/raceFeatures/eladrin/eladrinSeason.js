@@ -36,8 +36,7 @@ export async function eladrinSeason({speaker, actor, token, character, item, arg
                 'macroRepeat': 'none',
                 'specialDuration': [
                     'longRest'
-                ],
-                'transfer': true
+                ]
             },
             'effectmacro': {
                 'onDelete': {

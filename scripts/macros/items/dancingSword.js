@@ -55,7 +55,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (avatarImg) updates.actor.img = avatarImg;
     let tokenImg = chris.getConfiguration(originItem, 'token');
     if (!tokenImg) {
-        let weaponType = originItem.system.baseItem;
+        let weaponType = workflow.item.system.type?.baseItem;
         if (chris.jb2aCheck() && weaponType) {
             try {
                 tokenImg = await Sequencer.Database.getEntry('jb2a.spiritual_weapon.' + weaponType + '.01.spectral.02.green').file;
@@ -109,7 +109,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!attackFeatureData) return;
     attackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dancing Sword - Attack');
     attackFeatureData.system.ability = originItem.system.ability;
-    if (originItem.system.properties.fin && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) attackFeatureData.system.ability = 'dex';
+    if (originItem.system.properties.has('fin') && workflow.actor.system.abilities.dex.mod > workflow.actor.system.abilities.str.mod) attackFeatureData.system.ability = 'dex';
     attackFeatureData.system.damage.parts = originItem.system.damage.parts;
     attackFeatureData.img = originItem.img;
     let updates2 = {

@@ -57,7 +57,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         }
         if (tier === 3 && wrapsOffDyamakItem.system.uses.value != 1) wrapsOffDyamakItem.update({'system.uses.value': 1});
     }
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

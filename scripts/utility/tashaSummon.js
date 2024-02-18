@@ -56,7 +56,7 @@ function getCR(prof) {
             return 29;
     }
 }
-async function spawn(sourceActor, updates, duration, originItem) {
+async function spawn(sourceActor, updates = {}, duration, originItem, maxRange, casterToken, spawnAnimation, callbacks) {
     async function effectMacro() {
         let originActor = origin.actor;
         await warpgate.dismiss(token.id);
@@ -64,7 +64,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
         if (castEffect) await chrisPremades.helpers.removeEffect(castEffect);
     }
     let effectData = {
-        'label': 'Summoned Creature',
+        'name': 'Summoned Creature',
         'icon': originItem.img,
         'duration': {
             'seconds': duration
@@ -85,21 +85,14 @@ async function spawn(sourceActor, updates, duration, originItem) {
     };
     if (!updates) updates = {};
     setProperty(updates, 'embedded.ActiveEffect.Summoned Creature', effectData);
-    let tokenDocument = await sourceActor.getTokenDocument();
-    let options = {
-        'controllingActor': originItem.actor,
-        'crosshairs': {
-            'interval': tokenDocument.width % 2 === 0 ? 1 : -1
-        }
-    };
-    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
+    let spawnedTokens = await chris.spawn(sourceActor, updates, callbacks, casterToken, maxRange, spawnAnimation);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;
     let targetEffect = chris.findEffect(spawnedToken.actor, 'Summoned Creature');
     if (!targetEffect) return;
     let casterEffectData = {
-        'label': originItem.name,
+        'name': originItem.name,
         'icon': originItem.img,
         'duration': {
             'seconds': duration
@@ -128,7 +121,7 @@ async function spawn(sourceActor, updates, duration, originItem) {
     }
     return spawnedToken;
 }
-async function createCombatant (tokenId, actorId, sceneId, initiative) {
+async function createCombatant(tokenId, actorId, sceneId, initiative) {
     await game.combat.createEmbeddedDocuments('Combatant', [{
         'tokenId': tokenId,
         'sceneId': sceneId,

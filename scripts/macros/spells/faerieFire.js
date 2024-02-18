@@ -133,7 +133,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             .effect()
             .from(i)
             .belowTokens()
-            .attachTo(i, {'locale': true})
+            .attachTo(i)
             .scaleToObject(i.document.texture.scaleX)
             .spriteRotation(i.document.texture.rotation*-1)
             .filter('Glow', {'color': tintColor, 'distance': 20})

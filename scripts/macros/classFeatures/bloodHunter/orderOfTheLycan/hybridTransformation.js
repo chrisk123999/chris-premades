@@ -50,7 +50,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
     weaponData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Predatory Strike');
     if (levels >= 7) {
         weaponData.system.attackBonus = '+1';
-        weaponData.system.properties.mgc = true;
+        weaponData.system.properties.push('mgc');
     }
     async function effectMacro () {
         await warpgate.revert(token.document, 'Hybrid Transformation');
@@ -141,9 +141,6 @@ async function transformation({speaker, actor, token, character, item, args, sco
                 'onDelete': {
                     'script': chris.functionToString(effectMacro)
                 }
-            },
-            'dae': {
-                'transfer': true
             }
         }
     }

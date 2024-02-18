@@ -1,3 +1,4 @@
+import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 export async function tollTheDead({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -9,8 +10,9 @@ export async function tollTheDead({speaker, actor, token, character, item, args,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula = workflow.damageRoll._formula.replace('d8', 'd12');
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageFormula = workflow.damageRolls[0]._formula.replace('d8', 'd12');
+    let damageRoll = await chris.damageRoll(workflow, damageFormula);
+    workflow.damageRolls[0] = damageRoll;
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
 }

@@ -19,11 +19,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     await originFeature.update({'system.uses.value': originFeature.system.uses.value - 1});
     if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feat.fireStrike.turn', game.combat.round + '-' + game.combat.turn);
-    let damageFormula = workflow.damageRoll._formula;
     let bonusDamage = '1d10[' + translate.damageType('fire') + ']';
-    if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
-    let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamage).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamage);
     await originFeature.displayCard();
     queue.remove(workflow.item.uuid);
 }
