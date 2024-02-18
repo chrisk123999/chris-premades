@@ -7,6 +7,10 @@ export async function mirrorImage(workflow) {
     let targetActor = targetToken.actor;
     let targetEffect = chris.findEffect(targetActor, 'Mirror Image');
     if (!targetEffect) return;
+    let attackingToken = workflow.token;
+    if (attackingActor.statuses.has("blind")) return;
+    if (!MidiQOL.canSee(attackingToken, targetToken)) return;
+    if (MidiQOL.canSense(attackingToken, targetToken, ['blindsight', 'seeAll'])) return;
     let duplicates = targetActor.flags['chris-premades']?.spell?.mirrorImage;
     if (!duplicates) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'mirrorImage', 49);
