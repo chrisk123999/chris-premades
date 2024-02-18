@@ -84,10 +84,7 @@ async function lightningLauncher({speaker, actor, token, character, item, args, 
     }
     if (chris.inCombat()) await workflow.item.setFlag('chris-premades', 'feature.lightningLauncher.turn', game.combat.round + '-' + game.combat.turn);
     let bonusDamageFormula = '1d6[lightning]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function thunderGauntlets({speaker, actor, token, character, item, args, scope, workflow}) {

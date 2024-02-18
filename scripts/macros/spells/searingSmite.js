@@ -10,10 +10,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (!queueSetup) return;
     let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = effect.flags['chris-premades'].spell.searingSmite.level + 'd6[fire]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     async function effectMacro() {
         let originEffect = await fromUuid(effect.origin);
         if (!originEffect) return;

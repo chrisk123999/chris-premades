@@ -34,9 +34,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'agonizingBlast', 50);
     if (!queueSetup) return;
     let bonusDamage = Math.max(workflow.actor.system.abilities.cha.mod, 0);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamage;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamage);
     queue.remove(workflow.item.uuid);
 }
 export let eldritchBlast = {

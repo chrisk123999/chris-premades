@@ -20,9 +20,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 return;
             }
             await chris.setTurnCheck(feature, 'feature', 'necroticShroud');
-            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[necrotic]';
-            let damageRoll = await new Roll(damageFormula).roll({async: true});
-            await workflow.setDamageRoll(damageRoll);
+            let damageFormula = workflow.actor.system.attributes.prof + '[necrotic]';
+            await chris.addToDamageRoll(workflow, damageFormula);
             queue.remove(workflow.item.uuid);
             return;
         case 'preDamageApplication':

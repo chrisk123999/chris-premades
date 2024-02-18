@@ -111,15 +111,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (targetToken.id != markedTarget) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'huntersMark', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
-    console.log(defaultDamageType);
-    let bonusDamageFormula = '1d6[' + defaultDamageType + ']'
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    console.log('here');
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = '1d6[' + workflow.defaultDamageType + ']'
+    await chris.addToDamageRoll(workflow, bonusDamageFormula, true);
     queue.remove(workflow.item.uuid);
 }
 async function move({speaker, actor, token, character, item, args, scope, workflow}) {

@@ -29,12 +29,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     await warpgate.wait(100);
     let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await MidiQOL.completeItemUse(sFeature, config, options);
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = feature.system.damage.parts[0][0] + '[' + translate.damageType('force') + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function damageMany({speaker, actor, token, character, item, args, scope, workflow}) {

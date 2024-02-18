@@ -21,7 +21,7 @@ async function cast({speaker, actor, token, character, item, args, scope, workfl
             newDamageRoll += '(' + oldDamageRoll.terms[i].number + '*' + oldDamageRoll.terms[i].faces + ')[' + flavor + ']';
         }
     }
-    let damageRoll = await new Roll(newDamageRoll).roll({async: true});
+    let damageRoll = await new Roll(newDamageRoll).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

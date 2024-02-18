@@ -43,8 +43,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (!queueSetup) return;
     if (workflow.targets.size != 1) return;
     let damageFormula = '3d6[poison]';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageRoll = await chris.damageRoll(workflow, damageFormula);
+    await workflow.setDamageRolls([damageRoll]);
     queue.remove(workflow.item.uuid);
 }
 async function turnStart(token, actor, effect, origin) {

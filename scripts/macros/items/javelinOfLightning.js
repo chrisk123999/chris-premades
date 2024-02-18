@@ -30,10 +30,7 @@ export async function javelinOfLightning({speaker, actor, token, character, item
         'width': 5
     };
     let bonusDamageFormula = '4d6[' + translate.damageType('lightning') + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     let {template, tokens} = await chris.createTemplate(templateData, true);
     let effectData = {
         'name': workflow.item.name + ' Bolt Template',

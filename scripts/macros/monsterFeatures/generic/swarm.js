@@ -10,7 +10,7 @@ export async function swarmDamage({speaker, actor, token, character, item, args,
     let diceNum = Number(damageFormula.substring(0,1)) / 2;
     let restOfFormula = damageFormula.substring(1);
     let newFormula = diceNum + restOfFormula;
-    let damageRoll = await new Roll(newFormula).roll({async: true});
+    let damageRoll = await new Roll(newFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

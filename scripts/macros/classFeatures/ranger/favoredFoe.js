@@ -2,14 +2,10 @@ import {constants} from '../../../constants.js';
 import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 async function extraDamage(workflow) {
-    let damageFormula = workflow.damageRoll._formula;
     let scale = workflow.actor.system.scale?.ranger?.['favored-foe']?.formula;
     if (!scale) return;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
-    let bonusDamageFormula = scale + '[' + defaultDamageType + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageRoll = await new Roll(damageFormula + ' + ' + bonusDamageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = scale + '[' + workflow.defaultDamageType + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
 }
 export async function favoredFoe({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;

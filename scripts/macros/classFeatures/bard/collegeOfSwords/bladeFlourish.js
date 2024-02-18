@@ -66,11 +66,8 @@ export async function bladeFlourish({speaker, actor, token, character, item, arg
         }
         let damageType = workflow.item.system.damage.parts[0][1];
         let bonusDamageFormula = bardicInspirationDie.formula + '[' + damageType + ']'
-        if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-        let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-        let damageRoll = await new Roll(damageFormula).roll({async: true});
-        let bardicInspirationDieRoll = damageRoll.dice[damageRoll.dice.length - 1].total;
-        await workflow.setDamageRoll(damageRoll);
+        await chris.addToDamageRoll(workflow, bonusDamageFormula);
+        let bardicInspirationDieRoll = workflow.damageRolls[workflow.damageRolls.length - 1].total;
         switch (selectedOption) {
             case 'DF':
                 let feature2 = sourceActor.items.getName('Defensive Flourish');

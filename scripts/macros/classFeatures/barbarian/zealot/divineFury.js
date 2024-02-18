@@ -21,11 +21,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         return;
     }
     await chris.setTurnCheck(originItem, 'feature', 'divineFury');
-    let bonusDamage = '1d6[' + damageType + '] + ' + barbDamage;
-    if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamage;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = '1d6[' + damageType + '] + ' + barbDamage;
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function end(origin) {

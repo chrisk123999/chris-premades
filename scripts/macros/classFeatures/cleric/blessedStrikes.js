@@ -18,9 +18,8 @@ async function onUse({speaker, actor, token, character, item, args, scope, workf
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula = workflow.damageRoll._formula + ' + 1d8[radiant]';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = '1d8[radiant]';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feature.blessedStrikes.used', true);
     queue.remove(workflow.item.uuid);
 }

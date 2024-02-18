@@ -9,9 +9,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
     let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
-    let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.attributes.prof + '[' + defaultDamageType + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = workflow.actor.system.attributes.prof + '[' + defaultDamageType + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
     return;
 }

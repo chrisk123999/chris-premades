@@ -30,9 +30,8 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 return;
             }
             if (chris.inCombat()) await feature.setFlag('chris-premades', 'feature.radiantSoul.turn', game.combat.round + '-' + game.combat.turn);
-            let damageFormula = workflow.damageRoll._formula + ' + ' + workflow.actor.system.abilities.cha.mod + '[' + selected + ']';
-            let damageRoll = await new Roll(damageFormula).roll({async: true});
-            await workflow.setDamageRoll(damageRoll);
+            let bonusDamageFormula = workflow.actor.system.abilities.cha.mod + '[' + selected + ']';
+            await chris.addToDamageRoll(workflow, bonusDamageFormula);
             queue.remove(workflow.item.uuid);
             return;
         case 'preDamageApplication':

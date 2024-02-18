@@ -16,9 +16,6 @@ export async function riteOfTheDawn({speaker, actor, token, character, item, arg
     let queueSetup = await queue.setup(workflow.item.uuid, 'riteOfTheDawn', 250);
     if (!queueSetup) return;
     let bonusDamageFormula = damageDice.formula + '[radiant]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }

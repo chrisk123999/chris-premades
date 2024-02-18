@@ -11,11 +11,11 @@ export async function healingLight({speaker, actor, token, character, item, args
         let diceString = i + 'd6';
         lightMenu.push([diceString, i]);
     }
-    let selection = await chris.dialog('How many dice do you want to use?', lightMenu)
+    let selection = await chris.dialog(workflow.item.name, lightMenu, 'How many dice do you want to use?')
     await workflow.item.update({
         'system.uses.value': healingLightFeatureUses - selection
      });
-     let diceRoll = await new Roll(selection + 'd6[healing]').roll({async: true});
-     await workflow.setDamageRoll(diceRoll);
+     let damageRoll = await chris.damageRoll(workflow, selection + 'd6[healing');
+     await workflow.setDamageRolls([damageRoll]);
      queue.remove(workflow.item.uuid);
 }

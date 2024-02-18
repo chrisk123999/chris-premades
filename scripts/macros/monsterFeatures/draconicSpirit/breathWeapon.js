@@ -21,7 +21,7 @@ export async function breathWeapon({speaker, actor, token, character, item, args
         return;
     }
     let damageFormula = workflow.damageRoll._formula + '[' + selection + ']';
-    let diceRoll = await new Roll(damageFormula).roll({async: true});
+    let diceRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(diceRoll);
     queue.remove(workflow.item.uuid);
 }

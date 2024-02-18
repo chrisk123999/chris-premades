@@ -26,8 +26,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!selection) selection = 'lightning';
     let damageFormula = workflow.damageRoll._formula;
     damageFormula += '[' + selection + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, {}, true);
+    await workflow.setDamageRolls([damageRoll]);
     queue.remove(workflow.item.uuid);
 }
 export let heartOfTheStorm = {

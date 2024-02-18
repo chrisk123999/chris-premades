@@ -70,9 +70,10 @@ async function targetDamage({speaker, actor, token, character, item, args, scope
     if (originActorUuid === targetActorUuid) return;
     let queueSetup =  await queue.setup(workflow.item.uuid, 'ancestralProtectors', 475);
     if (!queueSetup) return;
-    let damageFormula = 'floor((' + workflow.damageRoll._formula + ') / 2)';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageFormulas = workflow.damageRolls.map(i => 'floor((' + i._formula + ') / 2)');
+    let damageRolls = await chris.damageRolls(workflow, damageFormulas);
+    await workflow.setDamageRolls(damageRolls);
+
     queue.remove(workflow.item.uuid);
 }
 async function combatEnd(origin) {

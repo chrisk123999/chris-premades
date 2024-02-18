@@ -212,10 +212,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
     let eyeFeature = chris.getItem(workflow.actor, 'Eye for Weakness');
     if (iTarget && eyeFeature) bonusDamageFormula += ' + 3d6[' + defaultDamageType + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     await originFeature.use();
     if (displayRakish) await rakishAudacity.use();
     if (iTarget) {

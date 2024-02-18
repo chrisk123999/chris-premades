@@ -833,7 +833,7 @@ export let chris = {
             }
         );
         targetDamage.totalDamage += damageTotal;
-        let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+        let defaultDamageType = chris.getDefaultDamage(workflow.damageRolls);
         if (defaultDamageType === 'healing') {
             targetDamage.newHP += roll.total;
             targetDamage.hpDamage -= damageTotal;
@@ -1181,5 +1181,18 @@ export let chris = {
     },
     'getEffects': function _getEffects(actor) {
         return Array.from(actor.allApplicableEffects());
+    },
+    'addToDamageRoll': async function _addToDamageRoll(workflow, bonusDamageFormula, ignoreCrit = false) {
+        if (workflow.isCritical && !ignoreCrit) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
+        let bonusDamageRoll = await new CONFIG.Dice.DamageRoll(bonusDamageFormula, workflow.actor.getRollData()).evaluate();
+        workflow.damageRolls.push(bonusDamageRoll);
+        await workflow.setDamageRolls(workflow.damageRolls);
+    },
+    'damageRoll': async function _damageRoll(workflow, damageFormula, options = {}, ignoreCrit = false) {
+        if (workflow.isCritical && !ignoreCrit) damageFormula = chris.getCriticalFormula(damageFormula);
+        return await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), options).evaluate();
+    },
+    'damageRolls': async function _damageRolls(workflow, damageFormulas = []) {
+        return damageFormulas.map(i => chris.damageRoll(workflow, i));
     }
 }

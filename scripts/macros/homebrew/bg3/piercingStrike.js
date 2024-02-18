@@ -125,11 +125,8 @@ async function damage(workflow) {
     if (!effect) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercingStrike', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '2[' + translate.damageType('piercing') + ']';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

@@ -34,7 +34,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         if (workflow.isCritical) extraDice = chris.getCriticalFormula(extraDice);
         damageFormula = newDamageRoll + extraDice;
     }
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

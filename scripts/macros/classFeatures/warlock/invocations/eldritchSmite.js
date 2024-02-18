@@ -24,10 +24,7 @@ export async function eldritchSmite({speaker, actor, token, character, item, arg
     }
     await workflow.actor.update(updates);
     let bonusDamage = (1 + pactLevel) + 'd8[force]';
-    if (workflow.isCritical) bonusDamage = chris.getCriticalFormula(bonusDamage);
-    let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamage;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamage);
     await feature.displayCard();
     let targetActor = workflow.targets.first().actor;
     let targetSize = chris.getSize(targetActor, false);

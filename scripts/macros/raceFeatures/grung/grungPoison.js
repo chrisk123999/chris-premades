@@ -29,8 +29,7 @@ export async function grungPoison({speaker, actor, token, character, item, args,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula = workflow.damageRoll._formula + ' + 2d4[' + translate.damageType('poison') + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageFormula = '2d4[' + translate.damageType('poison') + ']';
+    await chris.addToDamageRoll(workflow, damageFormula, true);
     queue.remove(workflow.item.uuid);
 }

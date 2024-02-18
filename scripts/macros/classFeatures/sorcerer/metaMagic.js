@@ -168,7 +168,7 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
         if (!selection.inputs[i]) continue;
         let currentDie = lowest[i];
         let damageFormula = '1d' + currentDie.faces + currentDie.modifiers;
-        let damageRoll = await new Roll(damageFormula).roll({async: true});
+        let damageRoll = await chris.damageRoll(damageFormula);
         let messageData = {
             'speaker': ChatMessage.getSpeaker(workflow.actor), 
             'flavor': 'Rerolling: ' + currentDie.result, 

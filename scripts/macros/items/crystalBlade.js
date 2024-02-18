@@ -5,44 +5,13 @@ async function heal({speaker, actor, token, character, item, args, scope, workfl
     if (workflow.item.system.damage.parts[0][0] != '0[healing') return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'crystalBladeHealing', 50);
     if (!queueSetup) return;
-    function dialogRender(html) {
-        let ths = html[0].getElementsByTagName('th');
-        for (let t of ths) {
-            t.style.width = 'auto';
-            t.style.textAlign = 'left';
+    let inputs = [
+        {
+            'label': 'Healing:',
+            'type': 'number'
         }
-        let tds = html[0].getElementsByTagName('td');
-        for (let t of tds) {
-            t.style.width = '50px';
-            t.style.textAlign = 'center';
-            t.style.paddingRight = '5px';
-        }
-    }
-    let selection = await warpgate.menu({
-        'inputs': [
-            {
-                'label': 'Healing:',
-                'type': 'number'
-            }
-        ],
-        'buttons': [
-            {
-                'label': 'Cancel',
-                'value': false
-            },
-            {
-                'label': 'Ok',
-                'value': true
-            }
-        ]
-    },
-    {
-        'title': workflow.item.name,
-        'render': dialogRender,
-        'options': {
-            'width': '400px'
-        }
-    });
+    ];
+    let selection = await chris.menu(workflow.item.name, constants.okCancel, inputs, true);
     if (!selection.buttons) {
         queue.remove(workflow.item.uuid);
         return;
@@ -51,8 +20,9 @@ async function heal({speaker, actor, token, character, item, args, scope, workfl
         queue.remove(workflow.uuid);
         return;
     }
-    let damageRoll = await new Roll(selection.inputs[0] + '[healing]').roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageFormula = selection.inputs[0] + '[healing]';
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, {}, true);
+    await workflow.setDamageRolls([damageRoll]);
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {

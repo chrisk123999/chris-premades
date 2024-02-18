@@ -9,12 +9,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let targetToken = workflow.targets.first();
     let queueSetup = await queue.setup(workflow.item.uuid, 'thunderousSmite', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '2d6[thunder]';
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Thunderous Smite - Push');
     if (!featureData) {
         queue.remove(workflow.item.uuid);

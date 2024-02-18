@@ -6,7 +6,7 @@ export async function wrathOfTheStorm({speaker, actor, token, character, item, a
     let selection = await chris.dialog('What damage type?', [['Lightning', '[lightning]'], ['Thunder', '[thunder]']]);
     if (!selection) selection = 'lightning';
     let damageFormula = workflow.damageRoll._formula + selection;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, {}, true);
+    await workflow.setDamageRolls([damageRoll]);
     queue.remove(workflow.item.uuid);
 }

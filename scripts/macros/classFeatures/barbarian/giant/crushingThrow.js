@@ -15,11 +15,7 @@ export async function crushingThrow({speaker, actor, token, character, item, arg
         queue.remove(workflow.item.uuid);
         return;
     }
-    let oldFormula = workflow.damageRoll._formula;
-    if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-    let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     let feature = chris.getItem(workflow.actor, 'Giant\'s Havoc: Crushing Throw');
     if (feature) await feature.displayCard();
     queue.remove(workflow.item.uuid);

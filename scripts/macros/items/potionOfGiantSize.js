@@ -21,9 +21,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let bonusDamageDice = workflow.damageRoll.terms[0].faces;
     let flavor = workflow.damageRoll.terms[0].options.flavor;
     let bonusDamageFormula = ' + ' + bonusDamageNumber + 'd' + bonusDamageDice + '[' + flavor + ']';
-    let damageFormula = workflow.damageRoll._formula + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
-    await workflow.setDamageRoll(damageRoll);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function end(token, actor) {

@@ -47,7 +47,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
         }
     }
     if (chris.inCombat()) await originItem.setFlag('chris-premades', 'feat.piercer.turn', game.combat.round + '-' + game.combat.turn);
-    let roll = await new Roll('1d' + lowRollDice).roll({async: true});
+    let roll = await new Roll('1d' + lowRollDice).roll({'async': true});
     let newDamageRoll = workflow.damageRoll;
     newDamageRoll.terms[resultI].results[resultJ].result = roll.total;
     newDamageRoll._total = newDamageRoll._evaluateTotal();
@@ -76,7 +76,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         flavor = i.flavor.toLowerCase();
     }
     let damageFormula = workflow.damageRoll._formula + ' + 1d' + largeDice + '[' + flavor + ']';
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     let effect = chris.findEffect(workflow.actor, 'Piercer: Critical Hit');
     if (effect) {

@@ -106,7 +106,7 @@ async function damageRoll(workflow) {
         queue.remove(workflow.uuid);
         return
     }
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.uuid);
 }

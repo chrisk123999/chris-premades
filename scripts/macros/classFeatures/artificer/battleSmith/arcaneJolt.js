@@ -26,10 +26,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (!queueSetup) return;
         if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.arcaneJolt.turn', game.combat.round + '-' + game.combat.turn);
         let bonusDamageFormula = scale + '[force]';
-        if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
-        let damageFormula = workflow.damageRoll._formula + ' + ' + bonusDamageFormula;
-        let damageRoll = await new Roll(damageFormula).roll({async: true});
-        await workflow.setDamageRoll(damageRoll);
+        await chris.addToDamageRoll(workflow, bonusDamageFormula);
         await originFeature.use();
         queue.remove(workflow.item.uuid);
     }

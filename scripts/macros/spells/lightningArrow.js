@@ -24,7 +24,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         if (castLevel > 3) damageFormula = damageFormula + ' + ' + extraDiceNumber + 'd8[lightning]';
     }
     if (workflow.isCritical) damageFormula = chris.getCriticalFormula(damageFormula);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await new Roll(damageFormula).roll({'async': true});
     await workflow.setDamageRoll(damageRoll);
     if (workflow.hitTargets.size === 0) await chris.applyDamage([targetToken], Math.floor(damageRoll.total / 2), 'lightning');
     let itemData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Lightning Arrow - Burst', false);
