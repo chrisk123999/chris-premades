@@ -5,7 +5,7 @@ export async function auraOfProtection(token, selectedAura) {
     let originActor = originToken.actor;
     let auraEffect = chris.findEffect(originActor, 'Aura of Protection - Aura');
     if (!auraEffect) return;
-    let originItem = await fromUuid(auraEffect.origin);
+    let originItem = auraEffect.parent;
     if (!originItem) return;
     let effectData = {
         'name': 'Aura of Protection',

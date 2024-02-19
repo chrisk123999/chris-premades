@@ -32,7 +32,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageRoll = await new Roll('2d12[' + translate.damageType('psychic') + ']').roll({async: true});
+    let damageRoll = await new Roll('2d12[' + translate.damageType('psychic') + ']').roll({'async': true});
     await chris.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [workflow.targets.first()], workflow.item.name, workflow.itemCardId);
     queue.remove(workflow.item.uuid);
 }

@@ -35,8 +35,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let hpFormula = 5 + (druidLevel * 5);
     let name = chris.getConfiguration(workflow.item, 'name') ?? 'Wildfire Spirit';
     if (name === '') name = 'Wildfire Spirit';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
     let updates = {
         'actor': {
             'name': name,
@@ -160,7 +160,7 @@ async function fieryTeleportation({speaker, actor, token, character, item, args,
         return;
     }
     queue.remove(workflow.item.uuid);
-    let difference = {x: workflow.token.x, y: workflow.token.y};
+    let difference = {'x': workflow.token.x, 'y': workflow.token.y};
     await new Sequence().effect().file('jb2a.thunderwave.center.blue').atLocation(workflow.token).randomRotation().animation().play();
     async function teleport(targetToken) {
         await new Sequence().effect().file('jb2a.misty_step.01.blue').atLocation(targetToken).randomRotation().scaleToObject(2).wait(750).animation().on(targetToken).opacity(0.0).waitUntilFinished().play();

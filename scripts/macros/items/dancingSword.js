@@ -4,7 +4,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!sourceActor) return;
     let effect = chris.findEffect(workflow.actor, 'Dancing Sword Passive');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     async function effectMacro() {
         let originActor = origin.actor;

@@ -15,7 +15,7 @@ export async function lifeEater({speaker, actor, token, character, item, args, s
     let effect = chris.findEffect(workflow.actor, 'Life Eater');
     if (!effect) return;
     if (!effect.origin) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     await originItem.displayCard();
 }

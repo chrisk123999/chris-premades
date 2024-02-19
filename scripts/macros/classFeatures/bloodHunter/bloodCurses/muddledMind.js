@@ -8,10 +8,10 @@ export async function muddledMind({speaker, actor, token, character, item, args,
         ui.notifications.warn('Source actor does not appear to have a Crimson Rite scale!');
         return;
     }
-    let roll = await new Roll(damageDice + '[none]').roll({async: true});
+    let roll = await new Roll(damageDice + '[none]').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: workflow.item.name
     });
     await chris.applyDamage(workflow.token, roll.total, 'none');

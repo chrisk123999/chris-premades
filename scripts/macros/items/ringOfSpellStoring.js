@@ -198,7 +198,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!mod) mod = '0';
     let queueSetup = await queue.setup(workflow.item.uuid, 'ringOfSpellStoring', 50);
     if (!queueSetup) return;
-    let updatedRoll = await new Roll('1d20' + mod).evaluate({async: true});
+    let updatedRoll = await new Roll('1d20' + mod).evaluate({'async': true});
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }

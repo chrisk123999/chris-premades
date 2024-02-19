@@ -3,7 +3,7 @@ export async function potionOfDiminution({speaker, actor, token, character, item
     if (workflow.targets.size != 1) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
-    let roll = await new Roll('1d4').roll({async: true});
+    let roll = await new Roll('1d4').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},

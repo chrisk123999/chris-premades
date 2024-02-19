@@ -21,7 +21,7 @@ export async function explodingHeals(workflow) {
             }
         }
     }
-    let damageRoll = await new Roll(newFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, newFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

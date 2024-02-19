@@ -28,7 +28,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 async function late({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size || !workflow.token) return;
-    let damageRoll = await new Roll(workflow.targets.size * 5 + '[temphp]').roll({async: true});
+    let damageRoll = await new Roll(workflow.targets.size * 5 + '[temphp]').roll({'async': true});
     await chris.applyWorkflowDamage(workflow.token, damageRoll, 'temphp', [workflow.token], workflow.item.name, workflow.itemCardId);
     let effect = chris.findEffect(workflow.actor, 'Rage');
     if (!effect) return;

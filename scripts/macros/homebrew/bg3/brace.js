@@ -1,3 +1,4 @@
+import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 export async function brace({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
@@ -13,7 +14,7 @@ export async function brace({speaker, actor, token, character, item, args, scope
     let queueSetup = await queue.setup(workflow.item.uuid, 'brace', 350);
     if (!queueSetup) return;
     let damageFormula = 'max(' + workflow.damageRoll._formula + ', ' + workflow.damageRoll._formula + ')';
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

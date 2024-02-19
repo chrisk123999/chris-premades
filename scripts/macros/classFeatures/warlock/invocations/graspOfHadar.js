@@ -9,7 +9,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (distance <= 5) return;
     let effect = chris.findEffect(workflow.actor, 'Eldritch Invocations: Grasp of Hadar');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     if (!chris.perTurnCheck(originItem, 'feature', 'graspOfHadar', true, workflow.token.id)) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'graspOfHadar', 451);
@@ -29,7 +29,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         knockBackFactor = selection / canvas.dimensions.distance;
         ray = new Ray(workflow.token.center, targetToken.center);
         newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
-        hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
+        hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
         if (hitsWall) {
             selection -= 5;
             if (selection === 0) {

@@ -17,8 +17,8 @@ export async function summonConstruct({speaker, actor, token, character, item, a
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 15);
     let name = chris.getConfiguration(workflow.item, 'name-' + selection) ?? 'Construct Spirit (' + selection + ')';
     if (name === '') name = 'Construct Spirit (' + selection + ')';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({async: true});
+    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
+    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
     let updates = {
         'actor': {
             'name': name,

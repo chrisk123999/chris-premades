@@ -35,7 +35,7 @@ export async function grimHarvest({speaker, actor, token, character, item, args,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) {
         queue.remove(workflow.item.uuid);
         return;

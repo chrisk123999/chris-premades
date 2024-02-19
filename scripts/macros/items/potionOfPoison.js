@@ -61,10 +61,10 @@ async function turnStart(token, actor, effect, origin) {
         1: '1d6[poison]'
     };
     let damageFormula = damageList[stacks];
-    let damageRoll = await new Roll(damageFormula).evaluate({async: true})
+    let damageRoll = await new Roll(damageFormula).evaluate({'async': true})
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: origin.name
     });
     await chris.applyDamage([token], damageRoll.total, 'poison');

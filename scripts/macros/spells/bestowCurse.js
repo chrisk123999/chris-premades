@@ -180,10 +180,10 @@ async function damageApplication({speaker, actor, token, character, item, args, 
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageRoll = await new Roll('1d8[necrotic]').roll({async: true});
+    let damageRoll = await new Roll('1d8[necrotic]').roll({'async': true});
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: 'Bestow Curse Damage'
     });
     let hasDI = chris.checkTrait(targetActor, 'di', 'necrotic');

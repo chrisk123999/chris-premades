@@ -10,7 +10,7 @@ async function blinkTurnStart(token, actor, origin, effect) {
     await chris.removeEffect(effect);
 }
 async function blinkTurnEnd(actor) {
-    let blinkRoll = await new Roll('1d20').roll({async: true});
+    let blinkRoll = await new Roll('1d20').roll({'async': true});
     blinkRoll.toMessage({
         'rollMode': 'roll',
         'speaker': {'alias': name},

@@ -275,7 +275,7 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     await MidiQOL.completeItemUse(spell, config, options);
     let damageFormula = ('0');
-    let newDamageRoll = await new Roll(damageFormula).roll({async: true});
+    let newDamageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(newDamageRoll);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);

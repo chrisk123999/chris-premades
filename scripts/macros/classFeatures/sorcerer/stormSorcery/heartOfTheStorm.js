@@ -14,7 +14,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         queue.remove(workflow.item.uuid);
         return;
     }
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effect.parent;
     await originItem.use();
     queue.remove(workflow.item.uuid);
 }

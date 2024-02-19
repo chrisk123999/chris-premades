@@ -180,7 +180,7 @@ async function violentShot({speaker, actor, token, character, item, args, scope,
         queue.remove(workflow.item.uuid);
         return;
     }
-    let roll = await new Roll(damageParts[0][0]).roll({async: true});
+    let roll = await new Roll(damageParts[0][0]).roll({'async': true});
     let faces = roll.terms[0].faces;
     if (!faces) {
         queue.remove(workflow.item.uuid);

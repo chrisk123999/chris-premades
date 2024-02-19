@@ -30,7 +30,7 @@ export async function bolsteringMagic({speaker, actor, token, character, item, a
         };
         await chris.createEffect(targetActor, effectData);
     } else {
-        let roll = await new Roll('1d3').roll({async: true});
+        let roll = await new Roll('1d3').roll({'async': true});
         roll.toMessage({
             rollMode: 'roll',
             speaker: {'alias': name},

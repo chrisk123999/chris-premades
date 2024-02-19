@@ -2,10 +2,10 @@ import {chris} from '../../../helperFunctions.js';
 async function saveItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1 || workflow.failedSaves.size === 1) return;
     let effect = chris.findEffect(workflow.actor, 'Psychic Link');
-    let damageRoll = await new Roll('3d6[psychic]').roll({async: true});
+    let damageRoll = await new Roll('3d6[psychic]').roll({'async': true});
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: 'Psychic Link'
     });
     await chris.applyDamage(workflow.token, damageRoll.total, 'psychic');

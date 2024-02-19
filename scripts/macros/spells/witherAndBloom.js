@@ -92,7 +92,7 @@ export async function witherAndBloom({speaker, actor, token, character, item, ar
         let conMod = actor.system.abilities.con.mod;
         let spellcastingMod = chrisPremades.helpers.getSpellMod(origin);
         healingFormula = healingFormula + '(' + selectedTotal + ' * ' + conMod + ') + ' + spellcastingMod;
-        let healingRoll = await new Roll(healingFormula).roll({async: true});
+        let healingRoll = await new Roll(healingFormula).roll({'async': true});
         let itemCardId = effect.flags['chris-premades'].spell.witherAndBloom.itemCardId;
         await chrisPremades.helpers.applyWorkflowDamage(token, healingRoll, 'healing', [token], origin.name, itemCardId);
         for (let i = 0; selection.inputs.length > i; i++) {

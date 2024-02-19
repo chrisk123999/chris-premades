@@ -42,7 +42,7 @@ async function attack(workflow) {
     let flag = workflow.item?.flags?.['chris-premades']?.mechanic?.cleave;
     if (!flag) return;
     if (!flag.attack) return;
-    let roll = await new Roll(String(flag.attack)).evaluate({async: true});
+    let roll = await new Roll(String(flag.attack)).evaluate({'async': true});
     await workflow.setAttackRoll(roll);
 }
 async function damage(workflow) {
@@ -50,7 +50,7 @@ async function damage(workflow) {
     let flag = workflow.item?.flags?.['chris-premades']?.mechanic?.cleave;
     if (!flag) return;
     if (!flag.damage) return;
-    let roll = await new Roll(String(flag.damage)).evaluate({'async': true});
+    let roll = await chris.damageRoll(workflow, String(flag.damage), {}, true);
     await workflow.setDamageRoll(roll);
 }
 export let cleave = {

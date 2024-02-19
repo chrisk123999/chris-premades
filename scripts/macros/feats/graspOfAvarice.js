@@ -33,7 +33,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let bonusDamageFormula = feature.system.damage.parts[0][0].replace('@prof', workflow.actor.system.attributes.prof);
     if (workflow.isCritical) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
     let damageFormula = oldFormula + ' + ' + bonusDamageFormula;
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     position = damageRoll.terms.length - 3;
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);

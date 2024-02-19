@@ -9,10 +9,10 @@ async function allTurns(token, origin, range) {
     await MidiQOL.completeItemUse(origin, config, options);
 }
 async function effectCreation(origin) {
-    let roll = await new Roll('1d8').roll({async: true});
+    let roll = await new Roll('1d8').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: origin.name
     });
 }

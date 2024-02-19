@@ -4,7 +4,7 @@ async function portalCracker({speaker, actor, token, character, item, args, scop
     let roll = await workflow.actor.rollSkill('arc');
     if (roll.total >= 20) return;
     if (!workflow.token) return;
-    let damageRoll = await new Roll('3d8[' + translate.damageType('psychic') + ']').roll({async: true});
+    let damageRoll = await new Roll('3d8[' + translate.damageType('psychic') + ']').roll({'async': true});
     await chris.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [workflow.token], workflow.item.name, workflow.itemCardId);
 }
 async function planarAdaptation({speaker, actor, token, character, item, args, scope, workflow}) {

@@ -7,7 +7,7 @@ async function damage(targetToken, {workflow, ditem}) {
         let effect = chris.findEffect(target.actor, 'Arcane Ward');
         if (!effect) return;
         if (!effect.origin) return;
-        let originItem = await fromUuid(effect.origin);
+        let originItem = effect.parent;
         if (!originItem) return;
         let uses = originItem.system.uses.value;
         if (uses === 0) return;
@@ -72,7 +72,7 @@ async function damage(targetToken, {workflow, ditem}) {
             let effect = chris.findEffect(token.actor, 'Projected Ward');
             if (!effect) break;
             if (!effect.origin) break;
-            let originItem = await fromUuid(effect.origin);
+            let originItem = effect.parent;
             if (!originItem) break;
             await originItem.use();
         }
@@ -87,7 +87,7 @@ async function spell({speaker, actor, token, character, item, args, scope, workf
     let effect = chris.findEffect(workflow.actor, 'Arcane Ward');
     if (!effect) return;
     if (!effect.origin) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let maxUses = workflow.actor.classes.wizard.system.levels * 2 + workflow.actor.system.abilities.int.mod;
     let add = workflow.castData.castLevel * 2;
@@ -117,7 +117,7 @@ async function longRest(actor, data) {
     let effect = chris.findEffect(actor, 'Arcane Ward');
     if (!effect) return;
     if (!effect.origin) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     await originItem.update({
         'system.uses.value': 0,

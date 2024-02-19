@@ -5,7 +5,6 @@ export async function claws({speaker, actor, token, character, item, args, scope
     if (workflow.advantage && workflow.disadvantage) return;
     let damageDice = 4;
     let damageFormula = damageDice + 'd6[psychic] + 3';
-    if (workflow.isCritical) damageFormula = chris.getCriticalFormula(damageFormula);
-    let damageRoll = await new Roll(damageFormula).roll({async: true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula);
     await workflow.setDamageRoll(damageRoll);
 }

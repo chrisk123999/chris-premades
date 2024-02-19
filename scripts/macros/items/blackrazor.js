@@ -56,7 +56,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         };
         await chris.createEffect(workflow.actor, effectData);
     } else {
-        let damageRoll = await new Roll('1d10[necrotic]').roll({async: true});
+        let damageRoll = await new Roll('1d10[necrotic]').roll({'async': true});
         await chris.applyWorkflowDamage(workflow.token, damageRoll, 'necrotic', [workflow.token], workflow.item.name, workflow.itemCardId);
         return;
     }

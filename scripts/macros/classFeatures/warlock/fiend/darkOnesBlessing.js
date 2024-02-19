@@ -11,6 +11,6 @@ export async function darkOnesBlessing({speaker, actor, token, character, item, 
     if (!doHealing) return;
     let effect = chris.findEffect(workflow.actor, 'Dark One\'s Blessing');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = await effect.parent;
     await originItem.use();
 }

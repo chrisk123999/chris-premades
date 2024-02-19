@@ -4,7 +4,7 @@ async function slow({speaker, actor, token, character, item, args, scope, workfl
     if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
     let effect = chris.findEffect(workflow.actor, 'Slasher: Reduce Speed');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'slasher', false, workflow.token.id);
     if (!doExtraDamage) return;
@@ -57,7 +57,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     if (workflow.hitTargets.size != 1 || !workflow.isCritical || !workflow.damageRoll) return;
     let effect = chris.findEffect(workflow.actor, 'Slasher: Critical Hit');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'slasherCritical', 251);
     if (!queueSetup) return;

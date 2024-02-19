@@ -3,7 +3,7 @@ export async function brandOfCastigation({speaker, actor, token, character, item
     if (workflow.hitTargets.size != 1) return;
     let effect = chris.findEffect(workflow.actor, 'Brand of Castigation');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let damage = chris.getSpellMod(originItem);
     if (originItem.actor.classes['blood-hunter'].system.levels >= 13) damage = damage * 2;

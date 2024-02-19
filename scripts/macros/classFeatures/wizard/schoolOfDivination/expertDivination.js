@@ -53,7 +53,7 @@ export async function expertDivination({speaker, actor, token, character, item, 
     workflow.actor.update({[updateString]: updateValue});
     let effect = chris.findEffect(workflow.actor, 'Expert Divination');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     let tempItem = duplicate(originItem.toObject());
     tempItem.system.description.value = tempItem.system.description.value + '\n<hr><p>' + messageString + '</p>'
     let feature = new CONFIG.Item.documentClass(tempItem, {'parent': workflow.actor});

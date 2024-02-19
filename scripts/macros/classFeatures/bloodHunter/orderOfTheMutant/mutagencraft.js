@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 async function effectMacro() {
-    await chrisPremades.macros.mutagencraft.remove(origin);
+    await chrisPremades.macros.mutagencraft.remove(effect.parent);
 }
 async function celerity({speaker, actor, token, character, item, args, scope, workflow}) {
     let classLevels = workflow.actor.classes['blood-hunter']?.system?.levels;

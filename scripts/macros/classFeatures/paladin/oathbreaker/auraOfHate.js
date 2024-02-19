@@ -5,7 +5,7 @@ async function aura(token, selectedAura) {
     let originActor = originToken.actor;
     let auraEffect = chris.findEffect(originActor, 'Aura of Hate - Aura');
     if (!auraEffect) return;
-    let originItem = await fromUuid(auraEffect.origin);
+    let originItem = auraEffect.parent;
     if (!originItem) return;
     let effectData = {
         'name': 'Aura of Hate',

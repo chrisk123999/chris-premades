@@ -96,7 +96,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let effect = chris.findEffect(workflow.actor, 'Strike of the Giants: Cloud Strike');
     if (!effect) return;
     if (!effect.origin) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (originItem.actor.uuid != workflow.targets.first().actor.uuid) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'cloudStrike', 150);
     if (!queueSetup) return;

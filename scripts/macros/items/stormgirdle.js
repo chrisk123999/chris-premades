@@ -5,7 +5,7 @@ async function stormAvatar({speaker, actor, token, character, item, args, scope,
     let queueSetup = await queue.setup(workflow.item.uuid, 'stormAvatar', 340);
     if (!queueSetup) return;
     let damageFormula = workflow.damageRoll._formula.toLowerCase().replace('slashing', 'lightning').replace('piercing', 'lightning').replace('bludgeoning', 'thunder');
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

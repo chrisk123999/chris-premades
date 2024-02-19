@@ -4,7 +4,7 @@ export async function orcishFury({speaker, actor, token, character, item, args, 
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || workflow.item.type != 'weapon') {
         let effect = chris.findEffect(workflow.actor, 'Orcish Fury - Extra Damage');
         if (!effect) return;
-        let originItem = await fromUuid(effect.origin);
+        let originItem = effect.parent;
         if (!originItem) return;
         await originItem.update({'system.uses.value': 1});
         return;

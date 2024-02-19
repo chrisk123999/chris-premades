@@ -149,3 +149,43 @@ export async function updateAllCompendiums() {
     }));
     return 'Done!';
 }
+export async function checkPassiveEffects(packId) {
+    let pack = game.packs.get(packId);
+    if (!pack) return;
+    await pack.getDocuments();
+    let needsAdjusting = [];
+    for (let item of pack.contents) {
+        console.log('- Checking: ' + item.name);
+        if (!item.effects.size) continue;
+        let passiveEffects = item.effects.filter(i => i.transfer);
+        if (!passiveEffects.length) continue;
+        let effectMacroEffects = passiveEffects.filter(i => i.flags.effectmacro);
+        if (!effectMacroEffects.length) continue;
+        for (let effect of effectMacroEffects) {
+            console.log('-- Checking Effect: ' + effect.name);
+            let fixMe = Object.values(effect.flags.effectmacro).find(i => {
+                if (typeof i.script != 'string') return false;
+                if (i.script.includes('origin')) return true;
+                return false;
+            });
+            if (fixMe) needsAdjusting.push(effect.uuid);
+        }
+    }
+    if (!needsAdjusting.length) return;
+    let message = '<hr>The following effects need to be adjusted:';
+    for (let uuid of needsAdjusting) {
+        let effect = await fromUuid(uuid);
+        message += '<br>@UUID[' + uuid + ']{' + effect.name + '}<br>';
+    }
+    await ChatMessage.create({
+        'speaker': {'alias': 'Chris\'s Premades - ' + pack.metadata.label},
+        'content': message
+    });
+}
+export async function checkPackEffects(moduleId) {
+    let packs = game.packs.filter(i => i.metadata.packageName === moduleId && i.metadata.type === 'Item');
+    for (let pack of packs) {
+        console.log('Checking Pack: ' + pack.metadata.label);
+        await checkPassiveEffects(pack.metadata.id);
+    }
+}

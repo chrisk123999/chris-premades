@@ -15,13 +15,13 @@ export async function breathWeapon({speaker, actor, token, character, item, args
             options = [['Force', 'force'], ['Necrotic', 'necrotic'], ['Psychic', 'psychic'], ['Radiant', 'radiant'], ['Thunder', 'thunder']];
             break;
     }
-    let selection = await chris.dialog('What damage type?', options);
+    let selection = await chris.dialog(workflow.item.name, options, 'What damage type?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
         return;
     }
     let damageFormula = workflow.damageRoll._formula + '[' + selection + ']';
-    let diceRoll = await new Roll(damageFormula).roll({'async': true});
+    let diceRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(diceRoll);
     queue.remove(workflow.item.uuid);
 }

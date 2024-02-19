@@ -10,7 +10,7 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
         return;
     }
     let damageFormula = workflow.damageRoll._formula.replace('none', selection);
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
     let animation;

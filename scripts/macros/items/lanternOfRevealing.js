@@ -147,7 +147,7 @@ async function aura(token, selectedAura) {
     let originActor = originToken.actor;
     let auraEffect = chris.findEffect(originActor, 'Lantern Of Revealing - Aura');
     if (!auraEffect) return;
-    let originItem = await fromUuid(auraEffect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let effectData = {
         'name': 'Lantern Of Revealing - Revealed',

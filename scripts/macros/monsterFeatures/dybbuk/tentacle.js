@@ -1,10 +1,10 @@
 import {chris} from '../../../helperFunctions.js';
 export async function tentacle({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.failedSaves.size != 1) return;
-    let damageRoll = await new Roll('1d6').roll({async: true});
+    let damageRoll = await new Roll('1d6').roll({'async': true});
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: workflow.item.name
     });
     let damage = -damageRoll.total;

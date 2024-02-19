@@ -9,7 +9,7 @@ export async function tail({speaker, actor, token, character, item, args, scope,
     if (originItem.actor.id != workflow.actor.id) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'salamanderTail', 50);
     if (!queueSetup) return;
-    let updatedRoll = await new Roll('100').evaluate({async: true});
+    let updatedRoll = await new Roll('100').evaluate({'async': true});
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }

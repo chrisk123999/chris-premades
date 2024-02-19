@@ -1,8 +1,9 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (workflow.item.system?.properties?.mgc !== true && workflow.item.name !== 'Force-Empowered Rend') return;
+    if (workflow.item.system.properties.has('mgc') && workflow.item.name !== 'Force-Empowered Rend') return;
     let effect = chris.findEffect(workflow.actor, 'Arcane Jolt');
     if (!effect) return;
     let originFeature = await fromUuid(effect.origin);
@@ -34,19 +35,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let targetToken = workflow.targets.first();
         let nearbyTargets = chris.findNearby(targetToken, 30, 'enemy');
         if (nearbyTargets.length === 0) return;
-        let buttons = [
-            {
-                'label': 'Yes',
-                'value': true
-            }, {
-                'label': 'No',
-                'value': false
-            }
-        ];
         let queueSetup = await queue.setup(workflow.item.uuid, 'arcaneJolt', 450);
         if (!queueSetup) return;
         if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.arcaneJolt.turn', game.combat.round + '-' + game.combat.turn);
-        let selected = await chris.selectTarget('Who to heal?', buttons, nearbyTargets, true, 'one');
+        let selected = await chris.selectTarget('Who to heal?', constants.yesNo, nearbyTargets, true, 'one');
         if (selected.buttons === false) {
             queue.remove(workflow.item.uuid);
             return;
@@ -58,7 +50,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
         let healTargetToken = await fromUuid(healTargetTokenUuid);
         let damageDice = scale + '[healing]';
-        let diceRoll = await new Roll(damageDice).roll({async: true});
+        let diceRoll = await new Roll(damageDice).roll({'async': true});
         await chris.applyWorkflowDamage(workflow.token, diceRoll, 'healing', [healTargetToken], workflow.item.name, workflow.itemCardId);
         await originFeature.use();
         queue.remove(workflow.item.uuid);

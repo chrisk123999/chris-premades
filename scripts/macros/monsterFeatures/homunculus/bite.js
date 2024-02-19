@@ -6,10 +6,10 @@ export async function bite({speaker, actor, token, character, item, args, scope,
     if (saveDC - saveResult < 5) return;
     let targetActor = workflow.targets.first().actor;
     let effect = chris.findEffect(targetActor, 'Poisoned Bite');
-    let roll = await new Roll('1d10').roll({async: true});
+    let roll = await new Roll('1d10').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: workflow.item.name
     });
     let seconds = roll.total * 60;

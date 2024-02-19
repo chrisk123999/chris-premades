@@ -27,10 +27,10 @@ export async function sufferingEchoes({speaker, actor, token, character, item, a
             return;
         }
     }
-    let damageRoll = await new Roll('3d8[psychic]').roll({async: true});
+    let damageRoll = await new Roll('3d8[psychic]').roll({'async': true});
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: workflow.item.name
     });
     await chris.applyDamage(nearbyTargets, damageRoll.total, 'psychic');

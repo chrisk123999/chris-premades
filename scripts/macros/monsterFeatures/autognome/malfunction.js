@@ -5,12 +5,12 @@ export async function malfunction(workflow, targetToken) {
     let appliedDamage = workflow.damageList.find(i => i.tokenId === targetToken.id)?.appliedDamage;
     if (!appliedDamage) return;
     if (appliedDamage < 15) return;
-    let roll = await new Roll('1d20').roll({async: true});
+    let roll = await new Roll('1d20').roll({'async': true});
     let total = roll.total;
     let effect = chris.findEffect(targetToken.actor, 'Malfunction');
     if (!effect) return;
     if (!effect.origin) return;
-    let originItem = await fromUuidSync(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let flavor = originItem.name + ': ';
     let effectData = {

@@ -11,7 +11,7 @@ export async function breakConcentration({speaker, actor, token, character, item
     let castLevel = chris.getEffectCastLevel(effect);
     if (!castLevel) return;
     let damageFormula = castLevel + 'd4[psychic]';
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await chris.removeEffect(effect);
     await chris.removeEffect(conEffect);
     await workflow.setDamageRoll(damageRoll);

@@ -31,7 +31,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     await feature.use();
     if (chris.inCombat()) await feature.setFlag('chris-premades', 'feat.savageAttacker.turn', game.combat.round + '-' + game.combat.turn);
-    let damageRoll = await new Roll(workflow.damageRoll._formula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, workflow.damageRoll._formula, undefined, true);
     let newTotal = 0;
     for (let i = 0; i < dummyRoll.terms.length; i++) {
         let total = damageRoll.terms[i].total;

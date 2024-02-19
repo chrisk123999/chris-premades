@@ -6,7 +6,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!effect) return;
     let divineEffect = chris.findEffect(workflow.actor, 'Divine Fury');
     if (!divineEffect) return;
-    let originItem = await fromUuid(divineEffect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let classLevels = workflow.actor.classes.barbarian?.system?.levels;
     if (!classLevels) return;

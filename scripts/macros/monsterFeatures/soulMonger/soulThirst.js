@@ -14,7 +14,7 @@ async function passive({speaker, actor, token, character, item, args, scope, wor
     if (!killedTarget) return;
     let effect = chris.findEffect(workflow.actor, 'Soul Thirst - Passive');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     await originItem.use();
     await chris.applyDamage([workflow.token], Math.floor(maxHP / 2), 'temphp');

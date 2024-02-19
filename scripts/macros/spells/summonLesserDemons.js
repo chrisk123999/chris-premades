@@ -4,7 +4,7 @@ export async function summonLesserDemons({speaker, actor, token, character, item
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let summonsMultiplier = spellLevel > 7 ? 3 : spellLevel > 5 ? 2 : 1;
-    let roll = await new Roll('1d6').roll({async: true});
+    let roll = await new Roll('1d6').roll({'async': true});
     let flavor;
     let cr;
     switch (roll.total) {

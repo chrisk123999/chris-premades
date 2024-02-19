@@ -7,7 +7,7 @@ export async function undeadFortitude(targetToken, {workflow, ditem}) {
     let effect = chris.findEffect(targetActor, 'Undead Fortitude');
     if (!effect) return;
     if (workflow.isCritical || chris.checkTrait(targetActor, 'di', 'healing') || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'radiant') > 0 || chris.totalDamageType(targetActor, ditem.damageDetail[0], 'none')) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let queueSetup = await queue.setup(workflow.uuid, 'undeadFortitude', 389);
     if (!queueSetup) return;

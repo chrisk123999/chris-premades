@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function experimentalElixir({speaker, actor, token, character, item, args, scope, workflow}) {
-    let roll = await new Roll('1d6').roll({async: true});
+    let roll = await new Roll('1d6').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
         speaker: {alias: name},

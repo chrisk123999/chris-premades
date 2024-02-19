@@ -2827,7 +2827,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Frost Strike': {
                 'name': 'Strike of the Giants: Frost Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Storm Strike': {
                 'name': 'Strike of the Giants: Storm Strike',
@@ -2835,7 +2835,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Cloud Strike': {
                 'name': 'Strike of the Giants: Cloud Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Fire Strike': {
                 'name': 'Strike of the Giants: Fire Strike',
@@ -2843,7 +2843,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Hill Strike': {
                 'name': 'Strike of the Giants: Hill Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Stone Strike': {
                 'name': 'Strike of the Giants: Stone Strike',
@@ -3450,7 +3450,7 @@ export function setConfig() {
             },
             'Arcane Jolt': {
                 'name': 'Arcane Jolt',
-                'version': '0.7.01',
+                'version': '0.10.6',
                 'classes': [
                     'battle-smith'
                 ],
@@ -3480,7 +3480,7 @@ export function setConfig() {
             },
             'Ancestral Protectors': {
                 'name': 'Ancestral Protectors',
-                'version': '0.7.01'
+                'version': '0.10.6'
             },
             'Rage': {
                 'name': 'Rage',
@@ -3753,7 +3753,7 @@ export function setConfig() {
             },
             'Channel Divinity: Twilight Sanctuary': {
                 'name': 'Channel Divinity: Twilight Sanctuary',
-                'version': '0.9.63'
+                'version': '0.10.6'
             },
             'Eyes of Night': {
                 'name': 'Eyes of Night',
@@ -3769,7 +3769,7 @@ export function setConfig() {
             },
             'Blessed Strikes': {
                 'name': 'Blessed Strikes',
-                'version': '0.7.01'
+                'version': '0.10.6'
             },
             'Channel Divinity: Turn Undead': {
                 'name': 'Channel Divinity: Turn Undead',
@@ -4177,7 +4177,7 @@ export function setConfig() {
             },
             'Dread Ambusher': {
                 'name': 'Dread Ambusher',
-                'version': '0.9.27'
+                'version': '0.10.6'
             },
             'Favored Foe': {
                 'name': 'Favored Foe',
@@ -4254,7 +4254,7 @@ export function setConfig() {
             },
             'Eldritch Invocations: Grasp of Hadar': {
                 'name': 'Eldritch Invocations: Grasp of Hadar',
-                'version': '0.7.01'
+                'version': '0.10.6'
             },
             'Eldritch Invocations: Repelling Blast': {
                 'name': 'Eldritch Invocations: Repelling Blast',
@@ -4290,7 +4290,7 @@ export function setConfig() {
             },
             'Radiant Soul': {
                 'name': 'Radiant Soul',
-                'version': '0.7.01'
+                'version': '0.10.6'
             },
             'Tentacle of the Deeps: Summon': {
                 'name': 'Tentacle of the Deeps: Summon',
@@ -4355,7 +4355,7 @@ export function setConfig() {
             },
             'Form of Dread': {
                 'name': 'Form of Dread',
-                'version': '0.7.38'
+                'version': '0.9.6'
             },
             'Form of Dread: Fear': {
                 'name': 'Form of Dread: Fear',
@@ -4518,21 +4518,21 @@ export function setConfig() {
             },
             'Stormgirdle (Awakened)': {
                 'name': 'Stormgirdle (Awakened)',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'mutation': {
                     'self': 'Storm Avatar'
                 }
             },
             'Stormgirdle (Dormant)': {
                 'name': 'Stormgirdle (Dormant)',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'mutation': {
                     'self': 'Storm Avatar'
                 }
             },
             'Stormgirdle (Exalted)': {
                 'name': 'Stormgirdle (Exalted)',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'mutation': {
                     'self': 'Storm Avatar'
                 }
@@ -4546,7 +4546,7 @@ export function setConfig() {
             },
             'Dancing Greatsword': {
                 'name': 'Dancing Greatsword',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4556,7 +4556,7 @@ export function setConfig() {
             },
             'Dancing Greatsword': {
                 'name': 'Dancing Greatsword',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4566,7 +4566,7 @@ export function setConfig() {
             },
             'Dancing Longsword': {
                 'name': 'Dancing Longsword',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4576,7 +4576,7 @@ export function setConfig() {
             },
             'Dancing Rapier': {
                 'name': 'Dancing Rapier',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4586,7 +4586,7 @@ export function setConfig() {
             },
             'Dancing Scimitar': {
                 'name': 'Dancing Scimitar',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4596,7 +4596,7 @@ export function setConfig() {
             },
             'Dancing Shortsword': {
                 'name': 'Dancing Shortsword',
-                'version': '0.7.01',
+                'version': '0.9.6',
                 'actors': [
                     'CPR - Dancing Sword'
                 ],
@@ -4606,7 +4606,7 @@ export function setConfig() {
             },
             'Dragon\'s Wrath Weapon (Ascendant)': {
                 'name': 'Dragon\'s Wrath Weapon (Ascendant)',
-                'version': '0.7.45',
+                'version': '0.9.6',
                 'hasAnimation': true
             },
             'Dragon\'s Wrath Weapon (Slumbering)': {
@@ -4621,12 +4621,12 @@ export function setConfig() {
             },
             'Dragon\'s Wrath Weapon (Wakened)': {
                 'name': 'Dragon\'s Wrath Weapon (Wakened)',
-                'version': '0.7.45',
+                'version': '0.9.6',
                 'hasAnimation': true
             },
             'Grovelthrash (Awakened)': {
                 'name': 'Grovelthrash (Awakened)',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Grovelthrash (Dormant)': {
                 'name': 'Grovelthrash (Dormant)',
@@ -4852,7 +4852,7 @@ export function setConfig() {
             },
             'Slasher: Reduce Speed': {
                 'name': 'Slasher: Reduce Speed',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Cloud Strike': {
                 'name': 'Strike of the Giants: Cloud Strike',
@@ -4860,7 +4860,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Fire Strike': {
                 'name': 'Strike of the Giants: Fire Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Frost Strike': {
                 'name': 'Strike of the Giants: Frost Strike',
@@ -4876,7 +4876,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Storm Strike': {
                 'name': 'Strike of the Giants: Storm Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Telekinetic: Shove': {
                 'name': 'Telekinetic: Shove',
@@ -5142,7 +5142,7 @@ export function setConfig() {
             },
             'Resistant Armor': {
                 'name': 'Resistant Armor',
-                'version': '0.7.18'
+                'version': '0.9.6'
             },
             'Returning Weapon': {
                 'name': 'Returning Weapon',
@@ -5245,7 +5245,7 @@ export function setConfig() {
             },
             'Savage Attacker': {
                 'name': 'Savage Attacker',
-                'version': '0.7.28'
+                'version': '0.9.6'
             },
             'Crusher': {
                 'name': 'Crusher',
@@ -5363,7 +5363,7 @@ export function setConfig() {
             },
             'Agent of Order: Stasis Strike': {
                 'name': 'Agent of Order: Stasis Strike',
-                'version': '0.7.46'
+                'version': '0.9.6'
             },
             'Baleful Scion: Grasp of Avarice': {
                 'name': 'Baleful Scion: Grasp of Avarice',
@@ -5422,11 +5422,11 @@ export function setConfig() {
             },
             'Divine Fury: Necrotic': {
                 'name': 'Divine Fury: Necrotic',
-                'version': '0.7.53'
+                'version': '0.10.6'
             },
             'Divine Fury: Radiant': {
                 'name': 'Divine Fury: Radiant',
-                'version': '0.7.53'
+                'version': '0.10.6'
             },
             'Healing Hands': {
                 'name': 'Healing Hands',
@@ -5911,7 +5911,7 @@ export function setConfig() {
             },
             'Long-Limbed': {
                 'name': 'Long-Limbed',
-                'version': '0.9.28'
+                'version': '0.10.6'
             },
             'Elemental Weapon': {
                 'name': 'Elemental Weapon',

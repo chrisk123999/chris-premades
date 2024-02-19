@@ -5,7 +5,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
     let effect = chris.findEffect(workflow.actor, 'Piercer: Reroll Damage');
     if (!effect) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'piercer', false, workflow.token.id);
     if (!doExtraDamage) return;
@@ -75,12 +75,11 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         largeDice = i.faces;
         flavor = i.flavor.toLowerCase();
     }
-    let damageFormula = workflow.damageRoll._formula + ' + 1d' + largeDice + '[' + flavor + ']';
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
-    await workflow.setDamageRoll(damageRoll);
+    let bonusDamageFormula = '1d' + largeDice + '[' + flavor + ']';
+    await chris.addToDamageRoll(workflow, bonusDamageFormula, true);
     let effect = chris.findEffect(workflow.actor, 'Piercer: Critical Hit');
     if (effect) {
-        let originItem = await fromUuid(effect.origin);
+        let originItem = effect.parent;
         if (originItem) await originItem.use();
     }
     queue.remove(workflow.item.uuid);

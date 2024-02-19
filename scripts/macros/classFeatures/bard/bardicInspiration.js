@@ -158,7 +158,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     let targetDamage = workflow.damageList.find(i => i.tokenId === targetTokenID);
     let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
-    let roll = await new Roll(bardDice + '[' + defaultDamageType + ']').roll({async: true});
+    let roll = await new Roll(bardDice + '[' + defaultDamageType + ']').roll({'async': true});
     roll.toMessage({
         'rollMode': 'roll',
         'speaker': {'alias': name},

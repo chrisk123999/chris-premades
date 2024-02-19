@@ -1,3 +1,4 @@
+import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 export async function rayOfEnfeeblement({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.isFumble || workflow.item.type != 'weapon') return;
@@ -8,8 +9,9 @@ export async function rayOfEnfeeblement({speaker, actor, token, character, item,
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'rayOfEnfeeblement', 360);
     if (!queueSetup) return;
-    let damageRollFormula = 'floor((' + workflow.damageRoll._formula + ') / 2)';
-    let damageRoll = await new Roll(damageRollFormula).roll({'async': true});
-    await workflow.setDamageRoll(damageRoll);
+    workflow.damageRolls = await Promise.all(workflow.damageRolls.map(async damageRoll => {
+        return await chris.damageRoll(workflow, 'floor((' + damageRoll._formula + ') / 2)', {'type': damageRoll.options.type}, true);
+    }));
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
 }

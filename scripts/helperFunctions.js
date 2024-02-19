@@ -1185,6 +1185,7 @@ export let chris = {
     'addToDamageRoll': async function _addToDamageRoll(workflow, bonusDamageFormula, ignoreCrit = false) {
         if (workflow.isCritical && !ignoreCrit) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
         let bonusDamageRoll = await new CONFIG.Dice.DamageRoll(bonusDamageFormula, workflow.actor.getRollData()).evaluate();
+        setProperty(bonusDamageRoll, 'options.type', bonusDamageRoll.terms[0].flavor);
         workflow.damageRolls.push(bonusDamageRoll);
         await workflow.setDamageRolls(workflow.damageRolls);
     },

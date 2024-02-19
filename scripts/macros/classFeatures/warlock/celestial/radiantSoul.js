@@ -1,12 +1,11 @@
+import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     let pass = args[0].macroPass;
     if (workflow.item.type != 'spell' || workflow.hitTargets.size === 0) return;
     if (!(pass === 'postDamageRoll' || pass === 'preDamageApplication')) return;
-    let effect = chris.findEffect(workflow.actor, 'Radiant Soul');
-    if (!effect) return;
-    let feature = await fromUuid(effect.origin);
+    let feature = chris.getItem(workflow.actor, 'Radiant Soul');
     if (!feature) return;
     let useFeature = chris.perTurnCheck(feature, 'feature', 'radiantSoul', false);
     if (!useFeature) return;
@@ -43,16 +42,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
                 queue.remove(workflow.item.uuid);
                 return;
             }
-            let buttons = [
-                {
-                    'label': 'Yes',
-                    'value': true
-                }, {
-                    'label': 'No',
-                    'value': false
-                }
-            ];
-            let selection = await chris.selectTarget('Radiant Soul: Add extra damage?', buttons, workflow.targets, false, 'one');
+            let selection = await chris.selectTarget('Radiant Soul: Add extra damage?', constants.yesNo, workflow.targets, false, 'one');
             if (selection.buttons === false) {
                 queue.remove(workflow.item.uuid);
                 return;

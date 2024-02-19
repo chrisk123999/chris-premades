@@ -6,7 +6,7 @@ async function onHit(workflow, targetToken) {
     if (!effect) return;
     let effect2 = chris.findEffect(targetToken.actor, 'Regeneration Blocked');
     if (effect2) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     let stopHeal = false;
     let reducedHeal = false;

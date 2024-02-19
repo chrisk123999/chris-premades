@@ -24,7 +24,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageRoll = await new Roll(newDamageRoll).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, newDamageRoll, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

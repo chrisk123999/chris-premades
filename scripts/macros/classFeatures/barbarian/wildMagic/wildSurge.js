@@ -20,7 +20,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let rollFormula = '1d8';
     let controlledSurge = chris.getItem(workflow.actor, 'Controlled Surge');
     if (controlledSurge) rollFormula = '2d8';
-    let roll = await new Roll(rollFormula).roll({async: true});
+    let roll = await new Roll(rollFormula).roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
         speaker: {'alias': name},
@@ -316,7 +316,7 @@ async function protectiveLightsAura(token, selectedAura) {
     let originActor = originToken.actor;
     let auraEffect = chris.findEffect(originActor, 'Wild Surge');
     if (!auraEffect) return;
-    let originItem = await fromUuid(auraEffect.origin);
+    let originItem = auraEffect.parent;
     if (!originItem) return;
     let effectData = {
         'name': 'Wild Surge - Protective Lights',

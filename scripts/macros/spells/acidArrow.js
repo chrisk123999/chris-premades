@@ -5,7 +5,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'acidArrow', 50);
     if (!queueSetup) return;
     workflow.isFumble = false;
-    let updatedRoll = await new Roll('-100').evaluate({async: true});
+    let updatedRoll = await new Roll('-100').evaluate({'async': true});
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }

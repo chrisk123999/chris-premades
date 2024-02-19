@@ -20,7 +20,7 @@ export async function repellingBlast({speaker, actor, token, character, item, ar
         knockBackFactor = selection / canvas.dimensions.distance;
         ray = new Ray(workflow.token.center, targetToken.center);
         newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
-        hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
+        hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
         if (hitsWall) {
             selection -= 5;
             if (selection === 0) {
@@ -45,7 +45,7 @@ export async function repellingBlast({speaker, actor, token, character, item, ar
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
     let effect = chris.findEffect(workflow.actor, 'Eldritch Invocations: Repelling Blast');
     if (effect) {
-        let originItem = await fromUuid(effect.origin);
+        let originItem = await effect.parent;
         if (originItem) await originItem.use();
     }
     queue.remove(workflow.item.uuid);

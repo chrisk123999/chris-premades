@@ -1,10 +1,10 @@
 import {chris} from '../../../helperFunctions.js';
 export async function strengthDrain({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || workflow.isFumble) return;
-    let roll = await new Roll('1d4').roll({async: true});
+    let roll = await new Roll('1d4').roll({'async': true});
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: workflow.item.name
     });
     let damage = -roll.total;

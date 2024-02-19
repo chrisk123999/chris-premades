@@ -15,7 +15,7 @@ export async function destructiveWave({speaker, actor, token, character, item, a
     }
     new Sequence().effect().atLocation(workflow.token).file(animation).scale(2.2).playbackRate(0.5).play();
     let damageFormula = workflow.damageRoll._formula.replace('none', selection);
-    let damageRoll = await new Roll(damageFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

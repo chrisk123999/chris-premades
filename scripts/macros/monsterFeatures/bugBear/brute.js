@@ -1,3 +1,4 @@
+import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 export async function brute({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.system.actionType != 'mwak') return;
@@ -8,7 +9,7 @@ export async function brute({speaker, actor, token, character, item, args, scope
     let diceNum = Number(damageFormula.substring(0,1)) + 1;
     let restOfFormula = damageFormula.substring(1);
     let newFormula = diceNum + restOfFormula;
-    let damageRoll = await new Roll(newFormula).roll({'async': true});
+    let damageRoll = await chris.damageRoll(workflow, newFormula, undefined, true);
     await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }

@@ -4,10 +4,10 @@ export async function engulfingNightmare(origin, token) {
     let turnActor = turnToken.actor;
     let originActor = origin.actor;
     if (originActor.id != turnActor.id) return;
-    let damageRoll = await new Roll('3d6[psychic]').roll({async: true});
+    let damageRoll = await new Roll('3d6[psychic]').roll({'async': true});
     damageRoll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: origin.name
     });
     await chris.applyDamage(token, damageRoll.total);

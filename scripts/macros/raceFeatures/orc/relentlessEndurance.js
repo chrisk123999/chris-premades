@@ -8,7 +8,7 @@ export async function relentlessEndurance(token, {item, workflow, ditem}) {
     let maxHP = tokenActor.system.attributes?.hp?.max;
     if (!maxHP) return;
     if (ditem.appliedDamage > (maxHP + ditem.oldHP)) return;
-    let originItem = await fromUuid(effect.origin);
+    let originItem = effect.parent;
     if (!originItem) return;
     if (originItem.system.uses.value === 0) return;
     let selection = await chris.remoteDialog(originItem.name, [['Yes', true], ['No', false]], chris.firstOwner(token.document).id, 'Use Relentless Endurance?');

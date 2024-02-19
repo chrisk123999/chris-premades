@@ -107,8 +107,8 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     if (!template) return;
     await workflow.actor.sheet.minimize();
     let interval = 2;
-	if (game.modules.get('walledtemplates')?.active && game.settings.get('walledtemplates', 'snapGrid')) {
-		interval = 1;
+	if (game.modules.get('walledtemplates')?.active) {
+        if (game.settings.get('walledtemplates', 'snapGrid')) interval = 1;
 	}
     let position = await chris.aimCrosshair(workflow.token, 60, workflow.item.img, interval, 2);
     await workflow.actor.sheet.maximize();

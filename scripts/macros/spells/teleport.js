@@ -42,7 +42,7 @@ export async function teleport({speaker, actor, token, character, item, args, sc
     let totalDamage = 0;
     while (flavor === 'Mishap') {
         if (totalDamage > 0) await warpgate.wait(100);
-        let roll = await new Roll('1d100').roll({async: true});
+        let roll = await new Roll('1d100').roll({'async': true});
         let total = roll.total;
         switch (selection) {
             case 'pc':
@@ -119,7 +119,7 @@ export async function teleport({speaker, actor, token, character, item, args, sc
         await MidiQOL.completeItemUse(feature, config, options);
     }
     if (flavor === 'Off Target') {
-        let roll = await new Roll('1d10 * 1d10').roll({async: true});
+        let roll = await new Roll('1d10 * 1d10').roll({'async': true});
         roll.toMessage({
             'rollMode': 'roll',
             'speaker': {'alias': name},
@@ -129,7 +129,7 @@ export async function teleport({speaker, actor, token, character, item, args, sc
         {
             'rollMode': CONST.DICE_ROLL_MODES.BLIND
         });
-        let roll2 = await new Roll('1d8').roll({async: true});
+        let roll2 = await new Roll('1d8').roll({'async': true});
         roll2.toMessage({
             'rollMode': 'roll',
             'speaker': {'alias': name},

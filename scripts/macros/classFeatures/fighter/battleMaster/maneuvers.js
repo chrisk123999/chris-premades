@@ -193,12 +193,12 @@ async function parry(effect, origin) {
     let diceFormula = origin.actor.system.scale['battle-master']?.['combat-superiority-die']?.formula;
     if (!diceFormula) return;
     let dexMox = origin.actor.system.abilities.dex.mod;
-    let roll = await new Roll(dexMox + ' + ' + diceFormula).roll({async: true});
+    let roll = await new Roll(dexMox + ' + ' + diceFormula).roll({'async': true});
     roll.terms[2].results[0].result = changeValue;
     roll._total = dexMox + changeValue;
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {alias: name},
+        speaker: {'alias': name},
         flavor: origin.name
     });
 }
@@ -321,14 +321,14 @@ async function sweepingAttackAttack({speaker, actor, token, character, item, arg
     if (!queueSetup) return;
     let attackRoll = workflow.item.flags['chris-premades']?.feature?.sweepingAttackRoll;
     if (!attackRoll) return;
-    let updatedRoll = await new Roll(String(attackRoll)).evaluate({async: true});
+    let updatedRoll = await chris.damageRoll(workflow, attackRoll, undefined, true);
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }
 async function tripAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let effect = chris.findEffect(workflow.actor, 'Maneuvers: Trip Attack');
     if (!effect) return;
-    if (workflow.hitTargets.size === 0) {
+    if (!workflow.hitTargets.size) {
         await refund.bind(this)({speaker, actor, token, character, item, args, scope, workflow});
         await chris.removeEffect(effect);
         return;
