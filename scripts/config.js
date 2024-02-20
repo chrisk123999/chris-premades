@@ -332,6 +332,13 @@ export function setConfig() {
                         'value': 0
                     }
                 }
+            },
+            'Lay on Hands Pool': {
+                'system': {
+                    'uses': {
+                        'prompt': false
+                    }
+                }
             }
         },
         'itemConfiguration': {
@@ -2671,6 +2678,14 @@ export function setConfig() {
                             {'value': 'greenyellow', 'html': 'Green-Yellow'},
                             {'value': 'white', 'html': 'White'}
                         ]
+                    }
+                }
+            },
+            'Chaos Bolt': {
+                'checkbox': {
+                    'alwaysbounce': {
+                        'label': 'Always Bounce?',
+                        'default': false
                     }
                 }
             }
@@ -6085,6 +6100,14 @@ export function setConfig() {
             'Twilight Shroud': {
                 'name': 'Twilight Shroud',
                 'version': '0.9.63'
+            },
+            'Lay on Hands Pool': {
+                'name': 'Lay on Hands Pool',
+                'version': '0.10.7'
+            },
+            'Chaos Bolt': {
+                'name': 'Chaos Bolt',
+                'version': '0.10.8'
             }
         }
     });

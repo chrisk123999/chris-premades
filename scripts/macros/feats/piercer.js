@@ -3,16 +3,14 @@ import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function reroll({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size === 0 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
-    let effect = chris.findEffect(workflow.actor, 'Piercer: Reroll Damage');
-    if (!effect) return;
-    let originItem = effect.parent;
+    let originItem = chris.getItem(workflow.actor, 'Piercer: Reroll Damage');
     if (!originItem) return;
     let doExtraDamage = chris.perTurnCheck(originItem, 'feat', 'piercer', false, workflow.token.id);
     if (!doExtraDamage) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerReroll', 390);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(translate.damageType('piercing'))) {
+    let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
+    if (!damageTypes.has('piercing')) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -62,8 +60,8 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     if (!workflow.isCritical || !workflow.damageRoll) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerCritical', 250);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(translate.damageType('piercing'))) {
+    let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
+    if (!damageTypes.has('piercing')) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -77,11 +75,8 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     }
     let bonusDamageFormula = '1d' + largeDice + '[' + flavor + ']';
     await chris.addToDamageRoll(workflow, bonusDamageFormula, true);
-    let effect = chris.findEffect(workflow.actor, 'Piercer: Critical Hit');
-    if (effect) {
-        let originItem = effect.parent;
-        if (originItem) await originItem.use();
-    }
+    let originItem = chris.getItem(workflow.actor, 'Piercer: Critical Hit');
+    if (originItem) await originItem.use();
     queue.remove(workflow.item.uuid);
 }
 export let piercer = {

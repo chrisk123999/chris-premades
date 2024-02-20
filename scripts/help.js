@@ -27,7 +27,8 @@ let names = {
     'times-up': 'Times Up',
     'token-attacher': 'Token Attacher',
     'visual-active-effects': 'Visual Active Effects',
-    'warpgate': 'Warpgate'
+    'warpgate': 'Warpgate',
+    'universal-animations': 'Universal Animations'
 }
 let optionalModules = [
     'ATL',
@@ -39,14 +40,14 @@ let optionalModules = [
     'dice-so-nice',
     'foundryvtt-simple-calendar',
     'fxmaster',
-    'itemacro',
     'JB2A_DnD5e',
     'jb2a_patreon',
     'quick-insert',
     'smalltime',
     'tidy5e-sheet',
     'times-up',
-    'visual-active-effects'
+    'visual-active-effects',
+    'universal-animations'
 ];
 let incompatibleModules = [
     'advancedspelleffects',
@@ -68,8 +69,11 @@ let incompatibleModules = [
     'retroactive-advantage-5e',
     'rollgroups',
     'wire'
-]
-export function troubleshoot() {
+];
+let defunctModules = [
+    'itemacro'
+];
+export async function troubleshoot() {
     let output = '';
     function addLine(text) {
         output += '\n' + text;
@@ -114,26 +118,36 @@ export function troubleshoot() {
         addLine(checkModule(value));
     });
     addLine('');
+    let defunctModulesCount = defunctModules.reduce((count, i) => {
+        if (game.modules.get(i)) return 1;
+    }, 0);
+    if (defunctModulesCount > 0) {
+        addLine('/////////////// Defunct Modules ///////////////')
+        defunctModules.forEach(id => {
+            if (game.modules.get(id)) addLine(checkModule(id));
+        });
+        addLine('');
+    }
     addLine('/////////////// Optional Modules ///////////////');
     optionalModules.forEach(id => {
         addLine(checkModule(id));
     });
     addLine('');
-    addLine('/////////////// Incompatible Modules ///////////////');
-    incompatibleModules.forEach(id => {
-        if (game.modules.get(id)) addLine(checkModule(id));
-    });
-    addLine('');
+    let incompatibleModuleCount = incompatibleModules.reduce((count, i) => {
+        if (game.modules.get(i)) return 1;
+    }, 0);
+    if (incompatibleModuleCount > 0) {
+        addLine('/////////////// Incompatible Modules ///////////////');
+        incompatibleModules.forEach(id => {
+            if (game.modules.get(id)) addLine(checkModule(id));
+        });
+        addLine('');
+    }
     addLine('/////////////// CPR Settings ///////////////');
     let cprSettings = Array.from(game.settings.settings).filter(i => i[0].includes('chris-premades') && i[1].namespace === 'chris-premades');
     cprSettings.forEach(i => {
         addLine(i[1].name + ': ' + game.settings.get('chris-premades', i[1].key));
     });
-    if (game.modules.get('itemacro')?.active) {
-        addLine('');
-        addLine('/////////////// Item Macro Settings ///////////////');
-        addLine('Character Sheet Hook: ' + game.settings.get('itemacro', 'charsheet'));
-    }
     if (game.modules.get('midi-qol')?.active) {
         addLine('');
         addLine('/////////////// Midi-Qol Settings ///////////////');
@@ -157,6 +171,7 @@ export function troubleshoot() {
         addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
+        addLine('Auto Roll Damage:' + midiSettings.autoRollDamage);
     }
     if (game.modules.get('warpgate')?.active) {
         addLine('');
@@ -174,22 +189,71 @@ export function troubleshoot() {
             addLine('Unsupported Importer: true');
         }
     }
-    try {
-        let filename = 'CPR-Troubleshoot.txt';
-        let blob = new Blob([output], {
-            'type': 'text/plain;charset=utf-8'
-        });
-        saveAs(blob, filename);
-    } catch (error) {};
+    async function troubleshooterDialog() {
+        async function save(output) {
+            try {
+                let filename = 'CPR-Troubleshoot.txt';
+                let blob = new Blob([output], {
+                    'type': 'text/plain;charset=utf-8'
+                });
+                saveAs(blob, filename);
+            } catch (error) {};
+        }
+        async function clipboard(output) {
+            try {
+                navigator.clipboard.writeText(output);
+                ui.notifications.info('Text copied to clipboard!');
+            } catch {};
+        }
+        async function discord() {
+            window.open('https://discord.gg/EhMdcMcUtU');
+        }
+        let buttons = {
+            'close': {
+                'label': 'Close'
+            },
+            'clipboard': {
+                'label':'Copy to Clipboard',
+                'callback': () => clipboard(output)
+            },
+            'save': {
+                'label': 'Save to File',
+                'callback': () => save(output)
+            },
+            'discord': {
+                'label': 'Open Discord Support Channel',
+                'callback': () => discord()
+            }
+        };
+        let content = '<textarea rows="40" cols="1000">' + output + '</textarea>';
+        class TroubleDialog extends Dialog {
+            _onClickButton(event) {
+                let id = event.currentTarget.dataset.button;
+                let button = this.data.buttons[id];
+                if (button.label === 'Close') {
+                    this.submit(button, event);
+                    return;
+                }
+                button.callback();
+            }
+        }
+        let dialog = new TroubleDialog(
+            {
+                'title': 'Troubleshooter Output',
+                'content': content,
+                'buttons': buttons
+            },
+            {
+                'height': 700,
+                'width': 1000
+            }
+        );
+        await dialog._render(true);
+    }
+    await troubleshooterDialog();
 }
 export async function fixSettings() {
     let changedSettings = [];
-    if (game.modules.get('itemacro')?.active) {
-        if (game.settings.get('itemacro', 'charsheet')) {
-            await game.settings.set('itemacro', 'charsheet', false);
-            changedSettings.push('IM-CharSheet');
-        }
-    }
     if (game.modules.get('midi-qol')?.active) {
         if (!game.settings.get('midi-qol', 'EnableWorkflow')) {
             await game.settings.set('midi-qol', 'EnableWorkflow', true);
@@ -216,22 +280,19 @@ export async function fixSettings() {
     }
     if (changedSettings.length === 0) {
         ChatMessage.create({
-            'speaker': {alias: name},
+            'speaker': {'alias': 'Chris\'s Premades'},
             'whisper': [game.user.id],
             'content': '<hr><b>Updated Settings:</b><br><hr>Nothing!'
         });
         return;
     }
     let list = '';
-    if (changedSettings.includes('IM-CharSheet')) {
-        list += '- Item Macro: Character Sheet Hook: false<br>';
-    }
     if (changedSettings.includes('MQ-EnableWorkflow')) list += '- Midi-Qol: Roll Automation Support: true<br>';
     if (changedSettings.includes('MQ-autoCEEffects')) list += '- Midi-Qol: Apply Convenient Effects: Prefer Item Effect<br>';
     if (changedSettings.includes('MQ-attackPerTarget')) list += '- Midi-Qol: Roll Seperate Attack Per Target: false<br>';
     if (changedSettings.includes('MQ-mergeCard')) list += '- Midi-Qol: Merge Card: true<br>';
     ChatMessage.create({
-        'speaker': {alias: name},
+        'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],
         'content': '<hr><b>Updated Settings:</b><br><hr>' + list
     });

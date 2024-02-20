@@ -345,7 +345,8 @@
         "CPR Feats",
         "CPR Summons",
         "CPR Actions",
-        "CPR Miscellaneous"
+        "CPR Miscellaneous",
+		"CPR Race Features"
       ],
       "folders": [
         {

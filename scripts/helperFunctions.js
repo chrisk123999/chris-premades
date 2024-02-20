@@ -339,6 +339,9 @@ export let chris = {
         }
         return types;
     },
+    'getRollsDamageTypes': function _getRollsDamageTypes(damageRolls) {
+        return new Set(damageRolls.map(i => i.options.type));
+    },
     'perTurnCheck': function _perTurnCheck(originItem, type, name, ownTurnOnly, tokenId) {
         if (!chris.inCombat()) return true;
         if (ownTurnOnly && (tokenId != game.combat.current.tokenId)) return false;
@@ -1183,6 +1186,7 @@ export let chris = {
         return Array.from(actor.allApplicableEffects());
     },
     'addToDamageRoll': async function _addToDamageRoll(workflow, bonusDamageFormula, ignoreCrit = false) {
+        bonusDamageFormula = String(bonusDamageFormula);
         if (workflow.isCritical && !ignoreCrit) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
         let bonusDamageRoll = await new CONFIG.Dice.DamageRoll(bonusDamageFormula, workflow.actor.getRollData()).evaluate();
         setProperty(bonusDamageRoll, 'options.type', bonusDamageRoll.terms[0].flavor);

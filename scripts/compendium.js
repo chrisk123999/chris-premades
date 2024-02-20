@@ -51,7 +51,7 @@ export async function additionalCompendiumPriority() {
     let startNumber = 1;
     if (gambitItems) startNumber++;
     if (miscItems) startNumber++;
-    for (let i = startNumber; inputs.length - 1 > i; i++) newSettings[packs[i - startNumber]] = isNaN(selection.inputs[i]) ? 100 : selection.inputs[i];
+    for (let i = startNumber; inputs.length > i; i++) newSettings[packs[i - startNumber]] = isNaN(selection.inputs[i]) ? 100 : selection.inputs[i];
     newSettings['CPR'] = selection.inputs[0];
     if (gambitItems && !miscItems) {
         newSettings['GPS'] = selection.inputs[1];
