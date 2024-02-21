@@ -184,7 +184,7 @@ async function userOptions() {
     await game.settings.set('chris-premades', 'Manual Rolling Players', newSettings);
 }
 async function dialogTargeting(dummyWorkflow) {
-    if (!dummyWorkflow.targets.size) return;
+    if (dummyWorkflow.targets.size) return;
     let userSettings = (game.settings.get('chris-premades', 'Manual Rolling Players'));
     if (userSettings?.[game.user.id] !== 'player') return;
     let queueSetup = await queue.setup(dummyWorkflow.item.uuid, 'dialogTargeting', 1000);
@@ -198,12 +198,12 @@ async function dialogTargeting(dummyWorkflow) {
     } else {
         let selection = await chris.selectTarget('Dialog Targeting', constants.okCancel, targets, false, 'multiple', null, false, 'Select targets for ' + dummyWorkflow.item.name, true, false);
         if (selection.buttons != true) {
-            queue.remove(workflow.item.uuid);
+            queue.remove(dummyWorkflow.item.uuid);
             return;
         }
         chris.updateTargets(selection.inputs.filter(i => i));
     }
-    queue.remove(workflow.item.uuid);
+    queue.remove(dummyWorkflow.item.uuid);
 }
 export let manualRolls = {
     'attackRoll': attackRoll,
