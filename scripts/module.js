@@ -232,6 +232,9 @@ Hooks.once('ready', async function() {
     }
     Hooks.on('createToken', addActions);
     if (game.settings.get('chris-premades', 'Display Temporary Effects')) await patchToggleEffect(true);
+    if (game.settings.get('chris-premades', 'Dialog Targeting')) {
+        Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
+    }
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

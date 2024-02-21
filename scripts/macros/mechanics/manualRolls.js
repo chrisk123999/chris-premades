@@ -194,9 +194,32 @@ async function userOptions() {
     for (let i = 0; inputs.length > i; i++) setProperty(newSettings, inputs[i].id, selection.inputs[i]);
     await game.settings.set('chris-premades', 'Manual Rolling Players', newSettings);
 }
+async function dialogTargeting(dummyWorkflow) {
+    if (dummyWorkflow.targets.size !== 0) return;
+    let userSettings = (game.settings.get('chris-premades', 'Manual Rolling Players'));
+    if (userSettings?.[game.user.id] !== 'player') return;
+    let queueSetup = await queue.setup(dummyWorkflow.item.uuid, 'dialogTargeting', 1000);
+    if (!queueSetup) return;
+    let targetType = constants.attacks.includes(dummyWorkflow.item.system.actionType) ? 'enemy' : dummyWorkflow.item.system.actionType === 'save' ? 'all' : 'ally';
+    let targets = chris.findNearby(dummyWorkflow.token, dummyWorkflow.item.system.range?.long ?? dummyWorkflow.item.system.range.value, targetType, false, false);
+    if (targets.length === 0) {
+        ui.notifications.warn('Dialog Targeting - No targets nearby player ' + dummyWorkflow.token.name);
+    } else if (targets.length === 1) {
+        chris.updateTargets(targets.map(tok => tok.id));
+    } else {
+        let selection = await chris.selectTarget('Dialog Targeting', constants.okCancel, targets, false, 'multiple', null, false, 'Select targets for ' + dummyWorkflow.item.name, true, false);
+        if (selection.buttons != true) {
+            queue.remove(workflow.item.uuid);
+            return;
+        }
+        chris.updateTargets(selection.inputs.filter(i => i));
+    }
+    queue.remove(workflow.item.uuid);
+}
 export let manualRolls = {
     'attackRoll': attackRoll,
     'damageRoll': damageRoll,
     'saveRolls': saveRoll,
-    'userOptions': userOptions
+    'userOptions': userOptions,
+    'dialogTargeting': dialogTargeting
 }

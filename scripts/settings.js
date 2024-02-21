@@ -1467,6 +1467,22 @@ export function registerSettings() {
         'onChange': value => {firearm.setup(value)}
     });
     addMenuSetting('Critical Role Firearm Support', 'Mechanics');
+    game.settings.register(moduleName, 'Dialog Targeting', {
+        'name': 'Dialog Targeting',
+        'hint': 'Overrides targeting of manual rolling players to use a dialog to select targets.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
+            } else {
+                Hooks.off('midi-qol.preTargeting', macros.manualRolls.dialogTargeting)
+            }
+        }
+    });
+    addMenuSetting('Dialog Targeting', 'Manual Rolling');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
