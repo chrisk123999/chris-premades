@@ -15,9 +15,6 @@
 - Piercer: Critical Hit
 - Compendium Priority dialog
 - Troubleshooter
-## Update Notes:
-- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
-- This is a beta version for the 3.0.2 D&D system. Do not update to this version unless unless you have all the required up to date dependency modules.
   
 # 0.10.6 Release:
 ## Bug Fixes:
