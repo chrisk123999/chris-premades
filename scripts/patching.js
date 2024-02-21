@@ -168,3 +168,22 @@ async function toggleEffect(wrapped, ...args) {
         wrapped(event);
     }
 }
+export async function patchD20Roll(enabled) {
+    if (enabled) {
+        libWrapper.register('chris-premades', 'CONFIG.Dice.D20Roll.prototype.isCritical', D20RollCritical, 'MIXED');
+        libWrapper.register('chris-premades', 'CONFIG.Dice.D20Roll.prototype.isFumble', D20RollFumble, 'MIXED');
+    } else {
+        libWrapper.unregister('chris-premades','CONFIG.Dice.D20Roll.prototype.isCritical');
+        libWrapper.unregister('chris-premades','CONFIG.Dice.D20Roll.prototype.isFumble');
+    }
+}
+function D20RollCritical(wrapped, ...args) {
+    if (this.options.fakeType === 'critical') return true;
+    if (this.options.fakeType === 'normal') return false;
+    return wrapped.bind(this)(args);
+}
+function D20RollFumble(wrapped, ...args) {
+    if (this.options.fakeType === 'fumble') return true;
+    if (this.options.fakeType === 'normal') return false;
+    return wrapped.bind(this)(args);
+}

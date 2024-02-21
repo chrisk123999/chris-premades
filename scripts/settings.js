@@ -2,7 +2,7 @@ import {macros, onHitMacro} from './macros.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
+import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
@@ -893,6 +893,7 @@ export function registerSettings() {
                 Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
                 Hooks.off('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
             }
+            patchD20Roll(value);
         }
     });
     addMenuSetting('Manual Rolls', 'Manual Rolling');

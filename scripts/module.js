@@ -15,7 +15,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {checkPackEffects, checkPassiveEffects, info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
-import {patchActiveEffectSourceName, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
+import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {queue} from './utility/queue.js';
 import {registerSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
@@ -169,6 +169,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
         Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
+        patchD20Roll(true);
     }
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
@@ -232,9 +233,7 @@ Hooks.once('ready', async function() {
     }
     Hooks.on('createToken', addActions);
     if (game.settings.get('chris-premades', 'Display Temporary Effects')) await patchToggleEffect(true);
-    if (game.settings.get('chris-premades', 'Dialog Targeting')) {
-        Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
-    }
+    if (game.settings.get('chris-premades', 'Dialog Targeting')) Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

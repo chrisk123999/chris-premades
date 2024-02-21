@@ -1,16 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
-class chrisRoll extends Roll {
-    get isCritical() {
-        if (this.options.fakeType === 'critical') return true;
-        return false;
-    }
-    get isFumble() {
-        if (this.options.fakeType === 'fumble') return true;
-        return false;
-    }
-}
 async function attackRoll(workflow) {
     if (!workflow.attackRoll) return;
     let firstOwner = warpgate.util.firstOwner(workflow.token);
@@ -49,7 +39,7 @@ async function attackRoll(workflow) {
         return;
     }
     let attackRollNumber = selection.inputs[0];
-    let attackRoll = await new chrisRoll(String(attackRollNumber), {}, {'fakeType': selection.inputs[0]}).evaluate();
+    let attackRoll = await new CONFIG.Dice.D20Roll(String(attackRollNumber), {}, {'fakeType': selection.inputs[1]}).evaluate();
     if (selection.inputs[1] === 'critical' && !workflow.actor.flags['midi-qol']?.critical?.all) {
         await workflow.actor.setFlag('midi-qol', 'critical.all', true);
         Hooks.once('midi-qol.RollComplete', async () => {
@@ -95,19 +85,18 @@ async function damageRoll(workflow) {
         queue.remove(workflow.uuid);
         return;
     }
-    let damageFormula = '';
+    let damageRolls = [];
     for (let i = 0; i < selection.inputs.length; i++) {
-        if (isNaN(selection.inputs[i])) continue;
-        if (damageFormula != '') damageFormula += ' + ';
-        let input = selection.inputs[i];
-        damageFormula += (input != '' ? input : '0') + '[' + damageTypeArray[i] + ']';
+        if (isNaN(selection.inputs[i]) || selection.inputs[i] === '') continue;
+        let damageFormula = selection.inputs[i] + '[' + damageTypeArray[i] + ']';
+        let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
+        damageRolls.push(damageRoll);
     }
-    if (damageFormula === '') {
+    if (!damageRolls.length) {
         queue.remove(workflow.uuid);
         return
     }
-    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
-    await workflow.setDamageRoll(damageRoll);
+    await workflow.setDamageRolls(damageRolls);
     queue.remove(workflow.uuid);
 }
 async function saveRoll(workflow) {
@@ -195,7 +184,7 @@ async function userOptions() {
     await game.settings.set('chris-premades', 'Manual Rolling Players', newSettings);
 }
 async function dialogTargeting(dummyWorkflow) {
-    if (dummyWorkflow.targets.size !== 0) return;
+    if (!dummyWorkflow.targets.size) return;
     let userSettings = (game.settings.get('chris-premades', 'Manual Rolling Players'));
     if (userSettings?.[game.user.id] !== 'player') return;
     let queueSetup = await queue.setup(dummyWorkflow.item.uuid, 'dialogTargeting', 1000);
