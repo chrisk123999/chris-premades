@@ -191,7 +191,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Baldur\'s Gate 3 Weapon Actions')) {
         Hooks.on('preUpdateItem', macros.bg3.addFeatures);
         Hooks.on('preDeleteItem', macros.bg3.removeFeatures);
-        Hooks.on('midi-qol.preDamageRollComplete', macros.bg3.piercingStrike.damage);
+        Hooks.on('midi-qol.DamageRollComplete', macros.bg3.piercingStrike.damage);
         Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
         Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
     }
@@ -234,6 +234,8 @@ Hooks.once('ready', async function() {
     Hooks.on('createToken', addActions);
     if (game.settings.get('chris-premades', 'Display Temporary Effects')) await patchToggleEffect(true);
     if (game.settings.get('chris-premades', 'Dialog Targeting')) Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
+    if (game.settings.get('chris-premades', 'Use Critical Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
+    if (game.settings.get('chris-premades', 'Use Fumble Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

@@ -34,7 +34,6 @@ let optionalModules = [
     'ATL',
     'about-time',
     'animated-spell-effects-cartoon',
-    'compendium-folders',
     'custom-character-sheet-sections',
     'ddb-importer',
     'dice-so-nice',
@@ -71,7 +70,8 @@ let incompatibleModules = [
     'wire'
 ];
 let defunctModules = [
-    'itemacro'
+    'itemacro',
+    'compendium-folders'
 ];
 export async function troubleshoot() {
     let output = '';

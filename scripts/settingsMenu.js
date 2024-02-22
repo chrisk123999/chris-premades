@@ -16,7 +16,9 @@ let labels = {
     'Spell-Compendium': 'Select',
     'Monster-Compendium': 'Select',
     'Racial-Trait-Compendium': 'Select',
-    'Manual-Rolling-Players': 'Configure'
+    'Manual-Rolling-Players': 'Configure',
+    'Critical-Table': 'Select',
+    'Fumble-Table': 'Select'
 }
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -313,6 +315,8 @@ export async function settingButton(id) {
         case 'Spell Compendium':
         case 'Monster Compendium':
         case 'Racial Trait Compendium':
+        case 'Critical Table':
+        case 'Fumble Table':
             await selectCompendium(id);
             break;
         case 'tour':

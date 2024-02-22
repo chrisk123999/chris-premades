@@ -674,6 +674,58 @@ export function registerSettings() {
         'default': false
     });
     addMenuSetting('Unarmed Strike Smite', 'Homebrew');
+    game.settings.register(moduleName, 'Critical Table', {
+        'name': 'Critical Roll Table',
+        'hint': 'Select a compendium of features to be used for the "Use Critical Table" setting.',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': '',
+        'select': true
+    });
+    addMenuSetting('Critical Table', 'Homebrew');
+    game.settings.register(moduleName, 'Fumble Table', {
+        'name': 'Fumble Roll Table',
+        'hint': 'Select a compendium of features to be used for the "Use Fumble Table" setting.',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': '',
+        'select': true
+    });
+    addMenuSetting('Fumble Table', 'Homebrew');
+    game.settings.register(moduleName, 'Use Critical Table', {
+        'name': 'Use Critical Roll Table',
+        'hint': 'When enabled, rolling a critical hit will roll an item from "Critical Roll Table" compendium.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': (value) => {
+            if (value) {
+                Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
+            } else {
+                Hooks.off('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
+            }
+        }
+    });
+    addMenuSetting('Use Critical Table', 'Homebrew');
+    game.settings.register(moduleName, 'Use Fumble Table', {
+        'name': 'Use Fumble Roll Table',
+        'hint': 'When enabled, rolling a fumble hit will roll an item from "Fumble Roll Table" compendium.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': (value) => {
+            if (value) {
+                Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
+            } else {
+                Hooks.off('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
+            }
+        }
+    });
+    addMenuSetting('Use Fumble Table', 'Homebrew');
     game.settings.register(moduleName, 'DMG Cleave', {
         'name': 'DMG Cleave Mechanic',
         'hint': 'Enabling this allows the automation of the cleave mechanic from the DMG workshop section via the use of Midi-Qol hooks.',
@@ -1031,13 +1083,13 @@ export function registerSettings() {
             if (value) {
                 Hooks.on('preUpdateItem', macros.bg3.addFeatures);
                 Hooks.on('preDeleteItem', macros.bg3.removeFeatures);
-                Hooks.on('midi-qol.preDamageRollComplete', macros.bg3.piercingStrike.damage);
+                Hooks.on('midi-qol.DamageRollComplete', macros.bg3.piercingStrike.damage);
                 Hooks.on('dnd5e.restCompleted', macros.bg3.rest);
                 Hooks.on('midi-qol.RollComplete', macros.bg3.healing);
             } else {
                 Hooks.off('preUpdateItem', macros.bg3.addFeatures);
                 Hooks.off('preDeleteItem', macros.bg3.removeFeatures);
-                Hooks.off('midi-qol.postDamageRoll', macros.bg3.piercingStrike.damage);
+                Hooks.off('midi-qol.DamageRollComplete', macros.bg3.piercingStrike.damage);
                 Hooks.off('dnd5e.restCompleted', macros.bg3.rest);
                 Hooks.off('midi-qol.RollComplete', macros.bg3.healing);
             }

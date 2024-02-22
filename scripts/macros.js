@@ -57,6 +57,7 @@ import {cartomancer} from './macros/feats/cartomancer.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
+import {chaosBolt} from './macros/spells/chaosBolt.js';
 import {charmAnimalsAndPlants} from './macros/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 import {charmPerson} from './macros/spells/charmPerson.js';
 import {chasme} from './macros/monsterFeatures/chasme/chasme.js';
@@ -82,6 +83,7 @@ import {controlUndead} from './macros/classFeatures/paladin/oathbreaker/controlU
 import {corpseFlower} from './macros/monsterFeatures/corpseFlower/corpseFlower.js';
 import {createPactWeapon} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
 import {crimsonRite} from './macros/classFeatures/bloodHunter/crimsonRite/crimsonRite.js';
+import {criticalFumble} from './macros/homebrew/criticalFumble/criticalFumble.js';
 import {crusher} from './macros/feats/crusher.js';
 import {crushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 import {crystalBlade} from './macros/items/crystalBlade.js';
@@ -211,6 +213,7 @@ import {javelinOfLightning} from './macros/items/javelinOfLightning.js';
 import {kobold} from './macros/monsterFeatures/kobold/kobold.js';
 import {labyrinthineRecall} from './macros/raceFeatures/minotaur/labyrinthineRecall.js';
 import {lanternOfRevealing} from './macros/items/lanternOfRevealing.js';
+import {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
 import {legionOfOne} from './macros/classFeatures/fighter/echoKnight/legionOfOne.js';
 import {leucrotta} from './macros/monsterFeatures/leucrotta/leucrotta.js';
 import {lifeTransference} from './macros/spells/lifeTransference.js';
@@ -363,8 +366,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
-import {chaosBolt} from './macros/spells/chaosBolt.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -599,6 +600,7 @@ export let macros = {
     'callTheHunt': callTheHunt,
     'cartomancer': cartomancer,
     'chainLightning': chainLightning,
+    'chaosBolt': chaosBolt,
     'charmAnimalsAndPlants': charmAnimalsAndPlants,
     'charmPerson': charmPerson,
     'chillTouch': chillTouch,
@@ -621,6 +623,7 @@ export let macros = {
     'controlUndead': controlUndead,
     'createPactWeapon': createPactWeapon,
     'crimsonRite': crimsonRite,
+    'criticalFumble': criticalFumble,
     'crusher': crusher,
     'crushingThrow': crushingThrow,
     'crystalBlade': crystalBlade,
@@ -721,6 +724,7 @@ export let macros = {
     'investmentOfTheChainMaster': investmentOfTheChainMaster,
     'javelinOfLightning': javelinOfLightning,
     'lanternOfRevealing': lanternOfRevealing,
+    'layOnHands': layOnHands,
     'legionOfOne': legionOfOne,
     'lifeTransference': lifeTransference,
     'lightningArrow': lightningArrow,
@@ -859,7 +863,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'layOnHands': layOnHands,
-    'chaosBolt': chaosBolt
+    'zoneOfTruth': zoneOfTruth
 }
