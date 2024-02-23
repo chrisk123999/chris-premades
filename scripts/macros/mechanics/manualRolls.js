@@ -196,7 +196,7 @@ async function dialogTargeting(dummyWorkflow) {
     } else if (targets.length === 1) {
         chris.updateTargets(targets.map(tok => tok.id));
     } else {
-        let selection = await chris.selectTarget('Dialog Targeting', constants.okCancel, targets, false, 'multiple', null, false, 'Select targets for ' + dummyWorkflow.item.name, true, false);
+        let selection = await chris.selectTarget('Dialog Targeting', constants.okCancel, targets, false, 'multiple', null, false, 'Select targets for ' + dummyWorkflow.item.name, dummyWorkflow.token, false);
         if (selection.buttons != true) {
             queue.remove(dummyWorkflow.item.uuid);
             return;
