@@ -40,12 +40,13 @@ import {summonEffects} from './macros/animations/summonEffects.js';
 import {actionsTab} from './integrations/tidy5eSheet.js';
 import {tours} from './tours.js';
 import {addChatButton} from './chat.js';
-import {enableMacroSidebar} from './userInterface.js';
+import {enableMacroSidebar, enableSelectTool} from './userInterface.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
     setConfig();
     if (game.settings.get('chris-premades', 'Display Sidebar Macros')) enableMacroSidebar();
+    if (game.settings.get('chris-premades', 'Select Tool')) enableSelectTool();
 });
 Hooks.once('socketlib.ready', async function() {
     socket = socketlib.registerModule('chris-premades');

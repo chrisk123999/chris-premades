@@ -1,5 +1,9 @@
 export async function checkUpdate() {
     if (game.messages.contents.find(i => i.flags?.['chris-premades']?.update)) return;
+    let lastCheck = game.settings.get('chris-premades', 'Last Update Check');
+    let oneDay = 1 * 24 * 60 * 60 * 1000;
+    if (lastCheck + oneDay > Date.now()) return;
+    game.settings.set('chris-premades', 'Last Update Check', Date.now());
     try {
         let reponse = await fetch('https://api.github.com/repos/chrisk123999/chris-premades/releases/latest');
         if (!reponse.ok) return;

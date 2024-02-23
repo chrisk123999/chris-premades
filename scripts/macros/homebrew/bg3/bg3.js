@@ -267,7 +267,7 @@ let effects = [
 ];
 async function healing(workflow) {
     if (!workflow.targets.size) return;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     if (defaultDamageType != 'healing') return;
     for (let i of Array.from(workflow.targets)) {
         for (let j of effects) {

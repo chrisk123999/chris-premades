@@ -1463,7 +1463,7 @@ export function registerSettings() {
     addMenuSetting('Twilight Shroud', 'Class Features');
     game.settings.register(moduleName, 'Display Temporary Effects', {
         'name': 'Display Temporary Effects',
-        'hint': 'When enabled temporary effects will displayed in the "Status Effects" window, allowing you to delete them from there.',
+        'hint': 'When enabled temporary effects will displayed in the "Status Effects" panel, allowing you to delete them from there.',
         'scope': 'world',
         'config': false,
         'type': Number,
@@ -1492,6 +1492,16 @@ export function registerSettings() {
         'onChange': () => debouncedReload()
     });
     addMenuSetting('Display Sidebar Macros', 'User Interface');
+    game.settings.register(moduleName, 'Select Tool', {
+        'name': 'Display Select Tool Everywhere',
+        'hint': 'When enabled, the select tool will enabled and displayed for lights, sounds, templates, and notes.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': () => debouncedReload()
+    });
+    addMenuSetting('Select Tool', 'User Interface');
 //    game.settings.register(moduleName, 'Metric Distance', {
 //        'name': 'Use Metric Distance',
 //        'hint': 'When enabled macros from this module will use metric for distance calculations.',
@@ -1501,6 +1511,14 @@ export function registerSettings() {
 //        'default': false
 //    });
 //    addMenuSetting('Metric Distance', 'General');
+    game.settings.register(moduleName, 'Last Update Check', {
+        'name': 'Last Update Check',
+        'hint': '',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': Date.now()
+    });
     game.settings.register(moduleName, 'Check For Updates', {
         'name': 'Check for Updates',
         'hint': 'Display a message when an update is available.',

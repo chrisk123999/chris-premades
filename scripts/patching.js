@@ -187,3 +187,10 @@ function D20RollFumble(wrapped, ...args) {
     if (this.options.fakeType === 'normal') return false;
     return wrapped.bind(this)(args);
 }
+function selectToolPatch(...args) {
+    Object.getPrototypeOf(AmbientLight).prototype._onDragLeftCancel.apply(this, args);
+    this.updateSource({'defer': true});
+}
+export function registerSelectToolPatch() {
+    libWrapper.register('chris-premades', 'AmbientLight.prototype._onDragLeftCancel', selectToolPatch, 'OVERRIDE');
+}

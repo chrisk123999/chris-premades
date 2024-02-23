@@ -303,7 +303,7 @@ async function sweepingAttackItem({speaker, actor, token, character, item, args,
                 'sweepingAttackRoll': workflow.attackTotal
             }
         };
-        let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+        let defaultDamageType = workflow.defaultDamageType;
         featureData.system.damage.parts = [
             [
                 '@scale.battle-master.combat-superiority-die[' + defaultDamageType + ']',

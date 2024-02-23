@@ -166,7 +166,7 @@ async function critical(workflow) {
     let feature = chris.getItem(workflow.actor, 'Hemorrhaging Critical');
     if (!feature) return;
     let damage = Math.floor(workflow.damageItem.appliedDamage / 2);
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     let effectData = {
         'label': feature.name,
         'icon': feature.img,

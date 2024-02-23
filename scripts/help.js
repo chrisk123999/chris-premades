@@ -28,7 +28,9 @@ let names = {
     'token-attacher': 'Token Attacher',
     'visual-active-effects': 'Visual Active Effects',
     'warpgate': 'Warpgate',
-    'universal-animations': 'Universal Animations'
+    'universal-animations': 'Universal Animations',
+    'gambits-premades': 'Gambit\'s Premades',
+    'midi-item-showcase-community': 'Midi Item Showcase - Community'
 }
 let optionalModules = [
     'ATL',
@@ -44,9 +46,10 @@ let optionalModules = [
     'quick-insert',
     'smalltime',
     'tidy5e-sheet',
-    'times-up',
     'visual-active-effects',
-    'universal-animations'
+    'universal-animations',
+    'gambits-premades',
+    'midi-item-showcase-community'
 ];
 let incompatibleModules = [
     'advancedspelleffects',
@@ -71,7 +74,10 @@ let incompatibleModules = [
 ];
 let defunctModules = [
     'itemacro',
-    'compendium-folders'
+    'compendium-folders',
+    'select-tool-everywhere',
+    'sidebar-macros',
+    'temp-effects-as-statuses'
 ];
 export async function troubleshoot() {
     let output = '';

@@ -18,7 +18,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
             }
         }
     } else if (creatureType === 'undead' || creatureType === 'construct') {
-        let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+        let defaultDamageType = workflow.defaultDamageType;
         newDamageRoll = '0[' + defaultDamageType + ']';
     } else {
         queue.remove(workflow.item.uuid);

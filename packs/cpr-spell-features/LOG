@@ -1,5 +1,3 @@
-2024/02/22-15:40:05.702 3edc Recovering log #950
-2024/02/22-15:40:05.703 3edc Level-0 table #952: started
-2024/02/22-15:40:05.709 3edc Level-0 table #952: 69838 bytes OK
-2024/02/22-15:40:05.720 3edc Delete type=0 #950
-2024/02/22-15:40:05.720 3edc Delete type=3 #949
+2024/02/22-22:12:27.786 2b28 Recovering log #972
+2024/02/22-22:12:27.804 2b28 Delete type=0 #972
+2024/02/22-22:12:27.804 2b28 Delete type=3 #971

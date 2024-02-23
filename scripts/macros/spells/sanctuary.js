@@ -44,7 +44,7 @@ async function hook(workflow) {
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.flags['chris-premades']?.spell?.sanctuary?.ignore) return;
     let remove = false;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     if (workflow.damageRoll && !(defaultDamageType === 'healing' || defaultDamageType === 'temphp')) {
         remove = true;
     }

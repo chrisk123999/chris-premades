@@ -147,7 +147,7 @@
         "type": "module",
         "manifest": "https://gitlab.com/tposney/times-up/raw/dndv3/package/module.json",
         "compatibility": {
-          "verified": "11.3.1",
+          "minimum": "11.3.1",
           "verified": "11.3.1"
         }
       }

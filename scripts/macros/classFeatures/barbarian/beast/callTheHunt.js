@@ -73,7 +73,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
         };
         await chris.updateEffect(effect, updates);
     }
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     let bonusDamageFormula = '1d8[' + defaultDamageType + ']';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);

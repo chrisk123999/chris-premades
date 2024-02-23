@@ -191,7 +191,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     }
     await chris.setTurnCheck(originFeature, 'feature', 'sneakAttack');
     let bonusDamageFormula = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.customFormula;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     if (!bonusDamageFormula) {
         if (workflow.actor.type === 'character') {
             let scale = workflow.actor.system.scale?.rogue?.['sneak-attack'];

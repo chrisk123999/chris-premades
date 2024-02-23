@@ -8,7 +8,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     if (targetId != targetToken.id) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'hexbladesCurse', 250);
     if (!queueSetup) return;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     let bonusDamageFormula = workflow.actor.system.attributes.prof + '[' + defaultDamageType + ']';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
@@ -27,7 +27,7 @@ async function damageApplication({speaker, actor, token, character, item, args, 
         queue.remove(workflow.item.uuid);
         return;
     }
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     let hasDI = chris.checkTrait(targetActor, 'di', defaultDamageType);
     if (hasDI) {
         queue.remove(workflow.item.uuid);

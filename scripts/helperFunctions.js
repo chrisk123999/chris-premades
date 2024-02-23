@@ -836,7 +836,7 @@ export let chris = {
             }
         );
         targetDamage.totalDamage += damageTotal;
-        let defaultDamageType = chris.getDefaultDamage(workflow.damageRolls);
+        let defaultDamageType = workflow.defaultDamageType;
         if (defaultDamageType === 'healing') {
             targetDamage.newHP += roll.total;
             targetDamage.hpDamage -= damageTotal;

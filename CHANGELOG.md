@@ -1,10 +1,15 @@
+# 0.10.11 Release:
+## Bug Fixes:
+- Manual Rolls Target Select dialog
+## Update Notes:
+- Added more user interface settings.
+- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
+- This is a beta version for the 3.0.3 D&D system. Do not update to this version unless unless you have all the required up to date dependency modules.
+  
 # 0.10.10 Release:
 ## New Content:
 - Added a Critical and Fumble table setting. With this you can specify an item compendium to be used as a roll table for criticals and fumbles.
 - Miscellaneous Features: Maximize Damage and Double Damage
-## Update Notes:
-- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
-- This is a beta version for the 3.0.3 D&D system. Do not update to this version unless unless you have all the required up to date dependency modules.
   
 # 0.10.9 Release:
 ## Bug Fixes:

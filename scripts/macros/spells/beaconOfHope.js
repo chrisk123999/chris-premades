@@ -5,7 +5,7 @@ export async function beaconOfHope(token, {item, workflow, ditem}) {
     let effect = chris.findEffect(token.actor, 'Beacon of Hope');
     if (!effect) return;
     if (!workflow.damageRoll) return;
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     if (defaultDamageType != translate.healingType('healing')) return;
     if (chris.checkTrait(token.actor, 'di', 'healing')) return;
     let newHealingTotal = 0;

@@ -22,7 +22,7 @@ async function hit(workflow) {
     let weaponData = duplicate(workflow.item.toObject());
     delete(weaponData._id);
     if (!workflow.item.flags['chris-premades']?.mechanic?.cleave?.named) weaponData.name = workflow.item.name + ': Cleave';
-    let defaultDamageType = workflow.damageRolls[0].terms[0].flavor;
+    let defaultDamageType = workflow.defaultDamageType;
     weaponData.system.damage.parts = [[leftoverDamage + '[' + defaultDamageType + ']', defaultDamageType]];
     weaponData.system.consume.amount = 0;
     weaponData.flags['chris-premades'] = {
