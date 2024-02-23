@@ -1,6 +1,6 @@
 # 0.10.11 Release:
 ## Bug Fixes:
-- Manual Rolls Target Select dialog
+- Manual Rolls Target Select Dialog
 ## Update Notes:
 - Added more user interface settings.
 - Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
