@@ -31,7 +31,7 @@ export async function balmOfTheSummerCourt({speaker, actor, token, character, it
     let max = math.min(uses, classLevels / 2);
     if (number <= max && !isNaN(number)) {
         let damageRoll = await chris.damageRoll(workflow, number + 'd6[' + translate.healingType('healing') + ']');
-        let tempDamageRoll = await chris.damageRoll(workflow, number + '[' + translate.healingType('temphp') + ']', {type: 'temphp'});
+        let tempDamageRoll = await chris.damageRoll(workflow, number + '[' + translate.healingType('temphp') + ']', {'type': 'temphp'});
         await workflow.setDamageRolls([damageRoll, tempDamageRoll]);
         await workflow.item.update({'system.uses.value': uses - number});
     } else {
