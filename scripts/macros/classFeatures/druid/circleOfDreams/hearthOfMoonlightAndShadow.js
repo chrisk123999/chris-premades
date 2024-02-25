@@ -2,22 +2,7 @@ import {chris} from '../../helperFunctions.js';
 
 async function created(template) {
     await warpgate.wait(50);
-    const originItem = await fromUuid(template.flags["midi-qol"].itemUuid);
-    let effectData = {
-        'name': originItem.name,
-        'icon': originItem.img,
-        'origin': template.uuid,
-        'duration': {
-        
-        },
-        'changes': [
-            {
-                'key': 'flags.dae.deleteUuid',
-                'mode': 5,
-                'priority': 20,
-                'value': template.uuid
-            }
-        ],
+    let effectUpdates = {
         'flags': {
             'dae': {
                 'transfer': false,
@@ -31,9 +16,14 @@ async function created(template) {
             }
         }
     }
-    
-    const originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
-    await chris.createEffect(originActor, effectData);
+
+    let originItem = await fromUuid(template.flags["midi-qol"].itemUuid);
+    let originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
+    let templateEffect = chris.findEffect(originActor, originItem.name + 'Template');
+
+    if (templateEffect) {
+        await chris.updateEffect(templateEffect, effectUpdates);
+    }
 }
 
 async function left(template, token) {
