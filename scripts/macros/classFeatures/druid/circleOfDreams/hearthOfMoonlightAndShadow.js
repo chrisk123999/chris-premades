@@ -25,10 +25,12 @@ async function item() {
 
 async function left(template, token) {
     const originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
+    const originItem = await fromUuid(template.flags["midi-qol"].itemUuid);
     if (token.actor === originActor) {
-        await template.delete()
-        let effect = chris.findEffect(token.actor, originItem.name);
-        await chris.removeEffect(effect);
+        let effect = chris.findEffect(token.actor, originItem.name + ' Template');
+        if (effect) {
+            await chris.removeEffect(effect);
+        }
     }
 }
 
