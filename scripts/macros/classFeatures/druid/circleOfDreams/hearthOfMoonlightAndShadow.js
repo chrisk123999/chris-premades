@@ -46,6 +46,8 @@ async function left(template, token) {
     const originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
     if (token.actor === originActor) {
         await template.delete()
+        let effect = chris.findEffect(token.actor, originItem.name);
+        await chris.removeEffect(effect);
     }
 }
 
