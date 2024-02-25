@@ -139,7 +139,7 @@ async function pulseItem({speaker, actor, token, character, item, args, scope, w
 }
 async function dialogue(token, actor, effect, origin) {
     let selection = await chris.dialog('Drop heated object?', [['Yes', true], ['No', false], ['Unable (Armor)', 'unable']]);
-    if (selection === true) {
+    if (selection) {
         await effect.delete();
         return;
     }

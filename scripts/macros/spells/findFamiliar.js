@@ -131,7 +131,6 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
         ],
         'flags': {
             'dae': {
-                'transfer': false,
                 'specialDuration': [
                     '1Attack'
                 ]

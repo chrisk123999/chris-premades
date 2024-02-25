@@ -184,6 +184,7 @@ import {healingLight} from './macros/classFeatures/warlock/celestial/healingLigh
 import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
+import {heroism} from './macros/spells/heroism.js';
 import {hexWarrior} from './macros/classFeatures/warlock/hexblade/hexWarrior.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
@@ -238,6 +239,7 @@ import {moteOfPotential} from './macros/classFeatures/bard/collegeOfCreation/mot
 import {mudMephit} from './macros/monsterFeatures/mudMephit/mudMephit.js';
 import {muddledMind} from './macros/classFeatures/bloodHunter/bloodCurses/muddledMind.js';
 import {mutagencraft} from './macros/classFeatures/bloodHunter/orderOfTheMutant/mutagencraft.js';
+import {naturesWrath} from './macros/classFeatures/paladin/oathOfTheAncients/naturesWrath.js';
 import {necroticShroud} from './macros/raceFeatures/aasimar/necroticShroud.js';
 import {nightwalker} from './macros/monsterFeatures/nightwalker/nightwalker.js';
 import {noConfiguration} from './macros/generic/noConfiguration.js';
@@ -346,6 +348,7 @@ import {trance} from './macros/raceFeatures/elf/trance.js';
 import {trickShots} from './macros/classFeatures/fighter/gunslinger/trickShots.js';
 import {troglodyte} from './macros/monsterFeatures/troglodyte/troglodyte.js';
 import {troll} from './macros/monsterFeatures/troll/troll.js';
+import {turnTheFaithless} from './macros/classFeatures/paladin/oathOfTheAncients/turnTheFaithless.js';
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
 import {twilightShroud} from './macros/classFeatures/cleric/twilightDomain/twilightShroud.js';
@@ -701,6 +704,7 @@ export let macros = {
     'healingSpirit': healingSpirit,
     'heartOfTheStorm': heartOfTheStorm,
     'heatMetal': heatMetal,
+    'heroism': heroism,
     'hex': hex,
     'hexWarrior': hexWarrior,
     'hexbladesCurse': hexbladesCurse,
@@ -748,6 +752,7 @@ export let macros = {
     'moteOfPotential': moteOfPotential,
     'muddledMind': muddledMind,
     'mutagencraft': mutagencraft,
+    'naturesWrath': naturesWrath,
     'necroticShroud': necroticShroud,
     'noConfiguration': noConfiguration,
     'oilOfSharpness': oilOfSharpness,
@@ -846,6 +851,7 @@ export let macros = {
     'tollTheDead': tollTheDead,
     'trance': trance,
     'trickShots': trickShots,
+    'turnTheFaithless': turnTheFaithless,
     'turnUndead': turnUndead,
     'twilightSanctuary': twilightSanctuary,
     'twilightShroud': twilightShroud,
