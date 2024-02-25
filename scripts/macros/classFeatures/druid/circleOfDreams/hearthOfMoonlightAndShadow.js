@@ -1,6 +1,6 @@
 import {chris} from '../../helperFunctions.js';
 
-async function created(template) {
+async function item() {
     await warpgate.wait(50);
     let effectUpdates = {
         'flags': {
@@ -17,12 +17,9 @@ async function created(template) {
         }
     }
 
-    let originItem = await fromUuid(template.flags["midi-qol"].itemUuid);
-    let originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
-    let templateEffect = chris.findEffect(originActor, originItem.name + 'Template');
-
+    let templateEffect = chrisPremades.helpers.findEffect(workflow.actor, workflow.item.name + ' Template');    
     if (templateEffect) {
-        await chris.updateEffect(templateEffect, effectUpdates);
+        await chrisPremades.helpers.updateEffect(templateEffect, effectUpdates);
     }
 }
 
@@ -36,6 +33,6 @@ async function left(template, token) {
 }
 
 export let hearthOfMoonlightAndShadow = {
-    'created': created,
+    'item': item,
     'left' : left,
 }
