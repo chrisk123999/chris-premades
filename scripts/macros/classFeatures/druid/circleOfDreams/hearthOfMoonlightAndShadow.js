@@ -32,14 +32,8 @@ async function created(template) {
         }
     }
     
-    let containedIds = game.modules.get("templatemacro").api.findContained(template);
     const originActor = await fromUuid(template.flags["midi-qol"].actorUuid);
-    containedIds.forEach((tokenId) =>
-        let token = canvas.scene.tokens.get(tokenId);
-        if (token.actor === originActor) {
-            await chris.createEffect(token.actor, effectData);
-        }
-    );
+    await chris.createEffect(originActor, effectData);
 }
 
 async function left(template, token) {
