@@ -140,7 +140,7 @@ export function setConfig() {
                 'Tentacle of the Deeps: Move',
                 'Tentacle of the Deeps: Attack'
             ],
-            'Bestial Soul': [
+            'Form of the Beast': [
                 'Form of the Beast: Bite',
                 'Form of the Beast: Claws',
                 'Form of the Beast: Tail',
@@ -3768,7 +3768,7 @@ export function setConfig() {
             },
             'Channel Divinity: Twilight Sanctuary': {
                 'name': 'Channel Divinity: Twilight Sanctuary',
-                'version': '0.10.6'
+                'version': '0.10.12'
             },
             'Eyes of Night': {
                 'name': 'Eyes of Night',
@@ -6108,6 +6108,18 @@ export function setConfig() {
             'Chaos Bolt': {
                 'name': 'Chaos Bolt',
                 'version': '0.10.8'
+            },
+            'Heavy Armor Master': {
+                'name': 'Heavy Armor Master',
+                'version': '0.10.12'
+            },
+            'Channel Divinity: Nature\'s Wrath': {
+                'name': 'Channel Divinity: Nature\'s Wrath',
+                'version': '0.10.12'
+            },
+            'Channel Divinity: Turn the Faithless': {
+                'name': 'Channel Divinity: Turn the Faithless',
+                'version': '0.10.12'
             }
         }
     });
