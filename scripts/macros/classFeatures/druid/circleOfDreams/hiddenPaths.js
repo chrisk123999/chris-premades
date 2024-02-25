@@ -1,5 +1,5 @@
 import {chris} from '../../helperFunctions.js';
-export async function vortexWarp({speaker, actor, token, character, item, args, scope, workflow}) {
+export async function hiddenPaths({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetToken = workflow.targets.first();
     let maxRange = targetToken.actor === workflow.actor ? 60 : 30;
     let icon = targetToken.document.texture.src;
