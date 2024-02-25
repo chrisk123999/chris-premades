@@ -6120,6 +6120,10 @@ export function setConfig() {
             'Channel Divinity: Turn the Faithless': {
                 'name': 'Channel Divinity: Turn the Faithless',
                 'version': '0.10.12'
+            },
+            'Heroism': {
+                'name': 'Heroism',
+                'version': '0.10.13'
             }
         }
     });

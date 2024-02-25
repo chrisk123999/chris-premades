@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Spiritual Weapon');
@@ -139,14 +140,14 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let attackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spiritual Weapon - Attack', false);
+    let attackFeatureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spiritual Weapon - Attack');
     if (!attackFeatureData) return;
     attackFeatureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spiritual Weapon - Attack');
     attackFeatureData.system.ability = workflow.item.system.ability;
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let scaling = Math.floor(spellLevel / 2);
-    attackFeatureData.system.damage.parts[0] = scaling + 'd8[force] + @mod';
+    setProperty(attackFeatureData, 'flags.chris-premades.spell.spiritualWeapon', {'damage': scaling + 'd8[force] + @mod', 'ability': workflow.item.system.save.scaling});
     let updates2 = {
         'embedded': {
             'Item': {
@@ -165,26 +166,45 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
 }
 async function attackEarly({speaker, actor, token, character, item, args, scope, workflow}) {
-    await workflow.item.setFlag('chris-premades', 'feature.spiritualWeapon.position', {'x': workflow.token.document.x, 'y': workflow.token.document.y});
-    await workflow.actor.setFlag('chris-premades', 'mechanic.noFlanking', true);
+    if (!workflow.targets.size) return;
     let weaponTokenUuid = workflow.actor.flags['chris-premades']?.feature?.spiritualWeapon?.tokenUuid;
     if (!weaponTokenUuid) return;
     let weaponToken = await fromUuid(weaponTokenUuid);
     if (!weaponToken) return;
-    let position = canvas.grid.getSnappedPosition(weaponToken.x, weaponToken.y);
-    workflow.token.document.x = position.x;
-    workflow.token.document.y = position.y;
-    workflow.flankingAdvantage = false; //Does not currently work.
-}
-async function attackLate({speaker, actor, token, character, item, args, scope, workflow}) { 
-    await workflow.actor.unsetFlag('chris-premades', 'mechanic.noFlanking');
-    let position = workflow.item.flags['chris-premades']?.feature?.spiritualWeapon?.position;
-    if (!position) return;
-    workflow.token.document.x = position.x;
-    workflow.token.document.y = position.y;
+    let effectData = {
+        'name': 'Spiritual Weapon Attack',
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 1
+        },
+        'changes': [
+            {
+                'key': 'flags.midi-qol.rangeOverride.attack.all',
+                'mode': 0,
+                'value': 1,
+                'priority': 20
+            }
+        ]
+    };
+    let effect1 = await chris.createEffect(workflow.actor, effectData);
+    let effect2 = await chris.createEffect(weaponToken.actor, effectData);
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spiritual Weapon - Damage');
+    if (!featureData) return;
+    delete featureData._id;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spiritual Weapon - Damage');
+    featureData.system.damage.parts[0][0] = workflow.item.flags['chris-premades'].spell.spiritualWeapon.damage;
+    let scaling = workflow.item.flags['chris-premades'].spell.spiritualWeapon.ability;
+    if (scaling != 'spell') featureData.system.ability = scaling;
+    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
+    await MidiQOL.completeItemUse(feature, config, options);
+    await chris.removeEffect(effect1);
+    await chris.removeEffect(effect2);
+    let chatMessage = await fromUuid(workflow.itemCardUuid);
+    if (chatMessage) await chatMessage.delete();
 }
 export let spiritualWeapon = {
     'item': item,
-    'attackEarly': attackEarly,
-    'attackLate': attackLate
+    'attackEarly': attackEarly
 }
