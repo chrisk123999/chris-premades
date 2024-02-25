@@ -171,6 +171,7 @@ Hooks.once('ready', async function() {
         Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
         Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
         patchD20Roll(true);
+        Hooks.on('createCombatant', macros.manualRolls.initiative);
     }
     if (game.user.isGM || game.settings.get('chris-premades', 'Item Replacer Access') || game.settings.get('chris-premades', 'Item Configuration Access')) {
         Hooks.on('getItemSheetHeaderButtons', createHeaderButton);

@@ -940,10 +940,12 @@ export function registerSettings() {
                 Hooks.on('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.on('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
                 Hooks.on('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
+                Hooks.on('createCombatant', macros.manualRolls.initiative);
             } else {
                 Hooks.off('midi-qol.preCheckHits', macros.manualRolls.attackRoll);
                 Hooks.off('midi-qol.postCheckSaves', macros.manualRolls.saveRolls);
                 Hooks.off('midi-qol.DamageRollComplete', macros.manualRolls.damageRoll);
+                Hooks.off('createCombatant', macros.manualRolls.initiative);
             }
             patchD20Roll(value);
         }

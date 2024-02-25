@@ -124,7 +124,11 @@ async function saveRoll(workflow) {
     let dc = chris.getSpellDC(workflow.item);
     await Promise.all(Object.keys(userTargets).map(async userId => {
         let tokens = userTargets[userId];
-        let inputs = tokens.map(i => ({'label': i.name, 'type': 'number', 'tokenId': i.id}));
+        let inputs = tokens.map(i => ({
+            'label': i.name + ' (1d20 + ' + i.actor.system.abilities[workflow.item.system.save.ability].save + '):',
+            'type': 'number', 'tokenId': i.id
+        }));
+        if (!inputs.length) return;
         let user = game.users.get(userId);
         let message = user.isGM ? info + '(DC: ' + dc + ')' : info;
         if (game.user.id != userId) await chris.thirdPartyReactionMessage(user, true, userId);
@@ -147,13 +151,15 @@ async function saveRoll(workflow) {
             workflow.failedSaves.delete(tokens[i]);
             workflow.saves.add(tokens[i]);
             workflow.saveDisplayData[i].saveString = ' succeeds';
-            workflow.saveDisplayData[i].saveStyle = 'color: green;'
+            workflow.saveDisplayData[i].saveSymbol = 'fa-check';
             workflow.saveDisplayData[i].rollTotal = result;
+            workflow.saveDisplayData[i].saveClass = 'hit';
         } else {
             workflow.failedSaves.add(tokens[i]);
             workflow.saveDisplayData[i].saveString = ' fails';
-            workflow.saveDisplayData[i].saveStyle = 'color: red;';
+            workflow.saveDisplayData[i].saveSymbol = 'fa-times';
             workflow.saveDisplayData[i].rollTotal = result;
+            workflow.saveDisplayData[i].saveClass = 'miss';
         }
         workflow.saveResults[i]._total = result;
     }
@@ -205,10 +211,34 @@ async function dialogTargeting(dummyWorkflow) {
     }
     queue.remove(dummyWorkflow.item.uuid);
 }
+async function initiative(combatant, options, userId) {
+    if (game.user.id != userId) return;
+    let token = game.scenes.get(combatant.sceneId).tokens.get(combatant.tokenId);
+    if (!token) return;
+    let firstOwner = warpgate.util.firstOwner(token);
+    let ignoreGM = game.settings.get('chris-premades', 'Ignore GM');
+    if (ignoreGM && firstOwner.isGM) return;
+    let rollSettings = game.settings.get('chris-premades', 'Manual Rolling Players');
+    let rollSetting = rollSettings[firstOwner.id] ?? 'default';
+    if (rollSetting != 'player') return;
+    let inputs = [
+        {
+            'label': 'Roll Total:',
+            'type': 'number'
+        }
+    ];
+    let formula = '1d20 + ' + token.actor.system.attributes.init.mod;
+    let bonus = token.actor.system.attributes.init.bonus;
+    if (bonus) formula += ' + ' + bonus;
+    let selection = await chris.remoteMenu('Initiative Roll', constants.okCancel, inputs, true, firstOwner.id, formula);
+    if (!selection.buttons || isNaN(selection.inputs[0])) return;
+    await chris.updateCombatant(combatant, {'initiative': selection.inputs[0]});
+}
 export let manualRolls = {
     'attackRoll': attackRoll,
     'damageRoll': damageRoll,
     'saveRolls': saveRoll,
     'userOptions': userOptions,
-    'dialogTargeting': dialogTargeting
+    'dialogTargeting': dialogTargeting,
+    'initiative': initiative
 }

@@ -1,6 +1,6 @@
 import {chris} from './helperFunctions.js';
-async function updateCombatant(tokenId, updates) {
-    let combatant = game.combat?.combatants?.get(tokenId);
+async function updateCombatant(uuid, updates) {
+    let combatant = await fromUuid(uuid);
     if (!combatant) return;
     await combatant.update(updates);
 }

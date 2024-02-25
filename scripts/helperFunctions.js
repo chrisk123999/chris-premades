@@ -540,7 +540,7 @@ export let chris = {
         if (game.user.isGM) {
             await combatant.update(updates);
         } else {
-            await socket.executeAsGM('updateCombatant', combatant.id, updates);
+            await socket.executeAsGM('updateCombatant', combatant.uuid, updates);
         }
     },
     'getCombatant': function _getCombatant(token) {
