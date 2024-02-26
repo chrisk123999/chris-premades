@@ -362,10 +362,8 @@ async function configureItem(item, configuration) {
                     let current = item.flags['chris-premades']?.configuration?.[key2] ?? value2.default;
                     let options = foundry.utils.duplicate(value2.values);
                     options.forEach(item => {
-                        if (item.value === current) {
-                            item.selected = true;
-                        }
-                      });
+                        if (item.value === current) item.selected = true;
+                    });
                     generatedMenu.push({
                         'label': value2.label,
                         'type': 'select',
@@ -394,6 +392,7 @@ async function configureItem(item, configuration) {
         setProperty(updates, inputKeys[i], selection.inputs[i]);
     }
     await item.update(updates);
+    if (configuration.callback) await configuration.callback(item, updates);
 }
 export function getItemName(itemName) {
     return CONFIG.chrisPremades.renamedItems[itemName] ?? itemName;

@@ -1,3 +1,5 @@
+import {firearm} from './macros/mechanics/firearm.js';
+
 export function setConfig() {
     let summonEffectOptions = [
         {'value': 'none', 'html': 'None'},
@@ -2353,7 +2355,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Palm Pistol (Exandria)': {
                 'number': {
@@ -2372,7 +2375,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Bad News (Exandria)': {
                 'number': {
@@ -2391,7 +2395,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Blunderbuss (Exandria)': {
                 'number': {
@@ -2410,7 +2415,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Musket (Exandria)': {
                 'number': {
@@ -2429,7 +2435,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Pepperbox (Exandria)': {
                 'number': {
@@ -2448,7 +2455,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Pistol (Exandria)': {
                 'number': {
@@ -2467,7 +2475,8 @@ export function setConfig() {
                             {'value': 2, 'html': 'Broken'},
                         ]
                     }
-                }
+                },
+                'callback': firearm.repairCallback
             },
             'Booming Blade': {
                 'select': {
@@ -3801,7 +3810,7 @@ export function setConfig() {
             },
             'Starry Form': {
                 'name': 'Starry Form',
-                'version': '0.7.01',
+                'version': '0.10.16',
                 'mutation': {
                     'self': 'Starry Form'
                 },
@@ -6030,7 +6039,7 @@ export function setConfig() {
             },
             'Musket (Exandria)': {
                 'name': 'Musket (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.16'
             },
             'Pepperbox (Exandria)': {
                 'name': 'Pepperbox (Exandria)',

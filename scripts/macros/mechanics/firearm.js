@@ -18,7 +18,7 @@ function setup(enabled) {
     }
 }
 async function reload({speaker, actor, token, character, item, args, scope, workflow}) {
-    let ammunition = workflow.actor.items.filter(i => i.system.consumableType === 'ammo' && i.system.quantity);
+    let ammunition = workflow.actor.items.filter(i => i.system.type?.value === 'ammo' && i.system.quantity);
     if (!ammunition.length) {
         ui.notifications.info('You have no ammunition!');
         return;
@@ -60,7 +60,7 @@ async function misfire(workflow) {
     if (!workflow.item) return;
     let baseItem = workflow.item.system.type?.baseItem ;
     if (baseItem != 'firearmCR') return;
-    let proficient = workflow.item.system.proficient || workflow.item.actor.system.traits.weaponProf.value.has(baseItem);
+    let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem);
     let misfireScore = chris.getConfiguration(workflow.item, 'misfire') ?? 1;
     if (!proficient) misfireScore += 1;
     if (workflow.attackRoll.terms[0].total > misfireScore) return;
@@ -193,6 +193,13 @@ async function critical(workflow) {
     await feature.displayCard();
     await chris.createEffect(workflow.targets.first().actor, effectData);
 }
+async function repairCallback(item, updates) {
+    let status = chris.getConfiguration(item, 'status');
+    let newName = item.name.replaceAll(' (Damaged)', '').replace(' (Broken)', '');
+    if (status === 1) newName += ' (Damaged)';
+    if (status === 2) newName += ' (Broken)';
+    if (item.name != newName) await item.update({'name': newName});
+}
 export let firearm = {
     'setup': setup,
     'reload': reload,
@@ -200,5 +207,6 @@ export let firearm = {
     'misfire': misfire,
     'repair': repair,
     'grit': grit,
-    'critical': critical
+    'critical': critical,
+    'repairCallback': repairCallback
 }
