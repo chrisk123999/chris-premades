@@ -6124,6 +6124,18 @@ export function setConfig() {
             'Heroism': {
                 'name': 'Heroism',
                 'version': '0.10.13'
+            },
+            'Balm of the Summer Court': {
+                'name': 'Balm of the Summer Court',
+                'version': '0.10.15'
+            },
+            'Hearth of Moonlight and Shadow': {
+                'name': 'Hearth of Moonlight and Shadow',
+                'version': '0.10.15'
+            },
+            'Hidden Paths': {
+                'name': 'Hidden Paths',
+                'version': '0.10.15'
             }
         }
     });

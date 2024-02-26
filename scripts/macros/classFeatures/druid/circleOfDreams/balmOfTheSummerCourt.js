@@ -1,7 +1,7 @@
-import {constants} from '../../../constants.js';
-import {chris} from '../../../helperFunctions.js';
-import {translate} from '../../../translations.js';
-import {queue} from '../../../utility/queue.js';
+import {constants} from '../../../../constants.js';
+import {chris} from '../../../../helperFunctions.js';
+import {translate} from '../../../../translations.js';
+import {queue} from '../../../../utility/queue.js';
 export async function balmOfTheSummerCourt({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size) return;
     let uses = workflow.item.system.uses.value;
@@ -13,7 +13,6 @@ export async function balmOfTheSummerCourt({speaker, actor, token, character, it
         queue.remove(workflow.item.uuid);
         return;
     }
-    let targetToken = workflow.targets.first();
     let inputs = [
         {
             'label': 'How Many Balms?:',
@@ -28,7 +27,7 @@ export async function balmOfTheSummerCourt({speaker, actor, token, character, it
     }
     let number = selection.inputs[0];
     let classLevels = workflow.actor.classes.druid?.system.levels;
-    let max = math.min(uses, classLevels / 2);
+    let max = math.min(uses, math.floor(classLevels / 2));
     if (number <= max && !isNaN(number)) {
         let damageRoll = await chris.damageRoll(workflow, number + 'd6[' + translate.healingType('healing') + ']');
         let tempDamageRoll = await chris.damageRoll(workflow, number + '[' + translate.healingType('temphp') + ']', {'type': 'temphp'});
@@ -38,6 +37,5 @@ export async function balmOfTheSummerCourt({speaker, actor, token, character, it
         ui.notifications.info('Invalid Entry!');
         await workflow.setDamageRolls([]);
     }
-
     queue.remove(workflow.item.uuid);
 }

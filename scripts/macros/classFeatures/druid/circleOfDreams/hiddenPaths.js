@@ -1,4 +1,4 @@
-import {chris} from '../../helperFunctions.js';
+import {chris} from '../../../../helperFunctions.js';
 export async function hiddenPaths({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetToken = workflow.targets.first();
     let maxRange = targetToken.actor === workflow.actor ? 60 : 30;
@@ -10,9 +10,10 @@ export async function hiddenPaths({speaker, actor, token, character, item, args,
         await workflow.actor.sheet.maximize();
         return;
     }
+    let color = chris.jb2aCheck() === 'patreon' ? 'green': 'blue';
     await new Sequence()
         .effect()
-        .file('jb2a.misty_step.01.green')
+        .file('jb2a.misty_step.01.' + color)
         .atLocation(targetToken)
         .randomRotation()
         .scaleToObject(2)
@@ -38,7 +39,7 @@ export async function hiddenPaths({speaker, actor, token, character, item, args,
     await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
     await new Sequence()
         .effect()
-        .file('jb2a.misty_step.02.green')
+        .file('jb2a.misty_step.02.' + color)
         .atLocation(targetToken)
         .randomRotation()
         .scaleToObject(2)

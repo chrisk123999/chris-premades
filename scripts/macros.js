@@ -369,6 +369,9 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
+import {hearthOfMoonlightAndShadow} from './macros/classFeatures/druid/circleOfDreams/hearthOfMoonlightAndShadow.js';
+import {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPaths.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -869,5 +872,8 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'balmOfTheSummerCourt': balmOfTheSummerCourt,
+    'hearthOfMoonlightAndShadow': hearthOfMoonlightAndShadow,
+    'hiddenPaths': hiddenPaths
 }
