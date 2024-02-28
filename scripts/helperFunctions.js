@@ -569,13 +569,13 @@ export let chris = {
         let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
         return cartoon;
     },
-    'selectDocument': async function selectDocument(title, documents, useUuids) {
+    'selectDocument': async function selectDocument(title, documents, useUuids, displayTooltips = false) {
         return await new Promise(async (resolve) => {
             let buttons = {},
                 dialog;
             for (let i of documents) {
                 buttons[i.name] = {
-                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'> ${i.name} </p>`,
+                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `> ${i.name} </p>`,
                     callback: () => {
                         if (useUuids) {
                             resolve([i.uuid]);
@@ -603,7 +603,7 @@ export let chris = {
             })
         });
     },
-    'selectDocuments': async function selectDocuments(title, documents, useUuids) {
+    'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false) {
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {'label': `Cancel`, callback: () => resolve(false)}, 'confirm': {'label': `Confirm`, callback: (html) => getDocuments(html, documents)}},
                 dialog;
@@ -619,7 +619,7 @@ export let chris = {
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
                         <label> 
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
-                            <p style='padding: 1%; text-align: center; font-size: 15px;'> ${documents[i].name}` + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
+                            <p style='padding: 1%; text-align: center; font-size: 15px;'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `>` + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
                     </div>
                 `;
