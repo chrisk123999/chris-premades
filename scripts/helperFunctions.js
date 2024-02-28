@@ -657,25 +657,17 @@ export let chris = {
             }
         });
     },
-    'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents) {
-        if (userId === game.user.id) return await chris.selectDocument(title, documents);
-        let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid));
+    'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents, displayTooltips = false) {
+        if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips);
+        let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid), displayTooltips);
         if (!uuids) return false;
-        let returns = [];
-        for (let i of uuids) {
-            returns.push(await fromUuid(i));
-        }
-        return returns;
+        return await Promise.all(uuids.map(async i => await fromUuid(i)));
     },
-    'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents) {
-        if (userId === game.user.id) return await chris.selectDocuments(title, documents);
-        let uuids = await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents.map(i => i.uuid));
+    'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents, displayTooltips = false) {
+        if (userId === game.user.id) return await chris.selectDocuments(title, documents, false, displayTooltips);
+        let uuids = await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents.map(i => i.uuid), displayTooltips);
         if (!uuids) return false;
-        let returns = [];
-        for (let i of uuids) {
-            returns.push(await fromUuid(i));
-        }
-        return returns;
+        return await Promise.all(uuids.map(async i => await fromUuid(i)));
     },
     'getItem': function _getItem(actor, name) {
         return actor.items.find(i => i.flags['chris-premades']?.info?.name === name);

@@ -35,7 +35,7 @@ async function selectAndUse(workflow, type, style) {
     } else {
         let gmId = chris.lastGM();
         await chris.gmDialogMessage();
-        selection = await chris.remoteDocumentDialog(gmId, type + ' Roll', table);
+        selection = await chris.remoteDocumentDialog(gmId, type + ' Roll', table, true);
         await chris.clearGMDialogMessage();
     }
     if (!selection) return;

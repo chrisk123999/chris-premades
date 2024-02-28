@@ -2,19 +2,13 @@ import {chris} from '../helperFunctions.js';
 export async function remoteDialog(title, options, content) {
     return await chris.dialog(title, options, content);
 }
-export async function remoteDocumentDialog(title, uuids) {
-    let documents = [];
-    for (let i of uuids) {
-        documents.push(await fromUuid(i));
-    }
-    return await chris.selectDocument(title, documents, true);
+export async function remoteDocumentDialog(title, uuids, displayTooltips) {
+    let documents = await Promise.all(uuids.map(async i => await fromUuid(i)));
+    return await chris.selectDocument(title, documents, true, displayTooltips);
 }
-export async function remoteDocumentsDialog(title, uuids) {
-    let documents = [];
-    for (let i of uuids) {
-        documents.push(await fromUuid(i));
-    }
-    return await chris.selectDocuments(title, documents, true);
+export async function remoteDocumentsDialog(title, uuids, displayTooltips) {
+    let documents = await Promise.all(uuids.map(async i => await fromUuid(i)));
+    return await chris.selectDocuments(title, documents, true, displayTooltips);
 }
 export async function remoteAimCrosshair(tokenUuid, maxRange, icon, interval, size) {
     let token = await fromUuid(tokenUuid);

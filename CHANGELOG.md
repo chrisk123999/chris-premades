@@ -1,3 +1,7 @@
+# 0.10.19 Release:
+## Bug Fixes:
+- Remote Dialogs
+  
 # 0.10.18 Release:
 ## Bug Fixes:
 - Lightning Arrow
