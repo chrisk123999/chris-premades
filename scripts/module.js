@@ -17,7 +17,7 @@ import {macros, onHitMacro} from './macros.js';
 import {npcRandomizer} from './utility/npcRandomizer.js';
 import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {queue} from './utility/queue.js';
-import {registerSettings} from './settings.js';
+import {registerSettings, setPreviousSettings} from './settings.js';
 import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {rest} from './utility/rest.js';
@@ -238,6 +238,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Dialog Targeting')) Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
     if (game.settings.get('chris-premades', 'Use Critical Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
     if (game.settings.get('chris-premades', 'Use Fumble Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
+    setPreviousSettings();
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

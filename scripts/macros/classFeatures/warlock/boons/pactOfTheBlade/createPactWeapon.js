@@ -57,7 +57,6 @@ async function create({speaker, actor, token, character, item, args, scope, work
         ui.notifications.warn('Personal Item Compendium is missing the required weapons for this feature!');
         return;
     }
-    console.log(documents);
     let selection = await chris.selectDocument('Select a Pact Weapon', documents, false);
     if (!selection) return;
     selection[0].name += ' (Pact Weapon)';

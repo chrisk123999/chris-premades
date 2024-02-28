@@ -1,3 +1,9 @@
+# 0.10.18 Release:
+## Bug Fixes:
+- Lightning Arrow
+## Update Notes:
+- Added select option to the Critical and Fumble roll table setting.
+  
 # 0.10.17 Release:
 ## Bug Fixes:
 - Metamagic

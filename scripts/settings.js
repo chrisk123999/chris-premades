@@ -24,6 +24,13 @@ import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
+let previousSettings = {};
+export async function setPreviousSettings() {
+    previousSettings = {
+        'Use Critical Table': game.settings.get('chris-premades', 'Use Critical Table'),
+        'Use Fumble Table': game.settings.get('chris-premades', 'Use Fumble Table')
+    }
+}
 export function registerSettings() {
     game.settings.register(moduleName, 'Automation Verification', {
         'name': 'Automation Verification',
@@ -696,33 +703,47 @@ export function registerSettings() {
     addMenuSetting('Fumble Table', 'Homebrew');
     game.settings.register(moduleName, 'Use Critical Table', {
         'name': 'Use Critical Roll Table',
-        'hint': 'When enabled, rolling a critical hit will roll an item from "Critical Roll Table" compendium.',
+        'hint': 'When enabled, rolling a critical hit will roll or select an item from "Critical Roll Table" compendium.',
         'scope': 'world',
         'config': false,
-        'type': Boolean,
-        'default': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Roll Table',
+            2: 'Select Item (Player)',
+            3: 'Select Item (GM)'
+        },
         'onChange': (value) => {
-            if (value) {
+            if (!previousSettings['Use Critical Table'] && value) {
                 Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
-            } else {
+            } else if (previousSettings['Use Critical Table'] && !value) {
                 Hooks.off('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
             }
+            previousSettings['Use Critical Table'] = value;
         }
     });
     addMenuSetting('Use Critical Table', 'Homebrew');
     game.settings.register(moduleName, 'Use Fumble Table', {
         'name': 'Use Fumble Roll Table',
-        'hint': 'When enabled, rolling a fumble hit will roll an item from "Fumble Roll Table" compendium.',
+        'hint': 'When enabled, rolling a fumble hit will roll or select an item from "Fumble Roll Table" compendium.',
         'scope': 'world',
         'config': false,
-        'type': Boolean,
-        'default': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Disabled',
+            1: 'Roll Table',
+            2: 'Select Item (Player)',
+            3: 'Select Item (GM)'
+        },
         'onChange': (value) => {
-            if (value) {
+            if (!previousSettings['Use Fumble Table'] && value) {
                 Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
-            } else {
+            } else if (previousSettings['Use Fumble Table'] && !value) {
                 Hooks.off('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
             }
+            previousSettings['Use Fumble Table'] = value;
         }
     });
     addMenuSetting('Use Fumble Table', 'Homebrew');
