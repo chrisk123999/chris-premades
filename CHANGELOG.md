@@ -1,11 +1,15 @@
+# 0.10.17 Release:
+## Bug Fixes:
+- Metamagic
+## Update Notes:
+- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
+- Do not update to this version unless unless you have all the required up to date dependency modules.
+  
 # 0.10.16 Release:
 ## Bug Fixes:
 - Musket (Exandria)
 - Firearm Reload
 - Starry Form
-## Update Notes:
-- Many macros were adjusted for this update. There may be bugs, please report them on my Github page or Discord server.
-- This is a beta version for the 3.0.3 D&D system. Do not update to this version unless unless you have all the required up to date dependency modules.
   
 # 0.10.15 Release:
 ## New Content:

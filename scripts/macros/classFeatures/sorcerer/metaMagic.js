@@ -3,13 +3,11 @@ import {chris} from '../../../helperFunctions.js';
 import {queue} from '../../../utility/queue.js';
 async function carefulSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
     if (sorcPointsValue < 1) return;
     if (!sorcPointsValue) {
@@ -62,13 +60,11 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
 }
 async function empoweredSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.hitTargets.size === 0 ||  workflow.item.type != 'spell') return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
     if (!sorcPointsValue) return;
     let max = workflow.actor.system.abilities.cha.mod;
@@ -168,7 +164,7 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
         if (!selection.inputs[i]) continue;
         let currentDie = lowest[i];
         let damageFormula = '1d' + currentDie.faces + currentDie.modifiers;
-        let damageRoll = await chris.damageRoll(damageFormula);
+        let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
         let messageData = {
             'speaker': ChatMessage.getSpeaker(workflow.actor), 
             'flavor': 'Rerolling: ' + currentDie.result, 
@@ -184,13 +180,11 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
 }
 async function heightenedSpell({speaker, actor, token, character, item, args, scope, workflow}){
     if (workflow.targets.size === 0 ||  workflow.item.type != 'spell' || !workflow.hasSave) return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 3) {
         ui.notifications.info('No Sorcery Points Available!');
@@ -243,13 +237,11 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
         queue.remove(workflow.item.uuid);
     }
     if (workflow.targets.size === 0 || workflow.targets.size === workflow.hitTargets.size || workflow.item.flags['chris-premades']?.seekingSpell || workflow.item.type != 'spell') return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (sorcPointsValue < 2) {
         ui.notifications.info('No Sorcery Points Available!');
@@ -283,13 +275,11 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
 async function transmutedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size === 0) return;
     if (workflow.item.type != 'spell') return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system?.uses?.value;
     if (!sorcPointsValue) {
         ui.notifications.info('No Sorcery Points Available!');
@@ -336,13 +326,11 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     if (workflow.item.type != 'spell' || workflow.item.system.range.units === 'self' || workflow.item.flags['chris-premades']?.metaMagic) return;
     let spellLevel = workflow.castData.castLevel;
     if (spellLevel === undefined) return;
-    let effect = chris.findEffect(workflow.actor, 'Sorcery Points');
-    if (!effect) {
-        ui.notifications.info('Sorcery Points Item Effect Not Found!');
+    let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
+    if (!sorcPointsItem) {
+        ui.notifications.info('Sorcery Points Item Not Found!');
         return;
     }
-    let sorcPointsItem = await fromUuid(effect.origin);
-    if (!sorcPointsItem) return;
     let sorcPointsValue = sorcPointsItem.system.uses.value;
     if (!sorcPointsValue) {
         ui.notifications.info('No Sorcery Points Available!');
