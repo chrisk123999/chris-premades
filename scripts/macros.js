@@ -372,6 +372,7 @@ import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
 import {hearthOfMoonlightAndShadow} from './macros/classFeatures/druid/circleOfDreams/hearthOfMoonlightAndShadow.js';
 import {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPaths.js';
+import {maximiliansEarthenGrasp} from './macros/spells/maximiliansEarthenGrasp.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -875,5 +876,6 @@ export let macros = {
     'zoneOfTruth': zoneOfTruth,
     'balmOfTheSummerCourt': balmOfTheSummerCourt,
     'hearthOfMoonlightAndShadow': hearthOfMoonlightAndShadow,
-    'hiddenPaths': hiddenPaths
+    'hiddenPaths': hiddenPaths,
+    'maximiliansEarthenGrasp': maximiliansEarthenGrasp
 }

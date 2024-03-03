@@ -341,6 +341,17 @@ export function setConfig() {
                         'prompt': false
                     }
                 }
+            },
+            'Javelin of Lightning': {
+                'system': {
+                    'uses': {
+                        'value': 1,
+                        'max': 1,
+                        'per': 'dawn',
+                        'recovery': '',
+                        'prompt': false
+                    }
+                }
             }
         },
         'itemConfiguration': {
@@ -2697,12 +2708,31 @@ export function setConfig() {
                         'default': false
                     }
                 }
+            },
+            'Maximilian\'s Earthen Grasp': {
+                'text': {
+                    'avatar': {
+                        'label': 'Custom Avatar:',
+                        'default': ''
+                    },
+                    'token': {
+                        'label': 'Custom Token:',
+                        'default': ''
+                    }
+                },
+                'select': {
+                    'animation': {
+                        'label': 'Animation:',
+                        'default': 'earth',
+                        'values': summonEffectOptions
+                    }
+                }
             }
         },
         'automations': {
             'Armor of Agathys': {
                 'name': 'Armor of Agathys',
-                'version': '0.7.45',
+                'version': '0.10.20',
                 'settings': [
                     'On Hit'
                 ],
@@ -2746,7 +2776,7 @@ export function setConfig() {
             },
             'Blade Ward': {
                 'name': 'Blade Ward',
-                'version': '0.7.01'
+                'version': '0.10.20'
             },
             'Blight': {
                 'name': 'Blight',

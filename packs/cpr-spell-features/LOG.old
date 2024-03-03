@@ -1,3 +1,5 @@
-2024/02/26-14:00:52.934 2ccc Recovering log #1021
-2024/02/26-14:00:52.948 2ccc Delete type=0 #1021
-2024/02/26-14:00:52.948 2ccc Delete type=3 #1019
+2024/03/03-02:07:50.380 24ec Recovering log #1065
+2024/03/03-02:07:50.380 24ec Level-0 table #1067: started
+2024/03/03-02:07:50.391 24ec Level-0 table #1067: 3610 bytes OK
+2024/03/03-02:07:50.406 24ec Delete type=0 #1065
+2024/03/03-02:07:50.406 24ec Delete type=3 #1063

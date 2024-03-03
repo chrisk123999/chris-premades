@@ -102,7 +102,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "Bigby\'s Hand");'
+                    'script': 'await warpgate.revert(token.document, "Bigby\'s Hand"); ' + currentScript
                 }
             },
             'chris-premades': {

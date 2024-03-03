@@ -1,3 +1,9 @@
+# 0.10.20 Release:
+## Bug Fixes:
+- Spiritual Weapon
+- Blade Ward
+- Armor of Agathys
+  
 # 0.10.19 Release:
 ## Bug Fixes:
 - Remote Dialogs

@@ -1,5 +1,6 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
+import {translate} from '../../translations.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let sourceActor = game.actors.getName('CPR - Spiritual Weapon');
     if (!sourceActor) return;
@@ -147,7 +148,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let scaling = Math.floor(spellLevel / 2);
-    setProperty(attackFeatureData, 'flags.chris-premades.spell.spiritualWeapon', {'damage': scaling + 'd8[force] + @mod', 'ability': workflow.item.system.save.scaling});
+    attackFeatureData.system.damage.parts[0][0] = scaling + 'd8[' + translate.damageType('force') + '] + @mod';
     let updates2 = {
         'embedded': {
             'Item': {
@@ -185,26 +186,32 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
                 'value': 1,
                 'priority': 20
             }
-        ]
+        ],
+        'flags': {
+            'chris-premades': {
+                'effect': {
+                    'noAnimation': true
+                }
+            }
+        }
     };
-    let effect1 = await chris.createEffect(workflow.actor, effectData);
-    let effect2 = await chris.createEffect(weaponToken.actor, effectData);
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Spiritual Weapon - Damage');
-    if (!featureData) return;
-    delete featureData._id;
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Spiritual Weapon - Damage');
-    featureData.system.damage.parts[0][0] = workflow.item.flags['chris-premades'].spell.spiritualWeapon.damage;
-    let scaling = workflow.item.flags['chris-premades'].spell.spiritualWeapon.ability;
-    if (scaling != 'spell') featureData.system.ability = scaling;
-    let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
-    let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
-    await MidiQOL.completeItemUse(feature, config, options);
-    await chris.removeEffect(effect1);
-    await chris.removeEffect(effect2);
-    let chatMessage = await fromUuid(workflow.itemCardUuid);
-    if (chatMessage) await chatMessage.delete();
+    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(weaponToken.actor, effectData);
+}
+async function attackLate({speaker, actor, token, character, item, args, scope, workflow}) {
+    let weaponTokenUuid = workflow.actor.flags['chris-premades']?.feature?.spiritualWeapon?.tokenUuid;
+    if (!weaponTokenUuid) return;
+    let weaponToken = await fromUuid(weaponTokenUuid);
+    if (!weaponToken) return;
+    let effect1 = chris.findEffect(workflow.actor, 'Spiritual Weapon Attack');
+    console.log(effect1);
+    let effect2 = chris.findEffect(weaponToken.actor, 'Spiritual Weapon Attack');
+    console.log(effect2);
+    if (effect1) await chris.removeEffect(effect1);
+    if (effect2) await chris.removeEffect(effect2);
 }
 export let spiritualWeapon = {
     'item': item,
-    'attackEarly': attackEarly
+    'attackEarly': attackEarly,
+    'attackLate': attackLate
 }

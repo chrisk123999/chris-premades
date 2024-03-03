@@ -177,7 +177,7 @@ export async function troubleshoot() {
         addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
-        addLine('Auto Roll Damage:' + midiSettings.autoRollDamage);
+        addLine('Auto Roll Damage: ' + midiSettings.autoRollDamage);
     }
     if (game.modules.get('warpgate')?.active) {
         addLine('');
