@@ -2,7 +2,7 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 import {constants} from '../../../../constants.js';
 async function damage(targetToken, {workflow, ditem}) {
-    if (ditem.newHP >= ditem.oldHP) return;
+    if (ditem.newHP >= ditem.oldHP || !ditem.wasHit) return;
     async function check(target) {
         let effect = chris.findEffect(target.actor, 'Arcane Ward');
         if (!effect) return;

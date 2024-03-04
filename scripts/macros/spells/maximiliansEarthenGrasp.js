@@ -86,6 +86,7 @@ async function graspEarly({speaker, actor, token, character, item, args, scope, 
         let effect = await fromUuid(lastTargetUuid);
         if (effect) await chris.removeEffect(effect);
         await workflow.item.setFlag('chris-premades', 'spell.maximiliansEarthenGrasp.lastTargetUuid', null);
+        await warpgate.revert(workflow.token.document, 'Maximilian\'s Earthen Grasp - Crush');
     }
     let summonUuid = workflow.item.flags['chris-premades']?.spell?.maximiliansEarthenGrasp?.summonUuid;
     if (!summonUuid) return;
@@ -137,10 +138,33 @@ async function graspLate({speaker, actor, token, character, item, args, scope, w
     }
     await chris.updateEffect(effect, updates);
     await workflow.item.setFlag('chris-premades', 'spell.maximiliansEarthenGrasp.lastTargetUuid', effect.uuid);
-    
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Maximilian\'s Earthen Grasp - Crush');
+    if (!featureData) return;
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Maximilian\'s Earthen Grasp - Crush');
+    featureData.system.save.dc = chris.getSpellDC(workflow.item);
+    setProperty(featureData, 'flags.chris-premades.spell.maximiliansEarthenGrasp.targetUuid', targetToken.document.uuid);
+    let updates2 = {
+        'embedded': {
+            'Item': {
+                [featureData.name]: featureData
+            }
+        }
+    }
+    let options = {
+        'permanent': false,
+        'name': 'Maximilian\'s Earthen Grasp - Crush',
+        'description': 'Maximilian\'s Earthen Grasp - Crush'
+    }
+    await warpgate.mutate(workflow.token.document, updates2, {}, options);
 }
 async function crush({speaker, actor, token, character, item, args, scope, workflow}) {
-
+    let targetTokenUuid = workflow.item.flags['chris-premades']?.spell?.maximiliansEarthenGrasp?.targetUuid;
+    let targets = [];
+    if (targetTokenUuid) {
+        let targetToken = await fromUuid(targetTokenUuid);
+        if (targetToken) targets.push(targetToken.id);
+    }
+    chris.updateTargets(targets);
 }
 async function end(token) {
     let feature = token.actor.items.getName('Maximilian\'s Earthen Grasp - Grasp');
@@ -151,6 +175,7 @@ async function end(token) {
             if (targetEffect) await chris.removeEffect(targetEffect);
         }
     }
+    await warpgate.revert(token.document, 'Maximilian\'s Earthen Grasp - Crush');
     await warpgate.revert(token.document, 'Maximilian\'s Earthen Grasp');
 }
 export let maximiliansEarthenGrasp = {

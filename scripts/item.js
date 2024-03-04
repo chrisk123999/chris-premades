@@ -328,6 +328,12 @@ export async function updateItem(itemDocument) {
     ui.notifications.info('Item updated!');
 }
 async function configureItem(item, configuration) {
+    function browseFiles(event) {
+        async function updateText(path) {
+            event.target.value = path;
+        }
+        new FilePicker({'type': 'image', callback: updateText}).render();
+    }
     function dialogRender(html) {
         let ths = html[0].getElementsByTagName('th');
         for (let t of ths) {
@@ -340,15 +346,21 @@ async function configureItem(item, configuration) {
             t.style.textAlign = 'right';
             t.style.paddingRight = '5px';
         }
+        if (game.permissions.FILES_BROWSE.includes(game.user.role) || game.user.isGM) {
+            let inputs = html[0].getElementsByTagName('input');
+            for (let i of files) inputs[i].addEventListener('click', browseFiles);
+        }
     }
     let generatedMenu = [];
     let inputKeys = [];
+    let files = [];
     for (let [key, value] of Object.entries(configuration)) {
         switch (key) {
             case 'checkbox':
             case 'text':
             case 'number':
                 for (let [key2, value2] of Object.entries(value)) {
+                    if (value2.file) files.push(generatedMenu.length);
                     generatedMenu.push({
                         'label': value2.label,
                         'type': key,

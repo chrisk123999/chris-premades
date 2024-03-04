@@ -1,3 +1,12 @@
+# 0.10.21 Release:
+## New Content:
+- Spell:  Maximilian's Earthen Grasp
+## Bug Fixes:
+- Arcane Ward
+- Thunderous Smite
+## Update Notes:
+- Added file browser to relevent item configuration settings.
+  
 # 0.10.20 Release:
 ## Bug Fixes:
 - Spiritual Weapon

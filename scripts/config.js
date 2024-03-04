@@ -388,11 +388,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -404,11 +406,13 @@ export function setConfig() {
                     },
                     'token-beholderkin': {
                         'label': 'Beholderkin Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-beholderkin': {
                         'label': 'Beholderkin Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-slaad': {
                         'label': 'Slaad Custom Name:',
@@ -416,11 +420,13 @@ export function setConfig() {
                     },
                     'token-slaad': {
                         'label': 'Slaad Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-slaad': {
                         'label': 'Slaad Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-star-spawn': {
                         'label': 'Star Spawn Custom Name:',
@@ -428,11 +434,13 @@ export function setConfig() {
                     },
                     'token-star-spawn': {
                         'label': 'Star Spawn Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-star-spawn': {
                         'label': 'Star Spawn Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -461,11 +469,13 @@ export function setConfig() {
                     },
                     'token-air': {
                         'label': 'Air Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-air': {
                         'label': 'Air Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-land': {
                         'label': 'Land Custom Name:',
@@ -473,11 +483,13 @@ export function setConfig() {
                     },
                     'token-land': {
                         'label': 'Land Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-land': {
                         'label': 'Land Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-water': {
                         'label': 'Water Custom Name:',
@@ -485,11 +497,13 @@ export function setConfig() {
                     },
                     'token-water': {
                         'label': 'Water Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-water': {
                         'label': 'Water Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -518,11 +532,13 @@ export function setConfig() {
                     },
                     'token-avenger': {
                         'label': 'Avenger Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-avenger': {
                         'label': 'Avenger Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-defender': {
                         'label': 'Defender Custom Name:',
@@ -530,11 +546,13 @@ export function setConfig() {
                     },
                     'token-defender': {
                         'label': 'Defender Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-defender': {
                         'label': 'Defender Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -558,11 +576,13 @@ export function setConfig() {
                     },
                     'token-clay': {
                         'label': 'Clay Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-clay': {
                         'label': 'Clay Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-metal': {
                         'label': 'Metal Custom Name:',
@@ -570,11 +590,13 @@ export function setConfig() {
                     },
                     'token-metal': {
                         'label': 'Metal Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-metal': {
                         'label': 'Metal Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-stone': {
                         'label': 'Stone Custom Name:',
@@ -582,11 +604,13 @@ export function setConfig() {
                     },
                     'token-stone': {
                         'label': 'Stone Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-stone': {
                         'label': 'Stone Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -615,11 +639,13 @@ export function setConfig() {
                     },
                     'token-chromatic': {
                         'label': 'Chromatic Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-chromatic': {
                         'label': 'Chromatic Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-metallic': {
                         'label': 'Metallic Custom Name:',
@@ -627,11 +653,13 @@ export function setConfig() {
                     },
                     'token-metallic': {
                         'label': 'Metallic Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-metallic': {
                         'label': 'Metallic Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-gem': {
                         'label': 'Gem Custom Name:',
@@ -639,11 +667,13 @@ export function setConfig() {
                     },
                     'token-gem': {
                         'label': 'Gem Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-gem': {
                         'label': 'Gem Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -672,11 +702,13 @@ export function setConfig() {
                     },
                     'token-air': {
                         'label': 'Air Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-air': {
                         'label': 'Air Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-earth': {
                         'label': 'Earth Custom Name:',
@@ -684,11 +716,13 @@ export function setConfig() {
                     },
                     'token-earth': {
                         'label': 'Earth Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-earth': {
                         'label': 'Earth Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-fire': {
                         'label': 'Fire Custom Name:',
@@ -696,11 +730,13 @@ export function setConfig() {
                     },
                     'token-fire': {
                         'label': 'Fire Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-fire': {
                         'label': 'Fire Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-water': {
                         'label': 'Water Custom Name:',
@@ -708,11 +744,13 @@ export function setConfig() {
                     },
                     'token-water': {
                         'label': 'Water Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-water': {
                         'label': 'Water Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -746,11 +784,13 @@ export function setConfig() {
                     },
                     'token-fuming': {
                         'label': 'Fuming Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-fuming': {
                         'label': 'Fuming Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-mirthful': {
                         'label': 'Mirthful Custom Name:',
@@ -758,11 +798,13 @@ export function setConfig() {
                     },
                     'token-mirthful': {
                         'label': 'Mirthful Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-mirthful': {
                         'label': 'Mirthful Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-tricksy': {
                         'label': 'Tricksy Custom Name:',
@@ -770,11 +812,13 @@ export function setConfig() {
                     },
                     'token-tricksy': {
                         'label': 'Tricksy Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-tricksy': {
                         'label': 'Tricksy Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -803,11 +847,13 @@ export function setConfig() {
                     },
                     'token-demon': {
                         'label': 'Demon Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-demon': {
                         'label': 'Demon Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-devil': {
                         'label': 'Devil Custom Name:',
@@ -815,11 +861,13 @@ export function setConfig() {
                     },
                     'token-devil': {
                         'label': 'Devil Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-devil': {
                         'label': 'Devil Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-yugoloth': {
                         'label': 'Yugoloth Custom Name:',
@@ -827,11 +875,13 @@ export function setConfig() {
                     },
                     'token-yugoloth': {
                         'label': 'Yugoloth Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-yugoloth': {
                         'label': 'Yugoloth Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -860,11 +910,13 @@ export function setConfig() {
                     },
                     'token-fury': {
                         'label': 'Fury Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-fury': {
                         'label': 'Fury Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-despair': {
                         'label': 'Despair Custom Name:',
@@ -872,11 +924,13 @@ export function setConfig() {
                     },
                     'token-despair': {
                         'label': 'Despair Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-despair': {
                         'label': 'Despair Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-fear': {
                         'label': 'Fear Custom Name:',
@@ -884,11 +938,13 @@ export function setConfig() {
                     },
                     'token-fear': {
                         'label': 'Fear Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-fear': {
                         'label': 'Fear Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -917,11 +973,13 @@ export function setConfig() {
                     },
                     'token-ghostly': {
                         'label': 'Ghostly Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-ghostly': {
                         'label': 'Ghostly Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-putrid': {
                         'label': 'Putrid Custom Name:',
@@ -929,11 +987,13 @@ export function setConfig() {
                     },
                     'token-putrid': {
                         'label': 'Putrid Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-putrid': {
                         'label': 'Putrid Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-skeletal': {
                         'label': 'Skeletal Custom Name:',
@@ -941,11 +1001,13 @@ export function setConfig() {
                     },
                     'token-skeletal': {
                         'label': 'Skeletal Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-skeletal': {
                         'label': 'Skeletal Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -974,11 +1036,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -997,11 +1061,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1020,11 +1086,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1043,11 +1111,13 @@ export function setConfig() {
                     },
                     'token-acid': {
                         'label': 'Acid Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-acid': {
                         'label': 'Acid Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-cold': {
                         'label': 'Cold Custom Name:',
@@ -1055,11 +1125,13 @@ export function setConfig() {
                     },
                     'token-cold': {
                         'label': 'Cold Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-cold': {
                         'label': 'Cold Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-fire': {
                         'label': 'Fire Custom Name:',
@@ -1067,11 +1139,13 @@ export function setConfig() {
                     },
                     'token-fire': {
                         'label': 'Fire Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-fire': {
                         'label': 'Fire Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-lightning': {
                         'label': 'Lightning Custom Name:',
@@ -1079,11 +1153,13 @@ export function setConfig() {
                     },
                     'token-lightning': {
                         'label': 'Lightning Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-lightning': {
                         'label': 'Lightning Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-poison': {
                         'label': 'Poison Custom Name:',
@@ -1091,11 +1167,13 @@ export function setConfig() {
                     },
                     'token-poison': {
                         'label': 'Poison Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-poison': {
                         'label': 'Poison Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1134,11 +1212,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1157,11 +1237,13 @@ export function setConfig() {
                     },
                     'token-land': {
                         'label': 'Land Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-land': {
                         'label': 'Land Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-sea': {
                         'label': 'Sea Custom Name:',
@@ -1169,11 +1251,13 @@ export function setConfig() {
                     },
                     'token-sea': {
                         'label': 'Sea Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-sea': {
                         'label': 'Sea Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'name-sky': {
                         'label': 'Sky Custom Name:',
@@ -1181,11 +1265,13 @@ export function setConfig() {
                     },
                     'token-sky': {
                         'label': 'Sky Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-sky': {
                         'label': 'Sky Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1214,11 +1300,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1230,11 +1318,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1263,11 +1353,13 @@ export function setConfig() {
                 'text': {
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1293,35 +1385,43 @@ export function setConfig() {
                 'text': {
                     'token-spring': {
                         'label': 'Spring Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-spring': {
                         'label': 'Spring Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token-summer': {
                         'label': 'Summer Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-summer': {
                         'label': 'Summer Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token-autumn': {
                         'label': 'Autumn Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-autumn': {
                         'label': 'Autumn Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token-winter': {
                         'label': 'Winter Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'avatar-winter': {
                         'label': 'Winter Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1467,11 +1567,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1652,11 +1754,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -1737,11 +1841,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1753,11 +1859,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1769,11 +1877,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1785,11 +1895,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -1801,11 +1913,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -2269,11 +2383,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -2524,19 +2640,23 @@ export function setConfig() {
                 'text': {
                     'flumph-avatar': {
                         'label': 'Flumph Avatar',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'flumph-token': {
                         'label': 'Flumph Token',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'pixie-avatar': {
                         'label': 'Pixie Avatar',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'pixie-token': {
                         'label': 'Pixie Token',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 }
             },
@@ -2624,11 +2744,13 @@ export function setConfig() {
                     },
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -2665,11 +2787,13 @@ export function setConfig() {
                 'text': {
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'checkbox': {
@@ -2713,11 +2837,13 @@ export function setConfig() {
                 'text': {
                     'avatar': {
                         'label': 'Custom Avatar:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     },
                     'token': {
                         'label': 'Custom Token:',
-                        'default': ''
+                        'default': '',
+                        'file': true
                     }
                 },
                 'select': {
@@ -5838,7 +5964,7 @@ export function setConfig() {
             },
             'Thunderous Smite': {
                 'name': 'Thunderous Smite',
-                'version': '0.9.2'
+                'version': '0.10.21'
             },
             'Rime\'s Binding Ice': {
                 'name': 'Rime\'s Binding Ice',
@@ -6175,6 +6301,16 @@ export function setConfig() {
             'Hidden Paths': {
                 'name': 'Hidden Paths',
                 'version': '0.10.15'
+            },
+            'Maximilian\'s Earthen Grasp': {
+                'name': 'Maximilian\'s Earthen Grasp',
+                'version': '0.10.21',
+                'actors': [
+                    'CPR - Earthen Hand'
+                ],
+                'mutation': {
+                    'self': 'Maximilian\'s Earthen Grasp'
+                }
             }
         }
     });
