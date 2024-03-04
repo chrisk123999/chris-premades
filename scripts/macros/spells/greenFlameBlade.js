@@ -44,7 +44,8 @@ export async function greenFlameBlade({speaker, actor, token, character, item, a
     }
     if (!target) return;
     let modifier = chris.getSpellMod(workflow.item);
-    let damageFormula = level > 4 ? diceNumber + 'd8[' + translate.damageType('fire') + '] + ' + modifier : modifier + '[' + translate.damageType('fire') + ']';
-    let damageRoll = await (damageFormula).roll({async: true});
+    let damageType = translate.damageType('fire').toLowerCase();
+    let damageFormula = level > 4 ? diceNumber + 'd8[' + damageType + '] + ' + modifier : modifier + '[' + damageType + ']';
+    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await chris.applyWorkflowDamage(workflow.token, damageRoll, 'fire', [target], workflow.item.name, attackWorkflow.itemCardId);
 }

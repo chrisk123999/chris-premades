@@ -1,3 +1,7 @@
+# 0.10.22 Release:
+## Bug Fixes:
+- Green Flame Blade
+  
 # 0.10.21 Release:
 ## New Content:
 - Spell:  Maximilian's Earthen Grasp
