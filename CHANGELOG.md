@@ -5,7 +5,7 @@
 - Arcane Ward
 - Thunderous Smite
 ## Update Notes:
-- Added file browser to relevent item configuration settings.
+- Added file browser to relevant item configuration settings.
   
 # 0.10.20 Release:
 ## Bug Fixes:
