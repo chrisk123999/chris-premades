@@ -105,13 +105,9 @@ async function selectOrRollProperty(item) {
                 'recovery': '1',
                 'prompt': true
             };
-            let midiFlags = item.flags['midi-qol'];
-            if (!midiFlags) midiFlags = {'onUseMacroName': '', 'onUseMacroParts': {'items': []}};
-            midiFlags.onUseMacroName += '[postActiveEffects]function.chrisPremades.macros.artifactProperties.rechargeOn6';
-            midiFlags.onUseMacroParts.items.push({
-                'macroName': 'function.chrisPremades.macros.artifactProperties.rechargeOn6',
-                'option': 'postActiveEffects'
-            });
+            let midiFlags = documentData.flags['midi-qol'] ?? {'onUseMacroName': ''};
+            if (!midiFlags.onUseMacroName) midiFlags.onUseMacroName = '';
+            midiFlags.onUseMacroName += ',[postActiveEffects]function.chrisPremades.macros.artifactProperties.rechargeOn6';
             setProperty(documentData, 'flags.midi-qol', midiFlags);
         }
         setProperty(documentData, 'flags.custom-character-sheet-sections.sectionName', item.name + ' Spells');

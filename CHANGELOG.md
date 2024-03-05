@@ -1,3 +1,7 @@
+# 0.10.24 Release:
+## Bug Fixes:
+- Artifact Properties
+  
 # 0.10.23 Release:
 ## New Content:
 - Artifact Properties: Minor Beneficial Properties and Major Beneficial Properties
