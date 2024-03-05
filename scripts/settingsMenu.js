@@ -1,6 +1,7 @@
 import {updateAllSceneNPCs, updateSceneNPCs, updateSidebarNPCs} from './actor.js';
 import {additionalCompendiumPriority, additionalCompendiums, selectCompendium} from './compendium.js';
 import {fixSettings, troubleshoot} from './help.js';
+import {artifactProperties} from './macros/mechanics/artifactProperties.js';
 import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {tours} from './tours.js';
 import {allRaces} from './utility/npcRandomizer.js';
@@ -18,8 +19,12 @@ let labels = {
     'Racial-Trait-Compendium': 'Select',
     'Manual-Rolling-Players': 'Configure',
     'Critical-Table': 'Select',
-    'Fumble-Table': 'Select'
-}
+    'Fumble-Table': 'Select',
+    'Minor-Beneficial-Properties': 'Configure',
+    'Major-Beneficial-Properties': 'Configure',
+    'Minor-Detrimental-Properties': 'Configure',
+    'Major-Detrimental-Properties': 'Configure'
+};
 class chrisSettingsBase extends FormApplication {
     constructor() {
         super();
@@ -170,6 +175,12 @@ export class chrisSettingsInterface extends chrisSettingsBase {
     constructor() {
         super();
         this.category = 'User Interface';
+    }
+}
+export class chrisSettingsArtifact extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'Artifact Properties';
     }
 }
 export class chrisSettingsTroubleshoot extends FormApplication {
@@ -328,6 +339,12 @@ export async function settingButton(id) {
             break;
         case 'Manual Rolling Players':
             await manualRolls.userOptions();
+            break;
+        case 'Minor Beneficial Properties':
+        case 'Major Beneficial Properties':
+        case 'Minor Detrimental Properties':
+        case 'Major Detrimental Properties':
+            await artifactProperties.configureDialog(id);
             break;
     }
 }

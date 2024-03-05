@@ -11,7 +11,7 @@ export async function itemFeatures(item, updates, options, id) {
     let previouslyAttuned = item.system?.attunement;
     let previousState = previouslyEquipped && (previouslyAttuned === 0 || previouslyAttuned === 2);
     let currentState = currentlyEquipped && (currentlyAttuned === 0 || currentlyAttuned === 2);
-    let currentSourceUuid = foundry.utils.getProperty(item, "flags.core.sourceId");
+    let currentSourceUuid = foundry.utils.getProperty(item, 'flags.core.sourceId');
     if (previousState === currentState) return;
     if (previousState && !currentState) {
         let removeItems = currentItems;
@@ -25,9 +25,16 @@ export async function itemFeatures(item, updates, options, id) {
         let items = [];
         for (let i of chrisFeatures.items) {
             if(addItemsUniqueNames.includes(i.uniqueName)) continue;
-            let itemData = await chris.getItemFromCompendium(i.key, i.name);
+            let itemData;
+            if (i.key) {
+                itemData = await chris.getItemFromCompendium(i.key, i.name);
+                if (!itemData) continue;
+                let description = chris.getItemDescription('CPR - Descriptions', i.name, true);
+                if (description) itemData.system.description.value = description;
+            } else if (i.documentData) {
+                itemData = i.documentData;
+            }
             if (!itemData) continue;
-            itemData.system.description.value = chris.getItemDescription('CPR - Descriptions', i.name);
             let uses = getProperty(item, 'flags.chris-premades.equipment.uses.' + i.name);
             if (uses) setProperty(itemData, 'system.uses', uses);
             setProperty(itemData, 'flags.chris-premades.equipmentFeature.id', item.id);

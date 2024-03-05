@@ -124,7 +124,7 @@ export let chris = {
         return MidiQOL.findNearby(dispositionValue, tokenDoc, range, options).filter(i => !i.document.hidden);
     },
     'addToRoll': async function _addToRoll(roll, addonFormula) {
-        let addonFormulaRoll = await new Roll('0 + ' + addonFormula).evaluate({async: true});
+        let addonFormulaRoll = await new Roll('0 + ' + addonFormula).evaluate({'async': true});
         game.dice3d?.showForRoll(addonFormulaRoll);
         for (let i = 1; i < addonFormulaRoll.terms.length; i++) {
             roll.terms.push(addonFormulaRoll.terms[i]);
@@ -301,15 +301,15 @@ export let chris = {
     'raceOrType': function _raceOrType(entity) {
         return MidiQOL.typeOrRace(entity);
     },
-    'getItemDescription': function _getItemDescription(key, name) {
+    'getItemDescription': function _getItemDescription(key, name, ignoreNotFound = false) {
         let journalEntry = game.journal.getName(key);
         if (!journalEntry) {
-            ui.notifications.error('Item descriptions journal entry not found!');
+            if (!ignoreNotFound) ui.notifications.error('Item descriptions journal entry not found!');
             return;
         }
         let page = journalEntry.pages.getName(name);
         if (!page) {
-            ui.notifications.warn('Item description not found in journal!');
+            if (!ignoreNotFound) ui.notifications.warn('Item description not found in journal!');
             return;
         }
         let description = page.text.content;

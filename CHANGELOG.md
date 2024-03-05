@@ -1,3 +1,7 @@
+# 0.10.23 Release:
+## New Content:
+- Artifact Properties: Minor Beneficial Properties and Major Beneficial Properties
+  
 # 0.10.22 Release:
 ## Bug Fixes:
 - Green Flame Blade

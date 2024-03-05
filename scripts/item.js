@@ -1,5 +1,6 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
+import {artifactProperties} from './macros/mechanics/artifactProperties.js';
 import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
@@ -129,6 +130,8 @@ async function itemConfig(itemDocument) {
             let identifier = itemDocument.system.identifier;
             if (scale.scaleData[identifier]) options.push(['⚖️ Add Scale', 'scale']);
         }
+        let validTypes = ['weapon', 'equipment'];
+        if (game.user.isGM && validTypes.includes(itemDocument.type)) options.push(['⚡ Add Artifact Property', 'artifact']);
         let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
         if (!selection) return;
         if (selection === 'update') {
@@ -137,6 +140,8 @@ async function itemConfig(itemDocument) {
             await configureItem(itemDocument, configuration);
         } else if (selection === 'scale') {
             await scale.addScale(itemDocument);
+        } else if (selection === 'artifact') {
+            await artifactProperties.selectOrRollProperty(itemDocument);
         }
     } else if (replacerAccess && (!configurationAccess || !configuration)) {
         if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {

@@ -3,7 +3,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
-import {addMenuSetting, chrisSettingsAnimations, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsAnimations, chrisSettingsArtifact, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
@@ -1577,6 +1577,111 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Dialog Targeting', 'Manual Rolling');
+    game.settings.register(moduleName, 'Minor Beneficial Properties', {
+        'name': 'Minor Beneficial Properties Descriptions',
+        'hint': 'Fill in the descriptions from the DMG here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {
+            '01-20': '01-20',
+            '21-30': '21-30',
+            '31-40': '31-40',
+            '41-50': '41-50',
+            '51-60': '51-60',
+            '61-70': '61-70',
+            '71-80': '71-80',
+            '81-90': '81-90',
+            '91-00': '91-100'
+        }
+    });
+    addMenuSetting('Minor Beneficial Properties', 'Artifact Properties');
+    game.settings.register(moduleName, 'Major Beneficial Properties', {
+        'name': 'Major Beneficial Properties Descriptions',
+        'hint': 'Fill in the descriptions from the DMG here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {
+            '01-20': '01-20',
+            '21-30': '21-30',
+            '31-40': '31-40',
+            '41-50': '41-50',
+            '51-60': '51-60',
+            '61-70': '61-70',
+            '71-80': '71-80',
+            '81-90': '81-90',
+            '91-00': '91-100'
+        }
+    });
+    addMenuSetting('Major Beneficial Properties', 'Artifact Properties');
+    game.settings.register(moduleName, 'Minor Detrimental Properties', {
+        'name': 'Minor Detrimental Properties Descriptions',
+        'hint': 'Fill in the descriptions from the DMG here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {
+            '01-05': '01-05',
+            '06-10': '06-10',
+            '11-15': '11-15',
+            '16-20': '16-20',
+            '21-30': '21-30',
+            '31-35': '31-35',
+            '36-40': '36-40',
+            '41-45': '41-45',
+            '46-50': '46-50',
+            '51-55': '51-55',
+            '56-60': '56-60',
+            '61-65': '61-65',
+            '66-70': '66-70',
+            '71-75': '71-75',
+            '76-80': '76-80',
+            '81-85': '81-85',
+            '86-90': '86-90',
+            '91-95': '91-95',
+            '95-00': '95-100'
+        }
+    });
+    //addMenuSetting('Minor Detrimental Properties', 'Artifact Properties');
+    game.settings.register(moduleName, 'Major Detrimental Properties', {
+        'name': 'Major Detrimental Properties Descriptions',
+        'hint': 'Fill in the descriptions from the DMG here.',
+        'scope': 'world',
+        'config': false,
+        'type': Object,
+        'default': {
+            '01-05': '01-05',
+            '06-10': '06-10',
+            '11-15': '11-15',
+            '16-20': '16-20',
+            '21-30': '21-30',
+            '31-35': '31-35',
+            '36-40': '36-40',
+            '41-45': '41-45',
+            '46-50': '46-50',
+            '51-55': '51-55',
+            '56-60': '56-60',
+            '61-65': '61-65',
+            '66-70': '66-70',
+            '71-75': '71-75',
+            '76-80': '76-80',
+            '81-85': '81-85',
+            '86-90': '86-90',
+            '91-95': '91-95',
+            '95-00': '95-100'
+        }
+    });
+    //addMenuSetting('Major Detrimental Properties', 'Artifact Properties');
+    game.settings.register(moduleName, 'Artifact Spell Action', {
+        'name': 'Spells Retain Action Economy',
+        'hint': 'If enabled, spells gained from artifact properties retain their original action economy.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Artifact Spell Action', 'Artifact Properties');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
@@ -1613,7 +1718,7 @@ export function registerSettings() {
         'name': 'Spells',
         'label': 'Spells',
         'hint': 'Settings for specific spell automations.',
-        'icon': 'fas fa-wand-magic',
+        'icon': 'fas fa-wand-magic-sparkles',
         'type': chrisSettingsSpells,
         'restricted': true
     });
@@ -1687,6 +1792,14 @@ export function registerSettings() {
         'hint': 'Settings that modify the user interface.',
         'icon': 'fas fa-display',
         'type': chrisSettingsInterface,
+        'restricted': true
+    });
+    game.settings.registerMenu(moduleName, 'Artifact Properties', {
+        'name': 'Artifact Properties',
+        'label': 'Artifact Properties',
+        'hint': 'Settings for Artifact Properties.',
+        'icon': 'fas fa-bolt',
+        'type': chrisSettingsArtifact,
         'restricted': true
     });
 /*    game.settings.registerMenu(moduleName, 'Randomizer', {

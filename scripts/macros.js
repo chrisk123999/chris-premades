@@ -11,6 +11,7 @@ import {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcan
 import {armorModel} from './macros/classFeatures/artificer/armorer/armorModel.js';
 import {armorOfAgathys} from './macros/spells/armorOfAgathys.js';
 import {armorOfMagicalStrength} from './macros/classFeatures/artificer/infusions/armorOfMagicalStrength.js';
+import {artifactProperties} from './macros/mechanics/artifactProperties.js';
 import {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 import {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 import {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
@@ -23,6 +24,7 @@ import {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/au
 import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
+import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
 import {bardicInspiration} from './macros/classFeatures/bard/bardicInspiration.js';
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
@@ -183,12 +185,14 @@ import {harnessDivinePower} from './macros/classFeatures/cleric/harnessDivinePow
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 import {healingSpirit} from './macros/spells/healingSpirit.js';
 import {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
+import {hearthOfMoonlightAndShadow} from './macros/classFeatures/druid/circleOfDreams/hearthOfMoonlightAndShadow.js';
 import {heatMetal} from './macros/spells/heatMetal.js';
 import {heroism} from './macros/spells/heroism.js';
 import {hexWarrior} from './macros/classFeatures/warlock/hexblade/hexWarrior.js';
 import {hexbladesCurse} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 import {hex} from './macros/spells/hex.js';
 import {hezrou} from './macros/monsterFeatures/hezrou/hezrou.js';
+import {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPaths.js';
 import {hiddenStep} from './macros/raceFeatures/firbolg/hiddenStep.js';
 import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
 import {hobgoblin} from './macros/monsterFeatures/hobgoblin/hobgoblin.js';
@@ -230,6 +234,7 @@ import {manifestMind} from './macros/classFeatures/wizard/orderOfScribes/manifes
 import {manualRolls} from './macros/mechanics/manualRolls.js';
 import {massCureWounds} from './macros/spells/massCureWounds.js';
 import {mastersAmulet} from './macros/items/mastersAmulet.js';
+import {maximiliansEarthenGrasp} from './macros/spells/maximiliansEarthenGrasp.js';
 import {metaMagic} from './macros/classFeatures/sorcerer/metaMagic.js';
 import {metallicBreathWeapon} from './macros/raceFeatures/dragonborn/metallic/metallicBreathWeapon.js';
 import {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
@@ -369,10 +374,6 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
-import {hearthOfMoonlightAndShadow} from './macros/classFeatures/druid/circleOfDreams/hearthOfMoonlightAndShadow.js';
-import {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPaths.js';
-import {maximiliansEarthenGrasp} from './macros/spells/maximiliansEarthenGrasp.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -569,6 +570,7 @@ export let macros = {
     'armorModel': armorModel,
     'armorOfAgathys': armorOfAgathys,
     'armorOfMagicalStrength': armorOfMagicalStrength,
+    'artifactProperties': artifactProperties,
     'auraOfAlacrity': auraOfAlacrity,
     'auraOfCourage': auraOfCourage,
     'auraOfDevotion': auraOfDevotion,
@@ -579,6 +581,7 @@ export let macros = {
     'auraOfVitality': auraOfVitality,
     'awakenedSpellbook': awakenedSpellbook,
     'balmOfPeace': balmOfPeace,
+    'balmOfTheSummerCourt': balmOfTheSummerCourt,
     'bardicInspiration': bardicInspiration,
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
@@ -707,11 +710,13 @@ export let macros = {
     'healingLight': healingLight,
     'healingSpirit': healingSpirit,
     'heartOfTheStorm': heartOfTheStorm,
+    'hearthOfMoonlightAndShadow': hearthOfMoonlightAndShadow,
     'heatMetal': heatMetal,
     'heroism': heroism,
     'hex': hex,
     'hexWarrior': hexWarrior,
     'hexbladesCurse': hexbladesCurse,
+    'hiddenPaths': hiddenPaths,
     'hiddenStep': hiddenStep,
     'hillStrike': hillStrike,
     'holyNimbus': holyNimbus,
@@ -747,6 +752,7 @@ export let macros = {
     'manualRolls': manualRolls,
     'massCureWounds': massCureWounds,
     'mastersAmulet': mastersAmulet,
+    'maximiliansEarthenGrasp': maximiliansEarthenGrasp,
     'metaMagic': metaMagic,
     'metallicBreathWeapon': metallicBreathWeapon,
     'mightyImpel': mightyImpel,
@@ -873,9 +879,5 @@ export let macros = {
     'wrapsOffDyamak': wrapsOffDyamak,
     'wrathOfTheStorm': wrathOfTheStorm,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth,
-    'balmOfTheSummerCourt': balmOfTheSummerCourt,
-    'hearthOfMoonlightAndShadow': hearthOfMoonlightAndShadow,
-    'hiddenPaths': hiddenPaths,
-    'maximiliansEarthenGrasp': maximiliansEarthenGrasp
+    'zoneOfTruth': zoneOfTruth
 }
