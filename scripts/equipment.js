@@ -1,4 +1,5 @@
 import {chris} from './helperFunctions.js';
+import {macros} from './macros.js';
 export async function itemFeatures(item, updates, options, id) {
     if (!item?.actor) return;
     let chrisFeatures = item.flags?.['chris-premades']?.equipment;
@@ -33,6 +34,12 @@ export async function itemFeatures(item, updates, options, id) {
                 if (description) itemData.system.description.value = description;
             } else if (i.documentData) {
                 itemData = i.documentData;
+            } else if (i.customData) {
+                itemData = await macros.equipmentData(i.customData);
+            } else if (i.spell) {
+                let key = game.settings.get('chris-premades', 'Spell Compendium');
+                if (game.packs.get(key)) itemData = await chris.getItemFromCompendium(key, i.spell);
+                if (itemData) setProperty(itemData, 'flags.custom-character-sheet-sections.sectionName', item.name);
             }
             if (!itemData) continue;
             let uses = getProperty(item, 'flags.chris-premades.equipment.uses.' + i.name);
@@ -63,9 +70,19 @@ export async function applyEquipmentFlag(uuid) {
     let updates = {
         'flags.chris-premades.equipment.items': [
             {
-                'name': 'Crimson Mist',
+                'name': 'Bigby\'s Hand (9th Level)',
+                'uniqueName': 'helpfulHand',
+                'customData': 'helpfulHand'
+            },
+            {
+                'name': 'Mage Hand',
+                'spell': 'Mage Hand',
+                'uniqueName': 'dexterousFingers'
+            },
+            {
+                'name': 'Force Sculpture',
                 'key': 'chris-premades.CPR Item Features',
-                'uniqueName': 'crimsonMist'
+                'uniqueName': 'forceSculpture'
             }
         ]
     };

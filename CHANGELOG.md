@@ -1,3 +1,14 @@
+# 0.10.25 Release:
+## New Content:
+- Item: Bigby's Beneficent Bracelet
+- Soulknife Rogue: Psychic Blades, Psionic Power: Psionic Energy, Soul Blades: Homing Strikes, Rend Mind, and Psionic Power: Recovery
+## Bug Fixes:
+- Divine Smite
+- Sneak Attack
+- Mass Cure Wounds
+## Update Notes:
+- Added the ability to set an item to have a flat attack bonus (Available in the Medkit).
+  
 # 0.10.24 Release:
 ## Bug Fixes:
 - Artifact Properties

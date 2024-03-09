@@ -97,6 +97,6 @@ export async function divineSmite({speaker, actor, token, character, item, args,
     if (type === 'undead' || type === 'fiend') damageDiceNum += 1;
     let bonusDamageFormula = damageDiceNum + 'd8[radiant]';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
-    await feature.displayCard();
+    await feature.use();
     queue.remove(workflow.item.uuid);
 }

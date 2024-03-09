@@ -1,6 +1,7 @@
 import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 import {artifactProperties} from './macros/mechanics/artifactProperties.js';
+import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {scale} from './scale.js';
 export function createHeaderButton(config, buttons) {
     if (config.object instanceof Item && config.object?.actor) {
@@ -132,16 +133,22 @@ async function itemConfig(itemDocument) {
         }
         let validTypes = ['weapon', 'equipment'];
         if (game.user.isGM && validTypes.includes(itemDocument.type)) options.push(['⚡ Add Artifact Property', 'artifact']);
+        if (game.user.isGM && constants.attacks.includes(itemDocument.system.actionType) && game.settings.get('chris-premses', 'Flat Attack Bonus')) options.push(['🗡️ Configure Flat Attack Bonus', 'flatAttack']);
         let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
         if (!selection) return;
-        if (selection === 'update') {
-            await updateItem(itemDocument);
-        } else if (selection === 'configure') {
-            await configureItem(itemDocument, configuration);
-        } else if (selection === 'scale') {
-            await scale.addScale(itemDocument);
-        } else if (selection === 'artifact') {
-            await artifactProperties.selectOrRollProperty(itemDocument);
+        switch (selection) {
+            case 'update':
+                await updateItem(itemDocument);
+                break;
+            case 'scale':
+                await scale.addScale(itemDocument);
+                break;
+            case 'artifact':
+                await artifactProperties.selectOrRollProperty(itemDocument);
+                break;
+            case 'flatAttack':
+                await flatAttack.menu(itemDocument);
+                break;
         }
     } else if (replacerAccess && (!configurationAccess || !configuration)) {
         if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {

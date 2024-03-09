@@ -149,7 +149,8 @@ async function animation(target, token, attackType) {
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties.has('fin'))) return;
+    let flagName = workflow.item.flags['chris-premades']?.info?.name;
+    if (!(workflow.item.system.actionType === 'rwak' || workflow.item.system.properties.has('fin') || flagName === 'Psychic Blades')) return;
     let originFeature = chris.getItem(workflow.actor, 'Sneak Attack');
     if (!originFeature) return;
     if (!chris.perTurnCheck(originFeature, 'feature', 'sneakAttack')) return;
@@ -189,6 +190,9 @@ async function attack({speaker, actor, token, character, item, args, scope, work
             return;
         }
     }
+    let rendMind = chris.getItem(workflow.actor, 'Rend Mind');
+    let psionicEnergy = chris.getItem(workflow.actor, 'Psionic Power: Psionic Energy');
+    if (flagName === 'Psychic Blades' && rendMind && psionicEnergy) await item.setFlag('chris-premades', 'feature.rendMind.prompt', true);
     await chris.setTurnCheck(originFeature, 'feature', 'sneakAttack');
     let bonusDamageFormula = workflow.actor.flags['chris-premades']?.feature?.sneakAttack?.customFormula;
     let defaultDamageType = workflow.defaultDamageType;

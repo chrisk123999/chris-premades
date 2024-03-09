@@ -41,6 +41,7 @@ import {actionsTab} from './integrations/tidy5eSheet.js';
 import {tours} from './tours.js';
 import {addChatButton} from './chat.js';
 import {enableMacroSidebar, enableSelectTool} from './userInterface.js';
+import {flatAttack} from './macros/mechanics/flatAttack.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -238,6 +239,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Dialog Targeting')) Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
     if (game.settings.get('chris-premades', 'Use Critical Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.critical);
     if (game.settings.get('chris-premades', 'Use Fumble Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
+    if (game.settings.get('chris-premades', 'Flat Attack Bonus')) Hooks.on('midi-qol.preCheckHits', flatAttack.attack);
     setPreviousSettings();
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);

@@ -31,6 +31,7 @@ import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilin
 import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
 import {bestowCurse} from './macros/spells/bestowCurse.js';
 import {bg3} from './macros/homebrew/bg3/bg3.js';
+import {bigbysBeneficentBracelet} from './macros/items/bigbysBeneficentBracelet.js';
 import {bigbysHand} from './macros/spells/bigbysHand.js';
 import {binding} from './macros/classFeatures/bloodHunter/bloodCurses/binding.js';
 import {blackrazor} from './macros/items/blackrazor.js';
@@ -264,6 +265,7 @@ import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
+import {psychicBlades} from './macros/classFeatures/rogue/soulknife/psychicBlades.js';
 import {radiantConsumption} from './macros/raceFeatures/aasimar/radiantConsumption.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
 import {radiantWeapon} from './macros/classFeatures/artificer/infusions/radiantWeapon.js';
@@ -557,6 +559,12 @@ async function templateTrigger(macroName, token, trigger, reason) {
         }
     }
 }
+async function equipmentData(name) {
+    switch(name) {
+        case 'helpfulHand':
+            return bigbysBeneficentBracelet.itemData();
+    }
+}
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
     'acidArrow': acidArrow,
@@ -588,6 +596,7 @@ export let macros = {
     'bestialSoul': bestialSoul,
     'bestowCurse': bestowCurse,
     'bg3': bg3,
+    'bigbysBeneficentBracelet': bigbysBeneficentBracelet,
     'bigbysHand': bigbysHand,
     'binding': binding,
     'blackrazor': blackrazor,
@@ -670,6 +679,7 @@ export let macros = {
     'enhancedBond': enhancedBond,
     'enhancedWeapon': enhancedWeapon,
     'enlargeReduce': enlargeReduce,
+    'equipmentData': equipmentData,
     'experimentalElixir': experimentalElixir,
     'expertDivination': expertDivination,
     'explodingHeals': explodingHeals,
@@ -785,6 +795,7 @@ export let macros = {
     'preserveLife': preserveLife,
     'primalCompanion': primalCompanion,
     'protectionFromEvilAndGood': protectionFromEvilAndGood,
+    'psychicBlades': psychicBlades,
     'radiantConsumption': radiantConsumption,
     'radiantSoul': radiantSoul,
     'radiantWeapon': radiantWeapon,

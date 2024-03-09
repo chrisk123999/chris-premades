@@ -133,6 +133,7 @@ async function createCombatant(tokenId, actorId, sceneId, initiative) {
 async function meleeAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let attackBonus = workflow.actor.flags['chris-premades']?.summon?.attackBonus?.melee;
     if (!attackBonus) return;
+    if (workflow.item.flags['chris-premades']?.attackRoll?.enabled) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'tashaMeleeAttack', 50);
     if (!queueSetup) return;
     let attackRoll = await chris.addToRoll(workflow.attackRoll, attackBonus);
@@ -142,6 +143,7 @@ async function meleeAttack({speaker, actor, token, character, item, args, scope,
 async function rangedAttack({speaker, actor, token, character, item, args, scope, workflow}) {
     let attackBonus = workflow.actor.flags['chris-premades']?.summon?.attackBonus?.ranged;
     if (!attackBonus) return;
+    if (workflow.item.flags['chris-premades']?.attackRoll?.enabled) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'tashaRangedAttack', 50);
     if (!queueSetup) return;
     let attackRoll = await chris.addToRoll(workflow.attackRoll, attackBonus);

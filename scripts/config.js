@@ -6311,6 +6311,37 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Maximilian\'s Earthen Grasp'
                 }
+            },
+            'Bigby\'s Beneficent Bracelet': {
+                'name': 'Bigby\'s Beneficent Bracelet',
+                'version': '0.10.25',
+                'actors': [
+                    'CPR - Force Sculpture'
+                ],
+                'settings': [
+                    'Flat Attack Bonus',
+                    'Item Features'
+                ]
+            },
+            'Psychic Blades': {
+                'name': 'Psychic Blades',
+                'version': '0.10.25'
+            },
+            'Psionic Power: Psionic Energy': {
+                'name': 'Psionic Power: Psionic Energy',
+                'version': '0.10.25'
+            },
+            'Soul Blades: Homing Strikes': {
+                'name': 'Soul Blades: Homing Strikes',
+                'version': '0.10.25'
+            },
+            'Rend Mind': {
+                'name': 'Rend Mind',
+                'version': '0.10.25'
+            },
+            'Psionic Power: Recovery': {
+                'name': 'Psionic Power: Recovery',
+                'version': '0.10.25'
             }
         }
     });

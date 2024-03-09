@@ -375,6 +375,68 @@ let scaleData = {
             'value': {},
             'title': 'Starry Form'
         }
+    ],
+    'Soulknife': [
+        {
+            'type': 'ScaleValue',
+            'configuration': {
+                'identifier': 'psionic-power',
+                'type': 'dice',
+                'distance': {
+                    'units': ''
+                },
+                'scale': {
+                    '3': {
+                        'number': 1,
+                        'faces': 6
+                    },
+                    '5': {
+                        'number': 1,
+                        'faces': 8
+                    },
+                    '11': {
+                        'number': 1,
+                        'faces': 10
+                    },
+                    '17': {
+                        'number': 1,
+                        'faces': 12
+                    }
+                }
+            },
+            'value': {},
+            'title': 'Psionic Power'
+        },
+        {
+            'type': 'ScaleValue',
+            'configuration': {
+                'identifier': 'soul-blades',
+                'type': 'dice',
+                'distance': {
+                    'units': ''
+                },
+                'scale': {
+                    '1': {
+                        'number': 1,
+                        'faces': 6
+                    },
+                    '5': {
+                        'number': 1,
+                        'faces': 8
+                    },
+                    '11': {
+                        'number': 1,
+                        'faces': 10
+                    },
+                    '17': {
+                        'number': 1,
+                        'faces': 12
+                    }
+                }
+            },
+            'value': {},
+            'title': 'Soul Blades'
+        }
     ]
 };
 async function addScale(item) {

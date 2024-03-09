@@ -6,16 +6,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!workflow.targets.size) return;
     let max = Math.max(workflow.actor.system.abilities.con.mod, 1);
     if (workflow.targets.size > max) {
-        let buttons = [
-            {
-                'label': 'Ok',
-                'value': true
-            }, {
-                'label': 'Cancel',
-                'value': false
-            }
-        ];
-        let selection = await chris.selectTarget(workflow.item.name, buttons, Array.from(workflow.targets), false, 'multiple');
+        let selection = await chris.selectTarget(workflow.item.name, constants.okCancel, Array.from(workflow.targets), false, 'multiple');
         if (!selection.buttons) return;
         let newTargets = selection.inputs.filter(i => i);
         if (newTargets.length > max) {

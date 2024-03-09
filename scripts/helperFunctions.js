@@ -959,12 +959,13 @@ export let chris = {
     },
     'spawn': async function _spawn(sourceActor, updates = {}, callbacks = {}, summonerToken, range, animation = 'default') {
         let tokenDocument = await sourceActor.getTokenDocument();
+        let width = updates?.token?.width ?? tokenDocument.width;
         let options = {};
         if (summonerToken?.actor) {
             options = {
                 'controllingActor': summonerToken.actor,
                 'crosshairs': {
-                    'interval': tokenDocument.width % 2 === 0 ? 1 : -1
+                    'interval': width % 2 === 0 ? 1 : -1
                 }
             };
         }

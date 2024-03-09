@@ -22,6 +22,7 @@ import {colorizeDAETitleBarButton} from './integrations/dae.js';
 import {firearm} from './macros/mechanics/firearm.js';
 import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
+import {flatAttack} from './macros/mechanics/flatAttack.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 let previousSettings = {};
@@ -499,6 +500,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Condition Vulnerability', 'Mechanics');
+    game.settings.register(moduleName, 'Flat Attack Bonus', {
+        'name': 'Flat Attack Bonus',
+        'hint': 'Enabling this allows for the automation of certain features to have a flat attack bonus.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preCheckHits', flatAttack.attack);
+            } else {
+                Hooks.off('midi-qol.preCheckHits', flatAttack.attack);
+            }
+        }
+    });
+    addMenuSetting('Flat Attack Bonus', 'Mechanics');
     game.settings.register(moduleName, 'On Hit', {
         'name': 'On Hit Automation',
         'hint': 'Enabling this allows the automation for certain "On Hit" features.',

@@ -8,6 +8,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!clenchedFistData) return;
     clenchedFistData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Clenched Fist');
     clenchedFistData.system.damage.parts[0][0] = (4 + damageScale) + 'd8[force]';
+    if (workflow.item.flags['chris-premades']?.items?.bigbysBeneficentBracelet) setProperty(clenchedFistData, 'flags.chris-premades.attackRoll', {'enabled': true, 'value': 13});
     let forcefulHandData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Forceful Hand', false);
     if (!forcefulHandData) return;
     forcefulHandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Forceful Hand');
