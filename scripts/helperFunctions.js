@@ -1192,5 +1192,8 @@ export let chris = {
     },
     'damageRolls': async function _damageRolls(workflow, damageFormulas = []) {
         return damageFormulas.map(i => chris.damageRoll(workflow, i));
+    },
+    'hasEpicRolls': function _hasEpicRolls() {
+        return game.modules.get('epic-rolls-5e')?.active;
     }
 }

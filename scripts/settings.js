@@ -310,6 +310,15 @@ export function registerSettings() {
         'default': false,
     });
     addMenuSetting('Show Limits Animations', 'Module Integration');
+    game.settings.register(moduleName, 'Use Epic Rolls', {
+        'name': 'Use Epic Rolls',
+        'hint': 'Allow certain automations to make use of the Epic Rolls module (when available).',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Use Epic Rolls', 'Module Integration');
     game.settings.register(moduleName, 'Condition Fixes', {
         'name': 'Blinded and Invisibility Changes',
         'hint': 'This setting restores the blinded and invisibility conditions to how they worked in version 9 of Foundry.',

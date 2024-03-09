@@ -10,9 +10,26 @@ export async function grapple({speaker, actor, token, character, item, args, sco
     }
     let selection = await chris.remoteDialog(workflow.item.name, [[translate.skills('acr'), 'acr'], [translate.skills('ath'), 'ath'], ['Uncontested', false]], chris.firstOwner(targetToken).id, 'How would you like to contest the grapple?');
     if (selection) {
-        let sourceRoll = await workflow.actor.rollSkill('ath');
-        let targetRoll = await chris.rollRequest(targetToken, 'skill', selection);
-        if (targetRoll.total >= sourceRoll.total) return;
+        let selfGM = chris.firstOwner(workflow.actor).isGM;
+        let targetGM = chris.firstOwner(targetActor).isGM;
+        if (game.settings.get('chris-premades', 'Use Epic Rolls') && chris.hasEpicRolls() && ((selfGM != targetGM) || (!selfGM && !targetGM))) {
+            let results = await ui.EpicRolls5e.requestRoll({
+                'actors': [workflow.actor.uui],
+                'contestants': [targetActor.uuid],
+                'type': 'skill.ath',
+                'contest': 'skill.' + selection,
+                'options': {
+                    'showRollResults': true,
+                    'autoColor': true,
+//                    'hideNames': !game.settings.get('chris-premades', 'Show Names') // This breaks things?
+                }
+            });
+            if (results.canceled || !results.success) return;
+        } else {
+            let sourceRoll = await workflow.actor.rollSkill('ath');
+            let targetRoll = await chris.rollRequest(targetToken, 'skill', selection);
+            if (targetRoll.total >= sourceRoll.total) return;
+        }
     }
     if(game.modules.get('Rideable')?.active) game.Rideable.Mount([targetToken.document], workflow.token.document, {'Grappled': true, 'MountingEffectsOverride': ['Grappled']});
     await chris.addCondition(targetActor, 'Grappled', false, workflow.item.uuid);

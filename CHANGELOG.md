@@ -1,3 +1,9 @@
+# 0.10.26 Release:
+## Bug Fixes:
+- Psychic Blades
+## Update Notes:
+- Added support for Epic Rolls.
+  
 # 0.10.25 Release:
 ## New Content:
 - Item: Bigby's Beneficent Bracelet
