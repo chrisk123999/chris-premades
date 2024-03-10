@@ -149,6 +149,9 @@ async function itemConfig(itemDocument) {
             case 'flatAttack':
                 await flatAttack.menu(itemDocument);
                 break;
+            case 'configure':
+                await configureItem(itemDocument, configuration);
+                break;
         }
     } else if (replacerAccess && (!configurationAccess || !configuration)) {
         if (itemDocument.type === 'class' || itemDocument.type === 'subclass') {

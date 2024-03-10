@@ -1,3 +1,7 @@
+# 0.10.27 Release:
+## Bug Fixes:
+- Medkit Configure Option
+  
 # 0.10.26 Release:
 ## Bug Fixes:
 - Psychic Blades
