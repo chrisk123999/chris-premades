@@ -133,7 +133,7 @@ async function itemConfig(itemDocument) {
         }
         let validTypes = ['weapon', 'equipment'];
         if (game.user.isGM && validTypes.includes(itemDocument.type)) options.push(['⚡ Add Artifact Property', 'artifact']);
-        if (game.user.isGM && constants.attacks.includes(itemDocument.system.actionType) && game.settings.get('chris-premses', 'Flat Attack Bonus')) options.push(['🗡️ Configure Flat Attack Bonus', 'flatAttack']);
+        if (game.user.isGM && constants.attacks.includes(itemDocument.system.actionType) && game.settings.get('chris-premades', 'Flat Attack Bonus')) options.push(['🗡️ Configure Flat Attack Bonus', 'flatAttack']);
         let selection = await chris.dialog('Item Configuration: ' + itemDocument.name, options);
         if (!selection) return;
         switch (selection) {
