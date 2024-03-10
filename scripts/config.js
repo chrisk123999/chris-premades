@@ -1,5 +1,4 @@
 import {firearm} from './macros/mechanics/firearm.js';
-
 export function setConfig() {
     let summonEffectOptions = [
         {'value': 'none', 'html': 'None'},
@@ -2859,6 +2858,15 @@ export function setConfig() {
                         'values': summonEffectOptions
                     }
                 }
+            },
+            'Wild Shape': {
+                'select': {
+                    'compendium': {
+                        'label': 'Override Compendium',
+                        'default': '',
+                        'values': []
+                    }
+                }
             }
         },
         'automations': {
@@ -4006,7 +4014,7 @@ export function setConfig() {
             },
             'Wild Shape': {
                 'name': 'Wild Shape',
-                'version': '0.7.01',
+                'version': '0.10.28',
                 'mutation': {
                     'self': 'Wild Shape'
                 }

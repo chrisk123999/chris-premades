@@ -1,3 +1,9 @@
+# 0.10.28 Release:
+## Bug Fixes:
+- Wild Shape
+## Update Notes:
+- Wild Shape has been updated to no longer need Quick Insert to function. Future improvements will be in a future update.
+  
 # 0.10.27 Release:
 ## Bug Fixes:
 - Medkit Configure Option

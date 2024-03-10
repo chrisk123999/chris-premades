@@ -63,8 +63,8 @@ export async function additionalCompendiumPriority() {
     }
     await game.settings.set('chris-premades', 'Additional Compendium Priority', newSettings);
 }
-export async function selectCompendium(setting) {
-    let packs = game.packs.filter(i => !i.metadata.id.includes('chris-premades.') && i.metadata.type === 'Item');
+export async function selectCompendium(setting, type = 'Item') {
+    let packs = game.packs.filter(i => !i.metadata.id.includes('chris-premades.') && i.metadata.type === type);
     let inputs = packs.map(i => ({'label': i.metadata.label, 'type': 'radio'}));
     let selection = await chris.menu('Select a Compendium', constants.okCancel, inputs, true);
     if (!selection.buttons) return;

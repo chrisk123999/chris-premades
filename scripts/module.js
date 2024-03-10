@@ -241,6 +241,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Use Fumble Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
     if (game.settings.get('chris-premades', 'Flat Attack Bonus')) Hooks.on('midi-qol.preCheckHits', flatAttack.attack);
     setPreviousSettings();
+    CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.values = game.packs.contents.filter(i => i.metadata.type === 'Actor').map(j => ({'value': j.metadata.id, 'html': j.metadata.label}));
+    CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.default = game.settings.get('chris-premades', 'Monster Compendium');
 });
 //Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {

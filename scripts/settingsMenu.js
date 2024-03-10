@@ -324,11 +324,13 @@ export async function settingButton(id) {
             break;
         case 'Item Compendium':
         case 'Spell Compendium':
-        case 'Monster Compendium':
         case 'Racial Trait Compendium':
         case 'Critical Table':
         case 'Fumble Table':
-            await selectCompendium(id);
+            await selectCompendium(id, 'Item');
+            break;
+        case 'Monster Compendium':
+            await selectCompendium(id, 'Actor');
             break;
         case 'tour':
             game.settings.sheet.close();
