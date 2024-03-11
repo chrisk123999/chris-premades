@@ -569,7 +569,12 @@ export let chris = {
         let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
         return cartoon;
     },
-    'selectDocument': async function selectDocument(title, documents, useUuids, displayTooltips = false) {
+    'selectDocument': async function selectDocument(title, documents, useUuids, displayTooltips = false, alphabetical = false) {
+        if (alphabetical) {
+            documents = documents.sort((a, b) => {
+                return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+            });
+        }
         return await new Promise(async (resolve) => {
             let buttons = {},
                 dialog;
@@ -603,7 +608,12 @@ export let chris = {
             })
         });
     },
-    'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false) {
+    'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false, alphabetical = false) {
+        if (alphabetical) {
+            documents = documents.sort((a, b) => {
+                return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+            });
+        }
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {'label': `Cancel`, callback: () => resolve(false)}, 'confirm': {'label': `Confirm`, callback: (html) => getDocuments(html, documents)}},
                 dialog;
@@ -1195,5 +1205,13 @@ export let chris = {
     },
     'hasEpicRolls': function _hasEpicRolls() {
         return game.modules.get('epic-rolls-5e')?.active;
+    },
+    'createFolder': async function _createFolder(folderData) {
+        if (game.user.isGM) return await Folder.create(folderData);
+        return await socket.executeAsUser('createFolder', chris.lastGM.id, folderData);
+    },
+    'createActor': async function _createActor(actorData) {
+        if (game.user.isGM) return await Actor.create(actorData);
+        return await socket.executeAsUser('createActor', chris.lastGM.id, actorData);
     }
 }

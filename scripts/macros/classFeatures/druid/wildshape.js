@@ -3,7 +3,13 @@ import {chris} from '../../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let circleForms = chris.getItem(workflow.actor, 'Circle Forms');
     let druidLevel = workflow.actor.classes.druid?.system?.levels;
-    let maxCR = 1;
+    if (!druidLevel) return;
+    let maxCR = 0;
+    if (druidLevel >= 2 && druidLevel < 4) {
+        maxCR = 0.25;
+    } else if (druidLevel >= 4 && druidLevel < 8) {
+        maxCR = 0.5;
+    } else maxCR = 1;
     if (circleForms && druidLevel >= 6) maxCR = Math.floor(druidLevel / 3);
     let key = chris.getConfiguration(workflow.item, 'compendium');
     if (!key || key === '') key = game.settings.get('chris-premades', 'Monster Compendium');
@@ -23,7 +29,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'Water Elemental'
     ];
     if (elementalWildShape && workflow.item.system.uses.value >= 2) documents = documents.concat(index.filter(i => elementals.includes(i.name)));
-    let selectedCreatures = await chris.selectDocument(workflow.item.name, documents);
+    let selectedCreatures = await chris.selectDocument(workflow.item.name, documents, false, false, true);
     if (!selectedCreatures) return;
     let selectedActor = await fromUuid(selectedCreatures[0].uuid);
     if (elementals.includes(selectedActor.name)) await workflow.item.update({'system.uses.value': workflow.item.system.uses.value - 1});

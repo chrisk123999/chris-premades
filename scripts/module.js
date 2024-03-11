@@ -66,6 +66,8 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('createEffect', runAsGM.createEffect);
     socket.register('removeEffect', runAsGM.removeEffect);
     socket.register('rollItem', runAsUser.rollItem);
+    socket.register('createFolder', runAsGM.createFolder);
+    socket.register('createActor', runAsGM.createActor);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {

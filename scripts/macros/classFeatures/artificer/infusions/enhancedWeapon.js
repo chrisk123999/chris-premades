@@ -32,11 +32,13 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let parts = duplicate(workflow.item.system.damage.parts);
     let level = chris.getConfiguration(originItem, 'level') ?? 1;
     parts[0][0] = parts[0][0] + ' + ' + level;
-    let properties = duplicate(workflow.item.system.properties);
     let attackBonus = duplicate(workflow.item.system.attackBonus);
     attackBonus = level;
-    properties.add('mgc');
-    properties = Array.from(properties);
+    let properties = [];
+    if (workflow.item.system.properties) {
+        properties = duplicate(Array.from(workflow.item.system.properties));
+        properties.push('mgc');
+    }
     workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attackBonus': attackBonus}, {'keepId': true});
     workflow.item.prepareData();
     workflow.item.prepareFinalAttributes();

@@ -1,3 +1,11 @@
+# 0.10.29 Release:
+## Bug Fixes:
+- Wild Shape
+- Enhanced Weapon
+- Radiant Weapon
+- Repeating Shot
+- Returning Weapon
+  
 # 0.10.28 Release:
 ## Bug Fixes:
 - Wild Shape

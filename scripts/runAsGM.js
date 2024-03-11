@@ -22,11 +22,19 @@ async function updateEffect(effectUuid, updates) {
     if (!effect) return;
     await effect.update(updates);
 }
+async function createFolder(folderData) {
+    return await Folder.create(folderData);
+}
+async function createActor(actorData) {
+    return await Actor.create(actorData);
+}
 export let runAsGM = {
     'updateCombatant': updateCombatant,
     'updateEffect': updateEffect,
     'createEffect': createEffect,
-    'removeEffect': removeEffect
+    'removeEffect': removeEffect,
+    'createFolder': createFolder,
+    'createActor': createActor
 }
 async function rollItem(itemUuid, config, options) {
     let item = await fromUuid(itemUuid);
