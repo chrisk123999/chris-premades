@@ -3,6 +3,7 @@
 - Circle of the Moon Druid: Circle Forms
 ## Bug Fixes:
 - Mirror Image
+- Dread Lord
   
 # 0.10.30 Release:
 ## Bug Fixes:
