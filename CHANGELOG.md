@@ -1,3 +1,7 @@
+# 0.10.32 Release:
+## Bug Fixes:
+- Soul Knife Scale
+  
 # 0.10.31 Release:
 ## New Content:
 - Circle of the Moon Druid: Circle Forms

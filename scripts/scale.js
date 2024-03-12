@@ -376,7 +376,7 @@ let scaleData = {
             'title': 'Starry Form'
         }
     ],
-    'Soulknife': [
+    'soulknife': [
         {
             'type': 'ScaleValue',
             'configuration': {
