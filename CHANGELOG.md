@@ -1,10 +1,20 @@
-# 0.10.29 Release:
+# 0.10.31 Release:
+## New Content:
+- Circle of the Moon Druid: Circle Forms
+## Bug Fixes:
+- Mirror Image
+  
+# 0.10.30 Release:
 ## Bug Fixes:
 - Wild Shape
 - Enhanced Weapon
 - Radiant Weapon
 - Repeating Shot
 - Returning Weapon
+  
+# 0.10.29 Release:
+## Bug Fixes:
+- Flat Attack Roll Bonus
   
 # 0.10.28 Release:
 ## Bug Fixes:

@@ -6356,6 +6356,10 @@ export function setConfig() {
             'Psionic Power: Recovery': {
                 'name': 'Psionic Power: Recovery',
                 'version': '0.10.25'
+            },
+            'Circle Forms': {
+                'name': 'Circle Forms',
+                'version': '0.10.31'
             }
         }
     });

@@ -16,9 +16,9 @@ export async function mirrorImage(workflow) {
     if (!queueSetup) return;
     let roll = await new Roll('1d20').roll({'async': true});
     roll.toMessage({
-        rollMode: 'roll',
-        speaker: {'alias': name},
-        flavor: 'Mirror Image'
+        'rollMode': 'roll',
+        'speaker': {'alias': name},
+        'flavor': 'Mirror Image'
     });
     let rollTotal = roll.total;
     let rollNeeded;
@@ -37,12 +37,12 @@ export async function mirrorImage(workflow) {
         queue.remove(workflow.item.uuid);
         return;
     }
-    workflow.isFumble = true;
     let duplicateAC = 10 + targetActor.system.abilities.dex.mod;
     if (workflow.attackTotal >= duplicateAC) {
+        workflow.hitTargets.delete(workflow.targets.first());
         ChatMessage.create({
-            speaker: {'alias': name},
-            content: 'Attack hit a duplicate and destroyed it.'
+            'speaker': {'alias': name},
+            'content': 'Attack hit a duplicate and destroyed it.'
         });
         if (duplicates === 1) {
             await chris.removeEffect(targetEffect);
@@ -67,8 +67,8 @@ export async function mirrorImage(workflow) {
         }
     } else {
         ChatMessage.create({
-            speaker: {'alias': name},
-            content: 'Attack targeted a duplicate and missed.'
+            'speaker': {'alias': name},
+            'content': 'Attack targeted a duplicate and missed.'
         });
     }
     queue.remove(workflow.item.uuid);
