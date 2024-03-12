@@ -1,5 +1,6 @@
 import {constants} from '../constants.js';
 import {chris} from '../helperFunctions.js';
+import {overtimeCreator} from '../integrations/midiqol.js';
 export function itemDC(effect, updates, options, user) {
     if (!updates.changes || !effect.parent || !effect.origin) return;
     if (updates.changes.length === 0) return;
@@ -53,7 +54,7 @@ export function effectTitleBar(config, buttons) {
         });
     }
 }
-async function effectConfig(effect) {
+async function properties(effect) {
     let disableAnimation = effect.flags['chris-premades']?.effect?.noAnimation;
     let vaeButton = effect.flags['chris-premades']?.vae?.button ?? '';
     let inputs = [
@@ -90,4 +91,16 @@ async function effectConfig(effect) {
         ]
     }
     await effect.parent.update(updates);
+}
+async function effectConfig(effect) {
+    let selection = await chris.dialog('Effect Options', [['Overtime Creator', 'overtime'], ['Effect Properties', 'properties']]);
+    if (!selection) return;
+    switch(selection) {
+        case 'overtime':
+            await overtimeCreator(effect);
+            break;
+        case 'properties':
+            await properties(effect);
+            break;
+    }
 }

@@ -54,7 +54,7 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args, 
     };
     let options = {
         'permanent': false,
-        'name': workflow.item.name,
+        'name': 'Vampiric Touch',
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);

@@ -1,3 +1,9 @@
+# 0.10.33 Release:
+## Bug Fixes:
+- Vampiric Touch
+## New Content:
+- Added a Midi-Qol overtime effect creator.
+  
 # 0.10.32 Release:
 ## Bug Fixes:
 - Soul Knife Scale
