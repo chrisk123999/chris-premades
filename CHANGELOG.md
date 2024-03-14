@@ -1,3 +1,8 @@
+# 0.10.34 Release:
+## Bug Fixes:
+- Wildshape
+- VAE Descriptions
+  
 # 0.10.33 Release:
 ## Bug Fixes:
 - Vampiric Touch

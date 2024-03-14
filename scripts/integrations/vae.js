@@ -1,19 +1,23 @@
 import {chris} from '../helperFunctions.js';
 export function vaeEffectDescription(effect, updates, options, id) {
-    if (!effect.parent) return;
-    if (effect.parent.constructor.name != 'Actor5e') return;
-    if (!effect.origin) return;
-    let origin = fromUuidSync(effect.origin);
-    if (!origin) return;
-    if (origin.constructor.name != 'Item5e') return;
-    if (!updates.flags?.['visual-active-effects']?.data?.content) {
+    if (effect.parent && effect.transfer) {
+        if (effect.parent.constructor != 'Item5e') return;
         if (game.settings.get('chris-premades', 'No NPC VAE Descriptions')) {
-            if (origin.actor?.type === 'npc' && origin.actor.id != effect.parent.id) return;
+            if (parent.actor?.type === 'npc') return;
         }
         setProperty(updates, 'flags.visual-active-effects.data.content', origin.system.description.value);
-    } else {
-        return;
-    }
+    } else if (!effect.transfer && effect.parent && effect.origin) {
+        if (effect.parent.constructor.name != 'Actor5e') return;
+        let origin = fromUuidSync(effect.origin);
+        if (!origin) return;
+        if (origin.constructor.name != 'Item5e') return;
+        if (!updates.flags?.['visual-active-effects']?.data?.content) {
+            if (game.settings.get('chris-premades', 'No NPC VAE Descriptions')) {
+                if (origin.actor?.type === 'npc' && origin.actor.id != effect.parent.id) return;
+            }
+            setProperty(updates, 'flags.visual-active-effects.data.content', origin.system.description.value);
+        }
+    } else return;
     effect.updateSource({'flags.visual-active-effects': updates.flags['visual-active-effects']});
 }
 export async function vaeTempItemButton(effect, buttons) {

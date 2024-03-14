@@ -10,7 +10,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     } else if (druidLevel >= 4 && druidLevel < 8) {
         maxCR = 0.5;
     } else maxCR = 1;
-    if (circleForms && druidLevel >= 6) maxCR = Math.floor(druidLevel / 3);
+    if (circleForms && druidLevel >= 6) {
+        maxCR = Math.floor(druidLevel / 3);
+    } else if (circleForms) {
+        maxCR = 1;
+    }
     let key = chris.getConfiguration(workflow.item, 'compendium');
     if (!key || key === '') key = game.settings.get('chris-premades', 'Monster Compendium');
     let pack = game.packs.get(key);
@@ -33,7 +37,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!selectedCreatures) return;
     let selectedActor = await fromUuid(selectedCreatures[0].uuid);
     if (elementals.includes(selectedActor.name)) await workflow.item.update({'system.uses.value': workflow.item.system.uses.value - 1});
-    let equipedItems = workflow.actor.items.filter(i => i.system.equipped);
+    let equipedItems = workflow.actor.items.filter(i => i.system.equipped && i.type != 'container');
     let selection;
     if (equipedItems.length > 0) {
         let generatedInputs = [];
@@ -159,7 +163,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'loot',
         'backpack'
     ];
-    let items = workflow.actor.items.filter(i => invalidTypes.includes(i.type) && !i.system.equipped);
+    let items = workflow.actor.items.filter(i => invalidTypes.includes(i.type) && !i.system.equipped && i.type != 'container');
     let itemUpdates = {};
     for (let i of items) {
         itemUpdates[i.name] = warpgate.CONST.DELETE
