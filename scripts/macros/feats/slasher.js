@@ -1,7 +1,8 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function slow({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !['mwak', 'rwak', 'msak', 'rsak'].includes(workflow.item.system.actionType)) return;
+    if (workflow.hitTargets.size != 1 || !workflow.damageRolls || !constants.attacks.includes(workflow.item.system.actionType)) return;
     let effect = chris.findEffect(workflow.actor, 'Slasher: Reduce Speed');
     if (!effect) return;
     let originItem = effect.parent;
@@ -10,14 +11,14 @@ async function slow({speaker, actor, token, character, item, args, scope, workfl
     if (!doExtraDamage) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'slasherSlow', 250);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
+    let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
     if (!damageTypes.has('slashing')) {
         queue.remove(workflow.item.uuid);
         return;
     }
     let autoSlasher = workflow.actor.flags['chris-premades']?.feat?.slasher?.auto;
     if (!autoSlasher) {
-        let selection = await chris.dialog('Slasher: Slow target?', [['Yes', true], ['No', false]]);
+        let selection = await chris.dialog(originItem.name, constants.yesNo, 'Slow target?');
         if (!selection) {
             queue.remove(workflow.item.uuid);
             return;
@@ -61,7 +62,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     if (!originItem) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'slasherCritical', 251);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
+    let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
     if (!damageTypes.has('slashing')) {
         queue.remove(workflow.item.uuid);
         return;

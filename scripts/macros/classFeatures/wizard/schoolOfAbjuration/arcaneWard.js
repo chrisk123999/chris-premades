@@ -4,13 +4,10 @@ import {constants} from '../../../../constants.js';
 async function damage(targetToken, {workflow, ditem}) {
     if (ditem.newHP >= ditem.oldHP || !ditem.wasHit) return;
     async function check(target) {
-        let effect = chris.findEffect(target.actor, 'Arcane Ward');
-        if (!effect) return;
-        if (!effect.origin) return;
-        let originItem = effect.parent;
+        let originItem = chris.getItem(target.actor, 'Arcane Ward');
         if (!originItem) return;
         let uses = originItem.system.uses.value;
-        if (uses === 0) return;
+        if (!uses) return;
         let absorbed = Math.min(ditem.appliedDamage, uses);
         let keptDamage = ditem.appliedDamage - absorbed;
         if (ditem.oldTempHP > 0) {
@@ -54,12 +51,16 @@ async function damage(targetToken, {workflow, ditem}) {
             return;
         }
     }
-    let tokens = chris.findNearby(targetToken, 30, 'ally').filter(i => i.actor.classes?.wizard?.subclass?.system?.identifier === 'school-of-abjuration' && i.actor.classes?.wizard?.system?.levels >= 6 && !chris.findEffect(i.actor, 'Reaction'));
+    let tokens = chris.findNearby(targetToken, 30, 'ally').filter(i => i.actor.classes?.wizard?.subclass?.system?.identifier === 'school-of-abjuration' && chris.getItem(i.actor, 'Projected Ward') && !chris.findEffect(i.actor, 'Reaction'));
     if (tokens.length === 0) {
         queue.remove(workflow.uuid);
         return;
     }
     for (let token of tokens) {
+        let projectedWard = chris.getItem(token.actor, 'Projected Ward');
+        if (!projectedWard) continue;
+        let prompt = chris.getConfiguration(projectedWard, 'prompt') ?? true;
+        if (!prompt) continue;
         let firstOwner = chris.firstOwner(token);
         await chris.thirdPartyReactionMessage(firstOwner);
         let message = 'Protect ' + targetToken.actor.name + ' with your arcane ward?';
@@ -69,12 +70,7 @@ async function damage(targetToken, {workflow, ditem}) {
         let shielded = check(token);
         if (shielded) {
             await chris.addCondition(token.actor, 'Reaction', false);
-            let effect = chris.findEffect(token.actor, 'Projected Ward');
-            if (!effect) break;
-            if (!effect.origin) break;
-            let originItem = effect.parent;
-            if (!originItem) break;
-            await originItem.use();
+            await projectedWard.use();
         }
     }
     await chris.clearThirdPartyReactionMessage();

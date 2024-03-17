@@ -1,3 +1,13 @@
+# 0.10.35 Release:
+## Bug Fixes:
+- Wildshape
+- Healing Light
+- Arcane Ward
+- Projected Ward
+- Crusher
+- Slasher
+- Effect Auras
+  
 # 0.10.34 Release:
 ## Bug Fixes:
 - Wildshape

@@ -2867,6 +2867,14 @@ export function setConfig() {
                         'values': []
                     }
                 }
+            },
+            'Projected Ward': {
+                'checkbox': {
+                    'prompt': {
+                        'label': 'Use 3rd Party Reaction Prompt:',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {

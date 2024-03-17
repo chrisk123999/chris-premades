@@ -136,6 +136,7 @@ async function tokenMoved(token, ignoredUuid, ignoredAura) {
                 let sourceHP = sourceToken.actor.system.attributes.hp.value;
                 if (sourceHP === 0) continue;
                 if (chris.findEffect(sourceToken.actor, translate.conditions('unconscious'))) continue;
+                if (chris.findEffect(sourceToken.actor, 'Dead')) continue;
             }
             switch (aura.disposition) {
                 case 'ally':
@@ -239,7 +240,7 @@ function deleteToken(token, options, id) {
     // delete effects on actor?
 }
 async function createRemoveEffect(effect, updates, userId) {
-    if (!effect.parent || effect.name != translate.conditions('unconscious')) return;
+    if (!effect.parent || !(effect.name === translate.conditions('unconscious') || effect.name === 'Dead')) return;
     if (!effect.parent.flags['chris-premades']?.aura) return;
     refreshEffects();
 }

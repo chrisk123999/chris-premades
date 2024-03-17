@@ -104,7 +104,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     delete wildshapeActor.system.spells;
     let mutateOptions = {
         'name': 'Wild Shape',
-    }
+        'comparisonKeys': {
+            'Item': 'id'
+        }
+    };
     async function effectMacro() {
         await warpgate.revert(token.document, 'Wild Shape', {'updateOpts':{'actor':{'noConcentrationCheck': true}}});
     }
@@ -166,12 +169,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let items = workflow.actor.items.filter(i => invalidTypes.includes(i.type) && !i.system.equipped && i.type != 'container');
     let itemUpdates = {};
     for (let i of items) {
-        itemUpdates[i.name] = warpgate.CONST.DELETE
+        itemUpdates[i.id] = warpgate.CONST.DELETE
     }
     if (selection) {
         for (let i = 0; selection.inputs.length > i; i++) {
             if (selection.inputs[i] === 'Merge / Drop') {
-                itemUpdates[equipedItems[i].name] = warpgate.CONST.DELETE;
+                itemUpdates[equipedItems[i].id] = warpgate.CONST.DELETE;
             }
         }
     }
@@ -179,21 +182,21 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let insigniaOfClaws = workflow.actor.flags['chris-premades']?.item?.insigniaOfClaws;
     let targetItems = selectedActor.items.contents;
     for (let i of targetItems) {
-        itemUpdates[i.name] = i.toObject();
-        if (primalStrike && itemUpdates[i.name].type === 'weapon') {
-            itemUpdates[i.name].system.properties.push('mgc');
+        itemUpdates[i.id] = i.toObject();
+        if (primalStrike && itemUpdates[i.id].type === 'weapon') {
+            itemUpdates[i.id].system.properties.push('mgc');
         }
-        if (insigniaOfClaws && itemUpdates[i.name].type === 'weapon') {
+        if (insigniaOfClaws && itemUpdates[i.id].type === 'weapon') {
             try {
-                itemUpdates[i.name].system.damage.parts[0][0] += ' + 1';
+                itemUpdates[i.id].system.damage.parts[0][0] += ' + 1';
             } catch (error) {}
-            itemUpdates[i.name].system.attackBonus = 1;
+            itemUpdates[i.id].system.attackBonus = 1;
         }
-        itemUpdates[i.name].flags['tidy5e-sheet'] = {'favorite': true};
-        if (invalidTypes.includes(itemUpdates[i.name].type)) continue;
-        itemUpdates[i.name].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'}
+        itemUpdates[i.id].flags['tidy5e-sheet'] = {'favorite': true};
+        if (invalidTypes.includes(itemUpdates[i.id].type)) continue;
+        itemUpdates[i.id].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'}
     }
-    itemUpdates[featureData.name] = featureData;
+    itemUpdates[featureData._id] = featureData;
     let updates = {
         'token': wildshapeToken,
         'actor': wildshapeActor,
@@ -203,7 +206,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [effectData.name]: effectData
             }
         }
-    }
+    };
     await warpgate.mutate(workflow.token.document, updates, {}, mutateOptions);
 }
 async function hook() {

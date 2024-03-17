@@ -15,7 +15,7 @@ export async function healingLight({speaker, actor, token, character, item, args
     await workflow.item.update({
         'system.uses.value': healingLightFeatureUses - selection
      });
-     let damageRoll = await chris.damageRoll(workflow, selection + 'd6[healing');
+     let damageRoll = await chris.damageRoll(workflow, selection + 'd6[healing]');
      await workflow.setDamageRolls([damageRoll]);
      queue.remove(workflow.item.uuid);
 }

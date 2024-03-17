@@ -1,12 +1,11 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
 async function critical({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !workflow.isCritical) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'crusherCritical', 450);
     if (!queueSetup) return;
-    if (!chris.getRollDamageTypes(workflow.damageRoll).has('bludgeoning')) {
+    if (!chris.getRollsDamageTypes(workflow.damageRolls).has('bludgeoning')) {
         queue.remove(workflow.item.uuid);
         return;
     }
@@ -46,7 +45,7 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
     queue.remove(workflow.item.uuid);
 }
 async function move({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size != 1 || !workflow.damageRoll) return;
+    if (workflow.hitTargets.size != 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     let targetToken = workflow.targets.first();
     let targetSize = chris.getSize(targetToken.actor, false);
     if (targetSize > (chris.getSize(workflow.actor, false) + 1)) return;
@@ -54,10 +53,10 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
     if (!feature) return;
     let turnCheck = chris.perTurnCheck(feature, 'feat', 'crusher', false);
     if (!turnCheck) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'crusherCritical', 450);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'crusher', 450);
     if (!queueSetup) return;
-    let damageTypes = chris.getRollDamageTypes(workflow.damageRoll);
-    if (!damageTypes.has(translate.damageType('bludgeoning'))) {
+    let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
+    if (!damageTypes.has('bludgeoning')) {
         queue.remove(workflow.item.uuid);
         return;
     }
