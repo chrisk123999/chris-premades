@@ -83,7 +83,7 @@ export function combatUpdate(combat, changes, context) {
                 if (spell.ignoreSelf && sourceToken.id == token.id) continue;
                 if (spell.nonAllies && (token.disposition === sourceToken.disposition || token.disposition === 0)) continue;
                 let distance = chris.getDistance(token, sourceToken, spell.wallsBlock);
-                if (distance > spell.range || distance == -1) continue;
+                if (distance > spell.range || distance === -1) continue;
                 validSources.push(spell);
             }
             let maxLevel = Math.max(...validSources.map(spell => spell.castLevel));
