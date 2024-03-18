@@ -1,3 +1,9 @@
+# 0.10.36 Release:
+## Bug Fixes:
+- Twinned Spell
+- Find Familiar
+- Spirit Guardians
+  
 # 0.10.35 Release:
 ## Bug Fixes:
 - Wildshape

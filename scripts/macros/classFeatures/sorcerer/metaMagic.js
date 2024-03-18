@@ -382,7 +382,7 @@ async function twinnedSpell({speaker, actor, token, character, item, args, scope
     let spellData = duplicate(workflow.item.toObject());
     let [config, options] = constants.syntheticItemWorkflowOptions([targetTokenUuid], false, spellLevel);
     setProperty(spellData, 'flags.chris-premades.metaMagic', true);
-    spellData.system.components.concentration = false;
+    spellData.system.properties = spellData.system.properties.filter(i => i != 'concentration');
     let spell = new CONFIG.Item.documentClass(spellData, {'parent': workflow.actor});
     spell.prepareData();
     spell.prepareFinalAttributes();

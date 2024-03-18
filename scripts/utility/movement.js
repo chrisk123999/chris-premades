@@ -41,8 +41,8 @@ export async function tokenMoved(token, changes, options, userId) {
             if (!sourceToken) continue;
             if (spell.ignoreSelf && sourceToken.id == token.id) continue;
             if (spell.nonAllies && (token.disposition === sourceToken.document.disposition || token.disposition === 0)) continue;
-            let distance = chris.getDistance(token.object, sourceToken);
-            if (distance > spell.range) continue;
+            let distance = chris.getDistance(token.object, sourceToken, spell.wallsBlock);
+            if (distance > spell.range || distance === -1) continue;
             if (spell.offTurnMoveSpecial && chris.inCombat()) {
                 if (game.combat.current.tokenId != token.id) {
                     let oldDistance = chris.getCoordDistance(sourceToken, {
@@ -110,7 +110,7 @@ export function combatUpdate(combat, changes, context) {
         }
     }
 }
-async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn, effectUuid, offTurnMoveSpecial) {
+async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTokenID, range, ignoreSelf, nonAllies, turn, effectUuid, offTurnMoveSpecial, wallsBlock) {
     let spell = {
         'castLevel': castLevel,
         'spellDC': spellDC,
@@ -123,7 +123,8 @@ async function addTrigger(name, castLevel, spellDC, damage, damageType, sourceTo
         'turn': turn,
         'macro': name,
         'effectUuid': effectUuid,
-        'offTurnMoveSpecial': offTurnMoveSpecial
+        'offTurnMoveSpecial': offTurnMoveSpecial,
+        'wallsBlock': wallsBlock
     }
     if (!triggers[name]) triggers[name] = [];
     triggers[name].push(spell);

@@ -55,12 +55,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     }
-    if (chris.getItem(workflow.actor, 'Eldritch Invocations: Investment of the Chain Master')) { 
-        let movement = await chris.dialog('Which Movement Type?', [['Flying', 'fly'], ['Swimming', 'swim']]);
+    let investmentOfTheChainMaster = chris.getItem(workflow.actor, 'Eldritch Invocations: Investment of the Chain Master');
+    if (investmentOfTheChainMaster) { 
+        let movement = await chris.dialog(investmentOfTheChainMaster.name, [['Flying', 'fly'], ['Swimming', 'swim']], 'Which Movement Type?');
         let weaponItems = sourceActor[0].items.filter(i => i.type === 'weapon');
         let saveItems = sourceActor[0].items.filter(i => i.system.save.dc != null);
         for (let i of weaponItems) {
-            let properties = getProperty(updates, 'embedded.Item.' + i.name + '.system.properties');
+            let properties = Array.from(i.system.properties);
             properties.push('mgc');
             setProperty(updates, 'embedded.Item.' + i.name + '.system.properties', properties);
         }
