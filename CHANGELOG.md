@@ -1,3 +1,7 @@
+# 0.10.37 Release:
+## Update Notes:
+- Added automatic character backup feature.
+  
 # 0.10.36 Release:
 ## Bug Fixes:
 - Twinned Spell

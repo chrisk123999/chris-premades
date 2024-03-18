@@ -3,7 +3,7 @@ import {flanking} from './macros/generic/syntheticAttack.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
-import {addMenuSetting, chrisSettingsAnimations, chrisSettingsArtifact, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
+import {addMenuSetting, chrisSettingsAnimations, chrisSettingsArtifact, chrisSettingsBackup, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
 import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
@@ -1708,6 +1708,65 @@ export function registerSettings() {
         'default': false
     });
     addMenuSetting('Artifact Spell Action', 'Artifact Properties');
+    game.settings.register(moduleName, 'Last Backup', {
+        'name': 'Last Backup Time',
+        'hint': '',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': Date.now()
+    });
+    game.settings.register(moduleName, 'Enable Character Backup', {
+        'name': 'Enable Character Backup',
+        'hint': 'If enabled, characters owned by players will automatically be backed up.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false
+    });
+    addMenuSetting('Enable Character Backup', 'Backup');
+    game.settings.register(moduleName, 'Backup Compendium', {
+        'name': 'Compendium',
+        'hint': 'Which compendium will backup characters be stored in.',
+        'scope': 'world',
+        'config': false,
+        'type': String,
+        'default': undefined,
+        'select': true
+    });
+    addMenuSetting('Backup Compendium', 'Backup');
+    game.settings.register(moduleName, 'Backup Retention Period', {
+        'name': 'Retention Period',
+        'hint': 'How long to retain old backup actors.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 0,
+        'choices': {
+            0: 'Forever',
+            604800000: 'One Week',
+            1314873000: 'Half a Month',
+            2629746000: 'One Month',
+            7890000000: 'Three Months',
+            15780000000: 'Six Months',
+            31536000000: 'One Year'
+        }
+    });
+    addMenuSetting('Backup Retention Period', 'Backup');
+    game.settings.register(moduleName, 'Backup Frequency', {
+        'name': 'Frequency',
+        'hint': 'How often to make backups.',
+        'scope': 'world',
+        'config': false,
+        'type': Number,
+        'default': 79200,
+        'choices': {
+            79200000: 'Daily',
+            597600000: 'Weekly',
+            2622546000: 'Monthly'
+        }
+    });
+    addMenuSetting('Backup Frequency', 'Backup');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
@@ -1818,6 +1877,14 @@ export function registerSettings() {
         'hint': 'Settings that modify the user interface.',
         'icon': 'fas fa-display',
         'type': chrisSettingsInterface,
+        'restricted': true
+    });
+    game.settings.registerMenu(moduleName, 'Backups', {
+        'name': 'Backups',
+        'label': 'Backups',
+        'hint': 'Settings for automatic backups.',
+        'icon': 'fas fa-floppy-disk',
+        'type': chrisSettingsBackup,
         'restricted': true
     });
     game.settings.registerMenu(moduleName, 'Artifact Properties', {

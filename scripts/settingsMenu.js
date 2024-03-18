@@ -23,7 +23,8 @@ let labels = {
     'Minor-Beneficial-Properties': 'Configure',
     'Major-Beneficial-Properties': 'Configure',
     'Minor-Detrimental-Properties': 'Configure',
-    'Major-Detrimental-Properties': 'Configure'
+    'Major-Detrimental-Properties': 'Configure',
+    'Backup-Compendium': 'Select'
 };
 class chrisSettingsBase extends FormApplication {
     constructor() {
@@ -183,6 +184,12 @@ export class chrisSettingsArtifact extends chrisSettingsBase {
         this.category = 'Artifact Properties';
     }
 }
+export class chrisSettingsBackup extends chrisSettingsBase {
+    constructor() {
+        super();
+        this.category = 'Backup';
+    }
+}
 export class chrisSettingsTroubleshoot extends FormApplication {
     constructor() {
         super();
@@ -330,6 +337,7 @@ export async function settingButton(id) {
             await selectCompendium(id, 'Item');
             break;
         case 'Monster Compendium':
+        case 'Backup Compendium':
             await selectCompendium(id, 'Actor');
             break;
         case 'tour':
