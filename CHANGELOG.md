@@ -1,3 +1,7 @@
+# 0.10.39 Release:
+## Update Notes:
+- Renamed Vampiric Bite to Fanged Bite to match DDBI naming scheme for Dhampir.
+  
 # 0.10.38 Release:
 ## Bug Fixes:
 - Hunter's Mark

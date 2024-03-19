@@ -4876,9 +4876,9 @@ export function setConfig() {
                 'name': 'Starlight Step',
                 'version': '0.8.23'
             },
-            'Vampiric Bite': {
-                'name': 'Vampiric Bite',
-                'version': '0.7.01'
+            'Fanged Bite': {
+                'name': 'Fanged Bite',
+                'version': '0.10.39'
             },
             'Dwarven Resilience': {
                 'name': 'Dwarven Resilience',
