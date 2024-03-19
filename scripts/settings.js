@@ -23,6 +23,7 @@ import {firearm} from './macros/mechanics/firearm.js';
 import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
+import {createActor} from './backup.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 let previousSettings = {};
@@ -1722,7 +1723,14 @@ export function registerSettings() {
         'scope': 'world',
         'config': false,
         'type': Boolean,
-        'default': false
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('preCreateActor', createActor);
+            } else {
+                Hooks.off('preCreateActor', createActor);
+            }
+        }
     });
     addMenuSetting('Enable Character Backup', 'Backup');
     game.settings.register(moduleName, 'Backup Compendium', {

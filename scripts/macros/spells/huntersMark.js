@@ -112,7 +112,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     let queueSetup = await queue.setup(workflow.item.uuid, 'huntersMark', 250);
     if (!queueSetup) return;
     let bonusDamageFormula = '1d6[' + workflow.defaultDamageType + ']'
-    await chris.addToDamageRoll(workflow, bonusDamageFormula, true);
+    await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
 }
 async function move({speaker, actor, token, character, item, args, scope, workflow}) {

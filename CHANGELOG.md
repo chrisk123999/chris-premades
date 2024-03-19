@@ -1,3 +1,9 @@
+# 0.10.38 Release:
+## Bug Fixes:
+- Hunter's Mark
+- Spirit Guardians
+- Primal Companion
+  
 # 0.10.37 Release:
 ## Update Notes:
 - Added automatic character backup feature.

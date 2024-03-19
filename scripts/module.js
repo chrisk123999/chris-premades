@@ -42,7 +42,7 @@ import {tours} from './tours.js';
 import {addChatButton} from './chat.js';
 import {enableMacroSidebar, enableSelectTool} from './userInterface.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
-import {backupCharacters} from './backup.js';
+import {backupCharacters, createActor} from './backup.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -120,7 +120,10 @@ Hooks.once('ready', async function() {
         }
         if (game.settings.get('chris-premades', 'Compelled Duel')) Hooks.on('updateToken', macros.compelledDuel.movement);
         if (game.settings.get('chris-premades', 'Check For Updates')) checkUpdate();
-        if (game.settings.get('chris-premades', 'Enable Character Backup')) await backupCharacters();
+        if (game.settings.get('chris-premades', 'Enable Character Backup')) {
+            await backupCharacters();
+            Hooks.on('preCreateActor', createActor);
+        }
         Hooks.on('createChatMessage', addChatButton);
     }
     await loadTriggers();
