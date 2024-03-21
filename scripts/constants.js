@@ -46,7 +46,8 @@ function syntheticItemWorkflowOptions(targets, useSpellSlot, castLevel, consume)
             'configureDialog': false,
             'workflowOptions': {
                 'autoRollDamage': 'always',
-                'autoFastDamage': true
+                'autoFastDamage': true,
+                'autoRollAttack': true
             }
         }
     ];

@@ -15,6 +15,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
         }
     }
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
+    if (workflow.item.flags?.['chris-premades']?.attackRoll?.enabled) setProperty(featureData, 'flags.chris-premades.attackRoll', {'enabled': true, 'value': workflow.item.flags?.['chris-premades']?.attackRoll?.value});
     delete featureData._id;
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     feature.prepareData();

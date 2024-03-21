@@ -1,3 +1,12 @@
+# 0.10.40 Release:
+## Bug Fixes:
+- Hold Person
+- Synaptic Static
+- Scorching Ray
+- Ring of Spell Storing
+- Check Cover
+- Overtime Creator
+  
 # 0.10.39 Release:
 ## Update Notes:
 - Renamed Vampiric Bite to Fanged Bite to match DDBI naming scheme for Dhampir.

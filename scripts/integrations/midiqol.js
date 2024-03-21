@@ -204,7 +204,7 @@ export async function overtimeCreator(effect) {
                 dc = '@attributes.spelldc';
                 break;
             case 'item':
-                dc = '$chris.itemDC';
+                dc = '@item.save.dc';
                 break;
             case 'flat':
                 let selection2 = await chris.menu('Overtime Creator', constants.okCancel, [{'type': 'number', 'label': 'Flat DC:', 'options': chris.getSpellDC(effect.parent)}], true);

@@ -3361,10 +3361,7 @@ export function setConfig() {
             },
             'Hold Person': {
                 'name': 'Hold Person',
-                'version': '0.7.01',
-                'settings': [
-                    'Active Effect Additions'
-                ]
+                'version': '0.10.40'
             },
             'Shadow of Moil': {
                 'name': 'Shadow of Moil',
@@ -4663,7 +4660,7 @@ export function setConfig() {
             },
             'Ring of Spell Storing (0/5)': {
                 'name': 'Ring of Spell Storing (0/5)',
-                'version': '0.7.01'
+                'version': '0.10.40'
             },
             'Boots of Elvenkind': {
                 'name': 'Boots of Elvenkind',
@@ -5940,10 +5937,7 @@ export function setConfig() {
             },
             'Synaptic Static': {
                 'name': 'Synaptic Static',
-                'version': '0.8.23',
-                'settings': [
-                    'Active Effect Additions'
-                ]
+                'version': '0.10.40'
             },
             'Booming Blade': {
                 'name': 'Booming Blade',

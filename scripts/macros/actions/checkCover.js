@@ -10,7 +10,7 @@ export async function checkCover({speaker, actor, token, character, item, args, 
         targets = Array.from(workflow.targets);
     }
     let text = reverseCover ? 'Your Cover:' : 'Target Cover:';
-    let selection = await chris.selectTarget(workflow.item.name, constants.okCancel, targets, false, 'multiple', false, false, text, workflow.token, reverseCover);
+    let selection = await chris.selectTarget(workflow.item.name, constants.okCancel, targets, false, 'multiple', false, false, text, workflow.token, reverseCover, true);
     if (!selection.buttons) return;
     chris.updateTargets(selection.inputs);
 }

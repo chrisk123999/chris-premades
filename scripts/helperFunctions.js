@@ -156,7 +156,7 @@ export let chris = {
         }
         return spellMod;
     },
-    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover) {
+    'selectTarget': async function _selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover, displayDistance) {
         let generatedInputs = [];
         let isFirst = true;
         let number = 1;
@@ -176,6 +176,10 @@ export let chris = {
                 name += ' [' + chris.checkCover(coverToken, i, undefined, true) + ']';
             } else if (coverToken) {
                 name += ' [' + chris.checkCover(i, coverToken, undefined, true) + ']';
+            }
+            if (displayDistance && coverToken) {
+                let distance = chris.getDistance(coverToken, i);
+                name += ' [' + +distance.toFixed(2) + ' ' + canvas.scene.grid.units + ' ]';
             }
             let texture = i.document.texture.src;
             let html = `<img src="` + texture + `" id="` + i.id + `" style="width:40px;height:40px;vertical-align:middle;"><span> ` + name + `</span>`;

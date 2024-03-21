@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -23,8 +24,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             ui.notifications.info('Ring is full!');
             return;
         }
-        let generatedMenu = [];
-        workflow.actor.items.forEach(item => {
+        let documents = workflow.actor.items.filter(item => {
             let prepared = item.system.preparation?.prepared;
             let mode = item.system.preparation?.mode;
             let hasUses = true;
@@ -32,43 +32,26 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             let max = Number(item.system.uses?.max || 0);
             if (max > 0 && uses === 0) hasUses = false;
             if (mode === 'atwill' || mode === 'innate' || mode === 'pact' || mode === 'always') prepared = true;
-            if (item.type === 'spell' && item.system.level > 0 && 5 - storedSpellLevels >= item.system.level && prepared && hasUses) generatedMenu.push(item);
+            if (item.type === 'spell' && item.system.level > 0 && 5 - storedSpellLevels >= item.system.level && prepared && hasUses) return item;
         });
-        if (generatedMenu.length === 0) {
+        if (documents.length === 0) {
             ui.notifications.info('No spells available to store!');
             return;
         }
-        generatedMenu.sort((a, b) => a.name.localeCompare(b.name));
-        let range = 0;
-        let selectedSpell = false;
-        let spellData;
-        let spellDC;
+        let selection = await chris.selectDocument(workflow.item.name, documents, false, undefined, true);
+        if (!selection) return;
         let spellMod = '';
-        let originalSpell;
-        while (!selectedSpell) {
-            let listMenu = [];
-            if (range != 0) listMenu.push(['- Previous -', 'previous']);
-            let rangeTop = Math.min(range + 10, generatedMenu.length);
-            for (let i = range; rangeTop > i; i++) {
-                listMenu.push([generatedMenu[i].name, i]);
+        let originalSpell = selection[0];
+        let spellData = duplicate(originalSpell.toObject());
+        delete spellData._id;
+        let spellDC = chris.getSpellDC(originalSpell);
+        let dummyWorkflow = await (new MidiQOL.DummyWorkflow(workflow.actor, originalSpell, workflow.token, new Set([workflow.token]), {}).simulateAttack(workflow.token));
+        if (dummyWorkflow.attackRoll) {
+            spellMod = dummyWorkflow.attackRoll.formula.split('1d20')[1];
+            if (spellMod.substring(0, 2) === ' +') {
+                spellMod = spellMod.substring(3);
             }
-            if (rangeTop != generatedMenu.length) listMenu.push(['- Next -', 'next']);
-            let spellKey = await chris.dialog('Store what spell?', listMenu);
-            if (!(spellKey || spellKey === 0)) return;
-            if (spellKey === 'previous') {
-                range -= 10;
-            } else if (spellKey === 'next') {
-                range += 10;
-            } else {
-                spellData = generatedMenu[spellKey].toObject();
-                spellDC = chris.getSpellDC(generatedMenu[spellKey]);
-                if (generatedMenu[spellKey].system.actionType === 'rsak' || generatedMenu[spellKey].system.actionType === 'msak') {
-                    let dummyWorkflow = await (new MidiQOL.DummyWorkflow(workflow.actor, generatedMenu[spellKey], workflow.token, new Set([workflow.token])).simulateAttack(workflow.token));
-                    spellMod = dummyWorkflow.attackRoll.formula.split('1d20')[1];
-                }
-                originalSpell = generatedMenu[spellKey];
-                selectedSpell = true;
-            }
+            setProperty(spellData, 'flags.chris-premades.attackRoll', {'value': spellMod, 'enabled': true});
         }
         let castLevel;
         if (spellData.system.preparation.mode === 'prepared' || spellData.system.preparation.mode === 'pact' || spellData.system.preparation.mode === 'always') {
@@ -120,45 +103,23 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             spellData.system.save.scaling = 'flat';
             spellData.system.save.dc = spellDC;
         }
-        spellData.flags['chris-premades'] = {
-            'item': {
-                'ross': {
-                    'isStored': true,
-                    'castLevel': castLevel,
-                    'dc': spellDC,
-                    'mod': spellMod,
-                    'itemUuid': workflow.item.uuid
-                }
-            }
-        };
+        setProperty(spellData, 'flags.chris-premades.item.ross', {
+            'isStored': true,
+            'castLevel': castLevel,
+            'dc': spellDC,
+            'mod': spellMod,
+            'itemUuid': workflow.item.uuid
+        });
         spellData.flags['custom-character-sheet-sections'] = {
             'sectionName': 'Ring of Spell Storing'
         };
-        let testFlag = spellData.flags['midi-qol'];
-        if (!testFlag) spellData.flags['midi-qol'] = {
-            'onUseMacroName': '',
-            'onUseMacroParts': {
-                'items': []
-            }
-        };
-        let onUseString = spellData.flags['midi-qol'].onUseMacroName;
-        let appendString = '[preItemRoll]function.chrisPremades.macros.ringOfSpellStoring.cast,[preCheckHits]function.chrisPremades.macros.ringOfSpellStoring.attack';
+        let onUseString = spellData.flags?.['midi-qol']?.onUseMacroName;
+        let appendString = '[preItemRoll]function.chrisPremades.macros.ringOfSpellStoring.cast';
         if (onUseString === undefined) {
-            spellData.flags['midi-qol'].onUseMacroName = appendString;
+            setProperty(spellData, 'flags.midi-qol.onUseMacroName', appendString);
         } else {
-            spellData.flags['midi-qol'].onUseMacroName = onUseString + ',' + appendString;
+            setProperty(spellData, 'flags.midi-qol.onUseMacroName', onUseString + ',' + appendString);
         }
-        let onUseMacroParts = spellData.flags['midi-qol'].onUseMacroParts;
-        if (!onUseMacroParts) onUseMacroParts = {'items': []};
-        onUseMacroParts.items.push({
-            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.cast',
-            'option': 'preItemRoll'
-        });
-        onUseMacroParts.items.push({
-            'macroName': 'function.chrisPremades.macros.ringOfSpellStoring.attack',
-            'option': 'preCheckHits'
-        });
-        spellData.flags['midi-qol'].onUseMacroParts = onUseMacroParts;
         let storedSpells = workflow.item.flags['chris-premades']?.item?.ross?.storedSpells;
         if (!storedSpells) storedSpells = [];
         storedSpells.push(spellData);
@@ -193,15 +154,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         ui.notifications.info('Used spells cleared.');
     }
 }
-async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    let mod = workflow.item.flags['chris-premades']?.item?.ross?.mod;
-    if (!mod) mod = '0';
-    let queueSetup = await queue.setup(workflow.item.uuid, 'ringOfSpellStoring', 50);
-    if (!queueSetup) return;
-    let updatedRoll = await new Roll('1d20' + mod).evaluate({'async': true});
-    workflow.setAttackRoll(updatedRoll);
-    queue.remove(workflow.item.uuid);
-}
 async function cast({speaker, actor, token, character, item, args, scope, workflow}) {
     workflow.config.consumeSpellSlot = false;
     workflow.config.needsConfiguration = false;
@@ -229,7 +181,7 @@ async function cast({speaker, actor, token, character, item, args, scope, workfl
     }
     let effectData = {
         'label': workflow.item.name + ' Deletion',
-        'icon': '',
+        'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {
             'seconds': 604800
@@ -240,20 +192,11 @@ async function cast({speaker, actor, token, character, item, args, scope, workfl
                     'script': chris.functionToString(effectMacro)
                 }
             }
-    /*          'dae': {
-                'transfer': false,
-                'specialDuration': [
-                    'longRest'
-                ],
-                'stackable': 'multi',
-                'macroRepeat': 'none'
-            } */
         }
     };
     await chris.createEffect(workflow.actor, effectData);
 }
 export let ringOfSpellStoring = {
     'item': item,
-    'attack': attack,
     'cast': cast
 }
