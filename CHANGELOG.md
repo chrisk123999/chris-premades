@@ -1,3 +1,7 @@
+# 0.10.42 Release:
+## Bug Fixes:
+- Green-Flame Blade
+  
 # 0.10.41 Release:
 ## New Content:
 - College of Swords Bard: Master's Flourish

@@ -1,7 +1,7 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {translate} from '../../translations.js';
-async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+export async function greenFlameBlade({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
@@ -23,9 +23,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     weapon.prepareFinalAttributes();
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await warpgate.wait(100);
-    ignoreAttack = true;
     let attackWorkflow = await MidiQOL.completeItemUse(weapon, config, options);
-    ignoreAttack = false;
     if (!attackWorkflow) return;
     if (!attackWorkflow.hitTargets.size) return;
     let targets = chris.findNearby(workflow.targets.first(), 5, 'ally', true, false);
@@ -45,7 +43,4 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let damageFormula = level > 4 ? diceNumber + 'd8[' + damageType + '] + ' + modifier : modifier + '[' + damageType + ']';
     let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
     await chris.applyWorkflowDamage(workflow.token, damageRoll, 'fire', [target], workflow.item.name, attackWorkflow.itemCardId);
-}
-export let greenFlameBlade = {
-    'item': item
 }
