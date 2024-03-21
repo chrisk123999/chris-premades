@@ -3719,7 +3719,7 @@ export function setConfig() {
             },
             'Blade Flourish': {
                 'name': 'Blade Flourish',
-                'version': '0.7.01',
+                'version': '0.10.41',
                 'classes': [
                     'bard'
                 ],
@@ -3729,19 +3729,19 @@ export function setConfig() {
             },
             'Blade Flourish Movement': {
                 'name': 'Blade Flourish Movement',
-                'version': '0.7.01'
+                'version': '0.10.41'
             },
             'Defensive Flourish': {
                 'name': 'Defensive Flourish',
-                'version': '0.7.01'
+                'version': '0.10.41'
             },
             'Mobile Flourish': {
                 'name': 'Mobile Flourish',
-                'version': '0.7.01'
+                'version': '0.10.41'
             },
             'Slashing Flourish': {
                 'name': 'Slashing Flourish',
-                'version': '0.7.01'
+                'version': '0.10.41'
             },
             'Blood Curse of the Fallen Puppet': {
                 'name': 'Blood Curse of the Fallen Puppet',
@@ -5949,7 +5949,7 @@ export function setConfig() {
             },
             'Green-Flame Blade': {
                 'name': 'Green-Flame Blade',
-                'version': '0.8.26'
+                'version': '0.10.41'
             },
             'Spray of Cards': {
                 'name': 'Spray of Cards',
@@ -6362,6 +6362,10 @@ export function setConfig() {
             'Circle Forms': {
                 'name': 'Circle Forms',
                 'version': '0.10.31'
+            },
+            'Master\'s Flourish': {
+                'name': 'Master\'s Flourish',
+                'version': '0.10.41'
             }
         }
     });

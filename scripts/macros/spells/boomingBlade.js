@@ -14,18 +14,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!selection) return;
     let level = chris.levelOrCR(workflow.actor);
     let diceNumber = Math.floor((level + 1) / 6);
-    let weapon;
-    if (level > 4) {
-        let weaponData = duplicate(selection.toObject());
-        delete weaponData._id;
-        weaponData.system.damage.parts.push([diceNumber + 'd8[' + translate.damageType('thunder') + ']', 'thunder']);
-        weaponData.system.properties.push('mgc');
-        weapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
-        weapon.prepareData();
-        weapon.prepareFinalAttributes();
-    } else {
-        weapon = selection;
-    }
+    let weaponData = duplicate(selection.toObject());
+    delete weaponData._id;
+    setProperty(weaponData, 'flags.chris-premades.spell.boomingBlade', true);
+    if (level > 4) weaponData.system.damage.parts.push([diceNumber + 'd8[' + translate.damageType('thunder') + ']', 'thunder']);
+    let weapon = new CONFIG.Item.documentClass(weaponData, {'parent': workflow.actor});
+    weapon.prepareData();
+    weapon.prepareFinalAttributes();
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await warpgate.wait(100);
     let attackWorkflow = await MidiQOL.completeItemUse(weapon, config, options);

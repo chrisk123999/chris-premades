@@ -1,3 +1,15 @@
+# 0.10.41 Release:
+## New Content:
+- College of Swords Bard: Master's Flourish
+## Bug Fixes:
+- Blade Flourish
+- Blade Flourish Movement
+- Defensive Flourish
+- Mobile Flourish
+- Slashing Flourish
+- Booming Blade
+- Green-Flame Blade
+  
 # 0.10.40 Release:
 ## Bug Fixes:
 - Hold Person
