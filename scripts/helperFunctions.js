@@ -1217,5 +1217,21 @@ export let chris = {
     'createActor': async function _createActor(actorData) {
         if (game.user.isGM) return await Actor.create(actorData);
         return await socket.executeAsUser('createActor', chris.lastGM.id, actorData);
+    },
+    'checkLight': function _checkLight(token) {
+        if (token.document.parent.globalLight) return 'bright';
+        let c = Object.values(token.center);
+        let lights = canvas.effects.lightSources.filter(src => !(src instanceof GlobalLightSource) && src.shape.contains(...c));
+        if (!lights.length) return 'dark';
+        let inBright = lights.some(light => {
+            let {'data': {x, y}, ratio} = light;
+            let bright = ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
+                'type': 'light',
+                'boundaryShapes': [new PIXI.Circle(x, y, ratio * light.shape.config.radius)]
+            });
+            return bright.contains(...c);
+        });
+        if (inBright) return 'bright';
+        return 'dim';
     }
 }

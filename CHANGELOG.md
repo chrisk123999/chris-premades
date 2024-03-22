@@ -1,3 +1,7 @@
+# 0.10.44 Release:
+## Bug Fixes:
+- Actor Backups
+  
 # 0.10.43 Release:
 ## New Content:
 - Settings for auto updating player summoned and owned tokens' initiative under Summons settings

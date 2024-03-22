@@ -12,7 +12,7 @@ export async function backupCharacters() {
     if (characters.length) {
         if (lastBackupTime + frequency <= currentTime) {
             let folderName = new Date(currentTime).toDateInputString();
-            let folder = pack.folders.find(i => i.name = folderName);
+            let folder = pack.folders.getName(i => i.name = folderName);
             if (!folder) {
                 folder = await Folder.create({
                     'name': folderName,
@@ -21,7 +21,7 @@ export async function backupCharacters() {
             }
             let actorDatas = await Promise.all(characters.map(async i => {
                 let actorData = i.toObject();
-                actorData._id = randomID();
+                delete actorData._id;
                 setProperty(actorData, 'flags.chris-premades.backup.time', currentTime);
                 setProperty(actorData, 'folder', folder.id);
                 return actorData;
