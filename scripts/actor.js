@@ -1,7 +1,12 @@
 async function update(actors) {
     for (let actor of actors) {
         console.log('Updating: ' + actor.name);
-        await game.modules.get('ddb-importer')?.api.effects.addDDBIEffectsToActorDocuments(actor, {'useChrisPremades': true });
+        try {
+            await game.modules.get('ddb-importer')?.api.effects.addDDBIEffectsToActorDocuments(actor, {'useChrisPremades': true });
+        } catch (error) {
+            console.log('Error when updating ' + actor.name);
+            console.error(error);
+        }
     }
 }
 export async function updateSidebarNPCs() {

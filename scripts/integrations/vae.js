@@ -33,12 +33,12 @@ export async function vaeTempItemButton(effect, buttons) {
     } else {
         buttons.push({
             'label': 'Use: ' + name,
-            'callback': async function(){
-                let item = effect.parent.items.getName(name);
+            'callback': async function() {
+                let item = effect.transfer ? effect.parent.actor.items.getName(name) : effect.parent.items.getName(name);
                 if (item) {
                     await item.use();
                 } else {
-                    ui.notifications.warn(name + ' item not found!');
+                    ui.notifications.warn(name + ' not found!');
                 }
             }
         });

@@ -2,8 +2,11 @@ import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 function setup(enabled) {
     if (enabled) {
-        CONFIG.DND5E.weaponIds['firearmCR'] = 'chris-premades.CPR Item Features.rOfrToXtvyjWSD8B';
+        CONFIG.DND5E.weaponIds.firearmCR = 'chris-premades.CPR Item Features.rOfrToXtvyjWSD8B';
         CONFIG.DND5E.featureTypes.class.subtypes.trickShot = 'Trick Shot';
+        CONFIG.DND5E.weaponProficiencies.oth = 'Other';
+        CONFIG.DND5E.weaponProficienciesMap.firearmCR = 'oth';
+        CONFIG.DND5E.weaponTypes.firearmCR = 'Firearm (CR)';
         Hooks.on('midi-qol.preItemRoll', status);
         Hooks.on('midi-qol.preCheckHits', misfire);
         Hooks.on('midi-qol.RollComplete', grit);
@@ -11,6 +14,9 @@ function setup(enabled) {
     } else {
         delete CONFIG.DND5E.weaponIds['firearmCR'];
         delete CONFIG.DND5E.featureTypes.class.subtypes.trickShot;
+        delete CONFIG.DND5E.weaponProficiencies.oth;
+        delete CONFIG.DND5E.weaponProficienciesMap.firearmCR;
+        delete CONFIG.DND5E.weaponTypes.firearmCR;
         Hooks.off('midi-qol.preItemRoll', status);
         Hooks.off('midi-qol.preCheckHits', misfire);
         Hooks.off('midi-qol.RollComplete', grit);
@@ -58,9 +64,9 @@ async function status(workflow) {
 }
 async function misfire(workflow) {
     if (!workflow.item) return;
-    let baseItem = workflow.item.system.type?.baseItem ;
+    let baseItem = workflow.item.system.type?.baseItem;
     if (baseItem != 'firearmCR') return;
-    let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem);
+    let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem) || workflow.actor.system.traits.weaponProf.value.has('oth');
     let misfireScore = chris.getConfiguration(workflow.item, 'misfire') ?? 1;
     if (!proficient) misfireScore += 1;
     if (workflow.attackRoll.terms[0].total > misfireScore) return;

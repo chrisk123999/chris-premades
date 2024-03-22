@@ -48,7 +48,7 @@ export function setConfig() {
             'Planar Wanderer': [
                 'Planar Wanderer: Planar Adaptation'
             ],
-            'Gunslinger': [
+            'Adept Marksman': [
                 'Reload Firearm',
                 'Repair Firearm'
             ]
@@ -5894,7 +5894,7 @@ export function setConfig() {
             },
             'Firearm (CR)': {
                 'name': 'Firearm (CR)',
-                'version': '0.8.20',
+                'version': '0.10.43',
                 'settings': [
                     'Critical Role Firearm Support'
                 ]
@@ -6199,27 +6199,27 @@ export function setConfig() {
             },
             'Palm Pistol (Exandria)': {
                 'name': 'Palm Pistol (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.43'
             },
             'Bad News (Exandria)': {
                 'name': 'Bad News (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.43'
             },
             'Blunderbuss (Exandria)': {
                 'name': 'Blunderbuss (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.43'
             },
             'Musket (Exandria)': {
                 'name': 'Musket (Exandria)',
-                'version': '0.10.16'
+                'version': '0.10.43'
             },
             'Pepperbox (Exandria)': {
                 'name': 'Pepperbox (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.43'
             },
             'Pistol (Exandria)': {
                 'name': 'Pistol (Exandria)',
-                'version': '0.9.45'
+                'version': '0.10.43'
             },
             'Javelin of Lightning': {
                 'name': 'Javelin of Lightning',

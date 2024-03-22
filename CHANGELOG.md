@@ -1,3 +1,14 @@
+# 0.10.43 Release:
+## Bug Fixes:
+- Firearm Support
+- Firearm (CR)
+- Palm Pistol (Exandria)
+- Bad News (Exandria)
+- Blunderbuss (Exandria)
+- Musket (Exandria)
+- Pepperbox (Exandria)
+- Pistol (Exandria)
+  
 # 0.10.42 Release:
 ## Bug Fixes:
 - Green-Flame Blade
