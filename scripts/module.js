@@ -69,6 +69,7 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('rollItem', runAsUser.rollItem);
     socket.register('createFolder', runAsGM.createFolder);
     socket.register('createActor', runAsGM.createActor);
+    socket.register('updateInitiative', runAsGM.updateInitiative);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {
@@ -248,6 +249,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Use Fumble Table')) Hooks.on('midi-qol.postAttackRollComplete', macros.criticalFumble.fumble);
     if (game.settings.get('chris-premades', 'Flat Attack Bonus')) Hooks.on('midi-qol.preCheckHits', flatAttack.attack);
     setPreviousSettings();
+    if (game.settings.get('chris-premades', 'Summons Initiative')) Hooks.on('dnd5e.rollInitiative', tashaSummon.updateSummonInitiative);
+    if (game.settings.get('chris-premades', 'Companions Initiative')) Hooks.on('dnd5e.rollInitiative', tashaSummon.updateCompanionInitiative);
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.values = game.packs.contents.filter(i => i.metadata.type === 'Actor').map(j => ({'value': j.metadata.id, 'html': j.metadata.label}));
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.default = game.settings.get('chris-premades', 'Monster Compendium');
 });

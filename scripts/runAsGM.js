@@ -28,13 +28,19 @@ async function createFolder(folderData) {
 async function createActor(actorData) {
     return await Actor.create(actorData);
 }
+function updateInitiative(combatantUuid, initiative) {
+    let combatant = fromUuidSync(combatantUuid);
+    if (!combatant) return;
+    combatant.update({'initiative': initiative});
+}
 export let runAsGM = {
     'updateCombatant': updateCombatant,
     'updateEffect': updateEffect,
     'createEffect': createEffect,
     'removeEffect': removeEffect,
     'createFolder': createFolder,
-    'createActor': createActor
+    'createActor': createActor,
+    'updateInitiative': updateInitiative,
 }
 async function rollItem(itemUuid, config, options) {
     let item = await fromUuid(itemUuid);

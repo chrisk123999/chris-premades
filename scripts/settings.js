@@ -1775,6 +1775,38 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Backup Frequency', 'Backup');
+    game.settings.register(moduleName, 'Summons Initiative', {
+        'name': 'Auto Update Summons Initiative',
+        'hint': 'Automatically update player controlled warpgate summons\' initaitve to be just after the player\'s',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.rollInitiative', tashaSummon.updateSummonInitiative);
+            } else {
+                Hooks.off('dnd5e.rollInitiative', tashaSummon.updateSummonInitiative);
+            }
+        }
+    });
+    addMenuSetting('Summons Initiative', 'Summons');
+    game.settings.register(moduleName, 'Companions Initiative', {
+        'name': 'Auto Update Companions Initiative',
+        'hint': 'Automatically update player owned NPCs\' initiative to be just after the player\'s',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('dnd5e.rollInitiative', tashaSummon.updateCompanionInitiative);
+            } else {
+                Hooks.off('dnd5e.rollInitiative', tashaSummon.updateCompanionInitiative);
+            }
+        }
+    });
+    addMenuSetting('Companions Initiative', 'Summons');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',
