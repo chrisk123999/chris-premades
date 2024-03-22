@@ -8,6 +8,8 @@
 - Musket (Exandria)
 - Pepperbox (Exandria)
 - Pistol (Exandria)
+## Update Notes:
+- The firearm base item has been adjusted, make sure to update any custom made firearms.
   
 # 0.10.42 Release:
 ## Bug Fixes:
