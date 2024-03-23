@@ -35,10 +35,9 @@
       {
         "id": "dnd5e",
         "type": "system",
-        "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
           "minimum": "3.0.2",
-          "verified": "3.0.2"
+          "verified": "3.0.4"
         }
       }
     ],
@@ -46,7 +45,6 @@
       {
         "id": "midi-qol",
         "type": "module",
-        "manifest": "https://gitlab.com/tposney/midi-qol/raw/v10/package/module.json",
         "compatibility": {
           "minimum": "11.4.1",
           "verified": "11.4.1"
@@ -55,7 +53,6 @@
       {
         "id": "dfreds-convenient-effects",
         "type": "module",
-        "manifest": "https://github.com/DFreds/dfreds-convenient-effects/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "6.0.3",
           "verified": "6.0.3"
@@ -64,7 +61,6 @@
       {
         "id": "warpgate",
         "type": "module",
-        "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "1.19.2",
           "verified": "1.19.2"
@@ -73,7 +69,6 @@
       {
         "id": "effectmacro",
         "type": "module",
-        "manifest": "https://github.com/krbz999/effectmacro/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "11.2.1",
           "verified": "11.2.1"
@@ -82,7 +77,6 @@
       {
         "id": "templatemacro",
         "type": "module",
-        "manifest": "https://github.com/krbz999/templatemacro/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "11.0.1",
 		  "verified": "11.0.1"
@@ -91,7 +85,6 @@
       {
         "id": "sequencer",
         "type": "module",
-        "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "3.1.4",
           "verified": "3.1.4"
@@ -100,7 +93,6 @@
       {
         "id": "token-attacher",
         "type": "module",
-        "manifest": "https://raw.githubusercontent.com/KayelGee/token-attacher/master/module.json",
         "compatibility": {
           "minimum": "v4.5.15",
           "verified": "v4.5.15"
@@ -109,7 +101,6 @@
       {
         "id": "babonus",
         "type": "module",
-        "manifest": "https://github.com/krbz999/babonus/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "11.8.0",
           "verified": "11.8.0"
@@ -118,7 +109,6 @@
       {
         "id": "socketlib",
         "type": "module",
-        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json",
         "compatibility": {
           "minimum": "1.0.13",
           "verified": "1.0.13"
@@ -127,7 +117,6 @@
       {
         "id": "dae",
         "type": "module",
-        "manifest": "https://gitlab.com/tposney/dae/raw/v10/package/module.json",
         "compatibility": {
           "minimum": "11.3.0.5",
           "verified": "11.3.0.5"
@@ -136,7 +125,6 @@
       {
         "id": "autoanimations",
         "type": "module",
-        "manifest": "https://github.com/otigon/automated-jb2a-animations/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "4.2.71",
           "verified": "4.2.71"
@@ -145,7 +133,6 @@
       {
         "id": "times-up",
         "type": "module",
-        "manifest": "https://gitlab.com/tposney/times-up/raw/dndv3/package/module.json",
         "compatibility": {
           "minimum": "11.3.1",
           "verified": "11.3.1"
@@ -156,7 +143,6 @@
       {
         "id": "tidy5e-sheet",
         "type": "module",
-        "manifest": "https://github.com/sdenec/tidy5e-sheet/releases/download/0.8.25/module.json",
         "compatibility": {
           "verified": "0.8.25"
         }
@@ -164,7 +150,6 @@
       {
         "id": "custom-character-sheet-sections",
         "type": "module",
-        "manifest": "https://github.com/jessev14/custom-character-sheet-sections/releases/latest/download/module.json",
         "compatibility": {
           "verified": "1.5.0"
         }
@@ -172,7 +157,6 @@
       {
         "id": "tokenmagic",
         "type": "module",
-        "manifest": "https://raw.githubusercontent.com/Feu-Secret/Tokenmagic/master/tokenmagic/module.json",
         "compatibility": {
           "verified": "0.6.5.0"
         }
@@ -180,7 +164,6 @@
       {
         "id": "ddb-importer",
         "type": "module",
-        "manifest": "https://github.com/mrprimate/ddb-importer/releases/download/latest/module.json",
         "compatibility": {
           "verified": "3.6.0"
         }
@@ -188,7 +171,6 @@
       {
         "id": "visual-active-effects",
         "type": "module",
-        "manifest": "https://github.com/krbz999/visual-active-effects/releases/latest/download/module.json",
         "compatibility": {
           "verified": "11.0.5"
         }
@@ -196,7 +178,6 @@
       {
         "id": "animated-spell-effects-cartoon",
         "type": "module",
-        "manifest": "https://github.com/jackkerouac/animated-spell-effects-cartoon/releases/download/latest/module.json",
         "compatibility": {
           "verified": "0.4.5"
         }
@@ -204,7 +185,6 @@
       {
         "id": "universal-animations",
         "type": "module",
-        "manifest": "https://github.com/Autumn225/universal-animations/releases/latest/download/module.json",
         "compatibility": {
           "verified": "0.2.0"
         }
