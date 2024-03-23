@@ -1283,9 +1283,7 @@ export let chris = {
                 break;
             // no default
         }
-    
         searchCompendiums.push(...game.settings.get('chris-premades', 'Additional Compendiums'));
-    
         const chrisPacks = [
             'chris-premades.CPR Items',
             'chris-premades.CPR Spells',
@@ -1300,7 +1298,6 @@ export let chris = {
         const miscPacks = miscItems && game.modules.get('midi-item-showcase-community')?.active
             ? Array.from(game.modules.get('midi-item-showcase-community').packs).map(i => i.id)
             : [];
-    
         const additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
         searchCompendiums.sort((a, b) => {
             let numA = additionalCompendiumPriority[a] ?? 10;

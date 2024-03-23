@@ -1,3 +1,7 @@
+# 0.10.47 Release:
+## Update Notes:
+- Updated DDBI support. (Thanks MrPrimate)
+  
 # 0.10.46 Release:
 ## New Content:
 - Gloomstalker Ranger: Umbral Sight

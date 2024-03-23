@@ -176,20 +176,20 @@ async function itemConfig(itemDocument) {
     }
 }
 export async function updateItem(itemDocument) {
-    const flagName = itemDocument.flags?.['chris-premades']?.info?.name;
-    const automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
+    let flagName = itemDocument.flags?.['chris-premades']?.info?.name;
+    let automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
     let itemName = automation && flagName ? flagName : itemDocument.name;
     itemName = getItemName(itemName);
 
-    const itemType = itemDocument.type;
-    const isNPC = itemDocument.actor?.type === 'npc';
+    let itemType = itemDocument.type;
+    let isNPC = itemDocument.actor?.type === 'npc';
     let compendiumItem;
     let foundCompendiumName;
     let sourceModule;
     if (!isNPC || itemType === 'spell') {
-        const searchCompendiums = await chris.getSearchCompendiums(itemType);
-        for (const compendiumId of searchCompendiums) {
-            const compendium = game.packs.get(compendiumId);
+        let searchCompendiums = await chris.getSearchCompendiums(itemType);
+        for (let compendiumId of searchCompendiums) {
+            let compendium = game.packs.get(compendiumId);
             if (!compendium) continue;
             compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
             if (compendiumItem) {
@@ -199,9 +199,9 @@ export async function updateItem(itemDocument) {
             }
         }
     } else if (isNPC) {
-        const itemActor = itemDocument.actor;
-        const monsterName = itemActor.name;
-        const monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
+        let itemActor = itemDocument.actor;
+        let monsterName = itemActor.name;
+        let monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
         foundCompendiumName = "Chris's Premades";
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
@@ -215,7 +215,7 @@ export async function updateItem(itemDocument) {
         ui.notifications.info('No available automation! (Or the item has different name)');
         return;
     }
-    const selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
+    let selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
     if (!selection) return;
     ChatMessage.create({
         'speaker': {'alias': 'Chris\'s Premades'},
@@ -257,18 +257,18 @@ export async function updateItem(itemDocument) {
         originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     }
     if (compendiumItem.flags['chris-premades']?.info) {
-        const info = foundry.utils.duplicate(compendiumItem.flags['chris-premades'].info);
+        let info = foundry.utils.duplicate(compendiumItem.flags['chris-premades'].info);
         foundry.utils.setProperty(originalItem, 'flags.chris-premades.info', info);
     }
     switch (sourceModule) {
         case 'midi-item-showcase-community': {
-            const miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[itemName];
+            let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[itemName];
             foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.misc', miscAutomation);
             foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
             break;
         }
         case 'gambits-premades': {
-            const gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
+            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
             foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
             foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
