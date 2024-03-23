@@ -1,0 +1,14 @@
+import {chris} from '../../../../helperFunctions.js';
+export async function umbralSight({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.targets.size != 1 || !workflow.token) return;
+    let validTypes = ['dark', 'dim'];
+    if (!validTypes.includes(chris.checkLight(workflow.token))) return;
+    let targetToken = workflow.targets.first();
+    let distance = chris.getDistance(workflow.token, targetToken);
+    let targetSenses = targetToken.actor.system.attributes.senses;
+    if ((!targetSenses.darkvision) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance)) return;
+    let feature = chris.getItem(workflow.actor, 'Umbral Sight');
+    if (!feature) return;
+    workflow.advantage= true;
+    workflow.attackAdvAttribution.add('Advantage: ' + feature.name);
+}

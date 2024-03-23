@@ -1,3 +1,7 @@
+# 0.10.46 Release:
+## New Content:
+- Gloomstalker Ranger: Umbral Sight
+  
 # 0.10.45 Release:
 ## New Monster Features:
 - Shadow Demon: Light Sensitivity and Shadow Stealth

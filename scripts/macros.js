@@ -359,6 +359,7 @@ import {turnTheFaithless} from './macros/classFeatures/paladin/oathOfTheAncients
 import {turnUndead} from './macros/classFeatures/cleric/turnUndead.js';
 import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/twilightSanctuary.js';
 import {twilightShroud} from './macros/classFeatures/cleric/twilightDomain/twilightShroud.js';
+import {umbralSight} from './macros/classFeatures/ranger/gloomStalker/umbralSight.js';
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
@@ -877,6 +878,7 @@ export let macros = {
     'turnUndead': turnUndead,
     'twilightSanctuary': twilightSanctuary,
     'twilightShroud': twilightShroud,
+    'umbralSight': umbralSight,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
     'viciousIntent': viciousIntent,

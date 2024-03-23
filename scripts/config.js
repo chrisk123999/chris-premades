@@ -6374,6 +6374,10 @@ export function setConfig() {
             'Master\'s Flourish': {
                 'name': 'Master\'s Flourish',
                 'version': '0.10.41'
+            },
+            'Umbral Sight': {
+                'name': 'Umbral Sight',
+                'version': '0.10.46'
             }
         }
     });
