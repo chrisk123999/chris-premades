@@ -190,7 +190,7 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Save Patching')) patchSaves(true);
     if (game.settings.get('chris-premades', 'Dice So Nice')) {
         Hooks.on('midi-qol.preItemRoll', diceSoNice.early);
-        Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late)
+        Hooks.on('midi-qol.DamageRollComplete', diceSoNice.late);
     }
     if (game.settings.get('chris-premades', 'Arcane Ward')) Hooks.on('midi-qol.preTargetDamageApplication', macros.arcaneWard.damage);
     if (game.settings.get('chris-premades', 'Automation Verification')) Hooks.on('midi-qol.preItemRoll', info);
@@ -264,7 +264,7 @@ let dev = {
     'updateAllCompendiums': updateAllCompendiums,
     'checkPassiveEffects': checkPassiveEffects,
     'checkPackEffects': checkPackEffects
-}
+};
 globalThis['chrisPremades'] = {
     constants,
     dev,
@@ -278,5 +278,5 @@ globalThis['chrisPremades'] = {
     tashaSummon,
     tokenMove,
     translate,
-    troubleshoot
-}
+    troubleshoot,
+};

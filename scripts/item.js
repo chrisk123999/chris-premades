@@ -176,89 +176,20 @@ async function itemConfig(itemDocument) {
     }
 }
 export async function updateItem(itemDocument) {
-    let additionalCompendiums = game.settings.get('chris-premades', 'Additional Compendiums');
-    let additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
-    let flagName = itemDocument.flags?.['chris-premades']?.info?.name;
-    let automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
-    let itemName = itemDocument.name;
-    if (automation && flagName) itemName = flagName;
-    let itemType = itemDocument.type;
-    let searchCompendiums = [];
-    let isNPC = false;
-    if (itemDocument.actor.type === 'npc') isNPC = true;
+    const flagName = itemDocument.flags?.['chris-premades']?.info?.name;
+    const automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
+    let itemName = automation && flagName ? flagName : itemDocument.name;
+    itemName = getItemName(itemName);
+
+    const itemType = itemDocument.type;
+    const isNPC = itemDocument.actor?.type === 'npc';
     let compendiumItem;
     let foundCompendiumName;
-    let gambitItems = game.modules.get('gambits-premades')?.active ? game.settings.get('chris-premades', 'GPS Support') : false;
-    let miscItems = game.modules.get('midi-item-showcase-community')?.active ? game.settings.get('chris-premades', 'MISC Support') : false;
-    itemName = getItemName(itemName);
     let sourceModule;
     if (!isNPC || itemType === 'spell') {
-        switch (itemType) {
-            case 'weapon':
-            case 'equipment':
-            case 'consumable':
-            case 'tool':
-            case 'backpack':
-            case 'loot':
-                searchCompendiums.push('chris-premades.CPR Items');
-                if (gambitItems) searchCompendiums.push('gambits-premades.gps-items');
-                if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-items');
-                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-items');
-                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
-                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
-                break;
-            case 'spell':
-                searchCompendiums.push('chris-premades.CPR Spells');
-                if (gambitItems) searchCompendiums.push('gambits-premades.gps-spells');
-                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-spells');
-                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
-                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
-                break;
-            case 'feat':
-                searchCompendiums.push('chris-premades.CPR Race Features');
-                searchCompendiums.push('chris-premades.CPR Class Features');
-                searchCompendiums.push('chris-premades.CPR Feats');
-                searchCompendiums.push('chris-premades.CPR Actions');
-                if (gambitItems) {
-                    searchCompendiums.push('gambits-premades.gps-class-features');
-                    searchCompendiums.push('gambits-premades.gps-generic-features');
-                    if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-features');
-                }
-                if (miscItems) {
-                    searchCompendiums.push('midi-item-showcase-community.misc-class-features');
-                    searchCompendiums.push('midi-item-showcase-community.misc-feats');
-                    searchCompendiums.push('midi-item-showcase-community.misc-race-features');
-                    if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
-                    if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
-                }
-                break;
-        }
-        for (let i of additionalCompendiums) searchCompendiums.push(i);
-        let packs = [
-            'chris-premades.CPR Items',
-            'chris-premades.CPR Spells',
-            'chris-premades.CPR Race Features',
-            'chris-premades.CPR Class Features',
-            'chris-premades.CPR Feats',
-            'chris-premades.CPR Actions'
-        ];
-        let gambitPacks = [];
-        if (gambitItems && game.modules.get('gambits-premades')?.active) gambitPacks = Array.from(game.modules.get('gambits-premades').packs).map(i => i.id)
-        let miscPacks = [];
-        if (miscItems && game.modules.get('midi-item-showcase-community')?.active) miscPacks = Array.from(game.modules.get('midi-item-showcase-community').packs).map(i => i.id);
-        searchCompendiums.sort((a, b) => {
-            let numA = additionalCompendiumPriority[a] ?? 10;
-            let numB = additionalCompendiumPriority[b] ?? 10;
-            if (packs.includes(a)) numA = additionalCompendiumPriority['CPR'];
-            if (packs.includes(b)) numB = additionalCompendiumPriority['CPR'];
-            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
-            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
-            if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
-            if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
-            return numA - numB;
-        });
-        for (let compendiumId of searchCompendiums) {
-            let compendium = game.packs.get(compendiumId);
+        const searchCompendiums = await chris.getSearchCompendiums(itemType);
+        for (const compendiumId of searchCompendiums) {
+            const compendium = game.packs.get(compendiumId);
             if (!compendium) continue;
             compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
             if (compendiumItem) {
@@ -267,13 +198,11 @@ export async function updateItem(itemDocument) {
                 break;
             }
         }
-    } else if (itemDocument.actor.type === 'npc') {
-        let itemActor = itemDocument.actor;
-        let monsterName = itemActor.name;
-        let sourceActor = game.actors.get(itemActor.id);
-        let monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
-        foundCompendiumName = 'Chris\'s Premades';
-        if (sourceActor) monsterName = sourceActor.name;
+    } else if (isNPC) {
+        const itemActor = itemDocument.actor;
+        const monsterName = itemActor.name;
+        const monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
+        foundCompendiumName = "Chris's Premades";
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;
@@ -286,19 +215,17 @@ export async function updateItem(itemDocument) {
         ui.notifications.info('No available automation! (Or the item has different name)');
         return;
     }
-    let selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
+    const selection = await chris.dialog('Item Updater', constants.yesNo, 'Automation found, apply it? (' + foundCompendiumName + ')');
     if (!selection) return;
     ChatMessage.create({
         'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
-    let originalItem = duplicate(itemDocument.toObject());
+    let originalItem = foundry.utils.duplicate(itemDocument.toObject());
     originalItem.name = compendiumItem.name;
     originalItem.effects = compendiumItem.effects;
     originalItem.system = compendiumItem.system;
-    let info;
-    if (compendiumItem.flags['chris-premades']?.info) info = duplicate(compendiumItem.flags['chris-premades'].info);
     originalItem.system.description = itemDocument.system.description;
     originalItem.system.chatFlavor = itemDocument.system.chatFlavor;
     originalItem.system.uses = itemDocument.system.uses;
@@ -309,32 +236,48 @@ export async function updateItem(itemDocument) {
         originalItem.system.attunement = itemDocument.system.attunement;
         originalItem.system.equipped = itemDocument.system.equipped;
     }
-    if (itemDocument.system.quantity) originalItem.system.quantity = itemDocument.system.quantity;
+    if (itemDocument.system.quantity) {
+        originalItem.system.quantity = itemDocument.system.quantity;
+    }
     originalItem.flags = compendiumItem.flags;
-    if (itemDocument.flags['tidy5e-sheet']?.favorite) originalItem.flags['tidy5e-sheet'] = {
-        'favorite': true
+    if (itemDocument.flags['tidy5e-sheet']?.favorite) {
+        originalItem.flags['tidy5e-sheet'] = {
+            'favorite': true
+        };
     }
-    if (itemDocument.flags['custom-character-sheet-sections']?.sectionName) originalItem.flags['custom-character-sheet-sections'] = {
-        'sectionName': itemDocument.flags['custom-character-sheet-sections'].sectionName
+    if (itemDocument.flags['custom-character-sheet-sections']?.sectionName) {
+        originalItem.flags['custom-character-sheet-sections'] = {
+            'sectionName': itemDocument.flags['custom-character-sheet-sections'].sectionName
+        };
     }
-    if (itemDocument.flags.ddbimporter) originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
-    if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
-    if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
+    if (itemDocument.flags.ddbimporter) {
+        originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
+    }
+    if (itemDocument.flags['chris-premades']) {
+        originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
+    }
+    if (compendiumItem.flags['chris-premades']?.info) {
+        const info = foundry.utils.duplicate(compendiumItem.flags['chris-premades'].info);
+        foundry.utils.setProperty(originalItem, 'flags.chris-premades.info', info);
+    }
     switch (sourceModule) {
-        case 'midi-item-showcase-community':
-            setProperty(originalItem, 'flags.chris-premades.info.misc', CONFIG['midi-item-showcase-community']?.automations?.[itemName]);
-            setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
+        case 'midi-item-showcase-community': {
+            const miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[itemName];
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.misc', miscAutomation);
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
             break;
-        case 'gambits-premades':
-            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
-            setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
-            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
+        }
+        case 'gambits-premades': {
+            const gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
+        }
         case 'chris-premades':
-            setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
             break;
         default:
-            setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
+            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
             break;
     }
     if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
