@@ -4,7 +4,7 @@ import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {tokenMoved, combatUpdate, tokenMovedEarly} from './utility/movement.js';
 import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {addMenuSetting, chrisSettingsAnimations, chrisSettingsArtifact, chrisSettingsBackup, chrisSettingsClassFeats, chrisSettingsCompendiums, chrisSettingsFeats, chrisSettingsGeneral, chrisSettingsHomewbrew, chrisSettingsInterface, chrisSettingsManualRolling, chrisSettingsMechanics, chrisSettingsModule, chrisSettingsMonsterFeats, chrisSettingsNPCUpdate, chrisSettingsRaceFeats, chrisSettingsRandomizer, chrisSettingsRandomizerHumanoid, chrisSettingsSpells, chrisSettingsSummons, chrisSettingsTroubleshoot} from './settingsMenu.js';
-import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
+import {effectTitleBar, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {effectAuraHooks} from './utility/effectAuras.js';
 import {allRaces, npcRandomizer, updateChanceTable} from './utility/npcRandomizer.js';
 import {rest} from './utility/rest.js';
@@ -221,22 +221,6 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Active Effect Additions', 'General');
-    game.settings.register(moduleName, 'Active Effect Origin Fix', {
-        'name': 'Active Effect Origin Fix',
-        'hint': 'This setting corrects the origin of effects on unlinked actors.',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': true,
-        'onChange': value => {
-            if (value) {
-                Hooks.on('createToken', fixOrigin);
-            } else {
-                Hooks.off('createToken', fixOrigin);
-            }
-        }
-    });
-    addMenuSetting('Active Effect Origin Fix', 'General');
     game.settings.register(moduleName, 'Skill Patching', {
         'name': 'Skill Patching',
         'hint': 'This setting allows certain macros to modify skill checks.',

@@ -1,3 +1,12 @@
+# 0.10.45 Release:
+## New Monster Features:
+- Shadow Demon: Light Sensitivity and Shadow Stealth
+- Darkling: Light Sensitivity
+- Cloaker: Light Sensitivity
+- Meenlock: Light Sensitivity
+## Update Notes:
+- Removed effect origin fixer. The module "DND5E Scriptlets" handles this better.
+  
 # 0.10.44 Release:
 ## Bug Fixes:
 - Actor Backups
@@ -2609,7 +2618,7 @@
 - Chain Lightning
 ## New Monster Content:
 - Homunculus: Bite
-- Incubus & Succubus: Draining Kiss
+- Incubus and Succubus: Draining Kiss
 - Shadow Demon: Claws
 - Shadow: Strength Drain
 ## Updated Features:
@@ -2684,5 +2693,5 @@
 ## New Content:
 - Death Domain Cleric: Reaper
 - Peace Domain Cleric: Balm of Peace
-- Tempest Domain Cleric: Destructive Wrath & Wrath of the Storm
+- Tempest Domain Cleric: Destructive Wrath and Wrath of the Storm
 - Monk: Focused Aim and Stillness of Mind

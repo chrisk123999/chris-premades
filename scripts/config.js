@@ -2875,6 +2875,14 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Light Sensitivity': {
+                'checkbox': {
+                    'enabled': {
+                        'label': 'Enabled:',
+                        'default': true
+                    }
+                }
             }
         },
         'automations': {

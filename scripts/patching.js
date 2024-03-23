@@ -23,24 +23,24 @@ async function doRollSkill(wrapped, ...args) {
         }
         if (selections.length) {
             let advantages = selections.filter(i => i.type === 'advantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
-            let disadvantags = selections.filter(i => i.type === 'disadvantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
+            let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
             let generatedInputs = [];
             if (advantages.length) {
                 generatedInputs.push({'label': '<u>Advantage:</u>', 'type': 'info'});
                 generatedInputs.push(...advantages);
             }
-            if (disadvantags.length) {
+            if (disadvantages.length) {
                 generatedInputs.push({'label': '<u>Disadvantage:</u>', 'type': 'info'});
-                generatedInputs.push(...disadvantags);
+                generatedInputs.push(...disadvantages);
             }
             let selection = await chris.menu('Skill Roll Options', constants.okCancel, generatedInputs, true);
             if (selection.buttons) {
                 let advantage = false;
                 let disadvantage = false;
                 if (advantages.length) advantage = !!selection.inputs.slice(1, advantages.length + 1).find(i => i);
-                if (disadvantags.length) {
+                if (disadvantages.length) {
                     let start = 1;
-                    let end = disadvantags.length + 1;
+                    let end = disadvantages.length + 1;
                     if (advantages.length) {
                         start += advantages.length + 1;
                         end += advantages.length + 1;
@@ -76,24 +76,24 @@ async function doRollSave(wrapped, ...args) {
         }
         if (selections.length) {
             let advantages = selections.filter(i => i.type === 'advantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
-            let disadvantags = selections.filter(i => i.type === 'disadvantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
+            let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({'type': 'checkbox', 'label': j.label, 'options': false}));
             let generatedInputs = [];
             if (advantages.length) {
                 generatedInputs.push({'label': '<u>Advantage:</u>', 'type': 'info'});
                 generatedInputs.push(...advantages);
             }
-            if (disadvantags.length) {
+            if (disadvantages.length) {
                 generatedInputs.push({'label': '<u>Disadvantage:</u>', 'type': 'info'});
-                generatedInputs.push(...disadvantags);
+                generatedInputs.push(...disadvantages);
             }
             let selection = await chris.menu('Save Roll Options', constants.okCancel, generatedInputs, true);
             if (selection.buttons) {
                 let advantage = false;
                 let disadvantage = false;
                 if (advantages.length) advantage = !!selection.inputs.slice(1, advantages.length + 1).find(i => i);
-                if (disadvantags.length) {
+                if (disadvantages.length) {
                     let start = 1;
-                    let end = disadvantags.length + 1;
+                    let end = disadvantages.length + 1;
                     if (advantages.length) {
                         start += advantages.length + 1;
                         end += advantages.length + 1;

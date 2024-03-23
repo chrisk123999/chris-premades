@@ -10,7 +10,7 @@ import {createActorHeaderButton, createHeaderButton, updateItemButton} from './i
 import {diceSoNice} from './integrations/diceSoNice.js';
 import {dndAnimations} from './integrations/dndAnimations.js';
 import {effectAuraHooks, effectAuras, effectSockets} from './utility/effectAuras.js';
-import {effectTitleBar, fixOrigin, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
+import {effectTitleBar, itemDC, noEffectAnimationCreate, noEffectAnimationDelete} from './utility/effect.js';
 import {flanking} from './macros/generic/syntheticAttack.js';
 import {checkPackEffects, checkPassiveEffects, info, removeFolderFlag, setCompendiumItemInfo, setItemName, stripUnusedFlags, updateAllCompendiums} from './info.js';
 import {macros, onHitMacro} from './macros.js';
@@ -165,7 +165,6 @@ Hooks.once('ready', async function() {
         Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
         patchActiveEffectSourceName(true);
     }
-    if (game.settings.get('chris-premades', 'Active Effect Origin Fix')) Hooks.on('createToken', fixOrigin);
     if (game.settings.get('chris-premades', 'Automatic VAE Descriptions')) Hooks.on('preCreateActiveEffect', vaeEffectDescription);
     if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
     if (game.settings.get('chris-premades', 'Condition Fixes')) removeDumbV10Effects();

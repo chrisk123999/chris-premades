@@ -25,20 +25,6 @@ export function itemDC(effect, updates, options, user) {
     if (!changed) return;
     effect.updateSource({'changes': updates.changes});
 }
-export async function fixOrigin(token, options, user) {
-    if ((game.user.id !== user) || token.actorLink) return;
-    let updates = await chris.getEffects(token.actor).reduce(async (updates, effect) => {
-        if (!effect.origin) return updates;
-        let origin = await fromUuid(effect.origin);
-        if (!origin) return updates;
-        if (!origin instanceof Item) return updates;
-        let item = token.actor.items.get(origin.id);
-        if (item) updates.push({'_id': effect.id, 'origin': item.uuid});
-        return updates;
-    }, []);
-    if (Object.keys(updates).length === 0) return;
-    await token.actor.updateEmbeddedDocuments('ActiveEffect', updates);
-}
 export function noEffectAnimationCreate(effect, updates,  options, userId) {
     if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
 }

@@ -55,5 +55,4 @@ export function createActor(actor, updates, options, userId) {
     let key = game.settings.get('chris-premades', 'Backup Compendium');
     if (actor.pack != key || actor.flags['chris-premades']?.backup?.time) return;
     actor.updateSource({'flags.chris-premades.backup.time': Date.now()});
-    console.log('here');
 }

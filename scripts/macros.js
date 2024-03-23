@@ -469,7 +469,8 @@ export let skills = {
     'grappleEscape': grapple.escape,
     'grappleInitiate': grapple.initiate,
     'labyrinthineRecall': labyrinthineRecall,
-    'stoneCamouflage': deepGnome.stoneCamouflage
+    'stoneCamouflage': deepGnome.stoneCamouflage,
+    'lightSensitivity': shadowDemon.lightSensitivity.perception
 }
 export let saves = {
     'dangerSense': dangerSense,
