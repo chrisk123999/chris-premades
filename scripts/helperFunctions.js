@@ -234,7 +234,7 @@ export let chris = {
                     t.style.flexFlow = 'row-reverse';
                     t.style.alignItems = 'center';
                     t.style.justifyContent = 'flex-end';
-                    if (type === 'one') t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true});
+                    if (type === 'one') t.addEventListener('click', function () {t.getElementsByTagName('input')[0].checked = true;});
                 }
             }
             let ths = html[0].getElementsByTagName('th');
@@ -377,11 +377,11 @@ export let chris = {
         return !(game.combat === null || game.combat === undefined || game.combat?.started === false);
     },
     'addTempItem': async function _addTempItem(actor, itemData, itemID, category, favorite, itemNumber) {
-        if (!itemData.flags['chris-premades']) itemData.flags['chris-premades'] = {}
+        if (!itemData.flags['chris-premades']) itemData.flags['chris-premades'] = {};
         itemData.flags['chris-premades'].tempItem = {
             'source': itemID,
             'itemNumber': itemNumber
-        }
+        };
         if (category) itemData.flags['custom-character-sheet-sections'] = {
             'sectionName': category
         };
@@ -455,7 +455,7 @@ export let chris = {
                 break;
             case 'grg':
                 sizeValue = 5;
-                sizeString = 'gargantuan'
+                sizeString = 'gargantuan';
                 break;
         }
         if (sizeToString) {
@@ -516,16 +516,16 @@ export let chris = {
                 crosshairs.draw();
                 crosshairs.label = distance + '/' + maxRange + 'ft.';
             }
-        }
+        };
         let callbacks = {
             'show': checkDistance
-        }
+        };
         let options = {
             'size': size,
             'icon': icon,
             'label': '0 ft.',
             'interval': interval
-        }
+        };
         if (!maxRange) return await warpgate.crosshairs.show(options);
         return await warpgate.crosshairs.show(options, callbacks);
     },
@@ -552,7 +552,7 @@ export let chris = {
     },
     'remoteDialog': async function _remoteDialog(title, options, userId, content) {
         if (userId === game.user.id) return await chris.dialog(title, options, content);
-        return await socket.executeAsUser('remoteDialog', userId, title, options, content)
+        return await socket.executeAsUser('remoteDialog', userId, title, options, content);
     },
     'firstOwner': function _firstOwner(document) {
         return warpgate.util.firstOwner(document);
@@ -589,10 +589,10 @@ export let chris = {
                         if (useUuids) {
                             resolve([i.uuid]);
                         } else {
-                            resolve([i])
+                            resolve([i]);
                         }
                     }
-                }
+                };
             }
             let height = (Object.keys(buttons).length * 56 + 46);
             if (Object.keys(buttons).length > 14 ) height = 850;
@@ -609,7 +609,7 @@ export let chris = {
             await dialog._render(true);
             dialog.element.find(".dialog-buttons").css({
                 "flex-direction": 'column',
-            })
+            });
         });
     },
     'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false, alphabetical = false) {
@@ -624,7 +624,7 @@ export let chris = {
             let content = `<form>`;
             content += `<datalist id = 'defaultNumbers'>`;
             for (let i = 0; i < 33; i++) {
-                content += `<option value = '${i}'></option>`
+                content += `<option value = '${i}'></option>`;
             }
             content += `</datalist>`;
             for (let i = 0; documents.length > i; i++) {
@@ -746,7 +746,7 @@ export let chris = {
             aura: game.settings.get('autoanimations', 'aaAutorec-aura'),
             preset: game.settings.get('autoanimations', 'aaAutorec-preset'),
             aefx: game.settings.get('autoanimations', 'aaAutorec-aefx'),
-        }
+        };
         Object.entries(autorecSettings).forEach(setting => setting[1].forEach(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase()) ? state = true : ''));
         return state;
     },
@@ -781,7 +781,7 @@ export let chris = {
             game.settings.get('autoanimations', 'aaAutorec-aura'),
             game.settings.get('autoanimations', 'aaAutorec-preset'),
             game.settings.get('autoanimations', 'aaAutorec-aefx')
-        ]
+        ];
         return autorecSettings.some(setting => setting.some(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase())));
     },
     'pushToken': async function _pushToken(sourceToken, targetToken, distance) {
@@ -933,7 +933,7 @@ export let chris = {
             case 5:
                 return 'Three-Quarters Cover';
             case 999:
-                return 'Full Cover'
+                return 'Full Cover';
             default:
                 return 'Unknown Cover';
         }
@@ -1006,7 +1006,7 @@ export let chris = {
                     crosshairs.draw();
                     crosshairs.label = distance + '/' + range + 'ft.';
                 }
-            }
+            };
         }
         return await warpgate.spawn(tokenDocument, updates, callbacks, options);
     },
@@ -1108,7 +1108,7 @@ export let chris = {
                 'y': targetPos.y,
                 'elevation': targetPos.elevation
             }
-        }
+        };
         if (!t1 || !t2) return -1;
         if (!canvas || !canvas.grid || !canvas.dimensions) return -1;
         let t1StartX = t1.document.width >= 1 ? 0.5 : t1.document.width / 2;
@@ -1178,7 +1178,7 @@ export let chris = {
         } else if (t1Elevation > t2Elevation) {
             heightDifference = t1Elevation - t2TopElevation;
         }
-        let rule = canvas.grid.diagonalRule
+        let rule = canvas.grid.diagonalRule;
         if (['555', '5105'].includes(rule)) {
             let nd = Math.min(distance, heightDifference);
             let ns = Math.abs(distance - heightDifference);
@@ -1233,5 +1233,86 @@ export let chris = {
         });
         if (inBright) return 'bright';
         return 'dim';
-    }
-}
+    },
+    'getSearchCompendiums': async function getSearchCompendiums(itemType) {
+        const gambitItems = game.modules.get('gambits-premades')?.active
+            ? game.settings.get('chris-premades', 'GPS Support')
+            : false;
+        const miscItems = game.modules.get('midi-item-showcase-community')?.active
+            ? game.settings.get('chris-premades', 'MISC Support')
+            : false;
+        const searchCompendiums = [];
+        switch (itemType) {
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                searchCompendiums.push('chris-premades.CPR Items');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-items');
+                if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-items');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-items');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
+                break;
+            case 'spell':
+                searchCompendiums.push('chris-premades.CPR Spells');
+                if (gambitItems) searchCompendiums.push('gambits-premades.gps-spells');
+                if (miscItems) searchCompendiums.push('midi-item-showcase-community.misc-spells');
+                if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
+                break;
+            case 'feat':
+                searchCompendiums.push('chris-premades.CPR Race Features');
+                searchCompendiums.push('chris-premades.CPR Class Features');
+                searchCompendiums.push('chris-premades.CPR Feats');
+                searchCompendiums.push('chris-premades.CPR Actions');
+                if (gambitItems) {
+                    searchCompendiums.push('gambits-premades.gps-class-features');
+                    searchCompendiums.push('gambits-premades.gps-generic-features');
+                    if (gambitItems === 2) searchCompendiums.push('gambits-premades.gps-homebrew-features');
+                }
+                if (miscItems) {
+                    searchCompendiums.push('midi-item-showcase-community.misc-class-features');
+                    searchCompendiums.push('midi-item-showcase-community.misc-feats');
+                    searchCompendiums.push('midi-item-showcase-community.misc-race-features');
+                    if (miscItems === 2 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-homebrew');
+                    if (miscItems === 1 || miscItems === 4) searchCompendiums.push('midi-item-showcase-community.misc-unearthed-arcana');
+                }
+                break;
+            // no default
+        }
+    
+        searchCompendiums.push(...game.settings.get('chris-premades', 'Additional Compendiums'));
+    
+        const chrisPacks = [
+            'chris-premades.CPR Items',
+            'chris-premades.CPR Spells',
+            'chris-premades.CPR Race Features',
+            'chris-premades.CPR Class Features',
+            'chris-premades.CPR Feats',
+            'chris-premades.CPR Actions'
+        ];
+        const gambitPacks = gambitItems && game.modules.get('gambits-premades')?.active
+            ? Array.from(game.modules.get('gambits-premades').packs).map(i => i.id)
+            : [];
+        const miscPacks = miscItems && game.modules.get('midi-item-showcase-community')?.active
+            ? Array.from(game.modules.get('midi-item-showcase-community').packs).map(i => i.id)
+            : [];
+    
+        const additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
+        searchCompendiums.sort((a, b) => {
+            let numA = additionalCompendiumPriority[a] ?? 10;
+            let numB = additionalCompendiumPriority[b] ?? 10;
+            if (chrisPacks.includes(a)) numA = additionalCompendiumPriority['CPR'];
+            if (chrisPacks.includes(b)) numB = additionalCompendiumPriority['CPR'];
+            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
+            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
+            if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
+            if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
+            return numA - numB;
+        });
+        return searchCompendiums;
+    },
+};
