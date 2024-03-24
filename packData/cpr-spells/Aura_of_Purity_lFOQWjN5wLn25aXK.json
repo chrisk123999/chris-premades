@@ -1,0 +1,256 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>This feature requires the \"Effect Auras\" setting to be enabled.</p><p><em>This spell is safe to rename. Do not rename the effect.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Player's Handbook pg 216"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "self",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 4,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ]
+  },
+  "name": "Aura of Purity",
+  "flags": {
+    "cf": null,
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.auraOfPurity.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.auraOfPurity.item",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.CAZNPGd8Q55TqSo2"
+    },
+    "tidy5e-sheet": {
+      "favorite": false
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Purity",
+        "version": "0.7.01",
+        "settings": [
+          "Effect Auras"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [
+    {
+      "icon": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+      "changes": [
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.name",
+          "mode": 5,
+          "value": "auraOfPurity",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.castLevel",
+          "mode": 5,
+          "value": "castLevel",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.range",
+          "mode": 5,
+          "value": "30",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.disposition",
+          "mode": 5,
+          "value": "ally",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.effectName",
+          "mode": 5,
+          "value": "Aura of Purity",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfPurity.macroName",
+          "mode": 5,
+          "value": "auraOfPurity",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "flV2jw7skIqY29Tw",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": null,
+      "flags": {
+        "dfreds-convenient-effects": {
+          "description": ""
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "undefined",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        },
+        "effectmacro": {
+          "onDelete": {
+            "script": "await chrisPremades.macros.auraOfPurity.end(token);"
+          }
+        }
+      },
+      "name": "Aura of Purity - Aura",
+      "description": "",
+      "statuses": [],
+      "_key": "!items.effects!lFOQWjN5wLn25aXK.flV2jw7skIqY29Tw"
+    }
+  ],
+  "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650906,
+    "modifiedTime": 1711189079565,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 9900000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "lFOQWjN5wLn25aXK",
+  "_key": "!items!lFOQWjN5wLn25aXK"
+}

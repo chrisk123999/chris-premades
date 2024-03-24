@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Giant Rat",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Zuhe54KGHHKFLouU",
+  "_id": "Oih6y0aSVz9dwdNo",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863075,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!Oih6y0aSVz9dwdNo"
+}

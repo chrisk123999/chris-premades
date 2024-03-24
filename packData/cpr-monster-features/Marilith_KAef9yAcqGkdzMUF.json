@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Marilith",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "u6mLBM8JoH5WZA0N",
+  "_id": "KAef9yAcqGkdzMUF",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863059,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!KAef9yAcqGkdzMUF"
+}

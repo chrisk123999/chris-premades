@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Velociraptor",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Zuhe54KGHHKFLouU",
+  "_id": "ciksE58hOnxn3a4b",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863107,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ciksE58hOnxn3a4b"
+}

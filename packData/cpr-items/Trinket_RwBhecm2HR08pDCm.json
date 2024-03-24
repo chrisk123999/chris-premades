@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Trinket",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "94jZVgsNrxMG5wxz",
+  "_id": "RwBhecm2HR08pDCm",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862991,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!RwBhecm2HR08pDCm"
+}

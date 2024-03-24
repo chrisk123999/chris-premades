@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Legacy",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "HX1c4YA2mF5DmdLg",
+  "_id": "w7jHoybAQJ5SsFJT",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863015,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!w7jHoybAQJ5SsFJT"
+}

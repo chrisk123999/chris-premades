@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Paladin",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "ioqGBYx7RDOEQf5R",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783760242,
+    "modifiedTime": 1711188862975,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ioqGBYx7RDOEQf5R"
+}

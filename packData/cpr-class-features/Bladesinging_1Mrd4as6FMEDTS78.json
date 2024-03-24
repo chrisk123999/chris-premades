@@ -1,0 +1,19 @@
+{
+  "name": "Bladesinging",
+  "sorting": "a",
+  "folder": "nnzkckouduNA2n4e",
+  "type": "Item",
+  "_id": "1Mrd4as6FMEDTS78",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862946,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!1Mrd4as6FMEDTS78"
+}

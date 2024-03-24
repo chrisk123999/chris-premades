@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Generic",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "W2SHLtiTWM5Db4Gg",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783780227,
+    "modifiedTime": 1711188863092,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!W2SHLtiTWM5Db4Gg"
+}

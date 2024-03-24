@@ -1,0 +1,160 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>You must have an actor called \"CPR - Skeleton\" and \"CPR - Zombie\" in the sidebar.</p><p>After casting this spell a new feature called \"Animate Dead - Move\" will be available in your features.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p><p>You can cast this spell again to animate more undead without reverting spawned creatures.</p><p><em>This spell is safe to be renamed.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 212"
+    },
+    "activation": {
+      "type": "minute",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 10,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 3,
+    "school": "nec",
+    "materials": {
+      "value": "a drop of blood, a piece of flesh, and a pinch of bone dust",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ]
+  },
+  "name": "Animate Dead",
+  "flags": {
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": true,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-dev-ddb-spells.4MTsjErjIXx4LQ1B"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.animateDead",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.animateDead",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Animate Dead",
+        "version": "0.7.01",
+        "actors": [
+          "CPR - Skeleton",
+          "CPR - Zombie"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/magic/death/undead-skeleton-energy-green.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1685268901210,
+    "modifiedTime": 1711189079727,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 10900000,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "rTsIr9SCrOTp2i4N",
+  "_key": "!items!rTsIr9SCrOTp2i4N"
+}

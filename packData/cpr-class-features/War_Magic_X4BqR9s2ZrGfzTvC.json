@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "War Magic",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "nnzkckouduNA2n4e",
+  "_id": "X4BqR9s2ZrGfzTvC",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862969,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!X4BqR9s2ZrGfzTvC"
+}

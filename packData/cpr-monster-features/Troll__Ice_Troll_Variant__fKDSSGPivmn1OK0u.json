@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Troll (Ice Troll Variant)",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "fiD6YmVSmoGakFdv",
+  "_id": "fKDSSGPivmn1OK0u",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863114,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!fKDSSGPivmn1OK0u"
+}

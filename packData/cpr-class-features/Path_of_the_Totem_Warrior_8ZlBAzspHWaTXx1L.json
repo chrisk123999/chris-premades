@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Path of the Totem Warrior",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "uhlZsNJghAXK82ut",
+  "_id": "8ZlBAzspHWaTXx1L",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862955,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!8ZlBAzspHWaTXx1L"
+}

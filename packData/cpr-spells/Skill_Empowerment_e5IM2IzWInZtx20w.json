@@ -1,0 +1,144 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Xanathar's Guide to Everything pg 165"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 1,
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "touch"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 5,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ]
+  },
+  "name": "Skill Empowerment",
+  "flags": {
+    "cf": {
+      "id": "temp_utz727jul4"
+    },
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": false,
+      "confirmTargets": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.skillEmpowerment"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Skill Empowerment",
+        "version": "0.9.6"
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/magic/symbols/runes-star-orange.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650460,
+    "modifiedTime": 1711189079345,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "_id": "e5IM2IzWInZtx20w",
+  "sort": 600000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_key": "!items!e5IM2IzWInZtx20w"
+}

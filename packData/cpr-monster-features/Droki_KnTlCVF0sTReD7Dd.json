@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Droki",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "7LKPnHS0SvDTuQHb",
+  "_id": "KnTlCVF0sTReD7Dd",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863062,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!KnTlCVF0sTReD7Dd"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Three Earrings",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "7LKPnHS0SvDTuQHb",
+  "_id": "B6GmNF1KUz92ztBR",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863038,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!B6GmNF1KUz92ztBR"
+}

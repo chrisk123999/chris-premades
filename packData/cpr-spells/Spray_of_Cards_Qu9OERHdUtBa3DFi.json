@@ -1,0 +1,214 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "The Book of Many Things  pg 50"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "2",
+      "units": "round"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 15,
+      "width": null,
+      "units": "ft",
+      "type": "cone",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "2d10[force]",
+          "force"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "dex",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 2,
+    "school": "con",
+    "materials": {
+      "value": "a deck of cards",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "level",
+      "formula": "1d10"
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ]
+  },
+  "name": "Spray of Cards",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "cf": null,
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.3qaWg0Uec3ujAbL9"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midi-qol": {
+      "effectActivation": false
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Spray of Cards",
+        "version": "0.8.28"
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [
+    {
+      "icon": "icons/sundries/gaming/playing-cards.webp",
+      "changes": [
+        {
+          "key": "macro.CE",
+          "mode": 0,
+          "value": "Blinded",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "CqyNA2qOdXxXteY9",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": null,
+      "flags": {
+        "dfreds-convenient-effects": {
+          "description": ""
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "undefined",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        }
+      },
+      "name": "Spray of Cards",
+      "description": "",
+      "statuses": [],
+      "_key": "!items.effects!Qu9OERHdUtBa3DFi.CqyNA2qOdXxXteY9"
+    }
+  ],
+  "img": "icons/sundries/gaming/playing-cards.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700030261516,
+    "modifiedTime": 1711189078465,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 5800000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "Qu9OERHdUtBa3DFi",
+  "_key": "!items!Qu9OERHdUtBa3DFi"
+}

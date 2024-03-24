@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Forge Domain",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "8BFzApup436ZebTf",
+  "_id": "zXv5VYHJTHGrWOph",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862986,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!zXv5VYHJTHGrWOph"
+}

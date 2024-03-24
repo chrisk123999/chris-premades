@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "College of Swords",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Ty9SPbMYr7R6mOZO",
+  "_id": "shQBkIXx1l88aKCw",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862981,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!shQBkIXx1l88aKCw"
+}

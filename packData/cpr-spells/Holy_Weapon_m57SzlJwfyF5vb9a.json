@@ -1,0 +1,165 @@
+{
+  "name": "Holy Weapon",
+  "type": "spell",
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp",
+  "system": {
+    "description": {
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>After casting this spell a new feature called \"Holy Weapon - Dismiss\" will be available in your features.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p><p><em>This spell is safe to be renamed.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Xanathar's Guide to Everything pg 157"
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "touch"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "[2d8 - radiant] Additional damage on weapon attacks, [4d8 - radiant] Burst of radiance on spell dismiss",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 5,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ]
+  },
+  "effects": [],
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.holyWeapon.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.holyWeapon.item",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoSaveFriendly": false
+    },
+    "exportSource": {
+      "world": "development-testing",
+      "system": "dnd5e",
+      "coreVersion": "10.291",
+      "systemVersion": "2.1.4"
+    },
+    "core": {
+      "sourceId": "Item.GiGHoTv9nuivU9wC"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Holy Weapon",
+        "version": "0.7.01",
+        "mutation": {
+          "self": "Holy Weapon"
+        }
+      }
+    },
+    "dnd5e": {}
+  },
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1669191924788,
+    "modifiedTime": 1711189079582,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 10000000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "m57SzlJwfyF5vb9a",
+  "_key": "!items!m57SzlJwfyF5vb9a"
+}

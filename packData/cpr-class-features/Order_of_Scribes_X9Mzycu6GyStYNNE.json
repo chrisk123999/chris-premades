@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Order of Scribes",
+  "sorting": "m",
+  "type": "Item",
+  "folder": "nnzkckouduNA2n4e",
+  "_id": "X9Mzycu6GyStYNNE",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862970,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!X9Mzycu6GyStYNNE"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Oath of Glory",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "ioqGBYx7RDOEQf5R",
+  "_id": "n13m9ZrBuZacWJv1",
+  "sort": 200000,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862987,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!n13m9ZrBuZacWJv1"
+}

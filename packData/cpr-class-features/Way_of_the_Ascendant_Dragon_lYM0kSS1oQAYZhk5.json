@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Way of the Ascendant Dragon",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "tfc2UNFSaq0WtSMO",
+  "_id": "lYM0kSS1oQAYZhk5",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862978,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!lYM0kSS1oQAYZhk5"
+}

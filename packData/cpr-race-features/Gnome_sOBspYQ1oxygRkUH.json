@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Gnome",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "sOBspYQ1oxygRkUH",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772068,
+    "modifiedTime": 1711188863012,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!sOBspYQ1oxygRkUH"
+}

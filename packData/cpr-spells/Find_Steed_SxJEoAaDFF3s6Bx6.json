@@ -1,0 +1,148 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Steeds\". Can be changed in the item's configuration.</p><p>After casting, when the steed is summoned and next to the summoner's token, this spell will automatically prompt to make any spell that targets only the summoner's token also target the steed's token. This may interact poorly with some single-target spell automations.</p><p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 240"
+    },
+    "activation": {
+      "type": "minute",
+      "cost": 10,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 30,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 2,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ]
+  },
+  "name": "Find Steed",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-dev-ddb-spells.TBBmulNnUK3t4RPs"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.findSteed.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.findSteed.item",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Find Steed",
+        "version": "0.7.14"
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/environment/creatures/horse-tan.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1685268902167,
+    "modifiedTime": 1711189078590,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 6400000,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "SxJEoAaDFF3s6Bx6",
+  "_key": "!items!SxJEoAaDFF3s6Bx6"
+}

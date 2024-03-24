@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Construct Spirit",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "TS9wthmzLMOlOtHr",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783784396,
+    "modifiedTime": 1711188863157,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!TS9wthmzLMOlOtHr"
+}

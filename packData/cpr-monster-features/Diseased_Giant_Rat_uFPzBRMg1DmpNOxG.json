@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Diseased Giant Rat",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Zuhe54KGHHKFLouU",
+  "_id": "uFPzBRMg1DmpNOxG",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863140,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!uFPzBRMg1DmpNOxG"
+}

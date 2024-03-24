@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Fey Wanderer",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "detx4Q3hioZO5yij",
+  "_id": "dVkXFCrW66SxJ22q",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862972,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!dVkXFCrW66SxJ22q"
+}

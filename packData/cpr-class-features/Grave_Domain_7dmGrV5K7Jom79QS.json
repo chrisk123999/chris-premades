@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Grave Domain",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "8BFzApup436ZebTf",
+  "_id": "7dmGrV5K7Jom79QS",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862954,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!7dmGrV5K7Jom79QS"
+}

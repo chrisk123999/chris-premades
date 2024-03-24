@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Wand",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "RwBhecm2HR08pDCm",
+  "_id": "S7YO7gQv3MNeNREt",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862991,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!S7YO7gQv3MNeNREt"
+}

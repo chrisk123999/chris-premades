@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Setessan Hoplite",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "7LKPnHS0SvDTuQHb",
+  "_id": "dUL9i1eVRDWNDDKP",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863109,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!dUL9i1eVRDWNDDKP"
+}

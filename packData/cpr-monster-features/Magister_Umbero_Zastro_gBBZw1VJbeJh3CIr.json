@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Magister Umbero Zastro",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "7LKPnHS0SvDTuQHb",
+  "_id": "gBBZw1VJbeJh3CIr",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863116,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!gBBZw1VJbeJh3CIr"
+}

@@ -1,3 +1,7 @@
+# 0.10.48 Release:
+## Update Notes:
+- Updated module release process.
+  
 # 0.10.47 Release:
 ## Update Notes:
 - Updated DDBI support. (Thanks MrPrimate)

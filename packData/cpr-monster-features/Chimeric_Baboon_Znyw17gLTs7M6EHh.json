@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Chimeric Baboon",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Zuhe54KGHHKFLouU",
+  "_id": "Znyw17gLTs7M6EHh",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863099,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!Znyw17gLTs7M6EHh"
+}

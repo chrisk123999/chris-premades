@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Samurai",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "eSRwydxOR14thfYR",
+  "_id": "swarRi6jEHB50LdU",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862982,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!swarRi6jEHB50LdU"
+}

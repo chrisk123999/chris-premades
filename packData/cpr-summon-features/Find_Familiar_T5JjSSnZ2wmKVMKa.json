@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Find Familiar",
+  "sorting": "m",
+  "type": "Item",
+  "folder": null,
+  "_id": "T5JjSSnZ2wmKVMKa",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783784386,
+    "modifiedTime": 1711188863156,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!T5JjSSnZ2wmKVMKa"
+}

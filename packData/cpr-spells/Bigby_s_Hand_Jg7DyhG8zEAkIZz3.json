@@ -1,0 +1,172 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>You must have an actor called \"CPR - Bigby's Hand\" in your actors directory. You can enable the \"Keep Summon Actors Updated\" setting to have this happen automatically.</p><p>After casting this spell a new feature called \"Bigby's Hand - Move\" will be available in your features.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p><p><em>This spell is safe to be renamed.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Player's Handbook pg 218"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 120,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 5,
+    "school": "evo",
+    "materials": {
+      "value": "An eggshell and a snakeskin glove",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ]
+  },
+  "name": "Bigby's Hand",
+  "flags": {
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midi-qol": {
+      "fumbleThreshold": null,
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.bigbysHand.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.bigbysHand.item",
+            "option": "postActiveEffects"
+          }
+        }
+      },
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-dev-ddb-spells.15tZ6vsCyl1lH8w1"
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Bigby's Hand",
+        "version": "0.7.01",
+        "actors": [
+          "CPR - Bigby's Hand"
+        ],
+        "mutation": {
+          "self": "Bigby's Hand"
+        },
+        "muation": {
+          "self": "Bigby's Hand"
+        }
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1685268902111,
+    "modifiedTime": 1711189077952,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "Jg7DyhG8zEAkIZz3",
+  "_key": "!items!Jg7DyhG8zEAkIZz3"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Mark of Warding",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "cvArQN4WlKCFQsuG",
+  "_id": "ZzR7yKQHMg0ZNOX9",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863006,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ZzR7yKQHMg0ZNOX9"
+}

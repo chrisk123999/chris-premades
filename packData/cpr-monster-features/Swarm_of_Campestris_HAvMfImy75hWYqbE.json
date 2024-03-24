@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Swarm of Campestris",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "GjwDPs3YX2Ruw6E7",
+  "_id": "HAvMfImy75hWYqbE",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863055,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!HAvMfImy75hWYqbE"
+}

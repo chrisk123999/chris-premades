@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Path of the Ancestral Guardian",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "uhlZsNJghAXK82ut",
+  "_id": "2wKuBlMbfy8mqdzC",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862948,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!2wKuBlMbfy8mqdzC"
+}

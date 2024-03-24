@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Shadar-kai",
+  "sorting": "m",
+  "type": "Item",
+  "folder": null,
+  "_id": "zwUzzXUyrUuM41PV",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772459,
+    "modifiedTime": 1711188863016,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!zwUzzXUyrUuM41PV"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Kalashtar",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "uVuJrt0hg2q4FiqS",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772179,
+    "modifiedTime": 1711188863013,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!uVuJrt0hg2q4FiqS"
+}

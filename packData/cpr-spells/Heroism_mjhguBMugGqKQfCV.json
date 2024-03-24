@@ -1,0 +1,254 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "",
+      "book": "Player's Handbook",
+      "page": "250",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "touch"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 1,
+    "school": "enc",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ]
+  },
+  "name": "Heroism",
+  "flags": {
+    "midi-qol": {
+      "forceCEOff": true,
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "forceCEOn": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[preambleComplete]function.chrisPremades.macros.heroism.early"
+    },
+    "cf": {
+      "id": "temp_gq0t0e6b5ds"
+    },
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": true,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "dae": {
+      "macro": {
+        "name": "Heroism",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "img": "icons/magic/control/control-influence-crown-gold.webp",
+        "author": "PQGBBcoVSwpUhViM",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "systemId": null,
+          "systemVersion": null,
+          "coreVersion": null,
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      }
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Heroism",
+        "version": "0.10.13"
+      }
+    }
+  },
+  "effects": [
+    {
+      "icon": "icons/magic/control/control-influence-crown-gold.webp",
+      "changes": [
+        {
+          "key": "system.traits.ci.value",
+          "mode": 0,
+          "value": "frightened",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "seconds": null,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "tint": null,
+      "transfer": false,
+      "disabled": false,
+      "flags": {
+        "dae": {
+          "transfer": false,
+          "stackable": "noneName",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ddbimporter": {
+          "disabled": false
+        },
+        "midi-qol": {
+          "forceCEOff": true
+        },
+        "core": {},
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "effectmacro": {
+          "onTurnStart": {
+            "script": "await chrisPremades.macros.heroism.turnStart(token, origin);"
+          },
+          "onDelete": {
+            "script": "await chrisPremades.macros.heroism.end(actor);"
+          }
+        }
+      },
+      "name": "Heroism",
+      "statuses": [],
+      "_id": "xGwWnMooMgksd59x",
+      "description": "",
+      "origin": null,
+      "_key": "!items.effects!mjhguBMugGqKQfCV.xGwWnMooMgksd59x"
+    }
+  ],
+  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650796,
+    "modifiedTime": 1711189079597,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "_id": "mjhguBMugGqKQfCV",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3
+  },
+  "_key": "!items!mjhguBMugGqKQfCV"
+}

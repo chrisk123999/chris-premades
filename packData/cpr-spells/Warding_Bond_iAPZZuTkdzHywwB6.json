@@ -1,0 +1,169 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>This spell will automatically apply damage from the bonded creature to the caster.</p><p>Enable \"On Hit Automation and Warding Bond Automation\" in the module settings for this spell to work.</p><p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>After casting this spell a new feature called \"Dismiss Warding Bond\" will be available on your features.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p><p><em>This spell is safe to be renamed.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 287"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "touch"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 2,
+    "school": "abj",
+    "materials": {
+      "value": "a pair of platinum rings worth at least 50 gp each, which you and the target must wear for the duration",
+      "consumed": false,
+      "cost": 50,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ]
+  },
+  "name": "Warding Bond",
+  "flags": {
+    "midi-qol": {
+      "forceCEOff": true,
+      "effectActivation": false,
+      "forceCEOn": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.wardingBond.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.wardingBond.item",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "cf": null,
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.KQ1138uWCXjYM0pv"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "exportSource": {
+      "world": "development-testing",
+      "system": "dnd5e",
+      "coreVersion": "10.291",
+      "systemVersion": "2.1.5"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Warding Bond",
+        "version": "0.7.01",
+        "settings": [
+          "Warding Bond",
+          "On Hit"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650069,
+    "modifiedTime": 1711189079469,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 9300000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "iAPZZuTkdzHywwB6",
+  "_key": "!items!iAPZZuTkdzHywwB6"
+}

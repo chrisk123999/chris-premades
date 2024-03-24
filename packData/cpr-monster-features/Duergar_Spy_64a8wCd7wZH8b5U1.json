@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Duergar Spy",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "7LKPnHS0SvDTuQHb",
+  "_id": "64a8wCd7wZH8b5U1",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863029,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!64a8wCd7wZH8b5U1"
+}

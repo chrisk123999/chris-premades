@@ -1,0 +1,19 @@
+{
+  "name": "Firearms",
+  "sorting": "a",
+  "folder": "zxppWEEatB71yS1U",
+  "type": "Item",
+  "_id": "lf6Lia28C4JqL5HV",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862994,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!lf6Lia28C4JqL5HV"
+}

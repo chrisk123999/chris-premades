@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Jourrael, the Caedogeist",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "u6mLBM8JoH5WZA0N",
+  "_id": "ddo5V2KP6RnfoJJc",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863110,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ddo5V2KP6RnfoJJc"
+}

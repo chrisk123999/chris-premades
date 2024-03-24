@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Firbolg",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "bBCZx4cYaJnGJSW4",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772087,
+    "modifiedTime": 1711188863007,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!bBCZx4cYaJnGJSW4"
+}

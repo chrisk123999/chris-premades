@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Order of the Lycan",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "QxkhZA4H8BybSLOQ",
+  "_id": "3dGvTo8b0Rx1Yk5H",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862949,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!3dGvTo8b0Rx1Yk5H"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Sprite",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "JJ3PwKVMUWlCHeO0",
+  "_id": "80ReFeoQu4uZwfhK",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863033,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!80ReFeoQu4uZwfhK"
+}

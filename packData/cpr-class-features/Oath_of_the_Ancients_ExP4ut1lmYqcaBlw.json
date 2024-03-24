@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Oath of the Ancients",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "ioqGBYx7RDOEQf5R",
+  "_id": "ExP4ut1lmYqcaBlw",
+  "sort": 300000,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862988,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ExP4ut1lmYqcaBlw"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Wood Woad (Legacy)",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "GjwDPs3YX2Ruw6E7",
+  "_id": "Odi98wPimyJPRAP7",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863073,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!Odi98wPimyJPRAP7"
+}

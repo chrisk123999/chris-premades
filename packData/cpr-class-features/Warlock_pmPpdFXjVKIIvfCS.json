@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Warlock",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "pmPpdFXjVKIIvfCS",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783760902,
+    "modifiedTime": 1711188862980,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!pmPpdFXjVKIIvfCS"
+}

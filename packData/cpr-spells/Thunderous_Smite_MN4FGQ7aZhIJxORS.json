@@ -1,0 +1,172 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Player's Handbook pg 282"
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "self",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "attackBonus": "",
+    "chatFlavor": "[2d6 - thunder] The first time you hit with a melee weapon attack during this spell’s duration",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 1,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ]
+  },
+  "name": "Thunderous Smite",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.thunderousSmite.item",
+      "forceCEOff": true,
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "cf": {
+      "id": "temp_fd1te2dtuy"
+    },
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": false,
+      "confirmTargets": "never",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "dae": {
+      "macro": {
+        "name": "Thunderous Smite",
+        "img": "icons/magic/fire/dagger-rune-enchant-flame-purple.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "PQGBBcoVSwpUhViM",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "systemId": null,
+          "systemVersion": null,
+          "coreVersion": null,
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Thunderous Smite",
+        "version": "0.10.21"
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-purple.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650800,
+    "modifiedTime": 1711189078067,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "_id": "MN4FGQ7aZhIJxORS",
+  "sort": 11200000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_key": "!items!MN4FGQ7aZhIJxORS"
+}

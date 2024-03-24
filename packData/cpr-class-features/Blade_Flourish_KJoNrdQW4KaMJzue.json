@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Blade Flourish",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "shQBkIXx1l88aKCw",
+  "_id": "KJoNrdQW4KaMJzue",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862959,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!KJoNrdQW4KaMJzue"
+}

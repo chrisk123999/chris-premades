@@ -1,0 +1,19 @@
+{
+  "name": "Hadozee",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "jx9peFF2gUpITy68",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1705292754596,
+    "modifiedTime": 1711188863008,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!jx9peFF2gUpITy68"
+}

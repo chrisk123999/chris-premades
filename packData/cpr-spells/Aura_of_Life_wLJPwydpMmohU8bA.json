@@ -1,0 +1,257 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><span style=\"font-family:Signika, sans-serif\">Enable \"Aura of Life Automation\" in the module settings for this spell to work.</span></p><p>This spell will prevent Active Effects from reducing Temporary Maximum Hitpoints while in the aura.</p><p><em>This spell is safe to rename, do not rename the effect.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Player's Handbook pg 216"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 30,
+      "width": null,
+      "units": null,
+      "type": "self",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "attackBonus": "",
+    "chatFlavor": "[healing] Each nonhostile creature in the aura (including you) when at 0 hit points",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 4,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ]
+  },
+  "name": "Aura of Life",
+  "flags": {
+    "midi-qol": {
+      "forceCEOff": true,
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.auraOfLife.item",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.auraOfLife.item",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "cf": null,
+    "midiProperties": {
+      "magicdam": false,
+      "magiceffect": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.wyowntFFTb619jZw"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Life",
+        "version": "0.8.13",
+        "settings": [
+          "Aura of Life"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [
+    {
+      "icon": "icons/magic/life/heart-area-circle-red-green.webp",
+      "changes": [
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.name",
+          "mode": 5,
+          "value": "auraOfLife",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.castLevel",
+          "mode": 5,
+          "value": "castLevel",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.range",
+          "mode": 5,
+          "value": "30",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.disposition",
+          "mode": 5,
+          "value": "ally",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.effectName",
+          "mode": 5,
+          "value": "Aura of Life",
+          "priority": 20
+        },
+        {
+          "key": "flags.chris-premades.aura.auraOfLife.macroName",
+          "mode": 5,
+          "value": "auraOfLife",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "hemNnRP2zbanh3dq",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": null,
+      "flags": {
+        "dfreds-convenient-effects": {
+          "description": ""
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "undefined",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        },
+        "effectmacro": {
+          "onDelete": {
+            "script": "await chrisPremades.macros.auraOfLife.end(token);"
+          },
+          "onEachTurn": {
+            "script": "await chrisPremades.macros.auraOfLife.turns(token, origin);"
+          }
+        }
+      },
+      "name": "Aura of Life - Aura",
+      "description": "",
+      "statuses": [],
+      "_key": "!items.effects!wLJPwydpMmohU8bA.hemNnRP2zbanh3dq"
+    }
+  ],
+  "img": "icons/magic/life/heart-area-circle-red-green.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650904,
+    "modifiedTime": 1711189079949,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 12300000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "wLJPwydpMmohU8bA",
+  "_key": "!items!wLJPwydpMmohU8bA"
+}

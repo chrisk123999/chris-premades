@@ -1,0 +1,151 @@
+{
+  "name": "Dragon Breath",
+  "type": "feat",
+  "img": "icons/magic/acid/projectile-smoke-glowing.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 15,
+      "width": null,
+      "units": "ft",
+      "type": "cone",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "3d6[fire]",
+          "fire"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "dex",
+      "dc": 10,
+      "scaling": "flat"
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": []
+  },
+  "effects": [],
+  "flags": {
+    "custom-character-sheet-sections": {
+      "sectionName": "Spell Features"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroParts": {
+        "items": []
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "offHandWeapon": false,
+      "autoSaveFriendly": false,
+      "confirmTargets": false,
+      "noConcentrationCheck": false
+    },
+    "core": {
+      "sourceId": "Item.Y09meuiuavtiEsDK"
+    },
+    "favtab": {
+      "isFavorite": true
+    },
+    "exportSource": {
+      "world": "development-testing",
+      "system": "dnd5e",
+      "coreVersion": "10.291",
+      "systemVersion": "2.1.4"
+    },
+    "tidy5e-sheet": {
+      "favorite": true
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    }
+  },
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1669872487687,
+    "modifiedTime": 1711189078127,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "rROSU2z3wttwpiF2",
+  "_key": "!items!rROSU2z3wttwpiF2"
+}

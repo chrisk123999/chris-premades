@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Mark of Detection",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "yY4WZYScdbx55O2B",
+  "_id": "vRgW60cEEavzESTr",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863014,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!vRgW60cEEavzESTr"
+}

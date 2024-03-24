@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Summer Eladrin",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "JJ3PwKVMUWlCHeO0",
+  "_id": "DQA0c2aTesyeOwuP",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863044,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!DQA0c2aTesyeOwuP"
+}

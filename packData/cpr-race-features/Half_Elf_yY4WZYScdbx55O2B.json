@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Half-Elf",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "yY4WZYScdbx55O2B",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772469,
+    "modifiedTime": 1711188863015,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!yY4WZYScdbx55O2B"
+}

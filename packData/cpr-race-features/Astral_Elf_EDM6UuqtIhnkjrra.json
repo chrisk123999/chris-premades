@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Astral Elf",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "EDM6UuqtIhnkjrra",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783772435,
+    "modifiedTime": 1711188863001,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!EDM6UuqtIhnkjrra"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Cloaker",
+  "sorting": "a",
+  "folder": "1o45n6XLdhXBCtMD",
+  "type": "Item",
+  "_id": "4wZLipEpc4kIeG7Z",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863150,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!4wZLipEpc4kIeG7Z"
+}

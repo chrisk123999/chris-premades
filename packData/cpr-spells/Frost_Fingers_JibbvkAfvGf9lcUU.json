@@ -1,0 +1,157 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Icewind Dale: Rime of the Frostmaiden pg 318"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 15,
+      "width": null,
+      "units": "ft",
+      "type": "cone",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "2d8[cold]",
+          "cold"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 1,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "level",
+      "formula": "1d8"
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ]
+  },
+  "name": "Frost Fingers",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "tidy5e-sheet": {
+      "favorite": false
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[preambleComplete]function.chrisPremades.macros.frostFingers",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.frostFingers",
+            "option": "preambleComplete"
+          }
+        }
+      }
+    },
+    "core": {
+      "sourceId": "Actor.rAa12hSQCubqogK8.Item.qSM55eSSIgIPJfel"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Frost Fingers",
+        "version": "0.7.45",
+        "hasAnimation": true
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/magic/water/projectiles-ice-faceted-salvo-gray.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1685268902154,
+    "modifiedTime": 1711189077983,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "JibbvkAfvGf9lcUU",
+  "_key": "!items!JibbvkAfvGf9lcUU"
+}

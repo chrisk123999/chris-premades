@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Clockwork Defender",
+  "sorting": "m",
+  "type": "Item",
+  "folder": "1Ywm7dBPzwf8znKC",
+  "_id": "KUbPBuS1yFrafDdv",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863061,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!KUbPBuS1yFrafDdv"
+}

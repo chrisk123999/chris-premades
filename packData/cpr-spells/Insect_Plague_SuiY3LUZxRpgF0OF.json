@@ -1,0 +1,167 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>This spell will automatically apply damage to tokens in the template following the RAW rules for Insect Plague.</p><p>Enable \"Template Listener\" in the module settings for this spell to work.</p><p>This spell with follow the overlapping spell effect rules.</p><p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 254"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 20,
+      "width": null,
+      "units": "ft",
+      "type": "sphere",
+      "prompt": true
+    },
+    "range": {
+      "value": 300,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "4d10[piercing]",
+          "piercing"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 5,
+    "school": "con",
+    "materials": {
+      "value": "a few grains of sugar, some kernels of grain, and a smear of fat",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "level",
+      "formula": "1d10"
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ]
+  },
+  "name": "Insect Plague",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.insectPlague.item",
+      "forceCEOff": true,
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.insectPlague.item",
+            "option": "postActiveEffects"
+          }
+        }
+      },
+      "effectActivation": false
+    },
+    "cf": null,
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.33mBgz5eJLxY76HB"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Insect Plague",
+        "version": "0.7.27",
+        "settings": [
+          "Template Listener"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/creatures/invertebrates/wasp-swarm-attack.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650018,
+    "modifiedTime": 1711189078545,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 6200000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "SuiY3LUZxRpgF0OF",
+  "_key": "!items!SuiY3LUZxRpgF0OF"
+}

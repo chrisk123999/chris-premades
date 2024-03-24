@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Storm Sorcery",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "rUcvqbnzSDVAYNTt",
+  "_id": "EkTBSRyC4ht9GOKN",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862958,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!EkTBSRyC4ht9GOKN"
+}

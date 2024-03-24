@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Mark of Making",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "2xcLytkqJFlwxZTi",
+  "_id": "YbzQE8WjmW0jjavp",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863005,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!YbzQE8WjmW0jjavp"
+}

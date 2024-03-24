@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "School of Necromancy",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "nnzkckouduNA2n4e",
+  "_id": "54BmjUHAnizv9gcu",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862954,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!54BmjUHAnizv9gcu"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Five-armed Troll",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "fiD6YmVSmoGakFdv",
+  "_id": "Lg5eRqrsQV0jTB8k",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863064,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!Lg5eRqrsQV0jTB8k"
+}

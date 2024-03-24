@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Circle of Stars",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "gcBllYwNQS4IBKjU",
+  "_id": "W6gi4AJvDV7Yhsb0",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862967,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!W6gi4AJvDV7Yhsb0"
+}

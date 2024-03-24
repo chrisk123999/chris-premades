@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Consumable",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "jOktYwsH9bec1mzP",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783768486,
+    "modifiedTime": 1711188862993,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!jOktYwsH9bec1mzP"
+}

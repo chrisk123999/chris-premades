@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Nimblewright",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "1Ywm7dBPzwf8znKC",
+  "_id": "HwbqivIigrK33ijR",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863056,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!HwbqivIigrK33ijR"
+}

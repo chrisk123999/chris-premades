@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Intellect Devourer",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "1o45n6XLdhXBCtMD",
+  "_id": "ajiwQKtx3I8uU0s6",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863103,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ajiwQKtx3I8uU0s6"
+}

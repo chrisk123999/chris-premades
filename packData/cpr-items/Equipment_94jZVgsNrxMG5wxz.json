@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Equipment",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "94jZVgsNrxMG5wxz",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783768314,
+    "modifiedTime": 1711188862989,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!94jZVgsNrxMG5wxz"
+}

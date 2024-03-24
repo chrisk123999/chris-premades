@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Wildfire Spirit",
+  "sorting": "m",
+  "type": "Item",
+  "folder": null,
+  "_id": "GQ0C4nvXf1Y9E5PC",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783784137,
+    "modifiedTime": 1711188863153,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!GQ0C4nvXf1Y9E5PC"
+}

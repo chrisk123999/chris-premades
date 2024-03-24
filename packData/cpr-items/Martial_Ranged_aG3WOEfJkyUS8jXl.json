@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Martial Ranged",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "zxppWEEatB71yS1U",
+  "_id": "aG3WOEfJkyUS8jXl",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862992,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!aG3WOEfJkyUS8jXl"
+}

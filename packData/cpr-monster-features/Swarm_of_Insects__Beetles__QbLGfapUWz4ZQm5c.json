@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Swarm of Insects (Beetles)",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Zuhe54KGHHKFLouU",
+  "_id": "QbLGfapUWz4ZQm5c",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863081,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!QbLGfapUWz4ZQm5c"
+}

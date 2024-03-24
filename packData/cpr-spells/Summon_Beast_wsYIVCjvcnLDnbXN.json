@@ -1,0 +1,163 @@
+{
+  "type": "spell",
+  "system": {
+    "description": {
+      "value": "<p>You must have an actor called \"CPR - Bestial Spirit\" in your actors directory. You can enable the \"Keep Summon Actors Updated\" setting to have this happen automatically.</p><p><span style=\"font-family:Signika, sans-serif\">You must have a token on the scene to use this spell (Warpgate mutation limitation).</span></p><p>This spell will prompt you to select the desired creature.</p><p>You can customize the avatars and tokens for this feature with custom file paths with the Medkit -&gt; Configure.</p><p>Summon Animations by: <a href=\"https://discord.gg/RXwkJD4hTe\">EskieMoh#2969</a></p><p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Tasha’s Cauldron of Everything pg 109"
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": null,
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 90,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 2,
+    "school": "con",
+    "materials": {
+      "value": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+      "consumed": false,
+      "cost": 200,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ]
+  },
+  "name": "Summon Beast",
+  "flags": {
+    "cf": null,
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.Q2g7wWeIvux6paBC"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.summonBeast",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.summonBeast",
+            "option": "postActiveEffects"
+          }
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": false,
+      "noConcentrationCheck": false
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Summon Beast",
+        "version": "0.7.01",
+        "actors": [
+          "CPR - Bestial Spirit"
+        ]
+      }
+    },
+    "dnd5e": {}
+  },
+  "effects": [],
+  "img": "icons/commodities/claws/claw-bear-brown-grey.webp",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1676798650248,
+    "modifiedTime": 1711189080002,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 12600000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "wsYIVCjvcnLDnbXN",
+  "_key": "!items!wsYIVCjvcnLDnbXN"
+}

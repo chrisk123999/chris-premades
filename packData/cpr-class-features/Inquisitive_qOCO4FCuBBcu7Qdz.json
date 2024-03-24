@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Inquisitive",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "vNs0nFE1fHYqqxXs",
+  "_id": "qOCO4FCuBBcu7Qdz",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862980,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!qOCO4FCuBBcu7Qdz"
+}

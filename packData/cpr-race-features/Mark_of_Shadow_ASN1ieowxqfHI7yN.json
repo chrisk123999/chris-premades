@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Mark of Shadow",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "DY2Yt9J0Tb9Q6JEy",
+  "_id": "ASN1ieowxqfHI7yN",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862999,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!ASN1ieowxqfHI7yN"
+}

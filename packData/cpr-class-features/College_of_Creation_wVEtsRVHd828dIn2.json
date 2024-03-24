@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "College of Creation",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "Ty9SPbMYr7R6mOZO",
+  "_id": "wVEtsRVHd828dIn2",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862986,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!wVEtsRVHd828dIn2"
+}

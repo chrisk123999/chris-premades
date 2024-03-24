@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "School of Evocation",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "nnzkckouduNA2n4e",
+  "_id": "SL4EqjrNxTnnh5C7",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862963,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!SL4EqjrNxTnnh5C7"
+}

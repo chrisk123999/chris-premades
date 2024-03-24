@@ -1,0 +1,196 @@
+{
+  "name": "Holy Weapon - Burst",
+  "type": "feat",
+  "img": "icons/magic/light/projectile-smoke-yellow.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 30,
+      "width": null,
+      "units": "ft",
+      "type": "enemy",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "spec"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attackBonus": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "4d8[radiant]",
+          "radiant"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": 10,
+      "scaling": "flat"
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": []
+  },
+  "effects": [
+    {
+      "icon": "icons/magic/light/projectile-smoke-yellow.webp",
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 0,
+          "value": "label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=10,saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true",
+          "priority": 20
+        },
+        {
+          "key": "macro.CE",
+          "mode": 0,
+          "value": "Blinded",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "XuRLr1RfsMGophvq",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": null,
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        }
+      },
+      "name": "Holy Weapon - Burst",
+      "description": "",
+      "statuses": [],
+      "_key": "!items.effects!zkxagi5MNc9Rry3p.XuRLr1RfsMGophvq"
+    }
+  ],
+  "flags": {
+    "custom-character-sheet-sections": {
+      "sectionName": "Spell Features"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": true,
+      "autoFailFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoSaveFriendly": false
+    },
+    "core": {
+      "sourceId": "Item.cvHR0SNNhQl2nFv6"
+    },
+    "favtab": {
+      "isFavorite": true
+    },
+    "exportSource": {
+      "world": "development-testing",
+      "system": "dnd5e",
+      "coreVersion": "10.291",
+      "systemVersion": "2.1.4"
+    },
+    "tidy5e-sheet": {
+      "favorite": true
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    }
+  },
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1670688209677,
+    "modifiedTime": 1711189078344,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "folder": null,
+  "sort": 6600000,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3
+  },
+  "_id": "zkxagi5MNc9Rry3p",
+  "_key": "!items!zkxagi5MNc9Rry3p"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Blood Curses",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "QxkhZA4H8BybSLOQ",
+  "_id": "goQnsn9Jlo5UEVAn",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188862975,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!goQnsn9Jlo5UEVAn"
+}

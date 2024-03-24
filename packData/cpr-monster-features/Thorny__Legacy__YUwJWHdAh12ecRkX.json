@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Thorny (Legacy)",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "GjwDPs3YX2Ruw6E7",
+  "_id": "YUwJWHdAh12ecRkX",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863095,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!YUwJWHdAh12ecRkX"
+}

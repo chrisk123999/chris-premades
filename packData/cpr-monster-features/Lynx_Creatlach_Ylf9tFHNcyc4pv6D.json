@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Lynx Creatlach",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "qDwAeIcBSPBXTxm2",
+  "_id": "Ylf9tFHNcyc4pv6D",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863097,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!Ylf9tFHNcyc4pv6D"
+}

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Shadow Demon",
+  "sorting": "a",
+  "type": "Item",
+  "folder": "u6mLBM8JoH5WZA0N",
+  "_id": "2zFUgCDtg0Bm1IPJ",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": null,
+    "modifiedTime": 1711188863024,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!2zFUgCDtg0Bm1IPJ"
+}
