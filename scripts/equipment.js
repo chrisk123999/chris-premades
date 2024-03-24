@@ -12,7 +12,7 @@ export async function itemFeatures(item, updates, options, id) {
     let previouslyAttuned = item.system?.attunement;
     let previousState = previouslyEquipped && (previouslyAttuned === 0 || previouslyAttuned === 2);
     let currentState = currentlyEquipped && (currentlyAttuned === 0 || currentlyAttuned === 2);
-    let currentSourceUuid = foundry.utils.getProperty(item, 'flags.core.sourceId');
+    let currentSourceUuid = getProperty(item, 'flags.core.sourceId');
     if (previousState === currentState) return;
     if (previousState && !currentState) {
         let removeItems = currentItems;
@@ -22,7 +22,7 @@ export async function itemFeatures(item, updates, options, id) {
         await item.update(updates);
         await item.actor.deleteEmbeddedDocuments('Item', removeItems.map(i => i.id));
     } else if (!previousState && currentState) {
-        let addItemsUniqueNames = currentItems.map(i => {return i.flags?.['chris-premades']?.equipmentFeature?.uniqueName});
+        let addItemsUniqueNames = currentItems.map(i => {return i.flags?.['chris-premades']?.equipmentFeature?.uniqueName;});
         let items = [];
         for (let i of chrisFeatures.items) {
             if(addItemsUniqueNames.includes(i.uniqueName)) continue;

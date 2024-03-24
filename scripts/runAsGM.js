@@ -41,7 +41,7 @@ export let runAsGM = {
     'createFolder': createFolder,
     'createActor': createActor,
     'updateInitiative': updateInitiative,
-}
+};
 async function rollItem(itemUuid, config, options) {
     let item = await fromUuid(itemUuid);
     if (!item) return;
@@ -49,4 +49,4 @@ async function rollItem(itemUuid, config, options) {
 }
 export let runAsUser = {
     'rollItem': rollItem
-}
+};

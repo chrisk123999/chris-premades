@@ -120,4 +120,4 @@ export let constants = {
     'spellAttacks': spellAttacks,
     'yesNoButton': yesNoButton,
     'nonDamageTypes': nonDamageTypes
-}
+};

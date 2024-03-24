@@ -45,11 +45,11 @@ class chrisSettingsBase extends FormApplication {
     }
     getData() {
         let generatedOptions = [];
-	    for (let setting of game.settings.settings.values()) {
+        for (let setting of game.settings.settings.values()) {
             if (setting.namespace != 'chris-premades') continue;
             let key = setting.key.split(' ').join('-');
             if (settingCategories[key] != this.category) continue;
-            const s = foundry.utils.deepClone(setting);
+            const s = deepClone(setting);
             if (s.scope === 'world' && !game.user.isGM) continue;
             s.id = `${s.key}`;
             s.name = game.i18n.localize(s.name);
@@ -65,7 +65,7 @@ class chrisSettingsBase extends FormApplication {
             if (s.select) s.isButton = true;
             s.label = labels[key];
             generatedOptions.push(s);
-	    }
+        }
         return {'settings': generatedOptions.sort(function (a, b) {
             let nameA = a.name.toUpperCase();
             let nameB = b.name.toUpperCase();
@@ -234,7 +234,7 @@ export class chrisSettingsTroubleshoot extends FormApplication {
                     'label': 'Go'
                 }
             ]
-        }
+        };
     }
     activateListeners(html) {
         super.activateListeners(html);
@@ -309,7 +309,9 @@ export async function settingButton(id) {
         case 'trouble':
             try {
                 troubleshoot();
-            } catch {}
+            } catch (error) {
+                console.error(error);
+            }
             break;
         case 'fix':
             fixSettings();
@@ -342,6 +344,7 @@ export async function settingButton(id) {
             break;
         case 'tour':
             game.settings.sheet.close();
+            // eslint-disable-next-line no-case-declarations
             let dialogApp = Object.values(ui.windows).find(i => i.id === 'chris-troubleshoot-settings');
             if (dialogApp) dialogApp.close();
             await warpgate.wait(100);
@@ -402,7 +405,7 @@ export class chrisSettingsNPCUpdate extends FormApplication {
                     'label': 'Go'
                 }
             ]
-        }
+        };
     }
     activateListeners(html) {
         super.activateListeners(html);

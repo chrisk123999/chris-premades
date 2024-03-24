@@ -31,7 +31,7 @@ export async function setPreviousSettings() {
     previousSettings = {
         'Use Critical Table': game.settings.get('chris-premades', 'Use Critical Table'),
         'Use Fumble Table': game.settings.get('chris-premades', 'Use Fumble Table')
-    }
+    };
 }
 export function registerSettings() {
     game.settings.register(moduleName, 'Automation Verification', {
@@ -1536,15 +1536,15 @@ export function registerSettings() {
         'onChange': () => debouncedReload()
     });
     addMenuSetting('Select Tool', 'User Interface');
-//    game.settings.register(moduleName, 'Metric Distance', {
-//        'name': 'Use Metric Distance',
-//        'hint': 'When enabled macros from this module will use metric for distance calculations.',
-//        'scope': 'world',
-//        'config': false,
-//        'type': Boolean,
-//        'default': false
-//    });
-//    addMenuSetting('Metric Distance', 'General');
+    //    game.settings.register(moduleName, 'Metric Distance', {
+    //        'name': 'Use Metric Distance',
+    //        'hint': 'When enabled macros from this module will use metric for distance calculations.',
+    //        'scope': 'world',
+    //        'config': false,
+    //        'type': Boolean,
+    //        'default': false
+    //    });
+    //    addMenuSetting('Metric Distance', 'General');
     game.settings.register(moduleName, 'Last Update Check', {
         'name': 'Last Update Check',
         'hint': '',
@@ -1569,7 +1569,7 @@ export function registerSettings() {
         'config': false,
         'type': Boolean,
         'default': false,
-        'onChange': value => {firearm.setup(value)}
+        'onChange': value => {firearm.setup(value);}
     });
     addMenuSetting('Critical Role Firearm Support', 'Mechanics');
     game.settings.register(moduleName, 'Dialog Targeting', {
@@ -1583,7 +1583,7 @@ export function registerSettings() {
             if (value) {
                 Hooks.on('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
             } else {
-                Hooks.off('midi-qol.preTargeting', macros.manualRolls.dialogTargeting)
+                Hooks.off('midi-qol.preTargeting', macros.manualRolls.dialogTargeting);
             }
         }
     });
@@ -1919,7 +1919,7 @@ export function registerSettings() {
         'type': chrisSettingsArtifact,
         'restricted': true
     });
-/*    game.settings.registerMenu(moduleName, 'Randomizer', {
+    /*    game.settings.registerMenu(moduleName, 'Randomizer', {
         'name': 'Randomizer',
         'label': 'Randomizer',
         'hint': 'Optional settings for randomizer features.',

@@ -2923,13 +2923,6 @@ export function setConfig() {
                 'name': 'Bestow Curse',
                 'version': '0.7.01',
             },
-            'Bigby\'s Hand': {
-                'name': 'Bigby\'s Hand',
-                'version': '0.7.01',
-                'actors': [
-                    'CPR - Bigby\'s Hand'
-                ]
-            },
             'Blade Ward': {
                 'name': 'Blade Ward',
                 'version': '0.10.20'
@@ -3079,10 +3072,6 @@ export function setConfig() {
                 'name': 'Keenness of the Stone Giant: Stone Throw',
                 'version': '0.7.01'
             },
-            'Favored Foe': {
-                'name': 'Favored Foe',
-                'version': '0.7.01'
-            },
             'Toll the Dead': {
                 'name': 'Toll the Dead',
                 'version': '0.7.15'
@@ -3124,24 +3113,12 @@ export function setConfig() {
                 'name': 'Tasha\'s Caustic Brew',
                 'version': '0.7.19'
             },
-            'Crown of Madness': {
-                'name': 'Crown of Madness',
-                'version': '0.7.01'
-            },
-            'Crusader\'s Mantle': {
-                'name': 'Crusader\'s Mantle',
-                'version': '0.7.01'
-            },
             'Sickening Radiance': {
                 'name': 'Sickening Radiance',
                 'version': '0.7.01',
                 'settings': [
                     'Template Listener'
                 ]
-            },
-            'Blight': {
-                'name': 'Blight',
-                'version': '0.7.01'
             },
             'Conjure Animals': {
                 'name': 'Conjure Animals',
@@ -3191,16 +3168,6 @@ export function setConfig() {
                 'name': 'Vitriolic Sphere',
                 'version': '0.7.01'
             },
-            'Dawn': {
-                'name': 'Dawn',
-                'version': '0.7.01',
-                'settings': [
-                    'Template Listener'
-                ],
-                'muations': {
-                    'self': 'Dawn'
-                }
-            },
             'Raulothim\'s Psychic Lance': {
                 'name': 'Raulothim\'s Psychic Lance',
                 'version': '0.7.01'
@@ -3243,17 +3210,6 @@ export function setConfig() {
                     'Protection from Evil and Good'
                 ]
             },
-            'Chromatic Orb': {
-                'name': 'Chromatic Orb',
-                'version': '0.7.01'
-            },
-            'Aura of Vitality': {
-                'name': 'Aura of Vitality',
-                'version': '0.7.01',
-                'mutation': {
-                    'self': 'Aura of Vitality'
-                }
-            },
             'Spike Growth': {
                 'name': 'Spike Growth',
                 'version': '0.7.01'
@@ -3264,14 +3220,6 @@ export function setConfig() {
             },
             'Earth Tremor': {
                 'name': 'Earth Tremor',
-                'version': '0.7.01'
-            },
-            'Charm Person': {
-                'name': 'Charm Person',
-                'version': '0.7.01'
-            },
-            'Detect Magic': {
-                'name': 'Detect Magic',
                 'version': '0.7.01'
             },
             'Eldritch Blast': {
@@ -3310,33 +3258,10 @@ export function setConfig() {
                     'CPR - Draconic Spirit'
                 ]
             },
-            'Blink': {
-                'name': 'Blink',
-                'version': '0.7.01'
-            },
-            'Danse Macabre': {
-                'name': 'Danse Macabre',
-                'version': '0.7.01',
-                'actors': [
-                    'CPR - Skeleton',
-                    'CPR - Zombie'
-                ],
-                'mutation': {
-                    'self': 'Danse Macabre - Command Undead'
-                }
-            },
-            'Destructive Wave': {
-                'name': 'Destructive Wave',
-                'version': '0.7.01'
-            },
             'Scorching Ray': {
                 'name': 'Scorching Ray',
                 'version': '0.7.45',
                 'hasAnimation': true
-            },
-            'Chain Lightning': {
-                'name': 'Chain Lightning',
-                'version': '0.7.01'
             },
             'Misty Step': {
                 'name': 'Misty Step',
@@ -3349,23 +3274,9 @@ export function setConfig() {
                     'self': 'Conjure Celestial'
                 }
             },
-            'Detect Thoughts': {
-                'name': 'Detect Thoughts',
-                'version': '0.7.01',
-                'mutation': {
-                    'self': 'Detect Thoughts - Probe Deeper'
-                }
-            },
             'Wither and Bloom': {
                 'name': 'Wither and Bloom',
                 'version': '0.7.01'
-            },
-            'Darkness': {
-                'name': 'Darkness',
-                'version': '0.7.01',
-                'settings': [
-                    'Darkness'
-                ]
             },
             'Hold Person': {
                 'name': 'Hold Person',
@@ -3405,13 +3316,6 @@ export function setConfig() {
                 'version': '0.7.45',
                 'hasAnimation': true
             },
-            'Death Ward': {
-                'name': 'Death Ward',
-                'version': '0.7.01',
-                'settings': [
-                    'Death Ward'
-                ]
-            },
             'Conjure Fey': {
                 'name': 'Conjure Fey',
                 'version': '0.7.01',
@@ -3422,13 +3326,6 @@ export function setConfig() {
             'Hail of Thorns': {
                 'name': 'Hail of Thorns',
                 'version': '0.7.01'
-            },
-            'Cloudkill': {
-                'name': 'Cloudkill',
-                'version': '0.7.01',
-                'settings': [
-                    'Template Listener'
-                ]
             },
             'Melf\'s Acid Arrow': {
                 'name': 'Melf\'s Acid Arrow',
@@ -3448,10 +3345,6 @@ export function setConfig() {
                     'Warding Bond',
                     'On Hit'
                 ]
-            },
-            'Blade Ward': {
-                'name': 'Blade Ward',
-                'version': '0.7.01'
             },
             'Summon Elemental': {
                 'name': 'Summon Elemental',
@@ -3479,13 +3372,6 @@ export function setConfig() {
                 'version': '0.7.01',
                 'actors': [
                     'CPR - Undead Spirit'
-                ]
-            },
-            'Aura of Purity': {
-                'name': 'Aura of Purity',
-                'version': '0.7.01',
-                'settings': [
-                    'Effect Auras'
                 ]
             },
             'Holy Weapon': {
@@ -3521,10 +3407,6 @@ export function setConfig() {
                 'name': 'Thorn Whip',
                 'version': '0.7.01'
             },
-            'Dragon\'s Breath': {
-                'name': 'Dragon\'s Breath',
-                'version': '0.7.01'
-            },
             'Animate Dead': {
                 'name': 'Animate Dead',
                 'version': '0.7.01',
@@ -3548,13 +3430,6 @@ export function setConfig() {
                     'self': 'Spiritual Weapon'
                 }
             },
-            'Beacon of Hope': {
-                'name': 'Beacon of Hope',
-                'version': '0.7.01',
-                'settings': [
-                    'Beacon of Hope'
-                ]
-            },
             'Vampiric Touch': {
                 'name': 'Vampiric Touch',
                 'version': '0.7.01',
@@ -3573,20 +3448,12 @@ export function setConfig() {
                 'name': 'Guiding Bolt',
                 'version': '0.7.01'
             },
-            'Chill Touch': {
-                'name': 'Chill Touch',
-                'version': '0.7.01'
-            },
             'Hex': {
                 'name': 'Hex',
                 'version': '0.7.01',
                 'mutation': {
                     'self': 'Hex'
                 }
-            },
-            'Arms of Hadar': {
-                'name': 'Arms of Hadar',
-                'version': '0.7.01'
             },
             'Summon Celestial': {
                 'name': 'Summon Celestial',
@@ -3613,10 +3480,6 @@ export function setConfig() {
                     'CPR - Bestial Spirit'
                 ]
             },
-            'Bestow Curse': {
-                'name': 'Bestow Curse',
-                'version': '0.7.01'
-            },
             'Fog Cloud': {
                 'name': 'Fog Cloud',
                 'version': '0.7.45',
@@ -3625,13 +3488,6 @@ export function setConfig() {
             'Spirit Shroud': {
                 'name': 'Spirit Shroud',
                 'version': '0.7.01'
-            },
-            'Call Lightning': {
-                'name': 'Call Lightning',
-                'version': '0.7.01',
-                'mutation': {
-                    'self': 'Storm Bolt'
-                }
             },
             'Alchemical Savant': {
                 'name': 'Alchemical Savant',
@@ -4400,10 +4256,6 @@ export function setConfig() {
                 'name': 'Rakish Audacity',
                 'version': '0.7.01'
             },
-            'Evasion': {
-                'name': 'Evasion',
-                'version': '0.7.01'
-            },
             'Sneak Attack': {
                 'name': 'Sneak Attack',
                 'version': '0.7.46'
@@ -4761,16 +4613,6 @@ export function setConfig() {
                     'self': 'Dancing Sword'
                 }
             },
-            'Dancing Greatsword': {
-                'name': 'Dancing Greatsword',
-                'version': '0.9.6',
-                'actors': [
-                    'CPR - Dancing Sword'
-                ],
-                'mutation': {
-                    'self': 'Dancing Sword'
-                }
-            },
             'Dancing Longsword': {
                 'name': 'Dancing Longsword',
                 'version': '0.9.6',
@@ -5014,14 +4856,6 @@ export function setConfig() {
                     'Elemental Adept'
                 ]
             },
-            'Ember of the Fire Giant: Searing Ignition': {
-                'name': 'Ember of the Fire Giant: Searing Ignition',
-                'version': '0.7.01'
-            },
-            'Fury of the Frost Giant: Frigid Retaliation': {
-                'name': 'Fury of the Frost Giant: Frigid Retaliation',
-                'version': '0.7.01'
-            },
             'Gift of the Chromatic Dragon: Chromatic Infusion': {
                 'name': 'Gift of the Chromatic Dragon: Chromatic Infusion',
                 'version': '0.7.01',
@@ -5031,14 +4865,6 @@ export function setConfig() {
             },
             'Gift of the Chromatic Dragon: Reactive Resistance': {
                 'name': 'Gift of the Chromatic Dragon: Reactive Resistance',
-                'version': '0.7.01'
-            },
-            'Guile of the Cloud Giant: Cloudy Escape': {
-                'name': 'Guile of the Cloud Giant: Cloudy Escape',
-                'version': '0.7.01'
-            },
-            'Keenness of the Stone Giant: Stone Throw': {
-                'name': 'Keenness of the Stone Giant: Stone Throw',
                 'version': '0.7.01'
             },
             'Orcish Fury - Extra Damage': {
@@ -5061,36 +4887,8 @@ export function setConfig() {
                 'name': 'Slasher: Reduce Speed',
                 'version': '0.9.6'
             },
-            'Strike of the Giants: Cloud Strike': {
-                'name': 'Strike of the Giants: Cloud Strike',
-                'version': '0.7.01'
-            },
-            'Strike of the Giants: Fire Strike': {
-                'name': 'Strike of the Giants: Fire Strike',
-                'version': '0.9.6'
-            },
-            'Strike of the Giants: Frost Strike': {
-                'name': 'Strike of the Giants: Frost Strike',
-                'version': '0.7.01'
-            },
-            'Strike of the Giants: Hill Strike': {
-                'name': 'Strike of the Giants: Hill Strike',
-                'version': '0.7.01'
-            },
-            'Strike of the Giants: Stone Strike': {
-                'name': 'Strike of the Giants: Stone Strike',
-                'version': '0.7.01'
-            },
-            'Strike of the Giants: Storm Strike': {
-                'name': 'Strike of the Giants: Storm Strike',
-                'version': '0.9.6'
-            },
             'Telekinetic: Shove': {
                 'name': 'Telekinetic: Shove',
-                'version': '0.7.01'
-            },
-            'Vigor of the Hill Giant: Bulwark': {
-                'name': 'Vigor of the Hill Giant: Bulwark',
                 'version': '0.7.01'
             },
             'Dash': {
@@ -5170,58 +4968,6 @@ export function setConfig() {
                 'settings': [
                     'Template Listener'
                 ]
-            },
-            'Dash': {
-                'name': 'Dash',
-                'version': '0.7.11'
-            },
-            'Disengage': {
-                'name': 'Disengage',
-                'version': '0.7.11'
-            },
-            'Dodge': {
-                'name': 'Dodge',
-                'version': '0.7.11'
-            },
-            'Fall': {
-                'name': 'Fall',
-                'version': '0.7.11'
-            },
-            'Grapple': {
-                'name': 'Grapple',
-                'version': '0.7.11'
-            },
-            'Help': {
-                'name': 'Help',
-                'version': '0.7.11'
-            },
-            'Hide': {
-                'name': 'Hide',
-                'version': '0.7.11'
-            },
-            'Ready Action': {
-                'name': 'Ready Action',
-                'version': '0.7.11'
-            },
-            'Ready Spell': {
-                'name': 'Ready Spell',
-                'version': '0.7.11'
-            },
-            'Search': {
-                'name': 'Search',
-                'version': '0.7.11'
-            },
-            'Shove': {
-                'name': 'Shove',
-                'version': '0.7.11'
-            },
-            'Squeeze': {
-                'name': 'Squeeze',
-                'version': '0.7.11'
-            },
-            'Underwater': {
-                'name': 'Underwater',
-                'version': '0.7.11'
             },
             'Sculpt Spells': {
                 'name': 'Sculpt Spells',

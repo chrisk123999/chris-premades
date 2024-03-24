@@ -31,7 +31,7 @@ let names = {
     'universal-animations': 'Universal Animations',
     'gambits-premades': 'Gambit\'s Premades',
     'midi-item-showcase-community': 'Midi Item Showcase - Community'
-}
+};
 let optionalModules = [
     'ATL',
     'about-time',
@@ -128,7 +128,7 @@ export async function troubleshoot() {
         if (game.modules.get(i)) return 1;
     }, 0);
     if (defunctModulesCount > 0) {
-        addLine('/////////////// Defunct Modules ///////////////')
+        addLine('/////////////// Defunct Modules ///////////////');
         defunctModules.forEach(id => {
             if (game.modules.get(id)) addLine(checkModule(id));
         });
@@ -161,16 +161,16 @@ export async function troubleshoot() {
         let midiSettings = game.settings.get('midi-qol', 'ConfigSettings');
         switch(midiSettings.autoCEEffects) {
             case 'none':
-                addLine('Apply Convenient Effects: None')
+                addLine('Apply Convenient Effects: None');
                 break;
             case 'itempri':
-                addLine('Apply Convenient Effects: Items > CE')
+                addLine('Apply Convenient Effects: Items > CE');
                 break;
             case 'cepri':
-                addLine('Apply Convenient Effects: CE > Items')
+                addLine('Apply Convenient Effects: CE > Items');
                 break;
             case 'both':
-                addLine('Apply Convenient Effects: Both')
+                addLine('Apply Convenient Effects: Both');
                 break;
         }
         addLine('Roll Seperate Attack Per Target: ' + midiSettings.attackPerTarget);
@@ -203,13 +203,17 @@ export async function troubleshoot() {
                     'type': 'text/plain;charset=utf-8'
                 });
                 saveAs(blob, filename);
-            } catch (error) {};
+            } catch (error) {
+                console.log(error);
+            }
         }
         async function clipboard(output) {
             try {
                 navigator.clipboard.writeText(output);
                 ui.notifications.info('Text copied to clipboard!');
-            } catch {};
+            } catch (error) {
+                console.log(error);
+            }
         }
         async function discord() {
             window.open('https://discord.gg/EhMdcMcUtU');

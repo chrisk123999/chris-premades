@@ -15,4 +15,4 @@ export let translate = {
     'healingType': healingType,
     'skills': skills,
     'conditions': conditions
-}
+};

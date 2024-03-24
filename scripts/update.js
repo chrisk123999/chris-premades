@@ -29,5 +29,7 @@ export async function checkUpdate() {
                 }
             }
         });
-    } catch {};
+    } catch (error) {
+        console.error(error);
+    }
 }

@@ -1,7 +1,6 @@
 
 chris-premades.lock
-packs/V11 Module Packs.lnk
-packs/World Packs.lnk
+packs/
 dist/
 module.json
 node_modules/

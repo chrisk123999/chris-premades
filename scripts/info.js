@@ -12,7 +12,7 @@ export async function info({speaker, actor, token, character, item, args, scope,
         let itemVersion = info.version;
         if (isNewerVersion(currentVersion, itemVersion)) {
             message += '<hr>@UUID[' + item.uuid + ']{' + item.name + '} automation is out of date!<br>Item Version: ' + itemVersion + '<br>Updated Version: ' + currentVersion;
-            gmMessage += '<button class="chris-item-button">Update Item</button>'
+            gmMessage += '<button class="chris-item-button">Update Item</button>';
             cancel = true;
             updateItem = true;
         }
@@ -25,7 +25,7 @@ export async function info({speaker, actor, token, character, item, args, scope,
         if (missingSettings.length > 0) {
             if (message != '') message += '<hr>';
             message += 'This automation requires the following settings to be enabled:';
-            gmMessage += '<button class="chris-settings-button">Enable Required Settings</button>'
+            gmMessage += '<button class="chris-settings-button">Enable Required Settings</button>';
             for (let i of missingSettings) {
                 let settingName = game.settings.settings.get('chris-premades.' + i).name;
                 message += '<br>' + settingName;
@@ -56,7 +56,7 @@ export async function info({speaker, actor, token, character, item, args, scope,
         if (missingActors.length > 0) {
             if (message != '') message += '<hr>';
             message += 'This automation requires the following sidebar actors:';
-            gmMessage += '<button class="chris-actors-button">Import Missing Actors</button>'
+            gmMessage += '<button class="chris-actors-button">Import Missing Actors</button>';
             for (let i of missingActors) {
                 message += '<br>' + i;
             }

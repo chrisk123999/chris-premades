@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-	"buildCompendiums": "node packData/packData.mjs"
+    "buildCompendiums": "node packData/packData.mjs"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
   }
 }

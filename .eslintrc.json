@@ -1,0 +1,80 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4,
+			{
+				"SwitchCase": 1
+			}
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single",
+			{
+				"avoidEscape": true,
+				"allowTemplateLiterals": true
+			}
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+		"no-unused-vars": [
+			"off"
+		]
+    },
+	"globals": {
+		"game": "writable",
+		"setProperty": "writable",
+		"Actor": "writable",
+		"ChatMessage": "writable",
+		"Item": "writable",
+		"ui": "writable",
+		"canvas": "writable",
+		"Folder": "writable",
+		"warpgate": "writable",
+		"getProperty": "writable",
+		"fromUuid": "writable",
+		"fromUuidSync": "writable",
+		"saveAs": "writable",
+		"Dialog": "writable",
+		"duplicate": "writable",
+		"MidiQOL": "writable",
+		"Roll": "writable",
+		"DAE": "writable",
+		"CONFIG": "writable",
+		"Ray": "writable",
+		"mergeObject": "writable",
+		"PIXI": "writable",
+		"GlobalLightSource": "writable",
+		"ClockwiseSweepPolygon": "writable",
+		"isNewerVersion": "writable",
+		"FilePicker": "writable",
+		"JournalEntry": "writable",
+		"JournalEntryPage": "writable",
+		"CONST": "writable",
+		"Hooks": "writable",
+		"socketlib": "writable",
+		"libWrapper": "writable",
+		"AmbientLight": "writable",
+		"TokenDocument": "writable",
+		"debouncedReload": "writable",
+		"FormApplication": "writable",
+		"deepClone": "writable",
+		"DocumentDirectory": "writable",
+		"Tour": "writable"
+	}
+}

@@ -50,16 +50,16 @@ let states = {
     },
     8: async () => {
         game.settings.sheet.close();
-        let pack = game.packs.get('dnd5e.heroes')
+        let pack = game.packs.get('dnd5e.heroes');
         if (!pack) return;
         let index = await pack.getIndex();
-        let rogue = index.getName('Riswynn (Dwarf Rogue)')
+        let rogue = index.getName('Riswynn (Dwarf Rogue)');
         if (!rogue) return;
         let document = await pack.getDocument(rogue._id);
         if (!document) return;
         document.sheet.render(true);
         await warpgate.wait(250);
-        let feature = document.items.getName('Sneak Attack')
+        let feature = document.items.getName('Sneak Attack');
         if (!feature) return;
         feature.sheet.render(true);
         await warpgate.wait(250);
@@ -71,14 +71,14 @@ let states = {
     12: async () => {
         let dialogApp = Object.values(ui.windows).find(i => i.data?.title === 'Item Configuration: Example');
         if (dialogApp) dialogApp.close();
-        let pack = game.packs.get('dnd5e.heroes')
+        let pack = game.packs.get('dnd5e.heroes');
         if (!pack) return;
         let index = await pack.getIndex();
-        let rogue = index.getName('Riswynn (Dwarf Rogue)')
+        let rogue = index.getName('Riswynn (Dwarf Rogue)');
         if (!rogue) return;
         let document = await pack.getDocument(rogue._id);
         if (!document) return;
-        let feature = document.items.getName('Sneak Attack')
+        let feature = document.items.getName('Sneak Attack');
         if (!feature) return;
         feature.sheet.close();
         document.sheet.close();
@@ -87,7 +87,7 @@ let states = {
         if (journalEntry) await journalEntry.sheet.render(true);
     }
 
-}
+};
 class chrisTour extends Tour {
     async next() {
         if (this.status === Tour.STATUS.COMPLETED) {
@@ -238,4 +238,4 @@ export let tours = {
     'guidedTour': guidedTour,
     'chrisTour': chrisTour,
     'checkTour': checkTour
-}
+};

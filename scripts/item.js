@@ -85,7 +85,7 @@ export async function updateItemButton(app, [elem], options) {
         let found = cpr(item);
         if (found) return;
         let gambitAutomation;
-        let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];;
+        let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
         if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name]; 
         if (gambitAutomation || miscAutomation) headerButton.style.color = 'yellow';
     }
@@ -110,7 +110,7 @@ async function actorConfig(actor) {
     if (changes && changes?.length) {
         let list = '';
         for (let i of changes.sort()) {
-            list += '- ' + i + '<br>'
+            list += '- ' + i + '<br>';
         }
         ChatMessage.create({
             'speaker': {'alias': 'Chris\'s Premades'},
@@ -222,7 +222,7 @@ export async function updateItem(itemDocument) {
         'whisper': [game.user.id],
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
-    let originalItem = foundry.utils.duplicate(itemDocument.toObject());
+    let originalItem = duplicate(itemDocument.toObject());
     originalItem.name = compendiumItem.name;
     originalItem.effects = compendiumItem.effects;
     originalItem.system = compendiumItem.system;
@@ -257,27 +257,27 @@ export async function updateItem(itemDocument) {
         originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
     }
     if (compendiumItem.flags['chris-premades']?.info) {
-        let info = foundry.utils.duplicate(compendiumItem.flags['chris-premades'].info);
-        foundry.utils.setProperty(originalItem, 'flags.chris-premades.info', info);
+        let info = duplicate(compendiumItem.flags['chris-premades'].info);
+        setProperty(originalItem, 'flags.chris-premades.info', info);
     }
     switch (sourceModule) {
         case 'midi-item-showcase-community': {
             let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[itemName];
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.misc', miscAutomation);
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
+            setProperty(originalItem, 'flags.chris-premades.info.misc', miscAutomation);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'MISC');
             break;
         }
         case 'gambits-premades': {
             let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
+            setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
         }
         case 'chris-premades':
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'CPR');
             break;
         default:
-            foundry.utils.setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
+            setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
             break;
     }
     if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
@@ -330,7 +330,7 @@ async function configureItem(item, configuration) {
             case 'select':
                 for (let [key2, value2] of Object.entries(value)) {
                     let current = item.flags['chris-premades']?.configuration?.[key2] ?? value2.default;
-                    let options = foundry.utils.duplicate(value2.values);
+                    let options = duplicate(value2.values);
                     options.forEach(item => {
                         if (item.value === current) item.selected = true;
                     });
@@ -347,7 +347,7 @@ async function configureItem(item, configuration) {
     let config = {
         'title': 'Configure: ' + item.name,
         'render': dialogRender
-    }
+    };
     let selection = await warpgate.menu(
         {
             'inputs': generatedMenu,

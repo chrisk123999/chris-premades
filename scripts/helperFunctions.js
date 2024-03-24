@@ -1,3 +1,4 @@
+/* eslint-disable no-async-promise-executor */
 import {summonEffects} from './macros/animations/summonEffects.js';
 import {socket} from './module.js';
 export let chris = {
@@ -607,8 +608,8 @@ export let chris = {
                 }
             );
             await dialog._render(true);
-            dialog.element.find(".dialog-buttons").css({
-                "flex-direction": 'column',
+            dialog.element.find('.dialog-buttons').css({
+                'flex-direction': 'column',
             });
         });
     },
@@ -763,26 +764,14 @@ export let chris = {
         let finalTemplate = false;
         try {
             [finalTemplate] = await template.drawPreview();
-        } catch {};
+        } catch (error) {
+            console.error(error);
+        }
         if (!returnTokens) return finalTemplate;
         if (!finalTemplate) return {'template': null, 'tokens': []};
         await warpgate.wait(100);
         let tokens = await game.modules.get('templatemacro').api.findContained(finalTemplate).map(t => finalTemplate.parent.tokens.get(t));
         return {'template': finalTemplate, 'tokens': tokens};
-    },
-    'animationCheck': async function _animationCheck(item) {
-        if (item.flags?.autoanimations?.isEnabled || item.flags['chris-Premades']?.info?.hasAnimation) return true;
-        let name = item.name;
-        let autorecSettings = [
-            game.settings.get('autoanimations', 'aaAutorec-melee'),
-            game.settings.get('autoanimations', 'aaAutorec-range'),
-            game.settings.get('autoanimations', 'aaAutorec-ontoken'),
-            game.settings.get('autoanimations', 'aaAutorec-templatefx'),
-            game.settings.get('autoanimations', 'aaAutorec-aura'),
-            game.settings.get('autoanimations', 'aaAutorec-preset'),
-            game.settings.get('autoanimations', 'aaAutorec-aefx')
-        ];
-        return autorecSettings.some(setting => setting.some(autoRec => name.toLowerCase().includes(autoRec.label.toLowerCase())));
     },
     'pushToken': async function _pushToken(sourceToken, targetToken, distance) {
         let knockBackFactor;
@@ -844,7 +833,7 @@ export let chris = {
         targetDamage.totalDamage += damageTotal;
         let defaultDamageType = workflow.defaultDamageType;
         if (defaultDamageType === 'healing') {
-            targetDamage.newHP += roll.total;
+            targetDamage.newHP += damageTotal;
             targetDamage.hpDamage -= damageTotal;
             targetDamage.appliedDamage -= damageTotal;
         } else {
@@ -1136,32 +1125,31 @@ export let chris = {
             return -1;
         }
         function midiMeasureDistances(segments, options = {}) {
-            if (canvas?.grid?.grid.constructor.name !== "BaseGrid" || !options.gridSpaces) {
+            if (canvas?.grid?.grid.constructor.name !== 'BaseGrid' || !options.gridSpaces) {
                 let distances = canvas?.grid?.measureDistances(segments, options);
                 return distances;
             }
             let rule = canvas?.grid.diagonalRule;
-            if (!configSettings.gridlessFudge || !options.gridSpaces || !["555", "5105", "EUCL"].includes(rule)) return canvas?.grid?.measureDistances(segments, options);
+            if (!options.gridSpaces || !['555', '5105', 'EUCL'].includes(rule)) return canvas?.grid?.measureDistances(segments, options);
             let nDiagonal = 0;
             let d = canvas?.dimensions;
             let grid = canvas?.scene?.grid;
             if (!d || !d.size) return 0;
-            let fudgeFactor = configSettings.gridlessFudge / d.distance;
             return segments.map(s => {
                 let r = s.ray;
-                let nx = Math.ceil(Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor));
-                let ny = Math.ceil(Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor));
+                let nx = Math.ceil(Math.max(0, Math.abs(r.dx / d.size)));
+                let ny = Math.ceil(Math.max(0, Math.abs(r.dy / d.size)));
                 let nd = Math.min(nx, ny);
                 let ns = Math.abs(ny - nx);
                 nDiagonal += nd;
-                if (rule === "5105") {
+                if (rule === '5105') {
                     let nd10 = Math.floor(nDiagonal / 2) - Math.floor((nDiagonal - nd) / 2);
                     let spaces = (nd10 * 2) + (nd - nd10) + ns;
                     return spaces * d.distance;
                 }
-                else if (rule === "EUCL") {
-                    let nx = Math.max(0, Math.abs(r.dx / d.size) - fudgeFactor);
-                    let ny = Math.max(0, Math.abs(r.dy / d.size) - fudgeFactor);
+                else if (rule === 'EUCL') {
+                    let nx = Math.max(0, Math.abs(r.dx / d.size));
+                    let ny = Math.max(0, Math.abs(r.dy / d.size));
                     return Math.ceil(Math.hypot(nx, ny) * grid?.distance);
                 }
                 else return Math.max(nx, ny) * grid.distance;

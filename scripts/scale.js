@@ -455,4 +455,4 @@ async function addScale(item) {
 export let scale = {
     'scaleData': scaleData,
     'addScale': addScale
-}
+};
