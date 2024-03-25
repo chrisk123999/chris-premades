@@ -1,3 +1,7 @@
+# 0.10.51 Release:
+## Update Notes:
+- Fixed incorrect version numbers in certain items.
+  
 # 0.10.50 Release:
 ## Update Notes:
 - Actually fixed missing compendiums.

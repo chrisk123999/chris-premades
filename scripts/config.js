@@ -3034,7 +3034,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Storm Strike': {
                 'name': 'Strike of the Giants: Storm Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Cloud Strike': {
                 'name': 'Strike of the Giants: Cloud Strike',
@@ -3042,7 +3042,7 @@ export function setConfig() {
             },
             'Strike of the Giants: Fire Strike': {
                 'name': 'Strike of the Giants: Fire Strike',
-                'version': '0.7.01'
+                'version': '0.9.6'
             },
             'Strike of the Giants: Hill Strike': {
                 'name': 'Strike of the Giants: Hill Strike',
@@ -4893,15 +4893,15 @@ export function setConfig() {
             },
             'Dash': {
                 'name': 'Dash',
-                'version': '0.7.01'
+                'version': '0.7.11'
             },
             'Disengage': {
                 'name': 'Disengage',
-                'version': '0.7.01'
+                'version': '0.7.11'
             },
             'Dodge': {
                 'name': 'Dodge',
-                'version': '0.7.01'
+                'version': '0.7.11'
             },
             'Fall': {
                 'name': 'Fall',
@@ -4921,11 +4921,11 @@ export function setConfig() {
             },
             'Ready Action': {
                 'name': 'Ready Action',
-                'version': '0.7.01'
+                'version': '0.7.11'
             },
             'Ready Spell': {
                 'name': 'Ready Spell',
-                'version': '0.7.01'
+                'version': '0.7.11'
             },
             'Search': {
                 'name': 'Search',
@@ -4956,7 +4956,7 @@ export function setConfig() {
             },
             'Squeeze': {
                 'name': 'Squeeze',
-                'version': '0.7.03'
+                'version': '0.7.11'
             },
             'Shield of Faith': {
                 'name': 'Shield of Faith',

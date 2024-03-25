@@ -170,7 +170,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Hill Strike",
-        "version": "0.7.01"
+        "version": "0.9.6"
       }
     }
   },
@@ -179,7 +179,7 @@
     "systemVersion": "3.0.4",
     "coreVersion": "11.315",
     "createdTime": 1693710958083,
-    "modifiedTime": 1711191433370,
+    "modifiedTime": 1711410483609,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

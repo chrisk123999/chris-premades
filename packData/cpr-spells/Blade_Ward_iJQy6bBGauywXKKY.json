@@ -129,7 +129,7 @@
     "chris-premades": {
       "info": {
         "name": "Blade Ward",
-        "version": "0.7.01"
+        "version": "0.10.20"
       }
     },
     "dnd5e": {}
@@ -222,7 +222,7 @@
     "systemVersion": "3.0.4",
     "coreVersion": "11.315",
     "createdTime": 1669777595459,
-    "modifiedTime": 1711191436311,
+    "modifiedTime": 1711410486585,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -135,7 +135,8 @@
     "chris-premades": {
       "info": {
         "name": "Destructive Wave",
-        "version": "0.7.01"
+        "version": "0.7.45",
+        "hasAnimation": true
       }
     },
     "rest-recovery": {
@@ -213,7 +214,7 @@
     "systemVersion": "3.0.4",
     "coreVersion": "11.315",
     "createdTime": 1685268902265,
-    "modifiedTime": 1711191435489,
+    "modifiedTime": 1711410485827,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

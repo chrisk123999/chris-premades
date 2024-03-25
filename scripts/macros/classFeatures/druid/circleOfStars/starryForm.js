@@ -137,7 +137,7 @@ export async function starryForm({speaker, actor, token, character, item, args, 
                 }
             }
         }
-    }
+    };
     if (tier > 1){
         effectData.flags['effectmacro'].onTurnStart = {
             'script': chris.functionToString(turnStart)

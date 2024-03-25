@@ -75,6 +75,7 @@
 		"FormApplication": "writable",
 		"deepClone": "writable",
 		"DocumentDirectory": "writable",
-		"Tour": "writable"
+		"Tour": "writable",
+		"chrisPremades": "writable"
 	}
 }

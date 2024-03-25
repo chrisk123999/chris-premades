@@ -92,7 +92,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Frost Strike",
-        "version": "0.7.01"
+        "version": "0.9.6"
       },
       "feat": {
         "frostStrike": {
@@ -206,7 +206,7 @@
     "systemVersion": "3.0.4",
     "coreVersion": "11.315",
     "createdTime": 1693708632711,
-    "modifiedTime": 1711191433921,
+    "modifiedTime": 1711410484187,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
