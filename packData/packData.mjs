@@ -4,6 +4,7 @@ let packs = [
     'cpr-class-feature-items',
     'cpr-class-features',
     'cpr-feat-features',
+    'cpr-feats',
     'cpr-homebrew-feature-items',
     'cpr-item-features',
     'cpr-items',
