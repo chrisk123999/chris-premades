@@ -1,3 +1,7 @@
+# 0.10.49 Release:
+## Update Notes:
+- Fixed missing compendiums.
+  
 # 0.10.48 Release:
 ## Update Notes:
 - Updated module release process.
