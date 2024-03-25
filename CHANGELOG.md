@@ -1,3 +1,7 @@
+# 0.10.50 Release:
+## Update Notes:
+- Actually fixed missing compendiums.
+
 # 0.10.49 Release:
 ## Update Notes:
 - Fixed missing compendiums.
