@@ -76,6 +76,8 @@
 		"deepClone": "writable",
 		"DocumentDirectory": "writable",
 		"Tour": "writable",
-		"chrisPremades": "writable"
+		"chrisPremades": "writable",
+		"Sequence": "writable",
+		"Sequencer": "writable"
 	}
 }

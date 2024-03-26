@@ -11,6 +11,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Far Step - Teleport', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Far Step - Teleport');
+    setProperty(featureData, 'flags.chris-premades.info.name', 'Far Step');
+    setProperty(featureData, 'flags.chris-premades.configuration', workflow.item.flags?.['chris-premades']?.configuration);
     async function effectMacro() {
         await chrisPremades.macros.farStep.end(token, origin);
     }
@@ -178,4 +180,4 @@ export let farStep = {
     'end': end,
     'teleport': teleport,
     'bonus': bonus
-}
+};

@@ -1,4 +1,6 @@
 # 0.10.51 Release:
+## Bug Fixes:
+- Far Step
 ## Update Notes:
 - Fixed incorrect version numbers in certain items.
   
