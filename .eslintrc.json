@@ -34,7 +34,8 @@
         ],
 		"no-unused-vars": [
 			"off"
-		]
+		],
+		"no-inner-declarations": false
     },
 	"globals": {
 		"game": "writable",

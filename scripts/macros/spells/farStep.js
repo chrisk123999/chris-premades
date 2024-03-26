@@ -58,7 +58,7 @@ async function teleport(item, token, passive) {
     let position = await chris.aimCrosshair(token, 60, token.document.texture.src, interval, token.document.width);
     if (position.cancelled) return;
     let animation = chris.getConfiguration(item, 'animation') ?? 'default';
-    if (chris.jb2aCheck() != 'patreon') animation === 'simple';
+    if (chris.jb2aCheck() != 'patreon') animation = 'simple';
     if (animation === 'simple') {
         await new Sequence()
             .effect()

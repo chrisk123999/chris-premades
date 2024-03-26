@@ -212,11 +212,12 @@ async function reduceAnimation(token, updates, name) {
         .on(token)
         .opacity(1)
 
-        .play()
+        .play();
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
-    let animate = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
+    let animate = chris.getConfiguration(workflow.item, 'animation') ?? true;
+    if (chris.jb2aCheck() != 'patreon') animate = false;
     let selection = await chris.dialog(workflow.item.name, [['Enlarge', 'enlarge'], ['Reduce', 'reduce']], 'Enlarge or Reduce?');
     if (!selection) return;
     let targetToken = workflow.targets.first();

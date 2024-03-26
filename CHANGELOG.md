@@ -1,3 +1,8 @@
+# 0.10.52 Release:
+## Bug Fixes:
+- Far Step
+- Enlarge/Reduce
+  
 # 0.10.51 Release:
 ## Bug Fixes:
 - Far Step
