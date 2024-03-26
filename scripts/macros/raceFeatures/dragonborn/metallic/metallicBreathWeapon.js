@@ -19,41 +19,51 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 async function save({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.failedSaves.size) return;
     if (type === 'enervating') {
-        let effectData = {
-            'label': workflow.item.name,
-            'icon': workflow.item.img,
-            'origin': workflow.item.uuid,
-            'duration': {
-                'seconds': 12
-            },
-            'changes': [
-                {
-                    'key': 'macro.CE',
-                    'mode': 0,
-                    'value': 'Incapacitated',
-                    'priority': 20
-                }
-            ],
-            'flags': {
-                'dae': {
-                    'specialDuration': [
-                        'turnStartSource'
-                    ]
-                }
-            }
-        };
-        for (let i of Array.from(workflow.failedSaves)) await chris.createEffect(i.actor, effectData);
+        await enervating({speaker, actor, token, character, item, args, scope, workflow});
     } else {
-        let queueSetup = await queue.setup(workflow.item.uuid, 'metallicBreathWeaponSave', 50);
-        if (!queueSetup) return;
-        for (let i of Array.from(workflow.failedSaves)) {
-            chris.pushToken(workflow.token, i, 20);
-            if (!(chris.checkTrait(i.actor, 'ci', 'prone') || chris.findEffect(i.actor, 'Prone'))) chris.addCondition(i.actor, 'Prone', false, workflow.item.uuid);
-        }
-        queue.remove(workflow.item.uuid);
+        await repulsion({speaker, actor, token, character, item, args, scope, workflow});
     }
+}
+async function enervating({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (!workflow.failedSaves.size) return;
+    let effectData = {
+        'label': workflow.item.name,
+        'icon': workflow.item.img,
+        'origin': workflow.item.uuid,
+        'duration': {
+            'seconds': 12
+        },
+        'changes': [
+            {
+                'key': 'macro.CE',
+                'mode': 0,
+                'value': 'Incapacitated',
+                'priority': 20
+            }
+        ],
+        'flags': {
+            'dae': {
+                'specialDuration': [
+                    'turnStartSource'
+                ]
+            }
+        }
+    };
+    for (let i of Array.from(workflow.failedSaves)) await chris.createEffect(i.actor, effectData);
+}
+async function repulsion({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (!workflow.failedSaves.size) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'metallicBreathWeaponSave', 50);
+    if (!queueSetup) return;
+    for (let i of Array.from(workflow.failedSaves)) {
+        chris.pushToken(workflow.token, i, 20);
+        if (!(chris.checkTrait(i.actor, 'ci', 'prone') || chris.findEffect(i.actor, 'Prone'))) chris.addCondition(i.actor, 'Prone', false, workflow.item.uuid);
+    }
+    queue.remove(workflow.item.uuid);
 }
 export let metallicBreathWeapon = {
     'item': item,
-    'save': save
+    'save': save,
+    'enervating': enervating,
+    'repulsion': repulsion
 }
