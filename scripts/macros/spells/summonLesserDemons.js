@@ -62,22 +62,22 @@ export async function summonLesserDemons({speaker, actor, token, character, item
     let template = await chris.createTemplate(templateData);
     new Sequence()
         .effect()
-            .atLocation(template[0])
-            .origin(template[0].uuid)
+            .atLocation(template)
+            .origin(template.uuid)
             .file('jb2a.extras.tmfx.runes.circle.simple.conjuration')
             .scale(0.2 * workflow.actor.prototypeToken.width)
             .tint('#941010')
             .persist(true)
             .belowTokens(true)
-            .tieToDocuments(template[0])
+            .tieToDocuments(template)
         .effect()
-            .atLocation(template[0])
-            .origin(template[0].uuid)
+            .atLocation(template)
+            .origin(template.uuid)
             .file('jb2a.extras.tmfx.border.circle.simple.01')
             .scale(0.2 * workflow.actor.prototypeToken.width)
             .tint('#941010')
             .persist(true)
-            .tieToDocuments(template[0])
+            .tieToDocuments(template)
         .play();
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (!effect) return;

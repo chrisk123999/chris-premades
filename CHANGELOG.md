@@ -1,3 +1,7 @@
+# 0.10.54 Release:
+## Bug Fixes:
+- Summon Lesser Demons
+  
 # 0.10.53 Release:
 ## Bug Fixes:
 - Elemental Adept
