@@ -19,4 +19,4 @@ async function damage({speaker, actor, token, character, item, args, scope, work
 export let acidArrow = {
     'attack': attack,
     'damage': damage
-}
+};

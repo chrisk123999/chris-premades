@@ -1,3 +1,7 @@
+# 0.10.53 Release:
+## Bug Fixes:
+- Elemental Adept
+  
 # 0.10.52 Release:
 ## Bug Fixes:
 - Far Step

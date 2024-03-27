@@ -21,14 +21,14 @@ async function early(workflow) {
         });
     }
     let effectData = {
-        'label': 'Elemental Adept',
+        'name': 'Elemental Adept',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
         'origin': workflow.actor.uuid,
         'duration': {
             'seconds': 1
         },
         'changes': changes
-    }
+    };
     workflow.targets.forEach(async function(token, key, set) {
         for (let i of values) {
             if (chris.checkTrait(token.actor, 'dr', i)) {
@@ -65,12 +65,12 @@ async function damage(workflow) {
         if (!values.includes(damageRoll.options.type.toLowerCase())) return;
         let newDamageFormula = '';
         for (let i = 0; damageRoll.terms.length > i; i++) {
-            let flavor = damageRoll.terms[i].flavor;
+            let flavor = damageRoll.options.type.toLowerCase();
             let isDeterministic = damageRoll.terms[i].isDeterministic;
             if (isDeterministic === true) {
                 newDamageFormula += damageRoll.terms[i].formula;
             } else {
-                newDamageFormula += damageRoll.terms[i].expression + 'min2[' + flavor + ']'
+                newDamageFormula += damageRoll.terms[i].expression + 'min2[' + flavor + ']';
             }
         }
         arr[i] = await chris.damageRoll(workflow, newDamageFormula, damageRoll.options, true);
@@ -82,4 +82,4 @@ export let elementalAdept = {
     'early': early,
     'late': late,
     'damage': damage
-}
+};
