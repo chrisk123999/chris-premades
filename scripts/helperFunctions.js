@@ -1193,7 +1193,7 @@ export let chris = {
         return await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), options).evaluate();
     },
     'damageRolls': async function _damageRolls(workflow, damageFormulas = []) {
-        return damageFormulas.map(i => chris.damageRoll(workflow, i));
+        return Promise.all(damageFormulas.map(i => chris.damageRoll(workflow, i)));
     },
     'hasEpicRolls': function _hasEpicRolls() {
         return game.modules.get('epic-rolls-5e')?.active;
