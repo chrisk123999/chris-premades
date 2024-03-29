@@ -81,6 +81,8 @@
 		"Tour": "writable",
 		"chrisPremades": "writable",
 		"Sequence": "writable",
-		"Sequencer": "writable"
+		"Sequencer": "writable",
+		"token": "writable",
+		"effect": "writable"
 	}
 }

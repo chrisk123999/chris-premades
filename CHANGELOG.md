@@ -1,3 +1,7 @@
+# 0.10.55 Release:
+## Bug Fixes:
+- Fire Storm
+  
 # 0.10.54 Release:
 ## Bug Fixes:
 - Summon Lesser Demons

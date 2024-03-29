@@ -29,7 +29,7 @@ export async function fireStorm({speaker, actor, token, character, item, args, s
         try{
             let [finalTemplate] = await template.drawPreview();
             templates.push(finalTemplate);
-        } catch {}
+        } catch {/* empty */}
         if (templates.length != i + 1) break;
     }
     await workflow.actor.sheet.maximize();
@@ -63,7 +63,7 @@ export async function fireStorm({speaker, actor, token, character, item, args, s
         }
     }
     let effectData = {
-        'label': workflow.item.name + ' Templates',
+        'name': workflow.item.name + ' Templates',
         'icon': workflow.item.img,
         'origin': workflow.item.uuid,
         'duration': {

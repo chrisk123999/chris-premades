@@ -151,7 +151,7 @@ async function rangedAttack({speaker, actor, token, character, item, args, scope
     queue.remove(workflow.item.uuid);
 }
 function updateSummonInitiative(actor, [combatant]) {
-    for (let c of combatant?.parent?.combatants?.contents.filter(i => i.actorId != actor.id).filter(i => i.actor.flags?.warpgate?.control?.actor === actor?.uuid)) {
+    for (let c of combatant?.parent?.combatants?.contents.filter(i => i.actorId != actor.id).filter(i => i.actor.flags?.warpgate?.control?.actor === actor?.uuid) ?? []) {
         if (c.initiative === null) {
             if (game.user.isGM) c.update({'initiative': combatant.initiative - 0.01});
             else socket.executeAsGM('updateInitiative', c.uuid, combatant.initiative - 0.01);
@@ -164,7 +164,7 @@ function updateCompanionInitiative(actor, [combatant]) {
         if (key === 'default' && value === 3) return;
         if (key === 'default') continue;
         if (value === 3 && game.users.get(key).isGM === false) validIds.push(key);
-    };
+    }
     if (!validIds) return;
     for (let i of validIds) {
         for (let c of combatant.parent.combatants.contents.filter(c => c.actorId != actor.id).filter(c => c.actor.ownership[i] === 3)) {

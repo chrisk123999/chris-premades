@@ -23,7 +23,7 @@
       "value": null,
       "width": null,
       "units": null,
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
@@ -114,7 +114,11 @@
             "option": "preambleComplete"
           }
         }
-      }
+      },
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -129,7 +133,11 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "halfdam",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false
     },
     "tidy5e-sheet": {
       "favorite": false
@@ -137,7 +145,7 @@
     "chris-premades": {
       "info": {
         "name": "Fire Storm",
-        "version": "0.7.45",
+        "version": "0.10.54",
         "hasAnimation": true
       }
     },
@@ -150,7 +158,7 @@
     "systemVersion": "3.0.4",
     "coreVersion": "11.315",
     "createdTime": 1676798649979,
-    "modifiedTime": 1711410484914,
+    "modifiedTime": 1711707542171,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
