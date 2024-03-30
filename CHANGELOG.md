@@ -1,3 +1,7 @@
+# 0.10.56 Release:
+# Bug Fixes:
+- Umbral Sight
+  
 # 0.10.55 Release:
 ## Bug Fixes:
 - Fire Storm

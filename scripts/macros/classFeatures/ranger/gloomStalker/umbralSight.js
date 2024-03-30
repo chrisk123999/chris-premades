@@ -2,8 +2,7 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 export async function umbralSight({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1 || !workflow.token) return;
-    let validTypes = ['dark', 'dim'];
-    if (!validTypes.includes(chris.checkLight(workflow.token))) return;
+    if (chris.checkLight(workflow.token) != 'dark') return;
     let targetToken = workflow.targets.first();
     let distance = chris.getDistance(workflow.token, targetToken);
     let targetSenses = targetToken.actor.system.attributes.senses;

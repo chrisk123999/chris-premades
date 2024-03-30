@@ -47,7 +47,7 @@ async function darknessItem({speaker, actor, token, character, item, args, scope
             }
         );
         await tokenAttacher.attachElementsToToken([template], tokenObject, false);
-    };
+    }
     let xray = game.settings.get('chris-premades', 'Show Limits Animations');
     if(game.modules.get('walledtemplates')?.active) {
         new Sequence().effect().file('jb2a.darkness.black').scaleToObject().aboveLighting().opacity(0.5).xray(xray).mask(template).persist(true).attachTo(template).play();
@@ -116,4 +116,4 @@ async function darknessHook(workflow) {
 export let darkness = {
     'item': darknessItem,
     'hook': darknessHook
-}
+};
