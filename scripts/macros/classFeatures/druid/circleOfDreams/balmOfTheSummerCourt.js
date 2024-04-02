@@ -27,7 +27,7 @@ export async function balmOfTheSummerCourt({speaker, actor, token, character, it
     }
     let number = selection.inputs[0];
     let classLevels = workflow.actor.classes.druid?.system.levels;
-    let max = math.min(uses, math.floor(classLevels / 2));
+    let max = Math.min(uses, Math.floor(classLevels / 2));
     if (number <= max && !isNaN(number)) {
         let damageRoll = await chris.damageRoll(workflow, number + 'd6[' + translate.healingType('healing') + ']');
         let tempDamageRoll = await chris.damageRoll(workflow, number + '[' + translate.healingType('temphp') + ']', {'type': 'temphp'});
