@@ -15,6 +15,9 @@ export async function fireStorm({speaker, actor, token, character, item, args, s
         'flags': {
             'dnd5e': {
                 'origin': workflow.item.uuid
+            },
+            'walledtemplates': {
+                'hideBorder': "alwaysShow"
             }
         },
         'width': 10,
