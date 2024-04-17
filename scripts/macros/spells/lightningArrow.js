@@ -59,12 +59,15 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         newTargetUuids.push(i.document.uuid);
         new Sequence().effect().atLocation(targetToken).stretchTo(i).file('jb2a.chain_lightning.secondary.blue').play();
     }
-    let [config, options] = constants.syntheticItemWorkflowOptions(newTargetUuids);
-    await MidiQOL.completeItemUse(areaFeature, config, options);
+    if (newTargetUuids.length > 0) {
+        let [config, options] = constants.syntheticItemWorkflowOptions(newTargetUuids);
+        await MidiQOL.completeItemUse(areaFeature, config, options);
+    }
     if (effect) effect.delete();
     queue.remove(workflow.item.uuid);
 }
 async function lightningArrowAttack({speaker, actor, token, character, item, args, scope, workflow}) {
+    workflow.workflowOptions.autoRollDamage = 'always';
     if (!workflow.isFumble) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'lightningArrow', 50);
     if (!queueSetup) return;
