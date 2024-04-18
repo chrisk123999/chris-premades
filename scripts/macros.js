@@ -49,6 +49,7 @@ import {boomingBlade} from './macros/spells/boomingBlade.js';
 import {bootsOfElvenkind} from './macros/items/bootsOfElvenkind.js';
 import {borrowedKnowledge} from './macros/spells/borrowedKnowledge.js';
 import {brandOfCastigation} from './macros/classFeatures/bloodHunter/brandOfCastigation/brandOfCastigation.js';
+import {brandingSmite} from './macros/spells/brandingSmite.js';
 import {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
 import {breathWeapon} from './macros/raceFeatures/dragonborn/chromatic/breathWeapon.js';
 import {bugbear} from './macros/monsterFeatures/bugBear/bugbear.js';
@@ -614,6 +615,7 @@ export let macros = {
     'boomingBlade': boomingBlade,
     'borrowedKnowledge': borrowedKnowledge,
     'brandOfCastigation': brandOfCastigation,
+    'brandingSmite': brandingSmite,
     'breathOfTheDragon': breathOfTheDragon,
     'breathWeapon': breathWeapon,
     'burningHands': burningHands,
