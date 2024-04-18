@@ -313,6 +313,7 @@ import {spiritGuardians} from './macros/spells/spiritGuardians.js';
 import {spiritShroud} from './macros/spells/spiritShroud.js';
 import {spiritualWeapon} from './macros/spells/spiritualWeapon.js';
 import {sprite} from './macros/monsterFeatures/sprite/sprite.js';
+import {staggeringSmite} from './macros/spells/staggeringSmite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 import {stasisStrike} from './macros/feats/stasisStrike.js';
 import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
@@ -836,6 +837,7 @@ export let macros = {
     'spiritGuardians': spiritGuardians,
     'spiritShroud': spiritShroud,
     'spiritualWeapon': spiritualWeapon,
+    'staggeringSmite': staggeringSmite,
     'starryForm': starryForm,
     'stasisStrike': stasisStrike,
     'steelDefender': steelDefender,
