@@ -18,7 +18,7 @@ export async function mastersAmulet(token, {item, workflow, ditem}) {
         return;
     }
     let keptDamage = Math.floor(ditem.appliedDamage / 2);
-    let originalDamage = duplicate(keptDamage);
+    let originalDamage = Math.ceil(ditem.appliedDamage / 2);
     if (ditem.oldTempHP > 0) {
         if (keptDamage > ditem.oldTempHP) {
             ditem.newTempHP = 0;

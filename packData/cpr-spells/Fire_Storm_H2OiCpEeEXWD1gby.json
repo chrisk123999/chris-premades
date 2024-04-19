@@ -23,7 +23,7 @@
       "value": null,
       "width": null,
       "units": null,
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -85,7 +85,8 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "mgc"
     ]
   },
   "name": "Fire Storm",
@@ -145,7 +146,7 @@
     "chris-premades": {
       "info": {
         "name": "Fire Storm",
-        "version": "0.10.54",
+        "version": "0.10.59",
         "hasAnimation": true
       }
     },
@@ -158,7 +159,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798649979,
-    "modifiedTime": 1713494873412,
+    "modifiedTime": 1713497895489,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

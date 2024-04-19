@@ -57,7 +57,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let attackBonus = Math.max(1, workflow.actor.system.abilities.cha.mod);
-    if (selection.system.attackBonus != '') {
+    if (![undefined, null, ''].includes(selection.system.attackBonus)) {
         attackBonus = selection.system.attackBonus + ' + ' + attackBonus;
     }
     let updates = {
@@ -93,4 +93,4 @@ async function dismiss({speaker, actor, token, character, item, args, scope, wor
 export let sacredWeapon = {
     'item': item,
     'dismiss': dismiss
-}
+};

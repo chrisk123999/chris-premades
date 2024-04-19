@@ -180,7 +180,6 @@ export async function updateItem(itemDocument) {
     let automation = CONFIG.chrisPremades.automations[flagName ?? itemDocument.name];
     let itemName = automation && flagName ? flagName : itemDocument.name;
     itemName = getItemName(itemName);
-
     let itemType = itemDocument.type;
     let isNPC = itemDocument.actor?.type === 'npc';
     let compendiumItem;
@@ -192,6 +191,7 @@ export async function updateItem(itemDocument) {
             let compendium = game.packs.get(compendiumId);
             if (!compendium) continue;
             compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
+            console.log(duplicate(compendiumItem));
             if (compendiumItem) {
                 foundCompendiumName = compendium.metadata.label;
                 sourceModule = compendium.metadata.packageType === 'module' ? compendium.metadata.packageName : 'world';
@@ -253,13 +253,10 @@ export async function updateItem(itemDocument) {
     if (itemDocument.flags.ddbimporter) {
         originalItem.flags.ddbimporter = itemDocument.flags.ddbimporter;
     }
-    if (itemDocument.flags['chris-premades']) {
-        originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
-    }
-    if (compendiumItem.flags['chris-premades']?.info) {
-        let info = duplicate(compendiumItem.flags['chris-premades'].info);
-        setProperty(originalItem, 'flags.chris-premades.info', info);
-    }
+    let info;
+    if (compendiumItem.flags['chris-premades']?.info) info = duplicate(compendiumItem.flags['chris-premades'].info);
+    if (itemDocument.flags['chris-premades']) originalItem.flags['chris-premades'] = itemDocument.flags['chris-premades'];
+    if (info) setProperty(originalItem, 'flags.chris-premades.info', info);
     switch (sourceModule) {
         case 'midi-item-showcase-community': {
             let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[itemName];

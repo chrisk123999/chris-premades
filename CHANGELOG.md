@@ -1,7 +1,14 @@
-# 0.10.58 Release:
+# 0.10.59 Release:
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
+## Bug Fixes:
+- Master's Amulet
+- Sacred Weapon (Thanks Tposney)
+- Fire Storm
+- Item Updater
+  
+# 0.10.58 Release:
 ## New Content:
 - Branding Smite (Thanks Michael)
 - Blinding Smite (Thanks Michael)

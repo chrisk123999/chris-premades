@@ -5242,7 +5242,7 @@ export function setConfig() {
             },
             'Fire Storm': {
                 'name': 'Fire Storm',
-                'version': '0.10.54',
+                'version': '0.10.59',
                 'hasAnimation': true
             },
             'Teleport': {
