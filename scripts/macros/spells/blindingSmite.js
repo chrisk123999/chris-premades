@@ -10,7 +10,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let targetToken = workflow.targets.first();
     let queueSetup = await queue.setup(workflow.item.uuid, 'blindingSmite', 250);
     if (!queueSetup) return;
-    let bonusDamageFormula = '3d6[radiant]';
+    let bonusDamageFormula = '3d8[radiant]';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
     let featureData= await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Blinding Smite - Blind');
     if (!featureData) {

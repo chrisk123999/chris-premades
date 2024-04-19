@@ -1,7 +1,11 @@
-# 0.10.59 Release:
+# 0.10.60 Release:
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
+## Bug Fixes:
+- Blinding Smite
+  
+# 0.10.59 Release:
 ## Bug Fixes:
 - Master's Amulet
 - Sacred Weapon (Thanks Tposney)
