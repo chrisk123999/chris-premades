@@ -169,10 +169,10 @@
   "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680505960104,
-    "modifiedTime": 1711410483679,
+    "modifiedTime": 1713494872214,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

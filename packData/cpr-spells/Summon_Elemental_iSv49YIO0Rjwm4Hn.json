@@ -150,10 +150,10 @@
   "img": "icons/magic/water/strike-ice-blade-fang.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650250,
-    "modifiedTime": 1711410486602,
+    "modifiedTime": 1713494875114,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

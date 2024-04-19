@@ -143,10 +143,10 @@
   "img": "icons/creatures/abilities/mouth-teeth-long-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678491903265,
-    "modifiedTime": 1711410486981,
+    "modifiedTime": 1713494875501,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "8GFM1uzgsByad3jo",

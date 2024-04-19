@@ -150,10 +150,10 @@
   "img": "icons/commodities/treasure/trinket-wing-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650092,
-    "modifiedTime": 1711410486967,
+    "modifiedTime": 1713494875567,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -93,8 +93,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     queue.remove(workflow.item.uuid);
-    let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
-    if (!animation) return;
+    let useAnimation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
+    if (!useAnimation) return;
     await animation(workflow.token, selection, 'Fire Shield');
 }
 async function animation(token, selection, name) {
@@ -213,4 +213,4 @@ export let fireShield = {
     'stop': stop,
     'onHit': onHit,
     'animation': animation
-}
+};

@@ -184,10 +184,10 @@
   "img": "icons/magic/death/undead-zombie-grave-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1696277958896,
-    "modifiedTime": 1711410488972,
+    "modifiedTime": 1713494877389,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "W52aBBACkbzn2WuK",

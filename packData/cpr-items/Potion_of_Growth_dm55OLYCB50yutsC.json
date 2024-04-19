@@ -137,10 +137,10 @@
   "img": "icons/consumables/potions/potion-bottle-corked-labeled-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798828111,
-    "modifiedTime": 1711410484984,
+    "modifiedTime": 1713494873480,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "42tD8Aow1WmdXmom",

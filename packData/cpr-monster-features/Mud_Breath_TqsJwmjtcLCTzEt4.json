@@ -192,10 +192,10 @@
   "img": "icons/magic/air/wind-swirl-red-orange.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1698371423155,
-    "modifiedTime": 1711410488044,
+    "modifiedTime": 1713494876646,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "FVSh6FnddHuF8Yk5",

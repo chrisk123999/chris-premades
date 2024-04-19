@@ -228,10 +228,10 @@
   "img": "icons/environment/creatures/monster-barbed-carapace-purple.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1696225874088,
-    "modifiedTime": 1711410487258,
+    "modifiedTime": 1713494875718,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "1eSInFVxZCm5tj7P",

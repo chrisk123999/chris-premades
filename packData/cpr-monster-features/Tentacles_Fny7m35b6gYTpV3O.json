@@ -229,10 +229,10 @@
   "img": "icons/commodities/biological/tentacle-purple-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1688110276449,
-    "modifiedTime": 1711410486696,
+    "modifiedTime": 1713494875162,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "eCI7CWg9o1giHB2T",

@@ -203,10 +203,10 @@
   "img": "icons/magic/air/air-wave-gust-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1693708632712,
-    "modifiedTime": 1711410483486,
+    "modifiedTime": 1713494872049,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

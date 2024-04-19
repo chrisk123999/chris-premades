@@ -211,10 +211,10 @@
   "img": "icons/consumables/potions/bottle-bulb-empty-glass.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669200040449,
-    "modifiedTime": 1711410484468,
+    "modifiedTime": 1713494873033,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "42tD8Aow1WmdXmom",

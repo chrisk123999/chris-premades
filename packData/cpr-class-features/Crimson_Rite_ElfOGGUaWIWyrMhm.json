@@ -170,10 +170,10 @@
   "img": "icons/skills/melee/strike-sword-blood-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669263246198,
-    "modifiedTime": 1711410486125,
+    "modifiedTime": 1713494874573,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "QxkhZA4H8BybSLOQ",

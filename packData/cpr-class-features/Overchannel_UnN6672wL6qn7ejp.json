@@ -206,10 +206,10 @@
   "img": "icons/magic/acid/projectile-faceted-glob.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1695202288854,
-    "modifiedTime": 1711410487345,
+    "modifiedTime": 1713494875909,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "SL4EqjrNxTnnh5C7",

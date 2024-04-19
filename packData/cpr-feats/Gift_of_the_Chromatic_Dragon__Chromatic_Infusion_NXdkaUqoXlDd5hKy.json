@@ -140,10 +140,10 @@
   "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1692515957717,
-    "modifiedTime": 1711410483889,
+    "modifiedTime": 1713494872444,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

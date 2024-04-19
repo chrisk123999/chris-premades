@@ -132,10 +132,10 @@
   "img": "icons/weapons/swords/swords-short.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1697159582807,
-    "modifiedTime": 1711410490099,
+    "modifiedTime": 1713494878491,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "NHBI5suPUtgegUKt",

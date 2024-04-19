@@ -345,10 +345,10 @@
   "img": "icons/magic/water/barrier-ice-shield.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650596,
-    "modifiedTime": 1711410484885,
+    "modifiedTime": 1713494873391,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -142,10 +142,10 @@
   "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678607284800,
-    "modifiedTime": 1711410489280,
+    "modifiedTime": 1713494877660,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "zXv5VYHJTHGrWOph",

@@ -451,10 +451,10 @@
   "img": "icons/magic/control/buff-flight-wings-runes-purple-orange.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1673393610459,
-    "modifiedTime": 1711410485724,
+    "modifiedTime": 1713494874163,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "lvQP1qaB2T5T4Bu2",

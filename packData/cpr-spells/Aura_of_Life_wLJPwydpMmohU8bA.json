@@ -239,10 +239,10 @@
   "img": "icons/magic/life/heart-area-circle-red-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650904,
-    "modifiedTime": 1711410486988,
+    "modifiedTime": 1713494875607,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

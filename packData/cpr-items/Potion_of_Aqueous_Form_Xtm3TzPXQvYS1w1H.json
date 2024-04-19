@@ -240,10 +240,10 @@
   "img": "icons/consumables/potions/bottle-bulb-corked-labeled-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669200045406,
-    "modifiedTime": 1711410484677,
+    "modifiedTime": 1713494873205,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "42tD8Aow1WmdXmom",

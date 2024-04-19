@@ -218,10 +218,10 @@
   "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1679908721758,
-    "modifiedTime": 1711410484443,
+    "modifiedTime": 1713494873012,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "afIQwMXdJt8qBZD3",

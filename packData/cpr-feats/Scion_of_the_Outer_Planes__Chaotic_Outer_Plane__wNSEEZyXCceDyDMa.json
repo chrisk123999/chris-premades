@@ -156,10 +156,10 @@
   "img": "icons/magic/symbols/chevron-elipse-circle-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1697665126496,
-    "modifiedTime": 1711410484655,
+    "modifiedTime": 1713494873201,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

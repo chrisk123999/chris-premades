@@ -150,10 +150,10 @@
   "img": "icons/creatures/abilities/mouth-teeth-human.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1686096524750,
-    "modifiedTime": 1711410488768,
+    "modifiedTime": 1713494877213,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "uhlZsNJghAXK82ut",

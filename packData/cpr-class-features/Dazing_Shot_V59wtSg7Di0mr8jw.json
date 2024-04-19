@@ -189,10 +189,10 @@
   "img": "icons/weapons/guns/gun-pistol-wood.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1699261115283,
-    "modifiedTime": 1711410487407,
+    "modifiedTime": 1713494875992,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "Th0HoA0miyu7n3zz",

@@ -150,10 +150,10 @@
   "img": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669271586602,
-    "modifiedTime": 1711410484918,
+    "modifiedTime": 1713494873402,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

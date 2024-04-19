@@ -230,10 +230,10 @@
   "img": "icons/magic/control/debuff-energy-snare-brown.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650399,
-    "modifiedTime": 1711410486064,
+    "modifiedTime": 1713494874575,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -187,10 +187,10 @@
   "img": "icons/magic/acid/projectile-smoke-glowing.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1698128328583,
-    "modifiedTime": 1711410486890,
+    "modifiedTime": 1713494875370,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "lYM0kSS1oQAYZhk5",

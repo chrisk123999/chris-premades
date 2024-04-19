@@ -201,10 +201,10 @@
   "img": "icons/magic/life/heart-glowing-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1696789942291,
-    "modifiedTime": 1711410487463,
+    "modifiedTime": 1713494876079,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "VgoS3n50UEoVtIPw",

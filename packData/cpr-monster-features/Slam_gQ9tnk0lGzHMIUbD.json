@@ -145,10 +145,10 @@
   "img": "icons/equipment/hand/gauntlet-tooled-leather-brown.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1677367229762,
-    "modifiedTime": 1711410488844,
+    "modifiedTime": 1713494877298,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "tw9wudLsJNlmp7g1",

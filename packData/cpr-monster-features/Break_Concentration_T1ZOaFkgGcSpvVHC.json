@@ -121,10 +121,10 @@
   "img": "icons/magic/control/energy-stream-link-large-teal.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669195957549,
-    "modifiedTime": 1711410488009,
+    "modifiedTime": 1713494876617,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "H49lVOwci1uSqhJW",

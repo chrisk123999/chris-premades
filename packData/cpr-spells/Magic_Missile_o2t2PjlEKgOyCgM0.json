@@ -359,10 +359,10 @@
   "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650392,
-    "modifiedTime": 1711410486729,
+    "modifiedTime": 1713494875274,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

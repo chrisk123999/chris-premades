@@ -193,10 +193,10 @@
   "img": "icons/magic/earth/projectile-boulder-dust.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1693708632717,
-    "modifiedTime": 1711410483546,
+    "modifiedTime": 1713494872102,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

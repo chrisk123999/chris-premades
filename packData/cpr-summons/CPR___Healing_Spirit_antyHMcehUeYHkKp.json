@@ -508,10 +508,10 @@
   },
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1684538747870,
-    "modifiedTime": 1711410483901,
+    "modifiedTime": 1713494872439,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -130,10 +130,10 @@
   "img": "icons/environment/creatures/monster-tentacles-eye-purple.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1696225872717,
-    "modifiedTime": 1711410487600,
+    "modifiedTime": 1713494876220,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "1eSInFVxZCm5tj7P",

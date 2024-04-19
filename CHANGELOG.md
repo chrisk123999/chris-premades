@@ -1,3 +1,20 @@
+# 0.10.56 Release:
+## Update Notes:
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+## New Content:
+- Branding Smite (Thanks Michael)
+- Blinding Smite (Thanks Michael)
+- Staggering Smite (Thanks Michael)
+## Bug Fixes:
+- Mass Cure Wounds (Thanks SagaTympana)
+- Lightning Arrow (Thanks Michael)
+- Arcane Jolt (Thanks Elfrey)
+- Fire Shield
+- Piercer: Damage
+- Piercer: Critical
+- Metamagic
+  
 # 0.10.55 Release:
 # Bug Fixes:
 - Umbral Sight

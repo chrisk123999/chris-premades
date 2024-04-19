@@ -191,10 +191,10 @@
   "img": "icons/magic/acid/projectile-needles-salvo-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650924,
-    "modifiedTime": 1711410486429,
+    "modifiedTime": 1713494874940,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

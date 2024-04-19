@@ -139,10 +139,10 @@
   "img": "icons/magic/water/vortex-water-whirlpool-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650510,
-    "modifiedTime": 1711410483776,
+    "modifiedTime": 1713494872341,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -144,10 +144,10 @@
   "img": "icons/commodities/bones/horn-antler-brown-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685268901452,
-    "modifiedTime": 1711410483692,
+    "modifiedTime": 1713494872262,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

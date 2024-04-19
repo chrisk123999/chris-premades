@@ -136,10 +136,10 @@
   "img": "icons/creatures/claws/claw-talons-glowing-orange.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1698377528766,
-    "modifiedTime": 1711410489329,
+    "modifiedTime": 1713494877728,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "hHd2pbOu5tigk8C1",

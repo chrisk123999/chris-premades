@@ -161,10 +161,10 @@
   "img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1689553560293,
-    "modifiedTime": 1711410484548,
+    "modifiedTime": 1713494873119,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "uhlZsNJghAXK82ut",

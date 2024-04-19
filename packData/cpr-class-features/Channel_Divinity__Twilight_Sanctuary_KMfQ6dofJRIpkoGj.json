@@ -404,10 +404,10 @@
   "img": "icons/magic/light/light-lantern-lit-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678187701496,
-    "modifiedTime": 1711410486684,
+    "modifiedTime": 1713494875126,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "0uMa6L6LBMZ1czJ9",

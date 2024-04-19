@@ -1,8 +1,9 @@
 import {queue} from '../../utility/queue.js';
 import {chris} from '../../helperFunctions.js';
+import {constants} from '../../constants.js';
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1 || !workflow.item) return;
-    if (!['mwak', 'rwak'].includes(workflow.item.system.actionType)) return;
+    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     let effect = chris.getEffects(workflow.actor).find(i => i.flags['chris-premades']?.spell?.brandingSmite);
     if (!effect) return;
     if (effect.flags['chris-premades'].spell.brandingSmite.used) return;
@@ -59,7 +60,6 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     await chris.updateEffect(effect, updates);
     queue.remove(workflow.item.uuid);
 }
-
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     async function effectMacro() {
         await (warpgate.wait(200));
@@ -106,8 +106,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.updateEffect(effect, updates);
 }
-
 export let brandingSmite = {
     'damage': damage,
     'item': item
-}
+};

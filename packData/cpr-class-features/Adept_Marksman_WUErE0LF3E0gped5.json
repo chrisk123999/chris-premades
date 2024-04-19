@@ -133,10 +133,10 @@
   "img": "icons/weapons/guns/gun-topbarrel.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1699261115280,
-    "modifiedTime": 1711410487530,
+    "modifiedTime": 1713494876135,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "l8uZbuw4Y4Rmr9EA",

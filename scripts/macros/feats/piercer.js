@@ -1,3 +1,4 @@
+import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {translate} from '../../translations.js';
 import {queue} from '../../utility/queue.js';
@@ -38,7 +39,7 @@ async function reroll({speaker, actor, token, character, item, args, scope, work
             return;
         }
     } else {
-        let selection = await chris.dialog('Piercer: Reroll low roll of ' + lowRoll + '?', [['Yes', true], ['No', false]]);
+        let selection = await chris.dialog(originItem.name, constants.yesNo, 'Reroll low roll of ' + lowRoll + '?');
         if (!selection) {
             queue.remove(workflow.item.uuid);
             return;
@@ -58,6 +59,8 @@ async function combatEnd(origin) {
 }
 async function critical({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.isCritical || !workflow.damageRoll) return;
+    let feature = chris.getItem(workflow.actor, 'Piercer: Critical Hit');
+    if (!feature) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'piercerCritical', 250);
     if (!queueSetup) return;
     let damageTypes = chris.getRollsDamageTypes(workflow.damageRolls);
@@ -65,22 +68,32 @@ async function critical({speaker, actor, token, character, item, args, scope, wo
         queue.remove(workflow.item.uuid);
         return;
     }
-    let largeDice;
-    let flavor;
-    for (let i of workflow.damageRoll.terms) {
-        if (!i.faces) continue;
-        if (largeDice > i.faces) continue;
-        largeDice = i.faces;
-        flavor = i.flavor.toLowerCase();
+    let damageType = damageTypes.size > 1 ? await chris.dialog(feature.name, Array.from(damageTypes).map(i => [chris.titleCase(i), i]), 'What damage type should be used?') : damageTypes.first();
+    if (!damageType) damageType = damageTypes.first();
+    let damageRolls = workflow.damageRolls.filter(i => i.options.type === damageType);
+    if (!damageRolls.length) {
+        queue.remove(workflow.item.uuid);
+        return;
     }
-    let bonusDamageFormula = '1d' + largeDice + '[' + flavor + ']';
+    let largeDice;
+    for (let j of damageRolls) {
+        for (let i of j.terms) {
+            if (!i.faces) continue;
+            if (largeDice > i.faces) continue;
+            largeDice = i.faces;
+        }
+    }
+    if (!largeDice) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
+    let bonusDamageFormula = '1d' + largeDice + '[' + damageType + ']';
     await chris.addToDamageRoll(workflow, bonusDamageFormula, true);
-    let originItem = chris.getItem(workflow.actor, 'Piercer: Critical Hit');
-    if (originItem) await originItem.use();
+    await feature.use();
     queue.remove(workflow.item.uuid);
 }
 export let piercer = {
     'reroll': reroll,
     'combatEnd': combatEnd,
     'critical': critical
-}
+};

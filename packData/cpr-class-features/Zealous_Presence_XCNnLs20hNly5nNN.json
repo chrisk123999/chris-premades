@@ -200,10 +200,10 @@
   "img": "icons/creatures/magical/construct-iron-stomping-yellow.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680504210142,
-    "modifiedTime": 1711410487577,
+    "modifiedTime": 1713494876181,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "p8rIlDIFCSfUk7fX",

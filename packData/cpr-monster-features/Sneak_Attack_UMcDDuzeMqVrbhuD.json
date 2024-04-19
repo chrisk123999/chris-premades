@@ -208,10 +208,10 @@
   "img": "icons/skills/melee/strike-dagger-arcane-pink.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1684803132304,
-    "modifiedTime": 1711410488078,
+    "modifiedTime": 1713494876679,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "YUrOjBXEf8p9LEXH",

@@ -140,10 +140,10 @@
   "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650496,
-    "modifiedTime": 1711410486130,
+    "modifiedTime": 1713494874659,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

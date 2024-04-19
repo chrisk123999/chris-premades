@@ -174,10 +174,10 @@
   "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1683673017272,
-    "modifiedTime": 1711410488628,
+    "modifiedTime": 1713494877088,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "z9JFYUP72s2bk7tH",

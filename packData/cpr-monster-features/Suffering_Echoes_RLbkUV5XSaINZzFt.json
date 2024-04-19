@@ -137,10 +137,10 @@
   "img": "icons/magic/control/energy-stream-link-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1677500413861,
-    "modifiedTime": 1711410487939,
+    "modifiedTime": 1713494876555,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "Z4BP0KoRZSV7Wvmj",

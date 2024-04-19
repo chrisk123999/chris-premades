@@ -158,10 +158,10 @@
   "img": "icons/environment/wilderness/statue-hound-horned.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1688029821521,
-    "modifiedTime": 1711410487645,
+    "modifiedTime": 1713494876265,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "Git8ubTxYnrdbad5",

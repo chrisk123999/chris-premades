@@ -220,10 +220,10 @@
   "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669707659040,
-    "modifiedTime": 1711410485559,
+    "modifiedTime": 1713494873984,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "UF1iqoIDvO7wMxKs",

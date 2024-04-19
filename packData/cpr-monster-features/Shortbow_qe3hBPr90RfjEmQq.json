@@ -220,10 +220,10 @@
   "img": "icons/weapons/bows/shortbow-arrows-black.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678438250018,
-    "modifiedTime": 1711410489791,
+    "modifiedTime": 1713494878181,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "80ReFeoQu4uZwfhK",

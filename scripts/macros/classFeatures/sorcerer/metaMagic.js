@@ -34,7 +34,7 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
         }
     }
     let effectData = {
-        'label': 'Careful Spell Auto Save',
+        'name': 'Careful Spell Auto Save',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
         'duration': {
             'seconds': 6
@@ -54,8 +54,8 @@ async function carefulSpell({speaker, actor, token, character, item, args, scope
                 ]
             }
         }
-    }
-    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData))
+    };
+    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData));
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
 }
 async function empoweredSpell({speaker, actor, token, character, item, args, scope, workflow}){
@@ -169,7 +169,7 @@ async function empoweredSpell({speaker, actor, token, character, item, args, sco
             'speaker': ChatMessage.getSpeaker(workflow.actor), 
             'flavor': 'Rerolling: ' + currentDie.result, 
             'rollMode': game.settings.get('core', 'rollMode')
-        }
+        };
         await damageRoll.toMessage(messageData);
         newDamageRoll.terms[currentDie.term].results[currentDie.position].result = damageRoll.total;
     }
@@ -205,7 +205,7 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
         }
     }
     let effectData = {
-        'label': 'Heightened Spell Disadvantage',
+        'name': 'Heightened Spell Disadvantage',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
         'duration': {
             'seconds': 6
@@ -225,8 +225,8 @@ async function heightenedSpell({speaker, actor, token, character, item, args, sc
                 ]
             }
         }
-    }
-    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData))
+    };
+    selectedTargets.forEach(async i => await chris.createEffect(i.actor, effectData));
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 3});
 }
 async function seekingSpell({speaker, actor, token, character, item, args, scope, workflow}){
@@ -273,7 +273,7 @@ async function seekingSpell({speaker, actor, token, character, item, args, scope
     queue.remove(workflow.item.uuid);
 }
 async function transmutedSpell({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size === 0) return;
+    if (!workflow.targets.size) return;
     if (workflow.item.type != 'spell') return;
     let sorcPointsItem = chris.getItem(workflow.actor, 'Sorcery Points');
     if (!sorcPointsItem) {
@@ -286,13 +286,12 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
         return;
     }
     let values = ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'];
+    let queueSetup = await queue.setup(workflow.item.uuid, 'transmutedSpell', 50);
+    if (!queueSetup) return;
     let oldDamageRoll = workflow.damageRoll;
     let oldFlavor = [];
     for (let i of oldDamageRoll.terms) {
-        let isDeterministic = i.isDeterministic;
-        if (values.includes(i.flavor.toLowerCase()) && isDeterministic === false) {
-            oldFlavor.push(i.flavor);
-        }
+        if (values.includes(i.flavor.toLowerCase()) && i.isDeterministic === false) oldFlavor.push(i.flavor);
     }
     function valuesToOptions(arr){
         let optionsPush = [];
@@ -305,18 +304,16 @@ async function transmutedSpell({speaker, actor, token, character, item, args, sc
     let optionsOriginal = valuesToOptions(oldFlavor);
     let selectionOriginal = await chris.dialog('Change what damage type?', optionsOriginal);
     if (!selectionOriginal) return;
-    let options = []
+    let options = [];
     for (let i of values) {
         if (i != selectionOriginal) {
             options.push(i);
         }
     }
     options = valuesToOptions(options);
-    let selection = await chris.dialog('Change to what damage type?', options)
-    let queueSetup = await queue.setup(workflow.item.uuid, 'transmutedSpell', 50);
-    if (!queueSetup) return;
+    let selection = await chris.dialog('Change to what damage type?', options);
     workflow.damageRoll._formula = workflow.damageRoll._formula.replace(selectionOriginal, selection);
-    workflow.damageRoll.terms.forEach(term => term.options.flavor = term.options?.flavor?.replace(selectionOriginal, selection))
+    workflow.damageRoll.terms.forEach(term => term.options.flavor = term.options?.flavor?.replace(selectionOriginal, selection));
     await workflow.setDamageRoll(workflow.damageRoll);
     await sorcPointsItem.update({'system.uses.value': sorcPointsValue - 1});
     queue.remove(workflow.item.uuid);
@@ -404,4 +401,4 @@ export let metaMagic = {
     seekingSpell: seekingSpell,
     transmutedSpell: transmutedSpell,
     twinnedSpell: twinnedSpell
-}
+};

@@ -154,10 +154,10 @@
   "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1695254916956,
-    "modifiedTime": 1711410483449,
+    "modifiedTime": 1713494871995,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "BMX2bhNRKIz7WuHk",

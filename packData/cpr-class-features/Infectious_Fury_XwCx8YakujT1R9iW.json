@@ -198,10 +198,10 @@
   "img": "icons/magic/control/fear-fright-monster-grin-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1696546110850,
-    "modifiedTime": 1711410487669,
+    "modifiedTime": 1713494876273,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "g00GJgzyfowXMdcZ",

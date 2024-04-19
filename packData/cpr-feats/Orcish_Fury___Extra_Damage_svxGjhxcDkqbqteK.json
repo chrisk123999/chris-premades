@@ -189,10 +189,10 @@
   "img": "icons/skills/toxins/cup-goblet-poisoned-spilled.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680212252055,
-    "modifiedTime": 1711410484601,
+    "modifiedTime": 1713494873160,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

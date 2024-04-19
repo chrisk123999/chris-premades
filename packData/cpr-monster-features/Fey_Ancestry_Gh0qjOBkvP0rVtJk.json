@@ -160,10 +160,10 @@
   "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1681166560394,
-    "modifiedTime": 1711410486801,
+    "modifiedTime": 1713494875285,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "SFZIQx8Q9LUBU0Wi",

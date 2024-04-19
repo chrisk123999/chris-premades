@@ -33,6 +33,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         queue.remove(workflow.item.uuid);
         return;
     }
+    delete itemData._id;
     let saveDiceNumber = castLevel - 1;
     itemData.system.damage.parts = [
         [
@@ -49,7 +50,7 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         'spell': {
             'castData': workflow.castData
         }
-    }
+    };
     itemData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let areaFeature = new CONFIG.Item.documentClass(itemData, {'parent': workflow.actor});
     let newTargets = chris.findNearby(targetToken, 10, null);
@@ -72,11 +73,11 @@ async function lightningArrowAttack({speaker, actor, token, character, item, arg
     let queueSetup = await queue.setup(workflow.item.uuid, 'lightningArrow', 50);
     if (!queueSetup) return;
     workflow.isFumble = false;
-    let updatedRoll = await new Roll('-100').evaluate({async: true});
+    let updatedRoll = await new Roll('-100').evaluate({'async': true});
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
 }
 export let lightningArrow = {
     'attack': lightningArrowAttack,
     'damage': lightningArrowDamage
-}
+};

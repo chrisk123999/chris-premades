@@ -185,10 +185,10 @@
   "img": "icons/commodities/materials/liquid-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680591594952,
-    "modifiedTime": 1711410488761,
+    "modifiedTime": 1713494877219,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "TwRQX8FkzukKaKVi",

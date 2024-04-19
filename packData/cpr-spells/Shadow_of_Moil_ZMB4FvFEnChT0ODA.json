@@ -391,10 +391,10 @@
   "img": "icons/commodities/gems/pearl-swirl-teal.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685268901966,
-    "modifiedTime": 1711410486239,
+    "modifiedTime": 1713494874766,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

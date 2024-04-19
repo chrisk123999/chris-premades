@@ -169,10 +169,10 @@
   "img": "icons/commodities/treasure/statue-bust-stone-grey.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1679081216503,
-    "modifiedTime": 1711410486069,
+    "modifiedTime": 1713494874498,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "1eSInFVxZCm5tj7P",

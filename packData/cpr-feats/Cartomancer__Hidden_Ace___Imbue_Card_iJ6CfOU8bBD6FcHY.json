@@ -140,10 +140,10 @@
   "img": "icons/sundries/gaming/playing-cards.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1700177573651,
-    "modifiedTime": 1711410484435,
+    "modifiedTime": 1713494873007,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

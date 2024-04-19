@@ -220,10 +220,10 @@
   "img": "icons/consumables/potions/potion-bottle-corked-fancy-orange.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669200040475,
-    "modifiedTime": 1711410483835,
+    "modifiedTime": 1713494872368,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "42tD8Aow1WmdXmom",

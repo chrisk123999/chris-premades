@@ -197,10 +197,10 @@
   "img": "icons/magic/lightning/bolt-strike-beam-yellow.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669244489479,
-    "modifiedTime": 1711410484787,
+    "modifiedTime": 1713494873313,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -166,10 +166,10 @@
   "img": "icons/creatures/tentacles/tentacle-earth-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1684215920253,
-    "modifiedTime": 1711410484625,
+    "modifiedTime": 1713494873173,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "TkzVHtxmsN3EyKBN",

@@ -189,10 +189,10 @@
   "img": "icons/equipment/head/mask-carved-scream-tan.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1689623177746,
-    "modifiedTime": 1711410488530,
+    "modifiedTime": 1713494877011,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "rVpbSY97V26WT4Ya",

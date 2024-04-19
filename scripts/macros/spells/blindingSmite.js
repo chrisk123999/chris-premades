@@ -46,7 +46,6 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     queue.remove(workflow.item.uuid);
 }
-
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     async function effectMacro() {
         await (warpgate.wait(200));
@@ -93,8 +92,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.updateEffect(effect, updates);
 }
-
 export let blindingSmite = {
     'damage': damage,
     'item': item
-}
+};

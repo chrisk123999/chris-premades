@@ -162,10 +162,10 @@
   "img": "icons/magic/light/beams-rays-orange-purple-large.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1689234719138,
-    "modifiedTime": 1711410486540,
+    "modifiedTime": 1713494874968,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "8BFzApup436ZebTf",

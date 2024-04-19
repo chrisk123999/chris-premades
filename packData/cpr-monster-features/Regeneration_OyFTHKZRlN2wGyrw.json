@@ -211,10 +211,10 @@
   "img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1688120510608,
-    "modifiedTime": 1711410487708,
+    "modifiedTime": 1713494876326,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "iXtjXALRX79Kikf3",

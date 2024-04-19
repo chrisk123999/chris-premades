@@ -200,10 +200,10 @@
   "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680586384645,
-    "modifiedTime": 1711410485276,
+    "modifiedTime": 1713494873756,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "8BFzApup436ZebTf",

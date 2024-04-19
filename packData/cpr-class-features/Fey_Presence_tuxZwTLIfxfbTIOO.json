@@ -139,10 +139,10 @@
   "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1680056764948,
-    "modifiedTime": 1711410488985,
+    "modifiedTime": 1713494877400,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "WHMPhZH1UtZbvRX7",

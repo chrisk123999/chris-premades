@@ -144,10 +144,10 @@
   "img": "icons/magic/control/debuff-energy-hold-levitate-teal-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1700030261506,
-    "modifiedTime": 1711410484552,
+    "modifiedTime": 1713494873127,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

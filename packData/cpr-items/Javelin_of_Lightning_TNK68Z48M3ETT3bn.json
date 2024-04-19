@@ -173,10 +173,10 @@
   "img": "icons/weapons/polearms/javelin-hooked.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678011400523,
-    "modifiedTime": 1711410484315,
+    "modifiedTime": 1713494872867,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "8FSVAcUBcb3dM1uX",

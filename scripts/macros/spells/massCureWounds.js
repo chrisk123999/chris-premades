@@ -24,6 +24,6 @@ export async function massCureWounds({speaker, actor, token, character, item, ar
             ui.notifications.info('Too many targets selected!');
             return;
         }
-        chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', selectedTokens, workflow.item.name, workflow.itemCardId);
+        await chris.applyWorkflowDamage(workflow.token, damageRoll, 'healing', selectedTokens, workflow.item.name, workflow.itemCardId);
     }
 }

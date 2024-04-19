@@ -59,4 +59,4 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 export let staggeringSmite = {
     'damage': damage,
     'item': item
-}
+};

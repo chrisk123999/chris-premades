@@ -6124,6 +6124,18 @@ export function setConfig() {
             'Umbral Sight': {
                 'name': 'Umbral Sight',
                 'version': '0.10.46'
+            },
+            'Branding Smite': {
+                'name': 'Branding Smite',
+                'version': '0.10.58'
+            },
+            'Blinding Smite': {
+                'name': 'Blinding Smite',
+                'version': '0.10.58'
+            },
+            'Staggering Smite': {
+                'name': 'Staggering Smite',
+                'version': '0.10.58'
             }
         }
     });

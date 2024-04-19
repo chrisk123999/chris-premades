@@ -150,10 +150,10 @@
   "img": "icons/creatures/unholy/demons-horned-glowing-pink.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650622,
-    "modifiedTime": 1711410484495,
+    "modifiedTime": 1713494873070,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -142,10 +142,10 @@
   "img": "icons/magic/water/orb-water-transparent.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669707659034,
-    "modifiedTime": 1711410485709,
+    "modifiedTime": 1713494874107,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "tfc2UNFSaq0WtSMO",

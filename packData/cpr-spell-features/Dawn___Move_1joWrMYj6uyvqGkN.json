@@ -114,10 +114,10 @@
   },
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685519723091,
-    "modifiedTime": 1711410483574,
+    "modifiedTime": 1713494872127,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

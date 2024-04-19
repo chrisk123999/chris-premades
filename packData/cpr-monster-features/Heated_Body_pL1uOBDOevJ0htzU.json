@@ -181,10 +181,10 @@
   "img": "icons/creatures/unholy/demon-fanged-horned-yellow.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678125424744,
-    "modifiedTime": 1711410489711,
+    "modifiedTime": 1713494878109,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "7FvHFC9DeRTMSGTZ",

@@ -151,10 +151,10 @@
   "img": "icons/skills/social/intimidation-impressing.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650358,
-    "modifiedTime": 1711410483814,
+    "modifiedTime": 1713494872384,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

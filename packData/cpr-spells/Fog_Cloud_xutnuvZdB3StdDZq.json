@@ -340,10 +340,10 @@
   "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650147,
-    "modifiedTime": 1711410487044,
+    "modifiedTime": 1713494875678,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

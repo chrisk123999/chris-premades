@@ -182,10 +182,10 @@
   "img": "icons/equipment/head/helm-barbute-horned-copper.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1699615975533,
-    "modifiedTime": 1711410486393,
+    "modifiedTime": 1713494874844,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "PnxktxFjYCBF8dfq",

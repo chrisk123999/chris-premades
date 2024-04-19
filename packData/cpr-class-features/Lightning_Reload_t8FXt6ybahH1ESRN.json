@@ -141,10 +141,10 @@
   "img": "icons/containers/ammunition/powder-horn-leather.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1699261115282,
-    "modifiedTime": 1711410488909,
+    "modifiedTime": 1713494877336,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "l8uZbuw4Y4Rmr9EA",

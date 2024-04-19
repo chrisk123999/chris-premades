@@ -151,10 +151,10 @@
   "img": "icons/skills/toxins/poison-bottle-corked-fire-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1678520965480,
-    "modifiedTime": 1711410488179,
+    "modifiedTime": 1713494876766,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "TnpTWSt5Zulj02G0",

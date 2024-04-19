@@ -137,10 +137,10 @@
   "img": "icons/consumables/potions/potion-tube-corked-bubbling-green.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798828106,
-    "modifiedTime": 1711410483569,
+    "modifiedTime": 1713494872124,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "42tD8Aow1WmdXmom",

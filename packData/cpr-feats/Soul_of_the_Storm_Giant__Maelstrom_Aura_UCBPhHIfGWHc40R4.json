@@ -207,10 +207,10 @@
   "img": "icons/magic/lightning/bolt-strike-forked-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1697685801435,
-    "modifiedTime": 1711410484094,
+    "modifiedTime": 1713494872631,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

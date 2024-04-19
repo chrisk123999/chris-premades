@@ -202,10 +202,10 @@
   "img": "icons/magic/air/fog-gas-smoke-brown.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650165,
-    "modifiedTime": 1711410484327,
+    "modifiedTime": 1713494872893,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

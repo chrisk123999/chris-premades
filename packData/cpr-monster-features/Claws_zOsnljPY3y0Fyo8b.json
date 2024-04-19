@@ -216,10 +216,10 @@
   "img": "icons/commodities/claws/claws-white.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1677824713021,
-    "modifiedTime": 1711410490274,
+    "modifiedTime": 1713494878657,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "IwkZ753TXtNJRyJP",

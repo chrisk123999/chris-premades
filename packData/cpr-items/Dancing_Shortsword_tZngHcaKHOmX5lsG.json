@@ -237,10 +237,10 @@
   "img": "icons/weapons/swords/shortsword-broad-blue.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1689980556467,
-    "modifiedTime": 1711410485677,
+    "modifiedTime": 1713494874124,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "8FSVAcUBcb3dM1uX",

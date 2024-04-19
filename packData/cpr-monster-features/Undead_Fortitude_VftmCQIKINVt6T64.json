@@ -185,10 +185,10 @@
   "img": "icons/magic/death/skull-horned-goat-pentagram-red.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1677559826547,
-    "modifiedTime": 1711410488162,
+    "modifiedTime": 1713494876751,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "2veUDTTgsgU7pCkq",

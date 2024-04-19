@@ -25,7 +25,7 @@
     "target": {
       "value": null,
       "width": null,
-      "units": "",
+      "units": null,
       "type": "",
       "prompt": true
     },
@@ -85,7 +85,12 @@
       "vocal",
       "somatic",
       "concentration"
-    ]
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "summons": null
   },
   "name": "Heroism",
   "flags": {
@@ -115,13 +120,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false
     },
-    "dnd5e": {
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    },
+    "dnd5e": {},
     "dae": {
       "macro": {
         "name": "Heroism",
@@ -237,10 +236,10 @@
   "img": "icons/magic/control/control-influence-crown-gold.webp",
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650796,
-    "modifiedTime": 1711410486691,
+    "modifiedTime": 1713494875222,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
