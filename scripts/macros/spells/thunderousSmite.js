@@ -28,8 +28,6 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         if (!chris.checkTrait(targetToken.actor, 'ci', 'prone')) await chris.addCondition(targetToken.actor, 'Prone');
     }
     await chris.removeEffect(effect);
-    let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
-    if (conEffect) await chris.removeEffect(conEffect);
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {

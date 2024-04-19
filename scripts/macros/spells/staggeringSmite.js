@@ -24,8 +24,6 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, config, options);
     await chris.removeEffect(effect);
-    let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
-    if (conEffect) await chris.removeEffect(conEffect);
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
