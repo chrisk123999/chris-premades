@@ -3,7 +3,7 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
-    if (workflow.item.system.properties.has('mgc') && workflow.item.name !== 'Force-Empowered Rend') return;
+    if (!workflow.item.system.properties.has('mgc') && workflow.item.name !== 'Force-Empowered Rend') return;
     let effect = chris.findEffect(workflow.actor, 'Arcane Jolt');
     if (!effect) return;
     let originFeature = await fromUuid(effect.origin);
@@ -38,7 +38,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let queueSetup = await queue.setup(workflow.item.uuid, 'arcaneJolt', 450);
         if (!queueSetup) return;
         if (chris.inCombat()) await originFeature.setFlag('chris-premades', 'feature.arcaneJolt.turn', game.combat.round + '-' + game.combat.turn);
-        let selected = await chris.selectTarget('Who to heal?', constants.yesNo, nearbyTargets, true, 'one');
+        let selected = await chris.selectTarget('Who to heal?', constants.yesNoButton, nearbyTargets, true, 'one');
         if (selected.buttons === false) {
             queue.remove(workflow.item.uuid);
             return;
