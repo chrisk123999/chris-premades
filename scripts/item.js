@@ -192,7 +192,6 @@ export async function updateItem(itemDocument) {
             if (!compendium) continue;
             compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true);
             if (compendiumItem) {
-                console.log(duplicate(compendiumItem));
                 foundCompendiumName = compendium.metadata.label;
                 sourceModule = compendium.metadata.packageType === 'module' ? compendium.metadata.packageName : 'world';
                 break;
