@@ -1,4 +1,4 @@
-# 0.10.56 Release:
+# 0.10.58 Release:
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
@@ -14,6 +14,14 @@
 - Piercer: Damage
 - Piercer: Critical
 - Metamagic
+  
+# 0.10.57 Release:
+## Bug Fixes:
+- Balm of the Summer Court
+  
+# 0.10.56 Release:
+## Bug Fixes:
+- Fall
   
 # 0.10.55 Release:
 # Bug Fixes:
