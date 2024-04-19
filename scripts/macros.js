@@ -41,6 +41,7 @@ import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 import {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
 import {blight} from './macros/spells/blight.js';
+import { blindingSmite } from './macros/spells/blindingSmite.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
@@ -608,6 +609,7 @@ export let macros = {
     'blessingOfTheForge': blessingOfTheForge,
     'blessingOfTheRavenQueen': blessingOfTheRavenQueen,
     'blight': blight,
+    'blindingSmite': blindingSmite,
     'blink': blink,
     'bloodSpear': bloodSpear,
     'bolsteringMagic': bolsteringMagic,
