@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {tashaSummon} from '../../utility/tashaSummon.js';
 import {chris} from '../../helperFunctions.js';
 export async function summonUndead({speaker, actor, token, character, item, args, scope, workflow}){

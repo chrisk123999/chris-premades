@@ -84,6 +84,7 @@
 		"Sequencer": "writable",
 		"token": "writable",
 		"effect": "writable",
-		"tokenAttacher": "writable"
+		"tokenAttacher": "writable",
+		"randomID": "writable"
 	}
 }

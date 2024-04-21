@@ -1,4 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
+import {constants} from '../../../constants.js';
 export async function festeringAura(token, origin) {
     let targetToken = game.canvas.tokens.get(game.combat.current.tokenId);
     if (!targetToken) return;

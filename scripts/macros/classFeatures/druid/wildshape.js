@@ -70,7 +70,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'texture': texture,
         'width': wildshapeActor.prototypeToken.width,
         'height': wildshapeActor.prototypeToken.height
-    }
+    };
     wildshapeActor.prototypeToken = wildshapeToken;
     wildshapeActor.system.abilities.cha = workflow.actor.system.abilities.cha;
     wildshapeActor.system.abilities.int = workflow.actor.system.abilities.int;
@@ -169,7 +169,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let items = workflow.actor.items.filter(i => invalidTypes.includes(i.type) && !i.system.equipped && i.type != 'container');
     let itemUpdates = {};
     for (let i of items) {
-        itemUpdates[i.id] = warpgate.CONST.DELETE
+        itemUpdates[i.id] = warpgate.CONST.DELETE;
     }
     if (selection) {
         for (let i = 0; selection.inputs.length > i; i++) {
@@ -189,12 +189,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         if (insigniaOfClaws && itemUpdates[i.id].type === 'weapon') {
             try {
                 itemUpdates[i.id].system.damage.parts[0][0] += ' + 1';
-            } catch (error) {}
+            } catch (error) { /* empty */ }
             itemUpdates[i.id].system.attackBonus = 1;
         }
         itemUpdates[i.id].flags['tidy5e-sheet'] = {'favorite': true};
         if (invalidTypes.includes(itemUpdates[i.id].type)) continue;
-        itemUpdates[i.id].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'}
+        itemUpdates[i.id].flags['custom-character-sheet-sections'] = {'sectionName': 'Wild Shape'};
     }
     itemUpdates[featureData._id] = featureData;
     let updates = {
@@ -221,4 +221,4 @@ export let wildShape = {
     'item': item,
     'hook': hook,
     'revert': revert
-}
+};

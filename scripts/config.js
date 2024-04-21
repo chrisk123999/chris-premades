@@ -6042,7 +6042,7 @@ export function setConfig() {
             },
             'Chaos Bolt': {
                 'name': 'Chaos Bolt',
-                'version': '0.10.8'
+                'version': '0.10.60'
             },
             'Heavy Armor Master': {
                 'name': 'Heavy Armor Master',

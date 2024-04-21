@@ -1,7 +1,13 @@
-# 0.10.60 Release:
+# 0.10.61 Release:
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
+## Bug Fixes:
+- Summon Undead
+- Chaos Bolt
+- Hail of Thorns
+  
+# 0.10.60 Release:
 ## Bug Fixes:
 - Blinding Smite
   
