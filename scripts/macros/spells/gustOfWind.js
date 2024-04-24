@@ -95,35 +95,8 @@ async function push({speaker, actor, token, character, item, args, scope, workfl
     if (!queueSetup) return;
     let targetToken = workflow.targets.first();
     let distance = 15;
-    let knockBackFactor, ray, newCenter;
-    let hitsWall = true;
-    while (hitsWall) {
-        knockBackFactor = distance / canvas.dimensions.distance;
-        ray = Ray.fromAngle(targetToken.center.x, targetToken.center.y, gustAngle, canvas.dimensions.size);
-        newCenter = ray.project(1 + knockBackFactor);
-        hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
-        if (hitsWall) {
-            distance -= 5;
-            if (distance === 0) {
-                ui.notifications.info('Target is unable to be moved!');
-                queue.remove(workflow.item.uuid);
-                return;
-            }
-        }
-    }
-    newCenter = canvas.grid.getSnappedPosition(newCenter.x - targetToken.w / 2, newCenter.y - targetToken.h / 2, 1);
-    let targetUpdate = {
-        'token': {
-            'x': newCenter.x,
-            'y': newCenter.y
-        }
-    };
-    let options = {
-        'permanent': true,
-        'name': workflow.item.name,
-        'description': workflow.item.name
-    };
-    await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
+    let ray = Ray.fromAngle(targetToken.center.x, targetToken.center.y, gustAngle, canvas.dimensions.size);
+    await chris.pushTokenAlongRay(targetToken, ray, distance);
     queue.remove(workflow.item.uuid);
 }
 

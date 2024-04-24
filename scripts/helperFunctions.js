@@ -773,18 +773,16 @@ export let chris = {
         let tokens = await game.modules.get('templatemacro').api.findContained(finalTemplate).map(t => finalTemplate.parent.tokens.get(t));
         return {'template': finalTemplate, 'tokens': tokens};
     },
-    'pushToken': async function _pushToken(sourceToken, targetToken, distance) {
+    'pushTokenAlongRay': async function _pushTokenAlongRay(targetToken, ray, distance) {
         let knockBackFactor;
-        let ray;
         let newCenter;
         let hitsWall = true;
+        if (ray.distance === 0) {
+            ui.notifications.info('Target is unable to be moved!');
+            return;
+        }
         while (hitsWall) {
             knockBackFactor = distance / canvas.dimensions.distance;
-            ray = new Ray(sourceToken.center, targetToken.center);
-            if (ray.distance === 0) {
-                ui.notifications.info('Target is unable to be moved!');
-                return;
-            }
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
             hitsWall = targetToken.checkCollision(newCenter, {'origin': ray.A, 'type': 'move', 'mode': 'any'});
             if (hitsWall) {
@@ -808,6 +806,10 @@ export let chris = {
             'description': 'Move Token'
         };
         await warpgate.mutate(targetToken.document, targetUpdate, {}, options);
+    },
+    'pushToken': async function _pushToken(sourceToken, targetToken, distance) {
+        let ray = new Ray(sourceToken.center, targetToken.center);
+        await this.pushTokenAlongRay(targetToken, ray, distance);
     },
     'getGridBetweenTokens': function _getGridBetweenTokens(sourceToken, targetToken, distance) {
         let knockBackFactor = distance / canvas.dimensions.distance;
