@@ -183,6 +183,7 @@ import {grovelthrash} from './macros/items/grovelthrash.js';
 import {grungPoison} from './macros/raceFeatures/grung/grungPoison.js';
 import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 import {guardianOfNature} from './macros/spells/guardianOfNature.js';
+import { gustOfWind } from './macros/spells/gustOfWind.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {harnessDivinePower} from './macros/classFeatures/cleric/harnessDivinePower.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
@@ -722,6 +723,7 @@ export let macros = {
     'grungPoison': grungPoison,
     'guardianOfFaith': guardianOfFaith,
     'guardianOfNature': guardianOfNature,
+    'gustOfWind': gustOfWind,
     'hailOfThorns': hailOfThorns,
     'harnessDivinePower': harnessDivinePower,
     'healingLight': healingLight,
