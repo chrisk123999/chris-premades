@@ -559,6 +559,9 @@ async function templateTrigger(macroName, token, trigger, reason) {
         case 'hungerOfHadar':
             await hungerOfHadar.trigger(token, trigger, reason);
             break;
+        case 'gustOfWind':
+            await gustOfWind.trigger(token, trigger, reason);
+            break;
         case 'sleetStorm': {
             await sleetStorm.trigger(token, trigger, reason);
             break;
