@@ -42,7 +42,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 [attackData.name]: attackData
             }
         }
-    }
+    };
     let updates3 = {
         'flags': {
             'chris-premades': {
@@ -54,7 +54,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             }
         }
-    }
+    };
     let investmentOfTheChainMaster = chris.getItem(workflow.actor, 'Eldritch Invocations: Investment of the Chain Master');
     if (investmentOfTheChainMaster) { 
         let movement = await chris.dialog(investmentOfTheChainMaster.name, [['Flying', 'fly'], ['Swimming', 'swim']], 'Which Movement Type?');
@@ -137,7 +137,7 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
                 ]
             }
         }
-    }
+    };
     await chris.createEffect(workflow.actor, effectData);
     await chris.createEffect(familiarToken.actor, effectData);
 }
@@ -158,4 +158,4 @@ export let findFamiliar = {
     'item': item,
     'attackApply': attackApply,
     'attackEarly': attackEarly
-}
+};

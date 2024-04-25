@@ -3,7 +3,8 @@
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
 ## Bug Fixes:
-- Documents selector dialog
+- Documents Selector Dialog
+- Sacred Weapon
   
 # 0.10.62 Release:
 ## Bug Fixes:

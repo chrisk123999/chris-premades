@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function circleOfMortality({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (workflow.targets.size === 0 || !workflow.damageRoll) return;
+    if (!workflow.targets.size|| !workflow.damageRoll) return;
     for (let i of workflow.damageList) {
         if (i.oldHP != 0) continue;
         let targetActor = game.scenes.get(i.sceneId).tokens.get(i.tokenId).actor;

@@ -57,18 +57,19 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let attackBonus = Math.max(1, workflow.actor.system.abilities.cha.mod);
-    if (![undefined, null, ''].includes(selection.system.attackBonus)) {
-        attackBonus = selection.system.attackBonus + ' + ' + attackBonus;
+    if (![undefined, null, ''].includes(selection.system.attack.bonus)) {
+        attackBonus = selection.system.attack.bonus + ' + ' + attackBonus;
     }
+    let weaponData = duplicate(selection.toObject());
+    let properties = weaponData.system.properties;
+    properties.push('mgc');
     let updates = {
         'embedded': {
             'Item': {
                 [selection.name]: {
                     'system': {
                         'attackBonus': attackBonus,
-                        'properties': {
-                            'mgc': true
-                        }
+                        'properties': properties
                     }
                 },
                 [featureData.name]: featureData

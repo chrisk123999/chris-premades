@@ -11,6 +11,6 @@ Creating a template that applies effects is done via specific flags set on a tem
   
 The world macro or global function is called by CPR with the following arguments:  
 `token` The token that the template effect is targeting.  
-`triggerData` Contains the passed in information from the above flags.  With this you can handle creating and removing effects as needed by your template effect.  
+`this` Contains the passed in information from the above flags.  With this you can handle creating and removing effects as needed by your template effect.  
   
 [Cloudkill](https://github.com/chrisk123999/chris-premades/blob/master/scripts/macros/spells/cloudkill.js) is a good example of how to implement your own template effect.
