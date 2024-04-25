@@ -1,6 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    await tokenAttacher.attachElementToToken(fromUuidSync(workflow.templateUuid), workflow.token, true);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Gust of Wind - Move');
     async function effectMacro() {
         await warpgate.revert(token.document, 'Gust of Wind');
@@ -40,7 +41,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 }
 
 async function move({speaker, actor, token, character, item, args, scope, workflow}) {
-    let template = workflow.token.attachedTemplates.find(currTemplate => currTemplate.document.uuid === args?.[0]?.concentrationData?.templates?.[0])
+    let template = fromUuidSync(args?.[0]?.concentrationData?.templates?.[0])?.object;
     if (!template) return;
     await workflow.actor.sheet.minimize();
     // Input location for getting new angle & direction
@@ -79,8 +80,10 @@ async function move({speaker, actor, token, character, item, args, scope, workfl
         y: Math.round((oldVector.y * Math.cos(Math.toRadians(newAngle - oldAngle))) + (oldVector.x * Math.sin(Math.toRadians(newAngle - oldAngle)))) + sourceCenter.y
     }
 
+    tokenAttacher.detachElementFromToken(template, workflow.token, true);
     await template.rotate(newAngle);
     await template.document.update({x: newLocation.x, y: newLocation.y});
+    await tokenAttacher.attachElementToToken(template, workflow.token, true);
     if (newLocation.x === oldTemplateLocation.x || newLocation.y === oldTemplateLocation.y) {
         await template.document.callMacro('whenMoved');
     }
