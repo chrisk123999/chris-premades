@@ -1,6 +1,6 @@
 # 0.10.64 Release:
 ## New Content:
-- Gust of Wind (Thanks Michael)
+- Spell: Gust of Wind (Thanks Michael)
 ## Bug Fixes:
 - Cloudkill
 - Sacred Weapon
