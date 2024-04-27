@@ -629,10 +629,10 @@ export let chris = {
             }
             content += `</datalist>`;
             for (let i = 0; documents.length > i; i++) {
-                content += 
+                content +=
                     `<div class = 'form-group'>
                         <input type='number' id='${i}' name='${documents[i].name}' placeholder='0' list='defaultNumbers' style='max-width: 50px; margin-left: 10px'/>
-                        <label> 
+                        <label>
                             <img src='${documents[i].img}' width='50' height='50' style='border:1px solid gray; border-radius: 5px; float: left; margin-left: 20px; margin-right: 10px'>
                             <p style='padding: 1%; text-align: center; font-size: 15px;'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `>` + i.name + (documents[i].system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(documents[i].system?.details?.cr)})` : ``) + `</p>
                         </label>
@@ -1224,7 +1224,31 @@ export let chris = {
         if (inBright) return 'bright';
         return 'dim';
     },
-    'getSearchCompendiums': async function getSearchCompendiums(itemType) {
+    'getMonsterFeatureSearchCompendiums': function getMonsterFeatureSearchCompendiums() {
+        const gambitItems = game.modules.get('gambits-premades')?.active
+            ? game.settings.get('chris-premades', 'GPS Support')
+            : false;
+        const miscItems = game.modules.get('midi-item-showcase-community')?.active
+            ? game.settings.get('chris-premades', 'MISC Support')
+            : false;
+        const chrisPacks = ['chris-premades.CPR Monster Features'];
+        const gambitPacks = gambitItems !== 0 ? ['gambits-premades.gps-monster-features'] : [];
+        const miscPacks = miscItems !== 0 ? ['midi-item-showcase-community.misc-monster-features'] : [];
+        const additionalCompendiumPriority = game.settings.get('chris-premades', 'Additional Compendium Priority');
+        const searchCompendiums = [...chrisPacks, ...gambitPacks, ...miscPacks].sort((a, b) => {
+            let numA = additionalCompendiumPriority[a] ?? 10;
+            let numB = additionalCompendiumPriority[b] ?? 10;
+            if (chrisPacks.includes(a)) numA = additionalCompendiumPriority['CPR'];
+            if (chrisPacks.includes(b)) numB = additionalCompendiumPriority['CPR'];
+            if (gambitPacks.includes(a)) numA = additionalCompendiumPriority['GPS'];
+            if (gambitPacks.includes(b)) numB = additionalCompendiumPriority['GPS'];
+            if (miscPacks.includes(a)) numA = additionalCompendiumPriority['MISC'];
+            if (miscPacks.includes(b)) numB = additionalCompendiumPriority['MISC'];
+            return numA - numB;
+        });
+        return searchCompendiums;
+    },
+    'getSearchCompendiums': function getSearchCompendiums(itemType) {
         const gambitItems = game.modules.get('gambits-premades')?.active
             ? game.settings.get('chris-premades', 'GPS Support')
             : false;

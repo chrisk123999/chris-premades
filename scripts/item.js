@@ -86,7 +86,7 @@ export async function updateItemButton(app, [elem], options) {
         if (found) return;
         let gambitAutomation;
         let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
-        if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name]; 
+        if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
         if (gambitAutomation || miscAutomation) headerButton.style.color = 'yellow';
     }
 }
@@ -186,7 +186,7 @@ export async function updateItem(itemDocument) {
     let foundCompendiumName;
     let sourceModule;
     if (!isNPC || itemType === 'spell') {
-        let searchCompendiums = await chris.getSearchCompendiums(itemType);
+        const searchCompendiums = chris.getSearchCompendiums(itemType);
         for (let compendiumId of searchCompendiums) {
             let compendium = game.packs.get(compendiumId);
             if (!compendium) continue;
@@ -200,13 +200,26 @@ export async function updateItem(itemDocument) {
     } else if (isNPC) {
         let itemActor = itemDocument.actor;
         let monsterName = itemActor.name;
-        let monsterFolder = game.packs.get('chris-premades.CPR Monster Features').folders.getName(monsterName);
-        foundCompendiumName = "Chris's Premades";
+        let monsterFolder = null;
+
+        const searchCompendiums = chris.getMonsterFeatureSearchCompendiums();
+        for (let compendiumId of searchCompendiums) {
+            let compendium = game.packs.get(compendiumId);
+            if (!compendium) continue;
+            monsterFolder = compendium.folders.getName(monsterName);
+            if (!monsterFolder) continue;
+
+            compendiumItem = await chris.getItemFromCompendium(compendiumId, itemName, true, monsterFolder.id);
+            if (compendiumItem) {
+                foundCompendiumName = compendium.metadata.label;
+                sourceModule = compendium.metadata.packageType === 'module' ? compendium.metadata.packageName : 'world';
+                break;
+            }
+        }
         if (!monsterFolder) {
             ui.notifications.info('No available automation for this monster! (Or monster has a different name)');
             return;
         }
-        compendiumItem = await chris.getItemFromCompendium('chris-premades.CPR Monster Features', itemName, true, monsterFolder.id);
     } else {
         ui.notifications.info('Automation detection for this actor type is not supported!');
     }
@@ -264,7 +277,7 @@ export async function updateItem(itemDocument) {
             break;
         }
         case 'gambits-premades': {
-            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName]; 
+            let gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[itemName];
             setProperty(originalItem, 'flags.chris-premades.info.gambit', gambitAutomation);
             setProperty(originalItem, 'flags.chris-premades.info.source', 'GPS');
             break;
@@ -276,7 +289,7 @@ export async function updateItem(itemDocument) {
             setProperty(originalItem, 'flags.chris-premades.info.source', 'world');
             break;
     }
-    if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img; 
+    if (originalItem.img === 'icons/svg/item-bag.svg') originalItem.img = compendiumItem.img;
     await itemDocument.actor.createEmbeddedDocuments('Item', [originalItem]);
     await itemDocument.delete();
     ui.notifications.info('Item updated!');
