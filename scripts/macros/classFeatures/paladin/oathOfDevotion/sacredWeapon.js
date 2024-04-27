@@ -68,7 +68,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'Item': {
                 [selection.name]: {
                     'system': {
-                        'attackBonus': attackBonus,
+                        'attack': {
+                            'bonus': attackBonus
+                        },
                         'properties': properties
                     }
                 },

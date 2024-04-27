@@ -1325,5 +1325,5 @@ export let chris = {
             return numA - numB;
         });
         return searchCompendiums;
-    },
+    }
 };

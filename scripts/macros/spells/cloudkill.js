@@ -95,4 +95,4 @@ export let cloudkill = {
     'item': item,
     'trigger': trigger,
     'move': move
-}
+};

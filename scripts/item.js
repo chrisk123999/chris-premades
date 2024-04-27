@@ -201,7 +201,6 @@ export async function updateItem(itemDocument) {
         let itemActor = itemDocument.actor;
         let monsterName = itemActor.name;
         let monsterFolder = null;
-
         const searchCompendiums = chris.getMonsterFeatureSearchCompendiums();
         for (let compendiumId of searchCompendiums) {
             let compendium = game.packs.get(compendiumId);

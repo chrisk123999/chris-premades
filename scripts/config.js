@@ -2962,7 +2962,7 @@ export function setConfig() {
             },
             'Cloudkill': {
                 'name': 'Cloudkill',
-                'version': '0.7.01',
+                'version': '0.10.64',
                 'settings': [
                     'Template Listener'
                 ]
@@ -6136,6 +6136,16 @@ export function setConfig() {
             'Staggering Smite': {
                 'name': 'Staggering Smite',
                 'version': '0.10.58'
+            },
+            'Gust of Wind': {
+                'name': 'Gust of Wind',
+                'version': '0.10.64',
+                'settings': [
+                    'Template Listener'
+                ],
+                'mutation': {
+                    'self': 'Gust of Wind'
+                }
             }
         }
     });

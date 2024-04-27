@@ -1,6 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
 export async function longLimbed(origin, actor) {
-    console.log(origin);
     let effectData = {
         'icon': origin.img,
         'origin': origin.uuid,

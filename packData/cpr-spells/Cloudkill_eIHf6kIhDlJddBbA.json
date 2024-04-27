@@ -83,7 +83,8 @@
     "properties": [
       "vocal",
       "somatic",
-      "concentration"
+      "concentration",
+      "mgc"
     ]
   },
   "effects": [],
@@ -98,7 +99,13 @@
             "option": "postActiveEffects"
           }
         }
-      }
+      },
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -113,26 +120,11 @@
       "ignoreTotalCover": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "offHandWeapon": false
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
     },
-    "templatemacro": {
-      "whenEntered": {
-        "asGM": true,
-        "command": "await chrisPremades.macros.cloudkill.entered(template, token);"
-      },
-      "whenLeft": {
-        "asGM": true,
-        "command": "await chrisPremades.macros.cloudkill.left(token);"
-      },
-      "whenMoved": {
-        "asGM": true,
-        "command": "await chrisPremades.macros.cloudkill.moved(template);"
-      },
-      "whenDeleted": {
-        "asGM": true,
-        "command": "await chrisPremades.macros.cloudkill.deleted(template);"
-      }
-    },
+    "templatemacro": {},
     "core": {
       "sourceId": "Actor.iDTsfmjce9HF9WmK.Item.ELsVomopMwIhXcWT"
     },
@@ -341,7 +333,7 @@
     "chris-premades": {
       "info": {
         "name": "Cloudkill",
-        "version": "0.7.01",
+        "version": "0.10.64",
         "settings": [
           "Template Listener"
         ]
@@ -354,7 +346,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1667888110992,
-    "modifiedTime": 1713497898633,
+    "modifiedTime": 1714190737140,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

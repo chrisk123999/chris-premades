@@ -87,12 +87,13 @@
       "prepared": false
     },
     "scaling": {
-      "mode": "level",
+      "mode": "none",
       "formula": ""
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "mgc"
     ]
   },
   "name": "Chaos Bolt",
@@ -415,7 +416,14 @@
     "chris-premades": {
       "info": {
         "name": "Chaos Bolt",
-        "version": "0.10.8"
+        "version": "0.10.60"
+      }
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
       }
     }
   },
@@ -426,7 +434,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650477,
-    "modifiedTime": 1713497897099,
+    "modifiedTime": 1714190734228,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
