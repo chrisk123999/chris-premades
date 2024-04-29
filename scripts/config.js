@@ -3133,7 +3133,7 @@ export function setConfig() {
             },
             'Zone of Truth': {
                 'name': 'Zone of Truth',
-                'version': '0.7.01'
+                'version': '0.10.65'
             },
             'Conjure Elemental': {
                 'name': 'Conjure Elemental',

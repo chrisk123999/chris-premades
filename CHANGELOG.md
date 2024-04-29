@@ -1,3 +1,10 @@
+# 0.10.65 Release:
+## Bug Fixes:
+- Zone of Truth (Thanks Michael)
+## Update Notes:
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+  
 # 0.10.64 Release:
 ## New Content:
 - Spell: Gust of Wind (Thanks Michael)
@@ -6,8 +13,6 @@
 - Sacred Weapon
 ## Update Notes:
 - Medkit support for monster features from GPS and MISC. (Thanks MrPrimate)
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.63 Release:
 ## Bug Fixes:

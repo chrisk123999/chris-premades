@@ -80,7 +80,8 @@
     },
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "mgc"
     ]
   },
   "name": "Zone of Truth",
@@ -90,10 +91,6 @@
       "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.YEBIv8j5MGMhZUdo"
     },
     "templatemacro": {
-      "whenCreated": {
-        "asGM": false,
-        "command": "console.log(template);\nconsole.log(this);"
-      },
       "whenEntered": {
         "asGM": false,
         "command": "await chrisPremades.macros.zoneOfTruth.inZone(token, template);"
@@ -109,6 +106,10 @@
       "whenStaying": {
         "asGM": false,
         "command": "await chrisPremades.macros.zoneOfTruth.inZone(token, template);"
+      },
+      "whenDeleted": {
+        "asGM": false,
+        "command": "await chrisPremades.macros.zoneOfTruth.deleted(template);"
       }
     },
     "custom-character-sheet-sections": {
@@ -122,7 +123,13 @@
       }
     },
     "midi-qol": {
-      "effectActivation": false
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -137,12 +144,14 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
     },
     "chris-premades": {
       "info": {
         "name": "Zone of Truth",
-        "version": "0.7.01"
+        "version": "0.10.65"
       }
     },
     "dnd5e": {}
@@ -154,7 +163,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650073,
-    "modifiedTime": 1714190733703,
+    "modifiedTime": 1714350802623,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
