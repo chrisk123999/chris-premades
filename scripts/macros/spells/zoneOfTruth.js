@@ -7,7 +7,7 @@ async function bestZone(token) {
     for (let i of templates) {
         let testTemplate = canvas.scene.collections.templates.get(i);
         if (!testTemplate) continue;
-        let testOriginUuid = testTemplate.flags['midi-qol']?.originUuid;
+        let testOriginUuid = testTemplate.flags.dnd5e?.origin;
         if (!testOriginUuid) continue;
         let testOriginItem = await fromUuid(testOriginUuid);
         if (testOriginItem.name != 'Zone of Truth') continue;
@@ -20,7 +20,7 @@ async function bestZone(token) {
     return bestOriginUuid;
 }
 async function inZone(token, template) {
-    let originUuid = template.flags['midi-qol']?.originUuid;
+    let originUuid = template.flags.dnd5e?.origin;
     if (!originUuid) return;
     if (chris.inCombat()) {
         let turnEntered = template.flags['chris-premades']?.spell?.zoneOfTruth?.tokens?.[token.id];
@@ -79,13 +79,38 @@ async function leaveZone(token, template) {
     }
     let effect = chris.findEffect(token.actor, 'Zone of Truth');
     if (!effect) return;
-    let originUuid = template.flags['midi-qol']?.originUuid;
+    let originUuid = template.flags.dnd5e?.origin;
     if (!originUuid) return;
     if (effect.origin != originUuid) return;
     let bestOriginUuid = await bestZone(token);
-    if (!bestOriginUuid) await chris.removeEffect(effect);
+    if (!bestOriginUuid) {
+        await chris.removeEffect(effect);
+    } else {
+        await effect.update({'origin': bestOriginUuid});
+    }
 }
+
+async function deleted(template) {
+    let tokenIds = template.flags['chris-premades']?.spell?.zoneOfTruth?.tokens;
+    if (!tokenIds) return;
+    let tokens = Object.keys(tokenIds).map(tokenId => canvas.tokens.get(tokenId));
+    for (let token of tokens) {
+        let effect = chris.findEffect(token.actor, 'Zone of Truth');
+        if (!effect) return;
+        let originUuid = template.flags.dnd5e?.origin;
+        if (!originUuid) return;
+        if (effect.origin != originUuid) return;
+        let bestOriginUuid = await bestZone(token);
+        if (!bestOriginUuid) {
+            await chris.removeEffect(effect);
+        } else {
+            await effect.update({'origin': bestOriginUuid});
+        }
+    }
+}
+
 export let zoneOfTruth = {
     'inZone': inZone,
-    'leaveZone': leaveZone
+    'leaveZone': leaveZone,
+    'deleted': deleted
 }
