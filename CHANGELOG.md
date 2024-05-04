@@ -1,3 +1,7 @@
+# 0.10.66 Release:
+## Bug Fixes:
+- Documents Selector dialog
+  
 # 0.10.65 Release:
 ## Bug Fixes:
 - Zone of Truth (Thanks Michael)
