@@ -57,17 +57,17 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     let summonsIds = effect.flags['chris-premades']?.summons?.ids[originItem.name] ?? [];
     let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
     let groupInitiativeValue;
-    for (let i of sourceActors) {
-        let updates2 = duplicate(updates);
+    for (let i = 0; i < sourceActors.length; i++) {
+        let updates2 = Array.isArray(updates) ? updates[i] : duplicate(updates);
         if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls && originItem.system.school === 'nec') { // Undead Thralls automation
             let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
             if (wizardLevels) {
-                setProperty(updates2, 'actor.system.attributes.hp.formula', i.system.attributes.hp.formula + ' + ' + wizardLevels);
+                setProperty(updates2, 'actor.system.attributes.hp.formula', sourceActors[i].system.attributes.hp.formula + ' + ' + wizardLevels);
                 setProperty(updates2, 'actor.system.bonuses.mwak.damage', originItem.actor.system.attributes.prof);
                 setProperty(updates2, 'actor.system.bonuses.rwak.damage', originItem.actor.system.attributes.prof);
             }
         }
-        let spawnedTokens = await chris.spawn(i, updates2, callbacks, casterToken, maxRange, spawnAnimation);
+        let spawnedTokens = await chris.spawn(sourceActors[i], updates2, callbacks, casterToken, maxRange, spawnAnimation);
         if (!spawnedTokens) return;
         let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
         if (!spawnedToken) return;
