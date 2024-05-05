@@ -1325,5 +1325,9 @@ export let chris = {
             return numA - numB;
         });
         return searchCompendiums;
+    },
+    'checkPermission': function _checkPermission(user, permission) {
+        let check = getProperty(game.permissions, permission);
+        return check ? check.includes(user.role) : false;
     }
 };

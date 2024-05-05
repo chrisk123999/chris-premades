@@ -73,4 +73,4 @@ async function trigger(token, trigger, reason) {
 export let sleetStorm = {
     'item': item,
     'trigger': trigger
-}
+};

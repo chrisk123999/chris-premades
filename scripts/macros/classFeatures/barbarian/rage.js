@@ -102,7 +102,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 ]
             }
         }
-    }
+    };
     if (!chris.getItem(actor, 'Persistent Rage')) {
         effectData.changes = effectData.changes.concat([
             {
@@ -120,10 +120,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         ]);
         effectData.flags.effectmacro.onTurnEnd = {
             'script': 'await chrisPremades.macros.rage.turnEnd(effect, actor);'
-        }
+        };
         effectData.flags.effectmacro.onCombatStart = {
             'script': 'await chrisPremades.macros.rage.combatStart(effect);'
-        }
+        };
         if (chris.inCombat()) setProperty(effectData, 'flags.chris-premades.feature.rage.attackOrAttacked', {'turn': game.combat.turn, 'round': game.combat.round});
     }
     let totemBear = chris.getItem(workflow.actor, 'Totem Spirit: Bear');
@@ -224,7 +224,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                         }
                     }
                 }
-            }
+            };
             let direction = dCSelection === 'lg' ? lrgDirection : hgDirection;
             let scale = dCSelection === 'lg' ? 1 : 2;
             switch(direction) {
@@ -238,6 +238,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     break;
                 case 'outward':
                     scale = 1;
+                // eslint-disable-next-line no-fallthrough
                 case 'nw':
                     setProperty(updates2.token, 'x', workflow.token.x - canvas.grid.size * scale);
                     setProperty(updates2.token, 'y', workflow.token.y - canvas.grid.size * scale);
@@ -453,7 +454,7 @@ async function animationStart(token, origin) {
                 .tint('#FF0000')
                 .persist()
 
-                .play()
+                .play();
             break;
         case 'lightning':
             new Sequence()
@@ -527,7 +528,7 @@ async function animationStart(token, origin) {
                 .persist()
                 .zIndex(5)
 
-                .play()
+                .play();
             break;
         case 'saiyan':
             new Sequence()
@@ -626,4 +627,4 @@ export let rage = {
     'attacked': attacked,
     'turnEnd': turnEnd,
     'combatStart': combatStart
-}
+};

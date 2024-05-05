@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {queue} from '../../utility/queue.js';
@@ -118,7 +119,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             break;
         case 'Turn':
             let saveDC = chris.getSpellDC(workflow.item);
-            featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"'
+            featureData.effects[0].changes[0].value = 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="Bestow Curse (Start of Turn)"';
             break;
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
@@ -155,14 +156,12 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
 
     }
     queue.remove(workflow.item.uuid);
-
 }
 async function damage({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.hitTargets.size != 1) return;
     if (workflow.actor.flags['chris-premades']?.spell?.bestowCurse?.damage?.target != workflow.hitTargets.first().id) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'bestowCurse', 250);
     if (!queueSetup) return;
-    let oldFormula = workflow.damageRoll._formula;
     let bonusDamageFormula = '1d8[necrotic]';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
     queue.remove(workflow.item.uuid);
@@ -228,7 +227,7 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     queue.remove(workflow.item.uuid);
 }
 async function remove(effect, origin, token) {
-    let curseFlags = effect.flags['chris-premades']?.spell?.bestowCurse
+    let curseFlags = effect.flags['chris-premades']?.spell?.bestowCurse;
     if (!curseFlags) return;
     await warpgate.wait(200);
     if (curseFlags.type === 'Damage') {
@@ -246,4 +245,4 @@ export let bestowCurse = {
     'damageApplication': damageApplication,
     'attack': attack,
     'remove': remove
-}
+};

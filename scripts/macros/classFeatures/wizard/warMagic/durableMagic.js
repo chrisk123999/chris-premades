@@ -1,6 +1,6 @@
 import {chris} from '../../../../helperFunctions.js';
 export async function durableMagic({speaker, actor, token, character, item, args, scope, workflow}) {
-    if (!(workflow.item.system.components?.concentration || workflow.item.flags.midiProperties?.concentration)) return;
+    if (!(workflow.item.system.properties.has('concentration') || workflow.item.flags.midiProperties?.concentration)) return;
     let effect = chris.findEffect(workflow.actor, 'Concentrating');
     if (!effect) return;
     if (effect.flags['chris-premades']?.feature?.durableMagic) return;

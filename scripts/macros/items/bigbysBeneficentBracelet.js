@@ -1,4 +1,4 @@
-import {chris} from '../../helperFunctions.js'
+import {chris} from '../../helperFunctions.js';
 async function itemData() {
     let key = game.settings.get('chris-premades', 'Spell Compendium');
     if (!game.packs.get(key)) return undefined;
@@ -85,4 +85,4 @@ async function forceSculpture({speaker, actor, token, character, item, args, sco
 export let bigbysBeneficentBracelet = {
     'itemData': itemData,
     'forceSculpture': forceSculpture
-}
+};

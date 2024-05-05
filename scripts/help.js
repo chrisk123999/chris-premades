@@ -55,7 +55,6 @@ let incompatibleModules = [
     'advancedspelleffects',
     'attack-roll-check-5e',
     'betterrolls5e',
-    'concentrationnotifier',
     'dice-rng-protector',
     'dice-tooltip',
     'effective-transferral',
@@ -77,7 +76,8 @@ let defunctModules = [
     'compendium-folders',
     'select-tool-everywhere',
     'sidebar-macros',
-    'temp-effects-as-statuses'
+    'temp-effects-as-statuses',
+    'concentrationnotifier',
 ];
 export async function troubleshoot() {
     let output = '';

@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {constants} from '../../../../constants.js';
 import {chris} from '../../../../helperFunctions.js';
 import {effectAuras} from '../../../../utility/effectAuras.js';
@@ -252,7 +253,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'effectName': 'Wild Surge - Protective Lights',
                     'macroName': 'protectiveLights'
                 }
-            }
+            };
             await chris.createEffect(workflow.actor, effectData);
             effectAuras.add(flagAuras, workflow.token.document.uuid, true);
             return;
@@ -266,7 +267,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'angle': 0,
                 'user': game.user,
                 'fillColor': game.user.color
-            }
+            };
             let template = await chris.createTemplate(templateData);
             await warpgate.wait(200);
             await tokenAttacher.attachElementsToToken([template], workflow.token, false);
@@ -297,7 +298,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 if (nearbyTargets.length === 1) {
                     targets = [nearbyTargets[0].uuid];
                 } else {
-                    let selection = await await chris.selectTarget(feature.name, constants.okCancel, nearbyTargets, true, 'one', false, false, 'Select a target:');
+                    let selection = await chris.selectTarget(feature.name, constants.okCancel, nearbyTargets, true, 'one', false, false, 'Select a target:');
                     if (!selection.buttons) return;
                     targets = selection.inputs.filter(i => i);
                 }
@@ -416,4 +417,4 @@ export let wildSurge = {
         'end': protectiveLightsEnd,
         'aura': protectiveLightsAura
     }
-}
+};

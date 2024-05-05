@@ -27,7 +27,7 @@ export async function bladesong({speaker, actor, token, character, item, args, s
                 'priority': 20
             },
             {
-                'key': 'flags.midi-qol.concentrationSaveBonus',
+                'key': 'system.attributes.concentration.bonuses.save',
                 'mode': 2,
                 'value': '+' + workflow.actor.system.abilities.int.mod,
                 'priority': 20

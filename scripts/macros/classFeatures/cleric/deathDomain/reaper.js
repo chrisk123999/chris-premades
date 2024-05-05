@@ -9,7 +9,7 @@ export async function reaper({speaker, actor, token, character, item, args, scop
     if (nearbyTargets.length === 0) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'reaper', 450);
     if (!queueSetup) return;
-    let selected = await chris.selectTarget('Use Reaper?', constants.yesNo, nearbyTargets, true, 'one');
+    let selected = await chris.selectTarget('Use Reaper?', constants.yesNoButton, nearbyTargets, true, 'one');
     if (selected.buttons === false) {
         queue.remove(workflow.item.uuid);
         return;

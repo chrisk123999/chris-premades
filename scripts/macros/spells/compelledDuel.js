@@ -112,6 +112,7 @@ async function movement(token, updates, diff, id) {
         await chris.setTurnCheck(effect, 'spell', 'compelledDuel');
         return;
     }
+    /* eslint-disable indent */
     await new Sequence()
         .effect()
             .file('jb2a.misty_step.01.blue')
@@ -134,6 +135,7 @@ async function movement(token, updates, diff, id) {
             .on(token)
             .opacity(1.0)
         .play();
+    /* eslint-enable indent */
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size != 1) return;
@@ -210,7 +212,7 @@ async function end(effect) {
     await chris.setTurnCheck(effect, 'spell', 'compelledDuel', true);
 }
 async function turnEnd(effect, token, origin) {
-    let targetUuid = effect.flags['chris-premades']?.spell?.compelledDuel?.targetUuid
+    let targetUuid = effect.flags['chris-premades']?.spell?.compelledDuel?.targetUuid;
     if (!targetUuid) return;
     let targetToken = await fromUuid(targetUuid);
     if (!targetToken) return;
@@ -231,4 +233,4 @@ export let compelledDuel = {
     'item': item,
     'end': end,
     'turnEnd': turnEnd
-}
+};

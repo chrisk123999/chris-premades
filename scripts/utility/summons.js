@@ -4,7 +4,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
-        for (let i of summons) {await warpgate.dismiss(i)};
+        for (let i of summons) await warpgate.dismiss(i);
     }
     let effect = chris.findEffect(originItem.actor, originItem.name);
     if (!effect) {
@@ -29,8 +29,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
             }
         };
         if (useActorOrigin) casterEffectData.origin = originItem.actor.uuid;
-        await chris.createEffect(originItem.actor, casterEffectData);
-        effect = chris.findEffect(originItem.actor, originItem.name);
+        effect = await chris.createEffect(originItem.actor, casterEffectData);
     }
     if (!effect) return;
     let effectData = {
@@ -87,7 +86,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
                     }
                 } else if (game.settings.get('chris-premades', 'Tasha Initiative') != overwriteInitiative) {
                     initiative = casterCombatant.initiative - 0.01;
-                    await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative)
+                    await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, initiative);
                 } else {
                     await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, null);
                     await spawnedToken.actor.rollInitiative();
@@ -105,7 +104,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
                 }
             }
         }
-    }
+    };
     await chris.updateEffect(effect, effectUpdates);
 }
 export let summons = {
