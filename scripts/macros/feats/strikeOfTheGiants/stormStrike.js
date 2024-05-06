@@ -44,4 +44,4 @@ async function end(origin) {
 export let stormStrike = {
     'damage': damage,
     'end': end
-}
+};

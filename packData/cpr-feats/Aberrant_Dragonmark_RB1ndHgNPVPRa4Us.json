@@ -1,14 +1,12 @@
 {
-  "name": "Savage Attacker",
+  "name": "Aberrant Dragonmark",
   "type": "feat",
   "system": {
     "description": {
-      "value": "<p>This feat may be configured to be automatically used.</p><p><em>This feat is safe to rename.</em></p>",
+      "value": "<p><em>This feature is safe to rename.</em></p>",
       "chat": ""
     },
-    "source": {
-      "custom": "Player's Handbook pg 169"
-    },
+    "source": {},
     "activation": {
       "type": "",
       "cost": null,
@@ -47,7 +45,10 @@
     },
     "ability": null,
     "actionType": "",
-    "attackBonus": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -63,16 +64,17 @@
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "feat",
       "subtype": ""
     },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": []
+    }
   },
   "flags": {
     "obsidian": {
@@ -80,41 +82,54 @@
         "type": "feat"
       }
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.47pQ8q7o1iCVdctM"
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.aberrantDragonmark.item"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
     },
     "custom-character-sheet-sections": {
       "sectionName": ""
     },
+    "core": {},
     "chris-premades": {
       "info": {
-        "name": "Savage Attacker",
-        "version": "0.9.6"
-      },
-      "configuration": {
-        "auto": false,
-        "reroll": 1
-      },
-      "feat": {
-        "savageAttacker": {
-          "turn": null
-        }
+        "name": "Aberrant Dragonmark",
+        "version": "0.10.68"
       }
     }
   },
   "effects": [
     {
-      "icon": "icons/skills/melee/strike-sword-blood-red.webp",
+      "name": "Aberrant Dragonmark",
+      "icon": "icons/creatures/reptiles/serpent-horned-green.webp",
       "changes": [
         {
           "key": "flags.midi-qol.onUseMacroName",
           "mode": 0,
-          "value": "function.chrisPremades.macros.savageAttacker.damage,postDamageRoll",
+          "value": "function.chrisPremades.macros.aberrantDragonmark.onUse,postActiveEffects",
           "priority": 20
         }
       ],
       "transfer": true,
-      "_id": "TAGckwmQpcSZRoZ0",
+      "_id": "tI8JGmlSpecIgSiY",
       "disabled": false,
       "duration": {
         "startTime": null,
@@ -125,70 +140,57 @@
         "startRound": null,
         "startTurn": null
       },
-      "origin": null,
-      "tint": null,
+      "description": "",
+      "origin": "Actor.mKPJ25GhmZX7xV39.Item.l6CQrYGIpmtFDfWu",
+      "statuses": [],
       "flags": {
-        "dfreds-convenient-effects": {
-          "description": ""
-        },
         "dae": {
+          "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
+          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [],
-          "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
-        },
-        "core": {
-          "statusId": ""
+          "specialDuration": []
         },
         "ActiveAuras": {
           "isAura": false,
           "aura": "None",
-          "radius": "undefined",
+          "nameOverride": "",
+          "radius": "",
           "alignment": "",
           "type": "",
+          "customCheck": "",
           "ignoreSelf": false,
           "height": false,
           "hidden": false,
           "displayTemp": false,
           "hostile": false,
           "onlyOnce": false,
-          "nameOverride": "",
-          "customCheck": "",
           "wallsBlock": "system"
-        },
-        "effectmacro": {
-          "onCombatEnd": {
-            "script": "await chrisPremades.macros.savageAttacker.end(effect.parent);"
-          }
         }
       },
-      "name": "Savage Attacker",
-      "description": "",
-      "statuses": [],
-      "_key": "!items.effects!aibGRrevWEvzGqkh.TAGckwmQpcSZRoZ0"
+      "tint": null,
+      "_key": "!items.effects!RB1ndHgNPVPRa4Us.tI8JGmlSpecIgSiY"
     }
   ],
-  "img": "icons/skills/melee/strike-sword-blood-red.webp",
+  "img": "icons/creatures/reptiles/serpent-horned-green.webp",
+  "folder": null,
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
-    "createdTime": 1696320836424,
-    "modifiedTime": 1714986249625,
+    "createdTime": 1714979374379,
+    "modifiedTime": 1714986250191,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
-  "folder": null,
-  "sort": 2300000,
+  "_id": "RB1ndHgNPVPRa4Us",
+  "sort": 0,
   "ownership": {
     "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "PQGBBcoVSwpUhViM": 3
   },
-  "_id": "aibGRrevWEvzGqkh",
-  "_key": "!items!aibGRrevWEvzGqkh"
+  "_key": "!items!RB1ndHgNPVPRa4Us"
 }

@@ -19,7 +19,7 @@ async function wait(uuid, key) {
             return false;
         }
         await warpgate.wait(1000);
-        currentKey = allQueues[uuid].peek()[1]
+        currentKey = allQueues[uuid].peek()[1];
     }
     return true;
 }
@@ -56,7 +56,7 @@ export let queue = {
     'purge': purge,
     'setup': setup,
     'status': status
-}
+};
 /*
 001-100: Item attack roll and damage modifcation.
 101-200: Class & race feature attack roll and damage modifcation.

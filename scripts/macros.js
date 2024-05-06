@@ -1,4 +1,5 @@
 import {aasimarRadiantSoul} from './macros/raceFeatures/aasimar/radiantSoul.js';
+import {aberrantDragonmark} from './macros/feats/aberrantDragonmark.js';
 import {aberrantSpirit} from './macros/monsterFeatures/aberrantSpirit/aberrantSpirit.js';
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {actions} from './macros/actions/actions.js';
@@ -41,7 +42,7 @@ import {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 import {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 import {blessingOfTheRavenQueen} from './macros/raceFeatures/shadarKai/blessingOfTheRavenQueen.js';
 import {blight} from './macros/spells/blight.js';
-import { blindingSmite } from './macros/spells/blindingSmite.js';
+import {blindingSmite} from './macros/spells/blindingSmite.js';
 import {blink} from './macros/spells/blink.js';
 import {bloodSpear} from './macros/items/bloodSpear.js';
 import {bodak} from './macros/monsterFeatures/bodak/bodak.js';
@@ -183,7 +184,7 @@ import {grovelthrash} from './macros/items/grovelthrash.js';
 import {grungPoison} from './macros/raceFeatures/grung/grungPoison.js';
 import {guardianOfFaith} from './macros/spells/guardianOfFaith.js';
 import {guardianOfNature} from './macros/spells/guardianOfNature.js';
-import { gustOfWind } from './macros/spells/gustOfWind.js';
+import {gustOfWind} from './macros/spells/gustOfWind.js';
 import {hailOfThorns} from './macros/spells/hailOfThorns.js';
 import {harnessDivinePower} from './macros/classFeatures/cleric/harnessDivinePower.js';
 import {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
@@ -576,6 +577,7 @@ async function equipmentData(name) {
 }
 export let macros = {
     'aasimarRadiantSoul': aasimarRadiantSoul,
+    'aberrantDragonmark': aberrantDragonmark,
     'acidArrow': acidArrow,
     'actions': actions,
     'ancestralProtectors': ancestralProtectors,

@@ -1,8 +1,13 @@
+# 0.10.68 Release:
+## New Content:
+- Feat: Aberrant Dragonmark
+## Update Notes:
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+  
 # 0.10.67 Release:
 ## Update Notes:
 - Added support for summoning creatures from the "Personal Monster Compendium" using Spotlight Omnisearch.
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.66 Release:
 ## Bug Fixes:

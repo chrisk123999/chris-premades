@@ -2883,6 +2883,14 @@ export function setConfig() {
                         'default': true
                     }
                 }
+            },
+            'Aberrant Dragonmark': {
+                'text': {
+                    'id': {
+                        'label': 'Item ID:',
+                        'default': ''
+                    }
+                }
             }
         },
         'automations': {
@@ -6146,6 +6154,10 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Gust of Wind'
                 }
+            },
+            'Aberrant Dragonmark': {
+                'name': 'Aberrant Dragonmark',
+                'version': '0.10.68'
             }
         }
     });

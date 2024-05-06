@@ -54,7 +54,7 @@ async function onHit(workflow, targetToken) {
         .duration(500)
         .opacity(0.15)
 
-        .play()
+        .play();
 }
 async function start(token) {
     if (chris.jb2aCheck() != 'patreon') return;
@@ -158,10 +158,10 @@ async function end(token) {
         .fadeOut(500)
         .zIndex(1)
 
-        .play()
+        .play();
 }
 export let armorOfAgathys = {
     'onHit': onHit,
     'start': start,
     'end': end
-}
+};
