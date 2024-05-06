@@ -5,14 +5,14 @@
   "type": "Item",
   "folder": null,
   "_id": "W2SHLtiTWM5Db4Gg",
-  "sort": 0,
+  "sort": 600000,
   "flags": {},
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.0.4",
+    "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1700783780227,
-    "modifiedTime": 1711188863092,
+    "modifiedTime": 1714997013082,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "_key": "!folders!W2SHLtiTWM5Db4Gg"

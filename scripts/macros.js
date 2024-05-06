@@ -27,6 +27,7 @@ import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/aw
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
 import {bardicInspiration} from './macros/classFeatures/bard/bardicInspiration.js';
+import {bat} from './macros/monsterFeatures/bat/bat.js';
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
 import {beguilingTwist} from './macros/classFeatures/ranger/feyWanderer/beguilingTwist.js';
 import {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
@@ -61,6 +62,7 @@ import {callLightning} from './macros/spells/callLightning.js';
 import {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
 import {cartomancer} from './macros/feats/cartomancer.js';
 import {catoblepas} from './macros/monsterFeatures/catoblepas/catoblepas.js';
+import {cat} from './macros/monsterFeatures/cat/cat.js';
 import {celestialSpirit} from './macros/monsterFeatures/celestialSpirit/celestialSpirit.js';
 import {chainLightning} from './macros/spells/chainLightning.js';
 import {chaosBolt} from './macros/spells/chaosBolt.js';
@@ -123,6 +125,7 @@ import {duergarMindMaster} from './macros/monsterFeatures/duergarMindMaster/duer
 import {duergar} from './macros/monsterFeatures/duergar/duergar.js';
 import {durableMagic} from './macros/classFeatures/wizard/warMagic/durableMagic.js';
 import {dybbuk} from './macros/monsterFeatures/dybbuk/dybbuk.js';
+import {eagle} from './macros/monsterFeatures/eagle/eagle.js';
 import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
@@ -257,6 +260,7 @@ import {oilOfSharpness} from './macros/items/oilOfSharpness.js';
 import {oldBreathWeapon} from './macros/raceFeatures/dragonborn/oldBreathWeapon.js';
 import {orcishFury} from './macros/feats/orcishFury.js';
 import {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
+import {owl} from './macros/monsterFeatures/owl/owl.js';
 import {piercer} from './macros/feats/piercer.js';
 import {planarWanderer} from './macros/feats/planarWanderer.js';
 import {potionOfDiminution} from './macros/items/potionOfDiminution.js';
@@ -269,6 +273,7 @@ import {potionOfVitality} from './macros/items/potionOfVitality.js';
 import {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 import {primalCompanion} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 import {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
+import {pseudodragon} from './macros/monsterFeatures/pseudodragon/pseudodragon.js';
 import {psychicBlades} from './macros/classFeatures/rogue/soulknife/psychicBlades.js';
 import {radiantConsumption} from './macros/raceFeatures/aasimar/radiantConsumption.js';
 import {radiantSoul} from './macros/classFeatures/warlock/celestial/radiantSoul.js';
@@ -371,12 +376,14 @@ import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {viciousIntent} from './macros/classFeatures/fighter/gunslinger/viciousIntent.js';
 import {vigorOfTheHillGiant} from './macros/feats/vigorOfTheHillGiant.js';
 import {vortexWarp} from './macros/spells/vortexWarp.js';
+import {vulture} from './macros/monsterFeatures/vulture/vulture.js';
 import {wandOfTheWarMage} from './macros/items/wandOfTheWarMage.js';
 import {wardingBond} from './macros/spells/wardingBond.js';
 import {wildShape} from './macros/classFeatures/druid/wildshape.js';
 import {wildSurge} from './macros/classFeatures/barbarian/wildMagic/wildSurge.js';
 import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
+import {wolf} from './macros/monsterFeatures/wolf/wolf.js';
 import {wrapsOffDyamak} from './macros/items/wrapsOffDyamak.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
@@ -398,9 +405,11 @@ export async function onHitMacro(workflow) {
 let monster = {
     'aberrantSpirit': aberrantSpirit,
     'autoGnome': autoGnome,
+    'bat': bat,
     'bodak': bodak,
     'bugbear': bugbear,
     'bulette': bulette,
+    'cat': cat,
     'catoblepas': catoblepas,
     'celestialSpirit': celestialSpirit,
     'chasme': chasme,
@@ -415,6 +424,7 @@ let monster = {
     'duergar': duergar,
     'duergarMindMaster': duergarMindMaster,
     'dybbuk': dybbuk,
+    'eagle': eagle,
     'elderBrain': elderBrain,
     'elderOblex': elderOblex,
     'feySpirit': feySpirit,
@@ -435,6 +445,8 @@ let monster = {
     'leucrotta': leucrotta,
     'mudMephit': mudMephit,
     'nightwalker': nightwalker,
+    'owl': owl,
+    'pseudodragon': pseudodragon,
     'rugOfSmothering': rugOfSmothering,
     'salamander': salamander,
     'shadow': shadow,
@@ -450,9 +462,12 @@ let monster = {
     'troglodyte': troglodyte,
     'troll': troll,
     'undeadSpirit': undeadSpirit,
+    'vulture': vulture,
+    'wolf': wolf,
     'zombie': zombie
 };
 let onHit = {
+    'armorOfAgathys': armorOfAgathys.onHit,
     'blackrazor': blackrazor.onHit,
     'distractingStrike': maneuvers.distractingStrikeOnHit,
     'fireForm': fireElemental.fireForm,
@@ -460,13 +475,12 @@ let onHit = {
     'forceField': monster.tixieTockworth.forceField.onHit,
     'heatedBody': fireSnake.heatedBody,
     'malfunction': autoGnome.malfunction,
+    'rage': rage.attacked,
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
     'wardingBond': wardingBond.onHit,
-    'armorOfAgathys': armorOfAgathys.onHit,
-    'wildSurgeRetribution': wildSurge.retribution,
-    'rage': rage.attacked
+    'wildSurgeRetribution': wildSurge.retribution
 };
 export let skills = {
     'bootsOfElvenkind': bootsOfElvenkind,
@@ -474,9 +488,16 @@ export let skills = {
     'eyesOfTheEagle': eyesOfTheEagle,
     'grappleEscape': grapple.escape,
     'grappleInitiate': grapple.initiate,
+    'keenHearing': bat.keenHearing,
+    'keenHearingAndSight': owl.keenHearingAndSight,
+    'keenHearingAndSmell': wolf.keenHearingAndSmell,
+    'keenSenses': pseudodragon.keenSenses,
+    'keenSight': eagle.keenSight,
+    'keenSightAndSmell': vulture.keenSightAndSmell,
+    'keenSmell': cat.keenSmell,
     'labyrinthineRecall': labyrinthineRecall,
-    'stoneCamouflage': deepGnome.stoneCamouflage,
-    'lightSensitivity': shadowDemon.lightSensitivity.perception
+    'lightSensitivity': shadowDemon.lightSensitivity.perception,
+    'stoneCamouflage': deepGnome.stoneCamouflage
 };
 export let saves = {
     'dangerSense': dangerSense,

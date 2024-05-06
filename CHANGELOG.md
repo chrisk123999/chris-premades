@@ -1,9 +1,13 @@
-# 0.10.68 Release:
-## New Content:
-- Feat: Aberrant Dragonmark
+# 0.10.69 Release:
+## New Monster Features:
+- Many Creatures: Keen Hearing, Keen Sight, Keen Smell, Keen Hearing and Smell, Keen Sight and Smell, Keen Senses
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
+  
+# 0.10.68 Release:
+## New Content:
+- Feat: Aberrant Dragonmark
   
 # 0.10.67 Release:
 ## Update Notes:
