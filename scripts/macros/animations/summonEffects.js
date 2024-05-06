@@ -809,4 +809,4 @@ export let summonEffects = {
     'nature': nature,
     'shadow': shadow,
     'future': future
-}
+};

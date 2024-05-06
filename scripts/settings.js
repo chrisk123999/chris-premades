@@ -24,6 +24,7 @@ import {templateMacroTitleBarButton} from './integrations/templateMacro.js';
 import {addActions} from './macros/actions/token.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {createActor} from './backup.js';
+import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 let previousSettings = {};
@@ -1030,7 +1031,7 @@ export function registerSettings() {
     });
     addMenuSetting('Humanoid Randomizer Settings', 'Randomizer');
     game.settings.register(moduleName, 'Dice So Nice', {
-        'name': 'Dice So Nice Compatability',
+        'name': 'Dice So Nice Compatibility',
         'hint': 'Accounts for damage roll changes for DSN rolls through use of Midi-QoL hooks',
         'scope': 'world',
         'config': false,
@@ -1411,7 +1412,7 @@ export function registerSettings() {
     addMenuSetting('D&D5E Animations Sounds', 'Module Integration');
     game.settings.register(moduleName, 'Build A Bonus Overlapping Effects', {
         'name': 'Build A Bonus Overlapping Effects',
-        'hint': 'When enabled Build A Bonus auras will respect the overlapping spell effect and combining game effects rules.',
+        'hint': 'When enabled, Build A Bonus auras will respect the overlapping spell effect and combining game effects rules.',
         'scope': 'world',
         'config': false,
         'type': Boolean,
@@ -1425,6 +1426,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Build A Bonus Overlapping Effects', 'Module Integration');
+    game.settings.register(moduleName, 'Spotlight Omnisearch Summons', {
+        'name': 'Spotlight Omnisearch Summons',
+        'hint': 'When enabled, you can summon monsters from your "Personal Monster Compendium" with Spotlight Omnisearch.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('spotlightOmnisearch.indexBuilt', registerSearchTerms);
+            } else {
+                Hooks.off('spotlightOmnisearch.indexBuilt', registerSearchTerms);
+            }
+        }
+    });
+    addMenuSetting('Spotlight Omnisearch Summons', 'Module Integration');
     game.settings.register(moduleName, 'Aura of Life', {
         'name': 'Aura of Life Spell Automation',
         'hint': 'Enabling this allows the automation of the Aura of Life spell via the use of Foundry hooks.',

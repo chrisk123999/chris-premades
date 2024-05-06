@@ -43,6 +43,7 @@ import {addChatButton} from './chat.js';
 import {enableMacroSidebar, enableSelectTool} from './userInterface.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {backupCharacters, createActor} from './backup.js';
+import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -252,8 +253,8 @@ Hooks.once('ready', async function() {
     if (game.settings.get('chris-premades', 'Companions Initiative')) Hooks.on('dnd5e.rollInitiative', tashaSummon.updateCompanionInitiative);
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.values = game.packs.contents.filter(i => i.metadata.type === 'Actor').map(j => ({'value': j.metadata.id, 'html': j.metadata.label}));
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.default = game.settings.get('chris-premades', 'Monster Compendium');
+    if (game.settings.get('chris-premades', 'Spotlight Omnisearch Summons')) Hooks.on('spotlightOmnisearch.indexBuilt', registerSearchTerms);
 });
-//Hooks.once('tidy5e-sheet.ready', actionsTab);
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,
     'stripUnusedFlags': stripUnusedFlags,
