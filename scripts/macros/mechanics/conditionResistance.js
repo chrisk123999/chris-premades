@@ -35,9 +35,13 @@ export async function conditionResistanceEarly(workflow) {
     if (!itemConditions.size) return;
     await Promise.all(workflow.targets.map(async tokenDoc => {
         await Promise.all(itemConditions.map(async condition => {
-            if (tokenDoc.document.actor.flags['chris-premades']?.CR?.[condition]) {
-                await chris.createEffect(tokenDoc.document.actor, effectData);
-                cleanUpList.push(tokenDoc.document.actor);
+            let flagData = tokenDoc.document.actor.flags['chris-premades']?.CR?.[condition];
+            if (flagData) {
+                let types = String(flagData).split(',').map(i => i.toLowerCase());
+                if (types.includes('1') || types.includes('true') || types.includes(workflow.item.system.save.ability)) {
+                    await chris.createEffect(tokenDoc.document.actor, effectData);
+                    cleanUpList.push(tokenDoc.document.actor);
+                }
             }
         }));
     }));

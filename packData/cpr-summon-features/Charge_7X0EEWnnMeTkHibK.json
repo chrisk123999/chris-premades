@@ -146,7 +146,11 @@
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": ""
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -161,19 +165,30 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false
     },
     "core": {
       "sourceId": "Item.NB5Cs1YQbOs5G4os"
     },
-    "cf": null
+    "cf": null,
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1686258941719,
-    "modifiedTime": 1714190733037,
+    "modifiedTime": 1715063174385,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "41ZpPEmU7uDP91aF",

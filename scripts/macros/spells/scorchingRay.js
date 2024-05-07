@@ -13,7 +13,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
         'spell': {
             'castData': workflow.castData
         }
-    }
+    };
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     if (workflow.item.flags?.['chris-premades']?.attackRoll?.enabled) setProperty(featureData, 'flags.chris-premades.attackRoll', {'enabled': true, 'value': workflow.item.flags?.['chris-premades']?.attackRoll?.value});
     delete featureData._id;
@@ -72,7 +72,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
             .zIndex(1)
             .waitUntilFinished(-200)
 
-            .play()
+            .play();
     }
     let queueSetup = await queue.setup(workflow.item.uuid, 'scorchingRay', 50);
     if (!queueSetup) return;
@@ -154,49 +154,47 @@ export async function scorchingRay({speaker, actor, token, character, item, args
                         y: tokenCenter.y + normalizedDirectionVector.y * magicCircleDistance,
                     };
                     new Sequence()
-    
-                    .wait(150)
-                    
-                    .effect()
-                    .file(path)
-                    .atLocation(magicCircle)
-                    .scale(0.6)
-                    .stretchTo(target, {'randomOffset': 0.75})
-                    .setMustache({
-                        'num': () => {
-                            let nums = ['01','02', '02'];
-                            if (color === 'rainbow01' || color === 'rainbow02') return '01';
-                            return nums[Math.floor(Math.random()*nums.length)];
-                        }
-                    })
-                    .randomizeMirrorY()
-                    .zIndex(1)
-                    .missed(!featureWorkflow.hitTargets.size)
-                    
-                    .effect()
-                    .delay(200)
-                    .from(target)
-                    .attachTo(target)
-                    .fadeIn(200)
-                    .fadeOut(500)
-                    .loopProperty('sprite', 'position.x', {'from': -0.05, 'to': 0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true})
-                    .scaleToObject(target.document.texture.scaleX)
-                    .duration(1800)
-                    .opacity(0.25)
-                    .tint('#fb8b23')
-                    
-                    .effect()
-                    .delay(200,500)
-                    .file(particle)
-                    .attachTo(target, {'randomOffset': 0.2})
-                    .zIndex(1)
-                    .fadeIn(500)
-                    .fadeOut(1200)
-                    .duration(4500)
-                    .scaleToObject(1.5)
-                    .randomRotation()
-                    
-                    .play()
+                        .wait(150)
+                        
+                        .effect()
+                        .file(path)
+                        .atLocation(magicCircle)
+                        .scale(0.6)
+                        .stretchTo(target, {'randomOffset': 0.75})
+                        .setMustache({
+                            'num': () => {
+                                let nums = ['01','02', '02'];
+                                if (color === 'rainbow01' || color === 'rainbow02') return '01';
+                                return nums[Math.floor(Math.random()*nums.length)];
+                            }
+                        })
+                        .randomizeMirrorY()
+                        .zIndex(1)
+                        .missed(!featureWorkflow.hitTargets.size)
+                        
+                        .effect()
+                        .delay(200)
+                        .from(target)
+                        .attachTo(target)
+                        .fadeIn(200)
+                        .fadeOut(500)
+                        .loopProperty('sprite', 'position.x', {'from': -0.05, 'to': 0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true})
+                        .scaleToObject(target.document.texture.scaleX)
+                        .duration(1800)
+                        .opacity(0.25)
+                        .tint('#fb8b23')
+                        
+                        .effect()
+                        .delay(200,500)
+                        .file(particle)
+                        .attachTo(target, {'randomOffset': 0.2})
+                        .zIndex(1)
+                        .fadeIn(500)
+                        .fadeOut(1200)
+                        .duration(4500)
+                        .scaleToObject(1.5)
+                        .randomRotation()
+                        .play();
                 }
             }
         }

@@ -1,9 +1,32 @@
-# 0.10.69 Release:
-## New Monster Features:
-- Many Creatures: Keen Hearing, Keen Sight, Keen Smell, Keen Hearing and Smell, Keen Sight and Smell, Keen Senses
+# 0.10.70 Release:
+## New Monster Content:
+- Chimeric Fox: Chimeric Creation
+- Chimeric Weasel: Chimeric Creation
+- Chwinga: Evasion
+- Cultist: Dark Devotion
+- Cultist (Knights of the Black Sword): Dark Devotion and Icy Doom
+- Icewind Kobold: Pack Tactics
+- Icewind Kobold Zombie: Undead Fortitude
+- Goat: Sure-Footed
+- Mountain Goat: Sure-Footed
+- Yeti Tyke: Snow Camouflage
+- Yeti: Snow Camouflage
+- Winter Wolf: Snow Camouflage and Pack Tactics
+- Abominable Yeti: Snow Camouflage
+## New Content:
+- Order of the Lycan Bloodhunter: Heightened Senses
+## New Features:
+- Condition Resistance and Condition Vulnerability now supports being applied to specific save types. Instead of "true" or "1" you may use a comma seperated list of ability abbreviations. For an example see the "Sure-Footed" feature.
+## Bug Fixes:
+- Favored Foe
+- Chromatic Orb
 ## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
+  
+# 0.10.69 Release:
+## New Monster Content:
+- Many Creatures: Keen Hearing, Keen Sight, Keen Smell, Keen Hearing and Smell, Keen Sight and Smell, Keen Senses
   
 # 0.10.68 Release:
 ## New Content:

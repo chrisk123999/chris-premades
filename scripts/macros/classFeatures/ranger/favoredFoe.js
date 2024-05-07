@@ -16,7 +16,7 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
     if (!turnCheck) return;
     let targetToken = workflow.targets.first();
     let effect = chris.getEffects(targetToken.actor).find(i => i.name === 'Favored Foe' && i.origin === originItem.uuid);
-    let queueSetup = await queue.setup(workflow.item.uuidk, 'favoredFoe', 250);
+    let queueSetup = await queue.setup(workflow.item.uuid, 'favoredFoe', 250);
     if (!queueSetup) return;
     if (effect) {
         await extraDamage(workflow);

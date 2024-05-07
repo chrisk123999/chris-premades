@@ -3,7 +3,7 @@
   "type": "feat",
   "system": {
     "description": {
-      "value": "<p><strong><em>Headfirst Charge. </em></strong>The giff can try to knock a creature over; if the giff moves at least 20 feet in a straight line that ends within 5 feet of a Large or smaller creature, that creature must succeed on a DC 14 Strength saving throw or take 7 (2d6) bludgeoning damage and be knocked prone.</p>",
+      "value": "<p><em>This feature is safe to rename.</em></p>",
       "chat": ""
     },
     "source": {
@@ -157,7 +157,11 @@
       }
     },
     "midi-qol": {
-      "effectActivation": false
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": true,
@@ -172,7 +176,11 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false
     },
     "core": {
       "sourceId": "Actor.tLNoVJkFVMhybPyU.Item.6qajZrPDeoMiNVh0"
@@ -185,7 +193,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1699615975533,
-    "modifiedTime": 1714997420038,
+    "modifiedTime": 1715063177613,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "PnxktxFjYCBF8dfq",

@@ -3,7 +3,7 @@
   "type": "feat",
   "system": {
     "description": {
-      "value": "<p><em>This feature is safe to rename.</em></p>",
+      "value": "<p>This item requires the \"Skill Patching\" setting to be enabled.</p><p><em>This item is safe to rename.</em></p>",
       "chat": ""
     },
     "source": {
@@ -179,7 +179,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1714995581754,
-    "modifiedTime": 1714997419179,
+    "modifiedTime": 1715063176407,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "_id": "930oH0QZoLtb7HMa",

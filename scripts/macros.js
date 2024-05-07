@@ -389,6 +389,8 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {cultistKOTBS} from './macros/monsterFeatures/cultistKOTBS/cultistKOTBS.js';
+import {yeti} from './macros/monsterFeatures/yeti/yeti.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -464,7 +466,9 @@ let monster = {
     'undeadSpirit': undeadSpirit,
     'vulture': vulture,
     'wolf': wolf,
-    'zombie': zombie
+    'zombie': zombie,
+    'cultistKOTBS': cultistKOTBS,
+    'yeti': yeti
 };
 let onHit = {
     'armorOfAgathys': armorOfAgathys.onHit,
@@ -497,7 +501,8 @@ export let skills = {
     'keenSmell': cat.keenSmell,
     'labyrinthineRecall': labyrinthineRecall,
     'lightSensitivity': shadowDemon.lightSensitivity.perception,
-    'stoneCamouflage': deepGnome.stoneCamouflage
+    'stoneCamouflage': deepGnome.stoneCamouflage,
+    'snowCamouflage': yeti.snowCamouflage
 };
 export let saves = {
     'dangerSense': dangerSense,

@@ -9,9 +9,12 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
         queue.remove(workflow.item.uuid);
         return;
     }
-    let damageFormula = workflow.damageRoll._formula.replace('none', selection);
-    let damageRoll = await chris.damageRoll(workflow, damageFormula, undefined, true);
-    await workflow.setDamageRoll(damageRoll);
+    workflow.damageRolls[0].options.type = selection;
+    for (let i of workflow.damageRolls[0].terms) {
+        if (i.options.flavor === 'none') i.options.flavor = selection;
+    }
+    workflow.defaultDamageType = selection;
+    await workflow.setDamageRolls(workflow.damageRolls);
     queue.remove(workflow.item.uuid);
     let animation;
     if (chris.jb2aCheck() === 'patreon') {
@@ -33,8 +36,6 @@ export async function chromaticOrb({speaker, actor, token, character, item, args
             case 'fire':
                 animation += 'red';
                 break;
-            case 'lightning':
-                animation += 'yellow'
         }
     } else {
         animation = 'jb2a.guiding_bolt.01.blueyellow';

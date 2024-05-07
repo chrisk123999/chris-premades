@@ -6158,6 +6158,13 @@ export function setConfig() {
             'Aberrant Dragonmark': {
                 'name': 'Aberrant Dragonmark',
                 'version': '0.10.68'
+            },
+            'Heightened Senses': {
+                'name': 'Heightened Senses',
+                'version': '0.10.70',
+                'settings': [
+                    'Skill Patching'
+                ]
             }
         }
     });
