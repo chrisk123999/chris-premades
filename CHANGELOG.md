@@ -16,7 +16,7 @@
 ## New Content:
 - Order of the Lycan Bloodhunter: Heightened Senses
 ## New Features:
-- Condition Resistance and Condition Vulnerability now supports being applied to specific save types. Instead of "true" or "1" you may use a comma seperated list of ability abbreviations. For an example see the "Sure-Footed" feature.
+- Condition Resistance and Condition Vulnerability now supports being applied to specific save types. Instead of "true" or "1" you may use a comma separated list of ability abbreviations. For an example see the "Sure-Footed" feature.
 ## Bug Fixes:
 - Favored Foe
 - Chromatic Orb
