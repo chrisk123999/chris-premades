@@ -1,3 +1,10 @@
+# 0.10.71 Release:
+## Update Notes:
+- Updated Midi-QOl overtime creator to support new action save types.
+- Corrected Chaos Bolt DDBI import options.
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+  
 # 0.10.70 Release:
 ## New Monster Content:
 - Chimeric Fox: Chimeric Creation
@@ -20,10 +27,6 @@
 ## Bug Fixes:
 - Favored Foe
 - Chromatic Orb
-## Update Notes:
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
-  
 # 0.10.69 Release:
 ## New Monster Content:
 - Many Creatures: Keen Hearing, Keen Sight, Keen Smell, Keen Hearing and Smell, Keen Sight and Smell, Keen Senses

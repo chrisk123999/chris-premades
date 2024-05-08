@@ -15,6 +15,9 @@ export function setConfig() {
     ];
     setProperty(CONFIG, 'chrisPremades', {
         'module': 'chris-premades',
+        'removeChoices': [
+            'Aberrant Dragonmark',
+        ],
         'renamedItems': {
             'Form of Dread: Transform': 'Form of Dread',
             'Form of Dread': 'Form of Dread: Fear',
@@ -51,6 +54,9 @@ export function setConfig() {
             'Adept Marksman': [
                 'Reload Firearm',
                 'Repair Firearm'
+            ],
+            'Aberrant Dragonmark': [
+                'Aberrant Dragonmark'
             ]
         },
         'removedItems': {
@@ -355,6 +361,14 @@ export function setConfig() {
                         'per': 'dawn',
                         'recovery': '',
                         'prompt': false
+                    }
+                }
+            },
+            'Chaos Bolt': {
+                'system': {
+                    'scaling': {
+                        'formula': '',
+                        'mode': 'none'
                     }
                 }
             }

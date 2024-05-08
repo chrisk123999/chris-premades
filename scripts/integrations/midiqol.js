@@ -1,8 +1,8 @@
+/* eslint-disable no-case-declarations */
 import {constants} from '../constants.js';
-import {chris} from '../helperFunctions.js'
+import {chris} from '../helperFunctions.js';
 export async function overtimeCreator(effect) {
     let type = await chris.dialog('Overtime Creator', [['Saving Throw', 'save'], ['Ability Check', 'check'], ['Skill Check', 'skill'], ['No Save or Check', 'none']], 'What type of overtime is this effect?');
-    console.log(type);
     if (!type) return;
     let inputs = [
         {
@@ -54,9 +54,25 @@ export async function overtimeCreator(effect) {
             'options': false
         },
         {
-            'type': 'checkbox',
+            'type': 'select',
             'label': 'Uses Action:',
-            'options': false
+            'options': [
+                {
+                    'html': 'No',
+                    'value': false,
+                    'selected': true
+                },
+                {
+                    'html': 'Yes (Roll)',
+                    'value': 'roll',
+                    'selected': false
+                },
+                {
+                    'html': 'Yes (Dialog)',
+                    'value': 'dialog',
+                    'selected': false
+                }
+            ]
         },
         {
             'type': 'text',
@@ -224,10 +240,10 @@ export async function overtimeCreator(effect) {
     value += ', rollMode=' + output[10] + ', allowIncapacitated=' + output[11];
     switch (output[12]) {
         case 0:
-            value += ', fastForwardDamage=true'
+            value += ', fastForwardDamage=true';
             break;
         case 1:
-            value += ', fastForwardDamage=false'
+            value += ', fastForwardDamage=false';
     }
     if (output[13] != '') value += ', macro=' + output[13];
     value += ', name=' + output[14];
