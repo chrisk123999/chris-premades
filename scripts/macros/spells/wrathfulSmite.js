@@ -46,10 +46,9 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     }
     queue.remove(workflow.item.uuid);
 }
-
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     async function effectMacro() {
-        await (warpgate.wait(200));
+        await warpgate.wait(200);
         let targetEffectUuid = effect.flags['chris-premades']?.spell?.wrathfulSmite?.targetEffectUuid;
         if (!targetEffectUuid) return;
         let targetEffect = await fromUuid(targetEffectUuid);
@@ -89,8 +88,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     await chris.createEffect(workflow.actor, effectData);
 }
-
 export let wrathfulSmite = {
     'damage': damage,
     'item': item
-}
+};

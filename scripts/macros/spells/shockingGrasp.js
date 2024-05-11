@@ -7,7 +7,7 @@ export async function shockingGrasp({speaker, actor, token, character, item, arg
     }
     let color = chris.getConfiguration(workflow.item, 'color') ?? 'blue';
     if (color === 'none') return;
-    if (chris.jb2aCheck() != 'patreon') color = blue;
+    if (chris.jb2aCheck() != 'patreon') color = 'blue';
     let colors = [
         'blue',
         'blue02',

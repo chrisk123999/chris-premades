@@ -3302,7 +3302,7 @@ export function setConfig() {
             },
             'Hold Person': {
                 'name': 'Hold Person',
-                'version': '0.10.40'
+                'version': '0.10.72'
             },
             'Shadow of Moil': {
                 'name': 'Shadow of Moil',
@@ -3463,7 +3463,7 @@ export function setConfig() {
                 'name': 'Hunter\'s Mark',
                 'version': '0.7.01',
                 'mutation': {
-                    'self': 'huntersMark'
+                    'self': 'Hunter\'s Mark'
                 }
             },
             'Guiding Bolt': {
@@ -6179,6 +6179,18 @@ export function setConfig() {
                 'settings': [
                     'Skill Patching'
                 ]
+            },
+            'Wrathful Smite': {
+                'name': 'Wrathful Smite',
+                'version': '0.10.72'
+            },
+            'Banishment': {
+                'name': 'Banishment',
+                'version': '0.10.72'
+            },
+            'Bless': {
+                'name': 'Bless',
+                'version': '0.10.72'
             }
         }
     });

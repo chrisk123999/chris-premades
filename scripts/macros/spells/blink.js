@@ -59,6 +59,12 @@ async function blinkTurnEnd(actor) {
                 'value': 'spectral-body',
                 'mode': 0,
                 'priority': 20
+            },
+            {
+                'key': 'flags.midi-qol.neverTarget',
+                'value': true,
+                'mode': '1',
+                'priority': 20
             }
         ],
         'flags': {
@@ -82,4 +88,4 @@ async function blinkTurnEnd(actor) {
 export let blink = {
     'start': blinkTurnStart,
     'end': blinkTurnEnd
-}
+};

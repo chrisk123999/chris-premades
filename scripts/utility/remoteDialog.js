@@ -17,3 +17,9 @@ export async function remoteAimCrosshair(tokenUuid, maxRange, icon, interval, si
 export async function remoteMenu(title, buttons, inputs, useSpecialRender, info, header, extraOptions) {
     return await chris.menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions);
 }
+export async function remoteSelectTarget(title, buttons, targetUuids, returnUuid, type, selectOptions, fixTargets, description, coverTokenUuid, reverseCover, displayDistance) {
+    let targets = await Promise.all(targetUuids.map(async i => await fromUuid(i)));
+    let coverToken;
+    if (coverTokenUuid) coverToken = await fromUuid(coverToken);
+    return await chris.selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover, displayDistance);
+}

@@ -1,6 +1,9 @@
 import {chris} from '../../helperFunctions.js';
+import {queue} from '../../utility/queue.js';
 export async function holdPerson({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.targets.size) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'holdPerson', 50);
+    if (!queueSetup) return;
     let effectData = {
         'name': 'Invalid Target',
         'icon': 'icons/magic/time/arrows-circling-green.webp',
@@ -26,7 +29,9 @@ export async function holdPerson({speaker, actor, token, character, item, args, 
                     'noAnimation': true
                 }
             }
-        }
+        },
+        'origin': workflow.item.uuid
     };
-    for (let i of Array.from(workflow.targets)) if (chris.raceOrType(i.actor) != 'humanoid') await chris.createEffect(i.actor, effectData);
+    for (let i of Array.from(workflow.targets)) if (chris.raceOrType(i.actor) != 'humanoid' && i.targeted.has(game.user)) await chris.createEffect(i.actor, effectData);
+    queue.remove(workflow.item.uuid);
 }

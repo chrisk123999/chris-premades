@@ -18,7 +18,7 @@ import {npcRandomizer} from './utility/npcRandomizer.js';
 import {patchActiveEffectSourceName, patchD20Roll, patchSaves, patchSkills, patchToggleEffect} from './patching.js';
 import {queue} from './utility/queue.js';
 import {registerSettings, setPreviousSettings} from './settings.js';
-import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu} from './utility/remoteDialog.js';
+import {remoteAimCrosshair, remoteDialog, remoteDocumentDialog, remoteDocumentsDialog, remoteMenu, remoteSelectTarget} from './utility/remoteDialog.js';
 import {removeDumbV10Effects} from './macros/mechanics/conditions.js';
 import {rest} from './utility/rest.js';
 import {runAsGM, runAsUser} from './runAsGM.js';
@@ -71,6 +71,7 @@ Hooks.once('socketlib.ready', async function() {
     socket.register('createFolder', runAsGM.createFolder);
     socket.register('createActor', runAsGM.createActor);
     socket.register('updateInitiative', runAsGM.updateInitiative);
+    socket.register('remoteSelectTarget', remoteSelectTarget);
 });
 Hooks.once('ready', async function() {
     if (game.user.isGM) {

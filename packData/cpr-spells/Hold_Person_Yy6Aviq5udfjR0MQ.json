@@ -111,7 +111,7 @@
       "alwaysActive": false
     },
     "midi-qol": {
-      "onUseMacroName": "",
+      "onUseMacroName": "[preambleComplete]function.chrisPremades.macros.upcastTargets.plusOne,[preambleComplete]function.chrisPremades.macros.holdPerson",
       "effectActivation": false,
       "forceCEOff": true,
       "forceCEOn": false,
@@ -162,7 +162,7 @@
     "chris-premades": {
       "info": {
         "name": "Hold Person",
-        "version": "0.10.40",
+        "version": "0.10.72",
         "settings": [
           "Active Effect Additions"
         ]
@@ -190,9 +190,9 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": null,
       "width": null,
-      "units": "",
+      "units": null,
       "type": "creature",
       "prompt": true
     },
@@ -252,7 +252,8 @@
       "vocal",
       "somatic",
       "material",
-      "concentration"
+      "concentration",
+      "mgc"
     ]
   },
   "_stats": {
@@ -260,7 +261,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669202278592,
-    "modifiedTime": 1715063176862,
+    "modifiedTime": 1715428163241,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

@@ -26,6 +26,7 @@ import {autoGnome} from './macros/monsterFeatures/autognome/autognome.js';
 import {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 import {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 import {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
+import {banishment} from './macros/spells/banishment.js';
 import {bardicInspiration} from './macros/classFeatures/bard/bardicInspiration.js';
 import {bat} from './macros/monsterFeatures/bat/bat.js';
 import {beaconOfHope} from './macros/spells/beaconOfHope.js';
@@ -95,6 +96,7 @@ import {criticalFumble} from './macros/homebrew/criticalFumble/criticalFumble.js
 import {crusher} from './macros/feats/crusher.js';
 import {crushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 import {crystalBlade} from './macros/items/crystalBlade.js';
+import {cultistKOTBS} from './macros/monsterFeatures/cultistKOTBS/cultistKOTBS.js';
 import {dancingSword} from './macros/items/dancingSword.js';
 import {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 import {danseMacabre} from './macros/spells/danseMacabre.js';
@@ -204,6 +206,7 @@ import {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPat
 import {hiddenStep} from './macros/raceFeatures/firbolg/hiddenStep.js';
 import {hillStrike} from './macros/feats/strikeOfTheGiants/hillStrike.js';
 import {hobgoblin} from './macros/monsterFeatures/hobgoblin/hobgoblin.js';
+import {holdPerson} from './macros/spells/holdPerson.js';
 import {holyNimbus} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
 import {holyWeapon} from './macros/spells/holyWeapon.js';
 import {homunculusServant} from './macros/classFeatures/artificer/infusions/homunculusServant.js';
@@ -371,6 +374,7 @@ import {twilightSanctuary} from './macros/classFeatures/cleric/twilightDomain/tw
 import {twilightShroud} from './macros/classFeatures/cleric/twilightDomain/twilightShroud.js';
 import {umbralSight} from './macros/classFeatures/ranger/gloomStalker/umbralSight.js';
 import {undeadSpirit} from './macros/monsterFeatures/undeadSpirit/undeadSpirit.js';
+import {upcastTargets} from './macros/generic/upcastTargets.js';
 import {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
 import {vampiricTouch} from './macros/spells/vampiricTouch.js';
 import {viciousIntent} from './macros/classFeatures/fighter/gunslinger/viciousIntent.js';
@@ -385,13 +389,12 @@ import {wildhunt} from './macros/raceFeatures/shifter/wildhunt.js';
 import {witherAndBloom} from './macros/spells/witherAndBloom.js';
 import {wolf} from './macros/monsterFeatures/wolf/wolf.js';
 import {wrapsOffDyamak} from './macros/items/wrapsOffDyamak.js';
-import {wrathfulSmite} from './macros/spells/wrathfulSmite.js';
 import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
+import {wrathfulSmite} from './macros/spells/wrathfulSmite.js';
+import {yeti} from './macros/monsterFeatures/yeti/yeti.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-import {cultistKOTBS} from './macros/monsterFeatures/cultistKOTBS/cultistKOTBS.js';
-import {yeti} from './macros/monsterFeatures/yeti/yeti.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -420,6 +423,7 @@ let monster = {
     'clockworkDefender': clockworkDefender,
     'constructSpirit': constructSpirit,
     'corpseFlower': corpseFlower,
+    'cultistKOTBS': cultistKOTBS,
     'deepGnome': deepGnome,
     'draconicSpirit': draconicSpirit,
     'dreamEater': dreamEater,
@@ -467,9 +471,8 @@ let monster = {
     'undeadSpirit': undeadSpirit,
     'vulture': vulture,
     'wolf': wolf,
-    'zombie': zombie,
-    'cultistKOTBS': cultistKOTBS,
-    'yeti': yeti
+    'yeti': yeti,
+    'zombie': zombie
 };
 let onHit = {
     'armorOfAgathys': armorOfAgathys.onHit,
@@ -502,8 +505,8 @@ export let skills = {
     'keenSmell': cat.keenSmell,
     'labyrinthineRecall': labyrinthineRecall,
     'lightSensitivity': shadowDemon.lightSensitivity.perception,
-    'stoneCamouflage': deepGnome.stoneCamouflage,
-    'snowCamouflage': yeti.snowCamouflage
+    'snowCamouflage': yeti.snowCamouflage,
+    'stoneCamouflage': deepGnome.stoneCamouflage
 };
 export let saves = {
     'dangerSense': dangerSense,
@@ -628,6 +631,7 @@ export let macros = {
     'awakenedSpellbook': awakenedSpellbook,
     'balmOfPeace': balmOfPeace,
     'balmOfTheSummerCourt': balmOfTheSummerCourt,
+    'banishment': banishment,
     'bardicInspiration': bardicInspiration,
     'beaconOfHope': beaconOfHope,
     'beguilingTwist': beguilingTwist,
@@ -770,6 +774,7 @@ export let macros = {
     'hiddenPaths': hiddenPaths,
     'hiddenStep': hiddenStep,
     'hillStrike': hillStrike,
+    'holdPerson': holdPerson,
     'holyNimbus': holyNimbus,
     'holyWeapon': holyWeapon,
     'homunculusServant': homunculusServant,
@@ -919,6 +924,7 @@ export let macros = {
     'twilightSanctuary': twilightSanctuary,
     'twilightShroud': twilightShroud,
     'umbralSight': umbralSight,
+    'upcastTargets': upcastTargets,
     'vampiricBite': vampiricBite,
     'vampiricTouch': vampiricTouch,
     'viciousIntent': viciousIntent,
@@ -931,8 +937,8 @@ export let macros = {
     'wildhunt': wildhunt,
     'witherAndBloom': witherAndBloom,
     'wrapsOffDyamak': wrapsOffDyamak,
-    'wrathfulSmite': wrathfulSmite,
     'wrathOfTheStorm': wrathOfTheStorm,
+    'wrathfulSmite': wrathfulSmite,
     'zealousPresence': zealousPresence,
     'zoneOfTruth': zoneOfTruth
 };

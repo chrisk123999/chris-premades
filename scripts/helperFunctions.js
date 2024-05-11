@@ -730,6 +730,10 @@ export let chris = {
         if (userId === game.user.id) return await chris.menu(title, buttons, inputs, useSpecialRender, info, header, extraOptions);
         return await socket.executeAsUser('remoteMenu', userId, title, buttons, inputs, useSpecialRender, info, header, extraOptions);
     },
+    'remoteSelectTarget': async function _remoteSelectTarget(userId, title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover, displayDistance) {
+        if (userId === game.user.id) return await chris.selectTarget(title, buttons, targets, returnUuid, type, selectOptions, fixTargets, description, coverToken, reverseCover, displayDistance);
+        return await socket.executeAsUser('remoteSelectTarget', userId, title, buttons, targets.map(i => i.document.uuid), returnUuid, type, selectOptions, fixTargets, description, coverToken?.document?.uuid, reverseCover, displayDistance);
+    },
     'decimalToFraction': function _decimalToFraction(decimal) {
         if (!decimal) return 0;
         if (Number(decimal) >= 1) return Number(decimal);

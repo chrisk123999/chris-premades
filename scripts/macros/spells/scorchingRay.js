@@ -87,8 +87,15 @@ export async function scorchingRay({speaker, actor, token, character, item, args
     if (color === 'random' || color === 'cycle') {
         lastColor = Math.floor(Math.random() * colors.length);
     }
+    let firstRun = true;
     while (maxRays > 0) {
-        let nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value, 'enemy', true);
+        let nearbyTargets;
+        if (firstRun && workflow.targets.size) {
+            nearbyTargets = Array.from(workflow.targets);
+            firstRun = false;
+        } else {
+            nearbyTargets = chris.findNearby(workflow.token, workflow.item.system.range.value, 'enemy', true);
+        }
         let targets = skipDead ? nearbyTargets.filter(i => i.actor.system.attributes.hp.value > 0) : nearbyTargets;
         let selection = await chris.selectTarget(workflow.item.name, constants.okCancel, targets, true, 'number', null, true, 'Select your targets (max: ' + maxRays + '):');
         if (!selection.buttons) {
@@ -98,7 +105,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
         }
         let total = 0;
         for (let i = 0; i < (selection.inputs.length - 1); i++) {
-            if (!isNaN(selection.inputs[i])) total += selection.inputs[i];
+            if (!isNaN(selection.inputs[i])) total += Math.abs(selection.inputs[i]);
         }
         if (total > maxRays) {
             ui.notifications.info('You can\'t use that many rays!');
@@ -113,7 +120,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
             }
             options.targetUuids = [target.document.uuid];
             let rayCount = 0;
-            for (let j = 0; j < selection.inputs[i]; j++) {
+            for (let j = 0; j < Math.abs(selection.inputs[i]); j++) {
                 await warpgate.wait(100);
                 maxRays -= 1;
                 let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
