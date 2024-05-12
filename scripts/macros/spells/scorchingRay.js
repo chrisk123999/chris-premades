@@ -105,7 +105,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
         }
         let total = 0;
         for (let i = 0; i < (selection.inputs.length - 1); i++) {
-            if (!isNaN(selection.inputs[i])) total += Math.abs(selection.inputs[i]);
+            if (!isNaN(selection.inputs[i])) total += selection.inputs[i];
         }
         if (total > maxRays) {
             ui.notifications.info('You can\'t use that many rays!');
@@ -120,7 +120,7 @@ export async function scorchingRay({speaker, actor, token, character, item, args
             }
             options.targetUuids = [target.document.uuid];
             let rayCount = 0;
-            for (let j = 0; j < Math.abs(selection.inputs[i]); j++) {
+            for (let j = 0; j < selection.inputs[i]; j++) {
                 await warpgate.wait(100);
                 maxRays -= 1;
                 let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);

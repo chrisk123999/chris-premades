@@ -277,7 +277,7 @@ export let chris = {
         if (description) selection.inputs?.shift();
         if (type == 'number') {
             for (let i = 0; i < (!fixTargets ? selection.inputs.length : selection.inputs.length - 1); i++) {
-                selection.inputs[i] = Math.max(0, selection.inputs[i]);
+                if (!isNaN(selection.inputs[i])) selection.inputs[i] = Math.max(0, selection.inputs[i]);
             }
         } else if (type != 'select') {
             for (let i = 0; i < (!fixTargets ? selection.inputs.length : selection.inputs.length - 1); i++) {
