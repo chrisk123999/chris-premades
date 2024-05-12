@@ -1,3 +1,10 @@
+# 0.10.73 Release:
+## New Content:
+- Arcana Domain Cleric: Channel Divinity: Arcane Abjuration
+## Update Notes:
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+  
 # 0.10.72 Release:
 ## New Content:
 - Banishment
@@ -9,9 +16,6 @@
 - Scorching Ray
 - Shocking Grasp
 - Hunter's Mark
-## Update Notes:
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.71 Release:
 ## Update Notes:

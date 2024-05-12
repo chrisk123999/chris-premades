@@ -26,10 +26,10 @@ export function itemDC(effect, updates, options, user) {
     effect.updateSource({'changes': updates.changes});
 }
 export function noEffectAnimationCreate(effect, updates,  options, userId) {
-    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
+    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false;
 }
 export function noEffectAnimationDelete(effect,  options, userId) {
-    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false
+    if (effect.flags['chris-premades']?.effect?.noAnimation) options.animate = false;
 }
 export function effectTitleBar(config, buttons) {
     if (config.object.parent instanceof Item) {
@@ -54,7 +54,7 @@ async function properties(effect) {
             'type': 'text',
             'options': vaeButton
         }
-    ]
+    ];
     let selection = await chris.menu('CPR Effect Options', constants.okCancel, inputs, true);
     if (!selection.buttons) return;
     let refreshedEffect = await fromUuid(effect.uuid);
@@ -75,7 +75,7 @@ async function properties(effect) {
                 }
             }
         ]
-    }
+    };
     await effect.parent.update(updates);
 }
 async function effectConfig(effect) {

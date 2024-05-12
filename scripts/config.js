@@ -6191,6 +6191,10 @@ export function setConfig() {
             'Bless': {
                 'name': 'Bless',
                 'version': '0.10.72'
+            },
+            'Channel Divinity: Arcane Abjuration': {
+                'name': 'Channel Divinity: Arcane Abjuration',
+                'version': '0.10.73'
             }
         }
     });

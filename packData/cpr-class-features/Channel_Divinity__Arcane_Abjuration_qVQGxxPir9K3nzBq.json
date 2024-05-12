@@ -1,0 +1,150 @@
+{
+  "name": "Channel Divinity: Arcane Abjuration",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "<p><em>This feature is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 1,
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 30,
+      "units": "ft",
+      "long": null
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "charges",
+      "target": "",
+      "amount": 1,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "save",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "wis",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "source": {}
+  },
+  "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Cleric"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[preambleComplete]function.chrisPremades.macros.arcaneAbjuration.early,[postActiveEffects]function.chrisPremades.macros.arcaneAbjuration.item"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "advancementOrigin": "5csdnlocnpqC9Anx"
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Channel Divinity: Arcane Abjuration",
+        "version": "0.10.73"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+  "folder": "sSvPbQRaxOD1ePeG",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1715501897039,
+    "modifiedTime": 1715505776067,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_id": "qVQGxxPir9K3nzBq",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3
+  },
+  "_key": "!items!qVQGxxPir9K3nzBq"
+}

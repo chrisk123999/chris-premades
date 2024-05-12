@@ -1,14 +1,16 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}, altName, selection) {
     if (!workflow.failedSaves.size) return;
-    await chris.gmDialogMessage();
-    let selection = await chris.remoteSelectTarget(chris.lastGM(), workflow.item.name, constants.okCancel, Array.from(workflow.failedSaves), true, 'multiple', undefined, false, 'Select all targets that are not from this plane.');
-    await chris.clearGMDialogMessage();
+    if (!selection) {
+        await chris.gmDialogMessage();
+        if (!selection) selection = await chris.remoteSelectTarget(chris.lastGM(), workflow.item.name, constants.okCancel, Array.from(workflow.failedSaves), true, 'multiple', undefined, false, 'Select all targets that are not from this plane.');
+        await chris.clearGMDialogMessage();
+    }
     if (!selection.buttons) return;
     let targetTokens = selection.inputs.filter(i => i);
     let effectData = {
-        'name': workflow.item.name,
+        'name': altName ?? workflow.item.name,
         'changes': [
             {
                 'key': 'flags.midi-qol.superSaver.all',

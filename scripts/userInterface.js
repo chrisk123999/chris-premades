@@ -3,7 +3,7 @@ import {registerSelectToolPatch} from './patching.js';
 export function tempEffectHUD(app, html, data) {
     if (!app.object) return;
     let statusEffects = html.find('.status-effects');
-    let effects = chris.getEffects(app.object.actor).filter(i => i.isTemporary && !i.statuses.size);
+    let effects = chris.getEffects(app.object.actor).filter(i => i.isTemporary && !Array.from(i.statuses).filter(j => !j.includes('Convenient Effect:')).length);
     let effectIcons = `${effects.map(effect => `<img class="effect-control active" data-effect-uuid="${effect.uuid}" src="${effect.icon}" title="${effect.name}" data-status-id="${effect.uuid}" />`).join('')}`;
     statusEffects.append(effectIcons);
 }
