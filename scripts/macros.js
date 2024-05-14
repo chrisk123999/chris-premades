@@ -164,6 +164,7 @@ import {fireStorm} from './macros/spells/fireStorm.js';
 import {fireStrike} from './macros/feats/strikeOfTheGiants/fireStrike.js';
 import {firearm} from './macros/mechanics/firearm.js';
 import {flameBlade} from './macros/spells/flameBlade.js';
+import {flockOfFamiliars} from './macros/spells/flockOfFamiliars.js';
 import {fly} from './macros/spells/fly.js';
 import {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 import {fogCloud} from './macros/spells/fogCloud.js';
@@ -742,6 +743,7 @@ export let macros = {
     'fireStrike': fireStrike,
     'firearm': firearm,
     'flameBlade': flameBlade,
+    'flockOfFamiliars': flockOfFamiliars,
     'fly': fly,
     'focusedAim': focusedAim,
     'fogCloud': fogCloud,

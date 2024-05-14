@@ -2,14 +2,14 @@
   "type": "spell",
   "system": {
     "description": {
-      "value": "<p>You must have a target token on the scene to use this spell (Warpgate mutation limitation).</p><p><em>This spell is safe to be renamed.</em></p>",
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Familiars\". Can be changed in the item's configuration.</p><p>After casting this spell a new feature called \"Flock of Familiars - Attack\" will be available in your features. Use this before attacking with a spell of range touch for it to be cast from the closest familiar.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Player's Handbook pg 237"
+      "custom": "Lost Laboratory of Kwalish"
     },
     "activation": {
-      "type": "action",
+      "type": "minute",
       "cost": 1,
       "condition": ""
     },
@@ -20,10 +20,10 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": null,
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -46,7 +46,6 @@
     },
     "ability": "",
     "actionType": "other",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -62,8 +61,8 @@
       "dc": null,
       "scaling": "spell"
     },
-    "level": 3,
-    "school": "trs",
+    "level": 2,
+    "school": "con",
     "materials": {
       "value": "",
       "consumed": false,
@@ -81,86 +80,64 @@
     "properties": [
       "vocal",
       "somatic",
-      "concentration"
-    ]
+      "concentration",
+      "mgc"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "summons": null
   },
-  "name": "Elemental Weapon",
+  "name": "Flock of Familiars",
   "flags": {
-    "midi-qol": {
-      "forceCEOff": true,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.elementalWeapon"
-    },
-    "cf": {
-      "id": "temp_utz727jul4"
-    },
     "midiProperties": {
-      "magicdam": false,
-      "magiceffect": false,
+      "magicdam": true,
+      "magiceffect": true,
       "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "concentration": false,
+      "concentration": true,
       "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false
     },
+    "dnd5e": {
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
     "core": {},
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.flockOfFamiliars.item"
+    },
     "custom-character-sheet-sections": {
       "sectionName": ""
-    },
-    "dae": {
-      "macro": {
-        "name": "Elemental Weapon",
-        "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "PQGBBcoVSwpUhViM",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "systemId": null,
-          "systemVersion": null,
-          "coreVersion": null,
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null
-        }
-      }
-    },
-    "chris-premades": {
-      "info": {
-        "name": "Elemental Weapon",
-        "version": "0.9.29"
-      }
-    },
-    "dnd5e": {}
+    }
   },
   "effects": [],
-  "img": "icons/magic/fire/dagger-rune-enchant-purple-orange.webp",
+  "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
-    "createdTime": 1676798650901,
-    "modifiedTime": 1715676761658,
+    "createdTime": 1685268901975,
+    "modifiedTime": 1715676758069,
     "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": null,
-  "_id": "ZT3xo289uqXkIIkA",
+  "_id": "RftoTCDwya8NxPb3",
   "sort": 0,
   "ownership": {
     "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Ud258q78TNICxrY6": 3
   },
-  "_key": "!items!ZT3xo289uqXkIIkA"
+  "_key": "!items!RftoTCDwya8NxPb3"
 }

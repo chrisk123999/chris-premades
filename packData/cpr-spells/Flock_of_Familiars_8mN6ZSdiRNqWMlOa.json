@@ -2,11 +2,11 @@
   "type": "spell",
   "system": {
     "description": {
-      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Chris Premades\". Can be changed in the item's configuration.</p><p>Summon Animations by: <a href=\"https://discord.gg/RXwkJD4hTe\">EskieMoh#2969</a></p><p><em>This spell is safe to rename.</em></p>",
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Familiars\". Can be changed in the item's configuration.</p><p>After casting this spell a new feature called \"Flock of Familiars - Attack\" will be available in your features. Use this before attacking with a spell of range touch for it to be cast from the closest familiar.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 225"
+      "custom": "Lost Laboratory of Kwalish"
     },
     "activation": {
       "type": "minute",
@@ -22,14 +22,14 @@
     "target": {
       "value": null,
       "width": null,
-      "units": null,
+      "units": "",
       "type": "",
       "prompt": true
     },
     "range": {
-      "value": 90,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "touch"
     },
     "uses": {
       "value": null,
@@ -46,7 +46,6 @@
     },
     "ability": "",
     "actionType": "other",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -62,7 +61,7 @@
       "dc": null,
       "scaling": "spell"
     },
-    "level": 7,
+    "level": 2,
     "school": "con",
     "materials": {
       "value": "",
@@ -81,81 +80,73 @@
     "properties": [
       "vocal",
       "somatic",
-      "concentration"
-    ]
+      "concentration",
+      "mgc"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "summons": null
   },
-  "name": "Conjure Celestial",
+  "name": "Flock of Familiars",
   "flags": {
     "midiProperties": {
       "magicdam": true,
       "magiceffect": true,
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "concentration": false,
+      "concentration": true,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": false,
-      "noConcentrationCheck": false
+      "ignoreTotalCover": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-dev-ddb-spells.TVWwKjpK2PC6f5mi"
+    "dnd5e": {
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "core": {},
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.flockOfFamiliars.item"
     },
     "custom-character-sheet-sections": {
       "sectionName": ""
     },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.conjureCelestial",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.conjureCelestial",
-            "option": "postActiveEffects"
-          }
-        }
-      }
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "chris-premades": {
       "info": {
-        "name": "Conjure Celestial",
-        "version": "0.7.01",
+        "name": "Flock of Familiars",
+        "version": "0.10.72",
         "mutation": {
-          "self": "Conjure Celestial"
+          "self": "Flock of Familiars"
         }
       }
-    },
-    "dnd5e": {}
+    }
   },
   "effects": [],
-  "img": "icons/commodities/biological/wing-bird-white.webp",
+  "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
-    "createdTime": 1685268901234,
-    "modifiedTime": 1715676761203,
+    "createdTime": 1685268901975,
+    "modifiedTime": 1715676759197,
     "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": null,
-  "sort": 7300000,
+  "_id": "8mN6ZSdiRNqWMlOa",
+  "sort": 0,
   "ownership": {
     "default": 0,
-    "Ud258q78TNICxrY6": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Ud258q78TNICxrY6": 3
   },
-  "_id": "VjRcjxe9zC4oTfAm",
-  "_key": "!items!VjRcjxe9zC4oTfAm"
+  "_key": "!items!8mN6ZSdiRNqWMlOa"
 }

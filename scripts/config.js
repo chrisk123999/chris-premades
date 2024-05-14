@@ -6195,6 +6195,13 @@ export function setConfig() {
             'Channel Divinity: Arcane Abjuration': {
                 'name': 'Channel Divinity: Arcane Abjuration',
                 'version': '0.10.73'
+            },
+            'Flock of Familiars': {
+                'name': 'Flock of Familiars',
+                'version': '0.10.74',
+                'mutation': {
+                    'self': 'Flock of Familiars'
+                }
             }
         }
     });

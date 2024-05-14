@@ -1,28 +1,30 @@
 {
-  "type": "spell",
+  "name": "Flock of Familiars - Attack",
+  "type": "feat",
+  "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
   "system": {
     "description": {
-      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "value": "",
       "chat": ""
     },
     "source": {
-      "custom": "Xanathar's Guide to Everything pg 157"
+      "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
     "target": {
       "value": null,
       "width": null,
-      "units": null,
+      "units": "",
       "type": "self",
       "prompt": true
     },
@@ -46,7 +48,6 @@
     },
     "ability": "",
     "actionType": "util",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -62,54 +63,41 @@
       "dc": null,
       "scaling": "spell"
     },
-    "level": 4,
-    "school": "trs",
-    "materials": {
+    "type": {
       "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
+      "subtype": ""
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
     },
-    "scaling": {
-      "mode": "none",
-      "formula": ""
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
     },
-    "properties": [
-      "vocal",
-      "concentration"
-    ]
+    "summons": null
   },
-  "name": "Guardian of Nature",
+  "effects": [],
   "flags": {
-    "cf": null,
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.zrkqxZ4qYIBZh0p0"
-    },
     "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
+      "sectionName": "Spell Features"
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[preActiveEffects]function.chrisPremades.macros.guardianOfNature",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.flockOfFamiliars.attackApply",
       "onUseMacroParts": {
         "items": {
           "0": {
-            "macroName": "function.chrisPremades.macros.guardianOfNature",
-            "option": "preActiveEffects"
+            "macroName": "function.chrisPremades.macros.findFamiliar.attackApply",
+            "option": "postActiveEffects"
           }
         }
-      }
+      },
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -124,33 +112,29 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
     },
-    "chris-premades": {
-      "info": {
-        "name": "Guardian of Nature",
-        "version": "0.7.27"
-      }
-    },
-    "dnd5e": {}
+    "core": {},
+    "tidy5e-sheet": {
+      "favorite": true
+    }
   },
-  "effects": [],
-  "img": "icons/magic/nature/lotus-glow-pink.webp",
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
-    "createdTime": 1676798650244,
-    "modifiedTime": 1715676759160,
+    "createdTime": 1694332745296,
+    "modifiedTime": 1715676722752,
     "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": null,
-  "sort": 3100000,
+  "_id": "hlndOcxLYOsEIlAl",
+  "sort": 0,
   "ownership": {
     "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Ud258q78TNICxrY6": 3
   },
-  "_id": "8b9nYYhNZLM4uuCR",
-  "_key": "!items!8b9nYYhNZLM4uuCR"
+  "_key": "!items!hlndOcxLYOsEIlAl"
 }

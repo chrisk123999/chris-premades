@@ -1,3 +1,7 @@
+# 0.10.74
+## New Content:
+- Flock of Familiars
+  
 # 0.10.73 Release:
 ## New Content:
 - Arcana Domain Cleric: Channel Divinity: Arcane Abjuration

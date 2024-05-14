@@ -53,12 +53,12 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
         }
     };
     if (!updates) updates = {};
-    setProperty(updates, 'embedded.ActiveEffect.Summoned Creature', effectData);
     let summonsIds = effect.flags['chris-premades']?.summons?.ids[originItem.name] ?? [];
     let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
     let groupInitiativeValue;
     for (let i = 0; i < sourceActors.length; i++) {
         let updates2 = Array.isArray(updates) ? updates[i] : duplicate(updates);
+        setProperty(updates2, 'embedded.ActiveEffect.Summoned Creature', effectData);
         if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls && originItem.system.school === 'nec') { // Undead Thralls automation
             let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
             if (wizardLevels) {

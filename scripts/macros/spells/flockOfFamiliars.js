@@ -1,12 +1,10 @@
-/*import {summons} from '../../utility/summons.js';
+import {summons} from '../../utility/summons.js';
 import {chris} from '../../helperFunctions.js';
-export async function conjureAnimals({speaker, actor, token, character, item, args, scope, workflow}) {
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let spellLevel = workflow.castData?.castLevel;
     if (!spellLevel) return;
     let findFamiliarEffect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliar);
     let totalSummons = findFamiliarEffect ? spellLevel : spellLevel + 1;
-    let folder = chris.getConfiguration(workflow.item, 'folder') ?? game.settings.get('chris-premades', 'Summons Folder');
-    if (!folder && folder === '') folder = 'Chris Premades';
     let folder = chris.getConfiguration(workflow.item, 'folder') ?? 'Familiars';
     if (folder === '') folder = 'Familiars';
     let actors = game.actors.filter(i => i.folder?.name === folder);
@@ -16,15 +14,47 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
     }
     let sourceActors = await chris.selectDocuments('Select Familiars (Max ' + totalSummons + ')', actors);
     if (!sourceActors) return;
-    if (sourceActors.length > (totalSummons * 2 / selection)) {
+    if (sourceActors.length > totalSummons) {
         ui.notifications.info('Too many selected, try again!');
         return;
     }
     let pocketDimensionEffect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliarPocketDimension);
     let creatureType = pocketDimensionEffect?.updates?.actor?.system?.details?.type?.value ?? await chris.dialog('What creature type?', [['Celestial', 'celestial'], ['Fey', 'fey'], ['Fiend', 'fiend']]);
-    let updates = [];
+    let attackData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Flock of Familiars - Attack', false);
+    if (!attackData) return;
+    attackData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Flock of Familiars - Attack');
+    let updates2 = {
+        'embedded': {
+            'Item': {
+                [attackData.name]: attackData
+            }
+        }
+    };
     let investmentOfTheChainMaster = chris.getItem(workflow.actor, 'Eldritch Invocations: Investment of the Chain Master');
-    let movement = await chris.dialog(investmentOfTheChainMaster.name, [['Flying', 'fly'], ['Swimming', 'swim']], 'Which Movement Type?');
+    let resistanceData;
+    let updates3 = {
+        'flags': {
+            'chris-premades': {
+                'spell': {
+                    'flockOfFamiliars': true
+                },
+                'vae': {
+                    'button': attackData.name
+                }
+            }
+        }
+    };
+    if (investmentOfTheChainMaster) { 
+        let commandData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Investment of the Chain Master - Command', false);
+        if (!commandData) return;
+        commandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Investment of the Chain Master - Command');
+        resistanceData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Investment of the Chain Master - Familiar Resistance', false);
+        if (!resistanceData) return;
+        resistanceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Investment of the Chain Master - Familiar Resistance');
+        if (!findFamiliarEffect) setProperty(updates2, 'embedded.Item.Investment of the Chain Master - Command', commandData);
+        setProperty(updates3, 'flags.effectmacro.onTurnStart.script', 'chrisPremades.macros.investmentOfTheChainMaster.turnStart(effect)');
+    }
+    let updates = [];
     for (let i of sourceActors) {
         let updates2 = {
             'actor': {
@@ -46,62 +76,29 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
             }
         }
         if (investmentOfTheChainMaster) { 
-            let weaponItems = sourceActor[0].items.filter(i => i.type === 'weapon');
-            let saveItems = sourceActor[0].items.filter(i => i.system.save.dc != null);
-            for (let i of weaponItems) {
-                let properties = Array.from(i.system.properties);
+            let movement = await chris.dialog(investmentOfTheChainMaster.name, [['Flying', 'fly'], ['Swimming', 'swim']], 'Which Movement Type for ' + i.name + '?');
+            let weaponItems = i.items.filter(i => i.type === 'weapon');
+            let saveItems = i.items.filter(i => i.system.save.dc != null);
+            for (let j of weaponItems) {
+                let properties = Array.from(j.system.properties);
                 properties.push('mgc');
-                setProperty(updates, 'embedded.Item.' + i.name + '.system.properties', properties);
+                setProperty(updates2, 'embedded.Item.' + j.name + '.system.properties', properties);
             }
             let saveDC = chris.getSpellDC(workflow.item);
-            for (let i of saveItems) {
-                setProperty(updates, 'embedded.Item.' + i.name + '.system.save.dc', saveDC);
+            for (let j of saveItems) {
+                setProperty(updates2, 'embedded.Item.' + j.name + '.system.save.dc', saveDC);
             }
-            setProperty(updates, 'actor.system.attributes.movement.' + movement, 40);
-            let resistanceData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Investment of the Chain Master - Familiar Resistance', false);
-            if (!resistanceData) return;
-            resistanceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Investment of the Chain Master - Familiar Resistance');
-            setProperty(updates, 'embedded.Item.Investment of the Chain Master - Familiar Resistance', resistanceData);
+            setProperty(updates2, 'actor.system.attributes.movement.' + movement, 40);
+            setProperty(updates2, 'embedded.Item.Investment of the Chain Master - Familiar Resistance', resistanceData);
         }
-        updates.push(updates2)
+        console.log(duplicate(updates2));
+        updates.push(updates2);
     }
-    if (investmentOfTheChainMaster) { 
-        let commandData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Investment of the Chain Master - Command', false);
-        if (!commandData) return;
-        commandData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Investment of the Chain Master - Command');
-    setProperty(updates2, 'embedded.Item.Investment of the Chain Master - Command', commandData);
-    setProperty(updates3, 'flags.effectmacro.onTurnStart.script', 'chrisPremades.macros.investmentOfTheChainMaster.turnStart(effect)');
-//need to collapse this
-    //let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'nature';
-    //if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    //await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 60, workflow.token, animation);
-    let attackData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Find Familiar - Attack', false);
-    if (!attackData) return;
-    attackData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Find Familiar - Attack');
-    let updates2 = {
-        'embedded': {
-            'Item': {
-                [attackData.name]: attackData
-            }
-        }
-    };
-    let updates3 = {
-        'flags': {
-            'chris-premades': {
-                'spell': {
-                    'findFamiliar': true
-                },
-                'vae': {
-                    'button': attackData.name
-                }
-            }
-        }
-    };
-    
+    console.log(updates);
     let options = {
         'permanent': false,
-        'name': 'Find Familiar',
-        'description': 'Find Familiar'
+        'name': 'Flock of Familiars',
+        'description': 'Flock of Familairs'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
     let defaultAnimations = {
@@ -111,24 +108,29 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
     };
     let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? defaultAnimations[creatureType];
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    await summons.spawn(sourceActor, updates, 86400, workflow.item, undefined, undefined, 10, workflow.token, animation);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 10, workflow.token, animation);
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
-    setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Find Familiar");');
+    setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Flock of Familiars");');
     await chris.updateEffect(effect, updates3);
 }
 async function attackApply({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliar);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.flockOfFamiliars);
     if (!effect) return;
-    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
-    if (!familiarId) return;
-    let familiarToken = canvas.scene.tokens.get(familiarId);
-    if (!familiarToken) return;
-    if (chris.getDistance(workflow.token, familiarToken) > 100) {
-        ui.notifications.info('Familiar Too Far Away!');
+    let familiarsIds = effect.flags['chris-premades']?.summons?.ids[effect.name];
+    if (!familiarsIds) return;
+    let familiarsTokens = new Set(familiarsIds.map(id => canvas.scene.tokens.get(id)));
+    if (!familiarsTokens) return;
+    for (let i of familiarsTokens) {
+        if (chris.getDistance(workflow.token, i) > 100) {
+            familiarsTokens.delete(i);
+        }
+    }
+    if (familiarsTokens.size === 0) {
+        ui.notifications.info('Familiars Too Far Away!');
         return;
     }
     let effectData = {
-        'name': 'Find Familiar Attack',
+        'name': 'Flock of Familiars Attack',
         'icon': workflow.item.img,
         'origin': effect.origin.uuid,
         'duration': {
@@ -145,7 +147,7 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
                 'priority': 20,
-                'value': 'function.chrisPremades.macros.findFamiliar.attackEarly,preambleComplete'
+                'value': 'function.chrisPremades.macros.flockOfFamiliars.attackEarly,prePreambleComplete'
             }
         ],
         'flags': {
@@ -157,24 +159,30 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
         }
     };
     await chris.createEffect(workflow.actor, effectData);
-    await chris.createEffect(familiarToken.actor, effectData);
+    for (let i of familiarsTokens) await chris.createEffect(i.actor, effectData);
 }
 async function attackEarly({speaker, actor, token, character, item, args, scope, workflow}) {
+    console.log('Prepreambling');
     if (workflow.item.type != 'spell' || workflow.item.system.range.units != 'touch') {
         ui.notifications.info('Invalid Spell Type!');
         return false;
     }
-    let effect = chris.getEffects(workflow.actor).find((e) => e.value?.flags['chris-premades']?.spell?.findFamiliar);
+    let effect = chris.getEffects(workflow.actor).find((e) => e?.flags['chris-premades']?.spell?.flockOfFamiliars);
     if (!effect) return;
-    let familiarId = effect.flags['chris-premades']?.summons?.ids[effect.name][0];
-    if (!familiarId) return;
-    let familiarToken = canvas.scene.tokens.get(familiarId);
-    if (!familiarToken) return;
-    await chris.addCondition(familiarToken.actor, 'Reaction');
+    await chris.addCondition(workflow?.rangeDetails?.attackingToken.document.actor, 'Reaction');
+    let familiarsIds = effect.flags['chris-premades']?.summons?.ids[effect.name];
+    if (!familiarsIds) return;
+    let familiarsTokens = new Set(familiarsIds.map(id => canvas.scene.tokens.get(id)));
+    if (!familiarsTokens) return;
+    for (let i of familiarsTokens) {
+        console.log(i.actor);
+        let attackEffect = chris.findEffect(i.actor, 'Flock of Familiars Attack');
+        if (!attackEffect) return;
+        await chris.removeEffect(attackEffect);
+    }
 }
-export let findFamiliar = {
+export let flockOfFamiliars = {
     'item': item,
     'attackApply': attackApply,
     'attackEarly': attackEarly
-};
-*/
+}
