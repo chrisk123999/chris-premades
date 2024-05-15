@@ -1205,8 +1205,7 @@ export let chris = {
         if (workflow.isCritical && !ignoreCrit) bonusDamageFormula = chris.getCriticalFormula(bonusDamageFormula);
         let bonusDamageRoll = await new CONFIG.Dice.DamageRoll(bonusDamageFormula, workflow.actor.getRollData()).evaluate();
         setProperty(bonusDamageRoll, 'options.type', bonusDamageRoll.terms[0].flavor);
-        workflow.damageRolls.push(bonusDamageRoll);
-        await workflow.setDamageRolls(workflow.damageRolls);
+        await workflow.setDamageRoll(MidiQOL.addRollTo(workflow.damageRoll, bonusDamageRoll));
     },
     'damageRoll': async function _damageRoll(workflow, damageFormula, options = {}, ignoreCrit = false) {
         if (workflow.isCritical && !ignoreCrit) damageFormula = chris.getCriticalFormula(damageFormula);
