@@ -38,7 +38,7 @@ export async function summonLesserDemons({speaker, actor, token, character, item
     let userId = game.settings.get('chris-premades', 'LastGM');
     if (game.settings.get('chris-premades', 'Player Chooses Conjures')) userId = game.userId;
     if (!userId) return;
-    let sourceActors = await chris.remoteDocumentsDialog(userId, 'Select Summons (Max ' + (summonsMultiplier * 2 / cr) + ')', actors);
+    let sourceActors = await chris.remoteDocumentsDialog(userId, 'Select Summons (Max ' + (summonsMultiplier * 2 / cr) + ')', actors, false, true, true);
     if (!sourceActors) return;
     if (sourceActors.length > (summonsMultiplier * 2 / cr)) {
         ui.notifications.info('Too many selected, try again!');

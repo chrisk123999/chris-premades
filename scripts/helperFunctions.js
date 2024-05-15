@@ -578,11 +578,16 @@ export let chris = {
         let cartoon = game.modules.get('animated-spell-effects-cartoon')?.active;
         return cartoon;
     },
-    'selectDocument': async function selectDocument(title, documents, useUuids, displayTooltips = false, alphabetical = false) {
+    'selectDocument': async function selectDocument(title, documents, useUuids, displayTooltips = false, alphabetical = false, cr = false) {
         if (alphabetical) {
             documents = documents.sort((a, b) => {
                 return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
             });
+        }
+        if (cr) {
+            documents = documents.sort((a, b) => {
+                return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
+            })
         }
         return await new Promise(async (resolve) => {
             let buttons = {},
@@ -617,11 +622,16 @@ export let chris = {
             });
         });
     },
-    'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false, alphabetical = false) {
+    'selectDocuments': async function selectDocuments(title, documents, useUuids, displayTooltips = false, alphabetical = false, cr = false) {
         if (alphabetical) {
             documents = documents.sort((a, b) => {
                 return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
             });
+        }
+        if (cr) {
+            documents = documents.sort((a, b) => {
+                return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
+            })
         }
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {'label': `Cancel`, callback: () => resolve(false)}, 'confirm': {'label': `Confirm`, callback: (html) => getDocuments(html, documents)}},
@@ -676,15 +686,15 @@ export let chris = {
             }
         });
     },
-    'remoteDocumentDialog': async function _remoteDocumentsDialog(userId, title, documents, displayTooltips = false) {
+    'remoteDocumentDialog': async function _remoteDocumentDialog(userId, title, documents, displayTooltips = false, alphabetical = false, cr = false) {
         if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips);
-        let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid), displayTooltips);
+        let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid), displayTooltips, alphabetical, cr);
         if (!uuids) return false;
         return await Promise.all(uuids.map(async i => await fromUuid(i)));
     },
-    'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents, displayTooltips = false) {
-        if (userId === game.user.id) return await chris.selectDocuments(title, documents, false, displayTooltips);
-        let uuids = await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents.map(i => i.uuid), displayTooltips);
+    'remoteDocumentsDialog': async function _remoteDocumentsDialog(userId, title, documents, displayTooltips = false, alphabetical = false, cr = false) {
+        if (userId === game.user.id) return await chris.selectDocuments(title, documents, false, displayTooltips, alphabetical, cr);
+        let uuids = await socket.executeAsUser('remoteDocumentsDialog', userId, title, documents.map(i => i.uuid), displayTooltips, alphabetical, cr);
         if (!uuids) return false;
         return await Promise.all(uuids.map(async i => await fromUuid(i)));
     },

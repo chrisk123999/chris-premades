@@ -33,7 +33,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'Water Elemental'
     ];
     if (elementalWildShape && workflow.item.system.uses.value >= 2) documents = documents.concat(index.filter(i => elementals.includes(i.name)));
-    let selectedCreatures = await chris.selectDocument(workflow.item.name, documents, false, false, true);
+    let selectedCreatures = await chris.selectDocument(workflow.item.name, documents, false, false, true, true);
     if (!selectedCreatures) return;
     let selectedActor = await fromUuid(selectedCreatures[0].uuid);
     if (elementals.includes(selectedActor.name)) await workflow.item.update({'system.uses.value': workflow.item.system.uses.value - 1});

@@ -1,6 +1,8 @@
 # 0.10.74
 ## New Content:
 - Flock of Familiars
+## Update Notes:
+- Document dialogs can now sort by CR, this has been added for Wildshape, Summon Lesser Demons, and the Conjure spells
   
 # 0.10.73 Release:
 ## New Content:

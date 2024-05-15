@@ -22,7 +22,7 @@ export async function conjureAnimals({speaker, actor, token, character, item, ar
     let userId = game.settings.get('chris-premades', 'LastGM');
     if (game.settings.get('chris-premades', 'Player Chooses Conjures')) userId = game.userId;
     if (!userId) return;
-    let sourceActors = await chris.remoteDocumentsDialog(userId, 'Select Summons (Max ' + (totalSummons * 2 / selection) + ')', actors);
+    let sourceActors = await chris.remoteDocumentsDialog(userId, 'Select Summons (Max ' + (totalSummons * 2 / selection) + ')', actors, false, false, true);
     if (!sourceActors) return;
     if (sourceActors.length > (totalSummons * 2 / selection)) {
         ui.notifications.info('Too many selected, try again!');
