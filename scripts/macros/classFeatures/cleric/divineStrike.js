@@ -35,7 +35,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 damageType = 'radiant';
                 break;
             case 'nature-domain':
-                damageType = await chris.dialog('What damage type?', [['Acid', 'acid'], ['Cold', 'cold'], ['Fire', 'fire'], ['Lightning', 'lightning'], ['Thunder', 'thunder']]);
+                damageType = await chris.dialog('What damage type?', [['Cold', 'cold'], ['Fire', 'fire'], ['Lightning', 'lightning']]);
                 if (!damageType) {
                     queue.remove(workflow.item.uuid);
                     return;
