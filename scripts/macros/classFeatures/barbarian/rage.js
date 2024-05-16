@@ -4,7 +4,7 @@ import {enlargeReduce} from '../../spells/enlargeReduce.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
     let concentrationEffects = Array.from(workflow.actor.concentration.effects);
-    concentrationEffects.forEach(effect => chris.removeEffect(effect));
+    await Promise.all(concentrationEffects.map(async effect => await chris.removeEffect(effect)));
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Rage - End', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rage - End');
