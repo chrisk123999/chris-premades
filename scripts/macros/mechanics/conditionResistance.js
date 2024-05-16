@@ -31,6 +31,8 @@ export async function conditionResistanceEarly(workflow) {
         effect.changes.forEach(element => {
             if (element.key === 'macro.CE') itemConditions.add(element.value.toLowerCase());
         });
+        let effectConditions = effect.flags['chris-premades']?.conditions;
+        if (effectConditions) effectConditions.forEach(c => itemConditions.add(c.toLowerCase()));
     });
     if (!itemConditions.size) return;
     await Promise.all(workflow.targets.map(async tokenDoc => {

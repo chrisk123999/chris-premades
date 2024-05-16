@@ -124,9 +124,16 @@
     "chris-premades": {
       "info": {
         "name": "Flock of Familiars",
-        "version": "0.10.72",
+        "version": "0.10.74",
         "mutation": {
           "self": "Flock of Familiars"
+        }
+      }
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
         }
       }
     }
@@ -138,8 +145,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685268901975,
-    "modifiedTime": 1715676759197,
-    "lastModifiedBy": "Ud258q78TNICxrY6"
+    "modifiedTime": 1715842254116,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,
   "_id": "8mN6ZSdiRNqWMlOa",

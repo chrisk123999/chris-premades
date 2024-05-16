@@ -42,13 +42,13 @@ async function baitAndSwitch({speaker, actor, token, character, item, args, scop
             'ActiveEffect': {
                 [effectData.name]: effectData
             }
-        }
+        };
     } else {
         sourceUpdate['embedded'] = {
             'ActiveEffect': {
                 [effectData.name]: effectData
             }
-        }
+        };
     }
     let options = {
         'permanent': true,
@@ -236,7 +236,7 @@ async function pushingAttack({speaker, actor, token, character, item, args, scop
                 return;
             }
             newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
-            hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: "move", mode: "any"});
+            hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
             if (hitsWall) {
                 selection -= 5;
                 if (selection === 0) {
@@ -365,4 +365,4 @@ export let maneuvers = {
     'sweepingAttackAttack': sweepingAttackAttack,
     'tripAttack': tripAttack,
     'distractingStrikeOnHit': distractingStrikeOnHit
-}
+};

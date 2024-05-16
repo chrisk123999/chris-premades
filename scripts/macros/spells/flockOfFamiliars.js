@@ -74,7 +74,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'name': i.name + ' Familiar',
                 'disposition': workflow.token.document.disposition
             }
-        }
+        };
         if (investmentOfTheChainMaster) { 
             let movement = await chris.dialog(investmentOfTheChainMaster.name, [['Flying', 'fly'], ['Swimming', 'swim']], 'Which Movement Type for ' + i.name + '?');
             let weaponItems = i.items.filter(i => i.type === 'weapon');
@@ -125,8 +125,8 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
             familiarsTokens.delete(i);
         }
     }
-    if (familiarsTokens.size === 0) {
-        ui.notifications.info('Familiars Too Far Away!');
+    if (!familiarsTokens.size) {
+        ui.notifications.info('Familiars are too far away!');
         return;
     }
     let effectData = {
@@ -185,4 +185,4 @@ export let flockOfFamiliars = {
     'item': item,
     'attackApply': attackApply,
     'attackEarly': attackEarly
-}
+};

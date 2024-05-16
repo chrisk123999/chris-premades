@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {chris} from '../../helperFunctions.js';
 import {effectAuras} from '../../utility/effectAuras.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -101,7 +102,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                     'effectName': 'Lantern Of Revealing - Revealed',
                     'macroName': 'lanternOfRevealing'
                 }
-            }
+            };
             effectAuras.add(flagAuras, workflow.token.document.uuid, true);
             return;
         case 'dim':
@@ -172,7 +173,7 @@ async function aura(token, selectedAura) {
                 }
             }
         }
-    }
+    };
     let effect = chris.findEffect(token.actor, effectData.name);
     if (effect?.origin === effectData.origin) return;
     if (effect) chris.removeEffect(effect);
@@ -185,4 +186,4 @@ export let lanternOfRevealing = {
     'item': item,
     'aura': aura,
     'end': end
-}
+};

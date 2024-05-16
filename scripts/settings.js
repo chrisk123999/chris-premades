@@ -25,6 +25,7 @@ import {addActions} from './macros/actions/token.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {createActor} from './backup.js';
 import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
+import {effectConditions} from './utility/conditions.js';
 let moduleName = 'chris-premades';
 export let humanoidSettings = {};
 let previousSettings = {};
@@ -212,11 +213,15 @@ export function registerSettings() {
                 Hooks.on('preCreateActiveEffect', noEffectAnimationCreate);
                 Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
                 Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
+                Hooks.on('createActiveEffect', effectConditions.created);
+                Hooks.on('deleteActiveEffect', effectConditions.deleted);
             } else {
                 Hooks.off('preCreateActiveEffect', itemDC);
                 Hooks.off('preCreateActiveEffect', noEffectAnimationCreate);
                 Hooks.off('preDeleteActiveEffect', noEffectAnimationDelete);
                 Hooks.off('getActiveEffectConfigHeaderButtons', effectTitleBar);
+                Hooks.off('createActiveEffect', effectConditions.created);
+                Hooks.off('deleteActiveEffect', effectConditions.deleted);
             }
             patchActiveEffectSourceName(value);
         }
@@ -1476,6 +1481,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Booming Blade', 'Spells');
+    game.settings.register(moduleName, 'Globe of Invulnerability', {
+        'name': 'Globe of Invulnerability Automation',
+        'hint': 'Enabling this allows the automation of the Globe of Invulnerability spell via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preambleComplete', macros.globeOfInvulnerability.target);
+            } else {
+                Hooks.off('midi-qol.preambleComplete', macros.globeOfInvulnerability.target);
+            }
+        }
+    });
+    addMenuSetting('Globe of Invulnerability', 'Spells');
     game.settings.register(moduleName, 'Manifest Echo', {
         'name': 'Manifest Echo Automation',
         'hint': 'Enabling this allows the automation of the Manifest Echo feature via the use of Foundry hooks.',

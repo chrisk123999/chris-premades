@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {chris} from '../../helperFunctions.js';
 export async function fall({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetToken = game.user.targets.first();

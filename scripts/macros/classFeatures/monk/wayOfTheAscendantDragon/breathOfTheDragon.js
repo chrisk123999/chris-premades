@@ -75,7 +75,7 @@ export async function breathOfTheDragon({speaker, actor, token, character, item,
         target.width = 5;
     } else if (type === 'cone') {
         target.value = augment ? 60 : 20;
-        target.type = 'cone'
+        target.type = 'cone';
     }
     target.units = 'ft';
     if (augment) {
@@ -140,6 +140,7 @@ export async function breathOfTheDragon({speaker, actor, token, character, item,
                 break;
             case 'fire':
                 file = 'jb2a.breath_weapons.fire.cone.orange.01';
+                break;
             case 'lightning':
                 if (chris.jb2aCheck() != 'patreon') return;
                 file = 'jb2a.breath_weapons.fire.cone.blue.02';

@@ -44,6 +44,7 @@ import {enableMacroSidebar, enableSelectTool} from './userInterface.js';
 import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {backupCharacters, createActor} from './backup.js';
 import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
+import {effectConditions} from './utility/conditions.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -166,6 +167,8 @@ Hooks.once('ready', async function() {
         Hooks.on('preDeleteActiveEffect', noEffectAnimationDelete);
         Hooks.on('getActiveEffectConfigHeaderButtons', effectTitleBar);
         patchActiveEffectSourceName(true);
+        Hooks.on('createActiveEffect', effectConditions.created);
+        Hooks.on('deleteActiveEffect', effectConditions.deleted);
     }
     if (game.settings.get('chris-premades', 'Automatic VAE Descriptions')) Hooks.on('preCreateActiveEffect', vaeEffectDescription);
     if (game.settings.get('chris-premades', 'VAE Temporary Item Buttons')) Hooks.on('visual-active-effects.createEffectButtons', vaeTempItemButton);
@@ -235,6 +238,7 @@ Hooks.once('ready', async function() {
     }
     if (game.settings.get('chris-premades', 'Critical Role Firearm Support')) firearm.setup(true);
     if (game.settings.get('chris-premades', 'Booming Blade')) Hooks.on('updateToken', macros.boomingBlade.moved);
+    if (game.settings.get('chris-premades', 'Globe of Invulnerability')) Hooks.on('midi-qol.preambleComplete', macros.globeOfInvulnerability.target);
     if (game.settings.get('chris-premades', 'Build A Bonus Overlapping Effects')) Hooks.on('babonus.filterBonuses', buildABonus.overlappingEffects);
     if (game.settings.get('chris-premades', 'Manifest Echo')) Hooks.on('dnd5e.rollAbilitySave', macros.manifestEcho.save);
     if (game.settings.get('chris-premades', 'Dual Wielder')) Hooks.on('updateItem', macros.dualWielder);
