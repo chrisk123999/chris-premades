@@ -9,6 +9,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!selection) [selection] = await chris.remoteDocumentDialog(chris.firstOwner(targetToken).id, 'What weapon gets imbued?', targetWeapons);
     if (!selection) return;
     async function effectMacro () {
+        await warpgate.wait(200);
         await warpgate.revert(token.document, 'Holy Weapon - Target');
     }
     let effectData = {
@@ -63,6 +64,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Holy Weapon - Target'
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([targetToken.actor.effects.getName(effectData.name)]);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Dismiss', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Holy Weapon - Dismiss', false);
@@ -115,6 +117,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Holy Weapon'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([workflow.actor.effects.getName(workflow.item.name)]);
 }
 async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetTokenUuid = workflow.actor.flags['chris-premades']?.spell?.holyWeapon;
@@ -141,8 +144,8 @@ async function dismiss({speaker, actor, token, character, item, args, scope, wor
     };
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': targetToken.actor});
     await feature.use();
-    await chris.removeEffect(effect);
-    await chris.removeCondition(workflow.actor, 'Concentrating');
+    let concentrationEffect = MidiQOL.getConcentrationEffect(workflow.actor, "Holy Weapon");
+    await chris.removeEffect(concentrationEffect);
 }
 export let holyWeapon = {
     'item': item,

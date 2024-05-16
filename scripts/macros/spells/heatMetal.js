@@ -67,6 +67,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'origin': workflow.item.uuid
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([workflow.actor.effects.getName(workflow.item.name)]);
     let effectData2 = {
         'name': 'Heat Metal Dialogue',
         'icon': workflow.item.img,
@@ -190,7 +191,7 @@ async function dialogue(token, actor, effect, origin) {
             }
         }
     }
-    await chris.createEffect(actor, effectData);
+    await chris.createEffect(actor, effectData, workflow.item);
     await effect.delete();
 }
 async function removed(effect) {

@@ -38,7 +38,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 async function trigger(token, trigger) {
     let template = await fromUuid(trigger.templateUuid);

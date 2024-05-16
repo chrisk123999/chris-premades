@@ -93,7 +93,7 @@ export async function summonLesserDemons({speaker, actor, token, character, item
             },
             'chris-premades': {
                 'spell': {
-                    'summonLesserDemons': template[0].uuid
+                    'summonLesserDemons': template.uuid
                 }
             }
         }

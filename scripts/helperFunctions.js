@@ -37,18 +37,23 @@ export let chris = {
     'findEffect': function _findEffect(actor, name) {
         return chris.getEffects(actor).find(i => i.name === name);
     },
-    'createEffect': async function _createEffect(actor, effectData) {
+    'createEffect': async function _createEffect(actor, effectData, concentrationItem=undefined) {
         if (effectData.label) {
             console.warn('The effect "' + effectData.label + '" has effect data with a label instead of a name!');
             effectData.name = effectData.label;
             delete effectData.label;
         }
+        let effectToReturn;
         if (chris.firstOwner(actor).id === game.user.id) {
             let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
-            return effects[0];
+            effectToReturn = effects[0];
         } else {
-            return await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
+            effectToReturn = await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
         }
+        if (concentrationItem) {
+            await MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem)?.addDependents([effectToReturn]);
+        }
+        return effectToReturn;
     },
     'removeEffect': async function _removeEffect(effect) {
         if (chris.firstOwner(effect).id === game.user.id) {

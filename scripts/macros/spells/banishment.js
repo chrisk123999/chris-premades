@@ -76,7 +76,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 'priority': 20
             });
         }
-        await chris.createEffect(i.actor, appliedEffectData);
+        await chris.createEffect(i.actor, appliedEffectData, workflow.item);
     }
 }
 async function end(effect, token) {

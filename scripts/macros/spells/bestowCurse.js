@@ -63,7 +63,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             };
             break;
     }
-    if (!concentration) featureData.flags.midiProperties.concentration = false;
+    if (!concentration) {
+        featureData.flags.midiProperties.concentration = false;
+        featureData.system.properties.findSplice(prop => prop == 'concentration');
+    }
     switch (selection) {
         case 'Ability':
             let abilityChoices = [
@@ -112,7 +115,6 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 ]
             };
             if (!isNaN(duration)) effectData.duration.seconds = duration;
-            await chris.createEffect(workflow.actor, effectData);
             break;
         case 'Attack':
             featureData.effects[0].changes[0].value = workflow.token.actor.uuid;
@@ -125,6 +127,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([workflow.targets.first().document.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
+    if (effectData) await chris.createEffect(workflow.actor, effectData, concentration ? feature : undefined);
     let targetEffect = chris.findEffect(workflow.targets.first().actor, 'Bestow Curse - ' + selection);
     if (!targetEffect) {
         queue.remove(workflow.item.uuid);
@@ -146,14 +149,13 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     );
     if (concentration) {
-        let concentrationEffect = chris.findEffect(workflow.actor, 'Concentrating');
+        let concentrationEffect = MidiQOL.getConcentrationEffect(workflow.actor, featureData.name);
         if (!concentrationEffect) {
             queue.remove(workflow.item.uuid);
             return;
         }
         await chris.updateEffect(concentrationEffect, {'origin': workflow.item.uuid, 'flags.midi-qol.isConcentration': workflow.item.uuid});
         await workflow.actor.setFlag('midi-qol', 'concentration-data.uuid', workflow.item.uuid);
-
     }
     queue.remove(workflow.item.uuid);
 }
@@ -235,7 +237,7 @@ async function remove(effect, origin, token) {
         if (damageEffect) await chris.removeEffect(damageEffect);
     }
     if (curseFlags.level < 5) {
-        let effect2 = chris.findEffect(origin.actor, 'Concentrating');
+        let effect2 = MidiQOL.getConcentrationEffect(origin.actor, origin);
         if (effect2) await chris.removeEffect(effect2);
     }
 }

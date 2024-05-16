@@ -75,5 +75,5 @@ export async function guardianOfNature({speaker, actor, token, character, item, 
         };
         if (workflow.token) await chris.applyDamage(workflow.token, 10, 'temphp');
     }
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }

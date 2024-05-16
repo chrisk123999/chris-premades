@@ -58,6 +58,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Gust of Wind'
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([workflow.actor.effects.getName(workflow.item.name)]);
 }
 async function trigger(token, trigger) {
     let template = await fromUuid(trigger.templateUuid);

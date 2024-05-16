@@ -27,7 +27,9 @@ async function damage({speaker, actor, token, character, item, args, scope, work
         await chris.pushToken(workflow.token, targetToken, 10);
         if (!chris.checkTrait(targetToken.actor, 'ci', 'prone')) await chris.addCondition(targetToken.actor, 'Prone');
     }
-    await chris.removeEffect(effect);
+    // await chris.removeEffect(effect);
+    let concentrationEffect = MidiQOL.getConcentrationEffect(workflow.actor, effect.origin);
+    await chris.removeEffect(concentrationEffect);
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -56,7 +58,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 export let thunderousSmite = {
     'damage': damage,

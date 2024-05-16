@@ -91,7 +91,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': sourceEffectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
+    let conEffect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item);
+    await conEffect.addDependents([workflow.actor.effects.getName(workflow.item.name)]);
     if (conEffect) {
         let updates = {
             'duration': {
