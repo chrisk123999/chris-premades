@@ -1,0 +1,229 @@
+{
+  "name": "Tentacles",
+  "type": "weapon",
+  "system": {
+    "description": {
+      "value": "<p><em>This feature is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Monster Manual",
+      "page": "222",
+      "custom": "",
+      "license": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": 0,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": 0,
+    "equipped": true,
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "day"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "int",
+    "actionType": "mwak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "2d4[psychic] + @mod",
+          "psychic"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "dc": 7,
+      "ability": "int",
+      "scaling": "flat"
+    },
+    "armor": {
+      "value": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "natural",
+      "baseItem": ""
+    },
+    "properties": [],
+    "proficient": 1,
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "summons": null,
+    "magicalBonus": null
+  },
+  "effects": [
+    {
+      "name": "Tentacles",
+      "changes": [
+        {
+          "key": "macro.CE",
+          "mode": 0,
+          "value": "Stunned",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "icon": "icons/commodities/biological/tentacle-purple-white.webp",
+      "_id": "clMcKGyEC7kWIp0k",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "tint": null,
+      "_key": "!items.effects!D51UKXNL5e0quUKO.clMcKGyEC7kWIp0k"
+    }
+  ],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<strong>Tentacles.</strong>",
+      "fullName": "Tentacles.",
+      "actionCopy": false,
+      "type": "action"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "!target.traits.ci.value.has('grappled') && target.isHit",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.monster.mindFlayer.tentacles"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "fulldam": true,
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "core": {}
+  },
+  "img": "icons/commodities/biological/tentacle-purple-white.webp",
+  "folder": "PdcmaPc4bfaZNb3l",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1715582992791,
+    "modifiedTime": 1715842253454,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_id": "D51UKXNL5e0quUKO",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3
+  },
+  "_key": "!items!D51UKXNL5e0quUKO"
+}

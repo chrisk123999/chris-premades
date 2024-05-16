@@ -98,7 +98,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 5,
-          "value": "turn=end,\nrollType=save,\nsaveAbility=int,\nsaveDC=15,\nlabel=Mind Blast",
+          "value": "turn=end,\nrollType=save,\nsaveAbility=int,\nsaveDC=15,\nname=Mind Blast (End of Turn)",
           "priority": 20
         },
         {
@@ -123,7 +123,10 @@
           "stackable": "noneName",
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [],
+          "disableIncapacitated": false,
+          "dontApply": false,
+          "showIcon": false
         },
         "core": {
           "statusId": ""
@@ -139,7 +142,10 @@
           "hidden": false,
           "displayTemp": false,
           "hostile": false,
-          "onlyOnce": false
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
         },
         "dfreds-convenient-effects": {
           "description": ""
@@ -173,7 +179,14 @@
       "environment": ""
     },
     "midi-qol": {
-      "effectActivation": false
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": true,
@@ -188,7 +201,11 @@
       "ignoreTotalCover": false,
       "autoFailFriendly": false,
       "offHandWeapon": false,
-      "autoSaveFriendly": false
+      "autoSaveFriendly": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false
     },
     "magicitems": {
       "enabled": false,
@@ -221,11 +238,11 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1669195976881,
-    "modifiedTime": 1715505771727,
+    "modifiedTime": 1715842254326,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": "K27yCcNU2X7RPTTI",
-  "sort": 0,
+  "sort": 200000,
   "ownership": {
     "default": 0,
     "PQGBBcoVSwpUhViM": 3,

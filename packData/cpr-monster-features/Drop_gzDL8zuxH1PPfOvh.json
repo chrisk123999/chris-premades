@@ -1,0 +1,171 @@
+{
+  "name": "Drop",
+  "type": "weapon",
+  "system": {
+    "description": {
+      "value": "<p><em>This feature is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Icewind Dale: Rime of the Frostmaiden",
+      "page": "226",
+      "custom": "",
+      "license": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": 0,
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": 0,
+    "equipped": true,
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": 1,
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "dex",
+    "actionType": "mwak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "3d6[piercing]",
+          "piercing"
+        ],
+        [
+          "3d6[cold]",
+          "cold"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "dc": null,
+      "ability": "",
+      "scaling": "flat"
+    },
+    "armor": {
+      "value": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "simpleM",
+      "baseItem": ""
+    },
+    "properties": [],
+    "proficient": 1,
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "summons": null,
+    "magicalBonus": null
+  },
+  "effects": [],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<strong>Drop.</strong>",
+      "fullName": "Drop.",
+      "actionCopy": false,
+      "type": "action"
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[preDamageRoll]function.chrisPremades.macros.monster.piercerIceVariant.drop"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "core": {}
+  },
+  "img": "icons/magic/water/projectile-ice-faceted-gray.webp",
+  "folder": "IBZIgOceteoXcYZf",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1715667673502,
+    "modifiedTime": 1715842257274,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_id": "gzDL8zuxH1PPfOvh",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3
+  },
+  "_key": "!items!gzDL8zuxH1PPfOvh"
+}

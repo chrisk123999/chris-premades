@@ -86,4 +86,4 @@ export let sanctuary = {
     'item': item,
     'hook': hook,
     'attack': attack
-}
+};

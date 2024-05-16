@@ -1,6 +1,7 @@
 import {constants} from '../constants.js';
 import {chris} from '../helperFunctions.js';
 import {overtimeCreator} from '../integrations/midiqol.js';
+import {effectConditions} from './conditions.js';
 export function itemDC(effect, updates, options, user) {
     if (!updates.changes || !effect.parent || !effect.origin) return;
     if (updates.changes.length === 0) return;
@@ -79,7 +80,7 @@ async function properties(effect) {
     await effect.parent.update(updates);
 }
 async function effectConfig(effect) {
-    let selection = await chris.dialog('Effect Options', [['Overtime Creator', 'overtime'], ['Effect Properties', 'properties']]);
+    let selection = await chris.dialog('Effect Options', [['Overtime Creator', 'overtime'], ['Effect Properties', 'properties'], ['Applied Conditions', 'conditions']]);
     if (!selection) return;
     switch(selection) {
         case 'overtime':
@@ -87,6 +88,9 @@ async function effectConfig(effect) {
             break;
         case 'properties':
             await properties(effect);
+            break;
+        case 'conditions':
+            await effectConditions.menu(effect);
             break;
     }
 }

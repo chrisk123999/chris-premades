@@ -6202,6 +6202,10 @@ export function setConfig() {
                 'mutation': {
                     'self': 'Flock of Familiars'
                 }
+            },
+            'Globe of Invulnerability': {
+                'name': 'Globe of Invulnerability',
+                'version': '0.10.74'
             }
         }
     });

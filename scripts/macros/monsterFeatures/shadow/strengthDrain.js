@@ -55,6 +55,6 @@ export async function strengthDrain({speaker, actor, token, character, item, arg
     if (targetActor.system.abilities.str.value <= 0) {
         let unconscious = chris.findEffect(targetActor, 'Unconscious');
         if (unconscious) await chris.removeCondition(targetActor, 'Unconscious');
-        await chris.addCondition(targetActor, 'Dead', true, null)
+        await chris.addCondition(targetActor, 'Dead', true, null);
     }
 }

@@ -397,6 +397,11 @@ import {yeti} from './macros/monsterFeatures/yeti/yeti.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+import {mindFlayer} from './macros/monsterFeatures/mindFlayer/mindFlayer.js';
+import {piercerMonster} from './macros/monsterFeatures/piercer/piercer.js';
+import {piercerIceVariant} from './macros/monsterFeatures/piercerIceVariant/piercerIceVariant.js';
+import {cragCat} from './macros/monsterFeatures/cragCat/cragCat.js';
+import {globeOfInvulnerability} from './macros/spells/globeOfInvulnerability.js';
 export async function onHitMacro(workflow) {
     if (!workflow.targets.size) return;
     workflow.targets.forEach(async token => {
@@ -474,7 +479,11 @@ let monster = {
     'vulture': vulture,
     'wolf': wolf,
     'yeti': yeti,
-    'zombie': zombie
+    'zombie': zombie,
+    'mindFlayer': mindFlayer,
+    'piercer': piercerMonster,
+    'piercerIceVariant': piercerIceVariant,
+    'cragCat': cragCat
 };
 let onHit = {
     'armorOfAgathys': armorOfAgathys.onHit,
@@ -944,5 +953,6 @@ export let macros = {
     'wrathOfTheStorm': wrathOfTheStorm,
     'wrathfulSmite': wrathfulSmite,
     'zealousPresence': zealousPresence,
-    'zoneOfTruth': zoneOfTruth
+    'zoneOfTruth': zoneOfTruth,
+    'globeOfInvulnerability': globeOfInvulnerability
 };

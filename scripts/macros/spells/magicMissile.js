@@ -29,9 +29,9 @@ export async function magicMissile({speaker, actor, token, character, item, args
         if (chris.getItem(workflow.actor, 'Empowered Evocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
         let damageRoll = await new Roll(damageFormula).roll({'async': true});
         damageRoll.toMessage({
-            rollMode: 'roll',
-            speaker: {'alias': name},
-            flavor: workflow.item.name
+            'rollMode': 'roll',
+            'speaker': {'alias': name},
+            'flavor': workflow.item.name
         });
         featureData.system.damage.parts = [
             [

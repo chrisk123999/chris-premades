@@ -1,15 +1,25 @@
-# 0.10.74
+# 0.10.74 Release:
 ## New Content:
 - Flock of Familiars
+- Globe of Invulnerability
+## New Monster Content:
+- Mind Flayer: Tentacles and Extract Brain
+- Gnome Squidling: Tentacles, Extract Brain, and Mind Tickle
+- Piercer: Drop
+- Piercer (Ice variant): Drop
+## New Features:
+- Added "Effect Conditions" to the CPR effect medkit. This can be used to have an effect apply conditions in place of Midi-Qol's "macro.ce" effect key. Condition Resistance and Vulnerability has been updated to take this into account.
+## Bug Fixes:
+- Arcane Ward
+- Breath of the Dragon
 ## Update Notes:
-- Document dialogs can now sort by CR, this has been added for Wildshape, Summon Lesser Demons, and the Conjure spells
+- Document dialogs can now sort by CR, this has been added for Wildshape, Summon Lesser Demons, and the Conjure spells.
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
   
 # 0.10.73 Release:
 ## New Content:
 - Arcana Domain Cleric: Channel Divinity: Arcane Abjuration
-## Update Notes:
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.72 Release:
 ## New Content:
@@ -265,7 +275,7 @@
 # 0.10.33 Release:
 ## Bug Fixes:
 - Vampiric Touch
-## New Content:
+## New Features:
 - Added a Midi-Qol overtime effect creator.
   
 # 0.10.32 Release:

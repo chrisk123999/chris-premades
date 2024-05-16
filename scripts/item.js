@@ -85,8 +85,8 @@ export async function updateItemButton(app, [elem], options) {
         let found = cpr(item);
         if (found) return;
         let gambitAutomation;
-        let miscAutomation = CONFIG['midi-item-showcase-community']?.automations?.[item.name];
-        if (game.modules.get('gambits-premades')?.active)  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
+        let miscAutomation = game.settings.get('chris-premades', 'MISC Support') ? CONFIG['midi-item-showcase-community']?.automations?.[item.name] : false;
+        if (game.modules.get('gambits-premades')?.active && game.settings.get('chris-premades', 'GPS Support'))  gambitAutomation = await game.modules.get('gambits-premades')?.medkitApi()?.automations?.[item.name];
         if (gambitAutomation || miscAutomation) headerButton.style.color = 'yellow';
     }
 }

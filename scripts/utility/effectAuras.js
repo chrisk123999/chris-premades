@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {chris} from '../helperFunctions.js';
 import {macros} from '../macros.js';
 import {socket} from '../module.js';
@@ -10,7 +11,7 @@ export let effectAuras = {
     'purge': purge,
     'registerAll': canvasReady,
     'refresh': refreshEffects
-}
+};
 function status() {
     return auras;
 }
@@ -85,8 +86,8 @@ function preActorUpdate(actor, updates, options) {
     if (!updates.system?.attributes?.hp) return;
     let oldHP = actor.system.attributes.hp.value;
     let newHP = updates.system.attributes.hp.value;
-    if (oldHP > 0 && newHP === 0) foundry.utils.setProperty(options, 'chris-premades.refreshAuras', true);
-    if (newHP > 0 && oldHP === 0) foundry.utils.setProperty(options, 'chris-premades.refreshAuras', true);
+    if (oldHP > 0 && newHP === 0) setProperty(options, 'chris-premades.refreshAuras', true);
+    if (newHP > 0 && oldHP === 0) setProperty(options, 'chris-premades.refreshAuras', true);
 }
 function actorUpdate(actor, updates, options) {
     if (options['chris-premades']?.refreshAuras) refreshEffects();
@@ -252,8 +253,8 @@ export let effectAuraHooks = {
     'createToken': createToken,
     'deleteToken': deleteToken,
     'createRemoveEffect': createRemoveEffect
-}
+};
 export let effectSockets = {
     'remoteAdd': remoteAdd,
     'remoteRemove': remoteRemove
-}
+};

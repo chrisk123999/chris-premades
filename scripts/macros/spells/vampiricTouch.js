@@ -17,7 +17,7 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args, 
             'vampiricTouchAttack': true,
             'castData': workflow.castData
         }
-    }
+    };
     featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     async function effectMacro () {
         await warpgate.revert(token.document, 'Vampiric Touch');
@@ -80,4 +80,4 @@ async function vampiricTouchAttack({speaker, actor, token, character, item, args
 export let vampiricTouch = {
     'item': vampiricTouchItem,
     'attack': vampiricTouchAttack
-}
+};

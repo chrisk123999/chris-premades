@@ -410,6 +410,7 @@ export let chris = {
     },
     'updateTargets': function _updateTargets(targets) {
         game.user.updateTokenTargets(targets);
+        game.user.broadcastActivity({'targets': game.user.targets.ids});
     },
     'increaseExhaustion': async function _increaseExhaustion(actor, originUuid) {
 
@@ -587,7 +588,7 @@ export let chris = {
         if (cr) {
             documents = documents.sort((a, b) => {
                 return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
-            })
+            });
         }
         return await new Promise(async (resolve) => {
             let buttons = {},
@@ -631,7 +632,7 @@ export let chris = {
         if (cr) {
             documents = documents.sort((a, b) => {
                 return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
-            })
+            });
         }
         return await new Promise(async (resolve) => {
             let buttons = {cancel: {'label': `Cancel`, callback: () => resolve(false)}, 'confirm': {'label': `Confirm`, callback: (html) => getDocuments(html, documents)}},

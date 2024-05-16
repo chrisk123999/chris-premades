@@ -2,7 +2,7 @@ import {chris} from '../../../../helperFunctions.js';
 import {queue} from '../../../../utility/queue.js';
 import {constants} from '../../../../constants.js';
 async function damage(targetToken, {workflow, ditem}) {
-    if (ditem.newHP >= ditem.oldHP || !ditem.wasHit) return;
+    if (ditem.appliedDamage <= 0 || !ditem.wasHit) return;
     async function check(target) {
         let originItem = chris.getItem(target.actor, 'Arcane Ward');
         if (!originItem) return;
@@ -18,6 +18,7 @@ async function damage(targetToken, {workflow, ditem}) {
             } else {
                 ditem.newTempHP = ditem.oldTempHP - keptDamage;
                 ditem.tempDamage = keptDamage;
+                keptDamage = 0;
             }
         }
         let maxHP = target.actor.system.attributes.hp.max;
@@ -125,4 +126,4 @@ export let arcaneWard = {
     'damage': damage,
     'spell': spell,
     'longRest': longRest
-}
+};
