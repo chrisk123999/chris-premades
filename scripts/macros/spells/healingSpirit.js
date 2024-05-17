@@ -67,10 +67,52 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'controllingActor': workflow.token.actor
     };
     let tokenDocument = await sourceActor.getTokenDocument();
+    if (chris.jb2aCheck() === 'patreon') {
+        setProperty(updates, 'token.alpha', 0);
+        setProperty(updates, 'token.texture.tint', '#beff5c');
+    }
     let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;
+    if (chris.jb2aCheck() === 'patreon') {
+        /* eslint-disable indent */
+        //Animations by: eskiemoh
+        new Sequence()
+            .wait(500)
+            .effect()
+                .name('Healing Spirit Opening')
+                .file('jb2a.energy_strands.in.green.01')
+                .atLocation(spawnedToken)
+                .scaleToObject(1)
+                .fadeIn(500)
+                .fadeOut(500)
+                .opacity(0.8)
+                .filter('ColorMatrix', {'hue': -15})
+                .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
+                .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
+            .effect()
+                .name('Healing Spirit Opening')
+                .file('jb2a.markers.02.yellow')
+                .atLocation(spawnedToken)
+                .scaleToObject(1)
+                .fadeIn(1000)
+                .fadeOut(500)
+                .scaleIn(0, 2500, {'ease': 'easeOutCubic'})
+                .filter('ColorMatrix', {'hue': 15, 'saturate': 1})
+                .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
+                .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
+                .zIndex(0)
+            .effect()
+                .file('jb2a.butterflies.single.yellow')
+                .atLocation(spawnedToken)
+                .scaleToObject(1.1, {'considerTokenScale': true})
+                .fadeIn(500)
+                .zIndex(1)
+            .play();
+        /* eslint-enable indent */
+        await animationEnterExit(spawnedToken, true);
+    }
     let targetEffect = chris.findEffect(spawnedToken.actor, workflow.item.name);
     if (!targetEffect) return;
     let casterEffectData = {
@@ -154,6 +196,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let template = await chris.createTemplate(templateData);
+    await warpgate.wait(100);
     await tokenAttacher.attachElementsToToken([template], spawnedToken.object, false);
 }
 async function template(template, token) {
@@ -167,7 +210,7 @@ async function template(template, token) {
         let currentTurn = game.combat.round + '-' + game.combat.turn;
         if (tokenTurn === currentTurn) return;
     }
-    let selection = await chris.dialog('Healing Spirit: Apply healing?', [['Yes', true], ['No', false]]);
+    let selection = await chris.dialog('Healing Spirit: Apply healing?', constants.yesNo);
     if (!selection) return;
     let feature = sourceToken.actor.items.getName('Healing Spirit - Heal');
     if (!feature) return;
@@ -177,6 +220,7 @@ async function template(template, token) {
         touchedTokens[token.id] = game.combat.round + '-' + game.combat.turn;
         await template.setFlag('chris-premades', 'spell.healingSpirit.touchedTokens', touchedTokens);
     }
+    
 }
 async function healing({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.system.uses.value != 0) return;
@@ -185,6 +229,87 @@ async function healing({speaker, actor, token, character, item, args, scope, wor
     let effect = chris.findEffect(workflow.actor, effectName);
     if (!effect) return;
     await chris.removeEffect(effect);
+}
+async function animationEnterExit(token, initial = false) {
+    await warpgate.wait(500);
+    await Sequencer.EffectManager.endEffects({'name': 'Healing Spirit Opening', 'object': token});
+    /* eslint-disable indent */
+    new Sequence()
+        .effect()
+            .name('Healing Spirit')
+            .file('jb2a.energy_field.02.above.green')
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(1.2, {'considerTokenScale': true})
+            .fadeOut(500)
+            .mask(token)
+            .opacity(1)
+            .duration(2000)
+            .startTime(3000)
+        .effect()
+            .file('jb2a.misty_step.02.yellow')
+            .atLocation(token)
+            .scaleToObject(1.5)
+            .startTime(1500)
+            .filter('ColorMatrix', {'hue': 15})
+        .animation()
+            .on(token)
+            .fadeIn(1500)
+            .opacity(0.4)
+        .effect()
+            .file('jb2a.butterflies.many.yellow')
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(0.9, {'considerTokenScale': true})
+            .fadeIn(500)
+            .persist()
+            .belowTokens()
+            .zIndex(1)
+            .playIf(initial)
+        .effect()
+            .file('jb2a.butterflies.few.yellow')
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(0.9, {'considerTokenScale': true})
+            .fadeIn(500)
+            .persist()
+            .zIndex(1)
+            .playIf(initial)
+        .effect()
+            .file('jb2a.extras.tmfx.outflow.circle.01')
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(1.15, {'considerTokenScale': true})
+            .persist()
+            .opacity(0.2)
+            .belowTokens()
+            .tint('#a5fe39')
+            .playIf(initial)
+        .effect()
+            .name('Healing Spirit')
+            .file('jb2a.energy_field.02.above.green')
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(1.2, {'considerTokenScale': true})
+            .fadeIn(500)
+            .repeats(3, 800, 800)
+            .mask(token)
+            .opacity(1)
+            .persist()
+        .effect()
+            .name('Healing Spirit')
+            .file(token.texture.src)
+            .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
+            .scaleToObject(1, {'considerTokenScale': true})
+            .fadeIn(500)
+            .rotate(0)
+            .persist()
+            .filter('Glow', {'color': 0xa5fe39, 'knockout': true, 'distance': 2.5, 'innerStrength': 0})
+            .loopProperty('alphaFilter', 'alpha', {'from': 0.1, 'to': 0.8, 'duration': 1250, 'pingPong': true})
+            .waitUntilFinished()
+        .effect()
+            .file('jb2a.misty_step.02.yellow')
+            .atLocation(token)
+            .scaleToObject(1.5)
+            .startTime(1500)
+            .filter('ColorMatrix', {'hue': 15})
+        .play();
+    /* eslint-enable indent */
 }
 export let healingSpirit = {
     'item': item,
