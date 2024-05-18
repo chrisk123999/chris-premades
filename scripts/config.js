@@ -415,6 +415,12 @@ export function setConfig() {
                         'default': '',
                         'file': true
                     }
+                },
+                'checkbox': {
+                    'animation': {
+                        'label': 'Play Animations:',
+                        'default': true
+                    }
                 }
             },
             'Summon Aberration': {
@@ -1389,7 +1395,7 @@ export function setConfig() {
                         'default': false
                     },
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2332,7 +2338,7 @@ export function setConfig() {
             'Fire Storm': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2340,7 +2346,7 @@ export function setConfig() {
             'Fire Shield': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2430,7 +2436,7 @@ export function setConfig() {
             'Enlarge/Reduce': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2438,7 +2444,7 @@ export function setConfig() {
             'Breath of the Dragon': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2650,7 +2656,7 @@ export function setConfig() {
             'Rime\'s Binding Ice': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2714,7 +2720,7 @@ export function setConfig() {
             'Investiture of Flame': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2722,7 +2728,7 @@ export function setConfig() {
             'Investiture of Ice': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play Animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2789,7 +2795,7 @@ export function setConfig() {
             'Channel Divinity: Control Undead': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2797,7 +2803,7 @@ export function setConfig() {
             'Channel Divinity: Dreadful Aspect': {
                 'checkbox': {
                     'animation': {
-                        'label': 'Play animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -2817,7 +2823,7 @@ export function setConfig() {
                 },
                 'checkbox': {
                     'animation': {
-                        'label': 'Play animation?',
+                        'label': 'Play Animation:',
                         'default': true
                     }
                 }
@@ -3200,13 +3206,14 @@ export function setConfig() {
             },
             'Healing Spirit': {
                 'name': 'Healing Spirit',
-                'version': '0.7.01',
+                'version': '0.10.75',
                 'actors': [
                     'CPR - Healing Spirit'
                 ],
                 'mutation': {
                     'self': 'Healing Spirit'
-                }
+                },
+                'hasAnimation': true
             },
             'Mirror Image': {
                 'name': 'Mirror Image',

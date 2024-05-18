@@ -1,3 +1,13 @@
+# 0.10.75 Release:
+## Bug Fixes:
+- Healing Spirit
+- Favored Foe
+##New Enhanced Animations:
+- Healing Spirit (Thanks Eskiemoh)
+##Update Notes:
+- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
+- Support for core concentration and damage application will be in a future release.
+  
 # 0.10.74 Release:
 ## New Content:
 - Flock of Familiars
@@ -14,8 +24,6 @@
 - Breath of the Dragon
 ## Update Notes:
 - Document dialogs can now sort by CR, this has been added for Wildshape, Summon Lesser Demons, and the Conjure spells.
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.73 Release:
 ## New Content:
