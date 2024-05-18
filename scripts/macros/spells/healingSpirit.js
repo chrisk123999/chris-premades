@@ -1,6 +1,7 @@
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let playAnimation = chris.getConfiguration(workflow.item, 'animation');
     let sourceActor = game.actors.getName('CPR - Healing Spirit');
     if (!sourceActor) return;
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Healing Spirit - Heal', false);
@@ -63,56 +64,15 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
         setProperty(updates, 'token.texture.src', tokenImg);
     }
-    let options = {
-        'controllingActor': workflow.token.actor
-    };
-    let tokenDocument = await sourceActor.getTokenDocument();
     if (chris.jb2aCheck() === 'patreon') {
         setProperty(updates, 'token.alpha', 0);
         setProperty(updates, 'token.texture.tint', '#beff5c');
     }
-    let spawnedTokens = await warpgate.spawn(tokenDocument, updates, {}, options);
+    let spawnedTokens = await chris.spawn(sourceActor, updates, {}, workflow.token, 60, 'none');
     if (!spawnedTokens) return;
     let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
     if (!spawnedToken) return;
-    if (chris.jb2aCheck() === 'patreon') {
-        /* eslint-disable indent */
-        //Animations by: eskiemoh
-        new Sequence()
-            .wait(500)
-            .effect()
-                .name('Healing Spirit Opening')
-                .file('jb2a.energy_strands.in.green.01')
-                .atLocation(spawnedToken)
-                .scaleToObject(1)
-                .fadeIn(500)
-                .fadeOut(500)
-                .opacity(0.8)
-                .filter('ColorMatrix', {'hue': -15})
-                .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
-                .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
-            .effect()
-                .name('Healing Spirit Opening')
-                .file('jb2a.markers.02.yellow')
-                .atLocation(spawnedToken)
-                .scaleToObject(1)
-                .fadeIn(1000)
-                .fadeOut(500)
-                .scaleIn(0, 2500, {'ease': 'easeOutCubic'})
-                .filter('ColorMatrix', {'hue': 15, 'saturate': 1})
-                .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
-                .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
-                .zIndex(0)
-            .effect()
-                .file('jb2a.butterflies.single.yellow')
-                .atLocation(spawnedToken)
-                .scaleToObject(1.1, {'considerTokenScale': true})
-                .fadeIn(500)
-                .zIndex(1)
-            .play();
-        /* eslint-enable indent */
-        await animationEnterExit(spawnedToken, true);
-    }
+    if (playAnimation && chris.jb2aCheck() === 'patreon') animation(spawnedToken);
     let targetEffect = chris.findEffect(spawnedToken.actor, workflow.item.name);
     if (!targetEffect) return;
     let casterEffectData = {
@@ -214,7 +174,7 @@ async function template(template, token) {
     if (!selection) return;
     let feature = sourceToken.actor.items.getName('Healing Spirit - Heal');
     if (!feature) return;
-    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid]);
+    let [config, options] = constants.syntheticItemWorkflowOptions([token.document.uuid], undefined, undefined, true);
     await MidiQOL.completeItemUse(feature, config, options);
     if (chris.inCombat()) {
         touchedTokens[token.id] = game.combat.round + '-' + game.combat.turn;
@@ -230,12 +190,41 @@ async function healing({speaker, actor, token, character, item, args, scope, wor
     if (!effect) return;
     await chris.removeEffect(effect);
 }
-async function animationEnterExit(token, initial = false) {
-    await warpgate.wait(500);
-    await Sequencer.EffectManager.endEffects({'name': 'Healing Spirit Opening', 'object': token});
+async function animation(token) {
     /* eslint-disable indent */
+    //Animations by: eskiemoh
     new Sequence()
+        .wait(500)
         .effect()
+            .name('Healing Spirit Opening')
+            .file('jb2a.energy_strands.in.green.01')
+            .atLocation(token)
+            .scaleToObject(1)
+            .fadeIn(500)
+            .fadeOut(500)
+            .opacity(0.8)
+            .filter('ColorMatrix', {'hue': -15})
+            .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
+            .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
+        .effect()
+            .name('Healing Spirit Opening')
+            .file('jb2a.markers.02.yellow')
+            .atLocation(token)
+            .scaleToObject(1)
+            .fadeIn(1000)
+            .fadeOut(500)
+            .scaleIn(0, 2500, {'ease': 'easeOutCubic'})
+            .filter('ColorMatrix', {'hue': 15, 'saturate': 1})
+            .loopProperty('sprite', 'width', {'from': 0, 'to': -0.05, 'duration': 50, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInCubic'})
+            .loopProperty('sprite', 'height', {'from': 0, 'to': -0.05, 'duration': 100, 'pingPong': true, 'gridUnits': true, 'ease': 'easeInQuint'})
+            .zIndex(0)
+        .effect()
+            .file('jb2a.butterflies.single.yellow')
+            .atLocation(token)
+            .scaleToObject(1.1, {'considerTokenScale': true})
+            .fadeIn(500)
+            .zIndex(1)
+            .effect()
             .name('Healing Spirit')
             .file('jb2a.energy_field.02.above.green')
             .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
@@ -263,7 +252,6 @@ async function animationEnterExit(token, initial = false) {
             .persist()
             .belowTokens()
             .zIndex(1)
-            .playIf(initial)
         .effect()
             .file('jb2a.butterflies.few.yellow')
             .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
@@ -271,7 +259,6 @@ async function animationEnterExit(token, initial = false) {
             .fadeIn(500)
             .persist()
             .zIndex(1)
-            .playIf(initial)
         .effect()
             .file('jb2a.extras.tmfx.outflow.circle.01')
             .attachTo(token, {'bindVisibility': false, 'bindAlpha': false, 'followRotation': true})
@@ -280,7 +267,6 @@ async function animationEnterExit(token, initial = false) {
             .opacity(0.2)
             .belowTokens()
             .tint('#a5fe39')
-            .playIf(initial)
         .effect()
             .name('Healing Spirit')
             .file('jb2a.energy_field.02.above.green')
@@ -314,5 +300,6 @@ async function animationEnterExit(token, initial = false) {
 export let healingSpirit = {
     'item': item,
     'template': template,
-    'healing': healing
+    'healing': healing,
+    'animation': animation
 };

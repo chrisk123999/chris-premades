@@ -1,3 +1,9 @@
+# 0.10.75 Release:
+## Bug Fixes:
+- Healing Spirit
+##New Enhanced Animations:
+- Healing Spirit (Thanks Eskiemoh)
+  
 # 0.10.74 Release:
 ## New Content:
 - Flock of Familiars
