@@ -25,7 +25,10 @@ export async function favoredFoe({speaker, actor, token, character, item, args, 
         return;
     }
     let uses = originItem.system.uses.value;
-    if (!uses) return;
+    if (!uses) {
+        queue.remove(workflow.item.uuid);
+        return;
+    }
     let selection = await chris.dialog(originItem.name, constants.yesNo, 'Use Favored Foe?');
     if (!selection) {
         queue.remove(workflow.item.uuid);
