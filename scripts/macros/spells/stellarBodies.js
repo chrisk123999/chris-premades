@@ -1,16 +1,3 @@
-// You create two small stars that orbit you. They twinkle pleasantly, shedding dim light in a 10-foot radius centered on you. The stars protect you. If a creature within 5 feet of you hits you with a melee attack they must make a Wisdom saving throw or take 1d8 points of radiant damage for each star orbiting you. 
- 
-// Once per round, on your turn, you may use your action to cause a star to streak towards an enemy, expending it as it explodes in a blinding flash. Make a ranged spell attack against an enemy within 120 feet, dealing 4d8 points of radiant damage on a hit. The target must then make a Constitution saving throw or be blinded until the start of your next turn.
- 
-// The spell ends when either its duration expires, you fall unconscious, or you have expended all of your stars.
-
-// At Higher Levels: When you cast this spell using a spell slot above 4th level, you may create one additional star for every two slot levels above 4th. For each additional star orbiting you, the radius of dim light centered on you increases by 5 feet.
-// Available For: Cleric, Druid, Sorcerer, Wizard
-
-// Initial feat, two stars = flag on character, handle upcasting with flag. Effect as well, twinkle and stuff.
-// On hit of you with melee they take damage. Check Sanctuary/Armor of Agathys
-// Feat item in VAE/Char sheet, action to shoot star, blinding flash and damage. Look at Blinding Smite.
-
 import {constants} from '../../constants.js';
 import {chris} from '../../helperFunctions.js';
 import {translate} from '../../translations.js';
