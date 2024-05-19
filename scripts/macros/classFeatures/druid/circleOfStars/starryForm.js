@@ -21,6 +21,7 @@ export async function starryForm({speaker, actor, token, character, item, args, 
     }
     async function effectMacro() {
         await warpgate.revert(token.document, 'Starry Form');
+        Sequencer.EffectManager.endEffects({'name': 'Starry Form', 'object': token});
     }
     async function turnStart() {
         let change = await chrisPremades.helpers.dialog('Twinkling Constellations: Change Constellation?', [['Yes', true], ['No', false]]);
@@ -164,5 +165,21 @@ export async function starryForm({speaker, actor, token, character, item, args, 
         'description': 'Starry Form'
     };
     if (existing) await warpgate.revert(workflow.token.document, 'Starry Form');
+
+    new Sequence()
+
+        .effect()
+        .attachTo(token)
+        .name('Starry Form')
+        .file('jb2a.markers.circle_of_stars.blue')
+        .scaleToObject(token.document.texture.scaleX)
+        .opacity(0.6)
+        .fadeIn(1500)
+        .fadeOut(500)
+        .zIndex(1)
+        .persist()
+
+        .waitUntilFinished(-1000)
+        .play();
     await warpgate.mutate(workflow.token.document, updates, {}, options);
 }

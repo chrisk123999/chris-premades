@@ -3319,6 +3319,13 @@ export function setConfig() {
                     'On Hit'
                 ]
             },
+            'Stellar Bodies': {
+                'name': 'Stellar Bodies',
+                'version': '0.10.20',
+                'settings': [
+                    'On Hit'
+                ]
+            },
             'Conjure Minor Elementals': {
                 'name': 'Conjure Minor Elementals',
                 'version': '0.7.01',

@@ -331,6 +331,7 @@ import {staggeringSmite} from './macros/spells/staggeringSmite.js';
 import {starryForm} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 import {stasisStrike} from './macros/feats/stasisStrike.js';
 import {steelDefender} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
+import {stellarBodies} from './macros/spells/stellarBodies.js';
 import {stenchKow} from './macros/monsterFeatures/stenchKow/stenchKow.js';
 import {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 import {stoneStrike} from './macros/feats/strikeOfTheGiants/stoneStrike.js';
@@ -395,6 +396,7 @@ import {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrath
 import {wrathfulSmite} from './macros/spells/wrathfulSmite.js';
 import {yeti} from './macros/monsterFeatures/yeti/yeti.js';
 import {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
+import {zephyrStrike} from './macros/spells/zephyrStrike.js'
 import {zombie} from './macros/monsterFeatures/zombie/zombie.js';
 import {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 import {mindFlayer} from './macros/monsterFeatures/mindFlayer/mindFlayer.js';
@@ -498,6 +500,7 @@ let onHit = {
     'regeneration': monster.troll.regeneration.onHit,
     'shadowOfMoil': shadowOfMoil.onHit,
     'soulThirst': soulMonger.soulThirst.onHit,
+    'stellarBodies': stellarBodies.onHit,
     'wardingBond': wardingBond.onHit,
     'wildSurgeRetribution': wildSurge.retribution
 };
@@ -897,6 +900,7 @@ export let macros = {
     'starryForm': starryForm,
     'stasisStrike': stasisStrike,
     'steelDefender': steelDefender,
+    'stellarBodies': stellarBodies,
     'stillnessOfMind': stillnessOfMind,
     'stoneStrike': stoneStrike,
     'stormSphere': stormSphere,
@@ -953,6 +957,7 @@ export let macros = {
     'wrathOfTheStorm': wrathOfTheStorm,
     'wrathfulSmite': wrathfulSmite,
     'zealousPresence': zealousPresence,
+    'zephyrStrike': zephyrStrike,
     'zoneOfTruth': zoneOfTruth,
     'globeOfInvulnerability': globeOfInvulnerability
 };
