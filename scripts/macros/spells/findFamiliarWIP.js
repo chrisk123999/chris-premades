@@ -1,6 +1,5 @@
 import {summons} from '../../utility/summons.js';
 import {chris} from '../../helperFunctions.js';
-import { findGreaterSteed } from './findGreaterSteed.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     let pocketDimensionEffect = await chris.findEffect(workflow.actor, "Pocket Dimension");
     if (pocketDimensionEffect) await chris.removeEffect(pocketDimensionEffect);
@@ -40,6 +39,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let attackData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Find Familiar - Attack', false);
     if (!attackData) return;
     attackData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Find Familiar - Attack');
+    delete attackData._id;
     let updates2 = {
         'embedded': {
             'Item': {
@@ -80,6 +80,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         let resistanceData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Investment of the Chain Master - Familiar Resistance', false);
         if (!resistanceData) return;
         resistanceData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Investment of the Chain Master - Familiar Resistance');
+        delete resistanceData._id;
         setProperty(updates, 'embedded.Item.Investment of the Chain Master - Familiar Resistance', resistanceData);
         setProperty(updates2, 'embedded.Item.Investment of the Chain Master - Command', commandData);
         setProperty(updates3, 'flags.effectmacro.onTurnStart.script', 'chrisPremades.macros.investmentOfTheChainMaster.turnStart(effect)');
@@ -99,7 +100,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
     await summons.spawn(sourceActor, updates, 864000, workflow.item, workflow.token, workflow.item.system?.range?.value, {'spawnAnimation': animation});
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
-    setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Find Familiar");'); //append on delete function
+    setProperty(updates3, 'flags.effectmacro.onDelete.script', 'await chrisPremades.macros.findFamiliar.onDelete(actor, effect, scene); ' + effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Find Familiar");'); //append on delete function
     await chris.updateEffect(effect, updates3);
     async function effectMacro() {
         let findFamiliarEffect = chrisPremades.helpers.getEffects(actor).find(e => e.flags['chris-premades']?.spell?.findFamiliar)
@@ -213,8 +214,7 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
             await notFound();
             return;
         }
-        let familiarTokenId = findFamiliarEffect.flags['chris-premades']?.summons?.ids?.[findFamiliarEffect.name][0]
-        console.log(pocketDimensionEffect.flags['chris-premades'].spell.findFamiliarPocketDimension.sceneId, game.scenes.current.id)
+        let familiarTokenId = findFamiliarEffect.flags['chris-premades']?.summons?.ids?.[findFamiliarEffect.name][0];
         if (pocketDimensionEffect.flags['chris-premades'].spell.findFamiliarPocketDimension.sceneId != game.scenes.current.id) {
             let scene = game.scenes.get(pocketDimensionEffect.flags['chris-premades'].spell.findFamiliarPocketDimension.sceneId);
             if (!scene) return;
@@ -259,7 +259,6 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
     }
     async function spawnFamiliar(sourceActorUuid, updates, animation, actorUpdates, effectUpdates) {
         let sourceActor = await fromUuid(sourceActorUuid);
-        delete attackData._id;
         let options = {
             'permanent': false,
             'name': 'Find Familiar',
@@ -274,16 +273,25 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
         await chris.updateEffect(effect, effectUpdates);
     }
 }
+async function onDelete(actor, effect, scene) {
+    let pocketDimensionEffect = chris.getEffects(actor).find((e) => e?.flags['chris-premades']?.spell?.findFamiliarPocketDimension);
+    if (!pocketDimensionEffect) return;
+    let familiarTokenId = effect.flags.effect.flags['chris-premades']?.summons?.ids[effect.name];
+    if (!familiarTokenId) return;
+    let familiarToken = scene.tokens.get(familiarTokenId);
+    if (!familiarToken) return;
+    let hpData = familiarToken.actor.system.attributes.hp;
+    if (!hpData) return;
+    if (hpData.value === 0) {
+        await chris.removeEffect(pocketDimensionEffect);
+    } else {
+        await chris.updateEffect(pocketDimensionEffect, {'flags.chris-premades.spell.findFamiliarPocketDimension': {'state': true, 'hpData': hpData}})
+    }
+}
 export let findFamiliar = {
     'item': item,
     'attackApply': attackApply,
     'attackEarly': attackEarly,
-    'pocketDimension': pocketDimension
+    'pocketDimension': pocketDimension,
+    'onDelete': onDelete
 };
-/*
-- main mutation for pocket dimension, keeps flag with source actor uuid and updates object, scene id
-- pocket dimension feature will dismiss or summon
-    - if dismiss, check scene id, find token, take data and store on flag, delete token, remove summon effect from actor
-    - if summon, check if above has been done, if not, do it, then summon.
-- onEffectDelete macro needs to check token hp, if 0, remove warpgate mutation for pocket dimension, if >0, do the dismiss.
-*/
