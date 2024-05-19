@@ -286,6 +286,16 @@ export async function fixSettings() {
             changedSettings.push('MQ-mergeCard');
             updateMidiSettings = true;
         }
+        if (midiSettings.allowActorUseMacro === false) {
+            midiSettings.allowActorUseMacro = true;
+            changedSettings.push('MQ-actorUseMacros');
+            updateMidiSettings = true;
+        }
+        if (midiSettings.allowUseMacro === false) {
+            midiSettings.allowUseMacro = true;
+            changedSettings.push('MQ-useMacros');
+            updateMidiSettings = true;
+        }
         if (updateMidiSettings) await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
     }
     if (changedSettings.length === 0) {
@@ -301,6 +311,8 @@ export async function fixSettings() {
     if (changedSettings.includes('MQ-autoCEEffects')) list += '- Midi-Qol: Apply Convenient Effects: Prefer Item Effect<br>';
     if (changedSettings.includes('MQ-attackPerTarget')) list += '- Midi-Qol: Roll Seperate Attack Per Target: false<br>';
     if (changedSettings.includes('MQ-mergeCard')) list += '- Midi-Qol: Merge Card: true<br>';
+    if (changedSettings.includes('MQ-actorUseMacros')) list += '- Midi-Qol: Actor On Use Macros: true<br>';
+    if (changedSettings.includes('MQ-useMacros')) list += '- Midi-Qol: Item On Use Macros: true<br>';
     ChatMessage.create({
         'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],

@@ -1,10 +1,14 @@
+# 0.10.76 Release:
+## Update Notes:
+- Added Midi-QOL Actor & Item on use macro settings to apply recommended settings feature.
+  
 # 0.10.75 Release:
 ## Bug Fixes:
 - Healing Spirit
 - Favored Foe
-##New Enhanced Animations:
+## New Enhanced Animations:
 - Healing Spirit (Thanks Eskiemoh)
-##Update Notes:
+## Update Notes:
 - Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
 - Support for core concentration and damage application will be in a future release.
   
