@@ -45,6 +45,7 @@ import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {backupCharacters, createActor} from './backup.js';
 import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
 import {effectConditions} from './utility/conditions.js';
+import {checkModules} from './help.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
@@ -131,6 +132,7 @@ Hooks.once('ready', async function() {
         Hooks.on('createChatMessage', addChatButton);
     }
     await loadTriggers();
+    //checkModules(); Want to test before releasing
     if (game.settings.get('chris-premades', 'Condition Resistance')) {
         Hooks.on('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
