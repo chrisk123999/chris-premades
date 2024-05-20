@@ -24,7 +24,7 @@ export async function animateDead({speaker, actor, token, character, item, args,
         }
     }
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? ((chris.jb2aCheck() === 'patreon' && chris.aseCheck()) ? 'shadow' : 'none');
-    await summons.spawn(sourceActors, updates, 86400, workflow.item, undefined, undefined, 10, workflow.token, animation);
+    await summons.spawn(sourceActors, updates, 86400, workflow.item, workflow.token, workflow.item.system?.range?.value, {'spawnAnimation': animation});
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Animate Dead - Command', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Animate Dead - Command');

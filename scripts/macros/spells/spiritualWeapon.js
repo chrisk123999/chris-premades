@@ -204,9 +204,7 @@ async function attackLate({speaker, actor, token, character, item, args, scope, 
     let weaponToken = await fromUuid(weaponTokenUuid);
     if (!weaponToken) return;
     let effect1 = chris.findEffect(workflow.actor, 'Spiritual Weapon Attack');
-    console.log(effect1);
     let effect2 = chris.findEffect(weaponToken.actor, 'Spiritual Weapon Attack');
-    console.log(effect2);
     if (effect1) await chris.removeEffect(effect1);
     if (effect2) await chris.removeEffect(effect2);
 }

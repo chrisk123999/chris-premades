@@ -23,7 +23,7 @@ export async function conjureFey({speaker, actor, token, character, item, args, 
     };
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'nature';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, true, undefined, 90, workflow.token, animation, undefined, true);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, workflow.token, workflow.item.system?.range?.value, {'useActorOrigin': true, 'spawnAnimation': animation, 'canTurnHostile': true});
     let effect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item);
     if (!effect) return;
     async function effectMacro () {

@@ -91,10 +91,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             setProperty(updates2, 'actor.system.attributes.movement.' + movement, 40);
             setProperty(updates2, 'embedded.Item.Investment of the Chain Master - Familiar Resistance', resistanceData);
         }
-        console.log(duplicate(updates2));
         updates.push(updates2);
     }
-    console.log(updates);
     let options = {
         'permanent': false,
         'name': 'Flock of Familiars',
@@ -108,7 +106,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     let animation = chris.getConfiguration(workflow.item, 'animation-' + creatureType) ?? defaultAnimations[creatureType];
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, undefined, undefined, 10, workflow.token, animation);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, uworkflow.token, workflow.item.system?.range?.value, {'spawnAnimation': animation});
     let effect = chris.findEffect(workflow.actor, workflow.item.name);
     setProperty(updates3, 'flags.effectmacro.onDelete.script', effect.flags.effectmacro?.onDelete?.script + '; await warpgate.revert(token.document, "Flock of Familiars");');
     await chris.updateEffect(effect, updates3);
@@ -162,7 +160,6 @@ async function attackApply({speaker, actor, token, character, item, args, scope,
     for (let i of familiarsTokens) await chris.createEffect(i.actor, effectData);
 }
 async function attackEarly({speaker, actor, token, character, item, args, scope, workflow}) {
-    console.log('Prepreambling');
     if (workflow.item.type != 'spell' || workflow.item.system.range.units != 'touch') {
         ui.notifications.info('Invalid Spell Type!');
         return false;
@@ -175,7 +172,6 @@ async function attackEarly({speaker, actor, token, character, item, args, scope,
     let familiarsTokens = new Set(familiarsIds.map(id => canvas.scene.tokens.get(id)));
     if (!familiarsTokens) return;
     for (let i of familiarsTokens) {
-        console.log(i.actor);
         let attackEffect = chris.findEffect(i.actor, 'Flock of Familiars Attack');
         if (!attackEffect) return;
         await chris.removeEffect(attackEffect);

@@ -600,7 +600,7 @@ export let chris = {
                 dialog;
             for (let i of documents) {
                 buttons[i.name] = {
-                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `> ${i.name} </p>`,
+                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `> `+ i.name + (i.system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(i.system?.details?.cr)})` : ``) + `</p>`,
                     callback: () => {
                         if (useUuids) {
                             resolve([i.uuid]);
@@ -693,7 +693,7 @@ export let chris = {
         });
     },
     'remoteDocumentDialog': async function _remoteDocumentDialog(userId, title, documents, displayTooltips = false, alphabetical = false, cr = false) {
-        if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips);
+        if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips, alphabetical, cr);
         let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid), displayTooltips, alphabetical, cr);
         if (!uuids) return false;
         return await Promise.all(uuids.map(async i => await fromUuid(i)));

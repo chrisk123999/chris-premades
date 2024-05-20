@@ -1,6 +1,5 @@
 import {chris} from '../../../helperFunctions.js';
 export async function enervatingFocus({speaker, actor, token, character, item, args, scope, workflow}) {
-    console.log(workflow);
     if (workflow.failedSaves.size != 1) return;
     let targetActor = workflow.targets.first().actor;
     let damage = -chris.totalDamageType(targetActor, workflow.damageDetail, 'necrotic');
