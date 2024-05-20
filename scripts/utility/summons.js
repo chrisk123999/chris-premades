@@ -1,6 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem, casterToken, maxRange, options = {useActorOrigin: false, groupInitiative: false, spawnAnimation: 'default', callbacks: {}}) {
+async function spawn(sourceActors, updates, duration, originItem, casterToken, maxRange, options = {useActorOrigin: false, groupInitiative: false, spawnAnimation: 'default', callbacks: {}, canTurnHostile=false}) {
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
@@ -36,6 +36,9 @@ async function spawn(sourceActors, updates, duration, originItem, casterToken, m
         effect = await chris.createEffect(originItem.actor, casterEffectData);
     }
     if (!effect) return;
+    if (originItem.requiresConcentration && !options.canTurnHostile) {
+        await MidiQOL.getConcentrationEffect(originItem.actor, originItem)?.addDependents([effect]);
+    }
     let effectData = {
         'name': 'Summoned Creature',
         'icon': originItem.img,

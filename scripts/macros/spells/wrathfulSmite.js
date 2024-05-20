@@ -27,7 +27,7 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let featureWorkflow = await MidiQOL.completeItemUse(feature, config, options);
     let targetEffect = featureWorkflow.failedSaves.first()?.actor?.appliedEffects?.find(currEffect => currEffect.origin === featureWorkflow._id);
     if (!targetEffect) {
-        let conEffect = chris.findEffect(workflow.actor, 'Concentrating');
+        let conEffect = MidiQOL.getConcentrationEffect(workflow.actor, effect.origin);
         if (conEffect) await chris.removeEffect(conEffect);
     } else {
         let updates = {
@@ -43,6 +43,10 @@ async function damage({speaker, actor, token, character, item, args, scope, work
             }
         };
         await chris.updateEffect(effect, updates);
+        let updates2 = {
+            'origin': effect.origin
+        };
+        await chris.updateEffect(targetEffect, updates2);
     }
     queue.remove(workflow.item.uuid);
 }
@@ -86,7 +90,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 export let wrathfulSmite = {
     'damage': damage,

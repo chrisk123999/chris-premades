@@ -61,7 +61,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         effectData.changes[1].value = 'necrotic';
         effectData.changes[3].value = 'charmed';
     }
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.item.type != 'weapon') return;

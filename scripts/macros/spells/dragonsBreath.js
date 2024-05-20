@@ -60,4 +60,5 @@ export async function dragonsBreath({speaker, actor, token, character, item, arg
         'description': 'Dragon Breath'
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([targetToken.actor.effects.getName(featureData.name)]);
 }

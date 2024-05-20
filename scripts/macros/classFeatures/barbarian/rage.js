@@ -3,8 +3,8 @@ import {chris} from '../../../helperFunctions.js';
 import {enlargeReduce} from '../../spells/enlargeReduce.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor || !workflow.token) return;
-    let effect = chris.findEffect(workflow.actor, 'Concentrating');
-    if (effect) chris.removeEffect(effect);
+    let concentrationEffects = Array.from(workflow.actor.concentration.effects);
+    await Promise.all(concentrationEffects.map(async effect => await chris.removeEffect(effect)));
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Rage - End', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Rage - End');

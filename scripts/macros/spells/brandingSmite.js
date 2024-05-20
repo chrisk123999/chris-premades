@@ -100,7 +100,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let effect = await chris.createEffect(workflow.actor, effectData);
+    let effect = await chris.createEffect(workflow.actor, effectData, workflow.item);
     let updates = {
         'flags.chris-premades.spell.brandingSmite.targetEffectUuid': effect.uuid
     };
