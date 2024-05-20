@@ -1,9 +1,12 @@
-# 0.10.76 Release:
+# 0.11.0 Release:
 ## Update Notes:
+- Do not update to this version unless you have Midi-Qol version 11.4.29 or higher.
+- Added support for core concentration. (Thanks Michael)
 - Added pocket dimension feature to find familiar. You can use the new "Pocket Dimension" feature on the actor to dismiss or summon the familair. This works between scenes and will delete left behind familiar tokens. Deleted familiar tokens will also be tracked. Health will be retained.
 - Added module and settings check on client load in.
 - Added Midi-QOL Actor & Item on use macro settings to apply recommended settings feature.
 - Changed format of variables passed in chrisPremades.summons.spawn, this should only matter if you use this function for custom summons.
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions yet.
   
 # 0.10.75 Release:
 ## Bug Fixes:
@@ -11,9 +14,6 @@
 - Favored Foe
 ## New Enhanced Animations:
 - Healing Spirit (Thanks Eskiemoh)
-## Update Notes:
-- Requires D&D system version 3.1.2 or greater. Core concentration and damage application is not supported yet.
-- Support for core concentration and damage application will be in a future release.
   
 # 0.10.74 Release:
 ## New Content:
