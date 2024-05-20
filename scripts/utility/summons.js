@@ -1,6 +1,6 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem, casterToken, maxRange, options = {useActorOrigin: false, groupInitiative: false, spawnAnimation: 'default', callbacks: {}, canTurnHostile=false}) {
+async function spawn(sourceActors, updates, duration, originItem, casterToken, maxRange, options = {useActorOrigin: false, groupInitiative: false, spawnAnimation: 'default', callbacks: {}, canTurnHostile: false}) {
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
