@@ -344,15 +344,15 @@ export function checkModules() {
     }
     let requiredModules = new Set();
     game.modules.get('chris-premades').relationships.requires.forEach(value => {
-        requiredModules.add({'id': value.id, 'title': value.title});
+        requiredModules.add({'id': value.id, 'title': game.modules.get(value.id).title});
         let module = game.modules.get(value.id);
         if (module) game.modules.get(value.id).relationships.requires.forEach(value => {
-            requiredModules.add({'id': value.id, 'title': value.title});
+            requiredModules.add({'id': value.id, 'title': game.modules.get(value.id).title});
         });
     });
     for (let mod of requiredModules) {
         if (!game.modules.get(mod.id)?.active) {
-            ui.notifications.error('Chris\'s Premades | REQUIRED MODULE ' + mod.title + ' is disabled, please enable.', {permanent: true});
+            ui.notifications.error('Chris\'s Premades | <b>REQUIRED MODULE</b> "<u>' + mod.title + '</u>" is disabled, please enable.', {permanent: true});
         }
     }
 }

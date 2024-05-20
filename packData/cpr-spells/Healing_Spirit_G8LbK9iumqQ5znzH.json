@@ -130,14 +130,13 @@
     "chris-premades": {
       "info": {
         "name": "Healing Spirit",
-        "version": "0.10.75",
+        "version": "0.7.01",
         "mutation": {
           "self": "Healing Spirit"
         },
         "actors": [
           "CPR - Healing Spirit"
-        ],
-        "hasAnimation": true
+        ]
       }
     },
     "dnd5e": {}
@@ -149,8 +148,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1676798650245,
-    "modifiedTime": 1716061159316,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+    "modifiedTime": 1715676759535,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": null,
   "sort": 4000000,

@@ -23,7 +23,6 @@ async function onUse({speaker, actor, token, character, item, args, scope, workf
     if (id === '' || workflow.item.id != id) return;
     let options = Object.values(workflow.actor.classes).filter(i => i.system.levels != i.system.hitDiceUsed).map(j => ([j.name + ' (' + j.system.hitDice + ') [' + (j.system.levels - j.system.hitDiceUsed) + ' / ' + j.system.levels + ']', j.system.hitDice]));
     options.push(['No', false]);
-    console.log(options);
     if (options.length === 1) return;
     let queueSetup = await queue.setup(workflow.item.uuid, 'aberrantDragonmark', 450);
     if (!queueSetup) return;
