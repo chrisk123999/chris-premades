@@ -37,7 +37,7 @@ export let chris = {
     'findEffect': function _findEffect(actor, name) {
         return chris.getEffects(actor).find(i => i.name === name);
     },
-    'createEffect': async function _createEffect(actor, effectData, concentrationItem=undefined) {
+    'createEffect': async function _createEffect(actor, effectData, concentrationItem) {
         if (effectData.label) {
             console.warn('The effect "' + effectData.label + '" has effect data with a label instead of a name!');
             effectData.name = effectData.label;
