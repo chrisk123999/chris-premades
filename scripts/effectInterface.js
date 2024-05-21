@@ -31,6 +31,11 @@ class CPREffects extends WorldCollection {
     static _sortStandard(a, b) {
         return a.name.localeCompare(b.name);
     }
+    set(document) {
+        console.log(document);
+        super.set(document.id, document);
+        this._source.push(document.toObject());
+    }
 }
 class CPREffectInterface extends DocumentDirectory {
     static documentName = 'Effect';
@@ -50,7 +55,11 @@ class CPREffectInterface extends DocumentDirectory {
                     console.log(documentId);
                     let document = effectItem.effects.get(documentId);
                     console.log(document);
-                    if (document) await document.delete();
+                    if (document) {
+                        this.collection.delete(documentId);
+                        await document.delete();
+                        this.collection.render(true);
+                    }
                 },
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-trash"></i>',
@@ -123,13 +132,21 @@ class CPREffectInterface extends DocumentDirectory {
         let effectData = {
             'name': 'New Effect',
             'icon': 'icons/svg/aura.svg',
-            'transfer': false
+            'transfer': false,
+            'flags': {
+                'chris-premades': {
+                    'effectInterface': {
+                        'sort': this.collection.size + 1
+                    }
+                }
+            }
         };
         // eslint-disable-next-line no-undef
         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
         await createdEffect.sheet.render(true);
         console.log(effectCollection);
-        //Make this refresh or update the sidebar somehow?
+        this.collection.set(createdEffect);
+        this.render(true);
     }
     _onRightClickTab(event) {
         event.preventDefault();
