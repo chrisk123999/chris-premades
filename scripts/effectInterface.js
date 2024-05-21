@@ -22,7 +22,10 @@ async function startup() {
         li.remove();
     });
 }
-
+// eslint-disable-next-line no-undef
+class CPREffects extends WorldCollection {
+    static documentName = 'ActiveEffect';
+}
 class CPREffectInterface extends DocumentDirectory {
     static documentName = 'Effect';
     activateListeners(html) {
@@ -44,10 +47,15 @@ class CPREffectInterface extends DocumentDirectory {
         console.log(document);
     }
     static get collection() {
+        console.log(effectItem);
         let effects = effectItem?.effects?.contents ?? [];
-        return effects;
+        console.log(effects);
+        return new CPREffects(effects);
     }
     get tabName() {
+        return 'effects';
+    }
+    get id() {
         return 'effects';
     }
     initialize() {
@@ -55,7 +63,9 @@ class CPREffectInterface extends DocumentDirectory {
         this.documents = this.collection;
         //this.collection.initializeTree();
     }
-
+    get canCreateEntry() {
+        return game.user.isGM;
+    }
 }
 function effectSidebar(app, html, data) {
     let width = Math.floor(parseInt(getComputedStyle(html[0]).getPropertyValue('--sidebar-width')) / (document.querySelector('#sidebar-tabs').childElementCount + 1));
