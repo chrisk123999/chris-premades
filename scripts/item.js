@@ -235,9 +235,6 @@ export async function updateItem(itemDocument) {
     });
     let originalItem = duplicate(itemDocument.toObject());
 
-    if (!game.settings.get('chris-premades', 'Keep Original Name')) {
-        originalItem.name = compendiumItem.name;
-    }
     originalItem.effects = compendiumItem.effects;
     originalItem.system = compendiumItem.system;
     originalItem.system.description = itemDocument.system.description;

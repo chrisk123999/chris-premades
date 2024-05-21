@@ -1981,13 +1981,4 @@ export function registerSettings() {
         'type': chrisSettingsTroubleshoot,
         'restricted': true
     });
-    game.settings.register(moduleName, 'Keep Original Name', {
-        'name': 'Keep Original Name',
-        'hint': 'With setting item name will stay same after update / replace.',
-        'scope': 'world',
-        'config': false,
-        'type': Boolean,
-        'default': false,
-    });
-    addMenuSetting('Keep Original Name', 'General');
 }
