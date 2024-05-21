@@ -1081,7 +1081,7 @@ export function registerSettings() {
                 Hooks.on('midi-qol.preTargetDamageApplication', macros.soothePain);
             } else {
                 Hooks.off('midi-qol.preTargetDamageApplication', macros.soothePain);
-            } 
+            }
         }
     });
     addMenuSetting('Righteous Heritor', 'Feats');
