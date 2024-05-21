@@ -221,10 +221,12 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
             let familiarToken = scene.tokens.get(familiarTokenId);
             if (!familiarToken) await notFound();
             let hpData = familiarToken.actor.system.attributes.hp;
+            if (!hpData) return;
             let pocketDimensionData = pocketDimensionEffect.flags['chris-premades']?.spell?.findFamiliarPocketDimension;
+            if (!pocketDimensionData) return;
             let sourceActorUuid = pocketDimensionData.sourceActorUuid;
-            let updates = pocketDimensionData.updates;
-            updates.actor.system.attributes.hp = hpData;
+            let updates = duplicate(pocketDimensionData.updates);
+            setProperty(updates, 'actor.system.attributes.hp', hpData);
             let animation = pocketDimensionData.animation;
             let effectUpdates = pocketDimensionData.effectUpdates;
             let actorUpdates = pocketDimensionData.actorUpdates;
@@ -244,9 +246,10 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
         }
     } else {
         let pocketDimensionData = pocketDimensionEffect.flags['chris-premades']?.spell?.findFamiliarPocketDimension;
+        if (!pocketDimensionData) return;
         let sourceActorUuid = pocketDimensionData.sourceActorUuid;
-        let updates = pocketDimensionData.updates;
-        updates.actor.system.attributes.hp = pocketDimensionData.hpData;
+        let updates = duplicate(pocketDimensionData.updates);
+        setProperty(updates, 'actor.system.attributes.hp', pocketDimensionData.hpData);
         let animation = pocketDimensionData.animation;
         let actorUpdates = pocketDimensionData.actorUpdates;
         let effectUpdates = pocketDimensionData.effectUpdates;
