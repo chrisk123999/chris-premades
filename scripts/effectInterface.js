@@ -1,3 +1,4 @@
+import {chris} from './helperFunctions.js';
 let effectItem;
 let effectCollection;
 async function startup() {
@@ -32,7 +33,6 @@ class CPREffects extends WorldCollection {
         return a.name.localeCompare(b.name);
     }
     set(document) {
-        console.log(document);
         super.set(document.id, document);
         this._source.push(document.toObject());
     }
@@ -50,11 +50,18 @@ class CPREffectInterface extends DocumentDirectory {
         let options = [
             {
                 'callback': async (header) => {
-                    console.log(header);
                     let documentId = header[0].dataset.documentId;
-                    console.log(documentId);
                     let document = effectItem.effects.get(documentId);
-                    console.log(document);
+                    if (document) await document.sheet.render(true);
+                },
+                'condition': () => game.user.isGM,
+                'icon': '<i class="fas fa-pencil"></i>',
+                'name': 'Edit'
+            },
+            {
+                'callback': async (header) => {
+                    let documentId = header[0].dataset.documentId;
+                    let document = effectItem.effects.get(documentId);
                     if (document) {
                         this.collection.delete(documentId);
                         await document.delete();
@@ -83,6 +90,22 @@ class CPREffectInterface extends DocumentDirectory {
         let document = this.collection.get(documentId);
         console.log(document);
     }
+    async _onClickEntryName(event) {
+        event.preventDefault();
+        let element = event.currentTarget;
+        let documentId = element.parentElement.dataset.documentId;
+        let document = this.collection.get(documentId);
+        let selectedTokens = canvas.tokens.controlled;
+        if (!selectedTokens.length) {
+            ui.notifications.info('Please select a token first!');
+            return;
+        }
+        let effectData = document.toObject();
+        delete effectData.id;
+        selectedTokens.forEach(i => {
+            if (i.actor) chris.createEffect(i.actor, effectData);
+        });
+    }
     static get collection() {
         let effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
         if (effectItem) {
@@ -91,7 +114,6 @@ class CPREffectInterface extends DocumentDirectory {
         } else {
             effectCollection = new CPREffects([]);
         }
-        console.log(effectCollection);
         return effectCollection;
     }
     get tabName() {
@@ -112,23 +134,8 @@ class CPREffectInterface extends DocumentDirectory {
     get canCreateFolder() {
         return false;
     }
-    async _onClickEntryName(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-        let documentId = element.parentElement.dataset.documentId;
-        let document = effectItem.effects.get(documentId);
-        if (document) document.sheet.render(true);
-    }
     async _onCreateEntry(event) {
         event.preventDefault();
-        //event.stopPropagation();
-        /*
-        const button = event.currentTarget;
-        const li = button.closest('.directory-item');
-        const data = {folder: li?.dataset?.folderId};
-
-        const cls = 'ActiveEffect';
-        */
         let effectData = {
             'name': 'New Effect',
             'icon': 'icons/svg/aura.svg',
@@ -151,6 +158,12 @@ class CPREffectInterface extends DocumentDirectory {
     _onRightClickTab(event) {
         event.preventDefault();
         return;
+    }
+    _canDragStart(selector) {
+        return false;
+    }
+    _canDragStop(selector) {
+        return false;
     }
 }
 function effectSidebar(app, html, data) {
