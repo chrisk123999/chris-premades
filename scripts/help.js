@@ -326,7 +326,7 @@ export function checkModules() {
         ui.notifications.error('Chris\'s Premades | You do not have a JB2A module active, this module requires either the free or patreon version', {permanent: true});
     }
     if (game.modules.get('dae')?.active && !game.settings.get('dae', 'showInline')) {
-        ui.notifications.warn('Chris\'s Premades | Dynamic Active Effects setting "Show Inline Rolls" is off, it is recommeded to enable it.', {permanent: true});
+        ui.notifications.warn('Chris\'s Premades | Dynamic Active Effects setting "Display results of inline rolls" is off, it is recommeded to enable it.', {permanent: true});
     }
     if (game.modules.get('dfreds-convenient-effects')?.active && (game.settings.get('dfreds-convenient-effects', 'modifyStatusEffects') === 'add')) {
         ui.notifications.warn('Chris\'s Premades | Dfred\'s Convenient Effects setting "Modify Status Effects" is set to "Add", it is recommeded to set to "Replace".', {permanent: true});
