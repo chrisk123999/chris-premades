@@ -25,6 +25,12 @@ async function startup() {
         let li = html.find('li[data-document-id="' + effectItem.id + '"]');
         //li.remove();
     });
+    Hooks.on('updateActiveEffect', reRender);
+}
+function reRender(effect) {
+    if (effect.parent?.uuid != effectItem?.uuid) return;
+    ui.sidebar.tabs.effects.render(true);
+    //ui.sidebar.render(true);
 }
 // eslint-disable-next-line no-undef
 class CPREffects extends WorldCollection {
@@ -41,9 +47,14 @@ class CPREffectInterface extends DocumentDirectory {
     static documentName = 'Effect';
     activateListeners(html) {
         super.activateListeners(html);
-        html[0].querySelectorAll('.directory-list .thumbnail, .directory-list .profile').forEach(el => {
-            el.classList.add('sidebar-effects-execute');
-            el.addEventListener('click', this._onClickThumbnail.bind(this));
+        let list = html[0].querySelectorAll('.directory-item');
+        effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+        if (!effectItem) return;
+        list.forEach(i => {
+            let effect = effectItem.effects.get(i.dataset.documentId);
+            // eslint-disable-next-line no-undef
+            let img = jQuery.parseHTML('<img class="thumbnail" title="' + effect.name + '" src="' + effect.icon + '">');
+            i.prepend(img[0]);
         });
     }
     _getEntryContextOptions() {
@@ -73,8 +84,19 @@ class CPREffectInterface extends DocumentDirectory {
                 'name': 'SIDEBAR.Delete'
             },
             {
-                'callback': (header) => {
-                    console.log(header);
+                'callback': async (header) => {
+                    let documentId = header[0].dataset.documentId;
+                    let document = effectItem.effects.get(documentId);
+                    if (document) {
+                        let effectData = document.toObject();
+                        delete effectData._id;
+                        effectData.name += ' (Copy)';
+                        setProperty(effectData, 'flags.chris-premades.effectInterface.sort', this.collection.size + 1);
+                        // eslint-disable-next-line no-undef
+                        let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+                        this.collection.set(createdEffect);
+                        this.render(true);
+                    }
                 },
                 'condition': () => game.user.isGM,
                 'icon': '<i class="far fa-copy"></i>',
@@ -82,13 +104,6 @@ class CPREffectInterface extends DocumentDirectory {
             },
         ];
         return options;
-    }
-    _onClickThumbnail(event) {
-        event.preventDefault();
-        let element = event.currentTarget;
-        let documentId = element.parentElement.dataset.documentId ?? element.parentElement.dataset.entityId;
-        let document = this.collection.get(documentId);
-        console.log(document);
     }
     async _onClickEntryName(event) {
         event.preventDefault();
@@ -125,7 +140,6 @@ class CPREffectInterface extends DocumentDirectory {
     initialize() {
         this.folders = null;
         this.documents = this.collection;
-        console.log(this.collection);
         this.collection.initializeTree();
     }
     get canCreateEntry() {
@@ -151,7 +165,6 @@ class CPREffectInterface extends DocumentDirectory {
         // eslint-disable-next-line no-undef
         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
         await createdEffect.sheet.render(true);
-        console.log(effectCollection);
         this.collection.set(createdEffect);
         this.render(true);
     }
@@ -160,10 +173,36 @@ class CPREffectInterface extends DocumentDirectory {
         return;
     }
     _canDragStart(selector) {
-        return false;
+        return true;
     }
     _canDragStop(selector) {
         return false;
+    }
+    async _handleDroppedEntry(target, data) {
+        if (!effectItem) return;
+        let originEntity = await fromUuid(data.uuid);
+        if (!originEntity) return;
+        // eslint-disable-next-line no-undef
+        if (!(originEntity instanceof ActiveEffect)) return;
+        let effectData = originEntity.toObject();
+        delete effectData._id;
+        // eslint-disable-next-line no-undef
+        let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+        this.collection.set(createdEffect);
+        this.render(true);
+    }
+    _onDragStart(event) {
+        const li = event.currentTarget;
+        console.log(event);
+        console.log(li);
+        if ( event.target.classList.contains('content-link') ) return;
+    
+        let dragData = effect.toDragData(); //Finish this
+        console.log(dragData);
+        if ( !dragData ) return;
+    
+        // Set data transfer
+        event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
 }
 function effectSidebar(app, html, data) {
