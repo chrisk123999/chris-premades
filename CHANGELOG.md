@@ -1,3 +1,7 @@
+# 0.11.1 Release:
+## Bug Fixes:
+- Find Familiar
+  
 # 0.11.0 Release:
 ## Update Notes:
 - Do not update to this version unless you have Midi-Qol version 11.4.29 or higher.
