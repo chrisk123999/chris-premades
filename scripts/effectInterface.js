@@ -1,3 +1,4 @@
+import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 let effectItem;
 let effectCollection;
@@ -19,20 +20,17 @@ async function startup() {
     let effects = effectItem.effects.contents;
     effectCollection = new CPREffects(effects);
     Hooks.on('changeSidebarTab', (directory) => {
-        // eslint-disable-next-line no-undef
         if (!(directory instanceof ItemDirectory)) return;
         let html = directory.element;
         let li = html.find('li[data-document-id="' + effectItem.id + '"]');
-        //li.remove();
+        li.remove();
     });
     Hooks.on('updateActiveEffect', reRender);
 }
 function reRender(effect) {
     if (effect.parent?.uuid != effectItem?.uuid) return;
     ui.sidebar.tabs.effects.render(true);
-    //ui.sidebar.render(true);
 }
-// eslint-disable-next-line no-undef
 class CPREffects extends WorldCollection {
     static documentName = 'ActiveEffect';
     static _sortStandard(a, b) {
@@ -52,7 +50,6 @@ class CPREffectInterface extends DocumentDirectory {
         if (!effectItem) return;
         list.forEach(i => {
             let effect = effectItem.effects.get(i.dataset.documentId);
-            // eslint-disable-next-line no-undef
             let img = jQuery.parseHTML('<img class="thumbnail" title="' + effect.name + '" src="' + effect.icon + '">');
             i.prepend(img[0]);
         });
@@ -68,6 +65,67 @@ class CPREffectInterface extends DocumentDirectory {
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-pencil"></i>',
                 'name': 'Edit'
+            },
+            {
+                'callback': async (header) => {
+                    let documentId = header[0].dataset.documentId;
+                    let document = effectItem.effects.get(documentId);
+                    if (!document) return;
+                    let effectData = document.toObject();
+                    delete effectData._id;
+                    delete effectData.origin;
+                    let tempEffect = new CONFIG.ActiveEffect.documentClass(effectData);
+                    if (tempEffect) return tempEffect.exportToJSON();
+                },
+                'condition': () => game.user.isGM,
+                'icon': '<i class="fas fa-file-export"></i>',
+                'name': 'SIDEBAR.Export'
+            },
+            {
+                'callback': async (header) => {
+                    let documentId = header[0].dataset.documentId;
+                    let document = effectItem.effects.get(documentId);
+                    if (!document) return;
+                    async function modifiedImportFromJSON(json) {
+                        let effectData = JSON.parse(json);
+                        await document.update(effectData);
+                        ui.sidebar.tabs.effects.render(true);
+                    }
+                    async function importDialog() {
+                        new Dialog({
+                            title: 'Import Data: ' + document.name,
+                            // eslint-disable-next-line no-undef
+                            content: await renderTemplate('templates/apps/import-data.html', {
+                                hint1: game.i18n.format('DOCUMENT.ImportDataHint1', {'document': 'ActiveEffect'}),
+                                hint2: game.i18n.format('DOCUMENT.ImportDataHint2', {'name': document.name})
+                            }),
+                            buttons: {
+                                import: {
+                                    icon: '<i class="fas fa-file-import"></i>',
+                                    label: 'Import',
+                                    callback: html => {
+                                        const form = html.find('form')[0];
+                                        if (!form.data.files.length ) return ui.notifications.error('You did not upload a data file!');
+                                        // eslint-disable-next-line no-undef
+                                        readTextFromFile(form.data.files[0]).then(json => modifiedImportFromJSON(json));
+                                    }
+                                },
+                                no: {
+                                    icon: '<i class="fas fa-times"></i>',
+                                    label: 'Cancel'
+                                }
+                            },
+                            default: 'import'
+                        }, {
+                            width: 400
+                        }).render(true);
+                    }
+                    importDialog();
+                },
+                'condition': () => game.user.isGM,
+                'icon': '<i class="fas fa-file-import"></i>',
+                'name': 'SIDEBAR.Import'
+
             },
             {
                 'callback': async (header) => {
@@ -92,7 +150,6 @@ class CPREffectInterface extends DocumentDirectory {
                         delete effectData._id;
                         effectData.name += ' (Copy)';
                         setProperty(effectData, 'flags.chris-premades.effectInterface.sort', this.collection.size + 1);
-                        // eslint-disable-next-line no-undef
                         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
                         this.collection.set(createdEffect);
                         this.render(true);
@@ -162,7 +219,6 @@ class CPREffectInterface extends DocumentDirectory {
                 }
             }
         };
-        // eslint-disable-next-line no-undef
         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
         await createdEffect.sheet.render(true);
         this.collection.set(createdEffect);
@@ -179,31 +235,88 @@ class CPREffectInterface extends DocumentDirectory {
         return false;
     }
     async _handleDroppedEntry(target, data) {
+        console.log(data);
         if (!effectItem) return;
-        let originEntity = await fromUuid(data.uuid);
-        if (!originEntity) return;
-        // eslint-disable-next-line no-undef
-        if (!(originEntity instanceof ActiveEffect)) return;
-        let effectData = originEntity.toObject();
+        if (data.type != 'ActiveEffect') return;
+        let effectData;
+        if (data.uuid) {
+            let originEntity = await fromUuid(data.uuid);
+            if (!originEntity) return;
+            if (originEntity.parent?.uuid === effectItem.uuid) return;
+            if (!(originEntity instanceof ActiveEffect)) return;
+            effectData = originEntity.toObject();
+        } else if (data.data) {
+            effectData = data.data;
+        }
         delete effectData._id;
-        // eslint-disable-next-line no-undef
-        let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
-        this.collection.set(createdEffect);
-        this.render(true);
+        try {
+            let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
+            this.collection.set(createdEffect);
+            this.render(true);
+        } catch (error) {
+            console.error(error);
+        }
     }
     _onDragStart(event) {
-        const li = event.currentTarget;
-        console.log(event);
-        console.log(li);
-        if ( event.target.classList.contains('content-link') ) return;
-    
-        let dragData = effect.toDragData(); //Finish this
+        let li = event.currentTarget;
+        if (event.target.classList.contains('content-link')) return;
+        let effectId = li.dataset.documentId;
+        let effect = effectItem.effects.get(effectId);
+        if (!effect) return;
+        let dragData = effect.toDragData();
         console.log(dragData);
-        if ( !dragData ) return;
-    
-        // Set data transfer
+        if (!dragData) return;
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
+    /*
+    async _onCreateFolder(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (!effectItem) return;
+        let button = event.currentTarget;
+        console.log(button);
+        let li = button.closest('.directory-item');
+        console.log(li);
+        let folderId = li?.dataset?.folderId;
+        let inputs = [
+            {
+                'label': 'Name:',
+                'type': 'text',
+                'options': 'New Folder'
+            }
+        ];
+        function dialogRender(html) {
+            let ths = html[0].getElementsByTagName('th');
+            for (let t of ths) {
+                t.style.width = 'auto';
+                t.style.textAlign = 'left';
+            }
+            let tds = html[0].getElementsByTagName('td');
+            for (let t of tds) {
+                t.style.width = '200px';
+                t.style.textAlign = 'right';
+                t.style.paddingRight = '5px';
+            }
+        }
+        let config = {
+            'title': 'New Folder',
+            'render': dialogRender
+        };
+        let selection = await warpgate.menu(
+            {
+                'inputs': inputs,
+                'buttons': constants.okCancel
+            },
+            config
+        );
+        if (!selection.buttons) return;
+        let name = selection.inputs[0];
+        console.log(name);
+        if (name === '' || !name) return;
+        await effectItem.setFlag('chris-premades', 'effectInterface.folders' + randomID(), {'name': name, 'effects': []});
+        Finish this.
+    }
+    */
 }
 function effectSidebar(app, html, data) {
     let width = Math.floor(parseInt(getComputedStyle(html[0]).getPropertyValue('--sidebar-width')) / (document.querySelector('#sidebar-tabs').childElementCount + 1));
@@ -214,7 +327,7 @@ function effectSidebar(app, html, data) {
     tab.dataset.tooltip = 'DOCUMENT.ActiveEffect';
     if (!('tooltip' in game)) tab.title = 'Effects';
     let icon = document.createElement('i');
-    icon.setAttribute('class', 'fas fa-hand-sparkles');
+    icon.setAttribute('class', 'fas fa-bolt');
     tab.append(icon);
     if (!document.querySelector('#sidebar-tabs > [data-tab="effects"]')) document.querySelector('#sidebar-tabs > [data-tab="compendium"]').before(tab);
 }
