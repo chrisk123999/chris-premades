@@ -1365,20 +1365,20 @@ export let chris = {
                 buttons.push([
                     key === 'pact' ? `Pact Slot (Level ${value.level})` : value.level + value.level === 1 ? 'st' : value.level === 2 ? 'nd' : value.level === 3 ? 'rd' : 'th' + ' Level Slot' + '(' + value.value + ')',
                     key
-                ])
+                ]);
             }
             let result = await chris.dialog(dialogTitle, buttons, dialogMessage);
             if (!result) return false;
             if (!options?.dialogOnly) {
                 if (!options?.consumeSlotOnly) {
-                    workflow.options.configureDialog = false
+                    workflow.options.configureDialog = false;
                     workflow.config = {
                         'consumeResource': false,
                         'consumeRecharge': false,
                         'consumeQuantity': false,
                         'consumeUsage': false,
                         'useSpellWhenEmpty': result
-                    }
+                    };
                 }
                 await workflow.actor.update('system.spells.' + result, workflow.actor.system.spells[result].value - 1);
             }

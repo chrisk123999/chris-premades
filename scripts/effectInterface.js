@@ -1,4 +1,3 @@
-import {constants} from './constants.js';
 import {chris} from './helperFunctions.js';
 let effectItem;
 let effectCollection;
@@ -39,7 +38,9 @@ function reRender(effect) {
 class CPREffects extends WorldCollection {
     static documentName = 'ActiveEffect';
     static _sortStandard(a, b) {
-        return a.name.localeCompare(b.name);
+        let aNumber = a.flags['chris-premades']?.effectInterface?.sort ?? Number.MAX_SAFE_INTEGER;
+        let bNumber = a.flags['chris-premades']?.effectInterface?.sort ?? Number.MAX_SAFE_INTEGER;
+        return aNumber - bNumber;
     }
     set(document) {
         super.set(document.id, document);
@@ -181,8 +182,15 @@ class CPREffectInterface extends DocumentDirectory {
         let effectData = document.toObject();
         delete effectData.id;
         setProperty(effectData, 'duration.startTime', game.time.worldTime);
+        setProperty(effectData, 'flags.chris-premades.effectInterface.id', document.id);
         selectedTokens.forEach(i => {
-            if (i.actor) chris.createEffect(i.actor, effectData);
+            if (!i.actor) return;
+            let effect = chris.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
+            if (effect) {
+                chris.removeEffect(effect);
+            } else {
+                chris.createEffect(i.actor, effectData);
+            }
         });
     }
     static get collection() {
