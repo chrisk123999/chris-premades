@@ -180,6 +180,7 @@ class CPREffectInterface extends DocumentDirectory {
         }
         let effectData = document.toObject();
         delete effectData.id;
+        setProperty(effectData, 'duration.startTime', game.time.worldTime);
         selectedTokens.forEach(i => {
             if (i.actor) chris.createEffect(i.actor, effectData);
         });
