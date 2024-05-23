@@ -1,6 +1,10 @@
 # 0.11.1 Release:
 ## Bug Fixes:
 - Find Familiar
+## New Features:
+- Added experimental active effect interface feature (Located in the User Interface settings).
+## Update Notes:
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
   
 # 0.11.0 Release:
 ## Update Notes:
@@ -10,7 +14,6 @@
 - Added module and settings check on client load in.
 - Added Midi-QOL Actor & Item on use macro settings to apply recommended settings feature.
 - Changed format of variables passed in chrisPremades.summons.spawn, this should only matter if you use this function for custom summons.
-- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions yet.
   
 # 0.10.75 Release:
 ## Bug Fixes:

@@ -9,6 +9,11 @@ async function startup() {
             'name': 'CPR Effect Interface Storage',
             'img': 'icons/magic/time/arrows-circling-green.webp',
             'type': 'feat',
+            'system': {
+                'description': {
+                    'value': 'This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!'
+                }
+            },
             'flags': {
                 'chris-premades': {
                     'effectInterface': true
@@ -88,6 +93,7 @@ class CPREffectInterface extends DocumentDirectory {
                     if (!document) return;
                     async function modifiedImportFromJSON(json) {
                         let effectData = JSON.parse(json);
+                        setProperty(effectData, 'flags.chris-premades.effectInterface.sort', document.flags['chris-premades']?.effectInterface?.sort);
                         await document.update(effectData);
                         ui.sidebar.tabs.effects.render(true);
                     }
@@ -235,7 +241,6 @@ class CPREffectInterface extends DocumentDirectory {
         return false;
     }
     async _handleDroppedEntry(target, data) {
-        console.log(data);
         if (!effectItem) return;
         if (data.type != 'ActiveEffect') return;
         let effectData;
@@ -264,59 +269,9 @@ class CPREffectInterface extends DocumentDirectory {
         let effect = effectItem.effects.get(effectId);
         if (!effect) return;
         let dragData = effect.toDragData();
-        console.log(dragData);
         if (!dragData) return;
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
-    /*
-    async _onCreateFolder(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (!effectItem) return;
-        let button = event.currentTarget;
-        console.log(button);
-        let li = button.closest('.directory-item');
-        console.log(li);
-        let folderId = li?.dataset?.folderId;
-        let inputs = [
-            {
-                'label': 'Name:',
-                'type': 'text',
-                'options': 'New Folder'
-            }
-        ];
-        function dialogRender(html) {
-            let ths = html[0].getElementsByTagName('th');
-            for (let t of ths) {
-                t.style.width = 'auto';
-                t.style.textAlign = 'left';
-            }
-            let tds = html[0].getElementsByTagName('td');
-            for (let t of tds) {
-                t.style.width = '200px';
-                t.style.textAlign = 'right';
-                t.style.paddingRight = '5px';
-            }
-        }
-        let config = {
-            'title': 'New Folder',
-            'render': dialogRender
-        };
-        let selection = await warpgate.menu(
-            {
-                'inputs': inputs,
-                'buttons': constants.okCancel
-            },
-            config
-        );
-        if (!selection.buttons) return;
-        let name = selection.inputs[0];
-        console.log(name);
-        if (name === '' || !name) return;
-        await effectItem.setFlag('chris-premades', 'effectInterface.folders' + randomID(), {'name': name, 'effects': []});
-        Finish this.
-    }
-    */
 }
 function effectSidebar(app, html, data) {
     let width = Math.floor(parseInt(getComputedStyle(html[0]).getPropertyValue('--sidebar-width')) / (document.querySelector('#sidebar-tabs').childElementCount + 1));

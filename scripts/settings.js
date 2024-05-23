@@ -1574,6 +1574,16 @@ export function registerSettings() {
         'onChange': () => debouncedReload()
     });
     addMenuSetting('Select Tool', 'User Interface');
+    game.settings.register(moduleName, 'Active Effect Interface', {
+        'name': 'Active Effect Interface (Experimental)',
+        'hint': 'When enabled an active effect directory will be added to the sidebar. This directory allows you store active effects that can be applied to actors directly from the sidebar.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': () => debouncedReload()
+    });
+    addMenuSetting('Active Effect Interface', 'User Interface');
     //    game.settings.register(moduleName, 'Metric Distance', {
     //        'name': 'Use Metric Distance',
     //        'hint': 'When enabled macros from this module will use metric for distance calculations.',
