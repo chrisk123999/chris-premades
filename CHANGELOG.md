@@ -1,10 +1,14 @@
+#0.11.2 Release:
+## Bug Fixes:
+- Effect Interface
+## Update Notes:
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+  
 # 0.11.1 Release:
 ## Bug Fixes:
 - Find Familiar
 ## New Features:
 - Added experimental active effect interface feature (Located in the User Interface settings).
-## Update Notes:
-- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
   
 # 0.11.0 Release:
 ## Update Notes:
