@@ -58,7 +58,7 @@ async function vampiricTouchItem({speaker, actor, token, character, item, args, 
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
     let feature = workflow.actor.items.find(item => item.flags['chris-premades']?.spell?.vampiricTouchAttack);
     if (!feature) return;
     if (workflow.targets.size === 0) return;
