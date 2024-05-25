@@ -51,9 +51,12 @@ export let chris = {
             effectToReturn = await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
         }
         if (concentrationItem) {
-            await MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem)?.addDependents(...[effectToReturn]);
+            await chris.addDependents(MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem), [effectToReturn]);
         }
         return effectToReturn;
+    },
+    'addDependents': async function _addDependents(parentDocument, dependents) {
+        await parentDocument?.addDependents(...dependents);
     },
     'removeEffect': async function _removeEffect(effect) {
         if (chris.firstOwner(effect).id === game.user.id) {

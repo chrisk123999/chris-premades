@@ -58,7 +58,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(effectData.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(effectData.name)]);
 }
 async function boltItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.targets.size != 1) return;

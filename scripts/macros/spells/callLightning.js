@@ -58,5 +58,5 @@ export async function callLightning({speaker, actor, token, character, item, arg
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }

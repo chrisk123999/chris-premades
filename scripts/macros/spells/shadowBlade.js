@@ -66,5 +66,5 @@ export async function shadowBlade({speaker, actor, token, character, item, args,
         'description': weaponData.name
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(weaponData.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(weaponData.name)]);
 }

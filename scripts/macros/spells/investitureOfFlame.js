@@ -90,7 +90,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Investiture of Flame'
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
     let castLevel = workflow.castData.castLevel;
     let spellDC = chris.getSpellDC(workflow.item);
     let sourceTokenID = workflow.token.id;

@@ -44,5 +44,5 @@ export async function auraOfVitality({speaker, actor, token, character, item, ar
         'origin': workflow.item.uuid
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(effectData.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(effectData.name)]);
 }

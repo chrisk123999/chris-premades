@@ -1,7 +1,7 @@
 import {chris} from '../../helperFunctions.js';
 async function detectThoughtsProbeItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size === 1) return;
-    let effect = await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item.origin);
+    let effect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item.origin);
     if (!effect) return;
     await chris.removeEffect(effect);
 }
@@ -50,7 +50,7 @@ async function detectThoughtsItem({speaker, actor, token, character, item, args,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }
 export let detectThoughts = {
     'item': detectThoughtsItem,

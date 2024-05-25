@@ -37,7 +37,7 @@ async function spawn(sourceActors, updates, duration, originItem, casterToken, m
     }
     if (!effect) return;
     if (originItem.requiresConcentration && !options.canTurnHostile) {
-        await MidiQOL.getConcentrationEffect(originItem.actor, originItem)?.addDependents(...[effect]);
+        await chris.addDependents(MidiQOL.getConcentrationEffect(originItem.actor, originItem), [effect]);
     }
     let effectData = {
         'name': 'Summoned Creature',

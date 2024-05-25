@@ -111,7 +111,7 @@ async function hexItem({speaker, actor, token, character, item, args, scope, wor
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
     let conEffect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item);
-    await conEffect.addDependents(...[workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependents(conEffect, [workflow.actor.effects.getName(workflow.item.name)]);
     if (conEffect) {
         let updates = {
             'duration': {
