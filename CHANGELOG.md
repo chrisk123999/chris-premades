@@ -1,9 +1,12 @@
-# 0.11.3 Release:
+# 0.11.4 Release:
 ## Bug Fixes:
-- Concentration (Thanks Michael)
+- Regeneration
 ## Update Notes:
 - Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
   
+# 0.11.3 Release:
+## Bug Fixes:
+- Concentration (Thanks Michael)
 # 0.11.2 Release:
 ## Bug Fixes:
 - Effect Interface
