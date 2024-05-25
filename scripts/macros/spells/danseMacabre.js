@@ -206,5 +206,5 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
-    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents([workflow.actor.effects.getName(effectData2.name)]);
+    await MidiQOL.getConcentrationEffect(workflow.actor, workflow.item).addDependents(...[workflow.actor.effects.getName(effectData2.name)]);
 }

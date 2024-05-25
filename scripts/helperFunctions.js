@@ -51,7 +51,7 @@ export let chris = {
             effectToReturn = await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
         }
         if (concentrationItem) {
-            await MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem)?.addDependents([effectToReturn]);
+            await MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem)?.addDependents(...[effectToReturn]);
         }
         return effectToReturn;
     },
