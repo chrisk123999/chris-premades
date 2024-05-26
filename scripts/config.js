@@ -32,7 +32,8 @@ let automations = {
             actor: [
                 {
                     pass: 'postDamageRollComplete',
-                    macro: macros.spells.hex.damage
+                    macro: macros.spells.hex.damage,
+                    priority: 250
                 }
             ]
         }
@@ -44,7 +45,8 @@ let automations = {
             item: [
                 {
                     pass: 'RollComplete',
-                    macro: macros.spells.hex.move
+                    macro: macros.spells.hex.move,
+                    priority: 50
                 }
             ]
         }
