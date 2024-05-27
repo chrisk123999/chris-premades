@@ -9,6 +9,20 @@ async function damage(workflow) {
     //apply damage function here
 }
 export let acidArrow = {
-    attack,
-    damage
+    name: 'Acid Arrow',
+    version: '0.12.0',
+    midi: {
+        item: [
+            {
+                pass: 'postAttackRoll',
+                macro: attack,
+                priority: 50
+            },
+            {
+                pass: 'postDamageRoll',
+                macro: damage,
+                priority: 50
+            }
+        ]
+    }
 };
