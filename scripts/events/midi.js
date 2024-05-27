@@ -1,10 +1,13 @@
 import {macros} from '../macros.js';
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function getItemMacroData(item) {
-    return item.flags?.['chris-premades']?.macro?.midi?.item;
+    return item.flags?.['chris-premades']?.macro?.midi?.item ?? [];
 }
 function getActorMacroData(actor) {
     let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
-    if (!items.length) return;
+    if (!items.length) return [];
     let macroDatas = [];
     for (let i of items) {
         macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
@@ -15,15 +18,45 @@ function collectMacros(workflow) {
     let macroList = [];
     if (workflow.item) macroList.push(...getItemMacroData(workflow.item));
     if (workflow.actor) macroList.push(...getActorMacroData(workflow.actor));
-    console.log(macroList);
     if (!macroList.length) return;
-    return macroList.map(i => macros[i]).filter(j => j).sort((a, b) => a.priority - b.priority);
+    return macroList.map(i => macros[i]).filter(j => j);
 }
 let macrosMap = {};
 export async function preItemRoll(workflow) {
+    await sleep(50);
     let macroList = collectMacros(workflow);
-    if (!macroList.length) return;
+    if (!macroList) return;
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
-    console.log(macroList);
+    let states = Object.keys(MidiQOL.Workflow.allHooks);
+    for (let i of states) {
+        let itemMacros = macroList.filter(j => j.midi?.item?.find(k => k.pass === i)).map(l => l.midi.item).flat().filter(m => m.pass === i);
+        let actorMacros = macroList.filter(j => j.midi?.actor?.find(k => k.pass === i)).map(l => l.midi.actor).flat().filter(m => m.pass === i);
+        let stateMacros = itemMacros.concat(actorMacros).sort((a, b) => a.priority - b.priority);
+        if (stateMacros.length) foundry.utils.setProperty(macrosMap, id + '.' + i, stateMacros);
+    }
+    await executeMacroPass(workflow, 'preItemRoll');
+}
+async function executeMacro(workflow, macro) {
+    try {
+        await macro(workflow);
+    } catch (error) {
+        //Add some sort of ui notice here. Maybe even some debug info?
+        console.warn(error);
+    }
+}
+async function executeMacroPass(workflow, pass) {
+    let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
+    console.log(id);
+    if (!id) return;
+    let passMacros = macrosMap[id]?.[pass];
+    console.log(passMacros);
+    if (!passMacros) return;
+    for (let i of passMacros) {
+        console.log(i);
+        await executeMacro(workflow, i.macro);
+    }
+}
+export async function postAttackRollComplete(workflow) {
+    await executeMacroPass(workflow, 'postAttackRollComplete');
 }

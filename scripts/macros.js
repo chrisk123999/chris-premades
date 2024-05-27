@@ -1,6 +1,6 @@
 import {acidArrow} from './macros/spells/acidArrow.js';
 import {hex} from './macros/spells/hex.js';
-let macros = {
+export let macros = {
     acidArrow,
     hex
 };

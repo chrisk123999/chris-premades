@@ -89,6 +89,7 @@
 		"ActiveEffect": "writable",
 		"jQuery": "writable",
 		"ItemDirectory": "writable",
-		"WorldCollection": "writable"
+		"WorldCollection": "writable",
+		"foundry": "writable"
 	}
 }
