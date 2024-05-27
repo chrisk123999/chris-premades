@@ -1,7 +1,7 @@
 import {summons} from '../../utility/summons.js';
 import {chris} from '../../helperFunctions.js';
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
-    let pocketDimensionEffect = await chris.findEffect(workflow.actor, "Pocket Dimension");
+    let pocketDimensionEffect = await chris.findEffect(workflow.actor, 'Pocket Dimension');
     if (pocketDimensionEffect) await chris.removeEffect(pocketDimensionEffect);
     let pocketData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Find Familiar - Pocket Dimension', false);
     let folder = chris.getConfiguration(workflow.item, 'folder') ?? 'Familiars';
@@ -105,7 +105,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     async function effectMacro() {
         let findFamiliarEffect = chrisPremades.helpers.getEffects(actor).find(e => e.flags['chris-premades']?.spell?.findFamiliar);
         if (findFamiliarEffect) await chrisPremades.helpers.removeEffect(findFamiliarEffect);
-        await warpgate.revert(token.document, "Pocket Dimension");
+        await warpgate.revert(token.document, 'Pocket Dimension');
     }
     if (!pocketData) return;
     pocketData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Find Familiar - Pocket Dimension');
@@ -258,7 +258,7 @@ async function pocketDimension({speaker, actor, token, character, item, args, sc
     }
     async function notFound() {
         ui.notifications.info('No familiar token or data found!');
-        await warpgate.revert(workflow.token.document, "Pocket Dimension");
+        await warpgate.revert(workflow.token.document, 'Pocket Dimension');
         if (pocketDimensionEffect) await chris.removeEffect(pocketDimensionEffect);
     }
     async function spawnFamiliar(sourceActorUuid, updates, animation, actorUpdates, effectUpdates) {

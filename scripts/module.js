@@ -264,6 +264,7 @@ Hooks.once('ready', async function() {
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.default = game.settings.get('chris-premades', 'Monster Compendium');
     if (game.settings.get('chris-premades', 'Spotlight Omnisearch Summons')) Hooks.on('spotlightOmnisearch.indexBuilt', registerSearchTerms);
     if (game.settings.get('chris-premades', 'Active Effect Interface')) await effectInterface.startup();
+    if (game.settings.get('chris-premades', 'Fortified Position')) Hooks.on('midi-qol.preCheckHits', macros.eldritchCannon.fortifiedPosition);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

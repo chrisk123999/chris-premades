@@ -1,0 +1,152 @@
+{
+  "name": "Create Eldritch Cannon",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>You must have an actor called \"CPR - Eldritch Cannon\" in your actors directory. This can be found in the CPR Actors compendium. You can enable the \"Keep Summon Actors Updated\" setting to have this happen automatically.</p><p>After casting this spell a new feature called \"Eldritch Cannon - Command\" will be available in your features.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Class Features.\"</p><p>This feature will prompt to use spell slots if you are out of uses.</p><p>You can customize the avatar and token for this feature with custom file paths with the Medkit -&gt; Configure.</p><p>This feature is safe to be renamed.</p>",
+      "chat": ""
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "units": "ft",
+      "long": null
+    },
+    "uses": {
+      "value": 1,
+      "max": "1",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "source": {}
+  },
+  "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Artificer"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": "[preItemRoll]function.chrisPremades.macros.eldritchCannon.preItemRoll,[postActiveEffects]function.chrisPremades.macros.eldritchCannon.item"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "advancementOrigin": "UA89yXbB4nVlrG0j"
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Create Eldritch Cannon",
+        "version": "0.11.5",
+        "mutation": {
+          "self": "Eldritch Cannon"
+        },
+        "actors": [
+          "CPR - Eldritch Cannon"
+        ],
+        "classes": [
+          "artificer"
+        ],
+        "settings": [
+          "Fortified Position"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/weapons/artillery/cannon-engraved-gold.webp",
+  "folder": "MhhW6J6R4j9R88FH",
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1716427009534,
+    "modifiedTime": 1716789616747,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
+  },
+  "_id": "LyXaaQNDNwNq2OTo",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3
+  },
+  "_key": "!items!LyXaaQNDNwNq2OTo"
+}

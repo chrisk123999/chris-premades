@@ -1839,6 +1839,22 @@ export function registerSettings() {
         }
     });
     addMenuSetting('Companions Initiative', 'Summons');
+    game.settings.register(moduleName, 'Fortified Position', {
+        'name': 'Eldritch Cannon - Fortified Position',
+        'hint': 'Enabling this allows the automation of the Artillerist\'s Eldritch Cannon\'s Fortified Position feature via the use of Midi-Qol hooks.',
+        'scope': 'world',
+        'config': false,
+        'type': Boolean,
+        'default': false,
+        'onChange': value => {
+            if (value) {
+                Hooks.on('midi-qol.preCheckHits', macros.eldritchCannon.fortifiedPosition);
+            } else {
+                Hooks.off('midi-qol.preCheckHits', macros.eldritchCannon.fortifiedPosition);
+            }
+        }
+    });
+    addMenuSetting('Fortified Position', 'Class Features');
     game.settings.registerMenu(moduleName, 'General', {
         'name': 'General',
         'label': 'General',

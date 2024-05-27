@@ -133,6 +133,7 @@ import {eladrinSeason} from './macros/raceFeatures/eladrin/eladrinSeason.js';
 import {elderBrain} from './macros/monsterFeatures/elderBrain/elderBrain.js';
 import {elderOblex} from './macros/monsterFeatures/elderOblex/elderOblex.js';
 import {eldritchBlast} from './macros/spells/eldritchBlast.js';
+import {eldritchCannon} from './macros/classFeatures/artificer/artillerist/eldritchCannon.js';
 import {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 import {elementalAdept} from './macros/feats/elementalAdept.js';
 import {elementalCleaver} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
@@ -726,6 +727,7 @@ export let macros = {
     'durableMagic': durableMagic,
     'eladrinSeason': eladrinSeason,
     'eldritchBlast': eldritchBlast,
+    'eldritchCannon': eldritchCannon,
     'eldritchSmite': eldritchSmite,
     'elementalAdept': elementalAdept,
     'elementalCleaver': elementalCleaver,

@@ -1,3 +1,9 @@
+# 0.11.5 Release:
+## New Content:
+- Artillerist: Eldritch Cannon, Explosive Cannon, Fortified Position
+## Update Notes:
+- Edited module and settings check.
+
 # 0.11.4 Release:
 ## Bug Fixes:
 - Regeneration

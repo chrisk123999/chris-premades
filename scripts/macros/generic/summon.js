@@ -9,6 +9,7 @@ async function spawn(item, updates, prefill, casterToken) {
         return;
     }
     let selectedActor;
+    // eslint-disable-next-line no-undef
     QuickInsert.open({
         spawnCSS: {
             'left': 600,
@@ -38,4 +39,4 @@ async function spawn(item, updates, prefill, casterToken) {
 export let summon = {
     'item': item,
     'spawn': spawn
-}
+};

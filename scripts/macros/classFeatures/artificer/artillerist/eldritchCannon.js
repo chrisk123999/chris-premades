@@ -1,7 +1,10 @@
 import {summons} from '../../../../utility/summons.js';
 import {chris} from '../../../../helperFunctions.js';
-async function item({speaker, actor, token, character, item, args, scope, workflow}) { // 1 hr duration, 
-    let sourceActor = game.actors.getName('CPR - Eldritch Cannon');
+import {constants} from '../../../../constants.js';
+import {tashaSummon} from '../../../../utility/tashaSummon.js';
+import {queue} from '../../../../utility/queue.js';
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let sourceActor = [game.actors.getName('CPR - Eldritch Cannon')];
     if (!sourceActor) return;
     let mendingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mending (Eldritch Cannon)', false);
     if (!mendingData) return;
@@ -11,84 +14,119 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (!dodgeData) return;
     dodgeData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Dodge');
     let artificerLevel = workflow.actor.classes?.artificer?.system?.levels;  
-    if (!artificerLevel) return; // if workflow.options.useSpellWhenEmpty then ask if use another to summon
+    if (!artificerLevel) return;
     let hpValue = (artificerLevel * 5);
-    let cannon1 = await chris.dialog(workflow.item.name, [['Flamethrower', 'flamethrower'], ['Force Balista', 'forceBalista'], ['Protector', 'protector']], 'Select Eldritch Cannon Type');
-    let cannon2 = undefined;
-    let name1 = chris.getConfiguration(workflow.item, 'name-' + cannon1) ?? 'Eldritch Cannon';
-    if (name1 === '') name1 = 'Eldritch Cannon';
-    let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
-    let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
-    let updates1 = {
-        'actor': {
-            'name': name1,
-            'system': {
-                'details': {
-                    'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
-                },
-                'attributes': {
-                    'hp': {
-                        'formula': hpValue,
-                        'max': hpValue,
-                        'value': hpValue
+    async function cannonUpdates() {
+        let inputs =  [
+            ['Flamethrower', {'type': 'flamethrower', 'name': 'Flamethrower'}], 
+            ['Force Ballista', {'type': 'forceBallista', 'name': 'Force Ballista'}], 
+            ['Protector', {'type': 'protector', 'name': 'Protector'}]
+        ];
+        let cannon = await chris.dialog(workflow.item.name, inputs, 'Select Eldritch Cannon Type');
+        let cannonSize = await chris.dialog(workflow.item.name, [['Small', 'sm'], ['Tiny', 'tiny']], 'What size ' + cannon.name + ' cannon?');
+        let cannonItemData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', cannon.name, false);
+        if (!cannonItemData) return;
+        cannonItemData.system.description.value = chris.getItemDescription('CPR - Descriptions', cannon.name);
+        if (cannon.type === 'flamethrower') {
+            cannonItemData.system.save.dc = chris.getSpellDC(workflow.item);
+        } else if (cannon.type === 'protector') {
+            cannonItemData.system.damage.parts[0][0] = cannonItemData.system.damage.parts[0][0] + ' + ' + workflow.actor.system.abilities.int.mod;
+        }
+        let name = chris.getConfiguration(workflow.item, 'name-' + cannon.type) ?? 'Eldritch Cannon';
+        if (name === '') name = 'Eldritch Cannon';
+        let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
+        let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
+        let updates = {
+            'actor': {
+                'name': name,
+                'system': {
+                    'details': {
+                        'cr': tashaSummon.getCR(workflow.actor.system.attributes.prof)
+                    },
+                    'attributes': {
+                        'hp': {
+                            'formula': hpValue,
+                            'max': hpValue,
+                            'value': hpValue
+                        }
+                    },
+                    'traits': {
+                        'languages': {
+                            'value': Array.from(workflow.actor.system?.traits?.languages?.value),
+                        },
+                        'size': cannonSize
                     }
                 },
-                'traits': {
-                    'languages': workflow.actor.system?.traits?.languages
-                }
-            },
-            'prototypeToken': {
-                'name': name1,
-                'disposition': workflow.token.document.disposition
-            },
-            'flags': {
-                'chris-premades': {
-                    'summon': {
-                        'attackBonus': {
-                            'melee': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + meleeAttackBonus.total,
-                            'ranged': chris.getSpellMod(workflow.item) - sourceActor.system.abilities.str.mod + rangedAttackBonus.total
+                'prototypeToken': {
+                    'name': name,
+                    'disposition': workflow.token.document.disposition
+                },
+                'flags': {
+                    'chris-premades': {
+                        'summon': {
+                            'attackBonus': {
+                                'melee': chris.getSpellMod(workflow.item) + meleeAttackBonus.total,
+                                'ranged': chris.getSpellMod(workflow.item) + rangedAttackBonus.total
+                            }
                         }
                     }
                 }
-            }
-        },
-        'token': {
-            'name': name1,
-            'disposition': workflow.token.document.disposition
-        }
-    };
-    if (artificerLevel >= 9) {
-        // level 9 explosive cannon, damage rolls increased by 1d8, explosion feature,
-        let explosiveCannonData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Explosive Cannon', false);
-        if (!explosiveCannonData) return;
-        explosiveCannonData.system.description.value = chris.getItemDescription('Explosive Cannon');
-        updates.embedded.Item['Explosive Cannon'] = explosiveCannonData;
-        updates.embedded.Item['Deflect Attack'].system.damage.parts[0][0] = '1d4[force] + ' + chris.getSpellMod(workflow.item);
-    }
-    if (artificerLevel >= 15) { // half cover while within 10 feet of the cannon, can make two cannons (will take 2 slots)
-        if (!chris.getEffects(workflow.actor).find(e => e.flags['chris-premades']?.summons?.ids[workflow.item.name])) {
-            if (workflow.config.useSpellWhenEmpty) {
-                let result = chris.useSpellWhenEmpty(workflow, workflow.item.name, 'Use spell slot for second cannon?', {'consumeSlotOnly': true});
-                if (result) {
-                    let cannon2 = await chris.dialog('Select Second Eldritch Cannon Type', [['Flamethrower', 'Flamethrower'], ['Force Balista', 'Force Balista'], ['Protector', 'Protector']]);
-                    if (!cannon2) cannon2 = undefined;
+            },
+            'token': {
+                'name': name,
+                'disposition': workflow.token.document.disposition,
+                'height': 1,
+                'width': 1,
+                'texture': {
+                    'scaleX': CONFIG.DND5E.actorSizes[cannonSize]?.token ?? CONFIG.DND5E.actorSizes[cannonSize]?.dynamicTokenScale,
+                    'scaleY': CONFIG.DND5E.actorSizes[cannonSize]?.token ?? CONFIG.DND5E.actorSizes[cannonSize]?.dynamicTokenScale
+                }
+            },
+            'embedded': {
+                'Item': {
+                    [cannonItemData.name]: cannonItemData
                 }
             }
+        };
+        let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + cannon.type);
+        if (avatarImg) updates.actor.img = avatarImg;
+        let tokenImg = chris.getConfiguration(workflow.item, 'token-' + cannon.type);
+        if (tokenImg) {
+            setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+            setProperty(updates, 'token.texture.src', tokenImg);
         }
-        //fortified position effect     
+        if (artificerLevel >= 9) {
+            let explosiveCannonData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Explosive Cannon', false);
+            if (!explosiveCannonData) return;
+            explosiveCannonData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Explosive Cannon');
+            explosiveCannonData.system.save.dc = chris.getSpellDC(workflow.item);
+            updates.embedded.Item['Explosive Cannon'] = explosiveCannonData;
+            let damageString = updates.embedded.Item[cannonItemData.name].system.damage.parts[0][0];
+            let newInteger = Number(damageString.charAt(0)) + 1;
+            updates.embedded.Item[cannonItemData.name].system.damage.parts[0][0] = newInteger + damageString.slice(1);
+        }
+        return updates;
     }
-    let avatarImg = chris.getConfiguration(workflow.item, 'avatar');
-    if (avatarImg) updates.actor.img = avatarImg;
-    let tokenImg = chris.getConfiguration(workflow.item, 'token');
-    if (tokenImg) {
-        setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
-        setProperty(updates, 'token.texture.src', tokenImg);
+    let updates = [await cannonUpdates()];
+    if (!updates) return;
+    if (artificerLevel >= 15) {
+        if (!chris.getEffects(workflow.actor).find(e => e.flags['chris-premades']?.summons?.ids[workflow.item.name])) {
+            let result = await chris.useSpellWhenEmpty(workflow, workflow.item.name, 'Use spell slot for second cannon?', {'consumeSlotOnly': true, 'skipEmptyCheck': true});
+            if (result) {
+                updates.push(await cannonUpdates());
+                sourceActor.push(sourceActor[0]);
+            }
+        }
+        let fortifiedPositionData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Fortified Position', false);
+        if (!fortifiedPositionData) return;
+        fortifiedPositionData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Fortified Position');
+        updates.forEach(update => update.embedded.Item[fortifiedPositionData.name] = fortifiedPositionData);
     }
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    let spawnedToken = await tashaSummon.spawn(sourceActor, updates, 86400, workflow.item, 120, workflow.token, animation);
-    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Steel Defender - Command', false);
-    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Steel Defender - Command');
+    await summons.spawn(sourceActor, updates, 3600, workflow.item, workflow.token, 5, {spawnAnimation: animation});
+    let featureData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', 'Eldritch Cannon - Command', false);
+    featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Eldritch Cannon - Command');
     if (!featureData) return;
     let updates2 = {
         'embedded': {
@@ -99,11 +137,11 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     };
     let options = {
         'permanent': false,
-        'name': 'Steel Defender',
+        'name': 'Eldritch Cannon',
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options);
-    let effect = chris.findEffect(workflow.actor, 'Steel Defender');
+    let effect = chris.findEffect(workflow.actor, workflow.item.name);
     if (!effect) return;
     let currentScript = effect.flags.effectmacro?.onDelete?.script;
     if (!currentScript) return;
@@ -111,7 +149,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'flags': {
             'effectmacro': {
                 'onDelete': { 
-                    'script': currentScript + ' await warpgate.revert(token.document, "Steel Defender");'
+                    'script': currentScript + '; await warpgate.revert(token.document, "Eldritch Cannon");'
                 }
             },
             'chris-premades': {
@@ -121,38 +159,36 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    if (artificerLevel > 8) setProperty(effectUpdates, 'flags.chris-premades.feature.steelDefender.spawnedTokenUuid', spawnedToken.uuid);
     await chris.updateEffect(effect, effectUpdates);
-
+}
+async function explosiveCannon({speaker, actor, token, character, item, args, scope, workflow}) {
+    await chris.applyDamage([workflow.token], '10000', 'none');
 }
 async function preItemRoll({speaker, actor, token, character, item, args, scope, workflow}) {
-    await chris.useSpellWhenEmpty(workflow, workflow.item.name, 'Use spell slot for' + workflow.item.name + '? (No uses left)');
+    await chris.useSpellWhenEmpty(workflow, workflow.item.name, 'Use spell slot for ' + workflow.item.name + '? (No uses left)');
 }
-async function attack(workflow) {
+async function forceBallista({speaker, actor, token, character, item, args, scope, workflow}) {
+    if (workflow.hitTargets.size != 1) return;
+    await chris.pushToken(workflow.token, workflow.targets.first(), 5);
+}
+async function fortifiedPosition(workflow) {
     if (workflow.targets.size != 1 || !workflow.item || !constants.attacks.includes(workflow.item?.system?.actionType)) return;
     let targetToken = workflow.targets.first();
     let coverBonus = MidiQOL.computeCoverBonus(workflow.token, targetToken, workflow.item);
     if (coverBonus >= 2) return;
-    let nearbyShrouds = chris.findNearby(targetToken, 30, 'ally', false, true).filter(i => chris.findEffect(i.actor, 'Channel Divinity: Twilight Sanctuary') && chris.getItem(i.actor, 'Twilight Shroud'));
-    if (!nearbyShrouds.length) return;
-    let queueSetup = await queue.setup(workflow.item.uuid, 'twilightShroud', 150);
+    let nearbyCannons = chris.findNearby(targetToken, 10, 'ally', false, true).filter(i => chris.findEffect(i.actor, 'Fortified Position'));
+    if (!nearbyCannons.length) return;
+    let queueSetup = await queue.setup(workflow.item.uuid, 'fortifiedPosition', 150);
     if (!queueSetup) return;
     let updatedRoll = await chris.addToRoll(workflow.attackRoll, -2);
-    let feature = chris.getItem(nearbyShrouds[0].actor, 'Twilight Shroud');
-    workflow.attackAdvAttribution.add('Half-Cover: ' + feature.name);
+    workflow.attackAdvAttribution.add('Half-Cover: Fortified Position');
     workflow.setAttackRoll(updatedRoll);
     queue.remove(workflow.item.uuid);
-}
-async function repair({speaker, actor, token, character, item, args, scope, workflow}) {
-    let effect = chris.findEffect(workflow.actor, 'Summoned Creature');
-    if (!effect) return;
-    let origin = await fromUuid(effect.origin);
-    if (!origin) return;
-    origin.actor.setFlag('chris-premades', 'feature.steelDefenderRepair', workflow.item.system?.uses?.value);
 }
 export let eldritchCannon = {
     'item': item,
     'preItemRoll': preItemRoll,
-    'longRest': longRest,
-    'repair': repair,
-}
+    'explosiveCannon': explosiveCannon,
+    'forceBallista': forceBallista,
+    'fortifiedPosition': fortifiedPosition
+};

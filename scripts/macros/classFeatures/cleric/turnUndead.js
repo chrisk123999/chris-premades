@@ -93,4 +93,4 @@ async function saves({speaker, actor, token, character, item, args, scope, workf
 export let turnUndead = {
     'targets': targets,
     'saves': saves
-}
+};

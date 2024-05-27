@@ -90,7 +90,10 @@
     "midi-qol": {
       "effectActivation": false,
       "forceCEOff": false,
-      "forceCEOn": true
+      "forceCEOn": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -105,7 +108,9 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
     },
     "core": {
       "sourceId": "Item.wRIbIWOUGEn4LLD0"
@@ -123,8 +128,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1683514294946,
-    "modifiedTime": 1715505767788,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+    "modifiedTime": 1716789608363,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": null,
   "sort": 0,
