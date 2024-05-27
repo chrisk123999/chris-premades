@@ -7,9 +7,7 @@ function getActorMacroData(actor) {
     let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
     if (!items.length) return [];
     let macroDatas = [];
-    for (let i of items) {
-        macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
-    }
+    for (let i of items) macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
     return macroDatas;
 }
 function collectMacros(workflow) {
@@ -44,16 +42,11 @@ async function executeMacro(workflow, macro) {
 }
 async function executeMacroPass(workflow, pass) {
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
-    console.log(id);
     if (!id) return;
     let passMacros = macrosMap[id]?.[pass];
-    console.log(passMacros);
     if (!passMacros) return;
     await helpers.sleep(50);
-    for (let i of passMacros) {
-        console.log(i);
-        await executeMacro(workflow, i.macro);
-    }
+    for (let i of passMacros) await executeMacro(workflow, i.macro);
 }
 export async function postAttackRollComplete(workflow) {
     await executeMacroPass(workflow, 'postAttackRollComplete');
