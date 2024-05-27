@@ -1,7 +1,5 @@
 import {macros} from '../macros.js';
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import {helpers} from '../utilities/genericUtils.js';
 function getItemMacroData(item) {
     return item.flags?.['chris-premades']?.macro?.midi?.item ?? [];
 }
@@ -23,7 +21,6 @@ function collectMacros(workflow) {
 }
 let macrosMap = {};
 export async function preItemRoll(workflow) {
-    await sleep(50);
     let macroList = collectMacros(workflow);
     if (!macroList) return;
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
@@ -52,6 +49,7 @@ async function executeMacroPass(workflow, pass) {
     let passMacros = macrosMap[id]?.[pass];
     console.log(passMacros);
     if (!passMacros) return;
+    await helpers.sleep(50);
     for (let i of passMacros) {
         console.log(i);
         await executeMacro(workflow, i.macro);
@@ -59,4 +57,7 @@ async function executeMacroPass(workflow, pass) {
 }
 export async function postAttackRollComplete(workflow) {
     await executeMacroPass(workflow, 'postAttackRollComplete');
+}
+export async function postDamageRoll(workflow) {
+    await executeMacroPass(workflow, 'postDamageRoll');
 }
