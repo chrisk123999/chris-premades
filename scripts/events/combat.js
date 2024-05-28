@@ -1,28 +1,50 @@
 import {macros} from '../macros.js';
+import {actorUtils} from '../utilities/actorUtils.js';
 import {socketUtils} from '../utilities/socketUtils.js';
 import {templateUtils} from '../utilities/templateUtils.js';
-import {actorUtil} from './actorUtils.js';
-function getEffectTriggerData(actor) {
-    return actorUtil.getEffects(actor).filter(i => i.flags['chris-premades']?.macros?.effect) ?? [];
+import {effectUtils} from '../utilities/effectUtils.js';
+function getEffectMacroData(effect) {
+    return effect.flags['chris-premades']?.macros?.effect ?? [];
 }
-function getTemplateTriggerData(scene) {
-    return scene.templates.filter(i => i.flags['chris-premades']?.macros?.template) ?? [];
+function getTemplateMacroData(template) {
+    return effect.flags['chris-premades']?.macros?.template ?? [];
 }
+function collectEffectMacros(effect) {
+    let macroList = [];
+    macroList.push(...getEffectMacroData(effect));
+    if (!macroList.length) return [];
+    return macroList.map(i => macros[i]).filter(j => j);
+}
+function collectTemplateMacros(template) {
+    let macroList = [];
+    macroList.push(...getTemplateMacroData(template));
+    if (!macroList.length) return [];
+    return macroList.map(i => macros[i]).filter(j => j);
+}
+function collectTokenMacros(token, pass) {
+    let triggers = [];
+    if (token.actor) {
+        let effects = actorUtils.getEffects();
+        for (let effect of effects) {
+            let macroList = collectEffectMacros(effect);
+            if (!macroList.length) continue;
+            let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).map(k => k.effect).flat().filter(l => l.pass === pass);
+
+            let castData = {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1
+            };
 
 
-
-
-async function executeMacro(data, macro) {
-    try {
-        await macro(data);
-    } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
-        console.error(error);
+        }
     }
 }
-async function turnEnd(combat, macros) {
+
+
+async function turnEnd(combat, token) {
 
 }
+
 
 
 export async function updateCombat(combat, changes, context) {
@@ -34,8 +56,8 @@ export async function updateCombat(combat, changes, context) {
     if (!changes.turn && !changes.round) return;
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
-    let currentToken = game.combat.scene.tokens.get(combat.current.tokenId);
-    let previousToken = game.combat.scene.tokens.get(combat.previous.tokenId);
+    let currentToken = combat.scene.tokens.get(combat.current.tokenId);
+    let previousToken = combat.scene.tokens.get(combat.previous.tokenId);
 
     //Turn End Macros
 
