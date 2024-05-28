@@ -93,8 +93,36 @@ function findGrids(A, B, template) {
     }
     return locations;
 }
+function getCastData(template) {
+    return template.flags['chris-premades']?.castData;
+}
+function getCastLevel(template) {
+    return getCastData(template)?.castLevel;
+}
+function getBaseLevel(template) {
+    return getCastData(template)?.baseLevel;
+}
+async function setCastData(template, data) {
+    await template.setFlag('chris-premades', 'castData', data);
+}
+async function setCastLevel(template, level) {
+    let data = getCastData(template) ?? {};
+    data.castLevel = level;
+    await setCastData(template, data);
+}
+async function setBaseLevel(template, level) {
+    let data = getCastData(template) ?? {};
+    data.baseLevel = level;
+    await setCastData(template, data);
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
-    findGrids
+    findGrids,
+    getCastData,
+    getCastLevel,
+    getBaseLevel,
+    setCastData,
+    setCastLevel,
+    setBaseLevel
 };
