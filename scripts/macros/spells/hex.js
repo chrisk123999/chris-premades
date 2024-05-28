@@ -1,5 +1,4 @@
 async function use(workflow) {
-    if (!workflow.targets.size) return;
     console.log('here');
 }
 async function damage(workflow) {
@@ -14,7 +13,7 @@ export let hex = {
     midi: {
         item: [
             {
-                pass: 'postActiveEffects',
+                pass: 'RollComplete',
                 macro: use,
                 priority: 50
             }
@@ -34,7 +33,7 @@ export let hexMove = {
     midi: {
         item: [
             {
-                pass: 'postActiveEffects',
+                pass: 'RollComplete',
                 macro: move,
                 priority: 50
             }

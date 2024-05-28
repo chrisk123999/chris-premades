@@ -30,6 +30,7 @@ export async function preItemRoll(workflow) {
         let stateMacros = itemMacros.concat(actorMacros).sort((a, b) => a.priority - b.priority);
         if (stateMacros.length) foundry.utils.setProperty(macrosMap, id + '.' + i, stateMacros);
     }
+    console.log(macrosMap);
     await executeMacroPass(workflow, 'preItemRoll');
 }
 async function executeMacro(workflow, macro) {
@@ -54,6 +55,6 @@ export async function postAttackRollComplete(workflow) {
 export async function postDamageRoll(workflow) {
     await executeMacroPass(workflow, 'postDamageRoll');
 }
-export async function postActiveEffects(workflow) {
-    await executeMacroPass(workflow, 'postActiveEffects');
+export async function RollComplete(workflow) {
+    await executeMacroPass(workflow, 'RollComplete');
 }

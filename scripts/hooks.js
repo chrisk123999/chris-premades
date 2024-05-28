@@ -1,9 +1,8 @@
-import {updateCombat} from './events/effects.js';
-import {postActiveEffects, postAttackRollComplete, postDamageRoll, preItemRoll} from './events/midi.js';
+import {RollComplete, postAttackRollComplete, postDamageRoll, preItemRoll} from './events/midi.js';
 export function registerHooks() {
     Hooks.on('midi-qol.preItemRoll', preItemRoll);
     Hooks.on('midi-qol.postAttackRollComplete', postAttackRollComplete);
     Hooks.on('midi-qol.postDamageRoll', postDamageRoll);
-    Hooks.on('midiqol.postActiveEffects', postActiveEffects);
-    Hooks.on('updateCombat', updateCombat);
+    Hooks.on('midiqol.RollComplete', RollComplete);
+    //Hooks.on('updateCombat', updateCombat);
 }
