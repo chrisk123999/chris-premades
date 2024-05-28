@@ -1,5 +1,6 @@
 async function use(workflow) {
-
+    if (!workflow.targets.size) return;
+    console.log('here');
 }
 async function damage(workflow) {
 
