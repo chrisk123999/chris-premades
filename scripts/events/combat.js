@@ -17,7 +17,7 @@ async function executeMacro(data, macro) {
         await macro(data);
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
-        console.warn(error);
+        console.error(error);
     }
 }
 async function turnEnd(combat, macros) {
