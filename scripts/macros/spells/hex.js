@@ -14,7 +14,7 @@ export let hex = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'postActiveEffects',
                 macro: use,
                 priority: 50
             }
@@ -34,7 +34,7 @@ export let hexMove = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'postActiveEffects',
                 macro: move,
                 priority: 50
             }

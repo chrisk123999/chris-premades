@@ -54,3 +54,6 @@ export async function postAttackRollComplete(workflow) {
 export async function postDamageRoll(workflow) {
     await executeMacroPass(workflow, 'postDamageRoll');
 }
+export async function postActiveEffects(workflow) {
+    await executeMacroPass(workflow, 'postActiveEffects');
+}
