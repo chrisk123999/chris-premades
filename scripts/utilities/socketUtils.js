@@ -1,5 +1,5 @@
 function gmID() {
-    return game.settings.get('chris-premades', gmID);
+    return game.settings.get('chris-premades', 'gmID');
 }
 function isTheGM() {
     return gmID() === game.user.id;

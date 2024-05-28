@@ -115,6 +115,14 @@ async function setBaseLevel(template, level) {
     data.baseLevel = level;
     await setCastData(template, data);
 }
+function getSaveDC(template) {
+    return getCastData(template)?.castDC;
+}
+async function setSaveDC(template, dc) {
+    let data = getCastData(template) ?? {};
+    data.saveDC = dc;
+    await setCastData(template, data);
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
@@ -124,5 +132,7 @@ export let templateUtils = {
     getBaseLevel,
     setCastData,
     setCastLevel,
-    setBaseLevel
+    setBaseLevel,
+    getSaveDC,
+    setSaveDC
 };

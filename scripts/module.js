@@ -5,4 +5,5 @@ Hooks.once('init', () => {
 });
 Hooks.once('ready', () => {
     registerHooks();
+    if (game.user.isGM) game.settings.set('chris-premades', 'gmID', game.user.id);
 });
