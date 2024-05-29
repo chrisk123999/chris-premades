@@ -30,6 +30,14 @@
   "styles": [
     "styles/module.css"
   ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
   "relationships": {
     "systems": [
       {
