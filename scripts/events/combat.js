@@ -38,7 +38,8 @@ function collectTokenMacros(token, pass) {
                         baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                         saveDC: effectUtils.getSaveDC(effect) ?? -1
                     },
-                    macro: i.macro
+                    macro: i.macro,
+                    name: effect.name
                 });
             });
         }
@@ -55,7 +56,8 @@ function collectTokenMacros(token, pass) {
                     castLevel: templateUtils.getCastLevel(template) ?? -1,
                     saveDC: templateUtils.getSaveDC(template) ?? -1
                 },
-                macro: i.macro
+                macro: i.macro,
+                name: templateUtils.getName(template)
             });
         });
     }
@@ -63,7 +65,7 @@ function collectTokenMacros(token, pass) {
 }
 function getSortedTriggers(token, pass) {
     let allTriggers = collectTokenMacros(token, pass);
-    let names = new Set(allTriggers.map(i => i.entity.name));
+    let names = new Set(allTriggers.map(i => i.name));
     let maxMap = {};
     names.forEach(i => {
         let maxLevel = Math.max(...allTriggers.map(i => i.castData.castLevel));

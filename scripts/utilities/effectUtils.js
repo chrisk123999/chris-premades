@@ -1,3 +1,6 @@
+import {socket} from '../sockets.js';
+import {helpers} from './genericUtils.js';
+import {socketUtils} from './socketUtils.js';
 function getCastData(effect) {
     return effect.flags['chris-premades']?.castData ?? effect.flags['midi-qol']?.castData;
 }
@@ -28,6 +31,42 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
+async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae}) {
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (identifier) helpers.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
+    if (vae) {
+        if (vae.button) helpers.setProperty(effectData, 'flags.chris-premades.vae.button', vae.button);
+        if (vae.description) { /* empty */ } //here
+    }
+    let effects;
+    if (hasPermission) {
+        effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
+        if (concentrationItem) {
+            let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
+            if (concentrationEffect) addDependents(concentrationEffect, effects[0]);
+        }
+        if (parentEntity) {
+            addDependents(parentEntity, effects);
+        }
+    } else {
+        effects = await socket.executeAsGM('createEffect', effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
+    }
+    if (effects?.length) return effects[0];
+}
+async function addDependents(entity, dependents) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    if (hasPermission) {
+        entity.addDependents(...dependents);
+    } else {
+        socket.executeAsGM('addDependents', entity.uuid, dependents.map(i => i.uuid));
+    }
+}
+function addOnUseMacros(effectData, type, macroList) {
+    return helpers.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
+}
+function getEffectIdentifier(effect) {
+    return effect.flags['chris-premades']?.identifier;
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -36,5 +75,9 @@ export let effectUtils = {
     setCastLevel,
     setBaseLevel,
     getSaveDC,
-    setSaveDC
+    setSaveDC,
+    createEffect,
+    addDependents,
+    addOnUseMacros,
+    getEffectIdentifier
 };

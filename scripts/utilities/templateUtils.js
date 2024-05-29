@@ -123,6 +123,12 @@ async function setSaveDC(template, dc) {
     data.saveDC = dc;
     await setCastData(template, data);
 }
+function getName(template) {
+    return template.flags['chris-premades']?.template?.name;
+}
+async function setName(template, name) {
+    await template.setFlag('chris-premades', 'template.name', name);
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
@@ -134,5 +140,7 @@ export let templateUtils = {
     setCastLevel,
     setBaseLevel,
     getSaveDC,
-    setSaveDC
+    setSaveDC,
+    getName,
+    setName
 };
