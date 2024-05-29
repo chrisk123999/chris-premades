@@ -1,6 +1,6 @@
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
-export let actorUtil = {
+export let actorUtils = {
     getEffects
 };

@@ -20,11 +20,21 @@ async function setBaseLevel(effect, level) {
     data.baseLevel = level;
     await setCastData(effect, data);
 }
+function getSaveDC(effect) {
+    return getCastData(effect)?.castDC;
+}
+async function setSaveDC(effect, dc) {
+    let data = getCastData(effect) ?? {};
+    data.saveDC = dc;
+    await setCastData(effect, data);
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
     getBaseLevel,
     setCastData,
     setCastLevel,
-    setBaseLevel
+    setBaseLevel,
+    getSaveDC,
+    setSaveDC
 };

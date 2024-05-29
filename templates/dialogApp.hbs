@@ -1,3 +1,18 @@
 <form id="dialog-app" class="dialog-content">
-    <p> Hello </p>
+    <p> {{content}} </p>
+    {{log content}}
+    {{log inputs}}
+    {{#each inputs}}
+        {{log this}}
+        {{#if isButton}}
+            {{#each options}}
+            {{log this}}
+            {{log value}}
+            {{log label}}
+                <button type="button" name={{value}}>
+                    <label>{{localize "CHRISPREMADES.Yes"}}</label>
+                </button>
+            {{/each}}
+        {{/if}}
+    {{/each}}
 </form>

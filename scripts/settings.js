@@ -7,6 +7,7 @@ export function registerSettings() {
         hint: 'The GM who is in control.',
         scope: 'world',
         config: false,
-        type: String
+        type: String,
+        default: ''
     }, 'hidden');
 }
