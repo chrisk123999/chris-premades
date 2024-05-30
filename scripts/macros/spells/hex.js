@@ -1,7 +1,9 @@
-import {getSetting} from '../../settings.js';
+import {constants} from '../../constants.js';
+import {errors} from '../../events/errors.js';
 import {dialogUtils} from '../../utilities/dialogUtils.js';
 import {effectUtils} from '../../utilities/effectUtils.js';
-import {helpers} from '../../utilities/genericUtils.js';
+import {genericUtils} from '../../utilities/genericUtils.js';
+import {itemUtils} from '../../utilities/itemUtils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.entries(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -26,7 +28,7 @@ async function use(workflow) {
     let durationScale = workflow.item.system.duration.value;
     seconds = Math.min(seconds * durationScale, 86400);
     let targetEffectData = {
-        name: helpers.translate('CHRISPREMADES.Hex.Hexed'),
+        name: genericUtils.translate('CHRISPREMADES.Hex.Hexed'),
         icon: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -57,7 +59,16 @@ async function use(workflow) {
         }
     };
     effectUtils.addOnUseMacros(casterEffect, 'actor', ['hex']);
-    await effectUtils.createEffect(workflow.actor, casterEffect, {});  //here
+    let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move');
+    if (!featureData) {
+        errors.missingPackItem();
+        return;
+    }
+    
+
+
+    await effectUtils.createEffect(workflow.actor, casterEffect, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: 'Change This'}});
+
     
 }
 async function damage(workflow) {

@@ -3,7 +3,7 @@ import {actorUtils} from '../utilities/actorUtils.js';
 import {socketUtils} from '../utilities/socketUtils.js';
 import {templateUtils} from '../utilities/templateUtils.js';
 import {effectUtils} from '../utilities/effectUtils.js';
-import {helpers} from '../utilities/genericUtils.js';
+import {genericUtils} from '../utilities/genericUtils.js';
 function getEffectMacroData(effect) {
     return effect.flags['chris-premades']?.macros?.effect ?? [];
 }
@@ -113,7 +113,7 @@ export async function updateCombat(combat, changes, context) {
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
     let currentToken = combat.scene.tokens.get(combat.current.tokenId)?.object;
     let previousToken = combat.scene.tokens.get(combat.previous.tokenId)?.object;
-    await helpers.sleep(50);
+    await genericUtils.sleep(50);
     await executeMacroPass(previousToken, 'turnEnd');
     await executeMacroPass(currentToken, 'turnStart');
     //Turn End Macros

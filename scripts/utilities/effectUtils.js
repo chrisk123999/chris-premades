@@ -1,5 +1,5 @@
 import {socket} from '../sockets.js';
-import {helpers} from './genericUtils.js';
+import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
 function getCastData(effect) {
     return effect.flags['chris-premades']?.castData ?? effect.flags['midi-qol']?.castData;
@@ -33,10 +33,10 @@ async function setSaveDC(effect, dc) {
 }
 async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
-    if (identifier) helpers.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
+    if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
     if (vae) {
-        if (vae.button) helpers.setProperty(effectData, 'flags.chris-premades.vae.button', vae.button);
-        if (vae.description) { /* empty */ } //here
+        if (vae.button) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.button', vae.button);
+        if (vae.description) {/* empty */} //TODO
     }
     let effects;
     if (hasPermission) {
@@ -62,7 +62,7 @@ async function addDependents(entity, dependents) {
     }
 }
 function addOnUseMacros(effectData, type, macroList) {
-    return helpers.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
+    return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
 }
 function getEffectIdentifier(effect) {
     return effect.flags['chris-premades']?.identifier;

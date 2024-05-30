@@ -10,7 +10,7 @@ function setProperty(object, key, value) {
 function duplicate(object) {
     return foundry.utils.duplicate(object);
 }
-export let helpers = {
+export let genericUtils = {
     sleep,
     translate,
     setProperty,

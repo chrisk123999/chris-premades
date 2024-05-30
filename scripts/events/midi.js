@@ -1,5 +1,5 @@
 import {macros} from '../macros.js';
-import {helpers} from '../utilities/genericUtils.js';
+import {genericUtils} from '../utilities/genericUtils.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -50,7 +50,7 @@ async function executeMacroPass(workflow, pass) {
     if (!id) return;
     let passMacros = macrosMap[id]?.[pass];
     if (!passMacros) return;
-    await helpers.sleep(50);
+    await genericUtils.sleep(50);
     for (let i of passMacros) await executeMacro(workflow, i.macro);
 }
 export async function postAttackRollComplete(workflow) {
