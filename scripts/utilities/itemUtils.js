@@ -7,13 +7,10 @@ import {socketUtils} from './socketUtils.js';
 function getSaveDC(item) {
     return item.getSaveDC();
 }
-async function createItems(actor, updates, {favorite, section, parentEntity}) {
+async function createItems(actor, updates, {favorite, section, parentEntity, identifier}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
-    if (section) {
-        updates.forEach(i => {
-            genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section);
-        });
-    }
+    if (section) updates.forEach(i => genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section));
+    if (identifier) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.identifier', identifier));
     let items;
     if (hasPermission) {
         items = await actor.createEmbeddedDocuments('Item', updates);
@@ -23,7 +20,7 @@ async function createItems(actor, updates, {favorite, section, parentEntity}) {
     if (favorite) await actorUtils.addFavorites(actor, items);
     if (parentEntity) await effectUtils.addDependents(parentEntity, items);
 }
-async function getItemFromCompendium(key, name, {folderId, ignoreMissing, getDescription}) {
+async function getItemFromCompendium(key, name, {folderId, ignoreMissing, getDescription, translate}) {
     let pack = game.packs.get(key);
     if (!pack) {
         errors.missingPack();
@@ -35,6 +32,7 @@ async function getItemFromCompendium(key, name, {folderId, ignoreMissing, getDes
         let itemData = await pack.getDocument(match._id);
         delete itemData._id;
         if (getDescription) itemData.system.description.value = getItemDescription(name);
+        if (translate) itemData.name = genericUtils.translate('CHRISPREMADES.item.' + translate);
         return itemData;
     } else {
         if (!ignoreMissing) errors.missingPackItem();

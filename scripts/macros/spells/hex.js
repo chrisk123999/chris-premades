@@ -50,7 +50,7 @@ async function use(workflow) {
             targetEffects.push(targetEffect);
         }
     }
-    let casterEffect = {
+    let casterEffectData = {
         name: workflow.item.name,
         icon: workflow.item.img,
         origin: workflow.item.uuid,
@@ -58,16 +58,13 @@ async function use(workflow) {
             seconds: seconds
         }
     };
-    effectUtils.addOnUseMacros(casterEffect, 'actor', ['hex']);
-    let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move');
+    effectUtils.addOnUseMacros(casterEffectData, 'actor', ['hex']);
+    let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
-    
-
-
-    await effectUtils.createEffect(workflow.actor, casterEffect, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: 'Change This'}});
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: 'Hex: Move'}});
 
     
 }

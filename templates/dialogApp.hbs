@@ -5,13 +5,36 @@
         {{log this}}
         {{#if isCheckbox}}
             {{#each options}}
-            {{log this}}
-            {{log @index}}
-            {{log @../index}}
-            {{log value}}
-            {{log label}}
                 <input type="checkbox" id="[{{@../index}}, {{@index}}]" name="checkbox.{{value}}" value={{value}} {{#if isChecked}}checked{{/if}}>
-                <label for="{{value}}">{{localize label}}</label>
+                {{#if image}}<img src={{image}}>{{/if}}
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+            {{/each}}
+        {{else if isRadio}}
+            {{#each options}}
+                <input type="radio" id="[{{@../index}}, {{@index}}]" name="radio.{{value}}" value={{value}} {{#if isSelected}}selected{{/if}}>
+                {{#if image}}<img src={{image}}>{{/if}}
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+            {{/each}}
+        {{else if isSelect}}
+            {{#each options}}
+                <input type="select" id="[{{@../index}}, {{@index}}]" name="select.{{value}}" value={{value}}>
+                    {{#each options}}
+                        <option value="{{this}}" {{#if (eq this (lookup ../currentAmount))}}selected{{/if}}>{{this}}</option>
+                    {{/each}}
+                {{#if image}}<img src={{image}}>{{/if}}
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+            {{/each}}
+        {{else if isText}}
+            {{#each options}}
+                <input type="text" id="[{{@../index}}, {{@index}}]" name="text.{{id}}" value={{value}}>
+                {{#if image}}<img src={{image}}>{{/if}}
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+            {{/each}}
+        {{else if isNumber}}
+            {{#each options}}
+                <input type="text" id="[{{@../index}}, {{@index}}]" name="number.{{id}}" value={{value}}>
+                {{#if image}}<img src={{image}}>{{/if}}
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
             {{/each}}
         {{/if}}
     {{/each}}

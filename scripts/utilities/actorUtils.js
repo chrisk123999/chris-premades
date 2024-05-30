@@ -8,7 +8,7 @@ async function addFavorites(actor, items) {
     if (hasPermission) {
         for (let i of items) await actor.system.addFavorite(i);
     } else {
-        await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => items.uuid));
+        await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => i.uuid));
     }
 }
 export let actorUtils = {

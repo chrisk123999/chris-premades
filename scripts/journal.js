@@ -36,11 +36,14 @@ export async function setupJournal() {
         if (page) {
             await page.update({'text.content': welcomeText});
         } else {
-            journal.pages.createDocument({
-                name: 'Info',
-                text: {content: welcomeText},
-                title: {show: false, level: 1},
-                sort: journal.pages.contents.at(-1).sort + CONST.SORT_INTEGER_DENSITY
+            await JournalEntryPage.create({
+                name: 'Info', 
+                text: {content: welcomeText}, 
+                title: {show: false, level: 1}, 
+                sort: 0
+            }, 
+            {
+                parent: journal
             });
         }
     }
@@ -54,10 +57,13 @@ export async function setupJournal() {
         for (let j of packIndex) {
             let page = journal.pages.getName(j.name);
             if (page) continue;
-            await journal.pages.createDocument({
-                name: j.name,
-                title: {show: false, level: 1},
+            await JournalEntryPage.create({
+                name: j.name, 
+                title: {show: false, level: 1}, 
                 sort: journal.pages.contents.at(-1).sort + CONST.SORT_INTEGER_DENSITY
+            }, 
+            {
+                parent: journal
             });
         }
     }
