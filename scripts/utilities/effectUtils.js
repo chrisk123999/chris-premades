@@ -1,4 +1,5 @@
 import {socket} from '../sockets.js';
+import {actorUtils} from './actorUtils.js';
 import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
 function getCastData(effect) {
@@ -42,7 +43,7 @@ async function createEffect(actor, effectData, {concentrationItem, parentEntity,
     if (hasPermission) {
         effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         if (concentrationItem) {
-            let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
+            let concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
             if (concentrationEffect) addDependents(concentrationEffect, effects[0]);
         }
         if (parentEntity) {
@@ -67,6 +68,12 @@ function addOnUseMacros(effectData, type, macroList) {
 function getEffectIdentifier(effect) {
     return effect.flags['chris-premades']?.identifier;
 }
+function getConcentrationEffect(actor, item) {
+    return MidiQOL.getConcentrationEffect(actor, item);
+}
+function getEffectByIdentifier(actor, name) {
+    return actorUtils.getEffects(actor).find(i => getEffectIdentifier(i) === name);
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -79,5 +86,7 @@ export let effectUtils = {
     createEffect,
     addDependents,
     addOnUseMacros,
-    getEffectIdentifier
+    getEffectIdentifier,
+    getConcentrationEffect,
+    getEffectByIdentifier
 };

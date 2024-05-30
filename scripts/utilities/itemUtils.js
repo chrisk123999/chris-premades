@@ -52,9 +52,13 @@ function getItemDescription(name) {
     }
     return page.text.content;
 }
+function isSpellFeature(item) {
+    return item.system.type?.value === 'spellFeature';
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
     getItemFromCompendium,
-    getItemDescription
+    getItemDescription,
+    isSpellFeature
 };

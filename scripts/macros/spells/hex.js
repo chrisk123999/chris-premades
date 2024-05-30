@@ -56,19 +56,32 @@ async function use(workflow) {
         origin: workflow.item.uuid,
         duration: {
             seconds: seconds
+        },
+        flags: {
+            'chris-premades': {
+                hex: Array.from(workflow.targets).map(i => i.uuid)
+            }
         }
     };
-    effectUtils.addOnUseMacros(casterEffectData, 'actor', ['hex']);
+    effectUtils.addOnUseMacros(casterEffectData, 'midi.actor', ['hex']);
     let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
-    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: 'Hex: Move'}});
-
-    
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: featureData.name}});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
 async function damage(workflow) {
+    if (!workflow.targets.size) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
+    if (!effect) return;
+    let validTargetUuids = effect.flags['chris-premades'].hex;
+    if (!workflow.hitTargets.find(i => validTargetUuids.includes(i.uuid))) return;
+
 
 }
 async function move(workflow) {
@@ -92,7 +105,15 @@ export let hex = {
                 priority: 250
             }
         ]
-    }
+    },
+    config: [
+        {
+            key: 'damageType',
+            type: 'select',
+            default: 'necrotic',
+            options: constants.damageTypeOptions
+        }
+    ]
 };
 export let hexMove = {
     name: 'Hex - Move',

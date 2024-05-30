@@ -1,11 +1,14 @@
 import {macros} from '../macros.js';
+import {actorUtils} from '../utilities/actorUtils.js';
 import {genericUtils} from '../utilities/genericUtils.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
 function getActorMacroData(actor) {
-    let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
-    if (!items.length) return [];
+    let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor).concat();
+    let effects = actorUtils.getEffects(actor).filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
+    let combined = items.concat(effects);
+    if (!combined.length) return [];
     let macroDatas = [];
     for (let i of items) macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
     return macroDatas;

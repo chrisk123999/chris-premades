@@ -1,10 +1,10 @@
-let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
+let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 /**
  * @param {string} title Dialog Window Title
  * @param {string} content Content placed above the Dialog inputs
  * @param {Array} inputs Form parts of the dialog
- * // [{'inputType': [['Label', value, options: {'isDefault': true, 'weight': 1}, options: {'max': number}]]}]
+ * // [['inputType', [['Label', value, options: {}]]]]
  * @param {string} buttons String corresponding to localized buttons to confirm/cancel dialog
  * // 'yesNo', 'okayCancel'
  * 
@@ -13,17 +13,36 @@ let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
  */
 /*  
 [
-    ['button', [['Label 1', value1], ['Label 2', value2]]],
-    {'checkbox': [['Label 1', value1, true], ['Label 2', value2]]},
-    {'select': [['Label 1', ]]}
-
+    ['button', [['label', value]],
+    ['checkbox', [['label', value, {isChecked, image}]],
+    ['radio', [['label', value, {isSelected, image}]]],
+    ['select', [['label', value, {minAmount, maxAmount, currentAmount, weight, image}]], {totalMax}],
+    ['text', [['label', value, {currentValue, image}]]],
+    ['number', [['label', value, {currentValue, image}]]],
+    ['filePicker', [['label', value, {currentValue, type}]]],
 ]
 
-await new chrisPremades.DialogApp('Title', 'This is a dialog', [['checkbox', [['I agree', 'agree'], ['I disagree', 'diagree', true]]]], 'okCancel').render(true)
+await chrisPremades.DialogApp.dialog(
+    'Desert Survey', 
+    'Do you like Pie or Cake?', 
+    [
+        ['checkbox', [['Pie', 'pie'], ['Cake', 'cake', true]]],
+        ['radio', [['I agree', 'agree'], ['I disagree', 'diagree', true]]],
+        ['select', [
+            ['How Many Cakes?', 'howManyCakes', {minAmount: 0, maxAmount: 10, currentAmount: 1, weight: 1}], 
+            ['How Many Pies?', 'howManyPies', {minAmount: 0, maxAmount: 5, currentAmount: 1, weight: 2}]],
+            {totalMax: 10}
+        ],
+        ['text', [['How much do you like cake?', 'likeCake', {currentValue: 'I really like it'}]]],
+        ['number', [['On a scale of one to ten, how much do you like pie?', 'likePie', {currentValue: 5}]]],
+        ['filePicker', [['What does your cake look like?', '', {type: 'image'}]]]
+    ],
+    'okCancel'
+).render(true)
 
 buttonDialog(title, content, buttons)
 // ('My Dialog', 'This is a dialog', ['Cool', true])
-button, checkbox, radio, select, text, number, filebrowser
+button, checkbox, radio, select, text, number, filePicker
     dialog - 203 - buttons, select one
     numberDialog - external, 1 number input, ok cancel
     selectTarget - 44 - check box, ok cancel
@@ -53,7 +72,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'label',
                 name: 'value',
                 action: 'confirm'
-            }
+            };
         }
     }
     static DEFAULT_OPTIONS = {
@@ -69,7 +88,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             title: 'Default Title'
         }
-    }
+    };
     static PARTS = {
         form: {
             template: 'modules/chris-premades/templates/dialogApp.hbs'
@@ -77,22 +96,22 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         footer: {
             template: 'templates/generic/form-footer.hbs'
         }
-    }
+    };
     /** 
      * Main function of the class, creates a new dialog in itself so that it can wrap the submission in a promise in order to await a result
      * @param {title, content, inputs, buttons} options
      */
-    async dialog(...options) {
+    static async dialog(...options) {
         return new Promise((resolve) => {
             const dialog = new DialogApp(options);
-            dialog.addEventListener("close", () => {
+            dialog.addEventListener('close', () => {
                 resolve(null);
             }, { once: true });
             dialog.render({ force: true });
             dialog.submit = async result => {
                 resolve(result);
                 dialog.close();
-            }
+            };
         });
     }
     // Add results to the object to be handled elsewhere
@@ -106,9 +125,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     async mergeResults(name) {
         if (name === false) this.submit(false);
         while (this.results === undefined) {
-            await new Promise(async (resolve) => {
+            await new Promise((resolve) => {
                 setTimeout(resolve, 10);
-            })
+            });
         }
         this.results.buttons = name;
         this.submit(this.results);
@@ -135,8 +154,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     makeArray(firstNum, lastNum) {
         let array = [];
         for (let i = firstNum; i < (lastNum + 1); i++) {
-            array.push(i)
+            array.push(i);
         }
+        return array;
     }
     // Formats content from the passed inputs, only run once
     formatInputs() {
@@ -147,9 +167,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         for (let i of this.inputs) {
             switch (i[0]) {
                 case 'button': 
-                    i[1].forEach(([label, value]) => context.buttons.push(this.makeButton(label, value)))
+                    i[1].forEach(([label, value]) => context.buttons.push(this.makeButton(label, value)));
                     break;
-                case 'checkbox':
+                case 'checkbox': {
                     let checkboxOptions = [];
                     for (let j of i[1]) {
                         checkboxOptions.push({
@@ -157,15 +177,15 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: j[1], 
                             isChecked: j?.[2]?.isChecked ?? false, 
                             image: j?.[2]?.image ?? undefined
-                        })
+                        });
                     }
                     context.inputs.push({
                         isCheckbox: true,
-                        hasImages: i[2]?.hasImages,
                         options: checkboxOptions
-                    })
+                    });
                     break;
-                case 'radio':
+                } 
+                case 'radio': {
                     let radioOptions = [];
                     for (let j of i[1]) {
                         radioOptions.push({
@@ -173,15 +193,15 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             value: j[1], 
                             isSelected: j?.[2]?.isSelected ?? false, 
                             image: j?.[2]?.image ?? undefined
-                        })
+                        });
                     }
                     context.inputs.push({
                         isRadio: true,
-                        hasImages: i[2]?.hasImages,
                         options: radioOptions
-                    })
+                    });
                     break;
-                case 'select':
+                }
+                case 'select': {
                     let selectOptions = [];
                     for (let j of i[1]) {
                         selectOptions.push({
@@ -192,16 +212,16 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             currentAmount: j?.[2]?.currentAmount ?? 0,
                             weight: j?.[2]?.weight,
                             options: this.makeArray(j?.[2]?.minAmount ?? 0, j?.[2]?.maxAmount ?? 10),
-                            image: j?.[2]?.image ?? undefined})
+                            image: j?.[2]?.image ?? undefined});
                     }
                     context.inputs.push({
                         isSelect: true,
-                        hasImages: i[2]?.hasImages,
                         totalMax: i[2]?.totalMax,
                         options: selectOptions
-                    })
+                    });
                     break;
-                case 'text':
+                }
+                case 'text': {
                     let textOptions = [];
                     for (let j of i[1]) {
                         textOptions.push({
@@ -209,15 +229,15 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             id: j[1],
                             value: j?.[2]?.currentValue ?? '',
                             image: j?.[2]?.image ?? undefined
-                        })
+                        });
                     }
                     context.inputs.push({
                         isText: true,
-                        hasImages: i[2]?.hasImages,
                         options: textOptions
-                    })
+                    });
                     break;
-                case 'number':
+                }
+                case 'number': {
                     let numberOptions = [];
                     for (let j of i[1]) {
                         numberOptions.push({
@@ -225,16 +245,30 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             id: j[1],
                             value: j?.[2]?.currentValue ?? 0,
                             image: j?.[2]?.image ?? undefined
-                        })
+                        });
                     }
                     context.inputs.push({
                         isNumber: true,
-                        hasImages: i[2]?.hasImages,
                         options: numberOptions
-                    })
+                    });
                     break;
-                case 'fileBrower':
+                }
+                case 'filePicker': {
+                    let filePickerOptions = [];
+                    for (let j of i[1]) {
+                        filePickerOptions.push({
+                            label: j[0], 
+                            id: j[1],
+                            value: j?.[2]?.currentValue ?? 0,
+                            type: j?.[2]?.type ?? 'any' // FilePicker.FILE_TYPES => ['image', 'audio', 'video', 'text', 'imagevideo', 'font', 'folder', 'any']
+                        });
+                    }
+                    context.inputs.push({
+                        isFilePicker: true,
+                        options: filePickerOptions
+                    });
                     break;
+                }
             }
         }
         switch (this.buttons) {
@@ -257,7 +291,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         let targetInput = event.target;
         let currentContext = this.context;
         let targetInputId = JSON.parse(targetInput.id);    
-        console.log("Form is changing", formConfig, event);
+        console.log('Form is changing', formConfig, event);
         console.log(event.target, event.target.name, event.target.checked, event.target.type, event.target.id);
         switch (targetInput.type) {
             case 'checkbox':
@@ -276,7 +310,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             if ( priorElement ) {
                 priorElement.replaceWith(htmlElement);
             }
-          }
+        }
         return super._replaceHTML(result, content, options);
     }
 }

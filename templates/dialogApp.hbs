@@ -2,6 +2,7 @@
     <p> {{content}} </p>
     {{log inputs}}
     {{#each inputs}}
+        <div class="form-group">
         {{log this}}
         {{#if isCheckbox}}
             {{#each options}}
@@ -17,16 +18,17 @@
             {{/each}}
         {{else if isSelect}}
             {{#each options}}
-                <input type="select" id="[{{@../index}}, {{@index}}]" name="select.{{value}}" value={{value}}>
+                <select id="[{{@../index}}, {{@index}}]" name="select.{{value}}">
                     {{#each options}}
-                        <option value="{{this}}" {{#if (eq this (lookup ../currentAmount))}}selected{{/if}}>{{this}}</option>
+                        <option value="{{this}}" {{#if (eq this (lookup ../currentAmount 0))}}selected{{/if}}>{{this}}</option>
                     {{/each}}
                 {{#if image}}<img src={{image}}>{{/if}}
+                </select>
                 <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
             {{/each}}
         {{else if isText}}
             {{#each options}}
-                <input type="text" id="[{{@../index}}, {{@index}}]" name="text.{{id}}" value={{value}}>
+                <input type="text" id="[{{@../index}}, {{@index}}]" name="text.{{id}}" value="{{value}}">
                 {{#if image}}<img src={{image}}>{{/if}}
                 <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
             {{/each}}
@@ -36,6 +38,12 @@
                 {{#if image}}<img src={{image}}>{{/if}}
                 <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
             {{/each}}
+        {{else if isFilePicker}}
+            {{#each options}}
+                <file-picker id="[{{@../index}}, {{@index}}]" name="file-picker.{{id}}" type="{{type}}" placeholder="{{value}}"></file-picker>
+                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+            {{/each}}
         {{/if}}
+        </div>
     {{/each}}
 </div>
