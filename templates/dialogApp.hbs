@@ -1,18 +1,18 @@
-<form id="dialog-app" class="dialog-content">
+<div id="dialog-app" class="dialog-content">
     <p> {{content}} </p>
-    {{log content}}
     {{log inputs}}
     {{#each inputs}}
         {{log this}}
-        {{#if isButton}}
+        {{#if isCheckbox}}
             {{#each options}}
             {{log this}}
+            {{log @index}}
+            {{log @../index}}
             {{log value}}
             {{log label}}
-                <button type="button" name={{value}}>
-                    <label>{{localize "CHRISPREMADES.Yes"}}</label>
-                </button>
+                <input type="checkbox" id="[{{@../index}}, {{@index}}]" name="checkbox.{{value}}" value={{value}} {{#if isChecked}}checked{{/if}}>
+                <label for="{{value}}">{{localize label}}</label>
             {{/each}}
         {{/if}}
     {{/each}}
-</form>
+</div>
