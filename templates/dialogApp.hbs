@@ -3,7 +3,6 @@
     {{log inputs}}
     {{#each inputs}}
         <div class="form-group">
-        {{log this}}
         {{#if isCheckbox}}
             {{#each options}}
                 <input type="checkbox" id="[{{@../index}}, {{@index}}]" name="checkbox.{{value}}" value={{value}} {{#if isChecked}}checked{{/if}}>
@@ -20,7 +19,7 @@
             {{#each options}}
                 <select id="[{{@../index}}, {{@index}}]" name="select.{{value}}">
                     {{#each options}}
-                        <option value="{{this}}" {{#if (eq this (lookup ../currentAmount 0))}}selected{{/if}}>{{this}}</option>
+                        <option value="{{this}}" {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
                     {{/each}}
                 {{#if image}}<img src={{image}}>{{/if}}
                 </select>
