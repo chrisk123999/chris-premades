@@ -8,6 +8,35 @@ form .form-group > div {
     margin: 0px 5px;
 }
 
+form .form-group > div.row-display {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+}
+
 form footer.form-footer {
-    margin: 0px 5px;
+    margin: 10px 5px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+form .form-group img.label-image {
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+form .form-group .row-display img.label-image {
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    float: left;
+}
+
+form .form-group .row-display p.label-text {
+    padding: 1%;
+    text-align: center;
+    font-size: 15px;
 }
