@@ -11,36 +11,44 @@
             {{/each}}
         {{else if isRadio}}
             {{#each options}}
-                <input type="radio" id="[{{@../index}}, {{@index}}]" name="radio.{{value}}" value={{value}} {{#if isSelected}}selected{{/if}}>
+                <input type="radio" id="[{{@../index}}, {{@index}}]" name="radio.{{value}}" value={{value}} {{#if isSelected}}checked{{/if}}>
                 {{#if image}}<img src={{image}}>{{/if}}
                 <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
             {{/each}}
         {{else if isSelect}}
             {{#each options}}
-                <select id="[{{@../index}}, {{@index}}]" name="select.{{value}}">
-                    {{#each options}}
-                        <option value="{{this}}" {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
-                    {{/each}}
-                {{#if image}}<img src={{image}}>{{/if}}
-                </select>
-                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                <div>
+                    <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                    <select id="[{{@../index}}, {{@index}}]" name="select.{{value}}">
+                        {{#each options}}
+                            <option value="{{this}}" {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
+                        {{/each}}
+                        {{#if image}}<img src={{image}}>{{/if}}
+                    </select>
+                </div>
             {{/each}}
         {{else if isText}}
             {{#each options}}
-                <input type="text" id="[{{@../index}}, {{@index}}]" name="text.{{id}}" value="{{value}}">
-                {{#if image}}<img src={{image}}>{{/if}}
-                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                <div>
+                    <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                    <input type="text" id="[{{@../index}}, {{@index}}]" name="text.{{id}}" value="{{value}}">
+                    {{#if image}}<img src={{image}}>{{/if}}
+                </div>
             {{/each}}
         {{else if isNumber}}
             {{#each options}}
-                <input type="text" id="[{{@../index}}, {{@index}}]" name="number.{{id}}" value={{value}}>
-                {{#if image}}<img src={{image}}>{{/if}}
-                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                <div>
+                    <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                    <input type="text" id="[{{@../index}}, {{@index}}]" name="number.{{id}}" value={{value}}>
+                    {{#if image}}<img src={{image}}>{{/if}}
+                </div>
             {{/each}}
         {{else if isFilePicker}}
             {{#each options}}
-                <file-picker id="[{{@../index}}, {{@index}}]" name="file-picker.{{id}}" type="{{type}}" placeholder="{{value}}"></file-picker>
-                <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                <div>
+                    <label for="[{{@../index}}, {{@index}}]">{{localize label}}</label>
+                    <file-picker id="[{{@../index}}, {{@index}}]" name="file-picker.{{id}}" type="{{type}}" placeholder="{{value}}"></file-picker>
+                </div>
             {{/each}}
         {{/if}}
         </div>

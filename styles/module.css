@@ -1,0 +1,13 @@
+form .form-group input[type="radio"] {
+    flex: 0;
+    margin: 0px 5px;
+    top: 0px;
+}
+
+form .form-group > div {
+    margin: 0px 5px;
+}
+
+form footer.form-footer {
+    margin: 0px 5px;
+}

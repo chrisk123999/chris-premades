@@ -26,16 +26,40 @@ await chrisPremades.DialogApp.dialog(
     'Desert Survey', 
     'Do you like Pie or Cake?', 
     [
-        ['checkbox', [['Pie', 'pie'], ['Cake', 'cake', true]]],
-        ['radio', [['I agree', 'agree'], ['I disagree', 'diagree', true]]],
-        ['select', [
-            ['How Many Cakes?', 'howManyCakes', {minAmount: 0, maxAmount: 10, currentAmount: 1, weight: 1}], 
-            ['How Many Pies?', 'howManyPies', {minAmount: 0, maxAmount: 5, currentAmount: 1, weight: 2}]],
+        ['checkbox', 
+            [
+                ['Pie', 'pie'], 
+                ['Cake', 'cake', {isChecked: true}]
+            ]
+        ],
+        ['radio', 
+            [
+                ['I agree', 'agree'], 
+                ['I disagree', 'diagree', {isSelected: true}]
+            ]
+        ],
+        ['select', 
+            [
+                ['How Many Cakes?', 'howManyCakes', {minAmount: 0, maxAmount: 10, currentAmount: 1, weight: 1}], 
+                ['How Many Pies?', 'howManyPies', {minAmount: 0, maxAmount: 5, currentAmount: 1, weight: 2}]
+            ],
             {totalMax: 10}
         ],
-        ['text', [['How much do you like cake?', 'likeCake', {currentValue: 'I really like it'}]]],
-        ['number', [['On a scale of one to ten, how much do you like pie?', 'likePie', {currentValue: 5}]]],
-        ['filePicker', [['What does your cake look like?', '', {type: 'image'}]]]
+        ['text', 
+            [
+                ['How much do you like cake?', 'likeCake', {currentValue: 'I really like it'}]
+            ]
+        ],
+        ['number', 
+            [
+                ['On a scale of one to ten, how much do you like pie?', 'likePie', {currentValue: 5}]
+            ]
+        ],
+        ['filePicker', 
+            [
+                ['What does your cake look like?', '', {type: 'image'}]
+            ]
+        ]
     ],
     'okCancel'
 ).render(true)
@@ -296,6 +320,17 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         switch (targetInput.type) {
             case 'checkbox':
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
+                break;
+            case 'select-one':
+                // Note this only works for select dropdowns that contain numbers, because that's how they're all treated so far
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].currentAmount = Number(targetInput.value);
+                break;
+            case 'text':
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value
+                break;
+            case 'radio':
+                currentContext.inputs[targetInputId[0]].options.forEach(currOpt => currOpt.isSelected = false);
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isSelected = targetInput.checked
                 break;
         }
         this.context = currentContext;
