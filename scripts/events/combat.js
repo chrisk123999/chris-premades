@@ -3,7 +3,7 @@ import {actorUtils} from '../utilities/actorUtils.js';
 import {socketUtils} from '../utilities/socketUtils.js';
 import {templateUtils} from '../utilities/templateUtils.js';
 import {effectUtils} from '../utilities/effectUtils.js';
-import {helpers} from '../utilities/genericUtils.js';
+import {genericUtils} from '../utilities/genericUtils.js';
 function getEffectMacroData(effect) {
     return effect.flags['chris-premades']?.macros?.effect ?? [];
 }
@@ -38,7 +38,8 @@ function collectTokenMacros(token, pass) {
                         baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                         saveDC: effectUtils.getSaveDC(effect) ?? -1
                     },
-                    macro: i.macro
+                    macro: i.macro,
+                    name: effect.name
                 });
             });
         }
@@ -55,7 +56,8 @@ function collectTokenMacros(token, pass) {
                     castLevel: templateUtils.getCastLevel(template) ?? -1,
                     saveDC: templateUtils.getSaveDC(template) ?? -1
                 },
-                macro: i.macro
+                macro: i.macro,
+                name: templateUtils.getName(template)
             });
         });
     }
@@ -63,7 +65,7 @@ function collectTokenMacros(token, pass) {
 }
 function getSortedTriggers(token, pass) {
     let allTriggers = collectTokenMacros(token, pass);
-    let names = new Set(allTriggers.map(i => i.entity.name));
+    let names = new Set(allTriggers.map(i => i.name));
     let maxMap = {};
     names.forEach(i => {
         let maxLevel = Math.max(...allTriggers.map(i => i.castData.castLevel));
@@ -111,7 +113,7 @@ export async function updateCombat(combat, changes, context) {
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
     let currentToken = combat.scene.tokens.get(combat.current.tokenId)?.object;
     let previousToken = combat.scene.tokens.get(combat.previous.tokenId)?.object;
-    await helpers.sleep(50);
+    await genericUtils.sleep(50);
     await executeMacroPass(previousToken, 'turnEnd');
     await executeMacroPass(currentToken, 'turnStart');
     //Turn End Macros

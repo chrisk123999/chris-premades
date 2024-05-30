@@ -10,4 +10,15 @@ export function registerSettings() {
         type: String,
         default: ''
     }, 'hidden');
+    addSetting({
+        name: 'hideNames',
+        hint: 'Hide names for enemy targets:',
+        scope: 'world',
+        config: false,
+        type: Boolean,
+        default: false
+    }, 'Dialog');
+}
+export function getSetting(key) {
+    return game.settings.get('chris-premades', key);
 }
