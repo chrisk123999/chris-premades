@@ -13,29 +13,117 @@ let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  */
 /*  
 [
-    ['button', [['label', value]],
-    ['checkbox', [['label', value, {isChecked, image}]],
-    ['radio', [['label', value, {isSelected, image}]]],
-    ['select', [['label', value, {minAmount, maxAmount, currentAmount, weight, image}]], {totalMax}],
-    ['text', [['label', value, {currentValue, image}]]],
-    ['number', [['label', value, {currentValue, image}]]],
-    ['filePicker', [['label', value, {currentValue, type}]]],
+    ['button', [['label', value]], {displayVertical}],
+    ['checkbox', [['label', value, {isChecked, image}]], {displayVertical}],
+    ['radio', [['label', value, {isSelected, image}]], {displayVertical}],
+    ['select', [['label', value, {minAmount, maxAmount, currentAmount, weight, image}]], {totalMax, displayVertical}],
+    ['text', [['label', value, {currentValue, image}]], {displayVertical}],
+    ['number', [['label', value, {currentValue, image}]], {displayVertical}],
+    ['filePicker', [['label', value, {currentValue, type}]], {displayVertical}],
 ]
+
+Format is an array containing: [typeOfField, [fields], globalOptionsForThisField]
 
 await chrisPremades.DialogApp.dialog(
     'Desert Survey', 
     'Do you like Pie or Cake?', 
     [
-        ['checkbox', [['Pie', 'pie'], ['Cake', 'cake', true]]],
-        ['radio', [['I agree', 'agree'], ['I disagree', 'diagree', true]]],
-        ['select', [
-            ['How Many Cakes?', 'howManyCakes', {minAmount: 0, maxAmount: 10, currentAmount: 1, weight: 1}], 
-            ['How Many Pies?', 'howManyPies', {minAmount: 0, maxAmount: 5, currentAmount: 1, weight: 2}]],
-            {totalMax: 10}
+        [
+            'checkbox', 
+            [
+                {
+                    label: 'Pie',
+                    value: 'pie'
+                }, {
+                    label: 'Cake',
+                    value: 'cake',
+                    options: {
+                        isChecked: true
+                    }
+                }
+            ]
         ],
-        ['text', [['How much do you like cake?', 'likeCake', {currentValue: 'I really like it'}]]],
-        ['number', [['On a scale of one to ten, how much do you like pie?', 'likePie', {currentValue: 5}]]],
-        ['filePicker', [['What does your cake look like?', '', {type: 'image'}]]]
+        [
+            'radio', 
+            [
+                {
+                    label: 'I agree',
+                    value: 'agree'
+                }, {
+                    label: 'I disagree',
+                    value: 'disagree',
+                    options: {
+                        isSelected: true
+                    }
+                }
+            ]
+        ],
+        [
+            'select', 
+            [
+                {
+                    label: 'How Many Cakes',
+                    value: 'howManyCakes',
+                    options: {
+                        minAmount: 0,
+                        maxAmount: 10,
+                        currentAmount: 1,
+                        weight: 1
+                    }
+                }, {
+                    label: 'How Many Pies?',
+                    value: 'howManyPies',
+                    options: {
+                        minAmount: 0,
+                        maxAmount: 5,
+                        currentAmount: 1,
+                        weight: 2
+                    }
+                }
+            ],
+            {
+                totalMax: 10
+            }
+        ],
+        [
+            'text', 
+            [
+                {
+                    label: 'How much do you like cake?',
+                    value: 'likeCake',
+                    options: {
+                        currentValue: 'I really like it'
+                    }
+                }
+            ]
+        ],
+        [
+            'number', 
+            [
+                {
+                    label: 'On a scale of one to ten, how much do you like pie?',
+                    value: 'likePie',
+                    options: {
+                        currentValue: 5
+                    }
+                }
+            ],
+            {
+                displayAsRows: true
+            }
+        ],
+        [
+            'filePicker', 
+            [
+                {
+                    label: 'What does your cake look like?',
+                    value: '',
+                    options: {
+                        type: 'image'
+                    }
+                }
+            ]
+        ]
     ],
     'okCancel'
 ).render(true)
@@ -164,107 +252,113 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         context.content = this.content;
         context.inputs = [];
         context.buttons = [];
-        for (let i of this.inputs) {
-            switch (i[0]) {
+        for (let [inputType, inputFields, inputOptions] of this.inputs) {
+            switch (inputType) {
                 case 'button': 
-                    i[1].forEach(([label, value]) => context.buttons.push(this.makeButton(label, value)));
+                    inputFields.forEach(([label, value]) => context.buttons.push(this.makeButton(label, value)));
                     break;
                 case 'checkbox': {
                     let checkboxOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         checkboxOptions.push({
-                            label: j[0], 
-                            value: j[1], 
-                            isChecked: j?.[2]?.isChecked ?? false, 
-                            image: j?.[2]?.image ?? undefined
+                            label: currField.label, 
+                            value: currField.value, 
+                            isChecked: currField.options?.isChecked ?? false, 
+                            image: currField.options?.image ?? undefined
                         });
                     }
                     context.inputs.push({
                         isCheckbox: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: checkboxOptions
                     });
                     break;
                 } 
                 case 'radio': {
                     let radioOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         radioOptions.push({
-                            label: j[0], 
-                            value: j[1], 
-                            isSelected: j?.[2]?.isSelected ?? false, 
-                            image: j?.[2]?.image ?? undefined
+                            label: currField.label, 
+                            value: currField.value, 
+                            isSelected: currField.options?.isSelected ?? false, 
+                            image: currField.options?.image ?? undefined
                         });
                     }
                     context.inputs.push({
                         isRadio: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: radioOptions
                     });
                     break;
                 }
                 case 'select': {
                     let selectOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         selectOptions.push({
-                            label: j[0], 
-                            value: j[1],
-                            minAmount: j?.[2]?.minAmount ?? 0,
-                            maxAmount: j?.[2]?.maxAmount ?? 10, 
-                            currentAmount: j?.[2]?.currentAmount ?? 0,
-                            weight: j?.[2]?.weight,
-                            options: this.makeArray(j?.[2]?.minAmount ?? 0, j?.[2]?.maxAmount ?? 10),
-                            image: j?.[2]?.image ?? undefined});
+                            label: currField.label, 
+                            value: currField.value,
+                            minAmount: currField.options?.minAmount ?? 0,
+                            maxAmount: currField.options?.maxAmount ?? 10, 
+                            currentAmount: currField.options?.currentAmount ?? 0,
+                            weight: currField.options?.weight,
+                            options: this.makeArray(currField.options?.minAmount ?? 0, currField.options?.maxAmount ?? 10),
+                            image: currField.options?.image ?? undefined});
                     }
                     context.inputs.push({
                         isSelect: true,
-                        totalMax: i[2]?.totalMax,
+                        totalMax: inputOptions?.totalMax,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: selectOptions
                     });
                     break;
                 }
                 case 'text': {
                     let textOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         textOptions.push({
-                            label: j[0], 
-                            id: j[1],
-                            value: j?.[2]?.currentValue ?? '',
-                            image: j?.[2]?.image ?? undefined
+                            label: currField.label, 
+                            id: currField.value,
+                            value: currField.options?.currentValue ?? '',
+                            image: currField.options?.image ?? undefined
                         });
                     }
                     context.inputs.push({
                         isText: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: textOptions
                     });
                     break;
                 }
                 case 'number': {
                     let numberOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         numberOptions.push({
-                            label: j[0], 
-                            id: j[1],
-                            value: j?.[2]?.currentValue ?? 0,
-                            image: j?.[2]?.image ?? undefined
+                            label: currField.label, 
+                            id: currField.value,
+                            value: currField.options?.currentValue ?? 0,
+                            image: currField.options?.image ?? undefined
                         });
                     }
                     context.inputs.push({
                         isNumber: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: numberOptions
                     });
                     break;
                 }
                 case 'filePicker': {
                     let filePickerOptions = [];
-                    for (let j of i[1]) {
+                    for (let currField of inputFields) {
                         filePickerOptions.push({
-                            label: j[0], 
-                            id: j[1],
-                            value: j?.[2]?.currentValue ?? 0,
-                            type: j?.[2]?.type ?? 'any' // FilePicker.FILE_TYPES => ['image', 'audio', 'video', 'text', 'imagevideo', 'font', 'folder', 'any']
+                            label: currField.label, 
+                            id: currField.value,
+                            value: currField.options?.currentValue ?? 0,
+                            type: currField.options?.type ?? 'any' // FilePicker.FILE_TYPES => ['image', 'audio', 'video', 'text', 'imagevideo', 'font', 'folder', 'any']
                         });
                     }
                     context.inputs.push({
                         isFilePicker: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: filePickerOptions
                     });
                     break;
@@ -296,6 +390,17 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         switch (targetInput.type) {
             case 'checkbox':
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
+                break;
+            case 'select-one':
+                // Note this only works for select dropdowns that contain numbers, because that's how they're all treated so far
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].currentAmount = Number(targetInput.value);
+                break;
+            case 'text':
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value
+                break;
+            case 'radio':
+                currentContext.inputs[targetInputId[0]].options.forEach(currOpt => currOpt.isSelected = false);
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isSelected = targetInput.checked
                 break;
         }
         this.context = currentContext;
