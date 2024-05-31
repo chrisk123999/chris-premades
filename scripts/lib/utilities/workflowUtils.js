@@ -11,6 +11,10 @@ async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}) 
     workflow.damageRolls.push(roll);
     await workflow.setDamageRolls(workflow.damageRolls);
 }
+async function applyDamage(tokens, value, damageType) {
+    return  await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
+}
 export let workflowUtils = {
-
+    bonusDamage,
+    applyDamage
 };

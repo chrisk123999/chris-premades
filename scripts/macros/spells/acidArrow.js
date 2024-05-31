@@ -1,13 +1,16 @@
+import {workflowUtils} from '../../utils.js';
 async function attack(workflow) {
-    console.log(' --- Here ---');
-    if (!workflow.isFumble) return;
-    workflow.isFumble = false;
-    let roll = await new Roll('-100').evaluate();
-    workflow.setAttackRoll(roll);
+    if (workflow.isFumble) {
+        workflow.isFumble = false;
+        let roll = await new Roll('-100').evaluate();
+        workflow.setAttackRoll(roll);
+    }
+    
 }
 async function damage(workflow) {
     if (workflow.hitTargets.size) return;
-    //apply damage function here
+    let missedTargets = workflow.targets.filter(i => !workflow.hitTargets.has(i));
+    workflowUtils.applyDamage(missedTargets, Math.floor(workflow.damageRoll.total / 2), workflow.defaultDamageType);
 }
 export let acidArrow = {
     name: 'Melf\'s Acid Arrow',
@@ -25,5 +28,18 @@ export let acidArrow = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'color',
+            type: 'select',
+            default: 'green',
+            options: [
+                {
+                    label: 'Green',
+                    value: 'green'
+                }
+            ]
+        }
+    ]
 };

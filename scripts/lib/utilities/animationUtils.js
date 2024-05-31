@@ -1,3 +1,4 @@
+
 function jb2aCheck() {
     let patreon = game.modules.get('jb2a_patreon')?.active;
     let free = game.modules.get('JB2A_DnD5e')?.active;
@@ -10,3 +11,21 @@ function jb2aCheck() {
     ui.notifications.warn('No JB2A module active! Please install JB2A.');
     return false;
 }
+function simpleAttack(sourceToken, targetToken, animation, {sound, missed}) {
+    /* eslint-disable indent */
+    new Sequence()
+        .effect()
+            .atLocation(sourceToken)
+            .stretchTo(targetToken)
+            .file(animation)
+            .missed(missed)
+        .sound()
+            .playIf(sound)
+            .file(sound)
+        .play();
+    /* eslint-enable indent */
+}
+export let animationUtils = {
+    jb2aCheck,
+    simpleAttack
+};

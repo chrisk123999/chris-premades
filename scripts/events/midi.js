@@ -40,6 +40,7 @@ export async function preItemRoll(workflow) {
     await executeMacroPass(workflow, 'preItemRoll');
 }
 async function executeMacro(workflow, macro) {
+    console.log('CPR: Executing Macro: ' + macro.name);
     try {
         await macro(workflow);
     } catch (error) {
@@ -48,6 +49,7 @@ async function executeMacro(workflow, macro) {
     }
 }
 async function executeMacroPass(workflow, pass) {
+    console.log('CPR: Executing Macro Pass: ' + pass);
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
     let passMacros = macrosMap[id]?.[pass];
@@ -63,4 +65,7 @@ export async function postDamageRoll(workflow) {
 }
 export async function RollComplete(workflow) {
     await executeMacroPass(workflow, 'RollComplete');
+    let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
+    if (!id) return;
+    delete macrosMap[id];
 }
