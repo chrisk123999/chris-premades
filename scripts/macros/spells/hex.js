@@ -1,10 +1,4 @@
-import {constants} from '../../constants.js';
-import {errors} from '../../events/errors.js';
-import {dialogUtils} from '../../utilities/dialogUtils.js';
-import {effectUtils} from '../../utilities/effectUtils.js';
-import {genericUtils} from '../../utilities/genericUtils.js';
-import {itemUtils} from '../../utilities/itemUtils.js';
-import {rollUtils} from '../../utilities/rollUtils.js';
+import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../utils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.entries(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -85,7 +79,7 @@ async function damage(workflow) {
     if (!workflow.hitTargets.find(i => validTargetUuids.includes(i.uuid))) return;
     let damageType = effect.flags['chris-premades'].hex.damageType;
     let formula = effect.flags['chris-premades'].hex.damageType;
-    await rollUtils.bonusDamage(workflow, formula, {damageType: damageType});
+    await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
 async function move(workflow) {
     if (workflow.targets.size != 1) return;

@@ -1,10 +1,6 @@
-import {errors} from '../events/errors.js';
-import {macros} from '../macros.js';
+import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
-import {actorUtils} from './actorUtils.js';
-import {effectUtils} from './effectUtils.js';
-import {genericUtils} from './genericUtils.js';
-import {socketUtils} from './socketUtils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
 function getSaveDC(item) {
     return item.getSaveDC();
 }

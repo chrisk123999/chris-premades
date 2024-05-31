@@ -1,4 +1,4 @@
-import {genericUtils} from '../utilities/genericUtils.js';
+import {genericUtils} from '../utils.js';
 function missingPack() {
     ui.notifications.warn(genericUtils.translate('CHRISPREMADES.error.missingPack'));
 }

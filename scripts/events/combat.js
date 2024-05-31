@@ -1,9 +1,5 @@
-import {macros} from '../macros.js';
-import {actorUtils} from '../utilities/actorUtils.js';
-import {socketUtils} from '../utilities/socketUtils.js';
-import {templateUtils} from '../utilities/templateUtils.js';
-import {effectUtils} from '../utilities/effectUtils.js';
-import {genericUtils} from '../utilities/genericUtils.js';
+import * as macros from '../macros.js';
+import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils} from '../utils.js';
 function getEffectMacroData(effect) {
     return effect.flags['chris-premades']?.macros?.effect ?? [];
 }

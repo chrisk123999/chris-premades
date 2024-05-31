@@ -1,7 +1,5 @@
 import {socket} from '../sockets.js';
-import {actorUtils} from './actorUtils.js';
-import {genericUtils} from './genericUtils.js';
-import {socketUtils} from './socketUtils.js';
+import {actorUtils, genericUtils, socketUtils} from '../../utils.js';
 function getCastData(effect) {
     return effect.flags['chris-premades']?.castData ?? effect.flags['midi-qol']?.castData;
 }

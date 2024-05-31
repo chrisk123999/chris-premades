@@ -1,6 +1,5 @@
-import {macros} from '../macros.js';
-import {actorUtils} from '../utilities/actorUtils.js';
-import {genericUtils} from '../utilities/genericUtils.js';
+import * as macros from '../macros.js';
+import {actorUtils, genericUtils} from '../utils.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }

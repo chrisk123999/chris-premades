@@ -1,4 +1,5 @@
 async function attack(workflow) {
+    console.log(' --- Here ---');
     if (!workflow.isFumble) return;
     workflow.isFumble = false;
     let roll = await new Roll('-100').evaluate();

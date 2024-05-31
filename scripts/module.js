@@ -3,7 +3,7 @@ import {setupJournal} from './journal.js';
 import {registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {registerCustomTypes} from './customTypes.js';
-import {devUtils} from './utilities/devUtils.js';
+import {devUtils} from './utils.js';
 Hooks.once('init', () => {
     registerSettings();
     registerCustomTypes();
