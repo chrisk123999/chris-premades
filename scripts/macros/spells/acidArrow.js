@@ -1,11 +1,14 @@
-import {workflowUtils} from '../../utils.js';
+import {dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function attack(workflow) {
     if (workflow.isFumble) {
         workflow.isFumble = false;
         let roll = await new Roll('-100').evaluate();
         workflow.setAttackRoll(roll);
     }
-    
+    if (itemUtils.getConfig(workflow.item, 'playAnimation')) return;
+    let color = itemUtils.getConfig(workflow.item, 'color');
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
+    //here
 }
 async function damage(workflow) {
     if (workflow.hitTargets.size) return;
@@ -36,10 +39,40 @@ export let acidArrow = {
             default: 'green',
             options: [
                 {
+                    label: 'Blue',
+                    value: 'CHRISPREMADES.colors.blue',
+                    patreon: true
+                },
+                {
                     label: 'Green',
-                    value: 'green'
+                    value: 'CHRISPREMADES.colors.green',
+                    patreon: true
+                },
+                {
+                    label: 'Pink',
+                    value: 'CHRISPREMADES.colors.green',
+                    patreon: true
+                },
+                {
+                    label: 'Purple',
+                    value: 'CHRISPREMADES.colors.green',
+                    patreon: true
+                },
+                {
+                    label: 'Red',
+                    value: 'CHRISPREMADES.colors.Red',
+                    patreon: true
+                },
+                {
+                    label: 'Orange',
+                    value: 'CHRISPREMADES.colors.orange',
+                    patreon: true
                 }
             ]
+        },
+        {
+            value: 'playAnimation',
+            type: 'checkbox'
         }
     ]
 };
