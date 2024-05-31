@@ -4,7 +4,7 @@ let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  * @param {string} title Dialog Window Title
  * @param {string} content Content placed above the Dialog inputs
  * @param {Array} inputs Form parts of the dialog
- * // [['inputType', [['Label', value, options: {}]]]]
+ * // ['inputType', [{label: 'label', name: 'name', options: {}}]]
  * @param {string} buttons String corresponding to localized buttons to confirm/cancel dialog
  * // 'yesNo', 'okayCancel'
  * 
@@ -13,13 +13,14 @@ let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  */
 /*  
 [
-    ['button', [['label', value]], {displayVertical}],
-    ['checkbox', [['label', value, {isChecked, image}]], {displayVertical}],
-    ['radio', [['label', value, {isSelected, image}]], {displayVertical}],
-    ['select', [['label', value, {minAmount, maxAmount, currentAmount, weight, image}]], {totalMax, displayVertical}],
-    ['text', [['label', value, {currentValue, image}]], {displayVertical}],
-    ['number', [['label', value, {currentValue, image}]], {displayVertical}],
-    ['filePicker', [['label', value, {currentValue, type}]], {displayVertical}],
+    ['button', [{label: 'label', name: 'name'}], {displayVertical}],
+    ['checkbox', [{label: 'label', name: 'name', {isChecked, image}}], {displayVertical}],
+    ['radio', [{label: 'label', name: 'name', {isChecked, image}}], {radioName displayVertical}],
+    ['selectAmount', [{label: 'label', name: 'name', {minAmount, maxAmount, currentAmount, weight, image}}], {totalMax, displayVertical}],
+    ['selectOption', [{label: 'label', name: 'name', {options, currentValue, image}}], {displayVertical}],
+    ['text', [{label: 'label', name: 'name', {currentValue, image}}], {displayVertical}],
+    ['number', [{label: 'label', name: 'name', {currentValue, image}}], {displayVertical}],
+    ['filePicker', [{label: 'label', name: 'name', {currentValue, type}}], {displayVertical}],
 ]
 
 Format is an array containing: [typeOfField, [fields], globalOptionsForThisField]
@@ -33,10 +34,10 @@ await chrisPremades.DialogApp.dialog(
             [
                 {
                     label: 'Pie',
-                    value: 'pie'
+                    name: 'pie'
                 }, {
                     label: 'Cake',
-                    value: 'cake',
+                    name: 'cake',
                     options: {
                         isChecked: true
                     }
@@ -48,22 +49,22 @@ await chrisPremades.DialogApp.dialog(
             [
                 {
                     label: 'I agree',
-                    value: 'agree'
+                    name: 'agree'
                 }, {
                     label: 'I disagree',
-                    value: 'disagree',
+                    name: 'disagree',
                     options: {
-                        isSelected: true
+                        isChecked: true
                     }
                 }
             ]
         ],
         [
-            'select', 
+            'selectAmount', 
             [
                 {
                     label: 'How Many Cakes',
-                    value: 'howManyCakes',
+                    name: 'howManyCakes',
                     options: {
                         minAmount: 0,
                         maxAmount: 10,
@@ -72,7 +73,7 @@ await chrisPremades.DialogApp.dialog(
                     }
                 }, {
                     label: 'How Many Pies?',
-                    value: 'howManyPies',
+                    name: 'howManyPies',
                     options: {
                         minAmount: 0,
                         maxAmount: 5,
@@ -90,7 +91,7 @@ await chrisPremades.DialogApp.dialog(
             [
                 {
                     label: 'How much do you like cake?',
-                    value: 'likeCake',
+                    name: 'likeCake',
                     options: {
                         currentValue: 'I really like it'
                     }
@@ -102,7 +103,7 @@ await chrisPremades.DialogApp.dialog(
             [
                 {
                     label: 'On a scale of one to ten, how much do you like pie?',
-                    value: 'likePie',
+                    name: 'likePie',
                     options: {
                         currentValue: 5
                     }
@@ -117,16 +118,29 @@ await chrisPremades.DialogApp.dialog(
             [
                 {
                     label: 'What does your cake look like?',
-                    value: '',
+                    name: 'image',
                     options: {
                         type: 'image'
+                    }
+                }
+            ]
+        ],
+        [
+            'button',
+            [
+                {
+                    label: "I have a picture!",
+                    name: 'myButton',
+                    options: {
+                        displayAsRows: true
+                        image: 'icons/creatures/magical/humanoid-horned-rider.webp'
                     }
                 }
             ]
         ]
     ],
     'okCancel'
-).render(true)
+)
 
 buttonDialog(title, content, buttons)
 // ('My Dialog', 'This is a dialog', ['Cool', true])
@@ -158,7 +172,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             this.buttonTemplate = {
                 type: 'submit',
                 label: 'label',
-                name: 'value',
+                name: 'name',
                 action: 'confirm'
             };
         }
@@ -169,12 +183,14 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             handler: DialogApp.formHandler,
             submitOnChange: false,
             closeOnSubmit: false,
+            id: 'dialog-app-window'
         },
         actions: {
             confirm: DialogApp.confirm
         },
         window: {
-            title: 'Default Title'
+            title: 'Default Title',
+            resizable: true,
         }
     };
     static PARTS = {
@@ -236,8 +252,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         this._context = value;
     }
     // Helper for formatting buttons
-    makeButton(label, value) {
-        return {type: 'submit', action: 'confirm', label: label, name: value};
+    makeButton(label, name) {
+        return {type: 'submit', action: 'confirm', label: label, name: name};
     }
     makeArray(firstNum, lastNum) {
         let array = [];
@@ -254,15 +270,29 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         context.buttons = [];
         for (let [inputType, inputFields, inputOptions] of this.inputs) {
             switch (inputType) {
-                case 'button': 
-                    inputFields.forEach(([label, value]) => context.buttons.push(this.makeButton(label, value)));
+                case 'button': {
+                    let buttonOptions = [];
+                    for (let currField of inputFields) {
+                        buttonOptions.push({
+                            label: currField.label,
+                            name: currField.name,
+                            image: currField.options?.image ?? undefined,
+                            tooltip: currField.options?.tooltip ?? undefined,
+                        });
+                    }
+                    context.inputs.push({
+                        isButton: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
+                        options: buttonOptions
+                    });
                     break;
+                }
                 case 'checkbox': {
                     let checkboxOptions = [];
                     for (let currField of inputFields) {
                         checkboxOptions.push({
                             label: currField.label, 
-                            value: currField.value, 
+                            name: currField.name, 
                             isChecked: currField.options?.isChecked ?? false, 
                             image: currField.options?.image ?? undefined
                         });
@@ -279,8 +309,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     for (let currField of inputFields) {
                         radioOptions.push({
                             label: currField.label, 
-                            value: currField.value, 
-                            isSelected: currField.options?.isSelected ?? false, 
+                            name: currField.name, 
+                            isChecked: currField.options?.isChecked ?? false, 
                             image: currField.options?.image ?? undefined
                         });
                     }
@@ -291,22 +321,40 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     });
                     break;
                 }
-                case 'select': {
-                    let selectOptions = [];
+                case 'selectAmount': {
+                    let selectAmounts = [];
                     for (let currField of inputFields) {
-                        selectOptions.push({
+                        selectAmounts.push({
                             label: currField.label, 
-                            value: currField.value,
+                            name: currField.name,
                             minAmount: currField.options?.minAmount ?? 0,
                             maxAmount: currField.options?.maxAmount ?? 10, 
                             currentAmount: currField.options?.currentAmount ?? 0,
-                            weight: currField.options?.weight,
+                            currentMaxAmount: currField.options?.maxAmount ?? 10,
+                            weight: currField.options?.weight ?? 1,
                             options: this.makeArray(currField.options?.minAmount ?? 0, currField.options?.maxAmount ?? 10),
                             image: currField.options?.image ?? undefined});
                     }
                     context.inputs.push({
-                        isSelect: true,
+                        isSelectAmount: true,
                         totalMax: inputOptions?.totalMax,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
+                        options: selectAmounts
+                    });
+                    break;
+                }
+                case 'selectOption': {
+                    let selectOptions = [];
+                    for (let currField of inputFields) {
+                        selectOptions.push({
+                            label: currField.label, 
+                            name: currField.name,
+                            currentValue: currField.options?.currentValue ?? 'none',
+                            options: currField.options?.options ?? ['none'],
+                            image: currField.options?.image ?? undefined});
+                    }
+                    context.inputs.push({
+                        isSelectOption: true,
                         displayAsRows: inputOptions?.displayAsRows ?? false,
                         options: selectOptions
                     });
@@ -317,7 +365,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     for (let currField of inputFields) {
                         textOptions.push({
                             label: currField.label, 
-                            id: currField.value,
+                            name: currField.name,
                             value: currField.options?.currentValue ?? '',
                             image: currField.options?.image ?? undefined
                         });
@@ -334,7 +382,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     for (let currField of inputFields) {
                         numberOptions.push({
                             label: currField.label, 
-                            id: currField.value,
+                            name: currField.name,
                             value: currField.options?.currentValue ?? 0,
                             image: currField.options?.image ?? undefined
                         });
@@ -351,8 +399,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     for (let currField of inputFields) {
                         filePickerOptions.push({
                             label: currField.label, 
-                            id: currField.value,
-                            value: currField.options?.currentValue ?? 0,
+                            name: currField.name,
+                            value: currField.options?.currentValue ?? '',
                             type: currField.options?.type ?? 'any' // FilePicker.FILE_TYPES => ['image', 'audio', 'video', 'text', 'imagevideo', 'font', 'folder', 'any']
                         });
                     }
@@ -377,31 +425,51 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     async _prepareContext(options) {
         if (!this.context) this.formatInputs();
         let context = this.context;
-        console.log(context);
         return context;
+    }
+    // Does the math to make the selectAmount fields not able to select more than their combined max
+    currentMaxAmounts(input) {
+        let currentContextInput = foundry.utils.deepClone(input);
+        let max = currentContextInput.totalMax;
+        currentContextInput.options.forEach(option => max -= option.currentAmount * option.weight);
+        for (let i of currentContextInput.options) {
+            i.currentMaxAmount = Math.floor((max + (i.currentAmount * i.weight)) / i.weight);
+        }
+        return currentContextInput;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
     async _onChangeForm(formConfig, event) {
         let targetInput = event.target;
         let currentContext = this.context;
-        let targetInputId = JSON.parse(targetInput.id);    
-        console.log('Form is changing', formConfig, event);
-        console.log(event.target, event.target.name, event.target.checked, event.target.type, event.target.id);
+        let targetInputId = JSON.parse(targetInput.id);
         switch (targetInput.type) {
-            case 'checkbox':
+            case 'checkbox': {
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
                 break;
-            case 'select-one':
-                // Note this only works for select dropdowns that contain numbers, because that's how they're all treated so far
-                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].currentAmount = Number(targetInput.value);
+            }
+            case 'select-one': {
+                if (currentContext.inputs[targetInputId[0]].isSelectAmount) {
+                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].currentAmount = Number(targetInput.value);
+                    if (currentContext.inputs[targetInputId[0]].options[targetInputId[1]]?.weight) {
+                        currentContext.inputs[targetInputId[0]] = this.currentMaxAmounts(currentContext.inputs[targetInputId[0]]);
+                    }
+                } else {
+                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
+                }
                 break;
-            case 'text':
-                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value
+            }
+            case 'text': {
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
                 break;
-            case 'radio':
-                currentContext.inputs[targetInputId[0]].options.forEach(currOpt => currOpt.isSelected = false);
-                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isSelected = targetInput.checked
+            }
+            case 'radio': {
+                currentContext.inputs[targetInputId[0]].options.forEach(currOpt => currOpt.isChecked = false);
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
                 break;
+            }
+        }
+        if (targetInput.localName === 'file-picker') {
+            currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
         }
         this.context = currentContext;
         this.render(true);

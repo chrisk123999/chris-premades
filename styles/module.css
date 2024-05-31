@@ -40,3 +40,26 @@ form .form-group .row-display p.label-text {
     text-align: center;
     font-size: 15px;
 }
+
+form .form-group button.form-button {
+    padding: 0 0;
+    margin: 0px 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+form .form-group img.button-image {
+    width: 50px;
+    height: 50px;
+    border: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+form .form-group p.button-text {
+    width: 100%;
+    padding: 1%;
+    font-size: 15px;
+}

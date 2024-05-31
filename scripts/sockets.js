@@ -27,6 +27,11 @@ async function updateEntity(entityUuid, updates) {
     if (!entity) return;
     await entity.update(updates);
 }
+async function setFlag(entityUuid, scope, key, value) {
+    let entity = await fromUuid(entityUuid);
+    if (!entity) return;
+    await entity.setFlag(scope, key, value);
+}
 async function createFolder(folderData) {
     let folder = await Folder.create(folderData);
     return folder.uuid;
@@ -65,7 +70,8 @@ let sockets = [
     createActor,
     addDependents,
     createEmbeddedDocuments,
-    addFavorites
+    addFavorites,
+    setFlag
 ];
 export let socket;
 export function registerSockets() {

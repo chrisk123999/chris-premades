@@ -5,7 +5,7 @@ function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
 function getActorMacroData(actor) {
-    let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor).concat();
+    let items = actor.items.filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
     let effects = actorUtils.getEffects(actor).filter(i => i.flags?.['chris-premades']?.macros?.midi?.actor);
     let combined = items.concat(effects);
     if (!combined.length) return [];

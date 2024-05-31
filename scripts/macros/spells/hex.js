@@ -4,6 +4,7 @@ import {dialogUtils} from '../../utilities/dialogUtils.js';
 import {effectUtils} from '../../utilities/effectUtils.js';
 import {genericUtils} from '../../utilities/genericUtils.js';
 import {itemUtils} from '../../utilities/itemUtils.js';
+import {rollUtils} from '../../utilities/rollUtils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.entries(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -43,13 +44,6 @@ async function use(workflow) {
             }
         ]
     };
-    let targetEffects = [];
-    for (let i of workflow.targets) {
-        if (i.actor) {
-            let targetEffect = await effectUtils.createEffect(i.actor, targetEffectData, {concentrationItem: workflow.item, identifier: 'hexed'});
-            targetEffects.push(targetEffect);
-        }
-    }
     let casterEffectData = {
         name: workflow.item.name,
         icon: workflow.item.img,
@@ -59,17 +53,25 @@ async function use(workflow) {
         },
         flags: {
             'chris-premades': {
-                hex: Array.from(workflow.targets).map(i => i.uuid)
+                hex: {
+                    targets: Array.from(workflow.targets).map(i => i.uuid),
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
+                    formula: itemUtils.getConfig(workflow.item, 'formula'),
+                    ability: selection
+                }
             }
         }
     };
-    effectUtils.addOnUseMacros(casterEffectData, 'midi.actor', ['hex']);
+    effectUtils.addOnUseMacros(casterEffectData, 'midi.actor', ['hexAttack']);
     let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: featureData.name}});
+    for (let i of workflow.targets) {
+        if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'hexed'});
+    }
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
@@ -79,13 +81,47 @@ async function damage(workflow) {
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;
-    let validTargetUuids = effect.flags['chris-premades'].hex;
+    let validTargetUuids = effect.flags['chris-premades'].hex.targets;
     if (!workflow.hitTargets.find(i => validTargetUuids.includes(i.uuid))) return;
-
-
+    let damageType = effect.flags['chris-premades'].hex.damageType;
+    let formula = effect.flags['chris-premades'].hex.damageType;
+    await rollUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
 async function move(workflow) {
-
+    if (workflow.targets.size != 1) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
+    if (!effect) return;
+    let oldTargets = effect.flags['chris-premades'].hex.targets;
+    let oldTarget;
+    if (oldTargets.length > 1) {
+        //dialog here
+    } else {
+        oldTarget = await fromUuid(oldTargets[0]);
+    }
+    if (oldTarget.actor) {
+        let oldEffect = effectUtils.getEffectByIdentifier(oldTarget.actor, 'hexed');
+        if (oldEffect) await genericUtils.remove(oldEffect);
+    }
+    oldTargets = oldTargets.filter(i => i != oldTarget);
+    oldTargets.push(workflow.targets.first().uuid);
+    await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
+    let effectData = {
+        name: genericUtils.translate('CHRISPREMADES.Hex.Hexed'),
+        icon: effect.icon,
+        origin: effect.origin,
+        duration: {
+            seconds: effect.duration.remaining
+        },
+        changes: [
+            {
+                key: 'flags.midi-qol.disadvantage.ability.check.' + effect.flags['chris-premades'].hex.ability,
+                mode: 0,
+                value: true,
+                priority: 20
+            }
+        ]
+    };
+    await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'hexed'});
 }
 export let hex = {
     name: 'Hex',
@@ -97,33 +133,46 @@ export let hex = {
                 macro: use,
                 priority: 50
             }
-        ],
-        actor: [
-            {
-                pass: 'postDamageRollComplete',
-                macro: damage,
-                priority: 250
-            }
         ]
     },
     config: [
         {
-            key: 'damageType',
+            value: 'damageType',
             type: 'select',
             default: 'necrotic',
-            options: constants.damageTypeOptions
+            options: constants.damageTypeOptions,
+            homebrew: true
+        },
+        {
+            value: 'formula',
+            type: 'text',
+            default: '1d6',
+            homebrew: true
         }
     ]
 };
 export let hexMove = {
     name: 'Hex - Move',
-    version: '0.12.0',
+    version: hex.version,
     midi: {
         item: [
             {
                 pass: 'RollComplete',
                 macro: move,
                 priority: 50
+            }
+        ]
+    }
+};
+export let hexAttack = {
+    name: 'Hex - Attack',
+    version: hex.version,
+    midi: {
+        actor: [
+            {
+                pass: 'postDamageRollComplete',
+                macro: damage,
+                priority: 250
             }
         ]
     }

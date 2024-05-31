@@ -1,4 +1,5 @@
 import {errors} from '../events/errors.js';
+import {macros} from '../macros.js';
 import {socket} from '../sockets.js';
 import {actorUtils} from './actorUtils.js';
 import {effectUtils} from './effectUtils.js';
@@ -55,10 +56,26 @@ function getItemDescription(name) {
 function isSpellFeature(item) {
     return item.system.type?.value === 'spellFeature';
 }
+function getConfig(item, key) {
+    let flagValue = item.flags['chris-premades']?.config?.[key];
+    if (flagValue) return flagValue;
+    let identifier = getIdentifer(item);
+    if (!identifier) return;
+    return macros[identifier]?.config?.find(i => i.value === key)?.default;
+}
+function getIdentifer(item) {
+    return item.flags['chris-premades']?.info?.identifier;
+}
+function getItemByIdentifer(actor, identifier) {
+    return actor.items.find(i => getIdentifer(i) === identifier);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
     getItemFromCompendium,
     getItemDescription,
-    isSpellFeature
+    isSpellFeature,
+    getConfig,
+    getIdentifer,
+    getItemByIdentifer
 };

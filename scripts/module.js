@@ -3,8 +3,7 @@ import {setupJournal} from './journal.js';
 import {registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {registerCustomTypes} from './customTypes.js';
-import {constants} from './constants.js';
-import {macros} from './macros.js';
+import {devUtils} from './utilities/devUtils.js';
 Hooks.once('init', () => {
     registerSettings();
     registerCustomTypes();
@@ -17,5 +16,6 @@ Hooks.once('ready', () => {
     }
 });
 globalThis['chrisPremades'] = {
-    DialogApp
+    DialogApp,
+    devUtils
 };
