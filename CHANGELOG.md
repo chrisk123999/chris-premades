@@ -1,14 +1,18 @@
+# 0.11.6 Release:
+## Bug Fixes:
+- Added missing spell item for Globe of Invulnerability.
+## Update Notes:
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+  
 # 0.11.5 Release:
 ## New Content:
 - Artillerist: Eldritch Cannon, Explosive Cannon, Fortified Position
 ## Update Notes:
 - Edited module and settings check.
-
+  
 # 0.11.4 Release:
 ## Bug Fixes:
 - Regeneration
-## Update Notes:
-- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
   
 # 0.11.3 Release:
 ## Bug Fixes:
