@@ -1,24 +1,49 @@
-function addSetting(options, category) {
-    game.settings.register('chris-premades', options.name, options);
+import {settings, settingsDevelopment, settingsDialog} from './applications/settings.js';
+function addSetting(options) {
+    let setting = {
+        scope: options.scope ?? 'world',
+        config: false,
+        type: options.type,
+        default: options.default,
+        onChange: options.onChange
+    };
+    game.settings.register('chris-premades', options.key, setting);
+    settings.addMenuSetting(options.key, options.category);
+}
+function addMenu(options) {
+    let menu = {
+        name: 'CHRISPREMADES.settingCategory.' + options.key + '.name',
+        label: 'CHRISPREMADES.settingCategory.' + options.key + '.label',
+        hint: 'CHRISPREMADES.settingCategory.' + options.key + '.hint',
+        icon: options.icon,
+        type: options.type,
+        restricted: options.restricted ?? true
+    };
+    game.settings.registerMenu('chris-premades', options.key, menu);
 }
 export function registerSettings() {
     addSetting({
-        name: 'gmID',
-        hint: 'The GM who is in control.',
-        scope: 'world',
-        config: false,
+        key: 'gmID',
         type: String,
-        default: ''
-    }, 'hidden');
+        default: '',
+        category: 'development'
+    });
     addSetting({
-        name: 'hideNames',
-        hint: 'Hide names for enemy targets:',
-        scope: 'world',
-        config: false,
+        key: 'hideNames',
         type: Boolean,
-        default: false
-    }, 'Dialog');
+        default: false,
+        category: 'dialog'
+    });
 }
-export function getSetting(key) {
-    return game.settings.get('chris-premades', key);
+export function registerMenus() {
+    addMenu({
+        key: 'development',
+        icon: 'fas fa-code',
+        type: settingsDevelopment,
+    }); //Will be commented out when actually released.
+    addMenu({
+        key: 'dialog',
+        icon: 'fas fa-bars',
+        type: settingsDialog,
+    });
 }

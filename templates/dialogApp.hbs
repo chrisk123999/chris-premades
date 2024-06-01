@@ -1,10 +1,10 @@
 <div id="dialog-app" class="dialog-content">
-    <p> {{content}} </p>
+    <p class="content"> {{content}} </p>
     {{#each inputs}}
         <div class="form-group">
         {{#if isButton}}
             {{#if displayAsRows}}
-                <div class="row-display">
+                <div class="flex-col">
                     {{#each options}}
                         <button type="submit" class="form-button" data-action="confirm" id="[{{@../index}}, {{@index}}]" name="{{name}}">
                             {{#if image}}<img class="button-image" src={{image}}>{{/if}}

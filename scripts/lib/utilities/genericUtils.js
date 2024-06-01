@@ -4,13 +4,19 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 function translate(key) {
-    //return game.i18n.localize(key);
+    return game.i18n.localize(key);
 }
 function setProperty(object, key, value) {
     return foundry.utils.setProperty(object, key, value);
 }
 function duplicate(object) {
     return foundry.utils.duplicate(object);
+}
+function deepClone(object) {
+    return foundry.utils.deepClone(object);
+}
+function mergeObject(original, other) {
+    return foundry.utils.mergeObject(original, other);
 }
 async function update(entity, updates) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
@@ -27,6 +33,9 @@ async function remove(entity) {
     if (hasPermission) await entity.delete();
     await socket.executeAsGM('deleteEntity', entity.uuid);
 }
+export function getCPRSetting(key) {
+    return game.settings.get('chris-premades', key);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -34,5 +43,8 @@ export let genericUtils = {
     duplicate,
     update,
     remove,
-    setFlag
+    setFlag,
+    deepClone,
+    mergeObject,
+    getCPRSetting
 };

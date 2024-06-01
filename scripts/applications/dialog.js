@@ -163,8 +163,10 @@ button, checkbox, radio, select, text, number, filePicker
 export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(options) {
         super();
+        console.log(this);
         if (options?.length > 0) {
-            let [title, content, inputs, buttons] = options;
+            let [title, content, inputs, buttons, config] = options;
+            this.position.width = config?.width ?? 'auto';
             this.windowTitle = title,
             this.content = content,
             this.inputs = inputs,

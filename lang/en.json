@@ -3,6 +3,49 @@
         "Ok": "Ok",
         "Cancel": "Cancel",
         "Yes": "Yes",
-        "No": "No"
+        "No": "No",
+        "settings": {
+            "gmID": {
+                "name": "Gamemaster User ID",
+                "hint": "The Gamemaster ID used for sockets. Automatically set."
+            },
+            "hideNames": {
+                "name": "Hide Names",
+                "hint": "Should enemy names be hidden in dialogs."
+            }
+        },
+        "settingCategory": {
+            "development": {
+                "name": "Development Options",
+                "label": "Development",
+                "hint": "Settings for developers."
+            },
+            "dialog": {
+                "name": "Dialog Options",
+                "label": "Dialog",
+                "hint": "Settings for dialogs."
+            }
+        },
+        "config": {
+            "playAnimation": "Play Animation:",
+            "color": "Color:",
+            "colors": {
+                "blue": "Blue",
+                "green": "Green",
+                "pink": "Pink",
+                "purple": "Purple",
+                "red": "Red",
+                "orange": "Orange"
+            },
+            "sound": "Sound:"
+        },
+        "macros": {
+            "hex": {
+                "hexed": "Hexed"
+            }
+        },
+        "section": {
+            "spellFeatures": "Spell Features"
+        }
     }
 }

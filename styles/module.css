@@ -43,7 +43,8 @@ form .form-group .row-display p.label-text {
 
 form .form-group button.form-button {
     padding: 0 0;
-    margin: 0px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 3px;
     margin-bottom: 3px;
 }
@@ -62,4 +63,19 @@ form .form-group p.button-text {
     width: 100%;
     padding: 1%;
     font-size: 15px;
+}
+
+form .content {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+form .form-group .flex-col button.form-button {
+    padding: 0 0;
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }

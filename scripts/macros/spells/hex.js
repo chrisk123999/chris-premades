@@ -2,7 +2,7 @@ import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, wo
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.entries(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
-    let selection = await dialogUtils.buttonMenu({title: workflow.item.name, description:'CHRISPREMADES.Hex.SelectAbility', buttons: buttons});
+    let selection = await dialogUtils.buttonMenu({title: workflow.item.name, description:'CHRISPREMADES.macros.hex.selectAbility', buttons: buttons});
     if (!selection) return;
     let seconds;
     switch (workflow.castData.castLevel) {
@@ -23,7 +23,7 @@ async function use(workflow) {
     let durationScale = workflow.item.system.duration.value;
     seconds = Math.min(seconds * durationScale, 86400);
     let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.Hex.Hexed'),
+        name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
         icon: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -100,7 +100,7 @@ async function move(workflow) {
     oldTargets.push(workflow.targets.first().uuid);
     await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.Hex.Hexed'),
+        name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
         icon: effect.icon,
         origin: effect.origin,
         duration: {

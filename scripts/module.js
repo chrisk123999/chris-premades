@@ -1,6 +1,6 @@
 import {registerHooks} from './hooks.js';
 import {setupJournal} from './journal.js';
-import {registerSettings} from './settings.js';
+import {registerMenus, registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {Crosshairs} from './lib/crosshairs.js';
 import {registerCustomTypes} from './customTypes.js';
@@ -8,6 +8,7 @@ import {devUtils} from './utils.js';
 import * as macros from './macros.js';
 Hooks.once('init', () => {
     registerSettings();
+    registerMenus();
     registerCustomTypes();
 });
 Hooks.once('ready', () => {
