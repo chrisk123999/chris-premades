@@ -57,7 +57,8 @@ function getConfig(item, key) {
     if (flagValue) return flagValue;
     let identifier = getIdentifer(item);
     if (!identifier) return;
-    return macros[identifier]?.config?.find(i => i.value === key)?.default;
+    let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
+    return value === '' ? false : value;
 }
 function getIdentifer(item) {
     return item.flags['chris-premades']?.info?.identifier;

@@ -1,14 +1,19 @@
-import {dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {animationUtils, dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function attack(workflow) {
     if (workflow.isFumble) {
         workflow.isFumble = false;
         let roll = await new Roll('-100').evaluate();
         workflow.setAttackRoll(roll);
     }
-    if (itemUtils.getConfig(workflow.item, 'playAnimation')) return;
-    let color = itemUtils.getConfig(workflow.item, 'color');
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    let jb2a = animationUtils.jb2aCheck();
+    if (!playAnimation || !workflow.token || !workflow.targets.size || !jb2a) return;
+    let animation = 'jb2a.arrow.poison.';
+    let color = jb2a === 'patreon' ? itemUtils.getConfig(workflow.item, 'color') : 'green';
     let sound = itemUtils.getConfig(workflow.item, 'sound');
-    //here
+    workflow.targets.forEach(i => {
+        animationUtils.simpleAttack(workflow.token, i, animation + color, {sound: sound, missed: !workflow.hitTargets.has(i)});
+    });
 }
 async function damage(workflow) {
     if (workflow.hitTargets.size) return;
@@ -34,45 +39,54 @@ export let acidArrow = {
     },
     config: [
         {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.config.playAnimation',
+            type: 'checkbox',
+            default: true
+        },
+        {
             value: 'color',
+            label: 'CHRISPREMADES.config.color',
             type: 'select',
             default: 'green',
             options: [
                 {
-                    label: 'Blue',
-                    value: 'CHRISPREMADES.colors.blue',
+                    value: 'blue',
+                    label: 'CHRISPREMADES.config.colors.blue',
                     patreon: true
                 },
                 {
-                    label: 'Green',
-                    value: 'CHRISPREMADES.colors.green',
+                    value: 'green',
+                    label: 'CHRISPREMADES.config.colors.green',
+                    patreon: false
+                },
+                {
+                    value: 'pink',
+                    label: 'CHRISPREMADES.config.colors.green',
                     patreon: true
                 },
                 {
-                    label: 'Pink',
-                    value: 'CHRISPREMADES.colors.green',
+                    value: 'purple',
+                    label: 'CHRISPREMADES.config.colors.green',
                     patreon: true
                 },
                 {
-                    label: 'Purple',
-                    value: 'CHRISPREMADES.colors.green',
+                    value: 'red',
+                    label: 'CHRISPREMADES.config.colors.Red',
                     patreon: true
                 },
                 {
-                    label: 'Red',
-                    value: 'CHRISPREMADES.colors.Red',
-                    patreon: true
-                },
-                {
-                    label: 'Orange',
-                    value: 'CHRISPREMADES.colors.orange',
+                    value: 'orange',
+                    label: 'CHRISPREMADES.config.colors.orange',
                     patreon: true
                 }
             ]
         },
         {
-            value: 'playAnimation',
-            type: 'checkbox'
+            value: 'sound',
+            label: 'CHRISPREMADES.config.sound',
+            type: 'file',
+            default: ''
         }
     ]
 };
