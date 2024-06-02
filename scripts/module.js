@@ -6,12 +6,15 @@ import {Crosshairs} from './lib/crosshairs.js';
 import {registerCustomTypes} from './customTypes.js';
 import {devUtils} from './utils.js';
 import * as macros from './macros.js';
+import {effectInterface} from './applications/effectInterface.js';
 Hooks.once('init', () => {
     registerSettings();
     registerMenus();
     registerCustomTypes();
+    effectInterface.init();
 });
 Hooks.once('ready', () => {
+    effectInterface.ready();
     registerHooks();
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);

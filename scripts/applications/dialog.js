@@ -166,6 +166,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         if (options?.length > 0) {
             let [title, content, inputs, buttons, config] = options;
             this.position.width = config?.width ?? 'auto';
+            this.position.height = config?.height ?? 'auto';
             this.windowTitle = title,
             this.content = content,
             this.inputs = inputs,

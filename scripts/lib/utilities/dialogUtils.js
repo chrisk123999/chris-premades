@@ -1,16 +1,16 @@
 import {DialogApp} from '../../applications/dialog.js';
-import { tokenUtils } from './tokenUtils.js';
+import {tokenUtils, genericUtils} from '../../utils.js';
 /*
 button, checkbox, radio, select, text, number, filePicker
     --dialog - 203 - buttons, select one
     --numberDialog - external, 1 number input, ok cancel
-    selectTarget - 44 - check box, ok cancel
+    almost -- selectTarget - 44 - check box, ok cancel
     remoteDialog - 15
     menu - 19
     remoteMenu - 5
     remoteSelectTarget - 1
-    selectDocument - 32 - fancy button
-    selectDocuments - 4 - fancy w checkbox
+    untested -- selectDocument - 32 - fancy button
+    untested -- selectDocuments - 4 - fancy w checkbox
     remoteDocumentDialog - 6
     remoteDocumentsDialog - 4
         useSpellWhenEmpty - 1
@@ -50,7 +50,7 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
             label = i.document.name;
         } else {
             if (i.document.disposition <= 0) {
-                label = 'Unknown Target (' + number + ')';
+                label = 'CHRISPREMADES.UnknownTarget (' + number + ')';
                 number++;
             } else {
                 label = i.document.name;
@@ -86,11 +86,77 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         ]);
     }
     let selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
-    console.log(selection);
     return selection;
+}
+async function confirm(title, content) {
+    let selection = await DialogApp.dialog(title, content, undefined, 'yesNo');
+    return selection.buttons;
+}
+async function selectDocumentDialog(title, content, documents, options = {useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {
+    if (options?.sortAlphabetical) {
+        documents = documents.sort((a, b) => {
+            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+        });
+    }
+    if (options?.sortCR) {
+        documents = documents.sort((a, b) => {
+            return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
+        });
+    }
+    let inputs = [
+        ['button', [], {displayAsRows: true}]
+    ];
+    for (let i of documents) {
+        inputs[0][1].push({
+            label: i.name,
+            name: options?.useUuids ? i.actor.uuid : i,
+            options: {
+                image: i.image + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+                tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
+            }
+        });
+    }
+    let height = (inputs[0][1].length * 56 + 46);
+    if (inputs[0][1].length > 14 ) height = 850;
+    let result = await DialogApp.dialog(title, content, inputs, undefined, {height: height});
+    return result.buttons;
+}
+async function selectDocumentsDialog(title, content, documents, options = {max: 5, useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {
+    if (options?.sortAlphabetical) {
+        documents = documents.sort((a, b) => {
+            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+        });
+    }
+    if (options?.sortCR) {
+        documents = documents.sort((a, b) => {
+            return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
+        });
+    }
+    let inputs = [
+        ['selectAmount', [], {displayAsRows: true, totalMax: options?.max}]
+    ];
+    for (let i of documents) {
+        inputs[0][1].push({
+            label: i.name,
+            name: options?.useUuids ? i.actor.uuid : i,
+            options: {
+                image: i.image + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+                tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+                minAmount: 0,
+                maxAmount: options?.max ?? 5
+            }
+        });
+    }
+    let height = (inputs[0][1].length * 56 + 46);
+    if (inputs[0][1].length > 14 ) height = 850;
+    let result = await DialogApp.dialog(title, content, inputs, 'undefined', {height: height});
+    return result.buttons;
 }
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
-    selectTargetDialog
+    selectTargetDialog,
+    selectDocumentDialog,
+    selectDocumentsDialog,
+    confirm
 };

@@ -33,6 +33,11 @@ async function remove(entity) {
     if (hasPermission) await entity.delete();
     await socket.executeAsGM('deleteEntity', entity.uuid);
 }
+function decimalToFraction(decimal) {
+    if (!decimal) return 0;
+    if (Number(decimal) >= 1) return Number(decimal);
+    return '1/' + 1 / Number(decimal);
+}
 export function getCPRSetting(key) {
     return game.settings.get('chris-premades', key);
 }
@@ -46,5 +51,6 @@ export let genericUtils = {
     setFlag,
     deepClone,
     mergeObject,
-    getCPRSetting
+    getCPRSetting,
+    decimalToFraction
 };

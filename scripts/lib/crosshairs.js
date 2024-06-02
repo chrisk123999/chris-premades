@@ -14,7 +14,6 @@ export class Crosshairs extends MeasuredTemplate {
             texture: config.texture,
             direction: config.direction,
         };
-  
         const template = new CONFIG.MeasuredTemplate.documentClass(templateData, {parent: canvas.scene});
         super(template);
         this.icon = config.icon ?? Crosshairs.ERROR_TEXTURE;

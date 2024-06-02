@@ -5,6 +5,7 @@
         "Yes": "Yes",
         "No": "No",
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
+        "UnknownTarget": "Unknown Target",
         "settings": {
             "gmID": {
                 "name": "Gamemaster User ID",
