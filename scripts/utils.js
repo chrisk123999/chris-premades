@@ -11,3 +11,4 @@ export {workflowUtils} from './lib/utilities/workflowUtils.js';
 export {constants} from './lib/constants.js';
 export {errors} from './lib/errors.js';
 export {animationUtils} from './lib/utilities/animationUtils.js';
+export {tokenUtils} from './lib/utilities/tokenUtils.js';

@@ -64,6 +64,7 @@ export async function postDamageRoll(workflow) {
     await executeMacroPass(workflow, 'postDamageRoll');
 }
 export async function RollComplete(workflow) {
+    console.log(workflow);
     await executeMacroPass(workflow, 'RollComplete');
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;

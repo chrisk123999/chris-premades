@@ -18,6 +18,15 @@ function collectTemplateMacros(template) {
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j);
 }
+function getItemMacroData(item) {
+    return item.flags['chris-premades']?.macros?.combat ?? [];
+}
+function collectItemMacros(item) {
+    let macroList = [];
+    macroList.push(...getItemMacroData(item));
+    if (!macroList.length) return [];
+    return macroList.map(i => macros[i]).filter(j => j);
+}
 function collectTokenMacros(token, pass) {
     let triggers = [];
     if (token.actor) {
@@ -36,6 +45,22 @@ function collectTokenMacros(token, pass) {
                     },
                     macro: i.macro,
                     name: effect.name
+                });
+            });
+        }
+        for (let item of token.actor.items) {
+            let macroList = collectItemMacros(item);
+            if (!macroList.length) continue;
+            let itemMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).map(k => k.combat).flat().filter(l => l.pass === pass);
+            itemMacros.forEach(i => {
+                triggers.push({
+                    entity: item,
+                    castData: {
+                        castLevel: -1,
+                        saveDC: -1
+                    },
+                    macro: i.macro,
+                    name: item.name
                 });
             });
         }
@@ -87,6 +112,7 @@ function getSortedTriggers(token, pass) {
     return triggers;
 }
 async function executeMacro(trigger) {
+    console.log('CPR: Executing Macro: ' + trigger.macro.name);
     try {
         await trigger.macro(trigger);
     } catch (error) {
@@ -95,7 +121,9 @@ async function executeMacro(trigger) {
     }
 }
 async function executeMacroPass(token, pass) {
+    console.log('CPR: Executing Macro Pass: ' + pass + ' for ' + token.name);
     let triggers = getSortedTriggers(token, pass).sort((a, b) => a.priority - b.priority);
+    if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
 export async function updateCombat(combat, changes, context) {
@@ -109,9 +137,16 @@ export async function updateCombat(combat, changes, context) {
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
     let currentToken = combat.scene.tokens.get(combat.current.tokenId)?.object;
     let previousToken = combat.scene.tokens.get(combat.previous.tokenId)?.object;
-    await genericUtils.sleep(50);
-    await executeMacroPass(previousToken, 'turnEnd');
-    await executeMacroPass(currentToken, 'turnStart');
-    //Turn End Macros
-
+    if (previousToken) await executeMacroPass(previousToken, 'turnEnd');
+    if (currentToken) await executeMacroPass(currentToken, 'turnStart');
+}
+export async function combatStart(combat, changes) {
+    if (!socketUtils.isTheGM()) return;
+    let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)?.object).filter(j => j);
+    for (let i of tokens) await executeMacroPass(i, 'combatStart');
+}
+export async function deleteCombat(combat, changes, context) {
+    if (!socketUtils.isTheGM()) return;
+    let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)?.object).filter(j => j);
+    for (let i of tokens) await executeMacroPass(i, 'combatEnd'); //The last turn end macro may need to be run before this?
 }

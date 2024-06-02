@@ -4,6 +4,7 @@
         "Cancel": "Cancel",
         "Yes": "Yes",
         "No": "No",
+        "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "settings": {
             "gmID": {
                 "name": "Gamemaster User ID",
@@ -46,6 +47,13 @@
         },
         "section": {
             "spellFeatures": "Spell Features"
+        },
+        "cover": {
+            "no": "No Cover",
+            "half": "Half-Cover",
+            "threeQuarters": "Three-Quarters Cover",
+            "full": "Full Cover",
+            "unknown": "Unknown Cover"
         }
     }
 }

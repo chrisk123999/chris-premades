@@ -1,15 +1,17 @@
-import {animationUtils, dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {animationUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+async function early(workflow) {
+    genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
+}
 async function attack(workflow) {
-    if (workflow.isFumble) {
-        workflow.isFumble = false;
-        let roll = await new Roll('-100').evaluate();
-        workflow.setAttackRoll(roll);
-    }
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let jb2a = animationUtils.jb2aCheck();
     if (!playAnimation || !workflow.token || !workflow.targets.size || !jb2a) return;
     let animation = 'jb2a.arrow.poison.';
     let color = jb2a === 'patreon' ? itemUtils.getConfig(workflow.item, 'color') : 'green';
+    if (color === 'random') {
+        let colors = ['blue', 'green', 'pink', 'purple', 'red', 'orange'];
+        color = colors[Math.floor((Math.random() * colors.length))];
+    }
     let sound = itemUtils.getConfig(workflow.item, 'sound');
     workflow.targets.forEach(i => {
         animationUtils.simpleAttack(workflow.token, i, animation + color, {sound: sound, missed: !workflow.hitTargets.has(i)});
@@ -25,6 +27,11 @@ export let acidArrow = {
     version: '0.12.0',
     midi: {
         item: [
+            {
+                pass: 'preItemRoll',
+                macro: early,
+                priority: 50
+            },
             {
                 pass: 'postAttackRollComplete',
                 macro: attack,
@@ -78,6 +85,11 @@ export let acidArrow = {
                 {
                     value: 'orange',
                     label: 'CHRISPREMADES.config.colors.orange',
+                    patreon: true
+                },
+                {
+                    value: 'random',
+                    label: 'CHRISPREMADES.config.colors.random',
                     patreon: true
                 }
             ]

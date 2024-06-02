@@ -132,7 +132,7 @@ await chrisPremades.DialogApp.dialog(
                     label: "I have a picture!",
                     name: 'myButton',
                     options: {
-                        displayAsRows: true
+                        displayAsRows: true,
                         image: 'icons/creatures/magical/humanoid-horned-rider.webp'
                     }
                 }
@@ -163,7 +163,6 @@ button, checkbox, radio, select, text, number, filePicker
 export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(options) {
         super();
-        console.log(this);
         if (options?.length > 0) {
             let [title, content, inputs, buttons, config] = options;
             this.position.width = config?.width ?? 'auto';
@@ -200,7 +199,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/dialogApp.hbs'
         },
         footer: {
-            template: 'templates/generic/form-footer.hbs'
+            template: 'modules/chris-premades/templates/form-footer.hbs'
         }
     };
     /** 
@@ -475,6 +474,16 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         this.context = currentContext;
         this.render(true);
+    }
+    _onRender(context, options) {
+        let imageElements = this.element.querySelectorAll('.label-image');
+        imageElements[0].addEventListener('click', async (e) => {
+            console.log(e.target);
+            // Sensible way to get the parent button's 'name'
+            // let id = ^
+            // let tok = canvas.tokens.get(id);
+            // if (tok) await canvas.ping(tok.document.object.center);
+        });
     }
     /**
      * @override Was getting an error without this, only copy-pasted parts from the super, presumably out of HandlebarsMixin

@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae}) {
+async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
     if (vae) {
@@ -60,7 +60,7 @@ async function addDependents(entity, dependents) {
         socket.executeAsGM('addDependents', entity.uuid, dependents.map(i => i.uuid));
     }
 }
-function addOnUseMacros(effectData, type, macroList) {
+function addMacro(effectData, type, macroList) {
     return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
 }
 function getEffectIdentifier(effect) {
@@ -83,7 +83,7 @@ export let effectUtils = {
     setSaveDC,
     createEffect,
     addDependents,
-    addOnUseMacros,
+    addMacro,
     getEffectIdentifier,
     getConcentrationEffect,
     getEffectByIdentifier

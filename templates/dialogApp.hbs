@@ -1,4 +1,4 @@
-<div id="dialog-app" class="dialog-content">
+<div id="dialog-app" class="dialog-content better-dialog">
     <p class="content"> {{content}} </p>
     {{#each inputs}}
         <div class="form-group">
@@ -14,7 +14,6 @@
                 </div>
             {{else}}
                 {{#each options}}
-                {{log this}}
                     <button type="submit" class="form-button" data-action="confirm" id="[{{@../index}}, {{@index}}]" name="{{name}}">
                         {{#if image}}<img class="button-image" src={{image}}>{{/if}}
                         <p class="button-text" {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>{{localize label}}</p>

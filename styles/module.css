@@ -1,33 +1,33 @@
-form .form-group input[type="radio"] {
+form .better-dialog .form-group input[type="radio"] {
     flex: 0;
     margin: 0px 5px;
     top: 0px;
 }
 
-form .form-group > div {
+form .better-dialog .form-group > div {
     margin: 0px 5px;
 }
 
-form .form-group > div.row-display {
+form .better-dialog .form-group > div.row-display {
     display: grid;
     grid-template-columns: 1fr 5fr;
     align-items: center;
 }
 
-form footer.form-footer {
+form .better-form-footer {
     margin: 10px 5px 0px;
     display: flex;
     flex-direction: row;
 }
 
-form .form-group img.label-image {
+form .better-dialog .form-group img.label-image {
     width: 50px;
     height: 50px;
     border: 1px solid gray;
     border-radius: 5px;
 }
 
-form .form-group .row-display img.label-image {
+form .better-dialog .form-group .row-display img.label-image {
     margin-left: 20px;
     margin-right: 10px;
     margin-bottom: 0px;
@@ -35,13 +35,13 @@ form .form-group .row-display img.label-image {
     float: left;
 }
 
-form .form-group .row-display p.label-text {
+form .better-dialog .form-group .row-display p.label-text {
     padding: 1%;
     text-align: center;
     font-size: 15px;
 }
 
-form .form-group button.form-button {
+form .better-dialog .form-group button.form-button {
     padding: 0 0;
     margin-left: 5px;
     margin-right: 5px;
@@ -49,7 +49,7 @@ form .form-group button.form-button {
     margin-bottom: 3px;
 }
 
-form .form-group img.button-image {
+form .better-dialog .form-group img.button-image {
     width: 50px;
     height: 50px;
     border: 0px;
@@ -59,20 +59,20 @@ form .form-group img.button-image {
     margin-top: 5px;
 }
 
-form .form-group p.button-text {
+form .better-dialog .form-group p.button-text {
     width: 100%;
     padding: 1%;
     font-size: 15px;
 }
 
-form .content {
+form .better-dialog .content {
     font-size: 15px;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
 }
 
-form .form-group .flex-col button.form-button {
+form .better-dialog .form-group .flex-col button.form-button {
     padding: 0 0;
     margin-left: 0px;
     margin-right: 5px;

@@ -56,7 +56,7 @@ async function use(workflow) {
             }
         }
     };
-    effectUtils.addOnUseMacros(casterEffectData, 'midi.actor', ['hexAttack']);
+    effectUtils.addMacro(casterEffectData, 'midi.actor', ['hexAttack']);
     let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
