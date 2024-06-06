@@ -1,4 +1,4 @@
-import {settings, settingsDevelopment, settingsDialog} from './applications/settings.js';
+import {settings, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -17,7 +17,8 @@ function addMenu(options) {
         hint: 'CHRISPREMADES.settingCategory.' + options.key + '.hint',
         icon: options.icon,
         type: options.type,
-        restricted: options.restricted ?? true
+        restricted: options.restricted ?? true,
+        reloadRequired: options.reloadRequired ?? false
     };
     game.settings.registerMenu('chris-premades', options.key, menu);
 }
@@ -34,6 +35,20 @@ export function registerSettings() {
         default: false,
         category: 'dialog'
     });
+    addSetting({
+        key: 'effectInterface',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        reloadRequired: true
+    });
+    addSetting({
+        key: 'macroInterface',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        reloadRequired: true
+    });
 }
 export function registerMenus() {
     addMenu({
@@ -45,5 +60,10 @@ export function registerMenus() {
         key: 'dialog',
         icon: 'fas fa-bars',
         type: settingsDialog,
+    });
+    addMenu({
+        key: 'interface',
+        icon: 'fas fa-display',
+        type: settingsInterface
     });
 }

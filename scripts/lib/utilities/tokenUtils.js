@@ -1,5 +1,5 @@
 import {genericUtils} from './genericUtils.js';
-function getDistance(sourceToken, targetToken, {wallsBlock}) {
+function getDistance(sourceToken, targetToken, {wallsBlock} = {}) {
     return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
 }
 function checkCover(sourceToken, targetToken, {item, displayName}) {

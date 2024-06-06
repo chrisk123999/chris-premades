@@ -1,18 +1,7 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {tokenUtils, genericUtils} from '../../utils.js';
+import {socket} from '../sockets.js';
 /*
-button, checkbox, radio, select, text, number, filePicker
-    --dialog - 203 - buttons, select one
-    --numberDialog - external, 1 number input, ok cancel
-    almost -- selectTarget - 44 - check box, ok cancel
-    remoteDialog - 15
-    menu - 19
-    remoteMenu - 5
-    remoteSelectTarget - 1
-    untested -- selectDocument - 32 - fancy button
-    untested -- selectDocuments - 4 - fancy w checkbox
-    remoteDocumentDialog - 6
-    remoteDocumentsDialog - 4
         useSpellWhenEmpty - 1
 */
 async function buttonDialog(title, content, buttons, options = {displayVertical: true}) {

@@ -78,3 +78,9 @@ export class settingsDialog extends settingsBase {
         this.category = 'dialog';
     }
 }
+export class settingsInterface extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'interface';
+    }
+}

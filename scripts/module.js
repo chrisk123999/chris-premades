@@ -4,17 +4,18 @@ import {registerMenus, registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {Crosshairs} from './lib/crosshairs.js';
 import {registerCustomTypes} from './customTypes.js';
-import {devUtils} from './utils.js';
+import {devUtils, genericUtils} from './utils.js';
 import * as macros from './macros.js';
 import {effectInterface} from './applications/effectInterface.js';
+import {macroInterface} from './applications/macroInterface.js';
 Hooks.once('init', () => {
     registerSettings();
     registerMenus();
     registerCustomTypes();
-    effectInterface.init();
+    if (genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
+    if (genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
 });
 Hooks.once('ready', () => {
-    effectInterface.ready();
     registerHooks();
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);

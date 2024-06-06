@@ -10,7 +10,7 @@ async function ready() {
             'type': 'feat',
             'system': {
                 'description': {
-                    'value': 'This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!'
+                    'value': genericUtils.translate('CHRISPREMADES.effectInterface.item')
                 }
             },
             'flags': {
@@ -22,7 +22,7 @@ async function ready() {
         effectItem = await Item.create(itemData);
     }
     let effects = effectItem.effects.contents;
-    effectCollection = new CPREffects(effects);
+    effectCollection = new EffectCollection(effects);
     Hooks.on('changeSidebarTab', (directory) => {
         if (!(directory instanceof ItemDirectory)) return;
         let html = directory.element;
@@ -35,11 +35,11 @@ function reRender(effect) {
     if (effect.parent?.uuid != effectItem?.uuid) return;
     ui.sidebar.tabs.effects.render(true);
 }
-class CPREffects extends WorldCollection {
+class EffectCollection extends WorldCollection {
     static documentName = 'ActiveEffect';
     static _sortStandard(a, b) {
         let aNumber = a.flags['chris-premades']?.effectInterface?.sort ?? Number.MAX_SAFE_INTEGER;
-        let bNumber = a.flags['chris-premades']?.effectInterface?.sort ?? Number.MAX_SAFE_INTEGER;
+        let bNumber = b.flags['chris-premades']?.effectInterface?.sort ?? Number.MAX_SAFE_INTEGER;
         return aNumber - bNumber;
     }
     set(document) {
@@ -47,7 +47,7 @@ class CPREffects extends WorldCollection {
         this._source.push(document.toObject());
     }
 }
-class CPREffectInterface extends DocumentDirectory {
+class EffectDirectory extends DocumentDirectory {
     static documentName = 'Effect';
     activateListeners(html) {
         super.activateListeners(html);
@@ -70,7 +70,7 @@ class CPREffectInterface extends DocumentDirectory {
                 },
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-pencil"></i>',
-                'name': 'Edit'
+                'name': 'CHRISPREMADES.edit'
             },
             {
                 'callback': async (header) => {
@@ -100,7 +100,7 @@ class CPREffectInterface extends DocumentDirectory {
                     }
                     async function importDialog() {
                         new Dialog({
-                            title: 'Import Data: ' + document.name,
+                            title: genericUtils.translate('CHRISPREMADES.effectInterface.importData') + document.name,
                             // eslint-disable-next-line no-undef
                             content: await renderTemplate('templates/apps/import-data.html', {
                                 hint1: game.i18n.format('DOCUMENT.ImportDataHint1', {'document': 'ActiveEffect'}),
@@ -109,7 +109,7 @@ class CPREffectInterface extends DocumentDirectory {
                             buttons: {
                                 import: {
                                     icon: '<i class="fas fa-file-import"></i>',
-                                    label: 'Import',
+                                    label: genericUtils.translate('CHRISPREMADES.import'),
                                     callback: html => {
                                         const form = html.find('form')[0];
                                         if (!form.data.files.length ) return ui.notifications.error('You did not upload a data file!');
@@ -119,7 +119,7 @@ class CPREffectInterface extends DocumentDirectory {
                                 },
                                 no: {
                                     icon: '<i class="fas fa-times"></i>',
-                                    label: 'Cancel'
+                                    label: genericUtils.translate('CHRISPREMADES.Cancel')
                                 }
                             },
                             default: 'import'
@@ -132,7 +132,6 @@ class CPREffectInterface extends DocumentDirectory {
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-file-import"></i>',
                 'name': 'SIDEBAR.Import'
-
             },
             {
                 'callback': async (header) => {
@@ -176,7 +175,7 @@ class CPREffectInterface extends DocumentDirectory {
         let document = this.collection.get(documentId);
         let selectedTokens = canvas.tokens.controlled;
         if (!selectedTokens.length) {
-            ui.notifications.info('Please select a token first!');
+            ui.notifications.info(genericUtils.translate('CHRISPREMADES.effectInterface.selectToken'));
             return;
         }
         let effectData = document.toObject();
@@ -197,9 +196,9 @@ class CPREffectInterface extends DocumentDirectory {
         let effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
         if (effectItem) {
             let effects = effectItem.effects.contents;
-            effectCollection = new CPREffects(effects);
+            effectCollection = new EffectCollection(effects);
         } else {
-            effectCollection = new CPREffects([]);
+            effectCollection = new EffectCollection([]);
         }
         return effectCollection;
     }
@@ -223,7 +222,7 @@ class CPREffectInterface extends DocumentDirectory {
     async _onCreateEntry(event) {
         event.preventDefault();
         let effectData = {
-            'name': 'New Effect',
+            'name': genericUtils.translate('CHRISPREMADES.effectInterface.newEffect'),
             'icon': 'icons/svg/aura.svg',
             'transfer': false,
             'flags': {
@@ -247,7 +246,7 @@ class CPREffectInterface extends DocumentDirectory {
         return true;
     }
     _canDragStop(selector) {
-        return false;
+        return true;
     }
     async _handleDroppedEntry(target, data) {
         if (!effectItem) return;
@@ -288,8 +287,8 @@ function effectSidebar(app, html, data) {
     let tab = document.createElement('a');
     tab.classList.add('item');
     tab.dataset.tab = 'effects';
-    tab.dataset.tooltip = 'DOCUMENT.ActiveEffect';
-    if (!('tooltip' in game)) tab.title = 'Effects';
+    tab.dataset.tooltip = 'CHRISPREMADES.effectInterface.effects';
+    if (!('tooltip' in game)) tab.title = genericUtils.translate('CHRISPREMADES.effectInterface.effects');
     let icon = document.createElement('i');
     icon.setAttribute('class', 'fas fa-bolt');
     tab.append(icon);
@@ -303,7 +302,7 @@ function effectSidebarTab(app, html, data) {
     }
 }
 function init() {
-    CONFIG.ui.cprEffectInterface = CPREffectInterface;
+    CONFIG.ui.cprEffectInterface = EffectDirectory;
     Hooks.on('renderSidebar', effectSidebar);
     Hooks.on('renderSidebarTab', effectSidebarTab);
 }

@@ -14,18 +14,31 @@
             "hideNames": {
                 "name": "Hide Names",
                 "hint": "Should enemy names be hidden in dialogs."
+            },
+            "effectInterface": {
+                "name": "Enable Effect Interface",
+                "hint": "Adds a sidebar tab for Active Effects. Reload required after enabling."
+            },
+            "macroInterface": {
+                "name": "Enable Macro Interface",
+                "hint": "Adds a sidebar tab for Macros. Reload required after enabling."
             }
         },
         "settingCategory": {
             "development": {
                 "name": "Development Options",
-                "label": "Development",
+                "label": "Development Options",
                 "hint": "Settings for developers."
             },
             "dialog": {
                 "name": "Dialog Options",
-                "label": "Dialog",
+                "label": "Dialog Options",
                 "hint": "Settings for dialogs."
+            },
+            "interface": {
+                "name": "User Interface Options",
+                "label": "User Interface Options",
+                "hint": "Settings for the user interface."
             }
         },
         "config": {
@@ -55,6 +68,15 @@
             "threeQuarters": "Three-Quarters Cover",
             "full": "Full Cover",
             "unknown": "Unknown Cover"
-        }
+        },
+        "effectInterface": {
+            "item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!",
+            "importData": "Import Data: ",
+            "selectToken": "Please select a token first!",
+            "newEffect": "New Effect",
+            "effects": "Effects"
+        },
+        "edit": "Edit",
+        "import": "Import"
     }
 }

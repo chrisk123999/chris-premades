@@ -123,11 +123,13 @@
         {{else if isText}}
             {{#if displayAsRows}}
                 <div class="row-display">
-                    <input type="text" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
-                    <label for="[{{@../index}}, {{@index}}]">
-                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
-                        <p class="label-text">{{localize label}}</p>
-                    </label>
+                    {{#each options}}
+                        <input type="text" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
+                        <label for="[{{@../index}}, {{@index}}]">
+                            {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                            <p class="label-text">{{localize label}}</p>
+                        </label>
+                    {{/each}}
                 </div>
             {{else}}
                 {{#each options}}
@@ -165,9 +167,11 @@
         {{else if isFilePicker}}
             {{#if displayAsRows}}
                 <div class="row-display">
-                    <label for="[{{@../index}}, {{@index}}]"><p class="label-text">{{localize label}}</p></label>
-                    <div></div>
-                    <file-picker id="[{{@../index}}, {{@index}}]" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
+                    {{#each options}}
+                        <label for="[{{@../index}}, {{@index}}]"><p class="label-text">{{localize label}}</p></label>
+                        <div></div>
+                        <file-picker id="[{{@../index}}, {{@index}}]" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
+                    {{/each}}
                 </div>
             {{else}}
                 {{#each options}}

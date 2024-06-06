@@ -11,7 +11,12 @@ async function addFavorites(actor, items) {
         await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => i.uuid));
     }
 }
+function getFirstToken(actor) {
+    let tokens = actor.getActiveTokens();
+    if (tokens.legth) return tokens[0];
+}
 export let actorUtils = {
     getEffects,
-    addFavorites
+    addFavorites,
+    getFirstToken
 };
