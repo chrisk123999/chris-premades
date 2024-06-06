@@ -1,0 +1,143 @@
+{
+  "folder": "jsv2MaUJiCcNgflp",
+  "name": "Fortified Position",
+  "type": "feat",
+  "img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {},
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": null,
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    }
+  },
+  "effects": [
+    {
+      "name": "Fortified Position",
+      "icon": "icons/magic/defensive/barrier-shield-dome-pink.webp",
+      "origin": "Item.IKxJEzV23SQ9y1BN",
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "_id": "VMMSs8Q1V1YwUNdg",
+      "changes": [],
+      "description": "",
+      "transfer": true,
+      "statuses": [],
+      "flags": {},
+      "_key": "!items.effects!6ociPJgEik4zkqV3.VMMSs8Q1V1YwUNdg"
+    }
+  ],
+  "flags": {
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1716459847211,
+    "modifiedTime": 1716789608488,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
+  },
+  "_id": "6ociPJgEik4zkqV3",
+  "sort": 300000,
+  "ownership": {
+    "default": 0,
+    "Ud258q78TNICxrY6": 3
+  },
+  "_key": "!items!6ociPJgEik4zkqV3"
+}

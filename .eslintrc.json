@@ -85,6 +85,10 @@
 		"token": "writable",
 		"effect": "writable",
 		"tokenAttacher": "writable",
-		"randomID": "writable"
+		"randomID": "writable",
+		"ActiveEffect": "writable",
+		"jQuery": "writable",
+		"ItemDirectory": "writable",
+		"WorldCollection": "writable"
 	}
 }

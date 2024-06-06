@@ -48,5 +48,5 @@ export async function skillEmpowerment({speaker, actor, token, character, item, 
     };
     let effect = chris.findEffect(targetActor, workflow.item.name);
     if (effect) await chris.removeEffect(effect);
-    await chris.createEffect(targetActor, effectData);
+    await chris.createEffect(targetActor, effectData, workflow.item);
 }

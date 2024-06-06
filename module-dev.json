@@ -46,8 +46,8 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.4.22",
-          "verified": "11.4.22"
+          "minimum": "11.4.29",
+          "verified": "11.4.29"
         }
       },
       {

@@ -114,6 +114,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Healing Spirit'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(casterEffectData.name)]);
     let command = 'await chrisPremades.macros.healingSpirit.template(template, token);';
     let templateData = {
         'angle': 0,
@@ -156,6 +157,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         }
     };
     let template = await chris.createTemplate(templateData);
+
     await warpgate.wait(100);
     await tokenAttacher.attachElementsToToken([template], spawnedToken.object, false);
 }

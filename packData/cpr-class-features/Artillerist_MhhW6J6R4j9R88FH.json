@@ -1,9 +1,9 @@
 {
-  "name": "Gnome Squidling",
+  "name": "Artillerist",
   "sorting": "a",
-  "folder": "1o45n6XLdhXBCtMD",
+  "folder": "3VAK4zWeLy4JjNwG",
   "type": "Item",
-  "_id": "PdcmaPc4bfaZNb3l",
+  "_id": "MhhW6J6R4j9R88FH",
   "sort": 0,
   "color": null,
   "flags": {},
@@ -15,5 +15,5 @@
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!folders!PdcmaPc4bfaZNb3l"
+  "_key": "!folders!MhhW6J6R4j9R88FH"
 }

@@ -45,12 +45,15 @@ import {flatAttack} from './macros/mechanics/flatAttack.js';
 import {backupCharacters, createActor} from './backup.js';
 import {registerSearchTerms} from './integrations/spotLightOmniSearch.js';
 import {effectConditions} from './utility/conditions.js';
+import {checkModules} from './help.js';
+import {effectInterface} from './effectInterface.js';
 export let socket;
 Hooks.once('init', async function() {
     registerSettings();
     setConfig();
     if (game.settings.get('chris-premades', 'Display Sidebar Macros')) enableMacroSidebar();
     if (game.settings.get('chris-premades', 'Select Tool')) enableSelectTool();
+    if (game.settings.get('chris-premades', 'Active Effect Interface')) effectInterface.enable();
 });
 Hooks.once('socketlib.ready', async function() {
     socket = socketlib.registerModule('chris-premades');
@@ -131,6 +134,7 @@ Hooks.once('ready', async function() {
         Hooks.on('createChatMessage', addChatButton);
     }
     await loadTriggers();
+    checkModules();
     if (game.settings.get('chris-premades', 'Condition Resistance')) {
         Hooks.on('midi-qol.postPreambleComplete', macros.conditionResistanceEarly);
         Hooks.on('midi-qol.RollComplete', macros.conditionResistanceLate);
@@ -259,6 +263,8 @@ Hooks.once('ready', async function() {
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.values = game.packs.contents.filter(i => i.metadata.type === 'Actor').map(j => ({'value': j.metadata.id, 'html': j.metadata.label}));
     CONFIG.chrisPremades.itemConfiguration['Wild Shape'].select.compendium.default = game.settings.get('chris-premades', 'Monster Compendium');
     if (game.settings.get('chris-premades', 'Spotlight Omnisearch Summons')) Hooks.on('spotlightOmnisearch.indexBuilt', registerSearchTerms);
+    if (game.settings.get('chris-premades', 'Active Effect Interface')) await effectInterface.startup();
+    if (game.settings.get('chris-premades', 'Fortified Position')) Hooks.on('midi-qol.preCheckHits', macros.eldritchCannon.fortifiedPosition);
 });
 let dev = {
     'setCompendiumItemInfo': setCompendiumItemInfo,

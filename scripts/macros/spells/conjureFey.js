@@ -6,7 +6,7 @@ export async function conjureFey({speaker, actor, token, character, item, args, 
     let cr = spellLevel;
     let folder = chris.getConfiguration(workflow.item, 'folder') ?? game.settings.get('chris-premades', 'Summons Folder');
     if (!folder && folder === '') folder = 'Chris Premades';
-    let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => i.system?.details?.type?.value.toLowerCase().includes(['fey', 'beast'])).filter(i => i.system?.details?.cr <= cr);
+    let actors = game.actors.filter(i => i.folder?.name === folder).filter(i => ['fey', 'beast'].includes(i.system?.details?.type?.value.toLowerCase())).filter(i => i.system?.details?.cr <= cr);
     if (actors.length < 1) {
         ui.notifications.warn('No matching actors found in specified folder!');
         return;
@@ -23,8 +23,8 @@ export async function conjureFey({speaker, actor, token, character, item, args, 
     };
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'nature';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, true, undefined, 90, workflow.token, animation);
-    let effect = chris.findEffect(workflow.actor, 'Concentrating');
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, workflow.token, workflow.item.system?.range?.value, {'useActorOrigin': true, 'spawnAnimation': animation, 'canTurnHostile': true});
+    let effect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item);
     if (!effect) return;
     async function effectMacro () {
         let targetEffect = chrisPremades.helpers.findEffect(effect.parent, 'Conjure Fey');

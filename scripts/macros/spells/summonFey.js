@@ -78,6 +78,7 @@ export async function summonFey({speaker, actor, token, character, item, args, s
     }
     switch (selection) {
         case 'Fuming':
+            // eslint-disable-next-line no-case-declarations
             let fumingData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Fuming', false);
             if (!fumingData) return;
             fumingData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Fuming');
@@ -96,6 +97,7 @@ export async function summonFey({speaker, actor, token, character, item, args, s
             };
             break;
         case 'Mirthful':
+            // eslint-disable-next-line no-case-declarations
             let mirthfulData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Mirthful', false);
             if (!mirthfulData) return;
             mirthfulData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Mirthful');
@@ -103,6 +105,7 @@ export async function summonFey({speaker, actor, token, character, item, args, s
             updates.embedded.Item[mirthfulData.name] = mirthfulData;
             break;
         case 'Tricksy':
+            // eslint-disable-next-line no-case-declarations
             let tricksyData = await chris.getItemFromCompendium('chris-premades.CPR Summon Features', 'Tricksy', false);
             if (!tricksyData) return;
             tricksyData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Tricksy');

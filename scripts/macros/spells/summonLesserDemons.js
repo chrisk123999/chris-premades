@@ -51,7 +51,7 @@ export async function summonLesserDemons({speaker, actor, token, character, item
     };
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'fire';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';
-    await summons.spawn(sourceActors, updates, 3600, workflow.item, false, true, 60, workflow.token, animation);
+    await summons.spawn(sourceActors, updates, 3600, workflow.item, workflow.token, workflow.item.system?.range?.value, {'groupInitiative': true, 'spawnAnimation': animation});
     let templateData = {
         t: CONST.MEASURED_TEMPLATE_TYPES.CIRCLE,
         distance: 2.5 * workflow.actor.prototypeToken.width,
@@ -93,7 +93,7 @@ export async function summonLesserDemons({speaker, actor, token, character, item
             },
             'chris-premades': {
                 'spell': {
-                    'summonLesserDemons': template[0].uuid
+                    'summonLesserDemons': template.uuid
                 }
             }
         }

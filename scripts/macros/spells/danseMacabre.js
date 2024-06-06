@@ -13,7 +13,7 @@ export async function danseMacabre({speaker, actor, token, character, item, args
     ];
     let bonusHP = 0;
     let damageBonus;
-    if (workflow.actor.flags["chris-premades"]?.feature?.undeadThralls) {
+    if (workflow.actor.flags['chris-premades']?.feature?.undeadThralls) {
         let wizardLevels = workflow.actor.classes.wizard?.system?.levels;
         if (wizardLevels) bonusHP += wizardLevels;
         damageBonus = workflow.actor.system.attributes.prof;
@@ -206,4 +206,5 @@ export async function danseMacabre({speaker, actor, token, character, item, args
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(effectData2.name)]);
 }

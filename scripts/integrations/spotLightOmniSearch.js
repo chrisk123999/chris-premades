@@ -46,7 +46,7 @@ async function doSummon(uuid) {
     let duration = getProperty(buttonMap, savedId + '.dur') ?? 60;
     let animation = getProperty(buttonMap, savedId + '.ani') ?? 0;
     let animationName = Object.keys(summonEffects)[animation];
-    await summons.spawn([actor], {}, duration, item, false, undefined, 120, selectedToken, animationName, undefined);
+    await summons.spawn([actor], {}, duration, item, selectedToken, 120, {'spawnAnimation': animationName});
     let concentration = getProperty(buttonMap, savedId + '.con') ?? false;
     buttonMap = {};
     if (!concentration) return;

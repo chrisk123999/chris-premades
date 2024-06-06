@@ -23,7 +23,8 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     let [config, options] = constants.syntheticItemWorkflowOptions([targetToken.document.uuid]);
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, config, options);
-    await chris.removeEffect(effect);
+    let concentrationEffect = MidiQOL.getConcentrationEffect(workflow.actor, effect.origin);
+    await chris.removeEffect(concentrationEffect);
     queue.remove(workflow.item.uuid);
 }
 async function item({speaker, actor, token, character, item, args, scope, workflow}) {
@@ -52,7 +53,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 export let staggeringSmite = {
     'damage': damage,

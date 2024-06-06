@@ -2,7 +2,7 @@
   "type": "spell",
   "system": {
     "description": {
-      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Familiars\". Can be changed in the item's configuration.</p><p>After casting this spell a new feature called \"Find Familiar - Attack\" will be available in your features. Use this before attacking with a spell of range touch for it to be cast from the familiar.</p><p>If you use \"Tidy 5e Sheet\" it will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" it will be in it's own section called \"Spell Features.\"</p>",
+      "value": "<p>You must have a token on the scene to use this spell (Warpgate mutation limitation).</p><p>This will filter sidebar actors from a folder, default \"Familiars\". Can be changed in the item's configuration.</p><p>After casting this spell a new feature called \"Find Familiar - Attack\" will be available in your features. Use this before attacking with a spell of range touch for it to be cast from the familiar.</p><p>After casting this spell a new feature called \"Find Familiar - Pocket Dimension\" will be available in your features. Use this feature to dismiss and summon the familiar. This works between scenes and will delete left-behind familiar tokens. Deleted familiar tokens will also be tracked. Health will be retained. The pocket dimension feature will revert when the familiar token is deleted and is at 0 hp.</p><p>If you use \"Tidy 5e Sheet\" these will automatically be favorited.</p><p>If you use \"Custom Character Sheet Sections\" these will be in it's own section called \"Spell Features.\"</p>",
       "chat": ""
     },
     "source": {
@@ -82,7 +82,8 @@
       "vocal",
       "somatic",
       "material",
-      "ritual"
+      "ritual",
+      "mgc"
     ]
   },
   "name": "Find Familiar",
@@ -150,7 +151,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685268902012,
-    "modifiedTime": 1716061156996,
+    "modifiedTime": 1717236485603,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

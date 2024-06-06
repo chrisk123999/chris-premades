@@ -14,7 +14,9 @@ async function damage({speaker, actor, token, character, item, args, scope, work
     async function effectMacro() {
         let originEffect = await fromUuid(effect.origin);
         if (!originEffect) return;
-        await chrisPremades.helpers.removeEffect(originEffect);
+        let originItem = await fromUuid(originEffect.origin);
+        if (!originItem) return;
+        await chrisPremades.helpers.removeEffect(MidiQOL.getConcentrationEffect(originItem.actor, originItem));
     }
     let effectData = {
         'icon': effect.icon,
@@ -96,7 +98,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    let effect = await chris.createEffect(workflow.actor, effectData);
+    let effect = await chris.createEffect(workflow.actor, effectData, workflow.item);
     let updates = {
         'flags.chris-premades.spell.searingSmite.targetEffectUuid': effect.uuid
     };

@@ -13,7 +13,7 @@ async function onHit(workflow, targetToken) {
     let hp = targetToken.actor.system.attributes.hp.value;
     let oldHP = workflow.damageList.find(i => i.tokenUuid === targetToken.document.uuid).oldHP;
     for (let i of Object.keys(CONFIG.DND5E.damageTypes).filter(i => i != 'midi-none')) {
-        if (chris.getConfiguration(originItem, i) && chris.getRollDamageTypes(workflow.damageRoll).has(i) && !chris.checkTrait(targetToken.actor, 'di', i)) {
+        if (chris.getConfiguration(originItem, i) && chris.getRollsDamageTypes(workflow.damageRolls).has(i) && !chris.checkTrait(targetToken.actor, 'di', i)) {
             let threshold = chris.getConfiguration(originItem, 'threshold') ?? false;
             if (threshold) {
                 if (oldHP != 0) {
@@ -39,7 +39,7 @@ async function onHit(workflow, targetToken) {
         let effect = chris.findEffect(targetToken.actor, 'Reduced Regeneration');
         if (reducedHeal && !effect) {
             let effectData = {
-                'label': 'Reduced Regeneration',
+                'name': 'Reduced Regeneration',
                 'icon': originItem.img,
                 'duration': {
                     'seconds': 12
@@ -56,7 +56,7 @@ async function onHit(workflow, targetToken) {
             await chris.updateCombatant(chris.getCombatant(targetToken), updates);
             let effectData = {
                 'icon': 'icons/svg/skull.svg',
-                'label': 'Dead?',
+                'name': 'Dead?',
                 'origin': originItem.uuid,
                 'duration': {
                     'seconds': 86400
@@ -85,7 +85,7 @@ async function onHit(workflow, targetToken) {
         }
     }
     let effectData = {
-        'label': 'Regeneration Blocked',
+        'name': 'Regeneration Blocked',
         'icon': originItem.img,
         'duration': {
             'seconds': 12
@@ -121,8 +121,7 @@ async function turnStart(token, origin) {
     }
     await MidiQOL.completeItemUse(feature, config, options);
 }
-
 export let regeneration = {
     'onHit': onHit,
     'turnStart': turnStart
-}
+};
