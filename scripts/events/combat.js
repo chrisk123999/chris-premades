@@ -1,13 +1,12 @@
 import * as macros from '../macros.js';
 import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils} from '../utils.js';
-import {effectEvents} from './effects.js';
 import {collectTemplateMacros} from './template.js';
-function getItemMacroData(item) {
-    return item.flags['chris-premades']?.macros?.combat ?? [];
+function getMacroData(entity) {
+    return entity.flags['chris-premades']?.macros?.combat ?? [];
 }
-function collectItemMacros(item) {
+function collectMacros(entity) {
     let macroList = [];
-    macroList.push(...getItemMacroData(item));
+    macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j);
 }
@@ -16,9 +15,9 @@ function collectTokenMacros(token, pass) {
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor);
         for (let effect of effects) {
-            let macroList = effectEvents.collectEffectMacros(effect);
+            let macroList = collectMacros(effect);
             if (!macroList.length) continue;
-            let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).map(k => k.effect).flat().filter(l => l.pass === pass);
+            let effectMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).map(k => k.combat).flat().filter(l => l.pass === pass);
             effectMacros.forEach(i => {
                 triggers.push({
                     entity: effect,
@@ -33,7 +32,7 @@ function collectTokenMacros(token, pass) {
             });
         }
         for (let item of token.actor.items) {
-            let macroList = collectItemMacros(item);
+            let macroList = collectMacros(item);
             if (!macroList.length) continue;
             let itemMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).map(k => k.combat).flat().filter(l => l.pass === pass);
             itemMacros.forEach(i => {

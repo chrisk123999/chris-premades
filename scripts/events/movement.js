@@ -101,7 +101,7 @@ async function updateToken(token, updates, options, userId) {
     await executeMacroPass(token, 'moved');
     for (let i of token.parent.tokens) {
         if (i === token) continue;
-        let distance = tokenUtils.getDistance(token, i);
+        let distance = tokenUtils.getDistance(token.object, i.object);
         await executeMacroPass(i, 'movedNear', distance);
     }
 }

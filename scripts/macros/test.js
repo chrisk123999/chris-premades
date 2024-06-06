@@ -13,7 +13,7 @@ async function movedNear(trigger) {
 export let test = {
     name: 'Test',
     version: '0.12.0',
-    effect: [
+    combat: [
         {
             pass: 'turnEnd',
             macro: turnEnd,
@@ -35,7 +35,7 @@ export let test = {
             pass: 'movedNear',
             macro: movedNear,
             priority: 50,
-            distance: 2
+            distance: 10
         }
     ]
 };
