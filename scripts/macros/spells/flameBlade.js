@@ -78,5 +78,5 @@ export async function flameBlade({speaker, actor, token, character, item, args, 
         'description': 'Flamde Blade'
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependent(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }

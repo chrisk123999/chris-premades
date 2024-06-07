@@ -113,7 +113,7 @@ async function spawn(sourceActor, updates = {}, duration, originItem, maxRange, 
     };
     let casterEffect = await chris.createEffect(originItem.actor, casterEffectData);
     if (originItem.requiresConcentration) {
-        await chris.addDependents(MidiQOL.getConcentrationEffect(originItem.actor, originItem), [casterEffect]);
+        await chris.addDependent(MidiQOL.getConcentrationEffect(originItem.actor, originItem), [casterEffect]);
     }
     if (chris.inCombat()) {
         let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);

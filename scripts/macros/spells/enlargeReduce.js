@@ -455,7 +455,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             await warpgate.mutate(targetToken.document, updates, {}, options);
         }
     }
-    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [targetToken.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependent(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [targetToken.actor.effects.getName(workflow.item.name)]);
 }
 async function end(token, origin) {
     await warpgate.revert(token.document, 'Enlarge/Reduce', {'updateOpts': {'token': {'animate': true}}});

@@ -25,7 +25,7 @@
     }
   ],
   "esmodules": [
-    "scripts/module.js"
+    "dist/main.js"
   ],
   "styles": [
     "styles/module.css"
@@ -46,8 +46,8 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.4.29",
-          "verified": "11.4.29"
+          "minimum": "11.4.34",
+          "verified": "11.4.34"
         }
       },
       {
@@ -118,8 +118,8 @@
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.0.5",
-          "verified": "11.3.0.5"
+          "minimum": "11.3.29",
+          "verified": "11.3.29"
         }
       },
       {
@@ -134,8 +134,8 @@
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.9.1",
-          "verified": "11.3.9.1"
+          "minimum": "11.3.12",
+          "verified": "11.3.12"
         }
       }
     ],

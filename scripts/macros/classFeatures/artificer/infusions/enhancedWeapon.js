@@ -47,4 +47,4 @@ async function attack({speaker, actor, token, character, item, args, scope, work
 export let enhancedWeapon = {
     'item': item,
     'attack': attack
-}
+};

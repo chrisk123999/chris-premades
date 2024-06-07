@@ -21,7 +21,7 @@ export async function grapple({speaker, actor, token, character, item, args, sco
                 'options': {
                     'showRollResults': true,
                     'autoColor': true,
-//                    'hideNames': !game.settings.get('chris-premades', 'Show Names') // This breaks things?
+                    //'hideNames': !game.settings.get('chris-premades', 'Show Names') // This breaks things?
                 }
             });
             if (results.canceled || !results.success) return;

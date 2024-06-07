@@ -60,7 +60,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': effectData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
-    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependent(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }
 async function trigger(token, trigger) {
     let template = await fromUuid(trigger.templateUuid);

@@ -64,7 +64,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Holy Weapon - Target'
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
-    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [targetToken.actor.effects.getName(effectData.name)]);
+    await chris.addDependent(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [targetToken.actor.effects.getName(effectData.name)]);
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Holy Weapon - Dismiss', false);
     if (!featureData) return;
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Holy Weapon - Dismiss', false);
@@ -117,7 +117,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         'description': 'Holy Weapon'
     };
     await warpgate.mutate(workflow.token.document, updates2, {}, options2);
-    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
+    await chris.addDependent(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }
 async function dismiss({speaker, actor, token, character, item, args, scope, workflow}) {
     let targetTokenUuid = workflow.actor.flags['chris-premades']?.spell?.holyWeapon;

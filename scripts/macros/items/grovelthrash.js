@@ -109,4 +109,4 @@ export let grovelthrash = {
     'equip': equip,
     'unequip': unequip,
     'deleted': deleted
-}
+};
