@@ -1,4 +1,5 @@
 import {settings, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
+import {constants} from './utils.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -48,6 +49,15 @@ export function registerSettings() {
         default: false,
         category: 'interface',
         reloadRequired: true
+    });
+    addSetting({
+        key: 'useLocalCompendiums',
+        type: Boolean,
+        default: false,
+        category: 'development',
+        onChange: value => {
+            constants.setUseLocalCompendium(value);
+        }
     });
 }
 export function registerMenus() {

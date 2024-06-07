@@ -4,15 +4,18 @@ import {socket} from '../sockets.js';
 /*
         useSpellWhenEmpty - 1
 */
-async function buttonDialog(title, content, buttons, options = {displayVertical: true}) {
+async function buttonDialog(title, content, buttons, options = {displayAsRows: true, userId: game.userId}) {
     let inputs = [
-        ['button', [], {displayVertical: options.displayVertical}]
+        ['button', [], {displayAsRows: options.displayAsRows}]
     ];
     for (let [label, value] of buttons) {
         inputs[0][1].push({label: label, name: value});
     }
-    let result = await DialogApp.dialog(title, content, inputs, undefined, {width: 400});
-    return result.buttons;
+    let result;
+    if (options.userId != game.userId) {
+        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined, {width: 400});
+    } else result = await DialogApp.dialog(title, content, inputs, undefined, {width: 400});
+    return result?.buttons ?? false;
 }
 async function numberDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, options) {
     let inputs = [

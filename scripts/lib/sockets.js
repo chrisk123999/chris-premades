@@ -1,3 +1,5 @@
+import {DialogApp} from '../applications/dialog.js';
+
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
@@ -46,7 +48,7 @@ async function addDependents(entityUuid, dependentUuids) {
     let dependents = await Promise.all(dependentUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    entity.addDependents(...dependents);
+    await entity.addDependent(...dependents);
 }
 async function createEmbeddedDocuments(entityUuid, type, updates) {
     let entity = await fromUuid(entityUuid);
@@ -60,7 +62,13 @@ async function addFavorites(actorUuid, itemUuids) {
     let items = await Promise.all(itemUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    for (let i of items) await actor.system.addFavorite(i);
+    for (let i of items) await actor.system.addFavorite({
+        id: i.getRelativeUUID(i.actor),
+        type: 'item'
+    });
+}
+async function dialog(...options) {
+    return await new DialogApp.dialog(...options);
 }
 let sockets = [
     createEffect,
@@ -71,7 +79,8 @@ let sockets = [
     addDependents,
     createEmbeddedDocuments,
     addFavorites,
-    setFlag
+    setFlag,
+    dialog
 ];
 export let socket;
 export function registerSockets() {

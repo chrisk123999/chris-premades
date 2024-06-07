@@ -1,8 +1,8 @@
 import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
-    let buttons = Object.entries(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
-    let selection = await dialogUtils.buttonMenu({title: workflow.item.name, description:'CHRISPREMADES.macros.hex.selectAbility', buttons: buttons});
+    let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.selectAbility', buttons);
     if (!selection) return;
     let seconds;
     switch (workflow.castData.castLevel) {
@@ -57,12 +57,13 @@ async function use(workflow) {
         }
     };
     effectUtils.addMacro(casterEffectData, 'midi.actor', ['hexAttack']);
-    let featureData = itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
+    let featureData = await itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: featureData.name}});
+    console.log(casterEffect);
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'hexed'});
     }

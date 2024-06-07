@@ -72,10 +72,12 @@ async function executeMacroPass(effect, pass) {
 }
 async function createActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
     await executeMacroPass(effect, 'created');
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
+    if (!(effect.parent instanceof Actor)) return;
     await executeMacroPass(effect, 'deleted');
 }
 export let effectEvents = {

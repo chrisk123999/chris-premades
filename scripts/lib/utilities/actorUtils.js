@@ -6,7 +6,10 @@ function getEffects(actor) {
 async function addFavorites(actor, items) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        for (let i of items) await actor.system.addFavorite(i);
+        for (let i of items) await actor.system.addFavorite({
+            id: i.getRelativeUUID(i.actor),
+            type: 'item'
+        });
     } else {
         await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => i.uuid));
     }

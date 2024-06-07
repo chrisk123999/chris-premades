@@ -477,14 +477,14 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         this.render(true);
     }
     _onRender(context, options) {
-        let imageElements = this.element.querySelectorAll('.label-image');
-        imageElements[0].addEventListener('click', async (e) => {
-            console.log(e.target);
-            // Sensible way to get the parent button's 'name'
-            // let id = ^
-            // let tok = canvas.tokens.get(id);
-            // if (tok) await canvas.ping(tok.document.object.center);
-        });
+        //let imageElements = this.element.querySelectorAll('.label-image');
+        //imageElements[0].addEventListener('click', async (e) => {
+        //console.log(e.target);
+        // Sensible way to get the parent button's 'name'
+        // let id = ^
+        // let tok = canvas.tokens.get(id);
+        // if (tok) await canvas.ping(tok.document.object.center);
+        //});
     }
     /**
      * @override Was getting an error without this, only copy-pasted parts from the super, presumably out of HandlebarsMixin

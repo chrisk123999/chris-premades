@@ -1,9 +1,18 @@
-const packs = {
+let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures'
 };
-const featurePacks = {
+let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures'
 };
+function setUseLocalCompendium(value) {
+    if (value) {
+        packs.spellFeatures = 'world.cpr-spell-features';
+        featurePacks.spellFeatures = 'world.cpr-spell-features';
+    } else {
+        packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
+        featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
+    }
+}
 const attacks = [
     'msak',
     'rsak',
@@ -109,5 +118,6 @@ export let constants = {
     weaponAttacks,
     spellAttacks,
     damageTypes,
-    damageTypeOptions
+    damageTypeOptions,
+    setUseLocalCompendium
 };

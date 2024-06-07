@@ -4,16 +4,17 @@ import {registerMenus, registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {Crosshairs} from './lib/crosshairs.js';
 import {registerCustomTypes} from './customTypes.js';
-import {devUtils, genericUtils} from './utils.js';
+import * as utils from './utils.js';
 import * as macros from './macros.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
 Hooks.once('init', () => {
     registerSettings();
+    if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
     registerMenus();
     registerCustomTypes();
-    if (genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
-    if (genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
+    if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
+    if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
 });
 Hooks.once('ready', () => {
     registerHooks();
@@ -25,6 +26,6 @@ Hooks.once('ready', () => {
 globalThis['chrisPremades'] = {
     DialogApp,
     Crosshairs,
-    devUtils,
+    utils,
     macros
 };

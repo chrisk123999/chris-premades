@@ -42,10 +42,11 @@ async function createEffect(actor, effectData, {concentrationItem, parentEntity,
         effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         if (concentrationItem) {
             let concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
-            if (concentrationEffect) addDependents(concentrationEffect, effects[0]);
+            if (concentrationEffect) addDependents(concentrationEffect, effects);
         }
         if (parentEntity) {
-            addDependents(parentEntity, effects);
+            console.log(parentEntity);
+            await addDependents(parentEntity, effects);
         }
     } else {
         effects = await socket.executeAsGM('createEffect', effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
@@ -55,7 +56,7 @@ async function createEffect(actor, effectData, {concentrationItem, parentEntity,
 async function addDependents(entity, dependents) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) {
-        entity.addDependents(...dependents);
+        await entity.addDependent(...dependents);
     } else {
         socket.executeAsGM('addDependents', entity.uuid, dependents.map(i => i.uuid));
     }
