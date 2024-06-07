@@ -1,10 +1,10 @@
 # 0.11.7 Release:
 ## Bug Fixes:
-- Updated functions involing addDependents to use addDependent.
+- Updated functions involving addDependents to use addDependent.
 ## Update Notes:
 - Updated minimum versions of Midi-QOL, DAE, and Times Up.
 - Foundry V12 is not supported at all at this time, do not update Foundry at this time.
-- DND 3.2.0 has unknown compatibility and is not officialy supported at this time, use at your own risk.
+- DND 3.2.0 has unknown compatibility and is not officially supported at this time, use at your own risk.
   
 # 0.11.6 Release:
 ## Bug Fixes:
