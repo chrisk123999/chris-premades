@@ -54,10 +54,13 @@ function isSpellFeature(item) {
 }
 function getConfig(item, key) {
     let flagValue = item.flags['chris-premades']?.config?.[key];
+    console.log(flagValue);
     if (flagValue) return flagValue;
     let identifier = getIdentifer(item);
+    console.log(identifier);
     if (!identifier) return;
     let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
+    console.log(value);
     return value === '' ? false : value;
 }
 function getIdentifer(item) {

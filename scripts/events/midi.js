@@ -9,7 +9,7 @@ function getActorMacroData(actor) {
     let combined = items.concat(effects);
     if (!combined.length) return [];
     let macroDatas = [];
-    for (let i of items) macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
+    for (let i of combined) macroDatas.push(...i.flags['chris-premades'].macros.midi.actor);
     return macroDatas;
 }
 function collectMacros(workflow) {
@@ -22,6 +22,7 @@ function collectMacros(workflow) {
 let macrosMap = {};
 export async function preItemRoll(workflow) {
     let macroList = collectMacros(workflow);
+    console.log(macroList);
     if (!macroList) return;
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
@@ -38,6 +39,7 @@ export async function preItemRoll(workflow) {
         if (stateMacros.length) foundry.utils.setProperty(macrosMap, id + '.' + i, stateMacros);
     }
     await executeMacroPass(workflow, 'preItemRoll');
+    console.log(macrosMap);
 }
 async function executeMacro(workflow, macro) {
     console.log('CPR: Executing Midi Macro: ' + macro.name);

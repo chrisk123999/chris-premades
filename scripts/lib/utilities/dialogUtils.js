@@ -30,7 +30,7 @@ async function numberDialog(title, content, input = {label: 'Label', name: 'iden
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
     return result[input.name];
 }
-async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadandUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true}) {
+async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadAndUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true}) {
     let inputs = [
         [options?.type === 'multiple' ? 'checkbox' : options?.type === 'number' ? 'number' : options?.type === 'select' ? 'selectOption' : 'radio']
     ];

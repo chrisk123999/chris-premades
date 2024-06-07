@@ -1,4 +1,4 @@
-import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, actorUtils} from '../../utils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -48,7 +48,7 @@ async function use(workflow) {
         flags: {
             'chris-premades': {
                 hex: {
-                    targets: Array.from(workflow.targets).map(i => i.uuid),
+                    targets: Array.from(workflow.targets).map(i => i.document.uuid),
                     damageType: itemUtils.getConfig(workflow.item, 'damageType'),
                     formula: itemUtils.getConfig(workflow.item, 'formula'),
                     ability: selection
@@ -63,7 +63,6 @@ async function use(workflow) {
         return;
     }
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: featureData.name}});
-    console.log(casterEffect);
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'hexed'});
     }
@@ -77,9 +76,9 @@ async function damage(workflow) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;
     let validTargetUuids = effect.flags['chris-premades'].hex.targets;
-    if (!workflow.hitTargets.find(i => validTargetUuids.includes(i.uuid))) return;
+    if (!workflow.hitTargets.find(i => validTargetUuids.includes(i.document.uuid))) return;
     let damageType = effect.flags['chris-premades'].hex.damageType;
-    let formula = effect.flags['chris-premades'].hex.damageType;
+    let formula = effect.flags['chris-premades'].hex.formula;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
 async function move(workflow) {
@@ -87,17 +86,23 @@ async function move(workflow) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;
     let oldTargets = effect.flags['chris-premades'].hex.targets;
-    let oldTarget;
-    if (oldTargets.length > 1) {
-        //dialog here
-    } else {
-        oldTarget = await fromUuid(oldTargets[0]);
+    let targets = (await Promise.all(oldTargets.map(async i => await fromUuid(i)))).filter(j => j);
+    let selection;
+    if (targets.length) {
+        if (targets.length > 1) {
+            let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false});
+            if (!selection) {
+                selection = targets[0];
+            }
+        } else {
+            selection = targets[0];
+        }
     }
-    if (oldTarget.actor) {
-        let oldEffect = effectUtils.getEffectByIdentifier(oldTarget.actor, 'hexed');
-        if (oldEffect) await genericUtils.remove(oldEffect);
+    if (selection.actor) {
+        let effect = effectUtils.getEffectByIdentifier(selection.actor, 'hexed');
+        if (effect) await genericUtils.remove(effect);  //Here
     }
-    oldTargets = oldTargets.filter(i => i != oldTarget);
+    oldTargets = oldTargets.filter(i => i != selection.uuid);
     oldTargets.push(workflow.targets.first().uuid);
     await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
     let effectData = {
@@ -117,6 +122,7 @@ async function move(workflow) {
         ]
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'hexed'});
+
 }
 export let hex = {
     name: 'Hex',
@@ -165,7 +171,7 @@ export let hexAttack = {
     midi: {
         actor: [
             {
-                pass: 'postDamageRollComplete',
+                pass: 'postDamageRoll',
                 macro: damage,
                 priority: 250
             }
