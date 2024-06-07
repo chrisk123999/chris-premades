@@ -1,6 +1,10 @@
+import {configureCompendiumPriority, configureCompendiums} from '../compendiums.js';
 import {genericUtils} from '../utils.js';
 let settingCategories = {};
-let buttonLabels = {};
+let buttonLabels = {
+    additionalCompendiums: 'CHRISPREMADES.configure',
+    compendiumPriority: 'CHRISPREMADES.configure'
+};
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
 }
@@ -66,6 +70,12 @@ class settingsBase extends FormApplication {
         }
     }
 }
+export async function settingButton(id) {
+    switch(id) {
+        case 'additionalCompendiums': await configureCompendiums(); break;
+        case 'compendiumPriority': await configureCompendiumPriority(); break;
+    }
+}
 export class settingsDevelopment extends settingsBase {
     constructor() {
         super();
@@ -82,5 +92,11 @@ export class settingsInterface extends settingsBase {
     constructor() {
         super();
         this.category = 'interface';
+    }
+}
+export class settingsCompendium extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'compendium';
     }
 }

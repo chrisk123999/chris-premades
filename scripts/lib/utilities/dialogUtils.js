@@ -38,7 +38,7 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
     let number = 1;
     for (let i of targets) {
         let label;
-        if (game.settings.get('chris-premades', 'Show Names')) {
+        if (!genericUtils.getCPRSetting('hideNames')) {
             label = i.document.name;
         } else {
             if (i.document.disposition <= 0) {
@@ -67,7 +67,7 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         });
     }
     inputs[0].push(targetInputs);
-    if (options?.skipDeadandUnconscious) {
+    if (options?.skipDeadAndUnconscious) {
         inputs.push([
             'checkbox',
             [{

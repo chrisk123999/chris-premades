@@ -38,8 +38,11 @@ function decimalToFraction(decimal) {
     if (Number(decimal) >= 1) return Number(decimal);
     return '1/' + 1 / Number(decimal);
 }
-export function getCPRSetting(key) {
+function getCPRSetting(key) {
     return game.settings.get('chris-premades', key);
+}
+function isNewerVersion(v1, v0) {
+    return foundry.utils.isNewerVersion(v1, v0);
 }
 export let genericUtils = {
     sleep,
@@ -52,5 +55,6 @@ export let genericUtils = {
     deepClone,
     mergeObject,
     getCPRSetting,
-    decimalToFraction
+    decimalToFraction,
+    isNewerVersion
 };

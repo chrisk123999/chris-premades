@@ -86,13 +86,15 @@ async function move(workflow) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;
     let oldTargets = effect.flags['chris-premades'].hex.targets;
-    let targets = (await Promise.all(oldTargets.map(async i => await fromUuid(i)))).filter(j => j);
+    let targets = (await Promise.all(oldTargets.map(async i => await fromUuid(i)))).filter(j => j).map(k => k.object);
     let selection;
     if (targets.length) {
         if (targets.length > 1) {
-            let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false});
+            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false, type: 'select'}); //This needs to be fixed on the dialog util side.
             if (!selection) {
                 selection = targets[0];
+            } else {
+                selection = selection[0];
             }
         } else {
             selection = targets[0];
@@ -100,7 +102,7 @@ async function move(workflow) {
     }
     if (selection.actor) {
         let effect = effectUtils.getEffectByIdentifier(selection.actor, 'hexed');
-        if (effect) await genericUtils.remove(effect);  //Here
+        if (effect) await genericUtils.remove(effect);
     }
     oldTargets = oldTargets.filter(i => i != selection.uuid);
     oldTargets.push(workflow.targets.first().uuid);
@@ -122,7 +124,6 @@ async function move(workflow) {
         ]
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {parentEntity: effect, identifier: 'hexed'});
-
 }
 export let hex = {
     name: 'Hex',

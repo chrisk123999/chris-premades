@@ -39,6 +39,11 @@
                 "name": "User Interface Options",
                 "label": "User Interface Options",
                 "hint": "Settings for the user interface."
+            },
+            "compendium": {
+                "name": "Compendium Options",
+                "label": "Compendium Options",
+                "hint": "Settings for compendiums."
             }
         },
         "config": {
@@ -80,6 +85,7 @@
         "import": "Import",
         "customTypes": {
             "spellFeature": "Spell Feature"
-        }
+        },
+        "configure": "Configure"
     }
 }

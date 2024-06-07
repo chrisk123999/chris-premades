@@ -1,4 +1,4 @@
-import {settings, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
+import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
 import {constants} from './utils.js';
 function addSetting(options) {
     let setting = {
@@ -59,6 +59,22 @@ export function registerSettings() {
             constants.setUseLocalCompendium(value);
         }
     });
+    addSetting({
+        key: 'additionalCompendiums',
+        type: Array,
+        default: [],
+        category: 'compendium',
+    });
+    addSetting({
+        key: 'compendiumPriority',
+        type: Object,
+        default: {
+            CPR: 0,
+            GPS: 1,
+            MISC: 2
+        },
+        category: 'compendium'
+    });
 }
 export function registerMenus() {
     addMenu({
@@ -75,5 +91,10 @@ export function registerMenus() {
         key: 'interface',
         icon: 'fas fa-display',
         type: settingsInterface
+    });
+    addMenu({
+        key: 'compendium',
+        icon: 'fas fa-atlas',
+        type: settingsCompendium
     });
 }

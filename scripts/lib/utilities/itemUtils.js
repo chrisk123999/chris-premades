@@ -54,13 +54,10 @@ function isSpellFeature(item) {
 }
 function getConfig(item, key) {
     let flagValue = item.flags['chris-premades']?.config?.[key];
-    console.log(flagValue);
     if (flagValue) return flagValue;
     let identifier = getIdentifer(item);
-    console.log(identifier);
     if (!identifier) return;
     let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
-    console.log(value);
     return value === '' ? false : value;
 }
 function getIdentifer(item) {
@@ -68,6 +65,32 @@ function getIdentifer(item) {
 }
 function getItemByIdentifer(actor, identifier) {
     return actor.items.find(i => getIdentifer(i) === identifier);
+}
+function getVersion(item) {
+    return item.flags['chris-premades']?.info?.version;
+}
+function getSource(item) {
+    return item.flags['chris-premades']?.info?.source;
+}
+function isUpToDate(item) {
+    let version = getVersion(item);
+    let identifier = getIdentifer(item);
+    let source = getSource(item);
+    if (!identifier || !version || !source) return -1;
+    let sourceVersion;
+    switch (source) {
+        case 'GPS':
+            sourceVersion = 1;
+            break;
+        case 'MISC':
+            sourceVersion = 1;
+            break;
+        case 'CPR':
+            sourceVersion = macros[identifier].version;
+            break;
+    }
+    let compare = genericUtils.isNewerVersion(sourceVersion, version);
+    return compare ? 1 : 0;
 }
 export let itemUtils = {
     getSaveDC,
@@ -77,5 +100,8 @@ export let itemUtils = {
     isSpellFeature,
     getConfig,
     getIdentifer,
-    getItemByIdentifer
+    getItemByIdentifer,
+    getVersion,
+    getSource,
+    isUpToDate
 };

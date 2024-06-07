@@ -8,6 +8,7 @@ import * as utils from './utils.js';
 import * as macros from './macros.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
+import {settingButton} from './applications/settings.js';
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
@@ -27,5 +28,6 @@ globalThis['chrisPremades'] = {
     DialogApp,
     Crosshairs,
     utils,
-    macros
+    macros,
+    settingButton
 };
