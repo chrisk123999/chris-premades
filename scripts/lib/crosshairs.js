@@ -41,7 +41,7 @@ export class Crosshairs extends MeasuredTemplate {
     }
     static defaultCrosshairsConfig() {
         return {
-            size: 1,
+            size: canvas.dimensions.distance,
             icon: 'icons/svg/dice-target.svg', // Update this to be a setting
             label: '',
             labelOffset: {

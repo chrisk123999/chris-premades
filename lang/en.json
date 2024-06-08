@@ -22,6 +22,10 @@
             "macroInterface": {
                 "name": "Enable Macro Interface",
                 "hint": "Adds a sidebar tab for Macros. Reload required after enabling."
+            },
+            "temporaryEffectHud": {
+                "name": "Temporary Effects HUD",
+                "hint": "Adds Temporary effects to the status effect token HUD."
             }
         },
         "settingCategory": {

@@ -1,3 +1,4 @@
+import {effectHud, patchToggleEffect} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
 import {constants} from './utils.js';
 function addSetting(options) {
@@ -55,9 +56,7 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'development',
-        onChange: value => {
-            constants.setUseLocalCompendium(value);
-        }
+        onChange: value => constants.setUseLocalCompendium(value)
     });
     addSetting({
         key: 'additionalCompendiums',
@@ -74,6 +73,13 @@ export function registerSettings() {
             MISC: 2
         },
         category: 'compendium'
+    });
+    addSetting({
+        key: 'temporaryEffectHud',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: value => effectHud.patchToggleEffect(value)
     });
 }
 export function registerMenus() {

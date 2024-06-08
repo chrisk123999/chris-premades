@@ -30,7 +30,7 @@ async function setFlag(entity, scope, key, value) {
 }
 async function remove(entity) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
-    if (hasPermission) await entity.delete();
+    if (hasPermission) return await entity.delete();
     await socket.executeAsGM('deleteEntity', entity.uuid);
 }
 function decimalToFraction(decimal) {

@@ -9,6 +9,7 @@ import * as macros from './macros.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
+import {effectHud} from './applications/effectHud.js';
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
@@ -16,6 +17,7 @@ Hooks.once('init', () => {
     registerCustomTypes();
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
     if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
+    if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
 });
 Hooks.once('ready', () => {
     registerHooks();
