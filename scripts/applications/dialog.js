@@ -223,6 +223,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     // Add results to the object to be handled elsewhere
     static async formHandler(event, form, formData) {
         this.results = foundry.utils.expandObject(formData.object);
+        console.log(this.results);
     }
     // Takes the button results, passes it to be merged with formData
     static async confirm(event, target) {
@@ -319,7 +320,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     context.inputs.push({
                         isRadio: true,
                         displayAsRows: inputOptions?.displayAsRows ?? false,
-                        options: radioOptions
+                        options: radioOptions,
+                        radioName: inputOptions?.radioName ?? 'radio',
                     });
                     break;
                 }
@@ -468,6 +470,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 currentContext.inputs[targetInputId[0]].options.forEach(currOpt => currOpt.isChecked = false);
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
                 break;
+            }
+            case 'number': {
+                currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
             }
         }
         if (targetInput.localName === 'file-picker') {

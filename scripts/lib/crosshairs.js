@@ -37,6 +37,7 @@ export class Crosshairs extends MeasuredTemplate {
         this.rightX = 0;
         this.rightY = 0;
         this.radius = this.document.distance * this.scene.grid.size / 2;
+        console.log(this.radius);
     }
     static defaultCrosshairsConfig() {
         return {
@@ -62,6 +63,29 @@ export class Crosshairs extends MeasuredTemplate {
             fillColor: game.user.color,
         };
     }
+    /**
+     * Outwards facing function of the Crosshairs class, will do the constructing itself.
+     */
+    static async showCrosshairs(config = {}, callbacks = {}) {
+        config = foundry.utils.mergeObject(config, Crosshairs.defaultCrosshairsConfig(), {overwrite: false});
+        let controlled = [];
+        if (config.rememberControlled) {
+            controlled = canvas.tokens.controlled;
+        }
+        if (!Object.prototype?.hasOwnProperty?.call(config, 'x') && !Object.prototype?.hasOwnProperty?.call(config, 'y')) {
+            let mouseLoc = canvas.app.renderer.events.pointer.getLocalPosition(canvas.app.stage);
+            mouseLoc = Crosshairs.getSnappedPosition(mouseLoc, config.interval);
+            config.x = mouseLoc.x;
+            config.y = mouseLoc.y;
+        }
+        const template = new Crosshairs(config, callbacks);
+        await template.drawPreview();
+        let dataObj = template.toObject();
+        for (const token of controlled) {
+            token.control({ releaseOthers: false });
+        }
+        return dataObj;
+    }
     // Will return the current Crosshairs Data
     toObject() {
         const data = foundry.utils.mergeObject(this.document.toObject(), {
@@ -73,7 +97,37 @@ export class Crosshairs extends MeasuredTemplate {
         delete data.width;
         return data;
     }
-    static ERROR_TEXTURE = 'icons/svg/hazard.svg'; // Update this to be a setting
+    /**
+       * Returns desired types of placeables whose center point
+       * is within the crosshairs radius.
+       *
+       * @param {Object} crosshairsData Requires at least {x,y,radius,parent} (all in pixels, parent is a Scene)
+       * @param {String|Array<String>} [types='Token'] Collects the desired embedded placeable types.
+       * @param {Function} [containedFilter=Gateway._containsCenter] Optional function for determining if a placeable
+       *   is contained by the crosshairs. Default function tests for centerpoint containment. {@link Gateway._containsCenter}
+       *
+       * @return {Object<String,PlaceableObject>} List of collected placeables keyed by embeddedName
+       */
+    static collectPlaceables(crosshairsData, types = 'Token', containedFilter = Crosshairs._containsCenter) {
+        let isArray = Array.isArray(types);
+        if (!isArray) types = [types];
+        let result = types.reduce((acc, embeddedName) => {
+            let collection = crosshairsData.scene.getEmbeddedCollection(embeddedName);
+            let contained = collection.filter((document) => {
+                return containedFilter(document.object, crosshairsData);
+            });
+            acc[embeddedName] = contained;
+            return acc;
+        }, {});
+        return isArray ? result : result[types[0]];
+    }
+    static _containsCenter(placeable, crosshairsData) {
+        const calcDistance = (A, B) => {
+            return Math.hypot(A.x - B.x, A.y - B.y);
+        };
+        let distance = calcDistance(placeable.center, crosshairsData);
+        return distance <= crosshairsData.radius;
+    }
     // Returns the active crosshairs object based on tag given
     static getCrosshair(tag) {
         return canvas.templates.preview.children.find(child => child.tag === tag);
@@ -83,6 +137,7 @@ export class Crosshairs extends MeasuredTemplate {
         const snapped = canvas.grid.getSnappedPoint({x: x - offset, y: y - offset}, {mode: 1, resolution: resolution});
         return {x: snapped.x + offset, y: snapped.y + offset};
     }
+    static ERROR_TEXTURE = 'icons/svg/hazard.svg'; // Update this to be a setting
     /**
      * Main function of the Crosshairs Class, will return the finished Crosshairs object which the X and Y can be taken from for position
      */
@@ -207,8 +262,6 @@ export class Crosshairs extends MeasuredTemplate {
         // Right click cancel
         canvas.app.view.onmousedown = this.rightDownHandler;
         canvas.app.view.onmouseup = this.rightUpHandler;
-  
-        // END WARPGATE
     }
     // Handling for mouse events during crosshairs flight
     _mouseMoveHandler(event) {
@@ -306,6 +359,7 @@ export class Crosshairs extends MeasuredTemplate {
         } else if (crosshairs.document.t === 'ray') {
             // Figure out a way to get the template to center on the crosshairs...
         }
+        console.log(shape);
         return shape;
     }
     async waitFor(fn, maxIter = 600, iterWaitTime = 100) {

@@ -1,32 +1,55 @@
 let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
-export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
-    constructor(options) {
+import { itemUtils } from '../utils';
+import * as macros from './macros.js';
+
+export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
+    constructor(info) {
         super();
+        this.windowTitle = 'Chris\'s Premades Configuration: ' + info.item.name;
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
         form: {
-            handler: DialogApp.formHandler,
+            handler: Medkit.formHandler,
             submitOnChange: false,
             closeOnSubmit: false,
-            id: 'dialog-app-window'
+            id: 'medkit-window'
         },
         actions: {
-            confirm: DialogApp.confirm
+            confirm: Medkit.confirm
         },
         window: {
-            title: 'Default Title',
+            icon: 'fa-solid fa-kit-medical',
             resizable: true,
         }
     };
     static PARTS = {
-        form: {
-            template: 'modules/chris-premades/templates/dialogApp.hbs'
+        header: {
+            template: 'modules/chris-premades/templates/medkit-header.hbs'
+        },
+        nagivation: {
+            template: 'modules/chris-premades/templates/medkit-navigation.hbs'
+        },
+        info: {
+            template: 'modules/chris-premades/templates/medkit-info.hbs'
         },
         footer: {
             template: 'modules/chris-premades/templates/form-footer.hbs'
         }
     };
+    static async item(item) {
+        let info = {};
+        info.item.identifier = itemUtils.getIdentifer(item);                          //Internal Identifier used by CPR
+        info.item.name = macros[info.item.identifier] ? macros[info.item.identifier].name : item.name;    //Item name matched by the identifier, falls back to the actual item name
+        info.item.version = itemUtils.getVersion(item);                               //Version string
+        info.item.source = itemUtils.getSource(item);                                 //Automation source: "CPR, GPS, MISC, Other" Other will not have version info and should be treated as being unknown for updated.
+        info.item.isUpToDate = itemUtils.isUpToDate(item);                            // -1 for Unknown, 0 for No, 1 for Yes
+        new Medkit(info);
+        //Item Medkit Dialog Here!
+    }
+    static async actor(actor) {
+        //Actor Medkit Dialog Here!
+    }
     // Add results to the object to be handled elsewhere
     static async formHandler(event, form, formData) {
         this.results = foundry.utils.expandObject(formData.object);

@@ -67,6 +67,7 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         });
     }
     inputs[0].push(targetInputs);
+    inputs[0].push({displayAsRows: true, radioName: 'targets'});
     if (options?.skipDeadAndUnconscious) {
         inputs.push([
             'checkbox',
@@ -77,11 +78,56 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
             }]
         ]);
     }
-    let selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
-    return selection;
+    let selection;
+    if (options.userId != game.userId) {
+        selection = await socket.executeAsUser('dialog', options.userId, title, content, inputs, 'okCancel');
+    } else selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
+    if (selection.buttons == false) return false;
+    let result;
+    switch (options?.type) {
+        case 'multiple': {
+            for (let [key, value] of Object.entries(selection)) {
+                if (key === 'buttons' || value === false) continue;
+                let doc = targets.find(target => target.id === key);
+                if (!doc) continue;
+                if (!Array.isArray(result)) result = [];
+                result.push(doc);
+            }
+            console.log(result);
+            break;
+        }
+        case 'number': {
+            for (let [key, value] of Object.entries(selection)) {
+                if (key === 'buttons' || value === 0) continue;
+                let doc = targets.find(target => target.id === key);
+                if (!doc) continue;
+                if (!Array.isArray(result)) result = [];
+                result.push({document: doc, value: value});
+            }
+            console.log(result);
+            break;
+        }
+        case 'select': {
+            for (let [key, value] of Object.entries(selection)) {
+                if (key === 'buttons' || !value) continue;
+                let doc = targets.find(target => target.id === key);
+                if (!doc) continue;
+                if (!Array.isArray(result)) result = [];
+                result.push({document: doc, value: value});
+            }
+            break;
+        }
+        default: {
+            result = targets.find(target => target.id === selection.targets);
+        }
+    }
+    return result;
 }
-async function confirm(title, content) {
-    let selection = await DialogApp.dialog(title, content, undefined, 'yesNo');
+async function confirm(title, content, options = {userId: game.userId}) {
+    let selection;
+    if (options.userId != game.userId) {
+        selection = await socket.executeAsUser('dialog', options.userId, title, content, undefined, 'yesNo');
+    } else selection = await DialogApp.dialog(title, content, undefined, 'yesNo');
     return selection.buttons;
 }
 async function selectDocumentDialog(title, content, documents, options = {useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {

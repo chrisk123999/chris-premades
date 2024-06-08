@@ -90,11 +90,9 @@ async function move(workflow) {
     let selection;
     if (targets.length) {
         if (targets.length > 1) {
-            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false, type: 'select'}); //This needs to be fixed on the dialog util side.
+            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false});
             if (!selection) {
                 selection = targets[0];
-            } else {
-                selection = selection[0];
             }
         } else {
             selection = targets[0];
