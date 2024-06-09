@@ -1,4 +1,4 @@
-let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 
 /**
  * @param {string} title Dialog Window Title

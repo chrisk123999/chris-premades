@@ -26,6 +26,10 @@
             "temporaryEffectHud": {
                 "name": "Temporary Effects HUD",
                 "hint": "Adds Temporary effects to the status effect token HUD."
+            },
+            "additionalCompendiums": {
+                "name": "Additional Compendiums",
+                "hint": "Select additional item compendiums to be used by the medkit and adjust their priority."
             }
         },
         "settingCategory": {
@@ -90,6 +94,10 @@
         "customTypes": {
             "spellFeature": "Spell Feature"
         },
-        "configure": "Configure"
+        "configure": "Configure",
+        "error": {
+            "compendiumNotFound": "Invalid compendium specified!",
+            "compendiumItemNotFound": "Compendium item not found!"
+        }
     }
 }

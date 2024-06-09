@@ -1,4 +1,3 @@
-import {configureCompendiumPriority, configureCompendiums} from '../compendiums.js';
 import {genericUtils} from '../utils.js';
 let settingCategories = {};
 let buttonLabels = {
@@ -72,8 +71,9 @@ class settingsBase extends FormApplication {
 }
 export async function settingButton(id) {
     switch(id) {
-        case 'additionalCompendiums': await configureCompendiums(); break;
-        case 'compendiumPriority': await configureCompendiumPriority(); break;
+        case 'additionalCompendiums': 
+            //Dialog here!
+            break;
     }
 }
 export class settingsDevelopment extends settingsBase {

@@ -1,5 +1,6 @@
 let packs = {
-    spellFeatures: 'chris-premades.CPRSpellFeatures'
+    spellFeatures: 'chris-premades.CPRSpellFeatures',
+    spells: 'chris-premades.CPRSpells'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures'
@@ -8,9 +9,11 @@ function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';
         featurePacks.spellFeatures = 'world.cpr-spell-features';
+        packs.spells = 'world.cpr-spells';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
+        packs.spells = 'chris-premades.CPRSpells';
     }
 }
 const attacks = [

@@ -1,9 +1,8 @@
-import {genericUtils} from '../utils.js';
 function missingPack() {
-    ui.notifications.warn(genericUtils.translate('CHRISPREMADES.error.missingPack'));
+    ui.notifications.warn('CHRISPREMADES.error.compendiumNotFound', {localize: true});
 }
 function missingPackItem() {
-    ui.notifications.warn(genericUtils.translate('CHRISPREMADES.error.missingPackItem'));
+    ui.notifications.warn('CHRISPREMADES.error.compendiumItemNotFound', {localize: true});
 }
 export let errors = {
     missingPack,

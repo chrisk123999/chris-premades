@@ -12,3 +12,4 @@ export {constants} from './lib/constants.js';
 export {errors} from './lib/errors.js';
 export {animationUtils} from './lib/utilities/animationUtils.js';
 export {tokenUtils} from './lib/utilities/tokenUtils.js';
+export {compendiumUtils} from './lib/utilities/compendiumUtils.js';

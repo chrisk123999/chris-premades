@@ -28,3 +28,10 @@ Mile Markers:
         - Replaced by internal hook calls
 - Convert/update/fix all old functions
     - Redo artificer infusions and items that add items
+
+game.compendiums.filter(i => i.metadata.type === 'Item');
+settings:
+    {
+        id: compendiumId,
+        priority: 0-100
+    }

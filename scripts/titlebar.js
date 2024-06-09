@@ -1,6 +1,5 @@
-import {itemUtils} from './utils.js';
+import {compendiumUtils, itemUtils} from './utils.js';
 import * as macros from './macros.js';
-
 export function createHeaderButton(config, buttons) {
     buttons.unshift({
         class: 'chris-premades-item',
@@ -20,6 +19,7 @@ async function itemMedkit(item) {
     let version = itemUtils.getVersion(item);                               //Version string
     let source = itemUtils.getSource(item);                                 //Automation source: "CPR, GPS, MISC, Other" Other will not have version info and should be treated as being unknown for updated.
     let isUpToDate = itemUtils.isUpToDate(item);                            // -1 for Unknown, 0 for No, 1 for Yes
+    let CPRAutomation = compendiumUtils.getCPRAutomation(item);             //The item document from the CPR compendiums. Undefined it not found / unavailable.
 
     //Item Medkit Dialog Here!
 }

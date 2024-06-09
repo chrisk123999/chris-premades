@@ -1,4 +1,4 @@
-import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, actorUtils} from '../../utils.js';
+import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, actorUtils, compendiumUtils} from '../../utils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -57,7 +57,7 @@ async function use(workflow) {
         }
     };
     effectUtils.addMacro(casterEffectData, 'midi.actor', ['hexAttack']);
-    let featureData = await itemUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
     if (!featureData) {
         errors.missingPackItem();
         return;

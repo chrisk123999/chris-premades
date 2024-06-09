@@ -1,4 +1,4 @@
-import {effectHud, patchToggleEffect} from './applications/effectHud.js';
+import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
 import {constants} from './utils.js';
 function addSetting(options) {
@@ -60,19 +60,13 @@ export function registerSettings() {
     });
     addSetting({
         key: 'additionalCompendiums',
-        type: Array,
-        default: [],
-        category: 'compendium',
-    });
-    addSetting({
-        key: 'compendiumPriority',
         type: Object,
         default: {
-            CPR: 0,
-            GPS: 1,
-            MISC: 2
+            CPR: 1,
+            GPS: 2,
+            MISC: 3
         },
-        category: 'compendium'
+        category: 'compendium',
     });
     addSetting({
         key: 'temporaryEffectHud',
