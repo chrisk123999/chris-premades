@@ -1,5 +1,4 @@
-import {compendiumUtils, itemUtils} from './utils.js';
-import * as macros from './macros.js';
+import {compendiumUtils} from './utils.js';
 export function createHeaderButton(config, buttons) {
     buttons.unshift({
         class: 'chris-premades-item',
@@ -14,12 +13,8 @@ export function createHeaderButton(config, buttons) {
     });
 }
 async function itemMedkit(item) {
-    let identifier = itemUtils.getIdentifer(item);                          //Internal Identifier used by CPR
-    let name = macros[identifier] ? macros[identifier].name : item.name;    //Item name matched by the identifier, falls back to the actual item name
-    let version = itemUtils.getVersion(item);                               //Version string
-    let source = itemUtils.getSource(item);                                 //Automation source: "CPR, GPS, MISC, Other" Other will not have version info and should be treated as being unknown for updated.
-    let isUpToDate = itemUtils.isUpToDate(item);                            // -1 for Unknown, 0 for No, 1 for Yes
-    let CPRAutomation = compendiumUtils.getCPRAutomation(item);             //The item document from the CPR compendiums. Undefined it not found / unavailable.
+    let automations = await compendiumUtils.getAllAutomations(item);
+    console.log(automations);
 
     //Item Medkit Dialog Here!
 }
