@@ -2,6 +2,7 @@ import {registerHooks} from './hooks.js';
 import {setupJournal} from './journal.js';
 import {registerMenus, registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
+import {AdditionalCompendiums} from './applications/additionalCompendiums.js';
 import {Crosshairs} from './lib/crosshairs.js';
 import {registerCustomTypes} from './customTypes.js';
 import * as utils from './utils.js';
@@ -29,6 +30,7 @@ Hooks.once('ready', () => {
 globalThis['chrisPremades'] = {
     DialogApp,
     Crosshairs,
+    AdditionalCompendiums,
     utils,
     macros,
     settingButton

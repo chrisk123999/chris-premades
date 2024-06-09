@@ -79,3 +79,25 @@ form .better-dialog .form-group .flex-col button.form-button {
     margin-top: 3px;
     margin-bottom: 3px;
 }
+
+form .cpr-compendiums {
+    display: flex;
+}
+
+.cpr-compendiums-header {
+    margin-bottom: 10px;
+}
+
+form .cpr-compendiums .compendium-checkbox {
+    flex: 0;
+    margin-right: 10px;
+}
+
+form .cpr-compendiums .compendium-label {
+    flex: 1
+}
+
+form .cpr-compendiums .compendium-number {
+    flex: .1;
+    text-align: center
+}

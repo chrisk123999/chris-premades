@@ -55,9 +55,8 @@ function getSource(item) {
 }
 function isUpToDate(item) {
     let version = getVersion(item);
-    let identifier = getIdentifer(item);
     let source = getSource(item);
-    if (!identifier || !version || !source) return -1;
+    if (!version || !source) return -1;
     let sourceVersion;
     switch (source) {
         case 'GPS':
@@ -66,12 +65,14 @@ function isUpToDate(item) {
         case 'MISC':
             sourceVersion = 1;
             break;
-        case 'CPR':
+        case 'CPR': {
+            let identifier = getIdentifer(item);
             sourceVersion = macros[identifier].version;
             break;
+        }
     }
     let compare = genericUtils.isNewerVersion(sourceVersion, version);
-    return compare ? 1 : 0;
+    return compare ? 0 : 1;
 }
 export let itemUtils = {
     getSaveDC,

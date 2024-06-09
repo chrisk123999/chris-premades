@@ -3,7 +3,7 @@ import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
-import {createHeaderButton} from './titlebar.js';
+import {createHeaderButton, renderItemSheet} from './titlebar.js';
 import {genericUtils} from './utils.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
@@ -20,4 +20,5 @@ export function registerHooks() {
     }
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
+    Hooks.on('renderItemSheet', renderItemSheet);
 }
