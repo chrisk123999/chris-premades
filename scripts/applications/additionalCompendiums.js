@@ -41,20 +41,10 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         let settings = {};
         for (let compendium of Object.values(this.context.compendiums)) {
             if (!compendium.isChecked) continue;
-            settings[compendium.id] = compendium.priority;
+            settings[compendium.id] = Number(compendium.priority);
         }
         game.settings.set('chris-premades', 'additionalCompendiums', settings);
         this.close();
-    }
-    async mergeResults(name) {
-        if (name === false) this.submit(false);
-        while (this.results === undefined) {
-            await new Promise((resolve) => {
-                setTimeout(resolve, 10);
-            });
-        }
-        this.results.buttons = name;
-        console.log(duplicate(this.results));
     }
     get title() {
         return this.windowTitle;
@@ -115,7 +105,6 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
             this.render(false);
             return;
         }
-        console.log(currentSettings);
         for (let [key, value] of Object.entries(currentSettings)) {
             let pack = game.packs.get(key);
             compendiums[pack?.metadata?.name ?? key] = {
@@ -132,7 +121,6 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
     async _prepareContext(options) {
         if (!this.context) this.formatInputs();
         let context = this.context;
-        console.log(this.context);
         return context;
     }
     async _onChangeForm(formConfig, event) {
@@ -142,7 +130,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
             foundry.utils.setProperty(currentContext, 'compendiums.' + targetInput.name + '.isChecked', targetInput?.checked);
         }
         else if (targetInput.type === 'number') {
-            foundry.utils.setProperty(currentContext, 'compendiums.' + targetInput.name, targetInput?.value);
+            foundry.utils.setProperty(currentContext, 'compendiums.' + targetInput.name, Number(targetInput?.value));
         }
         this.context = currentContext;
         this.render(true);
