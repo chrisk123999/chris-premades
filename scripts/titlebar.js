@@ -9,6 +9,8 @@ export function createHeaderButton(config, buttons) {
                 itemMedkit(config.object);
             } else if (config.object instanceof Actor) {
                 actorMedkit(config.object);
+            } else if (config.object instanceof ActiveEffect) {
+                effectMedkit(config.object);
             }
         }
     });
@@ -16,11 +18,16 @@ export function createHeaderButton(config, buttons) {
 async function itemMedkit(item) {
     let automations = await compendiumUtils.getAllAutomations(item);
     console.log(automations);
-
     //Item Medkit Dialog Here!
+    console.log(item);
 }
 async function actorMedkit(actor) {
     //Actor Medkit Dialog Here!
+    console.log(actor);
+}
+async function effectMedkit(effect) {
+    //Effect Medkit Dialog Here!
+    console.log(effect);
 }
 export async function renderItemSheet(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');

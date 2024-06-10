@@ -1,5 +1,5 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface} from './applications/settings.js';
+import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface, settingsMechanics} from './applications/settings.js';
 import {constants} from './utils.js';
 function addSetting(options) {
     let setting = {
@@ -75,6 +75,12 @@ export function registerSettings() {
         category: 'interface',
         onChange: value => effectHud.patchToggleEffect(value)
     });
+    addSetting({
+        key: 'conditionResistanceAndVulnerability',
+        type: Boolean,
+        default: true,
+        category: 'mechanics'
+    });
 }
 export function registerMenus() {
     addMenu({
@@ -96,5 +102,10 @@ export function registerMenus() {
         key: 'compendium',
         icon: 'fas fa-atlas',
         type: settingsCompendium
+    });
+    addMenu({
+        key: 'mechanics',
+        icon: 'fas fa-dice',
+        type: settingsMechanics
     });
 }

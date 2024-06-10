@@ -1,5 +1,4 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-
 export class AdditionalCompendiums extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor() {
         super();

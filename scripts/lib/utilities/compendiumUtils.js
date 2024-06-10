@@ -67,7 +67,7 @@ async function getPreferredAutomation(item) {
 async function getItemFromCompendium(key, name, {ignoreNotFound, folderId}) {
     let pack = game.packs.get(key);
     if (!pack) {
-        errors.missingPack();
+        if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});

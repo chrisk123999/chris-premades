@@ -30,6 +30,14 @@
             "additionalCompendiums": {
                 "name": "Additional Compendiums",
                 "hint": "Select additional item compendiums to be used by the medkit and adjust their priority."
+            },
+            "conditionResistanceAndVulnerability": {
+                "name": "Condition Resistance and Vulnerability",
+                "hint": "Enables condition resistance and vulnerability automation."
+            },
+            "useLocalCompendiums": {
+                "name": "Use Local Compendiums",
+                "hint": "Use the local world compendiums instead of the module compendiums for item lookup."
             }
         },
         "settingCategory": {
@@ -52,6 +60,11 @@
                 "name": "Compendium Options",
                 "label": "Compendium Options",
                 "hint": "Settings for compendiums."
+            },
+            "mechanics": {
+                "name": "Game Mechanic Options",
+                "label": "Game Mechanic Options",
+                "hint": "Settings for game mechanics."
             }
         },
         "config": {

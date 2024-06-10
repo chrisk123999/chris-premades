@@ -1,4 +1,6 @@
 import * as macros from '../macros.js';
+import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
+import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {actorUtils, genericUtils} from '../utils.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
@@ -20,7 +22,25 @@ function collectMacros(workflow) {
     return macroList.map(i => macros[i]).filter(j => j);
 }
 let macrosMap = {};
-export async function preItemRoll(workflow) {
+async function executeMacro(workflow, macro) {
+    console.log('CPR: Executing Midi Macro: ' + macro.name);
+    try {
+        await macro(workflow);
+    } catch (error) {
+        //Add some sort of ui notice here. Maybe even some debug info?
+        console.error(error);
+    }
+}
+async function executeMacroPass(workflow, pass) {
+    console.log('CPR: Executing Midi Macro Pass: ' + pass);
+    let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
+    if (!id) return;
+    let passMacros = macrosMap[id]?.[pass];
+    if (!passMacros) return;
+    await genericUtils.sleep(50);
+    for (let i of passMacros) await executeMacro(workflow, i.macro);
+}
+async function preItemRoll(workflow) {
     let macroList = collectMacros(workflow);
     console.log(macroList);
     if (!macroList) return;
@@ -41,32 +61,25 @@ export async function preItemRoll(workflow) {
     await executeMacroPass(workflow, 'preItemRoll');
     console.log(macrosMap);
 }
-async function executeMacro(workflow, macro) {
-    console.log('CPR: Executing Midi Macro: ' + macro.name);
-    try {
-        await macro(workflow);
-    } catch (error) {
-        //Add some sort of ui notice here. Maybe even some debug info?
-        console.error(error);
+async function postPreambleComplete(workflow) {
+    if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
+        await conditionResistance.postPreambleComplete(workflow);
+        await conditionVulnerability.postPreambleComplete(workflow);
     }
+    await executeMacroPass(workflow, 'postPreambleComplete');
 }
-async function executeMacroPass(workflow, pass) {
-    console.log('CPR: Executing Midi Macro Pass: ' + pass);
-    let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
-    if (!id) return;
-    let passMacros = macrosMap[id]?.[pass];
-    if (!passMacros) return;
-    await genericUtils.sleep(50);
-    for (let i of passMacros) await executeMacro(workflow, i.macro);
-}
-export async function postAttackRollComplete(workflow) {
+async function postAttackRollComplete(workflow) {
     await executeMacroPass(workflow, 'postAttackRollComplete');
 }
-export async function postDamageRoll(workflow) {
+async function postDamageRoll(workflow) {
     await executeMacroPass(workflow, 'postDamageRoll');
 }
-export async function RollComplete(workflow) {
+async function RollComplete(workflow) {
     console.log(workflow);
+    if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
+        await conditionResistance.RollComplete(workflow);
+        await conditionVulnerability.RollComplete(workflow);
+    }
     await executeMacroPass(workflow, 'RollComplete');
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
@@ -76,5 +89,6 @@ export let midiEvents = {
     preItemRoll,
     postAttackRollComplete,
     postDamageRoll,
-    RollComplete
+    RollComplete,
+    postPreambleComplete
 };

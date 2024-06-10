@@ -1,4 +1,5 @@
 import {genericUtils} from '../utils.js';
+import {AdditionalCompendiums} from './additionalCompendiums.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.configure',
@@ -47,7 +48,7 @@ class settingsBase extends FormApplication {
             s.filePickerType = s.filePicker === true ? 'any' : s.filePicker;
             s.isButton = (setting.type instanceof Object || setting.type instanceof Array) && setting.type.name != 'String';
             if (s.select) s.isButton = true;
-            s.label = buttonLabels[key];
+            s.label = genericUtils.translate(buttonLabels[key]);
             generatedOptions.push(s);
         }
         return {settings: generatedOptions.sort((a, b) => {
@@ -72,7 +73,7 @@ class settingsBase extends FormApplication {
 export async function settingButton(id) {
     switch(id) {
         case 'additionalCompendiums': 
-            //Dialog here!
+            new AdditionalCompendiums().render(true);
             break;
     }
 }
@@ -98,5 +99,11 @@ export class settingsCompendium extends settingsBase {
     constructor() {
         super();
         this.category = 'compendium';
+    }
+}
+export class settingsMechanics extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'mechanics';
     }
 }

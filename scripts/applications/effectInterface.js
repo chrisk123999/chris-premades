@@ -23,12 +23,14 @@ async function ready() {
     }
     let effects = effectItem.effects.contents;
     effectCollection = new EffectCollection(effects);
-    Hooks.on('changeSidebarTab', (directory) => {
+    function removeItem(directory) {
         if (!(directory instanceof ItemDirectory)) return;
         let html = directory.element;
         let li = html.find('li[data-document-id="' + effectItem.id + '"]');
         li.remove();
-    });
+    }
+    Hooks.on('changeSidebarTab', removeItem);
+    Hooks.on('renderItemDirectory', removeItem);
     Hooks.on('updateActiveEffect', reRender);
 }
 function reRender(effect) {
