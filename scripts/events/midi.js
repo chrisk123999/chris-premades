@@ -42,7 +42,6 @@ async function executeMacroPass(workflow, pass) {
 }
 async function preItemRoll(workflow) {
     let macroList = collectMacros(workflow);
-    console.log(macroList);
     if (!macroList) return;
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
@@ -62,11 +61,11 @@ async function preItemRoll(workflow) {
     console.log(macrosMap);
 }
 async function postPreambleComplete(workflow) {
+    await executeMacroPass(workflow, 'postPreambleComplete');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.postPreambleComplete(workflow);
         await conditionVulnerability.postPreambleComplete(workflow);
     }
-    await executeMacroPass(workflow, 'postPreambleComplete');
 }
 async function postAttackRollComplete(workflow) {
     await executeMacroPass(workflow, 'postAttackRollComplete');
@@ -76,11 +75,11 @@ async function postDamageRoll(workflow) {
 }
 async function RollComplete(workflow) {
     console.log(workflow);
+    await executeMacroPass(workflow, 'RollComplete');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.RollComplete(workflow);
         await conditionVulnerability.RollComplete(workflow);
     }
-    await executeMacroPass(workflow, 'RollComplete');
     let id = workflow.item?.id ?? workflow?.item?.flags?.['chris-premades']?.macros?.id;
     if (!id) return;
     delete macrosMap[id];

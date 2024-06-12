@@ -74,6 +74,12 @@ function isUpToDate(item) {
     let compare = genericUtils.isNewerVersion(sourceVersion, version);
     return compare ? 0 : 1;
 }
+async function syntheticItem(itemData, actor) {
+    let item = new CONFIG.Item.documentClass(itemData, {parent: actor});
+    item.prepareData();
+    item.prepareFinalAttributes();
+    return item;
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -84,5 +90,6 @@ export let itemUtils = {
     getItemByIdentifer,
     getVersion,
     getSource,
-    isUpToDate
+    isUpToDate,
+    syntheticItem
 };

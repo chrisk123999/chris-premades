@@ -1,0 +1,20 @@
+<div class="tab {{tabs.info.cssClass}}" data-tab="info" data-group="main">
+    {{#if automation.hasAutomation}}
+        {{automation.name}}
+        {{automation.source}}
+        {{automation.isUpToDate}}
+        {{automation.currentItemVersion}}
+        {{automation.currentAutomationVersion}}
+    {{/if}}
+    {{#if automation.canApplyAutomation}}
+        {{localize Automation Found:}}
+        <select id="select-automation" name="select-amount">
+        {{#each automation.options}}
+            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+        {{/each}}
+        </select>
+        <button type="button" data-action="apply" id="apply">
+            <label for="apply">{{localize Apply}}</label>
+        </button>
+    {{/if}}
+</div>

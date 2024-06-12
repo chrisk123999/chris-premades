@@ -1,4 +1,4 @@
-import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, actorUtils, compendiumUtils} from '../../utils.js';
+import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, compendiumUtils} from '../../utils.js';
 async function use(workflow) {
     if (!workflow.targets.size) return;
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
@@ -140,7 +140,7 @@ export let hex = {
             value: 'damageType',
             type: 'select',
             default: 'necrotic',
-            options: dialogUtils.damageTypeOptions,
+            options: constants.damageTypeOptions,
             homebrew: true
         },
         {

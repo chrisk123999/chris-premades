@@ -54,7 +54,7 @@ const damageTypes = [
     'slashing',
     'thunder'
 ];
-const damageTypeOptions = [
+let damageTypeOptions = [
     {
         label: 'acid',
         value: 'Acid'

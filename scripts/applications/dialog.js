@@ -223,14 +223,16 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     // Add results to the object to be handled elsewhere
     static async formHandler(event, form, formData) {
         this.results = foundry.utils.expandObject(formData.object);
-        console.log(this.results);
     }
     // Takes the button results, passes it to be merged with formData
     static async confirm(event, target) {
         await this.mergeResults(target.name);
     }
     async mergeResults(name) {
-        if (name === false) this.submit(false);
+        if (name == false) {
+            this.submit(false);
+            return false;
+        }
         while (this.results === undefined) {
             await new Promise((resolve) => {
                 setTimeout(resolve, 10);

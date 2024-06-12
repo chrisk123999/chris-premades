@@ -30,9 +30,9 @@ async function numberDialog(title, content, input = {label: 'Label', name: 'iden
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
     return result[input.name];
 }
-async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadAndUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true}) {
+async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadAndUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true, maxAmount: 1, userId: game.userId}) {
     let inputs = [
-        [options?.type === 'multiple' ? 'checkbox' : options?.type === 'number' ? 'number' : options?.type === 'select' ? 'selectOption' : 'radio']
+        [options?.type === 'multiple' ? 'checkbox' : options?.type === 'number' ? 'number' : options?.type === 'select' ? 'selectOption' : options?.type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];
     let targetInputs = [];
     let number = 1;
@@ -49,12 +49,12 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
             }
         }
         if (options?.coverToken && !options?.reverseCover) {
-            label += ' [' + tokenUtils.chris.checkCover(options.coverToken, i, undefined, true) + ']';
+            label += ' [' + tokenUtils.checkCover(options.coverToken, i, {displayName: true}) + ']';
         } else if (options?.coverToken) {
-            label += ' [' + tokenUtils.chris.checkCover(i, options.coverToken, undefined, true) + ']';
+            label += ' [' + tokenUtils.checkCover(i, options.coverToken, {displayName: true}) + ']';
         }
         if (options?.displayDistance && options?.coverToken) {
-            let distance = tokenUtils.chris.getDistance(options.coverToken, i);
+            let distance = tokenUtils.getDistance(options.coverToken, i);
             label += ' [' + +distance.toFixed(2) + ' ' + canvas.scene.grid.units + ' ]';
         }
         let image = i.document.texture.src;
@@ -63,11 +63,11 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         targetInputs.push({
             label: label,
             name: value,
-            options: {image: image, isChecked: isDefaultSelected}
+            options: {image: image, isChecked: isDefaultSelected, options: options?.selectOptions, maxAmount: options?.maxAmount}
         });
     }
     inputs[0].push(targetInputs);
-    inputs[0].push({displayAsRows: true, radioName: 'targets'});
+    inputs[0].push({displayAsRows: true, radioName: 'targets', totalMax: options?.maxAmount});
     if (options?.skipDeadAndUnconscious) {
         inputs.push([
             'checkbox',
@@ -79,11 +79,12 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         ]);
     }
     let selection;
-    if (options.userId != game.userId) {
+    if (options?.userId && options?.userId != game.userId) {
         selection = await socket.executeAsUser('dialog', options.userId, title, content, inputs, 'okCancel');
     } else selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
     if (selection.buttons == false) return false;
     let result;
+    let skip = selection?.skip;
     switch (options?.type) {
         case 'multiple': {
             for (let [key, value] of Object.entries(selection)) {
@@ -93,7 +94,6 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
                 if (!Array.isArray(result)) result = [];
                 result.push(doc);
             }
-            console.log(result);
             break;
         }
         case 'number': {
@@ -104,12 +104,12 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
                 if (!Array.isArray(result)) result = [];
                 result.push({document: doc, value: value});
             }
-            console.log(result);
             break;
         }
+        case 'selectAmount':
         case 'select': {
             for (let [key, value] of Object.entries(selection)) {
-                if (key === 'buttons' || !value) continue;
+                if (key === 'buttons' || !value || value === '0') continue;
                 let doc = targets.find(target => target.id === key);
                 if (!doc) continue;
                 if (!Array.isArray(result)) result = [];
@@ -121,7 +121,7 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
             result = targets.find(target => target.id === selection.targets);
         }
     }
-    return result;
+    return ([result, skip]);
 }
 async function confirm(title, content, options = {userId: game.userId}) {
     let selection;
