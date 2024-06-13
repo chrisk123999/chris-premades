@@ -1,5 +1,6 @@
 import * as macros from '../macros.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
+import {templateEvents} from './template.js';
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
 }
@@ -92,6 +93,11 @@ async function executeMacroPass(token, pass, distance) {
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
+function preUpdateToken(token, updates, options, userId) {
+    let templatesUuids = Array.from(templateUtils.getTemplatesInToken(token.object)).map(i => i.uuid);
+    genericUtils.setProperty(options, 'chris-premades.templates.wasIn', templatesUuids);
+    genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y});
+}
 async function updateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (token.parent.id != canvas.scene.id) return;
@@ -104,7 +110,31 @@ async function updateToken(token, updates, options, userId) {
         let distance = tokenUtils.getDistance(token.object, i.object);
         await executeMacroPass(i, 'movedNear', distance);
     }
+    if (!updates.x && !updates.y && updates.elevation) return;
+    let coords = {x: token.x, y: token.y};
+    let previousCoords = options['chris-premades'].coords.previous;
+    let current = Array.from(templateUtils.getTemplatesInToken(token.object));
+    let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);
+    let leaving = previous.filter(i => !current.includes(i));
+    let entering = current.filter(i => !previous.includes(i));
+    let staying = previous.filter(i => current.includes(i));
+    let through = token.parent.templates.reduce((acc, template) => {
+        let cells = templateUtils.findGrids(previousCoords, coords, template);
+        if (!cells.size) return acc;
+        acc.push({template: template, cells});
+        return acc;
+    }, []);
+    genericUtils.setProperty(options, 'chris-premades.templates.through', through.map(i => ({templateUuid: i.template.uuid, cells: i.cells})));
+    let enteredAndLeft = through.filter(i => {
+        return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
+    });
+    await templateEvents.executeMacroPass(leaving, 'left');
+    await templateEvents.executeMacroPass(entering, 'enter');
+    await templateEvents.executeMacroPass(staying, 'stay');
+    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough');
+
 }
 export let movementEvents = {
-    updateToken
+    updateToken,
+    preUpdateToken
 };

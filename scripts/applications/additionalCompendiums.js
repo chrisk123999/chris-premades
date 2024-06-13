@@ -114,7 +114,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
             };
         }
         context.compendiums = compendiums;
-        context.buttons = [this.makeButton('CHRISPREMADES.Ok', 'true'), this.makeButton('CHRISPREMADES.Cancel', 'false')];
+        context.buttons = [this.makeButton('CHRISPREMADES.Generic.Ok', 'true'), this.makeButton('CHRISPREMADES.Generic.Cancel', 'false')];
         this.context = context;
     }
     async _prepareContext(options) {

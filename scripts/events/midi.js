@@ -58,7 +58,6 @@ async function preItemRoll(workflow) {
         if (stateMacros.length) foundry.utils.setProperty(macrosMap, id + '.' + i, stateMacros);
     }
     await executeMacroPass(workflow, 'preItemRoll');
-    console.log(macrosMap);
 }
 async function postPreambleComplete(workflow) {
     await executeMacroPass(workflow, 'postPreambleComplete');

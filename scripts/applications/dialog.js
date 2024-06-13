@@ -420,9 +420,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
         switch (this.buttons) {
-            case 'yesNo': context.buttons.push(this.makeButton('CHRISPREMADES.Yes', 'true'), this.makeButton('CHRISPREMADES.No', 'false'));
+            case 'yesNo': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Yes', 'true'), this.makeButton('CHRISPREMADES.Generic.No', 'false'));
                 break;
-            case 'okCancel': context.buttons.push(this.makeButton('CHRISPREMADES.Ok', 'true'), this.makeButton('CHRISPREMADES.Cancel', 'false'));
+            case 'okCancel': context.buttons.push(this.makeButton('CHRISPREMADES.Generic.Ok', 'true'), this.makeButton('CHRISPREMADES.Generic.Cancel', 'false'));
                 break;
         }
         this.context = context;

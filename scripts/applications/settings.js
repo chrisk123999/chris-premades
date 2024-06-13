@@ -2,8 +2,8 @@ import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
 let settingCategories = {};
 let buttonLabels = {
-    additionalCompendiums: 'CHRISPREMADES.configure',
-    compendiumPriority: 'CHRISPREMADES.configure'
+    additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
+    compendiumPriority: 'CHRISPREMADES.Generic.Configure'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);

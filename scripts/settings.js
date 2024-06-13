@@ -62,9 +62,9 @@ export function registerSettings() {
         key: 'additionalCompendiums',
         type: Object,
         default: {
-            CPR: 1,
-            GPS: 2,
-            MISC: 3
+            'chris-premades': 1,
+            'gambit-premades': 2,
+            'midi-item-community-showcase': 3
         },
         category: 'compendium',
     });

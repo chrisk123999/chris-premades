@@ -33,12 +33,9 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
     };
     options = genericUtils.mergeObject(defaultOptions, options);
     config = genericUtils.mergeObject(defaultConfig, config);
-    console.log(options);
-    console.log(config);
     return await completeItemUse(item, config, options);
 }
 async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, config = {}} = {}) {
-    delete itemData._id;
     let item = await itemUtils.syntheticItem(itemData, actor);
     return await syntheticItemRoll(item, targets, {options, config});
 }

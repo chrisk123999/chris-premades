@@ -72,7 +72,7 @@ class EffectDirectory extends DocumentDirectory {
                 },
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-pencil"></i>',
-                'name': 'CHRISPREMADES.edit'
+                'name': 'CHRISPREMADES.Generic.Edit'
             },
             {
                 'callback': async (header) => {
@@ -111,7 +111,7 @@ class EffectDirectory extends DocumentDirectory {
                             buttons: {
                                 import: {
                                     icon: '<i class="fas fa-file-import"></i>',
-                                    label: genericUtils.translate('CHRISPREMADES.import'),
+                                    label: genericUtils.translate('CHRISPREMADES.Generic.Import'),
                                     callback: html => {
                                         const form = html.find('form')[0];
                                         if (!form.data.files.length ) return ui.notifications.error('You did not upload a data file!');
@@ -121,7 +121,7 @@ class EffectDirectory extends DocumentDirectory {
                                 },
                                 no: {
                                     icon: '<i class="fas fa-times"></i>',
-                                    label: genericUtils.translate('CHRISPREMADES.Cancel')
+                                    label: genericUtils.translate('CHRISPREMADES.Generic.Cancel')
                                 }
                             },
                             default: 'import'

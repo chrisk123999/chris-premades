@@ -1,11 +1,13 @@
 let { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
-import { itemUtils } from '../utils';
-import * as macros from './macros.js';
+import { compendiumUtils, itemUtils } from '../utils.js';
+import * as macros from '../macros.js';
 
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
-    constructor(info) {
+    constructor(context, item) {
         super();
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + info.item.name;
+        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.item.name;
+        this.item = item;
+        this.context = context;
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
@@ -16,7 +18,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'medkit-window'
         },
         actions: {
-            confirm: Medkit.confirm
+            apply: Medkit._apply,
+            update: Medkit._update
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -38,17 +41,48 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
     };
     static async item(item) {
-        let info = {};
-        info.item.identifier = itemUtils.getIdentifer(item);                          //Internal Identifier used by CPR
-        info.item.name = macros[info.item.identifier] ? macros[info.item.identifier].name : item.name;    //Item name matched by the identifier, falls back to the actual item name
-        info.item.version = itemUtils.getVersion(item);                               //Version string
-        info.item.source = itemUtils.getSource(item);                                 //Automation source: "CPR, GPS, MISC, Other" Other will not have version info and should be treated as being unknown for updated.
-        info.item.isUpToDate = itemUtils.isUpToDate(item);                            // -1 for Unknown, 0 for No, 1 for Yes
-        new Medkit(info);
-        //Item Medkit Dialog Here!
+        let identifier = itemUtils.getIdentifer(item);
+        let isUpToDate = itemUtils.isUpToDate(item);
+        let context = {
+            item: {
+                identifier: identifier,
+                name: macros[identifier] ? macros[identifier].name : item.name,
+                label: identifier ? macros[identifier].name === item.name ? item.name : item.name + ' (' + macros[identifier].name + ')' : item.name,
+                version: itemUtils.getVersion(item),
+                source: itemUtils.getSource(item),
+                isUpToDate: isUpToDate,
+                availableAutomations: await compendiumUtils.getAllAutomations(item),
+                status: isUpToDate,
+                type: item.type,
+                hasAutomation: false,
+                canApplyAutomation: false,
+            }
+        };
+        if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
+        if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
+        context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
+        if (context.item.availableAutomations.length > 1 || context.item.status === true) context.item.canApplyAutomation = true;
+        if (context.item.availableAutomations.length > 0) {
+            context.item.options = [];
+            context.item.availableAutomations.forEach(i => {
+                let label = i.source.includes('.') ? i.source : 'CHRISPREMADES.Medkit.ModuleIds.' + i.source;
+                context.item.options.push({
+                    label: label,
+                    id: i.document.uuid,
+                    isSelected: context.item.options.length === 0
+                });
+            });
+        }
+        new Medkit(context, item).render(true);
     }
-    static async actor(actor) {
-        //Actor Medkit Dialog Here!
+    static async _update(event, target) {
+        console.log(event, target);
+    }
+    static async apply(item, sourceItem) {
+        console.log('Make ', item, ' into ', sourceItem);
+    }
+    static async _apply(event, target) {
+        console.log(event, target, this.item);
     }
     // Add results to the object to be handled elsewhere
     static async formHandler(event, form, formData) {
@@ -57,10 +91,15 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     get title() {
         return this.windowTitle;
     }
-    // Formats inputs if context store is nullish, otherwise takes the current context store
     async _prepareContext(options) {
-        if (!this.context) this.formatInputs();
         let context = this.context;
+        context.tabs = {
+            info: {
+                icon: 'fa-solid fa-wrench',
+                label: 'Info', // will localize later
+                cssClass: 'active'
+            }
+        };
         return context;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render

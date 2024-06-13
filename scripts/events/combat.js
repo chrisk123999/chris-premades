@@ -1,6 +1,6 @@
 import * as macros from '../macros.js';
 import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils} from '../utils.js';
-import {collectTemplateMacros} from './template.js';
+import {templateEvents} from './template.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.combat ?? [];
 }
@@ -50,7 +50,7 @@ function collectTokenMacros(token, pass) {
     }
     let templates = templateUtils.getTemplatesInToken(token);
     for (let template of templates) {
-        let macroList = collectTemplateMacros(template);
+        let macroList = templateEvents.collectMacros(template);
         if (!macroList.length) continue;
         let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).map(k => k.template).flat().filter(l => l.pass === pass);
         templateMacros.forEach(i => {

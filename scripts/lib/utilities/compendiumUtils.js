@@ -52,9 +52,9 @@ async function getAllAutomations(item) {
         let source;
         switch (i[0]) {
             default: found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true}); source = i[0]; break;
-            case 'CPR': found = await getCPRAutomation(item); source = 'CPR'; break;
-            case 'GPS': found = await getGPSAutomation(item); source = 'GPS'; break;
-            case 'MISC': found = await getMISCAutomation(item); source = 'MISC'; break;
+            case 'chris-premades': found = await getCPRAutomation(item); source = 'chris-premades'; break;
+            case 'gambit-premades': found = await getGPSAutomation(item); source = 'gambit-premades'; break;
+            case 'midi-item-community-showcase': found = await getMISCAutomation(item); source = 'midi-item-community-showcase'; break;
         }
         if (found) items.push({document: found, priority: i[1], source: source});
     }));
@@ -64,7 +64,7 @@ async function getPreferredAutomation(item) {
     let items = await getAllAutomations(item);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
@@ -73,7 +73,8 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId} = {})
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
     let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
     if (match) {
-        return await pack.getDocument(match._id);
+        let document = await pack.getDocument(match._id);
+        return object ? document.toObject() : document;
     } else {
         if (!ignoreNotFound) errors.missingPackItem();
         return undefined;

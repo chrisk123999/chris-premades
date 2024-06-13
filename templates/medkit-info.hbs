@@ -1,20 +1,25 @@
 <div class="tab {{tabs.info.cssClass}}" data-tab="info" data-group="main">
-    {{#if automation.hasAutomation}}
-        {{automation.name}}
-        {{automation.source}}
-        {{automation.isUpToDate}}
-        {{automation.currentItemVersion}}
-        {{automation.currentAutomationVersion}}
+    {{#if item.hasAutomation}}
+        {{#unless item.isUpToDate}}
+            <button type="button" data-action="update" id="update">
+                <label for="update">{{localize "CHRISPREMADES.Generic.Update"}}</label>
+            </button>
+        {{/unless}}
+        {{item.name}}
+        {{item.source}}
+        {{item.isUpToDate}}
+        {{item.currentItemVersion}}
+        {{item.currentAutomationVersion}}
     {{/if}}
-    {{#if automation.canApplyAutomation}}
-        {{localize Automation Found:}}
-        <select id="select-automation" name="select-amount">
-        {{#each automation.options}}
+    {{#if item.canApplyAutomation}}
+        {{localize "CHRISPREMADES.Medkit.AutomationFound"}}
+        <select id="select-item" name="select-amount">
+        {{#each item.options}}
             <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
         {{/each}}
         </select>
         <button type="button" data-action="apply" id="apply">
-            <label for="apply">{{localize Apply}}</label>
+            <label for="apply">{{localize "CHRISPREMADES.Generic.Apply"}}</label>
         </button>
     {{/if}}
 </div>

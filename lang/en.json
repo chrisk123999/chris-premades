@@ -1,11 +1,34 @@
 {
     "CHRISPREMADES": {
-        "Ok": "Ok",
-        "Cancel": "Cancel",
-        "Yes": "Yes",
-        "No": "No",
+        "Generic": {
+            "Ok": "Ok",
+            "Cancel": "Cancel",
+            "Yes": "Yes",
+            "No": "No",
+            "Update": "Update",
+            "Apply": "Apply",
+            "Edit": "Edit",
+            "Import": "Import",
+            "Replace": "Replace",
+            "Configure": "Configure",
+            "CheckSpelling": "Check Spelling"
+        },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "UnknownTarget": "Unknown Target",
+        "Medkit": {
+            "Status": {
+                "1": "Up to Date",
+                "0": "Out of Date",
+                "true": "Automation Available",
+                "false": "No Automation Found"
+            },
+            "AutomationFound": "Automation Found",
+            "ModuleIds": {
+                "chris-premades": "Chris's Premades",
+                "gambit-premades": "Gambit's Premades",
+                "midi-item-community-showcase": "Midi Item Community Showcase"
+            }
+        },
         "settings": {
             "gmID": {
                 "name": "Gamemaster User ID",
@@ -102,12 +125,9 @@
             "newEffect": "New Effect",
             "effects": "Effects"
         },
-        "edit": "Edit",
-        "import": "Import",
         "customTypes": {
             "spellFeature": "Spell Feature"
         },
-        "configure": "Configure",
         "error": {
             "compendiumNotFound": "Invalid compendium specified!",
             "compendiumItemNotFound": "Compendium item not found!"

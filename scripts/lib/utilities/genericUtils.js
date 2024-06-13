@@ -44,6 +44,9 @@ function getCPRSetting(key) {
 function isNewerVersion(v1, v0) {
     return foundry.utils.isNewerVersion(v1, v0);
 }
+function randomID(value) {
+    return foundry.utils.randomID(value);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -56,5 +59,6 @@ export let genericUtils = {
     mergeObject,
     getCPRSetting,
     decimalToFraction,
-    isNewerVersion
+    isNewerVersion,
+    randomID
 };

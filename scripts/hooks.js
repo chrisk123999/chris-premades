@@ -24,6 +24,7 @@ export function registerHooks() {
         Hooks.on('combatStart', combatEvents.combatStart);
         Hooks.on('createActiveEffect', effectEvents.createActiveEffect);
         Hooks.on('deleteActiveEffect', effectEvents.deleteActiveEffect);
+        Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
         Hooks.on('updateToken', movementEvents.updateToken);
     }
 }

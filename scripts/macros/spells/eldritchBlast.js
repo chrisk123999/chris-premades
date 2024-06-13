@@ -1,9 +1,9 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use(workflow) {
     let level = actorUtils.getLevelOrCR(workflow.actor);
-    let boltsLeft = 1 + Math.floor(level * 0.2);
+    let boltsLeft = 1 + Math.floor((level + 1) * (1/6));
     if (!workflow.targets.size) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam');
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -42,7 +42,11 @@ async function use(workflow) {
     }
 }
 async function beam(workflow) {
-
+    let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
+    if (!color) return;
+    let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;
+    let animation = 'jb2a.eldritch_blast.' + color;
+    animationUtils.simpleAttack(workflow.token, workflow.targets.first(), animation, {sound: sound, missed: !workflow.hitTargets.has(workflow.targets.first())});
 }
 export let eldritchBlast = {
     name: 'Eldritch Blast',
