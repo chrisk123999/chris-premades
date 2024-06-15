@@ -1,5 +1,7 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {buildABonus} from './integrations/buildABonus.js';
+import {dae} from './integrations/dae.js';
 import {constants} from './utils.js';
 function addSetting(options) {
     let setting = {
@@ -7,7 +9,8 @@ function addSetting(options) {
         config: false,
         type: options.type,
         default: options.default,
-        onChange: options.onChange
+        onChange: options.onChange,
+        choices: options.choices
     };
     game.settings.register('chris-premades', options.key, setting);
     settings.addMenuSetting(options.key, options.category);
@@ -81,6 +84,85 @@ export function registerSettings() {
         default: true,
         category: 'mechanics'
     });
+    addSetting({
+        key: 'updateItem',
+        type: Number,
+        default: 4,
+        category: 'general',
+        choices: {
+            1: 'CHRISPREMADES.settings.updateItem.1',
+            2: 'CHRISPREMADES.settings.updateItem.2',
+            3: 'CHRISPREMADES.settings.updateItem.3',
+            4: 'CHRISPREMADES.settings.updateItem.4'
+        }
+    });
+    addSetting({
+        key: 'configureItem',
+        type: Number,
+        default: 1,
+        category: 'general',
+        choices: {
+            1: 'CHRISPREMADES.settings.updateItem.1',
+            2: 'CHRISPREMADES.settings.updateItem.2',
+            3: 'CHRISPREMADES.settings.updateItem.3',
+            4: 'CHRISPREMADES.settings.updateItem.4'
+        }
+    });
+    addSetting({
+        key: 'configureItemHomebrew',
+        type: Number,
+        default: 4,
+        category: 'general',
+        choices: {
+            1: 'CHRISPREMADES.settings.updateItem.1',
+            2: 'CHRISPREMADES.settings.updateItem.2',
+            3: 'CHRISPREMADES.settings.updateItem.3',
+            4: 'CHRISPREMADES.settings.updateItem.4'
+        }
+    });
+    addSetting({
+        key: 'colorizeBuildABonus',
+        type: Boolean,
+        default: true,
+        category: 'integration',
+        onChange: value => {
+            if (value) {
+                Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
+                Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
+                Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
+            } else {
+                Hooks.off('renderItemSheet', buildABonus.renderItemSheet);
+                Hooks.off('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
+                Hooks.off('renderActorSheet5e', buildABonus.renderActorSheet5e);
+            }
+        }
+    });
+    addSetting({
+        key: 'babonusOverlappingEffects',
+        type: Boolean,
+        default: true,
+        category: 'integration',
+        onChange: value => {
+            if (value) {
+                Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
+            } else {
+                Hooks.off('babonus.filterBonuses', buildABonus.filterBonuses);
+            }
+        }
+    });
+    addSetting({
+        key: 'colorizeDAE',
+        type: Boolean,
+        default: true,
+        category: 'integration',
+        onChange: value => {
+            if (value) {
+                Hooks.on('renderItemSheet', dae.renderItemSheet);
+            } else {
+                Hooks.off('renderItemSheet', dae.renderItemSheet);
+            }
+        }
+    });
 }
 export function registerMenus() {
     addMenu({
@@ -88,6 +170,11 @@ export function registerMenus() {
         icon: 'fas fa-code',
         type: settingsDevelopment,
     }); //Will be commented out when actually released.
+    addMenu({
+        key: 'general',
+        icon: 'fas fa-gears',
+        type: settingsGeneral
+    });
     addMenu({
         key: 'dialog',
         icon: 'fas fa-bars',
@@ -107,5 +194,10 @@ export function registerMenus() {
         key: 'mechanics',
         icon: 'fas fa-dice',
         type: settingsMechanics
+    });
+    addMenu({
+        key: 'integration',
+        icon: 'fas fa-puzzle-piece',
+        type: settingsIntegration
     });
 }

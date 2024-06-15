@@ -12,13 +12,7 @@ function collectMacros(template) {
 function collectTemplatesMacros(templates, pass) {
     let triggers = [];
     for (let template of templates) {
-        let testTemplate;
-        if (pass === 'passedThrough') {
-            testTemplate = template.template;
-        } else {
-            testTemplate = template;
-        }
-        let macroList = collectMacros(testTemplate);
+        let macroList = collectMacros(template);
         if (!macroList.length) continue;
         let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).map(k => k.template).flat().filter(l => l.pass === pass);
         templateMacros.forEach(i => {
@@ -28,7 +22,6 @@ function collectTemplatesMacros(templates, pass) {
                 macro: i.macro,
                 name: templateUtils.getName(template)
             };
-            if (pass === 'passedThrough') trigger.cells = template.cells;
             triggers.push(trigger);
         });
     }

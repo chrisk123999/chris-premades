@@ -49,48 +49,49 @@ export let acidArrow = {
             value: 'playAnimation',
             label: 'CHRISPREMADES.config.playAnimation',
             type: 'checkbox',
-            default: true
+            default: true,
+            category: 'animation'
         },
         {
             value: 'color',
             label: 'CHRISPREMADES.config.color',
             type: 'select',
             default: 'green',
+            category: 'animation',
             options: [
                 {
                     value: 'blue',
                     label: 'CHRISPREMADES.config.colors.blue',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
-                    patreon: false
+                    label: 'CHRISPREMADES.config.colors.green'
                 },
                 {
                     value: 'pink',
                     label: 'CHRISPREMADES.config.colors.green',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'purple',
                     label: 'CHRISPREMADES.config.colors.green',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'red',
                     label: 'CHRISPREMADES.config.colors.Red',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
                     label: 'CHRISPREMADES.config.colors.orange',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
                     label: 'CHRISPREMADES.config.colors.random',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 }
             ]
         },
@@ -98,7 +99,8 @@ export let acidArrow = {
             value: 'sound',
             label: 'CHRISPREMADES.config.sound',
             type: 'file',
-            default: ''
+            default: '',
+            category: 'animation'
         }
     ]
 };

@@ -121,10 +121,9 @@ async function updateToken(token, updates, options, userId) {
     let through = token.parent.templates.reduce((acc, template) => {
         let cells = templateUtils.findGrids(previousCoords, coords, template);
         if (!cells.size) return acc;
-        acc.push({template: template, cells});
+        acc.push(template);
         return acc;
     }, []);
-    genericUtils.setProperty(options, 'chris-premades.templates.through', through.map(i => ({templateUuid: i.template.uuid, cells: i.cells})));
     let enteredAndLeft = through.filter(i => {
         return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
     });

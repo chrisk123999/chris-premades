@@ -141,13 +141,15 @@ export let hex = {
             type: 'select',
             default: 'necrotic',
             options: constants.damageTypeOptions,
-            homebrew: true
+            homebrew: true,
+            category: 'homebrew'
         },
         {
             value: 'formula',
             type: 'text',
             default: '1d6',
-            homebrew: true
+            homebrew: true,
+            category: 'homebrew'
         }
     ]
 };

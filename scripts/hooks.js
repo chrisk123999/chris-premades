@@ -4,6 +4,8 @@ import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
+import {buildABonus} from './integrations/buildABonus.js';
+import {dae} from './integrations/dae.js';
 import {createHeaderButton, renderItemSheet} from './titlebar.js';
 import {genericUtils} from './utils.js';
 export function registerHooks() {
@@ -19,6 +21,13 @@ export function registerHooks() {
     Hooks.on('renderItemSheet', renderItemSheet);
     Hooks.on('preCreateActiveEffect', noAnimation);
     Hooks.on('preDeleteActiveEffect', noAnimation);
+    if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
+        Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
+        Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
+        Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
+    }
+    if (genericUtils.getCPRSetting('babonusOverlappingEffects')) Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
+    if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);

@@ -107,3 +107,15 @@ export class settingsMechanics extends settingsBase {
         this.category = 'mechanics';
     }
 }
+export class settingsGeneral extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'general';
+    }
+}
+export class settingsIntegration extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'integration';
+    }
+}

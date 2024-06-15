@@ -36,6 +36,10 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         info: {
             template: 'modules/chris-premades/templates/medkit-info.hbs'
         },
+        configure: {
+            template: 'modules/chris-premades/templates/medkit-configure.hbs',
+            scrollable: ['']
+        },
         footer: {
             template: 'modules/chris-premades/templates/form-footer.hbs'
         }
@@ -73,6 +77,60 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             });
         }
+        if (item.system.flags['chris-premades']?.config) {
+            context.category = {};
+            let currentConfigs = item.system.flags['chris-premades'].config;
+            let configs = macros[identifier].config;
+            for (let config of configs) {
+                if (!context?.category?.[config.category]) {
+                    context.category[config.category] = {
+                        label: 'CHRISPREMADES.Medkit.Categories.' + config.category + '.label',
+                        tooltip: 'CHRISPREMADES.Medkit.Categories.' + config.category + '.tooltip',
+                        configuration: []
+                    };
+                }
+                let configuration = {
+                    label: config.label,
+                    name: config.value,
+                    id: config.value,
+                    value: currentConfigs[config.value]
+                };
+                switch (config.type) {
+                    case 'checkbox': {
+                        foundry.utils.setProperty(configuration, 'isCheckbox', true);
+                        if (currentConfigs[config.value] === true) foundry.utils.setProperty(configuration, 'isChecked', true);
+                        break;
+                    }
+                    case 'file': {
+                        foundry.utils.setProperty(configuration, 'isFile', true);
+                        foundry.utils.setProperty(configuration, 'type', config?.fileType ?? 'any');
+                        break;
+                    }
+                    case 'text': {
+                        foundry.utils.setProperty(configuration, 'isText', true);
+                        break;
+                    }
+                    case 'select': {
+                        foundry.utils.setProperty(configuration, 'isSelect', true);
+                        config.options.forEach(i => {
+                            if (!configuration?.options) foundry.utils.setProperty(configuration, 'options', []);
+                            if (i.requiredModules) {
+                                if (i.requiredModules.filter(j => game.modules.get(j)?.active === false).length === 0) {
+                                    configuration.options.push({
+                                        label: i.label,
+                                        value: i.value,
+                                        isSelected: i.value === currentConfigs[config.value]
+                                    });
+                                }
+                            }
+                        });
+                        break;
+                    }
+                }
+
+            }
+
+        }
         new Medkit(context, item).render(true);
     }
     static async _update(event, target) {
@@ -95,11 +153,20 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let context = this.context;
         context.tabs = {
             info: {
-                icon: 'fa-solid fa-wrench',
-                label: 'Info', // will localize later
+                icon: 'fa-solid fa-hammer',
+                label: 'CHRISPREMADES.Medkit.Tabs.Info.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.Info.Tooltip',
                 cssClass: 'active'
             }
         };
+        if (context?.configure) {
+            foundry.utils.setProperty(context.tabs, 'configure', {
+                icon: 'fa-solid fa-wrench',
+                label: 'CHRISPREMADES.Medkit.Tabs.Configuration.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
+                cssClass: ''
+            });
+        }
         return context;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render

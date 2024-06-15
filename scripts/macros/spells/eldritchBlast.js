@@ -67,86 +67,94 @@ export let eldritchBlast = {
             type: 'select',
             default: 'force',
             options: constants.damageTypeOptions,
-            homebrew: true
+            homebrew: true,
+            category: 'homebrew'
         },
         {
             value: 'formula',
             label: 'CHRISPREMADES.config.formula',
             type: 'text',
             default: '1d10[force]',
-            homebrew: true
+            homebrew: true,
+            category: 'homebrew'
         },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.config.playAnimation',
             type: 'checkbox',
-            default: true
+            default: true,
+            category: 'animation'
         },
         {
             value: 'color',
             label: 'CHRISPREMADES.config.color',
             type: 'select',
             default: 'purple',
+            category: 'animation',
             options: [
+                {
+                    value: 'purple',
+                    label: 'CHRISPREMADES.config.colors.purple'
+                },
                 {
                     value: 'dark_green',
                     label: 'CHRISPREMADES.config.colors.darkGreen',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_pink',
                     label: 'CHRISPREMADES.config.colors.darkPink',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_purple',
                     label: 'CHRISPREMADES.config.colors.darkPurple',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
                     label: 'CHRISPREMADES.config.colors.darkRed',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
                     label: 'CHRISPREMADES.config.colors.green',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'lightblue',
                     label: 'CHRISPREMADES.config.colors.lightBlue',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'lightgreen',
                     label: 'CHRISPREMADES.config.colors.lightGreen',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
                     label: 'CHRISPREMADES.config.colors.orange',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'pink',
                     label: 'CHRISPREMADES.config.colors.pink',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'yellow',
                     label: 'CHRISPREMADES.config.colors.yellow',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'rainbow',
                     label: 'CHRISPREMADES.config.colors.rainbow',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
                     label: 'CHRISPREMADES.config.colors.random',
-                    patreon: true
+                    requiredModules: ['jb2a_patreon']
                 }
             ]
         },
@@ -154,7 +162,8 @@ export let eldritchBlast = {
             value: 'sound',
             label: 'CHRISPREMADES.config.sound',
             type: 'file',
-            default: ''
+            default: '',
+            category: 'sound'
         }
     ]
 };
