@@ -48,6 +48,8 @@ async function blind({speaker, actor, token, character, item, args, scope, workf
     let queueSetup = await queue.setup(workflow.item.uuid, 'radiantWeaponBlind', 50);
     if (!queueSetup) return;
     workflow.item = workflow.item.clone({'system.save.dc': saveDC}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 export let radiantWeapon = {
