@@ -85,7 +85,7 @@ async function create({speaker, actor, token, character, item, args, scope, work
         if (changed) selection[0].system.ability = ability;
     }
     if (improvedPactWeapon) {
-        selection[0].system.attackBonus = 1;
+        selection[0].system.attack.bonus = 1;
         selection[0].system.damage.parts[0][0] += ' + 1';
     }
     selection[0].system.equipped = true;

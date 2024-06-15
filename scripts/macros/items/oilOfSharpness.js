@@ -17,8 +17,8 @@ export async function oilOfSharpness({speaker, actor, token, character, item, ar
     if (!selection) selection = await chris.dialog('What weapon?', generatedMenu);
     if (!selection) return;
     let weaponData = duplicate(targetActor.items.get(selection).toObject());
-    let oldAttackBonus = weaponData.system.attackBonus;
-    weaponData.system.attackBonus = '3';
+    let oldAttackBonus = weaponData.system.attack.bonus;
+    weaponData.system.attack.bonus = '3';
     switch (oldAttackBonus) {
         case '':
         case '0':

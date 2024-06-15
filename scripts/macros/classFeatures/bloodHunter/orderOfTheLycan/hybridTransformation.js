@@ -49,7 +49,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
     if (!weaponData) return;
     weaponData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Predatory Strike');
     if (levels >= 7) {
-        weaponData.system.attackBonus = '+1';
+        weaponData.system.attack.bonus = '+1';
         weaponData.system.properties.push('mgc');
     }
     async function effectMacro () {
@@ -58,7 +58,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
     let bonuses = '+1';
     if (levels >= 11) {
         bonuses = '+2';
-        weaponData.system.attackBonus = '+2';
+        weaponData.system.attack.bonus = '+2';
         weaponData.system.damage.parts = [
             [
                 '1d8[bludgeoning] + @mod',
@@ -69,7 +69,7 @@ async function transformation({speaker, actor, token, character, item, args, sco
     let seconds = 3600;
     if (levels >= 18) {
         bonuses = '+3';
-        weaponData.system.attackBonus = '+3';
+        weaponData.system.attack.bonus = '+3';
         seconds = 604800
     }
     let changes = [

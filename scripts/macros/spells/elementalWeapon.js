@@ -60,7 +60,7 @@ export async function elementalWeapon({speaker, actor, token, character, item, a
                             'parts': damageParts,
                             'versatile': versatile
                         },
-                        'attackBonus': bonus
+                        'attack.bonus': bonus
                     }
                 }
             },

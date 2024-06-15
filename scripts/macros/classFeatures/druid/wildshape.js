@@ -190,7 +190,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             try {
                 itemUpdates[i.id].system.damage.parts[0][0] += ' + 1';
             } catch (error) { /* empty */ }
-            itemUpdates[i.id].system.attackBonus = 1;
+            itemUpdates[i.id].system.attack.bonus = 1;
         }
         itemUpdates[i.id].flags['tidy5e-sheet'] = {'favorite': true};
         if (invalidTypes.includes(itemUpdates[i.id].type)) continue;
