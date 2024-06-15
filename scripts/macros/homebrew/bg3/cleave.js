@@ -40,6 +40,8 @@ export async function cleave({speaker, actor, token, character, item, args, scop
         featureData.system.damage.parts[i][0] = 'floor((' + featureData.system.damage.parts[i][0] + ') / 2)';
     }
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': workflow.actor});
+    feature.prepareData();
+    feature.prepareFinalAttributes();
     let [config, options] = constants.syntheticItemWorkflowOptions(targets);
     await MidiQOL.completeItemUse(feature, config, options);
 }

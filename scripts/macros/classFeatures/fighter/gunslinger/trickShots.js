@@ -188,6 +188,8 @@ async function violentShot({speaker, actor, token, character, item, args, scope,
     }
     damageParts.push([[misfireBonus + 'd' + faces + '[' + damageParts[0][1] + ']'], damageParts[0][1]]);
     workflow.item = workflow.item.clone({'system.damage.parts': damageParts, 'flags.chris-premades.configuration.misfire': misfireScore}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 export let trickShots = {

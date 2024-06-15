@@ -16,7 +16,7 @@ export async function blessingOfTheForge({speaker, actor, token, character, item
     }
     let itemData = targetActor.items.get(selection).toObject();
     if (itemData.type === 'weapon') {
-        itemData.system.attackBonus = Number(itemData.system.attackBonus) + 1;
+        itemData.system.attack.bonus = Number(itemData.system.attack.bonus) + 1;
         itemData.system.damage.parts[0][0] += ' + 1';
     } else {
         itemData.system.armor.value += 1;

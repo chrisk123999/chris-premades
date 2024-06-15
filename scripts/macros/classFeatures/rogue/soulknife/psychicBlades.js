@@ -11,6 +11,8 @@ async function early({speaker, actor, token, character, item, args, scope, workf
     let distance = chris.getDistance(workflow.token, workflow.targets.first());
     let type = distance > 5 ? 'rwak' : 'mwak';
     workflow.item = workflow.item.clone({'system.actionType': type, 'system.ability': ability}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 async function late({speaker, actor, token, character, item, args, scope, workflow}) {

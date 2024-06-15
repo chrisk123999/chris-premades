@@ -29,14 +29,13 @@ async function attack({speaker, actor, token, character, item, args, scope, work
     if (!queueSetup) return;
     let parts = duplicate(workflow.item.system.damage.parts);
     parts[0][0] = parts[0][0] + ' + 1';
-    let attackBonus = duplicate(workflow.item.system.attackBonus);
-    attackBonus = 1;
+    let attackBonus = 1;
     let properties = [];
     if (workflow.item.system.properties) {
         properties = duplicate(Array.from(workflow.item.system.properties));
         properties.push('mgc');
     }
-    workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attackBonus': attackBonus}, {'keepId': true});
+    workflow.item = workflow.item.clone({'system.damage.parts': parts, 'system.properties': properties, 'system.attack.bonus': attackBonus}, {'keepId': true});
     workflow.item.prepareData();
     workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
@@ -49,6 +48,8 @@ async function blind({speaker, actor, token, character, item, args, scope, workf
     let queueSetup = await queue.setup(workflow.item.uuid, 'radiantWeaponBlind', 50);
     if (!queueSetup) return;
     workflow.item = workflow.item.clone({'system.save.dc': saveDC}, {'keepId': true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
     queue.remove(workflow.item.uuid);
 }
 export let radiantWeapon = {
