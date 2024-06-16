@@ -172,6 +172,11 @@ export function setConfig() {
                 'Psychic Blades: Attack (STR)',
                 'Psychic Blades: Bonus Attack (DEX)',
                 'Psychic Blades: Bonus Attack (STR)'
+            ],
+            'Eldritch Cannon': [
+                'Eldritch Cannon: Flamethrower',
+                'Eldritch Cannon: Force Ballista',
+                'Eldritch Cannon: Protector'
             ]
         },
         'restrictedItems': {
@@ -2911,7 +2916,70 @@ export function setConfig() {
                         'default': ''
                     }
                 }
-            }
+            },
+            'Create Eldritch Cannon': {
+                'text': {
+                    'name-flamethrower': {
+                        'label': 'Flamethrower Custom Name:',
+                        'default': ''
+                    },
+                    'token-flamethrower': {
+                        'label': 'Flamethrower Token:',
+                        'default': '',
+                        'file': true
+                    },
+                    'avatar-flamethrower': {
+                        'label': 'Flamethrower Avatar:',
+                        'default': '',
+                        'file': true
+                    },
+                    'name-forceBallista': {
+                        'label': 'Force Ballista Custom Name:',
+                        'default': ''
+                    },
+                    'token-forceBallista': {
+                        'label': 'Force Ballista Token:',
+                        'default': '',
+                        'file': true
+                    },
+                    'avatar-forceBallista': {
+                        'label': 'Force Ballista Avatar:',
+                        'default': '',
+                        'file': true
+                    },
+                    'name-protector': {
+                        'label': 'Protector Custom Name:',
+                        'default': ''
+                    },
+                    'token-protector': {
+                        'label': 'Protector Token:',
+                        'default': '',
+                        'file': true
+                    },
+                    'avatar-protector': {
+                        'label': 'Protector Avatar:',
+                        'default': '',
+                        'file': true
+                    }
+                },
+                'select': {
+                    'animation-flamethrower': {
+                        'label': 'Flamethrower Animation:',
+                        'default': 'future',
+                        'values': summonEffectOptions
+                    },
+                    'animation-forceBallista': {
+                        'label': 'Force Ballista Animation:',
+                        'default': 'future',
+                        'values': summonEffectOptions
+                    },
+                    'animation-protector': {
+                        'label': 'Protector Animation:',
+                        'default': 'future',
+                        'values': summonEffectOptions
+                    }
+                }
+            },
         },
         'automations': {
             'Armor of Agathys': {
@@ -6220,6 +6288,22 @@ export function setConfig() {
             'Globe of Invulnerability': {
                 'name': 'Globe of Invulnerability',
                 'version': '0.10.74'
+            },
+            'Create Eldritch Cannon': {
+                'name': 'Create Eldritch Cannon',
+                'version': '0.11.5',
+                'mutation': {
+                    'self': 'Eldritch Cannon'
+                },
+                'actors': [
+                    'CPR - Eldritch Cannon'
+                ],
+                'classes': [
+                    'artificer'
+                ],
+                'settings': [
+                    'Fortified Position'
+                ]
             }
         }
     });

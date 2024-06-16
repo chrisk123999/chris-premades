@@ -7,7 +7,6 @@ export async function cartomancer({speaker, actor, token, character, item, args,
         'always'
     ]
     let spells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.activation.type === 'action' && validTypes.includes(i.system.preparation?.mode));
-    console.log(spells);
     if (!spells.length) return;
     let [selection] = await chris.selectDocument(workflow.item.name, spells);
     if (!selection) return;

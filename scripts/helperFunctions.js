@@ -37,18 +37,26 @@ export let chris = {
     'findEffect': function _findEffect(actor, name) {
         return chris.getEffects(actor).find(i => i.name === name);
     },
-    'createEffect': async function _createEffect(actor, effectData) {
+    'createEffect': async function _createEffect(actor, effectData, concentrationItem) {
         if (effectData.label) {
             console.warn('The effect "' + effectData.label + '" has effect data with a label instead of a name!');
             effectData.name = effectData.label;
             delete effectData.label;
         }
+        let effectToReturn;
         if (chris.firstOwner(actor).id === game.user.id) {
             let effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
-            return effects[0];
+            effectToReturn = effects[0];
         } else {
-            return await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
+            effectToReturn = await fromUuid(await socket.executeAsGM('createEffect', actor.uuid, effectData));
         }
+        if (concentrationItem) {
+            await chris.addDependents(MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem), [effectToReturn]);
+        }
+        return effectToReturn;
+    },
+    'addDependents': async function _addDependents(parentDocument, dependents) {
+        await parentDocument?.addDependents(...dependents);
     },
     'removeEffect': async function _removeEffect(effect) {
         if (chris.firstOwner(effect).id === game.user.id) {
@@ -595,7 +603,7 @@ export let chris = {
                 dialog;
             for (let i of documents) {
                 buttons[i.name] = {
-                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `> ${i.name} </p>`,
+                    label: `<img src='${i.img}' width='50' height='50' style='border: 0px; float: left'><p style='padding: 1%; font-size: 15px'` + (displayTooltips ? ` data-tooltip="${i.system.description.value.replace(/<[^>]*>?/gm, '')}"` : ``) + `> `+ i.name + (i.system?.details?.cr != undefined ? ` (CR ${chris.decimalToFraction(i.system?.details?.cr)})` : ``) + `</p>`,
                     callback: () => {
                         if (useUuids) {
                             resolve([i.uuid]);
@@ -688,7 +696,7 @@ export let chris = {
         });
     },
     'remoteDocumentDialog': async function _remoteDocumentDialog(userId, title, documents, displayTooltips = false, alphabetical = false, cr = false) {
-        if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips);
+        if (userId === game.user.id) return await chris.selectDocument(title, documents, false, displayTooltips, alphabetical, cr);
         let uuids = await socket.executeAsUser('remoteDocumentDialog', userId, title, documents.map(i => i.uuid), displayTooltips, alphabetical, cr);
         if (!uuids) return false;
         return await Promise.all(uuids.map(async i => await fromUuid(i)));
@@ -1348,5 +1356,40 @@ export let chris = {
     'checkPermission': function _checkPermission(user, permission) {
         let check = getProperty(game.permissions, permission);
         return check ? check.includes(user.role) : false;
+    },
+    'useSpellWhenEmpty': async function _useSpellWhenEmpty(workflow, dialogTitle, dialogMessage, options = {minLevel: 0, dialogOnly: false, consumeSlotOnly: false, skipEmptyCheck: false}) {
+        if (workflow.item?.system?.uses?.value === 0 || options?.skipEmptyCheck) {
+            let spellSlots = workflow.actor.system.spells;
+            delete spellSlots.spell0;
+            for (let [key, value] of Object.entries(spellSlots)) {
+                if (value.max === 0 || value.value === 0) delete spellSlots[key];
+                else if (options?.minLevel && value.level < options?.minLevel) delete spellSlots[key]; 
+            }
+            let buttons = [];
+            for (let [key, value] of Object.entries(spellSlots)) {
+                buttons.push([
+                    key === 'pact' ? `Pact Slot (Level ${value.level})` : (value.level + (value.level === 1 ? 'st' : value.level === 2 ? 'nd' : value.level === 3 ? 'rd' : 'th') + ' Level Slot') + ' (' + value.value + ')',
+                    key
+                ]);
+            }
+            buttons.push(['No', false]);
+            let result = await chris.dialog(dialogTitle, buttons, dialogMessage);
+            if (!result) return false;
+            if (!options?.dialogOnly) {
+                if (!options?.consumeSlotOnly) {
+                    workflow.options.configureDialog = false;
+                    workflow.config = {
+                        'consumeResource': false,
+                        'consumeRecharge': false,
+                        'consumeQuantity': false,
+                        'consumeUsage': false,
+                        'useSpellWhenEmpty': result
+                    };
+                }
+                console.log(result, 'system.spells.' + result, workflow.actor.system.spells[result].value);
+                await workflow.actor.update({['system.spells.' + result + '.value']: workflow.actor.system.spells[result].value - 1});
+            }
+            return result;
+        } else return false;
     }
 };

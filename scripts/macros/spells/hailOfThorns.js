@@ -15,7 +15,9 @@ export async function hailOfThorns({speaker, actor, token, character, item, args
             'piercing'
         ]
     ];
-    let originItem = await fromUuid(effect.origin);
+    let concEffect = await fromUuid(effect.origin);
+    if (!concEffect) return;
+    let originItem = await fromUuid(concEffect.origin);
     if (!originItem) return;
     featureData.system.save.dc = chris.getSpellDC(originItem);
     setProperty(featureData, 'chris-premades.spell.castData.school', originItem.system.school);
@@ -25,5 +27,5 @@ export async function hailOfThorns({speaker, actor, token, character, item, args
     let [config, options] = constants.syntheticItemWorkflowOptions(targetUuids);
     await warpgate.wait(100);
     await MidiQOL.completeItemUse(feature, config, options);
-    await chris.removeEffect(effect);
+    await chris.removeEffect(concEffect);
 }

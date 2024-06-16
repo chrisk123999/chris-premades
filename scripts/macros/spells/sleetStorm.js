@@ -68,7 +68,7 @@ async function trigger(token, trigger, reason) {
     let feature = new CONFIG.Item.documentClass(featureData, {'parent': originItem.actor});
     let [config, options] = constants.syntheticItemWorkflowOptions([token.uuid]);
     await MidiQOL.completeItemUse(feature, config, options);
-    if (reason === 'turnStart' && chris.findEffect(token.actor, 'Concentrating')) await MidiQOL.doConcentrationCheck(token.actor, trigger.saveDC);
+    if (reason === 'turnStart' && MidiQOL.getConcentrationEffect(token.actor)) await MidiQOL.doConcentrationCheck(token.actor, trigger.saveDC);
 }
 export let sleetStorm = {
     'item': item,

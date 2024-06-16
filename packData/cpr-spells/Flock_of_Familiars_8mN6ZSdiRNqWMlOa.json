@@ -129,13 +129,6 @@
           "self": "Flock of Familiars"
         }
       }
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
     }
   },
   "effects": [],
@@ -145,7 +138,7 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1685268901975,
-    "modifiedTime": 1716061156047,
+    "modifiedTime": 1717236484618,
     "lastModifiedBy": "PQGBBcoVSwpUhViM"
   },
   "folder": null,

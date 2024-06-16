@@ -286,6 +286,16 @@ export async function fixSettings() {
             changedSettings.push('MQ-mergeCard');
             updateMidiSettings = true;
         }
+        if (midiSettings.allowActorUseMacro === false) {
+            midiSettings.allowActorUseMacro = true;
+            changedSettings.push('MQ-actorUseMacros');
+            updateMidiSettings = true;
+        }
+        if (midiSettings.allowUseMacro === false) {
+            midiSettings.allowUseMacro = true;
+            changedSettings.push('MQ-useMacros');
+            updateMidiSettings = true;
+        }
         if (updateMidiSettings) await game.settings.set('midi-qol', 'ConfigSettings', midiSettings);
     }
     if (changedSettings.length === 0) {
@@ -301,9 +311,51 @@ export async function fixSettings() {
     if (changedSettings.includes('MQ-autoCEEffects')) list += '- Midi-Qol: Apply Convenient Effects: Prefer Item Effect<br>';
     if (changedSettings.includes('MQ-attackPerTarget')) list += '- Midi-Qol: Roll Seperate Attack Per Target: false<br>';
     if (changedSettings.includes('MQ-mergeCard')) list += '- Midi-Qol: Merge Card: true<br>';
+    if (changedSettings.includes('MQ-actorUseMacros')) list += '- Midi-Qol: Actor On Use Macros: true<br>';
+    if (changedSettings.includes('MQ-useMacros')) list += '- Midi-Qol: Item On Use Macros: true<br>';
     ChatMessage.create({
         'speaker': {'alias': 'Chris\'s Premades'},
         'whisper': [game.user.id],
         'content': '<hr><b>Updated Settings:</b><br><hr>' + list
     });
+}
+export function checkModules() {
+    if (game.modules.get('jb2a_patreon')?.active && game.modules.get('JB2A_DnD5e')?.active) {
+        ui.notifications.warn('Chris\'s Premades | You have both JB2A modules active, please disable the free version', {permanent: true});
+    } else if (!game.modules.get('jb2a_patreon')?.active && !game.modules.get('JB2A_DnD5e')?.active) {
+        ui.notifications.error('Chris\'s Premades | You do not have a JB2A module active, this module requires either the free or patreon version', {permanent: true});
+    }
+    if (game.modules.get('dae')?.active && !game.settings.get('dae', 'showInline')) {
+        ui.notifications.warn('Chris\'s Premades | Dynamic Active Effects setting "Display results of inline rolls" is off, it is recommeded to enable it.');
+    }
+    if (game.modules.get('dfreds-convenient-effects')?.active && (game.settings.get('dfreds-convenient-effects', 'modifyStatusEffects') === 'add')) {
+        ui.notifications.warn('Chris\'s Premades | Dfred\'s Convenient Effects setting "Modify Status Effects" is set to "Add", it is recommeded to set to "Replace".', {permanent: true});
+    }
+    let midiSettings = [
+        game.settings.get('midi-qol', 'EnableWorkflow'),
+        !game.settings.get('midi-qol', 'ConfigSettings').attackPerTarget,
+        game.settings.get('midi-qol', 'ConfigSettings').autoCEEffects,
+        game.settings.get('midi-qol', 'ConfigSettings').mergeCard,
+        game.settings.get('midi-qol', 'ConfigSettings').allowActorUseMacro,
+        game.settings.get('midi-qol', 'ConfigSettings').allowUseMacros
+    ];
+    if (midiSettings.includes(false)) {
+        ui.notifications.warn('Chris\'s Premades | Problematic Midi-QOL settings detected, go to CPR\'s settings under help and click "Apply recommended setting fixes".', {permanent: true});
+    }
+    let requiredModules = new Set();
+    game.modules.get('chris-premades').relationships.requires.forEach(value => {
+        requiredModules.add({'id': value.id, 'title': game.modules.get(value.id).title});
+        let module = game.modules.get(value.id);
+        if (module) game.modules.get(value.id).relationships.requires.forEach(value => {
+            requiredModules.add({'id': value.id, 'title': game.modules.get(value.id).title});
+        });
+    });
+    for (let mod of requiredModules) {
+        if (!game.modules.get(mod.id)?.active) {
+            ui.notifications.error('Chris\'s Premades | <b>REQUIRED MODULE</b> "<u>' + mod.title + '</u>" is disabled, please enable.', {permanent: true});
+        }
+    }
+    if (Array.from(game.settings.settings).filter(i => i[1].namespace === 'chris-premades').filter(i => !i[1].key.toLowerCase().includes('randomizer')).filter(i => game.settings.get('chris-premades', i[1].key) === false).length === 0) {
+        ui.notifications.error('Chris\'s Premades | You have turned on <b>EVERY CPR setting</b>, please check that you have <u>only enabled what you need</u>.', {permanent: true});
+    }
 }

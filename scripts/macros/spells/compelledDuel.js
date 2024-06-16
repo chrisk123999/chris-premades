@@ -51,12 +51,13 @@ async function attacker({speaker, actor, token, character, item, args, scope, wo
         }
     }
     if (!endSpell) return;
-    await chris.removeEffect(effect);
-    let targetToken = await fromUuid(targetUuid);
-    if (!targetToken) return;
-    let effect2 = chris.findEffect(targetToken.actor, 'Compelled Duel - Target');
-    if (!effect2) return;
-    await chris.removeEffect(effect2);
+    await endEffect(workflow.actor, effect.origin);
+    // await chris.removeEffect(effect);
+    // let targetToken = await fromUuid(targetUuid);
+    // if (!targetToken) return;
+    // let effect2 = chris.findEffect(targetToken.actor, 'Compelled Duel - Target');
+    // if (!effect2) return;
+    // await chris.removeEffect(effect2);
 }
 async function attacked(workflow) {
     if (!workflow.token || !workflow.targets.size) return;
@@ -67,18 +68,19 @@ async function attacked(workflow) {
         let sourceUuid = effect.flags['chris-premades']?.spell?.compelledDuel?.sourceUuid;
         if (!sourceUuid) continue;
         if (workflow.token.document.uuid === sourceUuid) continue;
-        await chris.removeEffect(effect);
-        let sourceToken = await fromUuid(sourceUuid);
-        if (!sourceToken) continue;
-        let effect2 = chris.findEffect(sourceToken.actor, 'Compelled Duel - Source');
-        if (!effect2) continue;
-        await chris.removeEffect(effect2);
+        await endEffect(fromUuidSync(effect.origin).actor, effect.origin);
+        // await chris.removeEffect(effect);
+        // let sourceToken = await fromUuid(sourceUuid);
+        // if (!sourceToken) continue;
+        // let effect2 = chris.findEffect(sourceToken.actor, 'Compelled Duel - Source');
+        // if (!effect2) continue;
+        // await chris.removeEffect(effect2);
     }
 }
 async function movement(token, updates, diff, id) {
     if (!chris.isLastGM()) return;
     if (token.parent.id != canvas.scene.id) return;
-    if (!updates.x && !updates.y && !updates.elevation || !diff.animate) return;
+    if (!updates.x && !updates.y && !updates.elevation || diff.animate == false) return;
     let effect = chris.findEffect(token.actor, 'Compelled Duel - Target');
     if (!effect) return;
     let sourceUuid = effect.flags['chris-premades']?.spell?.compelledDuel?.sourceUuid;
@@ -185,7 +187,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             {
                 'key': 'flags.midi-qol.onUseMacroName',
                 'mode': 0,
-                'value': 'function.chrisPremades.macros.compelledDuel.attacker,postActiveEffects',
+                'value': 'function.chrisPremades.macros.compelledDuel.attacker,postAttackRoll',
                 'priority': 20
             }
         ],
@@ -205,8 +207,8 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             }
         }
     };
-    await chris.createEffect(workflow.actor, effectDataSource);
-    await chris.createEffect(workflow.targets.first().actor, effectDataTarget);
+    await chris.createEffect(workflow.actor, effectDataSource, workflow.item);
+    await chris.createEffect(workflow.targets.first().actor, effectDataTarget, workflow.item);
 }
 async function end(effect) {
     await chris.setTurnCheck(effect, 'spell', 'compelledDuel', true);
@@ -220,11 +222,18 @@ async function turnEnd(effect, token, origin) {
     if (distance <= 30) return;
     let selection = await chris.remoteDialog(origin.name, constants.yesNo, chris.lastGM(), 'Caster has ended their turn more than 30 feet away from their target. Remove effect?');
     if (!selection) return;
-    await chris.removeEffect(effect);
-    let targetEffect = chris.findEffect(targetToken.actor, 'Compelled Duel - Target');
-    if (!targetEffect) return;
-    await chris.removeEffect(targetEffect);
+    await endEffect(origin.actor, origin);
+    // await chris.removeEffect(effect);
+    // let targetEffect = chris.findEffect(targetToken.actor, 'Compelled Duel - Target');
+    // if (!targetEffect) return;
+    // await chris.removeEffect(targetEffect);
 }
+
+async function endEffect(originActor, originItemRef) {
+    let concentrationEffect = MidiQOL.getConcentrationEffect(originActor, originItemRef);
+    return await chris.removeEffect(concentrationEffect);
+}
+
 export let compelledDuel = {
     'attack': attack,
     'attacker': attacker,

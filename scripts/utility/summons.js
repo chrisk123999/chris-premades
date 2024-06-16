@@ -1,10 +1,14 @@
 import {chris} from '../helperFunctions.js';
 import {socket} from '../module.js';
-async function spawn(sourceActors, updates, duration, originItem, useActorOrigin = false, groupInitiative = false, maxRange, casterToken, spawnAnimation, callbacks) {
+async function spawn(sourceActors, updates, duration, originItem, casterToken, maxRange, options = {useActorOrigin: false, groupInitiative: false, spawnAnimation: 'default', callbacks: {}, canTurnHostile: false}) {
     async function effectMacro () {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
         for (let i of summons) await warpgate.dismiss(i);
+    }
+    if (!sourceActors?.length) {
+        ui.notifications.warn('CPR summons.js | sourceActors doesn\'t have a length, is it an array?');
+        return;
     }
     let effect = chris.findEffect(originItem.actor, originItem.name);
     if (!effect) {
@@ -28,10 +32,13 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
                 }
             }
         };
-        if (useActorOrigin) casterEffectData.origin = originItem.actor.uuid;
+        if (options.useActorOrigin) casterEffectData.origin = originItem.actor.uuid;
         effect = await chris.createEffect(originItem.actor, casterEffectData);
     }
     if (!effect) return;
+    if (originItem.requiresConcentration && !options.canTurnHostile) {
+        await chris.addDependents(MidiQOL.getConcentrationEffect(originItem.actor, originItem), [effect]);
+    }
     let effectData = {
         'name': 'Summoned Creature',
         'icon': originItem.img,
@@ -67,7 +74,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
                 setProperty(updates2, 'actor.system.bonuses.rwak.damage', originItem.actor.system.attributes.prof);
             }
         }
-        let spawnedTokens = await chris.spawn(sourceActors[i], updates2, callbacks, casterToken, maxRange, spawnAnimation);
+        let spawnedTokens = await chris.spawn(sourceActors[i], updates2, options.callbacks, casterToken, maxRange, options.spawnAnimation);
         if (!spawnedTokens) return;
         let spawnedToken = game.canvas.scene.tokens.get(spawnedTokens[0]);
         if (!spawnedToken) return;
@@ -76,7 +83,7 @@ async function spawn(sourceActors, updates, duration, originItem, useActorOrigin
             let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === originItem.actor.id);
             if (casterCombatant) {
                 let initiative;
-                if (groupInitiative) {
+                if (options.groupInitiative) {
                     if (groupInitiativeValue) {
                         await socket.executeAsGM('createCombatant', spawnedToken.id, spawnedToken.actor.id, canvas.scene.id, groupInitiativeValue);
                     } else {

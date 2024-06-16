@@ -1,10 +1,10 @@
 {
-  "name": "Zephyr Strike - Advantage",
+  "name": "Mending (Eldritch Cannon)",
   "type": "feat",
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
   "system": {
     "description": {
-      "value": "",
+      "value": "<p>This is only used on the Eldritch Cannon token. It does not catch the mending spell being cast.</p>",
       "chat": ""
     },
     "source": {
@@ -17,7 +17,7 @@
     },
     "duration": {
       "value": "",
-      "units": "inst"
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -47,14 +47,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "heal",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d6[healing]",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -64,7 +69,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "",
+      "value": "monster",
       "subtype": ""
     },
     "requirements": "",
@@ -82,19 +87,12 @@
   "effects": [],
   "flags": {
     "custom-character-sheet-sections": {
-      "sectionName": "Wild Shape"
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
+      "sectionName": ""
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.zephyrStrike.buff",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -116,47 +114,22 @@
       "noConcentrationCheck": false
     },
     "core": {},
-    "tidy5e-sheet": {
-      "favorite": true
-    },
-    "walledtemplates": {
-      "wallsBlock": "globalDefault",
-      "wallRestriction": "globalDefault"
-    },
-    "magicitems": {
-      "enabled": false,
-      "default": "",
-      "equipped": false,
-      "attuned": false,
-      "charges": "0",
-      "chargeType": "c1",
-      "destroy": false,
-      "destroyFlavorText": "reaches 0 charges: it crumbles into ashes and is destroyed.",
-      "rechargeable": false,
-      "recharge": "0",
-      "rechargeType": "t1",
-      "rechargeUnit": "r1",
-      "sorting": "l"
-    },
-    "scene-packer": {
-      "hash": "df70c2f102b11f36bd22ab85c108112eae3346d5",
-      "sourceId": "Compendium.world.localitems.Item.hKL5dyv9Nm7AgNUN"
-    }
+    "cf": null
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
-    "createdTime": 1686175578061,
-    "modifiedTime": 1716067872713,
-    "lastModifiedBy": "mISnBJYetC0P1HEF"
+    "createdTime": 1685481461959,
+    "modifiedTime": 1716789608760,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
-  "folder": null,
+  "folder": "jsv2MaUJiCcNgflp",
+  "_id": "Ab3RYrZK4iONTVBB",
+  "sort": 500000,
   "ownership": {
     "default": 0,
-    "mISnBJYetC0P1HEF": 3
+    "Ud258q78TNICxrY6": 3
   },
-  "_id": "XQN9sJ9qjtAZOo2c",
-  "sort": 0,
-  "_key": "!items!XQN9sJ9qjtAZOo2c"
+  "_key": "!items!Ab3RYrZK4iONTVBB"
 }

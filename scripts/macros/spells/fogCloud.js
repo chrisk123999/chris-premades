@@ -76,7 +76,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
             'seconds': chris.itemDuration(workflow.item).seconds
         }
     };
-    await chris.createEffect(workflow.actor, effectData);
+    await chris.createEffect(workflow.actor, effectData, workflow.item);
 }
 async function hook(workflow) {
     if (workflow.targets.size != 1) return;

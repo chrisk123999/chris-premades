@@ -153,10 +153,7 @@
       }
     },
     "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+      "effectActivation": false
     },
     "midiProperties": {
       "nodam": false,
@@ -171,9 +168,7 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "ignoreTotalCover": false
     },
     "core": {
       "sourceId": "Actor.EfujZIEjq4mg7wAX.Item.ZEbI5odo7FpMgiTE"
@@ -186,8 +181,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1688714674114,
-    "modifiedTime": 1715842252202,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+    "modifiedTime": 1716789610413,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": "0NhWDwAcosPsozOc",
   "sort": 0,

@@ -60,7 +60,6 @@ export async function antagonize({speaker, actor, token, character, item, args, 
         }
         let [config , options] = constants.syntheticItemWorkflowOptions([target.uuid]);
         await warpgate.wait(100);
-        let test = await chris.remoteRollItem(weapon, config, options, chris.firstOwner(target).id);
-        console.log(test);
+        await chris.remoteRollItem(weapon, config, options, chris.firstOwner(target).id);
     }
 }

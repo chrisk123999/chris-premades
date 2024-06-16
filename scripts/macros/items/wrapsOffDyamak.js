@@ -14,7 +14,6 @@ async function rest(actor ,data) {
     await item.displayCard();
 }
 async function attack({speaker, actor, token, character, item, args, scope, workflow}) {
-    console.log(workflow);
     let unarmedStrike = chris.getItem(workflow.actor, 'Unarmed Strike (Monk)');
     if (!unarmedStrike) return;
     if (workflow.item.uuid != unarmedStrike.uuid) return;

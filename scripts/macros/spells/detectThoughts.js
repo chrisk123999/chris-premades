@@ -1,16 +1,16 @@
 import {chris} from '../../helperFunctions.js';
 async function detectThoughtsProbeItem({speaker, actor, token, character, item, args, scope, workflow}) {
     if (workflow.failedSaves.size === 1) return;
-    let effect = chris.findEffect(workflow.actor, 'Detect Thoughts');
+    let effect = MidiQOL.getConcentrationEffect(workflow.actor, workflow.item.origin);
     if (!effect) return;
     await chris.removeEffect(effect);
-    await chris.removeCondition(workflow.actor, 'Concentrating');
 }
 async function detectThoughtsItem({speaker, actor, token, character, item, args, scope, workflow}) {
     let featureData = await chris.getItemFromCompendium('chris-premades.CPR Spell Features', 'Detect Thoughts - Probe Deeper', false);
     if (!featureData) return;
     featureData.system.save.dc = chris.getSpellDC(workflow.item);
     featureData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Detect Thoughts - Probe Deeper');
+    featureData.origin = workflow.item.uuid;
     async function effectMacro () {
         await warpgate.revert(token.document, 'Detect Thoughts - Probe Deeper');
     }
@@ -50,6 +50,7 @@ async function detectThoughtsItem({speaker, actor, token, character, item, args,
         'description': featureData.name
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
 }
 export let detectThoughts = {
     'item': detectThoughtsItem,

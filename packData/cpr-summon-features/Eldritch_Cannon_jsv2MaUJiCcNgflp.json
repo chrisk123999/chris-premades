@@ -1,0 +1,19 @@
+{
+  "name": "Eldritch Cannon",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "jsv2MaUJiCcNgflp",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.1.2",
+    "coreVersion": "11.315",
+    "createdTime": 1716461047161,
+    "modifiedTime": 1716461047161,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
+  },
+  "_key": "!folders!jsv2MaUJiCcNgflp"
+}

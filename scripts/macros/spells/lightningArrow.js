@@ -42,7 +42,9 @@ async function lightningArrowDamage({speaker, actor, token, character, item, arg
         ]
     ];
     if (effect) {
-        let originItem = await fromUuid(effect.origin);
+        let concEffect = await fromUuid(effect.origin);
+        if (!concEffect) return;
+        let originItem = await fromUuid(concEffect.origin);
         itemData.system.save.dc = chris.getSpellDC(originItem);
     }
     itemData.system.description.value = chris.getItemDescription('CPR - Descriptions', 'Lightning Arrow - Burst');

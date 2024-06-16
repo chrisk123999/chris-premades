@@ -75,4 +75,5 @@ export async function elementalWeapon({speaker, actor, token, character, item, a
         'description': 'Elemental Weapon'
     };
     await warpgate.mutate(targetToken.document, updates, {}, options);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [targetToken.actor.effects.getName(workflow.item.name)]);
 }

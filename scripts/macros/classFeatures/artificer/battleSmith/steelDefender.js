@@ -94,10 +94,10 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     if (artificerLevel > 8) {
         if (artificerLevel > 14) {
             updates.actor.system.attributes.ac = {'flat': 17};
-            updates.embedded.Item['Deflect Attack'].system.damage.parts[0][0] = '1d4[force] + ' + chris.getSpellMod(workflow.item)
+            updates.embedded.Item['Deflect Attack'].system.damage.parts[0][0] = '1d4[force] + ' + chris.getSpellMod(workflow.item);
         }
         updates.embedded.Item['Arcane Jolt'] = arcaneJoltData;
-        sourceActor.setFlag('chris-premades', 'feature.arcaneJoltScale', workflow.actor.system?.scale?.['battle-smith']?.['arcane-jolt'].formula);;
+        sourceActor.setFlag('chris-premades', 'feature.arcaneJoltScale', workflow.actor.system?.scale?.['battle-smith']?.['arcane-jolt'].formula);
     }
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? 'default';
     if (chris.jb2aCheck() != 'patreon' || !chris.aseCheck()) animation = 'none';

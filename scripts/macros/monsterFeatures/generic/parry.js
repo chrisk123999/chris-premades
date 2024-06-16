@@ -2,7 +2,6 @@ import {chris} from '../../../helperFunctions.js';
 export async function parry({speaker, actor, token, character, item, args, scope, workflow}) {
     if (!workflow.actor) return;
     let bonus = chris.getConfiguration(workflow.item, 'acbonus') ?? false;
-    console.log(bonus);
     if (!bonus) return;
     let effectData = {
         'label': workflow.item.name,

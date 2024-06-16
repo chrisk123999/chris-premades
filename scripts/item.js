@@ -234,7 +234,6 @@ export async function updateItem(itemDocument) {
         'content': '<hr><b>' + compendiumItem.name + ':</b><br><hr>' + compendiumItem.system.description.value
     });
     let originalItem = duplicate(itemDocument.toObject());
-    originalItem.name = compendiumItem.name;
     originalItem.effects = compendiumItem.effects;
     originalItem.system = compendiumItem.system;
     originalItem.system.description = itemDocument.system.description;

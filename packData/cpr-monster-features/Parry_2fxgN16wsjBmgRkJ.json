@@ -101,11 +101,7 @@
             "option": "postActiveEffects"
           }
         }
-      },
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "effectCondition": ""
+      }
     },
     "midiProperties": {
       "nodam": false,
@@ -120,9 +116,7 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "ignoreTotalCover": false
     },
     "chris-premades": {
       "configuration": {
@@ -141,8 +135,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1697159582807,
-    "modifiedTime": 1715842250880,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+    "modifiedTime": 1716789608908,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": "EA1yUtNrgGb77Urn",
   "sort": 0,

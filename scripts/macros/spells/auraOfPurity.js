@@ -6,7 +6,9 @@ async function move(token, selectedAura) {
     let originActor = originToken.actor;
     let auraEffect = chris.findEffect(originActor, 'Aura of Purity - Aura');
     if (!auraEffect) return;
-    let originItem = await fromUuid(auraEffect.origin);
+    let concEffect = await fromUuid(auraEffect.origin);
+    if (!concEffect) return;
+    let originItem = await fromUuid(concEffect.origin);
     if (!originItem) return;
     let effectData = {
         'name': 'Aura of Purity',

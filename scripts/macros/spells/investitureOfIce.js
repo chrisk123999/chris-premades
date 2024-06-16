@@ -75,6 +75,7 @@ export async function investitureOfIce({speaker, actor, token, character, item, 
         'description': 'Investiture of Ice'
     };
     await warpgate.mutate(workflow.token.document, updates, {}, options);
+    await chris.addDependents(MidiQOL.getConcentrationEffect(workflow.actor, workflow.item), [workflow.actor.effects.getName(workflow.item.name)]);
     let animation = chris.getConfiguration(workflow.item, 'animation') ?? chris.jb2aCheck() === 'patreon';
     if (!animation) return;
     await fireShield.animation(workflow.token, 'cold', 'Investiture of Ice');

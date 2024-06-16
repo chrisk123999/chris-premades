@@ -103,7 +103,11 @@
             "option": "preCheckHits"
           }
         }
-      }
+      },
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -118,7 +122,9 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
     },
     "core": {
       "sourceId": "Item.y63FbgnEu8lLhatC"
@@ -130,8 +136,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "11.315",
     "createdTime": 1681436028748,
-    "modifiedTime": 1715842250240,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+    "modifiedTime": 1716789608290,
+    "lastModifiedBy": "Ud258q78TNICxrY6"
   },
   "folder": "FewumOfaPV1m7YpH",
   "sort": 0,
