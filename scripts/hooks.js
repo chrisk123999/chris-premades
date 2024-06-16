@@ -15,6 +15,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.postAttackRollComplete', midiEvents.postAttackRollComplete);
     Hooks.on('midi-qol.DamageRollComplete', midiEvents.postDamageRoll);
     Hooks.on('midi-qol.RollComplete', midiEvents.RollComplete);
+    //Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);

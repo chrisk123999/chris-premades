@@ -163,6 +163,12 @@ export function registerSettings() {
             }
         }
     });
+    addSetting({
+        key: 'devTools',
+        type: Boolean,
+        default: false,
+        category: 'development',
+    });
 }
 export function registerMenus() {
     addMenu({

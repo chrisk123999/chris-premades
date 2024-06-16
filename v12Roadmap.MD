@@ -13,9 +13,16 @@ Goals:
 - [ ] Function to match name of item w/ all available automations
 - [/] Functions to grab current versioning data
 - [ ] App class itself
-    - [ ] Handlbars templates for header, navigation, each tab
-    - [ ] Functionality to select avail automation and apply it
-    - [ ] Likely a bunch of CSS
+    - [x] Handlbars templates for header, navigation, each tab
+    - [x] Functionality to select avail automation and apply it
+    - [.2] Likely a bunch of CSS
+        - [ ] Lay out header and info tab better
+        - [ ] Give navigation some spacing and definition WITHOUT killing the good parts of the native CSS
+        - [ ] Make header not ugly (font etc)
+    - [/] onFormChange correctly setting the value of each input in the internal context
+    - [ ] confirm button to set config info on item
+    - [ ] Determine if things are touchable based off permissions, set tooltip if not
+    - [ ] Fix dev tools tab deciding to now disapear
 [ ] Convert all helper functions
 ## Replace old dependencies
 ### Warpgate
@@ -25,13 +32,13 @@ Goals:
 [x] warpgate.crosshairs()-- - now Crosshairs
 [ ] warpgate.mutate()
 ### Dfred's CE
-[?] Effect sidebar thing
+[x] Effect sidebar thing
 [?] Effect thing or macro.StatusEffect
 ### Token Attacher
 [ ] Attachng templates
 ### Automated Animations
 [ ] Teleport function
 ### Effect Macro
-[ ] Replaced by internal hook calls
+[x] Replaced by internal hook calls
 ## Convert/update/fix all old functions
 [ ] Redo artificer infusions and items that add items

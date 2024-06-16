@@ -56,60 +56,60 @@ const damageTypes = [
 ];
 let damageTypeOptions = [
     {
-        label: 'acid',
-        value: 'Acid'
+        label: 'Acid',
+        value: 'acid'
     },
     {
-        label: 'bludgeoning',
-        value: 'Bludgeoning'
+        label: 'Bludgeoning',
+        value: 'bludgeoning'
     },
     {
-        label: 'cold',
-        value: 'Cold'
+        label: 'Cold',
+        value: 'cold'
     },
     {
-        label: 'fire',
-        value: 'Fire'
+        label: 'Fire',
+        value: 'fire'
     },
     {
-        label: 'force',
-        value: 'Force'
+        label: 'Force',
+        value: 'force'
     },
     {
-        label: 'lightning',
-        value: 'Lightning'
+        label: 'Lightning',
+        value: 'lightning'
     },
     {
-        label: 'necrotic',
-        value: 'Necrotic'
+        label: 'Necrotic',
+        value: 'necrotic'
     },
     {
-        label: 'none',
-        value: 'No Type'
+        label: 'No Type',
+        value: 'none'
     },
     {
-        label: 'piercing',
-        value: 'Piercing'
+        label: 'Piercing',
+        value: 'piercing'
     },
     {
-        label: 'poison',
-        value: 'Poison'
+        label: 'Poison',
+        value: 'poison'
     },
     {
-        label: 'psychic',
-        value: 'Psychic'
+        label: 'Psychic',
+        value: 'psychic'
     },
     {
-        label: 'radiant',
-        value: 'Radiant'
+        label: 'Radiant',
+        value: 'radiant'
     },
     {
-        label: 'slashing',
-        value: 'Slashing'
+        label: 'Slashing',
+        value: 'slashing'
     },
     {
-        label: 'thunder',
-        value: 'Thunder'
+        label: 'Thunder',
+        value: 'thunder'
     }
 ];
 export let constants = {

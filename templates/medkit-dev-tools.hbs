@@ -1,0 +1,13 @@
+<div class="tab {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
+    <h3>Curent Info:</h3>
+        <a>Identifier: {{item.identifier}} Version: {{item.version}}</a>
+    {{#if devTools}}
+        <h3>Automation Info Found:</h3>
+            <a>Identifier: {{devTools.identifier}}  Version: {{devTools.version}}</a>
+        <button type="button" data-action="devToolsApply" id="devToolsApply">
+            <label for="devToolsApply">{{localize "CHRISPREMADES.Generic.Apply"}}</label>
+        </button>
+    {{else}}
+        No automation info found! Check spelling?
+    {{/if}}
+</div>

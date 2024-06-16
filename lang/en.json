@@ -27,6 +27,22 @@
                 "chris-premades": "Chris's Premades",
                 "gambit-premades": "Gambit's Premades",
                 "midi-item-community-showcase": "Midi Item Community Showcase"
+            },
+            "Tabs": {
+                "Info": {
+                    "Label": "Info",
+                    "Tooltip": "Information about the current and available automation"
+                },
+                "Configuration": {
+                    "Label": "Configuration",
+                    "Tooltip": "Configure available parts of the automation"
+                }
+            },
+            "Categories": {
+                "homebrew": {
+                    "Label": "Homebrew",
+                    "Tooltip": "Available Homebrew Customizations"
+                }
             }
         },
         "settings": {
@@ -89,6 +105,10 @@
             "colorizeDAE": {
                 "name": "Dynamic Active Effects: Colorize Titlebar Icon",
                 "hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item."
+            },
+            "devTools": {
+                "name": "Display Development Tools",
+                "hint": "Enable to display development tools."
             }
         },
         "settingCategory": {
@@ -139,7 +159,9 @@
                 "red": "Red",
                 "orange": "Orange"
             },
-            "sound": "Sound:"
+            "sound": "Sound:",
+            "damage": "Damage Type:",
+            "formula": "Formula:"
         },
         "macros": {
             "hex": {

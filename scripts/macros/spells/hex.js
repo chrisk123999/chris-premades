@@ -138,6 +138,7 @@ export let hex = {
     config: [
         {
             value: 'damageType',
+            label: 'CHRISPREMADES.config.damageType',
             type: 'select',
             default: 'necrotic',
             options: constants.damageTypeOptions,
@@ -146,6 +147,7 @@ export let hex = {
         },
         {
             value: 'formula',
+            label: 'CHRISPREMADES.config.formula',
             type: 'text',
             default: '1d6',
             homebrew: true,

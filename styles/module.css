@@ -101,3 +101,28 @@ form .cpr-compendiums .compendium-number {
     flex: .1;
     text-align: center
 }
+
+form .cpr-medkit-config {
+    display: flex;
+    flex-direction: column;
+}
+
+form .cpr-medkit-config > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 1%;
+    > label {
+        flex: 1
+    }
+    > input {
+        flex: .5
+    }
+    > select {
+        flex: .5
+    }
+    > file-picker {
+        flex: .7
+    }
+}

@@ -13,7 +13,7 @@
     {{/if}}
     {{#if item.canApplyAutomation}}
         {{localize "CHRISPREMADES.Medkit.AutomationFound"}}
-        <select id="select-item" name="select-amount">
+        <select id="select-automation" name="select-automation">
         {{#each item.options}}
             <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
         {{/each}}

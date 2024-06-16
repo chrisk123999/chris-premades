@@ -137,5 +137,6 @@ export let combatEvents = {
     combatStart,
     deleteCombat,
     updateCombat,
-    executeMacroPass
+    executeMacroPass,
+    collectMacros
 };

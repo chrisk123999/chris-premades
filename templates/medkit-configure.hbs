@@ -1,28 +1,30 @@
-<div class="tab {{tabs.configuration.cssClass}} scrollable" data-tab="configuration" data-group="main">
+<div class="tab {{tabs.configure.cssClass}}" data-tab="configure" data-group="main">
     {{#each category}}
         <fieldset>
-            <legend>{{localize label}}</legend>
+            <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
             <div class="form-group cpr-medkit-config">
                 {{#each configuration}}
-                    {{#if isCheckbox}}
-                        <label for="{{id}}">{{localize label}}</label>
-                        <input type="checkbox" id="{{id}}" name="{{name}}" {{#if isChecked}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                    {{else if isText}}
-                        <label for="{{id}}">{{localize label}}</label>
-                        <input type="text" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                    {{else if isFile}}
-                        <label for="{{id}}">{{localize label}}</label>
-                        <file-picker id="{{id}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}></file-picker>
-                    {{else if isSelect}}
-                        <label for="{{id}}">{{localize label}}</label>
-                        <select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                            {{#each options}}
-                                <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                                    {{localize label}}
-                                </option>
-                            {{/each}}
-                        </select>
-                    {{/if}}
+                    <div>
+                        {{#if isCheckbox}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <input type="checkbox" id="{{id}}" name="{{name}}" {{#if isChecked}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        {{else if isText}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <input type="text" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        {{else if isFile}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <file-picker id="{{id}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}></file-picker>
+                        {{else if isSelect}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                        {{localize label}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        {{/if}}
+                    </div>
                 {{/each}}
             </div>
         </fieldset>
