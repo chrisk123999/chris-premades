@@ -23,7 +23,8 @@ function collectMacros(effect, pass) {
                 saveDC: effectUtils.getSaveDC(effect) ?? -1
             },
             macro: i.macro,
-            name: effect.name
+            name: effect.name,
+            priority: i.priority
         });
     });
     return triggers;
@@ -53,10 +54,10 @@ function getSortedTriggers(effect, pass) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers;
+    return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    console.log('CPR: Executing Effect Macro: ' + trigger.macro.name);
+    console.log('CPR: Executing Effect Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         await trigger.macro(trigger);
     } catch (error) {
@@ -66,7 +67,7 @@ async function executeMacro(trigger) {
 }
 async function executeMacroPass(effect, pass) {
     console.log('CPR: Executing Effect Macro Pass: ' + pass + ' for ' + effect.name);
-    let triggers = getSortedTriggers(effect, pass).sort((a, b) => a.priority - b.priority);
+    let triggers = getSortedTriggers(effect, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }

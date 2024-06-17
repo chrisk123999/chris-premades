@@ -27,7 +27,8 @@ function collectTokenMacros(token, pass) {
                         saveDC: effectUtils.getSaveDC(effect) ?? -1
                     },
                     macro: i.macro,
-                    name: effect.name
+                    name: effect.name,
+                    priority: i.priority
                 });
             });
         }
@@ -43,7 +44,8 @@ function collectTokenMacros(token, pass) {
                         saveDC: -1
                     },
                     macro: i.macro,
-                    name: item.name
+                    name: item.name,
+                    priority: i.priority
                 });
             });
         }
@@ -61,7 +63,8 @@ function collectTokenMacros(token, pass) {
                     saveDC: templateUtils.getSaveDC(template) ?? -1
                 },
                 macro: i.macro,
-                name: templateUtils.getName(template)
+                name: templateUtils.getName(template),
+                priority: i.priority
             });
         });
     }
@@ -92,10 +95,10 @@ function getSortedTriggers(token, pass) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers;
+    return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    console.log('CPR: Executing Combat Macro: ' + trigger.macro.name);
+    console.log('CPR: Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         await trigger.macro(trigger);
     } catch (error) {
@@ -105,7 +108,7 @@ async function executeMacro(trigger) {
 }
 async function executeMacroPass(token, pass) {
     console.log('CPR: Executing Combat Macro Pass: ' + pass + ' for ' + token.name);
-    let triggers = getSortedTriggers(token, pass).sort((a, b) => a.priority - b.priority);
+    let triggers = getSortedTriggers(token, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }

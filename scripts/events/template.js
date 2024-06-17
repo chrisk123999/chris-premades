@@ -20,7 +20,8 @@ function collectTemplatesMacros(templates, pass) {
                 entity: template,
                 castData: templateUtils.getCastData(template),
                 macro: i.macro,
-                name: templateUtils.getName(template)
+                name: templateUtils.getName(template),
+                priority: i.priority
             };
             triggers.push(trigger);
         });
@@ -52,7 +53,7 @@ function getSortedTriggers(templates, pass) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers;
+    return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
     console.log('CPR: Executing Template Macro: ' + trigger.macro.name);
@@ -65,7 +66,7 @@ async function executeMacro(trigger) {
 }
 async function executeMacroPass(templates, pass) {
     console.log('CPR: Executing Template Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(templates, pass).sort((a, b) => a.priority - b.priority);
+    let triggers = getSortedTriggers(templates, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }

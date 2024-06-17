@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
 import {templateEvents} from './template.js';
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
@@ -28,7 +28,8 @@ function collectTokenMacros(token, pass, distance) {
                         saveDC: effectUtils.getSaveDC(effect) ?? -1
                     },
                     macro: i.macro,
-                    name: effect.name
+                    name: effect.name,
+                    priority: i.priority
                 });
             });
         }
@@ -40,11 +41,13 @@ function collectTokenMacros(token, pass, distance) {
                 triggers.push({
                     entity: item,
                     castData: {
-                        castLevel: -1,
-                        saveDC: -1
+                        castLevel: i.system.level ?? -1,
+                        baseLevel: i.system.level ?? -1,
+                        saveDC: itemUtils.getSaveDC(i) ?? -1
                     },
                     macro: i.macro,
-                    name: item.name
+                    name: item.name,
+                    priority: i.priority
                 });
             });
         }
@@ -76,7 +79,7 @@ function getSortedTriggers(token, pass, distance) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers;
+    return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
     console.log('CPR: Executing Movement Macro: ' + trigger.macro.name);
@@ -89,7 +92,7 @@ async function executeMacro(trigger) {
 }
 async function executeMacroPass(token, pass, distance) {
     console.log('CPR: Executing Movement Macro Pass: ' + pass + ' for ' + token.name);
-    let triggers = getSortedTriggers(token, pass, distance).sort((a, b) => a.priority - b.priority);
+    let triggers = getSortedTriggers(token, pass, distance);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
