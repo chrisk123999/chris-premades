@@ -1,5 +1,5 @@
 import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-async function use(workflow) {
+async function use({trigger, workflow}) {
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6));
     if (!workflow.targets.size) return;
@@ -41,7 +41,7 @@ async function use(workflow) {
         }
     }
 }
-async function beam(workflow) {
+async function beam({trigger, workflow}) {
     let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
     if (!color) return;
     let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;

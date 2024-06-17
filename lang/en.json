@@ -5,6 +5,7 @@
             "Cancel": "Cancel",
             "Yes": "Yes",
             "No": "No",
+            "Confirm": "Confirm",
             "Update": "Update",
             "Apply": "Apply",
             "Edit": "Edit",
@@ -42,6 +43,14 @@
                 "homebrew": {
                     "Label": "Homebrew",
                     "Tooltip": "Available Homebrew Customizations"
+                },
+                "animation": {
+                    "Label": "Animation",
+                    "Tooltip": "Customize Included Animations"
+                },
+                "sound": {
+                    "Label": "Sound",
+                    "Tooltip": "Add a sound to be played"
                 }
             }
         },

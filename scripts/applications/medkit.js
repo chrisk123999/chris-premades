@@ -18,8 +18,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'medkit-window'
         },
         actions: {
+            update: Medkit._update,
             apply: Medkit._apply,
-            devToolsApply: Medkit._devToolsApply
+            confirm: Medkit.confirm
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -41,7 +42,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         devTools: {
-            template: 'modules/chris-premades/templates/medkit-dev-tools.hbs'
+            template: 'modules/chris-premades/templates/medkit-dev-tools.hbs',
+            scrollable: ['']
         },
         footer: {
             template: 'modules/chris-premades/templates/form-footer.hbs'
@@ -80,7 +82,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 context.item.options.push({
                     label: label,
                     value: i.document.uuid,
-                    isSelected: context.item.options.length === 0
+                    id: i.source,
+                    isSelected: item.source ? item.source === i.source : context.item.options.length === 0
                 });
             });
         }
@@ -122,7 +125,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         genericUtils.setProperty(configuration, 'isSelect', true);
                         config.options.forEach(i => {
                             if (!configuration?.options) genericUtils.setProperty(configuration, 'options', []);
-                            console.log(i, config, configuration);
                             if (config.requiredModules) {
                                 if (config.requiredModules.filter(j => game.modules.get(j)?.active === false).length === 0) {
                                     configuration.options.push({
@@ -148,22 +150,24 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let isDev = game.settings.get('chris-premades', 'devTools');
         if (isDev) {
             let macroInfo = macros[identifier];
-            if (macroInfo) {
-                let devTools = {
-                    identifier: identifier,
-                    version: macroInfo.version,
-                    source: 'chris-premades',
-                    midi: macroInfo?.midi,
-                    config: macroInfo?.config
-                };
-                genericUtils.setProperty(context, 'devTools', devTools);
-                console.log('CPR Dev Tools | Medkit Item Macro Info: ', context.devTools);
-            }
+            console.log(macroInfo);
+            let devTools = {
+                hasMacroInfo: macroInfo ? true : false,
+                identifier: identifier,
+                version: item.flags?.['chris-premades']?.info?.version ?? macroInfo?.version ?? '',
+                source: item.flags?.['chris-premades']?.info?.source ?? 'chris-premades',
+                midi: {
+                    item: JSON?.stringify(item.flags?.['chris-premades']?.midi?.item) ?? JSON?.stringify(macroInfo?.midi?.item) ?? '',
+                    actor: JSON?.stringify(item.flags?.['chris-premades']?.midi?.actor) ?? JSON?.stringify(macroInfo?.midi?.actor) ?? '',
+                },
+                config: macroInfo?.config
+            };
+            genericUtils.setProperty(context, 'devTools', devTools);
+            console.log('CPR Dev Tools | Medkit Item Macro Info: ', context.devTools);
         }
-        console.log(context);
         return context;
     }
-    static async apply(item, sourceItem, {source, version, identifier} = {}) {
+    static async update(item, sourceItem, {source, version, identifier} = {}) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
         let itemType = item.type;
@@ -191,8 +195,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await item.update(sourceItemData);
         return item;
     }
-    static async _apply(event, target) {
-        console.log(event, target);
+    static async _update(event, target) {
         console.log(this.itemDocument);
         console.log(this.context);
         console.log(this.context.item.options.find(i => i.isSelected === true).value);
@@ -200,18 +203,61 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!item) return;
         let sourceItem = await fromUuid(this.context.item.options.find(i => i.isSelected === true).value);
         if (!sourceItem) return;
-        let updatedItem = await Medkit.apply(item, sourceItem);
+        let updatedItem = await Medkit.update(item, sourceItem);
         this.updateContext(updatedItem);
     }
-    static async _devToolsApply(event, target) {
+    static async _apply(event, target) {
         let item = this.itemDocument;
-        let devTools = this.context.devTools;
-        console.log(item);
-        console.log(this.context.devTools.flags);
-        await item.update({'flags.chris-premades.info': {identifier: devTools.identifier, version: devTools.version, source: devTools.source}});
-        console.log(foundry.utils.deepClone(item));
+        let devTools = this.context?.devTools;
+        if (devTools) {
+            if (devTools.identifier != '') await item.setFlag('chris-premades', 'info.identifier', devTools.identifier);
+            if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
+            if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source);
+            if (devTools.midi.item != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.midi.item);
+                } catch (error) {
+                    ui.notifications.error('Error with Midi Item field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'midi.item', value);
+            }
+            if (devTools.midi.actor != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.midi.actor);
+                } catch (error) {
+                    ui.notifications.error('Error with Midi Actor field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'midi.item', value);
+            }
+        }
+        let category = this.context?.category;
+        if (category) {
+            let configs = {};
+            for (let i of Object.values(category)) {
+                for (let j of i.configuration) {
+                    configs[j.id] = j.value;
+                }
+            }
+            await item.setFlag('chris-premades', 'config', configs);
+        }
+        let currentSource = item?.flags?.['chris-premades']?.info?.source;
+        if (currentSource && this.context.item?.options?.find(i => i.isSelected && (i.id != currentSource))) {
+            console.log(this.context.item?.options.find(i => i.isSelected).value);
+            let sourceItem = await fromUuid(this.context.item?.options.find(i => i.isSelected).value);
+            console.log(sourceItem);
+            if (sourceItem) return;
+            item = await Medkit.update(item, sourceItem);
+        }
         this.itemDocument = item;
         await this.updateContext(item);
+    }
+    static async confirm(event, target) {
+        Medkit._apply(event, target);
+        this.close();
     }
     // Add results to the object to be handled elsewhere
     static async formHandler(event, form, formData) {
@@ -243,7 +289,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
                     cssClass: ''
                 });
-            } else if (game.settings.get('chris-premades', 'devTools')) {
+            } 
+            if (game.settings.get('chris-premades', 'devTools')) {
                 genericUtils.setProperty(tabsData, 'devTools', {
                     icon: 'fa-solid fa-wand-magic-sparkles',
                     label: 'Dev Tools',
@@ -254,18 +301,20 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             this.tabsData = tabsData;
         }
         context.tabs = this.tabsData;
+        context.buttons = [
+            {type: 'button', action: 'apply', label: 'CHRISPREMADES.Generic.Apply', name: 'apply', icon: 'fa-solid fa-download'},
+            {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+        ];
         return context;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
     async _onChangeForm(formConfig, event) {
-        console.log(event.target);
         if (event.target.id === 'select-automation') {
             let options = event.target.options;
             let currentContext = this.context;
             currentContext.item.options.forEach(i => i.isSelected = false);
             currentContext.item.options[options.selectedIndex].isSelected = true;
-        } else if (Object.keys(this.context.category).includes(event.target.name)) {
-            console.log(this.tabsData);
+        } else if (this?.context?.category && Object.keys(this.context.category).includes(event.target.name)) {
             for (let key of Object.keys(this.tabsData)) {
                 this.tabsData[key].cssClass = '';
             }
@@ -278,8 +327,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 console.log(options.selectedIndex);
                 currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
             }
-            console.log(event.target.name, event.target.id, event.target.type);
             this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
+        } else if (event.target.name.includes('devTools')) {
+            for (let key of Object.keys(this.tabsData)) {
+                this.tabsData[key].cssClass = '';
+            }
+            this.tabsData.devTools.cssClass = 'active';
+            let value = event.target.value;
+            if (['actor', 'item'].includes(event.target.id)) {
+                this.context.devTools.midi[event.target.id] = value;
+            } else this.context.devTools[event.target.id] = value;
         }
         this.render(true);
     }

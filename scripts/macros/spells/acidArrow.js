@@ -1,8 +1,8 @@
 import {animationUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-async function early(workflow) {
+async function early({trigger, workflow}) {
     genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
 }
-async function attack(workflow) {
+async function attack({trigger, workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let jb2a = animationUtils.jb2aCheck();
     if (!playAnimation || !workflow.token || !workflow.targets.size || !jb2a) return;
@@ -17,7 +17,7 @@ async function attack(workflow) {
         animationUtils.simpleAttack(workflow.token, i, animation + color, {sound: sound, missed: !workflow.hitTargets.has(i)});
     });
 }
-async function damage(workflow) {
+async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size) return;
     let missedTargets = workflow.targets.filter(i => !workflow.hitTargets.has(i));
     workflowUtils.applyDamage(missedTargets, Math.floor(workflow.damageRoll.total / 2), workflow.defaultDamageType);

@@ -1,5 +1,5 @@
 import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, compendiumUtils} from '../../utils.js';
-async function use(workflow) {
+async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.selectAbility', buttons);
@@ -70,7 +70,7 @@ async function use(workflow) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
-async function damage(workflow) {
+async function damage({trigger, workflow}) {
     if (!workflow.targets.size) return;
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
@@ -81,7 +81,7 @@ async function damage(workflow) {
     let formula = effect.flags['chris-premades'].hex.formula;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
-async function move(workflow) {
+async function move({trigger, workflow}) {
     if (workflow.targets.size != 1) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hex');
     if (!effect) return;

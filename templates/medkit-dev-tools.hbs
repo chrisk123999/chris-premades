@@ -1,12 +1,37 @@
-<div class="tab {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
+<div class="tab scrollable {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
     <h3>Curent Info:</h3>
-        <a>Identifier: {{item.identifier}} Version: {{item.version}}</a>
+        <p>Identifier: {{item.identifier}} Version: {{item.version}}</p>
     {{#if devTools}}
-        <h3>Automation Info Found:</h3>
-            <a>Identifier: {{devTools.identifier}}  Version: {{devTools.version}}</a>
-        <button type="button" data-action="devToolsApply" id="devToolsApply">
-            <label for="devToolsApply">{{localize "CHRISPREMADES.Generic.Apply"}}</label>
-        </button>
+    <fieldset>
+        <legend>Configure Automation Info:</legend>
+        <div class="form-group cpr-medkit-devTools devTools-info">
+            <div>
+                <label for="identifier">Identifier:</label>
+                <input type="text" id="identifier" name="devToolsidentifier" value="{{devTools.identifier}}">
+            </div>
+            <div>
+                <label for="version">Version:</label>
+                <input type="text" id="version" name="devToolsversion" value="{{devTools.version}}">
+            </div>
+            <div>
+                <label for="source">Source:</label>
+                <input type="text" id="source" name="devToolssource" value="{{devTools.source}}">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Configure Midi Macro Info:</legend>
+        <div class="form-group cpr-medkit-devTools devTools-midi">
+            <div>
+                <label for="item">Item:</label>
+                <input type="text" id="item" name="devToolsitem" value="{{devTools.midi.item}}">
+            </div>
+            <div>
+                <label for="actor">Actor:</label>
+                <input type="text" id="actor" name="devToolsactor" value="{{devTools.midi.actor}}">
+            </div>
+        </div>
+    </fieldset>
     {{else}}
         No automation info found! Check spelling?
     {{/if}}

@@ -113,8 +113,8 @@ class EffectDirectory extends DocumentDirectory {
                                     icon: '<i class="fas fa-file-import"></i>',
                                     label: genericUtils.translate('CHRISPREMADES.Generic.Import'),
                                     callback: html => {
-                                        const form = html.find('form')[0];
-                                        if (!form.data.files.length ) return ui.notifications.error('You did not upload a data file!');
+                                        let form = html.find('form')[0];
+                                        if (!form.data.files.length) return ui.notifications.error('You did not upload a data file!');
                                         // eslint-disable-next-line no-undef
                                         readTextFromFile(form.data.files[0]).then(json => modifiedImportFromJSON(json));
                                     }
@@ -219,7 +219,7 @@ class EffectDirectory extends DocumentDirectory {
         return game.user.isGM;
     }
     get canCreateFolder() {
-        return false;
+        return true;
     }
     async _onCreateEntry(event) {
         event.preventDefault();
@@ -281,6 +281,32 @@ class EffectDirectory extends DocumentDirectory {
         let dragData = effect.toDragData();
         if (!dragData) return;
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
+    }
+    async _onCreateFolder(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        let createDialog = new Dialog({
+            title: 'Create Folder',
+            // eslint-disable-next-line no-undef
+            content: await renderTemplate('templates/sidebar/folder-edit.html', {
+                folder: {},
+                sortingModes: {a: 'FOLDER.SortAlphabetical', m: 'FOLDER.SortManual'},
+                submitText: genericUtils.translate('FOLDER.Create')
+            }),
+            buttons: {
+                submit: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: genericUtils.translate('FOLDER.Create'),
+                    callback: html => {
+                        //Something here!
+                    }
+                }
+            }
+        }, {
+            width: 400
+        });
+        createDialog.data.content = createDialog.data.content.replace('<button type="submit"><i class="fas fa-check"></i> ' + game.i18n.localize('FOLDER.Create') + '</button>', '');
+        createDialog.render(true);
     }
 }
 function effectSidebar(app, html, data) {

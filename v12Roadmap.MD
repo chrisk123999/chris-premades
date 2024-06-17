@@ -15,14 +15,17 @@ Goals:
 - [ ] App class itself
     - [x] Handlbars templates for header, navigation, each tab
     - [x] Functionality to select avail automation and apply it
-    - [.2] Likely a bunch of CSS
+    - [.4] Likely a bunch of CSS
         - [ ] Lay out header and info tab better
         - [ ] Give navigation some spacing and definition WITHOUT killing the good parts of the native CSS
         - [ ] Make header not ugly (font etc)
     - [/] onFormChange correctly setting the value of each input in the internal context
-    - [ ] confirm button to set config info on item
+    - [x] confirm button to set config info on item
     - [ ] Determine if things are touchable based off permissions, set tooltip if not
-    - [ ] Fix dev tools tab deciding to now disapear
+    - [ ] Improve devTools tab
+        - [x] Field to add Item and Actor on use macros, turn it into an array.
+        - [ ] Button to clear configs
+        - [x] fields to set identifier and other bits but with it prefilled
 [ ] Convert all helper functions
 ## Replace old dependencies
 ### Warpgate
