@@ -21,9 +21,13 @@ function getFirstToken(actor) {
 function getLevelOrCR(actor) {
     return actor.type === 'character' ? actor.system.details.level : actor.system.details.cr ?? 0;
 }
+function checkTrait(actor, type, trait) {
+    return actor.system.traits?.[type]?.value?.has(trait);
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
     getFirstToken,
-    getLevelOrCR
+    getLevelOrCR,
+    checkTrait
 };
