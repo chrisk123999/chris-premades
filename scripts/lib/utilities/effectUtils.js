@@ -73,6 +73,9 @@ function getConcentrationEffect(actor, item) {
 function getEffectByIdentifier(actor, name) {
     return actorUtils.getEffects(actor).find(i => getEffectIdentifier(i) === name);
 }
+function getEffectByStatusID(actor, statusID) {
+    return actorUtils.getEffects(actor).find(i => i.statuses.has(statusID));
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -87,5 +90,6 @@ export let effectUtils = {
     addMacro,
     getEffectIdentifier,
     getConcentrationEffect,
-    getEffectByIdentifier
+    getEffectByIdentifier,
+    getEffectByStatusID
 };

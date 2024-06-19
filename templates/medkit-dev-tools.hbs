@@ -1,8 +1,6 @@
-<div class="tab scrollable {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
-    <h3>Curent Info:</h3>
-        <p>Identifier: {{item.identifier}} Version: {{item.version}}</p>
+<div class="tab cpr-medkit-tab {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
     {{#if devTools}}
-    <fieldset>
+    <fieldset class="cpr-fieldset">
         <legend>Configure Automation Info:</legend>
         <div class="form-group cpr-medkit-devTools devTools-info">
             <div>
@@ -19,7 +17,7 @@
             </div>
         </div>
     </fieldset>
-    <fieldset>
+    <fieldset class="cpr-fieldset">
         <legend>Configure Midi Macro Info:</legend>
         <div class="form-group cpr-medkit-devTools devTools-midi">
             <div>

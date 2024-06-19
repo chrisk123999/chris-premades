@@ -5,6 +5,7 @@
             "Cancel": "Cancel",
             "Yes": "Yes",
             "No": "No",
+            "None": "None",
             "Confirm": "Confirm",
             "Update": "Update",
             "Apply": "Apply",
@@ -23,7 +24,7 @@
                 "true": "Automation Available",
                 "false": "No Automation Found"
             },
-            "AutomationFound": "Automation Found",
+            "SelectedAutomation": "Selected Automation:",
             "ModuleIds": {
                 "chris-premades": "Chris's Premades",
                 "gambit-premades": "Gambit's Premades",
@@ -41,18 +42,19 @@
             },
             "Categories": {
                 "homebrew": {
-                    "Label": "Homebrew",
+                    "Label": "Homebrew:",
                     "Tooltip": "Available Homebrew Customizations"
                 },
                 "animation": {
-                    "Label": "Animation",
+                    "Label": "Animation:",
                     "Tooltip": "Customize Included Animations"
                 },
                 "sound": {
-                    "Label": "Sound",
+                    "Label": "Sound:",
                     "Tooltip": "Add a sound to be played"
                 }
-            }
+            },
+            "NoPermission": "You do not have permissions to change this"
         },
         "settings": {
             "gmID": {
@@ -87,21 +89,27 @@
                 "name": "Use Local Compendiums",
                 "hint": "Use the local world compendiums instead of the module compendiums for item lookup."
             },
-            "updateItem": {
-                "name": "Medkit Update Tab Permissions",
-                "hint": "Who can use the medkit update tab:",
+            "Permissions": {
+                "UpdateItem": {
+                    "name": "Medkit Update Automation Permissions",
+                    "hint": "Lowest user ranking that can update the currently selected automation in the Medkit:"
+                },
+                "AutomateItem": {
+                    "name": "Medkit Apply Automation Permissions",
+                    "hint": "Lowest user ranking that can select and apply different automations in the Medkit:"
+                },
+                "ConfigureItem": {
+                    "name": "Medkit Configuration Permissions",
+                    "hint": "Lowest user ranking that can configure automations in the Medkit:"
+                },
+                "HomebrewItem": {
+                    "name": "Medkit Configure Homebrew Permissions",
+                    "hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:"
+                },
                 "4": "Gamemaster",
                 "3": "Assistant Gamemaster",
                 "2": "Trusted Player",
                 "1": "Player"
-            },
-            "configureItem": {
-                "name": "Medkit Configure Tab Permissions",
-                "hint": "Who can use the medkit configure tab:"
-            },
-            "configureItemHomebrew": {
-                "name": "Medkit Configure Homebrew Permissions",
-                "hint": "Who can use the medkit homebrew configure options:"
             },
             "colorizeBuildABonus": {
                 "name": "Build A Bonus: Colorize Titlebar Icon",

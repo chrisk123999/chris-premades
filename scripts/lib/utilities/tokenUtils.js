@@ -2,6 +2,9 @@ import {genericUtils} from './genericUtils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock} = {}) {
     return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
 }
+function checkCollision(token, ray) {
+    return token.checkCollision(ray.B, {origin: ray.A, type: 'move', mode: 'any'});
+}
 function checkCover(sourceToken, targetToken, {item, displayName}) {
     let cover = MidiQOL.computeCoverBonus(sourceToken, targetToken, item);
     if (!displayName) return cover;
@@ -20,5 +23,6 @@ function checkCover(sourceToken, targetToken, {item, displayName}) {
 }
 export let tokenUtils = {
     getDistance,
-    checkCover
+    checkCover,
+    checkCollision
 };

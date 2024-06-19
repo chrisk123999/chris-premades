@@ -298,7 +298,12 @@ class EffectDirectory extends DocumentDirectory {
                     icon: '<i class="fas fa-check"></i>',
                     label: genericUtils.translate('FOLDER.Create'),
                     callback: html => {
-                        //Something here!
+                        let folderName = html.find('input[name="name"]')?.[0]?.value;
+                        if (!folderName || !folderName.length) folderName = Folder.implementation.defaultName();
+                        let color = html.find('color-picker[name="color"]')?.[0]?.value;
+                        if (!color || !color.length) color = null;
+                        let sortingMode = html.find('input[name="sorting"]:checked')?.[0]?.value ?? 'a';
+
                     }
                 }
             }

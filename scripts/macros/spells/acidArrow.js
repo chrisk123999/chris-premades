@@ -1,4 +1,4 @@
-import {animationUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {animationUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function early({trigger, workflow}) {
     genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
 }

@@ -38,14 +38,19 @@ export async function renderItemSheet(app, [elem], options) {
     if (!item) return;
     let updated = itemUtils.isUpToDate(item);
     let source = itemUtils.getSource(item);
-    if (source === 'Other') {
+    let sources = [
+        'chris-premades',
+        'gambit-premades',
+        'midi-item-community-showcase'
+    ];
+    if (!sources.includes(source) && source) {
         headerButton.style.color = 'pink';
         return;
     }
     switch (updated) {
-        case 0: headerButton.style.color = source === 'CPR' ? 'red' : 'orange'; return;
+        case 0: headerButton.style.color = source === 'chris-premades' ? 'red' : 'orange'; return;
         case 1: {
-            if (source === 'CPR') {
+            if (source === 'chris-premades') {
                 let identifier = itemUtils.getIdentifer(item);
                 if (macros[identifier].config) {
                     headerButton.style.color = 'dodgerblue';

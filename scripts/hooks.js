@@ -1,4 +1,5 @@
 import {effectInterface} from './applications/effectInterface.js';
+import {conditions} from './conditions.js';
 import {noAnimation} from './effects.js';
 import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
@@ -36,5 +37,7 @@ export function registerHooks() {
         Hooks.on('deleteActiveEffect', effectEvents.deleteActiveEffect);
         Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
         Hooks.on('updateToken', movementEvents.updateToken);
+        Hooks.on('createActiveEffect', conditions.createActiveEffect);
+        Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
     }
 }

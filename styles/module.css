@@ -102,6 +102,80 @@ form .cpr-compendiums .compendium-number {
     text-align: center
 }
 
+.cpr-medkit-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.625em;
+    padding: 1%;
+    h1 {
+        flex: 1;
+        text-shadow: none !important;
+        color: var(--button-text-color) !important;
+        border: none;
+        margin: 0;
+    }
+    p {
+        font-family: var(--font-h1);
+        font-size: var(--font-size-20);
+    }
+    i {
+        font-size: var(--font-h1-size);
+    }
+}
+
+.cpr-fieldset {
+    border-radius: 4px;
+    margin-top: 0.625em;
+}
+
+.theme-dark .cpr-fieldset {
+    border-color: var(--color-light-5);
+}
+
+.cpr-medkit-tabs {
+    border-bottom: var(--dnd5e-border-groove);
+    border-top: var(--dnd5e-border-groove);
+    padding: 2%;
+    margin: 1%;
+    margin-bottom: 10px;
+}
+
+.theme-dark .cpr-medkit-tabs {
+    border-color: var(--color-dark-1) !important;
+}
+
+.theme-light .cpr-medkit-tabs .item{
+    color: var(--dnd5e-color-olive) !important;
+}
+
+.theme-light .cpr-medkit-tabs .item.active{
+    color: var(--dnd5e-color-tan) !important;
+}
+
+.theme-dark .cpr-medkit-tabs .item {
+    color: var(--color-light-5) !important;
+}
+
+.theme-dark .cpr-medkit-tabs .item.active {
+    color: var(--color-light-3) !important;
+}
+
+.cpr-medkit-tab {
+    padding: 1%;
+    margin: 0;
+}
+
+div .cpr-row-center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 1%;
+    align-items: center;
+    text-wrap: nowrap;
+    gap: 0.625em;
+}
+
 form .cpr-medkit-config {
     display: flex;
     flex-direction: column;
@@ -113,6 +187,7 @@ form .cpr-medkit-config > div {
     flex-wrap: nowrap;
     width: 100%;
     padding: 1%;
+    align-items: center;
     > label {
         flex: 1
     }
@@ -138,6 +213,7 @@ form .devTools-info > div {
     flex-wrap: nowrap;
     width: 100%;
     padding: 1%;
+    align-items: center;
     > label {
         flex: 1
     }
@@ -152,10 +228,39 @@ form .devTools-midi > div {
     flex-wrap: nowrap;
     width: 100%;
     padding: 1%;
+    align-items: center;
     > label {
         flex: .2
     }
     > input {
         flex: 1
     }
+}
+
+[data-medkit-color="pink"] {
+    color: pink
+}
+
+[data-medkit-color="red"] {
+    color: red
+}
+
+[data-medkit-color="orange"] {
+    color: orange
+}
+
+[data-medkit-color="yellow"] {
+    color: yellow
+}
+
+[data-medkit-color="green"] {
+    color: green
+}
+
+[data-medkit-color="dodgerblue"] {
+    color: dodgerblue
+}
+
+[data-medkit-color="orchid"] {
+    color: orchid
 }

@@ -85,39 +85,51 @@ export function registerSettings() {
         category: 'mechanics'
     });
     addSetting({
-        key: 'updateItem',
+        key: 'permissionsUpdateItem',
         type: Number,
         default: 4,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.updateItem.1',
-            2: 'CHRISPREMADES.settings.updateItem.2',
-            3: 'CHRISPREMADES.settings.updateItem.3',
-            4: 'CHRISPREMADES.settings.updateItem.4'
+            1: 'CHRISPREMADES.settings.Permissions.1',
+            2: 'CHRISPREMADES.settings.Permissions.2',
+            3: 'CHRISPREMADES.settings.Permissions.3',
+            4: 'CHRISPREMADES.settings.Permissions.4'
         }
     });
     addSetting({
-        key: 'configureItem',
+        key: 'permissionsAutomateItem',
+        type: Number,
+        default: 4,
+        category: 'general',
+        choices: {
+            1: 'CHRISPREMADES.settings.Permissions.1',
+            2: 'CHRISPREMADES.settings.Permissions.2',
+            3: 'CHRISPREMADES.settings.Permissions.3',
+            4: 'CHRISPREMADES.settings.Permissions.4'
+        }
+    });
+    addSetting({
+        key: 'permissionsConfigureItem',
         type: Number,
         default: 1,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.updateItem.1',
-            2: 'CHRISPREMADES.settings.updateItem.2',
-            3: 'CHRISPREMADES.settings.updateItem.3',
-            4: 'CHRISPREMADES.settings.updateItem.4'
+            1: 'CHRISPREMADES.settings.Permissions.1',
+            2: 'CHRISPREMADES.settings.Permissions.2',
+            3: 'CHRISPREMADES.settings.Permissions.3',
+            4: 'CHRISPREMADES.settings.Permissions.4'
         }
     });
     addSetting({
-        key: 'configureItemHomebrew',
+        key: 'permissionsConfigureHomebrew',
         type: Number,
         default: 4,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.updateItem.1',
-            2: 'CHRISPREMADES.settings.updateItem.2',
-            3: 'CHRISPREMADES.settings.updateItem.3',
-            4: 'CHRISPREMADES.settings.updateItem.4'
+            1: 'CHRISPREMADES.settings.Permissions.1',
+            2: 'CHRISPREMADES.settings.Permissions.2',
+            3: 'CHRISPREMADES.settings.Permissions.3',
+            4: 'CHRISPREMADES.settings.Permissions.4'
         }
     });
     addSetting({

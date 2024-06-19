@@ -80,33 +80,6 @@ async function syntheticItem(itemData, actor) {
     item.prepareFinalAttributes();
     return item;
 }
-async function medkitItem(oldItem, newItem, {source, version, identifier} = {}) {
-    let oldItemData = genericUtils.duplicate(oldItem.toObject());
-    let newItemData = genericUtils.duplicate(newItem.toObject());
-    let itemType = oldItem.type;
-    newItemData.name = oldItemData.name;
-    newItemData.system.description = oldItemData.system.description;
-    newItemData.system.chatFlavor = oldItemData.system.chatFlavor;
-    newItemData.system.uses = oldItemData.system.uses;
-    if (itemType === 'spell') newItemData.system.preparation = oldItemData.system.preparation;
-    if (itemType != 'spell' && itemType != 'feat') {
-        newItemData.system.attunement = oldItemData.system.attunement;
-        newItemData.system.equipped = oldItemData.system.equipped;
-    }
-    if (oldItemData.system.quantity) newItemData.system.quantity;
-    let ccssSection = oldItemData.flags['custom-character-sheet-sections']?.sectionName;
-    if (ccssSection) genericUtils.setProperty(newItemData, 'flags.custom-character-sheet-sections.sectionName', ccssSection);
-    if (oldItemData.flags.ddbimporter) newItemData.flags.ddbimporter = oldItemData.flags.ddbimporter;
-    if (oldItemData.flags['tidy5e-sheet']) newItemData.flags['tidy5e-sheet'] = oldItemData.flags['tidy5e-sheet'];
-    if (source) genericUtils.setProperty(newItemData, 'flags.chris-premades.info.source', source);
-    if (version) genericUtils.setProperty(newItemData, 'flags.chris-premades.info.version', version);
-    if (identifier) genericUtils.setProperty(newItemData, 'flags.chris-premades.info.identifier', identifier);
-    let config = oldItemData.flags['chris-premades']?.config;
-    if (config) genericUtils.setProperty(newItemData, 'flags.chris-premades.config', config);
-    if (CONFIG.DND5E.defaultArtwork.Item[itemType] != oldItemData.img) newItemData.img = oldItemData.img;
-    if (oldItem.effects.size) await oldItem.deleteEmbeddedDocuments('ActiveEffect', oldItem.effects.map(i => i.id));
-    await oldItem.update(newItemData);
-}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -118,6 +91,5 @@ export let itemUtils = {
     getVersion,
     getSource,
     isUpToDate,
-    syntheticItem,
-    medkitItem
+    syntheticItem
 };
