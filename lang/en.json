@@ -183,6 +183,12 @@
         "macros": {
             "hex": {
                 "hexed": "Hexed"
+            },
+            "brandingSmite": {
+                "branded": "Branding Smite: Branded"
+            },
+            "searingSmite": {
+                "fire": "Searing Smite: Fire"
             }
         },
         "section": {
@@ -194,6 +200,9 @@
             "threeQuarters": "Three-Quarters Cover",
             "full": "Full Cover",
             "unknown": "Unknown Cover"
+        },
+        "movement": {
+            "unableToBeMoved": "Target is unable to be moved!"
         },
         "effectInterface": {
             "item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!",

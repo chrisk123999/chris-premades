@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae} = {}) {
+async function createEffect(actor, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
     if (vae) {
@@ -42,11 +42,13 @@ async function createEffect(actor, effectData, {concentrationItem, parentEntity,
         effects = await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
         if (concentrationItem) {
             let concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
-            if (concentrationEffect) addDependents(concentrationEffect, effects);
+            if (concentrationEffect) await addDependents(concentrationEffect, effects);
+            if (concentrationEffect && interdependent) await addDependents(effects[0], [concentrationEffect]);
         }
         if (parentEntity) {
             console.log(parentEntity);
             await addDependents(parentEntity, effects);
+            if (interdependent) await addDependents(effects[0], [parentEntity]);
         }
     } else {
         effects = await socket.executeAsGM('createEffect', effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});

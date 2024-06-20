@@ -313,7 +313,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await this.updateContext(item);
     }
     static async confirm(event, target) {
-        Medkit._apply(event, target);
+        await Medkit._apply.bind(this)(event, target);
         this.close();
     }
     // Add results to the object to be handled elsewhere

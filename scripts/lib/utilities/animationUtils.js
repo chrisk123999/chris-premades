@@ -1,4 +1,4 @@
-import {summonEffects} from '../../macros/animations/summonEffects';
+import {summonEffects} from '../../macros/animations/summonEffects.js';
 function jb2aCheck() {
     let patreon = game.modules.get('jb2a_patreon')?.active;
     let free = game.modules.get('JB2A_DnD5e')?.active;

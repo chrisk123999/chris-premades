@@ -2,7 +2,17 @@ import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
 function getSaveDC(item) {
-    return item.getSaveDC();
+    if (item.hasSave) return item.getSaveDC();
+    let spellDC;
+    let scaling = item.system?.save?.scaling;
+    if (scaling === 'spell') {
+        spellDC = item.actor?.system?.attributes?.spelldc;
+    } else if (scaling !== 'flat') {
+        spellDC = item.actor?.system?.abilities?.[scaling]?.dc;
+    } else {
+        spellDC = item.system?.save?.dc;
+    }
+    return spellDC ?? 10;
 }
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
