@@ -1,4 +1,4 @@
-import {animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../utils.js'
+import {animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../utils.js';
 
 async function hit({workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -195,4 +195,4 @@ export let armorOfAgathys = {
             priority: 50
         }
     ]
-}
+};
