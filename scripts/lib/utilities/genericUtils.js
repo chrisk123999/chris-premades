@@ -68,6 +68,9 @@ function checkMedkitPermission(permission, userId) {
     if (userRole >= neededRole) return true;
     else return false;
 }
+function notify(message, type, {localize = true}) {
+    ui.notifications[type](message, {localize: localize});
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -82,5 +85,6 @@ export let genericUtils = {
     decimalToFraction,
     isNewerVersion,
     randomID,
-    checkMedkitPermission
+    checkMedkitPermission,
+    notify
 };

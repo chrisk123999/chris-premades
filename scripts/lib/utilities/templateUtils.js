@@ -57,8 +57,8 @@ function findGrids(A, B, template) {
     let locations = new Set();
     let scene = template.parent;
     if (!scene) return locations;
-    let a = scene.grid.getCenter(A.x, A.y);
-    let b = scene.grid.getCenter(B.x, B.y);
+    let a = scene.grid.getCenterPoint(A.x, A.y);
+    let b = scene.grid.getCenterPoint(B.x, B.y);
     let ray = new Ray({x: a[0], y: a[1]}, {x: b[0], y: b[1]});
     if (!ray.distance) return locations;
     let gridCenter = scene.grid.size / 2;

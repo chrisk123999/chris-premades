@@ -90,6 +90,20 @@ async function syntheticItem(itemData, actor) {
     item.prepareFinalAttributes();
     return item;
 }
+async function enchantItem(item, effectData, {effects = [], items = [], concentrationItem, parentEntity, identifier, vae, interdependent}) {
+    genericUtils.setProperty(effectData, 'flags.dnd5e.type', 'enchantment');
+    genericUtils.setProperty(effectData, 'flags.dnd5e.enchantment', {
+        level: {
+            min: null,
+            max: null
+        },
+        riders: {
+            effect: effects,
+            item: items
+        }
+    });
+    await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent});
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -101,5 +115,6 @@ export let itemUtils = {
     getVersion,
     getSource,
     isUpToDate,
-    syntheticItem
+    syntheticItem,
+    enchantItem
 };
