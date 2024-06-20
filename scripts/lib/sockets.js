@@ -70,6 +70,9 @@ async function addFavorites(actorUuid, itemUuids) {
 async function dialog(...options) {
     return await new DialogApp.dialog(...options);
 }
+async function rollItem(item, config, options) {
+    return await MidiQOL.completeItemUse(item, config, options);
+}
 let sockets = [
     createEffect,
     deleteEntity,
@@ -80,7 +83,8 @@ let sockets = [
     createEmbeddedDocuments,
     addFavorites,
     setFlag,
-    dialog
+    dialog,
+    rollItem
 ];
 export let socket;
 export function registerSockets() {

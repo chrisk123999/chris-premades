@@ -284,7 +284,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     ui.notifications.error('Error with Midi Actor field, see console');
                     console.error(error);
                 }
-                if (value) await item.setFlag('chris-premades', 'macros.midi.item', value);
+                if (value) await item.setFlag('chris-premades', 'macros.midi.actor', value);
             }
         }
         let category = this.context?.category;
