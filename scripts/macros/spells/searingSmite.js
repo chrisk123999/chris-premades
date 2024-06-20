@@ -1,5 +1,4 @@
-import { constants, effectUtils, genericUtils, itemUtils, workflowUtils } from "../../utils.js";
-
+import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -23,7 +22,6 @@ async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.system.actionType !== 'mwak') return;
@@ -52,7 +50,6 @@ async function damage({workflow}) {
     };
     await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {parentEntity: effect, interdependent: true, identifier: 'searingSmiteBranded'});
 }
-
 export let searingSmite = {
     name: 'Searing Smite',
     version: '0.12.0',
@@ -66,7 +63,6 @@ export let searingSmite = {
         ]
     }
 };
-
 export let searingSmiteDamage = {
     name: 'Searing Smite: Damage',
     version: searingSmite.version,

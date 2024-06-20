@@ -1,5 +1,4 @@
-import { actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils } from "../../utils.js";
-
+import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -15,13 +14,12 @@ async function use({workflow}) {
                 }
             }
         }
-    }
+    };
     effectUtils.addMacro(effectData, 'midi.actor', ['thunderousSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'thunderousSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.system.actionType !== 'mwak') return;
@@ -46,7 +44,6 @@ async function damage({workflow}) {
     }
     await genericUtils.remove(effect);
 }
-
 export let thunderousSmite = {
     name: 'Thunderous Smite',
     version: '0.12.0',
@@ -60,7 +57,6 @@ export let thunderousSmite = {
         ]
     }
 };
-
 export let thunderousSmiteDamage = {
     name: 'Thunderous Smite: Damage',
     version: thunderousSmite.version,
@@ -73,4 +69,4 @@ export let thunderousSmiteDamage = {
             }
         ]
     }
-}
+};

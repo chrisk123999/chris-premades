@@ -1,5 +1,4 @@
-import { compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils } from "../../utils.js";
-
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -15,13 +14,12 @@ async function use({workflow}) {
                 }
             }
         }
-    }
+    };
     effectUtils.addMacro(effectData, 'midi.actor', ['staggeringSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'staggeringSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.system.actionType !== 'mwak') return;
@@ -39,7 +37,6 @@ async function damage({workflow}) {
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.hitTargets.first()]);
     await genericUtils.remove(effect);
 }
-
 export let staggeringSmite = {
     name: 'Staggering Smite',
     version: '0.12.0',
@@ -53,7 +50,6 @@ export let staggeringSmite = {
         ]
     }
 };
-
 export let staggeringSmiteDamage = {
     name: 'Staggering Smite: Damage',
     version: staggeringSmite.version,
@@ -66,4 +62,4 @@ export let staggeringSmiteDamage = {
             }
         ]
     }
-}
+};

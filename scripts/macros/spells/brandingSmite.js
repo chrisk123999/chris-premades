@@ -1,5 +1,4 @@
-import { constants, effectUtils, genericUtils, workflowUtils } from "../../utils.js";
-
+import {constants, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -22,7 +21,6 @@ async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
@@ -56,7 +54,6 @@ async function damage({workflow}) {
     };
     await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {parentEntity: effect, interdependent: true, identifier: 'brandingSmiteBranded'});
 }
-
 export let brandingSmite = {
     name: 'Branding Smite',
     version: '0.12.0',
@@ -70,7 +67,6 @@ export let brandingSmite = {
         ]
     }
 };
-
 export let brandingSmiteDamage = {
     name: 'Branding Smite: Damage',
     version: brandingSmite.version,

@@ -1,5 +1,4 @@
-import { compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils } from "../../utils.js";
-
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -16,7 +15,7 @@ async function use({workflow}) {
                 }
             }
         }
-    }
+    };
     effectUtils.addMacro(effectData, 'midi.actor', ['blindingSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'blindingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -53,7 +52,6 @@ async function damage({workflow}) {
     await effectUtils.addDependents(effect, [targetEffect]);
     await effectUtils.addDependents(targetEffect, [effect]);
 }
-
 export let blindingSmite = {
     name: 'Blinding Smite',
     version: '0.12.0',
@@ -67,7 +65,6 @@ export let blindingSmite = {
         ]
     }
 };
-
 export let blindingSmiteDamage = {
     name: 'Blinding Smite: Damage',
     version: blindingSmite.version,
@@ -80,4 +77,4 @@ export let blindingSmiteDamage = {
             }
         ]
     }
-}
+};

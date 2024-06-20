@@ -1,5 +1,4 @@
-import { compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils } from "../../utils.js";
-
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -16,13 +15,12 @@ async function use({workflow}) {
                 }
             }
         }
-    }
+    };
     effectUtils.addMacro(effectData, 'midi.actor', ['wrathfulSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'wrathfulSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.system.actionType !== 'mwak') return;
@@ -53,7 +51,6 @@ async function damage({workflow}) {
     await effectUtils.addDependents(effect, [targetEffect]);
     await effectUtils.addDependents(targetEffect, [effect]);
 }
-
 export let wrathfulSmite = {
     name: 'Wrathful Smite',
     version: '0.12.0',
@@ -67,7 +64,6 @@ export let wrathfulSmite = {
         ]
     }
 };
-
 export let wrathfulSmiteDamage = {
     name: 'Wrathful Smite: Damage',
     version: wrathfulSmite.version,
@@ -80,4 +76,4 @@ export let wrathfulSmiteDamage = {
             }
         ]
     }
-}
+};
