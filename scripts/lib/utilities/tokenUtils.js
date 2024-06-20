@@ -53,10 +53,28 @@ async function pushToken(sourceToken, targetToken, distance) {
     let ray = new Ray(sourceToken.center, targetToken.center);
     await moveTokenAlongRay(targetToken, ray, distance);
 }
+function findNearby(tokenDoc, range, disposition, {includeIncapacitated=false, includeToken=false}) {
+    let dispositionValue;
+    switch (disposition) {
+        case 'ally':
+            dispositionValue = 1;
+            break;
+        case 'neutral':
+            dispositionValue = 0;
+            break;
+        case 'enemy':
+            dispositionValue = -1;
+            break;
+        default:
+            dispositionValue = null;
+    }
+    return MidiQOL.findNearby(dispositionValue, tokenDoc, range, {includeIncapacitated, includeToken}).filter(i => !i.document.hidden);
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
     checkCollision,
     moveTokenAlongRay,
-    pushToken
+    pushToken,
+    findNearby
 };
