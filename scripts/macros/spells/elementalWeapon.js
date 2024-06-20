@@ -1,8 +1,8 @@
-import {dialogUtils, genericUtils, itemUtils} from '../../utils.js';
-
+import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let validTypes = itemUtils.getConfig(workflow.item, 'damageTypes');
+    let formula = itemUtils.getConfig(workflow.item, 'formula');
     let buttons = validTypes.map(i => ([CONFIG.DND5E.damageTypes[i].label, Object.keys(CONFIG.DND5E.damageTypes).find(j => j === i)]));
     if (!buttons.length) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.elementalWeapon.selectDamageType', buttons);
@@ -30,34 +30,40 @@ async function use({trigger, workflow}) {
         }
         let effectData = {
             name: workflow.item.name,
+            icon: workflow.item.img,
+            origin: workflow.item,
+            duration: {
+                seconds: 3600 * workflow.item.system.duration.value
+            },
             changes: [
                 {
                     key: 'name',
                     mode: 5,
-                    value: selectedWeapon.name + '(' + CONFIG.DND5E.damageTypes[selection].label + ')',
+                    value: selectedWeapon.name + ' (' + CONFIG.DND5E.damageTypes[selection].label + ')',
                     priority: 20
                 },
                 {
                     key: 'system.properties',
-                    mode: 1,
+                    mode: 2,
                     value: 'mgc',
-                    priority: 20,
+                    priority: 20
                 },
                 {
                     key: 'system.magicalBonus',
                     mode: 5,
                     value: bonus,
-                    priority: 20,
+                    priority: 20
                 },
                 {
                     key: 'system.damage.parts',
-                    mode: 1,
-                    value: JSON.stringify([['1d4[' + selection + ']'], selection])
+                    mode: 2,
+                    value: JSON.stringify([[formula + '[' + selection + ']', selection]]),
+                    priority: 20
                 }
             ]
         };
-
-        //continue here
+        console.log(selectedWeapon);
+        await itemUtils.enchantItem(selectedWeapon, effectData, {concentrationItem: workflow.item});
     }));
 }
 export let elementalWeapon = {

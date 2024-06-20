@@ -17,9 +17,9 @@ function renderItemSheet(app, [elem], options) {
     } else if (transferEffect && passiveEffect && !enchantmentEffect) {
         color = 'orchid';
     } else if (passiveEffect && !transferEffect && enchantmentEffect) {
-        color = 'pink';
-    } else if (!passiveEffect && !passiveEffect && enchantmentEffect) {
         color = 'orange';
+    } else if (!passiveEffect && !passiveEffect && enchantmentEffect) {
+        color = 'pink';
     } else if (transferEffect && passiveEffect && enchantmentEffect) {
         color = 'brown';
     } else return;

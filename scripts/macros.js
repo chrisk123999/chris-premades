@@ -8,3 +8,4 @@ export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js'
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
+export {elementalWeapon} from './macros/spells/elementalWeapon.js';

@@ -130,7 +130,7 @@ async function confirm(title, content, options = {userId: game.userId}) {
     } else selection = await DialogApp.dialog(title, content, undefined, 'yesNo');
     return selection.buttons;
 }
-async function selectDocumentDialog(title, content, documents, options = {useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {
+async function selectDocumentDialog(title, content, documents, options = {displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.userId}) {
     if (options?.sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -145,19 +145,25 @@ async function selectDocumentDialog(title, content, documents, options = {useUui
         ['button', [], {displayAsRows: true}]
     ];
     for (let i of documents) {
+        console.log(i);
         inputs[0][1].push({
-            label: i.name,
-            name: options?.useUuids ? i.actor.uuid : i,
+            label: i.name + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+            name: i.uuid ?? i.actor.uuid,
             options: {
-                image: i.image + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+                image: i.img ?? i.icon,
                 tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
             }
         });
     }
-    let height = (inputs[0][1].length * 56 + 46);
-    if (inputs[0][1].length > 14 ) height = 850;
-    let result = await DialogApp.dialog(title, content, inputs, undefined, {height: height});
-    return result.buttons;
+    //let height = (inputs[0][1].length * 56 + 46);
+    //if (inputs[0][1].length > 14 ) height = 850;
+    let result;
+    if (options.userId != game.userId) {
+        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined);
+    } else result = await DialogApp.dialog(title, content, inputs, undefined);
+    result = result.buttons;
+    if (result) return await fromUuid(result);
+    else return result;
 }
 async function selectDocumentsDialog(title, content, documents, options = {max: 5, useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {
     if (options?.sortAlphabetical) {

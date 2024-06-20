@@ -301,7 +301,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if ((currentSource && this.context.item?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
             let selectedSource = this.context.item?.options.find(i => i.isSelected);
             let sourceItem = await fromUuid(selectedSource.value);
-            if (this.context.item?.options.find(i => i.isSelected).value === null) {
+            if (this.context.item?.options.find(i => i.isSelected).value === null && currentSource) {
                 await item.update({'flags.-=chris-premades': null});
             }
             if (sourceItem) {
@@ -315,10 +315,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async confirm(event, target) {
         await Medkit._apply.bind(this)(event, target);
         this.close();
-    }
-    // Add results to the object to be handled elsewhere
-    static async formHandler(event, form, formData) {
-        this.results = foundry.utils.expandObject(formData.object);
     }
     get title() {
         return this.windowTitle;
