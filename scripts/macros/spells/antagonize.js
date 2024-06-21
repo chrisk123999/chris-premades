@@ -1,14 +1,15 @@
 import {dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
+
 async function use({workflow}) {
     if (!workflow.failedSaves.size) return;
     let targetToken = workflow.targets.first();
     // TODO: ensure correct reaction grab
-    let reaction = effectUtils.getEffectByIdentifier(targetToken.actor, 'reaction');
+    let usedReaction = MidiQOL.hasUsedReaction(targetToken.actor);
     let nearbyTargets;
-    if (!reaction) {
+    if (!usedReaction) {
         nearbyTargets = tokenUtils.findNearby(targetToken, 5, 'ally', true);
     }
-    if (reaction || !nearbyTargets.length) {
+    if (usedReaction || !nearbyTargets.length) {
         let effectData = {
             name: workflow.item.name,
             icon: workflow.item.img,

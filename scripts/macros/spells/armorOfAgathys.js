@@ -1,12 +1,32 @@
-import {animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, workflowUtils} from '../../utils.js'
+import {actorUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
+async function use({workflow}) {
+    let effectData = {
+        name: workflow.item.name,
+        icon: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds: 3600 * workflow.item.system.duration.value
+        },
+        flags: {
+            'chris-premades': {
+                armorOfAgathys: {
+                    damage: workflow.damageTotal,
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                }
+            }
+        }
+    };
+    effectUtils.addMacro(effectData, 'midi.actor', ['armorOfAgathysArmor']);
+    effectUtils.addMacro(effectData, 'effect', ['armorOfAgathysArmor']);
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'armorOfAgathys'});
+}
 async function hit({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
     let targetToken = workflow.hitTargets.first();
     let effect = effectUtils.getEffectByIdentifier(targetToken.actor, 'armorOfAgathys');
     if (!effect) return;
-    let damage = effect.flags['midi-qol'].castData.castLevel * 5;
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Armor of Agathys: Reflect', {object: true});
@@ -14,9 +34,10 @@ async function hit({workflow}) {
         errors.missingPackItem();
         return;
     }
-    let damageType = 'cold'; // TODO: customize?
+    let damage = effect.flags['chris-premades'].armorOfAgathys.damage;
+    let damageType = effect.flags['chris-premades'].armorOfAgathys.damageType;
     featureData.system.damage.parts[0] = [
-        damage, // TODO: add damage type flavor?
+        damage + `[${damageType}]`,
         damageType
     ];
     await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
@@ -51,18 +72,9 @@ async function hit({workflow}) {
 
         .play();
 }
-async function use({workflow}) {
-    let effect = workflow.actor.effects.getName(workflow.item.name);
-    if (!effect) return;
-    let token = workflow.token;
-    // TODO: will it auto-apply macro.effects & identifier at some point?
-    await genericUtils.update(effect, {
-        'flags.chris-premades': {
-            'identifier': 'armorOfAgathys',
-            'macros.effect': ['armorOfAgathys'],
-            'armorOfAgathys.tokenUuid': token.document.uuid
-        }
-    });
+async function start({entity}) {
+    let token = actorUtils.getFirstToken(entity.parent);
+    if (!token) return;
     if (animationUtils.jb2aCheck() !== 'patreon') return;
     new Sequence()
         .effect()
@@ -152,10 +164,8 @@ async function use({workflow}) {
         .play();
 }
 async function end({entity}) {
-    let tokenUuid = entity.flags?.['chris-premades']?.armorOfAgathys?.tokenUuid;
-    let tokenDoc = await fromUuid(tokenUuid);
-    if (!tokenDoc) return;
-    let token = tokenDoc.object;
+    let token = actorUtils.getFirstToken(entity.parent);
+    if (!token) return;
     if (animationUtils.jb2aCheck() !== 'patreon') return;
     Sequencer.EffectManager.endEffects({name: 'Armor of Agathys', object: token});
     new Sequence()
@@ -179,7 +189,25 @@ export let armorOfAgathys = {
                 macro: use,
                 priority: 50
             }
-        ],
+        ]
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.config.damageType',
+            type: 'select',
+            default: 'cold',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        }
+    ]
+};
+
+export let armorOfAgathysArmor = {
+    name: 'Armor of Agathys: Armor',
+    version: armorOfAgathys.version,
+    midi: {
         actor: [
             {
                 pass: 'onHit',
@@ -190,9 +218,13 @@ export let armorOfAgathys = {
     },
     effect: [
         {
+            pass: 'created',
+            macro: start,
+            priority: 50
+        }, {
             pass: 'deleted',
             macro: end,
             priority: 50
         }
     ]
-}
+};

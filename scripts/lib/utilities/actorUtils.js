@@ -16,7 +16,7 @@ async function addFavorites(actor, items) {
 }
 function getFirstToken(actor) {
     let tokens = actor.getActiveTokens();
-    if (tokens.legth) return tokens[0];
+    if (tokens.length) return tokens[0];
 }
 function getLevelOrCR(actor) {
     return actor.type === 'character' ? actor.system.details.level : actor.system.details.cr ?? 0;
