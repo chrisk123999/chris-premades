@@ -1,5 +1,4 @@
-import {dialogUtils, effectUtils, socketUtils, tokenUtils} from '../../utils.js';
-
+import {dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.failedSaves.size) return;
     let targetToken = workflow.targets.first();
@@ -59,7 +58,6 @@ async function use({workflow}) {
         await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(target).id);
     }
 }
-
 export let antagonize = {
     name: 'Antagonize',
     version: '0.12.0',
@@ -72,4 +70,4 @@ export let antagonize = {
             }
         ]
     }
-}
+};
