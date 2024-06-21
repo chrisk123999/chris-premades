@@ -41,6 +41,9 @@ function decimalToFraction(decimal) {
 function getCPRSetting(key) {
     return game.settings.get('chris-premades', key);
 }
+async function setCPRSetting(key, value) {
+    return game.settings.set('chris-premades', key, value);
+}
 function isNewerVersion(v1, v0) {
     return foundry.utils.isNewerVersion(v1, v0);
 }
@@ -86,5 +89,6 @@ export let genericUtils = {
     isNewerVersion,
     randomID,
     checkMedkitPermission,
-    notify
+    notify,
+    setCPRSetting
 };

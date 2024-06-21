@@ -197,7 +197,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     };
     static PARTS = {
         form: {
-            template: 'modules/chris-premades/templates/dialogApp.hbs'
+            template: 'modules/chris-premades/templates/dialogApp.hbs',
+            scrollable: ['']
         },
         footer: {
             template: 'modules/chris-premades/templates/form-footer.hbs'
@@ -229,7 +230,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         await this.mergeResults(target.name);
     }
     async mergeResults(name) {
-        if (name == false) {
+        if (name === 'false') {
             this.submit(false);
             return false;
         }

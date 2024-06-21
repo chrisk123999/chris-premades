@@ -2,6 +2,7 @@ import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
+import {vae} from './integrations/vae.js';
 import {constants} from './utils.js';
 function addSetting(options) {
     let setting = {
@@ -10,7 +11,8 @@ function addSetting(options) {
         type: options.type,
         default: options.default,
         onChange: options.onChange,
-        choices: options.choices
+        choices: options.choices,
+        reloadRequired: options.reloadRequired
     };
     game.settings.register('chris-premades', options.key, setting);
     settings.addMenuSetting(options.key, options.category);
@@ -180,6 +182,88 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'development',
+    });
+    addSetting({
+        key: 'vaeDescription',
+        type: Boolean,
+        default: true,
+        category: 'integration',
+        onChange: value => {
+            if (value) {
+                Hooks.on('preCreateActiveEffect', vae.preCreateActiveEffect);
+            } else {
+                Hooks.off('preCreateActiveEffect', vae.preCreateActiveEffect);
+            }
+        }
+    });
+    addSetting({
+        key: 'vaeDescriptionNPC',
+        type: Boolean,
+        default: true,
+        category: 'integration'
+    });
+    addSetting({
+        key: 'vaeButton',
+        type: Boolean,
+        default: true,
+        category: 'integration',
+        onChange: value => {
+
+        }
+    });
+    addSetting({
+        key: 'statusEffectIcons',
+        type: Object,
+        default: {
+            dead: 'icons/svg/skull.svg',
+            bleeding: 'modules/chris-premades/images/wounded.svg',
+            blinded: 'modules/chris-premades/images/blinded.svg',
+            burrowing: 'systems/dnd5e/icons/svg/statuses/burrowing.svg',
+            charmed: 'modules/chris-premades/images/charmed.svg',
+            concentrating: 'modules/chris-premades/images/concentrating.svg',
+            cursed: 'systems/dnd5e/icons/svg/statuses/cursed.svg',
+            deafened: 'modules/chris-premades/images/deafened.svg',
+            diseased: 'systems/dnd5e/icons/svg/statuses/diseased.svg',
+            dodging: 'modules/chris-premades/images/dodging.svg',
+            encumbered: 'systems/dnd5e/icons/svg/statuses/encumbered.svg',
+            ethereal: 'systems/dnd5e/icons/svg/statuses/ethereal.svg',
+            exceedingCarryingCapacity: 'systems/dnd5e/icons/svg/statuses/exceeding-carrying-capacity.svg',
+            exhaustion: 'systems/dnd5e/icons/svg/statuses/exhaustion.svg',
+            flying: 'systems/dnd5e/icons/svg/statuses/flying.svg',
+            frightened: 'modules/chris-premades/images/frightened.svg',
+            grappled: 'modules/chris-premades/images/grappled.svg',
+            heavilyEncumbered: 'systems/dnd5e/icons/svg/statuses/heavily-encumbered.svg',
+            hiding: 'systems/dnd5e/icons/svg/statuses/hiding.svg',
+            hovering: 'systems/dnd5e/icons/svg/statuses/hovering.svg',
+            incapacitated: 'modules/chris-premades/images/incapacitated.svg',
+            invisible: 'modules/chris-premades/images/invisible.svg',
+            marked: 'systems/dnd5e/icons/svg/statuses/marked.svg',
+            paralyzed: 'modules/chris-premades/images/paralyzed.svg',
+            petrified: 'modules/chris-premades/images/petrified.svg',
+            poisoned: 'modules/chris-premades/images/poisoned.svg',
+            prone: 'modules/chris-premades/images/prone.svg',
+            restrained: 'modules/chris-premades/images/restrained.svg',
+            silenced: 'systems/dnd5e/icons/svg/statuses/silenced.svg',
+            sleeping: 'systems/dnd5e/icons/svg/statuses/sleeping.svg',
+            stable: 'systems/dnd5e/icons/svg/statuses/stable.svg',
+            stunned: 'modules/chris-premades/images/stunned.svg',
+            surprised: 'systems/dnd5e/icons/svg/statuses/surprised.svg',
+            transformed: 'systems/dnd5e/icons/svg/statuses/transformed.svg',
+            unconscious: 'icons/svg/unconscious.svg',
+        },
+        category: 'interface'
+    });
+    addSetting({
+        key: 'replaceStatusEffectIcons',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
+    addSetting({
+        key: 'disableNonConditionStatusEffects',
+        type: Boolean,
+        default: false,
+        category: 'interface'
     });
 }
 export function registerMenus() {

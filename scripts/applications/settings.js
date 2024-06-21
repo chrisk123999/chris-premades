@@ -1,9 +1,10 @@
+import {conditions} from '../conditions.js';
 import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
-    compendiumPriority: 'CHRISPREMADES.Generic.Configure'
+    statusEffectIcons: 'CHRISPREMADES.Generic.Configure'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -72,9 +73,8 @@ class settingsBase extends FormApplication {
 }
 export async function settingButton(id) {
     switch(id) {
-        case 'additionalCompendiums': 
-            new AdditionalCompendiums().render(true);
-            break;
+        case 'additionalCompendiums': new AdditionalCompendiums().render(true); break;
+        case 'statusEffectIcons': await conditions.configureStatusEffectIcons(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

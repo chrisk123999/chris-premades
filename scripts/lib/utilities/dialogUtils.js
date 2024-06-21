@@ -145,7 +145,6 @@ async function selectDocumentDialog(title, content, documents, options = {displa
         ['button', [], {displayAsRows: true}]
     ];
     for (let i of documents) {
-        console.log(i);
         inputs[0][1].push({
             label: i.name + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             name: i.uuid ?? i.actor.uuid,

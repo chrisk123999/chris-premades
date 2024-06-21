@@ -7,6 +7,7 @@ import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
+import {vae} from './integrations/vae.js';
 import {createHeaderButton, renderItemSheet} from './titlebar.js';
 import {genericUtils} from './utils.js';
 export function registerHooks() {
@@ -30,6 +31,7 @@ export function registerHooks() {
     }
     if (genericUtils.getCPRSetting('babonusOverlappingEffects')) Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
     if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
+    if (genericUtils.getCPRSetting('vaeDescription')) Hooks.on('preCreateActiveEffect', vae.preCreateActiveEffect);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);

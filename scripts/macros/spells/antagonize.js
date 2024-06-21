@@ -1,5 +1,4 @@
 import {dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
-
 async function use({workflow}) {
     if (!workflow.failedSaves.size) return;
     let targetToken = workflow.targets.first();
@@ -21,7 +20,7 @@ async function use({workflow}) {
                 {
                     key: 'flags.midi-qol.disadvantage.attack.all',
                     mode: 0,
-                    value: '1',
+                    value: 1,
                     priority: 20
                 }
             ],

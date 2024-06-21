@@ -1,5 +1,4 @@
 import {actorUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -12,7 +11,8 @@ async function use({workflow}) {
             'chris-premades': {
                 armorOfAgathys: {
                     damage: workflow.damageTotal,
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
+                    playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
                 }
             }
         }
@@ -37,10 +37,12 @@ async function hit({workflow}) {
     let damage = effect.flags['chris-premades'].armorOfAgathys.damage;
     let damageType = effect.flags['chris-premades'].armorOfAgathys.damageType;
     featureData.system.damage.parts[0] = [
-        damage + `[${damageType}]`,
+        damage + '[' + damageType + ']',
         damageType
     ];
     await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
+    let playAnimation = effect.flags['chris-premades'].armorOfAgathys.playAnimation;
+    if (!playAnimation) return;
     //Animations by: eskiemoh
     new Sequence()
         .effect()
@@ -73,6 +75,8 @@ async function hit({workflow}) {
         .play();
 }
 async function start({entity}) {
+    let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
+    if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
     if (animationUtils.jb2aCheck() !== 'patreon') return;
@@ -164,6 +168,8 @@ async function start({entity}) {
         .play();
 }
 async function end({entity}) {
+    let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
+    if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
     if (animationUtils.jb2aCheck() !== 'patreon') return;
@@ -200,10 +206,16 @@ export let armorOfAgathys = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
+        },
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.config.playAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
         }
     ]
 };
-
 export let armorOfAgathysArmor = {
     name: 'Armor of Agathys: Armor',
     version: armorOfAgathys.version,

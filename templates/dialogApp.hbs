@@ -1,4 +1,4 @@
-<div id="dialog-app" class="dialog-content better-dialog">
+<div id="dialog-app" class="dialog-content better-dialog scrollable">
     <p class="content"> {{content}} </p>
     {{#each inputs}}
         <div class="form-group">
@@ -169,7 +169,6 @@
                 <div class="row-display">
                     {{#each options}}
                         <label for="[{{@../index}}, {{@index}}]"><p class="label-text">{{localize label}}</p></label>
-                        <div></div>
                         <file-picker id="[{{@../index}}, {{@index}}]" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
                     {{/each}}
                 </div>

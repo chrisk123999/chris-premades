@@ -11,6 +11,7 @@ import {effectInterface} from './applications/effectInterface.js';
 import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
 import {effectHud} from './applications/effectHud.js';
+import {conditions} from './conditions.js';
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
@@ -22,6 +23,8 @@ Hooks.once('init', () => {
 });
 Hooks.once('ready', () => {
     registerHooks();
+    if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
+    if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);
         setupJournal();
