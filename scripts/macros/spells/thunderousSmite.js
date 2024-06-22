@@ -39,7 +39,7 @@ async function damage({workflow}) {
         let targetToken = workflow.targets.first();
         await tokenUtils.pushToken(workflow.token, targetToken, 10);
         if (!actorUtils.checkTrait(targetToken.actor, 'ci', 'prone')) {
-            // TODO: make prone
+            effectUtils.applyConditions(targetToken.actor, ['prone']);
         }
     }
     await genericUtils.remove(effect);

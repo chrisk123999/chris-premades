@@ -70,11 +70,15 @@ function findNearby(tokenDoc, range, disposition, {includeIncapacitated=false, i
     }
     return MidiQOL.findNearby(dispositionValue, tokenDoc, range, {includeIncapacitated, includeToken}).filter(i => !i.document.hidden);
 }
+function checkIncapacitated(token, logResult=false) {
+    return MidiQOL.checkIncapacitated(token, logResult);
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
     checkCollision,
     moveTokenAlongRay,
     pushToken,
-    findNearby
+    findNearby,
+    checkIncapacitated
 };

@@ -485,14 +485,28 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         this.render(true);
     }
     _onRender(context, options) {
-        //let imageElements = this.element.querySelectorAll('.label-image');
-        //imageElements[0].addEventListener('click', async (e) => {
-        //console.log(e.target);
-        // Sensible way to get the parent button's 'name'
-        // let id = ^
-        // let tok = canvas.tokens.get(id);
-        // if (tok) await canvas.ping(tok.document.object.center);
-        //});
+        let imageElements = this.element.querySelectorAll('.label-image');
+        for (let currElem of imageElements) {
+            let [inputIndex, optionIndex] = JSON.parse(currElem.parentElement.getAttribute('for'));
+            let currId = context.inputs[inputIndex].options[optionIndex].name;
+            currElem.addEventListener('click', async function() {
+                let targetToken = canvas.tokens.get(currId);
+                if (!targetToken) return;
+                await canvas.ping(targetToken.center);
+            });
+            currElem.addEventListener('mouseover', function() {
+                let targetToken = canvas.tokens.get(currId);
+                if (!targetToken) return;
+                targetToken.hover = true;
+                targetToken.refresh();
+            });
+            currElem.addEventListener('mouseout', function() {
+                let targetToken = canvas.tokens.get(currId);
+                if (!targetToken) return;
+                targetToken.hover = false;
+                targetToken.refresh();
+            });
+        }
     }
     /**
      * @override Was getting an error without this, only copy-pasted parts from the super, presumably out of HandlebarsMixin
