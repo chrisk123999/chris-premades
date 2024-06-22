@@ -12,13 +12,13 @@ async function use({trigger, workflow}) {
         let weapons = token.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
         let selectedWeapon;
         if (!weapons.length) {
-            genericUtils.notify('CHRISPREMADES.elementalWeapon.noWeapons', 'warn');
+            genericUtils.notify('CHRISPREMADES.macros.elementalWeapon.noWeapons', 'warn');
             return;
         }
         if (weapons.length === 1) {
             selectedWeapon = weapons[0];
         } else {
-            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.elementalWeapon.selectWeapon', weapons);
+            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.elementalWeapon.selectWeapon', weapons);
             if (!selectedWeapon) return;
         }
         let castLevel = workflow.castData.castLevel;

@@ -41,13 +41,13 @@ async function use({workflow}) {
             let selectedWeapon;
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.antagonize.noWeapons', 'warn');
-                return;
+                continue;
             }
             if (weapons.length === 1) {
                 selectedWeapon = weapons[0];
             } else {
                 selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectWeapon', weapons);
-                if (!selectedWeapon) return;
+                if (!selectedWeapon) continue;
             }
             let target;
             let selected;
@@ -55,7 +55,7 @@ async function use({workflow}) {
                 target = nearbyTargets[0].document;
             } else {
                 [{document: target}, selected] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectTarget', nearbyTargets);
-                if (!selected) return;
+                if (!selected) continue;
             }
             await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(target).id);
         }

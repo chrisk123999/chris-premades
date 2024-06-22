@@ -177,15 +177,36 @@
                 "orange": "Orange"
             },
             "sound": "Sound:",
-            "damage": "Damage Type:",
+            "damageType": "Damage Type:",
             "formula": "Formula:"
         },
         "macros": {
             "hex": {
-                "hexed": "Hexed"
+                "hexed": "Hexed",
+                "multiple": "Which target would you like to hex?",
+                "selectAbility": "What ability should have disadvantage?"
+            },
+            "antagonize": {
+                "noWeapons": "Target does not have any weapons equipped!",
+                "selectWeapon": "What weapon is used to attack?",
+                "selectTarget": "Who gets attacked?"
+            },
+            "bestowCurse": {
+                "ability": "Disadvantage on Ability Score",
+                "attack": "Disadvantage on Attacks",
+                "turn": "Waste Turn",
+                "damage": "Extra Damage",
+                "other": "Other",
+                "selectCurse": "What curse do you bestow?",
+                "abilitySelect": "What ability?"
             },
             "brandingSmite": {
                 "branded": "Branding Smite: Branded"
+            },
+            "elementalWeapon": {
+                "noWeapons": "Target has no valid non-magical equipped weapons!",
+                "selectDamageType": "What damage type?",
+                "selectWeapon": "Which weapon would you like to enchant?"
             },
             "searingSmite": {
                 "fire": "Searing Smite: Fire"
@@ -217,6 +238,10 @@
         "error": {
             "compendiumNotFound": "Invalid compendium specified!",
             "compendiumItemNotFound": "Compendium item not found!"
+        },
+        "turns": {
+            "startOfTurn": "Start of Turn",
+            "endOfTurn": "End of Turn"
         }
     }
 }
