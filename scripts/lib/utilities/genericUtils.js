@@ -74,6 +74,17 @@ function checkMedkitPermission(permission, userId) {
 function notify(message, type, {localize = true}) {
     ui.notifications[type](message, {localize: localize});
 }
+async function createEmbeddedDocuments(entity, type, updates, options) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    let documents;
+    if (hasPermission) {
+        documents = await entity.createEmbeddedDocuments(type, updates, options);
+    } else {
+        let documentUuids = await socket.executeAsGM('createEmbeddedDocuments', entity.uuid, type, updates, options);
+        documents = await Promise.all(documentUuids.map(async i => await fromUuid(i)));
+    }
+    return documents;
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -90,5 +101,6 @@ export let genericUtils = {
     randomID,
     checkMedkitPermission,
     notify,
-    setCPRSetting
+    setCPRSetting,
+    createEmbeddedDocuments
 };

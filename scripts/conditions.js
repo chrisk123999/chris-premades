@@ -5,16 +5,7 @@ async function createActiveEffect(effect, options, userId) {
     if (!(effect.parent instanceof Actor)) return;
     let effectConditions = effect.flags['chris-premades']?.conditions;
     if (!effectConditions) return;
-    let updates = [];
-    await Promise.all(effectConditions.map(async i => {
-        let cEffect = effectUtils.getEffectByStatusID(effect.parent, i);
-        if (cEffect) return;
-        let effectImplementation = await ActiveEffect.implementation.fromStatusEffect(i);
-        if (!effectImplementation) return;
-        let effectData = effectImplementation.toObject();
-        updates.push(effectData);
-    }));
-    if (updates.length) await effect.parent.createEmbeddedDocuments('ActiveEffect', updates, {keepId: true});
+    await effectUtils.applyConditions(effect.parent, effectConditions);
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;

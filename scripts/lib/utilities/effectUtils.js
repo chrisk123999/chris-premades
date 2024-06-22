@@ -77,6 +77,18 @@ function getEffectByIdentifier(actor, name) {
 function getEffectByStatusID(actor, statusID) {
     return actorUtils.getEffects(actor).find(i => i.statuses.has(statusID));
 }
+async function applyConditions(actor, conditions) {
+    let updates = [];
+    await Promise.all(conditions.map(async i => {
+        let cEffect = getEffectByStatusID(actor, i);
+        if (cEffect) return;
+        let effectImplementation = await ActiveEffect.implementation.fromStatusEffect(i);
+        if (!effectImplementation) return;
+        let effectData = effectImplementation.toObject();
+        updates.push(effectData);
+    }));
+    if (updates.length) return await genericUtils.createEmbeddedDocuments(actor, 'ActiveEffect', updates, {keepId: true});
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -92,5 +104,6 @@ export let effectUtils = {
     getEffectIdentifier,
     getConcentrationEffect,
     getEffectByIdentifier,
-    getEffectByStatusID
+    getEffectByStatusID,
+    applyConditions
 };

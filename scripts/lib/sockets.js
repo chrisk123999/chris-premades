@@ -1,5 +1,4 @@
 import {DialogApp} from '../applications/dialog.js';
-
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
@@ -54,7 +53,7 @@ async function createEmbeddedDocuments(entityUuid, type, updates) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
     let documents = await entity.createEmbeddedDocuments(type, updates);
-    return documents.map(i => document.uuid);
+    return documents.map(i => i.uuid);
 }
 async function addFavorites(actorUuid, itemUuids) {
     let actor = await fromUuid(actorUuid);

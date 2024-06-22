@@ -1,5 +1,4 @@
 import {socket} from '../sockets.js';
-
 function gmID() {
     return game.settings.get('chris-premades', 'gmID');
 }
