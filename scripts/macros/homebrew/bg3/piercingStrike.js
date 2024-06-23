@@ -127,7 +127,6 @@ async function damage(workflow) {
     if (!queueSetup) return;
     let bonusDamageFormula = '2[' + translate.damageType('piercing') + ']';
     await chris.addToDamageRoll(workflow, bonusDamageFormula);
-    await workflow.setDamageRoll(damageRoll);
     queue.remove(workflow.item.uuid);
 }
 export let piercingStrike = {
@@ -136,4 +135,4 @@ export let piercingStrike = {
     'strike': strike,
     'shot': shot,
     'damage': damage
-}
+};

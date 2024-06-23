@@ -1,3 +1,11 @@
+# 0.11.9 Release:
+## Bug Fixes:
+- Piercing Strike
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+  
 # 0.11.8 Release:
 ## Bug Fixes:
 - Enhanced Weapon
@@ -13,11 +21,7 @@
 - Cleave
 - Oil of Sharpness
 - Elemental Weapon
-## Update Notes:
-- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
-- Likely safe for D&D 3.2.0 and Foundry V11.
-- The V12 update is a work in progress.
-
+  
 # 0.11.7 Release:
 ## Bug Fixes:
 - Updated functions involving addDependents to use addDependent.
