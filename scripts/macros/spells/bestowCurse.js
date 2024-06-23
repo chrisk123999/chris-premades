@@ -33,17 +33,17 @@ async function use({workflow}) {
         let unnecessaryConcentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (unnecessaryConcentration) await genericUtils.remove(unnecessaryConcentration);
     }
+    let buttons = [
+        ['CHRISPREMADES.macros.bestowCurse.ability', 'Ability'],
+        ['CHRISPREMADES.macros.bestowCurse.attack', 'Attack'],
+        ['CHRISPREMADES.macros.bestowCurse.turn', 'Turn'],
+        ['CHRISPREMADES.macros.bestowCurse.damage', 'Damage'],
+        ['CHRISPREMADES.macros.bestowCurse.other', 'Other']
+    ];
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, genericUtils.translate('CHRISPREMADES.macros.bestowCurse.selectCurse'), buttons);
+    if (!selection) return;
+    let effectName = workflow.item.name + ': ' + genericUtils.translate(buttons.find(x => x[1] === selection)[0]);
     for (let targetToken of workflow.failedSaves) {
-        let buttons = [
-            [genericUtils.translate('CHRISPREMADES.macros.bestowCurse.ability'), 'Ability'],
-            [genericUtils.translate('CHRISPREMADES.macros.bestowCurse.attack'), 'Attack'],
-            [genericUtils.translate('CHRISPREMADES.macros.bestowCurse.turn'), 'Turn'],
-            [genericUtils.translate('CHRISPREMADES.macros.bestowCurse.damage'), 'Damage'],
-            [genericUtils.translate('CHRISPREMADES.macros.bestowCurse.other'), 'Other']
-        ];
-        let selection = await dialogUtils.buttonDialog(workflow.item.name, genericUtils.translate('CHRISPREMADES.macros.bestowCurse.selectCurse'), buttons);
-        if (!selection) continue;
-        let effectName = workflow.item.name + ': ' + buttons.find(x => x[1] === selection)[0];
         let targetEffectData = {
             name: effectName,
             icon: workflow.item.img,
