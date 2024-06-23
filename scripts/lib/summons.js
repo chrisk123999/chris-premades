@@ -51,6 +51,10 @@ export class Summons {
         return await new Summons._spawn(tokenDocument, updates, options.callbacks, options);
     }
     async _spawn(tokenDocument, updates, callbacks, options) {
+        let actorUpdates = updates.actor;
+        let tokenUpdates = updates.token;
+        let embeddedUpdates = updates.embedded;
+
         // check permissions
         // sets ownership on actorData
         let actorData = {
@@ -81,5 +85,20 @@ export class Summons {
         }
         */
         //tokenDocument.delta.updateSource(actorUpdates);
+        let sourceActor = await fromUuid('Actor.zgNvjPBJYEoVDdgP');
+
+        let tokUpdates = {name: 'Imma Summon', x: 500, y: 500};
+        //let actorUpdates = {name: 'Imma Summon', x: 500, y: 500};
+
+        let tokDoc = await sourceActor.getTokenDocument(tokUpdates);
+
+        await tokDoc.delta.updateSource(actorUpdates);
+
+        //actor.update(actorUpdates) as well
+
+        console.log(tokDoc);
+
+        let token = await canvas.scene.createEmbeddedDocuments('Token', [tokDoc]);
+        console.log(token);
     }
 }

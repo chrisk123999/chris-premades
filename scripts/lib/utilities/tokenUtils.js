@@ -27,18 +27,18 @@ async function moveTokenAlongRay(targetToken, ray, distance) {
     let hitsWall = true;
     let oldDistance;
     if (ray.distance === 0) {
-        ui.notifications.info(genericUtils.translate('CHRISPREMADES.movement.unableToBeMoved'));
+        genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved');
         return;
     }
     while (hitsWall) {
-        knockBackFactor = distance / canvas.dimensions.distance; // max squares?
-        newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance)); // where would we be?
+        knockBackFactor = distance / canvas.dimensions.distance;
+        newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
         hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
         if (hitsWall) {
             oldDistance = distance;
             distance += distance > 0 ? -5 : 5;
             if (distance === 0 || (Math.sign(oldDistance) !== Math.sign(distance))) {
-                ui.notifications.info(genericUtils.translate('CHRISPREMADES.movement.unableToBeMoved'));
+                genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved');
                 return;
             }
         }
