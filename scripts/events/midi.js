@@ -124,17 +124,17 @@ function getSortedTriggers({item, token, actor}, pass) {
     });
     return triggers.sort((a, b) => a.priority - b.priority);
 }
-async function executeMacro(trigger, workflow) {
+async function executeMacro(trigger, workflow, ditem) {
     console.log('CPR: Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger, workflow});
+        await trigger.macro({trigger, workflow, ditem});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
 async function executeMacroPass(workflow, pass) {
-    console.log('CPR: Executing Midi Macro Pass: ' + pass);
+    console.log('CPR: Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
     let triggers = getSortedTriggers({item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) await executeMacro(trigger, workflow);
@@ -174,8 +174,15 @@ async function RollComplete(workflow) {
     }
     await executeTargetMacroPass(workflow);
 }
+async function preAttackRoll(workflow) {
+    await executeMacroPass(workflow, 'preAttackRoll');
+}
 async function preTargetDamageApplication(token, {workflow, ditem}) {
-
+    console.log('CPR: Executing Midi Macro Pass: applyDamage for ' + token.document.name);
+    let triggers = getSortedTriggers({token: token, actor: token.actor}, 'applyDamage');
+    triggers = triggers.sort((a, b) => a.priority - b.priority);
+    if (triggers.length) await genericUtils.sleep(50);
+    for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }
 export let midiEvents = {
     preItemRoll,
@@ -183,5 +190,6 @@ export let midiEvents = {
     postDamageRoll,
     RollComplete,
     postPreambleComplete,
-    preTargetDamageApplication
+    preTargetDamageApplication,
+    preAttackRoll
 };
