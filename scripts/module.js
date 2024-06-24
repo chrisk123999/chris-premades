@@ -25,6 +25,7 @@ Hooks.once('ready', () => {
     registerHooks();
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
+    if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);
         setupJournal();

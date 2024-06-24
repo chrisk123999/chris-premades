@@ -7,7 +7,7 @@ async function use({trigger, workflow}) {
     if (!buttons.length) return;
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.elementalWeapon.selectDamageType', buttons);
     if (!selection) return;
-    await Promise.all(workflow.targets.map(async token => {
+    for (let token of workflow.targets) {
         if (!token.actor) return;
         let weapons = token.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
         let selectedWeapon;
@@ -62,9 +62,8 @@ async function use({trigger, workflow}) {
                 }
             ]
         };
-        console.log(selectedWeapon);
         await itemUtils.enchantItem(selectedWeapon, effectData, {concentrationItem: workflow.item});
-    }));
+    }
 }
 export let elementalWeapon = {
     name: 'Elemental Weapon',

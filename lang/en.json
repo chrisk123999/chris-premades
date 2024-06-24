@@ -90,26 +90,26 @@
                 "hint": "Use the local world compendiums instead of the module compendiums for item lookup."
             },
             "Permissions": {
-                "UpdateItem": {
-                    "name": "Medkit Update Automation Permissions",
-                    "hint": "Lowest user ranking that can update the currently selected automation in the Medkit:"
-                },
-                "AutomateItem": {
-                    "name": "Medkit Apply Automation Permissions",
-                    "hint": "Lowest user ranking that can select and apply different automations in the Medkit:"
-                },
-                "ConfigureItem": {
-                    "name": "Medkit Configuration Permissions",
-                    "hint": "Lowest user ranking that can configure automations in the Medkit:"
-                },
-                "HomebrewItem": {
-                    "name": "Medkit Configure Homebrew Permissions",
-                    "hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:"
-                },
                 "4": "Gamemaster",
                 "3": "Assistant Gamemaster",
                 "2": "Trusted Player",
                 "1": "Player"
+            },
+            "permissionsUpdateItem": {
+                "name": "Medkit Update Automation Permissions",
+                "hint": "Lowest user ranking that can update the currently selected automation in the Medkit:"
+            },
+            "permissionsAutomateItem": {
+                "name": "Medkit Apply Automation Permissions",
+                "hint": "Lowest user ranking that can select and apply different automations in the Medkit:"
+            },
+            "permissionsConfigureItem": {
+                "name": "Medkit Configuration Permissions",
+                "hint": "Lowest user ranking that can configure automations in the Medkit:"
+            },
+            "permissionsConfigureHomebrew": {
+                "name": "Medkit Configure Homebrew Permissions",
+                "hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:"
             },
             "colorizeBuildABonus": {
                 "name": "Build A Bonus: Colorize Titlebar Icon",
@@ -126,6 +126,14 @@
             "devTools": {
                 "name": "Display Development Tools",
                 "hint": "Enable to display development tools."
+            },
+            "applyConditionChanges": {
+                "name": "Apply Midi-QOl Condition Effects",
+                "hint": "When enabled, conditions will automatically have Midi-Qol effects applied to them."
+            },
+            "disableSpecialEffects": {
+                "name": "Disable Special Effects",
+                "hint": "When enabled, the blinded and invisible conditions don't apply special effects (change this terrible description)."
             }
         },
         "settingCategory": {

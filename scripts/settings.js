@@ -1,5 +1,6 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {conditions} from './conditions.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
@@ -264,6 +265,26 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface'
+    });
+    addSetting({
+        key: 'applyConditionChanges',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: value => {
+            if (value) {
+                Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
+            } else {
+                Hooks.off('preCreateActiveEffect', conditions.preCreateActiveEffect); 
+            }
+        }
+    });
+    addSetting({
+        key: 'disableSpecialEffects',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: value => conditions.disableSpecialEffects(value)
     });
 }
 export function registerMenus() {

@@ -55,10 +55,239 @@ function disableNonConditionStatusEffects() {
     ];
     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ids.includes(i.id));
 }
+async function preCreateActiveEffect(effect, updates, options, userId) {
+    if (game.user.id != userId) return;
+    if (!updates.statuses) return;
+    let changes = [];
+    updates.statuses.forEach(i => {
+        switch(i) {
+            case 'blinded':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'frightened':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.disadvantage.ability.check.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'invisible':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'paralyzed':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.dex',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.str',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.critical.range',
+                        mode: 5,
+                        value: 5
+                    }
+                );
+                return;
+            case 'petrified':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.dex',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.str',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'system.traits.di.value',
+                        mode: 1,
+                        value: 'poison'
+                    },
+                    {
+                        key: 'system.traits.dr.all',
+                        mode: 0,
+                        value: 'physical'
+                    },
+                    {
+                        key: 'system.traits.dr.all',
+                        mode: 0,
+                        value: 'magical'
+                    }
+                );
+                return;
+            case 'poisoned':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.disadvantage.ability.check.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'prone':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) <= 5'
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.disadvantage.attack.all',
+                        mode: 0,
+                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) > 5'
+                    },
+                    {
+                        key: 'flags.midi-qol.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'system.attributes.movement.walk',
+                        mode: 0,
+                        value: '*0.5',
+                        priority: 25
+                    }
+                );
+                return;
+            case 'restrained':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.disadvantage.ability.save.dex',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.disadvantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'silenced':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.fail.spell.vocal',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'stunned':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.dex',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.str',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    }
+                );
+                return;
+            case 'dead':
+            case 'unconscious':
+                changes.push(
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.dex',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.fail.ability.save.str',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.advantage.attack.all',
+                        mode: 0,
+                        value: 1
+                    },
+                    {
+                        key: 'flags.midi-qol.grants.critical.range',
+                        mode: 5,
+                        value: 5
+                    }
+                );
+                return;
+        }
+    });
+    if (!changes.length) return;
+    if (updates.changes) changes = updates.changes.concat(changes);
+    effect.updateSource({changes: changes});
+}
+function disableSpecialEffects(enabled) {
+    CONFIG.specialStatusEffects.BLIND = enabled ? null : 'blinded';
+    CONFIG.specialStatusEffects.INVISIBLE = enabled ? null : 'invisible';
+}
 export let conditions = {
     createActiveEffect,
     deleteActiveEffect,
     setStatusEffectIcons,
     configureStatusEffectIcons,
-    disableNonConditionStatusEffects
+    disableNonConditionStatusEffects,
+    preCreateActiveEffect,
+    disableSpecialEffects
 };

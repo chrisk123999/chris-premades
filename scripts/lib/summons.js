@@ -53,7 +53,6 @@ export class Summons {
     async _spawn(tokenDocument, updates, callbacks, options) {
         let actorUpdates = updates.actor;
         let tokenUpdates = updates.token;
-        let embeddedUpdates = updates.embedded;
 
         // check permissions
         // sets ownership on actorData
