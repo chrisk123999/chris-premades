@@ -2933,16 +2933,16 @@ export function setConfig() {
                         'default': '',
                         'file': true
                     },
-                    'name-forceBallista': {
+                    'name-forceballista': {
                         'label': 'Force Ballista Custom Name:',
                         'default': ''
                     },
-                    'token-forceBallista': {
+                    'token-forceballista': {
                         'label': 'Force Ballista Token:',
                         'default': '',
                         'file': true
                     },
-                    'avatar-forceBallista': {
+                    'avatar-forceballista': {
                         'label': 'Force Ballista Avatar:',
                         'default': '',
                         'file': true
@@ -2968,7 +2968,7 @@ export function setConfig() {
                         'default': 'future',
                         'values': summonEffectOptions
                     },
-                    'animation-forceBallista': {
+                    'animation-forceballista': {
                         'label': 'Force Ballista Animation:',
                         'default': 'future',
                         'values': summonEffectOptions

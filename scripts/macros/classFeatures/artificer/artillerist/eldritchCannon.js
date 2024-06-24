@@ -32,7 +32,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
         } else if (cannon.type === 'protector') {
             cannonItemData.system.damage.parts[0][0] = cannonItemData.system.damage.parts[0][0] + ' + ' + workflow.actor.system.abilities.int.mod;
         }
-        let name = chris.getConfiguration(workflow.item, 'name-' + cannon.type) ?? 'Eldritch Cannon';
+        let name = chris.getConfiguration(workflow.item, 'name-' + cannon.type.toLowerCase()) ?? 'Eldritch Cannon';
         if (name === '') name = 'Eldritch Cannon';
         let meleeAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
         let rangedAttackBonus = await new Roll(workflow.actor.system.bonuses.rsak.attack + ' + 0', workflow.actor.getRollData()).roll({'async': true});
@@ -88,9 +88,9 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
                 }
             }
         };
-        let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + cannon.type);
+        let avatarImg = chris.getConfiguration(workflow.item, 'avatar-' + cannon.type.toLowerCase());
         if (avatarImg) updates.actor.img = avatarImg;
-        let tokenImg = chris.getConfiguration(workflow.item, 'token-' + cannon.type);
+        let tokenImg = chris.getConfiguration(workflow.item, 'token-' + cannon.type.toLowerCase());
         if (tokenImg) {
             setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
             setProperty(updates, 'token.texture.src', tokenImg);

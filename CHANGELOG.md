@@ -1,10 +1,14 @@
-# 0.11.9 Release:
+# 0.11.10 Release:
 ## Bug Fixes:
-- Piercing Strike
+- Create Eldritch Cannon
 ## Update Notes:
 - Foundry V12 is not supported at all at this time, do not update Foundry at this time.
 - Likely safe for D&D 3.2.0 and Foundry V11.
 - The V12 update is a work in progress.
+  
+# 0.11.9 Release:
+## Bug Fixes:
+- Piercing Strike
   
 # 0.11.8 Release:
 ## Bug Fixes:
