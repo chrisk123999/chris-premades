@@ -207,7 +207,11 @@
                 "damage": "Extra Damage",
                 "other": "Other",
                 "selectCurse": "What curse do you bestow?",
-                "abilitySelect": "What ability?"
+                "abilitySelect": "What ability?",
+                "damageFlavor": "Bestow Curse Extra Damage"
+            },
+            "blindingSmite": {
+                "blind": "Blinding Smite: Blind"
             },
             "brandingSmite": {
                 "branded": "Branding Smite: Branded"
@@ -219,6 +223,12 @@
             },
             "searingSmite": {
                 "fire": "Searing Smite: Fire"
+            },
+            "staggeringSmite": {
+                "stagger": "Staggering Smite: Stagger"
+            },
+            "wrathfulSmite": {
+                "frighten": "Wrathful Smite: Frighten"
             },
             "zoneOfTruth": {
                 "save": "Zone of Truth: Save"

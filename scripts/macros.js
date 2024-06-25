@@ -1,7 +1,7 @@
 export {acidArrow} from './macros/spells/acidArrow.js';
 export {antagonize} from './macros/spells/antagonize.js';
 export {armorOfAgathys, armorOfAgathysArmor} from './macros/spells/armorOfAgathys.js';
-export {bestowCurse, bestowCurseAttack, bestowCurseDamage} from './macros/spells/bestowCurse.js';
+export {bestowCurse, bestowCurseAttack, bestowCurseDamageSource, bestowCurseDamageTarget} from './macros/spells/bestowCurse.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
 export {test} from './macros/test.js';
 export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';

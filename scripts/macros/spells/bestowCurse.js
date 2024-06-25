@@ -93,8 +93,9 @@ async function use({workflow}) {
                             }
                         }
                     };
-                    effectUtils.addMacro(casterEffectData, 'midi.actor', ['bestowCurseDamage']);
+                    effectUtils.addMacro(casterEffectData, 'midi.actor', ['bestowCurseDamageSource']);
                     effectUtils.addMacro(casterEffectData, 'effect', ['bestowCurse']);
+                    effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseDamageTarget']);
                 } else {
                     casterEffectData.flags['chris-premades'].bestowCurse.targets.push(targetToken.document.uuid);
                 }
@@ -182,7 +183,27 @@ async function damageApplication({workflow}) {
     if (workflow.hitTargets.every(target => validTargetUuids.includes(target.document.uuid))) return;
     let extraDamageTargets = workflow.hitTargets.filter(target => validTargetUuids.includes(target.document.uuid));
     if (!extraDamageTargets.size) return;
-    // TODO: apply damage only to those within extraDamageTargets
+    let targetActor = await fromUuid(workflow.damageItem.actorUuid);
+    let damageRoll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
+    genericUtils.setProperty(damageRoll, 'options.type', damageType);
+    damageRoll.toMessage({
+        rollMode: 'roll',
+        speaker: workflow.chatCard.speaker,
+        flavor: 'CHRISPREMADES.macros.bestowCurse.damageFlavor'
+    });
+    let hasDI = actorUtils.checkTrait(targetActor, 'di', damageType);
+    if (hasDI) return;
+    let damageTotal = damageRoll.total;
+    let hasDR = actorUtils.checkTrait(targetActor, 'dr', damageType);
+    if (hasDR) damageTotal = Math.floor(damageTotal / 2);
+    let ditem = workflow.damageItem;
+    let remainingDamage = damageTotal - Math.min(ditem.newTempHP, damageTotal);
+    ditem.newTempHP -= (damageTotal - remainingDamage);
+    ditem.tempDamage += (damageTotal - remainingDamage);
+    ditem.totalDamage += damageTotal;
+    ditem.appliedDamage += damageTotal;
+    ditem.hpDamage += remainingDamage;
+    ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }
 async function remove({entity}) {
     let originItem = await fromUuid(entity.origin);
@@ -252,8 +273,7 @@ export let bestowCurseAttack = {
     midi: {
         actor: [
             {
-                // TODO: this ok rather than preAttackRoll?
-                pass: 'preItemRoll',
+                pass: 'preAttackRoll',
                 macro: attack,
                 priority: 50
             }
@@ -261,14 +281,27 @@ export let bestowCurseAttack = {
     }
 };
 // TODO: caster preDamageApplication -> damageApplication as above
-export let bestowCurseDamage = {
-    name: 'Bestow Curse: Damage',
+export let bestowCurseDamageSource = {
+    name: 'Bestow Curse: Damage (source)',
     version: bestowCurse.version,
     midi: {
         actor: [
             {
                 pass: 'postDamageRoll',
                 macro: damage,
+                priority: 250
+            }
+        ]
+    }
+};
+export let bestowCurseDamageTarget = {
+    name: 'Bestow Curse: Damage (target)',
+    version: bestowCurse.version,
+    midi: {
+        actor: [
+            {
+                pass: 'applyDamage',
+                macro: damageApplication,
                 priority: 250
             }
         ]

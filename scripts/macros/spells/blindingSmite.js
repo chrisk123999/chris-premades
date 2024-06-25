@@ -32,7 +32,7 @@ async function damage({workflow}) {
     let damageType = 'radiant';
     let formula = '3d8';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Blinding Smite: Blind', {object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Blinding Smite: Blind', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.blindingSmite.blind'});
     if (!featureData) {
         errors.missingPackItem();
         return;
