@@ -5,6 +5,7 @@ import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
+import {templateEvents} from './events/template.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
@@ -43,5 +44,6 @@ export function registerHooks() {
         Hooks.on('updateToken', movementEvents.updateToken);
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
+        Hooks.on('updateMeasuredTemplate', templateEvents.updateMeasuredTemplate);
     }
 }

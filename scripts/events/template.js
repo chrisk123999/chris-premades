@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {genericUtils, templateUtils} from '../utils.js';
+import {genericUtils, socketUtils, templateUtils} from '../utils.js';
 function getTemplateMacroData(template) {
     return template.flags['chris-premades']?.macros?.template ?? [];
 }
@@ -71,7 +71,20 @@ async function executeMacroPass(templates, pass, token) {
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
+/*function preUpdateTemplate(template, updates, context, userId) {
+    if (!socketUtils.isTheGM()) return;
+    genericUtils.setProperty(context, 'chris-premades.coords.previous', {x: template.x, y: template.y});
+}*/
+async function updateMeasuredTemplate(template, updates, context, userId) {
+    if (!socketUtils.isTheGM()) return;
+    let moved = updates.x || updates.y;
+    if (!moved) return;
+    //let previous = context?.['chris-premades']?.coords?.previous;
+    //let current = {x: template.x, y: template.y};
+    await executeMacroPass([template], 'moved');
+}
 export let templateEvents = {
     collectMacros,
-    executeMacroPass
+    executeMacroPass,
+    updateMeasuredTemplate
 };

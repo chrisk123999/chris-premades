@@ -30,12 +30,12 @@ async function createItems(actor, updates, {favorite, section, parentEntity, ide
 function getItemDescription(name) {
     let journal = game.journal.getName('CPR - Descriptions');
     if (!journal) {
-        ui.notifications.warn(genericUtils.translate('CHRISPREMADES.error.missingDescriptionJournal'));
+        genericUtils.notify('CHRISPREMADES.error.missingDescriptionJournal', 'warn');
         return '';
     }
     let page = journal.pages.getName(name);
     if (!page) {
-        ui.notifications.warn(genericUtils.translate('CHRISPREMADES.error.missingDescriptionPage'));
+        genericUtils.notify('CHRISPREMADES.error.missingDescriptionPage', 'warn');
         return '';
     }
     return page.text.content;

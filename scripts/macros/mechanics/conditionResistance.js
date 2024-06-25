@@ -8,7 +8,7 @@ let validKeys = [
 ];
 let effectData = {
     'name': 'Condition Advantage',
-    'icon': 'icons/magic/time/arrows-circling-green.webp',
+    'img': 'icons/magic/time/arrows-circling-green.webp',
     'duration': {
         'turns': 1
     },

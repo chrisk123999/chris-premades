@@ -97,6 +97,7 @@ async function executeMacroPass(token, pass, distance) {
     for (let i of triggers) await executeMacro(i);
 }
 function preUpdateToken(token, updates, options, userId) {
+    if (!socketUtils.isTheGM()) return;
     let templatesUuids = Array.from(templateUtils.getTemplatesInToken(token.object)).map(i => i.uuid);
     genericUtils.setProperty(options, 'chris-premades.templates.wasIn', templatesUuids);
     genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y});
@@ -134,7 +135,16 @@ async function updateToken(token, updates, options, userId) {
     await templateEvents.executeMacroPass(entering, 'enter', token);
     await templateEvents.executeMacroPass(staying, 'stay', token);
     await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token);
-
+    let attachedTemplateUuids = token.flags['chris-premades']?.attached?.attachedTemplateUuids ?? [];
+    let removedTemplateUuids = [];
+    await Promise.all(attachedTemplateUuids.map(async templateUuid => {
+        let template = await fromUuid(templateUuid);
+        if (!template) removedTemplateUuids.push(templateUuid);
+        await genericUtils.update(template, {
+            x: template.x + (coords.x - previousCoords.x),
+            y: template.y + (coords.y - previousCoords.y)
+        });
+    }));
 }
 export let movementEvents = {
     updateToken,

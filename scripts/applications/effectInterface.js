@@ -177,7 +177,7 @@ class EffectDirectory extends DocumentDirectory {
         let document = this.collection.get(documentId);
         let selectedTokens = canvas.tokens.controlled;
         if (!selectedTokens.length) {
-            ui.notifications.info(genericUtils.translate('CHRISPREMADES.effectInterface.selectToken'));
+            genericUtils.notify('CHRISPREMADES.effectInterface.selectToken', 'warn');
             return;
         }
         let effectData = document.toObject();

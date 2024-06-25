@@ -219,6 +219,9 @@
             },
             "searingSmite": {
                 "fire": "Searing Smite: Fire"
+            },
+            "zoneOfTruth": {
+                "save": "Zone of Truth: Save"
             }
         },
         "section": {

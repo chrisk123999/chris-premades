@@ -116,7 +116,7 @@ async function setBaseLevel(template, level) {
     await setCastData(template, data);
 }
 function getSaveDC(template) {
-    return getCastData(template)?.castDC;
+    return getCastData(template)?.saveDC;
 }
 async function setSaveDC(template, dc) {
     let data = getCastData(template) ?? {};
