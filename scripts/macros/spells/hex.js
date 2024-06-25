@@ -57,7 +57,7 @@ async function use({trigger, workflow}) {
         }
     };
     effectUtils.addMacro(casterEffectData, 'midi.actor', ['hexAttack']);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: true, identifier: 'hexMove'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: 'CHRISPREMADES.macros.hex.move', identifier: 'hexMove', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;

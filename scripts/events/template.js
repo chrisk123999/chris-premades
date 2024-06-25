@@ -9,7 +9,7 @@ function collectMacros(template) {
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j);
 }
-function collectTemplatesMacros(templates, pass) {
+function collectTemplatesMacros(templates, pass, token) {
     let triggers = [];
     for (let template of templates) {
         let macroList = collectMacros(template);
@@ -21,15 +21,16 @@ function collectTemplatesMacros(templates, pass) {
                 castData: templateUtils.getCastData(template),
                 macro: i.macro,
                 name: templateUtils.getName(template),
-                priority: i.priority
+                priority: i.priority,
+                token: token
             };
             triggers.push(trigger);
         });
     }
     return triggers;
 }
-function getSortedTriggers(templates, pass) {
-    let allTriggers = collectTemplatesMacros(templates, pass);
+function getSortedTriggers(templates, pass, token) {
+    let allTriggers = collectTemplatesMacros(templates, pass, token);
     let names = new Set(allTriggers.map(i => i.name));
     let maxMap = {};
     names.forEach(i => {
@@ -64,9 +65,9 @@ async function executeMacro(trigger) {
         console.error(error);
     }
 }
-async function executeMacroPass(templates, pass) {
+async function executeMacroPass(templates, pass, token) {
     console.log('CPR: Executing Template Macro Pass: ' + pass);
-    let triggers = getSortedTriggers(templates, pass);
+    let triggers = getSortedTriggers(templates, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }

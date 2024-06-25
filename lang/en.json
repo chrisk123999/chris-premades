@@ -192,7 +192,8 @@
             "hex": {
                 "hexed": "Hexed",
                 "multiple": "Which target would you like to hex?",
-                "selectAbility": "What ability should have disadvantage?"
+                "selectAbility": "What ability should have disadvantage?",
+                "move": "Hex: Move"
             },
             "antagonize": {
                 "noWeapons": "Target does not have any weapons equipped!",

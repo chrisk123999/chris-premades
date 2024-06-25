@@ -130,10 +130,10 @@ async function updateToken(token, updates, options, userId) {
     let enteredAndLeft = through.filter(i => {
         return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
     });
-    await templateEvents.executeMacroPass(leaving, 'left');
-    await templateEvents.executeMacroPass(entering, 'enter');
-    await templateEvents.executeMacroPass(staying, 'stay');
-    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough');
+    await templateEvents.executeMacroPass(leaving, 'left', token);
+    await templateEvents.executeMacroPass(entering, 'enter', token);
+    await templateEvents.executeMacroPass(staying, 'stay', token);
+    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token);
 
 }
 export let movementEvents = {

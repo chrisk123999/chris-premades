@@ -64,7 +64,7 @@ async function getPreferredAutomation(item) {
     let items = await getAllAutomations(item);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
@@ -74,7 +74,15 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
     let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
     if (match) {
         let document = await pack.getDocument(match._id);
-        return object ? document.toObject() : document;
+        if (object) {
+            let documentData = document.toObject();
+            if (getDescription) documentData.system.description.value = itemUtils.getItemDescription(document.name);
+            if (translate) documentData.name = genericUtils.translate(translate);
+            if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
+            return documentData;
+        } else {
+            return document;
+        }
     } else {
         if (!ignoreNotFound) errors.missingPackItem();
         return undefined;

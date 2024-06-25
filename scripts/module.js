@@ -12,6 +12,7 @@ import {macroInterface} from './applications/macroInterface.js';
 import {settingButton} from './applications/settings.js';
 import {effectHud} from './applications/effectHud.js';
 import {conditions} from './conditions.js';
+import {Summons} from './lib/summons.js';
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
@@ -35,6 +36,7 @@ globalThis['chrisPremades'] = {
     DialogApp,
     Crosshairs,
     AdditionalCompendiums,
+    Summons,
     utils,
     macros,
     settingButton

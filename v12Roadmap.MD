@@ -28,12 +28,13 @@ Goals:
         - [ ] (optional?) Button to clear configs
         - [x] fields to set identifier and other bits but with it prefilled
 [ ] Convert all helper functions
+[ ] Summons
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep
 [ ] warpgate.spawn()
-    - [ ] Helper functions spawn function
-        - [ ] spawning part
+    - [x] Helper functions spawn function
+        - [x] spawning part
     - [ ] Convert summons.js and tashaSummon.js and merge what's possible
 [x] warpgate.menu()/dialog() - now DialogApp / dialogUtils
 [x] warpgate.crosshairs()-- - now Crosshairs
