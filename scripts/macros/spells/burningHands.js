@@ -1,5 +1,4 @@
 import {animationUtils, itemUtils} from '../../utils.js';
-
 async function use ({workflow}) {
     // Animations by: eskiemoh
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -58,7 +57,6 @@ async function use ({workflow}) {
         .zIndex(3)
         .play();
 }
-
 export let burningHands = {
     name: 'Burning Hands',
     version: '0.12.0',

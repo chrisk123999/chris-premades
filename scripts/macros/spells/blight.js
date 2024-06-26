@@ -1,5 +1,4 @@
 import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
-
 async function damage({workflow}) {
     if (!workflow.targets.size) return;
     let newDamageRoll = '';
@@ -20,7 +19,6 @@ async function damage({workflow}) {
     let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.actor.getRollData()).evaluate();
     await workflow.setDamageRoll(damageRoll);
 }
-
 async function damageApplication({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let creatureTypes = Array.from(workflow.targets).map(target => actorUtils.typeOrRace(target.actor));
@@ -60,7 +58,6 @@ async function damageApplication({trigger, workflow}) {
         await genericUtils.remove(trigger.entity);
     }
 }
-
 async function early({workflow}) {
     if (!workflow.targets.size) return;
     let creatureTypes = Array.from(workflow.targets).map(target => actorUtils.typeOrRace(target.actor));
@@ -134,7 +131,6 @@ async function early({workflow}) {
         await effectUtils.createEffect(target.actor, effectData);
     }
 }
-
 export let blight = {
     name: 'Blight',
     version: '0.12.0',

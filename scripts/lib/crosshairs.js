@@ -366,7 +366,7 @@ export class Crosshairs extends MeasuredTemplate {
         } else if (crosshairs.document.t === 'ray') {
             // Figure out a way to get the template to center on the crosshairs...
         } else if (crosshairs.document.t === 'circle' && !game.settings.get('core', 'gridTemplates')) {
-            //shape.radius = shape.radius / canvas.dimensions.distancePixels;
+            shape.radius = Math.round(shape.radius / canvas.grid.size / 2) * canvas.grid.size / 2;
         }
         return shape;
     }

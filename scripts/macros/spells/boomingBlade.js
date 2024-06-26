@@ -1,5 +1,4 @@
 import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
@@ -55,7 +54,7 @@ async function use({workflow}) {
     if (!attackWorkflow.hitTargets.size) return;
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 12
@@ -82,9 +81,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'movement', ['boomingBladeMoved']);
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'boomingBlade'});
 }
-
 async function moved(trigger) {
-    if (!socketUtils.isTheGM()) return;
     let effect = trigger.entity;
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.macros.boomingBlade.willingMove', {actorName: effect.parent.name}));
     if (!selection) return;
@@ -105,7 +102,6 @@ async function moved(trigger) {
     await workflowUtils.syntheticItemDataRoll(featureData, parentActor, [actorUtils.getFirstToken(effect.parent)]);
     await genericUtils.remove(effect);
 }
-
 export let boomingBlade = {
     name: 'Booming Blade',
     version: '0.12.0',

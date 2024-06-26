@@ -1,5 +1,4 @@
 import {dialogUtils, effectUtils, genericUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let input = {
         label: 'DND5E.Skill',
@@ -30,7 +29,6 @@ async function use({workflow}) {
     if (effect) await genericUtils.remove(effect);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'borrowedKnowledge'});
 }
-
 export let borrowedKnowledge = {
     name: 'Borrowed Knowledge',
     version: '0.12.0',
