@@ -20,11 +20,31 @@ async function buttonDialog(title, content, buttons, options = {displayAsRows: t
 async function numberDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, options) {
     let inputs = [
         ['number', 
-            {
+            [{
                 label: input.label,
                 name: input.name,
                 options: input.options
-            }
+            }]
+        ]
+    ];
+    let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
+    return result[input.name];
+}
+async function selectDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, options) {
+    if (!input.options) input.options = {};
+    let inputOptions = input.options.options ?? [];
+    if (!inputOptions.length) inputOptions = ['None'];
+    if (inputOptions[0].label === undefined) {
+        inputOptions = inputOptions.map(text => {return {value: text, label: text};});
+    }
+    input.options.options = inputOptions;
+    let inputs = [
+        ['selectOption',
+            [{
+                label: input.label,
+                name: input.name,
+                options: input.options
+            }]
         ]
     ];
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
@@ -126,8 +146,8 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
 async function confirm(title, content, options = {userId: game.userId}) {
     let selection;
     if (options.userId != game.userId) {
-        selection = await socket.executeAsUser('dialog', options.userId, title, content, undefined, 'yesNo');
-    } else selection = await DialogApp.dialog(title, content, undefined, 'yesNo');
+        selection = await socket.executeAsUser('dialog', options.userId, title, content, [], 'yesNo');
+    } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
     return selection.buttons;
 }
 async function selectDocumentDialog(title, content, documents, options = {displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.userId}) {
@@ -198,6 +218,7 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
+    selectDialog,
     selectTargetDialog,
     selectDocumentDialog,
     selectDocumentsDialog,

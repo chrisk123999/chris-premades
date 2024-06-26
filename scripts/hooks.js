@@ -17,7 +17,7 @@ export function registerHooks() {
     Hooks.on('midi-qol.preItemRoll', midiEvents.preItemRoll);
     Hooks.on('midi-qol.postPreambleComplete', midiEvents.postPreambleComplete);
     Hooks.on('midi-qol.postAttackRollComplete', midiEvents.postAttackRollComplete);
-    Hooks.on('midi-qol.postDamageRoll', midiEvents.postDamageRoll);
+    Hooks.on('midi-qol.preDamageRollComplete', midiEvents.postDamageRoll);
     Hooks.on('midi-qol.RollComplete', midiEvents.RollComplete);
     Hooks.on('midi-qol.preAttackRoll', midiEvents.preAttackRoll);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);

@@ -164,7 +164,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 switch (config.type) {
                     case 'checkbox': {
                         genericUtils.setProperty(configuration, 'isCheckbox', true);
-                        if (currentConfigs?.[config.value] === true) genericUtils.setProperty(configuration, 'isChecked', true);
+                        genericUtils.setProperty(configuration, 'isChecked', configuration.value);
                         break;
                     }
                     case 'file': {
@@ -380,13 +380,17 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             currentContext.item.options.forEach(i => i.isSelected = false);
             currentContext.item.options[options.selectedIndex].isSelected = true;
         } else if (this?.context?.category && Object.keys(this.context.category).includes(event.target.name)) {
-            if (event.target.type === 'select-one') {
-                let options = event.target.options;
-                let currentContext = this.context;
-                currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => i.isSelected = false);
-                currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
+            if (event.target.type === 'checkbox') {
+                this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).value = event.target.checked;
+            } else {
+                if (event.target.type === 'select-one') {
+                    let options = event.target.options;
+                    let currentContext = this.context;
+                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => i.isSelected = false);
+                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
+                }
+                this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
             }
-            this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
         } else if (event.target.name.includes('devTools')) {
             let value = event.target.value;
             if (['actor', 'item'].includes(event.target.id)) {

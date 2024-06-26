@@ -461,7 +461,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                         currentContext.inputs[targetInputId[0]] = this.currentMaxAmounts(currentContext.inputs[targetInputId[0]]);
                     }
                 } else {
-                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
+                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].currentValue = targetInput.value;
                 }
                 break;
             }

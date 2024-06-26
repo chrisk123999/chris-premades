@@ -24,10 +24,14 @@ function getLevelOrCR(actor) {
 function checkTrait(actor, type, trait) {
     return actor.system.traits?.[type]?.value?.has(trait);
 }
+function typeOrRace(actor) {
+    return MidiQOL.typeOrRace(actor);
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
     getFirstToken,
     getLevelOrCR,
-    checkTrait
+    checkTrait,
+    typeOrRace
 };
