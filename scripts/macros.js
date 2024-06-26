@@ -13,3 +13,4 @@ export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderous
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
+export {witherAndBloom} from './macros/spells/witherAndBloom.js';

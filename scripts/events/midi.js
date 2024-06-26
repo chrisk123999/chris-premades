@@ -182,8 +182,9 @@ async function preAttackRoll(workflow) {
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
     console.log('CPR: Executing Midi Macro Pass: applyDamage for ' + token.document.name);
-    let triggers = getSortedTriggers({token: token, actor: token.actor}, 'applyDamage');
-    triggers = triggers.sort((a, b) => a.priority - b.priority);
+    let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'applyDamage');
+    let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
+    let triggers = targetTriggers.concat(selfTriggers).sort((a, b) => a.priority - b.priority);
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }

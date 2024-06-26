@@ -69,9 +69,9 @@ function findGrids(A, B, template) {
     for (let [i, t] of tMax.entries()) {
         let {x, y} = ray.project(t);
         let [r0, c0] = (i === 0) ? [null, null] : prior;
-        let [r1, c1] = scene.grid.grid.getGridPositionFromPixels(x, y);
+        let [r1, c1] = scene.grid.getGridPositionFromPixels(x, y);
         if (r0 === r1 && c0 === c1) continue;
-        let [x1, y1] = scene.grid.grid.getPixelsFromGridPosition(r1, c1);
+        let [x1, y1] = scene.grid.getPixelsFromGridPosition(r1, c1);
         let contained = template.object.shape.contains(
             x1 + gridCenter - template.object.center.x,
             y1 + gridCenter - template.object.center.y
@@ -82,8 +82,8 @@ function findGrids(A, B, template) {
         if (!scene.grid.isNeighbor(r0, c0, r1, c1)) {
             let th = tMax[i - 1] + (0.5 / nMax);
             let {x, y} = ray.project(th);
-            let [rh, ch] = scene.grid.grid.getGridPositionFromPixels(x, y);
-            let [xh, yh] = scene.grid.grid.getPixelsFromGridPosition(rh, ch);
+            let [rh, ch] = scene.grid.getGridPositionFromPixels(x, y);
+            let [xh, yh] = scene.grid.getPixelsFromGridPosition(rh, ch);
             let contained = template.object.shape.contains(
                 xh + gridCenter - template.object.center.x,
                 yh + gridCenter - template.object.center.y

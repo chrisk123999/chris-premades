@@ -78,7 +78,7 @@ export class Summons {
         let tokenImg = this.tokenDocument.texture.src;
         let rotation = this.tokenUpdates?.rotation ?? this.tokenDocument?.rotation ?? 0;
         let crosshairsConfig = genericUtils.mergeObject(this.options?.crosshairs ?? {}, {
-            size: this.tokenDocument.width,
+            size: this.tokenDocument.width * 2,
             icon: tokenImg,
             name: this.tokenDocument.name,
             direction: 0,
@@ -88,13 +88,10 @@ export class Summons {
         if (templateData.cancelled) {
             console.log('was cancelled, do something different');
         }
-        let scale = templateData.size / this.tokenDocument.width;
         mergeObject(this.updates, {token: {
-            rotation: templateData.direction, 
-            width: templateData.size, 
-            height: this.tokenDocument.height * scale,
-            x: templateData.x,
-            y: templateData.y
+            rotation: templateData.direction,
+            x: templateData.x - (canvas.scene.grid.sizeX * this.tokenDocument.width / 2),
+            y: templateData.y - (canvas.scene.grid.sizeY * this.tokenDocument.height / 2)
         }});
         this.mergeUpdates({actor: {flags: {'chris-premades': {summons: {control: {user: game.user.id, actor: this.summonerToken.actor.uuid}}}}}});
         if (game.user.can('TOKEN_CREATE')) {
@@ -120,7 +117,8 @@ export class Summons {
     /*
     effect on caster to dismiss summon
     effect on summon to dismiss effect on caster
-    origin concentration <- caster effect <- summon
+    summon effect dependent on caster
+    caster effect dependent on summon
 
 
     */

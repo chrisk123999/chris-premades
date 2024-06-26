@@ -155,13 +155,14 @@ export class Crosshairs extends MeasuredTemplate {
         if (this.activeHandlers) {
             this.clearHandlers();
         }
+        console.log(this);
         return this;
     }
     /** @override */
     async draw() {
         this.clear();
         const texture = this.document.texture;
-        if ( texture ) {
+        if (texture)  {
             // eslint-disable-next-line no-undef
             this._texture = await loadTexture(texture, {fallback: 'icons/svg/hazard.svg'}); // Update to be the setting
         } else {
@@ -189,7 +190,9 @@ export class Crosshairs extends MeasuredTemplate {
         return text;
     }
     _drawControlIcon() {
+        console.log(this);
         const size = Math.max(Math.round((canvas.dimensions.size * 0.5) / 20) * 20, 40);
+        console.log(size);
         // eslint-disable-next-line no-undef
         let icon = new ControlIcon({texture: this.icon, size: size});
         icon.visible = this.drawIcon;
@@ -210,6 +213,7 @@ export class Crosshairs extends MeasuredTemplate {
         this.ray = Ray.fromAngle(document.x, document.y, direction, distance);
         // Get the Template shape
         this.t = this.computeShape(this);
+        console.log(this.t);
         // Draw the Template outline using styles included
         this.template.clear().lineStyle(this._borderThickness, this.document.borderColor, this.drawOutline ? 0.75 : 0);
         if (this._texture) {
@@ -350,6 +354,9 @@ export class Crosshairs extends MeasuredTemplate {
     // Hold over from compatability functions
     computeShape(crosshairs) {
         let shape = crosshairs._computeShape();
+        console.log(crosshairs.document);
+        console.log(crosshairs._computeShape);
+        console.log(shape);
         if (crosshairs.document.t === 'rect') {
             let length = this.document.distance * this.scene.grid.size;
             shape.height = length;
@@ -358,8 +365,9 @@ export class Crosshairs extends MeasuredTemplate {
             shape.x = this.scene.grid.size / -2;
         } else if (crosshairs.document.t === 'ray') {
             // Figure out a way to get the template to center on the crosshairs...
+        } else if (crosshairs.document.t === 'circle' && !game.settings.get('core', 'gridTemplates')) {
+            //shape.radius = shape.radius / canvas.dimensions.distancePixels;
         }
-        console.log(shape);
         return shape;
     }
     async waitFor(fn, maxIter = 600, iterWaitTime = 100) {

@@ -195,11 +195,23 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     let result = await DialogApp.dialog(title, content, inputs, 'undefined', {height: height});
     return result.buttons;
 }
+async function selectHitDie(actor, {type = 'radio', title = '', content = ''} = {}) {
+    let classes = actor.items.filter(i => i.type === 'class');
+    if (!classes.length) return;
+    let validClasses = classes.filter(i => i.system.levels - i.system.hitDiceUsed > 0);
+    if (!validClasses.length) return;
+    let inputs = validClasses.map(i => ({
+        label: i.name + ' (' + i.system.hitDice + ')',
+        name: i.system.identifier
+    }));
+    return await DialogApp.dialog(title, content, [[type, inputs, {displayAsRows: true}]], 'okCancel');
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
     selectTargetDialog,
     selectDocumentDialog,
     selectDocumentsDialog,
-    confirm
+    confirm,
+    selectHitDie
 };

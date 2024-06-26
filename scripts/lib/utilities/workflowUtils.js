@@ -39,10 +39,17 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
     let item = await itemUtils.syntheticItem(itemData, actor);
     return await syntheticItemRoll(item, targets, {options, config});
 }
+function negateDamageItemDamage(ditem) {
+    ditem.totalDamage = 0;
+    ditem.newHP = ditem.oldHP;
+    ditem.hpDamage = 0;
+    ditem.appliedDamage = 0;
+}
 export let workflowUtils = {
     bonusDamage,
     applyDamage,
     completeItemUse,
     syntheticItemRoll,
-    syntheticItemDataRoll
+    syntheticItemDataRoll,
+    negateDamageItemDamage
 };
