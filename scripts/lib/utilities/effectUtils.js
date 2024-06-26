@@ -42,24 +42,24 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
         if (concentrationItem) {
             let concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
-            if (concentrationEffect) await addDependents(concentrationEffect, effects);
-            if (concentrationEffect && interdependent) await addDependents(effects[0], [concentrationEffect]);
+            if (concentrationEffect) await addDependent(concentrationEffect, effects);
+            if (concentrationEffect && interdependent) await addDependent(effects[0], [concentrationEffect]);
         }
         if (parentEntity) {
-            await addDependents(parentEntity, effects);
-            if (interdependent) await addDependents(effects[0], [parentEntity]);
+            await addDependent(parentEntity, effects);
+            if (interdependent) await addDependent(effects[0], [parentEntity]);
         }
     } else {
         effects = await socket.executeAsGM('createEffect', effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
     }
     if (effects?.length) return effects[0];
 }
-async function addDependents(entity, dependents) {
+async function addDependent(entity, dependents) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) {
         await entity.addDependent(...dependents);
     } else {
-        socket.executeAsGM('addDependents', entity.uuid, dependents.map(i => i.uuid));
+        socket.executeAsGM('addDependent', entity.uuid, dependents.map(i => i.uuid));
     }
 }
 function addMacro(effectData, type, macroList) {
@@ -99,7 +99,7 @@ export let effectUtils = {
     getSaveDC,
     setSaveDC,
     createEffect,
-    addDependents,
+    addDependent,
     addMacro,
     getEffectIdentifier,
     getConcentrationEffect,

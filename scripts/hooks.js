@@ -1,6 +1,6 @@
 import {effectInterface} from './applications/effectInterface.js';
-import {conditions} from './conditions.js';
-import {noAnimation} from './effects.js';
+import {conditions} from './extensions/conditions.js';
+import {noAnimation} from './extensions/effects.js';
 import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
@@ -9,14 +9,15 @@ import {templateEvents} from './events/template.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
-import {createHeaderButton, renderItemSheet} from './titlebar.js';
+import {createHeaderButton, renderItemSheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
+import {chat} from './extensions/chat.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('midi-qol.preItemRoll', midiEvents.preItemRoll);
     Hooks.on('midi-qol.postPreambleComplete', midiEvents.postPreambleComplete);
     Hooks.on('midi-qol.postAttackRollComplete', midiEvents.postAttackRollComplete);
-    Hooks.on('midi-qol.DamageRollComplete', midiEvents.postDamageRoll);
+    Hooks.on('midi-qol.postDamageRoll', midiEvents.postDamageRoll);
     Hooks.on('midi-qol.RollComplete', midiEvents.RollComplete);
     Hooks.on('midi-qol.preAttackRoll', midiEvents.preAttackRoll);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
@@ -26,6 +27,7 @@ export function registerHooks() {
     Hooks.on('renderItemSheet', renderItemSheet);
     Hooks.on('preCreateActiveEffect', noAnimation);
     Hooks.on('preDeleteActiveEffect', noAnimation);
+    Hooks.on('createChatMessage', chat.createChatMessage);
     if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
         Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
         Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);

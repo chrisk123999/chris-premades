@@ -35,7 +35,7 @@ function createEffectButton(effect, buttons) {
                 break;
             case 'dismiss':
                 buttons.push({
-
+                    //finish this
                 });
         }
     });

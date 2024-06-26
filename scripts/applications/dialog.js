@@ -13,14 +13,14 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
  */
 /*  
 [
-    ['button', [{label: 'label', name: 'name'}], {displayVertical}],
-    ['checkbox', [{label: 'label', name: 'name', {isChecked, image}}], {displayVertical}],
-    ['radio', [{label: 'label', name: 'name', {isChecked, image}}], {radioName displayVertical}],
-    ['selectAmount', [{label: 'label', name: 'name', {minAmount, maxAmount, currentAmount, weight, image}}], {totalMax, displayVertical}],
-    ['selectOption', [{label: 'label', name: 'name', {options, currentValue, image}}], {displayVertical}],
-    ['text', [{label: 'label', name: 'name', {currentValue, image}}], {displayVertical}],
-    ['number', [{label: 'label', name: 'name', {currentValue, image}}], {displayVertical}],
-    ['filePicker', [{label: 'label', name: 'name', {currentValue, type}}], {displayVertical}],
+    ['button', [{label: 'label', name: 'name'}], options: {displayAsRows}],
+    ['checkbox', [{label: 'label', name: 'name', options: {isChecked, image}}], {displayAsRows}],
+    ['radio', [{label: 'label', name: 'name', options: {isChecked, image}}], {radioName, displayAsRows}],
+    ['selectAmount', [{label: 'label', name: 'name', options: {minAmount, maxAmount, currentAmount, weight, image}}], {totalMax, displayAsRows}],
+    ['selectOption', [{label: 'label', name: 'name', options: {options, currentValue, image}}], {displayAsRows}],
+    ['text', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
+    ['number', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
+    ['filePicker', [{label: 'label', name: 'name', options: {currentValue, type}}], {displayAsRows}],
 ]
 
 Format is an array containing: [typeOfField, [fields], globalOptionsForThisField]
@@ -167,7 +167,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             let [title, content, inputs, buttons, config] = options;
             this.position.width = config?.width ?? 'auto';
             this.position.height = config?.height ?? 'auto';
-            this.windowTitle = title,
+            this.windowTitle = game.i18n.localize(title),
             this.content = content,
             this.inputs = inputs,
             this.buttons = buttons,

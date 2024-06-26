@@ -7,13 +7,13 @@ async function createEffect(entityUuid, effectData, {concentrationItemUuid, pare
         let concentrationItem = await fromUuid(concentrationItemUuid);
         if (concentrationItem) {
             let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
-            if (concentrationEffect) concentrationEffect.addDependents(...effects);
+            if (concentrationEffect) concentrationEffect.addDependent(...effects);
         }
     }
     if (parentEntityUuid) {
         let parentEntity = await fromUuid(parentEntityUuid);
         if (parentEntity) {
-            parentEntity.addDependents(...effects);
+            parentEntity.addDependent(...effects);
         }
     }
     if (effects?.length) return effects[0].uuid;
@@ -41,7 +41,7 @@ async function createActor(actorData) {
     let actor = await Actor.create(actorData);
     return actor.uuid;
 }
-async function addDependents(entityUuid, dependentUuids) {
+async function addDependent(entityUuid, dependentUuids) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
     let dependents = await Promise.all(dependentUuids.map(async i => {
@@ -78,7 +78,7 @@ let sockets = [
     updateEntity,
     createFolder,
     createActor,
-    addDependents,
+    addDependent,
     createEmbeddedDocuments,
     addFavorites,
     setFlag,

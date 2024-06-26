@@ -1,4 +1,4 @@
-import {genericUtils, errors, constants} from './utils.js';
+import {genericUtils, errors, constants} from '../utils.js';
 export async function setupJournal() {
     let name = 'CPR - Descriptions';
     let welcomeText = genericUtils.translate('CHRISPREMADES.journal.welcome');

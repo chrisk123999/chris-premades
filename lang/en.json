@@ -13,7 +13,9 @@
             "Import": "Import",
             "Replace": "Replace",
             "Configure": "Configure",
-            "CheckSpelling": "Check Spelling"
+            "CheckSpelling": "Check Spelling",
+            "CPR": "Chris's Premades",
+            "Select": "Select"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "UnknownTarget": "Unknown Target",
@@ -134,6 +136,10 @@
             "disableSpecialEffects": {
                 "name": "Disable Special Effects",
                 "hint": "When enabled, the blinded and invisible conditions don't apply special effects (change this terrible description)."
+            },
+            "backupCompendium": {
+                "name": "Actor Backup Compendium",
+                "hint": "Select your actor backup compendium."
             }
         },
         "settingCategory": {
@@ -259,7 +265,9 @@
         },
         "error": {
             "compendiumNotFound": "Invalid compendium specified!",
-            "compendiumItemNotFound": "Compendium item not found!"
+            "compendiumItemNotFound": "Compendium item not found!",
+            "outOfDateItem": "Automation is out of date!",
+            "updateItem": "Update Item"
         },
         "turns": {
             "startOfTurn": "Start of Turn",

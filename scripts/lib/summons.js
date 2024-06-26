@@ -19,7 +19,7 @@ export class Summons {
     }
     static async spawn(sourceActor, updates = {}, summonerToken, options = {callbacks: undefined, range: 100, animation: 'default'}) {
         let tokenDocument = await sourceActor.getTokenDocument();
-        let Summon = new Summons(sourceActor, tokenDocument, updates = {}, summonerToken, options = {callbacks: undefined, range: 100, animation: 'default'});
+        let Summon = new Summons(sourceActor, tokenDocument, updates, summonerToken, options);
         await Summon.prepareData();
         return await Summon._spawn();
     }
@@ -106,6 +106,7 @@ export class Summons {
             // this.socketSpawn();
         }
         console.log(this.spawnedToken);
+        return this.spawnedToken;
     }
     mergeUpdates(updates) {
         this.updates = genericUtils.mergeObject(this.updates, updates);
@@ -116,4 +117,11 @@ export class Summons {
     get actorUpdates() {
         return this.updates.actor;
     }
+    /*
+    effect on caster to dismiss summon
+    effect on summon to dismiss effect on caster
+    origin concentration <- caster effect <- summon
+
+
+    */
 }

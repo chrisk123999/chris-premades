@@ -1,10 +1,12 @@
-import {conditions} from '../conditions.js';
+import {backup} from '../extensions/backup.js';
+import {conditions} from '../extensions/conditions.js';
 import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
-    statusEffectIcons: 'CHRISPREMADES.Generic.Configure'
+    statusEffectIcons: 'CHRISPREMADES.Generic.Configure',
+    backupCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -75,6 +77,7 @@ export async function settingButton(id) {
     switch(id) {
         case 'additionalCompendiums': new AdditionalCompendiums().render(true); break;
         case 'statusEffectIcons': await conditions.configureStatusEffectIcons(); break;
+        case 'backupCompendium': await backup.selectCompendium(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

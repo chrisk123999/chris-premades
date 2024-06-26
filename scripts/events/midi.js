@@ -1,3 +1,4 @@
+import {requirements} from '../extensions/requirements.js';
 import * as macros from '../macros.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
@@ -150,6 +151,8 @@ async function executeTargetMacroPass(workflow) {
     for (let trigger of triggers) await executeMacro(trigger, workflow);
 }
 async function preItemRoll(workflow) {
+    let stop = await requirements.versionCheck(workflow);
+    if (stop) return false;
     await executeMacroPass(workflow, 'preItemRoll');
 }
 async function postPreambleComplete(workflow) {

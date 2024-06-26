@@ -21,7 +21,7 @@ All {
     checkPermission - 1
     updateTargets - 26
 
-    addDependents - 30
+    addDependent - 30
 
     functionToString - 86
     sizeStringValue - 4

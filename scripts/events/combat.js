@@ -28,7 +28,8 @@ function collectTokenMacros(token, pass) {
                     },
                     macro: i.macro,
                     name: effect.name,
-                    priority: i.priority
+                    priority: i.priority,
+                    token: token
                 });
             });
         }
@@ -45,7 +46,8 @@ function collectTokenMacros(token, pass) {
                     },
                     macro: i.macro,
                     name: item.name,
-                    priority: i.priority
+                    priority: i.priority,
+                    token: token
                 });
             });
         }
@@ -64,7 +66,8 @@ function collectTokenMacros(token, pass) {
                 },
                 macro: i.macro,
                 name: templateUtils.getName(template),
-                priority: i.priority
+                priority: i.priority,
+                token: token
             });
         });
     }

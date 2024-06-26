@@ -1,7 +1,6 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
 import * as macros from '../macros.js';
-
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, itemDocument) {
         super();
@@ -149,6 +148,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         configuration: []
                     };
                 }
+                let configuration = {
+                    label: config.label,
+                    name: config.category,
+                    id: config.value,
+                    value: currentConfigs?.[config.value] ?? config.default
+                };
                 if (!canConfigure) {
                     genericUtils.setProperty(configuration, 'isDisabled', true);
                     genericUtils.setProperty(configuration, 'tooltip', 'CHRISPREMADES.Medkit.NoPermission');
@@ -156,12 +161,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.setProperty(configuration, 'isDisabled', true);
                     genericUtils.setProperty(configuration, 'tooltip', 'CHRISPREMADES.Medkit.NoPermission');
                 }
-                let configuration = {
-                    label: config.label,
-                    name: config.category,
-                    id: config.value,
-                    value: currentConfigs?.[config.value] ?? config.default
-                };
                 switch (config.type) {
                     case 'checkbox': {
                         genericUtils.setProperty(configuration, 'isCheckbox', true);

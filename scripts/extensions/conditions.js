@@ -1,5 +1,5 @@
-import {DialogApp} from './applications/dialog.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils} from './utils.js';
+import {DialogApp} from '../applications/dialog.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils} from '../utils.js';
 async function createActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!(effect.parent instanceof Actor)) return;

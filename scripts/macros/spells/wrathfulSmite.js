@@ -48,8 +48,8 @@ async function damage({workflow}) {
         origin: effect.origin
     };
     await genericUtils.update(targetEffect, updates);
-    await effectUtils.addDependents(effect, [targetEffect]);
-    await effectUtils.addDependents(targetEffect, [effect]);
+    await effectUtils.addDependent(effect, [targetEffect]);
+    await effectUtils.addDependent(targetEffect, [effect]);
 }
 export let wrathfulSmite = {
     name: 'Wrathful Smite',

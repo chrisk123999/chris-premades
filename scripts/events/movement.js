@@ -131,10 +131,10 @@ async function updateToken(token, updates, options, userId) {
     let enteredAndLeft = through.filter(i => {
         return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
     });
-    await templateEvents.executeMacroPass(leaving, 'left', token);
-    await templateEvents.executeMacroPass(entering, 'enter', token);
-    await templateEvents.executeMacroPass(staying, 'stay', token);
-    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token);
+    await templateEvents.executeMacroPass(leaving, 'left', token.object);
+    await templateEvents.executeMacroPass(entering, 'enter', token.object);
+    await templateEvents.executeMacroPass(staying, 'stay', token.object);
+    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object);
     let attachedTemplateUuids = token.flags['chris-premades']?.attached?.attachedTemplateUuids ?? [];
     let removedTemplateUuids = [];
     await Promise.all(attachedTemplateUuids.map(async templateUuid => {

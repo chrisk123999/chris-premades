@@ -1,6 +1,6 @@
-import * as macros from './macros.js';
-import {compendiumUtils, itemUtils} from './utils.js';
-import {Medkit} from './applications/medkit.js';
+import * as macros from '../macros.js';
+import {compendiumUtils, itemUtils} from '../utils.js';
+import {Medkit} from '../applications/medkit.js';
 export function createHeaderButton(config, buttons) {
     buttons.unshift({
         class: 'chris-premades-item',

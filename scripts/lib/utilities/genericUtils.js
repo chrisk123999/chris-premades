@@ -71,7 +71,7 @@ function checkMedkitPermission(permission, userId) {
     if (userRole >= neededRole) return true;
     else return false;
 }
-function notify(message, type, {localize = true}) {
+function notify(message, type, {localize = true} = {}) {
     ui.notifications[type](message, {localize: localize});
 }
 async function createEmbeddedDocuments(entity, type, updates, options) {

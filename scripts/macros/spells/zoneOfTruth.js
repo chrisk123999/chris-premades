@@ -8,7 +8,7 @@ async function save(token, template) {
     featureData.system.save.dc = templateUtils.getSaveDC(template);
     let originItem = await fromUuid(template.flags['chris-premades'].zoneOfTruth.origin);
     if (!originItem) return;
-    let workflow = await workflowUtils.syntheticItemDataRoll(featureData, originItem.actor, [token.object]);
+    let workflow = await workflowUtils.syntheticItemDataRoll(featureData, originItem.actor, [token]);
     if (!workflow.failedSaves.size) return;
     let startTime = template.flags['chris-premades'].zoneOfTruth.startTime;
     let worldTime = game.time.worldTime;
@@ -19,12 +19,12 @@ async function save(token, template) {
         img: workflow.item.img,
         origin: originItem.uuid,
         duration: {
-            seconds: 1 //left off here
+            seconds: remaining
         }
     };
     await effectUtils.createEffect(token.actor, effectData, {parentEntity: template, identifier: 'zoneOfTruthSave'});
 }
-async function enter(trigger) {
+async function enterOrStart(trigger) {
     if (!trigger.token.actor) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'zoneOfTruthSave');
     if (effect) return;
@@ -32,7 +32,7 @@ async function enter(trigger) {
         let touchedTokens = trigger.entity.flags['chris-premades']?.zoneOfTruth?.touchedTokens?.[combatUtils.currentTurn()] ?? [];
         if (touchedTokens.includes(trigger.token.id)) return;
         touchedTokens.push(trigger.token.id);
-        await genericUtils.setFlag(trigger.entity, 'chris-premades', 'zoneOfTruth.touchedTokens', touchedTokens);
+        await genericUtils.setFlag(trigger.entity, 'chris-premades', 'zoneOfTruth.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
     }
     await save(trigger.token, trigger.entity);
 }
@@ -50,8 +50,7 @@ async function use({trigger, workflow}) {
                     name: workflow.item.name
                 },
                 macros: {
-                    template: ['zoneOfTruth'],
-                    combat: ['zoneOfTruth']
+                    template: ['zoneOfTruth']
                 },
                 zoneOfTruth: {
                     origin: workflow.item.uuid,
@@ -61,9 +60,6 @@ async function use({trigger, workflow}) {
             }
         }
     });
-}
-async function turnStart(trigger) {
-    console.log(trigger);
 }
 export let zoneOfTruth = {
     name: 'Zone of Truth',
@@ -80,14 +76,17 @@ export let zoneOfTruth = {
     template: [
         {
             pass: 'enter',
-            macro: enter,
+            macro: enterOrStart,
             priority: 50
-        }
-    ],
-    combat: [
+        },
+        {
+            pass: 'stay',
+            macro: enterOrStart,
+            priority: 50
+        },
         {
             pass: 'turnStart',
-            macro: turnStart,
+            macro: enterOrStart,
             priority: 50
         }
     ]

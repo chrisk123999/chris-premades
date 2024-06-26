@@ -25,7 +25,7 @@ async function createItems(actor, updates, {favorite, section, parentEntity, ide
         items = await socket.createEmbeddedDocuments(actor.uuid, 'Item', updates);
     }
     if (favorite) await actorUtils.addFavorites(actor, items);
-    if (parentEntity) await effectUtils.addDependents(parentEntity, items);
+    if (parentEntity) await effectUtils.addDependent(parentEntity, items);
 }
 function getItemDescription(name) {
     let journal = game.journal.getName('CPR - Descriptions');
@@ -77,7 +77,7 @@ function isUpToDate(item) {
             break;
         case 'chris-premades': {
             let identifier = getIdentifer(item);
-            sourceVersion = macros[identifier].version;
+            sourceVersion = macros[identifier]?.version;
             break;
         }
     }

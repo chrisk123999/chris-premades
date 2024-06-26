@@ -1,6 +1,6 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
-import {conditions} from './conditions.js';
+import {conditions} from './extensions/conditions.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
@@ -13,7 +13,8 @@ function addSetting(options) {
         default: options.default,
         onChange: options.onChange,
         choices: options.choices,
-        reloadRequired: options.reloadRequired
+        reloadRequired: options.reloadRequired,
+        select: options.select
     };
     game.settings.register('chris-premades', options.key, setting);
     settings.addMenuSetting(options.key, options.category);
@@ -285,6 +286,13 @@ export function registerSettings() {
         default: false,
         category: 'mechanics',
         onChange: value => conditions.disableSpecialEffects(value)
+    });
+    addSetting({
+        key: 'backupCompendium',
+        type: String,
+        default: '',
+        category: 'compendium',
+        select: true
     });
 }
 export function registerMenus() {
