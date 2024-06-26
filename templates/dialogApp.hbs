@@ -96,7 +96,7 @@
                     {{#each options}}
                         <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
                             {{#each options}}
-                                <option value="{{this}}" {{#if (eq this ../currentValue)}}selected{{/if}}>{{localize this}}</option>
+                                <option value="{{value}}" {{#if (eq value ../currentValue)}}selected{{/if}}>{{localize label}}</option>
                             {{/each}}
                         </select>
                         <label for="[{{@../index}}, {{@index}}]">
@@ -114,7 +114,7 @@
                         </label>
                         <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
                             {{#each options}}
-                                <option value="{{this}}" {{#if (eq this ../currentValue)}}selected{{/if}}>{{localize this}}</option>
+                                <option value="{{value}}" {{#if (eq value ../currentValue)}}selected{{/if}}>{{localize label}}</option>
                             {{/each}}
                         </select>
                     </div>

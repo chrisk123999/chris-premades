@@ -6,6 +6,9 @@ function sleep(ms) {
 function translate(key) {
     return game.i18n.localize(key);
 }
+function format(key, obj) {
+    return game.i18n.format(key, obj);
+}
 function setProperty(object, key, value) {
     return foundry.utils.setProperty(object, key, value);
 }
@@ -88,6 +91,7 @@ async function createEmbeddedDocuments(entity, type, updates, options) {
 export let genericUtils = {
     sleep,
     translate,
+    format,
     setProperty,
     duplicate,
     update,

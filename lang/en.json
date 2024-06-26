@@ -183,12 +183,23 @@
             "playAnimation": "Play Animation:",
             "color": "Color:",
             "colors": {
+                "lightBlue": "Light Blue",
                 "blue": "Blue",
+                "blue02": "Blue (alt)",
+                "lightGreen": "Light Green",
                 "green": "Green",
+                "green02": "Green (alt)",
+                "darkGreen": "Dark Green",
                 "pink": "Pink",
+                "darkPink": "Dark Pink",
                 "purple": "Purple",
+                "darkPurple": "Dark Purple",
                 "red": "Red",
-                "orange": "Orange"
+                "darkRed": "Dark Red",
+                "orange": "Orange",
+                "yellow": "Yellow",
+                "rainbow": "Rainbow",
+                "random": "Random"
             },
             "sound": "Sound:",
             "damageType": "Damage Type:",
@@ -218,6 +229,15 @@
             },
             "blindingSmite": {
                 "blind": "Blinding Smite: Blind"
+            },
+            "boomingBlade": {
+                "noWeapons": "You have no valid weapon equipped!",
+                "selectWeapon": "Which weapon are you using to cast this spell?",
+                "willingMove": "Did {actorName} move willingly?",
+                "moved": "Booming Blade: Moved"
+            },
+            "borrowedKnowledge": {
+                "selectSkill": "Select a skill to gain temporary proficiency in:"
             },
             "brandingSmite": {
                 "branded": "Branding Smite: Branded"
@@ -272,6 +292,10 @@
         "turns": {
             "startOfTurn": "Start of Turn",
             "endOfTurn": "End of Turn"
+        },
+        "genericEffects": {
+            "conditionDisadvantage": "Condition Disadvantage",
+            "conditionImmunity": "Condition Immunity"
         }
     }
 }

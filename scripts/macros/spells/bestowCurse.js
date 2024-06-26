@@ -1,7 +1,11 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.size) {
+        let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
     let casterEffectData;
     let casterEffectOptions = {
         identifier: 'bestowCurseSource'
@@ -40,7 +44,7 @@ async function use({workflow}) {
         ['CHRISPREMADES.macros.bestowCurse.damage', 'Damage'],
         ['CHRISPREMADES.macros.bestowCurse.other', 'Other']
     ];
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, genericUtils.translate('CHRISPREMADES.macros.bestowCurse.selectCurse'), buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.selectCurse', buttons);
     if (!selection) return;
     let effectName = workflow.item.name + ': ' + genericUtils.translate(buttons.find(x => x[1] === selection)[0]);
     for (let targetToken of workflow.failedSaves) {
@@ -57,7 +61,7 @@ async function use({workflow}) {
         switch (selection) {
             case 'Ability': {
                 let abilityChoices = Object.entries(CONFIG.DND5E.abilities).map(([abbr, {label}]) => [label, abbr]);
-                let ability = await dialogUtils.buttonDialog(workflow.item.name, genericUtils.translate('CHRISPREMADES.macros.bestowCurse.abilitySelect'), abilityChoices);
+                let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.abilitySelect', abilityChoices);
                 if (!ability) continue;
                 targetEffectData.changes = [
                     {
@@ -189,18 +193,21 @@ async function damageApplication({workflow}) {
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: workflow.chatCard.speaker,
-        flavor: 'CHRISPREMADES.macros.bestowCurse.damageFlavor'
+        flavor: genericUtils.translate('CHRISPREMADES.macros.bestowCurse.damageFlavor')
     });
     let hasDI = actorUtils.checkTrait(targetActor, 'di', damageType);
     if (hasDI) return;
     let damageTotal = damageRoll.total;
+    let trueDamageTotal = damageTotal;
     let hasDR = actorUtils.checkTrait(targetActor, 'dr', damageType);
     if (hasDR) damageTotal = Math.floor(damageTotal / 2);
+    let hasDV = actorUtils.checkTrait(targetActor, 'dv', damageType);
+    if (hasDV) damageTotal *= 2;
     let ditem = workflow.damageItem;
     let remainingDamage = damageTotal - Math.min(ditem.newTempHP, damageTotal);
     ditem.newTempHP -= (damageTotal - remainingDamage);
     ditem.tempDamage += (damageTotal - remainingDamage);
-    ditem.totalDamage += damageTotal;
+    ditem.totalDamage += trueDamageTotal;
     ditem.appliedDamage += damageTotal;
     ditem.hpDamage += remainingDamage;
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
@@ -280,7 +287,6 @@ export let bestowCurseAttack = {
         ]
     }
 };
-// TODO: caster preDamageApplication -> damageApplication as above
 export let bestowCurseDamageSource = {
     name: 'Bestow Curse: Damage (source)',
     version: bestowCurse.version,
