@@ -8,20 +8,23 @@ import {Crosshairs} from './crosshairs.js';
 import {genericUtils, animationUtils} from '../utils.js';
 
 export class Summons {
-    constructor(sourceActor, tokenDocument, updates = {}, summonerToken, options = {callbacks: undefined, range: 100, animation: 'default'}) {
+    constructor(sourceActor, tokenDocument, updates, originItem, summonerToken, options) {
         this.sourceActor = sourceActor;
         this.tokenDocument = tokenDocument;
         this.updates = updates;
+        this.originItem = originItem;
         this.summonerToken = summonerToken;
         this.options = options;
         this.width = updates?.token?.width ?? tokenDocument.width;
         this.spawnOptions = {};
     }
-    static async spawn(sourceActor, updates = {}, summonerToken, options = {callbacks: undefined, range: 100, animation: 'default'}) {
+    static async spawn(sourceActor, updates = {}, originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default'}) {
         let tokenDocument = await sourceActor.getTokenDocument();
-        let Summon = new Summons(sourceActor, tokenDocument, updates, summonerToken, options);
+        let Summon = new Summons(sourceActor, tokenDocument, updates, originItem, summonerToken, options);
         await Summon.prepareData();
-        return await Summon._spawn();
+        this.mergeUpdates(this.summonEffect);
+        await Summon._spawn();
+        this.handleEffects();
     }
     static async socketSpawn(actorUuid, updates, sceneUuid) {
         let actor = await fromUuid(actorUuid);
@@ -32,6 +35,13 @@ export class Summons {
         await tokenDocument.delta.updateSource(actorUpdates);
         let token = await genericUtils.createEmbeddedDocuments(scene, 'Token', [tokenDocument]);
         return token;
+    }
+    // Helper function to dismiss any summons on an effect, will have the effect name and an array of ids
+    static async dismiss(trigger) {
+        let effect = trigger.entity;
+        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
+        if (!summons) return;
+        await canvas.scene.deleteEmbeddedDocuments('Token', summons);
     }
     async prepareData() {
         if (this.summonerToken?.actor) {
@@ -97,13 +107,16 @@ export class Summons {
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
-            this.spawnedToken = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
+            this.spawnedTokens = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
         } else {
             console.log('socket spawn');
             // this.socketSpawn();
         }
-        console.log(this.spawnedToken);
-        return this.spawnedToken;
+        console.log(this.spawnedTokens);
+        return this.spawnedTokens;
+    }
+    async handleEffects() {
+        
     }
     mergeUpdates(updates) {
         this.updates = genericUtils.mergeObject(this.updates, updates);
@@ -114,8 +127,50 @@ export class Summons {
     get actorUpdates() {
         return this.updates.actor;
     }
+    get summonEffect() {
+        return {
+            'name': genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
+            'icon': this.originItem.img,
+            'duration': {
+                'seconds': this.options.duration
+            },
+            'origin': this.originItem.uuid,
+            'flags': {
+                'chris-premades': {
+                    'vae': {
+                        'button': genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+                    }
+                }
+            }
+        };
+    }
+    get casterEffect() {
+        return {
+            name: this.originItem.name,
+            icon: this.originItem.img,
+            duration: {
+                seconds: this.options.duration
+            },
+            origin: this.originItem.uuid,
+            flags: {
+                'chris-premades': {
+                    vae: {
+                        button: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+                    },
+                    summons: {
+                        ids: {
+                            [this.originItem.name]: this.spawnedTokensIds 
+                        }
+                    }
+                }
+            }
+        };
+    }
+    get spawnedTokensIds() {
+        return this.spawnedTokens.map(i => i.id);
+    }
     /*
-    effect on caster to dismiss summon
+    effect on caster to dismiss summon - flag with IDs
     effect on summon to dismiss effect on caster
     summon effect dependent on caster
     caster effect dependent on summon
@@ -123,3 +178,15 @@ export class Summons {
 
     */
 }
+// Export for helper functions for macro call system.
+export let summonUtils = {
+    name: 'Summon Utils',
+    version: '0.12.0',
+    effect: [
+        {
+            pass: 'deleted',
+            macro: Summons.dismiss,
+            priority: 50
+        }
+    ],
+};

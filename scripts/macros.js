@@ -18,3 +18,4 @@ export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
+export {summonUtils} from './lib/summons.js';

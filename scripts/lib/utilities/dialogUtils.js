@@ -213,10 +213,10 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     let result = await DialogApp.dialog(title, content, inputs, 'undefined', {height: height});
     return result.buttons;
 }
-async function selectHitDie(actor, title, content, {type = 'selectAmount', userId = game.user.id} = {}) {
-    let classes = actor.items.filter(i => i.type === 'class');
-    if (!classes.length) return;
-    //wrap document selector
+async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
+    let items = actor.items.filter(i => i.type === 'class');
+    if (!items.length) return;
+    //Wrap select documents dialog I guess.
 }
 export let dialogUtils = {
     buttonDialog,
