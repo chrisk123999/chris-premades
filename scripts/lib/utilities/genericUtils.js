@@ -12,6 +12,9 @@ function format(key, obj) {
 function setProperty(object, key, value) {
     return foundry.utils.setProperty(object, key, value);
 }
+function getProperty(object, key) {
+    return foundry.utils.getProperty(object, key);
+}
 function duplicate(object) {
     return foundry.utils.duplicate(object);
 }
@@ -106,5 +109,6 @@ export let genericUtils = {
     checkMedkitPermission,
     notify,
     setCPRSetting,
-    createEmbeddedDocuments
+    createEmbeddedDocuments,
+    getProperty
 };

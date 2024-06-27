@@ -67,7 +67,7 @@ async function addFavorites(actorUuid, itemUuids) {
     });
 }
 async function dialog(...options) {
-    return await new DialogApp.dialog(...options);
+    return await DialogApp.dialog(...options);
 }
 async function rollItem(item, config, options) {
     return await MidiQOL.completeItemUse(item, config, options);

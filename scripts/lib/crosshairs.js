@@ -354,9 +354,6 @@ export class Crosshairs extends MeasuredTemplate {
     // Hold over from compatability functions
     computeShape(crosshairs) {
         let shape = crosshairs._computeShape();
-        console.log(crosshairs.document);
-        console.log(crosshairs._computeShape);
-        console.log(shape);
         if (crosshairs.document.t === 'rect') {
             let length = this.document.distance * this.scene.grid.size;
             shape.height = length;
@@ -366,7 +363,7 @@ export class Crosshairs extends MeasuredTemplate {
         } else if (crosshairs.document.t === 'ray') {
             // Figure out a way to get the template to center on the crosshairs...
         } else if (crosshairs.document.t === 'circle' && !game.settings.get('core', 'gridTemplates')) {
-            shape.radius = Math.round(shape.radius / canvas.grid.size / 2) * canvas.grid.size / 2;
+            shape.radius = Math.round(shape.radius / (canvas.grid.size / 2)) * (canvas.grid.size / 2);
         }
         return shape;
     }

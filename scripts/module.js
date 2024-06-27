@@ -13,6 +13,8 @@ import {settingButton} from './applications/settings.js';
 import {effectHud} from './applications/effectHud.js';
 import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
+import {registerSockets} from './lib/sockets.js';
+registerSockets();
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);

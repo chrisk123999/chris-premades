@@ -86,6 +86,7 @@
 		"jQuery": "writable",
 		"ItemDirectory": "writable",
 		"WorldCollection": "writable",
-		"foundry": "writable"
+		"foundry": "writable",
+		"Token": "writable"
 	}
 }
