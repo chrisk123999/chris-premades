@@ -69,7 +69,7 @@ async function early({workflow}) {
         if (creatureType === 'plant') {
             effectData = {
                 name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionDisadvantage'),
-                icon: 'icons/magic/time/arrows-circling-green.webp',
+                img: 'icons/magic/time/arrows-circling-green.webp',
                 origin: workflow.item.uuid,
                 duration: {
                     turns: 1
@@ -98,7 +98,7 @@ async function early({workflow}) {
         } else if (['undead', 'construct'].includes(creatureType)) {
             effectData = {
                 name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionImmunity'),
-                icon: 'icons/magic/time/arrows-circling-green.webp',
+                img: 'icons/magic/time/arrows-circling-green.webp',
                 origin: workflow.item.uuid,
                 duration: {
                     turns: 1

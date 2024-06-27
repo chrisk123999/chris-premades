@@ -2,7 +2,7 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 60

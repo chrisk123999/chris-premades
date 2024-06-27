@@ -2,7 +2,7 @@ import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.j
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 60
@@ -34,7 +34,7 @@ async function damage({workflow}) {
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.searingSmite.fire'),
-        icon: effect.icon,
+        img: effect.img,
         origin: effect.origin,
         duration: {
             seconds: effect.duration.remaining

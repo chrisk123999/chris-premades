@@ -50,7 +50,7 @@ async function use({workflow}) {
     for (let targetToken of workflow.failedSaves) {
         let targetEffectData = {
             name: effectName,
-            icon: workflow.item.img,
+            img: workflow.item.img,
             origin: workflow.item.uuid,
         };
         if (!isNaN(duration)) {
@@ -82,7 +82,7 @@ async function use({workflow}) {
                 if (!casterEffectData) {
                     casterEffectData = {
                         name: effectName,
-                        icon: workflow.item.img,
+                        img: workflow.item.img,
                         origin: workflow.item.uuid,
                         duration: {
                             seconds: null,
