@@ -206,16 +206,13 @@
             "formula": "Formula:"
         },
         "macros": {
-            "hex": {
-                "hexed": "Hexed",
-                "multiple": "Which target would you like to hex?",
-                "selectAbility": "What ability should have disadvantage?",
-                "move": "Hex: Move"
-            },
             "antagonize": {
                 "noWeapons": "Target does not have any weapons equipped!",
                 "selectWeapon": "What weapon is used to attack?",
                 "selectTarget": "Who gets attacked?"
+            },
+            "banishment": {
+                "planeSelect": "Select all targets that are not from this plane."
             },
             "bestowCurse": {
                 "ability": "Disadvantage on Ability Score",
@@ -247,11 +244,20 @@
                 "selectDamageType": "What damage type?",
                 "selectWeapon": "Which weapon would you like to enchant?"
             },
+            "hex": {
+                "hexed": "Hexed",
+                "multiple": "Which target would you like to hex?",
+                "selectAbility": "What ability should have disadvantage?",
+                "move": "Hex: Move"
+            },
             "searingSmite": {
                 "fire": "Searing Smite: Fire"
             },
             "staggeringSmite": {
                 "stagger": "Staggering Smite: Stagger"
+            },
+            "upcastTargets": {
+                "select": "Too many targets selected! Please select up to {maxTargets} targets."
             },
             "wrathfulSmite": {
                 "frighten": "Wrathful Smite: Frighten"

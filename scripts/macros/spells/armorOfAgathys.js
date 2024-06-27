@@ -233,7 +233,8 @@ export let armorOfAgathysArmor = {
             pass: 'created',
             macro: start,
             priority: 50
-        }, {
+        }, 
+        {
             pass: 'deleted',
             macro: end,
             priority: 50

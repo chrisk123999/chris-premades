@@ -1,0 +1,87 @@
+import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
+
+async function use({workflow}) {
+    if (!workflow.targets.size) return;
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds: 60 * workflow.item.system.duration.value
+        },
+        changes: [
+            {
+                key: 'flags.midi-qol.advantage.ability.save.wis',
+                mode: 5,
+                value: 1,
+                priority: 20
+            },
+            {
+                key: 'flags.midi-qol.advantage.deathSave',
+                mode: 5,
+                value: 1,
+                priority: 20
+            }
+        ]
+    };
+    effectUtils.addMacro(effectData, 'midi.actor', ['beaconOfHopeHopeful']);
+    for (let token of workflow.targets) {
+        await effectUtils.createEffect(token.actor, effectData, {concentrationItem: workflow.item, identifier: 'beaconOfHope'});
+    }
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+}
+async function damageApplication({trigger, workflow}) {
+    if (!workflow.targets.size) return;
+    if (!workflow.damageRoll) return;
+    let healingType = CONFIG.DND5E.healingTypes['healing'].label.toLowerCase();
+    let defaultDamageType = workflow.defaultDamageType;
+    if (defaultDamageType !== healingType) return;
+    let ditem = workflow.damageItem;
+    let targetActor = await fromUuid(ditem.actorUuid);
+    if (actorUtils.checkTrait(targetActor, 'di', healingType)) return;
+    let newHealingTotal = 0;
+    for (let term of workflow.damageRoll.terms) {
+        if (term.flavor && term.flavor.length && term.flavor.toLowerCase() !== healingType) continue;
+        if (term.isDeterministic) {
+            if (isNaN(term.total)) continue;
+            newHealingTotal += term.total;
+        } else {
+            newHealingTotal += term.number * term.faces;
+        }
+    }
+    let appliedHealingTotal = newHealingTotal;
+    if (actorUtils.checkTrait(targetActor, 'dr', healingType)) appliedHealingTotal = Math.floor(appliedHealingTotal / 2);
+    if (actorUtils.checkTrait(targetActor, 'dv', healingType)) appliedHealingTotal = appliedHealingTotal * 2;
+    let maxHP = targetActor.system.attributes.hp.max;
+    ditem.totalDamage = newHealingTotal;
+    ditem.appliedDamage = -Math.min(appliedHealingTotal, maxHP - ditem.oldHP);
+    ditem.hpDamage = ditem.appliedDamage;
+    ditem.newHP = ditem.oldHP - ditem.appliedDamage;
+}
+export let beaconOfHope = {
+    name: 'Beacon of Hope',
+    version: '0.12.0',
+    midi: {
+        item: [
+            {
+                pass: 'RollComplete',
+                macro: use,
+                priority: 50
+            }
+        ]
+    }
+};
+export let beaconOfHopeHopeful = {
+    name: 'Beacon of Hope: Hopeful',
+    version: beaconOfHope.version,
+    midi: {
+        actor: [
+            {
+                pass: 'applyDamage',
+                macro: damageApplication,
+                priority: 250
+            }
+        ]
+    }
+};

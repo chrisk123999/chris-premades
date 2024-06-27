@@ -69,7 +69,9 @@ async function addFavorites(actorUuid, itemUuids) {
 async function dialog(...options) {
     return await DialogApp.dialog(...options);
 }
-async function rollItem(item, config, options) {
+async function rollItem(itemRef, config, options) {
+    let item = await fromUuid(itemRef);
+    if (!item) return;
     return await MidiQOL.completeItemUse(item, config, options);
 }
 let sockets = [

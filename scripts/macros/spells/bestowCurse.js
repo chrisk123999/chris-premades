@@ -69,7 +69,8 @@ async function use({workflow}) {
                         mode: 0, 
                         value: true,
                         priority: 20
-                    }, {
+                    }, 
+                    {
                         key: 'flags.midi-qol.disadvantage.ability.save.' + ability,
                         mode: 0,
                         value: true,
@@ -264,7 +265,8 @@ export let bestowCurse = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        }, {
+        }, 
+        {
             value: 'formula',
             label: 'CHRISPREMADES.config.formula',
             type: 'text',

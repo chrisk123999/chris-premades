@@ -306,7 +306,9 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     context.inputs.push({
                         isCheckbox: true,
                         displayAsRows: inputOptions?.displayAsRows ?? false,
-                        options: checkboxOptions
+                        options: checkboxOptions,
+                        totalMax: inputOptions?.totalMax ?? 99,
+                        currentNum: 1
                     });
                     break;
                 } 
@@ -452,6 +454,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         switch (targetInput.type) {
             case 'checkbox': {
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
+                let numChecked = currentContext.inputs[targetInputId[0]].options.reduce((acc, checkbox) => checkbox.isChecked ? acc + 1 : acc, 0);
+                currentContext.inputs[targetInputId[0]].currentNum = numChecked;
                 break;
             }
             case 'select-one': {

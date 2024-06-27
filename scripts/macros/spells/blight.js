@@ -140,7 +140,8 @@ export let blight = {
                 pass: 'postDamageRoll',
                 macro: damage,
                 priority: 250
-            }, {
+            }, 
+            {
                 pass: 'postPreambleComplete',
                 macro: early,
                 priority: 50

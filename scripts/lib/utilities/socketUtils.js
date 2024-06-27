@@ -20,7 +20,7 @@ function firstOwner(document, useId) {
     return useId ? gmID() : game.users.get(gmID());
 }
 async function remoteRollItem(item, config, options, userId) {
-    if (firstOwner(item.actor).id === userId) return await MidiQOL.completeItemUse(item, config, options);
+    if (game.user.id === userId) return await MidiQOL.completeItemUse(item, config, options);
     return await socket.executeAsUser('rollItem', userId, item.uuid, config, options);
 }
 export let socketUtils = {
