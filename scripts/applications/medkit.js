@@ -82,13 +82,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
         if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
         context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
-        if (context.item.availableAutomations.length > 1 || context.item.status === true) context.item.canApplyAutomation = true;
         if (context.item.availableAutomations.length > 0) {
             context.item.options = [{
                 label: 'CHRISPREMADES.Generic.None',
                 value: null,
                 id: null,
-                isSelected: context.item.source ? false : true
+                isSelected: context.item.source ? false : game.settings.get('chris-premades', 'devTools') ? false : true
             }];
             context.item.availableAutomations.forEach(i => {
                 let label;
@@ -105,6 +104,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             });
         }
+        if (context.item.options.length > 1 || context.item.status === true) context.item.canApplyAutomation = true;
         context.medkitColor = '';
         let sources = [
             'chris-premades',
@@ -204,6 +204,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         let isDev = game.settings.get('chris-premades', 'devTools');
         if (isDev) {
+            context.item.options.push({
+                label: 'Development',
+                value: 'development',
+                id: 'development',
+                isSelected: context.item?.source ? false : true,
+            });
             let macroInfo = macros[identifier];
             let devTools = {
                 hasMacroInfo: macroInfo ? true : false,
@@ -306,7 +312,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (sourceItem) {
                 item = await Medkit.update(item, sourceItem);
             }
-            await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
+            if (selectedSource != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
         }
         this.itemDocument = item;
         await this.updateContext(item);
