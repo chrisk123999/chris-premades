@@ -32,27 +32,25 @@ function collectMacros(effect, pass) {
 function getSortedTriggers(effect, pass) {
     let allTriggers = collectMacros(effect, pass);
     let names = new Set(allTriggers.map(i => i.name));
-    let maxMap = {};
-    names.forEach(i => {
-        let maxLevel = Math.max(...allTriggers.map(i => i.castData.castLevel));
-        let maxDC = Math.max(...allTriggers.map(i => i.castData.saveDC));
-        maxMap[i] = {
-            maxLevel: maxLevel,
-            maxDC: maxDC
-        };
+    let bestMap = {};
+    names.forEach(name => {
+        let allRelevantTriggers = allTriggers.filter(i => i.name === name);
+        let maxDC = Math.max(...allRelevantTriggers.map(i => i.castData.saveDC));
+        let minDC = Math.min(...allRelevantTriggers.map(i => i.castData.saveDC));
+        let bestEntity;
+        if (maxDC === minDC) {
+            let maxLevel = Math.max(...allRelevantTriggers.map(i => i.castData.castLevel));
+            bestEntity = allRelevantTriggers.find(i => i.castData.castLevel === maxLevel).entity;
+        } else {
+            bestEntity = allRelevantTriggers.find(i => i.castData.saveDC === maxDC);
+        }
+        bestMap[name] = bestEntity;
     });
     let triggers = [];
-    names.forEach(i => {
-        let maxLevel = maxMap[i].maxLevel;
-        let maxDC = maxMap[i].maxDC;
-        let maxDCTrigger = allTriggers.find(j => j.castData.saveDC === maxDC);
-        let selectedTrigger;
-        if (maxDCTrigger.castData.castLevel === maxLevel) {
-            selectedTrigger = maxDCTrigger;
-        } else {
-            selectedTrigger = allTriggers.find(j => j.castData.castLevel === maxLevel);
-        }
-        triggers.push(selectedTrigger);
+    names.forEach(name => {
+        let bestEntity = bestMap[name];
+        let bestTriggers = allTriggers.filter(i => i.name === name).filter(i => i.entity === bestEntity);
+        triggers.push(...bestTriggers);
     });
     return triggers.sort((a, b) => a.priority - b.priority);
 }
