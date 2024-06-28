@@ -8,8 +8,8 @@ import {Crosshairs} from './crosshairs.js';
 import {genericUtils, animationUtils} from '../utils.js';
 
 export class Summons {
-    constructor(sourceActor, tokenDocument, updates, originItem, summonerToken, options) {
-        this.sourceActor = sourceActor;
+    constructor(sourceActors, tokenDocument, updates, originItem, summonerToken, options) {
+        this.sourceActors = sourceActors;
         this.tokenDocument = tokenDocument;
         this.updates = updates;
         this.originItem = originItem;
@@ -17,6 +17,7 @@ export class Summons {
         this.options = options;
         this.width = updates?.token?.width ?? tokenDocument.width;
         this.spawnOptions = {};
+        this.spawnedTokens = [];
     }
     static async spawn(sourceActor, updates = {}, originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default'}) {
         let tokenDocument = await sourceActor.getTokenDocument();
@@ -107,7 +108,8 @@ export class Summons {
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
-            this.spawnedTokens = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
+            let spawnedToken = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
+            this.spawnedTokens.push(spawnedToken);
         } else {
             console.log('socket spawn');
             // this.socketSpawn();
@@ -116,7 +118,7 @@ export class Summons {
         return this.spawnedTokens;
     }
     async handleEffects() {
-        
+        // make the things dependent and whatnot
     }
     mergeUpdates(updates) {
         this.updates = genericUtils.mergeObject(this.updates, updates);
