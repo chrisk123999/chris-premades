@@ -49,7 +49,7 @@ export class Summons {
             this.spawnOptions = {
                 'controllingActor': this.summonerToken.actor,
                 'crosshairs': {
-                    'interval': this.width % 2 === 0 ? 1 : -1
+                    'interval': this.updates?.token?.width ?? this.tokenDocument.width % 2 === 0 ? 1 : -1
                 }
             };
         }
@@ -131,16 +131,16 @@ export class Summons {
     }
     get summonEffect() {
         return {
-            'name': genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
-            'icon': this.originItem.img,
-            'duration': {
-                'seconds': this.options.duration
+            name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
+            icon: this.originItem.img,
+            duration: {
+                seconds: this.options.duration
             },
-            'origin': this.originItem.uuid,
-            'flags': {
+            origin: this.originItem.uuid,
+            flags: {
                 'chris-premades': {
-                    'vae': {
-                        'button': genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+                    vae: {
+                        button: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
                     }
                 }
             }
@@ -170,6 +170,10 @@ export class Summons {
     }
     get spawnedTokensIds() {
         return this.spawnedTokens.map(i => i.id);
+    }
+    get tokenDocument() {
+        let tokenDocument = this.sourceActor.getTokenDocument();
+        return tokenDocument;
     }
     /*
     effect on caster to dismiss summon - flag with IDs

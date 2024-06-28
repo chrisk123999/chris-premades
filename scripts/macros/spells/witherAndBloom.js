@@ -13,9 +13,9 @@ async function use({trigger, workflow}) {
         selection = selection[0];
     }
     let ownerId = socketUtils.firstOwner(selection, true);
-    let classSelection = await dialogUtils.selectHitDie(selection.actor, 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.title', 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.content', {userId: ownerId});
+    let classSelection = await dialogUtils.selectHitDie(selection.actor, 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.title', 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.content', {userId: ownerId, max: workflow.castData.castLevel - 1});
     if (!classSelection) return;
-    let classIdentifier = classSelection.radio;
+    
 
 
 }

@@ -167,9 +167,9 @@ async function selectDocumentDialog(title, content, documents, options = {displa
     for (let i of documents) {
         inputs[0][1].push({
             label: i.name + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            name: i.uuid ?? i.actor.uuid,
+            name: i.uuid ?? i.actor?.uuid,
             options: {
-                image: i.img ?? i.icon,
+                image: i.img,
                 tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
             }
         });
@@ -177,12 +177,13 @@ async function selectDocumentDialog(title, content, documents, options = {displa
     let result;
     if (options.userId != game.user.id) {
         result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined);
-    } else result = await DialogApp.dialog(title, content, inputs, undefined);
-    result = result.buttons;
-    if (result) return await fromUuid(result);
-    else return result;
+    } else {
+        result = await DialogApp.dialog(title, content, inputs, undefined);
+    }
+    if (result?.buttons) return await fromUuid(result.buttons);
+    return false;
 }
-async function selectDocumentsDialog(title, content, documents, options = {max: 5, useUuids: false, displayTooltips: false, sortAlphabetical: false, sortCR: false}) {
+async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
     if (options?.sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -193,30 +194,37 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
     }
-    let inputs = [
-        ['selectAmount', [], {displayAsRows: true, totalMax: options?.max}]
-    ];
-    for (let i of documents) {
-        inputs[0][1].push({
-            label: i.name,
-            name: options?.useUuids ? i.actor.uuid : i,
-            options: {
-                image: i.image + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-                tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
-                minAmount: 0,
-                maxAmount: options?.max ?? 5
-            }
-        });
-    }
+    let input = documents.map(i => ({
+        label: i.name,
+        name: i.uuid ?? i.actor?.uuid,
+        options: {
+            image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+            tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            minAmount: 0,
+            maxAmount: options?.max
+        }
+    }));
+    let inputs = [['selectAmount', input, {displayAsRows: true, totalMax: options?.max}]];
+    console.log(inputs);
     let height = (inputs[0][1].length * 56 + 46);
     if (inputs[0][1].length > 14 ) height = 850;
-    let result = await DialogApp.dialog(title, content, inputs, 'undefined', {height: height});
-    return result.buttons;
+    let result;
+    if (game.user.id != options.userId) {
+        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined, {height: 'auto'});
+    } else {
+        result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
+    }
+    if (result?.buttons) {
+        return await Promise.all(result.buttons.map(async i => await fromUuid(i)));
+    }
+    return false;
 }
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
     let items = actor.items.filter(i => i.type === 'class');
     if (!items.length) return;
-    //Wrap select documents dialog I guess.
+    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max});
+    console.log(selection);
+    return selection;
 }
 export let dialogUtils = {
     buttonDialog,
