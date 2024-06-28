@@ -80,6 +80,20 @@ async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!(effect.parent instanceof Actor)) return;
     await executeMacroPass(effect, 'deleted');
+    let chrisFlags = effect.flags?.['chris-premades'];
+    if (chrisFlags && chrisFlags.interdependent) {
+        let parentEntityUuid = chrisFlags.parentEntityUuid;
+        let concentrationEffectUuid = chrisFlags.concentrationEffectUuid;
+        if (parentEntityUuid) await checkInterdependentDeps(parentEntityUuid);
+        if (concentrationEffectUuid) await checkInterdependentDeps(concentrationEffectUuid);
+
+    }
+}
+async function checkInterdependentDeps(interdependentUuid) {
+    let interdependentEntity = await fromUuid(interdependentUuid);
+    if (!interdependentEntity) return;
+    let currDependents = interdependentEntity.getDependents();
+    if (!currDependents.length) await genericUtils.remove(interdependentEntity);
 }
 export let effectEvents = {
     createActiveEffect,

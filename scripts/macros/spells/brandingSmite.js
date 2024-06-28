@@ -17,7 +17,7 @@ async function use({workflow}) {
         }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['brandingSmiteDamage']);
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'brandingSmite'});
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'brandingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
@@ -53,7 +53,7 @@ async function damage({workflow}) {
             }
         ]
     };
-    await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {parentEntity: effect, interdependent: true, identifier: 'brandingSmiteBranded'});
+    await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {parentEntity: effect, strictlyInterdependent: true});
 }
 export let brandingSmite = {
     name: 'Branding Smite',

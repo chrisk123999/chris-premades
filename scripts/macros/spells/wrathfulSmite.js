@@ -17,7 +17,7 @@ async function use({workflow}) {
         }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['wrathfulSmiteDamage']);
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'wrathfulSmite'});
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'wrathfulSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }

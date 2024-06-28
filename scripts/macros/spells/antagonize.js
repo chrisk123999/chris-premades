@@ -8,7 +8,7 @@ async function use({workflow}) {
         let usedReaction = MidiQOL.hasUsedReaction(targetToken.actor);
         let nearbyTargets;
         if (!usedReaction) {
-            nearbyTargets = tokenUtils.findNearby(targetToken, 5, 'ally', true);
+            nearbyTargets = tokenUtils.findNearby(targetToken, 5, 'ally', {});
         }
         if (usedReaction || !nearbyTargets.length) {
             let effectData = {
@@ -40,7 +40,7 @@ async function use({workflow}) {
             let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
             let selectedWeapon;
             if (!weapons.length) {
-                await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.antagonize.noWeapons', {userId: socketUtils.gmID()});
+                genericUtils.notify('CHRISPREMADES.antagonize.noWeapons', 'info');
                 continue;
             }
             if (weapons.length === 1) {

@@ -10,7 +10,6 @@ async function use({workflow}) {
     let casterEffectOptions = {
         identifier: 'bestowCurseSource'
     };
-    let targetEffectsArray = [];
     let concentration = true;
     let duration = 60;
     let castLevel = workflow.castData.castLevel;
@@ -47,111 +46,103 @@ async function use({workflow}) {
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.selectCurse', buttons);
     if (!selection) return;
     let effectName = workflow.item.name + ': ' + genericUtils.translate(buttons.find(x => x[1] === selection)[0]);
-    for (let targetToken of workflow.failedSaves) {
-        let targetEffectData = {
-            name: effectName,
-            img: workflow.item.img,
-            origin: workflow.item.uuid,
+    let targetEffectData = {
+        name: effectName,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+    };
+    if (!isNaN(duration)) {
+        targetEffectData.duration = {
+            seconds: duration
         };
-        if (!isNaN(duration)) {
-            targetEffectData.duration = {
-                seconds: duration
-            };
-        }
-        switch (selection) {
-            case 'Ability': {
-                let abilityChoices = Object.entries(CONFIG.DND5E.abilities).map(([abbr, {label}]) => [label, abbr]);
-                let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.abilitySelect', abilityChoices);
-                if (!ability) continue;
-                targetEffectData.changes = [
-                    {
-                        key: 'flags.midi-qol.disadvantage.ability.check.' + ability,
-                        mode: 0, 
-                        value: true,
-                        priority: 20
-                    }, 
-                    {
-                        key: 'flags.midi-qol.disadvantage.ability.save.' + ability,
-                        mode: 0,
-                        value: true,
-                        priority: 20
-                    }
-                ];
-                break;
-            }
-            case 'Damage':
-                if (!casterEffectData) {
-                    casterEffectData = {
-                        name: effectName,
-                        img: workflow.item.img,
-                        origin: workflow.item.uuid,
-                        duration: {
-                            seconds: null,
-                        },
-                        flags: {
-                            'chris-premades': {
-                                bestowCurse: {
-                                    targets: [targetToken.document.uuid],
-                                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
-                                    formula: itemUtils.getConfig(workflow.item, 'formula')
-                                }
-                            }
-                        }
-                    };
-                    effectUtils.addMacro(casterEffectData, 'midi.actor', ['bestowCurseDamageSource']);
-                    effectUtils.addMacro(casterEffectData, 'effect', ['bestowCurse']);
-                    effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseDamageTarget']);
-                } else {
-                    casterEffectData.flags['chris-premades'].bestowCurse.targets.push(targetToken.document.uuid);
+    }
+    switch (selection) {
+        case 'Ability': {
+            let abilityChoices = Object.entries(CONFIG.DND5E.abilities).map(([abbr, {label}]) => [label, abbr]);
+            let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.abilitySelect', abilityChoices);
+            if (!ability) return;
+            targetEffectData.changes = [
+                {
+                    key: 'flags.midi-qol.disadvantage.ability.check.' + ability,
+                    mode: 0, 
+                    value: true,
+                    priority: 20
+                }, 
+                {
+                    key: 'flags.midi-qol.disadvantage.ability.save.' + ability,
+                    mode: 0,
+                    value: true,
+                    priority: 20
                 }
-                if (!isNaN(duration)) casterEffectData.duration.seconds = duration;
-                break;
-            case 'Attack':
-                targetEffectData.flags = {
+            ];
+            break;
+        }
+        case 'Damage':
+            casterEffectData = {
+                name: effectName,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                duration: {
+                    seconds: null,
+                },
+                flags: {
                     'chris-premades': {
                         bestowCurse: {
-                            sourceActor: workflow.actor.uuid
+                            targets: Array.from(workflow.failedSaves).map(target => target.document.uuid),
+                            damageType: itemUtils.getConfig(workflow.item, 'damageType'),
+                            formula: itemUtils.getConfig(workflow.item, 'formula')
                         }
                     }
-                };
-                effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseAttack']);
-                break;
-            case 'Turn': {
-                let saveDC = itemUtils.getSaveDC(workflow.item);
-                targetEffectData.changes = [
-                    {
-                        key: 'flags.midi-qol.OverTime',
-                        mode: 0,
-                        value: 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="' + workflow.item.name + ' (' + genericUtils.translate('CHRISPREMADES.turns.startOfTurn') + ')"',
-                        priority: 20
+                }
+            };
+            effectUtils.addMacro(casterEffectData, 'midi.actor', ['bestowCurseDamageSource']);
+            effectUtils.addMacro(casterEffectData, 'effect', ['bestowCurse']);
+            effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseDamageTarget']);
+            if (!isNaN(duration)) casterEffectData.duration.seconds = duration;
+            break;
+        case 'Attack':
+            targetEffectData.flags = {
+                'chris-premades': {
+                    bestowCurse: {
+                        sourceActor: workflow.actor.uuid
                     }
-                ];
-                break;
-            }
+                }
+            };
+            effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseAttack']);
+            break;
+        case 'Turn': {
+            let saveDC = itemUtils.getSaveDC(workflow.item);
+            targetEffectData.changes = [
+                {
+                    key: 'flags.midi-qol.OverTime',
+                    mode: 0,
+                    value: 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="' + workflow.item.name + ' (' + genericUtils.translate('CHRISPREMADES.turns.startOfTurn') + ')"',
+                    priority: 20
+                }
+            ];
+            break;
         }
-
-        let targetEffectOptions = {
-            identifier: 'bestowCurse' + selection
-        };
-        if (concentration) {
-            casterEffectOptions.concentrationItem = workflow.item;
-            if (selection !== 'Damage') targetEffectOptions.concentrationItem = workflow.item;
-        }
-        if (selection === 'Damage') targetEffectOptions.parentEntity = true;
-        targetEffectsArray.push({
-            targetEffectData,
-            targetEffectOptions,
-            targetToken
-        });
     }
-    if (concentration) casterEffectOptions.concentrationItem = workflow.item;
+    let targetEffectOptions = {
+        identifier: 'bestowCurse' + selection
+    };
+    if (concentration && selection !== 'Damage') {
+        targetEffectOptions.concentrationItem = workflow.item;
+        targetEffectOptions.interdependent = true;
+    }
+    if (selection === 'Damage') targetEffectOptions.parentEntity = true;
+    if (concentration) {
+        casterEffectOptions.concentrationItem = workflow.item;
+        casterEffectOptions.interdependent = true;
+    }
     let casterEffect;
     if (casterEffectData) casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, casterEffectOptions);
-    for (let {targetEffectData, targetEffectOptions, targetToken} of targetEffectsArray) {
-        if (casterEffect && targetEffectOptions.parentEntity) {
-            targetEffectOptions.parentEntity = casterEffect;
-        }
-        effectUtils.addMacro(targetEffectData, 'effect', ['bestowCurse']);
+    if (casterEffect && targetEffectOptions.parentEntity) {
+        targetEffectOptions.parentEntity = casterEffect;
+        targetEffectOptions.interdependent = true;
+    }
+    effectUtils.addMacro(targetEffectData, 'effect', ['bestowCurse']);
+    for (let targetToken of workflow.failedSaves) {
         await effectUtils.createEffect(targetToken.actor, targetEffectData, targetEffectOptions);
     }
     if (concentration && !isNaN(duration)) {
@@ -214,28 +205,12 @@ async function damageApplication({workflow}) {
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }
 async function remove({entity}) {
-    let originItem = await fromUuid(entity.origin);
-    let sourceActor = originItem?.parent;
-    if (!sourceActor) return;
     let identifier = effectUtils.getEffectIdentifier(entity);
-    if (identifier === 'bestowCurseDamage') {
-        let parentEffect = effectUtils.getEffectByIdentifier(sourceActor, 'bestowCurseSource');
-        if (!parentEffect) return;
-        let currDeps = parentEffect.getDependents();
-        if (!currDeps.length) {
-            await genericUtils.remove(parentEffect);
-        } else {
-            let currTargetsFlag = parentEffect.flags['chris-premades'].bestowCurse.targets;
-            await genericUtils.setFlag(parentEffect, 'chris-premades', 'bestowCurse.targets', currTargetsFlag.filter(uuid => uuid !== actorUtils.getFirstToken(entity.parent)?.document?.uuid));
-        }
-    } else {
-        let concEffect = effectUtils.getConcentrationEffect(sourceActor, originItem);
-        if (!concEffect) return;
-        let currDeps = concEffect.getDependents();
-        if (!currDeps.length) {
-            await genericUtils.remove(concEffect);
-        }
-    }
+    if (identifier !== 'bestowCurseDamage') return;
+    let parentEffect = await fromUuid(entity.flags['chris-premades'].parentEntityUuid);
+    if (!parentEffect) return;
+    let currTargetsFlag = parentEffect.flags['chris-premades'].bestowCurse.targets;
+    await genericUtils.setFlag(parentEffect, 'chris-premades', 'bestowCurse.targets', currTargetsFlag.filter(uuid => uuid !== actorUtils.getFirstToken(entity.parent)?.document?.uuid));
 }
 export let bestowCurse = {
     name: 'Bestow Curse',

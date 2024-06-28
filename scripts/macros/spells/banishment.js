@@ -20,7 +20,6 @@ async function use({workflow}) {
         duration: {
             seconds: 60 * workflow.item.system.duration.value
         },
-        // TODO: old tokenMagic spectral-body
         changes: [
             {
                 key: 'flags.midi-qol.superSaver.all',
@@ -51,6 +50,12 @@ async function use({workflow}) {
                 mode: 0,
                 value: 1,
                 priority: 20
+            },
+            {
+                key: 'macro.tokenMagic',
+                mode: 0,
+                value: 'spectral-body',
+                priority: 20
             }
         ]
     };
@@ -62,7 +67,7 @@ async function use({workflow}) {
         } else {
             trueEffectData = genericUtils.duplicate(effectData);
             genericUtils.setProperty(trueEffectData, 'flags.chris-premades.banishment.samePlane', true);
-            // TODO: push Incapacitated as a change
+            genericUtils.setProperty(trueEffectData, 'flags.chris-premades.conditions', ['incapacitated']);
         }
         await effectUtils.createEffect(token.actor, trueEffectData, {concentrationItem: workflow.item, identifier: 'banishmentBanished'});
     }

@@ -48,7 +48,7 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
         ]
     ];
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
-    return result[input.name];
+    return result?.[input.name];
 }
 async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadAndUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true, maxAmount: 1, userId: game.user.id}) {
     let inputs = [
@@ -145,10 +145,10 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
 }
 async function confirm(title, content, options = {userId: game.user.id}) {
     let selection;
-    if (options.userId != game.user.id) {
+    if (options.userId !== game.user.id) {
         selection = await socket.executeAsUser('dialog', options.userId, title, content, [], 'yesNo');
     } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
-    return selection.buttons;
+    return selection?.buttons;
 }
 async function selectDocumentDialog(title, content, documents, options = {displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
     if (options?.sortAlphabetical) {

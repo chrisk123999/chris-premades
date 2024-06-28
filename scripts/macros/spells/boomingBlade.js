@@ -21,7 +21,6 @@ async function use({workflow}) {
     if (diceNumber) weaponData.system.damage.parts.push([diceNumber + 'd8[' + damageType + ']', damageType]);
     let attackWorkflow = await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
     if (!attackWorkflow) return;
-    // TODO: animations?
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let color = itemUtils.getConfig(workflow.item, 'color');
     let jb2a = animationUtils.jb2aCheck();

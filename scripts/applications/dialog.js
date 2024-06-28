@@ -231,7 +231,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     async mergeResults(name) {
         if (name === 'false') {
-            this.submit(false);
+            this.submit({buttons: false});
             return false;
         }
         while (this.results === undefined) {
@@ -239,7 +239,11 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 setTimeout(resolve, 10);
             });
         }
-        this.results.buttons = name;
+        if (name === 'true') {
+            this.results.buttons = true;
+        } else {
+            this.results.buttons = name;
+        }
         this.submit(this.results);
     }
     get title() {

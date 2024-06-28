@@ -239,6 +239,14 @@
             "brandingSmite": {
                 "branded": "Branding Smite: Branded"
             },
+            "callLightning": {
+                "storming": "Is it already storming?",
+                "stormBolt": "Storm Bolt"
+            },
+            "chainLightning": {
+                "select": "Where should the lightning bounce? Max: {maxTargets}",
+                "leap": "Chain Lightning Leap"
+            },
             "elementalWeapon": {
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",
