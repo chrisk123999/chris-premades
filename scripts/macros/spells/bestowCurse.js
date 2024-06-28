@@ -50,7 +50,7 @@ async function use({workflow}) {
     for (let targetToken of workflow.failedSaves) {
         let targetEffectData = {
             name: effectName,
-            icon: workflow.item.img,
+            img: workflow.item.img,
             origin: workflow.item.uuid,
         };
         if (!isNaN(duration)) {
@@ -69,7 +69,8 @@ async function use({workflow}) {
                         mode: 0, 
                         value: true,
                         priority: 20
-                    }, {
+                    }, 
+                    {
                         key: 'flags.midi-qol.disadvantage.ability.save.' + ability,
                         mode: 0,
                         value: true,
@@ -82,7 +83,7 @@ async function use({workflow}) {
                 if (!casterEffectData) {
                     casterEffectData = {
                         name: effectName,
-                        icon: workflow.item.img,
+                        img: workflow.item.img,
                         origin: workflow.item.uuid,
                         duration: {
                             seconds: null,
@@ -264,7 +265,8 @@ export let bestowCurse = {
             options: constants.damageTypeOptions,
             homebrew: true,
             category: 'homebrew'
-        }, {
+        }, 
+        {
             value: 'formula',
             label: 'CHRISPREMADES.config.formula',
             type: 'text',

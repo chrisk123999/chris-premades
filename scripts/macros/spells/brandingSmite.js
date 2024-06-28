@@ -2,10 +2,10 @@ import {constants, effectUtils, genericUtils, workflowUtils} from '../../utils.j
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
-            seconds: 60
+            seconds: 60 * workflow.item.system.duration.value
         },
         flags: {
             'chris-premades': {
@@ -19,7 +19,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['brandingSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'brandingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -33,7 +33,7 @@ async function damage({workflow}) {
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.brandingSmite.branded'),
-        icon: effect.icon,
+        img: effect.img,
         origin: effect.origin,
         duration: {
             seconds: effect.duration.remaining
@@ -44,7 +44,8 @@ async function damage({workflow}) {
                 mode: 4,
                 value: 5,
                 priority: 20
-            }, {
+            }, 
+            {
                 key: 'system.traits.ci.value',
                 mode: 0,
                 value: 'invisible',

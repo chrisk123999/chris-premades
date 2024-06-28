@@ -24,7 +24,7 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <input type="checkbox" id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
+                        <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
                         <label for="[{{@../index}}, {{@index}}]">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
@@ -33,7 +33,7 @@
                 </div>
             {{else}}
                 {{#each options}}
-                    <input type="checkbox" id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
+                    <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
                     <label for="[{{@../index}}, {{@index}}]">
                         {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                         <p class="label-text">{{localize label}}</p>

@@ -91,6 +91,10 @@ async function createEmbeddedDocuments(entity, type, updates, options) {
     }
     return documents;
 }
+async function updateTargets(targets) {
+    game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
+    game.user.broadcastActivity({targets: game.user.targets.ids});
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -110,5 +114,6 @@ export let genericUtils = {
     notify,
     setCPRSetting,
     createEmbeddedDocuments,
-    getProperty
+    getProperty,
+    updateTargets
 };

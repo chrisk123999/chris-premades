@@ -11,7 +11,7 @@ async function use({workflow}) {
     if (!selection) return;
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 3600 * workflow.item.system.duration.value

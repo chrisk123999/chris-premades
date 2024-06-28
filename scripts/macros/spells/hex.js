@@ -24,7 +24,7 @@ async function use({trigger, workflow}) {
     seconds = Math.min(seconds * durationScale, 86400);
     let targetEffectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: seconds
@@ -40,7 +40,7 @@ async function use({trigger, workflow}) {
     };
     let casterEffectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: seconds
@@ -107,7 +107,7 @@ async function move({trigger, workflow}) {
     await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
-        icon: effect.icon,
+        img: effect.img,
         origin: effect.origin,
         duration: {
             seconds: effect.duration.remaining

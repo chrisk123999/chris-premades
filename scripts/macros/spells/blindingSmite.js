@@ -2,10 +2,10 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
-            seconds: 60
+            seconds: 60 * workflow.item.system.duration.value
         },
         flags: {
             'chris-premades': {
@@ -19,9 +19,8 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['blindingSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'blindingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    await genericUtils.update(concentrationEffect, {'duration.seconds': 60});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
     if (workflow.item.system.actionType !== 'mwak') return;

@@ -13,7 +13,7 @@ async function use({workflow}) {
         if (usedReaction || !nearbyTargets.length) {
             let effectData = {
                 name: workflow.item.name,
-                icon: workflow.item.img,
+                img: workflow.item.img,
                 origin: workflow.item.uuid,
                 duration: {
                     seconds: 12
@@ -40,13 +40,13 @@ async function use({workflow}) {
             let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
             let selectedWeapon;
             if (!weapons.length) {
-                genericUtils.notify('CHRISPREMADES.antagonize.noWeapons', 'warn');
+                await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.antagonize.noWeapons', {userId: socketUtils.gmID()});
                 continue;
             }
             if (weapons.length === 1) {
                 selectedWeapon = weapons[0];
             } else {
-                selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectWeapon', weapons);
+                selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectWeapon', weapons, {userId: socketUtils.gmID()});
                 if (!selectedWeapon) continue;
             }
             let target;
@@ -57,7 +57,7 @@ async function use({workflow}) {
                 [{document: target}, selected] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectTarget', nearbyTargets);
                 if (!selected) continue;
             }
-            await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(target).id);
+            await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(targetToken).id);
         }
     }
 }

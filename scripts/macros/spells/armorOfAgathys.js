@@ -2,7 +2,7 @@ import {actorUtils, animationUtils, compendiumUtils, constants, effectUtils, err
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
-        icon: workflow.item.img,
+        img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
             seconds: 3600 * workflow.item.system.duration.value
@@ -233,7 +233,8 @@ export let armorOfAgathysArmor = {
             pass: 'created',
             macro: start,
             priority: 50
-        }, {
+        }, 
+        {
             pass: 'deleted',
             macro: end,
             priority: 50

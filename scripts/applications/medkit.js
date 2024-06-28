@@ -104,6 +104,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             });
         }
+        if (!context.item.options) context.item.options = [];
         if (context.item.options.length > 1 || context.item.status === true) context.item.canApplyAutomation = true;
         context.medkitColor = '';
         let sources = [

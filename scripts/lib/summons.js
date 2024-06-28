@@ -149,7 +149,7 @@ export class Summons {
     get casterEffect() {
         return {
             name: this.originItem.name,
-            icon: this.originItem.img,
+            img: this.originItem.img,
             duration: {
                 seconds: this.options.duration
             },

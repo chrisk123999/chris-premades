@@ -50,7 +50,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
             if (interdependent) await addDependent(effects[0], [parentEntity]);
         }
     } else {
-        effects = await socket.executeAsGM('createEffect', effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
+        effects = await socket.executeAsGM('createEffect', entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
     }
     if (effects?.length) return effects[0];
 }
