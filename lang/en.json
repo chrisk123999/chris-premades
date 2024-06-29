@@ -15,7 +15,10 @@
             "Configure": "Configure",
             "CheckSpelling": "Check Spelling",
             "CPR": "Chris's Premades",
-            "Select": "Select"
+            "Select": "Select",
+            "Disabled": "Disabled",
+            "Chat": "Chat",
+            "Description": "Description"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "UnknownTarget": "Unknown Target",

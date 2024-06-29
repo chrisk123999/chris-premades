@@ -213,8 +213,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             const dialog = new DialogApp(options);
             dialog.addEventListener('close', () => {
                 resolve(null);
-            }, { once: true });
-            dialog.render({ force: true });
+            }, {once: true});
+            dialog.render({force: true});
             dialog.submit = async result => {
                 resolve(result);
                 dialog.close();

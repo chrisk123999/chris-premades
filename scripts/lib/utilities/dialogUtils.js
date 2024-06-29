@@ -205,7 +205,6 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
         }
     }));
     let inputs = [['selectAmount', input, {displayAsRows: true, totalMax: options?.max}]];
-    console.log(inputs);
     let height = (inputs[0][1].length * 56 + 46);
     if (inputs[0][1].length > 14 ) height = 850;
     let result;
@@ -214,7 +213,9 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
+    console.log(result);
     if (result?.buttons) {
+        delete result.buttons;
         return await Promise.all(result.buttons.map(async i => await fromUuid(i)));
     }
     return false;

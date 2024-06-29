@@ -8,7 +8,7 @@ function noAnimation(...args) {
 }
 async function checkInterdependentDeps(effect) {
     let chrisFlags = effect.flags?.['chris-premades'];
-    if (!chrisFlags.interdependent) return;
+    if (!chrisFlags?.interdependent) return;
     async function check(interdependentUuid) {
         let interdependentEntity = await fromUuid(interdependentUuid);
         if (!interdependentEntity) return;
@@ -20,7 +20,32 @@ async function checkInterdependentDeps(effect) {
     if (parentEntityUuid) await check(parentEntityUuid);
     if (concentrationEffectUuid) await check(concentrationEffectUuid);
 }
+function preCreateActiveEffect(effect, updates, options, id) {
+    if (game.user.id != id) return;
+    if (updates.description) return;
+    let type = genericUtils.getCPRSetting('effectDescriptions');
+    let npc = genericUtils.getCPRSetting('effectDescriptionNPC');
+    let description;
+    if (effect.parent && effect.transfer) {
+        if (effect.parent.constructor.name != 'Item5e') return;
+        if (npc && parent.actor?.type === 'npc') return;
+        description = (effect.parent.system.identified ?? true) ? effect.parent.system.description[type] : effect.parent.system.unidentified.description;
+    } else if (!effect.transfer && effect.parent) {
+        let origin;
+        if (effect.origin) {
+            origin = fromUuidSync(updates.origin, {strict: false});
+        } else {
+            origin = effect.parent;
+        }
+        if (!origin) return;
+        if (origin.constructor.name != 'Item5e') return;
+        if (npc && origin.actor?.type === 'npc') return;
+        description = (origin.system.identified ?? true) ? origin.system.description[type] : origin.system.unidentified.description;
+    } else return;
+    effect.updateSource({description: description});
+}
 export let effects = {
     noAnimation,
-    checkInterdependentDeps
+    checkInterdependentDeps,
+    preCreateActiveEffect
 };

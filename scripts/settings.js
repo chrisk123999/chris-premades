@@ -1,10 +1,11 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
 import {conditions} from './extensions/conditions.js';
+import {effects} from './extensions/effects.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
-import {constants} from './utils.js';
+import {constants, genericUtils} from './utils.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -186,25 +187,6 @@ export function registerSettings() {
         category: 'development',
     });
     addSetting({
-        key: 'vaeDescription',
-        type: Boolean,
-        default: true,
-        category: 'integration',
-        onChange: value => {
-            if (value) {
-                Hooks.on('preCreateActiveEffect', vae.preCreateActiveEffect);
-            } else {
-                Hooks.off('preCreateActiveEffect', vae.preCreateActiveEffect);
-            }
-        }
-    });
-    addSetting({
-        key: 'vaeDescriptionNPC',
-        type: Boolean,
-        default: true,
-        category: 'integration'
-    });
-    addSetting({
         key: 'vaeButton',
         type: Boolean,
         default: true,
@@ -293,6 +275,33 @@ export function registerSettings() {
         default: '',
         category: 'compendium',
         select: true
+    });
+    let oldEffectDescriptions;
+    addSetting({
+        key: 'effectDescriptions',
+        type: String,
+        default: 'value',
+        category: 'interface',
+        choices: {
+            disabled: 'CHRISPREMADES.Generic.Disabled',
+            chat: 'CHRISPREMADES.Generic.Chat',
+            value: 'CHRISPREMADES.Generic.Description'
+        },
+        onChange: value => {
+            if (value !== 'disabled' && oldEffectDescriptions === 'disabled') {
+                Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
+            } else if (value === 'disabled' && oldEffectDescriptions !== 'disabled') {
+                Hooks.off('preCreateActiveEffect', effects.preCreateActiveEffect);
+            }
+            oldEffectDescriptions = value;
+        }
+    });
+    oldEffectDescriptions = genericUtils.getCPRSetting('effectDescriptions');
+    addSetting({
+        key: 'effectDescriptionNPC',
+        type: Boolean,
+        default: false,
+        category: 'interface'
     });
 }
 export function registerMenus() {

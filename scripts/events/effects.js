@@ -1,4 +1,3 @@
-import {effectExt} from '../extensions/effect.js';
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import {effectUtils, genericUtils, socketUtils} from '../utils.js';

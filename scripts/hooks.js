@@ -35,7 +35,7 @@ export function registerHooks() {
     }
     if (genericUtils.getCPRSetting('babonusOverlappingEffects')) Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
     if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
-    if (genericUtils.getCPRSetting('vaeDescription')) Hooks.on('preCreateActiveEffect', vae.preCreateActiveEffect);
+    if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
