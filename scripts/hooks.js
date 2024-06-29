@@ -1,6 +1,6 @@
 import {effectInterface} from './applications/effectInterface.js';
 import {conditions} from './extensions/conditions.js';
-import {noAnimation} from './extensions/effects.js';
+import {effects} from './extensions/effects.js';
 import {combatEvents} from './events/combat.js';
 import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
@@ -25,8 +25,8 @@ export function registerHooks() {
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
     Hooks.on('renderItemSheet', renderItemSheet);
-    Hooks.on('preCreateActiveEffect', noAnimation);
-    Hooks.on('preDeleteActiveEffect', noAnimation);
+    Hooks.on('preCreateActiveEffect', effects.noAnimation);
+    Hooks.on('preDeleteActiveEffect', effects.noAnimation);
     Hooks.on('createChatMessage', chat.createChatMessage);
     if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
         Hooks.on('renderItemSheet', buildABonus.renderItemSheet);

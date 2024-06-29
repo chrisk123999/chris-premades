@@ -1,4 +1,5 @@
 import {effectExt} from '../extensions/effect.js';
+import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import {effectUtils, genericUtils, socketUtils} from '../utils.js';
 function getEffectMacroData(effect) {
@@ -80,7 +81,7 @@ async function createActiveEffect(effect, options, userId) {
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if ((effect.parent instanceof Actor)) await executeMacroPass(effect, 'deleted');
-    await effectExt.checkInterdependentDeps(effect);
+    await effects.checkInterdependentDeps(effect);
 }
 export let effectEvents = {
     createActiveEffect,
