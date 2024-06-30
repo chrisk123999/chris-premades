@@ -250,6 +250,11 @@
                 "select": "Where should the lightning bounce? Max: {maxTargets}",
                 "leap": "Chain Lightning Leap"
             },
+            "chaosBolt": {
+                "select": "Select damage type:",
+                "bounce": "Who should the Chaos Bolt bounce to?",
+                "alwaysBounce": "Always Bounces:"
+            },
             "elementalWeapon": {
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",

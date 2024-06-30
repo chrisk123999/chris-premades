@@ -13,6 +13,7 @@ export {brandingSmite, brandingSmiteDamage} from './macros/spells/brandingSmite.
 export {burningHands} from './macros/spells/burningHands.js';
 export {callLightning} from './macros/spells/callLightning.js';
 export {chainLightning} from './macros/spells/chainLightning.js';
+export {chaosBolt} from './macros/spells/chaosBolt.js';
 export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
