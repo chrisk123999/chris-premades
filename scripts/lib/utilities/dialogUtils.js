@@ -8,8 +8,8 @@ async function buttonDialog(title, content, buttons, options = {displayAsRows: t
     let inputs = [
         ['button', [], {displayAsRows: options.displayAsRows}]
     ];
-    for (let [label, value] of buttons) {
-        inputs[0][1].push({label: label, name: value});
+    for (let [label, value, options] of buttons) {
+        inputs[0][1].push({label: label, name: value, options: options ?? {}});
     }
     let result;
     if (options.userId != game.user.id) {

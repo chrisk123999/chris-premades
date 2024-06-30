@@ -35,7 +35,7 @@ function simpleAttack(sourceToken, targetToken, animation, {sound, missed}) {
  * @param {string} color Damage types and spell school abbrevs
  * @returns {ColorMatrix} to be used in a Sequence as .filter('ColorMatrix', animationUtils.colorMatrix(animation, color))
  */
-export function colorMatrix(animation, color) {
+function colorMatrix(animation, color) {
     if (!Object.keys(animations).includes(animation)) return defaultMatrix;
     if (!Object.keys(colors).includes(color)) return defaultMatrix;
     let matrix = {
@@ -49,5 +49,6 @@ export let animationUtils = {
     jb2aCheck,
     aseCheck,
     simpleAttack,
-    summonEffects
+    summonEffects,
+    colorMatrix
 };
