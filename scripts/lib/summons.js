@@ -8,24 +8,23 @@ import {Crosshairs} from './crosshairs.js';
 import {genericUtils, animationUtils} from '../utils.js';
 
 export class Summons {
-    constructor(sourceActors, tokenDocument, updates, originItem, summonerToken, options) {
+    constructor(sourceActors,  updates, originItem, summonerToken, options) {
         this.sourceActors = sourceActors;
-        this.tokenDocument = tokenDocument;
-        this.updates = updates;
+        this._updates = updates;
         this.originItem = originItem;
         this.summonerToken = summonerToken;
         this.options = options;
-        this.width = updates?.token?.width ?? tokenDocument.width;
         this.spawnOptions = {};
         this.spawnedTokens = [];
+        this.currentIndex = 0;
     }
-    static async spawn(sourceActor, updates = {}, originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default'}) {
-        let tokenDocument = await sourceActor.getTokenDocument();
-        let Summon = new Summons(sourceActor, tokenDocument, updates, originItem, summonerToken, options);
-        await Summon.prepareData();
-        this.mergeUpdates(this.summonEffect);
-        await Summon._spawn();
-        this.handleEffects();
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default'}) {
+        if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
+        if (!Array.isArray(updates)) updates = [updates];
+        let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
+        await Summon.prepareAllData();
+        await Summon.spawnAll();
+        //this.handleEffects();
     }
     static async socketSpawn(actorUuid, updates, sceneUuid) {
         let actor = await fromUuid(actorUuid);
@@ -44,12 +43,20 @@ export class Summons {
         if (!summons) return;
         await canvas.scene.deleteEmbeddedDocuments('Token', summons);
     }
+    async prepareAllData() {
+        while (this.currentIndex != this.sourceActors.length) {
+            await this.prepareData();
+            this.currentIndex++;
+        }
+        this.currentIndex = 0;
+    }
     async prepareData() {
+        let tokenDocument = await this.sourceActor.getTokenDocument();
         if (this.summonerToken?.actor) {
             this.spawnOptions = {
                 'controllingActor': this.summonerToken.actor,
                 'crosshairs': {
-                    'interval': this.updates?.token?.width ?? this.tokenDocument.width % 2 === 0 ? 1 : -1
+                    'interval': this.updates?.token?.width ?? tokenDocument.width % 2 === 0 ? 1 : -1
                 }
             };
         }
@@ -80,18 +87,27 @@ export class Summons {
             };
         }
     }
+    async spawnAll() {
+        while (this.currentIndex != this.sourceActors.length) {
+            await this._spawn();
+            this.currentIndex++;
+        }
+        this.currentIndex = 0;
+    }
     async _spawn() {
+        let tokenDocument = await this.sourceActor.getTokenDocument();
         let actorData = {
             ownership: {[game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER}
         };
-        this.mergeUpdates({token: genericUtils.mergeObject(this.updates.token ?? {}, {actorData}, {overwrite:false})});
-        console.log(this.tokenDocument);
-        let tokenImg = this.tokenDocument.texture.src;
-        let rotation = this.tokenUpdates?.rotation ?? this.tokenDocument?.rotation ?? 0;
+        let currentUpdates = this.updates;
+        console.log(currentUpdates, currentUpdates?.token ?? {});
+        this.mergeUpdates({token: genericUtils.mergeObject(currentUpdates.token ?? {}, {actorData}, {overwrite:false})});
+        let tokenImg = tokenDocument.texture.src;
+        let rotation = this.tokenUpdates?.rotation ?? tokenDocument.rotation ?? 0;
         let crosshairsConfig = genericUtils.mergeObject(this.options?.crosshairs ?? {}, {
-            size: this.tokenDocument.width * 2,
+            size: tokenDocument.width * 2,
             icon: tokenImg,
-            name: this.tokenDocument.name,
+            name: tokenDocument.name,
             direction: 0,
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
@@ -101,10 +117,25 @@ export class Summons {
         }
         mergeObject(this.updates, {token: {
             rotation: templateData.direction,
-            x: templateData.x - (canvas.scene.grid.sizeX * this.tokenDocument.width / 2),
-            y: templateData.y - (canvas.scene.grid.sizeY * this.tokenDocument.height / 2)
+            x: templateData.x - (canvas.scene.grid.sizeX * tokenDocument.width / 2),
+            y: templateData.y - (canvas.scene.grid.sizeY * tokenDocument.height / 2)
         }});
-        this.mergeUpdates({actor: {flags: {'chris-premades': {summons: {control: {user: game.user.id, actor: this.summonerToken.actor.uuid}}}}}});
+        console.log(this.summonerToken);
+        this.mergeUpdates({
+            actor: {
+                flags: {
+                    'chris-premades': {
+                        summons: {
+                            control: {
+                                user: game.user.id, 
+                                actor: this.summonerToken.actor.uuid
+                            }
+                        }
+                    }
+                },
+                effects: this.summonEffect
+            }
+        });
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
@@ -121,13 +152,13 @@ export class Summons {
         // make the things dependent and whatnot
     }
     mergeUpdates(updates) {
-        this.updates = genericUtils.mergeObject(this.updates, updates);
+        this.updates[this.currentIndex] = genericUtils.mergeObject(this.updates, updates);
     }
     get tokenUpdates() {
-        return this.updates.token;
+        return this.updates[this.currentIndex].token;
     }
     get actorUpdates() {
-        return this.updates.actor;
+        return this.updates[this.currentIndex].actor;
     }
     get summonEffect() {
         return {
@@ -171,9 +202,11 @@ export class Summons {
     get spawnedTokensIds() {
         return this.spawnedTokens.map(i => i.id);
     }
-    get tokenDocument() {
-        let tokenDocument = this.sourceActor.getTokenDocument();
-        return tokenDocument;
+    get updates() {
+        return this._updates[this.currentIndex];
+    }
+    get sourceActor() {
+        return this.sourceActors[this.currentIndex];
     }
     /*
     effect on caster to dismiss summon - flag with IDs
