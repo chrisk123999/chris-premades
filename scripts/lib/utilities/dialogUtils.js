@@ -161,19 +161,15 @@ async function selectDocumentDialog(title, content, documents, options = {displa
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
     }
-    let inputs = [
-        ['button', [], {displayAsRows: true}]
-    ];
-    for (let i of documents) {
-        inputs[0][1].push({
-            label: i.name + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            name: i.uuid ?? i.actor?.uuid,
-            options: {
-                image: i.img,
-                tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
-            }
-        });
-    }
+    let inputFields = documents.map(i => ({
+        label: i.name,
+        name: i.uuid ?? i.actor?.uuid,
+        options: {
+            image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
+            tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
+        }
+    }));
+    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: options?.max}]];
     let result;
     if (options.userId != game.user.id) {
         result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined);
@@ -183,7 +179,7 @@ async function selectDocumentDialog(title, content, documents, options = {displa
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
+async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id, useIds: false}) {
     if (options?.sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -194,9 +190,9 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
     }
-    let input = documents.map(i => ({
+    let inputFields = documents.map(i => ({
         label: i.name,
-        name: i.uuid ?? i.actor?.uuid,
+        name: options?.useIds ? i.id : i.uuid,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
@@ -204,26 +200,30 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
             maxAmount: options?.max
         }
     }));
-    let inputs = [['selectAmount', input, {displayAsRows: true, totalMax: options?.max}]];
-    let height = (inputs[0][1].length * 56 + 46);
-    if (inputs[0][1].length > 14 ) height = 850;
+    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: options?.max}]];
+    // let height = (inputs[0][1].length * 56 + 46); Come back to when I have a dialog large enough to max out the window
+    // if (inputs[0][1].length > 14 ) height = 850;
     let result;
     if (game.user.id != options.userId) {
         result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined, {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
-    console.log(result);
     if (result?.buttons) {
         delete result.buttons;
-        return await Promise.all(result.buttons.map(async i => await fromUuid(i)));
+        if (options?.useIds) {
+            return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
+        } else {
+            return await Promise.all(result.buttons.map(async i => await fromUuid(i)));
+        }
+    } else {
+        return false;
     }
-    return false;
 }
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
     let items = actor.items.filter(i => i.type === 'class');
     if (!items.length) return;
-    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max});
+    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max, useIds: true});
     console.log(selection);
     return selection;
 }

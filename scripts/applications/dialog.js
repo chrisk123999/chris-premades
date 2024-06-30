@@ -206,7 +206,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     };
     /** 
      * Main function of the class, creates a new dialog in itself so that it can wrap the submission in a promise in order to await a result
-     * @param {title, content, inputs, buttons} options
+     * @param {title, content, inputs, buttons, config} options
      */
     static async dialog(...options) {
         return new Promise((resolve) => {
