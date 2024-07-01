@@ -129,7 +129,7 @@ export let hex = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }
@@ -161,7 +161,7 @@ export let hexMove = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: move,
                 priority: 50
             }
@@ -174,7 +174,7 @@ export let hexAttack = {
     midi: {
         actor: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
             }

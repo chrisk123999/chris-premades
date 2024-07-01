@@ -53,7 +53,7 @@ function collectAllMacros({item, token, actor}, pass) {
                     },
                     macro: j.macro,
                     name: i.name,
-                    priority: i.priority,
+                    priority: j.priority,
                     token: token
                 });
             });
@@ -70,7 +70,7 @@ function collectAllMacros({item, token, actor}, pass) {
                     },
                     macro: j.macro,
                     name: i.name,
-                    priority: i.priority,
+                    priority: j.priority,
                     token: token
                 });
             });
@@ -90,7 +90,7 @@ function collectAllMacros({item, token, actor}, pass) {
                     },
                     macro: j.macro,
                     name: templateUtils.getName(i),
-                    priority: i.priority,
+                    priority: j.priority,
                     token: token
                 });
             });
@@ -152,25 +152,26 @@ async function executeTargetMacroPass(workflow) {
 }
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
-    if (stop) return false;
+    if (stop) return true;
+    await genericUtils.sleep(50);
     await executeMacroPass(workflow, 'preItemRoll');
 }
-async function postPreambleComplete(workflow) {
-    await executeMacroPass(workflow, 'postPreambleComplete');
+async function preambleComplete(workflow) {
+    await executeMacroPass(workflow, 'preambleComplete');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
-        await conditionResistance.postPreambleComplete(workflow);
-        await conditionVulnerability.postPreambleComplete(workflow);
+        await conditionResistance.preambleComplete(workflow);
+        await conditionVulnerability.preambleComplete(workflow);
     }
 }
-async function postAttackRollComplete(workflow) {
-    await executeMacroPass(workflow, 'postAttackRollComplete');
+async function attackRollComplete(workflow) {
+    await executeMacroPass(workflow, 'attackRollComplete');
 }
-async function postDamageRoll(workflow) {
-    await executeMacroPass(workflow, 'postDamageRoll');
+async function damageRollComplete(workflow) {
+    await executeMacroPass(workflow, 'damageRollComplete');
 }
-async function RollComplete(workflow) {
+async function rollFinished(workflow) {
     console.log(workflow);
-    await executeMacroPass(workflow, 'RollComplete');
+    await executeMacroPass(workflow, 'rollFinished');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.RollComplete(workflow);
         await conditionVulnerability.RollComplete(workflow);
@@ -190,10 +191,10 @@ async function preTargetDamageApplication(token, {workflow, ditem}) {
 }
 export let midiEvents = {
     preItemRoll,
-    postAttackRollComplete,
-    postDamageRoll,
-    RollComplete,
-    postPreambleComplete,
+    attackRollComplete,
+    damageRollComplete,
+    rollFinished,
+    preambleComplete,
     preTargetDamageApplication,
     preAttackRoll
 };

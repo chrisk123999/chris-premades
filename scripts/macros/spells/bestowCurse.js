@@ -218,7 +218,7 @@ export let bestowCurse = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }
@@ -270,7 +270,7 @@ export let bestowCurseDamageSource = {
     midi: {
         actor: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
             }

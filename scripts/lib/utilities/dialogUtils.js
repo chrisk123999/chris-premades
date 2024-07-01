@@ -169,7 +169,7 @@ async function selectDocumentDialog(title, content, documents, options = {displa
             tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: options?.max}]];
+    let inputs = [['button', inputFields, {displayAsRows: true}]];
     let result;
     if (options.userId != game.user.id) {
         result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined);
@@ -179,7 +179,7 @@ async function selectDocumentDialog(title, content, documents, options = {displa
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id, useIds: false}) {
+async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
     if (options?.sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -192,7 +192,7 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     }
     let inputFields = documents.map(i => ({
         label: i.name,
-        name: options?.useIds ? i.id : i.uuid,
+        name: i.id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
@@ -209,13 +209,10 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
+    console.log(result);
     if (result?.buttons) {
         delete result.buttons;
-        if (options?.useIds) {
-            return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
-        } else {
-            return await Promise.all(result.buttons.map(async i => await fromUuid(i)));
-        }
+        return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
     } else {
         return false;
     }
@@ -223,7 +220,7 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
     let items = actor.items.filter(i => i.type === 'class');
     if (!items.length) return;
-    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max, useIds: true});
+    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max});
     console.log(selection);
     return selection;
 }

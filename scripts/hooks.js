@@ -8,18 +8,11 @@ import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
-import {vae} from './integrations/vae.js';
 import {createHeaderButton, renderItemSheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
-    Hooks.on('midi-qol.preItemRoll', midiEvents.preItemRoll);
-    Hooks.on('midi-qol.postPreambleComplete', midiEvents.postPreambleComplete);
-    Hooks.on('midi-qol.postAttackRollComplete', midiEvents.postAttackRollComplete);
-    Hooks.on('midi-qol.preDamageRollComplete', midiEvents.postDamageRoll);
-    Hooks.on('midi-qol.RollComplete', midiEvents.RollComplete);
-    Hooks.on('midi-qol.preAttackRoll', midiEvents.preAttackRoll);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);

@@ -65,7 +65,7 @@ export let beaconOfHope = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }

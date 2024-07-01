@@ -67,7 +67,7 @@ export let antagonize = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }

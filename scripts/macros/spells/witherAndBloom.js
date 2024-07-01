@@ -30,7 +30,7 @@ export let witherAndBloom = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             },

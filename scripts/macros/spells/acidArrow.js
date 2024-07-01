@@ -33,12 +33,12 @@ export let acidArrow = {
                 priority: 50
             },
             {
-                pass: 'postAttackRollComplete',
+                pass: 'attackRollComplete',
                 macro: attack,
                 priority: 50
             },
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 50
             }

@@ -57,7 +57,7 @@ export let blindingSmite = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }
@@ -70,7 +70,7 @@ export let blindingSmiteDamage = {
     midi: {
         actor: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
             }

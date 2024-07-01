@@ -71,7 +71,7 @@ export let elementalWeapon = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priroity: 50
             }

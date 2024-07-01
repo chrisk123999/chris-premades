@@ -56,7 +56,7 @@ export let searingSmite = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }
@@ -69,7 +69,7 @@ export let searingSmiteDamage = {
     midi: {
         actor: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
             }

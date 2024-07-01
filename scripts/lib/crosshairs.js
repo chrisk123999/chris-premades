@@ -37,7 +37,6 @@ export class Crosshairs extends MeasuredTemplate {
         this.rightX = 0;
         this.rightY = 0;
         this.radius = this.document.distance * this.scene.grid.size / 2;
-        console.log(this.radius);
     }
     static defaultCrosshairsConfig() {
         return {
@@ -155,7 +154,6 @@ export class Crosshairs extends MeasuredTemplate {
         if (this.activeHandlers) {
             this.clearHandlers();
         }
-        console.log(this);
         return this;
     }
     /** @override */
@@ -190,9 +188,7 @@ export class Crosshairs extends MeasuredTemplate {
         return text;
     }
     _drawControlIcon() {
-        console.log(this);
         const size = Math.max(Math.round((canvas.dimensions.size * 0.5) / 20) * 20, 40);
-        console.log(size);
         // eslint-disable-next-line no-undef
         let icon = new ControlIcon({texture: this.icon, size: size});
         icon.visible = this.drawIcon;
@@ -213,7 +209,6 @@ export class Crosshairs extends MeasuredTemplate {
         this.ray = Ray.fromAngle(document.x, document.y, direction, distance);
         // Get the Template shape
         this.t = this.computeShape(this);
-        console.log(this.t);
         // Draw the Template outline using styles included
         this.template.clear().lineStyle(this._borderThickness, this.document.borderColor, this.drawOutline ? 0.75 : 0);
         if (this._texture) {

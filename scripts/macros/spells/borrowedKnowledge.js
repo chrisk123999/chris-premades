@@ -35,7 +35,7 @@ export let borrowedKnowledge = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }

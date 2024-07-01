@@ -54,7 +54,7 @@ export let eldritchBlast = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             }
@@ -173,7 +173,7 @@ export let eldritchBlastBeam = {
     midi: {
         item: [
             {
-                pass: 'postAttackRollComplete',
+                pass: 'attackRollComplete',
                 macro: beam,
                 priority: 50
             }

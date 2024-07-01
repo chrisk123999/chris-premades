@@ -137,12 +137,12 @@ export let blight = {
     midi: {
         item: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
             }, 
             {
-                pass: 'postPreambleComplete',
+                pass: 'preambleComplete',
                 macro: early,
                 priority: 50
             }

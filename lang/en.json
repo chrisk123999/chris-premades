@@ -61,6 +61,10 @@
             },
             "NoPermission": "You do not have permissions to change this"
         },
+        "Summons": {
+            "DismissSummon": "Dismiss Summon",
+            "SummonedCreature": "Summoned Creature"
+        },
         "settings": {
             "gmID": {
                 "name": "Gamemaster User ID",

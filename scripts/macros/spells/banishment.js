@@ -88,12 +88,12 @@ export let banishment = {
     midi: {
         item: [
             {
-                pass: 'RollComplete',
+                pass: 'rollFinished',
                 macro: use,
                 priority: 50
             },
             {
-                pass: 'postPreambleComplete',
+                pass: 'preambleComplete',
                 macro: upcastTargets.plusOne,
                 priority: 50
             }

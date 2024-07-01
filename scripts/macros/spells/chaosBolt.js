@@ -72,7 +72,7 @@ export let chaosBolt = {
     midi: {
         item: [
             {
-                pass: 'postDamageRoll',
+                pass: 'damageRollComplete',
                 macro: use,
                 priority: 50
             }

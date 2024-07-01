@@ -14,9 +14,10 @@ import {effectHud} from './applications/effectHud.js';
 import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
 import {registerSockets} from './lib/sockets.js';
-registerSockets();
+import {workflow} from './extensions/workflow.js';
 Hooks.once('init', () => {
     registerSettings();
+    registerSockets();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
     registerMenus();
     registerCustomTypes();
@@ -25,6 +26,7 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
 });
 Hooks.once('ready', () => {
+    workflow.setup();
     registerHooks();
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();

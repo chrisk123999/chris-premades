@@ -5,10 +5,10 @@
 // eventually await canvas.scene.createEmbeddedDocuments
 
 import {Crosshairs} from './crosshairs.js';
-import {genericUtils, animationUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils} from '../utils.js';
 
 export class Summons {
-    constructor(sourceActors,  updates, originItem, summonerToken, options) {
+    constructor(sourceActors, updates, originItem, summonerToken, options) {
         this.sourceActors = sourceActors;
         this._updates = updates;
         this.originItem = originItem;
@@ -24,7 +24,7 @@ export class Summons {
         let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
         await Summon.spawnAll();
-        //this.handleEffects();
+        await Summon.handleEffects();
     }
     static async socketSpawn(actorUuid, updates, sceneUuid) {
         let actor = await fromUuid(actorUuid);
@@ -64,7 +64,7 @@ export class Summons {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
             if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
                 this.options.callbacks.post = callbackFunction;
-                genericUtils.setProperty(this.updates, 'token.alpha', 0);
+                this.mergeUpdates({token: {alpha: 0}});
             }
         }
         if (!this.options.callbacks?.show) {
@@ -115,12 +115,6 @@ export class Summons {
         if (templateData.cancelled) {
             console.log('was cancelled, do something different');
         }
-        mergeObject(this.updates, {token: {
-            rotation: templateData.direction,
-            x: templateData.x - (canvas.scene.grid.sizeX * tokenDocument.width / 2),
-            y: templateData.y - (canvas.scene.grid.sizeY * tokenDocument.height / 2)
-        }});
-        console.log(this.summonerToken);
         this.mergeUpdates({
             actor: {
                 flags: {
@@ -133,37 +127,44 @@ export class Summons {
                         }
                     }
                 },
-                effects: this.summonEffect
+                effects: [this.summonEffect]
+            },
+            token: {
+                rotation: templateData.direction,
+                x: templateData.x - (canvas.scene.grid.sizeX * tokenDocument.width / 2),
+                y: templateData.y - (canvas.scene.grid.sizeY * tokenDocument.height / 2)
             }
         });
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
             let spawnedToken = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
-            this.spawnedTokens.push(spawnedToken);
+            this.spawnedTokens.push(spawnedToken[0]);
         } else {
             console.log('socket spawn');
             // this.socketSpawn();
         }
-        console.log(this.spawnedTokens);
         return this.spawnedTokens;
     }
     async handleEffects() {
-        // make the things dependent and whatnot
+        let effect = await effectUtils.createEffect(this.summonerToken.actor, this.casterEffect);
+        let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
+        await effectUtils.addDependent(effect, summonEffects);
+        summonEffects.forEach(async (e) => await effectUtils.addDependent(e, [effect]));
     }
     mergeUpdates(updates) {
-        this.updates[this.currentIndex] = genericUtils.mergeObject(this.updates, updates);
+        genericUtils.mergeObject(this.updates, updates);
     }
     get tokenUpdates() {
-        return this.updates[this.currentIndex].token;
+        return this.updates.token;
     }
     get actorUpdates() {
-        return this.updates[this.currentIndex].actor;
+        return this.updates.actor;
     }
     get summonEffect() {
         return {
             name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
-            icon: this.originItem.img,
+            img: this.originItem.img,
             duration: {
                 seconds: this.options.duration
             },
@@ -187,6 +188,9 @@ export class Summons {
             origin: this.originItem.uuid,
             flags: {
                 'chris-premades': {
+                    macros: {
+                        effect: ['summonUtils']
+                    },
                     vae: {
                         button: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
                     },
@@ -208,14 +212,6 @@ export class Summons {
     get sourceActor() {
         return this.sourceActors[this.currentIndex];
     }
-    /*
-    effect on caster to dismiss summon - flag with IDs
-    effect on summon to dismiss effect on caster
-    summon effect dependent on caster
-    caster effect dependent on summon
-
-
-    */
 }
 // Export for helper functions for macro call system.
 export let summonUtils = {
