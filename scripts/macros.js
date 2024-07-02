@@ -17,6 +17,7 @@ export {chaosBolt} from './macros/spells/chaosBolt.js';
 export {charmPerson} from './macros/spells/charmPerson.js';
 export {chillTouch, chillTouchChilled} from './macros/spells/chillTouch.js';
 export {chromaticOrb} from './macros/spells/chromaticOrb.js';
+export {compelledDuel, compelledDuelSource, compelledDuelCompelled} from './macros/spells/compelledDuel.js';
 export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';

@@ -69,7 +69,7 @@ async function use({trigger, workflow}) {
         .play();
     /* eslint-enable indent */
 }
-async function moveOrStart(trigger) {
+async function moveOrStart({trigger}) {
     console.log('here');    //Finish this.
 }
 async function removed({entity}) {

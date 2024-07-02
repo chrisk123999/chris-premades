@@ -1,4 +1,4 @@
-import {animationUtils, dialogUtils, itemUtils} from '../../utils.js';
+import {animationUtils, dialogUtils, genericUtils, itemUtils} from '../../utils.js';
 
 async function damage({workflow}) {
     if (!workflow.targets.size) return;
@@ -50,6 +50,9 @@ async function damage({workflow}) {
         }
     }
 }
+async function early({workflow}) {
+    genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
+}
 export let chromaticOrb = {
     name: 'Chromatic Orb',
     version: '0.12.0',
@@ -58,6 +61,11 @@ export let chromaticOrb = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
+                priority: 50
+            },
+            {
+                pass: 'preItemRoll',
+                macro: early,
                 priority: 50
             }
         ]

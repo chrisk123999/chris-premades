@@ -268,6 +268,12 @@
             "chromaticOrb": {
                 "select": "What damage type?"
             },
+            "compelledDuel": {
+                "target": "Compelled Duel: Target",
+                "source": "Compelled Duel: Source",
+                "moved": "Compelled Duel: Moved",
+                "endEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?"
+            },
             "elementalWeapon": {
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",

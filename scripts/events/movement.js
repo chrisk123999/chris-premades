@@ -89,26 +89,26 @@ function getSortedTriggers(tokens, pass, token) {
     });
     return triggers.sort((a, b) => a.priority - b.priority);
 }
-async function executeMacro(trigger) {
+async function executeMacro(trigger, options) {
     console.log('CPR: Executing Movement Macro: ' + trigger.macro.name);
     try {
-        await trigger.macro(trigger);
+        await trigger.macro({trigger, options});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
-async function executeMacroPass(tokens, pass, token) {
+async function executeMacroPass(tokens, pass, token, options) {
     console.log('CPR: Executing Movement Macro Pass: ' + pass);
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let i of triggers) await executeMacro(i);
+    for (let i of triggers) await executeMacro(i, options);
 }
 function preUpdateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
     let templatesUuids = Array.from(templateUtils.getTemplatesInToken(token.object)).map(i => i.uuid);
     genericUtils.setProperty(options, 'chris-premades.templates.wasIn', templatesUuids);
-    genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y});
+    genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y, elevation: token.elevation});
 }
 async function updateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
@@ -116,8 +116,8 @@ async function updateToken(token, updates, options, userId) {
     if (!updates.x && !updates.y && !updates.elevation) return;
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
-    await executeMacroPass([token], 'moved');
-    await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token);
+    await executeMacroPass([token], 'moved', undefined, options);
+    await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
     if (!updates.x && !updates.y && updates.elevation) return;
     let coords = {x: token.x, y: token.y};
     let previousCoords = options['chris-premades'].coords.previous;
@@ -135,10 +135,10 @@ async function updateToken(token, updates, options, userId) {
     let enteredAndLeft = through.filter(i => {
         return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
     });
-    await templateEvents.executeMacroPass(leaving, 'left', token.object);
-    await templateEvents.executeMacroPass(entering, 'enter', token.object);
-    await templateEvents.executeMacroPass(staying, 'stay', token.object);
-    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object);
+    await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
+    await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
+    await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
+    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
     let attachedTemplateUuids = token.flags['chris-premades']?.attached?.attachedTemplateUuids ?? [];
     let removedTemplateUuids = [];
     await Promise.all(attachedTemplateUuids.map(async templateUuid => {
