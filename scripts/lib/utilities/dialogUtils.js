@@ -209,7 +209,6 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
-    console.log(result);
     if (result?.buttons) {
         delete result.buttons;
         return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
@@ -218,11 +217,33 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
     }
 }
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
-    let items = actor.items.filter(i => i.type === 'class');
-    if (!items.length) return;
-    let selection = await selectDocumentsDialog(title, content, items, {userId: userId, max: max});
-    console.log(selection);
-    return selection;
+    let documents = actor.items.filter(i => i.type === 'class');
+    if (!documents.length) return;
+    documents = documents.sort((a, b) => {
+        return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+    });
+    let inputFields = documents.map(i => ({
+        label: i.name,
+        name: i.id,
+        options: {
+            image: i.img,
+            minAmount: 0,
+            maxAmount: Math.min(i.system.levels - i.system.hitDiceUsed, max)
+        }
+    }));
+    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
+    let result;
+    if (game.user.id != userId) {
+        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {height: 'auto'});
+    } else {
+        result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
+    }
+    if (result?.buttons) {
+        delete result.buttons;
+        return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
+    } else {
+        return false;
+    }
 }
 export let dialogUtils = {
     buttonDialog,

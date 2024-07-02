@@ -1,5 +1,4 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     if (!workflow.failedSaves.size) {
         let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);

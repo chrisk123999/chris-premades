@@ -54,8 +54,16 @@ function collectTokenMacros(token, pass, distance) {
     }
     return triggers;
 }
-function getSortedTriggers(token, pass, distance) {
-    let allTriggers = collectTokenMacros(token, pass, distance);
+function getSortedTriggers(tokens, pass, token) {
+    let allTriggers = [];
+    tokens.forEach(i => {
+        let distance;
+        if (token) {
+            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true});
+            if (distance < 0) return;
+        }
+        allTriggers.push(...collectTokenMacros(i, pass, distance));
+    });
     let names = new Set(allTriggers.map(i => i.name));
     let maxMap = {};
     names.forEach(i => {
@@ -90,9 +98,9 @@ async function executeMacro(trigger) {
         console.error(error);
     }
 }
-async function executeMacroPass(token, pass, distance) {
-    console.log('CPR: Executing Movement Macro Pass: ' + pass + ' for ' + token.name);
-    let triggers = getSortedTriggers(token, pass, distance);
+async function executeMacroPass(tokens, pass, token) {
+    console.log('CPR: Executing Movement Macro Pass: ' + pass);
+    let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
 }
@@ -108,12 +116,8 @@ async function updateToken(token, updates, options, userId) {
     if (!updates.x && !updates.y && !updates.elevation) return;
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
-    await executeMacroPass(token, 'moved');
-    for (let i of token.parent.tokens) {
-        if (i === token) continue;
-        let distance = tokenUtils.getDistance(token.object, i.object);
-        await executeMacroPass(i, 'movedNear', distance);
-    }
+    await executeMacroPass([token], 'moved');
+    await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token);
     if (!updates.x && !updates.y && updates.elevation) return;
     let coords = {x: token.x, y: token.y};
     let previousCoords = options['chris-premades'].coords.previous;

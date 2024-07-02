@@ -20,6 +20,7 @@ export {chromaticOrb} from './macros/spells/chromaticOrb.js';
 export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
+export {spiritGuardians} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';

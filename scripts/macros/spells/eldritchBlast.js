@@ -1,8 +1,8 @@
 import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    let level = actorUtils.getLevelOrCR(workflow.actor);
-    let boltsLeft = 1 + Math.floor((level + 1) * (1/6));
     if (!workflow.targets.size) return;
+    let level = actorUtils.getLevelOrCR(workflow.actor);
+    let boltsLeft = workflow.item.system.target.value + Math.floor((level + 1) * (1/6));
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true});
     if (!featureData) {
         errors.missingPackItem();

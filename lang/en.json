@@ -206,7 +206,13 @@
                 "orange": "Orange",
                 "yellow": "Yellow",
                 "rainbow": "Rainbow",
-                "random": "Random"
+                "random": "Random",
+                "blueYellow": "Blue & Yellow",
+                "darkBlack": "Dark Black",
+                "darkBlue": "Dark Blue",
+                "darkWhiteBlue": "Dark White & Blue",
+                "greenOrange": "Green & Orange",
+                "pinkPurple": "Pink & Purple"
             },
             "sound": "Sound:",
             "damageType": "Damage Type:",
@@ -284,6 +290,11 @@
             },
             "wrathfulSmite": {
                 "frighten": "Wrathful Smite: Frighten"
+            },
+            "witherAndBloom": {
+                "heal": "Wither And Bloom: Heal",
+                "selectTarget": "Who can roll unspent Hit Dice?",
+                "selectHitDie": "Select how many Hit Dice to roll."
             },
             "zoneOfTruth": {
                 "save": "Zone of Truth: Save"

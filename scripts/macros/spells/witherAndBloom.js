@@ -1,23 +1,28 @@
-import {dialogUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
-    let friendlyTargets = workflow.targets.filter(i => i.document.disposition === workflow.token.document.disposition);
-    console.log(friendlyTargets);
+    let friendlyTargets = workflow.targets.filter(i => i.document.disposition === workflow.token.document.disposition && i.actor.type === 'character');
     if (!friendlyTargets.size) return;
     let selection;
     if (friendlyTargets.size === 1) {
         selection = friendlyTargets.first();
     } else {
-        selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.macros.witherAndBloom.selectTarget.title', 'CHRISPREMADES.macros.witherAndBloom.selectTarget.context', Array.from(friendlyTargets), {skipDeadAndUnconscious: false});
+        selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.witherAndBloom.selectTarget', Array.from(friendlyTargets), {skipDeadAndUnconscious: false});
         if (!selection) return;
         selection = selection[0];
     }
     let ownerId = socketUtils.firstOwner(selection, true);
-    let classSelection = await dialogUtils.selectHitDie(selection.actor, 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.title', 'CHRISPREMADES.macros.witherAndBloom.selectHitDie.content', {userId: ownerId, max: workflow.castData.castLevel - 1});
+    let classSelection = await dialogUtils.selectHitDie(selection.actor, workflow.item.name, 'CHRISPREMADES.macros.witherAndBloom.selectHitDie', {userId: ownerId, max: workflow.castData.castLevel - 1});
     if (!classSelection) return;
-    
-
-
+    let formula = '';
+    for (let i of classSelection) {
+        formula += i.amount + i.document.system.hitDice + ' + ';
+        await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
+    }
+    formula += itemUtils.getMod(workflow.item);
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Wither and Bloom: Heal', {object: true, translate: 'CHRISPREMADES.macros.witherAndBloom.heal'});
+    featureData.system.damage.parts[0][0] = formula;
+    await workflowUtils.syntheticItemDataRoll(featureData, selection.actor, [selection]);
 }
 async function damage({trigger, workflow, ditem}) {
     let tokenDocument = await fromUuid(ditem.tokenUuid);

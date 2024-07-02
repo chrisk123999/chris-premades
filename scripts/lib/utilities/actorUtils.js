@@ -27,11 +27,15 @@ function checkTrait(actor, type, trait) {
 function typeOrRace(actor) {
     return MidiQOL.typeOrRace(actor);
 }
+function getAlignment(actor) {
+    return actor.system.details.alignment.toLowerCase();
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
     getFirstToken,
     getLevelOrCR,
     checkTrait,
-    typeOrRace
+    typeOrRace,
+    getAlignment
 };

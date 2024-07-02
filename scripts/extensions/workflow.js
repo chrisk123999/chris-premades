@@ -79,13 +79,9 @@ function setup() {
         }
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
-            // let oldLength = this.damageRolls?.length;
             await midiEvents.damageRollComplete(this);
-            // let newLength = this.damageRolls?.length;
-            // if (newLength && oldLength != newLength) {
             await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'));
             this.damageDetail = createDamageDetail({roll: this.damageRolls, item: this.item, ammo: this.ammo, versatile: this.rollOptions.versatile, defaultType: this.defaultDamageType});
-            // }
             return nextState;
         }
         async WorkflowState_RollFinished(context = {}) {

@@ -5,7 +5,7 @@
 // eventually await canvas.scene.createEmbeddedDocuments
 
 import {Crosshairs} from './crosshairs.js';
-import {genericUtils, animationUtils, effectUtils, actorUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils} from '../utils.js';
 
 export class Summons {
     constructor(sourceActors, updates, originItem, summonerToken, options) {
@@ -18,13 +18,14 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default'}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (!Array.isArray(updates)) updates = [updates];
         let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
         await Summon.spawnAll();
         await Summon.handleEffects();
+        await Summon.handleInitiative();
     }
     static async socketSpawn(actorUuid, updates, sceneUuid) {
         let actor = await fromUuid(actorUuid);
@@ -146,11 +147,101 @@ export class Summons {
         }
         return this.spawnedTokens;
     }
+    async handleSpecialUpdates() {
+        if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls && originItem.system.school === 'nec') { // Undead Thralls automation
+            let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
+            if (wizardLevels) {
+                setProperty(updates2, 'actor.system.attributes.hp.formula', sourceActors[i].system.attributes.hp.formula + ' + ' + wizardLevels);
+                setProperty(updates2, 'actor.system.bonuses.mwak.damage', originItem.actor.system.attributes.prof);
+                setProperty(updates2, 'actor.system.bonuses.rwak.damage', originItem.actor.system.attributes.prof);
+            }
+        }
+    }
     async handleEffects() {
-        let effect = await effectUtils.createEffect(this.summonerToken.actor, this.casterEffect);
+        // Account for items that can spawn things multiple times
+        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, itemUtils.getIdentifer(this.originItem) ?? this.originItem.name);
+        if (effect) await genericUtils.update(effect, {
+            flags: {
+                'chris-premades': {
+                    summons: {
+                        ids: {
+                            [this.originItem.name]: effect.flags['chris-premades'].summons.ids[this.originItem.name].concat(this.spawnedTokensIds)
+                        }
+                    }
+                }
+            }
+        });
+        // Options to be added to the created effect
+        let effectOptions = {
+            identifier: itemUtils.getIdentifer(this.originItem) ?? this.originItem.name
+        };
+        // Account for concentration special cases
+        let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
+        if (this.originItem.requiresConcentration && !this.options?.concentrationNonDependent && concentrationEffect) genericUtils.setProperty(effectOptions, 'concentrationItem', concentrationEffect);
+        if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
+        // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
         await effectUtils.addDependent(effect, summonEffects);
-        summonEffects.forEach(async (e) => await effectUtils.addDependent(e, [effect]));
+        // Make caster effect dependent on each summon effect
+        await Promise.all(summonEffects.forEach(async e => await effectUtils.addDependent(e, [effect])));
+        // Add on delete macros to be called, for cases where concentration does not delete the summon
+        if (this.options?.onDeleteMacros && concentrationEffect) {
+            let concentrationUpdates = {
+                flags: {
+                    'chris-premades': {
+                        macros: {
+                            effect: this.options.onDeleteMacros
+                        }
+                    }
+                }
+            };
+            await genericUtils.update(concentrationEffect, concentrationUpdates);
+        }
+    }
+    async handleInitiative() {
+        if (!combatUtils.inCombat()) return;
+        let casterCombatant = game.combat.combatants.contents.find(combatant => combatant.actorId === this.originItem.actor.id);
+        if (!casterCombatant) return;
+        let initiativeType = this.options?.initiativeType ?? 'seperate';
+        switch (initiativeType) {
+            case ('seperate'): {
+                await Promise.all(this.spawnedTokens.forEach(async tok => {
+                    await genericUtils.createEmbeddedDocuments(game.combat, 'Combatant', {
+                        tokenId: tok.id,
+                        sceneId: canvas.scene.id,
+                        actorId: tok.actor.id,
+                        initiative: null
+                    });
+                    await tok.actor.rollInitiative();
+                }));
+                break;
+            }
+            case ('follows'): {
+                let updates = this.spawnedTokens.map(tok => ({
+                    tokenId: tok.id,
+                    sceneId: canvas.scene.id,
+                    actorId: tok.actor.id,
+                    initiative: casterCombatant.initiative - 0.01
+                }));
+                await genericUtils.createEmbeddedDocuments(game.combat, 'Combatant', updates);
+                break;
+            }
+            case ('group'): {
+                let initiativeRoll = await this.spawnedTokens[0].actor.getInitiativeRoll().evaluate();
+                let messageData = {
+                    flavor: this.originItem.name + ': Group Initiative'
+                };
+                await initiativeRoll.toMessage(messageData);
+                let updates = this.spawnedTokens.map(tok => ({
+                    tokenId: tok.id,
+                    sceneId: canvas.scene.id,
+                    actorId: tok.actor.id,
+                    initiative: initiativeRoll.total
+                }));
+                await genericUtils.createEmbeddedDocuments(game.combat, 'Combatant', updates);
+                break;
+            }
+        }
     }
     mergeUpdates(updates) {
         genericUtils.mergeObject(this.updates, updates);
