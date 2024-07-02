@@ -274,6 +274,13 @@
                 "moved": "Compelled Duel: Moved",
                 "endEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?"
             },
+            "detectThoughts": {
+                "probeDeeper": "Detect Thoughts: Probe Deeper"
+            },
+            "dragonsBreath": {
+                "select": "What damage type?",
+                "dragonBreath": "Dragon Breath"
+            },
             "elementalWeapon": {
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",

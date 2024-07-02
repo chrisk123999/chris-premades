@@ -19,11 +19,10 @@ async function damage({workflow}) {
     let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.actor.getRollData()).evaluate();
     await workflow.setDamageRoll(damageRoll);
 }
-async function damageApplication({trigger, workflow}) {
+async function damageApplication({trigger, workflow, ditem}) {
     if (!workflow.targets.size) return;
     let creatureTypes = Array.from(workflow.targets).map(target => actorUtils.typeOrRace(target.actor));
     if (creatureTypes.every(type => type === 'plant')) return;
-    let ditem = workflow.damageItem;
     let targetActor = await fromUuid(ditem.actorUuid);
     let creatureType = actorUtils.typeOrRace(targetActor);
     if (creatureType === 'plant') {
