@@ -24,7 +24,7 @@ async function save(token, template) {
     };
     await effectUtils.createEffect(token.actor, effectData, {parentEntity: template, identifier: 'zoneOfTruthSave'});
 }
-async function enterOrStart(trigger) {
+async function enterOrStart({trigger}) {
     if (!trigger.token.actor) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'zoneOfTruthSave');
     if (effect) return;

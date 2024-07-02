@@ -15,7 +15,7 @@ import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
 import {registerSockets} from './lib/sockets.js';
 import {workflow} from './extensions/workflow.js';
-registerSockets();
+Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);

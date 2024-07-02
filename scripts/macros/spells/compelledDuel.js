@@ -47,10 +47,10 @@ async function use({workflow}) {
     }
 
 }
-async function combatEnd({entity: effect}) {
+async function combatEnd({trigger: {entity: effect}}) {
     await combatUtils.setTurnCheck(effect, 'compelledDuel', true);
 }
-async function turnEnd(trigger) {
+async function turnEnd({trigger}) {
     let sourceToken = trigger.token;
     let effect = trigger.entity;
     let targetUuids = effect?.flags?.['chris-premades']?.compelledDuel?.targetUuids;

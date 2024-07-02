@@ -72,7 +72,7 @@ async function use({trigger, workflow}) {
 async function moveOrStart({trigger}) {
     console.log('here');    //Finish this.
 }
-async function removed({entity}) {
+async function removed({trigger: {entity}}) {
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
     Sequencer.EffectManager.endEffects({'name': 'spiritGuardians', 'object': token});

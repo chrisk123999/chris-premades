@@ -38,7 +38,7 @@ export class Summons {
         return token;
     }
     // Helper function to dismiss any summons on an effect, will have the effect name and an array of ids
-    static async dismiss(trigger) {
+    static async dismiss({trigger}) {
         let effect = trigger.entity;
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;

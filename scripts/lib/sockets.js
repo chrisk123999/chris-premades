@@ -89,10 +89,8 @@ let sockets = [
 ];
 export let socket;
 export function registerSockets() {
-    Hooks.once('socketlib.ready', () => {
-        socket = socketlib.registerModule('chris-premades');
-        sockets.forEach(i => {
-            socket.register(i.name, i);
-        });
+    socket = socketlib.registerModule('chris-premades');
+    sockets.forEach(i => {
+        socket.register(i.name, i);
     });
 }
