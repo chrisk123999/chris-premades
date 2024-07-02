@@ -259,6 +259,9 @@
                 "bounce": "Who should the Chaos Bolt bounce to?",
                 "alwaysBounce": "Always Bounces:"
             },
+            "chromaticOrb": {
+                "select": "What damage type?"
+            },
             "elementalWeapon": {
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",
@@ -320,6 +323,7 @@
             "endOfTurn": "End of Turn"
         },
         "genericEffects": {
+            "conditionAdvantage": "Condition Advantage",
             "conditionDisadvantage": "Condition Disadvantage",
             "conditionImmunity": "Condition Immunity"
         }

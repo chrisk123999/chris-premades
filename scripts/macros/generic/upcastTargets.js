@@ -10,7 +10,7 @@ async function check(maxTargets, workflow) {
     } else {
         newTargets = selection[0] ?? [];
     }
-    genericUtils.updateTargets(newTargets);
+    await genericUtils.updateTargets(newTargets);
 }
 async function plusOne({workflow}) {
     let castLevel = workflow.castData.castLevel;

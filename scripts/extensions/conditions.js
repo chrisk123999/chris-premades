@@ -5,6 +5,7 @@ async function createActiveEffect(effect, options, userId) {
     if (!(effect.parent instanceof Actor)) return;
     let effectConditions = effect.flags['chris-premades']?.conditions;
     if (!effectConditions) return;
+    await genericUtils.sleep(50);
     await effectUtils.applyConditions(effect.parent, effectConditions);
 }
 async function deleteActiveEffect(effect, options, userId) {

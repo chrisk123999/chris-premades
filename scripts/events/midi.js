@@ -178,8 +178,8 @@ async function rollFinished(workflow) {
     }
     await executeTargetMacroPass(workflow);
 }
-async function preAttackRoll(workflow) {
-    await executeMacroPass(workflow, 'preAttackRoll');
+async function postAttackRoll(workflow) {
+    await executeMacroPass(workflow, 'postAttackRoll');
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
     console.log('CPR: Executing Midi Macro Pass: applyDamage for ' + token.document.name);
@@ -196,5 +196,5 @@ export let midiEvents = {
     rollFinished,
     preambleComplete,
     preTargetDamageApplication,
-    preAttackRoll
+    postAttackRoll
 };

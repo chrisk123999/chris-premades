@@ -79,13 +79,13 @@ function setup() {
         }
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
-            let oldLength = this.damageRolls?.length;
+            // let oldLength = this.damageRolls?.length;
             await midiEvents.damageRollComplete(this);
-            let newLength = this.damageRolls?.length;
-            if (newLength && oldLength != newLength) {
-                await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'));
-                this.damageDetail = createDamageDetail({roll: this.damageRolls, item: this.item, ammo: this.ammo, versatile: this.rollOptions.versatile, defaultType: this.defaultDamageType});
-            }
+            // let newLength = this.damageRolls?.length;
+            // if (newLength && oldLength != newLength) {
+            await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'));
+            this.damageDetail = createDamageDetail({roll: this.damageRolls, item: this.item, ammo: this.ammo, versatile: this.rollOptions.versatile, defaultType: this.defaultDamageType});
+            // }
             return nextState;
         }
         async WorkflowState_RollFinished(context = {}) {
@@ -95,7 +95,7 @@ function setup() {
         }
         async WorkflowState_WaitForAttackRoll(context = {}) {
             let nextState = await super.WorkflowState_WaitForAttackRoll(context);
-            if (nextState === this.WorkflowState_AttackRollComplete) await midiEvents.preAttackRoll(this);
+            if (nextState === this.WorkflowState_AttackRollComplete) await midiEvents.postAttackRoll(this);
             return nextState;
         }
     }

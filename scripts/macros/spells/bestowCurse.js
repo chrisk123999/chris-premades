@@ -158,7 +158,7 @@ async function attack({workflow}) {
     let sourceActorUuid = effect.flags['chris-premades'].bestowCurse.sourceActor;
     if (workflow.targets.map(target => target.actor?.uuid).has(sourceActorUuid)) {
         workflow.disadvantage = true;
-        workflow.attackAdvAttribution.add('DIS:' + effect.name);
+        workflow.attackAdvAttribution.add('Disadvantage: ' + effect.name);
     }
 }
 async function damage({workflow}) {
@@ -257,7 +257,7 @@ export let bestowCurseAttack = {
     midi: {
         actor: [
             {
-                pass: 'preAttackRoll',
+                pass: 'preambleComplete',
                 macro: attack,
                 priority: 50
             }
