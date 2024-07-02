@@ -86,7 +86,7 @@ async function sourceAttack({workflow}) {
     if (!targetUuids) return;
     let endSpell = false;
     for (let target of workflow.targets) {
-        if (constants.attacks.includes(workflow.item.actionType)) {
+        if (constants.attacks.includes(workflow.item.system.actionType)) {
             if (!targetUuids.includes(target.document.uuid)) {
                 endSpell = true;
                 break;
@@ -100,7 +100,7 @@ async function sourceAttack({workflow}) {
         }
     }
     if (!endSpell) return;
-    await genericUtils.remove(workflow.actor, effect);
+    await genericUtils.remove(effect);
 }
 async function targetAttacked({trigger, workflow}) {
     let targetToken = trigger.token;
