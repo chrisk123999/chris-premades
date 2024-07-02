@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     if (!workflow.failedSaves.size) {
@@ -144,30 +144,38 @@ async function targetMoved({trigger: {entity: effect}, options}) {
         await combatUtils.setTurnCheck(effect, 'compelledDuel');
         return;
     }
-    /* eslint-disable indent */
-    await new Sequence()
-        .effect()
-            .file('jb2a.misty_step.01.blue')
-            .atLocation(token)
-            .randomRotation()
-            .scaleToObject(2)
-            .wait(750)
-        .animation()
+    if (animationUtils.jb2aCheck()) {
+        /* eslint-disable indent */
+        await new Sequence()
+            .effect()
+                .file('jb2a.misty_step.01.blue')
+                .atLocation(token)
+                .randomRotation()
+                .scaleToObject(2)
+                .wait(750)
+            .animation()
+                .on(token)
+                .opacity(0.0)
+                .teleportTo({x: tempToken.x, y: tempToken.y, elevation: tempToken.elevation})
+                .wait(200)
+            .effect()
+                .file('jb2a.misty_step.02.blue')
+                .atLocation(token)
+                .randomRotation()
+                .scaleToObject(2)
+                .wait(1500)
+            .animation()
+                .on(token)
+                .opacity(1.0)
+            .play();
+        /* eslint-enable indent */
+    } else {
+        await new Sequence()
+            .animation()
             .on(token)
-            .opacity(0.0)
             .teleportTo({x: tempToken.x, y: tempToken.y, elevation: tempToken.elevation})
-            .wait(200)
-        .effect()
-            .file('jb2a.misty_step.02.blue')
-            .atLocation(token)
-            .randomRotation()
-            .scaleToObject(2)
-            .wait(1500)
-        .animation()
-            .on(token)
-            .opacity(1.0)
-        .play();
-    /* eslint-enable indent */
+            .play();
+    }
 }
 export let compelledDuel = {
     name: 'Compelled Duel',
