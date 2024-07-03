@@ -1961,7 +1961,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
@@ -1982,7 +1982,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
@@ -2003,7 +2003,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
@@ -2024,7 +2024,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
@@ -2045,7 +2045,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
@@ -2066,7 +2066,7 @@ export function setConfig() {
                     }
                 },
                 'checkbox': {
-                    'overwriteInitiative': {
+                    'overwriteinitiative': {
                         'label': 'Overwrite initiative setting? Default Seperate Initiative',
                         'default': false
                     }
