@@ -73,7 +73,7 @@ async function use({workflow}) {
     }
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function remove({entity}) {
+async function remove({trigger: {entity}}) {
     let effect = entity;
     let actor = effect.parent;
     if (!actor) return;

@@ -80,7 +80,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'movement', ['boomingBladeMoved']);
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'boomingBlade'});
 }
-async function moved(trigger) {
+async function moved({trigger}) {
     let effect = trigger.entity;
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.macros.boomingBlade.willingMove', {actorName: effect.parent.name}));
     if (!selection) return;

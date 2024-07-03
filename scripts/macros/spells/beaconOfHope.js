@@ -31,13 +31,12 @@ async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function damageApplication({trigger, workflow}) {
+async function damageApplication({workflow, ditem}) {
     if (!workflow.targets.size) return;
     if (!workflow.damageRoll) return;
     let healingType = CONFIG.DND5E.healingTypes['healing'].label.toLowerCase();
     let defaultDamageType = workflow.defaultDamageType;
     if (defaultDamageType !== healingType) return;
-    let ditem = workflow.damageItem;
     let targetActor = await fromUuid(ditem.actorUuid);
     if (actorUtils.checkTrait(targetActor, 'di', healingType)) return;
     let newHealingTotal = 0;

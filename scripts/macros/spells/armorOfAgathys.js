@@ -74,7 +74,7 @@ async function hit({workflow}) {
 
         .play();
 }
-async function start({entity}) {
+async function start({trigger: {entity}}) {
     let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
@@ -167,7 +167,7 @@ async function start({entity}) {
         .waitUntilFinished(-1000)
         .play();
 }
-async function end({entity}) {
+async function end({trigger: {entity}}) {
     let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);

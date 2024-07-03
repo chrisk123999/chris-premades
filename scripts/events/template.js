@@ -59,7 +59,7 @@ function getSortedTriggers(templates, pass, token) {
 async function executeMacro(trigger) {
     console.log('CPR: Executing Template Macro: ' + trigger.macro.name);
     try {
-        await trigger.macro(trigger);
+        await trigger.macro({trigger});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

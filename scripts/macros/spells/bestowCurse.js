@@ -169,7 +169,7 @@ async function damage({workflow}) {
     if (!workflow.hitTargets.every(target => validTargetUuids.includes(target.document.uuid))) return;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
-async function damageApplication({workflow}) {
+async function damageApplication({workflow, ditem}) {
     if (!workflow.hitTargets.size) return;
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseSource');
@@ -194,7 +194,6 @@ async function damageApplication({workflow}) {
     if (hasDR) damageTotal = Math.floor(damageTotal / 2);
     let hasDV = actorUtils.checkTrait(targetActor, 'dv', damageType);
     if (hasDV) damageTotal *= 2;
-    let ditem = workflow.damageItem;
     let remainingDamage = damageTotal - Math.min(ditem.newTempHP, damageTotal);
     ditem.newTempHP -= (damageTotal - remainingDamage);
     ditem.tempDamage += (damageTotal - remainingDamage);
@@ -203,7 +202,7 @@ async function damageApplication({workflow}) {
     ditem.hpDamage += remainingDamage;
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }
-async function remove({entity}) {
+async function remove({trigger: {entity}}) {
     let identifier = effectUtils.getEffectIdentifier(entity);
     if (identifier !== 'bestowCurseDamage') return;
     let parentEffect = await fromUuid(entity.flags['chris-premades'].parentEntityUuid);

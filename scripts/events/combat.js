@@ -103,7 +103,7 @@ function getSortedTriggers(token, pass) {
 async function executeMacro(trigger) {
     console.log('CPR: Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro(trigger);
+        await trigger.macro({trigger});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
