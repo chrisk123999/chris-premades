@@ -274,6 +274,9 @@
                 "moved": "Compelled Duel: Moved",
                 "endEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?"
             },
+            "destructiveWave": {
+                "select": "What damage type?"
+            },
             "detectThoughts": {
                 "probeDeeper": "Detect Thoughts: Probe Deeper"
             },
@@ -285,6 +288,11 @@
                 "noWeapons": "Target has no valid non-magical equipped weapons!",
                 "selectDamageType": "What damage type?",
                 "selectWeapon": "Which weapon would you like to enchant?"
+            },
+            "enlargeReduce": {
+                "select": "Enlarge or Reduce?",
+                "enlarge": "Enlarge",
+                "reduce": "Reduce"
             },
             "hex": {
                 "hexed": "Hexed",

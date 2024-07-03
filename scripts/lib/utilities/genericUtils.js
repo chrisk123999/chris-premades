@@ -24,9 +24,9 @@ function deepClone(object) {
 function mergeObject(original, other) {
     return foundry.utils.mergeObject(original, other);
 }
-async function update(entity, updates) {
+async function update(entity, updates, options={}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
-    if (hasPermission) return await entity.update(updates);
+    if (hasPermission) return await entity.update(updates, options);
     await socket.executeAsGM('updateEntity', entity.uuid, updates);
 }
 async function setFlag(entity, scope, key, value) {

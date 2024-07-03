@@ -60,7 +60,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             item: {
                 identifier: identifier,
                 name: macros[identifier] ? macros[identifier].name : item.name,
-                label: identifier ? macros[identifier].name === item.name ? item.name : item.name + ' (' + macros[identifier].name + ')' : item.name,
+                label: macros[identifier] ? macros[identifier].name === item.name ? item.name : item.name + ' (' + macros[identifier].name + ')' : item.name,
                 version: itemUtils.getVersion(item),
                 source: itemUtils.getSource(item),
                 isUpToDate: isUpToDate,

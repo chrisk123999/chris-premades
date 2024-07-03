@@ -73,6 +73,41 @@ function findNearby(token, range, disposition, {includeIncapacitated=false, incl
 function checkIncapacitated(token, logResult=false) {
     return MidiQOL.checkIncapacitated(token, logResult);
 }
+function checkForRoom(token, distance) {
+    let point = token.getCenterPoint();
+    let padding = token.w / 2 - canvas.grid.size / 2;
+    let pixelDistance = distance * canvas.grid.size + padding;
+    function check(direction) {
+        let newPoint = duplicate(point);
+        switch (direction) {
+            case 'n':
+                newPoint.y -= pixelDistance;
+                break;
+            case 'e':
+                newPoint.x += pixelDistance;
+                break;
+            case 's':
+                newPoint.y += pixelDistance;
+                break;
+            case 'w':
+                newPoint.x -= pixelDistance;
+                break;
+        }
+        return token.checkCollision(newPoint, {origin: point, type: 'move', mode: 'any'});
+    }
+    return {
+        n: check('n'),
+        e: check('e'),
+        s: check('s'),
+        w: check('w')
+    };
+}
+function findDirection(room) {
+    if (!room.s && !room.e) return 'se';
+    if (!room.n && !room.e) return 'ne';
+    if (!room.s && !room.w) return 'sw';
+    if (!room.n && !room.w) return 'nw';
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -80,5 +115,7 @@ export let tokenUtils = {
     moveTokenAlongRay,
     pushToken,
     findNearby,
-    checkIncapacitated
+    checkIncapacitated,
+    checkForRoom,
+    findDirection
 };

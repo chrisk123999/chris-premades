@@ -23,10 +23,10 @@ async function deleteEntity(entityUuid) {
     if (!entity) return;
     await entity.delete();
 }
-async function updateEntity(entityUuid, updates) {
+async function updateEntity(entityUuid, updates, options) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    await entity.update(updates);
+    await entity.update(updates, options);
 }
 async function setFlag(entityUuid, scope, key, value) {
     let entity = await fromUuid(entityUuid);
