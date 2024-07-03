@@ -30,6 +30,9 @@ function typeOrRace(actor) {
 function getAlignment(actor) {
     return actor.system.details.alignment.toLowerCase();
 }
+function getCRFromProf(prof) {
+    return 4 * prof - 7;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -37,5 +40,6 @@ export let actorUtils = {
     getLevelOrCR,
     checkTrait,
     typeOrRace,
-    getAlignment
+    getAlignment,
+    getCRFromProf
 };

@@ -303,6 +303,20 @@ export function registerSettings() {
         default: false,
         category: 'interface'
     });
+    addSetting({
+        key: 'hiddenCompendiums',
+        type: Array,
+        default: [],
+        category: 'interface',
+        select: true
+    });
+    addSetting({
+        key: 'hiddenCompendiumFolders',
+        type: Array,
+        default: [],
+        category: 'interface',
+        select: true
+    });
 }
 export function registerMenus() {
     addMenu({

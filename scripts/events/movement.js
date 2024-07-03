@@ -1,3 +1,4 @@
+import {attach} from '../extensions/attach.js';
 import * as macros from '../macros.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
 import {templateEvents} from './template.js';
@@ -139,16 +140,7 @@ async function updateToken(token, updates, options, userId) {
     await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
     await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
     await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
-    let attachedTemplateUuids = token.flags['chris-premades']?.attached?.attachedTemplateUuids ?? [];
-    let removedTemplateUuids = [];
-    await Promise.all(attachedTemplateUuids.map(async templateUuid => {
-        let template = await fromUuid(templateUuid);
-        if (!template) removedTemplateUuids.push(templateUuid);
-        await genericUtils.update(template, {
-            x: template.x + (coords.x - previousCoords.x),
-            y: template.y + (coords.y - previousCoords.y)
-        });
-    }));
+    await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
 }
 export let movementEvents = {
     updateToken,

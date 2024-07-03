@@ -11,8 +11,11 @@ import {dae} from './integrations/dae.js';
 import {createHeaderButton, renderItemSheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
+import {sidebar} from './extensions/sidebar.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
+    Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
+    Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
     Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);

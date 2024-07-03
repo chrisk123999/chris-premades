@@ -5,7 +5,7 @@
 // eventually await canvas.scene.createEmbeddedDocuments
 
 import {Crosshairs} from './crosshairs.js';
-import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils} from '../utils.js';
 
 export class Summons {
     constructor(sourceActors, updates, originItem, summonerToken, options) {
@@ -43,6 +43,14 @@ export class Summons {
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         if (!summons) return;
         await canvas.scene.deleteEmbeddedDocuments('Token', summons);
+    }
+    static async getSummonItem(name, updates, casterActor, options = {flatDC: false, flatAttack: false, damageBonus: null}) {
+        let documentData = compendiumUtils.getItemFromCompendium('chris-premades.CPR Summon Features', name, {
+            object: true, 
+            getDescription: true, 
+            translate: name.replaceAll(' ', ''),
+            flatAttack: options?.flatAttack ? actorUtils.casterActor : false
+        });
     }
     async prepareAllData() {
         while (this.currentIndex != this.sourceActors.length) {
