@@ -30,6 +30,7 @@ export {earthTremor} from './macros/spells/earthTremor.js';
 export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {enlargeReduce, enlargeReduceChanged} from './macros/spells/enlargeReduce.js';
+export {faerieFire, faerieFireOutlined} from './macros/spells/faerieFire.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
 export {spiritGuardians} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
