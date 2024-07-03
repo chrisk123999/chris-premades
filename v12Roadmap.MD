@@ -29,13 +29,19 @@ Goals:
         - [x] fields to set identifier and other bits but with it prefilled
 [ ] Convert all helper functions
 [ ] Summons
+    - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
+    - [ ] helper functions
+        - [ ] Get attack modifiers/spell save DCs
+        - [ ] CR calculating functions
+        - [ ] Token config getters?
+        - [ ] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep
 [ ] warpgate.spawn()
     - [x] Helper functions spawn function
         - [x] spawning part
-    - [ ] Convert summons.js and tashaSummon.js and merge what's possible
+    - [x] Convert summons.js and tashaSummon.js and merge what's possible
 [x] warpgate.menu()/dialog() - now DialogApp / dialogUtils
 [x] warpgate.crosshairs()-- - now Crosshairs
 [ ] warpgate.mutate()
@@ -50,3 +56,6 @@ Goals:
 [x] Replaced by internal hook calls
 ## Convert/update/fix all old functions
 [ ] Redo artificer infusions and items that add items
+## Extensions
+[ ] Folder maker for summons
+[ ] Update summon iniative/update companion initiative

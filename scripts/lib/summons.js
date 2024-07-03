@@ -136,6 +136,7 @@ export class Summons {
                 y: templateData.y - (canvas.scene.grid.sizeY * tokenDocument.height / 2)
             }
         });
+        this.handleSpecialUpdates();
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
@@ -147,14 +148,48 @@ export class Summons {
         }
         return this.spawnedTokens;
     }
-    async handleSpecialUpdates() {
-        if (originItem.actor.flags['chris-premades']?.feature?.undeadThralls && originItem.system.school === 'nec') { // Undead Thralls automation
-            let wizardLevels = originItem.actor.classes.wizard?.system?.levels;
-            if (wizardLevels) {
-                setProperty(updates2, 'actor.system.attributes.hp.formula', sourceActors[i].system.attributes.hp.formula + ' + ' + wizardLevels);
-                setProperty(updates2, 'actor.system.bonuses.mwak.damage', originItem.actor.system.attributes.prof);
-                setProperty(updates2, 'actor.system.bonuses.rwak.damage', originItem.actor.system.attributes.prof);
-            }
+    handleSpecialUpdates() {
+        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'undeadThralls') && this.originItem.system.school === 'nec') {
+            let wizardLevels = this.originItem.actor.classes.wizard?.system?.levels;
+            if (wizardLevels) this.mergeUpdates({
+                actor: {
+                    system: {
+                        attributes: {
+                            hp: {
+                                formula: this.hpFormula + ' + ' + wizardLevels
+                            }
+                        },
+                        bonuses: {
+                            mwak: {
+                                damage: this.originItem.actor.system.attributes.prof
+                            },
+                            rwak: {
+                                damage: this.originItem.actor.system.attributes.prof
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
+            let formula = this.hpFormula;
+            let hitDieAmount = parseInt(formula.match(/(\d+)d/)[1]);
+            let extraHitPoints;
+            if (hitDieAmount) extraHitPoints = hitDieAmount * 2;
+            let updates = {};
+            if (extraHitPoints) genericUtils.setProperty(updates, 'actor.system.attributes.hp.formula', formula + ' + ' + extraHitPoints);
+            let items = new Set();
+            this.sourceActor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i.toObject()));
+            Object?.values(this.updates.actor?.items)?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
+            if (items.size > 0) items.forEach(i => {
+                i.system.properties.push('mgc');
+                genericUtils.setProperty(updates, 'actor.items[' + i.name + ']', i);
+            });
+            if (updates != {}) this.mergeUpdates(updates);
+        }
+        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'durableSummons') && (this.originItem.system.school === 'div')) {
+            let currentTempHp = this.updates.actor?.system?.attributes?.hp?.temp;
+            this.mergeUpdates({actor: {system: {attributes: {hp: {temp: currentTempHp ? Number(currentTempHp) + 30 : 30}}}}});
         }
     }
     async handleEffects() {
@@ -302,6 +337,9 @@ export class Summons {
     }
     get sourceActor() {
         return this.sourceActors[this.currentIndex];
+    }
+    get hpFormula() {
+        return this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula;
     }
 }
 // Export for helper functions for macro call system.
