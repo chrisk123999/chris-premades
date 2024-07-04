@@ -294,6 +294,12 @@
                 "enlarge": "Enlarge",
                 "reduce": "Reduce"
             },
+            "fireShield": {
+                "select": "What kind of shield?",
+                "warmShield": "Warm Shield",
+                "chillShield": "Chill Shield",
+                "dismiss": "Fire Shield: Dismiss"
+            },
             "hex": {
                 "hexed": "Hexed",
                 "multiple": "Which target would you like to hex?",
