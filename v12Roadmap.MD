@@ -49,7 +49,7 @@ Goals:
 [x] Effect sidebar thing
 [?] Effect thing or macro.StatusEffect
 ### Token Attacher
-[ ] Attachng templates
+[X] Attachng templates
 ### Automated Animations
 [ ] Teleport function
 ### Effect Macro

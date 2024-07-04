@@ -153,7 +153,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     label: config.label,
                     name: config.category,
                     id: config.value,
-                    value: currentConfigs?.[config.value] ?? config.default
+                    value: currentConfigs?.[config.value] ?? config.default,
+                    i18nOption: config?.i18nOption
                 };
                 if (!canConfigure) {
                     genericUtils.setProperty(configuration, 'isDisabled', true);

@@ -6,7 +6,7 @@
                 {{#each configuration}}
                     <div>
                         {{#if isCheckbox}}
-                            <label for="{{id}}">{{localize label}}</label>
+                            <label for="{{id}}">{{localize label {{#if i18nOption}} option=i18nOption {{/if}}}}</label>
                             <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                         {{else if isText}}
                             <label for="{{id}}">{{localize label}}</label>
