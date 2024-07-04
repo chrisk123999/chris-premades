@@ -11,7 +11,7 @@ function collectMovementMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j);
 }
-function collectTokenMacros(token, pass, distance) {
+function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor);
@@ -21,6 +21,10 @@ function collectTokenMacros(token, pass, distance) {
             let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).map(k => k.movement).flat().filter(l => l.pass === pass);
             movementMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target.disposition) return;
+                }
                 triggers.push({
                     entity: effect,
                     castData: {
@@ -30,7 +34,10 @@ function collectTokenMacros(token, pass, distance) {
                     },
                     macro: i.macro,
                     name: effect.name,
-                    priority: i.priority
+                    priority: i.priority,
+                    token: token.object,
+                    target: target.object,
+                    distance: distance
                 });
             });
         }
@@ -39,6 +46,11 @@ function collectTokenMacros(token, pass, distance) {
             if (!macroList.length) continue;
             let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).map(k => k.movement).flat().filter(l => l.pass === pass);
             itemMacros.forEach(i => {
+                if (distance && i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target.disposition) return;
+                }
                 triggers.push({
                     entity: item,
                     castData: {
@@ -48,11 +60,15 @@ function collectTokenMacros(token, pass, distance) {
                     },
                     macro: i.macro,
                     name: item.name,
-                    priority: i.priority
+                    priority: i.priority,
+                    token: token.object,
+                    target: target.object,
+                    distance: distance
                 });
             });
         }
     }
+    console.log(triggers);
     return triggers;
 }
 function getSortedTriggers(tokens, pass, token) {
@@ -63,7 +79,7 @@ function getSortedTriggers(tokens, pass, token) {
             distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true});
             if (distance < 0) return;
         }
-        allTriggers.push(...collectTokenMacros(i, pass, distance));
+        allTriggers.push(...collectTokenMacros(i, pass, distance, token));
     });
     let names = new Set(allTriggers.map(i => i.name));
     let maxMap = {};

@@ -44,13 +44,20 @@ export class Summons {
         if (!summons) return;
         await canvas.scene.deleteEmbeddedDocuments('Token', summons);
     }
-    static async getSummonItem(name, updates, casterActor, options = {flatDC: false, flatAttack: false, damageBonus: null}) {
+    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
+        let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync()).total;
+        let prof = originItem.actor.attributes.prof;
+        let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
+        let attackBonus = bonuses + prof + abilityModifier;
         let documentData = compendiumUtils.getItemFromCompendium('chris-premades.CPR Summon Features', name, {
             object: true, 
             getDescription: true, 
             translate: name.replaceAll(' ', ''),
-            flatAttack: options?.flatAttack ? actorUtils.casterActor : false
+            flatAttack: flatAttack ? attackBonus : false,
+            flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
+        if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
+        return genericUtils.mergeObject(documentData, updates);
     }
     async prepareAllData() {
         while (this.currentIndex != this.sourceActors.length) {

@@ -33,7 +33,7 @@ export {enlargeReduce, enlargeReduceChanged} from './macros/spells/enlargeReduce
 export {faerieFire, faerieFireOutlined} from './macros/spells/faerieFire.js';
 export {fireShield, fireShieldShielded, fireShieldDismiss} from './macros/spells/fireShield.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
-export {spiritGuardians} from './macros/spells/spiritGuardians.js';
+export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';

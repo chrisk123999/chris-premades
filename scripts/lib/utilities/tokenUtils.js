@@ -53,7 +53,7 @@ async function pushToken(sourceToken, targetToken, distance) {
     let ray = new Ray(sourceToken.center, targetToken.center);
     await moveTokenAlongRay(targetToken, ray, distance);
 }
-function findNearby(token, range, disposition, {includeIncapacitated=false, includeToken=false}) {
+function findNearby(token, range, disposition, {includeIncapacitated = false, includeToken = false} = {}) {
     let dispositionValue;
     switch (disposition) {
         case 'ally':

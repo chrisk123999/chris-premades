@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, dialogUtils, effectUtils, itemUtils, tokenUtils} from '../../utils.js';
+import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     let alignment = actorUtils.getAlignment(workflow.actor);
     let damageType;
@@ -22,17 +22,18 @@ async function use({trigger, workflow}) {
             'chris-premades': {
                 spiritGuardians: {
                     damageType: damageType,
-                    formula: formula
+                    formula: formula,
+                    touchedTokenIds: {}
                 },
                 macros: {
                     movement: [
-                        'spiritGuardians'
+                        'spiritGuardiansDamage'
                     ],
                     combat: [
-                        'spiritGuardians'
+                        'spiritGuardiansDamage'
                     ],
                     effect: [
-                        'spiritGuardians'
+                        'spiritGuardiansDamage'
                     ]
                 },
                 castData: {
@@ -43,7 +44,7 @@ async function use({trigger, workflow}) {
             }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, identifier: 'spiritGuardians', interdependent: true});
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, identifier: 'spiritGuardiansDamage', interdependent: true});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     if (!playAnimation) return;
     let color = itemUtils.getConfig(workflow.item, 'color');
@@ -69,11 +70,32 @@ async function use({trigger, workflow}) {
         .play();
     /* eslint-enable indent */
 }
-async function moveOrStart({trigger}) {
-    console.log('here');    //Finish this.
+async function moveOrTurn({trigger}) {
+    if (combatUtils.inCombat()) {
+        let turn = combatUtils.currentTurn();
+        let nearbySpiritGuardianEffects = tokenUtils.findNearby(trigger.target, 15, 'enemy', {includeToken: true}).filter(i => effectUtils.getEffectByIdentifier(i.actor, 'spiritGuardiansDamage')).map(j => effectUtils.getEffectByIdentifier(j.actor, 'spiritGuardiansDamage'));
+        let used = nearbySpiritGuardianEffects.find(i => i.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn]?.includes(trigger.target.id));
+
+        if (used) return;
+    }
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Spirit Guardians: Damage', {object: true, identifier: 'spiritGuardiansDamage', flatDC: trigger.castData.castDC, translate: 'CHRISPREMADES.macros.spiritGuardians.damage'});
+    let damageType = trigger.entity.flags['chris-premades'].spiritGuardians.damageType;
+    featureData.system.damage.parts = [
+        [
+            trigger.entity.flags['chris-premades'].spiritGuardians.formula + '[' + damageType + ']',
+            damageType
+        ]
+    ];
+    await workflowUtils.syntheticItemDataRoll(featureData, trigger.token.actor, [trigger.target]);
+    if (combatUtils.inCombat()) {
+        let turn = combatUtils.currentTurn();
+        let touchedTokenIds = trigger.entity.flags['chris-premades'].spiritGuardians.touchedTokenIds[turn] ?? [];
+        touchedTokenIds.push(trigger.target.id);
+        await genericUtils.setFlag(trigger.entity, 'chris-premades', 'spiritGuardians.touchedTokenIds.' + turn, touchedTokenIds);
+    }
 }
-async function removed({trigger: {entity}}) {
-    let token = actorUtils.getFirstToken(entity.parent);
+async function removed({trigger}) {
+    let token = actorUtils.getFirstToken(trigger.entity.parent);
     if (!token) return;
     Sequencer.EffectManager.endEffects({'name': 'spiritGuardians', 'object': token});
 }
@@ -89,28 +111,6 @@ export let spiritGuardians = {
             }
         ]
     },
-    effect: [
-        {
-            pass: 'deleted',
-            macro: removed,
-            priority: 50
-        }
-    ],
-    combat: [
-        {
-            pass: 'turnStart',
-            macro: moveOrStart,
-            priority: 50
-        }
-    ],
-    movement: [
-        {
-            pass: 'movedNear',
-            macro: moveOrStart,
-            distance: 15,
-            priority: 50
-        }
-    ],
     config: [
         {
             value: 'playAnimation',
@@ -221,6 +221,42 @@ export let spiritGuardians = {
             type: 'file',
             default: '',
             category: 'sound'
+        },
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.formula',
+            type: 'text',
+            default: 'd8',
+            homebrew: true
+        }
+    ]
+};
+export let spiritGuardiansDamage = {
+    name: 'Spirit Guardians Damage',
+    version: spiritGuardians.version,
+    effect: [
+        {
+            pass: 'deleted',
+            macro: removed,
+            priority: 50
+        }
+    ],
+    combat: [
+        {
+            pass: 'everyTurnNear',
+            macro: moveOrTurn,
+            priority: 50,
+            distance: 15,
+            disposition: 'enemy'
+        }
+    ],
+    movement: [
+        {
+            pass: 'movedNear',
+            macro: moveOrTurn,
+            distance: 15,
+            priority: 50,
+            disposition: 'enemy'
         }
     ]
 };

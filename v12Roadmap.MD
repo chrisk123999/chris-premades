@@ -31,10 +31,10 @@ Goals:
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
     - [ ] helper functions
-        - [ ] Get attack modifiers/spell save DCs
-        - [ ] CR calculating functions
+        - [x] Get attack modifiers/spell save DCs
+        - [x] CR calculating functions
         - [ ] Token config getters?
-        - [ ] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
+        - [x] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep

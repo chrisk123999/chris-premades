@@ -1,5 +1,9 @@
 {
     "javascript.preferences.importModuleSpecifierEnding": "js",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-    "javascript.preferences.quoteStyle": "single"
+    "javascript.preferences.quoteStyle": "single",
+    "i18n-ally.localesPaths": [
+        "lang"
+    ],
+    "i18n-ally.keystyle": "nested"
 }

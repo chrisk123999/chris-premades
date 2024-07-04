@@ -4,16 +4,16 @@ import {socket} from '../sockets.js';
 /*
         useSpellWhenEmpty - 1
 */
-async function buttonDialog(title, content, buttons, options = {displayAsRows: true, userId: game.user.id}) {
+async function buttonDialog(title, content, buttons, {displayAsRows = true, userId = game.user.id} = {}) {
     let inputs = [
-        ['button', [], {displayAsRows: options.displayAsRows}]
+        ['button', [], {displayAsRows: displayAsRows}]
     ];
     for (let [label, value, options] of buttons) {
         inputs[0][1].push({label: label, name: value, options: options ?? {}});
     }
     let result;
-    if (options.userId != game.user.id) {
-        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined, {width: 400});
+    if (userId != game.user.id) {
+        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {width: 400});
     } else result = await DialogApp.dialog(title, content, inputs, undefined, {width: 400});
     return result?.buttons ?? false;
 }
@@ -50,9 +50,9 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
     return result?.[input.name];
 }
-async function selectTargetDialog(title, content, targets, options = {returnUuid: false, type: 'one', selectOptions: [], skipDeadAndUnconscious: true, coverToken: undefined, reverseCover: false, displayDistance: true, maxAmount: 1, userId: game.user.id}) {
+async function selectTargetDialog(title, content, targets, {returnUuid = false, type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id} = {}) {
     let inputs = [
-        [options?.type === 'multiple' ? 'checkbox' : options?.type === 'number' ? 'number' : options?.type === 'select' ? 'selectOption' : options?.type === 'selectAmount' ? 'selectAmount' : 'radio']
+        [type === 'multiple' ? 'checkbox' : type === 'number' ? 'number' : type === 'select' ? 'selectOption' : type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];
     let targetInputs = [];
     let number = 1;
@@ -68,13 +68,13 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
                 label = i.document.name;
             }
         }
-        if (options?.coverToken && !options?.reverseCover) {
-            label += ' [' + tokenUtils.checkCover(options.coverToken, i, {displayName: true}) + ']';
-        } else if (options?.coverToken) {
-            label += ' [' + tokenUtils.checkCover(i, options.coverToken, {displayName: true}) + ']';
+        if (coverToken && !reverseCover) {
+            label += ' [' + tokenUtils.checkCover(coverToken, i, {displayName: true}) + ']';
+        } else if (coverToken) {
+            label += ' [' + tokenUtils.checkCover(i, coverToken, {displayName: true}) + ']';
         }
-        if (options?.displayDistance && options?.coverToken) {
-            let distance = tokenUtils.getDistance(options.coverToken, i);
+        if (displayDistance && coverToken) {
+            let distance = tokenUtils.getDistance(coverToken, i);
             label += ' [' + +distance.toFixed(2) + ' ' + canvas.scene.grid.units + ' ]';
         }
         let image = i.document.texture.src;
@@ -83,12 +83,12 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         targetInputs.push({
             label: label,
             name: value,
-            options: {image: image, isChecked: isDefaultSelected, options: options?.selectOptions, maxAmount: options?.maxAmount}
+            options: {image: image, isChecked: isDefaultSelected, options: selectOptions, maxAmount: maxAmount}
         });
     }
     inputs[0].push(targetInputs);
-    inputs[0].push({displayAsRows: true, radioName: 'targets', totalMax: options?.maxAmount});
-    if (options?.skipDeadAndUnconscious) {
+    inputs[0].push({displayAsRows: true, radioName: 'targets', totalMax: maxAmount});
+    if (skipDeadAndUnconscious) {
         inputs.push([
             'checkbox',
             [{
@@ -99,13 +99,13 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
         ]);
     }
     let selection;
-    if (options?.userId && options?.userId != game.user.id) {
-        selection = await socket.executeAsUser('dialog', options.userId, title, content, inputs, 'okCancel');
+    if (userId && userId != game.user.id) {
+        selection = await socket.executeAsUser('dialog', userId, title, content, inputs, 'okCancel');
     } else selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
     if (selection?.buttons == false || !selection) return false;
     let result;
     let skip = selection?.skip;
-    switch (options?.type) {
+    switch (type) {
         case 'multiple': {
             for (let [key, value] of Object.entries(selection)) {
                 if (key === 'buttons' || value === false) continue;
@@ -143,20 +143,20 @@ async function selectTargetDialog(title, content, targets, options = {returnUuid
     }
     return ([result, skip]);
 }
-async function confirm(title, content, options = {userId: game.user.id}) {
+async function confirm(title, content, {userId = game.user.id} = {}) {
     let selection;
-    if (options.userId !== game.user.id) {
-        selection = await socket.executeAsUser('dialog', options.userId, title, content, [], 'yesNo');
+    if (userId !== game.user.id) {
+        selection = await socket.executeAsUser('dialog', userId, title, content, [], 'yesNo');
     } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
     return selection?.buttons;
 }
-async function selectDocumentDialog(title, content, documents, options = {displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
-    if (options?.sortAlphabetical) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id} = {}) {
+    if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
         });
     }
-    if (options?.sortCR) {
+    if (sortCR) {
         documents = documents.sort((a, b) => {
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
@@ -166,26 +166,26 @@ async function selectDocumentDialog(title, content, documents, options = {displa
         name: i.uuid ?? i.actor?.uuid,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
         }
     }));
     let inputs = [['button', inputFields, {displayAsRows: true}]];
     let result;
-    if (options.userId != game.user.id) {
-        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined);
+    if (userId != game.user.id) {
+        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined);
     } else {
         result = await DialogApp.dialog(title, content, inputs, undefined);
     }
     if (result?.buttons) return await fromUuid(result.buttons);
     return false;
 }
-async function selectDocumentsDialog(title, content, documents, options = {max: undefined, displayTooltips: false, sortAlphabetical: false, sortCR: false, userId: game.user.id}) {
-    if (options?.sortAlphabetical) {
+async function selectDocumentsDialog(title, content, documents, {max = undefined, displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id} = {}) {
+    if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
         });
     }
-    if (options?.sortCR) {
+    if (sortCR) {
         documents = documents.sort((a, b) => {
             return a.system?.details?.cr > b.system?.details?.cr ? -1 : 1;
         });
@@ -195,17 +195,17 @@ async function selectDocumentsDialog(title, content, documents, options = {max: 
         name: i.id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
-            tooltip: options?.displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
+            tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
             minAmount: 0,
-            maxAmount: options?.max
+            maxAmount: max
         }
     }));
-    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: options?.max}]];
+    let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     // let height = (inputs[0][1].length * 56 + 46); Come back to when I have a dialog large enough to max out the window
     // if (inputs[0][1].length > 14 ) height = 850;
     let result;
-    if (game.user.id != options.userId) {
-        result = await socket.executeAsUser('dialog', options.userId, title, content, inputs, undefined, {height: 'auto'});
+    if (game.user.id != userId) {
+        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }

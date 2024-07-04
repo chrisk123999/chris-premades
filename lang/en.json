@@ -309,6 +309,15 @@
             "searingSmite": {
                 "fire": "Searing Smite: Fire"
             },
+            "spiritGuardians": {
+                "alignment": "What is your alignment?",
+                "damage": "Spirit Guardians: Damage",
+                "variation": "Variation:",
+                "ring": "Ring",
+                "noRing": "No Ring",
+                "particles": "Particles",
+                "spirits": "Spirits"
+            },
             "staggeringSmite": {
                 "stagger": "Staggering Smite: Stagger"
             },
