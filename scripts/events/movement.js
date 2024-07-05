@@ -22,8 +22,8 @@ function collectTokenMacros(token, pass, distance, target) {
             movementMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target.disposition) return;
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
                 triggers.push({
                     entity: effect,
@@ -36,7 +36,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     name: effect.name,
                     priority: i.priority,
                     token: token.object,
-                    target: target.object,
+                    target: target?.object,
                     distance: distance
                 });
             });
@@ -48,8 +48,8 @@ function collectTokenMacros(token, pass, distance, target) {
             itemMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
-                    if (i.disposition === 'ally' && token.disposition != target.disposition) return;
-                    if (i.disposition === 'enemy' && token.disposition === target.disposition) return;
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
                 triggers.push({
                     entity: item,
@@ -62,7 +62,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     name: item.name,
                     priority: i.priority,
                     token: token.object,
-                    target: target.object,
+                    target: target?.object,
                     distance: distance
                 });
             });

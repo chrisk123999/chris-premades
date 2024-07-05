@@ -308,6 +308,14 @@
                 "chillShield": "Chill Shield",
                 "dismiss": "Fire Shield: Dismiss"
             },
+            "fireStorm": {
+                "place": "Place us to 10 templates. Right click to finish",
+                "templates": "Templates"
+            },
+            "flameBlade": {
+                "scimitar": "Flame Blade Scimitar",
+                "evoke": "Evoke Flame Blade"
+            },
             "hex": {
                 "hexed": "Hexed",
                 "multiple": "Which target would you like to hex?",
