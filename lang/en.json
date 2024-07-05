@@ -147,6 +147,14 @@
             "backupCompendium": {
                 "name": "Actor Backup Compendium",
                 "hint": "Select your actor backup compendium."
+            },
+            "hiddenCompendiums": {
+                "name": "Hidden Compendiums",
+                "hint": "Selected compendiums will be hidden."
+            },
+            "hiddenCompendiumFolders": {
+                "name": "Hidden Compendium Folders",
+                "hint": "Selected compendium folders will be hidden."
             }
         },
         "settingCategory": {
