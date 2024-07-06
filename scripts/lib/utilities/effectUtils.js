@@ -40,7 +40,6 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
     if (vae) {
         if (vae.button) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.button', vae.button);
-        if (vae.description) {/* empty */} //TODO
     }
     let effects;
     if (hasPermission) {
