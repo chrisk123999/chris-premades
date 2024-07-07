@@ -1,3 +1,7 @@
+# 0.11.12 Release:
+## Bug Fixes:
+- Song of Victory
+  
 # 0.11.11 Release:
 ## Bug Fixes:
 - Song of Victory
