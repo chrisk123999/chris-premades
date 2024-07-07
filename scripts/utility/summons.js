@@ -61,7 +61,7 @@ async function spawn(sourceActors, updates, duration, originItem, casterToken, m
     };
     if (!updates) updates = {};
     let summonsIds = effect.flags['chris-premades']?.summons?.ids[originItem.name] ?? [];
-    let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteInitiative');
+    let overwriteInitiative = chris.getConfiguration(originItem, 'overwriteinitiative');
     let groupInitiativeValue;
     for (let i = 0; i < sourceActors.length; i++) {
         let updates2 = Array.isArray(updates) ? updates[i] : duplicate(updates);
