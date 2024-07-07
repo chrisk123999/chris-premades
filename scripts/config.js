@@ -6013,8 +6013,8 @@ export function setConfig() {
                 'version': '0.9.33'
             },
             'Song of Victory': {
-                'name': 'Bladesong',
-                'version': '0.9.33'
+                'name': 'Song of Victory',
+                'version': '0.11.11'
             },
             'Mote of Potential': {
                 'name': 'Mote of Potential',

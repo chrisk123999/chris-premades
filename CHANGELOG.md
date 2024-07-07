@@ -1,10 +1,15 @@
-# 0.11.10 Release:
+# 0.11.11 Release:
 ## Bug Fixes:
-- Create Eldritch Cannon
+- Song of Victory
+- Conjure Spells: overwrite initiative configuration (Thanks Elfrey)
 ## Update Notes:
 - Foundry V12 is not supported at all at this time, do not update Foundry at this time.
 - Likely safe for D&D 3.2.0 and Foundry V11.
 - The V12 update is a work in progress.
+  
+# 0.11.10 Release:
+## Bug Fixes:
+- Create Eldritch Cannon
   
 # 0.11.9 Release:
 ## Bug Fixes:
