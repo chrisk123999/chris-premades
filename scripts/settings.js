@@ -2,10 +2,11 @@ import {effectHud} from './applications/effectHud.js';
 import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
+import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {vae} from './integrations/vae.js';
-import {constants, genericUtils} from './utils.js';
+import {constants, genericUtils, socketUtils} from './utils.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -316,6 +317,24 @@ export function registerSettings() {
         default: [],
         category: 'interface',
         select: true
+    });
+    addSetting({
+        key: 'syncActorSizeToTokens',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: value => {
+            if (!game.user.isGM) return;
+            if (value) {
+                Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+            } else {
+                Hooks.off('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.off('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+                Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+            }
+        }
     });
 }
 export function registerMenus() {

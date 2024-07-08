@@ -38,6 +38,7 @@ export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
+export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/summonAberration.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';

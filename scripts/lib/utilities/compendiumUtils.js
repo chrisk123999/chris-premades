@@ -90,11 +90,35 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         return undefined;
     }
 }
+async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, object = false, translate, identifier}) {
+    let pack = game.packs.get(key);
+    if (!pack) {
+        if (!ignoreNotFound) errors.missingPack();
+        return undefined;
+    }
+    let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
+    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
+    if (match) {
+        let document = await pack.getDocument(match._id);
+        if (object) {
+            let documentData = document.toObject();
+            if (translate) documentData.name = genericUtils.translate(translate);
+            if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
+            return documentData;
+        } else {
+            return document;
+        }
+    } else {
+        if (!ignoreNotFound) errors.missingPackItem();
+        return undefined;
+    }
+}
 export let compendiumUtils = {
     getCPRAutomation,
     getGPSAutomation,
     getMISCAutomation,
     getAllAutomations,
     getItemFromCompendium,
-    getPreferredAutomation
+    getPreferredAutomation,
+    getActorFromCompendium
 };

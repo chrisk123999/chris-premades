@@ -1,4 +1,5 @@
 import {DialogApp} from '../applications/dialog.js';
+import {genericUtils} from '../utils.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
@@ -49,10 +50,16 @@ async function addDependent(entityUuid, dependentUuids) {
     }).filter(j => j));
     await entity.addDependent(...dependents);
 }
-async function createEmbeddedDocuments(entityUuid, type, updates) {
+async function createEmbeddedDocuments(entityUuid, type, updates, options) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let documents = await entity.createEmbeddedDocuments(type, updates);
+    let documents = await entity.createEmbeddedDocuments(type, updates, options);
+    return documents.map(i => i.uuid);
+}
+async function updateEmbeddedDocuments(entityUuid, type, updates, options) {
+    let entity = await fromUuid(entityUuid);
+    if (!entity) return;
+    let documents = await entity.updateEmbeddedDocuments(type, updates, options);
     return documents.map(i => i.uuid);
 }
 async function addFavorites(actorUuid, itemUuids) {
@@ -74,6 +81,15 @@ async function rollItem(itemRef, config, options) {
     if (!item) return;
     return await MidiQOL.completeItemUse(item, config, options);
 }
+async function createSidebarActor(actorUuid, {folderId} = {}) {
+    let compendiumActor = await fromUuid(actorUuid);
+    if (!compendiumActor) return;
+    let actorData = compendiumActor.toObject();
+    genericUtils.setProperty(actorData, 'flags.core.sourceId', compendiumActor.uuid);
+    if (folderId) genericUtils.setProperty(actorData, 'folder', folderId);
+    let actor = await Actor.create(actorData);
+    return actor.uuid;
+}
 let sockets = [
     createEffect,
     deleteEntity,
@@ -85,7 +101,9 @@ let sockets = [
     addFavorites,
     setFlag,
     dialog,
-    rollItem
+    rollItem,
+    createSidebarActor,
+    updateEmbeddedDocuments
 ];
 export let socket;
 export function registerSockets() {

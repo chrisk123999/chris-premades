@@ -63,7 +63,18 @@
         },
         "Summons": {
             "DismissSummon": "Dismiss Summon",
-            "SummonedCreature": "Summoned Creature"
+            "SummonedCreature": "Summoned Creature",
+            "SelectSummonType": "Select Summon Type",
+            "CustomName": "{option} Custom Name",
+            "CustomToken": "{option} Custom Token",
+            "CustomAvatar": "{option} Custom Avatar"
+        },
+        "Macros": {
+            "SummonAberration": {
+                "Beholderkin": "Beholderkin",
+                "Slaad": "Slaad",
+                "StarSpawn": "Star Spawn"
+            }
         },
         "settings": {
             "gmID": {
@@ -155,6 +166,10 @@
             "hiddenCompendiumFolders": {
                 "name": "Hidden Compendium Folders",
                 "hint": "Selected compendium folders will be hidden."
+            },
+            "syncActorSizeToTokens": {
+                "name": "Sync Actor and Token Size",
+                "hint": "When enabled, effects that change an actors size will also change the token size on the canvas."
             }
         },
         "settingCategory": {

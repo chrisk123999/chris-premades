@@ -87,7 +87,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'CHRISPREMADES.Generic.None',
                 value: null,
                 id: null,
-                isSelected: context.item.source ? false : game.settings.get('chris-premades', 'devTools') ? false : true
+                isSelected: (context.item.source || game.settings.get('chris-premades', 'devTools')) ? false : true
             }];
             context.item.availableAutomations.forEach(i => {
                 let label;
@@ -154,7 +154,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     name: config.category,
                     id: config.value,
                     value: currentConfigs?.[config.value] ?? config.default,
-                    i18nOption: config?.i18nOption
+                    i18nOption: config?.i18nOption ? genericUtils.translate(config.i18nOption) : false
                 };
                 if (!canConfigure) {
                     genericUtils.setProperty(configuration, 'isDisabled', true);
@@ -210,7 +210,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'Development',
                 value: 'development',
                 id: 'development',
-                isSelected: context.item?.source ? false : true,
+                isSelected: context.item?.source === 'development' ? true : context.item?.source ? false : true,
             });
             let macroInfo = macros[identifier];
             let devTools = {
@@ -261,7 +261,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async _update(event, target) {
         let item = this.itemDocument;
         if (!item) return;
-        let sourceItem = await fromUuid(this.context.item.options.find(i => i.isSelected === true).value);
+        let sourceItem = await fromUuid(this.context.item.options.find(i => i.isSelected === true)?.value);
         if (!sourceItem) return;
         let updatedItem = await Medkit.update(item, sourceItem);
         this.updateContext(updatedItem);
@@ -272,7 +272,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (devTools) {
             if (devTools.identifier != '') await item.setFlag('chris-premades', 'info.identifier', devTools.identifier);
             if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
-            if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source);
+            if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source ?? 'chris-premades');
             if (devTools.midi.item != '') {
                 let value = undefined;
                 try {
@@ -314,7 +314,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (sourceItem) {
                 item = await Medkit.update(item, sourceItem);
             }
-            if (selectedSource != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
+            console.log(selectedSource);
+            if (selectedSource.id != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
         }
         this.itemDocument = item;
         await this.updateContext(item);

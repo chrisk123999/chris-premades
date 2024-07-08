@@ -1,19 +1,28 @@
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
-    spells: 'chris-premades.CPRSpells'
+    spells: 'chris-premades.CPRSpells',
+    summonFeatures: 'chris-premades.CPRSummonFeatures',
+    summons: 'chris-premades.CPRSummons'
 };
 let featurePacks = {
-    spellFeatures: 'chris-premades.CPRSpellFeatures'
+    spellFeatures: 'chris-premades.CPRSpellFeatures',
+    summonFeatures: 'chris-premades.CPRSummonFeatures'
 };
 function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';
         featurePacks.spellFeatures = 'world.cpr-spell-features';
         packs.spells = 'world.cpr-spells';
+        packs.summonFeatures = 'world.cpr-summon-features';
+        featurePacks.summonFeatures = 'world.cpr-summon-features';
+        packs.summons = 'world.cpr-summons';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
         packs.spells = 'chris-premades.CPRSpells';
+        packs.summonFeatures = 'chris-premades.CPRSummonFeatures';
+        featurePacks.summonFeatures = 'chris-premades.CPRSummonFeatures';
+        packs.summons = 'chris-premades.CPRSummons';
     }
 }
 const attacks = [

@@ -27,6 +27,12 @@ Goals:
         - [x] Field to add Item and Actor on use macros, turn it into an array.
         - [ ] (optional?) Button to clear configs
         - [x] fields to set identifier and other bits but with it prefilled
+[ ] Effect Medkit
+    - [ ] Main tab 
+        - [ ] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
+        - [ ] checkbox for flags.chris-premades.noAnimation
+    - [ ] Overtime creator, dynamically update
+    - [ ] DevTools tab to set flags on effect
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
@@ -35,6 +41,7 @@ Goals:
         - [x] CR calculating functions
         - [ ] Token config getters?
         - [x] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
+        - [ ] No target option and set height to 0.01, 'flags.wall-height.tokenHeight', 0.001
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep

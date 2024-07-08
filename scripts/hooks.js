@@ -12,6 +12,7 @@ import {createHeaderButton, renderItemSheet} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
+import {tokens} from './extensions/tokens.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -43,5 +44,13 @@ export function registerHooks() {
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
         Hooks.on('updateMeasuredTemplate', templateEvents.updateMeasuredTemplate);
+        if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
+            Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+            Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+            Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+            Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
+            Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
+            Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
+        }
     }
 }

@@ -192,7 +192,7 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         window: {
             title: 'Default Title',
-            resizable: true,
+            //resizable: true,
         }
     };
     static PARTS = {
@@ -454,7 +454,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     async _onChangeForm(formConfig, event) {
         let targetInput = event.target;
         let currentContext = this.context;
-        let targetInputId = JSON.parse(targetInput.id);
+        let targetInputIdString = targetInput.id.match(/i(\d+)j(\d+)/);
+        let targetInputId = [parseInt(targetInputIdString[1]), parseInt(targetInputIdString[2])];
         switch (targetInput.type) {
             case 'checkbox': {
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].isChecked = targetInput.checked;
@@ -515,17 +516,5 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 targetToken.refresh();
             });
         }
-    }
-    /**
-     * @override Was getting an error without this, only copy-pasted parts from the super, presumably out of HandlebarsMixin
-     */
-    _replaceHTML(result, content, options) {
-        for ( const [partId, htmlElement] of Object.entries(result) ) {
-            const priorElement = content.querySelector(`[data-application-part="${partId}"]`);
-            if ( priorElement ) {
-                priorElement.replaceWith(htmlElement);
-            }
-        }
-        return super._replaceHTML(result, content, options);
     }
 }

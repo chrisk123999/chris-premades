@@ -1,5 +1,5 @@
 import {socket} from '../sockets.js';
-import {socketUtils} from '../../utils.js';
+import {genericUtils, socketUtils} from '../../utils.js';
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
@@ -13,6 +13,9 @@ async function addFavorites(actor, items) {
     } else {
         await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => i.uuid));
     }
+}
+function getTokens(actor) {
+    return actor.getActiveTokens();
 }
 function getFirstToken(actor) {
     let tokens = actor.getActiveTokens();
@@ -33,6 +36,33 @@ function getAlignment(actor) {
 function getCRFromProf(prof) {
     return 4 * prof - 7;
 }
+function getCastData(actor) {
+    return actor.flags['chris-premades']?.castData;
+}
+function getCastLevel(actor) {
+    return getCastData(actor)?.castLevel;
+}
+function getBaseLevel(actor) {
+    return getCastData(actor)?.baseLevel;
+}
+function getSaveDC(actor) {
+    return getCastData(actor)?.saveDC;
+}
+async function getSidebarActor(actor, {autoImport} = {}) {
+    if (!actor.compendium) return actor;
+    let sidebarActor = game.actors.find(i => i.flags.core?.sourceId === actor.uuid);
+    if (!sidebarActor && autoImport) {
+        if (!game.user.can('ACTOR_CREATE')) {
+            let actorUuid = await socket.executeAsGM('createSidebarActor', actor.uuid);
+            sidebarActor = await fromUuid(actorUuid);
+        } else {
+            let actorData = actor.toObject();
+            genericUtils.setProperty(actorData, 'flags.core.sourceId', actor.uuid);
+            sidebarActor = await Actor.create(actorData);
+        }
+    }
+    return sidebarActor;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -41,5 +71,11 @@ export let actorUtils = {
     checkTrait,
     typeOrRace,
     getAlignment,
-    getCRFromProf
+    getCRFromProf,
+    getCastLevel,
+    getBaseLevel,
+    getSaveDC,
+    getCastData,
+    getSidebarActor,
+    getTokens
 };

@@ -5,7 +5,7 @@
 // eventually await canvas.scene.createEmbeddedDocuments
 
 import {Crosshairs} from './crosshairs.js';
-import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants} from '../utils.js';
 
 export class Summons {
     constructor(sourceActors, updates, originItem, summonerToken, options) {
@@ -14,16 +14,19 @@ export class Summons {
         this.originItem = originItem;
         this.summonerToken = summonerToken;
         this.options = options;
-        this.spawnOptions = {};
+        this.spawnOptions = {}; // uh do something?
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
     static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
+        sourceActors = await Promise.all(sourceActors.map(async i => await actorUtils.getSidebarActor(i, {autoImport: true})));
         if (!Array.isArray(updates)) updates = [updates];
         let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
+        if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.minimize();
         await Summon.spawnAll();
+        if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.maximize();
         await Summon.handleEffects();
         await Summon.handleInitiative();
     }
@@ -45,11 +48,11 @@ export class Summons {
         await canvas.scene.deleteEmbeddedDocuments('Token', summons);
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
-        let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync()).total;
+        let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
         let prof = originItem.actor.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
         let attackBonus = bonuses + prof + abilityModifier;
-        let documentData = compendiumUtils.getItemFromCompendium('chris-premades.CPR Summon Features', name, {
+        let documentData = compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, name, {
             object: true, 
             getDescription: true, 
             translate: name.replaceAll(' ', ''),
@@ -116,7 +119,6 @@ export class Summons {
             ownership: {[game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER}
         };
         let currentUpdates = this.updates;
-        console.log(currentUpdates, currentUpdates?.token ?? {});
         this.mergeUpdates({token: genericUtils.mergeObject(currentUpdates.token ?? {}, {actorData}, {overwrite:false})});
         let tokenImg = tokenDocument.texture.src;
         let rotation = this.tokenUpdates?.rotation ?? tokenDocument.rotation ?? 0;

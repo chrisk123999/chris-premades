@@ -70,30 +70,23 @@ function findNearby(token, range, disposition, {includeIncapacitated = false, in
     }
     return MidiQOL.findNearby(dispositionValue, token, range, {includeIncapacitated, includeToken}).filter(i => !i.document.hidden);
 }
-function checkIncapacitated(token, logResult=false) {
+function checkIncapacitated(token, logResult = false) {
     return MidiQOL.checkIncapacitated(token, logResult);
 }
-function checkForRoom(token, distance) {
+function checkForRoom(token, gridSquares) {
+    console.log(token);
     let point = token.getCenterPoint();
-    let padding = token.w / 2 - canvas.grid.size / 2;
-    let pixelDistance = distance * canvas.grid.size + padding;
+    let gridSize = token.document.parent.grid.size;
+    let pixelDistance = gridSquares * gridSize;
     function check(direction) {
-        let newPoint = duplicate(point);
+        let newPoint = genericUtils.duplicate(point);
         switch (direction) {
-            case 'n':
-                newPoint.y -= pixelDistance;
-                break;
-            case 'e':
-                newPoint.x += pixelDistance;
-                break;
-            case 's':
-                newPoint.y += pixelDistance;
-                break;
-            case 'w':
-                newPoint.x -= pixelDistance;
-                break;
+            case 'n': newPoint.y -= pixelDistance; break;
+            case 'e': newPoint.x += pixelDistance; break;
+            case 's': newPoint.y += pixelDistance; break;
+            case 'w': newPoint.x -= pixelDistance; break;
         }
-        return token.checkCollision(newPoint, {origin: point, type: 'move', mode: 'any'});
+        return !token.checkCollision(newPoint, {origin: point, type: 'move', mode: 'any'});
     }
     return {
         n: check('n'),
@@ -103,10 +96,10 @@ function checkForRoom(token, distance) {
     };
 }
 function findDirection(room) {
-    if (!room.s && !room.e) return 'se';
-    if (!room.n && !room.e) return 'ne';
-    if (!room.s && !room.w) return 'sw';
-    if (!room.n && !room.w) return 'nw';
+    if (room.s && room.e) return 'se';
+    if (room.n && room.e) return 'ne';
+    if (room.s && room.w) return 'sw';
+    if (room.n && room.w) return 'nw';
 }
 export let tokenUtils = {
     getDistance,

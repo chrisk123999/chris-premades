@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils} from '../utils.js';
+import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils} from '../utils.js';
 import {templateEvents} from './template.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.combat ?? [];
@@ -54,7 +54,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     entity: item,
                     castData: {
                         castLevel: -1,
-                        saveDC: -1
+                        saveDC: itemUtils.getSaveDC(item)
                     },
                     macro: i.macro,
                     name: item.name,

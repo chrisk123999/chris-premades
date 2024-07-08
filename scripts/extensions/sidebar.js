@@ -37,7 +37,7 @@ async function selectHiddenCompendiums() {
         return true;
     });
     let inputs = packs.filter(j => !Object.values(constants.featurePacks).includes(j.metadata.id)).map(i => ({label: i.metadata.label, name: i.metadata.id.replaceAll('.', '|PERIOD|'), options: {isChecked: oldSettings.includes(i.metadata.id)}}));
-    let selection = await DialogApp.dialog('CHRISPREMADES.settings.hiddenCompendiums.name', 'CHRISPREMADES.settings.hiddenCompendiums.hint', [['checkbox', inputs, {displayAsRows: true}]], 'okCancel');
+    let selection = await DialogApp.dialog('CHRISPREMADES.settings.hiddenCompendiums.name', 'CHRISPREMADES.settings.hiddenCompendiums.hint', [['checkbox', inputs, {displayAsRows: true}]], 'okCancel', {height: 800});
     if (!selection?.buttons) return;
     delete selection.buttons;
     let newSettings = Object.entries(selection).filter(i => i[1]).map(j => j[0].replaceAll('|PERIOD|', '.'));

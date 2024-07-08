@@ -6,7 +6,7 @@
             {{#if displayAsRows}}
                 <div class="flex-col">
                     {{#each options}}
-                        <button type="submit" class="form-button" data-action="confirm" id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                        <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}">
                             {{#if image}}<img class="button-image" src={{image}}>{{/if}}
                             <p class="button-text" {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>{{localize label}}</p>
                         </button>
@@ -14,7 +14,7 @@
                 </div>
             {{else}}
                 {{#each options}}
-                    <button type="submit" class="form-button" data-action="confirm" id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                    <button type="submit" class="form-button" data-action="confirm" id="i{{@../index}}j{{@index}}" name="{{name}}">
                         {{#if image}}<img class="button-image" src={{image}}>{{/if}}
                         <p class="button-text" {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>{{localize label}}</p>
                     </button>
@@ -24,8 +24,8 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="i{{@../index}}j{{@index}}" name="{{name}}" {{#if isChecked}}checked{{/if}}>
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -33,8 +33,8 @@
                 </div>
             {{else}}
                 {{#each options}}
-                    <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="[{{@../index}}, {{@index}}]" name="{{name}}" {{#if isChecked}}checked{{/if}}>
-                    <label for="[{{@../index}}, {{@index}}]">
+                    <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="i{{@../index}}j{{@index}}" name="{{name}}" {{#if isChecked}}checked{{/if}}>
+                    <label for="i{{@../index}}j{{@index}}">
                         {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                         <p class="label-text">{{localize label}}</p>
                     </label>
@@ -44,8 +44,8 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <input type="radio" id="[{{@../index}}, {{@index}}]" name="{{../radioName}}" value="{{name}}" {{#if isChecked}}checked{{/if}}>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <input type="radio" id="i{{@../index}}j{{@index}}" name="{{../radioName}}" value="{{name}}" {{#if isChecked}}checked{{/if}}>
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -53,8 +53,8 @@
                 </div>
             {{else}}
                 {{#each options}}
-                    <input type="radio" id="[{{@../index}}, {{@index}}]" name="{{../radioName}}" value="{{name}}" {{#if isChecked}}checked{{/if}}>
-                    <label for="[{{@../index}}, {{@index}}]">
+                    <input type="radio" id="i{{@../index}}j{{@index}}" name="{{../radioName}}" value="{{name}}" {{#if isChecked}}checked{{/if}}>
+                    <label for="i{{@../index}}j{{@index}}">
                         {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                         <p class="label-text">{{localize label}}</p>
                     </label>
@@ -64,12 +64,12 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                        <select id="i{{@../index}}j{{@index}}" name="{{name}}">
                             {{#each options}}
                                 <option value="{{this}}" {{#if (gt this ../currentMaxAmount)}}disabled{{/if}} {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
                             {{/each}}
                         </select>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -78,11 +78,11 @@
             {{else}}
                 {{#each options}}
                     <div>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
-                        <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                        <select id="i{{@../index}}j{{@index}}" name="{{name}}">
                             {{#each options}}
                                 <option value="{{this}}" {{#if (gt this ../currentMaxAmount)}}disabled{{/if}} {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
                             {{/each}}
@@ -94,12 +94,12 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                        <select id="i{{@../index}}j{{@index}}" name="{{name}}">
                             {{#each options}}
                                 <option value="{{value}}" {{#if (eq value ../currentValue)}}selected{{/if}}>{{localize label}}</option>
                             {{/each}}
                         </select>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -108,11 +108,11 @@
             {{else}}
                 {{#each options}}
                     <div>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
-                        <select id="[{{@../index}}, {{@index}}]" name="{{name}}">
+                        <select id="i{{@../index}}j{{@index}}" name="{{name}}">
                             {{#each options}}
                                 <option value="{{value}}" {{#if (eq value ../currentValue)}}selected{{/if}}>{{localize label}}</option>
                             {{/each}}
@@ -124,8 +124,8 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <input type="text" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <input type="text" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -134,11 +134,11 @@
             {{else}}
                 {{#each options}}
                     <div>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
-                        <input type="text" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
+                        <input type="text" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
                     </div>
                 {{/each}}
             {{/if}}
@@ -146,8 +146,8 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <input type="number" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <input type="number" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
@@ -156,11 +156,11 @@
             {{else}}
                 {{#each options}}
                     <div>
-                        <label for="[{{@../index}}, {{@index}}]">
+                        <label for="i{{@../index}}j{{@index}}">
                             {{#if image}}<img class="label-image" src={{image}}>{{/if}}
                             <p class="label-text">{{localize label}}</p>
                         </label>
-                        <input type="number" id="[{{@../index}}, {{@index}}]" name="{{name}}" value="{{value}}">
+                        <input type="number" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
                     </div>
                 {{/each}}
             {{/if}}
@@ -168,15 +168,15 @@
             {{#if displayAsRows}}
                 <div class="row-display">
                     {{#each options}}
-                        <label for="[{{@../index}}, {{@index}}]"><p class="label-text">{{localize label}}</p></label>
-                        <file-picker id="[{{@../index}}, {{@index}}]" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
+                        <label for="i{{@../index}}j{{@index}}"><p class="label-text">{{localize label}}</p></label>
+                        <file-picker id="i{{@../index}}j{{@index}}" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
                     {{/each}}
                 </div>
             {{else}}
                 {{#each options}}
                     <div>
-                        <label for="[{{@../index}}, {{@index}}]"><p class="label-text">{{localize label}}</p></label>
-                        <file-picker id="[{{@../index}}, {{@index}}]" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
+                        <label for="i{{@../index}}j{{@index}}"><p class="label-text">{{localize label}}</p></label>
+                        <file-picker id="i{{@../index}}j{{@index}}" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
                     </div>
                 {{/each}}
             {{/if}}

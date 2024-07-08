@@ -5,17 +5,19 @@
             <div class="form-group cpr-medkit-config">
                 {{#each configuration}}
                     <div>
+                        
+                        {{log i18nOption}}
                         {{#if isCheckbox}}
-                            <label for="{{id}}">{{#if i18nOption}}{{localize label option=i18nOption}}{{else}}{{localize label}}{{/if}}</label>
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                         {{else if isText}}
-                            <label for="{{id}}">{{localize label}}</label>
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="text" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                         {{else if isFile}}
-                            <label for="{{id}}">{{localize label}}</label>
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <file-picker id="{{id}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}></file-picker>
                         {{else if isSelect}}
-                            <label for="{{id}}">{{localize label}}</label>
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                                 {{#each options}}
                                     <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>

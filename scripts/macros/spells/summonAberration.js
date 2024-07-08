@@ -1,11 +1,13 @@
 import {Summons} from '../../lib/summons.js';
-import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils} from '../../utils.js';
+import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants} from '../../utils.js';
 async function use({speaker, actor, token, character, item, args, scope, workflow}){
-    let selection = await dialogUtils.dialog('What type?', [['Beholderkin', 'Beholderkin'], ['Slaad', 'Slaad'], ['Star Spawn', 'Star Spawn']]);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPPREMADES.Summons.SelectSummonType', [
+        ['CHRISPREMADES.Macros.SummonAberration.Beholderkin', 'beholderkin'], 
+        ['CHRISPREMADES.Macros.SummonAberration.Slaad', 'slaad'], 
+        ['CHRISPREMADES.Macros.SummonAberration.StarSpawn', 'starspawn']]);
     if (!selection) return;
-    let sourceActor = game.actors.getName('CPR - Aberrant Spirit');
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Aberrant Spirit');
     if (!sourceActor) return;
-    // import summon function
     let attacks = Math.floor(workflow.castData.castLevel / 2);
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Aberrant Spirit)', {name: 'Multiattack (' + attacks + ' Attacks)'}, workflow.item);
     if (!multiAttackFeatureData) return;
@@ -49,7 +51,7 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
         setProperty(updates, 'token.texture.src', tokenImg);
     }
     switch (selection) {
-        case 'Beholderkin': {
+        case 'beholderkin': {
             let eyeRayData = await Summons.getSummonItem('Eye Ray (Beholderkin Only)', {}, workflow.item, ({flatAttack: true, damageBonus: workflow.castData.castLevel}));
             updates.actor.items.push(eyeRayData);
             updates.actor.system.attributes.movement = {
@@ -59,7 +61,7 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
             };
             break;
         }
-        case 'Slaad': {
+        case 'slaad': {
             let clawsData = await Summons.getSummonItem('Claws (Slaad Only)', {}, workflow.item, ({flatAttack: true, damageBonus: workflow.castData.castLevel}));
             if (!clawsData) return;
             updates.actor.items.push(clawsData);
@@ -68,13 +70,15 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
             updates.actor.items.push(regenerationData);
             break;
         }
-        case 'Star Spawn': {
+        case 'starspawn': {
             let slamData = await Summons.getSummonItem('Psychic Slam (Star Spawn Only)', {}, workflow.item, ({flatAttack: true, damageBonus: workflow.castData.castLevel}));
             if (!slamData) return;
             updates.actor.items.push(slamData);
             let auraData = await Summons.getSummonItem('Whispering Aura (Star Spawn Only)', {}, workflow.item, ({flatDC: true}));
             if (!auraData) return;
             updates.actor.items.push(auraData);
+            genericUtils.setProperty(updates, 'actor.flags.chris-premades.castData', workflow.castData);
+            genericUtils.setProperty(updates, 'actor.flags.chris-premades.castData.saveDC', itemUtils.getSaveDC(workflow.item));
             break;
         }
     }
@@ -82,15 +86,30 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
     if (animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) animation = 'none';
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 3600, range: 90, animation: animation});
 }
-async function whisperingAura(actor, origin) {
-    let incapacitatedEffect = effectUtils.getEffectByStatusID(actor, 'incapacitated');
-    if (incapacitatedEffect) return;
-    let hp = actor.system.attributes.hp.value;
-    if (!hp) return;
-    await origin.use();
+async function whisperingAura({trigger}) {
+    console.log(trigger);
+    let sourceCastData = actorUtils.getCastData(trigger.entity.actor);
+    let validTargets = tokenUtils.findNearby(trigger.token, 5, 'enemy', {includeIncapacitated: true}).filter(i => {
+        let nearbyToken = tokenUtils.findNearby(i, 5, 'enemy', {includeIncapacitated: true}).find(j => {
+            if (!j.actor) return false;
+            let item = itemUtils.getItemByIdentifer(j.actor, 'whisperingAura');
+            if (!item) return false;
+            let targetCastData = actorUtils.getCastData(j);
+            if (!targetCastData) return false;
+            if (targetCastData.castLevel > sourceCastData.castLevel) return false;
+            if (targetCastData.castLevel === sourceCastData.castLevel) {
+                if (targetCastData.saveDC > sourceCastData.saveDC) return false;
+                if (targetCastData.saveDC === sourceCastData.saveDC) return trigger.entity.actor.id > j.actor.id;
+            }
+            return true;
+        });
+        if (nearbyToken) return false;
+        return true;
+    });
+    console.log(validTargets);
 }
 export let summonAberration = {
-    name: 'Spirit Guardians',
+    name: 'Summon Aberration',
     version: '0.12.0',
     midi: {
         item: [
@@ -105,9 +124,73 @@ export let summonAberration = {
         {
             value: 'name-beholderkin',
             label: 'CHRISPREMADES.Summons.CustomName',
-            i18nOption: 'CHRISPREMADES.Macro.Spell.SummonAberration.Beholderkin',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Beholderkin',
             type: 'text',
-            default: 'Beholderkin',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'name-slaad',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Slaad',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'name-starspawn',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.StarSpawn',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'token-beholderkin',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Beholderkin',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'token-slaad',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Slaad',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'token-starspawn',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.StarSpawn',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'avatar-beholderkin',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Beholderkin',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'avatar-slaad',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.Slaad',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'avatar-starspawn',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.SummonAberration.StarSpawn',
+            type: 'file',
+            default: '',
             category: 'summons'
         }
     ]
@@ -119,9 +202,7 @@ export let summonAberrationWhisperingAura = {
         {
             pass: 'turnStart',
             macro: whisperingAura,
-            priority: 50,
-            distance: 15,
-            disposition: 'enemy'
+            priority: 50
         }
     ]
 };

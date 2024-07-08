@@ -91,9 +91,25 @@ async function createEmbeddedDocuments(entity, type, updates, options) {
     }
     return documents;
 }
+async function updateEmbeddedDocuments(entity, type, updates, options) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    let documents;
+    if (hasPermission) {
+        documents = await entity.updateEmbeddedDocuments(type, updates, options);
+    } else {
+        let documentUuids = await socket.executeAsGM('updateEmbeddedDocuments', entity.uuid, type, updates, options);
+        documents = await Promise.all(documentUuids.map(async i => await fromUuid(i)));
+    }
+    return documents;
+}
 async function updateTargets(targets) {
     game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
     game.user.broadcastActivity({targets: game.user.targets.ids});
+}
+function collapseObjects(...objects) {
+    let object = {};
+    objects.forEach(o => mergeObject(object, o));
+    return object;
 }
 export let genericUtils = {
     sleep,
@@ -115,5 +131,7 @@ export let genericUtils = {
     setCPRSetting,
     createEmbeddedDocuments,
     getProperty,
-    updateTargets
+    updateTargets,
+    collapseObjects,
+    updateEmbeddedDocuments
 };

@@ -68,7 +68,6 @@ function collectTokenMacros(token, pass, distance, target) {
             });
         }
     }
-    console.log(triggers);
     return triggers;
 }
 function getSortedTriggers(tokens, pass, token) {
@@ -131,31 +130,36 @@ async function updateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
+    let coords = {x: token.x, y: token.y};
+    let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
+    if (!previousCoords) return;
+    let ignore = genericUtils.getProperty(options, 'chris-premades.movement.ignore');
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
-    await executeMacroPass([token], 'moved', undefined, options);
-    await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
-    if (!updates.x && !updates.y && updates.elevation) return;
-    let coords = {x: token.x, y: token.y};
-    let previousCoords = options['chris-premades'].coords.previous;
-    let current = Array.from(templateUtils.getTemplatesInToken(token.object));
-    let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);
-    let leaving = previous.filter(i => !current.includes(i));
-    let entering = current.filter(i => !previous.includes(i));
-    let staying = previous.filter(i => current.includes(i));
-    let through = token.parent.templates.reduce((acc, template) => {
-        let cells = templateUtils.findGrids(previousCoords, coords, template);
-        if (!cells.size) return acc;
-        acc.push(template);
-        return acc;
-    }, []);
-    let enteredAndLeft = through.filter(i => {
-        return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
-    });
-    await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
-    await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
-    await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
-    await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
+    if (!ignore) {
+        await executeMacroPass([token], 'moved', undefined, options);
+        await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
+        if (updates.x || updates.y) {
+            let current = Array.from(templateUtils.getTemplatesInToken(token.object));
+            let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);
+            let leaving = previous.filter(i => !current.includes(i));
+            let entering = current.filter(i => !previous.includes(i));
+            let staying = previous.filter(i => current.includes(i));
+            let through = token.parent.templates.reduce((acc, template) => {
+                let cells = templateUtils.findGrids(previousCoords, coords, template);
+                if (!cells.size) return acc;
+                acc.push(template);
+                return acc;
+            }, []);
+            let enteredAndLeft = through.filter(i => {
+                return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
+            });
+            await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
+            await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
+            await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
+            await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
+        }
+    }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
 }
 export let movementEvents = {
