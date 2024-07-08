@@ -4,3 +4,4 @@ packs/
 dist/
 module.json
 node_modules/
+symlinks/

@@ -3,7 +3,9 @@
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "javascript.preferences.quoteStyle": "single",
     "i18n-ally.localesPaths": [
-        "lang"
+        "lang",
+        "symlinks/foundryLang",
+        "symlinks/dndLang"
     ],
     "i18n-ally.keystyle": "nested"
 }
