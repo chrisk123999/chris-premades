@@ -71,7 +71,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
 async function start({trigger: {entity: effect}}) {
     let selection = effect.flags['chris-premades']?.fireShield?.selection;
     if (!selection) return;
-    let playAnimation = effect.flags['chris-premades']?.fireShield?.selection;
+    let playAnimation = effect.flags['chris-premades']?.fireShield?.playAnimation;
     if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') return;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;

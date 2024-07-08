@@ -51,6 +51,9 @@ async function use({workflow}) {
                     enlargeReduce: {
                         selection,
                         playAnimation
+                    },
+                    effect: {
+                        sizeAnimation: false
                     }
                 }
             }
@@ -58,100 +61,35 @@ async function use({workflow}) {
         effectUtils.addMacro(effectData, 'effect', ['enlargeReduceChanged']);
         for (let targetToken of workflow.failedSaves) {
             let currEffectData = genericUtils.duplicate(effectData);
-            let origTokenValues = {
-                y: targetToken.y,
-                x: targetToken.x,
-                texture: {
-                    scaleX: targetToken.document.texture?.scaleX ?? 1,
-                    scaleY: targetToken.document.texture?.scaleX ?? 1
-                },
-                height: targetToken.document.height,
-                width: targetToken.document.width
-            };
-            let origSize = targetToken.actor?.system?.traits?.size ?? 'med';
-            let newSize = origSize;
-            let newTokenValues = genericUtils.duplicate(origTokenValues);
             let doGrow = true;
             let targetSize = targetToken.actor.system.traits.size;
-            if (targetSize !== 'tiny' || targetSize !== 'sm') {
+            if (targetSize !== 'tiny' && targetSize !== 'sm') {
                 let room = tokenUtils.checkForRoom(targetToken, 1);
                 let direction = tokenUtils.findDirection(room);
-                switch (direction) {
-                    case 'none':
-                        doGrow = false;
-                        break;
-                    case 'ne':
-                        newTokenValues.y = targetToken.y - canvas.grid.size;
-                        break;
-                    case 'sw':
-                        newTokenValues.x = targetToken.x - canvas.grid.size;
-                        break;
-                    case 'nw':
-                        newTokenValues.y = targetToken.y - canvas.grid.size;
-                        newTokenValues.x = targetToken.x - canvas.grid.size;
-                        break;
-                }
+                if (direction === 'none') doGrow = false;
             }
+            let newSize = targetSize;
             if (doGrow) {
                 switch (targetSize) {
                     case 'tiny':
-                        newTokenValues.texture.scaleX = 0.8;
-                        newTokenValues.texture.scaleY = 0.8;
                         newSize = 'sm';
                         break;
                     case 'sm':
-                        newTokenValues.texture.scaleX = 1;
-                        newTokenValues.texture.scaleY = 1;
                         newSize = 'med';
                         break;
                     case 'med':
-                        newTokenValues.height = targetToken.document.height + 1;
-                        newTokenValues.width = targetToken.document.width + 1;
                         newSize = 'lg';
                         break;
                     case 'lg':
-                        newTokenValues.height = targetToken.document.height + 1;
-                        newTokenValues.width = targetToken.document.width + 1;
                         newSize = 'huge';
                         break;
                     case 'huge':
-                        newTokenValues.height = targetToken.document.height + 1;
-                        newTokenValues.width = targetToken.document.width + 1;
                         newSize = 'grg';
-                        break;
-                    case 'grg':
-                        newTokenValues.height = targetToken.document.height + 1;
-                        newTokenValues.width = targetToken.document.width + 1;
                         break;
                 }
             }
-            currEffectData.changes.push({
-                key: 'system.traits.size',
-                mode: 5,
-                value: newSize,
-                priority: 20
-            });
-            currEffectData.flags['chris-premades'].enlargeReduce.origTokenValues = origTokenValues;
-            currEffectData.flags['chris-premades'].enlargeReduce.origSize = origSize;
-            currEffectData.flags['chris-premades'].enlargeReduce.newTokenValues = newTokenValues;
+            currEffectData.flags['chris-premades'].enlargeReduce.origSize = targetSize;
             currEffectData.flags['chris-premades'].enlargeReduce.newSize = newSize;
-            if (game.modules.get('ATL')?.active && newTokenValues.width !== origTokenValues.width) {
-                delete newTokenValues.width;
-                delete newTokenValues.height;
-                delete origTokenValues.width;
-                delete origTokenValues.height;
-                currEffectData.changes.push(...[{
-                    key: 'ATL.width',
-                    mode: 2,
-                    value: 1,
-                    priority: 20
-                }, {
-                    key: 'ATL.height',
-                    mode: 2,
-                    value: 1,
-                    priority: 20
-                }]);
-            }
             await effectUtils.createEffect(targetToken.actor, currEffectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'enlargeReduceChanged'});
         }
     } else {
@@ -193,6 +131,9 @@ async function use({workflow}) {
                     enlargeReduce: {
                         selection,
                         playAnimation
+                    },
+                    effect: {
+                        sizeAnimation: false
                     }
                 }
             }
@@ -200,90 +141,36 @@ async function use({workflow}) {
         effectUtils.addMacro(effectData, 'effect', ['enlargeReduceChanged']);
         for (let targetToken of workflow.failedSaves) {
             let currEffectData = genericUtils.duplicate(effectData);
-            let origTokenValues = {
-                y: targetToken.y,
-                x: targetToken.x,
-                texture: {
-                    scaleX: targetToken.document.texture?.scaleX ?? 1,
-                    scaleY: targetToken.document.texture?.scaleX ?? 1
-                },
-                height: targetToken.document.height,
-                width: targetToken.document.width
-            };
-            let origSize = targetToken.actor?.system?.traits?.size ?? 'med';
-            let newSize = origSize;
-            let newTokenValues = genericUtils.duplicate(origTokenValues);
             let targetSize = targetToken.actor.system.traits.size;
+            let newSize = targetSize;
             switch (targetSize) {
-                case 'tiny':
-                    newTokenValues.texture.scaleX = 0.25;
-                    newTokenValues.texture.scaleY = 0.25;
-                    break;
                 case 'sm':
-                    newTokenValues.texture.scaleX = 0.5;
-                    newTokenValues.texture.scaleY = 0.5;
                     newSize = 'tiny';
                     break;
                 case 'med':
-                    newTokenValues.texture.scaleX = 0.8;
-                    newTokenValues.texture.scaleY = 0.8;
                     newSize = 'sm';
                     break;
                 case 'lg':
-                    newTokenValues.height = targetToken.document.height - 1;
-                    newTokenValues.width = targetToken.document.width - 1;
                     newSize = 'med';
                     break;
                 case 'huge':
-                    newTokenValues.height = targetToken.document.height - 1;
-                    newTokenValues.width = targetToken.document.width - 1;
                     newSize = 'lg';
                     break;
                 case 'grg':
-                    newTokenValues.height = targetToken.document.height - 1;
-                    newTokenValues.width = targetToken.document.width - 1;
                     newSize = 'huge';
                     break;
             }
-            currEffectData.changes.push({
-                key: 'system.traits.size',
-                mode: 5,
-                value: newSize,
-                priority: 20
-            });
-            currEffectData.flags['chris-premades'].enlargeReduce.origTokenValues = origTokenValues;
-            currEffectData.flags['chris-premades'].enlargeReduce.origSize = origSize;
-            currEffectData.flags['chris-premades'].enlargeReduce.newTokenValues = newTokenValues;
+            currEffectData.flags['chris-premades'].enlargeReduce.origSize = targetSize;
             currEffectData.flags['chris-premades'].enlargeReduce.newSize = newSize;
-            if (game.modules.get('ATL')?.active && newTokenValues.width !== origTokenValues.width) {
-                delete newTokenValues.width;
-                delete newTokenValues.height;
-                delete origTokenValues.width;
-                delete origTokenValues.height;
-                currEffectData.changes.push(...[{
-                    key: 'ATL.width',
-                    mode: 2,
-                    value: -1,
-                    priority: 20
-                }, {
-                    key: 'ATL.height',
-                    mode: 2,
-                    value: -1,
-                    priority: 20
-                }]);
-            }
             await effectUtils.createEffect(targetToken.actor, currEffectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'enlargeReduceChanged'});
         }
     }
 }
 async function start({trigger: {entity: effect}}) {
-    let {selection, playAnimation, newTokenValues: tokenUpdates, origSize} = effect.flags['chris-premades'].enlargeReduce;
+    let {selection, playAnimation, origSize, newSize} = effect.flags['chris-premades'].enlargeReduce;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
-    if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') {
-        await genericUtils.update(token.document, tokenUpdates);
-        return;
-    }
+    if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') return;
     // Animations by: eskiemoh
     if (selection === 'enlarge') {
         let scale = 1;
@@ -331,7 +218,21 @@ async function start({trigger: {entity: effect}}) {
             .zIndex(0)
             
             .thenDo(async () => {
-                await genericUtils.update(token.document, tokenUpdates, {animate: false});
+                let updates = {
+                    changes: effect.changes.concat(
+                        {
+                            key: 'system.traits.size',
+                            mode: 5,
+                            value: newSize,
+                            priority: 20
+                        }
+                    )
+                };
+                await genericUtils.update(effect, updates);
+                let updates2 = {
+                    'flags.chris-premades.effect.sizeAnimation': true
+                };
+                await genericUtils.update(effect, updates2);
             })
             
             .wait(200)
@@ -431,7 +332,21 @@ async function start({trigger: {entity: effect}}) {
             .zIndex(0)
 
             .thenDo(async () => {
-                await genericUtils.update(token.document, tokenUpdates, {animate: false});
+                let updates = {
+                    changes: effect.changes.concat(
+                        {
+                            key: 'system.traits.size',
+                            mode: 5,
+                            value: newSize,
+                            priority: 20
+                        }
+                    )
+                };
+                await genericUtils.update(effect, updates);
+                let updates2 = {
+                    'flags.chris-premades.effect.sizeAnimation': true
+                };
+                await genericUtils.update(effect, updates2);
             })
 
             .wait(200)
@@ -484,14 +399,6 @@ async function start({trigger: {entity: effect}}) {
             .play();
     }
 }
-async function end({trigger: {entity: effect}}) {
-    let {origTokenValues: tokenUpdates, newTokenValues} = effect.flags['chris-premades'].enlargeReduce;
-    let token = actorUtils.getFirstToken(effect.parent);
-    if (!token) return;
-    delete tokenUpdates.x;
-    delete tokenUpdates.y;
-    await genericUtils.update(token.document, tokenUpdates);    
-}
 export let enlargeReduce = {
     name: 'Enlarge/Reduce',
     version: '0.12.0',
@@ -521,11 +428,6 @@ export let enlargeReduceChanged = {
         {
             pass: 'created',
             macro: start,
-            priority: 50
-        },
-        {
-            pass: 'deleted',
-            macro: end,
             priority: 50
         }
     ]
