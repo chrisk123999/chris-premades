@@ -496,7 +496,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     _onRender(context, options) {
         let imageElements = this.element.querySelectorAll('.label-image');
         for (let currElem of imageElements) {
-            let [inputIndex, optionIndex] = JSON.parse(currElem.parentElement.getAttribute('for'));
+            let targetInputIdString = currElem.parentElement.getAttribute('for').match(/i(\d+)j(\d+)/);
+            let [inputIndex, optionIndex] = [parseInt(targetInputIdString[1]), parseInt(targetInputIdString[2])];
             let currId = context.inputs[inputIndex].options[optionIndex].name;
             currElem.addEventListener('click', async function() {
                 let targetToken = canvas.tokens.get(currId);

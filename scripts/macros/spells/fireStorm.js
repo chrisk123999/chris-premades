@@ -14,7 +14,7 @@ async function early({workflow}) {
             dnd5e: {
                 origin: workflow.item.uuid
             },
-            walledTemplates: {
+            walledtemplates: {
                 hideBorder: 'alwaysShow'
             }
         },

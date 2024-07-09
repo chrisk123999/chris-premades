@@ -25,8 +25,8 @@
         "UnknownTarget": "Unknown Target",
         "Medkit": {
             "Status": {
-                "1": "Up to Date",
                 "0": "Out of Date",
+                "1": "Up to Date",
                 "true": "Automation Available",
                 "false": "No Automation Found"
             },
@@ -111,10 +111,10 @@
                 "hint": "Use the local world compendiums instead of the module compendiums for item lookup."
             },
             "Permissions": {
-                "4": "Gamemaster",
-                "3": "Assistant Gamemaster",
+                "1": "Player",
                 "2": "Trusted Player",
-                "1": "Player"
+                "3": "Assistant Gamemaster",
+                "4": "Gamemaster"
             },
             "permissionsUpdateItem": {
                 "name": "Medkit Update Automation Permissions",
@@ -265,7 +265,8 @@
             },
             "sound": "Sound:",
             "damageType": "Damage Type:",
-            "formula": "Formula:"
+            "formula": "Formula:",
+            "damageTypes": "Damage Types:"
         },
         "macros": {
             "antagonize": {
@@ -391,6 +392,16 @@
             },
             "zoneOfTruth": {
                 "save": "Zone of Truth: Save"
+            },
+            "greenFlameBlade": {
+                "noWeapons": "No equipped weapons found!",
+                "selectWeapon": "Attack with what weapon?",
+                "leap": "Where does the fire leap?"
+            },
+            "guardianOfNature": {
+                "beast": "Primal Beast",
+                "tree": "Great Tree",
+                "select": "What form do you assume?"
             }
         },
         "section": {

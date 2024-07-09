@@ -46,11 +46,15 @@ function negateDamageItemDamage(ditem) {
     ditem.hpDamage = 0;
     ditem.appliedDamage = 0;
 }
+function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {
+    return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId});
+}
 export let workflowUtils = {
     bonusDamage,
     applyDamage,
     completeItemUse,
     syntheticItemRoll,
     syntheticItemDataRoll,
-    negateDamageItemDamage
+    negateDamageItemDamage,
+    applyWorkflowDamage
 };

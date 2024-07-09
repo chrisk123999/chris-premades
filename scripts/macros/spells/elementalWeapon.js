@@ -5,7 +5,7 @@ async function use({trigger, workflow}) {
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let buttons = validTypes.map(i => ([CONFIG.DND5E.damageTypes[i].label, Object.keys(CONFIG.DND5E.damageTypes).find(j => j === i)]));
     if (!buttons.length) return;
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.elementalWeapon.selectDamageType', buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.elementalWeapon.selectDamageType', buttons);
     if (!selection) return;
     for (let token of workflow.targets) {
         if (!token.actor) return;

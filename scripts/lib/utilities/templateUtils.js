@@ -1,3 +1,5 @@
+import {genericUtils} from './genericUtils.js';
+
 function getTokensInTemplate(template) {
     let tokens = new Set();
     let scene = template.parent;
@@ -129,6 +131,21 @@ function getName(template) {
 async function setName(template, name) {
     await template.setFlag('chris-premades', 'template.name', name);
 }
+async function placeTemplate(templateData, returnTokens=false) {
+    let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {parent: canvas.scene});
+    let previewTemplate = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
+    let template = false;
+    try {
+        [template] = await previewTemplate.drawPreview();
+    } catch (error) {
+        console.log(error);
+    }
+    if (!returnTokens) return template;
+    if (!template) return {template: null, tokens: []};
+    await genericUtils.sleep(100);
+    let tokens = getTokensInTemplate(template);
+    return {template, tokens};
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
@@ -142,5 +159,6 @@ export let templateUtils = {
     getSaveDC,
     setSaveDC,
     getName,
-    setName
+    setName,
+    placeTemplate
 };

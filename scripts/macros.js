@@ -35,6 +35,10 @@ export {fireShield, fireShieldShielded, fireShieldDismiss} from './macros/spells
 export {fireStorm} from './macros/spells/fireStorm.js';
 export {flameBlade} from './macros/spells/flameBlade.js';
 export {fly, flyFlying} from './macros/spells/fly.js';
+export {frostFingers} from './macros/spells/frostFingers.js';
+export {greenFlameBlade} from './macros/spells/greenFlameBlade.js';
+export {guardianOfNature} from './macros/spells/guardianOfNature.js';
+export {guidingBolt} from './macros/spells/guidingBolt.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
