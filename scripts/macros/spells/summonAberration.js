@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants} from '../../utils.js';
+import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants, workflowUtils} from '../../utils.js';
 async function use({speaker, actor, token, character, item, args, scope, workflow}){
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPPREMADES.Summons.SelectSummonType', [
         ['CHRISPREMADES.Macros.SummonAberration.Beholderkin', 'beholderkin'], 
@@ -107,6 +107,8 @@ async function whisperingAura({trigger}) {
         return true;
     });
     console.log(validTargets);
+    if (!validTargets.length) return;
+    await workflowUtils.syntheticItemRoll(trigger.entity, validTargets);
 }
 export let summonAberration = {
     name: 'Summon Aberration',

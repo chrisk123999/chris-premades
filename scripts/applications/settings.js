@@ -9,7 +9,8 @@ let buttonLabels = {
     statusEffectIcons: 'CHRISPREMADES.Generic.Configure',
     backupCompendium: 'CHRISPREMADES.Generic.Select',
     hiddenCompendiums: 'CHRISPREMADES.Generic.Select',
-    hiddenCompendiumFolders: 'CHRISPREMADES.Generic.Select'
+    hiddenCompendiumFolders: 'CHRISPREMADES.Generic.Select',
+    backupMake: 'CHRISPREMADES.Generic.Go'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -83,6 +84,7 @@ export async function settingButton(id) {
         case 'backupCompendium': await backup.selectCompendium(); break;
         case 'hiddenCompendiums': await sidebar.selectHiddenCompendiums(); break;
         case 'hiddenCompendiumFolders': await sidebar.selectHiddenCompendiumFolders(); break;
+        case 'backupMake': await backup.doBackup(true);
     }
 }
 export class settingsDevelopment extends settingsBase {
@@ -126,4 +128,10 @@ export class settingsIntegration extends settingsBase {
         super();
         this.category = 'integration';
     }
+}
+export class settingsBackup extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'backup';
+    } 
 }

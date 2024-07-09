@@ -2,21 +2,27 @@ import {Crosshairs} from './crosshairs.js';
 import {animationUtils, genericUtils} from '../utils.js';
 export class Teleport {
     constructor(tokens, controllingToken, options) {
-        this.tokens = tokens;
-        this.controllingToken = controllingToken;
+        this.tokens = Array.isArray(tokens) ? tokens : [tokens];
+        this.controllingToken = controllingToken ?? this.tokens[0];
         this.options = options;
         this.updates = options?.updates ?? {};
     }
     static async teleport(tokens, controllingToken, options = {animation: 'none', isSynchronous: 'true', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}}) {
-        let teleport = new Teleport(tokens, controllingToken, options = {animation: 'none', isSynchronous: 'true', crosshairsConfig: {}, callbacks: {}, range: 100});
-        if (controllingToken.actor?.sheet?.rendered) controllingToken.actor.sheet.minimize();
-        teleport.template = await Crosshairs.showCrosshairs(teleport.crosshairsConfig, teleport.callbacks);
-        
-        if (controllingToken.actor?.sheet?.rendered) controllingToken.actor.sheet.maximize();
+        console.log(tokens, tokens.id, tokens.document.id);
+        let teleport = new Teleport(tokens, controllingToken, options);
+        await teleport.go();
+    }
+    async go() {
+        if (this.controllingToken.actor?.sheet?.rendered) this.controllingToken.actor.sheet.minimize();
+        this.template = await Crosshairs.showCrosshairs(this.crosshairsConfig, this.callbacks);
+        await this._move();
+        if (this.controllingToken.actor?.sheet?.rendered) this.controllingToken.actor.sheet.maximize();
     }
     async _move() {
         if (this.options?.isSynchronous === false) {
             await this._nonSync();
+        } else {
+            await this._sync();
         }
     }
     async _nonSync() {
@@ -29,19 +35,21 @@ export class Teleport {
     }
     async _sync() {
         // play sequence
-        //await Promise.all(this.tokens.forEach(async tok => sequenceCallback(tok)))
-        let updates = this.tokens.map(tok => genericUtils.collapseObjects(this.updates, this.getCoords(tok), {_id: tok.id}));
-        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [updates], {animate: false});
+        //await Promise.all(this.tokens.map(async tok => sequenceCallback(tok)))
+        let updates = this.tokens.map(tok => genericUtils.collapseObjects(this.updates, {_id: tok.id}, this.getCoords(tok)));
+        console.log(this.coords, updates);
+        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', updates, {animate: false});
+        console.log('hello??');
         // play sequnce
-        //await Promise.all(this.tokens.forEach(async tok => sequenceCallback(tok)))
+        //await Promise.all(this.tokens.map(async tok => sequenceCallback(tok)))
     }
     getCoords(token) {
         let difference = {
-            x: this.coords.selected.x - token.x, 
-            y: this.coords.selected.y - token.y
+            x: this.controllingToken.x - token.x, 
+            y: this.controllingToken.y - token.y
         };
         let update = {
-            rotation: this.templateData.direction,
+            rotation: this.template.direction,
             x: this.coords.selected.x - difference.x,
             y: this.coords.selected.y - difference.y
         };
@@ -53,13 +61,13 @@ export class Teleport {
                 let distance = 0;
                 let ray;
                 while (crosshairs.inFlight) {
-                    await warpgate.wait(100);
+                    await genericUtils.sleep(100);
                     ray = new Ray(this.controllingToken.center, crosshairs);
                     distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
                     if (this.controllingToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > this.options.range) {
                         crosshairs.icon = 'icons/svg/hazard.svg';
                     } else {
-                        crosshairs.icon = this.controllingToken.texture.src;
+                        crosshairs.icon = this.controllingToken.document.texture.src;
                     }
                     crosshairs.draw();
                     crosshairs.label = distance + '/' + this.options.range + 'ft.';
@@ -70,20 +78,22 @@ export class Teleport {
     }
     get crosshairsConfig() {
         let config = {
-            icon: this.controllingToken.texture.src,
-            resolution: this.updates?.token?.width ?? this.controllingToken.width % 2 === 0 ? 1 : -1
+            size: this.controllingToken.document.width * 2,
+            icon: this.controllingToken.document.texture.src,
+            resolution: this.updates?.token?.width ?? this.controllingToken.w % 2 === 0 ? 1 : -1
         };
         return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
     }
     get coords() {
+        console.log(this.controllingToken, this.template, this?.template?.x ?? 0 - (canvas.scene.grid.sizeX * this.controllingToken.w / 2));
         return {
             original: {
                 x: this.controllingToken.x,
                 y: this.controllingToken.y,
             },
             selected: {
-                x: this?.template?.x ?? 0 - (canvas.scene.grid.sizeX * this.controllingToken.width / 2),
-                y: this?.template?.y ?? 0 - (canvas.scene.grid.sizeY * this.controllingToken.height / 2),
+                x: this?.template?.x - (this.controllingToken.w / 2),
+                y: this?.template?.y - (this.controllingToken.h / 2),
             }
         };
     }

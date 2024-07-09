@@ -66,3 +66,4 @@ Goals:
 ## Extensions
 [ ] Folder maker for summons
 [ ] Update summon iniative/update companion initiative
+[ ] Options for items to add for add generic actions setting

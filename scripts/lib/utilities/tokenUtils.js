@@ -74,7 +74,6 @@ function checkIncapacitated(token, logResult = false) {
     return MidiQOL.checkIncapacitated(token, logResult);
 }
 function checkForRoom(token, gridSquares) {
-    console.log(token);
     let point = token.getCenterPoint();
     let gridSize = token.document.parent.grid.size;
     let pixelDistance = gridSquares * gridSize;

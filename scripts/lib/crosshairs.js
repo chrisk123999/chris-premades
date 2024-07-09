@@ -66,6 +66,7 @@ export class Crosshairs extends MeasuredTemplate {
      * Outwards facing function of the Crosshairs class, will do the constructing itself.
      */
     static async showCrosshairs(config = {}, callbacks = {}) {
+        console.log(config, callbacks);
         config = foundry.utils.mergeObject(config, Crosshairs.defaultCrosshairsConfig(), {overwrite: false});
         let controlled = [];
         if (config.rememberControlled) {

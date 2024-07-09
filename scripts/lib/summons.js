@@ -13,7 +13,7 @@ export class Summons {
         this._updates = updates;
         this.originItem = originItem;
         this.summonerToken = summonerToken;
-        this.options = options;
+        this.options = options ?? {};
         this.spawnOptions = {}; // uh do something?
         this.spawnedTokens = [];
         this.currentIndex = 0;
@@ -79,31 +79,32 @@ export class Summons {
                 }
             };
         }
-        if (this.options.animation != 'none' && !this.options.callbacks?.post) {
-            let callbackFunction = animationUtils.summonEffects[this.options.animation];
-            if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
-                this.options.callbacks.post = callbackFunction;
-                this.mergeUpdates({token: {alpha: 0}});
-            }
-        }
         if (!this.options.callbacks?.show) {
             this.options.callbacks = {show: undefined};
             this.options.callbacks.show = async (crosshairs) => {
                 let distance = 0;
                 let ray;
                 while (crosshairs.inFlight) {
-                    await warpgate.wait(100);
+                    await genericUtils.sleep(100);
                     ray = new Ray(this.summonerToken.center, crosshairs);
                     distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
                     if (this.summonerToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > this.options.range) {
                         crosshairs.icon = 'icons/svg/hazard.svg';
                     } else {
-                        crosshairs.icon = this.tokenDocument.texture.src;
+                        crosshairs.icon = tokenDocument.texture.src;
                     }
                     crosshairs.draw();
                     crosshairs.label = distance + '/' + this.options.range + 'ft.';
                 }
             };
+        }
+        if (this.options.animation != 'none' && !this.options.callbacks?.post) {
+            let callbackFunction = animationUtils.summonEffects[this.options.animation];
+            console.log(callbackFunction);
+            if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
+                genericUtils.setProperty(this.options.callbacks, 'post', callbackFunction);
+                this.mergeUpdates({token: {alpha: 0}});
+            }
         }
     }
     async spawnAll() {
@@ -129,7 +130,7 @@ export class Summons {
             direction: 0,
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
-        const templateData = await Crosshairs.showCrosshairs(crosshairsConfig, this.callbacks);
+        const templateData = await Crosshairs.showCrosshairs(crosshairsConfig, this.options.callbacks);
         if (templateData.cancelled) {
             console.log('was cancelled, do something different');
         }
@@ -163,6 +164,7 @@ export class Summons {
             console.log('socket spawn');
             // this.socketSpawn();
         }
+        this.options?.callbacks?.post({x: this.updates.token.x, y: this.updates.token.y}, this.spawnedTokens[this.spawnedTokens.length - 1], this.updates, this.currentIndex);
         return this.spawnedTokens;
     }
     handleSpecialUpdates() {
@@ -233,9 +235,10 @@ export class Summons {
         if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
+        console.log(summonEffects);
         await effectUtils.addDependent(effect, summonEffects);
         // Make caster effect dependent on each summon effect
-        await Promise.all(summonEffects.forEach(async e => await effectUtils.addDependent(e, [effect])));
+        await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));
         // Add on delete macros to be called, for cases where concentration does not delete the summon
         if (this.options?.onDeleteMacros && concentrationEffect) {
             let concentrationUpdates = {

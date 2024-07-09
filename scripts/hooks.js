@@ -13,6 +13,7 @@ import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
 import {tokens} from './extensions/tokens.js';
+import {backup} from './extensions/backup.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -52,5 +53,6 @@ export function registerHooks() {
             Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
         }
+        if (genericUtils.getCPRSetting('backups')) Hooks.on('preCreateActor', backup.preCreateActor);
     }
 }

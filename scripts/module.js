@@ -15,6 +15,8 @@ import {conditions} from './extensions/conditions.js';
 import {Summons} from './lib/summons.js';
 import {registerSockets} from './lib/sockets.js';
 import {workflow} from './extensions/workflow.js';
+import {Teleport} from './lib/teleport.js';
+import {backup} from './extensions/backup.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -34,6 +36,7 @@ Hooks.once('ready', () => {
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);
         setupJournal();
+        if (utils.genericUtils.getCPRSetting('backups')) backup.doBackup();
     }
 });
 globalThis['chrisPremades'] = {
@@ -41,6 +44,7 @@ globalThis['chrisPremades'] = {
     Crosshairs,
     AdditionalCompendiums,
     Summons,
+    Teleport,
     utils,
     macros,
     settingButton

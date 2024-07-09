@@ -1,12 +1,12 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
-import {vae} from './integrations/vae.js';
-import {constants, genericUtils, socketUtils} from './utils.js';
+import {constants, genericUtils} from './utils.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -274,7 +274,59 @@ export function registerSettings() {
         key: 'backupCompendium',
         type: String,
         default: '',
-        category: 'compendium',
+        category: 'backup',
+        select: true
+    });
+    addSetting({
+        key: 'backups',
+        type: Boolean,
+        default: false,
+        category: 'backup',
+        onChange: value => {
+            if (value) {
+                Hooks.on('preCreateActor', backup.preCreateActor);
+            } else {
+                Hooks.off('preCreateActor', backup.preCreateActor);
+            }
+        }
+    });
+    addSetting({
+        key: 'backupTime',
+        type: Number,
+        default: 0,
+        category: 'development'
+    });
+    addSetting({
+        key: 'backupFrequency',
+        type: Number,
+        default: 79200000,
+        category: 'backup',
+        choices: {
+            79200000: 'CHRISPREMADES.backup.daily',
+            597600000: 'CHRISPREMADES.backup.weekly',
+            2622546000: 'CHRISPREMADES.backup.monthly'
+        }
+    });
+    addSetting({
+        key: 'backupRetention',
+        type: Number,
+        default: 0,
+        category: 'backup',
+        choices: {
+            0: 'CHRISPREMADES.backup.forever',
+            604800000: 'CHRISPREMADES.backup.oneWeek',
+            1314873000: 'CHRISPREMADES.backup.halfMonth',
+            2629746000: 'CHRISPREMADES.backup.oneMonth',
+            7890000000: 'CHRISPREMADES.backup.threeMonths',
+            15780000000: 'CHRISPREMADES.backup.sixMonths',
+            31536000000: 'CHRISPREMADES.backup.oneYear'
+        }
+    });
+    addSetting({
+        key: 'backupMake',
+        type: Object,
+        default: null,
+        category: 'backup',
         select: true
     });
     let oldEffectDescriptions;
@@ -372,5 +424,10 @@ export function registerMenus() {
         key: 'integration',
         icon: 'fas fa-puzzle-piece',
         type: settingsIntegration
+    });
+    addMenu({
+        key: 'backup',
+        icon: 'fas fa-floppy-disk',
+        type: settingsBackup
     });
 }

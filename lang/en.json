@@ -18,7 +18,8 @@
             "Select": "Select",
             "Disabled": "Disabled",
             "Chat": "Chat",
-            "Description": "Description"
+            "Description": "Description",
+            "Go": "Go"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "UnknownTarget": "Unknown Target",
@@ -170,6 +171,26 @@
             "syncActorSizeToTokens": {
                 "name": "Sync Actor and Token Size",
                 "hint": "When enabled, effects that change an actors size will also change the token size on the canvas."
+            },
+            "backupTime": {
+                "name": "Last Backup Time",
+                "hint": "Last time a backup was made (in milliseconds). Automatically set."
+            },
+            "backupFrequency": {
+                "name": "Backup Frequency",
+                "hint": "How often the automatic backups should be made."
+            },
+            "backupRetention": {
+                "name": "Backup Retention",
+                "hint": "How long backup characters are kept."
+            },
+            "backups": {
+                "name": "Automatic Character Backups",
+                "hint": "When enabled, player owned characters will be automatically backed up to the specified compendium."
+            },
+            "backupMake": {
+                "name": "Make A Backup",
+                "hint": "Make a backup right now using the specified compendium."
             }
         },
         "settingCategory": {
@@ -207,6 +228,11 @@
                 "name": "Module Integration",
                 "label": "Module Integration",
                 "hint": "Settings for module integration options."
+            },
+            "backup": {
+                "name": "Character Backup",
+                "label": "Character Backup",
+                "hint": "Settings for character backup."
             }
         },
         "config": {
@@ -404,6 +430,19 @@
             "conditionAdvantage": "Condition Advantage",
             "conditionDisadvantage": "Condition Disadvantage",
             "conditionImmunity": "Condition Immunity"
+        },
+        "backup": {
+            "missingPack": "Invalid backup compendium specified! No backups have been made!",
+            "daily": "Daily",
+            "weekly": "Weekly",
+            "monthly": "Monthly",
+            "forever": "Forever",
+            "oneWeek": "One Week",
+            "halfMonth": "Half a Month",
+            "oneMonth": "One Month",
+            "threeMonths": "Three Months",
+            "sixMonths": "Six Months",
+            "oneYear": "One Year"
         }
     }
 }
