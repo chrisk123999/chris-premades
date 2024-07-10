@@ -1,41 +1,32 @@
-async function turnEnd(trigger) {
-    console.log('--- Test Turn End ---');
-}
-async function turnStart(trigger) {
-    console.log('--- Test Turn Start ---');
-}
-async function moved(trigger) {
-    console.log('--- Test Moved ---');
-}
-async function movedNear(trigger) {
-    console.log('--- Test Moved Near ---');
+import {effectUtils} from '../utils.js';
+async function create({trigger}) {
+    let effect = effectUtils.getEffectByIdentifier(trigger.target.actor, trigger.identifier);
+    if (effect) return;
+    let effectData = {
+        name: 'Test Aura',
+        img: trigger.entity.img,
+        origin: trigger.entity.uuid,
+        duration: {
+            seconds: 3600
+        },
+        flags: {
+            'chris-premades': {
+                aura: true
+            }
+        }
+    };
+    await effectUtils.createEffect(trigger.target.actor, effectData, {parentEntity: trigger.entity, identifier: trigger.identifier});
 }
 export let test = {
-    name: 'Test',
+    name: 'test',
     version: '0.12.0',
-    combat: [
+    aura: [
         {
-            pass: 'turnEnd',
-            macro: turnEnd,
-            priority: 50
-        },
-        {
-            pass: 'turnStart',
-            macro: turnStart,
-            priority: 50
-        }
-    ],
-    movement: [
-        {
-            pass: 'moved',
-            macro: moved,
-            priority: 50
-        },
-        {
-            pass: 'movedNear',
-            macro: movedNear,
+            pass: 'create',
+            macro: create,
             priority: 50,
-            distance: 10
+            distance: 15,
+            identifier: 'testAura',
         }
     ]
 };

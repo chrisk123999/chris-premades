@@ -125,7 +125,7 @@ function getSortedTriggers(tokens, pass, token) {
     return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    console.log('CPR: Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    genericUtils.log('dev', 'Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         await trigger.macro({trigger});
     } catch (error) {
@@ -134,7 +134,7 @@ async function executeMacro(trigger) {
     }
 }
 async function executeMacroPass(tokens, pass, token) {
-    console.log('CPR: Executing Combat Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass);
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);

@@ -126,7 +126,7 @@ function getSortedTriggers({item, token, actor}, pass) {
     return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, workflow, ditem) {
-    console.log('CPR: Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
         await trigger.macro({trigger, workflow, ditem});
     } catch (error) {
@@ -135,13 +135,13 @@ async function executeMacro(trigger, workflow, ditem) {
     }
 }
 async function executeMacroPass(workflow, pass) {
-    console.log('CPR: Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
     let triggers = getSortedTriggers({item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) await executeMacro(trigger, workflow);
 }
 async function executeTargetMacroPass(workflow) {
-    console.log('CPR: Executing Midi Macro Pass: onHit');
+    genericUtils.log('dev', 'Executing Midi Macro Pass: onHit');
     let triggers = [];
     workflow.hitTargets.forEach(i => {
         triggers.push(...getSortedTriggers({token: i, actor: i.actor}, 'onHit'));
@@ -182,7 +182,7 @@ async function postAttackRoll(workflow) {
     await executeMacroPass(workflow, 'postAttackRoll');
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
-    console.log('CPR: Executing Midi Macro Pass: applyDamage for ' + token.document.name);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);
     let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'applyDamage');
     let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
     let triggers = targetTriggers.concat(selfTriggers).sort((a, b) => a.priority - b.priority);

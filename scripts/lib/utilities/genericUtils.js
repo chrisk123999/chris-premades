@@ -111,6 +111,11 @@ function collapseObjects(...objects) {
     objects.forEach(o => mergeObject(object, o));
     return object;
 }
+function log(type, message) {
+    if (type === 'dev' && !getCPRSetting('devTools')) return;
+    if (type === 'dev') type = 'log';
+    console[type]('CPR: ' + message);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -133,5 +138,6 @@ export let genericUtils = {
     getProperty,
     updateTargets,
     collapseObjects,
-    updateEmbeddedDocuments
+    updateEmbeddedDocuments,
+    log
 };

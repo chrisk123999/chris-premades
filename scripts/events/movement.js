@@ -1,6 +1,7 @@
 import {attach} from '../extensions/attach.js';
 import * as macros from '../macros.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
+import {auras} from './auras.js';
 import {templateEvents} from './template.js';
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
@@ -106,7 +107,7 @@ function getSortedTriggers(tokens, pass, token) {
     return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
-    console.log('CPR: Executing Movement Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Movement Macro: ' + trigger.macro.name);
     try {
         await trigger.macro({trigger, options});
     } catch (error) {
@@ -115,7 +116,7 @@ async function executeMacro(trigger, options) {
     }
 }
 async function executeMacroPass(tokens, pass, token, options) {
-    console.log('CPR: Executing Movement Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Movement Macro Pass: ' + pass);
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i, options);
@@ -137,6 +138,7 @@ async function updateToken(token, updates, options, userId) {
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
     if (!ignore) {
+        await auras.updateAuras(token, options);
         await executeMacroPass([token], 'moved', undefined, options);
         await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
         if (updates.x || updates.y) {

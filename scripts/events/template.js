@@ -57,7 +57,7 @@ function getSortedTriggers(templates, pass, token) {
     return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    console.log('CPR: Executing Template Macro: ' + trigger.macro.name);
+    genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
     try {
         await trigger.macro({trigger});
     } catch (error) {
@@ -66,7 +66,7 @@ async function executeMacro(trigger) {
     }
 }
 async function executeMacroPass(templates, pass, token) {
-    console.log('CPR: Executing Template Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Template Macro Pass: ' + pass);
     let triggers = getSortedTriggers(templates, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
