@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {actorUtils, effectUtils, genericUtils, tokenUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../utils.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
 }
@@ -127,6 +127,26 @@ async function updateAuras(token, options) {
         await executeMacroPass(token.parent.tokens, 'create', token, options);
     }
 }
+async function createToken(token, options, userId) {
+    if (!socketUtils.isTheGM()) return;
+    await updateAuras(token);
+}
+async function deleteToken(token, options, userId) {
+    if (!socketUtils.isTheGM()) return;
+    let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.macros?.aura);
+    if (effect) {
+        await Promise.all(token.parent.tokens.filter(j => j != token).map(async i => await executeMacroPass(token.parent.tokens.filter(j => j != token), 'create', i, options)));
+    } else {
+        await executeMacroPass(token.parent.tokens, 'create', token, options);
+    }
+}
+async function canvasReady(canvas) {
+    if (!socketUtils.isTheGM()) return;
+    await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
+}
 export let auras = {
-    updateAuras
+    updateAuras,
+    canvasReady,
+    createToken,
+    deleteToken
 };

@@ -14,6 +14,7 @@ import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
 import {tokens} from './extensions/tokens.js';
 import {backup} from './extensions/backup.js';
+import {auras} from './events/auras.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -45,6 +46,10 @@ export function registerHooks() {
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
         Hooks.on('updateMeasuredTemplate', templateEvents.updateMeasuredTemplate);
+        Hooks.on('createToken', auras.createToken);
+        Hooks.on('deleteToken', auras.deleteToken);
+        Hooks.on('canvasReady', auras.canvasReady);
+        auras.canvasReady(canvas);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
             Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
