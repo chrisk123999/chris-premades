@@ -15,7 +15,7 @@ async function create({trigger}) {
             }
         }
     };
-    await effectUtils.createEffect(trigger.target.actor, effectData, {parentEntity: trigger.entity, identifier: trigger.identifier});
+    await effectUtils.createEffect(trigger.target.actor, effectData, {identifier: trigger.identifier});
 }
 export let test = {
     name: 'test',

@@ -115,7 +115,10 @@ async function executeMacroPass(tokens, pass, token, options) {
         }
         if (trigger.entity.uuid != effect.origin) removedEffects.push(effect);
     }));
-    await Promise.all(removedEffects.map(async effect => await genericUtils.remove(effect)));
+    await Promise.all(removedEffects.map(async effect => {
+        let testEffect = await fromUuid(effect.uuid);
+        if (testEffect) await genericUtils.remove(testEffect);
+    }));
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i, options);
 }
@@ -144,9 +147,13 @@ async function canvasReady(canvas) {
     if (!socketUtils.isTheGM()) return;
     await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
+async function effectCheck(effect) {
+    if (effect.flags['chris-premades']?.macros?.aura) await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
+}
 export let auras = {
     updateAuras,
     canvasReady,
     createToken,
-    deleteToken
+    deleteToken,
+    effectCheck
 };

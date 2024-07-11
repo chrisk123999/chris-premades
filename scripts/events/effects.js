@@ -1,6 +1,7 @@
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import {effectUtils, genericUtils, socketUtils} from '../utils.js';
+import {auras} from './auras.js';
 function getEffectMacroData(effect) {
     return effect.flags['chris-premades']?.macros?.effect ?? [];
 }
@@ -75,11 +76,15 @@ async function executeMacroPass(effect, pass) {
 async function createActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!(effect.parent instanceof Actor)) return;
+    await auras.effectCheck(effect);
     await executeMacroPass(effect, 'created');
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
-    if ((effect.parent instanceof Actor)) await executeMacroPass(effect, 'deleted');
+    if ((effect.parent instanceof Actor)) {
+        await auras.effectCheck(effect);
+        await executeMacroPass(effect, 'deleted');
+    }
     await effects.checkInterdependentDeps(effect);
 }
 export let effectEvents = {
