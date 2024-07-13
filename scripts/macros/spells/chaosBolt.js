@@ -50,7 +50,7 @@ async function use({workflow}) {
             let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.chaosBolt.bounce', nearbyTargets);
             if (targetSelect) nextTarget = targetSelect[0];
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Chaos Bolt: Bounce', {getDescription: true, translate: 'CHRISPREMADES.macros.chaosBolt.bounce', object: true});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Chaos Bolt: Bounce', {getDescription: true, translate: 'CHRISPREMADES.macros.chaosBolt.bounceFeature', object: true});
         if (!featureData) {
             errors.missingPackItem();
             return;

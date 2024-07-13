@@ -318,7 +318,8 @@
             "chaosBolt": {
                 "select": "Select damage type:",
                 "bounce": "Who should the Chaos Bolt bounce to?",
-                "alwaysBounce": "Always Bounces:"
+                "alwaysBounce": "Always Bounces:",
+                "bounceFeature": "Chaos Bolt: Bounce"
             },
             "chromaticOrb": {
                 "select": "What damage type?"
@@ -401,12 +402,24 @@
             "greenFlameBlade": {
                 "noWeapons": "No equipped weapons found!",
                 "selectWeapon": "Attack with what weapon?",
-                "leap": "Where does the fire leap?"
+                "leap": "Where does the fire leap?",
+                "leapFeature": "Green-Flame Blade: Leap"
             },
             "guardianOfNature": {
                 "beast": "Primal Beast",
                 "tree": "Great Tree",
                 "select": "What form do you assume?"
+            },
+            "hailOfThorns": {
+                "burst": "Hail of Thorns: Burst"
+            },
+            "heatMetal": {
+                "pulse": "Heat Metal: Pulse",
+                "dialog": "Heat Metal: Dialog",
+                "drop": "Drop heated object?",
+                "unable": "Unable (Armor)",
+                "held": "Heat Metal: Held",
+                "damage": "Heat Metal: Damage"
             }
         },
         "section": {

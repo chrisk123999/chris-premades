@@ -1,4 +1,4 @@
-import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -31,11 +31,18 @@ async function use({workflow}) {
         if (targetSelect) target = targetSelect[0];
     }
     if (!target) return;
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Green-Flame Blade: Leap', {getDescription: true, translate: 'CHRISPREMADES.macros.greenFlameBlade.leapFeature', object: true});
+    if (!featureData) {
+        errors.missingPackItem();
+        return;
+    }
     let modifier = itemUtils.getMod(workflow.item);
     let damageFormula = modifier + '[' + damageType + ']';
     if (diceNumber) damageFormula = diceNumber + 'd8[' + damageType + '] + ' + modifier;
-    let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData()).evaluate();
-    await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, damageType, [target], {flavor: workflow.item.name, itemCardId: attackWorkflow.itemCardId});
+    featureData.system.damage.parts = [
+        [damageFormula, damageType]
+    ];
+    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
 }
 export let greenFlameBlade = {
     name: 'Green-Flame Blade',

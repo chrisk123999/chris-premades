@@ -91,6 +91,7 @@ async function syntheticItem(itemData, actor) {
     let item = new CONFIG.Item.documentClass(itemData, {parent: actor});
     item.prepareData();
     item.prepareFinalAttributes();
+    item.applyActiveEffects();
     return item;
 }
 async function enchantItem(item, effectData, {effects = [], items = [], concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent}) {
