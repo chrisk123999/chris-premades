@@ -85,7 +85,7 @@ function setup() {
             return nextState;
         }
         async WorkflowState_RollFinished(context = {}) {
-            let nextState = await super.WorkflowState_RollFinished;
+            let nextState = await super.WorkflowState_RollFinished(context);
             await midiEvents.rollFinished(this);
             return nextState;
         }

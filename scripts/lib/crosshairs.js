@@ -66,7 +66,6 @@ export class Crosshairs extends MeasuredTemplate {
      * Outwards facing function of the Crosshairs class, will do the constructing itself.
      */
     static async showCrosshairs(config = {}, callbacks = {}) {
-        console.log(config, callbacks);
         config = foundry.utils.mergeObject(config, Crosshairs.defaultCrosshairsConfig(), {overwrite: false});
         let controlled = [];
         if (config.rememberControlled) {
@@ -308,11 +307,11 @@ export class Crosshairs extends MeasuredTemplate {
         if (event.shiftKey && !this.lockSize) {
             let distance = document.distance + 0.25 * (Math.sign(event.deltaY));
             distance = Math.max(distance, 0.25);
-            this.document.updateSource({ distance });
+            this.document.updateSource({distance});
             this.radius = document.distance * thisSceneSize / 2;
         } else if (!event.altKey) {
             const direction = document.direction + (snap * Math.sign(event.deltaY));
-            this.document.updateSource({ direction });
+            this.document.updateSource({direction});
         }
         this.refresh();
     }
@@ -323,11 +322,8 @@ export class Crosshairs extends MeasuredTemplate {
     }
     _rightUpHandler(event) {
         if (event.button !== 2) return;
-  
         const isWithinThreshold = (current, previous) => Math.abs(current - previous) < 10;
-        if (isWithinThreshold(this.rightX, event.screenX)
-        && isWithinThreshold(this.rightY, event.screenY)
-        ) {
+        if (isWithinThreshold(this.rightX, event.screenX) && isWithinThreshold(this.rightY, event.screenY)) {
             this.cancelled = true;
             this.clearHandlers(event);
         }
@@ -347,7 +343,7 @@ export class Crosshairs extends MeasuredTemplate {
         canvas.mouseInteractionManager.reset({interactionData: true});
         this.layer.interactiveChildren = true;
     }
-    // Hold over from compatability functions
+    // Wrap the template's computeShape function and fix sizing
     computeShape(crosshairs) {
         let shape = crosshairs._computeShape();
         if (crosshairs.document.t === 'rect') {

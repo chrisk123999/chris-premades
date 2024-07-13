@@ -2,6 +2,7 @@ import {requirements} from '../extensions/requirements.js';
 import * as macros from '../macros.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
+import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
@@ -162,6 +163,7 @@ async function preambleComplete(workflow) {
         await conditionResistance.preambleComplete(workflow);
         await conditionVulnerability.preambleComplete(workflow);
     }
+    await templateVisibility.check(workflow);
 }
 async function attackRollComplete(workflow) {
     await executeMacroPass(workflow, 'attackRollComplete');

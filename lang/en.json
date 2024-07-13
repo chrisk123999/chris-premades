@@ -21,6 +21,11 @@
             "Description": "Description",
             "Go": "Go"
         },
+        "Template": {
+            "UnknownTemplate": "Unknown Template",
+            "TargetCantSeeAttacker": "Target Can't See Attacker",
+            "AttackerCantSeeTarget": "Attacker Can't See Target"
+        },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "UnknownTarget": "Unknown Target",
         "Medkit": {

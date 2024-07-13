@@ -1,5 +1,4 @@
 import {genericUtils} from './genericUtils.js';
-
 function getTokensInTemplate(template) {
     let tokens = new Set();
     let scene = template.parent;
@@ -126,7 +125,7 @@ async function setSaveDC(template, dc) {
     await setCastData(template, data);
 }
 function getName(template) {
-    return template.flags['chris-premades']?.template?.name;
+    return template.flags['chris-premades']?.template?.name ?? genericUtils.translate('CHRISPREMADES.Template.UnknownTemplate');
 }
 async function setName(template, name) {
     await template.setFlag('chris-premades', 'template.name', name);
@@ -137,14 +136,16 @@ async function placeTemplate(templateData, returnTokens=false) {
     let template = false;
     try {
         [template] = await previewTemplate.drawPreview();
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) {/* Why does this throw an error when a template isn't placed by the user? */}
     if (!returnTokens) return template;
     if (!template) return {template: null, tokens: []};
     await genericUtils.sleep(100);
     let tokens = getTokensInTemplate(template);
     return {template, tokens};
+}
+function rayIntersectsTemplate(template, ray) {
+    return template.object.shape.segmentIntersections(ray.A, ray.B).length > 0;
+
 }
 export let templateUtils = {
     getTokensInTemplate,
@@ -160,5 +161,6 @@ export let templateUtils = {
     setSaveDC,
     getName,
     setName,
-    placeTemplate
+    placeTemplate,
+    rayIntersectsTemplate
 };
