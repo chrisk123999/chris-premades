@@ -21,6 +21,7 @@ export async function blessingOfTheForge({speaker, actor, token, character, item
     } else {
         itemData.system.armor.value += 1;
     }
+    itemData.system.properties.push('mgc');
     let effectData = {
         'label': workflow.item.name,
         'icon': workflow.item.img,
