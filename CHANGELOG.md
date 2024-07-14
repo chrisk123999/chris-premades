@@ -1,10 +1,15 @@
-# 0.11.12 Release:
+# 0.11.13 Release:
 ## Bug Fixes:
-- Song of Victory
+- Spike Growth
+- Blessing of the Forge (Thanks Elfrey)
 ## Update Notes:
 - Foundry V12 is not supported at all at this time, do not update Foundry at this time.
 - Likely safe for D&D 3.2.0 and Foundry V11.
 - The V12 update is a work in progress.
+  
+# 0.11.12 Release:
+## Bug Fixes:
+- Song of Victory
   
 # 0.11.11 Release:
 ## Bug Fixes:

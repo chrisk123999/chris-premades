@@ -18,7 +18,8 @@ async function spikeGrowthEnterLeave(data, template) {
             x: data.coords.previous.x + (token.w / 2),
             y: data.coords.previous.y + (token.w / 2)
         };
-        let intersectionPoint = quadraticIntersection(previousTokenCenter, currentTokenCenter, template.object.center, template.object.shape.radius, epsilon=0);
+        // eslint-disable-next-line no-undef
+        let intersectionPoint = quadraticIntersection(previousTokenCenter, currentTokenCenter, template.object.center, template.object.shape.radius);
         if (intersectionPoint.length === 0) return;
         let ray = new Ray(intersectionPoint[0], currentTokenCenter);
         cellDistance = (Math.ceil(ray.distance / canvas.scene.grid.size));
@@ -60,7 +61,8 @@ async function spikeGrowthStaying(data, template) {
             x: data.coords.previous.x + (token.w / 2),
             y: data.coords.previous.y + (token.w / 2)
         };
-        let intersectionPoint = quadraticIntersection(previousTokenCenter, currentTokenCenter, template.object.center, template.object.shape.radius, epsilon=0);
+        // eslint-disable-next-line no-undef
+        let intersectionPoint = quadraticIntersection(previousTokenCenter, currentTokenCenter, template.object.center, template.object.shape.radius);
         if (intersectionPoint.length === 0) return;
         let ray = new Ray(intersectionPoint[0], currentTokenCenter);
         cellDistance = (Math.ceil(ray.distance / canvas.scene.grid.size));
@@ -87,4 +89,4 @@ async function spikeGrowthStaying(data, template) {
 export let spikeGrowth = {
     'enterLeave': spikeGrowthEnterLeave,
     'staying': spikeGrowthStaying
-}
+};
