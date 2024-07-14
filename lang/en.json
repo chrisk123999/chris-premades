@@ -444,7 +444,8 @@
             "wardingBond": {
                 "damage": "Warding Bond: Damage",
                 "distance": "Bond distance is too far away, remove bond?",
-                "maxDistance": "Max Distance:"
+                "maxDistance": "Max Distance:",
+                "dismiss": "Warding Bond: Dismiss"
             }
         },
         "section": {

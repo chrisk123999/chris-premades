@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let targetEffectData = {
@@ -62,7 +62,13 @@ async function use({trigger, workflow}) {
             }
         }
     };
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.wardingBond.dismiss', identifier: 'wardingBondDismiss'});
+    if (!featureData) {
+        errors.missingPackItem();
+        return;
+    }
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {identifier: 'wardingBondSource'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     await Promise.all(workflow.targets.map(async token => {
         await effectUtils.createEffect(token.actor, targetEffectData, {identifier: 'wardingBondTarget', parentEntity: effect, interdependent: true});
     }));
@@ -112,6 +118,11 @@ async function movedSource({trigger}) {
     let selection = await dialogUtils.confirm(trigger.entity.name, 'CHRISPREMADES.macros.wardingBond.distance', {userId: socketUtils.gmID()});
     if (!selection) return;
     await genericUtils.remove(trigger.entity);
+}
+async function dismiss({trigger, workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'wardingBondSource');
+    if (!effect) return;
+    await genericUtils.remove(effect);
 }
 export let wardingBond = {
     name: 'Warding Bond',
@@ -166,4 +177,17 @@ export let wardingBondSource = {
             priority: 50
         }
     ]
+};
+export let wardingBondDismiss = {
+    name: 'Warding Bond Dismiss',
+    version: wardingBond.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: dismiss,
+                priority: 50
+            }
+        ]
+    }
 };
