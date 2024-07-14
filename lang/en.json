@@ -196,6 +196,26 @@
             "backupMake": {
                 "name": "Make A Backup",
                 "hint": "Make a backup right now using the specified compendium."
+            },
+            "disableNonConditionStatusEffects": {
+                "name": "Disable Non-Condition Status Effects",
+                "hint": "When enabled, all core non-condition status effects will be removed."
+            },
+            "effectDescriptionNPC": {
+                "name": "Hide NPC Effect Descriptions",
+                "hint": "When enabled, the Automatic Effect Description setting will not apply for NPC created effects."
+            },
+            "effectDescriptions": {
+                "name": "Automatic Effect Descriptions",
+                "hint": "When enabled, effects without descriptions will automatically be filled in from the origin item."
+            },
+            "replaceStatusEffectIcons": {
+                "name": "Replace Status Icons",
+                "hint": "When enabled, status icons will be replaced."
+            },
+            "statusEffectIcons": {
+                "name": "Configure Status Icon Images",
+                "hint": "Configure status icon images."
             }
         },
         "settingCategory": {
@@ -420,6 +440,11 @@
                 "unable": "Unable (Armor)",
                 "held": "Heat Metal: Held",
                 "damage": "Heat Metal: Damage"
+            },
+            "wardingBond": {
+                "damage": "Warding Bond: Damage",
+                "distance": "Bond distance is too far away, remove bond?",
+                "maxDistance": "Max Distance:"
             }
         },
         "section": {

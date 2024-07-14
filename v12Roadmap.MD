@@ -41,7 +41,7 @@ Goals:
         - [x] CR calculating functions
         - [ ] Token config getters?
         - [x] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
-        - [ ] No target option and set height to 0.01, 'flags.wall-height.tokenHeight', 0.001
+        - [ ] No target option and set height to 0.001, 'flags.wall-height.tokenHeight', 0.001
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep
@@ -54,7 +54,7 @@ Goals:
 [ ] warpgate.mutate()
 ### Dfred's CE
 [x] Effect sidebar thing
-[?] Effect thing or macro.StatusEffect
+[X] Effect thing or macro.StatusEffect
 ### Token Attacher
 [X] Attachng templates
 ### Automated Animations

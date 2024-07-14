@@ -51,6 +51,7 @@ export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
+export {wardingBond, wardingBondTarget, wardingBondSource} from './macros/spells/wardingBond.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 // Other
 export {summonUtils} from './lib/summons.js';

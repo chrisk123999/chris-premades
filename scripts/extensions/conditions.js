@@ -38,7 +38,7 @@ async function configureStatusEffectIcons() {
             currentValue: icons[i.id] ?? CONFIG.statusEffects.find(j => j.id === i.id)?.img ?? ''
         }
     }));
-    let selection = await DialogApp.dialog('CHRISPREMADES.configureStatusEffects.title', '', [['filePicker', inputs, {displayAsRows: true}]], 'okCancel', {width: 500, height: 800});
+    let selection = await DialogApp.dialog('CHRISPREMADES.settings.statusEffectIcons.name', '', [['filePicker', inputs, {displayAsRows: true}]], 'okCancel', {width: 500, height: 800});
     if (!selection) return;
     await genericUtils.setCPRSetting('statusEffectIcons', selection);
 }
@@ -52,7 +52,12 @@ function disableNonConditionStatusEffects() {
         'hovering',
         'marked',
         'sleeping',
-        'transformed'
+        'transformed',
+        'hiding',
+        'stable',
+        'surprised',
+        'silenced',
+        'dodging'
     ];
     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ids.includes(i.id));
 }
