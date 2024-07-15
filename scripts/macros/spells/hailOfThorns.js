@@ -41,7 +41,7 @@ async function late({workflow}) {
     ];
     let saveDC = effect.flags['chris-premades']?.hailOfThorns?.dc ?? 10;
     featureData.system.save.dc = saveDC;
-    // TODO: school? Why
+    genericUtils.setProperty(featureData, 'chris-premades.spell.castData.school', workflow.item.system.school);
     let targetToken = workflow.targets.first();
     let allTargets = tokenUtils.findNearby(targetToken, 5).concat(targetToken);
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, allTargets);

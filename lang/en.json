@@ -446,6 +446,29 @@
                 "distance": "Bond distance is too far away, remove bond?",
                 "maxDistance": "Max Distance:",
                 "dismiss": "Warding Bond: Dismiss"
+            },
+            "holdPerson": {
+                "overtime": "Hold Person (End of Turn)"
+            },
+            "holyWeapon": {
+                "noWeapons": "Target has no equipped weapons!",
+                "selectWeapon": "Which weapon would you like to enchant?",
+                "target": "Holy Weapon: Target",
+                "dismiss": "Holy Weapon: Dismiss",
+                "burst": "Holy Weapon: Burst",
+                "burstOvertime": "Holy Weapon: Burst (End of Turn)"
+            },
+            "huntersMark": {
+                "move": "Hunter's Mark: Move",
+                "marked": "Hunter's Mark: Marked",
+                "damageFlavor": "Hunter's Mark Extra Damage"
+            },
+            "fogCloud": {
+                "fogCloud": "Fog Cloud"
+            },
+            "darkness": {
+                "darkness": "Darkness",
+                "attach": "Attach to self?"
             }
         },
         "section": {
@@ -484,7 +507,9 @@
         "genericEffects": {
             "conditionAdvantage": "Condition Advantage",
             "conditionDisadvantage": "Condition Disadvantage",
-            "conditionImmunity": "Condition Immunity"
+            "conditionImmunity": "Condition Immunity",
+            "invalidTarget": "Invalid Target",
+            "templateEffect": "{itemName} Template"
         },
         "backup": {
             "missingPack": "Invalid backup compendium specified! No backups have been made!",

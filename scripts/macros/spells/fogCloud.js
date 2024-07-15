@@ -1,6 +1,6 @@
 import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../../utils.js';
 
-async function use({workflow}) {
+async function early({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let templateData = {
@@ -17,7 +17,12 @@ async function use({workflow}) {
                 originUuid: workflow.item.uuid
             },
             'chris-premades': {
-                fogCloud: true
+                template: {
+                    name: genericUtils.translate('CHRISPREMADES.macros.fogCloud.fogCloud'),
+                    visibility: {
+                        obscured: true
+                    }
+                }
             },
             walledtemplates: {
                 wallRestriction: 'move',
@@ -33,13 +38,12 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    // TODO: Should this be a setting as it was?
     let xray = true;
     if (playAnimation && animationUtils.jb2aCheck() === 'patreon') {
         if (game.modules.get('walledtemplates')?.active) {
             new Sequence()
                 .effect()
-                .file('jb2a.fog_cloud.1.white')
+                .file('jb2a.fog_cloud.01.white')
                 .scaleToObject()
                 .aboveLighting()
                 .opacity(0.5)
@@ -51,7 +55,7 @@ async function use({workflow}) {
         } else {
             new Sequence()
                 .effect()
-                .file('jb2a.fog_cloud.1.white')
+                .file('jb2a.fog_cloud.01.white')
                 .scaleToObject()
                 .aboveLighting()
                 .opacity(0.5)
@@ -70,10 +74,31 @@ async function use({workflow}) {
         },
         flags: {
             dnd5e: {
-                dependents: [template.uuid]
+                dependents: [{uuid: template.uuid}]
             }
         }
     };
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true});
 }
-// TODO: handle the actual logic of what the fog cloud does
+export let fogCloud = {
+    name: 'Fog Cloud',
+    version: '0.12.0',
+    midi: {
+        item: [
+            {
+                pass: 'preambleComplete',
+                macro: early,
+                priority: 50
+            }
+        ]
+    },
+    config: [
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.config.playAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        }
+    ]
+};

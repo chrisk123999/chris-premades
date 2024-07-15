@@ -19,9 +19,12 @@ async function use({workflow}) {
         },
         macros: {
             'midi.item': ['heatMetalPulse']
+        },
+        spell: {
+            castData: workflow.castData
         }
     };
-    // TODO: add school? Why?
+    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,

@@ -20,7 +20,8 @@ async function use({workflow}) {
     ];
     let duration = 60 * workflow.item.system.duration.value;
     featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-    // TODO: add castdata & school? Why?
+    genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
+    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

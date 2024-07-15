@@ -49,7 +49,8 @@ async function use({workflow}) {
                 damageType
             ]
         ];
-        // TODO: add castdata & school? Why?
+        genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
+        featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets);
     }
 }

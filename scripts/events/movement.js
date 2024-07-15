@@ -131,7 +131,7 @@ async function updateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
-    let coords = {x: token.x, y: token.y};
+    let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
     let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
     if (!previousCoords) return;
     let ignore = genericUtils.getProperty(options, 'chris-premades.movement.ignore');
