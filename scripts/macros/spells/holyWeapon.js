@@ -87,13 +87,13 @@ async function use({workflow}) {
             }
         }
     };
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.dismiss', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.dismiss', identifier: 'holyWeaponDismiss', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: {button: featureData.name}, identifier: 'holyWeapon'});
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'holyWeaponDismiss'}], identifier: 'holyWeapon'});
     await itemUtils.enchantItem(selectedWeapon, weaponEffectData, {parentEntity: casterEffect, strictlyInterdependent: true, identifier: 'holyWeaponTarget'});
     await effectUtils.createEffect(targetToken.actor, targetEffectData, {parentEntity: casterEffect, strictlyInterdependent: true});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});

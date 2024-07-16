@@ -9,7 +9,7 @@ async function use({workflow}) {
     let targetToken = workflow.targets.first();
     let targetUuid = targetToken.document.uuid;
     let damageFormula = workflow.castData.castLevel + 'd8[fire]';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', identifier: 'heatMetalPulse', object: true});
     let spellDC = itemUtils.getSaveDC(workflow.item);
     featureData.flags['chris-premades'] = {
         heatMetal: {
@@ -40,7 +40,7 @@ async function use({workflow}) {
             }
         }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: {button: featureData.name}});
+    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: [{type: 'use', name: featureData.name, identifier: 'heatMetalPulse'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'heatMetalPulse'});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
     let targetEffectData = {

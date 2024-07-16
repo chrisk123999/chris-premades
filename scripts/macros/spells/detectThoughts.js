@@ -19,7 +19,7 @@ async function use({workflow}) {
             seconds: duration
         }
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'detectThoughts', vae: {button: featureData.name}});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'detectThoughts', vae: [{type: 'use', name: featureData.name, identifier: 'probeDeeper'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'probeDeeper'});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
 }

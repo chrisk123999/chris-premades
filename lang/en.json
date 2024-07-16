@@ -50,7 +50,7 @@
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
                 },
-                "Overtime":{
+                "Overtime": {
                     "Label": "Overtime",
                     "Tooltip": "UI to create Midi-QOL Over Time effects"
                 }
@@ -67,6 +67,10 @@
                 "sound": {
                     "Label": "Sound:",
                     "Tooltip": "Add a sound to be played"
+                },
+                "mechanics": {
+                    "Label": "Mechanics:",
+                    "Tooltip": "Customize the mechanics of the item"
                 }
             },
             "NoPermission": "You do not have permissions to change this"
@@ -299,7 +303,8 @@
             "sound": "Sound:",
             "damageType": "Damage Type:",
             "formula": "Formula:",
-            "damageTypes": "Damage Types:"
+            "damageTypes": "Damage Types:",
+            "realDarkness": "Use Real Darkness:"
         },
         "macros": {
             "antagonize": {
@@ -469,13 +474,9 @@
             "huntersMark": {
                 "move": "Hunter's Mark: Move",
                 "marked": "Hunter's Mark: Marked",
-                "damageFlavor": "Hunter's Mark Extra Damage"
-            },
-            "fogCloud": {
-                "fogCloud": "Fog Cloud"
+                "select": "Which target would you like to unmark?"
             },
             "darkness": {
-                "darkness": "Darkness",
                 "attach": "Attach to self?"
             }
         },

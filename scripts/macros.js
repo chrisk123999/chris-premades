@@ -48,7 +48,7 @@ export {heroism, heroismHeroic} from './macros/spells/heroism.js';
 export {hex, hexMove, hexAttack} from './macros/spells/hex.js';
 export {holdPerson} from './macros/spells/holdPerson.js';
 export {holyWeapon, holyWeaponDismiss} from './macros/spells/holyWeapon.js';
-export {huntersMark, huntersMarkMarked, huntersMarkSource, huntersMarkMove} from './macros/spells/huntersMark.js';
+export {huntersMark, huntersMarkSource, huntersMarkMove} from './macros/spells/huntersMark.js';
 export {hypnoticPattern, hypnoticPatternRemove} from './macros/spells/hypnoticPattern.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';

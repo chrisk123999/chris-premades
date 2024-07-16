@@ -41,7 +41,7 @@ async function use({workflow}) {
         }
     };
     for (let target of workflow.targets) {
-        let effect = await effectUtils.createEffect(target.actor, effectData, {concentrationItem: workflow.item, interdependent: true, vae: {button: featureData.name}, identifier: 'dragonsBreath'});
+        let effect = await effectUtils.createEffect(target.actor, effectData, {concentrationItem: workflow.item, interdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'dragonBreath'}], identifier: 'dragonsBreath'});
         await itemUtils.createItems(target.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'dragonBreath'});
     }
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});

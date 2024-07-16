@@ -40,13 +40,13 @@ async function use({workflow}) {
             let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
             let selectedWeapon;
             if (!weapons.length) {
-                genericUtils.notify('CHRISPREMADES.antagonize.noWeapons', 'info');
+                genericUtils.notify('CHRISPREMADES.macros.antagonize.noWeapons', 'info');
                 continue;
             }
             if (weapons.length === 1) {
                 selectedWeapon = weapons[0];
             } else {
-                selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectWeapon', weapons, {userId: socketUtils.gmID()});
+                selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.antagonize.selectWeapon', weapons, {userId: socketUtils.gmID()});
                 if (!selectedWeapon) continue;
             }
             let target;
@@ -54,7 +54,7 @@ async function use({workflow}) {
             if (nearbyTargets.length === 1) {
                 target = nearbyTargets[0].document;
             } else {
-                [{document: target}, selected] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.antagonize.selectTarget', nearbyTargets);
+                [{document: target}, selected] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.antagonize.selectTarget', nearbyTargets);
                 if (!selected) continue;
             }
             await socketUtils.remoteRollItem(selectedWeapon, {}, {targetUuids: [target.uuid]}, socketUtils.firstOwner(targetToken).id);

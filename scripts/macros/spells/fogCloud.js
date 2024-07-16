@@ -18,7 +18,7 @@ async function early({workflow}) {
             },
             'chris-premades': {
                 template: {
-                    name: genericUtils.translate('CHRISPREMADES.macros.fogCloud.fogCloud'),
+                    name: workflow.item.name,
                     visibility: {
                         obscured: true
                     }

@@ -1,9 +1,16 @@
 import {constants, errors, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils, compendiumUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    if (!workflow.targets.size) return;
+    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    if (!workflow.targets.size) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.selectAbility', buttons);
-    if (!selection) return;
+    if (!selection) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
     let seconds;
     switch (workflow.castData.castLevel) {
         case 3:
@@ -60,15 +67,15 @@ async function use({trigger, workflow}) {
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: 'CHRISPREMADES.macros.hex.move', identifier: 'hexMove', object: true});
     if (!featureData) {
         errors.missingPackItem();
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: {button: featureData.name}});
+    let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, identifier: 'hex', vae: [{type: 'use', name: featureData.name, identifier: 'hexMove'}]});
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'hexed'});
     }
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
-    let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
 async function damage({trigger, workflow}) {
     if (!workflow.targets.size) return;

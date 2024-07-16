@@ -3,7 +3,7 @@ import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, eff
 async function use({workflow}) {
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.fireShield.select', [['CHRISPREMADES.macros.fireShield.warmShield', 'fire'], ['CHRISPREMADES.macros.fireShield.chillShield', 'cold']]);
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Fire Shield: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.macros.fireShield.dismiss', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Fire Shield: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.macros.fireShield.dismiss', identifier: 'fireShieldDismiss', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -47,7 +47,7 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['fireShieldShielded']);
     effectUtils.addMacro(effectData, 'effect', ['fireShieldShielded']);
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'fireShield', vae: {button: featureData.name}});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'fireShield', vae: [{type: 'use', name: featureData.name, identifier: 'fireShieldDismiss'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'fireShield'});
 }
 async function hit({trigger: {entity: effect}, workflow}) {

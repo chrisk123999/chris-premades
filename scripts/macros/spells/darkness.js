@@ -3,6 +3,7 @@ import {animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils} from 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
     let template = workflow.template;
     let token = workflow.token;
     if (!template || !token) {
@@ -13,7 +14,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 template: {
-                    name: genericUtils.translate('CHRISPREMADES.macros.darkness.darkness'),
+                    name: workflow.item.name,
                     visibility: {
                         obscured: true,
                         magicalDarkness: true
@@ -26,14 +27,31 @@ async function use({workflow}) {
             }
         }
     });
+    let attachUuids = [template.uuid];
+    let darknessSource;
+    if (useRealDarkness) {
+        [darknessSource] = await canvas.scene.createEmbeddedDocuments('AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
+        attachUuids.push(darknessSource.uuid);
+        template.addDependent(darknessSource);
+    }
     let attachToken = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.darkness.attach');
     if (attachToken) {
+        await genericUtils.update(template, {
+            x: token.center.x,
+            y: token.center.y
+        });
+        if (darknessSource) {
+            await genericUtils.update(darknessSource, {
+                x: token.center.x,
+                y: token.center.y
+            });
+        }
         let currAttached = token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? [];
         await genericUtils.update(token.document, {
             flags: {
                 'chris-premades': {
                     attached: {
-                        attachedEntityUuids: currAttached.concat(template.uuid)
+                        attachedEntityUuids: currAttached.concat(...attachUuids)
                     }
                 }
             }
@@ -86,6 +104,13 @@ export let darkness = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'useRealDarkness',
+            label: 'CHRISPREMADES.config.realDarkness',
+            type: 'checkbox',
+            default: false,
+            category: 'mechanics'
         }
     ]
 };

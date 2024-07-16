@@ -2,13 +2,13 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Flame Blade Scimitar', {getDescription: true, translate: 'CHRISPREMADES.macros.flameBlade.scimitar', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Flame Blade Scimitar', {getDescription: true, translate: 'CHRISPREMADES.macros.flameBlade.scimitar', identifier: 'flameBladeScimitar', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let featureData2 = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Evoke Flame Blade', {getDescription: true, translate: 'CHRISPREMADES.macros.flameBlade.evoke', object: true});
+    let featureData2 = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Evoke Flame Blade', {getDescription: true, translate: 'CHRISPREMADES.macros.flameBlade.evoke', identifier: 'flameBladeEvoke', object: true});
     if (!featureData2) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -58,7 +58,7 @@ async function use({workflow}) {
             }
         ],
     };
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, vae: {button: featureData.name}});
+    let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, vae: [{type: 'use', name: featureData.name, identifier: 'flameBladeScimitar'}, {type: 'use', name: featureData2.name, identifier: 'flameBladeEvoke'}]});
     await itemUtils.createItems(workflow.actor, [featureData, featureData2], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
