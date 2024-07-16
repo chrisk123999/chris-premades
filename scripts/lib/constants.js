@@ -1,5 +1,3 @@
-import TerserPlugin from 'terser-webpack-plugin';
-
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
