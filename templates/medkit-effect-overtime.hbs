@@ -1,0 +1,83 @@
+<div class="tab cpr-medkit-tab {{tabs.overtime.cssClass}} scrollable" data-tab="overtime" data-group="main">
+    <p class="content"> {{localize content}} </p>
+    {{#each inputs}}
+        <div class="form-group">
+        {{#if isCheckbox}}
+            <div class="row-display">
+                {{#each options}}
+                    <input type="checkbox" {{#if (gte ../currentNum ../totalMax)}}{{#unless isChecked}}disabled{{/unless}}{{/if}} id="i{{@../index}}j{{@index}}" name="{{name}}" {{#if isChecked}}checked{{/if}}>
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isRadio}}
+            <div class="row-display">
+                {{#each options}}
+                    <input type="radio" id="i{{@../index}}j{{@index}}" name="{{../radioName}}" value="{{name}}" {{#if isChecked}}checked{{/if}}>
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isSelectAmount}}
+            <div class="row-display">
+                {{#each options}}
+                    <select id="i{{@../index}}j{{@index}}" name="{{name}}">
+                        {{#each options}}
+                            <option value="{{this}}" {{#if (gt this ../currentMaxAmount)}}disabled{{/if}} {{#if (eq this ../currentAmount)}}selected{{/if}}>{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isSelectOption}}
+            <div class="row-display">
+                {{#each options}}
+                    <select id="i{{@../index}}j{{@index}}" name="{{name}}">
+                        {{#each options}}
+                            <option value="{{value}}" {{#if (eq value ../currentValue)}}selected{{/if}}>{{localize label}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isText}}
+            <div class="row-display">
+                {{#each options}}
+                    <input type="text" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isNumber}}
+            <div class="row-display">
+                {{#each options}}
+                    <input type="number" id="i{{@../index}}j{{@index}}" name="{{name}}" value="{{value}}">
+                    <label for="i{{@../index}}j{{@index}}">
+                        {{#if image}}<img class="label-image" src={{image}}>{{/if}}
+                        <p class="label-text">{{localize label}}</p>
+                    </label>
+                {{/each}}
+            </div>
+        {{else if isFilePicker}}
+            <div class="row-display">
+                {{#each options}}
+                    <label for="i{{@../index}}j{{@index}}"><p class="label-text">{{localize label}}</p></label>
+                    <file-picker id="i{{@../index}}j{{@index}}" name="{{name}}" type="{{type}}" value="{{value}}"></file-picker>
+                {{/each}}
+            </div>
+        {{/if}}
+        </div>
+    {{/each}}
+</div>

@@ -6,6 +6,7 @@ import {effects} from './extensions/effects.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
+import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 function addSetting(options) {
     let setting = {
@@ -188,12 +189,16 @@ export function registerSettings() {
         category: 'development',
     });
     addSetting({
-        key: 'vaeButton',
+        key: 'vaeButtons',
         type: Boolean,
         default: true,
         category: 'integration',
         onChange: value => {
-
+            if (value) {
+                Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
+            } else {
+                Hooks.off('visual-active-effects.createEffectButtons', vae.createEffectButtons);
+            }
         }
     });
     addSetting({
@@ -387,6 +392,12 @@ export function registerSettings() {
                 Hooks.off('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
             }
         }
+    });
+    addSetting({
+        key: 'selectTool',
+        type: Boolean,
+        default: false,
+        category: 'interface'
     });
 }
 export function registerMenus() {

@@ -100,7 +100,6 @@ export class Summons {
         }
         if (this.options.animation != 'none' && !this.options.callbacks?.post) {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
-            console.log(callbackFunction);
             if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
                 genericUtils.setProperty(this.options.callbacks, 'post', callbackFunction);
                 this.mergeUpdates({token: {alpha: 0}});
@@ -235,7 +234,6 @@ export class Summons {
         if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
-        console.log(summonEffects);
         await effectUtils.addDependent(effect, summonEffects);
         // Make caster effect dependent on each summon effect
         await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));

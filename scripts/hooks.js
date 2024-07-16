@@ -15,6 +15,7 @@ import {sidebar} from './extensions/sidebar.js';
 import {tokens} from './extensions/tokens.js';
 import {backup} from './extensions/backup.js';
 import {auras} from './events/auras.js';
+import {vae} from './integrations/vae.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -36,6 +37,7 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
+    if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);

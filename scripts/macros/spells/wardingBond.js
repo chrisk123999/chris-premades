@@ -67,7 +67,7 @@ async function use({trigger, workflow}) {
         errors.missingPackItem();
         return;
     }
-    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {identifier: 'wardingBondSource'});
+    let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {identifier: 'wardingBondSource', vae: [{type: 'use', name: featureData.name, identifier: 'wardingBondDismiss'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     await Promise.all(workflow.targets.map(async token => {
         await effectUtils.createEffect(token.actor, targetEffectData, {identifier: 'wardingBondTarget', parentEntity: effect, interdependent: true});

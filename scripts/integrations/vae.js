@@ -1,4 +1,5 @@
-function createEffectButton(effect, buttons) {
+import {itemUtils} from '../utils.js';
+function createEffectButtons(effect, buttons) {
     let buttonData = effect.flags['chris-premades']?.vae?.buttons;
     if (!buttonData) return;
     buttonData.forEach(i => {
@@ -7,7 +8,13 @@ function createEffectButton(effect, buttons) {
                 buttons.push({
                     label: i.name,
                     callback: () => {
-                        let item = (effect.transfer ? effect.parent.actor : effect.parent).items.getName(i.name);
+                        let actor = effect.transfer ? effect.parent.actor : effect.parent;
+                        let item;
+                        if (i.identifier) {
+                            item = itemUtils.getItemByIdentifer(actor, i.identifier);
+                        } else {
+                            item = actor.items.getName(i.name);
+                        }
                         if (item) item.use();
                     }
                 });
@@ -20,5 +27,5 @@ function createEffectButton(effect, buttons) {
     });
 }
 export let vae = {
-    createEffectButton
+    createEffectButtons
 };

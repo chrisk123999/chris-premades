@@ -5,8 +5,6 @@
             <div class="form-group cpr-medkit-config">
                 {{#each configuration}}
                     <div>
-                        
-                        {{log i18nOption}}
                         {{#if isCheckbox}}
                             <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>

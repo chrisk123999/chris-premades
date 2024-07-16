@@ -1,4 +1,5 @@
 import {summonEffects} from '../../macros/animations/summonEffects.js';
+import {teleportEffects} from '../../macros/animations/teleportEffects.js';
 import {animations, colors, defaultMatrix} from '../../macros/animations/colorMatrix.js';
 function jb2aCheck() {
     let patreon = game.modules.get('jb2a_patreon')?.active;
@@ -50,5 +51,6 @@ export let animationUtils = {
     aseCheck,
     simpleAttack,
     summonEffects,
+    teleportEffects,
     colorMatrix
 };

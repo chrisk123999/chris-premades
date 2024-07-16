@@ -4,7 +4,7 @@ import * as macros from '../macros.js'; // Maybe see if the added macro exsists?
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super();
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.effect.name;
+        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
         this.position.width = 450;
         this.effectDocument = effectDocument;
         this.context = context;
@@ -37,7 +37,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/medkit-info.hbs'
         },
         configure: {
-            template: 'modules/chris-premades/templates/medkit-configure.hbs',
+            template: 'modules/chris-premades/templates/medkit-effect-configure.hbs',
             scrollable: ['']
         },
         devTools: {
@@ -53,23 +53,31 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         new EffectMedkit(context, effect).render(true);
     }
     static async createContext(effect) {
-        let context = { // Probably re-arrange to be compartmentalized to the tabs instead of kist 'effect'
-            effect: {
-                name: effect.name,
-                status: '', // Will indicate the label/color of medkit
-                noAnimation: '',
-                conditions: '',
-                overtime: '',
-                macros: ''
+        let context = {
+            name: effect.name,
+            status: '', // Will indicate the label/color of medkit
+            configure: {
+                noAnimation: false,
+                conditions: [],
+            },
+            overTime: {
+                original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value
+            },
+            macros: {
+                effect: ''
             },
             isDev: game.settings.get('chris-premades', 'devTools')
         };
         // Figure out coloring for medkit
-        if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
-        if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
-        context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
+        //if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
+        //if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
+        //context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
+        if (context.overTime.original) {
+            let values = Object.fromEntries(context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim())));
+            
+        }
         context.medkitColor = '';
-        switch (context.effect.status) {
+        switch (context.status) {
             case 1: //something
         }
         return context;
@@ -136,29 +144,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
 
         // Need to dynamically update overtime??
         // Set checkbox, conditions, and macros to context
-        if (event.target.id === 'select-automation') {
-            let options = event.target.options;
-            let currentContext = this.context;
-            currentContext.item.options.forEach(i => i.isSelected = false);
-            currentContext.item.options[options.selectedIndex].isSelected = true;
-        } else if (this?.context?.category && Object.keys(this.context.category).includes(event.target.name)) {
-            if (event.target.type === 'checkbox') {
-                this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).value = event.target.checked;
-            } else {
-                if (event.target.type === 'select-one') {
-                    let options = event.target.options;
-                    let currentContext = this.context;
-                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => i.isSelected = false);
-                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
-                }
-                this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
-            }
-        } else if (event.target.name.includes('devTools')) {
+        if (event.target.name.includes('devTools')) {
             let value = event.target.value;
             if (['actor', 'item'].includes(event.target.id)) {
                 this.context.devTools.midi[event.target.id] = value;
             } else this.context.devTools[event.target.id] = value;
         }
-        this.render(true);
+        //this.render(true);
     }
 }

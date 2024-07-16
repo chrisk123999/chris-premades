@@ -8,7 +8,6 @@ export class Teleport {
         this.updates = options?.updates ?? {};
     }
     static async teleport(tokens, controllingToken, options = {animation: 'none', isSynchronous: 'true', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}}) {
-        console.log(tokens, tokens.id, tokens.document.id);
         let teleport = new Teleport(tokens, controllingToken, options);
         await teleport.go();
     }
@@ -28,21 +27,17 @@ export class Teleport {
     }
     async _nonSync() {
         this.tokens.forEach(async tok => {
-            //play sequence
+            await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document);
             let update = genericUtils.collapseObjects(this.updates, this.getCoords(tok), {_id: tok.id});
             await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false});
-            // play sequence
+            await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document);
         });
     }
     async _sync() {
-        // play sequence
-        //await Promise.all(this.tokens.map(async tok => sequenceCallback(tok)))
+        await Promise.all(this.tokens.map(async tok => await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document)));
         let updates = this.tokens.map(tok => genericUtils.collapseObjects(this.updates, {_id: tok.id}, this.getCoords(tok)));
-        console.log(this.coords, updates);
         await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', updates, {animate: false});
-        console.log('hello??');
-        // play sequnce
-        //await Promise.all(this.tokens.map(async tok => sequenceCallback(tok)))
+        await Promise.all(this.tokens.map(async tok => await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document)));
     }
     getCoords(token) {
         let difference = {
@@ -100,8 +95,8 @@ export class Teleport {
                 }
             };
             this.options.callbacks.post = function clearDrawing() {
-                console.log('umh, hi?', this);
                 this.drawing.destroy();
+                this.containter.destroy();
             };
         }
         return this.options.callbacks;
@@ -115,7 +110,6 @@ export class Teleport {
         return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
     }
     get coords() {
-        console.log(this.controllingToken, this.template, this?.template?.x ?? 0 - (canvas.scene.grid.sizeX * this.controllingToken.w / 2));
         return {
             original: {
                 x: this.controllingToken.x,

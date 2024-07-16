@@ -17,6 +17,7 @@ import {registerSockets} from './lib/sockets.js';
 import {workflow} from './extensions/workflow.js';
 import {Teleport} from './lib/teleport.js';
 import {backup} from './extensions/backup.js';
+import {selectTool} from './extensions/selectTool.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -26,6 +27,7 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
     if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
+    if (utils.genericUtils.getCPRSetting('selectTool')) selectTool.init();
 });
 Hooks.once('ready', () => {
     workflow.setup();

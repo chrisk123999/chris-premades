@@ -1,6 +1,7 @@
 import * as macros from '../macros.js';
 import {compendiumUtils, itemUtils} from '../utils.js';
 import {Medkit} from '../applications/medkit.js';
+import {EffectMedkit} from '../applications/medkit-effect.js';
 export function createHeaderButton(config, buttons) {
     buttons.unshift({
         class: 'chris-premades-item',
@@ -30,6 +31,7 @@ async function actorMedkit(actor) {
 async function effectMedkit(effect) {
     //Effect Medkit Dialog Here!
     console.log(effect);
+    await EffectMedkit.effect(effect);
 }
 export async function renderItemSheet(app, [elem], options) {
     let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');

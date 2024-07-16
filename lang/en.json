@@ -49,6 +49,10 @@
                 "Configuration": {
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
+                },
+                "Overtime":{
+                    "Label": "Overtime",
+                    "Tooltip": "UI to create Midi-QOL Over Time effects"
                 }
             },
             "Categories": {
@@ -216,6 +220,10 @@
             "statusEffectIcons": {
                 "name": "Configure Status Icon Images",
                 "hint": "Configure status icon images."
+            },
+            "selectTool": {
+                "name": "Select Tool Everywhere",
+                "hint": "When enabled, the select tool is available in more places. Reload required after enabling."
             }
         },
         "settingCategory": {
@@ -524,5 +532,10 @@
             "sixMonths": "Six Months",
             "oneYear": "One Year"
         }
+    },
+    "CONTROLS": {
+        "TemplateSelect": "Select Templates",
+        "LightSelect": "Select Lights",
+        "SoundSelect": "Select Sounds"
     }
 }

@@ -38,9 +38,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
-    if (vae) {
-        if (vae.button) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.button', vae.button);
-    }
+    if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);

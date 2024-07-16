@@ -1,3 +1,5 @@
+import TerserPlugin from 'terser-webpack-plugin';
+
 let packs = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     spells: 'chris-premades.CPRSpells',
@@ -119,6 +121,195 @@ let damageTypeOptions = [
     {
         label: 'Thunder',
         value: 'thunder'
+    }
+];
+
+const overTimeOptions = [
+    {
+        key: 'turn',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Turn',
+        default: 'start',
+        type: 'radio',
+        options: [
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Start',
+                value: 'start'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.End',
+                value: 'end'
+            }
+        ],
+        fieldset: 'parameters'
+    },
+    {
+        key: 'label',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Label',
+        default: null,
+        type: 'text',
+        fieldset: 'parameters'
+    },
+    {
+        key: 'allowIncapacitated',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.AllowIncapacitated',
+        default: true,
+        type: 'boolean',
+        fieldset: 'parameters'
+    },
+    {
+        key: 'applyCondition',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ApplyCondition',
+        default: null,
+        type: 'text',
+        fieldset: 'parameters',
+    },
+    {
+        key: 'removeCondition',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.RemoveCondition',
+        default: null,
+        type: 'text',
+        fieldset: 'parameters'
+    },
+    {
+        key: 'rollType',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.RollType',
+        default: 'save',
+        type: 'select',
+        options: [
+            {
+                label: 'CHRISPREMADES.Generic.Check',
+                value: 'check'
+            },
+            {
+                label: 'CHRISPREMADES.Generic.Save',
+                value: 'save'
+            },
+            {
+                label: 'CHRISPREMADES.Generic.Skill',
+                value: 'skill'
+            },
+            {
+                label: 'CHRISPREMADES.Generic.None',
+                value: 'none'
+            }
+        ],
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveAbility',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveAbility',
+        default: null,
+        type: 'ability',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveDC',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveDC',
+        default: null,
+        type: 'saves',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveDamage',
+        default: 'nodamage',
+        type: 'select',
+        options: [
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.HalfDamage',
+                value: 'halfdamage'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.NoDamage',
+                value: 'nodamage'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.FullDamamge',
+                value: 'fulldamage'
+            }
+        ],
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveRemove',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveRemove',
+        default: true,
+        type: 'boolean',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveMagic',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveMagic',
+        default: false,
+        type: 'boolean',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'actionSave',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ActionSave',
+        default: false,
+        type: 'boolean',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'damageBeforeSave',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.DamageBeforeSave',
+        default: false,
+        type: 'boolean',
+        requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'damageRoll',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.DamageRoll',
+        default: null,
+        type: 'text',
+        fieldset: 'damage'
+    },
+    {
+        key: 'damageType',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.DamageType',
+        default: null,
+        type: 'damageTypes',
+        requires: 'damageRoll',
+        fieldset: 'damage'
+    },
+    {
+        key: 'rollMode',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.RollMode',
+        default: 'publicroll',
+        type: 'select',
+        options: [
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.GMRoll',
+                value: 'gmroll'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.PublicRoll',
+                value: 'blindroll'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.PublicRoll',
+                value: 'publicroll'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SelfRoll',
+                value: 'selfroll'
+            }
+        ],
+        fieldset: 'damage'
+    },
+    {
+        key: 'macro',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Macro',
+        default: null,
+        type: 'text',
+        fieldset: 'macros'
     }
 ];
 export let constants = {
