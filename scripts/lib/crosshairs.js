@@ -275,7 +275,7 @@ export class Crosshairs extends MeasuredTemplate {
         this.document.updateSource({x, y});
         this.refresh();
         this.moveTime = now;
-        if(now - this.initTime > 1000){
+        if (now - this.initTime > 1000) {
             canvas._onDragCanvasPan(event.data.originalEvent);
         }
     }

@@ -75,7 +75,7 @@ async function selectTargetDialog(title, content, targets, {returnUuid = false, 
         }
         if (displayDistance && coverToken) {
             let distance = tokenUtils.getDistance(coverToken, i);
-            label += ' [' + +distance.toFixed(2) + ' ' + canvas.scene.grid.units + ' ]';
+            label += ' [' + distance.toFixed(2) + ' ' + canvas.scene.grid.units + ' ]';
         }
         let image = i.document.texture.src;
         let value = i.id;

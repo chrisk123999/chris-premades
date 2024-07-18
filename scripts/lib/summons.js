@@ -43,7 +43,7 @@ export class Summons {
     // Helper function to dismiss any summons on an effect, will have the effect name and an array of ids
     static async dismiss({trigger}) {
         let effect = trigger.entity;
-        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
+        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name]; // Add scene ID
         if (!summons) return;
         await canvas.scene.deleteEmbeddedDocuments('Token', summons);
     }
@@ -157,7 +157,7 @@ export class Summons {
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
-            let spawnedToken = await genericUtils.createEmbeddedDocuments(canvas.scene, 'Token', [tokenDocument]);
+            let spawnedToken = await genericUtils.createEmbeddedDocuments(this.summonerToken.parent, 'Token', [tokenDocument]); // Make sure the parent bit works
             this.spawnedTokens.push(spawnedToken[0]);
         } else {
             console.log('socket spawn');

@@ -320,5 +320,6 @@ export let constants = {
     spellAttacks,
     damageTypes,
     damageTypeOptions,
-    setUseLocalCompendium
+    setUseLocalCompendium,
+    overTimeOptions
 };

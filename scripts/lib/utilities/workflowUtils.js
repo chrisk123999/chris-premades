@@ -1,4 +1,4 @@
-import {genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {actorUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
@@ -49,6 +49,22 @@ function negateDamageItemDamage(ditem) {
 function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {
     return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId});
 }
+function getDamageTypes(damageRolls) {
+    return new Set(damageRolls.map(i => i.options.type));
+}
+function getTotalDamageOfType(damageDetail, actor, type) {
+    if (actorUtils.checkTrait(actor, 'di', type)) return 0;
+    let details = damageDetail.filter(i => i.type === type);
+    if (!details.length) return 0;
+    let total = 0;
+    for (let i of details) total += i.damage;
+    if (!total) return 0;
+    let resistant = actorUtils.checkTrait(actor, 'dr', type);
+    let vulnerable = actorUtils.checkTrait(actor, 'dv', type);
+    if (resistant && !vulnerable) total = Math.floor(total / 2);
+    if (vulnerable && !resistant) total = total * 2;
+    return total;
+}
 export let workflowUtils = {
     bonusDamage,
     applyDamage,
@@ -56,5 +72,7 @@ export let workflowUtils = {
     syntheticItemRoll,
     syntheticItemDataRoll,
     negateDamageItemDamage,
-    applyWorkflowDamage
+    applyWorkflowDamage,
+    getDamageTypes,
+    getTotalDamageOfType
 };

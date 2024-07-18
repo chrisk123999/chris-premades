@@ -29,6 +29,7 @@ async function createItems(actor, updates, {favorite, section, parentEntity, ide
     }
     if (favorite) await actorUtils.addFavorites(actor, items);
     if (parentEntity) await effectUtils.addDependent(parentEntity, items);
+    return items;
 }
 function getItemDescription(name) {
     let journal = game.journal.getName('CPR - Descriptions');

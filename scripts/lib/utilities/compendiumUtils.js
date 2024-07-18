@@ -64,7 +64,7 @@ async function getPreferredAutomation(item) {
     let items = await getAllAutomations(item);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
@@ -81,6 +81,10 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
             if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
             if (flatAttack) genericUtils.setProperty(documentData, 'system.attack', {bonus: flatAttack, flat: true});
             if (flatDC) genericUtils.setProperty(documentData, 'system.save', {ability: documentData.system.save.ability, dc: flatDC, scaling: 'flat'});
+            if (castDataWorkflow) {
+                genericUtils.setProperty(documentData, 'flags.chris-premades.castData', castDataWorkflow.castData);
+                genericUtils.setProperty(documentData, 'flags.chris-premades.castData.school', castDataWorkflow.item.system.school);
+            }
             return documentData;
         } else {
             return document;

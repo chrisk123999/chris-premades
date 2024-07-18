@@ -1,10 +1,10 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-import {compendiumUtils, effectUtils, genericUtils} from '../utils.js';
+import {compendiumUtils, effectUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super();
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
+        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.label;
         this.position.width = 450;
         this.effectDocument = effectDocument;
         this.context = context;
@@ -33,11 +33,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         nagivation: {
             template: 'modules/chris-premades/templates/medkit-navigation.hbs'
         },
-        info: {
-            template: 'modules/chris-premades/templates/medkit-info.hbs'
-        },
         configure: {
             template: 'modules/chris-premades/templates/medkit-effect-configure.hbs',
+            scrollable: ['']
+        },
+        overTime: {
+            template: 'modules/chris-premades/templates/medkit-effect-over-time.hbs',
             scrollable: ['']
         },
         devTools: {
@@ -54,17 +55,25 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     static async createContext(effect) {
         let context = {
-            name: effect.name,
+            label: effect.name,
             status: '', // Will indicate the label/color of medkit
             configure: {
-                noAnimation: false,
-                conditions: [],
+                noAnimation: {
+                    label: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Label',
+                    tooltip: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Tooltip',
+                    value: effect.flags['chris-premades']?.noAnimation ? true : false,
+                },
+                conditions: {
+                    label: 'CHRISPREMADES.Medkit.Effect.Conditions.Label',
+                    tooltip: 'CHRISPREMADES.Medkit.Effect.Conditions.Tooltip',
+                    options: CONFIG.statusEffects.map(i => ({label: i.name, value: i.id}))
+                },
             },
             overTime: {
                 original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value
             },
             macros: {
-                effect: ''
+                effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools')
         };
@@ -72,14 +81,27 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         //if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
         //if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
         //context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
-        if (context.overTime.original) {
-            let values = Object.fromEntries(context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim())));
-            
-        }
         context.medkitColor = '';
         switch (context.status) {
             case 1: //something
         }
+        // Options for Over Time creator
+        let overTimeOptions = constants.overTimeOptions;
+        if (context.overTime.original) {
+            let values = Object.fromEntries(context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim())));
+            values.forEach(([key, value]) => genericUtils.setProperty(overTimeOptions[overTimeOptions.findIndex(i => i.key === key)], 'value', value));
+        }
+        overTimeOptions.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
+        let fieldsets = {};
+        overTimeOptions.forEach(i => {
+            if (!fieldsets[i.fieldset]) genericUtils.setProperty(fieldsets, i.fieldset, {
+                label: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.label',
+                tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.tooltip',
+                options: []
+            });
+            fieldsets[i.fieldset].options.push(i);
+        });
+        genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
         return context;
     }
     static async _apply(event, target) {

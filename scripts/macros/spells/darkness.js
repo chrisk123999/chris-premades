@@ -1,5 +1,4 @@
 import {animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -30,7 +29,7 @@ async function use({workflow}) {
     let attachUuids = [template.uuid];
     let darknessSource;
     if (useRealDarkness) {
-        [darknessSource] = await canvas.scene.createEmbeddedDocuments('AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
+        [darknessSource] = await genericUtils.createEmbeddedDocuments(workflow.token.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
         attachUuids.push(darknessSource.uuid);
         template.addDependent(darknessSource);
     }

@@ -1,18 +1,18 @@
 <div class="tab cpr-medkit-tab {{tabs.info.cssClass}}" data-tab="info" data-group="main">
-    {{#if item.hasAutomation}}
-        {{#unless item.isUpToDate}}
+    {{#if hasAutomation}}
+        {{#unless isUpToDate}}
             <div class="cpr-row-center">
-                <button type="button" data-action="update" id="update" {{#unless item.canUpdate.value}}disabled data-tooltip="{{localize item.canUpdate.tooltip}}"{{/unless}}>
+                <button type="button" data-action="update" id="update" {{#unless canUpdate.value}}disabled data-tooltip="{{localize canUpdate.tooltip}}"{{/unless}}>
                     <label for="update">{{localize "CHRISPREMADES.Generic.Update"}}</label>
                 </button>
             </div>
         {{/unless}}
     {{/if}}
-    {{#if item.canApplyAutomation}}
+    {{#if canApplyAutomation}}
         <div class="cpr-medkit-info cpr-row-center">
             <label for="select-automation">{{localize "CHRISPREMADES.Medkit.SelectedAutomation"}}</label>
-            <select id="select-automation" name="select-automation" {{#unless item.canAutomate.value}}disabled data-tooltip="{{localize item.canAutomate.tooltip}}"{{/unless}}>
-            {{#each item.options}}
+            <select id="select-automation" name="select-automation" {{#unless canAutomate.value}}disabled data-tooltip="{{localize canAutomate.tooltip}}"{{/unless}}>
+            {{#each options}}
                 <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
             {{/each}}
             </select>

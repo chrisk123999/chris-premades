@@ -478,6 +478,10 @@
             },
             "darkness": {
                 "attach": "Attach to self?"
+            },
+            "vampiricTouch": {
+                "attack": "Vampiric Touch: Attack",
+                "healingModifier": "0.5"
             }
         },
         "section": {
