@@ -1,13 +1,20 @@
 import {chris} from '../../../../helperFunctions.js';
-export async function experimentalElixir({speaker, actor, token, character, item, args, scope, workflow}) {
-    let roll = await new Roll('1d6').roll({'async': true});
-    roll.toMessage({
-        rollMode: 'roll',
-        speaker: {alias: name},
-        flavor: 'Experimental Elixir'
-    });
+async function item({speaker, actor, token, character, item, args, scope, workflow}) {
+    let consumption = await actor.getFlag("chris-premades", "experimentalElixir");
+    let value = 0;
+    if (consumption === false){
+        let roll = await new Roll('1d6').roll({'async': true});
+        roll.toMessage({
+            rollMode: 'roll',
+            speaker: {alias: name},
+            flavor: 'Experimental Elixir'
+        });
+        value = roll.total;
+    }else{
+        value = await chris.dialog('Elixer Generation Menu', [['Healing', 1], ['Swiftness', 2], ['Resilience', 3], ['Boldness', 4], ['Flight', 5], ['Transformation', 6]]);
+    }
     let itemName;
-    switch (roll.total) {
+    switch (value) {
         case 1:
             itemName = 'Experimental Elixir - Healing';
             break;
@@ -92,3 +99,13 @@ export async function experimentalElixir({speaker, actor, token, character, item
         await warpgate.mutate(workflow.token.document, updates, {}, options);
     }
 }
+
+async function preItemRoll({speaker, actor, token, character, item, args, scope, workflow}) {
+    let spellSlot = await chris.useSpellWhenEmpty(workflow, workflow.item.name, 'Use spell slot for ' + workflow.item.name + '? (No uses left)');
+    await actor.setFlag("chris-premades", "experimentalElixir", spellSlot);
+}
+
+export let experimentalElixir = {
+    'item': item,
+    'preItemRoll': preItemRoll
+};
