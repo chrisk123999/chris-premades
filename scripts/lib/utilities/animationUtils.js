@@ -17,7 +17,7 @@ function aseCheck() {
     let isActive = game.modules.get('animated-spell-effects-cartoon')?.active;
     return isActive;
 }
-function simpleAttack(sourceToken, targetToken, animation, {sound, missed}) {
+function simpleAttack(sourceToken, targetToken, animation, {sound, missed} = {missed: false}) {
     /* eslint-disable indent */
     new Sequence()
         .effect()

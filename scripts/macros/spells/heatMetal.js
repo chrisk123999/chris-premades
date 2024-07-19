@@ -9,7 +9,7 @@ async function use({workflow}) {
     let targetToken = workflow.targets.first();
     let targetUuid = targetToken.document.uuid;
     let damageFormula = workflow.castData.castLevel + 'd8[fire]';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', identifier: 'heatMetalPulse', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
     let spellDC = itemUtils.getSaveDC(workflow.item);
     featureData.flags['chris-premades'] = {
         heatMetal: {
@@ -19,12 +19,8 @@ async function use({workflow}) {
         },
         macros: {
             'midi.item': ['heatMetalPulse']
-        },
-        spell: {
-            castData: workflow.castData
         }
     };
-    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,

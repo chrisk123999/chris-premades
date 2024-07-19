@@ -107,7 +107,7 @@ async function dismiss({workflow}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let spellDC = itemUtils.getSaveDC(originItem);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.burst', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.burst', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -115,7 +115,6 @@ async function dismiss({workflow}) {
     featureData.effects[0].changes[0].value = 'label=' + genericUtils.translate('CHRISPREMADES.macros.holyWeapon.burstOvertime') + ',turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
     genericUtils.setProperty(featureData.effects[0], 'flags.chris-premades.conditions', ['blinded']);
     featureData.system.save.dc = spellDC;
-    genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', {castLevel: 5, school: originItem.system.school});
     let targetTokens = tokenUtils.findNearby(targetToken, featureData.system.target?.value ?? 30, 'enemy');
     await workflowUtils.syntheticItemDataRoll(featureData, targetToken.actor, targetTokens);
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, originItem);

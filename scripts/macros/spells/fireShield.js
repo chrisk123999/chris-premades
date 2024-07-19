@@ -68,7 +68,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
     }
     await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
 }
-async function start({trigger: {entity: effect}}) {
+export async function start({trigger: {entity: effect}}) {
     let selection = effect.flags['chris-premades']?.fireShield?.selection;
     if (!selection) return;
     let playAnimation = effect.flags['chris-premades']?.fireShield?.playAnimation;
@@ -149,7 +149,7 @@ async function start({trigger: {entity: effect}}) {
 
         .play();
 }
-async function end({trigger: {entity: effect}}) {
+export async function end({trigger: {entity: effect}}) {
     let playAnimation = effect.flags['chris-premades']?.fireShield?.playAnimation;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon' || !token) return;

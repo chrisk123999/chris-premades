@@ -27,7 +27,7 @@ async function late({workflow}) {
     if (workflow.item?.system?.actionType !== 'rwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hailOfThornsBurst');
     if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.hailOfThorns.burst', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.hailOfThorns.burst', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -41,7 +41,6 @@ async function late({workflow}) {
     ];
     let saveDC = effect.flags['chris-premades']?.hailOfThorns?.dc ?? 10;
     featureData.system.save.dc = saveDC;
-    genericUtils.setProperty(featureData, 'chris-premades.spell.castData.school', workflow.item.system.school);
     let targetToken = workflow.targets.first();
     let allTargets = tokenUtils.findNearby(targetToken, 5).concat(targetToken);
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, allTargets);

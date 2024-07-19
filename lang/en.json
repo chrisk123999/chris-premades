@@ -499,6 +499,19 @@
             "thornWhip": {
                 "pull": "How far do you pull the target?",
                 "checkSize": "Check Size:"
+            },
+            "investitureOfFlame": {
+                "fire": "Investiture of Flame: Fire",
+                "heat": "Investiture of Flame: Heat"
+            },
+            "investitureOfIce": {
+                "cone": "Investiture of Ice: Cone"
+            },
+            "investitureOfStone": {
+                "earthquake": "Investiture of Stone: Earthquake"
+            },
+            "lightningArrow": {
+                "burst": "Lightning Arrow: Burst"
             }
         },
         "section": {

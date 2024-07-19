@@ -36,7 +36,7 @@ async function use({workflow}) {
             }
             sequenceObj.play();
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning Leap', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.chainLightning.leap'});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.macros.chainLightning.leap'});
         if (!featureData) {
             errors.missingPackItem();
             continue;
@@ -49,8 +49,6 @@ async function use({workflow}) {
                 damageType
             ]
         ];
-        genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
-        featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets);
     }
 }

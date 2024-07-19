@@ -11,6 +11,17 @@ async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}) 
     workflow.damageRolls.push(roll);
     await workflow.setDamageRolls(workflow.damageRolls);
 }
+async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}) {
+    formula = String(formula);
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
+    let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
+    if (damageType) {
+        genericUtils.setProperty(roll, 'options.type', damageType);
+    } else {
+        genericUtils.setProperty(roll, 'options.type', roll.terms[0].flavor);
+    }
+    await workflow.setDamageRolls([roll]);
+}
 async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
@@ -67,6 +78,7 @@ function getTotalDamageOfType(damageDetail, actor, type) {
 }
 export let workflowUtils = {
     bonusDamage,
+    replaceDamage,
     applyDamage,
     completeItemUse,
     syntheticItemRoll,

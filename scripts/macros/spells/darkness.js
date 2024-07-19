@@ -29,9 +29,9 @@ async function use({workflow}) {
     let attachUuids = [template.uuid];
     let darknessSource;
     if (useRealDarkness) {
-        [darknessSource] = await genericUtils.createEmbeddedDocuments(workflow.token.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
+        [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
         attachUuids.push(darknessSource.uuid);
-        template.addDependent(darknessSource);
+        effectUtils.addDependent(template, [darknessSource]);
     }
     let attachToken = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.darkness.attach');
     if (attachToken) {

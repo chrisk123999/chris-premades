@@ -224,7 +224,7 @@ export let spiritGuardians = {
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.formula',
+            label: 'CHRISPREMADES.config.formula',
             type: 'text',
             default: 'd8',
             homebrew: true

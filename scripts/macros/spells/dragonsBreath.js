@@ -15,7 +15,7 @@ async function use({workflow}) {
     ];
     let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.dragonsBreath.select', buttons);
     if (!damageType) damageType = 'fire';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dragon Breath', {getDescription: true, translate: 'CHRISPREMADES.macros.dragonsBreath.dragonBreath', identifier: 'dragonBreath', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dragon Breath', {getDescription: true, translate: 'CHRISPREMADES.macros.dragonsBreath.dragonBreath', identifier: 'dragonBreath', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -29,8 +29,6 @@ async function use({workflow}) {
         ]
     ];
     featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-    genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
-    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let duration = 60 * workflow.item.system.duration.value;
     let effectData = {
         name: workflow.item.name,

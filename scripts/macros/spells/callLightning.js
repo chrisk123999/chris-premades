@@ -5,7 +5,7 @@ async function use({workflow}) {
     let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.callLightning.storming');
     let castLevel = workflow.castData.castLevel;
     if (storming) castLevel += 1;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Bolt', {getDescription: true, translate: 'CHRISPREMADES.macros.callLightning.stormBolt', identifier: 'stormBolt', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Bolt', {getDescription: true, translate: 'CHRISPREMADES.macros.callLightning.stormBolt', identifier: 'stormBolt', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -20,8 +20,6 @@ async function use({workflow}) {
     ];
     let duration = 60 * workflow.item.system.duration.value;
     featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-    genericUtils.setProperty(featureData, 'flags.chris-premades.spell.castData', workflow.castData);
-    featureData.flags['chris-premades'].spell.castData.school = workflow.item.system.school;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
