@@ -19,7 +19,10 @@
             "Disabled": "Disabled",
             "Chat": "Chat",
             "Description": "Description",
-            "Go": "Go"
+            "Go": "Go",
+            "Distance": "Distance",
+            "Disadvantage": "Disadvantage",
+            "Advantage": "Advantage"
         },
         "Template": {
             "UnknownTemplate": "Unknown Template",
@@ -40,6 +43,16 @@
                 "chris-premades": "Chris's Premades",
                 "gambit-premades": "Gambit's Premades",
                 "midi-item-community-showcase": "Midi Item Community Showcase"
+            },
+            "Effect": {
+                "NoAnimation": {
+                    "Label": "No Animation",
+                    "Tooltip": "Disables scrolling text when this effect is applied and removed"
+                },
+                "Conditions": {
+                    "Label": "Conditions",
+                    "Tooltip": "Conditions to be applied and removed with this effect using CPR's API"
+                }
             },
             "Tabs": {
                 "Info": {
@@ -482,6 +495,10 @@
             "vampiricTouch": {
                 "attack": "Vampiric Touch: Attack",
                 "healingModifier": "0.5"
+            },
+            "thornWhip": {
+                "pull": "How far do you pull the target?",
+                "checkSize": "Check Size:"
             }
         },
         "section": {
@@ -536,6 +553,11 @@
             "threeMonths": "Three Months",
             "sixMonths": "Six Months",
             "oneYear": "One Year"
+        },
+        "Distance": {
+            "0": "0 ft.",
+            "5": "5 ft.",
+            "10": "10 ft."
         }
     },
     "CONTROLS": {

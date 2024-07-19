@@ -54,7 +54,10 @@ export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuar
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
 export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/summonAberration.js';
+export {thornWhip} from './macros/spells/thornWhip.js';
+export {thunderwave} from './macros/spells/thunderwave.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
+export {tollTheDead} from './macros/spells/tollTheDead.js';
 export {vampiricTouch, vampiricTouchAttack} from './macros/spells/vampiricTouch.js';
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';

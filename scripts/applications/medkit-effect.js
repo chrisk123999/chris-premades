@@ -30,14 +30,14 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         header: {
             template: 'modules/chris-premades/templates/medkit-header.hbs'
         },
-        nagivation: {
+        navigation: {
             template: 'modules/chris-premades/templates/medkit-navigation.hbs'
         },
         configure: {
             template: 'modules/chris-premades/templates/medkit-effect-configure.hbs',
             scrollable: ['']
         },
-        overTime: {
+        overtime: {
             template: 'modules/chris-premades/templates/medkit-effect-over-time.hbs',
             scrollable: ['']
         },
@@ -99,6 +99,62 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.tooltip',
                 options: []
             });
+            switch (i.type) { // add checked or selected per option
+                case 'radio': {
+                    genericUtils.setProperty(i, 'isRadio', true);
+                    break;
+                }
+                case 'text': {
+                    genericUtils.setProperty(i, 'isText', true);
+                    break;
+                }
+                case 'boolean': {
+                    genericUtils.setProperty(i, 'isCheckbox', true);
+                    break;
+                }
+                case 'select': {
+                    genericUtils.setProperty(i, 'isSelectOption', true);
+                    break;
+                }
+                case 'ability': {
+                    genericUtils.setProperty(i, 'isSelectOption', true);
+                    genericUtils.setProperty(i, 'options', Object.values(CONFIG.DND5E.abilities).map(j => ({
+                        label: j.label,
+                        value: j.abbreviation
+                    })));
+                    break;
+                }
+                case 'saves': {
+                    genericUtils.setProperty(i, 'isSelectOption', true);
+                    genericUtils.setProperty(i, 'options', [
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Spellcasting',
+                            value: '@attributes.spelldc'
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Item',
+                            value: '@item.save.dc'
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Flat',
+                            value: 'flat'
+                        },
+                        {
+                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Ability',
+                            value: 'ability'
+                        }
+                    ]);
+                    break;
+                }
+                case 'damageTypes': {
+                    genericUtils.setProperty(i, 'isSelectOption', true);
+                    genericUtils.setProperty(i, 'options', Object.entries(CONFIG.DND5E.damageTypes).map(([key, value]) => ({
+                        label: value.label,
+                        value: key
+                    })));
+                    break;
+                }
+            }
             fieldsets[i.fieldset].options.push(i);
         });
         genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);

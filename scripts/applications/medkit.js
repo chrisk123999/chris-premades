@@ -31,7 +31,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         header: {
             template: 'modules/chris-premades/templates/medkit-header.hbs'
         },
-        nagivation: {
+        navigation: {
             template: 'modules/chris-premades/templates/medkit-navigation.hbs'
         },
         info: {
@@ -70,11 +70,11 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             canApplyAutomation: false,
             canAutomate: {
                 value: genericUtils.checkMedkitPermission('automate', game.userId),
-                tooltip: 'CHRISPREMADES.Medkit.NoPermissions'
+                tooltip: 'CHRISPREMADES.Medkit.NoPermission'
             },
             canUpdate: {
                 value: genericUtils.checkMedkitPermission('update', game.userId),
-                tooltip: 'CHRISPREMADES.Medkit.NoPermissions'
+                tooltip: 'CHRISPREMADES.Medkit.NoPermission'
             }
         };
         if (context.status === -1) context.status = context.availableAutomations.length > 0;

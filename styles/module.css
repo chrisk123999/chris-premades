@@ -192,7 +192,12 @@ form .cpr-medkit-config > div {
         flex: 1
     }
     > input {
-        flex: .5
+        flex: .5;
+    }
+    > input[type="checkbox"] {
+        flex: 0 !important;
+        height: 25px;
+        --checkbox-size: 25px !important;
     }
     > select {
         flex: .5
@@ -236,6 +241,8 @@ form .devTools-midi > div {
         flex: 1
     }
 }
+
+
 
 [data-medkit-color="pink"] {
     color: pink

@@ -1,10 +1,10 @@
 <div class="tab cpr-medkit-tab {{tabs.configure.cssClass}}" data-tab="configure" data-group="main">
   <div class="form-group cpr-medkit-config">
-    <div>
+    <div class="cpr-row-center">
       <label for="noAnimation" data-tooltip="{{localize configure.noAnimation.tooltip}}">{{localize configure.noAnimation.label}}</label>
-      <input type="checkbox" id="noAnimation" name="noAnimation" {{#if configure.noAnimation.value}}checked{{/if}}>
+      <input type="checkbox" class="cpr-checkbox" id="noAnimation" name="noAnimation" {{#if configure.noAnimation.value}}checked{{/if}}>
     </div>
-    <div>
+    <div class ="cpr-row-center">
       <label for="conditions" data-tooltip="{{localize configure.conditions.tooltip}}">{{localize configure.conditions.label}}</label>
       <multi-select name="conditions">
       {{#each configure.conditions.options}}

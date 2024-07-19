@@ -1,5 +1,4 @@
-import {actorUtils, effectUtils} from '../../utils.js';
-
+import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.targets.size) return;
     let effectData = {
@@ -19,9 +18,7 @@ async function use({workflow}) {
         ]
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['chillTouchChilled']);
-    for (let target of workflow.hitTargets) {
-        await effectUtils.createEffect(target.actor, effectData, {identifier: 'chillTouchChilled'});
-    }
+    await Promise.all(workflow.hitTargets.map(async token => await effectUtils.createEffect(token.actor, effectData, {identifier: 'chillTouchChilled'})));
 }
 async function attack({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -31,7 +28,7 @@ async function attack({workflow}) {
     let sourceActor = (await fromUuid(effect.origin)).actor;
     if (workflow.targets.first().actor !== sourceActor) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add('Disadvantage: ' + effect.name);
+    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Generic.Disadvantage') + ': ' + effect.name);
 }
 export let chillTouch = {
     name: 'Chill Touch',

@@ -63,6 +63,22 @@ async function getSidebarActor(actor, {autoImport} = {}) {
     }
     return sidebarActor;
 }
+function getSize(actor, returnString) {
+    switch(actor.system.traits.size) {
+        case 'tiny':
+            return returnString ? 'tiny' : 0;
+        case 'sm':
+            return returnString ? 'small' : 1;
+        case 'med':
+            return returnString ? 'medium' : 2;
+        case 'lg':
+            return returnString ? 'large' : 3;
+        case 'huge':
+            return returnString ? 'huge': 4;
+        case 'grg':
+            return returnString ? 'gargantuan' : 5;
+    }
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -77,5 +93,6 @@ export let actorUtils = {
     getSaveDC,
     getCastData,
     getSidebarActor,
-    getTokens
+    getTokens,
+    getSize
 };
