@@ -24,12 +24,10 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'lightningArrow'});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function attack({workflow}) {
-    workflow.workflowOptions.autoRollDamage = 'always';
-    if (!workflow.isFumble) return;
-    workflow.isFumble = false;
-    let updatedRoll = await new Roll('-100').evaluate();
-    await workflow.setAttackRoll(updatedRoll);
+async function early({workflow}) {
+    if (workflow.targets.size !== 1) return;
+    if (!workflow.item.system.properties.has('thr') && workflow.item.system.actionType !== 'rwak') return;
+    genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
 }
 async function damage({workflow}) {
     if (itemUtils.getIdentifer(workflow.item) === 'lightningArrowBurst') return;
@@ -58,10 +56,10 @@ async function damage({workflow}) {
             if (playAnimation) animationUtils.simpleAttack(targetToken, i, anim);
         }
     }
-    // TODO: why the hell am I getting into an infinite loop if I hit myself with the burst??
     if (newTargets.length) {
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets);
     }
+    // TODO: If the burst causes damage to the caster & they fail conc save, this removal may result in an error when the failed save tries to remove conc
     await genericUtils.remove(effect);
 }
 export let lightningArrow = {
@@ -92,8 +90,8 @@ export let lightningArrowBuffed = {
     midi: {
         actor: [
             {
-                pass: 'postAttackRoll',
-                macro: attack,
+                pass: 'preItemRoll',
+                macro: early,
                 priority: 50
             },
             {

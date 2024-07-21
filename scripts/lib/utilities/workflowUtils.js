@@ -53,8 +53,9 @@ async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, co
 function negateDamageItemDamage(ditem) {
     ditem.totalDamage = 0;
     ditem.newHP = ditem.oldHP;
-    ditem.tempHP = ditem.oldTempHP;
+    ditem.newTempHP = ditem.oldTempHP;
     ditem.hpDamage = 0;
+    ditem.tempDamage = 0;
     ditem.appliedDamage = 0;
 }
 function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {

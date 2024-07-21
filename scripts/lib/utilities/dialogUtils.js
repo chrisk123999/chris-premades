@@ -150,7 +150,7 @@ async function confirm(title, content, {userId = game.user.id} = {}) {
     } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
     return selection?.buttons;
 }
-async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id} = {}) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -169,6 +169,15 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
             tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined
         }
     }));
+    if (addNoneDocument) {
+        inputFields.push({
+            label: genericUtils.translate('CHRISPREMADES.Generic.None'),
+            name: 'none',
+            options: {
+                image: 'icons/svg/cancel.svg'
+            }
+        });
+    }
     let inputs = [['button', inputFields, {displayAsRows: true}]];
     let result;
     if (userId != game.user.id) {

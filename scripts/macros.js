@@ -56,6 +56,8 @@ export {investitureOfIce, investitureOfIceIcy} from './macros/spells/investiture
 export {investitureOfStone} from './macros/spells/investitureOfStone.js';
 export {lifeTransference} from './macros/spells/lifeTransference.js';
 export {lightningArrow, lightningArrowBuffed} from './macros/spells/lightningArrow.js';
+export {lightningLure} from './macros/spells/lightningLure.js';
+export {magicMissile} from './macros/spells/magicMissile.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';

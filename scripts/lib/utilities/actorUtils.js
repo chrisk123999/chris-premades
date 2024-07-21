@@ -79,6 +79,12 @@ function getSize(actor, returnString) {
             return returnString ? 'gargantuan' : 5;
     }
 }
+function hasUsedReaction(actor) {
+    return MidiQOL.hasUsedReaction(actor);
+}
+function hasSpellSlots(actor, atLeast = 0) {
+    return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -94,5 +100,7 @@ export let actorUtils = {
     getCastData,
     getSidebarActor,
     getTokens,
-    getSize
+    getSize,
+    hasUsedReaction,
+    hasSpellSlots
 };

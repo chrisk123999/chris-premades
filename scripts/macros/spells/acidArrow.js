@@ -75,12 +75,12 @@ export let acidArrow = {
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.config.colors.purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'red',
-                    label: 'CHRISPREMADES.config.colors.Red',
+                    label: 'CHRISPREMADES.config.colors.red',
                     requiredModules: ['jb2a_patreon']
                 },
                 {

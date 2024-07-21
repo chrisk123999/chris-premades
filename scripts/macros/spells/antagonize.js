@@ -1,11 +1,11 @@
-import {dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
+import {actorUtils, dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.failedSaves.size) return;
     for (let targetToken of workflow.failedSaves) {
         if (tokenUtils.checkIncapacitated(targetToken)) {
             continue;
         }
-        let usedReaction = MidiQOL.hasUsedReaction(targetToken.actor);
+        let usedReaction = actorUtils.hasUsedReaction(targetToken.actor);
         let nearbyTargets;
         if (!usedReaction) {
             nearbyTargets = tokenUtils.findNearby(targetToken, 5, 'ally', {});

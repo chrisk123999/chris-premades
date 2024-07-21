@@ -311,7 +311,9 @@
                 "darkBlue": "Dark Blue",
                 "darkWhiteBlue": "Dark White & Blue",
                 "greenOrange": "Green & Orange",
-                "pinkPurple": "Pink & Purple"
+                "pinkPurple": "Pink & Purple",
+                "grey": "Grey",
+                "cycle": "Cycle"
             },
             "sound": "Sound:",
             "damageType": "Damage Type:",
@@ -512,6 +514,12 @@
             },
             "lightningArrow": {
                 "burst": "Lightning Arrow: Burst"
+            },
+            "magicMissile": {
+                "select": "How many? (Max: {maxMissiles})",
+                "bolt": "Magic Missile Bolt",
+                "rollEach": "Roll Damage for Each Bolt?",
+                "shield": "Shield as reaction?"
             }
         },
         "section": {

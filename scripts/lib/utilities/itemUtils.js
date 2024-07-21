@@ -61,6 +61,9 @@ function getIdentifer(item) {
 function getItemByIdentifer(actor, identifier) {
     return actor.items.find(i => getIdentifer(i) === identifier);
 }
+function getAllItemsByIdentifier(actor, identifier) {
+    return actor.items.filter(i => getIdentifer(i) === identifier);
+}
 function getVersion(item) {
     return item.flags['chris-premades']?.info?.version;
 }
@@ -117,6 +120,7 @@ export let itemUtils = {
     getConfig,
     getIdentifer,
     getItemByIdentifer,
+    getAllItemsByIdentifier,
     getVersion,
     getSource,
     isUpToDate,
