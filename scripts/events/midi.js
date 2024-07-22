@@ -141,11 +141,12 @@ async function executeMacroPass(workflow, pass) {
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) await executeMacro(trigger, workflow);
 }
-async function executeTargetMacroPass(workflow) {
-    genericUtils.log('dev', 'Executing Midi Macro Pass: onHit');
+async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
+    genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass);
     let triggers = [];
-    workflow.hitTargets.forEach(i => {
-        triggers.push(...getSortedTriggers({token: i, actor: i.actor}, 'onHit'));
+    let targets = onlyHit ? workflow.hitTargets : workflow.targets;
+    targets.forEach(i => {
+        triggers.push(...getSortedTriggers({token: i, actor: i.actor}, pass));
     });
     triggers = triggers.sort((a, b) => a.priority - b.priority);
     if (triggers.length) await genericUtils.sleep(50);
@@ -156,6 +157,7 @@ async function preItemRoll(workflow) {
     if (stop) return true;
     await genericUtils.sleep(50);
     await executeMacroPass(workflow, 'preItemRoll');
+    await executeTargetMacroPass(workflow, 'targetPreItemRoll');
 }
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');
@@ -167,6 +169,7 @@ async function preambleComplete(workflow) {
 }
 async function attackRollComplete(workflow) {
     await executeMacroPass(workflow, 'attackRollComplete');
+    await executeTargetMacroPass(workflow, 'targetAttackRollComplete');
 }
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
@@ -178,7 +181,7 @@ async function rollFinished(workflow) {
         await conditionResistance.RollComplete(workflow);
         await conditionVulnerability.RollComplete(workflow);
     }
-    await executeTargetMacroPass(workflow);
+    await executeTargetMacroPass(workflow, 'onHit', true);
 }
 async function postAttackRoll(workflow) {
     await executeMacroPass(workflow, 'postAttackRoll');

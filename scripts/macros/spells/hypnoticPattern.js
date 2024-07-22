@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils} from '../../utils.js';
+import {effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -6,20 +6,7 @@ async function use({workflow}) {
         await genericUtils.remove(concentrationEffect);
         return;
     }
-    let template = workflow.template;
-    if (!template) return;
-    let effectData = {
-        name: genericUtils.format('CHRISPREMADES.genericEffects.templateEffect', {itemName: workflow.item.name}),
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        flags: {
-            dnd5e: {
-                dependents: [{uuid: template.uuid}]
-            }
-        }
-    };
-    effectUtils.addMacro(effectData, 'combat', ['hypnoticPatternRemove']);
-    await effectUtils.createEffect(workflow.actor, effectData);
+    await workflowUtils.handleInstantTemplate(workflow);
 }
 async function everyTurn({trigger: {entity: effect}}) {
     if (effect) await genericUtils.remove(effect);

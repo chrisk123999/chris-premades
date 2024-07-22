@@ -20,7 +20,7 @@ function getMod(item) {
 async function createItems(actor, updates, {favorite, section, parentEntity, identifier}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (section) updates.forEach(i => genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section));
-    if (identifier) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.identifier', identifier));
+    if (identifier) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.info.identifier', identifier));
     let items;
     if (hasPermission) {
         items = await actor.createEmbeddedDocuments('Item', updates);

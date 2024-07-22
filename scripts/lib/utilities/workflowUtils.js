@@ -1,4 +1,4 @@
-import {actorUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
@@ -77,6 +77,27 @@ function getTotalDamageOfType(damageDetail, actor, type) {
     if (vulnerable && !resistant) total = total * 2;
     return total;
 }
+async function handleInstantTemplate(workflow) {
+    if (!workflow.template) return;
+    let templateEffectName = genericUtils.format('CHRISPREMADES.genericEffects.templateEffect', {itemName: workflow.item.name});
+    let templateEffect = workflow.actor.effects.getName(templateEffectName);
+    if (templateEffect) {
+        await genericUtils.setFlag(templateEffect, 'chris-premades', 'macros.combat', ['removeTemplate']);
+    } else {
+        let effectData = {
+            name: templateEffectName,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            flags: {
+                dnd5e: {
+                    dependents: [{uuid: workflow.template.uuid}]
+                }
+            }
+        };
+        effectUtils.addMacro(effectData, 'combat', ['removeTemplate']);
+        await effectUtils.createEffect(workflow.actor, effectData);
+    }
+}
 export let workflowUtils = {
     bonusDamage,
     replaceDamage,
@@ -87,5 +108,6 @@ export let workflowUtils = {
     negateDamageItemDamage,
     applyWorkflowDamage,
     getDamageTypes,
-    getTotalDamageOfType
+    getTotalDamageOfType,
+    handleInstantTemplate
 };

@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     if (!workflow.targets.size) return;
@@ -9,6 +9,10 @@ async function use({workflow}) {
     });
     if (!selection || !selection.length) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Magic Missile Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.magicMissile.bolt', castDataWorkflow: workflow});
+    if (!featureData) {
+        errors.missingPackItem();
+        return;
+    }
     let rollEach = itemUtils.getConfig(workflow.item, 'rollEach');
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
@@ -155,11 +159,6 @@ export let magicMissile = {
                 {
                     value: 'grey',
                     label: 'CHRISPREMADES.config.colors.grey',
-                    requiredModules: ['jb2a_patreon']
-                },
-                {
-                    value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
                     requiredModules: ['jb2a_patreon']
                 },
                 {

@@ -34,7 +34,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
-    if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.identifier', identifier);
+    if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
@@ -67,7 +67,7 @@ function addMacro(effectData, type, macroList) {
     return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
 }
 function getEffectIdentifier(effect) {
-    return effect.flags['chris-premades']?.identifier;
+    return effect.flags['chris-premades']?.info?.identifier;
 }
 function getConcentrationEffect(actor, item) {
     return MidiQOL.getConcentrationEffect(actor, item);

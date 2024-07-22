@@ -100,6 +100,12 @@ function findDirection(room) {
     if (room.s && room.w) return 'sw';
     if (room.n && room.w) return 'nw';
 }
+function canSee(sourceToken, targetToken) {
+    return MidiQOL.canSee(sourceToken, targetToken);
+}
+function canSense(sourceToken, targetToken, senseModes = []) {
+    return MidiQOL.canSense(sourceToken, targetToken, senseModes);
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -109,5 +115,7 @@ export let tokenUtils = {
     findNearby,
     checkIncapacitated,
     checkForRoom,
-    findDirection
+    findDirection,
+    canSee,
+    canSense
 };

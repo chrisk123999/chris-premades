@@ -313,13 +313,19 @@
                 "greenOrange": "Green & Orange",
                 "pinkPurple": "Pink & Purple",
                 "grey": "Grey",
-                "cycle": "Cycle"
+                "cycle": "Cycle",
+                "dark_purple": "Dark Purple"
             },
             "sound": "Sound:",
             "damageType": "Damage Type:",
             "formula": "Formula:",
             "damageTypes": "Damage Types:",
-            "realDarkness": "Use Real Darkness:"
+            "realDarkness": "Use Real Darkness:",
+            "animation": "Animation:",
+            "animations": {
+                "simple": "Simple",
+                "complex": "Complex"
+            }
         },
         "macros": {
             "antagonize": {
@@ -520,6 +526,30 @@
                 "bolt": "Magic Missile Bolt",
                 "rollEach": "Roll Damage for Each Bolt?",
                 "shield": "Shield as reaction?"
+            },
+            "massCureWounds": {
+                "select": "Which targets would you like to heal? (Max: 6)"
+            },
+            "mirrorImage": {
+                "hit": "Attack hit a duplicate and destroyed it.",
+                "miss": "Attack targeted a duplicate and missed."
+            },
+            "rayOfEnfeeblement": {
+                "overtime": "Ray of Enfeeblement (End of Turn)"
+            },
+            "sanctuary": {
+                "save": "Sanctuary: Save",
+                "failed": "Cannot attack this target - must choose another target or lose their attack/spell!"
+            },
+            "scorchingRay": {
+                "bolt": "Scorching Ray Bolt",
+                "select": "Select your targets (Max rays: {maxRays})"
+            },
+            "shadowBlade": {
+                "sword": "Shadow Blade Sword"
+            },
+            "skillEmpowerment": {
+                "selectSkill": "Select a skill to grant temporary expertise in:"
             }
         },
         "section": {
