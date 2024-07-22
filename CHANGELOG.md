@@ -1,11 +1,13 @@
+# 0.11.24 Release:
+## Update Notes:
+- Limited max D&D version to 3.1.2. Do not update your D&D version at this time if you are using this module.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- The V12 update is a work in progress.
+  
 # 0.11.13 Release:
 ## Bug Fixes:
 - Spike Growth
 - Blessing of the Forge (Thanks Elfrey)
-## Update Notes:
-- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
-- Likely safe for D&D 3.2.0 and Foundry V11.
-- The V12 update is a work in progress.
   
 # 0.11.12 Release:
 ## Bug Fixes:
