@@ -281,6 +281,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         break;
                     }
                 }
+                this.context.overTime.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? constants.overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
                 break;
             }
         }
