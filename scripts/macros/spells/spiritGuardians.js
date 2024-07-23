@@ -243,7 +243,7 @@ export let spiritGuardiansDamage = {
     ],
     combat: [
         {
-            pass: 'everyTurnNear',
+            pass: 'turnStartNear',
             macro: moveOrTurn,
             priority: 50,
             distance: 15,

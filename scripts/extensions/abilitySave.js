@@ -9,6 +9,7 @@ async function save(wrapped, saveId, options = {}) {
     let selections = await Promise.all(saveMacros.map(async macro => {
         return await macro(this, saveId, options);
     }));
+    selections = selections.filter(i => !!i);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));

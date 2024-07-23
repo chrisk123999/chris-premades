@@ -154,7 +154,7 @@ async function updateCombat(combat, changes, context) {
     if (currentToken) await executeMacroPass([currentToken], 'turnStart');
     for (let token of combat.scene.tokens) await executeMacroPass([token], 'everyTurn');
     if (previousToken) await executeMacroPass(combat.scene.tokens.filter(i => i != previousToken), 'turnEndNear', previousToken);
-    if (currentToken) await executeMacroPass(combat.scene.tokens.filter(i => i != currentToken), 'everyTurnNear', currentToken);
+    if (currentToken) await executeMacroPass(combat.scene.tokens.filter(i => i != currentToken), 'turnStartNear', currentToken);
 }
 async function combatStart(combat, changes) {
     if (!socketUtils.isTheGM()) return;

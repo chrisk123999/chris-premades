@@ -617,6 +617,16 @@
             },
             "protectionFromEvilAndGood": {
                 "save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
+            },
+            "spiritShroud": {
+                "select": "What damage type?",
+                "slow": "Spirit Shroud: Slow",
+                "hit": "Spirit Shroud: Hit"
+            },
+            "tashasOtherworldlyGuise": {
+                "select": "Which planes do you draw magic from?",
+                "upper": "Upper Planes",
+                "lower": "Lower Planes"
             }
         },
         "section": {
