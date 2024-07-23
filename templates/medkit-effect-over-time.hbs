@@ -1,16 +1,31 @@
 <div class="tab cpr-medkit-tab {{tabs.overtime.cssClass}} scrollable" data-tab="overtime" data-group="main">
     {{log this}}
     {{log 'this is the overtime'}}
-    <p class="content"> {{localize content}} </p>
     {{#each overTime.fieldsets}}
         <fieldset class="cpr-fieldset">
             <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
             <div class="form-group">
                 {{#each options}}
                     {{#if show}}
-                        {{#if isCheckbox}}
-                            <input type="checkbox">
-                        {{/if}}
+                        <div class="cpr-over-time-option">
+                            <label class="main-label">{{localize label}}</label>
+                            {{#if isRadio}}
+                                {{#each options}}
+                                    <label for="{{value}}">{{localize label}}</label>
+                                    <input type="radio" id="{{value}}" name="{{../key}}" {{#if isChecked}}checked{{/if}}>
+                                {{/each}}
+                            {{else if isText}}
+                                <input type="text" id="{{key}}" name="{{key}}" value="{{value}}">
+                            {{else if isCheckbox}}
+                                <input type="checkbox" id="{{key}}" name="{{key}}" {{#if isChecked}}checked{{/if}}>
+                            {{else if isSelectOption}}
+                                <select id="{{key}}" name="{{key}}">
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                {{/each}}
+                                </select>
+                            {{/if}}
+                        </div>
                     {{/if}}
                 {{/each}}
             </div>

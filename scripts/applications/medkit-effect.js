@@ -95,62 +95,78 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let fieldsets = {};
         overTimeOptions.forEach(i => {
             if (!fieldsets[i.fieldset]) genericUtils.setProperty(fieldsets, i.fieldset, {
-                label: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.label',
-                tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.tooltip',
+                label: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Tooltip',
                 options: []
             });
             switch (i.type) { // add checked or selected per option
                 case 'radio': {
                     genericUtils.setProperty(i, 'isRadio', true);
+                    if (!i.value && (i.value != false)) genericUtils.setProperty(i, 'value', i.default);
+                    i.options.forEach(j => genericUtils.setProperty(j, 'isChecked', j.value === i.value ? true : false));
                     break;
                 }
                 case 'text': {
                     genericUtils.setProperty(i, 'isText', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default ?? '');
                     break;
                 }
                 case 'boolean': {
                     genericUtils.setProperty(i, 'isCheckbox', true);
+                    if (!i.value && (i.value != false)) genericUtils.setProperty(i, 'value', i.default);
+                    genericUtils.setProperty(i, 'isChecked', i.value);
                     break;
                 }
                 case 'select': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
+                    i.options.forEach(j => genericUtils.setProperty(j, 'isSelected', j.value === i.value ? true : false));
                     break;
                 }
                 case 'ability': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'options', Object.values(CONFIG.DND5E.abilities).map(j => ({
                         label: j.label,
-                        value: j.abbreviation
+                        value: j.abbreviation,
+                        isSelected: j.abbreviation === i.value
                     })));
                     break;
                 }
                 case 'saves': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'options', [
                         {
-                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Spellcasting',
-                            value: '@attributes.spelldc'
+                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Spellcasting',
+                            value: '@attributes.spelldc',
+                            isSelected: i.value === '@attributes.spelldc'
                         },
                         {
-                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Item',
-                            value: '@item.save.dc'
+                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Item',
+                            value: '@item.save.dc',
+                            isSelected: i.value === '@item.save.dc'
                         },
                         {
-                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Flat',
-                            value: 'flat'
+                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Flat',
+                            value: 'flat',
+                            isSelected: i.value === 'flat' // Make it add another box if this is true
                         },
                         {
-                            label: 'CHRISPREMADES.Medkit.Effect.Overtime.Labels.Ability',
-                            value: 'ability'
+                            label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Ability',
+                            value: 'ability',
+                            isSelected: i.value === 'ability'
                         }
                     ]);
                     break;
                 }
                 case 'damageTypes': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'options', Object.entries(CONFIG.DND5E.damageTypes).map(([key, value]) => ({
                         label: value.label,
-                        value: key
+                        value: key,
+                        isSelected: key === i.value
                     })));
                     break;
                 }

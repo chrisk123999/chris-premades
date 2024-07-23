@@ -176,6 +176,11 @@ div .cpr-row-center {
     gap: 0.625em;
 }
 
+.cpr-fieldset .form-group{
+    display: flex;
+    flex-direction: column;
+}
+
 form .cpr-medkit-config {
     display: flex;
     flex-direction: column;
@@ -242,7 +247,19 @@ form .devTools-midi > div {
     }
 }
 
-
+.cpr-over-time-option {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 1%;
+    align-items: center;
+    text-wrap: nowrap;
+    gap: 0.625em;
+    .main-label {
+        flex: 1
+    }
+}
 
 [data-medkit-color="pink"] {
     color: pink

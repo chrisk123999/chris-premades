@@ -8,7 +8,6 @@ async function use({trigger, workflow}) {
             ['CHRISPREMADES.Distance.0', 0]
         ];
         let distance = tokenUtils.getDistance(workflow.token, target);
-        console.log(distance);
         if (distance <= 5) break;
         if (distance > 5) options.push(['CHRISPREMADES.Distance.5', 5]);
         if (distance > 10) options.push(['CHRISPREMADES.Distance.10', 10]);

@@ -211,6 +211,7 @@ const overTimeOptions = [
     },
     {
         key: 'saveDamage',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveDamage',
         default: 'nodamage',
         type: 'select',
         options: [
@@ -223,7 +224,7 @@ const overTimeOptions = [
                 value: 'nodamage'
             },
             {
-                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.FullDamamge',
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.FullDamage',
                 value: 'fulldamage'
             }
         ],
@@ -288,7 +289,7 @@ const overTimeOptions = [
                 value: 'gmroll'
             },
             {
-                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.PublicRoll',
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.BlindRoll',
                 value: 'blindroll'
             },
             {

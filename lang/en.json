@@ -22,7 +22,10 @@
             "Go": "Go",
             "Distance": "Distance",
             "Disadvantage": "Disadvantage",
-            "Advantage": "Advantage"
+            "Advantage": "Advantage",
+            "Check": "Ability Check",
+            "Save": "Saving Throw",
+            "Skill": "Skill Check"
         },
         "Template": {
             "UnknownTemplate": "Unknown Template",
@@ -52,6 +55,41 @@
                 "Conditions": {
                     "Label": "Conditions",
                     "Tooltip": "Conditions to be applied and removed with this effect using CPR's API"
+                },
+                "OverTime": {
+                    "Labels": {
+                        "Turn": "Trigger:",
+                        "Start": "Start of Turn",
+                        "End": "End of Turn",
+                        "Label": "Card Flavor:",
+                        "AllowIncapacitated": "Allow Incapacitated Targets:",
+                        "ApplyCondition": "Apply Condition Evaluation Expression:",
+                        "RemoveCondition": "Remove Condition Evaluation Expression:",
+                        "RollType": "Roll Type:",
+                        "SaveAbility": "Ability or Skill for roll:",
+                        "SaveDC": "Difficult Class for roll:",
+                        "SaveDCNumber": "Flat DC:",
+                        "SaveDamage": "Amount of Damage on Save:",
+                        "HalfDamage": "Half Damage",
+                        "NoDamage": "No Damage",
+                        "FullDamage": "Full Damage",
+                        "SaveRemove": "Remove Effect on Save:",
+                        "SaveMagic": "Magic Saving Throw:",
+                        "ActionSave": "Saving Throw is an Action:",
+                        "DamageBeforeSave": "Damage Applied Before Save Roll:",
+                        "DamageRoll": "Damage Roll Formula:",
+                        "DamageType": "Damage Type:",
+                        "RollMode": "Roll Mode for Over Time Item Roll:",
+                        "GMRoll": "GM Roll",
+                        "BlindRoll": "Blind Roll",
+                        "PublicRoll": "Public Roll",
+                        "SelfRoll": "Self Roll",
+                        "Macro": "Macro to Call:",
+                        "Spellcasting": "Spellcasting DC",
+                        "Item": "Item DC",
+                        "Flat": "Flat DC",
+                        "Ability": "Ability Based DC"
+                    }
                 }
             },
             "Tabs": {
@@ -66,6 +104,24 @@
                 "Overtime": {
                     "Label": "Overtime",
                     "Tooltip": "UI to create Midi-QOL Over Time effects"
+                }
+            },
+            "Fieldsets": {
+                "parameters": {
+                    "Label": "Parameters",
+                    "Tooltip": "Basic options for OverTimes"
+                },
+                "rolls": {
+                    "Label": "Rolls",
+                    "Tooltip": "Configure roll types and options"
+                },
+                "damage": {
+                    "Label": "Damage",
+                    "Tooltip": "Configure damage roll options"
+                },
+                "macros": {
+                    "Label": "Macros",
+                    "Tooltip": "Configure macros to be called"
                 }
             },
             "Categories": {
