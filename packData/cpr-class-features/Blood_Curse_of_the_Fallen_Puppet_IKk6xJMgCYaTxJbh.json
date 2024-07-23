@@ -96,11 +96,11 @@
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.muddledMind",
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.fallenPuppet",
       "onUseMacroParts": {
         "items": {
           "0": {
-            "macroName": "function.chrisPremades.macros.muddledMind",
+            "macroName": "function.chrisPremades.macros.fallenPuppet",
             "option": "postActiveEffects"
           }
         }
@@ -169,7 +169,7 @@
           "priority": 20
         },
         {
-          "key": "system.attributes.hp.tempmax",
+          "key": "system.attributes.hp.value",
           "mode": 2,
           "value": "1",
           "priority": 20
