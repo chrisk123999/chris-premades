@@ -161,6 +161,7 @@ async function preItemRoll(workflow) {
 }
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');
+    await executeTargetMacroPass(workflow, 'targetPreambleComplete');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.preambleComplete(workflow);
         await conditionVulnerability.preambleComplete(workflow);

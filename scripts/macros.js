@@ -68,6 +68,7 @@ export {sanctuary, sanctuarySafe} from './macros/spells/sanctuary.js';
 export {sappingSting} from './macros/spells/sappingSting.js';
 export {scorchingRay} from './macros/spells/scorchingRay.js';
 export {shadowBlade} from './macros/spells/shadowBlade.js';
+export {shadowOfMoil, shadowOfMoilBuffed} from './macros/spells/shadowOfMoil.js';
 export {shield} from './macros/spells/shield.js';
 export {shieldOfFaith} from './macros/spells/shieldOfFaith.js';
 export {shockingGrasp} from './macros/spells/shockingGrasp.js';

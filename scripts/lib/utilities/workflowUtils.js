@@ -36,6 +36,7 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
     let defaultOptions = {
         targetUuids: targets.map(i => i.document.uuid),
         configureDialog: false,
+        ignoreUserTargets: true,
         workflowOptions: {
             autoRollDamage: 'always',
             autoFastDamage: true,

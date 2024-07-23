@@ -627,6 +627,9 @@
                 "select": "Which planes do you draw magic from?",
                 "upper": "Upper Planes",
                 "lower": "Lower Planes"
+            },
+            "shadowOfMoil": {
+                "damage": "Shadow of Moil: Damage"
             }
         },
         "section": {
