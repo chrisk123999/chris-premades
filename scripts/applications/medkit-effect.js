@@ -5,7 +5,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super();
         this.windowTitle = 'Chris\'s Premades Configuration: ' + context.label;
-        this.position.width = 450;
+        this.position.width = 650;
         this.effectDocument = effectDocument;
         this.context = context;
     }
@@ -66,7 +66,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 conditions: {
                     label: 'CHRISPREMADES.Medkit.Effect.Conditions.Label',
                     tooltip: 'CHRISPREMADES.Medkit.Effect.Conditions.Tooltip',
-                    options: CONFIG.statusEffects.map(i => ({label: i.name, value: i.id}))
+                    value: effect.flags['chris-premades']?.conditions,
+                    options: CONFIG.statusEffects.map(i => ({label: i.name, value: i.id, isSelected: effect.flags['chris-premades']?.conditions?.includes(i.id) ? true : false}))
                 },
             },
             overTime: {
@@ -230,12 +231,60 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
     async _onChangeForm(formConfig, event) {
+        // Keep tabs data up to date with what's displayed
         for (let key of Object.keys(this.tabsData)) {
             this.tabsData[key].cssClass = '';
         }
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.tabsData[currentTabId].cssClass = 'active';
-
+        // Update context data
+        console.log('id', event.target.id, 'name', event.target.name, 'value', event.target.value, 'type', event.target.type);
+        console.log(currentTabId);
+        switch (currentTabId) {
+            case 'configure': {
+                switch (event.target.type) {
+                    case 'checkbox': {
+                        this.context.configure[event.target.id].value = event.target.checked;
+                        break;
+                    }
+                    default: {
+                        this.context.configure.conditions.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
+                        this.context.configure.conditions.value = event.target.value;
+                    }
+                }
+                break;
+            }
+            case 'overtime': {
+                switch (event.target.type) {
+                    case 'radio': {
+                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.name);
+                        option.value = event.target.id;
+                        option.options.forEach(i => i.isChecked = false);
+                        option.options.find(i => i.value === event.target.id).isChecked = true;
+                        break;
+                    }
+                    case 'text': {
+                        this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id).value = event.target.value;
+                        break;
+                    }
+                    case 'select-one': {
+                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
+                        option.value = event.target.value;
+                        option.options.forEach(i => i.isSelected = false);
+                        option.options.find(i => i.value === event.target.value).isSelected = true;
+                        break;
+                    }
+                    case 'checkbox': {
+                        let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
+                        option.value = event.target.checked;
+                        option.isChecked = event.target.checked;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        
         // Need to dynamically update overtime??
         // Set checkbox, conditions, and macros to context
         if (event.target.name.includes('devTools')) {
@@ -244,6 +293,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 this.context.devTools.midi[event.target.id] = value;
             } else this.context.devTools[event.target.id] = value;
         }
-        //this.render(true);
+        console.log(this.context);
+        this.render(true);
     }
 }

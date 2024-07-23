@@ -18,6 +18,8 @@ import {workflow} from './extensions/workflow.js';
 import {Teleport} from './lib/teleport.js';
 import {backup} from './extensions/backup.js';
 import {selectTool} from './extensions/selectTool.js';
+import {abilitySave} from './extensions/abilitySave.js';
+import {skillCheck} from './extensions/skillCheck.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -28,6 +30,8 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool')) selectTool.init();
+    abilitySave.init();
+    skillCheck.init();
 });
 Hooks.once('ready', () => {
     workflow.setup();
@@ -40,6 +44,8 @@ Hooks.once('ready', () => {
         setupJournal();
         if (utils.genericUtils.getCPRSetting('backups')) backup.doBackup();
     }
+    if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
+    if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
 });
 globalThis['chrisPremades'] = {
     DialogApp,

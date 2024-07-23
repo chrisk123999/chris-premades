@@ -4,21 +4,40 @@ export class Teleport {
     constructor(tokens, controllingToken, options) {
         this.tokens = Array.isArray(tokens) ? tokens : [tokens];
         this.controllingToken = controllingToken ?? this.tokens[0];
+        this.tokenTexture = this.tokens[0].document.texture.src;
         this.options = options;
         this.updates = options?.updates ?? {};
     }
-    static async teleport(tokens, controllingToken, options = {animation: 'none', isSynchronous: 'true', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}}) {
+    static async group(tokens, controllingToken, options = {animation: 'none', isSynchronous: true, crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}}) {
+        genericUtils.setProperty(options, 'isGroup', true);
         let teleport = new Teleport(tokens, controllingToken, options);
-        await teleport.go();
+        teleport.tokenTexture = controllingToken.document.texture.src;
+        await teleport.go(teleport.crosshairsConfig);
     }
-    async go() {
+    static async target(target, controllingToken, options = {animation: 'none', crosshairsConfig: {}, callbacks: {}, range: 100, updates: {}}) {
+        let teleport = new Teleport(target, controllingToken, options);
+        await teleport.go(teleport.crosshairsConfigTarget);
+    }
+    async go(crosshairsConfig) {
         if (this.controllingToken.actor?.sheet?.rendered) this.controllingToken.actor.sheet.minimize();
-        this.template = await Crosshairs.showCrosshairs(this.crosshairsConfig, this.callbacks);
+        this.template = await Crosshairs.showCrosshairs(crosshairsConfig, this.callbacks);
         this.callbacks?.post.bind(this)();
-        await this._move();
+        this.options?.isGroup ? await this._moveGroup() : await this._move();
         if (this.controllingToken.actor?.sheet?.rendered) this.controllingToken.actor.sheet.maximize();
     }
     async _move() {
+        let tok = this.tokens[0];
+        let position = {
+            rotation: this.template.direction,
+            x: this.coords.selected.x,
+            y: this.coords.selected.y
+        };
+        await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document);
+        let update = genericUtils.collapseObjects(this.updates, position, {_id: tok.id});
+        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false});
+        await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document);
+    }
+    async _moveGroup() {
         if (this.options?.isSynchronous === false) {
             await this._nonSync();
         } else {
@@ -79,15 +98,19 @@ export class Teleport {
                 }
                 let distance = 0;
                 let ray;
+                let test;
                 while (crosshairs.inFlight) {
                     await genericUtils.sleep(100);
                     ray = new Ray(this.controllingToken.center, crosshairs);
-                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                    if (this.controllingToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > this.options.range) {
+                    distance = canvas.grid.measureDistances([{ray}], {gridSpaces: true})[0];
+                    //test = canvas.grid.measurePath([ray]).distance;
+                    console.log(distance);
+                    console.log(test);
+                    if (this.controllingToken.checkCollision(ray.B, {origin: ray.A, type: 'move', mode: 'any'}) || distance > this.options.range) {
                         crosshairs.icon = 'icons/svg/hazard.svg';
                         this.drawing.tint = 0xff0000;
                     } else {
-                        crosshairs.icon = this.controllingToken.document.texture.src;
+                        crosshairs.icon = this.tokenTexture;
                         this.drawing.tint = 0x32cd32;
                     }
                     crosshairs.draw();
@@ -104,8 +127,16 @@ export class Teleport {
     get crosshairsConfig() {
         let config = {
             size: this.controllingToken.document.width * 2,
-            icon: this.controllingToken.document.texture.src,
+            icon: this.tokenTexture,
             resolution: this.updates?.token?.width ?? this.controllingToken.w % 2 === 0 ? 1 : -1
+        };
+        return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
+    }
+    get crosshairsConfigTarget() {
+        let config = {
+            size: this.tokens[0].document.width * 2,
+            icon: this.tokenTexture,
+            resolution: this.updates?.token?.width ?? this.tokens[0].w % 2 === 0 ? 1 : -1
         };
         return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
     }

@@ -1,8 +1,10 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {abilitySave} from './extensions/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
+import {skillCheck} from './extensions/skillCheck.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
@@ -398,6 +400,20 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface'
+    });
+    addSetting({
+        key: 'abilitySave',
+        type: Boolean,
+        default: true,
+        category: 'mechanics',
+        onChange: value => abilitySave.patch(value)
+    });
+    addSetting({
+        key: 'skillCheck',
+        type: Boolean,
+        default: true,
+        category: 'mechanics',
+        onChange: value => skillCheck.patch(value)
     });
 }
 export function registerMenus() {

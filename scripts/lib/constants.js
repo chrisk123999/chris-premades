@@ -171,7 +171,7 @@ const overTimeOptions = [
     {
         key: 'rollType',
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.RollType',
-        default: 'save',
+        default: null,
         type: 'select',
         options: [
             {

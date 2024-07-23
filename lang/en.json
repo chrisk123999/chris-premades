@@ -297,6 +297,14 @@
             "selectTool": {
                 "name": "Select Tool Everywhere",
                 "hint": "When enabled, the select tool is available in more places. Reload required after enabling."
+            },
+            "abilitySave": {
+                "name": "Contextual Ability Saves",
+                "hint": "When enabled, certain macros will prompt the player for more information for the ability save."
+            },
+            "skillCheck": {
+                "name": "Contextual Skill Checks",
+                "hint": "When enabled, certain macros will prompt the player for more information for the skill check."
             }
         },
         "settingCategory": {
@@ -606,6 +614,9 @@
             },
             "skillEmpowerment": {
                 "selectSkill": "Select a skill to grant temporary expertise in:"
+            },
+            "protectionFromEvilAndGood": {
+                "save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
             }
         },
         "section": {
@@ -665,6 +676,12 @@
             "0": "0 ft.",
             "5": "5 ft.",
             "10": "10 ft."
+        },
+        "AbilitySave": {
+            "Title": "Ability Save"
+        },
+        "SkillCheck": {
+            "Title": "Skill Check"
         }
     },
     "CONTROLS": {

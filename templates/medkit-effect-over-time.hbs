@@ -9,22 +9,26 @@
                     {{#if show}}
                         <div class="cpr-over-time-option">
                             <label class="main-label">{{localize label}}</label>
-                            {{#if isRadio}}
-                                {{#each options}}
-                                    <label for="{{value}}">{{localize label}}</label>
-                                    <input type="radio" id="{{value}}" name="{{../key}}" {{#if isChecked}}checked{{/if}}>
-                                {{/each}}
-                            {{else if isText}}
-                                <input type="text" id="{{key}}" name="{{key}}" value="{{value}}">
-                            {{else if isCheckbox}}
-                                <input type="checkbox" id="{{key}}" name="{{key}}" {{#if isChecked}}checked{{/if}}>
-                            {{else if isSelectOption}}
-                                <select id="{{key}}" name="{{key}}">
-                                {{#each options}}
-                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
-                                {{/each}}
-                                </select>
-                            {{/if}}
+                            <div class="over-time-input cpr-row-center">
+                                {{#if isRadio}}
+                                    {{#each options}}
+                                        <div>
+                                            <label for="{{value}}">{{localize label}}</label>
+                                            <input type="radio" id="{{value}}" name="{{../key}}" data-fieldset="{{@../../key}}" {{#if isChecked}}checked{{/if}}>
+                                        </div>
+                                    {{/each}}
+                                {{else if isText}}
+                                    <input type="text" id="{{key}}" name="{{key}}" value="{{value}}" data-fieldset="{{@../key}}">
+                                {{else if isCheckbox}}
+                                    <input type="checkbox" id="{{key}}" name="{{key}}" data-fieldset="{{@../key}}" {{#if isChecked}}checked{{/if}}>
+                                {{else if isSelectOption}}
+                                    <select id="{{key}}" name="{{key}}" data-fieldset={{@../key}}>
+                                    {{#each options}}
+                                        <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                    {{/each}}
+                                    </select>
+                                {{/if}}
+                            </div>
                         </div>
                     {{/if}}
                 {{/each}}

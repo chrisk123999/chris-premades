@@ -81,6 +81,7 @@ export {thunderwave} from './macros/spells/thunderwave.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
 export {tollTheDead} from './macros/spells/tollTheDead.js';
 export {vampiricTouch, vampiricTouchAttack} from './macros/spells/vampiricTouch.js';
+export {vortexWarp} from './macros/spells/vortexWarp.js';
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
 export {wardingBond, wardingBondTarget, wardingBondSource, wardingBondDismiss} from './macros/spells/wardingBond.js';

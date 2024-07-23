@@ -6,9 +6,9 @@
     </div>
     <div class ="cpr-row-center">
       <label for="conditions" data-tooltip="{{localize configure.conditions.tooltip}}">{{localize configure.conditions.label}}</label>
-      <multi-select name="conditions">
+      <multi-select id="conditions" name="conditions">
       {{#each configure.conditions.options}}
-        <option value="{{value}}">{{localize label}}</option>
+        <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
       {{/each}}
       </multi-select>
     </div>

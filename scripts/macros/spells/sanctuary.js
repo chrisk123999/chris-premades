@@ -1,5 +1,4 @@
 import {animationUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     if (!workflow.targets.size) return;
     let effectData = {
