@@ -1,5 +1,6 @@
 import {DialogApp} from '../applications/dialog.js';
 import {genericUtils} from '../utils.js';
+import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
@@ -90,6 +91,18 @@ async function createSidebarActor(actorUuid, {folderId} = {}) {
     let actor = await Actor.create(actorData);
     return actor.uuid;
 }
+async function teleport(tokenUuids, controllingTokenUuid, options={}) {
+    let tokens = await Promise.all(tokenUuids.map(async i => {
+        return (await fromUuid(i))?.object;
+    }).filter(j => j));
+    let controllingToken = (await fromUuid(controllingTokenUuid))?.object;
+    if (!controllingToken) return;
+    if (tokens.length > 1) {
+        await Teleport.group(tokens, controllingToken, options);
+    } else {
+        await Teleport.target(tokens, controllingToken, options);
+    }
+}
 let sockets = [
     createEffect,
     deleteEntity,
@@ -103,7 +116,8 @@ let sockets = [
     dialog,
     rollItem,
     createSidebarActor,
-    updateEmbeddedDocuments
+    updateEmbeddedDocuments,
+    teleport
 ];
 export let socket;
 export function registerSockets() {

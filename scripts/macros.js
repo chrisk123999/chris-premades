@@ -8,6 +8,7 @@ export {bestowCurse, bestowCurseAttack, bestowCurseDamageSource, bestowCurseDama
 export {bladeWard} from './macros/spells/bladeWard.js';
 export {blight, blightDamage} from './macros/spells/blight.js';
 export {blindingSmite, blindingSmiteDamage} from './macros/spells/blindingSmite.js';
+export {blink, blinkBlinking, blinkBlinkedAway} from './macros/spells/blink.js';
 export {boomingBlade, boomingBladeMoved} from './macros/spells/boomingBlade.js';
 export {borrowedKnowledge} from './macros/spells/borrowedKnowledge.js';
 export {brandingSmite, brandingSmiteDamage} from './macros/spells/brandingSmite.js';
@@ -32,6 +33,7 @@ export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {enlargeReduce, enlargeReduceChanged} from './macros/spells/enlargeReduce.js';
 export {faerieFire, faerieFireOutlined} from './macros/spells/faerieFire.js';
+export {farStep, farStepStepping} from './macros/spells/farStep.js';
 export {fireShield, fireShieldShielded, fireShieldDismiss} from './macros/spells/fireShield.js';
 export {fireStorm} from './macros/spells/fireStorm.js';
 export {flameBlade} from './macros/spells/flameBlade.js';
@@ -60,6 +62,7 @@ export {lightningLure} from './macros/spells/lightningLure.js';
 export {magicMissile} from './macros/spells/magicMissile.js';
 export {massCureWounds} from './macros/spells/massCureWounds.js';
 export {mirrorImage, mirrorImageMirrored} from './macros/spells/mirrorImage.js';
+export {mistyStep} from './macros/spells/mistyStep.js';
 export {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 export {rayOfEnfeeblement, rayOfEnfeeblementEnfeebled} from './macros/spells/rayOfEnfeeblement.js';
 export {raulothimsPsychicLance} from './macros/spells/raulothimsPsychicLance.js';
@@ -82,10 +85,12 @@ export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/
 export {synapticStatic} from './macros/spells/synapticStatic.js';
 export {tashasCausticBrew} from './macros/spells/tashasCausticBrew.js';
 export {tashasOtherworldlyGuise, tashasOtherworldlyGuiseBuffed} from './macros/spells/tashasOtherworldlyGuise.js';
-export {tidalWave} from './macros/spells/tidalWave.js';
+export {teleport} from './macros/spells/teleport.js';
 export {thornWhip} from './macros/spells/thornWhip.js';
+export {thunderStep} from './macros/spells/thunderStep.js';
 export {thunderwave} from './macros/spells/thunderwave.js';
 export {thunderousSmite, thunderousSmiteDamage} from './macros/spells/thunderousSmite.js';
+export {tidalWave} from './macros/spells/tidalWave.js';
 export {tollTheDead} from './macros/spells/tollTheDead.js';
 export {vampiricTouch, vampiricTouchAttack} from './macros/spells/vampiricTouch.js';
 export {vitriolicSphere} from './macros/spells/vitriolicSphere.js';

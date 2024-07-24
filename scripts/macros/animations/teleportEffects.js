@@ -1,6 +1,9 @@
 import {genericUtils} from '../../utils.js';
 
-async function defaultPre(token) {
+async function none(token, cornerPosition) {
+
+}
+async function defaultPre(token, cornerPosition) {
     await new Sequence()
         .effect()
         .file('jb2a.cast_generic.02.blue.0')
@@ -11,7 +14,7 @@ async function defaultPre(token) {
         .waitUntilFinished(-200)
         .play();
 }
-async function defaultPost(token) {
+async function defaultPost(token, cornerPosition) {
     await new Sequence()
         .effect()
         .delay(100)
@@ -21,7 +24,7 @@ async function defaultPost(token) {
         .waitUntilFinished()
         .play();
 }
-async function mistyStepPre(token) {
+async function mistyStepPre(token, cornerPosition) {
     await new Sequence()
         .effect()
         .file('jb2a.misty_step.01.blue')
@@ -36,7 +39,7 @@ async function mistyStepPre(token) {
         .waitUntilFinished()
         .play();
 }
-async function mistyStepPost(token) {
+async function mistyStepPost(token, cornerPosition) {
     /* eslint-disable indent */
     await new Sequence()
         .effect()
@@ -52,7 +55,31 @@ async function mistyStepPost(token) {
             .fadeIn(500)
         .play();
 }
-async function vortexWarpPre(token) {
+async function thunderStepPre(token, cornerPosition) {
+    /* eslint-disable indent */
+    await new Sequence()
+        .effect()
+            .file('jb2a.thunderwave.center.blue')
+            .atLocation(token, {cacheLocation: false})
+        .effect()
+            .file('jb2a.misty_step.01.blue')
+            .atLocation(token)
+            .scaleToObject(1.5)
+            .belowTokens()
+            .animation()
+            .delay(300)
+            .on(token)
+            .opacity(0)
+            .fadeIn(500)
+            .waitUntilFinished()
+        .animation()
+            .delay(300)
+            .on(token)
+            .opacity(1)
+            .fadeIn(500)
+        .play();
+}
+async function vortexWarpPre(token, cornerPosition) {
     //Animations by: eskiemoh
     /* eslint-disable indent */
     await new Sequence()
@@ -115,7 +142,7 @@ async function vortexWarpPre(token) {
             .waitUntilFinished()
         .play();
 }
-async function vortextWarpPost(token) {
+async function vortexWarpPost(token, cornerPosition) {
     await genericUtils.sleep(200);
     await new Sequence()
         .effect()
@@ -179,7 +206,52 @@ async function vortextWarpPost(token) {
         .play();
     /* eslint-enable indent */
 }
+async function farStepPre(token, cornerPosition) {
+    let position = {
+        x: cornerPosition.x + token.object.shape.width / 2,
+        y: cornerPosition.y + token.object.shape.height / 2
+    };
+    // Animations by: eskiemoh
+    await new Sequence()
+        .effect()
+        .file('jb2a.explosion.07.bluewhite')
+        .atLocation(position)
+        .scaleIn(0, 500, {'ease': 'easeOutCubic'})
+        .fadeOut(1000)
+        .scale({'x': token.width / 4, 'y': token.height / 4})
+        
+        .animation()
+        .on(token)
+        .opacity(0)
+        
+        .effect()
+        .file('jb2a.energy_strands.range.standard.blue.04')
+        .atLocation(token)
+        .stretchTo(position)
+        .waitUntilFinished(-500)
+        .playbackRate(1.25)
+        
+        .effect()
+        .file('jb2a.explosion.07.bluewhite')
+        .atLocation(position)
+        .scale({'x': token.width / 4, 'y': token.height / 4})
+        .scaleIn(0, 500, {'ease': 'easeOutCubic'})
+        .fadeOut(1000)
+        .play();
+}
+async function farStepPost(token, cornerPosition) {
+    await new Sequence()
+        .animation()
+        .on(token)
+        .opacity(1)
+        .waitUntilFinished()
+        .play();
+}
 export let teleportEffects = {
+    none: {
+        pre: none,
+        post: none
+    },
     default: {
         pre: defaultPre,
         post: defaultPost
@@ -190,6 +262,14 @@ export let teleportEffects = {
     },
     vortexWarp: {
         pre: vortexWarpPre,
-        post: vortextWarpPost
+        post: vortexWarpPost
+    },
+    thunderStep: {
+        pre: thunderStepPre,
+        post: mistyStepPost
+    },
+    farStep: {
+        pre: farStepPre,
+        post: farStepPost
     }
 };

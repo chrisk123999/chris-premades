@@ -27,6 +27,21 @@
             "Save": "Saving Throw",
             "Skill": "Skill Check"
         },
+        "Units": {
+            "Units": "Units:",
+            "Feet": "Feet",
+            "Miles": "Miles"
+        },
+        "Direction": {
+            "North": "north",
+            "Northeast": "northeast",
+            "East": "east",
+            "Southeast": "southeast",
+            "South": "south",
+            "Southwest": "southwest",
+            "West": "west",
+            "Northwest": "northwest"
+        },
         "Template": {
             "UnknownTemplate": "Unknown Template",
             "TargetCantSeeAttacker": "Target Can't See Attacker",
@@ -630,6 +645,36 @@
             },
             "shadowOfMoil": {
                 "damage": "Shadow of Moil: Damage"
+            },
+            "thunderStep": {
+                "select": "Teleport a Creature?"
+            },
+            "blink": {
+                "away": "Blinked Away"
+            },
+            "farStep": {
+                "teleport": "Far Step: Teleport"
+            },
+            "teleport": {
+                "select": "Who else is getting teleported?",
+                "permanentCircle": "Permanent Circle",
+                "associatedObject": "Associated Object",
+                "veryFamiliar": "Very Familiar",
+                "seenCasually": "Seen Casually",
+                "viewedOnce": "Viewed Once",
+                "description": "Description",
+                "falseDestination": "False Destination",
+                "familiarity": "What is the familiarity?",
+                "mishap": "Mishap",
+                "onTarget": "On Target",
+                "offTarget": "Off Target",
+                "similarArea": "Similar Area",
+                "damage": "Teleport: Damage",
+                "distance": "Off Target - Distance",
+                "howFar": "How far away is the destination?",
+                "direction": "Off Target - Direction",
+                "offTargetString": "Destination is {distance} {units} {direction} of the intended location.",
+                "selectDestination": "Select Destination?"
             }
         },
         "section": {
