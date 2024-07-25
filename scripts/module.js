@@ -20,6 +20,7 @@ import {backup} from './extensions/backup.js';
 import {selectTool} from './extensions/selectTool.js';
 import {abilitySave} from './extensions/abilitySave.js';
 import {skillCheck} from './extensions/skillCheck.js';
+import {ddbi} from './integrations/ddbi.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -36,6 +37,7 @@ Hooks.once('init', () => {
 Hooks.once('ready', () => {
     workflow.setup();
     registerHooks();
+    ddbi.ready();
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);

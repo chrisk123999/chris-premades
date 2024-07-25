@@ -16,7 +16,7 @@ function collectTokenMacros(token, pass, distance, target) {
         for (let effect of effects) {
             let macroList = collectAuraMacros(effect);
             if (!macroList.length) continue;
-            let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).map(k => k.aura).flat().filter(l => l.pass === pass);
+            let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             auraMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;

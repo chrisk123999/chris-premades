@@ -3,7 +3,7 @@ import * as macros from '../macros.js';
 import {genericUtils} from '../utils.js';
 let skillMacros;
 function init() {
-    skillMacros = Object.values(macros).filter(i => i.skill).map(j => j.skill).flat().map(k => k.macro);
+    skillMacros = Object.values(macros).filter(i => i.skill).flatMap(j => j.skill).map(k => k.macro);
 }
 async function rollSkill(wrapped, skillId, options = {}) {
     let selections = await Promise.all(skillMacros.map(async macro => {

@@ -14,7 +14,7 @@ function collectTemplatesMacros(templates, pass, token) {
     for (let template of templates) {
         let macroList = collectMacros(template);
         if (!macroList.length) continue;
-        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).map(k => k.template).flat().filter(l => l.pass === pass);
+        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
         templateMacros.forEach(i => {
             let trigger = {
                 entity: template,

@@ -17,7 +17,7 @@ function collectTokenMacros(token, pass, distance, target) {
         for (let effect of effects) {
             let macroList = collectMacros(effect);
             if (!macroList.length) continue;
-            let effectMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).map(k => k.combat).flat().filter(l => l.pass === pass);
+            let effectMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass);
             effectMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
@@ -43,7 +43,7 @@ function collectTokenMacros(token, pass, distance, target) {
         for (let item of token.actor.items) {
             let macroList = collectMacros(item);
             if (!macroList.length) continue;
-            let itemMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).map(k => k.combat).flat().filter(l => l.pass === pass);
+            let itemMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass);
             itemMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
@@ -70,7 +70,7 @@ function collectTokenMacros(token, pass, distance, target) {
     for (let template of templates) {
         let macroList = templateEvents.collectMacros(template);
         if (!macroList.length) continue;
-        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).map(k => k.template).flat().filter(l => l.pass === pass);
+        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
         templateMacros.forEach(i => {
             triggers.push({
                 entity: template,

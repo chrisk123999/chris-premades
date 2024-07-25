@@ -3,7 +3,7 @@ import * as macros from '../macros.js';
 import {genericUtils} from '../utils.js';
 let saveMacros;
 function init() {
-    saveMacros = Object.values(macros).filter(i => i.save).map(j => j.save).flat().map(k => k.macro);
+    saveMacros = Object.values(macros).filter(i => i.save).flatMap(j => j.save).map(k => k.macro);
 }
 async function save(wrapped, saveId, options = {}) {
     let selections = await Promise.all(saveMacros.map(async macro => {

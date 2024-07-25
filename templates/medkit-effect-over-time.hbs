@@ -23,9 +23,19 @@
                                     <input type="checkbox" id="{{key}}" name="{{key}}" data-fieldset="{{@../key}}" {{#if isChecked}}checked{{/if}}>
                                 {{else if isSelectOption}}
                                     <select id="{{key}}" name="{{key}}" data-fieldset={{@../key}}>
-                                    {{#each options}}
-                                        <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
-                                    {{/each}}
+                                    {{#if optgroups}}
+                                        {{#each optgroups}}
+                                            <optgroup label="{{localize label}}">
+                                            {{#each options}}
+                                                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                            {{/each}}
+                                            </optgroup>
+                                        {{/each}}
+                                    {{else}}
+                                        {{#each options}}
+                                            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                        {{/each}}
+                                    {{/if}}
                                     </select>
                                 {{/if}}
                             </div>

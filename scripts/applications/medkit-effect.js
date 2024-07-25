@@ -127,11 +127,24 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'ability': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', Object.values(CONFIG.DND5E.abilities).map(j => ({
-                        label: j.label,
-                        value: j.abbreviation,
-                        isSelected: j.abbreviation === i.value
-                    })));
+                    genericUtils.setProperty(i, 'optgroups', [
+                        {
+                            label: 'CHRISPREMADES.Generic.Abilities',
+                            options: Object.values(CONFIG.DND5E.abilities).map(j => ({
+                                label: j.label,
+                                value: j.abbreviation,
+                                isSelected: j.abbreviation === i.value
+                            }))
+                        },
+                        {
+                            label: 'CHRISPREMADES.Generic.Skills',
+                            options: Object.entries(CONFIG.DND5E.skills).map(([key, value]) => ({
+                                label: value.label,
+                                value: key,
+                                isSelected: key === i.value
+                            }))
+                        }
+                    ]);
                     break;
                 }
                 case 'saves': {
@@ -150,12 +163,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Flat',
-                            value: 'flat',
+                            value: 'flat', // Need to see if the actual value is a number
                             isSelected: i.value === 'flat' // Make it add another box if this is true
                         },
                         {
                             label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Ability',
-                            value: 'ability',
+                            value: 'ability', // Need to see if the actual value is a ability
                             isSelected: i.value === 'ability'
                         }
                     ]);
@@ -270,8 +283,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     case 'select-one': {
                         let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
                         option.value = event.target.value;
-                        option.options.forEach(i => i.isSelected = false);
-                        option.options.find(i => i.value === event.target.value).isSelected = true;
+                        (option?.options ?? option.optgroups.flatMap(i => i.options)).forEach(i => i.isSelected = false);
+                        (option?.options ?? option.optgroups.flatMap(i => i.options)).find(i => i.value === event.target.value).isSelected = true;
                         break;
                     }
                     case 'checkbox': {
@@ -281,12 +294,34 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         break;
                     }
                 }
-                this.context.overTime.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? constants.overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
+                Object.values(this.context.overTime.fieldsets).forEach(i => {
+                    i.options.forEach(j => {
+                        genericUtils.setProperty(j, 'show', j.requires ? constants.overTimeOptions.find(k => (k.key === j.requires) && k.value) ? true : false : true);
+                    });
+                });
+                if (event.target.id === 'actionSave') {
+                    if (event.target.checked === true) {
+                        this.context.overTime.fieldsets.rolls.saveAbility.isSelectOption = false;
+                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.saveAbility, 'isSelectMultiple', true);
+                    } else {
+                        this.context.overTime.fieldsets.rolls.saveAbility.isSelectOption = true;
+                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.saveAbility, 'isSelectMultiple', false);
+                    }
+                } else if (event.target.id === 'saveDC') {
+                    if (this.context.overTime.fieldsets.rolls.saveDC.value === 'flat') {
+                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls, 'flatDC', {
+                            isText: true,
+                            value: undefined, // check if value?
+                            show: true
+                        });
+                    }
+                }
                 break;
             }
         }
-        
-        // Need to dynamically update overtime??
+        // Need for ability to become a select multiple if action save is true (need to test)
+        // need to add text box for flat dc is chosen
+        // need to add ability drop down for ability dc chosen
         // Set checkbox, conditions, and macros to context
         if (event.target.name.includes('devTools')) {
             let value = event.target.value;

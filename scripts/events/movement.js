@@ -19,7 +19,7 @@ function collectTokenMacros(token, pass, distance, target) {
         for (let effect of effects) {
             let macroList = collectMovementMacros(effect);
             if (!macroList.length) continue;
-            let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).map(k => k.movement).flat().filter(l => l.pass === pass);
+            let movementMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
             movementMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
@@ -45,7 +45,7 @@ function collectTokenMacros(token, pass, distance, target) {
         for (let item of token.actor.items) {
             let macroList = collectMovementMacros(item);
             if (!macroList.length) continue;
-            let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).map(k => k.movement).flat().filter(l => l.pass === pass);
+            let itemMacros = macroList.filter(i => i.movement?.find(j => j.pass === pass)).flatMap(k => k.movement).filter(l => l.pass === pass);
             itemMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {

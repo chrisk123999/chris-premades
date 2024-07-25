@@ -11,7 +11,7 @@ function collectItemMacros(item, pass) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).map(m => m.midi.item).flat().filter(n => n.pass === pass);
+    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
@@ -20,7 +20,7 @@ function collectActorMacros(item, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).map(m => m.midi.actor).flat().filter(n => n.pass === pass);
+    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({item, token, actor}, pass) {
     let triggers = [];

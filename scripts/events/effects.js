@@ -15,7 +15,7 @@ function collectMacros(effect, pass) {
     let macroList = collectEffectMacros(effect);
     if (!macroList.length) return [];
     let triggers = [];
-    let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).map(k => k.effect).flat().filter(l => l.pass === pass);
+    let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass);
     effectMacros.forEach(i => {
         triggers.push({
             entity: effect,
