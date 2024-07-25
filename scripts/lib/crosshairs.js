@@ -73,7 +73,7 @@ export class Crosshairs extends MeasuredTemplate {
         }
         if (!Object.prototype?.hasOwnProperty?.call(config, 'x') && !Object.prototype?.hasOwnProperty?.call(config, 'y')) {
             let mouseLoc = canvas.app.renderer.events.pointer.getLocalPosition(canvas.app.stage);
-            mouseLoc = Crosshairs.getSnappedPosition(mouseLoc, config.interval);
+            mouseLoc = Crosshairs.getSnappedPosition(mouseLoc, config.resolution);
             config.x = mouseLoc.x;
             config.y = mouseLoc.y;
         }

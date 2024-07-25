@@ -88,6 +88,13 @@ function setReactionUsed(actor) {
 function hasSpellSlots(actor, atLeast = 0) {
     return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;
 }
+function isShapeChanger(actor) {
+    // TODO: what's the best we can do here?
+    let changeShape = actor.items.getName('Change Shape');
+    let shapechanger = actor.items.getName('Shapechanger');
+    let subtype = actor.system.details.type.subtype.toLowerCase().includes('shapechanger');
+    return changeShape || shapechanger || subtype;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -106,5 +113,6 @@ export let actorUtils = {
     getSize,
     hasUsedReaction,
     setReactionUsed,
-    hasSpellSlots
+    hasSpellSlots,
+    isShapeChanger
 };

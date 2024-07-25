@@ -675,6 +675,18 @@
                 "direction": "Off Target - Direction",
                 "offTargetString": "Destination is {distance} {units} {direction} of the intended location.",
                 "selectDestination": "Select Destination?"
+            },
+            "cloudkill": {
+                "noRoom": "No room to move cloudkill!",
+                "damage": "Cloudkill: Damage"
+            },
+            "dawn": {
+                "move": "Dawn: Move",
+                "endTurn": "Dawn: End Turn"
+            },
+            "moonbeam": {
+                "move": "Moonbeam: Move",
+                "damage": "Moonbeam: Damage"
             }
         },
         "section": {

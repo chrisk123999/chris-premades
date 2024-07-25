@@ -148,18 +148,18 @@ async function updateToken(token, updates, options, userId) {
             let entering = current.filter(i => !previous.includes(i));
             let staying = previous.filter(i => current.includes(i));
             let through = token.parent.templates.reduce((acc, template) => {
-                let cells = templateUtils.findGrids(previousCoords, coords, template);
-                if (!cells.size) return acc;
+                let intersected = templateUtils.rayIntersectsTemplate(template, new Ray(previousCoords, coords));
+                if (!intersected) return acc;
                 acc.push(template);
                 return acc;
             }, []);
             let enteredAndLeft = through.filter(i => {
-                return !leaving.includes(i.template) && !entering.includes(i.template) && !staying.includes(i.template);
+                return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
             });
-            await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
-            await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
-            await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
-            await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
+            if (leaving.length) await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
+            if (entering.length) await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
+            if (staying.length) await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
+            if (enteredAndLeft.length) await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
         }
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});

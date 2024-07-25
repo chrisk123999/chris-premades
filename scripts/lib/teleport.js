@@ -1,5 +1,6 @@
 import {Crosshairs} from './crosshairs.js';
 import {animationUtils, genericUtils} from '../utils.js';
+import {crosshairUtils} from './utilities/crosshairUtils.js';
 export class Teleport {
     constructor(tokens, controllingToken, options) {
         this.tokens = Array.isArray(tokens) ? tokens : [tokens];
@@ -20,9 +21,16 @@ export class Teleport {
     }
     async go(crosshairsConfig, minimizeSheet = true) {
         if (this.controllingToken.actor?.sheet?.rendered && minimizeSheet) this.controllingToken.actor.sheet.minimize();
-        this.template = await Crosshairs.showCrosshairs(crosshairsConfig, this.callbacks);
-        this.callbacks?.post.bind(this)();
-        this.options?.isGroup ? await this._moveGroup() : await this._move();
+        this.template = await crosshairUtils.aimCrosshair({
+            token: this.controllingToken,
+            maxRange: this.options.range,
+            crosshairsConfig,
+            drawBoundries: true,
+            customCallbacks: this.callbacks
+        });
+        if (!this.template.cancelled) {
+            this.options?.isGroup ? await this._moveGroup() : await this._move();
+        }
         if (this.controllingToken.actor?.sheet?.rendered && minimizeSheet) this.controllingToken.actor.sheet.maximize();
     }
     async _move() {
@@ -71,60 +79,6 @@ export class Teleport {
             y: this.coords.selected.y - difference.y
         };
         return update;
-    }
-    get callbacks() {
-        if (!this.options?.callbacks?.show) {
-            this.options.callbacks = {show: undefined};
-            this.options.callbacks.show = async (crosshairs) => {
-                if (!this?.drawing) {
-                    let radius = (canvas.grid.size * (this.options.range / canvas.grid.distance) + canvas.grid.size / 2);
-                    this.drawing = new PIXI.Graphics();
-                    this.drawing.beginFill(0xffffff);
-                    if (game.settings.get('core', 'gridDiagonals') === 0) {
-                        this.drawing.drawRect(this.controllingToken.center.x - radius, this.controllingToken.center.y - radius, radius * 2, radius * 2);
-                    } else {
-                        this.drawing.drawCircle(this.controllingToken.center.x, this.controllingToken.center.y, radius);
-                    }
-                    this.drawing.beginHole();
-                    if (game.settings.get('core', 'gridDiagonals') === 0) {
-                        this.drawing.drawRect(this.controllingToken.center.x - radius + 5, this.controllingToken.center.y - radius + 5, radius * 2 - 10, radius * 2 - 10);
-                    } else {
-                        this.drawing.drawCircle(this.controllingToken.center.x, this.controllingToken.center.y, radius - 5);
-                    }
-                    this.drawing.endHole();
-                    this.drawing.endFill();
-                    this.drawing.tint = 0x32cd32;
-                    this.containter = new PIXI.Container();
-                    this.containter.addChild(this.drawing);
-                    canvas.drawings.addChild(this.containter);
-                }
-                let distance = 0;
-                let ray;
-                let test;
-                while (crosshairs.inFlight) {
-                    await genericUtils.sleep(100);
-                    ray = new Ray(this.controllingToken.center, crosshairs);
-                    distance = canvas.grid.measureDistances([{ray}], {gridSpaces: true})[0];
-                    //test = canvas.grid.measurePath([ray]).distance;
-                    console.log(distance);
-                    console.log(test);
-                    if (this.controllingToken.checkCollision(ray.B, {origin: ray.A, type: 'move', mode: 'any'}) || distance > this.options.range) {
-                        crosshairs.icon = 'icons/svg/hazard.svg';
-                        this.drawing.tint = 0xff0000;
-                    } else {
-                        crosshairs.icon = this.tokenTexture;
-                        this.drawing.tint = 0x32cd32;
-                    }
-                    crosshairs.draw();
-                    crosshairs.label = distance + '/' + this.options.range + 'ft.';
-                }
-            };
-            this.options.callbacks.post = function clearDrawing() {
-                this.drawing.destroy();
-                this.containter.destroy();
-            };
-        }
-        return this.options.callbacks;
     }
     get crosshairsConfig() {
         let config = {

@@ -6,7 +6,7 @@ async function check(workflow) {
     let source = workflow.token;
     let templates = source.scene.templates.filter(template => {
         if (!template.flags['chris-premades']?.template?.visibility?.obscured) return false;
-        let testRay = new Ray({x: source.center.x - template.object.center.x, y: source.center.y - template.object.center.y}, {x: target.center.x - template.object.center.x, y: target.center.y - template.object.center.y});
+        let testRay = new Ray(source.center, target.center);
         return templateUtils.rayIntersectsTemplate(template, testRay);
     });
     if (!templates.length) return;

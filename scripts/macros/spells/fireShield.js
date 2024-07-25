@@ -48,7 +48,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['fireShieldShielded']);
     effectUtils.addMacro(effectData, 'effect', ['fireShieldShielded']);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'fireShield', vae: [{type: 'use', name: featureData.name, identifier: 'fireShieldDismiss'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'fireShield'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
 }
 async function hit({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;

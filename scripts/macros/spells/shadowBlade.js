@@ -39,7 +39,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, vae: [{type: 'use', name: featureData.name, identifier: 'shadowBladeSword'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, identifier: 'shadowFlameBlade'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 export let shadowBlade = {

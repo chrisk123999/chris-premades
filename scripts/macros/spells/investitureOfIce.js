@@ -51,7 +51,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['investitureOfIceIcy']);
     // TODO: Need to disable autoanims here? If so should we do for others?
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfIce', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfIceCone'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'investitureOfIceCone'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
     await startAnim({
         trigger: {

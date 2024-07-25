@@ -74,7 +74,7 @@ async function use({workflow}) {
     };
     // TODO: Need to disable autoanims here? If so should we do for others?
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfFlame', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfFlameFire'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'investitureOfFlameFire'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
     await startAnim({
         trigger: {

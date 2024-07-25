@@ -66,7 +66,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 conditions: {
                     label: 'CHRISPREMADES.Medkit.Effect.Conditions.Label',
                     tooltip: 'CHRISPREMADES.Medkit.Effect.Conditions.Tooltip',
-                    value: effect.flags['chris-premades']?.conditions,
+                    value: effect.flags['chris-premades']?.conditions ?? [],
                     options: CONFIG.statusEffects.map(i => ({label: i.name, value: i.id, isSelected: effect.flags['chris-premades']?.conditions?.includes(i.id) ? true : false}))
                 },
             },
@@ -89,8 +89,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         // Options for Over Time creator
         let overTimeOptions = constants.overTimeOptions;
         if (context.overTime.original) {
-            let values = Object.fromEntries(context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim())));
-            values.forEach(([key, value]) => genericUtils.setProperty(overTimeOptions[overTimeOptions.findIndex(i => i.key === key)], 'value', value));
+            let values = context.overTime.original.split(',').map(pair => pair.split('=').map(value => value.trim()));
+            values.forEach(([key, value]) => genericUtils.setProperty(overTimeOptions.find(i => i.key === key) ?? {}, 'value', value));
         }
         overTimeOptions.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
         let fieldsets = {};
@@ -203,6 +203,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return this.windowTitle;
     }
     async updateContext(item) {
+        let newConfiguration = genericUtils.mergeObject(item.flags['chris-premades'] ?? {}, Object.fromEntries(Object.entries(this.context.configure).map(([key, value]) => [key, value.value])));
+        await genericUtils.update(item, {'flags.chris-premades': newConfiguration});
         let newContext = await EffectMedkit.createContext(item);
         // Probably only need a function to figure out the overtimes, not the whole thing.
         this.context = newContext;

@@ -29,7 +29,7 @@ async function use({workflow}) {
         },
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'callLightning', vae: [{type: 'use', name: featureData.name, identifier: 'stormBolt'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'stormBolt'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
     let stormBoltItem = itemUtils.getItemByIdentifer(workflow.actor, 'stormBolt');
     if (stormBoltItem) await workflowUtils.completeItemUse(stormBoltItem);

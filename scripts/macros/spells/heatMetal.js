@@ -37,7 +37,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: [{type: 'use', name: featureData.name, identifier: 'heatMetalPulse'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures'), identifier: 'heatMetalPulse'});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
     let targetEffectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.heatMetal.dialog'),

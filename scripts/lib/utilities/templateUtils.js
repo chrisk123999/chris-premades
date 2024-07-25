@@ -144,7 +144,15 @@ async function placeTemplate(templateData, returnTokens=false) {
     return {template, tokens};
 }
 function rayIntersectsTemplate(template, ray) {
-    return template.object.shape.segmentIntersections(ray.A, ray.B).length > 0;
+    let adjustedA = {
+        x: ray.A.x - template.object.center.x,
+        y: ray.A.y - template.object.center.y
+    };
+    let adjustedB = {
+        x: ray.B.x - template.object.center.x,
+        y: ray.B.y - template.object.center.y
+    };
+    return template.object.shape.segmentIntersections(adjustedA, adjustedB).length > 0;
 
 }
 export let templateUtils = {

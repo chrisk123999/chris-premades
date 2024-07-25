@@ -22,7 +22,7 @@ async function use({workflow}) {
             },
             walledtemplates: {
                 wallRestriction: 'move',
-                wallsBlack: 'recurse'
+                wallsBlock: 'recurse'
             }
         }
     });

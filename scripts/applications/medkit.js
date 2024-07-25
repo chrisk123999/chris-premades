@@ -235,6 +235,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         sourceItemData.system.description = itemData.system.description;
         sourceItemData.system.chatFlavor = itemData.system.chatFlavor;
         sourceItemData.system.uses = itemData.system.uses;
+        let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
+        if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
         //genericUtils.setProperty(sourceItemData, 'flags.-=chris-premades', null);
         if (itemType === 'spell') sourceItemData.system.preparation = itemData.system.preparation;
         if (itemType != 'spell' && itemType != 'feat') {
