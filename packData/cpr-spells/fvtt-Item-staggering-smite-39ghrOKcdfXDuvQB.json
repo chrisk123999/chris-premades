@@ -1,0 +1,158 @@
+{
+  "name": "Staggering Smite",
+  "type": "spell",
+  "system": {
+    "source": {
+      "custom": "",
+      "book": "PHB",
+      "page": "278",
+      "license": ""
+    },
+    "description": {
+      "value": "<p><em>This spell is safe to rename.</em></p>",
+      "chat": ""
+    },
+    "actionType": "",
+    "level": 4,
+    "school": "evo",
+    "properties": [
+      "vocal",
+      "concentration",
+      "mgc"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "target": {
+      "value": "0",
+      "units": "",
+      "type": "self",
+      "prompt": true,
+      "width": null
+    },
+    "range": {
+      "value": 0,
+      "units": "self",
+      "long": null
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "damage": {
+      "parts": [
+        [
+          "4d6",
+          "psychic"
+        ]
+      ],
+      "versatile": ""
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "save": {
+      "ability": "wis",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "formula": "",
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "cover": null,
+    "crewed": false,
+    "ability": null,
+    "summons": null,
+    "enchantment": null
+  },
+  "img": "icons/magic/fire/dagger-rune-enchant-flame-strong-green.webp",
+  "flags": {
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "concentration": true,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": ""
+    },
+    "core": {},
+    "chris-premades": {
+      "info": {
+        "name": "Staggering Smite",
+        "version": "0.12.0",
+        "identifier": "staggeringSmite",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "staggeringSmite"
+          ]
+        }
+      }
+    },
+    "exportSource": {
+      "world": "cpr-test",
+      "system": "dnd5e",
+      "coreVersion": "12.330",
+      "systemVersion": "3.3.1"
+    }
+  },
+  "effects": [],
+  "folder": "SoNqTnhqtBPjAKnl",
+  "_stats": {
+    "coreVersion": "12.330",
+    "systemId": "dnd5e",
+    "systemVersion": "3.3.1",
+    "createdTime": 1721999003383,
+    "modifiedTime": 1722003388085,
+    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+  }
+}
