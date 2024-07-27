@@ -76,7 +76,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
             'radiant'
         ]
     ];
-    let sourceActor = (await fromUuid(template.origin))?.parent ?? token.actor;
+    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
     if (actorUtils.isShapeChanger(token.actor)) {
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionDisadvantage'),

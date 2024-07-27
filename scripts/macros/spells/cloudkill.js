@@ -83,7 +83,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
             'poison'
         ]
     ];
-    let sourceActor = (await fromUuid(template.origin))?.parent ?? token.actor;
+    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 // TODO: Maybe add darkness source attached to template

@@ -56,20 +56,20 @@ function getSortedTriggers(templates, pass, token) {
     });
     return triggers.sort((a, b) => a.priority - b.priority);
 }
-async function executeMacro(trigger) {
+async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
     try {
-        await trigger.macro({trigger});
+        await trigger.macro({trigger, options});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
 }
-async function executeMacroPass(templates, pass, token) {
+async function executeMacroPass(templates, pass, token, options) {
     genericUtils.log('dev', 'Executing Template Macro Pass: ' + pass);
     let triggers = getSortedTriggers(templates, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let i of triggers) await executeMacro(i);
+    for (let i of triggers) await executeMacro(i, options);
 }
 /*function preUpdateTemplate(template, updates, context, userId) {
     if (!socketUtils.isTheGM()) return;

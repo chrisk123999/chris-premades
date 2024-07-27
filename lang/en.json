@@ -27,6 +27,9 @@
             "Save": "Saving Throw",
             "Skill": "Skill Check"
         },
+        "Auras": {
+            "Source": "{auraName}: Source"
+        },
         "Units": {
             "Units": "Units:",
             "Feet": "Feet",
@@ -687,6 +690,9 @@
             "moonbeam": {
                 "move": "Moonbeam: Move",
                 "damage": "Moonbeam: Damage"
+            },
+            "spikeGrowth": {
+                "thorns": "Spike Growth: Thorns"
             }
         },
         "section": {
