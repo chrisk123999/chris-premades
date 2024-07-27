@@ -69,7 +69,7 @@ function findGrids(A, B, template) {
         let [r0, c0] = (i === 0) ? [null, null] : prior;
         let {i: r1, j: c1} = scene.grid.getOffset(ray.project(t));
         if (r0 === r1 && c0 === c1) continue;
-        let [x1, y1] = [c1 * scene.grid.size, r1 * scene.grid.size];
+        let {x: x1, y: y1} = scene.grid.getTopLeftPoint({i: r1, j: c1});
         let contained = template.object.shape.contains(
             x1 + gridCenter - template.object.center.x,
             y1 + gridCenter - template.object.center.y
@@ -79,8 +79,7 @@ function findGrids(A, B, template) {
         if (i === 0) continue;
         if (!scene.grid.testAdjacency({i: r0, j: c0}, {i: r1, j: c1})) {
             let th = tMax[i - 1] + (0.5 / nMax);
-            let {i: rh, j: ch} = scene.grid.getOffset(ray.project(th));
-            let [xh, yh] = [ch * scene.grid.size, rh * scene.grid.size];
+            let {x: xh, y: yh} = scene.grid.getTopLeftPoint(ray.project(th));
             let contained = template.object.shape.contains(
                 xh + gridCenter - template.object.center.x,
                 yh + gridCenter - template.object.center.y
@@ -140,31 +139,39 @@ async function placeTemplate(templateData, returnTokens=false) {
     return {template, tokens};
 }
 function rayIntersectsTemplate(templateDoc, ray) {
-    return getIntersections(templateDoc.object, ray.A, ray.B).length > 0;
+    return getIntersections(templateDoc.object, ray.A, ray.B, true);
 }
-function getIntersections(template, A, B) {
-    if (template.shape.segmentIntersections) {
+function getIntersections(templateObj, A, B, boolOnly = false) {
+    if (templateObj.shape.segmentIntersections) {
         let adjustedA = {
-            x: A.x - template.center.x,
-            y: A.y - template.center.y
+            x: A.x - templateObj.center.x,
+            y: A.y - templateObj.center.y
         };
         let adjustedB = {
-            x: B.x - template.center.x,
-            y: B.y - template.center.y
+            x: B.x - templateObj.center.x,
+            y: B.y - templateObj.center.y
         };
-        return template.shape.segmentIntersections(adjustedA, adjustedB);
-    }
-    let lineCoords = [];
-    for (let i = 0; i < template.shape.points.length; i += 2) {
-        lineCoords.push({x: template.shape.points[i] + template.center.x, y: template.shape.points[i + 1] + template.center.y});
+        let intersections = templateObj.shape.segmentIntersections(adjustedA, adjustedB);
+        if (boolOnly) return intersections.length;
+        return intersections;
     }
     let intersections = [];
-    for (let i = 0; i < lineCoords.length; i++) {
-        let segA = lineCoords[i];
-        let segB = lineCoords[(i + 1) % lineCoords.length];
-        let intersect = foundry.utils.lineSegmentIntersection(A, B, segA, segB);
-        if (intersect) intersections.push(intersect);
+    let points = templateObj.shape.points;
+    for (let i = 0; i < points.length; i += 2) {
+        let currCoord = {
+            x: points[i] + templateObj.center.x,
+            y: points[i + 1] + templateObj.center.y
+        };
+        let nextCoord = {
+            x: points[(i + 2) % points.length] + templateObj.center.x,
+            y: points[(i + 3) % points.length] + templateObj.center.y
+        };
+        if (foundry.utils.lineSegmentIntersects(A, B, currCoord, nextCoord)) {
+            if (boolOnly) return true;
+            intersections.push(foundry.utils.lineLineIntersection(A, B, currCoord, nextCoord));
+        }
     }
+    if (boolOnly) return false;
     return intersections;
 }
 export let templateUtils = {
