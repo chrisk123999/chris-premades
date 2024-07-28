@@ -28,7 +28,7 @@ jobs:
     - id: get_version
       run: |
         echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
-        echo "FOUNDRY_MANIFEST=https://github.com/${{github.repository}}/releases/latest/download/module.json" >> $GITHUB_ENV
+        echo "FOUNDRY_MANIFEST=https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json" >> $GITHUB_ENV
         echo "FOUNDRY_DOWNLOAD=https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip" >> $GITHUB_ENV
 
     # Generate module.json
