@@ -246,11 +246,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             }
         } // Need flat DC and ability DC to be changed into the save DC value
-        let effectUpdates = {flags: {'chris-premades': {}}};
-        if (this.context.configure.noAnimation.value) genericUtils.setProperty(effectUpdates, 'noAnimation', this.context.configure.noAnimation.value);
-        if (this.context.configure.conditions.value) genericUtils.setProperty(effectUpdates, 'conditions', this.context.configure.conditions.value);
-        if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(effectUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
-        if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(effectUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        let cprFlags = {};
+        if (this.context.configure.noAnimation.value) genericUtils.setProperty(cprFlags, 'noAnimation', this.context.configure.noAnimation.value);
+        if (this.context.configure.conditions.value) genericUtils.setProperty(cprFlags, 'conditions', this.context.configure.conditions.value);
+        if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(cprFlags, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
+        if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(cprFlags, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        let effectUpdates = {flags: {'chris-premades': cprFlags}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {
             'effects': [effectData]

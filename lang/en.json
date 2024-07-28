@@ -697,6 +697,17 @@
             },
             "spikeGrowth": {
                 "thorns": "Spike Growth: Thorns"
+            },
+            "grease": {
+                "fall": "Grease: Fall"
+            },
+            "gustOfWind": {
+                "move": "Gust of Wind: Move",
+                "push": "Gust of Wind: Push"
+            },
+            "hungerOfHadar": {
+                "cold": "Hunger of Hadar: Cold",
+                "tentacles": "Hunger of Hadar: Tentacles"
             }
         },
         "section": {

@@ -27,18 +27,18 @@ async function moveTokenAlongRay(targetToken, ray, distance) {
     let hitsWall = true;
     let oldDistance;
     if (ray.distance === 0) {
-        genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved');
+        genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved', 'info');
         return;
     }
     while (hitsWall) {
         knockBackFactor = distance / canvas.dimensions.distance;
-        newCenter = ray.project(1 + ((canvas.dimensions.size * knockBackFactor) / ray.distance));
+        newCenter = ray.project((canvas.dimensions.size * knockBackFactor) / ray.distance);
         hitsWall = targetToken.checkCollision(newCenter, {origin: ray.A, type: 'move', mode: 'any'});
         if (hitsWall) {
             oldDistance = distance;
             distance += distance > 0 ? -5 : 5;
             if (distance === 0 || (Math.sign(oldDistance) !== Math.sign(distance))) {
-                genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved');
+                genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved', 'info');
                 return;
             }
         }
@@ -106,6 +106,18 @@ function canSee(sourceToken, targetToken) {
 function canSense(sourceToken, targetToken, senseModes = []) {
     return MidiQOL.canSense(sourceToken, targetToken, senseModes);
 }
+async function attachToToken(token, uuidsToAttach) {
+    let currAttached = token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? [];
+    await genericUtils.update(token.document, {
+        flags: {
+            'chris-premades': {
+                attached: {
+                    attachedEntityUuids: currAttached.concat(...uuidsToAttach)
+                }
+            }
+        }
+    });
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -117,5 +129,6 @@ export let tokenUtils = {
     checkForRoom,
     findDirection,
     canSee,
-    canSense
+    canSense,
+    attachToToken
 };
