@@ -58,131 +58,48 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.4.29",
-          "verified": "11.4.29"
-        }
-      },
-      {
-        "id": "effectmacro",
-        "type": "module",
-        "compatibility": {
-          "minimum": "11.2.1",
-          "verified": "11.2.1"
-        }
-      },
-      {
-        "id": "templatemacro",
-        "type": "module",
-        "compatibility": {
-          "minimum": "11.0.1",
-		  "verified": "11.0.1"
+          "minimum": "11.4.45",
+          "verified": "11.4.45"
         }
       },
       {
         "id": "sequencer",
         "type": "module",
         "compatibility": {
-          "minimum": "3.1.4",
-          "verified": "3.1.4"
-        }
-      },
-      {
-        "id": "token-attacher",
-        "type": "module",
-        "compatibility": {
-          "minimum": "v4.5.15",
-          "verified": "v4.5.15"
+          "minimum": "3.2.11",
+          "verified": "3.2.11"
         }
       },
       {
         "id": "babonus",
         "type": "module",
         "compatibility": {
-          "minimum": "11.8.0",
-          "verified": "11.8.0"
+          "minimum": "12.1.2",
+          "verified": "12.1.2"
         }
       },
       {
         "id": "socketlib",
         "type": "module",
         "compatibility": {
-          "minimum": "1.0.13",
-          "verified": "1.0.13"
+          "minimum": "1.1.0",
+          "verified": "1.1.0"
         }
       },
       {
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.0.5",
-          "verified": "11.3.0.5"
-        }
-      },
-      {
-        "id": "autoanimations",
-        "type": "module",
-        "compatibility": {
-          "minimum": "4.2.71",
-          "verified": "4.2.71"
+          "minimum": "11.3.41",
+          "verified": "11.3.41"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.9.1",
-          "verified": "11.3.9.1"
-        }
-      }
-    ],
-    "optional": [
-      {
-        "id": "tidy5e-sheet",
-        "type": "module",
-        "compatibility": {
-          "verified": "0.8.25"
-        }
-      },
-      {
-        "id": "custom-character-sheet-sections",
-        "type": "module",
-        "compatibility": {
-          "verified": "1.5.0"
-        }
-      },
-      {
-        "id": "tokenmagic",
-        "type": "module",
-        "compatibility": {
-          "verified": "0.6.5.0"
-        }
-      },
-      {
-        "id": "ddb-importer",
-        "type": "module",
-        "compatibility": {
-          "verified": "3.6.0"
-        }
-      },
-      {
-        "id": "visual-active-effects",
-        "type": "module",
-        "compatibility": {
-          "verified": "11.0.5"
-        }
-      },
-      {
-        "id": "animated-spell-effects-cartoon",
-        "type": "module",
-        "compatibility": {
-          "verified": "0.4.5"
-        }
-      },
-      {
-        "id": "universal-animations",
-        "type": "module",
-        "compatibility": {
-          "verified": "0.2.0"
+          "minimum": "11.3.17",
+          "verified": "11.3.17"
         }
       }
     ]
@@ -201,111 +118,6 @@
       "path": "packs/cpr-spell-features",
       "type": "Item",
       "module": "chris-premades"
-    },
-    {
-      "name": "CPR Class Features",
-      "label": "CPR Class Features",
-      "path": "packs/cpr-class-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Class Feature Items",
-      "label": "CPR Class Feature Items",
-      "path": "packs/cpr-class-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Items",
-      "label": "CPR Items",
-      "path": "packs/cpr-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Monster Features",
-      "label": "CPR Monster Features",
-      "path": "packs/cpr-monster-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Race Features",
-      "label": "CPR Race Features",
-      "path": "packs/cpr-race-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Monster Feature Items",
-      "label": "CPR Monster Feature Items",
-      "path": "packs/cpr-monster-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Item Features",
-      "label": "CPR Item Features",
-      "path": "packs/cpr-item-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Race Feature Items",
-      "label": "CPR Race Feature Items",
-      "path": "packs/cpr-race-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Feats",
-      "label": "CPR Feats",
-      "path": "packs/cpr-feats",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Summons",
-      "label": "CPR Summons",
-      "path": "packs/cpr-summons",
-      "type": "Actor",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Summon Features",
-      "label": "CPR Summon Features",
-      "path": "packs/cpr-summon-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Actions",
-      "label": "CPR Actions",
-      "path": "packs/cpr-actions",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Miscellaneous",
-      "label": "CPR Miscellaneous",
-      "path": "packs/cpr-miscellaneous",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Feat Features",
-      "label": "CPR Feat Features",
-      "path": "packs/cpr-feat-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPR Homebrew Feature Items",
-      "label": "CPR Homebrew Feature Items",
-      "path": "packs/cpr-homebrew-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -315,31 +127,7 @@
       "color": "#348f2d",
       "packs": [
         "CPR Spells",
-        "CPR Class Features",
-        "CPR Items",
-        "CPR Monster Features",
-        "CPR Feats",
-        "CPR Summons",
-        "CPR Actions",
-        "CPR Miscellaneous",
-		"CPR Race Features"
-      ],
-      "folders": [
-        {
-          "name": "Internal Use",
-          "sorting": "a",
-          "color": "#348f2d",
-          "packs": [
-            "CPR Spell Features",
-            "CPR Class Feature Items",
-            "CPR Monster Feature Items",
-            "CPR Item Features",
-            "CPR Race Feature Items",
-            "CPR Summon Features",
-            "CPR Feat Features",
-            "CPR Homebrew Feature Items"
-          ]
-        }
+        "CPR Spell Features"
       ]
     }
   ],
