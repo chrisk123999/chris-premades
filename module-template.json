@@ -126,8 +126,8 @@
       "sorting": "a",
       "color": "#348f2d",
       "packs": [
-        "CPR Spells",
-        "CPR Spell Features"
+        "CPRSpells",
+        "CPRSpellFeatures"
       ]
     }
   ],

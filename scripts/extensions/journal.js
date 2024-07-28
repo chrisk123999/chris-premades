@@ -27,7 +27,7 @@ export async function setupJournal() {
         });
         await ChatMessage.create({
             speaker: {alias: 'Chris\'s Premades'},
-            content: genericUtils.translate('CHRISPREMADES.journal.chat') + ' @UUID[JournalEntry.' + journal.id + ']{' + genericUtils.translate('CHRISPREMADES.journal.readme') + '}'
+            content: '<hr>' + genericUtils.translate('CHRISPREMADES.journal.chat') + ' @UUID[JournalEntry.' + journal.id + ']{' + genericUtils.translate('CHRISPREMADES.journal.readme') + '}'
         });
     } else {
         let page = journal.pages.getName('Info');

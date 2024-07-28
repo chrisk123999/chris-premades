@@ -417,11 +417,11 @@ export function registerSettings() {
     });
 }
 export function registerMenus() {
-    addMenu({
+    if (game.settings.get('chris-premades', 'devTools')) addMenu({
         key: 'development',
         icon: 'fas fa-code',
         type: settingsDevelopment,
-    }); //Will be commented out when actually released.
+    });
     addMenu({
         key: 'general',
         icon: 'fas fa-gears',
