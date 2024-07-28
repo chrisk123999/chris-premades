@@ -144,7 +144,7 @@ export function registerSettings() {
     addSetting({
         key: 'colorizeBuildABonus',
         type: Boolean,
-        default: true,
+        default: false,
         category: 'integration',
         onChange: value => {
             if (value) {
@@ -174,7 +174,7 @@ export function registerSettings() {
     addSetting({
         key: 'colorizeDAE',
         type: Boolean,
-        default: true,
+        default: false,
         category: 'integration',
         onChange: value => {
             if (value) {
@@ -340,7 +340,7 @@ export function registerSettings() {
     addSetting({
         key: 'effectDescriptions',
         type: String,
-        default: 'value',
+        default: 'disabled',
         category: 'interface',
         choices: {
             disabled: 'CHRISPREMADES.Generic.Disabled',
