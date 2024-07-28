@@ -5,11 +5,10 @@
   "version": "#{VERSION}#",
   "library": "false",
   "socket": true,
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11",
-    "maximum": "11"
+    "minimum": "12",
+    "verified": "12",
+    "maximum": "12"
   },
   "authors": [
     {
@@ -22,6 +21,11 @@
       "name": "Autumn",
       "url": "https://github.com/Autumn225",
       "discord": "autumn225"
+    },
+    {
+      "name": "Michael",
+      "url": "https://github.com/roth-michael",
+      "discord": "hi25114"
     }
   ],
   "esmodules": [
@@ -44,8 +48,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "3.1.2",
-          "verified": "3.1.2"
+          "minimum": "3.3.1",
+          "verified": "3.3.1"
         }
       }
     ],
@@ -56,22 +60,6 @@
         "compatibility": {
           "minimum": "11.4.29",
           "verified": "11.4.29"
-        }
-      },
-      {
-        "id": "dfreds-convenient-effects",
-        "type": "module",
-        "compatibility": {
-          "minimum": "6.0.3",
-          "verified": "6.0.3"
-        }
-      },
-      {
-        "id": "warpgate",
-        "type": "module",
-        "compatibility": {
-          "minimum": "1.19.2",
-          "verified": "1.19.2"
         }
       },
       {

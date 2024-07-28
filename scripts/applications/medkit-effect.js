@@ -18,7 +18,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             id: 'EffectMedkit-window'
         },
         actions: {
-            apply: EffectMedkit._apply,
+            add: EffectMedkit._add,
             confirm: EffectMedkit.confirm
         },
         window: {
@@ -42,7 +42,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         devTools: {
-            template: 'modules/chris-premades/templates/medkit-dev-tools.hbs',
+            template: 'modules/chris-premades/templates/medkit-effect-dev-tools.hbs',
             scrollable: ['']
         },
         footer: {
@@ -71,10 +71,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 },
             },
             overTime: {
-                original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value
+                original: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value,
+                show: effect?.changes?.find(i => i.key === 'flags.midi-qol.OverTime')?.value ? true : false
             },
             macros: {
-                effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? ''
+                effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
+                aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools')
         };
@@ -100,7 +102,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 tooltip: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Tooltip',
                 options: []
             });
-            switch (i.type) { // add checked or selected per option
+            switch (i.type) {
                 case 'radio': {
                     genericUtils.setProperty(i, 'isRadio', true);
                     if (!i.value && (i.value != false)) genericUtils.setProperty(i, 'value', i.default);
@@ -124,7 +126,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     i.options.forEach(j => genericUtils.setProperty(j, 'isSelected', j.value === i.value ? true : false));
                     break;
                 }
-                case 'ability': {
+                case 'abilityOrSkill': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'optgroups', [
@@ -145,6 +147,18 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             }))
                         }
                     ]);
+                    break;
+                }
+                case 'ability': {
+                    genericUtils.setProperty(i, 'isSelectOption', true);
+                    if (!i.value) genericUtils.setProperty(i, 'value', i.default);
+                    genericUtils.setProperty(i, 'options', 
+                        Object.values(CONFIG.DND5E.abilities).map(j => ({
+                            label: j.label,
+                            value: j.abbreviation,
+                            isSelected: j.abbreviation === i.value
+                        }))
+                    );
                     break;
                 }
                 case 'saves': {
@@ -172,6 +186,19 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             isSelected: i.value === 'ability'
                         }
                     ]);
+                    if (Number(i.value)) {
+                        let currentValue = genericUtils.duplicate(i.value);
+                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCNumber'), 'show', true),
+                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCNumber'), 'value', currentValue),
+                        i.value = 'flat';
+                        i.options.find(j => j.value === 'flat').isSelected = true;
+                    } else if ((i.key === 'saveDC') && (Object.values(CONFIG.DND5E.abilities).map(j => j.abbreviation).includes(i.value))) {
+                        let currentValue = genericUtils.duplicate(i.value);
+                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCAbility'), 'show', true),
+                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCAbility'), 'value', currentValue),
+                        i.value = 'ability';
+                        i.options.find(j => j.value === 'ability').isSelected = true;
+                    }
                     break;
                 }
                 case 'damageTypes': {
@@ -190,25 +217,50 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
         return context;
     }
-    static async _apply(event, target) {
-        let effect = this.effectDocument;
-        // save the stuff from context to the actual effect
-        await this.updateContext(effect);
+    // Allows the overTime fields to be shown
+    static async _add(event, target) {
+        for (let key of Object.keys(this.tabsData)) {
+            this.tabsData[key].cssClass = '';
+        }
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.tabsData[currentTabId].cssClass = 'active';
+        this.context.overTime.show = true;
+        this.render(true);
     }
+    // Saves the context data to the effect
     static async confirm(event, target) {
-        await EffectMedkit._apply.bind(this)(event, target);
+        let effectData = genericUtils.duplicate(this.effectDocument.toObject());
+        if (this.context.overTime.show) {
+            let overTimeValue = '';
+            Object.values(this.context.overTime.fieldsets).flatMap(i => i.options).forEach(i => {
+                if (i.value && (i.value != '')) overTimeValue += i.key + '=' + i.value + ','; 
+            });
+            if (effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime')) {
+                effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime').value = overTimeValue;
+            } else {
+                effectData.changes.push({
+                    key: 'flags.midi-qol.OverTime',
+                    value: overTimeValue,
+                    mode: 0,
+                    priority: 20
+                });
+            }
+        } // Need flat DC and ability DC to be changed into the save DC value
+        let effectUpdates = {flags: {'chris-premades': {}}};
+        if (this.context.configure.noAnimation.value) genericUtils.setProperty(effectUpdates, 'noAnimation', this.context.configure.noAnimation.value);
+        if (this.context.configure.conditions.value) genericUtils.setProperty(effectUpdates, 'conditions', this.context.configure.conditions.value);
+        if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(effectUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
+        if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(effectUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        genericUtils.mergeObject(effectData, effectUpdates);
+        let updates = {
+            'effects': [effectData]
+        };
+        await this.effectDocument.parent.update(updates);
+        this.effectDocument.sheet.render(true);
         this.close();
     }
     get title() {
         return this.windowTitle;
-    }
-    async updateContext(item) {
-        let newConfiguration = genericUtils.mergeObject(item.flags['chris-premades'] ?? {}, Object.fromEntries(Object.entries(this.context.configure).map(([key, value]) => [key, value.value])));
-        await genericUtils.update(item, {'flags.chris-premades': newConfiguration});
-        let newContext = await EffectMedkit.createContext(item);
-        // Probably only need a function to figure out the overtimes, not the whole thing.
-        this.context = newContext;
-        this.render(true);
     }
     async _prepareContext(options) {
         let context = this.context;
@@ -239,7 +291,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         context.tabs = this.tabsData;
         context.buttons = [
-            {type: 'button', action: 'apply', label: 'CHRISPREMADES.Generic.Apply', name: 'apply', icon: 'fa-solid fa-download'},
             {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
         ];
         return context;
@@ -253,8 +304,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.tabsData[currentTabId].cssClass = 'active';
         // Update context data
-        console.log('id', event.target.id, 'name', event.target.name, 'value', event.target.value, 'type', event.target.type);
-        console.log(currentTabId);
         switch (currentTabId) {
             case 'configure': {
                 switch (event.target.type) {
@@ -296,42 +345,51 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         break;
                     }
                 }
+                if (event.target.type === undefined && event.target.id === 'saveAbility') {
+                    let option = this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility');
+                    option.optgroups.flatMap(i => i.options).forEach(i => i.isSelected = event.target.value.includes(i.value) ? true : false);
+                    option.value = event.target.value;
+                }
                 Object.values(this.context.overTime.fieldsets).forEach(i => {
                     i.options.forEach(j => {
-                        genericUtils.setProperty(j, 'show', j.requires ? constants.overTimeOptions.find(k => (k.key === j.requires) && k.value) ? true : false : true);
+                        if (j.requires != 'other') genericUtils.setProperty(j, 'show', j.requires ? constants.overTimeOptions.find(k => (k.key === j.requires) && k.value) ? true : false : true);
                     });
                 });
                 if (event.target.id === 'actionSave') {
                     if (event.target.checked === true) {
-                        this.context.overTime.fieldsets.rolls.saveAbility.isSelectOption = false;
-                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.saveAbility, 'isSelectMultiple', true);
+                        this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility').isSelectOption = false;
+                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility'), 'isSelectMultiple', true);
                     } else {
-                        this.context.overTime.fieldsets.rolls.saveAbility.isSelectOption = true;
-                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.saveAbility, 'isSelectMultiple', false);
+                        this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility').isSelectOption = true;
+                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility'), 'isSelectMultiple', false);
                     }
                 } else if (event.target.id === 'saveDC') {
-                    if (this.context.overTime.fieldsets.rolls.saveDC.value === 'flat') {
-                        genericUtils.setProperty(this.context.overTime.fieldsets.rolls, 'flatDC', {
-                            isText: true,
-                            value: undefined, // check if value?
-                            show: true
-                        });
+                    genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCNumber'), 'show', false);
+                    genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCAbility'), 'show', false);
+                    switch (this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDC').value) {
+                        case 'flat': {
+                            genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCNumber'), 'show', true);
+                            break;
+                        } 
+                        case 'ability': {
+                            genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveDCAbility'), 'show', true);
+                            break;
+                        }
                     }
                 }
                 break;
             }
+            case 'devTools': {
+                let value;
+                try {
+                    value = JSON.parse(event.target.value.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Midi Item field, see console');
+                    console.error(error);
+                }
+                if (value) this.context.macros[event.target.id] = event.target.value;
+            }
         }
-        // Need for ability to become a select multiple if action save is true (need to test)
-        // need to add text box for flat dc is chosen
-        // need to add ability drop down for ability dc chosen
-        // Set checkbox, conditions, and macros to context
-        if (event.target.name.includes('devTools')) {
-            let value = event.target.value;
-            if (['actor', 'item'].includes(event.target.id)) {
-                this.context.devTools.midi[event.target.id] = value;
-            } else this.context.devTools[event.target.id] = value;
-        }
-        console.log(this.context);
         this.render(true);
     }
 }

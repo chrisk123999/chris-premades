@@ -1,48 +1,67 @@
 <div class="tab cpr-medkit-tab {{tabs.overtime.cssClass}} scrollable" data-tab="overtime" data-group="main">
-    {{log this}}
-    {{log 'this is the overtime'}}
-    {{#each overTime.fieldsets}}
-        <fieldset class="cpr-fieldset">
-            <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
-            <div class="form-group">
-                {{#each options}}
-                    {{#if show}}
-                        <div class="cpr-over-time-option">
-                            <label class="main-label">{{localize label}}</label>
-                            <div class="over-time-input cpr-row-center">
-                                {{#if isRadio}}
-                                    {{#each options}}
-                                        <div>
-                                            <label for="{{value}}">{{localize label}}</label>
-                                            <input type="radio" id="{{value}}" name="{{../key}}" data-fieldset="{{@../../key}}" {{#if isChecked}}checked{{/if}}>
-                                        </div>
-                                    {{/each}}
-                                {{else if isText}}
-                                    <input type="text" id="{{key}}" name="{{key}}" value="{{value}}" data-fieldset="{{@../key}}">
-                                {{else if isCheckbox}}
-                                    <input type="checkbox" id="{{key}}" name="{{key}}" data-fieldset="{{@../key}}" {{#if isChecked}}checked{{/if}}>
-                                {{else if isSelectOption}}
-                                    <select id="{{key}}" name="{{key}}" data-fieldset={{@../key}}>
-                                    {{#if optgroups}}
-                                        {{#each optgroups}}
-                                            <optgroup label="{{localize label}}">
+    {{#if overTime.show}}
+        {{#each overTime.fieldsets}}
+            <fieldset class="cpr-fieldset">
+                <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
+                <div class="form-group">
+                    {{#each options}}
+                        {{#if show}}
+                            <div class="cpr-over-time-option">
+                                <label class="main-label">{{localize label}}</label>
+                                <div class="over-time-input cpr-row-center">
+                                    {{#if isRadio}}
+                                        {{#each options}}
+                                            <div>
+                                                <label for="{{value}}">{{localize label}}</label>
+                                                <input type="radio" id="{{value}}" name="{{../key}}" data-fieldset="{{@../../key}}" {{#if isChecked}}checked{{/if}}>
+                                            </div>
+                                        {{/each}}
+                                    {{else if isText}}
+                                        <input type="text" id="{{key}}" name="{{key}}" value="{{value}}" data-fieldset="{{@../key}}">
+                                    {{else if isCheckbox}}
+                                        <input type="checkbox" id="{{key}}" name="{{key}}" data-fieldset="{{@../key}}" {{#if isChecked}}checked{{/if}}>
+                                    {{else if isSelectOption}}
+                                        <select id="{{key}}" name="{{key}}" data-fieldset={{@../key}}>
+                                        {{#if optgroups}}
+                                            {{#each optgroups}}
+                                                <optgroup label="{{localize label}}">
+                                                {{#each options}}
+                                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                                {{/each}}
+                                                </optgroup>
+                                            {{/each}}
+                                        {{else}}
                                             {{#each options}}
                                                 <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
                                             {{/each}}
-                                            </optgroup>
-                                        {{/each}}
-                                    {{else}}
-                                        {{#each options}}
-                                            <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
-                                        {{/each}}
+                                        {{/if}}
+                                        </select>
+                                    {{else if isSelectMultiple}}
+                                        <multi-select id="{{key}}" name="{{key}}" data-fieldset={{@../key}}>
+                                        {{#if optgroups}}
+                                            {{#each optgroups}}
+                                                <optgroup label="{{localize label}}">
+                                                {{#each options}}
+                                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                                {{/each}}
+                                                </optgroup>
+                                            {{/each}}
+                                        {{else}}
+                                            {{#each options}}
+                                                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+                                            {{/each}}
+                                        {{/if}}
                                     {{/if}}
-                                    </select>
-                                {{/if}}
+                                </div>
                             </div>
-                        </div>
-                    {{/if}}
-                {{/each}}
-            </div>
-        </fieldset>
-    {{/each}}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </fieldset>
+        {{/each}}
+    {{else}}
+        <button type="button" data-action="add" id="add">
+            <label for="add">{{localize "CHRISPREMADES.Medkit.Effect.OverTime.Add"}}</label>
+        </button>
+    {{/if}}
 </div>

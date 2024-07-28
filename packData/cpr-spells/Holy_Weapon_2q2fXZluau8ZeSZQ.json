@@ -1,0 +1,165 @@
+{
+  "name": "Holy Weapon",
+  "type": "spell",
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Xanathar's Guide to Everything pg 157"
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "touch"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "util",
+    "chatFlavor": "[2d8 - radiant] Additional damage on weapon attacks, [4d8 - radiant] Burst of radiance on spell dismiss",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "level": 5,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null
+  },
+  "effects": [],
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoSaveFriendly": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false
+    },
+    "core": {
+      "sourceId": "Item.GiGHoTv9nuivU9wC"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Holy Weapon",
+        "version": "0.12.0",
+        "mutation": {
+          "self": "Holy Weapon"
+        },
+        "identifier": "holyWeapon",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "holyWeapon"
+          ]
+        }
+      },
+      "config": {
+        "formula": "2d8",
+        "damageType": "radiant"
+      }
+    },
+    "dnd5e": {}
+  },
+  "_stats": {
+    "compendiumSource": "Item.GiGHoTv9nuivU9wC",
+    "duplicateSource": null,
+    "coreVersion": "12.330",
+    "systemId": "dnd5e",
+    "systemVersion": "3.3.1",
+    "createdTime": 1722120391950,
+    "modifiedTime": 1722121700035,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
+  },
+  "folder": null,
+  "_id": "2q2fXZluau8ZeSZQ",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!2q2fXZluau8ZeSZQ"
+}

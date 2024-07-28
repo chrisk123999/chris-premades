@@ -197,7 +197,7 @@ const overTimeOptions = [
         key: 'saveAbility',
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveAbility',
         default: null,
-        type: 'ability',
+        type: 'abilityOrSkill',
         requires: 'rollType',
         fieldset: 'rolls'
     },
@@ -207,6 +207,22 @@ const overTimeOptions = [
         default: null,
         type: 'saves',
         requires: 'rollType',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveDCNumber',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveDCNumber',
+        default: null,
+        type: 'text',
+        requires: 'other',
+        fieldset: 'rolls'
+    },
+    {
+        key: 'saveDCAbility',
+        label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveDCAbility',
+        default: null,
+        type: 'ability',
+        requires: 'other',
         fieldset: 'rolls'
     },
     {

@@ -219,7 +219,7 @@ class EffectDirectory extends DocumentDirectory {
         return game.user.isGM;
     }
     get canCreateFolder() {
-        return true;
+        return false;
     }
     async _onCreateEntry(event) {
         event.preventDefault();

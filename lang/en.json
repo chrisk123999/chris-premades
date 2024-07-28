@@ -25,7 +25,9 @@
             "Advantage": "Advantage",
             "Check": "Ability Check",
             "Save": "Saving Throw",
-            "Skill": "Skill Check"
+            "Skill": "Skill Check",
+            "Abilities": "Abilities",
+            "Skills": "Skills"
         },
         "Auras": {
             "Source": "{auraName}: Source"
@@ -85,8 +87,9 @@
                         "RemoveCondition": "Remove Condition Evaluation Expression:",
                         "RollType": "Roll Type:",
                         "SaveAbility": "Ability or Skill for roll:",
-                        "SaveDC": "Difficult Class for roll:",
+                        "SaveDC": "Difficulty Class for roll:",
                         "SaveDCNumber": "Flat DC:",
+                        "SaveDCAbility": "Ability Based DC:",
                         "SaveDamage": "Amount of Damage on Save:",
                         "HalfDamage": "Half Damage",
                         "NoDamage": "No Damage",
@@ -107,7 +110,8 @@
                         "Item": "Item DC",
                         "Flat": "Flat DC",
                         "Ability": "Ability Based DC"
-                    }
+                    },
+                    "Add": "Add Overtime"
                 }
             },
             "Tabs": {

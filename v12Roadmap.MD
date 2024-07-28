@@ -28,11 +28,12 @@ Goals:
         - [ ] (optional?) Button to clear configs
         - [x] fields to set identifier and other bits but with it prefilled
 [ ] Effect Medkit
-    - [ ] Main tab 
-        - [ ] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
-        - [ ] checkbox for flags.chris-premades.noAnimation
-    - [ ] Overtime creator, dynamically update
-    - [ ] DevTools tab to set flags on effect
+    - [x] Main tab 
+        - [x] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
+        - [x] checkbox for flags.chris-premades.noAnimation
+    - [x] Overtime creator, dynamically update
+        - [ ] Make the saveDC save correctly (get rid of extranous values in the overTime)
+    - [x] DevTools tab to set flags on effect
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
@@ -54,11 +55,11 @@ Goals:
 [ ] warpgate.mutate()
 ### Dfred's CE
 [x] Effect sidebar thing
-[X] Effect thing or macro.StatusEffect
+[x] Effect thing or macro.StatusEffect
 ### Token Attacher
-[X] Attachng templates
+[x] Attachng templates
 ### Automated Animations
-[ ] Teleport function
+[x] Teleport function
 ### Effect Macro
 [x] Replaced by internal hook calls
 ## Convert/update/fix all old functions
