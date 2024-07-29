@@ -106,17 +106,31 @@
   },
   "packs": [
     {
-      "name": "CPR Spells",
+      "name": "CPRSpells",
       "label": "CPR Spells",
       "path": "packs/cpr-spells",
       "type": "Item",
       "module": "chris-premades"
     },
     {
-      "name": "CPR Spell Features",
+      "name": "CPRSpellFeatures",
       "label": "CPR Spell Features",
       "path": "packs/cpr-spell-features",
       "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRSummonFeatures",
+      "label": "CPR Summon Features",
+      "path": "packs/cpr-summon-features",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRSummons",
+      "label": "CPR Summons",
+      "path": "packs/cpr-summons",
+      "type": "Actor",
       "module": "chris-premades"
     }
   ],
@@ -126,8 +140,10 @@
       "sorting": "a",
       "color": "#348f2d",
       "packs": [
-        "CPR Spells",
-        "CPR Spell Features"
+        "CPRSpells",
+        "CPRSpellFeatures",
+        "CPRSummonFeatures",
+        "CPRSummons"
       ]
     }
   ],

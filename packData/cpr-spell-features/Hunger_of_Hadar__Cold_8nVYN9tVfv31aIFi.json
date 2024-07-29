@@ -1,7 +1,7 @@
 {
-  "name": "Gust of Wind: Push",
+  "name": "Hunger of Hadar: Cold",
   "type": "feat",
-  "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+  "img": "icons/magic/water/barrier-ice-shield.webp",
   "system": {
     "description": {
       "value": "",
@@ -54,14 +54,19 @@
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d6[cold]",
+          "cold"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "str",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
       "value": "",
@@ -77,23 +82,22 @@
       "bonus": "",
       "flat": false
     },
-    "summons": null,
     "enchantment": null,
+    "summons": null,
     "prerequisites": {
       "level": null
     }
   },
   "effects": [],
-  "folder": "03GI68MQKROXiDEU",
   "flags": {
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "never",
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
@@ -102,31 +106,38 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": true,
+      "magicdam": true,
+      "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {},
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
+    "core": {
+      "sourceId": "Item.IDe3okg3orL0r3f4"
     }
   },
   "_stats": {
+    "compendiumSource": "Item.IDe3okg3orL0r3f4",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722214729058,
-    "modifiedTime": 1722214852525,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
-  }
+    "createdTime": 1722245884016,
+    "modifiedTime": 1722248947292,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
+  },
+  "folder": null,
+  "_id": "8nVYN9tVfv31aIFi",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!8nVYN9tVfv31aIFi"
 }

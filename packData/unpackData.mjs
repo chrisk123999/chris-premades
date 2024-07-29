@@ -14,7 +14,7 @@ let itemPacks = [
     //'cpr-race-features',
     'cpr-spells',
     'cpr-spell-features',
-    //'cpr-summon-features',
+    'cpr-summon-features',
     //'cpr-feats'
 ];
 let actorPacks = [
@@ -23,6 +23,6 @@ let actorPacks = [
 for (let i of itemPacks) {
     await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item'});
 }
-//for (let i of actorPacks) {
-//    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor'});
-//}
+for (let i of actorPacks) {
+    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor'});
+}

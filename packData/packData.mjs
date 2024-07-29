@@ -15,8 +15,8 @@ let packs = [
     //'cpr-race-features',
     'cpr-spells',
     'cpr-spell-features',
-    //'cpr-summon-features',
-    //'cpr-summons'
+    'cpr-summon-features',
+    'cpr-summons'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {'log': true});

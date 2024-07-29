@@ -1,7 +1,7 @@
 {
-  "name": "Grease: Fall",
+  "name": "Sleet Storm: Prone",
   "type": "feat",
-  "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
+  "img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
   "system": {
     "description": {
       "value": "",
@@ -85,9 +85,10 @@
   },
   "effects": [
     {
+      "name": "Sleet Storm - Prone",
       "changes": [],
       "transfer": false,
-      "_id": "0dW7uJSxJPBaQAP3",
+      "_id": "0KjaxGuxOknB1LCB",
       "disabled": false,
       "duration": {
         "startTime": null,
@@ -98,30 +99,31 @@
         "startRound": null,
         "startTurn": null
       },
+      "description": "",
       "origin": null,
-      "tint": "#ffffff",
+      "statuses": [],
       "flags": {
+        "times-up": {
+          "isPassive": false
+        },
         "dae": {
+          "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
+          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [],
-          "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false
+          "specialDuration": []
         },
-        "core": {},
         "chris-premades": {
           "conditions": [
             "prone"
           ]
         }
       },
-      "name": "Grease: Fall",
-      "description": "",
-      "statuses": [],
+      "tint": "#ffffff",
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
@@ -132,12 +134,14 @@
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
+      "img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
       "type": "base",
       "system": {},
-      "sort": 0
+      "sort": 0,
+      "_key": "!items.effects!VFozQKikOqimHo80.0KjaxGuxOknB1LCB"
     }
   ],
+  "folder": null,
   "flags": {
     "midi-qol": {
       "effectActivation": false,
@@ -146,6 +150,7 @@
       "effectCondition": ""
     },
     "midiProperties": {
+      "confirmTargets": "never",
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
@@ -157,32 +162,31 @@
       "magicdam": false,
       "magiceffect": true,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.34SB22re64oCvuyC"
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
-    }
+    "core": {}
   },
   "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722214729058,
-    "modifiedTime": 1722214852512,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+    "createdTime": 1722245888236,
+    "modifiedTime": 1722248947532,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "folder": "03GI68MQKROXiDEU"
+  "_id": "VFozQKikOqimHo80",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!VFozQKikOqimHo80"
 }

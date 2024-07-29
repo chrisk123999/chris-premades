@@ -1,7 +1,7 @@
 {
-  "name": "Hunger of Hadar: Tentacles",
+  "name": "Grease: Fall",
   "type": "feat",
-  "img": "icons/magic/water/barrier-ice-shield.webp",
+  "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
   "system": {
     "description": {
       "value": "",
@@ -16,8 +16,8 @@
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "24",
+      "units": "hour"
     },
     "cover": null,
     "crewed": false,
@@ -54,12 +54,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "2d6[acid]",
-          "acid"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -88,17 +83,71 @@
       "level": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "changes": [],
+      "transfer": false,
+      "_id": "0dW7uJSxJPBaQAP3",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "disableIncapacitated": false,
+          "dontApply": false,
+          "showIcon": false
+        },
+        "core": {},
+        "chris-premades": {
+          "conditions": [
+            "prone"
+          ]
+        }
+      },
+      "name": "Grease: Fall",
+      "description": "",
+      "statuses": [],
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.330",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "icons/magic/unholy/projectile-helix-blood-red.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!2UQnSVd51hGsuGYW.0dW7uJSxJPBaQAP3"
+    }
+  ],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": true,
+      "nodam": false,
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
@@ -106,37 +155,38 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": true,
+      "magicdam": false,
       "magiceffect": true,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
-      "saveDamage": "nodam",
-      "bonusSaveDamage": "default",
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
     "core": {
-      "sourceId": "Item.U3NLE6YHT3mIwSfh"
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
+      "sourceId": "Item.34SB22re64oCvuyC"
     }
   },
   "_stats": {
+    "compendiumSource": "Item.34SB22re64oCvuyC",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722214729058,
-    "modifiedTime": 1722214852516,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+    "createdTime": 1722245879295,
+    "modifiedTime": 1722248947238,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "folder": "03GI68MQKROXiDEU"
+  "folder": null,
+  "_id": "2UQnSVd51hGsuGYW",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!2UQnSVd51hGsuGYW"
 }

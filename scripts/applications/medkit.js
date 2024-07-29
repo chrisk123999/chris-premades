@@ -386,8 +386,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (event.target.id === 'select-automation') {
             let options = event.target.options;
             let currentContext = this.context;
-            currentContext.item.options.forEach(i => i.isSelected = false);
-            currentContext.item.options[options.selectedIndex].isSelected = true;
+            currentContext.options.forEach(i => i.isSelected = false);
+            currentContext.options[options.selectedIndex].isSelected = true;
         } else if (this?.context?.category && Object.keys(this.context.category).includes(event.target.name)) {
             if (event.target.type === 'checkbox') {
                 this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).value = event.target.checked;

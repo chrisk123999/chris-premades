@@ -1,7 +1,7 @@
 {
-  "name": "Gust of Wind: Move",
+  "name": "Spike Growth: Thorns",
   "type": "feat",
-  "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
+  "img": "icons/magic/nature/trap-spikes-thorns-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +11,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -22,16 +22,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "60",
-      "width": 10,
-      "units": "ft",
-      "type": "line",
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -48,17 +48,18 @@
     },
     "ability": "",
     "actionType": "util",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d4[piercing]",
+          "piercing"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -67,93 +68,76 @@
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
       "value": "",
       "subtype": ""
     },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "enchantment": null,
+    "summons": null,
     "prerequisites": {
       "level": null
     }
   },
   "effects": [],
-  "folder": "03GI68MQKROXiDEU",
   "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "midiProperties": {
-      "confirmTargets": "default",
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
+      "magicdam": true,
       "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "onUseMacroName": "",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default"
-    },
-    "dae": {
-      "macro": {
-        "name": "Gust of Wind - Move",
-        "img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "HXuHYV0yiJO8orNX",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "systemId": null,
-          "systemVersion": null,
-          "coreVersion": null,
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null
-        }
-      }
-    },
-    "core": {},
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
+    "core": {
+      "sourceId": "Item.o44B9qjzV2dYDz29"
     }
   },
   "_stats": {
+    "compendiumSource": "Item.o44B9qjzV2dYDz29",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722214729058,
-    "modifiedTime": 1722214852504,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
-  }
+    "createdTime": 1722245889485,
+    "modifiedTime": 1722248947519,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
+  },
+  "folder": null,
+  "_id": "UYFHT5A8XAv3XKVW",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!UYFHT5A8XAv3XKVW"
 }
