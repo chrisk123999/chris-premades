@@ -95,6 +95,9 @@ function isShapeChanger(actor) {
     let subtype = actor.system.details.type.subtype.toLowerCase().includes('shapechanger');
     return changeShape || shapechanger || subtype;
 }
+async function doConcentrationCheck(actor, saveDC) {
+    await MidiQOL.doConcentrationCheck(actor, saveDC);
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -114,5 +117,6 @@ export let actorUtils = {
     hasUsedReaction,
     setReactionUsed,
     hasSpellSlots,
-    isShapeChanger
+    isShapeChanger,
+    doConcentrationCheck
 };

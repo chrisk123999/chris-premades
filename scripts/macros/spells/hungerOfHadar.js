@@ -51,7 +51,7 @@ async function startTurn({trigger: {entity: template, token}}) {
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.tentacles', flatDC: castData.SaveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.tentacles', flatDC: castData.saveDC});
     let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }

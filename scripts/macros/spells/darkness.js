@@ -1,4 +1,4 @@
-import {animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {animationUtils, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -45,16 +45,7 @@ async function use({workflow}) {
                 y: token.center.y
             });
         }
-        let currAttached = token.document.flags?.['chris-premades']?.attached?.attachedEntityUuids ?? [];
-        await genericUtils.update(token.document, {
-            flags: {
-                'chris-premades': {
-                    attached: {
-                        attachedEntityUuids: currAttached.concat(...attachUuids)
-                    }
-                }
-            }
-        });
+        await tokenUtils.attachToToken(token, attachUuids);
     }
     let xray = true;
     if (playAnimation && animationUtils.jb2aCheck()) {

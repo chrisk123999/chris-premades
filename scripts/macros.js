@@ -61,6 +61,7 @@ export {hungerOfHadar, hungerOfHadarTemplate} from './macros/spells/hungerOfHada
 export {huntersMark, huntersMarkSource, huntersMarkMove} from './macros/spells/huntersMark.js';
 export {hypnoticPattern, hypnoticPatternRemove} from './macros/spells/hypnoticPattern.js';
 export {iceStorm} from './macros/spells/iceStorm.js';
+export {insectPlague, insectPlagueTemplate} from './macros/spells/insectPlague.js';
 export {investitureOfFlame, investitureOfFlameFlaming} from './macros/spells/investitureOfFlame.js';
 export {investitureOfIce, investitureOfIceIcy} from './macros/spells/investitureOfIce.js';
 export {investitureOfStone} from './macros/spells/investitureOfStone.js';
@@ -86,6 +87,7 @@ export {shield} from './macros/spells/shield.js';
 export {shieldOfFaith} from './macros/spells/shieldOfFaith.js';
 export {shockingGrasp} from './macros/spells/shockingGrasp.js';
 export {skillEmpowerment} from './macros/spells/skillEmpowerment.js';
+export {sleetStorm, sleetStormArea} from './macros/spells/sleetStorm.js';
 export {spikeGrowth, spikeGrowthSpikes} from './macros/spells/spikeGrowth.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {spiritShroud, spiritShroudShrouded} from './macros/spells/spiritShroud.js';

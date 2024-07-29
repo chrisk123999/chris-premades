@@ -708,6 +708,12 @@
             "hungerOfHadar": {
                 "cold": "Hunger of Hadar: Cold",
                 "tentacles": "Hunger of Hadar: Tentacles"
+            },
+            "insectPlague": {
+                "damage": "Insect Plague: Damage"
+            },
+            "sleetStorm": {
+                "prone": "Sleet Storm: Prone"
             }
         },
         "section": {
