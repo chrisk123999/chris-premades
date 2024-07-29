@@ -718,6 +718,16 @@
             },
             "sleetStorm": {
                 "prone": "Sleet Storm: Prone"
+            },
+            "sickeningRadiance": {
+                "damage": "Sickening Radiance: Damage"
+            },
+            "stormSphere": {
+                "bolt": "Storm Sphere: Bolt",
+                "turn": "Storm Sphere: Turn"
+            },
+            "auraOfVitality": {
+                "healing": "Aura of Vitality: Healing"
             }
         },
         "section": {

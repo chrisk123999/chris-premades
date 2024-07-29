@@ -4,6 +4,7 @@ function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
 async function addFavorites(actor, items) {
+    if (!actor.system.addFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
         for (let i of items) await actor.system.addFavorite({

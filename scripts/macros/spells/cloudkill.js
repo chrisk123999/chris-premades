@@ -1,4 +1,4 @@
-import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -83,7 +83,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
             'poison'
         ]
     ];
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 // TODO: Maybe add darkness source attached to template

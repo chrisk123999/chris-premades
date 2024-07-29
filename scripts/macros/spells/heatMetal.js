@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (workflow.targets.size !== 1) {
@@ -10,16 +10,12 @@ async function use({workflow}) {
     let damageFormula = workflow.castData.castLevel + 'd8[fire]';
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
     let spellDC = itemUtils.getSaveDC(workflow.item);
-    featureData.flags['chris-premades'] = {
-        heatMetal: {
-            damageFormula,
-            targetUuid,
-            spellDC
-        },
-        macros: {
-            'midi.item': ['heatMetalPulse']
-        }
-    };
+    await genericUtils.setProperty(featureData, 'flags.chris-premades.heatMetal', {
+        damageFormula,
+        targetUuid,
+        spellDC
+    });
+    effectUtils.addMacro(featureData, 'midi.item', ['heatMetalPulse']);
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -38,23 +34,7 @@ async function use({workflow}) {
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: [{type: 'use', name: featureData.name, identifier: 'heatMetalPulse'}]});
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
-    let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.heatMetal.dialog'),
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 6
-        },
-        flags: {
-            'chris-premades': {
-                heatMetal: {
-                    spellDC
-                }
-            }
-        }
-    };
-    effectUtils.addMacro(targetEffectData, 'effect', ['heatMetalDialog']);
-    await effectUtils.createEffect(targetToken.actor, targetEffectData, {parentEntity: effect});
+    await dialog(workflow, spellDC, targetToken, effect);
 }
 async function pulse({workflow}) {
     let chrisFlags = workflow.item.flags['chris-premades']?.heatMetal;
@@ -77,50 +57,26 @@ async function pulse({workflow}) {
         ]
     ];
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
-    let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.heatMetal.dialog'),
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 6
-        },
-        flags: {
-            'chris-premades': {
-                heatMetal: {
-                    spellDC
-                }
-            }
-        }
-    };
-    effectUtils.addMacro(effectData, 'effect', ['heatMetalDialog']);
-    await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: parentEffect});
+    await dialog(workflow, spellDC, targetToken, parentEffect);
 }
-async function dialog({trigger: {entity: originEffect}}) {
-    let originItem = await fromUuid(originEffect.origin);
-    let targetActor = originEffect.parent;
-    let targetToken = actorUtils.getFirstToken(targetActor);
-    let selection = await dialogUtils.buttonDialog(originEffect.name, 'CHRISPREMADES.macros.heatMetal.drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.macros.heatMetal.unable', 'unable']]);
+async function dialog(workflow, spellDC, targetToken, parentEffect) {
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.heatMetal.drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.macros.heatMetal.unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
     if (selection) {
-        await genericUtils.remove(originEffect);
         return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.held', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.held', object: true, flatDC: spellDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
-    let spellDC = originEffect.flags['chris-premades']?.heatMetal?.spellDC;
-    if (!spellDC) return;
-    featureData.system.save.dc = spellDC;
-    let heatMetalWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, originItem.parent, [targetToken]);
+    let heatMetalWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
     if (heatMetalWorkflow.failedSaves.size !== 0 && selection !== 'unable') {
-        await genericUtils.remove(originEffect);
         return;
     }
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.macros.heatMetal.held'),
-        img: originItem.img,
-        origin: originEffect.origin,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
         duration: {
             seconds: 6
         },
@@ -146,8 +102,7 @@ async function dialog({trigger: {entity: originEffect}}) {
             }
         }
     };
-    await effectUtils.createEffect(targetActor, effectData, {concentrationItem: originItem, identifier: 'heatMetalHeld'});
-    await genericUtils.remove(originEffect);
+    await effectUtils.createEffect(targetToken.actor, effectData, {concentrationItem: parentEffect, identifier: 'heatMetalHeld'});
 }
 export let heatMetal = {
     name: 'Heat Metal',
@@ -174,15 +129,4 @@ export let heatMetalPulse = {
             }
         ]
     }
-};
-export let heatMetalDialog = {
-    name: 'Heat Metal: Dialog',
-    version: heatMetal.version,
-    effect: [
-        {
-            pass: 'created',
-            macro: dialog,
-            priority: 50
-        }
-    ]
 };

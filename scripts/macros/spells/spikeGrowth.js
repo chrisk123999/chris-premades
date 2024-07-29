@@ -87,7 +87,7 @@ async function damageHelper(pointA, pointB, template, token, {stay, gridless} = 
         errors.missingPackItem();
         return;
     }
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     for (let i = 0; i < timesToDamage; i++) {
         await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
     }

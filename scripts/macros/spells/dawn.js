@@ -1,5 +1,5 @@
 import {crosshairUtils} from '../../lib/utilities/crosshairUtils.js';
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -66,7 +66,7 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 export let dawn = {

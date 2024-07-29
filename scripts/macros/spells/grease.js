@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let template = workflow.template;
@@ -25,7 +25,7 @@ async function enterOrEnd({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 export let grease = {

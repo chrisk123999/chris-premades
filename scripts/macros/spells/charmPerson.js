@@ -1,26 +1,6 @@
 import {combatUtils, effectUtils, genericUtils} from '../../utils.js';
 import {upcastTargets} from '../generic/upcastTargets.js';
 
-async function use({workflow}) {
-    if (!workflow.failedSaves.size) return;
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 3600 * workflow.item.system.duration.value
-        },
-        // TODO: Put in the change equivalent of the flag? Dunno
-        flags: {
-            'chris-premades': {
-                conditions: ['charmed']
-            }
-        }
-    };
-    for (let token of workflow.failedSaves) {
-        await effectUtils.createEffect(token.actor, effectData, {identifier: 'charmPersonCharmed'});
-    }
-}
 async function early({workflow}) {
     await upcastTargets.plusOne({workflow});
     if (!workflow.targets.size) return;
@@ -62,11 +42,6 @@ export let charmPerson = {
     version: '0.12.0',
     midi: {
         item: [
-            {
-                pass: 'rollFinished',
-                macro: use,
-                priority: 50
-            },
             {
                 pass: 'preambleComplete',
                 macro: early,

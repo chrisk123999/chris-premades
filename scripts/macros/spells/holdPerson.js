@@ -7,38 +7,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
-        changes: [
-            {
-                key: 'flags.midi-qol.OverTime',
-                mode: 5,
-                value: 'label=' + genericUtils.translate('CHRISPREMADES.macros.holdPerson.overtime') + ',turn=end,saveDC=@item.save.dc,saveAbility=wis,savingThrow=true,saveMagic=true',
-                priority: 20
-            },
-            {
-                key: 'macro.tokenMagic',
-                mode: 0,
-                value: 'mantle-of-madness',
-                priority: 20
-            }
-        ],
-        // TODO: Put in the change equivalent of the flag? Dunno
-        flags: {
-            'chris-premades': {
-                conditions: ['paralyzed']
-            }
-        }
-    };
-    for (let token of workflow.failedSaves) {
-        await effectUtils.createEffect(token.actor, effectData, {concentrationItem: workflow.item, interdependent: true, identifier: 'holdPersonHeld'});
-    }
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function early({workflow}) {
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);

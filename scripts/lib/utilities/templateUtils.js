@@ -174,6 +174,9 @@ function getIntersections(templateObj, A, B, boolOnly = false) {
     if (boolOnly) return false;
     return intersections;
 }
+async function getSourceActor(template) {
+    return (await fromUuid(template.flags.dnd5e?.origin))?.parent;
+}
 export let templateUtils = {
     getTokensInTemplate,
     getTemplatesInToken,
@@ -190,5 +193,6 @@ export let templateUtils = {
     setName,
     placeTemplate,
     rayIntersectsTemplate,
-    getIntersections
+    getIntersections,
+    getSourceActor
 };

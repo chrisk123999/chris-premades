@@ -1,4 +1,4 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let template = workflow.template;
@@ -25,7 +25,7 @@ async function use({workflow}) {
     });
 }
 async function enterOrStart({trigger: {entity: template, castData, token}}) {
-    let [targetCombatant ] = game.combat.getCombatantsByToken(token.document);
+    let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'sleetStorm')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'sleetStorm');
@@ -37,7 +37,7 @@ async function enterOrStart({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 export let sleetStorm = {

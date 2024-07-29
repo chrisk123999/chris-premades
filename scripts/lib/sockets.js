@@ -66,6 +66,7 @@ async function updateEmbeddedDocuments(entityUuid, type, updates, options) {
 async function addFavorites(actorUuid, itemUuids) {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
+    if (!actor.system.addFavorite) return;
     let items = await Promise.all(itemUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));

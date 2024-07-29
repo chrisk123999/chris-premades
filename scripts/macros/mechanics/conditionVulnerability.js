@@ -47,7 +47,7 @@ async function preambleComplete(workflow) {
             if (flagData) {
                 let types = String(flagData).split(',').map(i => i.toLowerCase());
                 if (types.includes('1') || types.includes('true') || types.includes(workflow.item.system.save.ability)) {
-                    let effect = effectUtils.createEffect(token.document.actor, effectData);
+                    let effect = await effectUtils.createEffect(token.document.actor, effectData);
                     cleanUpList.push(effect.uuid);
                 }
             }

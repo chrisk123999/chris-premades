@@ -47,18 +47,18 @@ async function use({workflow}) {
 }
 async function startTurn({trigger: {entity: template, token}}) {
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Cold', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.cold'});
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.tentacles', flatDC: castData.saveDC});
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 async function enter({trigger: {entity: template, token}}) {
     let originItem = await fromUuid(template.flags.dnd5e?.origin);
     let effectData = {
-        name: originItem?.name ?? 'Hunger of Hadar',
+        name: originItem?.name ?? templateUtils.getName(template),
         img: originItem?.img ?? 'icons/magic/water/barrier-ice-shield.webp',
         origin: template.uuid,
         flags: {

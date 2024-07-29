@@ -1,24 +1,5 @@
-import {animationUtils, dialogUtils, effectUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {animationUtils, dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
 
-async function use({workflow}) {
-    if (!workflow.failedSaves.size) return;
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 86400
-        },
-        flags: {
-            'chris-premades': {
-                conditions: ['prone']
-            }
-        }
-    };
-    for (let target of workflow.failedSaves) {
-        await effectUtils.createEffect(target.actor, effectData);
-    }
-}
 async function damage({workflow}) {
     let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.destructiveWave.select', [['DND5E.DamageRadiant', 'radiant'], ['DND5E.DamageNecrotic', 'necrotic']]);
     if (!damageType) damageType = 'radiant';
@@ -40,11 +21,6 @@ export let destructiveWave = {
     version: '0.12.0',
     midi: {
         item: [
-            {
-                pass: 'rollFinished',
-                macro: use,
-                priority: 50
-            },
             {
                 pass: 'damageRollComplete',
                 macro: damage,

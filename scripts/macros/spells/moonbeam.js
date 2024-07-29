@@ -1,5 +1,5 @@
 import {crosshairUtils} from '../../lib/utilities/crosshairUtils.js';
-import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -76,7 +76,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
             'radiant'
         ]
     ];
-    let sourceActor = (await fromUuid(template.flags.dnd5e?.origin))?.parent ?? token.actor;
+    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     if (actorUtils.isShapeChanger(token.actor)) {
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionDisadvantage'),
