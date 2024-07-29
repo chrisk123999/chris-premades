@@ -327,6 +327,10 @@
             "skillCheck": {
                 "name": "Contextual Skill Checks",
                 "hint": "When enabled, certain macros will prompt the player for more information for the skill check."
+            },
+            "vaeButtons": {
+                "name": "Visual Active Effects: Buttons",
+                "hint": "When enabled, certain macros will add buttons to the VAE interface."
             }
         },
         "settingCategory": {
