@@ -65,13 +65,29 @@ async function getAllAutomations(item) {
     await Promise.all(Object.entries(setting).map(async i => {
         let found;
         let source;
+        let version;
         switch (i[0]) {
-            default: found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true}); source = i[0]; break;
-            case 'chris-premades': found = await getCPRAutomation(item); source = 'chris-premades'; break;
-            case 'gambit-premades': found = await getGPSAutomation(item); source = 'gambit-premades'; break;
-            case 'midi-item-community-showcase': found = await getMISCAutomation(item); source = 'midi-item-community-showcase'; break;
+            default:
+                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true});
+                source = i[0];
+                break;
+            case 'chris-premades':
+                found = await getCPRAutomation(item);
+                source = 'chris-premades';
+                if (found) version = itemUtils.getVersion(found);
+                break;
+            case 'gambit-premades': 
+                found = await getGPSAutomation(item);
+                source = 'gambit-premades';
+                version = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+                break;
+            case 'midi-item-community-showcase':
+                found = await getMISCAutomation(item);
+                source = 'midi-item-community-showcase';
+                //TODO: Add version info.
+                break;
         }
-        if (found) items.push({document: found, priority: i[1], source: source});
+        if (found) items.push({document: found, priority: i[1], source: source, version: version});
     }));
     return items.sort((a, b) => a.priority - b.priority);
 }
