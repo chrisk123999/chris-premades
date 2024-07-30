@@ -37,7 +37,7 @@ async function item({speaker, actor, token, character, item, args, scope, workfl
     let feature = workflow.actor.items.getName(itemName);
     if (feature) {
         feature.update({
-            'system.quantity': item.system.quantity + 1
+            'system.quantity': feature.system.quantity + 1
         });
     } else {
         let itemData = await chris.getItemFromCompendium('chris-premades.CPR Class Feature Items', itemName, false);
