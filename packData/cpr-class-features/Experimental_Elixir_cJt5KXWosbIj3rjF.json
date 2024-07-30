@@ -3,7 +3,7 @@
   "type": "feat",
   "system": {
     "description": {
-      "value": "<p>You must have a token on the scene to use this feature (Warpgate mutation limitation).</p><p>This feature will automatically roll the Elixir to make and place it in your inventory.  Using spell slots for additional uses is not currently handled.</p><p><em>This feature is safe to be renamed.</em></p>",
+      "value": "<p>You must have a token on the scene to use this feature (Warpgate mutation limitation).</p><p>This feature will automatically roll the Elixir to make and place it in your inventory.</p><p><em>This feature is safe to be renamed.</em></p>",
       "chat": ""
     },
     "source": {
@@ -113,15 +113,7 @@
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.experimentalElixir",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.experimentalElixir",
-            "option": "postActiveEffects"
-          }
-        }
-      }
+      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.experimentalElixir.item,[preItemRoll]function.chrisPremades.macros.experimentalElixir.preItemRoll"
     },
     "midiProperties": {
       "nodam": false,
