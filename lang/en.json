@@ -331,6 +331,14 @@
             "vaeButtons": {
                 "name": "Visual Active Effects: Buttons",
                 "hint": "When enabled, certain macros will add buttons to the VAE interface."
+            },
+            "gambitPremades": {
+                "name": "Gambit's Premades Options",
+                "hint": "Requires Gambit's Premades to be enabled.",
+                "1": "No Homebrew or 3rd Party",
+                "2": "No Homebrew",
+                "3": "No 3rd Party",
+                "4": "Include Homebrew and 3rd Party"
             }
         },
         "settingCategory": {

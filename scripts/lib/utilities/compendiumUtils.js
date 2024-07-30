@@ -1,3 +1,4 @@
+import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import * as macros from '../../macros.js';
 import {constants} from '../constants.js';
 import {errors} from '../errors.js';
@@ -39,7 +40,21 @@ async function getCPRAutomation(item) {
     }
 }
 async function getGPSAutomation(item) {
-
+    let found;
+    switch(item.type) {
+        case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell'); break;
+        case 'weapon':
+        case 'equipment':
+        case 'consumable':
+        case 'tool':
+        case 'backpack':
+        case 'loot':
+            found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'item'); break;
+        case 'feat':
+            found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
+    }
+    if (!found) return;
+    return await fromUuid(found.uuid);
 }
 async function getMISCAutomation(item) {
 

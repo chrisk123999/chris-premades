@@ -96,6 +96,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         overTimeOptions.forEach(i => genericUtils.setProperty(i, 'show', i.requires ? overTimeOptions.find(j => (j.key === i.requires) && j.value) ? true : false : true));
         let fieldsets = {};
+        let updates = [];
         overTimeOptions.forEach(i => {
             if (!fieldsets[i.fieldset]) genericUtils.setProperty(fieldsets, i.fieldset, {
                 label: 'CHRISPREMADES.Medkit.Fieldsets.' + i.fieldset + '.Label',
@@ -188,14 +189,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     ]);
                     if (Number(i.value)) {
                         let currentValue = genericUtils.duplicate(i.value);
-                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCNumber'), 'show', true),
-                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCNumber'), 'value', currentValue),
+                        updates.push({field: 'saveDCNumber', value: currentValue});
                         i.value = 'flat';
                         i.options.find(j => j.value === 'flat').isSelected = true;
-                    } else if ((i.key === 'saveDC') && (Object.values(CONFIG.DND5E.abilities).map(j => j.abbreviation).includes(i.value))) {
-                        let currentValue = genericUtils.duplicate(i.value);
-                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCAbility'), 'show', true),
-                        genericUtils.setProperty(fieldsets[i.fieldset].options.find(k => k.key === 'saveDCAbility'), 'value', currentValue),
+                    } else if ((i.key === 'saveDC') && (i?.value?.includes('@abilities.'))) {
+                        let currentValue = genericUtils.duplicate(i.value).match(/\.(.*?)\./)[1];
+                        updates.push({field: 'saveDCAbility', value: currentValue});
                         i.value = 'ability';
                         i.options.find(j => j.value === 'ability').isSelected = true;
                     }
@@ -214,6 +213,10 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             fieldsets[i.fieldset].options.push(i);
         });
+        updates.forEach(i => {
+            genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'show', true);
+            genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'value', i.value);
+        });
         genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
         return context;
     }
@@ -230,9 +233,15 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     // Saves the context data to the effect
     static async confirm(event, target) {
         let effectData = genericUtils.duplicate(this.effectDocument.toObject());
+        let overTimeFields = Object.values(this.context.overTime.fieldsets).flatMap(i => i.options);
+        let saveDCField = overTimeFields.find(i => i.key === 'saveDC');
+        if (saveDCField.value === 'flat') saveDCField.value = overTimeFields.find(i => i.key === 'saveDCNumber').value;
+        if (saveDCField.value === 'ability') saveDCField.value = '@abilities.' + overTimeFields.find(i => i.key === 'saveDCAbility').value + '.dc';
+        overTimeFields.splice(overTimeFields.findIndex(i => i.key === 'saveDCNumber'), 1);
+        overTimeFields.splice(overTimeFields.findIndex(i => i.key === 'saveDCAbility'), 1);
         if (this.context.overTime.show) {
             let overTimeValue = '';
-            Object.values(this.context.overTime.fieldsets).flatMap(i => i.options).forEach(i => {
+            overTimeFields.forEach(i => {
                 if (i.value && (i.value != '')) overTimeValue += i.key + '=' + i.value + ','; 
             });
             if (effectData.changes.find(i => i.key === 'flags.midi-qol.OverTime')) {
@@ -245,13 +254,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     priority: 20
                 });
             }
-        } // Need flat DC and ability DC to be changed into the save DC value
-        let cprFlags = {};
-        if (this.context.configure.noAnimation.value) genericUtils.setProperty(cprFlags, 'noAnimation', this.context.configure.noAnimation.value);
-        if (this.context.configure.conditions.value) genericUtils.setProperty(cprFlags, 'conditions', this.context.configure.conditions.value);
-        if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(cprFlags, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
-        if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(cprFlags, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
-        let effectUpdates = {flags: {'chris-premades': cprFlags}};
+        }
+        let flagUpdates = {};
+        if (this.context.configure.noAnimation.value) genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
+        if (this.context.configure.conditions.value) genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
+        if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
+        if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {
             'effects': [effectData]

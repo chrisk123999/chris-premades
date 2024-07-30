@@ -39,7 +39,9 @@ export async function renderItemSheet(app, [elem], options) {
     let item = app.object;
     if (!item) return;
     let updated = itemUtils.isUpToDate(item);
+    console.log(updated);
     let source = itemUtils.getSource(item);
+    console.log(source);
     let sources = [
         'chris-premades',
         'gambit-premades',

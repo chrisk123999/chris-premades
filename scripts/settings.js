@@ -8,6 +8,7 @@ import {skillCheck} from './extensions/skillCheck.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
+import {gambitPremades} from './integrations/gambitsPremades.js';
 import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 function addSetting(options) {
@@ -414,6 +415,19 @@ export function registerSettings() {
         default: true,
         category: 'mechanics',
         onChange: value => skillCheck.patch(value)
+    });
+    addSetting({
+        key: 'gambitPremades',
+        type: Number,
+        default: 1,
+        category: 'compendium',
+        choices: {
+            1: 'CHRISPREMADES.settings.gambitPremades.1',
+            2: 'CHRISPREMADES.settings.gambitPremades.2',
+            3: 'CHRISPREMADES.settings.gambitPremades.3',
+            4: 'CHRISPREMADES.settings.gambitPremades.4'
+        },
+        onChange: value => gambitPremades.init(value)
     });
 }
 export function registerMenus() {

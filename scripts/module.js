@@ -22,6 +22,7 @@ import {abilitySave} from './extensions/abilitySave.js';
 import {skillCheck} from './extensions/skillCheck.js';
 import {ddbi} from './integrations/ddbi.js';
 import {effectEvents} from './events/effects.js';
+import {gambitPremades} from './integrations/gambitsPremades.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -40,6 +41,7 @@ Hooks.once('ready', () => {
     workflow.setup();
     registerHooks();
     ddbi.ready();
+    if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);

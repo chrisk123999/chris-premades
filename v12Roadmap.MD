@@ -32,8 +32,9 @@ Goals:
         - [x] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
         - [x] checkbox for flags.chris-premades.noAnimation
     - [x] Overtime creator, dynamically update
-        - [ ] Make the saveDC save correctly (get rid of extranous values in the overTime)
+        - [x] Make the saveDC save correctly (get rid of extranous values in the overTime)
     - [x] DevTools tab to set flags on effect
+    - [ ] Colorize effect medkit
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning

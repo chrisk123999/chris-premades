@@ -1,6 +1,7 @@
 import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
+import {gambitPremades} from '../../integrations/gambitsPremades.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -65,7 +66,13 @@ function getAllItemsByIdentifier(actor, identifier) {
     return actor.items.filter(i => getIdentifer(i) === identifier);
 }
 function getVersion(item) {
-    return item.flags['chris-premades']?.info?.version;
+    let version = item.flags['chris-premades']?.info?.version;
+    if (version) return version;
+    let source = getSource(item);
+    switch (source) {
+        case 'gambit-premades': return item.system.source.custom;
+        default: return version;
+    }
 }
 function getSource(item) {
     return item.flags['chris-premades']?.info?.source;
@@ -73,11 +80,14 @@ function getSource(item) {
 function isUpToDate(item) {
     let version = getVersion(item);
     let source = getSource(item);
+    console.log(version);
+    console.log(source);
     if (!version || !source) return -1;
     let sourceVersion;
     switch (source) {
         case 'gambit-premades':
-            sourceVersion = 1;
+            sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+            console.log(sourceVersion);
             break;
         case 'midi-item-community-showcase':
             sourceVersion = 1;
