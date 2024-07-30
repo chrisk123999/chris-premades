@@ -81,15 +81,27 @@ async function createActiveEffect(effect, options, userId) {
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
-    if ((effect.parent instanceof Actor)) {
+    if (effect.parent instanceof Actor) {
         await auras.effectCheck(effect);
         await executeMacroPass(effect, 'deleted');
     }
     await effects.checkInterdependentDeps(effect);
 }
+let preCreateMacros;
+function init() {
+    preCreateMacros = Object.values(macros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro);
+}
+function preCreateActiveEffect(effect, updates, options, userId) {
+    if (game.user.id != userId) return;
+    if (!(effect.parent instanceof Actor)) return;
+    genericUtils.log('dev', 'Executing Effect Macro Pass: preCreate for ' + effect.name);
+    preCreateMacros.map(macro => macro(effect, updates, options));
+}
 export let effectEvents = {
     createActiveEffect,
     deleteActiveEffect,
     collectEffectMacros,
-    getEffectMacroData
+    getEffectMacroData,
+    init,
+    preCreateActiveEffect
 };

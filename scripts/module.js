@@ -21,6 +21,7 @@ import {selectTool} from './extensions/selectTool.js';
 import {abilitySave} from './extensions/abilitySave.js';
 import {skillCheck} from './extensions/skillCheck.js';
 import {ddbi} from './integrations/ddbi.js';
+import {effectEvents} from './events/effects.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -33,6 +34,7 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('selectTool')) selectTool.init();
     abilitySave.init();
     skillCheck.init();
+    effectEvents.init();
 });
 Hooks.once('ready', () => {
     workflow.setup();

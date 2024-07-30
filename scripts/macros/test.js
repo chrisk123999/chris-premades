@@ -17,6 +17,9 @@ async function create({trigger}) {
     };
     await effectUtils.createEffect(trigger.target.actor, effectData, {identifier: trigger.identifier});
 }
+function preEffect(effect, updates, options) {
+    console.log(updates);
+}
 export let test = {
     name: 'test',
     version: '0.12.0',
@@ -27,6 +30,11 @@ export let test = {
             priority: 50,
             distance: 15,
             identifier: 'testAura',
+        }
+    ],
+    preCreateEffect: [
+        {
+            macro: preEffect
         }
     ]
 };
