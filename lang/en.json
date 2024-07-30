@@ -333,12 +333,12 @@
                 "hint": "When enabled, certain macros will add buttons to the VAE interface."
             },
             "gambitPremades": {
-                "name": "Gambit's Premades Options",
-                "hint": "Requires Gambit's Premades to be enabled.",
                 "1": "No Homebrew or 3rd Party",
                 "2": "No Homebrew",
                 "3": "No 3rd Party",
-                "4": "Include Homebrew and 3rd Party"
+                "4": "Include Homebrew and 3rd Party",
+                "name": "Gambit's Premades Options",
+                "hint": "Requires Gambit's Premades to be enabled."
             }
         },
         "settingCategory": {
@@ -736,6 +736,9 @@
             },
             "auraOfVitality": {
                 "healing": "Aura of Vitality: Healing"
+            },
+            "auraOfLife": {
+                "removeTempmax": "Temporarily remove existing hp max reduction while in aura:"
             }
         },
         "section": {

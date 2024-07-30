@@ -1,5 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
-// IN PROGRESS
+import {actorUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
@@ -8,6 +7,13 @@ async function use({workflow}) {
         origin: workflow.item.uuid,
         duration: {
             seconds: 60 * workflow.item.system.duration.value
+        },
+        flags: {
+            'chris-premades': {
+                auraOfLife: {
+                    removeTempmaxDebuffs: itemUtils.getConfig(workflow.item, 'removeTempmaxDebuffs')
+                }
+            }
         }
     };
     effectUtils.addMacro(effectData, 'aura', ['auraOfLifeAura']);
@@ -30,12 +36,6 @@ async function create({trigger: {entity: effect, target, identifier}}) {
                 mode: 0,
                 value: 'necrotic',
                 priority: 50
-            },
-            {
-                key: 'system.attributes.hp.tempmax',
-                mode: 4,
-                value: 0,
-                priority: 50
             }
         ],
         flags: {
@@ -47,13 +47,38 @@ async function create({trigger: {entity: effect, target, identifier}}) {
             }
         }
     };
+    if (effect.flags['chris-premades'].auraOfLife.removeTempmaxDebuffs) {
+        effectData.changes.push({
+            key: 'system.attributes.hp.tempmax',
+            mode: 4,
+            value: 0,
+            priority: 50
+        });
+    }
     await effectUtils.addMacro(effectData, 'combat', ['auraOfLifeAura']);
+    await effectUtils.addMacro(effectData, 'preCreateEffect', ['auraOfLifeAura']);
+    await effectUtils.addMacro(effectData, 'preUpdateEffect', ['auraOfLifeAura']);
     await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
 }
 async function turnStart({trigger: {token}}) {
     if (token.actor?.system.attributes.hp.value === 0) {
         await workflowUtils.applyDamage([token], 1, 'healing');
     }
+}
+function preEffect(effect, updates, options) {
+    if (!updates.changes || !updates.changes.length || !effect.parent) return;
+    if (effect.parent.constructor.name !== 'Actor5e') return;
+    if (!effectUtils.getEffectByIdentifier(effect.parent, 'auraOfLifeAura')) return;
+    let changed = false;
+    for (let i of updates.changes) {
+        if (i.key !== 'system.attributes.hp.tempmax') continue;
+        let number = Number(i.value);
+        if (isNaN(number) || number >= 0) continue;
+        i.value = 0;
+        changed = true;
+    }
+    if (!changed) return;
+    effect.updateSource({'changes': updates.changes});
 }
 export let auraOfLife = {
     name: 'Aura of Life',
@@ -66,7 +91,16 @@ export let auraOfLife = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'removeTempmaxDebuffs',
+            label: 'CHRISPREMADES.macros.auraOfLife.removeTempmax',
+            type: 'checkbox',
+            default: false,
+            category: 'mechanics'
+        }
+    ]
 };
 export let auraOfLifeAura = {
     name: 'Aura of Life: Aura',
@@ -86,6 +120,16 @@ export let auraOfLifeAura = {
             pass: 'turnStart',
             macro: turnStart,
             priority: 50
+        }
+    ],
+    preCreateEffect: [
+        {
+            macro: preEffect
+        }
+    ],
+    preUpdateEffect: [
+        {
+            macro: preEffect
         }
     ]
 };
