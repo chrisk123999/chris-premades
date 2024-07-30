@@ -61,7 +61,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 noAnimation: {
                     label: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Label',
                     tooltip: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Tooltip',
-                    value: effect.flags['chris-premades']?.noAnimation ? true : false,
+                    value: effect.flags['chris-premades']?.noAnimation ?? false,
                 },
                 conditions: {
                     label: 'CHRISPREMADES.Medkit.Effect.Conditions.Label',
@@ -124,7 +124,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'select': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    i.options.forEach(j => genericUtils.setProperty(j, 'isSelected', j.value === i.value ? true : false));
+                    i.options.forEach(j => genericUtils.setProperty(j, 'isSelected', j.value === i.value));
                     break;
                 }
                 case 'abilityOrSkill': {
@@ -222,13 +222,17 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     // Allows the overTime fields to be shown
     static async _add(event, target) {
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
         for (let key of Object.keys(this.tabsData)) {
             this.tabsData[key].cssClass = '';
         }
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.tabsData[currentTabId].cssClass = 'active';
         this.context.overTime.show = true;
-        this.render(true);
+        await this.render(true);
+        let newPos = {...this.position, height: this.element.scrollHeight};
+        this.setPosition(newPos);
     }
     // Saves the context data to the effect
     static async confirm(event, target) {
@@ -256,8 +260,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
         let flagUpdates = {};
-        if (this.context.configure.noAnimation.value) genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
-        if (this.context.configure.conditions.value) genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
+        genericUtils.setProperty(flagUpdates, 'noAnimation', this.context.configure.noAnimation.value);
+        genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
         if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
@@ -343,9 +347,10 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     }
                     case 'select-one': {
                         let option = this.context.overTime.fieldsets[event.target.getAttribute('data-fieldset')].options.find(i => i.key === event.target.id);
-                        option.value = event.target.value;
+                        let targetValue = event.target.value === 'false' ? false : event.target.value;
+                        option.value = targetValue;
                         (option?.options ?? option.optgroups.flatMap(i => i.options)).forEach(i => i.isSelected = false);
-                        (option?.options ?? option.optgroups.flatMap(i => i.options)).find(i => i.value === event.target.value).isSelected = true;
+                        (option?.options ?? option.optgroups.flatMap(i => i.options)).find(i => i.value === targetValue).isSelected = true;
                         break;
                     }
                     case 'checkbox': {
@@ -401,5 +406,13 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
         this.render(true);
+    }
+
+    changeTab(...args) {
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
+        super.changeTab(...args);
+        let newPos = {...this.position, height: this.element.scrollHeight};
+        this.setPosition(newPos);
     }
 }

@@ -220,7 +220,7 @@ const overTimeOptions = [
     {
         key: 'saveDCAbility',
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.SaveDCAbility',
-        default: null,
+        default: 'str',
         type: 'ability',
         requires: 'other',
         fieldset: 'rolls'

@@ -71,3 +71,19 @@ export async function renderItemSheet(app, [elem], options) {
         }
     }
 }
+export async function renderEffectConfig(app, [elem], options) {
+    let headerButton = elem.closest('.window-app').querySelector('a.header-button.chris-premades-item');
+    if (!headerButton) return;
+    let effect = app.object;
+    if (!effect) return;
+    let cprFlags = effect.flags?.['chris-premades'];
+    if (!cprFlags) return;
+    let configured = false;
+    if (cprFlags.conditions?.length) configured = true;
+    if (cprFlags.noAnimation) configured = true;
+    if (configured) {
+        headerButton.style.color = 'dodgerblue';
+    } else {
+        headerButton.style.color = '';
+    }
+}

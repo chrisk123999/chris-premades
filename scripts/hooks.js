@@ -8,7 +8,7 @@ import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet} from './extensions/titlebar.js';
+import {createHeaderButton, renderItemSheet, renderEffectConfig} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -26,6 +26,7 @@ export function registerHooks() {
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
     Hooks.on('renderItemSheet', renderItemSheet);
+    Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
     Hooks.on('createChatMessage', chat.createChatMessage);
