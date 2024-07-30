@@ -36,5 +36,10 @@ export let test = {
         {
             macro: preEffect
         }
+    ],
+    preUpdateEffect: [
+        {
+            macro: preEffect
+        }
     ]
 };

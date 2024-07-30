@@ -30,6 +30,7 @@ export function registerHooks() {
     Hooks.on('preDeleteActiveEffect', effects.noAnimation);
     Hooks.on('createChatMessage', chat.createChatMessage);
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
+    Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
     if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
         Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
         Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);

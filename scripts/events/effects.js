@@ -88,8 +88,10 @@ async function deleteActiveEffect(effect, options, userId) {
     await effects.checkInterdependentDeps(effect);
 }
 let preCreateMacros;
+let preUpdateMacros;
 function init() {
     preCreateMacros = Object.values(macros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro);
+    preUpdateMacros = Object.values(macros).filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro);
 }
 function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;
@@ -97,11 +99,18 @@ function preCreateActiveEffect(effect, updates, options, userId) {
     genericUtils.log('dev', 'Executing Effect Macro Pass: preCreate for ' + effect.name);
     preCreateMacros.map(macro => macro(effect, updates, options));
 }
+function preUpdateActiveEffect(effect, updates, options, userId) {
+    if (game.user.id != userId) return;
+    if (!(effect.parent instanceof Actor)) return;
+    genericUtils.log('dev', 'Executing Effect Macro Pass: preUpdate for ' + effect.name);
+    preUpdateMacros.map(macro => macro(effect, updates, options));
+}
 export let effectEvents = {
     createActiveEffect,
     deleteActiveEffect,
     collectEffectMacros,
     getEffectMacroData,
     init,
-    preCreateActiveEffect
+    preCreateActiveEffect,
+    preUpdateActiveEffect
 };
