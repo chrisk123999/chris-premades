@@ -56,7 +56,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async createContext(effect) {
         let context = {
             label: effect.name,
-            status: -1, // Will indicate the label/color of medkit
+            status: '', // Will indicate the label/color of medkit
             configure: {
                 noAnimation: {
                     label: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Label',
