@@ -56,7 +56,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async createContext(effect) {
         let context = {
             label: effect.name,
-            status: '', // Will indicate the label/color of medkit
+            status: -1, // Will indicate the label/color of medkit
             configure: {
                 noAnimation: {
                     label: 'CHRISPREMADES.Medkit.Effect.NoAnimation.Label',
@@ -81,12 +81,12 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             isDev: game.settings.get('chris-premades', 'devTools')
         };
         // Figure out coloring for medkit
-        //if (context.item.status === -1) context.item.status = context.item.availableAutomations.length > 0;
-        //if (context.item.status === 1 | context.item.status === 0) context.item.hasAutomation = true;
-        //context.item.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.item.status;
+        if (context.configure.noAnimation.value || context.configure.conditions.value.length) context.status = 1;
         context.medkitColor = '';
         switch (context.status) {
-            case 1: //something
+            case 1:
+                context.medkitColor = 'dodgerblue';
+                break;
         }
         // Options for Over Time creator
         let overTimeOptions = constants.overTimeOptions;
