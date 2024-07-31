@@ -17,7 +17,7 @@ async function use({workflow}) {
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     if (!rollEach) {
-        let damageFormula = formula + '[' + damageType + '] + 1';
+        let damageFormula = formula;
         if (itemUtils.getItemByIdentifer(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
         let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), {type: damageType}).evaluate();
         damageRoll.toMessage({
@@ -101,7 +101,7 @@ export let magicMissile = {
             value: 'formula',
             label: 'CHRISPREMADES.config.formula',
             type: 'text',
-            default: '1d4',
+            default: '1d4 + 1',
             homebrew: true,
             category: 'homebrew'
         },

@@ -327,6 +327,63 @@ const overTimeOptions = [
         fieldset: 'macros'
     }
 ];
+const summonAnimationOptions = [
+    {
+        value: 'default',
+        label: 'CHRISPREMADES.config.animations.default',
+        requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+    },
+    {
+        value: 'celestial',
+        label: 'CHRISPREMADES.config.animations.celestial',
+        requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+    },
+    {
+        value: 'fiend',
+        label: 'CHRISPREMADES.config.animations.fiend',
+        requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+    },
+    {
+        value: 'fire',
+        label: 'CHRISPREMADES.config.animations.fire',
+        requiredModules: ['jb2a_patreon']
+    },
+    {
+        value: 'water',
+        label: 'CHRISPREMADES.config.animations.water',
+        requiredModules: ['jb2a_patreon']
+    },
+    {
+        value: 'air',
+        label: 'CHRISPREMADES.config.animations.air',
+        requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+    },
+    {
+        value: 'earth',
+        label: 'CHRISPREMADES.config.animations.earth',
+        requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
+    },
+    {
+        value: 'nature',
+        label: 'CHRISPREMADES.config.animations.nature',
+        requiredModules: ['jb2a_patreon']
+    },
+    {
+        value: 'shadow',
+        label: 'CHRISPREMADES.config.animations.shadow',
+        requiredModules: ['jb2a_patreon']
+    },
+    {
+        value: 'future',
+        label: 'CHRISPREMADES.config.animations.future',
+        requiredModules: ['jb2a_patreon']
+    },
+    {
+        value: 'none',
+        label: 'CHRISPREMADES.config.animations.none',
+        requiredModules: []
+    }
+];
 export let constants = {
     packs,
     featurePacks,
@@ -338,5 +395,6 @@ export let constants = {
     damageTypes,
     damageTypeOptions,
     setUseLocalCompendium,
-    overTimeOptions
+    overTimeOptions,
+    summonAnimationOptions
 };

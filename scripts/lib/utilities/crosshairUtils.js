@@ -26,12 +26,12 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
             await genericUtils.sleep(100);
             distance = canvas.grid.measurePath([centerpoint, crosshairs]).distance.toNearest(0.01);
             // Below checks if token can see place wants to move thing to - sort of
-            if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance >= maxRange) {
+            if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange) {
                 crosshairs.icon = 'icons/svg/hazard.svg';
-                drawing.tint = 0xff0000;
+                if (drawing) drawing.tint = 0xff0000;
             } else {
                 crosshairs.icon = crosshairsConfig?.icon;
-                drawing.tint = 0x32cd32;
+                if (drawing) drawing.tint = 0x32cd32;
             }
             crosshairs.draw();
             crosshairs.label = distance + '/' + maxRange + 'ft.';

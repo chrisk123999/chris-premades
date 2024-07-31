@@ -1,5 +1,6 @@
 import {DialogApp} from '../applications/dialog.js';
 import {genericUtils} from '../utils.js';
+import {Summons} from './summons.js';
 import {Teleport} from './teleport.js';
 async function createEffect(entityUuid, effectData, {concentrationItemUuid, parentEntityUuid}) {
     let entity = await fromUuid(entityUuid);
@@ -54,13 +55,13 @@ async function addDependent(entityUuid, dependentUuids) {
 async function createEmbeddedDocuments(entityUuid, type, updates, options) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let documents = await entity.createEmbeddedDocuments(type, updates, options);
+    let documents = await entity.createEmbeddedDocuments(type, updates, options ?? undefined);
     return documents.map(i => i.uuid);
 }
 async function updateEmbeddedDocuments(entityUuid, type, updates, options) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
-    let documents = await entity.updateEmbeddedDocuments(type, updates, options);
+    let documents = await entity.updateEmbeddedDocuments(type, updates, options ?? undefined);
     return documents.map(i => i.uuid);
 }
 async function addFavorites(actorUuid, itemUuids) {
@@ -104,6 +105,9 @@ async function teleport(tokenUuids, controllingTokenUuid, options={}) {
         await Teleport.target(tokens, controllingToken, options);
     }
 }
+async function spawnSummon(actorUuid, updates, sceneUuid) {
+    return Summons.socketSpawn(actorUuid, updates, sceneUuid);
+}
 let sockets = [
     createEffect,
     deleteEntity,
@@ -118,7 +122,8 @@ let sockets = [
     rollItem,
     createSidebarActor,
     updateEmbeddedDocuments,
-    teleport
+    teleport,
+    spawnSummon
 ];
 export let socket;
 export function registerSockets() {
