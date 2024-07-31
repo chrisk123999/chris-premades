@@ -40,7 +40,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         ],
         flags: {
             'chris-premades': {
-                aura:true,
+                aura: true,
                 effect: {
                     noAnimation: true
                 }
@@ -55,9 +55,9 @@ async function create({trigger: {entity: effect, target, identifier}}) {
             priority: 50
         });
     }
-    await effectUtils.addMacro(effectData, 'combat', ['auraOfLifeAura']);
-    await effectUtils.addMacro(effectData, 'preCreateEffect', ['auraOfLifeAura']);
-    await effectUtils.addMacro(effectData, 'preUpdateEffect', ['auraOfLifeAura']);
+    effectUtils.addMacro(effectData, 'combat', ['auraOfLifeAura']);
+    effectUtils.addMacro(effectData, 'preCreateEffect', ['auraOfLifeAura']);
+    effectUtils.addMacro(effectData, 'preUpdateEffect', ['auraOfLifeAura']);
     await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
 }
 async function turnStart({trigger: {token}}) {

@@ -1,0 +1,19 @@
+{
+  "color": null,
+  "name": "Guardian of Faith",
+  "sorting": "a",
+  "type": "Item",
+  "folder": null,
+  "_id": "yZf6eIk9MEWhMULR",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "3.0.4",
+    "coreVersion": "11.315",
+    "createdTime": 1700783784453,
+    "modifiedTime": 1711188863162,
+    "lastModifiedBy": "PQGBBcoVSwpUhViM"
+  },
+  "_key": "!folders!yZf6eIk9MEWhMULR"
+}

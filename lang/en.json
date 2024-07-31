@@ -465,7 +465,7 @@
             },
             "chainLightning": {
                 "select": "Where should the lightning bounce? Max: {maxTargets}",
-                "leap": "Chain Lightning Leap"
+                "leap": "Chain Lightning: Leap"
             },
             "chaosBolt": {
                 "select": "Select damage type:",

@@ -1,5 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-import {compendiumUtils, effectUtils, genericUtils, constants} from '../utils.js';
+import {genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
@@ -218,6 +218,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'value', i.value);
         });
         genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
+        console.log(context);
         return context;
     }
     // Allows the overTime fields to be shown
@@ -266,6 +267,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
+        console.log(effectData);
         let updates = {
             'effects': [effectData]
         };

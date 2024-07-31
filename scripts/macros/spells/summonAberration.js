@@ -87,28 +87,7 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 3600, range: 90, animation: animation});
 }
 async function whisperingAura({trigger}) {
-    console.log(trigger);
-    let sourceCastData = actorUtils.getCastData(trigger.entity.actor);
-    let validTargets = tokenUtils.findNearby(trigger.token, 5, 'enemy', {includeIncapacitated: true}).filter(i => {
-        let nearbyToken = tokenUtils.findNearby(i, 5, 'enemy', {includeIncapacitated: true}).find(j => {
-            if (!j.actor) return false;
-            let item = itemUtils.getItemByIdentifer(j.actor, 'whisperingAura');
-            if (!item) return false;
-            let targetCastData = actorUtils.getCastData(j);
-            if (!targetCastData) return false;
-            if (targetCastData.castLevel > sourceCastData.castLevel) return false;
-            if (targetCastData.castLevel === sourceCastData.castLevel) {
-                if (targetCastData.saveDC > sourceCastData.saveDC) return false;
-                if (targetCastData.saveDC === sourceCastData.saveDC) return trigger.entity.actor.id > j.actor.id;
-            }
-            return true;
-        });
-        if (nearbyToken) return false;
-        return true;
-    });
-    console.log(validTargets);
-    if (!validTargets.length) return;
-    await workflowUtils.syntheticItemRoll(trigger.entity, validTargets);
+    await trigger.document.use();
 }
 export let summonAberration = {
     name: 'Summon Aberration',

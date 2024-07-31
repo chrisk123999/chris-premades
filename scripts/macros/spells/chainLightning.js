@@ -36,7 +36,7 @@ async function use({workflow}) {
             }
             sequenceObj.play();
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.macros.chainLightning.leap'});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning: Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.macros.chainLightning.leap'});
         if (!featureData) {
             errors.missingPackItem();
             continue;

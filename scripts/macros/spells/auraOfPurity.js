@@ -55,7 +55,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
             }
         }
     };
-    await effectUtils.addMacro(effectData, 'combat', ['auraOfPurityAura']);
+    effectUtils.addMacro(effectData, 'combat', ['auraOfPurityAura']);
     await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
 }
 export let auraOfPurity = {
