@@ -381,6 +381,11 @@
                 "name": "Character Backup",
                 "label": "Character Backup",
                 "hint": "Settings for character backup."
+            },
+            "help": {
+                "name": "Help",
+                "label": "Help",
+                "hint": "Get help with this module."
             }
         },
         "config": {

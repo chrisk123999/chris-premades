@@ -3,6 +3,7 @@ import {conditions} from '../extensions/conditions.js';
 import {sidebar} from '../extensions/sidebar.js';
 import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
+import {troubleshooter} from './troubleshooter.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
@@ -10,7 +11,8 @@ let buttonLabels = {
     backupCompendium: 'CHRISPREMADES.Generic.Select',
     hiddenCompendiums: 'CHRISPREMADES.Generic.Select',
     hiddenCompendiumFolders: 'CHRISPREMADES.Generic.Select',
-    backupMake: 'CHRISPREMADES.Generic.Go'
+    backupMake: 'CHRISPREMADES.Generic.Go',
+    trouble: 'CHRISPREMADES.Generic.Go'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -25,14 +27,14 @@ class settingsBase extends FormApplication {
     }
     static get defaultOptions() {
         return genericUtils.mergeObject(super.defaultOptions, {
-            'classes': ['form'],
-            'popOut': true,
-            'template': 'modules/chris-premades/templates/settings.hbs',
-            'id': 'chris-premades-settings',
-            'title': 'Chris\'s Premades',
-            'width': 800,
-            'height': 'auto',
-            'closeOnSubmit': true
+            classes: ['form'],
+            popOut: true,
+            template: 'modules/chris-premades/templates/settings.hbs',
+            id: 'chris-premades-settings',
+            title: 'Chris\'s Premades',
+            width: 800,
+            height: 'auto',
+            closeOnSubmit: true
         });
     }
     getData() {
@@ -84,7 +86,8 @@ export async function settingButton(id) {
         case 'backupCompendium': await backup.selectCompendium(); break;
         case 'hiddenCompendiums': await sidebar.selectHiddenCompendiums(); break;
         case 'hiddenCompendiumFolders': await sidebar.selectHiddenCompendiumFolders(); break;
-        case 'backupMake': await backup.doBackup(true);
+        case 'backupMake': await backup.doBackup(true); break;
+        case 'trouble': await troubleshooter(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {
@@ -134,4 +137,47 @@ export class settingsBackup extends settingsBase {
         super();
         this.category = 'backup';
     } 
+}
+export class settingsHelp extends FormApplication {
+    constructor() {
+        super();
+    }
+    static get defaultOptions() {
+        return genericUtils.mergeObject(super.defaultOptions, {
+            classes: ['form'],
+            popOut: true,
+            template: 'modules/chris-premades/templates/settings.hbs',
+            id: 'chris-troubleshoot-settings',
+            title: 'Help',
+            width: 800,
+            height: 'auto',
+            closeOnSubmit: true
+        });
+    }
+    getData() {
+        return {
+            settings: [
+                /*{
+                    name: 'Tour Features',
+                    id: 'tour',
+                    value: {},
+                    isButton: true,
+                    hint: 'Start a guided tour of Chris\'s Premades.',
+                    label: 'Go'
+                }, */
+                {
+                    name: 'Open Troubleshooter:',
+                    id: 'trouble',
+                    value: {},
+                    isButton: true,
+                    hint: 'Will export a file used to help troubleshoot issues with this module on my Discord server.',
+                    label: 'Go'
+                }
+            ]
+        };
+    }
+    activateListeners(html) {
+        super.activateListeners(html);
+    }
+    //async _updateObject(event, formData) {}
 }

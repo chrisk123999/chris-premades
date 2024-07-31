@@ -1,5 +1,5 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
 import {abilitySave} from './extensions/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
@@ -470,5 +470,10 @@ export function registerMenus() {
         key: 'backup',
         icon: 'fas fa-floppy-disk',
         type: settingsBackup
+    });
+    addMenu({
+        key: 'help',
+        icon: 'fas fa-screwdriver-wrench',
+        type: settingsHelp
     });
 }
