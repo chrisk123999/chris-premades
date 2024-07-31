@@ -35,6 +35,7 @@ export class Summons {
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.minimize();
         await Summon.spawnAll();
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.maximize();
+        if (!Summon.spawnedTokens.length) return;
         await Summon.handleEffects();
         await Summon.handleInitiative();
     }
@@ -117,6 +118,7 @@ export class Summons {
             icon: tokenImg,
             name: tokenDocument.name,
             direction: 0,
+            resolution: (this.tokenUpdates?.width ?? tokenDocument.width) % 2 ? 1 : -1
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
         const templateData = await crosshairUtils.aimCrosshair({
