@@ -1,4 +1,4 @@
-import {itemUtils} from '../utils.js';
+import {genericUtils, itemUtils} from '../utils.js';
 function createEffectButtons(effect, buttons) {
     let buttonData = effect.flags['chris-premades']?.vae?.buttons;
     if (!buttonData) return;
@@ -21,7 +21,10 @@ function createEffectButtons(effect, buttons) {
                 break;
             case 'dismiss':
                 buttons.push({
-                    //finish this
+                    label: i.name,
+                    callback: () => {
+                        genericUtils.remove(effect);
+                    }
                 });
         }
     });

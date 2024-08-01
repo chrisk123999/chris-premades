@@ -180,6 +180,10 @@
                 "Beholderkin": "Beholderkin",
                 "Slaad": "Slaad",
                 "StarSpawn": "Star Spawn"
+            },
+            "AnimateDead": {
+                "Select": "Select Summons (Max: {totalSummons})",
+                "Command": "Animate Dead: Command"
             }
         },
         "settings": {
@@ -432,7 +436,18 @@
             "animation": "Animation:",
             "animations": {
                 "simple": "Simple",
-                "complex": "Complex"
+                "complex": "Complex",
+                "shadow": "Shadow",
+                "default": "Default",
+                "celestial": "Celestial",
+                "fiend": "Fiend",
+                "fire": "Fire",
+                "water": "Water",
+                "air": "Air",
+                "earth": "Earth",
+                "nature": "Nature",
+                "future": "Future",
+                "none": "None"
             }
         },
         "macros": {
@@ -778,7 +793,8 @@
             "compendiumNotFound": "Invalid compendium specified!",
             "compendiumItemNotFound": "Compendium item not found!",
             "outOfDateItem": "Automation is out of date!",
-            "updateItem": "Update Item"
+            "updateItem": "Update Item",
+            "actorNotFound": "Required sidebar actor not found!"
         },
         "turns": {
             "startOfTurn": "Start of Turn",

@@ -6,6 +6,8 @@
 
 import {Crosshairs} from './crosshairs.js';
 import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants} from '../utils.js';
+import {crosshairUtils} from './utilities/crosshairUtils.js';
+import {socket} from './sockets.js';
 
 export class Summons {
     constructor(sourceActors, updates, originItem, summonerToken, options) {
@@ -18,8 +20,14 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, additionalVaeButtons: []}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
+        if (sourceActors.length && sourceActors[0].constructor.name !== 'Actor5e') {
+            // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
+            if ('document' in sourceActors[0] && 'amount' in sourceActors[0]) {
+                sourceActors = sourceActors.reduce((acc, i) => acc.concat(Array(i.amount).fill(i.document)), []);
+            }
+        }
         sourceActors = await Promise.all(sourceActors.map(async i => await actorUtils.getSidebarActor(i, {autoImport: true})));
         if (!Array.isArray(updates)) updates = [updates];
         let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
@@ -27,6 +35,7 @@ export class Summons {
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.minimize();
         await Summon.spawnAll();
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.maximize();
+        if (!Summon.spawnedTokens.length) return;
         await Summon.handleEffects();
         await Summon.handleInitiative();
     }
@@ -37,8 +46,8 @@ export class Summons {
         let tokenDocument = await actor.getTokenDocument(tokenUpdates);
         let scene = await fromUuid(sceneUuid);
         await tokenDocument.delta.updateSource(actorUpdates);
-        let token = await genericUtils.createEmbeddedDocuments(scene, 'Token', [tokenDocument]);
-        return token;
+        let [token] = await genericUtils.createEmbeddedDocuments(scene, 'Token', [tokenDocument]);
+        return token.uuid;
     }
     // Helper function to dismiss any summons on an effect, will have the effect name and an array of ids
     static async dismiss({trigger}) {
@@ -75,33 +84,15 @@ export class Summons {
             this.spawnOptions = {
                 'controllingActor': this.summonerToken.actor,
                 'crosshairs': {
-                    'interval': this.updates?.token?.width ?? tokenDocument.width % 2 === 0 ? 1 : -1
-                }
-            };
-        }
-        if (!this.options.callbacks?.show) {
-            this.options.callbacks = {show: undefined};
-            this.options.callbacks.show = async (crosshairs) => {
-                let distance = 0;
-                let ray;
-                while (crosshairs.inFlight) {
-                    await genericUtils.sleep(100);
-                    ray = new Ray(this.summonerToken.center, crosshairs);
-                    distance = canvas.grid.measureDistances([{ray}], {'gridSpaces': true})[0];
-                    if (this.summonerToken.checkCollision(ray.B, {'origin': ray.A, 'type': 'move', 'mode': 'any'}) || distance > this.options.range) {
-                        crosshairs.icon = 'icons/svg/hazard.svg';
-                    } else {
-                        crosshairs.icon = tokenDocument.texture.src;
-                    }
-                    crosshairs.draw();
-                    crosshairs.label = distance + '/' + this.options.range + 'ft.';
+                    'resolution': this.updates?.token?.width ?? tokenDocument.width % 2 === 0 ? 1 : -1
                 }
             };
         }
         if (this.options.animation != 'none' && !this.options.callbacks?.post) {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
+            // TODO: Do we need this check here? Should be taking care of it per summoning spell/item
             if (typeof callbackFunction === 'function' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck()) {
-                genericUtils.setProperty(this.options.callbacks, 'post', callbackFunction);
+                genericUtils.setProperty(this.options, 'callbacks.post', callbackFunction);
                 this.mergeUpdates({token: {alpha: 0}});
             }
         }
@@ -127,11 +118,19 @@ export class Summons {
             icon: tokenImg,
             name: tokenDocument.name,
             direction: 0,
+            resolution: (this.tokenUpdates?.width ?? tokenDocument.width) % 2 ? 1 : -1
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
-        const templateData = await Crosshairs.showCrosshairs(crosshairsConfig, this.options.callbacks);
+        const templateData = await crosshairUtils.aimCrosshair({
+            token: this.summonerToken, 
+            maxRange: this.options.range,
+            crosshairsConfig,
+            drawBoundries: false,
+            customCallbacks: this.options.callbacks
+        });
         if (templateData.cancelled) {
             console.log('was cancelled, do something different');
+            return;
         }
         this.mergeUpdates({
             actor: {
@@ -157,11 +156,13 @@ export class Summons {
         if (game.user.can('TOKEN_CREATE')) {
             let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
             await tokenDocument.delta.updateSource(this.actorUpdates);
-            let spawnedToken = await genericUtils.createEmbeddedDocuments(this.summonerToken.parent, 'Token', [tokenDocument]); // Make sure the parent bit works
+            let spawnedToken = await genericUtils.createEmbeddedDocuments(this.summonerToken.scene, 'Token', [tokenDocument]);
             this.spawnedTokens.push(spawnedToken[0]);
         } else {
             console.log('socket spawn');
-            // this.socketSpawn();
+            let spawnedTokenUuid = await socket.executeAsGM('spawnSummon', this.sourceActor.uuid, this.updates, this.summonerToken.scene.uuid);
+            let spawnedToken = await fromUuid(spawnedTokenUuid);
+            this.spawnedTokens.push(spawnedToken);
         }
         this.options?.callbacks?.post({x: this.updates.token.x, y: this.updates.token.y}, this.spawnedTokens[this.spawnedTokens.length - 1], this.updates, this.currentIndex);
         return this.spawnedTokens;
@@ -258,14 +259,17 @@ export class Summons {
         let initiativeType = this.options?.initiativeType ?? 'seperate';
         switch (initiativeType) {
             case ('seperate'): {
-                await Promise.all(this.spawnedTokens.forEach(async tok => {
-                    await genericUtils.createEmbeddedDocuments(game.combat, 'Combatant', {
+                await Promise.all(this.spawnedTokens.map(async tok => {
+                    let initiativeRoll = await tok.actor.getInitiativeRoll().evaluate();
+                    await initiativeRoll.toMessage({
+                        speaker: ChatMessage.implementation.getSpeaker({token: tok})
+                    });
+                    await genericUtils.createEmbeddedDocuments(game.combat, 'Combatant', [{
                         tokenId: tok.id,
                         sceneId: canvas.scene.id,
                         actorId: tok.actor.id,
-                        initiative: null
-                    });
-                    await tok.actor.rollInitiative();
+                        initiative: initiativeRoll.total
+                    }]);
                 }));
                 break;
             }
@@ -316,7 +320,7 @@ export class Summons {
             flags: {
                 'chris-premades': {
                     vae: {
-                        button: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}]
                     }
                 }
             }
@@ -336,7 +340,7 @@ export class Summons {
                         effect: ['summonUtils']
                     },
                     vae: {
-                        button: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...this.options.additionalVaeButtons]
                     },
                     summons: {
                         ids: {
@@ -351,7 +355,7 @@ export class Summons {
         return this.spawnedTokens.map(i => i.id);
     }
     get updates() {
-        return this._updates[this.currentIndex];
+        return this._updates[this.currentIndex] ?? this._updates[0];
     }
     get sourceActor() {
         return this.sourceActors[this.currentIndex];
