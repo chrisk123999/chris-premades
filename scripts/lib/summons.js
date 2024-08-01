@@ -20,7 +20,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, additionalVaeButtons: []}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: []}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0].constructor.name !== 'Actor5e') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -38,6 +38,7 @@ export class Summons {
         if (!Summon.spawnedTokens.length) return;
         await Summon.handleEffects();
         await Summon.handleInitiative();
+        return Summon.spawnedTokens;
     }
     static async socketSpawn(actorUuid, updates, sceneUuid) {
         let actor = await fromUuid(actorUuid);
@@ -231,7 +232,10 @@ export class Summons {
         };
         // Account for concentration special cases
         let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
-        if (this.originItem.requiresConcentration && !this.options?.concentrationNonDependent && concentrationEffect) genericUtils.setProperty(effectOptions, 'concentrationItem', concentrationEffect);
+        if (this.originItem.requiresConcentration && !this.options?.concentrationNonDependent && concentrationEffect) {
+            genericUtils.setProperty(effectOptions, 'concentrationItem', this.originItem);
+            genericUtils.setProperty(effectOptions, 'interdependent', true);
+        }
         if (!effect) effect = await effectUtils.createEffect(this.originItem.actor, this.casterEffect, effectOptions);
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
@@ -319,8 +323,11 @@ export class Summons {
             origin: this.originItem.uuid,
             flags: {
                 'chris-premades': {
+                    info: {
+                        identifier: 'summonedEffect'
+                    },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}]
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalSummonVaeButtons ?? [])]
                     }
                 }
             }
@@ -340,7 +347,7 @@ export class Summons {
                         effect: ['summonUtils']
                     },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...this.options.additionalVaeButtons]
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalVaeButtons ?? [])]
                     },
                     summons: {
                         ids: {

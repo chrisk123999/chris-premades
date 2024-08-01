@@ -6,17 +6,15 @@ async function use({workflow}) {
     let zombieActorName = itemUtils.getConfig(workflow.item, 'zombieActorName');
     let skeletonActorName = itemUtils.getConfig(workflow.item, 'skeletonActorName');
 
-    let zombieActor = await compendiumUtils.getActorFromCompendium(monsterCompendium, zombieActorName, {ignoreNotFound: true});
-    let skeletonActor = await compendiumUtils.getActorFromCompendium(monsterCompendium, skeletonActorName, {ignoreNotFound: true});
+    let zombieActor = await compendiumUtils.getActorFromCompendium(monsterCompendium, zombieActorName);
+    let skeletonActor = await compendiumUtils.getActorFromCompendium(monsterCompendium, skeletonActorName);
     if (!zombieActor) zombieActor = game.actors.getName(zombieActorName);
     if (!skeletonActor) skeletonActor = game.actors.getName(skeletonActorName);
     if (!zombieActor || !skeletonActor) {
         genericUtils.notify('CHRISPREMADES.Error.ActorNotFound', 'warn');
         return;
     }
-    let totalSummons = 1 + ((workflow.castData?.castLevel ?? 3) - 3) * 2;
-    if (itemUtils.getItemByIdentifer(workflow.actor, 'undeadThralls')) totalSummons += 1;
-    if (!totalSummons || totalSummons < 1) return;
+    let totalSummons = 5 + ((workflow.castData?.castLevel ?? 5) - 5) * 2;
     let sourceActors = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons}), [zombieActor, skeletonActor], {
         max: totalSummons
     });
@@ -28,19 +26,19 @@ async function use({workflow}) {
     };
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'shadow';
     if (animationUtils.jb2aCheck() !== 'patreon') animation = 'none';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Animate Dead: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AnimateDead.Command', identifier: 'animateDeadCommand'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Danse Macabre: Command Undead', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.DanseMacabre.CommandUndead', identifier: 'danseMacabreCommandUndead'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
-    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 86400, range: 10, animation, additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'animateDeadCommand'}]});
-    if (itemUtils.getItemByIdentifer(workflow.actor, 'animateDeadCommand')) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'animateDead');
+    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 3600, range: 10, animation, initiativeType: 'group', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'danseMacabreCommandUndead'}]});
+    if (itemUtils.getItemByIdentifer(workflow.actor, 'danseMacabreCommandUndead')) return;
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'danseMacabre');
     if (!effect) return;
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
 }
-export let animateDead = {
-    name: 'Animate Dead',
+export let danseMacabre = {
+    name: 'Danse Macabre',
     version: '0.12.2',
     midi: {
         item: [
@@ -63,7 +61,7 @@ export let animateDead = {
         {
             value: 'zombieActorName',
             label: 'CHRISPREMADES.Summons.ActorName',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.Zombie',
+            i18nOption: 'Zombie',
             type: 'text',
             default: 'Zombie',
             category: 'summons'
@@ -71,7 +69,7 @@ export let animateDead = {
         {
             value: 'skeletonActorName',
             label: 'CHRISPREMADES.Summons.ActorName',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.Skeleton',
+            i18nOption: 'Skeleton',
             type: 'text',
             default: 'Skeleton',
             category: 'summons'

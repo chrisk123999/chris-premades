@@ -49,7 +49,6 @@
                 "Blue02": "Blue (alt)",
                 "BlueYellow": "Blue & Yellow",
                 "Cycle": "Cycle",
-                "Dark_purple": "Dark Purple",
                 "DarkBlack": "Dark Black",
                 "DarkBlue": "Dark Blue",
                 "DarkGreen": "Dark Green",
@@ -57,6 +56,7 @@
                 "DarkPurple": "Dark Purple",
                 "DarkRed": "Dark Red",
                 "DarkWhiteBlue": "Dark White & Blue",
+                "Dark_purple": "Dark Purple",
                 "Green": "Green",
                 "Green02": "Green (alt)",
                 "GreenOrange": "Green & Orange",
@@ -70,6 +70,7 @@
                 "Rainbow": "Rainbow",
                 "Random": "Random",
                 "Red": "Red",
+                "White": "White",
                 "Yellow": "Yellow"
             },
             "DamageType": "Damage Type:",
@@ -77,7 +78,8 @@
             "Formula": "Formula:",
             "PlayAnimation": "Play Animation:",
             "RealDarkness": "Use Real Darkness:",
-            "Sound": "Sound:"
+            "Sound": "Sound:",
+            "SpecificAnimation": "{option} Animation:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -117,6 +119,7 @@
             "CompendiumNotFound": "Invalid compendium specified!",
             "MissingDescriptionJournal": "CPR - Descriptions journal not found!",
             "MissingDescriptionPage": "Missing Description journal page!",
+            "NoActors": "No actors found in folder: \"{folder}\"!",
             "OutOfDateItem": "Automation is out of date!",
             "UpdateItem": "Update Item"
         },
@@ -124,6 +127,7 @@
             "Abilities": "Abilities",
             "Advantage": "Advantage",
             "Apply": "Apply",
+            "CPR": "Chris's Premades",
             "Cancel": "Cancel",
             "Chat": "Chat",
             "Check": "Ability Check",
@@ -131,7 +135,6 @@
             "Close": "Close",
             "Configure": "Configure",
             "Confirm": "Confirm",
-            "CPR": "Chris's Premades",
             "Description": "Description",
             "Disabled": "Disabled",
             "Disadvantage": "Disadvantage",
@@ -164,8 +167,7 @@
         },
         "Macros": {
             "AnimateDead": {
-                "Command": "Animate Dead: Command",
-                "Select": "Select Summons (Max: {totalSummons})"
+                "Command": "Animate Dead: Command"
             },
             "Antagonize": {
                 "NoWeapons": "Target does not have any weapons equipped!",
@@ -236,6 +238,9 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "DanseMacabre": {
+                "CommandUndead": "Danse Macabre: Command Undead"
+            },
             "Darkness": {
                 "Attach": "Attach to self?"
             },
@@ -268,6 +273,12 @@
             },
             "FarStep": {
                 "Teleport": "Far Step: Teleport"
+            },
+            "FindSteed": {
+                "Choose": "Choose Steed",
+                "Language": "What language?",
+                "Target": "Target Steed as well? (If mounted)",
+                "Type": "What creature type?"
             },
             "FireShield": {
                 "ChillShield": "Chill Shield",
@@ -303,6 +314,11 @@
             },
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
+            },
+            "HealingSpirit": {
+                "Apply": "Healing Spirit: Apply Healing? ({numUses} use(s) left)",
+                "Heal": "Healing Spirit: Heal",
+                "Move": "Healing Spirit: Move"
             },
             "HeatMetal": {
                 "Damage": "Heat Metal: Damage",
@@ -419,6 +435,18 @@
                 "Hit": "Spirit Shroud: Hit",
                 "Select": "What damage type?",
                 "Slow": "Spirit Shroud: Slow"
+            },
+            "SpiritualWeapon": {
+                "Attack": "Spiritual Weapon: Attack",
+                "Color": "What Color?",
+                "Dark": "Dark",
+                "Flaming": "Flaming",
+                "Mace": "Mace",
+                "Maul": "Maul",
+                "Scythe": "Scythe",
+                "Style": "What Style?",
+                "Sword": "Sword",
+                "Weapon": "What Weapon?"
             },
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
@@ -547,10 +575,10 @@
                         "RollMode": "Roll Mode for Over Time Item Roll:",
                         "RollType": "Roll Type:",
                         "SaveAbility": "Ability or Skill for roll:",
-                        "SaveDamage": "Amount of Damage on Save:",
                         "SaveDC": "Difficulty Class for roll:",
                         "SaveDCAbility": "Ability Based DC:",
                         "SaveDCNumber": "Flat DC:",
+                        "SaveDamage": "Amount of Damage on Save:",
                         "SaveMagic": "Magic Saving Throw:",
                         "SaveRemove": "Remove Effect on Save:",
                         "SelfRoll": "Self Roll",
@@ -660,6 +688,12 @@
             }
         },
         "Settings": {
+            "Permissions": {
+                "1": "Player",
+                "2": "Trusted Player",
+                "3": "Assistant Gamemaster",
+                "4": "Gamemaster"
+            },
             "abilitySave": {
                 "Hint": "When enabled, certain macros will prompt the player for more information for the ability save.",
                 "Name": "Contextual Ability Saves"
@@ -692,13 +726,13 @@
                 "Hint": "How long backup characters are kept.",
                 "Name": "Backup Retention"
             },
-            "backups": {
-                "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
-                "Name": "Automatic Character Backups"
-            },
             "backupTime": {
                 "Hint": "Last time a backup was made (in milliseconds). Automatically set.",
                 "Name": "Last Backup Time"
+            },
+            "backups": {
+                "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
+                "Name": "Automatic Character Backups"
             },
             "colorizeBuildABonus": {
                 "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
@@ -776,12 +810,6 @@
                 "Hint": "Monster compendium use for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
                 "Name": "Monster Compendium"
             },
-            "Permissions": {
-                "1": "Player",
-                "2": "Trusted Player",
-                "3": "Assistant Gamemaster",
-                "4": "Gamemaster"
-            },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
                 "Name": "Medkit Apply Automation Permissions"
@@ -837,11 +865,19 @@
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "Summons": {
             "ActorName": "{option} Actor Name",
+            "CreatureNames": {
+                "HealingSpirit": "Healing Spirit",
+                "Skeleton": "Skeleton",
+                "SpiritualWeapon": "Spiritual Weapon",
+                "Zombie": "Zombie"
+            },
             "CustomAvatar": "{option} Custom Avatar",
             "CustomName": "{option} Custom Name",
             "CustomToken": "{option} Custom Token",
             "DismissSummon": "Dismiss Summon",
+            "Folder": "Folder Name",
             "SelectSummonType": "Select Summon Type",
+            "SelectSummons": "Select Summons (Max: {totalSummons})",
             "SummonedCreature": "Summoned Creature"
         },
         "Template": {
