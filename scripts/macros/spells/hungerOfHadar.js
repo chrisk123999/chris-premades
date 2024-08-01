@@ -46,12 +46,12 @@ async function use({workflow}) {
     for (let target of targets) await effectUtils.createEffect(target.actor, effectData, {parentEntity: template, identifier: 'hungerOfHadarBlinded'});
 }
 async function startTurn({trigger: {entity: template, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Cold', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.cold'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Cold', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HungerOfHadar.Cold'});
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.hungerOfHadar.tentacles', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HungerOfHadar.Tentacles', flatDC: castData.saveDC});
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
@@ -88,7 +88,7 @@ export let hungerOfHadar = {
     config: [
         {
             value: 'useRealDarkness',
-            label: 'CHRISPREMADES.config.realDarkness',
+            label: 'CHRISPREMADES.Config.RealDarkness',
             type: 'checkbox',
             default: false,
             category: 'mechanics'

@@ -27,7 +27,7 @@ async function late({workflow}) {
     if (workflow.item?.system?.actionType !== 'rwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hailOfThornsBurst');
     if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.hailOfThorns.burst', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HailOfThorns.Burst', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;

@@ -16,7 +16,7 @@ async function early({workflow}) {
         return;
     }
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.genericEffects.invalidTarget'),
+        name: genericUtils.translate('CHRISPREMADES.GenericEffects.InvalidTarget'),
         img: 'icons/magic/time/arrows-circling-green.webp',
         origin: workflow.item.uuid,
         duration: {

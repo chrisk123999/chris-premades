@@ -3,10 +3,10 @@ import {dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let buttons = [
-        ['CHRISPREMADES.macros.guardianOfNature.beast', 'beast', {image: 'icons/creatures/abilities/bear-roar-bite-brown-green.webp'}],
-        ['CHRISPREMADES.macros.guardianOfNature.tree', 'tree', {image: 'icons/magic/nature/tree-animated-strike.webp'}]
+        ['CHRISPREMADES.Macros.GuardianOfNature.Beast', 'beast', {image: 'icons/creatures/abilities/bear-roar-bite-brown-green.webp'}],
+        ['CHRISPREMADES.Macros.GuardianOfNature.Tree', 'tree', {image: 'icons/magic/nature/tree-animated-strike.webp'}]
     ];
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.guardianOfNature.select', buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.GuardianOfNature.Select', buttons);
     if (!selection) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;

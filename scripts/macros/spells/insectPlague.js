@@ -26,7 +26,7 @@ async function enter({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'insectPlague')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'insectPlague');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.insectPlague.damage', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InsectPlague.Damage', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -41,7 +41,7 @@ async function enter({trigger: {entity: template, castData, token}}) {
     await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.insectPlague.damage', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InsectPlague.Damage', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

@@ -31,7 +31,7 @@ async function damage({workflow}) {
     let damageType = 'psychic';
     let formula = '1d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Wrathful Smite: Frighten', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.wrathfulSmite.frighten'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Wrathful Smite: Frighten', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WrathfulSmite.Frighten'});
     if (!featureData) {
         errors.missingPackItem();
         return;

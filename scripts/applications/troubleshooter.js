@@ -171,7 +171,7 @@ export async function troubleshooter() {
     addLine('/////////////// CPR Settings ///////////////');
     let cprSettings = Array.from(game.settings.settings).filter(i => i[0].includes('chris-premades') && i[1].namespace === 'chris-premades');
     cprSettings.forEach(i => {
-        addLine(genericUtils.translate('CHRISPREMADES.settings.' + i[1].key + '.name') + ': ' + game.settings.get('chris-premades', i[1].key));
+        addLine(genericUtils.translate('CHRISPREMADES.Settings.' + i[1].key + '.Name') + ': ' + game.settings.get('chris-premades', i[1].key));
     });
     if (game.modules.get('midi-qol')?.active) {
         addLine('');
@@ -222,7 +222,7 @@ export async function troubleshooter() {
         async function clipboard(output) {
             try {
                 navigator.clipboard.writeText(output);
-                genericUtils.notify('CHRISPREMADES.troubleshooter.clipboard', 'info', {localize: true});
+                genericUtils.notify('CHRISPREMADES.Troubleshooter.Clipboard', 'info', {localize: true});
             } catch (error) {
                 console.log(error);
             }
@@ -235,15 +235,15 @@ export async function troubleshooter() {
                 label: genericUtils.translate('CHRISPREMADES.Generic.Close')
             },
             clipboard: {
-                label: genericUtils.translate('CHRISPREMADES.troubleshooter.copyToClipboard'),
+                label: genericUtils.translate('CHRISPREMADES.Troubleshooter.CopyToClipboard'),
                 callback: () => clipboard(output)
             },
             save: {
-                label: genericUtils.translate('CHRISPREMADES.troubleshooter.saveToFile'),
+                label: genericUtils.translate('CHRISPREMADES.Troubleshooter.SaveToFile'),
                 callback: () => save(output)
             },
             discord: {
-                label: genericUtils.translate('CHRISPREMADES.troubleshooter.discord'),
+                label: genericUtils.translate('CHRISPREMADES.Troubleshooter.Discord'),
                 callback: () => discord()
             }
         };
@@ -261,7 +261,7 @@ export async function troubleshooter() {
         }
         let dialog = new TroubleDialog(
             {
-                title: genericUtils.translate('CHRISPREMADES.troubleshooter.title'),
+                title: genericUtils.translate('CHRISPREMADES.Troubleshooter.Title'),
                 content: content,
                 buttons: buttons
             },

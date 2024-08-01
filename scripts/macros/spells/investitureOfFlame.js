@@ -3,7 +3,7 @@ import {start as startAnim, end as endAnim} from './fireShield.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Flame: Fire', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.investitureOfFlame.fire', identifier: 'investitureOfFlameFire', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Flame: Fire', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfFlame.Fire', identifier: 'investitureOfFlameFire', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -74,7 +74,7 @@ async function use({workflow}) {
     };
     // TODO: Need to disable autoanims here? If so should we do for others?
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfFlame', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfFlameFire'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
     await startAnim({
         trigger: {
@@ -98,7 +98,7 @@ async function moveOrTurn({trigger: {entity: effect, castData, token, target}}) 
         }
     }
     if (!doDamage) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Flame: Heat', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.investitureOfFlame.heat'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Flame: Heat', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfFlame.Heat'});
     featureData.flags['chris-premades'] = {
         castData
     };
@@ -122,14 +122,14 @@ export let investitureOfFlame = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '4d8',
             homebrew: true,
@@ -137,7 +137,7 @@ export let investitureOfFlame = {
         },
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'fire',
             options: constants.damageTypeOptions,

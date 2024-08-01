@@ -208,29 +208,29 @@ export let faerieFire = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'blue',
             category: 'animation',
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue'
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green'
+                    label: 'CHRISPREMADES.Config.Colors.Green'
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple'
+                    label: 'CHRISPREMADES.Config.Colors.Purple'
                 }
             ]
         }

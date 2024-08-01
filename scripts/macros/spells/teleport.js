@@ -6,30 +6,30 @@ async function use({workflow}) {
     let toTeleport = [workflow.token];
     if (workflow.actor.sheet.rendered) workflow.actor.sheet.minimize();
     if (targets.length) {
-        let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.teleport.select', targets, {skipDeadAndUnconscious: false, type: 'multiple', maxAmount: 8});
+        let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Teleport.Select', targets, {skipDeadAndUnconscious: false, type: 'multiple', maxAmount: 8});
         if (selection && selection[0]?.length) {
             toTeleport.push(...selection[0]);
         }
     }
     let buttons = [
-        ['CHRISPREMADES.macros.teleport.permanentCircle', 'pc'],
-        ['CHRISPREMADES.macros.teleport.associatedObject', 'ao'],
-        ['CHRISPREMADES.macros.teleport.veryFamiliar', 'vf'],
-        ['CHRISPREMADES.macros.teleport.seenCasually', 'sc'],
-        ['CHRISPREMADES.macros.teleport.viewedOnce', 'vo'],
-        ['CHRISPREMADES.macros.teleport.description', 'd'],
-        ['CHRISPREMADES.macros.teleport.falseDestination', 'fd']
+        ['CHRISPREMADES.Macros.Teleport.PermanentCircle', 'pc'],
+        ['CHRISPREMADES.Macros.Teleport.AssociatedObject', 'ao'],
+        ['CHRISPREMADES.Macros.Teleport.VeryFamiliar', 'vf'],
+        ['CHRISPREMADES.Macros.Teleport.SeenCasually', 'sc'],
+        ['CHRISPREMADES.Macros.Teleport.ViewedOnce', 'vo'],
+        ['CHRISPREMADES.Macros.Teleport.Description', 'd'],
+        ['CHRISPREMADES.Macros.Teleport.FalseDestination', 'fd']
     ];
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.teleport.familiarity', buttons, {userId: socketUtils.gmID()});
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Teleport.Familiarity', buttons, {userId: socketUtils.gmID()});
     if (!selection) {
         if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
         return;
     }
     let flavors = {
-        mishap: 'CHRISPREMADES.macros.teleport.mishap',
-        onTarget: 'CHRISPREMADES.macros.teleport.onTarget',
-        offTarget: 'CHRISPREMADES.macros.teleport.offTarget',
-        similarArea: 'CHRISPREMADES.macros.teleport.similarArea',
+        mishap: 'CHRISPREMADES.Macros.Teleport.Mishap',
+        onTarget: 'CHRISPREMADES.Macros.Teleport.OnTarget',
+        offTarget: 'CHRISPREMADES.Macros.Teleport.OffTarget',
+        similarArea: 'CHRISPREMADES.Macros.Teleport.SimilarArea',
     };
     let flavor = 'mishap';
     let totalDamage = 0;
@@ -85,7 +85,7 @@ async function use({workflow}) {
         });
     }
     if (totalDamage > 0) {
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Teleport: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.teleport.damage'});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Teleport: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Teleport.Damage'});
         if (!featureData) {
             errors.missingPackItem();
             if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
@@ -101,7 +101,7 @@ async function use({workflow}) {
         roll.toMessage({
             rollMode: 'roll',
             speaker: workflow.chatCard.speaker,
-            flavor: genericUtils.translate('CHRISPREMADES.macros.teleport.distance'),
+            flavor: genericUtils.translate('CHRISPREMADES.Macros.Teleport.Distance'),
             whisper: [socketUtils.gmID()]
         }, {
             rollMode: CONST.DICE_ROLL_MODES.BLIND
@@ -110,7 +110,7 @@ async function use({workflow}) {
         roll.toMessage({
             rollMode: 'roll',
             speaker: workflow.chatCard.speaker,
-            flavor: genericUtils.translate('CHRISPREMADES.macros.teleport.direction'),
+            flavor: genericUtils.translate('CHRISPREMADES.Macros.Teleport.Direction'),
             whisper: [socketUtils.gmID()]
         }, {
             rollMode: CONST.DICE_ROLL_MODES.BLIND
@@ -144,7 +144,7 @@ async function use({workflow}) {
                 ]
             ]
         ];
-        let location = await socket.executeAsGM('dialog', workflow.item.name, 'CHRISPREMADES.macros.teleport.howFar', inputs, 'okCancel');
+        let location = await socket.executeAsGM('dialog', workflow.item.name, 'CHRISPREMADES.Macros.Teleport.HowFar', inputs, 'okCancel');
         if (!location || !location.buttons) {
             if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
         }
@@ -161,7 +161,7 @@ async function use({workflow}) {
         ];
         ChatMessage.create({
             speaker: workflow.chatCard.speaker,
-            content: genericUtils.format('CHRISPREMADES.macros.teleport.offTargetString', {distance, units: genericUtils.translate(location.units === 'miles' ? 'CHRISPREMADES.Units.Miles' : 'CHRISPREMADES.Units.Feet').toLowerCase(), direction: directions[roll2.total - 1]}),
+            content: genericUtils.format('CHRISPREMADES.Macros.Teleport.OffTargetString', {distance, units: genericUtils.translate(location.units === 'miles' ? 'CHRISPREMADES.Units.Miles' : 'CHRISPREMADES.Units.Feet').toLowerCase(), direction: directions[roll2.total - 1]}),
             whisper: [socketUtils.gmID()],
             blind: true
         });
@@ -283,7 +283,7 @@ async function use({workflow}) {
         .duration(10000);
 
     if (playAnimation) await teleOut.play();
-    let selection2 = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.teleport.selectDestination', {userId: socketUtils.gmID()});
+    let selection2 = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.Teleport.SelectDestination', {userId: socketUtils.gmID()});
     if (!selection2) {
         for (let token of toTeleport) {
             await genericUtils.update(token.document, {hidden: true, alpha: 1});
@@ -404,7 +404,7 @@ export let teleport = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

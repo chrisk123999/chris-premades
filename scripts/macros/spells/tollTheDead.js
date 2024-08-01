@@ -24,7 +24,7 @@ export let tollTheDead = {
     config: [
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: 'd12',
             homebrew: true,

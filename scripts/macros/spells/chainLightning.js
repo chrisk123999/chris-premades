@@ -8,7 +8,7 @@ async function use({workflow}) {
         let newTargets = nearbyTokens;
         if (!nearbyTokens.length) continue;
         if (nearbyTokens.length > maxTargets) {
-            let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.macros.chainLightning.select', {maxTargets}), nearbyTokens, {type: 'multiple', maxAmount: maxTargets});
+            let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.ChainLightning.Select', {maxTargets}), nearbyTokens, {type: 'multiple', maxAmount: maxTargets});
             if (!selection) {
                 continue;
             }
@@ -36,7 +36,7 @@ async function use({workflow}) {
             }
             sequenceObj.play();
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning: Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.macros.chainLightning.leap'});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning: Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.Macros.ChainLightning.Leap'});
         if (!featureData) {
             errors.missingPackItem();
             continue;
@@ -67,7 +67,7 @@ export let chainLightning = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'lightning',
             options: constants.damageTypeOptions,
@@ -76,64 +76,64 @@ export let chainLightning = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'blue',
             category: 'animation',
             options: [
                 {
                     value:'blue',
-                    label:'CHRISPREMADES.config.colors.blue'
+                    label:'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value:'blue02',
-                    label:'CHRISPREMADES.config.colors.blue02',
+                    label:'CHRISPREMADES.Config.Colors.Blue02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'dark_purple',
-                    label:'CHRISPREMADES.config.colors.darkPurple',
+                    label:'CHRISPREMADES.Config.Colors.DarkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'dark_red',
-                    label:'CHRISPREMADES.config.colors.darkRed',
+                    label:'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']},
                 {
                     value:'green',
-                    label:'CHRISPREMADES.config.colors.green',
+                    label:'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'green02',
-                    label:'CHRISPREMADES.config.colors.green02',
+                    label:'CHRISPREMADES.Config.Colors.Green02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'orange',
-                    label:'CHRISPREMADES.config.colors.orange',
+                    label:'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'red',
-                    label:'CHRISPREMADES.config.colors.red',
+                    label:'CHRISPREMADES.Config.Colors.Red',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'purple',
-                    label:'CHRISPREMADES.config.colors.purple',
+                    label:'CHRISPREMADES.Config.Colors.Purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value:'yellow',
-                    label:'CHRISPREMADES.config.colors.yellow',
+                    label:'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
                 },
             ]

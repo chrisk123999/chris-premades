@@ -33,7 +33,7 @@ async function use({workflow}) {
         attachUuids.push(darknessSource.uuid);
         effectUtils.addDependent(template, [darknessSource]);
     }
-    let attachToken = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.darkness.attach');
+    let attachToken = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.Darkness.Attach');
     if (attachToken) {
         await genericUtils.update(template, {
             x: token.center.x,
@@ -90,14 +90,14 @@ export let darkness = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'useRealDarkness',
-            label: 'CHRISPREMADES.config.realDarkness',
+            label: 'CHRISPREMADES.Config.RealDarkness',
             type: 'checkbox',
             default: false,
             category: 'mechanics'

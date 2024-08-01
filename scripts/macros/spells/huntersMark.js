@@ -6,7 +6,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunter\'s Mark: Move', {getDescription: true, translate: 'CHRISPREMADES.macros.huntersMark.move', identifier: 'huntersMarkMove', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunter\'s Mark: Move', {getDescription: true, translate: 'CHRISPREMADES.Macros.HuntersMark.Move', identifier: 'huntersMarkMove', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -31,7 +31,7 @@ async function use({workflow}) {
     let durationScale = workflow.item.system.duration.value;
     seconds = Math.min(seconds * durationScale, 86400);
     let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.huntersMark.marked'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -59,7 +59,7 @@ async function use({workflow}) {
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'huntersMarkMarked'});
     }
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
 async function damage({workflow}) {
@@ -81,7 +81,7 @@ async function move({workflow}) {
     let selection;
     if (targets.length) {
         if (targets.length > 1) {
-            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.huntersMark.select', targets, {skipDeadAndUnconscious: false});
+            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.HuntersMark.Select', targets, {skipDeadAndUnconscious: false});
             if (!selection) return;
             selection = selection[0];
         } else {
@@ -97,7 +97,7 @@ async function move({workflow}) {
     await genericUtils.setFlag(effect, 'chris-premades', 'huntersMark.targets', targetUuids);
     let seconds = effect.duration.remaining;
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.huntersMark.marked'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.HuntersMark.Marked'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -121,7 +121,7 @@ export let huntersMark = {
     config: [
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d6',
             homebrew: true,

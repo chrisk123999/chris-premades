@@ -21,7 +21,7 @@ async function use({workflow}) {
             }
         }
     });
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.moonbeam.move', identifier: 'moonbeamMove'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Moonbeam.Move', identifier: 'moonbeamMove'});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -44,7 +44,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'moonbeamMove'}], identifier: 'moonbeam'});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function move({workflow}) {
@@ -65,7 +65,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'moonbeam')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'moonbeam');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.moonbeam.damage', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Moonbeam: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Moonbeam.Damage', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -79,7 +79,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
     if (actorUtils.isShapeChanger(token.actor)) {
         let effectData = {
-            name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionDisadvantage'),
+            name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionDisadvantage'),
             img: 'icons/magic/time/arrows-circling-green.webp',
             origin: template.uuid,
             duration: {

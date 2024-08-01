@@ -61,7 +61,7 @@ async function move({trigger: {entity: effect, token}}) {
     if (!template) return;
     let newCenter = getAllowedMoveLocation(token, template, 2);
     if (!newCenter) {
-        genericUtils.notify('CHRISPREMADES.macros.cloudkill.noRoom', 'info');
+        genericUtils.notify('CHRISPREMADES.Macros.Cloudkill.NoRoom', 'info');
         return;
     }
     newCenter = canvas.grid.getSnappedPoint(newCenter, {mode: CONST.GRID_SNAPPING_MODES.TOP_LEFT_CORNER});
@@ -72,7 +72,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'cloudkill')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'cloudkill');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Cloudkill: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.cloudkill.damage', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Cloudkill: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Cloudkill.Damage', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

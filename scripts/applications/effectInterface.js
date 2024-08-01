@@ -10,7 +10,7 @@ async function ready() {
             'type': 'feat',
             'system': {
                 'description': {
-                    'value': genericUtils.translate('CHRISPREMADES.effectInterface.item')
+                    'value': genericUtils.translate('CHRISPREMADES.EffectInterface.Item')
                 }
             },
             'flags': {
@@ -102,7 +102,7 @@ class EffectDirectory extends DocumentDirectory {
                     }
                     async function importDialog() {
                         new Dialog({
-                            title: genericUtils.translate('CHRISPREMADES.effectInterface.importData') + document.name,
+                            title: genericUtils.translate('CHRISPREMADES.EffectInterface.ImportData') + document.name,
                             // eslint-disable-next-line no-undef
                             content: await renderTemplate('templates/apps/import-data.html', {
                                 hint1: game.i18n.format('DOCUMENT.ImportDataHint1', {'document': 'ActiveEffect'}),
@@ -177,7 +177,7 @@ class EffectDirectory extends DocumentDirectory {
         let document = this.collection.get(documentId);
         let selectedTokens = canvas.tokens.controlled;
         if (!selectedTokens.length) {
-            genericUtils.notify('CHRISPREMADES.effectInterface.selectToken', 'warn');
+            genericUtils.notify('CHRISPREMADES.EffectInterface.SelectToken', 'warn');
             return;
         }
         let effectData = document.toObject();
@@ -224,7 +224,7 @@ class EffectDirectory extends DocumentDirectory {
     async _onCreateEntry(event) {
         event.preventDefault();
         let effectData = {
-            'name': genericUtils.translate('CHRISPREMADES.effectInterface.newEffect'),
+            'name': genericUtils.translate('CHRISPREMADES.EffectInterface.NewEffect'),
             'icon': 'icons/svg/aura.svg',
             'transfer': false,
             'flags': {
@@ -320,8 +320,8 @@ function effectSidebar(app, html, data) {
     let tab = document.createElement('a');
     tab.classList.add('item');
     tab.dataset.tab = 'effects';
-    tab.dataset.tooltip = 'CHRISPREMADES.effectInterface.effects';
-    if (!('tooltip' in game)) tab.title = genericUtils.translate('CHRISPREMADES.effectInterface.effects');
+    tab.dataset.tooltip = 'CHRISPREMADES.EffectInterface.Effects';
+    if (!('tooltip' in game)) tab.title = genericUtils.translate('CHRISPREMADES.EffectInterface.Effects');
     let icon = document.createElement('i');
     icon.setAttribute('class', 'fas fa-bolt');
     tab.append(icon);

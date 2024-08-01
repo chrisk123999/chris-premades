@@ -53,70 +53,70 @@ export let shockingGrasp = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'blue',
             category: 'animation',
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue'
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value: 'blue02',
-                    label: 'CHRISPREMADES.config.colors.blue02',
+                    label: 'CHRISPREMADES.Config.Colors.Blue02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_purple',
-                    label: 'CHRISPREMADES.config.colors.dark_purple',
+                    label: 'CHRISPREMADES.Config.Colors.Dark_purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
-                    label: 'CHRISPREMADES.config.colors.darkRed',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green02',
-                    label: 'CHRISPREMADES.config.colors.green02',
+                    label: 'CHRISPREMADES.Config.Colors.Green02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange',
+                    label: 'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'red',
-                    label: 'CHRISPREMADES.config.colors.red',
+                    label: 'CHRISPREMADES.Config.Colors.Red',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'yellow',
-                    label: 'CHRISPREMADES.config.colors.yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 }
             ]

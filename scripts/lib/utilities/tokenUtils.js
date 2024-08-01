@@ -10,15 +10,15 @@ function checkCover(sourceToken, targetToken, {item, displayName}) {
     if (!displayName) return cover;
     switch (cover) {
         case 0:
-            return genericUtils.translate('CHRISPREMADES.cover.no');
+            return genericUtils.translate('CHRISPREMADES.Cover.No');
         case 2:
-            return genericUtils.translate('CHRISPREMADES.cover.half');
+            return genericUtils.translate('CHRISPREMADES.Cover.Half');
         case 5:
-            return genericUtils.translate('CHRISPREMADES.cover.threeQuarters');
+            return genericUtils.translate('CHRISPREMADES.Cover.ThreeQuarters');
         case 999:
-            return genericUtils.translate('CHRISPREMADES.cover.full');
+            return genericUtils.translate('CHRISPREMADES.Cover.Full');
         default:
-            return genericUtils.translate('CHRISPREMADES.cover.unknown');
+            return genericUtils.translate('CHRISPREMADES.Cover.Unknown');
     }
 }
 async function moveTokenAlongRay(targetToken, ray, distance) {
@@ -27,7 +27,7 @@ async function moveTokenAlongRay(targetToken, ray, distance) {
     let hitsWall = true;
     let oldDistance;
     if (ray.distance === 0) {
-        genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved', 'info');
+        genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
         return;
     }
     while (hitsWall) {
@@ -38,7 +38,7 @@ async function moveTokenAlongRay(targetToken, ray, distance) {
             oldDistance = distance;
             distance += distance > 0 ? -5 : 5;
             if (distance === 0 || (Math.sign(oldDistance) !== Math.sign(distance))) {
-                genericUtils.notify('CHRISPREMADES.movement.unableToBeMoved', 'info');
+                genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
                 return;
             }
         }

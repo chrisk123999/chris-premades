@@ -22,7 +22,7 @@ async function use({trigger, workflow}) {
     while (boltsLeft) {
         let selection, skip;
         if (level >= 5) {
-            [selection, skip] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.eldritchBlast.target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: boltsLeft});
+            [selection, skip] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: boltsLeft});
             if (!selection) return;
         } else {
             selection = [{document: workflow.targets.first(), value: 1}];
@@ -63,7 +63,7 @@ export let eldritchBlast = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'force',
             options: constants.damageTypeOptions,
@@ -72,7 +72,7 @@ export let eldritchBlast = {
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d10[force]',
             homebrew: true,
@@ -80,87 +80,87 @@ export let eldritchBlast = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'purple',
             category: 'animation',
             options: [
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple'
+                    label: 'CHRISPREMADES.Config.Colors.Purple'
                 },
                 {
                     value: 'dark_green',
-                    label: 'CHRISPREMADES.config.colors.darkGreen',
+                    label: 'CHRISPREMADES.Config.Colors.DarkGreen',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_pink',
-                    label: 'CHRISPREMADES.config.colors.darkPink',
+                    label: 'CHRISPREMADES.Config.Colors.DarkPink',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_purple',
-                    label: 'CHRISPREMADES.config.colors.darkPurple',
+                    label: 'CHRISPREMADES.Config.Colors.DarkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
-                    label: 'CHRISPREMADES.config.colors.darkRed',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'lightblue',
-                    label: 'CHRISPREMADES.config.colors.lightBlue',
+                    label: 'CHRISPREMADES.Config.Colors.LightBlue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'lightgreen',
-                    label: 'CHRISPREMADES.config.colors.lightGreen',
+                    label: 'CHRISPREMADES.Config.Colors.LightGreen',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange',
+                    label: 'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'pink',
-                    label: 'CHRISPREMADES.config.colors.pink',
+                    label: 'CHRISPREMADES.Config.Colors.Pink',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'yellow',
-                    label: 'CHRISPREMADES.config.colors.yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'rainbow',
-                    label: 'CHRISPREMADES.config.colors.rainbow',
+                    label: 'CHRISPREMADES.Config.Colors.Rainbow',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 }
             ]
         },
         {
             value: 'sound',
-            label: 'CHRISPREMADES.config.sound',
+            label: 'CHRISPREMADES.Config.Sound',
             type: 'file',
             default: '',
             category: 'sound'

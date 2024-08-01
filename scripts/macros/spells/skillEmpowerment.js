@@ -15,7 +15,7 @@ async function use({workflow}) {
                 options: Object.entries(CONFIG.DND5E.skills).filter(([key, _]) => targetActor.system.skills[key].value == 1).map(([value, {label}]) => {return {value, label};})
             }
         };
-        let selection = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.macros.skillEmpowerment.selectSkill', input);
+        let selection = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.Macros.SkillEmpowerment.SelectSkill', input);
         if (!selection) continue;
         let effectData = {
             name: workflow.item.name,

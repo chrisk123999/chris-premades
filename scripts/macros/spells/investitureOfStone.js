@@ -2,7 +2,7 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Stone: Earthquake', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.investitureOfStone.earthquake', identifier: 'investitureOfStoneEarthquake', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Stone: Earthquake', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfStone.Earthquake', identifier: 'investitureOfStoneEarthquake', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -26,7 +26,7 @@ async function use({workflow}) {
         ]
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfStone', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfStoneEarthquake'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 export let investitureOfStone = {

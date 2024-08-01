@@ -5,20 +5,20 @@ async function use({trigger, workflow}) {
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let buttons = validTypes.map(i => ([CONFIG.DND5E.damageTypes[i].label, Object.keys(CONFIG.DND5E.damageTypes).find(j => j === i)]));
     if (!buttons.length) return;
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.elementalWeapon.selectDamageType', buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalWeapon.SelectDamageType', buttons);
     if (!selection) return;
     for (let token of workflow.targets) {
         if (!token.actor) return;
         let weapons = token.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
         let selectedWeapon;
         if (!weapons.length) {
-            genericUtils.notify('CHRISPREMADES.macros.elementalWeapon.noWeapons', 'warn');
+            genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'warn');
             return;
         }
         if (weapons.length === 1) {
             selectedWeapon = weapons[0];
         } else {
-            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.elementalWeapon.selectWeapon', weapons);
+            selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalWeapon.SelectWeapon', weapons);
             if (!selectedWeapon) return;
         }
         let castLevel = workflow.castData.castLevel;
@@ -80,7 +80,7 @@ export let elementalWeapon = {
     config: [
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d4',
             homebrew: true,
@@ -88,7 +88,7 @@ export let elementalWeapon = {
         },
         {
             value: 'damageTypes',
-            label: 'CHRISPREMADES.config.damageTypes',
+            label: 'CHRISPREMADES.Config.DamageTypes',
             type: 'selectMultiple',
             default: [
                 'acid',

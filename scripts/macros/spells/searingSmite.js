@@ -33,7 +33,7 @@ async function damage({workflow}) {
     let formula = effect.flags['chris-premades'].searingSmite.level + 'd6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.searingSmite.fire'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.SearingSmite.Fire'),
         img: effect.img,
         origin: effect.origin,
         duration: {

@@ -24,7 +24,7 @@ async function use({workflow}) {
             .scaleToObject(2)
             .play();
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Far Step: Teleport', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.farStep.teleport', identifier: 'farStepTeleport'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Far Step: Teleport', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FarStep.Teleport', identifier: 'farStepTeleport'});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -50,7 +50,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['farStepStepping']);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'farStep', vae: [{type: 'use', name: featureData.name, identifier: 'farStepTeleport'}]});
     effectUtils.addMacro(featureData, 'midi.item', ['farStepStepping']);
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function useBonus({workflow}) {
@@ -84,25 +84,25 @@ export let farStep = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'animation',
-            label: 'CHRISPREMADES.config.animation',
+            label: 'CHRISPREMADES.Config.Animation',
             type: 'select',
             default: 'simple',
             category: 'animation',
             options: [
                 {
                     value: 'simple',
-                    label: 'CHRISPREMADES.config.animations.simple',
+                    label: 'CHRISPREMADES.Config.Animations.Simple',
                 },
                 {
                     value: 'complex',
-                    label: 'CHRISPREMADES.config.animations.complex',
+                    label: 'CHRISPREMADES.Config.Animations.Complex',
                     requiredModules: ['jb2a_patreon']
                 }
             ]

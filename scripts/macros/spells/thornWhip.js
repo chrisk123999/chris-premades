@@ -11,7 +11,7 @@ async function use({trigger, workflow}) {
         if (distance <= 5) break;
         if (distance > 5) options.push(['CHRISPREMADES.Distance.5', 5]);
         if (distance > 10) options.push(['CHRISPREMADES.Distance.10', 10]);
-        let selection = Number(await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.thornWhip.pull', options));
+        let selection = Number(await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ThornWhip.Pull', options));
         if (!selection) return;
         await tokenUtils.pushToken(workflow.token, target, -selection);
     }
@@ -31,7 +31,7 @@ export let thornWhip = {
     config: [
         {
             value: 'checkSize',
-            label: 'CHRISPREMADES.macros.thornWhip.checkSize',
+            label: 'CHRISPREMADES.Macros.ThornWhip.CheckSize',
             type: 'checkbox',
             default: true,
             homebrew: true,

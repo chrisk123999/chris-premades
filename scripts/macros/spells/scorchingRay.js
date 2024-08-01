@@ -2,7 +2,7 @@ import {animationUtils, compendiumUtils, constants, dialogUtils, errors, generic
 
 async function use({workflow}) {
     let maxRays = 1 + workflow.castData.castLevel;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Scorching Ray Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.scorchingRay.bolt', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Scorching Ray Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ScorchingRay.Bolt', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -76,7 +76,7 @@ async function use({workflow}) {
             nearbyTargets = tokenUtils.findNearby(workflow.token, workflow.item.system.range.value, 'enemy');
         }
         if (skipDead) nearbyTargets = nearbyTargets.filter(i => i.actor.system.attributes.hp.value > 0);
-        let selectionArr = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.macros.scorchingRay.select', {maxRays}), nearbyTargets, {
+        let selectionArr = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.ScorchingRay.Select', {maxRays}), nearbyTargets, {
             type: 'selectAmount',
             maxAmount: maxRays
         });
@@ -191,68 +191,68 @@ export let scorchingRay = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'animation',
-            label: 'CHRISPREMADES.config.animation',
+            label: 'CHRISPREMADES.Config.Animation',
             type: 'select',
             default: 'simple',
             category: 'animation',
             options: [
                 {
                     value: 'simple',
-                    label: 'CHRISPREMADES.config.animations.simple',
+                    label: 'CHRISPREMADES.Config.Animations.Simple',
                 },
                 {
                     value: 'complex',
-                    label: 'CHRISPREMADES.config.animations.complex',
+                    label: 'CHRISPREMADES.Config.Animations.Complex',
                     requiredModules: ['jb2a_patreon']
                 }
             ]
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'orange',
             category: 'animation',
             options: [
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange'
+                    label: 'CHRISPREMADES.Config.Colors.Orange'
                 },
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'pink',
-                    label: 'CHRISPREMADES.config.colors.pink',
+                    label: 'CHRISPREMADES.Config.Colors.Pink',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'cycle',
-                    label: 'CHRISPREMADES.config.colors.cycle',
+                    label: 'CHRISPREMADES.Config.Colors.Cycle',
                     requiredModules: ['jb2a_patreon']
                 }
             ]

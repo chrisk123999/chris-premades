@@ -21,7 +21,7 @@ async function use({workflow}) {
             }
         }
     });
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dawn: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.dawn.move', identifier: 'dawnMove'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dawn: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Dawn.Move', identifier: 'dawnMove'});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -44,7 +44,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'dawnMove'}], identifier: 'dawn'});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function move({workflow}) {
@@ -61,7 +61,7 @@ async function move({workflow}) {
     });
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dawn: End Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.dawn.endTurn', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dawn: End Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Dawn.EndTurn', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

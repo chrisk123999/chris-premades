@@ -20,7 +20,7 @@ async function use({workflow}) {
             }
         }
     });
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.stormSphere.bolt', identifier: 'stormSphereBolt', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StormSphere.Bolt', identifier: 'stormSphereBolt', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -52,11 +52,11 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'stormSphere', vae: [{type: 'use', name: featureData.name, identifier: 'stormSphereBolt'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.stormSphere.turn', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Sphere: Turn', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StormSphere.Turn', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -109,7 +109,7 @@ export let stormSphere = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

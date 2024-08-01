@@ -8,7 +8,7 @@ async function use({workflow}) {
     let targetToken = workflow.targets.first();
     let targetUuid = targetToken.document.uuid;
     let damageFormula = workflow.castData.castLevel + 'd8[fire]';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
     let spellDC = itemUtils.getSaveDC(workflow.item);
     await genericUtils.setProperty(featureData, 'flags.chris-premades.heatMetal', {
         damageFormula,
@@ -32,7 +32,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'heatMetal', vae: [{type: 'use', name: featureData.name, identifier: 'heatMetalPulse'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
     await dialog(workflow, spellDC, targetToken, effect);
 }
@@ -45,7 +45,7 @@ async function pulse({workflow}) {
     if (!damageFormula || !targetTokenUuid || !spellDC || !parentEffect) return;
     let targetToken = (await fromUuid(targetTokenUuid))?.object;
     if (!targetToken) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Damage', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.damage', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Damage', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Damage', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -60,11 +60,11 @@ async function pulse({workflow}) {
     await dialog(workflow, spellDC, targetToken, parentEffect);
 }
 async function dialog(workflow, spellDC, targetToken, parentEffect) {
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.heatMetal.drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.macros.heatMetal.unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.HeatMetal.Drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.Macros.HeatMetal.Unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
     if (selection) {
         return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.macros.heatMetal.held', object: true, flatDC: spellDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Held', object: true, flatDC: spellDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -74,7 +74,7 @@ async function dialog(workflow, spellDC, targetToken, parentEffect) {
         return;
     }
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.heatMetal.held'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.HeatMetal.Held'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {

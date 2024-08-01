@@ -28,9 +28,9 @@ function addSetting(options) {
 }
 function addMenu(options) {
     let menu = {
-        name: 'CHRISPREMADES.settingCategory.' + options.key + '.name',
-        label: 'CHRISPREMADES.settingCategory.' + options.key + '.label',
-        hint: 'CHRISPREMADES.settingCategory.' + options.key + '.hint',
+        name: 'CHRISPREMADES.SettingCategory.' + options.key + '.Name',
+        label: 'CHRISPREMADES.SettingCategory.' + options.key + '.Label',
+        hint: 'CHRISPREMADES.SettingCategory.' + options.key + '.Hint',
         icon: options.icon,
         type: options.type,
         restricted: options.restricted ?? true,
@@ -108,10 +108,10 @@ export function registerSettings() {
         default: 4,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.Permissions.1',
-            2: 'CHRISPREMADES.settings.Permissions.2',
-            3: 'CHRISPREMADES.settings.Permissions.3',
-            4: 'CHRISPREMADES.settings.Permissions.4'
+            1: 'CHRISPREMADES.Settings.Permissions.1',
+            2: 'CHRISPREMADES.Settings.Permissions.2',
+            3: 'CHRISPREMADES.Settings.Permissions.3',
+            4: 'CHRISPREMADES.Settings.Permissions.4'
         }
     });
     addSetting({
@@ -120,10 +120,10 @@ export function registerSettings() {
         default: 4,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.Permissions.1',
-            2: 'CHRISPREMADES.settings.Permissions.2',
-            3: 'CHRISPREMADES.settings.Permissions.3',
-            4: 'CHRISPREMADES.settings.Permissions.4'
+            1: 'CHRISPREMADES.Settings.Permissions.1',
+            2: 'CHRISPREMADES.Settings.Permissions.2',
+            3: 'CHRISPREMADES.Settings.Permissions.3',
+            4: 'CHRISPREMADES.Settings.Permissions.4'
         }
     });
     addSetting({
@@ -132,10 +132,10 @@ export function registerSettings() {
         default: 1,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.Permissions.1',
-            2: 'CHRISPREMADES.settings.Permissions.2',
-            3: 'CHRISPREMADES.settings.Permissions.3',
-            4: 'CHRISPREMADES.settings.Permissions.4'
+            1: 'CHRISPREMADES.Settings.Permissions.1',
+            2: 'CHRISPREMADES.Settings.Permissions.2',
+            3: 'CHRISPREMADES.Settings.Permissions.3',
+            4: 'CHRISPREMADES.Settings.Permissions.4'
         }
     });
     addSetting({
@@ -144,10 +144,10 @@ export function registerSettings() {
         default: 4,
         category: 'general',
         choices: {
-            1: 'CHRISPREMADES.settings.Permissions.1',
-            2: 'CHRISPREMADES.settings.Permissions.2',
-            3: 'CHRISPREMADES.settings.Permissions.3',
-            4: 'CHRISPREMADES.settings.Permissions.4'
+            1: 'CHRISPREMADES.Settings.Permissions.1',
+            2: 'CHRISPREMADES.Settings.Permissions.2',
+            3: 'CHRISPREMADES.Settings.Permissions.3',
+            4: 'CHRISPREMADES.Settings.Permissions.4'
         }
     });
     addSetting({
@@ -318,9 +318,9 @@ export function registerSettings() {
         default: 79200000,
         category: 'backup',
         choices: {
-            79200000: 'CHRISPREMADES.backup.daily',
-            597600000: 'CHRISPREMADES.backup.weekly',
-            2622546000: 'CHRISPREMADES.backup.monthly'
+            79200000: 'CHRISPREMADES.Backup.Daily',
+            597600000: 'CHRISPREMADES.Backup.Weekly',
+            2622546000: 'CHRISPREMADES.Backup.Monthly'
         }
     });
     addSetting({
@@ -329,13 +329,13 @@ export function registerSettings() {
         default: 0,
         category: 'backup',
         choices: {
-            0: 'CHRISPREMADES.backup.forever',
-            604800000: 'CHRISPREMADES.backup.oneWeek',
-            1314873000: 'CHRISPREMADES.backup.halfMonth',
-            2629746000: 'CHRISPREMADES.backup.oneMonth',
-            7890000000: 'CHRISPREMADES.backup.threeMonths',
-            15780000000: 'CHRISPREMADES.backup.sixMonths',
-            31536000000: 'CHRISPREMADES.backup.oneYear'
+            0: 'CHRISPREMADES.Backup.Forever',
+            604800000: 'CHRISPREMADES.Backup.OneWeek',
+            1314873000: 'CHRISPREMADES.Backup.HalfMonth',
+            2629746000: 'CHRISPREMADES.Backup.OneMonth',
+            7890000000: 'CHRISPREMADES.Backup.ThreeMonths',
+            15780000000: 'CHRISPREMADES.Backup.SixMonths',
+            31536000000: 'CHRISPREMADES.Backup.OneYear'
         }
     });
     addSetting({
@@ -430,10 +430,10 @@ export function registerSettings() {
         default: 1,
         category: 'integration',
         choices: {
-            1: 'CHRISPREMADES.settings.gambitPremades.1',
-            2: 'CHRISPREMADES.settings.gambitPremades.2',
-            3: 'CHRISPREMADES.settings.gambitPremades.3',
-            4: 'CHRISPREMADES.settings.gambitPremades.4'
+            1: 'CHRISPREMADES.Settings.gambitPremades.1',
+            2: 'CHRISPREMADES.Settings.gambitPremades.2',
+            3: 'CHRISPREMADES.Settings.gambitPremades.3',
+            4: 'CHRISPREMADES.Settings.gambitPremades.4'
         },
         onChange: value => {
             if (game.modules.get('gambits-premades')?.active) gambitPremades.init(value);
@@ -445,10 +445,10 @@ export function registerSettings() {
         default: 1,
         category: 'integration',
         choices: {
-            1: 'CHRISPREMADES.settings.miscPremades.1',
-            2: 'CHRISPREMADES.settings.miscPremades.2',
-            3: 'CHRISPREMADES.settings.miscPremades.3',
-            4: 'CHRISPREMADES.settings.miscPremades.4'
+            1: 'CHRISPREMADES.Settings.miscPremades.1',
+            2: 'CHRISPREMADES.Settings.miscPremades.2',
+            3: 'CHRISPREMADES.Settings.miscPremades.3',
+            4: 'CHRISPREMADES.Settings.miscPremades.4'
         },
         onChange: value => {
             if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(value);

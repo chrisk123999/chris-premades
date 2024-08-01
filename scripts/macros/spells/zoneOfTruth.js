@@ -1,6 +1,6 @@
 import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function save(token, template) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Zone of Truth: Save', {getDescription: true, translate: 'CHRISPREMADES.macros.zoneOfTruth.save', identifier: 'zoneOfTruthSave', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Zone of Truth: Save', {getDescription: true, translate: 'CHRISPREMADES.Macros.ZoneOfTruth.Save', identifier: 'zoneOfTruthSave', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;

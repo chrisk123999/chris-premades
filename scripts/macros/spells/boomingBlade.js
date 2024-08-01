@@ -3,14 +3,14 @@ async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
-        genericUtils.notify('CHRISPREMADES.macros.boomingBlade.noWeapons', 'warn');
+        genericUtils.notify('CHRISPREMADES.Macros.BoomingBlade.NoWeapons', 'warn');
         return;
     }
     let selectedWeapon;
     if (weapons.length === 1) {
         selectedWeapon = weapons[0];
     } else {
-        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.boomingBlade.selectWeapon', weapons);
+        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.BoomingBlade.SelectWeapon', weapons);
         if (!selectedWeapon) return;
     }
     let level = actorUtils.getLevelOrCR(workflow.actor);
@@ -82,9 +82,9 @@ async function use({workflow}) {
 }
 async function moved({trigger}) {
     let effect = trigger.entity;
-    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.macros.boomingBlade.willingMove', {actorName: effect.parent.name}));
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.BoomingBlade.WillingMove', {actorName: effect.parent.name}));
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Booming Blade: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.boomingBlade.moved'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Booming Blade: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BoomingBlade.Moved'});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -116,7 +116,7 @@ export let boomingBlade = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'thunder',
             options: constants.damageTypeOptions,
@@ -125,70 +125,70 @@ export let boomingBlade = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'blue',
             category: 'animation',
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue'
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
                 },
                 {
                     value: 'blue02',
-                    label: 'CHRISPREMADES.config.colors.blue02',
+                    label: 'CHRISPREMADES.Config.Colors.Blue02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_purple',
-                    label: 'CHRISPREMADES.config.colors.darkPurple',
+                    label: 'CHRISPREMADES.Config.Colors.DarkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
-                    label: 'CHRISPREMADES.config.colors.darkRed',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green02',
-                    label: 'CHRISPREMADES.config.colors.green02',
+                    label: 'CHRISPREMADES.Config.Colors.Green02',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange',
+                    label: 'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'red',
-                    label: 'CHRISPREMADES.config.colors.red',
+                    label: 'CHRISPREMADES.Config.Colors.Red',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'yellow',
-                    label: 'CHRISPREMADES.config.colors.yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 }
             ]

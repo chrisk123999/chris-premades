@@ -24,7 +24,7 @@ async function early({workflow}) {
     let templateDoc = new CONFIG.MeasuredTemplate.documentClass(templateData, {parent: canvas.scene});
     let templates = [];
     await workflow.actor.sheet.minimize();
-    ui.notifications.info(genericUtils.translate('CHRISPREMADES.macros.fireStorm.place'));
+    ui.notifications.info(genericUtils.translate('CHRISPREMADES.Macros.FireStorm.Place'));
     for (let i = 0; i < 10; i++) {
         let template = new game.dnd5e.canvas.AbilityTemplate(templateDoc);
         try {
@@ -52,7 +52,7 @@ async function early({workflow}) {
     }
     await genericUtils.updateTargets(targets);
     let effectData = {
-        name: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.macros.fireStorm.templates'),
+        name: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.FireStorm.Templates'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -81,7 +81,7 @@ export let fireStorm = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

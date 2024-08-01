@@ -6,7 +6,7 @@ async function use({trigger, workflow}) {
         return;
     }
     let buttons = Object.values(CONFIG.DND5E.abilities).map(i => [i.label, i.abbreviation]);
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.selectAbility', buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Hex.SelectAbility', buttons);
     if (!selection) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -30,7 +30,7 @@ async function use({trigger, workflow}) {
     let durationScale = workflow.item.system.duration.value;
     seconds = Math.min(seconds * durationScale, 86400);
     let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.Hex.Hexed'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -64,7 +64,7 @@ async function use({trigger, workflow}) {
         }
     };
     effectUtils.addMacro(casterEffectData, 'midi.actor', ['hexAttack']);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: 'CHRISPREMADES.macros.hex.move', identifier: 'hexMove', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hex: Move', {getDescription: true, translate: 'CHRISPREMADES.Macros.Hex.Move', identifier: 'hexMove', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -74,7 +74,7 @@ async function use({trigger, workflow}) {
     for (let i of workflow.targets) {
         if (i.actor) await effectUtils.createEffect(i.actor, targetEffectData, {parentEntity: casterEffect, identifier: 'hexed'});
     }
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': seconds});
 }
 async function damage({trigger, workflow}) {
@@ -97,7 +97,7 @@ async function move({trigger, workflow}) {
     let selection;
     if (targets.length) {
         if (targets.length > 1) {
-            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.hex.multiple', targets, {skipDeadAndUnconscious: false});
+            selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Hex.Multiple', targets, {skipDeadAndUnconscious: false});
             if (!selection) {
                 selection = targets[0];
             }
@@ -113,7 +113,7 @@ async function move({trigger, workflow}) {
     oldTargets.push(workflow.targets.first().uuid);
     await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.hex.hexed'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.Hex.Hexed'),
         img: effect.img,
         origin: effect.origin,
         duration: {
@@ -145,7 +145,7 @@ export let hex = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'necrotic',
             options: constants.damageTypeOptions,
@@ -154,7 +154,7 @@ export let hex = {
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d6',
             homebrew: true,

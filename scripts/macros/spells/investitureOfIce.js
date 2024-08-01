@@ -2,7 +2,7 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 import {start as startAnim, end as endAnim, fireShield} from './fireShield.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Ice: Cone', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.investitureOfIce.cone', identifier: 'investitureOfIceCone', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Ice: Cone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfIce.Cone', identifier: 'investitureOfIceCone', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -51,7 +51,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['investitureOfIceIcy']);
     // TODO: Need to disable autoanims here? If so should we do for others?
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'investitureOfIce', vae: [{type: 'use', name: featureData.name, identifier: 'investitureOfIceCone'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
     await startAnim({
         trigger: {
@@ -77,14 +77,14 @@ export let investitureOfIce = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '4d6',
             homebrew: true,
@@ -92,7 +92,7 @@ export let investitureOfIce = {
         },
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'cold',
             options: constants.damageTypeOptions,

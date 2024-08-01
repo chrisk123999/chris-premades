@@ -8,7 +8,7 @@ async function selectCompendium() {
         name: i.metadata.id,
         options: {isChecked: oldCompendiumKey === i.metadata.id}
     }));
-    let selection = await DialogApp.dialog('CHRISPREMADES.settings.backupCompendium.name', 'CHRISPREMADES.settings.backupCompendium.hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel');
+    let selection = await DialogApp.dialog('CHRISPREMADES.Settings.backupCompendium.Name', 'CHRISPREMADES.Settings.backupCompendium.Hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel');
     if (!selection) return;
     await game.settings.set('chris-premades', 'backupCompendium', selection.radio);
 }
@@ -16,7 +16,7 @@ async function doBackup(force) {
     let key = genericUtils.getCPRSetting('backupCompendium');
     let pack = game.packs.get(key);
     if (!pack) {
-        genericUtils.notify('CHRISPREMADES.backup.missingPack', 'warn', {localize: true});
+        genericUtils.notify('CHRISPREMADES.Backup.MissingPack', 'warn', {localize: true});
         return;
     }
     let currentTime = Date.now();

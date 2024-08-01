@@ -33,7 +33,7 @@ async function targeted({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(targetToken.actor, 'sanctuarySafe');
     let targetItem = await fromUuid(effect?.origin);
     if (!targetItem) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sanctuary: Save', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.sanctuary.save', flatDC: itemUtils.getSaveDC(targetItem)});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sanctuary: Save', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Sanctuary.Save', flatDC: itemUtils.getSaveDC(targetItem)});
     genericUtils.setProperty(featureData, 'flags.chris-premades.sanctuary.ignore', true);
     let saveWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, targetToken.actor, [workflow.token]);
     if (!saveWorkflow.failedSaves.size) return;
@@ -43,7 +43,7 @@ async function targeted({workflow}) {
     }
     ChatMessage.create({
         speaker: workflow.chatCard.speaker,
-        content: genericUtils.translate('CHRISPREMADES.macros.sanctuary.failed')
+        content: genericUtils.translate('CHRISPREMADES.Macros.Sanctuary.Failed')
     });
     workflow.aborted = true;
 }
@@ -63,7 +63,7 @@ export let sanctuary = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

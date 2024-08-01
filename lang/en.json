@@ -1,143 +1,566 @@
 {
     "CHRISPREMADES": {
-        "Generic": {
-            "Ok": "Ok",
-            "Cancel": "Cancel",
-            "Yes": "Yes",
-            "No": "No",
-            "None": "None",
-            "Confirm": "Confirm",
-            "Update": "Update",
-            "Apply": "Apply",
-            "Edit": "Edit",
-            "Import": "Import",
-            "Replace": "Replace",
-            "Configure": "Configure",
-            "CheckSpelling": "Check Spelling",
-            "CPR": "Chris's Premades",
-            "Select": "Select",
-            "Disabled": "Disabled",
-            "Chat": "Chat",
-            "Description": "Description",
-            "Go": "Go",
-            "Distance": "Distance",
-            "Disadvantage": "Disadvantage",
-            "Advantage": "Advantage",
-            "Check": "Ability Check",
-            "Save": "Saving Throw",
-            "Skill": "Skill Check",
-            "Abilities": "Abilities",
-            "Skills": "Skills",
-            "Close": "Close"
+        "AbilitySave": {
+            "Title": "Ability Save"
+        },
+        "Alignment": {
+            "Chaotic": "Chaotic",
+            "Evil": "Evil",
+            "Good": "Good",
+            "Lawful": "Lawful",
+            "Neutral": "Neutral"
         },
         "Auras": {
             "Source": "{auraName}: Source"
         },
-        "Units": {
-            "Units": "Units:",
-            "Feet": "Feet",
-            "Miles": "Miles"
+        "Backup": {
+            "Daily": "Daily",
+            "Forever": "Forever",
+            "HalfMonth": "Half a Month",
+            "MissingPack": "Invalid backup compendium specified! No backups have been made!",
+            "Monthly": "Monthly",
+            "OneMonth": "One Month",
+            "OneWeek": "One Week",
+            "OneYear": "One Year",
+            "SixMonths": "Six Months",
+            "ThreeMonths": "Three Months",
+            "Weekly": "Weekly"
+        },
+        "Config": {
+            "Animation": "Animation:",
+            "Animations": {
+                "Air": "Air",
+                "Celestial": "Celestial",
+                "Complex": "Complex",
+                "Default": "Default",
+                "Earth": "Earth",
+                "Fiend": "Fiend",
+                "Fire": "Fire",
+                "Future": "Future",
+                "Nature": "Nature",
+                "None": "None",
+                "Shadow": "Shadow",
+                "Simple": "Simple",
+                "Water": "Water"
+            },
+            "Color": "Color:",
+            "Colors": {
+                "Blue": "Blue",
+                "Blue02": "Blue (alt)",
+                "BlueYellow": "Blue & Yellow",
+                "Cycle": "Cycle",
+                "Dark_purple": "Dark Purple",
+                "DarkBlack": "Dark Black",
+                "DarkBlue": "Dark Blue",
+                "DarkGreen": "Dark Green",
+                "DarkPink": "Dark Pink",
+                "DarkPurple": "Dark Purple",
+                "DarkRed": "Dark Red",
+                "DarkWhiteBlue": "Dark White & Blue",
+                "Green": "Green",
+                "Green02": "Green (alt)",
+                "GreenOrange": "Green & Orange",
+                "Grey": "Grey",
+                "LightBlue": "Light Blue",
+                "LightGreen": "Light Green",
+                "Orange": "Orange",
+                "Pink": "Pink",
+                "PinkPurple": "Pink & Purple",
+                "Purple": "Purple",
+                "Rainbow": "Rainbow",
+                "Random": "Random",
+                "Red": "Red",
+                "Yellow": "Yellow"
+            },
+            "DamageType": "Damage Type:",
+            "DamageTypes": "Damage Types:",
+            "Formula": "Formula:",
+            "PlayAnimation": "Play Animation:",
+            "RealDarkness": "Use Real Darkness:",
+            "Sound": "Sound:"
+        },
+        "Cover": {
+            "Full": "Full Cover",
+            "Half": "Half-Cover",
+            "No": "No Cover",
+            "ThreeQuarters": "Three-Quarters Cover",
+            "Unknown": "Unknown Cover"
+        },
+        "CustomTypes": {
+            "SpellFeature": "Spell Feature"
         },
         "Direction": {
+            "East": "east",
             "North": "north",
             "Northeast": "northeast",
-            "East": "east",
-            "Southeast": "southeast",
+            "Northwest": "northwest",
             "South": "south",
+            "Southeast": "southeast",
             "Southwest": "southwest",
-            "West": "west",
-            "Northwest": "northwest"
+            "West": "west"
         },
-        "Template": {
-            "UnknownTemplate": "Unknown Template",
-            "TargetCantSeeAttacker": "Target Can't See Attacker",
-            "AttackerCantSeeTarget": "Attacker Can't See Target"
+        "Distance": {
+            "0": "0 ft.",
+            "10": "10 ft.",
+            "5": "5 ft."
         },
-        "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
-        "UnknownTarget": "Unknown Target",
-        "Medkit": {
-            "Status": {
-                "0": "Out of Date",
-                "1": "Up to Date",
-                "true": "Automation Available",
-                "false": "No Automation Found"
+        "EffectInterface": {
+            "Effects": "Effects",
+            "ImportData": "Import Data: ",
+            "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!",
+            "NewEffect": "New Effect",
+            "SelectToken": "Please select a token first!"
+        },
+        "Error": {
+            "ActorNotFound": "Required sidebar actor not found!",
+            "CompendiumItemNotFound": "Compendium item not found!",
+            "CompendiumNotFound": "Invalid compendium specified!",
+            "MissingDescriptionJournal": "CPR - Descriptions journal not found!",
+            "MissingDescriptionPage": "Missing Description journal page!",
+            "OutOfDateItem": "Automation is out of date!",
+            "UpdateItem": "Update Item"
+        },
+        "Generic": {
+            "Abilities": "Abilities",
+            "Advantage": "Advantage",
+            "Apply": "Apply",
+            "Cancel": "Cancel",
+            "Chat": "Chat",
+            "Check": "Ability Check",
+            "CheckSpelling": "Check Spelling",
+            "Close": "Close",
+            "Configure": "Configure",
+            "Confirm": "Confirm",
+            "CPR": "Chris's Premades",
+            "Description": "Description",
+            "Disabled": "Disabled",
+            "Disadvantage": "Disadvantage",
+            "Distance": "Distance",
+            "Edit": "Edit",
+            "Go": "Go",
+            "Import": "Import",
+            "No": "No",
+            "None": "None",
+            "Ok": "Ok",
+            "Replace": "Replace",
+            "Save": "Saving Throw",
+            "Select": "Select",
+            "Skill": "Skill Check",
+            "Skills": "Skills",
+            "Update": "Update",
+            "Yes": "Yes"
+        },
+        "GenericEffects": {
+            "ConditionAdvantage": "Condition Advantage",
+            "ConditionDisadvantage": "Condition Disadvantage",
+            "ConditionImmunity": "Condition Immunity",
+            "InvalidTarget": "Invalid Target",
+            "TemplateEffect": "{itemName} Template"
+        },
+        "Journal": {
+            "Chat": "View Chris's premades readme here:",
+            "Readme": "Read Me",
+            "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
+        },
+        "Macros": {
+            "AnimateDead": {
+                "Command": "Animate Dead: Command",
+                "Select": "Select Summons (Max: {totalSummons})"
             },
-            "SelectedAutomation": "Selected Automation:",
-            "ModuleIds": {
-                "chris-premades": "Chris's Premades",
-                "gambit-premades": "Gambit's Premades",
-                "midi-item-community-showcase": "Midi Item Community Showcase"
+            "Antagonize": {
+                "NoWeapons": "Target does not have any weapons equipped!",
+                "SelectTarget": "Who gets attacked?",
+                "SelectWeapon": "What weapon is used to attack?"
+            },
+            "AuraOfLife": {
+                "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
+            },
+            "AuraOfVitality": {
+                "Healing": "Aura of Vitality: Healing"
+            },
+            "Banishment": {
+                "PlaneSelect": "Select all targets that are not from this plane."
+            },
+            "BestowCurse": {
+                "Ability": "Disadvantage on Ability Score",
+                "AbilitySelect": "What ability?",
+                "Attack": "Disadvantage on Attacks",
+                "Damage": "Extra Damage",
+                "DamageFlavor": "Bestow Curse Extra Damage",
+                "Other": "Other",
+                "SelectCurse": "What curse do you bestow?",
+                "Turn": "Waste Turn"
+            },
+            "BlindingSmite": {
+                "Blind": "Blinding Smite: Blind"
+            },
+            "Blink": {
+                "Away": "Blinked Away"
+            },
+            "BoomingBlade": {
+                "Moved": "Booming Blade: Moved",
+                "NoWeapons": "You have no valid weapon equipped!",
+                "SelectWeapon": "Which weapon are you using to cast this spell?",
+                "WillingMove": "Did {actorName} move willingly?"
+            },
+            "BorrowedKnowledge": {
+                "SelectSkill": "Select a skill to gain temporary proficiency in:"
+            },
+            "BrandingSmite": {
+                "Branded": "Branding Smite: Branded"
+            },
+            "CallLightning": {
+                "StormBolt": "Storm Bolt",
+                "Storming": "Is it already storming?"
+            },
+            "ChainLightning": {
+                "Leap": "Chain Lightning: Leap",
+                "Select": "Where should the lightning bounce? Max: {maxTargets}"
+            },
+            "ChaosBolt": {
+                "AlwaysBounce": "Always Bounces:",
+                "Bounce": "Who should the Chaos Bolt bounce to?",
+                "BounceFeature": "Chaos Bolt: Bounce",
+                "Select": "Select damage type:"
+            },
+            "ChromaticOrb": {
+                "Select": "What damage type?"
+            },
+            "Cloudkill": {
+                "Damage": "Cloudkill: Damage",
+                "NoRoom": "No room to move cloudkill!"
+            },
+            "CompelledDuel": {
+                "EndEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?",
+                "Moved": "Compelled Duel: Moved",
+                "Source": "Compelled Duel: Source",
+                "Target": "Compelled Duel: Target"
+            },
+            "Darkness": {
+                "Attach": "Attach to self?"
+            },
+            "Dawn": {
+                "EndTurn": "Dawn: End Turn",
+                "Move": "Dawn: Move"
+            },
+            "DestructiveWave": {
+                "Select": "What damage type?"
+            },
+            "DetectThoughts": {
+                "ProbeDeeper": "Detect Thoughts: Probe Deeper"
+            },
+            "DragonsBreath": {
+                "DragonBreath": "Dragon Breath",
+                "Select": "What damage type?"
+            },
+            "EldritchBlast": {
+                "Target": "Which targets?"
+            },
+            "ElementalWeapon": {
+                "NoWeapons": "Target has no valid non-magical equipped weapons!",
+                "SelectDamageType": "What damage type?",
+                "SelectWeapon": "Which weapon would you like to enchant?"
+            },
+            "EnlargeReduce": {
+                "Enlarge": "Enlarge",
+                "Reduce": "Reduce",
+                "Select": "Enlarge or Reduce?"
+            },
+            "FarStep": {
+                "Teleport": "Far Step: Teleport"
+            },
+            "FireShield": {
+                "ChillShield": "Chill Shield",
+                "Dismiss": "Fire Shield: Dismiss",
+                "Select": "What kind of shield?",
+                "WarmShield": "Warm Shield"
+            },
+            "FireStorm": {
+                "Place": "Place us to 10 templates. Right click to finish",
+                "Templates": "Templates"
+            },
+            "FlameBlade": {
+                "Evoke": "Evoke Flame Blade",
+                "Scimitar": "Flame Blade Scimitar"
+            },
+            "Grease": {
+                "Fall": "Grease: Fall"
+            },
+            "GreenFlameBlade": {
+                "Leap": "Where does the fire leap?",
+                "LeapFeature": "Green-Flame Blade: Leap",
+                "NoWeapons": "No equipped weapons found!",
+                "SelectWeapon": "Attack with what weapon?"
+            },
+            "GuardianOfNature": {
+                "Beast": "Primal Beast",
+                "Select": "What form do you assume?",
+                "Tree": "Great Tree"
+            },
+            "GustOfWind": {
+                "Move": "Gust of Wind: Move",
+                "Push": "Gust of Wind: Push"
+            },
+            "HailOfThorns": {
+                "Burst": "Hail of Thorns: Burst"
+            },
+            "HeatMetal": {
+                "Damage": "Heat Metal: Damage",
+                "Dialog": "Heat Metal: Dialog",
+                "Drop": "Drop heated object?",
+                "Held": "Heat Metal: Held",
+                "Pulse": "Heat Metal: Pulse",
+                "Unable": "Unable (Armor)"
+            },
+            "Hex": {
+                "Hexed": "Hexed",
+                "Move": "Hex: Move",
+                "Multiple": "Which target would you like to hex?",
+                "SelectAbility": "What ability should have disadvantage?"
+            },
+            "HoldPerson": {
+                "Overtime": "Hold Person (End of Turn)"
+            },
+            "HolyWeapon": {
+                "Burst": "Holy Weapon: Burst",
+                "BurstOvertime": "Holy Weapon: Burst (End of Turn)",
+                "Dismiss": "Holy Weapon: Dismiss",
+                "NoWeapons": "Target has no equipped weapons!",
+                "SelectWeapon": "Which weapon would you like to enchant?",
+                "Target": "Holy Weapon: Target"
+            },
+            "HungerOfHadar": {
+                "Cold": "Hunger of Hadar: Cold",
+                "Tentacles": "Hunger of Hadar: Tentacles"
+            },
+            "HuntersMark": {
+                "Marked": "Hunter's Mark: Marked",
+                "Move": "Hunter's Mark: Move",
+                "Select": "Which target would you like to unmark?"
+            },
+            "InsectPlague": {
+                "Damage": "Insect Plague: Damage"
+            },
+            "InvestitureOfFlame": {
+                "Fire": "Investiture of Flame: Fire",
+                "Heat": "Investiture of Flame: Heat"
+            },
+            "InvestitureOfIce": {
+                "Cone": "Investiture of Ice: Cone"
+            },
+            "InvestitureOfStone": {
+                "Earthquake": "Investiture of Stone: Earthquake"
+            },
+            "LightningArrow": {
+                "Burst": "Lightning Arrow: Burst"
+            },
+            "MagicMissile": {
+                "Bolt": "Magic Missile Bolt",
+                "RollEach": "Roll Damage for Each Bolt?",
+                "Select": "How many? (Max: {maxMissiles})",
+                "Shield": "Shield as reaction?"
+            },
+            "MassCureWounds": {
+                "Select": "Which targets would you like to heal? (Max: 6)"
+            },
+            "MirrorImage": {
+                "Hit": "Attack hit a duplicate and destroyed it.",
+                "Miss": "Attack targeted a duplicate and missed."
+            },
+            "Moonbeam": {
+                "Damage": "Moonbeam: Damage",
+                "Move": "Moonbeam: Move"
+            },
+            "ProtectionFromEvilAndGood": {
+                "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
+            },
+            "RayOfEnfeeblement": {
+                "Overtime": "Ray of Enfeeblement (End of Turn)"
+            },
+            "Sanctuary": {
+                "Failed": "Cannot attack this target - must choose another target or lose their attack/spell!",
+                "Save": "Sanctuary: Save"
+            },
+            "ScorchingRay": {
+                "Bolt": "Scorching Ray Bolt",
+                "Select": "Select your targets (Max rays: {maxRays})"
+            },
+            "SearingSmite": {
+                "Fire": "Searing Smite: Fire"
+            },
+            "ShadowBlade": {
+                "Sword": "Shadow Blade Sword"
+            },
+            "ShadowOfMoil": {
+                "Damage": "Shadow of Moil: Damage"
+            },
+            "SickeningRadiance": {
+                "Damage": "Sickening Radiance: Damage"
+            },
+            "SkillEmpowerment": {
+                "SelectSkill": "Select a skill to grant temporary expertise in:"
+            },
+            "SleetStorm": {
+                "Prone": "Sleet Storm: Prone"
+            },
+            "SpikeGrowth": {
+                "Thorns": "Spike Growth: Thorns"
+            },
+            "SpiritGuardians": {
+                "Alignment": "What is your alignment?",
+                "Damage": "Spirit Guardians: Damage",
+                "NoRing": "No Ring",
+                "Particles": "Particles",
+                "Ring": "Ring",
+                "Spirits": "Spirits",
+                "Variation": "Variation:"
+            },
+            "SpiritShroud": {
+                "Hit": "Spirit Shroud: Hit",
+                "Select": "What damage type?",
+                "Slow": "Spirit Shroud: Slow"
+            },
+            "StaggeringSmite": {
+                "Stagger": "Staggering Smite: Stagger"
+            },
+            "StormSphere": {
+                "Bolt": "Storm Sphere: Bolt",
+                "Turn": "Storm Sphere: Turn"
+            },
+            "SummonAberration": {
+                "Beholderkin": "Beholderkin",
+                "Slaad": "Slaad",
+                "StarSpawn": "Star Spawn"
+            },
+            "TashasOtherworldlyGuise": {
+                "Lower": "Lower Planes",
+                "Select": "Which planes do you draw magic from?",
+                "Upper": "Upper Planes"
+            },
+            "Teleport": {
+                "AssociatedObject": "Associated Object",
+                "Damage": "Teleport: Damage",
+                "Description": "Description",
+                "Direction": "Off Target - Direction",
+                "Distance": "Off Target - Distance",
+                "FalseDestination": "False Destination",
+                "Familiarity": "What is the familiarity?",
+                "HowFar": "How far away is the destination?",
+                "Mishap": "Mishap",
+                "OffTarget": "Off Target",
+                "OffTargetString": "Destination is {distance} {units} {direction} of the intended location.",
+                "OnTarget": "On Target",
+                "PermanentCircle": "Permanent Circle",
+                "SeenCasually": "Seen Casually",
+                "Select": "Who else is getting teleported?",
+                "SelectDestination": "Select Destination?",
+                "SimilarArea": "Similar Area",
+                "VeryFamiliar": "Very Familiar",
+                "ViewedOnce": "Viewed Once"
+            },
+            "ThornWhip": {
+                "CheckSize": "Check Size:",
+                "Pull": "How far do you pull the target?"
+            },
+            "ThunderStep": {
+                "Select": "Teleport a Creature?"
+            },
+            "UpcastTargets": {
+                "Select": "Too many targets selected! Please select up to {maxTargets} targets."
+            },
+            "VampiricTouch": {
+                "Attack": "Vampiric Touch: Attack",
+                "HealingModifier": "0.5"
+            },
+            "WardingBond": {
+                "Damage": "Warding Bond: Damage",
+                "Dismiss": "Warding Bond: Dismiss",
+                "Distance": "Bond distance is too far away, remove bond?",
+                "MaxDistance": "Max Distance:"
+            },
+            "WitherAndBloom": {
+                "Heal": "Wither And Bloom: Heal",
+                "SelectHitDie": "Select how many Hit Dice to roll.",
+                "SelectTarget": "Who can roll unspent Hit Dice?"
+            },
+            "WrathfulSmite": {
+                "Frighten": "Wrathful Smite: Frighten"
+            },
+            "ZoneOfTruth": {
+                "Save": "Zone of Truth: Save"
+            }
+        },
+        "Medkit": {
+            "Categories": {
+                "animation": {
+                    "Label": "Animation:",
+                    "Tooltip": "Customize Included Animations"
+                },
+                "homebrew": {
+                    "Label": "Homebrew:",
+                    "Tooltip": "Available Homebrew Customizations"
+                },
+                "mechanics": {
+                    "Label": "Mechanics:",
+                    "Tooltip": "Customize the mechanics of the item"
+                },
+                "sound": {
+                    "Label": "Sound:",
+                    "Tooltip": "Add a sound to be played"
+                },
+                "summons": {
+                    "Label": "Summons",
+                    "Tooltip": "Customize Summons"
+                }
             },
             "Effect": {
-                "NoAnimation": {
-                    "Label": "No Animation",
-                    "Tooltip": "Disables scrolling text when this effect is applied and removed"
-                },
                 "Conditions": {
                     "Label": "Conditions",
                     "Tooltip": "Conditions to be applied and removed with this effect using CPR's API"
                 },
+                "NoAnimation": {
+                    "Label": "No Animation",
+                    "Tooltip": "Disables scrolling text when this effect is applied and removed"
+                },
                 "OverTime": {
+                    "Add": "Add Overtime",
                     "Labels": {
-                        "Turn": "Trigger:",
-                        "Start": "Start of Turn",
-                        "End": "End of Turn",
-                        "Label": "Card Flavor:",
+                        "Ability": "Ability Based DC",
+                        "ActionSave": "Saving Throw is an Action:",
                         "AllowIncapacitated": "Allow Incapacitated Targets:",
                         "ApplyCondition": "Apply Condition Evaluation Expression:",
-                        "RemoveCondition": "Remove Condition Evaluation Expression:",
-                        "RollType": "Roll Type:",
-                        "SaveAbility": "Ability or Skill for roll:",
-                        "SaveDC": "Difficulty Class for roll:",
-                        "SaveDCNumber": "Flat DC:",
-                        "SaveDCAbility": "Ability Based DC:",
-                        "SaveDamage": "Amount of Damage on Save:",
-                        "HalfDamage": "Half Damage",
-                        "NoDamage": "No Damage",
-                        "FullDamage": "Full Damage",
-                        "SaveRemove": "Remove Effect on Save:",
-                        "SaveMagic": "Magic Saving Throw:",
-                        "ActionSave": "Saving Throw is an Action:",
+                        "BlindRoll": "Blind Roll",
                         "DamageBeforeSave": "Damage Applied Before Save Roll:",
                         "DamageRoll": "Damage Roll Formula:",
                         "DamageType": "Damage Type:",
-                        "RollMode": "Roll Mode for Over Time Item Roll:",
-                        "GMRoll": "GM Roll",
-                        "BlindRoll": "Blind Roll",
-                        "PublicRoll": "Public Roll",
-                        "SelfRoll": "Self Roll",
-                        "Macro": "Macro to Call:",
-                        "Spellcasting": "Spellcasting DC",
-                        "Item": "Item DC",
+                        "End": "End of Turn",
                         "Flat": "Flat DC",
-                        "Ability": "Ability Based DC"
-                    },
-                    "Add": "Add Overtime"
-                }
-            },
-            "Tabs": {
-                "Info": {
-                    "Label": "Info",
-                    "Tooltip": "Information about the current and available automation"
-                },
-                "Configuration": {
-                    "Label": "Configuration",
-                    "Tooltip": "Configure available parts of the automation"
-                },
-                "Overtime": {
-                    "Label": "Overtime",
-                    "Tooltip": "UI to create Midi-QOL Over Time effects"
+                        "FullDamage": "Full Damage",
+                        "GMRoll": "GM Roll",
+                        "HalfDamage": "Half Damage",
+                        "Item": "Item DC",
+                        "Label": "Card Flavor:",
+                        "Macro": "Macro to Call:",
+                        "NoDamage": "No Damage",
+                        "PublicRoll": "Public Roll",
+                        "RemoveCondition": "Remove Condition Evaluation Expression:",
+                        "RollMode": "Roll Mode for Over Time Item Roll:",
+                        "RollType": "Roll Type:",
+                        "SaveAbility": "Ability or Skill for roll:",
+                        "SaveDamage": "Amount of Damage on Save:",
+                        "SaveDC": "Difficulty Class for roll:",
+                        "SaveDCAbility": "Ability Based DC:",
+                        "SaveDCNumber": "Flat DC:",
+                        "SaveMagic": "Magic Saving Throw:",
+                        "SaveRemove": "Remove Effect on Save:",
+                        "SelfRoll": "Self Roll",
+                        "Spellcasting": "Spellcasting DC",
+                        "Start": "Start of Turn",
+                        "Turn": "Trigger:"
+                    }
                 }
             },
             "Fieldsets": {
-                "parameters": {
-                    "Label": "Parameters",
-                    "Tooltip": "Basic options for OverTimes"
-                },
-                "rolls": {
-                    "Label": "Rolls",
-                    "Tooltip": "Configure roll types and options"
-                },
                 "damage": {
                     "Label": "Damage",
                     "Tooltip": "Configure damage roll options"
@@ -145,79 +568,213 @@
                 "macros": {
                     "Label": "Macros",
                     "Tooltip": "Configure macros to be called"
+                },
+                "parameters": {
+                    "Label": "Parameters",
+                    "Tooltip": "Basic options for OverTimes"
+                },
+                "rolls": {
+                    "Label": "Rolls",
+                    "Tooltip": "Configure roll types and options"
                 }
             },
-            "Categories": {
-                "homebrew": {
-                    "Label": "Homebrew:",
-                    "Tooltip": "Available Homebrew Customizations"
+            "ModuleIds": {
+                "chris-premades": "Chris's Premades",
+                "gambit-premades": "Gambit's Premades",
+                "midi-item-community-showcase": "Midi Item Community Showcase"
+            },
+            "NoPermission": "You do not have permissions to change this",
+            "SelectedAutomation": "Selected Automation:",
+            "Status": {
+                "0": "Out of Date",
+                "1": "Up to Date",
+                "false": "No Automation Found",
+                "true": "Automation Available"
+            },
+            "Tabs": {
+                "Configuration": {
+                    "Label": "Configuration",
+                    "Tooltip": "Configure available parts of the automation"
                 },
-                "animation": {
-                    "Label": "Animation:",
-                    "Tooltip": "Customize Included Animations"
+                "Info": {
+                    "Label": "Info",
+                    "Tooltip": "Information about the current and available automation"
                 },
-                "sound": {
-                    "Label": "Sound:",
-                    "Tooltip": "Add a sound to be played"
-                },
-                "mechanics": {
-                    "Label": "Mechanics:",
-                    "Tooltip": "Customize the mechanics of the item"
+                "Overtime": {
+                    "Label": "Overtime",
+                    "Tooltip": "UI to create Midi-QOL Over Time effects"
                 }
-            },
-            "NoPermission": "You do not have permissions to change this"
-        },
-        "Summons": {
-            "DismissSummon": "Dismiss Summon",
-            "SummonedCreature": "Summoned Creature",
-            "SelectSummonType": "Select Summon Type",
-            "CustomName": "{option} Custom Name",
-            "CustomToken": "{option} Custom Token",
-            "CustomAvatar": "{option} Custom Avatar"
-        },
-        "Macros": {
-            "SummonAberration": {
-                "Beholderkin": "Beholderkin",
-                "Slaad": "Slaad",
-                "StarSpawn": "Star Spawn"
-            },
-            "AnimateDead": {
-                "Select": "Select Summons (Max: {totalSummons})",
-                "Command": "Animate Dead: Command"
             }
         },
-        "settings": {
-            "gmID": {
-                "name": "Gamemaster User ID",
-                "hint": "The Gamemaster ID used for sockets. Automatically set."
+        "Movement": {
+            "UnableToBeMoved": "Target is unable to be moved!"
+        },
+        "Section": {
+            "SpellFeatures": "Spell Features"
+        },
+        "SettingCategory": {
+            "backup": {
+                "Hint": "Settings for character backup.",
+                "Label": "Character Backup",
+                "Name": "Character Backup"
             },
-            "hideNames": {
-                "name": "Hide Names",
-                "hint": "Should enemy names be hidden in dialogs."
+            "compendium": {
+                "Hint": "Settings for compendiums.",
+                "Label": "Compendium Options",
+                "Name": "Compendium Options"
             },
-            "effectInterface": {
-                "name": "Enable Effect Interface",
-                "hint": "Adds a sidebar tab for Active Effects. Reload required after enabling."
+            "development": {
+                "Hint": "Settings for developers.",
+                "Label": "Development Options",
+                "Name": "Development Options"
             },
-            "macroInterface": {
-                "name": "Enable Macro Interface",
-                "hint": "Adds a sidebar tab for Macros. Reload required after enabling."
+            "dialog": {
+                "Hint": "Settings for dialogs.",
+                "Label": "Dialog Options",
+                "Name": "Dialog Options"
             },
-            "temporaryEffectHud": {
-                "name": "Temporary Effects HUD",
-                "hint": "Adds Temporary effects to the status effect token HUD."
+            "general": {
+                "Hint": "Settings for general options.",
+                "Label": "General Options",
+                "Name": "General Options"
+            },
+            "help": {
+                "Hint": "Get help with this module.",
+                "Label": "Help",
+                "Name": "Help"
+            },
+            "integration": {
+                "Hint": "Settings for module integration options.",
+                "Label": "Module Integration",
+                "Name": "Module Integration"
+            },
+            "interface": {
+                "Hint": "Settings for the user interface.",
+                "Label": "User Interface Options",
+                "Name": "User Interface Options"
+            },
+            "mechanics": {
+                "Hint": "Settings for game mechanics.",
+                "Label": "Game Mechanic Options",
+                "Name": "Game Mechanic Options"
+            }
+        },
+        "Settings": {
+            "abilitySave": {
+                "Hint": "When enabled, certain macros will prompt the player for more information for the ability save.",
+                "Name": "Contextual Ability Saves"
             },
             "additionalCompendiums": {
-                "name": "Additional Compendiums",
-                "hint": "Select additional item compendiums to be used by the medkit and adjust their priority."
+                "Hint": "Select additional item compendiums to be used by the medkit and adjust their priority.",
+                "Name": "Additional Compendiums"
+            },
+            "applyConditionChanges": {
+                "Hint": "When enabled, conditions will automatically have Midi-Qol effects applied to them.",
+                "Name": "Apply Midi-QOl Condition Effects"
+            },
+            "babonusOverlappingEffects": {
+                "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",
+                "Name": "Build A Bonus: Overlapping Spell Effects"
+            },
+            "backupCompendium": {
+                "Hint": "Select your actor backup compendium.",
+                "Name": "Actor Backup Compendium"
+            },
+            "backupFrequency": {
+                "Hint": "How often the automatic backups should be made.",
+                "Name": "Backup Frequency"
+            },
+            "backupMake": {
+                "Hint": "Make a backup right now using the specified compendium.",
+                "Name": "Make A Backup"
+            },
+            "backupRetention": {
+                "Hint": "How long backup characters are kept.",
+                "Name": "Backup Retention"
+            },
+            "backups": {
+                "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
+                "Name": "Automatic Character Backups"
+            },
+            "backupTime": {
+                "Hint": "Last time a backup was made (in milliseconds). Automatically set.",
+                "Name": "Last Backup Time"
+            },
+            "colorizeBuildABonus": {
+                "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
+                "Name": "Build A Bonus: Colorize Titlebar Icon"
+            },
+            "colorizeDAE": {
+                "Hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item.",
+                "Name": "Dynamic Active Effects: Colorize Titlebar Icon"
             },
             "conditionResistanceAndVulnerability": {
-                "name": "Condition Resistance and Vulnerability",
-                "hint": "Enables condition resistance and vulnerability automation."
+                "Hint": "Enables condition resistance and vulnerability automation.",
+                "Name": "Condition Resistance and Vulnerability"
             },
-            "useLocalCompendiums": {
-                "name": "Use Local Compendiums",
-                "hint": "Use the local world compendiums instead of the module compendiums for item lookup."
+            "devTools": {
+                "Hint": "Enable to display development tools.",
+                "Name": "Display Development Tools"
+            },
+            "disableNonConditionStatusEffects": {
+                "Hint": "When enabled, all core non-condition status effects will be removed.",
+                "Name": "Disable Non-Condition Status Effects"
+            },
+            "disableSpecialEffects": {
+                "Hint": "When enabled, the blinded and invisible conditions don't apply special effects (change this terrible description).",
+                "Name": "Disable Special Effects"
+            },
+            "effectDescriptionNPC": {
+                "Hint": "When enabled, the Automatic Effect Description setting will not apply for NPC created effects.",
+                "Name": "Hide NPC Effect Descriptions"
+            },
+            "effectDescriptions": {
+                "Hint": "When enabled, effects without descriptions will automatically be filled in from the origin item.",
+                "Name": "Automatic Effect Descriptions"
+            },
+            "effectInterface": {
+                "Hint": "Adds a sidebar tab for Active Effects. Reload required after enabling.",
+                "Name": "Enable Effect Interface"
+            },
+            "gambitPremades": {
+                "1": "No Homebrew or 3rd Party",
+                "2": "No Homebrew",
+                "3": "No 3rd Party",
+                "4": "Include Homebrew and 3rd Party",
+                "Hint": "Which compendiums should be included in the additional compendium search for Gambit's Premades.",
+                "Name": "Gambit's Premades Options"
+            },
+            "gmID": {
+                "Hint": "The Gamemaster ID used for sockets. Automatically set.",
+                "Name": "Gamemaster User ID"
+            },
+            "hiddenCompendiumFolders": {
+                "Hint": "Selected compendium folders will be hidden.",
+                "Name": "Hidden Compendium Folders"
+            },
+            "hiddenCompendiums": {
+                "Hint": "Selected compendiums will be hidden.",
+                "Name": "Hidden Compendiums"
+            },
+            "hideNames": {
+                "Hint": "Should enemy names be hidden in dialogs.",
+                "Name": "Hide Names"
+            },
+            "macroInterface": {
+                "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
+                "Name": "Enable Macro Interface"
+            },
+            "miscPremades": {
+                "1": "No Homebrew or Unearthed Arcana",
+                "2": "No Unearthed Arcana",
+                "3": "No Homebrew",
+                "4": "Include Homebrew and Unearthed Arcana",
+                "Hint": "Which compendiums should be included in the additional compendium search for Midi Item Showcase - Community.",
+                "Name": "Midi Item Showcase Options"
+            },
+            "monsterCompendium": {
+                "Hint": "Monster compendium use for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
+                "Name": "Monster Compendium"
             },
             "Permissions": {
                 "1": "Player",
@@ -225,638 +782,96 @@
                 "3": "Assistant Gamemaster",
                 "4": "Gamemaster"
             },
-            "permissionsUpdateItem": {
-                "name": "Medkit Update Automation Permissions",
-                "hint": "Lowest user ranking that can update the currently selected automation in the Medkit:"
-            },
             "permissionsAutomateItem": {
-                "name": "Medkit Apply Automation Permissions",
-                "hint": "Lowest user ranking that can select and apply different automations in the Medkit:"
-            },
-            "permissionsConfigureItem": {
-                "name": "Medkit Configuration Permissions",
-                "hint": "Lowest user ranking that can configure automations in the Medkit:"
+                "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
+                "Name": "Medkit Apply Automation Permissions"
             },
             "permissionsConfigureHomebrew": {
-                "name": "Medkit Configure Homebrew Permissions",
-                "hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:"
+                "Hint": "Lowest user ranking that can configure homebrew customizations in the Medkit:",
+                "Name": "Medkit Configure Homebrew Permissions"
             },
-            "colorizeBuildABonus": {
-                "name": "Build A Bonus: Colorize Titlebar Icon",
-                "hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect."
+            "permissionsConfigureItem": {
+                "Hint": "Lowest user ranking that can configure automations in the Medkit:",
+                "Name": "Medkit Configuration Permissions"
             },
-            "babonusOverlappingEffects": {
-                "name": "Build A Bonus: Overlapping Spell Effects",
-                "hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules."
-            },
-            "colorizeDAE": {
-                "name": "Dynamic Active Effects: Colorize Titlebar Icon",
-                "hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item."
-            },
-            "devTools": {
-                "name": "Display Development Tools",
-                "hint": "Enable to display development tools."
-            },
-            "applyConditionChanges": {
-                "name": "Apply Midi-QOl Condition Effects",
-                "hint": "When enabled, conditions will automatically have Midi-Qol effects applied to them."
-            },
-            "disableSpecialEffects": {
-                "name": "Disable Special Effects",
-                "hint": "When enabled, the blinded and invisible conditions don't apply special effects (change this terrible description)."
-            },
-            "backupCompendium": {
-                "name": "Actor Backup Compendium",
-                "hint": "Select your actor backup compendium."
-            },
-            "hiddenCompendiums": {
-                "name": "Hidden Compendiums",
-                "hint": "Selected compendiums will be hidden."
-            },
-            "hiddenCompendiumFolders": {
-                "name": "Hidden Compendium Folders",
-                "hint": "Selected compendium folders will be hidden."
-            },
-            "syncActorSizeToTokens": {
-                "name": "Sync Actor and Token Size",
-                "hint": "When enabled, effects that change an actors size will also change the token size on the canvas."
-            },
-            "backupTime": {
-                "name": "Last Backup Time",
-                "hint": "Last time a backup was made (in milliseconds). Automatically set."
-            },
-            "backupFrequency": {
-                "name": "Backup Frequency",
-                "hint": "How often the automatic backups should be made."
-            },
-            "backupRetention": {
-                "name": "Backup Retention",
-                "hint": "How long backup characters are kept."
-            },
-            "backups": {
-                "name": "Automatic Character Backups",
-                "hint": "When enabled, player owned characters will be automatically backed up to the specified compendium."
-            },
-            "backupMake": {
-                "name": "Make A Backup",
-                "hint": "Make a backup right now using the specified compendium."
-            },
-            "disableNonConditionStatusEffects": {
-                "name": "Disable Non-Condition Status Effects",
-                "hint": "When enabled, all core non-condition status effects will be removed."
-            },
-            "effectDescriptionNPC": {
-                "name": "Hide NPC Effect Descriptions",
-                "hint": "When enabled, the Automatic Effect Description setting will not apply for NPC created effects."
-            },
-            "effectDescriptions": {
-                "name": "Automatic Effect Descriptions",
-                "hint": "When enabled, effects without descriptions will automatically be filled in from the origin item."
+            "permissionsUpdateItem": {
+                "Hint": "Lowest user ranking that can update the currently selected automation in the Medkit:",
+                "Name": "Medkit Update Automation Permissions"
             },
             "replaceStatusEffectIcons": {
-                "name": "Replace Status Icons",
-                "hint": "When enabled, status icons will be replaced."
-            },
-            "statusEffectIcons": {
-                "name": "Configure Status Icon Images",
-                "hint": "Configure status icon images."
+                "Hint": "When enabled, status icons will be replaced.",
+                "Name": "Replace Status Icons"
             },
             "selectTool": {
-                "name": "Select Tool Everywhere",
-                "hint": "When enabled, the select tool is available in more places. Reload required after enabling."
-            },
-            "abilitySave": {
-                "name": "Contextual Ability Saves",
-                "hint": "When enabled, certain macros will prompt the player for more information for the ability save."
+                "Hint": "When enabled, the select tool is available in more places. Reload required after enabling.",
+                "Name": "Select Tool Everywhere"
             },
             "skillCheck": {
-                "name": "Contextual Skill Checks",
-                "hint": "When enabled, certain macros will prompt the player for more information for the skill check."
+                "Hint": "When enabled, certain macros will prompt the player for more information for the skill check.",
+                "Name": "Contextual Skill Checks"
+            },
+            "statusEffectIcons": {
+                "Hint": "Configure status icon images.",
+                "Name": "Configure Status Icon Images"
+            },
+            "syncActorSizeToTokens": {
+                "Hint": "When enabled, effects that change an actors size will also change the token size on the canvas.",
+                "Name": "Sync Actor and Token Size"
+            },
+            "temporaryEffectHud": {
+                "Hint": "Adds Temporary effects to the status effect token HUD.",
+                "Name": "Temporary Effects HUD"
+            },
+            "useLocalCompendiums": {
+                "Hint": "Use the local world compendiums instead of the module compendiums for item lookup.",
+                "Name": "Use Local Compendiums"
             },
             "vaeButtons": {
-                "name": "Visual Active Effects: Buttons",
-                "hint": "When enabled, certain macros will add buttons to the VAE interface."
-            },
-            "gambitPremades": {
-                "1": "No Homebrew or 3rd Party",
-                "2": "No Homebrew",
-                "3": "No 3rd Party",
-                "4": "Include Homebrew and 3rd Party",
-                "name": "Gambit's Premades Options",
-                "hint": "Which compendiums should be included in the additional compendium search for Gambit's Premades."
-            },
-            "monsterCompendium": {
-                "name": "Monster Compendium",
-                "hint": "Monster compendium use for certain automations. Ideally should point to your D&D Beyond monster commpendium."
-            },
-            "miscPremades": {
-                "name": "Midi Item Showcase Options",
-                "hint": "Which compendiums should be included in the additional compendium search for Midi Item Showcase - Community.",
-                "1": "No Homebrew or Unearthed Arcana",
-                "2": "No Unearthed Arcana",
-                "3": "No Homebrew",
-                "4": "Include Homebrew and Unearthed Arcana"
+                "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
+                "Name": "Visual Active Effects: Buttons"
             }
-        },
-        "settingCategory": {
-            "development": {
-                "name": "Development Options",
-                "label": "Development Options",
-                "hint": "Settings for developers."
-            },
-            "dialog": {
-                "name": "Dialog Options",
-                "label": "Dialog Options",
-                "hint": "Settings for dialogs."
-            },
-            "interface": {
-                "name": "User Interface Options",
-                "label": "User Interface Options",
-                "hint": "Settings for the user interface."
-            },
-            "compendium": {
-                "name": "Compendium Options",
-                "label": "Compendium Options",
-                "hint": "Settings for compendiums."
-            },
-            "mechanics": {
-                "name": "Game Mechanic Options",
-                "label": "Game Mechanic Options",
-                "hint": "Settings for game mechanics."
-            },
-            "general": {
-                "name": "General Options",
-                "label": "General Options",
-                "hint": "Settings for general options."
-            },
-            "integration": {
-                "name": "Module Integration",
-                "label": "Module Integration",
-                "hint": "Settings for module integration options."
-            },
-            "backup": {
-                "name": "Character Backup",
-                "label": "Character Backup",
-                "hint": "Settings for character backup."
-            },
-            "help": {
-                "name": "Help",
-                "label": "Help",
-                "hint": "Get help with this module."
-            }
-        },
-        "config": {
-            "playAnimation": "Play Animation:",
-            "color": "Color:",
-            "colors": {
-                "lightBlue": "Light Blue",
-                "blue": "Blue",
-                "blue02": "Blue (alt)",
-                "lightGreen": "Light Green",
-                "green": "Green",
-                "green02": "Green (alt)",
-                "darkGreen": "Dark Green",
-                "pink": "Pink",
-                "darkPink": "Dark Pink",
-                "purple": "Purple",
-                "darkPurple": "Dark Purple",
-                "red": "Red",
-                "darkRed": "Dark Red",
-                "orange": "Orange",
-                "yellow": "Yellow",
-                "rainbow": "Rainbow",
-                "random": "Random",
-                "blueYellow": "Blue & Yellow",
-                "darkBlack": "Dark Black",
-                "darkBlue": "Dark Blue",
-                "darkWhiteBlue": "Dark White & Blue",
-                "greenOrange": "Green & Orange",
-                "pinkPurple": "Pink & Purple",
-                "grey": "Grey",
-                "cycle": "Cycle",
-                "dark_purple": "Dark Purple"
-            },
-            "sound": "Sound:",
-            "damageType": "Damage Type:",
-            "formula": "Formula:",
-            "damageTypes": "Damage Types:",
-            "realDarkness": "Use Real Darkness:",
-            "animation": "Animation:",
-            "animations": {
-                "simple": "Simple",
-                "complex": "Complex",
-                "shadow": "Shadow",
-                "default": "Default",
-                "celestial": "Celestial",
-                "fiend": "Fiend",
-                "fire": "Fire",
-                "water": "Water",
-                "air": "Air",
-                "earth": "Earth",
-                "nature": "Nature",
-                "future": "Future",
-                "none": "None"
-            }
-        },
-        "macros": {
-            "antagonize": {
-                "noWeapons": "Target does not have any weapons equipped!",
-                "selectWeapon": "What weapon is used to attack?",
-                "selectTarget": "Who gets attacked?"
-            },
-            "banishment": {
-                "planeSelect": "Select all targets that are not from this plane."
-            },
-            "bestowCurse": {
-                "ability": "Disadvantage on Ability Score",
-                "attack": "Disadvantage on Attacks",
-                "turn": "Waste Turn",
-                "damage": "Extra Damage",
-                "other": "Other",
-                "selectCurse": "What curse do you bestow?",
-                "abilitySelect": "What ability?",
-                "damageFlavor": "Bestow Curse Extra Damage"
-            },
-            "blindingSmite": {
-                "blind": "Blinding Smite: Blind"
-            },
-            "boomingBlade": {
-                "noWeapons": "You have no valid weapon equipped!",
-                "selectWeapon": "Which weapon are you using to cast this spell?",
-                "willingMove": "Did {actorName} move willingly?",
-                "moved": "Booming Blade: Moved"
-            },
-            "borrowedKnowledge": {
-                "selectSkill": "Select a skill to gain temporary proficiency in:"
-            },
-            "brandingSmite": {
-                "branded": "Branding Smite: Branded"
-            },
-            "callLightning": {
-                "storming": "Is it already storming?",
-                "stormBolt": "Storm Bolt"
-            },
-            "chainLightning": {
-                "select": "Where should the lightning bounce? Max: {maxTargets}",
-                "leap": "Chain Lightning: Leap"
-            },
-            "chaosBolt": {
-                "select": "Select damage type:",
-                "bounce": "Who should the Chaos Bolt bounce to?",
-                "alwaysBounce": "Always Bounces:",
-                "bounceFeature": "Chaos Bolt: Bounce"
-            },
-            "chromaticOrb": {
-                "select": "What damage type?"
-            },
-            "compelledDuel": {
-                "target": "Compelled Duel: Target",
-                "source": "Compelled Duel: Source",
-                "moved": "Compelled Duel: Moved",
-                "endEffect": "Caster has ended their turn more than 30 feet away from their target. Remove effect?"
-            },
-            "destructiveWave": {
-                "select": "What damage type?"
-            },
-            "detectThoughts": {
-                "probeDeeper": "Detect Thoughts: Probe Deeper"
-            },
-            "dragonsBreath": {
-                "select": "What damage type?",
-                "dragonBreath": "Dragon Breath"
-            },
-            "elementalWeapon": {
-                "noWeapons": "Target has no valid non-magical equipped weapons!",
-                "selectDamageType": "What damage type?",
-                "selectWeapon": "Which weapon would you like to enchant?"
-            },
-            "enlargeReduce": {
-                "select": "Enlarge or Reduce?",
-                "enlarge": "Enlarge",
-                "reduce": "Reduce"
-            },
-            "fireShield": {
-                "select": "What kind of shield?",
-                "warmShield": "Warm Shield",
-                "chillShield": "Chill Shield",
-                "dismiss": "Fire Shield: Dismiss"
-            },
-            "fireStorm": {
-                "place": "Place us to 10 templates. Right click to finish",
-                "templates": "Templates"
-            },
-            "flameBlade": {
-                "scimitar": "Flame Blade Scimitar",
-                "evoke": "Evoke Flame Blade"
-            },
-            "hex": {
-                "hexed": "Hexed",
-                "multiple": "Which target would you like to hex?",
-                "selectAbility": "What ability should have disadvantage?",
-                "move": "Hex: Move"
-            },
-            "searingSmite": {
-                "fire": "Searing Smite: Fire"
-            },
-            "spiritGuardians": {
-                "alignment": "What is your alignment?",
-                "damage": "Spirit Guardians: Damage",
-                "variation": "Variation:",
-                "ring": "Ring",
-                "noRing": "No Ring",
-                "particles": "Particles",
-                "spirits": "Spirits"
-            },
-            "staggeringSmite": {
-                "stagger": "Staggering Smite: Stagger"
-            },
-            "upcastTargets": {
-                "select": "Too many targets selected! Please select up to {maxTargets} targets."
-            },
-            "wrathfulSmite": {
-                "frighten": "Wrathful Smite: Frighten"
-            },
-            "witherAndBloom": {
-                "heal": "Wither And Bloom: Heal",
-                "selectTarget": "Who can roll unspent Hit Dice?",
-                "selectHitDie": "Select how many Hit Dice to roll."
-            },
-            "zoneOfTruth": {
-                "save": "Zone of Truth: Save"
-            },
-            "greenFlameBlade": {
-                "noWeapons": "No equipped weapons found!",
-                "selectWeapon": "Attack with what weapon?",
-                "leap": "Where does the fire leap?",
-                "leapFeature": "Green-Flame Blade: Leap"
-            },
-            "guardianOfNature": {
-                "beast": "Primal Beast",
-                "tree": "Great Tree",
-                "select": "What form do you assume?"
-            },
-            "hailOfThorns": {
-                "burst": "Hail of Thorns: Burst"
-            },
-            "heatMetal": {
-                "pulse": "Heat Metal: Pulse",
-                "dialog": "Heat Metal: Dialog",
-                "drop": "Drop heated object?",
-                "unable": "Unable (Armor)",
-                "held": "Heat Metal: Held",
-                "damage": "Heat Metal: Damage"
-            },
-            "wardingBond": {
-                "damage": "Warding Bond: Damage",
-                "distance": "Bond distance is too far away, remove bond?",
-                "maxDistance": "Max Distance:",
-                "dismiss": "Warding Bond: Dismiss"
-            },
-            "holdPerson": {
-                "overtime": "Hold Person (End of Turn)"
-            },
-            "holyWeapon": {
-                "noWeapons": "Target has no equipped weapons!",
-                "selectWeapon": "Which weapon would you like to enchant?",
-                "target": "Holy Weapon: Target",
-                "dismiss": "Holy Weapon: Dismiss",
-                "burst": "Holy Weapon: Burst",
-                "burstOvertime": "Holy Weapon: Burst (End of Turn)"
-            },
-            "huntersMark": {
-                "move": "Hunter's Mark: Move",
-                "marked": "Hunter's Mark: Marked",
-                "select": "Which target would you like to unmark?"
-            },
-            "darkness": {
-                "attach": "Attach to self?"
-            },
-            "vampiricTouch": {
-                "attack": "Vampiric Touch: Attack",
-                "healingModifier": "0.5"
-            },
-            "thornWhip": {
-                "pull": "How far do you pull the target?",
-                "checkSize": "Check Size:"
-            },
-            "investitureOfFlame": {
-                "fire": "Investiture of Flame: Fire",
-                "heat": "Investiture of Flame: Heat"
-            },
-            "investitureOfIce": {
-                "cone": "Investiture of Ice: Cone"
-            },
-            "investitureOfStone": {
-                "earthquake": "Investiture of Stone: Earthquake"
-            },
-            "lightningArrow": {
-                "burst": "Lightning Arrow: Burst"
-            },
-            "magicMissile": {
-                "select": "How many? (Max: {maxMissiles})",
-                "bolt": "Magic Missile Bolt",
-                "rollEach": "Roll Damage for Each Bolt?",
-                "shield": "Shield as reaction?"
-            },
-            "massCureWounds": {
-                "select": "Which targets would you like to heal? (Max: 6)"
-            },
-            "mirrorImage": {
-                "hit": "Attack hit a duplicate and destroyed it.",
-                "miss": "Attack targeted a duplicate and missed."
-            },
-            "rayOfEnfeeblement": {
-                "overtime": "Ray of Enfeeblement (End of Turn)"
-            },
-            "sanctuary": {
-                "save": "Sanctuary: Save",
-                "failed": "Cannot attack this target - must choose another target or lose their attack/spell!"
-            },
-            "scorchingRay": {
-                "bolt": "Scorching Ray Bolt",
-                "select": "Select your targets (Max rays: {maxRays})"
-            },
-            "shadowBlade": {
-                "sword": "Shadow Blade Sword"
-            },
-            "skillEmpowerment": {
-                "selectSkill": "Select a skill to grant temporary expertise in:"
-            },
-            "protectionFromEvilAndGood": {
-                "save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
-            },
-            "spiritShroud": {
-                "select": "What damage type?",
-                "slow": "Spirit Shroud: Slow",
-                "hit": "Spirit Shroud: Hit"
-            },
-            "tashasOtherworldlyGuise": {
-                "select": "Which planes do you draw magic from?",
-                "upper": "Upper Planes",
-                "lower": "Lower Planes"
-            },
-            "shadowOfMoil": {
-                "damage": "Shadow of Moil: Damage"
-            },
-            "thunderStep": {
-                "select": "Teleport a Creature?"
-            },
-            "blink": {
-                "away": "Blinked Away"
-            },
-            "farStep": {
-                "teleport": "Far Step: Teleport"
-            },
-            "teleport": {
-                "select": "Who else is getting teleported?",
-                "permanentCircle": "Permanent Circle",
-                "associatedObject": "Associated Object",
-                "veryFamiliar": "Very Familiar",
-                "seenCasually": "Seen Casually",
-                "viewedOnce": "Viewed Once",
-                "description": "Description",
-                "falseDestination": "False Destination",
-                "familiarity": "What is the familiarity?",
-                "mishap": "Mishap",
-                "onTarget": "On Target",
-                "offTarget": "Off Target",
-                "similarArea": "Similar Area",
-                "damage": "Teleport: Damage",
-                "distance": "Off Target - Distance",
-                "howFar": "How far away is the destination?",
-                "direction": "Off Target - Direction",
-                "offTargetString": "Destination is {distance} {units} {direction} of the intended location.",
-                "selectDestination": "Select Destination?"
-            },
-            "cloudkill": {
-                "noRoom": "No room to move cloudkill!",
-                "damage": "Cloudkill: Damage"
-            },
-            "dawn": {
-                "move": "Dawn: Move",
-                "endTurn": "Dawn: End Turn"
-            },
-            "moonbeam": {
-                "move": "Moonbeam: Move",
-                "damage": "Moonbeam: Damage"
-            },
-            "spikeGrowth": {
-                "thorns": "Spike Growth: Thorns"
-            },
-            "grease": {
-                "fall": "Grease: Fall"
-            },
-            "gustOfWind": {
-                "move": "Gust of Wind: Move",
-                "push": "Gust of Wind: Push"
-            },
-            "hungerOfHadar": {
-                "cold": "Hunger of Hadar: Cold",
-                "tentacles": "Hunger of Hadar: Tentacles"
-            },
-            "insectPlague": {
-                "damage": "Insect Plague: Damage"
-            },
-            "sleetStorm": {
-                "prone": "Sleet Storm: Prone"
-            },
-            "sickeningRadiance": {
-                "damage": "Sickening Radiance: Damage"
-            },
-            "stormSphere": {
-                "bolt": "Storm Sphere: Bolt",
-                "turn": "Storm Sphere: Turn"
-            },
-            "auraOfVitality": {
-                "healing": "Aura of Vitality: Healing"
-            },
-            "auraOfLife": {
-                "removeTempmax": "Temporarily remove existing hp max reduction while in aura:"
-            }
-        },
-        "section": {
-            "spellFeatures": "Spell Features"
-        },
-        "cover": {
-            "no": "No Cover",
-            "half": "Half-Cover",
-            "threeQuarters": "Three-Quarters Cover",
-            "full": "Full Cover",
-            "unknown": "Unknown Cover"
-        },
-        "movement": {
-            "unableToBeMoved": "Target is unable to be moved!"
-        },
-        "effectInterface": {
-            "item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!",
-            "importData": "Import Data: ",
-            "selectToken": "Please select a token first!",
-            "newEffect": "New Effect",
-            "effects": "Effects"
-        },
-        "customTypes": {
-            "spellFeature": "Spell Feature"
-        },
-        "error": {
-            "compendiumNotFound": "Invalid compendium specified!",
-            "compendiumItemNotFound": "Compendium item not found!",
-            "outOfDateItem": "Automation is out of date!",
-            "updateItem": "Update Item",
-            "actorNotFound": "Required sidebar actor not found!"
-        },
-        "turns": {
-            "startOfTurn": "Start of Turn",
-            "endOfTurn": "End of Turn"
-        },
-        "genericEffects": {
-            "conditionAdvantage": "Condition Advantage",
-            "conditionDisadvantage": "Condition Disadvantage",
-            "conditionImmunity": "Condition Immunity",
-            "invalidTarget": "Invalid Target",
-            "templateEffect": "{itemName} Template"
-        },
-        "backup": {
-            "missingPack": "Invalid backup compendium specified! No backups have been made!",
-            "daily": "Daily",
-            "weekly": "Weekly",
-            "monthly": "Monthly",
-            "forever": "Forever",
-            "oneWeek": "One Week",
-            "halfMonth": "Half a Month",
-            "oneMonth": "One Month",
-            "threeMonths": "Three Months",
-            "sixMonths": "Six Months",
-            "oneYear": "One Year"
-        },
-        "Distance": {
-            "0": "0 ft.",
-            "5": "5 ft.",
-            "10": "10 ft."
-        },
-        "AbilitySave": {
-            "Title": "Ability Save"
         },
         "SkillCheck": {
             "Title": "Skill Check"
         },
-        "journal": {
-            "chat": "View Chris's premades readme here:",
-            "readme": "Read Me",
-            "welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
+        "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
+        "Summons": {
+            "ActorName": "{option} Actor Name",
+            "CustomAvatar": "{option} Custom Avatar",
+            "CustomName": "{option} Custom Name",
+            "CustomToken": "{option} Custom Token",
+            "DismissSummon": "Dismiss Summon",
+            "SelectSummonType": "Select Summon Type",
+            "SummonedCreature": "Summoned Creature"
         },
-        "troubleshooter": {
-            "clipboard": "Text copied to clipboard!",
-            "copyToClipboard": "Copy to Clipboard",
-            "saveToFile": "Save to File",
-            "discord": "Open Discord Support Channel",
-            "title": "Troubleshooter",
-            "open": "Open Troubleshooter:",
-            "hint": "Open the troubleshooter."
-        }
+        "Template": {
+            "AttackerCantSeeTarget": "Attacker Can't See Target",
+            "TargetCantSeeAttacker": "Target Can't See Attacker",
+            "UnknownTemplate": "Unknown Template"
+        },
+        "Troubleshooter": {
+            "Clipboard": "Text copied to clipboard!",
+            "CopyToClipboard": "Copy to Clipboard",
+            "Discord": "Open Discord Support Channel",
+            "Hint": "Open the troubleshooter.",
+            "Open": "Open Troubleshooter:",
+            "SaveToFile": "Save to File",
+            "Title": "Troubleshooter"
+        },
+        "Turns": {
+            "EndOfTurn": "End of Turn",
+            "StartOfTurn": "Start of Turn"
+        },
+        "Units": {
+            "Feet": "Feet",
+            "Miles": "Miles",
+            "Units": "Units:"
+        },
+        "UnknownTarget": "Unknown Target"
     },
     "CONTROLS": {
-        "TemplateSelect": "Select Templates",
         "LightSelect": "Select Lights",
-        "SoundSelect": "Select Sounds"
+        "SoundSelect": "Select Sounds",
+        "TemplateSelect": "Select Templates"
     }
 }

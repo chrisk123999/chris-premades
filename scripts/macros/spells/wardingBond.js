@@ -62,13 +62,13 @@ async function use({trigger, workflow}) {
             }
         }
     };
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.wardingBond.dismiss', identifier: 'wardingBondDismiss'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WardingBond.Dismiss', identifier: 'wardingBondDismiss'});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
     let effect = await effectUtils.createEffect(workflow.actor, casterEffectData, {identifier: 'wardingBondSource', vae: [{type: 'use', name: featureData.name, identifier: 'wardingBondDismiss'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     await Promise.all(workflow.targets.map(async token => {
         await effectUtils.createEffect(token.actor, targetEffectData, {identifier: 'wardingBondTarget', parentEntity: effect, interdependent: true});
     }));
@@ -84,7 +84,7 @@ async function onHit({trigger, workflow}) {
     let damageInfo = workflow.damageList.find(i => i.actorId === trigger.token.actor.id);
     if (!damageInfo) return;
     if (damageInfo.appliedDamage === 0) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.wardingBond.damage'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WardingBond.Damage'});
     if (!featureData) return;
     featureData.system.damage.parts[0][0] = damageInfo.appliedDamage;
     let targetWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [bond.object]);
@@ -99,7 +99,7 @@ async function movedTarget({trigger}) {
     if (!bond) return;
     let distance = tokenUtils.getDistance(bond, trigger.token);
     if (distance <= maxDistance) return;
-    let selection = await dialogUtils.confirm(trigger.entity.name, 'CHRISPREMADES.macros.wardingBond.distance', {userId: socketUtils.gmID()});
+    let selection = await dialogUtils.confirm(trigger.entity.name, 'CHRISPREMADES.Macros.WardingBond.Distance', {userId: socketUtils.gmID()});
     if (!selection) return;
     await genericUtils.remove(trigger.entity);
 }
@@ -115,7 +115,7 @@ async function movedSource({trigger}) {
         return false;
     }))).find(j => j);
     if (!distantBond) return;
-    let selection = await dialogUtils.confirm(trigger.entity.name, 'CHRISPREMADES.macros.wardingBond.distance', {userId: socketUtils.gmID()});
+    let selection = await dialogUtils.confirm(trigger.entity.name, 'CHRISPREMADES.Macros.WardingBond.Distance', {userId: socketUtils.gmID()});
     if (!selection) return;
     await genericUtils.remove(trigger.entity);
 }
@@ -139,7 +139,7 @@ export let wardingBond = {
     config: [
         {
             value: 'maxDistance',
-            label: 'CHRISPREMADES.macros.wardingBond.maxDistance',
+            label: 'CHRISPREMADES.Macros.WardingBond.MaxDistance',
             type: 'text',
             default: 60,
             category: 'homebrew',

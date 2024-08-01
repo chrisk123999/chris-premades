@@ -200,7 +200,7 @@ export let armorOfAgathys = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'cold',
             options: constants.damageTypeOptions,
@@ -209,7 +209,7 @@ export let armorOfAgathys = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

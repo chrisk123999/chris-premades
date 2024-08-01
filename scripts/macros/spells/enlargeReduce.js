@@ -7,7 +7,7 @@ async function use({workflow}) {
         return;
     }
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.enlargeReduce.select', [['CHRISPREMADES.macros.enlargeReduce.enlarge', 'enlarge'], ['CHRISPREMADES.macros.enlargeReduce.reduce', 'reduce']]);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.EnlargeReduce.Select', [['CHRISPREMADES.Macros.EnlargeReduce.Enlarge', 'enlarge'], ['CHRISPREMADES.Macros.EnlargeReduce.Reduce', 'reduce']]);
     if (!selection) {
         await genericUtils.remove(concentrationEffect);
         return;
@@ -414,7 +414,7 @@ export let enlargeReduce = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

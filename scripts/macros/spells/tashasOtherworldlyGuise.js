@@ -2,7 +2,7 @@ import {dialogUtils, effectUtils, genericUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.tashasOtherworldlyGuise.select', [['CHRISPREMADES.macros.tashasOtherworldlyGuise.upper', 'upper'], ['CHRISPREMADES.macros.tashasOtherworldlyGuise.lower', 'lower']], {displayAsRows: true});
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.TashasOtherworldlyGuise.Select', [['CHRISPREMADES.Macros.TashasOtherworldlyGuise.Upper', 'upper'], ['CHRISPREMADES.Macros.TashasOtherworldlyGuise.Lower', 'lower']], {displayAsRows: true});
     if (!selection) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;

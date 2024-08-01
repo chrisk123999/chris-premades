@@ -6,7 +6,7 @@ async function early({workflow}) {
     if (!workflow.targets.size) return;
     if (!combatUtils.inCombat()) return;
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.genericEffects.conditionAdvantage'),
+        name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionAdvantage'),
         img: 'icons/magic/time/arrows-circling-green.webp',
         origin: workflow.item.uuid,
         duration: {

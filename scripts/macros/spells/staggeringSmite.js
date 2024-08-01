@@ -28,7 +28,7 @@ async function damage({workflow}) {
     let damageType = 'psychic';
     let formula = '4d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Staggering Smite: Stagger', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.staggeringSmite.stagger'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Staggering Smite: Stagger', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StaggeringSmite.Stagger'});
     if (!featureData) {
         errors.missingPackItem();
         return;

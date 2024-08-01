@@ -80,7 +80,7 @@ function getTotalDamageOfType(damageDetail, actor, type) {
 }
 async function handleInstantTemplate(workflow) {
     if (!workflow.template) return;
-    let templateEffectName = genericUtils.format('CHRISPREMADES.genericEffects.templateEffect', {itemName: workflow.item.name});
+    let templateEffectName = genericUtils.format('CHRISPREMADES.GenericEffects.TemplateEffect', {itemName: workflow.item.name});
     let templateEffect = workflow.actor.effects.getName(templateEffectName);
     if (templateEffect) {
         await genericUtils.setFlag(templateEffect, 'chris-premades', 'macros.combat', ['removeTemplate']);

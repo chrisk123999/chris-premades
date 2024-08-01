@@ -48,8 +48,8 @@ class settingsBase extends FormApplication {
             let s = genericUtils.deepClone(setting);
             if (s.scope === 'world' && !game.user.isGM) continue;
             s.id = String(s.key);
-            s.name = genericUtils.translate('CHRISPREMADES.settings.' + s.key + '.name');
-            s.hint = genericUtils.translate('CHRISPREMADES.settings.' + s.key + '.hint');
+            s.name = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Name');
+            s.hint = genericUtils.translate('CHRISPREMADES.Settings.' + s.key + '.Hint');
             s.value = game.settings.get(s.namespace, s.key);
             s.type = setting.type instanceof Function ? setting.type.name : 'String';
             s.isCheckbox = setting.type === Boolean;
@@ -89,7 +89,7 @@ async function selectCompendium(settingKey, type) {
         name: i.metadata.id,
         options: {isChecked: oldKey === i.metadata.id}
     }));
-    let selection = await DialogApp.dialog('CHRISPREMADES.settings.' + settingKey + '.name', 'CHRISPREMADES.settings.' + settingKey + '.hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel');
+    let selection = await DialogApp.dialog('CHRISPREMADES.Settings.' + settingKey + '.Name', 'CHRISPREMADES.Settings.' + settingKey + '.Hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel');
     if (!selection) return;
     await game.settings.set('chris-premades', settingKey, selection.radio);
 }
@@ -181,11 +181,11 @@ export class settingsHelp extends FormApplication {
                     label: 'Go'
                 }, */
                 {
-                    name: genericUtils.translate('CHRISPREMADES.troubleshooter.open'),
+                    name: genericUtils.translate('CHRISPREMADES.Troubleshooter.Open'),
                     id: 'trouble',
                     value: {},
                     isButton: true,
-                    hint: genericUtils.translate('CHRISPREMADES.troubleshooter.hint'),
+                    hint: genericUtils.translate('CHRISPREMADES.Troubleshooter.Hint'),
                     label: genericUtils.translate('CHRISPREMADES.Generic.Go')
                 }
             ]

@@ -2,10 +2,10 @@ import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUti
 
 async function use({workflow}) {
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.macros.callLightning.storming');
+    let storming = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.CallLightning.Storming');
     let castLevel = workflow.castData.castLevel;
     if (storming) castLevel += 1;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Bolt', {getDescription: true, translate: 'CHRISPREMADES.macros.callLightning.stormBolt', identifier: 'stormBolt', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Storm Bolt', {getDescription: true, translate: 'CHRISPREMADES.Macros.CallLightning.StormBolt', identifier: 'stormBolt', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -29,7 +29,7 @@ async function use({workflow}) {
         },
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'callLightning', vae: [{type: 'use', name: featureData.name, identifier: 'stormBolt'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
     let stormBoltItem = itemUtils.getItemByIdentifer(workflow.actor, 'stormBolt');
     if (stormBoltItem) await workflowUtils.completeItemUse(stormBoltItem);
@@ -49,7 +49,7 @@ export let callLightning = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'lightning',
             options: constants.damageTypeOptions,

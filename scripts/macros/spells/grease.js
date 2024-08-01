@@ -20,7 +20,7 @@ async function use({workflow}) {
 async function enterOrEnd({trigger: {entity: template, castData, token}}) {
     if (actorUtils.checkTrait(token.actor, 'ci', 'prone')) return;
     if (effectUtils.getEffectByStatusID(token.actor, 'prone')) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Grease: Fall', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.grease.fall', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Grease: Fall', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Grease.Fall', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

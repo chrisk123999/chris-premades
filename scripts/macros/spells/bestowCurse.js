@@ -36,13 +36,13 @@ async function use({workflow}) {
         if (unnecessaryConcentration) await genericUtils.remove(unnecessaryConcentration);
     }
     let buttons = [
-        ['CHRISPREMADES.macros.bestowCurse.ability', 'Ability'],
-        ['CHRISPREMADES.macros.bestowCurse.attack', 'Attack'],
-        ['CHRISPREMADES.macros.bestowCurse.turn', 'Turn'],
-        ['CHRISPREMADES.macros.bestowCurse.damage', 'Damage'],
-        ['CHRISPREMADES.macros.bestowCurse.other', 'Other']
+        ['CHRISPREMADES.Macros.BestowCurse.Ability', 'Ability'],
+        ['CHRISPREMADES.Macros.BestowCurse.Attack', 'Attack'],
+        ['CHRISPREMADES.Macros.BestowCurse.Turn', 'Turn'],
+        ['CHRISPREMADES.Macros.BestowCurse.Damage', 'Damage'],
+        ['CHRISPREMADES.Macros.BestowCurse.Other', 'Other']
     ];
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.selectCurse', buttons);
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.BestowCurse.SelectCurse', buttons);
     if (!selection) return;
     let effectName = workflow.item.name + ': ' + genericUtils.translate(buttons.find(x => x[1] === selection)[0]);
     let targetEffectData = {
@@ -58,7 +58,7 @@ async function use({workflow}) {
     switch (selection) {
         case 'Ability': {
             let abilityChoices = Object.entries(CONFIG.DND5E.abilities).map(([abbr, {label}]) => [label, abbr]);
-            let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.bestowCurse.abilitySelect', abilityChoices);
+            let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.BestowCurse.AbilitySelect', abilityChoices);
             if (!ability) return;
             targetEffectData.changes = [
                 {
@@ -115,7 +115,7 @@ async function use({workflow}) {
                 {
                     key: 'flags.midi-qol.OverTime',
                     mode: 0,
-                    value: 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="' + workflow.item.name + ' (' + genericUtils.translate('CHRISPREMADES.turns.startOfTurn') + ')"',
+                    value: 'turn=start,saveAbility=wis,saveMagic=true,saveRemove=false,saveDC=' + saveDC + ',label="' + workflow.item.name + ' (' + genericUtils.translate('CHRISPREMADES.Turns.StartOfTurn') + ')"',
                     priority: 20
                 }
             ];
@@ -184,7 +184,7 @@ async function damageApplication({workflow, ditem}) {
     damageRoll.toMessage({
         rollMode: 'roll',
         speaker: workflow.chatCard.speaker,
-        flavor: genericUtils.translate('CHRISPREMADES.macros.bestowCurse.damageFlavor')
+        flavor: genericUtils.translate('CHRISPREMADES.Macros.BestowCurse.DamageFlavor')
     });
     let hasDI = actorUtils.checkTrait(targetActor, 'di', damageType);
     if (hasDI) return;
@@ -232,7 +232,7 @@ export let bestowCurse = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'necrotic',
             options: constants.damageTypeOptions,
@@ -241,7 +241,7 @@ export let bestowCurse = {
         }, 
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d8',
             homebrew: true,

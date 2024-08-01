@@ -62,7 +62,7 @@ async function onHit({trigger, workflow}) {
     if (distance > 10) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'shadowOfMoil');
     if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow of Moil: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.shadowOfMoil.damage'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow of Moil: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ShadowOfMoil.Damage'});
     if (!featureData) {
         errors.missingPackItem();
         return;

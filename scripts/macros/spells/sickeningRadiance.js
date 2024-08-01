@@ -26,7 +26,7 @@ async function startOrEnter({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'sickeningRadiance')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'sickeningRadiance');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sickening Radiance: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.sickeningRadiance.damage', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sickening Radiance: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SickeningRadiance.Damage', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

@@ -4,14 +4,14 @@ async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
-        genericUtils.notify('CHRISPREMADES.macros.greenFlameBlade.noWeapons', 'warn');
+        genericUtils.notify('CHRISPREMADES.Macros.GreenFlameBlade.NoWeapons', 'warn');
         return;
     }
     let selectedWeapon;
     if (weapons.length === 1) {
         selectedWeapon = weapons[0];
     } else {
-        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.greenFlameBlade.selectWeapon', weapons);
+        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.GreenFlameBlade.SelectWeapon', weapons);
     }
     if (!selectedWeapon) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
@@ -27,11 +27,11 @@ async function use({workflow}) {
     if (!nearbyTargets.length) return;
     let target = nearbyTargets[0];
     if (nearbyTargets.length > 1) {
-        let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.greenFlameBlade.leap', nearbyTargets);
+        let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.GreenFlameBlade.Leap', nearbyTargets);
         if (targetSelect) target = targetSelect[0];
     }
     if (!target) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Green-Flame Blade: Leap', {getDescription: true, translate: 'CHRISPREMADES.macros.greenFlameBlade.leapFeature', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Green-Flame Blade: Leap', {getDescription: true, translate: 'CHRISPREMADES.Macros.GreenFlameBlade.LeapFeature', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -59,7 +59,7 @@ export let greenFlameBlade = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'fire',
             options: constants.damageTypeOptions,

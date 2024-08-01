@@ -10,14 +10,14 @@ async function use({workflow}) {
     let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
     let selectedWeapon;
     if (!weapons.length) {
-        genericUtils.notify('CHRISPREMADES.macros.holyWeapon.noWeapons', 'warn');
+        genericUtils.notify('CHRISPREMADES.Macros.HolyWeapon.NoWeapons', 'warn');
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     if (weapons.length === 1) {
         selectedWeapon = weapons[0];
     } else {
-        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.holyWeapon.selectWeapon', weapons);
+        selectedWeapon = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.HolyWeapon.SelectWeapon', weapons);
         if (!selectedWeapon) return;
     }
     let formula = itemUtils.getConfig(workflow.item, 'formula');
@@ -51,7 +51,7 @@ async function use({workflow}) {
         ]
     };
     let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.holyWeapon.target'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.HolyWeapon.Target'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -87,7 +87,7 @@ async function use({workflow}) {
             }
         }
     };
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.dismiss', identifier: 'holyWeaponDismiss', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Dismiss', {getDescription: true, translate: 'CHRISPREMADES.Macros.HolyWeapon.Dismiss', identifier: 'holyWeaponDismiss', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -96,7 +96,7 @@ async function use({workflow}) {
     let casterEffect = await effectUtils.createEffect(workflow.actor, casterEffectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'holyWeaponDismiss'}], identifier: 'holyWeapon'});
     await itemUtils.enchantItem(selectedWeapon, weaponEffectData, {parentEntity: casterEffect, strictlyInterdependent: true, identifier: 'holyWeaponTarget'});
     await effectUtils.createEffect(targetToken.actor, targetEffectData, {parentEntity: casterEffect, strictlyInterdependent: true});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: casterEffect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': casterEffectData.duration.seconds});
 }
 async function dismiss({workflow}) {
@@ -107,12 +107,12 @@ async function dismiss({workflow}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let spellDC = itemUtils.getSaveDC(originItem);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.macros.holyWeapon.burst', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HolyWeapon.Burst', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
-    featureData.effects[0].changes[0].value = 'label=' + genericUtils.translate('CHRISPREMADES.macros.holyWeapon.burstOvertime') + ',turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
+    featureData.effects[0].changes[0].value = 'label=' + genericUtils.translate('CHRISPREMADES.Macros.HolyWeapon.BurstOvertime') + ',turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
     genericUtils.setProperty(featureData.effects[0], 'flags.chris-premades.conditions', ['blinded']);
     featureData.system.save.dc = spellDC;
     let targetTokens = tokenUtils.findNearby(targetToken, featureData.system.target?.value ?? 30, 'enemy');
@@ -135,7 +135,7 @@ export let holyWeapon = {
     config: [
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '2d8',
             homebrew: true,
@@ -143,7 +143,7 @@ export let holyWeapon = {
         },
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'radiant',
             options: constants.damageTypeOptions,

@@ -3,12 +3,12 @@ import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, eff
 async function use({workflow}) {
     if (!workflow.targets.size) return;
     let maxMissiles = 2 + workflow.castData.castLevel;
-    let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.macros.magicMissile.select', {maxMissiles}), workflow.targets, {
+    let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.MagicMissile.Select', {maxMissiles}), workflow.targets, {
         type: 'selectAmount',
         maxAmount: maxMissiles
     });
     if (!selection || !selection.length) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Magic Missile Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.magicMissile.bolt', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Magic Missile Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.MagicMissile.Bolt', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -51,7 +51,7 @@ async function use({workflow}) {
             shieldItems = shieldItems.filter(i => i.system.hasLimitedUses || !i.system.level || (
                 actorUtils.hasSpellSlots(targetToken.actor, i.system.level)
             ));
-            let selectedSpell = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.macros.magicMissile.shield', shieldItems, {userId: socketUtils.firstOwner(targetToken.actor, true), addNoneDocument: true});
+            let selectedSpell = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.MagicMissile.Shield', shieldItems, {userId: socketUtils.firstOwner(targetToken.actor, true), addNoneDocument: true});
             if (selectedSpell) {
                 await socketUtils.remoteRollItem(selectedSpell, {}, {targetUuids: [targetToken.document.uuid]}, socketUtils.firstOwner(targetToken, true));
                 if (effectUtils.getEffectByIdentifier(targetToken.actor, 'shield')) isShielded = true;
@@ -90,7 +90,7 @@ export let magicMissile = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'force',
             options: constants.damageTypeOptions,
@@ -99,7 +99,7 @@ export let magicMissile = {
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d4 + 1',
             homebrew: true,
@@ -107,7 +107,7 @@ export let magicMissile = {
         },
         {
             value: 'rollEach',
-            label: 'CHRISPREMADES.macros.magicMissile.rollEach',
+            label: 'CHRISPREMADES.Macros.MagicMissile.RollEach',
             type: 'checkbox',
             default: false,
             category: 'homebrew',
@@ -115,60 +115,60 @@ export let magicMissile = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             default: 'purple',
             category: 'animation',
             options: [
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'purple',
-                    label: 'CHRISPREMADES.config.colors.purple',
+                    label: 'CHRISPREMADES.Config.Colors.Purple',
                 },
                 {
                     value: 'yellow',
-                    label: 'CHRISPREMADES.config.colors.yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
-                    label: 'CHRISPREMADES.config.colors.darkRed',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange',
+                    label: 'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'grey',
-                    label: 'CHRISPREMADES.config.colors.grey',
+                    label: 'CHRISPREMADES.Config.Colors.Grey',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'cycle',
-                    label: 'CHRISPREMADES.config.colors.cycle',
+                    label: 'CHRISPREMADES.Config.Colors.Cycle',
                     requiredModules: ['jb2a_patreon']
                 }
             ]

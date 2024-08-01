@@ -4,7 +4,7 @@ async function check(maxTargets, workflow) {
     if (workflow.targets.size <= maxTargets) return;
     let oldTargets = Array.from(workflow.targets);
     let newTargets;
-    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.macros.upcastTargets.select', {maxTargets}), oldTargets, {type: 'multiple', maxAmount: maxTargets});
+    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.UpcastTargets.Select', {maxTargets}), oldTargets, {type: 'multiple', maxAmount: maxTargets});
     if (!selection) {
         newTargets = oldTargets.slice(0, maxTargets);
     } else {

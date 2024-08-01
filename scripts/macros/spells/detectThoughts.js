@@ -2,7 +2,7 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 
 async function use({workflow}) {
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Detect Thoughts: Probe Deeper', {getDescription: true, translate: 'CHRISPREMADES.macros.detectThoughts.probeDeeper', identifier: 'probeDeeper', object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Detect Thoughts: Probe Deeper', {getDescription: true, translate: 'CHRISPREMADES.Macros.DetectThoughts.ProbeDeeper', identifier: 'probeDeeper', object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -20,7 +20,7 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'detectThoughts', vae: [{type: 'use', name: featureData.name, identifier: 'probeDeeper'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
 }
 async function probeDeeper({workflow}) {

@@ -2,7 +2,7 @@ import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow Blade Sword', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.shadowBlade.sword', identifier: 'shadowBladeSword'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow Blade Sword', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ShadowBlade.Sword', identifier: 'shadowBladeSword'});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -57,7 +57,7 @@ export let shadowBlade = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'psychic',
             options: constants.damageTypeOptions,

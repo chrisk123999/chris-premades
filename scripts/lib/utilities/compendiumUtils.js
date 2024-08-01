@@ -138,7 +138,7 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         return undefined;
     }
 }
-async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, object = false, translate, identifier}) {
+async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, object = false, translate, identifier} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();

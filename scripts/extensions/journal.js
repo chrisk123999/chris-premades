@@ -1,7 +1,7 @@
 import {genericUtils, errors, constants} from '../utils.js';
 export async function setupJournal() {
     let name = 'CPR - Descriptions';
-    let welcomeText = genericUtils.translate('CHRISPREMADES.journal.welcome');
+    let welcomeText = genericUtils.translate('CHRISPREMADES.Journal.Welcome');
     let journal = game.journal.getName(name);
     if (!journal) {
         journal = await JournalEntry.create({
@@ -27,7 +27,7 @@ export async function setupJournal() {
         });
         await ChatMessage.create({
             speaker: {alias: 'Chris\'s Premades'},
-            content: '<hr>' + genericUtils.translate('CHRISPREMADES.journal.chat') + ' @UUID[JournalEntry.' + journal.id + ']{' + genericUtils.translate('CHRISPREMADES.journal.readme') + '}'
+            content: '<hr>' + genericUtils.translate('CHRISPREMADES.Journal.Chat') + ' @UUID[JournalEntry.' + journal.id + ']{' + genericUtils.translate('CHRISPREMADES.Journal.Readme') + '}'
         });
     } else {
         let page = journal.pages.getName('Info');

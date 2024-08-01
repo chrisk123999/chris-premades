@@ -41,7 +41,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     if (blinkRoll.total < 11) return;
     let playAnimation = effect.flags['chris-premades'].blink.playAnimation;
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.blink.away'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.Blink.Away'),
         img: effect.img,
         origin: effect.origin,
         duration: {
@@ -111,7 +111,7 @@ export let blink = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

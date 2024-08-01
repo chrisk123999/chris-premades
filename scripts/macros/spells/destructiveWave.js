@@ -1,7 +1,7 @@
 import {animationUtils, dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function damage({workflow}) {
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.destructiveWave.select', [['DND5E.DamageRadiant', 'radiant'], ['DND5E.DamageNecrotic', 'necrotic']]);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.DestructiveWave.Select', [['DND5E.DamageRadiant', 'radiant'], ['DND5E.DamageNecrotic', 'necrotic']]);
     if (!damageType) damageType = 'radiant';
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let jb2a = animationUtils.jb2aCheck();
@@ -31,7 +31,7 @@ export let destructiveWave = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

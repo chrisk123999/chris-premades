@@ -40,7 +40,7 @@ async function damage({workflow}) {
     let damageFormula = diceNumber + 'd8[lightning] + ' + itemUtils.getMod(workflow.item);
     await workflowUtils.replaceDamage(workflow, damageFormula, {damageType: 'lightning'});
     if (workflow.hitTargets.size === 0) await workflowUtils.applyDamage([targetToken], Math.floor(workflow.damageRolls[0].total / 2), 'lightning');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Lightning Arrow: Burst', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.lightningArrow.burst', identifier: 'lightningArrowBurst'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Lightning Arrow: Burst', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.LightningArrow.Burst', identifier: 'lightningArrowBurst'});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -77,7 +77,7 @@ export let lightningArrow = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

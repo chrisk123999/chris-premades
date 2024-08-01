@@ -17,7 +17,7 @@ async function use({workflow}) {
             {
                 key: 'flags.midi-qol.OverTime',
                 mode: 0,
-                value: 'label=' + genericUtils.translate('CHRISPREMADES.macros.rayOfEnfeeblement.overtime') + ',turn=end,saveDC=' + itemUtils.getSaveDC(workflow.item) + ',saveAbility=con,savingThrow=true,saveMagic=true',
+                value: 'label=' + genericUtils.translate('CHRISPREMADES.Macros.RayOfEnfeeblement.Overtime') + ',turn=end,saveDC=' + itemUtils.getSaveDC(workflow.item) + ',saveAbility=con,savingThrow=true,saveMagic=true',
                 priority: 20
             }
         ]

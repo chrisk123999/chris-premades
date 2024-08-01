@@ -1,6 +1,6 @@
 import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Vampiric Touch: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.vampiricTouch.attack', identifier: 'vampiricTouchAttack', castDataWorkflow: workflow});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Vampiric Touch: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.VampiricTouch.Attack', identifier: 'vampiricTouchAttack', castDataWorkflow: workflow});
     if (!featureData) {
         errors.missingPackItem();
         return;
@@ -25,7 +25,7 @@ async function use({trigger, workflow}) {
     };
     genericUtils.setProperty(featureData, 'flags.chris-premades.vampiricTouch.healingModifier', healingModifier);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, identifier: 'vampiricTouch', strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'vampiricTouchAttack'}]});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (game.user.targets.first() !=  workflow.token) {
         featureData.system.activation.type = 'special';
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [game.user.targets.first()]);
@@ -55,7 +55,7 @@ export let vampiricTouch = {
     config: [
         {
             value: 'damageType',
-            label: 'CHRISPREMADES.config.damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
             type: 'select',
             default: 'necrotic',
             options: constants.damageTypeOptions,
@@ -64,7 +64,7 @@ export let vampiricTouch = {
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: 'd6',
             homebrew: true,
@@ -72,7 +72,7 @@ export let vampiricTouch = {
         },
         {
             value: 'healingModifier',
-            label: 'CHRISPREMADES.macros.vampiricTouch.healingModifier',
+            label: 'CHRISPREMADES.Macros.VampiricTouch.HealingModifier',
             type: 'text',
             default: '0.5',
             homebrew: true,

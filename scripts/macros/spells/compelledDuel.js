@@ -7,7 +7,7 @@ async function use({workflow}) {
         return;
     }
     let targetEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.compelledDuel.target'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.CompelledDuel.Target'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -25,7 +25,7 @@ async function use({workflow}) {
     effectUtils.addMacro(targetEffectData, 'combat', ['compelledDuelCompelled']);
     effectUtils.addMacro(targetEffectData, 'movement', ['compelledDuelCompelled']);
     let casterEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.compelledDuel.source'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.CompelledDuel.Source'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
@@ -60,7 +60,7 @@ async function turnEnd({trigger}) {
         if (!targetToken || !sourceToken) continue;
         let distance = tokenUtils.getDistance(sourceToken, targetToken);
         if (distance <= 30) continue;
-        let selection = await dialogUtils.confirm((await fromUuid(effect.origin)).name, 'CHRISPREMADES.macros.compelledDuel.endEffect', {userId: socketUtils.gmID()});
+        let selection = await dialogUtils.confirm((await fromUuid(effect.origin)).name, 'CHRISPREMADES.Macros.CompelledDuel.EndEffect', {userId: socketUtils.gmID()});
         if (!selection) continue;
         await genericUtils.remove(effect);
     }
@@ -131,7 +131,7 @@ async function targetMoved({trigger: {entity: effect}, options}) {
     if (oldDistance >= distance || distance <= 30) return;
     let turnCheck = combatUtils.perTurnCheck(effect, 'compelledDuel');
     if (!turnCheck) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Compelled Duel: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.compelledDuel.moved'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Compelled Duel: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.CompelledDuel.Moved'});
     if (!featureData) {
         errors.missingPackItem();
         return;

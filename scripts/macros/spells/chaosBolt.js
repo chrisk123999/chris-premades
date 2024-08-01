@@ -23,7 +23,7 @@ async function use({workflow}) {
     let [dice1, dice2] = workflow.damageRolls[0].terms[0].values;
     let damageType = buttons[dice1 - 1][1];
     if (dice1 !== dice2) {
-        let choice = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.chaosBolt.select', [buttons[dice1 - 1], buttons[dice2 - 1]]);
+        let choice = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChaosBolt.Select', [buttons[dice1 - 1], buttons[dice2 - 1]]);
         damageType = choice ?? damageType;
     }
     workflow.damageRolls[0].options.type = damageType;
@@ -47,10 +47,10 @@ async function use({workflow}) {
         if (!nearbyTargets.length) return;
         let nextTarget = nearbyTargets[0];
         if (nearbyTargets.length > 1) {
-            let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.chaosBolt.bounce', nearbyTargets);
+            let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChaosBolt.Bounce', nearbyTargets);
             if (targetSelect) nextTarget = targetSelect[0];
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Chaos Bolt: Bounce', {getDescription: true, translate: 'CHRISPREMADES.macros.chaosBolt.bounceFeature', object: true});
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Chaos Bolt: Bounce', {getDescription: true, translate: 'CHRISPREMADES.Macros.ChaosBolt.BounceFeature', object: true});
         if (!featureData) {
             errors.missingPackItem();
             return;
@@ -81,7 +81,7 @@ export let chaosBolt = {
     config: [
         {
             value: 'alwaysBounce',
-            label: 'CHRISPREMADES.macros.chaosBolt.alwaysBounce',
+            label: 'CHRISPREMADES.Macros.ChaosBolt.AlwaysBounce',
             type: 'checkbox',
             default: false,
             homebrew: true,
@@ -89,7 +89,7 @@ export let chaosBolt = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

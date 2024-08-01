@@ -7,7 +7,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.banishment.planeSelect', workflow.failedSaves, {type: 'multiple', skipDeadAndUnconscious: false, userId: socketUtils.gmID(), maxAmount: workflow.failedSaves.size});
+    let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.Banishment.PlaneSelect', workflow.failedSaves, {type: 'multiple', skipDeadAndUnconscious: false, userId: socketUtils.gmID(), maxAmount: workflow.failedSaves.size});
     if (!selection) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;

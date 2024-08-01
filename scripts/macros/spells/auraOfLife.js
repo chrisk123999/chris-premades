@@ -95,7 +95,7 @@ export let auraOfLife = {
     config: [
         {
             value: 'removeTempmaxDebuffs',
-            label: 'CHRISPREMADES.macros.auraOfLife.removeTempmax',
+            label: 'CHRISPREMADES.Macros.AuraOfLife.RemoveTempmax',
             type: 'checkbox',
             default: false,
             category: 'mechanics'

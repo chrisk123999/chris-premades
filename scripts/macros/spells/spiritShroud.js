@@ -7,7 +7,7 @@ async function use({workflow}) {
         ['DND5E.DamageRadiant', 'radiant', {image: 'icons/magic/light/projectile-beam-yellow.webp'}],
         ['DND5E.DamageCold', 'cold', {image: 'icons/magic/air/wind-tornado-wall-blue.webp'}]
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.spiritShroud.select', buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SpiritShroud.Select', buttons);
     if (!damageType) damageType = 'necrotic';
     let effectData = {
         name: workflow.item.name,
@@ -40,7 +40,7 @@ async function damage({workflow}) {
     let damageType = effect.flags['chris-premades'].spiritShroud.damageType;
     await workflowUtils.bonusDamage(workflow, diceNum + 'd8[' + damageType + ']', {damageType});
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.spiritShroud.hit'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.SpiritShroud.Hit'),
         img: effect.img,
         workflow: effect.origin,
         duration: {
@@ -74,7 +74,7 @@ async function everyTurn({trigger: {entity: effect, token, target}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, 'spiritShroudSlow');
     if (targetEffect) await genericUtils.remove(targetEffect);
     let effectData = {
-        name: genericUtils.translate('CHRISPREMADES.macros.spiritShroud.slow'),
+        name: genericUtils.translate('CHRISPREMADES.Macros.SpiritShroud.Slow'),
         img: effect.img,
         origin: effect.parent.uuid, // Not item uuid to prevent AA from killing the anim on the source actor(?)
         duration: {

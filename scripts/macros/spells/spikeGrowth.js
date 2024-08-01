@@ -82,7 +82,7 @@ async function damageHelper(pointA, pointB, template, token, {stay, gridless} = 
         timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / 5);
     }
     if (timesToDamage <= 0) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Spike Growth: Thorns', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.spikeGrowth.thorns'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Spike Growth: Thorns', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpikeGrowth.Thorns'});
     if (!featureData) {
         errors.missingPackItem();
         return;

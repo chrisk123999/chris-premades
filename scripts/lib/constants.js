@@ -330,57 +330,57 @@ const overTimeOptions = [
 const summonAnimationOptions = [
     {
         value: 'default',
-        label: 'CHRISPREMADES.config.animations.default',
+        label: 'CHRISPREMADES.Config.Animations.Default',
         requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
     },
     {
         value: 'celestial',
-        label: 'CHRISPREMADES.config.animations.celestial',
+        label: 'CHRISPREMADES.Config.Animations.Celestial',
         requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
     },
     {
         value: 'fiend',
-        label: 'CHRISPREMADES.config.animations.fiend',
+        label: 'CHRISPREMADES.Config.Animations.Fiend',
         requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
     },
     {
         value: 'fire',
-        label: 'CHRISPREMADES.config.animations.fire',
+        label: 'CHRISPREMADES.Config.Animations.Fire',
         requiredModules: ['jb2a_patreon']
     },
     {
         value: 'water',
-        label: 'CHRISPREMADES.config.animations.water',
+        label: 'CHRISPREMADES.Config.Animations.Water',
         requiredModules: ['jb2a_patreon']
     },
     {
         value: 'air',
-        label: 'CHRISPREMADES.config.animations.air',
+        label: 'CHRISPREMADES.Config.Animations.Air',
         requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
     },
     {
         value: 'earth',
-        label: 'CHRISPREMADES.config.animations.earth',
+        label: 'CHRISPREMADES.Config.Animations.Earth',
         requiredModules: ['jb2a_patreon', 'animated-spell-effects-cartoon']
     },
     {
         value: 'nature',
-        label: 'CHRISPREMADES.config.animations.nature',
+        label: 'CHRISPREMADES.Config.Animations.Nature',
         requiredModules: ['jb2a_patreon']
     },
     {
         value: 'shadow',
-        label: 'CHRISPREMADES.config.animations.shadow',
+        label: 'CHRISPREMADES.Config.Animations.Shadow',
         requiredModules: ['jb2a_patreon']
     },
     {
         value: 'future',
-        label: 'CHRISPREMADES.config.animations.future',
+        label: 'CHRISPREMADES.Config.Animations.Future',
         requiredModules: ['jb2a_patreon']
     },
     {
         value: 'none',
-        label: 'CHRISPREMADES.config.animations.none',
+        label: 'CHRISPREMADES.Config.Animations.None',
         requiredModules: []
     }
 ];

@@ -6,7 +6,7 @@ async function early({workflow}) {
     let nearbyTargets = tokenUtils.findNearby(workflow.token, 5, 'ally', {includeIncapacitated: true}).filter(i => actorUtils.getSize(i.actor) <= casterSize);
     let toTeleport = [workflow.token];
     if (nearbyTargets.length) {
-        let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.macros.thunderStep.select', nearbyTargets, {skipDeadAndUnconscious: false});
+        let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ThunderStep.Select', nearbyTargets, {skipDeadAndUnconscious: false});
         if (selection && selection.length) {
             toTeleport.push(...selection[0]);
         }
@@ -30,7 +30,7 @@ export let thunderStep = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

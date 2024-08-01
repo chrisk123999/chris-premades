@@ -32,7 +32,7 @@ async function enterOrStart({trigger: {entity: template, castData, token}}) {
     if (effectUtils.getConcentrationEffect(token.actor)) await actorUtils.doConcentrationCheck(token.actor, castData.saveDC);
     if (actorUtils.checkTrait(token.actor, 'ci', 'prone')) return;
     if (effectUtils.getEffectByStatusID(token.actor, 'prone')) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sleet Storm: Prone', {object: true, getDescription: true, translate: 'CHRISPREMADES.macros.sleetStorm.prone', flatDC: castData.saveDC});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sleet Storm: Prone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SleetStorm.Prone', flatDC: castData.saveDC});
     if (!featureData) {
         errors.missingPackItem();
         return;

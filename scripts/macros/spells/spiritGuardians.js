@@ -7,7 +7,7 @@ async function use({trigger, workflow}) {
     } else if (alignment.includes('evil')) {
         damageType = 'necrotic';
     } else {
-        damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.spiritGuardians.alignment', [['CHRISPREAMDES.alignment.good', 'radiant'], ['CHRISPREMADES.alignment.neutral', 'radiant'], ['CHRISPREMADES.alignment.evil', 'necrotic']], {displayAsRows: true});
+        damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SpiritGuardians.Alignment', [['CHRISPREMADES.Alignment.Good', 'radiant'], ['CHRISPREMADES.Alignment.Neutral', 'radiant'], ['CHRISPREMADES.Alignment.Evil', 'necrotic']], {displayAsRows: true});
         if (!damageType) damageType = 'radiant';        
     }
     let formula = workflow.castData.castLevel + itemUtils.getConfig(workflow.item, 'formula');
@@ -78,7 +78,7 @@ async function moveOrTurn({trigger}) {
 
         if (used) return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Spirit Guardians: Damage', {object: true, identifier: 'spiritGuardiansDamage', flatDC: trigger.castData.castDC, translate: 'CHRISPREMADES.macros.spiritGuardians.damage'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Spirit Guardians: Damage', {object: true, identifier: 'spiritGuardiansDamage', flatDC: trigger.castData.castDC, translate: 'CHRISPREMADES.Macros.SpiritGuardians.Damage'});
     let damageType = trigger.entity.flags['chris-premades'].spiritGuardians.damageType;
     featureData.system.damage.parts = [
         [
@@ -114,117 +114,117 @@ export let spiritGuardians = {
     config: [
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.config.playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'
         },
         {
             value: 'color',
-            label: 'CHRISPREMADES.config.color',
+            label: 'CHRISPREMADES.Config.Color',
             type: 'select',
             category: 'animation',
             default: 'blueyellow',
             options: [
                 {
                     value: 'blueyellow',
-                    label: 'CHRISPREMADES.config.colors.blueYellow'
+                    label: 'CHRISPREMADES.Config.Colors.BlueYellow'
                 },
                 {
                     value: 'blue',
-                    label: 'CHRISPREMADES.config.colors.blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_black',
-                    label: 'CHRISPREMADES.config.colors.darkBlack',
+                    label: 'CHRISPREMADES.Config.Colors.DarkBlack',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_blue',
-                    label: 'CHRISPREMADES.config.colors.darkBlue',
+                    label: 'CHRISPREMADES.Config.Colors.DarkBlue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_purple',
-                    label: 'CHRISPREMADES.config.colors.darkPurple',
+                    label: 'CHRISPREMADES.Config.Colors.DarkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_red',
-                    label: 'CHRISPREMADES.config.colors.darkRed',
+                    label: 'CHRISPREMADES.Config.Colors.DarkRed',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'dark_whiteblue',
-                    label: 'CHRISPREMADES.config.colors.darkWhiteBlue',
+                    label: 'CHRISPREMADES.Config.Colors.DarkWhiteBlue',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'green',
-                    label: 'CHRISPREMADES.config.colors.green',
+                    label: 'CHRISPREMADES.Config.Colors.Green',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'orange',
-                    label: 'CHRISPREMADES.config.colors.orange',
+                    label: 'CHRISPREMADES.Config.Colors.Orange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'greenorange',
-                    label: 'CHRISPREMADES.config.colors.greenOrange',
+                    label: 'CHRISPREMADES.Config.Colors.GreenOrange',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'pinkpurple',
-                    label: 'CHRISPREMADES.config.colors.pinkPurple',
+                    label: 'CHRISPREMADES.Config.Colors.PinkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'random',
-                    label: 'CHRISPREMADES.config.colors.random',
+                    label: 'CHRISPREMADES.Config.Colors.Random',
                     requiredModules: ['jb2a_patreon']
                 }
             ]
         },
         {
             value: 'variation',
-            label: 'CHRISPREMADES.macros.spiritGuardians.variation',
+            label: 'CHRISPREMADES.Macros.SpiritGuardians.Variation',
             type: 'select',
             default: 'ring',
             category: 'animation',
             options: [
                 {
                     value: 'ring',
-                    label: 'CHRISPREMADES.macros.spiritGuardians.ring'
+                    label: 'CHRISPREMADES.Macros.SpiritGuardians.Ring'
                 },
                 {
                     value: 'no_ring',
-                    label: 'CHRISPREMADES.macros.spiritGuardians.noRing',
+                    label: 'CHRISPREMADES.Macros.SpiritGuardians.NoRing',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'particles',
-                    label: 'CHRISPREMADES.macros.spiritGuardians.particles',
+                    label: 'CHRISPREMADES.Macros.SpiritGuardians.Particles',
                     requiredModules: ['jb2a_patreon']
                 },
                 {
                     value: 'spirits',
-                    label: 'CHRISPREMADES.macros.spiritGuardians.spirits',
+                    label: 'CHRISPREMADES.Macros.SpiritGuardians.Spirits',
                     requiredModules: ['jb2a_patreon']
                 }
             ]
         },
         {
             value: 'sound',
-            label: 'CHRISPREMADES.config.sound',
+            label: 'CHRISPREMADES.Config.Sound',
             type: 'file',
             default: '',
             category: 'sound'
         },
         {
             value: 'formula',
-            label: 'CHRISPREMADES.config.formula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: 'd8',
             homebrew: true

@@ -13,9 +13,9 @@ async function use({workflow}) {
         ['DND5E.DamageLightning', 'lightning', {image: 'icons/magic/lightning/bolt-blue.webp'}],
         ['DND5E.DamagePoison', 'poison', {image: 'icons/magic/death/skull-poison-green.webp'}]
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.macros.dragonsBreath.select', buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.DragonsBreath.Select', buttons);
     if (!damageType) damageType = 'fire';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dragon Breath', {getDescription: true, translate: 'CHRISPREMADES.macros.dragonsBreath.dragonBreath', identifier: 'dragonBreath', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dragon Breath', {getDescription: true, translate: 'CHRISPREMADES.Macros.DragonsBreath.DragonBreath', identifier: 'dragonBreath', castDataWorkflow: workflow, object: true});
     if (!featureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -40,7 +40,7 @@ async function use({workflow}) {
     };
     for (let target of workflow.targets) {
         let effect = await effectUtils.createEffect(target.actor, effectData, {concentrationItem: workflow.item, interdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'dragonBreath'}], identifier: 'dragonsBreath'});
-        await itemUtils.createItems(target.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.section.spellFeatures')});
+        await itemUtils.createItems(target.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     }
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': duration});
 }

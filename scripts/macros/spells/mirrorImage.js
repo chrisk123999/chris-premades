@@ -68,7 +68,7 @@ async function attacked({workflow}) {
     if (workflow.attackTotal >= duplicateAC) {
         ChatMessage.create({
             speaker: workflow.chatCard.speaker,
-            content: genericUtils.translate('CHRISPREMADES.macros.mirrorImage.hit')
+            content: genericUtils.translate('CHRISPREMADES.Macros.MirrorImage.Hit')
         });
         if (duplicates === 1) {
             await genericUtils.remove(effect);
@@ -78,7 +78,7 @@ async function attacked({workflow}) {
     } else {
         ChatMessage.create({
             speaker: workflow.chatCard.speaker,
-            content: genericUtils.translate('CHRISPREMADES.macros.mirrorImage.miss')
+            content: genericUtils.translate('CHRISPREMADES.Macros.MirrorImage.Miss')
         });
     }
 }
