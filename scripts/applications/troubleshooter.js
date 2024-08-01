@@ -1,5 +1,4 @@
 import {genericUtils} from '../utils.js';
-
 let names = {
     'ATL': 'Advanced Token Effects',
     'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
@@ -223,7 +222,7 @@ export async function troubleshooter() {
         async function clipboard(output) {
             try {
                 navigator.clipboard.writeText(output);
-                ui.notifications.info('Text copied to clipboard!');
+                genericUtils.notify('CHRISPREMADES.troubleshooter.clipboard', 'info', {localize: true});
             } catch (error) {
                 console.log(error);
             }
@@ -233,18 +232,18 @@ export async function troubleshooter() {
         }
         let buttons = {
             close: {
-                label: 'Close'
+                label: genericUtils.translate('CHRISPREMADES.Generic.Close')
             },
             clipboard: {
-                label: 'Copy to Clipboard',
+                label: genericUtils.translate('CHRISPREMADES.troubleshooter.copyToClipboard'),
                 callback: () => clipboard(output)
             },
             save: {
-                label: 'Save to File',
+                label: genericUtils.translate('CHRISPREMADES.troubleshooter.saveToFile'),
                 callback: () => save(output)
             },
             discord: {
-                label: 'Open Discord Support Channel',
+                label: genericUtils.translate('CHRISPREMADES.troubleshooter.discord'),
                 callback: () => discord()
             }
         };
@@ -253,7 +252,7 @@ export async function troubleshooter() {
             _onClickButton(event) {
                 let id = event.currentTarget.dataset.button;
                 let button = this.data.buttons[id];
-                if (button.label === 'Close') {
+                if (button.cssClass === 'close') {
                     this.submit(button, event);
                     return;
                 }
@@ -262,7 +261,7 @@ export async function troubleshooter() {
         }
         let dialog = new TroubleDialog(
             {
-                title: 'Troubleshooter Output',
+                title: genericUtils.translate('CHRISPREMADES.troubleshooter.title'),
                 content: content,
                 buttons: buttons
             },

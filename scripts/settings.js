@@ -82,6 +82,13 @@ export function registerSettings() {
         category: 'compendium',
     });
     addSetting({
+        key: 'monsterCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-monsters',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,
@@ -420,7 +427,7 @@ export function registerSettings() {
         key: 'gambitPremades',
         type: Number,
         default: 1,
-        category: 'compendium',
+        category: 'integration',
         choices: {
             1: 'CHRISPREMADES.settings.gambitPremades.1',
             2: 'CHRISPREMADES.settings.gambitPremades.2',

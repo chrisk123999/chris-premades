@@ -3,6 +3,7 @@ import {conditions} from '../extensions/conditions.js';
 import {sidebar} from '../extensions/sidebar.js';
 import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
+import {DialogApp} from './dialog.js';
 import {troubleshooter} from './troubleshooter.js';
 let settingCategories = {};
 let buttonLabels = {
@@ -12,7 +13,8 @@ let buttonLabels = {
     hiddenCompendiums: 'CHRISPREMADES.Generic.Select',
     hiddenCompendiumFolders: 'CHRISPREMADES.Generic.Select',
     backupMake: 'CHRISPREMADES.Generic.Go',
-    trouble: 'CHRISPREMADES.Generic.Go'
+    trouble: 'CHRISPREMADES.Generic.Go',
+    monsterCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -79,6 +81,18 @@ class settingsBase extends FormApplication {
         }
     }
 }
+async function selectCompendium(settingKey, type) {
+    let oldKey = genericUtils.getCPRSetting(settingKey);
+    let compendiums = game.packs.filter(i => i.metadata.type === type);
+    let inputs = compendiums.map(i => ({
+        label: i.metadata.label,
+        name: i.metadata.id,
+        options: {isChecked: oldKey === i.metadata.id}
+    }));
+    let selection = await DialogApp.dialog('CHRISPREMADES.settings.' + settingKey + '.name', 'CHRISPREMADES.settings.' + settingKey + '.hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel');
+    if (!selection) return;
+    await game.settings.set('chris-premades', settingKey, selection.radio);
+}
 export async function settingButton(id) {
     switch(id) {
         case 'additionalCompendiums': new AdditionalCompendiums().render(true); break;
@@ -88,6 +102,7 @@ export async function settingButton(id) {
         case 'hiddenCompendiumFolders': await sidebar.selectHiddenCompendiumFolders(); break;
         case 'backupMake': await backup.doBackup(true); break;
         case 'trouble': await troubleshooter(); break;
+        case 'monsterCompendium': await selectCompendium('monsterCompendium', 'Actor');
     }
 }
 export class settingsDevelopment extends settingsBase {
@@ -166,12 +181,12 @@ export class settingsHelp extends FormApplication {
                     label: 'Go'
                 }, */
                 {
-                    name: 'Open Troubleshooter:',
+                    name: genericUtils.translate('CHRISPREMADES.troubleshooter.open'),
                     id: 'trouble',
                     value: {},
                     isButton: true,
-                    hint: 'Will export a file used to help troubleshoot issues with this module on my Discord server.',
-                    label: 'Go'
+                    hint: genericUtils.translate('CHRISPREMADES.troubleshooter.hint'),
+                    label: genericUtils.translate('CHRISPREMADES.Generic.Go')
                 }
             ]
         };
@@ -179,5 +194,4 @@ export class settingsHelp extends FormApplication {
     activateListeners(html) {
         super.activateListeners(html);
     }
-    //async _updateObject(event, formData) {}
 }
