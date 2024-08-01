@@ -9,6 +9,7 @@ import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
+import {miscPremades} from './integrations/miscPremades.js';
 import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 function addSetting(options) {
@@ -434,7 +435,24 @@ export function registerSettings() {
             3: 'CHRISPREMADES.settings.gambitPremades.3',
             4: 'CHRISPREMADES.settings.gambitPremades.4'
         },
-        onChange: value => gambitPremades.init(value)
+        onChange: value => {
+            if (game.modules.get('gambits-premades')?.active) gambitPremades.init(value);
+        }
+    });
+    addSetting({
+        key: 'miscPremades',
+        type: Number,
+        default: 1,
+        category: 'integration',
+        choices: {
+            1: 'CHRISPREMADES.settings.miscPremades.1',
+            2: 'CHRISPREMADES.settings.miscPremades.2',
+            3: 'CHRISPREMADES.settings.miscPremades.3',
+            4: 'CHRISPREMADES.settings.miscPremades.4'
+        },
+        onChange: value => {
+            if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(value);
+        }
     });
 }
 export function registerMenus() {

@@ -1,3 +1,5 @@
+import {genericUtils} from '../utils.js';
+
 let packs = [
     {
         key: 'gps-spells',
@@ -80,6 +82,10 @@ async function init(mode) {
         if (!pack) return;
         let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'type']});
         index.forEach(j => {
+            let version = j.system.source.custom;
+            if (!version) {
+                genericUtils.log('dev', j.name + ' from GPS is missing version info.');
+            }
             gambitItems.push({
                 name: j.name,
                 version: j.system.source.custom,

@@ -23,6 +23,7 @@ import {skillCheck} from './extensions/skillCheck.js';
 import {ddbi} from './integrations/ddbi.js';
 import {effectEvents} from './events/effects.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
+import {miscPremades} from './integrations/miscPremades.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -42,6 +43,7 @@ Hooks.once('ready', () => {
     registerHooks();
     ddbi.ready();
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
+    if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);

@@ -1,4 +1,5 @@
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
+import {miscPremades} from '../../integrations/miscPremades.js';
 import * as macros from '../../macros.js';
 import {constants} from '../constants.js';
 import {errors} from '../errors.js';
@@ -50,14 +51,26 @@ async function getGPSAutomation(item) {
         case 'backpack':
         case 'loot':
             found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'item'); break;
-        case 'feat':
-            found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
+        case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
     }
     if (!found) return;
     return await fromUuid(found.uuid);
 }
 async function getMISCAutomation(item) {
-
+    let found;
+    switch(item.type) {
+        case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell'); break;
+        case 'weapon':
+        case 'equipment':
+        case 'consumable':
+        case 'tool':
+        case 'backpack':
+        case 'loot':
+            found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'item'); break;
+        case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
+    }
+    if (!found) return;
+    return await fromUuid(found.uuid);
 }
 async function getAllAutomations(item) {
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
@@ -84,7 +97,7 @@ async function getAllAutomations(item) {
             case 'midi-item-community-showcase':
                 found = await getMISCAutomation(item);
                 source = 'midi-item-community-showcase';
-                //TODO: Add version info.
+                version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                 break;
         }
         if (found) items.push({document: found, priority: i[1], source: source, version: version});

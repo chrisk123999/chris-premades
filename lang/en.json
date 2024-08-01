@@ -348,6 +348,14 @@
             "monsterCompendium": {
                 "name": "Monster Compendium",
                 "hint": "Monster compendium use for certain automations. Ideally should point to your D&D Beyond monster commpendium."
+            },
+            "miscPremades": {
+                "name": "Midi Item Showcase Options",
+                "hint": "Which compendiums should be included in the additional compendium search for Midi Item Showcase - Community.",
+                "1": "No Homebrew or Unearthed Arcana",
+                "2": "No Unearthed Arcana",
+                "3": "No Homebrew",
+                "4": "Include Homebrew and Unearthed Arcana"
             }
         },
         "settingCategory": {
