@@ -302,6 +302,9 @@
                 "NoWeapons": "No equipped weapons found!",
                 "SelectWeapon": "Attack with what weapon?"
             },
+            "GuardianOfFaith": {
+                "Damage": "Guardian of Faith: Damage"
+            },
             "GuardianOfNature": {
                 "Beast": "Primal Beast",
                 "Select": "What form do you assume?",
@@ -865,9 +868,11 @@
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
+                "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "Skeleton": "Skeleton",
                 "SpiritualWeapon": "Spiritual Weapon",
+                "Steed": "Steed",
                 "Zombie": "Zombie"
             },
             "CustomAvatar": "{option} Custom Avatar",

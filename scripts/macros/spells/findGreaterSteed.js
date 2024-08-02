@@ -24,7 +24,7 @@ export let findGreaterSteed = {
         {
             value: 'steedName',
             label: 'CHRISPREMADES.Summons.CustomName',
-            i18nOption: 'Steed',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.Steed',
             type: 'text',
             default: '',
             category: 'summons'

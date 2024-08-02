@@ -54,6 +54,7 @@ export {frostFingers} from './macros/spells/frostFingers.js';
 export {gaseousForm} from './macros/spells/gaseousForm.js';
 export {grease, greaseArea} from './macros/spells/grease.js';
 export {greenFlameBlade} from './macros/spells/greenFlameBlade.js';
+export {guardianOfFaith, guardianOfFaithDamage} from './macros/spells/guardianOfFaith.js';
 export {guardianOfNature} from './macros/spells/guardianOfNature.js';
 export {guidingBolt} from './macros/spells/guidingBolt.js';
 export {gustOfWind, gustOfWindMove, gustOfWindGust} from './macros/spells/gustOfWind.js';
