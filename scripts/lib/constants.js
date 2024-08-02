@@ -384,6 +384,14 @@ const summonAnimationOptions = [
         requiredModules: []
     }
 ];
+const sizes = {
+    tiny: 0,
+    small: 1,
+    medium: 2,
+    large: 3,
+    huge: 4,
+    gargantuan: 5
+};
 export let constants = {
     packs,
     featurePacks,
@@ -396,5 +404,6 @@ export let constants = {
     damageTypeOptions,
     setUseLocalCompendium,
     overTimeOptions,
-    summonAnimationOptions
+    summonAnimationOptions,
+    sizes
 };

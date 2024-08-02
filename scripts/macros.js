@@ -10,6 +10,7 @@ export {auraOfVitality} from './macros/spells/auraOfVitality.js';
 export {banishment, banishmentBanished} from './macros/spells/banishment.js';
 export {beaconOfHope, beaconOfHopeHopeful} from './macros/spells/beaconOfHope.js';
 export {bestowCurse, bestowCurseAttack, bestowCurseDamageSource, bestowCurseDamageTarget} from './macros/spells/bestowCurse.js';
+export {bigbysHand, bigbysHandItems} from './macros/spells/bigbysHand.js';
 export {bladeWard} from './macros/spells/bladeWard.js';
 export {blight, blightDamage} from './macros/spells/blight.js';
 export {blindingSmite, blindingSmiteDamage} from './macros/spells/blindingSmite.js';

@@ -192,6 +192,15 @@
                 "SelectCurse": "What curse do you bestow?",
                 "Turn": "Waste Turn"
             },
+            "BigbysHand": {
+                "Big": "Target is too big!",
+                "Clenched": "Clenched Fist",
+                "Crush": "Grasping Hand: Crush",
+                "Forceful": "Forceful Hand",
+                "Grasping": "Grasping Hand",
+                "Interposing": "Interposing Hand",
+                "Move": "Bigby's Hand: Move"
+            },
             "BlindingSmite": {
                 "Blind": "Blinding Smite: Blind"
             },
@@ -868,6 +877,7 @@
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
+                "BigbysHand": "Bigby's Hand",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "Skeleton": "Skeleton",

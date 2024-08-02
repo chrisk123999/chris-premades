@@ -142,7 +142,7 @@ export let guardianOfFaith = {
         {
             value: 'token',
             label: 'CHRISPREMADES.Summons.CustomToken',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HealingSpirit',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.GuardianOfFaith',
             type: 'file',
             default: '',
             category: 'summons'
@@ -150,7 +150,7 @@ export let guardianOfFaith = {
         {
             value: 'avatar',
             label: 'CHRISPREMADES.Summons.CustomAvatar',
-            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HealingSpirit',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.GuardianOfFaith',
             type: 'file',
             default: '',
             category: 'summons'
