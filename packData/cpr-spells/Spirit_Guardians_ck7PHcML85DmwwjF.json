@@ -7,7 +7,7 @@
     },
     "source": {
       "book": "Player's Handbook",
-      "page": "289",
+      "page": "278",
       "license": "",
       "custom": ""
     },
@@ -23,16 +23,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "15",
-      "units": "ft",
-      "type": "sphere",
+      "value": "",
+      "units": "",
+      "type": "self",
       "width": null,
       "prompt": true
     },
     "range": {
-      "value": 60,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -70,14 +70,16 @@
       "scaling": "spell"
     },
     "summons": null,
-    "level": 2,
-    "school": "enc",
+    "level": 3,
+    "school": "con",
     "properties": [
       "vocal",
-      "somatic"
+      "somatic",
+      "material",
+      "concentration"
     ],
     "materials": {
-      "value": "",
+      "value": "a holy symbol",
       "consumed": false,
       "cost": 0,
       "supply": 0
@@ -87,17 +89,14 @@
       "prepared": false
     },
     "scaling": {
-      "mode": "none",
+      "mode": "level",
       "formula": ""
     }
   },
-  "name": "Zone of Truth",
+  "name": "Spirit Guardians",
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
@@ -112,25 +111,29 @@
       "offHandWeapon": false,
       "noConcentrationCheck": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "chris-premades": {
       "info": {
+        "identifier": "spiritGuardians",
         "source": "chris-premades",
-        "version": "0.12.0",
-        "identifier": "zoneOfTruth"
+        "version": "0.12.0"
       },
       "macros": {
         "midi": {
           "item": [
-            "zoneOfTruth"
+            "spiritGuardians"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/symbols/ring-circle-smoke-blue.webp",
+  "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
   "folder": null,
   "_stats": {
     "compendiumSource": null,
@@ -138,15 +141,15 @@
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1719375836590,
-    "modifiedTime": 1722602140586,
+    "createdTime": 1722602124272,
+    "modifiedTime": 1722602140062,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "_id": "7y42OtTb0Hy5E8Ks",
-  "sort": 11100000,
+  "_id": "ck7PHcML85DmwwjF",
+  "sort": 0,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!7y42OtTb0Hy5E8Ks"
+  "_key": "!items!ck7PHcML85DmwwjF"
 }
