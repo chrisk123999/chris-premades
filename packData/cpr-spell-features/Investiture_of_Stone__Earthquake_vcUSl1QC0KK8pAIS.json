@@ -174,11 +174,11 @@
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
     "createdTime": 1722120566096,
-    "modifiedTime": 1722248947775,
+    "modifiedTime": 1722573783263,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
   "_id": "vcUSl1QC0KK8pAIS",
-  "sort": 0,
+  "sort": 3700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

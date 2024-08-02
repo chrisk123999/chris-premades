@@ -4,7 +4,7 @@
   "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
   "system": {
     "description": {
-      "value": "<p>This feature does not impose disadvantage on other attack rolls.</p>",
+      "value": "",
       "chat": ""
     },
     "source": {
@@ -82,9 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "midi-qol": {
       "effectActivation": false
     },
@@ -105,16 +102,15 @@
     },
     "core": {
       "sourceId": "Item.gRYUpjcNJfDZlz2M"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
+    "systemVersion": "3.3.1",
     "coreVersion": "12.330",
     "createdTime": 1686086683620,
-    "modifiedTime": 1715505768803,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783102,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.gRYUpjcNJfDZlz2M",
     "duplicateSource": null
   },

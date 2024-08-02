@@ -159,9 +159,6 @@
     }
   ],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
@@ -184,16 +181,15 @@
     },
     "core": {
       "sourceId": "Item.xtLjCujkyo1of8a4"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1686259063398,
-    "modifiedTime": 1715505769170,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783357,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.xtLjCujkyo1of8a4",
     "duplicateSource": null
   },

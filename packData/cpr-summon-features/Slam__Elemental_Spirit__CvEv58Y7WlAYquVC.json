@@ -82,16 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
@@ -114,16 +104,15 @@
     },
     "core": {
       "sourceId": "Item.N85usi7YujRfx4ry"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1681586761162,
-    "modifiedTime": 1715505768073,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573782640,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.N85usi7YujRfx4ry",
     "duplicateSource": null
   },

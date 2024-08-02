@@ -1,11 +1,11 @@
 {
-  "name": "CPR - Spiritual Weapon",
+  "name": "CPR - Elemental Spirit",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
     "abilities": {
       "str": {
-        "value": 10,
+        "value": 18,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -14,7 +14,7 @@
         }
       },
       "dex": {
-        "value": 10,
+        "value": 15,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -23,7 +23,7 @@
         }
       },
       "con": {
-        "value": 10,
+        "value": 17,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -32,7 +32,7 @@
         }
       },
       "int": {
-        "value": 10,
+        "value": 4,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -50,7 +50,7 @@
         }
       },
       "cha": {
-        "value": 10,
+        "value": 16,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -61,16 +61,16 @@
     },
     "attributes": {
       "ac": {
-        "flat": null,
-        "calc": "default",
+        "flat": 11,
+        "calc": "natural",
         "formula": ""
       },
       "hp": {
-        "value": 1000,
-        "max": 1000,
+        "value": 50,
+        "max": 50,
         "temp": null,
         "tempmax": null,
-        "formula": "1000"
+        "formula": "50"
       },
       "init": {
         "ability": "",
@@ -86,7 +86,7 @@
         "climb": 0,
         "fly": 0,
         "swim": 0,
-        "walk": 30,
+        "walk": 40,
         "units": "ft",
         "hover": false
       },
@@ -94,7 +94,7 @@
         "max": 3
       },
       "senses": {
-        "darkvision": 0,
+        "darkvision": 60,
         "blindsight": 0,
         "tremorsense": 0,
         "truesight": 0,
@@ -137,13 +137,13 @@
       "alignment": "",
       "race": null,
       "type": {
-        "value": "custom",
+        "value": "elemental",
         "subtype": "",
         "swarm": "",
-        "custom": "NoTarget"
+        "custom": ""
       },
       "environment": "",
-      "cr": 1,
+      "cr": 0,
       "spellLevel": 0,
       "source": {},
       "ideal": "",
@@ -153,7 +153,9 @@
     "traits": {
       "size": "med",
       "di": {
-        "value": [],
+        "value": [
+          "poison"
+        ],
         "bypasses": [],
         "custom": ""
       },
@@ -168,11 +170,19 @@
         "custom": ""
       },
       "ci": {
-        "value": [],
+        "value": [
+          "exhaustion",
+          "paralyzed",
+          "petrified",
+          "poisoned",
+          "unconscious"
+        ],
         "custom": ""
       },
       "languages": {
-        "value": [],
+        "value": [
+          "primordial"
+        ],
         "custom": ""
       },
       "dm": {
@@ -508,7 +518,7 @@
     }
   },
   "prototypeToken": {
-    "name": "CPR - Spiritual Weapon",
+    "name": "Elemental Spirit",
     "displayName": 30,
     "actorLink": false,
     "texture": {
@@ -529,7 +539,7 @@
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
-    "disposition": 0,
+    "disposition": 1,
     "displayBars": 50,
     "bar1": {
       "attribute": "attributes.hp"
@@ -564,17 +574,34 @@
     },
     "sight": {
       "enabled": true,
-      "range": 0,
+      "range": 60,
       "angle": 360,
-      "visionMode": "basic",
+      "visionMode": "darkvision",
       "color": null,
-      "attenuation": 0.1,
+      "attenuation": 0,
       "brightness": 0,
-      "saturation": 0,
+      "saturation": -1,
       "contrast": 0
     },
     "detectionModes": [],
-    "flags": {},
+    "flags": {
+      "wall-height": {
+        "tokenHeight": 0
+      },
+      "elevation-drag-ruler": {
+        "hasBonusDash": false,
+        "hideSpeedButton": false,
+        "selectedSpeed": "auto"
+      },
+      "monks-tokenbar": {
+        "include": "default"
+      },
+      "monks-combat-marker": {
+        "token-highlight-scale": 1.5,
+        "token-combat-animation": "",
+        "token-highlight": ""
+      }
+    },
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false,
@@ -598,26 +625,32 @@
   "items": [],
   "effects": [],
   "flags": {
+    "midi-qol": {
+      "concentration-damage": 0
+    },
     "chris-premades": {
       "version": 5
     },
     "core": {
-      "sourceId": "Actor.sJy46p3jWFpVYKFO"
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
+      "sourceId": "Actor.LFFOrHrSRDghDnRK"
     }
   },
   "_stats": {
+    "compendiumSource": "Actor.LFFOrHrSRDghDnRK",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722543816271,
-    "modifiedTime": 1722543816271,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+    "createdTime": 1722417543249,
+    "modifiedTime": 1722573782225,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "folder": "ejT5XdYbnGTC2KvL"
+  "folder": null,
+  "_id": "37N9WT5oRWBquD55",
+  "sort": 300000,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!actors!37N9WT5oRWBquD55"
 }

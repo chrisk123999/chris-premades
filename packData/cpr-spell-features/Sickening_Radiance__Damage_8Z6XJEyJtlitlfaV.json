@@ -122,12 +122,6 @@
     },
     "core": {
       "sourceId": "Item.m3QJXQxdhlFItaIY"
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
     }
   },
   "_stats": {
@@ -137,12 +131,12 @@
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
     "createdTime": 1722417145284,
-    "modifiedTime": 1722417145284,
+    "modifiedTime": 1722573782511,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
   "folder": null,
   "_id": "8Z6XJEyJtlitlfaV",
-  "sort": 0,
+  "sort": 1100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

@@ -4,7 +4,7 @@
   "img": "icons/magic/symbols/rune-sigil-black-pink.webp",
   "system": {
     "description": {
-      "value": "<p>This does not interact with cast spells in any way. It is only for reaction tracking.</p>",
+      "value": "",
       "chat": ""
     },
     "source": {
@@ -77,21 +77,17 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "core": {
       "sourceId": "Item.z4vGWJ7WPghvYi5x"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
+    "systemVersion": "3.3.1",
     "coreVersion": "12.330",
     "createdTime": 1685481551814,
-    "modifiedTime": 1715505768935,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783200,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.z4vGWJ7WPghvYi5x",
     "duplicateSource": null
   },

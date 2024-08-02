@@ -155,13 +155,9 @@
     }
   ],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "core": {
       "sourceId": "Item.eXuenrI2KPh2imxC"
     },
-    "cf": null,
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -187,8 +183,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1685775033909,
-    "modifiedTime": 1715505768455,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573782876,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.eXuenrI2KPh2imxC",
     "duplicateSource": null
   },

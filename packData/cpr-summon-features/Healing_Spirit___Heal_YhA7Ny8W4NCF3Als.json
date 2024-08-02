@@ -82,16 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.healingSpirit.healing"
@@ -113,16 +103,15 @@
     },
     "core": {
       "sourceId": "Item.QXpOkNrhMxMvbh6n"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1684538944657,
-    "modifiedTime": 1715505768893,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783170,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.QXpOkNrhMxMvbh6n",
     "duplicateSource": null
   },

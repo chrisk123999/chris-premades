@@ -77,21 +77,17 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "core": {
       "sourceId": "Item.RR5EyGqRbqVwvcP5"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1681798697562,
-    "modifiedTime": 1715505769253,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783403,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.RR5EyGqRbqVwvcP5",
     "duplicateSource": null
   },

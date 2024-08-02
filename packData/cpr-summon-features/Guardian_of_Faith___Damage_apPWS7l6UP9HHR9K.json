@@ -82,16 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.guardianOfFaith.attack",
@@ -121,16 +111,15 @@
     },
     "core": {
       "sourceId": "Item.ZrUCj6NVfdnKy8TA"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1689458614800,
-    "modifiedTime": 1715505768973,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783227,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.ZrUCj6NVfdnKy8TA",
     "duplicateSource": null
   },

@@ -86,9 +86,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false
@@ -110,14 +107,6 @@
     },
     "core": {
       "sourceId": "Item.sylbEE4elfUdAP7x"
-    },
-    "cf": null,
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
     }
   },
   "_stats": {
@@ -125,8 +114,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1685515529070,
-    "modifiedTime": 1715505768829,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783117,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.sylbEE4elfUdAP7x",
     "duplicateSource": null
   },

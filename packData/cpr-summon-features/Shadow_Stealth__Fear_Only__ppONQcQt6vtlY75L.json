@@ -77,16 +77,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.monster.generic.stealthCheck"
@@ -108,16 +98,15 @@
     },
     "core": {
       "sourceId": "Item.35COzNhYJblpcGyP"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1682899459909,
-    "modifiedTime": 1715505769447,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783495,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.35COzNhYJblpcGyP",
     "duplicateSource": null
   },

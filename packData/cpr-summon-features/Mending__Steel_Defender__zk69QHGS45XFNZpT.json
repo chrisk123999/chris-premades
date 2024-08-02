@@ -4,7 +4,7 @@
   "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
   "system": {
     "description": {
-      "value": "<p>This is only used on the Steel Defender token. It does not catch the mending spell being cast.</p>",
+      "value": "",
       "chat": ""
     },
     "source": {
@@ -82,9 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "midi-qol": {
       "effectActivation": false
     },
@@ -105,16 +102,15 @@
     },
     "core": {
       "sourceId": "Item.b8GXCDWv3kPhGB4W"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
+    "systemVersion": "3.3.1",
     "coreVersion": "12.330",
     "createdTime": 1685481461959,
-    "modifiedTime": 1715505769861,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783685,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.b8GXCDWv3kPhGB4W",
     "duplicateSource": null
   },

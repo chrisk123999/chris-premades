@@ -1,34 +1,33 @@
 {
-  "name": "Spiritual Weapon: Attack",
-  "type": "feat",
+  "type": "spell",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Xanathar's Guide to Everything pg 153"
     },
     "activation": {
-      "type": "bonus",
+      "type": "action",
       "cost": 1,
       "condition": ""
     },
     "duration": {
       "value": "1",
-      "units": "round"
+      "units": "hour"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 60,
       "long": null,
       "units": "ft"
     },
@@ -46,19 +45,14 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "msak",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "0[force]",
-          "force"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -67,32 +61,42 @@
       "dc": null,
       "scaling": "spell"
     },
-    "type": {
-      "value": "class",
-      "subtype": ""
+    "level": 5,
+    "school": "nec",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
     },
-    "requirements": "",
-    "recharge": {
-      "value": null,
-      "charged": false
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
     },
-    "properties": [],
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
     "attack": {
       "bonus": "",
       "flat": false
     },
     "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "summons": null
   },
+  "name": "Danse Macabre",
   "flags": {
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.EZcNy1NJx0tkwWPu"
+    },
     "midi-qol": {
       "effectActivation": false,
-      "fumbleThreshold": null,
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -105,7 +109,7 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": true,
+      "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
@@ -117,25 +121,46 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.RstA9b0hpvX5qdKD"
+    "chris-premades": {
+      "info": {
+        "name": "Danse Macabre",
+        "version": "0.12.2",
+        "identifier": "danseMacabre",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "danseMacabre"
+          ]
+        }
+      },
+      "config": {
+        "animation": "shadow",
+        "zombieActorName": "Zombie",
+        "skeletonActorName": "Skeleton"
+      }
     },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
-    }
+    "dnd5e": {}
   },
   "effects": [],
-  "img": "icons/magic/fire/dagger-rune-enchant-flame-purple-orange.webp",
+  "img": "icons/magic/acid/dissolve-bone-ribs-skull.webp",
   "_stats": {
+    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.EZcNy1NJx0tkwWPu",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722543859885,
-    "modifiedTime": 1722544051508,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+    "createdTime": 1722572811361,
+    "modifiedTime": 1722573783430,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "folder": "1auG0tp4JAW3ZMFh"
+  "folder": null,
+  "_id": "Rx6Jck4NHqeOZBCf",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!Rx6Jck4NHqeOZBCf"
 }

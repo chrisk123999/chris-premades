@@ -77,111 +77,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
-    "autoanimations": {
-      "id": "5d83a0a4-7568-47c4-b453-d210d9a389b0",
-      "label": "Claws (Yugoloth Only) - Teleport",
-      "macro": {
-        "enable": false,
-        "playWhen": "0"
-      },
-      "menu": "preset",
-      "soundOnly": {
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        }
-      },
-      "isEnabled": true,
-      "isCustomized": true,
-      "fromAmmo": false,
-      "version": 5,
-      "presetType": "teleportation",
-      "data": {
-        "start": {
-          "dbSection": "static",
-          "enabe": true,
-          "menuType": "spell",
-          "animation": "mistystep",
-          "variant": "01",
-          "color": "red",
-          "options": {
-            "delay": 0,
-            "elevation": 1000,
-            "fadeIn": 250,
-            "fadeOut": 250,
-            "isMasked": false,
-            "opacity": 1,
-            "isRadius": false,
-            "playbackRate": 1,
-            "size": 1.5
-          },
-          "enable": true
-        },
-        "between": {
-          "dbSection": "range",
-          "enable": false,
-          "menuType": "weapon",
-          "animation": "arrow",
-          "variant": "regular",
-          "color": "regular",
-          "options": {
-            "delay": 0,
-            "elevation": 1000,
-            "opacity": 1,
-            "playbackRate": 1
-          }
-        },
-        "end": {
-          "dbSection": "static",
-          "enabe": true,
-          "menuType": "spell",
-          "animation": "mistystep",
-          "variant": "02",
-          "color": "red",
-          "options": {
-            "delay": 500,
-            "elevation": 1000,
-            "fadeIn": 250,
-            "fadeOut": 250,
-            "isMasked": false,
-            "isRadius": false,
-            "opacity": 1,
-            "playbackRate": 1,
-            "size": 1.5
-          },
-          "enable": true
-        },
-        "options": {
-          "range": 30,
-          "hideFromPlayers": false,
-          "measureType": "alternating",
-          "teleport": true,
-          "speed": 120,
-          "delayMove": 1000,
-          "alpha": 0,
-          "delayFade": 750,
-          "delayReturn": 250,
-          "checkCollision": true
-        },
-        "sound": {
-          "enable": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false
     },
@@ -202,16 +97,15 @@
     },
     "core": {
       "sourceId": "Item.dypU96GnQj4brjGi"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1682385637248,
-    "modifiedTime": 1715505767555,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573782308,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.dypU96GnQj4brjGi",
     "duplicateSource": null
   },

@@ -77,9 +77,6 @@
   "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "magicitems": {
       "enabled": false,
       "equipped": false,
@@ -96,16 +93,15 @@
     },
     "core": {
       "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1682657906821,
-    "modifiedTime": 1715505769060,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783282,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo",
     "duplicateSource": null
   },

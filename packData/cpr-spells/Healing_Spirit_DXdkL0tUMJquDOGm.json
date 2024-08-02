@@ -1,14 +1,12 @@
 {
-  "name": "Healing Spirit: Move",
-  "type": "feat",
-  "img": "icons/magic/light/beam-rays-yellow-blue-small.webp",
+  "type": "spell",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Xanathar's Guide to Everything pg 157"
     },
     "activation": {
       "type": "bonus",
@@ -16,8 +14,8 @@
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
@@ -29,9 +27,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 60,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -63,27 +61,35 @@
       "dc": null,
       "scaling": "spell"
     },
-    "type": {
+    "level": 2,
+    "school": "con",
+    "materials": {
       "value": "",
-      "subtype": ""
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
     },
-    "requirements": "",
-    "recharge": {
-      "value": null,
-      "charged": false
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
     },
-    "properties": [],
+    "scaling": {
+      "mode": "none",
+      "formula": ""
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
     "attack": {
       "bonus": "",
       "flat": false
     },
     "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "summons": null
   },
-  "effects": [],
+  "name": "Healing Spirit",
   "flags": {
     "midi-qol": {
       "effectActivation": false,
@@ -113,22 +119,43 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.prg6GE0wJWjmXnpf"
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.bi2glgWoijUSYmoN"
     },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
-    }
+    "chris-premades": {
+      "info": {
+        "name": "Healing Spirit",
+        "version": "0.12.2",
+        "identifier": "healingSpirit",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "healingSpirit"
+          ]
+        }
+      }
+    },
+    "dnd5e": {}
   },
+  "effects": [],
+  "img": "icons/magic/light/beam-rays-yellow-blue-small.webp",
   "_stats": {
+    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.bi2glgWoijUSYmoN",
+    "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722543859885,
-    "modifiedTime": 1722544051494,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+    "createdTime": 1722572815233,
+    "modifiedTime": 1722573782898,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "folder": "1auG0tp4JAW3ZMFh"
+  "folder": null,
+  "_id": "DXdkL0tUMJquDOGm",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!DXdkL0tUMJquDOGm"
 }

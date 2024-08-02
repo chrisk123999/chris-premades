@@ -82,16 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "[postDamageRoll]function.chrisPremades.macros.monster.draconicSpirit.breathWeapon"
@@ -113,16 +103,15 @@
     },
     "core": {
       "sourceId": "Item.PivPl3xO5b6lwCQ3"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1684454778074,
-    "modifiedTime": 1715505769554,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783545,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.PivPl3xO5b6lwCQ3",
     "duplicateSource": null
   },

@@ -77,16 +77,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.monster.feySpirit.tricksy",
@@ -116,194 +106,6 @@
     },
     "core": {
       "sourceId": "Item.A6YuD6pvbNyYMi18"
-    },
-    "cf": null,
-    "autoanimations": {
-      "id": "78620671-03e0-4e17-9861-1465b8d4c373",
-      "label": "Tricksy",
-      "macro": {
-        "enable": false,
-        "playWhen": "0"
-      },
-      "menu": "templatefx",
-      "primary": {
-        "video": {
-          "dbSection": "templatefx",
-          "menuType": "circle",
-          "animation": "darkness",
-          "variant": "01",
-          "color": "black",
-          "enableCustom": false,
-          "customPath": ""
-        },
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        },
-        "options": {
-          "contrast": 0,
-          "delay": 0,
-          "elevation": 1000,
-          "isMasked": false,
-          "isWait": false,
-          "occlusionAlpha": 0.5,
-          "occlusionMode": "3",
-          "opacity": 0.5,
-          "persistent": true,
-          "persistType": "attachtemplate",
-          "playbackRate": 1,
-          "removeTemplate": false,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "rotate": 0,
-          "saturate": 0,
-          "scale": "1.25",
-          "tint": false,
-          "tintColor": "#FFFFFF",
-          "zIndex": 1,
-          "aboveTemplate": true
-        }
-      },
-      "secondary": {
-        "enable": false,
-        "video": {
-          "dbSection": "static",
-          "menuType": "spell",
-          "animation": "curewounds",
-          "variant": "01",
-          "color": "blue",
-          "enableCustom": false,
-          "customPath": ""
-        },
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        },
-        "options": {
-          "addTokenWidth": false,
-          "anchor": "0.5",
-          "contrast": 0,
-          "delay": 0,
-          "elevation": 1000,
-          "fadeIn": 250,
-          "fadeOut": 500,
-          "isMasked": false,
-          "isRadius": true,
-          "isWait": false,
-          "opacity": 1,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "saturate": 0,
-          "size": 1.5,
-          "tint": false,
-          "tintColor": "#FFFFFF",
-          "zIndex": 1
-        }
-      },
-      "soundOnly": {
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        }
-      },
-      "source": {
-        "enable": false,
-        "video": {
-          "dbSection": "static",
-          "menuType": "spell",
-          "animation": "curewounds",
-          "variant": "01",
-          "color": "blue",
-          "enableCustom": false,
-          "customPath": ""
-        },
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        },
-        "options": {
-          "addTokenWidth": false,
-          "anchor": "0.5",
-          "contrast": 0,
-          "delay": 0,
-          "elevation": 1000,
-          "fadeIn": 250,
-          "fadeOut": 500,
-          "isMasked": false,
-          "isRadius": false,
-          "isWait": true,
-          "opacity": 1,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "saturate": 0,
-          "size": 1,
-          "tint": false,
-          "tintColor": "#FFFFFF",
-          "zIndex": 1
-        }
-      },
-      "target": {
-        "enable": false,
-        "video": {
-          "dbSection": "static",
-          "menuType": "spell",
-          "animation": "curewounds",
-          "variant": "01",
-          "color": "blue",
-          "enableCustom": false,
-          "customPath": ""
-        },
-        "sound": {
-          "enable": false,
-          "delay": 0,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "startTime": 0,
-          "volume": 0.75
-        },
-        "options": {
-          "addTokenWidth": false,
-          "anchor": "0.5",
-          "contrast": 0,
-          "delay": 0,
-          "elevation": 1000,
-          "fadeIn": 250,
-          "fadeOut": 500,
-          "isMasked": false,
-          "isRadius": false,
-          "opacity": 1,
-          "persistent": false,
-          "repeat": 1,
-          "repeatDelay": 250,
-          "saturate": 0,
-          "size": 1,
-          "tint": false,
-          "tintColor": "#FFFFFF",
-          "unbindAlpha": false,
-          "unbindVisibility": false,
-          "zIndex": 1
-        }
-      },
-      "isEnabled": true,
-      "isCustomized": false,
-      "fromAmmo": false,
-      "version": 5
     }
   },
   "_stats": {
@@ -311,8 +113,8 @@
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1681955000697,
-    "modifiedTime": 1715505769597,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783585,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.A6YuD6pvbNyYMi18",
     "duplicateSource": null
   },

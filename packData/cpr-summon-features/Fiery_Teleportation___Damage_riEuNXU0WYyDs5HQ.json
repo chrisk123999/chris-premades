@@ -82,9 +82,6 @@
   },
   "effects": [],
   "flags": {
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": ""
@@ -106,16 +103,15 @@
     },
     "core": {
       "sourceId": "Item.zWt6qKlrfCn7t0St"
-    },
-    "cf": null
+    }
   },
   "_stats": {
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "coreVersion": "12.330",
     "createdTime": 1688511969702,
-    "modifiedTime": 1715505769624,
-    "lastModifiedBy": "PQGBBcoVSwpUhViM",
+    "modifiedTime": 1722573783596,
+    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
     "compendiumSource": "Item.zWt6qKlrfCn7t0St",
     "duplicateSource": null
   },

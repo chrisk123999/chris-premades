@@ -1,18 +1,11 @@
 {
-  "name": "WIP",
+  "name": "CPR - Intangible Spirit",
   "type": "npc",
   "img": "icons/svg/mystery-man.svg",
   "system": {
-    "currency": {
-      "pp": 0,
-      "gp": 0,
-      "ep": 0,
-      "sp": 0,
-      "cp": 0
-    },
     "abilities": {
       "str": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -21,7 +14,7 @@
         }
       },
       "dex": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -30,7 +23,7 @@
         }
       },
       "con": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -39,7 +32,7 @@
         }
       },
       "int": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -48,7 +41,7 @@
         }
       },
       "wis": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -57,7 +50,7 @@
         }
       },
       "cha": {
-        "value": 10,
+        "value": 100,
         "proficient": 0,
         "max": null,
         "bonuses": {
@@ -66,265 +59,367 @@
         }
       }
     },
-    "bonuses": {
-      "mwak": {
-        "attack": "",
-        "damage": ""
+    "attributes": {
+      "ac": {
+        "flat": 100,
+        "calc": "flat",
+        "formula": ""
       },
-      "rwak": {
-        "attack": "",
-        "damage": ""
+      "hp": {
+        "value": 1000,
+        "max": 1000,
+        "temp": 0,
+        "tempmax": 0,
+        "formula": "1000"
       },
-      "msak": {
-        "attack": "",
-        "damage": ""
+      "init": {
+        "ability": "",
+        "bonus": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
       },
-      "rsak": {
-        "attack": "",
-        "damage": ""
+      "movement": {
+        "burrow": null,
+        "climb": null,
+        "fly": null,
+        "swim": null,
+        "walk": null,
+        "units": null,
+        "hover": false
       },
-      "abilities": {
-        "check": "",
-        "save": "",
-        "skill": ""
+      "attunement": {
+        "max": 3
       },
-      "spell": {
-        "dc": ""
+      "senses": {
+        "darkvision": null,
+        "blindsight": null,
+        "tremorsense": null,
+        "truesight": null,
+        "units": null,
+        "special": ""
+      },
+      "spellcasting": "int",
+      "exhaustion": 0,
+      "concentration": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        },
+        "bonuses": {
+          "save": ""
+        },
+        "limit": 1
+      },
+      "hd": {
+        "spent": 0
+      },
+      "death": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        },
+        "success": 0,
+        "failure": 0
       }
+    },
+    "details": {
+      "biography": {
+        "value": "",
+        "public": ""
+      },
+      "alignment": "",
+      "race": null,
+      "type": {
+        "value": "custom",
+        "subtype": "",
+        "swarm": "",
+        "custom": "NoTarget"
+      },
+      "environment": "",
+      "cr": 1,
+      "spellLevel": 0,
+      "source": {},
+      "ideal": "",
+      "bond": "",
+      "flaw": ""
+    },
+    "traits": {
+      "size": "sm",
+      "di": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dr": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dv": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "ci": {
+        "value": [],
+        "custom": ""
+      },
+      "languages": {
+        "value": [],
+        "custom": ""
+      },
+      "dm": {
+        "amount": {},
+        "bypasses": []
+      }
+    },
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
     },
     "skills": {
       "acr": {
+        "value": 0,
         "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "ani": {
+        "value": 0,
         "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "arc": {
+        "value": 0,
         "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "ath": {
+        "value": 0,
         "ability": "str",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "dec": {
+        "value": 0,
         "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "his": {
+        "value": 0,
         "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "ins": {
+        "value": 0,
         "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "itm": {
+        "value": 0,
         "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "inv": {
+        "value": 0,
         "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "med": {
+        "value": 0,
         "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "nat": {
+        "value": 0,
         "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "prc": {
+        "value": 0,
         "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "prf": {
+        "value": 0,
         "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "per": {
+        "value": 0,
         "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "rel": {
+        "value": 0,
         "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "slt": {
+        "value": 0,
         "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "ste": {
+        "value": 0,
         "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       },
       "sur": {
+        "value": 0,
         "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
         "roll": {
           "min": null,
           "max": null,
           "mode": 0
-        },
-        "value": 0,
-        "bonuses": {
-          "check": "",
-          "passive": ""
         }
       }
     },
@@ -371,90 +466,31 @@
         "override": null
       }
     },
-    "attributes": {
-      "init": {
-        "ability": "",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        },
-        "bonus": ""
+    "bonuses": {
+      "mwak": {
+        "attack": "",
+        "damage": ""
       },
-      "movement": {
-        "burrow": null,
-        "climb": null,
-        "fly": null,
-        "swim": null,
-        "walk": null,
-        "units": null,
-        "hover": false
+      "rwak": {
+        "attack": "",
+        "damage": ""
       },
-      "attunement": {
-        "max": 3
+      "msak": {
+        "attack": "",
+        "damage": ""
       },
-      "senses": {
-        "darkvision": null,
-        "blindsight": null,
-        "tremorsense": null,
-        "truesight": null,
-        "units": null,
-        "special": ""
+      "rsak": {
+        "attack": "",
+        "damage": ""
       },
-      "spellcasting": "int",
-      "exhaustion": 0,
-      "concentration": {
-        "ability": "",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        },
-        "bonuses": {
-          "save": ""
-        },
-        "limit": 1
+      "abilities": {
+        "check": "",
+        "save": "",
+        "skill": ""
       },
-      "ac": {
-        "flat": null,
-        "calc": "default"
-      },
-      "hd": {
-        "spent": 0
-      },
-      "hp": {
-        "value": 10,
-        "max": 10,
-        "temp": 0,
-        "tempmax": 0,
-        "formula": ""
-      },
-      "death": {
-        "ability": "",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        },
-        "success": 0,
-        "failure": 0
+      "spell": {
+        "dc": ""
       }
-    },
-    "details": {
-      "biography": {
-        "value": "",
-        "public": ""
-      },
-      "alignment": "",
-      "ideal": "",
-      "bond": "",
-      "flaw": "",
-      "race": null,
-      "type": {},
-      "environment": "",
-      "cr": 1,
-      "spellLevel": 0,
-      "source": {}
     },
     "resources": {
       "legact": {
@@ -469,65 +505,34 @@
         "value": false,
         "initiative": null
       }
-    },
-    "traits": {
-      "size": "med",
-      "di": {
-        "bypasses": [],
-        "value": [],
-        "custom": ""
-      },
-      "dr": {
-        "bypasses": [],
-        "value": [],
-        "custom": ""
-      },
-      "dv": {
-        "bypasses": [],
-        "value": [],
-        "custom": ""
-      },
-      "dm": {
-        "amount": {},
-        "bypasses": []
-      },
-      "ci": {
-        "value": [],
-        "custom": ""
-      },
-      "languages": {
-        "value": [],
-        "custom": ""
-      }
     }
   },
   "prototypeToken": {
-    "name": "WIP",
-    "displayName": 0,
+    "name": "CPR - Intangible Spirit",
+    "displayName": 30,
     "actorLink": false,
     "appendNumber": false,
     "prependAdjective": false,
-    "width": 1,
-    "height": 1,
     "texture": {
       "src": "icons/svg/mystery-man.svg",
-      "anchorX": 0.5,
-      "anchorY": 0.5,
+      "scaleX": 0.8,
+      "scaleY": 0.8,
       "offsetX": 0,
       "offsetY": 0,
-      "fit": "contain",
-      "scaleX": 1,
-      "scaleY": 1,
       "rotation": 0,
       "tint": "#ffffff",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
+    "width": 1,
+    "height": 1,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
-    "disposition": -1,
-    "displayBars": 0,
+    "disposition": 0,
+    "displayBars": 50,
     "bar1": {
       "attribute": "attributes.hp"
     },
@@ -535,12 +540,9 @@
       "attribute": null
     },
     "light": {
-      "negative": false,
-      "priority": 0,
       "alpha": 0.5,
       "angle": 360,
       "bright": 0,
-      "color": null,
       "coloration": 1,
       "dim": 0,
       "attenuation": 0.5,
@@ -557,20 +559,52 @@
       "darkness": {
         "min": 0,
         "max": 1
-      }
+      },
+      "color": null,
+      "negative": false,
+      "priority": 0
     },
     "sight": {
-      "enabled": false,
+      "enabled": true,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
-      "color": null,
       "attenuation": 0.1,
       "brightness": 0,
       "saturation": 0,
-      "contrast": 0
+      "contrast": 0,
+      "color": null
     },
     "detectionModes": [],
+    "flags": {
+      "wall-height": {
+        "tokenHeight": 0
+      },
+      "elevation-drag-ruler": {
+        "hasBonusDash": false,
+        "hideSpeedButton": false,
+        "selectedSpeed": "auto"
+      },
+      "monks-combat-marker": {
+        "token-highlight-scale": 1.5,
+        "token-combat-animation": "",
+        "token-highlight": ""
+      },
+      "Rideable": {
+        "issetRideableFlag": true,
+        "MaxRiderFlag": null,
+        "CustomRidingheightFlag": null,
+        "UseRidingHeightFlag": true,
+        "RiderPositioningFlag": "RowPlacement",
+        "TokenFormFlag": "TokenFormCircle",
+        "InsideMovementFlag": false,
+        "SpawnRidersFlag": "",
+        "canbeGrappledFlag": true,
+        "CanbePilotedFlag": false
+      }
+    },
+    "randomImg": false,
+    "hexagonalShape": 0,
     "occludable": {
       "radius": 0
     },
@@ -585,29 +619,35 @@
         "scale": 1,
         "texture": null
       }
-    },
-    "flags": {},
-    "randomImg": false
+    }
   },
   "items": [],
   "effects": [],
   "folder": null,
-  "flags": {},
+  "flags": {
+    "midi-qol": {
+      "concentration-damage": 0
+    },
+    "chris-premades": {
+      "version": 5
+    },
+    "core": {}
+  },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722249783241,
-    "modifiedTime": 1722249783241,
+    "createdTime": 1722417554199,
+    "modifiedTime": 1722573782637,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
-  "_id": "k3LNMQ4ZK7uTy3mQ",
-  "sort": 0,
+  "_id": "k2cT61ULLkhT5CmF",
+  "sort": 1100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!actors!k3LNMQ4ZK7uTy3mQ"
+  "_key": "!actors!k2cT61ULLkhT5CmF"
 }
