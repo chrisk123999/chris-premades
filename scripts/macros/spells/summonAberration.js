@@ -1,7 +1,7 @@
 import {Summons} from '../../lib/summons.js';
 import {dialogUtils, actorUtils, itemUtils, animationUtils, effectUtils, genericUtils, tokenUtils, compendiumUtils, constants, workflowUtils} from '../../utils.js';
 async function use({speaker, actor, token, character, item, args, scope, workflow}){
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPPREMADES.Summons.SelectSummonType', [
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Summons.SelectSummonType', [
         ['CHRISPREMADES.Macros.SummonAberration.Beholderkin', 'beholderkin'], 
         ['CHRISPREMADES.Macros.SummonAberration.Slaad', 'slaad'], 
         ['CHRISPREMADES.Macros.SummonAberration.StarSpawn', 'starspawn']]);
@@ -12,7 +12,7 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Aberrant Spirit)', {name: 'Multiattack (' + attacks + ' Attacks)'}, workflow.item);
     if (!multiAttackFeatureData) return;
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 10);
-    let name = itemUtils.getConfiguration(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')';
+    let name = itemUtils.getConfig(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')';
     if (name === '') name = 'Aberrant Spirit (' + selection + ')';
     let updates = {
         'actor': {
@@ -43,8 +43,8 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
             'disposition': workflow.token.document.disposition
         }
     };
-    let avatarImg = item.getConfiguration(workflow.item, 'avatar-' + selection);
-    let tokenImg = item.getConfiguration(workflow.item, 'token-' + selection);
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar-' + selection);
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token-' + selection);
     if (avatarImg) updates.actor.img = avatarImg;
     if (tokenImg) {
         setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
@@ -82,7 +82,7 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
             break;
         }
     }
-    let animation = itemUtils.getConfiguration(workflow.item, 'animation-' + selection) ?? 'shadow';
+    let animation = itemUtils.getConfig(workflow.item, 'animation-' + selection) ?? 'shadow';
     if (animationUtils.jb2aCheck() != 'patreon' || !animationUtils.aseCheck()) animation = 'none';
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 3600, range: 90, animation: animation});
 }

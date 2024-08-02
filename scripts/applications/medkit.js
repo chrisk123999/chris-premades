@@ -85,7 +85,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'CHRISPREMADES.Generic.None',
                 value: null,
                 id: null,
-                isSelected: (context.source || game.settings.get('chris-premades', 'devTools')) ? false : true
+                isSelected: (context.source || game.settings.get('chris-premades', 'devTools')) ? false : true,
+                version: null
             }];
             context.availableAutomations.forEach(i => {
                 let label;
@@ -99,6 +100,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     value: i.document.uuid,
                     id: i.source,
                     isSelected: context.source === i.source,
+                    version: i.version
                 });
             });
         }
@@ -260,9 +262,10 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async _update(event, target) {
         let item = this.itemDocument;
         if (!item) return;
-        let sourceItem = await fromUuid(this.context.options.find(i => i.isSelected === true)?.value);
+        let option = this.context.options.find(i => i.isSelected === true);
+        let sourceItem = await fromUuid(option?.value);
         if (!sourceItem) return;
-        let updatedItem = await Medkit.update(item, sourceItem);
+        let updatedItem = await Medkit.update(item, sourceItem, {source: option.id, version: option.version});
         this.updateContext(updatedItem);
     }
     static async _apply(event, target) {
@@ -308,7 +311,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             let selectedSource = this.context?.options.find(i => i.isSelected);
             let sourceItem = await fromUuid(selectedSource.value);
             if (this.context?.options.find(i => i.isSelected).value === null && currentSource) {
-                await item.update({'flags.-=chris-premades': null});
+                await item.update({'flags.-=chris-premades': null}); // May need to clear more flags here for MISC/GPS integration.
             }
             if (sourceItem) {
                 item = await Medkit.update(item, sourceItem);

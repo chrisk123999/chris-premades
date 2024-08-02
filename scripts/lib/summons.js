@@ -59,16 +59,18 @@ export class Summons {
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
-        let prof = originItem.actor.attributes.prof;
+        console.log(originItem.actor);
+        let prof = originItem.actor.system.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
         let attackBonus = bonuses + prof + abilityModifier;
-        let documentData = compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, name, {
+        let documentData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, name, {
             object: true, 
             getDescription: true, 
             translate: name.replaceAll(' ', ''),
             flatAttack: flatAttack ? attackBonus : false,
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
+        console.log(documentData);
         if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
         return genericUtils.mergeObject(documentData, updates);
     }
@@ -347,7 +349,7 @@ export class Summons {
                         effect: ['summonUtils']
                     },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalVaeButtons ?? [])]
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}].concat(this.options?.additionalVaeButtons ?? [])
                     },
                     summons: {
                         ids: {
