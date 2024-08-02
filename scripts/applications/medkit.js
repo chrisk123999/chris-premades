@@ -314,7 +314,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 await item.update({'flags.-=chris-premades': null}); // May need to clear more flags here for MISC/GPS integration.
             }
             if (sourceItem) {
-                item = await Medkit.update(item, sourceItem);
+                let option = this.context.options.find(i => i.isSelected === true);
+                item = await Medkit.update(item, sourceItem, {source: option.id, version: option.version});
             }
             if (selectedSource.id != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
         }

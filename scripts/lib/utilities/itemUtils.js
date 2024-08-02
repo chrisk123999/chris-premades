@@ -2,6 +2,7 @@ import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
+import {miscPremades} from '../../integrations/miscPremades.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -81,7 +82,7 @@ function isUpToDate(item) {
             sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
             break;
         case 'midi-item-community-showcase':
-            sourceVersion = 1;
+            sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             break;
         case 'chris-premades': {
             let identifier = getIdentifer(item);
@@ -89,6 +90,7 @@ function isUpToDate(item) {
             break;
         }
     }
+    if (!sourceVersion) return -1;
     let compare = genericUtils.isNewerVersion(sourceVersion, version);
     return compare ? 0 : 1;
 }
@@ -113,6 +115,9 @@ async function enchantItem(item, effectData, {effects = [], items = [], concentr
     });
     await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent});
 }
+function convertDuration(item) {
+    return DAE.convertDuration(item.system.duration);
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -127,5 +132,6 @@ export let itemUtils = {
     isUpToDate,
     syntheticItem,
     enchantItem,
-    getMod
+    getMod,
+    convertDuration
 };

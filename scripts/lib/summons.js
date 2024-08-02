@@ -349,7 +349,7 @@ export class Summons {
                         effect: ['summonUtils']
                     },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}].concat(this.options?.additionalVaeButtons ?? [])
+                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalVaeButtons ?? [])]
                     },
                     summons: {
                         ids: {
