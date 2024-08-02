@@ -98,25 +98,21 @@ async function use({workflow}) {
             'force'
         ]
     ];
-    effectUtils.addMacro(featureData, 'midi.item', ['spiritualWeaponAttack']);
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
+    let spawnedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
-}
-async function early({workflow}) {
-    if (!workflow.targets.size) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
-    if (!effect) return;
+    let [item] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+    if (!spawnedTokens?.length) return;
+    let weaponToken = spawnedTokens[0];
     let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
+        name: item.name,
+        img: item.img,
+        origin: item.uuid,
         changes: [
             {
                 key: 'flags.midi-qol.rangeOverride.attack.all',
                 mode: 0,
-                value: 1,
+                value: 'item.name === "' + item.name + '"',
                 priority: 20
             }
         ],
@@ -128,12 +124,9 @@ async function early({workflow}) {
             }
         }
     };
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack'});
-}
-async function late({workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeaponAttack');
-    if (!effect) return;
-    await genericUtils.remove(effect);
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
+    effectData.changes[0].value = 1;
+    await effectUtils.createEffect(weaponToken.actor, effectData, {identifier: 'spiritualWeaponAttack', parentEntity: effect});
 }
 export let spiritualWeapon = {
     name: 'Spiritual Weapon',
@@ -181,22 +174,4 @@ export let spiritualWeapon = {
             category: 'summons'
         }
     ]
-};
-export let spiritualWeaponAttack = {
-    name: 'Spiritual Weapon: Attack',
-    version: spiritualWeapon.version,
-    midi: {
-        item: [
-            {
-                pass: 'preambleComplete',
-                macro: early,
-                priority: 50
-            },
-            {
-                pass: 'attackRollComplete',
-                macro: late,
-                priority: 50
-            }
-        ]
-    }
 };

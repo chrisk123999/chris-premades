@@ -76,7 +76,7 @@ export let shockingGrasp = {
                 },
                 {
                     value: 'dark_purple',
-                    label: 'CHRISPREMADES.Config.Colors.Dark_purple',
+                    label: 'CHRISPREMADES.Config.Colors.DarkPurple',
                     requiredModules: ['jb2a_patreon']
                 },
                 {

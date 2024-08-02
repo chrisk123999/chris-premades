@@ -99,7 +99,7 @@ export {sleetStorm, sleetStormArea} from './macros/spells/sleetStorm.js';
 export {spikeGrowth, spikeGrowthSpikes} from './macros/spells/spikeGrowth.js';
 export {spiritGuardians, spiritGuardiansDamage} from './macros/spells/spiritGuardians.js';
 export {spiritShroud, spiritShroudShrouded} from './macros/spells/spiritShroud.js';
-export {spiritualWeapon, spiritualWeaponAttack} from './macros/spells/spiritualWeapon.js';
+export {spiritualWeapon} from './macros/spells/spiritualWeapon.js';
 export {sprayOfCards} from './macros/spells/sprayOfCards.js';
 export {searingSmite, searingSmiteDamage} from './macros/spells/searingSmite.js';
 export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggeringSmite.js';
