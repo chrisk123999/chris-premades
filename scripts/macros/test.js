@@ -32,7 +32,7 @@ export let test = {
             identifier: 'testAura',
         }
     ],
-    preCreateEffect: [
+    /*preCreateEffect: [
         {
             macro: preEffect
         }
@@ -41,5 +41,5 @@ export let test = {
         {
             macro: preEffect
         }
-    ]
+    ] */
 };

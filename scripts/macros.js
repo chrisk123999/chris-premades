@@ -126,3 +126,5 @@ export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export {summonUtils} from './lib/summons.js';
 export {test} from './macros/test.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
+// Class Features
+export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
