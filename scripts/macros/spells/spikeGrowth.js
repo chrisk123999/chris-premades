@@ -1,5 +1,4 @@
 import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
@@ -21,7 +20,7 @@ async function use({workflow}) {
         }
     });
 }
-async function enterOrLeave({trigger: {entity: template, token}, options}) {
+async function enterOrPassThrough({trigger: {entity: template, token}, options}, left) {
     let templateObj = template.object;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
@@ -60,8 +59,11 @@ async function enterOrLeave({trigger: {entity: template, token}, options}) {
         }
         await damageHelper(pointA, pointB, template, token, {gridless: true});
     } else {
-        await damageHelper(prevCoords, token.center, template, token);
+        await damageHelper(prevCoords, token.center, template, token, {stay: left});
     }
+}
+async function left({trigger, options}) {
+    await enterOrPassThrough({trigger, options}, true);
 }
 async function stay({trigger: {entity: template, token}, options}) {
     let prevCoords = options?.['chris-premades']?.coords?.previous;
@@ -111,17 +113,17 @@ export let spikeGrowthSpikes = {
     template: [
         {
             pass: 'enter',
-            macro: enterOrLeave,
+            macro: enterOrPassThrough,
             priority: 50
         },
         {
             pass: 'left',
-            macro: enterOrLeave,
+            macro: left,
             priority: 50
         },
         {
             pass: 'passedThrough',
-            macro: enterOrLeave,
+            macro: enterOrPassThrough,
             priority: 50
         },
         {
