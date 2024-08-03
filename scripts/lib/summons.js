@@ -59,18 +59,16 @@ export class Summons {
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
-        console.log(originItem.actor);
         let prof = originItem.actor.system.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
         let attackBonus = bonuses + prof + abilityModifier;
         let documentData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, name, {
             object: true, 
             getDescription: true, 
-            translate: name.replaceAll(' ', ''),
+            //translate: name.replaceAll(' ', ''), Why was I doing this?? It was intentional at some point...
             flatAttack: flatAttack ? attackBonus : false,
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
-        console.log(documentData);
         if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
         return genericUtils.mergeObject(documentData, updates);
     }

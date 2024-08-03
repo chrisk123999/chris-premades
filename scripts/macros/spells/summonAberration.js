@@ -9,10 +9,10 @@ async function use({speaker, actor, token, character, item, args, scope, workflo
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Aberrant Spirit');
     if (!sourceActor) return;
     let attacks = Math.floor(workflow.castData.castLevel / 2);
-    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Aberrant Spirit)', {name: 'Multiattack (' + attacks + ' Attacks)'}, workflow.item);
+    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Aberrant Spirit)', {name: 'Multiattack (' + attacks + ' Attacks)'}, workflow.item); // Translate this?
     if (!multiAttackFeatureData) return;
     let hpFormula = 40 + ((workflow.castData.castLevel - 4) * 10);
-    let name = itemUtils.getConfig(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')';
+    let name = itemUtils.getConfig(workflow.item, 'name-' + selection) ?? 'Aberrant Spirit (' + selection + ')'; // Translate this?
     if (name === '') name = 'Aberrant Spirit (' + selection + ')';
     let updates = {
         'actor': {

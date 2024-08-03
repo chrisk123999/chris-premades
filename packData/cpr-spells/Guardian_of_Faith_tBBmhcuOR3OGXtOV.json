@@ -6,7 +6,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 221"
+      "custom": "Basic Rules, Player's Handbook pg 246"
     },
     "activation": {
       "type": "action",
@@ -14,7 +14,7 @@
       "condition": ""
     },
     "duration": {
-      "value": "1",
+      "value": "8",
       "units": "hour"
     },
     "cover": null,
@@ -23,7 +23,7 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -40,13 +40,13 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "save",
-    "chatFlavor": "",
+    "actionType": "util",
+    "chatFlavor": "[radiant] (20 of 60 total damage)",
     "critical": {
       "threshold": null,
       "damage": ""
@@ -57,12 +57,12 @@
     },
     "formula": "",
     "save": {
-      "ability": "wis",
+      "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "level": 1,
-    "school": "enc",
+    "level": 4,
+    "school": "con",
     "materials": {
       "value": "",
       "consumed": false,
@@ -78,8 +78,7 @@
       "formula": ""
     },
     "properties": [
-      "vocal",
-      "somatic"
+      "vocal"
     ],
     "attack": {
       "bonus": "",
@@ -88,13 +87,10 @@
     "enchantment": null,
     "summons": null
   },
-  "name": "Charm Person",
+  "name": "Guardian of Faith",
   "flags": {
     "midi-qol": {
-      "forceCEOff": true,
       "effectActivation": false,
-      "forceCEOn": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
@@ -113,47 +109,60 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.ZhO9QG3tL8AcaRHq"
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.HKVNdhqPdgqPNr5K"
     },
     "chris-premades": {
       "info": {
-        "name": "Charm Person",
-        "version": "0.12.0",
-        "identifier": "charmPerson",
+        "name": "Guardian of Faith",
+        "version": "0.12.5",
+        "hasAnimation": true,
+        "identifier": "guardianOfFaith",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "charmPerson"
+            "guardianOfFaith"
           ]
         }
+      },
+      "config": {
+        "playAnimation": true,
+        "animation": "none",
+        "color": "yellow",
+        "name": "",
+        "token": "",
+        "avatar": ""
       }
     },
     "dnd5e": {}
   },
   "effects": [],
-  "img": "icons/magic/life/heart-shadow-red.webp",
+  "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
   "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.ZhO9QG3tL8AcaRHq",
+    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.HKVNdhqPdgqPNr5K",
     "duplicateSource": null,
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722120353948,
-    "modifiedTime": 1722602142450,
+    "createdTime": 1722673778794,
+    "modifiedTime": 1722673783360,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
   "folder": null,
-  "_id": "xfOPBg3QExXdMFRi",
-  "sort": 8000000,
+  "_id": "tBBmhcuOR3OGXtOV",
+  "sort": 0,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!xfOPBg3QExXdMFRi"
+  "_key": "!items!tBBmhcuOR3OGXtOV"
 }

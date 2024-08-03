@@ -130,16 +130,16 @@
     "coreVersion": "12.330",
     "systemId": "dnd5e",
     "systemVersion": "3.3.1",
-    "createdTime": 1722245886650,
-    "modifiedTime": 1722602140126,
+    "createdTime": 1722671658592,
+    "modifiedTime": 1722673784211,
     "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
   },
   "folder": null,
-  "_id": "2DFcsJGoTJ6Mz97d",
-  "sort": 400000,
+  "_id": "mQSHs9nmBfmrp5xv",
+  "sort": 0,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!2DFcsJGoTJ6Mz97d"
+  "_key": "!items!mQSHs9nmBfmrp5xv"
 }

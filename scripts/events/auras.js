@@ -144,7 +144,7 @@ async function deleteToken(token, options, userId) {
     }
 }
 async function canvasReady(canvas) {
-    if (!socketUtils.isTheGM()) return;
+    if (!socketUtils.isTheGM() || !canvas.scene) return;
     await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
 async function effectCheck(effect) {
