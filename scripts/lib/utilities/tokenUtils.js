@@ -21,11 +21,12 @@ function checkCover(sourceToken, targetToken, {item, displayName}) {
             return genericUtils.translate('CHRISPREMADES.Cover.Unknown');
     }
 }
-async function moveTokenAlongRay(targetToken, ray, distance) {
+async function moveTokenAlongRay(targetToken, origRay, distance) {
     let knockBackFactor;
     let newCenter;
     let hitsWall = true;
     let oldDistance;
+    let ray = Ray.fromAngle(targetToken.center.x, targetToken.center.y, origRay.angle, origRay.distance);
     if (ray.distance === 0) {
         genericUtils.notify('CHRISPREMADES.Movement.UnableToBeMoved', 'info');
         return;

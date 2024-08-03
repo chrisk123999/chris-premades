@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -98,14 +98,83 @@ async function early({workflow}) {
 async function late({workflow}) {
     let identifier = itemUtils.getIdentifer(workflow.item);
     if (workflow.targets.size !== 1) return;
-    let targetActor = workflow.targets.first().actor;
+    let targetToken = workflow.targets.first();
+    let targetActor = targetToken.actor;
     if (!targetActor) return;
     if (identifier === 'forcefulHand') {
         let hasAdvantage = actorUtils.getSize(targetActor) <= constants.sizes.medium;
-        await workflow.actor.rollSkill('ath', {advantage: hasAdvantage});
-        await targetActor.rollSkill('ath');
-        // TODO: might as well compare the results & do a push in desired direction, no?
+        let {result} = await rollUtils.contestedRoll({
+            sourceToken: workflow.token,
+            targetToken: targetToken,
+            sourceRollType: 'skill',
+            targetRollType: 'skill',
+            sourceAbilities: ['ath'],
+            targetAbilities: ['ath'],
+            sourceRollOptions: {advantage: hasAdvantage}
+        });
+        if (result <= 0) return;
+        // TODO: do a push in desired direction, no?
+        let input = {
+            label: 'CHRISPREMADES.Direction.Direction',
+            name: 'directionSelected',
+            options: {
+                options: [
+                    {value: 'north', label: genericUtils.translate('CHRISPREMADES.Direction.North').capitalize()},
+                    {value: 'northeast', label: genericUtils.translate('CHRISPREMADES.Direction.Northeast').capitalize()},
+                    {value: 'east', label: genericUtils.translate('CHRISPREMADES.Direction.East').capitalize()},
+                    {value: 'southeast', label: genericUtils.translate('CHRISPREMADES.Direction.Southeast').capitalize()},
+                    {value: 'south', label: genericUtils.translate('CHRISPREMADES.Direction.South').capitalize()},
+                    {value: 'southwest', label: genericUtils.translate('CHRISPREMADES.Direction.Southwest').capitalize()},
+                    {value: 'west', label: genericUtils.translate('CHRISPREMADES.Direction.West').capitalize()},
+                    {value: 'northwest', label: genericUtils.translate('CHRISPREMADES.Direction.Northwest').capitalize()},
+                ]
+            }
+        };
+        let selection = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.Macros.BigbysHand.Direction', input);
+        if (!selection) return;
+        let {x: ax, y: ay} = targetToken.center;
+        let bx, by;
+        switch (selection) {
+            case 'north': 
+                bx = ax;
+                by = ay - 100;
+                break;
+            case 'northeast': 
+                bx = ax + 100;
+                by = ay - 100;
+                break;
+            case 'east': 
+                bx = ax + 100;
+                by = ay;
+                break;
+            case 'southeast': 
+                bx = ax + 100;
+                by = ay + 100;
+                break;
+            case 'south': 
+                bx = ax;
+                by = ay + 100;
+                break;
+            case 'southwest': 
+                bx = ax - 100;
+                by = ay + 100;
+                break;
+            case 'west': 
+                bx = ax - 100;
+                by = ay;
+                break;
+            case 'northwest': 
+                bx = ax - 100;
+                by = ay - 100;
+                break;
+        }
+        let ray = new Ray({x: ax, y: ay}, {x: bx, y: by});
+        let {casterSpellMod} = workflow.actor.flags['chris-premades'].bigbysHand;
+        let distanceToPush = (casterSpellMod * 5) + 5;
+        await tokenUtils.moveTokenAlongRay(targetToken, ray, distanceToPush);
+        await tokenUtils.moveTokenAlongRay(workflow.token, ray, distanceToPush);
     } else if (identifier === 'interposingHand') {
+        // TODO: I could totally do some geometry and make it actually stay directly between the target & the summoner at some point
         let effectData = {
             name: workflow.item.name,
             img: workflow.item.img,
@@ -123,15 +192,16 @@ async function late({workflow}) {
             return;
         }
         let hasAdvantage = actorUtils.getSize(targetActor) <= constants.sizes.medium;
-        let sourceRoll = await workflow.actor.rollSkill('ath', {advantage: hasAdvantage});
-        let targetRoll;
-        if (targetActor.system.skills.acr.total >= targetActor.system.skills.ath.total) {
-            targetRoll = await targetActor.rollSkill('acr');
-        } else {
-            targetRoll = await targetActor.rollSkill('ath');
-        }
-        if (targetRoll.total > sourceRoll.total) return;
-        await effectUtils.applyConditions(targetActor, ['grappled']);
+        let {result} = await rollUtils.contestedRoll({
+            sourceToken: workflow.token,
+            targetToken: targetToken,
+            sourceRollType: 'skill',
+            targetRollType: 'skill',
+            sourceAbilities: ['ath'],
+            targetAbilities: ['ath', 'acr'],
+            sourceRollOptions: {advantage: hasAdvantage}
+        });
+        if (result <= 0) return;
         let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Grasping Hand: Crush', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Crush', identifier: 'bigbysHandCrush'});
         if (!featureData) {
             errors.missingPackItem();
@@ -152,23 +222,62 @@ async function late({workflow}) {
                 seconds: 60
             }
         };
-        // TODO: on effect removal, remove grapple from enemy I guess
         let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bigbysHandCrush', vae: [{type: 'use', name: featureData.name, identifier: 'bigbysHandCrush'}]});
         if (!effect) return;
+        genericUtils.setProperty(effectData, 'flags.chris-premades.conditions', ['grappled']);
+        await effectUtils.createEffect(targetActor, effectData, {parentEntity: effect});
         await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
     }
 }
-async function otherEarly({workflow}) {
+async function otherEarly({trigger, workflow}) {
     // Interposing actor onuse is on someone
     if (workflow.targets.size !== 1 || workflow.disadvantage) return;
     let targetActor = workflow.targets.first().actor;
-    // TODO: check target actor is owner of bigbys hand, if so impose half cover
+    let bigbyOwnerActor = await fromUuid((await fromUuid(trigger.entity.origin))?.parent?.flags['chris-premades'].summons.control.actor);
+    if (bigbyOwnerActor !== targetActor) return;
+    let effectData = {
+        name: genericUtils.translate('CHRISPREMADES.Cover.Half'),
+        img: 'icons/environment/settlement/fence-wooden-picket.webp',
+        origin: trigger.entity.uuid,
+        duration: {
+            seconds: 1
+        },
+        changes: [],
+        flags: {
+            'chris-premades': {
+                effect: {
+                    noAnimation: true
+                }
+            }
+        }
+    };
+    /*
+    if (half-cover condition exists) {
+        if (already has half cover) return;
+        add half cover condition to effectData
+    } else
+    */
+    if (effectUtils.getEffectByIdentifier(targetActor, 'halfCover')) return;
+    effectData.changes.push({
+        key: 'system.attributes.ac.bonus',
+        mode: 2,
+        value: 2,
+        priority: 20
+    }, {
+        key: 'system.abilities.dex.bonuses.save',
+        mode: 2,
+        value: 2,
+        priority: 20
+    });
+    await effectUtils.createEffect(targetActor, effectData, {identifier: 'halfCover'});
 }
-async function otherLate({workflow}) {
-    // Interposing actor onuse
+async function otherLate({trigger, workflow}) {
     if (workflow.targets.size !== 1 || workflow.disadvantage) return;
-    let targetACtor = workflow.targets.first().actor;
-    // TODO: check target actor is owner of bigbys hand, if so remove half cover
+    let targetActor = workflow.targets.first().actor;
+    let targetHalfCover = effectUtils.getEffectByIdentifier(targetActor, 'halfCover');
+    if (!targetHalfCover) return;
+    if (targetHalfCover.origin !== trigger.entity.uuid) return;
+    await genericUtils.remove(targetHalfCover);
 }
 export let bigbysHand = {
     name: 'Bigby\'s Hand',
@@ -235,7 +344,7 @@ export let bigbysHandItems = {
         ],
         actor: [
             {
-                pass: 'rollFinished',
+                pass: 'attackRollComplete',
                 macro: otherLate,
                 priority: 50
             },

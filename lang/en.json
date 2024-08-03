@@ -91,6 +91,7 @@
             "SpellFeature": "Spell Feature"
         },
         "Direction": {
+            "Direction": "Direction",
             "East": "east",
             "North": "north",
             "Northeast": "northeast",
@@ -196,6 +197,7 @@
                 "Big": "Target is too big!",
                 "Clenched": "Clenched Fist",
                 "Crush": "Grasping Hand: Crush",
+                "Direction": "Which direction would you like to push the target?",
                 "Forceful": "Forceful Hand",
                 "Grasping": "Grasping Hand",
                 "Interposing": "Interposing Hand",
