@@ -78,7 +78,7 @@ async function dialog(workflow, spellDC, targetToken, parentEffect) {
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
-            seconds: 6
+            seconds: 12
         },
         changes: [
             {
