@@ -147,18 +147,9 @@
     },
     "dnd5e": {}
   },
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-homebrew-spells.ewc7qZF2iwwqyk1f",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120349633,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "6Iha0nSCh8yO59ZO",
-  "sort": 9600000,
+  "sort": 10200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

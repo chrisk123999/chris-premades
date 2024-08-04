@@ -140,18 +140,9 @@
   },
   "effects": [],
   "img": "icons/skills/melee/blade-tip-energy-green.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.hhJsWeSPgP9uD10u",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120384632,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "nVSoGXgBimMYClTG",
-  "sort": 6200000,
+  "sort": 6900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

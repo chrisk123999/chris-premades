@@ -143,18 +143,9 @@
     },
     "dnd5e": {}
   },
-  "_stats": {
-    "compendiumSource": "Actor.ajuA7OJxItBFhlyB.Item.Jj2BRp0Q7aRqCjkP",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120355595,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "YMdRqUvAPZqrb1mq",
-  "sort": 3800000,
+  "sort": 4600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

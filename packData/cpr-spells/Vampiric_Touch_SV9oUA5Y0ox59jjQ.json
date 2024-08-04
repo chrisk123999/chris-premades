@@ -135,17 +135,8 @@
   "effects": [],
   "img": "icons/magic/unholy/hand-claw-fog-green.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1721347122107,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "SV9oUA5Y0ox59jjQ",
-  "sort": 10800000,
+  "sort": 11400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

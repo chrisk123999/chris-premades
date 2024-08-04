@@ -1,7 +1,7 @@
 {
-  "name": "Forceful Hand",
+  "name": "Bigby's Hand: Move",
   "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
+  "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
   "system": {
     "description": {
       "value": "",
@@ -12,7 +12,7 @@
     },
     "activation": {
       "type": "bonus",
-      "cost": 1,
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -25,13 +25,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -42,12 +42,12 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "abil",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "feat",
       "subtype": ""
     },
     "requirements": "",
@@ -85,51 +85,37 @@
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.1kvLc7Lg4E55spsP"
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.hEcJKF2BQBG7q9S0"
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "_stats": {
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722713055345,
-    "modifiedTime": 1722713055345,
-    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+  "folder": null,
+  "_id": "GymalEUv8Ncv2DTg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "folder": "mnKsB3lJb1672i7A"
+  "_key": "!items!GymalEUv8Ncv2DTg"
 }

@@ -130,17 +130,8 @@
   "effects": [],
   "img": "icons/magic/fire/projectile-fireball-smoke-teal.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1718620858136,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "h5V3dyOZyQqoccI7",
-  "sort": 11500000,
+  "sort": 12100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

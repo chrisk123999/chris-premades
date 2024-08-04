@@ -149,18 +149,9 @@
   },
   "effects": [],
   "img": "icons/magic/control/debuff-energy-hold-levitate-teal-blue.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.m4y8PsKc3ttYso7P",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120327648,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "kG9L0hYjuWbdAad1",
-  "sort": 9900000,
+  "sort": 10500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

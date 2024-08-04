@@ -145,18 +145,9 @@
   },
   "effects": [],
   "img": "icons/magic/acid/dissolve-bone-ribs-skull.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.EZcNy1NJx0tkwWPu",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722572811361,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "Rx6Jck4NHqeOZBCf",
-  "sort": 0,
+  "sort": 500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

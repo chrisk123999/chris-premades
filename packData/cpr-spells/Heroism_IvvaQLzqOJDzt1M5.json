@@ -162,18 +162,9 @@
   },
   "effects": [],
   "img": "icons/magic/control/control-influence-crown-gold.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120388987,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "IvvaQLzqOJDzt1M5",
-  "sort": 2300000,
+  "sort": 3100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

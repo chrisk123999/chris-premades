@@ -135,18 +135,9 @@
   },
   "effects": [],
   "img": "icons/commodities/stone/stone-pile-grey.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120396168,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "sDTe6uUgqnpwjT1D",
-  "sort": 6800000,
+  "sort": 7500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

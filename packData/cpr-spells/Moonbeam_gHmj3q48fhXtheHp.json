@@ -152,18 +152,9 @@
   },
   "effects": [],
   "img": "icons/magic/light/beam-rays-blue-large.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.C3MN3b57dd3R4ZTQ",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120404731,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "gHmj3q48fhXtheHp",
-  "sort": 4700000,
+  "sort": 5500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

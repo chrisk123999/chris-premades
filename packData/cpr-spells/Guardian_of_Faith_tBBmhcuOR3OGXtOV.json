@@ -147,18 +147,9 @@
   },
   "effects": [],
   "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.HKVNdhqPdgqPNr5K",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722673778794,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "tBBmhcuOR3OGXtOV",
-  "sort": 0,
+  "sort": 900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

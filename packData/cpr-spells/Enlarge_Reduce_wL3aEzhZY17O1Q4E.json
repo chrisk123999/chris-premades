@@ -150,18 +150,9 @@
   },
   "effects": [],
   "img": "icons/skills/social/intimidation-impressing.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.AmjDDUYLWndEu3ZM",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120374633,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "wL3aEzhZY17O1Q4E",
-  "sort": 7600000,
+  "sort": 8300000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

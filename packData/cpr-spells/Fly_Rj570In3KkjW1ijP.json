@@ -142,18 +142,9 @@
   },
   "effects": [],
   "img": "icons/commodities/treasure/trinket-wing-white.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.VZlPLIDE8cm5ad70",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120381535,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "Rj570In3KkjW1ijP",
-  "sort": 3300000,
+  "sort": 4100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

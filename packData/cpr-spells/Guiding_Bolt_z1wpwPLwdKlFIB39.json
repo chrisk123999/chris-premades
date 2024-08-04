@@ -196,18 +196,9 @@
     }
   ],
   "img": "icons/magic/fire/flame-burning-hand-purple.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.UCRPhpJj5H3v4bjj",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120386427,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "z1wpwPLwdKlFIB39",
-  "sort": 8100000,
+  "sort": 8700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

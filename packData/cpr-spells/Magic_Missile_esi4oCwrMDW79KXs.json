@@ -141,18 +141,9 @@
   },
   "effects": [],
   "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120400617,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "esi4oCwrMDW79KXs",
-  "sort": 4400000,
+  "sort": 5200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

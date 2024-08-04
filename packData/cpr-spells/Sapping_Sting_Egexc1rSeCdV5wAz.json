@@ -199,18 +199,9 @@
     }
   ],
   "img": "icons/commodities/biological/stinger-insect-grey.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.41q157cAoTKlBgcg",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120411338,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "Egexc1rSeCdV5wAz",
-  "sort": 1700000,
+  "sort": 2600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

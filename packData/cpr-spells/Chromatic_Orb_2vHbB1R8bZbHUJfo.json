@@ -149,18 +149,9 @@
   },
   "effects": [],
   "img": "icons/magic/unholy/orb-beam-pink.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.QKBHoWPbTHN2ZRTL",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120360873,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "2vHbB1R8bZbHUJfo",
-  "sort": 600000,
+  "sort": 1500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

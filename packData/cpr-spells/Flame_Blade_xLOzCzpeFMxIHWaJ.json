@@ -145,18 +145,9 @@
   },
   "effects": [],
   "img": "icons/magic/fire/projectile-bolt-zigzag-orange.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.Z7Ui0WV3YFuWi3gr",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120380733,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "xLOzCzpeFMxIHWaJ",
-  "sort": 7800000,
+  "sort": 8500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

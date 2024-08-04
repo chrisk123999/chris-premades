@@ -143,18 +143,9 @@
   },
   "effects": [],
   "img": "icons/magic/light/orb-beams-green.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.MgCzDzTzJUcoqpSD",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722416779046,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "V5TRUQGUxR1fEkyH",
-  "sort": 8300000,
+  "sort": 8900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

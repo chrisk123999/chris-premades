@@ -149,18 +149,9 @@
   },
   "effects": [],
   "img": "icons/magic/fire/projectile-meteor-salvo-strong-teal.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.UhXzF9nlF61fy0AA",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120375325,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "GLv64bWbxdsiQEfQ",
-  "sort": 2000000,
+  "sort": 2900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

@@ -1,7 +1,7 @@
 {
-  "name": "Grasping Hand",
+  "name": "Interposing Hand",
   "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone.webp",
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
   "system": {
     "description": {
       "value": "",
@@ -22,16 +22,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -46,9 +46,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
-    "attackBonus": "",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -73,54 +72,52 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.bigbysHand.graspingHand",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.FQLtUXhUznGWL21B"
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
-    "core": {
-      "sourceId": "Item.jP4iv36ljAJDAp2P"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "_stats": {
-    "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
-    "coreVersion": "12.330",
-    "createdTime": 1685342532523,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
-    "compendiumSource": "Item.jP4iv36ljAJDAp2P",
-    "duplicateSource": null
-  },
   "folder": "mnKsB3lJb1672i7A",
-  "sort": 0,
+  "_id": "4Mul5s5FBFfo3PEo",
+  "sort": 100000,
   "ownership": {
     "default": 0,
-    "Ud258q78TNICxrY6": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "_id": "R0bsHwHYIMMujM5J",
-  "_key": "!items!R0bsHwHYIMMujM5J"
+  "_key": "!items!4Mul5s5FBFfo3PEo"
 }

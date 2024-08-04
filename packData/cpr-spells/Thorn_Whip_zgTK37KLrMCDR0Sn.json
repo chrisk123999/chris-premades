@@ -143,17 +143,8 @@
   "effects": [],
   "img": "icons/magic/nature/root-vine-thorned-coil-green.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1721382231938,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "zgTK37KLrMCDR0Sn",
-  "sort": 9800000,
+  "sort": 10400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

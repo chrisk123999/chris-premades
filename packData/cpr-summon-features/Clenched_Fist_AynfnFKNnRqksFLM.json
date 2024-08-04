@@ -22,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "creature",
@@ -48,7 +48,6 @@
     },
     "ability": "",
     "actionType": "msak",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -78,14 +77,23 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[preCheckHits]function.chrisPremades.tashaSummon.meleeAttack",
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
@@ -106,28 +114,22 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.JwB8gB7NHEy18yZJ"
     }
   },
-  "_stats": {
-    "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
-    "coreVersion": "12.330",
-    "createdTime": 1685342514757,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
-    "compendiumSource": "Item.JwB8gB7NHEy18yZJ",
-    "duplicateSource": null
-  },
   "folder": "mnKsB3lJb1672i7A",
+  "_id": "AynfnFKNnRqksFLM",
   "sort": 0,
   "ownership": {
     "default": 0,
-    "Ud258q78TNICxrY6": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "_id": "5V3WRXXW0mee7jCT",
-  "_key": "!items!5V3WRXXW0mee7jCT"
+  "_key": "!items!AynfnFKNnRqksFLM"
 }

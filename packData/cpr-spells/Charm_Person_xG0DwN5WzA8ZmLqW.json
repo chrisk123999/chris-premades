@@ -196,18 +196,9 @@
     }
   ],
   "img": "icons/magic/life/heart-shadow-red.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.ZhO9QG3tL8AcaRHq",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722416783397,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "xG0DwN5WzA8ZmLqW",
-  "sort": 8600000,
+  "sort": 9200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

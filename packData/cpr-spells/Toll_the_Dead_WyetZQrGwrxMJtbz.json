@@ -145,17 +145,8 @@
   "effects": [],
   "img": "icons/magic/death/skull-humanoid-worn-teal.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1721375907497,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "WyetZQrGwrxMJtbz",
-  "sort": 11000000,
+  "sort": 11600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

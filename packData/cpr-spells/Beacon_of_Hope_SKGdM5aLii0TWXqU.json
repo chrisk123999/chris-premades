@@ -141,18 +141,9 @@
   },
   "effects": [],
   "img": "icons/magic/light/explosion-star-blue-yellow.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.yPCtbr7RQqD23VLc",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120333469,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "SKGdM5aLii0TWXqU",
-  "sort": 10300000,
+  "sort": 10900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

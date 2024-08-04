@@ -148,18 +148,9 @@
   },
   "effects": [],
   "img": "icons/magic/water/tendrils-ice-thorns.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.zPITKpHUJH0zUrAW",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120399925,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "nATT68f9qJhrRYwv",
-  "sort": 5900000,
+  "sort": 6600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

@@ -161,17 +161,8 @@
   },
   "effects": [],
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120428947,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "lE4Hm6WpBFrhiAf5",
-  "sort": 5700000,
+  "sort": 6400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

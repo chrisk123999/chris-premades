@@ -135,18 +135,9 @@
   },
   "effects": [],
   "img": "icons/magic/perception/third-eye-blue-red.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120345502,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "L23Xqw9oiLOPp7e7",
-  "sort": 9300000,
+  "sort": 9900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

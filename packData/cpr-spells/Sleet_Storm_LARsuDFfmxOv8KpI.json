@@ -143,18 +143,9 @@
   },
   "effects": [],
   "img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722245842869,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "LARsuDFfmxOv8KpI",
-  "sort": 2400000,
+  "sort": 3200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

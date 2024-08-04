@@ -135,17 +135,8 @@
   "effects": [],
   "img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722602124272,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "ck7PHcML85DmwwjF",
-  "sort": 0,
+  "sort": 800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

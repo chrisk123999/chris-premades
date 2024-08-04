@@ -1,5 +1,5 @@
 {
-  "name": "Grasping Hand - Crush",
+  "name": "Grasping Hand",
   "type": "feat",
   "img": "icons/magic/earth/strike-fist-stone.webp",
   "system": {
@@ -22,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "creature",
@@ -42,25 +42,19 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "util",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "",
-          "bludgeoning"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -78,14 +72,23 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -104,28 +107,22 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "noConcentrationCheck": false
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
-      "sourceId": "Item.4Bd1gXtT52OCLddq"
+      "sourceId": "Item.jP4iv36ljAJDAp2P"
     }
   },
-  "_stats": {
-    "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
-    "coreVersion": "12.330",
-    "createdTime": 1685426514269,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
-    "compendiumSource": "Item.4Bd1gXtT52OCLddq",
-    "duplicateSource": null
-  },
   "folder": "mnKsB3lJb1672i7A",
-  "sort": 0,
+  "_id": "CObgIbwM59wqhhLW",
+  "sort": 200000,
   "ownership": {
     "default": 0,
-    "Ud258q78TNICxrY6": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "_id": "Ck6N4qNfX7yX7xIY",
-  "_key": "!items!Ck6N4qNfX7yX7xIY"
+  "_key": "!items!CObgIbwM59wqhhLW"
 }

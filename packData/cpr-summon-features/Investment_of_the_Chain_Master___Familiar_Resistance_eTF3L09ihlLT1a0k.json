@@ -191,15 +191,6 @@
     }
   ],
   "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "_stats": {
-    "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
-    "coreVersion": "12.330",
-    "createdTime": 1693806893456,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
-    "compendiumSource": "Actor.QkxhZamk6sWuon7R.Item.j1enVpGQyqrUousM",
-    "duplicateSource": null
-  },
   "folder": "T5JjSSnZ2wmKVMKa",
   "sort": 0,
   "ownership": {

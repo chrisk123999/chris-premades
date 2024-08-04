@@ -195,17 +195,8 @@
   ],
   "img": "icons/skills/ranged/arrow-flying-ornate-gold.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1717779174019,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "bp9eqjtr8Vp9o8kd",
-  "sort": 11400000,
+  "sort": 12000000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

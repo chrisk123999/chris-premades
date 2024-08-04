@@ -180,15 +180,6 @@
     }
   ],
   "img": "icons/magic/light/beam-red-orange.webp",
-  "_stats": {
-    "systemId": "dnd5e",
-    "systemVersion": "3.1.2",
-    "coreVersion": "12.330",
-    "createdTime": 1669276946368,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2",
-    "compendiumSource": "Actor.s9P9TeDz7WASBMgn.Item.fuNl4QW0F8XUGqPT",
-    "duplicateSource": null
-  },
   "folder": "1IHovI3vJVL0eXNx",
   "sort": 0,
   "ownership": {

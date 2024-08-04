@@ -229,18 +229,9 @@
     }
   ],
   "img": "icons/magic/sonic/projectile-sound-rings-wave.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.V890b8Sfrpz9oSst",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120422252,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "f7jkB3Dh6W4MDqNz",
-  "sort": 4500000,
+  "sort": 5300000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

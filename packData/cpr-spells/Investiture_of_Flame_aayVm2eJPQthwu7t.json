@@ -137,18 +137,9 @@
   },
   "effects": [],
   "img": "icons/magic/lightning/bolt-strike-smoke-yellow.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120394840,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "aayVm2eJPQthwu7t",
-  "sort": 3900000,
+  "sort": 4700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

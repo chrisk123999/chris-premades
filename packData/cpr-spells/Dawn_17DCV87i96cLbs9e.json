@@ -162,18 +162,9 @@
   },
   "effects": [],
   "img": "icons/magic/light/projectile-beam-yellow.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.Ofq8of2q1jFBBTjD",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120366406,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "17DCV87i96cLbs9e",
-  "sort": 100000,
+  "sort": 1000000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

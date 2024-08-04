@@ -218,18 +218,9 @@
     }
   ],
   "img": "icons/magic/air/fog-gas-smoke-brown.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.xZ8Bpcgr0KbiVGeO",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120407179,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "udP2ju33aY98lxhM",
-  "sort": 7300000,
+  "sort": 8000000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

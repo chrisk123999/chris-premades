@@ -139,18 +139,9 @@
   },
   "effects": [],
   "img": "icons/magic/symbols/runes-star-blue.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.CUX7CLFzPINaMtDa",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120424673,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "EKsDCdtaZz7kPjeJ",
-  "sort": 1500000,
+  "sort": 2400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

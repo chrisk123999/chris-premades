@@ -162,17 +162,8 @@
   "effects": [],
   "img": "icons/magic/unholy/orb-swirling-teal.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120332063,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "piNY7WoDIACbXLct",
-  "sort": 10200000,
+  "sort": 10800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

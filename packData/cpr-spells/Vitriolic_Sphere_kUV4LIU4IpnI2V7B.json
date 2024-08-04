@@ -210,18 +210,9 @@
     }
   ],
   "img": "icons/magic/fire/projectile-fireball-smoke-large-green.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.7jzmL5wD4HWUHzgn",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120428279,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "kUV4LIU4IpnI2V7B",
-  "sort": 5600000,
+  "sort": 6300000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

@@ -617,18 +617,9 @@
       "version": 5
     }
   },
-  "_stats": {
-    "compendiumSource": "Actor.LdTBm0uIOjiap4U4",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722417555437,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "fyjuK5k31MKy737p",
-  "sort": 1200000,
+  "sort": 1800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

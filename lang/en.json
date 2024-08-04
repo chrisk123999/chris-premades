@@ -768,7 +768,7 @@
                 "Name": "Disable Non-Condition Status Effects"
             },
             "disableSpecialEffects": {
-                "Hint": "When enabled, the blinded and invisible conditions don't apply special effects (change this terrible description).",
+                "Hint": "When enabled, the blinded and invisible conditions don't apply visual effects.",
                 "Name": "Disable Special Effects"
             },
             "effectDescriptionNPC": {

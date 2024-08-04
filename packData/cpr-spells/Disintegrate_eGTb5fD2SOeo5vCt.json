@@ -152,18 +152,9 @@
   },
   "effects": [],
   "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.SlVOFvBVNWGB91Rr",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120372457,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "eGTb5fD2SOeo5vCt",
-  "sort": 4300000,
+  "sort": 5100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

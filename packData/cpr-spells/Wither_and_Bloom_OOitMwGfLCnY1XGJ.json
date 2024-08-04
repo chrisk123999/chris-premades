@@ -140,17 +140,8 @@
   "effects": [],
   "img": "icons/magic/nature/plant-vines-skull-green.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1719898049780,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "OOitMwGfLCnY1XGJ",
-  "sort": 11300000,
+  "sort": 11900000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

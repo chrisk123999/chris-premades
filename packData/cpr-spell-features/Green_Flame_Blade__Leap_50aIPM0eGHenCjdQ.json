@@ -113,15 +113,6 @@
       "removeAttackDamageButtons": "default"
     }
   },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120555987,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "50aIPM0eGHenCjdQ",
   "sort": 800000,
   "ownership": {

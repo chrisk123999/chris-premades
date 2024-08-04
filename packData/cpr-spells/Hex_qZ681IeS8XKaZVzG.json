@@ -131,17 +131,8 @@
   "effects": [],
   "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1717779170302,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "qZ681IeS8XKaZVzG",
-  "sort": 11600000,
+  "sort": 12200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

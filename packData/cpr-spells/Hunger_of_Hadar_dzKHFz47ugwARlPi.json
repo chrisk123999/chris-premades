@@ -144,18 +144,9 @@
   },
   "effects": [],
   "img": "icons/magic/water/barrier-ice-shield.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.qikGjLMqHecV9zGl",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722245839670,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "dzKHFz47ugwARlPi",
-  "sort": 4200000,
+  "sort": 5000000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

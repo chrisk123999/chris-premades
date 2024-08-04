@@ -150,18 +150,9 @@
   },
   "effects": [],
   "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.b0bTr6IsU32Cxc3i",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120377552,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "PtgOj5J1guKAwuf0",
-  "sort": 3000000,
+  "sort": 3800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

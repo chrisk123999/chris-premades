@@ -148,18 +148,9 @@
   },
   "effects": [],
   "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-dev-ddb-spells.MD59ebOmI7fuyLb7",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120426210,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "Fd9G0MJxmDhobA1s",
-  "sort": 1800000,
+  "sort": 2700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

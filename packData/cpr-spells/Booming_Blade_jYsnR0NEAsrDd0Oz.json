@@ -141,18 +141,9 @@
   },
   "effects": [],
   "img": "icons/skills/melee/sword-stuck-glowing-pink.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.lJymK0KswulxuQO7",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120343881,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "jYsnR0NEAsrDd0Oz",
-  "sort": 9200000,
+  "sort": 9800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

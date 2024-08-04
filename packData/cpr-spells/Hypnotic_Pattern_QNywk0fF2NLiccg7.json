@@ -203,18 +203,9 @@
     "enchantment": null,
     "summons": null
   },
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-homebrew-spells.qUB1dOy05FDcYGHm",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120393460,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "QNywk0fF2NLiccg7",
-  "sort": 3200000,
+  "sort": 4000000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

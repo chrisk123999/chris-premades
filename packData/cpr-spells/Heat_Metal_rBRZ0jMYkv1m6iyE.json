@@ -144,18 +144,9 @@
   },
   "effects": [],
   "img": "icons/magic/fire/flame-burning-chain.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.TibmTJtCFR1SMANO",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120387916,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "rBRZ0jMYkv1m6iyE",
-  "sort": 6700000,
+  "sort": 7400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

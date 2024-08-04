@@ -661,18 +661,9 @@
       "sourceId": "Actor.XTa1hL3pg3KsloTb"
     }
   },
-  "_stats": {
-    "compendiumSource": "Actor.XTa1hL3pg3KsloTb",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722417533515,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "AzHW0xsq6wxjPA5e",
-  "sort": 2300000,
+  "sort": 2800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

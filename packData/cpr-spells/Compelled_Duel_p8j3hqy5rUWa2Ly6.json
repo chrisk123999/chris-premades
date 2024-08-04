@@ -140,18 +140,9 @@
   },
   "effects": [],
   "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.9vZgosF159dAVWEA",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120362863,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "p8j3hqy5rUWa2Ly6",
-  "sort": 6500000,
+  "sort": 7200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

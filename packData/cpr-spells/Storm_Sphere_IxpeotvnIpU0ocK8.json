@@ -153,18 +153,9 @@
   },
   "effects": [],
   "img": "icons/commodities/gems/pearl-storm.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.xaLcyNq6jeeGFfd1",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722416777587,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "IxpeotvnIpU0ocK8",
-  "sort": 8200000,
+  "sort": 8800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

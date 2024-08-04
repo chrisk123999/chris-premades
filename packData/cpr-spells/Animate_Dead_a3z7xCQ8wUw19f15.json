@@ -146,18 +146,9 @@
   },
   "effects": [],
   "img": "icons/magic/death/undead-skeleton-energy-green.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-dev-ddb-spells.4MTsjErjIXx4LQ1B",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722572809886,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "a3z7xCQ8wUw19f15",
-  "sort": 0,
+  "sort": 700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

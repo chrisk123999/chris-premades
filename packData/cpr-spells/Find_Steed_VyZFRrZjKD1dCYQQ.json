@@ -146,18 +146,9 @@
   },
   "effects": [],
   "img": "icons/environment/creatures/horse-tan.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-dev-ddb-spells.TBBmulNnUK3t4RPs",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722572814116,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "VyZFRrZjKD1dCYQQ",
-  "sort": 0,
+  "sort": 600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

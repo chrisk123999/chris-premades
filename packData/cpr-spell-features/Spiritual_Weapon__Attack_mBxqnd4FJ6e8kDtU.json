@@ -123,15 +123,6 @@
   },
   "effects": [],
   "img": "icons/magic/fire/dagger-rune-enchant-flame-purple-orange.webp",
-  "_stats": {
-    "compendiumSource": "Actor.57T1iaC28BNqvhSo.Item.RstA9b0hpvX5qdKD",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722572766682,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "mBxqnd4FJ6e8kDtU",
   "sort": 0,

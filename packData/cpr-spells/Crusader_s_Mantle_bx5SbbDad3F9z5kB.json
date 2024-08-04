@@ -257,18 +257,9 @@
     "enchantment": null,
     "summons": null
   },
-  "_stats": {
-    "compendiumSource": "Item.20aT1iPzWayOKg4G",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120364669,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "bx5SbbDad3F9z5kB",
-  "sort": 4000000,
+  "sort": 4800000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

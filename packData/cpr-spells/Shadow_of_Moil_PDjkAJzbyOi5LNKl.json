@@ -146,18 +146,9 @@
   },
   "effects": [],
   "img": "icons/commodities/gems/pearl-swirl-teal.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-dev-ddb-spells.qVMEBwwnj6of3yAs",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120414528,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "PDjkAJzbyOi5LNKl",
-  "sort": 2900000,
+  "sort": 3700000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

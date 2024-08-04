@@ -150,18 +150,9 @@
   },
   "effects": [],
   "img": "icons/magic/water/barrier-ice-wall-explosion.webp",
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120410019,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "9WbnabpBh9mhWbE6",
-  "sort": 1300000,
+  "sort": 2200000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

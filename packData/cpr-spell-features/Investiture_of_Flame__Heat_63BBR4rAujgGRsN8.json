@@ -118,15 +118,6 @@
     },
     "core": {}
   },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120564480,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "63BBR4rAujgGRsN8",
   "sort": 900000,
   "ownership": {

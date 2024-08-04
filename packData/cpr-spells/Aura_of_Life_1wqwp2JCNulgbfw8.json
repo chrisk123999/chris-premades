@@ -140,18 +140,9 @@
   },
   "effects": [],
   "img": "icons/magic/life/heart-area-circle-red-green.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.wyowntFFTb619jZw",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722416787130,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "1wqwp2JCNulgbfw8",
-  "sort": 8800000,
+  "sort": 9400000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

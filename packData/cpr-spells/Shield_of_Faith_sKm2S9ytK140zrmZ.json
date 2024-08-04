@@ -191,18 +191,9 @@
     }
   ],
   "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
-  "_stats": {
-    "compendiumSource": "Compendium.world.ddb-development-testing-ddb-spells.7rY01AhMJEg2EsOU",
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1722120417606,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "folder": null,
   "_id": "sKm2S9ytK140zrmZ",
-  "sort": 6900000,
+  "sort": 7600000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

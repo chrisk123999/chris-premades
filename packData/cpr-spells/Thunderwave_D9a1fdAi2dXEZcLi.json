@@ -146,17 +146,8 @@
   "effects": [],
   "img": "icons/magic/air/wind-tornado-spiral-brown.webp",
   "folder": null,
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.330",
-    "systemId": "dnd5e",
-    "systemVersion": "3.3.1",
-    "createdTime": 1721377536709,
-    "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
-  },
   "_id": "D9a1fdAi2dXEZcLi",
-  "sort": 10900000,
+  "sort": 11500000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
