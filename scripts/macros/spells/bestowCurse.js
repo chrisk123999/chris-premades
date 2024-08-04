@@ -169,16 +169,16 @@ async function damage({workflow}) {
     if (!workflow.hitTargets.every(target => validTargetUuids.includes(target.document.uuid))) return;
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
 }
-async function damageApplication({workflow, ditem}) {
+async function damageApplication({trigger, workflow, ditem}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (constants.attacks.includes(workflow.item.system.actionType)) return;
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'bestowCurseSource');
     if (!casterEffect) return;
     let {targets: validTargetUuids, damageType, formula} = casterEffect.flags['chris-premades'].bestowCurse;
     if (workflow.hitTargets.every(target => validTargetUuids.includes(target.document.uuid))) return;
     let extraDamageTargets = workflow.hitTargets.filter(target => validTargetUuids.includes(target.document.uuid));
     if (!extraDamageTargets.size) return;
-    let targetActor = await fromUuid(workflow.damageItem.actorUuid);
+    let targetActor = trigger.token.actor;
     let damageRoll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
     genericUtils.setProperty(damageRoll, 'options.type', damageType);
     damageRoll.toMessage({
