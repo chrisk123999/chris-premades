@@ -96,7 +96,15 @@ function setup() {
         }
     }
     MidiQOL.workflowClass = CPRWorkflow;
+    patch();
+}
+async function callV3DamageHooks(wrapped, damages, token) {
+    await midiEvents.preTargetDamageApplication(token, {workflow: this, ditem: damages});
+    return await wrapped(damages, token);
+}
+function patch() {
+    libWrapper.register('chris-premades', 'MidiQOL.workflowClass.prototype.callv3DamageHooks', callV3DamageHooks, 'WRAPPER');
 }
 export let workflow = {
-    setup
+    setup,
 };

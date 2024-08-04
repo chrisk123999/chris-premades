@@ -21,7 +21,7 @@ export function registerHooks() {
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
     Hooks.on('midi-qol.preItemRoll', midiEvents.superPreItemRoll);
-    Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
+    //Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
