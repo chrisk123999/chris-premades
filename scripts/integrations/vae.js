@@ -11,7 +11,7 @@ function createEffectButtons(effect, buttons) {
                         let actor = effect.transfer ? effect.parent.actor : effect.parent;
                         let item;
                         if (i.identifier) {
-                            item = itemUtils.getItemByIdentifer(actor, i.identifier);
+                            item = itemUtils.getItemByIdentifier(actor, i.identifier);
                         } else {
                             item = actor.items.getName(i.name);
                         }

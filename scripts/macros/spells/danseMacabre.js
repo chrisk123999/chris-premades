@@ -32,7 +32,7 @@ async function use({workflow}) {
         return;
     }
     await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 3600, range: 10, animation, initiativeType: 'group', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'danseMacabreCommandUndead'}]});
-    if (itemUtils.getItemByIdentifer(workflow.actor, 'danseMacabreCommandUndead')) return;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'danseMacabreCommandUndead')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'danseMacabre');
     if (!effect) return;
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});

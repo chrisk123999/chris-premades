@@ -60,7 +60,7 @@ function getConfig(item, key) {
 function getIdentifer(item) {
     return item.flags['chris-premades']?.info?.identifier;
 }
-function getItemByIdentifer(actor, identifier) {
+function getItemByIdentifier(actor, identifier) {
     return actor.items.find(i => getIdentifer(i) === identifier);
 }
 function getAllItemsByIdentifier(actor, identifier) {
@@ -125,7 +125,7 @@ export let itemUtils = {
     isSpellFeature,
     getConfig,
     getIdentifer,
-    getItemByIdentifer,
+    getItemByIdentifier,
     getAllItemsByIdentifier,
     getVersion,
     getSource,

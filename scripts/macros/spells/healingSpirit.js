@@ -189,7 +189,7 @@ async function moveOrStart({trigger: {entity: effect, castData, token, target}})
         if (!combatUtils.perTurnCheck(targetCombatant, 'healingSpirit')) return;
         await combatUtils.setTurnCheck(targetCombatant, 'healingSpirit');
     }
-    let feature = itemUtils.getItemByIdentifer(token.actor, 'healingSpiritHeal');
+    let feature = itemUtils.getItemByIdentifier(token.actor, 'healingSpiritHeal');
     if (!feature) return;
     let numUses = feature.system.uses.value;
     let selection = await dialogUtils.confirm(target.name, genericUtils.format('CHRISPREMADES.Macros.HealingSpirit.Apply', {numUses}));

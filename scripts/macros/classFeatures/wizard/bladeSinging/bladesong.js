@@ -39,7 +39,7 @@ async function use({trigger, workflow}) {
             }
         }
     };
-    let songOfVictory = itemUtils.getItemByIdentifer(workflow.actor, 'songOfVictory');
+    let songOfVictory = itemUtils.getItemByIdentifier(workflow.actor, 'songOfVictory');
     if (songOfVictory) {
         effectData.changes.push({
             key: 'system.bonuses.mwak.damage',

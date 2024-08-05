@@ -79,6 +79,7 @@ export {lightningArrow, lightningArrowBuffed} from './macros/spells/lightningArr
 export {lightningLure} from './macros/spells/lightningLure.js';
 export {magicMissile} from './macros/spells/magicMissile.js';
 export {massCureWounds} from './macros/spells/massCureWounds.js';
+export {maximiliansEarthenGrasp, maximiliansEarthenGraspGrasping} from './macros/spells/maximiliansEarthenGrasp.js';
 export {mirrorImage, mirrorImageMirrored} from './macros/spells/mirrorImage.js';
 export {mistyStep} from './macros/spells/mistyStep.js';
 export {moonbeam, moonbeamMove, moonbeamBeam} from './macros/spells/moonbeam.js';

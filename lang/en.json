@@ -392,6 +392,13 @@
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },
+            "MaximiliansEarthenGrasp": {
+                "Crush": "Maximilian's Earthen Grasp: Crush",
+                "Grasp": "Maximilian's Earthen Grasp: Grasp",
+                "NoNearby": "No nearby targets to grasp!",
+                "Overtime": "Maximilian's Earthen Grasp: Break Free",
+                "Select": "Select a target to grasp:"
+            },
             "MirrorImage": {
                 "Hit": "Attack hit a duplicate and destroyed it.",
                 "Miss": "Attack targeted a duplicate and missed."
@@ -880,6 +887,7 @@
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
                 "BigbysHand": "Bigby's Hand",
+                "EarthenHand": "Earthen Hand",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "Skeleton": "Skeleton",

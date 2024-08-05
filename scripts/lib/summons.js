@@ -169,7 +169,7 @@ export class Summons {
         return this.spawnedTokens;
     }
     handleSpecialUpdates() {
-        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'undeadThralls') && this.originItem.system.school === 'nec') {
+        if (itemUtils.getItemByIdentifier(this.originItem.actor, 'undeadThralls') && this.originItem.system.school === 'nec') {
             let wizardLevels = this.originItem.actor.classes.wizard?.system?.levels;
             if (wizardLevels) this.mergeUpdates({
                 actor: {
@@ -191,7 +191,7 @@ export class Summons {
                 }
             });
         }
-        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
+        if (itemUtils.getItemByIdentifier(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
             let formula = this.hpFormula;
             let hitDieAmount = parseInt(formula.match(/(\d+)d/)[1]);
             let extraHitPoints;
@@ -207,7 +207,7 @@ export class Summons {
             });
             if (updates != {}) this.mergeUpdates(updates);
         }
-        if (itemUtils.getItemByIdentifer(this.originItem.actor, 'durableSummons') && (this.originItem.system.school === 'div')) {
+        if (itemUtils.getItemByIdentifier(this.originItem.actor, 'durableSummons') && (this.originItem.system.school === 'div')) {
             let currentTempHp = this.updates.actor?.system?.attributes?.hp?.temp;
             this.mergeUpdates({actor: {system: {attributes: {hp: {temp: currentTempHp ? Number(currentTempHp) + 30 : 30}}}}});
         }

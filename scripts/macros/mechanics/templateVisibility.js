@@ -12,8 +12,8 @@ async function check(workflow) {
     if (!templates.length) return;
     let sourceSenses = source.actor.system.attributes.senses;
     let targetSenses = target.actor.system.attributes.senses;
-    let sourceDS = itemUtils.getItemByIdentifer(source.actor, 'devilSight');
-    let targetDS = itemUtils.getItemByIdentifer(target.actor, 'devilSight');
+    let sourceDS = itemUtils.getItemByIdentifier(source.actor, 'devilSight');
+    let targetDS = itemUtils.getItemByIdentifier(target.actor, 'devilSight');
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
         let flagData = template.flags['chris-premades'].template.visibility;

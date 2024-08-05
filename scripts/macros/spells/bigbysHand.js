@@ -4,7 +4,10 @@ import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Bigby\'s Hand');
-    if (!sourceActor) return;
+    if (!sourceActor) {
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
     let damageScale = ((workflow.castData.castLevel - 5) * 2);
     let clenchedFistData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Clenched Fist', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Clenched', identifier: 'clenchedFist'});
     let forcefulHandData = await compendiumUtils.getItemFromCompendium(constants.packs.summonFeatures, 'Forceful Hand', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Forceful', identifier: 'forcefulHand'});
@@ -64,7 +67,8 @@ async function use({workflow}) {
             }
         },
         token: {
-            name
+            name,
+            disposition: workflow.token.document.disposition
         }
     };
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
@@ -78,6 +82,7 @@ async function use({workflow}) {
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Bigby\'s Hand: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BigbysHand.Move', identifier: 'bigbysHandMove'});
     if (!featureData) {
         errors.missingPackItem();
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {

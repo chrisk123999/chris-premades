@@ -65,7 +65,7 @@ async function moveOrStart({trigger: {entity: effect, token, target}}) {
         if (!combatUtils.perTurnCheck(targetCombatant, 'guardianOfFaith')) return;
         await combatUtils.setTurnCheck(targetCombatant, 'guardianOfFaith');
     }
-    let feature = itemUtils.getItemByIdentifer(token.actor, 'guardianOfFaithDamage');
+    let feature = itemUtils.getItemByIdentifier(token.actor, 'guardianOfFaithDamage');
     if (!feature) return;
     let attackWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
     let appliedDamage = attackWorkflow.damageList[0].appliedDamage;

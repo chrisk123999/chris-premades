@@ -15,7 +15,7 @@ async function use({workflow}) {
         return;
     }
     let totalSummons = 1 + ((workflow.castData?.castLevel ?? 3) - 3) * 2;
-    if (itemUtils.getItemByIdentifer(workflow.actor, 'undeadThralls')) totalSummons += 1;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'undeadThralls')) totalSummons += 1;
     if (!totalSummons || totalSummons < 1) return;
     let sourceActors = await dialogUtils.selectDocumentsDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Summons.SelectSummons', {totalSummons}), [zombieActor, skeletonActor], {
         max: totalSummons
@@ -34,7 +34,7 @@ async function use({workflow}) {
         return;
     }
     await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 86400, range: 10, animation, additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'animateDeadCommand'}]});
-    if (itemUtils.getItemByIdentifer(workflow.actor, 'animateDeadCommand')) return;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'animateDeadCommand')) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'animateDead');
     if (!effect) return;
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
