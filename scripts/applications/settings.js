@@ -194,4 +194,5 @@ export class settingsHelp extends FormApplication {
     activateListeners(html) {
         super.activateListeners(html);
     }
+    _updateObject(event, formData) {}
 }

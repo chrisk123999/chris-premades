@@ -2,7 +2,7 @@ import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, err
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
-    let boltsLeft = workflow.item.system.target.value + Math.floor((level + 1) * (1/6));
+    let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true});
     if (!featureData) {
         errors.missingPackItem();
@@ -21,7 +21,7 @@ async function use({trigger, workflow}) {
     genericUtils.setProperty(featureData, 'flags.chris-premades.eldritchBlast.sound', sound);
     while (boltsLeft) {
         let selection, skip;
-        if (level >= 5) {
+        if (workflow.targets.size > 1) {
             [selection, skip] = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.EldritchBlast.Target', Array.from(workflow.targets), {type: 'selectAmount', skipDeadAndUnconscious: true, coverToken: workflow.token, maxAmount: boltsLeft});
             if (!selection) return;
         } else {

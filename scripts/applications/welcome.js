@@ -1,0 +1,2 @@
+import {genericUtils} from '../utils.js';
+let html = '<table><thread><tr><th>' + genericUtils.translate('CHRISPREMADES.Welcome.Module') + '</th><th>' + genericUtils.translate('CHRISPREMADES.Welcome.Authors') + '</th><th>';

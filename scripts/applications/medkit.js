@@ -3,7 +3,7 @@ import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
 import * as macros from '../macros.js';
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, itemDocument) {
-        super();
+        super({id: 'medkit-window-item'});
         this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
         this.position.width = 450;
         this.itemDocument = itemDocument;
@@ -15,7 +15,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             handler: Medkit.formHandler,
             submitOnChange: false,
             closeOnSubmit: false,
-            id: 'medkit-window'
         },
         actions: {
             update: Medkit._update,

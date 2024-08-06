@@ -83,6 +83,7 @@ export {maximiliansEarthenGrasp, maximiliansEarthenGraspGrasping} from './macros
 export {mirrorImage, mirrorImageMirrored} from './macros/spells/mirrorImage.js';
 export {mistyStep} from './macros/spells/mistyStep.js';
 export {moonbeam, moonbeamMove, moonbeamBeam} from './macros/spells/moonbeam.js';
+export {mindSliver} from './macros/spells/mindSliver.js';
 export {passWithoutTrace} from './macros/spells/passWithoutTrace.js';
 export {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 export {rayOfEnfeeblement, rayOfEnfeeblementEnfeebled} from './macros/spells/rayOfEnfeeblement.js';

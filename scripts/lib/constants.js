@@ -1,13 +1,5 @@
-let packs = {
-    spellFeatures: 'chris-premades.CPRSpellFeatures',
-    spells: 'chris-premades.CPRSpells',
-    summonFeatures: 'chris-premades.CPRSummonFeatures',
-    summons: 'chris-premades.CPRSummons'
-};
-let featurePacks = {
-    spellFeatures: 'chris-premades.CPRSpellFeatures',
-    summonFeatures: 'chris-premades.CPRSummonFeatures'
-};
+let packs = {};
+let featurePacks = {};
 function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';
@@ -16,6 +8,7 @@ function setUseLocalCompendium(value) {
         packs.summonFeatures = 'world.cpr-summon-features';
         featurePacks.summonFeatures = 'world.cpr-summon-features';
         packs.summons = 'world.cpr-summons';
+        packs.items = 'world.cpr-items';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -23,8 +16,10 @@ function setUseLocalCompendium(value) {
         packs.summonFeatures = 'chris-premades.CPRSummonFeatures';
         featurePacks.summonFeatures = 'chris-premades.CPRSummonFeatures';
         packs.summons = 'chris-premades.CPRSummons';
+        packs.items = 'chris-premades.CPRItems';
     }
 }
+setUseLocalCompendium(false);
 const attacks = [
     'msak',
     'rsak',

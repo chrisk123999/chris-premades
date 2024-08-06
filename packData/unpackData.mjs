@@ -6,7 +6,7 @@ let itemPacks = [
     //'cpr-feat-features',
     //'cpr-homebrew-feature-items',
     //'cpr-item-features',
-    //'cpr-items',
+    'cpr-items',
     //'cpr-miscellaneous',
     //'cpr-monster-feature-items',
     //'cpr-monster-features',
@@ -21,8 +21,8 @@ let actorPacks = [
     'cpr-summons'
 ];
 for (let i of itemPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {delete entry._stats;}});
+    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Item', transformEntry: (entry) => {delete entry._stats; delete entry.sort;}});
 }
 for (let i of actorPacks) {
-    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor', transformEntry: (entry) => {delete entry._stats;}});
+    await extractPack('packs/' + i, 'packData/' + i, {'log': true, 'documentType': 'Actor', transformEntry: (entry) => {delete entry._stats; delete entry.sort;}});
 }

@@ -21,6 +21,7 @@ async function getCPRAutomation(item) {
             break;
         case 'feat':
     }
+    if (!keys.length) return;
     let identifier = itemUtils.getIdentifer(item);
     let name = macros[identifier]?.name ?? item.name;
     let folderId;

@@ -132,6 +132,13 @@
       "path": "packs/cpr-summons",
       "type": "Actor",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRItems",
+      "label": "CPR Items",
+      "path": "packs/cpr-items",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -143,7 +150,8 @@
         "CPRSpells",
         "CPRSpellFeatures",
         "CPRSummonFeatures",
-        "CPRSummons"
+        "CPRSummons",
+        "CPRItems"
       ]
     }
   ],

@@ -4,7 +4,7 @@ async function save(actor, saveId, options) {
     if (effect) return {label: 'CHRISPREMADES.Macros.ProtectionFromEvilAndGood.Save', type: 'advantage'};
 }
 export let protectionFromEvilAndGood = {
-    name: 'Protection From Evil and Good',
+    name: 'Protection from Evil and Good',
     version: '0.12.0',
     save: [
         {

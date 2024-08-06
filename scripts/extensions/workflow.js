@@ -106,5 +106,5 @@ function patch() {
     libWrapper.register('chris-premades', 'MidiQOL.workflowClass.prototype.callv3DamageHooks', callV3DamageHooks, 'WRAPPER');
 }
 export let workflow = {
-    setup,
+    setup
 };

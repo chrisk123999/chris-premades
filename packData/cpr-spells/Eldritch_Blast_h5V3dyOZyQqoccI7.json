@@ -23,7 +23,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "units": "",
       "type": "creature",
       "width": null,
@@ -131,7 +131,6 @@
   "img": "icons/magic/fire/projectile-fireball-smoke-teal.webp",
   "folder": null,
   "_id": "h5V3dyOZyQqoccI7",
-  "sort": 12100000,
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3

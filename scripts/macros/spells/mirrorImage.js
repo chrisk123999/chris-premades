@@ -1,5 +1,4 @@
 import {effectUtils, genericUtils, tokenUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -82,7 +81,6 @@ async function attacked({workflow}) {
         });
     }
 }
-
 export let mirrorImage = {
     name: 'Mirror Image',
     version: '0.12.0',
