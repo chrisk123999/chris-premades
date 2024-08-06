@@ -14,3 +14,4 @@ export {animationUtils} from './lib/utilities/animationUtils.js';
 export {tokenUtils} from './lib/utilities/tokenUtils.js';
 export {compendiumUtils} from './lib/utilities/compendiumUtils.js';
 export {combatUtils} from './lib/utilities/combatUtils.js';
+export {crosshairUtils} from './lib/utilities/crosshairUtils.js';

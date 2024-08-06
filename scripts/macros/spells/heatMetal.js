@@ -26,7 +26,8 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 heatMetal: {
-                    targetUuid
+                    targetUuid,
+                    unable: false
                 }
             }
         }
@@ -60,8 +61,16 @@ async function pulse({workflow}) {
     await dialog(workflow, spellDC, targetToken, parentEffect);
 }
 async function dialog(workflow, spellDC, targetToken, parentEffect) {
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.HeatMetal.Drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.Macros.HeatMetal.Unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
-    if (selection === true) return; // Dropped
+    let selection;
+    if (!parentEffect.flags['chris-premades'].heatMetal.unable) {
+        selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.HeatMetal.Drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.Macros.HeatMetal.Unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
+        if (selection === true) return; // Dropped
+        if (selection === 'unable') {
+            await genericUtils.update(parentEffect, {'flags.chris-premades.heatMetal.unable': true});
+        }
+    } else {
+        selection = 'unable';
+    }
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Held', object: true, flatDC: spellDC});
     if (!featureData) {
         errors.missingPackItem();
@@ -105,7 +114,7 @@ async function dialog(workflow, spellDC, targetToken, parentEffect) {
             }
         }
     };
-    await effectUtils.createEffect(targetToken.actor, effectData, {concentrationItem: parentEffect, identifier: 'heatMetalHeld'});
+    await effectUtils.createEffect(targetToken.actor, effectData, {parentEntity: parentEffect, identifier: 'heatMetalHeld'});
 }
 export let heatMetal = {
     name: 'Heat Metal',

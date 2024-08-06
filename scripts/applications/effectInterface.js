@@ -174,25 +174,7 @@ class EffectDirectory extends DocumentDirectory {
         event.preventDefault();
         let element = event.currentTarget;
         let documentId = element.parentElement.dataset.documentId;
-        let document = this.collection.get(documentId);
-        let selectedTokens = canvas.tokens.controlled;
-        if (!selectedTokens.length) {
-            genericUtils.notify('CHRISPREMADES.EffectInterface.SelectToken', 'warn');
-            return;
-        }
-        let effectData = document.toObject();
-        delete effectData.id;
-        genericUtils.setProperty(effectData, 'duration.startTime', game.time.worldTime);
-        genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.id', document.id);
-        selectedTokens.forEach(i => {
-            if (!i.actor) return;
-            let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
-            if (effect) {
-                genericUtils.remove(effect);
-            } else {
-                effectUtils.createEffect(i.actor, effectData);
-            }
-        });
+        await effectUtils.toggleSidebarEffect(documentId);
     }
     static get collection() {
         let effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
@@ -280,6 +262,7 @@ class EffectDirectory extends DocumentDirectory {
         if (!effect) return;
         let dragData = effect.toDragData();
         if (!dragData) return;
+        dragData.cprEffect = true;
         event.dataTransfer.setData('text/plain', JSON.stringify(dragData));
     }
     async _onCreateFolder(event) {
@@ -334,10 +317,25 @@ function effectSidebarTab(app, html, data) {
         html[0].style.display = '';
     }
 }
+function effectHotbarDrop(hotbar, data, slot) {
+    if (!data.cprEffect) return;
+    let doc = fromUuidSync(data.uuid);
+    // eslint-disable-next-line no-undef
+    Macro.implementation.create({
+        name: doc.name,
+        type: CONST.MACRO_TYPES.SCRIPT,
+        img: doc.img,
+        command: `await chrisPremades.utils.effectUtils.toggleSidebarEffect('${doc.id}');`
+    }).then((macro) => {
+        game.user.assignHotbarMacro(macro, slot, {fromSlot: data.slot});
+    });
+    return false;
+}
 function init() {
     CONFIG.ui.cprEffectInterface = EffectDirectory;
     Hooks.on('renderSidebar', effectSidebar);
     Hooks.on('renderSidebarTab', effectSidebarTab);
+    Hooks.on('hotbarDrop', effectHotbarDrop);
 }
 export let effectInterface = {
     init,

@@ -93,6 +93,28 @@ async function applyConditions(actor, conditions) {
     }));
     if (updates.length) return await genericUtils.createEmbeddedDocuments(actor, 'ActiveEffect', updates, {keepId: true});
 }
+async function toggleSidebarEffect(documentId) {
+    let document = game.items.find(i => i.flags['chris-premades']?.effectInterface)?.collections?.effects?.get(documentId);
+    if (!document) return;
+    let selectedTokens = canvas.tokens.controlled;
+    if (!selectedTokens.length) {
+        genericUtils.notify('CHRISPREMADES.EffectInterface.SelectToken', 'warn');
+        return;
+    }
+    let effectData = document.toObject();
+    delete effectData.id;
+    genericUtils.setProperty(effectData, 'duration.startTime', game.time.worldTime);
+    genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.id', document.id);
+    selectedTokens.forEach(i => {
+        if (!i.actor) return;
+        let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
+        if (effect) {
+            genericUtils.remove(effect);
+        } else {
+            effectUtils.createEffect(i.actor, effectData);
+        }
+    });
+}
 export let effectUtils = {
     getCastData,
     getCastLevel,
@@ -110,5 +132,6 @@ export let effectUtils = {
     getEffectByIdentifier,
     getAllEffectsByIdentifier,
     getEffectByStatusID,
-    applyConditions
+    applyConditions,
+    toggleSidebarEffect
 };

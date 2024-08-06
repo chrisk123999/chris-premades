@@ -1,7 +1,7 @@
 import {Crosshairs} from '../crosshairs.js';
 import {genericUtils} from './genericUtils.js';
 
-async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks}) {
+async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance=true}) {
     let distance = 0;
     centerpoint = centerpoint ?? token.center;
     let drawing;
@@ -24,25 +24,29 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         }
         while (crosshairs.inFlight) {
             await genericUtils.sleep(100);
-            distance = canvas.grid.measurePath([centerpoint, crosshairs]).distance.toNearest(0.01);
-            // Below checks if token can see place wants to move thing to - sort of
-            if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange) {
-                crosshairs.icon = 'icons/svg/hazard.svg';
-                if (drawing) drawing.tint = 0xff0000;
-            } else {
-                crosshairs.icon = crosshairsConfig?.icon;
-                if (drawing) drawing.tint = 0x32cd32;
+            if (trackDistance) {
+                distance = canvas.grid.measurePath([centerpoint, crosshairs]).distance.toNearest(0.01);
+                // Below checks if token can see place wants to move thing to - sort of
+                if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange) {
+                    crosshairs.icon = 'icons/svg/hazard.svg';
+                    if (drawing) drawing.tint = 0xff0000;
+                } else {
+                    crosshairs.icon = crosshairsConfig?.icon;
+                    if (drawing) drawing.tint = 0x32cd32;
+                }
+                crosshairs.draw();
+                crosshairs.label = distance + '/' + maxRange + 'ft.';
             }
-            crosshairs.draw();
-            crosshairs.label = distance + '/' + maxRange + 'ft.';
         }
     };
     let callbacks = {
         show: checkDistance,
         ...(customCallbacks ?? {})
     };
-    let options = {
-        label: '0ft',
+    let options = {};
+    if (trackDistance) options.label = '0ft';
+    options = {
+        ...options,
         ...crosshairsConfig
     };
     if (!maxRange) return await Crosshairs.showCrosshairs(options);
