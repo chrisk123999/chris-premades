@@ -61,16 +61,19 @@ async function pulse({workflow}) {
 }
 async function dialog(workflow, spellDC, targetToken, parentEffect) {
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.HeatMetal.Drop', [['CHRISPREMADES.Generic.Yes', true], ['CHRISPREMADES.Generic.No', false], ['CHRISPREMADES.Macros.HeatMetal.Unable', 'unable']], {userId: socketUtils.firstOwner(targetToken.actor, true)});
-    if (selection) {
-        return;
-    }
+    if (selection === true) return; // Dropped
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Held', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Held', object: true, flatDC: spellDC});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
     let heatMetalWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
-    if (heatMetalWorkflow.failedSaves.size !== 0 && selection !== 'unable') {
+    if (heatMetalWorkflow.failedSaves.size && !selection) {
+        // Opted not to drop, but failed save (so dropped anyway)
+        await ChatMessage.implementation.create({
+            speaker: ChatMessage.implementation.getSpeaker({token: targetToken}),
+            content: genericUtils.translate('CHRISPREMADES.Macros.HeatMetal.MustDrop')
+        });
         return;
     }
     let effectData = {

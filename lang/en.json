@@ -338,6 +338,7 @@
                 "Dialog": "Heat Metal: Dialog",
                 "Drop": "Drop heated object?",
                 "Held": "Heat Metal: Held",
+                "MustDrop": "Failed their save, and must drop the metal item!",
                 "Pulse": "Heat Metal: Pulse",
                 "Unable": "Unable (Armor)"
             },
