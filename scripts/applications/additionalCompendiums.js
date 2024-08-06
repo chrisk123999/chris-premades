@@ -1,7 +1,7 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class AdditionalCompendiums extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor() {
-        super();
+        super({id: 'cpr-additional-compendiums-window'});
         this.position.width = 'auto';
         this.position.height = 800;
         this.windowTitle = 'Configure Additional Compendiums';

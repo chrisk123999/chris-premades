@@ -3,7 +3,7 @@ import {genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js'; // Maybe see if the added macro exsists? Too much for 4am brain
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
-        super();
+        super({id: 'medkit-window-effect'});
         this.windowTitle = 'Chris\'s Premades Configuration: ' + context.label;
         this.position.width = 650;
         this.effectDocument = effectDocument;

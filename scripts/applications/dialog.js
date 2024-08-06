@@ -162,9 +162,16 @@ button, checkbox, radio, select, text, number, filePicker
 
 export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(options) {
-        super();
-        if (options?.length > 0) {
-            let [title, content, inputs, buttons, config] = options;
+        let title, content, inputs, buttons, config;
+        if (options?.length) {
+            [title, content, inputs, buttons, config] = options;
+        }
+        if (config?.id) {
+            super({id: config.id});
+        } else {
+            super();
+        }
+        if (options?.length) {
             this.position.width = config?.width ?? 'auto';
             this.position.height = config?.height ?? 'auto';
             this.windowTitle = game.i18n.localize(title),
