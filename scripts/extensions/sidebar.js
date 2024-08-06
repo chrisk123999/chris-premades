@@ -14,8 +14,10 @@ function removeCompendiums(directory) {
         if (!pack && !folderId) return;
         if (pack) {
             if (!genericUtils.getCPRSetting('devTools')) {
-                if (Object.values(constants.featurePacks).includes(pack)) element.remove();
-                return;
+                if (Object.values(constants.featurePacks).includes(pack)) {
+                    element.remove();
+                    return;
+                }
             }
             if (hiddenCompendiums.includes(pack)) element.remove();
             return;
