@@ -1,5 +1,14 @@
-let packs = {};
-let featurePacks = {};
+let packs = {
+    spellFeatures: 'chris-premades.CPRSpellFeatures',
+    spells: 'chris-premades.CPRSpells',
+    summonFeatures: 'chris-premades.CPRSummonFeatures',
+    summons: 'chris-premades.CPRSummons',
+    items: 'chris-premades.CPRItems'
+};
+let featurePacks = {
+    spellFeatures: 'chris-premades.CPRSpellFeatures',
+    summonFeatures: 'chris-premades.CPRSummonFeatures'
+};
 function setUseLocalCompendium(value) {
     if (value) {
         packs.spellFeatures = 'world.cpr-spell-features';

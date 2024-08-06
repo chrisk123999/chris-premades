@@ -83,8 +83,11 @@ function getSize(actor, returnString) {
 function hasUsedReaction(actor) {
     return MidiQOL.hasUsedReaction(actor);
 }
-function setReactionUsed(actor) {
+async function setReactionUsed(actor) {
     return MidiQOL.setReactionUsed(actor);
+}
+async function removeReactionUsed(actor) {
+    return MidiQOL.removeReactionUsed(actor);
 }
 function hasSpellSlots(actor, atLeast = 0) {
     return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;
@@ -117,6 +120,7 @@ export let actorUtils = {
     getSize,
     hasUsedReaction,
     setReactionUsed,
+    removeReactionUsed,
     hasSpellSlots,
     isShapeChanger,
     doConcentrationCheck

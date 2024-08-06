@@ -54,8 +54,20 @@ export class Summons {
     static async dismiss({trigger}) {
         let effect = trigger.entity;
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name]; // Add scene ID
-        if (!summons) return;
-        await canvas.scene.deleteEmbeddedDocuments('Token', summons);
+        let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name]?.map(i => game.scenes.get(i));
+        if (!summons || !scenes) return;
+        let sceneAndIdsTuple = [];
+        for (let i = 0; i < summons.length; i++) {
+            let existingIdx = sceneAndIdsTuple.findIndex(j => j[0] === scenes[i]);
+            if (existingIdx >= 0) {
+                sceneAndIdsTuple[existingIdx][1].push(summons[i]);
+            } else {
+                sceneAndIdsTuple.push([scenes[i], [summons[i]]]);
+            }
+        }
+        for (let [scene, sceneSummons] of sceneAndIdsTuple) {
+            await scene.deleteEmbeddedDocuments('Token', sceneSummons);
+        }
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
@@ -221,6 +233,9 @@ export class Summons {
                     summons: {
                         ids: {
                             [this.originItem.name]: effect.flags['chris-premades'].summons.ids[this.originItem.name].concat(this.spawnedTokensIds)
+                        },
+                        scenes: {
+                            [this.originItem.name]: effect.flags['chris-premades'].summons.scenes[this.originItem.name].concat(this.spawnedTokensScenes)
                         }
                     }
                 }
@@ -352,6 +367,9 @@ export class Summons {
                     summons: {
                         ids: {
                             [this.originItem.name]: this.spawnedTokensIds 
+                        },
+                        scenes: {
+                            [this.originItem.name]: this.spawnedTokensScenes
                         }
                     }
                 }
@@ -360,6 +378,9 @@ export class Summons {
     }
     get spawnedTokensIds() {
         return this.spawnedTokens.map(i => i.id);
+    }
+    get spawnedTokensScenes() {
+        return this.spawnedTokens.map(i => i.object.scene.id);
     }
     get updates() {
         return this._updates[this.currentIndex] ?? this._updates[0];

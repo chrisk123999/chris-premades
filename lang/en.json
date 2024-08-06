@@ -284,6 +284,13 @@
             "FarStep": {
                 "Teleport": "Far Step: Teleport"
             },
+            "FindFamiliar": {
+                "Attack": "Find Familiar: Attack",
+                "Choose": "Choose Familiar",
+                "Error": "No familiar token or data found!",
+                "Movement": "Which Movement Type?",
+                "PocketDimension": "Find Familiar: Pocket Dimension"
+            },
             "FindSteed": {
                 "Choose": "Choose Steed",
                 "Language": "What language?",
@@ -380,6 +387,9 @@
             },
             "InvestitureOfStone": {
                 "Earthquake": "Investiture of Stone: Earthquake"
+            },
+            "InvestmentOfTheChainMaster": {
+                "Resistance": "Investment of the Chain Master: Familiar Resistance"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
@@ -889,6 +899,7 @@
             "CreatureNames": {
                 "BigbysHand": "Bigby's Hand",
                 "EarthenHand": "Earthen Hand",
+                "Familiar": "Familiar",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "Skeleton": "Skeleton",

@@ -45,6 +45,7 @@ export {enlargeReduce, enlargeReduceChanged} from './macros/spells/enlargeReduce
 export {faerieFire, faerieFireOutlined} from './macros/spells/faerieFire.js';
 export {farStep, farStepStepping} from './macros/spells/farStep.js';
 export {findGreaterSteed, findGreaterSteedActive} from './macros/spells/findGreaterSteed.js';
+export {findFamiliar, findFamiliarPocketDimension} from './macros/spells/findFamiliar.js';
 export {findSteed, findSteedActive} from './macros/spells/findSteed.js';
 export {fireShield, fireShieldShielded, fireShieldDismiss} from './macros/spells/fireShield.js';
 export {fireStorm} from './macros/spells/fireStorm.js';
@@ -132,3 +133,4 @@ export {test} from './macros/test.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
 // Class Features
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
+export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
