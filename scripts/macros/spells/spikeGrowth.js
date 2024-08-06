@@ -24,9 +24,6 @@ async function enterOrPassThrough({trigger: {entity: template, token}, options},
     let templateObj = template.object;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
-    let pxToCenter = token.document.width * canvas.grid.size / 2;
-    prevCoords.x = prevCoords.x + pxToCenter;
-    prevCoords.y = prevCoords.y + pxToCenter;
     if (canvas.scene.grid.units !== 'ft') return;
     if (canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS) {
         let startedIn = templateObj.shape.contains(prevCoords.x - templateObj.center.x, prevCoords.y - templateObj.center.y);
@@ -68,9 +65,6 @@ async function left({trigger, options}) {
 async function stay({trigger: {entity: template, token}, options}) {
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
-    let pxToCenter = token.document.width * canvas.grid.size / 2;
-    prevCoords.x = prevCoords.x + pxToCenter;
-    prevCoords.y = prevCoords.y + pxToCenter;
     if (canvas.scene.grid.units !== 'ft') return;
     await damageHelper(prevCoords, token.center, template, token, {stay: true, gridless: canvas.scene.grid.type === CONST.GRID_TYPES.GRIDLESS});
 }
