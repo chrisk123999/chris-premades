@@ -134,6 +134,12 @@ async function updateToken(token, updates, options, userId) {
     let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
     let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
     if (!previousCoords) return;
+    let xDiff = token.width * canvas.grid.size / 2;
+    let yDiff = token.height * canvas.grid.size / 2;
+    coords.x += xDiff;
+    coords.y += yDiff;
+    previousCoords.x += xDiff;
+    previousCoords.y += yDiff;
     let ignore = genericUtils.getProperty(options, 'chris-premades.movement.ignore');
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
