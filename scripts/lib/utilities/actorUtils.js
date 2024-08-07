@@ -86,8 +86,8 @@ function hasUsedReaction(actor) {
 async function setReactionUsed(actor) {
     return MidiQOL.setReactionUsed(actor);
 }
-async function removeReactionUsed(actor) {
-    return MidiQOL.removeReactionUsed(actor);
+async function removeReactionUsed(actor, force=false) {
+    return MidiQOL.removeReactionUsed(actor, force);
 }
 function hasSpellSlots(actor, atLeast = 0) {
     return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;

@@ -66,7 +66,7 @@ export class Summons {
             }
         }
         for (let [scene, sceneSummons] of sceneAndIdsTuple) {
-            await scene.deleteEmbeddedDocuments('Token', sceneSummons);
+            await scene.deleteEmbeddedDocuments('Token', sceneSummons.filter(i => scene.tokens.has(i)));
         }
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
