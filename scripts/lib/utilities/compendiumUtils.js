@@ -20,6 +20,7 @@ async function getCPRAutomation(item) {
             keys.push(constants.packs.items);
             break;
         case 'feat':
+            keys.push(constants.packs.classFeatures);
     }
     if (!keys.length) return;
     let identifier = itemUtils.getIdentifer(item);
