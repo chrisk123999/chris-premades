@@ -48,7 +48,7 @@ async function use({trigger, workflow}) {
             priority: 20
         });
     }
-    await effectUtils.createEffect(workflow.actor, effectData);
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bladeSong'});
 }
 export let bladesong = {
     name: 'Bladesong',

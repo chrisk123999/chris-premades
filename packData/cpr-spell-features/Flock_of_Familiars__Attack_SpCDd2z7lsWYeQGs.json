@@ -1,6 +1,7 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Flock of Familiars: Attack",
   "type": "feat",
+  "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
   "system": {
     "description": {
       "value": "",
@@ -24,13 +25,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -41,12 +42,12 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -63,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -76,12 +77,13 @@
       "bonus": "",
       "flat": false
     },
-    "enchantment": null,
     "summons": null,
+    "enchantment": null,
     "prerequisites": {
       "level": null
     }
   },
+  "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
@@ -110,25 +112,13 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
-    },
-    "chris-premades": {
-      "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
-        "version": "0.12.9",
-        "identifier": "investmentOfTheChainMaster",
-        "source": "chris-premades"
-      }
-    },
-    "exportSource": {
-      "world": "cpr-test",
-      "system": "dnd5e",
-      "coreVersion": "12.330",
-      "systemVersion": "3.3.1"
-    }
+    "core": {}
   },
-  "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "VU0y4e3F7DmfUy7g"
+  "folder": null,
+  "_id": "SpCDd2z7lsWYeQGs",
+  "ownership": {
+    "default": 0,
+    "Sxnc2j6hSZtjzxy2": 3
+  },
+  "_key": "!items!SpCDd2z7lsWYeQGs"
 }
