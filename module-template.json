@@ -139,6 +139,20 @@
       "path": "packs/cpr-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRClassFeatures",
+      "label": "CPR Class Features",
+      "path": "packs/cpr-class-features",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRClassFeatureItems",
+      "label": "CPR Class Feature Items",
+      "path": "packs/cpr-class-feature-items",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -151,7 +165,9 @@
         "CPRSpellFeatures",
         "CPRSummonFeatures",
         "CPRSummons",
-        "CPRItems"
+        "CPRItems",
+        "CPRClassFeatures",
+        "CPRClassFeatureItems"
       ]
     }
   ],

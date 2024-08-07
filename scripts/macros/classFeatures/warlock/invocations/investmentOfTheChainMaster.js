@@ -5,9 +5,11 @@ async function late({workflow}) {
     if (!controllingActor) return;
     await actorUtils.setReactionUsed(controllingActor);
     await actorUtils.removeReactionUsed(workflow.actor, true);
-    let summonerEffect = effectUtils.getEffectByIdentifier(controllingActor, 'findFamiliar');
-    if (!summonerEffect) summonerEffect = effectUtils.getEffectByIdentifier(controllingActor, 'flockOfFamiliars');
-    let summonedActors = summonerEffect?.flags['chris-premades'].summons.ids[summonerEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor);
+    let findEffect = effectUtils.getEffectByIdentifier(controllingActor, 'findFamiliar');
+    let flockEffect = effectUtils.getEffectByIdentifier(controllingActor, 'flockOfFamiliars');
+    let findActors = findEffect?.flags['chris-premades'].summons.ids[findEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
+    let flockActors = flockEffect?.flags['chris-premades'].summons.ids[flockEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
+    let summonedActors = findActors.concat(flockActors);
     if (!summonedActors?.length) return;
     for (let currActor of summonedActors) {
         let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
@@ -16,9 +18,11 @@ async function late({workflow}) {
     }
 }
 async function turnStart({trigger: {token}}) {
-    let summonerEffect = effectUtils.getEffectByIdentifier(token.actor, 'findFamiliar');
-    if (!summonerEffect) summonerEffect = effectUtils.getEffectByIdentifier(token.actor, 'flockOfFamiliars');
-    let summonedActors = summonerEffect?.flags['chris-premades'].summons.ids[summonerEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor);
+    let findEffect = effectUtils.getEffectByIdentifier(token.actor, 'findFamiliar');
+    let flockEffect = effectUtils.getEffectByIdentifier(token.actor, 'flockOfFamiliars');
+    let findActors = findEffect?.flags['chris-premades'].summons.ids[findEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
+    let flockActors = flockEffect?.flags['chris-premades'].summons.ids[flockEffect?.name]?.map(i => canvas.scene.tokens.get(i)?.actor) ?? [];
+    let summonedActors = findActors.concat(flockActors);
     if (!summonedActors?.length) return;
     for (let currActor of summonedActors) {
         let resistanceItem = itemUtils.getItemByIdentifier(currActor, 'investmentOfTheChainMasterResistance');
@@ -27,7 +31,7 @@ async function turnStart({trigger: {token}}) {
     }
 }
 export let investmentOfTheChainMaster = {
-    name: 'Investment of the Chain Master',
+    name: 'Eldritch Invocations: Investment of the Chain Master',
     version: '0.12.9'
 };
 export let investmentOfTheChainMasterActive = {

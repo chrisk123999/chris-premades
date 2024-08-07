@@ -3,11 +3,14 @@ let packs = {
     spells: 'chris-premades.CPRSpells',
     summonFeatures: 'chris-premades.CPRSummonFeatures',
     summons: 'chris-premades.CPRSummons',
-    items: 'chris-premades.CPRItems'
+    items: 'chris-premades.CPRItems',
+    classFeatures: 'chris-premades.CPRClassFeatures',
+    classFeatureItems: 'chris-premades.CPRClassFeatureItems'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
-    summonFeatures: 'chris-premades.CPRSummonFeatures'
+    summonFeatures: 'chris-premades.CPRSummonFeatures',
+    classFeatureItems: 'chris-premades.CPRClassFeatureItems'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -18,6 +21,9 @@ function setUseLocalCompendium(value) {
         featurePacks.summonFeatures = 'world.cpr-summon-features';
         packs.summons = 'world.cpr-summons';
         packs.items = 'world.cpr-items';
+        packs.classFeatures = 'world.cpr-class-features';
+        packs.classFeatureItems = 'world.cpr-class-feature-items';
+        featurePacks.classFeatureItems = 'world.cpr-class-feature-items';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -26,6 +32,9 @@ function setUseLocalCompendium(value) {
         featurePacks.summonFeatures = 'chris-premades.CPRSummonFeatures';
         packs.summons = 'chris-premades.CPRSummons';
         packs.items = 'chris-premades.CPRItems';
+        packs.classFeatures = 'chris-premades.CPRClassFeatures';
+        packs.classFeatureItems = 'chris-premades.CPRClassFeatureItems';
+        featurePacks.classFeatureItems = 'chris-premades.CPRClassFeatureItems';
     }
 }
 setUseLocalCompendium(false);
