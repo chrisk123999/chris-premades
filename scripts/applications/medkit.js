@@ -237,11 +237,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         sourceItemData.system.chatFlavor = itemData.system.chatFlavor;
         sourceItemData.system.uses = itemData.system.uses;
         let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
-        if (itemData.flags['midi-qol']?.onUseMacroName) {
-            let newOnUseString = itemData.flags['midi-qol'].onUseMacroName.split(',').filter(i => !i.includes('function.chrisPremades')).join(',');
+        if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
+        let oldOnUse = itemData.flags['midi-qol']?.onUseMacroName;
+        if (oldOnUse) {
+            let newOnUseString = oldOnUse.split(',').filter(i => !i.includes('function.chrisPremades')).join(',');
             genericUtils.setProperty(sourceItemData, 'flags.midi-qol.onUseMacroName', newOnUseString);
         }
-        if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
         if (itemType === 'spell') sourceItemData.system.preparation = itemData.system.preparation;
         if (itemType != 'spell' && itemType != 'feat') {
             sourceItemData.system.attunement = itemData.system.attunement;
