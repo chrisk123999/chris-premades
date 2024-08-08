@@ -78,7 +78,7 @@ async function use({workflow}) {
         let saveDC = itemUtils.getSaveDC(workflow.item);
         for (let sourceActor of sourceActors) {
             let weaponItems = sourceActor.items.filter(i => i.type === 'weapon');
-            let saveItems = sourceActor.items.filter(i => !!i.system.save.dc);
+            let saveItems = sourceActor.items.filter(i => !!i.system?.save?.dc);
             let currItemUpdates = [];
             for (let i of weaponItems) {
                 let properties = Array.from(i.system.properties);

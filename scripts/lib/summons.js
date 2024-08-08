@@ -20,7 +20,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: []}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0].constructor.name !== 'Actor5e') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -30,6 +30,9 @@ export class Summons {
         }
         sourceActors = await Promise.all(sourceActors.map(async i => await actorUtils.getSidebarActor(i, {autoImport: true})));
         if (!Array.isArray(updates)) updates = [updates];
+        for (let currUpdates of updates) {
+            genericUtils.mergeObject(currUpdates, {actor: {prototypeToken: {actorLink: false}}, token: {actorLink: false}});
+        }
         let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.minimize();
@@ -51,11 +54,45 @@ export class Summons {
         return token.uuid;
     }
     // Helper function to dismiss any summons on an effect, will have the effect name and an array of ids
+    // Called when either a summoned creature is dismissed specifically or all summoned creatures are dismissed
     static async dismiss({trigger}) {
         let effect = trigger.entity;
-        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name]; // Add scene ID
-        let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name]?.map(i => game.scenes.get(i));
+        let dismissingSingleSummon = effectUtils.getEffectIdentifier(effect) === 'summonedEffect';
+        let summonedEffect;
+        if (dismissingSingleSummon) {
+            summonedEffect = effect;
+            effect = await fromUuid(effect.flags['chris-premades'].parentEntityUuid);
+            if (!effect) return; // Parent effect already deleted
+        }
+        let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
+        let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name];
         if (!summons || !scenes) return;
+        if (dismissingSingleSummon && summons.length === 1) {
+            // If last summon, kill the effect
+            await genericUtils.remove(effect);
+            return;
+        } else if (dismissingSingleSummon) {
+            let idxToRemove = summons.findIndex(i => i === summonedEffect.parent.token.id);
+            await genericUtils.remove(summonedEffect.parent.token);
+            summons.splice(idxToRemove, 1);
+            scenes.splice(idxToRemove, 1);
+            await genericUtils.update(effect, {
+                flags: {
+                    'chris-premades': {
+                        summons: {
+                            ids: {
+                                [effect.name]: summons
+                            },
+                            scenes: {
+                                [effect.name]: scenes
+                            }
+                        }
+                    }
+                }
+            });
+            return;
+        }
+        scenes = scenes.map(i => game.scenes.get(i));
         let sceneAndIdsTuple = [];
         for (let i = 0; i < summons.length; i++) {
             let existingIdx = sceneAndIdsTuple.findIndex(j => j[0] === scenes[i]);
@@ -68,6 +105,9 @@ export class Summons {
         for (let [scene, sceneSummons] of sceneAndIdsTuple) {
             await scene.deleteEmbeddedDocuments('Token', sceneSummons.filter(i => scene.tokens.has(i)));
         }
+    }
+    static async dismissIfDead({trigger, ditem}) {
+        if (ditem.newHP === 0) await Summons.dismiss({trigger});
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
@@ -255,8 +295,13 @@ export class Summons {
         // Make summon effects dependent on caster effect
         let summonEffects = this.spawnedTokens.map(i => actorUtils.getEffects(i.actor).find(e => e.name === genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature')));
         await effectUtils.addDependent(effect, summonEffects);
+        
         // Make caster effect dependent on each summon effect
-        await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));
+        // await Promise.all(summonEffects.map(async e => await effectUtils.addDependent(e, [effect])));
+
+        // Make summon effects "interdependent" on parent effect
+        await Promise.all(summonEffects.map(async e => await genericUtils.update(e, {flags: {'chris-premades': {parentEntityUuid: effect.uuid}}})));
+
         // Add on delete macros to be called, for cases where concentration does not delete the summon
         if (this.options?.onDeleteMacros && concentrationEffect) {
             let concentrationUpdates = {
@@ -343,7 +388,8 @@ export class Summons {
                     },
                     vae: {
                         buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalSummonVaeButtons ?? [])]
-                    }
+                    },
+                    macros: {effect: ['summonUtils'], ...(this.options.dontDismissOnDefeat ? {} : {midi: {actor: ['summonUtils']}})}
                 }
             }
         };
@@ -403,4 +449,13 @@ export let summonUtils = {
             priority: 50
         }
     ],
+    midi: {
+        actor: [
+            {
+                pass: 'applyDamage',
+                macro: Summons.dismissIfDead,
+                priority: 50
+            }
+        ]
+    }
 };

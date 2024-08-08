@@ -2,8 +2,8 @@ import {Summons} from '../../lib/summons.js';
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let pocketDimensionEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliarPocketDimension');
-    if (pocketDimensionEffect) await genericUtils.remove(pocketDimensionEffect);
+    let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
+    if (findFamiliarEffect) await genericUtils.remove(findFamiliarEffect);
     let pocketData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Pocket Dimension', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.PocketDimension', identifier: 'findFamiliarPocketDimension'});
     let attackData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.Attack', identifier: 'findFamiliarAttack'});
     if (!pocketData || !attackData) {
@@ -58,7 +58,7 @@ async function use({workflow}) {
         ];
         let movement = await dialogUtils.buttonDialog(investmentOfTheChainMaster.name, 'CHRISPREMADES.Macros.FindFamiliar.Movement', movementButtons);
         let weaponItems = sourceActor.items.filter(i => i.type === 'weapon');
-        let saveItems = sourceActor.items.filter(i => !!i.system.save.dc);
+        let saveItems = sourceActor.items.filter(i => !!i.system?.save?.dc);
         let saveDC = itemUtils.getSaveDC(workflow.item);
         let itemUpdates = [];
         for (let i of weaponItems) {
@@ -148,8 +148,8 @@ async function pocketDimension({workflow}) {
             if (!hpData) return;
             genericUtils.setProperty(updates, 'actor.system.attributes.hp', hpData);
             await genericUtils.remove(familiarToken);
-            await spawnFamiliar(updates);
-            await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.sceneId': game.scenes.current.id});
+            let spawned = await spawnFamiliar(updates);
+            if (spawned) await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.sceneId': game.scenes.current.id});
         } else {
             let familiarToken = game.scenes.current.tokens.get(familiarTokenId);
             if (!familiarToken) {
@@ -162,8 +162,8 @@ async function pocketDimension({workflow}) {
             await genericUtils.remove(familiarToken);
         }
     } else {
-        await spawnFamiliar(updates);
-        await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.state': false});
+        let spawned = await spawnFamiliar(updates);
+        if (spawned) await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.state': false});
     }
     async function error() {
         genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.Error', 'info');
@@ -174,7 +174,7 @@ async function pocketDimension({workflow}) {
         let findFamiliarItem = itemUtils.getItemByIdentifier(workflow.actor, 'findFamiliar');
         let spawnedTokens = await Summons.spawn(sourceActor, updates, findFamiliarItem, workflow.token, {
             duration: 864000, 
-            range: 10, 
+            range: 30, 
             animation: pocketFlags.animation
         });
         if (!spawnedTokens?.length) return;
@@ -183,14 +183,14 @@ async function pocketDimension({workflow}) {
             ['flags.chris-premades.summons.ids.' + findFamiliarEffect.name]: [spawnedToken.id],
             ['flags.chris-premades.summons.scenes.' + findFamiliarEffect.name]: [game.scenes.current.id]
         });
+        return true;
     }
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     if (!effect) return;
     let familiarToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!familiarToken) return;
-    if (tokenUtils.getDistance(workflow.token, familiarToken) > 100) {
+    if (!familiarToken || tokenUtils.getDistance(workflow.token, familiarToken) > 100) {
         genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.TooFar', 'info');
         return;
     }
@@ -232,9 +232,16 @@ async function early({workflow}) {
         return;
     }
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
-    if (!effect) return;
+    if (!effect) {
+        workflow.aborted = true;
+        return;
+    }
     let familiarToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
-    if (!familiarToken) return;
+    if (!familiarToken) {
+        genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.TooFar', 'info');
+        workflow.aborted = true;
+        return;
+    }
     await actorUtils.setReactionUsed(familiarToken.actor);
 }
 export let findFamiliar = {
