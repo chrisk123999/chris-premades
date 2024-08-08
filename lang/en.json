@@ -26,6 +26,11 @@
             "ThreeMonths": "Three Months",
             "Weekly": "Weekly"
         },
+        "CommonFeatures": {
+            "Multiattack": "Multiattack ({numAttacks} Attacks)",
+            "PackTactics": "Pack Tactics",
+            "WaterBreathing": "Water Breathing"
+        },
         "Config": {
             "Animation": "Animation:",
             "Animations": {
@@ -502,6 +507,14 @@
                 "Slaad": "Slaad",
                 "StarSpawn": "Star Spawn"
             },
+            "SummonBeast": {
+                "Air": "Air",
+                "Flyby": "Flyby",
+                "Land": "Land",
+                "Maul": "Maul (Bestial Spirit)",
+                "Type": "What Beast type?",
+                "Water": "Water"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
                 "Select": "Which planes do you draw magic from?",
@@ -908,6 +921,10 @@
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
+                "BestialSpirit": "Bestial Spirit",
+                "BestialSpiritAir": "Bestial Spirit (Air)",
+                "BestialSpiritLand": "Bestial Spirit (Land)",
+                "BestialSpiritWater": "Bestial Spirit (Water)",
                 "BigbysHand": "Bigby's Hand",
                 "EarthenHand": "Earthen Hand",
                 "Familiar": "Familiar",

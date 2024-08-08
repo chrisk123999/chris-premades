@@ -152,8 +152,8 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) await executeMacro(trigger, workflow);
 }
-async function superPreItemRoll(workflow) {
-    await executeMacroPass(workflow, 'superPreItemRoll');
+async function preTargeting(workflow) {
+    await executeMacroPass(workflow, 'preTargeting');
 }
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
@@ -199,7 +199,7 @@ async function preTargetDamageApplication(token, {workflow, ditem}) {
     for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }
 export let midiEvents = {
-    superPreItemRoll,
+    preTargeting,
     preItemRoll,
     attackRollComplete,
     damageRollComplete,

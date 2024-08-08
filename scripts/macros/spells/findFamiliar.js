@@ -275,7 +275,7 @@ export let findFamiliar = {
         {
             value: 'celestialAnimation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
-            i18nOption: 'Celestial',
+            i18nOption: 'DND5E.CreatureCelestial',
             type: 'select',
             default: 'celestial',
             category: 'animation',
@@ -284,7 +284,7 @@ export let findFamiliar = {
         {
             value: 'feyAnimation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
-            i18nOption: 'Fey',
+            i18nOption: 'DND5E.CreatureFey',
             type: 'select',
             default: 'nature',
             category: 'animation',
@@ -293,7 +293,7 @@ export let findFamiliar = {
         {
             value: 'fiendAnimation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
-            i18nOption: 'Fiend',
+            i18nOption: 'DND5E.CreatureFiend',
             type: 'select',
             default: 'fire',
             category: 'animation',

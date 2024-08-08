@@ -8,7 +8,8 @@ function createEffectButtons(effect, buttons) {
                 buttons.push({
                     label: i.name,
                     callback: () => {
-                        let actor = effect.transfer ? effect.parent.actor : effect.parent;
+                        let actor = effect.parent;
+                        if (!(actor instanceof Actor.implementation)) actor = actor.actor;
                         let item;
                         if (i.identifier) {
                             item = itemUtils.getItemByIdentifier(actor, i.identifier);

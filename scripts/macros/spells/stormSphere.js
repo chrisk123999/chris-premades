@@ -122,7 +122,7 @@ export let stormSphereBolt = {
     midi: {
         item: [
             {
-                pass: 'superPreItemRoll',
+                pass: 'preTargeting',
                 macro: early,
                 priority: 50
             },
