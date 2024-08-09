@@ -290,14 +290,14 @@
                 "Teleport": "Far Step: Teleport"
             },
             "FindFamiliar": {
-                "Attack": "Find Familiar: Attack",
                 "Choose": "Choose Familiar",
                 "Error": "No familiar token or data found!",
                 "InvalidSpell": "Invalid Spell Type!",
                 "Movement": "Which Movement Type?",
                 "PocketDimension": "Find Familiar: Pocket Dimension",
                 "ReactionUsed": "Familiar has already used their reaction!",
-                "TooFar": "Familiar Too Far Away!"
+                "TooFar": "Familiar Too Far Away!",
+                "Touch": "Find Familiar: Touch"
             },
             "FindSteed": {
                 "Choose": "Choose Steed",
@@ -320,8 +320,8 @@
                 "Scimitar": "Flame Blade Scimitar"
             },
             "FlockOfFamiliars": {
-                "Attack": "Flock of Familiars: Attack",
-                "ReactionUsed": "Familiars are too far or have already used their reaction!"
+                "ReactionUsed": "Familiars are too far or have already used their reaction!",
+                "Touch": "Flock of Familiars: Touch"
             },
             "FlockOfFamilias": {
                 "TooFar": "Familiars are too far away!"
@@ -938,6 +938,7 @@
             "CustomAvatar": "{option} Custom Avatar",
             "CustomName": "{option} Custom Name",
             "CustomToken": "{option} Custom Token",
+            "DismissHP": "Summon reached 0 hitpoints! Should they be dismissed?",
             "DismissSummon": "Dismiss Summon",
             "FamiliarDefault": "{option} Familiar",
             "Folder": "Folder Name",

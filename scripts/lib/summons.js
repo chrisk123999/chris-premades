@@ -5,7 +5,7 @@
 // eventually await canvas.scene.createEmbeddedDocuments
 
 import {Crosshairs} from './crosshairs.js';
-import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants} from '../utils.js';
+import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils} from '../utils.js';
 import {crosshairUtils} from './utilities/crosshairUtils.js';
 import {socket} from './sockets.js';
 
@@ -107,9 +107,11 @@ export class Summons {
         }
     }
     static async dismissIfDead({trigger, ditem}) {
-        if (ditem.newHP === 0) await Summons.dismiss({trigger});
+        if (ditem.newHP > 0) return;
+        let shouldDismiss = await dialogUtils.confirm(trigger.entity.parent.name, 'CHRISPREMADES.Summons.DismissHP');
+        if (shouldDismiss) await Summons.dismiss({trigger});
     }
-    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null} = {}) {
+    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
         let prof = originItem.actor.system.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
@@ -117,6 +119,8 @@ export class Summons {
         let documentData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, name, {
             object: true, 
             getDescription: true, 
+            translate,
+            identifier,
             //translate: name.replaceAll(' ', ''), Why was I doing this?? It was intentional at some point...
             flatAttack: flatAttack ? attackBonus : false,
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false

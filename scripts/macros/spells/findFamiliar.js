@@ -5,14 +5,14 @@ async function use({workflow}) {
     let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     if (findFamiliarEffect) await genericUtils.remove(findFamiliarEffect);
     let pocketData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Pocket Dimension', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.PocketDimension', identifier: 'findFamiliarPocketDimension'});
-    let attackData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.Attack', identifier: 'findFamiliarAttack'});
-    if (!pocketData || !attackData) {
+    let touchData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Find Familiar: Touch', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindFamiliar.Touch', identifier: 'findFamiliarTouch'});
+    if (!pocketData || !touchData) {
         errors.missingPackItem();
         return;
     }
     effectUtils.addMacro(pocketData, 'midi.item', ['findFamiliarPocketDimension']);
-    effectUtils.addMacro(attackData, 'midi.item', ['findFamiliarAttack']);
-    let itemsToAdd = [pocketData, attackData];
+    effectUtils.addMacro(touchData, 'midi.item', ['findFamiliarTouch']);
+    let itemsToAdd = [pocketData, touchData];
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder?.length) folder = 'Familiars';
     let actors = game.actors.filter(i => i.folder?.name === folder);
@@ -81,7 +81,7 @@ async function use({workflow}) {
             return;
         }
         itemsToAdd.push(commandData);
-        let resistanceData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Investment of the Chain Master: Familiar Resistance', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
+        let resistanceData = await Summons.getSummonItem('Investment of the Chain Master: Familiar Resistance', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
         if (!resistanceData) {
             errors.missingPackItem();
             return;
@@ -221,7 +221,7 @@ async function late({workflow}) {
             }
         }
     };
-    effectUtils.addMacro(effectData, 'midi.actor', ['findFamiliarAttack']);
+    effectUtils.addMacro(effectData, 'midi.actor', ['findFamiliarTouch']);
     let casterEffect = await effectUtils.createEffect(workflow.actor, effectData);
     await effectUtils.createEffect(familiarToken.actor, effectData, {parentEntity: casterEffect});
 }
@@ -314,8 +314,8 @@ export let findFamiliarPocketDimension = {
         ]
     }
 };
-export let findFamiliarAttack = {
-    name: 'Find Familiar: Attack',
+export let findFamiliarTouch = {
+    name: 'Find Familiar: Touch',
     version: findFamiliar.version,
     midi: {
         item: [

@@ -10,14 +10,14 @@ async function use({workflow}) {
     }
     let findFamiliarEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'findFamiliar');
     let totalSummons = findFamiliarEffect ? spellLevel : spellLevel + 1;
-    let attackData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Flock of Familiars: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FlockOfFamiliars.Attack', identifier: 'flockOfFamiliarsAttack'});
-    if (!attackData) {
+    let touchData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Flock of Familiars: Touch', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FlockOfFamiliars.Touch', identifier: 'flockOfFamiliarsTouch'});
+    if (!touchData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(attackData, 'midi.item', ['flockOfFamiliarsAttack']);
-    let itemsToAdd = [attackData];
+    effectUtils.addMacro(touchData, 'midi.item', ['flockOfFamiliarsTouch']);
+    let itemsToAdd = [touchData];
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder?.length) folder = 'Familiars';
     let actors = game.actors.filter(i => i.folder?.name === folder);
@@ -95,7 +95,7 @@ async function use({workflow}) {
             }
             itemUpdates.push(currItemUpdates);
         }
-        let resistanceData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Investment of the Chain Master: Familiar Resistance', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
+        let resistanceData = await Summons.getSummonItem('Investment of the Chain Master: Familiar Resistance', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Resistance', identifier: 'investmentOfTheChainMasterResistance'});
         if (!resistanceData) {
             errors.missingPackItem();
             return;
@@ -174,7 +174,7 @@ async function late({workflow}) {
             }
         }
     };
-    effectUtils.addMacro(effectData, 'midi.actor', ['flockOfFamiliarsAttack']);
+    effectUtils.addMacro(effectData, 'midi.actor', ['flockOfFamiliarsTouch']);
     let casterEffect = await effectUtils.createEffect(workflow.actor, effectData);
     for (let i of familiarTokens) await effectUtils.createEffect(i.actor, effectData, {parentEntity: casterEffect});
 }
@@ -247,8 +247,8 @@ export let flockOfFamiliars = {
         },
     ]
 };
-export let flockOfFamiliarsAttack = {
-    name: 'Flock of Familiars: Attack',
+export let flockOfFamiliarsTouch = {
+    name: 'Flock of Familiars: Touch',
     version: flockOfFamiliars.version,
     midi: {
         item: [

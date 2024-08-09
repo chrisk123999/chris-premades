@@ -19,14 +19,13 @@ async function use({workflow}) {
         return;
     }
     let numAttacks = Math.floor(workflow.castData.castLevel / 2);
-    let multiAttackFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Multiattack (Bestial Spirit)', {object: true, getDescription: true, translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
-    let maulFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Maul (Bestial Spirit)', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: itemUtils.getMod(workflow.item)});
+    let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Bestial Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
+    let maulFeatureData = await Summons.getSummonItem('Maul (Bestial Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: workflow.castData.castLevel});
     if (!multiAttackFeatureData || !maulFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    maulFeatureData.system.damage.parts[0][0] += ' + ' + workflow.castData.castLevel;
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.BestialSpirit' + creatureType.capitalize());
     let updates = {
@@ -65,7 +64,7 @@ async function use({workflow}) {
     }
     let hpFormula = 20;
     if (creatureType === 'air') {
-        let flybyData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Flyby (Air Only)', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonBeast.Flyby', identifier: 'summonBeastFlyby'});
+        let flybyData = await Summons.getSummonItem('Flyby (Air Only)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Flyby', identifier: 'summonBeastFlyby'});
         if (!flybyData) {
             errors.missingPackItem();
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -74,7 +73,7 @@ async function use({workflow}) {
         updates.actor.items.push(flybyData);
         updates.actor.system.attributes.movement.fly = 60;
     } else {
-        let packTacticsData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Pack Tactics (Land and Water Only)', {object: true, getDescription: true, translate: 'CHRISPREMADES.CommonFeatures.PackTactics', identifier: 'summonBeastPackTactics'});
+        let packTacticsData = await Summons.getSummonItem('Pack Tactics (Land and Water Only)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.PackTactics', identifier: 'summonBeastPackTactics'});
         if (!packTacticsData) {
             errors.missingPackItem();
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -86,7 +85,7 @@ async function use({workflow}) {
             updates.actor.system.attributes.movement.climb = 30;
         } else {
             updates.actor.system.attributes.movement.swim = 30;
-            let waterBreathingData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.summonFeatures, 'Water Breathing (Water Only)', {object: true, getDescription: true, translate: 'CHRISPREMADES.CommonFeatures.WaterBreathing', identifier: 'summonBeastWaterBreathing'});
+            let waterBreathingData = await Summons.getSummonItem('Water Breathing (Water Only)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.WaterBreathing', identifier: 'summonBeastWaterBreathing'});
             if (!waterBreathingData) {
                 errors.missingPackItem();
                 if (concentrationEffect) await genericUtils.remove(concentrationEffect);
