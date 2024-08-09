@@ -34,7 +34,7 @@ Goals:
     - [x] Overtime creator, dynamically update
         - [x] Make the saveDC save correctly (get rid of extranous values in the overTime)
     - [x] DevTools tab to set flags on effect
-    - [ ] Colorize effect medkit
+    - [x] Colorize effect medkit
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning

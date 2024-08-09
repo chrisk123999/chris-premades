@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils} from '../utils.js';
+import {effectUtils, genericUtils} from '../utils.js';
 let effectItem;
 let effectCollection;
 async function ready() {

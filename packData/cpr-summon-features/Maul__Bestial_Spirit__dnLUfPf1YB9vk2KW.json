@@ -22,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "1",
       "width": null,
       "units": "",
       "type": "creature",
@@ -48,7 +48,6 @@
     },
     "ability": "",
     "actionType": "mwak",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -78,14 +77,27 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[preCheckHits]function.chrisPremades.tashaSummon.meleeAttack"
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -100,18 +112,23 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.EJZilVtBqBNoDon5"
     }
   },
   "folder": "lHhGlqPOrQEh5rv6",
+  "_id": "dnLUfPf1YB9vk2KW",
   "ownership": {
     "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "_id": "cVfeKHBBonDj0f0L",
-  "_key": "!items!cVfeKHBBonDj0f0L"
+  "_key": "!items!dnLUfPf1YB9vk2KW"
 }

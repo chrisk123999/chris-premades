@@ -1,7 +1,7 @@
 {
-  "name": "Water Breathing (Water Only)",
+  "name": "Flyby (Air Only)",
   "type": "feat",
-  "img": "icons/magic/air/wind-swirl-purple-blue.webp",
+  "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
   "system": {
     "description": {
       "value": "",
@@ -22,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "",
@@ -48,7 +48,6 @@
     },
     "ability": null,
     "actionType": "",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -73,20 +72,49 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Item.izAfEZNqgmS0NQWy"
+      "sourceId": "Item.OiBagVnCdVi8Qpnw"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
   "folder": "lHhGlqPOrQEh5rv6",
+  "_id": "7PiINvzuseoRdSJW",
   "ownership": {
     "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "Sxnc2j6hSZtjzxy2": 3
   },
-  "_id": "NznzgEm7RnCpaASh",
-  "_key": "!items!NznzgEm7RnCpaASh"
+  "_key": "!items!7PiINvzuseoRdSJW"
 }

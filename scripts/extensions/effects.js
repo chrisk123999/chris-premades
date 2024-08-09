@@ -29,6 +29,7 @@ function preCreateActiveEffect(effect, updates, options, id) {
     if (effect.parent && effect.transfer) {
         if (effect.parent.constructor.name != 'Item5e') return;
         if (npc && parent.actor?.type === 'npc') return;
+        if (effect.parent?.flags?.['chris-premades']?.effectInterface) return;
         description = (effect.parent.system.identified ?? true) ? effect.parent.system.description[type] : effect.parent.system.unidentified.description;
     } else if (!effect.transfer && effect.parent) {
         let origin;
@@ -40,6 +41,7 @@ function preCreateActiveEffect(effect, updates, options, id) {
         if (!origin) return;
         if (origin.constructor.name != 'Item5e') return;
         if (npc && origin.actor?.type === 'npc') return;
+        if (origin?.flags?.['chris-premades']?.effectInterface) return;
         description = (origin.system.identified ?? true) ? origin.system.description[type] : origin.system.unidentified.description;
     } else return;
     effect.updateSource({description: description});
