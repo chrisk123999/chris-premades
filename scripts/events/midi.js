@@ -135,11 +135,11 @@ async function executeMacro(trigger, workflow, ditem) {
         console.error(error);
     }
 }
-async function executeMacroPass(workflow, pass, ditem) {
+async function executeMacroPass(workflow, pass) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
     let triggers = getSortedTriggers({item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
+    for (let trigger of triggers) await executeMacro(trigger, workflow);
 }
 async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass);
@@ -191,10 +191,11 @@ async function postAttackRoll(workflow) {
     await executeMacroPass(workflow, 'postAttackRoll');
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
-    await executeMacroPass(workflow, 'applyDamage', ditem);
-    let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'targetApplyDamage').sort((a, b) => a.priority - b.priority);
-    if (targetTriggers.length) await genericUtils.sleep(50);
-    for (let trigger of targetTriggers) await executeMacro(trigger, workflow, ditem);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);
+    let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'targetApplyDamage');
+    let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
+    let triggers = targetTriggers.concat(selfTriggers).sort((a, b) => a.priority - b.priority);
+    for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }
 export let midiEvents = {
     preTargeting,
