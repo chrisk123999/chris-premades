@@ -201,7 +201,7 @@ export let compelledDuelCompelled = {
                 priority: 50
             },
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: targetAttacked,
                 priority: 50
             }

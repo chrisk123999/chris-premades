@@ -77,7 +77,7 @@ export let beaconOfHopeHopeful = {
     midi: {
         actor: [
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: damageApplication,
                 priority: 250
             }

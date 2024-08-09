@@ -106,7 +106,7 @@ export let lightningLure = {
     midi: {
         item: [
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: damage,
                 priority: 50
             }

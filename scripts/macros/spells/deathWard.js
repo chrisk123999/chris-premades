@@ -40,7 +40,7 @@ export let deathWardWarded= {
     midi: {
         actor: [
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: damageApplication,
                 priority: 250
             }

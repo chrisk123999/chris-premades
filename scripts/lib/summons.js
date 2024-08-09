@@ -449,7 +449,7 @@ export let summonUtils = {
     midi: {
         actor: [
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: Summons.dismissIfDead,
                 priority: 50
             }

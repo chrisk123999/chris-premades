@@ -40,7 +40,7 @@ export let witherAndBloom = {
                 priority: 50
             },
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: damage,
                 priority: 50
             }

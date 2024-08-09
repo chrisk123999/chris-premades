@@ -515,6 +515,14 @@
                 "Type": "What Beast type?",
                 "Water": "Water"
             },
+            "SummonCelestial": {
+                "Avenger": "Avenger",
+                "Defender": "Defender",
+                "HealingTouch": "Healing Touch (Celestial Spirit)",
+                "RadiantBow": "Radiant Bow",
+                "Temp": "Who gets temporary hitpoints?",
+                "Type": "What Celestial type?"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
                 "Select": "Which planes do you draw magic from?",
@@ -918,6 +926,9 @@
             "Title": "Skill Check"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
+        "SummonCelestial": {
+            "RadiantMaco": "Radiant Mace"
+        },
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
@@ -926,6 +937,9 @@
                 "BestialSpiritLand": "Bestial Spirit (Land)",
                 "BestialSpiritWater": "Bestial Spirit (Water)",
                 "BigbysHand": "Bigby's Hand",
+                "CelestialSpirit": "Celestial Spirit",
+                "CelestialSpiritAvenger": "Celestial Spirit (Avenger)",
+                "CelestialSpiritDefender": "Celestial Spirit (Defender)",
                 "EarthenHand": "Earthen Hand",
                 "Familiar": "Familiar",
                 "GuardianOfFaith": "Guardian of Faith",

@@ -281,7 +281,7 @@ export let bestowCurseDamageTarget = {
     midi: {
         actor: [
             {
-                pass: 'applyDamage',
+                pass: 'targetApplyDamage',
                 macro: damageApplication,
                 priority: 250
             }
