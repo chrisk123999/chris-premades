@@ -93,8 +93,9 @@ async function applyConditions(actor, conditions) {
     }));
     if (updates.length) return await genericUtils.createEmbeddedDocuments(actor, 'ActiveEffect', updates, {keepId: true});
 }
-async function toggleSidebarEffect(documentId) {
-    let document = game.items.find(i => i.flags['chris-premades']?.effectInterface)?.collections?.effects?.get(documentId);
+async function sidebarEffectHelper(documentId, toggle) {
+    let effectsItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+    let document = effectsItem?.collections?.effects?.get(documentId);
     if (!document) return;
     let selectedTokens = canvas.tokens.controlled;
     if (!selectedTokens.length) {
@@ -107,13 +108,28 @@ async function toggleSidebarEffect(documentId) {
     genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.id', document.id);
     selectedTokens.forEach(i => {
         if (!i.actor) return;
+        effectData.origin = i.actor.uuid;
         let effect = actorUtils.getEffects(i.actor).find(i => i.flags['chris-premades']?.effectInterface?.id === document.id);
-        if (effect) {
-            genericUtils.remove(effect);
+        let stackable = effect?.flags.dae?.stackable === 'count';
+        let stackCount = effect?.flags.dae?.stacks ?? 1;
+        if (effect && toggle) {
+            if (!stackable || stackCount === 1) {
+                genericUtils.remove(effect);
+            } else {
+                genericUtils.update(effect, {'flags.dae.stacks': stackCount - 1});
+            }
+        } else if (effect && stackable) {
+            genericUtils.update(effect, {'flags.dae.stacks': stackCount + 1});
         } else {
             effectUtils.createEffect(i.actor, effectData);
         }
     });
+}
+async function toggleSidebarEffect(documentId) {
+    await sidebarEffectHelper(documentId, true);
+}
+async function addSidebarEffect(documentId) {
+    await sidebarEffectHelper(documentId, false);
 }
 export let effectUtils = {
     getCastData,
@@ -133,5 +149,6 @@ export let effectUtils = {
     getAllEffectsByIdentifier,
     getEffectByStatusID,
     applyConditions,
-    toggleSidebarEffect
+    toggleSidebarEffect,
+    addSidebarEffect
 };
