@@ -8,6 +8,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
+    let spellLevel = workflow.castData.castLevel;
     let creatureButtons = [
         ['CHRISPREMADES.Macros.SummonBeast.Air', 'air'],
         ['CHRISPREMADES.Macros.SummonBeast.Land', 'land'],
@@ -18,9 +19,9 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let numAttacks = Math.floor(workflow.castData.castLevel / 2);
+    let numAttacks = Math.floor(spellLevel / 2);
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Bestial Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonBeastMultiattack'});
-    let maulFeatureData = await Summons.getSummonItem('Maul (Bestial Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: workflow.castData.castLevel});
+    let maulFeatureData = await Summons.getSummonItem('Maul (Bestial Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonBeast.Maul', identifier: 'summonBeastMaul', flatAttack: true, damageBonus: spellLevel});
     if (!multiAttackFeatureData || !maulFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -37,7 +38,7 @@ async function use({workflow}) {
                 },
                 attributes: {
                     ac: {
-                        flat: 11 + workflow.castData.castLevel
+                        flat: 11 + spellLevel
                     },
                     movement: {
                         walk: 30
@@ -94,7 +95,7 @@ async function use({workflow}) {
             updates.actor.items.push(waterBreathingData);
         }
     }
-    hpFormula += (workflow.castData.castLevel - 2) * 5;
+    hpFormula += (spellLevel - 2) * 5;
     updates.actor.system.attributes.hp = {
         formula: hpFormula,
         max: hpFormula,

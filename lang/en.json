@@ -27,8 +27,10 @@
             "Weekly": "Weekly"
         },
         "CommonFeatures": {
+            "HeatedBody": "Heated Body",
             "Multiattack": "Multiattack ({numAttacks} Attacks)",
             "PackTactics": "Pack Tactics",
+            "StoneLethargy": "Stone Lethargy",
             "WaterBreathing": "Water Breathing"
         },
         "Config": {
@@ -523,6 +525,14 @@
                 "Temp": "Who gets temporary hitpoints?",
                 "Type": "What Celestial type?"
             },
+            "SummonConstruct": {
+                "BerserkLashing": "Berserk Lashing",
+                "Clay": "Clay",
+                "Metal": "Metal",
+                "Slam": "Slam (Construct Spirit)",
+                "Stone": "Stone",
+                "Type": "What Construct type?"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
                 "Select": "Which planes do you draw magic from?",
@@ -940,6 +950,10 @@
                 "CelestialSpirit": "Celestial Spirit",
                 "CelestialSpiritAvenger": "Celestial Spirit (Avenger)",
                 "CelestialSpiritDefender": "Celestial Spirit (Defender)",
+                "ConstructSpirit": "Construct Spirit",
+                "ConstructSpiritClay": "Construct Spirit (Clay)",
+                "ConstructSpiritMetal": "Construct Spirit (Metal)",
+                "ConstructSpiritStone": "Construct Spirit (Stone)",
                 "EarthenHand": "Earthen Hand",
                 "Familiar": "Familiar",
                 "GuardianOfFaith": "Guardian of Faith",

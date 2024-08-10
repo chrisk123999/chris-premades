@@ -112,6 +112,8 @@ export {staggeringSmite, staggeringSmiteDamage} from './macros/spells/staggering
 export {stormSphere, stormSphereBolt, stormSphereTemplate} from './macros/spells/stormSphere.js';
 export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/summonAberration.js';
 export {summonBeast} from './macros/spells/summonBeast.js';
+export {summonCelestial, summonCelestialMace} from './macros/spells/summonCelestial.js';
+export {summonConstruct, summonConstructStone} from './macros/spells/summonConstruct.js';
 export {synapticStatic} from './macros/spells/synapticStatic.js';
 export {tashasCausticBrew} from './macros/spells/tashasCausticBrew.js';
 export {tashasOtherworldlyGuise, tashasOtherworldlyGuiseBuffed} from './macros/spells/tashasOtherworldlyGuise.js';
@@ -136,3 +138,5 @@ export {removeTemplate} from './macros/generic/removeTemplate.js';
 // Class Features
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
+// Monster Features
+export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
