@@ -414,4 +414,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         this.render(true);
     }
+
+    changeTab(...args) {
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
+        super.changeTab(...args);
+        let newPos = {...this.position, height: this.element.scrollHeight};
+        this.setPosition(newPos);
+    }
 }
