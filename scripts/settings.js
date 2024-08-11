@@ -455,7 +455,7 @@ export function registerSettings() {
         }
     });
     addSetting({
-        key: 'useEpicRolls',
+        key: 'epicRolls',
         type: Boolean,
         default: false,
         category: 'integration'

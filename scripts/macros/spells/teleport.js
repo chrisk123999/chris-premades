@@ -134,7 +134,8 @@ async function use({workflow}) {
                                 {
                                     value: 'miles', 
                                     label: 'CHRISPREMADES.Units.Miles'
-                                }, {
+                                },
+                                {
                                     value: 'feet', 
                                     label: 'CHRISPREMADES.Units.Feet'
                                 }

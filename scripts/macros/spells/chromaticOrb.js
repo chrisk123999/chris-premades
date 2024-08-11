@@ -1,5 +1,4 @@
 import {animationUtils, dialogUtils, genericUtils, itemUtils} from '../../utils.js';
-
 async function damage({workflow}) {
     if (!workflow.targets.size) return;
     let buttons = [

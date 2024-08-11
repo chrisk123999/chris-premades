@@ -122,9 +122,8 @@ async function attachToToken(token, uuidsToAttach) {
     });
 }
 async function contestedCheck(token, contestantToken, skill, contestedType) {
-    if (genericUtils.getCPRSetting('useEpicRolls') && game.modules.get('epic-rolls-5e')?.active) {
+    if (genericUtils.getCPRSetting('epicRolls') && game.modules.get('epic-rolls-5e')?.active) {
         let results = await epicRolls.contestedCheck(token.actor, contestantToken.actor, 'skill.' + skill, 'skill.' + contestedType);
-        console.log(results);
         if (results.canceled || !results.success) return false;
         return true;
     } else {

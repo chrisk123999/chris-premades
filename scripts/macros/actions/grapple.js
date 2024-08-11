@@ -1,7 +1,7 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.token || workflow.targets.size != 1) return;
-    if (actorUtils.checkTrait(workflow.targets.first().actor, 'CI', 'grappled')) {
+    if (actorUtils.checkTrait(workflow.targets.first().actor, 'ci', 'grappled')) {
         genericUtils.notify('CHRISPREMADES.Macros.Grapple.Immune', 'info');
         return;
     }
@@ -13,9 +13,7 @@ async function use({trigger, workflow}) {
     let targetUser = socketUtils.firstOwner(workflow.targets.first());
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Grapple.ChooseSkill', inputs, {displayAsRows: true, userId: targetUser.id});
     if (!selection) return;
-    console.log(selection);
     let result = await tokenUtils.contestedCheck(workflow.token, workflow.targets.first(), 'ath', selection);
-    console.log(result);
     if (!result) return;
     //Rideable integration here!
     await effectUtils.applyConditions(workflow.targets.first().actor, ['grappled']);

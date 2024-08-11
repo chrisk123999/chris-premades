@@ -300,6 +300,20 @@
                 "Reduce": "Reduce",
                 "Select": "Enlarge or Reduce?"
             },
+            "Fall": {
+                "Acr": "Yes (Acrobatics)",
+                "Ath": "Yes (Athletics)",
+                "Creature": "Onto Another Creature",
+                "Distance": "Distance (ft):",
+                "Ground": "Onto Ground",
+                "Reaction": "Use your reaction to to hit the surface head or feet first?",
+                "Save": "Dexterity Saving Throw (DC: 15)",
+                "SkillCheck": "Skill Check (DC: 15)",
+                "Target": "Select one target and try again!",
+                "Tiny": "One or both creatures are tiny!",
+                "Type": "Type of Fall:",
+                "Water": "Into Water"
+            },
             "FarStep": {
                 "Teleport": "Far Step: Teleport"
             },
@@ -1004,6 +1018,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "epicRolls": {
+                "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
+                "Name": "Use Epic Rolls"
             }
         },
         "SkillCheck": {
