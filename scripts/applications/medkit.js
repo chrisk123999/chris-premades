@@ -140,7 +140,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (configs) {
             context.category = {};
             let currentConfigs = item.flags['chris-premades']?.config;
-            let configs = macros[identifier].config;
             let canConfigure = genericUtils.checkMedkitPermission('configure', game.userId);
             for (let config of configs) {
                 if (!context?.category?.[config.category]) {
