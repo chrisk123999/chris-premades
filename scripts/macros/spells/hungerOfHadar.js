@@ -3,6 +3,7 @@ import {compendiumUtils, constants, effectUtils, genericUtils, itemUtils, templa
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
+    let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let template = workflow.template;
     if (!template) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -29,7 +30,7 @@ async function use({workflow}) {
         }
     });
     if (useRealDarkness) {
-        let [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
+        let [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance, animation: {type: darknessAnimation}}, x: template.x, y: template.y}]);
         effectUtils.addDependent(template, [darknessSource]);
     }
     let targets = templateUtils.getTokensInTemplate(template);
@@ -91,6 +92,20 @@ export let hungerOfHadar = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             type: 'checkbox',
             default: false,
+            category: 'mechanics'
+        },
+        {
+            value: 'darknessAnimation',
+            label: 'CHRISPREMADES.Config.DarknessAnimation',
+            type: 'select',
+            default: null,
+            options: [
+                {
+                    label: 'CHRISPREMADES.Generic.None',
+                    value: null
+                },
+                ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))
+            ],
             category: 'mechanics'
         }
     ]

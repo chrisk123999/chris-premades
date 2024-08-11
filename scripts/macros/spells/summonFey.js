@@ -23,7 +23,10 @@ async function use({workflow}) {
     let numAttacks = Math.floor(spellLevel / 2);
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Fey Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonFeyMultiattack'});
     let shortswordFeatureData = await Summons.getSummonItem('Shortsword (Fey Spirit)', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonFey.Shortsword', identifier: 'summonFeyShortsword', flatAttack: true, damageBonus: spellLevel});
-    let feyStepFeatureData = await Summons.getSummonItem('Fey Step (Fey Spirit)', {'flags.chris-premades.config.useRealDarkness': itemUtils.getConfig(workflow.item, 'useRealDarkness')}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonFey.FeyStep', identifier: 'summonFeyFeyStep'});
+    let feyStepFeatureData = await Summons.getSummonItem('Fey Step (Fey Spirit)', {
+        'flags.chris-premades.config.useRealDarkness': itemUtils.getConfig(workflow.item, 'useRealDarkness'),
+        'flags.chris-premades.config.darknessAnimation': itemUtils.getConfig(workflow.item, 'darknessAnimation')
+    }, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonFey.FeyStep', identifier: 'summonFeyFeyStep'});
     if (!multiAttackFeatureData || !shortswordFeatureData || !feyStepFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -119,7 +122,7 @@ async function late({workflow}) {
         if (effect) await genericUtils.update(effect, {'duration.turns': 1});
         if (itemUtils.getConfig(workflow.item, 'useRealDarkness')) {
             let offset = (template.width / 2) * canvas.grid.size / canvas.grid.distance;
-            let darknessSourceArr = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.width / 2}, x: template.object.center.x + offset, y: template.object.center.y + offset}]);
+            let darknessSourceArr = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.width / 2, animation: {type: itemUtils.getConfig(workflow.item, 'darknessAnimation')}}, x: template.object.center.x + offset, y: template.object.center.y + offset}]);
             effectUtils.addDependent(template, darknessSourceArr);
         }
     }
@@ -241,6 +244,20 @@ export let summonFey = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             type: 'checkbox',
             default: false,
+            category: 'mechanics'
+        },
+        {
+            value: 'darknessAnimation',
+            label: 'CHRISPREMADES.Config.DarknessAnimation',
+            type: 'select',
+            default: null,
+            options: [
+                {
+                    label: 'CHRISPREMADES.Generic.None',
+                    value: null
+                },
+                ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))
+            ],
             category: 'mechanics'
         }
     ]

@@ -78,59 +78,59 @@ const damageTypes = [
 ];
 let damageTypeOptions = [
     {
-        label: 'Acid',
+        label: 'DND5E.DamageAcid',
         value: 'acid'
     },
     {
-        label: 'Bludgeoning',
+        label: 'DND5E.DamageBludgeoning',
         value: 'bludgeoning'
     },
     {
-        label: 'Cold',
+        label: 'DND5E.DamageCold',
         value: 'cold'
     },
     {
-        label: 'Fire',
+        label: 'DND5E.DamageFire',
         value: 'fire'
     },
     {
-        label: 'Force',
+        label: 'DND5E.DamageForce',
         value: 'force'
     },
     {
-        label: 'Lightning',
+        label: 'DND5E.DamageLightning',
         value: 'lightning'
     },
     {
-        label: 'Necrotic',
+        label: 'DND5E.DamageNecrotic',
         value: 'necrotic'
     },
     {
-        label: 'No Type',
+        label: 'CHRISPREMADES.Generic.NoType',
         value: 'none'
     },
     {
-        label: 'Piercing',
+        label: 'DND5E.DamagePiercing',
         value: 'piercing'
     },
     {
-        label: 'Poison',
+        label: 'DND5E.DamagePoison',
         value: 'poison'
     },
     {
-        label: 'Psychic',
+        label: 'DND5E.DamagePsychic',
         value: 'psychic'
     },
     {
-        label: 'Radiant',
+        label: 'DND5E.DamageRadiant',
         value: 'radiant'
     },
     {
-        label: 'Slashing',
+        label: 'DND5E.DamageSlashing',
         value: 'slashing'
     },
     {
-        label: 'Thunder',
+        label: 'DND5E.DamageThunder',
         value: 'thunder'
     }
 ];

@@ -3,6 +3,7 @@ async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
+    let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let template = workflow.template;
     let token = workflow.token;
     if (!template || !token) {
@@ -29,7 +30,7 @@ async function use({workflow}) {
     let attachUuids = [template.uuid];
     let darknessSource;
     if (useRealDarkness) {
-        [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance}, x: template.x, y: template.y}]);
+        [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance, animation: {type: darknessAnimation}}, x: template.x, y: template.y}]);
         attachUuids.push(darknessSource.uuid);
         effectUtils.addDependent(template, [darknessSource]);
     }
@@ -100,6 +101,20 @@ export let darkness = {
             label: 'CHRISPREMADES.Config.RealDarkness',
             type: 'checkbox',
             default: false,
+            category: 'mechanics'
+        },
+        {
+            value: 'darknessAnimation',
+            label: 'CHRISPREMADES.Config.DarknessAnimation',
+            type: 'select',
+            default: null,
+            options: [
+                {
+                    label: 'CHRISPREMADES.Generic.None',
+                    value: null
+                },
+                ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))
+            ],
             category: 'mechanics'
         }
     ]
