@@ -10,7 +10,8 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 staggeringSmite: {
-                    dc: itemUtils.getSaveDC(workflow.item)
+                    dc: itemUtils.getSaveDC(workflow.item),
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -25,7 +26,7 @@ async function damage({workflow}) {
     if (workflow.item.system.actionType !== 'mwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'staggeringSmite');
     if (!effect) return;
-    let damageType = 'psychic';
+    let damageType = effect.flags['chris-premades'].staggeringSmite.damageType;
     let formula = '4d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Staggering Smite: Stagger', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StaggeringSmite.Stagger'});
@@ -48,7 +49,18 @@ export let staggeringSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'psychic',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let staggeringSmiteDamage = {
     name: 'Staggering Smite: Damage',

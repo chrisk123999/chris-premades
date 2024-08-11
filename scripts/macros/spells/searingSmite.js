@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -12,7 +12,8 @@ async function use({workflow}) {
                 searingSmite: {
                     dc: itemUtils.getSaveDC(workflow.item),
                     level: workflow.castData.castLevel,
-                    used: false
+                    used: false,
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -29,7 +30,7 @@ async function damage({workflow}) {
     if (!effect) return;
     if (effect.flags['chris-premades'].searingSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'searingSmite.used', true);
-    let damageType = 'fire';
+    let damageType = effect.flags['chris-premades'].searingSmite.damageType;
     let formula = effect.flags['chris-premades'].searingSmite.level + 'd6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let effectData = {
@@ -61,7 +62,18 @@ export let searingSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'fire',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let searingSmiteDamage = {
     name: 'Searing Smite: Damage',

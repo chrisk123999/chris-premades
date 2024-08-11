@@ -39,7 +39,8 @@ async function use({workflow}) {
             'chris-premades': {
                 moonbeam: {
                     templateUuid: template.uuid
-                }
+                },
+                damageType: itemUtils.getConfig(workflow.item, 'damageType')
             }
         }
     };
@@ -70,10 +71,11 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
+    let damageType = template.flags['chris-premades'].damageType;
     featureData.system.damage.parts = [
         [
-            castData.castLevel + 'd10[radiant]',
-            'radiant'
+            castData.castLevel + 'd10[' + damageType + ']',
+            damageType
         ]
     ];
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
@@ -121,7 +123,18 @@ export let moonbeam = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'radiant',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let moonbeamMove = {
     name: 'Moonbeam: Move',

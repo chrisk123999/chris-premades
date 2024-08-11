@@ -50,7 +50,7 @@ async function damage({workflow}) {
             {
                 key: 'system.traits.di.value',
                 value: 'healing',
-                mode: 5,
+                mode: 2,
                 priority: 120
             }
         ],

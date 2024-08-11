@@ -27,10 +27,11 @@ async function use({workflow}) {
         return;
     }
     let castLevel = workflow.castData.castLevel ?? 4;
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     featureData.system.damage.parts = [
         [
-            castLevel + 'd6[lightning]',
-            'lightning'
+            castLevel + 'd6[' + damageType + ']',
+            damageType
         ]
     ];
     effectUtils.addMacro(featureData, 'midi.item', ['stormSphereBolt']);
@@ -113,7 +114,16 @@ export let stormSphere = {
             type: 'checkbox',
             default: true,
             category: 'animation'
-        }
+        },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'lightning',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
     ]
 };
 export let stormSphereBolt = {

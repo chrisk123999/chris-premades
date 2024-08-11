@@ -106,7 +106,7 @@ async function early({workflow}) {
                     {
                         key: 'system.traits.di.value',
                         value: workflow.defaultDamageType,
-                        mode: 5,
+                        mode: 2,
                         priority: 120
                     }
                 ],

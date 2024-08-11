@@ -18,10 +18,11 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     clenchedFistData.system.damage.parts = [
         [
-            (4 + damageScale) + 'd8[force]',
-            'force'
+            (4 + damageScale) + 'd8[' + damageType + ']',
+            damageType
         ]
     ];
     let casterSpellMod = itemUtils.getMod(workflow.item);
@@ -328,6 +329,15 @@ export let bigbysHand = {
             type: 'file',
             default: '',
             category: 'summons'
+        },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'force',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
         },
     ]
 };

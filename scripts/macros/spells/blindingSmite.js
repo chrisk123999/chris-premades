@@ -11,7 +11,8 @@ async function use({workflow}) {
             'chris-premades': {
                 blindingSmite: {
                     dc: itemUtils.getSaveDC(workflow.item),
-                    used: false
+                    used: false,
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -28,7 +29,7 @@ async function damage({workflow}) {
     if (!effect) return;
     if (effect.flags['chris-premades'].blindingSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'blindingSmite.used', true);
-    let damageType = 'radiant';
+    let damageType = effect.flags['chris-premades'].blindingSmite.damageType;
     let formula = '3d8';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Blinding Smite: Blind', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BlindingSmite.Blind'});
@@ -62,7 +63,18 @@ export let blindingSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'radiant',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let blindingSmiteDamage = {
     name: 'Blinding Smite: Damage',

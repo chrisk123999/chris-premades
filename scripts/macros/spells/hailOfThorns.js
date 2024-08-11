@@ -13,7 +13,8 @@ async function use({workflow}) {
             'chris-premades': {
                 hailOfThorns: {
                     castLevel: workflow.castData?.castLevel ?? 1,
-                    dc: itemUtils.getSaveDC(workflow.item)
+                    dc: itemUtils.getSaveDC(workflow.item),
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -33,10 +34,11 @@ async function late({workflow}) {
         return;
     }
     let damageDice = Math.min(effect.flags['chris-premades']?.hailOfThorns?.castLevel ?? 1, 6);
+    let damageType = effect.flags['chris-premades']?.hailOfThorns?.damageType;
     featureData.system.damage.parts = [
         [
-            damageDice + 'd10[piercing]',
-            'piercing'
+            damageDice + 'd10[' + damageType + ']',
+            damageType
         ]
     ];
     let saveDC = effect.flags['chris-premades']?.hailOfThorns?.dc ?? 10;
@@ -57,7 +59,18 @@ export let hailOfThorns = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'piercing',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let hailOfThornsBurst = {
     name: 'Hail of Thorns: Burst',

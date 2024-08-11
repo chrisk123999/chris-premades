@@ -92,10 +92,11 @@ async function use({workflow}) {
     let spellLevel = workflow.castData?.castLevel ?? 2;
     let numDice = Math.floor(spellLevel / 2);
     featureData.system.ability = workflow.item.system.ability;
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
     featureData.system.damage.parts = [
         [
-            numDice + 'd8[force] + @mod',
-            'force'
+            numDice + 'd8[' + damageType + '] + @mod',
+            damageType
         ]
     ];
     effectUtils.addMacro(featureData, 'midi.item', ['spiritualWeaponAttack']);
@@ -187,7 +188,16 @@ export let spiritualWeapon = {
             type: 'text',
             default: '',
             category: 'summons'
-        }
+        },
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'force',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
     ]
 };
 export let spiritualWeaponAttack = {

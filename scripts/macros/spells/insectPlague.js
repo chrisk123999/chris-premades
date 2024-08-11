@@ -16,7 +16,8 @@ async function use({workflow}) {
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {
                     template: ['insectPlagueTemplate']
-                }
+                },
+                damageType: itemUtils.getConfig(workflow.item, 'damageType')
             }
         }
     });
@@ -31,10 +32,11 @@ async function enter({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
+    let damageType = template.flags['chris-premades'].damageType;
     featureData.system.damage.parts = [
         [
-            (castData.castLevel - 1) + 'd10[piercing]',
-            'piercing'
+            (castData.castLevel - 1) + 'd10[' + damageType + ']',
+            damageType
         ]
     ];
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
@@ -46,10 +48,11 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
         errors.missingPackItem();
         return;
     }
+    let damageType = template.flags['chris-premades'].damageType;
     featureData.system.damage.parts = [
         [
-            (castData.castLevel - 1) + 'd10[piercing]',
-            'piercing'
+            (castData.castLevel - 1) + 'd10[' + damageType + ']',
+            damageType
         ]
     ];
     let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
@@ -66,7 +69,18 @@ export let insectPlague = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'piercing',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let insectPlagueTemplate = {
     name: 'Insect Plague: Template',

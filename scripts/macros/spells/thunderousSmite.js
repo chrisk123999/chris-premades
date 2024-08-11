@@ -10,7 +10,8 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 thunderousSmite: {
-                    dc: itemUtils.getSaveDC(workflow.item)
+                    dc: itemUtils.getSaveDC(workflow.item),
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -25,7 +26,7 @@ async function damage({workflow}) {
     if (workflow.item.system.actionType !== 'mwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'thunderousSmite');
     if (!effect) return;
-    let damageType = 'thunder';
+    let damageType = effect.flags['chris-premades'].thunderousSmite.damageType;
     let formula = '2d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Thunderous Smite: Push', {object: true});
@@ -55,7 +56,18 @@ export let thunderousSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'thunder',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let thunderousSmiteDamage = {
     name: 'Thunderous Smite: Damage',

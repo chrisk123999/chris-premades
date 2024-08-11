@@ -11,7 +11,8 @@ async function use({workflow}) {
             'chris-premades': {
                 wrathfulSmite: {
                     dc: itemUtils.getSaveDC(workflow.item),
-                    used: false
+                    used: false,
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -28,7 +29,7 @@ async function damage({workflow}) {
     if (!effect) return;
     if (effect.flags['chris-premades'].wrathfulSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'wrathfulSmite.used', true);
-    let damageType = 'psychic';
+    let damageType = effect.flags['chris-premades'].wrathfulSmite.damageType;
     let formula = '1d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Wrathful Smite: Frighten', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WrathfulSmite.Frighten'});
@@ -62,7 +63,18 @@ export let wrathfulSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'psychic',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let wrathfulSmiteDamage = {
     name: 'Wrathful Smite: Damage',

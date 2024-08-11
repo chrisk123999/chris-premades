@@ -1,4 +1,4 @@
-import {constants, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
+import {constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
@@ -11,7 +11,8 @@ async function use({workflow}) {
             'chris-premades': {
                 brandingSmite: {
                     level: workflow.castData.castLevel,
-                    used: false
+                    used: false,
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
         }
@@ -28,7 +29,7 @@ async function damage({workflow}) {
     if (!effect) return;
     if (effect.flags['chris-premades'].brandingSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'brandingSmite.used', true);
-    let damageType = 'radiant';
+    let damageType = effect.flags['chris-premades'].brandingSmite.damageType;
     let formula = effect.flags['chris-premades'].brandingSmite.level + 'd6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
     let effectData = {
@@ -66,7 +67,18 @@ export let brandingSmite = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'radiant',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+    ]
 };
 export let brandingSmiteDamage = {
     name: 'Branding Smite: Damage',

@@ -7,13 +7,20 @@ async function use({workflow}) {
     }
     let targetToken = workflow.targets.first();
     let targetUuid = targetToken.document.uuid;
-    let damageFormula = workflow.castData.castLevel + 'd8[fire]';
+    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+    let damageFormula = workflow.castData.castLevel + 'd8[' + damageType + ']';
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Heat Metal: Pulse', {getDescription: true, translate: 'CHRISPREMADES.Macros.HeatMetal.Pulse', identifier: 'heatMetalPulse', castDataWorkflow: workflow, object: true});
+    if (!featureData) {
+        errors.missingPackItem();
+        if (concentrationEffect) await genericUtils.remove(concentrationEffect);
+        return;
+    }
     let spellDC = itemUtils.getSaveDC(workflow.item);
-    await genericUtils.setProperty(featureData, 'flags.chris-premades.heatMetal', {
+    genericUtils.setProperty(featureData, 'flags.chris-premades.heatMetal', {
         damageFormula,
         targetUuid,
-        spellDC
+        spellDC,
+        damageType
     });
     effectUtils.addMacro(featureData, 'midi.item', ['heatMetalPulse']);
     let casterEffectData = {
@@ -40,6 +47,7 @@ async function use({workflow}) {
 async function pulse({workflow}) {
     let chrisFlags = workflow.item.flags['chris-premades']?.heatMetal;
     let damageFormula = chrisFlags?.damageFormula;
+    let damageType = chrisFlags?.damageType ?? 'fire';
     let targetTokenUuid = chrisFlags?.targetUuid;
     let spellDC = chrisFlags?.spellDC;
     let parentEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'heatMetal');
@@ -54,7 +62,7 @@ async function pulse({workflow}) {
     featureData.system.damage.parts = [
         [
             damageFormula,
-            'fire'
+            damageType
         ]
     ];
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
@@ -127,7 +135,18 @@ export let heatMetal = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'fire',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        }
+    ]
 };
 export let heatMetalPulse = {
     name: 'Heat Metal: Pulse',

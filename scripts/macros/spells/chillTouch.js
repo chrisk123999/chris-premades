@@ -11,7 +11,7 @@ async function use({workflow}) {
         changes: [
             {
                 key: 'system.traits.di.value',
-                mode: 5,
+                mode: 2,
                 value: 'healing',
                 priority: 20
             }
