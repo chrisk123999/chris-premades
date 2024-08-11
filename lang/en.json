@@ -35,6 +35,7 @@
             "MagicResistance": "Magic Resistance",
             "Multiattack": "Multiattack ({numAttacks} Attacks)",
             "PackTactics": "Pack Tactics",
+            "Regeneration": "Regeneration",
             "ShadowStealth": "Shadow Stealth",
             "StoneLethargy": "Stone Lethargy",
             "WaterBreathing": "Water Breathing",
@@ -513,8 +514,12 @@
             },
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",
+                "EyeRay": "Eye Ray",
+                "PsychicSlam": "Psychic Slam",
                 "Slaad": "Slaad",
-                "StarSpawn": "Star Spawn"
+                "StarSpawn": "Star Spawn",
+                "Type": "What Aberration type?",
+                "WhisperingAura": "Whispering Aura"
             },
             "SummonBeast": {
                 "Air": "Air",
@@ -1007,6 +1012,10 @@
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CreatureNames": {
+                "AberrantSpirit": "Aberrant Spirit",
+                "AberrantSpiritBeholderkin": "Aberrant Spirit (Beholderkin)",
+                "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
+                "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
                 "BestialSpirit": "Bestial Spirit",
                 "BestialSpiritAir": "Bestial Spirit (Air)",
                 "BestialSpiritLand": "Bestial Spirit (Land)",

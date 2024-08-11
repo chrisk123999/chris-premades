@@ -22,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "1",
       "width": null,
       "units": "",
       "type": "creature",
@@ -48,7 +48,6 @@
     },
     "ability": "int",
     "actionType": "mwak",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -78,97 +77,87 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [
     {
-      "changes": [
-        {
-          "key": "system.traits.di.value",
-          "mode": 0,
-          "value": "healing",
-          "priority": 20
-        }
-      ],
-      "transfer": false,
-      "_id": "tvAI96JlANJ01JwH",
-      "disabled": false,
+      "name": "Claws",
+      "origin": "Compendium.world.cpr-summon-features.Item.2YftLbuuH2gEGHgT",
       "duration": {
+        "rounds": 1,
         "startTime": null,
         "seconds": null,
         "combat": null,
-        "rounds": null,
         "turns": null,
         "startRound": null,
         "startTurn": null
       },
-      "origin": null,
-      "tint": "#ffffff",
+      "disabled": false,
       "flags": {
-        "dfreds-convenient-effects": {
-          "description": ""
-        },
+        "dnd5e": {},
         "dae": {
-          "selfTarget": false,
-          "selfTargetAlways": false,
+          "disableCondition": "",
+          "disableIncapacitated": false,
           "stackable": "noneName",
+          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": [
             "turnStartSource"
-          ]
-        },
-        "core": {
-          "statusId": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "undefined",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false
+          ],
+          "enableCondition": "",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
         }
       },
-      "name": "Claws (Slaad Only)",
-      "description": "",
-      "statuses": [],
-      "_stats": {
-        "coreVersion": "12.330",
-        "systemId": null,
-        "systemVersion": null,
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null
-      },
       "img": "icons/commodities/claws/claws-white.webp",
+      "_id": "jTSlsy7Ghgvfrg9J",
       "type": "base",
       "system": {},
+      "changes": [
+        {
+          "key": "system.traits.di.value",
+          "mode": 5,
+          "value": "healing",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
       "sort": 0,
-      "_key": "!items.effects!2YftLbuuH2gEGHgT.tvAI96JlANJ01JwH"
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.330",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      }
     }
   ],
   "flags": {
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[preCheckHits]function.chrisPremades.tashaSummon.meleeAttack",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.tashaSummon.meleeAttack",
-            "option": "preCheckHits"
-          }
-        }
-      },
-      "removeAttackDamageButtons": "default"
+      "onUseMacroName": "",
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -185,18 +174,29 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "never",
-      "noConcentrationCheck": false
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.1AbNKfK7sRGBjY9f"
+    },
+    "exportSource": {
+      "world": "cpr-test",
+      "system": "dnd5e",
+      "coreVersion": "12.330",
+      "systemVersion": "3.3.1"
     }
   },
-  "folder": "FewumOfaPV1m7YpH",
-  "ownership": {
-    "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+  "_stats": {
+    "coreVersion": "12.330",
+    "systemId": "dnd5e",
+    "systemVersion": "3.3.1",
+    "createdTime": 1723340992289,
+    "modifiedTime": 1723341005516,
+    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
   },
-  "_id": "2YftLbuuH2gEGHgT",
-  "_key": "!items!2YftLbuuH2gEGHgT"
+  "folder": "FewumOfaPV1m7YpH"
 }

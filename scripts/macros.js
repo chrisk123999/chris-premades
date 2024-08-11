@@ -146,3 +146,4 @@ export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
+export {regeneration} from './macros/monsterFeatures/regeneration.js';

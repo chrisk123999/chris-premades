@@ -1,7 +1,7 @@
 {
-  "name": "Eye Ray (Beholderkin Only)",
+  "name": "Whispering Aura (Star Spawn Only)",
   "type": "feat",
-  "img": "icons/skills/melee/blade-tip-orange.webp",
+  "img": "icons/magic/air/wind-stream-blue-gray.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +11,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -22,16 +22,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "5",
       "width": null,
-      "units": "",
+      "units": "ft",
       "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 150,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "spec"
     },
     "uses": {
       "value": null,
@@ -46,9 +46,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "int",
-    "actionType": "rsak",
-    "attackBonus": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,7 +56,7 @@
     "damage": {
       "parts": [
         [
-          "1d8[psychic] + 3",
+          "2d6[psychic]",
           "psychic"
         ]
       ],
@@ -65,9 +64,9 @@
     },
     "formula": "",
     "save": {
-      "ability": "",
-      "dc": null,
-      "scaling": "spell"
+      "ability": "wis",
+      "dc": 10,
+      "scaling": "flat"
     },
     "type": {
       "value": "monster",
@@ -78,25 +77,28 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "midi-qol": {
-      "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[preCheckHits]function.chrisPremades.tashaSummon.rangedAttack",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.tashaSummon.rangedAttack",
-            "option": "preCheckHits"
-          }
-        }
-      }
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
+      "nodam": true,
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
@@ -105,21 +107,36 @@
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
-      "magiceffect": false,
+      "magiceffect": true,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "nodam",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
-      "sourceId": "Item.AnL0lRUMXX6Gfd6N"
+      "sourceId": "Item.cQIHPyP25FUaohVY"
+    },
+    "exportSource": {
+      "world": "cpr-test",
+      "system": "dnd5e",
+      "coreVersion": "12.330",
+      "systemVersion": "3.3.1"
     }
   },
-  "folder": "FewumOfaPV1m7YpH",
-  "ownership": {
-    "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+  "_stats": {
+    "coreVersion": "12.330",
+    "systemId": "dnd5e",
+    "systemVersion": "3.3.1",
+    "createdTime": 1723340992289,
+    "modifiedTime": 1723341005530,
+    "lastModifiedBy": "wyNw8BrgTfPgbUM3"
   },
-  "_id": "symCMNtjVtSibzIr",
-  "_key": "!items!symCMNtjVtSibzIr"
+  "folder": "FewumOfaPV1m7YpH"
 }

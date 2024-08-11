@@ -102,7 +102,7 @@ async function use({workflow}) {
     };
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
     let spawnedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
-        duration: 60,
+        duration: 3600,
         range: 90,
         animation,
         initiativeType: 'follows',
