@@ -1,5 +1,4 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function late({workflow}) {
     let controllingActor = await fromUuid(workflow.actor.flags['chris-premades'].summons.control.actor);
     if (!controllingActor) return;

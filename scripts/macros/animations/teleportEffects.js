@@ -1,5 +1,4 @@
 import {genericUtils} from '../../utils.js';
-
 async function none(token, cornerPosition) {
 
 }

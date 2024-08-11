@@ -77,11 +77,11 @@ async function early({workflow}) {
                 target = selection[0];
             }
         }
-        await genericUtils.updateTargets([target]);
+        genericUtils.updateTargets([target]);
     } else {
         let target = await fromUuid(workflow.item.flags['chris-premades'].maximiliansEarthenGrasp.targetUuid);
         if (!target) return;
-        await genericUtils.updateTargets([target.object]);
+        genericUtils.updateTargets([target.object]);
     }
 }
 async function late({workflow}) {

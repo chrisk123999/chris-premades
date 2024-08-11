@@ -50,7 +50,7 @@ async function early({workflow}) {
         if (!tokens.size) continue;
         for (let j of tokens) targets.add(j);
     }
-    await genericUtils.updateTargets(targets);
+    genericUtils.updateTargets(targets);
     let effectData = {
         name: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.FireStorm.Templates'),
         img: workflow.item.img,

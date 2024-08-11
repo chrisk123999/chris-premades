@@ -1,5 +1,4 @@
 import {dialogUtils, genericUtils} from '../../utils.js';
-
 async function check(maxTargets, workflow) {
     if (workflow.targets.size <= maxTargets) return;
     let oldTargets = Array.from(workflow.targets);
@@ -10,7 +9,7 @@ async function check(maxTargets, workflow) {
     } else {
         newTargets = selection[0] ?? [];
     }
-    await genericUtils.updateTargets(newTargets);
+    genericUtils.updateTargets(newTargets);
 }
 async function plusOne({workflow}) {
     let castLevel = workflow.castData.castLevel;

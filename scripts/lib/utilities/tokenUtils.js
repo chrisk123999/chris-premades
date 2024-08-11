@@ -1,4 +1,6 @@
+import {epicRolls} from '../../integrations/epicRolls.js';
 import {genericUtils} from './genericUtils.js';
+import {socketUtils} from './socketUtils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock} = {}) {
     return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
 }
@@ -119,6 +121,27 @@ async function attachToToken(token, uuidsToAttach) {
         }
     });
 }
+async function contestedCheck(token, contestantToken, skill, contestedType) {
+    if (genericUtils.getCPRSetting('useEpicRolls') && game.modules.get('epic-rolls-5e')?.active) {
+        let results = await epicRolls.contestedCheck(token.actor, contestantToken.actor, 'skill.' + skill, 'skill.' + contestedType);
+        console.log(results);
+        if (results.canceled || !results.success) return false;
+        return true;
+    } else {
+        let sourceRoll = await token.actor.rollSkill(skill);
+        let targetRoll = await requestRoll(contestantToken, 'skill', contestedType);
+        return sourceRoll.total > targetRoll.total;
+    }
+}
+async function requestRoll(token, request, ability) {
+    let userID = socketUtils.firstOwner(token, true);
+    let data = {
+        targetUuid: token.document.uuid,
+        request: request,
+        ability: ability
+    };
+    return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -131,5 +154,7 @@ export let tokenUtils = {
     findDirection,
     canSee,
     canSense,
-    attachToToken
+    attachToToken,
+    requestRoll,
+    contestedCheck
 };

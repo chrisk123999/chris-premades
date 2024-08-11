@@ -147,3 +147,6 @@ export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './ma
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
+//Actions
+export {checkCover} from './macros/actions/checkCover.js';
+export {grapple} from './macros/actions/grapple.js';

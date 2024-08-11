@@ -50,7 +50,7 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
     return result?.[input.name];
 }
-async function selectTargetDialog(title, content, targets, {returnUuid = false, type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id} = {}) {
+async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id} = {}) {
     let inputs = [
         [type === 'multiple' ? 'checkbox' : type === 'number' ? 'number' : type === 'select' ? 'selectOption' : type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];

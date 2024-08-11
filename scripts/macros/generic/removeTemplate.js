@@ -1,5 +1,4 @@
 import {genericUtils} from '../../utils.js';
-
 async function removeTemplateFunc({trigger: {entity: effect}}) {
     if (effect) await genericUtils.remove(effect);
 }

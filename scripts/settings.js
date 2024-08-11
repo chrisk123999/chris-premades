@@ -454,6 +454,12 @@ export function registerSettings() {
             if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(value);
         }
     });
+    addSetting({
+        key: 'useEpicRolls',
+        type: Boolean,
+        default: false,
+        category: 'integration'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

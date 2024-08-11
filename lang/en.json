@@ -250,6 +250,10 @@
                 "BounceFeature": "Chaos Bolt: Bounce",
                 "Select": "Select damage type:"
             },
+            "CheckCover": {
+                "TargetCover": "Target Cover:",
+                "YourCover": "Your Cover:"
+            },
             "ChromaticOrb": {
                 "Select": "What damage type?"
             },

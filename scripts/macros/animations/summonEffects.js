@@ -1,6 +1,5 @@
 //Animations by: eskiemoh
 async function defaultAnimation(location, token, updates, iteration) {
-    console.log('here');
     let image = token.texture.src;
     let imageSize = token.width * token.texture.scaleX;
     new Sequence()

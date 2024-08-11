@@ -102,7 +102,7 @@ async function updateEmbeddedDocuments(entity, type, updates, options) {
     }
     return documents;
 }
-async function updateTargets(targets) {
+function updateTargets(targets) {
     game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
     game.user.broadcastActivity({targets: game.user.targets.ids});
 }
