@@ -58,6 +58,10 @@ export class Summons {
             effect = await fromUuid(effect.flags['chris-premades'].parentEntityUuid);
             // Parent effect already deleted, don't need to do anything
             if (!effect) {
+                // UNLESS it's a hostile one
+                if (summonedEffect.parent.token.flags?.['chris-premades']?.summons?.turnedHostile) {
+                    await genericUtils.remove(summonedEffect.parent.token);
+                }
                 return;
             } 
         }
@@ -310,6 +314,9 @@ export class Summons {
                     'chris-premades': {
                         macros: {
                             effect: this.options.onDeleteMacros
+                        },
+                        summons: {
+                            parentEffect: effect.uuid
                         }
                     }
                 }

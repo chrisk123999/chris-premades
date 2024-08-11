@@ -460,6 +460,12 @@ export function registerSettings() {
         default: false,
         category: 'integration'
     });
+    addSetting({
+        key: 'playerSelectsConjures',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

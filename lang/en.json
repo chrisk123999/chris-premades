@@ -552,6 +552,7 @@
                 "Defender": "Defender",
                 "HealingTouch": "Healing Touch (Celestial Spirit)",
                 "RadiantBow": "Radiant Bow",
+                "RadiantMace": "Radiant Mace",
                 "Temp": "Who gets temporary hitpoints?",
                 "Type": "What Celestial type?"
             },
@@ -599,6 +600,10 @@
                 "Type": "What Fiend type?",
                 "UseTeleportation": "Use Teleportation?",
                 "Yugoloth": "Yugoloth"
+            },
+            "SummonLesserDemons": {
+                "Demons": "Demons",
+                "Draw": "Draw protective circle?"
             },
             "SummonShadowspawn": {
                 "ChillingHand": "Chilling Hand",
@@ -931,6 +936,10 @@
                 "Hint": "Adds a sidebar tab for Active Effects. Reload required after enabling.",
                 "Name": "Enable Effect Interface"
             },
+            "epicRolls": {
+                "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
+                "Name": "Use Epic Rolls"
+            },
             "gambitPremades": {
                 "1": "No Homebrew or 3rd Party",
                 "2": "No Homebrew",
@@ -1018,21 +1027,15 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "epicRolls": {
-                "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
-                "Name": "Use Epic Rolls"
             }
         },
         "SkillCheck": {
             "Title": "Skill Check"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
-        "SummonCelestial": {
-            "RadiantMaco": "Radiant Mace"
-        },
         "Summons": {
             "ActorName": "{option} Actor Name",
+            "CRSelection": "{numSummons} {typePl} of CR {cr} or lower",
             "CreatureNames": {
                 "AberrantSpirit": "Aberrant Spirit",
                 "AberrantSpiritBeholderkin": "Aberrant Spirit (Beholderkin)",
@@ -1091,6 +1094,9 @@
             "DismissSummon": "Dismiss Summon",
             "FamiliarDefault": "{option} Familiar",
             "Folder": "Folder Name",
+            "HowMany": "How many?",
+            "NoMatching": "No matching actors found in specified compendium!",
+            "SelectSummon": "Select Summon",
             "SelectSummonType": "Select Summon Type",
             "SelectSummons": "Select Summons (Max: {totalSummons})",
             "SummonedCreature": "Summoned Creature"

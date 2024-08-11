@@ -27,6 +27,12 @@ export {chillTouch, chillTouchChilled} from './macros/spells/chillTouch.js';
 export {chromaticOrb} from './macros/spells/chromaticOrb.js';
 export {cloudkill, cloudkillSource, cloudkillCloud} from './macros/spells/cloudkill.js';
 export {compelledDuel, compelledDuelSource, compelledDuelCompelled} from './macros/spells/compelledDuel.js';
+export {conjureAnimals} from './macros/spells/conjureAnimals.js';
+export {conjureCelestial} from './macros/spells/conjureCelestial.js';
+export {conjureElemental} from './macros/spells/conjureElemental.js';
+export {conjureFey} from './macros/spells/conjureFey.js';
+export {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js';
+export {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js';
 export {crownOfMadness} from './macros/spells/crownOfMadness.js';
 export {crusadersMantle} from './macros/spells/crusadersMantle.js';
 export {danseMacabre} from './macros/spells/danseMacabre.js';
@@ -118,6 +124,7 @@ export {summonDraconicSpirit, summonDraconicSpiritBreathWeapon} from './macros/s
 export {summonElemental} from './macros/spells/summonElemental.js';
 export {summonFey, summonFeyFeyStep} from './macros/spells/summonFey.js';
 export {summonFiend, summonFiendClaws, summonFiendDeathThroes} from './macros/spells/summonFiend.js';
+export {summonLesserDemons} from './macros/spells/summonLesserDemons.js';
 export {summonShadowspawn, summonShadowspawnDespair} from './macros/spells/summonShadowspawn.js';
 export {summonUndead, summonUndeadPutrid} from './macros/spells/summonUndead.js';
 export {synapticStatic} from './macros/spells/synapticStatic.js';
@@ -141,6 +148,7 @@ export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export {summonUtils} from './lib/summons.js';
 export {test} from './macros/test.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
+export {summonTurnHostile} from './macros/generic/summonTurnHostile.js';
 // Class Features
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';

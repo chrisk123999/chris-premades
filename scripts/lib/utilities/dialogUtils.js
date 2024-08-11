@@ -201,7 +201,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     }
     let inputFields = documents.map(i => ({
         label: i.name,
-        name: i.id,
+        name: i.id ?? i._id,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),
             tooltip: displayTooltips ? i.system.description.value.replace(/<[^>]*>?/gm, '') : undefined,
@@ -220,7 +220,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     }
     if (result?.buttons) {
         delete result.buttons;
-        return Object.entries(result).map(([key, value]) => ({document: documents.find(i => i.id === key), amount: Number(value)}));
+        return Object.entries(result).map(([key, value]) => ({document: documents.find(i => (i.id ?? i._id) === key), amount: Number(value)}));
     } else {
         return false;
     }

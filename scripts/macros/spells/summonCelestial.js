@@ -74,7 +74,7 @@ async function use({workflow}) {
         }
         updates.actor.items.push(radiantBowData);
     } else {
-        let radiantMaceData = await Summons.getSummonItem('Radiant Mace (Defender Only)', {}, workflow.item, {flatAttack: true, damageBonus: spellLevel, translate: 'CHRISPREMADES.SummonCelestial.RadiantMaco', identifier: 'summonCelestialRadiantMace'});
+        let radiantMaceData = await Summons.getSummonItem('Radiant Mace (Defender Only)', {}, workflow.item, {flatAttack: true, damageBonus: spellLevel, translate: 'CHRISPREMADES.Macros.SummonCelestial.RadiantMace', identifier: 'summonCelestialRadiantMace'});
         if (!radiantMaceData) {
             errors.missingPackItem();
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);

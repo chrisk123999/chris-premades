@@ -163,6 +163,19 @@ async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, obje
         return undefined;
     }
 }
+async function getFilteredDocumentsFromCompendium(key, {maxCR, actorTypes, creatureTypes, creatureSubtypes}={}) {
+    let pack = game.packs.get(key);
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.details.cr', 'system.details.type']});
+    let filteredIndex = packIndex.filter(i => 
+        (!actorTypes?.length || actorTypes.includes(i.type)) && 
+        (!maxCR || i.system?.details?.cr < maxCR) && 
+        (!creatureTypes?.length || creatureTypes.includes(i.system?.details?.type?.value)) &&
+        (!creatureSubtypes?.length || creatureSubtypes.includes(i.system?.details?.type?.subtype?.toLowerCase()))
+    );
+    filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);
+    filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'icons/svg/mystery-man.svg'}, {overwrite: !i.img}));
+    return filteredIndex;
+}
 export let compendiumUtils = {
     getCPRAutomation,
     getGPSAutomation,
@@ -170,5 +183,6 @@ export let compendiumUtils = {
     getAllAutomations,
     getItemFromCompendium,
     getPreferredAutomation,
-    getActorFromCompendium
+    getActorFromCompendium,
+    getFilteredDocumentsFromCompendium
 };
