@@ -1,3 +1,4 @@
+// Extra file for testing purposes.
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
 import * as macros from '../macros.js';

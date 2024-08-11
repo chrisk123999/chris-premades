@@ -135,7 +135,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!sources.includes(context.source) && context.source) {
             context.medkitColor = 'pink';
         }
-        if (macros[identifier]?.config) {
+        let configs = macros[identifier]?.config;
+        if (!configs) configs = item.flags['chris-premades']?.customConfig;
+        if (configs) {
             context.category = {};
             let currentConfigs = item.flags['chris-premades']?.config;
             let configs = macros[identifier].config;

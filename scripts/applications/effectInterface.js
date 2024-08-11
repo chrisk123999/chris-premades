@@ -83,7 +83,18 @@ class EffectDirectory extends DocumentDirectory {
                     delete effectData._id;
                     delete effectData.origin;
                     let tempEffect = new CONFIG.ActiveEffect.documentClass(effectData);
-                    if (tempEffect) return tempEffect.exportToJSON();
+                    if (tempEffect) {
+                        let data = tempEffect.toCompendium(null, options);
+                        data.flags.exportSource = {
+                            world: game.world.id,
+                            system: game.system.id,
+                            coreVersion: game.version,
+                            systemVersion: game.system.version
+                        };
+                        let filename = ['fvtt', tempEffect.documentName, tempEffect.name?.slugify(), tempEffect.id].filterJoin('-');
+                        // eslint-disable-next-line no-undef
+                        saveDataToFile(JSON.stringify(data, null, 2), 'text/json', filename + '.json');
+                    }
                 },
                 'condition': () => game.user.isGM,
                 'icon': '<i class="fas fa-file-export"></i>',
