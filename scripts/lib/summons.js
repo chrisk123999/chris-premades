@@ -13,7 +13,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: 3600, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0].constructor.name !== 'Actor5e') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -56,13 +56,8 @@ export class Summons {
         if (dismissingSingleSummon) {
             summonedEffect = effect;
             effect = await fromUuid(effect.flags['chris-premades'].parentEntityUuid);
-            // Parent effect already deleted
+            // Parent effect already deleted, don't need to do anything
             if (!effect) {
-                let tokenDoc = summonedEffect.parent.token;
-                // If placeable remains for some reason, destroy the doc
-                if (tokenDoc?.object) {
-                    await genericUtils.remove(tokenDoc);
-                }
                 return;
             } 
         }
@@ -380,12 +375,9 @@ export class Summons {
         return this.updates.actor;
     }
     get summonEffect() {
-        return {
+        let effectData = {
             name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
             img: this.originItem.img,
-            duration: {
-                seconds: this.options.duration
-            },
             origin: this.originItem.uuid,
             flags: {
                 'chris-premades': {
@@ -399,14 +391,17 @@ export class Summons {
                 }
             }
         };
+        if (this.options.duration) {
+            effectData.duration = {seconds: this.options.duration};
+        } else {
+            effectData.flags.dae = {showIcon: true};
+        }
+        return effectData;
     }
     get casterEffect() {
-        return {
+        let effectData = {
             name: this.originItem.name,
             img: this.originItem.img,
-            duration: {
-                seconds: this.options.duration
-            },
             origin: this.originItem.uuid,
             flags: {
                 'chris-premades': {
@@ -427,6 +422,12 @@ export class Summons {
                 }
             }
         };
+        if (this.options.duration) {
+            effectData.duration = {seconds: this.options.duration};
+        } else {
+            effectData.flags.dae = {showIcon: true};
+        }
+        return effectData;
     }
     get spawnedTokensIds() {
         return this.spawnedTokens.map(i => i.id);

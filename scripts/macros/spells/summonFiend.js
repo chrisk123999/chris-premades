@@ -125,18 +125,30 @@ async function remove({trigger}) {
     let effect = trigger.entity;
     let item = itemUtils.getItemByIdentifier(effect.parent, 'summonFiendDeathThroes');
     if (!item) {
-        // Parent effect. Check if already blew up, call dismiss on self if so
-        if (effect.flags['chris-premades'].summonFiend?.deathThroesComplete) await Summons.dismiss({trigger});
+        // Parent effect. Wait until blown up, then dismiss
+        let summonFlags = effect.flags['chris-premades'].summons;
+        let tokenId = summonFlags.ids[effect.name][0];
+        let sceneId = summonFlags.scenes[effect.name][0];
+        let summonToken = game.scenes.get(sceneId)?.tokens.get(tokenId);
+        if (!summonToken) {
+            await Summons.dismiss({trigger});
+            return;
+        }
+        let timePassed = 0;
+        while (!summonToken.flags['chris-premades']?.summonFiend?.deathThroesComplete && timePassed < 5000) {
+            timePassed += 100;
+            await genericUtils.sleep(100);
+        }
+        await Summons.dismiss({trigger});
         return;
     }
     let token = effect.parent.token;
     if (token) {
         let nearbyTargets = tokenUtils.findNearby(token, 10, undefined, {includeIncapacitated: true});
         if (nearbyTargets.length) await workflowUtils.syntheticItemRoll(item, nearbyTargets, {options: {workflowOptions: {allowIncapacitated: true}}});
-        let parentEffect = await fromUuid(effect.flags['chris-premades'].parentEntityUuid);
-        // Mark on parent effect that we already blew up so when it gets to this function it actually dismisses
-        if (parentEffect) await genericUtils.update(parentEffect, {'flags.chris-premades.summonFiend.deathThroesComplete': true});
     }
+    // Mark on token effect that we already blew up so when it gets to this function it actually dismisses
+    await genericUtils.update(token, {'flags.chris-premades.summonFiend.deathThroesComplete': true});
     await Summons.dismiss({trigger});
 }
 async function late({workflow}) {
