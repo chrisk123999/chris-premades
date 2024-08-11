@@ -114,6 +114,12 @@ export {summonAberration, summonAberrationWhisperingAura} from './macros/spells/
 export {summonBeast} from './macros/spells/summonBeast.js';
 export {summonCelestial, summonCelestialMace} from './macros/spells/summonCelestial.js';
 export {summonConstruct, summonConstructStone} from './macros/spells/summonConstruct.js';
+export {summonDraconicSpirit, summonDraconicSpiritBreathWeapon} from './macros/spells/summonDraconicSpirit.js';
+export {summonElemental} from './macros/spells/summonElemental.js';
+export {summonFey, summonFeyFeyStep} from './macros/spells/summonFey.js';
+export {summonFiend, summonFiendClaws, summonFiendDeathThroes} from './macros/spells/summonFiend.js';
+export {summonShadowspawn, summonShadowspawnDespair} from './macros/spells/summonShadowspawn.js';
+export {summonUndead, summonUndeadPutrid} from './macros/spells/summonUndead.js';
 export {synapticStatic} from './macros/spells/synapticStatic.js';
 export {tashasCausticBrew} from './macros/spells/tashasCausticBrew.js';
 export {tashasOtherworldlyGuise, tashasOtherworldlyGuiseBuffed} from './macros/spells/tashasOtherworldlyGuise.js';

@@ -1,3 +1,5 @@
+import {genericUtils} from './genericUtils.js';
+
 async function getCriticalFormula(formula) {
     return new CONFIG.Dice.DamageRoll(formula, {}, {critical: true, powerfulCritical: game.settings.get('dnd5e', 'criticalDamageMaxDice'), multiplyNumeric: game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
 }
@@ -52,7 +54,12 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
     };
     return await MidiQOL.contestedRoll(contestedData);
 }
+async function getChangedDamageRoll(origRoll, newType) {
+    let newRoll = await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
+    return newRoll;
+}
 export let rollUtils = {
     getCriticalFormula,
-    contestedRoll
+    contestedRoll,
+    getChangedDamageRoll
 };

@@ -50,12 +50,21 @@ export class Summons {
     // Called when either a summoned creature is dismissed specifically or all summoned creatures are dismissed
     static async dismiss({trigger}) {
         let effect = trigger.entity;
+        if (!effect) return; // shouldn't be possible but just in case
         let dismissingSingleSummon = effectUtils.getEffectIdentifier(effect) === 'summonedEffect';
         let summonedEffect;
         if (dismissingSingleSummon) {
             summonedEffect = effect;
             effect = await fromUuid(effect.flags['chris-premades'].parentEntityUuid);
-            if (!effect) return; // Parent effect already deleted
+            // Parent effect already deleted
+            if (!effect) {
+                let tokenDoc = summonedEffect.parent.token;
+                // If placeable remains for some reason, destroy the doc
+                if (tokenDoc?.object) {
+                    await genericUtils.remove(tokenDoc);
+                }
+                return;
+            } 
         }
         let summons = effect.flags['chris-premades']?.summons?.ids[effect.name];
         let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name];
