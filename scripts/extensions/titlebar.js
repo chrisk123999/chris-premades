@@ -2,6 +2,7 @@ import * as macros from '../macros.js';
 import {compendiumUtils, itemUtils} from '../utils.js';
 import {Medkit} from '../applications/medkit.js';
 import {EffectMedkit} from '../applications/medkit-effect.js';
+import {ActorMedkit} from '../applications/medkit-actor.js';
 export function createHeaderButton(config, buttons) {
     buttons.unshift({
         class: 'chris-premades-item',
@@ -27,6 +28,7 @@ async function itemMedkit(item) {
 async function actorMedkit(actor) {
     //Actor Medkit Dialog Here!
     console.log(actor);
+    await ActorMedkit.actor(actor);
 }
 async function effectMedkit(effect) {
     //Effect Medkit Dialog Here!

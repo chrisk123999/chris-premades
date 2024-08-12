@@ -153,6 +153,13 @@
       "path": "packs/cpr-class-feature-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRActions",
+      "label": "CPR Actions",
+      "path": "packs/cpr-actions",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -167,7 +174,8 @@
         "CPRSummons",
         "CPRItems",
         "CPRClassFeatures",
-        "CPRClassFeatureItems"
+        "CPRClassFeatureItems",
+        "CPRActions"
       ]
     }
   ],

@@ -167,6 +167,7 @@
             "Select": "Select",
             "Skill": "Skill Check",
             "Skills": "Skills",
+            "Uncontested": "Uncontested",
             "Update": "Update",
             "Yes": "Yes"
         },
@@ -356,6 +357,9 @@
             "FlockOfFamilias": {
                 "TooFar": "Familiars are too far away!"
             },
+            "Grapple": {
+                "ChooseSkill": "How would you like to contest the grapple?"
+            },
             "Grease": {
                 "Fall": "Grease: Fall"
             },
@@ -478,6 +482,9 @@
                 "Bolt": "Scorching Ray Bolt",
                 "Select": "Select your targets (Max rays: {maxRays})"
             },
+            "Search": {
+                "Skill": "What skill?"
+            },
             "SearingSmite": {
                 "Fire": "Searing Smite: Fire"
             },
@@ -486,6 +493,13 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
+            },
+            "Shove": {
+                "Big": "Target is too big to shove!",
+                "ChooseSkill": "How would you like to contest the shove?",
+                "KnockProne": "Knock Prone",
+                "MoveOrProne": "What do you want to do to the target?",
+                "Shove": "Shove"
             },
             "SickeningRadiance": {
                 "Damage": "Sickening Radiance: Damage"
@@ -660,6 +674,10 @@
             },
             "ThunderStep": {
                 "Select": "Teleport a Creature?"
+            },
+            "Underwater": {
+                "TooFar": "Target is too far away while underwater!",
+                "Underwater": "Underwater"
             },
             "UpcastTargets": {
                 "Select": "Too many targets selected! Please select up to {maxTargets} targets."

@@ -1,4 +1,4 @@
-import {socket} from '../sockets.js';
+import {socket, sockets} from '../sockets.js';
 import {genericUtils} from './genericUtils.js';
 function gmID() {
     return game.settings.get('chris-premades', 'gmID');
@@ -21,7 +21,7 @@ function firstOwner(document, useId) {
 }
 async function remoteRollItem(item, config, options, userId) {
     if (game.user.id === userId) return await MidiQOL.completeItemUse(item, config, options);
-    return await socket.executeAsUser('rollItem', userId, item.uuid, config, options);
+    return await socket.executeAsUser(sockets.rollItem.name, userId, item.uuid, config, options);
 }
 export let socketUtils = {
     gmID,

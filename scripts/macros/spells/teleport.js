@@ -1,4 +1,4 @@
-import {socket} from '../../lib/sockets.js';
+import {socket, sockets} from '../../lib/sockets.js';
 import {animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
@@ -145,7 +145,7 @@ async function use({workflow}) {
                 ]
             ]
         ];
-        let location = await socket.executeAsGM('dialog', workflow.item.name, 'CHRISPREMADES.Macros.Teleport.HowFar', inputs, 'okCancel');
+        let location = await socket.executeAsGM(sockets.dialog.name, workflow.item.name, 'CHRISPREMADES.Macros.Teleport.HowFar', inputs, 'okCancel');
         if (!location || !location.buttons) {
             if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
         }
@@ -294,7 +294,7 @@ async function use({workflow}) {
     }
     let maxDim = Math.max(canvas.dimensions.width, canvas.dimensions.height);
     let range = canvas.dimensions.distance * Math.floor(maxDim / canvas.dimensions.size);
-    await socket.executeAsGM('teleport', toTeleport.map(i => i.document.uuid), workflow.token.document.uuid, {range, animation: 'none', minimizeSheet: false});
+    await socket.executeAsGM(sockets.teleport.name, toTeleport.map(i => i.document.uuid), workflow.token.document.uuid, {range, animation: 'none', minimizeSheet: false});
     let teleIn = new Sequence()
         .effect()
         .from(selected)

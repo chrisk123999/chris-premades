@@ -1,4 +1,4 @@
-import {socket} from '../sockets.js';
+import {socket, sockets} from '../sockets.js';
 import {combatUtils, socketUtils} from '../../utils.js';
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -27,17 +27,17 @@ function mergeObject(original, other) {
 async function update(entity, updates, options={}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.update(updates, options);
-    await socket.executeAsGM('updateEntity', entity.uuid, updates);
+    await socket.executeAsGM(sockets.updateEntity.name, entity.uuid, updates);
 }
 async function setFlag(entity, scope, key, value) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.setFlag(scope, key, value);
-    await socket.executeAsGM('setFlag', entity.uuid, scope, key, value);
+    await socket.executeAsGM(sockets.setFlag.name, entity.uuid, scope, key, value);
 }
 async function remove(entity) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.delete();
-    await socket.executeAsGM('deleteEntity', entity.uuid);
+    await socket.executeAsGM(sockets.deleteEntity.name, entity.uuid);
 }
 function decimalToFraction(decimal) {
     if (!decimal) return 0;
@@ -86,7 +86,7 @@ async function createEmbeddedDocuments(entity, type, updates, options) {
     if (hasPermission) {
         documents = await entity.createEmbeddedDocuments(type, updates, options);
     } else {
-        let documentUuids = await socket.executeAsGM('createEmbeddedDocuments', entity.uuid, type, updates, options);
+        let documentUuids = await socket.executeAsGM(sockets.createEmbeddedDocuments.name, entity.uuid, type, updates, options);
         documents = await Promise.all(documentUuids.map(async i => await fromUuid(i)));
     }
     return documents;
@@ -97,7 +97,7 @@ async function updateEmbeddedDocuments(entity, type, updates, options) {
     if (hasPermission) {
         documents = await entity.updateEmbeddedDocuments(type, updates, options);
     } else {
-        let documentUuids = await socket.executeAsGM('updateEmbeddedDocuments', entity.uuid, type, updates, options);
+        let documentUuids = await socket.executeAsGM(sockets.updateEmbeddedDocuments.name, entity.uuid, type, updates, options);
         documents = await Promise.all(documentUuids.map(async i => await fromUuid(i)));
     }
     return documents;

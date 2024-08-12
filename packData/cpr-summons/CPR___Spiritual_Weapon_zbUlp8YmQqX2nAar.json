@@ -591,11 +591,7 @@
         "token-combat-animation": "",
         "token-highlight": ""
       },
-      "dnd5e": {
-        "tokenRing": {
-          "effects": 1
-        }
-      }
+      "dnd5e": {}
     },
     "randomImg": false,
     "appendNumber": false,
@@ -610,7 +606,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null

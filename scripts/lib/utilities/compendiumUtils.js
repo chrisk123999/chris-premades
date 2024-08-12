@@ -21,6 +21,7 @@ async function getCPRAutomation(item) {
             break;
         case 'feat':
             keys.push(constants.packs.classFeatures);
+            keys.push(constants.packs.actions);
     }
     if (!keys.length) return;
     let identifier = itemUtils.getIdentifer(item);
@@ -176,6 +177,24 @@ async function getFilteredDocumentsFromCompendium(key, {maxCR, actorTypes, creat
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'icons/svg/mystery-man.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
+async function getAppliedOrPreferredAutomation(item) {
+    let source = itemUtils.getSource(item);
+    if (source) {
+        switch (source) {
+            case 'chris-premades': {
+                return await getCPRAutomation(item);
+            }
+            case 'gambit-premades':{
+                return await getGPSAutomation(item);
+            }
+            case 'midi-item-community-showcase': {
+                return await getMISCAutomation(item);
+            }
+        }
+    } else {
+        return await getPreferredAutomation(item);
+    }
+}
 export let compendiumUtils = {
     getCPRAutomation,
     getGPSAutomation,
@@ -184,5 +203,6 @@ export let compendiumUtils = {
     getItemFromCompendium,
     getPreferredAutomation,
     getActorFromCompendium,
-    getFilteredDocumentsFromCompendium
+    getFilteredDocumentsFromCompendium,
+    getAppliedOrPreferredAutomation
 };

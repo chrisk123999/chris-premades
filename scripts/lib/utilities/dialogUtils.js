@@ -1,6 +1,6 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {tokenUtils, genericUtils} from '../../utils.js';
-import {socket} from '../sockets.js';
+import {socket, sockets} from '../sockets.js';
 /*
         useSpellWhenEmpty - 1
 */
@@ -13,7 +13,7 @@ async function buttonDialog(title, content, buttons, {displayAsRows = true, user
     }
     let result;
     if (userId != game.user.id) {
-        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {width: 400});
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {width: 400});
     } else result = await DialogApp.dialog(title, content, inputs, undefined, {width: 400});
     return result?.buttons ?? false;
 }
@@ -100,7 +100,7 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
     }
     let selection;
     if (userId && userId != game.user.id) {
-        selection = await socket.executeAsUser('dialog', userId, title, content, inputs, 'okCancel');
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel');
     } else selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
     if (selection?.buttons == false || !selection) return false;
     let result;
@@ -146,7 +146,7 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
 async function confirm(title, content, {userId = game.user.id} = {}) {
     let selection;
     if (userId !== game.user.id) {
-        selection = await socket.executeAsUser('dialog', userId, title, content, [], 'yesNo');
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, [], 'yesNo');
     } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
     return selection?.buttons;
 }
@@ -181,7 +181,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     let inputs = [['button', inputFields, {displayAsRows: true}]];
     let result;
     if (userId != game.user.id) {
-        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined);
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined);
     } else {
         result = await DialogApp.dialog(title, content, inputs, undefined);
     }
@@ -214,7 +214,7 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     // if (inputs[0][1].length > 14 ) height = 850;
     let result;
     if (game.user.id != userId) {
-        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {height: 'auto'});
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
@@ -243,7 +243,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
     let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {
-        result = await socket.executeAsUser('dialog', userId, title, content, inputs, undefined, {height: 'auto'});
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }

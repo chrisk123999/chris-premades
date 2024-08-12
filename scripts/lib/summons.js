@@ -1,7 +1,6 @@
 import {genericUtils, animationUtils, effectUtils, actorUtils, itemUtils, combatUtils, compendiumUtils, constants, dialogUtils} from '../utils.js';
 import {crosshairUtils} from './utilities/crosshairUtils.js';
-import {socket} from './sockets.js';
-
+import {socket, sockets} from './sockets.js';
 export class Summons {
     constructor(sourceActors, updates, originItem, summonerToken, options) {
         this.sourceActors = sourceActors;
@@ -217,8 +216,7 @@ export class Summons {
             let spawnedToken = await genericUtils.createEmbeddedDocuments(this.summonerToken.scene, 'Token', [tokenDocument]);
             this.spawnedTokens.push(spawnedToken[0]);
         } else {
-            console.log('socket spawn');
-            let spawnedTokenUuid = await socket.executeAsGM('spawnSummon', this.sourceActor.uuid, this.updates, this.summonerToken.scene.uuid);
+            let spawnedTokenUuid = await socket.executeAsGM(sockets.spawnSummon.name, this.sourceActor.uuid, this.updates, this.summonerToken.scene.uuid);
             let spawnedToken = await fromUuid(spawnedTokenUuid);
             this.spawnedTokens.push(spawnedToken);
         }

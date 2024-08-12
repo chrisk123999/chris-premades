@@ -108,7 +108,7 @@ async function teleport(tokenUuids, controllingTokenUuid, options={}) {
 async function spawnSummon(actorUuid, updates, sceneUuid) {
     return Summons.socketSpawn(actorUuid, updates, sceneUuid);
 }
-let sockets = [
+export let sockets = {
     createEffect,
     deleteEntity,
     updateEntity,
@@ -124,11 +124,11 @@ let sockets = [
     updateEmbeddedDocuments,
     teleport,
     spawnSummon
-];
+};
 export let socket;
 export function registerSockets() {
     socket = socketlib.registerModule('chris-premades');
-    sockets.forEach(i => {
-        socket.register(i.name, i);
+    Object.keys(sockets).forEach(i => {
+        socket.register(i, sockets[i]);
     });
 }

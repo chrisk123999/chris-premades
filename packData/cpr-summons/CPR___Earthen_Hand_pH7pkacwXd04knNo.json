@@ -588,20 +588,7 @@
         "token-combat-animation": "",
         "token-highlight": ""
       },
-      "dnd5e": {
-        "tokenRing": {
-          "enabled": false,
-          "textures": {
-            "subject": ""
-          },
-          "scaleCorrection": 1,
-          "colors": {
-            "ring": "",
-            "background": ""
-          },
-          "effects": 1
-        }
-      }
+      "dnd5e": {}
     },
     "randomImg": false,
     "hexagonalShape": 0,
@@ -616,8 +603,8 @@
       },
       "effects": 1,
       "subject": {
-        "scale": 1,
-        "texture": null
+        "texture": null,
+        "scale": 1
       }
     }
   },
