@@ -108,6 +108,16 @@ async function teleport(tokenUuids, controllingTokenUuid, options={}) {
 async function spawnSummon(actorUuid, updates, sceneUuid) {
     return Summons.socketSpawn(actorUuid, updates, sceneUuid);
 }
+async function setReactionUsed(actorUuid) {
+    let actor = await fromUuid(actorUuid);
+    if (!actor) return;
+    return MidiQOL.setReactionUsed(actor);
+}
+async function removeReactionUsed(actorUuid, force) {
+    let actor = await fromUuid(actorUuid);
+    if (!actor) return;
+    return MidiQOL.removeReactionUsed(actor, force);
+}
 let sockets = [
     createEffect,
     deleteEntity,
@@ -123,7 +133,9 @@ let sockets = [
     createSidebarActor,
     updateEmbeddedDocuments,
     teleport,
-    spawnSummon
+    spawnSummon,
+    setReactionUsed,
+    removeReactionUsed
 ];
 export let socket;
 export function registerSockets() {

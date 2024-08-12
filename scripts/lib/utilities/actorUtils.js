@@ -84,10 +84,20 @@ function hasUsedReaction(actor) {
     return MidiQOL.hasUsedReaction(actor);
 }
 async function setReactionUsed(actor) {
-    return MidiQOL.setReactionUsed(actor);
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        return MidiQOL.setReactionUsed(actor);
+    } else {
+        return await socket.executeAsGM('setReactionUsed', actor.uuid);
+    }
 }
 async function removeReactionUsed(actor, force=false) {
-    return MidiQOL.removeReactionUsed(actor, force);
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        return MidiQOL.removeReactionUsed(actor, force);
+    } else {
+        return await socket.executeAsGM('removeReactionUsed', actor.uuid, force);
+    }
 }
 function hasSpellSlots(actor, atLeast = 0) {
     return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;
