@@ -343,7 +343,7 @@ function effectHotbarDrop(hotbar, data, slot) {
     return false;
 }
 function init() {
-    CONFIG.ui.cprEffectInterface = EffectDirectory;
+    CONFIG.ui.effects = EffectDirectory;
     Hooks.on('renderSidebar', effectSidebar);
     Hooks.on('renderSidebarTab', effectSidebarTab);
     Hooks.on('hotbarDrop', effectHotbarDrop);
