@@ -88,7 +88,7 @@ async function setReactionUsed(actor) {
     if (hasPermission) {
         return MidiQOL.setReactionUsed(actor);
     } else {
-        return await socket.executeAsGM('setReactionUsed', actor.uuid);
+        return await socket.executeAsGM(sockets.setReactionUsed.name, actor.uuid);
     }
 }
 async function removeReactionUsed(actor, force=false) {
@@ -96,7 +96,7 @@ async function removeReactionUsed(actor, force=false) {
     if (hasPermission) {
         return MidiQOL.removeReactionUsed(actor, force);
     } else {
-        return await socket.executeAsGM('removeReactionUsed', actor.uuid, force);
+        return await socket.executeAsGM(sockets.removeReactionUsed.name, actor.uuid, force);
     }
 }
 function hasSpellSlots(actor, atLeast = 0) {
