@@ -128,18 +128,23 @@ function getSortedTriggers({item, token, actor}, pass) {
 }
 async function executeMacro(trigger, workflow, ditem) {
     genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    let result;
     try {
-        await trigger.macro({trigger, workflow, ditem});
+        result = await trigger.macro({trigger, workflow, ditem});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
     }
+    return result;
 }
 async function executeMacroPass(workflow, pass) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass + ' for ' + workflow?.item?.name);
     let triggers = getSortedTriggers({item: workflow.item, actor: workflow.actor, token: workflow.token}, pass);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let trigger of triggers) await executeMacro(trigger, workflow);
+    for (let trigger of triggers) {
+        let result = await executeMacro(trigger, workflow);
+        if (result) return true;
+    }
 }
 async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass);
@@ -150,7 +155,10 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     });
     triggers = triggers.sort((a, b) => a.priority - b.priority);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let trigger of triggers) await executeMacro(trigger, workflow);
+    for (let trigger of triggers) {
+        let result = await executeMacro(trigger, workflow);
+        if (result) return true;
+    }
 }
 async function preTargeting(workflow) {
     await executeMacroPass(workflow, 'preTargeting');
@@ -159,8 +167,10 @@ async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
     if (stop) return true;
     await genericUtils.sleep(50);
-    await executeMacroPass(workflow, 'preItemRoll');
-    await executeTargetMacroPass(workflow, 'targetPreItemRoll');
+    stop = await executeMacroPass(workflow, 'preItemRoll');
+    if (stop) return true;
+    stop = await executeTargetMacroPass(workflow, 'targetPreItemRoll');
+    if (stop) return true;
 }
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');

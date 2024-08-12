@@ -1,6 +1,5 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {actorUtils, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
-
 async function use({trigger, workflow}) {
     let targetToken = game.user.targets.first();
     let selection = await DialogApp.dialog(workflow.item.name, undefined, [

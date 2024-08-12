@@ -35,6 +35,8 @@ Goals:
         - [x] Make the saveDC save correctly (get rid of extranous values in the overTime)
     - [x] DevTools tab to set flags on effect
     - [x] Colorize effect medkit
+    - [ ] Add dev tools part for `effect.flags['chris-premades']?.macros?.midi?.actor`
+[ ] Actor Medkit
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
@@ -69,3 +71,4 @@ Goals:
 [ ] Folder maker for summons
 [ ] Update summon iniative/update companion initiative
 [ ] Options for items to add for add generic actions setting
+[ ] Make all medkit coloring use a constants/setting to support a colorblind mode

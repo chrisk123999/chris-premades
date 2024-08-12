@@ -1,4 +1,6 @@
+import {epicRolls} from '../../integrations/epicRolls.js';
 import {genericUtils} from './genericUtils.js';
+import {socketUtils} from './socketUtils.js';
 
 async function getCriticalFormula(formula) {
     return new CONFIG.Dice.DamageRoll(formula, {}, {critical: true, powerfulCritical: game.settings.get('dnd5e', 'criticalDamageMaxDice'), multiplyNumeric: game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
@@ -54,6 +56,26 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
     };
     return await MidiQOL.contestedRoll(contestedData);
 }
+async function contestedCheck(token, contestantToken, skill, contestedType) {
+    if (genericUtils.getCPRSetting('epicRolls') && game.modules.get('epic-rolls-5e')?.active) {
+        let results = await epicRolls.contestedCheck(token.actor, contestantToken.actor, 'skill.' + skill, 'skill.' + contestedType);
+        if (results.canceled || !results.success) return false;
+        return true;
+    } else {
+        let sourceRoll = await token.actor.rollSkill(skill);
+        let targetRoll = await requestRoll(contestantToken, 'skill', contestedType);
+        return sourceRoll.total > targetRoll.total;
+    }
+}
+async function requestRoll(token, request, ability) {
+    let userID = socketUtils.firstOwner(token, true);
+    let data = {
+        targetUuid: token.document.uuid,
+        request: request,
+        ability: ability
+    };
+    return await MidiQOL.socket().executeAsUser('rollAbility', userID, data);
+}
 async function getChangedDamageRoll(origRoll, newType) {
     let newRoll = await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
     return newRoll;
@@ -61,5 +83,7 @@ async function getChangedDamageRoll(origRoll, newType) {
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
-    getChangedDamageRoll
+    getChangedDamageRoll,
+    contestedCheck,
+    requestRoll
 };

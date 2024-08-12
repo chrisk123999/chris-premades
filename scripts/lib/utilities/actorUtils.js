@@ -1,4 +1,4 @@
-import {socket} from '../sockets.js';
+import {socket, sockets} from '../sockets.js';
 import {genericUtils, socketUtils} from '../../utils.js';
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
@@ -12,7 +12,7 @@ async function addFavorites(actor, items) {
             type: 'item'
         });
     } else {
-        await socket.executeAsGM('addFavorites', actor.uuid, items.map(i => i.uuid));
+        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, items.map(i => i.uuid));
     }
 }
 function getTokens(actor) {
@@ -54,7 +54,7 @@ async function getSidebarActor(actor, {autoImport} = {}) {
     let sidebarActor = game.actors.find(i => i.flags.core?.sourceId === actor.uuid);
     if (!sidebarActor && autoImport) {
         if (!game.user.can('ACTOR_CREATE')) {
-            let actorUuid = await socket.executeAsGM('createSidebarActor', actor.uuid);
+            let actorUuid = await socket.executeAsGM(sockets.createSidebarActor.name, actor.uuid);
             sidebarActor = await fromUuid(actorUuid);
         } else {
             let actorData = actor.toObject();

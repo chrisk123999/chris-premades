@@ -603,9 +603,7 @@
         "token-combat-animation": "",
         "token-highlight": ""
       },
-      "core": {
-        "occlusionRadius": null
-      },
+      "core": {},
       "token-hud-wildcard": {
         "default": ""
       },

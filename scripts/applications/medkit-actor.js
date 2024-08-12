@@ -1,25 +1,25 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
 import * as macros from '../macros.js';
-export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
-    constructor(context, actor) {
+export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
+    constructor(actor) {
         super({id: 'medkit-window-actor'});
         this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
         this.position.width = 450;
         this.actor = actor;
-        this.context = context;
+        this.identifier = actor.flags['chris-premades']?.info?.identifier; // Not in use yet, will use to pull specific monster automations
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
         form: {
-            handler: Medkit.formHandler,
+            handler: ActorMedkit.formHandler,
             submitOnChange: false,
             closeOnSubmit: false,
         },
         actions: {
-            update: Medkit._update,
-            apply: Medkit._apply,
-            confirm: Medkit.confirm
+            update: ActorMedkit._update,
+            apply: ActorMedkit._apply,
+            close: ActorMedkit.close
         },
         window: {
             icon: 'fa-solid fa-kit-medical',
@@ -33,15 +33,14 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         navigation: {
             template: 'modules/chris-premades/templates/medkit-navigation.hbs'
         },
-        info: {
-            template: 'modules/chris-premades/templates/medkit-info.hbs'
+        character: {
+            template: 'modules/chris-premades/templates/medkit-actor-character.hbs'
         },
-        configure: {
-            template: 'modules/chris-premades/templates/medkit-configure.hbs',
-            scrollable: ['']
+        npc: {
+            template: 'modules/chris-premades/templates/medkit-actor-npc.hbs'
         },
-        devTools: {
-            template: 'modules/chris-premades/templates/medkit-dev-tools.hbs',
+        summary: {
+            template: 'modules/chris-premades/templates/medkit-actor-summary.hbs',
             scrollable: ['']
         },
         footer: {
@@ -49,12 +48,35 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
     };
     static async actor(actor) {
-        let context = await Medkit.createContext(actor);
-        new Medkit(context, actor).render(true);
+        let medkit = new ActorMedkit(actor);
+        await medkit.readyData();
+        genericUtils.log('log', 'Actor Medkit is not ready for use yet!');
+        //medkit.render(true);
     }
-    static async createContext(item) {
+    async readyData() {
         // need to get all items, check if they have flags.chris-premades.info, take those identifiers against their source and macros info, tally them up, have sets of each
-        
+        this.actorItems = await Promise.all(this.actor.items.map(async i => ({
+            item: i, 
+            identifier: itemUtils.getIdentifer(i), 
+            source: itemUtils.getSource(i), 
+            version: itemUtils.getVersion(i),
+            isUpToDate: itemUtils.isUpToDate(i),
+            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i)
+        })));
+        this.amounts = {
+            upToDate: this.actorItems.reduce(
+                (accumulator, currentValue) => currentValue.isUpToDate === 1 ? accumulator + 1 : accumulator,
+                0 
+            ),
+            available: this.actorItems.reduce(
+                (accumulator, currentValue) => (!currentValue.source && currentValue.sourceItem) ? accumulator + 1 : accumulator,
+                0 
+            ),
+            outOfDate: this.actorItems.reduce(
+                (accumulator, currentValue) => currentValue.isUpToDate === 0 ? accumulator + 1 : accumulator,
+                0 
+            )
+        }
     }
     static async update(item, sourceItem, {source, version, identifier} = {}) {
         //
@@ -84,51 +106,49 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.render(true);
     }
     async _prepareContext(options) {
-        let context = this.context;
-        if (!this?.tabsData) {
-            let tabsData = {
-                info: {
-                    icon: 'fa-solid fa-hammer',
-                    label: 'CHRISPREMADES.Medkit.Tabs.Info.Label',
-                    tooltip: 'CHRISPREMADES.Medkit.Tabs.Info.Tooltip',
-                    cssClass: 'active'
-                }
-            };
-            if (context?.category) {
-                genericUtils.setProperty(tabsData, 'configure', {
-                    icon: 'fa-solid fa-wrench',
-                    label: 'CHRISPREMADES.Medkit.Tabs.Configuration.Label',
-                    tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
-                    cssClass: ''
-                });
-            } 
-            if (game.settings.get('chris-premades', 'devTools')) {
-                genericUtils.setProperty(tabsData, 'devTools', {
-                    icon: 'fa-solid fa-wand-magic-sparkles',
-                    label: 'Dev Tools',
-                    tooltip: 'Tools for development, you shouldn\'t be here...',
-                    cssClass: ''
-                });
-            }
-            this.tabsData = tabsData;
-        }
-        if (!this.tabsData.configure && context?.category) {
-            genericUtils.setProperty(this.tabsData, 'configure', {
-                icon: 'fa-solid fa-wrench',
-                label: 'CHRISPREMADES.Medkit.Tabs.Configuration.Label',
-                tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
+        const tabsData = {
+            character: {
+                icon: 'fa-solid fa-user',
+                label: 'CHRISPREMADES.Medkit.Tabs.Character.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.Character.Tooltip',
+                cssClass: 'active'
+            },
+            npc: {
+                icon: 'fa-solid fa-clipboard-user',
+                label: 'CHRISPREMADES.Medkit.Tabs.NPC.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.NPC.Tooltip',
+                cssClass: 'active'
+            },
+            summary: {
+                icon: 'fa-solid fa-file-lines',
+                label: 'CHRISPREMADES.Medkit.Tabs.Summary.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.Summary.Tooltip',
                 cssClass: ''
-            });
+            }
         }
-        context.tabs = this.tabsData;
-        context.buttons = [
-            {type: 'button', action: 'apply', label: 'CHRISPREMADES.Generic.Apply', name: 'apply', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+        const buttons = [
+            {type: 'button', action: 'update', label: 'CHRISPREMADES.Generic.Update', name: 'update', icon: 'fa-solid fa-download'},
+            {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Cancel', name: 'close', icon: 'fa-solid fa-xmark'}
         ];
+        let context = {
+            tabs: tabsData,
+            buttons: buttons,
+            character: {
+                amounts: this.amounts
+            },
+            npc: {
+                amounts: this.amounts,
+                identifier: this.identifier
+            }
+        }
+        if (this.actor.type === 'character') delete context.tabs.npc;
+        else delete context.tabs.character;
+        if (this.amounts.available === 0 & this.amounts.outOfDate === 0) context.buttons.splice(0, 1);
         return context;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
     async _onChangeForm(formConfig, event) {
+        // will want to take a textbox value for a name to get automations from, keep that and apply when apply
         for (let key of Object.keys(this.tabsData)) {
             this.tabsData[key].cssClass = '';
         }

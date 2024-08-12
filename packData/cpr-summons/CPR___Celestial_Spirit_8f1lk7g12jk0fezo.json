@@ -602,7 +602,7 @@
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false,
-    "hexagonalShape": 0,
+    "hexagonalShape": 1,
     "occludable": {
       "radius": 0
     },

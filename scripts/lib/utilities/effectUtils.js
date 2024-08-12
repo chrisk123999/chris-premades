@@ -1,4 +1,4 @@
-import {socket} from '../sockets.js';
+import {socket, sockets} from '../sockets.js';
 import {actorUtils, genericUtils, socketUtils} from '../../utils.js';
 function getCastData(effect) {
     return effect.flags['chris-premades']?.castData ?? effect.flags['midi-qol']?.castData;
@@ -51,7 +51,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
             if (strictlyInterdependent) await addDependent(effects[0], [parentEntity]);
         }
     } else {
-        effects = await socket.executeAsGM('createEffect', entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
+        effects = await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
     }
     if (effects?.length) return effects[0];
 }
@@ -60,7 +60,7 @@ async function addDependent(entity, dependents) {
     if (hasPermission) {
         await entity.addDependent(...dependents);
     } else {
-        socket.executeAsGM('addDependent', entity.uuid, dependents.map(i => i.uuid));
+        socket.executeAsGM(sockets.addDependent.name, entity.uuid, dependents.map(i => i.uuid));
     }
 }
 function addMacro(effectData, type, macroList) {
@@ -81,7 +81,7 @@ function getAllEffectsByIdentifier(actor, name) {
 function getEffectByStatusID(actor, statusID) {
     return actorUtils.getEffects(actor).find(i => i.statuses.has(statusID));
 }
-async function applyConditions(actor, conditions) {
+async function applyConditions(actor, conditions, {overlay = false} = {}) {
     let updates = [];
     await Promise.all(conditions.map(async i => {
         let cEffect = getEffectByStatusID(actor, i);
@@ -89,6 +89,7 @@ async function applyConditions(actor, conditions) {
         let effectImplementation = await ActiveEffect.implementation.fromStatusEffect(i);
         if (!effectImplementation) return;
         let effectData = effectImplementation.toObject();
+        if (overlay) genericUtils.setProperty(effectData, 'flags.core.overlay', true);
         updates.push(effectData);
     }));
     if (updates.length) return await genericUtils.createEmbeddedDocuments(actor, 'ActiveEffect', updates, {keepId: true});
