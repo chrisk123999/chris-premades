@@ -47,7 +47,7 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
         }
     }
     newCenter = canvas.grid.getSnappedPoint({x: newCenter.x - targetToken.w / 2, y: newCenter.y - targetToken.h / 2}, {mode: 0xFF0});
-    await targetToken.document.update({
+    await genericUtils.update(targetToken.document, {
         x: newCenter.x,
         y: newCenter.y
     });

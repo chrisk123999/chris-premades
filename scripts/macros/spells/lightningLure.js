@@ -1,6 +1,6 @@
 import {animationUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
-async function damage({workflow}) {
+async function damage({workflow, ditem}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
     let sourceToken = workflow.token;
@@ -97,7 +97,7 @@ async function damage({workflow}) {
     }
     let finalDistance = tokenUtils.getDistance(sourceToken, targetToken);
     if (finalDistance > 5) {
-        workflowUtils.negateDamageItemDamage(workflow.damageItem);
+        workflowUtils.negateDamageItemDamage(ditem);
     }
 }
 export let lightningLure = {
@@ -106,7 +106,7 @@ export let lightningLure = {
     midi: {
         item: [
             {
-                pass: 'targetApplyDamage',
+                pass: 'applyDamage',
                 macro: damage,
                 priority: 50
             }

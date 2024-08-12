@@ -28,7 +28,10 @@ async function use({trigger, workflow}) {
             selection = [{document: workflow.targets.first(), value: 1}];
         }
         if (playAnimation) {
-            if (color === 'random') color = eldritchBlast.config[Math.floor(Math.random() * 10)].value;
+            if (color === 'random') {
+                let colors = eldritchBlast.config.find(i => i.value === 'color').options.map(j => j.value).filter(k => k !== 'random');
+                color = colors[Math.floor(Math.random() * colors.length)];
+            }
             genericUtils.setProperty(featureData, 'flags.chris-premades.eldritchBlast.color', color);
         }
         for (let i of selection) {
