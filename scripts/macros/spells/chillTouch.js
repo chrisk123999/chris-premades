@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
+import {actorUtils, combatUtils, effectUtils, genericUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.targets.size) return;
     let effectData = {
@@ -6,7 +6,7 @@ async function use({workflow}) {
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
-            seconds: 6 * workflow.item.system.duration.value
+            seconds: 7
         },
         changes: [
             {
@@ -15,9 +15,17 @@ async function use({workflow}) {
                 value: 'healing',
                 priority: 20
             }
-        ]
+        ],
+        flags: {
+            dae: {
+                specialDuration: [
+                    'turnEndSource'
+                ]
+            }
+        }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['chillTouchChilled']);
+    effectUtils.addMacro(effectData, 'combat', ['chillTouchChilled']);
     await Promise.all(workflow.hitTargets.map(async token => await effectUtils.createEffect(token.actor, effectData, {identifier: 'chillTouchChilled'})));
 }
 async function attack({workflow}) {
@@ -29,6 +37,12 @@ async function attack({workflow}) {
     if (workflow.targets.first().actor !== sourceActor) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Generic.Disadvantage') + ': ' + effect.name);
+}
+async function turnStart({trigger: {entity: effect}}) {
+    let currActor = combatUtils.getCurrentCombatantToken().actor;
+    let originActor = (await fromUuid(effect.origin))?.parent;
+    if (originActor !== currActor) return;
+    await genericUtils.update(effect, {changes: []});
 }
 export let chillTouch = {
     name: 'Chill Touch',
@@ -54,5 +68,12 @@ export let chillTouchChilled = {
                 priority: 50
             }
         ]
-    }
+    },
+    combat: [
+        {
+            pass: 'everyTurn',
+            macro: turnStart,
+            priority: 50
+        }
+    ]
 };
