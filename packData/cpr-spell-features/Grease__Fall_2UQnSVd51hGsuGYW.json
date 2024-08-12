@@ -159,7 +159,7 @@
       "magiceffect": true,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false,
+      "ignoreTotalCover": true,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,

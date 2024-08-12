@@ -164,7 +164,7 @@
       "concentration": false,
       "noConcentrationCheck": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false,
+      "ignoreTotalCover": true,
       "idr": false,
       "idi": false,
       "idv": false,
