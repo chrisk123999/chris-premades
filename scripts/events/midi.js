@@ -143,7 +143,6 @@ async function executeMacroPass(workflow, pass) {
     if (triggers.length) await genericUtils.sleep(50);
     for (let trigger of triggers) {
         let result = await executeMacro(trigger, workflow);
-        console.log(result);
         if (result) return true;
     }
 }
