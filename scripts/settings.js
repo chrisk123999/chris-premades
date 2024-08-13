@@ -77,8 +77,8 @@ export function registerSettings() {
         type: Object,
         default: {
             'chris-premades': 1,
-            'gambit-premades': 2,
-            'midi-item-community-showcase': 3
+            'gambits-premades': 2,
+            'midi-item-showcase-community': 3
         },
         category: 'compendium',
     });
@@ -465,6 +465,18 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'mechanics'
+    });
+    addSetting({
+        key: 'lastUpdateCheck',
+        type: Number,
+        default: 0,
+        category: 'development'
+    });
+    addSetting({
+        key: 'checkForUpdates',
+        type: Boolean,
+        default: true,
+        category: 'general'
     });
 }
 export function registerMenus() {

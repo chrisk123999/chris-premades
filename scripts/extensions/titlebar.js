@@ -19,20 +19,13 @@ export function createHeaderButton(config, buttons) {
     });
 }
 async function itemMedkit(item) {
-    let automations = await compendiumUtils.getAllAutomations(item);
-    console.log(automations);
-    //Item Medkit Dialog Here!
-    console.log(item);
     await Medkit.item(item);
 }
 async function actorMedkit(actor) {
-    //Actor Medkit Dialog Here!
     console.log(actor);
     await ActorMedkit.actor(actor);
 }
 async function effectMedkit(effect) {
-    //Effect Medkit Dialog Here!
-    console.log(effect);
     await EffectMedkit.effect(effect);
 }
 export async function renderItemSheet(app, [elem], options) {
@@ -44,8 +37,8 @@ export async function renderItemSheet(app, [elem], options) {
     let source = itemUtils.getSource(item);
     let sources = [
         'chris-premades',
-        'gambit-premades',
-        'midi-item-community-showcase'
+        'gambits-premades',
+        'midi-item-showcase-community'
     ];
     if (!sources.includes(source) && source) {
         headerButton.style.color = 'pink';

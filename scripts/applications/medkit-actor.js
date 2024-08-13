@@ -1,11 +1,13 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
-import * as macros from '../macros.js';
+import {gambitPremades} from '../integrations/gambitsPremades.js';
+import {miscPremades} from '../integrations/miscPremades.js';
+import {Medkit} from './medkit.js';
 export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
-        this.position.width = 450;
+        this.windowTitle = 'Chris\'s Premades Configuration: ' + actor.name;
+        this.position.width = 550;
         this.actor = actor;
         this.identifier = actor.flags['chris-premades']?.info?.identifier; // Not in use yet, will use to pull specific monster automations
     }
@@ -18,7 +20,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         actions: {
             update: ActorMedkit._update,
-            apply: ActorMedkit._apply,
             close: ActorMedkit.close
         },
         window: {
@@ -76,32 +77,47 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 (accumulator, currentValue) => currentValue.isUpToDate === 0 ? accumulator + 1 : accumulator,
                 0 
             )
-        }
+        };
     }
     static async update(item, sourceItem, {source, version, identifier} = {}) {
         //
     }
     static async _update(event, target) {
-        let item = this.itemDocument;
-        if (!item) return;
-        let option = this.context.options.find(i => i.isSelected === true);
-        let sourceItem = await fromUuid(option?.value);
-        if (!sourceItem) return;
-        let updatedItem = await Medkit.update(item, sourceItem, {source: option.id, version: option.version});
-        this.updateContext(updatedItem);
+        console.log(this.actorItems);
+        await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
+            console.log(accumulator);
+            if (currentValue.isUpToDate === 0 || (!currentValue.source && currentValue.sourceItem)) {
+                console.log(currentValue.sourceItem);
+                let options = {source: undefined, version: undefined};
+                if (currentValue.sourceItem.pack.includes('gambits-premades')) {
+                    console.log('gambit item');
+                    options.source = 'gambits-premades';
+                    options.version = gambitPremades.gambitItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                } else if (currentValue.sourceItem.pack.includes('midi-item-showcase-community')) {
+                    console.log('midi item');
+                    options.source = 'midi-item-showcase-community';
+                    options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                } else if (!currentValue.sourceItem.pack.includes('chris-premades')) {
+                    options.source = currentValue.sourceItem.pack;
+                }
+                accumulator.push(Medkit.update(currentValue.item, currentValue.sourceItem, options));
+            }
+            return accumulator;
+        }, []));
+        console.log('Items are updated!');
     }
     static async _apply(event, target) {
         //
     }
     static async confirm(event, target) {
-        await Medkit._apply.bind(this)(event, target);
+        await ActorMedkit._apply.bind(this)(event, target);
         this.close();
     }
     get title() {
         return this.windowTitle;
     }
     async updateContext(item) {
-        let newContext = await Medkit.createContext(item);
+        let newContext = await ActorMedkit.createContext(item);
         this.context = newContext;
         this.render(true);
     }
@@ -125,14 +141,15 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 tooltip: 'CHRISPREMADES.Medkit.Tabs.Summary.Tooltip',
                 cssClass: ''
             }
-        }
+        };
         const buttons = [
             {type: 'button', action: 'update', label: 'CHRISPREMADES.Generic.Update', name: 'update', icon: 'fa-solid fa-download'},
             {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Cancel', name: 'close', icon: 'fa-solid fa-xmark'}
         ];
         let context = {
-            tabs: tabsData,
+            tabs: this?.summary ? {character: tabsData.character} : this.actor.type === 'npc' ? {npc: tabsData.npc} : {character: tabsData.character},
             buttons: buttons,
+            label: this.actor.name,
             character: {
                 amounts: this.amounts
             },
@@ -140,7 +157,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 amounts: this.amounts,
                 identifier: this.identifier
             }
-        }
+        };
         if (this.actor.type === 'character') delete context.tabs.npc;
         else delete context.tabs.character;
         if (this.amounts.available === 0 & this.amounts.outOfDate === 0) context.buttons.splice(0, 1);

@@ -209,15 +209,8 @@ export async function troubleshooter() {
     }
     async function troubleshooterDialog() {
         async function save(output) {
-            try {
-                let filename = 'CPR-Troubleshoot.txt';
-                let blob = new Blob([output], {
-                    'type': 'text/plain;charset=utf-8'
-                });
-                saveAs(blob, filename);
-            } catch (error) {
-                console.log(error);
-            }
+            // eslint-disable-next-line no-undef
+            saveDataToFile(output, 'text/txt', 'CPR-Troubleshoot.txt');
         }
         async function clipboard(output) {
             try {

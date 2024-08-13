@@ -74,22 +74,22 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
                 priority: 1,
                 isChecked: false
             },
-            'gambit-premades': {
-                id: 'gambit-premades',
+            'gambits-premades': {
+                id: 'gambits-premades',
                 label: 'Gambit\'s Premades',
                 priority: 2,
                 isChecked: false,
-                isAvailable: game.modules.get('gambit-premades')?.active
+                isAvailable: game.modules.get('gambits-premades')?.active
             },
-            'midi-item-community-showcase' : {
-                id: 'midi-item-community-showcase',
+            'midi-item-showcase-community' : {
+                id: 'midi-item-showcase-community',
                 label: 'Midi Items Community Showcase',
                 priority: 3,
                 isChecked: false,
-                isAvailable: game.modules.get('midi-item-community-showcase')?.active
+                isAvailable: game.modules.get('midi-item-showcase-community')?.active
             }
         };
-        let modulePacks = ['chris-premades', 'gambit-premades', 'midi-item-community-showcase']; // Default that can be a const somewhere
+        let modulePacks = ['chris-premades', 'gambits-premades', 'midi-item-showcase-community']; // Default that can be a const somewhere
         let packs = game.packs.filter(i => i.metadata.type === 'Item').filter(i => !modulePacks.includes(i.metadata.packageName));
         for (let pack of packs) {
             compendiums[pack.metadata.name] = {

@@ -140,7 +140,6 @@ let damageTypeOptions = [
         value: 'thunder'
     }
 ];
-
 const overTimeOptions = [
     {
         key: 'turn',
@@ -411,6 +410,14 @@ const sizes = {
     huge: 4,
     gargantuan: 5
 };
+const itemTypes =  [
+    'weapon',
+    'equipment',
+    'consumable',
+    'tool',
+    'backpack',
+    'loot'
+];
 export let constants = {
     packs,
     featurePacks,
@@ -424,5 +431,6 @@ export let constants = {
     setUseLocalCompendium,
     overTimeOptions,
     summonAnimationOptions,
-    sizes
+    sizes,
+    itemTypes
 };

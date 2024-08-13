@@ -143,6 +143,7 @@
             "Abilities": "Abilities",
             "Advantage": "Advantage",
             "Apply": "Apply",
+            "Available": "Available",
             "CPR": "Chris's Premades",
             "Cancel": "Cancel",
             "Chat": "Chat",
@@ -806,6 +807,10 @@
                 "true": "Automation Available"
             },
             "Tabs": {
+                "Character": {
+                    "Label": "Character",
+                    "Tooltip": "Player Character Automations Information"
+                },
                 "Configuration": {
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
@@ -814,9 +819,17 @@
                     "Label": "Info",
                     "Tooltip": "Information about the current and available automation"
                 },
+                "NPC": {
+                    "Label": "NPC",
+                    "Tooltip": "Non-Player Character Automations Information"
+                },
                 "Overtime": {
                     "Label": "Overtime",
                     "Tooltip": "UI to create Midi-QOL Over Time effects"
+                },
+                "Summary": {
+                    "Label": "Summary",
+                    "Tooltip": "Summary of Automations that were Updated"
                 }
             }
         },
@@ -1047,6 +1060,14 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "lastUpdateCheck": {
+                "Hint": "When was the last update check run (in milliseconds). Automatically set.",
+                "Name": "Last Update Check"
+            },
+            "checkForUpdates": {
+                "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
+                "Name": "Check for Updates"
             }
         },
         "SkillCheck": {

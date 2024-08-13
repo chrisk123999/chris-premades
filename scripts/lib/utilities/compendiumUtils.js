@@ -84,7 +84,7 @@ async function getAllAutomations(item) {
         let version;
         switch (i[0]) {
             default:
-                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true});
+                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true, matchType: constants.itemTypes.includes(item.type) ? 'item' : item.type});
                 source = i[0];
                 break;
             case 'chris-premades':
@@ -92,14 +92,14 @@ async function getAllAutomations(item) {
                 source = 'chris-premades';
                 if (found) version = itemUtils.getVersion(found);
                 break;
-            case 'gambit-premades': 
+            case 'gambits-premades': 
                 found = await getGPSAutomation(item);
-                source = 'gambit-premades';
+                source = 'gambits-premades';
                 version = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
                 break;
-            case 'midi-item-community-showcase':
+            case 'midi-item-showcase-community':
                 found = await getMISCAutomation(item);
-                source = 'midi-item-community-showcase';
+                source = 'midi-item-showcase-community';
                 version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                 break;
         }
@@ -111,14 +111,14 @@ async function getPreferredAutomation(item) {
     let items = await getAllAutomations(item);
     return items.length ? items[0].document : undefined;
 }
-async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow} = {}) {
+async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType} = {}) {
     let pack = game.packs.get(key);
     if (!pack) {
         if (!ignoreNotFound) errors.missingPack();
         return undefined;
     }
     let packIndex = await pack.getIndex({'fields': ['name', 'type', 'folder']});
-    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)));
+    let match = packIndex.find(item => item.name === name && (!folderId || (folderId && item.folder === folderId)) && (!matchType || (item.type === matchType)));
     if (match) {
         let document = await pack.getDocument(match._id);
         if (object) {
@@ -184,10 +184,10 @@ async function getAppliedOrPreferredAutomation(item) {
             case 'chris-premades': {
                 return await getCPRAutomation(item);
             }
-            case 'gambit-premades':{
+            case 'gambits-premades':{
                 return await getGPSAutomation(item);
             }
-            case 'midi-item-community-showcase': {
+            case 'midi-item-showcase-community': {
                 return await getMISCAutomation(item);
             }
         }

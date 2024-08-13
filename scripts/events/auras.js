@@ -132,10 +132,12 @@ async function updateAuras(token, options) {
 }
 async function createToken(token, options, userId) {
     if (!socketUtils.isTheGM()) return;
+    if (!token.actor) return;
     await updateAuras(token);
 }
 async function deleteToken(token, options, userId) {
     if (!socketUtils.isTheGM()) return;
+    if (!token.actor) return;
     let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.macros?.aura);
     if (effect) {
         await Promise.all(token.parent.tokens.filter(j => j != token).map(async i => await executeMacroPass(token.parent.tokens.filter(j => j != token), 'create', i, options)));
@@ -145,7 +147,7 @@ async function deleteToken(token, options, userId) {
 }
 async function canvasReady(canvas) {
     if (!socketUtils.isTheGM() || !canvas.scene) return;
-    await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
+    await Promise.all(canvas.scene.tokens.filter(j => j.actor).map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
 async function effectCheck(effect) {
     if (effect.flags['chris-premades']?.macros?.aura) await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));

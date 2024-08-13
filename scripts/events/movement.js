@@ -129,6 +129,7 @@ function preUpdateToken(token, updates, options, userId) {
 }
 async function updateToken(token, updates, options, userId) {
     if (!socketUtils.isTheGM()) return;
+    if (!token.actor) return;
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
     let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};

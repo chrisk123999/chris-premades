@@ -24,6 +24,7 @@ import {ddbi} from './integrations/ddbi.js';
 import {effectEvents} from './events/effects.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
+import {updateCheck} from './extensions/update.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -51,9 +52,11 @@ Hooks.once('ready', () => {
         game.settings.set('chris-premades', 'gmID', game.user.id);
         setupJournal();
         if (utils.genericUtils.getCPRSetting('backups')) backup.doBackup();
+        if (utils.genericUtils.getCPRSetting('checkForUpdates')) updateCheck();
     }
     if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
     if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
+    if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
 });
 globalThis['chrisPremades'] = {
     DialogApp,

@@ -108,8 +108,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         context.medkitColor = '';
         let sources = [
             'chris-premades',
-            'gambit-premades',
-            'midi-item-community-showcase'
+            'gambits-premades',
+            'midi-item-showcase-community'
         ];
         switch (isUpToDate) {
             case 0: context.medkitColor = context.source === 'chris-premades' ? 'red' : 'orange';

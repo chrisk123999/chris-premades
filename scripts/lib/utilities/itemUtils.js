@@ -78,10 +78,10 @@ function isUpToDate(item) {
     if (!version || !source) return -1;
     let sourceVersion;
     switch (source) {
-        case 'gambit-premades':
+        case 'gambits-premades':
             sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
             break;
-        case 'midi-item-community-showcase':
+        case 'midi-item-showcase-community':
             sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             break;
         case 'chris-premades': {
