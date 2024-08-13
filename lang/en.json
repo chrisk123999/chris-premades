@@ -359,7 +359,9 @@
                 "TooFar": "Familiars are too far away!"
             },
             "Grapple": {
-                "ChooseSkill": "How would you like to contest the grapple?"
+                "ChooseSkill": "How would you like to contest the grapple?",
+                "Immune": "Target cannot be grappled!",
+                "Size": "Target is too big to be grappled!"
             },
             "Grease": {
                 "Fall": "Grease: Fall"
@@ -933,6 +935,10 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
+            "checkForUpdates": {
+                "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
+                "Name": "Check for Updates"
+            },
             "colorizeBuildABonus": {
                 "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
                 "Name": "Build A Bonus: Colorize Titlebar Icon"
@@ -997,6 +1003,10 @@
                 "Hint": "Should enemy names be hidden in dialogs.",
                 "Name": "Hide Names"
             },
+            "lastUpdateCheck": {
+                "Hint": "When was the last update check run (in milliseconds). Automatically set.",
+                "Name": "Last Update Check"
+            },
             "macroInterface": {
                 "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
                 "Name": "Enable Macro Interface"
@@ -1060,14 +1070,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "lastUpdateCheck": {
-                "Hint": "When was the last update check run (in milliseconds). Automatically set.",
-                "Name": "Last Update Check"
-            },
-            "checkForUpdates": {
-                "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
-                "Name": "Check for Updates"
             }
         },
         "SkillCheck": {

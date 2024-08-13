@@ -15,7 +15,7 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
         let currTotal;
         if (sourceRollType === 'skill') {
             currTotal = sourceToken.actor.system.skills[abil].total;
-        } else if (sourceRollType === 'abil') {
+        } else if (sourceRollType === 'check') {
             currTotal = sourceToken.actor.system.abilities[abil].mod;
         } else if (sourceRollType === 'save') {
             currTotal = sourceToken.actor.system.abilities[abil].save;
@@ -29,7 +29,7 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
         let currTotal;
         if (targetRollType === 'skill') {
             currTotal = targetToken.actor.system.skills[abil].total;
-        } else if (targetRollType === 'abil') {
+        } else if (targetRollType === 'check') {
             currTotal = targetToken.actor.system.abilities[abil].mod;
         } else if (targetRollType === 'save') {
             currTotal = targetToken.actor.system.abilities[abil].save;
@@ -40,31 +40,28 @@ async function contestedRoll({sourceToken, targetToken, sourceRollType, targetRo
         }
     }
 
-    let contestedData = {
-        source: {
-            token: sourceToken,
-            rollType: sourceRollType,
-            ability: bestSourceAbility,
-            rollOptions: sourceRollOptions
-        },
-        target: {
-            token: targetToken,
-            rollType: targetRollType,
-            ability: bestTargetAbility,
-            rollOptions: targetRollOptions
-        }
-    };
-    return await MidiQOL.contestedRoll(contestedData);
-}
-async function contestedCheck(token, contestantToken, skill, contestedType) {
     if (genericUtils.getCPRSetting('epicRolls') && game.modules.get('epic-rolls-5e')?.active) {
-        let results = await epicRolls.contestedCheck(token.actor, contestantToken.actor, 'skill.' + skill, 'skill.' + contestedType);
-        if (results.canceled || !results.success) return false;
-        return true;
+        let results = await epicRolls.contestedCheck(sourceToken.actor, targetToken.actor, sourceRollType + '.' + bestSourceAbility, targetRollType + '.' + bestTargetAbility);
+        if (results.canceled) return 0;
+        let sourceRoll = results.results[0].value;
+        let targetRoll = results.results[1].value;
+        return sourceRoll - targetRoll;
     } else {
-        let sourceRoll = await token.actor.rollSkill(skill);
-        let targetRoll = await requestRoll(contestantToken, 'skill', contestedType);
-        return sourceRoll.total > targetRoll.total;
+        let contestedData = {
+            source: {
+                token: sourceToken,
+                rollType: sourceRollType,
+                ability: bestSourceAbility,
+                rollOptions: sourceRollOptions
+            },
+            target: {
+                token: targetToken,
+                rollType: targetRollType,
+                ability: bestTargetAbility,
+                rollOptions: targetRollOptions
+            }
+        };
+        return (await MidiQOL.contestedRoll(contestedData)).result;
     }
 }
 async function requestRoll(token, request, ability) {
@@ -84,6 +81,5 @@ export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
     getChangedDamageRoll,
-    contestedCheck,
     requestRoll
 };

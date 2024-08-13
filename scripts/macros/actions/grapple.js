@@ -14,8 +14,8 @@ async function use({trigger, workflow}) {
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Grapple.ChooseSkill', inputs, {displayAsRows: true, userId: targetUser.id});
     if (!selection) return;
     if (selection != 'skip') {
-        let result = await rollUtils.contestedCheck(workflow.token, workflow.targets.first(), 'ath', selection);
-        if (!result) return;
+        let result = await rollUtils.contestedRoll(workflow.token, workflow.targets.first(), 'skill', 'skill', ['ath'], [selection]);
+        if (result <= 0) return;
     }
     //Rideable integration here!
     await effectUtils.applyConditions(workflow.targets.first().actor, ['grappled']);

@@ -14,8 +14,8 @@ async function use({trigger, workflow}) {
         let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Shove.ChooseSkill', inputs, {displayAsRows: true, userId: targetUser.id});
         if (!selection) return;
         if (selection != 'skip') {
-            let result = await rollUtils.contestedCheck(workflow.token, targetToken, 'ath', selection);
-            if (!result) return;
+            let result = await rollUtils.contestedRoll(workflow.token, targetToken, 'skill', 'skill', ['ath'], [selection]);
+            if (result <= 0) return;
         }
     }
     let selection = 'move';

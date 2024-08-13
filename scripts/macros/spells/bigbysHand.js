@@ -109,7 +109,7 @@ async function late({workflow}) {
     if (!targetActor) return;
     if (identifier === 'forcefulHand') {
         let hasAdvantage = actorUtils.getSize(targetActor) <= constants.sizes.medium;
-        let {result} = await rollUtils.contestedRoll({
+        let result = await rollUtils.contestedRoll({
             sourceToken: workflow.token,
             targetToken: targetToken,
             sourceRollType: 'skill',
@@ -198,7 +198,7 @@ async function late({workflow}) {
             return;
         }
         let hasAdvantage = actorUtils.getSize(targetActor) <= constants.sizes.medium;
-        let {result} = await rollUtils.contestedRoll({
+        let result = await rollUtils.contestedRoll({
             sourceToken: workflow.token,
             targetToken: targetToken,
             sourceRollType: 'skill',
