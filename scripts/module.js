@@ -34,7 +34,7 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
     if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
-    if (utils.genericUtils.getCPRSetting('selectTool')) selectTool.init();
+    if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
     abilitySave.init();
     skillCheck.init();
     effectEvents.init();
