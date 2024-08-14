@@ -254,6 +254,21 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
         return false;
     }
 }
+async function selectSpellSlot(actor, title, content, {maxLevel = 9, userId = game.user.id, no = false} = {}) {
+    let inputs = Object.entries(actor.system.spells).filter(i => {
+        if (i[1].level > maxLevel) return;
+        if (i[0] === 'spell0') return;
+        if (i[1].value > 0 && i[1].max > 0) return true;
+    }).map(j => {
+        if (j[0] === 'pact') {
+            return [CONFIG.DND5E.spellPreparationModes.pact.label, 'pact'];
+        } else {
+            return [CONFIG.DND5E.spellLevels[j[1].level], j[1].level];
+        }
+    });
+    if (no) inputs.push(['CHRISPREMADES.Generic.No', false]);
+    return await buttonDialog(title, content, inputs, {displayAsRows: true, userId: userId});
+}
 export let dialogUtils = {
     buttonDialog,
     numberDialog,
@@ -262,5 +277,6 @@ export let dialogUtils = {
     selectDocumentDialog,
     selectDocumentsDialog,
     confirm,
-    selectHitDie
+    selectHitDie,
+    selectSpellSlot
 };

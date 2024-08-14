@@ -166,6 +166,7 @@
             "Replace": "Replace",
             "Save": "Saving Throw",
             "Select": "Select",
+            "SelectSpellSlot": "Select a spell slot:",
             "Skill": "Skill Check",
             "Skills": "Skills",
             "Uncontested": "Uncontested",
@@ -512,6 +513,10 @@
             },
             "SleetStorm": {
                 "Prone": "Sleet Storm: Prone"
+            },
+            "SongOfDefense": {
+                "Bladesong": "You must be Bladesinging to use this feature!",
+                "NoSpellSlots": "You have no spell slots available!"
             },
             "SpikeGrowth": {
                 "Thorns": "Spike Growth: Thorns"
