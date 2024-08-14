@@ -106,6 +106,9 @@
         "CustomTypes": {
             "SpellFeature": "Spell Feature"
         },
+        "Dialog": {
+            "RemoteMessage": "Waiting for remote dialog selection from"
+        },
         "Direction": {
             "Direction": "Direction",
             "East": "east",
@@ -801,9 +804,10 @@
                 }
             },
             "ModuleIds": {
+                "additionalCompendiums": "Additional Compendiums",
                 "chris-premades": "Chris's Premades",
-                "gambit-premades": "Gambit's Premades",
-                "midi-item-community-showcase": "Midi Item Community Showcase"
+                "gambits-premades": "Gambit's Premades",
+                "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "You do not have permissions to change this",
             "SelectedAutomation": "Selected Automation:",

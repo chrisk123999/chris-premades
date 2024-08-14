@@ -48,11 +48,11 @@ async function use({trigger, workflow}) {
             priority: 20
         });
     }
-    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bladeSong'});
+    await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bladesong'});
 }
 export let bladesong = {
     name: 'Bladesong',
-    version: '0.12.4',
+    version: '0.12.13',
     midi: {
         item: [
             {

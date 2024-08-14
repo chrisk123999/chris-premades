@@ -1,5 +1,4 @@
 import {actorUtils, dialogUtils, effectUtils, genericUtils} from '../../../../utils.js';
-
 async function use({trigger, workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bladesong');
     if (!effect) {
@@ -17,7 +16,8 @@ async function use({trigger, workflow}) {
         await genericUtils.update(workflow.actor, {'system.spells.pact.value': workflow.actor.system.spells.pact.value - 1});
         damageReduction = workflow.actor.system.spells.pact.level * 5;
     } else {
-        await genericUtils.update(workflow.actor, {['system.spells.spell' + selection]: workflow.actor.system.spells['spell' + selection].value - 1});
+        let key = 'system.spells.spell' + selection + '.value';
+        await genericUtils.update(workflow.actor, {[key]: workflow.actor.system.spells['spell' + selection].value - 1});
         damageReduction = selection * 5;
     }
     let effectData = {
@@ -29,9 +29,9 @@ async function use({trigger, workflow}) {
         },
         changes: [
             {
-                key: 'flags.midi-qol.DR.all',
-                mode: 0,
-                value: damageReduction,
+                key: 'system.traits.dm.midi.all',
+                mode: 2,
+                value: -damageReduction,
                 priority: 20
             }
         ],
@@ -45,9 +45,16 @@ async function use({trigger, workflow}) {
     };
     await effectUtils.createEffect(workflow.actor, effectData);
 }
-
-
 export let songOfDefense = {
     name: 'Song of Defense',
-    version: '0.12.9'
+    version: '0.12.13',
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: use,
+                priority: 20
+            }
+        ]
+    }
 };

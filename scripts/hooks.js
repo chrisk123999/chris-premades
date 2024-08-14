@@ -16,6 +16,7 @@ import {tokens} from './extensions/tokens.js';
 import {backup} from './extensions/backup.js';
 import {auras} from './events/auras.js';
 import {vae} from './integrations/vae.js';
+import {rest} from './events/rest.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -56,6 +57,7 @@ export function registerHooks() {
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
         auras.canvasReady(canvas);
+        Hooks.on('dnd5e.restCompleted', rest);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
             Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);

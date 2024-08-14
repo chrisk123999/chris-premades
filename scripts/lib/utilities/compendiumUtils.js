@@ -137,7 +137,7 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
             return document;
         }
     } else {
-        if (!ignoreNotFound) errors.missingPackItem();
+        if (!ignoreNotFound) errors.missingPackItem(key, name);
         return undefined;
     }
 }
@@ -160,7 +160,7 @@ async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, obje
             return document;
         }
     } else {
-        if (!ignoreNotFound) errors.missingPackItem();
+        if (!ignoreNotFound) errors.missingPackItem(key, name);
         return undefined;
     }
 }
@@ -189,6 +189,9 @@ async function getAppliedOrPreferredAutomation(item) {
             }
             case 'midi-item-showcase-community': {
                 return await getMISCAutomation(item);
+            }
+            default: {
+                return await getItemFromCompendium(source, item.name);
             }
         }
     } else {

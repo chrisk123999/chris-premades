@@ -1,6 +1,6 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
-import {abilitySave} from './extensions/abilitySave.js';
+import {abilitySave} from './events/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';

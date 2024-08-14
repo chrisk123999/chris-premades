@@ -52,7 +52,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let medkit = new ActorMedkit(actor);
         await medkit.readyData();
         genericUtils.log('log', 'Actor Medkit is not ready for use yet!');
-        //medkit.render(true);
+        medkit.render(true);
     }
     async readyData() {
         // need to get all items, check if they have flags.chris-premades.info, take those identifiers against their source and macros info, tally them up, have sets of each
@@ -64,29 +64,62 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             isUpToDate: itemUtils.isUpToDate(i),
             sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i)
         })));
-        this.amounts = {
-            upToDate: this.actorItems.reduce(
-                (accumulator, currentValue) => currentValue.isUpToDate === 1 ? accumulator + 1 : accumulator,
-                0 
-            ),
-            available: this.actorItems.reduce(
-                (accumulator, currentValue) => (!currentValue.source && currentValue.sourceItem) ? accumulator + 1 : accumulator,
-                0 
-            ),
-            outOfDate: this.actorItems.reduce(
-                (accumulator, currentValue) => currentValue.isUpToDate === 0 ? accumulator + 1 : accumulator,
-                0 
-            )
+        this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
+            if (currentValue.isUpToDate === 1) {
+                accumulator.upToDate.value += 1;
+                console.log(currentValue.source);
+                accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.source);
+            } else if ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem) {
+                accumulator.available.value += 1;
+                console.log(this.itemSource(currentValue.sourceItem.pack));
+                accumulator.available.sources = this.countSource(accumulator.available.sources, this.itemSource(currentValue.sourceItem.pack));
+                console.log(accumulator.available.sources);
+            } else if (currentValue.isUpToDate === 0) {
+                accumulator.outOfDate.value += 1;
+                accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.source);
+            }
+            return accumulator;
+        }, {upToDate: {value: 0, sources: {}}, available: {value: 0, sources: {}}, outOfDate: {value: 0, sources: {}}});
+        this.tooltips = {
+            upToDate: this.generateTooltip(this.amounts.upToDate.sources),
+            available: this.generateTooltip(this.amounts.available.sources),
+            outOfDate: this.generateTooltip(this.amounts.outOfDate.sources)
         };
+        console.log(this.amounts, this.tooltips);
     }
     static async update(item, sourceItem, {source, version, identifier} = {}) {
         //
+    }
+    itemSource(itemPack) {
+        if (itemPack.includes('gambits-premades')) {
+            return 'gambits-premades';
+        } else if (itemPack.includes('midi-item-showcase-community')) {
+            return 'midi-item-showcase-community';
+        } else if (itemPack.includes('chris-premades')) {
+            return 'chris-premades';
+        } else {
+            return 'additionalCompendiums';
+        }
+    }
+    countSource(accumulator, itemSource) {
+        if (!accumulator[itemSource]) {
+            genericUtils.setProperty(accumulator, itemSource, 1);
+            return accumulator;
+        } else {
+            accumulator[itemSource] += 1;
+            return accumulator;
+        }
+    }
+    generateTooltip(sources) {
+        return Object.entries(sources).reduce((accumulator, [key, value]) => {
+            return accumulator + genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + key) + ': ' + value + '<br>';
+        }, '');
     }
     static async _update(event, target) {
         console.log(this.actorItems);
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
             console.log(accumulator);
-            if (currentValue.isUpToDate === 0 || (!currentValue.source && currentValue.sourceItem)) {
+            if (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem)) {
                 console.log(currentValue.sourceItem);
                 let options = {source: undefined, version: undefined};
                 if (currentValue.sourceItem.pack.includes('gambits-premades')) {
@@ -97,7 +130,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     console.log('midi item');
                     options.source = 'midi-item-showcase-community';
                     options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
-                } else if (!currentValue.sourceItem.pack.includes('chris-premades')) {
+                } else if (!currentValue.sourceItem.pack.includes('chris-premades') && !currentValue.sourceItem.flags['chris-premades']?.info) {
                     options.source = currentValue.sourceItem.pack;
                 }
                 accumulator.push(Medkit.update(currentValue.item, currentValue.sourceItem, options));
@@ -151,7 +184,8 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             buttons: buttons,
             label: this.actor.name,
             character: {
-                amounts: this.amounts
+                amounts: this.amounts,
+                tooltips: this.tooltips
             },
             npc: {
                 amounts: this.amounts,

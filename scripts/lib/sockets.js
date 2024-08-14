@@ -77,7 +77,13 @@ async function addFavorites(actorUuid, itemUuids) {
     });
 }
 async function dialog(...options) {
-    return await DialogApp.dialog(...options);
+    let message = await ChatMessage.create({
+        speaker: {alias: game.user.name},
+        content: '<hr>' + genericUtils.translate('CHRISPREMADES.Dialog.RemoteMessage') + ' ' + game.user.name + '.',
+    });
+    let selection = await DialogApp.dialog(...options);
+    await genericUtils.remove(message);
+    return selection;
 }
 async function rollItem(itemRef, config, options) {
     let item = await fromUuid(itemRef);

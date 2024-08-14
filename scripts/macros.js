@@ -151,6 +151,7 @@ export {summonUtils} from './lib/summons.js';
 export {test} from './macros/test.js';
 // Class Features
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
+export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
