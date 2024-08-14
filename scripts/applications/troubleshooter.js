@@ -88,7 +88,7 @@ let otherModules = [
     'automated-conditions-5e',
     'bugs'
 ];
-export async function troubleshooter() {
+export async function run() {
     let output = '';
     function addLine(text) {
         output += '\n' + text;
@@ -267,3 +267,30 @@ export async function troubleshooter() {
     }
     return await troubleshooterDialog();
 }
+function startup() {
+    let requiredModules = new Set([]);
+    game.modules.get('chris-premades').relationships.requires.forEach(value => {
+        requiredModules.add(value.id);
+        let module = game.modules.get(value.id);
+        if (module) game.modules.get(value.id).relationships.requires.forEach(value => {
+            requiredModules.add(value.id);
+        });
+    });
+    Array.from(requiredModules).sort().forEach(value => {
+        let module = game.modules.get(value);
+        if (!module) {
+            let message = genericUtils.translate('CHRISPREMADES.Troubleshooter.MissingModule').replace('{module}', names[value]);
+            genericUtils.notify(message, 'error', {permanent: true});
+            return;
+        }
+        if (!module.active) {
+            let message = genericUtils.translate('CHRISPREMADES.Troubleshooter.DisabledModule').replace('{module}', names[value]);
+            genericUtils.notify(message, 'error', {permanent: true});
+            return;
+        }
+    });
+}
+export let troubleshooter = {
+    run,
+    startup
+};

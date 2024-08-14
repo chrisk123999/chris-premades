@@ -1,5 +1,4 @@
 import {genericUtils} from '../utils.js';
-
 async function getControlButtons(controls) {
     let added_tools = [];
     for (let i = 0; i < controls.length; i++) {

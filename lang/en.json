@@ -1152,8 +1152,10 @@
         "Troubleshooter": {
             "Clipboard": "Text copied to clipboard!",
             "CopyToClipboard": "Copy to Clipboard",
+            "DisabledModule": "Chris's Premades requires the module {module} to be enabled!",
             "Discord": "Open Discord Support Channel",
             "Hint": "Open the troubleshooter.",
+            "MissingModule": "Chris's Premades requires the module {module} to be installed!",
             "Open": "Open Troubleshooter:",
             "SaveToFile": "Save to File",
             "Title": "Troubleshooter"

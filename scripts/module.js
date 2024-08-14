@@ -25,6 +25,7 @@ import {effectEvents} from './events/effects.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
 import {updateCheck} from './extensions/update.js';
+import {troubleshooter} from './applications/troubleshooter.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -40,6 +41,7 @@ Hooks.once('init', () => {
     effectEvents.init();
 });
 Hooks.once('ready', () => {
+    troubleshooter.startup();
     workflow.setup();
     registerHooks();
     ddbi.ready();

@@ -101,7 +101,7 @@ export async function settingButton(id) {
         case 'hiddenCompendiums': await sidebar.selectHiddenCompendiums(); break;
         case 'hiddenCompendiumFolders': await sidebar.selectHiddenCompendiumFolders(); break;
         case 'backupMake': await backup.doBackup(true); break;
-        case 'trouble': await troubleshooter(); break;
+        case 'trouble': await troubleshooter.run(); break;
         case 'monsterCompendium': await selectCompendium('monsterCompendium', 'Actor');
     }
 }

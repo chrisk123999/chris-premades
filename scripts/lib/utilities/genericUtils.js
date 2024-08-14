@@ -77,8 +77,8 @@ function checkMedkitPermission(permission, userId) {
     if (userRole >= neededRole) return true;
     else return false;
 }
-function notify(message, type, {localize = true} = {}) {
-    ui.notifications[type](message, {localize: localize});
+function notify(message, type, {localize = true, permanent = false} = {}) {
+    ui.notifications[type](message, {localize: localize, permanent: permanent});
 }
 async function createEmbeddedDocuments(entity, type, updates, options) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
