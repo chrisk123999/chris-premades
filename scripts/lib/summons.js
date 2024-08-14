@@ -201,7 +201,7 @@ export class Summons {
                         }
                     }
                 },
-                effects: [this.summonEffect]
+                effects: (currentUpdates?.actor?.effects ?? []).concat([this.summonEffect])
             },
             token: {
                 rotation: templateData.direction,

@@ -4,7 +4,7 @@ import {abilitySave} from './events/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
-import {skillCheck} from './extensions/skillCheck.js';
+import {skillCheck} from './events/skillCheck.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';

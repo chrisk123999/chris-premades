@@ -145,7 +145,32 @@ async function pocketDimension({workflow}) {
             }
             let hpData = familiarToken.actor.system.attributes.hp;
             if (!hpData) return;
+            let effectsData = [];
+            for (let currEffect of familiarToken.actor.effects) {
+                if (effectUtils.getEffectIdentifier(currEffect) === 'summonedEffect') {
+                    continue;
+                }
+                if (currEffect.flags?.['chris-premades']?.concentrationEffectUuid) {
+                    await genericUtils.remove(currEffect);
+                    continue;
+                }
+                let originItem = await fromUuid(currEffect.origin);
+                if (originItem) {
+                    if (originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
+                        await genericUtils.remove(currEffect);
+                        continue;
+                    } else {
+                        originItem = await fromUuid(originItem.origin);
+                        if (originItem && originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
+                            await genericUtils.remove(currEffect);
+                            continue;
+                        }
+                    }
+                }
+                effectsData.push(currEffect.toObject());
+            }
             genericUtils.setProperty(updates, 'actor.system.attributes.hp', hpData);
+            genericUtils.setProperty(updates, 'actor.effects', effectsData);
             await genericUtils.remove(familiarToken);
             let spawned = await spawnFamiliar(updates);
             if (spawned) await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension.sceneId': game.scenes.current.id});
@@ -156,7 +181,32 @@ async function pocketDimension({workflow}) {
                 return;
             }
             let hpData = familiarToken.actor.system.attributes.hp;
+            let effectsData = [];
+            for (let currEffect of familiarToken.actor.effects) {
+                if (effectUtils.getEffectIdentifier(currEffect) === 'summonedEffect') {
+                    continue;
+                }
+                if (currEffect.flags?.['chris-premades']?.concentrationEffectUuid) {
+                    await genericUtils.remove(currEffect);
+                    continue;
+                }
+                let originItem = await fromUuid(currEffect.origin);
+                if (originItem) {
+                    if (originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
+                        await genericUtils.remove(currEffect);
+                        continue;
+                    } else {
+                        originItem = await fromUuid(originItem.origin);
+                        if (originItem && originItem instanceof Item.implementation && effectUtils.getConcentrationEffect(originItem.parent, originItem)) {
+                            await genericUtils.remove(currEffect);
+                            continue;
+                        }
+                    }
+                }
+                effectsData.push(currEffect.toObject());
+            }
             genericUtils.setProperty(updates, 'actor.system.attributes.hp', hpData);
+            genericUtils.setProperty(updates, 'actor.effects', effectsData);
             await genericUtils.update(pocketDimensionEffect, {'flags.chris-premades.findFamiliarPocketDimension': {state: true, updates}});
             await genericUtils.remove(familiarToken);
         }
