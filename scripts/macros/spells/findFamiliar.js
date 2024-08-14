@@ -221,6 +221,26 @@ async function pocketDimension({workflow}) {
     async function spawnFamiliar(updates) {
         let sourceActor = await fromUuid(pocketFlags.familiarActorUuid);
         let findFamiliarItem = itemUtils.getItemByIdentifier(workflow.actor, 'findFamiliar');
+        let effectsToKeep = [];
+        for (let effect of updates.actor?.effects ?? []) {
+            let duration = effect?.duration;
+            if (!duration) {
+                effectsToKeep.push(effect);
+                continue;
+            }
+            let timePassed = game.time.worldTime - duration.startTime;
+            if (timePassed < (duration.rounds ?? 0) * 6) {
+                effectsToKeep.push(effect);
+                continue;
+            }
+            if (timePassed < (duration.seconds ?? 0)) {
+                effectsToKeep.push(effect);
+                continue;
+            }
+        }
+        if (updates.actor?.effects?.length) {
+            updates.actor.effects = effectsToKeep;
+        }
         let spawnedTokens = await Summons.spawn(sourceActor, updates, findFamiliarItem, workflow.token, {
             duration: 864000, 
             range: 30, 
