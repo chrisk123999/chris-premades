@@ -64,7 +64,8 @@ async function addDependent(entity, dependents) {
     }
 }
 function addMacro(effectData, type, macroList) {
-    return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, macroList);
+    let currentMacroList = genericUtils.getProperty(effectData, 'flags.chris-premades.macros.' + type) ?? [];
+    return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, currentMacroList.concat(macroList));
 }
 function getEffectIdentifier(effect) {
     return effect.flags['chris-premades']?.info?.identifier;

@@ -38,6 +38,7 @@
             "Regeneration": "Regeneration",
             "ShadowStealth": "Shadow Stealth",
             "StoneLethargy": "Stone Lethargy",
+            "Tail": "Tail",
             "WaterBreathing": "Water Breathing",
             "WeightOfSorrow": "Weight of Sorrow"
         },
@@ -52,8 +53,10 @@
                 "Fiend": "Fiend",
                 "Fire": "Fire",
                 "Future": "Future",
+                "Lightning": "Lightning",
                 "Nature": "Nature",
                 "None": "None",
+                "Saiyan": "Saiyan",
                 "Shadow": "Shadow",
                 "Simple": "Simple",
                 "Water": "Water"
@@ -107,7 +110,8 @@
             "SpellFeature": "Spell Feature"
         },
         "Dialog": {
-            "RemoteMessage": "Waiting for remote dialog selection from"
+            "RemoteMessage": "Waiting for remote dialog selection from",
+            "Use": "Use {itemName}?"
         },
         "Direction": {
             "Direction": "Direction",
@@ -276,6 +280,9 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "DangerSense": {
+                "CanSee": "This save is from an effect you can see."
+            },
             "DanseMacabre": {
                 "CommandUndead": "Danse Macabre: Command Undead"
             },
@@ -432,6 +439,11 @@
                 "Move": "Hunter's Mark: Move",
                 "Select": "Which target would you like to unmark?"
             },
+            "InfectiousFury": {
+                "Attack": "Attack a Nearby Target",
+                "Curse": "How do you curse your target?",
+                "Damage": "Take Damage"
+            },
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
             },
@@ -478,6 +490,17 @@
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
+            },
+            "Rage": {
+                "End": "Rage: End",
+                "EndEarly": "{actorName} has not attacked an enemy or taken damage since their last turn. Remove Rage?",
+                "FormOfBeastTailReaction": "Form of the Beast: Tail Reaction",
+                "FormOfBeastWeapon": "Manifest a natural weapon?",
+                "FormOfTheBeastBite": "Form of the Beast: Bite",
+                "FormOfTheBeastClaws": "Form of the Beast: Claws",
+                "FormOfTheBeastTail": "Form of the Beast: Tail",
+                "Huge": "Grow to be huge?",
+                "LargeOrHuge": "What size?"
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
@@ -852,6 +875,7 @@
             "UnableToBeMoved": "Target is unable to be moved!"
         },
         "Section": {
+            "Rage": "Rage",
             "SpellFeatures": "Spell Features"
         },
         "SettingCategory": {
@@ -1051,6 +1075,10 @@
             "permissionsUpdateItem": {
                 "Hint": "Lowest user ranking that can update the currently selected automation in the Medkit:",
                 "Name": "Medkit Update Automation Permissions"
+            },
+            "playerSelectsConjures": {
+                "Hint": "When casting \"Conjure X\" spells, the player (not the GM) can select which creatures to conjure.",
+                "Name": "Player Selects Conjures"
             },
             "replaceStatusEffectIcons": {
                 "Hint": "When enabled, status icons will be replaced.",

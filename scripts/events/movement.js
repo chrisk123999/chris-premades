@@ -82,10 +82,11 @@ function getSortedTriggers(tokens, pass, token) {
         allTriggers.push(...collectTokenMacros(i, pass, distance, token));
     });
     let names = new Set(allTriggers.map(i => i.name));
+    allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
     names.forEach(i => {
-        let maxLevel = Math.max(...allTriggers.map(i => i.castData.castLevel));
-        let maxDC = Math.max(...allTriggers.map(i => i.castData.saveDC));
+        let maxLevel = Math.max(...allTriggers[i].map(i => i.castData.castLevel));
+        let maxDC = Math.max(...allTriggers[i].map(i => i.castData.saveDC));
         maxMap[i] = {
             maxLevel: maxLevel,
             maxDC: maxDC
@@ -95,12 +96,12 @@ function getSortedTriggers(tokens, pass, token) {
     names.forEach(i => {
         let maxLevel = maxMap[i].maxLevel;
         let maxDC = maxMap[i].maxDC;
-        let maxDCTrigger = allTriggers.find(j => j.castData.saveDC === maxDC);
+        let maxDCTrigger = allTriggers[i].find(j => j.castData.saveDC === maxDC);
         let selectedTrigger;
         if (maxDCTrigger.castData.castLevel === maxLevel) {
             selectedTrigger = maxDCTrigger;
         } else {
-            selectedTrigger = allTriggers.find(j => j.castData.castLevel === maxLevel);
+            selectedTrigger = allTriggers[i].find(j => j.castData.castLevel === maxLevel);
         }
         triggers.push(selectedTrigger);
     });

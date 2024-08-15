@@ -166,7 +166,7 @@ async function use({workflow}) {
         }
     }
 }
-async function start({trigger: {entity: effect}}) {
+export async function start({trigger: {entity: effect}}) {
     let {selection, playAnimation, origSize, newSize} = effect.flags['chris-premades'].enlargeReduce;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;

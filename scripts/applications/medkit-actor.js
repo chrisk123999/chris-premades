@@ -128,7 +128,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     options.source = currentValue.sourceItem.pack;
                 }
                 if (!options.source && !itemUtils.getSource(currentValue.sourceItem)) {
-                    genericUtils.notify('Error with ' + currentValue.item.name + ', skipping item');
+                    genericUtils.notify('Error with ' + currentValue.item.name + ', skipping item', 'warn');
                     return accumulator;
                 }
                 accumulator.push(this.update(currentValue.item, currentValue.sourceItem, options));
