@@ -132,6 +132,16 @@ form .cpr-compendiums .compendium-number {
     border-color: var(--color-light-5);
 }
 
+.cpr-compendiums-fieldset {
+    border-radius: 4px;
+    margin-top: 0.625em;
+    
+}
+
+.theme-dark .cpr-compendiums-fieldset{
+    border-color: var(--color-light-5);
+}
+
 .cpr-medkit-tabs {
     border-bottom: var(--dnd5e-border-groove);
     border-top: var(--dnd5e-border-groove);
@@ -312,6 +322,16 @@ form .devTools-midi > div {
     }
     .yellow {
         background: #ffff0080;
+    }
+}
+
+.cpr-medkit-actor-summary {
+    display: flex;
+    justify-content: center;
+    margin-top: 0 !important;
+    > legend {
+        text-align: center;
+        margin-bottom: 0.4em;
     }
 }
 

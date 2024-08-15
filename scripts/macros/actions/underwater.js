@@ -45,7 +45,11 @@ async function range({trigger, workflow}) {
 }
 export let underwater = {
     name: 'Underwater',
-    version: '0.12.12',
+    version: '0.12.12'
+};
+export let underwaterEffect = {
+    name: underwater.name,
+    version: underwater.version,
     midi: {
         actor: [
             {

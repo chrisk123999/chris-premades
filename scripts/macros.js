@@ -170,4 +170,4 @@ export {readySpell} from './macros/actions/readySpell.js';
 export {search} from './macros/actions/search.js';
 export {shove} from './macros/actions/shove.js';
 export {squeeze} from './macros/actions/squeeze.js';
-export {underwater} from './macros/actions/underwater.js';
+export {underwater, underwaterEffect} from './macros/actions/underwater.js';

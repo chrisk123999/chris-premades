@@ -22,7 +22,6 @@ async function itemMedkit(item) {
     await Medkit.item(item);
 }
 async function actorMedkit(actor) {
-    console.log(actor);
     await ActorMedkit.actor(actor);
 }
 async function effectMedkit(effect) {

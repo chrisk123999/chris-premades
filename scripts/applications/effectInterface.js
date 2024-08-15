@@ -1,26 +1,9 @@
 import {effectUtils, genericUtils} from '../utils.js';
+import {conditions} from '../extensions/conditions.js';
 let effectItem;
 let effectCollection;
 async function ready() {
-    effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
-    if (!effectItem) {
-        let itemData = {
-            'name': 'CPR Effect Interface Storage',
-            'img': 'icons/magic/time/arrows-circling-green.webp',
-            'type': 'feat',
-            'system': {
-                'description': {
-                    'value': genericUtils.translate('CHRISPREMADES.EffectInterface.Item')
-                }
-            },
-            'flags': {
-                'chris-premades': {
-                    'effectInterface': true
-                }
-            }
-        };
-        effectItem = await Item.create(itemData);
-    }
+    await checkEffectItem();
     let effects = effectItem.effects.contents;
     effectCollection = new EffectCollection(effects);
     function removeItem(directory) {
@@ -65,17 +48,17 @@ class EffectDirectory extends DocumentDirectory {
     _getEntryContextOptions() {
         let options = [
             {
-                'callback': async (header) => {
+                callback: async (header) => {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (document) await document.sheet.render(true);
                 },
-                'condition': () => game.user.isGM,
-                'icon': '<i class="fas fa-pencil"></i>',
-                'name': 'CHRISPREMADES.Generic.Edit'
+                condition: () => game.user.isGM,
+                icon: '<i class="fas fa-pencil"></i>',
+                name: 'CHRISPREMADES.Generic.Edit'
             },
             {
-                'callback': async (header) => {
+                callback: async (header) => {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (!document) return;
@@ -96,12 +79,12 @@ class EffectDirectory extends DocumentDirectory {
                         saveDataToFile(JSON.stringify(data, null, 2), 'text/json', filename + '.json');
                     }
                 },
-                'condition': () => game.user.isGM,
-                'icon': '<i class="fas fa-file-export"></i>',
-                'name': 'SIDEBAR.Export'
+                condition: () => game.user.isGM,
+                icon: '<i class="fas fa-file-export"></i>',
+                name: 'SIDEBAR.Export'
             },
             {
-                'callback': async (header) => {
+                callback: async (header) => {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (!document) return;
@@ -142,26 +125,30 @@ class EffectDirectory extends DocumentDirectory {
                     }
                     importDialog();
                 },
-                'condition': () => game.user.isGM,
-                'icon': '<i class="fas fa-file-import"></i>',
-                'name': 'SIDEBAR.Import'
+                condition: () => game.user.isGM,
+                icon: '<i class="fas fa-file-import"></i>',
+                name: 'SIDEBAR.Import'
             },
             {
-                'callback': async (header) => {
+                callback: async (header) => {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (document) {
+                        if (document.flags['chris-premades']?.effectInterface?.status) {
+                            genericUtils.notify('CHRISPREMADES.EffectInterface.NoDelete', 'warn');
+                            return;
+                        }
                         this.collection.delete(documentId);
                         await document.delete();
                         this.collection.render(true);
                     }
                 },
-                'condition': () => game.user.isGM,
-                'icon': '<i class="fas fa-trash"></i>',
-                'name': 'SIDEBAR.Delete'
+                condition: () => game.user.isGM,
+                icon: '<i class="fas fa-trash"></i>',
+                name: 'SIDEBAR.Delete'
             },
             {
-                'callback': async (header) => {
+                callback: async (header) => {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (document) {
@@ -174,9 +161,9 @@ class EffectDirectory extends DocumentDirectory {
                         this.render(true);
                     }
                 },
-                'condition': () => game.user.isGM,
-                'icon': '<i class="far fa-copy"></i>',
-                'name': 'SIDEBAR.Duplicate'
+                condition: () => game.user.isGM,
+                icon: '<i class="far fa-copy"></i>',
+                name: 'SIDEBAR.Duplicate'
             },
         ];
         return options;
@@ -188,12 +175,15 @@ class EffectDirectory extends DocumentDirectory {
         await effectUtils.toggleSidebarEffect(documentId);
     }
     static get collection() {
-        let effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+        effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+        console.log('Getting Collection');
         if (effectItem) {
             let effects = effectItem.effects.contents;
             effectCollection = new EffectCollection(effects);
+            console.log('Effect Item Found!');
         } else {
             effectCollection = new EffectCollection([]);
+            console.log('Effect Item Not Found!');
         }
         return effectCollection;
     }
@@ -342,6 +332,42 @@ function effectHotbarDrop(hotbar, data, slot) {
     });
     return false;
 }
+async function checkEffectItem() {
+    effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+    if (!effectItem) {
+        let itemData = {
+            name: 'CPR Effect Interface Storage',
+            img: 'icons/magic/time/arrows-circling-green.webp',
+            type: 'feat',
+            system: {
+                description: {
+                    value: genericUtils.translate('CHRISPREMADES.EffectInterface.Item')
+                }
+            },
+            flags: {
+                'chris-premades': {
+                    effectInterface: true
+                }
+            }
+        };
+        let ignoreList = genericUtils.getCPRSetting('disableNonConditionStatusEffects') ? conditions.ignoredStatusEffects : [];
+        let statusEffectDatas = (await Promise.all(CONFIG.statusEffects.filter(i => {
+            if (!i._id.includes('dnd')) return false;
+            if (ignoreList.includes(i.id)) return false;
+            return true;
+        }).map(async j => {
+            let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id)).toObject();
+            genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j._id);
+            delete effectData.origin;
+            delete effectData._stats;
+            return effectData;
+        })));
+        if (statusEffectDatas.length) {
+            itemData.effects = statusEffectDatas;
+        }
+        effectItem = await Item.create(itemData);
+    }
+}
 function init() {
     CONFIG.ui.effects = EffectDirectory;
     Hooks.on('renderSidebar', effectSidebar);
@@ -350,5 +376,6 @@ function init() {
 }
 export let effectInterface = {
     init,
-    ready
+    ready,
+    checkEffectItem
 };

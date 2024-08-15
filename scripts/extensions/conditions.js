@@ -42,24 +42,24 @@ async function configureStatusEffectIcons() {
     if (!selection) return;
     await genericUtils.setCPRSetting('statusEffectIcons', selection);
 }
+let ignoredStatusEffects = [
+    'bleeding',
+    'burrowing',
+    'cursed',
+    'ethereal',
+    'flying',
+    'hovering',
+    'marked',
+    'sleeping',
+    'transformed',
+    'hiding',
+    'stable',
+    'surprised',
+    'silenced',
+    'dodging'
+];
 function disableNonConditionStatusEffects() {
-    let ids = [
-        'bleeding',
-        'burrowing',
-        'cursed',
-        'ethereal',
-        'flying',
-        'hovering',
-        'marked',
-        'sleeping',
-        'transformed',
-        'hiding',
-        'stable',
-        'surprised',
-        'silenced',
-        'dodging'
-    ];
-    CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ids.includes(i.id));
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ignoredStatusEffects.includes(i.id));
 }
 async function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;
@@ -295,5 +295,6 @@ export let conditions = {
     configureStatusEffectIcons,
     disableNonConditionStatusEffects,
     preCreateActiveEffect,
-    disableSpecialEffects
+    disableSpecialEffects,
+    ignoredStatusEffects
 };

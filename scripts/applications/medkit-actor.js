@@ -1,5 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
+import {compendiumUtils, itemUtils, genericUtils, errors} from '../utils.js';
 import {gambitPremades} from '../integrations/gambitsPremades.js';
 import {miscPremades} from '../integrations/miscPremades.js';
 import {Medkit} from './medkit.js';
@@ -8,8 +8,10 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         super({id: 'medkit-window-actor'});
         this.windowTitle = 'Chris\'s Premades Configuration: ' + actor.name;
         this.position.width = 550;
+        //this.position.max-height = 800;
         this.actor = actor;
         this.identifier = actor.flags['chris-premades']?.info?.identifier; // Not in use yet, will use to pull specific monster automations
+        this.summary = '';
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
@@ -51,11 +53,9 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async actor(actor) {
         let medkit = new ActorMedkit(actor);
         await medkit.readyData();
-        genericUtils.log('log', 'Actor Medkit is not ready for use yet!');
         medkit.render(true);
     }
     async readyData() {
-        // need to get all items, check if they have flags.chris-premades.info, take those identifiers against their source and macros info, tally them up, have sets of each
         this.actorItems = await Promise.all(this.actor.items.map(async i => ({
             item: i, 
             identifier: itemUtils.getIdentifer(i), 
@@ -67,13 +67,10 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (currentValue.isUpToDate === 1) {
                 accumulator.upToDate.value += 1;
-                console.log(currentValue.source);
                 accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.source);
             } else if ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem) {
                 accumulator.available.value += 1;
-                console.log(this.itemSource(currentValue.sourceItem.pack));
                 accumulator.available.sources = this.countSource(accumulator.available.sources, this.itemSource(currentValue.sourceItem.pack));
-                console.log(accumulator.available.sources);
             } else if (currentValue.isUpToDate === 0) {
                 accumulator.outOfDate.value += 1;
                 accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.source);
@@ -85,10 +82,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             available: this.generateTooltip(this.amounts.available.sources),
             outOfDate: this.generateTooltip(this.amounts.outOfDate.sources)
         };
-        console.log(this.amounts, this.tooltips);
-    }
-    static async update(item, sourceItem, {source, version, identifier} = {}) {
-        //
     }
     itemSource(itemPack) {
         if (itemPack.includes('gambits-premades')) {
@@ -115,32 +108,37 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             return accumulator + genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + key) + ': ' + value + '<br>';
         }, '');
     }
+    update(item, sourceItem, options) {
+        let source = options.source ?? itemUtils.getSource(sourceItem);
+        let summary = '&#8226 ' + item.name + ' - ' + (source.includes('.') ? game.packs.get(source).metadata.label : genericUtils.translate('CHRISPREMADES.Medkit.ModuleIds.' + source)) + '<br/>';
+        this.summary += summary;
+        return Medkit.update(item, sourceItem, options);
+    }
     static async _update(event, target) {
-        console.log(this.actorItems);
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
-            console.log(accumulator);
             if (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem)) {
-                console.log(currentValue.sourceItem);
                 let options = {source: undefined, version: undefined};
                 if (currentValue.sourceItem.pack.includes('gambits-premades')) {
-                    console.log('gambit item');
                     options.source = 'gambits-premades';
                     options.version = gambitPremades.gambitItems.find(i => i.name === currentValue.sourceItem.name)?.version;
                 } else if (currentValue.sourceItem.pack.includes('midi-item-showcase-community')) {
-                    console.log('midi item');
                     options.source = 'midi-item-showcase-community';
                     options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
                 } else if (!currentValue.sourceItem.pack.includes('chris-premades') && !currentValue.sourceItem.flags['chris-premades']?.info) {
                     options.source = currentValue.sourceItem.pack;
                 }
-                accumulator.push(Medkit.update(currentValue.item, currentValue.sourceItem, options));
+                if (!options.source && !itemUtils.getSource(currentValue.sourceItem)) {
+                    genericUtils.notify('Error with ' + currentValue.item.name + ', skipping item');
+                    return accumulator;
+                }
+                accumulator.push(this.update(currentValue.item, currentValue.sourceItem, options));
             }
             return accumulator;
         }, []));
-        console.log('Items are updated!');
-    }
-    static async _apply(event, target) {
-        //
+        let maxHeight = (canvas.screenDimensions[1] * 0.9);
+        let position = {...this.position, height: ((this.amounts.available.value + this.amounts.outOfDate.value) * 15 + 310) > (maxHeight) ? maxHeight : 'auto', top: null};
+        this.setPosition(position);
+        this.render(true);
     }
     static async confirm(event, target) {
         await ActorMedkit._apply.bind(this)(event, target);
@@ -148,11 +146,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     get title() {
         return this.windowTitle;
-    }
-    async updateContext(item) {
-        let newContext = await ActorMedkit.createContext(item);
-        this.context = newContext;
-        this.render(true);
     }
     async _prepareContext(options) {
         const tabsData = {
@@ -172,7 +165,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 icon: 'fa-solid fa-file-lines',
                 label: 'CHRISPREMADES.Medkit.Tabs.Summary.Label',
                 tooltip: 'CHRISPREMADES.Medkit.Tabs.Summary.Tooltip',
-                cssClass: ''
+                cssClass: 'active'
             }
         };
         const buttons = [
@@ -180,7 +173,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Cancel', name: 'close', icon: 'fa-solid fa-xmark'}
         ];
         let context = {
-            tabs: this?.summary ? {character: tabsData.character} : this.actor.type === 'npc' ? {npc: tabsData.npc} : {character: tabsData.character},
+            tabs: this.summary.length ? {summary: tabsData.summary} : this.actor.type === 'npc' ? {npc: tabsData.npc} : {character: tabsData.character},
             buttons: buttons,
             label: this.actor.name,
             character: {
@@ -190,16 +183,17 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             npc: {
                 amounts: this.amounts,
                 identifier: this.identifier
+            },
+            summary: {
+                value: this.summary
             }
         };
-        if (this.actor.type === 'character') delete context.tabs.npc;
-        else delete context.tabs.character;
-        if (this.amounts.available === 0 & this.amounts.outOfDate === 0) context.buttons.splice(0, 1);
+        if ((this.amounts.available === 0 & this.amounts.outOfDate === 0) || this.summary.length) context.buttons.splice(0, 1);
         return context;
     }
-    // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
     async _onChangeForm(formConfig, event) {
-        // will want to take a textbox value for a name to get automations from, keep that and apply when apply
+        // will want to take a textbox value from the NPC tab for a name to get automations from, keep that and apply when apply
+        /*
         for (let key of Object.keys(this.tabsData)) {
             this.tabsData[key].cssClass = '';
         }
@@ -229,5 +223,13 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             } else this.context.devTools[event.target.id] = value;
         }
         this.render(true);
+        */
+    }
+    changeTab(...args) {
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
+        super.changeTab(...args);
+        let newPos = {...this.position, height: this.element.scrollHeight};
+        this.setPosition(newPos);
     }
 }

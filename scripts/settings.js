@@ -12,6 +12,7 @@ import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
 import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
+import {effectInterface} from './applications/effectInterface.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -56,7 +57,10 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface',
-        reloadRequired: true
+        reloadRequired: true,
+        onChange: value => {
+            if (value) effectInterface.checkEffectItem();
+        }
     });
     addSetting({
         key: 'macroInterface',

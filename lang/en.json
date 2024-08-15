@@ -128,8 +128,9 @@
         "EffectInterface": {
             "Effects": "Effects",
             "ImportData": "Import Data: ",
-            "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted!",
+            "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted! This item will hide itself after reloading your page.",
             "NewEffect": "New Effect",
+            "NoDelete": "Status Effects may not be deleted!",
             "SelectToken": "Please select a token first!"
         },
         "Error": {
@@ -840,6 +841,9 @@
                 },
                 "Summary": {
                     "Label": "Summary",
+                    "Legend": {
+                        "Label": "Updated Items"
+                    },
                     "Tooltip": "Summary of Automations that were Updated"
                 }
             }

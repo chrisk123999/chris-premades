@@ -30,7 +30,7 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, keepId} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
@@ -122,7 +122,11 @@ async function sidebarEffectHelper(documentId, toggle) {
         } else if (effect && stackable) {
             genericUtils.update(effect, {'flags.dae.stacks': stackCount + 1});
         } else {
-            effectUtils.createEffect(i.actor, effectData);
+            if (effectData.flags['chris-premades']?.effectInterface?.status) {
+                genericUtils.createEmbeddedDocuments(i.actor, 'ActiveEffect', [effectData], {keepId: true});
+            } else {
+                effectUtils.createEffect(i.actor, effectData);
+            }
         }
     });
 }
@@ -131,6 +135,9 @@ async function toggleSidebarEffect(documentId) {
 }
 async function addSidebarEffect(documentId) {
     await sidebarEffectHelper(documentId, false);
+}
+async function syntheticActiveEffect(effectData, entity) {
+    return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
 export let effectUtils = {
     getCastData,
@@ -151,5 +158,6 @@ export let effectUtils = {
     getEffectByStatusID,
     applyConditions,
     toggleSidebarEffect,
-    addSidebarEffect
+    addSidebarEffect,
+    syntheticActiveEffect
 };
