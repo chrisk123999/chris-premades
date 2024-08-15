@@ -1,17 +1,14 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Song of Defense",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "reaction",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -28,9 +25,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
-      "long": null,
-      "units": ""
+      "value": 5,
+      "units": "ft",
+      "long": null
     },
     "uses": {
       "value": null,
@@ -41,12 +38,16 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,79 +57,87 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "source": {}
   },
   "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Wizard"
+      }
+    },
     "midi-qol": {
-      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
+    "dnd5e": {
+      "advancementOrigin": "E7yI31PHFh0ngn3K"
     },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
-        "version": "0.12.9",
-        "identifier": "investmentOfTheChainMaster",
+        "identifier": "songOfDefense",
+        "version": "0.12.13",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "songOfDefense"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "z9bhKCie9DlCFup1",
-  "_id": "7v0XqYKA7kNZH7YO",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
+  "folder": "eHBZ3O3KFVd0JTTX",
+  "_id": "rY1NsV2RgPtQL8bw",
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "_key": "!items!rY1NsV2RgPtQL8bw"
 }

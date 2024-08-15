@@ -126,11 +126,11 @@
             "5": "5 ft."
         },
         "EffectInterface": {
+            "Copy": "(Copy)",
             "Effects": "Effects",
             "ImportData": "Import Data: ",
-            "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted! This item will hide itself after reloading your page.",
+            "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted! This item will hide itself when the Effect Interface setting is enabled.",
             "NewEffect": "New Effect",
-            "NoDelete": "Status Effects may not be deleted!",
             "SelectToken": "Please select a token first!"
         },
         "Error": {

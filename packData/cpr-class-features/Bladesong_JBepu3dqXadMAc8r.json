@@ -1,22 +1,19 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Bladesong",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
@@ -24,29 +21,33 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
-      "long": null,
-      "units": ""
+      "units": "self",
+      "long": null
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 4,
+      "max": "@prof",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,79 +57,90 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "source": {}
   },
   "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Wizard"
+      }
+    },
     "midi-qol": {
-      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
+    "dnd5e": {
+      "advancementOrigin": "E7yI31PHFh0ngn3K"
+    },
+    "link-item-resource-5e": {
+      "resource-link": ""
     },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
-        "version": "0.12.9",
-        "identifier": "investmentOfTheChainMaster",
+        "identifier": "bladesong",
+        "version": "0.12.13",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "bladesong"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "z9bhKCie9DlCFup1",
-  "_id": "7v0XqYKA7kNZH7YO",
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "eHBZ3O3KFVd0JTTX",
+  "_id": "JBepu3dqXadMAc8r",
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "_key": "!items!JBepu3dqXadMAc8r"
 }

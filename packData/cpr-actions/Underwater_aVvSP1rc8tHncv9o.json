@@ -145,7 +145,7 @@
           "macros": {
             "midi": {
               "actor": [
-                "underwater"
+                "underwaterEffect"
               ]
             }
           }
@@ -165,8 +165,8 @@
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "modifiedTime": 1723681364995,
+        "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
       },
       "_key": "!items.effects!aVvSP1rc8tHncv9o.I14hMxhWJgSwRoHT"
     }
@@ -196,7 +196,9 @@
     "chris-premades": {
       "info": {
         "name": "Underwater",
-        "version": "0.8.17"
+        "version": "0.12.13",
+        "identifier": "underwater",
+        "source": "chris-premades"
       }
     }
   },

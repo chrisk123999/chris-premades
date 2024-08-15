@@ -15,6 +15,7 @@ async function ready() {
     Hooks.on('changeSidebarTab', removeItem);
     Hooks.on('renderItemDirectory', removeItem);
     Hooks.on('updateActiveEffect', reRender);
+    patch(true);
 }
 function reRender(effect) {
     if (effect.parent?.uuid != effectItem?.uuid) return;
@@ -134,16 +135,16 @@ class EffectDirectory extends DocumentDirectory {
                     let documentId = header[0].dataset.documentId;
                     let document = effectItem.effects.get(documentId);
                     if (document) {
-                        if (document.flags['chris-premades']?.effectInterface?.status) {
-                            genericUtils.notify('CHRISPREMADES.EffectInterface.NoDelete', 'warn');
-                            return;
-                        }
                         this.collection.delete(documentId);
                         await document.delete();
                         this.collection.render(true);
                     }
                 },
-                condition: () => game.user.isGM,
+                condition: (header) => {
+                    let documentId = header[0].dataset.documentId;
+                    let document = effectItem.effects.get(documentId);
+                    return (document.flags['chris-premades']?.effectInterface?.status || !game.user.isGM) ? false : true;
+                },
                 icon: '<i class="fas fa-trash"></i>',
                 name: 'SIDEBAR.Delete'
             },
@@ -154,7 +155,8 @@ class EffectDirectory extends DocumentDirectory {
                     if (document) {
                         let effectData = document.toObject();
                         delete effectData._id;
-                        effectData.name += ' (Copy)';
+                        if (effectData.flags['chris-premades']?.effectInterface?.status) delete effectData.flags['chris-premades'].effectInterface.status;
+                        effectData.name += ' ' + genericUtils.translate('CHRISPREMADES.EffectInterface.Copy');
                         genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.sort', this.collection.size + 1);
                         let createdEffect = await ActiveEffect.create(effectData, {'parent': effectItem});
                         this.collection.set(createdEffect);
@@ -176,14 +178,11 @@ class EffectDirectory extends DocumentDirectory {
     }
     static get collection() {
         effectItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
-        console.log('Getting Collection');
         if (effectItem) {
             let effects = effectItem.effects.contents;
             effectCollection = new EffectCollection(effects);
-            console.log('Effect Item Found!');
         } else {
             effectCollection = new EffectCollection([]);
-            console.log('Effect Item Not Found!');
         }
         return effectCollection;
     }
@@ -351,12 +350,13 @@ async function checkEffectItem() {
             }
         };
         let ignoreList = genericUtils.getCPRSetting('disableNonConditionStatusEffects') ? conditions.ignoredStatusEffects : [];
+        ignoreList.push('exhaustion');
         let statusEffectDatas = (await Promise.all(CONFIG.statusEffects.filter(i => {
             if (!i._id.includes('dnd')) return false;
             if (ignoreList.includes(i.id)) return false;
             return true;
         }).map(async j => {
-            let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id)).toObject();
+            let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id, {passThrough: true})).toObject();
             genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j._id);
             delete effectData.origin;
             delete effectData._stats;
@@ -368,6 +368,25 @@ async function checkEffectItem() {
         effectItem = await Item.create(itemData);
     }
 }
+function fromStatusEffect(wrapped, statusId, options = {}) {
+    if (options.passThrough || !effectItem) return wrapped(statusId, options);
+    let effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.status === statusId);
+    if (!effect) return wrapped(statusId, options);
+    let effectData = effect.toObject();
+    delete effectData.origin;
+    delete effectData._stats;
+    let fixedEffect = effectUtils.syntheticActiveEffect(effectData, effectItem);
+    return fixedEffect;
+}
+function patch(enabled) {
+    if (enabled) {
+        genericUtils.log('log', 'Status Effects Patched!');
+        libWrapper.register('chris-premades', 'ActiveEffect.implementation.fromStatusEffect', fromStatusEffect, 'MIXED');
+    } else {
+        genericUtils.log('log', 'Status Effects Patch Removed!');
+        libWrapper.unregister('chris-premades', 'ActiveEffect.implementation.fromStatusEffect');
+    }
+}
 function init() {
     CONFIG.ui.effects = EffectDirectory;
     Hooks.on('renderSidebar', effectSidebar);
@@ -377,5 +396,6 @@ function init() {
 export let effectInterface = {
     init,
     ready,
+    patch,
     checkEffectItem
 };
