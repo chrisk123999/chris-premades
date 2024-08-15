@@ -66,7 +66,7 @@ async function init(mode) {
     if (mode === 3 || mode === 4) {
         let pack = game.packs.get('midi-item-showcase-community.misc-unearthed-arcana');
         if (pack) {
-            let index = pack.getIndex({fields: ['name', 'folderId']});
+            let index = await pack.getIndex({fields: ['name', 'folderId']});
             let spellsFolder = pack.folders.getName('Spells');
             if (spellsFolder) {
                 index.forEach(l => {

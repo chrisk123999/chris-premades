@@ -191,7 +191,9 @@ async function getAppliedOrPreferredAutomation(item) {
                 return await getMISCAutomation(item);
             }
             default: {
-                return await getItemFromCompendium(source, item.name);
+                let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true});
+                if (!document) document = await getPreferredAutomation(item);
+                return document;
             }
         }
     } else {

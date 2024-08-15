@@ -37,6 +37,9 @@ Goals:
     - [x] Colorize effect medkit
     - [ ] Add dev tools part for `effect.flags['chris-premades']?.macros?.midi?.actor`
 [ ] Actor Medkit
+    - [x] Character tab
+    - [ ] NPC tab
+    - [x] Summary tab
 [ ] Convert all helper functions
 [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
@@ -49,12 +52,12 @@ Goals:
 ## Replace old dependencies
 ### Warpgate
 [x] warpgate.wait() - now genericUtils.sleep
-[ ] warpgate.spawn()
+[x] warpgate.spawn()
     - [x] Helper functions spawn function
         - [x] spawning part
     - [x] Convert summons.js and tashaSummon.js and merge what's possible
 [x] warpgate.menu()/dialog() - now DialogApp / dialogUtils
-[x] warpgate.crosshairs()-- - now Crosshairs
+[x] warpgate.crosshairs() - now Crosshairs
 [ ] warpgate.mutate()
 ### Dfred's CE
 [x] Effect sidebar thing
@@ -66,9 +69,16 @@ Goals:
 ### Effect Macro
 [x] Replaced by internal hook calls
 ## Convert/update/fix all old functions
-[ ] Redo artificer infusions and items that add items
+[x] Spells
+[ ] Class features
+    - [ ] Chris starting at the bottom, Michael starting at the top
+    - [ ] Redo artificer infusions and items that add items
+[ ] Items
+[ ] Monster Features
 ## Extensions
-[ ] Folder maker for summons
+[ ] Folder maker for summons?
 [ ] Update summon iniative/update companion initiative
 [ ] Options for items to add for add generic actions setting
 [ ] Make all medkit coloring use a constants/setting to support a colorblind mode
+[ ] Clean up the CSS
+[ ] Document things

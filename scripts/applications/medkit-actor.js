@@ -136,9 +136,9 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             return accumulator;
         }, []));
         let maxHeight = (canvas.screenDimensions[1] * 0.9);
-        let position = {...this.position, height: ((this.amounts.available.value + this.amounts.outOfDate.value) * 15 + 310) > (maxHeight) ? maxHeight : 'auto', top: null};
+        let position = {...this.position, height: ((this.amounts.available.value + this.amounts.outOfDate.value) * 15 + 310) > (maxHeight) ? maxHeight : 'auto'};
         this.setPosition(position);
-        this.render(true);
+        this.render(true, {position: {top: null}});
     }
     static async confirm(event, target) {
         await ActorMedkit._apply.bind(this)(event, target);
@@ -170,7 +170,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         };
         const buttons = [
             {type: 'button', action: 'update', label: 'CHRISPREMADES.Generic.Update', name: 'update', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Cancel', name: 'close', icon: 'fa-solid fa-xmark'}
+            {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Close', name: 'close', icon: 'fa-solid fa-xmark'}
         ];
         let context = {
             tabs: this.summary.length ? {summary: tabsData.summary} : this.actor.type === 'npc' ? {npc: tabsData.npc} : {character: tabsData.character},
@@ -188,7 +188,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 value: this.summary
             }
         };
-        if ((this.amounts.available === 0 & this.amounts.outOfDate === 0) || this.summary.length) context.buttons.splice(0, 1);
+        if ((this.amounts.available.value === 0 & this.amounts.outOfDate.value === 0) || this.summary.length) context.buttons.splice(0, 1);
         return context;
     }
     async _onChangeForm(formConfig, event) {
