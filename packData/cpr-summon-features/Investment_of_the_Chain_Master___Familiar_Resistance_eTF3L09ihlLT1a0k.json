@@ -1,5 +1,5 @@
 {
-  "name": "Investment of the Chain Master - Familiar Resistance",
+  "name": "Investment of the Chain Master: Familiar Resistance",
   "type": "feat",
   "system": {
     "description": {
@@ -86,15 +86,7 @@
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.investmentOfTheChainMaster.reaction",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.investmentOfTheChainMaster.reaction",
-            "option": "postActiveEffects"
-          }
-        }
-      }
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -170,7 +162,7 @@
           "onlyOnce": false
         }
       },
-      "name": "Investment of the Chain Master - Familiar Resistance",
+      "name": "Investment of the Chain Master: Familiar Resistance",
       "description": "",
       "statuses": [],
       "_stats": {

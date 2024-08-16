@@ -107,7 +107,7 @@ async function use({workflow}) {
             genericUtils.setProperty(updates[i], 'actor.system.attributes.movement.' + movement, 40);
         }
         if (!findFamiliarEffect) {
-            let commandData = await compendiumUtils.getItemFromCompendium(constants.packs.classFeatureItems, 'Investment of the Chain Master: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestmentOfTheChainMaster.Command', identifier: 'investmentOfTheChainMasterCommand'});
+            let commandData = await compendiumUtils.getItemFromCompendium(constants.packs.classFeatureItems, 'Flock of Familiars: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FlockOfFamiliars.Command', identifier: 'flockOfFamiliarsCommand'});
             if (!commandData) {
                 errors.missingPackItem();
                 return;

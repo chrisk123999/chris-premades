@@ -337,6 +337,7 @@
             },
             "FindFamiliar": {
                 "Choose": "Choose Familiar",
+                "Command": "Find Familiar: Command",
                 "Error": "No familiar token or data found!",
                 "InvalidSpell": "Invalid Spell Type!",
                 "Movement": "Which Movement Type?",
@@ -366,6 +367,7 @@
                 "Scimitar": "Flame Blade Scimitar"
             },
             "FlockOfFamiliars": {
+                "Command": "Flock of Familiars: Command",
                 "ReactionUsed": "Familiars are too far or have already used their reaction!",
                 "Touch": "Flock of Familiars: Touch"
             },
