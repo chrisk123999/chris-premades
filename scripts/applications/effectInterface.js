@@ -30,7 +30,6 @@ function reRender(effect) {
         }
     }
     ui.sidebar.tabs.effects.render(true);
-
 }
 class EffectCollection extends WorldCollection {
     static documentName = 'ActiveEffect';
@@ -421,7 +420,7 @@ async function checkEffectItem() {
 function fromStatusEffect(wrapped, statusId, options = {}) {
     if (options.passThrough || !effectItem) return wrapped(statusId, options);
     let effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.status === statusId);
-    if (!effect) effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.customStatus === statusId);
+    if (!effect) effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.customStatus === statusId);
     if (!effect) return wrapped(statusId, options);
     let effectData = effect.toObject();
     delete effectData.origin;
