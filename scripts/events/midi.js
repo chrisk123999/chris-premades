@@ -22,7 +22,7 @@ function collectActorMacros(item, pass) {
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
-function collectAllMacros({item, token, actor}, pass) {
+function collectAllMacros({item, token, actor, sourceToken}, pass) {
     let triggers = [];
     if (item) {
         let macroList = collectItemMacros(item, pass);
@@ -37,7 +37,8 @@ function collectAllMacros({item, token, actor}, pass) {
                 macro: i.macro,
                 name: item.name,
                 priority: i.priority,
-                token: token
+                token: token,
+                sourceToken: sourceToken
             });
         });
     }
@@ -99,8 +100,8 @@ function collectAllMacros({item, token, actor}, pass) {
     }
     return triggers;
 }
-function getSortedTriggers({item, token, actor}, pass) {
-    let allTriggers = collectAllMacros({item, token, actor}, pass);
+function getSortedTriggers({item, token, actor, sourceToken}, pass) {
+    let allTriggers = collectAllMacros({item, token, actor, sourceToken}, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -205,7 +206,11 @@ async function preTargetDamageApplication(token, {workflow, ditem}) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);
     let targetTriggers = getSortedTriggers({token: token, actor: token.actor}, 'targetApplyDamage');
     let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
-    let triggers = targetTriggers.concat(selfTriggers).sort((a, b) => a.priority - b.priority);
+    let sceneTriggers = [];
+    token.document.parent.tokens.filter(i => i.uuid != token.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: token, actor: token.actor, sourceToken: j.object}, 'sceneApplyDamage'));
+    });
+    let triggers = [...targetTriggers, ...selfTriggers, ...sceneTriggers].sort((a, b) => a.priority - b.priority);
     for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }
 export let midiEvents = {

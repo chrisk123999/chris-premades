@@ -1,7 +1,7 @@
 {
-  "name": "Flock of Familiars: Attack",
+  "name": "Find Familiar: Command",
   "type": "feat",
-  "img": "icons/creatures/mammals/bats-movement-flying-black.webp",
+  "img": "icons/commodities/materials/feathers-brown.webp",
   "system": {
     "description": {
       "value": "",
@@ -77,8 +77,8 @@
       "bonus": "",
       "flat": false
     },
-    "summons": null,
     "enchantment": null,
+    "summons": null,
     "prerequisites": {
       "level": null
     }
@@ -112,7 +112,9 @@
       "idv": false,
       "ida": false
     },
-    "core": {},
+    "core": {
+      "sourceId": "Item.GvdOQxq4WLmDMYxn"
+    },
     "exportSource": {
       "world": "cpr-test",
       "system": "dnd5e",
@@ -121,10 +123,10 @@
     }
   },
   "folder": null,
-  "_id": "TSwsqWuuodtJrThy",
+  "_id": "MCXNgVKod8XDHNA9",
   "ownership": {
     "default": 0,
     "Sxnc2j6hSZtjzxy2": 3
   },
-  "_key": "!items!TSwsqWuuodtJrThy"
+  "_key": "!items!MCXNgVKod8XDHNA9"
 }
