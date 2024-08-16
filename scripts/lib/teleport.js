@@ -42,7 +42,7 @@ export class Teleport {
         };
         await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, position);
         let update = genericUtils.collapseObjects(this.updates, position, {_id: tok.id});
-        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false});
+        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false, teleport: true});
         await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document, position);
     }
     async _moveGroup() {
@@ -57,7 +57,7 @@ export class Teleport {
             let position = this.getCoords(tok);
             await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, position);
             let update = genericUtils.collapseObjects(this.updates, position, {_id: tok.id});
-            await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false});
+            await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false, teleport: true});
             await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document, position);
         });
     }
@@ -65,7 +65,7 @@ export class Teleport {
         let positions = this.tokens.map(tok => this.getCoords(tok));
         await Promise.all(this.tokens.map(async (tok, ind) => await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, positions[ind])));
         let updates = this.tokens.map((tok, ind) => genericUtils.collapseObjects(this.updates, {_id: tok.id}, positions[ind]));
-        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', updates, {animate: false});
+        await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', updates, {animate: false, teleport: true});
         await Promise.all(this.tokens.map(async (tok, ind) => await animationUtils.teleportEffects[this.options?.animation ?? 'default'].post(tok.document, positions[ind])));
     }
     getCoords(token) {
