@@ -24,7 +24,6 @@ function reRender(effect) {
     document.name = effect.name;
     if (document.flags['chris-premades']?.effectInterface.customStatus) {
         let status = CONFIG.statusEffects.find(i => i._id === effect.id);
-        console.log(status);
         if (status) {
             status.id = effect.name.toLowerCase().slugify();
             status.label = effect.name;
