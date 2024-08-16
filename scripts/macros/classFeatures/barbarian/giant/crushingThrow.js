@@ -16,7 +16,7 @@ async function damage({workflow}) {
 }
 export let giantsHavocCrushingThrow = {
     name: 'Giant\'s Havoc: Crushing Throw',
-    version: '0.12.15',
+    version: '0.12.20',
     midi: {
         actor: [
             {

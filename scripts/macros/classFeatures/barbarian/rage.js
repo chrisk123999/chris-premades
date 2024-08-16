@@ -222,14 +222,16 @@ async function use({workflow}) {
             }
         }
     }
+    let vaeInput = itemsToCreate
+        .filter(i => i.flags['chris-premades'].info.identifier !== 'formOfTheBeastTailReaction')
+        .map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};});
+    let mightyImpelFeature = itemUtils.getItemByIdentifier(workflow.actor, 'mightyImpel');
+    if (mightyImpelFeature) vaeInput.push({type: 'use', name: mightyImpelFeature.name, identifier: 'mightyImpel'});
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {
         identifier: 'rage', 
-        vae: itemsToCreate
-            .filter(i => i.flags['chris-premades'].info.identifier !== 'formOfTheBeastTailReaction')
-            .map(i => {return {type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier};})
+        vae: vaeInput
     });
     await itemUtils.createItems(workflow.actor, itemsToCreate, {favorite: true, section: 'CHRISPREMADES.Section.Rage', parentEntity: effect});
-    // TODO: Implement
     let callTheHunt = itemUtils.getItemByIdentifier(workflow.actor, 'callTheHunt');
     if (callTheHunt && callTheHunt.system.uses.value) {
         let selection = await dialogUtils.confirm(callTheHunt.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: callTheHunt.name}));
@@ -238,9 +240,9 @@ async function use({workflow}) {
     // TODO: Implement
     let wildSurge = itemUtils.getItemByIdentifier(workflow.actor, 'wildSurge');
     if (wildSurge) await workflowUtils.completeItemUse(wildSurge);
-    // TODO: Implement
     let elementalCleaver = itemUtils.getItemByIdentifier(workflow.actor, 'elementalCleaver');
     if (elementalCleaver) await workflowUtils.completeItemUse(elementalCleaver);
+    await combatUtils.setTurnCheck(effect, 'rage');
 }
 async function attack({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
@@ -522,7 +524,7 @@ async function remove({trigger: {entity: effect}}) {
 }
 export let rage = {
     name: 'Rage',
-    version: '0.12.15',
+    version: '0.12.20',
     midi: {
         item: [
             {

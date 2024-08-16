@@ -57,7 +57,7 @@ async function use({workflow}) {
 }
 export let infectiousFury = {
     name: 'Infectious Fury',
-    version: '0.12.15',
+    version: '0.12.20',
     midi: {
         item: [
             {

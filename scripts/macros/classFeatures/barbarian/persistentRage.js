@@ -1,4 +1,4 @@
 export let persistentRage = {
     name: 'Persistent Rage',
-    version: '0.12.15'
+    version: '0.12.20'
 };

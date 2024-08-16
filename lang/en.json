@@ -196,6 +196,9 @@
             "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
         "Macros": {
+            "AncestralProtectors": {
+                "Target": "Ancestral Protectors: Target"
+            },
             "AnimateDead": {
                 "Command": "Animate Dead: Command"
             },
@@ -212,6 +215,13 @@
             },
             "Banishment": {
                 "PlaneSelect": "Select all targets that are not from this plane."
+            },
+            "BestialSoul": {
+                "Already": "You already have a Bestial Soul benefit active!",
+                "Climbing": "Climbing",
+                "Form": "Which form?",
+                "Jumping": "Jumping",
+                "Swimming": "Swimming"
             },
             "BestowCurse": {
                 "Ability": "Disadvantage on Ability Score",
@@ -239,6 +249,14 @@
             "Blink": {
                 "Away": "Blinked Away"
             },
+            "BolsteringMagic": {
+                "Already": "Target is already being bolstered!",
+                "Bonus": "Attack and Ability Bonus",
+                "None": "No spell slots to regain!",
+                "Regain": "Regain Spell Slot",
+                "Select": "Which benefit?",
+                "SlotRegained": "Spell slot (level {slotLevel}) regained!"
+            },
             "BoomingBlade": {
                 "Moved": "Booming Blade: Moved",
                 "NoWeapons": "You have no valid weapon equipped!",
@@ -254,6 +272,10 @@
             "CallLightning": {
                 "StormBolt": "Storm Bolt",
                 "Storming": "Is it already storming?"
+            },
+            "CallTheHunt": {
+                "Bonus": "Apply Call the Hunt bonus damage? (1d6)",
+                "Select": "Select targets (max: {maxTargets})"
             },
             "ChainLightning": {
                 "Leap": "Chain Lightning: Leap",
@@ -307,6 +329,11 @@
             },
             "EldritchBlast": {
                 "Target": "Which targets?"
+            },
+            "ElementalCleaver": {
+                "Change": "Elemental Cleaver: Change Damage Type",
+                "ElementalCleaver": "Elemental Cleaver",
+                "SelectWeapon": "Which weapon would you like to infuse?"
             },
             "ElementalWeapon": {
                 "NoWeapons": "Target has no valid non-magical equipped weapons!",
@@ -731,6 +758,18 @@
                 "Distance": "Bond distance is too far away, remove bond?",
                 "MaxDistance": "Max Distance:"
             },
+            "WildSurge": {
+                "BoltOfLight": "Bolt of Light",
+                "FlowersAndVines": "Flowers and Vines",
+                "IntangibleSpirit": "Intangible Spirit",
+                "MagicInfusion": "Magic Infusion",
+                "ProtectiveLights": "Protective Lights",
+                "Retribution": "Retribution",
+                "Select": "Which effect?",
+                "ShadowyTendrils": "Shadowy Tendrils",
+                "Target": "Select a target:",
+                "Teleport": "Teleport"
+            },
             "WitherAndBloom": {
                 "Heal": "Wither And Bloom: Heal",
                 "SelectHitDie": "Select how many Hit Dice to roll.",
@@ -945,8 +984,8 @@
                 "Name": "Additional Compendiums"
             },
             "applyConditionChanges": {
-                "Hint": "When enabled, conditions will automatically have Midi-Qol effects applied to them.",
-                "Name": "Apply Midi-QOl Condition Effects"
+                "Hint": "When enabled, conditions will automatically have Midi-QOL effects applied to them.",
+                "Name": "Apply Midi-QOL Condition Effects"
             },
             "babonusOverlappingEffects": {
                 "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",

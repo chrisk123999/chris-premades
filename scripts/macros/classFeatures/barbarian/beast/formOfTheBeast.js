@@ -12,7 +12,7 @@ async function use({workflow}) {
 }
 export let formOfTheBeast = {
     name: 'Form of the Beast',
-    version: '0.12.15'
+    version: '0.12.20'
 };
 export let formOfTheBeastBite = {
     name: 'Form of the Beast: Bite',
