@@ -22,6 +22,14 @@ function reRender(effect) {
     if (effect.parent?.uuid != effectItem?.uuid) return;
     let document = ui.sidebar.tabs.effects.documents.contents.find(i => i.id === effect.id);
     document.name = effect.name;
+    if (document.flags['chris-premades']?.effectInterface.customStatus) {
+        let status = CONFIG.statusEffects.find(i => i._id === effect.id);
+        console.log(status);
+        if (status) {
+            status.id = effect.name.toLowerCase().slugify();
+            status.label = effect.name;
+        }
+    }
     ui.sidebar.tabs.effects.render(true);
 
 }
@@ -175,9 +183,10 @@ class EffectDirectory extends DocumentDirectory {
                 callback: async (header) => {
                     let document = getDocument(header);
                     if (!document) return;
-                    await genericUtils.setFlag(document, 'chris-premades', 'effectInterface.customStatus', true);
+                    let id = document.name.toLowerCase().slugify();
+                    await genericUtils.setFlag(document, 'chris-premades', 'effectInterface.customStatus', id);
                     CONFIG.statusEffects.push({
-                        id: document.name.toLowerCase().slugify(),
+                        id: id,
                         img: document.img,
                         name: document.name,
                         _id: document.id,
@@ -413,6 +422,7 @@ async function checkEffectItem() {
 function fromStatusEffect(wrapped, statusId, options = {}) {
     if (options.passThrough || !effectItem) return wrapped(statusId, options);
     let effect = effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.status === statusId);
+    if (!effect) effectItem.effects.find(i => i.flags['chris-premades']?.effectInterface?.customStatus === statusId);
     if (!effect) return wrapped(statusId, options);
     let effectData = effect.toObject();
     delete effectData.origin;
