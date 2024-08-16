@@ -190,7 +190,7 @@ async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
 }
 async function rollFinished(workflow) {
-    console.log(workflow);
+    if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
     await executeMacroPass(workflow, 'rollFinished');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.RollComplete(workflow);

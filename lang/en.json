@@ -135,7 +135,9 @@
             "ImportData": "Import Data: ",
             "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted! This item will hide itself when the Effect Interface setting is enabled.",
             "NewEffect": "New Effect",
-            "SelectToken": "Please select a token first!"
+            "SelectToken": "Please select a token first!",
+            "StatusAdd": "Add to Status Effects",
+            "StatusRemove": "Remove from Status Effects"
         },
         "Error": {
             "ActorNotFound": "Required sidebar actor not found!",

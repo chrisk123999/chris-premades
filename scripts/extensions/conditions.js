@@ -25,12 +25,13 @@ async function deleteActiveEffect(effect, options, userId) {
 function setStatusEffectIcons() {
     let icons = genericUtils.getCPRSetting('statusEffectIcons');
     CONFIG.statusEffects.forEach(i => {
+        if (i.customStatus) return;
         if (icons[i.id] && i.img != icons[i.id].img) i.img = icons[i.id];
     });
 }
 async function configureStatusEffectIcons() {
     let icons = genericUtils.getCPRSetting('statusEffectIcons');
-    let inputs = CONFIG.statusEffects.map(i => ({
+    let inputs = CONFIG.statusEffects.filter(k => !k.customStatus).map(i => ({
         label: i.name,
         name: i.id,
         options: {
