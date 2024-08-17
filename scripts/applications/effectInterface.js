@@ -409,7 +409,7 @@ async function checkEffectItem() {
             return true;
         }).map(async j => {
             let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id, {passThrough: true})).toObject();
-            genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j._id);
+            genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j.id);
             delete effectData.origin;
             delete effectData._stats;
             return effectData;

@@ -76,7 +76,8 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             },
             macros: {
                 effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
-                aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? ''
+                aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? '',
+                actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools')
         };
@@ -401,7 +402,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 try {
                     value = JSON.parse(event.target.value.replace(/'/g, '"'));
                 } catch (error) {
-                    ui.notifications.error('Error with Midi Item field, see console');
+                    ui.notifications.error('Error with ' + event.target.id + ' field, see console');
                     console.error(error);
                 }
                 if (value) this.context.macros[event.target.id] = event.target.value;
@@ -409,7 +410,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         this.render(true);
     }
-
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};
         this.setPosition(autoPos);
