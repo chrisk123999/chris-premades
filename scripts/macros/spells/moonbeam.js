@@ -17,7 +17,8 @@ async function use({workflow}) {
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {
                     template: ['moonbeamBeam']
-                }
+                },
+                damageType: itemUtils.getConfig(workflow.item, 'damageType')
             }
         }
     });
@@ -39,8 +40,7 @@ async function use({workflow}) {
             'chris-premades': {
                 moonbeam: {
                     templateUuid: template.uuid
-                },
-                damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                }
             }
         }
     };
