@@ -14,20 +14,22 @@ async function ready() {
     }
     Hooks.on('changeSidebarTab', removeItem);
     Hooks.on('renderItemDirectory', removeItem);
-    Hooks.on('updateActiveEffect', reRender);
+    Hooks.on('updateActiveEffect', updateEffect);
     patch(true);
     statusEffects();
 }
-function reRender(effect) {
+function updateEffect(effect) {
     if (effect.parent?.uuid != effectItem?.uuid) return;
     let document = ui.sidebar.tabs.effects.documents.contents.find(i => i.id === effect.id);
     document.name = effect.name;
     if (document.flags['chris-premades']?.effectInterface.customStatus) {
+        let id = effect.name.toLowerCase().slugify();
         let status = CONFIG.statusEffects.find(i => i._id === effect.id);
         if (status) {
-            status.id = effect.name.toLowerCase().slugify();
+            status.id = id;
             status.label = effect.name;
         }
+        if (!effect.statuses.has(id)) genericUtils.update(effect, {statuses: [...Array.from(document.statuses), id]});
     }
     ui.sidebar.tabs.effects.render(true);
 }
@@ -182,7 +184,7 @@ class EffectDirectory extends DocumentDirectory {
                     let document = getDocument(header);
                     if (!document) return;
                     let id = document.name.toLowerCase().slugify();
-                    await genericUtils.setFlag(document, 'chris-premades', 'effectInterface.customStatus', id);
+                    await genericUtils.update(document, {statuses: [...Array.from(document.statuses), id], 'flags.chris-premades.effectInterface.customStatus': id});
                     CONFIG.statusEffects.push({
                         id: id,
                         img: document.img,
@@ -204,7 +206,8 @@ class EffectDirectory extends DocumentDirectory {
                 callback: async (header) => {
                     let document = getDocument(header);
                     if (!document) return;
-                    await genericUtils.setFlag(document, 'chris-premades', 'effectInterface.customStatus', false);
+                    let id = document.name.toLowerCase().slugify();
+                    await genericUtils.update(document, {statuses: Array.from(document.statuses).filter(i => i != id), 'flags.chris-premades.effectInterface.customStatus': false});
                     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => i._id != document.id);
                 },
                 condition: (header) => {

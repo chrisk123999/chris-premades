@@ -12,7 +12,6 @@ let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
     summonFeatures: 'chris-premades.CPRSummonFeatures',
     classFeatureItems: 'chris-premades.CPRClassFeatureItems',
-    actions: 'chris-premades.CPRActions'
 };
 function setUseLocalCompendium(value) {
     if (value) {

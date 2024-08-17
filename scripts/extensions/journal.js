@@ -45,7 +45,8 @@ export async function setupJournal() {
             });
         }
     }
-    for (let i of Object.values(constants.featurePacks)) {
+    let featurePacks = [...Object.values(constants.featurePacks), constants.packs.actions];
+    for (let i of featurePacks) {
         let pack = game.packs.get(i);
         if (!pack) {
             errors.missingPack();
