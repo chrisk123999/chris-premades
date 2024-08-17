@@ -1,0 +1,191 @@
+{
+  "name": "Unarmored Defense (Barbarian)",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Barbarian"
+    },
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
+    },
+    "midi-qol": {
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "core": {
+      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.q3ls7CZYFACljk9z"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Unarmored Defense (Barbarian)",
+        "version": "0.12.20",
+        "identifier": "unarmoredDefenseBarbarian",
+        "source": "chris-premades"
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    }
+  },
+  "effects": [
+    {
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "unarmoredBarb",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "_id": "I423aOUKeBr5UJES",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        }
+      },
+      "name": "Unarmored Defense",
+      "description": "",
+      "statuses": [],
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.330",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!7Mrba9HuN6tegGw9.I423aOUKeBr5UJES"
+    }
+  ],
+  "img": "icons/magic/control/buff-flight-wings-runes-red.webp",
+  "folder": "MlxEnOdLyLiMVjIK",
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3,
+    "wyNw8BrgTfPgbUM3": 3
+  },
+  "_id": "7Mrba9HuN6tegGw9",
+  "_key": "!items!7Mrba9HuN6tegGw9"
+}

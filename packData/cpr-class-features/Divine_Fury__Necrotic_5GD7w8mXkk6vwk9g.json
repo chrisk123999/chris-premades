@@ -1,0 +1,142 @@
+{
+  "name": "Divine Fury: Necrotic",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Barbarian : Path of the Zealot"
+    },
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.7appQkrMAFL4bSSi"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Divine Fury: Necrotic",
+        "version": "0.12.20",
+        "identifier": "divineFuryNecrotic",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "combat": [
+          "divineFuryNecrotic"
+        ],
+        "midi": {
+          "actor": [
+            "divineFuryNecrotic"
+          ]
+        }
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/fire/projectile-wave-arrow.webp",
+  "folder": "p8rIlDIFCSfUk7fX",
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3,
+    "wyNw8BrgTfPgbUM3": 3
+  },
+  "_id": "5GD7w8mXkk6vwk9g",
+  "_key": "!items!5GD7w8mXkk6vwk9g"
+}
