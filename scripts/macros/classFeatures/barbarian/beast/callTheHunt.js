@@ -18,7 +18,7 @@ async function early({workflow}) {
 async function late({workflow}) {
     if (!workflow.targets.size || !workflow.token) return;
     let damageRoll = await new CONFIG.Dice.DamageRoll(workflow.targets.size * 5 + '[temphp]', {}, {type: 'temphp'}).evaluate();
-    await workflowUtils.applyDamage([workflow.token], damageRoll, 'temphp');
+    await workflowUtils.applyDamage([workflow.token], damageRoll.total, 'temphp');
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!effect) return;
     let effectData = {
