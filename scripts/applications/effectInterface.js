@@ -404,7 +404,7 @@ async function checkEffectItem() {
         let ignoreList = genericUtils.getCPRSetting('disableNonConditionStatusEffects') ? conditions.ignoredStatusEffects : [];
         ignoreList.push('exhaustion');
         let statusEffectDatas = (await Promise.all(CONFIG.statusEffects.filter(i => {
-            if (!i._id.includes('dnd')) return false;
+            if (!i._id?.includes('dnd')) return false;
             if (ignoreList.includes(i.id)) return false;
             return true;
         }).map(async j => {
