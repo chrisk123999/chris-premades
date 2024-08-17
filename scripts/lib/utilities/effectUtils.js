@@ -85,6 +85,7 @@ function getEffectByStatusID(actor, statusID) {
 async function applyConditions(actor, conditions, {overlay = false} = {}) {
     let updates = [];
     await Promise.all(conditions.map(async i => {
+        if (actorUtils.checkTrait(actor, 'ci', i)) return;
         let cEffect = getEffectByStatusID(actor, i);
         if (cEffect) return;
         let effectImplementation = await ActiveEffect.implementation.fromStatusEffect(i);

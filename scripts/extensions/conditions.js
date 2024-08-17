@@ -65,20 +65,32 @@ function disableNonConditionStatusEffects() {
 async function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;
     if (!updates.statuses) return;
+    let splitConditions = genericUtils.getCPRSetting('displayNestedConditions');
+    let statusId = CONFIG.statusEffects.find(i => i._id === updates._id).id;
+    let statuses = splitConditions ? [statusId] : updates.statuses;
+    let removeStatuses = [];
+    if (splitConditions) {
+        updates.statuses.forEach(i => {
+            if (i === statusId) return;
+            removeStatuses.push(i);
+        });
+    }
     let changes = [];
-    updates.statuses.forEach(i => {
+    statuses.forEach(i => {
         switch(i) {
             case 'blinded':
                 changes.push(
                     {
                         key: 'flags.midi-qol.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -87,12 +99,14 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.disadvantage.ability.check.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -101,12 +115,14 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -115,22 +131,26 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.fail.ability.save.dex',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.fail.ability.save.str',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.critical.range',
                         mode: 5,
-                        value: 5
+                        value: 5,
+                        priority: 20
                     }
                 );
                 return;
@@ -139,32 +159,38 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.fail.ability.save.dex',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.fail.ability.save.str',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'system.traits.di.value',
                         mode: 1,
-                        value: 'poison'
+                        value: 'poison',
+                        priority: 20
                     },
                     {
                         key: 'system.traits.dr.all',
                         mode: 0,
-                        value: 'physical'
+                        value: 'physical',
+                        priority: 20
                     },
                     {
                         key: 'system.traits.dr.all',
                         mode: 0,
-                        value: 'magical'
+                        value: 'magical',
+                        priority: 20
                     }
                 );
                 return;
@@ -173,12 +199,14 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.disadvantage.ability.check.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -187,23 +215,26 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) <= 5'
+                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) <= 5',
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.disadvantage.attack.all',
                         mode: 0,
-                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) > 5'
+                        value: 'getDistance(fromUuidSync(tokenUuid),workflow.targets.first()) > 5',
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'system.attributes.movement.walk',
                         mode: 0,
                         value: '*0.5',
-                        priority: 25
+                        priority: 20
                     }
                 );
                 return;
@@ -212,17 +243,20 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.disadvantage.ability.save.dex',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.disadvantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -231,7 +265,8 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.fail.spell.vocal',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -240,17 +275,20 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.fail.ability.save.dex',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.fail.ability.save.str',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     }
                 );
                 return;
@@ -260,30 +298,38 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                     {
                         key: 'flags.midi-qol.fail.ability.save.dex',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.fail.ability.save.str',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.advantage.attack.all',
                         mode: 0,
-                        value: 1
+                        value: 1,
+                        priority: 20
                     },
                     {
                         key: 'flags.midi-qol.grants.critical.range',
                         mode: 5,
-                        value: 5
+                        value: 5,
+                        priority: 20
                     }
                 );
                 return;
         }
     });
-    if (!changes.length) return;
-    if (updates.changes) changes = updates.changes.concat(changes);
-    effect.updateSource({changes: changes});
+    if (!changes.length && !removeStatuses.length) return;
+    let sourceUpdates = {
+        changes: updates.changes.concat(changes),
+        statuses: updates.statuses.filter(i => !removeStatuses.includes(i))
+    };
+    if (splitConditions) genericUtils.setProperty(sourceUpdates, 'flags.chris-premades.conditions', removeStatuses);
+    effect.updateSource(sourceUpdates);
 }
 function disableSpecialEffects(enabled) {
     CONFIG.specialStatusEffects.BLIND = enabled ? null : 'blinded';

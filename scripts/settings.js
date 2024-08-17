@@ -482,6 +482,12 @@ export function registerSettings() {
         default: true,
         category: 'general'
     });
+    addSetting({
+        key: 'displayNestedConditions',
+        type: Boolean,
+        default: false,
+        category: 'mechanics'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

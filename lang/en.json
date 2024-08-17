@@ -1154,6 +1154,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "displayNestedConditions": {
+                "Hint": "When enabled, nested condition effects will be visible. For example: Paralyzed will also visibly add Incapacitated.",
+                "Name": "Display Nested Conditions"
             }
         },
         "SkillCheck": {
