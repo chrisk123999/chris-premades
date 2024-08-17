@@ -138,6 +138,16 @@ async function toggleSidebarEffect(documentId) {
 async function addSidebarEffect(documentId) {
     await sidebarEffectHelper(documentId, false);
 }
+function getSidebarEffectData(name) {
+    let effectsItem = game.items.find(i => i.flags['chris-premades']?.effectInterface);
+    if (!effectsItem) return;
+    let effect = effectsItem.collections.effects.getName(name);
+    if (!effect) return;
+    let effectData = effect.toObject();
+    delete effectData._id;
+    delete effectData.origin;
+    return effectData;
+}
 async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
@@ -161,5 +171,6 @@ export let effectUtils = {
     applyConditions,
     toggleSidebarEffect,
     addSidebarEffect,
-    syntheticActiveEffect
+    syntheticActiveEffect,
+    getSidebarEffectData
 };
