@@ -761,7 +761,9 @@
             "WildSurge": {
                 "BoltOfLight": "Bolt of Light",
                 "FlowersAndVines": "Flowers and Vines",
+                "Form": "What form does the intangible spirit take?",
                 "IntangibleSpirit": "Intangible Spirit",
+                "IntangibleSpiritExplode": "Wild Surge: Intangible Spirit Explode",
                 "MagicInfusion": "Magic Infusion",
                 "ProtectiveLights": "Protective Lights",
                 "Retribution": "Retribution",
@@ -777,6 +779,9 @@
             },
             "WrathfulSmite": {
                 "Frighten": "Wrathful Smite: Frighten"
+            },
+            "ZealousPresence": {
+                "Select": "Who should get targeted? (Max: {maxTargets})"
             },
             "ZoneOfTruth": {
                 "Save": "Zone of Truth: Save"
@@ -1043,6 +1048,10 @@
                 "Hint": "When enabled, the blinded and invisible conditions don't apply visual effects.",
                 "Name": "Disable Special Effects"
             },
+            "displayNestedConditions": {
+                "Hint": "When enabled, nested condition effects will be visible. For example: Paralyzed will also visibly add Incapacitated.",
+                "Name": "Display Nested Conditions"
+            },
             "effectDescriptionNPC": {
                 "Hint": "When enabled, the Automatic Effect Description setting will not apply for NPC created effects.",
                 "Name": "Hide NPC Effect Descriptions"
@@ -1154,10 +1163,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "displayNestedConditions": {
-                "Hint": "When enabled, nested condition effects will be visible. For example: Paralyzed will also visibly add Incapacitated.",
-                "Name": "Display Nested Conditions"
             }
         },
         "SkillCheck": {
@@ -1203,8 +1208,10 @@
                 "FiendishSpiritDemon": "Fiendish Spirit (Demon)",
                 "FiendishSpiritDevil": "Fiendish Spirit (Devil)",
                 "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
+                "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
+                "Pixie": "Pixie",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",
                 "ShadowSpiritFear": "Shadow Spirit (Fear)",

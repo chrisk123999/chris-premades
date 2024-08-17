@@ -73,7 +73,9 @@ async function late({workflow}) {
     };
     await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData, {identifier: 'ancestralProtectorsResistance'});
 }
-// TODO: Could in theory only attach this macro when rage is entered to save this being called outside of rage
+async function combatEnd({trigger: {entity: item}}) {
+    await combatUtils.setTurnCheck(item, 'ancestralProtectors', true);
+}
 export let ancestralProtectors = {
     name: 'Ancestral Protectors',
     version: '0.12.20',
@@ -85,7 +87,14 @@ export let ancestralProtectors = {
                 priority: 50
             }
         ]
-    }
+    },
+    combat: [
+        {
+            pass: 'combatEnd',
+            macro: combatEnd,
+            priority: 50
+        }
+    ]
 };
 export let ancestralProtectorsTarget = {
     name: 'Ancestral Protectors: Target',

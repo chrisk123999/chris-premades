@@ -158,6 +158,7 @@ export {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js
 export {controlledSurge} from './macros/classFeatures/barbarian/wildMagic/controlledSurge.js';
 export {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 export {demiurgicColossus} from './macros/classFeatures/barbarian/giant/demiurgicColossus.js';
+export {divineFuryNecrotic, divineFuryRadiant} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
@@ -170,6 +171,9 @@ export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.j
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';
 export {unarmoredDefenseBarbarian} from './macros/classFeatures/barbarian/unarmoredDefense.js';
+export {unstableBacklash} from './macros/classFeatures/barbarian/wildMagic/unstableBacklash.js';
+export {wildSurge, wildSurgeIntangibleSpirit, wildSurgeProtectiveLights, wildSurgeRetribution, wildSurgeTeleport} from './macros/classFeatures/barbarian/wildMagic/wildSurge.js';
+export {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';

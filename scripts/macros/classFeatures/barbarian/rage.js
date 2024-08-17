@@ -237,7 +237,6 @@ async function use({workflow}) {
         let selection = await dialogUtils.confirm(callTheHunt.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: callTheHunt.name}));
         if (selection) await workflowUtils.completeItemUse(callTheHunt);
     }
-    // TODO: Implement
     let wildSurge = itemUtils.getItemByIdentifier(workflow.actor, 'wildSurge');
     if (wildSurge) await workflowUtils.completeItemUse(wildSurge);
     let elementalCleaver = itemUtils.getItemByIdentifier(workflow.actor, 'elementalCleaver');
