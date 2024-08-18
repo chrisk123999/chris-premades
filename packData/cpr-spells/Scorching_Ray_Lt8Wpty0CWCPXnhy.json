@@ -96,7 +96,7 @@
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.scorchingRay",
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""

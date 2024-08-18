@@ -84,7 +84,7 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.healingSpirit.healing"
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,

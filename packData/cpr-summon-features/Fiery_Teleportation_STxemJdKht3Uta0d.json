@@ -79,7 +79,7 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.summonWildfireSpirit.fieryTeleportation"
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,

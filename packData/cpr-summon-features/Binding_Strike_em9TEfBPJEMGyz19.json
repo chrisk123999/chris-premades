@@ -162,7 +162,7 @@
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "[preCheckHits]function.chrisPremades.tashaSummon.meleeAttack,[postDamageRoll]function.chrisPremades.macros.primalCompanion.bindingStrike"
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,

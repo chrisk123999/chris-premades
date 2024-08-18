@@ -1,21 +1,22 @@
 {
-  "type": "spell",
+  "name": "Aura of Protection",
+  "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257"
+      "custom": "Paladin"
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": "inst"
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -23,13 +24,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 120,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -45,8 +46,8 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
-    "chatFlavor": "[1d4 + 1 - force] 3 Darts",
+    "actionType": "",
+    "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
@@ -61,44 +62,42 @@
       "dc": null,
       "scaling": "spell"
     },
-    "level": 1,
-    "school": "evo",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
+    "type": {
+      "value": "class",
+      "subtype": ""
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
     },
-    "scaling": {
-      "mode": "none",
-      "formula": ""
-    },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
+    "properties": [],
     "attack": {
       "bonus": "",
       "flat": false
     },
     "enchantment": null,
-    "summons": null
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "name": "Magic Missile",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": false
     },
     "midi-qol": {
+      "forceCEOff": true,
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
+    },
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.niBoNwXBJyxZFFyC"
     },
     "midiProperties": {
       "nodam": false,
@@ -121,31 +120,30 @@
       "idv": false,
       "ida": false
     },
+    "cf": null,
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
-        "version": "0.12.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "name": "Aura of Protection",
+        "version": "0.12.23",
+        "identifier": "auraOfProtection",
         "source": "chris-premades"
       },
       "macros": {
-        "midi": {
-          "item": [
-            "magicMissile"
-          ]
-        }
+        "aura": [
+          "auraOfProtection"
+        ]
       }
-    },
-    "dnd5e": {}
+    }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
-  "folder": null,
-  "_id": "esi4oCwrMDW79KXs",
+  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+  "folder": "0w2ZKGeXYiA5LJaA",
   "ownership": {
     "default": 0,
-    "Sxnc2j6hSZtjzxy2": 3
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3,
+    "wyNw8BrgTfPgbUM3": 3
   },
-  "_key": "!items!esi4oCwrMDW79KXs"
+  "_id": "ET9HAbfXOHohIm5w",
+  "_key": "!items!ET9HAbfXOHohIm5w"
 }

@@ -1,17 +1,16 @@
 {
-  "name": "Maul",
+  "name": "Aura of Courage",
   "type": "feat",
-  "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Paladin"
     },
     "activation": {
-      "type": "action",
+      "type": "",
       "cost": null,
       "condition": ""
     },
@@ -22,16 +21,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -46,9 +45,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "wis",
-    "actionType": "mwak",
-    "attackBonus": "",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,8 +55,7 @@
     "damage": {
       "parts": [
         [
-          "1d8[slashing] + 2 + @prof",
-          "slashing"
+          "@scale.paladin.aura-of-courage"
         ]
       ],
       "versatile": ""
@@ -70,7 +67,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,44 +75,69 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "removeAttackDamageButtons": "default",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.jQv0irz21RRIUj5d"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Courage",
+        "version": "0.12.23",
+        "identifier": "auraOfCourage",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "aura": [
+          "auraOfCourage"
+        ]
+      }
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
-      "noConcentrationCheck": false
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
-    "core": {}
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    }
   },
-  "folder": "41ZpPEmU7uDP91aF",
-  "_id": "6ELt1eApUKlSQbtK",
+  "effects": [],
+  "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+  "folder": "0w2ZKGeXYiA5LJaA",
   "ownership": {
     "default": 0,
     "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3
+    "m9ZEHyQjhLqQuPSG": 3,
+    "wyNw8BrgTfPgbUM3": 3
   },
-  "_key": "!items!6ELt1eApUKlSQbtK"
+  "_id": "SceobJxMKJUMIRYs",
+  "_key": "!items!SceobJxMKJUMIRYs"
 }

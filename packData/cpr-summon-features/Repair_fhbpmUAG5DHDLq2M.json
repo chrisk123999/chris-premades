@@ -84,7 +84,7 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.steelDefender.repair"
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,

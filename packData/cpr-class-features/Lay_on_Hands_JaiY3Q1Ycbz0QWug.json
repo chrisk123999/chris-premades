@@ -1,12 +1,10 @@
 {
-  "type": "spell",
+  "name": "Lay on Hands",
+  "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
-    },
-    "source": {
-      "custom": "Basic Rules, Player's Handbook pg 257"
     },
     "activation": {
       "type": "action",
@@ -15,7 +13,7 @@
     },
     "duration": {
       "value": "",
-      "units": "inst"
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -23,20 +21,20 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 120,
-      "long": null,
-      "units": "ft"
+      "value": null,
+      "units": "touch",
+      "long": null
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 5,
+      "max": "15",
+      "per": "lr",
       "recovery": "",
-      "prompt": true
+      "prompt": false
     },
     "consume": {
       "type": "",
@@ -45,14 +43,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
-    "chatFlavor": "[1d4 + 1 - force] 3 Darts",
+    "actionType": "heal",
+    "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "0[healing]",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -61,91 +64,80 @@
       "dc": null,
       "scaling": "spell"
     },
-    "level": 1,
-    "school": "evo",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
+    "type": {
+      "value": "class",
+      "subtype": ""
     },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
     },
-    "scaling": {
-      "mode": "none",
-      "formula": ""
+    "source": {
+      "custom": ""
     },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
     "attack": {
       "bonus": "",
       "flat": false
     },
     "enchantment": null,
-    "summons": null
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "name": "Magic Missile",
   "flags": {
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.OPqTuvUbdRsEpjKv"
-    },
     "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
+      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
+      "effectActivation": false,
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "onUseMacroName": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {},
     "chris-premades": {
       "info": {
-        "name": "Magic Missile",
-        "version": "0.12.0",
-        "hasAnimation": true,
-        "identifier": "magicMissile",
+        "name": "Lay on Hands Pool",
+        "version": "0.12.23",
+        "identifier": "layOnHands",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "magicMissile"
+            "layOnHands"
           ]
         }
       }
-    },
-    "dnd5e": {}
+    }
   },
   "effects": [],
-  "img": "icons/magic/fire/projectile-meteor-salvo-light-blue.webp",
-  "folder": null,
-  "_id": "esi4oCwrMDW79KXs",
+  "img": "icons/magic/light/orbs-hand-gray.webp",
+  "folder": "0w2ZKGeXYiA5LJaA",
+  "_id": "JaiY3Q1Ycbz0QWug",
   "ownership": {
     "default": 0,
-    "Sxnc2j6hSZtjzxy2": 3
+    "PQGBBcoVSwpUhViM": 3,
+    "wyNw8BrgTfPgbUM3": 3
   },
-  "_key": "!items!esi4oCwrMDW79KXs"
+  "_key": "!items!JaiY3Q1Ycbz0QWug"
 }

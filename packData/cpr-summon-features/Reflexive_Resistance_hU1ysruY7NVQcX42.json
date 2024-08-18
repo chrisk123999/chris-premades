@@ -79,7 +79,7 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "[postActiveEffects]function.chrisPremades.macros.summonDrakeCompanion.on"
+      "onUseMacroName": ""
     },
     "midiProperties": {
       "nodam": false,

@@ -97,7 +97,7 @@
   "name": "Chromatic Orb",
   "flags": {
     "midi-qol": {
-      "onUseMacroName": "[postDamageRoll]function.chrisPremades.macros.chromaticOrb",
+      "onUseMacroName": "",
       "forceCEOff": true,
       "fumbleThreshold": null,
       "effectActivation": false,
