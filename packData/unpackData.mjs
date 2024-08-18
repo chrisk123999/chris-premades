@@ -15,7 +15,8 @@ let itemPacks = [
     'cpr-spells',
     'cpr-spell-features',
     'cpr-summon-features',
-    //'cpr-feats'
+    //'cpr-feats',
+    'cpr-miscellaneous-items'
 ];
 let actorPacks = [
     'cpr-summons'

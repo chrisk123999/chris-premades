@@ -16,7 +16,8 @@ let packs = [
     'cpr-spells',
     'cpr-spell-features',
     'cpr-summon-features',
-    'cpr-summons'
+    'cpr-summons',
+    'cpr-miscellaneous-items'
 ];
 for (let i of packs) {
     await compilePack('./packData/' + i, './packs/' + i, {'log': true});
