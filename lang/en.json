@@ -163,6 +163,7 @@
             "Close": "Close",
             "Configure": "Configure",
             "Confirm": "Confirm",
+            "Default": "Default",
             "Description": "Description",
             "Disabled": "Disabled",
             "Disadvantage": "Disadvantage",
@@ -180,6 +181,7 @@
             "SelectSpellSlot": "Select a spell slot:",
             "Skill": "Skill Check",
             "Skills": "Skills",
+            "Summon": "Summon",
             "Uncontested": "Uncontested",
             "Update": "Update",
             "Yes": "Yes"
@@ -1178,12 +1180,26 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "spotlightOmnisearchSummons": {
+                "Hint": "When enabled, you can use Spotlight Omnisearch to summon creatures from your monster compendium. Reload required after enabling.",
+                "Name": "Spotlight Omnisearch Summons"
             }
         },
         "SkillCheck": {
             "Title": "Skill Check"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
+        "SpotlightOmnisearch": {
+            "Actor": "Selected token is not associated with any actor!",
+            "Description": "Summon a {name} using Chris's Premades.",
+            "Time": {
+                "Day": "1 Day",
+                "Hour": "1 Hour",
+                "Minute": "1 Minute"
+            },
+            "Token": "Please selected a token before using this feature!"
+        },
         "Summons": {
             "ActorName": "{option} Actor Name",
             "CRSelection": "{numSummons} {typePl} of CR {cr} or lower",

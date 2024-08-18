@@ -149,6 +149,7 @@ export {removeTemplate} from './macros/generic/removeTemplate.js';
 export {summonTurnHostile} from './macros/generic/summonTurnHostile.js';
 export {summonUtils} from './lib/summons.js';
 export {test} from './macros/test.js';
+export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 // Class Features
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 export {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';

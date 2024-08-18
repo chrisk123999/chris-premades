@@ -488,6 +488,12 @@ export function registerSettings() {
         default: false,
         category: 'mechanics'
     });
+    addSetting({
+        key: 'spotlightOmnisearchSummons',
+        type: Boolean,
+        default: false,
+        category: 'integration'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

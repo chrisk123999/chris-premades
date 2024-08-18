@@ -26,6 +26,7 @@ import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
 import {updateCheck} from './extensions/update.js';
 import {troubleshooter} from './applications/troubleshooter.js';
+import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -41,6 +42,7 @@ Hooks.once('init', () => {
     abilitySave.init();
     skillCheck.init();
     effectEvents.init();
+    if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
 });
 Hooks.once('ready', () => {
     troubleshooter.startup();

@@ -19,7 +19,7 @@ function getSaveDC(item) {
 function getMod(item) {
     return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
 }
-async function createItems(actor, updates, {favorite, section, parentEntity, identifier}) {
+async function createItems(actor, updates, {favorite, section, parentEntity, identifier} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (section) updates.forEach(i => genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section));
     if (identifier) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.info.identifier', identifier));

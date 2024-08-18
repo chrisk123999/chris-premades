@@ -116,6 +116,13 @@ function log(type, message) {
     if (type === 'dev') type = 'log';
     console[type]('CPR: ' + message);
 }
+function titleCase(inputString) {
+    return inputString.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+}
+function camelCaseToWords(s) {
+    const result = s.replace(/([A-Z])/g, ' $1');
+    return result.charAt(0).toUpperCase() + result.slice(1);
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -139,5 +146,7 @@ export let genericUtils = {
     updateTargets,
     collapseObjects,
     updateEmbeddedDocuments,
-    log
+    log,
+    titleCase,
+    camelCaseToWords
 };
