@@ -266,6 +266,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         genericUtils.setProperty(flagUpdates, 'conditions', this.context.configure.conditions.value);
         if (this.context.macros.effect.value && (this.context.macros.effect.value != '')) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura.value && (this.context.macros.aura.value != '')) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
+        if (this.context.macros.actor.value && (this.context.macros.actor.value != '')) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         console.log(effectData);
