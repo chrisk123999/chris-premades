@@ -460,6 +460,10 @@
             "HoldPerson": {
                 "Overtime": "Hold Person (End of Turn)"
             },
+            "HolyNimbus": {
+                "Damage": "Holy Nimbus: Damage",
+                "Save": "This save is from a spell cast by a fiend or undead."
+            },
             "HolyWeapon": {
                 "Burst": "Holy Weapon: Burst",
                 "BurstOvertime": "Holy Weapon: Burst (End of Turn)",
@@ -548,6 +552,12 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
+            },
+            "SacredWeapon": {
+                "Dismiss": "Sacred Weapon: Dismiss",
+                "NoWeapons": "You have no equipped weapons!",
+                "Sacred": "Sacred Weapon",
+                "SelectWeapon": "Which weapon would you like to imbue?"
             },
             "Sanctuary": {
                 "Failed": "Cannot attack this target - must choose another target or lose their attack/spell!",
@@ -1161,6 +1171,10 @@
                 "Hint": "When enabled, certain macros will prompt the player for more information for the skill check.",
                 "Name": "Contextual Skill Checks"
             },
+            "spotlightOmnisearchSummons": {
+                "Hint": "When enabled, you can use Spotlight Omnisearch to summon creatures from your monster compendium. Reload required after enabling.",
+                "Name": "Spotlight Omnisearch Summons"
+            },
             "statusEffectIcons": {
                 "Hint": "Configure status icon images.",
                 "Name": "Configure Status Icon Images"
@@ -1180,10 +1194,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "spotlightOmnisearchSummons": {
-                "Hint": "When enabled, you can use Spotlight Omnisearch to summon creatures from your monster compendium. Reload required after enabling.",
-                "Name": "Spotlight Omnisearch Summons"
             }
         },
         "SkillCheck": {

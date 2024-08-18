@@ -153,6 +153,7 @@ export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 // Class Features
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
 export {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
+export {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
 export {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 export {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
@@ -167,12 +168,15 @@ export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/b
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/giantStature.js';
+export {holyNimbus, holyNimbusActive} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
 export {infectiousFury, infectiousFuryAttack} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 export {persistentRage} from './macros/classFeatures/barbarian/persistentRage.js';
+export {purityOfSpirit} from './macros/classFeatures/paladin/oathOfDevotion/purityOfSpirit.js';
 export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.js';
+export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';
 export {unarmoredDefenseBarbarian} from './macros/classFeatures/barbarian/unarmoredDefense.js';
