@@ -17,7 +17,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Summons.SelectSummon', compendiumDocs, {sortAlphabetical: true, userId});
+    let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Summons.SelectSummon', compendiumDocs, {sortAlphabetical: true, sortCR: true, userId});
     if (!sourceActor) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;

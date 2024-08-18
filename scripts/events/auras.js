@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils, tokenUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils} from '../utils.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
 }
@@ -20,7 +20,7 @@ function collectTokenMacros(token, pass, distance, target) {
             auraMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;
-                    if (effectUtils.getEffectByIdentifier(token.actor, 'unconscious') || effectUtils.getEffectByIdentifier(token.actor, 'dead')) return;
+                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
                 }
                 if (i.distance === 'paladin') {
                     let paladinLevels = token.actor.classes?.paladin?.system?.levels;
@@ -41,6 +41,41 @@ function collectTokenMacros(token, pass, distance, target) {
                     },
                     macro: i.macro,
                     name: effect.name,
+                    priority: i.priority,
+                    token: token.object,
+                    target: target?.object,
+                    distance: distance,
+                    identifier: i.identifier
+                });
+            });
+        }
+        for (let item of token.actor.items) {
+            let macroList = collectAuraMacros(item);
+            if (!macroList.length) continue;
+            let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
+            auraMacros.forEach(i => {
+                if (i.conscious) {
+                    if (!token.actor.system.attributes.hp.value) return;
+                    if (effectUtils.getEffectByStatusID(token.actor, 'unconscious') || effectUtils.getEffectByStatusID(token.actor, 'dead')) return;
+                }
+                if (i.distance === 'paladin') {
+                    let paladinLevels = token.actor.classes?.paladin?.system?.levels;
+                    if (!paladinLevels) return;
+                    let maxRange = paladinLevels >= 18 ? 30 : 10;
+                    if (maxRange < distance) return;
+                } else if (i.distance < distance) return;
+                if (i.disposition) {
+                    if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
+                    if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
+                }
+                triggers.push({
+                    entity: item,
+                    castData: {
+                        castLevel: -1,
+                        saveDC: itemUtils.getSaveDC(item) ?? -1
+                    },
+                    macro: i.macro,
+                    name: item.name,
                     priority: i.priority,
                     token: token.object,
                     target: target?.object,
@@ -125,7 +160,8 @@ async function executeMacroPass(tokens, pass, token, options) {
 }
 async function updateAuras(token, options) {
     let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.macros?.aura);
-    if (effect) {
+    let item = token.actor.items.find(i => i.flags['chris-premades']?.macros?.aura);
+    if (effect || item) {
         await Promise.all(token.parent.tokens.map(async i => await executeMacroPass(token.parent.tokens, 'create', i, options)));
     } else {
         await executeMacroPass(token.parent.tokens, 'create', token, options);
@@ -151,7 +187,10 @@ async function canvasReady(canvas) {
     await Promise.all(canvas.scene.tokens.filter(j => j.actor).map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
 async function effectCheck(effect) {
-    if (effect.flags['chris-premades']?.macros?.aura) await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
+    let shouldUpdate = effect.flags['chris-premades']?.macros?.aura;
+    shouldUpdate = shouldUpdate || ['dead', 'unconscious'].some(i => effect.statuses.has(i));
+    if (!shouldUpdate) return;
+    await Promise.all(canvas.scene.tokens.map(async i => await executeMacroPass(canvas.scene.tokens, 'create', i)));
 }
 export let auras = {
     updateAuras,

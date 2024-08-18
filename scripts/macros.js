@@ -151,6 +151,8 @@ export {summonUtils} from './lib/summons.js';
 export {test} from './macros/test.js';
 // Class Features
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+export {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
+export {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 export {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
 export {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
@@ -159,12 +161,14 @@ export {controlledSurge} from './macros/classFeatures/barbarian/wildMagic/contro
 export {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
 export {demiurgicColossus} from './macros/classFeatures/barbarian/giant/demiurgicColossus.js';
 export {divineFuryNecrotic, divineFuryRadiant} from './macros/classFeatures/barbarian/zealot/divineFury.js';
+export {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/giantStature.js';
 export {infectiousFury, infectiousFuryAttack} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
+export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 export {persistentRage} from './macros/classFeatures/barbarian/persistentRage.js';
 export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.js';

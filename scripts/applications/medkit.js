@@ -236,7 +236,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         sourceItemData.name = itemData.name;
         sourceItemData.system.description = itemData.system.description;
         sourceItemData.system.chatFlavor = itemData.system.chatFlavor;
+        let realPrompt = sourceItemData.system.uses.prompt;
         sourceItemData.system.uses = itemData.system.uses;
+        sourceItemData.system.uses.prompt = realPrompt;
         let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
         if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
         let oldOnUse = itemData.flags['midi-qol']?.onUseMacroName;

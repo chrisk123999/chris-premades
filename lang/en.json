@@ -96,6 +96,7 @@
             "Formula": "Formula:",
             "PlayAnimation": "Play Animation:",
             "RealDarkness": "Use Real Darkness:",
+            "ShowIcon": "Always Show Aura Icon",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:"
         },
@@ -323,6 +324,10 @@
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
+            "DivineSmite": {
+                "Ranged": "Allow Smites on Ranged Attacks",
+                "Unarmed": "Allow Smites on Unarmed Strikes"
+            },
             "DragonsBreath": {
                 "DragonBreath": "Dragon Breath",
                 "Select": "What damage type?"
@@ -491,6 +496,12 @@
             "InvestmentOfTheChainMaster": {
                 "Command": "Investment of the Chain Master: Command",
                 "Resistance": "Investment of the Chain Master: Familiar Resistance"
+            },
+            "LayOnHands": {
+                "Empty": "Your {itemName} pool is empty.",
+                "RemoveCondition": "Remove a Condition:",
+                "RestoreHitpoints": "Restore Hitpoints:",
+                "Select": "How would you like to aid?"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
@@ -808,6 +819,10 @@
                 "summons": {
                     "Label": "Summons",
                     "Tooltip": "Customize Summons"
+                },
+                "visuals": {
+                    "Label": "Visuals",
+                    "Tooltip": "Customize certain visuals"
                 }
             },
             "Effect": {
