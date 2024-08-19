@@ -12,7 +12,17 @@ async function use({workflow}) {
 }
 export let formOfTheBeast = {
     name: 'Form of the Beast',
-    version: '0.12.20'
+    version: '0.12.20',
+    ddbi: {
+        removedItems: {
+            'Form of the Beast': [
+                'Form of the Beast: Bite',
+                'Form of the Beast: Claws',
+                'Form of the Beast: Tail',
+                'Form of the Beast: Tail (reaction)'
+            ]
+        }
+    }
 };
 export let formOfTheBeastBite = {
     name: 'Form of the Beast: Bite',

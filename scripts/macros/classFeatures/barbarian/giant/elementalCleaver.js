@@ -111,6 +111,13 @@ export let elementalCleaver = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        removedItems: {
+            'Elemental Cleaver': [
+                'Elemental Cleaver: Change Damage Type'
+            ]
+        }
     }
 };
 export let elementalCleaverChange = {

@@ -94,5 +94,17 @@ export let chaosBolt = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Chaos Bolt': {
+                system: {
+                    scaling: {
+                        formula: '',
+                        mode: 'none'
+                    }
+                }
+            }
+        }
+    }
 };
