@@ -54,6 +54,18 @@ async function use({workflow}) {
                     flavor = 'onTarget';
                 }
                 break;
+            case 'sc':
+                if (total < 34) {
+                    flavor = 'mishap';
+                    totalDamage += 3;
+                } else if (total < 44) {
+                    flavor = 'similarArea';
+                } else if (total < 54) {
+                    flavor = 'offTarget';
+                } else {
+                    flavor = 'onTarget';
+                }
+                break;
             case 'vo':
             case 'd':
                 if (total < 44) {
@@ -68,6 +80,7 @@ async function use({workflow}) {
                 }
                 break;
             case 'fd':
+            default:
                 if (total < 51) {
                     flavor = 'mishap';
                     totalDamage += 3;
