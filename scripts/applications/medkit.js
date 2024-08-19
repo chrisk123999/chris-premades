@@ -222,6 +222,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     item: JSON?.stringify(item.flags?.['chris-premades']?.macros?.midi?.item) ?? '',
                     actor: JSON?.stringify(item.flags?.['chris-premades']?.macros?.midi?.actor) ?? '',
                 },
+                aura: JSON?.stringify(item.flags?.['chris-premades']?.macros?.aura) ?? '',
                 config: macroInfo?.config
             };
             genericUtils.setProperty(context, 'devTools', devTools);
@@ -301,6 +302,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     console.error(error);
                 }
                 if (value) await item.setFlag('chris-premades', 'macros.midi.actor', value);
+            }
+            if (devTools.aura != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.aura.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Aura field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.aura', value);
             }
         }
         let category = this.context?.category;
@@ -417,7 +428,6 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         this.render(true);
     }
-
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};
         this.setPosition(autoPos);

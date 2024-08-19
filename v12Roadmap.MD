@@ -27,7 +27,7 @@ Goals:
         - [x] Field to add Item and Actor on use macros, turn it into an array.
         - [ ] (optional?) Button to clear configs
         - [x] fields to set identifier and other bits but with it prefilled
-[ ] Effect Medkit
+[x] Effect Medkit
     - [x] Main tab 
         - [x] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
         - [x] checkbox for flags.chris-premades.noAnimation
@@ -35,7 +35,7 @@ Goals:
         - [x] Make the saveDC save correctly (get rid of extranous values in the overTime)
     - [x] DevTools tab to set flags on effect
     - [x] Colorize effect medkit
-    - [ ] Add dev tools part for `effect.flags['chris-premades']?.macros?.midi?.actor`
+    - [x] Add dev tools part for `effect.flags['chris-premades']?.macros?.midi?.actor`
 [ ] Actor Medkit
     - [x] Character tab
     - [ ] NPC tab

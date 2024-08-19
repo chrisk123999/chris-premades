@@ -1,5 +1,4 @@
 import {effectUtils, genericUtils, itemUtils} from '../../../utils.js';
-
 async function create({trigger: {entity: item, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier + 'Aura');
     if (targetEffect) {
@@ -27,7 +26,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
                 }
             },
             dae: {
-                showIcon
+                showIcon: showIcon
             }
         }
     };
@@ -42,7 +41,7 @@ export let auraOfProtection = {
             macro: create,
             priority: 50,
             distance: 'paladin',
-            identifier: 'auraOfProtection',
+            identifier: 'auraOfProtectionAura',
             disposition: 'ally',
             conscious: true
         }

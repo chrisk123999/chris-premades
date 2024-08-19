@@ -27,7 +27,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
                 }
             },
             dae: {
-                showIcon
+                showIcon: showIcon
             }
         }
     };
@@ -42,7 +42,7 @@ export let auraOfDevotion = {
             macro: create,
             priority: 50,
             distance: 'paladin',
-            identifier: 'auraOfDevotion',
+            identifier: 'auraOfDevotionAura',
             disposition: 'ally',
             conscious: true
         }
