@@ -120,7 +120,6 @@
       "idv": false,
       "ida": false
     },
-    "cf": null,
     "chris-premades": {
       "info": {
         "name": "Aura of Protection",
@@ -138,12 +137,6 @@
   "effects": [],
   "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
   "folder": "0w2ZKGeXYiA5LJaA",
-  "ownership": {
-    "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3,
-    "wyNw8BrgTfPgbUM3": 3
-  },
   "_id": "ET9HAbfXOHohIm5w",
   "_key": "!items!ET9HAbfXOHohIm5w"
 }

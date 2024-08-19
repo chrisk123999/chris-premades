@@ -142,10 +142,6 @@
   "effects": [],
   "img": "icons/creatures/slimes/slime-movement-pseudopod-green.webp",
   "folder": null,
-  "ownership": {
-    "default": 0,
-    "wyNw8BrgTfPgbUM3": 3
-  },
   "_id": "ZnlNGeFLoyPHoQTi",
   "_key": "!items!ZnlNGeFLoyPHoQTi"
 }

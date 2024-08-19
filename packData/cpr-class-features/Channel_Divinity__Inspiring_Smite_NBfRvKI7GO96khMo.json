@@ -114,7 +114,6 @@
       "idv": false,
       "ida": false
     },
-    "cf": null,
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Inspiring Smite",
@@ -134,12 +133,6 @@
   "effects": [],
   "img": "icons/magic/life/heart-area-circle-red-green.webp",
   "folder": "n13m9ZrBuZacWJv1",
-  "ownership": {
-    "default": 0,
-    "PQGBBcoVSwpUhViM": 3,
-    "m9ZEHyQjhLqQuPSG": 3,
-    "wyNw8BrgTfPgbUM3": 3
-  },
   "_id": "NBfRvKI7GO96khMo",
   "_key": "!items!NBfRvKI7GO96khMo"
 }
