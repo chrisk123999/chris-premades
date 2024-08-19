@@ -1,0 +1,130 @@
+{
+  "name": "Dread Lord: Shadow Attack",
+  "type": "feat",
+  "img": "icons/magic/control/fear-fright-monster-grin-red-orange.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "cha",
+    "actionType": "msak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "3d10[necrotic] + @mod",
+          "necrotic"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "fumbleThreshold": null,
+      "removeAttackDamageButtons": "default",
+      "onUseMacroName": ""
+    },
+    "core": {}
+  },
+  "_id": "ymU3Gh35lcchk1bl",
+  "ownership": {
+    "default": 0,
+    "wyNw8BrgTfPgbUM3": 3
+  },
+  "_key": "!items!ymU3Gh35lcchk1bl"
+}

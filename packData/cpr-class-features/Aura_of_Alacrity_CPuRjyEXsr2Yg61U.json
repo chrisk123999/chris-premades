@@ -1,0 +1,200 @@
+{
+  "name": "Aura of Alacrity",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Paladin : Oath of Glory"
+    },
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "@scale.oath-of-glory.aura-of-alacrity"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.4frCGB4TesMsNxZG"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Aura of Alacrity",
+        "version": "0.12.24",
+        "identifier": "auraOfAlacrity",
+        "source": "chris-premades"
+      },
+      "combat": [
+        "auraOfAlacrity"
+      ],
+      "macros": {
+        "combat": [
+          "auraOfAlacrity"
+        ]
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Aura of Alacrity",
+      "origin": "Compendium.world.cpr-class-features.Item.CPuRjyEXsr2Yg61U",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+      "_id": "H7IopwNphSYhPDyY",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "mode": 2,
+          "value": "10",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.330",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1724083806867,
+        "modifiedTime": 1724083818891,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!CPuRjyEXsr2Yg61U.H7IopwNphSYhPDyY"
+    }
+  ],
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "folder": "n13m9ZrBuZacWJv1",
+  "ownership": {
+    "default": 0,
+    "PQGBBcoVSwpUhViM": 3,
+    "m9ZEHyQjhLqQuPSG": 3,
+    "wyNw8BrgTfPgbUM3": 3
+  },
+  "_id": "CPuRjyEXsr2Yg61U",
+  "_key": "!items!CPuRjyEXsr2Yg61U"
+}
