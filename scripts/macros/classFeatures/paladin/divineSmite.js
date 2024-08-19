@@ -26,7 +26,7 @@ async function damage({workflow}) {
     let damageType = itemUtils.getConfig(smiteItem, 'damageType');
     let bonusDamageFormula = numDice + 'd8[' + damageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType});
-    await smiteItem.displayCard();
+    await smiteItem.use();
 }
 export let divineSmite = {
     name: 'Divine Smite',

@@ -12,7 +12,7 @@ async function damage({workflow}) {
     if (!formula) return;
     await workflowUtils.bonusDamage(workflow, formula);
     let feature = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow');
-    if (feature) await feature.displayCard();
+    if (feature) await feature.use();
 }
 export let giantsHavocCrushingThrow = {
     name: 'Giant\'s Havoc: Crushing Throw',

@@ -308,6 +308,9 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "ControlUndead": {
+                "Controlled": "Control Undead: Controlled"
+            },
             "DangerSense": {
                 "CanSee": "This save is from an effect you can see."
             },
@@ -334,6 +337,14 @@
             "DragonsBreath": {
                 "DragonBreath": "Dragon Breath",
                 "Select": "What damage type?"
+            },
+            "DreadLord": {
+                "ShadowAttack": "Dread Lord: Shadow Attack",
+                "ShadowAura": "Dread Lord's Shadow",
+                "Turn": "Dread Lord: Turn Start"
+            },
+            "DreadfulAspect": {
+                "Turn": "Dreadful Aspect: End of Turn"
             },
             "EldritchBlast": {
                 "Target": "Which targets?"
@@ -490,6 +501,9 @@
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
             },
+            "InspiringSmite": {
+                "Select": "Distribute Temp HP (Amount to Distribute: {maxAmount})"
+            },
             "InvestitureOfFlame": {
                 "Fire": "Investiture of Flame: Fire",
                 "Heat": "Investiture of Flame: Heat"
@@ -536,6 +550,9 @@
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
+            },
+            "NaturesWrath": {
+                "Select": "Which ability will you make the save with?"
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
@@ -1235,6 +1252,7 @@
                 "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
                 "DraconicSpiritGem": "Draconic Spirit (Gem)",
                 "DraconicSpiritMetallic": "Draconic Spirit (Metallic)",
+                "DreadLord": "Dread Lord",
                 "EarthenHand": "Earthen Hand",
                 "ElementalSpirit": "Elemental Spirit",
                 "ElementalSpiritAir": "Elemental Spirit (Air)",
