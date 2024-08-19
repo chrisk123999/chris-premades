@@ -14,7 +14,7 @@ async function use({workflow}) {
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
-    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier + 'Aura');
+    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) return;
     let conditionResistances = ['blinded', 'charmed', 'deafened', 'frightened', 'paralyzed', 'poisoned', 'stunned'];
     let effectData = {
@@ -56,7 +56,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         }
     };
     effectUtils.addMacro(effectData, 'combat', ['auraOfPurityAura']);
-    await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
+    await effectUtils.createEffect(target.actor, effectData, {identifier});
 }
 export let auraOfPurity = {
     name: 'Aura of Purity',
@@ -80,7 +80,7 @@ export let auraOfPurityAura = {
             macro: create,
             priority: 50,
             distance: 30,
-            identifier: 'auraOfPurity',
+            identifier: 'auraOfPurityAura',
             disposition: 'ally'
         }
     ]

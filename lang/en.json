@@ -90,6 +90,7 @@
                 "White": "White",
                 "Yellow": "Yellow"
             },
+            "CombatOnly": "Only Enable When in Combat",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",

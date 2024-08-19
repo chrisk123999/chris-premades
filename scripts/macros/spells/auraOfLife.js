@@ -21,7 +21,7 @@ async function use({workflow}) {
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
-    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier + 'Aura');
+    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) return;
     let effectData = {
         name: effect.name.split(':')[0],
@@ -58,7 +58,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
     effectUtils.addMacro(effectData, 'combat', ['auraOfLifeAura']);
     effectUtils.addMacro(effectData, 'preCreateEffect', ['auraOfLifeAura']);
     effectUtils.addMacro(effectData, 'preUpdateEffect', ['auraOfLifeAura']);
-    await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
+    await effectUtils.createEffect(target.actor, effectData, {identifier});
 }
 async function turnStart({trigger: {token}}) {
     if (token.actor?.system.attributes.hp.value === 0) {
@@ -111,7 +111,7 @@ export let auraOfLifeAura = {
             macro: create,
             priority: 50,
             distance: 30,
-            identifier: 'auraOfLife',
+            identifier: 'auraOfLifeAura',
             disposition: 'ally'
         }
     ],

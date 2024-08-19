@@ -1,6 +1,7 @@
-import {effectUtils, genericUtils, itemUtils} from '../../../utils.js';
+import {combatUtils, effectUtils, genericUtils, itemUtils} from '../../../utils.js';
 async function create({trigger: {entity: item, target, identifier}}) {
-    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier + 'Aura');
+    if (itemUtils.getConfig(item, 'combatOnly') && !combatUtils.inCombat()) return;
+    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) {
         if (targetEffect.origin === item.uuid) return;
         await genericUtils.remove(targetEffect);
@@ -30,7 +31,7 @@ async function create({trigger: {entity: item, target, identifier}}) {
             }
         }
     };
-    await effectUtils.createEffect(target.actor, effectData, {parentEntity: item, identifier: identifier + 'Aura'});
+    await effectUtils.createEffect(target.actor, effectData, {parentEntity: item, identifier});
 }
 export let auraOfProtection = {
     name: 'Aura of Protection',
@@ -47,6 +48,13 @@ export let auraOfProtection = {
         }
     ],
     config: [
+        {
+            value: 'combatOnly',
+            label: 'CHRISPREMADES.Config.CombatOnly',
+            type: 'checkbox',
+            default: false,
+            category: 'mechanics'
+        },
         {
             value: 'showIcon',
             label: 'CHRISPREMADES.Config.ShowIcon',

@@ -269,7 +269,7 @@ async function retribution({trigger, workflow}) {
     await workflowUtils.syntheticItemRoll(feature, [workflow.token]);
 }
 async function protectiveLights({trigger: {entity: effect, target, identifier}}) {
-    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier + 'Aura');
+    let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
     if (targetEffect) return;
     let effectData = {
         name: effect.name.split(':')[0],
@@ -295,7 +295,7 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
             }
         }
     };
-    await effectUtils.createEffect(target.actor, effectData, {identifier: identifier + 'Aura'});
+    await effectUtils.createEffect(target.actor, effectData, {identifier});
 }
 export let wildSurge = {
     name: 'Wild Surge',
@@ -399,7 +399,7 @@ export let wildSurgeProtectiveLights = {
             macro: protectiveLights,
             priority: 50,
             distance: 10,
-            identifier: 'wildSurge',
+            identifier: 'wildSurgeAura',
             disposition: 'ally'
         }
     ]
