@@ -57,7 +57,7 @@ async function late({workflow}) {
     }
     let numToHeal = Math.min(uses, restore);
     if (numToHeal <= 0) {
-        await workflow.setDamageRolls([]);
+        await workflowUtils.replaceDamage(workflow, '0');
     } else {
         await workflowUtils.replaceDamage(workflow, numToHeal + '[healing]', {damageType: 'healing'});
         uses -= numToHeal;
