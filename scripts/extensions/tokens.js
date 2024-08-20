@@ -86,7 +86,7 @@ async function preCreateUpdateActiveEffect(effect, updates, options, userId) {
 }
 async function preDeleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
-    if (effect.target.constructor.name != 'Actor5e') return;
+    if (effect.target?.constructor.name != 'Actor5e') return;
     let change = effect.changes.find(i => i.key === 'system.traits.size');
     if (!change) return;
     genericUtils.setProperty(options, 'chris-premades.effect.size.old', effect.target.system.traits.size);

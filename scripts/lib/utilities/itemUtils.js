@@ -57,6 +57,9 @@ function getConfig(item, key) {
     let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
+async function setConfig(item, key, value) {
+    return await genericUtils.setFlag(item, 'flags.chris-premades.config.' + key, value);
+}
 function getIdentifer(item) {
     return item.flags['chris-premades']?.info?.identifier;
 }
@@ -133,5 +136,6 @@ export let itemUtils = {
     syntheticItem,
     enchantItem,
     getMod,
-    convertDuration
+    convertDuration,
+    setConfig
 };

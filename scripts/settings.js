@@ -13,6 +13,7 @@ import {miscPremades} from './integrations/miscPremades.js';
 import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 import {effectInterface} from './applications/effectInterface.js';
+import {customTypes} from './extensions/customTypes.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -493,6 +494,15 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'integration'
+    });
+    addSetting({
+        key: 'firearmSupport',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: async (value) => {
+            await customTypes.firearm(value);
+        }
     });
 }
 export function registerMenus() {

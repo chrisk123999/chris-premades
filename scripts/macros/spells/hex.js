@@ -109,8 +109,8 @@ async function move({trigger, workflow}) {
         let effect = effectUtils.getEffectByIdentifier(selection.actor, 'hexed');
         if (effect) await genericUtils.remove(effect);
     }
-    oldTargets = oldTargets.filter(i => i != selection.uuid);
-    oldTargets.push(workflow.targets.first().uuid);
+    oldTargets = oldTargets.filter(i => i != selection.document.uuid);
+    oldTargets.push(workflow.targets.first().document.uuid);
     await genericUtils.setFlag(effect, 'chris-premades', 'hex.targets', oldTargets);
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Hex.Hexed'),

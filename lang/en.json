@@ -151,6 +151,13 @@
             "OutOfDateItem": "Automation is out of date!",
             "UpdateItem": "Update Item"
         },
+        "Firearm": {
+            "Firearm": "Firearm",
+            "HasMisfired": "has misfired!",
+            "Misfire": "Misfire",
+            "Other": "Other",
+            "TrickShot": "Trick Shot"
+        },
         "Generic": {
             "Abilities": "Abilities",
             "Advantage": "Advantage",

@@ -4,7 +4,7 @@ import {registerMenus, registerSettings} from './settings.js';
 import {DialogApp} from './applications/dialog.js';
 import {AdditionalCompendiums} from './applications/additionalCompendiums.js';
 import {Crosshairs} from './lib/crosshairs.js';
-import {registerCustomTypes} from './extensions/customTypes.js';
+import {customTypes} from './extensions/customTypes.js';
 import * as utils from './utils.js';
 import * as macros from './macros.js';
 import {effectInterface} from './applications/effectInterface.js';
@@ -32,7 +32,7 @@ Hooks.once('init', () => {
     registerSettings();
     if (utils.genericUtils.getCPRSetting('useLocalCompendiums')) utils.constants.setUseLocalCompendium(true);
     registerMenus();
-    registerCustomTypes();
+    customTypes.init();
     if (utils.genericUtils.getCPRSetting('disableNonConditionStatusEffects')) conditions.disableNonConditionStatusEffects();
     if (utils.genericUtils.getCPRSetting('replaceStatusEffectIcons')) conditions.setStatusEffectIcons();
     if (utils.genericUtils.getCPRSetting('effectInterface')) effectInterface.init();
@@ -52,6 +52,7 @@ Hooks.once('ready', () => {
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);
+    if (utils.genericUtils.getCPRSetting('firearmSupport')) customTypes.firearm(true);
     if (game.user.isGM) {
         game.settings.set('chris-premades', 'gmID', game.user.id);
         setupJournal();

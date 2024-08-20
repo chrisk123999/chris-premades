@@ -1,0 +1,181 @@
+{
+  "name": "Firearm",
+  "type": "weapon",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Critical Role"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 3,
+      "units": "lb"
+    },
+    "price": {
+      "value": 150,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": true,
+    "rarity": "",
+    "identified": true,
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 60,
+      "long": 240,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 0,
+      "max": "4",
+      "per": "charges",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "dex",
+    "actionType": "rwak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d10[piercing] + @mod",
+          "piercing"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "armor": {
+      "value": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "properties": [
+      "fir",
+      "rel"
+    ],
+    "proficient": 1,
+    "unidentified": {
+      "description": "Pistol (Exandria)"
+    },
+    "type": {
+      "value": "firearm",
+      "baseItem": "firearm"
+    },
+    "container": null,
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "attuned": false,
+    "enchantment": null,
+    "summons": null,
+    "magicalBonus": null
+  },
+  "flags": {
+    "cf": {
+      "id": "temp_3jbsk0c5kub"
+    },
+    "midi-qol": {
+      "onUseMacroName": "",
+      "fumbleThreshold": null,
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "link-item-resource-5e": {
+      "resource-link": ""
+    },
+    "chris-premades": {
+      "configuration": {
+        "misfire": 1,
+        "status": 0
+      },
+      "info": {
+        "name": "Firearm (CR)",
+        "version": "0.10.43",
+        "settings": [
+          "Critical Role Firearm Support"
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/weapons/guns/gun-pistol-flintlock-metal.webp",
+  "folder": null,
+  "_id": "UCT2h5QwNUHTiAAG",
+  "_key": "!items!UCT2h5QwNUHTiAAG"
+}
