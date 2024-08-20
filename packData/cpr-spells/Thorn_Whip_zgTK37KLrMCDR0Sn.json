@@ -23,9 +23,9 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "units": "",
-      "type": "",
+      "type": "creature",
       "width": null,
       "prompt": true
     },
@@ -125,7 +125,7 @@
     "chris-premades": {
       "info": {
         "identifier": "thornWhip",
-        "version": "0.12.0",
+        "version": "0.12.26",
         "source": "chris-premades"
       },
       "macros": {
