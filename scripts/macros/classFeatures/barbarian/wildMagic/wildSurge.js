@@ -295,7 +295,11 @@ async function protectiveLights({trigger: {entity: effect, target, identifier}})
             }
         }
     };
-    await effectUtils.createEffect(target.actor, effectData, {identifier});
+    // await effectUtils.createEffect(target.actor, effectData, {identifier});
+    return {
+        effectData,
+        effectOptions: {identifier}
+    };
 }
 export let wildSurge = {
     name: 'Wild Surge',

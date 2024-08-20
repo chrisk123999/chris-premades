@@ -102,6 +102,17 @@ async function updateEmbeddedDocuments(entity, type, updates, options) {
     }
     return documents;
 }
+async function deleteEmbeddedDocuments(entity, type, ids, options) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    let documents;
+    if (hasPermission) {
+        documents = await entity.deleteEmbeddedDocuments(type, ids, options);
+    } else {
+        let documentUuids = await socket.executeAsGM(sockets.deleteEmbeddedDocuments.name, entity.uuid, type, ids, options);
+        documents = await Promise.all(documentUuids.map(async i => await fromUuid(i)));
+    }
+    return documents;
+}
 function updateTargets(targets) {
     game.user.updateTokenTargets(Array.from(targets).map(target => target.id ?? target));
     game.user.broadcastActivity({targets: game.user.targets.ids});
@@ -146,6 +157,7 @@ export let genericUtils = {
     updateTargets,
     collapseObjects,
     updateEmbeddedDocuments,
+    deleteEmbeddedDocuments,
     log,
     titleCase,
     camelCaseToWords

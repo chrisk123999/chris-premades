@@ -31,7 +31,14 @@ async function create({trigger: {entity: item, target, identifier}}) {
             }
         }
     };
-    await effectUtils.createEffect(target.actor, effectData, {parentEntity: item, identifier});
+    // await effectUtils.createEffect(target.actor, effectData, {parentEntity: item, identifier});
+    return {
+        effectData,
+        effectOptions: {
+            parentEntity: item,
+            identifier
+        }
+    };
 }
 export let auraOfProtection = {
     name: 'Aura of Protection',

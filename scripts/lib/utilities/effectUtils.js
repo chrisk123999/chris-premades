@@ -38,22 +38,57 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
+    if (strictlyInterdependent) {
+        let existingDependents = effectData.flags?.dnd5e?.dependents ?? [];
+        if (parentEntity) existingDependents.push({uuid: parentEntity.uuid});
+        if (concentrationEffect) existingDependents.push({uuid: concentrationEffect.uuid});
+        if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
+    }
     if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
     let effects;
     if (hasPermission) {
         effects = await entity.createEmbeddedDocuments('ActiveEffect', [effectData]);
-        if (concentrationEffect) {
-            await addDependent(concentrationEffect, effects);
-            if (strictlyInterdependent) await addDependent(effects[0], [concentrationEffect]);
-        }
-        if (parentEntity) {
-            await addDependent(parentEntity, effects);
-            if (strictlyInterdependent) await addDependent(effects[0], [parentEntity]);
-        }
+        if (concentrationEffect) await addDependent(concentrationEffect, effects);
+        if (parentEntity) await addDependent(parentEntity, effects);
     } else {
         effects = await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
+        effects = await Promise.all(effects.map(async i => await fromUuid(i)));
     }
     if (effects?.length) return effects[0];
+}
+async function createEffects(entity, effectDataArray, effectOptionsArray) {
+    let hasPermission = socketUtils.hasPermission(entity, game.user.id);
+    let concentrationEffects = [];
+    for (let i = 0; i < effectDataArray.length; i++) {
+        let effectData = effectDataArray[i];
+        let {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent} = effectOptionsArray[i];
+        let concentrationEffect;
+        if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
+        if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
+        if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
+        if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
+        if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);
+        if (vae) genericUtils.setProperty(effectData, 'flags.chris-premades.vae.buttons', vae);
+        if (strictlyInterdependent) {
+            let existingDependents = effectData.flags?.dnd5e?.dependents ?? [];
+            if (parentEntity) existingDependents.push({uuid: parentEntity.uuid});
+            if (concentrationEffect) existingDependents.push({uuid: concentrationEffect.uuid});
+            if (existingDependents.length) genericUtils.setProperty(effectData, 'flags.dnd5e.dependents', existingDependents);
+        }
+        concentrationEffects.push(concentrationEffect);
+    }
+    let effects;
+    if (hasPermission) {
+        effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray);
+        for (let i = 0; i < effects.length; i++) {
+            if (concentrationEffects[i]) await addDependent(concentrationEffects[i], [effects[i]]);
+            if (effectOptionsArray[i].parentEntity) await addDependent(effectOptionsArray[i].parentEntity, [effects[i]]);
+        }
+    } else {
+        effects = await socket.executeAsGM(sockets.createEffects.name, entity.uuid, effectDataArray, {concentrationItemUuidArray: effectOptionsArray.map(i => i.concentrationItem?.uuid), parentEntityUuidArray: effectOptionsArray.map(i => i.parentEntity?.uuid)});
+        effects = await Promise.all(effects.map(async i => await fromUuid(i)));
+    }
+    if (effects?.length) return effects;
 }
 async function addDependent(entity, dependents) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
@@ -161,6 +196,7 @@ export let effectUtils = {
     getSaveDC,
     setSaveDC,
     createEffect,
+    createEffects,
     addDependent,
     addMacro,
     getEffectIdentifier,

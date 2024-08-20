@@ -21,6 +21,27 @@ async function createEffect(entityUuid, effectData, {concentrationItemUuid, pare
     }
     if (effects?.length) return effects[0].uuid;
 }
+async function createEffects(entityUuid, effectDataArray, {concentrationItemUuidArray, parentEntityUuidArray}) {
+    let entity = await fromUuid(entityUuid);
+    if (!entity) return;
+    let effects = await entity.createEmbeddedDocuments('ActiveEffect', effectDataArray);
+    for (let i = 0; i < effects.length; i++) {
+        if (concentrationItemUuidArray[i]) {
+            let concentrationItem = await fromUuid(concentrationItemUuidArray[i]);
+            if (concentrationItem) {
+                let concentrationEffect = MidiQOL.getConcentrationEffect(concentrationItem.actor, concentrationItem);
+                if (concentrationEffect) concentrationEffect.addDependent(effects[i]);
+            }
+        }
+        if (parentEntityUuidArray[i]) {
+            let parentEntity = await fromUuid(parentEntityUuidArray[i]);
+            if (parentEntity) {
+                parentEntity.addDependent(effects[i]);
+            }
+        }
+    }
+    if (effects?.length) return effects.map(i => i.uuid);
+}
 async function deleteEntity(entityUuid) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
@@ -62,6 +83,12 @@ async function updateEmbeddedDocuments(entityUuid, type, updates, options) {
     let entity = await fromUuid(entityUuid);
     if (!entity) return;
     let documents = await entity.updateEmbeddedDocuments(type, updates, options ?? undefined);
+    return documents.map(i => i.uuid);
+}
+async function deleteEmbeddedDocuments(entityUuid, type, ids, options) {
+    let entity = await fromUuid(entityUuid);
+    if (!entity) return;
+    let documents = await entity.deleteEmbeddedDocuments(type, ids, options ?? undefined);
     return documents.map(i => i.uuid);
 }
 async function addFavorites(actorUuid, itemUuids) {
@@ -126,6 +153,7 @@ async function removeReactionUsed(actorUuid, force) {
 }
 export let sockets = {
     createEffect,
+    createEffects,
     deleteEntity,
     updateEntity,
     createFolder,
@@ -138,6 +166,7 @@ export let sockets = {
     rollItem,
     createSidebarActor,
     updateEmbeddedDocuments,
+    deleteEmbeddedDocuments,
     teleport,
     spawnSummon,
     setReactionUsed,

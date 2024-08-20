@@ -126,7 +126,7 @@ function getSortedTriggers(tokens, pass, token) {
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Aura Macro: ' + trigger.macro.name);
     try {
-        await trigger.macro({trigger, options});
+        return await trigger.macro({trigger, options});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
@@ -151,12 +151,20 @@ async function executeMacroPass(tokens, pass, token, options) {
         }
         if (trigger.entity.uuid != effect.origin) removedEffects.push(effect);
     }));
-    await Promise.all(removedEffects.map(async effect => {
-        let testEffect = await fromUuid(effect.uuid);
-        if (testEffect) await genericUtils.remove(testEffect);
-    }));
+    // TODO: need to ensure it still exists?
+    let removedEffectIds = removedEffects.map(i => i.id);
+    await genericUtils.deleteEmbeddedDocuments(token.actor, 'ActiveEffect', removedEffectIds);
     if (triggers.length) await genericUtils.sleep(50);
-    for (let i of triggers) await executeMacro(i, options);
+    let effectDataArray = [];
+    let effectOptionsArray = [];
+    for (let i of triggers) {
+        let newEffectInfo = await executeMacro(i, options);
+        if (newEffectInfo) {
+            effectDataArray.push(newEffectInfo.effectData);
+            effectOptionsArray.push(newEffectInfo.effectOptions);
+        }
+    }
+    if (effectDataArray.length) await effectUtils.createEffects(token.actor, effectDataArray, effectOptionsArray);
 }
 async function updateAuras(token, options) {
     let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.macros?.aura);

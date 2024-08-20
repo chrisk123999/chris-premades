@@ -134,6 +134,10 @@ async function updateToken(token, updates, options, userId) {
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
     let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
+    // Check if waypoint movement (should work for gridded & gridless):
+    let destination = canvas.controls.getRulerForUser(userId)?.destination;
+    let tokenBounds = token.object.bounds;
+    let isFinalMovement = !destination || (coords.x + tokenBounds.width / 2 === destination.x && coords.y + tokenBounds.height / 2 === destination.y);
     let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
     if (!previousCoords) return;
     let xDiff = token.width * canvas.grid.size / 2;
@@ -146,7 +150,7 @@ async function updateToken(token, updates, options, userId) {
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
     if (!ignore) {
-        await auras.updateAuras(token, options);
+        if (isFinalMovement) await auras.updateAuras(token, options);
         await executeMacroPass([token], 'moved', undefined, options);
         await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
         if (updates.x || updates.y) {

@@ -275,7 +275,13 @@ async function create({trigger: {entity: effect, target, identifier}}) {
             }
         }
     };
-    await effectUtils.createEffect(target.actor, effectData, {identifier});
+    // await effectUtils.createEffect(target.actor, effectData, {identifier});
+    return {
+        effectData,
+        effectOptions: {
+            identifier
+        }
+    };
 }
 async function turnStart({trigger: {token, target}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');

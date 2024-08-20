@@ -58,7 +58,13 @@ async function create({trigger: {entity: effect, target, identifier}}) {
     effectUtils.addMacro(effectData, 'combat', ['auraOfLifeAura']);
     effectUtils.addMacro(effectData, 'preCreateEffect', ['auraOfLifeAura']);
     effectUtils.addMacro(effectData, 'preUpdateEffect', ['auraOfLifeAura']);
-    await effectUtils.createEffect(target.actor, effectData, {identifier});
+    // await effectUtils.createEffect(target.actor, effectData, {identifier});
+    return {
+        effectData,
+        effectOptions: {
+            identifier
+        }
+    };
 }
 async function turnStart({trigger: {token}}) {
     if (token.actor?.system.attributes.hp.value === 0) {
