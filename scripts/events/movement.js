@@ -123,7 +123,7 @@ async function executeMacroPass(tokens, pass, token, options) {
     for (let i of triggers) await executeMacro(i, options);
 }
 function preUpdateToken(token, updates, options, userId) {
-    if (!socketUtils.isTheGM()) return;
+    //This runs on the local client only!
     let templatesUuids = Array.from(templateUtils.getTemplatesInToken(token.object)).map(i => i.uuid);
     genericUtils.setProperty(options, 'chris-premades.templates.wasIn', templatesUuids);
     genericUtils.setProperty(options, 'chris-premades.coords.previous', {x: token.x, y: token.y, elevation: token.elevation});

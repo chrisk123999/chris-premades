@@ -175,7 +175,7 @@ form .cpr-compendiums .compendium-number {
     margin: 0;
 }
 
-div .cpr-row-center {
+.cpr-row-center {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

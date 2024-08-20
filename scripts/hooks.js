@@ -43,12 +43,12 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges') || genericUtils.getCPRSetting('displayNestedConditions')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
+    Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);
         Hooks.on('createActiveEffect', effectEvents.createActiveEffect);
         Hooks.on('deleteActiveEffect', effectEvents.deleteActiveEffect);
-        Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
         Hooks.on('updateToken', movementEvents.updateToken);
         Hooks.on('createActiveEffect', conditions.createActiveEffect);
         Hooks.on('deleteActiveEffect', conditions.deleteActiveEffect);
