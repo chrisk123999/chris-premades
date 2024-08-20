@@ -133,10 +133,8 @@
         },
         "EffectInterface": {
             "Copy": "(Cópia)",
-            "Effects": "Efeitos",
             "ImportData": "Importar Dados: ",
             "Item": "Este item é usado para armazenamento de dados da Interface de Efeito CPR. Excluir este item resultará na exclusão dos efeitos ativos armazenados! Este item irá se esconder quando a configuração Interface de Efeito estiver habilitada.",
-            "NewEffect": "Novo Efeito",
             "SelectToken": "Selecione um token primeiro!",
             "StatusAdd": "Adicionar aos Efeitos de Status",
             "StatusRemove": "Remover dos Efeitos de Status"
@@ -159,9 +157,6 @@
             "TrickShot": "Trick Shot"
     },
         "Generic": {
-            "Abilities": "Atributos",
-            "Advantage": "Vantagem",
-            "Apply": "Aplicar",
             "Available": "Disponível",
             "CPR": "Chris's Premades",
             "Cancel": "Cancelar",
@@ -170,25 +165,18 @@
             "CheckSpelling": "Verificar Ortografia",
             "Close": "Fechar",
             "Configure": "Configurar",
-            "Confirm": "Confirmar",
-            "Default": "Padrão",
-            "Description": "Descrição",
             "Disabled": "Desabilitar",
-            "Disadvantage": "Desvantagem",
             "Distance": "Distância",
             "Edit": "Editar",
             "Go": "Ir",
             "Import": "Importar",
             "No": "Não",
             "NoType": "Sem Tipo",
-            "None": "Nenhum",
             "Ok": "Ok",
             "Replace": "Substituir",
-            "Save": "Salvaguarda",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
-            "Skills": "Perícias",
             "Summon": "Invocação",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
@@ -422,10 +410,8 @@
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
                 "ReactionUsed": "Os familiares estão muito longe ou já usaram sua reação!",
+                "TooFar": "Os familiares estão muito longe!",
                 "Touch": "Bando de Familiares: Tocar"
-            },
-            "FlockOfFamilias": {
-                "TooFar": "Os familiares estão muito longe!"
             },
             "Grapple": {
                 "ChooseSkill": "Como você gostaria de disputar o agarrão?",
@@ -736,7 +722,7 @@
                 "Draw": "Desenhar círculo protetor?"
             },
             "SummonShadowspawn": {
-                "ChillingHand": "Rasgo Congelante",
+                "ChillingRend": "Rasgo Congelante",
                 "Despair": "Desespero",
                 "DreadfulScream": "Grito Pavoroso",
                 "Fear": "Medo",
@@ -788,6 +774,9 @@
             },
             "ThunderStep": {
                 "Select": "Teleportar uma Criatura?"
+            },
+            "ThunderousSmite": {
+                "Push": "Destruição Trovejante: Empurrão"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
