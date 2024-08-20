@@ -11,7 +11,7 @@ async function damage({workflow}) {
     }
     if (!validTypes.includes(workflow.item.system.actionType)) return;
     if (!actorUtils.hasSpellSlots(workflow.actor)) return;
-    let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: smiteItem.name}));
+    let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: smiteItem.name, no: true}));
     if (!selection) return;
     let numDice;
     if (selection === 'pact') {

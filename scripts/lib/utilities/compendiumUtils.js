@@ -124,7 +124,12 @@ async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, objec
         if (object) {
             let documentData = document.toObject();
             if (getDescription) documentData.system.description.value = itemUtils.getItemDescription(document.name);
-            if (translate) documentData.name = genericUtils.translate(translate);
+            if (translate) {
+                documentData.name = genericUtils.translate(translate);
+                documentData.effects?.forEach(effectData => {
+                    effectData.name = genericUtils.translate(translate);
+                });
+            }
             if (identifier) genericUtils.setProperty(documentData, 'flags.chris-premades.info.identifier', identifier);
             if (flatAttack) genericUtils.setProperty(documentData, 'system.attack', {bonus: flatAttack, flat: true});
             if (flatDC) genericUtils.setProperty(documentData, 'system.save', {ability: documentData.system.save.ability, dc: flatDC, scaling: 'flat'});

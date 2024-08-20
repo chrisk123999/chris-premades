@@ -64,18 +64,17 @@ async function early({workflow}) {
     if (itemUtils.getIdentifer(workflow.item) === 'maximiliansEarthenGraspGrasp') {
         let graspEffect = itemUtils.getItemByIdentifier(summonedActor, 'maximiliansEarthenGraspGrasp');
         if (graspEffect) await genericUtils.remove(graspEffect);
-        let target = workflow.targets.first();
-        if (!target) {
-            let nearbyTargets = tokenUtils.findNearby(summonedToken, 5, 'enemy', {includeIncapacitated: true});
-            if (!nearbyTargets.length) {
-                genericUtils.notify('CHRISPREMADES.Macros.MaximiliansEarthenGrasp.NoNearby', 'info');
-            } else if (nearbyTargets.length === 1) {
-                target = nearbyTargets[0];
-            } else {
-                let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Select', nearbyTargets);
-                if (!selection?.length) return;
-                target = selection[0];
-            }
+        let target;
+        let nearbyTargets = tokenUtils.findNearby(summonedToken, 5, 'enemy', {includeIncapacitated: true});
+        if (!nearbyTargets.length) {
+            genericUtils.notify('CHRISPREMADES.Macros.MaximiliansEarthenGrasp.NoNearby', 'info');
+            return;
+        } else if (nearbyTargets.length === 1) {
+            target = nearbyTargets[0];
+        } else {
+            let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Select', nearbyTargets);
+            if (!selection?.length) return;
+            target = selection[0];
         }
         genericUtils.updateTargets([target]);
     } else {

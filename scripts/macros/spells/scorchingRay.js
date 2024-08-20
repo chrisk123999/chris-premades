@@ -178,7 +178,7 @@ async function use({workflow}) {
 }
 export let scorchingRay = {
     name: 'Scorching Ray',
-    version: '0.12.0',
+    version: '0.12.26',
     midi: {
         item: [
             {

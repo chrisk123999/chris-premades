@@ -39,7 +39,7 @@ async function early({workflow}) {
 }
 export let charmPerson = {
     name: 'Charm Person',
-    version: '0.12.0',
+    version: '0.12.26',
     midi: {
         item: [
             {

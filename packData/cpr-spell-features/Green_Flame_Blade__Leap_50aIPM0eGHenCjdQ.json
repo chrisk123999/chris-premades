@@ -94,7 +94,7 @@
   "folder": null,
   "flags": {
     "midiProperties": {
-      "confirmTargets": "default",
+      "confirmTargets": "never",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
       "critOther": false,

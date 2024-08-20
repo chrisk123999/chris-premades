@@ -115,7 +115,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
+      "confirmTargets": "never",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -125,7 +125,7 @@
     "chris-premades": {
       "info": {
         "name": "Scorching Ray",
-        "version": "0.12.0",
+        "version": "0.12.26",
         "hasAnimation": true,
         "identifier": "scorchingRay",
         "source": "chris-premades"

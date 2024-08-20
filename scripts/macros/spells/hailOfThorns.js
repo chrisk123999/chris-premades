@@ -14,7 +14,8 @@ async function use({workflow}) {
                 hailOfThorns: {
                     castLevel: workflow.castData?.castLevel ?? 1,
                     dc: itemUtils.getSaveDC(workflow.item),
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
+                    school: workflow.item.system.school
                 }
             }
         }
@@ -28,11 +29,12 @@ async function late({workflow}) {
     if (workflow.item?.system?.actionType !== 'rwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hailOfThornsBurst');
     if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HailOfThorns.Burst', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HailOfThorns.Burst', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
+    genericUtils.setProperty(featureData, 'flags.chris-premades.castData.school', effect.flags['chris-premades'].hailOfThorns.school);
     let damageDice = Math.min(effect.flags['chris-premades']?.hailOfThorns?.castLevel ?? 1, 6);
     let damageType = effect.flags['chris-premades']?.hailOfThorns?.damageType;
     featureData.system.damage.parts = [

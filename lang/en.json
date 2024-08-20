@@ -775,6 +775,9 @@
             "ThunderStep": {
                 "Select": "Teleport a Creature?"
             },
+            "ThunderousSmite": {
+                "Push": "Thunderous Smite: Push"
+            },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",
                 "Underwater": "Underwater"

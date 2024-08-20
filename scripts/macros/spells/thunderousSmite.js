@@ -29,7 +29,7 @@ async function damage({workflow}) {
     let damageType = effect.flags['chris-premades'].thunderousSmite.damageType;
     let formula = '2d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Thunderous Smite: Push', {object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Thunderous Smite: Push', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ThunderousSmite.Push'});
     if (!featureData) {
         errors.missingPackItem();
         return;

@@ -125,7 +125,7 @@
     "chris-premades": {
       "info": {
         "name": "Charm Person",
-        "version": "0.12.0",
+        "version": "0.12.26",
         "identifier": "charmPerson",
         "source": "chris-premades"
       },
@@ -161,7 +161,9 @@
           "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [],
+          "specialDuration": [
+            "isDamaged"
+          ],
           "selfTarget": false,
           "selfTargetAlways": false,
           "dontApply": false
