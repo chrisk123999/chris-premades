@@ -102,7 +102,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "turn=start, rollType=check, saveAbility=wis, saveDC=@attributes.spelldc, saveRemove=true, saveMagic=false, actionSave=roll, rollMode=publicroll, allowIncapacitated=true, name=Wrathful Smite - Frighten",
+          "value": "turn=start, rollType=check, saveAbility=wis, saveDC=@attributes.spelldc, saveRemove=true, saveMagic=false, actionSave=roll, rollMode=publicroll, allowIncapacitated=true, name=Wrathful Smite: Frighten",
           "priority": 20
         }
       ],

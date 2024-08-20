@@ -227,10 +227,10 @@ async function end({trigger: {entity: effect}}) {
     let {originalAvatarImg, originalPrototypeImg, originalTokenImg} = effect.flags['chris-premades'].dreadLord;
     let actor = effect.parent;
     let token = actorUtils.getFirstToken(actor)?.document;
-    if (!actor || !token) return;
+    if (!actor) return;
     let currAvatarImg = actor.img;
     let currPrototypeImg = actor.prototypeToken.texture.src;
-    let currTokenImg = token.texture.src;
+    let currTokenImg = token?.texture.src;
     let updates = {
         actor: {},
         token: {}
@@ -241,10 +241,10 @@ async function end({trigger: {entity: effect}}) {
     if (Object.entries(updates.actor)?.length) {
         await genericUtils.update(actor, updates.actor);
     }
-    if (Object.entries(updates.token)?.length) {
+    if (token && Object.entries(updates.token)?.length) {
         await genericUtils.update(token, updates.token);
     }
-    Sequencer.EffectManager.endEffects({name: 'Dread Lord', object: token.object});
+    if (token) Sequencer.EffectManager.endEffects({name: 'Dread Lord', object: token.object});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
     if (effectUtils.getEffectByIdentifier(target.actor, identifier)) return;

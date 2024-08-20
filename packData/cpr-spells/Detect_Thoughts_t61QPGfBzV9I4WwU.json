@@ -125,9 +125,6 @@
       "info": {
         "name": "Detect Thoughts",
         "version": "0.12.0",
-        "mutation": {
-          "self": "Detect Thoughts - Probe Deeper"
-        },
         "identifier": "detectThoughts",
         "source": "chris-premades"
       },

@@ -81,7 +81,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
             {
                 key: 'flags.midi-qol.neverTarget',
                 value: true,
-                mode: 1,
+                mode: 0,
                 priority: 20
             }
         ],

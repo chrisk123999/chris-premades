@@ -30,7 +30,7 @@ async function probeDeeper({workflow}) {
 }
 export let detectThoughts = {
     name: 'Detect Thoughts',
-    version: '0.12.0',
+    version: '0.12.26',
     midi: {
         item: [
             {

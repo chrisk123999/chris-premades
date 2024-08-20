@@ -94,7 +94,7 @@
         {
           "key": "flags.midi-qol.OverTime",
           "mode": 0,
-          "value": "label=Holy Weapon - Burst (End of Turn),turn=end,saveDC=10,saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true",
+          "value": "label=Holy Weapon: Burst (End of Turn),turn=end,saveDC=10,saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true",
           "priority": 20
         }
       ],

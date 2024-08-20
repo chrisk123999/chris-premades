@@ -155,6 +155,7 @@ export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeat
 export {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 export {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
 export {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/auraOfDevotion.js';
+export {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
 export {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 export {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/auraOfWarding.js';
 export {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
