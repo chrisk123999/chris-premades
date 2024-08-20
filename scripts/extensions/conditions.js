@@ -177,7 +177,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
                         },
                         {
                             key: 'system.traits.di.value',
-                            mode: 1,
+                            mode: 2,
                             value: 'poison',
                             priority: 20
                         },
