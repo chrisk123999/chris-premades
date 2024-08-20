@@ -151,6 +151,13 @@
             "OutOfDateItem": "A automação está desatualizada!",
             "UpdateItem": "Atualizar Item"
         },
+        "Firearm": {
+            "Firearm": "Arma de Fogo",
+            "HasMisfired": "falhou!",
+            "Misfire": "Falha",
+            "Other": "Outro",
+            "TrickShot": "Trick Shot"
+    },
         "Generic": {
             "Abilities": "Atributos",
             "Advantage": "Vantagem",
