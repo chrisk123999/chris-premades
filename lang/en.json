@@ -133,10 +133,8 @@
         },
         "EffectInterface": {
             "Copy": "(Copy)",
-            "Effects": "Effects",
             "ImportData": "Import Data: ",
             "Item": "This item is used for data storage for the CPR Effect Interface. Deleting this item will result in your stored active effects being deleted! This item will hide itself when the Effect Interface setting is enabled.",
-            "NewEffect": "New Effect",
             "SelectToken": "Please select a token first!",
             "StatusAdd": "Add to Status Effects",
             "StatusRemove": "Remove from Status Effects"
@@ -159,9 +157,6 @@
             "TrickShot": "Trick Shot"
         },
         "Generic": {
-            "Abilities": "Abilities",
-            "Advantage": "Advantage",
-            "Apply": "Apply",
             "Available": "Available",
             "CPR": "Chris's Premades",
             "Cancel": "Cancel",
@@ -170,25 +165,18 @@
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
             "Configure": "Configure",
-            "Confirm": "Confirm",
-            "Default": "Default",
-            "Description": "Description",
             "Disabled": "Disabled",
-            "Disadvantage": "Disadvantage",
             "Distance": "Distance",
             "Edit": "Edit",
             "Go": "Go",
             "Import": "Import",
             "No": "No",
             "NoType": "No Type",
-            "None": "None",
             "Ok": "Ok",
             "Replace": "Replace",
-            "Save": "Saving Throw",
             "Select": "Select",
             "SelectSpellSlot": "Select a spell slot:",
             "Skill": "Skill Check",
-            "Skills": "Skills",
             "Summon": "Summon",
             "Uncontested": "Uncontested",
             "Update": "Update",
@@ -377,7 +365,7 @@
                 "Creature": "Onto Another Creature",
                 "Distance": "Distance (ft):",
                 "Ground": "Onto Ground",
-                "Reaction": "Use your reaction to to hit the surface head or feet first?",
+                "Reaction": "Use your reaction to hit the surface head or feet first?",
                 "Save": "Dexterity Saving Throw (DC: 15)",
                 "SkillCheck": "Skill Check (DC: 15)",
                 "Target": "Select one target and try again!",
@@ -412,7 +400,7 @@
                 "WarmShield": "Warm Shield"
             },
             "FireStorm": {
-                "Place": "Place us to 10 templates. Right click to finish",
+                "Place": "Place up to 10 templates. Right click to finish",
                 "Templates": "Templates"
             },
             "FlameBlade": {
@@ -422,10 +410,8 @@
             "FlockOfFamiliars": {
                 "Command": "Flock of Familiars: Command",
                 "ReactionUsed": "Familiars are too far or have already used their reaction!",
+                "TooFar": "Familiars are too far away!",
                 "Touch": "Flock of Familiars: Touch"
-            },
-            "FlockOfFamilias": {
-                "TooFar": "Familiars are too far away!"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -736,7 +722,7 @@
                 "Draw": "Draw protective circle?"
             },
             "SummonShadowspawn": {
-                "ChillingHand": "Chilling Hand",
+                "ChillingRend": "Chilling Rend",
                 "Despair": "Despair",
                 "DreadfulScream": "Dreadful Scream",
                 "Fear": "Fear",

@@ -133,7 +133,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
                     genericUtils.setProperty(i, 'optgroups', [
                         {
-                            label: 'CHRISPREMADES.Generic.Abilities',
+                            label: 'DND5E.Abilities',
                             options: Object.values(CONFIG.DND5E.abilities).map(j => ({
                                 label: j.label,
                                 value: j.abbreviation,
@@ -141,7 +141,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                             }))
                         },
                         {
-                            label: 'CHRISPREMADES.Generic.Skills',
+                            label: 'DND5E.Skills',
                             options: Object.entries(CONFIG.DND5E.skills).map(([key, value]) => ({
                                 label: value.label,
                                 value: key,
@@ -309,7 +309,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         context.tabs = this.tabsData;
         context.buttons = [
-            {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+            {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
         ];
         return context;
     }

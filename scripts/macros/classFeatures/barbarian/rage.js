@@ -197,7 +197,7 @@ async function use({workflow}) {
             ['CHRISPREMADES.CommonFeatures.Bite', 'Form of the Beast: Bite'],
             ['CHRISPREMADES.CommonFeatures.Claws', 'Form of the Beast: Claws'],
             ['CHRISPREMADES.CommonFeatures.Tail', 'Form of the Beast: Tail'],
-            ['CHRISPREMADES.Generic.None', false]
+            ['DND5E.None', false]
         ]);
         if (selection) {
             let translationKey = 'CHRISPREMADES.Macros.Rage.' + selection.replace(':','').split(' ').map(x => x.capitalize()).join('');

@@ -171,7 +171,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
     }));
     if (addNoneDocument) {
         inputFields.push({
-            label: genericUtils.translate('CHRISPREMADES.Generic.None'),
+            label: genericUtils.translate('DND5E.None'),
             name: 'none',
             options: {
                 image: 'icons/svg/cancel.svg'

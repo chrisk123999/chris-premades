@@ -81,7 +81,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         context.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.status;
         if (context.availableAutomations.length > 0) {
             context.options = [{
-                label: 'CHRISPREMADES.Generic.None',
+                label: 'DND5E.None',
                 value: null,
                 id: null,
                 isSelected: (context.source || game.settings.get('chris-premades', 'devTools')) ? false : true,
@@ -391,8 +391,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         context.tabs = this.tabsData;
         context.buttons = [
-            {type: 'button', action: 'apply', label: 'CHRISPREMADES.Generic.Apply', name: 'apply', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+            {type: 'button', action: 'apply', label: 'DND5E.Apply', name: 'apply', icon: 'fa-solid fa-download'},
+            {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
         ];
         return context;
     }

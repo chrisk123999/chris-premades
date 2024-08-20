@@ -141,7 +141,7 @@ async function late({workflow}) {
         if (tokenUtils.getDistance(workflow.token, i) > 100) familiarTokens.delete(i);
     }
     if (!familiarTokens.size) {
-        genericUtils.notify('CHRISPREMADES.Macros.FlockOfFamilias.TooFar', 'info');
+        genericUtils.notify('CHRISPREMADES.Macros.FlockOfFamiliars.TooFar', 'info');
         return;
     }
     for (let i of familiarTokens) {

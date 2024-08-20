@@ -123,7 +123,7 @@ async function registerSearchTerms(index) {
                 }
             },
             {
-                name: genericUtils.translate('CHRISPREMADES.Generic.Default'),
+                name: genericUtils.translate('DND5E.Default'),
                 icon: '<i class="fa-solid fa-film"></i>',
                 callback: (event) => {
                     if (event.target.localName != 'button') return;

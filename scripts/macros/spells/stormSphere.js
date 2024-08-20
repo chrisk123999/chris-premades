@@ -82,7 +82,7 @@ async function early({workflow}) {
     if (!alreadyIgnores) await genericUtils.setFlag(workflow.actor, 'midi-qol', 'ignoreNearbyFoes', 1);
     if (!templateUtils.getTokensInTemplate(template).has(targetToken)) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Generic.Advantage') + ': ' + effect.name);
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + effect.name);
 }
 async function late({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'stormSphere');

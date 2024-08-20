@@ -258,7 +258,7 @@ class EffectDirectory extends DocumentDirectory {
     async _onCreateEntry(event) {
         event.preventDefault();
         let effectData = {
-            'name': genericUtils.translate('CHRISPREMADES.EffectInterface.NewEffect'),
+            'name': genericUtils.translate('DND5E.EffectNew'),
             'icon': 'icons/svg/aura.svg',
             'transfer': false,
             'flags': {
@@ -355,8 +355,8 @@ function effectSidebar(app, html, data) {
     let tab = document.createElement('a');
     tab.classList.add('item');
     tab.dataset.tab = 'effects';
-    tab.dataset.tooltip = 'CHRISPREMADES.EffectInterface.Effects';
-    if (!('tooltip' in game)) tab.title = genericUtils.translate('CHRISPREMADES.EffectInterface.Effects');
+    tab.dataset.tooltip = 'DND5E.Effects';
+    if (!('tooltip' in game)) tab.title = genericUtils.translate('DND5E.Effects');
     let icon = document.createElement('i');
     icon.setAttribute('class', 'fas fa-bolt');
     tab.append(icon);

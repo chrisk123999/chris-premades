@@ -19,7 +19,7 @@ async function late({workflow}) {
                         options: [
                             {
                                 value: 'none',
-                                label: 'CHRISPREMADES.Generic.None'
+                                label: 'DND5E.None'
                             }
                         ]
                     }

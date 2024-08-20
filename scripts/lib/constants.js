@@ -200,7 +200,7 @@ const overTimeOptions = [
                 value: 'check'
             },
             {
-                label: 'CHRISPREMADES.Generic.Save',
+                label: 'DND5E.SavingThrow',
                 value: 'save'
             },
             {
@@ -208,7 +208,7 @@ const overTimeOptions = [
                 value: 'skill'
             },
             {
-                label: 'CHRISPREMADES.Generic.None',
+                label: 'DND5E.None',
                 value: false
             }
         ],

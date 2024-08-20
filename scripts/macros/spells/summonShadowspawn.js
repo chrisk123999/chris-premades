@@ -21,9 +21,9 @@ async function use({workflow}) {
     }
     let numAttacks = Math.floor(spellLevel / 2);
     let multiAttackFeatureData = await Summons.getSummonItem('Multiattack (Shadow Spirit)', {}, workflow.item, {translate: genericUtils.format('CHRISPREMADES.CommonFeatures.Multiattack', {numAttacks}), identifier: 'summonShadowspawnMultiattack'});
-    let chillingHandFeatureData = await Summons.getSummonItem('Chilling Hand', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonShadowspawn.ChillingHand', identifier: 'summonShadowspawnChillingHand', flatAttack: true, damageBonus: spellLevel});
+    let chillingRendFeatureData = await Summons.getSummonItem('Chilling Rend', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonShadowspawn.ChillingRend', identifier: 'summonShadowspawnChillingRend', flatAttack: true, damageBonus: spellLevel});
     let dreadfulScreamFeatureData = await Summons.getSummonItem('Dreadful Scream', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonShadowspawn.DreadfulScream', identifier: 'summonShadowspawnDreadfulScream', flatDC: true});
-    if (!multiAttackFeatureData || !chillingHandFeatureData || !dreadfulScreamFeatureData) {
+    if (!multiAttackFeatureData || !chillingRendFeatureData || !dreadfulScreamFeatureData) {
         errors.missingPackItem();
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
@@ -53,7 +53,7 @@ async function use({workflow}) {
                 name,
                 disposition: workflow.token.document.disposition
             },
-            items: [multiAttackFeatureData, chillingHandFeatureData, dreadfulScreamFeatureData]
+            items: [multiAttackFeatureData, chillingRendFeatureData, dreadfulScreamFeatureData]
         },
         token: {
             name,

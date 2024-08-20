@@ -253,7 +253,7 @@ export let summonFey = {
             default: null,
             options: [
                 {
-                    label: 'CHRISPREMADES.Generic.None',
+                    label: 'DND5E.None',
                     value: null
                 },
                 ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))

@@ -359,7 +359,7 @@ export function registerSettings() {
         choices: {
             disabled: 'CHRISPREMADES.Generic.Disabled',
             chat: 'CHRISPREMADES.Generic.Chat',
-            value: 'CHRISPREMADES.Generic.Description'
+            value: 'DND5E.Description'
         },
         onChange: value => {
             if (value !== 'disabled' && oldEffectDescriptions === 'disabled') {

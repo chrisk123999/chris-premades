@@ -36,7 +36,7 @@ async function attack({workflow}) {
     let sourceActor = (await fromUuid(effect.origin)).actor;
     if (workflow.targets.first().actor !== sourceActor) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Generic.Disadvantage') + ': ' + effect.name);
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + effect.name);
 }
 async function turnStart({trigger: {entity: effect}}) {
     let currActor = combatUtils.getCurrentCombatantToken().actor;

@@ -36,7 +36,7 @@ async function early({workflow}) {
     let targetActorUuid = workflow.targets.first().actor.uuid;
     if (originActorUuid === targetActorUuid) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Generic.Disadvantage' + ': ' + origin.name));
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage' + ': ' + origin.name));
 }
 async function late({workflow}) {
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
