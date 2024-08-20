@@ -18,7 +18,7 @@ async function use({trigger, workflow}) {
 }
 export let thornWhip = {
     name: 'Thorn Whip',
-    version: '0.12.0',
+    version: '0.12.26',
     midi: {
         item: [
             {
