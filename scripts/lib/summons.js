@@ -20,12 +20,15 @@ export class Summons {
                 sourceActors = sourceActors.reduce((acc, i) => acc.concat(Array(i.amount).fill(i.document)), []);
             }
         }
-        sourceActors = await Promise.all(sourceActors.map(async i => await actorUtils.getSidebarActor(i, {autoImport: true})));
+        let trueSourceActors = [];
+        for (let sourceActor of sourceActors) {
+            trueSourceActors.push(await actorUtils.getSidebarActor(sourceActor, {autoImport: true}));
+        }
         if (!Array.isArray(updates)) updates = [updates];
         for (let currUpdates of updates) {
             genericUtils.mergeObject(currUpdates, {actor: {prototypeToken: {actorLink: false}}, token: {actorLink: false}});
         }
-        let Summon = new Summons(sourceActors, updates, originItem, summonerToken, options);
+        let Summon = new Summons(trueSourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
         if (summonerToken.actor?.sheet?.rendered) summonerToken.actor.sheet.minimize();
         await Summon.spawnAll();
