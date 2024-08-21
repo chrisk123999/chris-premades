@@ -504,6 +504,12 @@ export function registerSettings() {
             await customTypes.firearm(value);
         }
     });
+    addSetting({
+        key: 'chatCardTweak',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

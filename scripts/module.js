@@ -27,6 +27,7 @@ import {miscPremades} from './integrations/miscPremades.js';
 import {updateCheck} from './extensions/update.js';
 import {troubleshooter} from './applications/troubleshooter.js';
 import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
+import {chat} from './extensions/chat.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -43,6 +44,7 @@ Hooks.once('init', () => {
     skillCheck.init();
     effectEvents.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
+    if (utils.genericUtils.getCPRSetting('chatCardTweak')) chat.cssTweak();
 });
 Hooks.once('ready', () => {
     troubleshooter.startup();

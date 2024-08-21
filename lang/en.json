@@ -1218,6 +1218,10 @@
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
+            },
+            "chatCardTweak": {
+                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls.",
+                "Name": "Chat Card Tweak"
             }
         },
         "SkillCheck": {
