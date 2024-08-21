@@ -375,7 +375,7 @@
                 "Boldness": "Elixir Experimental: Ousadia",
                 "Flight": "Elixir Experimental: Voo",
                 "Healing": "Elixir Experimental: Cura",
-                "MakeAnother": "Create another Elixir at the cost of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)",
+                "MakeAnother": "Criar outro Elixir gastando um espaço de magia de nível {slotLevel}? ({slotValue} de {slotMax} restante(s))",
                 "Resilience": "Elixir Experimental: Resiliência",
                 "Swiftness": "Elixir Experimental: Celeridade",
                 "Transformation": "Elixir Experimental: Transformação"
