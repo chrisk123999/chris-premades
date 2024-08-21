@@ -122,6 +122,15 @@
     },
     "core": {
       "sourceId": "Item.EQYXTAx437hnqhrM"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "summonUndeadPutrid"
+          ]
+        }
+      }
     }
   },
   "folder": "xkb1CpapatPLVEan",

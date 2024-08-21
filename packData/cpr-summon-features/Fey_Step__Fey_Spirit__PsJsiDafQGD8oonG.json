@@ -114,6 +114,15 @@
     },
     "core": {
       "sourceId": "Item.qMTCDVB4HW8LvX7h"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "summonFeyFeyStep"
+          ]
+        }
+      }
     }
   },
   "folder": "ojrTS3JcYt8jOGvx",

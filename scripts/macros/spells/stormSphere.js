@@ -34,7 +34,6 @@ async function use({workflow}) {
             damageType
         ]
     ];
-    effectUtils.addMacro(featureData, 'midi.item', ['stormSphereBolt']);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

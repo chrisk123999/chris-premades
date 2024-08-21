@@ -10,8 +10,6 @@ async function use({workflow}) {
         errors.missingPackItem();
         return;
     }
-    effectUtils.addMacro(pocketData, 'midi.item', ['findFamiliarPocketDimension']);
-    effectUtils.addMacro(touchData, 'midi.item', ['findFamiliarTouch']);
     let itemsToAdd = [pocketData, touchData];
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder?.length) folder = 'Familiars';
@@ -86,7 +84,6 @@ async function use({workflow}) {
             errors.missingPackItem();
             return;
         }
-        effectUtils.addMacro(resistanceData, 'midi.item', ['investmentOfTheChainMasterActive']);
         itemUpdates.push(resistanceData);
         genericUtils.setProperty(updates, 'actor.items', itemUpdates);
     }

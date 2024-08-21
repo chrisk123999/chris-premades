@@ -121,7 +121,16 @@
       "idv": false,
       "ida": false
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "actor": [
+            "wildSurgeRetribution"
+          ]
+        }
+      }
+    }
   },
   "_id": "HsfFfyal1J73Akq0",
   "_key": "!items!HsfFfyal1J73Akq0"

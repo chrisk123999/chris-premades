@@ -109,7 +109,16 @@
       "effectCondition": "",
       "onUseMacroName": ""
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "findFamiliarPocketDimension"
+          ]
+        }
+      }
+    }
   },
   "_id": "tQJBDmbL5BQUIJqm",
   "_key": "!items!tQJBDmbL5BQUIJqm"

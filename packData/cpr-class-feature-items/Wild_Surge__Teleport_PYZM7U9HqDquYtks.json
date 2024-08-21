@@ -115,7 +115,16 @@
       "idv": false,
       "ida": false
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "wildSurgeTeleport"
+          ]
+        }
+      }
+    }
   },
   "_id": "PYZM7U9HqDquYtks",
   "_key": "!items!PYZM7U9HqDquYtks"

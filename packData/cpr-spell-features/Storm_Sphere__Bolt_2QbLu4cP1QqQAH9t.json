@@ -117,6 +117,15 @@
     },
     "core": {
       "sourceId": "Item.8ikrFDESXf0kb1C4"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "stormSphereBolt"
+          ]
+        }
+      }
     }
   },
   "folder": null,

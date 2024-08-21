@@ -91,6 +91,16 @@
     "core": {
       "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.3A3RqjrgsoW6T164"
     },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "infectiousFuryAttack",
+            "formOfTheBeastBite"
+          ]
+        }
+      }
+    },
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,

@@ -103,6 +103,15 @@
     },
     "core": {
       "sourceId": "Item.QXpOkNrhMxMvbh6n"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "healingSpiritHeal"
+          ]
+        }
+      }
     }
   },
   "folder": "i8o0eS77dZm2Z5eL",

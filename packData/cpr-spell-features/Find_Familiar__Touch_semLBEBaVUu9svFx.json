@@ -114,6 +114,15 @@
     },
     "core": {
       "sourceId": "Item.GvdOQxq4WLmDMYxn"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "findFamiliarTouch"
+          ]
+        }
+      }
     }
   },
   "folder": null,

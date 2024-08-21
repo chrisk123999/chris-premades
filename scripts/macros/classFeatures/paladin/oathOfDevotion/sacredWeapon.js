@@ -18,7 +18,6 @@ async function use({workflow}) {
         errors.missingPackItem();
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['sacredWeaponDismiss']);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

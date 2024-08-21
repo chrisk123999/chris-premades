@@ -91,6 +91,15 @@
     "core": {
       "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.H2UHPzs4jefGJ8ty"
     },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "infectiousFuryAttack"
+          ]
+        }
+      }
+    },
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,

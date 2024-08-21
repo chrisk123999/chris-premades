@@ -79,7 +79,6 @@ async function infuseWeapon(workflow, selectedWeapon) {
         errors.missingPackItem();
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['elementalCleaverChange']);
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.ElementalCleaver.ElementalCleaver'),
         img: workflow.item.img,

@@ -111,6 +111,15 @@
     },
     "core": {
       "sourceId": "Item.BB6PfUEuChbzqmXG"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "heatMetalPulse"
+          ]
+        }
+      }
     }
   },
   "folder": null,

@@ -115,6 +115,15 @@
     },
     "core": {
       "sourceId": "Item.W932MFxf5OmJdmG9"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "rageEnd"
+          ]
+        }
+      }
     }
   },
   "folder": null,

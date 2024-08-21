@@ -9,7 +9,6 @@ async function use({workflow}) {
         errors.missingPackItem();
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['rageEnd']);
     let itemsToCreate = [featureData];
     let effectData = {
         name: workflow.item.name,
@@ -207,10 +206,6 @@ async function use({workflow}) {
                 return;
             }
             if (itemUtils.getItemByIdentifier(workflow.actor, 'bestialSoul')) genericUtils.setProperty(featureData2, 'flags.midiProperties.magicdam', true);
-            if (itemUtils.getItemByIdentifier(workflow.actor, 'infectiousFury')) effectUtils.addMacro(featureData2, 'midi.item', ['infectiousFuryAttack']);
-            if (selection === 'Form of the Beast: Bite') {
-                effectUtils.addMacro(featureData2, 'midi.item', ['formOfTheBeastBite']);
-            }
             itemsToCreate.push(featureData2);
             if (selection === 'Form of the Beast: Tail') {
                 let featureData3 = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Form of the Beast: Tail Reaction', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Rage.FormOfBeastTailReaction', identifier: 'formOfTheBeastTailReaction'});

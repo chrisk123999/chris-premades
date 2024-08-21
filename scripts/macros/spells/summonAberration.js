@@ -80,7 +80,6 @@ async function use({workflow}){
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(regenerationData, 'combat', ['regeneration']);
         updates.actor.items.push(clawsData, regenerationData);
     } else {
         let psychicSlamData = await Summons.getSummonItem('Psychic Slam (Star Spawn Only)', {}, workflow.item, ({translate: 'CHRISPREMADES.Macros.SummonAberration.PsychicSlam', identifier: 'summonAberrationPsychicSlam', flatAttack: true, damageBonus: spellLevel}));
@@ -90,7 +89,6 @@ async function use({workflow}){
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(whisperingAuraData, 'combat', ['summonAberrationWhisperingAura']);
         updates.actor.items.push(psychicSlamData, whisperingAuraData);
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';

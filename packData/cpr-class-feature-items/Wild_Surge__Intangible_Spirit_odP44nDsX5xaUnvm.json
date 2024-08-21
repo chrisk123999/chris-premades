@@ -114,7 +114,16 @@
       "idv": false,
       "ida": false
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "wildSurgeIntangibleSpirit"
+          ]
+        }
+      }
+    }
   },
   "_id": "odP44nDsX5xaUnvm",
   "_key": "!items!odP44nDsX5xaUnvm"

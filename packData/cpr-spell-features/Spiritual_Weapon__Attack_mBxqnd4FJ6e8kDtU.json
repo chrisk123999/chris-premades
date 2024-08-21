@@ -119,6 +119,15 @@
     },
     "core": {
       "sourceId": "Actor.57T1iaC28BNqvhSo.Item.RstA9b0hpvX5qdKD"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "spiritualWeaponAttack"
+          ]
+        }
+      }
     }
   },
   "effects": [],

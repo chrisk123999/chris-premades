@@ -92,7 +92,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(clawsData, 'midi.item', ['summonFiendClaws']);
         updates.actor.items.push(clawsData);
     }
     updates.actor.system.attributes.hp = {

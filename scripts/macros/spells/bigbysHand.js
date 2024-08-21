@@ -32,10 +32,6 @@ async function use({workflow}) {
     }
     clenchedFistData.system.attack.bonus = '+' + casterSpellMod + ' +' + spellAttackBonus;
     forcefulHandData.name = forcefulHandData.name + ' (' + ((casterSpellMod * 5) + 5) + ' ' + genericUtils.translate('CHRISPREMADES.Units.Feet') + ')';
-    effectUtils.addMacro(clenchedFistData, 'midi.item', ['bigbysHandItems']);
-    effectUtils.addMacro(forcefulHandData, 'midi.item', ['bigbysHandItems']);
-    effectUtils.addMacro(graspingHandData, 'midi.item', ['bigbysHandItems']);
-    effectUtils.addMacro(interposingHandData, 'midi.item', ['bigbysHandItems']);
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name?.length) name = 'Bigby\'s Hand';
     let hpFormula = workflow.actor.system.attributes.hp.max;

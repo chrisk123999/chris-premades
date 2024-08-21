@@ -90,7 +90,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(weightOfSorrowData, 'combat', ['summonShadowspawnDespair']);
         updates.actor.items.push(weightOfSorrowData);
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';

@@ -32,7 +32,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(feyStepFeatureData, 'midi.item', ['summonFeyFeyStep']);
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.FeySpirit' + creatureType.capitalize());
     let hpFormula = 30 + ((spellLevel - 3) * 10);

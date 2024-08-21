@@ -21,7 +21,6 @@ async function use({workflow}) {
     let uses = Math.min(2, itemUtils.getMod(workflow.item) + 1);
     featureDataSummon.system.uses.max = uses;
     featureDataSummon.system.uses.value = uses;
-    effectUtils.addMacro(featureDataSummon, 'midi.item', ['healingSpiritHeal']);
     let updates = {
         actor: {
             name: workflow.item.name,

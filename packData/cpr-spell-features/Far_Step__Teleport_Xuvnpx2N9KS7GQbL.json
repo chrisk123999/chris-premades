@@ -115,6 +115,15 @@
     },
     "core": {
       "sourceId": "Item.I9398Vu7OXxDfeGI"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "farStepStepping"
+          ]
+        }
+      }
     }
   },
   "folder": null,

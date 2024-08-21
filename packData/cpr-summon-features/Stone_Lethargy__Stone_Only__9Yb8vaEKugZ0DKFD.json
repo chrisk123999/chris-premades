@@ -176,6 +176,13 @@
     },
     "core": {
       "sourceId": "Item.BNj6CU3YeeA7R3wU"
+    },
+    "chris-premades": {
+      "macros": {
+        "combat": [
+          "summonConstructStone"
+        ]
+      }
     }
   },
   "folder": "TS9wthmzLMOlOtHr",

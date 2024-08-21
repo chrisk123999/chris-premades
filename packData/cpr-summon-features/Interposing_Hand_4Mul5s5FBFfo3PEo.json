@@ -110,6 +110,15 @@
       "effectActivation": false,
       "itemCondition": "",
       "effectCondition": ""
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "bigbysHandItems"
+          ]
+        }
+      }
     }
   },
   "folder": "mnKsB3lJb1672i7A",

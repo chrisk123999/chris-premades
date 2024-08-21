@@ -122,6 +122,15 @@
     },
     "core": {
       "sourceId": "Item.yDpEuhD8nWdxSsAC"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "summonFiendClaws"
+          ]
+        }
+      }
     }
   },
   "folder": "Nn9j8TIs5k5aaWAg",

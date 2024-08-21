@@ -126,6 +126,15 @@
     },
     "core": {
       "sourceId": "Item.PivPl3xO5b6lwCQ3"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "summonDraconicSpiritBreathWeapon"
+          ]
+        }
+      }
     }
   },
   "folder": "j66Pj3ko1tcAG3HY",

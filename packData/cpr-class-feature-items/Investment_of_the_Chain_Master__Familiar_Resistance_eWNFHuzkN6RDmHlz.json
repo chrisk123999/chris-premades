@@ -83,15 +83,6 @@
     }
   },
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Warlock"
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -122,6 +113,15 @@
     },
     "core": {
       "sourceId": "Actor.QkxhZamk6sWuon7R.Item.j1enVpGQyqrUousM"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "investmentOfTheChainMasterActive"
+          ]
+        }
+      }
     }
   },
   "effects": [

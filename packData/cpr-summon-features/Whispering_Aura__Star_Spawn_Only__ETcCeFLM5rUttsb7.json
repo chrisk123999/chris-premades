@@ -122,6 +122,13 @@
     },
     "core": {
       "sourceId": "Item.cQIHPyP25FUaohVY"
+    },
+    "chris-premades": {
+      "macros": {
+        "combat": [
+          "summonAberrationWhisperingAura"
+        ]
+      }
     }
   },
   "folder": "FewumOfaPV1m7YpH",

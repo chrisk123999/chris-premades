@@ -114,6 +114,15 @@
     },
     "core": {
       "sourceId": "Item.YfPtqqTRoUtkx8qV"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "dawnMove"
+          ]
+        }
+      }
     }
   },
   "folder": null,

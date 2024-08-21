@@ -122,6 +122,15 @@
     },
     "core": {
       "sourceId": "Item.0rP4J4tw2mTlVcBe"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "summonCelestialMace"
+          ]
+        }
+      }
     }
   },
   "folder": "lrTc5F6l6B3nHBDw",

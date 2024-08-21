@@ -175,6 +175,13 @@
     },
     "core": {
       "sourceId": "Item.sZc2IpY5WP2fIpDV"
+    },
+    "chris-premades": {
+      "macros": {
+        "combat": [
+          "summonShadowspawnDespair"
+        ]
+      }
     }
   },
   "folder": "2LPMslttyIC3Hbpl",

@@ -122,6 +122,15 @@
     },
     "core": {
       "sourceId": "Item.JwB8gB7NHEy18yZJ"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "bigbysHandItems"
+          ]
+        }
+      }
     }
   },
   "folder": "mnKsB3lJb1672i7A",

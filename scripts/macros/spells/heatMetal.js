@@ -22,7 +22,6 @@ async function use({workflow}) {
         spellDC,
         damageType
     });
-    effectUtils.addMacro(featureData, 'midi.item', ['heatMetalPulse']);
     let casterEffectData = {
         name: workflow.item.name,
         img: workflow.item.img,

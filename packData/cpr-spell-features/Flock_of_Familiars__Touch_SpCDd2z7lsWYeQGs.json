@@ -112,7 +112,16 @@
       "idv": false,
       "ida": false
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "flockOfFamiliarsTouch"
+          ]
+        }
+      }
+    }
   },
   "folder": null,
   "_id": "SpCDd2z7lsWYeQGs",

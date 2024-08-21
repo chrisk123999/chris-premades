@@ -6,7 +6,6 @@ async function use({workflow}) {
         errors.missingPackItem();
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['dreadLordShadowAttack']);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
         name: workflow.item.name,

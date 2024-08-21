@@ -49,7 +49,6 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'effect', ['farStepStepping']);
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'farStep', vae: [{type: 'use', name: featureData.name, identifier: 'farStepTeleport'}]});
-    effectUtils.addMacro(featureData, 'midi.item', ['farStepStepping']);
     await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }

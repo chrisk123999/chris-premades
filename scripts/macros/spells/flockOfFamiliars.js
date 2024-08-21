@@ -16,7 +16,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(touchData, 'midi.item', ['flockOfFamiliarsTouch']);
     let itemsToAdd = [touchData];
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder?.length) folder = 'Familiars';
@@ -100,7 +99,6 @@ async function use({workflow}) {
             errors.missingPackItem();
             return;
         }
-        effectUtils.addMacro(resistanceData, 'midi.item', ['investmentOfTheChainMasterActive']);
         for (let i = 0; i < updates.length; i++) {
             itemUpdates[i].push(resistanceData);
             genericUtils.setProperty(updates[i], 'actor.items', itemUpdates[i]);

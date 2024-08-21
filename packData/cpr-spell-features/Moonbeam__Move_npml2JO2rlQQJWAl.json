@@ -115,6 +115,15 @@
     },
     "core": {
       "sourceId": "Item.c8VMLIU1cZ7KhcQn"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "moonbeamMove"
+          ]
+        }
+      }
     }
   },
   "folder": null,

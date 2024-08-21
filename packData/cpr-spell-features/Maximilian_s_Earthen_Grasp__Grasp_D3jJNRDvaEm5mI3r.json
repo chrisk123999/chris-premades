@@ -118,7 +118,16 @@
       "onUseMacroName": "",
       "removeAttackDamageButtons": "default"
     },
-    "core": {}
+    "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "maximiliansEarthenGraspGrasping"
+          ]
+        }
+      }
+    }
   },
   "_id": "D3jJNRDvaEm5mI3r",
   "_key": "!items!D3jJNRDvaEm5mI3r"

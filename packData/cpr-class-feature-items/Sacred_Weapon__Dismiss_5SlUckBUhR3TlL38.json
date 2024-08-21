@@ -115,6 +115,15 @@
     },
     "core": {
       "sourceId": "Item.PPvAe2050Wael1Za"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "sacredWeaponDismiss"
+          ]
+        }
+      }
     }
   },
   "folder": null,

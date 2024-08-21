@@ -28,7 +28,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['gustOfWindMove']);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,

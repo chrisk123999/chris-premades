@@ -29,7 +29,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(breathWeaponData, 'midi.item', ['summonDraconicSpiritBreathWeapon']);
     let name = itemUtils.getConfig(workflow.item, creatureType + 'Name');
     if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.DraconicSpirit' + creatureType.capitalize());
     let hpFormula = 50 + ((spellLevel - 5) * 10);

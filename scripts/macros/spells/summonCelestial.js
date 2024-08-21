@@ -80,7 +80,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(radiantMaceData, 'midi.item', ['summonCelestialMace']);
         updates.actor.items.push(radiantMaceData);
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';

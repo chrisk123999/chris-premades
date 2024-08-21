@@ -99,7 +99,6 @@ async function use({workflow}) {
             damageType
         ]
     ];
-    effectUtils.addMacro(featureData, 'midi.item', ['spiritualWeaponAttack']);
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;

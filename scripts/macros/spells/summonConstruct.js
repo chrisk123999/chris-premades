@@ -81,7 +81,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(heatedBodyData, 'midi.actor', ['heatedBody']);
         updates.actor.items.push(heatedBodyData);
     } else {
         let stoneLethargyData = await Summons.getSummonItem('Stone Lethargy (Stone Only)', {}, workflow.item, {flatDC: true, translate: 'CHRISPREMADES.CommonFeatures.StoneLethargy', identifier: 'summonConstructStoneLethargy'});
@@ -90,7 +89,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(stoneLethargyData, 'combat', ['summonConstructStone']);
         updates.actor.items.push(stoneLethargyData);
     }
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';

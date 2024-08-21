@@ -90,8 +90,6 @@ async function use({workflow}) {
             if (concentrationEffect) await genericUtils.remove(concentrationEffect);
             return;
         }
-        effectUtils.addMacro(festeringAuraData, 'combat', ['summonUndeadPutrid']);
-        effectUtils.addMacro(rottingClawData, 'midi.item', ['summonUndeadPutrid']);
         updates.actor.items.push(festeringAuraData, rottingClawData, rottingClawParalyzeData);
     }
     updates.actor.system.attributes.hp = {

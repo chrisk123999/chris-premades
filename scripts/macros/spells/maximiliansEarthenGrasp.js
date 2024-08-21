@@ -35,7 +35,6 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    effectUtils.addMacro(featureData, 'midi.item', ['maximiliansEarthenGraspGrasping']);
     await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
         duration: 60,
         range: 30,
@@ -89,7 +88,6 @@ async function late({workflow}) {
     if (!workflow.failedSaves.size) return;
     let target = workflow.failedSaves.first();
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Maximilian\'s Earthen Grasp: Crush', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Crush', identifier: 'maximiliansEarthenGraspCrush', flatDC: itemUtils.getSaveDC(workflow.item)});
-    effectUtils.addMacro(featureData, 'midi.item', ['maximiliansEarthenGraspGrasping']);
     genericUtils.setProperty(featureData, 'flags.chris-premades.maximiliansEarthenGrasp.targetUuid', target.document.uuid);
     let effectData = {
         name: workflow.item.name,

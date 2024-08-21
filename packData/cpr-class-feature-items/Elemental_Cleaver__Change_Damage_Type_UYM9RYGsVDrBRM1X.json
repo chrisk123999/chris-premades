@@ -84,6 +84,15 @@
   },
   "flags": {
     "core": {},
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "elementalCleaverChange"
+          ]
+        }
+      }
+    },
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",

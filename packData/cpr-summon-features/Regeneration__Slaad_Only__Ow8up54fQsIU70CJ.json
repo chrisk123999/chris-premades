@@ -120,6 +120,13 @@
     },
     "core": {
       "sourceId": "Item.XSHr3d5AQ6lJogte"
+    },
+    "chris-premades": {
+      "macros": {
+        "combat": [
+          "regeneration"
+        ]
+      }
     }
   },
   "folder": "FewumOfaPV1m7YpH",

@@ -120,6 +120,15 @@
     },
     "core": {
       "sourceId": "Item.LIHincLuBy7nwxdJ"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "actor": [
+            "heatedBody"
+          ]
+        }
+      }
     }
   },
   "folder": "TS9wthmzLMOlOtHr",
