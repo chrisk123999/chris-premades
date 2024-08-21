@@ -1032,7 +1032,7 @@
                 "Name": "Salvaguardas Contextuais"
             },
             "additionalCompendiums": {
-                "Hint": "Selecione compêndios de itens adicionais a serem usados ​​pelo medkit e ajuste sua prioridade.",
+                "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
             },
             "applyConditionChanges": {
