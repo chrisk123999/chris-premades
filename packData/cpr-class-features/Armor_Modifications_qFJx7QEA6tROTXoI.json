@@ -1,18 +1,20 @@
 {
-  "name": "Forceful Hand",
+  "name": "Armor Modifications",
   "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
+      "book": "Tasha’s Cauldron of Everything",
+      "page": "17",
+      "license": "",
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -25,13 +27,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -42,12 +44,12 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "abil",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +66,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,50 +85,41 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {},
+    "chris-premades": {
+      "info": {
+        "name": "Armor Modifications",
+        "version": "0.12.28",
+        "identifier": "armorModifications",
+        "source": "chris-premades"
+      }
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.hEcJKF2BQBG7q9S0"
-    },
-    "chris-premades": {
-      "macros": {
-        "midi": {
-          "item": [
-            "bigbysHandItems"
-          ]
-        }
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "folder": "mnKsB3lJb1672i7A",
-  "_id": "5y4X6vwzF7SXOaJe",
-  "_key": "!items!5y4X6vwzF7SXOaJe"
+  "effects": [],
+  "img": "icons/equipment/chest/breastplate-cuirass-steel-grey.webp",
+  "folder": "kXYEyH7rzMGwzsz4",
+  "_id": "qFJx7QEA6tROTXoI",
+  "_key": "!items!qFJx7QEA6tROTXoI"
 }

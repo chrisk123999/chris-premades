@@ -177,6 +177,12 @@ async function preItemRoll(workflow) {
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');
     await executeTargetMacroPass(workflow, 'targetPreambleComplete');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePreambleComplete'));
+    });
+    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.preambleComplete(workflow);
         await conditionVulnerability.preambleComplete(workflow);

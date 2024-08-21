@@ -201,6 +201,9 @@
             "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
         "Macros": {
+            "Actions": {
+                "Dodge": "Dodge"
+            },
             "AncestralProtectors": {
                 "Target": "Ancestral Protectors: Target"
             },
@@ -296,6 +299,9 @@
                 "TargetCover": "Target Cover:",
                 "YourCover": "Your Cover:"
             },
+            "ChillTouch": {
+                "Undead": "Chill Touch: Undead Debuff"
+            },
             "ChromaticOrb": {
                 "Select": "What damage type?"
             },
@@ -365,6 +371,15 @@
                 "Reduce": "Reduce",
                 "Select": "Enlarge or Reduce?"
             },
+            "ExperimentalElixir": {
+                "Boldness": "Experimental Elixir: Boldness",
+                "Flight": "Experimental Elixir: Flight",
+                "Healing": "Experimental Elixir: Healing",
+                "MakeAnother": "Create another Elixir at the cost of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)",
+                "Resilience": "Experimental Elixir: Resilience",
+                "Swiftness": "Experimental Elixir: Swiftness",
+                "Transformation": "Experimental Elixir: Transformation"
+            },
             "Fall": {
                 "Acr": "Yes (Acrobatics)",
                 "Ath": "Yes (Athletics)",
@@ -433,6 +448,11 @@
                 "NoWeapons": "No equipped weapons found!",
                 "SelectWeapon": "Attack with what weapon?"
             },
+            "GuardianArmor": {
+                "DefensiveField": "Guardian Armor: Defensive Field",
+                "Distracted": "Thunder Gauntlets: Distracted",
+                "ThunderGauntlets": "Guardian Armor: Thunder Gauntlets"
+            },
             "GuardianOfFaith": {
                 "Damage": "Guardian of Faith: Damage"
             },
@@ -496,6 +516,10 @@
                 "Attack": "Attack a Nearby Target",
                 "Curse": "How do you curse your target?",
                 "Damage": "Take Damage"
+            },
+            "InfiltratorArmor": {
+                "ExtraDamage": "Apply extra 1d6 lightning damage?",
+                "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
             },
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
@@ -647,6 +671,14 @@
             },
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
+            },
+            "SteelDefender": {
+                "Command": "Steel Defender: Command",
+                "DeflectAttack": "Deflect Attack",
+                "ForceEmpoweredRend": "Force-Empowered Rend",
+                "Mending": "Mending",
+                "Repair": "Repair",
+                "Vigilant": "Vigilant"
             },
             "StormSphere": {
                 "Bolt": "Storm Sphere: Bolt",
@@ -1289,6 +1321,7 @@
                 "Skeleton": "Skeleton",
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",
+                "SteelDefender": "Steel Defender",
                 "UndeadSpirit": "Undead Spirit",
                 "UndeadSpiritGhostly": "Undead Spirit (Ghostly)",
                 "UndeadSpiritPutrid": "Undead Spirit (Putrid)",

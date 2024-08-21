@@ -1,17 +1,16 @@
 {
-  "name": "Forceful Hand",
+  "name": "Experimental Elixir",
   "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Artificer : Alchemist"
     },
     "activation": {
-      "type": "bonus",
+      "type": "special",
       "cost": 1,
       "condition": ""
     },
@@ -25,18 +24,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
@@ -47,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "abil",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,8 +82,43 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Artificer"
+      }
+    },
+    "core": {
+      "sourceId": "Actor.ZSGe4s8sP4rFN2Al.Item.9dWkJHme563QpeMa"
+    },
+    "favtab": {
+      "isFavorite": true
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "magicitems": {
+      "enabled": false,
+      "equipped": false,
+      "attuned": false,
+      "charges": "0",
+      "chargeType": "c1",
+      "destroy": false,
+      "destroyFlavorText": "reaches 0 charges: it crumbles into ashes and is destroyed.",
+      "rechargeable": false,
+      "recharge": "0",
+      "rechargeType": "t1",
+      "rechargeUnit": "r1",
+      "sorting": "l"
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -97,7 +131,6 @@
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
@@ -106,6 +139,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoSaveFriendly": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -113,20 +147,25 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.hEcJKF2BQBG7q9S0"
-    },
     "chris-premades": {
+      "info": {
+        "name": "Experimental Elixir",
+        "version": "0.12.28",
+        "identifier": "experimentalElixir",
+        "source": "chris-premades"
+      },
       "macros": {
         "midi": {
           "item": [
-            "bigbysHandItems"
+            "experimentalElixir"
           ]
         }
       }
     }
   },
-  "folder": "mnKsB3lJb1672i7A",
-  "_id": "5y4X6vwzF7SXOaJe",
-  "_key": "!items!5y4X6vwzF7SXOaJe"
+  "effects": [],
+  "img": "icons/tools/laboratory/mortar-liquid-pink.webp",
+  "folder": "nesB90QxsawvAYat",
+  "_id": "cJt5KXWosbIj3rjF",
+  "_key": "!items!cJt5KXWosbIj3rjF"
 }

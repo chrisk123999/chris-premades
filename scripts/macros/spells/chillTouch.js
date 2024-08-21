@@ -5,9 +5,6 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 7
-        },
         changes: [
             {
                 key: 'system.traits.di.value',
@@ -18,19 +15,28 @@ async function use({workflow}) {
         ],
         flags: {
             dae: {
+                showIcon: true,
                 specialDuration: [
-                    'turnEndSource'
+                    'turnStartSource'
                 ]
             }
         }
     };
-    effectUtils.addMacro(effectData, 'midi.actor', ['chillTouchChilled']);
-    effectUtils.addMacro(effectData, 'combat', ['chillTouchChilled']);
-    await Promise.all(workflow.hitTargets.map(async token => await effectUtils.createEffect(token.actor, effectData, {identifier: 'chillTouchChilled'})));
+    await Promise.all(workflow.hitTargets.map(async token => {
+        if (actorUtils.typeOrRace(token.actor)?.toLowerCase() === 'undead') {
+            let newEffect = genericUtils.duplicate(effectData);
+            newEffect.name = genericUtils.translate('CHRISPREMADES.Macros.ChillTouch.Undead');
+            effectUtils.addMacro(newEffect, 'midi.actor', ['chillTouchChilled']);
+            effectUtils.addMacro(newEffect, 'combat', ['chillTouchChilled']);
+            newEffect.flags.dae.specialDuration = ['turnEndSource'];
+            await effectUtils.createEffect(token.actor, newEffect, {identifier: 'chillTouchChilled'});
+        } else {
+            await effectUtils.createEffect(token.actor, effectData, {identifier: 'chillTouchChilled'});
+        }
+    }));
 }
 async function attack({workflow}) {
     if (workflow.targets.size !== 1) return;
-    if (actorUtils.typeOrRace(workflow.actor)?.toLowerCase() !== 'undead') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'chillTouchChilled');
     if (!effect) return;
     let sourceActor = (await fromUuid(effect.origin)).actor;

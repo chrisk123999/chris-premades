@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils} from '../utils.js';
+import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils} from '../utils.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
 }
@@ -9,13 +9,18 @@ function collectAuraMacros(entity) {
     if (!macroList.length) return [];
     return macroList.map(i => macros[i]).filter(j => j);
 }
-function collectTokenMacros(token, pass, distance, target) {
+function collectTokenMacros(token, pass, target) {
+    let distance;
     let triggers = [];
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor);
         for (let effect of effects) {
             let macroList = collectAuraMacros(effect);
             if (!macroList.length) continue;
+            if (isNaN(distance) && target) {
+                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
+                if (distance < 0) return [];
+            }
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             auraMacros.forEach(i => {
                 if (i.conscious) {
@@ -49,9 +54,15 @@ function collectTokenMacros(token, pass, distance, target) {
                 });
             });
         }
+        let inCombat = combatUtils.inCombat();
         for (let item of token.actor.items) {
+            if (!inCombat && itemUtils.getConfig(item, 'combatOnly')) continue;
             let macroList = collectAuraMacros(item);
             if (!macroList.length) continue;
+            if (isNaN(distance) && target) {
+                distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
+                if (distance < 0) return [];
+            }
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             auraMacros.forEach(i => {
                 if (i.conscious) {
@@ -90,12 +101,7 @@ function collectTokenMacros(token, pass, distance, target) {
 function getSortedTriggers(tokens, pass, token) {
     let allTriggers = [];
     tokens.forEach(i => {
-        let distance;
-        if (token) {
-            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true});
-            if (distance < 0) return;
-        }
-        allTriggers.push(...collectTokenMacros(i, pass, distance, token));
+        allTriggers.push(...collectTokenMacros(i, pass, token));
     });
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
@@ -134,6 +140,7 @@ async function executeMacro(trigger, options) {
 }
 async function executeMacroPass(tokens, pass, token, options) {
     genericUtils.log('dev', 'Executing Aura Macro Pass: ' + pass + ' for ' + token.name);
+    let inCombat = combatUtils.inCombat();
     let triggers = getSortedTriggers(tokens, pass, token);
     let removedEffects = [];
     let effects = actorUtils.getEffects(token.actor).filter(j => j.flags['chris-premades']?.aura);
@@ -154,7 +161,8 @@ async function executeMacroPass(tokens, pass, token, options) {
     // TODO: need to ensure it still exists?
     let removedEffectIds = removedEffects.map(i => i.id);
     await genericUtils.deleteEmbeddedDocuments(token.actor, 'ActiveEffect', removedEffectIds);
-    if (triggers.length) await genericUtils.sleep(50);
+    // Uncomment if this leads to trouble I guess
+    // if (triggers.length) await genericUtils.sleep(50);
     let effectDataArray = [];
     let effectOptionsArray = [];
     for (let i of triggers) {

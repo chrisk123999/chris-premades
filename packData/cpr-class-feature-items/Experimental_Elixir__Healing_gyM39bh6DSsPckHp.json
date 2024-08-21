@@ -1,7 +1,7 @@
 {
-  "name": "Forceful Hand",
-  "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
+  "name": "Experimental Elixir: Healing",
+  "type": "consumable",
+  "img": "icons/tools/laboratory/vial-orange.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,34 +10,48 @@
     "source": {
       "custom": ""
     },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
     "activation": {
-      "type": "bonus",
+      "type": "action",
       "cost": 1,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": ""
+      "units": "inst"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
       "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "charges",
       "recovery": "",
+      "autoDestroy": true,
       "prompt": true
     },
     "consume": {
@@ -47,14 +61,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "abil",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d4[healing]",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -63,32 +82,30 @@
       "dc": null,
       "scaling": "spell"
     },
+    "unidentified": {
+      "description": ""
+    },
     "type": {
-      "value": "monster",
+      "value": "potion",
       "subtype": ""
     },
-    "requirements": "",
-    "recharge": {
-      "value": null,
-      "charged": false
-    },
+    "container": null,
     "properties": [],
     "attack": {
       "bonus": "",
       "flat": false
     },
+    "attuned": false,
     "enchantment": null,
     "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "magicalBonus": null
   },
   "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -97,7 +114,6 @@
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
@@ -106,6 +122,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoSaveFriendly": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -114,19 +131,17 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.hEcJKF2BQBG7q9S0"
+      "sourceId": "Item.TF7EJmy8mwKmJskU"
     },
     "chris-premades": {
       "macros": {
-        "midi": {
-          "item": [
-            "bigbysHandItems"
-          ]
-        }
+        "rest": [
+          "experimentalElixirConsumable"
+        ]
       }
     }
   },
-  "folder": "mnKsB3lJb1672i7A",
-  "_id": "5y4X6vwzF7SXOaJe",
-  "_key": "!items!5y4X6vwzF7SXOaJe"
+  "folder": null,
+  "_id": "gyM39bh6DSsPckHp",
+  "_key": "!items!gyM39bh6DSsPckHp"
 }

@@ -1,7 +1,6 @@
 {
-  "name": "Forceful Hand",
+  "name": "Arcane Armor: Infiltrator Model",
   "type": "feat",
-  "img": "icons/magic/earth/strike-fist-stone-light.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,13 +10,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "special",
+      "cost": 0,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": ""
+      "units": "perm"
     },
     "cover": null,
     "crewed": false,
@@ -25,13 +24,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -47,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "abil",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,6 +82,7 @@
       "level": null
     }
   },
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-red.webp",
   "effects": [],
   "flags": {
     "midi-qol": {
@@ -96,17 +96,17 @@
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "offHandWeapon": false,
+      "autoSaveFriendly": false,
+      "confirmTargets": "never",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -114,19 +114,25 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.hEcJKF2BQBG7q9S0"
+      "sourceId": "Actor.z15qaAxB43M4FsEt.Item.9O3XwqSibM8dZl2P"
     },
     "chris-premades": {
+      "info": {
+        "name": "Arcane Armor: Infiltrator Model",
+        "version": "0.12.28",
+        "identifier": "infiltratorArmor",
+        "source": "chris-premades"
+      },
       "macros": {
         "midi": {
           "item": [
-            "bigbysHandItems"
+            "infiltratorArmor"
           ]
         }
       }
     }
   },
-  "folder": "mnKsB3lJb1672i7A",
-  "_id": "5y4X6vwzF7SXOaJe",
-  "_key": "!items!5y4X6vwzF7SXOaJe"
+  "folder": "kXYEyH7rzMGwzsz4",
+  "_id": "zJZMOMpFwD92sdQD",
+  "_key": "!items!zJZMOMpFwD92sdQD"
 }
