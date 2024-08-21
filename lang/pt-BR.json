@@ -1225,7 +1225,7 @@
             "Token": "Selecione um token antes de usar este recurso!"
         },
         "Summons": {
-            "ActorName": "{option} Nome do Ator",
+            "ActorName": "Nome do Ator {option}",
             "CRSelection": "{numSummons} {typePl} de ND {cr} ou menor",
             "CreatureNames": {
                 "AberrantSpirit": "Espírito Aberrante",
