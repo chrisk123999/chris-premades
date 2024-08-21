@@ -150,11 +150,17 @@
             "UpdateItem": "Update Item"
         },
         "Firearm": {
+            "Broken": "Broken",
+            "Damaged": "Damaged",
             "Firearm": "Firearm",
             "HasMisfired": "has misfired!",
+            "IsBroken": "This firearm is broken and must be repaired!",
+            "IsDamaged": "This firearm is damaged and must be repaired!",
             "Misfire": "Misfire",
             "Other": "Other",
-            "TrickShot": "Trick Shot"
+            "Status": "Status:",
+            "TrickShot": "Trick Shot",
+            "Undamaged": "Undamaged"
         },
         "Generic": {
             "Available": "Available",
@@ -1208,6 +1214,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "firearmSupport": {
+                "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
+                "Name": "Firearm Support"
             }
         },
         "SkillCheck": {

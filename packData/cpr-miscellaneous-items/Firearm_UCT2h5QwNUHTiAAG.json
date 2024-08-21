@@ -112,9 +112,6 @@
     "magicalBonus": null
   },
   "flags": {
-    "cf": {
-      "id": "temp_3jbsk0c5kub"
-    },
     "midi-qol": {
       "onUseMacroName": "",
       "fumbleThreshold": null,
@@ -125,16 +122,6 @@
       "effectCondition": ""
     },
     "core": {},
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -160,16 +147,8 @@
       "resource-link": ""
     },
     "chris-premades": {
-      "configuration": {
-        "misfire": 1,
-        "status": 0
-      },
       "info": {
-        "name": "Firearm (CR)",
-        "version": "0.10.43",
-        "settings": [
-          "Critical Role Firearm Support"
-        ]
+        "version": "0.12.26"
       }
     }
   },

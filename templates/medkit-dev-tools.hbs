@@ -2,16 +2,16 @@
     {{#if devTools}}
     <fieldset class="cpr-fieldset">
         <legend>Configure Automation Info:</legend>
-        <div class="form-group cpr-medkit-devTools devTools-info">
-            <div>
+        <div class="form-group cpr-row-center">
+            <div class="cpr-even-flex">
                 <label for="identifier">Identifier:</label>
                 <input type="text" id="identifier" name="devToolsidentifier" value="{{devTools.identifier}}">
             </div>
-            <div>
+            <div class="cpr-even-flex">
                 <label for="version">Version:</label>
                 <input type="text" id="version" name="devToolsversion" value="{{devTools.version}}">
             </div>
-            <div>
+            <div class="cpr-even-flex">
                 <label for="source">Source:</label>
                 <input type="text" id="source" name="devToolssource" value="{{devTools.source}}">
             </div>
@@ -19,16 +19,16 @@
     </fieldset>
     <fieldset class="cpr-fieldset">
         <legend>Configure Midi Macro Info:</legend>
-        <div class="form-group cpr-medkit-devTools devTools-midi">
-            <div>
+        <div class="form-group cpr-row-center">
+            <div class="cpr-input-flex">
                 <label for="item">Item:</label>
                 <input type="text" id="item" name="devToolsitem" value="{{devTools.midi.item}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>
-            <div>
+            <div class="cpr-input-flex">
                 <label for="actor">Actor:</label>
                 <input type="text" id="actor" name="devToolsactor" value="{{devTools.midi.actor}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>
-            <div>
+            <div class="cpr-input-flex">
                 <label for="aura">Aura:</label>
                 <input type="text" id="aura" name="devToolsaura" value="{{devTools.aura}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>

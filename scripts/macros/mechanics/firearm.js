@@ -1,8 +1,6 @@
 import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function misfire({trigger, workflow}) {
-    if (!workflow.item) return;
     let baseItem = workflow.item.system.type?.baseItem;
-    if (baseItem != 'firearm') return;
     let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem) || workflow.actor.system.traits.weaponProf.value.has('oth');
     let misfireScore = itemUtils.getConfig(workflow.item, 'misfireScore') ?? 1;
     if (!proficient) misfireScore += 1;
@@ -39,3 +37,56 @@ async function misfire({trigger, workflow}) {
     };
     await effectUtils.createEffect(workflow.actor, effectData);
 }
+async function status({trigger, workflow}) {
+    let status = Number(itemUtils.getConfig(workflow.item, 'status'));
+    switch (status) {
+        default: return;
+        case 1:
+            genericUtils.notify('CHRISPREMADES.Firearm.IsDamaged', 'warn');
+            return true;
+        case 2:
+            genericUtils.notify('CHRISPREMADES.Firearm.IsBroken', 'warn');
+            return true;
+    }
+}
+export let firearm = {
+    name: 'Firearm',
+    version: '0.12.26',
+    midi: {
+        item: [
+            {
+                pass: 'postAttackRoll',
+                macro: misfire,
+                priority: 10
+            },
+            {
+                pass: 'preItemRoll',
+                macro: status,
+                priority: 10
+            }
+        ]
+    },
+    config: [
+        {
+            value: 'status',
+            label: 'CHRISPREMADES.Firearm.Status',
+            type: 'select',
+            options: [
+                {
+                    value: 0,
+                    label: 'CHRISPREMADES.Firearm.Undamaged'
+                },
+                {
+                    value: 1,
+                    label: 'CHRISPREMADES.Firearm.Damaged'
+                },
+                {
+                    value: 2,
+                    label: 'CHRISPREMADES.Firearm.Broken'
+                },
+            ],
+            default: 0,
+            category: 'mechanics'
+        }
+    ]
+};

@@ -4,7 +4,7 @@
             <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
             <div class="form-group cpr-medkit-config">
                 {{#each configuration}}
-                    <div>
+                    <div class="cpr-row-center cpr-config-flex">
                         {{#if isCheckbox}}
                             <label for="{{id}}">{{localize label option=i18nOption}}</label>
                             <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>

@@ -58,7 +58,7 @@ function getConfig(item, key) {
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {
-    return await genericUtils.setFlag(item, 'flags.chris-premades.config.' + key, value);
+    return await genericUtils.setFlag(item, 'chris-premades', 'config.' + key, value);
 }
 function getItemByIdentifier(actor, identifier) {
     return actor.items.find(i => genericUtils.getIdentifier(i) === identifier);

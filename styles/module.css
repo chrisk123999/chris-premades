@@ -135,7 +135,6 @@ form .cpr-compendiums .compendium-number {
 .cpr-compendiums-fieldset {
     border-radius: 4px;
     margin-top: 0.625em;
-    
 }
 
 .theme-dark .cpr-compendiums-fieldset{
@@ -186,23 +185,12 @@ form .cpr-compendiums .compendium-number {
     gap: 0.625em;
 }
 
-.cpr-fieldset .form-group{
+.cpr-fieldset .form-group{ /* make more specific*/
     display: flex;
     flex-direction: column;
 }
 
-form .cpr-medkit-config {
-    display: flex;
-    flex-direction: column;
-}
-
-form .cpr-medkit-config > div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 1%;
-    align-items: center;
+.cpr-config-flex {
     > label {
         flex: 1
     }
@@ -222,18 +210,7 @@ form .cpr-medkit-config > div {
     }
 }
 
-form .cpr-medkit-devTools {
-    display: flex;
-    flex-direction: column;
-}
-
-form .devTools-info > div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 1%;
-    align-items: center;
+.cpr-even-flex {
     > label {
         flex: 1
     }
@@ -242,13 +219,7 @@ form .devTools-info > div {
     }
 }
 
-form .devTools-midi > div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 1%;
-    align-items: center;
+.cpr-input-flex {
     > label {
         flex: .2
     }
@@ -258,29 +229,21 @@ form .devTools-midi > div {
 }
 
 .cpr-over-time-option {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 1%;
-    align-items: center;
-    text-wrap: nowrap;
-    gap: 0.625em;
     .main-label {
         flex: 1
     }
-    .over-time-input {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        > input[type="checkbox"] {
-            height: 25px;
-            --checkbox-size: 25px !important;
-        }
-        > multi-select {
-            width: 100%
-        }
+}
+.cpr-over-time-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    > input[type="checkbox"] {
+        height: 25px;
+        --checkbox-size: 25px !important;
+    }
+    > multi-select {
+        width: 100%
     }
 }
 

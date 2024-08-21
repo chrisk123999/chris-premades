@@ -183,7 +183,7 @@ async function createToken(token, options, userId) {
 async function deleteToken(token, options, userId) {
     if (!socketUtils.isTheGM()) return;
     if (!token.actor) return;
-    let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.macros?.aura);
+    let effect = actorUtils.getEffects(token.actor).find(i => i.flags['chris-premades']?.aura);
     if (effect) {
         await Promise.all(token.parent.tokens.filter(j => j != token).map(async i => await executeMacroPass(token.parent.tokens.filter(j => j != token), 'create', i, options)));
     } else {

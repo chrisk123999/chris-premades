@@ -1,5 +1,5 @@
 import * as macros from '../macros.js';
-import {compendiumUtils, itemUtils} from '../utils.js';
+import {compendiumUtils, genericUtils, itemUtils} from '../utils.js';
 import {Medkit} from '../applications/medkit.js';
 import {EffectMedkit} from '../applications/medkit-effect.js';
 import {ActorMedkit} from '../applications/medkit-actor.js';
