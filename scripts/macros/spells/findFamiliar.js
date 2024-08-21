@@ -147,7 +147,7 @@ async function pocketDimension({workflow}) {
             if (!hpData) return;
             let effectsData = [];
             for (let currEffect of familiarToken.actor.effects) {
-                if (effectUtils.getEffectIdentifier(currEffect) === 'summonedEffect') {
+                if (genericUtils.getIdentifier(currEffect) === 'summonedEffect') {
                     continue;
                 }
                 if (currEffect.flags?.['chris-premades']?.concentrationEffectUuid) {
@@ -183,7 +183,7 @@ async function pocketDimension({workflow}) {
             let hpData = familiarToken.actor.system.attributes.hp;
             let effectsData = [];
             for (let currEffect of familiarToken.actor.effects) {
-                if (effectUtils.getEffectIdentifier(currEffect) === 'summonedEffect') {
+                if (genericUtils.getIdentifier(currEffect) === 'summonedEffect') {
                     continue;
                 }
                 if (currEffect.flags?.['chris-premades']?.concentrationEffectUuid) {

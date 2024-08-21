@@ -4,7 +4,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     let rageEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (!rageEffect) return;
-    let damageType = itemUtils.getIdentifer(item) === 'divineFuryNecrotic' ? 'necrotic' : 'radiant';
+    let damageType = genericUtils.getIdentifier(item) === 'divineFuryNecrotic' ? 'necrotic' : 'radiant';
     let barbDamage = Math.floor((workflow.actor.classes.barbarian?.system.levels ?? 0) / 2);
     if (!combatUtils.perTurnCheck(item, 'divineFury', true, workflow.token.id)) return;
     await combatUtils.setTurnCheck(item, 'divineFury');

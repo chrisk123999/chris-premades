@@ -50,7 +50,7 @@ export class Summons {
     static async dismiss({trigger}) {
         let effect = trigger.entity;
         if (!effect) return; // shouldn't be possible but just in case
-        let dismissingSingleSummon = effectUtils.getEffectIdentifier(effect) === 'summonedEffect';
+        let dismissingSingleSummon = genericUtils.getIdentifier(effect) === 'summonedEffect';
         let summonedEffect;
         if (dismissingSingleSummon) {
             summonedEffect = effect;
@@ -189,6 +189,7 @@ export class Summons {
             console.log('was cancelled, do something different');
             return;
         }
+        let existingEffects = currentUpdates?.actor?.effects?.filter(i => genericUtils.getIdentifier(i) !== 'summonedEffect') ?? [];
         this.mergeUpdates({
             actor: {
                 flags: {
@@ -201,7 +202,7 @@ export class Summons {
                         }
                     }
                 },
-                effects: (currentUpdates?.actor?.effects ?? []).concat([this.summonEffect])
+                effects: existingEffects.concat([this.summonEffect])
             },
             token: {
                 rotation: templateData.direction,
@@ -269,7 +270,7 @@ export class Summons {
     }
     async handleEffects() {
         // Account for items that can spawn things multiple times
-        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, itemUtils.getIdentifer(this.originItem) ?? this.originItem.name);
+        let effect = await effectUtils.getEffectByIdentifier(this.originItem.actor, genericUtils.getIdentifier(this.originItem) ?? this.originItem.name);
         if (effect) await genericUtils.update(effect, {
             flags: {
                 'chris-premades': {
@@ -286,7 +287,7 @@ export class Summons {
         });
         // Options to be added to the created effect
         let effectOptions = {
-            identifier: itemUtils.getIdentifer(this.originItem) ?? this.originItem.name
+            identifier: genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
         };
         // Account for concentration special cases
         let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);

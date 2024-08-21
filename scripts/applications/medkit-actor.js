@@ -58,7 +58,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     async readyData() {
         this.actorItems = await Promise.all(this.actor.items.map(async i => ({
             item: i, 
-            identifier: itemUtils.getIdentifer(i), 
+            identifier: genericUtils.getIdentifier(i), 
             source: itemUtils.getSource(i), 
             version: itemUtils.getVersion(i),
             isUpToDate: itemUtils.isUpToDate(i),

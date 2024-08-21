@@ -139,7 +139,7 @@ async function executeMacroPass(tokens, pass, token, options) {
     let effects = actorUtils.getEffects(token.actor).filter(j => j.flags['chris-premades']?.aura);
     await Promise.all(effects.map(async effect => {
         if (!effect.origin) return;
-        let identifier = effectUtils.getEffectIdentifier(effect);
+        let identifier = genericUtils.getIdentifier(effect);
         if (!identifier) {
             removedEffects.push(effect);
             return;

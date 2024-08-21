@@ -134,6 +134,9 @@ function camelCaseToWords(s) {
     const result = s.replace(/([A-Z])/g, ' $1');
     return result.charAt(0).toUpperCase() + result.slice(1);
 }
+function getIdentifier(entity) {
+    return entity.flags['chris-premades']?.info?.identifier;
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -160,5 +163,6 @@ export let genericUtils = {
     deleteEmbeddedDocuments,
     log,
     titleCase,
-    camelCaseToWords
+    camelCaseToWords,
+    getIdentifier
 };

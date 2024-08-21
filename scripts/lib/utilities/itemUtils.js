@@ -52,7 +52,7 @@ function isSpellFeature(item) {
 function getConfig(item, key) {
     let flagValue = item.flags['chris-premades']?.config?.[key];
     if (flagValue !== undefined) return flagValue;
-    let identifier = getIdentifer(item);
+    let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
     let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
@@ -60,14 +60,11 @@ function getConfig(item, key) {
 async function setConfig(item, key, value) {
     return await genericUtils.setFlag(item, 'flags.chris-premades.config.' + key, value);
 }
-function getIdentifer(item) {
-    return item.flags['chris-premades']?.info?.identifier;
-}
 function getItemByIdentifier(actor, identifier) {
-    return actor.items.find(i => getIdentifer(i) === identifier);
+    return actor.items.find(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getAllItemsByIdentifier(actor, identifier) {
-    return actor.items.filter(i => getIdentifer(i) === identifier);
+    return actor.items.filter(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getVersion(item) {
     return item.flags['chris-premades']?.info?.version;
@@ -88,7 +85,7 @@ function isUpToDate(item) {
             sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             break;
         case 'chris-premades': {
-            let identifier = getIdentifer(item);
+            let identifier = genericUtils.getIdentifier(item);
             sourceVersion = macros[identifier]?.version;
             break;
         }
@@ -127,7 +124,6 @@ export let itemUtils = {
     getItemDescription,
     isSpellFeature,
     getConfig,
-    getIdentifer,
     getItemByIdentifier,
     getAllItemsByIdentifier,
     getVersion,

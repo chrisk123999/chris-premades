@@ -286,7 +286,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 async function turnStart({trigger: {token, target}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
-    // TODO: Somehow check if this is _because_ of the token actor
+    if (!actorUtils.getEffects(target.actor).find(i => i.flags['chris-premades']?.conditions?.includes('frightened') && fromUuidSync(i.origin)?.actor === token.actor)) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Dread Lord: Turn Start', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.DreadLord.Turn'});
     if (!featureData) {
         errors.missingPackItem();

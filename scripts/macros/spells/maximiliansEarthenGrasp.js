@@ -61,7 +61,7 @@ async function early({workflow}) {
     let summonedToken = canvas.scene.tokens.get(casterEffect?.flags['chris-premades'].summons.ids[casterEffect?.name][0]);
     let summonedActor = summonedToken?.actor;
     if (!summonedActor) return;
-    if (itemUtils.getIdentifer(workflow.item) === 'maximiliansEarthenGraspGrasp') {
+    if (genericUtils.getIdentifier(workflow.item) === 'maximiliansEarthenGraspGrasp') {
         let graspEffect = itemUtils.getItemByIdentifier(summonedActor, 'maximiliansEarthenGraspGrasp');
         if (graspEffect) await genericUtils.remove(graspEffect);
         let target;
@@ -85,7 +85,7 @@ async function early({workflow}) {
 }
 async function late({workflow}) {
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'maximiliansEarthenGrasp');
-    if (itemUtils.getIdentifer(workflow.item) !== 'maximiliansEarthenGraspGrasp') return;
+    if (genericUtils.getIdentifier(workflow.item) !== 'maximiliansEarthenGraspGrasp') return;
     if (!workflow.failedSaves.size) return;
     let target = workflow.failedSaves.first();
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Maximilian\'s Earthen Grasp: Crush', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.MaximiliansEarthenGrasp.Crush', identifier: 'maximiliansEarthenGraspCrush', flatDC: itemUtils.getSaveDC(workflow.item)});

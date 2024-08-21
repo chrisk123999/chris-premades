@@ -203,7 +203,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }
 async function remove({trigger: {entity}}) {
-    let identifier = effectUtils.getEffectIdentifier(entity);
+    let identifier = genericUtils.getIdentifier(entity);
     if (identifier !== 'bestowCurseDamage') return;
     let parentEffect = await fromUuid(entity.flags['chris-premades'].parentEntityUuid);
     if (!parentEffect) return;

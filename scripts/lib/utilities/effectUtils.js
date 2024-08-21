@@ -102,17 +102,14 @@ function addMacro(effectData, type, macroList) {
     let currentMacroList = genericUtils.getProperty(effectData, 'flags.chris-premades.macros.' + type) ?? [];
     return genericUtils.setProperty(effectData, 'flags.chris-premades.macros.' + type, currentMacroList.concat(macroList));
 }
-function getEffectIdentifier(effect) {
-    return effect.flags['chris-premades']?.info?.identifier;
-}
 function getConcentrationEffect(actor, item) {
     return MidiQOL.getConcentrationEffect(actor, item);
 }
 function getEffectByIdentifier(actor, name) {
-    return actorUtils.getEffects(actor).find(i => getEffectIdentifier(i) === name);
+    return actorUtils.getEffects(actor).find(i => genericUtils.getIdentifier(i) === name);
 }
 function getAllEffectsByIdentifier(actor, name) {
-    return actorUtils.getEffects(actor).filter(i => getEffectIdentifier(i) === name);
+    return actorUtils.getEffects(actor).filter(i => genericUtils.getIdentifier(i) === name);
 }
 function getEffectByStatusID(actor, statusID) {
     return actorUtils.getEffects(actor).find(i => i.id === CONFIG.statusEffects.find(j => j.id === statusID)._id);
@@ -199,7 +196,6 @@ export let effectUtils = {
     createEffects,
     addDependent,
     addMacro,
-    getEffectIdentifier,
     getConcentrationEffect,
     getEffectByIdentifier,
     getAllEffectsByIdentifier,

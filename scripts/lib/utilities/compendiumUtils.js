@@ -24,7 +24,7 @@ async function getCPRAutomation(item) {
             keys.push(constants.packs.actions);
     }
     if (!keys.length) return;
-    let identifier = itemUtils.getIdentifer(item);
+    let identifier = genericUtils.getIdentifier(item);
     let name = macros[identifier]?.name ?? item.name;
     let folderId;
     let type = item.actor?.type ?? 'character';

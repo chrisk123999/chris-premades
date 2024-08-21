@@ -47,7 +47,7 @@ export async function renderItemSheet(app, [elem], options) {
         case 0: headerButton.style.color = source === 'chris-premades' ? 'red' : 'orange'; return;
         case 1: {
             if (source === 'chris-premades') {
-                let identifier = itemUtils.getIdentifer(item);
+                let identifier = genericUtils.getIdentifier(item);
                 if (macros[identifier].config) {
                     headerButton.style.color = 'dodgerblue';
                 } else {

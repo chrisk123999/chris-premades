@@ -27,7 +27,7 @@ async function use({workflow}) {
     ];
     let casterSpellMod = itemUtils.getMod(workflow.item);
     let spellAttackBonus = await new Roll(workflow.actor.system.bonuses.msak.attack + ' +0', workflow.actor.getRollData()).evaluate();
-    if (itemUtils.getIdentifer(workflow.item) === 'bigbysBeneficentBracelet') {
+    if (genericUtils.getIdentifier(workflow.item) === 'bigbysBeneficentBracelet') {
         spellAttackBonus = Math.max(spellAttackBonus.total, 13);
     }
     clenchedFistData.system.attack.bonus = '+' + casterSpellMod + ' +' + spellAttackBonus;
@@ -102,7 +102,7 @@ async function early({workflow}) {
     if (interposingEffect) await genericUtils.remove(interposingEffect);
 }
 async function late({workflow}) {
-    let identifier = itemUtils.getIdentifer(workflow.item);
+    let identifier = genericUtils.getIdentifier(workflow.item);
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
     let targetActor = targetToken.actor;
@@ -119,7 +119,6 @@ async function late({workflow}) {
             sourceRollOptions: {advantage: hasAdvantage}
         });
         if (result <= 0) return;
-        // TODO: do a push in desired direction, no?
         let input = {
             label: 'CHRISPREMADES.Direction.Direction',
             name: 'directionSelected',

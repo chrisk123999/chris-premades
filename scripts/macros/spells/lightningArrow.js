@@ -30,7 +30,7 @@ async function early({workflow}) {
     genericUtils.setProperty(workflow, 'workflowOptions.autoRollDamage', 'always');
 }
 async function damage({workflow}) {
-    if (itemUtils.getIdentifer(workflow.item) === 'lightningArrowBurst') return;
+    if (genericUtils.getIdentifier(workflow.item) === 'lightningArrowBurst') return;
     if (workflow.targets.size !== 1) return;
     if (!workflow.item.system.properties.has('thr') && workflow.item.system.actionType !== 'rwak') return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'lightningArrow');

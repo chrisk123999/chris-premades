@@ -124,7 +124,7 @@
     "chris-premades": {
       "info": {
         "name": "Detect Thoughts",
-        "version": "0.12.0",
+        "version": "0.12.26",
         "identifier": "detectThoughts",
         "source": "chris-premades"
       },
