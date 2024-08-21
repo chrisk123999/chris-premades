@@ -150,11 +150,17 @@
             "UpdateItem": "Atualizar Item"
         },
         "Firearm": {
+            "Broken": "Quebrado",
+            "Damaged": "Danificado",
             "Firearm": "Arma de Fogo",
             "HasMisfired": "falhou!",
+            "IsBroken": "Esta arma de fogo está quebrada e deve ser consertada!",
+            "IsDamaged": "Esta arma de fogo está danificada e deve ser reparada!",
             "Misfire": "Falha",
             "Other": "Outro",
-            "TrickShot": "Trick Shot"
+            "Status": "Estado:",
+            "TrickShot": "Trick Shot",
+            "Undamaged": "Não-Danificado"
     },
         "Generic": {
             "Available": "Disponível",
@@ -1208,6 +1214,14 @@
             "vaeButtons": {
                 "Hint": "Quando ativadas, certas macros adicionarão botões à interface do VAE.",
                 "Name": "Visual Active Effects: Botões"
+            },
+            "firearmSupport": {
+                "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
+                "Name": "Suporte Arma de Fogo"
+            },
+            "chatCardTweak": {
+                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas.",
+                "Name": "Ajuste Cartão do Chat"
             }
         },
         "SkillCheck": {
