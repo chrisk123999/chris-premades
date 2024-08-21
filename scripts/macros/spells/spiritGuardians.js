@@ -39,7 +39,7 @@ async function use({trigger, workflow}) {
                 castData: {
                     baseLevel: workflow.castData.baseLevel,
                     castLevel: workflow.castData.castLevel,
-                    castDC: itemUtils.getSaveDC(workflow.item)
+                    saveDC: itemUtils.getSaveDC(workflow.item)
                 }
             }
         }
@@ -78,7 +78,7 @@ async function moveOrTurn({trigger}) {
 
         if (used) return;
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Spirit Guardians: Damage', {object: true, identifier: 'spiritGuardiansDamage', flatDC: trigger.castData.castDC, translate: 'CHRISPREMADES.Macros.SpiritGuardians.Damage'});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Spirit Guardians: Damage', {object: true, identifier: 'spiritGuardiansDamage', flatDC: trigger.castData.saveDC, translate: 'CHRISPREMADES.Macros.SpiritGuardians.Damage'});
     let damageType = trigger.entity.flags['chris-premades'].spiritGuardians.damageType;
     featureData.system.damage.parts = [
         [
