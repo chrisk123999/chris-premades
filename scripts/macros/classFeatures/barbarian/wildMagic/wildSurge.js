@@ -74,7 +74,6 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
-            effectUtils.addMacro(featureData, 'midi.item', ['wildSurgeTeleport']);
             effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge', vae: [{type: 'use', name: featureData.name, identifier: 'wildSurgeTeleport'}]});
             [feature] = await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: effect, favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.Rage')});
             await workflowUtils.completeItemUse(feature);
@@ -85,7 +84,6 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
-            effectUtils.addMacro(featureData, 'midi.item', ['wildSurgeIntangibleSpirit']);
             effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge', vae: [{type: 'use', name: featureData.name, identifier: 'wildSurgeIntangibleSpirit'}]});
             [feature] = await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: effect, favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.Rage')});
             await workflowUtils.completeItemUse(feature);
@@ -165,7 +163,6 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
-            effectUtils.addMacro(featureData, 'midi.actor', ['wildSurgeRetribution']);
             effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
             await itemUtils.createItems(workflow.actor, [featureData], {parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.Rage')});
             break;

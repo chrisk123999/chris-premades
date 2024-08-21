@@ -1067,6 +1067,10 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
+            "chatCardTweak": {
+                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls.",
+                "Name": "Chat Card Tweak"
+            },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
@@ -1114,6 +1118,10 @@
             "epicRolls": {
                 "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
                 "Name": "Use Epic Rolls"
+            },
+            "firearmSupport": {
+                "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
+                "Name": "Firearm Support"
             },
             "gambitPremades": {
                 "1": "No Homebrew or 3rd Party",
@@ -1214,14 +1222,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "firearmSupport": {
-                "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
-                "Name": "Firearm Support"
-            },
-            "chatCardTweak": {
-                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls.",
-                "Name": "Chat Card Tweak"
             }
         },
         "SkillCheck": {
