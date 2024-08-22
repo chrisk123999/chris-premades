@@ -33,6 +33,11 @@ export function registerHooks() {
     Hooks.on('createChatMessage', chat.createChatMessage);
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
+    if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
+        Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
+        Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
+        Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
+    }
     if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
         Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
         Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
@@ -59,9 +64,6 @@ export function registerHooks() {
         auras.canvasReady(canvas);
         Hooks.on('dnd5e.restCompleted', rest);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
-            Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
-            Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
-            Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('updateActiveEffect', tokens.createDeleteUpdateActiveEffect);
