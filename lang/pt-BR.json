@@ -366,6 +366,23 @@
             "EldritchBlast": {
                 "Target": "Quais alvos?"
             },
+            "EldritchCannon": {
+                "Cannon": "Canhão Místico",
+                "Command": "Canhão Místico: Comando",
+                "ExplosiveCannon": "Canhão Explosivo",
+                "Flamethrower": "Lança-Chamas",
+                "ForceBallista": "Força de Balista",
+                "FortifiedPosition": "Posição Fortificada",
+                "Maximum": "Você já tem o número máximo de Canhões Místicos!",
+                "NoSlots": "Você não tem usos ou espaços de magia restantes!",
+                "Protector": "Protetor",
+                "SelectType": "Selecione o tipo de Canhão Místico",
+                "Size": "Qual o tamanho do canhão {cannonName}?",
+                "SpendPact": "Criar um Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendPactAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlot": "Criar um Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlotAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
+            },
             "ElementalCleaver": {
                 "Change": "Cutelo Elemental: Mudar Tipo de Dano",
                 "ElementalCleaver": "Cutelo Elemental",
@@ -386,6 +403,7 @@
                 "Flight": "Elixir Experimental: Voo",
                 "Healing": "Elixir Experimental: Cura",
                 "MakeAnother": "Criar outro Elixir gastando um espaço de magia de nível {slotLevel}? ({slotValue} de {slotMax} restante(s))",
+                "MakeAnotherPact": "Criar outro Elixir gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
                 "Resilience": "Elixir Experimental: Resiliência",
                 "Swiftness": "Elixir Experimental: Celeridade",
                 "Transformation": "Elixir Experimental: Transformação"
