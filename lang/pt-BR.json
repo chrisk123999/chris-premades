@@ -215,6 +215,15 @@
                 "SelectTarget": "Quem será atacado?",
                 "SelectWeapon": "Qual arma será usada para atacar?"
             },
+            "ArcaneJolt": {
+                "Harm": "Ferir",
+                "HarmOrHeal": "Ferir ou Curar?",
+                "Heal": "Curar",
+                "WhoHeal": "Quem curar?"
+            },
+            "ArmorOfAgathys": {
+                "Reflect": "Armadura de Agathys: Refletir"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
@@ -1252,7 +1261,7 @@
                 "Name": "Suporte Arma de Fogo"
             },
             "chatCardTweak": {
-                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas.",
+                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas. É necessário recarregar após desativar.",
                 "Name": "Ajuste Cartão do Chat"
             }
         },
