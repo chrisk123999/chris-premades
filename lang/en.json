@@ -1109,7 +1109,7 @@
                 "Name": "Automatic Character Backups"
             },
             "chatCardTweak": {
-                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls.",
+                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls. Reload required after disabling.",
                 "Name": "Chat Card Tweak"
             },
             "checkForUpdates": {

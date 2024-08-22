@@ -14,6 +14,7 @@ import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {customTypes} from './extensions/customTypes.js';
+import {chat} from './extensions/chat.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -500,15 +501,14 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'mechanics',
-        onChange: async (value) => {
-            await customTypes.firearm(value);
-        }
+        onChange: async (value) => await customTypes.firearm(value)
     });
     addSetting({
         key: 'chatCardTweak',
         type: Boolean,
         default: false,
-        category: 'interface'
+        category: 'interface',
+        onChange: (value) => chat.cssTweak()
     });
 }
 export function registerMenus() {

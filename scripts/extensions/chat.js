@@ -19,7 +19,10 @@ async function createChatMessage(message, options, userId) {
         }  
     }
 }
+let alreadyEnabled = false;
 function cssTweak() {
+    if (alreadyEnabled) return;
+    alreadyEnabled = true;
     let el = document.createElement('style');
     el.type = 'text/css';
     el.innerText = `.dice-result .dice-total:not(.fumble):not(.critical) {
