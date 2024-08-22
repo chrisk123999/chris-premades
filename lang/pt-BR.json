@@ -33,6 +33,7 @@
             "DevilsSight": "Visão Diabólica",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
+            "Mending": "Reparar",
             "Multiattack": "Ataques Múltiplos ({numAttacks} Ataques)",
             "PackTactics": "Táticas de Bando",
             "Regeneration": "Regeneração",
@@ -685,7 +686,6 @@
                 "Command": "Defensor de Aço: Comando",
                 "DeflectAttack": "Defletir Ataque",
                 "ForceEmpoweredRend": "Laceração de Energia",
-                "Mending": "Reparar (Magia)",
                 "Repair": "Reparar (Ação)",
                 "Vigilant": "Vigilante"
             },
