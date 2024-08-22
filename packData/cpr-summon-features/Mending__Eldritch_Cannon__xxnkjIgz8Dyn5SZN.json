@@ -1,7 +1,9 @@
 {
-  "name": "Fire Shield: Dismiss",
+  "folder": "oRJuGxRrzNreaSQc",
+  "name": "Mending (Eldritch Cannon)",
   "type": "feat",
-  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
+  "_id": "xxnkjIgz8Dyn5SZN",
+  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +13,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -47,82 +49,71 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "heal",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d6[healing]",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
-      "noConcentrationCheck": false
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
-    "core": {
-      "sourceId": "Item.lyUhKUpykG2Nqb4j"
-    },
-    "chris-premades": {
-      "macros": {
-        "midi": {
-          "item": [
-            "fireShieldDismiss"
-          ]
-        }
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default"
     }
   },
-  "folder": null,
-  "_id": "2IjxogitKhBugXav",
-  "_key": "!items!2IjxogitKhBugXav"
+  "_key": "!items!xxnkjIgz8Dyn5SZN"
 }

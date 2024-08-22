@@ -602,12 +602,6 @@
   "effects": [],
   "folder": null,
   "flags": {
-    "midi-qol": {
-      "concentration-damage": 0
-    },
-    "chris-premades": {
-      "version": 5
-    },
     "core": {}
   },
   "_id": "4gvNTE3YMdBLWK4e",

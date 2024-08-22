@@ -366,6 +366,23 @@
             "EldritchBlast": {
                 "Target": "Which targets?"
             },
+            "EldritchCannon": {
+                "Cannon": "Eldritch Cannon",
+                "Command": "Eldritch Cannon: Command",
+                "ExplosiveCannon": "Explosive Cannon",
+                "Flamethrower": "Flamethrower",
+                "ForceBallista": "Force Ballista",
+                "FortifiedPosition": "Fortified Position",
+                "Maximum": "You already have the maximum number of Eldritch Cannons!",
+                "NoSlots": "You have no remaining uses or spell slots!",
+                "Protector": "Protector",
+                "SelectType": "Select Eldritch Cannon Type",
+                "Size": "What size {cannonName} cannon?",
+                "SpendPact": "Create an Eldritch Cannon at the expense of a pact spell slot? ({slotValue} of {slotMax} remaining)",
+                "SpendPactAgain": "Create a second Eldritch Cannon at the expense of a pact spell slot? ({slotValue} of {slotMax} remaining)",
+                "SpendSlot": "Create an Eldritch Cannon at the expense of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)",
+                "SpendSlotAgain": "Create a second Eldritch Cannon at the expense of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)"
+            },
             "ElementalCleaver": {
                 "Change": "Elemental Cleaver: Change Damage Type",
                 "ElementalCleaver": "Elemental Cleaver",
@@ -386,6 +403,7 @@
                 "Flight": "Experimental Elixir: Flight",
                 "Healing": "Experimental Elixir: Healing",
                 "MakeAnother": "Create another Elixir at the cost of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)",
+                "MakeAnotherPact": "Create another Elixir at the cost of a pact spell slot? ({slotValue} of {slotMax} remaining)",
                 "Resilience": "Experimental Elixir: Resilience",
                 "Swiftness": "Experimental Elixir: Swiftness",
                 "Transformation": "Experimental Elixir: Transformation"

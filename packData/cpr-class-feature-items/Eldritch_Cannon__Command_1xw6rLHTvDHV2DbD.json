@@ -1,7 +1,8 @@
 {
-  "name": "Fire Shield: Dismiss",
+  "name": "Eldritch Cannon: Command",
   "type": "feat",
-  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
+  "_id": "1xw6rLHTvDHV2DbD",
+  "img": "icons/weapons/artillery/cannon-engraved-gold.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +12,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -25,13 +26,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -46,8 +47,12 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,72 +62,52 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
   "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
-      "noConcentrationCheck": false
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
-    "core": {
-      "sourceId": "Item.lyUhKUpykG2Nqb4j"
-    },
-    "chris-premades": {
-      "macros": {
-        "midi": {
-          "item": [
-            "fireShieldDismiss"
-          ]
-        }
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "folder": null,
-  "_id": "2IjxogitKhBugXav",
-  "_key": "!items!2IjxogitKhBugXav"
+  "_key": "!items!1xw6rLHTvDHV2DbD"
 }

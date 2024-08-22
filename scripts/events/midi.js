@@ -163,7 +163,8 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     }
 }
 async function preTargeting(workflow) {
-    await executeMacroPass(workflow, 'preTargeting');
+    let stop = await executeMacroPass(workflow, 'preTargeting');
+    if (stop) return false;
 }
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
@@ -206,7 +207,14 @@ async function rollFinished(workflow) {
     await executeTargetMacroPass(workflow, 'onHit', true);
 }
 async function postAttackRoll(workflow) {
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePostAttackRoll'));
+    });
+    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     await executeMacroPass(workflow, 'postAttackRoll');
+    await executeTargetMacroPass(workflow, 'targetPostAttackRoll');
 }
 async function preTargetDamageApplication(token, {workflow, ditem}) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage for ' + token.document.name);

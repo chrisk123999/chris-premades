@@ -9,6 +9,9 @@ async function check(workflow) {
         let testRay = new Ray(source.center, target.center);
         return templateUtils.rayIntersectsTemplate(template, testRay);
     });
+    templates.push(...templateUtils.getTemplatesInToken(source));
+    templates.push(...templateUtils.getTemplatesInToken(target));
+    templates = Array.from(new Set(templates));
     if (!templates.length) return;
     let sourceSenses = source.actor.system.attributes.senses;
     let targetSenses = target.actor.system.attributes.senses;

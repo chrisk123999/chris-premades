@@ -2,6 +2,8 @@ import {animationUtils, effectUtils, genericUtils, itemUtils, templateUtils} fro
 
 async function early({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+    let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
+    let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let templateData = {
         t: 'circle',
@@ -39,7 +41,7 @@ async function early({workflow}) {
         return;
     }
     let xray = true;
-    if (playAnimation && animationUtils.jb2aCheck() === 'patreon') {
+    if (playAnimation && animationUtils.jb2aCheck()) {
         if (game.modules.get('walledtemplates')?.active) {
             new Sequence()
                 .effect()
@@ -64,6 +66,10 @@ async function early({workflow}) {
                 .attachTo(template)
                 .play();
         }
+    }
+    if (useRealDarkness) {
+        let [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance, animation: {type: darknessAnimation}}, x: template.x, y: template.y}]);
+        effectUtils.addDependent(template, [darknessSource]);
     }
     let effectData = {
         name: workflow.item.name,
@@ -99,6 +105,27 @@ export let fogCloud = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'useRealDarkness',
+            label: 'CHRISPREMADES.Config.RealDarkness',
+            type: 'checkbox',
+            default: false,
+            category: 'mechanics'
+        },
+        {
+            value: 'darknessAnimation',
+            label: 'CHRISPREMADES.Config.DarknessAnimation',
+            type: 'select',
+            default: null,
+            options: [
+                {
+                    label: 'DND5E.None',
+                    value: null
+                },
+                ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))
+            ],
+            category: 'mechanics'
         }
     ]
 };

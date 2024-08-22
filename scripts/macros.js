@@ -175,6 +175,7 @@ export {divineFuryNecrotic, divineFuryRadiant} from './macros/classFeatures/barb
 export {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 export {dreadLord, dreadLordAura, dreadLordShadowAttack} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
 export {dreadfulAspect, dreadfulAspectFrightened} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
+export {eldritchCannon, eldritchCannonExplosiveCannon, eldritchCannonForceBallista, eldritchCannonFortifiedPosition} from './macros/classFeatures/artificer/artillerist/eldritchCannon.js';
 export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';

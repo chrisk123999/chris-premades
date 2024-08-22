@@ -26,7 +26,13 @@ async function use({workflow}) {
         let {value: slotValue, level: slotLevel, max: slotMax, type: slotType} = minSpellSlot;
         let buttons = elixirTypes.map(i => ['CHRISPREMADES.Macros.ExperimentalElixir.' + i, i]);
         buttons.splice(0, 0, ['CHRISPREMADES.Generic.No', 'no']);
-        let elixirType = await dialogUtils.buttonDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.ExperimentalElixir.MakeAnother', {slotLevel, slotValue, slotMax}), buttons);
+        let dialogContent;
+        if (slotType === 'pact') {
+            dialogContent = genericUtils.format('CHRISPREMADES.Macros.ExperimentalElixir.MakeAnotherPact', {slotValue, slotMax});
+        } else {
+            dialogContent = genericUtils.format('CHRISPREMADES.Macros.ExperimentalElixir.MakeAnother', {slotLevel, slotValue, slotMax});
+        } 
+        let elixirType = await dialogUtils.buttonDialog(workflow.item.name, dialogContent, buttons);
         if (!elixirType?.length || elixirType === 'no') return;
         await elixirHelper(elixirType, workflow.actor);
         await genericUtils.update(workflow.actor, {['system.spells.' + slotType + '.value']: slotValue - 1});
