@@ -5,7 +5,7 @@ async function use({workflow}) {
     if (guardianEffect) return;
     let infiltratorEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infiltratorArmor');
     if (infiltratorEffect) await genericUtils.remove(infiltratorEffect);
-    let fieldUses = workflow.actor.flags['chris-premades']?.defensiveField.uses ?? workflow.actor.system.attributes.prof;
+    let fieldUses = workflow.actor.flags['chris-premades']?.defensiveField?.uses ?? workflow.actor.system.attributes.prof;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Guardian Armor: Defensive Field', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.GuardianArmor.DefensiveField', identifier: 'defensiveField'});
     let featureData2 = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Guardian Armor: Thunder Gauntlets', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.GuardianArmor.ThunderGauntlets', identifier: 'thunderGauntlets'});
     if (!featureData || !featureData2) {

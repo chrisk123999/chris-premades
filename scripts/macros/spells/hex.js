@@ -115,7 +115,7 @@ async function move({trigger, workflow}) {
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Hex.Hexed'),
         img: effect.img,
-        origin: effect.origin,
+        origin: effect.uuid,
         duration: {
             seconds: effect.duration.remaining
         },

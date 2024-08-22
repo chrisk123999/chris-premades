@@ -174,7 +174,7 @@ async function getFilteredDocumentsFromCompendium(key, {maxCR, actorTypes, creat
     let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.details.cr', 'system.details.type']});
     let filteredIndex = packIndex.filter(i => 
         (!actorTypes?.length || actorTypes.includes(i.type)) && 
-        (!maxCR || i.system?.details?.cr < maxCR) && 
+        (!maxCR || i.system?.details?.cr <= maxCR) && 
         (!creatureTypes?.length || creatureTypes.includes(i.system?.details?.type?.value)) &&
         (!creatureSubtypes?.length || creatureSubtypes.includes(i.system?.details?.type?.subtype?.toLowerCase()))
     );

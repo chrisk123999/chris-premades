@@ -43,7 +43,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.Blink.Away'),
         img: effect.img,
-        origin: effect.origin,
+        origin: effect.uuid,
         duration: {
             rounds: 2
         },

@@ -35,7 +35,7 @@ async function damage({workflow}) {
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.Macros.BrandingSmite.Branded'),
         img: effect.img,
-        origin: effect.origin,
+        origin: effect.uuid,
         duration: {
             seconds: effect.duration.remaining
         },

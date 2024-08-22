@@ -33,6 +33,7 @@
             "DevilsSight": "Devil's Sight",
             "HeatedBody": "Heated Body",
             "MagicResistance": "Magic Resistance",
+            "Mending": "Mending",
             "Multiattack": "Multiattack ({numAttacks} Attacks)",
             "PackTactics": "Pack Tactics",
             "Regeneration": "Regeneration",
@@ -685,7 +686,6 @@
                 "Command": "Steel Defender: Command",
                 "DeflectAttack": "Deflect Attack",
                 "ForceEmpoweredRend": "Force-Empowered Rend",
-                "Mending": "Mending",
                 "Repair": "Repair",
                 "Vigilant": "Vigilant"
             },
