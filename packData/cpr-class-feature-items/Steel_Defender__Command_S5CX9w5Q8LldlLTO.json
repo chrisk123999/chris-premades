@@ -1,7 +1,7 @@
 {
-  "name": "Force-Empowered Rend",
+  "name": "Steel Defender: Command",
   "type": "feat",
-  "img": "icons/skills/melee/unarmed-punch-fist-blue.webp",
+  "img": "icons/environment/creatures/golem-stone-purple.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "cost": null,
       "condition": ""
     },
@@ -25,13 +25,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -46,20 +46,15 @@
       "amount": null,
       "scale": false
     },
-    "ability": "str",
-    "actionType": "mwak",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d8[force] + @prof",
-          "force"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -69,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -90,41 +85,32 @@
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.P3YlHIlgtyMMwqN8"
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.XRolNjV4zYIkpi2q"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "folder": "H4e6PJXcaRHbITgx",
-  "_id": "jGwleSjRUESACNNp",
-  "_key": "!items!jGwleSjRUESACNNp"
+  "folder": null,
+  "_id": "S5CX9w5Q8LldlLTO",
+  "_key": "!items!S5CX9w5Q8LldlLTO"
 }

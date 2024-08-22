@@ -215,6 +215,15 @@
                 "SelectTarget": "Who gets attacked?",
                 "SelectWeapon": "What weapon is used to attack?"
             },
+            "ArcaneJolt": {
+                "Harm": "Harm",
+                "HarmOrHeal": "Harm or Heal?",
+                "Heal": "Heal",
+                "WhoHeal": "Who to heal?"
+            },
+            "ArmorOfAgathys": {
+                "Reflect": "Armor of Agathys: Reflect"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
             },

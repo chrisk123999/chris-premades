@@ -1,5 +1,5 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
@@ -99,7 +99,8 @@ async function arcaneJolt({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'steelDefenderArcaneJolt');
     let originItem = await fromUuid(effect?.origin);
     if (!originItem || originItem.system.uses.value === 0) return;
-    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}), {userId: socketUtils.firstOwner(originItem)});
+    if (!combatUtils.perTurnCheck(originItem, 'arcaneJolt')) return;
+    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}), {userId: socketUtils.firstOwner(originItem, true)});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(originItem, [workflow.hitTargets.first()]);
 }

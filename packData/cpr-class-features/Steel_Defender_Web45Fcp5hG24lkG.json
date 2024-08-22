@@ -1,7 +1,6 @@
 {
-  "name": "Force-Empowered Rend",
+  "name": "Steel Defender",
   "type": "feat",
-  "img": "icons/skills/melee/unarmed-punch-fist-blue.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +10,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
-      "cost": null,
+      "type": "special",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -25,7 +24,7 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -34,32 +33,27 @@
       "units": "ft"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
-    "ability": "str",
-    "actionType": "mwak",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d8[force] + @prof",
-          "force"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -69,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -88,14 +82,11 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
-      "fumbleThreshold": null,
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -113,7 +104,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
+      "confirmTargets": "never",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -121,10 +112,30 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.XRolNjV4zYIkpi2q"
+      "sourceId": "Actor.SgPOEUjFWDCmgMNr.Item.YKaB3IXLkpZDwrHv"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Steel Defender",
+        "version": "0.12.28",
+        "identifier": "steelDefender",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "rest": [
+          "steelDefender"
+        ],
+        "midi": {
+          "item": [
+            "steelDefender"
+          ]
+        }
+      }
     }
   },
-  "folder": "H4e6PJXcaRHbITgx",
-  "_id": "jGwleSjRUESACNNp",
-  "_key": "!items!jGwleSjRUESACNNp"
+  "img": "icons/environment/creatures/golem-stone-purple.webp",
+  "effects": [],
+  "folder": "3jUdqWmAuqX2OWQG",
+  "_id": "Web45Fcp5hG24lkG",
+  "_key": "!items!Web45Fcp5hG24lkG"
 }

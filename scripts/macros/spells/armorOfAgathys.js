@@ -29,7 +29,7 @@ async function hit({workflow}) {
     if (!effect) return;
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Armor of Agathys: Reflect', {object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Armor of Agathys: Reflect', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ArmorOfAgathys.Reflect'});
     if (!featureData) {
         errors.missingPackItem();
         return;

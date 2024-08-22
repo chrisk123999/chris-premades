@@ -154,6 +154,7 @@ export {noConfiguration} from './macros/generic/noConfiguration.js';
 // Class Features
 export {alchemicalSavant} from './macros/classFeatures/artificer/alchemist/alchemicalSavant.js';
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+export {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 export {armorModifications} from './macros/classFeatures/artificer/armorer/armorModifications.js';
 export {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 export {auraOfConquest, auraOfConquestAura} from './macros/classFeatures/paladin/oathOfConquest/auraOfConquest.js';
@@ -194,7 +195,7 @@ export {purityOfSpirit} from './macros/classFeatures/paladin/oathOfDevotion/puri
 export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
-// export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
+export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';
 export {turnTheFaithless} from './macros/classFeatures/paladin/oathOfTheAncients/turnTheFaithless.js';
 export {unarmoredDefenseBarbarian} from './macros/classFeatures/barbarian/unarmoredDefense.js';
