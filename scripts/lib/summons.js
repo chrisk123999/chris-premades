@@ -14,7 +14,7 @@ export class Summons {
     }
     static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
-        if (sourceActors.length && sourceActors[0].constructor.name !== 'Actor5e') {
+        if (sourceActors.length && !(sourceActors[0] instanceof Actor.implementation)) {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
             if ('document' in sourceActors[0] && 'amount' in sourceActors[0]) {
                 sourceActors = sourceActors.reduce((acc, i) => acc.concat(Array(i.amount).fill(i.document)), []);

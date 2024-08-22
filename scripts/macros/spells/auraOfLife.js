@@ -73,7 +73,7 @@ async function turnStart({trigger: {token}}) {
 }
 function preEffect(effect, updates, options) {
     if (!updates.changes || !updates.changes.length || !effect.parent) return;
-    if (effect.parent.constructor.name !== 'Actor5e') return;
+    if (!(effect.parent instanceof Actor.implementation)) return;
     if (!effectUtils.getEffectByIdentifier(effect.parent, 'auraOfLifeAura')) return;
     let changed = false;
     for (let i of updates.changes) {

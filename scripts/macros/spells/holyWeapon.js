@@ -107,11 +107,12 @@ async function dismiss({workflow}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let spellDC = itemUtils.getSaveDC(originItem);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HolyWeapon.Burst', castDataWorkflow: workflow, object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Holy Weapon: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HolyWeapon.Burst', object: true});
     if (!featureData) {
         errors.missingPackItem();
         return;
     }
+    genericUtils.setProperty(featureData, 'flags.chris-premades.castData.school', originItem.system.school);
     featureData.effects[0].changes[0].value = 'label=' + genericUtils.translate('CHRISPREMADES.Macros.HolyWeapon.BurstOvertime') + ',turn=end,saveDC=' + spellDC + ',saveAbility=con,savingThrow=true,saveMagic=true,saveRemove=true';
     genericUtils.setProperty(featureData.effects[0], 'flags.chris-premades.conditions', ['blinded']);
     featureData.system.save.dc = spellDC;

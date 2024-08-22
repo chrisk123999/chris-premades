@@ -1,5 +1,5 @@
 import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
-import {start as startAnim, end as endAnim, fireShield} from './fireShield.js';
+import {start as startAnim, end as endAnim} from './fireShield.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Investiture of Ice: Cone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InvestitureOfIce.Cone', identifier: 'investitureOfIceCone', castDataWorkflow: workflow});

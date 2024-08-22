@@ -27,7 +27,7 @@ function preCreateActiveEffect(effect, updates, options, id) {
     let npc = genericUtils.getCPRSetting('effectDescriptionNPC');
     let description;
     if (effect.parent && effect.transfer) {
-        if (effect.parent.constructor.name != 'Item5e') return;
+        if (!(effect.parent instanceof Item.implementation)) return;
         if (npc && parent.actor?.type === 'npc') return;
         if (effect.parent?.flags?.['chris-premades']?.effectInterface) return;
         description = (effect.parent.system.identified ?? true) ? effect.parent.system.description[type] : effect.parent.system.unidentified.description;
@@ -39,7 +39,7 @@ function preCreateActiveEffect(effect, updates, options, id) {
             origin = effect.parent;
         }
         if (!origin) return;
-        if (origin.constructor.name != 'Item5e') return;
+        if (!(origin instanceof Item.implementation)) return;
         if (npc && origin.actor?.type === 'npc') return;
         if (origin?.flags?.['chris-premades']?.effectInterface) return;
         description = (origin.system.identified ?? true) ? origin.system.description[type] : origin.system.unidentified.description;
