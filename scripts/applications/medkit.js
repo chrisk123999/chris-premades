@@ -218,6 +218,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 identifier: item.flags?.['chris-premades']?.info?.identifier ?? '',
                 version: item.flags?.['chris-premades']?.info?.version ?? macroInfo?.version ?? '',
                 source: item.flags?.['chris-premades']?.info?.source ?? '',
+                hasAnimation: item.flags?.['chris-premades']?.info?.hasAnimation ?? macroInfo?.hasAnimation ?? false,
                 midi: {
                     item: JSON?.stringify(item.flags?.['chris-premades']?.macros?.midi?.item) ?? '',
                     actor: JSON?.stringify(item.flags?.['chris-premades']?.macros?.midi?.actor) ?? '',
@@ -283,6 +284,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (devTools.identifier != '') await item.setFlag('chris-premades', 'info.identifier', devTools.identifier);
             if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
             if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source ?? 'chris-premades');
+            if (devTools.hasAnimation) await item.setFlag('chris-premades', 'info.hasAnimation', devTools.hasAnimation);
             if (devTools.midi.item != '') {
                 let value = undefined;
                 try {
@@ -421,7 +423,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
             }
         } else if (event.target.name.includes('devTools')) {
-            let value = event.target.value;
+            let value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
             if (['actor', 'item'].includes(event.target.id)) {
                 this.context.devTools.midi[event.target.id] = value;
             } else this.context.devTools[event.target.id] = value;

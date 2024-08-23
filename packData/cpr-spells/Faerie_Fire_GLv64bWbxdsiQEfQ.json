@@ -145,7 +145,12 @@
         "color": "blue"
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/fire/projectile-meteor-salvo-strong-teal.webp",

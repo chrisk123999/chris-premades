@@ -145,7 +145,12 @@
         "playAnimation": true
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/unholy/orb-beam-pink.webp",

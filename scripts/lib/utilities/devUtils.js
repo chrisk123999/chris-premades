@@ -1,3 +1,5 @@
+import * as macros from '../../macros.js';
+import {genericUtils} from './genericUtils.js';
 async function setMacro(entityUuid, key, values = []) {
     if (!key) return;
     let entity = await fromUuid(entityUuid);
@@ -8,7 +10,7 @@ export async function stripUnusedFlags(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
-        await i.update({
+        let updates = {
             'flags.-=ddbimporter': null,
             'flags.-=itemacro': null,
             'flags.-=cf': null,
@@ -31,7 +33,12 @@ export async function stripUnusedFlags(key) {
                     chat: ''
                 }
             }
-        });
+        };
+        let identifier = i.flags['chris-premades']?.info?.identifier;
+        if (identifier) {
+            if (macros[identifier]?.config?.find(i => i.value === 'playAnimation')) genericUtils.setProperty(updates, 'flags.chris-preamdes.info.hasAnimation', true);
+        }
+        await i.update(updates);
     }
 }
 export async function updateAllCompendiums() {

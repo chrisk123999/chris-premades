@@ -1,12 +1,12 @@
 <div class="scrollable">
-        <fieldset class="cpr-compendiums-fieldset">
-            <legend>Additional Compendiums</legend>
-            {{#each compendiums}}
-                <div class="form-group cpr-compendiums">
-                    <input type="checkbox" class="compendium-checkbox" id="{{id}}" name="{{@key}}" {{#if isChecked}}checked{{/if}}>
-                    <label for="{{id}}" class="compendium-label">{{localize label}}</label>
-                    <input type="number" class="compendium-number" id="{{id}}.priority" name="{{@key}}.priority" value="{{priority}}" {{#if (eq isChecked false)}}disabled{{/if}}>
-                </div>
-            {{/each}}
-        </fieldset>
+    <fieldset class="cpr-fieldset">
+        <legend>Additional Compendiums</legend>
+        {{#each compendiums}}
+            <div class="form-group cpr-compendiums">
+                <input type="checkbox" class="compendium-checkbox" id="{{id}}" name="{{@key}}" {{#if isChecked}}checked{{/if}}>
+                <label for="{{id}}" class="compendium-label">{{localize label}}</label>
+                <input type="number" class="compendium-number" id="{{id}}.priority" name="{{@key}}.priority" value="{{priority}}" {{#if (eq isChecked false)}}disabled{{/if}}>
+            </div>
+        {{/each}}
+    </fieldset>
 </div>

@@ -1,7 +1,7 @@
 <div class="tab cpr-medkit-tab {{tabs.info.cssClass}}" data-tab="info" data-group="main">
     {{#if hasAutomation}}
         {{#unless isUpToDate}}
-            <div class="cpr-row-center">
+            <div class="form-group cpr-row-center">
                 <button type="button" data-action="update" id="update" {{#unless canUpdate.value}}disabled data-tooltip="{{localize canUpdate.tooltip}}"{{/unless}}>
                     <label for="update">{{localize "CHRISPREMADES.Generic.Update"}}</label>
                 </button>
@@ -9,7 +9,7 @@
         {{/unless}}
     {{/if}}
     {{#if canApplyAutomation}}
-        <div class="cpr-medkit-info cpr-row-center">
+        <div class="form-group cpr-medkit-info cpr-row-center">
             <label for="select-automation">{{localize "CHRISPREMADES.Medkit.SelectedAutomation"}}</label>
             <select id="select-automation" name="select-automation" {{#unless canAutomate.value}}disabled data-tooltip="{{localize canAutomate.tooltip}}"{{/unless}}>
             {{#each options}}

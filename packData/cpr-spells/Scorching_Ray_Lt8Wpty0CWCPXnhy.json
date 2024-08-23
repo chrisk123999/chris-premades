@@ -143,7 +143,12 @@
         "color": "cycle"
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/light/beam-rays-red.webp",

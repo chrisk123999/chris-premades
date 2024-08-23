@@ -143,7 +143,12 @@
         "avatar": ""
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",

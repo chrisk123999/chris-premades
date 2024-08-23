@@ -2,33 +2,37 @@
     {{#if devTools}}
     <fieldset class="cpr-fieldset">
         <legend>Configure Automation Info:</legend>
-        <div class="form-group cpr-row-center">
-            <div class="cpr-even-flex">
+        <div class="form-group cpr-column">
+            <div class="cpr-row-center cpr-even-flex">
                 <label for="identifier">Identifier:</label>
                 <input type="text" id="identifier" name="devToolsidentifier" value="{{devTools.identifier}}">
             </div>
-            <div class="cpr-even-flex">
+            <div class="cpr-row-center cpr-even-flex">
                 <label for="version">Version:</label>
                 <input type="text" id="version" name="devToolsversion" value="{{devTools.version}}">
             </div>
-            <div class="cpr-even-flex">
+            <div class="cpr-row-center cpr-even-flex">
                 <label for="source">Source:</label>
                 <input type="text" id="source" name="devToolssource" value="{{devTools.source}}">
+            </div>
+            <div class="cpr-row-center cpr-config-flex">
+                <label for="hasAnimation">Has Animation:</label>
+                <input type="checkbox" id="hasAnimation" name="devToolshasAnimation" {{#if devTools.hasAnimation}}checked{{/if}}>
             </div>
         </div>
     </fieldset>
     <fieldset class="cpr-fieldset">
         <legend>Configure Midi Macro Info:</legend>
-        <div class="form-group cpr-row-center">
-            <div class="cpr-input-flex">
+        <div class="form-group cpr-column">
+            <div class="cpr-row-center cpr-input-flex">
                 <label for="item">Item:</label>
                 <input type="text" id="item" name="devToolsitem" value="{{devTools.midi.item}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>
-            <div class="cpr-input-flex">
+            <div class="cpr-row-center cpr-input-flex">
                 <label for="actor">Actor:</label>
                 <input type="text" id="actor" name="devToolsactor" value="{{devTools.midi.actor}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>
-            <div class="cpr-input-flex">
+            <div class="cpr-row-center cpr-input-flex">
                 <label for="aura">Aura:</label>
                 <input type="text" id="aura" name="devToolsaura" value="{{devTools.aura}}" placeholder="[&quot;macroNameMove&quot;, &quot;macroNameEnd&quot;]">
             </div>

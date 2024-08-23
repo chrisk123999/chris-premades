@@ -1,14 +1,14 @@
 <div class="tab cpr-medkit-tab {{tabs.character.cssClass}}" data-tab="character" data-group="main">
-    <div class="cpr-medkit-actor-character-amounts">
-        <div data-tooltip="{{character.tooltips.upToDate}}" class="amounts-box green">
+    <div class="cpr-character-amounts">
+        <div data-tooltip="{{character.tooltips.upToDate}}" class="cpr-amounts-box green">
             <h1>{{character.amounts.upToDate.value}}</h1>
             <p>{{localize 'CHRISPREMADES.Medkit.Status.1'}}</p>
         </div>
-        <div data-tooltip="{{character.tooltips.available}}" class="amounts-box yellow">
+        <div data-tooltip="{{character.tooltips.available}}" class="cpr-amounts-box yellow">
             <h1>{{character.amounts.available.value}}</h1>
             <p>{{localize 'CHRISPREMADES.Generic.Available'}}</p>
         </div>
-        <div data-tooltip="{{character.tooltips.outOfDate}}" class="amounts-box red">
+        <div data-tooltip="{{character.tooltips.outOfDate}}" class="cpr-amounts-box red">
             <h1>{{character.amounts.outOfDate.value}}</h1>
             <p>{{localize 'CHRISPREMADES.Medkit.Status.0'}}</p>
         </div>

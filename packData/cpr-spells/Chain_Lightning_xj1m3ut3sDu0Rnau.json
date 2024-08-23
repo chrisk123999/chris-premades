@@ -147,7 +147,12 @@
         "color": "blue"
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/lightning/bolts-forked-large-blue.webp",

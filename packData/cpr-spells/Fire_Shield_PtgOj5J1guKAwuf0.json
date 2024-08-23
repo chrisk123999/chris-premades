@@ -146,7 +146,12 @@
         "playAnimation": true
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",

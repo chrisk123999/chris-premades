@@ -1,3 +1,5 @@
+/* Dialog Styles, Done by Michael */
+
 form .better-dialog .form-group input[type="radio"] {
     flex: 0;
     margin: 0px 5px;
@@ -80,101 +82,9 @@ form .better-dialog .form-group .flex-col button.form-button {
     margin-bottom: 3px;
 }
 
-form .cpr-compendiums {
-    display: flex;
-}
+/* Common Formattings */
 
-.cpr-compendiums-header {
-    margin-bottom: 10px;
-}
-
-form .cpr-compendiums .compendium-checkbox {
-    flex: 0;
-    margin-right: 10px;
-}
-
-form .cpr-compendiums .compendium-label {
-    flex: 1
-}
-
-form .cpr-compendiums .compendium-number {
-    flex: .1;
-    text-align: center
-}
-
-.cpr-medkit-header {
-    display: flex;
-    align-items: baseline;
-    gap: 0.625em;
-    padding: 1%;
-    h1 {
-        flex: 1;
-        text-shadow: none !important;
-        color: var(--button-text-color) !important;
-        border: none;
-        margin: 0;
-    }
-    p {
-        font-family: var(--font-h1);
-        font-size: var(--font-size-20);
-    }
-    i {
-        font-size: var(--font-h1-size);
-    }
-}
-
-.cpr-fieldset {
-    border-radius: 4px;
-    margin-top: 0.625em;
-}
-
-.theme-dark .cpr-fieldset {
-    border-color: var(--color-light-5);
-}
-
-.cpr-compendiums-fieldset {
-    border-radius: 4px;
-    margin-top: 0.625em;
-}
-
-.theme-dark .cpr-compendiums-fieldset{
-    border-color: var(--color-light-5);
-}
-
-.cpr-medkit-tabs {
-    border-bottom: var(--dnd5e-border-groove);
-    border-top: var(--dnd5e-border-groove);
-    padding: 2%;
-    margin: 1%;
-    margin-bottom: 10px;
-}
-
-.theme-dark .cpr-medkit-tabs {
-    border-color: var(--color-dark-1) !important;
-}
-
-.theme-light .cpr-medkit-tabs .item{
-    color: var(--dnd5e-color-olive) !important;
-}
-
-.theme-light .cpr-medkit-tabs .item.active{
-    color: var(--dnd5e-color-tan) !important;
-}
-
-.theme-dark .cpr-medkit-tabs .item {
-    color: var(--color-light-5) !important;
-}
-
-.theme-dark .cpr-medkit-tabs .item.active {
-    color: var(--color-light-3) !important;
-}
-
-.cpr-medkit-tab {
-    padding: 1%;
-    margin: 0;
-}
-
-.cpr-row-center {
+form .cpr-row-center {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -185,10 +95,161 @@ form .cpr-compendiums .compendium-number {
     gap: 0.625em;
 }
 
-.cpr-fieldset .form-group{ /* make more specific*/
+.cpr-fieldset {
+    border-radius: 4px;
+    margin-top: 0.625em;
+}
+
+.cpr-fieldset .cpr-column {
     display: flex;
     flex-direction: column;
 }
+
+.theme-dark .cpr-fieldset {
+    border-color: var(--color-light-5);
+}
+
+/* Additional Compendiums Styles */
+
+.cpr-compendiums {
+    display: flex;
+}
+
+.cpr-compendiums-header {
+    margin-bottom: 10px;
+}
+
+.cpr-compendiums .compendium-checkbox {
+    flex: 0;
+    margin-right: 10px;
+}
+
+.cpr-compendiums .compendium-label {
+    flex: 1
+}
+
+.cpr-compendiums .compendium-number {
+    flex: .1;
+    text-align: center
+}
+
+/* Medkit Styles */
+
+.cpr-medkit-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.625em;
+    padding: 1%;
+}
+.cpr-medkit-header h1 {
+    flex: 1;
+    text-shadow: none !important;
+    color: var(--button-text-color) !important;
+    border: none;
+    margin: 0;
+}
+.cpr-medkit-header p {
+    font-family: var(--font-h1);
+    font-size: var(--font-size-20);
+}
+.cpr-medkit-header i {
+    font-size: var(--font-h1-size);
+}
+
+.cpr-medkit-tab {
+    padding: 1%;
+    margin: 0;
+}
+
+.cpr-medkit-tabs {
+    border-bottom: var(--dnd5e-border-groove);
+    border-top: var(--dnd5e-border-groove);
+    padding: 2%;
+    margin: 1%;
+    margin-bottom: 10px;
+}
+
+.cpr-medkit-tab .cpr-medkit-config .cpr-config-flex label {
+    text-wrap: balance;
+}
+
+.cpr-medkit-tab .cpr-over-time-option .main-label {
+    flex: 1
+}
+.cpr-medkit-tab .cpr-over-time-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cpr-medkit-tab .cpr-over-time-input input[type="checkbox"] {
+    height: 25px;
+    --checkbox-size: 25px !important;
+}
+
+.cpr-medkit-tab .cpr-over-time-input multi-select {
+    width: 100%
+}
+
+.cpr-medkit-tab .cpr-character-amounts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.4em;
+    align-items: baseline;
+    width: 100%;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box h1 {
+    text-shadow: none;
+    color: var(--button-text-color);
+    border: none;
+    margin: 0;
+    padding: 4px;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box p {
+    font-family: var(--font-h1);
+    font-size: var(--font-size-20);
+    margin: 0;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box.green {
+    background: #00800080;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box.yellow {
+    background: #ffff0080;
+}
+
+.cpr-medkit-tab .cpr-character-amounts .cpr-amounts-box.red {
+    background:#ff000080;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.cpr-medkit-tab .cpr-actor-summary {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.cpr-medkit-tab .cpr-actor-summary legend {
+    text-align: center;
+    margin-bottom: 0.4em;
+}
+
+/* Just some flex values */
 
 .cpr-config-flex {
     > label {
@@ -228,75 +289,29 @@ form .cpr-compendiums .compendium-number {
     }
 }
 
-.cpr-over-time-option {
-    .main-label {
-        flex: 1
-    }
-}
-.cpr-over-time-input {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    > input[type="checkbox"] {
-        height: 25px;
-        --checkbox-size: 25px !important;
-    }
-    > multi-select {
-        width: 100%
-    }
+/* Theme-based colorings for the medkit */
+
+.theme-dark .cpr-medkit-tabs {
+    border-color: var(--color-dark-1) !important;
 }
 
-.cpr-medkit-actor-character-amounts {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    .amounts-box {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: center;
-        gap: 0.4em;
-        align-items: baseline;
-        width: 100%;
-        h1 {
-            text-shadow: none !important;
-            color: var(--button-text-color) !important;
-            border: none;
-            margin: 0;
-            padding: 4px;
-        }
-        p {
-            font-family: var(--font-h1);
-            font-size: var(--font-size-20);
-            margin: 0;
-        }
-    };
-    .red {
-        background:#ff000080;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-    };
-    .green {
-        background: #00800080;
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-    }
-    .yellow {
-        background: #ffff0080;
-    }
+.theme-light .cpr-medkit-tabs .item{
+    color: var(--dnd5e-color-olive) !important;
 }
 
-.cpr-medkit-actor-summary {
-    display: flex;
-    justify-content: center;
-    margin-top: 0 !important;
-    > legend {
-        text-align: center;
-        margin-bottom: 0.4em;
-    }
+.theme-light .cpr-medkit-tabs .item.active{
+    color: var(--dnd5e-color-tan) !important;
 }
+
+.theme-dark .cpr-medkit-tabs .item {
+    color: var(--color-light-5) !important;
+}
+
+.theme-dark .cpr-medkit-tabs .item.active {
+    color: var(--color-light-3) !important;
+}
+
+/* Coloring Styles */
 
 [data-medkit-color="pink"] {
     color: pink

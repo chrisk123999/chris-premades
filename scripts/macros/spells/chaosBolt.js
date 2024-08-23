@@ -69,6 +69,7 @@ async function use({workflow}) {
 export let chaosBolt = {
     name: 'Chaos Bolt',
     version: '0.12.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

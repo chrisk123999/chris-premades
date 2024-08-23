@@ -141,7 +141,12 @@
         }
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "folder": null,
   "_id": "fZfR4Z5vBG0Qrlpg",

@@ -149,7 +149,12 @@
         }
       }
     },
-    "dnd5e": {}
+    "dnd5e": {},
+    "chris-preamdes": {
+      "info": {
+        "hasAnimation": true
+      }
+    }
   },
   "effects": [],
   "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue.webp",
