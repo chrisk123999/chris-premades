@@ -9,7 +9,7 @@ function createEffectButtons(effect, buttons) {
                     label: i.name,
                     callback: () => {
                         let actor = effect.parent;
-                        if (!(actor instanceof Actor.implementation)) actor = actor.actor;
+                        if (actor?.documentName !== 'Actor') actor = actor.actor;
                         let item;
                         if (i.identifier) {
                             item = itemUtils.getItemByIdentifier(actor, i.identifier);
