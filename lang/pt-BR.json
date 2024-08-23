@@ -33,6 +33,7 @@
             "DevilsSight": "Visão Diabólica",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
+            "Mending": "Reparar",
             "Multiattack": "Ataques Múltiplos ({numAttacks} Ataques)",
             "PackTactics": "Táticas de Bando",
             "Regeneration": "Regeneração",
@@ -215,6 +216,15 @@
                 "SelectTarget": "Quem será atacado?",
                 "SelectWeapon": "Qual arma será usada para atacar?"
             },
+            "ArcaneJolt": {
+                "Harm": "Ferir",
+                "HarmOrHeal": "Ferir ou Curar?",
+                "Heal": "Curar",
+                "WhoHeal": "Quem curar?"
+            },
+            "ArmorOfAgathys": {
+                "Reflect": "Armadura de Agathys: Refletir"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
@@ -255,7 +265,7 @@
                 "Blind": "Destruição Cegante: Cego"
             },
             "Blink": {
-                "Away": "Piscar"
+                "Away": "Piscar: Desaparecer"
             },
             "BolsteringMagic": {
                 "Already": "O alvo já está sendo fortalecido!",
@@ -356,6 +366,23 @@
             "EldritchBlast": {
                 "Target": "Quais alvos?"
             },
+            "EldritchCannon": {
+                "Cannon": "Canhão Místico",
+                "Command": "Canhão Místico: Comando",
+                "ExplosiveCannon": "Canhão Explosivo",
+                "Flamethrower": "Lança-Chamas",
+                "ForceBallista": "Força de Balista",
+                "FortifiedPosition": "Posição Fortificada",
+                "Maximum": "Você já tem o número máximo de Canhões Místicos!",
+                "NoSlots": "Você não tem usos ou espaços de magia restantes!",
+                "Protector": "Protetor",
+                "SelectType": "Selecione o tipo de Canhão Místico",
+                "Size": "Qual o tamanho do canhão {cannonName}?",
+                "SpendPact": "Criar um Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendPactAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlot": "Criar um Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
+                "SpendSlotAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
+            },
             "ElementalCleaver": {
                 "Change": "Cutelo Elemental: Mudar Tipo de Dano",
                 "ElementalCleaver": "Cutelo Elemental",
@@ -376,6 +403,7 @@
                 "Flight": "Elixir Experimental: Voo",
                 "Healing": "Elixir Experimental: Cura",
                 "MakeAnother": "Criar outro Elixir gastando um espaço de magia de nível {slotLevel}? ({slotValue} de {slotMax} restante(s))",
+                "MakeAnotherPact": "Criar outro Elixir gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
                 "Resilience": "Elixir Experimental: Resiliência",
                 "Swiftness": "Elixir Experimental: Celeridade",
                 "Transformation": "Elixir Experimental: Transformação"
@@ -463,7 +491,7 @@
             },
             "GustOfWind": {
                 "Move": "Lufada de Vento: Mover",
-                "Push": "Gust of Wind: Empurrar"
+                "Push": "Lufada de Vento: Empurrar"
             },
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
@@ -676,7 +704,6 @@
                 "Command": "Defensor de Aço: Comando",
                 "DeflectAttack": "Defletir Ataque",
                 "ForceEmpoweredRend": "Laceração de Energia",
-                "Mending": "Reparar (Magia)",
                 "Repair": "Reparar (Ação)",
                 "Vigilant": "Vigilante"
             },
@@ -920,7 +947,7 @@
                         "NoDamage": "Sem Dano",
                         "PublicRoll": "Rolagem Pública",
                         "RemoveCondition": "Remover Expressão de Avaliação de Condição:",
-                        "RollMode": "MOdo de Rolagem para o Item de Rolagem do Over Time:",
+                        "RollMode": "Modo de Rolagem para o Item de Rolagem do Over Time:",
                         "RollType": "Tipo de Rolagem:",
                         "SaveAbility": "Atributo ou Perícia para rolar:",
                         "SaveDC": "Classe de Dificuldade da rolagem:",
@@ -1252,7 +1279,7 @@
                 "Name": "Suporte Arma de Fogo"
             },
             "chatCardTweak": {
-                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas.",
+                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas. É necessário recarregar após desativar.",
                 "Name": "Ajuste Cartão do Chat"
             }
         },
@@ -1328,12 +1355,12 @@
                 "UndeadSpiritSkeletal": "Espírito Morto-Vivo (Esquelético)",
                 "Zombie": "Zumbi"
             },
-            "CustomAvatar": "{option} Avatar Personalizado",
-            "CustomName": "{option} Nome Personalizado",
-            "CustomToken": "{option} Token Personalizado",
+            "CustomAvatar": "Avatar Personalizado {option}",
+            "CustomName": "Nome Personalizado {option}",
+            "CustomToken": "Token Personalizado {option}",
             "DismissHP": "A invocação atingiu 0 pontos de vida! Eles devem ser dispensados?",
             "DismissSummon": "Dispensar Invocação",
-            "FamiliarDefault": "{option} Familiar",
+            "FamiliarDefault": "Familiar {option}",
             "Folder": "Nome da Pasta",
             "HowMany": "Quantos?",
             "NoMatching": "Nenhum ator correspondente encontrado no compêndio especificado!",
