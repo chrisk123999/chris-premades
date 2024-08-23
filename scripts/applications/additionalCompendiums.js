@@ -106,6 +106,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         }
         for (let [key, value] of Object.entries(currentSettings)) {
             let pack = game.packs.get(key);
+            if (!pack && !compendiums[key]?.label) continue;
             compendiums[pack?.metadata?.name ?? key] = {
                 id: key,
                 label: pack?.metadata?.label ?? compendiums[key].label,
