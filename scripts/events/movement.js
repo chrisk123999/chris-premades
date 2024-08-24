@@ -137,7 +137,7 @@ async function updateToken(token, updates, options, userId) {
     // Check if waypoint movement (should work for gridded & gridless):
     let destination = canvas.controls.getRulerForUser(userId)?.destination;
     let tokenBounds = token.object.bounds;
-    let isFinalMovement = !destination || (coords.x + tokenBounds.width / 2 === destination.x && coords.y + tokenBounds.height / 2 === destination.y);
+    let isFinalMovement = !destination || (coords.x + tokenBounds.width / 2 === Math.round(destination.x) && coords.y + tokenBounds.height / 2 === Math.round(destination.y));
     let previousCoords = genericUtils.getProperty(options, 'chris-premades.coords.previous');
     if (!previousCoords) return;
     let xDiff = token.width * canvas.grid.size / 2;

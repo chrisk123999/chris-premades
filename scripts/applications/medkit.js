@@ -200,6 +200,28 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         });
                         break;
                     }
+                    case 'select-many': {
+                        genericUtils.setProperty(configuration, 'isSelectMany', true);
+                        config.options.forEach(i => {
+                            if (!configuration?.options) genericUtils.setProperty(configuration, 'options', []);
+                            if (config.requiredModules) {
+                                if (config.requiredModules.filter(j => game.modules.get(j)?.active === false).length === 0) {
+                                    configuration.options.push({
+                                        label: i.label,
+                                        value: i.value,
+                                        isSelected: (currentConfigs?.[config.value] ?? config.default).includes(i.value)
+                                    });
+                                }
+                            } else {
+                                configuration.options.push({
+                                    label: i.label,
+                                    value: i.value,
+                                    isSelected: (currentConfigs?.[config.value] ?? config.default).includes(i.value)
+                                });
+                            }
+                        });
+                        break;
+                    }
                 }
                 context.category[config.category].configuration.push(configuration);
             }
@@ -421,6 +443,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     let currentContext = this.context;
                     currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => i.isSelected = false);
                     currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
+                } else if (event.target.tagName?.toLowerCase() === 'multi-select') {
+                    // Annoyingly `event.target.type` isn't set for the above
+                    this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                 }
                 this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
             }

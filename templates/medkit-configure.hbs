@@ -23,6 +23,15 @@
                                     </option>
                                 {{/each}}
                             </select>
+                        {{else if isSelectMany}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <multi-select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                        {{localize label}}
+                                    </option>
+                                {{/each}}
+                            </select>
                         {{/if}}
                     </div>
                 {{/each}}

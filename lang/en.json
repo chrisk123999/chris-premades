@@ -551,6 +551,27 @@
                 "ExtraDamage": "Apply extra 1d6 lightning damage?",
                 "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
             },
+            "InfuseItem": {
+                "ArcanePropulsionArmor": "Arcane Propulsion Armor",
+                "ArmorOfMagicalStrength": "Armor of Magical Strength",
+                "EnhancedWeapon": "Enhanced Weapon",
+                "HomunculusServant": "Homunculus Servant",
+                "Known": "Known Infusions:",
+                "New": "New {infusionLabel} infusion added to {newActorName}'s <b>{itemName}</b>.",
+                "NoArmor": "Target has no valid non-magical equipped armor!",
+                "NoKnown": "You have no known infusions configured in the item medkit!",
+                "Override": "Existing {infusionLabel} infusion removed from {oldActorName}'s <b>{itemName}</b>.",
+                "RadiantWeapon": "Radiant Weapon",
+                "RepeatingShot": "Repeating Shot",
+                "RepulsionShield": "Repulsion Shield",
+                "ResistantArmor": "Resistant Armor",
+                "ReturningWeapon": "Returning Weapon",
+                "Select": "Which infusion?",
+                "SpellRefuelingRing": "Spell Refueling Ring",
+                "TooMany": "You have the maximum number of infusions already active!",
+                "WhichArmor": "Which armor would you like to infuse?",
+                "WhichWeapon": "Which weapon would you like to infuse?"
+            },
             "InsectPlague": {
                 "Damage": "Insect Plague: Damage"
             },

@@ -31,7 +31,7 @@ async function use({trigger, workflow}) {
         let effectData = {
             name: workflow.item.name,
             img: workflow.item.img,
-            origin: workflow.item,
+            origin: workflow.item.uuid,
             duration: {
                 seconds: 3600 * workflow.item.system.duration.value
             },
