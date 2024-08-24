@@ -64,8 +64,8 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.4.45",
-          "verified": "11.4.45"
+          "minimum": "11.6.4.1",
+          "verified": "11.6.4.1"
         }
       },
       {
@@ -96,8 +96,8 @@
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.41",
-          "verified": "11.3.41"
+          "minimum": "11.3.52",
+          "verified": "11.3.52"
         }
       },
       {
