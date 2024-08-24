@@ -119,7 +119,8 @@
         "name": "Channel Divinity: Inspiring Smite",
         "version": "0.12.24",
         "identifier": "inspiringSmite",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

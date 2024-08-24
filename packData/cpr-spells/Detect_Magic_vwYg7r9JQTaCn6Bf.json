@@ -123,7 +123,8 @@
         "name": "Detect Magic",
         "version": "0.12.0",
         "identifier": "detectMagic",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "config": {
         "playAnimation": true

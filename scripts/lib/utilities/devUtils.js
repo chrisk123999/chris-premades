@@ -36,7 +36,7 @@ export async function stripUnusedFlags(key) {
         };
         let identifier = i.flags['chris-premades']?.info?.identifier;
         if (identifier) {
-            if (macros[identifier]?.config?.find(i => i.value === 'playAnimation')) genericUtils.setProperty(updates, 'flags.chris-preamdes.info.hasAnimation', true);
+            if (macros[identifier]?.config?.find(i => i.value === 'playAnimation')) genericUtils.setProperty(updates, 'flags.chris-premades.info.hasAnimation', true);
         }
         await i.update(updates);
     }

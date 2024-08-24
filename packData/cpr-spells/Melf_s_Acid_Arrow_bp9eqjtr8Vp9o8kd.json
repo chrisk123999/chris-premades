@@ -130,7 +130,8 @@
       "info": {
         "identifier": "acidArrow",
         "source": "chris-premades",
-        "version": "0.12.0"
+        "version": "0.12.0",
+        "hasAnimation": true
       }
     },
     "chris-preamdes": {

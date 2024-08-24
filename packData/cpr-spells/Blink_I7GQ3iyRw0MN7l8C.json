@@ -39,7 +39,8 @@
         "name": "Blink",
         "version": "0.12.0",
         "identifier": "blink",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

@@ -126,7 +126,8 @@
         "name": "Healing Spirit",
         "version": "0.12.2",
         "identifier": "healingSpirit",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

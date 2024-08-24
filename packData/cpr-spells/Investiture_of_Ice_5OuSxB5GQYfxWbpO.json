@@ -126,7 +126,8 @@
           "self": "Investiture of Ice"
         },
         "identifier": "investitureOfIce",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

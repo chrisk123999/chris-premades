@@ -96,6 +96,13 @@ export function registerSettings() {
         select: true
     });
     addSetting({
+        key: 'spellCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-spells',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,
@@ -508,7 +515,7 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface',
-        onChange: (value) => chat.cssTweak()
+        onChange: () => chat.cssTweak()
     });
 }
 export function registerMenus() {

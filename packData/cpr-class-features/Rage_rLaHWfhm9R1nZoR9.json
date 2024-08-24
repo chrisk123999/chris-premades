@@ -121,7 +121,8 @@
         "name": "Rage",
         "version": "0.12.20",
         "identifier": "rage",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "config": {
         "playAnimation": true,
