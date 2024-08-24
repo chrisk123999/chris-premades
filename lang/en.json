@@ -29,6 +29,7 @@
         "CommonFeatures": {
             "Bite": "Bite",
             "BreathWeapon": "Breath Weapon",
+            "ChangeShape": "Change Shape",
             "Claws": "Claws",
             "DevilsSight": "Devil's Sight",
             "HeatedBody": "Heated Body",
@@ -38,6 +39,7 @@
             "PackTactics": "Pack Tactics",
             "Regeneration": "Regeneration",
             "ShadowStealth": "Shadow Stealth",
+            "Shapechanger": "Shapechanger",
             "StoneLethargy": "Stone Lethargy",
             "Tail": "Tail",
             "WaterBreathing": "Water Breathing",
@@ -1226,10 +1228,6 @@
                 "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
                 "Name": "Monster Compendium"
             },
-            "spellCompendium": {
-                "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell commpendium.",
-                "Name": "Spell Compendium"
-            },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
                 "Name": "Medkit Apply Automation Permissions"
@@ -1261,6 +1259,10 @@
             "skillCheck": {
                 "Hint": "When enabled, certain macros will prompt the player for more information for the skill check.",
                 "Name": "Contextual Skill Checks"
+            },
+            "spellCompendium": {
+                "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell commpendium.",
+                "Name": "Spell Compendium"
             },
             "spotlightOmnisearchSummons": {
                 "Hint": "When enabled, you can use Spotlight Omnisearch to summon creatures from your monster compendium. Reload required after enabling.",

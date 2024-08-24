@@ -104,9 +104,9 @@ function hasSpellSlots(actor, atLeast = 0) {
 }
 function isShapeChanger(actor) {
     // TODO: what's the best we can do here?
-    let changeShape = actor.items.getName('Change Shape');
-    let shapechanger = actor.items.getName('Shapechanger');
-    let subtype = actor.system.details.type.subtype.toLowerCase().includes('shapechanger');
+    let changeShape = actor.items.getname(genericUtils.translate('CHRISPREMADES.CommonFeatures.ChangeShape'));
+    let shapechanger = actor.items.getName(genericUtils.translate('CHRISPREMADES.CommonFeatures.Shapechanger'));
+    let subtype = actor.system.details.type?.subtype?.toLowerCase()?.includes(genericUtils.translate('CHRISPREMADES.CommonFeatures.Shapechanger').toLowerCase());
     return changeShape || shapechanger || subtype;
 }
 async function doConcentrationCheck(actor, saveDC) {
