@@ -29,6 +29,7 @@
         "CommonFeatures": {
             "Bite": "Mordida",
             "BreathWeapon": "Arma de Sopro",
+            "ChangeShape": "Mudar Forma",
             "Claws": "Garras",
             "DevilsSight": "Visão Diabólica",
             "HeatedBody": "Corpo Aquecido",
@@ -38,6 +39,7 @@
             "PackTactics": "Táticas de Bando",
             "Regeneration": "Regeneração",
             "ShadowStealth": "Sombra Furtiva",
+            "Shapechanger": "Metamorfo",
             "StoneLethargy": "Letargia de Pedra",
             "Tail": "Cauda",
             "WaterBreathing": "Respiração na Água",
@@ -545,9 +547,30 @@
                 "Curse": "Como você amaldiçoa o alvo?",
                 "Damage": "Sofrer Dano"
             },
-           "InfiltratorArmor": {
+            "InfiltratorArmor": {
                 "ExtraDamage": "Aplicar 1d6 de dano elétrico adicional?",
                 "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
+            },
+            "InfuseItem": {
+                "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
+                "ArmorOfMagicalStrength": "Armadura da Força Mágica",
+                "EnhancedWeapon": "Arma Aprimorada",
+                "HomunculusServant": "Servo Homúnculo",
+                "Known": "Infusões Conhecidas:",
+                "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
+                "NoArmor": "O alvo não tem uma armadura não-mágica equipada válida!",
+                "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
+                "Override": "Infusão {infusionLabel} removida em <b>{itemName}</b> de {oldActorName}.",
+                "RadiantWeapon": "Arma Radiante",
+                "RepeatingShot": "Disparo Recorrente",
+                "RepulsionShield": "Escudo de Repulsão",
+                "ResistantArmor": "Armadura da Resistência",
+                "ReturningWeapon": "Arma Bumerangue",
+                "Select": "Qual infusão?",
+                "SpellRefuelingRing": "Anel de Reabastecimento de Magia",
+                "TooMany": "Você tem o número máximo de infusões já ativas!",
+                "WhichArmor": "Qual armadura você quer infundir?",
+                "WhichWeapon": "Qual arma você quer infundir?"
             },
             "InsectPlague": {
                 "Damage": "Praga de Insetos: Dano"
