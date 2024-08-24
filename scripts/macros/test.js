@@ -2,7 +2,7 @@ export let test = {
     name: 'test',
     version: '0.12.0',
     equipment: {
-        mageHand: {
+        armorOfAgathys: {
             name: 'Armor of Agathys',
             uses: {
                 value: 3,
