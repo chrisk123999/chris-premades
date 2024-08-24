@@ -1223,8 +1223,12 @@
                 "Name": "Midi Item Showcase Options"
             },
             "monsterCompendium": {
-                "Hint": "Monster compendium use for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
+                "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
                 "Name": "Monster Compendium"
+            },
+            "spellCompendium": {
+                "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell commpendium.",
+                "Name": "Spell Compendium"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
