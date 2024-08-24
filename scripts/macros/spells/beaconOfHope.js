@@ -56,6 +56,7 @@ async function damageApplication({workflow, ditem}) {
     ditem.totalDamage = newHealingTotal;
     ditem.appliedDamage = -Math.min(appliedHealingTotal, maxHP - ditem.oldHP);
     ditem.hpDamage = ditem.appliedDamage;
+    ditem.damageDetail[0].value = ditem.appliedDamage;
     ditem.newHP = ditem.oldHP - ditem.appliedDamage;
 }
 export let beaconOfHope = {

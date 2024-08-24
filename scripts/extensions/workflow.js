@@ -17,48 +17,6 @@ function getDamageType(flavorString) {
     }
     return undefined;
 }
-function createDamageDetail({roll, item, versatile, defaultType, ammo}) {
-    let damageParts = {};
-    let rolls = roll;
-    let DamageRoll = CONFIG.Dice.DamageRoll;
-    if (rolls instanceof DamageRoll) {
-        rolls = [rolls];
-    }
-    if (foundry.utils.isNewerVersion(game.system.version, '3.1.99')) {
-        let aggregatedRolls = game.system.dice.aggregateDamageRolls(rolls);
-        let  detail = aggregatedRolls.map(roll => ({damage: roll.total, type: roll.options.type, formula: roll.formula, properties: new Set(roll.options.properties ?? [])}));
-        return detail;
-    }
-    if (item?.system.damage?.parts[0]) {
-        defaultType = item.system.damage.parts[0][1];
-    }
-    if (rolls instanceof Array) {
-        for (let r of rolls) {
-            if (!r.options.type) r.options.type = defaultType;
-            let rr = r;
-            if (rr.terms?.length) for (let i = rr.terms.length - 1; i >= 0;) {
-                let term = rr.terms[i--];
-                // eslint-disable-next-line no-undef
-                if (!(term instanceof NumericTerm) && !(term instanceof DiceTerm) && !(term instanceof ParentheticalTerm)) continue;
-                let flavorType = getDamageType(term.flavor);
-                let type = (term.flavor !== '') ? flavorType : rr.options.type;
-                if (!type || type === 'none') type = r.options.type ?? defaultType;
-                let multiplier = 1;
-                let operator = rr.terms[i];
-                // eslint-disable-next-line no-undef
-                while (operator instanceof OperatorTerm) {
-                    if (operator.operator === '*') multiplier *= 2;
-                    if (operator.operator === '-') multiplier *= -1;
-                    operator = rolls.entries[i--];
-                }
-                let value = Number((term?.total ?? '0')) * multiplier;
-                damageParts[type] = value + (damageParts[type] ?? 0);
-            }
-        }
-    }
-    let damageDetail = Object.entries(damageParts).map(([type, damage]) => { return { damage, type }; });
-    return damageDetail;
-}
 function setup() {
     class CPRWorkflow extends MidiQOL.workflowClass {
         async WorkflowState_NoAction(context = {}) {
@@ -81,7 +39,7 @@ function setup() {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
             await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'));
-            this.damageDetail = createDamageDetail({roll: this.damageRolls, item: this.item, ammo: this.ammo, versatile: this.rollOptions.versatile, defaultType: this.defaultDamageType});
+            this.damageDetail = MidiQOL.createDamageDetail({roll: this.damageRolls, item: this.item, defaultType: this.defaultDamageType});
             return nextState;
         }
         async WorkflowState_RollFinished(context = {}) {

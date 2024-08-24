@@ -190,6 +190,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     if (hasDI) return;
     let damageTotal = damageRoll.total;
     let trueDamageTotal = damageTotal;
+    ditem.rawDamageDetail[0].value = damageTotal;
     let hasDR = actorUtils.checkTrait(targetActor, 'dr', damageType);
     if (hasDR) damageTotal = Math.floor(damageTotal / 2);
     let hasDV = actorUtils.checkTrait(targetActor, 'dv', damageType);
@@ -199,6 +200,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     ditem.tempDamage += (damageTotal - remainingDamage);
     ditem.totalDamage += trueDamageTotal;
     ditem.appliedDamage += damageTotal;
+    ditem.damageDetail[0].value = ditem.appliedDamage;
     ditem.hpDamage += remainingDamage;
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }

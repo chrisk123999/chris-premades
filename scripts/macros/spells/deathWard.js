@@ -19,6 +19,7 @@ async function damageApplication({trigger: {entity: effect}, ditem}) {
     if (ditem.newHP > 0) return;
     ditem.newHP = 1;
     ditem.hpDamage = Math.abs(ditem.newHP - ditem.oldHP);
+    ditem.damageDetail[0].value = ditem.hpDamage + ditem.oldTempHP;
     await genericUtils.remove(effect);
 }
 export let deathWard = {

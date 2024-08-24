@@ -46,6 +46,7 @@ async function damageApplication({trigger, workflow, ditem}) {
         if (hasDV) maxDamage *= 2;
         let saved = !workflow.failedSaves.map(token => token.actor).has(targetActor);
         if (saved) maxDamage = Math.floor(maxDamage / 2);
+        ditem.damageDetail[0].value = maxDamage;
         let remainingDamage = maxDamage - Math.min(ditem.oldTempHP, maxDamage);
         ditem.newTempHP = ditem.oldTempHP - (maxDamage - remainingDamage);
         ditem.tempDamage = (maxDamage - remainingDamage);
