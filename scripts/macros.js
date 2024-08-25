@@ -183,7 +183,7 @@ export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/c
 export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/giantStature.js';
 export {guardianArmor, guardianArmorThunderGauntlets, guardianArmorDefensiveField} from './macros/classFeatures/artificer/armorer/guardianArmor.js';
 export {infiltratorArmor, infiltratorArmorLightningLauncher} from './macros/classFeatures/artificer/armorer/infiltratorArmor.js';
-// export {infuseItem} from './macros/classFeatures/artificer/infuseItem.js';
+// export {infuseItem, infuseItemRepulsionShield} from './macros/classFeatures/artificer/infuseItem.js';
 export {holyNimbus, holyNimbusActive} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
 export {infectiousFury, infectiousFuryAttack} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
 export {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';

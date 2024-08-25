@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../../utils.js';
 
 async function use({workflow}) {
     let knownInfusions = itemUtils.getConfig(workflow.item, 'knownInfusions');
@@ -70,6 +70,12 @@ async function use({workflow}) {
                         key: 'system.properties',
                         mode: 2,
                         value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
                         priority: 20
                     }
                 ]
@@ -165,6 +171,12 @@ async function use({workflow}) {
                         mode: 5,
                         value: 'special',
                         priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
                     }
                 ]
             };
@@ -214,6 +226,279 @@ async function use({workflow}) {
             await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             break;
         }
+        case 'homunculusServant': {
+            break;
+        }
+        case 'radiantWeapon': {
+            let weapons = target.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (!weapons.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
+                return;
+            }
+            if (weapons.length === 1) {
+                selectedItem = weapons[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
+                if (!selectedItem) return;
+            }
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.magicalBonus',
+                        mode: 5,
+                        value: 1,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
+                    }
+                ]
+            };
+            let lightFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Radiant Weapon: Light', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RadiantLight', identifier: 'radiantWeaponLight'});
+            let blindFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Radiant Weapon: Blind', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RadiantBlind', identifier: 'radiantWeaponBlind', flatDC: target.system.attributes.spelldc});
+            if (!lightFeatureData || !blindFeatureData) {
+                errors.missingPackItem();
+                return;
+            }
+            let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            await itemUtils.createItems(target, [lightFeatureData], {favorite: true, parentEntity: enchantEffect});
+            await itemUtils.createItems(target, [blindFeatureData], {parentEntity: enchantEffect});
+            break;
+        }
+        case 'repeatingShot': {
+            let weapons = target.items.filter(i => i.type === 'weapon' && i.system.properties.has('amm') && !i.system.properties.has('mgc') && i.system.equipped);
+            if (!weapons.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
+                return;
+            }
+            if (weapons.length === 1) {
+                selectedItem = weapons[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
+                if (!selectedItem) return;
+            }
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: '-lod',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.magicalBonus',
+                        mode: 5,
+                        value: 1,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.consume.amount',
+                        mode: 5,
+                        value: 0,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
+                    }
+                ]
+            };
+            await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            break;
+        }
+        case 'repulsionShield': {
+            let armor = target.items.filter(i => i.system.isArmor && i.system.type?.value === 'shield' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (!armor.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoShield', 'info');
+                return;
+            }
+            let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Repulsion Shield: Push', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.RepulsionPush', identifier: 'repulsionShieldPush'});
+            if (!featureData) {
+                errors.missingPackItem();
+                return;
+            }
+            if (armor.length === 1) {
+                selectedItem = armor[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichShield', armor);
+                if (!selectedItem) return;
+            }
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.armor.magicalBonus',
+                        mode: 5,
+                        value: 1,
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            itemUtils.createItems(target, [featureData], {parentEntity: enchantEffect});
+            break;
+        }
+        case 'resistantArmor': {
+            let armor = target.items.filter(i => i.system.isArmor && i.system.type?.value !== 'shield' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (!armor.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
+                return;
+            }
+            if (armor.length === 1) {
+                selectedItem = armor[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
+                if (!selectedItem) return;
+            }
+            let buttons = ['acid', 'cold', 'fire', 'force', 'lightning', 'necrotic', 'poison', 'psychic', 'radiant', 'thunder'].map(i => ([CONFIG.DND5E.damageTypes[i].label, Object.keys(CONFIG.DND5E.damageTypes).find(j => j === i)]));
+            if (!buttons.length) return;
+            let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.ResistanceType', buttons);
+            if (!damageType) return;
+            originalName = selectedItem.name;
+            let effectData = {
+                name: workflow.item.name + ': ' + infusionLabel,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'system.traits.dr.value',
+                        mode: 2,
+                        value: damageType,
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            await effectUtils.createEffect(selectedItem, effectData, {parentEntity: enchantEffect, strictlyInterdependent: true});
+            break;
+        }
+        case 'returningWeapon': {
+            let weapons = target.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.properties.has('thr') && i.system.equipped);
+            if (!weapons.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
+                return;
+            }
+            if (weapons.length === 1) {
+                selectedItem = weapons[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
+                if (!selectedItem) return;
+            }
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.magicalBonus',
+                        mode: 5,
+                        value: 1,
+                        priority: 20
+                    }
+                ]
+            };
+            await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            break;
+        }
+        case 'spellRefuelingRing': {
+            break;
+        }
         case 'end': {
             for (let [currSelection, uuid] of Object.entries(existingInfusionUuids)) {
                 let current = await fromUuid(uuid);
@@ -242,6 +527,10 @@ async function use({workflow}) {
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
         content: chatMessageInfo
     });
+}
+async function repulsionShieldLate({workflow}) {
+    if (!workflow.targets.size === 1) return;
+    await tokenUtils.pushToken(workflow.token, workflow.targets.first(), 15);
 }
 export let infuseItem = {
     name: 'Infuse Item',
@@ -306,4 +595,17 @@ export let infuseItem = {
             category: 'mechanics'
         },
     ]
+};
+export let infuseItemRepulsionShield = {
+    name: 'Infuse Item: Repulsion Shield',
+    version: infuseItem.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: repulsionShieldLate,
+                priority: 50
+            }
+        ]
+    }
 };

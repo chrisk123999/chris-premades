@@ -37,18 +37,19 @@ function getAlignment(actor) {
 function getCRFromProf(prof) {
     return 4 * prof - 7;
 }
-function getCastData(actor) {
-    return actor.flags['chris-premades']?.castData;
-}
-function getCastLevel(actor) {
-    return getCastData(actor)?.castLevel;
-}
-function getBaseLevel(actor) {
-    return getCastData(actor)?.baseLevel;
-}
-function getSaveDC(actor) {
-    return getCastData(actor)?.saveDC;
-}
+// Never use these: Think they were mis-copied. Could maybe do getSaveDC with actor.system.attributes.spelldc
+// function getCastData(actor) {
+//     return actor.flags['chris-premades']?.castData;
+// }
+// function getCastLevel(actor) {
+//     return getCastData(actor)?.castLevel;
+// }
+// function getBaseLevel(actor) {
+//     return getCastData(actor)?.baseLevel;
+// }
+// function getSaveDC(actor) {
+//     return getCastData(actor)?.saveDC;
+// }
 async function getSidebarActor(actor, {autoImport} = {}) {
     if (!actor.compendium) return actor;
     let sidebarActor = game.actors.find(i => i.flags.core?.sourceId === actor.uuid);
@@ -121,10 +122,10 @@ export let actorUtils = {
     typeOrRace,
     getAlignment,
     getCRFromProf,
-    getCastLevel,
-    getBaseLevel,
-    getSaveDC,
-    getCastData,
+    // getCastLevel,
+    // getBaseLevel,
+    // getSaveDC,
+    // getCastData,
     getSidebarActor,
     getTokens,
     getSize,
