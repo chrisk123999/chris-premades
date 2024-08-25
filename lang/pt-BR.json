@@ -553,7 +553,9 @@
             },
             "InfuseItem": {
                 "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
+                "ArcanePropulsionGauntlet": "Manoplas de Propulsão Arcana",
                 "ArmorOfMagicalStrength": "Armadura da Força Mágica",
+                "EndAll": "Encerrar Todas Infusões",
                 "EnhancedWeapon": "Arma Aprimorada",
                 "HomunculusServant": "Servo Homúnculo",
                 "Known": "Infusões Conhecidas:",
