@@ -553,7 +553,9 @@
             },
             "InfuseItem": {
                 "ArcanePropulsionArmor": "Arcane Propulsion Armor",
+                "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                 "ArmorOfMagicalStrength": "Armor of Magical Strength",
+                "EndAll": "End All Infusions",
                 "EnhancedWeapon": "Enhanced Weapon",
                 "HomunculusServant": "Homunculus Servant",
                 "Known": "Known Infusions:",

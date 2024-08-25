@@ -113,7 +113,7 @@ async function enchantItem(item, effectData, {effects = [], items = [], concentr
             item: items
         }
     });
-    await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent});
+    return await effectUtils.createEffect(item, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent});
 }
 function convertDuration(item) {
     return DAE.convertDuration(item.system.duration);

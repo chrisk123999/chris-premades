@@ -69,80 +69,7 @@ const spellAttacks = [
     'msak',
     'rsak'
 ];
-const damageTypes = [
-    'acid',
-    'bludgeoning',
-    'cold',
-    'fire',
-    'force',
-    'lightning',
-    'necrotic',
-    'none',
-    'piercing',
-    'poison',
-    'psychic',
-    'radiant',
-    'slashing',
-    'thunder'
-];
-let damageTypeOptions = [
-    {
-        label: 'DND5E.DamageAcid',
-        value: 'acid'
-    },
-    {
-        label: 'DND5E.DamageBludgeoning',
-        value: 'bludgeoning'
-    },
-    {
-        label: 'DND5E.DamageCold',
-        value: 'cold'
-    },
-    {
-        label: 'DND5E.DamageFire',
-        value: 'fire'
-    },
-    {
-        label: 'DND5E.DamageForce',
-        value: 'force'
-    },
-    {
-        label: 'DND5E.DamageLightning',
-        value: 'lightning'
-    },
-    {
-        label: 'DND5E.DamageNecrotic',
-        value: 'necrotic'
-    },
-    {
-        label: 'CHRISPREMADES.Generic.NoType',
-        value: 'none'
-    },
-    {
-        label: 'DND5E.DamagePiercing',
-        value: 'piercing'
-    },
-    {
-        label: 'DND5E.DamagePoison',
-        value: 'poison'
-    },
-    {
-        label: 'DND5E.DamagePsychic',
-        value: 'psychic'
-    },
-    {
-        label: 'DND5E.DamageRadiant',
-        value: 'radiant'
-    },
-    {
-        label: 'DND5E.DamageSlashing',
-        value: 'slashing'
-    },
-    {
-        label: 'DND5E.DamageThunder',
-        value: 'thunder'
-    }
-];
+let damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -429,7 +356,6 @@ export let constants = {
     rangedAttacks,
     weaponAttacks,
     spellAttacks,
-    damageTypes,
     damageTypeOptions,
     setUseLocalCompendium,
     overTimeOptions,
