@@ -4,7 +4,7 @@ import {Summons} from '../lib/summons.js';
 import {Teleport} from '../lib/teleport.js';
 import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils} from '../utils.js';
 import * as macros from '../macros.js';
-let customMacroList;
+let customMacroList = [];
 async function ready() {
     let pack = game.packs.get(genericUtils.getCPRSetting('macroCompendium'));
     if (!pack) return {};
