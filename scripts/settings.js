@@ -517,6 +517,13 @@ export function registerSettings() {
         category: 'interface',
         onChange: () => chat.cssTweak()
     });
+    addSetting({
+        key: 'macroCompendium',
+        type: String,
+        default: null,
+        category: 'compendium',
+        select: true
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

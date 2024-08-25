@@ -1,5 +1,5 @@
+import {customMacros} from '../extensions/customMacros.js';
 import {requirements} from '../extensions/requirements.js';
-import * as macros from '../macros.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
@@ -11,7 +11,7 @@ function collectItemMacros(item, pass) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
+    return macroList.map(i => customMacros.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
@@ -20,7 +20,7 @@ function collectActorMacros(item, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    return macroList.map(i => customMacros.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({item, token, actor, sourceToken}, pass) {
     let triggers = [];
@@ -38,7 +38,8 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                 name: item.name,
                 priority: i.priority,
                 token: token,
-                sourceToken: sourceToken
+                sourceToken: sourceToken,
+                custom: i.custom
             });
         });
     }
@@ -56,7 +57,8 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     macro: j.macro,
                     name: i.name,
                     priority: j.priority,
-                    token: token
+                    token: token,
+                    custom: i.custom
                 });
             });
         });
@@ -73,7 +75,8 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     macro: j.macro,
                     name: i.name,
                     priority: j.priority,
-                    token: token
+                    token: token,
+                    custom: i.custom
                 });
             });
         });
@@ -93,7 +96,8 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     macro: j.macro,
                     name: templateUtils.getName(i),
                     priority: j.priority,
-                    token: token
+                    token: token,
+                    custom: i.custom
                 });
             });
         });
@@ -132,7 +136,12 @@ async function executeMacro(trigger, workflow, ditem) {
     genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     let result;
     try {
-        result = await trigger.macro({trigger, workflow, ditem});
+        if (trigger.custom) {
+            console.log(trigger);
+            result = await customMacros.runMacro({trigger, workflow, ditem});
+        } else {
+            result = await trigger.macro({trigger, workflow, ditem});
+        }
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

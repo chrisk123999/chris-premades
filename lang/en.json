@@ -111,6 +111,9 @@
             "ThreeQuarters": "Three-Quarters Cover",
             "Unknown": "Unknown Cover"
         },
+        "CustomMacros": {
+            "MissingIdentifier": "The macro \"{name}\" is missing an identifier and has been ignored!"
+        },
         "CustomTypes": {
             "SpellFeature": "Spell Feature"
         },

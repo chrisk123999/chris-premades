@@ -15,7 +15,8 @@ let buttonLabels = {
     backupMake: 'CHRISPREMADES.Generic.Go',
     trouble: 'CHRISPREMADES.Generic.Go',
     monsterCompendium: 'CHRISPREMADES.Generic.Select',
-    spellCompendium: 'CHRISPREMADES.Generic.Select'
+    spellCompendium: 'CHRISPREMADES.Generic.Select',
+    macroCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -105,6 +106,7 @@ export async function settingButton(id) {
         case 'trouble': await troubleshooter.run(); break;
         case 'monsterCompendium': await selectCompendium('monsterCompendium', 'Actor'); break;
         case 'spellCompendium': await selectCompendium('spellCompendium', 'Item'); break;
+        case 'macroCompendium': await selectCompendium('macroCompendium', 'Macro'); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

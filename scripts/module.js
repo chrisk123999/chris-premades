@@ -28,6 +28,7 @@ import {updateCheck} from './extensions/update.js';
 import {troubleshooter} from './applications/troubleshooter.js';
 import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
 import {chat} from './extensions/chat.js';
+import {customMacros} from './extensions/customMacros.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -64,6 +65,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
     if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
+    customMacros.ready();
 });
 globalThis['chrisPremades'] = {
     DialogApp,
@@ -73,5 +75,6 @@ globalThis['chrisPremades'] = {
     Teleport,
     utils,
     macros,
-    settingButton
+    settingButton,
+    customMacros
 };
