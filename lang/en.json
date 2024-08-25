@@ -1306,6 +1306,14 @@
                 "Hint": "Adds Temporary effects to the status effect token HUD.",
                 "Name": "Temporary Effects HUD"
             },
+            "updateCompanionInitiative": {
+                "Hint": "Automatically set companion's initiative to just after player's iniative when rolled.",
+                "Name": "Update Companion Initiative"
+            },
+            "updateSummonInitiative": {
+                "Hint": "Automatically set summons's initiative to just after player's iniative when rolled.",
+                "Name": "Update Summon Initiative"
+            },
             "useLocalCompendiums": {
                 "Hint": "Use the local world compendiums instead of the module compendiums for item lookup.",
                 "Name": "Use Local Compendiums"

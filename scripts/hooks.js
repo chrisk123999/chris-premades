@@ -18,6 +18,7 @@ import {auras} from './events/auras.js';
 import {vae} from './integrations/vae.js';
 import {rest} from './events/rest.js';
 import {equipment} from './extensions/equipment.js';
+import {initiative} from './extensions/initiative.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -49,6 +50,8 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('applyConditionChanges') || genericUtils.getCPRSetting('displayNestedConditions')) Hooks.on('preCreateActiveEffect', conditions.preCreateActiveEffect);
     if (genericUtils.getCPRSetting('vaeButtons')) Hooks.on('visual-active-effects.createEffectButtons', vae.createEffectButtons);
+    if (genericUtils.getCPRSetting('updateSummonInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
+    if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
     Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);

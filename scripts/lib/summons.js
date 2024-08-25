@@ -189,7 +189,7 @@ export class Summons {
             customCallbacks: this.options.callbacks
         });
         if (templateData.cancelled) {
-            console.log('was cancelled, do something different');
+            console.log('was cancelled, do something different'); // this still needs to be done
             return;
         }
         let existingEffects = currentUpdates?.actor?.effects?.filter(i => genericUtils.getIdentifier(i) !== 'summonedEffect') ?? [];

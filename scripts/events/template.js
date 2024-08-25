@@ -1,4 +1,4 @@
-import * as macros from '../macros.js';
+import {custom} from './custom.js';
 import {genericUtils, socketUtils, templateUtils} from '../utils.js';
 function getTemplateMacroData(template) {
     return template.flags['chris-premades']?.macros?.template ?? [];
@@ -7,7 +7,7 @@ function collectMacros(template) {
     let macroList = [];
     macroList.push(...getTemplateMacroData(template));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j);
 }
 function collectTemplatesMacros(templates, pass, token) {
     let triggers = [];
@@ -22,7 +22,8 @@ function collectTemplatesMacros(templates, pass, token) {
                 macro: i.macro,
                 name: templateUtils.getName(template),
                 priority: i.priority,
-                token: token
+                token: token,
+                custom: i.custom
             };
             triggers.push(trigger);
         });
@@ -60,7 +61,11 @@ function getSortedTriggers(templates, pass, token) {
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
     try {
-        await trigger.macro({trigger, options});
+        if (trigger.custom) {
+            await custom.runMacro({trigger, options});
+        } else {
+            await trigger.macro({trigger, options});
+        }
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

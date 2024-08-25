@@ -1,4 +1,4 @@
-import {customMacros} from '../extensions/customMacros.js';
+import {custom} from './custom.js';
 import {requirements} from '../extensions/requirements.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
@@ -11,7 +11,7 @@ function collectItemMacros(item, pass) {
     let macroList = [];
     macroList.push(...getItemMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => customMacros.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.item?.find(l => l.pass === pass)).flatMap(m => m.midi.item).filter(n => n.pass === pass);
 }
 function getActorMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.midi?.actor ?? [];
@@ -20,7 +20,7 @@ function collectActorMacros(item, pass) {
     let macroList = [];
     macroList.push(...getActorMacroData(item));
     if (!macroList.length) return [];
-    return macroList.map(i => customMacros.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
 function collectAllMacros({item, token, actor, sourceToken}, pass) {
     let triggers = [];
@@ -137,8 +137,7 @@ async function executeMacro(trigger, workflow, ditem) {
     let result;
     try {
         if (trigger.custom) {
-            console.log(trigger);
-            result = await customMacros.runMacro({trigger, workflow, ditem});
+            result = await custom.runMacro({trigger, workflow, ditem});
         } else {
             result = await trigger.macro({trigger, workflow, ditem});
         }

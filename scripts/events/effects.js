@@ -1,3 +1,4 @@
+import {custom} from './custom.js';
 import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import {effectUtils, genericUtils, socketUtils} from '../utils.js';
@@ -9,7 +10,7 @@ function collectEffectMacros(effect) {
     let macroList = [];
     macroList.push(...getEffectMacroData(effect));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j);
 }
 function collectMacros(effect, pass) {
     let macroList = collectEffectMacros(effect);
@@ -26,7 +27,8 @@ function collectMacros(effect, pass) {
             },
             macro: i.macro,
             name: effect.name,
-            priority: i.priority
+            priority: i.priority,
+            custom: i.custom
         });
     });
     return triggers;
@@ -62,7 +64,11 @@ function getSortedTriggers(effect, pass) {
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Effect Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger});
+        if (trigger.custom) {
+            await custom.runMacro({trigger});
+        } else {
+            await trigger.macro({trigger});
+        }
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);
@@ -88,11 +94,13 @@ async function deleteActiveEffect(effect, options, userId) {
     }
     await effects.checkInterdependentDeps(effect);
 }
-let preCreateMacros;
-let preUpdateMacros;
-function init() {
+let preCreateMacros = [];
+let preUpdateMacros = [];
+function ready() {
     preCreateMacros = Object.values(macros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro);
     preUpdateMacros = Object.values(macros).filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro);
+    preCreateMacros.push(...custom.customMacroList.filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro));
+    preUpdateMacros.push(...custom.customMacroList.filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro));
 }
 function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;
@@ -111,7 +119,7 @@ export let effectEvents = {
     deleteActiveEffect,
     collectEffectMacros,
     getEffectMacroData,
-    init,
+    ready,
     preCreateActiveEffect,
     preUpdateActiveEffect
 };

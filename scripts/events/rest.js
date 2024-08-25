@@ -1,4 +1,4 @@
-import * as macros from '../macros.js';
+import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
 function getRestMacros(entity) {
     return entity.flags['chris-premades']?.macros?.rest ?? [];
@@ -7,7 +7,7 @@ function collectRestMacros(entity, pass) {
     let macroList = [];
     macroList.push(...getRestMacros(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.rest?.find(l => l.pass === pass)).flatMap(m => m.rest).filter(n => n.pass === pass);
 }
 function collectAllMacros(actor, pass) {
     let triggers = [];
@@ -24,7 +24,8 @@ function collectAllMacros(actor, pass) {
                 },
                 macro: j.macro,
                 name: i.name,
-                priority: j.priority
+                priority: j.priority,
+                custom: i.custom
             });
         });
     });
@@ -41,7 +42,8 @@ function collectAllMacros(actor, pass) {
                 },
                 macro: j.macro,
                 name: i.name,
-                priority: j.priority
+                priority: j.priority,
+                custom: i.custom
             });
         });
     });
@@ -78,7 +80,11 @@ function getSortedTriggers(actor, pass) {
 async function executeMacro(trigger, actor) {
     genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger, actor});
+        if (trigger.custom) {
+            await custom.runMacro({trigger, actor});
+        } else {
+            await trigger.macro({trigger, actor});
+        }
     } catch (error) {
         console.error(error);
     }

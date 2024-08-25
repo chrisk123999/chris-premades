@@ -19,7 +19,7 @@ async function check(workflow) {
     let targetDS = itemUtils.getItemByIdentifier(target.actor, 'devilsSight');
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
-        let flagData = template.flags['chris-premades'].template.visibility;
+        let flagData = template.flags['chris-premades'].visibility;
         let sourceCanSeeTarget = ((sourceDS && flagData.magicalDarkness && distance <= 120) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance));
         let targetCanSeeSource = ((targetDS && flagData.magicalDarkness && distance <= 120) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance));
         let templateName = templateUtils.getName(template);

@@ -15,6 +15,7 @@ import {constants, genericUtils} from './utils.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {customTypes} from './extensions/customTypes.js';
 import {chat} from './extensions/chat.js';
+import {initiative} from './extensions/initiative.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -523,6 +524,32 @@ export function registerSettings() {
         default: null,
         category: 'compendium',
         select: true
+    });
+    addSetting({
+        key: 'updateCompanionInitiative',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: value => {
+            if (value) {
+                Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
+            } else {
+                Hooks.off('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
+            }
+        }
+    });
+    addSetting({
+        key: 'updateSummonInitiative',
+        type: Boolean,
+        default: false,
+        category: 'mechanics',
+        onChange: value => {
+            if (value) {
+                Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
+            } else {
+                Hooks.off('dnd5e.rollInitiative', initiative.updateSummonInitiative);
+            }
+        }
     });
 }
 export function registerMenus() {

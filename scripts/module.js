@@ -28,7 +28,7 @@ import {updateCheck} from './extensions/update.js';
 import {troubleshooter} from './applications/troubleshooter.js';
 import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
 import {chat} from './extensions/chat.js';
-import {customMacros} from './extensions/customMacros.js';
+import {custom} from './events/custom.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -41,13 +41,14 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('macroInterface')) macroInterface.init();
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
-    abilitySave.init();
-    skillCheck.init();
-    effectEvents.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
     if (utils.genericUtils.getCPRSetting('chatCardTweak')) chat.cssTweak();
 });
 Hooks.once('ready', () => {
+    custom.ready();
+    abilitySave.ready();
+    skillCheck.ready();
+    effectEvents.ready();
     troubleshooter.startup();
     workflow.setup();
     registerHooks();
@@ -65,7 +66,6 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
     if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
-    customMacros.ready();
 });
 globalThis['chrisPremades'] = {
     DialogApp,
@@ -76,5 +76,5 @@ globalThis['chrisPremades'] = {
     utils,
     macros,
     settingButton,
-    customMacros
+    custom
 };

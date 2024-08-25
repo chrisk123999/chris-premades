@@ -1,9 +1,11 @@
 import {DialogApp} from '../applications/dialog.js';
+import {custom} from './custom.js';
 import * as macros from '../macros.js';
 import {genericUtils} from '../utils.js';
-let saveMacros;
-function init() {
+let saveMacros = [];
+function ready() {
     saveMacros = Object.values(macros).filter(i => i.save).flatMap(j => j.save).map(k => k.macro);
+    saveMacros.push(...custom.customMacroList.filter(i => i.save).flatMap(j => j.save).map(k => k.macro));
 }
 async function save(wrapped, saveId, options = {}) {
     let selections = await Promise.all(saveMacros.map(async macro => {
@@ -42,6 +44,6 @@ function patch(enabled) {
     }
 }
 export let abilitySave = {
-    init,
+    ready,
     patch
 };

@@ -1,4 +1,4 @@
-import * as macros from '../macros.js';
+import {custom} from './custom.js';
 import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils} from '../utils.js';
 import {templateEvents} from './template.js';
 function getMacroData(entity) {
@@ -8,7 +8,7 @@ function collectMacros(entity) {
     let macroList = [];
     macroList.push(...getMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j);
 }
 function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
@@ -36,7 +36,8 @@ function collectTokenMacros(token, pass, distance, target) {
                     priority: i.priority,
                     token: token.object,
                     target: target?.object,
-                    distance: distance
+                    distance: distance,
+                    custom: i.custom
                 });
             });
         }
@@ -61,7 +62,8 @@ function collectTokenMacros(token, pass, distance, target) {
                     priority: i.priority,
                     token: token.object,
                     target: target?.object,
-                    distance: distance
+                    distance: distance,
+                    custom: i.custom
                 });
             });
         }
@@ -83,7 +85,8 @@ function collectTokenMacros(token, pass, distance, target) {
                 priority: i.priority,
                 token: token.object,
                 target: target?.object,
-                distance: distance
+                distance: distance,
+                custom: i.custom
             });
         });
     }
@@ -128,7 +131,11 @@ function getSortedTriggers(tokens, pass, token) {
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        await trigger.macro({trigger});
+        if (trigger.custom) {
+            await custom.runMacro({trigger});
+        } else {
+            await trigger.macro({trigger});
+        }
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

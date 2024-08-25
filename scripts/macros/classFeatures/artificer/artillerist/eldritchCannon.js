@@ -125,7 +125,7 @@ async function use({workflow}) {
         await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
             range: 5,
             animation,
-            initiativeType: 'none',
+            initiativeType: 'follows',
             additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'eldritchCannonCommand'}]
         });
         if (costsSlotType) {

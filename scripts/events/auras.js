@@ -1,4 +1,4 @@
-import * as macros from '../macros.js';
+import {custom} from './custom.js';
 import {actorUtils, combatUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils} from '../utils.js';
 function getAuraMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.aura ?? [];
@@ -7,7 +7,7 @@ function collectAuraMacros(entity) {
     let macroList = [];
     macroList.push(...getAuraMacroData(entity));
     if (!macroList.length) return [];
-    return macroList.map(i => macros[i]).filter(j => j);
+    return macroList.map(i => custom.getMacro(i)).filter(j => j);
 }
 function collectTokenMacros(token, pass, target) {
     let distance;
@@ -50,7 +50,8 @@ function collectTokenMacros(token, pass, target) {
                     token: token.object,
                     target: target?.object,
                     distance: distance,
-                    identifier: i.identifier
+                    identifier: i.identifier,
+                    custom: i.custom
                 });
             });
         }
@@ -91,7 +92,8 @@ function collectTokenMacros(token, pass, target) {
                     token: token.object,
                     target: target?.object,
                     distance: distance,
-                    identifier: i.identifier
+                    identifier: i.identifier,
+                    custom: i.custom
                 });
             });
         }
@@ -132,7 +134,11 @@ function getSortedTriggers(tokens, pass, token) {
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Aura Macro: ' + trigger.macro.name);
     try {
-        return await trigger.macro({trigger, options});
+        if (trigger.custom) {
+            return await custom.runMacro({trigger, options});
+        } else {
+            return await trigger.macro({trigger, options});
+        }
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

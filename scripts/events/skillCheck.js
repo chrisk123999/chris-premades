@@ -1,9 +1,11 @@
 import {DialogApp} from '../applications/dialog.js';
+import {custom} from './custom.js';
 import * as macros from '../macros.js';
 import {genericUtils} from '../utils.js';
-let skillMacros;
-function init() {
+let skillMacros = [];
+function ready() {
     skillMacros = Object.values(macros).filter(i => i.skill).flatMap(j => j.skill).map(k => k.macro);
+    skillMacros.push(...custom.customMacroList.filter(i => i.skill).flatMap(j => j.skill).map(k => k.macro));
 }
 async function rollSkill(wrapped, skillId, options = {}) {
     let selections = await Promise.all(skillMacros.map(async macro => {
@@ -42,6 +44,6 @@ function patch(enabled) {
     }
 }
 export let skillCheck = {
-    init,
+    ready,
     patch
 };
