@@ -91,7 +91,7 @@ async function selectCompendium(settingKey, type) {
         name: i.metadata.id,
         options: {isChecked: oldKey === i.metadata.id}
     }));
-    let selection = await DialogApp.dialog('CHRISPREMADES.Settings.' + settingKey + '.Name', 'CHRISPREMADES.Settings.' + settingKey + '.Hint', [['radio', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-select-monster-compendium'});
+    let selection = await DialogApp.dialog('CHRISPREMADES.Settings.' + settingKey + '.Name', 'CHRISPREMADES.Settings.SelectCompendium', [['radio', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-select-monster-compendium'});
     if (!selection) return;
     await game.settings.set('chris-premades', settingKey, selection.radio);
 }

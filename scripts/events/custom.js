@@ -7,7 +7,6 @@ import * as macros from '../macros.js';
 let customMacroList = [];
 async function ready() {
     let pack = game.packs.get(genericUtils.getCPRSetting('macroCompendium'));
-    console.log(pack);
     if (!pack) return {};
     await pack.getDocuments();
     customMacroList = (await Promise.all(pack.map(async i => {
@@ -21,7 +20,6 @@ async function ready() {
         if (value.midi?.actor) value.midi.item.forEach(j => j.custom = true);
         return value;
     }))).filter(j => j);
-    console.log(customMacroList);
 }
 async function runMacro({trigger, workflow, options, actor, ditem} = {}) {
     let vars = {};
