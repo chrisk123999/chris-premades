@@ -13,9 +13,11 @@ async function use({workflow}) {
     buttons.push(['CHRISPREMADES.Macros.InfuseItem.EndAll', 'end']);
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.Select', buttons);
     if (!selection?.length) return;
-    let maxItems = 2; // TODO
+    let maxItems = Math.floor((classLevel - 2) / 4) + 2;
     let existingInfusionUuids = workflow.item.flags['chris-premades']?.infusions ?? {};
-    if (Object.keys(existingInfusionUuids).length > maxItems) {
+    let willBeReplacing = existingInfusionUuids[selection];
+    if (willBeReplacing) maxItems += 1;
+    if (Object.keys(existingInfusionUuids).length >= maxItems && selection !== 'end') {
         genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooMany');
         return;
     }
@@ -80,7 +82,6 @@ async function use({workflow}) {
                     }
                 ]
             };
-            // await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection, effects: [effectData], items: [itemData.uuid]});
             let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             await effectUtils.createEffect(selectedItem, effectData, {parentEntity: enchantEffect, strictlyInterdependent: true});
             await itemUtils.createItems(target, [itemData], {favorite: true, parentEntity: enchantEffect});
@@ -99,6 +100,12 @@ async function use({workflow}) {
                 if (!selectedItem) return;
             }
             originalName = selectedItem.name;
+            let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Armor of Magical Strength: Resist Prone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.ResistProne', identifier: 'infuseItemResistProne'});
+            if (!featureData) {
+                errors.missingPackItem();
+                return;
+            }
+            featureData.system.consume.target = selectedItem.id;
             let effectData = {
                 name: workflow.item.name + ': ' + infusionLabel,
                 img: workflow.item.img,
@@ -124,7 +131,6 @@ async function use({workflow}) {
                     }
                 ]
             };
-            // TODO: un-prone on manual reaction logic
             let enchantData = {
                 name: workflow.item.name,
                 img: workflow.item.img,
@@ -182,7 +188,49 @@ async function use({workflow}) {
             };
             let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             await effectUtils.createEffect(selectedItem, effectData, {parentEntity: enchantEffect, strictlyInterdependent: true});
+            await itemUtils.createItems(target, [featureData], {favorite: true, parentEntity: enchantEffect});
             await genericUtils.update(selectedItem, {'system.uses.value': 6});
+            break;
+        }
+        case 'enhancedDefense': {
+            let armor = target.items.filter(i => i.type === 'equipment' && !i.system.properties.has('mgc') && i.system.isArmor && i.system.equipped);
+            if (!armor.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
+                return;
+            }
+            if (armor.length === 1) {
+                selectedItem = armor[0];
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', armor);
+                if (!selectedItem) return;
+            }
+            originalName = selectedItem.name;
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.armor.magicalBonus',
+                        mode: 5,
+                        value: classLevel > 9 ? 2 : 1,
+                        priority: 20
+                    }
+                ]
+            };
+            await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
             break;
         }
         case 'enhancedWeapon': {
@@ -497,14 +545,25 @@ async function use({workflow}) {
             break;
         }
         case 'spellRefuelingRing': {
+            let itemData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Spell-Refueling Ring', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.SpellRefuelingRing', identifier: 'spellRefuelingRing'});
+            if (!itemData) {
+                errors.missingPackItem();
+                return;
+            }
+            [selectedItem] = await itemUtils.createItems(target, [itemData], {favorite: true});
+            originalName = selectedItem.name;
             break;
         }
         case 'end': {
             for (let [currSelection, uuid] of Object.entries(existingInfusionUuids)) {
                 let current = await fromUuid(uuid);
                 if (!current) continue;
-                let effect = Array.from(current.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === currSelection);
-                if (effect) await genericUtils.remove(effect);
+                if (['spellRefuelingRing'].includes(currSelection)) {
+                    await genericUtils.remove(current);
+                } else {
+                    let effect = Array.from(current.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === currSelection);
+                    if (effect) await genericUtils.remove(effect);
+                }
                 chatMessageInfo += '<p>' + genericUtils.format('CHRISPREMADES.Macros.InfuseItem.Override', {oldActorName: current.parent.name, infusionLabel: genericUtils.translate(buttons.find(i => i[1] === currSelection)[0]), itemName: current.name}) + '</p>';
             }
             await genericUtils.setFlag(workflow.item, 'chris-premades', '-=infusions', null);
@@ -515,8 +574,12 @@ async function use({workflow}) {
     if (existingInfusionUuid) {
         let existingItem = await fromUuid(existingInfusionUuid);
         if (!existingItem) return; // Shouldn't even happen
-        let effect = Array.from(existingItem.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === selection);
-        if (effect) await genericUtils.remove(effect);
+        if (['spellRefuelingRing'].includes(selection)) {
+            await genericUtils.remove(existingItem);
+        } else {
+            let effect = Array.from(existingItem.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === selection);
+            if (effect) await genericUtils.remove(effect);
+        }
         chatMessageInfo += '<p>' + genericUtils.format('CHRISPREMADES.Macros.InfuseItem.Override', {oldActorName: existingItem.parent.name, infusionLabel, itemName: existingItem.name}) + '</p>';
     }
     if (selection !== 'end') {
@@ -528,9 +591,33 @@ async function use({workflow}) {
         content: chatMessageInfo
     });
 }
+async function armorStrengthLate({workflow}) {
+    let effect = effectUtils.getEffectByStatusID(workflow.actor, 'prone');
+    if (effect) await genericUtils.remove(effect);
+}
 async function repulsionShieldLate({workflow}) {
     if (!workflow.targets.size === 1) return;
     await tokenUtils.pushToken(workflow.token, workflow.targets.first(), 15);
+}
+async function spellRingLate({workflow}) {
+    let {value: pact, max: pactMax, level: pactLevel} = workflow.actor.system.spells.pact;
+    let {value: spell1, max: spell1Max} = workflow.actor.system.spells.spell1;
+    let {value: spell2, max: spell2Max} = workflow.actor.system.spells.spell2;
+    let {value: spell3, max: spell3Max} = workflow.actor.system.spells.spell3;
+    let buttons = [];
+    if (pactLevel <= 3 && pact < pactMax) buttons.push([CONFIG.DND5E.spellPreparationModes.pact.label, 'pact']);
+    if (spell1 < spell1Max) buttons.push([CONFIG.DND5E.spellLevels[1], 'spell1']);
+    if (spell2 < spell2Max) buttons.push([CONFIG.DND5E.spellLevels[2], 'spell2']);
+    if (spell3 < spell3Max) buttons.push([CONFIG.DND5E.spellLevels[3], 'spell3']);
+    if (!buttons.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoMissing', 'info');
+        return;
+    }
+    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Generic.RecoverSpellSlot', buttons);
+    if (!selection?.length) return;
+    let key = 'system.spells.' + selection + '.value';
+    let value = genericUtils.getProperty(workflow.actor, key);
+    await genericUtils.update(workflow.actor, {[key]: value + 1});
 }
 export let infuseItem = {
     name: 'Infuse Item',
@@ -560,13 +647,17 @@ export let infuseItem = {
                     value: 'armorOfMagicalStrength'
                 },
                 {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedDefense',
+                    value: 'enhancedDefense'
+                },
+                {
                     label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedWeapon',
                     value: 'enhancedWeapon'
                 },
-                {
-                    label: 'CHRISPREMADES.Macros.InfuseItem.HomunculusServant',
-                    value: 'homunculusServant'
-                },
+                // {
+                //     label: 'CHRISPREMADES.Macros.InfuseItem.HomunculusServant',
+                //     value: 'homunculusServant'
+                // },
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.RadiantWeapon',
                     value: 'radiantWeapon'
@@ -596,6 +687,19 @@ export let infuseItem = {
         },
     ]
 };
+export let infuseItemArmorStrength = {
+    name: 'Infuse Item: Armor of Magical Strength',
+    version: infuseItem.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: armorStrengthLate,
+                priority: 50
+            }
+        ]
+    }
+};
 export let infuseItemRepulsionShield = {
     name: 'Infuse Item: Repulsion Shield',
     version: infuseItem.version,
@@ -604,6 +708,19 @@ export let infuseItemRepulsionShield = {
             {
                 pass: 'rollFinished',
                 macro: repulsionShieldLate,
+                priority: 50
+            }
+        ]
+    }
+};
+export let infuseItemSpellRing = {
+    name: 'Infuse Item: Spell-Refueling Ring',
+    version: infuseItem.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: spellRingLate,
                 priority: 50
             }
         ]
