@@ -64,11 +64,7 @@ function getSortedTriggers(effect, pass) {
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Effect Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        if (trigger.custom) {
-            await custom.runMacro({trigger});
-        } else {
-            await trigger.macro({trigger});
-        }
+        await trigger.macro({trigger});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

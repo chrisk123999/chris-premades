@@ -29,6 +29,7 @@ import {troubleshooter} from './applications/troubleshooter.js';
 import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
 import {chat} from './extensions/chat.js';
 import {custom} from './events/custom.js';
+//import { register } from './applications/testRolling.js'; // get rid of later
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -66,6 +67,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
     if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
+    //register();
 });
 globalThis['chrisPremades'] = {
     DialogApp,

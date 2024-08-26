@@ -136,11 +136,7 @@ async function executeMacro(trigger, workflow, ditem) {
     genericUtils.log('dev', 'Executing Midi Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     let result;
     try {
-        if (trigger.custom) {
-            result = await custom.runMacro({trigger, workflow, ditem});
-        } else {
-            result = await trigger.macro({trigger, workflow, ditem});
-        }
+        result = await trigger.macro({trigger, workflow, ditem});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

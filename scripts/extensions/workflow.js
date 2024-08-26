@@ -38,7 +38,7 @@ function setup() {
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
-            await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'));
+            await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
             this.damageDetail = MidiQOL.createDamageDetail({roll: this.damageRolls, item: this.item, defaultType: this.defaultDamageType});
             return nextState;
         }
@@ -60,8 +60,12 @@ async function callV3DamageHooks(wrapped, damages, token) {
     await midiEvents.preTargetDamageApplication(token, {workflow: this, ditem: damages});
     return await wrapped(damages, token);
 }
+async function displayDamageRolls(wrapped, doMerge, real) {
+    if (real) return await wrapped(doMerge);
+}
 function patch() {
     libWrapper.register('chris-premades', 'MidiQOL.workflowClass.prototype.callv3DamageHooks', callV3DamageHooks, 'WRAPPER');
+    libWrapper.register('chris-premades', 'MidiQOL.Workflow.prototype.displayDamageRolls', displayDamageRolls, 'MIXED');
 }
 export let workflow = {
     setup

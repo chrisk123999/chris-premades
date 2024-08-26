@@ -1,10 +1,11 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 import * as macros from '../macros.js';
+import {custom} from '../events/custom.js';
 async function addOrUpdate(item, updates, options, id) {
     if (!item.actor) return;
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
     if (!identifier) return;
-    let equipmentData = macros[identifier]?.equipment;
+    let equipmentData = custom.customMacroList.find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
     if (!equipmentData) return;
     let currentlyEquipped = updates.system?.equipped ?? item.system.equipped;
     let currentlyAttuned = updates.system?.attuned ?? item.system.attuned;
@@ -49,6 +50,7 @@ async function addOrUpdate(item, updates, options, id) {
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
+            if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.key', key);
             return itemData;

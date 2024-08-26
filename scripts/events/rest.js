@@ -80,11 +80,7 @@ function getSortedTriggers(actor, pass) {
 async function executeMacro(trigger, actor) {
     genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     try {
-        if (trigger.custom) {
-            await custom.runMacro({trigger, actor});
-        } else {
-            await trigger.macro({trigger, actor});
-        }
+        await trigger.macro({trigger, actor});
     } catch (error) {
         console.error(error);
     }

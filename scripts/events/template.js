@@ -61,11 +61,7 @@ function getSortedTriggers(templates, pass, token) {
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
     try {
-        if (trigger.custom) {
-            await custom.runMacro({trigger, options});
-        } else {
-            await trigger.macro({trigger, options});
-        }
+        await trigger.macro({trigger, options});
     } catch (error) {
         //Add some sort of ui notice here. Maybe even some debug info?
         console.error(error);

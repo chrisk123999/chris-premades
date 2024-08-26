@@ -77,8 +77,8 @@ Goals:
 [ ] Monster Features
 ## Extensions
 [ ] Folder maker for summons?
-[ ] Update summon iniative/update companion initiative
+[x] Update summon iniative/update companion initiative
 [ ] Options for items to add for add generic actions setting
 [ ] Make all medkit coloring use a constants/setting to support a colorblind mode
-[ ] Clean up the CSS
+[x] Clean up the CSS
 [ ] Document things
