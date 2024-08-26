@@ -4,6 +4,7 @@ import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
+import {automatedAnimations} from '../integrations/automatedAnimations.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -197,9 +198,11 @@ async function preambleComplete(workflow) {
 async function attackRollComplete(workflow) {
     await executeMacroPass(workflow, 'attackRollComplete');
     await executeTargetMacroPass(workflow, 'targetAttackRollComplete');
+    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
 }
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
+    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
 }
 async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
@@ -209,6 +212,7 @@ async function rollFinished(workflow) {
         await conditionVulnerability.RollComplete(workflow);
     }
     await executeTargetMacroPass(workflow, 'onHit', true);
+    if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
 }
 async function postAttackRoll(workflow) {
     let sceneTriggers = [];

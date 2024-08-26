@@ -23,6 +23,26 @@ class CPRRollResolver extends RollResolver {
             handler: this._fulfillRoll
         }
     };
+    #resolve;
+    async awaitFulfillment() {
+        console.log('Awaiting');
+        console.log(this.roll);
+        if (this.roll instanceof CONFIG.Dice.DamageRoll) {
+            console.log('is damage');
+            Roll.defaultImplementation.RESOLVERS.delete(this.roll);
+            this.#resolve?.();
+            return;
+        } else {
+            console.log('not damage');
+            await super.awaitFulfillment();
+        }
+    }
+    render(options) {
+        console.log('render options', options);
+        if (this.roll instanceof CONFIG.Dice.DamageRoll) {
+            this.close();
+        } else super.render(options);
+    }
     registerResult(method, denomination, result) {
         console.log(method, denomination, result);
         return super.registerResult(method, denomination, result);

@@ -1216,7 +1216,7 @@
             },
             "epicRolls": {
                 "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
-                "Name": "Use Epic Rolls"
+                "Name": "Epic Rolls: Enabled"
             },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
@@ -1228,7 +1228,7 @@
                 "3": "No 3rd Party",
                 "4": "Include Homebrew and 3rd Party",
                 "Hint": "Which compendiums should be included in the additional compendium search for Gambit's Premades.",
-                "Name": "Gambit's Premades Options"
+                "Name": "Gambit's Premades: Options"
             },
             "gmID": {
                 "Hint": "The Gamemaster ID used for sockets. Automatically set.",
@@ -1264,7 +1264,7 @@
                 "3": "No Homebrew",
                 "4": "Include Homebrew and Unearthed Arcana",
                 "Hint": "Which compendiums should be included in the additional compendium search for Midi Item Showcase - Community.",
-                "Name": "Midi Item Showcase Options"
+                "Name": "Midi Item Showcase: Options"
             },
             "monsterCompendium": {
                 "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
@@ -1308,7 +1308,7 @@
             },
             "spotlightOmnisearchSummons": {
                 "Hint": "When enabled, you can use Spotlight Omnisearch to summon creatures from your monster compendium. Reload required after enabling.",
-                "Name": "Spotlight Omnisearch Summons"
+                "Name": "Spotlight Omnisearch: Summons"
             },
             "statusEffectIcons": {
                 "Hint": "Configure status icon images.",
@@ -1337,6 +1337,14 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "colorizeAutomatedAnimations": {
+                "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
+                "Name": "Automated Animations: Colorize Titlebar Icon"
+            },
+            "automatedAnimationSounds": {
+                "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
+                "Name": "Automated Animations: Play Sounds"
             }
         },
         "SkillCheck": {

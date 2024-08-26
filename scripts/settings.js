@@ -16,6 +16,7 @@ import {effectInterface} from './applications/effectInterface.js';
 import {customTypes} from './extensions/customTypes.js';
 import {chat} from './extensions/chat.js';
 import {initiative} from './extensions/initiative.js';
+import {automatedAnimations} from './integrations/automatedAnimations.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -180,6 +181,25 @@ export function registerSettings() {
                 Hooks.off('renderActorSheet5e', buildABonus.renderActorSheet5e);
             }
         }
+    });
+    addSetting({
+        key: 'colorizeAutomatedAnimations',
+        type: Boolean,
+        default: false,
+        category: 'integration',
+        onChange: value => {
+            if (value) {
+                Hooks.on('renderItemSheet', automatedAnimations.renderItemSheet);
+            } else {
+                Hooks.off('renderItemSheet', automatedAnimations.renderItemSheet);
+            }
+        }
+    });
+    addSetting({
+        key: 'automatedAnimationSounds',
+        type: Boolean,
+        default: false,
+        category: 'integration'
     });
     addSetting({
         key: 'babonusOverlappingEffects',
