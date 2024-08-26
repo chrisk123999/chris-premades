@@ -1,7 +1,8 @@
 {
-  "name": "Force Strike",
+  "name": "Homunculus Servant: Channel Magic",
   "type": "feat",
-  "img": "icons/magic/light/projectile-beam-yellow.webp",
+  "_id": "3zBmeLlJVfn2RA0c",
+  "img": "icons/magic/symbols/rune-sigil-black-pink.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +12,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -22,16 +23,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 39,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -46,85 +47,76 @@
       "amount": null,
       "scale": false
     },
-    "ability": "int",
-    "actionType": "rwak",
+    "ability": "",
+    "actionType": "util",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d4[force] + @prof",
-          "force"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
   "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.QfAAUo5IPytBscdz"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "infuseItemHomunculusTouch"
+          ]
+        }
+      }
     }
   },
-  "folder": "1IHovI3vJVL0eXNx",
-  "_id": "ObCDAGaPtM09mvWW",
-  "_key": "!items!ObCDAGaPtM09mvWW"
+  "_key": "!items!3zBmeLlJVfn2RA0c"
 }

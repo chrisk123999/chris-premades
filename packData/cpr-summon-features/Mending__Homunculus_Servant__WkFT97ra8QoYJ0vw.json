@@ -1,7 +1,7 @@
 {
-  "name": "Force Strike",
+  "name": "Mending (Homunculus Servant)",
   "type": "feat",
-  "img": "icons/magic/light/projectile-beam-yellow.webp",
+  "img": "icons/skills/melee/hand-grip-staff-yellow-brown.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -22,16 +22,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 39,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -46,8 +46,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "int",
-    "actionType": "rwak",
+    "ability": "",
+    "actionType": "heal",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,8 +56,8 @@
     "damage": {
       "parts": [
         [
-          "1d4[force] + @prof",
-          "force"
+          "2d6[healing]",
+          "healing"
         ]
       ],
       "versatile": ""
@@ -91,9 +91,7 @@
   "effects": [],
   "flags": {
     "midi-qol": {
-      "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
@@ -121,10 +119,10 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.QfAAUo5IPytBscdz"
+      "sourceId": "Item.S5mk5jUpAIzuAJ7Q"
     }
   },
   "folder": "1IHovI3vJVL0eXNx",
-  "_id": "ObCDAGaPtM09mvWW",
-  "_key": "!items!ObCDAGaPtM09mvWW"
+  "_id": "WkFT97ra8QoYJ0vw",
+  "_key": "!items!WkFT97ra8QoYJ0vw"
 }

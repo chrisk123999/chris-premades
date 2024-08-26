@@ -1,3 +1,4 @@
+import {Summons} from '../../../lib/summons.js';
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../../utils.js';
 
 async function use({workflow}) {
@@ -17,10 +18,18 @@ async function use({workflow}) {
     let existingInfusionUuids = workflow.item.flags['chris-premades']?.infusions ?? {};
     let willBeReplacing = existingInfusionUuids[selection];
     if (willBeReplacing) maxItems += 1;
+    let deadHomunculusServant = 
+        !effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem') &&
+        existingInfusionUuids.homunculusServant;
+    if (deadHomunculusServant) {
+        delete existingInfusionUuids.homunculusServant;
+    }
     if (Object.keys(existingInfusionUuids).length >= maxItems && selection !== 'end') {
         genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooMany');
         return;
     }
+    let armorModifications = itemUtils.getItemByIdentifier(workflow.actor, 'armorModifications');
+    armorModifications = armorModifications && target === workflow.actor;
     let infusionLabel = genericUtils.translate(buttons.find(i => i[1] === selection)[0]);
     let originalName;
     let selectedItem;
@@ -235,6 +244,13 @@ async function use({workflow}) {
         }
         case 'enhancedWeapon': {
             let weapons = target.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (armorModifications) {
+                let gauntlets = itemUtils.getItemByIdentifier(workflow.actor, 'thunderGauntlets');
+                if (!gauntlets) gauntlets = itemUtils.getItemByIdentifier(workflow.actor, 'lightningLauncher');
+                if (gauntlets && ![existingInfusionUuids.enhancedWeapon, existingInfusionUuids.radiantweapon].includes(gauntlets.uuid)) {
+                    weapons.push(gauntlets);
+                }
+            }
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
@@ -275,10 +291,34 @@ async function use({workflow}) {
             break;
         }
         case 'homunculusServant': {
+            let effect = await effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
+            if (effect) {
+                genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.AlreadyServant', 'info');
+                return;
+            }
+            target = workflow.actor;
+            let itemData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Heart of Homunculus Servant', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.HomunculusHeart', identifier: 'homunculusHeart'});
+            if (!itemData) {
+                errors.missingPackItem();
+                return;
+            }
+            effect = await homunculusHelper(workflow);
+            if (!effect) return;
+            [selectedItem] = await itemUtils.createItems(target, [itemData]);
+            originalName = selectedItem.name;
+            await effectUtils.addDependent(selectedItem, [effect]);
+            await effectUtils.addDependent(effect, [selectedItem]);
             break;
         }
         case 'radiantWeapon': {
             let weapons = target.items.filter(i => i.type === 'weapon' && !i.system.properties.has('mgc') && i.system.equipped);
+            if (armorModifications) {
+                let gauntlets = itemUtils.getItemByIdentifier(workflow.actor, 'thunderGauntlets');
+                if (!gauntlets) gauntlets = itemUtils.getItemByIdentifier(workflow.actor, 'lightningLauncher');
+                if (gauntlets && ![existingInfusionUuids.enhancedWeapon, existingInfusionUuids.radiantweapon].includes(gauntlets.uuid)) {
+                    weapons.push(gauntlets);
+                }
+            }
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
@@ -558,7 +598,7 @@ async function use({workflow}) {
             for (let [currSelection, uuid] of Object.entries(existingInfusionUuids)) {
                 let current = await fromUuid(uuid);
                 if (!current) continue;
-                if (['spellRefuelingRing'].includes(currSelection)) {
+                if (['spellRefuelingRing', 'homunculusServant'].includes(currSelection)) {
                     await genericUtils.remove(current);
                 } else {
                     let effect = Array.from(current.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === currSelection);
@@ -574,7 +614,7 @@ async function use({workflow}) {
     if (existingInfusionUuid) {
         let existingItem = await fromUuid(existingInfusionUuid);
         if (!existingItem) return; // Shouldn't even happen
-        if (['spellRefuelingRing'].includes(selection)) {
+        if (['spellRefuelingRing', 'homunculusServant'].includes(selection)) {
             await genericUtils.remove(existingItem);
         } else {
             let effect = Array.from(existingItem.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === selection);
@@ -619,6 +659,128 @@ async function spellRingLate({workflow}) {
     let value = genericUtils.getProperty(workflow.actor, key);
     await genericUtils.update(workflow.actor, {[key]: value + 1});
 }
+async function homunculusHelper(workflow) {
+    let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Homunculus Servant');
+    if (!sourceActor) return;
+    let mendingData = await Summons.getSummonItem('Mending (Homunculus Servant)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Mending', identifier: 'homunculusServantMending'});
+    let evasionData = await Summons.getSummonItem('Evasion', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Evasion', identifier: 'homunculusServantEvasion'});
+    let forceStrikeData = await Summons.getSummonItem('Force Strike', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InfuseItem.ForceStrike', identifier: 'homunculusServantForceStrike', flatAttack: true});
+    let channelMagicData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Homunculus Servant: Channel Magic', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.ChannelMagic', identifier: 'homunculusServantChannelMagic'});
+    let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'steelDefenderDodge'});
+    let itemsToAdd = [forceStrikeData, evasionData, dodgeData, mendingData];
+    if (!itemsToAdd.every(i => i) || !channelMagicData) return;
+    let classLevel = workflow.actor.classes?.artificer?.system?.levels;
+    if (!classLevel) return;
+    let hpValue = 1 + classLevel + workflow.actor.system.abilities.int.mod;
+    let name = itemUtils.getConfig(workflow.item, 'name');
+    if (!name?.length) name = genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.HomunculusServant');
+    let updates = {
+        actor: {
+            name,
+            system: {
+                details: {
+                    cr: actorUtils.getCRFromProf(workflow.actor.system.attributes.prof)
+                },
+                attributes: {
+                    hp: {
+                        formula: hpValue,
+                        max: hpValue,
+                        value: hpValue
+                    }
+                }
+            },
+            prototypeToken: {
+                name,
+                disposition: workflow.token.document.disposition
+            },
+            items: itemsToAdd
+        },
+        token: {
+            name,
+            disposition: workflow.token.document.disposition
+        }
+    };
+    let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');
+    let tokenImg = itemUtils.getConfig(workflow.item, 'token');
+    if (avatarImg) updates.actor.img = avatarImg;
+    if (tokenImg) {
+        genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
+        genericUtils.setProperty(updates, 'token.texture.src', tokenImg);
+    }
+    let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
+    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {
+        range: 5,
+        animation,
+        initiativeType: 'follows',
+        additionalVaeButtons: [{type: 'use', name: channelMagicData.name, identifier: 'homunculusServantChannelMagic'}],
+        additionalSummonVaeButtons:
+            itemsToAdd
+                .filter(i => i.flags['chris-premades'].info.identifier !== 'homunculusServantEvasion')
+                .map(i => ({type: 'use', name: i.name, identifier: i.flags['chris-premades'].info.identifier}))
+    });
+    let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
+    if (!casterEffect) return;
+    await itemUtils.createItems(workflow.actor, [channelMagicData], {favorite: true, parentEntity: casterEffect});
+    return casterEffect;
+}
+async function homunculusLate({workflow}) {
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
+    if (!effect) return;
+    let homunculusToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
+    if (!homunculusToken || tokenUtils.getDistance(workflow.token, homunculusToken) > 120) {
+        genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooFar', 'info');
+        return;
+    }
+    if (actorUtils.hasUsedReaction(homunculusToken.actor)) {
+        genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.ReactionUsed', 'info');
+        return;
+    }
+    let effectData = {
+        name: workflow.item.name,
+        img: workflow.item.img,
+        origin: workflow.item.uuid,
+        duration: {
+            seconds: 1
+        },
+        changes: [
+            {
+                key: 'flags.midi-qol.rangeOverride.attack.all',
+                mode: 0,
+                value: 1,
+                priority: 20
+            }
+        ],
+        flags: {
+            dae: {
+                specialDuration: [
+                    '1Attack'
+                ]
+            }
+        }
+    };
+    effectUtils.addMacro(effectData, 'midi.actor', ['infuseItemHomunculusTouch']);
+    let casterEffect = await effectUtils.createEffect(workflow.actor, effectData);
+    await effectUtils.createEffect(homunculusToken.actor, effectData, {parentEntity: casterEffect});
+}
+async function homunculusEarly({workflow}) {
+    if (workflow.item.type !== 'spell' || workflow.item.system.range.units !== 'touch') {
+        genericUtils.notify('CHRISPREMADES.Macros.FindFamiliar.InvalidSpell', 'info');
+        workflow.aborted = true;
+        return;
+    }
+    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
+    if (!effect) {
+        workflow.aborted = true;
+        return;
+    }
+    let homunculusServantToken = canvas.scene.tokens.get(effect.flags['chris-premades'].summons.ids[effect.name][0]);
+    if (!homunculusServantToken) {
+        genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.TooFar', 'info');
+        workflow.aborted = true;
+        return;
+    }
+    await actorUtils.setReactionUsed(homunculusServantToken.actor);
+}
 export let infuseItem = {
     name: 'Infuse Item',
     version: '0.12.33',
@@ -654,10 +816,10 @@ export let infuseItem = {
                     label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedWeapon',
                     value: 'enhancedWeapon'
                 },
-                // {
-                //     label: 'CHRISPREMADES.Macros.InfuseItem.HomunculusServant',
-                //     value: 'homunculusServant'
-                // },
+                {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.HomunculusServant',
+                    value: 'homunculusServant'
+                },
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.RadiantWeapon',
                     value: 'radiantWeapon'
@@ -685,6 +847,39 @@ export let infuseItem = {
             ],
             category: 'mechanics'
         },
+        {
+            value: 'name',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HomunculusServant',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'token',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HomunculusServant',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'avatar',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HomunculusServant',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        }
+        ,{
+            value: 'animation',
+            label: 'CHRISPREMADES.Config.SpecificAnimation',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HomunculusServant',
+            type: 'text',
+            default: 'default',
+            category: 'animation',
+            options: constants.summonAnimationOptions
+        }
     ]
 };
 export let infuseItemArmorStrength = {
@@ -695,6 +890,26 @@ export let infuseItemArmorStrength = {
             {
                 pass: 'rollFinished',
                 macro: armorStrengthLate,
+                priority: 50
+            }
+        ]
+    }
+};
+export let infuseItemHomunculusTouch = {
+    name: 'Infuse Item: Homunculus Servant Touch',
+    version: infuseItem.version,
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: homunculusLate,
+                priority: 50
+            }
+        ],
+        actor: [
+            {
+                pass: 'preambleComplete',
+                macro: homunculusEarly,
                 priority: 50
             }
         ]

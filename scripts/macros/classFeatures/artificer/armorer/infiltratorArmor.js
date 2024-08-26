@@ -4,7 +4,19 @@ async function use({workflow}) {
     let infiltratorEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infiltratorArmor');
     if (infiltratorEffect) return;
     let guardianEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'guardianArmor');
-    if (guardianEffect) await genericUtils.remove(guardianEffect);
+    if (guardianEffect) {
+        let infuseItem = itemUtils.getItemByIdentifier(workflow.actor, 'infuseItem');
+        let {enhancedWeapon, radiantWeapon} = infuseItem?.flags['chris-premades']?.infusions ?? {};
+        if (enhancedWeapon || radiantWeapon) {
+            let gauntlets = itemUtils.getItemByIdentifier(workflow.actor, 'thunderGauntlets');
+            if (gauntlets && [enhancedWeapon, radiantWeapon].includes(gauntlets.uuid)) {
+                let actual = 'enhancedWeapon';
+                if (radiantWeapon === gauntlets.uuid) actual = 'radiantWeapon';
+                await genericUtils.setFlag(infuseItem, 'chris-premades', 'infusions.-=' + actual, null);
+            }
+        }
+        await genericUtils.remove(guardianEffect);
+    }
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Infiltrator Armor: Lightning Launcher', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfiltratorArmor.LightningLauncher', identifier: 'lightningLauncher'});
     if (!featureData) {
         errors.missingPackItem();

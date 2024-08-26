@@ -32,6 +32,7 @@
             "ChangeShape": "Change Shape",
             "Claws": "Claws",
             "DevilsSight": "Devil's Sight",
+            "Evasion": "Evasion",
             "HeatedBody": "Heated Body",
             "MagicResistance": "Magic Resistance",
             "Mending": "Mending",
@@ -557,12 +558,16 @@
                 "LightningLauncher": "Infiltrator Armor: Lightning Launcher"
             },
             "InfuseItem": {
+                "AlreadyServant": "You already have a Homunculus Servant active!",
                 "ArcanePropulsionArmor": "Arcane Propulsion Armor",
                 "ArcanePropulsionGauntlet": "Arcane Propulsion Gauntlet",
                 "ArmorOfMagicalStrength": "Armor of Magical Strength",
+                "ChannelMagic": "Homunculus Servant: Channel Magic",
                 "EndAll": "End All Infusions",
                 "EnhancedDefense": "Enhanced Defense",
                 "EnhancedWeapon": "Enhanced Weapon",
+                "ForceStrike": "Force Strike",
+                "HomunculusHeart": "Heart of Homunculus Servant",
                 "HomunculusServant": "Homunculus Servant",
                 "Known": "Known Infusions:",
                 "New": "New {infusionLabel} infusion added to {newActorName}'s <b>{itemName}</b>.",
@@ -574,6 +579,7 @@
                 "RadiantBlind": "Radiant Weapon: Blind",
                 "RadiantLight": "Radiant Weapon: Light",
                 "RadiantWeapon": "Radiant Weapon",
+                "ReactionUsed": "Homunculus Servant has already used their reaction!",
                 "RepeatingShot": "Repeating Shot",
                 "RepulsionPush": "Repulsion Shield: Push",
                 "RepulsionShield": "Repulsion Shield",
@@ -583,6 +589,7 @@
                 "ReturningWeapon": "Returning Weapon",
                 "Select": "Which infusion?",
                 "SpellRefuelingRing": "Spell-Refueling Ring",
+                "TooFar": "Homunculus Servant Too Far Away!",
                 "TooMany": "You have the maximum number of infusions already active!",
                 "WhichArmor": "Which armor would you like to infuse?",
                 "WhichShield": "Which shield would you like to infuse?",
@@ -1138,6 +1145,10 @@
                 "Hint": "When enabled, conditions will automatically have Midi-QOL effects applied to them.",
                 "Name": "Apply Midi-QOL Condition Effects"
             },
+            "automatedAnimationSounds": {
+                "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
+                "Name": "Automated Animations: Play Sounds"
+            },
             "babonusOverlappingEffects": {
                 "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",
                 "Name": "Build A Bonus: Overlapping Spell Effects"
@@ -1173,6 +1184,10 @@
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
+            },
+            "colorizeAutomatedAnimations": {
+                "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
+                "Name": "Automated Animations: Colorize Titlebar Icon"
             },
             "colorizeBuildABonus": {
                 "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
@@ -1337,14 +1352,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "colorizeAutomatedAnimations": {
-                "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
-                "Name": "Automated Animations: Colorize Titlebar Icon"
-            },
-            "automatedAnimationSounds": {
-                "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
-                "Name": "Automated Animations: Play Sounds"
             }
         },
         "SkillCheck": {
@@ -1404,6 +1411,7 @@
                 "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
+                "HomunculusServant": "Homunculus Servant",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",

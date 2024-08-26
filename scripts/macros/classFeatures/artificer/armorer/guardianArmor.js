@@ -4,7 +4,19 @@ async function use({workflow}) {
     let guardianEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'guardianArmor');
     if (guardianEffect) return;
     let infiltratorEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infiltratorArmor');
-    if (infiltratorEffect) await genericUtils.remove(infiltratorEffect);
+    if (infiltratorEffect) {
+        let infuseItem = itemUtils.getItemByIdentifier(workflow.actor, 'infuseItem');
+        let {enhancedWeapon, radiantWeapon} = infuseItem?.flags['chris-premades']?.infusions ?? {};
+        if (enhancedWeapon || radiantWeapon) {
+            let launcher = itemUtils.getItemByIdentifier(workflow.actor, 'lightningLauncher');
+            if (launcher && [enhancedWeapon, radiantWeapon].includes(launcher.uuid)) {
+                let actual = 'enhancedWeapon';
+                if (radiantWeapon === launcher.uuid) actual = 'radiantWeapon';
+                await genericUtils.setFlag(infuseItem, 'chris-premades', 'infusions.-=' + actual, null);
+            }
+        }
+        await genericUtils.remove(infiltratorEffect);
+    }
     let fieldUses = workflow.actor.flags['chris-premades']?.defensiveField?.uses ?? workflow.actor.system.attributes.prof;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Guardian Armor: Defensive Field', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.GuardianArmor.DefensiveField', identifier: 'defensiveField'});
     let featureData2 = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Guardian Armor: Thunder Gauntlets', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.GuardianArmor.ThunderGauntlets', identifier: 'thunderGauntlets'});
