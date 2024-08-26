@@ -1176,11 +1176,11 @@
             },
             "colorizeBuildABonus": {
                 "Hint": "Quando ativado, o ícone da barra de título do Build A Bonus será recolorido se um bônus estiver no item ou efeito.",
-                "Name": "Build A Bonus: Colorir Ícone da Barra de Título"
+                "Name": "Build A Bonus: Ícone Colorido"
             },
             "colorizeDAE": {
                 "Hint": "Quando ativado, o ícone da barra de título do DAE será recolorido se houver um efeito no item.",
-                "Name": "Dynamic Active Effects: Colorir Ícone da Barra de Título"
+                "Name": "Dynamic Active Effects: Ícone Colorido"
             },
             "conditionResistanceAndVulnerability": {
                 "Hint": "Habilita automação de resistência e vulnerabilidde de condição.",
@@ -1337,6 +1337,14 @@
             "vaeButtons": {
                 "Hint": "Quando ativadas, certas macros adicionarão botões à interface do VAE.",
                 "Name": "Visual Active Effects: Botões"
+            },
+            "colorizeAutomatedAnimations": {
+                "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
+                "Name": "Automated Animations: Ícone Colorido"
+            },
+            "automatedAnimationSounds": {
+                "Hint": "Quando ativados, os itens com Automated Animations desativadas ainda reproduzirão sons configurados no menu de reconhecimento automático.",
+                "Name": "Automated Animations: Tocar Sons"
             }
         },
         "SkillCheck": {
