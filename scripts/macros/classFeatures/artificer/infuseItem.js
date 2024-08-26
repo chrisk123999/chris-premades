@@ -665,6 +665,7 @@ async function homunculusHelper(workflow) {
     let mendingData = await Summons.getSummonItem('Mending (Homunculus Servant)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Mending', identifier: 'homunculusServantMending'});
     let evasionData = await Summons.getSummonItem('Evasion', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Evasion', identifier: 'homunculusServantEvasion'});
     let forceStrikeData = await Summons.getSummonItem('Force Strike', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InfuseItem.ForceStrike', identifier: 'homunculusServantForceStrike', flatAttack: true});
+    let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Homunculus Servant: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.HomunculusCommand', identifier: 'homunculusServantCommand'});
     let channelMagicData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Homunculus Servant: Channel Magic', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.ChannelMagic', identifier: 'homunculusServantChannelMagic'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'steelDefenderDodge'});
     let itemsToAdd = [forceStrikeData, evasionData, dodgeData, mendingData];
@@ -712,7 +713,7 @@ async function homunculusHelper(workflow) {
         range: 5,
         animation,
         initiativeType: 'follows',
-        additionalVaeButtons: [{type: 'use', name: channelMagicData.name, identifier: 'homunculusServantChannelMagic'}],
+        additionalVaeButtons: [{type: 'use', name: commandData.name, identifier: 'homunculusServantCommand'}, {type: 'use', name: channelMagicData.name, identifier: 'homunculusServantChannelMagic'}],
         additionalSummonVaeButtons:
             itemsToAdd
                 .filter(i => i.flags['chris-premades'].info.identifier !== 'homunculusServantEvasion')
@@ -720,7 +721,7 @@ async function homunculusHelper(workflow) {
     });
     let casterEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'infuseItem');
     if (!casterEffect) return;
-    await itemUtils.createItems(workflow.actor, [channelMagicData], {favorite: true, parentEntity: casterEffect});
+    await itemUtils.createItems(workflow.actor, [commandData, channelMagicData], {favorite: true, parentEntity: casterEffect});
     return casterEffect;
 }
 async function homunculusLate({workflow}) {
