@@ -8,7 +8,7 @@ async function early({workflow}) {
     if (nearbyTargets.length) {
         let selection = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ThunderStep.Select', nearbyTargets, {skipDeadAndUnconscious: false});
         if (selection && selection.length) {
-            toTeleport.push(...selection[0]);
+            toTeleport.push(selection[0]);
         }
     }
     genericUtils.updateTargets(workflow.targets.filter(i => !toTeleport.includes(i)));

@@ -19,6 +19,7 @@ import {vae} from './integrations/vae.js';
 import {rest} from './events/rest.js';
 import {equipment} from './extensions/equipment.js';
 import {initiative} from './extensions/initiative.js';
+import {custom} from './events/custom.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -35,6 +36,9 @@ export function registerHooks() {
     Hooks.on('createChatMessage', chat.createChatMessage);
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
+    Hooks.on('preCreateMacro', custom.preCreateMacro);
+    Hooks.on('updateMacro', custom.updateOrDeleteMacro);
+    Hooks.on('deleteMacro', custom.updateOrDeleteMacro);
     if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
         Hooks.on('preCreateActiveEffect', tokens.preCreateUpdateActiveEffect);
         Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);

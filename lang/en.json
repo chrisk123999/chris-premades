@@ -112,7 +112,8 @@
             "Unknown": "Unknown Cover"
         },
         "CustomMacros": {
-            "MissingIdentifier": "The macro \"{name}\" is missing an identifier and has been ignored!"
+            "MissingIdentifier": "The macro \"{name}\" is missing an identifier and has been ignored!",
+            "NoReturn": "The macro \"{name}\" is not returning valid data and has been skipped!"
         },
         "CustomTypes": {
             "SpellFeature": "Spell Feature"

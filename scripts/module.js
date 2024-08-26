@@ -75,6 +75,5 @@ globalThis['chrisPremades'] = {
     Teleport,
     utils,
     macros,
-    settingButton,
-    custom
+    settingButton
 };

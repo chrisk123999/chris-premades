@@ -6,11 +6,17 @@ import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, cro
 import * as macros from '../macros.js';
 let customMacroList = [];
 async function ready() {
-    let pack = game.packs.get(genericUtils.getCPRSetting('macroCompendium'));
+    let key = genericUtils.getCPRSetting('macroCompendium');
+    let pack = game.packs.get(key);
     if (!pack) return {};
     await pack.getDocuments();
     customMacroList = (await Promise.all(pack.map(async i => {
         let value = await i.execute();
+        if (!value) {
+            let message = genericUtils.translate('CHRISPREMADES.CustomMacros.NoReturn').replace('{name}', i.name);
+            genericUtils.notify(message, 'error');
+            return;
+        }
         if (!value.identifier) {
             let message = genericUtils.translate('CHRISPREMADES.CustomMacros.MissingIdentifier').replace('{name}', i.name);
             genericUtils.notify(message, 'error');
@@ -33,9 +39,21 @@ async function runMacro({trigger, workflow, options, actor, ditem} = {}) {
 function getMacro(identifier) {
     return customMacroList.find(i => i.identifier === identifier) ?? macros[identifier];
 }
+function preCreateMacro(document, updates, options, userId) {
+    if (genericUtils.getCPRSetting('macroCompendium') != document.pack) return;
+    if (document.command != '') return;
+    let script = `const {DialogApp, Crosshairs, Summons, Teleport} = chrisPremades; const {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils} = chrisPremades.utils;`;
+    document.updateSource({command: script});
+}
+function updateOrDeleteMacro(document, updates, options, userId) {
+    if (genericUtils.getCPRSetting('macroCompendium') != document.pack) return;
+    ready();
+}
 export let custom = {
     ready,
     getMacro,
     runMacro,
-    customMacroList
+    customMacroList,
+    preCreateMacro,
+    updateOrDeleteMacro
 };
