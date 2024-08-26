@@ -111,6 +111,10 @@
             "ThreeQuarters": "Três-Quartos de Cobertura",
             "Unknown": "Cobertura Desconhecida"
         },
+        "CustomMacros": {
+            "MissingIdentifier": "A macro \"{name}\" está faltando um identificador e foi ignorada!",
+            "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
+        },
         "CustomTypes": {
             "SpellFeature": "Recurso de Magia"
         },
@@ -182,6 +186,7 @@
             "No": "Não",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
+            "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
@@ -556,22 +561,31 @@
                 "ArcanePropulsionGauntlet": "Manoplas de Propulsão Arcana",
                 "ArmorOfMagicalStrength": "Armadura da Força Mágica",
                 "EndAll": "Encerrar Todas Infusões",
+                "EnhancedDefense": "Defesa Aprimorada",
                 "EnhancedWeapon": "Arma Aprimorada",
                 "HomunculusServant": "Servo Homúnculo",
                 "Known": "Infusões Conhecidas:",
                 "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
-                "NoArmor": "O alvo não tem uma armadura não-mágica equipada válida!",
+                "NoArmor": "O alvo não tem uma armadura não-mágica válida equipada!",
                 "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
+                "NoMissing": "Não há slots de magia para recuperar!",
+                "NoShield": "O alvo não tem um escudo não-mágico válida equipada!",
                 "Override": "Infusão {infusionLabel} removida em <b>{itemName}</b> de {oldActorName}.",
+                "RadiantBlind": "Arma Radiante: Cego",
+                "RadiantLight": "Arma Radiante: Luz",
                 "RadiantWeapon": "Arma Radiante",
                 "RepeatingShot": "Disparo Recorrente",
+                "RepulsionPush": "Escudo de Repulsão: Empurrar",
                 "RepulsionShield": "Escudo de Repulsão",
+                "ResistProne": "Armadura da Força Mágica: Resistir Caído",
+                "ResistanceType": "Resistência a qual tipo de dano?",
                 "ResistantArmor": "Armadura da Resistência",
                 "ReturningWeapon": "Arma Bumerangue",
                 "Select": "Qual infusão?",
                 "SpellRefuelingRing": "Anel de Reabastecimento de Magia",
                 "TooMany": "Você tem o número máximo de infusões já ativas!",
                 "WhichArmor": "Qual armadura você quer infundir?",
+                "WhichShield": "Qual escudo você quer infundir?",
                 "WhichWeapon": "Qual arma você quer infundir?"
             },
             "InsectPlague": {
@@ -1111,6 +1125,7 @@
                 "3": "Assistente do MJ",
                 "4": "Mestre do Jogo"
             },
+            "SelectCompendium": "Selecione um compêndio:",
             "abilitySave": {
                 "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para a salvaguarda.",
                 "Name": "Salvaguardas Contextuais"
@@ -1235,9 +1250,13 @@
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
             },
+            "macroCompendium": {
+                "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
+                "Name": "Compêndio de Macros"
+            },
             "macroInterface": {
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
-                "Name": "Habilitar Interface de Macro"
+                "Name": "Habilitar Interface de Macros"
             },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
@@ -1302,6 +1321,14 @@
             "temporaryEffectHud": {
                 "Hint": "Adiciona efeitos Temporários à HUD de efeitos de status do token.",
                 "Name": "Efeitos Temporários na HUD"
+            },
+            "updateCompanionInitiative": {
+                "Hint": "Define automaticamente a iniciativa do companheiro logo após a iniciativa do jogador, quando rolada.",
+                "Name": "Atualizar Iniciativa do Companheiro"
+            },
+            "updateSummonInitiative": {
+                "Hint": "Define automaticamente a iniciativa da invocação logo após a iniciativa do jogador, quando rolada.",
+                "Name": "Atualizar Iniciativa da Invocação"
             },
             "useLocalCompendiums": {
                 "Hint": "Use os compêndios locais do mundo ao invés dos compêndios de módulos para pesquisa de itens.",
