@@ -165,7 +165,7 @@ export class Summons {
         this.currentIndex = 0;
     }
     async _spawn() {
-        let tokenDocument = await this.sourceActor.getTokenDocument();
+        let tokenDocument = await this.sourceActor.getTokenDocument(this.tokenUpdates);
         let actorData = {
             ownership: {[game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER}
         };

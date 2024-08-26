@@ -65,6 +65,7 @@
                 "Simple": "Simple",
                 "Water": "Water"
             },
+            "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
                 "Blue": "Blue",
@@ -101,6 +102,7 @@
             "Formula": "Formula:",
             "PlayAnimation": "Play Animation:",
             "RealDarkness": "Use Real Darkness:",
+            "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:"
@@ -121,7 +123,8 @@
         },
         "Dialog": {
             "RemoteMessage": "Waiting for remote dialog selection from",
-            "Use": "Use {itemName}?"
+            "Use": "Use {itemName}?",
+            "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})"
         },
         "Direction": {
             "Direction": "Direction",
@@ -184,6 +187,7 @@
             "Edit": "Edit",
             "Go": "Go",
             "Import": "Import",
+            "MissingScale": "ACtor does not have {scaleName} scale set!",
             "No": "No",
             "NoType": "No Type",
             "Ok": "Ok",
@@ -219,6 +223,13 @@
             "AnimateDead": {
                 "Command": "Animate Dead: Command"
             },
+            "AnimatingPerformance": {
+                "Command": "Animating Performance: Command",
+                "Dance": "Irrepressible Dance",
+                "ForceEmpoweredSlam": "Force-Empowered Slam",
+                "ImmutableForm": "Immutable Form",
+                "Size": "What item size?"
+            },
             "Antagonize": {
                 "NoWeapons": "Target does not have any weapons equipped!",
                 "SelectTarget": "Who gets attacked?",
@@ -241,6 +252,10 @@
             },
             "Banishment": {
                 "PlaneSelect": "Select all targets that are not from this plane."
+            },
+            "BardicInspiration": {
+                "MoteAttack": "Mote of Potential Attack",
+                "MoteHeal": "Mote of Potential Heal"
             },
             "BestialSoul": {
                 "Already": "You already have a Bestial Soul benefit active!",
@@ -268,6 +283,15 @@
                 "Grasping": "Grasping Hand",
                 "Interposing": "Interposing Hand",
                 "Move": "Bigby's Hand: Move"
+            },
+            "BladeFlourish": {
+                "Defensive": "Defensive Flourish",
+                "Master": "Use a d6 instead of Bardic Inspiration for Blade Flourish?",
+                "Mobile": "Mobile Flourish",
+                "Movement": "Blade Flourish: Movement",
+                "Push": "Push target {distance} feet?",
+                "Select": "Use a Blade Flourish?",
+                "Slashing": "Slashing Flourish"
             },
             "BlindingSmite": {
                 "Blind": "Blinding Smite: Blind"
@@ -1389,6 +1413,7 @@
                 "ConstructSpiritClay": "Construct Spirit (Clay)",
                 "ConstructSpiritMetal": "Construct Spirit (Metal)",
                 "ConstructSpiritStone": "Construct Spirit (Stone)",
+                "DancingItem": "Dancing Item",
                 "DraconicSpirit": "Draconic Spirit",
                 "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
                 "DraconicSpiritGem": "Draconic Spirit (Gem)",

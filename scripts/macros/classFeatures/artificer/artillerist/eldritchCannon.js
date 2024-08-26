@@ -174,11 +174,7 @@ async function fortifiedPosition({workflow}) {
     let nearbyCannons = tokenUtils.findNearby(targetToken, 10, 'ally', {includeIncapacitated: false, includeToken: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'eldritchCannonFortifiedPosition'));
     if (!nearbyCannons.length) return;
     // This is stupid as hell but I want it to look pretty
-    workflow.attackRoll.terms.push(new CONFIG.Dice.termTypes.OperatorTerm({operator: '-'}), new CONFIG.Dice.termTypes.NumericTerm({number: 2}));
-    workflow.attackRoll._total -= 2;
-    workflow.attackRoll._formula += ' - 2';
-    workflow.attackAdvAttribution.add(genericUtils.translate('CHRISPREMADES.Cover.Half') + ': ' + genericUtils.translate('CHRISPREMADES.Macros.EldritchCannon.FortifiedPosition'));
-    workflow.setAttackRoll(workflow.attackRoll);
+    await workflowUtils.bonusAttack(workflow, '-2');
 }
 export let eldritchCannon = {
     name: 'Create Eldritch Cannon',

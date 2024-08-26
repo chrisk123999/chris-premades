@@ -154,6 +154,7 @@ export {noConfiguration} from './macros/generic/noConfiguration.js';
 // Class Features
 export {alchemicalSavant} from './macros/classFeatures/artificer/alchemist/alchemicalSavant.js';
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
+// export {animatingPerformance, animatingPerformanceDance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 export {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 export {armorModifications} from './macros/classFeatures/artificer/armorer/armorModifications.js';
 export {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -163,6 +164,7 @@ export {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/aura
 export {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
 export {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 export {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/auraOfWarding.js';
+// export {bardicInspiration, bardicInspirationInspired} from './macros/classFeatures/bard/bardicInspiration.js';
 export {bestialSoul} from './macros/classFeatures/barbarian/beast/bestialSoul.js';
 export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js';
 export {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
@@ -189,7 +191,9 @@ export {infectiousFury, infectiousFuryAttack} from './macros/classFeatures/barba
 export {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
+// export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
+// export {moteOfPotential} from './macros/classFeatures/bard/collegeOfCreation/moteOfPotential.js';
 export {naturesWrath} from './macros/classFeatures/paladin/oathOfTheAncients/naturesWrath.js';
 export {peerlessAthlete} from './macros/classFeatures/paladin/oathOfGlory/peerlessAthlete.js';
 export {persistentRage} from './macros/classFeatures/barbarian/persistentRage.js';

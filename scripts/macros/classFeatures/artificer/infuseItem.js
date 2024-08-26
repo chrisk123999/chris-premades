@@ -667,7 +667,7 @@ async function homunculusHelper(workflow) {
     let forceStrikeData = await Summons.getSummonItem('Force Strike', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.InfuseItem.ForceStrike', identifier: 'homunculusServantForceStrike', flatAttack: true});
     let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Homunculus Servant: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.HomunculusCommand', identifier: 'homunculusServantCommand'});
     let channelMagicData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Homunculus Servant: Channel Magic', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.ChannelMagic', identifier: 'homunculusServantChannelMagic'});
-    let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'steelDefenderDodge'});
+    let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'homunculusServantDodge'});
     let itemsToAdd = [forceStrikeData, evasionData, dodgeData, mendingData];
     if (!itemsToAdd.every(i => i) || !channelMagicData) return;
     let classLevel = workflow.actor.classes?.artificer?.system?.levels;
