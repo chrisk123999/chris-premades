@@ -12,6 +12,7 @@ async function check(workflow) {
     templates.push(...templateUtils.getTemplatesInToken(source));
     templates.push(...templateUtils.getTemplatesInToken(target));
     templates = Array.from(new Set(templates));
+    templates = templates.filter(i => i.flags['chris-premades']?.template?.visibility);
     if (!templates.length) return;
     let sourceSenses = source.actor.system.attributes.senses;
     let targetSenses = target.actor.system.attributes.senses;
@@ -19,7 +20,7 @@ async function check(workflow) {
     let targetDS = itemUtils.getItemByIdentifier(target.actor, 'devilsSight');
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
-        let flagData = template.flags['chris-premades'].visibility;
+        let flagData = template.flags['chris-premades'].template.visibility;
         let sourceCanSeeTarget = ((sourceDS && flagData.magicalDarkness && distance <= 120) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance));
         let targetCanSeeSource = ((targetDS && flagData.magicalDarkness && distance <= 120) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance));
         let templateName = templateUtils.getName(template);

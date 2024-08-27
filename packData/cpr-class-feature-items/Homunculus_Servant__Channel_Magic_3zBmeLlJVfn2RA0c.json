@@ -1,7 +1,8 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Homunculus Servant: Channel Magic",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "_id": "3zBmeLlJVfn2RA0c",
+  "img": "icons/magic/symbols/rune-sigil-black-pink.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +12,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -25,13 +26,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -48,6 +49,10 @@
     },
     "ability": "",
     "actionType": "util",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,37 +62,31 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
   "effects": [],
+  "folder": null,
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
-    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -96,7 +95,6 @@
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
       "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
@@ -107,19 +105,18 @@
     },
     "midi-qol": {
       "rollAttackPerTarget": "default",
-      "effectActivation": false,
       "itemCondition": "",
       "effectCondition": ""
     },
     "chris-premades": {
       "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+        "midi": {
+          "item": [
+            "infuseItemHomunculusTouch"
+          ]
+        }
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "_key": "!items!3zBmeLlJVfn2RA0c"
 }

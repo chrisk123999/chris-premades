@@ -5,10 +5,10 @@ async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
     if (!sourceActor) return;
     let deflectAttackData = await Summons.getSummonItem('Deflect Attack', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.DeflectAttack', identifier: 'steelDefenderDeflectAttack'});
-    let rendData = await Summons.getSummonItem( 'Force-Empowered Rend', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.ForceEmpoweredRend', identifier: 'steelDefenderForceEmpoweredRend', flatAttack: true});
-    let mendingData = await Summons.getSummonItem( 'Mending (Steel Defender)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Mending', identifier: 'steelDefenderMending'});
-    let repairData = await Summons.getSummonItem( 'Repair', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.Repair', identifier: 'steelDefenderRepair'});
-    let vigilantData = await Summons.getSummonItem( 'Vigilant', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.Vigilant', identifier: 'steelDefenderVigilant'});
+    let rendData = await Summons.getSummonItem('Force-Empowered Rend', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.ForceEmpoweredRend', identifier: 'steelDefenderForceEmpoweredRend', flatAttack: true});
+    let mendingData = await Summons.getSummonItem('Mending (Steel Defender)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Mending', identifier: 'steelDefenderMending'});
+    let repairData = await Summons.getSummonItem('Repair', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.Repair', identifier: 'steelDefenderRepair'});
+    let vigilantData = await Summons.getSummonItem('Vigilant', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SteelDefender.Vigilant', identifier: 'steelDefenderVigilant'});
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'steelDefenderDodge'});
     let itemsToAdd = [deflectAttackData, rendData, mendingData, repairData, vigilantData, dodgeData];
     if (!itemsToAdd.every(i => i)) return;
@@ -142,6 +142,41 @@ export let steelDefender = {
             pass: 'long',
             macro: longRest,
             priority: 50
+        }
+    ],
+    config: [
+        {
+            value: 'name',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SteelDefender',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'token',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SteelDefender',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'avatar',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SteelDefender',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        }
+        ,{
+            value: 'animation',
+            label: 'CHRISPREMADES.Config.SpecificAnimation',
+            i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SteelDefender',
+            type: 'text',
+            default: 'default',
+            category: 'animation',
+            options: constants.summonAnimationOptions
         }
     ]
 };

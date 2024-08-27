@@ -1,7 +1,6 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Mobile Flourish",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -29,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -42,12 +41,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,43 +82,50 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Actor.l6eb8WvXXKNkH2Mo.Item.0lYEhcV2FwF3HCaC"
     },
     "chris-premades": {
       "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+        "midi": {
+          "item": [
+            "bladeFlourishMobile"
+          ]
+        }
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "effects": [],
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "folder": null,
+  "_id": "liUcUmqqvCCXo63h",
+  "_key": "!items!liUcUmqqvCCXo63h"
 }

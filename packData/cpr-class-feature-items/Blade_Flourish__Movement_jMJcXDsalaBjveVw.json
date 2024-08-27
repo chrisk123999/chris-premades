@@ -1,5 +1,5 @@
 {
-  "name": "Evasion",
+  "name": "Blade Flourish: Movement",
   "type": "feat",
   "system": {
     "description": {
@@ -10,13 +10,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "special",
       "cost": 0,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "turn"
     },
     "cover": null,
     "crewed": false,
@@ -24,7 +24,7 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
@@ -41,12 +41,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -63,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -82,37 +82,11 @@
       "level": null
     }
   },
-  "flags": {
-    "midi-qol": {
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "core": {
-      "sourceId": "Actor.s9P9TeDz7WASBMgn.Item.fuNl4QW0F8XUGqPT"
-    }
-  },
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
   "effects": [
     {
-      "name": "Evasion",
-      "origin": "Compendium.world.cpr-summon-features.Item.TBEMOM0UhcxEUEqW",
+      "name": "Blade Flourish Movement",
+      "origin": "Compendium.world.cpr-class-features.Item.mkvE0uXALHnea0CR",
       "duration": {
         "rounds": null,
         "startTime": null,
@@ -126,33 +100,39 @@
       "flags": {
         "dnd5e": {},
         "dae": {
+          "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
           "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [
+            "combatEnd"
+          ]
         },
         "core": {
           "overlay": false
         }
       },
-      "img": "icons/magic/light/beam-red-orange.webp",
-      "_id": "pl5apOXf3cXOxUK4",
+      "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+      "_id": "S9nDudMF1wCVdhKf",
       "type": "base",
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.superSaver.dex",
-          "mode": 5,
-          "value": "1",
+          "key": "system.attributes.movement.walk",
+          "mode": 2,
+          "value": "10",
           "priority": 20
         }
       ],
       "description": "",
       "tint": "#ffffff",
-      "transfer": true,
+      "transfer": false,
       "statuses": [],
       "sort": 0,
       "_stats": {
@@ -161,15 +141,46 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1724678329139,
-        "modifiedTime": 1724678353395,
+        "createdTime": null,
+        "modifiedTime": 1724701334364,
         "lastModifiedBy": "wyNw8BrgTfPgbUM3"
       },
-      "_key": "!items.effects!TBEMOM0UhcxEUEqW.pl5apOXf3cXOxUK4"
+      "_key": "!items.effects!jMJcXDsalaBjveVw.S9nDudMF1wCVdhKf"
     }
   ],
-  "img": "icons/magic/light/beam-red-orange.webp",
-  "folder": "1IHovI3vJVL0eXNx",
-  "_id": "TBEMOM0UhcxEUEqW",
-  "_key": "!items!TBEMOM0UhcxEUEqW"
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Actor.l6eb8WvXXKNkH2Mo.Item.MGv11KixH7ghLYY3"
+    }
+  },
+  "folder": null,
+  "_id": "jMJcXDsalaBjveVw",
+  "_key": "!items!jMJcXDsalaBjveVw"
 }

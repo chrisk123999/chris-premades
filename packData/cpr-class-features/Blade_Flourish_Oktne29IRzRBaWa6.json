@@ -1,18 +1,17 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Blade Flourish",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Bard : College of Swords"
     },
     "activation": {
       "type": "",
-      "cost": null,
+      "cost": 0,
       "condition": ""
     },
     "duration": {
@@ -42,12 +41,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,43 +82,56 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+      "sourceId": "Actor.l6eb8WvXXKNkH2Mo.Item.sl9ixUiOfD1MqIe3"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "chris-premades": {
+      "info": {
+        "name": "Blade Flourish",
+        "version": "0.12.37",
+        "identifier": "bladeFlourish",
+        "source": "chris-premades"
+      },
       "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+        "midi": {
+          "actor": [
+            "bladeFlourish"
+          ]
+        }
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "effects": [],
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "folder": "KJoNrdQW4KaMJzue",
+  "_id": "Oktne29IRzRBaWa6",
+  "_key": "!items!Oktne29IRzRBaWa6"
 }

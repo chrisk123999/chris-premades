@@ -1,5 +1,5 @@
 {
-  "name": "Evasion",
+  "name": "Defensive Flourish",
   "type": "feat",
   "system": {
     "description": {
@@ -10,8 +10,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": 0,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -28,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -41,12 +41,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
+    "ability": "",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -63,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -84,37 +84,42 @@
   },
   "flags": {
     "midi-qol": {
-      "onUseMacroName": "",
+      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
     "core": {
-      "sourceId": "Actor.s9P9TeDz7WASBMgn.Item.fuNl4QW0F8XUGqPT"
+      "sourceId": "Actor.l6eb8WvXXKNkH2Mo.Item.AVbYzLW1Pc9y038M"
     }
   },
   "effects": [
     {
-      "name": "Evasion",
-      "origin": "Compendium.world.cpr-summon-features.Item.TBEMOM0UhcxEUEqW",
+      "name": "Defensive Flourish",
+      "origin": "Compendium.world.cpr-class-feature-items.Item.ieXp5cBM9LS8kZPk",
       "duration": {
-        "rounds": null,
+        "rounds": 1,
         "startTime": null,
         "seconds": null,
         "combat": null,
@@ -126,33 +131,39 @@
       "flags": {
         "dnd5e": {},
         "dae": {
+          "enableCondition": "",
           "disableCondition": "",
           "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
           "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": []
+          "specialDuration": [
+            "combatEnd"
+          ]
         },
         "core": {
           "overlay": false
         }
       },
-      "img": "icons/magic/light/beam-red-orange.webp",
-      "_id": "pl5apOXf3cXOxUK4",
+      "img": "icons/weapons/swords/scimitar-guard-wood.webp",
+      "_id": "r7VNh7mZhzjntUo1",
       "type": "base",
       "system": {},
       "changes": [
         {
-          "key": "flags.midi-qol.superSaver.dex",
-          "mode": 5,
-          "value": "1",
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "",
           "priority": 20
         }
       ],
       "description": "",
       "tint": "#ffffff",
-      "transfer": true,
+      "transfer": false,
       "statuses": [],
       "sort": 0,
       "_stats": {
@@ -161,15 +172,15 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1724678329139,
-        "modifiedTime": 1724678353395,
+        "createdTime": 1724703646164,
+        "modifiedTime": 1724703661485,
         "lastModifiedBy": "wyNw8BrgTfPgbUM3"
       },
-      "_key": "!items.effects!TBEMOM0UhcxEUEqW.pl5apOXf3cXOxUK4"
+      "_key": "!items.effects!ieXp5cBM9LS8kZPk.r7VNh7mZhzjntUo1"
     }
   ],
-  "img": "icons/magic/light/beam-red-orange.webp",
-  "folder": "1IHovI3vJVL0eXNx",
-  "_id": "TBEMOM0UhcxEUEqW",
-  "_key": "!items!TBEMOM0UhcxEUEqW"
+  "img": "icons/weapons/swords/scimitar-guard-wood.webp",
+  "folder": null,
+  "_id": "ieXp5cBM9LS8kZPk",
+  "_key": "!items!ieXp5cBM9LS8kZPk"
 }
