@@ -23,7 +23,7 @@ async function use({actor, token, args}) {
 }
 export let moteOfPotential = {
     name: 'Mote of Potential',
-    version: '0.12.37',
+    version: '0.12.36',
     utilFunctions: {
         use
     }

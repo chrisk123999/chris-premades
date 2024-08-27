@@ -129,7 +129,7 @@ async function applyDamage({workflow, ditem}) {
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
-    version: '0.12.37',
+    version: '0.12.36',
     midi: {
         item: [
             {

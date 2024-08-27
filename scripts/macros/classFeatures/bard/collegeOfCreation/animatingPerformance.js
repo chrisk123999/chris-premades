@@ -132,7 +132,7 @@ async function turnStart({trigger: {entity: item, token, target}}) {
 }
 export let animatingPerformance = {
     name: 'Animating Performance',
-    version: '0.12.37',
+    version: '0.12.36',
     midi: {
         item: [
             {
