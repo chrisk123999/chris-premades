@@ -1,6 +1,8 @@
 import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
+    let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let template = workflow.template;
     if (!template) return;
     await genericUtils.update(template, {
@@ -23,6 +25,10 @@ async function use({workflow}) {
             }
         }
     });
+    if (useRealDarkness) {
+        let [darknessSource] = await genericUtils.createEmbeddedDocuments(template.parent, 'AmbientLight', [{config: {negative: true, dim: template.distance, animation: {type: darknessAnimation}}, x: template.x, y: template.y}]);
+        effectUtils.addDependent(template, [darknessSource]);
+    }
 }
 async function enterOrStart({trigger: {entity: template, castData, token}}) {
     let [targetCombatant] = game.combat.getCombatantsByToken(token.document);
@@ -51,7 +57,30 @@ export let sleetStorm = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'useRealDarkness',
+            label: 'CHRISPREMADES.Config.RealDarkness',
+            type: 'checkbox',
+            default: false,
+            category: 'mechanics'
+        },
+        {
+            value: 'darknessAnimation',
+            label: 'CHRISPREMADES.Config.DarknessAnimation',
+            type: 'select',
+            default: null,
+            options: [
+                {
+                    label: 'DND5E.None',
+                    value: null
+                },
+                ...Object.entries(CONFIG.Canvas.darknessAnimations).flatMap(i => ({label: i[1].label, value: i[0]}))
+            ],
+            category: 'mechanics'
+        }
+    ]
 };
 export let sleetStormArea = {
     name: 'Sleet Storm: Area',

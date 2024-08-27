@@ -8,8 +8,9 @@ async function use({workflow}) {
         return;
     }
     featureData.system.ability = workflow.item.system.ability;
-    let shouldPlayAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();
-    let animation = itemUtils.getConfig(workflow.item, 'animation');
+    let jb2a = animationUtils.jb2aCheck();
+    let shouldPlayAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && jb2a;
+    let animation = jb2a === 'patreon' ? itemUtils.getConfig(workflow.item, 'animation') : 'simple';
     let color = itemUtils.getConfig(workflow.item, 'color');
     let particle = 'jb2a.particles.outward.orange.01.03';
     if (shouldPlayAnimation && animation === 'complex') {

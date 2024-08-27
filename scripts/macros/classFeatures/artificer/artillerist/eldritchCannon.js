@@ -119,23 +119,23 @@ async function use({workflow}) {
         let fortifiedPositionData = await Summons.getSummonItem('Fortified Position', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.EldritchCannon.FortifiedPosition', identifier: 'eldritchCannonFortifiedPosition'});
         if (!fortifiedPositionData) return;
         updates.forEach(update => update.actor.items.push(fortifiedPositionData));
-        let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
-        let commandFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Eldritch Cannon: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchCannon.Command', identifier: 'eldritchCannonCommand'});
-        if (!commandFeatureData) return;
-        await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
-            range: 5,
-            animation,
-            initiativeType: 'follows',
-            additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'eldritchCannonCommand'}]
-        });
-        if (costsSlotType) {
-            let slotValue = workflow.actor.system.spells[costsSlotType].value;
-            genericUtils.update(workflow.actor, {['system.spells.' + costsSlotType + '.value']: slotValue - 1});
-        }
-        if (!effect) effect = effectUtils.getEffectByIdentifier(workflow.actor, 'eldritchCannon');
-        if (!effect) return;
-        await itemUtils.createItems(workflow.actor, [commandFeatureData], {favorite: true, parentEntity: effect});
     }
+    let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
+    let commandFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Eldritch Cannon: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchCannon.Command', identifier: 'eldritchCannonCommand'});
+    if (!commandFeatureData) return;
+    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
+        range: 5,
+        animation,
+        initiativeType: 'follows',
+        additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'eldritchCannonCommand'}]
+    });
+    if (costsSlotType) {
+        let slotValue = workflow.actor.system.spells[costsSlotType].value;
+        genericUtils.update(workflow.actor, {['system.spells.' + costsSlotType + '.value']: slotValue - 1});
+    }
+    if (!effect) effect = effectUtils.getEffectByIdentifier(workflow.actor, 'eldritchCannon');
+    if (!effect) return;
+    await itemUtils.createItems(workflow.actor, [commandFeatureData], {favorite: true, parentEntity: effect});
 }
 async function lateExplosiveCannon({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');
