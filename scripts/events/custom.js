@@ -25,7 +25,9 @@ function getMacro(identifier) {
     return customMacroList.find(i => i.identifier === identifier) ?? macros[identifier];
 }
 function preCreateMacro(document, updates, options, userId) {
-    if (genericUtils.getCPRSetting('macroCompendium') != document.pack) return;
+    let key = genericUtils.getCPRSetting('macroCompendium');
+    if (!key) return;
+    if (key != document.pack) return;
     if (document.command != '') return;
     let script = `const {DialogApp, Crosshairs, Summons, Teleport} = chrisPremades; const {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils} = chrisPremades.utils;`;
     document.updateSource({command: script});

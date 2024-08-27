@@ -4,6 +4,7 @@ import {sidebar} from '../extensions/sidebar.js';
 import {genericUtils} from '../utils.js';
 import {AdditionalCompendiums} from './additionalCompendiums.js';
 import {DialogApp} from './dialog.js';
+import {tours} from './tour.js';
 import {troubleshooter} from './troubleshooter.js';
 let settingCategories = {};
 let buttonLabels = {
@@ -107,6 +108,7 @@ export async function settingButton(id) {
         case 'monsterCompendium': await selectCompendium('monsterCompendium', 'Actor'); break;
         case 'spellCompendium': await selectCompendium('spellCompendium', 'Item'); break;
         case 'macroCompendium': await selectCompendium('macroCompendium', 'Macro'); break;
+        case 'tour': game.settings.sheet.close(); tours.guidedTour(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {
@@ -176,14 +178,14 @@ export class settingsHelp extends FormApplication {
     getData() {
         return {
             settings: [
-                /*{
-                    name: 'Tour Features',
+                {
+                    name: genericUtils.translate('CHRISPREMADES.Tour.TourFeatures'),
                     id: 'tour',
                     value: {},
                     isButton: true,
-                    hint: 'Start a guided tour of Chris\'s Premades.',
-                    label: 'Go'
-                }, */
+                    hint: genericUtils.translate('CHRISPREMADES.Tour.Hint'),
+                    label: genericUtils.translate('CHRISPREMADES.Generic.Go')
+                },
                 {
                     name: genericUtils.translate('CHRISPREMADES.Troubleshooter.Open'),
                     id: 'trouble',

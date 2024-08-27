@@ -1543,7 +1543,9 @@
             },
             "Chat": "<hr>View a guided tour of Chris's Premades here:<br><button type=\"button\">Start Tour</button>",
             "Description": "Take a tour of Chris's Premades.",
-            "Title": "Chris's Premades Tour"
+            "Hint": "Start a guided tour of Chris's Premades.",
+            "Title": "Chris's Premades Tour",
+            "TourFeatures": "Tour Features"
         },
         "Troubleshooter": {
             "Clipboard": "Text copied to clipboard!",

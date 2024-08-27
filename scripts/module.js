@@ -69,7 +69,7 @@ Hooks.once('ready', () => {
     if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     //register();
-    tours.checkTour();
+    //tours.checkTour();
 });
 globalThis['chrisPremades'] = {
     DialogApp,

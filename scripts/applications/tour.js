@@ -136,7 +136,7 @@ async function checkTour() {
             }
         });
         genericUtils.setCPRSetting('seenTour', true);
-        await genericUtils.sleep(50);
+        await genericUtils.sleep(500);
     }
     if (!message) return;
     let messageElement = document.querySelector('[data-message-id="' + message.id + '"]');
