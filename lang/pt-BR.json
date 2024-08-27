@@ -32,6 +32,7 @@
             "ChangeShape": "Mudar Forma",
             "Claws": "Garras",
             "DevilsSight": "Visão Diabólica",
+            "Evasion": "Evasão",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
             "Mending": "Reparar",
@@ -64,6 +65,7 @@
                 "Simple": "Simples",
                 "Water": "Água"
             },
+            "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
                 "Blue": "Azul",
@@ -100,6 +102,7 @@
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
             "RealDarkness": "Usar Escuridão Real:",
+            "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:"
@@ -120,7 +123,8 @@
         },
         "Dialog": {
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
-            "Use": "Usar {itemName}?"
+            "Use": "Usar {itemName}?",
+            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})"
         },
         "Direction": {
             "Direction": "Direção",
@@ -183,6 +187,7 @@
             "Edit": "Editar",
             "Go": "Ir",
             "Import": "Importar",
+            "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
@@ -218,6 +223,13 @@
             "AnimateDead": {
                 "Command": "Animar Mortos: Comando"
             },
+            "AnimatingPerformance": {
+                "Command": "Espetáculo Animado: Comando",
+                "Dance": "Dança Irresistível",
+                "ForceEmpoweredSlam": "Batida Energizada",
+                "ImmutableForm": "Forma Imutável",
+                "Size": "Qual tamanho do item?"
+            },
             "Antagonize": {
                 "NoWeapons": "O alvo não possui nenhuma arma equipada!",
                 "SelectTarget": "Quem será atacado?",
@@ -240,6 +252,10 @@
             },
             "Banishment": {
                 "PlaneSelect": "Selecione todos os alvos que não são deste plano."
+            },
+            "BardicInspiration": {
+                "MoteAttack": "Partícula de Potencial Ataque",
+                "MoteHeal": "Partícula de Potencial Cura"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -267,6 +283,15 @@
                 "Grasping": "Mão Esmagadora",
                 "Interposing": "Mão Interposta",
                 "Move": "Mão de Bigby: Mover"
+            },
+            "BladeFlourish": {
+                "Defensive": "Floreio Defensivo",
+                "Master": "Usar um d6 ao invés da Inspiração de Bardo para Floreio de Lâminas?",
+                "Mobile": "Floreio Móvel",
+                "Movement": "Floreio de Lâminas: Deslocamento",
+                "Push": "Empurrar alvo {distance} pés?",
+                "Select": "Usar o Floreio de Lâminas?",
+                "Slashing": "Floreio Cortante"
             },
             "BlindingSmite": {
                 "Blind": "Destruição Cegante: Cego"
@@ -557,12 +582,17 @@
                 "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
             },
             "InfuseItem": {
+                "AlreadyServant": "Você já tem um Servo Homúnculo ativo!",
                 "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
                 "ArcanePropulsionGauntlet": "Manoplas de Propulsão Arcana",
                 "ArmorOfMagicalStrength": "Armadura da Força Mágica",
+                "ChannelMagic": "Servo Homúnculo: Canalizar Magia",
                 "EndAll": "Encerrar Todas Infusões",
                 "EnhancedDefense": "Defesa Aprimorada",
                 "EnhancedWeapon": "Arma Aprimorada",
+                "ForceStrike": "Disparo de Energia",
+                "HomunculusCommand": "Servo Homúnculo: Comando",
+                "HomunculusHeart": "Coração do Servo Homúnculo",
                 "HomunculusServant": "Servo Homúnculo",
                 "Known": "Infusões Conhecidas:",
                 "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
@@ -574,6 +604,7 @@
                 "RadiantBlind": "Arma Radiante: Cego",
                 "RadiantLight": "Arma Radiante: Luz",
                 "RadiantWeapon": "Arma Radiante",
+                "ReactionUsed": "O Servo Homúnculo já usou sua reação!",
                 "RepeatingShot": "Disparo Recorrente",
                 "RepulsionPush": "Escudo de Repulsão: Empurrar",
                 "RepulsionShield": "Escudo de Repulsão",
@@ -583,6 +614,7 @@
                 "ReturningWeapon": "Arma Bumerangue",
                 "Select": "Qual infusão?",
                 "SpellRefuelingRing": "Anel de Reabastecimento de Magia",
+                "TooFar": "Servo Homúnculo Muito Longe!",
                 "TooMany": "Você tem o número máximo de infusões já ativas!",
                 "WhichArmor": "Qual armadura você quer infundir?",
                 "WhichShield": "Qual escudo você quer infundir?",
@@ -1381,6 +1413,7 @@
                 "ConstructSpiritClay": "Espírito Mecânico (Argila)",
                 "ConstructSpiritMetal": "Espírito Mecânico (Metal)",
                 "ConstructSpiritStone": "Espírito Mecânico (Pedra)",
+                "DancingItem": "Item Dançante",
                 "DraconicSpirit": "Espírito Dracônico",
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
@@ -1404,6 +1437,7 @@
                 "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
+                "HomunculusServant": "Servo Homúnculo",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
