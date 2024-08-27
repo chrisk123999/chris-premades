@@ -68,7 +68,7 @@ async function moveOrStart({trigger: {entity: effect, token, target}}) {
     let feature = itemUtils.getItemByIdentifier(token.actor, 'guardianOfFaithDamage');
     if (!feature) return;
     let attackWorkflow = await workflowUtils.syntheticItemRoll(feature, [target]);
-    let appliedDamage = attackWorkflow.damageList[0].appliedDamage;
+    let appliedDamage = Math.floor(attackWorkflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0));
     if (!appliedDamage) return;
     await genericUtils.update(feature, {'system.uses.value': feature.system.uses.value - appliedDamage});
     if (feature.system.uses.value > 0) return;

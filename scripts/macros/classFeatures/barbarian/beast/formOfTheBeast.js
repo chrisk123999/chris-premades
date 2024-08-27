@@ -2,7 +2,7 @@ import {combatUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!workflow.damageList[0].appliedDamage) return;
+    if (!Math.floor(workflow.damageList[0].damageDetail.reduce((acc, i) => acc + i.value, 0))) return;
     if (!combatUtils.perTurnCheck(workflow.item, 'formOfTheBeastBite', true, workflow.token.id)) return;
     let maxHP = workflow.actor.system.attributes.hp.max;
     let currHP = workflow.actor.system.attributes.hp.value;

@@ -66,7 +66,6 @@ function negateDamageItemDamage(ditem) {
     ditem.newTempHP = ditem.oldTempHP;
     ditem.hpDamage = 0;
     ditem.tempDamage = 0;
-    ditem.appliedDamage = 0;
     ditem.damageDetail.forEach(i => i.value = 0);
     ditem.rawDamageDetail.forEach(i => i.value = 0);
 }

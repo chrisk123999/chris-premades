@@ -13,6 +13,10 @@ async function use({workflow}) {
         return;
     }
     let otherPlanarTokens = selection[0] ?? [];
+    await banishmentHelper(workflow, otherPlanarTokens);
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': 60 * workflow.item.system.duration.value});
+}
+export async function banishmentHelper(workflow, otherPlanarTokens = []) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -40,7 +44,7 @@ async function use({workflow}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.fail.critical.all',
+                key: 'flags.midi-qol.grants.noCritical.all',
                 mode: 0,
                 value: 1,
                 priority: 20
@@ -71,7 +75,6 @@ async function use({workflow}) {
         }
         await effectUtils.createEffect(token.actor, trueEffectData, {concentrationItem: workflow.item, identifier: 'banishmentBanished'});
     }
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 async function remove({trigger: {entity}}) {
     let effect = entity;

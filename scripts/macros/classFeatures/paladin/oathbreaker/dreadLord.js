@@ -285,7 +285,16 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 async function turnStart({trigger: {token, target}}) {
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
-    if (!actorUtils.getEffects(target.actor).find(i => i.flags['chris-premades']?.conditions?.includes('frightened') && fromUuidSync(i.origin)?.actor === token.actor)) return;
+    let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
+    let frightenedOfActor = actorUtils.getEffects(target.actor).find(i => 
+        (
+            i.statuses.has('frightened') || // Status Effect dropdown on details page
+            i.flags['chris-premades']?.conditions?.includes('frightened') || // CPR effect medkit
+            i.changes.find(j => validKeys.includes(j.key) && j.value.toLowerCase() === 'frightened') // dae/midi key
+        )
+        && fromUuidSync(i.origin)?.actor === token.actor
+    );
+    if (!frightenedOfActor) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Dread Lord: Turn Start', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.DreadLord.Turn'});
     if (!featureData) {
         errors.missingPackItem();

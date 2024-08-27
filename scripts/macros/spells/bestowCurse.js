@@ -199,8 +199,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     ditem.newTempHP -= (damageTotal - remainingDamage);
     ditem.tempDamage += (damageTotal - remainingDamage);
     ditem.totalDamage += trueDamageTotal;
-    ditem.appliedDamage += damageTotal;
-    ditem.damageDetail[0].value = ditem.appliedDamage;
+    ditem.damageDetail[0].value += damageTotal;
     ditem.hpDamage += remainingDamage;
     ditem.newHP = Math.max(0, ditem.newHP - remainingDamage);
 }

@@ -61,7 +61,6 @@ async function use({workflow}) {
             value: 'function.chrisPremades.macros.moteOfPotential.utilFunctions.use',
             priority: 20
         });
-        // TODO: logic for temphp if used on a save
     }
     effectUtils.addMacro(effectData, 'midi.actor', ['bardicInspirationInspired']);
     let magicalInspiration = itemUtils.getItemByIdentifier(workflow.actor, 'magicalInspiration');

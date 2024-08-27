@@ -54,10 +54,9 @@ async function damageApplication({workflow, ditem}) {
     if (actorUtils.checkTrait(targetActor, 'dv', healingType)) appliedHealingTotal = appliedHealingTotal * 2;
     let maxHP = targetActor.system.attributes.hp.max;
     ditem.totalDamage = newHealingTotal;
-    ditem.appliedDamage = -Math.min(appliedHealingTotal, maxHP - ditem.oldHP);
-    ditem.hpDamage = ditem.appliedDamage;
-    ditem.damageDetail[0].value = ditem.appliedDamage;
-    ditem.newHP = ditem.oldHP - ditem.appliedDamage;
+    ditem.hpDamage = -Math.min(appliedHealingTotal, maxHP - ditem.oldHP);
+    ditem.damageDetail[0].value = ditem.hpDamage;
+    ditem.newHP = ditem.oldHP - ditem.hpDamage;
 }
 export let beaconOfHope = {
     name: 'Beacon of Hope',

@@ -67,7 +67,7 @@ async function turnEnd({trigger: {entity: effect, token}}) {
                 priority: 20
             },
             {
-                key: 'flags.midi-qol.fail.critical.all',
+                key: 'flags.midi-qol.grants.noCritical.all',
                 value: 1,
                 mode: 5,
                 priority: 20

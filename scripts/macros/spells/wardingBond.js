@@ -83,10 +83,11 @@ async function onHit({trigger, workflow}) {
     if (!bond) return;
     let damageInfo = workflow.damageList.find(i => i.actorId === trigger.token.actor.id);
     if (!damageInfo) return;
-    if (damageInfo.appliedDamage === 0) return;
+    let appliedDamage = Math.floor(damageInfo.damageDetail.reduce((acc, i) => acc + i.value, 0)) ?? 0;
+    if (!appliedDamage) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Warding Bond: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.WardingBond.Damage'});
     if (!featureData) return;
-    featureData.system.damage.parts[0][0] = damageInfo.appliedDamage;
+    featureData.system.damage.parts[0][0] = appliedDamage;
     let targetWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [bond.object]);
     if (targetWorkflow.targets.first().actor.system.attributes.hp.value != 0) return;
     await genericUtils.remove(effect);

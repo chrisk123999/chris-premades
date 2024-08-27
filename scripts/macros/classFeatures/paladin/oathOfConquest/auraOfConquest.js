@@ -6,7 +6,16 @@ async function create({trigger: {entity: item, target, identifier}}) {
     if (targetEffect) return;
     let frightened = effectUtils.getEffectByStatusID(target.actor, 'frightened');
     if (!frightened) return;
-    if (!actorUtils.getEffects(target.actor).find(i => i.flags['chris-premades']?.conditions?.includes('frightened') && fromUuidSync(i.origin)?.actor === item.actor)) return;
+    let validKeys = ['macro.CE', 'macro.CUB', 'macro.StatusEffect', 'StatusEffect'];
+    let frightenedOfActor = actorUtils.getEffects(target.actor).find(i => 
+        (
+            i.statuses.has('frightened') || // Status Effect dropdown on details page
+            i.flags['chris-premades']?.conditions?.includes('frightened') || // CPR effect medkit
+            i.changes.find(j => validKeys.includes(j.key) && j.value.toLowerCase() === 'frightened') // dae/midi key
+        )
+        && fromUuidSync(i.origin)?.actor === item.actor
+    );
+    if (!frightenedOfActor) return;
     let showIcon = itemUtils.getConfig(item, 'showIcon');
     let effectData = {
         name: item.name,
