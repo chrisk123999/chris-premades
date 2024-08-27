@@ -187,7 +187,7 @@
             "Edit": "Edit",
             "Go": "Go",
             "Import": "Import",
-            "MissingScale": "ACtor does not have {scaleName} scale set!",
+            "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoType": "No Type",
             "Ok": "Ok",
