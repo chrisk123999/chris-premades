@@ -1,13 +1,15 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Master's Flourish",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
+      "book": "Xanathar's Guide to Everything",
+      "page": "16",
+      "license": "",
       "custom": ""
     },
     "activation": {
@@ -46,8 +48,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,15 +66,15 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": [],
     "attack": {
       "bonus": "",
       "flat": false
@@ -83,10 +85,12 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -105,21 +109,19 @@
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
-    },
+    "core": {},
     "chris-premades": {
-      "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+      "info": {
+        "name": "Master's Flourish",
+        "version": "0.12.37",
+        "identifier": "mastersFlourish",
+        "source": "chris-premades"
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "effects": [],
+  "img": "icons/skills/melee/maneuver-daggers-paired-orange.webp",
+  "folder": "KJoNrdQW4KaMJzue",
+  "_id": "PuhzHJ6eJzRKpx1k",
+  "_key": "!items!PuhzHJ6eJzRKpx1k"
 }

@@ -1,7 +1,6 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Bardic Inspiration",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,32 +10,32 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "10",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 60,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 2,
+      "max": "2",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -83,15 +82,22 @@
       "level": null
     }
   },
-  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "forceCEOff": true,
+      "forceCEOn": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
@@ -105,21 +111,26 @@
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
-    },
+    "core": {},
     "chris-premades": {
+      "info": {
+        "name": "Bardic Inspiration",
+        "version": "0.12.36",
+        "identifier": "bardicInspiration",
+        "source": "chris-premades"
+      },
       "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+        "midi": {
+          "item": [
+            "bardicInspiration"
+          ]
+        }
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "effects": [],
+  "img": "icons/magic/control/buff-flight-wings-runes-blue.webp",
+  "folder": "U2mRl2b617YHPfdV",
+  "_id": "n2qNOOSjGx4E4gxD",
+  "_key": "!items!n2qNOOSjGx4E4gxD"
 }

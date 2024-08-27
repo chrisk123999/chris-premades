@@ -4,7 +4,7 @@ async function attack({workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     let feature = itemUtils.getItemByIdentifier(workflow.actor, 'bladeFlourish');
-    if (!feature || !combatUtils.perTurnCheck(feature, 'bladeFlourish', true, workflow.token.id)) return;
+    if (!feature || !combatUtils.perTurnCheck(feature, 'bladeFlourishMovement', true, workflow.token.id)) return;
     let movementData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Blade Flourish: Movement', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Movement'});
     if (!movementData) {
         errors.missingPackItem();
@@ -12,6 +12,12 @@ async function attack({workflow}) {
     }
     if (combatUtils.inCombat() && combatUtils.perTurnCheck(feature, 'bladeFlourishMovement', true, workflow.token.id)) await workflowUtils.syntheticItemDataRoll(movementData, workflow.actor, [workflow.token]);
     await combatUtils.setTurnCheck(feature, 'bladeFlourishMovement');
+}
+async function damage({workflow}) {
+    if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
+    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'bladeFlourish');
+    if (!feature || !combatUtils.perTurnCheck(feature, 'bladeFlourish', true, workflow.token.id)) return;
     if (workflow.hitTargets.size !== 1) return;
     let defensiveData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Defensive Flourish', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Defensive'});
     let mobileData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mobile Flourish', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Mobile'});
@@ -40,7 +46,7 @@ async function attack({workflow}) {
     if (skipUses) bardicDie = {'formula': '1d6'};
     if (!bardicDie) return;
     let damageType = workflow.defaultDamageType;
-    await workflowUtils.bonusDamage(workflow, bardicDie, {damageType});
+    await workflowUtils.bonusDamage(workflow, bardicDie.formula, {damageType});
     let rollResult = workflow.damageRolls.at(-1).total;
     switch (selection) {
         case 'DF': 
@@ -65,16 +71,21 @@ async function mobilePush({workflow}) {
     let bardicResult = workflow.item.flags['chris-premades'].mobileFlourish.roll;
     let distance = Math.floor((5 + bardicResult) / 5) * 5;
     let push = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.BladeFlourish.Push', {distance}));
-    if (push) await tokenUtils.pushToken(workflow.token, workflow.targets.first());
+    if (push) await tokenUtils.pushToken(workflow.token, workflow.targets.first(), distance);
 }
 export let bladeFlourish = {
     name: 'Blade Flourish',
     version: '0.12.37',
     midi: {
-        item: [
+        actor: [
             {
-                pass: 'postDamageRoll',
+                pass: 'attackRollComplete',
                 macro: attack,
+                priority: 50
+            },
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
                 priority: 50
             }
         ]

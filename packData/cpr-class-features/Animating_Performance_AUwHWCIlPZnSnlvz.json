@@ -1,7 +1,7 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Animating Performance",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,13 +11,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "action",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "hour"
     },
     "cover": null,
     "crewed": false,
@@ -64,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -85,41 +85,54 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.lW8Wn2MJUAr94D4z"
     },
     "chris-premades": {
+      "info": {
+        "name": "Animating Performance",
+        "version": "0.12.36",
+        "identifier": "animatingPerformance",
+        "source": "chris-premades"
+      },
       "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
+        "midi": {
+          "item": [
+            "animatingPerformance"
+          ]
+        }
       }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "folder": "q7uMbBI0lpXLbdd1",
+  "_id": "AUwHWCIlPZnSnlvz",
+  "_key": "!items!AUwHWCIlPZnSnlvz"
 }

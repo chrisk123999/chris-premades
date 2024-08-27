@@ -1,7 +1,7 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Mote of Potential Attack",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "img": "icons/magic/water/projectile-ice-snowball.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -25,7 +25,7 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
@@ -42,7 +42,7 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
@@ -54,17 +54,22 @@
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "0",
+          "thunder"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "",
-      "dc": null,
-      "scaling": "spell"
+      "ability": "con",
+      "dc": 10,
+      "scaling": "flat"
     },
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -85,41 +90,41 @@
   },
   "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+    "midi-qol": {
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
-      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "saveDamage": "nodam",
+      "noConcentrationCheck": false,
+      "bonusSaveDamage": "default",
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "effectActivation": false,
-      "itemCondition": "",
-      "effectCondition": ""
-    },
-    "chris-premades": {
-      "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
-      }
+    "core": {
+      "sourceId": "Item.sFzAQQM8UzSExrQL"
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "folder": null,
+  "_id": "SUN03h4rLVZ2vjJ6",
+  "_key": "!items!SUN03h4rLVZ2vjJ6"
 }

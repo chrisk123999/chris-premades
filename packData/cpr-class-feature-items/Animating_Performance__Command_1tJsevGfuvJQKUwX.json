@@ -1,7 +1,7 @@
 {
-  "name": "Irrepressible Dance",
+  "name": "Animating Performance: Command",
   "type": "feat",
-  "img": "icons/tools/instruments/bell-brass-brown.webp",
+  "img": "icons/magic/water/orb-water-ice-pink.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +11,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -46,8 +46,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -86,7 +86,7 @@
   "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Item.eXuenrI2KPh2imxC"
+      "sourceId": "Item.P3YlHIlgtyMMwqN8"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -109,17 +109,12 @@
       "rollAttackPerTarget": "default",
       "effectActivation": false,
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
-    },
-    "chris-premades": {
-      "macros": {
-        "combat": [
-          "animatingPerformanceDance"
-        ]
-      }
     }
   },
-  "folder": "yJPsk1Vk9gPDwwan",
-  "_id": "KpKmo0tN3NiVFBZG",
-  "_key": "!items!KpKmo0tN3NiVFBZG"
+  "folder": null,
+  "_id": "1tJsevGfuvJQKUwX",
+  "_key": "!items!1tJsevGfuvJQKUwX"
 }
