@@ -180,6 +180,11 @@ function getSidebarEffectData(name) {
     delete effectData.origin;
     return effectData;
 }
+async function createEffectFromSidebar(actor, name, options) {
+    let effectData = getSidebarEffectData(name);
+    if (!effectData) return;
+    return await createEffect(actor, effectData, options);
+}
 async function syntheticActiveEffect(effectData, entity) {
     return new CONFIG.ActiveEffect.documentClass(effectData, {parent: entity});
 }
@@ -204,5 +209,6 @@ export let effectUtils = {
     toggleSidebarEffect,
     addSidebarEffect,
     syntheticActiveEffect,
-    getSidebarEffectData
+    getSidebarEffectData,
+    createEffectFromSidebar
 };

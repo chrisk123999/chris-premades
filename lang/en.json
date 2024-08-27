@@ -1138,6 +1138,10 @@
                 "Hint": "When enabled, conditions will automatically have Midi-QOL effects applied to them.",
                 "Name": "Apply Midi-QOL Condition Effects"
             },
+            "automatedAnimationSounds": {
+                "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
+                "Name": "Automated Animations: Play Sounds"
+            },
             "babonusOverlappingEffects": {
                 "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",
                 "Name": "Build A Bonus: Overlapping Spell Effects"
@@ -1174,6 +1178,10 @@
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
             },
+            "colorizeAutomatedAnimations": {
+                "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
+                "Name": "Automated Animations: Colorize Titlebar Icon"
+            },
             "colorizeBuildABonus": {
                 "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
                 "Name": "Build A Bonus: Colorize Titlebar Icon"
@@ -1189,6 +1197,10 @@
             "devTools": {
                 "Hint": "Enable to display development tools.",
                 "Name": "Display Development Tools"
+            },
+            "diceSoNice": {
+                "Hint": "When enabled, Dice So Nice damage roll animations will be delayed until after all damage roll macros are complete.",
+                "Name": "Dice So Nice: Damage Rolls"
             },
             "disableNonConditionStatusEffects": {
                 "Hint": "When enabled, all core non-condition status effects will be removed.",
@@ -1337,14 +1349,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "colorizeAutomatedAnimations": {
-                "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
-                "Name": "Automated Animations: Colorize Titlebar Icon"
-            },
-            "automatedAnimationSounds": {
-                "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
-                "Name": "Automated Animations: Play Sounds"
             }
         },
         "SkillCheck": {
@@ -1437,6 +1441,59 @@
             "AttackerCantSeeTarget": "Attacker Can't See Target",
             "TargetCantSeeAttacker": "Target Can't See Attacker",
             "UnknownTemplate": "Unknown Template"
+        },
+        "Tour": {
+            "0": {
+                "Content": "This tour will guide you through using some of the core features of using Chris's Premades.",
+                "Title": "Welcome!"
+            },
+            "1": {
+                "Content": "All automatins available in this module are stored here.",
+                "Title": "Compendiums"
+            },
+            "10": {
+                "Content": "This module has many settings. Please make sure to carefully go through them all and only enable the ones you need.",
+                "Title": "Module Settings"
+            },
+            "11": {
+                "Content": "Further assistance may be found in the help category.",
+                "Title": "Help"
+            },
+            "2": {
+                "Content": "As an example, the spell \"Fire Shield\" is stored in the \"CPR Spells\" compendium. You can drag the spell from this compendium onto your actor to use it.",
+                "Title": "Compendiums"
+            },
+            "3": {
+                "Content": "Alternatively, you can press the Medkit icon on an item. This will open up the Medkit application, which can be used to automatically replace an item with it's automation.",
+                "Title": "Item Medkit"
+            },
+            "4": {
+                "Content": "The medkit displays the status of the item here.\nRed: Out of date.\nYellow: An automation is available\nGreen: The item is up to date.\nBlue: The item is up to date and has configuration options.",
+                "Title": "Item Status"
+            },
+            "5": {
+                "Content": "Here you can select which automation to apply if multiple sources of automation are available.",
+                "Title": "Available Automations"
+            },
+            "6": {
+                "Content": "If an item has configuration options, you may set them in the configuration tab.",
+                "Title": "Item Configuration"
+            },
+            "7": {
+                "Content": "The Medkit icon on an actor is a bulk updater. You can update all items on an actor here.",
+                "Title": "Actor Medkit"
+            },
+            "8": {
+                "Content": "Some automations require making temporary items on an actor sheet. This module uses journal pages (that you need to fill out on your own) to add descriptions to them.",
+                "Title": "Description Journal"
+            },
+            "9": {
+                "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
+                "Title": "Description Journal"
+            },
+            "Chat": "<hr>View a guided tour of Chris's Premades here:<br><button type=\"button\">Start Tour</button>",
+            "Description": "Take a tour of Chris's Premades.",
+            "Title": "Chris's Premades Tour"
         },
         "Troubleshooter": {
             "Clipboard": "Text copied to clipboard!",

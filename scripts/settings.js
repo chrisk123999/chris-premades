@@ -571,6 +571,18 @@ export function registerSettings() {
             }
         }
     });
+    addSetting({
+        key: 'diceSoNice',
+        type: Boolean,
+        default: false,
+        category: 'integration'
+    });
+    addSetting({
+        key: 'seenTour',
+        type: Boolean,
+        default: false,
+        category: 'development'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

@@ -5,6 +5,7 @@ import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
+import {diceSoNice} from '../integrations/diceSoNice.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -174,6 +175,7 @@ async function preTargeting(workflow) {
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
     if (stop) return true;
+    if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
     if (stop) return true;
@@ -203,6 +205,7 @@ async function attackRollComplete(workflow) {
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
+    if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) diceSoNice.damageRollComplete(workflow);
 }
 async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
