@@ -39,7 +39,8 @@ async function damage({workflow}) {
     ];
     let selection = await dialogUtils.buttonDialog(feature.name, 'CHRISPREMADES.Macros.BladeFlourish.Select', buttons);
     if (!selection) return;
-    let skipUses = uses ? await dialogUtils.confirm(mastersFlourish.name, 'CHRISPREMADES.Macros.BladeFlourish.Master') : true;
+    let skipUses = false;
+    if (mastersFlourish) skipUses = uses ? await dialogUtils.confirm(mastersFlourish.name, 'CHRISPREMADES.Macros.BladeFlourish.Master') : true;
     await combatUtils.setTurnCheck(feature, 'bladeFlourish');
     if (!skipUses) genericUtils.update(bardic, {'system.uses.value': uses - 1});
     let bardicDie = workflow.actor.system.scale.bard?.['bardic-inspiration'];
