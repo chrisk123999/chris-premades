@@ -18,7 +18,7 @@ async function turnStart({trigger: {entity: item}}) {
 }
 export let blessedStrikes = {
     name: 'Blessed Strikes',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         actor: [
             {

@@ -21,7 +21,7 @@ async function use({workflow}) {
 }
 export let harnessDivinePower = {
     name: 'Harness Divine Power',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         item: [
             {

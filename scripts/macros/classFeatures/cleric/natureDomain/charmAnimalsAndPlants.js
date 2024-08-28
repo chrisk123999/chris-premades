@@ -6,7 +6,7 @@ async function early({workflow}) {
 }
 export let charmAnimalsAndPlants = {
     name: 'Channel Divinity: Charm Animals and Plants',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         item: [
             {

@@ -13,7 +13,7 @@ async function use({workflow}) {
         ['DND5E.DamageLightning', 'lightning', {image: 'icons/magic/lightning/bolt-blue.webp'}],
         ['DND5E.DamagePoison', 'poison', {image: 'icons/magic/death/skull-poison-green.webp'}]
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.DragonsBreath.Select', buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', buttons);
     if (!damageType) damageType = 'fire';
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Dragon Breath', {getDescription: true, translate: 'CHRISPREMADES.Macros.DragonsBreath.DragonBreath', identifier: 'dragonBreath', castDataWorkflow: workflow, object: true});
     if (!featureData) {

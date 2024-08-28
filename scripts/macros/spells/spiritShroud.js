@@ -7,7 +7,7 @@ async function use({workflow}) {
         ['DND5E.DamageRadiant', 'radiant', {image: 'icons/magic/light/projectile-beam-yellow.webp'}],
         ['DND5E.DamageCold', 'cold', {image: 'icons/magic/air/wind-tornado-wall-blue.webp'}]
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SpiritShroud.Select', buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', buttons);
     if (!damageType) damageType = 'necrotic';
     let effectData = {
         name: workflow.item.name,

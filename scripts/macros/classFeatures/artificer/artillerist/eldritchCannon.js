@@ -173,7 +173,6 @@ async function fortifiedPosition({workflow}) {
     if (coverBonus >= 2) return;
     let nearbyCannons = tokenUtils.findNearby(targetToken, 10, 'ally', {includeIncapacitated: false, includeToken: true}).filter(i => itemUtils.getItemByIdentifier(i.actor, 'eldritchCannonFortifiedPosition'));
     if (!nearbyCannons.length) return;
-    // This is stupid as hell but I want it to look pretty
     await workflowUtils.bonusAttack(workflow, '-2');
 }
 export let eldritchCannon = {

@@ -51,7 +51,7 @@ async function damage({workflow}) {
 }
 export let divineStrike = {
     name: 'Divine Strike',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         actor: [
             {

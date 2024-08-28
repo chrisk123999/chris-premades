@@ -122,9 +122,11 @@
             "SpellFeature": "Spell Feature"
         },
         "Dialog": {
+            "DamageType": "What damage type?",
             "RemoteMessage": "Waiting for remote dialog selection from",
             "Use": "Use {itemName}?",
-            "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})"
+            "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
+            "WhatDo": "What would you like to do?"
         },
         "Direction": {
             "Direction": "Direction",
@@ -354,9 +356,6 @@
             "ChillTouch": {
                 "Undead": "Chill Touch: Undead Debuff"
             },
-            "ChromaticOrb": {
-                "Select": "What damage type?"
-            },
             "Cloudkill": {
                 "Damage": "Cloudkill: Damage",
                 "NoRoom": "No room to move cloudkill!"
@@ -383,9 +382,6 @@
                 "EndTurn": "Dawn: End Turn",
                 "Move": "Dawn: Move"
             },
-            "DestructiveWave": {
-                "Select": "What damage type?"
-            },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
             },
@@ -394,8 +390,7 @@
                 "Unarmed": "Allow Smites on Unarmed Strikes"
             },
             "DragonsBreath": {
-                "DragonBreath": "Dragon Breath",
-                "Select": "What damage type?"
+                "DragonBreath": "Dragon Breath"
             },
             "DreadLord": {
                 "ShadowAttack": "Dread Lord: Shadow Attack",
@@ -432,11 +427,13 @@
             },
             "ElementalWeapon": {
                 "NoWeapons": "Target has no valid non-magical equipped weapons!",
-                "SelectDamageType": "What damage type?",
                 "SelectWeapon": "Which weapon would you like to enchant?"
             },
             "EmboldeningBond": {
-                "Bonus": "Emboldening Bond Bonus"
+                "Bonus": "Emboldening Bond Bonus",
+                "Protective": "Protective Bond",
+                "ProtectiveDamage": "Protective Bond: Damage",
+                "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
             "EnlargeReduce": {
                 "Enlarge": "Enlarge",
@@ -769,7 +766,6 @@
             },
             "SpiritShroud": {
                 "Hit": "Spirit Shroud: Hit",
-                "Select": "What damage type?",
                 "Slow": "Spirit Shroud: Slow"
             },
             "SpiritualWeapon": {
@@ -834,7 +830,6 @@
             },
             "SummonDraconicSpirit": {
                 "Chromatic": "Chromatic",
-                "DamageType": "What damage type?",
                 "Gem": "Gem",
                 "Metallic": "Metallic",
                 "Rend": "Rend (Draconic Spirit)",
@@ -927,8 +922,17 @@
             "ThunderStep": {
                 "Select": "Teleport a Creature?"
             },
+            "ThunderboltStrike": {
+                "Select": "Select targets to push:"
+            },
             "ThunderousSmite": {
                 "Push": "Thunderous Smite: Push"
+            },
+            "TwilightSanctuary": {
+                "Charmed": "Remove the Charmed condition",
+                "Frightened": "Remove the Frightened condition",
+                "Heal": "Grant {formula} temporary HP",
+                "Temp": "Twilight Sanctuary: Temporary HP"
             },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",

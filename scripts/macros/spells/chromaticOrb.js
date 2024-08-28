@@ -9,7 +9,7 @@ async function damage({workflow}) {
         ['DND5E.DamagePoison', 'poison', {image: 'icons/magic/death/skull-poison-green.webp'}],
         ['DND5E.DamageThunder', 'thunder', {image: 'icons/magic/sonic/explosion-shock-wave-teal.webp'}],
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChromaticOrb.Select', buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', buttons);
     if (!damageType) return;
     workflow.damageRolls[0].options.type = damageType;
     for (let term of workflow.damageRolls[0].terms) {

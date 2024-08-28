@@ -53,7 +53,7 @@ async function longRest({trigger: {entity: item}}) {
 }
 export let blessingOfTheForge = {
     name: 'Blessing of the Forge',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         item: [
             {

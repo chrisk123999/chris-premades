@@ -122,7 +122,7 @@ async function damage({workflow}) {
     } else {
         options = [['DND5E.DamageAcid', 'acid'], ['DND5E.DamageCold', 'cold'], ['DND5E.DamageFire', 'fire'], ['DND5E.DamageLightning', 'lightning'], ['DND5E.DamagePoison', 'poison']];
     }
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SummonDraconicSpirit.DamageType', options);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', options);
     if (!damageType) return;
     let newRoll = await rollUtils.getChangedDamageRoll(workflow.damageRoll, damageType);
     await workflow.setDamageRoll(newRoll);

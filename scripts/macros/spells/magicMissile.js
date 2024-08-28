@@ -16,9 +16,9 @@ async function use({workflow}) {
     let rollEach = itemUtils.getConfig(workflow.item, 'rollEach');
     let formula = itemUtils.getConfig(workflow.item, 'formula');
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
+    let damageFormula = formula;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
     if (!rollEach) {
-        let damageFormula = formula;
-        if (itemUtils.getItemByIdentifier(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
         let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), {type: damageType}).evaluate();
         damageRoll.toMessage({
             rollMode: 'roll',
@@ -28,6 +28,13 @@ async function use({workflow}) {
         featureData.system.damage.parts = [
             [
                 damageRoll.total + '[' + damageType + ']',
+                damageType
+            ]
+        ];
+    } else {
+        featureData.system.damage.parts = [
+            [
+                damageFormula,
                 damageType
             ]
         ];

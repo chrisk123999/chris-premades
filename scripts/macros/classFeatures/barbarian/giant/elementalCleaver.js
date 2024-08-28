@@ -31,7 +31,7 @@ async function infuseWeapon(workflow, selectedWeapon) {
         ['DND5E.DamageThunder', 'thunder', {image: 'icons/magic/sonic/explosion-shock-wave-teal.webp'}],
         ['DND5E.DamageLightning', 'lightning', {image: 'icons/magic/lightning/bolt-blue.webp'}],
     ];
-    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ElementalWeapon.SelectDamageType',buttons);
+    let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType',buttons);
     if (!damageType) return;
     let parts = genericUtils.deepClone(selectedWeapon.system.damage.parts);
     for (let currParts of parts) {

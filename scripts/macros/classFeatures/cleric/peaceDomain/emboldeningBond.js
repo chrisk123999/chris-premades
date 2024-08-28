@@ -1,4 +1,5 @@
-import {combatUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {Teleport} from '../../../../lib/teleport.js';
+import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 function getBonusEffectData() {
     let bonusEffectData = {
@@ -73,7 +74,7 @@ async function checkBonus(token, checkTurnOn, checkTurnOff) {
     if (!checkTurnOn && !bonusEffect) return;
     let expansive = effect.flags['chris-premades']?.emboldeningBond?.expansiveBond;
     let distance = expansive ?? 30;
-    let nearbyTargets = tokenUtils.findNearby(token, distance, 'all').filter(i => effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond'));
+    let nearbyTargets = tokenUtils.findNearby(token, distance, 'ally').filter(i => effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond'));
     if (!nearbyTargets.length) {
         if (bonusEffect) genericUtils.remove(bonusEffect);
         return;
@@ -94,11 +95,12 @@ async function turnStart({trigger: {entity: effect, token}}) {
 }
 async function moved({trigger: {token}}) {
     await checkBonus(token, true, true);
-    let sceneTokens = token.scene.tokens.map.filter(i => i !== token.document && effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond'));
+    let sceneTokens = token.scene.tokens.filter(i => i !== token.document && effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond'));
     await Promise.all(sceneTokens.map(async i => await checkBonus(i, true, true)));
 }
 async function use({workflow}) {
     if (!workflow.targets.size) return;
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -113,14 +115,67 @@ async function use({workflow}) {
     effectData2.duration = effectData.duration;
     let expansive = itemUtils.getItemByIdentifier(workflow.actor, 'expansiveBond');
     let protective = itemUtils.getItemByIdentifier(workflow.actor, 'protectiveBond');
-    if (expansive) genericUtils.setProperty(effectData, 'chris-premades.emboldeningBond.expansiveBond', 60);
-    if (protective) genericUtils.setProperty(effectData, 'chris-premades.emboldeningBond.protectiveBond', true);
+    if (expansive) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.expansiveBond', 60);
+    if (protective) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.protectiveBond', true);
+    if (protective) effectUtils.addMacro(effectData, 'midi.actor', ['emboldeningBondEmboldened']);
+    if (playAnimation) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.playAnimation', true);
     for (let target of workflow.targets) {
-        await effectUtils.createEffects(target.actor, [effectData, effectData2], [{identifier: 'emboldeningBond'}, {identifier: 'emboldeningBondBonus'}]);
+        let effect = await effectUtils.createEffect(target.actor, effectData, {identifier: 'emboldeningBond'});
+        await effectUtils.createEffect(target.actor, effectData2, {identifier: 'emboldeningBondBonus', parentEntity: effect});
     }
 }
-// TODO: Protective bond part of this
-
+async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) {
+    if (['healing', 'temphp'].includes(workflow.defaultDamageType)) return;
+    if (workflow.item.flags?.['chris-premades']?.protectiveBond) return;
+    if (!effect.flags['chris-premades']?.emboldeningBond?.protectiveBond) return;
+    let expansive = effect.flags['chris-premades']?.emboldeningBond?.expansiveBond;
+    let playAnimation = effect.flags['chris-premades']?.emboldeningBond?.playAnimation && animationUtils.jb2aCheck();
+    let distance = expansive ?? 30;
+    let targetToken = workflow.targets.find(i => i.actor === effect.parent);
+    if (!targetToken) return;
+    let nearbyTargets = tokenUtils.findNearby(targetToken, distance, 'ally').filter(i => effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond') && !actorUtils.hasUsedReaction(i.actor));
+    if (!nearbyTargets.length) return;
+    for (let token of nearbyTargets) {
+        let owner = socketUtils.firstOwner(token.document);
+        if (!owner) continue;
+        let content = genericUtils.translate('CHRISPREMADES.Macros.EmboldeningBond.ProtectiveTitle');
+        if (owner.isGM) content += ' [' + token.actor.name + ']';
+        let selection = await dialogUtils.confirm('CHRISPREMADES.Macros.EmboldeningBond.Protective', content, {userId: owner.id});
+        if (!selection) continue;
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Protective Bond: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EmboldeningBond.ProtectiveDamage'});
+        if (!featureData) {
+            errors.missingPackItem();
+            return;
+        }
+        if (expansive) {
+            featureData.system.damage.parts = ditem.rawDamageDetail.map(i => [Math.floor(i.value / 2), 'none']);
+        } else {
+            featureData.system.damage.parts = ditem.rawDamageDetail.map(i => [i.value + '[' + i.type + ']', i.type]);
+        }
+        genericUtils.setProperty(featureData, 'flags.chris-premades.protectiveBond', true);
+        let position = await crosshairUtils.aimCrosshair({
+            token, 
+            maxRange: 5, 
+            centerpoint: targetToken.center, 
+            drawBoundries: true, 
+            trackDistance: true, 
+            fudgeDistance: targetToken.document.width * canvas.dimensions.distance / 2,
+            crosshairsConfig: {
+                size: token.document.width * 2,
+                icon: token.document.texture.src,
+                resolution: token.document.width % 2 === 0 ? -1 : 1
+            }
+        });
+        if (position.cancelled) continue;
+        let teleport = new Teleport([token], token, {animation: playAnimation ? 'mistyStep' : 'none'});
+        teleport.template = position;
+        await teleport._move();
+        await actorUtils.setReactionUsed(token.actor);
+        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [token]);
+        workflowUtils.negateDamageItemDamage(ditem);
+        break;
+    }
+}
 async function setUsedFlag({actor}) {
     let effect = effectUtils.getEffectByIdentifier(actor, 'emboldeningBond');
     if (!effect) return;
@@ -128,7 +183,7 @@ async function setUsedFlag({actor}) {
 }
 export let emboldeningBond = {
     name: 'Emboldening Bond',
-    version: '0.12.37',
+    version: '0.12.40',
     midi: {
         item: [
             {
@@ -138,6 +193,15 @@ export let emboldeningBond = {
             }
         ]
     },
+    config: [
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        },
+    ],
     utilFunctions: {
         setUsedFlag
     }
@@ -145,6 +209,15 @@ export let emboldeningBond = {
 export let emboldeningBondEmboldened = {
     name: 'Emboldening Bond: Emboldened',
     version: emboldeningBond.version,
+    midi: {
+        actor: [
+            {
+                pass: 'targetApplyDamage',
+                macro: targetApplyDamaged,
+                priority: 50
+            }
+        ]
+    },
     movement: [
         {
             pass: 'moved',

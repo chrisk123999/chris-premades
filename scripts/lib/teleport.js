@@ -84,7 +84,7 @@ export class Teleport {
         let config = {
             size: this.controllingToken.document.width * 2,
             icon: this.tokenTexture,
-            resolution: this.updates?.token?.width ?? this.controllingToken.w % 2 === 0 ? 1 : -1
+            resolution: this.updates?.token?.width ?? this.controllingToken.document.width % 2 === 0 ? -1 : 1
         };
         return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
     }
@@ -92,7 +92,7 @@ export class Teleport {
         let config = {
             size: this.tokens[0].document.width * 2,
             icon: this.tokenTexture,
-            resolution: this.updates?.token?.width ?? this.tokens[0].w % 2 === 0 ? 1 : -1
+            resolution: this.updates?.token?.width ?? this.tokens[0].document.width % 2 === 0 ? -1 : 1
         };
         return genericUtils.collapseObjects(Crosshairs.defaultCrosshairsConfig(), config, this.options?.crosshairsConfig ?? {});
     }

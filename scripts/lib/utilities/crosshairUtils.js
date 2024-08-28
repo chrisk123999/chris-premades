@@ -1,14 +1,14 @@
 import {Crosshairs} from '../crosshairs.js';
 import {genericUtils} from './genericUtils.js';
 
-async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance=true}) {
+async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance=true, fudgeDistance=0}) {
     let distance = 0;
     centerpoint = centerpoint ?? token.center;
     let drawing;
     let container;
     let checkDistance = async (crosshairs) => {
         if (maxRange && drawBoundries) {
-            let radius = (canvas.grid.size * (maxRange / canvas.grid.distance));
+            let radius = (canvas.grid.size * ((maxRange + fudgeDistance) / canvas.grid.distance));
             drawing = new PIXI.Graphics();
             drawing.lineStyle(5, 0xffffff);
             let matchTemplates = game.settings.get('core', 'gridTemplates') && (game.settings.get('core', 'gridDiagonals') !== CONST.GRID_DIAGONALS.EXACT);
