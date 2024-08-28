@@ -217,7 +217,7 @@ export async function run() {
                 navigator.clipboard.writeText(output);
                 genericUtils.notify('CHRISPREMADES.Troubleshooter.Clipboard', 'info', {localize: true});
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         }
         async function discord() {

@@ -401,24 +401,23 @@ async function checkEffectItem() {
                 }
             }
         };
-        let ignoreList = genericUtils.getCPRSetting('disableNonConditionStatusEffects') ? conditions.ignoredStatusEffects : [];
-        ignoreList.push('exhaustion');
-        let statusEffectDatas = (await Promise.all(CONFIG.statusEffects.filter(i => {
-            if (!i._id?.includes('dnd')) return false;
-            if (ignoreList.includes(i.id)) return false;
-            return true;
-        }).map(async j => {
-            let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id, {passThrough: true})).toObject();
-            genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j.id);
-            delete effectData.origin;
-            delete effectData._stats;
-            return effectData;
-        })));
-        if (statusEffectDatas.length) {
-            itemData.effects = statusEffectDatas;
-        }
         effectItem = await Item.create(itemData);
     }
+    let ignoreList = genericUtils.getCPRSetting('disableNonConditionStatusEffects') ? conditions.ignoredStatusEffects : [];
+    ignoreList.push('exhaustion');
+    let statusEffectDatas = (await Promise.all(CONFIG.statusEffects.filter(i => {
+        if (!i._id?.includes('dnd')) return;
+        if (ignoreList.includes(i.id)) return;
+        return true;
+    }).filter(k => !effectItem.effects.find(l => l.id === k._id)).map(async j => {
+        let effectData = (await ActiveEffect.implementation.fromStatusEffect(j.id, {passThrough: true})).toObject();
+        genericUtils.setProperty(effectData, 'flags.chris-premades.effectInterface.status', j.id);
+        delete effectData.origin;
+        delete effectData._stats;
+        return effectData;
+    })));
+    if (!statusEffectDatas.length) return;
+    await genericUtils.createEmbeddedDocuments(effectItem, 'ActiveEffect', statusEffectDatas, {keepId: true, 'chris-premades': {ignore: true}});
 }
 function fromStatusEffect(wrapped, statusId, options = {}) {
     if (options.passThrough || !effectItem) return wrapped(statusId, options);

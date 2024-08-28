@@ -575,7 +575,7 @@ export function registerSettings() {
         key: 'diceSoNice',
         type: Boolean,
         default: false,
-        category: 'integration'
+        category: 'development' //Change this back to integration when it works.
     });
     addSetting({
         key: 'seenTour',

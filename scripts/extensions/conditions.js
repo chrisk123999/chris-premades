@@ -65,6 +65,7 @@ function disableNonConditionStatusEffects() {
 async function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;
     if (!updates.statuses || !updates.statuses.length) return;
+    if (options?.['chris-premades']?.ignore) return;
     let splitConditions = genericUtils.getCPRSetting('displayNestedConditions');
     let statusId = CONFIG.statusEffects.find(i => i._id === updates._id)?.id;
     let statuses = splitConditions && statusId ? [statusId] : updates.statuses;

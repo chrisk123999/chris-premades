@@ -219,7 +219,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             genericUtils.setProperty(fieldsets.rolls.options.find(k => k.key === i.field), 'value', i.value);
         });
         genericUtils.setProperty(context.overTime, 'fieldsets', fieldsets);
-        console.log(context);
         return context;
     }
     // Allows the overTime fields to be shown
@@ -269,7 +268,6 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
-        console.log(effectData);
         let updates = {
             'effects': [effectData]
         };

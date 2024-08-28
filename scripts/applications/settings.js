@@ -108,7 +108,12 @@ export async function settingButton(id) {
         case 'monsterCompendium': await selectCompendium('monsterCompendium', 'Actor'); break;
         case 'spellCompendium': await selectCompendium('spellCompendium', 'Item'); break;
         case 'macroCompendium': await selectCompendium('macroCompendium', 'Macro'); break;
-        case 'tour': game.settings.sheet.close(); tours.guidedTour(); break;
+        case 'tour': {
+            Object.values(ui.windows).find(i => i.id === 'chris-troubleshoot-settings')?.close();
+            game.settings.sheet.close();
+            tours.guidedTour();
+            break;
+        }
     }
 }
 export class settingsDevelopment extends settingsBase {
