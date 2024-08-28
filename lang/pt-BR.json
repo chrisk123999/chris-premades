@@ -29,8 +29,10 @@
         "CommonFeatures": {
             "Bite": "Mordida",
             "BreathWeapon": "Arma de Sopro",
+            "ChangeShape": "Mudar Forma",
             "Claws": "Garras",
             "DevilsSight": "Visão Diabólica",
+            "Evasion": "Evasão",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
             "Mending": "Reparar",
@@ -63,6 +65,7 @@
                 "Simple": "Simples",
                 "Water": "Água"
             },
+            "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
                 "Blue": "Azul",
@@ -99,6 +102,7 @@
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
             "RealDarkness": "Usar Escuridão Real:",
+            "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:"
@@ -110,12 +114,17 @@
             "ThreeQuarters": "Três-Quartos de Cobertura",
             "Unknown": "Cobertura Desconhecida"
         },
+        "CustomMacros": {
+            "MissingIdentifier": "A macro \"{name}\" está faltando um identificador e foi ignorada!",
+            "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
+        },
         "CustomTypes": {
             "SpellFeature": "Recurso de Magia"
         },
         "Dialog": {
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
-            "Use": "Usar {itemName}?"
+            "Use": "Usar {itemName}?",
+            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})"
         },
         "Direction": {
             "Direction": "Direção",
@@ -178,9 +187,11 @@
             "Edit": "Editar",
             "Go": "Ir",
             "Import": "Importar",
+            "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
+            "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
@@ -212,10 +223,20 @@
             "AnimateDead": {
                 "Command": "Animar Mortos: Comando"
             },
+            "AnimatingPerformance": {
+                "Command": "Espetáculo Animado: Comando",
+                "Dance": "Dança Irresistível",
+                "ForceEmpoweredSlam": "Batida Energizada",
+                "ImmutableForm": "Forma Imutável",
+                "Size": "Qual tamanho do item?"
+            },
             "Antagonize": {
                 "NoWeapons": "O alvo não possui nenhuma arma equipada!",
                 "SelectTarget": "Quem será atacado?",
                 "SelectWeapon": "Qual arma será usada para atacar?"
+            },
+            "ArcaneAbjuration": {
+                "Plane": "{name} está longe do plano de origem dele?"
             },
             "ArcaneJolt": {
                 "Harm": "Ferir",
@@ -232,8 +253,15 @@
             "AuraOfVitality": {
                 "Healing": "Aura de Vitalidade: Cura"
             },
+            "BalmOfPeace": {
+                "Balm": "Bálsamo da Paz"
+            },
             "Banishment": {
                 "PlaneSelect": "Selecione todos os alvos que não são deste plano."
+            },
+            "BardicInspiration": {
+                "MoteAttack": "Partícula de Potencial Ataque",
+                "MoteHeal": "Partícula de Potencial Cura"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -261,6 +289,19 @@
                 "Grasping": "Mão Esmagadora",
                 "Interposing": "Mão Interposta",
                 "Move": "Mão de Bigby: Mover"
+            },
+            "BladeFlourish": {
+                "Defensive": "Floreio Defensivo",
+                "Master": "Usar um d6 ao invés da Inspiração de Bardo para Floreio de Lâminas?",
+                "Mobile": "Floreio Móvel",
+                "Movement": "Floreio de Lâminas: Deslocamento",
+                "Push": "Empurrar alvo {distance} pés?",
+                "Select": "Usar o Floreio de Lâminas?",
+                "Slashing": "Floreio Cortante"
+            },
+            "BlessingOfTheForge": {
+                "None": "O alvo não possui armas ou armaduras não-mágicas válidas!",
+                "Select": "Qual item você quer imbuir?"
             },
             "BlindingSmite": {
                 "Blind": "Destruição Cegante: Cego"
@@ -393,6 +434,9 @@
                 "NoWeapons": "O alvo não possui armas não-mágicas válidas!",
                 "SelectDamageType": "Qual tipo de dano?",
                 "SelectWeapon": "Qual arma você quer encantar?"
+            },
+            "EmboldeningBond": {
+                "Bonus": "Bônus de Vínculo Encorajador"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -550,6 +594,45 @@
                 "ExtraDamage": "Aplicar 1d6 de dano elétrico adicional?",
                 "LightningLauncher": "Armadura do Infiltrador: Lança-Relâmpagos"
             },
+            "InfuseItem": {
+                "AlreadyServant": "Você já tem um Servo Homúnculo ativo!",
+                "ArcanePropulsionArmor": "Armadura de Propulsão Arcana",
+                "ArcanePropulsionGauntlet": "Manoplas de Propulsão Arcana",
+                "ArmorOfMagicalStrength": "Armadura da Força Mágica",
+                "ChannelMagic": "Servo Homúnculo: Canalizar Magia",
+                "EndAll": "Encerrar Todas Infusões",
+                "EnhancedDefense": "Defesa Aprimorada",
+                "EnhancedWeapon": "Arma Aprimorada",
+                "ForceStrike": "Disparo de Energia",
+                "HomunculusCommand": "Servo Homúnculo: Comando",
+                "HomunculusHeart": "Coração do Servo Homúnculo",
+                "HomunculusServant": "Servo Homúnculo",
+                "Known": "Infusões Conhecidas:",
+                "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
+                "NoArmor": "O alvo não tem uma armadura não-mágica válida equipada!",
+                "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
+                "NoMissing": "Não há slots de magia para recuperar!",
+                "NoShield": "O alvo não tem um escudo não-mágico válida equipada!",
+                "Override": "Infusão {infusionLabel} removida em <b>{itemName}</b> de {oldActorName}.",
+                "RadiantBlind": "Arma Radiante: Cego",
+                "RadiantLight": "Arma Radiante: Luz",
+                "RadiantWeapon": "Arma Radiante",
+                "ReactionUsed": "O Servo Homúnculo já usou sua reação!",
+                "RepeatingShot": "Disparo Recorrente",
+                "RepulsionPush": "Escudo de Repulsão: Empurrar",
+                "RepulsionShield": "Escudo de Repulsão",
+                "ResistProne": "Armadura da Força Mágica: Resistir Caído",
+                "ResistanceType": "Resistência a qual tipo de dano?",
+                "ResistantArmor": "Armadura da Resistência",
+                "ReturningWeapon": "Arma Bumerangue",
+                "Select": "Qual infusão?",
+                "SpellRefuelingRing": "Anel de Reabastecimento de Magia",
+                "TooFar": "Servo Homúnculo Muito Longe!",
+                "TooMany": "Você tem o número máximo de infusões já ativas!",
+                "WhichArmor": "Qual armadura você quer infundir?",
+                "WhichShield": "Qual escudo você quer infundir?",
+                "WhichWeapon": "Qual arma você quer infundir?"
+            },
             "InsectPlague": {
                 "Damage": "Praga de Insetos: Dano"
             },
@@ -605,6 +688,9 @@
             },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
+            },
+            "PreserveLife": {
+                "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
@@ -1087,6 +1173,7 @@
                 "3": "Assistente do MJ",
                 "4": "Mestre do Jogo"
             },
+            "SelectCompendium": "Selecione um compêndio:",
             "abilitySave": {
                 "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para a salvaguarda.",
                 "Name": "Salvaguardas Contextuais"
@@ -1098,6 +1185,10 @@
             "applyConditionChanges": {
                 "Hint": "Quando ativado, as condições terão automaticamente os efeitos do Midi-QOL aplicados a elas.",
                 "Name": "Aplicar Efeitos de Condição do Midi-QOL"
+            },
+            "automatedAnimationSounds": {
+                "Hint": "Quando ativados, os itens com Automated Animations desativadas ainda reproduzirão sons configurados no menu de reconhecimento automático.",
+                "Name": "Automated Animations: Tocar Sons"
             },
             "babonusOverlappingEffects": {
                 "Hint": "Quando ativado, os bônus de aura do Build A Bonus respeitarão o efeito de magia sobreposto e as regras de combinação de efeitos do jogo.",
@@ -1135,13 +1226,17 @@
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
             },
+            "colorizeAutomatedAnimations": {
+                "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
+                "Name": "Automated Animations: Ícone Colorido"
+            },
             "colorizeBuildABonus": {
                 "Hint": "Quando ativado, o ícone da barra de título do Build A Bonus será recolorido se um bônus estiver no item ou efeito.",
-                "Name": "Build A Bonus: Colorir Ícone da Barra de Título"
+                "Name": "Build A Bonus: Ícone Colorido"
             },
             "colorizeDAE": {
                 "Hint": "Quando ativado, o ícone da barra de título do DAE será recolorido se houver um efeito no item.",
-                "Name": "Dynamic Active Effects: Colorir Ícone da Barra de Título"
+                "Name": "Dynamic Active Effects: Ícone Colorido"
             },
             "conditionResistanceAndVulnerability": {
                 "Hint": "Habilita automação de resistência e vulnerabilidde de condição.",
@@ -1150,6 +1245,10 @@
             "devTools": {
                 "Hint": "Habilitar para exibir ferramentas de desenvolvimento.",
                 "Name": "Exibir Ferramentas de Desenvolvimento"
+            },
+            "diceSoNice": {
+                "Hint": "Quando ativado, as animações de rolagem de dano do Dice So Nice serão adiadas até que todas as macros de rolagem de dano sejam concluídas.",
+                "Name": "Dice So Nice: Rolagem de Dano"
             },
             "disableNonConditionStatusEffects": {
                 "Hint": "Quando ativado, todos os efeitos de status do sistema que não sejam uma condição, serão removidos.",
@@ -1211,9 +1310,13 @@
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
             },
+            "macroCompendium": {
+                "Hint": "Compêndio de macros usado para substituir ou adicionar macros adicionais à API CPR. Consulte a documentação sobre como usar isso. (WIP)",
+                "Name": "Compêndio de Macros"
+            },
             "macroInterface": {
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
-                "Name": "Habilitar Interface de Macro"
+                "Name": "Habilitar Interface de Macros"
             },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
@@ -1226,6 +1329,10 @@
             "monsterCompendium": {
                 "Hint": "Uso do compêndio de monstros para certas automações. O ideal é apontar para o seu compêndio de monstros do D&D Beyond.",
                 "Name": "Compêndio de Monstros"
+            },
+            "spellCompendium": {
+                "Hint": "Compêndio de magias usado para determinadas automações. É bom que ele aponte para o seu compêndio de magias do D&D Beyond.",
+                "Name": "Compêndio de Magias"
             },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
@@ -1275,6 +1382,14 @@
                 "Hint": "Adiciona efeitos Temporários à HUD de efeitos de status do token.",
                 "Name": "Efeitos Temporários na HUD"
             },
+            "updateCompanionInitiative": {
+                "Hint": "Define automaticamente a iniciativa do companheiro logo após a iniciativa do jogador, quando rolada.",
+                "Name": "Atualizar Iniciativa do Companheiro"
+            },
+            "updateSummonInitiative": {
+                "Hint": "Define automaticamente a iniciativa da invocação logo após a iniciativa do jogador, quando rolada.",
+                "Name": "Atualizar Iniciativa da Invocação"
+            },
             "useLocalCompendiums": {
                 "Hint": "Use os compêndios locais do mundo ao invés dos compêndios de módulos para pesquisa de itens.",
                 "Name": "Usar Compêndios Locais"
@@ -1318,6 +1433,7 @@
                 "ConstructSpiritClay": "Espírito Mecânico (Argila)",
                 "ConstructSpiritMetal": "Espírito Mecânico (Metal)",
                 "ConstructSpiritStone": "Espírito Mecânico (Pedra)",
+                "DancingItem": "Item Dançante",
                 "DraconicSpirit": "Espírito Dracônico",
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
@@ -1341,6 +1457,7 @@
                 "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
+                "HomunculusServant": "Servo Homúnculo",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
@@ -1374,6 +1491,61 @@
             "AttackerCantSeeTarget": "Atacante Não Consegue Ver Alvo",
             "TargetCantSeeAttacker": "Alvo Não Consegue Ver Atacante",
             "UnknownTemplate": "Modelo Desconhecido"
+        },
+        "Tour": {
+            "0": {
+                "Content": "Este tour irá guiá-lo através do uso de alguns dos principais recursos do Chris's Premades.",
+                "Title": "Bem-Vindo(a)!"
+            },
+            "1": {
+                "Content": "Todas as automações disponíveis neste módulo são armazenados aqui.",
+                "Title": "Compêndios"
+            },
+            "10": {
+                "Content": "Este módulo possui muitas configurações. Certifique-se de examinar todas elas com cuidado e ativar apenas aquelas que você precisa.",
+                "Title": "Configurações do Módulo"
+            },
+            "11": {
+                "Content": "Mais assistência pode ser encontrada na categoria de ajuda.",
+                "Title": "Ajuda"
+            },
+            "2": {
+                "Content": "Por exemplo, a magia \"Fire Shield\" está armazenado no compêndio \"CPR Spells\". Você pode arrastar a magia deste compêndio para o seu ator para usá-la.",
+                "Title": "Compêndios"
+            },
+            "3": {
+                "Content": "Alternativamente, você pode pressionar o ícone do Medkit em um item. Isso abrirá o aplicativo Medkit, que pode ser usado para substituir automaticamente um item com sua automação.",
+                "Title": "Medkit no Item"
+            },
+            "4": {
+                "Content": "O Medkit exibe o status do item aqui.\nVermelho: Desatualizado.\nAmarelo: Uma automação está disponível\nVerde: O item está atualizado.\nAzul: O item está atualizado e tem opções de configuração.",
+                "Title": "Status do Item"
+            },
+            "5": {
+                "Content": "Aqui você pode selecionar qual automação aplicar se diversas fontes de automação estiverem disponíveis.",
+                "Title": "Automações Disponíveis"
+            },
+            "6": {
+                "Content": "Se um item tiver opções de configuração, você poderá defini-las na guia de configuração.",
+                "Title": "Configuração do Item"
+            },
+            "7": {
+                "Content": "O ícone do Medkit em um ator é um atualizador em massa. Você pode atualizar todos os itens de um ator aqui.",
+                "Title": "Medkit no Ator"
+            },
+            "8": {
+                "Content": "Algumas automações exigem a criação de itens temporários em uma ficha de ator. Este módulo usa páginas de diário (que você precisa preencher sozinho) para adicionar descrições a elas.",
+                "Title": "Diário de Descrições"
+            },
+            "9": {
+                "Content": "Por exemplo, a magia \"Dragon's Breath\" criará um recurso temporário chamado \"Sopro de Dragão\" no ator alvo.\nO preenchimento desta página do diário preencherá a descrição quando ela for criada.",
+                "Title": "Diário de Descrições"
+            },
+            "Chat": "<hr>Veja um tour guiado pelo Chris's Premades aqui:<br><button type=\"button\">Começar Tour</button>",
+            "Description": "Faça um tour pelo Chris's Premades.",
+            "Hint": "Comece um tour guiado pelo Chris's Premades.",
+            "Title": "Tour do Chris's Premades",
+            "TourFeatures": "Recursos do Tour"
         },
         "Troubleshooter": {
             "Clipboard": "Texto copiado para a área de transferência!",
