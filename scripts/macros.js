@@ -211,6 +211,7 @@ export {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiri
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
+export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversSweepingAttackAttack, maneuversTacticalAssessment, maneuversTripAttack} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 export {mastersFlourish} from './macros/classFeatures/bard/collegeOfSwords/mastersFlourish.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 export {mightySummoner} from './macros/classFeatures/druid/circleOfTheShepard/mightySummoner.js';
@@ -227,12 +228,14 @@ export {purityOfSpirit} from './macros/classFeatures/paladin/oathOfDevotion/puri
 export {radianceOfTheDawn} from './macros/classFeatures/cleric/lightDomain/radianceOfTheDawn.js';
 export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.js';
 export {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
+export {relentless} from './macros/classFeatures/fighter/battleMaster/relentless.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {starryForm, starryFormActive} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 export {stepsOfNight} from './macros/classFeatures/cleric/twilightDomain/stepsOfNight.js';
 export {summonWildfireSpirit, summonWildfireSpiritTeleport} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
+export {superiorityDice} from './macros/classFeatures/fighter/battleMaster/superiorityDice.js';
 export {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 export {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';

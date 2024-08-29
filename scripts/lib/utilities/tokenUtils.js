@@ -106,7 +106,7 @@ function findDirection(room) {
 function canSee(sourceToken, targetToken) {
     return MidiQOL.canSee(sourceToken, targetToken);
 }
-function canSense(sourceToken, targetToken, senseModes = []) {
+function canSense(sourceToken, targetToken, senseModes = ['all']) {
     return MidiQOL.canSense(sourceToken, targetToken, senseModes);
 }
 async function attachToToken(token, uuidsToAttach) {

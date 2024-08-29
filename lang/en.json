@@ -143,6 +143,7 @@
         "Distance": {
             "0": "0 ft.",
             "10": "10 ft.",
+            "15": "15 ft.",
             "5": "5 ft."
         },
         "EffectInterface": {
@@ -202,7 +203,8 @@
             "Summon": "Summon",
             "Uncontested": "Uncontested",
             "Update": "Update",
-            "Yes": "Yes"
+            "Yes": "Yes",
+            "You": "You"
         },
         "GenericEffects": {
             "ConditionAdvantage": "Condition Advantage",
@@ -218,7 +220,8 @@
         },
         "Macros": {
             "Actions": {
-                "Dodge": "Dodge"
+                "Dodge": "Dodge",
+                "Grapple": "Grapple"
             },
             "AncestralProtectors": {
                 "Target": "Ancestral Protectors: Target"
@@ -674,6 +677,18 @@
                 "RollEach": "Roll Damage for Each Bolt?",
                 "Select": "How many? (Max: {maxMissiles})",
                 "Shield": "Shield as reaction?"
+            },
+            "Maneuvers": {
+                "BaitSwitchAC": "Who gets the AC bonus?",
+                "CommanderConfirm": "Use your reaction to make a single weapon attack?",
+                "CommanderSelect": "Which ally should take an attack?",
+                "NoNearby": "No allies with a reaction can see or hear you!",
+                "PushDistance": "How far do you push the target?",
+                "Pushing": "Pushing Attack: Attack",
+                "SelectManeuver": "Which maneuver to use?",
+                "SelectTarget": "Who do you attack?",
+                "Sweeping": "Sweeping Attack: Attack",
+                "Tripping": "Trip Attack: Attack"
             },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"

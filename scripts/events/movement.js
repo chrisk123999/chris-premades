@@ -56,8 +56,8 @@ function collectTokenMacros(token, pass, distance, target) {
                 triggers.push({
                     entity: item,
                     castData: {
-                        castLevel: i.system.level ?? -1,
-                        baseLevel: i.system.level ?? -1,
+                        castLevel: item.system.level ?? -1,
+                        baseLevel: item.system.level ?? -1,
                         saveDC: itemUtils.getSaveDC(i) ?? -1
                     },
                     macro: i.macro,
