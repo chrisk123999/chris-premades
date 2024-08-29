@@ -1,12 +1,11 @@
-let {RollResolver} = foundry.applications.dice;
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
+import {genericUtils} from '../utils.js';
+export class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(roll, options={}) {
         console.log('hello there');
         super(options);
         this.#roll = roll;
     }
-    /** @inheritDoc */
     static DEFAULT_OPTIONS = {
         id: 'roll-resolver-{id}',
         tag: 'form',
@@ -24,63 +23,50 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
             handler: this._fulfillRoll
         }
     };
-
-    /** @override */
     static PARTS = {
         form: {
-            id: 'form',
-            template: 'templates/dice/roll-resolver.hbs'
+            template: 'modules/chris-premades/templates/roll-resolver-form.hbs'
+        },
+        attack: {
+            template: 'modules/chris-premades/templates/roll-resolver-attack.hbs'
+        },
+        save: {
+            template: 'modules/chris-premades/templates/roll-resolver-save.hbs'
+        },
+        footer: {
+            template: 'modules/chris-premades/templates/form-footer.hbs'
         }
     };
-
-    /**
-     * A collection of fulfillable dice terms.
-     * @type {Map<string, DiceTermFulfillmentDescriptor>}
-     */
     get fulfillable() {
         return this.#fulfillable;
     }
-
     #fulfillable = new Map();
-
-    /**
-     * A function to call when the first pass of fulfillment is complete.
-     * @type {function}
-     */
     #resolve;
-
-    /**
-     * The roll being resolved.
-     * @type {Roll}
-     */
     get roll() {
         return this.#roll;
     }
-
     #roll;
-
-    /* -------------------------------------------- */
-
-    /**
-     * Identify any terms in this Roll that should be fulfilled externally, and prompt the user to do so.
-     * @returns {Promise<void>}  Returns a Promise that resolves when the first pass of fulfillment is complete.
-     */
     async awaitFulfillment() {
         console.log('await fulfillment');
+        console.log(this.roll);
         const fulfillable = await this.#identifyFulfillableTerms(this.roll.terms);
         if ( !fulfillable.length ) return;
         Roll.defaultImplementation.RESOLVERS.set(this.roll, this);
         let promise = new Promise(resolve => this.#resolve = resolve);
-        if (this.roll instanceof CONFIG.Dice.DamageRoll) {
-            await this.constructor._fulfillRoll.call(this);
-            Roll.defaultImplementation.RESOLVERS.delete(this.roll);
-            this.#resolve?.();
-        } else this.render(true);
+        if (this.checkPreferences()) this.render(true);
+        else await this.digitalRoll();
         return promise;
     }
-
-    /* -------------------------------------------- */
-
+    checkPreferences() {
+        if ((this.roll instanceof CONFIG.Dice.DamageRoll) && !this.roll.options?.forceDamageRoll) return false;
+        if (genericUtils.getCPRSetting('manualRollsPreferences')?.[game.user.id]) return true;
+        else return false;
+    }
+    async digitalRoll() {
+        await this.constructor._fulfillRoll.call(this);
+        Roll.defaultImplementation.RESOLVERS.delete(this.roll);
+        this.#resolve?.();
+    }
     /**
      * Register a fulfilled die roll.
      * @param {string} method        The method used for fulfillment.
@@ -102,10 +88,6 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         else this._checkDone();
         return true;
     }
-
-    /* -------------------------------------------- */
-
-    /** @inheritDoc */
     async close(options={}) {
         console.log('close');
         // eslint-disable-next-line no-undef
@@ -114,21 +96,25 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         this.#resolve?.();
         return super.close(options);
     }
-
-    /* -------------------------------------------- */
     render(options) {
         console.log('render options', options);
         super.render(options);
         console.log('has rendered');
     }
-    /** @inheritDoc */
+    _configureRenderOptions(options) {
+        super._configureRenderOptions(options);
+        options.parts = ['form'];
+        if (this.roll.options?.flavor?.toLowerCase()?.includes('attack')) options.parts.push('attack');
+        if (this.roll.options?.flavor?.toLowerCase()?.includes('sav')) options.parts.push('save');
+        options.parts.push('footer');
+    }
     async _prepareContext(_options) {
         console.log('prepare context');
         const context = {
             formula: this.roll.formula,
             groups: {}
         };
-        for ( const fulfillable of this.fulfillable.values() ) {
+        for (const fulfillable of this.fulfillable.values()) {
             const { id, term, method, isNew } = fulfillable;
             fulfillable.isNew = false;
             const config = CONFIG.Dice.fulfillment.methods[method];
@@ -151,12 +137,9 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
                 });
             }
         }
+        console.log(context);
         return context;
     }
-
-    /* -------------------------------------------- */
-
-    /** @inheritDoc */
     async _onSubmitForm(formConfig, event) {
         console.log('on submit form');
         this._toggleSubmission(false);
@@ -169,9 +152,6 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         this.element?.querySelectorAll('input').forEach(input => input.disabled = true);
         this.#resolve();
     }
-
-    /* -------------------------------------------- */
-
     /**
      * Handle prompting for a single extra result from a term.
      * @param {DiceTerm} term  The term.
@@ -220,24 +200,12 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
             });
         });
     }
-
-    /* -------------------------------------------- */
-
-    /**
-     * Update the Roll instance with the fulfilled results.
-     * @this {RollResolver}
-     * @param {SubmitEvent} event          The originating form submission event.
-     * @param {HTMLFormElement} form       The form element that was submitted.
-     * @param {FormDataExtended} formData  Processed data for the submitted form.
-     * @returns {Promise<void>}
-     * @protected
-     */
     static async _fulfillRoll(event, form, formData) {
         console.log('fulfill roll');
         // Update the DiceTerms with the fulfilled values.
-        if (!formData) {
+        if (!formData) { // For fulfilling non-rolled terms
             this.fulfillable.forEach(({term}) => {
-                for (let i = term.results.length; i != term.number; i++) { // Need to account for advantage, how?
+                for (let i = term.results.length; i != term.number; i++) {
                     const roll = { result: term.randomFace(), active: true};
                     term.results.push(roll);
                 }
@@ -256,9 +224,6 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         }
     }
-
-    /* -------------------------------------------- */
-
     /**
      * Identify any of the given terms which should be fulfilled externally.
      * @param {RollTerm[]} terms               The terms.
@@ -280,9 +245,6 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         });
         return fulfillable;
     }
-
-    /* -------------------------------------------- */
-
     /**
      * Add a new term to the resolver.
      * @param {DiceTerm} term    The term.
@@ -298,13 +260,6 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         this.render({ force: true, position: { height: 'auto' } });
         return new Promise(resolve => this.#resolve = resolve);
     }
-
-    /* -------------------------------------------- */
-
-    /**
-     * Check if all rolls have been fulfilled.
-     * @protected
-     */
     _checkDone() {
         console.log('check done');
         // If the form has already in the submission state, we don't need to re-submit.
@@ -318,27 +273,10 @@ class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         this.element.requestSubmit(submitter);
     }
-
-    /* -------------------------------------------- */
-
-    /**
-     * Toggle the state of the submit button.
-     * @param {boolean} enabled  Whether the button is enabled.
-     * @protected
-     */
     _toggleSubmission(enabled) {
         const submit = this.element.querySelector('button[type="submit"]');
         const icon = submit.querySelector('i');
         icon.className = `fas ${enabled ? 'fa-check' : 'fa-spinner fa-pulse'}`;
         submit.disabled = !enabled;
     }
-}
-export function register() {
-    CONFIG.Dice.fulfillment.methods.chrispremades = {
-        label: 'Chris\'s Premades',
-        icon: '<i class="fa-solid fa-kit-medical"></i>',
-        interactive: true,
-        resolver: CPRSingleRollResolver
-    };
-    CONFIG.Dice.fulfillment.defaultMethod = 'chrispremades';
 }

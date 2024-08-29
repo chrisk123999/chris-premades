@@ -119,7 +119,8 @@
         "name": "Emboldening Bond",
         "version": "0.12.40",
         "identifier": "emboldeningBond",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

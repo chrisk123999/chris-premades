@@ -108,7 +108,6 @@
         "damageType": "default"
       }
     },
-    "cf": null,
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,

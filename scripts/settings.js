@@ -17,6 +17,7 @@ import {customTypes} from './extensions/customTypes.js';
 import {chat} from './extensions/chat.js';
 import {initiative} from './extensions/initiative.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
+import {rollResolver} from './extensions/rollResolver.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -581,6 +582,25 @@ export function registerSettings() {
         key: 'seenTour',
         type: Boolean,
         default: false,
+        category: 'development'
+    });
+    addSetting({
+        key: 'manualRolls',
+        type: Boolean,
+        default: false,
+        category: 'development',
+        onChange: value => {
+            if (value) {
+                rollResolver.registerFulfillmentMethod();
+            } else {
+                rollResolver.unregisterFulfillmentMethod();
+            }
+        }
+    });
+    addSetting({
+        key: 'manualRollsPreferences',
+        type: Object,
+        default: {},
         category: 'development'
     });
 }

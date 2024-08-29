@@ -6,6 +6,7 @@ import {AdditionalCompendiums} from './additionalCompendiums.js';
 import {DialogApp} from './dialog.js';
 import {tours} from './tour.js';
 import {troubleshooter} from './troubleshooter.js';
+import {rollResolver} from '../extensions/rollResolver.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
@@ -17,7 +18,8 @@ let buttonLabels = {
     trouble: 'CHRISPREMADES.Generic.Go',
     monsterCompendium: 'CHRISPREMADES.Generic.Select',
     spellCompendium: 'CHRISPREMADES.Generic.Select',
-    macroCompendium: 'CHRISPREMADES.Generic.Select'
+    macroCompendium: 'CHRISPREMADES.Generic.Select',
+    manualRollsPreferences: 'CHRISPREMADES.Generic.Configure'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -114,6 +116,7 @@ export async function settingButton(id) {
             tours.guidedTour();
             break;
         }
+        case 'manualRollsPreferences': await rollResolver.manualRollsPreferencesDialog(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

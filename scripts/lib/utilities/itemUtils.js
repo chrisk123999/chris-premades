@@ -118,6 +118,14 @@ async function enchantItem(item, effectData, {effects = [], items = [], concentr
 function convertDuration(item) {
     return DAE.convertDuration(item.system.duration);
 }
+function getEquipmentState(item) {
+    let currentlyEquipped = item.system.equipped;
+    let currentlyAttuned = item.system.attuned;
+    let attunement = item.system?.attunement;
+    let validTypes = ['required', 'optional'];
+    let requiresAttunement = validTypes.includes(attunement);
+    return ((requiresAttunement && currentlyAttuned) || !requiresAttunement) && currentlyEquipped ? true : false;
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -133,5 +141,6 @@ export let itemUtils = {
     enchantItem,
     getMod,
     convertDuration,
-    setConfig
+    setConfig,
+    getEquipmentState
 };

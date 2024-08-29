@@ -37,16 +37,25 @@ async function addOrUpdate(item, updates, options, id) {
                     packKey = constants.packs.spells;
                     descriptionPackKey = genericUtils.getCPRSetting('spellCompendium');
                     break;
+                case 'itemEquipment':
+                    packKey = constants.packs.itemFeatures;
+                    break;
+                case 'personalSpell':
+                    packKey = genericUtils.getCPRSetting('spellCompendium');
+                    descriptionPackKey = genericUtils.getCPRSetting('spellCompendium');
+                    break;
             }
+            let itemData = await compendiumUtils.getItemFromCompendium(packKey, value.name, {object: true});
+            if (!itemData) return;
             if (descriptionPackKey) {
                 let pack = game.packs.get(descriptionPackKey);
                 if (pack) {
                     let descriptionItemData = await compendiumUtils.getItemFromCompendium(descriptionPackKey, value.name, {ignoreNotFound: true, object: true});
                     if (descriptionItemData) description = descriptionItemData.system.description;
                 }
+            } else if (value.useJournal) {
+                description = itemUtils.getItemDescription(itemData.name);
             }
-            let itemData = await compendiumUtils.getItemFromCompendium(packKey, value.name, {object: true});
-            if (!itemData) return;
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);

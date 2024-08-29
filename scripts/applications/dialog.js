@@ -1,165 +1,4 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-
-/**
- * @param {string} title Dialog Window Title
- * @param {string} content Content placed above the Dialog inputs
- * @param {Array} inputs Form parts of the dialog
- * // ['inputType', [{label: 'label', name: 'name', options: {}}]]
- * @param {string} buttons String corresponding to localized buttons to confirm/cancel dialog
- * // 'yesNo', 'okayCancel'
- * 
- * 
- * 
- */
-/*  
-[
-    ['button', [{label: 'label', name: 'name'}], options: {displayAsRows}],
-    ['checkbox', [{label: 'label', name: 'name', options: {isChecked, image}}], {displayAsRows}],
-    ['radio', [{label: 'label', name: 'name', options: {isChecked, image}}], {radioName, displayAsRows}],
-    ['selectAmount', [{label: 'label', name: 'name', options: {minAmount, maxAmount, currentAmount, weight, image}}], {totalMax, displayAsRows}],
-    ['selectOption', [{label: 'label', name: 'name', options: {options, currentValue, image}}], {displayAsRows}],
-    ['text', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
-    ['number', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
-    ['filePicker', [{label: 'label', name: 'name', options: {currentValue, type}}], {displayAsRows}],
-]
-
-Format is an array containing: [typeOfField, [fields], globalOptionsForThisField]
-
-await chrisPremades.DialogApp.dialog(
-    'Desert Survey', 
-    'Do you like Pie or Cake?', 
-    [
-        [
-            'checkbox', 
-            [
-                {
-                    label: 'Pie',
-                    name: 'pie'
-                }, {
-                    label: 'Cake',
-                    name: 'cake',
-                    options: {
-                        isChecked: true
-                    }
-                }
-            ]
-        ],
-        [
-            'radio', 
-            [
-                {
-                    label: 'I agree',
-                    name: 'agree'
-                }, {
-                    label: 'I disagree',
-                    name: 'disagree',
-                    options: {
-                        isChecked: true
-                    }
-                }
-            ]
-        ],
-        [
-            'selectAmount', 
-            [
-                {
-                    label: 'How Many Cakes',
-                    name: 'howManyCakes',
-                    options: {
-                        minAmount: 0,
-                        maxAmount: 10,
-                        currentAmount: 1,
-                        weight: 1
-                    }
-                }, {
-                    label: 'How Many Pies?',
-                    name: 'howManyPies',
-                    options: {
-                        minAmount: 0,
-                        maxAmount: 5,
-                        currentAmount: 1,
-                        weight: 2
-                    }
-                }
-            ],
-            {
-                totalMax: 10
-            }
-        ],
-        [
-            'text', 
-            [
-                {
-                    label: 'How much do you like cake?',
-                    name: 'likeCake',
-                    options: {
-                        currentValue: 'I really like it'
-                    }
-                }
-            ]
-        ],
-        [
-            'number', 
-            [
-                {
-                    label: 'On a scale of one to ten, how much do you like pie?',
-                    name: 'likePie',
-                    options: {
-                        currentValue: 5
-                    }
-                }
-            ],
-            {
-                displayAsRows: true
-            }
-        ],
-        [
-            'filePicker', 
-            [
-                {
-                    label: 'What does your cake look like?',
-                    name: 'image',
-                    options: {
-                        type: 'image'
-                    }
-                }
-            ]
-        ],
-        [
-            'button',
-            [
-                {
-                    label: "I have a picture!",
-                    name: 'myButton',
-                    options: {
-                        displayAsRows: true,
-                        image: 'icons/creatures/magical/humanoid-horned-rider.webp'
-                    }
-                }
-            ]
-        ]
-    ],
-    'okCancel'
-)
-
-buttonDialog(title, content, buttons)
-// ('My Dialog', 'This is a dialog', ['Cool', true])
-button, checkbox, radio, select, text, number, filePicker
-    dialog - 203 - buttons, select one
-    numberDialog - external, 1 number input, ok cancel
-    selectTarget - 44 - check box, ok cancel
-    remoteDialog - 15
-    menu - 19
-    remoteMenu - 5
-    remoteSelectTarget - 1
-    selectDocument - 32 - fancy button
-    selectDocuments - 4 - fancy w checkbox
-    remoteDocumentDialog - 6
-    remoteDocumentsDialog - 4
-        useSpellWhenEmpty - 1
-
-*/
-
 export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(options) {
         let title, content, inputs, buttons, config;
@@ -213,7 +52,27 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
     };
     /** 
      * Main function of the class, creates a new dialog in itself so that it can wrap the submission in a promise in order to await a result
-     * @param {title, content, inputs, buttons, config} options
+     * @param {title, content, inputs, buttons, options} options
+         * @param {string} title Dialog Window Title
+         * @param {string} content Content placed above the Dialog inputs
+         * @param {Array} inputs Form parts of the dialog
+         * [typeOfField, [fields], globalOptionsForThisField]
+         * @param {string} buttons String corresponding to localized buttons to confirm/cancel dialog
+         * 'yesNo' or 'okayCancel'
+     */
+    /**
+     * 
+     * Possible values for `inputs`
+     * [
+     *     ['button', [{label: 'label', name: 'name'}], options: {displayAsRows}],
+     *     ['checkbox', [{label: 'label', name: 'name', options: {isChecked, image}}], {displayAsRows}],
+     *     ['radio', [{label: 'label', name: 'name', options: {isChecked, image}}], {radioName, displayAsRows}],
+     *     ['selectAmount', [{label: 'label', name: 'name', options: {minAmount, maxAmount, currentAmount, weight, image}}], {totalMax, displayAsRows}],
+     *     ['selectOption', [{label: 'label', name: 'name', options: {options, currentValue, image}}], {displayAsRows}],
+     *     ['text', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
+     *     ['number', [{label: 'label', name: 'name', options: {currentValue, image}}], {displayAsRows}],
+     *     ['filePicker', [{label: 'label', name: 'name', options: {currentValue, type}}], {displayAsRows}],
+     * ] 
      */
     static async dialog(...options) {
         return new Promise((resolve) => {

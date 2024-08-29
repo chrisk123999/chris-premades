@@ -1367,6 +1367,11 @@
                 "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
                 "Name": "Enable Macro Interface"
             },
+            "manualRollsPreferences": {
+                "Hint": "Configure options for Manual Rolls",
+                "Label": "Manual Rolls Preferences",
+                "Name": "Manual Rolls Preferences"
+            },
             "miscPremades": {
                 "1": "No Homebrew or Unearthed Arcana",
                 "2": "No Unearthed Arcana",

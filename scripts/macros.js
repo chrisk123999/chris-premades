@@ -267,3 +267,4 @@ export {squeeze} from './macros/actions/squeeze.js';
 export {underwater, underwaterEffect} from './macros/actions/underwater.js';
 //Items
 export {firearm} from './macros/mechanics/firearm.js';
+export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
