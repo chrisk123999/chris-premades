@@ -17,6 +17,7 @@ function getDamageType(flavorString) {
     }
     return undefined;
 }
+let CPRClass;
 function setup() {
     class CPRWorkflow extends MidiQOL.workflowClass {
         async WorkflowState_NoAction(context = {}) {
@@ -54,6 +55,7 @@ function setup() {
         }
     }
     MidiQOL.workflowClass = CPRWorkflow;
+    CPRClass = CPRWorkflow;
     patch();
 }
 async function callV3DamageHooks(wrapped, damages, token) {
@@ -61,7 +63,7 @@ async function callV3DamageHooks(wrapped, damages, token) {
     return await wrapped(damages, token);
 }
 async function displayDamageRolls(wrapped, doMerge, real) {
-    if (real) return await wrapped(doMerge);
+    if (real || this.constructor.name != CPRClass.name) return await wrapped(doMerge);
 }
 function patch() {
     libWrapper.register('chris-premades', 'MidiQOL.workflowClass.prototype.callv3DamageHooks', callV3DamageHooks, 'WRAPPER');
