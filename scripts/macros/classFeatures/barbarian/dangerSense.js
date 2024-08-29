@@ -1,5 +1,4 @@
 import {effectUtils, itemUtils} from '../../../utils.js';
-
 async function save(actor, saveId) {
     let item = itemUtils.getItemByIdentifier(actor, 'dangerSense');
     if (!item) return;
@@ -10,7 +9,6 @@ async function save(actor, saveId) {
     if (blinded || deafened || incapacitated) return;
     return {label: 'CHRISPREMADES.Macros.DangerSense.CanSee', type: 'advantage'};
 }
-
 export let dangerSense = {
     name: 'Danger Sense',
     version: '0.12.20',

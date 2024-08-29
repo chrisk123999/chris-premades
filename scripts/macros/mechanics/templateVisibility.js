@@ -16,13 +16,13 @@ async function check(workflow) {
     if (!templates.length) return;
     let sourceSenses = source.actor.system.attributes.senses;
     let targetSenses = target.actor.system.attributes.senses;
-    let sourceDS = itemUtils.getItemByIdentifier(source.actor, 'devilsSight');
-    let targetDS = itemUtils.getItemByIdentifier(target.actor, 'devilsSight');
+    let sourceMD = source.actor.flags['chris-premades']?.senses?.magicalDarkness ?? 0;
+    let targetMD = target.actor.flags['chris-premades']?.senses?.magicalDarkness ?? 0;
     let distance = tokenUtils.getDistance(source, target);
     templates.forEach(template => {
         let flagData = template.flags['chris-premades'].template.visibility;
-        let sourceCanSeeTarget = ((sourceDS && flagData.magicalDarkness && distance <= 120) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance));
-        let targetCanSeeSource = ((targetDS && flagData.magicalDarkness && distance <= 120) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance));
+        let sourceCanSeeTarget = ((flagData.magicalDarkness && distance <= sourceMD) || (sourceSenses.tremorsense >= distance) || (sourceSenses.blindsight >= distance) || (sourceSenses.truesight >= distance));
+        let targetCanSeeSource = ((flagData.magicalDarkness && distance <= targetMD) || (targetSenses.tremorsense >= distance) || (targetSenses.blindsight >= distance) || (targetSenses.truesight >= distance));
         let templateName = templateUtils.getName(template);
         if (!targetCanSeeSource) {
             workflow.advantage = true;

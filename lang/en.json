@@ -655,6 +655,11 @@
                 "Command": "Investment of the Chain Master: Command",
                 "Resistance": "Investment of the Chain Master: Familiar Resistance"
             },
+            "Item": {
+                "DanothsVisor": {
+                    "Check": "This check is relies on sight."
+                }
+            },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
                 "RemoveCondition": "Remove a Condition:",
@@ -752,6 +757,10 @@
             },
             "SleetStorm": {
                 "Prone": "Sleet Storm: Prone"
+            },
+            "SneakAttack": {
+                "Scale": "The actor is missing a sneak attack scale value!",
+                "Use": "Use {name}?"
             },
             "SongOfDefense": {
                 "Bladesong": "You must be Bladesinging to use this feature!",
@@ -1156,6 +1165,9 @@
             "Rage": "Rage",
             "SpellFeatures": "Spell Features"
         },
+        "Senses": {
+            "MagicalDarkness": "Magical Darkness"
+        },
         "SettingCategory": {
             "backup": {
                 "Hint": "Settings for character backup.",
@@ -1440,6 +1452,9 @@
             "Title": "Skill Check"
         },
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
+        "SneakAttack": {
+            "Auto": "Automatically Use:"
+        },
         "SpotlightOmnisearch": {
             "Actor": "Selected token is not associated with any actor!",
             "Description": "Summon a {name} using Chris's Premades.",

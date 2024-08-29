@@ -232,6 +232,7 @@ export {starryForm, starryFormActive} from './macros/classFeatures/druid/circleO
 export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';
 export {stepsOfNight} from './macros/classFeatures/cleric/twilightDomain/stepsOfNight.js';
 export {summonWildfireSpirit, summonWildfireSpiritTeleport} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
+export {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';
 export {thunderboltStrike} from './macros/classFeatures/cleric/tempestDomain/thunderboltStrike.js';
 export {totemSpiritBear} from './macros/classFeatures/barbarian/totem/totemSpirit.js';
 export {turnTheFaithless} from './macros/classFeatures/paladin/oathOfTheAncients/turnTheFaithless.js';

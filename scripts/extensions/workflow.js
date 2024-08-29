@@ -1,4 +1,5 @@
 import {midiEvents} from '../events/midi.js';
+import {genericUtils, workflowUtils} from '../utils.js';
 function getDamageType(flavorString) {
     if (flavorString === '') return 'none';
     if (game.system.config.damageTypes[flavorString] !== undefined) {
@@ -39,6 +40,12 @@ function setup() {
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
+            let manualRollsSetting = true;
+            if (manualRollsSetting) {/*test for manual rolls setting*/
+                let newRolls = this.damageRolls.map(async roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, genericUtils.mergeObject(roll.options, {forceDamageRoll: true})));
+                // evaluate them
+                //this.setDamageRolls(newRolls);
+            }
             await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
             this.damageDetail = MidiQOL.createDamageDetail({roll: this.damageRolls, item: this.item, defaultType: this.defaultDamageType});
             return nextState;

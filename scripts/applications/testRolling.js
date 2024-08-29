@@ -1,6 +1,6 @@
 let {RollResolver} = foundry.applications.dice;
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-class CPRRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
+class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(roll, options={}) {
         console.log('hello there');
         super(options);
@@ -70,8 +70,13 @@ class CPRRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
         const fulfillable = await this.#identifyFulfillableTerms(this.roll.terms);
         if ( !fulfillable.length ) return;
         Roll.defaultImplementation.RESOLVERS.set(this.roll, this);
-        this.render(true);
-        return new Promise(resolve => this.#resolve = resolve);
+        let promise = new Promise(resolve => this.#resolve = resolve);
+        if (this.roll instanceof CONFIG.Dice.DamageRoll) {
+            await this.constructor._fulfillRoll.call(this);
+            Roll.defaultImplementation.RESOLVERS.delete(this.roll);
+            this.#resolve?.();
+        } else this.render(true);
+        return promise;
     }
 
     /* -------------------------------------------- */
@@ -175,7 +180,7 @@ class CPRRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
      * @returns {Promise<number|void>}
      */
     async resolveResult(term, method, { reroll=false, explode=false }={}) {
-        console.log('resolve result');
+        console.log('resolve result', term, method, this);
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
             console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
@@ -230,15 +235,24 @@ class CPRRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     static async _fulfillRoll(event, form, formData) {
         console.log('fulfill roll');
         // Update the DiceTerms with the fulfilled values.
-        for ( let [id, results] of Object.entries(formData.object) ) {
-            const { term } = this.fulfillable.get(id);
-            if ( !Array.isArray(results) ) results = [results];
-            for ( const result of results ) {
-                const roll = { result: undefined, active: true };
-                // A null value indicates the user wishes to skip external fulfillment and fall back to the digital roll.
-                if ( result === null ) roll.result = term.randomFace();
-                else roll.result = result;
-                term.results.push(roll);
+        if (!formData) {
+            this.fulfillable.forEach(({term}) => {
+                for (let i = term.results.length; i != term.number; i++) { // Need to account for advantage, how?
+                    const roll = { result: term.randomFace(), active: true};
+                    term.results.push(roll);
+                }
+            });
+        } else {
+            for ( let [id, results] of Object.entries(formData.object) ) {
+                const { term } = this.fulfillable.get(id);
+                if ( !Array.isArray(results) ) results = [results];
+                for ( const result of results ) {
+                    const roll = { result: undefined, active: true };
+                    // A null value indicates the user wishes to skip external fulfillment and fall back to the digital roll.
+                    if ( result === null ) roll.result = term.randomFace();
+                    else roll.result = result;
+                    term.results.push(roll);
+                }
             }
         }
     }
@@ -320,12 +334,11 @@ class CPRRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 }
 export function register() {
-    console.log('!!!!!!!!!!!!!registering!!!!!!!!!!!!!!!!');
     CONFIG.Dice.fulfillment.methods.chrispremades = {
-        label: 'Chris Premades Test',
+        label: 'Chris\'s Premades',
         icon: '<i class="fa-solid fa-kit-medical"></i>',
         interactive: true,
-        resolver: CPRRollResolver
+        resolver: CPRSingleRollResolver
     };
     CONFIG.Dice.fulfillment.defaultMethod = 'chrispremades';
 }

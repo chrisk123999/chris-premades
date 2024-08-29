@@ -30,7 +30,7 @@ import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
 import {chat} from './extensions/chat.js';
 import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
-import { register } from './applications/testRolling.js'; // get rid of later
+import {register} from './applications/testRolling.js'; // get rid of later
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
