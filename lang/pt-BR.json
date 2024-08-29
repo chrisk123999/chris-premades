@@ -122,9 +122,12 @@
             "SpellFeature": "Recurso de Magia"
         },
         "Dialog": {
+            "DamageType": "Qual tipo de dano?",
+            "Invalid": "Entrada Inválida!",
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
-            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})"
+            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "WhatDo": "O que você quer fazer?"
         },
         "Direction": {
             "Direction": "Direção",
@@ -256,6 +259,10 @@
             "BalmOfPeace": {
                 "Balm": "Bálsamo da Paz"
             },
+            "BalmOfTheSummerCourt": {
+                "Num": "d6s",
+                "Select": "Quantos bálsamos?"
+            },
             "Banishment": {
                 "PlaneSelect": "Selecione todos os alvos que não são deste plano."
             },
@@ -354,9 +361,6 @@
             "ChillTouch": {
                 "Undead": "Toque Necrótico: Efeito Morto-Vivo"
             },
-            "ChromaticOrb": {
-                "Select": "Qual o tipo de dano?"
-            },
             "Cloudkill": {
                 "Damage": "Névoa Mortal: Dano",
                 "NoRoom": "Sem espaço para a névoa mortal se mover!"
@@ -383,9 +387,6 @@
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
             },
-            "DestructiveWave": {
-                "Select": "Qual tipo de dano?"
-            },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
             },
@@ -394,8 +395,7 @@
                 "Unarmed": "Permitir Destruições em Ataques Desarmados"
             },
             "DragonsBreath": {
-                "DragonBreath": "Sopro de Dragão",
-                "Select": "Qual tipo de dano?"
+                "DragonBreath": "Sopro de Dragão"
             },
             "DreadLord": {
                 "ShadowAttack": "Senhor do Pavor: Ataque da Sombra",
@@ -432,11 +432,13 @@
             },
             "ElementalWeapon": {
                 "NoWeapons": "O alvo não possui armas não-mágicas válidas!",
-                "SelectDamageType": "Qual tipo de dano?",
                 "SelectWeapon": "Qual arma você quer encantar?"
             },
             "EmboldeningBond": {
-                "Bonus": "Bônus de Vínculo Encorajador"
+                "Bonus": "Bônus de Vínculo Encorajador",
+                "Protective": "Vínculo de Proteção",
+                "ProtectiveDamage": "Vínculo de Proteção: Dano",
+                "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -653,6 +655,11 @@
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
             },
+            "Item": {
+                "DanothsVisor": {
+                   "Check": "Este teste depende da visão."
+                }
+            },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
                 "RemoveCondition": "Remover uma Condição:",
@@ -751,6 +758,10 @@
             "SleetStorm": {
                 "Prone": "Nevasca: Caído"
             },
+            "SneakAttack": {
+                "Scale": "O ator está faltando um valor de escala do Ataque Furtivo!",
+                "Use": "Usar {name}?"
+            },
             "SongOfDefense": {
                 "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
                 "NoSpellSlots": "Você não tem espaços de magia disponíveis!"
@@ -769,7 +780,6 @@
             },
             "SpiritShroud": {
                 "Hit": "Mortalha Espiritual: Acerto",
-                "Select": "Qual o tipo do dano?",
                 "Slow": "Mortalha Espiritual: Lentidão"
             },
             "SpiritualWeapon": {
@@ -786,6 +796,17 @@
             },
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
+            },
+            "StarryForm": {
+                "Archer": "Arqueiro",
+                "ArcherFeature": "Forma Estelar: Flecha Luminosa",
+                "Chalice": "Cálice",
+                "ChaliceFeature": "Forma Estelar: Cálice de Cura",
+                "Change": "Mudar Constelação?",
+                "Dragon": "Dragão",
+                "DragonFeature": "Forma Estelar: Dragão Sagaz",
+                "Heal": "Quem você quer curar?",
+                "Select": "Qual Constelação?"
             },
             "SteelDefender": {
                 "Command": "Defensor de Aço: Comando",
@@ -834,7 +855,6 @@
             },
             "SummonDraconicSpirit": {
                 "Chromatic": "Cromático",
-                "DamageType": "Qual tipo de dano?",
                 "Gem": "Gema",
                 "Metallic": "Metálico",
                 "Rend": "Rasgar (Espírito Dracônico)",
@@ -894,6 +914,14 @@
                 "Skeletal": "Esquelético",
                 "Type": "Qual tipo de Morto-Vivo?"
             },
+            "SummonWildfireSpirit": {
+                "Command": "Espírito do Fogo Selvagem: Comando",
+                "Damage": "Invocar Espírito do Fogo Selvagem: Dano",
+                "FieryTeleportation": "Teletransporte Feérico",
+                "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
+                "FlameSeed": "Semente de Fogo",
+                "PlayAnimation": "Tocar Animação do Teleporte:"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
                 "Select": "De quais planos você extrai a magia?",
@@ -927,8 +955,17 @@
             "ThunderStep": {
                 "Select": "Teleportar uma Criatura?"
             },
+            "ThunderboltStrike": {
+                "Select": "Selecione alvos para empurrar:"
+            },
             "ThunderousSmite": {
                 "Push": "Destruição Trovejante: Empurrão"
+            },
+            "TwilightSanctuary": {
+                "Charmed": "Remover a condição Enfeitiçado",
+                "Frightened": "Remover a condição Amedrontado",
+                "Heal": "Dar {formula} PV temporário",
+                "Temp": "Santuário Crepuscular: PV Temporário"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -946,6 +983,15 @@
                 "Dismiss": "Vínculo Protetor: Dispansar",
                 "Distance": "A distância da ligação está muito grande. Remover a ligação?",
                 "MaxDistance": "Distância Máxima:"
+            },
+            "WildShape": {
+                "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
+                "Equipment": "O que acontece com o seu equipamento?",
+                "KeepSpells": "Permitir conjuração enquanto transformado:",
+                "Merge": "Assimilar / Derrubar",
+                "Revert": "Forma Selvagem: Reverter",
+                "Select": "Selecione a Forma",
+                "Wear": "Vestir"
             },
             "WildSurge": {
                 "BoltOfLight": "Raio de Luz",
@@ -1118,6 +1164,9 @@
         "Section": {
             "Rage": "Fúria",
             "SpellFeatures": "Recursos de Magia"
+        },
+        "Senses": {
+            "MagicalDarkness": "Escuridão Mágica"
         },
         "SettingCategory": {
             "backup": {
@@ -1318,6 +1367,11 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
+            "manualRollsPreferences": {
+                "Hint": "Configurar opções para Manual Rolls",
+                "Label": "Preferências Manual Rolls",
+                "Name": "Preferências Manual Rolls"
+            },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
                 "2": "Sem Unearthed Arcana",
@@ -1403,6 +1457,9 @@
             "Title": "Teste de Perícia"
         },
         "SkipDeadAndUnconscious": "Pular Morto e Inconsciente?",
+        "SneakAttack": {
+            "Auto": "Usar Automaticamente:"
+        },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
             "Description": "Invoque um(a) {name} usando o Chris's Premades.",
@@ -1471,6 +1528,7 @@
                 "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
                 "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
                 "UndeadSpiritSkeletal": "Espírito Morto-Vivo (Esquelético)",
+                "WildfireSpirit": "Espírito do Fogo Selvagem",
                 "Zombie": "Zumbi"
             },
             "CustomAvatar": "Avatar Personalizado {option}",
