@@ -87,7 +87,7 @@ async function teleport({workflow}) {
 }
 export let summonWildfireSpirit = {
     name: 'Summon Wildfire Spirit',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {

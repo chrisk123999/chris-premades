@@ -315,11 +315,11 @@ async function useTripAttack({workflow}) {
 }
 export let maneuversAmbush = {
     name: 'Maneuvers: Ambush',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversBaitAndSwitch = {
     name: 'Maneuvers: Bait and Switch',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -332,7 +332,7 @@ export let maneuversBaitAndSwitch = {
 };
 export let maneuversBrace = {
     name: 'Maneuvers: Brace',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -345,7 +345,7 @@ export let maneuversBrace = {
 };
 export let maneuversCommandersStrike = {
     name: 'Maneuvers: Commander\'s Strike',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -358,15 +358,15 @@ export let maneuversCommandersStrike = {
 };
 export let maneuversCommandingPresence = {
     name: 'Maneuvers: Commanding Presence',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversDisarmingAttack = {
     name: 'Maneuvers: Disarming Attack',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversDistractingStrike = {
     name: 'Maneuvers: Distracting Strike',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -379,15 +379,15 @@ export let maneuversDistractingStrike = {
 };
 export let maneuversEvasiveFootwork = {
     name: 'Maneuvers: Evasive Footwork',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversFeintingAttack = {
     name: 'Maneuvers: Feinting Attack',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversGoadingAttack = {
     name: 'Maneuvers: Goading Attack',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -400,7 +400,7 @@ export let maneuversGoadingAttack = {
 };
 export let maneuversGrapplingStrike = {
     name: 'Maneuvers: Grappling Strike',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -413,11 +413,11 @@ export let maneuversGrapplingStrike = {
 };
 export let maneuversLungingAttack = {
     name: 'Maneuvers: Lunging Attack',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversManeuveringAttack = {
     name: 'Maneuvers: Maneuvering Attack',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -430,11 +430,11 @@ export let maneuversManeuveringAttack = {
 };
 export let maneuversMenacingAttack = {
     name: 'Maneuvers: Menacing Attack',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversParry = {
     name: 'Maneuvers: Parry',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -447,11 +447,11 @@ export let maneuversParry = {
 };
 export let maneuversPrecisionAttack = {
     name: 'Maneuvers: Precision Attack',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversPushingAttack = {
     name: 'Maneuvers: Pushing Attack',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -464,15 +464,15 @@ export let maneuversPushingAttack = {
 };
 export let maneuversQuickToss = {
     name: 'Maneuvers: Quick Toss',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversRally = {
     name: 'Maneuvers: Rally',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversRiposte = {
     name: 'Maneuvers: Riposte',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -485,7 +485,7 @@ export let maneuversRiposte = {
 };
 export let maneuversSweepingAttack = {
     name: 'Maneuvers: Sweeping Attack',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {
@@ -511,11 +511,11 @@ export let maneuversSweepingAttackAttack = {
 };
 export let maneuversTacticalAssessment = {
     name: 'Maneuvers: Tactical Assessment',
-    version: '0.12.44'
+    version: '0.12.43'
 };
 export let maneuversTripAttack = {
     name: 'Maneuvers: Trip Attack',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         item: [
             {

@@ -118,7 +118,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Feinting Attack",
-        "version": "0.12.44",
+        "version": "0.12.43",
         "identifier": "maneuversFeintingAttack",
         "source": "chris-premades"
       }

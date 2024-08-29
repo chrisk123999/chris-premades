@@ -118,7 +118,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Grappling Strike",
-        "version": "0.12.44",
+        "version": "0.12.43",
         "identifier": "maneuversGrapplingStrike",
         "source": "chris-premades"
       },

@@ -116,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Maneuvering Attack",
-        "version": "0.12.44",
+        "version": "0.12.43",
         "identifier": "maneuversManeuveringAttack",
         "source": "chris-premades"
       },

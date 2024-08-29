@@ -119,7 +119,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Lunging Attack",
-        "version": "0.12.44",
+        "version": "0.12.43",
         "identifier": "maneuversLungingAttack",
         "source": "chris-premades"
       }

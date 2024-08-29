@@ -38,7 +38,7 @@ async function hit({workflow}) {
 }
 export let superiorityDice = {
     name: 'Superiority Dice',
-    version: '0.12.44',
+    version: '0.12.43',
     midi: {
         actor: [
             {
