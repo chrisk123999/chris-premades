@@ -1,7 +1,6 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Summon Wildfire Spirit: Damage",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -12,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -22,16 +21,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "10",
       "width": null,
-      "units": "",
+      "units": "ft",
       "type": "creature",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -42,13 +41,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "save",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,7 +55,7 @@
     "damage": {
       "parts": [
         [
-          "1d6[fire] + @prof",
+          "2d6[fire]",
           "fire"
         ]
       ],
@@ -66,11 +64,11 @@
     "formula": "",
     "save": {
       "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,9 +76,17 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
@@ -114,10 +120,12 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+      "sourceId": "Actor.SgPOEUjFWDCmgMNr.Item.YKaB3IXLkpZDwrHv"
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "img": "icons/creatures/abilities/paw-print-orange.webp",
+  "effects": [],
+  "folder": null,
+  "_id": "iFoN9JO0iXAVXDor",
+  "_key": "!items!iFoN9JO0iXAVXDor"
 }

@@ -1,7 +1,6 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Summon Wildfire Spirit",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -12,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -22,16 +21,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 30,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -41,36 +40,30 @@
       "prompt": true
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "charges",
+      "target": "",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,15 +71,22 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -104,9 +104,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
+      "confirmTargets": "never",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -114,10 +112,28 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+      "sourceId": "Actor.SgPOEUjFWDCmgMNr.Item.YKaB3IXLkpZDwrHv"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Summon Wildfire Spirit",
+        "version": "0.12.41",
+        "identifier": "summonWildfireSpirit",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "summonWildfireSpirit"
+          ]
+        }
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "img": "icons/creatures/abilities/paw-print-orange.webp",
+  "effects": [],
+  "folder": "a4eEI4lhV9iqhc4H",
+  "_id": "m5iHyYClgb3GlnbP",
+  "_key": "!items!m5iHyYClgb3GlnbP"
 }

@@ -1,7 +1,7 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Wildfire Spirit: Command",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
+  "img": "icons/creatures/abilities/paw-print-orange.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": null,
       "condition": ""
     },
@@ -22,10 +22,10 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -46,31 +46,25 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,46 +72,45 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.P3YlHIlgtyMMwqN8"
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "folder": null,
+  "_id": "IgcEtJdlKuU9pP2p",
+  "_key": "!items!IgcEtJdlKuU9pP2p"
 }

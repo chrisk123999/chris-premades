@@ -1,7 +1,6 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Wild Shape",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,66 +10,60 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "action",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "inst"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 2,
+      "max": "2",
+      "per": "sr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
-      "amount": null,
+      "target": "",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,15 +71,22 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -105,8 +105,6 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -114,10 +112,31 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.TFrW2QqxsPxxZCBD"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Wild Shape",
+        "version": "0.12.41",
+        "identifier": "wildShape",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "wildShape"
+          ]
+        }
+      },
+      "config": {
+        "compendium": "",
+        "keepSpells": false
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "effects": [],
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+  "folder": "MJGgrwJ5KU8wG36l",
+  "_id": "xy4e8kMjMSoSjRWw",
+  "_key": "!items!xy4e8kMjMSoSjRWw"
 }

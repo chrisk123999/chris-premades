@@ -1,7 +1,6 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Starry Form",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,27 +10,27 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "10",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -41,36 +40,30 @@
       "prompt": true
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "charges",
+      "target": "",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,15 +71,25 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.R8Bl2MzgKssHfJ5g"
+    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -104,20 +107,32 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
+      "confirmTargets": "never",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+    "chris-premades": {
+      "info": {
+        "name": "Starry Form",
+        "version": "0.12.41",
+        "identifier": "starryForm",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "starryForm"
+          ]
+        }
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "effects": [],
+  "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+  "folder": "W6gi4AJvDV7Yhsb0",
+  "_id": "ZNiJigje1uOoHbho",
+  "_key": "!items!ZNiJigje1uOoHbho"
 }

@@ -1,7 +1,7 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Starry Form: Luminous Arrow",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
+  "img": "icons/magic/control/silhouette-hold-change-blue.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,8 +11,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -22,16 +22,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "1",
       "width": null,
       "units": "",
       "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 60,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -42,13 +42,12 @@
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "ability": "wis",
+    "actionType": "rsak",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,20 +56,20 @@
     "damage": {
       "parts": [
         [
-          "1d6[fire] + @prof",
-          "fire"
+          "1d8[radiant] + @mod",
+          "radiant"
         ]
       ],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -78,13 +77,22 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
     "midi-qol": {
+      "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
@@ -99,14 +107,12 @@
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
+      "magicdam": true,
+      "magiceffect": true,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -114,10 +120,10 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+      "sourceId": "Item.7sjFXyYWAbNxXCTm"
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "folder": null,
+  "_id": "KqRxVXEPO5Xs5Z8y",
+  "_key": "!items!KqRxVXEPO5Xs5Z8y"
 }

@@ -79,7 +79,10 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": ""
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -94,10 +97,28 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.n9OooLEBRepp5gF7"
+    },
+    "chris-premades": {
+      "info": {
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "summonWildfireSpiritTeleport"
+          ]
+        }
+      }
     }
   },
   "folder": "GQ0C4nvXf1Y9E5PC",

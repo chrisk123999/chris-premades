@@ -1,0 +1,145 @@
+{
+  "name": "Balm of the Summer Court",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 120,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 0,
+      "max": "@classes.druid.levels",
+      "per": "lr",
+      "recovery": "",
+      "prompt": false
+    },
+    "consume": {
+      "type": "attribute",
+      "target": "",
+      "amount": 1,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "heal",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "0[healing]",
+          "healing"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [
+      "mgc"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "dnd5e": {
+      "sourceId": "Compendium.world.ddb-class-features.Item.ZI1MdtqZdkbxvC1d",
+      "advancementOrigin": "undefined.RBDoGFMYpGXut9hI"
+    },
+    "core": {},
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "grpact": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": ""
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Balm of the Summer Court",
+        "version": "0.12.41",
+        "identifier": "balmOfTheSummerCourt",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "balmOfTheSummerCourt"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/nature/leaf-glow-triple-orange-purple.webp",
+  "folder": "tVROTDhbDXQ7qlJd",
+  "_id": "sGkHIvDTcHwWTRLn",
+  "_key": "!items!sGkHIvDTcHwWTRLn"
+}

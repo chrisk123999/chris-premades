@@ -1,7 +1,6 @@
 {
-  "name": "Flame Seed",
+  "name": "Hidden Paths",
   "type": "feat",
-  "img": "icons/magic/fire/projectile-fireball-orange-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "special",
       "cost": 1,
       "condition": ""
     },
@@ -22,45 +21,39 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "1",
       "width": null,
       "units": "",
       "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 60,
+      "value": 5,
       "long": null,
-      "units": "ft"
+      "units": "touch"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
-      "amount": null,
+      "target": "resources.secondary.value",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "rwak",
-    "attackBonus": "",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -70,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,45 +71,66 @@
       "value": null,
       "charged": false
     },
-    "properties": []
-  },
-  "effects": [],
-  "flags": {
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "properties": [
+      "mgc"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
     },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "core": {},
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
+      "grpact": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.HsPot2GxdXqclM80"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "effectCondition": "",
+      "onUseMacroName": ""
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Hidden Paths",
+        "version": "0.12.41",
+        "identifier": "hiddenPaths",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "hiddenPaths"
+          ]
+        }
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "LW4wzJSf30Npnotv",
-  "_key": "!items!LW4wzJSf30Npnotv"
+  "effects": [],
+  "img": "icons/commodities/tech/smoke-bomb-red-yellow.webp",
+  "folder": "tVROTDhbDXQ7qlJd",
+  "_id": "MKiss9hPOBePgJPA",
+  "_key": "!items!MKiss9hPOBePgJPA"
 }

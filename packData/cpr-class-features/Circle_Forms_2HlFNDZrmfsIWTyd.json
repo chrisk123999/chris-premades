@@ -1,17 +1,19 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Circle Forms",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
+      "book": "Player's Handbook",
+      "page": "69",
+      "license": "",
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "",
       "cost": null,
       "condition": ""
     },
@@ -22,10 +24,10 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
@@ -46,78 +48,81 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": []
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+    "core": {},
+    "chris-premades": {
+      "info": {
+        "name": "Circle Forms",
+        "version": "0.12.41",
+        "identifier": "circleForms",
+        "source": "chris-premades"
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "effects": [],
+  "img": "icons/commodities/claws/claw-bear-brown.webp",
+  "folder": "MSpYOkesW6b6ns0H",
+  "_id": "2HlFNDZrmfsIWTyd",
+  "_key": "!items!2HlFNDZrmfsIWTyd"
 }

@@ -1,0 +1,263 @@
+{
+  "name": "Enhanced Bond",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "babonus": {
+      "bonuses": [
+        {
+          "name": "Enhanced Bond",
+          "img": "icons/magic/nature/wolf-paw-glow-large-orange.webp",
+          "id": "YFdAPpofqgWBZZCq",
+          "type": "damage",
+          "enabled": true,
+          "optional": false,
+          "description": "",
+          "consume": {
+            "enabled": false,
+            "type": "",
+            "scales": false,
+            "formula": "",
+            "value": {
+              "min": "",
+              "max": "",
+              "step": null
+            },
+            "subtype": ""
+          },
+          "aura": {
+            "enabled": false,
+            "range": "",
+            "self": true,
+            "disposition": 2,
+            "blockers": [],
+            "template": false,
+            "require": {
+              "light": false,
+              "sight": false,
+              "sound": false,
+              "move": false
+            }
+          },
+          "filters": {
+            "customScripts": "return !!chrisPremades.utils.effectUtils.getEffectByIdentifier(actor, 'summonWildfireSpirit');",
+            "itemTypes": [
+              "spell"
+            ],
+            "damageTypes": [
+              "fire",
+              "healing"
+            ],
+            "actorCreatureSizes": [],
+            "actorCreatureTypes": [],
+            "actorLanguages": [],
+            "arbitraryComparisons": [],
+            "baseArmors": [],
+            "healthPercentages": {
+              "value": 50,
+              "type": null
+            },
+            "remainingSpellSlots": {
+              "min": null,
+              "max": null,
+              "size": false
+            },
+            "statusEffects": [],
+            "abilities": [],
+            "attackTypes": [],
+            "baseWeapons": [],
+            "creatureTypes": [],
+            "featureTypes": {
+              "subtype": ""
+            },
+            "preparationModes": [],
+            "spellComponents": {
+              "types": [],
+              "match": "ANY"
+            },
+            "spellLevels": [],
+            "spellSchools": [],
+            "targetArmors": [],
+            "targetEffects": [],
+            "tokenSizes": {
+              "size": null,
+              "type": 0,
+              "self": false
+            },
+            "weaponProperties": []
+          },
+          "bonuses": {
+            "bonus": "1d8",
+            "criticalBonusDice": "",
+            "criticalBonusDamage": "",
+            "damageType": "",
+            "modifiers": {
+              "amount": {
+                "enabled": false,
+                "mode": 0,
+                "value": ""
+              },
+              "size": {
+                "enabled": false,
+                "mode": 0,
+                "value": ""
+              },
+              "reroll": {
+                "enabled": false,
+                "value": "",
+                "invert": false,
+                "recursive": false,
+                "limit": ""
+              },
+              "explode": {
+                "enabled": false,
+                "value": "",
+                "once": false,
+                "limit": ""
+              },
+              "minimum": {
+                "enabled": false,
+                "value": "",
+                "maximize": false
+              },
+              "maximum": {
+                "enabled": false,
+                "value": "",
+                "zero": false
+              },
+              "config": {
+                "first": false
+              }
+            }
+          },
+          "sort": 0,
+          "exclusive": false,
+          "reminder": false,
+          "flags": {}
+        }
+      ]
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Actor.3sCaIcuFIUj7TVQd.Item.kXRPyg2PnyBBKfVm"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "enhancedBond",
+        "version": "0.12.41",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/nature/wolf-paw-glow-large-orange.webp",
+  "folder": "a4eEI4lhV9iqhc4H",
+  "_id": "fbpdobUcbLov9cdq",
+  "_key": "!items!fbpdobUcbLov9cdq"
+}

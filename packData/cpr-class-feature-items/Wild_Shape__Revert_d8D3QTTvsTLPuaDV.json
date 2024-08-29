@@ -1,7 +1,7 @@
 {
-  "name": "Fiery Teleportation: Damage",
+  "name": "Wild Shape: Revert",
   "type": "feat",
-  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
+  "img": "icons/creatures/mammals/elk-moose-marked-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,27 +11,27 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": null,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": ""
+      "units": "inst"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -47,30 +47,24 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "save",
-    "attackBonus": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[fire] + @prof",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
     "save": {
-      "ability": "dex",
-      "dc": 10,
-      "scaling": "flat"
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -78,7 +72,16 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "effects": [],
   "flags": {
@@ -86,7 +89,6 @@
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -105,8 +107,6 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
@@ -114,10 +114,19 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Item.zWt6qKlrfCn7t0St"
+      "sourceId": "Item.pRWu5Y2gLElDjkjV"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "wildShapeActive"
+          ]
+        }
+      }
     }
   },
-  "folder": "GQ0C4nvXf1Y9E5PC",
-  "_id": "riEuNXU0WYyDs5HQ",
-  "_key": "!items!riEuNXU0WYyDs5HQ"
+  "folder": null,
+  "_id": "d8D3QTTvsTLPuaDV",
+  "_key": "!items!d8D3QTTvsTLPuaDV"
 }
