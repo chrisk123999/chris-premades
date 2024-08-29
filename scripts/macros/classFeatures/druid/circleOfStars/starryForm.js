@@ -144,7 +144,7 @@ async function late({workflow}) {
 }
 export let starryForm = {
     name: 'Starry Form',
-    version: '0.12.41',
+    version: '0.12.44',
     midi: {
         item: [
             {

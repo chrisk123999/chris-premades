@@ -41,7 +41,7 @@
     },
     "consume": {
       "type": "charges",
-      "target": "",
+      "target": "Compendium.world.CPRClassFeatures.Item.xy4e8kMjMSoSjRWw",
       "amount": 1,
       "scale": false
     },
@@ -117,7 +117,7 @@
     "chris-premades": {
       "info": {
         "name": "Summon Wildfire Spirit",
-        "version": "0.12.41",
+        "version": "0.12.44",
         "identifier": "summonWildfireSpirit",
         "source": "chris-premades",
         "hasAnimation": true

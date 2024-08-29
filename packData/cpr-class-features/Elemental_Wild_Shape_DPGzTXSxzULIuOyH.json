@@ -1,6 +1,9 @@
 {
-  "name": "Starry Form",
+  "folder": "MSpYOkesW6b6ns0H",
+  "name": "Elemental Wild Shape",
   "type": "feat",
+  "_id": "DPGzTXSxzULIuOyH",
+  "img": "icons/magic/nature/wolf-paw-glow-large-teal-blue.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,13 +13,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
-      "value": "10",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -24,13 +27,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -40,13 +43,17 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.world.CPRClassFeatures.Item.xy4e8kMjMSoSjRWw",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,83 +63,58 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.R8Bl2MzgKssHfJ5g"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "chris-premades": {
       "info": {
-        "name": "Starry Form",
+        "identifier": "elementalWildShape",
         "version": "0.12.44",
-        "identifier": "starryForm",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "starryForm"
-          ]
-        }
       }
     }
   },
-  "effects": [],
-  "img": "icons/magic/control/silhouette-hold-change-blue.webp",
-  "folder": "W6gi4AJvDV7Yhsb0",
-  "_id": "ZNiJigje1uOoHbho",
-  "_key": "!items!ZNiJigje1uOoHbho"
+  "_key": "!items!DPGzTXSxzULIuOyH"
 }

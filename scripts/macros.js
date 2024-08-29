@@ -191,6 +191,7 @@ export {dreadLord, dreadLordAura, dreadLordShadowAttack} from './macros/classFea
 export {dreadfulAspect, dreadfulAspectFrightened} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 export {eldritchCannon, eldritchCannonExplosiveCannon, eldritchCannonForceBallista, eldritchCannonFortifiedPosition} from './macros/classFeatures/artificer/artillerist/eldritchCannon.js';
 export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
+export {elementalWildShape} from './macros/classFeatures/druid/circleOfTheMoon/elementalWildShape.js';
 export {emboldeningBond, emboldeningBondEmboldened} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 export {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
 export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansiveBond.js';
