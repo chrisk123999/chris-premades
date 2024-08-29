@@ -876,7 +876,7 @@ export let infuseItem = {
             value: 'animation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
             i18nOption: 'CHRISPREMADES.Summons.CreatureNames.HomunculusServant',
-            type: 'text',
+            type: 'select',
             default: 'default',
             category: 'animation',
             options: constants.summonAnimationOptions

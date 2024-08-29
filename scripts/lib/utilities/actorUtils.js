@@ -100,6 +100,16 @@ function isShapeChanger(actor) {
 async function doConcentrationCheck(actor, saveDC) {
     await MidiQOL.doConcentrationCheck(actor, saveDC);
 }
+async function polymorph(origActor, newActor, options, renderSheet=true) {
+    let hasPermission = socketUtils.hasPermission(origActor, game.user.id);
+    hasPermission = hasPermission && socketUtils.hasPermission(newActor, game.user.id);
+    if (hasPermission) {
+        return await origActor.transformInto(newActor, options, {renderSheet});
+    } else {
+        let tokenUuids = await socket.executeAsGM(sockets.polymorph.name, origActor.uuid, newActor.uuid, options, renderSheet);
+        return Promise.all(tokenUuids.map(async i => await fromUuid(i)));
+    }
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -121,5 +131,6 @@ export let actorUtils = {
     removeReactionUsed,
     hasSpellSlots,
     isShapeChanger,
-    doConcentrationCheck
+    doConcentrationCheck,
+    polymorph
 };

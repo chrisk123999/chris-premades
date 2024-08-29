@@ -151,6 +151,13 @@ async function removeReactionUsed(actorUuid, force) {
     if (!actor) return;
     return MidiQOL.removeReactionUsed(actor, force);
 }
+async function polymorph(origActorUuid, newActorUuid, options, renderSheet=true) {
+    let origActor = await fromUuid(origActorUuid);
+    let newActor = await fromUuid(newActorUuid);
+    if (!origActor || !newActor) return;
+    let tokens = await origActor.transformInto(newActor, options, {renderSheet});
+    return tokens.map(i => i.uuid);
+}
 export let sockets = {
     createEffect,
     createEffects,
@@ -170,7 +177,8 @@ export let sockets = {
     teleport,
     spawnSummon,
     setReactionUsed,
-    removeReactionUsed
+    removeReactionUsed,
+    polymorph
 };
 export let socket;
 export function registerSockets() {

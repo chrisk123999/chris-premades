@@ -123,6 +123,7 @@
         },
         "Dialog": {
             "DamageType": "What damage type?",
+            "Invalid": "Invalid Entry!",
             "RemoteMessage": "Waiting for remote dialog selection from",
             "Use": "Use {itemName}?",
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
@@ -257,6 +258,10 @@
             },
             "BalmOfPeace": {
                 "Balm": "Balm of Peace"
+            },
+            "BalmOfTheSummerCourt": {
+                "Num": "d6s",
+                "Select": "How many balms?"
             },
             "Banishment": {
                 "PlaneSelect": "Select all targets that are not from this plane."
@@ -783,6 +788,17 @@
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
             },
+            "StarryForm": {
+                "Archer": "Archer",
+                "ArcherFeature": "Starry Form: Luminous Arrow",
+                "Chalice": "Chalice",
+                "ChaliceFeature": "Starry Form: Healing Chalice",
+                "Change": "Change Constellation?",
+                "Dragon": "Dragon",
+                "DragonFeature": "Starry Form: Wise Dragon",
+                "Heal": "Who would you like to heal?",
+                "Select": "Which Constellation?"
+            },
             "SteelDefender": {
                 "Command": "Steel Defender: Command",
                 "DeflectAttack": "Deflect Attack",
@@ -889,6 +905,14 @@
                 "Skeletal": "Skeletal",
                 "Type": "What Undead type?"
             },
+            "SummonWildfireSpirit": {
+                "Command": "Wildfire Spirit: Command",
+                "Damage": "Summon Wildfire Spirit: Damage",
+                "FieryTeleportation": "Fiery Teleportation",
+                "FieryTeleportationDamage": "Fiery Teleportation: Damage",
+                "FlameSeed": "Flame Seed",
+                "PlayAnimation": "Play Teleport Animation:"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
                 "Select": "Which planes do you draw magic from?",
@@ -950,6 +974,15 @@
                 "Dismiss": "Warding Bond: Dismiss",
                 "Distance": "Bond distance is too far away, remove bond?",
                 "MaxDistance": "Max Distance:"
+            },
+            "WildShape": {
+                "CustomCompendium": "Custom Wild Shape Compendium Key:",
+                "Equipment": "What happens to your equipment?",
+                "KeepSpells": "Allow spellcasting while transformed:",
+                "Merge": "Merge / Drop",
+                "Revert": "Wild Shape: Revert",
+                "Select": "Select Form",
+                "Wear": "Wear"
             },
             "WildSurge": {
                 "BoltOfLight": "Bolt of Light",
@@ -1475,6 +1508,7 @@
                 "UndeadSpiritGhostly": "Undead Spirit (Ghostly)",
                 "UndeadSpiritPutrid": "Undead Spirit (Putrid)",
                 "UndeadSpiritSkeletal": "Undead Spirit (Skeletal)",
+                "WildfireSpirit": "Wildfire Spirit",
                 "Zombie": "Zombie"
             },
             "CustomAvatar": "{option} Custom Avatar",

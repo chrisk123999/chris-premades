@@ -1,4 +1,4 @@
-import {genericUtils} from '../../utils.js';
+import {animationUtils, genericUtils} from '../../utils.js';
 async function none(token, cornerPosition) {
 
 }
@@ -44,6 +44,39 @@ async function mistyStepPost(token, cornerPosition) {
         .effect()
             .delay(100)
             .file('jb2a.misty_step.02.blue')
+            .atLocation(token, {cacheLocation: false})
+            .scaleToObject(1.5)
+            .belowTokens()
+        .animation()
+            .delay(300)
+            .on(token)
+            .opacity(1)
+            .fadeIn(500)
+        .play();
+}
+async function hiddenPathsPre(token, cornerPosition) {
+    let color = animationUtils.jb2aCheck() === 'patreon' ? 'green' : 'blue';
+    await new Sequence()
+        .effect()
+        .file('jb2a.misty_step.01.' + color)
+        .atLocation(token)
+        .scaleToObject(1.5)
+        .belowTokens()
+        .animation()
+        .delay(300)
+        .on(token)
+        .opacity(0)
+        .fadeIn(500)
+        .waitUntilFinished()
+        .play();
+}
+async function hiddenPathsPost(token, cornerPosition) {
+    let color = animationUtils.jb2aCheck() === 'patreon' ? 'green' : 'blue';
+    /* eslint-disable indent */
+    await new Sequence()
+        .effect()
+            .delay(100)
+            .file('jb2a.misty_step.02.' + color)
             .atLocation(token, {cacheLocation: false})
             .scaleToObject(1.5)
             .belowTokens()
@@ -258,6 +291,10 @@ export let teleportEffects = {
     mistyStep: {
         pre: mistyStepPre,
         post: mistyStepPost
+    },
+    hiddenPaths: {
+        pre: hiddenPathsPre,
+        post: hiddenPathsPost
     },
     vortexWarp: {
         pre: vortexWarpPre,

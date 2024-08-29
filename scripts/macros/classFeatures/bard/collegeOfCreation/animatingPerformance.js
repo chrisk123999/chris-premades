@@ -171,7 +171,7 @@ export let animatingPerformance = {
             value: 'animation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
             i18nOption: 'CHRISPREMADES.Summons.CreatureNames.DancingItem',
-            type: 'text',
+            type: 'select',
             default: 'default',
             category: 'animation',
             options: constants.summonAnimationOptions
