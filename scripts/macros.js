@@ -213,6 +213,7 @@ export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
 export {mastersFlourish} from './macros/classFeatures/bard/collegeOfSwords/mastersFlourish.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
+export {mightySummoner} from './macros/classFeatures/druid/circleOfTheShepard/mightySummoner.js';
 export {moteOfPotential} from './macros/classFeatures/bard/collegeOfCreation/moteOfPotential.js';
 export {naturesWrath} from './macros/classFeatures/paladin/oathOfTheAncients/naturesWrath.js';
 export {pathToTheGrave} from './macros/classFeatures/cleric/graveDomain/pathToTheGrave.js';
