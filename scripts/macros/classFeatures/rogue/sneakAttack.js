@@ -177,7 +177,7 @@ async function damage({trigger, workflow}) {
         }
     }
     if (!doSneak) return;
-    let autoSneak = itemUtils.getConfig(trigger.entity, 'autoSneak');
+    let autoSneak = itemUtils.getConfig(trigger.entity, 'auto');
     if (!autoSneak) {
         let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.translate('CHRISPREMADES.Macros.SneakAttack.Use').replace('{name}', trigger.entity.name));
         if (!selection) return;
