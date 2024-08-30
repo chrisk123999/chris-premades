@@ -330,7 +330,16 @@ export let manifestEcho = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Manifest Echo': [
+                'Manifest Echo - Attack',
+                'Manifest Echo - Teleport',
+                'Manifest Echo - Opportunity Attack'
+            ]
+        }
+    }
 };
 export let manifestEchoActive = {
     name: 'Manifest Echo: Active',

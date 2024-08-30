@@ -27,5 +27,13 @@ export let reaper = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        renamedItems: {
+            'Reaper: Chill Touch': 'Reaper',
+            'Reaper: Sapping Sting': 'Reaper',
+            'Reaper: Spare the Dying': 'Reaper',
+            'Reaper: Toll the Dead': 'Reaper'
+        }
     }
 };

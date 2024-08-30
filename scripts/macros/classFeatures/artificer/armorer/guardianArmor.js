@@ -90,7 +90,15 @@ export let guardianArmor = {
             macro: longRest,
             priority: 50
         }
-    ]
+    ],
+    ddbi: {
+        additionalItems: {
+            'Arcane Armor': [
+                'Arcane Armor: Guardian Model',
+                'Arcane Armor: Infiltrator Model'
+            ]
+        }
+    }
 };
 export let guardianArmorThunderGauntlets = {
     // Note: intentionally different from actual name. Don't want the medkit to light up for a feature item

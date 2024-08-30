@@ -176,7 +176,15 @@ export let animatingPerformance = {
             category: 'animation',
             options: constants.summonAnimationOptions
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Animating Performance': [
+                'Animating Performance: Animate',
+                'Animating Performance: Dancing Item'
+            ]
+        }
+    }
 };
 export let animatingPerformanceDance = {
     name: 'Animating Performance: Irrepressible Dance',

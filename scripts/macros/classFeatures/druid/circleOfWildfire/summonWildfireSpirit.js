@@ -138,7 +138,25 @@ export let summonWildfireSpirit = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Summon Wildfire Spirit': [
+                'Summon Wildfire Spirit: Command'
+            ]
+        },
+        correctedItems: {
+            'Summon Wildfire Spirit': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
+    }
 };
 export let summonWildfireSpiritTeleport = {
     name: 'Summon Wildfire Spirit: Teleport',

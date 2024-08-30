@@ -191,6 +191,15 @@ export let eldritchCannon = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        removedItems: {
+            'Eldritch Cannon': [
+                'Eldritch Cannon: Flamethrower',
+                'Eldritch Cannon: Force Ballista',
+                'Eldritch Cannot: Protector'
+            ]
+        }
     }
 };
 export let eldritchCannonExplosiveCannon = {

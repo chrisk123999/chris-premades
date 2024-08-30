@@ -153,6 +153,15 @@ export let starryForm = {
                 priority: 20
             }
         ]
+    },
+    ddbi: {
+        removedItems: {
+            'Starry Form': [
+                'Starry Form: Archer',
+                'Starry Form: Chalice',
+                'Starry Form: Dragon'
+            ]
+        }
     }
 };
 export let starryFormActive = {

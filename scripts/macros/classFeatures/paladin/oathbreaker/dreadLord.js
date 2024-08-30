@@ -372,7 +372,14 @@ export let dreadLord = {
             default: '',
             category: 'visuals'
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Dread Lord': [
+                'Dread Lord Shadow Attack'
+            ]
+        }
+    }
 };
 export let dreadLordAura = {
     name: 'Dread Lord: Aura',

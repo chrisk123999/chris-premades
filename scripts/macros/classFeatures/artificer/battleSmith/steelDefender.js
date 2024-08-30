@@ -178,7 +178,21 @@ export let steelDefender = {
             category: 'animation',
             options: constants.summonAnimationOptions
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Steel Defender': {
+                system: {
+                    uses: {
+                        max: 1,
+                        per: 'lr',
+                        recovery: '',
+                        value: 1
+                    }
+                }
+            }
+        }
+    }
 };
 export let steelDefenderArcaneJolt = {
     name: 'Steel Defender: Arcane Jolt',

@@ -75,5 +75,19 @@ export let layOnHands = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Lay on Hands Pool': {
+                system: {
+                    uses: {
+                        prompt: false
+                    }
+                }
+            }
+        },
+        renamedItems: {
+            'Lay on Hands Pool': 'Lay on Hands'
+        }
     }
 };
