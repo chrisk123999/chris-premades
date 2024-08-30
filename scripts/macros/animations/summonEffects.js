@@ -697,6 +697,47 @@ async function shadow(location, token, updates, iteration) {
 
         .play();
 }
+async function smoke(location, token, updates, iteration) {
+    let image = token.texture.src;
+    new Sequence()
+        .wait(150)
+
+        .effect()
+        .file('jb2a.smoke.puff.centered.grey')
+        .atLocation(token)
+        .scaleToObject(1.8 * token.texture.scaleX)
+        .randomRotation()
+        .belowTokens()
+        .scaleIn(0, 2000, {'ease': 'easeOutCubic'})
+        .repeats(5, 500,500)
+
+        .effect()
+        .file(image)
+        .atLocation(token)
+        .scaleToObject(token.texture.scaleX)
+        .fadeIn(500, {'ease': 'easeInExpo'})
+        .fadeOut(1500, {'ease': 'easeInExpo'})
+        .filter('ColorMatrix', {'saturate': -1,  'brightness': 0})
+        .filter('Blur', {'blurX': 5, 'blurY': 5})
+        .scaleIn(0, 2000, {'ease': 'easeOutSine'})
+        .duration(3500)
+        .attachTo(token, {'bindAlpha': false})
+        .waitUntilFinished(-1000)
+
+        .effect()
+        .file('jb2a.smoke.puff.centered.grey')
+        .atLocation(token)
+        .scaleToObject(1.8 * token.texture.scaleX)
+        .randomRotation()
+        .fadeOut(2400)
+        .scaleOut(0.25, 2400, {'ease': 'easeOutSine'})
+
+        .animation()
+        .on(token)
+        .fadeIn(500)
+
+        .play();
+}
 async function future(location, token, updates, iteration) {
     let image = token.texture.src;
     let imageSize = token.width * token.texture.scaleX;
@@ -808,5 +849,6 @@ export let summonEffects = {
     'earth': earth,
     'nature': nature,
     'shadow': shadow,
+    'smoke': smoke,
     'future': future
 };

@@ -12,7 +12,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, /*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -53,6 +53,10 @@ export class Summons {
     static async dismiss({trigger}) {
         let effect = trigger.entity;
         if (!effect) return; // shouldn't be possible but just in case
+        // let animName = effect.flags['chris-premades'].dismissAnimation;
+        // let playAnim = animName !== 'none' && animationUtils.jb2aCheck() === 'patreon' && animationUtils.aseCheck();
+        // let animFunction = animationUtils.summonEffects[animName];
+        // playAnim = playAnim && (typeof animFunction === 'function');
         let dismissingSingleSummon = genericUtils.getIdentifier(effect) === 'summonedEffect';
         let summonedEffect;
         if (dismissingSingleSummon) {
@@ -62,6 +66,9 @@ export class Summons {
             if (!effect) {
                 // UNLESS it's a hostile one
                 if (summonedEffect.parent.token.flags?.['chris-premades']?.summons?.turnedHostile) {
+                    // if (playAnim) {
+                    //     animFunction(undefined, summonedEffect.parent.token);
+                    // }
                     await genericUtils.remove(summonedEffect.parent.token);
                 }
                 return;
@@ -71,11 +78,17 @@ export class Summons {
         let scenes = effect.flags['chris-premades']?.summons?.scenes[effect.name];
         if (!summons || !scenes) return;
         if (dismissingSingleSummon && summons.length === 1) {
+            // if (playAnim) {
+            //     animFunction(undefined, summonedEffect.parent.token);
+            // }
             // If last summon, kill the effect
             await genericUtils.remove(effect);
             return;
         } else if (dismissingSingleSummon) {
             let idxToRemove = summons.findIndex(i => i === summonedEffect.parent.token.id);
+            // if (playAnim) {
+            //     animFunction(undefined, summonedEffect.parent.token);
+            // }
             await genericUtils.remove(summonedEffect.parent.token);
             summons.splice(idxToRemove, 1);
             scenes.splice(idxToRemove, 1);
@@ -106,13 +119,21 @@ export class Summons {
             }
         }
         for (let [scene, sceneSummons] of sceneAndIdsTuple) {
+            // if (scene.active && playAnim) {
+            //     for (let currId of sceneSummons) {
+            //         let currToken = scene.tokens.get(currId);
+            //         if (currToken) animFunction(undefined, currToken);
+            //     }
+            // }
             await scene.deleteEmbeddedDocuments('Token', sceneSummons.filter(i => scene.tokens.has(i)));
         }
     }
     static async dismissIfDead({trigger, ditem}) {
         if (ditem.newHP > 0) return;
         let shouldDismiss = await dialogUtils.confirm(trigger.entity.parent.name, 'CHRISPREMADES.Summons.DismissHP');
-        if (shouldDismiss) await Summons.dismiss({trigger});
+        if (!shouldDismiss) return;
+        await Summons.dismiss({trigger});
+        return true;
     }
     static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
@@ -396,7 +417,8 @@ export class Summons {
                     vae: {
                         buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalSummonVaeButtons ?? [])]
                     },
-                    macros: {effect: ['summonUtils'], ...(this.options.dontDismissOnDefeat ? {} : {midi: {actor: ['summonUtils']}})}
+                    macros: {effect: ['summonUtils'], ...(this.options.dontDismissOnDefeat ? {} : {midi: {actor: ['summonUtils']}})},
+                    // dismissAnimation: this.options.dontAnimateOnDismiss ? 'none' : this.options.animation
                 }
             }
         };
@@ -427,7 +449,8 @@ export class Summons {
                         scenes: {
                             [this.originItem.name]: this.spawnedTokensScenes
                         }
-                    }
+                    },
+                    // dismissAnimation: this.options.dontAnimateOnDismiss ? 'none' : this.options.animation
                 }
             }
         };

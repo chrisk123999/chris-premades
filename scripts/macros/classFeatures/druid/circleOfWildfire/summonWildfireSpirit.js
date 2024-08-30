@@ -133,7 +133,7 @@ export let summonWildfireSpirit = {
         },
         {
             value: 'playAnimation',
-            label: 'CHRISPREMADES.Macros.SummonWildfireSpirit.PlayAnimation',
+            label: 'CHRISPREMADES.Config.PlayTeleportAnimation',
             type: 'checkbox',
             default: true,
             category: 'animation'

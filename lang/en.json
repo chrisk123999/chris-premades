@@ -63,8 +63,10 @@
                 "Saiyan": "Saiyan",
                 "Shadow": "Shadow",
                 "Simple": "Simple",
+                "Smoke": "Smoke",
                 "Water": "Water"
             },
+            "ApplyFilter": "Apply Filter:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
@@ -102,6 +104,7 @@
             "DarknessAnimation": "Darkness Animation:",
             "Formula": "Formula:",
             "PlayAnimation": "Play Animation:",
+            "PlayTeleportAnimation": "Play Teleport Animation:",
             "RealDarkness": "Use Real Darkness:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
@@ -700,6 +703,16 @@
                 "Sweeping": "Sweeping Attack: Attack",
                 "Tripping": "Trip Attack: Attack"
             },
+            "ManifestEcho": {
+                "Attack": "Manifest Echo: Attack",
+                "Echo": "{name} Echo",
+                "Far": "{actorName}'s echo is too far away. Remove it?",
+                "Legion": "Create two echos instead of one?",
+                "NoWeapons": "You have no equipped weapons to attack with!",
+                "Teleport": "Manifest Echo: Teleport",
+                "Weapon": "What would you like to attack with?",
+                "Which": "Which Echo?"
+            },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },
@@ -944,8 +957,7 @@
                 "Damage": "Summon Wildfire Spirit: Damage",
                 "FieryTeleportation": "Fiery Teleportation",
                 "FieryTeleportationDamage": "Fiery Teleportation: Damage",
-                "FlameSeed": "Flame Seed",
-                "PlayAnimation": "Play Teleport Animation:"
+                "FlameSeed": "Flame Seed"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
@@ -1313,7 +1325,7 @@
                 "Name": "Check for Updates"
             },
             "classSpellList": {
-                "Hint": "Joural with all class spell lists configured.",
+                "Hint": "Journal with all class spell lists configured.",
                 "Name": "Class Spell List Journal"
             },
             "colorizeAutomatedAnimations": {
@@ -1544,6 +1556,7 @@
                 "DreadLord": "Dread Lord",
                 "EarthElemental": "Earth Elemental",
                 "EarthenHand": "Earthen Hand",
+                "Echo": "Echo",
                 "ElementalSpirit": "Elemental Spirit",
                 "ElementalSpiritAir": "Elemental Spirit (Air)",
                 "ElementalSpiritEarth": "Elemental Spirit (Earth)",

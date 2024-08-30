@@ -328,6 +328,11 @@ const summonAnimationOptions = [
         requiredModules: ['jb2a_patreon']
     },
     {
+        value: 'smoke',
+        label: 'CHRISPREMADES.Config.Animations.Smoke',
+        requiredModules: []
+    },
+    {
         value: 'future',
         label: 'CHRISPREMADES.Config.Animations.Future',
         requiredModules: ['jb2a_patreon']

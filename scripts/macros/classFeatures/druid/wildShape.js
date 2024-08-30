@@ -31,7 +31,7 @@ async function use({workflow}) {
     compendiumDocs = compendiumDocs.filter(i => !disallowedMovements.some(j => i.system.attributes.movement[j]));
     let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
     let elementals = ['air', 'earth', 'fire', 'water'];
-    if (elementalWildShape && workflow.item.system.uses.value >= 2) {
+    if (elementalWildShape && workflow.item.system.uses.value) {
         elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
         compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {specificNames: elementals}));
     }
