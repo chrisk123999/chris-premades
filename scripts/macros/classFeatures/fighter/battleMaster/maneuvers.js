@@ -110,7 +110,7 @@ async function useCommandersStrike({workflow}) {
     await actorUtils.setReactionUsed(selected.actor);
 }
 async function useDistractingStrike({workflow}) {
-    if (!workflow.failedSaves.size) return;
+    if (workflow.targets.size !== 1) return;
     let targetActor = workflow.targets.first()?.actor;
     if (!targetActor) return;
     let effectData = {
