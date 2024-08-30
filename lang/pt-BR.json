@@ -96,6 +96,7 @@
                 "Yellow": "Amarelo"
             },
             "CombatOnly": "Habilitar Somente em Combate",
+            "CompendiumName": "Nome no Compendium {option}:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
@@ -143,6 +144,7 @@
         "Distance": {
             "0": "0 pés",
             "10": "10 pés",
+            "15": "15 pés",
             "5": "5 pés"
         },
         "EffectInterface": {
@@ -194,15 +196,19 @@
             "No": "Não",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
+            "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
+            "Submit": "Enviar",
             "Summon": "Invocação",
+            "Total": "Total",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
-            "Yes": "Sim"
+            "Yes": "Sim",
+            "You": "Você"
         },
         "GenericEffects": {
             "ConditionAdvantage": "Vantagem de Condição",
@@ -218,7 +224,14 @@
         },
         "Macros": {
             "Actions": {
-                "Dodge": "Esquiva"
+                "Dodge": "Esquivar",
+                "Grapple": "Agarrar"
+            },
+            "AllPurposeTool": {
+                "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
+                "Name": "Ferramenta Multifuncional",
+                "Select": "Selecione uma ferramenta de artesão:",
+                "Spell": "Selecione um truque:"
             },
             "AncestralProtectors": {
                 "Target": "Protetores Ancestrais: Alvos"
@@ -376,6 +389,11 @@
             },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
+            },
+            "DanothsVisor": {
+                "Check": "Este teste depende da visão.",
+                "Spyglass": "Viseira de Danoth: Luneta",
+                "XRay": "Viseira de Danoth: Raio-X"
             },
             "DanseMacabre": {
                 "CommandUndead": "Dança Macabra: Comandar Morto-Vivo"
@@ -655,11 +673,6 @@
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
             },
-            "Item": {
-                "DanothsVisor": {
-                   "Check": "Este teste depende da visão."
-                }
-            },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
                 "RemoveCondition": "Remover uma Condição:",
@@ -674,6 +687,18 @@
                 "RollEach": "Rolar Dano para Cada Dardo?",
                 "Select": "Quantos? (Máx: {maxMissiles})",
                 "Shield": "Escudo Arcano como reação?"
+            },
+            "Maneuvers": {
+                "BaitSwitchAC": "Quem recebe o bônus de CA?",
+                "CommanderConfirm": "Usar sua reação para fazer um ataque armado?",
+                "CommanderSelect": "Qual aliado deve atacar?",
+                "NoNearby": "Nenhum aliado com reação pode ver ou ouvir você!",
+                "PushDistance": "O quão longe você empurra o alvo?",
+                "Pushing": "Ataque de Encontrão: Ataque",
+                "SelectManeuver": "Qual manobra usar?",
+                "SelectTarget": "Quem você ataca?",
+                "Sweeping": "Ataque Trespassante: Ataque",
+                "Tripping": "Derrubar: Ataque"
             },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
@@ -1022,6 +1047,18 @@
                 "Save": "Zona da Verdade: Salvaguarda"
             }
         },
+        "ManualRolls": {
+            "Critical": "Crítico",
+            "Failure": "Falha",
+            "Fumble": "Falha Crítica",
+            "Hit": "Acerto",
+            "Miss": "Erro",
+            "QuickButtons": {
+                "Label": "Botões Rápidos",
+                "Tooltip": "Atalhos para completar o rolagem com o resultado desejado"
+            },
+            "Success": "Sucesso"
+        },
         "Medkit": {
             "Categories": {
                 "animation": {
@@ -1275,6 +1312,10 @@
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
             },
+            "classSpellList": {
+                "Hint": "Diário com todas as listas de magias de classe configuradas.",
+                "Name": "Diário de Listas de Magias de Classe"
+            },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
                 "Name": "Automated Animations: Ícone Colorido"
@@ -1355,6 +1396,10 @@
                 "Hint": "Os nomes dos inimigos devem estar ocultos nas caixas de diálogo.",
                 "Name": "Ocultar Nomes"
             },
+            "itemCompendium": {
+                "Hint": "Compêndio de itens usados ​​para determinadas automações.  O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
+                "Name": "Compêndio de Itens"
+            },
             "lastUpdateCheck": {
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
@@ -1385,7 +1430,7 @@
                 "Name": "Compêndio de Monstros"
             },
             "spellCompendium": {
-                "Hint": "Compêndio de magias usado para determinadas automações. É bom que ele aponte para o seu compêndio de magias do D&D Beyond.",
+                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
                 "Name": "Compêndio de Magias"
             },
             "permissionsAutomateItem": {
@@ -1478,6 +1523,7 @@
                 "AberrantSpiritBeholderkin": "Espírito Aberrante (Observador)",
                 "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
                 "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
+                "AirElemental": "Elemental do Ar",
                 "BestialSpirit": "Espírito Feral",
                 "BestialSpiritAir": "Espírito Feral (Ar)",
                 "BestialSpiritLand": "Espírito Feral (Terra)",
@@ -1496,6 +1542,7 @@
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
                 "DraconicSpiritMetallic": "Espírito Dracônico (Metálico)",
                 "DreadLord": "Senhor do Pavor",
+                "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
                 "ElementalSpirit": "Espírito Elemental",
                 "ElementalSpiritAir": "Espírito Elemental (Ar)",
@@ -1511,6 +1558,7 @@
                 "FiendishSpiritDemon": "Espírito Ínfero (Demônio)",
                 "FiendishSpiritDevil": "Espírito Ínfero (Diabo)",
                 "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
+                "FireElemental": "Elemental do Fogo",
                 "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
@@ -1528,6 +1576,7 @@
                 "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
                 "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
                 "UndeadSpiritSkeletal": "Espírito Morto-Vivo (Esquelético)",
+                "WaterElemental": "Elemental da Água",
                 "WildfireSpirit": "Espírito do Fogo Selvagem",
                 "Zombie": "Zumbi"
             },
