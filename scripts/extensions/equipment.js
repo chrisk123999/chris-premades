@@ -19,13 +19,13 @@ async function addOrUpdate(item, updates, options, id) {
     if (previousState === currentState) return;
     if (previousState && !currentState) {
         let removeItems = item.actor.items.filter(i => i.flags['chris-premades']?.equipment?.parent?.id === item.id);
-        let updates = {};
+        let newUpdates = {};
         removeItems.forEach(i => {
             if (!i.system.uses.per) return;
             let key = i.flags['chris-premades'].equipment.parent.key;
-            genericUtils.setProperty(updates, 'flags.chris-premades.equipment.uses.' + key, i.system.uses);
+            genericUtils.setProperty(newUpdates, 'flags.chris-premades.equipment.uses.' + key, i.system.uses);
         });
-        item.updateSource(updates);
+        if (Object.keys(newUpdates).length) await genericUtils.update(item, newUpdates);
         await genericUtils.deleteEmbeddedDocuments(item.actor, 'Item', removeItems.map(i => i.id));
     } else if (!previousState && currentState) {
         let updates = await Promise.all(Object.entries(equipmentData).map(async ([key, value]) => {
@@ -46,6 +46,7 @@ async function addOrUpdate(item, updates, options, id) {
                     break;
             }
             let itemData = await compendiumUtils.getItemFromCompendium(packKey, value.name, {object: true});
+            console.log(genericUtils.duplicate(itemData));
             if (!itemData) return;
             if (descriptionPackKey) {
                 let pack = game.packs.get(descriptionPackKey);
@@ -58,6 +59,7 @@ async function addOrUpdate(item, updates, options, id) {
             }
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
+            console.log(genericUtils.duplicate(itemData));
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
             if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
             if (value.translate) itemData.name = genericUtils.translate(value.translate);

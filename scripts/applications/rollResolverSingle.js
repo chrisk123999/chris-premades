@@ -134,7 +134,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             },
             saveButtons: [
                 {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-succeess', icon: 'fa-solid fa-thumbs-up'}
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-success', icon: 'fa-solid fa-thumbs-up'}
             ],
             attackButtons: [
                 {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
@@ -213,56 +213,79 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     static async _fulfillRoll(event, form, formData) {
         console.log('fulfill roll', formData?.object, event, form);
         console.log(event?.submitter?.name);
-        // Update the DiceTerms with the fulfilled values.
-        if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
-            this.fulfillable.forEach(({term}) => {
-                for (let i = term.results.length; i != term.number; i++) {
-                    const roll = { result: term.randomFace(), active: true};
-                    term.results.push(roll);
-                }
-            });
-        } else {
-            let total = formData.object.total;
-            let dice = (this.roll.terms.reduce((dice, die) => {
-                if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                    dice.max += (die.faces * die.number);
-                    for (let i = 0; i < die.number; i++) {
-                        dice.terms.push(die.faces);
-                    }   
-                } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
-                    dice.multiplier = die.operator === '-' ? -1 : 1;
-                } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
-                    total -= (die.number * dice.multiplier);
-                }
-                return dice;
-            }, {terms: [], max: 0, multiplier: 1})).terms;
-            dice.sort((a, b) => a > b ? 1 : -1);
-            let results = (dice.reduce((results, number) => {
-                results.diceLeft -= 1;
-                if (number + results.diceLeft <= total) {
-                    results.diceArray.push({faces: number, result: number});
-                    total -= number;
-                } else if (1 + results.diceLeft >= total) {
-                    results.diceArray.push({faces: number, result: 1});
-                    total -= 1;
-                } else {
-                    results.diceArray.push({faces: number, result: total - results.diceLeft});
-                    total -= results.diceLeft;
-                }
-                return results;
-            }, {diceLeft: dice.length, diceArray: []})).diceArray;
-            for ( let [rollId, total] of Object.entries(formData.object) ) {
+        if (!event?.submitter?.name || event?.submittter?.name === 'confirm') {
+            if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
                 this.fulfillable.forEach(({term}) => {
-                    let index = results.findIndex(i => i.faces === term.faces);
-                    let result = results[index].result;
                     for (let i = term.results.length; i != term.number; i++) {
-                        const roll = { result: result, active: true };
+                        const roll = { result: term.randomFace(), active: true};
                         term.results.push(roll);
                     }
-                    results.splice(index, 1);
                 });
+            } else {
+                let total = formData.object.total;
+                let dice = (this.roll.terms.reduce((dice, die) => {
+                    if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
+                        dice.max += (die.faces * die.number);
+                        for (let i = 0; i < die.number; i++) {
+                            dice.terms.push(die.faces);
+                        }   
+                    } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
+                        dice.multiplier = die.operator === '-' ? -1 : 1;
+                    } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
+                        total -= (die.number * dice.multiplier);
+                    }
+                    return dice;
+                }, {terms: [], max: 0, multiplier: 1})).terms;
+                dice.sort((a, b) => a > b ? 1 : -1);
+                let results = (dice.reduce((results, number) => {
+                    results.diceLeft -= 1;
+                    if (number + results.diceLeft <= total) {
+                        results.diceArray.push({faces: number, result: number});
+                        total -= number;
+                    } else if (1 + results.diceLeft >= total) {
+                        results.diceArray.push({faces: number, result: 1});
+                        total -= 1;
+                    } else {
+                        results.diceArray.push({faces: number, result: total - results.diceLeft});
+                        total -= results.diceLeft;
+                    }
+                    return results;
+                }, {diceLeft: dice.length, diceArray: []})).diceArray;
+                for ( let [rollId, total] of Object.entries(formData.object) ) {
+                    this.fulfillable.forEach(({term}) => {
+                        let index = results.findIndex(i => i.faces === term.faces);
+                        let result = results[index].result;
+                        for (let i = term.results.length; i != term.number; i++) {
+                            const roll = { result: result, active: true };
+                            term.results.push(roll);
+                        }
+                        results.splice(index, 1);
+                    });
+                }
+            }
+        } else {
+            switch (event.submitter.name) {
+                case 'save-failure':
+                case 'attack-fumble':
+                    this.setAllDiceTerms('min');
+                    break;
+                case 'save-success':
+                case 'attack-critical':
+                    this.setAllDiceTerms('max');
+                    break;
+                case 'attack-miss':
+                case 'attack-hit':
+                    console.log(this.roll);
             }
         }
+    }
+    setAllDiceTerms(number) {
+        this.fulfillable.forEach(({term}) => {
+            for (let i = term.results.length; i != term.number; i++) {
+                const roll = { result: number === 'min' ? 1 : number === 'max' ? term.faces : number, active: true};
+                term.results.push(roll);
+            }
+        });
     }
     /**
      * Identify any of the given terms which should be fulfilled externally.
