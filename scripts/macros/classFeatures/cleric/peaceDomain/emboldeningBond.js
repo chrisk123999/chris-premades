@@ -161,7 +161,7 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
             trackDistance: true, 
             fudgeDistance: targetToken.document.width * canvas.dimensions.distance / 2,
             crosshairsConfig: {
-                size: token.document.width * 2,
+                size: canvas.grid.distance * token.document.width / 2,
                 icon: token.document.texture.src,
                 resolution: token.document.width % 2 === 0 ? -1 : 1
             }

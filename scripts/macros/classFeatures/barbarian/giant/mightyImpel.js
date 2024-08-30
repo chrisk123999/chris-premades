@@ -12,7 +12,7 @@ async function use({workflow}) {
         token: workflow.token, 
         maxRange: 30, 
         crosshairsConfig: {
-            size: targetToken.document.width * 2,
+            size: canvas.grid.distance * targetToken.document.width / 2,
             icon: targetToken.document.texture.src, 
             resolution: targetToken.document.width % 2 ? 1 : -1
         }, 

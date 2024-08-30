@@ -174,7 +174,7 @@ export class Summons {
         let tokenImg = tokenDocument.texture.src;
         let rotation = this.tokenUpdates?.rotation ?? tokenDocument.rotation ?? 0;
         let crosshairsConfig = genericUtils.mergeObject(this.options?.crosshairs ?? {}, {
-            size: tokenDocument.width * 2,
+            size: canvas.grid.distance * tokenDocument.width / 2,
             icon: tokenImg,
             name: tokenDocument.name,
             direction: 0,
