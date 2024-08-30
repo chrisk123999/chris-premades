@@ -26,12 +26,12 @@ async function useBaitAndSwitch({workflow}) {
         ],
     };
     let sourceUpdate = {
-        id: workflow.token.document.id,
+        _id: workflow.token.document.id,
         x: targetToken.document.x,
         y: targetToken.document.y
     };
     let targetUpdate = {
-        id: targetToken.document.id,
+        _id: targetToken.document.id,
         x: workflow.token.document.x,
         y: workflow.token.document.y
     };
