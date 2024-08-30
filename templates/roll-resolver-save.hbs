@@ -2,11 +2,10 @@
     <fieldset class="cpr-fieldset">
         <legend data-tooltip="{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Tooltip"}}">{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Label"}}</legend>
         {{#each saveButtons as |button|}}
-        <button type="{{button.type}}" {{#if button.name}}name="{{button.name}}"{{/if}} class="{{button.cssClass}}"
-                {{#if button.action}}data-action="{{button.action}}"{{/if}} {{#if button.disabled}}disabled{{/if}}>
-            {{#if button.icon}}<i class="{{button.icon}}" inert></i>{{/if}}
-            {{#if button.label}}<label inert>{{localize button.label}}</label>{{/if}}
-        </button>
+            <button type="{{button.type}}" name="{{button.name}}">
+                <i class="{{button.icon}}" inert></i>
+                <label inert>{{localize button.label}}</label>
+            </button>
         {{/each}}
     </fieldset>
 </footer>

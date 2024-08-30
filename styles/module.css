@@ -311,6 +311,13 @@ form .cpr-row-center {
     color: var(--color-light-3) !important;
 }
 
+/* Roll Resolver Styles */
+
+footer.roll-resolver-attack fieldset.cpr-fieldset.cpr-row-center {
+    margin: 10px 0px 10px 0px;
+    gap: 0px;
+}
+
 /* Coloring Styles */
 
 [data-medkit-color="pink"] {

@@ -4,9 +4,6 @@ async function getSpellsOfLevel(level, {identifier} = {}) {
     return documents.filter(i => i.system.level === level);
 }
 function isClassSpell(item, identifier) {
-    console.log(item);
-    console.log(identifier);
-    console.log(item.system?.sourceClass === identifier);
     return item.system?.sourceClass === identifier;
 }
 export let spellUtils = {

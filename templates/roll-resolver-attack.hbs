@@ -1,3 +1,11 @@
-<div class="roll-resolver-attack">
-    Is an attack!
-</div>
+<footer class="roll-resolver-attack">
+    <fieldset class="cpr-fieldset cpr-row-center">
+        <legend data-tooltip="{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Tooltip"}}">{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Label"}}</legend>
+        {{#each attackButtons as |button|}}
+            <button type="{{button.type}}" name="{{button.name}}">
+                <i class="{{button.icon}}" inert></i>
+                <label inert>{{localize button.label}}</label>
+            </button>
+        {{/each}}
+    </fieldset>
+</footer>

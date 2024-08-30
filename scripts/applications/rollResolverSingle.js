@@ -136,6 +136,12 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
                 {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-succeess', icon: 'fa-solid fa-thumbs-up'}
             ],
+            attackButtons: [
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Hit', name: 'attack-hit', icon: 'fa-solid fa-check'},
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Critical', name: 'attack-critical', icon: 'fa-solid fa-check-double'}
+            ],
             buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
         for (const fulfillable of this.fulfillable.values()) {

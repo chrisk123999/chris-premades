@@ -335,7 +335,7 @@
         "identifier": "allPurposeTool1",
         "uses": {
           "channelCreativeForces": {
-            "value": 0,
+            "value": 1,
             "max": 1,
             "per": "dawn",
             "recovery": "",
@@ -364,6 +364,6 @@
   "effects": [],
   "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
   "folder": "a3jNnHoMX36aG0mN",
-  "_id": "3LrIikwYRTRQqZcf",
-  "_key": "!items!3LrIikwYRTRQqZcf"
+  "_id": "xdPEyj1dB2466ML9",
+  "_key": "!items!xdPEyj1dB2466ML9"
 }

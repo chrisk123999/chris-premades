@@ -1048,7 +1048,11 @@
             }
         },
         "ManualRolls": {
+            "Critical": "Critical",
             "Failure": "Failure",
+            "Fumble": "Fumble",
+            "Hit": "Hit",
+            "Miss": "Miss",
             "QuickButtons": {
                 "Label": "Quick Buttons",
                 "Tooltip": "Shortcuts to complete the roll with the desired result"
@@ -1308,6 +1312,10 @@
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
             },
+            "classSpellList": {
+                "Hint": "Joural with all class spell lists configured.",
+                "Name": "Class Spell List Journal"
+            },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
                 "Name": "Automated Animations: Colorize Titlebar Icon"
@@ -1488,10 +1496,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "classSpellList": {
-                "Hint": "Joural with all class spell lists configured.",
-                "Name": "Class Spell List Journal"
             }
         },
         "SkillCheck": {
