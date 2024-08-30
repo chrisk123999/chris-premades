@@ -10,6 +10,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         if (!fudgeDistance && (widthAdjust !== actualHalf * canvas.grid.distance)) {
             fudgeDistance = 2.5;
         }
+        fudgeDistance += widthAdjust;
     }
     centerpoint = centerpoint ?? token.center;
     let drawing;
@@ -21,7 +22,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
             drawing.lineStyle(5, 0xffffff);
             let matchTemplates = game.settings.get('core', 'gridTemplates') && (game.settings.get('core', 'gridDiagonals') !== CONST.GRID_DIAGONALS.EXACT);
             if (matchTemplates) {
-                drawing.drawPolygon(canvas.grid.getCircle(centerpoint, maxRange));
+                drawing.drawPolygon(canvas.grid.getCircle(centerpoint, maxRange + fudgeDistance + widthAdjust));
             } else {
                 drawing.drawCircle(centerpoint.x, centerpoint.y, radius);
             }
