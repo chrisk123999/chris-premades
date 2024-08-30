@@ -9,7 +9,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     static DEFAULT_OPTIONS = {
         id: 'roll-resolver-{id}',
         tag: 'form',
-        classes: ['roll-resolver'],
         window: {
             title: 'DICE.RollResolution',
         },
@@ -20,7 +19,10 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         form: {
             submitOnChange: false,
             closeOnSubmit: false,
-            handler: this._fulfillRoll
+            handler: CPRSingleRollResolver._fulfillRoll
+        },
+        action: {
+            confirm: CPRSingleRollResolver.confirm
         }
     };
     static PARTS = {
@@ -34,9 +36,12 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             template: 'modules/chris-premades/templates/roll-resolver-save.hbs'
         },
         footer: {
-            template: 'modules/chris-premades/templates/form-footer.hbs'
+            template: 'templates/generic/form-footer.hbs'
         }
     };
+    static async confirm() {
+        console.log('confirm');
+    }
     get fulfillable() {
         return this.#fulfillable;
     }
@@ -112,30 +117,34 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         console.log('prepare context');
         const context = {
             formula: this.roll.formula,
-            groups: {}
+            groups: [{
+                formula: this.roll.formula,
+                value: this.roll.total,
+                ids: [], //each term's ids
+                icons: [], //each term's icon
+                max: undefined
+            }],
+            options: {
+                advantageMode: this.roll.options.advantageMode,
+                name: this.roll.data.name,
+                flavor: this.roll.options.flavor,
+                bonusTotal: this.roll.terms.reduce((acc, cur) => {
+                    if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
+                }, 0)
+            },
+            saveButtons: [
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
+                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-succeess', icon: 'fa-solid fa-thumbs-up'}
+            ],
+            buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
         for (const fulfillable of this.fulfillable.values()) {
-            const { id, term, method, isNew } = fulfillable;
+            const {id, term} = fulfillable;
             fulfillable.isNew = false;
-            const config = CONFIG.Dice.fulfillment.methods[method];
-            const group = context.groups[id] = {
-                results: [],
-                label: term.expression,
-                icon: config.icon ?? '<i class="fas fa-bluetooth"></i>',
-                tooltip: game.i18n.localize(config.label)
-            };
-            const { denomination, faces } = term;
-            const icon = CONFIG.Dice.fulfillment.dice[denomination]?.icon;
-            for ( let i = 0; i < Math.max(term.number ?? 1, term.results.length); i++ ) {
-                const result = term.results[i];
-                const { result: value, exploded, rerolled } = result ?? {};
-                group.results.push({
-                    denomination, faces, id, method, icon, exploded, rerolled, isNew,
-                    value: value ?? '',
-                    readonly: method !== 'chrispremades',
-                    disabled: !!result
-                });
-            }
+            context.groups[0].ids.push(id);
+            context.groups[0].icons.push(CONFIG.Dice.fulfillment.dice[term.denomination]?.icon);
+            context.groups[0].max = (context.groups[0].max ?? context.options.bonusTotal) + term.denomination;
+            console.log(term);
         }
         console.log(context);
         return context;
@@ -143,11 +152,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     async _onSubmitForm(formConfig, event) {
         console.log('on submit form');
         this._toggleSubmission(false);
-        this.element.querySelectorAll('input').forEach(input => {
-            if ( !isNaN(input.valueAsNumber) ) return;
-            const { term } = this.fulfillable.get(input.name);
-            input.value = `${term.randomFace()}`;
-        });
         await super._onSubmitForm(formConfig, event);
         this.element?.querySelectorAll('input').forEach(input => input.disabled = true);
         this.#resolve();
@@ -201,9 +205,10 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         });
     }
     static async _fulfillRoll(event, form, formData) {
-        console.log('fulfill roll');
+        console.log('fulfill roll', formData?.object, event, form);
+        console.log(event?.submitter?.name);
         // Update the DiceTerms with the fulfilled values.
-        if (!formData) { // For fulfilling non-rolled terms
+        if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
             this.fulfillable.forEach(({term}) => {
                 for (let i = term.results.length; i != term.number; i++) {
                     const roll = { result: term.randomFace(), active: true};
@@ -211,16 +216,45 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 }
             });
         } else {
-            for ( let [id, results] of Object.entries(formData.object) ) {
-                const { term } = this.fulfillable.get(id);
-                if ( !Array.isArray(results) ) results = [results];
-                for ( const result of results ) {
-                    const roll = { result: undefined, active: true };
-                    // A null value indicates the user wishes to skip external fulfillment and fall back to the digital roll.
-                    if ( result === null ) roll.result = term.randomFace();
-                    else roll.result = result;
-                    term.results.push(roll);
+            let total = formData.object.total;
+            let dice = (this.roll.terms.reduce((dice, die) => {
+                if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
+                    dice.max += (die.faces * die.number);
+                    for (let i = 0; i < die.number; i++) {
+                        dice.terms.push(die.faces);
+                    }   
+                } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
+                    dice.multiplier = die.operator === '-' ? -1 : 1;
+                } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
+                    total -= (die.number * dice.multiplier);
                 }
+                return dice;
+            }, {terms: [], max: 0, multiplier: 1})).terms;
+            dice.sort((a, b) => a > b ? 1 : -1);
+            let results = (dice.reduce((results, number) => {
+                results.diceLeft -= 1;
+                if (number + results.diceLeft <= total) {
+                    results.diceArray.push({faces: number, result: number});
+                    total -= number;
+                } else if (1 + results.diceLeft >= total) {
+                    results.diceArray.push({faces: number, result: 1});
+                    total -= 1;
+                } else {
+                    results.diceArray.push({faces: number, result: total - results.diceLeft});
+                    total -= results.diceLeft;
+                }
+                return results;
+            }, {diceLeft: dice.length, diceArray: []})).diceArray;
+            for ( let [rollId, total] of Object.entries(formData.object) ) {
+                this.fulfillable.forEach(({term}) => {
+                    let index = results.findIndex(i => i.faces === term.faces);
+                    let result = results[index].result;
+                    for (let i = term.results.length; i != term.number; i++) {
+                        const roll = { result: result, active: true };
+                        term.results.push(roll);
+                    }
+                    results.splice(index, 1);
+                });
             }
         }
     }

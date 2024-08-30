@@ -15,3 +15,4 @@ export {tokenUtils} from './lib/utilities/tokenUtils.js';
 export {compendiumUtils} from './lib/utilities/compendiumUtils.js';
 export {combatUtils} from './lib/utilities/combatUtils.js';
 export {crosshairUtils} from './lib/utilities/crosshairUtils.js';
+export {spellUtils} from './lib/utilities/spellUtils.js';

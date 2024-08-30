@@ -112,7 +112,7 @@ function getAllEffectsByIdentifier(actor, name) {
     return actorUtils.getEffects(actor).filter(i => genericUtils.getIdentifier(i) === name);
 }
 function getEffectByStatusID(actor, statusID) {
-    return actorUtils.getEffects(actor).find(i => i.id === CONFIG.statusEffects.find(j => j.id === statusID)._id);
+    return actorUtils.getEffects(actor).find(i => i.id === CONFIG.statusEffects.find(j => j.id === statusID)?._id);
 }
 async function applyConditions(actor, conditions, {overlay = false} = {}) {
     let updates = [];

@@ -51,7 +51,7 @@ async function doBackup(force) {
     }
     let retention = Number(genericUtils.getCPRSetting('backupRetention'));
     if (!retention || force) return;
-    let index = await pack.getIndex({'fields': ['flags.chris-premades.backup.time']});
+    let index = await pack.getIndex({fields: ['flags.chris-premades.backup.time']});
     let removeActors = index.filter(i => {
         let time = i.flags?.['chris-premades']?.backup?.time;
         if (!time) return false;

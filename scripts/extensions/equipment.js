@@ -60,6 +60,7 @@ async function addOrUpdate(item, updates, options, id) {
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
             if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
+            if (value.translate) itemData.name = genericUtils.translate(value.translate);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.key', key);
             return itemData;

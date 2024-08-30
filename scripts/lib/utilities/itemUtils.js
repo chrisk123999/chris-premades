@@ -126,6 +126,11 @@ function getEquipmentState(item) {
     let requiresAttunement = validTypes.includes(attunement);
     return ((requiresAttunement && currentlyAttuned) || !requiresAttunement) && currentlyEquipped ? true : false;
 }
+function getToolProficiency(actor, tool) {
+    let toolName = tool.system.type?.baseItem;
+    if (!toolName) return 0;
+    return actor.system.tools[toolName]?.value ?? 0;
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -142,5 +147,6 @@ export let itemUtils = {
     getMod,
     convertDuration,
     setConfig,
-    getEquipmentState
+    getEquipmentState,
+    getToolProficiency
 };

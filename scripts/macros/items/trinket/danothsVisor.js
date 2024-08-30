@@ -8,7 +8,7 @@ async function skill(actor, skillId, identifier) {
         'prc'
     ];
     if (!validTypes.includes(skillId)) return;
-    return {label: 'CHRISPREMADES.Macros.Item.DanothsVisor.Check', type: 'advantage'};
+    return {label: 'CHRISPREMADES.Macros.DanothsVisor.Check', type: 'advantage'};
 }
 async function skillD(actor, skillId) {
     return await skill(actor, skillId, 'danothsVisorD');
@@ -40,7 +40,8 @@ export let danothsVisorA = {
         danothsVisorSpyglass: {
             name: 'Danoth\'s Visor: Spyglass',
             compendium: 'itemEquipment',
-            useJournal: true
+            useJournal: true,
+            translate: 'CHRISPREMADES.Macros.DanothsVisor.Spyglass'
         },
         danothsVisorXRay: {
             name: 'Danoth\'s Visor: X-Ray',
@@ -50,7 +51,8 @@ export let danothsVisorA = {
                 value: 1,
                 per: 'dawn',
                 max: 1
-            }
+            },
+            translate: 'CHRISPREMADES.Macros.DanothsVisor.XRay'
         }
     }
 };

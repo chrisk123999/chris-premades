@@ -31,6 +31,7 @@ import {chat} from './extensions/chat.js';
 import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
+import {spellList} from './extensions/spellList.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();

@@ -7,6 +7,7 @@ import {DialogApp} from './dialog.js';
 import {tours} from './tour.js';
 import {troubleshooter} from './troubleshooter.js';
 import {rollResolver} from '../extensions/rollResolver.js';
+import {spellList} from '../extensions/spellList.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
@@ -19,7 +20,9 @@ let buttonLabels = {
     monsterCompendium: 'CHRISPREMADES.Generic.Select',
     spellCompendium: 'CHRISPREMADES.Generic.Select',
     macroCompendium: 'CHRISPREMADES.Generic.Select',
-    manualRollsPreferences: 'CHRISPREMADES.Generic.Configure'
+    manualRollsPreferences: 'CHRISPREMADES.Generic.Configure',
+    classSpellList: 'CHRISPREMADES.Generic.Select',
+    itemCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -96,7 +99,7 @@ async function selectCompendium(settingKey, type) {
     }));
     let selection = await DialogApp.dialog('CHRISPREMADES.Settings.' + settingKey + '.Name', 'CHRISPREMADES.Settings.SelectCompendium', [['radio', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-select-monster-compendium'});
     if (!selection) return;
-    await game.settings.set('chris-premades', settingKey, selection.radio);
+    await genericUtils.setCPRSetting(settingKey, selection.radio);
 }
 export async function settingButton(id) {
     switch(id) {
@@ -117,6 +120,8 @@ export async function settingButton(id) {
             break;
         }
         case 'manualRollsPreferences': await rollResolver.manualRollsPreferencesDialog(); break;
+        case 'classSpellList': await spellList.selectJournal('classSpellList'); break;
+        case 'itemCompendium': await selectCompendium('itemCompendium', 'Item'); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

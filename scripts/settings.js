@@ -106,6 +106,13 @@ export function registerSettings() {
         select: true
     });
     addSetting({
+        key: 'itemCompendium',
+        type: String,
+        default: 'world.ddb-' + game.world.id + '-ddb-items',
+        category: 'compendium',
+        select: true
+    });
+    addSetting({
         key: 'temporaryEffectHud',
         type: Boolean,
         default: false,
@@ -602,6 +609,13 @@ export function registerSettings() {
         type: Object,
         default: {},
         category: 'development'
+    });
+    addSetting({
+        key: 'classSpellList',
+        type: String,
+        default: null,
+        category: 'compendium',
+        select: true
     });
 }
 export function registerMenus() {

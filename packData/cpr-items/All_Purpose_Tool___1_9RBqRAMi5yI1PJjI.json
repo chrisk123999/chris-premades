@@ -1,0 +1,369 @@
+{
+  "name": "All-Purpose Tool, +1",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Tasha’s Cauldron of Everything",
+      "page": "119",
+      "license": "",
+      "custom": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "uncommon",
+    "attunement": "required",
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": 0,
+      "max": "",
+      "per": null,
+      "prompt": true,
+      "recovery": ""
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "enchantment": null,
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "armor": {
+      "value": null,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "attuned": false,
+    "equipped": false,
+    "proficient": null
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "alwaysActive": false,
+      "activeEquipped": true
+    },
+    "babonus": {
+      "bonuses": [
+        {
+          "name": "All-Purpose Tool, +1",
+          "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+          "id": "KQTnZRhzRJbpXFAL",
+          "sort": 0,
+          "type": "attack",
+          "enabled": true,
+          "exclusive": false,
+          "optional": false,
+          "reminder": false,
+          "description": "",
+          "consume": {
+            "enabled": false,
+            "type": "",
+            "subtype": "",
+            "scales": false,
+            "formula": "",
+            "value": {
+              "min": "",
+              "max": "",
+              "step": null
+            }
+          },
+          "aura": {
+            "enabled": false,
+            "template": false,
+            "range": "",
+            "self": true,
+            "disposition": 2,
+            "blockers": [],
+            "require": {
+              "light": false,
+              "sight": false,
+              "sound": false,
+              "move": false
+            }
+          },
+          "flags": {},
+          "bonuses": {
+            "bonus": "1",
+            "criticalRange": "",
+            "fumbleRange": ""
+          },
+          "filters": {
+            "actorCreatureSizes": [],
+            "actorCreatureTypes": [],
+            "actorLanguages": [],
+            "baseArmors": [],
+            "customScripts": "return chrisPremades.utils.spellUtils.isClassSpell(item, 'artificer');",
+            "healthPercentages": {
+              "value": 50,
+              "type": null
+            },
+            "remainingSpellSlots": {
+              "min": null,
+              "max": null,
+              "size": false
+            },
+            "statusEffects": [],
+            "abilities": [],
+            "attackTypes": [],
+            "baseWeapons": [],
+            "creatureTypes": [],
+            "damageTypes": [],
+            "featureTypes": {
+              "subtype": ""
+            },
+            "itemTypes": [],
+            "preparationModes": [],
+            "spellComponents": {
+              "types": [],
+              "match": "ANY"
+            },
+            "spellLevels": [],
+            "spellSchools": [],
+            "targetArmors": [],
+            "targetEffects": [],
+            "tokenSizes": {
+              "size": null,
+              "type": 0,
+              "self": false
+            },
+            "weaponProperties": [],
+            "proficiencyLevels": [],
+            "arbitraryComparisons": []
+          }
+        },
+        {
+          "name": "All-Purpose Tool, +1",
+          "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+          "id": "7oMe1MXzb9kWqlMh",
+          "sort": 0,
+          "type": "save",
+          "enabled": true,
+          "exclusive": false,
+          "optional": false,
+          "reminder": false,
+          "description": "",
+          "consume": {
+            "enabled": false,
+            "type": "",
+            "subtype": "",
+            "scales": false,
+            "formula": "",
+            "value": {
+              "min": "",
+              "max": "",
+              "step": null
+            }
+          },
+          "aura": {
+            "enabled": false,
+            "template": false,
+            "range": "",
+            "self": true,
+            "disposition": 2,
+            "blockers": [],
+            "require": {
+              "light": false,
+              "sight": false,
+              "sound": false,
+              "move": false
+            }
+          },
+          "flags": {},
+          "bonuses": {
+            "bonus": "1"
+          },
+          "filters": {
+            "actorCreatureSizes": [],
+            "actorCreatureTypes": [],
+            "actorLanguages": [],
+            "arbitraryComparisons": [],
+            "baseArmors": [],
+            "customScripts": "return chrisPremades.utils.spellUtils.isClassSpell(item, 'artificer');",
+            "healthPercentages": {
+              "value": 50,
+              "type": null
+            },
+            "remainingSpellSlots": {
+              "min": null,
+              "max": null,
+              "size": false
+            },
+            "statusEffects": [],
+            "abilities": [],
+            "attackTypes": [],
+            "baseWeapons": [],
+            "creatureTypes": [],
+            "damageTypes": [],
+            "featureTypes": {
+              "subtype": ""
+            },
+            "itemTypes": [],
+            "preparationModes": [],
+            "spellComponents": {
+              "types": [],
+              "match": "ANY"
+            },
+            "spellLevels": [],
+            "spellSchools": [],
+            "targetArmors": [],
+            "targetEffects": [],
+            "tokenSizes": {
+              "size": null,
+              "type": 0,
+              "self": false
+            },
+            "weaponProperties": [],
+            "saveAbilities": []
+          }
+        }
+      ]
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "allPurposeTool1",
+        "source": "chris-premades",
+        "version": "0.12.43"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "allPurposeTool1"
+          ]
+        }
+      },
+      "equipment": {
+        "identifier": "allPurposeTool1",
+        "uses": {
+          "channelCreativeForces": {
+            "value": 0,
+            "max": 1,
+            "per": "dawn",
+            "recovery": "",
+            "prompt": true
+          }
+        }
+      }
+    },
+    "dnd5e": {
+      "dependents": [
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.MtFdd2SUQKcE4J4g"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.9iYHzinYM7us7HH9"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.MKcKrMWpSmNtjpcy"
+        },
+        {
+          "uuid": "Actor.PYSFJR0Md69AwZsB.Item.WxfNtqlybodElG66"
+        }
+      ]
+    }
+  },
+  "effects": [],
+  "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
+  "folder": "a3jNnHoMX36aG0mN",
+  "_id": "9RBqRAMi5yI1PJjI",
+  "_key": "!items!9RBqRAMi5yI1PJjI"
+}

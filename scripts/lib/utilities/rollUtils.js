@@ -77,9 +77,22 @@ async function getChangedDamageRoll(origRoll, newType) {
     let newRoll = await new CONFIG.Dice.DamageRoll(origRoll.terms.map(i => i.expression + (i.flavor?.length ? '[' + newType + ']' : '')).join(''), origRoll.data, genericUtils.mergeObject(origRoll.options, {type: newType})).evaluate();
     return newRoll;
 }
+async function rollDice(formula, {actor, chatMessage, flavor} = {}) {
+    let roll = await new Roll(formula, actor?.getRollData()).evaluate();
+    if (chatMessage) {
+        let message = await roll.toMessage({
+            rollMode: 'roll',
+            speaker: {alias: name},
+            flavor: flavor
+        });
+        return {message: message, roll: roll};
+    }
+    return roll;
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
     getChangedDamageRoll,
-    requestRoll
+    requestRoll,
+    rollDice
 };
