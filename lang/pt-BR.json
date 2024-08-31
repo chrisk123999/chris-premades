@@ -63,8 +63,10 @@
                 "Saiyan": "Saiyajin",
                 "Shadow": "Sombra",
                 "Simple": "Simples",
+                "Smoke": "Fumaça",
                 "Water": "Água"
             },
+            "ApplyFilter": "Aplicar Filtro:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -102,6 +104,7 @@
             "DarknessAnimation": "Animação de Escuridão:",
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
+            "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "RealDarkness": "Usar Escuridão Real:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
@@ -527,6 +530,10 @@
                 "TooFar": "Os familiares estão muito longe!",
                 "Touch": "Bando de Familiares: Tocar"
             },
+            "FocusedAim": {
+                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)",
+                "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?"
+            },
             "Grapple": {
                 "ChooseSkill": "Como você gostaria de disputar o agarrão?",
                 "Immune": "O alvo não pode ser agarrado!",
@@ -700,6 +707,16 @@
                 "Sweeping": "Ataque Trespassante: Ataque",
                 "Tripping": "Derrubar: Ataque"
             },
+            "ManifestEcho": {
+                "Attack": "Eco Manifestado: Ataque",
+                "Echo": "Eco {name}",
+                "Far": "O eco de {actorName} está longe demais. Remover ele?",
+                "Legion": "Criar dois ecos ao invés de um?",
+                "NoWeapons": "Você não tem armas equipadas para atacar!",
+                "Teleport": "Eco Manifestado: Teleporte",
+                "Weapon": "Com o que você quer de atacar?",
+                "Which": "Qual Eco?"
+            },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
@@ -840,6 +857,9 @@
                 "Repair": "Reparar (Ação)",
                 "Vigilant": "Vigilante"
             },
+            "StillnessOfMind": {
+                "Select": "Qual condição você quer de remover?"
+            },
             "StormSphere": {
                 "Bolt": "Esfera Tempestuosa: Relâmpago",
                 "Turn": "Esfera Tempestuosa: Turno"
@@ -944,8 +964,7 @@
                 "Damage": "Invocar Espírito do Fogo Selvagem: Dano",
                 "FieryTeleportation": "Teletransporte Feérico",
                 "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
-                "FlameSeed": "Semente de Fogo",
-                "PlayAnimation": "Tocar Animação do Teleporte:"
+                "FlameSeed": "Semente de Fogo"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
@@ -1544,6 +1563,7 @@
                 "DreadLord": "Senhor do Pavor",
                 "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
+                "Echo": "Eco",
                 "ElementalSpirit": "Espírito Elemental",
                 "ElementalSpiritAir": "Espírito Elemental (Ar)",
                 "ElementalSpiritEarth": "Espírito Elemental (Terra)",
