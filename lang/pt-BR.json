@@ -1416,7 +1416,7 @@
                 "Name": "Ocultar Nomes"
             },
             "itemCompendium": {
-                "Hint": "Compêndio de itens usados ​​para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
+                "Hint": "Compêndio de itens usados para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
                 "Name": "Compêndio de Itens"
             },
             "lastUpdateCheck": {
