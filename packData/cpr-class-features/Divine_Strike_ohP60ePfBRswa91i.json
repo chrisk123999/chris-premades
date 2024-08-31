@@ -93,9 +93,10 @@
     "chris-premades": {
       "info": {
         "name": "Divine Strike",
-        "version": "0.12.40",
+        "version": "0.12.46",
         "identifier": "divineStrike",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
@@ -105,7 +106,8 @@
         }
       },
       "config": {
-        "damageType": "default"
+        "damageType": "default",
+        "playAnimation": true
       }
     },
     "midiProperties": {

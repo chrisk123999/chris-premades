@@ -116,10 +116,49 @@
     "chris-premades": {
       "info": {
         "name": "Eyes of Night",
-        "version": "0.12.40",
+        "version": "0.12.46",
         "identifier": "eyesOfNight",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "config": {
+        "playAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "eyesOfNight"
+          ]
+        }
       }
+    },
+    "dnd5e": {
+      "dependents": [
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.FVhK8gq6hky4mk0g.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.vjG18QSHA1fhCAke"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.jycCpEdfPngPV1Jv.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.pBI6c4K73aaJ2x05"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.LsEqbLYoxtwsXgm8.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.7N2rQskCfJEQp12u"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.38gBwnqTYjVVKqU9.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.dDNxjOKzfKS1wLEC"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.FVhK8gq6hky4mk0g.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.kVCUsAe9OxysBwEF"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.jycCpEdfPngPV1Jv.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.gbjCP0n69DmxFmWK"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.LsEqbLYoxtwsXgm8.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.yGsV1uu2KesIdo6Y"
+        },
+        {
+          "uuid": "Scene.Z7zG6A8A7zbVdV9a.Token.38gBwnqTYjVVKqU9.Actor.zgNvjPBJYEoVDdgP.ActiveEffect.sYkhAJwegIPApImu"
+        }
+      ]
     }
   },
   "effects": [
@@ -190,18 +229,18 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1724857721428,
-        "modifiedTime": 1724857758943,
-        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!items.effects!y9oZ8t2C9jr0Ev9m.int4Zc7SY0968Z9P"
+      "_key": "!items.effects!RzlbdKWuyWyp90Yy.int4Zc7SY0968Z9P"
     },
     {
       "name": "Eyes of Night - Self",
-      "origin": "Compendium.world.cpr-class-features.Item.y9oZ8t2C9jr0Ev9m",
+      "origin": "Actor.FIdg2qF9mgynCpEX.Item.T5Ja7LqMFr4ZAG31",
       "duration": {
         "rounds": null,
-        "startTime": null,
+        "startTime": 47178634105,
         "seconds": null,
         "combat": null,
         "turns": null,
@@ -259,15 +298,15 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1724857767619,
-        "modifiedTime": 1724857800741,
-        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!items.effects!y9oZ8t2C9jr0Ev9m.s0ClVU3MFyd055Cx"
+      "_key": "!items.effects!RzlbdKWuyWyp90Yy.s0ClVU3MFyd055Cx"
     }
   ],
   "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
   "folder": "0uMa6L6LBMZ1czJ9",
-  "_id": "y9oZ8t2C9jr0Ev9m",
-  "_key": "!items!y9oZ8t2C9jr0Ev9m"
+  "_id": "RzlbdKWuyWyp90Yy",
+  "_key": "!items!RzlbdKWuyWyp90Yy"
 }

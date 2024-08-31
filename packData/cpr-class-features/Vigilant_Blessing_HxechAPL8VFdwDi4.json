@@ -95,9 +95,20 @@
     "chris-premades": {
       "info": {
         "name": "Vigilant Blessing",
-        "version": "0.12.40",
+        "version": "0.12.46",
         "identifier": "vigilantBlessing",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "config": {
+        "playAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "vigilantBlessing"
+          ]
+        }
       }
     },
     "midiProperties": {
@@ -124,7 +135,7 @@
       "duration": {
         "rounds": null,
         "startTime": null,
-        "seconds": null,
+        "seconds": 86400,
         "combat": null,
         "turns": null,
         "startRound": null,
@@ -150,6 +161,22 @@
         },
         "core": {
           "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
         }
       },
       "img": "icons/magic/perception/hand-eye-pink.webp",
@@ -176,8 +203,8 @@
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
         "createdTime": 1724857678107,
-        "modifiedTime": 1724857712764,
-        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+        "modifiedTime": 1725094621663,
+        "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
       },
       "_key": "!items.effects!HxechAPL8VFdwDi4.yoWXKrtIfTIUu7ft"
     }

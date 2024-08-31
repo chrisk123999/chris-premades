@@ -274,8 +274,21 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     this.setAllDiceTerms('max');
                     break;
                 case 'attack-miss':
+                    this.fulfillable.forEach(({term}) => {
+                        for (let i = term.results.length; i != term.number; i++) {
+                            const roll = { result: term.faces === 20 ? this.roll.options.fumble + 1 : 1, active: true};
+                            term.results.push(roll);
+                        }
+                    });
+                    break;
                 case 'attack-hit':
-                    console.log(this.roll);
+                    this.fulfillable.forEach(({term}) => {
+                        for (let i = term.results.length; i != term.number; i++) {
+                            const roll = { result: term.faces === 20 ? this.roll.options.targetValue : 1, active: true};
+                            term.results.push(roll);
+                        }
+                    });
+                    break;
             }
         }
     }

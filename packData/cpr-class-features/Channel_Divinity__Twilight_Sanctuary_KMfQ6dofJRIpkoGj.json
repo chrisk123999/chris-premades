@@ -117,9 +117,10 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Twilight Sanctuary",
-        "version": "0.12.40",
+        "version": "0.12.46",
         "identifier": "twilightSanctuary",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
@@ -127,6 +128,9 @@
             "twilightSanctuary"
           ]
         }
+      },
+      "config": {
+        "playAnimation": true
       }
     }
   },
