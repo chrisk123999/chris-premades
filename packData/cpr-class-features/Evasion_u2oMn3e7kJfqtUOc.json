@@ -1,0 +1,178 @@
+{
+  "folder": "cLsaSVIF830KiMdB",
+  "name": "Evasion",
+  "type": "feat",
+  "_id": "u2oMn3e7kJfqtUOc",
+  "img": "icons/magic/earth/projectiles-magma-stone-orange.webp",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "enchantment": null,
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    }
+  },
+  "effects": [
+    {
+      "name": "Evasion",
+      "origin": "Compendium.world.cpr-class-features.Item.u2oMn3e7kJfqtUOc",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/earth/projectiles-magma-stone-orange.webp",
+      "_id": "FUSySgpY1Iq8kJ8g",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.superSaver.dex",
+          "mode": 2,
+          "value": "",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1725041385280,
+        "modifiedTime": 1725041402083,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!u2oMn3e7kJfqtUOc.FUSySgpY1Iq8kJ8g"
+    }
+  ],
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "evasion",
+        "version": "0.12.46",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "_key": "!items!u2oMn3e7kJfqtUOc"
+}

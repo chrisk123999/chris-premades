@@ -530,6 +530,10 @@
                 "TooFar": "Familiars are too far away!",
                 "Touch": "Flock of Familiars: Touch"
             },
+            "FocusedAim": {
+                "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)",
+                "Missed": "Attack roll ({attackTotal}) missed. Use {itemName}?"
+            },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
                 "Immune": "Target cannot be grappled!",
@@ -852,6 +856,9 @@
                 "ForceEmpoweredRend": "Force-Empowered Rend",
                 "Repair": "Repair",
                 "Vigilant": "Vigilant"
+            },
+            "StillnessOfMind": {
+                "Select": "Which condition would you like to remove?"
             },
             "StormSphere": {
                 "Bolt": "Storm Sphere: Bolt",
