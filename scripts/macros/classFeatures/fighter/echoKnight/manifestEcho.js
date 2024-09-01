@@ -52,14 +52,16 @@ async function use({workflow}) {
                 name,
                 sight: workflow.actor.prototypeToken.sight,
                 width: workflow.token.document.width,
-                height: workflow.token.document.height
+                height: workflow.token.document.height,
+                disposition: workflow.token.document.disposition
             }
         },
         token: {
             name,
             sight: workflow.actor.prototypeToken.sight,
             width: workflow.token.document.width,
-            height: workflow.token.document.height
+            height: workflow.token.document.height,
+            disposition: workflow.token.document.disposition
         }
     };
     let avatarImg = itemUtils.getConfig(workflow.item, 'avatar');

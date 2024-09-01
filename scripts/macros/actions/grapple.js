@@ -25,7 +25,20 @@ async function use({trigger, workflow}) {
         if (result <= 0) return;
     }
     //Rideable integration here!
-    await effectUtils.applyConditions(workflow.targets.first().actor, ['grappled']);
+    let effectData = {
+        name: genericUtils.format('CHRISPREMADES.Macros.Actions.GrappledBy', {tokenName: workflow.token.name}),
+        img: workflow.item.img,
+        origin: workflow.actor.uuid,
+        flags: {
+            dae: {
+                showIcon: true
+            },
+            'chris-premades': {
+                conditions: ['grappled']
+            }
+        }
+    };
+    await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
 export let grapple = {
     name: 'Grapple',

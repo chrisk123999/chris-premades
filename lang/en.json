@@ -228,7 +228,8 @@
         "Macros": {
             "Actions": {
                 "Dodge": "Dodge",
-                "Grapple": "Grapple"
+                "Grapple": "Grapple",
+                "GrappledBy": "Grappled By {tokenName}"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
