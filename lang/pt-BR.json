@@ -228,7 +228,8 @@
         "Macros": {
             "Actions": {
                 "Dodge": "Esquivar",
-                "Grapple": "Agarrar"
+                "Grapple": "Agarrar",
+                "GrappledBy": "Agarrado por {tokenName}"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -352,6 +353,10 @@
             "BrandingSmite": {
                 "Branded": "Marca da Punição: Marcado"
             },
+            "BreathOfTheDragon": {
+                "Augment": "Aumentar (1 Ki)",
+                "Select": "Selecione Detalhes do Sopro"
+            },
             "CallLightning": {
                 "StormBolt": "Raio da Tempestade",
                 "Storming": "Já está uma tempestade?"
@@ -414,6 +419,9 @@
             "DivineSmite": {
                 "Ranged": "Permitir Destruições em Ataques à Distância",
                 "Unarmed": "Permitir Destruições em Ataques Desarmados"
+            },
+            "DraconicStrike": {
+                "Select": "Mudar o tipo do dano?"
             },
             "DragonsBreath": {
                 "DragonBreath": "Sopro de Dragão"
@@ -1616,6 +1624,8 @@
         },
         "Template": {
             "AttackerCantSeeTarget": "Atacante Não Consegue Ver Alvo",
+            "Cone": "Cone",
+            "Line": "Linha",
             "TargetCantSeeAttacker": "Alvo Não Consegue Ver Atacante",
             "UnknownTemplate": "Modelo Desconhecido"
         },
