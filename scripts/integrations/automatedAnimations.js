@@ -59,8 +59,8 @@ async function aaSound(item, pass) {
     }
     let autoRec = getAutoRec(item.name);
     if (!autoRec) return;
-    if (autoRec.primary.sound.enable) playItemSound(autoRec.primary.sound);
-    if (autoRec.secondary.sound.enable) playItemSound(autoRec.secondary.sound);
+    if (autoRec.primary?.sound?.enable) playItemSound(autoRec.primary.sound);
+    if (autoRec.secondary?.sound?.enable) playItemSound(autoRec.secondary.sound);
 }
 export let automatedAnimations = {
     renderItemSheet,

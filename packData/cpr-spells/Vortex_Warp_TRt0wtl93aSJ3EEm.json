@@ -6,10 +6,13 @@
       "chat": ""
     },
     "source": {
-      "custom": "Basic Rules, Player's Handbook pg 260"
+      "book": "Strixhaven: A Curriculum of Chaos",
+      "page": "38",
+      "license": "",
+      "custom": ""
     },
     "activation": {
-      "type": "bonus",
+      "type": "action",
       "cost": 1,
       "condition": ""
     },
@@ -21,15 +24,15 @@
     "crewed": false,
     "target": {
       "value": "",
-      "width": null,
       "units": "",
-      "type": "self",
+      "type": "creature",
+      "width": null,
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 90,
       "long": null,
-      "units": "self"
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -45,7 +48,11 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "save",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -55,14 +62,20 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
-      "ability": "",
+      "ability": "con",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "level": 2,
     "school": "con",
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
     "materials": {
       "value": "",
       "consumed": false,
@@ -76,74 +89,81 @@
     "scaling": {
       "mode": "none",
       "formula": ""
-    },
-    "properties": [
-      "vocal"
-    ],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null
+    }
   },
-  "name": "Misty Step",
+  "name": "Vortex Warp",
   "flags": {
+    "ddbimporter": {
+      "id": 10075689,
+      "definitionId": 1239805,
+      "entityTypeId": 435869154,
+      "dndbeyond": {
+        "lookup": "generic",
+        "lookupName": "generic",
+        "level": null,
+        "castAtLevel": null
+      },
+      "originalName": "Vortex Warp",
+      "sources": [
+        {
+          "sourceId": 80,
+          "pageNumber": 38,
+          "sourceType": 1
+        }
+      ],
+      "tags": [
+        "Teleportation"
+      ],
+      "version": "5.1.26",
+      "effectsApplied": true
+    },
     "midi-qol": {
-      "forceCEOff": true,
-      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
+      "magicdam": true,
+      "magiceffect": true,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-spells.MuhslTlMZhrLXqAS"
+    "custom-character-sheet-sections": {
+      "sectionName": ""
     },
     "chris-premades": {
       "info": {
-        "name": "Misty Step",
-        "version": "0.12.47",
-        "identifier": "mistyStep",
+        "identifier": "vortexWarp",
         "source": "chris-premades",
+        "version": "0.12.47",
         "hasAnimation": true
+      },
+      "config": {
+        "playAnimation": true
       },
       "macros": {
         "midi": {
           "item": [
-            "mistyStep"
+            "vortexWarp"
           ]
         }
-      },
-      "config": {
-        "playAnimation": true
       }
-    },
-    "dnd5e": {}
+    }
   },
   "effects": [],
-  "img": "icons/magic/control/debuff-energy-snare-brown.webp",
+  "img": "icons/magic/water/vortex-water-whirlpool-blue.webp",
   "folder": null,
-  "_id": "kMaWJo2StgCw0bmh",
-  "_key": "!items!kMaWJo2StgCw0bmh"
+  "_id": "TRt0wtl93aSJ3EEm",
+  "_key": "!items!TRt0wtl93aSJ3EEm"
 }

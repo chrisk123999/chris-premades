@@ -1,23 +1,6 @@
 import {midiEvents} from '../events/midi.js';
 import {genericUtils, workflowUtils} from '../utils.js';
-function getDamageType(flavorString) {
-    if (flavorString === '') return 'none';
-    if (game.system.config.damageTypes[flavorString] !== undefined) {
-        return flavorString;
-    }
-    if (game.system.config.healingTypes[flavorString] !== undefined) {
-        return flavorString;
-    }
-    let validDamageTypes = Object.entries(game.system.config.damageTypes).map(e => { e[1] = e[1].label.toLowerCase(); return e; }).deepFlatten().concat(Object.entries(game.system.config.healingTypes).deepFlatten());
-    let validHealingTypes = Object.entries(game.system.config.healingTypes).map(e => { e[1] = e[1].label.toLowerCase(); return e; }).deepFlatten();
-    let validDamagingTypes = validDamageTypes.concat(validHealingTypes);
-    let allDamagingTypeEntries = Object.entries(game.system.config.damageTypes).concat(Object.entries(game.system.config.healingTypes));
-    if (validDamagingTypes.includes(flavorString?.toLowerCase()) || validDamageTypes.includes(flavorString)) {
-        let damageEntry = allDamagingTypeEntries?.find(e => e[1].label.toLowerCase() === flavorString.toLowerCase());
-        return damageEntry ? damageEntry[0] : flavorString;
-    }
-    return undefined;
-}
+import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 let CPRClass;
 function setup() {
     class CPRWorkflow extends MidiQOL.workflowClass {
@@ -40,9 +23,11 @@ function setup() {
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
-            let manualRollsSetting = true;
-            if (manualRollsSetting) {/*test for manual rolls setting*/
-                let newRolls = this.damageRolls.map(async roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, genericUtils.mergeObject(roll.options, {forceDamageRoll: true})));
+            let manualRollsSetting = genericUtils.getCPRSetting('manualRolls');
+            if (manualRollsSetting) {
+                let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
+                await new CPRMultipleRollResolver(newRolls).awaitFulfillment();
+                console.log(newRolls);
                 // evaluate them
                 //this.setDamageRolls(newRolls);
             }

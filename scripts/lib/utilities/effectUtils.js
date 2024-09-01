@@ -156,7 +156,7 @@ async function sidebarEffectHelper(documentId, toggle) {
         } else if (effect && stackable) {
             genericUtils.update(effect, {'flags.dae.stacks': stackCount + 1});
         } else {
-            if (effectData.flags['chris-premades']?.effectInterface?.status) {
+            if (effectData.flags['chris-premades']?.effectInterface?.status || effectData.flags['chris-premades']?.effectInterface?.customStatus) {
                 genericUtils.createEmbeddedDocuments(i.actor, 'ActiveEffect', [effectData], {keepId: true});
             } else {
                 effectUtils.createEffect(i.actor, effectData);
