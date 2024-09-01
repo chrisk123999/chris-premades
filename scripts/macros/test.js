@@ -1,3 +1,5 @@
+import {actorUtils, effectUtils, genericUtils, tokenUtils} from '../utils.js';
+
 export let test = {
     name: 'test',
     version: '0.12.0',

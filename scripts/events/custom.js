@@ -7,7 +7,9 @@ async function ready() {
     if (!pack) return {};
     await pack.getDocuments();
     customMacroList = (await Promise.all(pack.map(async i => {
+        console.log(i);
         let value = await i.execute();
+        console.log(value);
         if (!value) {
             let message = genericUtils.translate('CHRISPREMADES.CustomMacros.NoReturn').replace('{name}', i.name);
             genericUtils.notify(message, 'error');

@@ -24,7 +24,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     };
     static PARTS = {
         form: {
-            template: 'modules/chris-premades/templates/roll-resolver-form.hbs'
+            template: 'modules/chris-premades/templates/roll-resolver-single-form.hbs'
         },
         attack: {
             template: 'modules/chris-premades/templates/roll-resolver-attack.hbs'

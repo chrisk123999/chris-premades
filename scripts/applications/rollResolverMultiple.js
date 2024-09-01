@@ -115,19 +115,18 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                 if (term instanceof CONFIG.Dice.termTypes.DiceTerm && term.number && term.faces) {
                     group.max += term.faces;
                     group.formula += group.formula.length ? (' + ' + term.expression) : term.expression;
-                    group.icons += CONFIG.Dice.fulfillment.dice[term.denomination]?.icon;
+                    group.icons.push(CONFIG.Dice.fulfillment.dice[term.denomination]?.icon);
                 } else if (term instanceof CONFIG.Dice.termTypes.NumericTerm && term.number) {
                     group.max += term.number;
                     group.bonusTotal += term.number;
                 }
             });
         });
-        console.log(genericUtils.duplicate(context));
+        context.groups.forEach(group => group.formula += group.formula.length ? (' + ' + group.bonusTotal) : group.bonusTotal);
         for (const fulfillable of this.fulfillable.values()) {
             const {id, term, damageType} = fulfillable;
             context.groups.find(g => g.damageType === damageType).ids.push(id);
             fulfillable.isNew = false;
-            console.log(term);
         }
         console.log(context);
         return context;
@@ -146,7 +145,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @param {object} [options]
      * @returns {Promise<number|void>}
      */
-    async resolveResult(term, method, { reroll=false, explode=false }={}) {
+    async resolveResult(term, method, { reroll=false, explode=false }={}) { // Needed???
         console.log('resolve result', term, method, this);
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
@@ -190,82 +189,54 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
     static async _fulfillRoll(event, form, formData) {
         console.log('fulfill roll', formData?.object, event, form);
         console.log(event?.submitter?.name);
-        if (!event?.submitter?.name || event?.submittter?.name === 'confirm') {
-            if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
+        if (!formData || (Object?.entries(formData?.object).some(i => i === null))) { // For fulfilling non-rolled terms
+            this.fulfillable.forEach(({term}) => {
+                console.log(term);
+                for (let i = term.results.length; i != term.number; i++) {
+                    const roll = { result: term.randomFace(), active: true};
+                    term.results.push(roll);
+                }
+            });
+        } else {
+            let total = formData.object.total;
+            let dice = (this.roll.terms.reduce((dice, die) => {
+                if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
+                    dice.max += (die.faces * die.number);
+                    for (let i = 0; i < die.number; i++) {
+                        dice.terms.push(die.faces);
+                    }   
+                } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
+                    dice.multiplier = die.operator === '-' ? -1 : 1;
+                } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
+                    total -= (die.number * dice.multiplier);
+                }
+                return dice;
+            }, {terms: [], max: 0, multiplier: 1})).terms;
+            dice.sort((a, b) => a > b ? 1 : -1);
+            let results = (dice.reduce((results, number) => {
+                results.diceLeft -= 1;
+                if (number + results.diceLeft <= total) {
+                    results.diceArray.push({faces: number, result: number});
+                    total -= number;
+                } else if (1 + results.diceLeft >= total) {
+                    results.diceArray.push({faces: number, result: 1});
+                    total -= 1;
+                } else {
+                    results.diceArray.push({faces: number, result: total - results.diceLeft});
+                    total -= results.diceLeft;
+                }
+                return results;
+            }, {diceLeft: dice.length, diceArray: []})).diceArray;
+            for ( let [rollId, total] of Object.entries(formData.object) ) {
                 this.fulfillable.forEach(({term}) => {
+                    let index = results.findIndex(i => i.faces === term.faces);
+                    let result = results[index].result;
                     for (let i = term.results.length; i != term.number; i++) {
-                        const roll = { result: term.randomFace(), active: true};
+                        const roll = { result: result, active: true };
                         term.results.push(roll);
                     }
+                    results.splice(index, 1);
                 });
-            } else {
-                let total = formData.object.total;
-                let dice = (this.roll.terms.reduce((dice, die) => {
-                    if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                        dice.max += (die.faces * die.number);
-                        for (let i = 0; i < die.number; i++) {
-                            dice.terms.push(die.faces);
-                        }   
-                    } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
-                        dice.multiplier = die.operator === '-' ? -1 : 1;
-                    } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
-                        total -= (die.number * dice.multiplier);
-                    }
-                    return dice;
-                }, {terms: [], max: 0, multiplier: 1})).terms;
-                dice.sort((a, b) => a > b ? 1 : -1);
-                let results = (dice.reduce((results, number) => {
-                    results.diceLeft -= 1;
-                    if (number + results.diceLeft <= total) {
-                        results.diceArray.push({faces: number, result: number});
-                        total -= number;
-                    } else if (1 + results.diceLeft >= total) {
-                        results.diceArray.push({faces: number, result: 1});
-                        total -= 1;
-                    } else {
-                        results.diceArray.push({faces: number, result: total - results.diceLeft});
-                        total -= results.diceLeft;
-                    }
-                    return results;
-                }, {diceLeft: dice.length, diceArray: []})).diceArray;
-                for ( let [rollId, total] of Object.entries(formData.object) ) {
-                    this.fulfillable.forEach(({term}) => {
-                        let index = results.findIndex(i => i.faces === term.faces);
-                        let result = results[index].result;
-                        for (let i = term.results.length; i != term.number; i++) {
-                            const roll = { result: result, active: true };
-                            term.results.push(roll);
-                        }
-                        results.splice(index, 1);
-                    });
-                }
-            }
-        } else {
-            switch (event.submitter.name) {
-                case 'save-failure':
-                case 'attack-fumble':
-                    this.setAllDiceTerms('min');
-                    break;
-                case 'save-success':
-                case 'attack-critical':
-                    this.setAllDiceTerms('max');
-                    break;
-                case 'attack-miss':
-                    this.fulfillable.forEach(({term}) => {
-                        for (let i = term.results.length; i != term.number; i++) {
-                            const roll = { result: term.faces === 20 ? this.roll.options.fumble + 1 : 1, active: true};
-                            term.results.push(roll);
-                        }
-                    });
-                    break;
-                case 'attack-hit':
-                    this.fulfillable.forEach(({term}) => {
-                        for (let i = term.results.length; i != term.number; i++) {
-                            const roll = { result: term.faces === 20 ? this.roll.options.targetValue : 1, active: true};
-                            term.results.push(roll);
-                        }
-                    });
-                    break;
             }
         }
     }

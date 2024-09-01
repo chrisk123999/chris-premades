@@ -121,6 +121,22 @@ async function attachToToken(token, uuidsToAttach) {
         }
     });
 }
+function getLightLevel(token) {
+    if (token.document.parent.environment.globalLight.enabled) return 'bright';
+    let c = Object.values(token.center);
+    let lights = canvas.effects.lightSources.filter(src => !(src instanceof foundry.canvas.sources.GlobalLightSource) && src.shape.contains(...c));
+    if (!lights.length) return 'dark';
+    let inBright = lights.some(light => {
+        let {data: {x, y}, ratio} = light;
+        let bright = ClockwiseSweepPolygon.create({'x': x, 'y': y}, {
+            type: 'light',
+            boundaryShapes: [new PIXI.Circle(x, y, ratio * light.shape.config.radius)]
+        });
+        return bright.contains(...c);
+    });
+    if (inBright) return 'bright';
+    return 'dim';
+}
 export let tokenUtils = {
     getDistance,
     checkCover,
@@ -133,5 +149,6 @@ export let tokenUtils = {
     findDirection,
     canSee,
     canSense,
-    attachToToken
+    attachToToken,
+    getLightLevel
 };

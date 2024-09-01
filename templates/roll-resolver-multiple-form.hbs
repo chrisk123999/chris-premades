@@ -1,0 +1,15 @@
+<div id="cpr-roll-resolver" class="roll-resolver-form standard-form">
+    <p class="roll-resolver-content" data-bonus-total="{{options.bonusTotal}}">
+        {{options.name}}
+        {{options.itemName}}
+    </p>
+    {{#each groups}}
+        <div class="roll-resolver-group" data-ids="{{ids}}">
+            {{formula}}
+            <label class="icon die-input">
+                <input type="number" id="{{damageType}}" name="{{damageType}}" max="{{max}}" step="1" autofocus placeholder="{{localize "CHRISPREMADES.Generic.Total"}}">
+                {{#each icons}}{{{this}}}{{/each}}
+            </label>
+        </div>
+    {{/each}}
+</div>
