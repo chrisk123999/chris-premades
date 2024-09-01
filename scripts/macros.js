@@ -159,6 +159,7 @@ export {animatingPerformance, animatingPerformanceDance} from './macros/classFea
 export {arcaneAbjuration} from './macros/classFeatures/cleric/arcanaDomain/arcaneAbjuration.js';
 export {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
 export {armorModifications} from './macros/classFeatures/artificer/armorer/armorModifications.js';
+export {augmentBreath} from './macros/classFeatures/monk/wayOfTheAscendantDragon/augmentBreath.js';
 export {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
 export {auraOfConquest, auraOfConquestAura} from './macros/classFeatures/paladin/oathOfConquest/auraOfConquest.js';
 export {auraOfCourage} from './macros/classFeatures/paladin/auraOfCourage.js';
@@ -175,6 +176,7 @@ export {bladesong} from './macros/classFeatures/wizard/bladeSinging/bladesong.js
 export {blessedStrikes} from './macros/classFeatures/cleric/blessedStrikes.js';
 export {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/blessingOfTheForge.js';
 export {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
+export {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
 export {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
 export {charmAnimalsAndPlants} from './macros/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 export {circleForms} from './macros/classFeatures/druid/circleOfTheMoon/circleForms.js';
@@ -187,6 +189,7 @@ export {destructiveWrath, destructiveWrathActive} from './macros/classFeatures/c
 export {divineFuryNecrotic, divineFuryRadiant} from './macros/classFeatures/barbarian/zealot/divineFury.js';
 export {divineSmite} from './macros/classFeatures/paladin/divineSmite.js';
 export {divineStrike} from './macros/classFeatures/cleric/divineStrike.js';
+export {draconicStrike} from './macros/classFeatures/monk/wayOfTheAscendantDragon/draconicStrike.js';
 export {dreadLord, dreadLordAura, dreadLordShadowAttack} from './macros/classFeatures/paladin/oathbreaker/dreadLord.js';
 export {dreadfulAspect, dreadfulAspectFrightened} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 export {echoAvatar} from './macros/classFeatures/fighter/echoKnight/echoAvatar.js';
@@ -241,6 +244,7 @@ export {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 export {reclaimPotential} from './macros/classFeatures/fighter/echoKnight/reclaimPotential.js';
 export {relentless} from './macros/classFeatures/fighter/battleMaster/relentless.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
+export {shadowStep} from './macros/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {starryForm, starryFormActive} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';

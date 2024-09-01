@@ -352,6 +352,10 @@
             "BrandingSmite": {
                 "Branded": "Branding Smite: Branded"
             },
+            "BreathOfTheDragon": {
+                "Augment": "Augment (1 Ki)",
+                "Select": "Select Breath Details"
+            },
             "CallLightning": {
                 "StormBolt": "Storm Bolt",
                 "Storming": "Is it already storming?"
@@ -414,6 +418,9 @@
             "DivineSmite": {
                 "Ranged": "Allow Smites on Ranged Attacks",
                 "Unarmed": "Allow Smites on Unarmed Strikes"
+            },
+            "DraconicStrike": {
+                "Select": "Change damage type?"
             },
             "DragonsBreath": {
                 "DragonBreath": "Dragon Breath"
@@ -1616,6 +1623,8 @@
         },
         "Template": {
             "AttackerCantSeeTarget": "Attacker Can't See Target",
+            "Cone": "Cone",
+            "Line": "Line",
             "TargetCantSeeAttacker": "Target Can't See Attacker",
             "UnknownTemplate": "Unknown Template"
         },
