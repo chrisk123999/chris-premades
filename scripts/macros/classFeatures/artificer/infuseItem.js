@@ -40,9 +40,6 @@ async function use({workflow}) {
             if (!armor.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
-            }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
                 if (!selectedItem) return;
@@ -101,9 +98,6 @@ async function use({workflow}) {
             if (!armor.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
-            }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
                 if (!selectedItem) return;
@@ -206,9 +200,6 @@ async function use({workflow}) {
             if (!focuses.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoFocus', 'info');
                 return;
-            }
-            if (focuses.length === 1) {
-                selectedItem = focuses[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichFocus', focuses);
                 if (!selectedItem) return;
@@ -262,9 +253,6 @@ async function use({workflow}) {
             if (!armor.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
-            }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', armor);
                 if (!selectedItem) return;
@@ -310,9 +298,6 @@ async function use({workflow}) {
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
-            }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
                 if (!selectedItem) return;
@@ -378,9 +363,6 @@ async function use({workflow}) {
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
-            }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
                 if (!selectedItem) return;
@@ -433,9 +415,6 @@ async function use({workflow}) {
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
-            }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
                 if (!selectedItem) return;
@@ -497,9 +476,6 @@ async function use({workflow}) {
             if (!featureData) {
                 errors.missingPackItem();
                 return;
-            }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichShield', armor);
                 if (!selectedItem) return;
@@ -545,9 +521,6 @@ async function use({workflow}) {
             if (!armor.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
-            }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
                 if (!selectedItem) return;
@@ -604,9 +577,6 @@ async function use({workflow}) {
             if (!weapons.length) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
-            }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
             } else {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
                 if (!selectedItem) return;
