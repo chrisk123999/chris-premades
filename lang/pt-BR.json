@@ -63,8 +63,10 @@
                 "Saiyan": "Saiyajin",
                 "Shadow": "Sombra",
                 "Simple": "Simples",
+                "Smoke": "Fumaça",
                 "Water": "Água"
             },
+            "ApplyFilter": "Aplicar Filtro:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -96,11 +98,13 @@
                 "Yellow": "Amarelo"
             },
             "CombatOnly": "Habilitar Somente em Combate",
+            "CompendiumName": "Nome no Compendium {option}:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
+            "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "RealDarkness": "Usar Escuridão Real:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
@@ -122,9 +126,12 @@
             "SpellFeature": "Recurso de Magia"
         },
         "Dialog": {
+            "DamageType": "Qual tipo de dano?",
+            "Invalid": "Entrada Inválida!",
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
-            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})"
+            "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "WhatDo": "O que você quer fazer?"
         },
         "Direction": {
             "Direction": "Direção",
@@ -140,6 +147,7 @@
         "Distance": {
             "0": "0 pés",
             "10": "10 pés",
+            "15": "15 pés",
             "5": "5 pés"
         },
         "EffectInterface": {
@@ -191,15 +199,19 @@
             "No": "Não",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
+            "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
+            "Submit": "Enviar",
             "Summon": "Invocação",
+            "Total": "Total",
             "Uncontested": "Não-Contestado",
             "Update": "Atualizar",
-            "Yes": "Sim"
+            "Yes": "Sim",
+            "You": "Você"
         },
         "GenericEffects": {
             "ConditionAdvantage": "Vantagem de Condição",
@@ -215,7 +227,15 @@
         },
         "Macros": {
             "Actions": {
-                "Dodge": "Esquiva"
+                "Dodge": "Esquivar",
+                "Grapple": "Agarrar",
+                "GrappledBy": "Agarrado por {tokenName}"
+            },
+            "AllPurposeTool": {
+                "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
+                "Name": "Ferramenta Multifuncional",
+                "Select": "Selecione uma ferramenta de artesão:",
+                "Spell": "Selecione um truque:"
             },
             "AncestralProtectors": {
                 "Target": "Protetores Ancestrais: Alvos"
@@ -255,6 +275,10 @@
             },
             "BalmOfPeace": {
                 "Balm": "Bálsamo da Paz"
+            },
+            "BalmOfTheSummerCourt": {
+                "Num": "d6s",
+                "Select": "Quantos bálsamos?"
             },
             "Banishment": {
                 "PlaneSelect": "Selecione todos os alvos que não são deste plano."
@@ -329,6 +353,10 @@
             "BrandingSmite": {
                 "Branded": "Marca da Punição: Marcado"
             },
+            "BreathOfTheDragon": {
+                "Augment": "Aumentar (1 Ki)",
+                "Select": "Selecione Detalhes do Sopro"
+            },
             "CallLightning": {
                 "StormBolt": "Raio da Tempestade",
                 "Storming": "Já está uma tempestade?"
@@ -354,9 +382,6 @@
             "ChillTouch": {
                 "Undead": "Toque Necrótico: Efeito Morto-Vivo"
             },
-            "ChromaticOrb": {
-                "Select": "Qual o tipo de dano?"
-            },
             "Cloudkill": {
                 "Damage": "Névoa Mortal: Dano",
                 "NoRoom": "Sem espaço para a névoa mortal se mover!"
@@ -373,6 +398,11 @@
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
+            "DanothsVisor": {
+                "Check": "Este teste depende da visão.",
+                "Spyglass": "Viseira de Danoth: Luneta",
+                "XRay": "Viseira de Danoth: Raio-X"
+            },
             "DanseMacabre": {
                 "CommandUndead": "Dança Macabra: Comandar Morto-Vivo"
             },
@@ -383,9 +413,6 @@
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
             },
-            "DestructiveWave": {
-                "Select": "Qual tipo de dano?"
-            },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
             },
@@ -393,9 +420,11 @@
                 "Ranged": "Permitir Destruições em Ataques à Distância",
                 "Unarmed": "Permitir Destruições em Ataques Desarmados"
             },
+            "DraconicStrike": {
+                "Select": "Mudar o tipo do dano?"
+            },
             "DragonsBreath": {
-                "DragonBreath": "Sopro de Dragão",
-                "Select": "Qual tipo de dano?"
+                "DragonBreath": "Sopro de Dragão"
             },
             "DreadLord": {
                 "ShadowAttack": "Senhor do Pavor: Ataque da Sombra",
@@ -432,11 +461,13 @@
             },
             "ElementalWeapon": {
                 "NoWeapons": "O alvo não possui armas não-mágicas válidas!",
-                "SelectDamageType": "Qual tipo de dano?",
                 "SelectWeapon": "Qual arma você quer encantar?"
             },
             "EmboldeningBond": {
-                "Bonus": "Bônus de Vínculo Encorajador"
+                "Bonus": "Bônus de Vínculo Encorajador",
+                "Protective": "Vínculo de Proteção",
+                "ProtectiveDamage": "Vínculo de Proteção: Dano",
+                "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -506,6 +537,10 @@
                 "ReactionUsed": "Os familiares estão muito longe ou já usaram sua reação!",
                 "TooFar": "Os familiares estão muito longe!",
                 "Touch": "Bando de Familiares: Tocar"
+            },
+            "FocusedAim": {
+                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)",
+                "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?"
             },
             "Grapple": {
                 "ChooseSkill": "Como você gostaria de disputar o agarrão?",
@@ -668,6 +703,28 @@
                 "Select": "Quantos? (Máx: {maxMissiles})",
                 "Shield": "Escudo Arcano como reação?"
             },
+            "Maneuvers": {
+                "BaitSwitchAC": "Quem recebe o bônus de CA?",
+                "CommanderConfirm": "Usar sua reação para fazer um ataque armado?",
+                "CommanderSelect": "Qual aliado deve atacar?",
+                "NoNearby": "Nenhum aliado com reação pode ver ou ouvir você!",
+                "PushDistance": "O quão longe você empurra o alvo?",
+                "Pushing": "Ataque de Encontrão: Ataque",
+                "SelectManeuver": "Qual manobra usar?",
+                "SelectTarget": "Quem você ataca?",
+                "Sweeping": "Ataque Trespassante: Ataque",
+                "Tripping": "Derrubar: Ataque"
+            },
+            "ManifestEcho": {
+                "Attack": "Eco Manifestado: Ataque",
+                "Echo": "Eco {name}",
+                "Far": "O eco de {actorName} está longe demais. Remover ele?",
+                "Legion": "Criar dois ecos ao invés de um?",
+                "NoWeapons": "Você não tem armas equipadas para atacar!",
+                "Teleport": "Eco Manifestado: Teleporte",
+                "Weapon": "Com o que você quer de atacar?",
+                "Which": "Qual Eco?"
+            },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
@@ -751,6 +808,10 @@
             "SleetStorm": {
                 "Prone": "Nevasca: Caído"
             },
+            "SneakAttack": {
+                "Scale": "O ator está faltando um valor de escala do Ataque Furtivo!",
+                "Use": "Usar {name}?"
+            },
             "SongOfDefense": {
                 "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
                 "NoSpellSlots": "Você não tem espaços de magia disponíveis!"
@@ -769,7 +830,6 @@
             },
             "SpiritShroud": {
                 "Hit": "Mortalha Espiritual: Acerto",
-                "Select": "Qual o tipo do dano?",
                 "Slow": "Mortalha Espiritual: Lentidão"
             },
             "SpiritualWeapon": {
@@ -787,12 +847,26 @@
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
             },
+            "StarryForm": {
+                "Archer": "Arqueiro",
+                "ArcherFeature": "Forma Estelar: Flecha Luminosa",
+                "Chalice": "Cálice",
+                "ChaliceFeature": "Forma Estelar: Cálice de Cura",
+                "Change": "Mudar Constelação?",
+                "Dragon": "Dragão",
+                "DragonFeature": "Forma Estelar: Dragão Sagaz",
+                "Heal": "Quem você quer curar?",
+                "Select": "Qual Constelação?"
+            },
             "SteelDefender": {
                 "Command": "Defensor de Aço: Comando",
                 "DeflectAttack": "Defletir Ataque",
                 "ForceEmpoweredRend": "Laceração de Energia",
                 "Repair": "Reparar (Ação)",
                 "Vigilant": "Vigilante"
+            },
+            "StillnessOfMind": {
+                "Select": "Qual condição você quer de remover?"
             },
             "StormSphere": {
                 "Bolt": "Esfera Tempestuosa: Relâmpago",
@@ -834,7 +908,6 @@
             },
             "SummonDraconicSpirit": {
                 "Chromatic": "Cromático",
-                "DamageType": "Qual tipo de dano?",
                 "Gem": "Gema",
                 "Metallic": "Metálico",
                 "Rend": "Rasgar (Espírito Dracônico)",
@@ -894,6 +967,13 @@
                 "Skeletal": "Esquelético",
                 "Type": "Qual tipo de Morto-Vivo?"
             },
+            "SummonWildfireSpirit": {
+                "Command": "Espírito do Fogo Selvagem: Comando",
+                "Damage": "Invocar Espírito do Fogo Selvagem: Dano",
+                "FieryTeleportation": "Teletransporte Feérico",
+                "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
+                "FlameSeed": "Semente de Fogo"
+            },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
                 "Select": "De quais planos você extrai a magia?",
@@ -927,8 +1007,17 @@
             "ThunderStep": {
                 "Select": "Teleportar uma Criatura?"
             },
+            "ThunderboltStrike": {
+                "Select": "Selecione alvos para empurrar:"
+            },
             "ThunderousSmite": {
                 "Push": "Destruição Trovejante: Empurrão"
+            },
+            "TwilightSanctuary": {
+                "Charmed": "Remover a condição Enfeitiçado",
+                "Frightened": "Remover a condição Amedrontado",
+                "Heal": "Dar {formula} PV temporário",
+                "Temp": "Santuário Crepuscular: PV Temporário"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -946,6 +1035,15 @@
                 "Dismiss": "Vínculo Protetor: Dispansar",
                 "Distance": "A distância da ligação está muito grande. Remover a ligação?",
                 "MaxDistance": "Distância Máxima:"
+            },
+            "WildShape": {
+                "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
+                "Equipment": "O que acontece com o seu equipamento?",
+                "KeepSpells": "Permitir conjuração enquanto transformado:",
+                "Merge": "Assimilar / Derrubar",
+                "Revert": "Forma Selvagem: Reverter",
+                "Select": "Selecione a Forma",
+                "Wear": "Vestir"
             },
             "WildSurge": {
                 "BoltOfLight": "Raio de Luz",
@@ -975,6 +1073,18 @@
             "ZoneOfTruth": {
                 "Save": "Zona da Verdade: Salvaguarda"
             }
+        },
+        "ManualRolls": {
+            "Critical": "Crítico",
+            "Failure": "Falha",
+            "Fumble": "Falha Crítica",
+            "Hit": "Acerto",
+            "Miss": "Erro",
+            "QuickButtons": {
+                "Label": "Botões Rápidos",
+                "Tooltip": "Atalhos para completar o rolagem com o resultado desejado"
+            },
+            "Success": "Sucesso"
         },
         "Medkit": {
             "Categories": {
@@ -1119,6 +1229,9 @@
             "Rage": "Fúria",
             "SpellFeatures": "Recursos de Magia"
         },
+        "Senses": {
+            "MagicalDarkness": "Escuridão Mágica"
+        },
         "SettingCategory": {
             "backup": {
                 "Hint": "Configurações para backup de personagem.",
@@ -1226,6 +1339,10 @@
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
             },
+            "classSpellList": {
+                "Hint": "Diário com todas as listas de magias de classe configuradas.",
+                "Name": "Diário de Listas de Magias de Classe"
+            },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
                 "Name": "Automated Animations: Ícone Colorido"
@@ -1306,6 +1423,10 @@
                 "Hint": "Os nomes dos inimigos devem estar ocultos nas caixas de diálogo.",
                 "Name": "Ocultar Nomes"
             },
+            "itemCompendium": {
+                "Hint": "Compêndio de itens usados para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
+                "Name": "Compêndio de Itens"
+            },
             "lastUpdateCheck": {
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
                 "Name": "Última Verificação de Atualização"
@@ -1317,6 +1438,11 @@
             "macroInterface": {
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
+            },
+            "manualRollsPreferences": {
+                "Hint": "Configurar opções para Manual Rolls",
+                "Label": "Preferências Manual Rolls",
+                "Name": "Preferências Manual Rolls"
             },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
@@ -1331,7 +1457,7 @@
                 "Name": "Compêndio de Monstros"
             },
             "spellCompendium": {
-                "Hint": "Compêndio de magias usado para determinadas automações. É bom que ele aponte para o seu compêndio de magias do D&D Beyond.",
+                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
                 "Name": "Compêndio de Magias"
             },
             "permissionsAutomateItem": {
@@ -1403,6 +1529,9 @@
             "Title": "Teste de Perícia"
         },
         "SkipDeadAndUnconscious": "Pular Morto e Inconsciente?",
+        "SneakAttack": {
+            "Auto": "Usar Automaticamente:"
+        },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
             "Description": "Invoque um(a) {name} usando o Chris's Premades.",
@@ -1421,6 +1550,7 @@
                 "AberrantSpiritBeholderkin": "Espírito Aberrante (Observador)",
                 "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
                 "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
+                "AirElemental": "Elemental do Ar",
                 "BestialSpirit": "Espírito Feral",
                 "BestialSpiritAir": "Espírito Feral (Ar)",
                 "BestialSpiritLand": "Espírito Feral (Terra)",
@@ -1439,7 +1569,9 @@
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
                 "DraconicSpiritMetallic": "Espírito Dracônico (Metálico)",
                 "DreadLord": "Senhor do Pavor",
+                "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
+                "Echo": "Eco",
                 "ElementalSpirit": "Espírito Elemental",
                 "ElementalSpiritAir": "Espírito Elemental (Ar)",
                 "ElementalSpiritEarth": "Espírito Elemental (Terra)",
@@ -1454,6 +1586,7 @@
                 "FiendishSpiritDemon": "Espírito Ínfero (Demônio)",
                 "FiendishSpiritDevil": "Espírito Ínfero (Diabo)",
                 "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
+                "FireElemental": "Elemental do Fogo",
                 "Flumph": "Flumph",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
@@ -1471,6 +1604,8 @@
                 "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
                 "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
                 "UndeadSpiritSkeletal": "Espírito Morto-Vivo (Esquelético)",
+                "WaterElemental": "Elemental da Água",
+                "WildfireSpirit": "Espírito do Fogo Selvagem",
                 "Zombie": "Zumbi"
             },
             "CustomAvatar": "Avatar Personalizado {option}",
@@ -1489,6 +1624,8 @@
         },
         "Template": {
             "AttackerCantSeeTarget": "Atacante Não Consegue Ver Alvo",
+            "Cone": "Cone",
+            "Line": "Linha",
             "TargetCantSeeAttacker": "Alvo Não Consegue Ver Atacante",
             "UnknownTemplate": "Modelo Desconhecido"
         },
