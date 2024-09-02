@@ -26,12 +26,19 @@ function setup() {
             let manualRollsSetting = genericUtils.getCPRSetting('manualRolls');
             if (manualRollsSetting) {
                 let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
-                await new CPRMultipleRollResolver(newRolls).awaitFulfillment();
+                let resolver = new CPRMultipleRollResolver(newRolls);
+                await resolver.awaitFulfillment();
+                newRolls.forEach(async roll => {
+                    const ast = CONFIG.Dice.parser.toAST(roll.terms);
+                    roll._total = await roll._evaluateASTAsync(ast);
+                });
+                resolver.close();
                 console.log(newRolls);
-                // evaluate them
-                //this.setDamageRolls(newRolls);
+                await this.setDamageRolls(newRolls);
             }
             await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
+            //console.log(duplicate(this.damageRolls));
+            //console.log(this);
             this.damageDetail = MidiQOL.createDamageDetail({roll: this.damageRolls, item: this.item, defaultType: this.defaultDamageType});
             return nextState;
         }

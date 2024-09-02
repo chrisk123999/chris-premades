@@ -113,7 +113,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             });
             roll.terms.forEach(term => {
                 if (term instanceof CONFIG.Dice.termTypes.DiceTerm && term.number && term.faces) {
-                    group.max += term.faces;
+                    group.max += term.faces * term.number;
                     group.formula += group.formula.length ? (' + ' + term.expression) : term.expression;
                     group.icons.push(CONFIG.Dice.fulfillment.dice[term.denomination]?.icon);
                 } else if (term instanceof CONFIG.Dice.termTypes.NumericTerm && term.number) {
@@ -122,7 +122,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                 }
             });
         });
-        context.groups.forEach(group => group.formula += group.formula.length ? (' + ' + group.bonusTotal) : group.bonusTotal);
+        context.groups.forEach(group => group.formula += group.bonusTotal === 0 ? '' : group.formula.length ? (' + ' + group.bonusTotal) : group.bonusTotal);
         for (const fulfillable of this.fulfillable.values()) {
             const {id, term, damageType} = fulfillable;
             context.groups.find(g => g.damageType === damageType).ids.push(id);
@@ -188,7 +188,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
     }
     static async _fulfillRoll(event, form, formData) {
         console.log('fulfill roll', formData?.object, event, form);
-        console.log(event?.submitter?.name);
         if (!formData || (Object?.entries(formData?.object).some(i => i === null))) { // For fulfilling non-rolled terms
             this.fulfillable.forEach(({term}) => {
                 console.log(term);
@@ -198,47 +197,60 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                 }
             });
         } else {
-            let total = formData.object.total;
-            let dice = (this.roll.terms.reduce((dice, die) => {
-                if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                    dice.max += (die.faces * die.number);
-                    for (let i = 0; i < die.number; i++) {
-                        dice.terms.push(die.faces);
-                    }   
-                } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
-                    dice.multiplier = die.operator === '-' ? -1 : 1;
-                } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
-                    total -= (die.number * dice.multiplier);
-                }
-                return dice;
-            }, {terms: [], max: 0, multiplier: 1})).terms;
-            dice.sort((a, b) => a > b ? 1 : -1);
-            let results = (dice.reduce((results, number) => {
-                results.diceLeft -= 1;
-                if (number + results.diceLeft <= total) {
-                    results.diceArray.push({faces: number, result: number});
-                    total -= number;
-                } else if (1 + results.diceLeft >= total) {
-                    results.diceArray.push({faces: number, result: 1});
-                    total -= 1;
-                } else {
-                    results.diceArray.push({faces: number, result: total - results.diceLeft});
-                    total -= results.diceLeft;
-                }
-                return results;
-            }, {diceLeft: dice.length, diceArray: []})).diceArray;
-            for ( let [rollId, total] of Object.entries(formData.object) ) {
-                this.fulfillable.forEach(({term}) => {
-                    let index = results.findIndex(i => i.faces === term.faces);
-                    let result = results[index].result;
-                    for (let i = term.results.length; i != term.number; i++) {
-                        const roll = { result: result, active: true };
-                        term.results.push(roll);
+            Object.entries(formData.object).forEach(([damageType, total]) => {
+                console.log(this.rolls.filter(roll => damageType === (roll.options.type ?? roll.options.flavor)));
+                let dice = (this.rolls.filter(roll => damageType === (roll.options.type ?? roll.options.flavor)).reduce((dice, roll) => {
+                    roll.terms.forEach(die => {
+                        if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
+                            dice.max += (die.faces * die.number);
+                            for (let i = 0; i < die.number; i++) {
+                                dice.terms.push(die.faces);
+                            }   
+                        } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
+                            dice.multiplier = die.operator === '-' ? -1 : 1;
+                        } else if (die instanceof CONFIG.Dice.termTypes.NumericTerm) {
+                            total -= (die.number * dice.multiplier);
+                        }
+                    });
+                    return dice;
+                }, {terms: [], max: 0, multiplier: 1})).terms;
+                dice.sort((a, b) => a > b ? 1 : -1);
+                console.log(dice, total);
+                let results = (dice.reduce((results, number) => {
+                    results.diceLeft -= 1;
+                    if (number + results.diceLeft <= total) { // 3 + 0 , 4 false
+                        results.diceArray.push({faces: number, result: number});
+                        total -= number;
+                    } else if (1 + results.diceLeft >= total) { // 1 + 0, 4 false
+                        results.diceArray.push({faces: number, result: 1});
+                        total -= 1;
+                    } else {
+                        results.diceArray.push({faces: number, result: total - results.diceLeft});
+                        total -= results.diceLeft;
                     }
-                    results.splice(index, 1);
-                });
-            }
+                    return results;
+                }, {diceLeft: dice.length, diceArray: []})).diceArray;
+                console.log(duplicate(results));
+                for ( let [rollId, total] of Object.entries(formData.object) ) {
+                    this.fulfillable.forEach(({term, termDamageType}) => {
+                        if (damageType === termDamageType) {
+                            for (let i = term.results.length; i != term.number; i++) {
+                                let index = results.findIndex(j => j.faces === term.faces);
+                                console.log(index, term, results);
+                                let result = results[index].result;
+                                const roll = { result: result, active: true };
+                                term.results.push(roll);
+                                results.splice(index, 1);
+                            }
+                        }
+                    });
+                }
+            });
         }
+        this.rolls.forEach(roll => {
+            roll.terms.forEach(term => term._evaluated = true);
+            roll._evaluated = true;
+        });
     }
     setAllDiceTerms(number) {
         this.fulfillable.forEach(({term}) => {

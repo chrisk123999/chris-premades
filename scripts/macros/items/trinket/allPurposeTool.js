@@ -54,7 +54,9 @@ export let allPurposeTool1 = {
             useJournal: true,
             uses: {
                 max: 1,
-                per: 'dawn'
+                per: 'dawn',
+                recovery: 1,
+                uses: 1
             },
             translate: 'CHRISPREMADES.Macros.AllPurposeTool.Channel'
         }

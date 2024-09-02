@@ -1,6 +1,6 @@
 import {compendiumUtils, constants, genericUtils, itemUtils} from '../utils.js';
 import * as macros from '../macros.js';
-import {custom} from '../events/custom.js';
+import {custom} from './custom.js';
 async function addOrUpdate(item, updates, options, id) {
     if (!item.actor) return;
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
@@ -45,8 +45,8 @@ async function addOrUpdate(item, updates, options, id) {
                     descriptionPackKey = genericUtils.getCPRSetting('spellCompendium');
                     break;
             }
+            if (!packKey) return;
             let itemData = await compendiumUtils.getItemFromCompendium(packKey, value.name, {object: true});
-            console.log(genericUtils.duplicate(itemData));
             if (!itemData) return;
             if (descriptionPackKey) {
                 let pack = game.packs.get(descriptionPackKey);
@@ -59,12 +59,12 @@ async function addOrUpdate(item, updates, options, id) {
             }
             if (description) genericUtils.setProperty(itemData, 'system.description', description);
             if (value.uses) genericUtils.setProperty(itemData, 'system.uses', item.flags['chris-premades']?.equipment?.uses?.[key] ?? value.uses);
-            console.log(genericUtils.duplicate(itemData));
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
             if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
             if (value.translate) itemData.name = genericUtils.translate(value.translate);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.key', key);
+            delete itemData._id;
             return itemData;
         }));
         if (updates.length) await itemUtils.createItems(item.actor, updates, {section: item.name});

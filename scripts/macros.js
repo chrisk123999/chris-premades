@@ -294,3 +294,4 @@ export {firearm} from './macros/mechanics/firearm.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
+export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';

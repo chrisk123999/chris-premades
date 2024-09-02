@@ -10,7 +10,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 armorOfAgathys: {
-                    damage: workflow.damageTotal,
+                    damage: workflow.castData.castLevel * 5,
                     damageType: itemUtils.getConfig(workflow.item, 'damageType'),
                     playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
                 }

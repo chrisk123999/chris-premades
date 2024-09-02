@@ -20,7 +20,7 @@ async function bonusAttack(workflow, formula) {
     workflow.attackRoll._formula += formula;
     await workflow.setAttackRoll(workflow.attackRoll);
 }
-async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
+async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
     let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();

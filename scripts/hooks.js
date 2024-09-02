@@ -17,7 +17,7 @@ import {backup} from './extensions/backup.js';
 import {auras} from './events/auras.js';
 import {vae} from './integrations/vae.js';
 import {rest} from './events/rest.js';
-import {equipment} from './extensions/equipment.js';
+import {equipment} from './events/equipment.js';
 import {initiative} from './extensions/initiative.js';
 import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';

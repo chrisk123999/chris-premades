@@ -26,6 +26,9 @@
             "ThreeMonths": "Three Months",
             "Weekly": "Weekly"
         },
+        "CONFIG": {
+            "SaveDC": "Save DC:"
+        },
         "CommonFeatures": {
             "Bite": "Bite",
             "BreathWeapon": "Breath Weapon",
@@ -872,6 +875,12 @@
                 "Bolt": "Storm Sphere: Bolt",
                 "Turn": "Storm Sphere: Turn"
             },
+            "Stormgirdle": {
+                "LightningStrike": "Stormgirdle: Lightning Strike"
+            },
+            "Stormgridle": {
+                "Avatar": "Storm Avatar"
+            },
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",
                 "EyeRay": "Eye Ray",
@@ -1523,6 +1532,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "seenTour": {
+                "Hint": "Has the tour prompt been viewed? Automatically set.",
+                "Name": "Tour Prompt"
             }
         },
         "SkillCheck": {

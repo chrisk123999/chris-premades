@@ -1,5 +1,5 @@
 import {socket, sockets} from '../sockets.js';
-import {combatUtils, socketUtils} from '../../utils.js';
+import {socketUtils} from '../../utils.js';
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

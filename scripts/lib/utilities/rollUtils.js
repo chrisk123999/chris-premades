@@ -1,7 +1,6 @@
 import {epicRolls} from '../../integrations/epicRolls.js';
 import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
-
 async function getCriticalFormula(formula) {
     return new CONFIG.Dice.DamageRoll(formula, {}, {critical: true, powerfulCritical: game.settings.get('dnd5e', 'criticalDamageMaxDice'), multiplyNumeric: game.settings.get('dnd5e', 'criticalDamageModifiers')}).formula;
 }
@@ -89,10 +88,14 @@ async function rollDice(formula, {actor, chatMessage, flavor} = {}) {
     }
     return roll;
 }
+async function damageRoll(formula, actor, type) {
+    return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), {type: type}).evaluate();
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
     getChangedDamageRoll,
     requestRoll,
-    rollDice
+    rollDice,
+    damageRoll
 };

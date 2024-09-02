@@ -50,7 +50,8 @@ export let danothsVisorA = {
             uses: {
                 value: 1,
                 per: 'dawn',
-                max: 1
+                max: 1,
+                recovery: 1
             },
             translate: 'CHRISPREMADES.Macros.DanothsVisor.XRay'
         }
@@ -77,7 +78,8 @@ export let danothsVisorE = {
             uses: {
                 value: 1,
                 per: 'dawn',
-                max: 1
+                max: 1,
+                recovery: 1
             }
         },
         antiMagicField: {
@@ -86,7 +88,8 @@ export let danothsVisorE = {
             uses: {
                 value: 1,
                 per: 'dawn',
-                max: 1
+                max: 1,
+                recovery: 1
             },
             preparation: 'atwill'
         }
