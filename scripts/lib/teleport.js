@@ -1,5 +1,5 @@
 import {Crosshairs} from './crosshairs.js';
-import {animationUtils, genericUtils} from '../utils.js';
+import {animationUtils, effectUtils, genericUtils} from '../utils.js';
 import {crosshairUtils} from './utilities/crosshairUtils.js';
 export class Teleport {
     constructor(tokens, controllingToken, options) {
@@ -40,6 +40,10 @@ export class Teleport {
             x: this.coords.selected.x,
             y: this.coords.selected.y
         };
+        if (tok.actor) {
+            let grappled = effectUtils.getEffectByStatusID(tok.actor, 'grappled');
+            if (grappled) await genericUtils.remove(grappled);
+        }
         await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, position);
         let update = genericUtils.collapseObjects(this.updates, position, {_id: tok.id});
         await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', [update], {animate: false, teleport: true});
@@ -54,6 +58,10 @@ export class Teleport {
     }
     async _nonSync() {
         this.tokens.forEach(async tok => {
+            if (tok.actor) {
+                let grappled = effectUtils.getEffectByStatusID(tok.actor, 'grappled');
+                if (grappled) await genericUtils.remove(grappled);
+            }
             let position = this.getCoords(tok);
             await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, position);
             let update = genericUtils.collapseObjects(this.updates, position, {_id: tok.id});
@@ -63,6 +71,12 @@ export class Teleport {
     }
     async _sync() {
         let positions = this.tokens.map(tok => this.getCoords(tok));
+        await Promise.all(this.tokens.map(async tok => {
+            if (tok.actor) {
+                let grappled = effectUtils.getEffectByStatusID(tok.actor, 'grappled');
+                if (grappled) await genericUtils.remove(grappled);
+            }
+        }));
         await Promise.all(this.tokens.map(async (tok, ind) => await animationUtils.teleportEffects[this.options?.animation ?? 'default'].pre(tok.document, positions[ind])));
         let updates = this.tokens.map((tok, ind) => genericUtils.collapseObjects(this.updates, {_id: tok.id}, positions[ind]));
         await genericUtils.updateEmbeddedDocuments(canvas.scene, 'Token', updates, {animate: false, teleport: true});
