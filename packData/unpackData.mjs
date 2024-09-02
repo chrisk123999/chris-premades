@@ -3,7 +3,7 @@ let itemPacks = [
     'cpr-actions',
     'cpr-class-feature-items',
     'cpr-class-features',
-    //'cpr-feat-features',
+    'cpr-feat-features',
     //'cpr-homebrew-feature-items',
     'cpr-item-features',
     'cpr-items',
@@ -15,7 +15,7 @@ let itemPacks = [
     'cpr-spells',
     'cpr-spell-features',
     'cpr-summon-features',
-    //'cpr-feats',
+    'cpr-feats',
     'cpr-miscellaneous-items'
 ];
 let actorPacks = [
