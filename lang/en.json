@@ -232,7 +232,8 @@
             "Actions": {
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
-                "GrappledBy": "Grappled By {tokenName}"
+                "GrappledBy": "Grappled By {tokenName}",
+                "Grappling": "Grappling {tokenName}"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
@@ -549,6 +550,11 @@
                 "ChooseSkill": "How would you like to contest the grapple?",
                 "Immune": "Target cannot be grappled!",
                 "Size": "Target is too big to be grappled!"
+            },
+            "Grappler": {
+                "Pin": "Grappler: Pin",
+                "Pinned": "Grappler: Pinned By {tokenName}",
+                "Pinning": "Grappler: Pinning {tokenName}"
             },
             "Grease": {
                 "Fall": "Grease: Fall"
@@ -1028,6 +1034,10 @@
                 "Heal": "Grant {formula} temporary HP",
                 "Temp": "Twilight Sanctuary: Temporary HP"
             },
+            "UnarmedFighting": {
+                "Grapple": "Unarmed Fighting: Grapple Damage",
+                "Select": "Deal damage to a which grappled creature?"
+            },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",
                 "Underwater": "Underwater"
@@ -1489,6 +1499,10 @@
                 "Hint": "When enabled, status icons will be replaced.",
                 "Name": "Replace Status Icons"
             },
+            "seenTour": {
+                "Hint": "Has the tour prompt been viewed? Automatically set.",
+                "Name": "Tour Prompt"
+            },
             "selectTool": {
                 "Hint": "When enabled, the select tool is available in more places. Reload required after enabling.",
                 "Name": "Select Tool Everywhere"
@@ -1532,10 +1546,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "seenTour": {
-                "Hint": "Has the tour prompt been viewed? Automatically set.",
-                "Name": "Tour Prompt"
             }
         },
         "SkillCheck": {

@@ -203,6 +203,7 @@ export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansive
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
 export {eyesOfNight} from './macros/classFeatures/cleric/twilightDomain/eyesOfNight.js';
 export {fightingSpirit} from './macros/classFeatures/fighter/samurai/fightingSpirit.js';
+export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/classFeatures/multiple/fightingStyleUnarmedFighting.js';
 export {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
@@ -295,3 +296,5 @@ export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinke
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
+// Feats
+export {grappler, grapplerPin} from './macros/feats/grappler.js';

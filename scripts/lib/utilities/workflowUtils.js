@@ -1,7 +1,7 @@
 import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.actor.getRollData());
     let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);
@@ -22,7 +22,7 @@ async function bonusAttack(workflow, formula) {
 }
 async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);
-    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula);
+    if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.actor.getRollData());
     let roll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
     if (damageType) {
         genericUtils.setProperty(roll, 'options.type', damageType);

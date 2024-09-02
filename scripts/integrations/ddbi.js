@@ -63,7 +63,7 @@ function workaround() {
                     }
                     break;
                 case 'feat':
-                    searchCompendiums.push(constants.packs.classFeatures);
+                    searchCompendiums.push(constants.packs.classFeatures, constants.packs.feats);
                     if (gambitItems) {
                         searchCompendiums.push('gambits-premades.gps-class-features');
                         searchCompendiums.push('gambits-premades.gps-generic-features');
