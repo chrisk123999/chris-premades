@@ -26,6 +26,9 @@
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
         },
+        "CONFIG": {
+            "SaveDC": "CD da Salvaguarda:"
+        },
         "CommonFeatures": {
             "Bite": "Mordida",
             "BreathWeapon": "Arma de Sopro",
@@ -872,6 +875,12 @@
                 "Bolt": "Esfera Tempestuosa: Relâmpago",
                 "Turn": "Esfera Tempestuosa: Turno"
             },
+            "Stormgirdle": {
+                "LightningStrike": "Stormgirdle: Relâmpago"
+            },
+            "Stormgridle": {
+                "Avatar": "Avatar da Tempestade"
+            },
             "SummonAberration": {
                 "Beholderkin": "Observador",
                 "EyeRay": "Raio Ocular",
@@ -1523,6 +1532,10 @@
             "vaeButtons": {
                 "Hint": "Quando ativadas, certas macros adicionarão botões à interface do VAE.",
                 "Name": "Visual Active Effects: Botões"
+            },
+            "seenTour": {
+                "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
+                "Name": "Aviso do Tour"
             }
         },
         "SkillCheck": {
