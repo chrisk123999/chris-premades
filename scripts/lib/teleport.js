@@ -26,7 +26,7 @@ export class Teleport {
             maxRange: this.options.range,
             crosshairsConfig,
             drawBoundries: true,
-            customCallbacks: this.callbacks
+            customCallbacks: this.options?.callbacks
         });
         if (!this.template.cancelled) {
             this.options?.isGroup ? await this._moveGroup() : await this._move();

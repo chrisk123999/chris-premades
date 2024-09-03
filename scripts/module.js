@@ -31,6 +31,7 @@ import {chat} from './extensions/chat.js';
 import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
+import {dae} from './integrations/dae.js';
 import {spellList} from './extensions/spellList.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
@@ -56,6 +57,7 @@ Hooks.once('ready', () => {
     workflow.setup();
     registerHooks();
     ddbi.ready();
+    dae.addFlags();
     if (game.modules.get('gambits-premades')?.active) gambitPremades.init(utils.genericUtils.getCPRSetting('gambitPremades'));
     if (game.modules.get('midi-item-showcase-community')?.active) miscPremades.init(utils.genericUtils.getCPRSetting('miscPremades'));
     if (utils.genericUtils.getCPRSetting('disableSpecialEffects')) conditions.disableSpecialEffects(true);

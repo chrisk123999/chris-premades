@@ -180,6 +180,7 @@ async function use({workflow}) {
                     origSize: actorUtils.getSize(workflow.actor, true),
                     newSize
                 });
+                genericUtils.setProperty(effectData, 'flags.chris-premades.effect.sizeAnimation', false);
             } else {
                 effectData.changes.push({
                     key: 'system.traits.size',

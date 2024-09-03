@@ -59,7 +59,21 @@ export let tavernBrawlerUnarmedStrike = {
                 requiredRace: null,
                 requiredEquipment: [],
                 requiredFeatures: [
-                    'Tavern Brawler'
+                    'Tavern Brawler: Constitution Score'
+                ],
+                replacedItemName: 'Unarmed Strike (Tavern Brawler)',
+                removedItems: [],
+                additionalItems: [],
+                priority: 0
+            },
+            'Unarmed Strike 4': {
+                originalName: 'Unarmed Strike',
+                requiredClass: null,
+                requiredSubclass: null,
+                requiredRace: null,
+                requiredEquipment: [],
+                requiredFeatures: [
+                    'Tavern Brawler: Strength Score'
                 ],
                 replacedItemName: 'Unarmed Strike (Tavern Brawler)',
                 removedItems: [],

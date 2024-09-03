@@ -57,15 +57,15 @@ function getSize(actor, returnString) {
         case 'tiny':
             return returnString ? 'tiny' : 0;
         case 'sm':
-            return returnString ? 'small' : 1;
+            return returnString ? 'sm' : 1;
         case 'med':
-            return returnString ? 'medium' : 2;
+            return returnString ? 'med' : 2;
         case 'lg':
-            return returnString ? 'large' : 3;
+            return returnString ? 'lg' : 3;
         case 'huge':
             return returnString ? 'huge': 4;
         case 'grg':
-            return returnString ? 'gargantuan' : 5;
+            return returnString ? 'grg' : 5;
     }
 }
 function hasUsedReaction(actor) {

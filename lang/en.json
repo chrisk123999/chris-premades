@@ -526,6 +526,9 @@
                 "Target": "Target Steed as well? (If mounted)",
                 "Type": "What creature type?"
             },
+            "FireRune": {
+                "AllowUnarmed": "Allow Fire Rune use on Unarmed Strikes"
+            },
             "FireShield": {
                 "ChillShield": "Chill Shield",
                 "Dismiss": "Fire Shield: Dismiss",
@@ -886,6 +889,9 @@
             },
             "StillnessOfMind": {
                 "Select": "Which condition would you like to remove?"
+            },
+            "StormRune": {
+                "AdvDis": "Grant {tokenName} advantage/disadvantage on their {actionType}?"
             },
             "StormSphere": {
                 "Bolt": "Storm Sphere: Bolt",
@@ -1318,6 +1324,17 @@
             }
         },
         "Settings": {
+            "Permissions": {
+                "1": "Player",
+                "2": "Trusted Player",
+                "3": "Assistant Gamemaster",
+                "4": "Gamemaster"
+            },
+            "SelectCompendium": "Select a compendium:",
+            "abilitySave": {
+                "Hint": "When enabled, certain macros will prompt the player for more information for the ability save.",
+                "Name": "Contextual Ability Saves"
+            },
             "addActions": {
                 "0": "Disabled",
                 "1": "Linked Characters",
@@ -1329,19 +1346,8 @@
                 "7": "Linked Characters and NPCs",
                 "8": "Unlinked Characters and NPCs",
                 "9": "All Characters and NPCs",
-                "Name": "Add Actions to Tokens",
-                "Hint": "When enabled, generic actions will be added when a token is placed."
-            },
-            "Permissions": {
-                "1": "Player",
-                "2": "Trusted Player",
-                "3": "Assistant Gamemaster",
-                "4": "Gamemaster"
-            },
-            "SelectCompendium": "Select a compendium:",
-            "abilitySave": {
-                "Hint": "When enabled, certain macros will prompt the player for more information for the ability save.",
-                "Name": "Contextual Ability Saves"
+                "Hint": "When enabled, generic actions will be added when a token is placed.",
+                "Name": "Add Actions to Tokens"
             },
             "additionalCompendiums": {
                 "Hint": "Select additional item compendiums to be used by the medkit and adjust their priority.",
@@ -1496,22 +1502,22 @@
                 "Name": "Manual Rolls"
             },
             "manualRollsInclusion": {
-                "Hint": "What actor's rolls should be prompted for.",
-                "Name": "Manual Rolls Inclusion",
                 "0": "None - No Manual Rolls",
                 "1": "All - Prompt for Any Actor",
                 "2": "All Characters Only",
                 "3": "All Linked Only",
                 "4": "Player Owned Linked Only",
-                "5": "All Player Owned and Controlled"
-            },
-            "manualRollsPromptOnMiss": {
-                "Hint": "Prompt for damage rolls even for missed attacks.",
-                "Name": "Prompt on Miss"
+                "5": "All Player Owned and Controlled",
+                "Hint": "What actor's rolls should be prompted for.",
+                "Name": "Manual Rolls Inclusion"
             },
             "manualRollsPromptNoData": {
                 "Hint": "Prompt for rolls with no data, likely used in macros.",
                 "Name": "Prompt on No Data"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Prompt for damage rolls even for missed attacks.",
+                "Name": "Prompt on Miss"
             },
             "manualRollsUsers": {
                 "Hint": "Configure which users use Manual Rolls.",
