@@ -155,6 +155,7 @@ async function updateToken(token, updates, options, userId) {
         if (isFinalMovement) await auras.updateAuras(token, options);
         await executeMacroPass([token], 'moved', undefined, options);
         await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
+        await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
         if (updates.x || updates.y) {
             let current = Array.from(templateUtils.getTemplatesInToken(token.object));
             let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);

@@ -21,6 +21,7 @@ import {equipment} from './events/equipment.js';
 import {initiative} from './extensions/initiative.js';
 import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
+import {actions} from './extensions/actions.js';
 export function registerHooks() {
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
@@ -62,6 +63,7 @@ export function registerHooks() {
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);
+    if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);

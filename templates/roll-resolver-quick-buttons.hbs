@@ -1,0 +1,13 @@
+<footer class="roll-resolver-quick-buttons">
+    {{#if quickButtons}}
+        <fieldset class="cpr-fieldset cpr-row-center">
+            <legend data-tooltip="{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Tooltip"}}">{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Label"}}</legend>
+            {{#each quickButtons as |button|}}
+                <button type="{{button.type}}" name="{{button.name}}">
+                    <i class="{{button.icon}}" inert></i>
+                    <label inert>{{localize button.label}}</label>
+                </button>
+            {{/each}}
+        </fieldset>
+    {{/if}}
+</footer>

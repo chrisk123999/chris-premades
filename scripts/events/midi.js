@@ -24,7 +24,7 @@ function collectActorMacros(item, pass) {
     if (!macroList.length) return [];
     return macroList.map(i => custom.getMacro(i)).filter(j => j).filter(k => k.midi?.actor?.find(l => l.pass === pass)).flatMap(m => m.midi.actor).filter(n => n.pass === pass);
 }
-function collectAllMacros({item, token, actor, sourceToken}, pass) {
+function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) {
     let triggers = [];
     if (item) {
         let macroList = collectItemMacros(item, pass);
@@ -41,7 +41,8 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                 priority: i.priority,
                 token: token,
                 sourceToken: sourceToken,
-                custom: i.custom
+                custom: i.custom,
+                targetToken: targetToken
             });
         });
     }
@@ -60,7 +61,9 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     name: i.name,
                     priority: j.priority,
                     token: token,
-                    custom: i.custom
+                    sourceToken: sourceToken,
+                    custom: i.custom,
+                    targetToken: targetToken
                 });
             });
         });
@@ -78,7 +81,9 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     name: i.name,
                     priority: j.priority,
                     token: token,
-                    custom: i.custom
+                    sourceToken: sourceToken,
+                    custom: i.custom,
+                    targetToken: targetToken
                 });
             });
         });
@@ -99,15 +104,17 @@ function collectAllMacros({item, token, actor, sourceToken}, pass) {
                     name: templateUtils.getName(i),
                     priority: j.priority,
                     token: token,
-                    custom: i.custom
+                    sourceToken: sourceToken,
+                    custom: i.custom,
+                    targetToken: targetToken
                 });
             });
         });
     }
     return triggers;
 }
-function getSortedTriggers({item, token, actor, sourceToken}, pass) {
-    let allTriggers = collectAllMacros({item, token, actor, sourceToken}, pass);
+function getSortedTriggers({item, token, actor, sourceToken, targetToken}, pass) {
+    let allTriggers = collectAllMacros({item, token, actor, sourceToken, targetToken}, pass);
     let names = new Set(allTriggers.map(i => i.name));
     allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
     let maxMap = {};
@@ -190,6 +197,7 @@ async function preambleComplete(workflow) {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePreambleComplete'));
     });
     sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: scenePreambleComplete');
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.preambleComplete(workflow);
@@ -223,6 +231,7 @@ async function postAttackRoll(workflow) {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'scenePostAttackRoll'));
     });
     sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: scenePostAttackRoll');
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     await executeMacroPass(workflow, 'postAttackRoll');
     await executeTargetMacroPass(workflow, 'targetPostAttackRoll');
@@ -233,9 +242,10 @@ async function preTargetDamageApplication(token, {workflow, ditem}) {
     let selfTriggers = getSortedTriggers({item: workflow.item, token: workflow.token, actor: workflow.actor}, 'applyDamage');
     let sceneTriggers = [];
     token.document.parent.tokens.filter(i => i.uuid != token.document.uuid && i.actor).forEach(j => {
-        sceneTriggers.push(...getSortedTriggers({token: token, actor: token.actor, sourceToken: j.object}, 'sceneApplyDamage'));
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token, targetToken: token}, 'sceneApplyDamage'));
     });
     let triggers = [...targetTriggers, ...selfTriggers, ...sceneTriggers].sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: applyDamage, targetApplyDamage, sceneApplyDamage');
     for (let trigger of triggers) await executeMacro(trigger, workflow, ditem);
 }
 export let midiEvents = {

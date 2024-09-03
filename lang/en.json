@@ -108,6 +108,7 @@
             "Formula": "Formula:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
+            "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
@@ -185,6 +186,7 @@
             "Undamaged": "Undamaged"
         },
         "Generic": {
+            "Actions": "Actions",
             "Available": "Available",
             "CPR": "Chris's Premades",
             "Cancel": "Cancel",
@@ -758,6 +760,11 @@
             "NaturesWrath": {
                 "Select": "Which ability will you make the save with?"
             },
+            "PariahsShield": {
+                "MaxBonus": "Max AC Bonus:",
+                "Protect": "Protect {name} with {item}?",
+                "Reaction": "Pariah's Shield: Protect"
+            },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
@@ -1299,6 +1306,11 @@
                 "Label": "User Interface Options",
                 "Name": "User Interface Options"
             },
+            "manualRolls": {
+                "Hint": "Settings for manual rolling.",
+                "Label": "Manual Rolls",
+                "Name": "Manual Rolls"
+            },
             "mechanics": {
                 "Hint": "Settings for game mechanics.",
                 "Label": "Game Mechanic Options",
@@ -1306,6 +1318,20 @@
             }
         },
         "Settings": {
+            "addActions": {
+                "0": "Disabled",
+                "1": "Linked Characters",
+                "2": "Unlinked Characters",
+                "3": "All Characters",
+                "4": "Linked NPCs",
+                "5": "Unlinked NPCs",
+                "6": "All NPCs",
+                "7": "Linked Characters and NPCs",
+                "8": "Unlinked Characters and NPCs",
+                "9": "All Characters and NPCs",
+                "Name": "Add Actions to Tokens",
+                "Hint": "When enabled, generic actions will be added when a token is placed."
+            },
             "Permissions": {
                 "1": "Player",
                 "2": "Trusted Player",
@@ -1465,10 +1491,31 @@
                 "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
                 "Name": "Enable Macro Interface"
             },
-            "manualRollsPreferences": {
-                "Hint": "Configure options for Manual Rolls",
-                "Label": "Manual Rolls Preferences",
-                "Name": "Manual Rolls Preferences"
+            "manualRollsEnabled": {
+                "Hint": "Enable CPR's Roll Resolver for Unfulfilled Rolls.",
+                "Name": "Manual Rolls"
+            },
+            "manualRollsInclusion": {
+                "Hint": "What actor's rolls should be prompted for.",
+                "Name": "Manual Rolls Inclusion",
+                "0": "None - No Manual Rolls",
+                "1": "All - Prompt for Any Actor",
+                "2": "All Characters Only",
+                "3": "All Linked Only",
+                "4": "Player Owned Linked Only",
+                "5": "All Player Owned and Controlled"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Prompt for damage rolls even for missed attacks.",
+                "Name": "Prompt on Miss"
+            },
+            "manualRollsPromptNoData": {
+                "Hint": "Prompt for rolls with no data, likely used in macros.",
+                "Name": "Prompt on No Data"
+            },
+            "manualRollsUsers": {
+                "Hint": "Configure which users use Manual Rolls.",
+                "Name": "Manual Rolls Users"
             },
             "miscPremades": {
                 "1": "No Homebrew or Unearthed Arcana",
@@ -1561,6 +1608,9 @@
         "SkipDeadAndUnconscious": "Skip Dead & Unconscious?",
         "SneakAttack": {
             "Auto": "Automatically Use:"
+        },
+        "Spells": {
+            "BeaconOfHope": "Beacon of Hope"
         },
         "SpotlightOmnisearch": {
             "Actor": "Selected token is not associated with any actor!",

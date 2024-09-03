@@ -2,7 +2,6 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils} from '../utils.js';
 export class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(roll, options={}) {
-        console.log('hello there');
         super(options);
         this.#roll = roll;
     }
@@ -26,11 +25,8 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         form: {
             template: 'modules/chris-premades/templates/roll-resolver-single-form.hbs'
         },
-        attack: {
-            template: 'modules/chris-premades/templates/roll-resolver-attack.hbs'
-        },
-        save: {
-            template: 'modules/chris-premades/templates/roll-resolver-save.hbs'
+        quickButtons: {
+            template: 'modules/chris-premades/templates/roll-resolver-quick-buttons.hbs'
         },
         footer: {
             template: 'templates/generic/form-footer.hbs'
@@ -46,8 +42,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     }
     #roll;
     async awaitFulfillment() {
-        console.log('await fulfillment');
-        console.log(this.roll);
         const fulfillable = await this.#identifyFulfillableTerms(this.roll.terms);
         if ( !fulfillable.length ) return;
         Roll.defaultImplementation.RESOLVERS.set(this.roll, this);
@@ -56,9 +50,16 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         else await this.digitalRoll();
         return promise;
     }
-    checkPreferences() { // make settings for player owned/linked/unlinked
+    checkPreferences() { 
         if (this.roll instanceof CONFIG.Dice.DamageRoll) return false;
-        if (genericUtils.getCPRSetting('manualRollsPreferences')?.[game.user.id]) return true;
+        if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+        let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
+        if (manualRollsInclusion === 0) return false;
+        if ((Object.keys(this.roll.data).length === 0) && !genericUtils.getCPRSetting('manualRollsPromptNoData')) return false;
+        if (manualRollsInclusion === 2 && this.roll.data?.actorType === 'character') return true;
+        else if (manualRollsInclusion === 3 && fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true) return true;
+        else if (manualRollsInclusion === 4 && fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true) return true;
+        else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true) return true;
         else return false;
     }
     async digitalRoll() {
@@ -74,7 +75,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @returns {boolean}            Whether the result was consumed.
      */
     registerResult(method, denomination, result) {
-        console.log('register result');
         const query = `label[data-denomination="${denomination}"][data-method="${method}"] > input:not(:disabled)`;
         const term = Array.from(this.element.querySelectorAll(query)).find(input => input.value === '');
         if ( !term ) {
@@ -88,22 +88,13 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         return true;
     }
     async close(options={}) {
-        console.log('close');
         // eslint-disable-next-line no-undef
         if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new FormDataExtended(this.element));
         Roll.defaultImplementation.RESOLVERS.delete(this.roll);
         this.#resolve?.();
         return super.close(options);
     }
-    _configureRenderOptions(options) {
-        super._configureRenderOptions(options);
-        options.parts = ['form'];
-        if (this.roll.options?.flavor?.toLowerCase()?.includes('attack')) options.parts.push('attack');
-        if (this.roll.options?.flavor?.toLowerCase()?.includes('sav')) options.parts.push('save');
-        options.parts.push('footer');
-    }
     async _prepareContext(_options) {
-        console.log('prepare context');
         const context = {
             formula: this.roll.formula,
             groups: [{
@@ -116,36 +107,33 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             options: {
                 advantageMode: this.roll.options.advantageMode,
                 name: this.roll.data.name,
-                flavor: this.roll.options.flavor,
+                flavor: this.roll.options.flavor ?? this.roll.data.item.name,
                 bonusTotal: this.roll.terms.reduce((acc, cur) => {
                     if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
                 }, 0)
             },
-            saveButtons: [
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-success', icon: 'fa-solid fa-thumbs-up'}
-            ],
-            attackButtons: [
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Hit', name: 'attack-hit', icon: 'fa-solid fa-check'},
-                {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Critical', name: 'attack-critical', icon: 'fa-solid fa-check-double'}
-            ],
             buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
+        if (this.roll.options?.flavor?.toLowerCase()?.includes('attack')) context.quickButtons = [
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Hit', name: 'attack-hit', icon: 'fa-solid fa-check'},
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Critical', name: 'attack-critical', icon: 'fa-solid fa-check-double'}
+        ];
+        else if (this.roll.options?.flavor?.toLowerCase()?.includes('sav')) context.quickButtons = [
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Failure', name: 'save-failure', icon: 'fa-solid fa-thumbs-down'},
+            {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Success', name: 'save-success', icon: 'fa-solid fa-thumbs-up'}
+        ];
         for (const fulfillable of this.fulfillable.values()) {
             const {id, term} = fulfillable;
             fulfillable.isNew = false;
             context.groups[0].ids.push(id);
             context.groups[0].icons.push(CONFIG.Dice.fulfillment.dice[term.denomination]?.icon);
             context.groups[0].max = (context.groups[0].max ?? context.options.bonusTotal) + term.denomination;
-            console.log(term);
         }
-        console.log(context);
         return context;
     }
     async _onSubmitForm(formConfig, event) {
-        console.log('on submit form');
         this._toggleSubmission(false);
         await super._onSubmitForm(formConfig, event);
         this.element?.querySelectorAll('input').forEach(input => input.disabled = true);
@@ -159,7 +147,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @returns {Promise<number|void>}
      */
     async resolveResult(term, method, { reroll=false, explode=false }={}) {
-        console.log('resolve result', term, method, this);
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
             console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
@@ -200,9 +187,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         });
     }
     static async _fulfillRoll(event, form, formData) {
-        console.log('fulfill roll', formData?.object, event, form);
-        console.log(event?.submitter?.name);
-        if (!event?.submitter?.name || event?.submittter?.name === 'confirm') {
+        if (!event?.submitter?.name || event.submitter.name === 'confirm') {
             if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
                 this.fulfillable.forEach(({term}) => {
                     for (let i = term.results.length; i != term.number; i++) {
@@ -214,8 +199,9 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                 let total = formData.object.total;
                 let dice = (this.roll.terms.reduce((dice, die) => {
                     if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                        dice.max += (die.faces * die.number);
-                        for (let i = 0; i < die.number; i++) {
+                        let dieAmount = (die.options.advantage || die.options.disadvantage) ? 1 : die.number;
+                        dice.max += (die.faces * dieAmount);
+                        for (let i = 0; i < dieAmount; i++) {
                             dice.terms.push(die.faces);
                         }   
                     } else if (die instanceof CONFIG.Dice.termTypes.OperatorTerm) {
@@ -297,7 +283,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @returns {Promise<DiceTerm[]>}
      */
     async #identifyFulfillableTerms(terms, { isNew=false }={}) {
-        console.log('identify fulfillable terms');
         const config = game.settings.get('core', 'diceConfiguration');
         const fulfillable = Roll.defaultImplementation.identifyFulfillableTerms(terms);
         fulfillable.forEach(term => {
@@ -316,7 +301,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @returns {Promise<void>}  Returns a Promise that resolves when the term's results have been externally fulfilled.
      */
     async addTerm(term) {
-        console.log('add term');
         if ( !(term instanceof foundry.dice.terms.DiceTerm) ) {
             throw new Error('Only DiceTerm instances may be added to the RollResolver.');
         }
@@ -326,7 +310,6 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         return new Promise(resolve => this.#resolve = resolve);
     }
     _checkDone() {
-        console.log('check done');
         // If the form has already in the submission state, we don't need to re-submit.
         const submitter = this.element.querySelector('button[type="submit"]');
         if ( submitter.disabled ) return;

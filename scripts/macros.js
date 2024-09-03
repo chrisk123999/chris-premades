@@ -290,12 +290,14 @@ export {search} from './macros/actions/search.js';
 export {shove} from './macros/actions/shove.js';
 export {squeeze} from './macros/actions/squeeze.js';
 export {underwater, underwaterEffect} from './macros/actions/underwater.js';
+// Feats
+export {grappler, grapplerPin} from './macros/feats/grappler.js';
+export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
 //Items
 export {firearm} from './macros/mechanics/firearm.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
-// Feats
-export {grappler, grapplerPin} from './macros/feats/grappler.js';
-export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
+export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
+export {pariahsShield} from './macros/items/armor/pariahsShield.js';

@@ -20,7 +20,7 @@ let buttonLabels = {
     monsterCompendium: 'CHRISPREMADES.Generic.Select',
     spellCompendium: 'CHRISPREMADES.Generic.Select',
     macroCompendium: 'CHRISPREMADES.Generic.Select',
-    manualRollsPreferences: 'CHRISPREMADES.Generic.Configure',
+    manualRollsUsers: 'CHRISPREMADES.Generic.Configure',
     classSpellList: 'CHRISPREMADES.Generic.Select',
     itemCompendium: 'CHRISPREMADES.Generic.Select'
 };
@@ -119,7 +119,7 @@ export async function settingButton(id) {
             tours.guidedTour();
             break;
         }
-        case 'manualRollsPreferences': await rollResolver.manualRollsPreferencesDialog(); break;
+        case 'manualRollsUsers': await rollResolver.manualRollsUsersDialog(); break;
         case 'classSpellList': await spellList.selectJournal('classSpellList'); break;
         case 'itemCompendium': await selectCompendium('itemCompendium', 'Item'); break;
     }
@@ -164,6 +164,12 @@ export class settingsIntegration extends settingsBase {
     constructor() {
         super();
         this.category = 'integration';
+    }
+}
+export class settingsManualRolls extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'manualRolls';
     }
 }
 export class settingsBackup extends settingsBase {

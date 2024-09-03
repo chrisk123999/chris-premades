@@ -1,10 +1,9 @@
 <div id="cpr-roll-resolver" class="roll-resolver-form standard-form">
     <p class="roll-resolver-content" data-bonus-total="{{options.bonusTotal}}">
-        {{options.name}}
-        {{options.flavor}}
+        {{options.name}} - {{options.flavor}}
     </p>
     {{#each groups}}
-        <div class="roll-resolver-group" data-ids="{{ids}}">
+        <div class="roll-resolver-group roll-resolver-flex" data-ids="{{ids}}">
             {{formula}}
             <label class="icon die-input">
                 <input type="number" id="total" name="total" max="{{max}}" step="1" autofocus placeholder="{{localize "CHRISPREMADES.Generic.Total"}}">

@@ -42,7 +42,7 @@ async function addOrUpdate(item, updates, options, id) {
                     break;
                 case 'personalSpell':
                     packKey = genericUtils.getCPRSetting('spellCompendium');
-                    descriptionPackKey = genericUtils.getCPRSetting('spellCompendium');
+                    descriptionPackKey = packKey;
                     break;
             }
             if (!packKey) return;
@@ -62,6 +62,7 @@ async function addOrUpdate(item, updates, options, id) {
             if (value.preparation) genericUtils.setProperty(itemData, 'system.preparation.mode', value.preparation);
             if (value.duration) genericUtils.setProperty(itemData.system.duration, value.duration);
             if (value.translate) itemData.name = genericUtils.translate(value.translate);
+            if (value.override) genericUtils.mergeObject(itemData, value.override);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.key', key);
             delete itemData._id;

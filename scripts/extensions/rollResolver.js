@@ -32,10 +32,10 @@ function unregisterFulfillmentMethod() {
         d100: ''
     });
 }
-async function manualRollsPreferencesDialog() {
-    let currentSetting = genericUtils.getCPRSetting('manualRollsPreferences');
-    let title = 'CHRISPREMADES.Settings.manualRollsPreferences.Name';
-    let content = 'CHRISPREMADES.Settings.manualRollsPreferences.Hint';
+async function manualRollsUsersDialog() {
+    let currentSetting = genericUtils.getCPRSetting('manualRollsUsers');
+    let title = 'CHRISPREMADES.Settings.manualRollsUsers.Name';
+    let content = 'CHRISPREMADES.Settings.manualRollsUsers.Hint';
     let inputs = [['checkbox', game.users.map(user => ({
         label: user.name,
         name: user.id,
@@ -47,10 +47,10 @@ async function manualRollsPreferencesDialog() {
     let result = await DialogApp.dialog(title, content, inputs, buttons);
     if (!result?.buttons) return;
     delete result.buttons;
-    genericUtils.setCPRSetting('manualRollsPreferences', result);
+    genericUtils.setCPRSetting('manualRollsUsers', result);
 }
 export let rollResolver = {
     registerFulfillmentMethod: registerFulfillmentMethod,
     unregisterFulfillmentMethod: unregisterFulfillmentMethod,
-    manualRollsPreferencesDialog: manualRollsPreferencesDialog
+    manualRollsUsersDialog: manualRollsUsersDialog
 };

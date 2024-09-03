@@ -1,5 +1,5 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsIntegration, settingsInterface, settingsMechanics} from './applications/settings.js';
+import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsIntegration, settingsInterface, settingsManualRolls, settingsMechanics} from './applications/settings.js';
 import {abilitySave} from './events/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
@@ -18,6 +18,7 @@ import {chat} from './extensions/chat.js';
 import {initiative} from './extensions/initiative.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
+import {actions} from './extensions/actions.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -583,7 +584,7 @@ export function registerSettings() {
         key: 'diceSoNice',
         type: Boolean,
         default: false,
-        category: 'development' //Change this back to integration when it works.
+        category: 'integration'
     });
     addSetting({
         key: 'seenTour',
@@ -592,10 +593,45 @@ export function registerSettings() {
         category: 'development'
     });
     addSetting({
-        key: 'manualRolls',
+        key: 'classSpellList',
+        type: String,
+        default: null,
+        category: 'compendium',
+        select: true
+    });
+    let oldAddActions;
+    addSetting({
+        key: 'addActions',
+        type: Number,
+        default: 0,
+        category: 'mechanics',
+        choices: {
+            0: 'CHRISPREMADES.Settings.addActions.0',
+            1: 'CHRISPREMADES.Settings.addActions.1',
+            2: 'CHRISPREMADES.Settings.addActions.2',
+            3: 'CHRISPREMADES.Settings.addActions.3',
+            4: 'CHRISPREMADES.Settings.addActions.4',
+            5: 'CHRISPREMADES.Settings.addActions.5',
+            6: 'CHRISPREMADES.Settings.addActions.6',
+            7: 'CHRISPREMADES.Settings.addActions.7',
+            8: 'CHRISPREMADES.Settings.addActions.8',
+            9: 'CHRISPREMADES.Settings.addActions.9'
+        },
+        onChange: (value) => {
+            if (value && !oldAddActions) {
+                Hooks.on('createToken', actions.createToken);
+            } else if (!value && oldAddActions) {
+                Hooks.off('createToken', actions.createToken);
+            }
+            oldAddActions = value;
+        }
+    });
+    oldAddActions = genericUtils.getCPRSetting('addActions');
+    addSetting({
+        key: 'manualRollsEnabled',
         type: Boolean,
         default: false,
-        category: 'development',
+        category: 'manualRolls',
         onChange: value => {
             if (value) {
                 rollResolver.registerFulfillmentMethod();
@@ -605,17 +641,36 @@ export function registerSettings() {
         }
     });
     addSetting({
-        key: 'manualRollsPreferences',
+        key: 'manualRollsUsers',
         type: Object,
         default: {},
-        category: 'development'
+        category: 'manualRolls'
     });
     addSetting({
-        key: 'classSpellList',
-        type: String,
-        default: null,
-        category: 'compendium',
-        select: true
+        key: 'manualRollsInclusion',
+        type: Number,
+        default: 0,
+        category: 'manualRolls',
+        choices: {
+            0: 'CHRISPREMADES.Settings.manualRollsInclusion.0',
+            1: 'CHRISPREMADES.Settings.manualRollsInclusion.1',
+            2: 'CHRISPREMADES.Settings.manualRollsInclusion.2',
+            3: 'CHRISPREMADES.Settings.manualRollsInclusion.3',
+            4: 'CHRISPREMADES.Settings.manualRollsInclusion.4',
+            5: 'CHRISPREMADES.Settings.manualRollsInclusion.5'
+        }
+    });
+    addSetting({
+        key: 'manualRollsPromptOnMiss',
+        type: Boolean,
+        default: false,
+        category: 'manualRolls',
+    });
+    addSetting({
+        key: 'manualRollsPromptNoData',
+        type: Boolean,
+        default: false,
+        category: 'manualRolls'
     });
 }
 export function registerMenus() {
@@ -653,6 +708,11 @@ export function registerMenus() {
         key: 'integration',
         icon: 'fas fa-puzzle-piece',
         type: settingsIntegration
+    });
+    addMenu({
+        key: 'manualRolls',
+        icon: 'fas fa-calculator',
+        type: settingsManualRolls
     });
     addMenu({
         key: 'backup',

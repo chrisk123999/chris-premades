@@ -2,7 +2,6 @@ let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {genericUtils} from '../utils.js';
 export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(rolls, options={}) {
-        console.log('hello there');
         super(options);
         this.#rolls = Array.isArray(rolls) ? rolls : [rolls];
     }
@@ -40,8 +39,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
     }
     #rolls;
     async awaitFulfillment() {
-        console.log('await fulfillment');
-        console.log(this.rolls);
         const fulfillable = await this.#identifyFulfillableTerms(this.rolls); //
         if ( !fulfillable.length ) return;
         this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.set(roll, this)); //
@@ -51,8 +48,14 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         return promise;
     }
     checkPreferences() {
-        if (!(this.rolls.some(roll => roll instanceof CONFIG.Dice.DamageRoll))) return false; //
-        if (genericUtils.getCPRSetting('manualRollsPreferences')?.[game.user.id]) return true;
+        if (this.rolls.some(roll => (roll instanceof CONFIG.Dice.DamageRoll) === false)) return false;
+        if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+        let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
+        if (manualRollsInclusion === 0) return false;
+        if (manualRollsInclusion === 2 && this.rolls[0].data?.actorType === 'character') return true;
+        else if (manualRollsInclusion === 3 && fromUuidSync(this.rolls[0].data?.actorUuid)?.prototypeToken?.actorLink === true) return true;
+        else if (manualRollsInclusion === 4 && fromUuidSync(this.rolls[0].data?.actorUuid)?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) === true) return true;
+        else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) === true) return true;
         else return false;
     }
     async digitalRoll() {
@@ -68,7 +71,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @returns {boolean}            Whether the result was consumed.
      */
     registerResult(method, denomination, result) {
-        console.log('register result');
         const query = `label[data-denomination="${denomination}"][data-method="${method}"] > input:not(:disabled)`;
         const term = Array.from(this.element.querySelectorAll(query)).find(input => input.value === '');
         if ( !term ) {
@@ -82,7 +84,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         return true;
     }
     async close(options={}) {
-        console.log('close');
         // eslint-disable-next-line no-undef
         if ( this.rendered ) await this.constructor._fulfillRoll.call(this, null, null, new FormDataExtended(this.element));
         this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.delete(roll)); //
@@ -90,8 +91,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         return super.close(options);
     }
     async _prepareContext(_options) {
-        console.log(this);
-        console.log('prepare context');
         const context = {
             groups: [],
             options: {
@@ -105,9 +104,10 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             let group = context.groups.find(g => g.damageType === damageType);
             if (!group) context.groups.push(group = {
                 damageType: damageType,
+                damageTypeLabel: CONFIG.DND5E.damageTypes[damageType]?.label ?? damageType,
                 formula: '',
                 ids: [],
-                icons: [],
+                icon: CONFIG.DND5E.damageTypes[damageType]?.icon,
                 max: 0,
                 bonusTotal: 0
             });
@@ -115,7 +115,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                 if (term instanceof CONFIG.Dice.termTypes.DiceTerm && term.number && term.faces) {
                     group.max += term.faces * term.number;
                     group.formula += group.formula.length ? (' + ' + term.expression) : term.expression;
-                    group.icons.push(CONFIG.Dice.fulfillment.dice[term.denomination]?.icon);
                 } else if (term instanceof CONFIG.Dice.termTypes.NumericTerm && term.number) {
                     group.max += term.number;
                     group.bonusTotal += term.number;
@@ -128,11 +127,9 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             context.groups.find(g => g.damageType === damageType).ids.push(id);
             fulfillable.isNew = false;
         }
-        console.log(context);
         return context;
     }
     async _onSubmitForm(formConfig, event) {
-        console.log('on submit form');
         this._toggleSubmission(false);
         await super._onSubmitForm(formConfig, event);
         this.element?.querySelectorAll('input').forEach(input => input.disabled = true);
@@ -146,7 +143,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @returns {Promise<number|void>}
      */
     async resolveResult(term, method, { reroll=false, explode=false }={}) { // Needed???
-        console.log('resolve result', term, method, this);
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
             console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
@@ -187,22 +183,18 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         });
     }
     static async _fulfillRoll(event, form, formData) {
-        console.log('fulfill roll', formData?.object, event, form);
-        if (!formData || (Object?.entries(formData?.object).some(i => i === null))) { // For fulfilling non-rolled terms
+        if (!formData || (Object?.values(formData?.object).some(i => i === null))) { // For fulfilling non-rolled terms
             this.fulfillable.forEach(({term}) => {
-                console.log(term);
                 for (let i = term.results.length; i != term.number; i++) {
                     const roll = { result: term.randomFace(), active: true};
                     term.results.push(roll);
                 }
             });
         } else {
-            Object.entries(formData.object).forEach(([damageType, total]) => {
-                console.log(this.rolls.filter(roll => damageType === (roll.options.type ?? roll.options.flavor)));
-                let dice = (this.rolls.filter(roll => damageType === (roll.options.type ?? roll.options.flavor)).reduce((dice, roll) => {
+            Object.entries(formData.object).forEach(([resultDamageType, total]) => {
+                let dice = (this.rolls.filter(roll => resultDamageType === (roll.options.type ?? roll.options.flavor)).reduce((dice, roll) => {
                     roll.terms.forEach(die => {
                         if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
-                            dice.max += (die.faces * die.number);
                             for (let i = 0; i < die.number; i++) {
                                 dice.terms.push(die.faces);
                             }   
@@ -213,15 +205,14 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                         }
                     });
                     return dice;
-                }, {terms: [], max: 0, multiplier: 1})).terms;
+                }, {terms: [], multiplier: 1})).terms;
                 dice.sort((a, b) => a > b ? 1 : -1);
-                console.log(dice, total);
                 let results = (dice.reduce((results, number) => {
                     results.diceLeft -= 1;
-                    if (number + results.diceLeft <= total) { // 3 + 0 , 4 false
+                    if (number + results.diceLeft <= total) {
                         results.diceArray.push({faces: number, result: number});
                         total -= number;
-                    } else if (1 + results.diceLeft >= total) { // 1 + 0, 4 false
+                    } else if (1 + results.diceLeft >= total) {
                         results.diceArray.push({faces: number, result: 1});
                         total -= 1;
                     } else {
@@ -230,21 +221,17 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                     }
                     return results;
                 }, {diceLeft: dice.length, diceArray: []})).diceArray;
-                console.log(duplicate(results));
-                for ( let [rollId, total] of Object.entries(formData.object) ) {
-                    this.fulfillable.forEach(({term, termDamageType}) => {
-                        if (damageType === termDamageType) {
-                            for (let i = term.results.length; i != term.number; i++) {
-                                let index = results.findIndex(j => j.faces === term.faces);
-                                console.log(index, term, results);
-                                let result = results[index].result;
-                                const roll = { result: result, active: true };
-                                term.results.push(roll);
-                                results.splice(index, 1);
-                            }
+                this.fulfillable.forEach(({term, damageType}) => {
+                    if (damageType === resultDamageType) {
+                        for (let i = term.results.length; i != term.number; i++) {
+                            let index = results.findIndex(j => j.faces === term.faces);
+                            let result = results[index].result;
+                            const roll = { result: result, active: true };
+                            term.results.push(roll);
+                            results.splice(index, 1);
                         }
-                    });
-                }
+                    }
+                });
             });
         }
         this.rolls.forEach(roll => {
@@ -268,7 +255,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @returns {Promise<DiceTerm[]>}
      */
     async #identifyFulfillableTerms(rolls, { isNew=false }={}) { // updated
-        console.log('identify fulfillable terms');
         const config = game.settings.get('core', 'diceConfiguration');
         const fulfillable = rolls.map(roll => {
             let terms = [];
@@ -293,7 +279,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @returns {Promise<void>}  Returns a Promise that resolves when the term's results have been externally fulfilled.
      */
     async addTerm(term) { // Do I need this???
-        console.log('add term');
         if ( !(term instanceof foundry.dice.terms.DiceTerm) ) {
             throw new Error('Only DiceTerm instances may be added to the RollResolver.');
         }
@@ -303,7 +288,6 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         return new Promise(resolve => this.#resolve = resolve);
     }
     _checkDone() {
-        console.log('check done');
         // If the form has already in the submission state, we don't need to re-submit.
         const submitter = this.element.querySelector('button[type="submit"]');
         if ( submitter.disabled ) return;

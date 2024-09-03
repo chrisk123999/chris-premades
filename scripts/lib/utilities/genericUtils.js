@@ -137,6 +137,13 @@ function camelCaseToWords(s) {
 function getIdentifier(entity) {
     return entity.flags['chris-premades']?.info?.identifier;
 }
+function checkPlayerOwnership(entity) {
+    return Object.entries(entity.ownership).some(([userId, permission]) => {
+        if (game.users.get(userId)?.isGM) return false;
+        else if (permission === 3) return true;
+        else return false;
+    });
+}
 export let genericUtils = {
     sleep,
     translate,
@@ -164,5 +171,6 @@ export let genericUtils = {
     log,
     titleCase,
     camelCaseToWords,
-    getIdentifier
+    getIdentifier,
+    checkPlayerOwnership
 };
