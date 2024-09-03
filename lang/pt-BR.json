@@ -232,7 +232,8 @@
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
-                "GrappledBy": "Agarrado por {tokenName}"
+                "GrappledBy": "Agarrado por {tokenName}",
+                "Grappling": "Agarrando {tokenName}"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -549,6 +550,11 @@
                 "ChooseSkill": "Como você gostaria de disputar o agarrão?",
                 "Immune": "O alvo não pode ser agarrado!",
                 "Size": "O alvo é grande demais para ser agarrado!"
+            },
+            "Grappler": {
+                "Pin": "Imobilizador: Pin",
+                "Pinned": "Imobilizador: Imobilizado por {tokenName}",
+                "Pinning": "Imobilizador: Imobilizando {tokenName}"
             },
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
@@ -1028,6 +1034,10 @@
                 "Heal": "Dar {formula} PV temporário",
                 "Temp": "Santuário Crepuscular: PV Temporário"
             },
+            "UnarmedFighting": {
+                "Grapple": "Combate Desarmado: Dano Agarrado",
+                "Select": "Causar dano a uma criatura agarrada?"
+            },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
                 "Underwater": "Submerso"
@@ -1493,6 +1503,10 @@
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
                 "Name": "Substituir Ícones de Status"
             },
+             "seenTour": {
+                "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
+                "Name": "Aviso do Tour"
+            },
             "selectTool": {
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
                 "Name": "Ferramenta de Seleção em Todo Lugar"
@@ -1532,10 +1546,6 @@
             "vaeButtons": {
                 "Hint": "Quando ativadas, certas macros adicionarão botões à interface do VAE.",
                 "Name": "Visual Active Effects: Botões"
-            },
-            "seenTour": {
-                "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
-                "Name": "Aviso do Tour"
             }
         },
         "SkillCheck": {
