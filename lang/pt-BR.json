@@ -526,6 +526,9 @@
                 "Target": "Marcar a Montaria também? (Se montado)",
                 "Type": "Qual tipo de criatura?"
             },
+            "FireRune": {
+                "AllowUnarmed": "Permitir Runa de Fogo em Ataques Desarmados"
+            },
             "FireShield": {
                 "ChillShield": "Escudo Frio",
                 "Dismiss": "Escudo de Fogo: Dispensar",
@@ -886,6 +889,9 @@
             },
             "StillnessOfMind": {
                 "Select": "Qual condição você quer de remover?"
+            },
+            "StormRune": {
+                "AdvDis": "Dar vantagem/desvantagem para {tokenName} em seu {actionType}?"
             },
             "StormSphere": {
                 "Bolt": "Esfera Tempestuosa: Relâmpago",
