@@ -108,6 +108,7 @@
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
+            "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
@@ -185,6 +186,7 @@
             "Undamaged": "Não-Danificado"
         },
         "Generic": {
+            "Actions": "Ações",
             "Available": "Disponível",
             "CPR": "Chris's Premades",
             "Cancel": "Cancelar",
@@ -232,6 +234,8 @@
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
+                "GrappleEscape": "Agarrão: Escapar",
+                "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
             },
@@ -547,7 +551,8 @@
                 "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?"
             },
             "Grapple": {
-                "ChooseSkill": "Como você gostaria de disputar o agarrão?",
+                "ChooseSkill": "Como você quer disputar o agarrão?",
+                "ChooseSkillEscape": "Como você quer escapar do agarrão?",
                 "Immune": "O alvo não pode ser agarrado!",
                 "Size": "O alvo é grande demais para ser agarrado!"
             },
@@ -754,6 +759,11 @@
             },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
+            },
+            "PariahsShield": {
+                "MaxBonus": "Bônus Máx. de CA:",
+                "Protect": "Proteger {name} com {item}?",
+                "Reaction": "Escudo do Pária: Proteger"
             },
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
@@ -994,6 +1004,9 @@
                 "Select": "De quais planos você extrai a magia?",
                 "Upper": "Planos Superiores"
             },
+            "TavernBrawler": {
+                "Use": "Usar Ação Bônus para tentar agarrar??"
+            },
             "Teleport": {
                 "AssociatedObject": "Objeto Associado",
                 "Damage": "Teletransporte: Dano",
@@ -1058,6 +1071,7 @@
             "WildShape": {
                 "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
                 "Equipment": "O que acontece com o seu equipamento?",
+                "Ignore": "Ignorar ND, Tipo & Restrição de Movimento:",
                 "KeepSpells": "Permitir conjuração enquanto transformado:",
                 "Merge": "Assimilar / Derrubar",
                 "Revert": "Forma Selvagem: Reverter",
@@ -1292,6 +1306,11 @@
                 "Label": "Opções de Interface do Usuário",
                 "Name": "Opções de Interface do Usuário"
             },
+            "manualRolls": {
+                "Hint": "Configurações para rolagem manual.",
+                "Label": "Rolagens Manuais",
+                "Name": "Rolagens Manuais"
+            },
             "mechanics": {
                 "Hint": "Configurações para mecânica de jogo.",
                 "Label": "Opções de Mecânica de Jogo",
@@ -1299,6 +1318,20 @@
             }
         },
         "Settings": {
+            "addActions": {
+                "0": "Desabilitado",
+                "1": "Personagens Vinculados",
+                "2": "Personagens Desvinculados",
+                "3": "Todos os Personagens",
+                "4": "PnJs Vinculados",
+                "5": "PnJs Desvinculados",
+                "6": "Todos os PnJs",
+                "7": "Personagens Vinculados e PnJs",
+                "8": "Personagens Desvinculados e PnJs",
+                "9": "Todos os Personagens e PnJs",
+                "Name": "Adicionar Ações aos Tokens",
+                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado."
+            },
             "Permissions": {
                 "1": "Jogador",
                 "2": "Jogador Confiável",
@@ -1458,10 +1491,31 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
-            "manualRollsPreferences": {
-                "Hint": "Configurar opções para Manual Rolls",
-                "Label": "Preferências Manual Rolls",
-                "Name": "Preferências Manual Rolls"
+            "manualRollsEnabled": {
+                "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
+                "Name": "Rolagens Manuais"
+            },
+            "manualRollsInclusion": {
+                "Hint": "Quais rolagens de ator devem ser solicitadas.",
+                "Name": "Inclusão de Rolagens Manuais",
+                "0": "Nenhuma - Sem Rolagens Manuais",
+                "1": "Todas - Solicitação para Qualquer Ator",
+                "2": "Apenas Todos Personagens",
+                "3": "Apenas Todos Vinculados",
+                "4": "Apenas Vinculados e Pertencentes a Jogador",
+                "5": "Todos Pertencentes e Controlados por jogador"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
+                "Name": "Solicitar em Erros"
+            },
+            "manualRollsPromptNoData": {
+                "Hint": "Solicita rolagens sem dados, provavelmente usados ​​em macros.",
+                "Name": "Solicitar Sem Dados"
+            },
+            "manualRollsUsers": {
+                "Hint": "Configura quais usuários usam Rolagens Manuais.",
+                "Name": "Usuário de Rolagens Manuais"
             },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
@@ -1554,6 +1608,9 @@
         "SkipDeadAndUnconscious": "Pular Morto e Inconsciente?",
         "SneakAttack": {
             "Auto": "Usar Automaticamente:"
+        },
+        "Spells": {
+            "BeaconOfHope": "Sinal da Esperança"
         },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
