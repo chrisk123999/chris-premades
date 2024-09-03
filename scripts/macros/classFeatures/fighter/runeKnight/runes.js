@@ -182,6 +182,11 @@ export let stormRune = {
                 pass: 'scenePreambleComplete',
                 macro: earlyStormRune,
                 priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: earlyStormRune,
+                priority: 50
             }
         ]
     },
