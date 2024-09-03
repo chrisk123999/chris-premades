@@ -1,0 +1,237 @@
+{
+  "name": "Armor of Safeguarding, Plate",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Bigby Presents: Glory of the Giants",
+      "page": "111",
+      "license": "",
+      "custom": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 65,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "veryRare",
+    "attunement": "required",
+    "attuned": false,
+    "equipped": false,
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": 0,
+      "max": "",
+      "per": null,
+      "prompt": false,
+      "recovery": ""
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "enchantment": null,
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "summons": null,
+    "armor": {
+      "value": 18,
+      "magicalBonus": null,
+      "dex": 0
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "heavy",
+      "baseItem": "plate"
+    },
+    "properties": [
+      "mgc",
+      "stealthDisadvantage"
+    ],
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 15,
+    "proficient": null
+  },
+  "flags": {
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "armorOfSafeguardingP",
+        "source": "chris-premades",
+        "version": "0.12.51"
+      },
+      "equipment": {
+        "identifier": "armorOfSafeguardingP"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Armor of Safeguarding, Plate",
+      "changes": [
+        {
+          "key": "system.attributes.hp.bonuses.level",
+          "mode": 2,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.hp.bonuses.overall",
+          "mode": 2,
+          "value": "10",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "img": "ddb-images/other/ddb/item/Armor.jpg",
+      "_id": "gGKyyCnvfwj6qo7p",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<div class=\"ddb\"><p>Set in the center of this armor’s chest is a citrine engraved with the shield rune.</p><p>While wearing this armor, your hit point maximum increases by an amount equal to 10 + your level.</p><p><em><strong>Invoking the Rune.</strong></em> As an action, you can invoke the armor’s rune to cast the beacon of hope spell with it; the spell has a duration of 1 minute and doesn’t require &amp;Reference[concentration]{concentration}. Once the rune has been invoked, it can’t be invoked again until the next dawn.</p></div>",
+      "origin": "Item.zZLDctxkIStJ0sfq",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!iHdqzvU7g3DP21Ys.gGKyyCnvfwj6qo7p"
+    }
+  ],
+  "img": "ddb-images/other/ddb/item/Armor.jpg",
+  "folder": "O8ycx9CUp5ZlVqWa",
+  "_id": "iHdqzvU7g3DP21Ys",
+  "_key": "!items!iHdqzvU7g3DP21Ys"
+}
