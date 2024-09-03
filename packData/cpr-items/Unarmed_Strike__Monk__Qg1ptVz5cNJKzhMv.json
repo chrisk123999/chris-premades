@@ -1,0 +1,161 @@
+{
+    "name": "Unarmed Strike (Monk)",
+    "type": "weapon",
+    "system": {
+      "description": {
+        "value": "",
+        "chat": ""
+      },
+      "source": {
+        "custom": ""
+      },
+      "quantity": 1,
+      "weight": {
+        "value": 0,
+        "units": "lb"
+      },
+      "price": {
+        "value": 0,
+        "denomination": "gp"
+      },
+      "attunement": "",
+      "equipped": false,
+      "rarity": "",
+      "identified": true,
+      "activation": {
+        "type": "action",
+        "cost": 1,
+        "condition": ""
+      },
+      "duration": {
+        "value": "",
+        "units": ""
+      },
+      "cover": null,
+      "crewed": false,
+      "target": {
+        "value": "1",
+        "width": null,
+        "units": "",
+        "type": "creature",
+        "prompt": true
+      },
+      "range": {
+        "value": 5,
+        "long": null,
+        "units": "ft"
+      },
+      "uses": {
+        "value": null,
+        "max": "",
+        "per": null,
+        "recovery": "",
+        "prompt": true
+      },
+      "consume": {
+        "type": "",
+        "target": "",
+        "amount": null,
+        "scale": false
+      },
+      "ability": "dex",
+      "actionType": "mwak",
+      "chatFlavor": "",
+      "critical": {
+        "threshold": null,
+        "damage": ""
+      },
+      "damage": {
+        "parts": [
+          [
+            "@scale.monk.die[bludgeoning] + @mod",
+            "bludgeoning"
+          ]
+        ],
+        "versatile": ""
+      },
+      "formula": "",
+      "save": {
+        "ability": "",
+        "dc": null,
+        "scaling": "spell"
+      },
+      "armor": {
+        "value": null
+      },
+      "hp": {
+        "value": null,
+        "max": null,
+        "dt": null,
+        "conditions": ""
+      },
+      "properties": [
+        "mgc"
+      ],
+      "proficient": 0,
+      "unidentified": {
+        "description": ""
+      },
+      "type": {
+        "value": "simpleM",
+        "baseItem": ""
+      },
+      "container": null,
+      "attack": {
+        "bonus": "",
+        "flat": false
+      },
+      "attuned": false,
+      "enchantment": null,
+      "summons": null,
+      "magicalBonus": null
+    },
+    "flags": {
+      "midi-qol": {
+        "fumbleThreshold": null,
+        "effectActivation": false,
+        "rollAttackPerTarget": "default",
+        "removeAttackDamageButtons": "default",
+        "itemCondition": "",
+        "effectCondition": ""
+      },
+      "midiProperties": {
+        "nodam": false,
+        "fulldam": false,
+        "halfdam": false,
+        "autoFailFriendly": false,
+        "autoSaveFriendly": false,
+        "rollOther": false,
+        "critOther": false,
+        "offHandWeapon": false,
+        "magicdam": false,
+        "magiceffect": false,
+        "concentration": false,
+        "toggleEffect": false,
+        "ignoreTotalCover": false,
+        "confirmTargets": "default",
+        "noConcentrationCheck": false,
+        "idr": false,
+        "idi": false,
+        "idv": false,
+        "ida": false
+      },
+      "core": {
+        "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.iAIfi9veecPUDMhZ"
+      },
+      "chris-premades": {
+        "info": {
+          "name": "Unarmed Strike (Monk)",
+          "version": "0.12.51",
+          "identifier": "unarmedStrike",
+          "source": "chris-premades"
+        }
+      }
+    },
+    "effects": [],
+    "img": "icons/skills/melee/unarmed-punch-fist.webp",
+    "folder": null,
+    "_id": "Qg1ptVz5cNJKzhMv",
+    "_key": "!items!Qg1ptVz5cNJKzhMv"
+  }
+  

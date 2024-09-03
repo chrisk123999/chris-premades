@@ -1,6 +1,7 @@
 {
-  "name": "Unarmed Strike (Monk)",
+  "name": "Unarmed Strike (Tavern Brawler)",
   "type": "weapon",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "system": {
     "description": {
       "value": "",
@@ -9,6 +10,11 @@
     "source": {
       "custom": ""
     },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
     "quantity": 1,
     "weight": {
       "value": 0,
@@ -18,10 +24,10 @@
       "value": 0,
       "denomination": "gp"
     },
-    "attunement": "",
-    "equipped": false,
     "rarity": "",
-    "identified": true,
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
     "activation": {
       "type": "action",
       "cost": 1,
@@ -54,12 +60,16 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "dex",
+    "ability": "str",
     "actionType": "mwak",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -68,18 +78,20 @@
     "damage": {
       "parts": [
         [
-          "@scale.monk.die[bludgeoning] + @mod",
+          "1d4[bludgeoning] + @mod",
           "bludgeoning"
         ]
       ],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "armor": {
       "value": null
     },
@@ -89,72 +101,48 @@
       "dt": null,
       "conditions": ""
     },
-    "properties": [
-      "mgc"
-    ],
-    "proficient": 0,
-    "unidentified": {
-      "description": ""
-    },
     "type": {
       "value": "simpleM",
       "baseItem": ""
     },
-    "container": null,
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "attuned": false,
-    "enchantment": null,
-    "summons": null,
-    "magicalBonus": null
+    "magicalBonus": null,
+    "properties": [],
+    "proficient": 1
   },
+  "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.iAIfi9veecPUDMhZ"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "fumbleThreshold": null,
+      "removeAttackDamageButtons": "default"
     },
     "chris-premades": {
       "info": {
-        "name": "Unarmed Strike (Monk)",
-        "version": "0.12.46",
-        "identifier": "unarmedStrike",
+        "identifier": "tavernBrawlerUnarmedStrike",
+        "version": "0.12.51",
         "source": "chris-premades"
       }
     }
   },
-  "effects": [],
-  "img": "icons/skills/melee/unarmed-punch-fist.webp",
-  "folder": "cLsaSVIF830KiMdB",
-  "_id": "Qg1ptVz5cNJKzhMv",
-  "_key": "!items!Qg1ptVz5cNJKzhMv"
+  "_id": "IjhFSqbVTtsweE84",
+  "_key": "!items!IjhFSqbVTtsweE84"
 }

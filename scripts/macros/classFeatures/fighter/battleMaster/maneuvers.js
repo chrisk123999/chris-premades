@@ -4,6 +4,14 @@ async function useBaitAndSwitch({workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
     if (targetToken.id === workflow.token.id || targetToken.document.disposition * workflow.token.document.disposition < 0) return;
+    // TODO: Martial Adept, Superior Technique
+    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', workflow.actor.getRollData()).evaluate();
+    superiorityRoll.toMessage({
+        rollType: 'roll',
+        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
+        flavor: workflow.item.name
+    });
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Maneuvers.BaitSwitchAC', [
         ['CHRISPREMADES.Generic.You', false],
         ['DND5E.Target', true]
@@ -20,7 +28,7 @@ async function useBaitAndSwitch({workflow}) {
             {
                 key: 'system.attributes.ac.bonus',
                 mode: 2,
-                value: workflow.damageTotal,
+                value: superiorityRoll.total,
                 priority: 20
             }
         ],
@@ -171,11 +179,15 @@ async function useGoadingAttack({workflow}) {
 async function useGrapplingStrike({workflow}) {
     let target = workflow.targets.first();
     if (!target) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Grapple', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Grapple'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
+    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'grapple');
+    let featureData;
+    if (!feature) {
+        featureData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Grapple', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Grapple'});
+        if (!featureData) {
+            errors.missingPackItem();
+            return;
+        }
+    } 
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let superiorityRoll = await new Roll(superiorityDie).evaluate();
     superiorityRoll.toMessage({
@@ -205,7 +217,11 @@ async function useGrapplingStrike({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData);
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
+    if (feature) {
+        await workflowUtils.syntheticItemRoll(feature, [target]);
+    } else {
+        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
+    }
     await genericUtils.remove(effect);
 }
 async function useManeuveringAttack({workflow}) {
@@ -315,7 +331,7 @@ async function useTripAttack({workflow}) {
 }
 export let maneuversAmbush = {
     name: 'Maneuvers: Ambush',
-    version: '0.12.43'
+    version: '0.12.51'
 };
 export let maneuversBaitAndSwitch = {
     name: 'Maneuvers: Bait and Switch',

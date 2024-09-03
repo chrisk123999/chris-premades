@@ -1,6 +1,6 @@
 export let unarmedStrike = {
     name: 'Unarmed Strike (Monk)',
-    version: '0.12.46',
+    version: '0.12.51',
     ddbi: {
         restrictedItems: {
             'Unarmed Strike': {
@@ -13,7 +13,7 @@ export let unarmedStrike = {
                 replacedItemName: 'Unarmed Strike (Monk)',
                 removedItems: [],
                 additionalItems: [],
-                priority: 0
+                priority: 20
             }
         }
     }

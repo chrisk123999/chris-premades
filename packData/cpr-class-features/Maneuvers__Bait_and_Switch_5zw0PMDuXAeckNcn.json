@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "@scale.battle-master.combat-superiority-die",
-          "midi-none"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -124,7 +119,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Bait and Switch",
-        "version": "0.12.43",
+        "version": "0.12.51",
         "identifier": "maneuversBaitAndSwitch",
         "source": "chris-premades"
       },

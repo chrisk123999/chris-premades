@@ -1,4 +1,5 @@
 import {epicRolls} from '../../integrations/epicRolls.js';
+import {effectUtils} from './effectUtils.js';
 import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
 function getDistance(sourceToken, targetToken, {wallsBlock} = {}) {
@@ -53,6 +54,15 @@ async function moveTokenAlongRay(targetToken, origRay, distance) {
     });
 }
 async function pushToken(sourceToken, targetToken, distance) {
+    if (targetToken.actor) {
+        let grappledEffects = effectUtils.getAllEffectsByIdentifier(targetToken.actor, 'grappled');
+        let grapplingEffects = effectUtils.getAllEffectsByIdentifier(targetToken.actor, 'grappling');
+        for (let effect of grappledEffects.concat(grapplingEffects)) {
+            if (effect) await genericUtils.remove(effect);
+        }
+        // Wait for dependent grapples to be destroyed, in case Rideable is mounting tokens still
+        await genericUtils.sleep(250);
+    }
     let ray = new Ray(sourceToken.center, targetToken.center);
     await moveTokenAlongRay(targetToken, ray, distance);
 }

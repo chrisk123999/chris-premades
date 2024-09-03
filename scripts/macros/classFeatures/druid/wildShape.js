@@ -27,17 +27,23 @@ async function use({workflow}) {
     }
     let packKey = itemUtils.getConfig(workflow.item, 'compendium');
     if (!packKey?.length) packKey = genericUtils.getCPRSetting('monsterCompendium');
-    let compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {maxCR, creatureTypes: ['beast']});
-    compendiumDocs = compendiumDocs.filter(i => !disallowedMovements.some(j => i.system.attributes.movement[j]));
-    let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
+    let compendiumDocs;
     let elementals = ['air', 'earth', 'fire', 'water'];
-    if (elementalWildShape && workflow.item.system.uses.value) {
-        elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
-        compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {specificNames: elementals}));
+    let ignoreRestrictions = itemUtils.getConfig(workflow.item, 'ignoreRestrictions');
+    if (ignoreRestrictions) {
+        compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(packKey);
+    } else {
+        compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {maxCR, creatureTypes: ['beast']});
+        compendiumDocs = compendiumDocs.filter(i => !disallowedMovements.some(j => i.system.attributes.movement[j]));
+        let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
+        if (elementalWildShape && workflow.item.system.uses.value) {
+            elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
+            compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {specificNames: elementals}));
+        }
     }
-    let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Select', compendiumDocs, {sortAlphabetical: true, sortCR: true});
+    let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Select', compendiumDocs, {sortAlphabetical: true, sortCR: true, showCR: true});
     if (!sourceActor) return;
-    if (elementals.includes(sourceActor.name)) await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
+    if (!ignoreRestrictions && elementals.includes(sourceActor.name)) await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
     let equippedItems = workflow.actor.items.filter(i => i.system.equipped && i.type !== 'container');
     let selection;
     if (equippedItems.length) {
@@ -56,15 +62,23 @@ async function use({workflow}) {
                             value: 'wear',
                             label: 'CHRISPREMADES.Macros.WildShape.Wear'
                         }
-                    ]
+                    ],
+                    currentValue: i.flags?.['chris-premades']?.wildShape?.mergeWear ?? 'merge'
                 }
             });
         }
-        selection = await DialogApp.dialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Equipment', [['selectOption', inputs]], 'okCancel');
+        selection = await DialogApp.dialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Equipment', [['selectOption', inputs, {displayAsRows: true}]], 'okCancel');
         if (!selection?.buttons) return;
     }
     let keepItems = [];
     if (selection) keepItems = Object.entries(selection).filter(i => i[1] === 'wear').map(j => workflow.actor.items.get(j[0]));
+    if (keepItems) {
+        let itemsUpdate = equippedItems.map(i => ({
+            _id: i.id,
+            'flags.chris-premades.wildShape.mergeWear': keepItems.includes(i) ? 'wear' : 'merge'
+        }));
+        await genericUtils.updateEmbeddedDocuments(workflow.actor, 'Item', itemsUpdate);
+    }
     let customKeepSpells = itemUtils.getConfig(workflow.item, 'keepSpells');
     let keepSpells = druidLevel >= 18 || customKeepSpells;
     let options = {
@@ -202,6 +216,14 @@ export let wildShape = {
         {
             value: 'keepSpells',
             label: 'CHRISPREMADES.Macros.WildShape.KeepSpells',
+            type: 'checkbox',
+            default: false,
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'ignoreRestrictions',
+            label: 'CHRISPREMADES.Macros.WildShape.Ignore',
             type: 'checkbox',
             default: false,
             category: 'homebrew',

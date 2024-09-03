@@ -14,11 +14,14 @@ async function turnStart({trigger: {entity: item, token}}) {
     if (!targetToken) targetToken = potentialTargets[0];
     await workflowUtils.syntheticItemDataRoll(featureData, token.actor, [targetToken]);
 }
-async function damage({workflow}) {
+async function early({workflow}) {
     let equippedShields = workflow.actor.items.filter(i => i.system.type?.value === 'shield' && i.system.equipped);
     let equippedWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i !== workflow.item);
     if (!equippedShields.length && !equippedWeapons.length) return;
-    await workflowUtils.replaceDamage(workflow, '1d6[bludgeoning] + @abilities.str.mod', {damageType: 'bludgeoning'});
+    workflow.item = workflow.item.clone({'system.damage.parts': [['1d6[bludgeoning] + @mod', 'bludgeoning'], ...workflow.item.system.damage.parts.slice(1)]}, {keepId: true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
+    workflow.item.applyActiveEffects();
 }
 export let fightingStyleUnarmedFighting = {
     name: 'Fighting Style: Unarmed Fighting',
@@ -45,8 +48,8 @@ export let fightingStyleUnarmedFightingUnarmedStrike = {
     midi: {
         item: [
             {
-                pass: 'damageRollComplete',
-                macro: damage,
+                pass: 'preambleComplete',
+                macro: early,
                 priority: 10
             }
         ]
@@ -65,7 +68,7 @@ export let fightingStyleUnarmedFightingUnarmedStrike = {
                 replacedItemName: 'Unarmed Strike (Unarmed Fighting)',
                 removedItems: [],
                 additionalItems: [],
-                priority: 0
+                priority: 10
             }
         }
     }

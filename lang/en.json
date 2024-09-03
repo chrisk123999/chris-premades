@@ -232,6 +232,8 @@
             "Actions": {
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
+                "GrappleEscape": "Grapple: Escape",
+                "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
                 "Grappling": "Grappling {tokenName}"
             },
@@ -548,6 +550,7 @@
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
+                "ChooseSkillEscape": "How would you like to escape the grapple?",
                 "Immune": "Target cannot be grappled!",
                 "Size": "Target is too big to be grappled!"
             },
@@ -994,6 +997,9 @@
                 "Select": "Which planes do you draw magic from?",
                 "Upper": "Upper Planes"
             },
+            "TavernBrawler": {
+                "Use": "Use a Bonus Action to attempt a grapple?"
+            },
             "Teleport": {
                 "AssociatedObject": "Associated Object",
                 "Damage": "Teleport: Damage",
@@ -1058,6 +1064,7 @@
             "WildShape": {
                 "CustomCompendium": "Custom Wild Shape Compendium Key:",
                 "Equipment": "What happens to your equipment?",
+                "Ignore": "Ignore CR, Type, & Movement Restrictions:",
                 "KeepSpells": "Allow spellcasting while transformed:",
                 "Merge": "Merge / Drop",
                 "Revert": "Wild Shape: Revert",

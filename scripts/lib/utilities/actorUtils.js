@@ -87,6 +87,25 @@ async function removeReactionUsed(actor, force=false) {
         return await socket.executeAsGM(sockets.removeReactionUsed.name, actor.uuid, force);
     }
 }
+function hasUsedBonusAction(actor) {
+    return MidiQOL.hasUsedBonusAction(actor);
+}
+async function setBonusActionUsed(actor) {
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        return MidiQOL.setBonusActionUsed(actor);
+    } else {
+        return await socket.executeAsGM(sockets.setBonusActionUsed.name, actor.uuid);
+    }
+}
+async function removeBonusActionUsed(actor, force=false) {
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        return MidiQOL.removeBonusActionUsed(actor, force);
+    } else {
+        return await socket.executeAsGM(sockets.removeBonusActionUsed.name, actor.uuid, force);
+    }
+}
 function hasSpellSlots(actor, atLeast = 0) {
     return Object.values(actor.system.spells).filter(i => i.value && i.level >= atLeast).length > 0;
 }
@@ -125,6 +144,9 @@ export let actorUtils = {
     hasUsedReaction,
     setReactionUsed,
     removeReactionUsed,
+    hasUsedBonusAction,
+    setBonusActionUsed,
+    removeBonusActionUsed,
     hasSpellSlots,
     isShapeChanger,
     doConcentrationCheck,

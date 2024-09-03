@@ -151,6 +151,16 @@ async function removeReactionUsed(actorUuid, force) {
     if (!actor) return;
     return MidiQOL.removeReactionUsed(actor, force);
 }
+async function setBonusActionUsed(actorUuid) {
+    let actor = await fromUuid(actorUuid);
+    if (!actor) return;
+    return MidiQOL.setBonusActionUsed(actor);
+}
+async function removeBonusActionUsed(actorUuid, force) {
+    let actor = await fromUuid(actorUuid);
+    if (!actor) return;
+    return MidiQOL.removeBonusActionUsed(actor, force);
+}
 async function polymorph(origActorUuid, newActorUuid, options, renderSheet=true) {
     let origActor = await fromUuid(origActorUuid);
     let newActor = await fromUuid(newActorUuid);
@@ -178,6 +188,8 @@ export let sockets = {
     spawnSummon,
     setReactionUsed,
     removeReactionUsed,
+    setBonusActionUsed,
+    removeBonusActionUsed,
     polymorph
 };
 export let socket;

@@ -281,7 +281,7 @@ export {dash} from './macros/actions/dash.js';
 export {disengage} from './macros/actions/disengage.js';
 export {dodge} from './macros/actions/dodge.js';
 export {fall} from './macros/actions/fall.js';
-export {grapple} from './macros/actions/grapple.js';
+export {grapple, grappleEscape} from './macros/actions/grapple.js';
 export {help} from './macros/actions/help.js';
 export {hide} from './macros/actions/hide.js';
 export {readyAction} from './macros/actions/readyAction.js';
@@ -298,3 +298,4 @@ export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
 // Feats
 export {grappler, grapplerPin} from './macros/feats/grappler.js';
+export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';

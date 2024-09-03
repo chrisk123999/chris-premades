@@ -1,7 +1,7 @@
 import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
-    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && genericUtils.getIdentifier(i) !== 'unarmedStrike');
+    let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(i)));
     if (!weapons.length) return;
     let selectedWeapon;
     if (weapons.length === 1) {

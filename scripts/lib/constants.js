@@ -84,6 +84,11 @@ const spellAttacks = [
     'msak',
     'rsak'
 ];
+const unarmedAttacks = [
+    'unarmedStrike',
+    'tavernBrawlerUnarmedStrike',
+    'fightingStyleUnarmedFightingUnarmedStrike'
+];
 let damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [
     {
@@ -376,6 +381,7 @@ export let constants = {
     rangedAttacks,
     weaponAttacks,
     spellAttacks,
+    unarmedAttacks,
     damageTypeOptions,
     setUseLocalCompendium,
     overTimeOptions,

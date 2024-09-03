@@ -4,7 +4,7 @@ async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     let smiteItem = itemUtils.getItemByIdentifier(workflow.actor, 'divineSmite');
     if (!smiteItem) return;
-    if (!itemUtils.getConfig(smiteItem, 'allowUnarmed') && genericUtils.getIdentifier(workflow.item) === 'unarmedStrike') return;
+    if (!itemUtils.getConfig(smiteItem, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     let validTypes = ['mwak'];
     if (itemUtils.getConfig(smiteItem, 'allowRanged')) {
         validTypes.push('rwak');
