@@ -30,20 +30,25 @@
             "SaveDC": "Save DC:"
         },
         "CommonFeatures": {
+            "Amphibious": "Amphibious",
             "Bite": "Bite",
             "BreathWeapon": "Breath Weapon",
             "ChangeShape": "Change Shape",
+            "Charge": "Charge",
             "Claws": "Claws",
             "DevilsSight": "Devil's Sight",
             "Evasion": "Evasion",
+            "Flyby": "Flyby",
             "HeatedBody": "Heated Body",
             "MagicResistance": "Magic Resistance",
+            "Maul": "Maul",
             "Mending": "Mending",
             "Multiattack": "Multiattack ({numAttacks} Attacks)",
             "PackTactics": "Pack Tactics",
             "Regeneration": "Regeneration",
             "ShadowStealth": "Shadow Stealth",
             "Shapechanger": "Shapechanger",
+            "Shred": "Shred",
             "StoneLethargy": "Stone Lethargy",
             "Tail": "Tail",
             "WaterBreathing": "Water Breathing",
@@ -135,6 +140,7 @@
             "RemoteMessage": "Waiting for remote dialog selection from",
             "Use": "Use {itemName}?",
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
+            "UseName": "Use {itemName} [{tokenName}]?",
             "WhatDo": "What would you like to do?"
         },
         "Direction": {
@@ -771,6 +777,15 @@
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
             },
+            "PrimalCompanion": {
+                "BindingStrike": "Binding Strike",
+                "Command": "Primal Companion: Command",
+                "Land": "Land",
+                "PrimalBond": "Primal Bond",
+                "Sea": "Sea",
+                "Select": "What companion type?",
+                "Sky": "Sky"
+            },
             "ProtectionFromEvilAndGood": {
                 "Save": "This save is from an effect from an aberration, celestial, elemental, fey, fiends, or undead that charmed, frightened, or possessed you."
             },
@@ -945,6 +960,17 @@
                 "ResistanceType": "Shared Resistances: What damage type?",
                 "SharedResistances": "Shared Resistances",
                 "Type": "What Dragon type?"
+            },
+            "SummonDrakeCompanion": {
+                "Command": "Drake Companion: Command",
+                "Essence": "Draconic Essence",
+                "InfusedStrikes": "Infused Strikes",
+                "Reflexive": "Reflexive Resistance",
+                "Resistance": "Use reaction to grant resistance to damage?",
+                "ResistanceSelf": "Use reaction to get resistance to damage?",
+                "Select": "What Drake type?",
+                "Self": "Yes: Self",
+                "Summon": "Yes: Drake Companion"
             },
             "SummonElemental": {
                 "Air": "Air",
@@ -1637,6 +1663,9 @@
                 "AberrantSpiritSlaad": "Aberrant Spirit (Slaad)",
                 "AberrantSpiritStarSpawn": "Aberrant Spirit (Star Spawn)",
                 "AirElemental": "Air Elemental",
+                "BeastOfTheLand": "Beast of the Land",
+                "BeastOfTheSea": "Beast of the Sea",
+                "BeastOfTheSky": "Beast of the Sky",
                 "BestialSpirit": "Bestial Spirit",
                 "BestialSpiritAir": "Bestial Spirit (Air)",
                 "BestialSpiritLand": "Bestial Spirit (Land)",
@@ -1654,6 +1683,11 @@
                 "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
                 "DraconicSpiritGem": "Draconic Spirit (Gem)",
                 "DraconicSpiritMetallic": "Draconic Spirit (Metallic)",
+                "DrakeCompanionAcid": "Drake Companion: Acid",
+                "DrakeCompanionCold": "Drake Companion: Cold",
+                "DrakeCompanionFire": "Drake Companion: Fire",
+                "DrakeCompanionLightning": "Drake Companion: Lightning",
+                "DrakeCompanionPoison": "Drake Companion: Poison",
                 "DreadLord": "Dread Lord",
                 "EarthElemental": "Earth Elemental",
                 "EarthenHand": "Earthen Hand",

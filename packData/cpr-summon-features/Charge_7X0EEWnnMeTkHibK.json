@@ -82,75 +82,64 @@
   },
   "effects": [
     {
-      "changes": [
-        {
-          "key": "macro.CE",
-          "mode": 0,
-          "value": "Prone",
-          "priority": 20
-        }
-      ],
-      "transfer": false,
-      "_id": "SMh01R1L6Rx8YjXF",
-      "disabled": false,
+      "name": "Charge",
+      "origin": "Compendium.world.cpr-summon-features.Item.7X0EEWnnMeTkHibK",
       "duration": {
-        "startTime": null,
-        "seconds": 86400,
-        "combat": null,
         "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
         "turns": null,
         "startRound": null,
         "startTurn": null
       },
-      "origin": null,
-      "tint": "#ffffff",
+      "disabled": false,
       "flags": {
-        "dfreds-convenient-effects": {
-          "description": ""
-        },
+        "dnd5e": {},
         "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
+          "showIcon": true,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
         },
         "core": {
-          "statusId": ""
+          "overlay": false
         },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "prone"
+          ]
         }
       },
-      "name": "Charge",
-      "description": "",
-      "statuses": [],
-      "_stats": {
-        "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null
-      },
       "img": "icons/creatures/mammals/ox-bull-horned-glowing-orange.webp",
+      "_id": "wJKDSNYrg2Q99Vth",
       "type": "base",
       "system": {},
+      "changes": [],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
       "sort": 0,
-      "_key": "!items.effects!7X0EEWnnMeTkHibK.SMh01R1L6Rx8YjXF"
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1725415062882,
+        "modifiedTime": 1725415080895,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!7X0EEWnnMeTkHibK.wJKDSNYrg2Q99Vth"
     }
   ],
   "flags": {
@@ -179,7 +168,11 @@
       "confirmTargets": "default",
       "saveDamage": "default",
       "bonusSaveDamage": "default",
-      "noConcentrationCheck": false
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.NB5Cs1YQbOs5G4os"

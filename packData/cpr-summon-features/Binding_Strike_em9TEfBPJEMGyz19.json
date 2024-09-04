@@ -82,87 +82,75 @@
   },
   "effects": [
     {
-      "changes": [
-        {
-          "key": "system.attributes.movement.all",
-          "mode": 0,
-          "value": "0",
-          "priority": 25
-        }
-      ],
-      "disabled": false,
+      "name": "Binding Strike",
+      "origin": "Compendium.world.cpr-summon-features.Item.em9TEfBPJEMGyz19",
       "duration": {
-        "startTime": null,
-        "seconds": 86400,
         "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
         "turns": null,
         "startRound": null,
-        "startTurn": null,
-        "combat": null
+        "startTurn": null
       },
-      "origin": null,
-      "tint": "#ffffff",
-      "transfer": false,
+      "disabled": false,
       "flags": {
-        "core": {
-          "statusId": "Convenient Effect: Grappled"
-        },
-        "dfreds-convenient-effects": {
-          "description": "- A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.<br/>- The condition ends if the grappler is incapacitated.<br/>- The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect.",
-          "isConvenient": true,
-          "isDynamic": false,
-          "isViewable": true,
-          "nestedEffects": [],
-          "subEffects": []
-        },
+        "dnd5e": {},
         "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
+          "dontApply": false,
           "stackable": "noneName",
+          "showIcon": true,
           "durationExpression": "",
           "macroRepeat": "none",
           "specialDuration": []
         },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "grappled"
+          ]
         }
       },
-      "_id": "yfZalrqhMyCWTmlG",
-      "name": "Grappled",
-      "description": "",
-      "statuses": [],
-      "_stats": {
-        "coreVersion": "12.331",
-        "systemId": null,
-        "systemVersion": null,
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null,
-        "compendiumSource": null,
-        "duplicateSource": null
-      },
-      "img": "modules/dfreds-convenient-effects/images/grappled.svg",
+      "img": "icons/tools/fishing/net-tan.webp",
+      "_id": "nzof8LDA7sNWkH6K",
       "type": "base",
       "system": {},
+      "changes": [],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
       "sort": 0,
-      "_key": "!items.effects!em9TEfBPJEMGyz19.yfZalrqhMyCWTmlG"
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1725415902064,
+        "modifiedTime": 1725415908056,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!em9TEfBPJEMGyz19.nzof8LDA7sNWkH6K"
     }
   ],
   "flags": {
     "midi-qol": {
       "fumbleThreshold": null,
       "effectActivation": false,
-      "onUseMacroName": ""
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
@@ -177,10 +165,25 @@
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
-      "ignoreTotalCover": false
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     },
     "core": {
       "sourceId": "Item.xtLjCujkyo1of8a4"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "primalCompanionSea"
+          ]
+        }
+      }
     }
   },
   "folder": "41ZpPEmU7uDP91aF",

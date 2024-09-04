@@ -1,6 +1,7 @@
 {
-  "name": "Draconic Essence",
+  "name": "Drake Companion: Command",
   "type": "feat",
+  "img": "icons/commodities/claws/claw-lizard-white-black.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "bonus",
       "cost": null,
       "condition": ""
     },
@@ -21,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "",
@@ -47,7 +48,6 @@
     },
     "ability": null,
     "actionType": "",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -72,13 +72,21 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
+      "sourceId": "Item.BLxEOvazrJyQkv9q"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -88,6 +96,7 @@
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
+      "concentration": false,
       "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
@@ -98,11 +107,14 @@
     },
     "midi-qol": {
       "rollAttackPerTarget": "default",
+      "effectActivation": false,
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
     }
   },
-  "folder": "KgDwmE4chHNG1z1s",
-  "_id": "cAXUnsdtcotKI8SG",
-  "_key": "!items!cAXUnsdtcotKI8SG"
+  "folder": null,
+  "_id": "iuo6ixnX1I7oL0Fc",
+  "_key": "!items!iuo6ixnX1I7oL0Fc"
 }

@@ -208,10 +208,24 @@ async function preambleComplete(workflow) {
 async function attackRollComplete(workflow) {
     await executeMacroPass(workflow, 'attackRollComplete');
     await executeTargetMacroPass(workflow, 'targetAttackRollComplete');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneAttackRollComplete'));
+    });
+    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: sceneAttackRollComplete');
+    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
 }
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneDamageRollComplete'));
+    });
+    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: sceneDamageRollComplete');
+    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) diceSoNice.damageRollComplete(workflow);
 }

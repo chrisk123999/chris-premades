@@ -1,5 +1,5 @@
 {
-  "name": "Draconic Essence",
+  "name": "Primal Companion",
   "type": "feat",
   "system": {
     "description": {
@@ -10,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "action",
       "cost": null,
       "condition": ""
     },
@@ -21,16 +21,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -45,9 +45,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
-    "attackBonus": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -72,37 +71,69 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
-  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.quk6sPApNa0GbVwY"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Primal Companion",
+        "version": "0.12.53",
+        "identifier": "primalCompanion",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "primalCompanion"
+          ]
+        }
+      }
     }
   },
-  "folder": "KgDwmE4chHNG1z1s",
-  "_id": "cAXUnsdtcotKI8SG",
-  "_key": "!items!cAXUnsdtcotKI8SG"
+  "effects": [],
+  "img": "icons/creatures/abilities/paw-print-yellow.webp",
+  "folder": "jEg2jkp5UX94GmTD",
+  "_id": "EPy9Dlhj5Sb0aBCz",
+  "_key": "!items!EPy9Dlhj5Sb0aBCz"
 }

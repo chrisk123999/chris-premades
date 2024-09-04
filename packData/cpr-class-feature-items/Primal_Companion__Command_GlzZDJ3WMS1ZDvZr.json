@@ -1,6 +1,7 @@
 {
-  "name": "Draconic Essence",
+  "name": "Primal Companion: Command",
   "type": "feat",
+  "img": "icons/creatures/abilities/paw-print-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
+      "type": "bonus",
       "cost": null,
       "condition": ""
     },
@@ -21,7 +22,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "",
@@ -47,7 +48,6 @@
     },
     "ability": null,
     "actionType": "",
-    "attackBonus": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +64,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -72,13 +72,21 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
+      "sourceId": "Item.P3YlHIlgtyMMwqN8"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -102,7 +110,7 @@
       "effectCondition": ""
     }
   },
-  "folder": "KgDwmE4chHNG1z1s",
-  "_id": "cAXUnsdtcotKI8SG",
-  "_key": "!items!cAXUnsdtcotKI8SG"
+  "folder": null,
+  "_id": "GlzZDJ3WMS1ZDvZr",
+  "_key": "!items!GlzZDJ3WMS1ZDvZr"
 }

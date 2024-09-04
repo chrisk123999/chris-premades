@@ -202,6 +202,7 @@ export {evasion} from './macros/classFeatures/multiple/evasion.js';
 export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansiveBond.js';
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
 export {eyesOfNight} from './macros/classFeatures/cleric/twilightDomain/eyesOfNight.js';
+export {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 export {fireRune, frostRune, stoneRune, hillRune, stormRune} from './macros/classFeatures/fighter/runeKnight/runes.js'; 
 export {fightingSpirit} from './macros/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/classFeatures/multiple/fightingStyleUnarmedFighting.js';
@@ -238,6 +239,7 @@ export {peerlessAthlete} from './macros/classFeatures/paladin/oathOfGlory/peerle
 export {persistentRage} from './macros/classFeatures/barbarian/persistentRage.js';
 export {potentSpellcasting} from './macros/classFeatures/cleric/potentSpellcasting.js';
 export {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
+export {primalCompanion, primalCompanionSea} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {primalStrike} from './macros/classFeatures/druid/circleOfTheMoon/primalStrike.js';
 export {protectiveBond} from './macros/classFeatures/cleric/peaceDomain/protectiveBond.js';
 export {purityOfSpirit} from './macros/classFeatures/paladin/oathOfDevotion/purityOfSpirit.js';
@@ -256,6 +258,7 @@ export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, stee
 export {stepsOfNight} from './macros/classFeatures/cleric/twilightDomain/stepsOfNight.js';
 export {stillnessOfMind} from './macros/classFeatures/monk/stillnessOfMind.js';
 export {stunningStrike} from './macros/classFeatures/monk/stunningStrike.js';
+export {summonDrakeCompanion, summonDrakeCompanionResistance, summonDrakeCompanionInfuse} from './macros/classFeatures/ranger/drakewarden/summonDrakeCompanion.js';
 export {summonWildfireSpirit, summonWildfireSpiritTeleport} from './macros/classFeatures/druid/circleOfWildfire/summonWildfireSpirit.js';
 export {superiorityDice} from './macros/classFeatures/fighter/battleMaster/superiorityDice.js';
 export {sneakAttack} from './macros/classFeatures/rogue/sneakAttack.js';

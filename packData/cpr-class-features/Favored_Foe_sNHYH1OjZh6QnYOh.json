@@ -1,5 +1,5 @@
 {
-  "name": "Draconic Essence",
+  "name": "Favored Foe",
   "type": "feat",
   "system": {
     "description": {
@@ -10,21 +10,21 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "special",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
@@ -33,21 +33,20 @@
       "units": ""
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "@prof",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
-      "amount": null,
+      "target": "4YCABFbCczBIMUJG",
+      "amount": 1,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
-    "attackBonus": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -72,37 +71,73 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [
+      "concentration"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
-  "effects": [],
   "flags": {
     "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.j37E7aDowCBPr9dk"
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": true,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
     "midi-qol": {
+      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
-    }
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Favored Foe",
+        "version": "0.12.53",
+        "identifier": "favoredFoe",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "favoredFoe"
+          ],
+          "actor": [
+            "favoredFoe"
+          ]
+        }
+      }
+    },
+    "cf": null
   },
-  "folder": "KgDwmE4chHNG1z1s",
-  "_id": "cAXUnsdtcotKI8SG",
-  "_key": "!items!cAXUnsdtcotKI8SG"
+  "effects": [],
+  "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
+  "folder": "detx4Q3hioZO5yij",
+  "_id": "sNHYH1OjZh6QnYOh",
+  "_key": "!items!sNHYH1OjZh6QnYOh"
 }

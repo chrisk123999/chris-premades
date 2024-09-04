@@ -1,6 +1,8 @@
 {
-  "name": "Draconic Essence",
+  "name": "Reflexive Resistance",
   "type": "feat",
+  "_id": "XsLGrNZb4p4EzLPk",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,8 +12,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "reaction",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -21,7 +23,7 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": null,
+      "value": "",
       "width": null,
       "units": "",
       "type": "",
@@ -33,9 +35,9 @@
       "units": ""
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 5,
+      "max": "@prof",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
@@ -45,9 +47,12 @@
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
-    "attackBonus": "",
+    "ability": "",
+    "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,29 +62,31 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "monster",
+      "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": []
+    }
   },
-  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
   "effects": [],
+  "folder": null,
   "flags": {
-    "core": {
-      "sourceId": "Actor.XTa1hL3pg3KsloTb.Item.6mWXaWgSC2F2LwIo"
-    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -99,10 +106,18 @@
     "midi-qol": {
       "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "effectCondition": "",
+      "reactionCondition": "false"
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "actor": [
+            "summonDrakeCompanionResistance"
+          ]
+        }
+      }
     }
   },
-  "folder": "KgDwmE4chHNG1z1s",
-  "_id": "cAXUnsdtcotKI8SG",
-  "_key": "!items!cAXUnsdtcotKI8SG"
+  "_key": "!items!XsLGrNZb4p4EzLPk"
 }

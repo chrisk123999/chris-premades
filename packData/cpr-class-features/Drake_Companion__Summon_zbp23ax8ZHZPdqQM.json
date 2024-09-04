@@ -1,7 +1,6 @@
 {
-  "name": "Maul",
+  "name": "Drake Companion: Summon",
   "type": "feat",
-  "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
   "system": {
     "description": {
       "value": "",
@@ -12,7 +11,7 @@
     },
     "activation": {
       "type": "action",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -22,45 +21,39 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": 1,
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 30,
       "long": null,
       "units": "ft"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
-      "amount": null,
+      "target": "",
+      "amount": 1,
       "scale": false
     },
-    "ability": "wis",
-    "actionType": "mwak",
-    "attackBonus": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d8[slashing] + 2 + @prof",
-          "slashing"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -70,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "monster",
+      "value": "class",
       "subtype": ""
     },
     "requirements": "",
@@ -78,15 +71,21 @@
       "value": null,
       "charged": false
     },
-    "properties": []
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
-  "effects": [],
   "flags": {
     "midi-qol": {
-      "fumbleThreshold": null,
       "effectActivation": false,
       "onUseMacroName": "",
-      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
@@ -112,9 +111,29 @@
       "idv": false,
       "ida": false
     },
-    "core": {}
+    "core": {
+      "sourceId": "Actor.b8WsCy6vT93rebRw.Item.YsUkXPx3MfE15saa"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Drake Companion: Summon",
+        "version": "0.12.53",
+        "identifier": "summonDrakeCompanion",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "summonDrakeCompanion"
+          ]
+        }
+      }
+    }
   },
-  "folder": "41ZpPEmU7uDP91aF",
-  "_id": "6ELt1eApUKlSQbtK",
-  "_key": "!items!6ELt1eApUKlSQbtK"
+  "img": "icons/commodities/claws/claw-lizard-white-black.webp",
+  "effects": [],
+  "folder": "9cyak1hQEmOkErF7",
+  "_id": "zbp23ax8ZHZPdqQM",
+  "_key": "!items!zbp23ax8ZHZPdqQM"
 }
