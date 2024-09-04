@@ -166,7 +166,7 @@ async function earlySea({workflow}) {
 }
 export let primalCompanion = {
     name: 'Primal Companion',
-    version: '0.12.53',
+    version: '0.12.52',
     midi: {
         item: [
             {
