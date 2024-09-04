@@ -1,7 +1,7 @@
 import {Crosshairs} from '../crosshairs.js';
 import {genericUtils} from './genericUtils.js';
 
-async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance=true, fudgeDistance=0}) {
+async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, drawBoundries, customCallbacks, trackDistance=true, fudgeDistance=0, validityFunctions=[]}) {
     let distance = 0;
     let widthAdjust = 0;
     if (!centerpoint) {
@@ -37,7 +37,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
                 distance = canvas.grid.measurePath([centerpoint, crosshairs]).distance.toNearest(0.01);
                 distance = Math.max(0, distance - widthAdjust);
                 // Below checks if token can see place wants to move thing to - sort of
-                if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange) {
+                if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange || validityFunctions.some(i => !i(crosshairs))) {
                     crosshairs.icon = 'icons/svg/hazard.svg';
                     if (drawing) drawing.tint = 0xff0000;
                 } else {
