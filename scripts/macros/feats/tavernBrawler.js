@@ -3,7 +3,7 @@ import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtil
 async function late({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.item.system.actionType !== 'mwak') return;
-    if (!workflow.item.system.type === 'improv' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
+    if (workflow.item.system.type !== 'improv' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedBonusAction(workflow.actor)) return;
     let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'tavernBrawler');
     if (!originItem) return;
