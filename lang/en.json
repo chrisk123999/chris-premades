@@ -301,6 +301,9 @@
                 "MoteAttack": "Mote of Potential Attack",
                 "MoteHeal": "Mote of Potential Heal"
             },
+            "BeguilingTwist": {
+                "Select": "Which Condition?"
+            },
             "BestialSoul": {
                 "Already": "You already have a Bestial Soul benefit active!",
                 "Climbing": "Climbing",

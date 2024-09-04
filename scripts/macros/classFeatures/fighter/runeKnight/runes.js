@@ -132,6 +132,13 @@ export let cloudRune = {
                 priority: 150
             }
         ]
+    },
+    ddbi: {
+        removedItems: {
+            'Cloud Rune': [
+                'Rune Carver: Cloud Rune'
+            ]
+        }
     }
 };
 export let fireRune = {
