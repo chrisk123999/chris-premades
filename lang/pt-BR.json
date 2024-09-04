@@ -137,9 +137,11 @@
         "Dialog": {
             "DamageType": "Qual tipo de dano?",
             "Invalid": "Entrada Inválida!",
+            "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?",
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
             "UseName": "Usar {itemName} de [{tokenName}]?",
             "WhatDo": "O que você quer fazer?"
         },
@@ -300,6 +302,9 @@
             "BardicInspiration": {
                 "MoteAttack": "Partícula de Potencial Ataque",
                 "MoteHeal": "Partícula de Potencial Cura"
+            },
+            "BeguilingTwist": {
+                "Select": "Qual Condição?"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -559,8 +564,7 @@
                 "Touch": "Bando de Familiares: Tocar"
             },
             "FocusedAim": {
-                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)",
-                "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?"
+                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)"
             },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
