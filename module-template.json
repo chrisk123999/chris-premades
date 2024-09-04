@@ -193,6 +193,13 @@
       "path": "packs/cpr-feats",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRFeatFeatures",
+      "label": "CPR Feat Features",
+      "path": "packs/cpr-feat-features",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -211,7 +218,8 @@
         "CPRActions",
         "CPRMiscellaneousItems",
         "CPRItemFeatures",
-        "CPRFeats"
+        "CPRFeats",
+        "CPRFeatFeatures"
       ]
     }
   ],

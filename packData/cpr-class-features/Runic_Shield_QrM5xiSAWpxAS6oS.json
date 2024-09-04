@@ -1,39 +1,36 @@
 {
-  "name": "Favored Foe",
+  "name": "Runic Shield",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
     "activation": {
-      "type": "special",
+      "type": "reaction",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
-      "long": null,
-      "units": ""
+      "value": 5,
+      "units": "ft",
+      "long": null
     },
     "uses": {
-      "value": 1,
+      "value": 3,
       "max": "@prof",
       "per": "lr",
       "recovery": "",
@@ -41,12 +38,16 @@
     },
     "consume": {
       "type": "",
-      "target": "4YCABFbCczBIMUJG",
-      "amount": 1,
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,87 +57,83 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": [
-      "concentration"
-    ],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
-    }
+    "source": {}
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.j37E7aDowCBPr9dk"
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Fighter"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "false",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": true,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "dnd5e": {
+      "advancementOrigin": "eJaXFz8gr0YJk6Kf"
     },
     "chris-premades": {
       "info": {
-        "name": "Favored Foe",
-        "version": "0.12.52",
-        "identifier": "favoredFoe",
-        "source": "chris-premades"
+        "identifier": "runicShield",
+        "source": "chris-premades",
+        "version": "0.12.52"
       },
       "macros": {
         "midi": {
-          "item": [
-            "favoredFoe"
-          ],
           "actor": [
-            "favoredFoe"
+            "runicShield"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/perception/eye-ringed-glow-angry-large-red.webp",
-  "folder": "detx4Q3hioZO5yij",
-  "_id": "sNHYH1OjZh6QnYOh",
-  "_key": "!items!sNHYH1OjZh6QnYOh"
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
+  "folder": "OU0OTCbfs088RoH0",
+  "_id": "QrM5xiSAWpxAS6oS",
+  "_key": "!items!QrM5xiSAWpxAS6oS"
 }

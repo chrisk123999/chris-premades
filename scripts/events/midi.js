@@ -159,6 +159,7 @@ async function executeMacroPass(workflow, pass) {
     for (let trigger of triggers) {
         let result = await executeMacro(trigger, workflow);
         if (result) return true;
+        if (workflow.aborted) break;
     }
 }
 async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
@@ -173,6 +174,7 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     for (let trigger of triggers) {
         let result = await executeMacro(trigger, workflow);
         if (result) return true;
+        if (workflow.aborted) break;
     }
 }
 async function preTargeting(workflow) {
@@ -214,7 +216,10 @@ async function attackRollComplete(workflow) {
     });
     sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneAttackRollComplete');
-    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    for (let trigger of sceneTriggers) {
+        await executeMacro(trigger, workflow);
+        if (workflow.aborted) break;
+    }
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
 }
 async function damageRollComplete(workflow) {

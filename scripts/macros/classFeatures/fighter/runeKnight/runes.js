@@ -1,5 +1,4 @@
-import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
+import {actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function lateFireRune({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
@@ -84,6 +83,58 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
     }
     await actorUtils.setReactionUsed(token.actor);
 }
+async function cloudRuneAttack({trigger, workflow}) {
+    if (!workflow.hitTargets.size || !workflow.item) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let target = workflow.targets.first();
+    let nearbyRunes = tokenUtils.findNearby(target, 30, 'ally', {includeToken: true}).filter(i => {
+        let item = itemUtils.getItemByIdentifier(i.actor, 'cloudRune');
+        if (!item) return;
+        if (!item.system.uses.value) return;
+        if (combatUtils.inCombat() && actorUtils.hasUsedReaction(i.actor)) return;
+        let validTargets = tokenUtils.findNearby(i, 30, 'all', {includeIncapacitated: true, includeToken: true}).filter(j => j.document.uuid != workflow.token.uuid && j.document.uuid != target.document.uuid);
+        if (!validTargets.length) return false;
+        return true;
+    });
+    if (!nearbyRunes.length) return;
+    for (let i of nearbyRunes) {
+        let item = itemUtils.getItemByIdentifier(i.actor, 'cloudRune');
+        let userId = socketUtils.firstOwner(i.document, true);
+        let newTargets = tokenUtils.findNearby(i, 30, 'all', {includeIncapacitated: true, includeToken: true}).filter(j => j.document.uuid != workflow.token.document.uuid && j.document.uuid != target.document.uuid);
+        let newTarget = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Macros.CloudRune.Reaction', {item: item.name, name: i.actor.name}), newTargets, {userId: userId, skipDeadAndUnconscious: false, buttons: 'yesNo'});
+        console.log(newTarget);
+        if (!newTarget) continue;
+        newTarget = newTarget[0];
+        workflow.aborted = true;
+        let itemData = genericUtils.duplicate(workflow.item.toObject());
+        delete itemData._id;
+        itemData.system.range = {
+            value: null,
+            long: null,
+            units: ''
+        };
+        await item.use();
+        genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {formula: workflow.attackRoll.total});
+        let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
+        macros.push('setAttackRoll');
+        genericUtils.setProperty(itemData, 'flags.chris-premades.macros.midi.item', macros);
+        await workflowUtils.syntheticItemDataRoll(itemData, workflow.actor, [newTarget]);
+        break;
+    }
+}
+export let cloudRune = {
+    name: 'Cloud Rune',
+    version: '0.12.52',
+    midi: {
+        actor: [
+            {
+                pass: 'sceneAttackRollComplete',
+                macro: cloudRuneAttack,
+                priority: 150
+            }
+        ]
+    }
+};
 export let fireRune = {
     name: 'Fire Rune',
     version: '0.12.52',

@@ -72,13 +72,33 @@ Goals:
 [x] Spells
 [ ] Class features
     - [ ] Chris starting at the bottom, Michael starting at the top
-    - [ ] Redo artificer infusions and items that add items
+    - [x] Redo artificer infusions and items that add items
 [ ] Items
 [ ] Monster Features
+    - [ ] Actual one-off features
+        - [ ] Autognome malfunction
+        - [ ] Bulette Deadly leap
+        - [ ] Clay Golem Berserk
+        - [ ] Dream Eater Engulfing Nightmare
+    - [ ] Generic features
+        - [ ] Keen hearing/smell/sight
+        - [ ] Can see eyes on the start of turn... (ie Bodak Death Gaze) (save, if fails by 5 or more, damage, distance)
+        - [ ] Fails by 5 or more (immunity to condition, callback function (reduce to 0hp, falls unconscious))
+        - [ ] Aura of damage on end of other's turn (ie Aura of Annihilation) (damage, distance, creature immunity)
+        - [ ] Surprise attack (combat round 1, dialog, damage)
+        - [ ] Starts turn within rnage, save, immune for 24hrs on save (ie chasme drone) (save, effect, condition immunity, immunity time, immunity to one or all)
+        - [ ] Target's max  hitpoints reduced by half the [damageType] taken (ie chasme proboscis, clay golem slam) (which damage, save if any)
+        - [ ] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
+        - [ ] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
+        - [ ] Contextual bonuses (deep gnome stone camoflauge)
+        - [ ] Enlarge only (duergar)
+        - [ ] Reduce only (mind master)
+        - [ ] Sunlight sensitivity (dis on attack rolls, skill check certainly)
+  
 ## Extensions
 [ ] Folder maker for summons?
 [x] Update summon iniative/update companion initiative
-[ ] Options for items to add for add generic actions setting
+[x] Options for items to add for add generic actions setting
 [ ] Make all medkit coloring use a constants/setting to support a colorblind mode
 [x] Clean up the CSS
 [ ] Document things

@@ -50,7 +50,7 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
     let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
     return result?.[input.name];
 }
-async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id} = {}) {
+async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id, buttons = 'okCancel'} = {}) {
     let inputs = [
         [type === 'multiple' ? 'checkbox' : type === 'number' ? 'number' : type === 'select' ? 'selectOption' : type === 'selectAmount' ? 'selectAmount' : 'radio']
     ];
@@ -100,8 +100,8 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
     }
     let selection;
     if (userId && userId != game.user.id) {
-        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel');
-    } else selection = await DialogApp.dialog(title, content, inputs, 'okCancel');
+        selection = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, buttons, {width: 500});
+    } else selection = await DialogApp.dialog(title, content, inputs, buttons, {width: 500});
     if (selection?.buttons == false || !selection) return false;
     let result;
     let skip = selection?.skip;

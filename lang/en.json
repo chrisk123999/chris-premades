@@ -396,6 +396,9 @@
             "ChillTouch": {
                 "Undead": "Chill Touch: Undead Debuff"
             },
+            "CloudRune": {
+                "Reaction": "Use {item} to redirect the attack from {name}?"
+            },
             "Cloudkill": {
                 "Damage": "Cloudkill: Damage",
                 "NoRoom": "No room to move cloudkill!"
@@ -802,6 +805,9 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
+            },
+            "RunicShield": {
+                "Use": "Use {item} for {name}?"
             },
             "SacredWeapon": {
                 "Dismiss": "Sacred Weapon: Dismiss",

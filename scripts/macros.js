@@ -152,6 +152,7 @@ export {test} from './macros/test.js';
 export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 export {noConfiguration} from './macros/generic/noConfiguration.js';
 export {noReactions} from './macros/generic/noReactions.js';
+export {setAttackRoll} from './macros/generic/setAttackRoll.js';
 // Class Features
 export {alchemicalSavant} from './macros/classFeatures/artificer/alchemist/alchemicalSavant.js';
 export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeatures/barbarian/ancestralGuardian/ancestralProtectors.js';
@@ -203,7 +204,7 @@ export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansive
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
 export {eyesOfNight} from './macros/classFeatures/cleric/twilightDomain/eyesOfNight.js';
 export {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
-export {fireRune, frostRune, stoneRune, hillRune, stormRune} from './macros/classFeatures/fighter/runeKnight/runes.js'; 
+export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/classFeatures/fighter/runeKnight/runes.js'; 
 export {fightingSpirit} from './macros/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/classFeatures/multiple/fightingStyleUnarmedFighting.js';
 export {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
@@ -250,6 +251,7 @@ export {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 export {reclaimPotential} from './macros/classFeatures/fighter/echoKnight/reclaimPotential.js';
 export {relentless} from './macros/classFeatures/fighter/battleMaster/relentless.js';
 export {runicJuggernaut} from './macros/classFeatures/fighter/runeKnight/runicJuggernaut.js';
+export {runicShield} from './macros/classFeatures/fighter/runeKnight/runicShield.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {shadowStep} from './macros/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';

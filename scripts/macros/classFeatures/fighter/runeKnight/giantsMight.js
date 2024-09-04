@@ -1,6 +1,5 @@
 import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
-import { start as enlargeReduceStart } from '../../../spells/enlargeReduce.js';
-
+import {start as enlargeReduceStart} from '../../../spells/enlargeReduce.js';
 async function use({workflow}) {
     if (effectUtils.getEffectByIdentifier(workflow.actor, 'giantsMight')) return;
     let greatStature = itemUtils.getItemByIdentifier(workflow.actor, 'greatStature');
