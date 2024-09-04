@@ -30,20 +30,25 @@
             "SaveDC": "CD da Salvaguarda:"
         },
         "CommonFeatures": {
+            "Amphibious": "Anfíbio",
             "Bite": "Mordida",
             "BreathWeapon": "Arma de Sopro",
             "ChangeShape": "Mudar Forma",
+            "Charge": "Investida Poderosa",
             "Claws": "Garras",
             "DevilsSight": "Visão Diabólica",
             "Evasion": "Evasão",
+            "Flyby": "Sobrevoo",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
+            "Maul": "Malho",
             "Mending": "Reparar",
             "Multiattack": "Ataques Múltiplos ({numAttacks} Ataques)",
             "PackTactics": "Táticas de Bando",
             "Regeneration": "Regeneração",
             "ShadowStealth": "Sombra Furtiva",
             "Shapechanger": "Metamorfo",
+            "Shred": "Destruir",
             "StoneLethargy": "Letargia de Pedra",
             "Tail": "Cauda",
             "WaterBreathing": "Respiração na Água",
@@ -135,6 +140,7 @@
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "UseName": "Usar {itemName} de [{tokenName}]?",
             "WhatDo": "O que você quer fazer?"
         },
         "Direction": {
@@ -390,6 +396,9 @@
             "ChillTouch": {
                 "Undead": "Toque Necrótico: Efeito Morto-Vivo"
             },
+            "CloudRune": {
+                "Reaction": "Usar {item} para redirecionar o ataque de {name}?"
+            },
             "Cloudkill": {
                 "Damage": "Névoa Mortal: Dano",
                 "NoRoom": "Sem espaço para a névoa mortal se mover!"
@@ -577,6 +586,9 @@
                 "DefensiveField": "Armadura do Guardião: Campo Defensivo",
                 "Distracted": "Manoplas Trovejantes: Distraído",
                 "ThunderGauntlets": "Armadura do Guardião: Manoplas Trovejantes"
+            },
+            "GuardianEmblem": {
+                "Protect": "Usar {item} para proteger {name} de um acerto crítico?"
             },
             "GuardianOfFaith": {
                 "Damage": "Guardião da Fé: Dano"
@@ -771,6 +783,15 @@
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
             },
+            "PrimalCompanion": {
+                "BindingStrike": "Golpe Aprisionador",
+                "Command": "Companheiro Primitivo: Comando",
+                "Land": "Terra",
+                "PrimalBond": "Laço Primitivo",
+                "Sea": "Mar",
+                "Select": "Qual tipo de companheiro?",
+                "Sky": "Céu"
+            },
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
             },
@@ -787,6 +808,9 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
+            },
+            "RunicShield": {
+                "Use": "Usar {item} para {name}?"
             },
             "SacredWeapon": {
                 "Dismiss": "Arma Sagrada: Dispensar",
@@ -945,6 +969,17 @@
                 "ResistanceType": "Resistências Compartilhadas: Qual tipo de dano?",
                 "SharedResistances": "Resistências Compartilhadas",
                 "Type": "Qual tipo de Dragão?"
+            },
+            "SummonDrakeCompanion": {
+                "Command": "Companheiro Dragão: Comando",
+                "Essence": "Essência Dracônica",
+                "InfusedStrikes": "Ataques Infundidos",
+                "Reflexive": "Resistência Reflexiva",
+                "Resistance": "Use reação para conceder resistência ao dano?",
+                "ResistanceSelf": "Use reação para obter resistência ao dano?",
+                "Select": "Qual tipo de Dragão?",
+                "Self": "Sim: Si Mesmo",
+                "Summon": "Sim: Companheiro Dragão"
             },
             "SummonElemental": {
                 "Air": "Ar",
@@ -1637,6 +1672,9 @@
                 "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
                 "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
                 "AirElemental": "Elemental do Ar",
+                "BeastOfTheLand": "Fera da Terra",
+                "BeastOfTheSea": "Fera do Mar",
+                "BeastOfTheSky": "Fera do Céu",
                 "BestialSpirit": "Espírito Feral",
                 "BestialSpiritAir": "Espírito Feral (Ar)",
                 "BestialSpiritLand": "Espírito Feral (Terra)",
@@ -1654,6 +1692,11 @@
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
                 "DraconicSpiritMetallic": "Espírito Dracônico (Metálico)",
+                "DrakeCompanionAcid": "Companheiro Dragão: Ácido",
+                "DrakeCompanionCold": "Companheiro Dragão: Gélido",
+                "DrakeCompanionFire": "Companheiro Dragão: Ígneo",
+                "DrakeCompanionLightning": "Drake Companion: Lightning",
+                "DrakeCompanionPoison": "Drake Companion: Poison",
                 "DreadLord": "Senhor do Pavor",
                 "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
