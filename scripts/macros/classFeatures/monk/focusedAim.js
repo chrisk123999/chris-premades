@@ -16,7 +16,7 @@ async function attack({workflow}) {
         buttons.push([genericUtils.format('CHRISPREMADES.Macros.FocusedAim.Bonus', {kiCost: i, bonus: i * 2}), i]);
     }
     buttons.push(['CHRISPREMADES.Generic.No', false]);
-    let useFeature = await dialogUtils.buttonDialog(originItem.name, genericUtils.format('CHRISPREMADES.Macros.FocusedAim.Missed', {attackTotal, itemName: originItem.name}), buttons);
+    let useFeature = await dialogUtils.buttonDialog(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Missed', {attackTotal, itemName: originItem.name}), buttons);
     if (!useFeature) return;
     await workflowUtils.bonusAttack(workflow, String(useFeature * 2));
     await genericUtils.update(ki, {'system.uses.value': uses - useFeature});

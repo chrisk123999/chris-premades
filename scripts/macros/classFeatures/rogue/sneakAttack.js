@@ -167,10 +167,10 @@ async function damage({trigger, workflow}) {
             displayRakish = true;
         }
     }
-    let insightfulFightningEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'insightfulFightningEffect');
+    let insightfulFightingEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'insightfulFighting');
     let iTarget = false;
-    if (insightfulFightningEffect && rollType != 'disadvantage') {
-        let effectTarget = insightfulFightningEffect.changes[0].value;
+    if (insightfulFightingEffect && rollType != 'disadvantage') {
+        let effectTarget = insightfulFightingEffect.flags['chris-premades']?.insightfulFighting?.target;
         if (effectTarget === targetToken.document.uuid) {
             doSneak = true;
             iTarget = true;
@@ -184,7 +184,7 @@ async function damage({trigger, workflow}) {
     }
     let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
     let psionicEnergy = itemUtils.getItemByIdentifier(workflow.actor, 'psionicEnergy');
-    if (weaponIdentifier === 'psychicBlades' && rendMind && psionicEnergy) genericUtils.setFlag(workflow.item, 'chris-premades', 'feature.rendMind.prompt', true);
+    if (weaponIdentifier === 'psychicBlades' && rendMind && psionicEnergy) await genericUtils.setFlag(workflow.item, 'chris-premades', 'rendMind.prompt', true);
     await combatUtils.setTurnCheck(trigger.entity, 'sneakAttack');
     let bonusDamageFormula = itemUtils.getConfig(trigger.entity, 'formula');
     if (!bonusDamageFormula || bonusDamageFormula === '') {

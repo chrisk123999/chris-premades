@@ -205,6 +205,7 @@ export {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhanc
 export {evasion} from './macros/classFeatures/multiple/evasion.js';
 export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansiveBond.js';
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
+export {eyeForWeakness} from './macros/classFeatures/rogue/inquisitive/eyeForWeakness.js';
 export {eyesOfNight} from './macros/classFeatures/cleric/twilightDomain/eyesOfNight.js';
 export {favoredFoe} from './macros/classFeatures/ranger/favoredFoe.js';
 export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './macros/classFeatures/fighter/runeKnight/runes.js'; 
@@ -224,7 +225,9 @@ export {harnessDivinePower} from './macros/classFeatures/cleric/harnessDivinePow
 export {hearthOfMoonlightAndShadow} from './macros/classFeatures/druid/circleOfDreams/hearthOfMoonlightAndShadow.js';
 export {hiddenPaths} from './macros/classFeatures/druid/circleOfDreams/hiddenPaths.js';
 export {holyNimbus, holyNimbusActive} from './macros/classFeatures/paladin/oathOfDevotion/holyNimbus.js';
+export {homingStrikes} from './macros/classFeatures/rogue/soulknife/homingStrikes.js';
 export {infectiousFury, infectiousFuryAttack} from './macros/classFeatures/barbarian/beast/infectiousFury.js';
+export {insightfulFighting} from './macros/classFeatures/rogue/inquisitive/insightfulFighting.js';
 export {inspiringSmite} from './macros/classFeatures/paladin/oathOfGlory/inspiringSmite.js';
 export {investmentOfTheChainMaster, investmentOfTheChainMasterActive} from './macros/classFeatures/warlock/invocations/investmentOfTheChainMaster.js';
 export {layOnHands} from './macros/classFeatures/paladin/layOnHands.js';
@@ -246,13 +249,18 @@ export {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLif
 export {primalCompanion, primalCompanionSea} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {primalStrike} from './macros/classFeatures/druid/circleOfTheMoon/primalStrike.js';
 export {protectiveBond} from './macros/classFeatures/cleric/peaceDomain/protectiveBond.js';
+export {psionicEnergy} from './macros/classFeatures/rogue/soulknife/psionicEnergy.js';
+export {psionicPowerRecovery} from './macros/classFeatures/rogue/soulknife/psionicPowerRecovery.js';
+export {psychicBlades} from './macros/classFeatures/rogue/soulknife/psychicBlades.js';
 export {purityOfSpirit} from './macros/classFeatures/paladin/oathOfDevotion/purityOfSpirit.js';
 export {quickenedHealing} from './macros/classFeatures/monk/quickenedHealing.js';
 export {radianceOfTheDawn} from './macros/classFeatures/cleric/lightDomain/radianceOfTheDawn.js';
 export {rage, rageEnd, rageRaging} from './macros/classFeatures/barbarian/rage.js';
+export {rakishAudacity} from './macros/classFeatures/rogue/swashbuckler/rakishAudacity.js';
 export {reaper} from './macros/classFeatures/cleric/deathDomain/reaper.js';
 export {reclaimPotential} from './macros/classFeatures/fighter/echoKnight/reclaimPotential.js';
 export {relentless} from './macros/classFeatures/fighter/battleMaster/relentless.js';
+export {rendMind} from './macros/classFeatures/rogue/soulknife/rendMind.js';
 export {runicJuggernaut} from './macros/classFeatures/fighter/runeKnight/runicJuggernaut.js';
 export {runicShield} from './macros/classFeatures/fighter/runeKnight/runicShield.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';

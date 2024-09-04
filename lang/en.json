@@ -137,9 +137,11 @@
         "Dialog": {
             "DamageType": "What damage type?",
             "Invalid": "Invalid Entry!",
+            "Missed": "Attack roll ({attackTotal}) missed. Use {itemName}?",
             "RemoteMessage": "Waiting for remote dialog selection from",
             "Use": "Use {itemName}?",
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
+            "UseExtraCost": "Use {itemName}? (Costs {quantity} {quantityName})",
             "UseName": "Use {itemName} [{tokenName}]?",
             "WhatDo": "What would you like to do?"
         },
@@ -562,8 +564,7 @@
                 "Touch": "Flock of Familiars: Touch"
             },
             "FocusedAim": {
-                "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)",
-                "Missed": "Attack roll ({attackTotal}) missed. Use {itemName}?"
+                "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
