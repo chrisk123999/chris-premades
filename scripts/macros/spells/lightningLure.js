@@ -35,7 +35,7 @@ async function damage({workflow, ditem}) {
             .effect()
             .file('animated-spell-effects-cartoon.electricity.25')
             .atLocation(targetToken)
-            .scaleToObject(2 * targetToken.document.width)
+            .scaleToObject(2)
             .playbackRate(1)
             .spriteRotation(90)
             .mirrorX()
@@ -58,7 +58,7 @@ async function damage({workflow, ditem}) {
             .atLocation(targetToken)
             .moveTowards({'x': position.x + (canvas.grid.size * targetToken.document.width) / 2, 'y': position.y + (canvas.grid.size * targetToken.document.height) / 2 }, {'ease': 'easeInOutBack', 'rotate': false})
             .zIndex(0.1)
-            .scaleToObject(targetToken.document.texture.scaleX * targetToken.document.width)
+            .scaleToObject(1)
             .extraEndDuration(500)
             .waitUntilFinished(-300)
 
