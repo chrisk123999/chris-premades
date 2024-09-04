@@ -247,6 +247,10 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     actor: JSON?.stringify(item.flags?.['chris-premades']?.macros?.midi?.actor) ?? '',
                 },
                 aura: JSON?.stringify(item.flags?.['chris-premades']?.macros?.aura) ?? '',
+                combat: JSON?.stringify(item.flags?.['chris-premades']?.macros?.combat) ?? '',
+                movement: JSON?.stringify(item.flags?.['chris-premades']?.macros?.movement) ?? '',
+                rest: JSON?.stringify(item.flags?.['chris-premades']?.macros?.rest) ?? '',
+                equipment: item.flags?.['chris-premades']?.equipment?.identifier ?? '',
                 config: macroInfo?.config
             };
             genericUtils.setProperty(context, 'devTools', devTools);
@@ -339,6 +343,39 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     console.error(error);
                 }
                 if (value) await item.setFlag('chris-premades', 'macros.aura', value);
+            }
+            if (devTools.combat != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.combat.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Combat field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.combat', value);
+            }
+            if (devTools.movement != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.movement.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Movement field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.movement', value);
+            }
+            if (devTools.rest != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.rest.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Rest field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.rest', value);
+            }
+            if (devTools.equipment != '') {
+                await item.setFlag('chris-premades', 'macros.aura', devTools.equipment);
             }
         }
         let category = this.context?.category;

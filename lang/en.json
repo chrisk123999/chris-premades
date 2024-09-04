@@ -587,6 +587,9 @@
                 "Distracted": "Thunder Gauntlets: Distracted",
                 "ThunderGauntlets": "Guardian Armor: Thunder Gauntlets"
             },
+            "GuardianEmblem": {
+                "Protect": "Use {item} to protect {name} from a critical hit?"
+            },
             "GuardianOfFaith": {
                 "Damage": "Guardian of Faith: Damage"
             },

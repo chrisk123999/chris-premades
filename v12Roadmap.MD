@@ -78,18 +78,25 @@ Goals:
     - [ ] Actual one-off features
         - [ ] Autognome malfunction
         - [ ] Bulette Deadly leap
-        - [ ] Clay Golem Berserk
         - [ ] Dream Eater Engulfing Nightmare
         - [ ] Elder Brain
         - [ ] Eat Memories Elder Oblex
+        - [ ] Gallows Speaker Suffering Echos
+        - [ ] Gibbering Mouther Gibbering
+        - [ ] Intellect Devourer Devour Intellect
+        - [ ] Piercer drop
+        - [ ] Rug of smothering damage transfer
+        - [ ] Shader-kai soul monger soul thirst
+        - [ ] Trixie tockworth force field
     - [ ] Generic features
-        - [ ] Keen hearing/smell/sight
+        - [ ] Keen hearing/smell/sight {skill, label {sight, hearing, smell}}
+        - [ ] Berserk (Hit point amount, die roll, on a) (Golems)
         - [ ] Can see eyes on the start of turn... (ie Bodak Death Gaze) (save, if fails by 5 or more, damage, distance)
         - [ ] Fails by 5 or more (immunity to condition, callback function (reduce to 0hp, falls unconscious))
         - [ ] Aura of damage on end of other's turn (ie Aura of Annihilation) (damage, distance, creature immunity)
         - [ ] Surprise attack (combat round 1, dialog, damage)
         - [ ] Starts turn within rnage, save, immune for 24hrs on save (ie chasme drone) (save, effect, condition immunity, immunity time, immunity to one or all)
-        - [ ] Target's max  hitpoints reduced by half the [damageType] taken (ie chasme proboscis, clay golem slam) (which damage, save if any) (short or long rest)
+        - [ ] Target's max  hitpoints (reduced by half?) the [damageType] taken (ie chasme proboscis, clay golem slam) (which damage, save if any) (short or long rest)
             - [ ] Or reduced by a roll (1d6) 
         - [ ] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
         - [ ] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
@@ -97,6 +104,21 @@ Goals:
         - [ ] Enlarge only (duergar)
         - [ ] Reduce only (mind master)
         - [ ] Sunlight sensitivity (dis on attack rolls, skill check certainly)
+        - [ ] Touches or hitting it you take damage (ie fire elemental fire form, fire snake heated body) (damage)
+        - [ ] Auto grapple
+        - [ ] Swarm damage
+        - [ ] Regeneration
+        - [ ] Parry
+        - [ ] Grappler advantage on attacks against things its grappling (grell tentables, mimic)
+        - [ ] Discount sneak attack (hobgoblin martial advantage)
+        - [ ] Pack tactics
+        - [ ] Death burst (save, effect)
+        - [ ] Death throes (save, damage)
+        - [ ] Immune to effect for [time] on save
+        - [ ] Strength drain (roll for drain, short/long rest)
+        - [ ] Different damage if advantage on the attack (shadow demon claws)
+        - [ ] Engulf (rug of smothering, shambling mound)
+        - [ ] Undead fortitude 
   
 ## Extensions
 [ ] Folder maker for summons?

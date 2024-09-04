@@ -310,3 +310,4 @@ export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
 export {pariahsShield} from './macros/items/armor/pariahsShield.js';
+export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';

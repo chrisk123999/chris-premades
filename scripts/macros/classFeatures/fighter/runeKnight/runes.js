@@ -102,7 +102,6 @@ async function cloudRuneAttack({trigger, workflow}) {
         let userId = socketUtils.firstOwner(i.document, true);
         let newTargets = tokenUtils.findNearby(i, 30, 'all', {includeIncapacitated: true, includeToken: true}).filter(j => j.document.uuid != workflow.token.document.uuid && j.document.uuid != target.document.uuid);
         let newTarget = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Macros.CloudRune.Reaction', {item: item.name, name: i.actor.name}), newTargets, {userId: userId, skipDeadAndUnconscious: false, buttons: 'yesNo'});
-        console.log(newTarget);
         if (!newTarget) continue;
         newTarget = newTarget[0];
         workflow.aborted = true;
@@ -113,7 +112,7 @@ async function cloudRuneAttack({trigger, workflow}) {
             long: null,
             units: ''
         };
-        await item.use();
+        await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
         genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {formula: workflow.attackRoll.total});
         let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
         macros.push('setAttackRoll');

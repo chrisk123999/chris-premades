@@ -77,7 +77,10 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             macros: {
                 effect: JSON?.stringify(effect.flags['chris-premades']?.macros?.effect) ?? '',
                 aura: JSON?.stringify(effect.flags['chris-premades']?.macros?.aura) ?? '',
-                actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? ''
+                actor: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.actor) ?? '',
+                combat: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.combat) ?? '',
+                movement: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.movement) ?? '',
+                rest: JSON?.stringify(effect.flags['chris-premades']?.macros?.midi?.rest) ?? ''
             },
             isDev: game.settings.get('chris-premades', 'devTools')
         };
@@ -266,6 +269,9 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (this.context.macros.effect?.length) genericUtils.setProperty(flagUpdates, 'macros.effect', JSON.parse(this.context.macros.effect.replace(/'/g, '"')));
         if (this.context.macros.aura?.length) genericUtils.setProperty(flagUpdates, 'macros.aura', JSON.parse(this.context.macros.aura.replace(/'/g, '"')));
         if (this.context.macros.actor?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.actor', JSON.parse(this.context.macros.actor.replace(/'/g, '"')));
+        if (this.context.macros.combat?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.combat', JSON.parse(this.context.macros.combat.replace(/'/g, '"')));
+        if (this.context.macros.movement?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.movement', JSON.parse(this.context.macros.movement.replace(/'/g, '"')));
+        if (this.context.macros.rest?.length) genericUtils.setProperty(flagUpdates, 'macros.midi.rest', JSON.parse(this.context.macros.rest.replace(/'/g, '"')));
         let effectUpdates = {flags: {'chris-premades': flagUpdates}};
         genericUtils.mergeObject(effectData, effectUpdates);
         let updates = {

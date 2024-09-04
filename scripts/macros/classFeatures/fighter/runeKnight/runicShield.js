@@ -21,11 +21,9 @@ async function attack({trigger, workflow}) {
         delete itemData._id;
         let formula = '1d20';
         for (let i = 1; i < workflow.attackRoll.terms.length; i++) {
-            console.log(workflow.attackRoll.terms[i]);
             formula += workflow.attackRoll.terms[i].formula;
         }
-        console.log(formula);
-        await item.use();
+        await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
         genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {formula: formula});
         let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
         macros.push('setAttackRoll');
