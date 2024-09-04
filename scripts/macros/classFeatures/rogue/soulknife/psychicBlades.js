@@ -107,5 +107,15 @@ export let psychicBlades = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        removedItems: {
+            Soulknife: [
+                'Psychic Blades: Attack (DEX)',
+                'Psychic Blades: Attack (STR)',
+                'Psychic Blades: Bonus Attack (DEX)',
+                'Psychic Blades: Bonus Attack (STR)'
+            ]
+        }
     }
 };
