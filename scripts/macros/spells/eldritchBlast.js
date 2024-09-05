@@ -3,7 +3,7 @@ async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchBlast.Beam', identifier: 'eldritchBlastBeam'});
     if (!featureData) {
         errors.missingPackItem();
         return;

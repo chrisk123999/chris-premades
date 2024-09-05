@@ -143,6 +143,7 @@
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
             "UseExtraCost": "Use {itemName}? (Costs {quantity} {quantityName})",
             "UseName": "Use {itemName} [{tokenName}]?",
+            "UseOn": "Use {itemName} on {tokenName}?",
             "WhatDo": "What would you like to do?",
             "YesDetail": "Yes ({detail})"
         },
@@ -468,6 +469,7 @@
                 "Turn": "Dreadful Aspect: End of Turn"
             },
             "EldritchBlast": {
+                "Beam": "Eldritch Blast: Beam",
                 "Target": "Which targets?"
             },
             "EldritchCannon": {
