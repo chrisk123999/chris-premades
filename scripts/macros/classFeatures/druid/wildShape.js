@@ -31,14 +31,14 @@ async function use({workflow}) {
     let elementals = ['air', 'earth', 'fire', 'water'];
     let ignoreRestrictions = itemUtils.getConfig(workflow.item, 'ignoreRestrictions');
     if (ignoreRestrictions) {
-        compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(packKey);
+        compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey);
     } else {
-        compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {maxCR, creatureTypes: ['beast']});
+        compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey, {maxCR, creatureTypes: ['beast']});
         compendiumDocs = compendiumDocs.filter(i => !disallowedMovements.some(j => i.system.attributes.movement[j]));
         let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
         if (elementalWildShape && workflow.item.system.uses.value) {
             elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
-            compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredDocumentsFromCompendium(packKey, {specificNames: elementals}));
+            compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey, {specificNames: elementals}));
         }
     }
     let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Select', compendiumDocs, {sortAlphabetical: true, sortCR: true, showCR: true});

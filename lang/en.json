@@ -143,7 +143,8 @@
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
             "UseExtraCost": "Use {itemName}? (Costs {quantity} {quantityName})",
             "UseName": "Use {itemName} [{tokenName}]?",
-            "WhatDo": "What would you like to do?"
+            "WhatDo": "What would you like to do?",
+            "YesDetail": "Yes ({detail})"
         },
         "Direction": {
             "Direction": "Direction",
@@ -417,6 +418,15 @@
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
             },
+            "CreatePactWeapon": {
+                "CustomCompendium": "Custom Pact Weapon Compendium Key:",
+                "Dismiss": "Dismiss Pact Weapon",
+                "Existing": "Enhance Existing Weapon",
+                "Select": "Select a Pact Weapon",
+                "Summon": "Summon New Weapon",
+                "Type": "How are you using this feature?",
+                "Weapon": "Pact Weapon"
+            },
             "DangerSense": {
                 "CanSee": "This save is from an effect you can see."
             },
@@ -475,6 +485,9 @@
                 "SpendPactAgain": "Create a second Eldritch Cannon at the expense of a pact spell slot? ({slotValue} of {slotMax} remaining)",
                 "SpendSlot": "Create an Eldritch Cannon at the expense of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)",
                 "SpendSlotAgain": "Create a second Eldritch Cannon at the expense of a level {slotLevel} spell slot? ({slotValue} of {slotMax} remaining)"
+            },
+            "EldritchSmite": {
+                "Prone": "Knock target prone?"
             },
             "ElementalCleaver": {
                 "Change": "Elemental Cleaver: Change Damage Type",
@@ -577,6 +590,9 @@
                 "Pinned": "Grappler: Pinned By {tokenName}",
                 "Pinning": "Grappler: Pinning {tokenName}"
             },
+            "GraspOfHadar": {
+                "Select": "Which target?"
+            },
             "Grease": {
                 "Fall": "Grease: Fall"
             },
@@ -608,6 +624,9 @@
             },
             "HailOfThorns": {
                 "Burst": "Hail of Thorns: Burst"
+            },
+            "HealingLight": {
+                "Select": "How many dice do you want to use?"
             },
             "HealingSpirit": {
                 "Apply": "Healing Spirit: Apply Healing? ({numUses} use(s) left)",
@@ -778,6 +797,9 @@
             },
             "NaturesWrath": {
                 "Select": "Which ability will you make the save with?"
+            },
+            "OneWithShadows": {
+                "Bright": "Token is in bright light!"
             },
             "PariahsShield": {
                 "MaxBonus": "Max AC Bonus:",
@@ -1072,6 +1094,10 @@
                 "SimilarArea": "Similar Area",
                 "VeryFamiliar": "Very Familiar",
                 "ViewedOnce": "Viewed Once"
+            },
+            "TentacleOfTheDeeps": {
+                "Attack": "Tentacle of the Deeps: Attack",
+                "Name": "Spectral Tentacle"
             },
             "ThornWhip": {
                 "CheckSize": "Check Size:",
@@ -1733,6 +1759,7 @@
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",
                 "SteelDefender": "Steel Defender",
+                "TentacleOfTheDeeps": "Tentacle of the Deeps",
                 "UndeadSpirit": "Undead Spirit",
                 "UndeadSpiritGhostly": "Undead Spirit (Ghostly)",
                 "UndeadSpiritPutrid": "Undead Spirit (Putrid)",

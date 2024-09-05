@@ -17,7 +17,7 @@ async function use({workflow}) {
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
         return;
     }
-    let compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(monsterCompendium, {maxCR: selection, actorTypes: ['npc'], creatureTypes: ['beast']});
+    let compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(monsterCompendium, {maxCR: selection, actorTypes: ['npc'], creatureTypes: ['beast']});
     if (!compendiumDocs?.length) {
         genericUtils.notify('CHRISPREMADES.Summons.NoMatching', 'info');
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);

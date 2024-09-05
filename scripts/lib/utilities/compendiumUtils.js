@@ -169,7 +169,7 @@ async function getActorFromCompendium(key, name, {ignoreNotFound, folderId, obje
         return undefined;
     }
 }
-async function getFilteredDocumentsFromCompendium(key, {maxCR, actorTypes, creatureTypes, creatureSubtypes, specificNames}={}) {
+async function getFilteredActorDocumentsFromCompendium(key, {maxCR, actorTypes, creatureTypes, creatureSubtypes, specificNames}={}) {
     let pack = game.packs.get(key);
     let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.details.cr', 'system.details.type', 'system.attributes.movement']});
     let filteredIndex = packIndex.filter(i => 
@@ -181,6 +181,17 @@ async function getFilteredDocumentsFromCompendium(key, {maxCR, actorTypes, creat
     );
     filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'icons/svg/mystery-man.svg'}, {overwrite: !i.img}));
+    return filteredIndex;
+}
+async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types}={}) {
+    let pack = game.packs.get(key);
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img']});
+    let filteredIndex = packIndex.filter(i => 
+        (!specificNames?.length || specificNames.includes(i.name)) &&
+        (!types?.length || types.includes(i.type))
+    );
+    filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);
+    filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'systems/dnd5e/icons/svg/items/weapon.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
 async function getAppliedOrPreferredAutomation(item) {
@@ -214,6 +225,7 @@ export let compendiumUtils = {
     getItemFromCompendium,
     getPreferredAutomation,
     getActorFromCompendium,
-    getFilteredDocumentsFromCompendium,
+    getFilteredActorDocumentsFromCompendium,
+    getFilteredItemDocumentsFromCompendium,
     getAppliedOrPreferredAutomation
 };

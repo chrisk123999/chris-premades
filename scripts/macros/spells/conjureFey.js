@@ -5,7 +5,7 @@ async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let spellLevel = workflow.castData.castLevel;
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
-    let compendiumDocs = await compendiumUtils.getFilteredDocumentsFromCompendium(monsterCompendium, {maxCR: spellLevel, actorTypes: ['npc'], creatureTypes: ['fey']});
+    let compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(monsterCompendium, {maxCR: spellLevel, actorTypes: ['npc'], creatureTypes: ['fey']});
     if (!compendiumDocs.length) {
         genericUtils.notify('CHRISPREMADES.Summons.NoMatching', 'info');
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
