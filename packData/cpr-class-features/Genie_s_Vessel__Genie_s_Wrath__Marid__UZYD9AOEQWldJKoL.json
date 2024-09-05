@@ -88,22 +88,6 @@
     }
   },
   "flags": {
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Warlock"
-      }
-    },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -135,7 +119,6 @@
     "core": {
       "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.p4ciIXPSgDCsxXnC"
     },
-    "cf": null,
     "chris-premades": {
       "info": {
         "name": "Genie's Vessel: Genie's Wrath (Marid)",
