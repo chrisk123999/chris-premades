@@ -143,7 +143,8 @@
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
             "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
             "UseName": "Usar {itemName} de [{tokenName}]?",
-            "WhatDo": "O que você quer fazer?"
+            "WhatDo": "O que você quer fazer?",
+            "YesDetail": "Sim ({detail})"
         },
         "Direction": {
             "Direction": "Direção",
@@ -195,6 +196,7 @@
         },
         "Generic": {
             "Actions": "Ações",
+            "Apply": "Aplicar",
             "Available": "Disponível",
             "CPR": "Chris's Premades",
             "Cancel": "Cancelar",
@@ -203,6 +205,7 @@
             "CheckSpelling": "Verificar Ortografia",
             "Close": "Fechar",
             "Configure": "Configurar",
+            "Confirm": "Confirmar",
             "Disabled": "Desabilitar",
             "Distance": "Distância",
             "Edit": "Editar",
@@ -211,6 +214,7 @@
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoType": "Sem Tipo",
+            "None": "Nenhum(a)",
             "Ok": "Ok",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
@@ -417,6 +421,15 @@
             "ControlUndead": {
                 "Controlled": "Controlar Morto-Vivo: Controlado"
             },
+            "CreatePactWeapon": {
+                "CustomCompendium": "Chave Personalizada Compêndio de Armas de Pacto:",
+                "Dismiss": "Dispensar Arma de Pacto",
+                "Existing": "Melhorar Arma Existente",
+                "Select": "Selecione uma Arma de Pacto",
+                "Summon": "Invocar Nova Arma",
+                "Type": "Como você vai usar este recurso?",
+                "Weapon": "Arma de Pacto"
+            },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
@@ -475,6 +488,9 @@
                 "SpendPactAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
                 "SpendSlot": "Criar um Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
                 "SpendSlotAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
+            },
+            "EldritchSmite": {
+                "Prone": "Derrubar o alvo?"
             },
             "ElementalCleaver": {
                 "Change": "Cutelo Elemental: Mudar Tipo de Dano",
@@ -577,6 +593,9 @@
                 "Pinned": "Imobilizador: Imobilizado por {tokenName}",
                 "Pinning": "Imobilizador: Imobilizando {tokenName}"
             },
+            "GraspOfHadar": {
+                "Select": "Qual alvo?"
+            },
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
             },
@@ -608,6 +627,9 @@
             },
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
+            },
+            "HealingLight": {
+                "Select": "Quantos dados você quer usar?"
             },
             "HealingSpirit": {
                 "Apply": "Espírito Curativo: Aplicar Cura? ({numUses} uso(s) restante(s))",
@@ -721,6 +743,12 @@
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
             },
+            "KeenSenses": {
+                "Check": "Este teste depende de: ",
+                "Hearing": "Audição",
+                "Sight": "Visão",
+                "Smell": "Olfato"
+            },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
                 "RemoveCondition": "Remover uma Condição:",
@@ -778,6 +806,9 @@
             },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
+            },
+            "OneWithShadows": {
+                "Bright": "O token está em luz plena!"
             },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
@@ -1073,6 +1104,10 @@
                 "VeryFamiliar": "Muito Familiar",
                 "ViewedOnce": "Visto uma Vez"
             },
+            "TentacleOfTheDeeps": {
+                "Attack": "Tentáculo das Profundezas: Ataque",
+                "Name": "Tentáculo Espectral"
+            },
             "ThornWhip": {
                 "CheckSize": "Verificar o Tamanho:",
                 "Pull": "Até onde você puxa o alvo?"
@@ -1278,6 +1313,16 @@
                 "Configuration": {
                     "Label": "Configuração",
                     "Tooltip": "Configure as partes disponíveis da automação"
+                },
+                "GenericFeatures": {
+                    "Label": "Características Genéricas",
+                    "Monster": {
+                        "Select": {
+                            "Label": "Selecione Uma Característica Genérica de Monstro:",
+                            "Tooltip": "Adiciona Características Genéricas Configuráveis de Monstros"
+                        }
+                    },
+                    "Tooltip": "Add and Configure Generic Features for this Item"
                 },
                 "Info": {
                     "Label": "Info",
@@ -1733,6 +1778,7 @@
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
                 "SteelDefender": "Defensor de Aço",
+                "TentacleOfTheDeeps": "Tentáculo das Profundezas",
                 "UndeadSpirit": "Espírito Morto-Vivo",
                 "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
                 "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
