@@ -95,6 +95,19 @@ form .cpr-row-center {
     gap: 0.625em;
 }
 
+form .cpr-row-center.cpr-multi-select-row {
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+form .cpr-row-center.cpr-multi-select-row label {
+    padding: 2%;
+}
+
+form .cpr-row-center.cpr-multi-select-row multi-select {
+    width: 100%;
+}
+
 .cpr-fieldset {
     border-radius: 4px;
     margin-top: 0.625em;
@@ -103,6 +116,11 @@ form .cpr-row-center {
 .cpr-fieldset .cpr-column {
     display: flex;
     flex-direction: column;
+}
+
+.cpr-fieldset .cpr-row {
+    display: flex;
+    flex-direction: row;
 }
 
 .theme-dark .cpr-fieldset {

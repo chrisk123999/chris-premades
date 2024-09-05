@@ -1,16 +1,16 @@
 <div class="tab cpr-medkit-tab {{tabs.configure.cssClass}}" data-tab="configure" data-group="main">
-  <div class="form-group cpr-medkit-config">
-    <div class="cpr-row-center">
-      <label for="noAnimation" data-tooltip="{{localize configure.noAnimation.tooltip}}">{{localize configure.noAnimation.label}}</label>
-      <input type="checkbox" class="cpr-checkbox" id="noAnimation" name="noAnimation" {{#if configure.noAnimation.value}}checked{{/if}}>
+    <div class="form-group cpr-medkit-config">
+        <div class="cpr-row-center">
+            <label for="noAnimation" data-tooltip="{{localize configure.noAnimation.tooltip}}">{{localize configure.noAnimation.label}}</label>
+            <input type="checkbox" class="cpr-checkbox" id="noAnimation" name="noAnimation" {{#if configure.noAnimation.value}}checked{{/if}}>
+        </div>
+        <div class ="cpr-row-center">
+            <label for="conditions" data-tooltip="{{localize configure.conditions.tooltip}}">{{localize configure.conditions.label}}</label>
+            <multi-select id="conditions" name="conditions">
+            {{#each configure.conditions.options}}
+                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+            </multi-select>
+        </div>
     </div>
-    <div class ="cpr-row-center">
-      <label for="conditions" data-tooltip="{{localize configure.conditions.tooltip}}">{{localize configure.conditions.label}}</label>
-      <multi-select id="conditions" name="conditions">
-      {{#each configure.conditions.options}}
-        <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
-      {{/each}}
-      </multi-select>
-    </div>
-  </div>
 </div>

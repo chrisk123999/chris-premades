@@ -109,6 +109,11 @@ async function handleInstantTemplate(workflow) {
         await effectUtils.createEffect(workflow.actor, effectData);
     }
 }
+function getCastData(workflow) {
+    let castData = workflow.castData;
+    castData.school = workflow.item.system.school;
+    return castData;
+}
 export let workflowUtils = {
     bonusDamage,
     bonusAttack,
@@ -121,5 +126,6 @@ export let workflowUtils = {
     applyWorkflowDamage,
     getDamageTypes,
     getTotalDamageOfType,
-    handleInstantTemplate
+    handleInstantTemplate,
+    getCastData
 };

@@ -1,4 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {dialogUtils, genericUtils, itemUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.targets.size) return;
     let validTypes = itemUtils.getConfig(workflow.item, 'damageTypes');

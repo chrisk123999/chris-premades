@@ -40,6 +40,10 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             template: 'modules/chris-premades/templates/medkit-configure.hbs',
             scrollable: ['']
         },
+        genericFeatures: {
+            template: 'modules/chris-premades/templates/medkit-item-generic-features.hbs',
+            scrollable: ['']
+        },
         devTools: {
             template: 'modules/chris-premades/templates/medkit-dev-tools.hbs',
             scrollable: ['']
@@ -76,12 +80,13 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 tooltip: 'CHRISPREMADES.Medkit.NoPermission'
             }
         };
+        /** Info Tab */
         if (context.status === -1) context.status = context.availableAutomations.length > 0;
         if (context.status === 1 | context.status === 0) context.hasAutomation = true;
         context.statusLabel = 'CHRISPREMADES.Medkit.Status.' + context.status;
         if (context.availableAutomations.length > 0) {
             context.options = [{
-                label: 'DND5E.None',
+                label: 'CHRISPREMADES.Generic.None',
                 value: null,
                 id: null,
                 isSelected: (context.source || game.settings.get('chris-premades', 'devTools')) ? false : true,
@@ -135,6 +140,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (!sources.includes(context.source) && context.source) {
             context.medkitColor = 'pink';
         }
+        /** Config Tab */
         let configs = macros[identifier]?.config;
         if (!configs) configs = item.flags['chris-premades']?.customConfig;
         if (configs) {
@@ -227,6 +233,42 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 context.category[config.category].configuration.push(configuration);
             }
         }
+        /** Generic Monster Features Tab */
+        if (item?.actor?.type === 'npc') {
+            let currentGenericFeatures = item.flags['chris-premades']?.config?.generic ?? {};
+            let currentGenericFeaturesKeys = Object.keys(currentGenericFeatures) ?? '';
+            let genericFeatures = Object.fromEntries(Object.entries(macros).filter(([key, value]) => value.isGenericFeature === true));
+            context.genericFeatures = {
+                label: 'CHRISPREMADES.Medkit.Tabs.GenericFeatures.Monster.Select.Label',
+                tooltip: 'CHRISPREMADES.Medkit.Tabs.GenericFeatures.Monster.Select.Tooltip'
+            };
+            context.genericFeatures.options = Object.entries(genericFeatures).map(([key, value]) => {
+                return {
+                    label: value.name,
+                    value: key,
+                    isSelected: currentGenericFeaturesKeys.includes(key) ? true : false
+                };
+            });
+            if (currentGenericFeaturesKeys.length) {
+                context.genericFeatures.configs = Object.entries(currentGenericFeatures).reduce((configs, [key, value]) => {
+                    configs[key] = {
+                        label: context.genericFeatures.options.find(i => i.value === key).label,
+                        id: key,
+                        options: macros[key].genericConfig.map(configBase => ({
+                            label: configBase.label,
+                            id: configBase.value,
+                            value: value[configBase.value],
+                            isChecked: value[configBase.value] === true ? true : false,
+                            isCheckbox: configBase.type === 'checkbox',
+                            isText: configBase.type === 'text'
+                            // Add more if needed?
+                        }))
+                    };
+                    return configs;
+                }, {});
+            } 
+        }
+        /** Dev Tools Tab */
         let isDev = game.settings.get('chris-premades', 'devTools');
         if (isDev) {
             context.options.push({
@@ -308,7 +350,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     static async _apply(event, target) {
         let item = this.itemDocument;
-        let devTools = this.context?.devTools;
+        let {devTools, category, genericFeatures} = this.context;
         if (devTools) {
             if (devTools.identifier != '') await item.setFlag('chris-premades', 'info.identifier', devTools.identifier);
             if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
@@ -375,10 +417,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 if (value) await item.setFlag('chris-premades', 'macros.rest', value);
             }
             if (devTools.equipment != '') {
-                await item.setFlag('chris-premades', 'macros.aura', devTools.equipment);
+                await item.setFlag('chris-premades', 'macros.equipment', devTools.equipment);
             }
         }
-        let category = this.context?.category;
         if (category) {
             let configs = {};
             for (let i of Object.values(category)) {
@@ -387,6 +428,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             }
             await item.setFlag('chris-premades', 'config', configs);
+        }
+        if (genericFeatures) {
+            let genericConfigs = genericFeatures.options.reduce((genericConfigs, option) => {
+                if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value].options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
+                    config[option.default === undefined ? option.id : option.value] = option.default ?? option.value;
+                    return config;
+                }, {});
+                return genericConfigs;
+            }, {});
+            await item.setFlag('chris-premades', 'config.generic', genericConfigs);
         }
         let currentSource = item?.flags?.['chris-premades']?.info?.source;
         if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
@@ -434,6 +485,14 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     tooltip: 'CHRISPREMADES.Medkit.Tabs.Configuration.Tooltip',
                     cssClass: ''
                 });
+            }
+            if (context?.genericFeatures) {
+                genericUtils.setProperty(tabsData, 'genericFeatures', {
+                    icon: 'fa-solid fa-toolbox',
+                    label: 'CHRISPREMADES.Medkit.Tabs.GenericFeatures.Label',
+                    tooltip: 'CHRISPREMADES.Medkit.Tabs.GenericFeatures.Tooltip',
+                    cssClass: ''
+                });
             } 
             if (game.settings.get('chris-premades', 'devTools')) {
                 genericUtils.setProperty(tabsData, 'devTools', {
@@ -455,13 +514,13 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         context.tabs = this.tabsData;
         context.buttons = [
-            {type: 'button', action: 'apply', label: 'DND5E.Apply', name: 'apply', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'confirm', label: 'DND5E.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
+            {type: 'button', action: 'apply', label: 'CHRISPREMADES.Generic.Apply', name: 'apply', icon: 'fa-solid fa-download'},
+            {type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Confirm', name: 'confirm', icon: 'fa-solid fa-check'}
         ];
         return context;
     }
     // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
-    async _onChangeForm(formConfig, event) {
+    async _onChangeForm(formConfig, event) { // Clean this up to get the relevent part of the context in the least ass-backwards way possible (be brave with jquery and keep more attributes on the elements)
         for (let key of Object.keys(this.tabsData)) {
             this.tabsData[key].cssClass = '';
         }
@@ -486,6 +545,21 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                 }
                 this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
+            }
+        } else if (event.target.name === 'monster-features') {
+            this.context.genericFeatures.options.forEach(i => i.isSelected = event.target.value.includes(i.value) ? true : false);
+        } else if (event.target?.parentElement?.getAttribute('data-context') === 'generic-features') {
+            let option = this.context.genericFeatures.configs[event.target.parentElement.getAttribute('data-id')].options.find(i => i.id === event.target.id);
+            switch (event.target.type) {
+                case 'checkbox': {
+                    option.isChecked = event.target.checked;
+                    option.value = event.target.checked;
+                    break;
+                }
+                case 'text': {
+                    option.value = event.target.value;
+                    break;
+                }
             }
         } else if (event.target.name.includes('devTools')) {
             let value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;

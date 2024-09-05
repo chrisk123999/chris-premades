@@ -86,6 +86,7 @@ const spellAttacks = [
 ];
 const unarmedAttacks = [
     'unarmedStrike',
+    'monkUnarmedStrike',
     'tavernBrawlerUnarmedStrike',
     'fightingStyleUnarmedFightingUnarmedStrike'
 ];

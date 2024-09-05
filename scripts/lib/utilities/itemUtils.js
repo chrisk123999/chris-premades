@@ -19,10 +19,11 @@ function getSaveDC(item) {
 function getMod(item) {
     return item.system.save.scaling === 'spell' ? item.actor.system.abilities[item.actor.system.attributes.spellcasting].mod : item.actor.system.abilities[item.system.save.scaling].mod;
 }
-async function createItems(actor, updates, {favorite, section, parentEntity, identifier} = {}) {
+async function createItems(actor, updates, {favorite, section, parentEntity, identifier, castData} = {}) {
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (section) updates.forEach(i => genericUtils.setProperty(i, 'flags.tidy5e-sheet.section', section));
     if (identifier) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.info.identifier', identifier));
+    if (castData) updates.forEach(i => genericUtils.setProperty(i, 'flags.chris-premades.castData', castData));
     let items;
     if (hasPermission) {
         items = await actor.createEmbeddedDocuments('Item', updates);
@@ -131,6 +132,15 @@ function getToolProficiency(actor, tool) {
     if (!toolName) return 0;
     return actor.system.tools[toolName]?.value ?? 0;
 }
+function getSavedCastData(item) {
+    return item.flags['chris-premades']?.castData;
+}
+function getGenericFeatureConfig(item, key) {
+    return item.flags['chris-premades']?.config?.generic?.[key];
+}
+function getItemByGenericFeature(actor, key) {
+    return actor.items.find(i => getGenericFeatureConfig(i, key));
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -148,5 +158,8 @@ export let itemUtils = {
     convertDuration,
     setConfig,
     getEquipmentState,
-    getToolProficiency
+    getToolProficiency,
+    getSavedCastData,
+    getGenericFeatureConfig,
+    getItemByGenericFeature
 };

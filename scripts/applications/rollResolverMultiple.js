@@ -43,20 +43,8 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         if ( !fulfillable.length ) return;
         this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.set(roll, this)); //
         let promise = new Promise(resolve => this.#resolve = resolve);
-        if (this.checkPreferences()) this.render(true);
-        else await this.digitalRoll();
+        this.render(true);
         return promise;
-    }
-    checkPreferences() {
-        if (this.rolls.some(roll => (roll instanceof CONFIG.Dice.DamageRoll) === false)) return false;
-        if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
-        let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
-        if (manualRollsInclusion === 0) return false;
-        if (manualRollsInclusion === 2 && this.rolls[0].data?.actorType === 'character') return true;
-        else if (manualRollsInclusion === 3 && fromUuidSync(this.rolls[0].data?.actorUuid)?.prototypeToken?.actorLink === true) return true;
-        else if (manualRollsInclusion === 4 && fromUuidSync(this.rolls[0].data?.actorUuid)?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) === true) return true;
-        else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) === true) return true;
-        else return false;
     }
     async digitalRoll() {
         await this.constructor._fulfillRoll.call(this);

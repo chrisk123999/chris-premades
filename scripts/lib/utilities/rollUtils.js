@@ -88,8 +88,8 @@ async function rollDice(formula, {actor, chatMessage, flavor} = {}) {
     }
     return roll;
 }
-async function damageRoll(formula, actor, type) {
-    return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), {type: type}).evaluate();
+async function damageRoll(formula, actor, options = {}) {
+    return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), options).evaluate();
 }
 export let rollUtils = {
     getCriticalFormula,

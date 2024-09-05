@@ -1,5 +1,5 @@
 {
-  "name": "Relentless Hex",
+  "name": "Supreme Healing",
   "type": "feat",
   "system": {
     "description": {
@@ -7,11 +7,14 @@
       "chat": ""
     },
     "source": {
+      "book": "Player’s Handbook (2014)",
+      "page": "60",
+      "license": "",
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -28,9 +31,9 @@
       "prompt": true
     },
     "range": {
-      "value": 30,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,12 +44,16 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": null,
+    "actionType": "util",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,83 +63,78 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
-      "subtype": "eldritchInvocation"
+      "subtype": ""
     },
+    "prerequisites": {
+      "level": 17
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.DldBPTkE0DKG4TK5"
+    "obsidian": {
+      "source": {
+        "type": "class",
+        "text": "Cleric"
+      }
     },
     "midi-qol": {
-      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "dnd5e": {
+      "advancementOrigin": "mMitAishljuuxgML"
+    },
     "chris-premades": {
       "info": {
-        "name": "Relentless Hex",
-        "version": "0.12.54",
-        "identifier": "relentlessHex",
+        "identifier": "supremeHealing",
         "source": "chris-premades",
-        "hasAnimation": true
+        "version": "0.12.54"
       },
       "macros": {
         "midi": {
-          "item": [
-            "relentlessHex"
+          "actor": [
+            "supremeHealing"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/death/undead-zombie-grave-green.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "YfEGK27XoalRyL7D",
-  "_key": "!items!YfEGK27XoalRyL7D"
+  "img": "icons/magic/life/heart-glowing-red.webp",
+  "folder": "XaiaWNZPY7fVePSk",
+  "_id": "6kfQRTkwRDFi1sk6",
+  "_key": "!items!6kfQRTkwRDFi1sk6"
 }

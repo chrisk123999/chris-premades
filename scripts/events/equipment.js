@@ -26,9 +26,14 @@ async function addOrUpdate(item, updates, options, id) {
             genericUtils.setProperty(newUpdates, 'flags.chris-premades.equipment.uses.' + key, i.system.uses);
         });
         if (Object.keys(newUpdates).length) await genericUtils.update(item, newUpdates);
+        let callbacks = Object.values(equipmentData).filter(i => i.unequipCallback).map(j => j.unequipCallback);
+        if (callbacks.length) for (let i of callbacks) await i(item);
         await genericUtils.deleteEmbeddedDocuments(item.actor, 'Item', removeItems.map(i => i.id));
+        
     } else if (!previousState && currentState) {
+        let callbacks = [];
         let updates = await Promise.all(Object.entries(equipmentData).map(async ([key, value]) => {
+            if (value.equipCallback) callbacks.push(value.equipCallback);
             let packKey;
             let descriptionPackKey;
             let description;
@@ -68,7 +73,9 @@ async function addOrUpdate(item, updates, options, id) {
             delete itemData._id;
             return itemData;
         }));
+        updates = updates.filter(i => i);
         if (updates.length) await itemUtils.createItems(item.actor, updates, {section: item.name});
+        if (callbacks.length) for (let i of callbacks) await i(item);
     }
 }
 async function remove(item, options, id) {

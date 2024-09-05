@@ -196,6 +196,7 @@
         },
         "Generic": {
             "Actions": "Actions",
+            "Apply": "Apply",
             "Available": "Available",
             "CPR": "Chris's Premades",
             "Cancel": "Cancel",
@@ -204,6 +205,7 @@
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
             "Configure": "Configure",
+            "Confirm": "Confirm",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -212,6 +214,7 @@
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoType": "No Type",
+            "None": "None",
             "Ok": "Ok",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
@@ -739,6 +742,12 @@
             "InvestmentOfTheChainMaster": {
                 "Command": "Investment of the Chain Master: Command",
                 "Resistance": "Investment of the Chain Master: Familiar Resistance"
+            },
+            "KeenSenses": {
+                "Check": "This check relies on: ",
+                "Hearing": "Hearing",
+                "Sight": "Sight",
+                "Smell": "Smell"
             },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
@@ -1304,6 +1313,16 @@
                 "Configuration": {
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
+                },
+                "GenericFeatures": {
+                    "Label": "Generic Features",
+                    "Monster": {
+                        "Select": {
+                            "Label": "Select Generic Monster Features:",
+                            "Tooltip": "Add Configurable Generic Monster Features"
+                        }
+                    },
+                    "Tooltip": "Add and Configure Generic Features for this Item"
                 },
                 "Info": {
                     "Label": "Info",

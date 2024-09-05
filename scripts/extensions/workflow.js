@@ -24,7 +24,15 @@ function setup() {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
             let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
-            if (manualRollsEnabled && (this.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) {
+            if (manualRollsEnabled && (this.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await newRolls();
+            async function newRolls() {
+                if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+                let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
+                if (manualRollsInclusion === 0) return false;
+                else if (manualRollsInclusion === 2 && this.actor.type != 'character') return false;
+                else if (manualRollsInclusion === 3 && this.actor?.prototypeToken?.actorLink != true) return false;
+                else if (!(manualRollsInclusion === 4 && this.actor?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(this.actor.uuid === true))) return false;
+                else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) != true) return false;
                 let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
                 let resolver = new CPRMultipleRollResolver(newRolls);
                 await resolver.awaitFulfillment();

@@ -1,0 +1,32 @@
+<div class="tab cpr-medkit-tab {{tabs.genericFeatures.cssClass}}" data-tab="genericFeatures" data-group="main">
+    <div>
+        <div class="cpr-row-center cpr-multi-select-row">
+            <label for="monster-features" data-tooltip="{{localize genericFeatures.tooltip}}">{{localize genericFeatures.label}}</label>
+            <multi-select id="monster-features" name="monster-features">
+            {{#each genericFeatures.options}}
+                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+            </multi-select>
+        </div>
+        <div class="cpr-fieldset-group">
+            {{#each genericFeatures.configs}}
+                <fieldset class="cpr-fieldset">
+                    <legend>{{label}}</legend>
+                    <div class="form-group cpr-row">
+                        {{#each options}}
+                        <div class="cpr-row-center" data-id="{{../id}}" data-context="generic-features">
+                            {{#if isCheckbox}}
+                                <label for="{{id}}">{{localize label}}</label>
+                                <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}}>
+                            {{else if isText}}
+                                <label for="{{id}}">{{localize label}}</label>
+                                <input type="text" id="{{id}}" name="{{id}}" value="{{value}}">
+                            {{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </fieldset>
+            {{/each}}
+        </div>
+    </div>
+</div>

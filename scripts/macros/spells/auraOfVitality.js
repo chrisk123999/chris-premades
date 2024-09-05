@@ -1,4 +1,4 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -17,7 +17,8 @@ async function use({workflow}) {
         }
     };
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, vae: [{type: 'use', name: featureData.name, identifier: 'auraOfVitalityHealing'}], identifier: 'auraOfVitality'});
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures')});
+
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, parentEntity: effect, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), castData: workflowUtils.getCastData(workflow)});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
 export let auraOfVitality = {

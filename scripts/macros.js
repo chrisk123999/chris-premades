@@ -298,7 +298,7 @@ export {twilightSanctuary, twilightSanctuaryActive} from './macros/classFeatures
 export {twilightShroud, twilightShroudActive} from './macros/classFeatures/cleric/twilightDomain/twilightShroud.js';
 export {twinklingConstellations} from './macros/classFeatures/druid/circleOfStars/twinklingConstellations.js';
 export {umbralSight} from './macros/classFeatures/ranger/gloomStalker/umbralSight.js';
-export {unarmedStrike} from './macros/classFeatures/monk/unarmedStrike.js';
+export {monkUnarmedStrike} from './macros/classFeatures/monk/unarmedStrike.js';
 export {unarmoredDefenseBarbarian} from './macros/classFeatures/barbarian/unarmoredDefense.js';
 export {unarmoredDefenseMonk} from './macros/classFeatures/monk/unarmoredDefense.js';
 export {unleashIncarnation} from './macros/classFeatures/fighter/echoKnight/unleashIncarnation.js';
@@ -308,10 +308,15 @@ export {wildSurge, wildSurgeIntangibleSpirit, wildSurgeProtectiveLights, wildSur
 export {wildShape, wildShapeActive} from './macros/classFeatures/druid/wildShape.js';
 export {wrathOfTheStorm} from './macros/classFeatures/cleric/tempestDomain/wrathOfTheStorm.js';
 export {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPresence.js';
+export {discipleOfLife} from './macros/classFeatures/cleric/lifeDomain/discipleOfLife.js';
+export {blessedHealer} from './macros/classFeatures/cleric/lifeDomain/blessedHealer.js';
+export {supremeHealing} from './macros/classFeatures/cleric/lifeDomain/supremeHealing.js';
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
-//Actions
+// Generic Monster Features
+export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
+// Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';
 export {disengage} from './macros/actions/disengage.js';
@@ -329,7 +334,7 @@ export {underwater, underwaterEffect} from './macros/actions/underwater.js';
 // Feats
 export {grappler, grapplerPin} from './macros/feats/grappler.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
-//Items
+// Items
 export {firearm} from './macros/mechanics/firearm.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
@@ -338,3 +343,5 @@ export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/it
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
 export {pariahsShield} from './macros/items/armor/pariahsShield.js';
 export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';
+export {eldritchClawTattoo} from './macros/items/trinket/eldritchClawTattoo.js';
+export {unarmedStrike} from './macros/items/misc/unarmedStrike.js';
