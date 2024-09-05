@@ -72,7 +72,7 @@ async function earlyStormRune({trigger: {entity: effect, token}, workflow}) {
         ['DND5E.Advantage', 'advantage'],
         ['DND5E.Disadvantage', 'disadvantage'],
         ['DND5E.None', false]
-    ]);
+    ], {userId: socketUtils.firstOwner(token, true)});
     if (!selection) return;
     if (selection === 'advantage') {
         workflow.advantage = true;

@@ -25,20 +25,11 @@ async function equip(item) {
                 mode: 2,
                 value: bonus,
                 priority: 20
-            },
-            {
-                key: 'system.damage.parts',
-                mode: 2,
-                value: null,
-                priority: 20
             }
         ]
     };
     await Promise.all(items.map(async i => {
-        let newEffectData = genericUtils.duplicate(enchantmentData);
-        let damageType = i.system.damage.parts[0][1];
-        newEffectData.changes[2].value = JSON.stringify([['1[' + damageType + ']', damageType]]);
-        await itemUtils.enchantItem(i, newEffectData, {parentEntity: effect, strictlyInterdependent: true, identifier: 'eldritchClawTattooEnchantment'});
+        await itemUtils.enchantItem(i, enchantmentData, {parentEntity: effect, strictlyInterdependent: true, identifier: 'eldritchClawTattooEnchantment'});
     }));
 }
 async function unequip(item) {

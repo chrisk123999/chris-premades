@@ -196,7 +196,6 @@
         },
         "Generic": {
             "Actions": "Actions",
-            "Apply": "Apply",
             "Available": "Available",
             "CPR": "Chris's Premades",
             "Cancel": "Cancel",
@@ -205,7 +204,6 @@
             "CheckSpelling": "Check Spelling",
             "Close": "Close",
             "Configure": "Configure",
-            "Confirm": "Confirm",
             "Disabled": "Disabled",
             "Distance": "Distance",
             "Edit": "Edit",
@@ -214,7 +212,6 @@
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoType": "No Type",
-            "None": "None",
             "Ok": "Ok",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
