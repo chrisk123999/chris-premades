@@ -51,7 +51,7 @@ async function createEffect(entity, effectData, {concentrationItem, parentEntity
         if (concentrationEffect) await addDependent(concentrationEffect, effects);
         if (parentEntity) await addDependent(parentEntity, effects);
     } else {
-        effects = await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid});
+        effects = [await socket.executeAsGM(sockets.createEffect.name, entity.uuid, effectData, {concentrationItemUuid: concentrationItem?.uuid, parentEntityUuid: parentEntity?.uuid})];
         effects = await Promise.all(effects.map(async i => await fromUuid(i)));
     }
     if (effects?.length) return effects[0];

@@ -62,7 +62,7 @@ async function selectTargetDialog(title, content, targets, {type = 'one', select
             label = i.document.name;
         } else {
             if (i.document.disposition <= 0) {
-                label = 'CHRISPREMADES.UnknownTarget (' + number + ')';
+                label = genericUtils.translate('CHRISPREMADES.UnknownTarget') + ' (' + number + ')';
                 number++;
             } else {
                 label = i.document.name;
