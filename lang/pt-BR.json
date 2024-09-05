@@ -26,21 +26,29 @@
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
         },
+        "CONFIG": {
+            "SaveDC": "CD da Salvaguarda:"
+        },
         "CommonFeatures": {
+            "Amphibious": "Anfíbio",
             "Bite": "Mordida",
             "BreathWeapon": "Arma de Sopro",
             "ChangeShape": "Mudar Forma",
+            "Charge": "Investida Poderosa",
             "Claws": "Garras",
             "DevilsSight": "Visão Diabólica",
             "Evasion": "Evasão",
+            "Flyby": "Sobrevoo",
             "HeatedBody": "Corpo Aquecido",
             "MagicResistance": "Resistência Mágica",
+            "Maul": "Malho",
             "Mending": "Reparar",
             "Multiattack": "Ataques Múltiplos ({numAttacks} Ataques)",
             "PackTactics": "Táticas de Bando",
             "Regeneration": "Regeneração",
             "ShadowStealth": "Sombra Furtiva",
             "Shapechanger": "Metamorfo",
+            "Shred": "Destruir",
             "StoneLethargy": "Letargia de Pedra",
             "Tail": "Cauda",
             "WaterBreathing": "Respiração na Água",
@@ -105,6 +113,7 @@
             "Formula": "Fórmula:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
+            "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
@@ -128,9 +137,12 @@
         "Dialog": {
             "DamageType": "Qual tipo de dano?",
             "Invalid": "Entrada Inválida!",
+            "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?",
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
+            "UseName": "Usar {itemName} de [{tokenName}]?",
             "WhatDo": "O que você quer fazer?"
         },
         "Direction": {
@@ -182,6 +194,7 @@
             "Undamaged": "Não-Danificado"
         },
         "Generic": {
+            "Actions": "Ações",
             "Available": "Disponível",
             "CPR": "Chris's Premades",
             "Cancel": "Cancelar",
@@ -229,7 +242,10 @@
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
-                "GrappledBy": "Agarrado por {tokenName}"
+                "GrappleEscape": "Agarrão: Escapar",
+                "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
+                "GrappledBy": "Agarrado por {tokenName}",
+                "Grappling": "Agarrando {tokenName}"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -286,6 +302,9 @@
             "BardicInspiration": {
                 "MoteAttack": "Partícula de Potencial Ataque",
                 "MoteHeal": "Partícula de Potencial Cura"
+            },
+            "BeguilingTwist": {
+                "Select": "Qual Condição?"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -381,6 +400,9 @@
             },
             "ChillTouch": {
                 "Undead": "Toque Necrótico: Efeito Morto-Vivo"
+            },
+            "CloudRune": {
+                "Reaction": "Usar {item} para redirecionar o ataque de {name}?"
             },
             "Cloudkill": {
                 "Damage": "Névoa Mortal: Dano",
@@ -518,6 +540,9 @@
                 "Target": "Marcar a Montaria também? (Se montado)",
                 "Type": "Qual tipo de criatura?"
             },
+            "FireRune": {
+                "AllowUnarmed": "Permitir Runa de Fogo em Ataques Desarmados"
+            },
             "FireShield": {
                 "ChillShield": "Escudo Frio",
                 "Dismiss": "Escudo de Fogo: Dispensar",
@@ -539,13 +564,18 @@
                 "Touch": "Bando de Familiares: Tocar"
             },
             "FocusedAim": {
-                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)",
-                "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?"
+                "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)"
             },
             "Grapple": {
-                "ChooseSkill": "Como você gostaria de disputar o agarrão?",
+                "ChooseSkill": "Como você quer disputar o agarrão?",
+                "ChooseSkillEscape": "Como você quer escapar do agarrão?",
                 "Immune": "O alvo não pode ser agarrado!",
                 "Size": "O alvo é grande demais para ser agarrado!"
+            },
+            "Grappler": {
+                "Pin": "Imobilizador: Pin",
+                "Pinned": "Imobilizador: Imobilizado por {tokenName}",
+                "Pinning": "Imobilizador: Imobilizando {tokenName}"
             },
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
@@ -560,6 +590,9 @@
                 "DefensiveField": "Armadura do Guardião: Campo Defensivo",
                 "Distracted": "Manoplas Trovejantes: Distraído",
                 "ThunderGauntlets": "Armadura do Guardião: Manoplas Trovejantes"
+            },
+            "GuardianEmblem": {
+                "Protect": "Usar {item} para proteger {name} de um acerto crítico?"
             },
             "GuardianOfFaith": {
                 "Damage": "Guardião da Fé: Dano"
@@ -746,8 +779,22 @@
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
             },
+            "PariahsShield": {
+                "MaxBonus": "Bônus Máx. de CA:",
+                "Protect": "Proteger {name} com {item}?",
+                "Reaction": "Escudo do Pária: Proteger"
+            },
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
+            },
+            "PrimalCompanion": {
+                "BindingStrike": "Golpe Aprisionador",
+                "Command": "Companheiro Primitivo: Comando",
+                "Land": "Terra",
+                "PrimalBond": "Laço Primitivo",
+                "Sea": "Mar",
+                "Select": "Qual tipo de companheiro?",
+                "Sky": "Céu"
             },
             "ProtectionFromEvilAndGood": {
                 "Save": "Esta salvaguarda é contra um efeito de uma Aberração, Celestial, Elemental, Feérico, Ínfero ou Morto-Vivo que te Enfeitiçou, Amedrontou ou Possuiu você."
@@ -765,6 +812,9 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
+            },
+            "RunicShield": {
+                "Use": "Usar {item} para {name}?"
             },
             "SacredWeapon": {
                 "Dismiss": "Arma Sagrada: Dispensar",
@@ -868,9 +918,18 @@
             "StillnessOfMind": {
                 "Select": "Qual condição você quer de remover?"
             },
+            "StormRune": {
+                "AdvDis": "Dar vantagem/desvantagem para {tokenName} em seu {actionType}?"
+            },
             "StormSphere": {
                 "Bolt": "Esfera Tempestuosa: Relâmpago",
                 "Turn": "Esfera Tempestuosa: Turno"
+            },
+            "Stormgirdle": {
+                "LightningStrike": "Stormgirdle: Relâmpago"
+            },
+            "Stormgridle": {
+                "Avatar": "Avatar da Tempestade"
             },
             "SummonAberration": {
                 "Beholderkin": "Observador",
@@ -914,6 +973,17 @@
                 "ResistanceType": "Resistências Compartilhadas: Qual tipo de dano?",
                 "SharedResistances": "Resistências Compartilhadas",
                 "Type": "Qual tipo de Dragão?"
+            },
+            "SummonDrakeCompanion": {
+                "Command": "Companheiro Dragão: Comando",
+                "Essence": "Essência Dracônica",
+                "InfusedStrikes": "Ataques Infundidos",
+                "Reflexive": "Resistência Reflexiva",
+                "Resistance": "Use reação para conceder resistência ao dano?",
+                "ResistanceSelf": "Use reação para obter resistência ao dano?",
+                "Select": "Qual tipo de Dragão?",
+                "Self": "Sim: Si Mesmo",
+                "Summon": "Sim: Companheiro Dragão"
             },
             "SummonElemental": {
                 "Air": "Ar",
@@ -979,6 +1049,9 @@
                 "Select": "De quais planos você extrai a magia?",
                 "Upper": "Planos Superiores"
             },
+            "TavernBrawler": {
+                "Use": "Usar Ação Bônus para tentar agarrar??"
+            },
             "Teleport": {
                 "AssociatedObject": "Objeto Associado",
                 "Damage": "Teletransporte: Dano",
@@ -1019,6 +1092,10 @@
                 "Heal": "Dar {formula} PV temporário",
                 "Temp": "Santuário Crepuscular: PV Temporário"
             },
+            "UnarmedFighting": {
+                "Grapple": "Combate Desarmado: Dano Agarrado",
+                "Select": "Causar dano a uma criatura agarrada?"
+            },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
                 "Underwater": "Submerso"
@@ -1039,6 +1116,7 @@
             "WildShape": {
                 "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
                 "Equipment": "O que acontece com o seu equipamento?",
+                "Ignore": "Ignorar ND, Tipo & Restrição de Movimento:",
                 "KeepSpells": "Permitir conjuração enquanto transformado:",
                 "Merge": "Assimilar / Derrubar",
                 "Revert": "Forma Selvagem: Reverter",
@@ -1273,6 +1351,11 @@
                 "Label": "Opções de Interface do Usuário",
                 "Name": "Opções de Interface do Usuário"
             },
+            "manualRolls": {
+                "Hint": "Configurações para rolagem manual.",
+                "Label": "Rolagens Manuais",
+                "Name": "Rolagens Manuais"
+            },
             "mechanics": {
                 "Hint": "Configurações para mecânica de jogo.",
                 "Label": "Opções de Mecânica de Jogo",
@@ -1280,6 +1363,20 @@
             }
         },
         "Settings": {
+            "addActions": {
+                "0": "Desabilitado",
+                "1": "Personagens Vinculados",
+                "2": "Personagens Desvinculados",
+                "3": "Todos os Personagens",
+                "4": "PnJs Vinculados",
+                "5": "PnJs Desvinculados",
+                "6": "Todos os PnJs",
+                "7": "Personagens Vinculados e PnJs",
+                "8": "Personagens Desvinculados e PnJs",
+                "9": "Todos os Personagens e PnJs",
+                "Name": "Adicionar Ações aos Tokens",
+                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado."
+            },
             "Permissions": {
                 "1": "Jogador",
                 "2": "Jogador Confiável",
@@ -1439,10 +1536,31 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
-            "manualRollsPreferences": {
-                "Hint": "Configurar opções para Manual Rolls",
-                "Label": "Preferências Manual Rolls",
-                "Name": "Preferências Manual Rolls"
+            "manualRollsEnabled": {
+                "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
+                "Name": "Rolagens Manuais"
+            },
+            "manualRollsInclusion": {
+                "Hint": "Quais rolagens de ator devem ser solicitadas.",
+                "Name": "Inclusão de Rolagens Manuais",
+                "0": "Nenhuma - Sem Rolagens Manuais",
+                "1": "Todas - Solicitação para Qualquer Ator",
+                "2": "Apenas Todos Personagens",
+                "3": "Apenas Todos Vinculados",
+                "4": "Apenas Vinculados e Pertencentes a Jogador",
+                "5": "Todos Pertencentes e Controlados por jogador"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
+                "Name": "Solicitar em Erros"
+            },
+            "manualRollsPromptNoData": {
+                "Hint": "Solicita rolagens sem dados, provavelmente usados em macros.",
+                "Name": "Solicitar Sem Dados"
+            },
+            "manualRollsUsers": {
+                "Hint": "Configura quais usuários usam Rolagens Manuais.",
+                "Name": "Usuário de Rolagens Manuais"
             },
             "miscPremades": {
                 "1": "Sem Homebrew ou Unearthed Arcana",
@@ -1483,6 +1601,10 @@
             "replaceStatusEffectIcons": {
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
                 "Name": "Substituir Ícones de Status"
+            },
+             "seenTour": {
+                "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
+                "Name": "Aviso do Tour"
             },
             "selectTool": {
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
@@ -1532,6 +1654,9 @@
         "SneakAttack": {
             "Auto": "Usar Automaticamente:"
         },
+        "Spells": {
+            "BeaconOfHope": "Sinal da Esperança"
+        },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
             "Description": "Invoque um(a) {name} usando o Chris's Premades.",
@@ -1551,6 +1676,9 @@
                 "AberrantSpiritSlaad": "Espírito Aberrante (Slaad)",
                 "AberrantSpiritStarSpawn": "Espírito Aberrante (Prole Estelar)",
                 "AirElemental": "Elemental do Ar",
+                "BeastOfTheLand": "Fera da Terra",
+                "BeastOfTheSea": "Fera do Mar",
+                "BeastOfTheSky": "Fera do Céu",
                 "BestialSpirit": "Espírito Feral",
                 "BestialSpiritAir": "Espírito Feral (Ar)",
                 "BestialSpiritLand": "Espírito Feral (Terra)",
@@ -1568,6 +1696,11 @@
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
                 "DraconicSpiritMetallic": "Espírito Dracônico (Metálico)",
+                "DrakeCompanionAcid": "Companheiro Dragão: Ácido",
+                "DrakeCompanionCold": "Companheiro Dragão: Gélido",
+                "DrakeCompanionFire": "Companheiro Dragão: Ígneo",
+                "DrakeCompanionLightning": "Drake Companion: Lightning",
+                "DrakeCompanionPoison": "Drake Companion: Poison",
                 "DreadLord": "Senhor do Pavor",
                 "EarthElemental": "Elemental da Terra",
                 "EarthenHand": "Mão Terrena",
