@@ -1,5 +1,5 @@
 {
-  "name": "One with Shadows",
+  "name": "Genie's Vessel: Genie's Wrath (Efreeti)",
   "type": "feat",
   "system": {
     "description": {
@@ -7,30 +7,30 @@
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Warlock : The Genie"
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
-      "value": "7",
-      "units": "day"
+      "value": "",
+      "units": "inst"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "creature",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": "spec"
     },
     "uses": {
       "value": null,
@@ -46,14 +46,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "@prof",
+          "fire"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -64,7 +69,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": "eldritchInvocation"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -85,8 +90,8 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -112,91 +117,109 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Actor.ajuA7OJxItBFhlyB.Item.J3ApK4GsCL5gWKAS"
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.p4ciIXPSgDCsxXnC"
     },
     "chris-premades": {
       "info": {
-        "name": "One with Shadows",
-        "version": "0.12.54",
-        "identifier": "oneWithShadows",
+        "name": "Genie's Vessel: Genie's Wrath (Efreeti)",
+        "version": "0.12.55",
+        "identifier": "geniesWrathEfreeti",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "oneWithShadows"
-          ]
-        }
       }
     }
   },
   "effects": [
     {
-      "name": "One with Shadows",
-      "origin": "Compendium.world.cpr-class-features.Item.zkb7CEADjtYwiGLN",
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.label",
+          "mode": 0,
+          "value": "Genie's Wrath",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.count",
+          "mode": 0,
+          "value": "turn",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.damage.msak",
+          "mode": 0,
+          "value": "+@prof[fire]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.damage.rsak",
+          "mode": 0,
+          "value": "+@prof[fire]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.damage.mwak",
+          "mode": 0,
+          "value": "+@prof[fire]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.geniesWrath.damage.rwak",
+          "mode": 0,
+          "value": "+@prof[fire]",
+          "priority": 20
+        }
+      ],
+      "transfer": true,
+      "_id": "4oMwtaT7oruA2w4r",
+      "disabled": false,
       "duration": {
-        "rounds": null,
         "startTime": null,
         "seconds": null,
         "combat": null,
+        "rounds": null,
         "turns": null,
         "startRound": null,
         "startTurn": null
       },
-      "disabled": false,
+      "origin": "Compendium.world.cpr-class-features.Item.PVcZIruNwUGBKVlf",
+      "tint": "#ffffff",
       "flags": {
-        "dnd5e": {},
         "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
           "selfTarget": false,
           "selfTargetAlways": false,
-          "dontApply": false,
           "stackable": "noneName",
-          "showIcon": false,
           "durationExpression": "",
           "macroRepeat": "none",
-          "specialDuration": [
-            "1Action",
-            "isMoved"
-          ]
+          "specialDuration": [],
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "showIcon": false
         },
         "core": {
           "overlay": false
-        },
-        "chris-premades": {
-          "noAnimation": false,
-          "conditions": [
-            "invisible"
-          ]
         }
       },
-      "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
-      "_id": "YnE0Qmbjdsc1OwkA",
-      "type": "base",
-      "system": {},
-      "changes": [],
+      "name": "Genie's Vessel: Genie's Wrath (Efreeti)",
       "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
       "statuses": [],
-      "sort": 0,
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1725475335142,
-        "modifiedTime": 1725475713602,
+        "createdTime": null,
+        "modifiedTime": 1725544462861,
         "lastModifiedBy": "wyNw8BrgTfPgbUM3"
       },
-      "_key": "!items.effects!zkb7CEADjtYwiGLN.YnE0Qmbjdsc1OwkA"
+      "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!PVcZIruNwUGBKVlf.4oMwtaT7oruA2w4r"
     }
   ],
-  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "zkb7CEADjtYwiGLN",
-  "_key": "!items!zkb7CEADjtYwiGLN"
+  "img": "icons/equipment/neck/necklace-carved-lantern-gold.webp",
+  "folder": "afIQwMXdJt8qBZD3",
+  "_id": "PVcZIruNwUGBKVlf",
+  "_key": "!items!PVcZIruNwUGBKVlf"
 }

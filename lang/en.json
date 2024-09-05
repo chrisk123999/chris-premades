@@ -231,6 +231,7 @@
             "ConditionAdvantage": "Condition Advantage",
             "ConditionDisadvantage": "Condition Disadvantage",
             "ConditionImmunity": "Condition Immunity",
+            "CriticalThreshold": "Critical Threshold",
             "InvalidTarget": "Invalid Target",
             "TemplateEffect": "{itemName} Template"
         },
@@ -579,6 +580,10 @@
             "FocusedAim": {
                 "Bonus": "Yes ({kiCost} Ki / +{bonus} to hit)"
             },
+            "FormOfDread": {
+                "Fear": "Form of Dread: Fear",
+                "Use": "Attempt to frighten target?"
+            },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
                 "ChooseSkillEscape": "How would you like to escape the grapple?",
@@ -647,6 +652,13 @@
                 "Move": "Hex: Move",
                 "Multiple": "Which target would you like to hex?",
                 "SelectAbility": "What ability should have disadvantage?"
+            },
+            "HexWarrior": {
+                "NoWeapons": "No valid equipped weapon to pick!"
+            },
+            "HexbladesCurse": {
+                "Healing": "Hexblade's Curse: Healing",
+                "Transfer": "Master of Hexes: Transfer Curse?"
             },
             "HoldPerson": {
                 "Overtime": "Hold Person (End of Turn)"
@@ -1763,6 +1775,7 @@
                 "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
                 "FireElemental": "Fire Elemental",
                 "Flumph": "Flumph",
+                "FormOfDread": "Form of Dread",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "HomunculusServant": "Homunculus Servant",

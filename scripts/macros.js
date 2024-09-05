@@ -188,6 +188,8 @@ export {controlUndead, controlUndeadControlled} from './macros/classFeatures/pal
 export {controlledSurge} from './macros/classFeatures/barbarian/wildMagic/controlledSurge.js';
 export {createPactWeapon, createPactWeaponDismiss} from './macros/classFeatures/warlock/boons/pactOfTheBlade/createPactWeapon.js';
 export {dangerSense} from './macros/classFeatures/barbarian/dangerSense.js';
+export {darkOnesBlessing} from './macros/classFeatures/warlock/fiend/darkOnesBlessing.js';
+export {darkOnesOwnLuck} from './macros/classFeatures/warlock/fiend/darkOnesOwnLuck.js';
 export {demiurgicColossus} from './macros/classFeatures/barbarian/giant/demiurgicColossus.js';
 export {destructiveWrath, destructiveWrathActive} from './macros/classFeatures/cleric/tempestDomain/destructiveWrath.js';
 export {devilsSight} from './macros/classFeatures/warlock/invocations/devilsSight.js';
@@ -203,6 +205,7 @@ export {echoAvatar} from './macros/classFeatures/fighter/echoKnight/echoAvatar.j
 export {eldritchCannon, eldritchCannonExplosiveCannon, eldritchCannonForceBallista, eldritchCannonFortifiedPosition} from './macros/classFeatures/artificer/artillerist/eldritchCannon.js';
 export {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
 export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/barbarian/giant/elementalCleaver.js';
+export {elementalGiftDao, elementalGiftDjinni, elementalGiftEfreeti, elementalGiftMarid} from './macros/classFeatures/warlock/genie/elementalGift.js';
 export {elementalWildShape} from './macros/classFeatures/druid/circleOfTheMoon/elementalWildShape.js';
 export {emboldeningBond, emboldeningBondEmboldened} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
 export {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
@@ -217,14 +220,19 @@ export {fireRune, frostRune, stoneRune, hillRune, stormRune, cloudRune} from './
 export {fightingSpirit} from './macros/classFeatures/fighter/samurai/fightingSpirit.js';
 export {fightingStyleUnarmedFighting, fightingStyleUnarmedFightingUnarmedStrike} from './macros/classFeatures/multiple/fightingStyleUnarmedFighting.js';
 export {focusedAim} from './macros/classFeatures/monk/focusedAim.js';
+export {formOfDread, formOfDreadActive} from './macros/classFeatures/warlock/undead/formOfDread.js';
 export {formOfTheBeast, formOfTheBeastBite} from './macros/classFeatures/barbarian/beast/formOfTheBeast.js';
+export {geniesWrathDao, geniesWrathDjinni, geniesWrathEfreeti, geniesWrathMarid} from './macros/classFeatures/warlock/genie/geniesWrath.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/giantStature.js';
 export {giantsMight} from './macros/classFeatures/fighter/runeKnight/giantsMight.js';
 export {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
+export {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 export {greatStature} from './macros/classFeatures/fighter/runeKnight/greatStature.js';
 export {guardianArmor, guardianArmorThunderGauntlets, guardianArmorDefensiveField} from './macros/classFeatures/artificer/armorer/guardianArmor.js';
 export {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
+export {hexWarrior} from './macros/classFeatures/warlock/hexblade/hexWarrior.js';
+export {hexbladesCurse, hexbladesCurseSource, hexbladesCurseTarget} from './macros/classFeatures/warlock/hexblade/hexbladesCurse.js';
 export {infiltratorArmor, infiltratorArmorLightningLauncher} from './macros/classFeatures/artificer/armorer/infiltratorArmor.js';
 export {infuseItem, infuseItemArmorStrength, infuseItemHomunculusTouch, infuseItemRepulsionShield, infuseItemSpellRing} from './macros/classFeatures/artificer/infuseItem.js';
 export {ki} from './macros/classFeatures/monk/ki.js';
@@ -244,6 +252,7 @@ export {maddeningHex} from './macros/classFeatures/warlock/invocations/maddening
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
 export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversSweepingAttackAttack, maneuversTacticalAssessment, maneuversTripAttack} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 export {manifestEcho, manifestEchoActive, manifestEchoTeleport, manifestEchoAttack} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
+export {masterOfHexes} from './macros/classFeatures/warlock/hexblade/masterOfHexes.js';
 export {mastersFlourish} from './macros/classFeatures/bard/collegeOfSwords/mastersFlourish.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
 export {mightySummoner} from './macros/classFeatures/druid/circleOfTheShepard/mightySummoner.js';

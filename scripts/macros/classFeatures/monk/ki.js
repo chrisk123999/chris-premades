@@ -1,4 +1,4 @@
 export let ki = {
-    name: 'Ki',
-    version: '0.12.46'
+    name: 'Ki Points',
+    version: '0.12.55'
 };

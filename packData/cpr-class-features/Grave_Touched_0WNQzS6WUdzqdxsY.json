@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Grave Touched",
   "type": "feat",
   "system": {
     "description": {
@@ -11,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -28,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -63,7 +63,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -85,6 +85,7 @@
   "flags": {
     "midi-qol": {
       "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
@@ -111,20 +112,27 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
+      "sourceId": "Actor.ajuA7OJxItBFhlyB.Item.P5Y0vdgMIHAUDRVx"
     },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
-        "version": "0.12.9",
-        "identifier": "investmentOfTheChainMaster",
+        "name": "Grave Touched",
+        "version": "0.12.55",
+        "identifier": "graveTouched",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "graveTouched"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "RhtNVVr7feJNBnQ5",
-  "_key": "!items!RhtNVVr7feJNBnQ5"
+  "img": "icons/environment/settlement/graveyard-tombstone-night.webp",
+  "folder": "ClSMUxaTczFMilKY",
+  "_id": "0WNQzS6WUdzqdxsY",
+  "_key": "!items!0WNQzS6WUdzqdxsY"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Devil's Sight",
+  "name": "Eldritch Invocations: Devil's Sight",
   "type": "feat",
   "img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
   "system": {
@@ -148,8 +148,8 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Devil's Sight",
-        "version": "0.12.54",
+        "name": "Eldritch Invocations: Devil's Sight",
+        "version": "0.12.55",
         "identifier": "devilsSight",
         "source": "chris-premades"
       }

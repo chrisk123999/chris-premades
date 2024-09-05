@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Smite",
+  "name": "Eldritch Invocations: Maddening Hex",
   "type": "feat",
   "system": {
     "description": {
@@ -10,25 +10,25 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": ""
+      "units": "inst"
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 30,
       "long": null,
       "units": "ft"
     },
@@ -46,14 +46,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "@abilities.cha.mod[psychic]",
+          "psychic"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -64,7 +69,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": "eldritchInvocation"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -84,14 +89,14 @@
   },
   "flags": {
     "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.asj5BWC2vAeYZm1g"
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.8OKR7OUJ7BKSzH9W"
     },
     "midi-qol": {
       "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
@@ -117,23 +122,23 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Smite",
-        "version": "0.12.54",
-        "identifier": "eldritchSmite",
+        "name": "Eldritch Invocations: Maddening Hex",
+        "version": "0.12.55",
+        "identifier": "maddeningHex",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "actor": [
-            "eldritchSmite"
+          "item": [
+            "maddeningHex"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/unholy/beam-ringed-impact-purple.webp",
+  "img": "icons/magic/death/skull-fire-white-yellow.webp",
   "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "CCBN8FCAV2OjMViv",
-  "_key": "!items!CCBN8FCAV2OjMViv"
+  "_id": "5FZo6NXjgvC2yaH2",
+  "_key": "!items!5FZo6NXjgvC2yaH2"
 }

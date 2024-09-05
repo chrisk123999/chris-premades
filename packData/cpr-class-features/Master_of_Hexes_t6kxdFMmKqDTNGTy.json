@@ -1,6 +1,9 @@
 {
-  "name": "Maddening Hex",
+  "folder": "1t7v0pIT2lYiNnzY",
+  "name": "Master of Hexes",
   "type": "feat",
+  "_id": "t6kxdFMmKqDTNGTy",
+  "img": "icons/magic/death/skull-poison-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,27 +13,27 @@
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
       "value": "",
-      "units": "inst"
+      "units": ""
     },
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": 30,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,104 +44,77 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "@abilities.cha.mod[psychic]",
-          "psychic"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.8OKR7OUJ7BKSzH9W"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "chris-premades": {
       "info": {
-        "name": "Maddening Hex",
-        "version": "0.12.54",
-        "identifier": "maddeningHex",
+        "identifier": "masterOfHexes",
+        "version": "0.12.55",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "maddeningHex"
-          ]
-        }
       }
     }
   },
-  "effects": [],
-  "img": "icons/magic/death/skull-fire-white-yellow.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "5FZo6NXjgvC2yaH2",
-  "_key": "!items!5FZo6NXjgvC2yaH2"
+  "_key": "!items!t6kxdFMmKqDTNGTy"
 }

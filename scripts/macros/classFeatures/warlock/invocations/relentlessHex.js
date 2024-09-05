@@ -24,7 +24,7 @@ async function use({workflow}) {
     await teleport._move();
 }
 export let relentlessHex = {
-    name: 'Relentless Hex',
+    name: 'Eldritch Invocations: Relentless Hex',
     version: '0.12.54',
     midi: {
         item: [

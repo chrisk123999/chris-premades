@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Eldritch Invocations: Eldritch Smite",
   "type": "feat",
   "system": {
     "description": {
@@ -11,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -28,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -64,7 +64,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": ""
+      "subtype": "eldritchInvocation"
     },
     "requirements": "",
     "recharge": {
@@ -83,10 +83,15 @@
     }
   },
   "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.asj5BWC2vAeYZm1g"
+    },
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
@@ -110,21 +115,25 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
-    },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
+        "name": "Eldritch Invocations: Eldritch Smite",
         "version": "0.12.55",
-        "identifier": "investmentOfTheChainMaster",
+        "identifier": "eldritchSmite",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "eldritchSmite"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
+  "img": "icons/magic/unholy/beam-ringed-impact-purple.webp",
   "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "7v0XqYKA7kNZH7YO",
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "_id": "CCBN8FCAV2OjMViv",
+  "_key": "!items!CCBN8FCAV2OjMViv"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Dark One's Blessing",
   "type": "feat",
   "system": {
     "description": {
@@ -11,8 +11,8 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
-      "condition": ""
+      "cost": 1,
+      "condition": "Reduce a hostile creature to 0 HP"
     },
     "duration": {
       "value": "",
@@ -24,13 +24,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -45,15 +45,20 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": "cha",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "@abilities.cha.mod + @classes.warlock.levels",
+          "temphp"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -63,7 +68,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
     "requirements": "",
@@ -86,6 +91,7 @@
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
@@ -94,7 +100,6 @@
       "fulldam": false,
       "halfdam": false,
       "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
@@ -103,6 +108,7 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoSaveFriendly": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -111,20 +117,27 @@
       "ida": false
     },
     "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
+      "sourceId": "Actor.gcsTnAi8XLJtqmyr.Item.vrle7zg7ulHSbq1a"
     },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
+        "name": "Dark One's Blessing",
         "version": "0.12.55",
-        "identifier": "investmentOfTheChainMaster",
+        "identifier": "darkOnesBlessing",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "darkOnesBlessing"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "7v0XqYKA7kNZH7YO",
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "img": "icons/creatures/eyes/lizard-single-slit-blue.webp",
+  "folder": "EeEUW9gfMYmCX2sJ",
+  "_id": "wybuLvIU1H1hAkYK",
+  "_key": "!items!wybuLvIU1H1hAkYK"
 }

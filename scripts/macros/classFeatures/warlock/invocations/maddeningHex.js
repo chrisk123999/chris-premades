@@ -8,7 +8,7 @@ async function use({workflow}) {
     await workflowUtils.applyDamage(targets, workflow.damageTotal, defaultDamageType);
 }
 export let maddeningHex = {
-    name: 'Maddening Hex',
+    name: 'Eldritch Invocations: Maddening Hex',
     version: '0.12.54',
     midi: {
         item: [

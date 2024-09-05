@@ -24,7 +24,7 @@ async function damage({workflow}) {
     await effectUtils.applyConditions(targetActor, ['prone']);
 }
 export let eldritchSmite = {
-    name: 'Eldritch Smite',
+    name: 'Eldritch Invocations: Eldritch Smite',
     version: '0.12.54',
     midi: {
         actor: [

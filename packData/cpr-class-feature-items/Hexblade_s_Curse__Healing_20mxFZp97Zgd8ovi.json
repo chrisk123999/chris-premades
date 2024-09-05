@@ -1,6 +1,8 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Hexblade's Curse: Healing",
   "type": "feat",
+  "_id": "20mxFZp97Zgd8ovi",
+  "img": "icons/magic/death/projectile-skull-flaming-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -24,7 +26,7 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
@@ -41,90 +43,77 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "heal",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "max(1, @classes.warlock.levels + @abilities.cha.mod)",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
-    },
-    "chris-premades": {
-      "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
-        "version": "0.12.55",
-        "identifier": "investmentOfTheChainMaster",
-        "source": "chris-premades"
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default"
     }
   },
-  "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "7v0XqYKA7kNZH7YO",
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "_key": "!items!20mxFZp97Zgd8ovi"
 }

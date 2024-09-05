@@ -6,7 +6,7 @@ async function early({workflow}) {
     genericUtils.notify('CHRISPREMADES.Macros.OneWithShadows.Bright', 'info');
 }
 export let oneWithShadows = {
-    name: 'One with Shadows',
+    name: 'Eldritch Invocations: One with Shadows',
     version: '0.12.54',
     midi: {
         item: [

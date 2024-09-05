@@ -1,5 +1,5 @@
 {
-  "name": "Ki",
+  "name": "Eldritch Invocations: Relentless Hex",
   "type": "feat",
   "system": {
     "description": {
@@ -10,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -28,14 +28,14 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 30,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
-      "value": 20,
-      "max": "20",
-      "per": "sr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -46,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -64,7 +64,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": ""
+      "subtype": "eldritchInvocation"
     },
     "requirements": "",
     "recharge": {
@@ -84,7 +84,7 @@
   },
   "flags": {
     "core": {
-      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.O17CJNenWgADGgLT"
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.DldBPTkE0DKG4TK5"
     },
     "midi-qol": {
       "effectActivation": false,
@@ -115,16 +115,24 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Ki Points",
-        "version": "0.12.46",
-        "identifier": "ki",
-        "source": "chris-premades"
+        "name": "Eldritch Invocations: Relentless Hex",
+        "version": "0.12.55",
+        "identifier": "relentlessHex",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "relentlessHex"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
-  "folder": "cLsaSVIF830KiMdB",
-  "_id": "6855O8NLuHWN2qPJ",
-  "_key": "!items!6855O8NLuHWN2qPJ"
+  "img": "icons/magic/death/undead-zombie-grave-green.webp",
+  "folder": "xTlq0aiz6uQ31SwP",
+  "_id": "YfEGK27XoalRyL7D",
+  "_key": "!items!YfEGK27XoalRyL7D"
 }

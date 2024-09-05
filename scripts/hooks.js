@@ -67,6 +67,7 @@ export function registerHooks() {
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);
+        Hooks.on('deleteCombat', combatEvents.deleteCombat);
         Hooks.on('createActiveEffect', effectEvents.createActiveEffect);
         Hooks.on('deleteActiveEffect', effectEvents.deleteActiveEffect);
         Hooks.on('updateToken', movementEvents.updateToken);

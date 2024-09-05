@@ -1,5 +1,5 @@
 {
-  "name": "Eldritch Invocations: Investment of the Chain Master",
+  "name": "Ki Points",
   "type": "feat",
   "system": {
     "description": {
@@ -11,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -28,14 +28,14 @@
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
       "units": ""
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 20,
+      "max": "20",
+      "per": "sr",
       "recovery": "",
       "prompt": true
     },
@@ -46,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -83,6 +83,9 @@
     }
   },
   "flags": {
+    "core": {
+      "sourceId": "Actor.IlpCynnAcU8YiYdx.Item.O17CJNenWgADGgLT"
+    },
     "midi-qol": {
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -110,21 +113,18 @@
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.QkxhZamk6sWuon7R.Item.GmSGvBUZQPLHYpHm"
-    },
     "chris-premades": {
       "info": {
-        "name": "Eldritch Invocations: Investment of the Chain Master",
+        "name": "Ki Points",
         "version": "0.12.55",
-        "identifier": "investmentOfTheChainMaster",
+        "identifier": "ki",
         "source": "chris-premades"
       }
     }
   },
   "effects": [],
-  "img": "icons/creatures/mammals/bat-giant-tattered-purple.webp",
-  "folder": "xTlq0aiz6uQ31SwP",
-  "_id": "7v0XqYKA7kNZH7YO",
-  "_key": "!items!7v0XqYKA7kNZH7YO"
+  "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
+  "folder": "cLsaSVIF830KiMdB",
+  "_id": "6855O8NLuHWN2qPJ",
+  "_key": "!items!6855O8NLuHWN2qPJ"
 }

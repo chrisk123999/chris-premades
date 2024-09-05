@@ -1,0 +1,36 @@
+import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
+
+async function damage({workflow}) {
+    if (workflow.hitTargets.size !== 1) return;
+    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'graveTouched');
+    if (!feature) return;
+    if (!combatUtils.perTurnCheck(feature, 'graveTouched', true, workflow.token.id)) return;
+    let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: feature.name}));
+    if (!selection) return;
+    await feature.use();
+    await combatUtils.setTurnCheck(feature, 'graveTouched');
+    let newRolls = [];
+    for (let roll of workflow.damageRolls) {
+        newRolls.push(rollUtils.getChangedDamageRoll(roll, 'necrotic'));
+    }
+    await workflow.setDamageRolls(newRolls);
+    let formOfDread = effectUtils.getEffectByIdentifier(workflow.actor, 'formOfDread');
+    if (formOfDread) {
+        let bonusFormula = '1d' + workflow.damageRoll.dice[0].faces + '[necrotic]';
+        await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: 'necrotic'});
+    }
+}
+export let graveTouched = {
+    name: 'Grave Touched',
+    version: '0.12.55',
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 50
+            }
+        ]
+    }
+};

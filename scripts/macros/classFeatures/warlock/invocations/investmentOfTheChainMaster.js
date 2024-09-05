@@ -31,7 +31,7 @@ async function turnStart({trigger: {token}}) {
 }
 export let investmentOfTheChainMaster = {
     name: 'Eldritch Invocations: Investment of the Chain Master',
-    version: '0.12.9'
+    version: '0.12.55'
 };
 export let investmentOfTheChainMasterActive = {
     name: 'Investment of the Chain Master: Active',

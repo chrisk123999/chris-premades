@@ -1,8 +1,8 @@
 import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../../../../utils.js';
 
 async function use({workflow}) {
-    let currItem = itemUtils.getItemByIdentifier(workflow.actor, 'pactWeapon');
-    if (currItem) await dismiss({workflow});
+    let currItem = itemUtils.getItemByIdentifier(workflow.actor, 'dismissPactWeapon');
+    if (currItem) await currItem.use();
     let improvedPactWeapon = itemUtils.getItemByIdentifier(workflow.actor, 'improvedPactWeapon');
     let validWeapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.properties.has('mgc'));
     if (!improvedPactWeapon) validWeapons = validWeapons.filter(i => i.system.actionType === 'mwak');
@@ -129,7 +129,7 @@ async function use({workflow}) {
             let score = workflow.actor.system.abilities[ability].mod;
             let dex = workflow.actor.system.abilities.dex.mod;
             let changed = false;
-            let isFin = weapon.system.properties.includes('fin');
+            let isFin = weapon.system.properties.has('fin');
             if (isFin) {
                 let mod = Math.max(dex, score);
                 if (mod <= cha) {
@@ -154,6 +154,8 @@ async function use({workflow}) {
             errors.missingPackItem();
             return;
         }
+        let hexWeaponEffect = Array.from(weapon.allApplicableEffects()).find(i => genericUtils.getIdentifier(i) === 'hexWarriorWeapon');
+        if (hexWeaponEffect) await genericUtils.remove(hexWeaponEffect);
         let [dismissItem] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true});
         await itemUtils.enchantItem(weapon, enchantData, {parentEntity: dismissItem, interdependent: true, identifier: 'pactWeapon'});
     }
