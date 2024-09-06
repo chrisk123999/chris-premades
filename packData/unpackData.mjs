@@ -7,7 +7,7 @@ let itemPacks = [
     //'cpr-homebrew-feature-items',
     'cpr-item-features',
     'cpr-items',
-    //'cpr-miscellaneous',
+    'cpr-miscellaneous',
     //'cpr-monster-feature-items',
     //'cpr-monster-features',
     //'cpr-race-feature-items',
