@@ -14,7 +14,7 @@ async function lateFireRune({workflow}) {
 async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
     if (!item.system.uses.value) return;
     if (actorUtils.hasUsedReaction(token.actor)) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
 }
