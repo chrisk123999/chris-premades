@@ -1,7 +1,7 @@
 import {itemUtils, workflowUtils} from '../../../../utils.js';
 async function heal({trigger, workflow}) {
     if (!workflow.targets.size || !workflow.item || !workflow.damageRolls) return;
-    if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellfeature')) return;
+    if (!(workflow.item.type === 'spell' || workflow.item.system.type?.value === 'spellFeature')) return;
     let castData = workflow.castData ?? itemUtils.getSavedCastData(workflow.item);
     if (!castData?.castLevel) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;

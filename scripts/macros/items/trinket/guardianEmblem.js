@@ -17,7 +17,6 @@ async function attack({trigger, workflow}) {
         let userId = socketUtils.firstOwner(i.document, true);
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.GuardianEmblem.Protect', {item: item.name, name: i.actor.name}), {userId: userId});
         if (!selection) continue;
-        //await socketUtils.remoteRollItem(item, undefined, undefined, userId);
         await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
         workflow.isCritical = false;
         break;

@@ -69,6 +69,17 @@ function negateDamageItemDamage(ditem) {
     ditem.damageDetail.forEach(i => i.value = 0);
     ditem.rawDamageDetail.forEach(i => i.value = 0);
 }
+function setDamageItemDamage(ditem, damageAmount) {
+    ditem.totalDamage = damageAmount;
+    ditem.newHP = ditem.oldHP;
+    ditem.newTempHP = ditem.oldTempHP;
+    ditem.hpDamage = damageAmount;
+    ditem.tempDamage = damageAmount;
+    ditem.damageDetail.forEach(i => i.value = 0);
+    ditem.damageDetail[0].value = damageAmount;
+    ditem.rawDamageDetail.forEach(i => i.value = 0);
+    ditem.rawDamageDetail[0].value = damageAmount;
+}
 function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {
     return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId});
 }
@@ -112,6 +123,7 @@ async function handleInstantTemplate(workflow) {
 function getCastData(workflow) {
     let castData = workflow.castData;
     castData.school = workflow.item.system.school;
+    delete castData.itemuuid;
     return castData;
 }
 export let workflowUtils = {
@@ -123,6 +135,7 @@ export let workflowUtils = {
     syntheticItemRoll,
     syntheticItemDataRoll,
     negateDamageItemDamage,
+    setDamageItemDamage,
     applyWorkflowDamage,
     getDamageTypes,
     getTotalDamageOfType,

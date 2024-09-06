@@ -193,37 +193,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     async _onChangeForm(formConfig, event) {
         // will want to take a textbox value from the NPC tab for a name to get automations from, keep that and apply when apply
-        /*
-        for (let key of Object.keys(this.tabsData)) {
-            this.tabsData[key].cssClass = '';
-        }
-        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
-        this.tabsData[currentTabId].cssClass = 'active';
-        if (event.target.id === 'select-automation') {
-            let options = event.target.options;
-            let currentContext = this.context;
-            currentContext.options.forEach(i => i.isSelected = false);
-            currentContext.options[options.selectedIndex].isSelected = true;
-        } else if (this?.context?.category && Object.keys(this.context.category).includes(event.target.name)) {
-            if (event.target.type === 'checkbox') {
-                this.context.category[event.target.name].configuration.find(i => i.id === event.target.id).value = event.target.checked;
-            } else {
-                if (event.target.type === 'select-one') {
-                    let options = event.target.options;
-                    let currentContext = this.context;
-                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options.forEach(i => i.isSelected = false);
-                    currentContext.category[event.target.name].configuration.find(i => i.id === event.target.id).options[options.selectedIndex].isSelected = true;
-                }
-                this.context.category[event.target.name].configuration.forEach(i => {if (i.id === event.target.id) i.value = event.target.value;});
-            }
-        } else if (event.target.name.includes('devTools')) {
-            let value = event.target.value;
-            if (['actor', 'item'].includes(event.target.id)) {
-                this.context.devTools.midi[event.target.id] = value;
-            } else this.context.devTools[event.target.id] = value;
-        }
-        this.render(true);
-        */
     }
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};

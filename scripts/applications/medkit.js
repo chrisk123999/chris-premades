@@ -430,6 +430,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             await item.setFlag('chris-premades', 'config', configs);
         }
         if (genericFeatures) {
+            await item.unsetFlag('chris-premades', 'config.generic');
             let genericConfigs = genericFeatures.options.reduce((genericConfigs, option) => {
                 if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value].options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
                     config[option.default === undefined ? option.id : option.value] = option.default ?? option.value;
@@ -437,7 +438,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }, {});
                 return genericConfigs;
             }, {});
-            await item.setFlag('chris-premades', 'config.generic', genericConfigs);
+            if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
         }
         let currentSource = item?.flags?.['chris-premades']?.info?.source;
         if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
@@ -567,6 +568,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 this.context.devTools.midi[event.target.id] = value;
             } else this.context.devTools[event.target.id] = value;
         }
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
         this.render(true);
     }
     changeTab(...args) {
