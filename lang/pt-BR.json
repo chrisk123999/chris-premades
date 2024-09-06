@@ -807,6 +807,14 @@
                 "Overtime": "Abraço Terrestre de Maximilian: Liberte-se",
                 "Select": "Selecione um alvo para agarrar:"
             },
+            "Metamagic": {
+                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
+                "HeightenedWhich": "Quais alvos têm desvantagem?",
+                "NoValid": "Nenhuma magia aplicável para conjurar!",
+                "NotEnough": "Pontos de Feitiçaria insuficientes!",
+                "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
+                "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
+            },
             "MirrorImage": {
                 "Hit": "O ataque atingiu uma duplicata e a destruiu.",
                 "Miss": "Ataque teve como alvo uma duplicata e errou."
