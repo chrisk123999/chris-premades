@@ -21,7 +21,7 @@ async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
 async function earlyStoneRune({workflow}) {
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionImmunity'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             turns: 1

@@ -19,7 +19,7 @@ async function damageApplication({trigger: {token}, workflow, ditem}) {
     if (targetId !== token.id) return;
     let rawDamage = workflow.actor.system.attributes.prof;
     ditem.rawDamageDetail[0].value += rawDamage;
-    let modifiedDamage = rawDamage * ditem.damageDetail[0].multiplier;
+    let modifiedDamage = rawDamage * ditem.damageDetail[0].active.multiplier ?? 1;
     ditem.damageDetail[0].value += modifiedDamage;
     ditem.hpDamage += modifiedDamage;
 }
@@ -32,7 +32,7 @@ async function early({workflow}) {
     if (targetId !== targetToken.id) return;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.CriticalThreshold'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         changes: [
             {
                 key: 'flags.midi-qol.grants.criticalThreshold',

@@ -31,6 +31,10 @@ async function use({workflow}) {
             concentration = false;
             break;
     }
+    if (duration !== 'forever') {
+        let durationScale = workflow.item.system.duration.value;
+        duration = Math.min(duration * durationScale, 86400);
+    }
     if (!concentration) {
         let unnecessaryConcentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (unnecessaryConcentration) await genericUtils.remove(unnecessaryConcentration);

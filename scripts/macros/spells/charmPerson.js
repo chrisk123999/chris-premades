@@ -1,4 +1,4 @@
-import {combatUtils, effectUtils, genericUtils} from '../../utils.js';
+import {combatUtils, constants, effectUtils, genericUtils} from '../../utils.js';
 import {upcastTargets} from '../generic/upcastTargets.js';
 
 async function early({workflow}) {
@@ -7,7 +7,7 @@ async function early({workflow}) {
     if (!combatUtils.inCombat()) return;
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionAdvantage'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             turns: 1

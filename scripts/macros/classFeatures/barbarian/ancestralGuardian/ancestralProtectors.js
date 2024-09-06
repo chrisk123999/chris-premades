@@ -49,7 +49,7 @@ async function late({workflow}) {
     if (originActorUuid === targetActorUuid) return;
     let effectData = {
         name: origin.name + ' Resistance',
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         changes: [
             {
                 key: 'system.traits.dr.all',

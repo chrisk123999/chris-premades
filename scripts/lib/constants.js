@@ -377,6 +377,7 @@ const itemTypes =  [
     'backpack',
     'loot'
 ];
+const tempConditionIcon = 'icons/magic/time/arrows-circling-green.webp';
 export let constants = {
     packs,
     featurePacks,
@@ -391,5 +392,6 @@ export let constants = {
     overTimeOptions,
     summonAnimationOptions,
     sizes,
-    itemTypes
+    itemTypes,
+    tempConditionIcon
 };

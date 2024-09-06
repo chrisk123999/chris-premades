@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
+import {actorUtils, constants, effectUtils, genericUtils} from '../../utils.js';
 async function damage({workflow}) {
     if (!workflow.targets.size) return;
     let newDamageRoll = '';
@@ -68,7 +68,7 @@ async function early({workflow}) {
         if (creatureType === 'plant') {
             effectData = {
                 name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionDisadvantage'),
-                img: 'icons/magic/time/arrows-circling-green.webp',
+                img: constants.tempConditionIcon,
                 origin: workflow.item.uuid,
                 duration: {
                     turns: 1
@@ -97,7 +97,7 @@ async function early({workflow}) {
         } else if (['undead', 'construct'].includes(creatureType)) {
             effectData = {
                 name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionImmunity'),
-                img: 'icons/magic/time/arrows-circling-green.webp',
+                img: constants.tempConditionIcon,
                 origin: workflow.item.uuid,
                 duration: {
                     turns: 1

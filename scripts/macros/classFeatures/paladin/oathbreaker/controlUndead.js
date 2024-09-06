@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function early({workflow}) {
     if (!workflow.targets.size) return;
@@ -6,7 +6,7 @@ async function early({workflow}) {
     genericUtils.updateTargets(validTargets);
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.InvalidTarget'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             turns: 1

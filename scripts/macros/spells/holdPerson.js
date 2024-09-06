@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
+import {actorUtils, constants, effectUtils, genericUtils} from '../../utils.js';
 import {upcastTargets} from '../generic/upcastTargets.js';
 
 async function use({workflow}) {
@@ -17,7 +17,7 @@ async function early({workflow}) {
     }
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.InvalidTarget'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             turns: 1

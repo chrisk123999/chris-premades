@@ -81,7 +81,7 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
     if (actorUtils.isShapeChanger(token.actor)) {
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.GenericEffects.ConditionDisadvantage'),
-            img: 'icons/magic/time/arrows-circling-green.webp',
+            img: constants.tempConditionIcon,
             origin: template.uuid,
             duration: {
                 turns: 1

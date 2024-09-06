@@ -44,7 +44,7 @@ async function applyDamage({workflow}) {
     if (!ditem) return;
     let dInd = ditem.rawDamageDetail.findIndex(i => i.type === selected);
     ditem.rawDamageDetail[dInd].value += damageRaw;
-    let modDamage = damageRaw * (ditem.damageDetail[dInd].multiplier ?? 1);
+    let modDamage = damageRaw * (ditem.damageDetail[dInd].active.multiplier ?? 1);
     ditem.damageDetail[dInd].value += modDamage;
     ditem.hpDamage += modDamage;
 }

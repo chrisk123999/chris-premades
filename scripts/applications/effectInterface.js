@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils} from '../utils.js';
+import {constants, effectUtils, genericUtils} from '../utils.js';
 import {conditions} from '../extensions/conditions.js';
 let effectItem;
 let effectCollection;
@@ -388,7 +388,7 @@ async function checkEffectItem() {
     if (!effectItem) {
         let itemData = {
             name: 'CPR Effect Interface Storage',
-            img: 'icons/magic/time/arrows-circling-green.webp',
+            img: constants.tempConditionIcon,
             type: 'feat',
             system: {
                 description: {

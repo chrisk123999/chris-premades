@@ -1,10 +1,10 @@
-import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function early({workflow}) {
     if (!workflow.targets.size) return;
     let advData = {
         name: 'Turn Advantage',
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         duration: {
             turns: 1
         },
@@ -31,7 +31,7 @@ async function early({workflow}) {
     };
     let immuneData = {
         name: 'Turn Immunity',
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         duration: {
             turns: 1
         },

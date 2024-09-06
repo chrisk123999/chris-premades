@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {constants, effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function misfire({trigger, workflow}) {
     let baseItem = workflow.item.system.type?.baseItem;
     let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem) || workflow.actor.system.traits.weaponProf.value.has('oth');
@@ -13,7 +13,7 @@ async function misfire({trigger, workflow}) {
         await itemUtils.setConfig(workflow.item, 'status', 1);
     }
     let effectData = {
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             seconds: 1

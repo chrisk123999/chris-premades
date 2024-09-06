@@ -213,7 +213,7 @@ export async function attack({workflow}) {
     }
     let effectData = {
         name: 'Range Override',
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         changes: [
             {

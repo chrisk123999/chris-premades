@@ -807,6 +807,14 @@
                 "Overtime": "Maximilian's Earthen Grasp: Break Free",
                 "Select": "Select a target to grasp:"
             },
+            "Metamagic": {
+                "CarefulWhich": "Which targets automatically save? (Max {max})",
+                "HeightenedWhich": "Which target gets disadvantage?",
+                "NoValid": "No applicable spells to cast!",
+                "NotEnough": "Not enough sorcery points!",
+                "TwinnedUpcast": "Not enough Sorcery Points to twin this spell when upcast!",
+                "Which": "Spend {cost} Sorcery Point{plural} and cast which spell?"
+            },
             "MirrorImage": {
                 "Hit": "Attack hit a duplicate and destroyed it.",
                 "Miss": "Attack targeted a duplicate and missed."

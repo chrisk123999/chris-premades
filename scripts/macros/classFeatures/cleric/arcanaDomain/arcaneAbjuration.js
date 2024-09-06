@@ -1,4 +1,4 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../../../utils.js';
+import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../../../utils.js';
 import {banishmentHelper} from '../../../spells/banishment.js';
 
 async function early({workflow}) {
@@ -6,7 +6,7 @@ async function early({workflow}) {
     let validTypes = ['celestial', 'elemental', 'fey', 'fiend'];
     let effectData = {
         name: genericUtils.translate('CHRISPREMADES.GenericEffects.InvalidTarget'),
-        img: 'icons/magic/time/arrows-circling-green.webp',
+        img: constants.tempConditionIcon,
         origin: workflow.item.uuid,
         duration: {
             turns: 1
