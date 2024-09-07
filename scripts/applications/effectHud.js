@@ -2,7 +2,11 @@ import {actorUtils, genericUtils} from '../utils.js';
 function renderTokenHUD(app, html, data) {
     if (!app.object) return;
     let statusEffects = html.find('.status-effects');
-    let effects = actorUtils.getEffects(app.object.actor).filter(i => i.isTemporary && !Array.from(i.statuses).filter(j => !j.includes('Convenient Effect:')).length);
+    let effects = actorUtils.getEffects(app.object.actor).filter(i => {
+        if (CONFIG.statusEffects.find(j => j._id === i._id)) return false;
+        if (!i.isTemporary) return false;
+        return true;
+    });
     let effectIcons = effects.map(effect => '<img class="effect-control active" data-effect-uuid="' + effect.uuid + '" src="' + effect.img + '" title="' + effect.name + '" data-status-id="' + effect.name + '" />').join('');
     statusEffects.append(effectIcons);
 }

@@ -10,8 +10,7 @@ let packs = {
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
     feats: 'chris-premades.CPRFeats',
-    featFeatures: 'chris-premades.CPRFeatFeatures',
-    miscellaneous: 'chris-premades.CPRMiscellaneous'
+    featFeatures: 'chris-premades.CPRFeatFeatures'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -41,7 +40,6 @@ function setUseLocalCompendium(value) {
         packs.feats = 'world.cpr-feats';
         packs.featFeatures = 'world.cpr-feat-features';
         featurePacks.featFeatures = 'world.cpr-feat-features';
-        packs.miscellaneous = 'world.cpr-miscellaneous';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -61,7 +59,6 @@ function setUseLocalCompendium(value) {
         packs.feats = 'chris-premades.CPRFeats';
         packs.featFeatures = 'chris-premades.CPRFeatFeatures';
         featurePacks.featFeatures = 'chris-premades.CPRFeatFeatures';
-        packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
     }
 }
 setUseLocalCompendium(false);

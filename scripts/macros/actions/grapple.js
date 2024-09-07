@@ -74,7 +74,7 @@ async function use({trigger, workflow}) {
             return;
         }
     }
-    let escapeData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneous, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
+    let escapeData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Grapple: Escape', {object: true, translate: 'CHRISPREMADES.Macros.Actions.GrappleEscape', identifier: 'grappleEscape'});
     if (!escapeData) return;
     let sourceOptions = {identifier: 'grappling'};
     if (grappler) sourceOptions.vae = [{type: 'use', name: pinData.name, identifier: 'grapplerPin'}];
