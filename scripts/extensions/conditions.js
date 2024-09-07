@@ -69,7 +69,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
     let splitConditions = genericUtils.getCPRSetting('displayNestedConditions');
     let statusId = CONFIG.statusEffects.find(i => i._id === updates._id)?.id;
     if (splitConditions && !statusId) return;
-    let statuses = splitConditions && statusId ? [statusId] : updates.statuses;
+    let statuses = splitConditions ? [statusId] : updates.statuses;
     let removeStatuses = [];
     if (splitConditions) {
         updates.statuses.forEach(i => {
@@ -78,7 +78,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
         });
     }
     let changes = [];
-    if (genericUtils.getCPRSetting('applyConditionChanges')) {
+    if (genericUtils.getCPRSetting('applyConditionChanges') && statusId) {
         statuses.forEach(i => {
             switch(i) {
                 case 'blinded':
