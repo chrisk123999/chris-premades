@@ -525,7 +525,7 @@
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
                 "Ath": "Sim (Atletismo)",
-                "Creature": "Para Outra Criatura",
+                "Creature": "Em Outra Criatura",
                 "Distance": "Distância (pés):",
                 "Ground": "No Chão",
                 "Reaction": "Usar sua reação para atingir a superfície com a cabeça ou os pés primeiro?",
@@ -812,6 +812,8 @@
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
                 "NotEnough": "Pontos de Feitiçaria insuficientes!",
+                "TransmutedFirst": "Qual tipo de dano você vai substituir?",
+                "TransmutedSecond": "Qual tipo de dano você quer usar?",
                 "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
                 "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
             },
