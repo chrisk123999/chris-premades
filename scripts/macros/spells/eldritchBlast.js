@@ -13,7 +13,7 @@ async function use({trigger, workflow}) {
         itemUtils.getConfig(workflow.item, 'damageType')
     ];
     let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
-    if (agonizingBlast) featureData.system.damage.parts[0][0] += ' + @mod';
+    if (agonizingBlast) featureData.system.damage.parts[0][0] += ' + ' + workflow.actor.system.abilities.cha.mod;
     featureData.system.ability = workflow.item.system.ability;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let color = itemUtils.getConfig(workflow.item, 'color');
