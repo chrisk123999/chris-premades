@@ -18,7 +18,7 @@ async function use({trigger, workflow}) {
                 sourceToken: workflow.token, 
                 targetToken, 
                 sourceRollType: 'skill', 
-                targetrollType: 'skill', 
+                targetRollType: 'skill', 
                 sourceAbilities: ['ath'], 
                 targetAbilities: [selection]
             });
