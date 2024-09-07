@@ -68,6 +68,7 @@ async function preCreateActiveEffect(effect, updates, options, userId) {
     if (options?.['chris-premades']?.ignore) return;
     let splitConditions = genericUtils.getCPRSetting('displayNestedConditions');
     let statusId = CONFIG.statusEffects.find(i => i._id === updates._id)?.id;
+    if (splitConditions && !statusId) return;
     let statuses = splitConditions && statusId ? [statusId] : updates.statuses;
     let removeStatuses = [];
     if (splitConditions) {
