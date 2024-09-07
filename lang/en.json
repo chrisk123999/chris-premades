@@ -812,6 +812,8 @@
                 "HeightenedWhich": "Which target gets disadvantage?",
                 "NoValid": "No applicable spells to cast!",
                 "NotEnough": "Not enough sorcery points!",
+                "TransmutedFirst": "Which damage type will you replace?",
+                "TransmutedSecond": "Which damage type would you like to use instead?",
                 "TwinnedUpcast": "Not enough Sorcery Points to twin this spell when upcast!",
                 "Which": "Spend {cost} Sorcery Point{plural} and cast which spell?"
             },

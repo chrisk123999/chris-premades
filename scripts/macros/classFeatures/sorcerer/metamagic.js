@@ -245,7 +245,7 @@ async function attackSeeking({trigger: {entity: item}, workflow}) {
 }
 async function useSubtle({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
-    if (!sorcPoints || sorcPoints.system.uses.value < 2) {
+    if (!sorcPoints || sorcPoints.system.uses.value < 1) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
@@ -267,6 +267,45 @@ async function useSubtle({workflow}) {
     newItem.applyActiveEffects();
     await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
 }
+async function useTransmuted({workflow}) {
+    let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
+    if (!sorcPoints || sorcPoints.system.uses.value < 1) {
+        genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
+        return;
+    }
+    let damageTypes = ['acid', 'cold', 'fire', 'lightning', 'poison', 'thunder'];
+    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => damageTypes.some(j => i.system.damage?.parts?.some(k => k[0].includes(j) || k[1] === j)));
+    if (!validSpells.length) {
+        genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
+    }
+    validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
+    validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
+    let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        addNoneDocument: true
+    });
+    if (!selection) return;
+    await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
+    let replacementOptions = selection.system.damage.parts.map(i => i[1]).filter(j => damageTypes.includes(j));
+    let damageTypeToChange;
+    if (replacementOptions.length > 1) {
+        let selection2 = await dialogUtils.buttonDialog(selection.name, 'CHRISPREMADES.Macros.Metamagic.TransmutedFirst', replacementOptions.map(i => ['DND5E.Damage' + i.capitalize(), i]));
+        if (selection2) damageTypeToChange = selection2;
+    }
+    if (!damageTypeToChange) damageTypeToChange = replacementOptions[0];
+    let newDamageTypes = damageTypes.filter(i => i !== damageTypeToChange);
+    let newDamageType = await dialogUtils.buttonDialog(selection.name, 'CHRISPREMADES.Macros.Metamagic.TransmutedSecond', newDamageTypes.map(i => ['DND5E.Damage' + i.capitalize(), i]));
+    if (!newDamageType) newDamageType = newDamageTypes[0];
+    let newDamageParts = [];
+    for (let damageParts of selection.system.damage.parts) {
+        if (damageParts[1] === damageTypeToChange) {
+            newDamageParts.push([damageParts[0], newDamageType]);
+        } else {
+            newDamageParts.push(damageParts);
+        }
+    }
+    let newItem = selection.clone({'system.damage.parts': newDamageParts}, {keepId: true});
+    await workflowUtils.completeItemUse(newItem);
+}
 async function useTwinned({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
     if (!sorcPoints || !sorcPoints.system.uses.value) {
@@ -283,28 +322,13 @@ async function useTwinned({workflow}) {
         addNoneDocument: true
     });
     if (!selection) return;
-    let newItem = selection.clone({'system.target.value': 2}, {keepId: true});
+    let existingMacro = selection.flags?.['chris-premades']?.macros?.midi?.item ?? [];
+    existingMacro.push('twinnedSpellAttack');
+    let newItem = selection.clone({'system.target.value': 2, 'flags.chris-premades.macros.midi.item': existingMacro}, {keepId: true});
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        flags: {
-            'chris-premades': {
-                effect: {
-                    noAnimation: true
-                }
-            }
-        }
-    };
-    effectUtils.addMacro(effectData, 'midi.actor', ['twinnedSpell']);
-    let effect = await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'metamagic'});
-    if (!effect) return;
     workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
-    await genericUtils.sleep(100);
-    if (effect) await genericUtils.remove(effect);
 }
 async function earlyTwinned({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
@@ -432,27 +456,42 @@ export let subtleSpell = {
         ]
     }
 };
-// export let transmutedSpell = {
-//     name: 'Metamagic: Transmuted Spell',
-//     version: '0.12.58'
-// };
-// export let twinnedSpell = {
-//     name: 'Metamagic: Twinned Spell',
-//     version: '0.12.58',
-//     midi: {
-//         item: [
-//             {
-//                 pass: 'rollFinished',
-//                 macro: useTwinned,
-//                 priority: 50
-//             }
-//         ],
-//         actor: [
-//             {
-//                 pass: 'preItemRoll',
-//                 macro: earlyTwinned,
-//                 priority: 50
-//             }
-//         ]
-//     }
-// };
+export let transmutedSpell = {
+    name: 'Metamagic: Transmuted Spell',
+    version: '0.12.58',
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: useTransmuted,
+                priority: 50
+            }
+        ]
+    }
+};
+export let twinnedSpell = {
+    name: 'Metamagic: Twinned Spell',
+    version: '0.12.58',
+    midi: {
+        item: [
+            {
+                pass: 'rollFinished',
+                macro: useTwinned,
+                priority: 50
+            }
+        ]
+    }
+};
+export let twinnedSpellAttack = {
+    name: 'Metamagic: Twinned Spell Attack',
+    version: twinnedSpell.version,
+    midi: {
+        item: [
+            {
+                pass: 'preItemRoll',
+                macro: earlyTwinned,
+                priority: 50
+            }
+        ]
+    }
+};
