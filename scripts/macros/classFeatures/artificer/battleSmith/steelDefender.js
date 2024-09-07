@@ -100,7 +100,7 @@ async function arcaneJolt({workflow}) {
     let originItem = await fromUuid(effect?.origin);
     if (!originItem || originItem.system.uses.value === 0) return;
     if (!combatUtils.perTurnCheck(originItem, 'arcaneJolt')) return;
-    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}), {userId: socketUtils.firstOwner(originItem, true)});
+    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}), {userId: socketUtils.firstOwner(originItem.parent, true)});
     if (!selection) return;
     await workflowUtils.syntheticItemRoll(originItem, [workflow.hitTargets.first()]);
 }
@@ -110,7 +110,7 @@ async function early({trigger: {entity: item, token}, workflow}) {
     if (workflow.targets.has(token)) return;
     if (tokenUtils.getDistance(token, workflow.token, {wallsBlock: true}) > 5) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
-    let selection = await dialogUtils.confirm(token.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
+    let selection = await dialogUtils.confirm(token.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {userId: socketUtils.firstOwner(item.parent, true)});
     if (!selection) return;
     workflow.disadvantage = true;
     workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + item.name);
