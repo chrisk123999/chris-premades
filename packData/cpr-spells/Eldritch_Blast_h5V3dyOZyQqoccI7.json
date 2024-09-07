@@ -126,11 +126,6 @@
         "version": "0.12.0",
         "hasAnimation": true
       }
-    },
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
     }
   },
   "effects": [],

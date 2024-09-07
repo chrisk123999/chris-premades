@@ -146,12 +146,7 @@
         }
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/water/barrier-ice-wall-explosion.webp",

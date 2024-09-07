@@ -331,11 +331,6 @@
       "isCustomized": false,
       "fromAmmo": false,
       "version": 5
-    },
-    "chris-premades": {
-      "info": {
-        "hasAnimation": true
-      }
     }
   },
   "_stats": {

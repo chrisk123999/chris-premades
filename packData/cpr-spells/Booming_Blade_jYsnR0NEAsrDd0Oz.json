@@ -137,12 +137,7 @@
         }
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/skills/melee/sword-stuck-glowing-pink.webp",

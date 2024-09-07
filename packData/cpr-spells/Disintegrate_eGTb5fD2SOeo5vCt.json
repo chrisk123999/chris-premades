@@ -148,12 +148,7 @@
         "playAnimation": true
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",

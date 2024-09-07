@@ -254,15 +254,35 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     configs[key] = {
                         label: context.genericFeatures.options.find(i => i.value === key).label,
                         id: key,
-                        options: macros[key].genericConfig.map(configBase => ({
-                            label: configBase.label,
-                            id: configBase.value,
-                            value: value[configBase.value],
-                            isChecked: value[configBase.value] === true ? true : false,
-                            isCheckbox: configBase.type === 'checkbox',
-                            isText: configBase.type === 'text'
-                            // Add more if needed?
-                        }))
+                        options: macros[key].genericConfig.reduce((options, configBase) => {   
+                            let config = {
+                                label: configBase.label,
+                                id: configBase.value,
+                                value: value[configBase.value],
+                            };
+                            switch (configBase.type) {
+                                case 'checkbox': { 
+                                    config.isChecked = value[configBase.value] === true ? true : false;
+                                    config.isCheckbox = true;
+                                    break;
+                                }
+                                case 'text': {
+                                    config.isText = true;
+                                    break;
+                                }
+                                case 'damageTypes': {
+                                    config.isSelectMany = true;
+                                    config.options = Object.entries(CONFIG.DND5E.damageTypes).filter(([key, value]) => !key.toLowerCase().includes('none')).map(([key, value]) => ({
+                                        label: value.label,
+                                        value: key,
+                                        isSelected: config?.value?.includes(key) 
+                                    }));
+                                    break;
+                                }
+                            }
+                            options.push(config);
+                            return options;
+                        }, [])
                     };
                     return configs;
                 }, {});
@@ -431,6 +451,35 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         if (genericFeatures) {
             await item.unsetFlag('chris-premades', 'config.generic');
+            // Remove ALL generic flags from the macros flags
+            let itemFlags = item.flags['chris-premades'];
+            if (itemFlags?.macros) Object.entries(itemFlags.macros).forEach(async ([key, value]) => {
+                if (value instanceof Object) {
+                    Object.entries(value).forEach(async ([flagKey, flagValue]) => {
+                        Object.values(genericFeatures.configs).forEach(async option => {
+                            let index = flagValue.indexOf(option.id);
+                            if (index > -1) {
+                                if (flagValue.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key + '.' + flagKey);
+                                else {
+                                    flagValue.splice(index, 1);
+                                    await item.setFlag('chris-premades', 'macros.' + key + '.' + flagKey, flagValue);
+                                }
+                            }
+                        });
+                    });
+                } else {
+                    Object.values(genericFeatures.configs).forEach(async option => {
+                        let index = value.indexOf(option.id);
+                        if (index > -1) {
+                            if (value.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key);
+                            else {
+                                value.splice(index, 1);
+                                await item.setFlag('chris-premades', 'macros.' + key, value);
+                            }
+                        }
+                    });
+                }
+            });
             let genericConfigs = genericFeatures.options.reduce((genericConfigs, option) => {
                 if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value].options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
                     config[option.default === undefined ? option.id : option.value] = option.default ?? option.value;
@@ -439,6 +488,39 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return genericConfigs;
             }, {});
             if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
+            Object.keys(genericConfigs).forEach(async i => {
+                let macroInfo = macros[i];
+                if (macroInfo?.midi?.actor) {
+                    if (item?.flags['chris-premades']?.macros?.midi?.actor) {
+                        await item.setFlag('chris-premades', 'macros.midi.actor', item.flags['chris-premades'].macros.midi.actor.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.midi.actor', [i]);
+                }
+                if (macroInfo?.midi?.item) {
+                    if (item?.flags['chris-premades']?.macros?.midi?.item) {
+                        await item.setFlag('chris-premades', 'macros.midi.item', item.flags['chris-premades'].macros.midi.item.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.midi.item', [i]);
+                }
+                if (macroInfo?.aura) {
+                    if (item?.flags['chris-premades']?.macros?.aura) {
+                        await item.setFlag('chris-premades', 'macros.aura', item.flags['chris-premades'].macros.aura.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.aura', [i]);
+                }
+                if (macroInfo?.combat) {
+                    if (item?.flags['chris-premades']?.macros?.combat) {
+                        await item.setFlag('chris-premades', 'macros.combat', item.flags['chris-premades'].macros.combat.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.combat', [i]);
+                }
+                if (macroInfo?.movement) {
+                    if (item?.flags['chris-premades']?.macros?.movement) {
+                        await item.setFlag('chris-premades', 'macros.movement', item.flags['chris-premades'].macros.movement.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.movement', [i]);
+                }
+                if (macroInfo?.rest) {
+                    if (item?.flags['chris-premades']?.macros?.rest) {
+                        await item.setFlag('chris-premades', 'macros.rest', item.flags['chris-premades'].macros.rest.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.rest', [i]);
+                }
+            });
         }
         let currentSource = item?.flags?.['chris-premades']?.info?.source;
         if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
@@ -559,6 +641,13 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
                 case 'text': {
                     option.value = event.target.value;
+                    break;
+                }
+                default: {
+                    if (event.target.tagName?.toLowerCase() === 'multi-select') {
+                        option.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
+                        option.value = event.target.value;
+                    }
                     break;
                 }
             }

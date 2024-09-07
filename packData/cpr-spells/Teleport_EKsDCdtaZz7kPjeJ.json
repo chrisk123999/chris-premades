@@ -136,12 +136,7 @@
         }
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/symbols/runes-star-blue.webp",

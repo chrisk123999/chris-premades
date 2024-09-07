@@ -144,12 +144,7 @@
         }
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/water/projectiles-ice-faceted-salvo-gray.webp",

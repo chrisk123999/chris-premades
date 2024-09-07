@@ -144,12 +144,7 @@
         "animation": "complex"
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/air/air-pressure-shield-blue.webp",

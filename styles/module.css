@@ -108,6 +108,10 @@ form .cpr-row-center.cpr-multi-select-row multi-select {
     width: 100%;
 }
 
+form .cpr-row-center .multi-select-label {
+    margin-top: 1.5em;
+}
+
 .cpr-fieldset {
     border-radius: 4px;
     margin-top: 0.625em;

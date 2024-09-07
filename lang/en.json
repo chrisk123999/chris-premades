@@ -1152,6 +1152,10 @@
                 "Grapple": "Unarmed Fighting: Grapple Damage",
                 "Select": "Deal damage to a which grappled creature?"
             },
+            "UndeadFortitude": {
+                "Critical": "Critical Hits bypass Undead Fortitude:",
+                "DamageTypes": "Damage Types to bypass Undead Fortitude:"
+            },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",
                 "Underwater": "Underwater"

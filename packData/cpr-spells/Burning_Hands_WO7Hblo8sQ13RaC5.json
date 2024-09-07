@@ -147,12 +147,7 @@
         }
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/earth/volcano-explosion-lava-yellow.webp",

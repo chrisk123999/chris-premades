@@ -21,6 +21,15 @@
                             {{else if isText}}
                                 <label for="{{id}}">{{localize label}}</label>
                                 <input type="text" id="{{id}}" name="{{id}}" value="{{value}}">
+                            {{else if isSelectMany}}
+                                <label class="multi-select-label" for="{{id}}">{{localize label}}</label>
+                                <multi-select id="{{id}}" name="{{name}}">
+                                    {{#each options}}
+                                        <option value="{{value}}" {{#if isSelected}}selected{{/if}}>
+                                            {{localize label}}
+                                        </option>
+                                    {{/each}}
+                                </select>
                             {{/if}}
                         </div>
                         {{/each}}

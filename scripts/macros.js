@@ -330,6 +330,7 @@ export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
 // Generic Monster Features
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
+export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';

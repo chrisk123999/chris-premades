@@ -137,12 +137,7 @@
         "playAnimation": true
       }
     },
-    "dnd5e": {},
-    "chris-preamdes": {
-      "info": {
-        "hasAnimation": true
-      }
-    }
+    "dnd5e": {}
   },
   "effects": [],
   "img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
