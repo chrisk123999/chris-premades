@@ -150,7 +150,7 @@ async function confirm(title, content, {userId = game.user.id} = {}) {
     } else selection = await DialogApp.dialog(title, content, [], 'yesNo');
     return selection?.buttons;
 }
-async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false} = {}) {
+async function selectDocumentDialog(title, content, documents, {displayTooltips = false, sortAlphabetical = false, sortCR = false, userId = game.user.id, addNoneDocument = false, showCR = false, showSpellLevel = false} = {}) {
     if (sortAlphabetical) {
         documents = documents.sort((a, b) => {
             return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
@@ -162,7 +162,7 @@ async function selectDocumentDialog(title, content, documents, {displayTooltips 
         });
     }
     let inputFields = documents.map(i => ({
-        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : ''),
+        label: i.name + (showCR ? ' [' + genericUtils.format('DND5E.CRLabel', {cr: i.system?.details?.cr ?? '?'}) + ']' : (showSpellLevel ? ' [' + genericUtils.translate('DND5E.SpellLevel') + ' ' + (i.system?.level ?? '?') + ']' : '')),
         name: i.uuid ?? i.actor?.uuid,
         options: {
             image: i.img + (i.system?.details?.cr != undefined ? ` (CR ${genericUtils.decimalToFraction(i.system?.details?.cr)})` : ``),

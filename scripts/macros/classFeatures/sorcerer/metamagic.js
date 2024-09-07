@@ -13,6 +13,7 @@ async function useCareful({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -90,6 +91,7 @@ async function useDistant({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -126,6 +128,7 @@ async function useExtended({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -151,6 +154,7 @@ async function useHeightened({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 3, plural: 's'}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -221,6 +225,7 @@ async function useQuickened({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 2, plural: 's'}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -257,6 +262,7 @@ async function useSubtle({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -281,6 +287,7 @@ async function useTransmuted({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 1, plural: ''}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
@@ -319,6 +326,7 @@ async function useTwinned({workflow}) {
     validSpells = validSpells.sort((a, b) => a.name.localeCompare(b.name, 'en', {sensitivity: 'base'}));
     validSpells = validSpells.sort((a, b) => a.system.level - b.system.level);
     let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.Which', {cost: 'spell\'s level in', plural: 's (at least 1)'}), validSpells, {
+        showSpellLevel: true,
         addNoneDocument: true
     });
     if (!selection) return;
