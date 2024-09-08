@@ -1,14 +1,18 @@
 {
-  "name": "Song of Defense",
+  "name": "Manifest Mind: Move",
   "type": "feat",
+  "img": "icons/commodities/biological/organ-brain-pink.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
+    "source": {
+      "custom": ""
+    },
     "activation": {
-      "type": "reaction",
-      "cost": 1,
+      "type": "bonus",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -25,9 +29,9 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
-      "units": "ft",
-      "long": null
+      "value": null,
+      "long": null,
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -42,12 +46,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,45 +57,36 @@
       "parts": [],
       "versatile": ""
     },
-    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "source": {}
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
+  "effects": [],
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Wizard"
-      }
-    },
-    "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Item.P3YlHIlgtyMMwqN8"
     },
     "midiProperties": {
       "confirmTargets": "default",
@@ -113,27 +104,13 @@
       "idv": false,
       "ida": false
     },
-    "dnd5e": {
-      "advancementOrigin": "E7yI31PHFh0ngn3K"
-    },
-    "chris-premades": {
-      "info": {
-        "identifier": "songOfDefense",
-        "version": "0.12.13",
-        "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "songOfDefense"
-          ]
-        }
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     }
   },
-  "effects": [],
-  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
-  "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "rY1NsV2RgPtQL8bw",
-  "_key": "!items!rY1NsV2RgPtQL8bw"
+  "folder": null,
+  "_id": "xoxRJEv9co3eKn3j",
+  "_key": "!items!xoxRJEv9co3eKn3j"
 }

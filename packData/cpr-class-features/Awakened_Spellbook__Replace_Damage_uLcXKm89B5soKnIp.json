@@ -1,19 +1,22 @@
 {
-  "name": "Bladesong",
+  "name": "Awakened Spellbook: Replace Damage",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
+    "source": {
+      "custom": ""
+    },
     "activation": {
-      "type": "bonus",
+      "type": "special",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -21,33 +24,29 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
-      "units": "self",
-      "long": null
+      "long": null,
+      "units": ""
     },
     "uses": {
-      "value": 4,
-      "max": "@prof",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,71 +56,82 @@
       "parts": [],
       "versatile": ""
     },
-    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "source": {}
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "flags": {
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true,
+      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Actor.rAa12hSQCubqogK8.Item.TtREdsLhd0GW9knA"
+    },
     "chris-premades": {
       "info": {
-        "identifier": "bladesong",
-        "version": "0.12.13",
+        "name": "Awakened Spellbook: Replace Damage",
+        "version": "0.12.62",
+        "identifier": "awakenedSpellbook",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
-            "bladesong"
+          "actor": [
+            "awakenedSpellbook"
           ]
         }
       }
     }
   },
+  "img": "icons/sundries/books/book-open-brown.webp",
   "effects": [],
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
-  "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "JBepu3dqXadMAc8r",
-  "_key": "!items!JBepu3dqXadMAc8r"
+  "folder": "X9Mzycu6GyStYNNE",
+  "_id": "uLcXKm89B5soKnIp",
+  "_key": "!items!uLcXKm89B5soKnIp"
 }

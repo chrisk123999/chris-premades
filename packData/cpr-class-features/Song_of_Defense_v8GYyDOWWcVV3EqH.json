@@ -1,5 +1,5 @@
 {
-  "name": "Bladesong",
+  "name": "Song of Defense",
   "type": "feat",
   "system": {
     "description": {
@@ -7,13 +7,13 @@
       "chat": ""
     },
     "activation": {
-      "type": "bonus",
+      "type": "reaction",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -21,18 +21,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
-      "units": "self",
+      "value": 5,
+      "units": "ft",
       "long": null
     },
     "uses": {
-      "value": 4,
-      "max": "@prof",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -78,14 +78,16 @@
       "value": null,
       "charged": false
     },
-    "source": {}
+    "source": {
+      "custom": ""
+    }
   },
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "forceCEOff": true,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "false",
       "effectCondition": ""
     },
     "midiProperties": {
@@ -106,22 +108,15 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "bladesong",
-        "version": "0.12.13",
+        "identifier": "songOfDefense",
+        "version": "0.12.62",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "bladesong"
-          ]
-        }
       }
     }
   },
   "effects": [],
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
   "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "JBepu3dqXadMAc8r",
-  "_key": "!items!JBepu3dqXadMAc8r"
+  "_id": "v8GYyDOWWcVV3EqH",
+  "_key": "!items!v8GYyDOWWcVV3EqH"
 }

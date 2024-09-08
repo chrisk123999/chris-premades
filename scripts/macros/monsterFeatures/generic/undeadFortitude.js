@@ -27,7 +27,7 @@ async function apply({trigger, workflow, ditem}) {
     if (featureWorkflow.failedSaves.size === 1) {
         return;
     }
-    workflowUtils.setDamageItemDamage(ditem, ditem.hpDamage - 1);
+    workflowUtils.setDamageItemDamage(ditem, ditem.oldHP - 1);
 }
 export let undeadFortitude = {
     name: 'Undead Fortitude',

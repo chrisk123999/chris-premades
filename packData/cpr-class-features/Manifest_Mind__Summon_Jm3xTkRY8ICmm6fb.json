@@ -1,10 +1,13 @@
 {
-  "name": "Bladesong",
+  "name": "Manifest Mind: Summon",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
+    },
+    "source": {
+      "custom": ""
     },
     "activation": {
       "type": "bonus",
@@ -12,8 +15,8 @@
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -21,33 +24,29 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
-      "units": "self",
-      "long": null
+      "value": 5,
+      "long": null,
+      "units": "ft"
     },
     "uses": {
-      "value": 4,
-      "max": "@prof",
+      "value": 1,
+      "max": "1",
       "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,71 +56,87 @@
       "parts": [],
       "versatile": ""
     },
-    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "source": {}
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "flags": {
+    "core": {
+      "sourceId": "Actor.rAa12hSQCubqogK8.Item.frfxu3GPayBtRkdb"
+    },
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true,
+      "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "never",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "cf": null,
     "chris-premades": {
       "info": {
-        "identifier": "bladesong",
-        "version": "0.12.13",
+        "name": "Manifest Mind: Summon",
+        "version": "0.12.62",
+        "identifier": "manifestMind",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "bladesong"
+            "manifestMind"
           ]
-        }
+        },
+        "rest": [
+          "manifestMind"
+        ]
       }
     }
   },
   "effects": [],
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
-  "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "JBepu3dqXadMAc8r",
-  "_key": "!items!JBepu3dqXadMAc8r"
+  "img": "icons/commodities/biological/organ-brain-pink.webp",
+  "folder": "X9Mzycu6GyStYNNE",
+  "_id": "Jm3xTkRY8ICmm6fb",
+  "_key": "!items!Jm3xTkRY8ICmm6fb"
 }

@@ -160,6 +160,7 @@ export {ancestralProtectors, ancestralProtectorsTarget} from './macros/classFeat
 export {animatingPerformance, animatingPerformanceDance} from './macros/classFeatures/bard/collegeOfCreation/animatingPerformance.js';
 export {arcaneAbjuration} from './macros/classFeatures/cleric/arcanaDomain/arcaneAbjuration.js';
 export {arcaneJolt} from './macros/classFeatures/artificer/battleSmith/arcaneJolt.js';
+export {arcaneWard} from './macros/classFeatures/wizard/schoolOfAbjuration/arcaneWard.js';
 export {armorModifications} from './macros/classFeatures/artificer/armorer/armorModifications.js';
 export {augmentBreath} from './macros/classFeatures/monk/wayOfTheAscendantDragon/augmentBreath.js';
 export {auraOfAlacrity} from './macros/classFeatures/paladin/oathOfGlory/auraOfAlacrity.js';
@@ -169,6 +170,7 @@ export {auraOfDevotion} from './macros/classFeatures/paladin/oathOfDevotion/aura
 export {auraOfHate} from './macros/classFeatures/paladin/oathbreaker/auraOfHate.js';
 export {auraOfProtection} from './macros/classFeatures/paladin/auraOfProtection.js';
 export {auraOfWarding} from './macros/classFeatures/paladin/oathOfTheAncients/auraOfWarding.js';
+export {awakenedSpellbook} from './macros/classFeatures/wizard/orderOfScribes/awakenedSpellbook.js';
 export {balmOfPeace} from './macros/classFeatures/cleric/peaceDomain/balmOfPeace.js';
 export {balmOfTheSummerCourt} from './macros/classFeatures/druid/circleOfDreams/balmOfTheSummerCourt.js';
 export {bardicInspiration, bardicInspirationInspired} from './macros/classFeatures/bard/bardicInspiration.js';
@@ -255,6 +257,7 @@ export {maddeningHex} from './macros/classFeatures/warlock/invocations/maddening
 export {magicalInspiration} from './macros/classFeatures/bard/magicalInspiration.js';
 export {maneuversAmbush, maneuversBaitAndSwitch, maneuversBrace, maneuversCommandersStrike, maneuversCommandingPresence, maneuversDisarmingAttack, maneuversDistractingStrike, maneuversEvasiveFootwork, maneuversFeintingAttack, maneuversGoadingAttack, maneuversGrapplingStrike, maneuversLungingAttack, maneuversManeuveringAttack, maneuversMenacingAttack, maneuversParry, maneuversPrecisionAttack, maneuversPushingAttack, maneuversQuickToss, maneuversRally, maneuversRiposte, maneuversSweepingAttack, maneuversSweepingAttackAttack, maneuversTacticalAssessment, maneuversTripAttack} from './macros/classFeatures/fighter/battleMaster/maneuvers.js';
 export {manifestEcho, manifestEchoActive, manifestEchoTeleport, manifestEchoAttack} from './macros/classFeatures/fighter/echoKnight/manifestEcho.js';
+export {manifestMind, manifestMindCast} from './macros/classFeatures/wizard/orderOfScribes/manifestMind.js';
 export {masterOfHexes} from './macros/classFeatures/warlock/hexblade/masterOfHexes.js';
 export {mastersFlourish} from './macros/classFeatures/bard/collegeOfSwords/mastersFlourish.js';
 export {mightyImpel} from './macros/classFeatures/barbarian/giant/mightyImpel.js';
@@ -271,6 +274,7 @@ export {potentSpellcasting} from './macros/classFeatures/cleric/potentSpellcasti
 export {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 export {primalCompanion, primalCompanionSea} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
 export {primalStrike} from './macros/classFeatures/druid/circleOfTheMoon/primalStrike.js';
+export {projectedWard} from './macros/classFeatures/wizard/schoolOfAbjuration/projectedWard.js';
 export {protectiveBond} from './macros/classFeatures/cleric/peaceDomain/protectiveBond.js';
 export {psionicEnergy} from './macros/classFeatures/rogue/soulknife/psionicEnergy.js';
 export {psionicPowerRecovery} from './macros/classFeatures/rogue/soulknife/psionicPowerRecovery.js';
@@ -292,6 +296,7 @@ export {runicShield} from './macros/classFeatures/fighter/runeKnight/runicShield
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
 export {shadowStep} from './macros/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
+export {songOfVictory} from './macros/classFeatures/wizard/bladeSinging/songOfVictory.js';
 export {sorceryPoints} from './macros/classFeatures/sorcerer/sorceryPoints.js';
 export {starryForm, starryFormActive} from './macros/classFeatures/druid/circleOfStars/starryForm.js';
 export {steelDefender, steelDefenderArcaneJolt, steelDefenderDeflectAttack, steelDefenderRepair} from './macros/classFeatures/artificer/battleSmith/steelDefender.js';

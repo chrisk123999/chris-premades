@@ -1,59 +1,38 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils} from '../../../../utils.js';
-async function use({trigger, workflow}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bladesong');
-    if (!effect) {
-        genericUtils.notify('CHRISPREMADES.Macros.SongOfDefense.Bladesong', 'warn');
-        return;
-    }
-    if (!actorUtils.hasSpellSlots(workflow.actor)) {
-        genericUtils.notify('CHRISPREMADES.Macros.SongOfDefense.NoSpellSlots', 'warn');
-        return;
-    }
-    let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, 'CHRISPREMADES.Generic.SelectSpellSlot');
+import {actorUtils, dialogUtils, genericUtils, itemUtils} from '../../../../utils.js';
+async function damageApplication({trigger: {token}, ditem}) {
+    if (!actorUtils.hasSpellSlots(token.actor)) return;
+    if (actorUtils.hasUsedReaction(token.actor));
+    let originItem = itemUtils.getItemByIdentifier(token.actor, 'songOfDefense');
+    if (!originItem) return;
+    let selection = await dialogUtils.selectSpellSlot(token.actor, originItem.name, 'CHRISPREMADES.Macros.SongOfDefense.Select', {no: true});
     if (!selection) return;
     let damageReduction;
     if (selection === 'pact') {
-        await genericUtils.update(workflow.actor, {'system.spells.pact.value': workflow.actor.system.spells.pact.value - 1});
-        damageReduction = workflow.actor.system.spells.pact.level * 5;
+        await genericUtils.update(token.actor, {'system.spells.pact.value': token.actor.system.spells.pact.value - 1});
+        damageReduction = token.actor.system.spells.pact.level * 5;
     } else {
         let key = 'system.spells.spell' + selection + '.value';
-        await genericUtils.update(workflow.actor, {[key]: workflow.actor.system.spells['spell' + selection].value - 1});
+        await genericUtils.update(token.actor, {[key]: token.actor.system.spells['spell' + selection].value - 1});
         damageReduction = selection * 5;
     }
-    let effectData = {
-        name: workflow.item.name,
-        img: workflow.item.img,
-        origin: workflow.item.uuid,
-        duration: {
-            seconds: 1
-        },
-        changes: [
-            {
-                key: 'system.traits.dm.midi.all',
-                mode: 2,
-                value: -damageReduction,
-                priority: 20
-            }
-        ],
-        flags: {
-            dae: {
-                specialDuration: [
-                    '1Reaction'
-                ]
-            }
-        }
-    };
-    await effectUtils.createEffect(workflow.actor, effectData);
+    let totalDone = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
+    damageReduction = Math.min(totalDone, damageReduction);
+    ditem.damageDetail.push({
+        value: -damageReduction,
+        type: 'none'
+    });
+    ditem.hpDamage = totalDone - damageReduction;
+    await originItem.use();
 }
 export let songOfDefense = {
     name: 'Song of Defense',
-    version: '0.12.13',
+    version: '0.12.62',
     midi: {
-        item: [
+        actor: [
             {
-                pass: 'rollFinished',
-                macro: use,
-                priority: 20
+                pass: 'targetApplyDamage',
+                macro: damageApplication,
+                priority: 50
             }
         ]
     }

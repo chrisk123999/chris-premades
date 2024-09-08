@@ -48,6 +48,10 @@ async function use({trigger, workflow}) {
             priority: 20
         });
     }
+    let songOfDefense = itemUtils.getItemByIdentifier(workflow.actor, 'songOfDefense');
+    if (songOfDefense) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['songOfDefense']);
+    }
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'bladesong'});
 }
 export let bladesong = {

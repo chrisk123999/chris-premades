@@ -1,19 +1,23 @@
 {
-  "name": "Bladesong",
+  "name": "Manifest Mind: Cast Spell",
   "type": "feat",
+  "img": "icons/commodities/biological/organ-brain-pink.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
+    "source": {
+      "custom": ""
+    },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -26,11 +30,11 @@
     },
     "range": {
       "value": null,
-      "units": "self",
-      "long": null
+      "long": null,
+      "units": "self"
     },
     "uses": {
-      "value": 4,
+      "value": null,
       "max": "@prof",
       "per": "lr",
       "recovery": "",
@@ -43,11 +47,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,71 +57,78 @@
       "parts": [],
       "versatile": ""
     },
-    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "source": {}
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
+  "effects": [],
   "flags": {
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true,
+      "effectActivation": false,
+      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Item.GvdOQxq4WLmDMYxn"
+    },
     "chris-premades": {
-      "info": {
-        "identifier": "bladesong",
-        "version": "0.12.13",
-        "source": "chris-premades"
-      },
       "macros": {
         "midi": {
           "item": [
-            "bladesong"
+            "manifestMindCast"
           ]
         }
       }
     }
   },
-  "effects": [],
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
-  "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "JBepu3dqXadMAc8r",
-  "_key": "!items!JBepu3dqXadMAc8r"
+  "folder": null,
+  "_id": "oXjgqnQK6TW9YgP7",
+  "_key": "!items!oXjgqnQK6TW9YgP7"
 }

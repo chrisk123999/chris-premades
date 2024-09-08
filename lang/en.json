@@ -284,6 +284,9 @@
                 "Heal": "Heal",
                 "WhoHeal": "Who to heal?"
             },
+            "ArcaneWard": {
+                "Protect": "Protect {tokenName} with your arcane ward?"
+            },
             "ArmorOfAgathys": {
                 "Reflect": "Armor of Agathys: Reflect"
             },
@@ -292,6 +295,9 @@
             },
             "AuraOfVitality": {
                 "Healing": "Aura of Vitality: Healing"
+            },
+            "AwakenedSpellbook": {
+                "Select": "Change damage type?"
             },
             "BalmOfPeace": {
                 "Balm": "Balm of Peace"
@@ -798,6 +804,12 @@
                 "Weapon": "What would you like to attack with?",
                 "Which": "Which Echo?"
             },
+            "ManifestMind": {
+                "Cast": "Manifest Mind: Cast Spell",
+                "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
+                "Invalid": "Invalid Action Type!",
+                "Move": "Manifest Mind: Move"
+            },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },
@@ -918,7 +930,8 @@
             },
             "SongOfDefense": {
                 "Bladesong": "You must be Bladesinging to use this feature!",
-                "NoSpellSlots": "You have no spell slots available!"
+                "NoSpellSlots": "You have no spell slots available!",
+                "Select": "Use your reaction to spend a spell slot to reduce damage?"
             },
             "SpikeGrowth": {
                 "Thorns": "Spike Growth: Thorns"
@@ -1797,6 +1810,7 @@
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "HomunculusServant": "Homunculus Servant",
+                "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Shadow Spirit",
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",

@@ -1,19 +1,22 @@
 {
-  "name": "Bladesong",
+  "name": "Projected Ward",
   "type": "feat",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
+    "source": {
+      "custom": ""
+    },
     "activation": {
-      "type": "bonus",
+      "type": "reaction",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -21,33 +24,29 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
-      "units": "self",
-      "long": null
+      "value": 30,
+      "long": null,
+      "units": "ft"
     },
     "uses": {
-      "value": 4,
-      "max": "@prof",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -57,48 +56,59 @@
       "parts": [],
       "versatile": ""
     },
-    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
-    "summons": null,
     "type": {
       "value": "class",
       "subtype": ""
     },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "source": {}
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
   },
   "flags": {
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.rkS7N1lBVxTNGPrG"
+    },
     "midi-qol": {
-      "removeAttackDamageButtons": "default",
-      "forceCEOff": true,
+      "effectActivation": false,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "false",
       "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
@@ -106,22 +116,23 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "bladesong",
-        "version": "0.12.13",
+        "name": "Projected Ward",
+        "version": "0.12.62",
+        "identifier": "projectedWard",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
-            "bladesong"
+          "actor": [
+            "projectedWard"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
-  "folder": "eHBZ3O3KFVd0JTTX",
-  "_id": "JBepu3dqXadMAc8r",
-  "_key": "!items!JBepu3dqXadMAc8r"
+  "img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+  "folder": "OfeVlADGpcK5H4Gk",
+  "_id": "ZLDrIzKxsVUJZbow",
+  "_key": "!items!ZLDrIzKxsVUJZbow"
 }
