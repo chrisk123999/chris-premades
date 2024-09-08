@@ -217,6 +217,7 @@
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
             "Replace": "Replace",
+            "Rerolling": "Rerolling {origDie} ({origResult}):",
             "Select": "Select",
             "SelectSpellSlot": "Select a spell slot:",
             "Skill": "Skill Check",
@@ -809,6 +810,7 @@
             },
             "Metamagic": {
                 "CarefulWhich": "Which targets automatically save? (Max {max})",
+                "Empowered": "Spend 1 Sorcery Point to reroll damage dice? (Max {max})",
                 "HeightenedWhich": "Which target gets disadvantage?",
                 "NoValid": "No applicable spells to cast!",
                 "NotEnough": "Not enough sorcery points!",

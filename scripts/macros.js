@@ -181,7 +181,7 @@ export {blessingOfTheForge} from './macros/classFeatures/cleric/forgeDomain/bles
 export {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
 export {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
 export {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
-export {carefulSpell, distantSpell, /*empoweredSpell,*/ extendedSpell, heightenedSpell, quickenedSpell, seekingSpell, subtleSpell, transmutedSpell, twinnedSpell, twinnedSpellAttack} from './macros/classFeatures/sorcerer/metamagic.js';
+export {carefulSpell, distantSpell, empoweredSpell, extendedSpell, heightenedSpell, quickenedSpell, seekingSpell, subtleSpell, transmutedSpell, twinnedSpell, twinnedSpellAttack} from './macros/classFeatures/sorcerer/metamagic.js';
 export {charmAnimalsAndPlants} from './macros/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';
 export {circleForms} from './macros/classFeatures/druid/circleOfTheMoon/circleForms.js';
 export {circleOfMortality} from './macros/classFeatures/cleric/graveDomain/circleOfMortality.js';
