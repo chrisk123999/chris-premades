@@ -18,7 +18,7 @@ async function use({workflow}) {
     featureDataSummon.system.damage.parts = [
         [workflow.castData.castLevel - 1 + 'd6[healing]', 'healing']
     ];
-    let uses = Math.min(2, itemUtils.getMod(workflow.item) + 1);
+    let uses = Math.max(2, itemUtils.getMod(workflow.item) + 1);
     featureDataSummon.system.uses.max = uses;
     featureDataSummon.system.uses.value = uses;
     let updates = {
