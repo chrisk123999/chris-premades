@@ -143,7 +143,9 @@
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
             "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
             "UseName": "Usar {itemName} de [{tokenName}]?",
-            "WhatDo": "O que você quer fazer?"
+            "UseOn": "Usar {itemName} em {tokenName}?",
+            "WhatDo": "O que você quer fazer?",
+            "YesDetail": "Sim ({detail})"
         },
         "Direction": {
             "Direction": "Direção",
@@ -230,6 +232,7 @@
             "ConditionAdvantage": "Vantagem de Condição",
             "ConditionDisadvantage": "Desvantagem de Condição",
             "ConditionImmunity": "Imunidade de Condição",
+            "CriticalThreshold": "Margem de Crítico",
             "InvalidTarget": "Alvo Inválido",
             "TemplateEffect": "Modelo de {itemName}"
         },
@@ -417,6 +420,15 @@
             "ControlUndead": {
                 "Controlled": "Controlar Morto-Vivo: Controlado"
             },
+            "CreatePactWeapon": {
+                "CustomCompendium": "Chave Personalizada Compêndio de Armas de Pacto:",
+                "Dismiss": "Dispensar Arma de Pacto",
+                "Existing": "Melhorar Arma Existente",
+                "Select": "Selecione uma Arma de Pacto",
+                "Summon": "Invocar Nova Arma",
+                "Type": "Como você vai usar este recurso?",
+                "Weapon": "Arma de Pacto"
+            },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
@@ -457,6 +469,7 @@
                 "Turn": "Aspecto Apavorante: Fim do Turno"
             },
             "EldritchBlast": {
+                "Beam": "Raio Místico: Raio",
                 "Target": "Quais alvos?"
             },
             "EldritchCannon": {
@@ -475,6 +488,9 @@
                 "SpendPactAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de pacto? ({slotValue} de {slotMax} restante(s))",
                 "SpendSlot": "Criar um Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))",
                 "SpendSlotAgain": "Criar um segundo Canhão Místico gastando um espaço de magia de {slotLevel}º nível? ({slotValue} de {slotMax} restante(s))"
+            },
+            "EldritchSmite": {
+                "Prone": "Derrubar o alvo?"
             },
             "ElementalCleaver": {
                 "Change": "Cutelo Elemental: Mudar Tipo de Dano",
@@ -509,7 +525,7 @@
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
                 "Ath": "Sim (Atletismo)",
-                "Creature": "Para Outra Criatura",
+                "Creature": "Em Outra Criatura",
                 "Distance": "Distância (pés):",
                 "Ground": "No Chão",
                 "Reaction": "Usar sua reação para atingir a superfície com a cabeça ou os pés primeiro?",
@@ -566,6 +582,10 @@
             "FocusedAim": {
                 "Bonus": "Sim ({kiCost} Ki / +{bonus} para atingir)"
             },
+            "FormOfDread": {
+                "Fear": "Forma de Pavor: Medo",
+                "Use": "Tentativa de amedrontar o alvo?"
+            },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
                 "ChooseSkillEscape": "Como você quer escapar do agarrão?",
@@ -576,6 +596,9 @@
                 "Pin": "Imobilizador: Pin",
                 "Pinned": "Imobilizador: Imobilizado por {tokenName}",
                 "Pinning": "Imobilizador: Imobilizando {tokenName}"
+            },
+            "GraspOfHadar": {
+                "Select": "Qual alvo?"
             },
             "Grease": {
                 "Fall": "Área Escorregadia: Queda"
@@ -609,6 +632,9 @@
             "HailOfThorns": {
                 "Burst": "Saraivada de Espinhos: Explosão"
             },
+            "HealingLight": {
+                "Select": "Quantos dados você quer usar?"
+            },
             "HealingSpirit": {
                 "Apply": "Espírito Curativo: Aplicar Cura? ({numUses} uso(s) restante(s))",
                 "Heal": "Espírito Curativo: Curar",
@@ -628,6 +654,13 @@
                 "Move": "Bruxaria: Mover",
                 "Multiple": "Qual alvo você quer amaldiçoar?",
                 "SelectAbility": "Qual atributo deve ter desvantagem?"
+            },
+            "HexWarrior": {
+                "NoWeapons": "Nenhuma arma válida equipada para escolher!"
+            },
+            "HexbladesCurse": {
+                "Healing": "Maldição da Lâmina Maldita: Cura",
+                "Transfer": "Mestre das Maldições: Transferir Maldição?"
             },
             "HoldPerson": {
                 "Overtime": "Imobilizar Pessoa (Fim do Turno)"
@@ -721,6 +754,12 @@
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
             },
+            "KeenSenses": {
+                "Check": "Este teste depende de: ",
+                "Hearing": "Audição",
+                "Sight": "Visão",
+                "Smell": "Olfato"
+            },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
                 "RemoveCondition": "Remover uma Condição:",
@@ -768,6 +807,16 @@
                 "Overtime": "Abraço Terrestre de Maximilian: Liberte-se",
                 "Select": "Selecione um alvo para agarrar:"
             },
+            "Metamagic": {
+                "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
+                "HeightenedWhich": "Quais alvos têm desvantagem?",
+                "NoValid": "Nenhuma magia aplicável para conjurar!",
+                "NotEnough": "Pontos de Feitiçaria insuficientes!",
+                "TransmutedFirst": "Qual tipo de dano você vai substituir?",
+                "TransmutedSecond": "Qual tipo de dano você quer usar?",
+                "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
+                "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
+            },
             "MirrorImage": {
                 "Hit": "O ataque atingiu uma duplicata e a destruiu.",
                 "Miss": "Ataque teve como alvo uma duplicata e errou."
@@ -778,6 +827,9 @@
             },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
+            },
+            "OneWithShadows": {
+                "Bright": "O token está em luz plena!"
             },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
@@ -1073,6 +1125,10 @@
                 "VeryFamiliar": "Muito Familiar",
                 "ViewedOnce": "Visto uma Vez"
             },
+            "TentacleOfTheDeeps": {
+                "Attack": "Tentáculo das Profundezas: Ataque",
+                "Name": "Tentáculo Espectral"
+            },
             "ThornWhip": {
                 "CheckSize": "Verificar o Tamanho:",
                 "Pull": "Até onde você puxa o alvo?"
@@ -1278,6 +1334,16 @@
                 "Configuration": {
                     "Label": "Configuração",
                     "Tooltip": "Configure as partes disponíveis da automação"
+                },
+                "GenericFeatures": {
+                    "Label": "Características Genéricas",
+                    "Monster": {
+                        "Select": {
+                            "Label": "Selecione Uma Característica Genérica de Monstro:",
+                            "Tooltip": "Adiciona Características Genéricas Configuráveis de Monstros"
+                        }
+                    },
+                    "Tooltip": "Add and Configure Generic Features for this Item"
                 },
                 "Info": {
                     "Label": "Info",
@@ -1721,6 +1787,7 @@
                 "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
                 "FireElemental": "Elemental do Fogo",
                 "Flumph": "Flumph",
+                "FormOfDread": "Forma de Pavor",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
@@ -1733,6 +1800,7 @@
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
                 "SteelDefender": "Defensor de Aço",
+                "TentacleOfTheDeeps": "Tentáculo das Profundezas",
                 "UndeadSpirit": "Espírito Morto-Vivo",
                 "UndeadSpiritGhostly": "Espírito Morto-Vivo (Fantasmal)",
                 "UndeadSpiritPutrid": "Espírito Morto-Vivo (Pútrido)",
