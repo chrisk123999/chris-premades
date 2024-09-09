@@ -1,4 +1,4 @@
-import {combatUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -26,6 +26,7 @@ async function use({workflow}) {
 }
 async function late({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
+    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (!workflow.item.system.properties.has('mgc')) return;
     let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'arcaneJolt');
     if (!originItem) return;

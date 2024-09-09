@@ -6,7 +6,8 @@ async function use({workflow}) {
     if (!sourceActor) return;
     let castFeature = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Cast Spell', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Cast', identifier: 'manifestMindCastSpell'});
     let moveFeature = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Move', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Move', identifier: 'manifestMindMove'});
-    if (!castFeature || !moveFeature) {
+    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Mind: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestMind.Dismiss', identifier: 'manifestMindDismiss'});
+    if (!castFeature || !moveFeature || !dismissData) {
         errors.missingPackItem();
         return;
     }
@@ -37,6 +38,7 @@ async function use({workflow}) {
         range: 60,
         animation,
         initiativeType: 'none',
+        dismissItem: dismissData,
         additionalVaeButtons: [{type: 'use', name: castFeature.name, identifier: 'manifestMindCastSpell'}, {type: 'use', name: moveFeature.name, identifier: 'manifestMindMove'}]
     });
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestMind');
@@ -47,7 +49,10 @@ async function use({workflow}) {
         await genericUtils.setFlag(workflow.item, 'chris-premades', 'manifestMind.uses', castUsesRemaining);
     }
     castFeature.system.uses.value = castUsesRemaining;
-    await itemUtils.createItems(workflow.actor, [castFeature, moveFeature], {favorite: true, parentEntity: effect});
+    await itemUtils.createItems(workflow.actor, [castFeature, moveFeature, dismissData], {favorite: true, parentEntity: effect});
+    let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
+    if (!dismissItem) return;
+    await effectUtils.addDependent(dismissItem, [effect]);
     await genericUtils.update(effect, {'flags.chris-premades.macros.combat': ['manifestMind']});
 }
 async function turnEnd({trigger: {entity: effect, token}}) {

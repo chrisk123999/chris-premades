@@ -1,6 +1,8 @@
 {
-  "name": "Summon Wildfire Spirit: Damage",
+  "name": "Eldritch Cannon: Dismiss",
   "type": "feat",
+  "_id": "66lBMuGe5Ere29ek",
+  "img": "icons/weapons/artillery/cannon-engraved-gold.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,7 +12,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "action",
       "cost": 1,
       "condition": ""
     },
@@ -24,13 +26,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,91 +43,80 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "save",
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "2d6[fire]",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
-      "ability": "dex",
+      "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
+  "folder": null,
   "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "core": {
-      "sourceId": "Actor.SgPOEUjFWDCmgMNr.Item.YKaB3IXLkpZDwrHv"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "chris-premades": {
+      "macros": {
+        "midi": {
+          "item": [
+            "actionDismissal"
+          ]
+        }
+      }
     }
   },
-  "img": "icons/creatures/abilities/paw-print-orange.webp",
-  "effects": [],
-  "folder": null,
-  "_id": "iFoN9JO0iXAVXDor",
-  "_key": "!items!iFoN9JO0iXAVXDor"
+  "_key": "!items!66lBMuGe5Ere29ek"
 }

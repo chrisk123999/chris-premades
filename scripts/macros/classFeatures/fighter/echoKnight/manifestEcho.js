@@ -10,7 +10,8 @@ async function use({workflow}) {
     if (effect) sceneEchos = effect.flags['chris-premades'].summons.ids[effect.name].map(i => workflow.token.scene.tokens.get(i));
     let teleportData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Echo: Teleport', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestEcho.Teleport', identifier: 'manifestEchoTeleport'});
     let attackData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Echo: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestEcho.Attack', identifier: 'manifestEchoAttack'});
-    if (!teleportData || !attackData) {
+    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Manifest Echo: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ManifestEcho.Dismiss', identifier: 'manifestEchoDismiss'});
+    if (!teleportData || !attackData || !dismissData) {
         errors.missingPackItem();
         return;
     }
@@ -83,13 +84,19 @@ async function use({workflow}) {
         range: 15,
         animation,
         initiativeType: 'follows',
+        dismissItem: dismissData,
         additionalVaeButtons: vaeButtons
     });
     if (!spawnedTokens?.length) return;
     effect = effectUtils.getEffectByIdentifier(workflow.actor, 'manifestEcho');
     if (!effect) return;
     let hasItems = itemUtils.getItemByIdentifier(workflow.actor, 'manifestEchoAttack');
-    if (!hasItems) await itemUtils.createItems(workflow.actor, [teleportData, attackData], {favorite: true, parentEntity: effect});
+    if (!hasItems) {
+        await itemUtils.createItems(workflow.actor, [teleportData, attackData, dismissData], {favorite: true, parentEntity: effect});
+        let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
+        if (!dismissItem) return;
+        await effectUtils.addDependent(dismissItem, [effect]);
+    }
     await genericUtils.update(effect, {'flags.chris-premades.macros.combat': ['manifestEchoActive']});
     let applyFilter = (itemUtils.getConfig(workflow.item, 'filter') ?? true) && game.modules.get('tokenmagic')?.active;
     let filter = [

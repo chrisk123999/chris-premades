@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let jb2a = animationUtils.jb2aCheck();
@@ -77,7 +77,15 @@ async function use({workflow}) {
         return selectedImg;
     }
     if (!tokenImg && jb2a) {
-        tokenImg = await selectTokenImg();
+        let defaultImg = workflow.item.flags['chris-premades']?.spiritualWeapon?.defaultImg;
+        if (defaultImg && itemUtils.getConfig(workflow.item, 'useDefault')) {
+            tokenImg = defaultImg;
+        } else {
+            tokenImg = await selectTokenImg();
+            let saveDefault = await dialogUtils.confirm(workflow.item.name, 'CHRISPREMADES.Macros.SpiritualWeapon.SaveDefault');
+            if (saveDefault) await genericUtils.setFlag(workflow.item, 'chris-premades', 'spiritualWeapon.defaultImg', tokenImg);
+            await itemUtils.setConfig(workflow.item, 'useDefault', true);
+        }
     }
     if (tokenImg) {
         genericUtils.setProperty(updates, 'actor.prototypeToken.texture.src', tokenImg);
@@ -99,10 +107,26 @@ async function use({workflow}) {
             damageType
         ]
     ];
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
+    let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+    let [item] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+    if (!item) return;
+    let summonedToken = summonedTokens?.[0];
+    if (!summonedToken) return;
+    let nearbyTargets = tokenUtils.findNearby(summonedToken, 5, 'any').filter(i => i.document.disposition !== workflow.token.document.disposition);
+    if (!nearbyTargets.length) return;
+    let target;
+    if (nearbyTargets.length === 1) {
+        target = nearbyTargets[0];
+    } else {
+        target = await dialogUtils.selectTargetDialog(item.name, 'CHRISPREMADES.Macros.SpiritualWeapon.Select', nearbyTargets);
+        if (!target?.length) return;
+        target = target[0];
+    }
+    if (!target) return;
+    let tempItem = item.clone({'system.activation': {type: 'special'}});
+    await workflowUtils.syntheticItemRoll(tempItem, [target]);
 }
 async function early({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
@@ -197,6 +221,13 @@ export let spiritualWeapon = {
             homebrew: true,
             category: 'homebrew'
         },
+        {
+            value: 'useDefault',
+            label: 'CHRISPREMADES.Macros.SpiritualWeapon.UseDefault',
+            type: 'checkbox',
+            default: false,
+            category: 'animation'
+        }
     ]
 };
 export let spiritualWeaponAttack = {

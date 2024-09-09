@@ -66,7 +66,9 @@ async function use({workflow}) {
     await itemUtils.createItems(workflow.actor, [commandData], {favorite: true, parentEntity: casterEffect});
     if (!spawnedTokens?.length) return;
     let [spawnedToken] = spawnedTokens;
-    await workflowUtils.syntheticItemDataRoll(initialDamageData, spawnedToken.actor, []);
+    let nearbyTargets = tokenUtils.findNearby(spawnedToken, 10, 'all', {includeIncapacitated: true, includeToken: false});
+    nearbyTargets = nearbyTargets.filter(i => i !== workflow.token);
+    await workflowUtils.syntheticItemDataRoll(initialDamageData, spawnedToken.actor, nearbyTargets);
 }
 async function teleport({workflow}) {
     let feature = itemUtils.getItemByIdentifier(workflow.actor, 'summonWildfireSpiritFieryTeleportationDamage');

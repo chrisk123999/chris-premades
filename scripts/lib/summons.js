@@ -12,7 +12,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, /*dontAnimateOnDismiss: false*/}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissItem: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -405,6 +405,10 @@ export class Summons {
         return this.updates.actor;
     }
     get summonEffect() {
+        let buttons = [];
+        if (!this.options.dismissItem) {
+            buttons.push({type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')});
+        }
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.Summons.SummonedCreature'),
             img: this.originItem.img,
@@ -415,7 +419,7 @@ export class Summons {
                         identifier: 'summonedEffect'
                     },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalSummonVaeButtons ?? [])]
+                        buttons: buttons.concat((this.options.additionalSummonVaeButtons ?? []))
                     },
                     macros: {effect: ['summonUtils'], ...(this.options.dontDismissOnDefeat ? {} : {midi: {actor: ['summonUtils']}})},
                     // dismissAnimation: this.options.dontAnimateOnDismiss ? 'none' : this.options.animation
@@ -430,6 +434,19 @@ export class Summons {
         return effectData;
     }
     get casterEffect() {
+        let dismissButton;
+        if (this.options.dismissItem) {
+            dismissButton = {
+                type: 'use',
+                name: this.options.dismissItem.name,
+                identifier: genericUtils.getIdentifier(this.options.dismissItem)
+            };
+        } else {
+            dismissButton = {
+                type: 'dismiss',
+                name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')
+            };
+        }
         let effectData = {
             name: this.originItem.name,
             img: this.originItem.img,
@@ -440,7 +457,7 @@ export class Summons {
                         effect: ['summonUtils']
                     },
                     vae: {
-                        buttons: [{type: 'dismiss', name: genericUtils.translate('CHRISPREMADES.Summons.DismissSummon')}, ...(this.options.additionalVaeButtons ?? [])]
+                        buttons: [dismissButton, ...(this.options.additionalVaeButtons ?? [])]
                     },
                     summons: {
                         ids: {

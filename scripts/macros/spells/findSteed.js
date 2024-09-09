@@ -1,5 +1,5 @@
 import {Summons} from '../../lib/summons.js';
-import {constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
+import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
 
 async function use({workflow}) {
     await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed');
@@ -12,6 +12,12 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
     let folder = itemUtils.getConfig(workflow.item, 'folder');
     if (!folder || !folder.length) folder = defaultFolder;
     let actors = game.actors.filter(i => i.folder?.name === folder);
+    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Dismiss Steed', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.FindSteed.Dismiss', identifier: 'findSteedDismiss'});
+    if (!dismissData) {
+        errors.missingPackItem();
+        return;
+    }
+    dismissData.img = workflow.item.img;
     if (!actors.length) {
         genericUtils.notify(genericUtils.format('CHRISPREMADES.Error.NoActors', {folder}), 'warn', {localize: false});
         return;
@@ -65,10 +71,14 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
         }
     };
     let animation = itemUtils.getConfig(workflow.item, creatureType + 'Animation') ?? 'none';
-    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 86400, range: 30, animation});
+    await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 86400, range: 30, animation, dismissItem: dismissData});
     let effect = await effectUtils.getEffectByIdentifier(workflow.actor, identifier);
     if (!effect) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'macros.midi.actor', [identifier + 'Active']);
+    await itemUtils.createItems(workflow.actor, [dismissData], {favorite: true, parentEntity: effect});
+    let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
+    if (!dismissItem) return;
+    await effectUtils.addDependent(dismissItem, [effect]);
 }
 export async function findSteedEarlyHelper(workflow, identifier) {
     if (workflow.item.type !== 'spell') return;

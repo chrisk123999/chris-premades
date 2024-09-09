@@ -123,10 +123,13 @@ async function use({workflow}) {
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'none';
     let commandFeatureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Eldritch Cannon: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchCannon.Command', identifier: 'eldritchCannonCommand'});
     if (!commandFeatureData) return;
+    let dismissData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Eldritch Cannon: Dismiss', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchCannon.Dismiss', identifier: 'eldritchCannonDismiss'});
+    if (!dismissData) return;
     await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
         range: 5,
         animation,
         initiativeType: 'follows',
+        dismissItem: dismissData,
         additionalVaeButtons: [{type: 'use', name: commandFeatureData.name, identifier: 'eldritchCannonCommand'}]
     });
     if (costsSlotType) {
@@ -135,7 +138,10 @@ async function use({workflow}) {
     }
     if (!effect) effect = effectUtils.getEffectByIdentifier(workflow.actor, 'eldritchCannon');
     if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [commandFeatureData], {favorite: true, parentEntity: effect});
+    await itemUtils.createItems(workflow.actor, [commandFeatureData, dismissData], {favorite: true, parentEntity: effect});
+    let dismissItem = itemUtils.getItemByIdentifier(workflow.actor, genericUtils.getIdentifier(dismissData));
+    if (!dismissItem) return;
+    await effectUtils.addDependent(dismissItem, [effect]);
 }
 async function lateExplosiveCannon({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'summonedEffect');

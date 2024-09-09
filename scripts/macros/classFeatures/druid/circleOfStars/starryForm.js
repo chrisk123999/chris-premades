@@ -120,7 +120,7 @@ async function use({workflow}) {
     };
     if (selection !== 'Dragon') opts.vae = [{type: 'use', name: featureData.name, identifier: 'starryForm' + selection}];
     effect = await effectUtils.createEffect(workflow.actor, effectData, opts);
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: selection !== 'Dragon', parentEntity: effect});
+    await itemUtils.createItems(workflow.actor, [featureData], {favorite: selection === 'Archer', parentEntity: effect});
 }
 async function turnStart({trigger: {token}}) {
     let twinklingItem = await itemUtils.getItemByIdentifier(token.actor, 'twinklingConstellations');
@@ -137,7 +137,7 @@ async function late({workflow}) {
     let selected;
     if (nearbyTargets.length > 1) {
         selected = await dialogUtils.selectTargetDialog(chaliceItem.name, 'CHRISPREMADES.Macros.StarryForm.Heal', nearbyTargets);
-        if (selected?.length) selected = [selected];
+        if (selected?.length) selected = selected[0];
     }
     if (!selected) selected = nearbyTargets[0];
     await workflowUtils.syntheticItemRoll(chaliceItem, [selected]);

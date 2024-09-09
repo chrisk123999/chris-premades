@@ -145,6 +145,7 @@ export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 // Other
+export {actionDismissal} from './macros/generic/actionDismissal.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
 export {summonTurnHostile} from './macros/generic/summonTurnHostile.js';
 export {summonUtils} from './lib/summons.js';

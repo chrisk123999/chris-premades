@@ -483,6 +483,7 @@
             "EldritchCannon": {
                 "Cannon": "Eldritch Cannon",
                 "Command": "Eldritch Cannon: Command",
+                "Dismiss": "Eldritch Cannon: Dismiss",
                 "ExplosiveCannon": "Explosive Cannon",
                 "Flamethrower": "Flamethrower",
                 "ForceBallista": "Force Ballista",
@@ -563,6 +564,7 @@
             },
             "FindSteed": {
                 "Choose": "Choose Steed",
+                "Dismiss": "Dismiss Steed",
                 "Language": "What language?",
                 "Target": "Target Steed as well? (If mounted)",
                 "Type": "What creature type?"
@@ -800,6 +802,7 @@
             },
             "ManifestEcho": {
                 "Attack": "Manifest Echo: Attack",
+                "Dismiss": "Manifest Echo: Dismiss",
                 "Echo": "{name} Echo",
                 "Far": "{actorName}'s echo is too far away. Remove it?",
                 "Legion": "Create two echos instead of one?",
@@ -810,6 +813,7 @@
             },
             "ManifestMind": {
                 "Cast": "Manifest Mind: Cast Spell",
+                "Dismiss": "Manifest Mind: Dismiss",
                 "Far": "{actorName}'s Manifest Mind is too far away. Remove it?",
                 "Invalid": "Invalid Action Type!",
                 "Move": "Manifest Mind: Move"
@@ -967,9 +971,12 @@
                 "Flaming": "Flaming",
                 "Mace": "Mace",
                 "Maul": "Maul",
+                "SaveDefault": "Use selected configuration in the future?",
                 "Scythe": "Scythe",
+                "Select": "Select a target to attack:",
                 "Style": "What Style?",
                 "Sword": "Sword",
+                "UseDefault": "Use previously-saved token configuration:",
                 "Weapon": "What Weapon?"
             },
             "StaggeringSmite": {

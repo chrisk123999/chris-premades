@@ -41,12 +41,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
             }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let effectData = {
                 name: workflow.item.name + ': ' + infusionLabel,
@@ -102,12 +98,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
             }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Armor of Magical Strength: Resist Prone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InfuseItem.ResistProne', identifier: 'infuseItemResistProne'});
             if (!featureData) {
@@ -207,12 +199,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
             }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', armor);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
@@ -255,12 +243,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
             }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
@@ -323,12 +307,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
             }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
@@ -378,12 +358,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
             }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
@@ -442,12 +418,8 @@ async function use({workflow}) {
                 errors.missingPackItem();
                 return;
             }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichShield', armor);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichShield', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
@@ -490,12 +462,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoArmor', 'info');
                 return;
             }
-            if (armor.length === 1) {
-                selectedItem = armor[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichArmor', armor, {addNoneDocument: true});
+            if (!selectedItem) return;
             let buttons = ['acid', 'cold', 'fire', 'force', 'lightning', 'necrotic', 'poison', 'psychic', 'radiant', 'thunder'].map(i => ([CONFIG.DND5E.damageTypes[i].label, Object.keys(CONFIG.DND5E.damageTypes).find(j => j === i)]));
             if (!buttons.length) return;
             let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.ResistanceType', buttons);
@@ -549,12 +517,8 @@ async function use({workflow}) {
                 genericUtils.notify('CHRISPREMADES.Macros.ElementalWeapon.NoWeapons', 'info');
                 return;
             }
-            if (weapons.length === 1) {
-                selectedItem = weapons[0];
-            } else {
-                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons);
-                if (!selectedItem) return;
-            }
+            selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichWeapon', weapons, {addNoneDocument: true});
+            if (!selectedItem) return;
             originalName = selectedItem.name;
             let enchantData = {
                 name: workflow.item.name,
