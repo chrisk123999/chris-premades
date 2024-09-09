@@ -121,7 +121,15 @@ export let tentacleOfTheDeeps = {
             default: '',
             category: 'summons'
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Tentacle of the Deeps: Summon': [
+                'Tentacle of the Deeps: Move',
+                'Tentacle of the Deeps: Attack'
+            ]
+        }
+    }
 };
 export let tentacleOfTheDeepsAttack = {
     name: 'Tentacle of the Deeps: Attack',

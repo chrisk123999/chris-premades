@@ -381,7 +381,26 @@ export let summonDrakeCompanion = {
             category: 'animation',
             options: constants.summonAnimationOptions
         },
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Drake Companion: Summon': [
+                'Bond of Fang and Scale: Acid Resistance',
+                'Bond of Fang and Scale: Cold Resistance',
+                'Bond of Fang and Scale: Fire Resistance',
+                'Bond of Fang and Scale: Lightning Resistance',
+                'Bond of Fang and Scale: Poison Resistance',
+                'Drake Companion',
+                'Drake Companion: Command',
+                'Drake Companion: Drake Companion (Acid)',
+                'Drake Companion: Drake Companion (Cold)',
+                'Drake Companion: Drake Companion (Fire)',
+                'Drake Companion: Drake Companion (Lightning)',
+                'Drake Companion: Drake Companion (Poison)',
+                'Reflexive Resistance'
+            ]
+        }
+    }
 };
 export let summonDrakeCompanionResistance = {
     name: 'Drake Companion: Resistance',

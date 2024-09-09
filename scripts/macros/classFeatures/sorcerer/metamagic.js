@@ -454,7 +454,20 @@ export let carefulSpell = {
             category: 'mechanics',
             default: false
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Careful Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
+    }
 };
 export let distantSpell = {
     name: 'Metamagic: Distant Spell',
@@ -467,6 +480,19 @@ export let distantSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Distant Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let empoweredSpell = {
@@ -480,6 +506,19 @@ export let empoweredSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Empowered Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let extendedSpell = {
@@ -493,6 +532,19 @@ export let extendedSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Extended Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let heightenedSpell = {
@@ -513,6 +565,19 @@ export let heightenedSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Heightened Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let quickenedSpell = {
@@ -526,6 +591,19 @@ export let quickenedSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Quickened Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let seekingSpell = {
@@ -539,6 +617,19 @@ export let seekingSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Seeking Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let subtleSpell = {
@@ -552,6 +643,19 @@ export let subtleSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Subtle Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let transmutedSpell = {
@@ -565,6 +669,19 @@ export let transmutedSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Transmuted Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let twinnedSpell = {
@@ -578,6 +695,19 @@ export let twinnedSpell = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        correctedItems: {
+            'Metamagic: Twinned Spell': {
+                system: {
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
     }
 };
 export let twinnedSpellAttack = {

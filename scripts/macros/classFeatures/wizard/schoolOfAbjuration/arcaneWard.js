@@ -61,5 +61,24 @@ export let arcaneWard = {
             macro: longRest,
             priority: 50
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Arcane Ward': [
+                'Arcane Ward - Hit Points'
+            ]
+        },
+        correctedItems: {
+            'Arcane Ward': {
+                system: {
+                    uses: {
+                        max: 1,
+                        per: 'charges',
+                        recovery: '',
+                        value: 0
+                    }
+                }
+            }
+        }
+    }
 };

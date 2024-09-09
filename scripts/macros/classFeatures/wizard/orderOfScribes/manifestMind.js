@@ -176,7 +176,15 @@ export let manifestMind = {
             category: 'animation',
             options: constants.summonAnimationOptions
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Manifest Mind: Summon': [
+                'Manifest Mind: Cast Spell',
+                'Manifest Mind: Move'
+            ]
+        }
+    }
 };
 export let manifestMindCast = {
     name: 'Manifest Mind: Cast',

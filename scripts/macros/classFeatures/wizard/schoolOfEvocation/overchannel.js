@@ -69,5 +69,23 @@ export let overchannel = {
             macro: longRest,
             priority: 50
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            Overchannel: {
+                system: {
+                    uses: {
+                        per: null,
+                        recovery: '',
+                        value: null
+                    },
+                    consume: {
+                        amount: null,
+                        target: '',
+                        type: ''
+                    }
+                }
+            }
+        }
+    }
 };
