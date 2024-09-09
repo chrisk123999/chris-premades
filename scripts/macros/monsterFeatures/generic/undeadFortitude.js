@@ -1,11 +1,8 @@
 import {genericUtils, itemUtils, effectUtils, actorUtils, workflowUtils} from '../../../utils.js';
 async function apply({trigger, workflow, ditem}) {
-    console.log('Undead fortitude');
-    console.log(trigger, workflow, ditem);
     if (!ditem.isHit || ditem.newHP != 0 || ditem.oldHP === 0) return;
     let originItem = trigger.entity;
     let genericConfig = itemUtils.getGenericFeatureConfig(originItem, 'undeadFortitude');
-    console.log(genericConfig);
     if (genericConfig.bypassCritical && workflow.isCritical) return;
     let bypassDamageTypes = genericConfig.bypassDamageTypes;
     if (bypassDamageTypes.includes(workflow.defaultDamageType)) return;
