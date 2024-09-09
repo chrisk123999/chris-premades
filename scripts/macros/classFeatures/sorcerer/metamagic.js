@@ -42,8 +42,10 @@ async function earlyCareful({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size) return;
     let max = Math.max(1, workflow.actor.system.abilities.cha.mod ?? 0);
     let targets = Array.from(workflow.targets);
-    // TODO: do we actually want to restrict this?
-    // targets = targets.filter(i => i.document.disposition === workflow.token.document.disposition);
+    let originItem = await fromUuid(effect.origin);
+    if (!originItem) return;
+    let allowEnemies = itemUtils.getConfig(originItem, 'allowEnemies');
+    if (!allowEnemies) targets = targets.filter(i => i.document.disposition === workflow.token.document.disposition);
     let selection = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Macros.Metamagic.CarefulWhich', {max}), targets, {
         type: 'multiple',
         maxAmount: max
@@ -443,7 +445,16 @@ export let carefulSpell = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'allowEnemies',
+            label: 'CHRISPREMADES.Config.AllowEnemies',
+            type: 'checkbox',
+            category: 'mechanics',
+            default: false
+        }
+    ]
 };
 export let distantSpell = {
     name: 'Metamagic: Distant Spell',

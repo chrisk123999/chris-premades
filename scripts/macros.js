@@ -204,6 +204,7 @@ export {dreadLord, dreadLordAura, dreadLordShadowAttack} from './macros/classFea
 export {dreadAmbusher} from './macros/classFeatures/ranger/gloomStalker/dreadAmbusher.js';
 export {dreadfulAspect, dreadfulAspectFrightened} from './macros/classFeatures/paladin/oathbreaker/dreadfulAspect.js';
 export {dreadfulStrikes} from './macros/classFeatures/ranger/feyWanderer/dreadfulStrikes.js';
+export {durableMagic} from './macros/classFeatures/wizard/warMagic/durableMagic.js';
 export {echoAvatar} from './macros/classFeatures/fighter/echoKnight/echoAvatar.js';
 export {eldritchCannon, eldritchCannonExplosiveCannon, eldritchCannonForceBallista, eldritchCannonFortifiedPosition} from './macros/classFeatures/artificer/artillerist/eldritchCannon.js';
 export {eldritchSmite} from './macros/classFeatures/warlock/invocations/eldritchSmite.js';
@@ -211,10 +212,12 @@ export {elementalCleaver, elementalCleaverChange} from './macros/classFeatures/b
 export {elementalGiftDao, elementalGiftDjinni, elementalGiftEfreeti, elementalGiftMarid} from './macros/classFeatures/warlock/genie/elementalGift.js';
 export {elementalWildShape} from './macros/classFeatures/druid/circleOfTheMoon/elementalWildShape.js';
 export {emboldeningBond, emboldeningBondEmboldened} from './macros/classFeatures/cleric/peaceDomain/emboldeningBond.js';
+export {empoweredEvocation} from './macros/classFeatures/wizard/schoolOfEvocation/empoweredEvocation.js';
 export {enhancedBond} from './macros/classFeatures/druid/circleOfWildfire/enhancedBond.js';
 export {evasion} from './macros/classFeatures/multiple/evasion.js';
 export {expansiveBond} from './macros/classFeatures/cleric/peaceDomain/expansiveBond.js';
 export {experimentalElixir, experimentalElixirConsumable} from './macros/classFeatures/artificer/alchemist/experimentalElixir.js';
+export {expertDivination} from './macros/classFeatures/wizard/schoolOfDivination/expertDivination.js';
 export {eyeForWeakness} from './macros/classFeatures/rogue/inquisitive/eyeForWeakness.js';
 export {eyesOfNight} from './macros/classFeatures/cleric/twilightDomain/eyesOfNight.js';
 export {favoredByTheGods} from './macros/classFeatures/sorcerer/divineSoul/favoredByTheGods.js';
@@ -233,6 +236,7 @@ export {giantsMight} from './macros/classFeatures/fighter/runeKnight/giantsMight
 export {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 export {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 export {greatStature} from './macros/classFeatures/fighter/runeKnight/greatStature.js';
+export {grimHarvest} from './macros/classFeatures/wizard/schoolOfNecromancy/grimHarvest.js';
 export {guardianArmor, guardianArmorThunderGauntlets, guardianArmorDefensiveField} from './macros/classFeatures/artificer/armorer/guardianArmor.js';
 export {healingLight} from './macros/classFeatures/warlock/celestial/healingLight.js';
 export {heartOfTheStorm} from './macros/classFeatures/sorcerer/stormSorcery/heartOfTheStorm.js';
@@ -266,10 +270,12 @@ export {mistyEscape} from './macros/classFeatures/warlock/archfey/mistyEscape.js
 export {moteOfPotential} from './macros/classFeatures/bard/collegeOfCreation/moteOfPotential.js';
 export {naturesWrath} from './macros/classFeatures/paladin/oathOfTheAncients/naturesWrath.js';
 export {oneWithShadows} from './macros/classFeatures/warlock/invocations/oneWithShadows.js';
+export {overchannel} from './macros/classFeatures/wizard/schoolOfEvocation/overchannel.js';
 export {pathToTheGrave} from './macros/classFeatures/cleric/graveDomain/pathToTheGrave.js';
 export {patientDefense} from './macros/classFeatures/monk/patientDefense.js';
 export {peerlessAthlete} from './macros/classFeatures/paladin/oathOfGlory/peerlessAthlete.js';
 export {persistentRage} from './macros/classFeatures/barbarian/persistentRage.js';
+export {potentCantrip} from './macros/classFeatures/wizard/schoolOfEvocation/potentCantrip.js';
 export {potentSpellcasting} from './macros/classFeatures/cleric/potentSpellcasting.js';
 export {preserveLife} from './macros/classFeatures/cleric/lifeDomain/preserveLife.js';
 export {primalCompanion, primalCompanionSea} from './macros/classFeatures/ranger/beastMaster/primalCompanion.js';
@@ -294,6 +300,7 @@ export {repellingBlast} from './macros/classFeatures/warlock/invocations/repelli
 export {runicJuggernaut} from './macros/classFeatures/fighter/runeKnight/runicJuggernaut.js';
 export {runicShield} from './macros/classFeatures/fighter/runeKnight/runicShield.js';
 export {sacredWeapon, sacredWeaponDismiss} from './macros/classFeatures/paladin/oathOfDevotion/sacredWeapon.js';
+export {sculptSpells, sculptSpellsTarget} from './macros/classFeatures/wizard/schoolOfEvocation/sculptSpells.js';
 export {shadowStep} from './macros/classFeatures/monk/wayOfShadow/shadowStep.js';
 export {songOfDefense} from './macros/classFeatures/wizard/bladeSinging/songOfDefense.js';
 export {songOfVictory} from './macros/classFeatures/wizard/bladeSinging/songOfVictory.js';
@@ -320,6 +327,7 @@ export {umbralSight} from './macros/classFeatures/ranger/gloomStalker/umbralSigh
 export {monkUnarmedStrike} from './macros/classFeatures/monk/unarmedStrike.js';
 export {unarmoredDefenseBarbarian} from './macros/classFeatures/barbarian/unarmoredDefense.js';
 export {unarmoredDefenseMonk} from './macros/classFeatures/monk/unarmoredDefense.js';
+export {undeadThralls} from './macros/classFeatures/wizard/schoolOfNecromancy/undeadThralls.js';
 export {unleashIncarnation} from './macros/classFeatures/fighter/echoKnight/unleashIncarnation.js';
 export {unstableBacklash} from './macros/classFeatures/barbarian/wildMagic/unstableBacklash.js';
 export {vigilantBlessing} from './macros/classFeatures/cleric/twilightDomain/vigilantBlessing.js';

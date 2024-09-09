@@ -55,6 +55,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
+            "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
             "Animations": {
                 "Air": "Air",
@@ -529,6 +530,9 @@
                 "Swiftness": "Experimental Elixir: Swiftness",
                 "Transformation": "Experimental Elixir: Transformation"
             },
+            "ExpertDivination": {
+                "Select": "What level spell slot do you want to regain?"
+            },
             "Fall": {
                 "Acr": "Yes (Acrobatics)",
                 "Ath": "Yes (Athletics)",
@@ -845,6 +849,10 @@
             "OneWithShadows": {
                 "Bright": "Token is in bright light!"
             },
+            "Overchannel": {
+                "Damage": "Use {itemName} at the cost of {damageFormula} damage?",
+                "DamageItem": "Overchannel: Damage"
+            },
             "PariahsShield": {
                 "MaxBonus": "Max AC Bonus:",
                 "Protect": "Protect {name} with {item}?",
@@ -895,6 +903,9 @@
             "ScorchingRay": {
                 "Bolt": "Scorching Ray Bolt",
                 "Select": "Select your targets (Max rays: {maxRays})"
+            },
+            "SculptSpells": {
+                "Select": "Which targets succeed and take no damage? (Max: {max})"
             },
             "Search": {
                 "Skill": "What skill?"
