@@ -1,0 +1,196 @@
+{
+  "name": "Empowered Evocation",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Wizard : School of Evocation"
+    },
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "babonus": {
+      "bonuses": {
+        "j8YoPNZ7BlzTW9LJ": {
+          "id": "j8YoPNZ7BlzTW9LJ",
+          "name": "Empowered Evocation",
+          "type": "damage",
+          "enabled": true,
+          "optional": false,
+          "description": "",
+          "consume": {
+            "enabled": false,
+            "type": "",
+            "scales": false,
+            "formula": "",
+            "value": {
+              "min": null,
+              "max": null,
+              "step": null
+            },
+            "subtype": ""
+          },
+          "aura": {
+            "enabled": false,
+            "range": null,
+            "self": true,
+            "disposition": 2,
+            "blockers": [],
+            "template": false,
+            "require": {
+              "sight": false,
+              "move": false
+            }
+          },
+          "filters": {
+            "itemTypes": [
+              "spell"
+            ],
+            "spellSchools": [
+              "evo"
+            ]
+          },
+          "bonuses": {
+            "bonus": "@abilities.int.mod",
+            "criticalBonusDice": "",
+            "criticalBonusDamage": "",
+            "modifiers": {
+              "amount": {
+                "enabled": false
+              },
+              "reroll": {
+                "enabled": false,
+                "recursive": false
+              },
+              "explode": {
+                "enabled": false,
+                "once": false
+              },
+              "minimum": {
+                "enabled": false
+              },
+              "maximum": {
+                "enabled": false
+              },
+              "config": {
+                "first": false
+              }
+            }
+          },
+          "img": "icons/svg/dice-target.svg",
+          "exclusive": false,
+          "flags": {}
+        }
+      }
+    },
+    "core": {},
+    "chris-premades": {
+      "info": {
+        "name": "Empowered Evocation",
+        "version": "0.12.62",
+        "identifier": "empoweredEvocation",
+        "source": "chris-premades"
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/fire/explosion-mushroom-nuke-orange.webp",
+  "folder": "SL4EqjrNxTnnh5C7",
+  "_id": "sblqdDc71uTyOg5k",
+  "_key": "!items!sblqdDc71uTyOg5k"
+}
