@@ -55,6 +55,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
             "Animations": {
                 "Air": "Ar",
@@ -217,6 +218,7 @@
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
+            "Rerolling": "Rerolando {origDie} ({origResult}):",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
@@ -283,6 +285,9 @@
                 "Heal": "Curar",
                 "WhoHeal": "Quem curar?"
             },
+            "ArcaneWard": {
+                "Protect": "Proteger {tokenName} com sua proteção arcana?"
+            },
             "ArmorOfAgathys": {
                 "Reflect": "Armadura de Agathys: Refletir"
             },
@@ -291,6 +296,9 @@
             },
             "AuraOfVitality": {
                 "Healing": "Aura de Vitalidade: Cura"
+            },
+            "AwakenedSpellbook": {
+                "Select": "Mudar tipo de dano?"
             },
             "BalmOfPeace": {
                 "Balm": "Bálsamo da Paz"
@@ -475,6 +483,7 @@
             "EldritchCannon": {
                 "Cannon": "Canhão Místico",
                 "Command": "Canhão Místico: Comando",
+                "Dismiss": "Canhão Místico: Dispensar",
                 "ExplosiveCannon": "Canhão Explosivo",
                 "Flamethrower": "Lança-Chamas",
                 "ForceBallista": "Força de Balista",
@@ -522,6 +531,9 @@
                 "Swiftness": "Elixir Experimental: Celeridade",
                 "Transformation": "Elixir Experimental: Transformação"
             },
+            "ExpertDivination": {
+                "Select": "QUal nível de espaço de magia vpcê quer recuperar?"
+            },
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
                 "Ath": "Sim (Atletismo)",
@@ -552,6 +564,7 @@
             },
             "FindSteed": {
                 "Choose": "Escolha a Montaria",
+                "Dismiss": "Dispensar Montaria",
                 "Language": "Qual idioma?",
                 "Target": "Marcar a Montaria também? (Se montado)",
                 "Type": "Qual tipo de criatura?"
@@ -789,6 +802,7 @@
             },
             "ManifestEcho": {
                 "Attack": "Eco Manifestado: Ataque",
+                "Dismiss": "Eco Manifestado: Dispensar",
                 "Echo": "Eco {name}",
                 "Far": "O eco de {actorName} está longe demais. Remover ele?",
                 "Legion": "Criar dois ecos ao invés de um?",
@@ -796,6 +810,13 @@
                 "Teleport": "Eco Manifestado: Teleporte",
                 "Weapon": "Com o que você quer de atacar?",
                 "Which": "Qual Eco?"
+            },
+            "ManifestMind": {
+                "Cast": "Mente Manifestada: Conjurar Magia",
+                "Dismiss": "Mente Manifestada: Dispensar",
+                "Far": "A Mente Manifestada de {actorName} está lnge demais. Removê-la?",
+                "Invalid": "Tipo de Ação Inválida!",
+                "Move": "Mente Manifestada: Mover"
             },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
@@ -809,6 +830,7 @@
             },
             "Metamagic": {
                 "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
+                "Empowered": "Gastar 1 Ponto de Feitiçaria para rerolar o dado de dano? (Máx. {max})",
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
                 "NotEnough": "Pontos de Feitiçaria insuficientes!",
@@ -830,6 +852,10 @@
             },
             "OneWithShadows": {
                 "Bright": "O token está em luz plena!"
+            },
+            "Overchannel": {
+                "Damage": "Usar {itemName} ao custo de {damageFormula} de dano?",
+                "DamageItem": "Sobrecarga: Dano"
             },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
@@ -882,6 +908,9 @@
                 "Bolt": "Raio de Raio Ardente",
                 "Select": "Escolha seus alvos (Máx de raios: {maxRays})"
             },
+            "SculptSpells": {
+                "Select": "Quais alvos são bem-sucedidos e não sofrem dano? (Máx: {max})"
+            },
             "Search": {
                 "Skill": "Qual perícia?"
             },
@@ -916,7 +945,8 @@
             },
             "SongOfDefense": {
                 "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
-                "NoSpellSlots": "Você não tem espaços de magia disponíveis!"
+                "NoSpellSlots": "Você não tem espaços de magia disponíveis!",
+                "Select": "Usar sua reação para gastar um espaço de magia para reduzir o dano?"
             },
             "SpikeGrowth": {
                 "Thorns": "Crescer Espinhos: Espinhos"
@@ -941,9 +971,12 @@
                 "Flaming": "Flamejante",
                 "Mace": "Maça",
                 "Maul": "Malho",
+                "SaveDefault": "Usar a configuração selecionada no futuro?",
                 "Scythe": "Foice",
+                "Select": "Selecione um alvo para atacar:",
                 "Style": "Qual Estilo?",
                 "Sword": "Espada",
+                "UseDefault": "Usar configuração de token salva anteriormente:",
                 "Weapon": "Qual Arma?"
             },
             "StaggeringSmite": {
@@ -1151,6 +1184,10 @@
             "UnarmedFighting": {
                 "Grapple": "Combate Desarmado: Dano Agarrado",
                 "Select": "Causar dano a uma criatura agarrada?"
+            },
+            "UndeadFortitude": {
+                "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
+                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -1791,6 +1828,7 @@
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
+                "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
