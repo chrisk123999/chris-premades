@@ -1,6 +1,8 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Brand of Castigation: Damage",
   "type": "feat",
+  "_id": "7JvdKrBMGbpsnhLl",
+  "img": "icons/magic/death/weapon-sword-skull-purple.webp",
   "system": {
     "description": {
       "value": "",
@@ -11,7 +13,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": 1,
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -21,16 +23,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,97 +43,77 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "0",
+          "psychic"
+        ]
+      ],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "class",
-      "subtype": "metamagic"
+      "value": "",
+      "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
+  "folder": null,
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "chris-premades": {
-      "info": {
-        "version": "0.12.64",
-        "identifier": "transmutedSpell",
-        "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "transmutedSpell"
-          ]
-        }
-      }
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default"
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
-  "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "_key": "!items!7JvdKrBMGbpsnhLl"
 }

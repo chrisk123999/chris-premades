@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Blood Curse of the Fallen Puppet",
   "type": "feat",
   "system": {
     "description": {
@@ -10,13 +10,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "reaction",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "1",
+      "units": "turn"
     },
     "cover": null,
     "crewed": false,
@@ -28,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 30,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -42,7 +42,7 @@
     "consume": {
       "type": "",
       "target": "",
-      "amount": null,
+      "amount": 1,
       "scale": false
     },
     "ability": "",
@@ -64,7 +64,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": "metamagic"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -83,30 +83,28 @@
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
+      "reactionCondition": "false",
       "effectCondition": ""
     },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -114,24 +112,28 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Actor.9Ro7q1IceUBmwDG5.Item.23wUqH6mRQobv5FF"
+    },
     "chris-premades": {
       "info": {
+        "name": "Blood Curse of the Fallen Puppet",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
+        "identifier": "curseOfTheFallenPuppet",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
-            "transmutedSpell"
+          "actor": [
+            "curseOfTheFallenPuppet"
           ]
         }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/magic/control/control-influence-puppet.webp",
+  "folder": "goQnsn9Jlo5UEVAn",
+  "_id": "IKk6xJMgCYaTxJbh",
+  "_key": "!items!IKk6xJMgCYaTxJbh"
 }

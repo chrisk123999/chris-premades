@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Lycan Regeneration",
   "type": "feat",
   "system": {
     "description": {
@@ -7,11 +7,11 @@
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Blood Hunter : Order of the Lycan"
     },
     "activation": {
       "type": "special",
-      "cost": 1,
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -24,11 +24,11 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
       "units": "self"
     },
@@ -46,14 +46,19 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "max(1, 1 + @abilities.con.mod)",
+          "healing"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -63,8 +68,8 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "class",
-      "subtype": "metamagic"
+      "value": "",
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -84,13 +89,15 @@
   },
   "flags": {
     "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
+      "sourceId": "Actor.8ziTn2ZG6kNjkfnS.Item.FomPr8Yw6Vw08SXD"
     },
     "midi-qol": {
       "effectActivation": false,
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
       "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
@@ -115,23 +122,16 @@
       "ida": false
     },
     "chris-premades": {
-      "info": {
-        "version": "0.12.64",
-        "identifier": "transmutedSpell",
-        "source": "chris-premades"
-      },
       "macros": {
-        "midi": {
-          "item": [
-            "transmutedSpell"
-          ]
-        }
+        "combat": [
+          "hybridTransformationLycanRegeneration"
+        ]
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/commodities/claws/claw-brown-black.webp",
+  "folder": null,
+  "_id": "kHXZzFuLH5CEgYRL",
+  "_key": "!items!kHXZzFuLH5CEgYRL"
 }

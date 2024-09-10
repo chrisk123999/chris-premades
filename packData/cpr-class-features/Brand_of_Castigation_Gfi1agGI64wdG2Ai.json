@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Brand of Castigation",
   "type": "feat",
   "system": {
     "description": {
@@ -15,8 +15,8 @@
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "2",
+      "units": "day"
     },
     "cover": null,
     "crewed": false,
@@ -24,18 +24,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "self"
+      "units": "ft"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "sr",
       "recovery": "",
       "prompt": true
     },
@@ -45,7 +45,7 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
+    "ability": "int",
     "actionType": "other",
     "chatFlavor": "",
     "critical": {
@@ -64,7 +64,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": "metamagic"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -83,9 +83,6 @@
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -97,16 +94,16 @@
       "nodam": false,
       "fulldam": false,
       "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
       "rollOther": false,
       "critOther": false,
-      "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
       "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -114,24 +111,28 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Actor.9Ro7q1IceUBmwDG5.Item.mkNhYVPlQtHbuSU1"
+    },
     "chris-premades": {
       "info": {
+        "name": "Brand of Castigation",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
+        "identifier": "brandOfCastigation",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
-            "transmutedSpell"
+          "actor": [
+            "brandOfCastigation"
           ]
         }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/magic/death/weapon-sword-skull-purple.webp",
+  "folder": "QxkhZA4H8BybSLOQ",
+  "_id": "Gfi1agGI64wdG2Ai",
+  "_key": "!items!Gfi1agGI64wdG2Ai"
 }

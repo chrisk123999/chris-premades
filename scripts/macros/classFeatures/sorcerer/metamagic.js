@@ -456,6 +456,11 @@ export let carefulSpell = {
         }
     ],
     ddbi: {
+        removedItems: {
+            'Metamagic: Careful Spell': [
+                'Metamagic - Careful Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Careful Spell': {
                 system: {
@@ -482,6 +487,11 @@ export let distantSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Distant Spell': [
+                'Metamagic - Distant Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Distant Spell': {
                 system: {
@@ -508,6 +518,11 @@ export let empoweredSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Empowered Spell': [
+                'Metamagic - Empowered Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Empowered Spell': {
                 system: {
@@ -534,6 +549,11 @@ export let extendedSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Extended Spell': [
+                'Metamagic - Extended Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Extended Spell': {
                 system: {
@@ -567,6 +587,11 @@ export let heightenedSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Heightened Spell': [
+                'Metamagic - Heightened Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Heightened Spell': {
                 system: {
@@ -593,6 +618,11 @@ export let quickenedSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Quickened Spell': [
+                'Metamagic - Quickened Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Quickened Spell': {
                 system: {
@@ -608,7 +638,7 @@ export let quickenedSpell = {
 };
 export let seekingSpell = {
     name: 'Metamagic: Seeking Spell',
-    version: '0.12.58',
+    version: '0.12.64',
     midi: {
         actor: [
             {
@@ -619,6 +649,11 @@ export let seekingSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Seeking Spell': [
+                'Metamagic - Seeking Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Seeking Spell': {
                 system: {
@@ -645,6 +680,11 @@ export let subtleSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Subtle Spell': [
+                'Metamagic - Subtle Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Subtle Spell': {
                 system: {
@@ -660,7 +700,7 @@ export let subtleSpell = {
 };
 export let transmutedSpell = {
     name: 'Metamagic: Transmuted Spell',
-    version: '0.12.58',
+    version: '0.12.64',
     midi: {
         item: [
             {
@@ -671,6 +711,11 @@ export let transmutedSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Transmuted Spell': [
+                'Metamagic - Transmuted Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Transmuted Spell': {
                 system: {
@@ -697,6 +742,11 @@ export let twinnedSpell = {
         ]
     },
     ddbi: {
+        removedItems: {
+            'Metamagic: Twinned Spell': [
+                'Metamagic - Twinned Spell'
+            ]
+        },
         correctedItems: {
             'Metamagic: Twinned Spell': {
                 system: {

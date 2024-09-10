@@ -1,6 +1,8 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "folder": "nCVomD5VQlEh7yjo",
+  "name": "Crimson Rite: Rite of the Storm",
   "type": "feat",
+  "img": "icons/skills/melee/strike-sword-blood-red.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,8 +12,8 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -28,9 +30,9 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,12 +43,16 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": null,
+    "actionType": "",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,82 +62,59 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
-      "value": "class",
-      "subtype": "metamagic"
+      "value": "",
+      "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "chris-premades": {
       "info": {
+        "identifier": "riteOfTheStorm",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "transmutedSpell"
-          ]
-        }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
-  "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "_id": "5aNHc8LfefbFZW8o",
+  "_key": "!items!5aNHc8LfefbFZW8o"
 }

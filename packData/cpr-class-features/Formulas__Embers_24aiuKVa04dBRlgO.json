@@ -1,6 +1,7 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Formulas: Embers",
   "type": "feat",
+  "img": "icons/tools/laboratory/bowl-liquid-pink-yellow-green.webp",
   "system": {
     "description": {
       "value": "",
@@ -10,7 +11,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -24,29 +25,33 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
       "units": "self"
     },
     "uses": {
-      "value": null,
+      "value": 0,
       "max": "",
-      "per": null,
+      "per": "charges",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "other",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,82 +61,67 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
-      "subtype": "metamagic"
+      "subtype": ""
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
+  "folder": "jtlfybEkf6PxS42D",
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "chris-premades": {
       "info": {
+        "identifier": "formulaEmbers",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "transmutedSpell"
+            "formulas"
           ]
         }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
-  "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "_id": "24aiuKVa04dBRlgO",
+  "_key": "!items!24aiuKVa04dBRlgO"
 }

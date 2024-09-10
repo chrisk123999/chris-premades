@@ -213,6 +213,7 @@
             "Import": "Import",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
+            "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
             "Ok": "Ok",
             "Recharge": "Recharge:",
@@ -233,6 +234,7 @@
         "GenericEffects": {
             "ConditionAdvantage": "Condition Advantage",
             "ConditionDisadvantage": "Condition Disadvantage",
+            "ConditionFailure": "Condition Failure",
             "ConditionImmunity": "Condition Immunity",
             "CriticalThreshold": "Critical Threshold",
             "InvalidTarget": "Invalid Target",
@@ -363,6 +365,9 @@
             "Blink": {
                 "Away": "Blinked Away"
             },
+            "BloodCurses": {
+                "Amplify": "Amplify Blood Curse?"
+            },
             "BolsteringMagic": {
                 "Already": "Target is already being bolstered!",
                 "Bonus": "Attack and Ability Bonus",
@@ -379,6 +384,10 @@
             },
             "BorrowedKnowledge": {
                 "SelectSkill": "Select a skill to gain temporary proficiency in:"
+            },
+            "BrandOfCastigation": {
+                "Branded": "Brand of Castigation: Branded",
+                "Damage": "Brand of Castigation: Damage"
             },
             "BrandingSmite": {
                 "Branded": "Branding Smite: Branded"
@@ -436,6 +445,11 @@
                 "Summon": "Summon New Weapon",
                 "Type": "How are you using this feature?",
                 "Weapon": "Pact Weapon"
+            },
+            "CrimsonRite": {
+                "NoRites": "No rites found on actor!",
+                "Select": "Which Crimson Rite?",
+                "Weapon": "Upon which weapon will you activate the rite?"
             },
             "DangerSense": {
                 "CanSee": "This save is from an effect you can see."
@@ -547,6 +561,9 @@
                 "Tiny": "One or both creatures are tiny!",
                 "Type": "Type of Fall:",
                 "Water": "Into Water"
+            },
+            "FallenPuppet": {
+                "NoTargets": "No valid targets within range!"
             },
             "FarStep": {
                 "Teleport": "Far Step: Teleport"
@@ -699,6 +716,12 @@
                 "Move": "Hunter's Mark: Move",
                 "Select": "Which target would you like to unmark?"
             },
+            "HybridTransformation": {
+                "Bloodlust": "Bloodlust",
+                "LycanRegeneration": "Lycan Regeneration",
+                "PredatoryStrike": "Predatory Strike",
+                "Revert": "Hybrid Transformation: Revert"
+            },
             "InfectiousFury": {
                 "Attack": "Attack a Nearby Target",
                 "Curse": "How do you curse your target?",
@@ -846,6 +869,15 @@
             "Moonbeam": {
                 "Damage": "Moonbeam: Damage",
                 "Move": "Moonbeam: Move"
+            },
+            "Mutagencraft": {
+                "AttackSunlight": "Are either {sourceTokenName} or {targetTokenName} in direct sunlight?",
+                "Create": "Which Mutagen do you create?",
+                "Flush": "Mutagencraft: Flush Mutagens",
+                "Negative": "Negative Effects",
+                "Positive": "Positive Effects",
+                "ReconstructionHealing": "Reconstruction Formula: Healing",
+                "SkillSunlight": "Is this a sight-based check with either {actorName} or the target of the check in direct sunlight?"
             },
             "NaturesWrath": {
                 "Select": "Which ability will you make the save with?"
@@ -1015,6 +1047,9 @@
             },
             "Stormgridle": {
                 "Avatar": "Storm Avatar"
+            },
+            "StrangeMetabolism": {
+                "Select": "Which Mutagen?"
             },
             "SummonAberration": {
                 "Beholderkin": "Beholderkin",
@@ -1828,6 +1863,7 @@
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
                 "HomunculusServant": "Homunculus Servant",
+                "HybridTransformation": "Hybrid Transformation",
                 "ManifestMind": "Manifest Mind",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Shadow Spirit",

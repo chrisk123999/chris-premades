@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Heightened Senses",
   "type": "feat",
   "system": {
     "description": {
@@ -7,11 +7,14 @@
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "book": "Basic Rules",
+      "page": "157",
+      "custom": "",
+      "license": ""
     },
     "activation": {
-      "type": "special",
-      "cost": 1,
+      "cost": null,
+      "type": "",
       "condition": ""
     },
     "duration": {
@@ -28,9 +31,9 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -41,12 +44,12 @@
     },
     "consume": {
       "type": "",
-      "target": "",
+      "target": null,
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "other",
+    "ability": null,
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -58,80 +61,67 @@
     },
     "formula": "",
     "save": {
-      "ability": "",
       "dc": null,
-      "scaling": "spell"
+      "ability": "",
+      "scaling": "flat"
     },
     "type": {
-      "value": "class",
-      "subtype": "metamagic"
+      "value": "",
+      "subtype": ""
     },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
     },
-    "properties": [],
     "attack": {
       "bonus": "",
       "flat": false
     },
-    "enchantment": null,
     "summons": null,
+    "enchantment": null,
     "prerequisites": {
       "level": null
     }
   },
+  "effects": [],
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
     "midi-qol": {
-      "effectActivation": false,
-      "onUseMacroName": "",
+      "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
       "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "core": {},
     "chris-premades": {
       "info": {
+        "name": "Heightened Senses",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
+        "identifier": "heightenedSenses",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "transmutedSpell"
-          ]
-        }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
-  "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/creatures/eyes/human-single-blue.webp",
+  "folder": "3dGvTo8b0Rx1Yk5H",
+  "_id": "vu6zjBVULcpdAyZb",
+  "_key": "!items!vu6zjBVULcpdAyZb"
 }

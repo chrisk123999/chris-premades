@@ -242,6 +242,14 @@ async function rollFinished(workflow) {
         await conditionVulnerability.RollComplete(workflow);
     }
     await executeTargetMacroPass(workflow, 'onHit', true);
+    let sceneTriggers = [];
+    workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
+        sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneRollFinished'));
+    });
+    sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
+    genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
+    for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
+    
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
 }
 async function postAttackRoll(workflow) {

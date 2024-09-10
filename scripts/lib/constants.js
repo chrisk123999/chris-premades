@@ -88,7 +88,8 @@ const unarmedAttacks = [
     'unarmedStrike',
     'monkUnarmedStrike',
     'tavernBrawlerUnarmedStrike',
-    'fightingStyleUnarmedFightingUnarmedStrike'
+    'fightingStyleUnarmedFightingUnarmedStrike',
+    'predatoryStrike'
 ];
 let damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
 const overTimeOptions = [

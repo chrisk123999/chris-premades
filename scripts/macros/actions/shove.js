@@ -6,6 +6,7 @@ async function use({trigger, workflow}) {
     if (workflow.actor.uuid === targetToken.actor.uuid) return;
     if ((actorUtils.getSize(targetToken.actor)) > (actorUtils.getSize(workflow.actor) + 1)) {
         genericUtils.notify('CHRISPREMADES.Macros.Shove.Big', 'info');
+        return;
     }
     if (effectUtils.getEffectByIdentifier(targetToken.actor, 'incapacitated')) skipCheck = true;
     if (!skipCheck) {

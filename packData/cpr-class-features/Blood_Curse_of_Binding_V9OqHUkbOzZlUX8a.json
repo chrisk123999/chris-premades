@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Blood Curse of Binding",
   "type": "feat",
   "system": {
     "description": {
@@ -10,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -28,9 +28,9 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": 30,
       "long": null,
-      "units": "self"
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -42,11 +42,11 @@
     "consume": {
       "type": "",
       "target": "",
-      "amount": null,
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "save",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -58,13 +58,13 @@
     },
     "formula": "",
     "save": {
-      "ability": "",
+      "ability": "str",
       "dc": null,
       "scaling": "spell"
     },
     "type": {
       "value": "class",
-      "subtype": "metamagic"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -83,9 +83,6 @@
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -114,24 +111,28 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Actor.8YG76hi5CAt5bL27.Item.U5Fs9MxNx2jTCxcJ"
+    },
     "chris-premades": {
       "info": {
+        "name": "Blood Curse of Binding",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
+        "identifier": "curseOfBinding",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "transmutedSpell"
+            "curseOfBinding"
           ]
         }
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/magic/control/debuff-chains-shackles-movement-purple.webp",
+  "folder": "goQnsn9Jlo5UEVAn",
+  "_id": "V9OqHUkbOzZlUX8a",
+  "_key": "!items!V9OqHUkbOzZlUX8a"
 }

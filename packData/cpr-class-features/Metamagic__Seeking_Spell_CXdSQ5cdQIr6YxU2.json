@@ -116,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Metamagic: Seeking Spell",
-        "version": "0.12.58",
+        "version": "0.12.64",
         "identifier": "seekingSpell",
         "source": "chris-premades"
       },
@@ -129,7 +129,7 @@
       }
     }
   },
-  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
   "folder": "W4rkEnG3gpEwMUKl",
   "_id": "CXdSQ5cdQIr6YxU2",

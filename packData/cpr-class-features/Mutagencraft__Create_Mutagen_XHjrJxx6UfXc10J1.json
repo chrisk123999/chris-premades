@@ -1,5 +1,5 @@
 {
-  "name": "Metamagic: Transmuted Spell",
+  "name": "Mutagencraft: Create Mutagen",
   "type": "feat",
   "system": {
     "description": {
@@ -11,7 +11,7 @@
     },
     "activation": {
       "type": "special",
-      "cost": 1,
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -24,18 +24,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
       "units": "self"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "sr",
       "recovery": "",
       "prompt": true
     },
@@ -64,7 +64,7 @@
     },
     "type": {
       "value": "class",
-      "subtype": "metamagic"
+      "subtype": ""
     },
     "requirements": "",
     "recharge": {
@@ -83,9 +83,6 @@
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.Kj69trTcBLbWaGRp.Item.NaFolZmRvOk7Hahx"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
@@ -114,24 +111,31 @@
       "idv": false,
       "ida": false
     },
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.DrVFauBJRcNT8Hwv"
+    },
     "chris-premades": {
       "info": {
+        "name": "Mutagencraft - Create Mutagen",
         "version": "0.12.64",
-        "identifier": "transmutedSpell",
+        "identifier": "createMutagen",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "transmutedSpell"
+            "createMutagen"
           ]
-        }
+        },
+        "rest": [
+          "createMutagen"
+        ]
       }
     }
   },
-  "img": "icons/magic/symbols/runes-star-blue.webp",
   "effects": [],
-  "folder": "W4rkEnG3gpEwMUKl",
-  "_id": "TXODc8bbGaZFz8ny",
-  "_key": "!items!TXODc8bbGaZFz8ny"
+  "img": "icons/commodities/materials/bowl-liquid-red.webp",
+  "folder": "jtlfybEkf6PxS42D",
+  "_id": "XHjrJxx6UfXc10J1",
+  "_key": "!items!XHjrJxx6UfXc10J1"
 }
