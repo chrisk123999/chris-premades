@@ -105,7 +105,7 @@ async function damage({workflow}) {
     if (!magical?.length) return;
     let result = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: magical}), workflow.targets);
     if (!result) return;
-    let [{document: token}] = result;
+    let [token] = result;
     let defaultDamageType = workflow.defaultDamageType;
     let damageRoll = await new CONFIG.Dice.DamageRoll(bardDice + '[' + defaultDamageType + ']', {}, {type: defaultDamageType}).evaluate();
     damageRoll.toMessage({

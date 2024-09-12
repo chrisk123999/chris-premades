@@ -149,7 +149,7 @@ export let heatMetal = {
 };
 export let heatMetalPulse = {
     name: 'Heat Metal: Pulse',
-    verison: heatMetal.version,
+    version: heatMetal.version,
     midi: {
         item: [
             {

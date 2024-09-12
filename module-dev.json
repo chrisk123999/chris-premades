@@ -200,6 +200,20 @@
       "path": "packs/cpr-feat-features",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRRaceFeatures",
+      "label": "CPR Race Features",
+      "path": "packs/cpr-race-features",
+      "type": "Item",
+      "module": "chris-premades"
+    },
+    {
+      "name": "CPRRaceFeatureItems",
+      "label": "CPR Race Feature Items",
+      "path": "packs/cpr-race-feature-items",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -219,7 +233,9 @@
         "CPRMiscellaneousItems",
         "CPRItemFeatures",
         "CPRFeats",
-        "CPRFeatFeatures"
+        "CPRFeatFeatures",
+        "CPRRaceFeatures",
+        "CPRRaceFeatureItems"
       ]
     }
   ],

@@ -10,7 +10,9 @@ let packs = {
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
     feats: 'chris-premades.CPRFeats',
-    featFeatures: 'chris-premades.CPRFeatFeatures'
+    featFeatures: 'chris-premades.CPRFeatFeatures',
+    raceFeatures: 'chris-premades.CPRRaceFeatures',
+    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -18,7 +20,8 @@ let featurePacks = {
     classFeatureItems: 'chris-premades.CPRClassFeatureItems',
     miscellaneousItems: 'chris-premades.CPRMiscellaneousItems',
     itemFeatures: 'chris-premades.CPRItemFeatures',
-    featFeatures: 'chris-premades.CPRFeatFeatures'
+    featFeatures: 'chris-premades.CPRFeatFeatures',
+    raceFeatureItems: 'chris-premades.CPRRaceFeatureItems'
 };
 function setUseLocalCompendium(value) {
     if (value) {
@@ -40,6 +43,9 @@ function setUseLocalCompendium(value) {
         packs.feats = 'world.cpr-feats';
         packs.featFeatures = 'world.cpr-feat-features';
         featurePacks.featFeatures = 'world.cpr-feat-features';
+        packs.raceFeatures = 'world.cpr-race-features';
+        packs.raceFeatureItems = 'world.cpr-race-feature-items';
+        featurePacks.raceFeatureItems = 'world.cpr-race-feature-items';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -59,6 +65,9 @@ function setUseLocalCompendium(value) {
         packs.feats = 'chris-premades.CPRFeats';
         packs.featFeatures = 'chris-premades.CPRFeatFeatures';
         featurePacks.featFeatures = 'chris-premades.CPRFeatFeatures';
+        packs.raceFeatures = 'chris-premades.CPRRaceFeatures';
+        packs.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
+        featurePacks.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
     }
 }
 setUseLocalCompendium(false);

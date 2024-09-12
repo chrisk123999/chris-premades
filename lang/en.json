@@ -293,6 +293,11 @@
             "ArmorOfAgathys": {
                 "Reflect": "Armor of Agathys: Reflect"
             },
+            "AstralTrance": {
+                "Ability": "What ability for the tool checks?",
+                "WeapToolProf": "Weapon/Tool Proficiency",
+                "Which": "Select proficiencies:"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
             },
@@ -404,9 +409,20 @@
                 "Bonus": "Apply Call the Hunt bonus damage? (1d6)",
                 "Select": "Select targets (max: {maxTargets})"
             },
+            "CelestialRevelation": {
+                "Damage": "Radiant Consumption: Damage",
+                "End": "Celestial Revelation: End"
+            },
             "ChainLightning": {
                 "Leap": "Chain Lightning: Leap",
                 "Select": "Where should the lightning bounce? Max: {maxTargets}"
+            },
+            "ChangeSeason": {
+                "Autumn": "Autumn",
+                "Select": "Which season?",
+                "Spring": "Spring",
+                "Summer": "Summer",
+                "Winter": "Winter"
             },
             "ChaosBolt": {
                 "AlwaysBounce": "Always Bounces:",
@@ -567,6 +583,17 @@
             },
             "FarStep": {
                 "Teleport": "Far Step: Teleport"
+            },
+            "FeyStep": {
+                "Autumn": "Fey Step (Autumn)",
+                "Charmed": "Fep Step (Autumn): Charmed",
+                "Frightened": "Fey Step (Winter): Frightened",
+                "SelectAutumn": "Select targets to charm (Max: {max})",
+                "SelectSpring": "Who teleports?",
+                "SelectWinter": "Select target to frighten",
+                "Spring": "Fey Step (Spring)",
+                "Summer": "Fey Step (Summer)",
+                "Winter": "Fey Step (Winter)"
             },
             "FindFamiliar": {
                 "Choose": "Choose Familiar",
@@ -893,6 +920,9 @@
                 "MaxBonus": "Max AC Bonus:",
                 "Protect": "Protect {name} with {item}?",
                 "Reaction": "Pariah's Shield: Protect"
+            },
+            "PoisonousSkin": {
+                "Poison": "Grung: Poison"
             },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"
@@ -1230,6 +1260,12 @@
             },
             "UpcastTargets": {
                 "Select": "Too many targets selected! Please select up to {maxTargets} targets."
+            },
+            "VampiricBite": {
+                "Bonus": "Bonus to next attack/check",
+                "Heal": "Regain hp",
+                "LowHealth": "Advantage: Below half hp",
+                "Select": "Empower yourself?"
             },
             "VampiricTouch": {
                 "Attack": "Vampiric Touch: Attack",

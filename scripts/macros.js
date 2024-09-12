@@ -352,6 +352,33 @@ export {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPr
 export {discipleOfLife} from './macros/classFeatures/cleric/lifeDomain/discipleOfLife.js';
 export {blessedHealer} from './macros/classFeatures/cleric/lifeDomain/blessedHealer.js';
 export {supremeHealing} from './macros/classFeatures/cleric/lifeDomain/supremeHealing.js';
+// Race Features
+export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/raceFeatures/aasimar/celestialRevelation.js';
+export {astralKnowledge} from './macros/raceFeatures/githyanki/astralKnowledge.js';
+export {astralSpark} from './macros/raceFeatures/giff/astralSpark.js';
+export {astralTrance} from './macros/raceFeatures/astralElf/astralTrance.js';
+export {changeSeason} from './macros/raceFeatures/eladrin/changeSeason.js';
+export {cunningIntuition} from './macros/raceFeatures/elf/markOfShadow/cunningIntuition.js';
+export {deductiveIntuition} from './macros/raceFeatures/halfElf/markOfDetection/deductiveIntuition.js';
+export {dwarvenResilience} from './macros/raceFeatures/dwarf/dwarvenResilience.js';
+export {eladrinFeyStep} from './macros/raceFeatures/eladrin/feyStep.js';
+export {feyAncestry} from './macros/raceFeatures/multiple/feyAncestry.js';
+export {giftedScribe} from './macros/raceFeatures/gnome/markOfScribing/giftedScribe.js';
+export {gnomeCunning} from './macros/raceFeatures/gnome/gnomeCunning.js';
+export {hadozeeDodge} from './macros/raceFeatures/hadozee/hadozeeDodge.js';
+export {healingHands} from './macros/raceFeatures/aasimar/healingHands.js';
+export {hiddenStep} from './macros/raceFeatures/firbolg/hiddenStep.js';
+export {incisiveSense} from './macros/raceFeatures/elf/pallid/incisiveSense.js';
+export {longLimbed} from './macros/raceFeatures/bugbear/longLimbed.js';
+export {mentalDisciplineGithzerai} from './macros/raceFeatures/githzerai/mentalDiscipline.js';
+export {poisonousSkin} from './macros/raceFeatures/grung/poisonousSkin.js';
+export {savageAttacks} from './macros/raceFeatures/halfOrc/savageAttacks.js';
+export {spiderClimb} from './macros/raceFeatures/dhampir/spiderClimb.js';
+export {starlightStep} from './macros/raceFeatures/astralElf/starlightStep.js';
+export {stonesEndurance} from './macros/raceFeatures/goliath/stonesEndurance.js';
+export {vampiricBite} from './macros/raceFeatures/dhampir/vampiricBite.js';
+export {wardersIntuition} from './macros/raceFeatures/dwarf/markOfWarding/wardersIntuition.js';
+export {windwrightsIntuition} from './macros/raceFeatures/halfElf/markOfStorm/windwrightsIntuition.js';
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';

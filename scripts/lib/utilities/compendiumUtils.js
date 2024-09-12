@@ -183,12 +183,14 @@ async function getFilteredActorDocumentsFromCompendium(key, {maxCR, actorTypes, 
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'icons/svg/mystery-man.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
-async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types}={}) {
+async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types, actionTypes, badProperties}={}) {
     let pack = game.packs.get(key);
-    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img']});
+    let packIndex = await pack.getIndex({fields: ['name', 'type', 'img', 'system.actionType', 'system.properties']});
     let filteredIndex = packIndex.filter(i => 
         (!specificNames?.length || specificNames.includes(i.name)) &&
-        (!types?.length || types.includes(i.type))
+        (!types?.length || types.includes(i.type)) &&
+        (!actionTypes?.length || actionTypes.includes(i.system.actionType)) &&
+        (!badProperties?.length || badProperties.every(j => !i.system.properties.includes(j)))
     );
     filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'systems/dnd5e/icons/svg/items/weapon.svg'}, {overwrite: !i.img}));

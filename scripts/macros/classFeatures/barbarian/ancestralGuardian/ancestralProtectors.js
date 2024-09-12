@@ -36,7 +36,7 @@ async function early({workflow}) {
     let targetActorUuid = workflow.targets.first().actor.uuid;
     if (originActorUuid === targetActorUuid) return;
     workflow.disadvantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage' + ': ' + origin.name));
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Disadvantage') + ': ' + origin.name);
 }
 async function late({workflow}) {
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
@@ -98,7 +98,7 @@ export let ancestralProtectors = {
 };
 export let ancestralProtectorsTarget = {
     name: 'Ancestral Protectors: Target',
-    verison: ancestralProtectors.version,
+    version: ancestralProtectors.version,
     midi: {
         actor: [
             {

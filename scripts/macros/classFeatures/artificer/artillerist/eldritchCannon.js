@@ -210,7 +210,7 @@ export let eldritchCannon = {
 };
 export let eldritchCannonExplosiveCannon = {
     name: 'Eldritch Cannon: Explosive Cannon',
-    verison: eldritchCannon.version,
+    version: eldritchCannon.version,
     midi: {
         item: [
             {

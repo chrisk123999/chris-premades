@@ -1,0 +1,218 @@
+{
+  "name": "Astral Spark",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 2,
+      "max": "@prof",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "attribute",
+      "target": "",
+      "amount": 1,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "3",
+          "force"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Actor.SBERiQkeg4h7r6ge.Item.ZhhQWQw6EWq6z7Iw"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Astral Spark",
+        "version": "0.12.64",
+        "identifier": "astralSpark",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Astral Spark",
+      "origin": "Compendium.world.cpr-race-features-old.Item.5uyLQNAxxeMPP31W",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/weapons/ammunition/bullets-cartridge-shell-gray.webp",
+      "_id": "0n97jZyBMcQUg1s4",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.optional.AS.label",
+          "mode": 0,
+          "value": "Astral Spark",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.AS.count",
+          "mode": 0,
+          "value": "ItemUses.Astral Spark",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.AS.damage.mwak",
+          "mode": 0,
+          "value": "@prof[force]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.AS.damage.rwak",
+          "mode": 0,
+          "value": "@prof[force]",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.optional.AS.countAlt",
+          "mode": 0,
+          "value": "each-turn",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5uyLQNAxxeMPP31W.0n97jZyBMcQUg1s4"
+    }
+  ],
+  "img": "icons/weapons/ammunition/bullets-cartridge-shell-gray.webp",
+  "folder": "OfaeZhtOEInWlFLd",
+  "_id": "5uyLQNAxxeMPP31W",
+  "_key": "!items!5uyLQNAxxeMPP31W"
+}

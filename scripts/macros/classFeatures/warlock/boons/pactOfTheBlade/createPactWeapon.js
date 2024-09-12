@@ -20,43 +20,19 @@ async function use({workflow}) {
         let packKey = itemUtils.getConfig(workflow.item, 'compendium');
         let customPack = !!packKey?.length;
         if (!customPack) packKey = genericUtils.getCPRSetting('itemCompendium');
-        let weapons = [
-            'Club',
-            'Dagger',
-            'Greatclub',
-            'Handaxe',
-            'Javelin',
-            'Light Hammer',
-            'Mace',
-            'Quarterstaff',
-            'Sickle',
-            'Spear',
-            'Battleaxe',
-            'Flail',
-            'Glaive',
-            'Greataxe',
-            'Greatsword',
-            'Halberd',
-            'Lance',
-            'Longsword',
-            'Maul',
-            'Morningstar',
-            'Pike',
-            'Rapier',
-            'Scimitar',
-            'Shortsword',
-            'Trident',
-            'War Pick',
-            'Warhammer',
-            'Whip'
-        ];
-        if (improvedPactWeapon) {
-            weapons.push('Shortbow', 'Longbow', 'Crossbow, light', 'Crossbow, heavy', 'Light Crossbow', 'Heavy Crossbow');
-        }
         let documents;
         let pack = game.packs.get(packKey);
         if (!pack) return;
-        documents = await compendiumUtils.getFilteredItemDocumentsFromCompendium(packKey, {specificNames: customPack ? [] : weapons, types: ['weapon']});
+        let inputs = {
+            types: ['weapon'],
+            actionTypes: ['mwak'],
+            badProperties: ['mgc']
+        };
+        documents = await compendiumUtils.getFilteredItemDocumentsFromCompendium(packKey, customPack ? {} : inputs);
+        if (!customPack && improvedPactWeapon) {
+            let rangedDocs = await compendiumUtils.getFilteredItemDocumentsFromCompendium(packKey, {specificNames: ['Shortbow', 'Longbow', 'Crossbow, light', 'Crossbow, heavy', 'Light Crossbow', 'Heavy Crossbow'], types: ['weapon']});
+            documents.push(...rangedDocs);
+        }
         let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.CreatePactWeapon.Select', documents, {sortAlphabetical: true});
         if (!selection) return;
         let weaponData = selection.toObject();

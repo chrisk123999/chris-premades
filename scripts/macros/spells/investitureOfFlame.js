@@ -148,7 +148,7 @@ export let investitureOfFlame = {
 };
 export let investitureOfFlameFlaming = {
     name: 'Investiture of Flame: Flaming',
-    verison: investitureOfFlame.version,
+    version: investitureOfFlame.version,
     effect: [
         {
             pass: 'deleted',
