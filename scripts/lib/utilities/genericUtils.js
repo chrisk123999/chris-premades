@@ -21,8 +21,8 @@ function duplicate(object) {
 function deepClone(object) {
     return foundry.utils.deepClone(object);
 }
-function mergeObject(original, other) {
-    return foundry.utils.mergeObject(original, other);
+function mergeObject(original, other, options={}) {
+    return foundry.utils.mergeObject(original, other, options);
 }
 async function update(entity, updates, options={}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);

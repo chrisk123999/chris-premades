@@ -24,9 +24,9 @@ export class Summons {
         for (let sourceActor of sourceActors) {
             trueSourceActors.push(await actorUtils.getSidebarActor(sourceActor, {autoImport: true}));
         }
-        if (!Array.isArray(updates)) updates = [updates];
-        for (let currUpdates of updates) {
-            genericUtils.mergeObject(currUpdates, {actor: {prototypeToken: {actorLink: false}}, token: {actorLink: false}});
+        if (!Array.isArray(updates)) updates = new Array(sourceActors.length).fill(genericUtils.deepClone(updates));
+        for (let [idx, currUpdates] of updates.entries()) {
+            updates[idx] = genericUtils.mergeObject(currUpdates, {actor: {prototypeToken: {actorLink: false}}, token: {actorLink: false}}, {inplace: false});
         }
         let Summon = new Summons(trueSourceActors, updates, originItem, summonerToken, options);
         await Summon.prepareAllData();
@@ -150,7 +150,7 @@ export class Summons {
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
         if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
-        return genericUtils.mergeObject(documentData, updates);
+        return genericUtils.mergeObject(documentData, updates, {inplace: false});
     }
     async prepareAllData() {
         while (this.currentIndex != this.sourceActors.length) {
@@ -256,7 +256,9 @@ export class Summons {
                     system: {
                         attributes: {
                             hp: {
-                                formula: this.hpFormula + ' + ' + wizardLevels
+                                value: this.hpValue + wizardLevels,
+                                formula: this.hpFormula + ' + ' + wizardLevels,
+                                max: this.hpMax + wizardLevels
                             }
                         },
                         bonuses: {
@@ -272,12 +274,25 @@ export class Summons {
             });
         }
         if (itemUtils.getItemByIdentifier(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
-            let formula = this.hpFormula;
-            let hitDieAmount = parseInt(formula.match(/(\d+)d/)[1]);
+            let hitDieAmount = parseInt(this.hpFormula.match(/(\d+)d/)[1]);
             let extraHitPoints;
             if (hitDieAmount) extraHitPoints = hitDieAmount * 2;
             let updates = {};
-            if (extraHitPoints) genericUtils.setProperty(updates, 'actor.system.attributes.hp.formula', formula + ' + ' + extraHitPoints);
+            if (extraHitPoints) {
+                this.mergeUpdates({
+                    actor: {
+                        system: {
+                            attributes: {
+                                hp: {
+                                    value: this.hpValue + extraHitPoints,
+                                    formula: this.hpFormula + ' + ' + extraHitPoints,
+                                    max: this.hpMax + extraHitPoints
+                                }
+                            }
+                        }
+                    }
+                });
+            }
             let items = new Set();
             this.sourceActor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i.toObject()));
             Object?.values(this.updates.actor?.items)?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
@@ -490,8 +505,14 @@ export class Summons {
     get sourceActor() {
         return this.sourceActors[this.currentIndex];
     }
+    get hpValue() {
+        return this.updates.actor?.system?.attributes?.hp?.value ?? this.sourceActor.system.attributes.hp.value;
+    }
     get hpFormula() {
         return this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula;
+    }
+    get hpMax() {
+        return this.updates.actor?.system?.attributes?.hp?.max ?? this.sourceActor.system.attributes.hp.max;
     }
 }
 // Export for helper functions for macro call system.

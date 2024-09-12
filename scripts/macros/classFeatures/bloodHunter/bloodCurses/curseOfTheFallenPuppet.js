@@ -3,9 +3,7 @@ import {actorUtils, crosshairUtils, dialogUtils, effectUtils, genericUtils, item
 async function late({trigger: {entity: item, token}, workflow}) {
     if (actorUtils.hasUsedReaction(token.actor)) return;
     let bloodMaledict = itemUtils.getItemByIdentifier(workflow.actor, 'bloodMaledict');
-    if (!bloodMaledict?.system.uses.value) {
-        genericUtils.notify('CHRISPREMADES.Generic.NoMoreResource', 'info');
-    }
+    if (!bloodMaledict?.system.uses.value) return;
     let userId = socketUtils.firstOwner(token.actor, true);
     let newlyDeadList = workflow.damageList?.filter(i => i.newHP === 0 && i.oldHP > 0);
     let possibleTokens = newlyDeadList?.map(i => token.scene.tokens.get(i.tokenId)?.object)?.filter(j => j);
