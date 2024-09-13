@@ -83,28 +83,8 @@
     }
   },
   "flags": {
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Artificer"
-      }
-    },
     "core": {
       "sourceId": "Actor.ZSGe4s8sP4rFN2Al.Item.9dWkJHme563QpeMa"
-    },
-    "magicitems": {
-      "enabled": false,
-      "equipped": false,
-      "attuned": false,
-      "charges": "0",
-      "chargeType": "c1",
-      "destroy": false,
-      "destroyFlavorText": "reaches 0 charges: it crumbles into ashes and is destroyed.",
-      "rechargeable": false,
-      "recharge": "0",
-      "rechargeType": "t1",
-      "rechargeUnit": "r1",
-      "sorting": "l"
     },
     "midi-qol": {
       "effectActivation": false,

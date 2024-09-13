@@ -86,18 +86,9 @@
     "source": {}
   },
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Cleric"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "onUseMacroName": "[postActiveEffects]ItemMacro",
+      "onUseMacroName": "",
       "forceCEOff": true,
       "rollAttackPerTarget": "default",
       "itemCondition": "",
@@ -145,9 +136,6 @@
           "duplicateSource": null
         }
       }
-    },
-    "dnd5e": {
-      "advancementOrigin": "mMitAishljuuxgML"
     },
     "chris-premades": {
       "info": {

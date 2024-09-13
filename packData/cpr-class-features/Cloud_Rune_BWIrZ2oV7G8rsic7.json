@@ -81,15 +81,6 @@
     "source": {}
   },
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Fighter"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
@@ -112,9 +103,6 @@
       "idi": false,
       "idv": false,
       "ida": false
-    },
-    "dnd5e": {
-      "advancementOrigin": "eJaXFz8gr0YJk6Kf"
     },
     "chris-premades": {
       "info": {
@@ -180,22 +168,6 @@
         },
         "core": {
           "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
         }
       },
       "_stats": {

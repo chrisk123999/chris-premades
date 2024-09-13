@@ -86,12 +86,6 @@
     }
   },
   "flags": {
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Cleric"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true,
@@ -118,9 +112,6 @@
     "dae": {
       "alwaysActive": false,
       "activeEquipped": false
-    },
-    "dnd5e": {
-      "advancementOrigin": "mMitAishljuuxgML"
     },
     "chris-premades": {
       "info": {

@@ -109,14 +109,6 @@
     }
   },
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "other"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "fumbleThreshold": null,

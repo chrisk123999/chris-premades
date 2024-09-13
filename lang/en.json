@@ -823,6 +823,9 @@
                 "Sight": "Sight",
                 "Smell": "Smell"
             },
+            "LabyrinthineRecall": {
+                "Skill": "This check is to navigate or track"
+            },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
                 "RemoveCondition": "Remove a Condition:",
@@ -877,6 +880,11 @@
                 "NoNearby": "No nearby targets to grasp!",
                 "Overtime": "Maximilian's Earthen Grasp: Break Free",
                 "Select": "Select a target to grasp:"
+            },
+            "MetallicBreathWeapon": {
+                "Enervating": "Enervating Breath",
+                "Repulsion": "Repulsion Breath",
+                "Select": "Which type of breath weapon?"
             },
             "Metamagic": {
                 "CarefulWhich": "Which targets automatically save? (Max {max})",
@@ -1906,6 +1914,7 @@
                 "ShadowSpiritDespair": "Shadow Spirit (Despair)",
                 "ShadowSpiritFear": "Shadow Spirit (Fear)",
                 "ShadowSpiritFury": "Shadow Spirit (Fury)",
+                "Shifter": "Shifter",
                 "Skeleton": "Skeleton",
                 "SpiritualWeapon": "Spiritual Weapon",
                 "Steed": "Steed",

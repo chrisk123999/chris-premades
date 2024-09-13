@@ -88,14 +88,6 @@
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.actions.help",
-            "option": "postActiveEffects"
-          }
-        }
-      },
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""

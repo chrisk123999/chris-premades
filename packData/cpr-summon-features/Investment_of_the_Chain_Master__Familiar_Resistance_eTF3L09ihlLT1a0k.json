@@ -75,15 +75,6 @@
     "properties": []
   },
   "flags": {
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Warlock"
-      }
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": ""
@@ -132,9 +123,6 @@
       "origin": null,
       "tint": "#ffffff",
       "flags": {
-        "dfreds-convenient-effects": {
-          "description": ""
-        },
         "dae": {
           "selfTarget": false,
           "selfTargetAlways": false,
@@ -147,19 +135,6 @@
         },
         "core": {
           "statusId": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false
         }
       },
       "name": "Investment of the Chain Master: Familiar Resistance",

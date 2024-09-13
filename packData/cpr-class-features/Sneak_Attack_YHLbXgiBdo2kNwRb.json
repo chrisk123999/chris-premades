@@ -247,15 +247,6 @@
       "effectsApplied": true,
       "importId": "PfBhHAttKP8nGBdS"
     },
-    "infusions": {
-      "infused": false
-    },
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Rogue"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "forceCEOff": true,
@@ -306,9 +297,6 @@
         }
       }
     },
-    "dnd5e": {
-      "advancementOrigin": "8hechr6jBH1CEojk"
-    },
     "chris-premades": {
       "info": {
         "identifier": "sneakAttack",
@@ -329,9 +317,6 @@
       "sneakAttack": {
         "turn": ""
       }
-    },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
     }
   },
   "effects": [],

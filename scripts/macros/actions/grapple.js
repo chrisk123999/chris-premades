@@ -14,6 +14,13 @@ async function use({trigger, workflow}) {
     let targetUser = socketUtils.firstOwner(targetToken);
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Grapple.ChooseSkill', inputs, {displayAsRows: true, userId: targetUser.id});
     if (!selection) return;
+    // TODO: more generic version of this? Does it come up elsewhere?
+    let sourceRollOptions, targetRollOptions;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'amorphous')) {
+        sourceRollOptions = {
+            advantage: true
+        };
+    }
     if (selection != 'skip') {
         let result = await rollUtils.contestedRoll({
             sourceToken: workflow.token, 
@@ -21,7 +28,9 @@ async function use({trigger, workflow}) {
             sourceRollType: 'skill', 
             targetRollType: 'skill', 
             sourceAbilities: ['ath'], 
-            targetAbilities: [selection]
+            targetAbilities: [selection],
+            sourceRollOptions,
+            targetRollOptions
         });
         if (result <= 0) return;
     }
@@ -107,13 +116,22 @@ async function escape({workflow}) {
     let inputs = [[CONFIG.DND5E.skills.ath.label, 'ath'], [CONFIG.DND5E.skills.acr.label, 'acr']];
     let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Grapple.ChooseSkillEscape', inputs, {displayAsRows: true});
     if (!selection) return;
+    // TODO: more generic version of this? Does it come up elsewhere?
+    let sourceRollOptions, targetRollOptions;
+    if (itemUtils.getItemByIdentifier(workflow.actor, 'amorphous')) {
+        sourceRollOptions = {
+            advantage: true
+        };
+    }
     let result = await rollUtils.contestedRoll({
         sourceToken: workflow.token, 
         targetToken, 
         sourceRollType: 'skill', 
         targetRollType: 'skill', 
         sourceAbilities: [selection], 
-        targetAbilities: ['ath']
+        targetAbilities: ['ath'],
+        sourceRollOptions,
+        targetRollOptions
     });
     if (result <= 0) return;
     let effect = grappledEffects.find(i => i.flags['chris-premades'].grapple.tokenId === targetToken.id);

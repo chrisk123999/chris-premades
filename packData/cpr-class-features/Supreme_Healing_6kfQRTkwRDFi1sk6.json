@@ -86,12 +86,6 @@
     }
   },
   "flags": {
-    "obsidian": {
-      "source": {
-        "type": "class",
-        "text": "Cleric"
-      }
-    },
     "midi-qol": {
       "removeAttackDamageButtons": "default",
       "rollAttackPerTarget": "default",
