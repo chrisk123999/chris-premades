@@ -17,7 +17,9 @@ export let keenSenses = {
     version: '0.12.0',
     skill: [
         {
-            macro: skill
+            pass: 'context',
+            macro: skill,
+            priority: 50
         }
     ],
     isGenericFeature: true,

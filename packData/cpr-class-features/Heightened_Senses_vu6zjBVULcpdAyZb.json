@@ -117,6 +117,11 @@
         "version": "0.12.64",
         "identifier": "heightenedSenses",
         "source": "chris-premades"
+      },
+      "macros": {
+        "skill": [
+          "heightenedSenses"
+        ]
       }
     }
   },

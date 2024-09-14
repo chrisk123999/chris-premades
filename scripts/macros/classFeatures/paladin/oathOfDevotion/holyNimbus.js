@@ -1,8 +1,6 @@
 import {compendiumUtils, constants, effectUtils, errors, itemUtils, workflowUtils} from '../../../../utils.js';
-
-async function save(actor) {
-    let effect = effectUtils.getEffectByIdentifier(actor, 'holyNimbus');
-    if (effect) return {label: 'CHRISPREMADES.Macros.HolyNimbus.Save', type: 'advantage'};
+async function save({trigger}) {
+    return {label: 'CHRISPREMADES.Macros.HolyNimbus.Save', type: 'advantage'};
 }
 async function use({workflow}) {
     let effectData = {
@@ -38,7 +36,7 @@ async function turnStart({trigger: {token, target}}) {
 }
 export let holyNimbus = {
     name: 'Holy Nimbus',
-    version: '0.12.24',
+    version: '0.12.64',
     midi: {
         item: [
             {
@@ -50,7 +48,9 @@ export let holyNimbus = {
     },
     save: [
         {
-            macro: save
+            pass: 'context',
+            macro: save,
+            priority: 50
         }
     ]
 };

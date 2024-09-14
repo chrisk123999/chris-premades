@@ -1,39 +1,43 @@
 import {itemUtils} from '../../../utils.js';
-async function skill(actor, skillId, identifier) {
-    let item = itemUtils.getItemByIdentifier(actor, identifier);
+async function skill({trigger}, identifier) {
+    let item = itemUtils.getItemByIdentifier(trigger.actor, identifier);
     if (!item) return;
     if (!itemUtils.getEquipmentState(item)) return;
     let validTypes = [
         'inv',
         'prc'
     ];
-    if (!validTypes.includes(skillId)) return;
+    if (!validTypes.includes(trigger.skillId)) return;
     return {label: 'CHRISPREMADES.Macros.DanothsVisor.Check', type: 'advantage'};
 }
-async function skillD(actor, skillId) {
-    return await skill(actor, skillId, 'danothsVisorD');
+async function skillD({trigger}) {
+    return await skill({trigger}, 'danothsVisorD');
 }
-async function skillA(actor, skillId) {
-    return await skill(actor, skillId, 'danothsVisorA');
+async function skillA({trigger}) {
+    return await skill({trigger}, 'danothsVisorA');
 }
-async function skillE(actor, skillId) {
-    return await skill(actor, skillId, 'danothsVisorE');
+async function skillE({trigger}) {
+    return await skill({trigger}, 'danothsVisorE');
 }
 export let danothsVisorD = {
     name: 'Danoth\'s Visor (Dormant)',
-    version: '0.12.42',
+    version: '0.12.64',
     skill: [
         {
-            macro: skillD
+            pass: 'context',
+            macro: skillD,
+            priority: 50
         }
     ]
 };
 export let danothsVisorA = {
     name: 'Danoth\'s Visor (Awakened)',
-    version: '0.12.42',
+    version: '0.12.64',
     skill: [
         {
-            macro: skillA
+            pass: 'context',
+            macro: skillA,
+            priority: 50
         }
     ],
     equipment: {
@@ -59,10 +63,12 @@ export let danothsVisorA = {
 };
 export let danothsVisorE = {
     name: 'Danoth\'s Visor (Exalted)',
-    version: '0.12.42',
+    version: '0.12.64',
     skill: [
         {
-            macro: skillE
+            pass: 'context',
+            macro: skillE,
+            priority: 50
         }
     ],
     equipment: {

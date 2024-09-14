@@ -141,8 +141,13 @@
     "chris-premades": {
       "info": {
         "identifier": "danothsVisorA",
-        "version": "0.12.42",
+        "version": "0.12.64",
         "source": "chris-premades"
+      },
+      "macros": {
+        "skill": [
+          "danothsVisorD"
+        ]
       }
     }
   },

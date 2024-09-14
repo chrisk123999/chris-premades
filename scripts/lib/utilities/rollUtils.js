@@ -91,11 +91,16 @@ async function rollDice(formula, {actor, chatMessage, flavor} = {}) {
 async function damageRoll(formula, actor, options = {}) {
     return await new CONFIG.Dice.DamageRoll(formula, actor.getRollData(), options).evaluate();
 }
+async function addToRoll(roll, formula, {rollData} = {}) {
+    let bonusRoll = await new Roll(formula, rollData).evaluate();
+    return MidiQOL.addRollTo(roll, bonusRoll);
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
     getChangedDamageRoll,
     requestRoll,
     rollDice,
-    damageRoll
+    damageRoll,
+    addToRoll
 };

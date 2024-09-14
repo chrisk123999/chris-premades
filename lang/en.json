@@ -324,6 +324,11 @@
             "BeguilingTwist": {
                 "Select": "Which Condition?"
             },
+            "Berserk": {
+                "Animation": "Berserk Animation:",
+                "DiceFormula": "Dice Roll Formula:",
+                "HPThreshold": "HP Threshold:"
+            },
             "BestialSoul": {
                 "Already": "You already have a Bestial Soul benefit active!",
                 "Climbing": "Climbing",
@@ -819,6 +824,7 @@
             },
             "KeenSenses": {
                 "Check": "This check relies on: ",
+                "DiceThreshold": "Dice Roll Threshold:",
                 "Hearing": "Hearing",
                 "Sight": "Sight",
                 "Smell": "Smell"

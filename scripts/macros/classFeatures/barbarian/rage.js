@@ -272,13 +272,13 @@ async function end({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'rage');
     if (effect) await genericUtils.remove(effect);
 }
-async function start({trigger: {entity: effect}}) {
+async function start({trigger: {entity: effect}}, {overrideAnimation = undefined} = {}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
     let playAnimation = itemUtils.getConfig(originItem, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     if (!playAnimation) return;
     if (effect.flags['chris-premades']?.enlargeReduce) await enlargeReduceStart({trigger: {entity: effect}});
-    let animation = itemUtils.getConfig(originItem, 'animation');
+    let animation = overrideAnimation ?? itemUtils.getConfig(originItem, 'animation');
     if (animation === 'none') return;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;

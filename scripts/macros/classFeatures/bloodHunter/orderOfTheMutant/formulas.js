@@ -1,5 +1,4 @@
 import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let positiveEffectData = {
         name: workflow.item.name + ': ' + genericUtils.translate('CHRISPREMADES.Macros.Mutagencraft.Positive'),
@@ -251,6 +250,7 @@ async function use({workflow}) {
             ];
             negativeEffectData.changes = [];
             effectUtils.addMacro(negativeEffectData, 'midi.actor', ['formulaNighteye']);
+            effectUtils.addMacro(positiveEffectData, 'skill', ['formulaNighteye']);
             break;
         case 'formulaPercipient':
             positiveEffectData.changes = [
@@ -427,8 +427,7 @@ async function earlyNighteye({trigger: {entity: effect}, workflow}) {
 }
 async function skillNighteye(actor, skillId) {
     if (skillId !== 'prc') return;
-    let effect = effectUtils.getEffectByIdentifier(actor, 'formulaNighteyeNegative');
-    if (effect && effect.active) return {label: genericUtils.format('CHRISPREMADES.Macros.Mutagencraft.SkillSunlight', {actorName: actor.name}), type: 'disadvantage'};
+    return {label: genericUtils.format('CHRISPREMADES.Macros.Mutagencraft.SkillSunlight', {actorName: actor.name}), type: 'disadvantage'};
 }
 async function turnStartReconstruction({trigger: {token}}) {
     let actor = token.actor;
@@ -511,7 +510,9 @@ export let formulaNighteye = {
     },
     skill: [
         {
-            macro: skillNighteye
+            pass: 'context',
+            macro: skillNighteye,
+            priority: 50
         }
     ]
 };

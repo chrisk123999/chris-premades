@@ -89,9 +89,14 @@
     "chris-premades": {
       "info": {
         "name": "Danger Sense",
-        "version": "0.12.20",
+        "version": "0.12.64",
         "identifier": "dangerSense",
         "source": "chris-premades"
+      },
+      "macros": {
+        "save": [
+          "dangerSense"
+        ]
       }
     },
     "midiProperties": {

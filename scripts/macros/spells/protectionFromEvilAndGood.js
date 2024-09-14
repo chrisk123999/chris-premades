@@ -1,14 +1,14 @@
-import {effectUtils} from '../../utils.js';
-async function save(actor, saveId, options) {
-    let effect = effectUtils.getEffectByIdentifier(actor, 'protectionFromEvilAndGood');
-    if (effect && effect.active) return {label: 'CHRISPREMADES.Macros.ProtectionFromEvilAndGood.Save', type: 'advantage'};
+async function save({trigger}) {
+    return {label: 'CHRISPREMADES.Macros.ProtectionFromEvilAndGood.Save', type: 'advantage'};
 }
 export let protectionFromEvilAndGood = {
     name: 'Protection from Evil and Good',
-    version: '0.12.0',
+    version: '0.12.64',
     save: [
         {
-            macro: save
+            pass: 'context',
+            macro: save,
+            priority: 50
         }
     ]
 };

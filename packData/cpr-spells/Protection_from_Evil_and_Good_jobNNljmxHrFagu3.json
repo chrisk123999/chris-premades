@@ -131,6 +131,11 @@
         "chris-premades": {
           "info": {
             "identifier": "protectionFromEvilAndGood"
+          },
+          "macros": {
+            "save": [
+              "protectionFromEvilAndGood"
+            ]
           }
         }
       },
@@ -144,8 +149,8 @@
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
         "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "modifiedTime": 1726276749810,
+        "lastModifiedBy": "Sxnc2j6hSZtjzxy2"
       },
       "img": "icons/magic/defensive/shield-barrier-flaming-diamond-blue-yellow.webp",
       "type": "base",
@@ -190,7 +195,7 @@
     "chris-premades": {
       "info": {
         "name": "Protection from Evil and Good",
-        "version": "0.12.0",
+        "version": "0.12.64",
         "settings": [
           "Protection from Evil and Good"
         ],

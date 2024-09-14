@@ -409,6 +409,7 @@ export {windwrightsIntuition} from './macros/raceFeatures/halfElf/markOfStorm/wi
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
 // Generic Monster Features
+export {berserk} from './macros/monsterFeatures/generic/berserk.js';
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 // Actions

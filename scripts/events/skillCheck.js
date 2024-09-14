@@ -1,17 +1,146 @@
 import {DialogApp} from '../applications/dialog.js';
 import {custom} from './custom.js';
-import * as macros from '../macros.js';
-import {genericUtils} from '../utils.js';
-let skillMacros = [];
-function ready() {
-    skillMacros = Object.values(macros).filter(i => i.skill).flatMap(j => j.skill).map(k => k.macro);
-    skillMacros.push(...custom.customMacroList.filter(i => i.skill).flatMap(j => j.skill).map(k => k.macro));
+import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
+function getMacroData(entity) {
+    return entity.flags['chris-premades']?.macros?.skill ?? [];
+}
+function collectMacros(entity) {
+    let macroList = [];
+    macroList.push(...getMacroData(entity));
+    if (!macroList.length) return [];
+    return macroList.map(i => custom.getMacro(i)).filter(j => j);
+}
+function collectActorSkillMacros(actor, pass, skillId, options, roll) {
+    let triggers = [];
+    let effects = actorUtils.getEffects(actor);
+    let token = actorUtils.getFirstToken(actor);
+    for (let effect of effects) {
+        let macroList = collectMacros(effect);
+        if (!macroList.length) continue;
+        let effectMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
+        effectMacros.forEach(i => {
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castData: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macro: i.macro,
+                name: effect.name,
+                priority: i.priority,
+                actor: actor,
+                custom: i.custom,
+                skillId: skillId,
+                options: options,
+                roll: roll
+            });
+        });
+    }
+    for (let item of actor.items) {
+        let macroList = collectMacros(item);
+        if (!macroList.length) continue;
+        let itemMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
+        itemMacros.forEach(i => {
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: -1,
+                    saveDC: itemUtils.getSaveDC(item)
+                },
+                macro: i.macro,
+                name: item.name,
+                priority: i.priority,
+                actor: actor,
+                custom: i.custom,
+                skillId: skillId,
+                options: options,
+                roll: roll
+            });
+        });
+    }
+    if (token) {
+        let templates = templateUtils.getTemplatesInToken(token);
+        for (let template of templates) {
+            let macroList = collectMacros(template);
+            if (!macroList.length) continue;
+            let templateMacros = macroList.filter(i => i.skill?.find(j => j.pass === pass)).flatMap(k => k.skill).filter(l => l.pass === pass);
+            templateMacros.forEach(i => {
+                triggers.push({
+                    entity: template,
+                    castData: {
+                        castLevel: templateUtils.getCastLevel(template),
+                        baseLevel: templateUtils.getBaseLevel(template),
+                        saveDC: templateUtils.getSaveDC(template)
+                    },
+                    macro: i.macro,
+                    name: templateUtils.getName(template),
+                    priority: i.priority,
+                    actor: actor,
+                    custom: i.custom,
+                    skillId: skillId,
+                    options: options,
+                    roll: roll
+                });
+            });
+        }
+    }
+    return triggers;
+}
+function getSortedTriggers(actor, pass, skillId, options, roll) {
+    let allTriggers = collectActorSkillMacros(actor, pass, skillId, options, roll);
+    let names = new Set(allTriggers.map(i => i.name));
+    allTriggers = Object.fromEntries(names.map(i => [i, allTriggers.filter(j => j.name === i)]));
+    let maxMap = {};
+    names.forEach(i => {
+        let maxLevel = Math.max(...allTriggers[i].map(i => i.castData.castLevel));
+        let maxDC = Math.max(...allTriggers[i].map(i => i.castData.saveDC));
+        maxMap[i] = {
+            maxLevel: maxLevel,
+            maxDC: maxDC
+        };
+    });
+    let triggers = [];
+    names.forEach(i => {
+        let maxLevel = maxMap[i].maxLevel;
+        let maxDC = maxMap[i].maxDC;
+        let maxDCTrigger = allTriggers[i].find(j => j.castData.saveDC === maxDC);
+        let selectedTrigger;
+        if (maxDCTrigger.castData.castLevel === maxLevel) {
+            selectedTrigger = maxDCTrigger;
+        } else {
+            selectedTrigger = allTriggers[i].find(j => j.castData.castLevel === maxLevel);
+        }
+        triggers.push(selectedTrigger);
+    });
+    return triggers.sort((a, b) => a.priority - b.priority);
+}
+async function executeMacro(trigger) {
+    genericUtils.log('dev', 'Executing Save Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    let result;
+    try {
+        result = await trigger.macro({trigger});
+    } catch (error) {
+        //Add some sort of ui notice here. Maybe even some debug info?
+        console.error(error);
+    }
+    return result;
+}
+async function executeContextMacroPass(actor, pass, skillId, options) {
+    genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
+    let triggers = getSortedTriggers(actor, pass, skillId, options);
+    let results = [];
+    for (let i of triggers) results.push(await executeMacro(i));
+    return results.filter(i => i);
+}
+async function executeMacroPass(actor, pass, skillId, options, roll) {
+    genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll);
+    for (let i of triggers) await executeMacro(i);
 }
 async function rollSkill(wrapped, skillId, options = {}) {
-    let selections = await Promise.all(skillMacros.map(async macro => {
-        return await macro(this, skillId, options);
-    }));
-    selections = selections.filter(i => !!i);
+    await executeMacroPass(this, 'situational', skillId, options);
+    let selections = await executeContextMacroPass(this, 'context', skillId, options);
     if (selections.length) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
@@ -32,6 +161,8 @@ async function rollSkill(wrapped, skillId, options = {}) {
         }
     }
     let returnData = await wrapped(skillId, options);
+    await executeMacroPass(this, 'bonus', skillId, options, returnData);
+    //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
     return returnData;
 }
 function patch(enabled) {
@@ -44,6 +175,5 @@ function patch(enabled) {
     }
 }
 export let skillCheck = {
-    ready,
     patch
 };

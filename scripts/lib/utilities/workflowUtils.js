@@ -12,13 +12,8 @@ async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={
     await workflow.setDamageRolls(workflow.damageRolls);
 }
 async function bonusAttack(workflow, formula) {
-    let roll = await new Roll('0 + ' + formula, workflow.actor.getRollData()).evaluate();
-    for (let i = 1; i < roll.terms.length; i++) {
-        workflow.attackRoll.terms.push(roll.terms[i]);
-    }
-    workflow.attackRoll._total += roll.total;
-    workflow.attackRoll._formula += formula;
-    await workflow.setAttackRoll(workflow.attackRoll);
+    let roll = await rollUtils.addToRoll(workflow.attackRoll, formula, {rollData: workflow.actor.getRollData()});
+    await workflow.setAttackRoll(roll);
 }
 async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType} = {}) {
     formula = String(formula);

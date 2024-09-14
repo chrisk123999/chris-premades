@@ -32,7 +32,6 @@ import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
-import {spellList} from './extensions/spellList.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -50,8 +49,6 @@ Hooks.once('init', () => {
 });
 Hooks.once('ready', () => {
     custom.ready();
-    abilitySave.ready();
-    skillCheck.ready();
     effectEvents.ready();
     troubleshooter.startup();
     workflow.setup();

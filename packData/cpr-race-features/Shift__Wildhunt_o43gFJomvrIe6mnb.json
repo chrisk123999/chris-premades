@@ -133,12 +133,6 @@
     "core": {
       "sourceId": "Actor.puGSiHPeQ84EYsl3.Item.5EBqsyv7gyboU0tl"
     },
-    "exportSource": {
-      "world": "homebrew",
-      "system": "dnd5e",
-      "coreVersion": "10.291",
-      "systemVersion": "2.1.4"
-    },
     "chris-premades": {
       "info": {
         "name": "Shift - Wildhunt",

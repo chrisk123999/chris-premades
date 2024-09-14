@@ -7,27 +7,27 @@ Goals:
 - Move config bits into individual macro files
 
 ## To do list: (x: done, /: halfway, ?: unsure)
-[x] Create system for calling macros within a queue
-[x] Additional compendiums Appv2
-[x] Remake medkit config w/ Appv2
-- [x] Function to match name of item w/ all available automations
-- [x] Functions to grab current versioning data
-- [x] App class itself
-    - [x] Handlbars templates for header, navigation, each tab
-    - [x] Functionality to select avail automation and apply it
-    - [x] Likely a bunch of CSS
-        - [x] Lay out header and info tab better
-        - [x] Give navigation some spacing and definition WITHOUT killing the good parts of the native CSS
-        - [x] Make header not ugly (font etc)
-        - [!] Make tooltips a little smaller? - can't really, the display for them is just on the overall window, not the apps themselves...
-    - [x] onFormChange correctly setting the value of each input in the internal context
-    - [x] confirm button to set config info on item
-    - [x] Determine if things are touchable based off permissions, set tooltip if not
-    - [ ] Improve devTools tab
-        - [x] Field to add Item and Actor on use macros, turn it into an array.
-        - [ ] (optional?) Button to clear configs
-        - [x] fields to set identifier and other bits but with it prefilled
-[x] Effect Medkit
+- [x] Create system for calling macros within a queue
+- [x] Additional compendiums Appv2
+- [x] Remake medkit config w/ Appv2
+    - [x] Function to match name of item w/ all available automations
+    - [x] Functions to grab current versioning data
+    - [x] App class itself
+        - [x] Handlbars templates for header, navigation, each tab
+        - [x] Functionality to select avail automation and apply it
+        - [x] Likely a bunch of CSS
+            - [x] Lay out header and info tab better
+            - [x] Give navigation some spacing and definition WITHOUT killing the good parts of the native CSS
+            - [x] Make header not ugly (font etc)
+            - [!] Make tooltips a little smaller? - can't really, the display for them is just on the overall window, not the apps themselves...
+        - [x] onFormChange correctly setting the value of each input in the internal context
+        - [x] confirm button to set config info on item
+        - [x] Determine if things are touchable based off permissions, set tooltip if not
+        - [ ] Improve devTools tab
+            - [x] Field to add Item and Actor on use macros, turn it into an array.
+            - [ ] (optional?) Button to clear configs
+            - [x] fields to set identifier and other bits but with it prefilled
+- [x] Effect Medkit
     - [x] Main tab 
         - [x] {{selectMultiple}} for flags.chris-premades.conditions generated from CONFIG.statusEffects, 
         - [x] checkbox for flags.chris-premades.noAnimation
@@ -36,12 +36,12 @@ Goals:
     - [x] DevTools tab to set flags on effect
     - [x] Colorize effect medkit
     - [x] Add dev tools part for `effect.flags['chris-premades']?.macros?.midi?.actor`
-[ ] Actor Medkit
+- [ ] Actor Medkit
     - [x] Character tab
     - [ ] NPC tab
     - [x] Summary tab
-[ ] Convert all helper functions
-[ ] Summons
+- [ ] Convert all helper functions
+- [ ] Summons
     - [x] Main Summons class, spawning, effects, dependents, initiative, despawning
     - [ ] helper functions
         - [x] Get attack modifiers/spell save DCs
@@ -49,32 +49,34 @@ Goals:
         - [ ] Token config getters?
         - [x] Item getter? (itemName, {updates}) will get item, description, and then merge its updates
         - [ ] No target option and set height to 0.001, 'flags.wall-height.tokenHeight', 0.001
+  
 ## Replace old dependencies
 ### Warpgate
-[x] warpgate.wait() - now genericUtils.sleep
-[x] warpgate.spawn()
+- [x] warpgate.wait() - now genericUtils.sleep
+- [x] warpgate.spawn()
     - [x] Helper functions spawn function
         - [x] spawning part
     - [x] Convert summons.js and tashaSummon.js and merge what's possible
-[x] warpgate.menu()/dialog() - now DialogApp / dialogUtils
-[x] warpgate.crosshairs() - now Crosshairs
-[ ] warpgate.mutate()
+- [x] warpgate.menu()/dialog() - now DialogApp / dialogUtils
+- [x] warpgate.crosshairs() - now Crosshairs
+- [ ] warpgate.mutate()
 ### Dfred's CE
-[x] Effect sidebar thing
-[x] Effect thing or macro.StatusEffect
+- [x] Effect sidebar thing
+- [x] Effect thing or macro.StatusEffect
 ### Token Attacher
-[x] Attachng templates
+- [x] Attachng templates
 ### Automated Animations
-[x] Teleport function
+- [x] Teleport function
 ### Effect Macro
-[x] Replaced by internal hook calls
+- [x] Replaced by internal hook calls
+  
 ## Convert/update/fix all old functions
-[x] Spells
-[ ] Class features
-    - [ ] Chris starting at the bottom, Michael starting at the top
-    - [x] Redo artificer infusions and items that add items
-[ ] Items
-[ ] Monster Features
+- [x] Spells
+- [ ] Class features
+    - [x] Official content
+    - [ ] Critical role content (blood hunter and gunslinger)
+- [ ] Items
+- [ ] Monster Features
     - [ ] Actual one-off features
         - [ ] Autognome malfunction
         - [ ] Bulette Deadly leap
@@ -89,7 +91,7 @@ Goals:
         - [ ] Shader-kai soul monger soul thirst
         - [ ] Trixie tockworth force field
     - [ ] Generic features
-        - [ ] Keen hearing/smell/sight {skill, label {sight, hearing, smell}}
+        - [x] Keen hearing/smell/sight {skill, label {sight, hearing, smell}}
         - [ ] Berserk (Hit point amount, die roll, on a) (Golems)
         - [ ] Can see eyes on the start of turn... (ie Bodak Death Gaze) (save, if fails by 5 or more, damage, distance)
         - [ ] Fails by 5 or more (immunity to condition, callback function (reduce to 0hp, falls unconscious))
@@ -118,7 +120,7 @@ Goals:
         - [ ] Strength drain (roll for drain, short/long rest)
         - [ ] Different damage if advantage on the attack (shadow demon claws)
         - [ ] Engulf (rug of smothering, shambling mound)
-        - [ ] Undead fortitude 
+        - [x] Undead fortitude 
   
 ## Extensions
 [ ] Folder maker for summons?

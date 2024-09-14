@@ -119,7 +119,8 @@
         "name": "Blessing of the Raven Queen",
         "version": "0.12.64",
         "identifier": "blessingOfTheRavenQueen",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

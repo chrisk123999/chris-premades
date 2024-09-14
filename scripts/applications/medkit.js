@@ -270,6 +270,15 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                                     config.isText = true;
                                     break;
                                 }
+                                case 'number': {
+                                    config.isNumber = true;
+                                    break;
+                                }
+                                case 'select': {
+                                    config.isSelect = true;
+                                    config.options = configBase.options.map(i => {i.isSelected = i.value === config?.value; return i;});
+                                    break;
+                                }
                                 case 'damageTypes': {
                                     config.isSelectMany = true;
                                     config.options = Object.entries(CONFIG.DND5E.damageTypes).filter(([key, value]) => !key.toLowerCase().includes('none')).map(([key, value]) => ({
@@ -313,6 +322,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 movement: JSON?.stringify(item.flags?.['chris-premades']?.macros?.movement) ?? '',
                 rest: JSON?.stringify(item.flags?.['chris-premades']?.macros?.rest) ?? '',
                 equipment: item.flags?.['chris-premades']?.equipment?.identifier ?? '',
+                skill: JSON?.stringify(item.flags?.['chris-premades']?.macros?.skill) ?? '',
+                save: JSON?.stringify(item.flags?.['chris-premades']?.macros?.save) ?? '',
                 config: macroInfo?.config
             };
             genericUtils.setProperty(context, 'devTools', devTools);
@@ -439,6 +450,26 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (devTools.equipment != '') {
                 await item.setFlag('chris-premades', 'macros.equipment', devTools.equipment);
             }
+            if (devTools.save != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.save.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Save field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.save', value);
+            }
+            if (devTools.skill != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.skill.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Skill field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.skill', value);
+            }
         }
         if (category) {
             let configs = {};
@@ -449,12 +480,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             await item.setFlag('chris-premades', 'config', configs);
         }
-        if (genericFeatures) {
+        if (genericFeatures) { // This whole section needs help 
             await item.unsetFlag('chris-premades', 'config.generic');
             // Remove ALL generic flags from the macros flags
             let itemFlags = item.flags['chris-premades'];
             if (itemFlags?.macros) Object.entries(itemFlags.macros).forEach(async ([key, value]) => {
-                if (value instanceof Object) {
+                if (value instanceof Object && !(value instanceof Array)) {
                     Object.entries(value).forEach(async ([flagKey, flagValue]) => {
                         Object.values(genericFeatures.configs).forEach(async option => {
                             let index = flagValue.indexOf(option.id);
@@ -488,7 +519,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return genericConfigs;
             }, {});
             if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
-            Object.keys(genericConfigs).forEach(async i => {
+            Object.keys(genericConfigs).forEach(async i => { // Has to be a better way to do this?
                 let macroInfo = macros[i];
                 if (macroInfo?.midi?.actor) {
                     if (item?.flags['chris-premades']?.macros?.midi?.actor) {
@@ -519,6 +550,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     if (item?.flags['chris-premades']?.macros?.rest) {
                         await item.setFlag('chris-premades', 'macros.rest', item.flags['chris-premades'].macros.rest.concat([i]));
                     } else await item.setFlag('chris-premades', 'macros.rest', [i]);
+                }
+                if (macroInfo?.save) {
+                    if (item?.flags['chris-premades']?.macros?.save) {
+                        await item.setFlag('chris-premades', 'macros.save', item.flags['chris-premades'].macros.save.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.save', [i]);
+                }
+                if (macroInfo?.skill) {
+                    if (item?.flags['chris-premades']?.macros?.skill) {
+                        await item.setFlag('chris-premades', 'macros.skill', item.flags['chris-premades'].macros.skill.concat([i]));
+                    } else await item.setFlag('chris-premades', 'macros.skill', [i]);
                 }
             });
         }
@@ -639,7 +680,13 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     option.value = event.target.checked;
                     break;
                 }
-                case 'text': {
+                case 'text':
+                case 'number': {
+                    option.value = event.target.value;
+                    break;
+                }
+                case 'select-one': {
+                    option.options.forEach(i => event.target.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
                     option.value = event.target.value;
                     break;
                 }
