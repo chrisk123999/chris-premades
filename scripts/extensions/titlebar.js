@@ -63,6 +63,9 @@ export async function renderItemSheet(app, [elem], options) {
             if (availableItem) headerButton.style.color = 'yellow';
             return;
         }
+        case 2: {
+            headerButton.style.color = 'dodgerblue';
+        }
     }
 }
 export async function renderEffectConfig(app, [elem], options) {

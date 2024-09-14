@@ -6,7 +6,6 @@ async function createToken(token, options, userId) {
     let mode = genericUtils.getCPRSetting('addActions');
     let link = token.actor.prototypeToken.actorLink;
     if (mode < 7) {
-        console.log(mode);
         let linkedModes = [1, 3, 4, 6];
         if (link && !linkedModes.includes(mode)) return;
         if (!link && linkedModes.slice(0, 3).includes(mode)) return;

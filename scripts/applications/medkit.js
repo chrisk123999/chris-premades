@@ -136,6 +136,9 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 if (availableItem) context.medkitColor = 'yellow';
                 break;
             }
+            case 2: {
+                context.medkitColor = 'dodgerblue';
+            }
         }
         if (!sources.includes(context.source) && context.source) {
             context.medkitColor = 'pink';

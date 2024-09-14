@@ -76,7 +76,7 @@ function getSource(item) {
 function isUpToDate(item) {
     let version = getVersion(item);
     let source = getSource(item);
-    if (!version || !source) return -1;
+    if (!version || !source) return (item.flags['chris-premades']?.config?.generic ? 2 : -1);
     let sourceVersion;
     switch (source) {
         case 'gambits-premades':

@@ -6,17 +6,11 @@ async function heal({trigger, workflow}) {
     if (!castData?.castLevel) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('healing')) return;
     let damageRolls = await Promise.all(workflow.damageRolls.map(async i => {
-        console.log(i);
         if (i.options.type != 'healing') return i;
-        console.log('here');
         let roll = await i.reroll({maximize: true});
-        //let roll = await rollUtils.damageRoll(i.formula, workflow.actor, {maximize: true, type: 'healing'});
-        console.log(roll);
         return roll;
     }));
-    console.log(damageRolls);
     await workflow.setDamageRolls(damageRolls);
-    console.log(workflow.damageRolls);
     await trigger.entity.use();
 }
 export let supremeHealing = {

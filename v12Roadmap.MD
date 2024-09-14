@@ -75,6 +75,9 @@ Goals:
 - [ ] Class features
     - [x] Official content
     - [ ] Critical role content (blood hunter and gunslinger)
+        - [x] Blood hunter
+        - [ ] Gunslinger
+- [x] Race Features
 - [ ] Items
 - [ ] Monster Features
     - [ ] Actual one-off features
@@ -92,7 +95,7 @@ Goals:
         - [ ] Trixie tockworth force field
     - [ ] Generic features
         - [x] Keen hearing/smell/sight {skill, label {sight, hearing, smell}}
-        - [ ] Berserk (Hit point amount, die roll, on a) (Golems)
+        - [x] Berserk (Hit point amount, die roll, on a) (Golems)
         - [ ] Can see eyes on the start of turn... (ie Bodak Death Gaze) (save, if fails by 5 or more, damage, distance)
         - [ ] Fails by 5 or more (immunity to condition, callback function (reduce to 0hp, falls unconscious))
         - [ ] Aura of damage on end of other's turn (ie Aura of Annihilation) (damage, distance, creature immunity)
