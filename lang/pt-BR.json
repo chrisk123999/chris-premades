@@ -1445,6 +1445,7 @@
             "Status": {
                 "0": "Desatualizado",
                 "1": "Atualizado",
+                "2": "Característica Genérica Aplicada",
                 "false": "Nenhuma Automação Encontrada",
                 "true": "Automação Disponível"
             },
@@ -1572,10 +1573,6 @@
                 "4": "Mestre do Jogo"
             },
             "SelectCompendium": "Selecione um compêndio:",
-            "abilitySave": {
-                "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para a salvaguarda.",
-                "Name": "Salvaguardas Contextuais"
-            },
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
@@ -1797,10 +1794,6 @@
             "selectTool": {
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
                 "Name": "Ferramenta de Seleção em Todo Lugar"
-            },
-            "skillCheck": {
-                "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para o teste de perícia.",
-                "Name": "Testes de Perícia Contextuais"
             },
             "spotlightOmnisearchSummons": {
                 "Hint": "Quando ativado, você pode usar o Spotlight Omnisearch para invocar criaturas do seu compêndio de monstros. É necessário recarregar após ativar.",
