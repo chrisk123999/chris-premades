@@ -22,6 +22,8 @@ async function getCPRAutomation(item) {
         case 'feat':
             keys.push(constants.packs.classFeatures);
             keys.push(constants.packs.actions);
+            keys.push(constants.packs.raceFeatures);
+            break;
     }
     if (!keys.length) return;
     let identifier = genericUtils.getIdentifier(item);
