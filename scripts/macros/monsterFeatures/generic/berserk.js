@@ -1,4 +1,4 @@
-import {itemUtils, genericUtils, effectUtils, workflowUtils} from '../../../utils.js';
+import {itemUtils, genericUtils, effectUtils, workflowUtils, animationUtils} from '../../../utils.js';
 async function turnStart({trigger: {entity: item, token,}}) {
     let {hpThreshold, diceFormula, diceThreshold} = itemUtils.getGenericFeatureConfig(item, 'berserk');
     let effect = effectUtils.getEffectByIdentifier(token.actor, 'berserk');
@@ -24,9 +24,19 @@ async function turnStart({trigger: {entity: item, token,}}) {
                 }
             };
             let effect = await effectUtils.createEffect(token.actor, effectData, {identifier: 'berserk'});
+            /* eslint-disable indent */
             await new Sequence()
-            
-            // Going to make a small sequencer animation and make it dependent on the effect.
+                .effect()
+                    .file('jb2a.token_border.circle.static.blue.001')
+                    .filter('ColorMatrix', animationUtils.colorMatrix('jb2a.token_border.circle.static.blue.001', 'piercing'))
+                    .atLocation(token)
+                    .scaleToObject(2)
+                    .fadeIn(2000)
+                    .fadeOut(2000)
+                    .persist(true)
+                    .tieToDocuments(effect)
+                .play();
+            /* eslint-enable indent */
         }
     }
 }
@@ -46,7 +56,7 @@ export let berserk = {
             value: 'hpThreshold',
             label: 'CHRISPREMADES.Macros.Berserk.HPThreshold',
             type: 'number',
-            default: 40,
+            default: 60,
         },
         {
             value: 'diceFormula',

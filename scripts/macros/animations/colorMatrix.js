@@ -48,6 +48,11 @@ export const animations = {
         hue: 163,
         saturatue: .68,
         brightness: .75
+    },
+    'jb2a.token_border.circle.static.blue.001': {
+        hue: 209,
+        saturate: .50,
+        brightness: .63
     }
 };
 export const colors = {
