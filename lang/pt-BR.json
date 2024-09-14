@@ -213,6 +213,7 @@
             "Import": "Importar",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
+            "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
             "Recharge": "Recarga:",
@@ -233,6 +234,7 @@
         "GenericEffects": {
             "ConditionAdvantage": "Vantagem de Condição",
             "ConditionDisadvantage": "Desvantagem de Condição",
+            "ConditionFailure": "Falha de Condição",
             "ConditionImmunity": "Imunidade de Condição",
             "CriticalThreshold": "Margem de Crítico",
             "InvalidTarget": "Alvo Inválido",
@@ -291,6 +293,11 @@
             "ArmorOfAgathys": {
                 "Reflect": "Armadura de Agathys: Refletir"
             },
+            "AstralTrance": {
+                "Ability": "Qual atributo para os testes com ferramenta?",
+                "WeapToolProf": "Proficiência com Armas/Ferramentas",
+                "Which": "Selecione proficiências:"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
@@ -316,6 +323,11 @@
             },
             "BeguilingTwist": {
                 "Select": "Qual Condição?"
+            },
+            "Berserk": {
+                "Animation": "Animação Berserk:",
+                "DiceFormula": "Fórmula da Rolagem de Dados:",
+                "HPThreshold": "Limite de PV:"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -363,6 +375,9 @@
             "Blink": {
                 "Away": "Piscar: Desaparecer"
             },
+            "BloodCurses": {
+                "Amplify": "Amplificar Maldição do Sangue?"
+            },
             "BolsteringMagic": {
                 "Already": "O alvo já está sendo fortalecido!",
                 "Bonus": "Bônus no Ataque e Teste",
@@ -380,6 +395,10 @@
             "BorrowedKnowledge": {
                 "SelectSkill": "Selecione uma perícia para receber proficiência temporária:"
             },
+            "BrandOfCastigation": {
+                "Branded": "Marca de Castigo: Marcado",
+                "Damage": "Marca de Castigo: Dano"
+            },
             "BrandingSmite": {
                 "Branded": "Marca da Punição: Marcado"
             },
@@ -395,9 +414,20 @@
                 "Bonus": "Aplicar o dano adicional do Chamado de Caça? (1d6)",
                 "Select": "Selecione os alvos (máx: {maxTargets})"
             },
+            "CelestialRevelation": {
+                "Damage": "Consumo Radiante: Dano",
+                "End": "Revelação Celestial: Fim"
+            },
             "ChainLightning": {
                 "Leap": "Corrente de Relâmpagos: Salto",
                 "Select": "Onde o raio deve saltar? Máx: {maxTargets}"
+            },
+            "ChangeSeason": {
+                "Autumn": "Outono",
+                "Select": "Qual estação?",
+                "Spring": "Primavera",
+                "Summer": "Verão",
+                "Winter": "Inverno"
             },
             "ChaosBolt": {
                 "AlwaysBounce": "Sempre Salta:",
@@ -436,6 +466,11 @@
                 "Summon": "Invocar Nova Arma",
                 "Type": "Como você vai usar este recurso?",
                 "Weapon": "Arma de Pacto"
+            },
+            "CrimsonRite": {
+                "NoRites": "Nenhum rito encontrado no ator!",
+                "Select": "Qual Rito Carmesim?",
+                "Weapon": "Em qual arma você ativará o rito?"
             },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
@@ -548,8 +583,22 @@
                 "Type": "Tipo de Queda:",
                 "Water": "Na Água"
             },
+            "FallenPuppet": {
+                "NoTargets": "Não há alvos válidos dentro do alcance!"
+            },
             "FarStep": {
                 "Teleport": "Passo Distante: Teleporte"
+            },
+            "FeyStep": {
+                "Autumn": "Passo Feérico (Outono)",
+                "Charmed": "Passo Feérico (Autumn): Enfeitiçado",
+                "Frightened": "Passo Feérico (Inverno): Amedrontado",
+                "SelectAutumn": "Selecione alvos para enfeitiçar (Máx: {max})",
+                "SelectSpring": "Quem se teleporta?",
+                "SelectWinter": "Selecione alvos para amedrontar",
+                "Spring": "Passo Feérico (Primavera)",
+                "Summer": "Passo Feérico (Verão)",
+                "Winter": "Passo Feérico (Inverno)"
             },
             "FindFamiliar": {
                 "Choose": "Escolha o Familiar",
@@ -699,6 +748,12 @@
                 "Move": "Marca do Caçador: Mover",
                 "Select": "Qual alvo você quer desmarcar?"
             },
+            "HybridTransformation": {
+                "Bloodlust": "Sede de Sangue",
+                "LycanRegeneration": "Regeneração Licantrópica",
+                "PredatoryStrike": "Ataque do Predador",
+                "Revert": "Transformação Híbrida: Reverter"
+            },
             "InfectiousFury": {
                 "Attack": "Atacar Um Alvo Próximo",
                 "Curse": "Como você amaldiçoa o alvo?",
@@ -769,9 +824,13 @@
             },
             "KeenSenses": {
                 "Check": "Este teste depende de: ",
+                "DiceThreshold": "Limite de Rolagem de Dados:",
                 "Hearing": "Audição",
                 "Sight": "Visão",
                 "Smell": "Olfato"
+            },
+            "LabyrinthineRecall": {
+                "Skill": "Esta verificação é para navegar ou rastrear"
             },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
@@ -828,6 +887,11 @@
                 "Overtime": "Abraço Terrestre de Maximilian: Liberte-se",
                 "Select": "Selecione um alvo para agarrar:"
             },
+            "MetallicBreathWeapon": {
+                "Enervating": "Sopro Enervante",
+                "Repulsion": "Sopro Repulsivo",
+                "Select": "Qual tipo de arma de sopro?"
+            },
             "Metamagic": {
                 "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
                 "Empowered": "Gastar 1 Ponto de Feitiçaria para rerolar o dado de dano? (Máx. {max})",
@@ -847,6 +911,15 @@
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
             },
+            "Mutagencraft": {
+                "AttackSunlight": "{sourceTokenName} ou {targetTokenName} estão expostos diretamente à luz do sol?",
+                "Create": "Qual Mutagênico você quer criar?",
+                "Flush": "Criação de Mutagênicos: Flush Mutagênicos",
+                "Negative": "Efeitos Negativos",
+                "Positive": "Efeitos Positivos",
+                "ReconstructionHealing": "Fórmula de Reconstrução: Cura",
+                "SkillSunlight": "Esta é uma verificação baseada na visão com {actorName} ou o alvo da verificação sob luz solar direta?"
+            },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
             },
@@ -861,6 +934,9 @@
                 "MaxBonus": "Bônus Máx. de CA:",
                 "Protect": "Proteger {name} com {item}?",
                 "Reaction": "Escudo do Pária: Proteger"
+            },
+            "PoisonousSkin": {
+                "Poison": "Grunge: Veneno"
             },
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
@@ -1015,6 +1091,9 @@
             },
             "Stormgridle": {
                 "Avatar": "Avatar da Tempestade"
+            },
+            "StrangeMetabolism": {
+                "Select": "Qual Mutagênico?"
             },
             "SummonAberration": {
                 "Beholderkin": "Observador",
@@ -1195,6 +1274,12 @@
             },
             "UpcastTargets": {
                 "Select": "Muitos alvos selecionados! Selecione até {maxTargets} alvos."
+            },
+            "VampiricBite": {
+                "Bonus": "Bônus para o próximo ataque/teste",
+                "Heal": "Recuperar PV",
+                "LowHealth": "Vantagem: Abaixo da metade do PV",
+                "Select": "Empoderar a si mesmo?"
             },
             "VampiricTouch": {
                 "Attack": "Toque Vampírico: Ataque",
@@ -1828,12 +1913,14 @@
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
+                "HybridTransformation": "Transformação Híbrida",
                 "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
                 "ShadowSpiritFear": "Espírito das Sombras (Medo)",
                 "ShadowSpiritFury": "Espírito das Sombras (Fúria)",
+                "Shifter": "Shifter",
                 "Skeleton": "Esqueleto",
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
