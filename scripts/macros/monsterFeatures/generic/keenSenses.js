@@ -1,7 +1,7 @@
 import {genericUtils, itemUtils} from '../../../utils.js';
-async function skill(actor, skillId) {
-    if (skillId != 'prc') return;
-    let item = itemUtils.getItemByGenericFeature(actor, 'keenSenses');
+async function skill({trigger}) {
+    if (trigger.skillId != 'prc') return;
+    let item = itemUtils.getItemByGenericFeature(trigger.actor, 'keenSenses');
     if (!item) return;
     let config = itemUtils.getGenericFeatureConfig(item, 'keenSenses');
     if (!config) return;
