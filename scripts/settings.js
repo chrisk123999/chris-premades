@@ -454,20 +454,6 @@ export function registerSettings() {
         category: 'interface'
     });
     addSetting({
-        key: 'abilitySave',
-        type: Boolean,
-        default: true,
-        category: 'mechanics',
-        onChange: value => abilitySave.patch(value)
-    });
-    addSetting({
-        key: 'skillCheck',
-        type: Boolean,
-        default: true,
-        category: 'mechanics',
-        onChange: value => skillCheck.patch(value)
-    });
-    addSetting({
         key: 'gambitPremades',
         type: Number,
         default: 1,

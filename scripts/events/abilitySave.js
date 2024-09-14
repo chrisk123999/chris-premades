@@ -175,14 +175,9 @@ async function save(wrapped, saveId, options = {}) {
     console.log(returnData);
     return returnData;
 }
-function patch(enabled) {
-    if (enabled) {
-        genericUtils.log('log', 'Ability Saves Patched!');
-        libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilitySave', save, 'WRAPPER');
-    } else {
-        genericUtils.log('log', 'Ability Saves Patch Removed!');
-        libWrapper.unregister('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilitySave');
-    }
+function patch() {
+    genericUtils.log('dev', 'Ability Saves Patched!');
+    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilitySave', save, 'WRAPPER');
 }
 export let abilitySave = {
     patch

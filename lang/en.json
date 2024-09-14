@@ -1445,6 +1445,7 @@
             "Status": {
                 "0": "Out of Date",
                 "1": "Up to Date",
+                "2": "Generic Feature Applied",
                 "false": "No Automation Found",
                 "true": "Automation Available"
             },
@@ -1558,10 +1559,6 @@
                 "4": "Gamemaster"
             },
             "SelectCompendium": "Select a compendium:",
-            "abilitySave": {
-                "Hint": "When enabled, certain macros will prompt the player for more information for the ability save.",
-                "Name": "Contextual Ability Saves"
-            },
             "addActions": {
                 "0": "Disabled",
                 "1": "Linked Characters",
@@ -1793,10 +1790,6 @@
             "selectTool": {
                 "Hint": "When enabled, the select tool is available in more places. Reload required after enabling.",
                 "Name": "Select Tool Everywhere"
-            },
-            "skillCheck": {
-                "Hint": "When enabled, certain macros will prompt the player for more information for the skill check.",
-                "Name": "Contextual Skill Checks"
             },
             "spellCompendium": {
                 "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell commpendium.",

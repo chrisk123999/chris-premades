@@ -165,14 +165,9 @@ async function rollSkill(wrapped, skillId, options = {}) {
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
     return returnData;
 }
-function patch(enabled) {
-    if (enabled) {
-        genericUtils.log('log', 'Skill Checks Patched!');
-        libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill', rollSkill, 'WRAPPER');
-    } else {
-        genericUtils.log('log', 'Skill Check Patch Removed!');
-        libWrapper.unregister('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill');
-    }
+function patch() {
+    genericUtils.log('dev', 'Skill Checks Patched!');
+    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSkill', rollSkill, 'WRAPPER');
 }
 export let skillCheck = {
     patch

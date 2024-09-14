@@ -65,8 +65,8 @@ Hooks.once('ready', () => {
         if (utils.genericUtils.getCPRSetting('backups')) backup.doBackup();
         if (utils.genericUtils.getCPRSetting('checkForUpdates')) updateCheck();
     }
-    if (utils.genericUtils.getCPRSetting('abilitySave')) abilitySave.patch(true);
-    if (utils.genericUtils.getCPRSetting('skillCheck')) skillCheck.patch(true);
+    abilitySave.patch();
+    skillCheck.patch();
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
     tours.checkTour();
