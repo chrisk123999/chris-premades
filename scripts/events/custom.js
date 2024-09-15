@@ -13,11 +13,7 @@ async function ready() {
             genericUtils.notify(message, 'error');
             return;
         }
-        if (!value.identifier) {
-            let message = genericUtils.translate('CHRISPREMADES.CustomMacros.MissingIdentifier').replace('{name}', i.name);
-            genericUtils.notify(message, 'error');
-            return;
-        }
+        if (!value.identifier) value.identifier = i.name.slugify();
         return value;
     }))).filter(j => j);
 }
