@@ -55,6 +55,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
             "Animations": {
                 "Air": "Ar",
@@ -212,11 +213,13 @@
             "Import": "Importar",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
+            "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
             "Replace": "Substituir",
+            "Rerolling": "Rerolando {origDie} ({origResult}):",
             "Select": "Selecionar",
             "SelectSpellSlot": "Escolha um espaço de magia:",
             "Skill": "Teste de Perícia",
@@ -231,6 +234,7 @@
         "GenericEffects": {
             "ConditionAdvantage": "Vantagem de Condição",
             "ConditionDisadvantage": "Desvantagem de Condição",
+            "ConditionFailure": "Falha de Condição",
             "ConditionImmunity": "Imunidade de Condição",
             "CriticalThreshold": "Margem de Crítico",
             "InvalidTarget": "Alvo Inválido",
@@ -283,14 +287,25 @@
                 "Heal": "Curar",
                 "WhoHeal": "Quem curar?"
             },
+            "ArcaneWard": {
+                "Protect": "Proteger {tokenName} com sua proteção arcana?"
+            },
             "ArmorOfAgathys": {
                 "Reflect": "Armadura de Agathys: Refletir"
+            },
+            "AstralTrance": {
+                "Ability": "Qual atributo para os testes com ferramenta?",
+                "WeapToolProf": "Proficiência com Armas/Ferramentas",
+                "Which": "Selecione proficiências:"
             },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
             "AuraOfVitality": {
                 "Healing": "Aura de Vitalidade: Cura"
+            },
+            "AwakenedSpellbook": {
+                "Select": "Mudar tipo de dano?"
             },
             "BalmOfPeace": {
                 "Balm": "Bálsamo da Paz"
@@ -308,6 +323,11 @@
             },
             "BeguilingTwist": {
                 "Select": "Qual Condição?"
+            },
+            "Berserk": {
+                "Animation": "Animação Berserk:",
+                "DiceFormula": "Fórmula da Rolagem de Dados:",
+                "HPThreshold": "Limite de PV:"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -355,6 +375,9 @@
             "Blink": {
                 "Away": "Piscar: Desaparecer"
             },
+            "BloodCurses": {
+                "Amplify": "Amplificar Maldição do Sangue?"
+            },
             "BolsteringMagic": {
                 "Already": "O alvo já está sendo fortalecido!",
                 "Bonus": "Bônus no Ataque e Teste",
@@ -372,6 +395,10 @@
             "BorrowedKnowledge": {
                 "SelectSkill": "Selecione uma perícia para receber proficiência temporária:"
             },
+            "BrandOfCastigation": {
+                "Branded": "Marca de Castigo: Marcado",
+                "Damage": "Marca de Castigo: Dano"
+            },
             "BrandingSmite": {
                 "Branded": "Marca da Punição: Marcado"
             },
@@ -387,9 +414,20 @@
                 "Bonus": "Aplicar o dano adicional do Chamado de Caça? (1d6)",
                 "Select": "Selecione os alvos (máx: {maxTargets})"
             },
+            "CelestialRevelation": {
+                "Damage": "Consumo Radiante: Dano",
+                "End": "Revelação Celestial: Fim"
+            },
             "ChainLightning": {
                 "Leap": "Corrente de Relâmpagos: Salto",
                 "Select": "Onde o raio deve saltar? Máx: {maxTargets}"
+            },
+            "ChangeSeason": {
+                "Autumn": "Outono",
+                "Select": "Qual estação?",
+                "Spring": "Primavera",
+                "Summer": "Verão",
+                "Winter": "Inverno"
             },
             "ChaosBolt": {
                 "AlwaysBounce": "Sempre Salta:",
@@ -428,6 +466,11 @@
                 "Summon": "Invocar Nova Arma",
                 "Type": "Como você vai usar este recurso?",
                 "Weapon": "Arma de Pacto"
+            },
+            "CrimsonRite": {
+                "NoRites": "Nenhum rito encontrado no ator!",
+                "Select": "Qual Rito Carmesim?",
+                "Weapon": "Em qual arma você ativará o rito?"
             },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
@@ -475,6 +518,7 @@
             "EldritchCannon": {
                 "Cannon": "Canhão Místico",
                 "Command": "Canhão Místico: Comando",
+                "Dismiss": "Canhão Místico: Dispensar",
                 "ExplosiveCannon": "Canhão Explosivo",
                 "Flamethrower": "Lança-Chamas",
                 "ForceBallista": "Força de Balista",
@@ -522,6 +566,9 @@
                 "Swiftness": "Elixir Experimental: Celeridade",
                 "Transformation": "Elixir Experimental: Transformação"
             },
+            "ExpertDivination": {
+                "Select": "QUal nível de espaço de magia vpcê quer recuperar?"
+            },
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
                 "Ath": "Sim (Atletismo)",
@@ -536,8 +583,22 @@
                 "Type": "Tipo de Queda:",
                 "Water": "Na Água"
             },
+            "FallenPuppet": {
+                "NoTargets": "Não há alvos válidos dentro do alcance!"
+            },
             "FarStep": {
                 "Teleport": "Passo Distante: Teleporte"
+            },
+            "FeyStep": {
+                "Autumn": "Passo Feérico (Outono)",
+                "Charmed": "Passo Feérico (Autumn): Enfeitiçado",
+                "Frightened": "Passo Feérico (Inverno): Amedrontado",
+                "SelectAutumn": "Selecione alvos para enfeitiçar (Máx: {max})",
+                "SelectSpring": "Quem se teleporta?",
+                "SelectWinter": "Selecione alvos para amedrontar",
+                "Spring": "Passo Feérico (Primavera)",
+                "Summer": "Passo Feérico (Verão)",
+                "Winter": "Passo Feérico (Inverno)"
             },
             "FindFamiliar": {
                 "Choose": "Escolha o Familiar",
@@ -552,6 +613,7 @@
             },
             "FindSteed": {
                 "Choose": "Escolha a Montaria",
+                "Dismiss": "Dispensar Montaria",
                 "Language": "Qual idioma?",
                 "Target": "Marcar a Montaria também? (Se montado)",
                 "Type": "Qual tipo de criatura?"
@@ -686,6 +748,12 @@
                 "Move": "Marca do Caçador: Mover",
                 "Select": "Qual alvo você quer desmarcar?"
             },
+            "HybridTransformation": {
+                "Bloodlust": "Sede de Sangue",
+                "LycanRegeneration": "Regeneração Licantrópica",
+                "PredatoryStrike": "Ataque do Predador",
+                "Revert": "Transformação Híbrida: Reverter"
+            },
             "InfectiousFury": {
                 "Attack": "Atacar Um Alvo Próximo",
                 "Curse": "Como você amaldiçoa o alvo?",
@@ -756,9 +824,13 @@
             },
             "KeenSenses": {
                 "Check": "Este teste depende de: ",
+                "DiceThreshold": "Limite de Rolagem de Dados:",
                 "Hearing": "Audição",
                 "Sight": "Visão",
                 "Smell": "Olfato"
+            },
+            "LabyrinthineRecall": {
+                "Skill": "Esta verificação é para navegar ou rastrear"
             },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
@@ -789,6 +861,7 @@
             },
             "ManifestEcho": {
                 "Attack": "Eco Manifestado: Ataque",
+                "Dismiss": "Eco Manifestado: Dispensar",
                 "Echo": "Eco {name}",
                 "Far": "O eco de {actorName} está longe demais. Remover ele?",
                 "Legion": "Criar dois ecos ao invés de um?",
@@ -796,6 +869,13 @@
                 "Teleport": "Eco Manifestado: Teleporte",
                 "Weapon": "Com o que você quer de atacar?",
                 "Which": "Qual Eco?"
+            },
+            "ManifestMind": {
+                "Cast": "Mente Manifestada: Conjurar Magia",
+                "Dismiss": "Mente Manifestada: Dispensar",
+                "Far": "A Mente Manifestada de {actorName} está lnge demais. Removê-la?",
+                "Invalid": "Tipo de Ação Inválida!",
+                "Move": "Mente Manifestada: Mover"
             },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
@@ -807,8 +887,14 @@
                 "Overtime": "Abraço Terrestre de Maximilian: Liberte-se",
                 "Select": "Selecione um alvo para agarrar:"
             },
+            "MetallicBreathWeapon": {
+                "Enervating": "Sopro Enervante",
+                "Repulsion": "Sopro Repulsivo",
+                "Select": "Qual tipo de arma de sopro?"
+            },
             "Metamagic": {
                 "CarefulWhich": "Quais alvos têm um sucesso automático? (Máx. {max})",
+                "Empowered": "Gastar 1 Ponto de Feitiçaria para rerolar o dado de dano? (Máx. {max})",
                 "HeightenedWhich": "Quais alvos têm desvantagem?",
                 "NoValid": "Nenhuma magia aplicável para conjurar!",
                 "NotEnough": "Pontos de Feitiçaria insuficientes!",
@@ -825,16 +911,32 @@
                 "Damage": "Raio Lunar: Dano",
                 "Move": "Raio Lunar: Mover"
             },
+            "Mutagencraft": {
+                "AttackSunlight": "{sourceTokenName} ou {targetTokenName} estão expostos diretamente à luz do sol?",
+                "Create": "Qual Mutagênico você quer criar?",
+                "Flush": "Criação de Mutagênicos: Flush Mutagênicos",
+                "Negative": "Efeitos Negativos",
+                "Positive": "Efeitos Positivos",
+                "ReconstructionHealing": "Fórmula de Reconstrução: Cura",
+                "SkillSunlight": "Esta é uma verificação baseada na visão com {actorName} ou o alvo da verificação sob luz solar direta?"
+            },
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
             },
             "OneWithShadows": {
                 "Bright": "O token está em luz plena!"
             },
+            "Overchannel": {
+                "Damage": "Usar {itemName} ao custo de {damageFormula} de dano?",
+                "DamageItem": "Sobrecarga: Dano"
+            },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
                 "Protect": "Proteger {name} com {item}?",
                 "Reaction": "Escudo do Pária: Proteger"
+            },
+            "PoisonousSkin": {
+                "Poison": "Grunge: Veneno"
             },
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
@@ -882,6 +984,9 @@
                 "Bolt": "Raio de Raio Ardente",
                 "Select": "Escolha seus alvos (Máx de raios: {maxRays})"
             },
+            "SculptSpells": {
+                "Select": "Quais alvos são bem-sucedidos e não sofrem dano? (Máx: {max})"
+            },
             "Search": {
                 "Skill": "Qual perícia?"
             },
@@ -916,7 +1021,8 @@
             },
             "SongOfDefense": {
                 "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
-                "NoSpellSlots": "Você não tem espaços de magia disponíveis!"
+                "NoSpellSlots": "Você não tem espaços de magia disponíveis!",
+                "Select": "Usar sua reação para gastar um espaço de magia para reduzir o dano?"
             },
             "SpikeGrowth": {
                 "Thorns": "Crescer Espinhos: Espinhos"
@@ -941,9 +1047,12 @@
                 "Flaming": "Flamejante",
                 "Mace": "Maça",
                 "Maul": "Malho",
+                "SaveDefault": "Usar a configuração selecionada no futuro?",
                 "Scythe": "Foice",
+                "Select": "Selecione um alvo para atacar:",
                 "Style": "Qual Estilo?",
                 "Sword": "Espada",
+                "UseDefault": "Usar configuração de token salva anteriormente:",
                 "Weapon": "Qual Arma?"
             },
             "StaggeringSmite": {
@@ -982,6 +1091,9 @@
             },
             "Stormgridle": {
                 "Avatar": "Avatar da Tempestade"
+            },
+            "StrangeMetabolism": {
+                "Select": "Qual Mutagênico?"
             },
             "SummonAberration": {
                 "Beholderkin": "Observador",
@@ -1152,12 +1264,22 @@
                 "Grapple": "Combate Desarmado: Dano Agarrado",
                 "Select": "Causar dano a uma criatura agarrada?"
             },
+            "UndeadFortitude": {
+                "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
+                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:"
+            },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
                 "Underwater": "Submerso"
             },
             "UpcastTargets": {
                 "Select": "Muitos alvos selecionados! Selecione até {maxTargets} alvos."
+            },
+            "VampiricBite": {
+                "Bonus": "Bônus para o próximo ataque/teste",
+                "Heal": "Recuperar PV",
+                "LowHealth": "Vantagem: Abaixo da metade do PV",
+                "Select": "Empoderar a si mesmo?"
             },
             "VampiricTouch": {
                 "Attack": "Toque Vampírico: Ataque",
@@ -1323,6 +1445,7 @@
             "Status": {
                 "0": "Desatualizado",
                 "1": "Atualizado",
+                "2": "Característica Genérica Aplicada",
                 "false": "Nenhuma Automação Encontrada",
                 "true": "Automação Disponível"
             },
@@ -1450,10 +1573,6 @@
                 "4": "Mestre do Jogo"
             },
             "SelectCompendium": "Selecione um compêndio:",
-            "abilitySave": {
-                "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para a salvaguarda.",
-                "Name": "Salvaguardas Contextuais"
-            },
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
@@ -1676,10 +1795,6 @@
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
                 "Name": "Ferramenta de Seleção em Todo Lugar"
             },
-            "skillCheck": {
-                "Hint": "Quando ativadas, certas macros solicitarão ao jogador mais informações para o teste de perícia.",
-                "Name": "Testes de Perícia Contextuais"
-            },
             "spotlightOmnisearchSummons": {
                 "Hint": "Quando ativado, você pode usar o Spotlight Omnisearch para invocar criaturas do seu compêndio de monstros. É necessário recarregar após ativar.",
                 "Name": "Invocações do Spotlight Omnisearch"
@@ -1791,11 +1906,14 @@
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
                 "HomunculusServant": "Servo Homúnculo",
+                "HybridTransformation": "Transformação Híbrida",
+                "ManifestMind": "Mente Manifestada",
                 "Pixie": "Pixie",
                 "ShadowSpirit": "Espírito das Sombras",
                 "ShadowSpiritDespair": "Espírito das Sombras (Desespero)",
                 "ShadowSpiritFear": "Espírito das Sombras (Medo)",
                 "ShadowSpiritFury": "Espírito das Sombras (Fúria)",
+                "Shifter": "Shifter",
                 "Skeleton": "Esqueleto",
                 "SpiritualWeapon": "Arma Espiritual",
                 "Steed": "Montaria",
