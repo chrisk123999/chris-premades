@@ -214,6 +214,13 @@
       "path": "packs/cpr-race-feature-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartyClassFeatures",
+      "label": "CPR 3rd Party Class Features",
+      "path": "packs/cpr-3rd-party-class-features",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -235,7 +242,8 @@
         "CPRFeats",
         "CPRFeatFeatures",
         "CPRRaceFeatures",
-        "CPRRaceFeatureItems"
+        "CPRRaceFeatureItems",
+        "CPRThirdPartyClassFeatures"
       ]
     }
   ],

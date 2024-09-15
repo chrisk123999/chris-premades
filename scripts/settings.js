@@ -1,5 +1,5 @@
 import {effectHud} from './applications/effectHud.js';
-import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsIntegration, settingsInterface, settingsManualRolls, settingsMechanics} from './applications/settings.js';
+import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsHomebrew, settingsIntegration, settingsInterface, settingsManualRolls, settingsMechanics} from './applications/settings.js';
 import {abilitySave} from './events/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
@@ -658,6 +658,18 @@ export function registerSettings() {
         default: false,
         category: 'manualRolls'
     });
+    addSetting({
+        key: 'explodingHeals',
+        type: Boolean,
+        default: false,
+        category: 'homebrew'
+    });
+    addSetting({
+        key: 'thirdParty',
+        type: Boolean,
+        default: true,
+        category: 'general'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
@@ -694,6 +706,11 @@ export function registerMenus() {
         key: 'integration',
         icon: 'fas fa-puzzle-piece',
         type: settingsIntegration
+    });
+    addMenu({
+        key: 'homebrew',
+        icon: 'fas fa-cauldron',
+        type: settingsHomebrew
     });
     addMenu({
         key: 'manualRolls',

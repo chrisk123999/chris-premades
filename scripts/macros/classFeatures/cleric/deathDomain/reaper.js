@@ -12,7 +12,7 @@ async function late({workflow}) {
     if (!selected?.length) return;
     let newTarget = selected[0];
     await originItem.use();
-    let newFeatureData = genericUtils.deepClone(workflow.item.toObject());
+    let newFeatureData = genericUtils.duplicate(workflow.item.toObject());
     genericUtils.setProperty(newFeatureData, 'flags.chris-premades.reap', true);
     await workflowUtils.syntheticItemDataRoll(newFeatureData, workflow.actor, [newTarget]);
 }

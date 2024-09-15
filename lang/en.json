@@ -1548,6 +1548,11 @@
                 "Hint": "Settings for game mechanics.",
                 "Label": "Game Mechanic Options",
                 "Name": "Game Mechanic Options"
+            },
+            "homebrew": {
+                "Hint": "Settings for homebrew options.",
+                "Label": "Homebrew Options",
+                "Name": "Homebrew Options"
             }
         },
         "Settings": {
@@ -1825,6 +1830,14 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "explodingHeals": {
+                "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
+                "Name": "Exploding Heals"
+            },
+            "thirdParty": {
+                "Hint": "When enabled, the Medkit will also include Homebrew automations.",
+                "Name": "3rd Party Content"
             }
         },
         "SkillCheck": {

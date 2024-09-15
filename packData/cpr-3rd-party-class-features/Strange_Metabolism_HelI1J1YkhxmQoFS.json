@@ -1,5 +1,5 @@
 {
-  "name": "Stalker's Prowess",
+  "name": "Strange Metabolism",
   "type": "feat",
   "system": {
     "description": {
@@ -7,11 +7,11 @@
       "chat": ""
     },
     "source": {
-      "custom": "Blood Hunter : Order of the Lycan"
+      "custom": ""
     },
     "activation": {
-      "type": "",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -24,29 +24,29 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "1",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
     "consume": {
       "type": "",
-      "target": null,
+      "target": "",
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
+    "ability": "",
+    "actionType": "util",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -83,43 +83,57 @@
     }
   },
   "flags": {
-    "core": {
-      "sourceId": "Actor.8ziTn2ZG6kNjkfnS.Item.eN5jMnSRcET8XzB2"
-    },
-    "chris-premades": {
-      "info": {
-        "name": "Stalker's Prowess",
-        "version": "0.12.64",
-        "identifier": "stalkersProwess",
-        "source": "chris-premades"
-      }
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
+      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "noConcentrationCheck": false,
+      "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
+    "core": {
+      "sourceId": "Actor.iXZRAxrrFFxPX0g6.Item.uliJLF9hSXD0m0Ev"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Strange Metabolism",
+        "version": "0.12.64",
+        "identifier": "strangeMetabolism",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "strangeMetabolism"
+          ]
+        }
+      }
     }
   },
   "effects": [
     {
-      "name": "Stalker's Prowess",
-      "origin": "Compendium.world.cpr-class-features.Item.9BCXuAmNZxJambn8",
+      "name": "Strange Metabolism",
+      "origin": "Compendium.world.cpr-class-features.Item.HelI1J1YkhxmQoFS",
       "duration": {
         "rounds": null,
         "startTime": null,
@@ -145,15 +159,21 @@
           "overlay": false
         }
       },
-      "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
-      "_id": "SKtLqcorKO5aNMXK",
+      "img": "icons/magic/acid/dissolve-bone-skull.webp",
+      "_id": "l8JFGegQtTHNO8yU",
       "type": "base",
       "system": {},
       "changes": [
         {
-          "key": "system.attributes.movement.all",
-          "mode": 0,
-          "value": "+10",
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "poisoned",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.di.value",
+          "mode": 2,
+          "value": "poison",
           "priority": 20
         }
       ],
@@ -168,15 +188,15 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1725976232330,
-        "modifiedTime": 1725976252526,
-        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!items.effects!9BCXuAmNZxJambn8.SKtLqcorKO5aNMXK"
+      "_key": "!items.effects!HelI1J1YkhxmQoFS.l8JFGegQtTHNO8yU"
     }
   ],
-  "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
-  "folder": "3dGvTo8b0Rx1Yk5H",
-  "_id": "9BCXuAmNZxJambn8",
-  "_key": "!items!9BCXuAmNZxJambn8"
+  "img": "icons/magic/acid/dissolve-bone-skull.webp",
+  "folder": "jtlfybEkf6PxS42D",
+  "_id": "HelI1J1YkhxmQoFS",
+  "_key": "!items!HelI1J1YkhxmQoFS"
 }

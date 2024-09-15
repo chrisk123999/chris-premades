@@ -166,6 +166,12 @@ export class settingsIntegration extends settingsBase {
         this.category = 'integration';
     }
 }
+export class settingsHomebrew extends settingsBase {
+    constructor() {
+        super();
+        this.category = 'homebrew';
+    }
+}
 export class settingsManualRolls extends settingsBase {
     constructor() {
         super();

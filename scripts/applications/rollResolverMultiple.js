@@ -3,6 +3,7 @@ import {genericUtils} from '../utils.js';
 export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(rolls, options={}) {
         super(options);
+        genericUtils.log('dev', 'Constructing Multiple Roll Resolver');
         this.#rolls = Array.isArray(rolls) ? rolls : [rolls];
     }
     static DEFAULT_OPTIONS = {
@@ -39,16 +40,17 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
     }
     #rolls;
     async awaitFulfillment() {
-        const fulfillable = await this.#identifyFulfillableTerms(this.rolls); //
-        if ( !fulfillable.length ) return;
-        this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.set(roll, this)); //
+        genericUtils.log('dev', 'Awaiting fulfillment of Multiple Roll Resolver');
+        const fulfillable = await this.#identifyFulfillableTerms(this.rolls);
+        if (!fulfillable.length) return;
+        this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.set(roll, this));
         let promise = new Promise(resolve => this.#resolve = resolve);
         this.render(true);
         return promise;
     }
     async digitalRoll() {
         await this.constructor._fulfillRoll.call(this);
-        this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.delete(roll)); //
+        this.rolls.forEach(roll => Roll.defaultImplementation.RESOLVERS.delete(roll));
         this.#resolve?.();
     }
     /**
@@ -82,8 +84,8 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         const context = {
             groups: [],
             options: {
-                name: this.rolls[0].data.name,
-                itemName: this.rolls[0].data.item.name,
+                name: this.rolls[0]?.data?.name,
+                itemName: this.rolls[0].data?.item?.name,
             },
             buttons: [{type: 'submit', action: 'confirm', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };

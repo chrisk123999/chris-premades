@@ -23,6 +23,7 @@ async function getCPRAutomation(item) {
             keys.push(constants.packs.classFeatures);
             keys.push(constants.packs.actions);
             keys.push(constants.packs.raceFeatures);
+            if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
             break;
     }
     if (!keys.length) return;

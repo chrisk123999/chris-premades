@@ -1,6 +1,7 @@
 import {midiEvents} from '../events/midi.js';
 import {genericUtils, workflowUtils} from '../utils.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
+import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 let CPRClass;
 function setup() {
     class CPRWorkflow extends MidiQOL.workflowClass {
@@ -23,29 +24,32 @@ function setup() {
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);
+            if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(this);
             let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
-            if (manualRollsEnabled && (this.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await newRolls();
-            async function newRolls() {
-                if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
-                let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
-                if (manualRollsInclusion === 0) return false;
-                else if (manualRollsInclusion === 2 && this.actor.type != 'character') return false;
-                else if (manualRollsInclusion === 3 && this.actor?.prototypeToken?.actorLink != true) return false;
-                else if (!(manualRollsInclusion === 4 && this.actor?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(this.actor.uuid === true))) return false;
-                else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) != true) return false;
-                let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
-                let resolver = new CPRMultipleRollResolver(newRolls);
-                await resolver.awaitFulfillment();
-                newRolls.forEach(async roll => {
-                    const ast = CONFIG.Dice.parser.toAST(roll.terms);
-                    roll._total = await roll._evaluateASTAsync(ast);
-                });
-                resolver.close();
-                await this.setDamageRolls(newRolls);
-            }
+            if (manualRollsEnabled && (this.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await this._manualRollsNewRolls();
             await this.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
             this.damageDetail = MidiQOL.createDamageDetail({roll: this.damageRolls, item: this.item, defaultType: this.defaultDamageType});
             return nextState;
+        }
+        async _manualRollsNewRolls() {
+            genericUtils.log('dev', 'New Rolls for Midi Workflow');
+            if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+            let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
+            if (manualRollsInclusion === 0) return false;
+            else if (manualRollsInclusion === 1) '';
+            else if ((manualRollsInclusion === 2) && (this.actor.type != 'character')) return false;
+            else if ((manualRollsInclusion === 3) && (this.actor?.prototypeToken?.actorLink != true)) return false;
+            else if ((!(manualRollsInclusion === 4) && (this.actor?.prototypeToken?.actorLink === true) && (genericUtils.checkPlayerOwnership(this.actor.uuid) === true))) return false;
+            else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) != true)) return false;
+            let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
+            let resolver = new CPRMultipleRollResolver(newRolls);
+            await resolver.awaitFulfillment();
+            newRolls.forEach(async roll => {
+                const ast = CONFIG.Dice.parser.toAST(roll.terms);
+                roll._total = await roll._evaluateASTAsync(ast);
+            });
+            resolver.close();
+            await this.setDamageRolls(newRolls);
         }
         async WorkflowState_RollFinished(context = {}) {
             let nextState = await super.WorkflowState_RollFinished(context);

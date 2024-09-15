@@ -3,6 +3,7 @@ import {genericUtils} from '../utils.js';
 export class CPRSingleRollResolver extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(roll, options={}) {
         super(options);
+        genericUtils.log('dev', 'Constructing Single Roll Resolver');
         this.#roll = roll;
     }
     static DEFAULT_OPTIONS = {
@@ -42,8 +43,9 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     }
     #roll;
     async awaitFulfillment() {
+        genericUtils.log('dev', 'Awaiting fulfillment of Single Roll Resolver');
         const fulfillable = await this.#identifyFulfillableTerms(this.roll.terms);
-        if ( !fulfillable.length ) return;
+        if (!fulfillable.length) return;
         Roll.defaultImplementation.RESOLVERS.set(this.roll, this);
         let promise = new Promise(resolve => this.#resolve = resolve);
         if (this.checkPreferences()) this.render(true);
@@ -51,18 +53,23 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         return promise;
     }
     checkPreferences() { 
-        if (this.roll instanceof CONFIG.Dice.DamageRoll) return false;
-        if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+        if (this.roll instanceof CONFIG.Dice.DamageRoll) {log('is damage roll'); return false;}
+        if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) {log('user does not have manual rolls enabled'); return false;}
         let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
-        if (manualRollsInclusion === 0) return false;
-        if ((Object.keys(this.roll.data).length === 0) && !genericUtils.getCPRSetting('manualRollsPromptNoData')) return false;
-        if (manualRollsInclusion === 2 && this.roll.data?.actorType === 'character') return true;
-        else if (manualRollsInclusion === 3 && fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true) return true;
-        else if (manualRollsInclusion === 4 && fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true && genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true) return true;
-        else if (manualRollsInclusion === 5 && genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true) return true;
+        if (manualRollsInclusion === 0) {log('manual rolls inclusion is 0'); return false;}
+        if ((Object.keys(this.roll.data).length === 0) && !genericUtils.getCPRSetting('manualRollsPromptNoData')) {log('roll has no data'); return false;}
+        if (manualRollsInclusion === 1) return true;
+        if ((manualRollsInclusion === 2) && (this.roll.data?.actorType === 'character')) return true;
+        else if ((manualRollsInclusion === 3) && (fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true)) return true;
+        else if ((manualRollsInclusion === 4) && (fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true)) return true;
+        else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true)) return true;
         else return false;
+        function log(reason) {
+            genericUtils.log('dev', 'Check Preferences: False - ' + reason);
+        }
     }
     async digitalRoll() {
+        genericUtils.log('dev', 'Fulfilling Digital Roll');
         await this.constructor._fulfillRoll.call(this);
         Roll.defaultImplementation.RESOLVERS.delete(this.roll);
         this.#resolve?.();
@@ -107,7 +114,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             options: {
                 advantageMode: this.roll.options.advantageMode,
                 name: this.roll.data.name,
-                flavor: this.roll.options.flavor ?? this.roll.data.item.name,
+                flavor: this.roll.options.flavor ?? this.roll.data?.item?.name,
                 bonusTotal: this.roll.terms.reduce((acc, cur) => {
                     if (cur instanceof CONFIG.Dice.termTypes.NumericTerm) acc += cur.number;
                 }, 0)
@@ -147,6 +154,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @returns {Promise<number|void>}
      */
     async resolveResult(term, method, { reroll=false, explode=false }={}) {
+        if (!this.element) return term.randomFace();
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
             console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
