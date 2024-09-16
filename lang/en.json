@@ -136,6 +136,7 @@
         },
         "Dialog": {
             "DamageType": "What damage type?",
+            "HitDieLabel": "{className} ({denomination}) - {remaining}/{max}",
             "Invalid": "Invalid Entry!",
             "Missed": "Attack roll ({attackTotal}) missed. Use {itemName}?",
             "RemoteMessage": "Waiting for remote dialog selection from",
@@ -245,6 +246,14 @@
             "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
         "Macros": {
+            "AberrantDragonmark": {
+                "ConfigId": "Associated Spell ID",
+                "Damage": "Aberrant Dragonmark: Damage",
+                "Expend": "Expend a hit die?",
+                "Healing": "Aberrant Dragonmark: Healing",
+                "NoValid": "No valid spells found!",
+                "Select": "Select the associated spell for this feature:"
+            },
             "Actions": {
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
@@ -470,6 +479,9 @@
                 "NoRites": "No rites found on actor!",
                 "Select": "Which Crimson Rite?",
                 "Weapon": "Upon which weapon will you activate the rite?"
+            },
+            "Crusher": {
+                "Move": "Move target?"
             },
             "DangerSense": {
                 "CanSee": "This save is from an effect you can see."
@@ -761,6 +773,9 @@
                 "LycanRegeneration": "Lycan Regeneration",
                 "PredatoryStrike": "Predatory Strike",
                 "Revert": "Hybrid Transformation: Revert"
+            },
+            "ImbueCard": {
+                "Select": "Which spell to imbue a card with?"
             },
             "InfectiousFury": {
                 "Attack": "Attack a Nearby Target",

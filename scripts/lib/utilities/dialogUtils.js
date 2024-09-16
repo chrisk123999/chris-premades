@@ -226,13 +226,13 @@ async function selectDocumentsDialog(title, content, documents, {max = undefined
     }
 }
 async function selectHitDie(actor, title, content, {max = 1, userId = game.user.id} = {}) {
-    let documents = actor.items.filter(i => i.type === 'class');
+    let documents = actor.items.filter(i => i.type === 'class' && (i.system.levels - i.system.hitDiceUsed) > 0);
     if (!documents.length) return;
     documents = documents.sort((a, b) => {
         return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
     });
     let inputFields = documents.map(i => ({
-        label: i.name,
+        label: genericUtils.format('CHRISPREMADES.Dialog.HitDieLabel', {className: i.name, remaining: i.system.levels - i.system.hitDiceUsed, max: i.system.levels, denomination: i.system.hitDice}),
         name: i.id,
         options: {
             image: i.img,

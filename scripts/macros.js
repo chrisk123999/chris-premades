@@ -428,7 +428,17 @@ export {shove} from './macros/actions/shove.js';
 export {squeeze} from './macros/actions/squeeze.js';
 export {underwater, underwaterEffect} from './macros/actions/underwater.js';
 // Feats
+export {aberrantDragonmark} from './macros/feats/aberrantDragonmark.js';
+export {chromaticInfusion, reactiveResistance} from './macros/feats/giftOfTheChromaticDragon.js';
+export {cloudyEscape} from './macros/feats/cloudyEscape.js';
+export {crusher} from './macros/feats/crusher.js';
+// export {dualWielder} from './macros/feats/dualWielder.js';
+export {frigidRetaliation} from './macros/feats/frigidRetaliation.js';
 export {grappler, grapplerPin} from './macros/feats/grappler.js';
+export {graspOfAvarice} from './macros/feats/graspOfAvarice.js';
+export {imbueCard} from './macros/feats/imbueCard.js';
+export {searingIgnition} from './macros/feats/searingIgnition.js';
+export {stasisStrike} from './macros/feats/stasisStrike.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/feats/elementalAdept.js';
 // Items
