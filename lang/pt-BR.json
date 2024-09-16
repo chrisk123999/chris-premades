@@ -129,7 +129,6 @@
             "Unknown": "Cobertura Desconhecida"
         },
         "CustomMacros": {
-            "MissingIdentifier": "A macro \"{name}\" está faltando um identificador e foi ignorada!",
             "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
         },
         "CustomTypes": {
@@ -1530,6 +1529,11 @@
                 "Label": "Ajuda",
                 "Name": "Ajuda"
             },
+            "homebrew": {
+                "Hint": "Configurações para opções de homebrew.",
+                "Label": "Opções de Homebrew",
+                "Name": "Opções de Homebrew"
+            },
             "integration": {
                 "Hint": "Configurações para opções de integração de módulo.",
                 "Label": "Integração de Módulo",
@@ -1677,6 +1681,10 @@
                 "Hint": "Quando ativado, certas macros usarão Epic Rolls, quando possível.",
                 "Name": "Usar Epic Rolls"
             },
+            "explodingHeals": {
+                "Hint": "Quando ativado, todas as fórmulas de rolagem de cura serão automaticamente ajustadas para explodir.",
+                "Name": "Curas Explosivas"
+            },
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
@@ -1810,6 +1818,10 @@
             "temporaryEffectHud": {
                 "Hint": "Adiciona efeitos Temporários à HUD de efeitos de status do token.",
                 "Name": "Efeitos Temporários na HUD"
+            },
+            "thirdParty": {
+                "Hint": "Quando ativado, o Medkit também incluirá automações Homebrew.",
+                "Name": "Conteúdo de Terceiros"
             },
             "updateCompanionInitiative": {
                 "Hint": "Define automaticamente a iniciativa do companheiro logo após a iniciativa do jogador, quando rolada.",
