@@ -430,6 +430,7 @@ export {underwater, underwaterEffect} from './macros/actions/underwater.js';
 // Feats
 export {grappler, grapplerPin} from './macros/feats/grappler.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
+export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/feats/elementalAdept.js';
 // Items
 export {firearm} from './macros/mechanics/firearm.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';

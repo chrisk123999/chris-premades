@@ -212,6 +212,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     }
                     case 'select-many': {
                         genericUtils.setProperty(configuration, 'isSelectMany', true);
+                        config.options = config.options instanceof Function ? config.options() : config.options;
                         config.options.forEach(i => {
                             if (!configuration?.options) genericUtils.setProperty(configuration, 'options', []);
                             if (config.requiredModules) {

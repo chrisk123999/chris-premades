@@ -535,6 +535,9 @@
             "EldritchSmite": {
                 "Prone": "Knock target prone?"
             },
+            "ElementalAdept": {
+                "SpellOnly": "Only Spells:"
+            },
             "ElementalCleaver": {
                 "Change": "Elemental Cleaver: Change Damage Type",
                 "ElementalCleaver": "Elemental Cleaver",
@@ -1529,6 +1532,11 @@
                 "Label": "Help",
                 "Name": "Help"
             },
+            "homebrew": {
+                "Hint": "Settings for homebrew options.",
+                "Label": "Homebrew Options",
+                "Name": "Homebrew Options"
+            },
             "integration": {
                 "Hint": "Settings for module integration options.",
                 "Label": "Module Integration",
@@ -1548,11 +1556,6 @@
                 "Hint": "Settings for game mechanics.",
                 "Label": "Game Mechanic Options",
                 "Name": "Game Mechanic Options"
-            },
-            "homebrew": {
-                "Hint": "Settings for homebrew options.",
-                "Label": "Homebrew Options",
-                "Name": "Homebrew Options"
             }
         },
         "Settings": {
@@ -1680,6 +1683,10 @@
             "epicRolls": {
                 "Hint": "When enabled, certain macros will use Epic Rolls when possible.",
                 "Name": "Epic Rolls: Enabled"
+            },
+            "explodingHeals": {
+                "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
+                "Name": "Exploding Heals"
             },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
@@ -1815,6 +1822,10 @@
                 "Hint": "Adds Temporary effects to the status effect token HUD.",
                 "Name": "Temporary Effects HUD"
             },
+            "thirdParty": {
+                "Hint": "When enabled, the Medkit will also include Homebrew automations.",
+                "Name": "3rd Party Content"
+            },
             "updateCompanionInitiative": {
                 "Hint": "Automatically set companion's initiative to just after player's iniative when rolled.",
                 "Name": "Update Companion Initiative"
@@ -1830,14 +1841,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "explodingHeals": {
-                "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
-                "Name": "Exploding Heals"
-            },
-            "thirdParty": {
-                "Hint": "When enabled, the Medkit will also include Homebrew automations.",
-                "Name": "3rd Party Content"
             }
         },
         "SkillCheck": {
