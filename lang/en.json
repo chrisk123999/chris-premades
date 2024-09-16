@@ -536,6 +536,12 @@
                 "Prone": "Knock target prone?"
             },
             "ElementalAdept": {
+                "DowngradeImmunity": "Downgrade Immunity to Resistance",
+                "DowngradeResistanceImmunity": "Downgrade Immunity to Resistance & Ignore Resistance",
+                "IgnoreImmunity": "Ignore Immunity",
+                "IgnoreResistance": "Ignore Resistance",
+                "IgnoreResistanceImmunity": "Ignore Resistance & Immunity",
+                "Mode": "Downgrade Mode:",
                 "SpellOnly": "Only Spells:"
             },
             "ElementalCleaver": {

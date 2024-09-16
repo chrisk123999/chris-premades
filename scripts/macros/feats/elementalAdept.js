@@ -1,4 +1,4 @@
-import {constants, itemUtils, rollUtils} from '../../utils.js';
+import {actorUtils, constants, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
 async function damage({trigger, workflow}) {
     if (!workflow.damageRolls || !workflow.actor || !workflow.item) return;
     if (itemUtils.getConfig(trigger.entity, 'spellOnly')) {
@@ -22,7 +22,206 @@ async function damage({trigger, workflow}) {
         return await rollUtils.damageRoll(newFormula, workflow.actor, roll.options);
     }));
     await workflow.setDamageRolls(damageRolls);
+    if (!workflow.targets.size) return;
+    let mode = itemUtils.getConfig(trigger.entity, 'mode');
+    switch (mode) {
+        case 'none': return;
+        case 'ignoreResistance': {
+            let effectData = {
+                name: trigger.entity.name,
+                img: trigger.entity.img,
+                origin: trigger.entity.uuid,
+                duration: {
+                    seconds: 1
+                },
+                changes: validTypes.map(i => ({
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    value: '-' + i
+                })),
+                flags: {
+                    'chris-premades': {
+                        effect: {
+                            noAnimation: true
+                        }
+                    }
+                }
+            };
+            await Promise.all(workflow.targets.map(async token => {
+                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
+            }));
+            break;
+        }
+        case 'ignoreImmunity': {
+            let effectData = {
+                name: trigger.entity.name,
+                img: trigger.entity.img,
+                origin: trigger.entity.uuid,
+                duration: {
+                    seconds: 1
+                },
+                changes: validTypes.map(i => ({
+                    key: 'system.traits.di.value',
+                    mode: 2,
+                    value: '-' + i
+                })),
+                flags: {
+                    'chris-premades': {
+                        effect: {
+                            noAnimation: true
+                        }
+                    }
+                }
+            };
+            await Promise.all(workflow.targets.map(async token => {
+                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
+            }));
+            break;
+        }
+        case 'ignoreResistanceImmunity': {
+            let effectData = {
+                name: trigger.entity.name,
+                img: trigger.entity.img,
+                origin: trigger.entity.uuid,
+                duration: {
+                    seconds: 1
+                },
+                changes: validTypes.map(i => ({
+                    key: 'system.traits.di.value',
+                    mode: 2,
+                    value: '-' + i
+                })).concat(validTypes.map(i => ({
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    value: '-' + i
+                }))),
+                flags: {
+                    'chris-premades': {
+                        effect: {
+                            noAnimation: true
+                        }
+                    }
+                }
+            };
+            await Promise.all(workflow.targets.map(async token => {
+                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
+            }));
+            break;
+        }
+        case 'downgradeImmunity': {
+            await Promise.all(workflow.targets.map(async token => {
+                let downgrades = Array.from(token.actor.system.traits.di.value);
+                let effectData = {
+                    name: trigger.entity.name,
+                    img: trigger.entity.img,
+                    origin: trigger.entity.uuid,
+                    duration: {
+                        seconds: 1
+                    },
+                    changes: downgrades.map(i => ({
+                        key: 'system.traits.di.value',
+                        mode: 2,
+                        value: '-' + i
+                    })).concat(downgrades.map(i => ({
+                        key: 'system.traits.dr.value',
+                        mode: 2,
+                        value: i
+                    }))),
+                    flags: {
+                        'chris-premades': {
+                            effect: {
+                                noAnimation: true
+                            }
+                        }
+                    }
+                };
+                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
+            }));
+            break;
+        }
+        case 'downgradeResistanceImmunity': {
+            await Promise.all(workflow.targets.map(async token => {
+                let downgradeImmunity = Array.from(token.actor.system.traits.di.value);
+                let downgradeResistance = Array.from(token.actor.system.traits.dr.value).filter(i => !downgradeImmunity.includes(i));
+                let effectData = {
+                    name: trigger.entity.name,
+                    img: trigger.entity.img,
+                    origin: trigger.entity.uuid,
+                    duration: {
+                        seconds: 1
+                    },
+                    changes: downgradeImmunity.map(i => ({
+                        key: 'system.traits.di.value',
+                        mode: 2,
+                        value: '-' + i
+                    })).concat(downgradeImmunity.map(i => ({
+                        key: 'system.traits.dr.value',
+                        mode: 2,
+                        value: i
+                    }))).concat(downgradeResistance.map(i => ({
+                        key: 'system.traits.dr.value',
+                        mode: 2,
+                        value: '-' + i
+                    }))),
+                    flags: {
+                        'chris-premades': {
+                            effect: {
+                                noAnimation: true
+                            }
+                        }
+                    }
+                };
+                await effectUtils.createEffect(token.actor, effectData, {identifier: 'elementalAdeptEffect'});
+            }));
+            break;
+        }
+    }
 }
+async function done({trigger, workflow}) {
+    if (!workflow.targets.size) return;
+    await Promise.all(workflow.targets.map(async token => {
+        let effectIds = effectUtils.getAllEffectsByIdentifier(token.actor, 'elementalAdeptEffect').map(i => i.id);
+        if (effectIds.length) await genericUtils.deleteEmbeddedDocuments(token.actor, 'ActiveEffect', effectIds);
+    }));
+}
+let configMode = {
+    value: 'mode',
+    label: 'CHRISPREMADES.Macros.ElementalAdept.Mode',
+    type: 'select',
+    default: 'ignoreResistance',
+    category: 'homebrew',
+    homebrew: true,
+    options: [
+        {
+            label: 'CHRISPREMADES.Macros.ElementalAdept.IgnoreResistance',
+            value: 'ignoreResistance'
+        },
+        {
+            label: 'CHRISPREMADES.Macros.ElementalAdept.IgnoreImmunity',
+            value: 'ignoreImmunity'
+        },
+        {
+            label: 'CHRISPREMADES.Macros.ElementalAdept.IgnoreResistanceImmunity',
+            value: 'ignoreResistanceImmunity'
+        },
+        {
+            label: 'CHRISPREMADES.Macros.ElementalAdept.DowngradeImmunity',
+            value: 'downgradeImmunity'
+        },
+        {
+            label: 'CHRISPREMADES.Macros.ElementalAdept.DowngradeResistanceImmunity',
+            value: 'downgradeResistanceImmunity'
+        },
+    ]
+};
+let spellOnly = {
+    value: 'spellOnly',
+    label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
+    type: 'checkbox',
+    default: true,
+    category: 'homebrew',
+    homebrew: true
+};
 export let elementalAdeptA = {
     name: 'Elemental Adept (Acid)',
     version: '0.12.69',
@@ -31,6 +230,11 @@ export let elementalAdeptA = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
+                priority: 320
+            },
+            {
+                pass: 'rollFinished',
+                macro: done,
                 priority: 320
             }
         ]
@@ -45,14 +249,8 @@ export let elementalAdeptA = {
             category: 'homebrew',
             homebrew: true
         },
-        {
-            value: 'spellOnly',
-            label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
-            type: 'checkbox',
-            default: true,
-            category: 'homebrew',
-            homebrew: true
-        }
+        spellOnly,
+        configMode
     ]
 };
 export let elementalAdeptC = {
@@ -69,14 +267,8 @@ export let elementalAdeptC = {
             category: 'homebrew',
             homebrew: true
         },
-        {
-            value: 'spellOnly',
-            label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
-            type: 'checkbox',
-            default: true,
-            category: 'homebrew',
-            homebrew: true
-        }
+        spellOnly,
+        configMode
     ]
 };
 export let elementalAdeptF = {
@@ -93,14 +285,8 @@ export let elementalAdeptF = {
             category: 'homebrew',
             homebrew: true
         },
-        {
-            value: 'spellOnly',
-            label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
-            type: 'checkbox',
-            default: true,
-            category: 'homebrew',
-            homebrew: true
-        }
+        spellOnly,
+        configMode
     ]
 };
 export let elementalAdeptL = {
@@ -117,14 +303,8 @@ export let elementalAdeptL = {
             category: 'homebrew',
             homebrew: true
         },
-        {
-            value: 'spellOnly',
-            label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
-            type: 'checkbox',
-            default: true,
-            category: 'homebrew',
-            homebrew: true
-        }
+        spellOnly,
+        configMode
     ]
 };
 export let elementalAdeptT = {
@@ -141,13 +321,7 @@ export let elementalAdeptT = {
             category: 'homebrew',
             homebrew: true
         },
-        {
-            value: 'spellOnly',
-            label: 'CHRISPREMADES.Macros.ElementalAdept.SpellOnly',
-            type: 'checkbox',
-            default: true,
-            category: 'homebrew',
-            homebrew: true
-        }
+        spellOnly,
+        configMode
     ]
 };
