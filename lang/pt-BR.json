@@ -535,6 +535,15 @@
             "EldritchSmite": {
                 "Prone": "Derrubar o alvo?"
             },
+            "ElementalAdept": {
+                "DowngradeImmunity": "Rebaixar Imunidade para Resistência",
+                "DowngradeResistanceImmunity": "Rebaixar Imunidade para Resistência e Ignorar Resistência",
+                "IgnoreImmunity": "Ignorar Imunidade",
+                "IgnoreResistance": "Ignorar Resistência",
+                "IgnoreResistanceImmunity": "Ignorar Resistência e Imunidade",
+                "Mode": "Modo de Rebaixar:",
+                "SpellOnly": "Apenas Magias:"
+            },
             "ElementalCleaver": {
                 "Change": "Cutelo Elemental: Mudar Tipo de Dano",
                 "ElementalCleaver": "Cutelo Elemental",
