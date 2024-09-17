@@ -32,6 +32,7 @@ import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
+import {abilityCheck} from './events/abilityCheck.js';
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -67,6 +68,7 @@ Hooks.once('ready', () => {
     }
     abilitySave.patch();
     skillCheck.patch();
+    abilityCheck.patch();
     if (game.modules.get('ddb-importer')?.active) ddbi.workaround(); //Remove this after MrPrimate updates to the new API.
     if (utils.genericUtils.getCPRSetting('manualRollsEnabled')) rollResolver.registerFulfillmentMethod(); 
     tours.checkTour();

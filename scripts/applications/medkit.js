@@ -328,6 +328,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 equipment: item.flags?.['chris-premades']?.equipment?.identifier ?? '',
                 skill: JSON?.stringify(item.flags?.['chris-premades']?.macros?.skill) ?? '',
                 save: JSON?.stringify(item.flags?.['chris-premades']?.macros?.save) ?? '',
+                check: JSON?.stringify(item.flags?.['chris-premades']?.macros?.check) ?? '',
                 config: macroInfo?.config
             };
             genericUtils.setProperty(context, 'devTools', devTools);
@@ -473,6 +474,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     console.error(error);
                 }
                 if (value) await item.setFlag('chris-premades', 'macros.skill', value);
+            }
+            if (devTools.check != '') {
+                let value = undefined;
+                try {
+                    value = JSON.parse(devTools.check.replace(/'/g, '"'));
+                } catch (error) {
+                    ui.notifications.error('Error with Check field, see console');
+                    console.error(error);
+                }
+                if (value) await item.setFlag('chris-premades', 'macros.check', value);
             }
         }
         if (category) {

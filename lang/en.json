@@ -1,5 +1,8 @@
 {
     "CHRISPREMADES": {
+        "AbilityCheck": {
+            "Title": "Ability Check"
+        },
         "AbilitySave": {
             "Title": "Ability Save"
         },
