@@ -65,6 +65,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i)
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
+            if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
             if (currentValue.isUpToDate === 1) {
                 accumulator.upToDate.value += 1;
                 accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.source);
@@ -131,6 +132,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     genericUtils.notify('Error with ' + currentValue.item.name + ', skipping item', 'warn');
                     return accumulator;
                 }
+                if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
                 accumulator.push(this.update(currentValue.item, currentValue.sourceItem, options));
             }
             return accumulator;
