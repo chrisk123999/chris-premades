@@ -1,0 +1,200 @@
+{
+  "name": "Fury of the Frost Giant: Frigid Retaliation",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "reaction",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "2",
+      "units": "round"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 30,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 5,
+      "max": "@prof",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "str",
+    "actionType": "save",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d8[cold] + @prof",
+          "cold"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": null,
+      "scaling": "str"
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "reaction === 'isDamaged' && getDistance(tokenUuid, targetUuid) <= 30 && canSee(targetUuid, tokenUuid)",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": true,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "nodam",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Fury of the Frost Giant: Frigid Retaliation",
+        "version": "0.12.70",
+        "identifier": "frigidRetaliation",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Fury of the Frost Giant: Frigid Retaliation",
+      "origin": "Compendium.world.cpr-feats.Item.sgVA2IplztVxpBnM",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEnd"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
+      "_id": "0oe8b96umreEOr3p",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "0",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1726520634359,
+        "modifiedTime": 1726520662063,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!sgVA2IplztVxpBnM.0oe8b96umreEOr3p"
+    }
+  ],
+  "img": "icons/magic/water/barrier-ice-crystal-wall-jagged.webp",
+  "folder": null,
+  "_id": "sgVA2IplztVxpBnM",
+  "_key": "!items!sgVA2IplztVxpBnM"
+}
