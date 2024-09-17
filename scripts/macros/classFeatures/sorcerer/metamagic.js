@@ -408,7 +408,9 @@ async function useTwinned({workflow}) {
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeUsage = newItem.system.hasLimitedUses;
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null}, config: {consumeSpellSlot: shouldConsumeSlot ? true : null, consumeUsage: shouldConsumeUsage ? true : null}});
 }
 async function earlyTwinned({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
