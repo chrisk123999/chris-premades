@@ -116,7 +116,7 @@ function getSortedTriggers(actor, pass, skillId, options, roll) {
     return triggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
-    genericUtils.log('dev', 'Executing Save Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
+    genericUtils.log('dev', 'Executing Skill Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);
     let result;
     try {
         result = await trigger.macro({trigger});
@@ -127,16 +127,26 @@ async function executeMacro(trigger) {
     return result;
 }
 async function executeContextMacroPass(actor, pass, skillId, options) {
-    genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
     let triggers = getSortedTriggers(actor, pass, skillId, options);
     let results = [];
     for (let i of triggers) results.push(await executeMacro(i));
     return results.filter(i => i);
 }
 async function executeMacroPass(actor, pass, skillId, options, roll) {
-    genericUtils.log('dev', 'Executing Save Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
     let triggers = getSortedTriggers(actor, pass, skillId, options, roll);
     for (let i of triggers) await executeMacro(i);
+}
+async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
+    genericUtils.log('dev', 'Executing Skill Macro Pass: ' + pass);
+    let triggers = getSortedTriggers(actor, pass, skillId, options, roll);
+    for (let i of triggers) {
+        i.roll = roll;
+        let bonusRoll = await executeMacro(i);
+        if (bonusRoll) roll = bonusRoll;
+    }
+    return roll;
 }
 async function rollSkill(wrapped, skillId, options = {}) {
     await executeMacroPass(this, 'situational', skillId, options);
@@ -160,9 +170,12 @@ async function rollSkill(wrapped, skillId, options = {}) {
             }
         }
     }
-    let returnData = await wrapped(skillId, options);
-    await executeMacroPass(this, 'bonus', skillId, options, returnData);
+    let returnData = await wrapped(skillId, {...options, chatMessage: false});
+    returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
+    await returnData.toMessage({
+        speaker: ChatMessage.implementation.getSpeaker({actor: this})
+    });
     return returnData;
 }
 function patch() {

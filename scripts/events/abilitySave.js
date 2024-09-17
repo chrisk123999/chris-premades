@@ -170,9 +170,11 @@ async function save(wrapped, saveId, options = {}) {
             }
         }
     }
-    let returnData = await wrapped(saveId, options);
+    let returnData = await wrapped(saveId, {...options, chatMessage: false});
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData);
-    console.log(returnData);
+    await returnData.toMessage({
+        speaker: ChatMessage.implementation.getSpeaker({actor: this})
+    });
     return returnData;
 }
 function patch() {

@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, tokenUtils, workflowUtils} from '../../../utils.js';
 
 async function use({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -13,32 +13,6 @@ async function use({workflow}) {
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: itemUtils.convertDuration(workflow.item),
-        changes: [
-            {
-                key: 'flags.midi-qol.optional.BardicInspiration.label',
-                mode: 5,
-                value: workflow.item.name,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.BardicInspiration.save.all',
-                mode: 5,
-                value: scale.formula,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.BardicInspiration.check.all',
-                mode: 5,
-                value: scale.formula,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.BardicInspiration.skill.all',
-                mode: 5,
-                value: scale.formula,
-                priority: 20
-            }
-        ],
         flags: {
             'chris-premades': {
                 'bardicInspiration': {
@@ -47,32 +21,27 @@ async function use({workflow}) {
             }
         }
     };
+    effectUtils.addMacro(effectData, 'save', ['bardicInspirationInspired']);
+    effectUtils.addMacro(effectData, 'skill', ['bardicInspirationInspired']);
+    effectUtils.addMacro(effectData, 'check', ['bardicInspirationInspired']);
+    effectUtils.addMacro(effectData, 'midi.actor', ['bardicInspirationInspired']);
     let moteOfPotential = itemUtils.getItemByIdentifier(workflow.actor, 'moteOfPotential');
     if (moteOfPotential) {
-        effectData.changes[2].value = '2' + scale.die + 'kh';
-        effectData.changes[3].value = '2' + scale.die + 'kh';
         effectData.flags['chris-premades'].moteOfPotential = {
+            name: moteOfPotential.name,
             saveDC: itemUtils.getSaveDC(workflow.item),
-            damageType: itemUtils.getConfig(moteOfPotential, 'damageType') ?? 'thunder'
+            damageType: itemUtils.getConfig(moteOfPotential, 'damageType') ?? 'thunder',
+            chaMod: workflow.actor.system.abilities.cha.mod
         };
-        effectData.changes.push({
-            key: 'flags.midi-qol.optional.BardicInspiration.macroToCall',
-            mode: 5,
-            value: 'function.chrisPremades.macros.moteOfPotential.utilFunctions.use',
-            priority: 20
-        });
     }
-    effectUtils.addMacro(effectData, 'midi.actor', ['bardicInspirationInspired']);
     let magicalInspiration = itemUtils.getItemByIdentifier(workflow.actor, 'magicalInspiration');
     if (magicalInspiration) {
         effectData.flags['chris-premades'].bardicInspiration.magical = magicalInspiration.name;
     }
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'bardicInspirationInspired'});
 }
-async function attack({workflow}) {
+async function attack({trigger: {entity: effect}, workflow}) {
     if (workflow.targets.size !== 1 || workflow.isFumble) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bardicInspirationInspired');
-    if (!effect) return;
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttack', {itemName: effect.name, attackTotal: workflow.attackTotal}));
     if (!selection) return;
     let bardDice = effect.flags['chris-premades'].bardicInspiration.formula;
@@ -96,11 +65,9 @@ async function attack({workflow}) {
         await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, targets);
     }
 }
-async function damage({workflow}) {
+async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell');
     if (!workflow.hitTargets.size && constants.spellAttacks.includes(workflow.item.system.actionType)) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bardicInspirationInspired');
-    if (!effect) return;
     let {formula: bardDice, magical} = effect.flags['chris-premades'].bardicInspiration;
     if (!magical?.length) return;
     let result = await dialogUtils.selectTargetDialog(effect.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: magical}), workflow.targets);
@@ -116,9 +83,7 @@ async function damage({workflow}) {
     let damageTotal = damageRoll.total;
     await genericUtils.update(effect, {'flags.chris-premades.bardicInspiration': {magicalTarget: token.id, magicalDamage: damageTotal}});
 }
-async function applyDamage({workflow, ditem}) {
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'bardicInspirationInspired');
-    if (!effect) return;
+async function applyDamage({trigger: {entity: effect}, ditem}) {
     let {magicalTarget, magicalDamage} = effect.flags['chris-premades'].bardicInspiration;
     if (magicalTarget !== ditem.tokenId || !magicalDamage) return;
     ditem.rawDamageDetail[0].value += magicalDamage;
@@ -126,6 +91,42 @@ async function applyDamage({workflow, ditem}) {
     ditem.damageDetail[0].value += modifiedTotal;
     ditem.hpDamage += modifiedTotal;
     await genericUtils.remove(effect);
+}
+async function checkBonus({trigger: {roll, entity: effect}}) {
+    let d20Roll = roll.dice.find(i => i.faces == 20).results.find(i => i.active).result;
+    if (d20Roll === 1) return;
+    let chrisFlags = effect.flags['chris-premades'];
+    let potentialFormula = chrisFlags.moteOfPotential ? ('2' + chrisFlags.bardicInspiration.formula + 'kh') : ('1' + chrisFlags.bardicInspiration.formula);
+    let detailsText = effect.name + ' (' + potentialFormula + ')';
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: detailsText, rollTotal: roll.total}));
+    if (!selection) return;
+    await genericUtils.remove(effect);
+    return await rollUtils.addToRoll(roll, potentialFormula);
+}
+async function saveBonus({trigger: {saveId, roll, actor, entity: effect}}) {
+    let d20Roll = roll.dice.find(i => i.faces == 20).results.find(i => i.active).result;
+    if (d20Roll === 1) return;
+    let oldTotal = roll.total;
+    let chrisFlags = effect.flags['chris-premades'];
+    let potentialFormula = '1' + chrisFlags.bardicInspiration.formula;
+    let detailsText = effect.name + ' (' + potentialFormula + ')';
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotal', {itemName: detailsText, rollTotal: oldTotal}));
+    if (!selection) return;
+    let moteOfPotential = chrisFlags.moteOfPotential;
+    await genericUtils.remove(effect);
+    let newRoll = await rollUtils.addToRoll(roll, potentialFormula);
+    if (moteOfPotential) {
+        let toHeal = newRoll.total - oldTotal + chrisFlags.moteOfPotential.chaMod;
+        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mote of Potential Heal', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BardicInspiration.MoteHeal'});
+        if (!featureData) return;
+        featureData.system.damage.parts = [
+            [toHeal + '[temphp]', 'temphp']
+        ];
+        let token = actorUtils.getFirstToken(actor);
+        if (!token) return;
+        await workflowUtils.syntheticItemDataRoll(featureData, actor, [token]);
+    }
+    return newRoll;
 }
 export let bardicInspiration = {
     name: 'Bardic Inspiration',
@@ -177,5 +178,26 @@ export let bardicInspirationInspired = {
                 priority: 50
             }
         ]
-    }
+    },
+    save: [
+        {
+            pass: 'bonus',
+            macro: saveBonus,
+            priority: 50
+        }
+    ],
+    skill: [
+        {
+            pass: 'bonus',
+            macro: checkBonus,
+            priority: 50
+        }
+    ],
+    check: [
+        {
+            pass: 'bonus',
+            macro: checkBonus,
+            priority: 50
+        }
+    ]
 };

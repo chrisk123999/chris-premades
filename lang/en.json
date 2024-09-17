@@ -148,6 +148,7 @@
             "UseExtraCost": "Use {itemName}? (Costs {quantity} {quantityName})",
             "UseName": "Use {itemName} [{tokenName}]?",
             "UseOn": "Use {itemName} on {tokenName}?",
+            "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
             "WhatDo": "What would you like to do?",
             "YesDetail": "Yes ({detail})"
         },
