@@ -1,13 +1,14 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, itemUtils, spellUtils} from '../../utils.js';
 
 async function use({workflow}) {
-    let validTypes = ['prepared', 'pact', 'always'];
-    let validSpells = workflow.actor.items.filter(i => i.type === 'spell' && i.system.activation.type === 'action' && validTypes.includes(i.system.preparation?.mode));
-    if (!validSpells.length) {
+    let maxSlot = Object.values(workflow.actor.system.spells).filter(i => i.max).at(-1)?.level;
+    let validSpells = await Promise.all(Object.keys(workflow.actor.spellcastingClasses).map(async i => await spellUtils.getClassSpells(i) ?? []));
+    validSpells = new Set(validSpells.flat().filter(i => i && i.system.activation.type === 'action' && i.system.level <= maxSlot));
+    if (!validSpells.size) {
         genericUtils.notify('CHRISPREMADES.Macros.AberrantDragonmark.NoValid', 'info');
         return;
     }
-    let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ImbueCard.Select', validSpells);
+    let selection = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.ImbueCard.Select', Array.from(validSpells));
     if (!selection) return;
     let spellData = genericUtils.duplicate(selection.toObject());
     delete spellData._id;
