@@ -173,9 +173,11 @@ async function rollSkill(wrapped, skillId, options = {}) {
     let returnData = await wrapped(skillId, {...options, chatMessage: false});
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
-    await returnData.toMessage({
-        speaker: ChatMessage.implementation.getSpeaker({actor: this})
-    });
+    if (options.chatMessage !== false) {
+        await returnData.toMessage({
+            speaker: ChatMessage.implementation.getSpeaker({actor: this})
+        });
+    }
     return returnData;
 }
 function patch() {

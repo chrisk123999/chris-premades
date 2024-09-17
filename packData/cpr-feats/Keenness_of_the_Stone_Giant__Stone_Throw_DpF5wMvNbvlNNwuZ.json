@@ -1,0 +1,199 @@
+{
+  "name": "Keenness of the Stone Giant: Stone Throw",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "day"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 60,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 5,
+      "max": "@prof",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "str",
+    "actionType": "rsak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d10[force]",
+          "force"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "str",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [
+      "mgc"
+    ],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": true,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Keenness of the Stone Giant: Stone Throw",
+        "version": "0.12.70",
+        "identifier": "stoneThrow",
+        "source": "chris-premades"
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Keenness of the Stone Giant: Stone Throw",
+      "origin": "Compendium.world.cpr-feats.Item.DpF5wMvNbvlNNwuZ",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "prone"
+          ]
+        }
+      },
+      "img": "icons/magic/earth/projectile-boulder-dust.webp",
+      "_id": "tknfyKv5TPrTJCxC",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1726589860012,
+        "modifiedTime": 1726589865650,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!DpF5wMvNbvlNNwuZ.tknfyKv5TPrTJCxC"
+    }
+  ],
+  "img": "icons/magic/earth/projectile-boulder-dust.webp",
+  "folder": null,
+  "_id": "DpF5wMvNbvlNNwuZ",
+  "_key": "!items!DpF5wMvNbvlNNwuZ"
+}

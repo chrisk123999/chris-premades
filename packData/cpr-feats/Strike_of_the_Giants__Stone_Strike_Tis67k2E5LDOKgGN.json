@@ -1,0 +1,209 @@
+{
+  "name": "Strike of the Giants: Stone Strike",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": 3,
+      "max": "@prof",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": null,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d6[force]",
+          "force"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "str",
+      "dc": null,
+      "scaling": "str"
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Strike of the Giants: Stone Strike",
+        "version": "0.12.70",
+        "identifier": "stoneStrike",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "strikeOfTheGiants"
+          ],
+          "item": [
+            "stoneStrike"
+          ]
+        },
+        "combat": [
+          "strikeOfTheGiants"
+        ]
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Strike of the Giants: Stone Strike",
+      "origin": "Compendium.world.cpr-feats.Item.Tis67k2E5LDOKgGN",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "chris-premades": {
+          "noAnimation": false,
+          "conditions": [
+            "prone"
+          ]
+        }
+      },
+      "img": "icons/magic/earth/projectile-boulder-yellow.webp",
+      "_id": "5Mh8KGA9AjZvGEjD",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1726606841425,
+        "modifiedTime": 1726606846483,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!Tis67k2E5LDOKgGN.5Mh8KGA9AjZvGEjD"
+    }
+  ],
+  "img": "icons/magic/earth/projectile-boulder-yellow.webp",
+  "folder": null,
+  "_id": "Tis67k2E5LDOKgGN",
+  "_key": "!items!Tis67k2E5LDOKgGN"
+}

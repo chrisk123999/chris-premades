@@ -1,0 +1,209 @@
+{
+  "name": "Strike of the Giants: Frost Strike",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "special",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "2",
+      "units": "round"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": 3,
+      "max": "@prof",
+      "per": "lr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": "",
+      "amount": 1,
+      "scale": false
+    },
+    "ability": "",
+    "actionType": "other",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d6[cold]",
+          "cold"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": null,
+      "scaling": "str"
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "name": "Strike of the Giants: Frost Strike",
+        "version": "0.12.70",
+        "identifier": "frostStrike",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "strikeOfTheGiants"
+          ]
+        },
+        "combat": [
+          "strikeOfTheGiants"
+        ]
+      }
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default"
+    }
+  },
+  "effects": [
+    {
+      "name": "Strike of the Giants: Frost Strike",
+      "origin": "Compendium.world.cpr-feat-features.Item.XWSt2rH7F8iii28G",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "flags": {
+        "dnd5e": {},
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnStartSource"
+          ]
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "img": "icons/magic/movement/trail-streak-impact-blue.webp",
+      "_id": "IoebnvfDjGA6zB3a",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "0",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": "Compendium.world.cpr-feat-features.Item.XWSt2rH7F8iii28G.ActiveEffect.3Ay9P8nxcrx75tP3",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": 1726606687119,
+        "modifiedTime": 1726606687119,
+        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+      },
+      "_key": "!items.effects!StmJ2AUxtetx19oB.IoebnvfDjGA6zB3a"
+    }
+  ],
+  "img": "icons/magic/movement/trail-streak-impact-blue.webp",
+  "folder": null,
+  "_id": "StmJ2AUxtetx19oB",
+  "_key": "!items!StmJ2AUxtetx19oB"
+}

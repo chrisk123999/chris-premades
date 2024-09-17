@@ -12,7 +12,7 @@ export async function arcaneWardHelper(item, ditem, token, targetToken) {
         if (!projectedWard) return;
         if (targetToken.document.disposition !== token.document.disposition) return;
         if (tokenUtils.getDistance(token, targetToken) > 30) return;
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.ArcaneWard.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(targetToken.actor, true)});
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.ArcaneWard.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) return;
         await workflowUtils.completeItemUse(projectedWard);
     }

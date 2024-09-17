@@ -1,7 +1,6 @@
 import {epicRolls} from '../../integrations/epicRolls.js';
-import {effectUtils} from './effectUtils.js';
-import {genericUtils} from './genericUtils.js';
-import {socketUtils} from './socketUtils.js';
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+
 function getDistance(sourceToken, targetToken, {wallsBlock} = {}) {
     return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock);
 }
@@ -25,6 +24,14 @@ function checkCover(sourceToken, targetToken, {item, displayName}) {
     }
 }
 async function moveTokenAlongRay(targetToken, origRay, distance) {
+    let bulwark = itemUtils.getItemByIdentifier(targetToken.actor, 'bulwark');
+    if (bulwark && !actorUtils.hasUsedReaction(targetToken.actor)) {
+        let useBulwark = await dialogUtils.confirm(bulwark.name, 'CHRISPREMADES.Macros.Bulwark.Use', {userId: socketUtils.firstOwner(targetToken.actor, true)});
+        if (useBulwark) {
+            await workflowUtils.completeItemUse(bulwark);
+            return;
+        }
+    }
     let knockBackFactor;
     let newCenter;
     let hitsWall = true;

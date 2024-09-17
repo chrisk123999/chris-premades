@@ -173,9 +173,11 @@ async function rollCheck(wrapped, checkId, options = {}) {
     let returnData = await wrapped(checkId, {...options, chatMessage: false});
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
     //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
-    await returnData.toMessage({
-        speaker: ChatMessage.implementation.getSpeaker({actor: this})
-    });
+    if (options.chatMessage !== false) {
+        await returnData.toMessage({
+            speaker: ChatMessage.implementation.getSpeaker({actor: this})
+        });
+    }
     return returnData;
 }
 function patch() {

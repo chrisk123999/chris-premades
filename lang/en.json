@@ -149,10 +149,12 @@
             "UseName": "Use {itemName} [{tokenName}]?",
             "UseOn": "Use {itemName} on {tokenName}?",
             "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
+            "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
             "WhatDo": "What would you like to do?",
             "YesDetail": "Yes ({detail})"
         },
         "Direction": {
+            "Away": "Away",
             "Direction": "Direction",
             "East": "east",
             "North": "north",
@@ -161,6 +163,7 @@
             "South": "south",
             "Southeast": "southeast",
             "Southwest": "southwest",
+            "Towards": "Towards",
             "West": "west"
         },
         "Distance": {
@@ -417,6 +420,9 @@
             "BreathOfTheDragon": {
                 "Augment": "Augment (1 Ki)",
                 "Select": "Select Breath Details"
+            },
+            "Bulwark": {
+                "Use": "Use Reaction to avoid being moved?"
             },
             "CallLightning": {
                 "StormBolt": "Storm Bolt",
@@ -868,6 +874,9 @@
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
             },
+            "MaelstromAura": {
+                "Aura": "Maelstrom Aura"
+            },
             "MagicMissile": {
                 "Bolt": "Magic Missile Bolt",
                 "RollEach": "Roll Damage for Each Bolt?",
@@ -962,6 +971,9 @@
                 "Protect": "Protect {name} with {item}?",
                 "Reaction": "Pariah's Shield: Protect"
             },
+            "Piercer": {
+                "Reroll": "Reroll which lowest die?"
+            },
             "PoisonousSkin": {
                 "Poison": "Grung: Poison"
             },
@@ -1050,6 +1062,10 @@
                 "Bladesong": "You must be Bladesinging to use this feature!",
                 "NoSpellSlots": "You have no spell slots available!",
                 "Select": "Use your reaction to spend a spell slot to reduce damage?"
+            },
+            "SoothePain": {
+                "Protect": "Reduce damage to {tokenName}?",
+                "Self": "Reduce damage to self?"
             },
             "SpikeGrowth": {
                 "Thorns": "Spike Growth: Thorns"
@@ -1242,6 +1258,9 @@
             },
             "TavernBrawler": {
                 "Use": "Use a Bonus Action to attempt a grapple?"
+            },
+            "Telekinetic": {
+                "Select": "Which direction?"
             },
             "Teleport": {
                 "AssociatedObject": "Associated Object",
