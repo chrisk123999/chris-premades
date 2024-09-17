@@ -22,7 +22,7 @@ function collectActorSaveMacros(actor, pass, saveId, options, roll) {
             triggers.push({
                 entity: effect,
                 castData: {
-                    castData: effectUtils.getCastLevel(effect) ?? -1,
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
                     baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                     saveDC: effectUtils.getSaveDC(effect) ?? -1
                 },
