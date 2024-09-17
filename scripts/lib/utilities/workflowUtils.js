@@ -51,7 +51,8 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
     config = genericUtils.mergeObject(defaultConfig, config);
     return await completeItemUse(item, config, options);
 }
-async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, config = {}} = {}) {
+async function syntheticItemDataRoll(itemData, actor, targets, {options = {}, config = {}, killAnim = false} = {}) {
+    if (killAnim) genericUtils.mergeObject(itemData, {'flags.autoanimations': {killAnim: true}});
     let item = await itemUtils.syntheticItem(itemData, actor);
     return await syntheticItemRoll(item, targets, {options, config});
 }

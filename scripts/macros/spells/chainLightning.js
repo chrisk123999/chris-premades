@@ -49,7 +49,7 @@ async function use({workflow}) {
                 damageType
             ]
         ];
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets);
+        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets, {killAnim: playAnimation});
     }
 }
 export let chainLightning = {

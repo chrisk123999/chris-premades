@@ -63,7 +63,7 @@ async function use({workflow}) {
             playAnimation
         });
         featureData.system.damage.parts[1][0] = castLevel + 'd6';
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [nextTarget]);
+        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [nextTarget], {killAnim: playAnimation});
     }
 }
 export let chaosBolt = {

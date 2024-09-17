@@ -87,7 +87,7 @@ async function use({workflow}) {
             if (isNaN(numRays) || numRays == 0) continue;
             if (skipDead && targetToken.actor.system.attributes.hp.value === 0) continue;
             for (let i = 0; i < numRays; i++) {
-                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken], {killAnim: shouldPlayAnimation});
                 maxRays -= 1;
                 if (shouldPlayAnimation) {
                     if (animation === 'simple') {

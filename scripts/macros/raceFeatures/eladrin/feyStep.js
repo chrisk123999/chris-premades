@@ -34,7 +34,7 @@ async function use({workflow}) {
                     if (!nearbyTargets?.length) return;
                     nearbyTargets = nearbyTargets[0];
                 }
-                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, nearbyTargets);
+                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, nearbyTargets, {killAnim: true});
                 if (!featureWorkflow.failedSaves.size) return;
                 let effectData = {
                     name: genericUtils.translate('CHRISPREMADES.Macros.FeyStep.Charmed'),
@@ -67,7 +67,7 @@ async function use({workflow}) {
                     if (!targetToken) break;
                     targetToken = targetToken[0];
                 }
-                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
+                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken], {killAnim: true});
                 if (!featureWorkflow.failedSaves.size) break;
                 let effectData = {
                     name: genericUtils.translate('CHRISPREMADES.Macros.FeyStep.Frightened'),
@@ -93,7 +93,7 @@ async function use({workflow}) {
                 let selection = await dialogUtils.selectTargetDialog(featureData.name, 'CHRISPREMADES.Macros.FeyStep.SelectSpring', nearbyTargets);
                 if (!selection) break;
                 selection = selection[0];
-                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [selection]);
+                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [selection], {killAnim: true});
                 await Teleport.target(selection, workflow.token, {
                     animation,
                     range: 30
@@ -106,7 +106,7 @@ async function use({workflow}) {
                     range: 30
                 });
                 if (!featureData) return;
-                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, []);
+                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [], {killAnim: true});
                 return;
             }
         }

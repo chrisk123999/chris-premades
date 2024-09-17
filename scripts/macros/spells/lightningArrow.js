@@ -57,7 +57,7 @@ async function damage({workflow}) {
         }
     }
     if (newTargets.length) {
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets);
+        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets, {killAnim: playAnimation});
     }
     // TODO: If the burst causes damage to the caster & they fail conc save, this removal may result in an error when the failed save tries to remove conc
     await genericUtils.remove(effect);

@@ -38,7 +38,7 @@ async function use({trigger, workflow}) {
             for (let j = 0; j < i.value; j++) {
                 let hp = i.document.actor?.system?.attributes?.hp?.value;
                 if (!hp && skip) continue;
-                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [i.document]);
+                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [i.document], {killAnim: playAnimation});
                 boltsLeft -= 1;
             }
         }
