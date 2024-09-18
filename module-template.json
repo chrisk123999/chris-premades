@@ -87,7 +87,8 @@
         "type": "module",
         "compatibility": {
           "minimum": "12.1.2",
-          "verified": "12.1.2"
+          "verified": "12.1.2",
+          "maximum": "12.1.4"
         }
       },
       {
