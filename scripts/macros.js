@@ -456,11 +456,18 @@ export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elem
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
+export {bootsOfElvenkind} from './macros/items/trinket/bootsOfElvenkind.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
+export {dragonTouchedFocusSlumbering, dragonTouchedFocusStirringChromatic, dragonTouchedFocusStirringGem} from './macros/items/trinket/dragonTouchedFocus.js';
+export {dragonVessel, dragonVessel0, dragonVessel1, dragonVessel2, dragonVessel3} from './macros/items/trinket/dragonVessel.js';
 export {eldritchClawTattoo} from './macros/items/trinket/eldritchClawTattoo.js';
 export {elixirOfHealth} from './macros/items/consumable/elixirOfHealth.js';
+export {eyesOfMinuteSeeing} from './macros/items/trinket/eyesOfMinuteSeeing.js';
+export {eyesOfTheEagle} from './macros/items/trinket/eyesOfTheEagle.js';
 export {firearm} from './macros/mechanics/firearm.js';
 export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';
+export {insigniaOfClaws} from './macros/items/trinket/insigniaOfClaws.js';
+export {lanternOfRevealing} from './macros/items/trinket/lanternOfRevealing.js';
 export {oilOfSharpness} from './macros/items/consumable/oilOfSharpness.js';
 export {pariahsShield} from './macros/items/armor/pariahsShield.js';
 export {potionOfAdvantage} from './macros/items/consumable/potionOfAdvantage.js';
@@ -478,4 +485,6 @@ export {potionOfSpeed} from './macros/items/consumable/potionOfSpeed.js';
 export {potionOfVitality} from './macros/items/consumable/potionOfVitality.js';
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
 export {unarmedStrike} from './macros/items/misc/unarmedStrike.js';
+export {wandOfTheWarMage, wandOfTheWarMage1, wandOfTheWarMage2, wandOfTheWarMage3} from './macros/items/trinket/wandOfTheWarMage.js';
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
+export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMist} from './macros/items/trinket/wrapsOfDyamak.js';

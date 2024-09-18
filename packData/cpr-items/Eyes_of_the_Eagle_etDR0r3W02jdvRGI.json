@@ -1,0 +1,165 @@
+{
+  "name": "Eyes of the Eagle",
+  "type": "equipment",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 168"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "required",
+    "equipped": false,
+    "rarity": "uncommon",
+    "identified": true,
+    "activation": {
+      "type": "",
+      "cost": null,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": ""
+    },
+    "uses": {
+      "value": 0,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "armor": {
+      "value": 10,
+      "dex": null,
+      "magicalBonus": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "speed": {
+      "value": null,
+      "conditions": ""
+    },
+    "strength": 0,
+    "proficient": 1,
+    "unidentified": {
+      "description": "Wondrous item"
+    },
+    "type": {
+      "value": "trinket",
+      "baseItem": ""
+    },
+    "container": null,
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "attuned": false,
+    "enchantment": null,
+    "summons": null
+  },
+  "flags": {
+    "cf": null,
+    "midi-qol": {
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.S4LmFp7GRUvDCbUA"
+    },
+    "chris-premades": {
+      "info": {
+        "name": "Eyes of the Eagle",
+        "version": "0.12.70",
+        "settings": [
+          "Skill Patching"
+        ],
+        "identifier": "eyesOfTheEagle",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "skill": [
+          "eyesOfTheEagle"
+        ]
+      }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    }
+  },
+  "effects": [],
+  "img": "icons/magic/perception/hand-eye-pink.webp",
+  "folder": "WfYi7iDomehpTNuW",
+  "_id": "etDR0r3W02jdvRGI",
+  "_key": "!items!etDR0r3W02jdvRGI"
+}

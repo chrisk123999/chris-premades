@@ -85,6 +85,37 @@ async function shadowStepPost(token, cornerPosition) {
             .fadeIn(500)
         .play();
 }
+async function crimsonMistPre(token, cornerPosition) {
+    await new Sequence()
+        .effect()
+        .file('jb2a.misty_step.01.dark_red')
+        .atLocation(token)
+        .scaleToObject(1.5)
+        .belowTokens()
+        .animation()
+        .delay(300)
+        .on(token)
+        .opacity(0)
+        .fadeIn(500)
+        .waitUntilFinished()
+        .play();
+}
+async function crimsonMistPost(token, cornerPosition) {
+    /* eslint-disable indent */
+    await new Sequence()
+        .effect()
+            .delay(100)
+            .file('jb2a.misty_step.02.dark_red')
+            .atLocation(token, {cacheLocation: false})
+            .scaleToObject(1.5)
+            .belowTokens()
+        .animation()
+            .delay(300)
+            .on(token)
+            .opacity(1)
+            .fadeIn(500)
+        .play();
+}
 async function hiddenPathsPre(token, cornerPosition) {
     let color = animationUtils.jb2aCheck() === 'patreon' ? 'green' : 'blue';
     await new Sequence()
@@ -326,6 +357,10 @@ export let teleportEffects = {
     shadowStep: {
         pre: shadowStepPre,
         post: shadowStepPost
+    },
+    crimsonMist: {
+        pre: crimsonMistPre,
+        post: crimsonMistPost
     },
     hiddenPaths: {
         pre: hiddenPathsPre,

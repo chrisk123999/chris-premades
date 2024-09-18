@@ -252,6 +252,10 @@
             "Readme": "Read Me",
             "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
+        "Light": {
+            "Bright": "Bright",
+            "Dim": "Dim"
+        },
         "Macros": {
             "AberrantDragonmark": {
                 "ConfigId": "Associated Spell ID",
@@ -407,6 +411,9 @@
                 "SelectWeapon": "Which weapon are you using to cast this spell?",
                 "WillingMove": "Did {actorName} move willingly?"
             },
+            "BootsOfElvenkind": {
+                "Silent": "This check relies on moving silently"
+            },
             "BorrowedKnowledge": {
                 "SelectSkill": "Select a skill to gain temporary proficiency in:"
             },
@@ -497,7 +504,7 @@
                 "CanSee": "This save is from an effect you can see."
             },
             "DanothsVisor": {
-                "Check": "This check is relies on sight.",
+                "Check": "This check relies on sight",
                 "Spyglass": "Danoth's Visor: Spyglass",
                 "XRay": "Danoth's Visor: X-Ray"
             },
@@ -520,6 +527,22 @@
             },
             "DraconicStrike": {
                 "Select": "Change damage type?"
+            },
+            "DragonVessel": {
+                "Ale": "Ale",
+                "Mead": "Mead",
+                "OliveOil": "Olive Oil",
+                "PotionOfClimbing": "Potion of Climbing",
+                "PotionOfDragonsMajesty": "Potion of Dragon's Majesty",
+                "PotionOfFireBreath": "Potion of Fire Breath",
+                "PotionOfFlying": "Potion of Flying",
+                "PotionOfHealingGreater": "Potion of Healing (Greater)",
+                "PotionOfHealingNormal": "Potion of Healing (Normal)",
+                "PotionOfHealingSuperior": "Potion of Healing (Superior)",
+                "PotionOfHealingSupreme": "Potion of Healing (Supreme)",
+                "Select": "Which item?",
+                "Whiskey": "Whiskey",
+                "Wine": "Wine"
             },
             "DragonsBreath": {
                 "DragonBreath": "Dragon Breath"
@@ -598,6 +621,9 @@
             },
             "ExpertDivination": {
                 "Select": "What level spell slot do you want to regain?"
+            },
+            "EyesOfMinuteSeeing": {
+                "Close": "This check is for something within 1 foot"
             },
             "Fall": {
                 "Acr": "Yes (Acrobatics)",
@@ -864,6 +890,11 @@
             },
             "LabyrinthineRecall": {
                 "Skill": "This check is to navigate or track"
+            },
+            "LanternOfRevealing": {
+                "Bright": "Light Lantern (Bright)",
+                "Dim": "Light Lantern (Dim)",
+                "Extinguish": "Extinguish Lantern"
             },
             "LayOnHands": {
                 "Empty": "Your {itemName} pool is empty.",
@@ -1377,6 +1408,10 @@
                 "Heal": "Wither And Bloom: Heal",
                 "SelectHitDie": "Select how many Hit Dice to roll.",
                 "SelectTarget": "Who can roll unspent Hit Dice?"
+            },
+            "WrapsOfDyamak": {
+                "CrimsonMist": "Crimson Mist",
+                "Heal": "Wraps of Dyamak: Heal"
             },
             "WrathfulSmite": {
                 "Frighten": "Wrathful Smite: Frighten"
