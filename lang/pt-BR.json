@@ -1,5 +1,8 @@
 {
     "CHRISPREMADES": {
+        "AbilityCheck": {
+            "Title": "Teste de Atributo"
+        },
         "AbilitySave": {
             "Title": "Salvaguarda"
         },
@@ -136,6 +139,7 @@
         },
         "Dialog": {
             "DamageType": "Qual tipo de dano?",
+            "HitDieLabel": "{className} ({denomination}) - {remaining}/{max}",
             "Invalid": "Entrada Inválida!",
             "Missed": "Rolagem de ataque ({attackTotal}) errou. Usar {itemName}?",
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
@@ -144,10 +148,13 @@
             "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
             "UseName": "Usar {itemName} de [{tokenName}]?",
             "UseOn": "Usar {itemName} em {tokenName}?",
+            "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
+            "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
             "WhatDo": "O que você quer fazer?",
             "YesDetail": "Sim ({detail})"
         },
         "Direction": {
+            "Away": "Longe",
             "Direction": "Direção",
             "East": "leste",
             "North": "norte",
@@ -156,6 +163,7 @@
             "South": "sul",
             "Southeast": "sudeste",
             "Southwest": "sudoeste",
+            "Towards": "Em direção a",
             "West": "oeste"
         },
         "Distance": {
@@ -244,7 +252,19 @@
             "Readme": "Leia-Me",
             "Welcome": "<p>Obrigado por usar meu módulo! Se você encontrar algum bug ou tiver alguma solicitação, envie uma mensagem para <strong>chrisk123999</strong> no Discord ou faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Como observação, eu geralmente trabalho ao redor de itens que foram importados por meio do módulo DDB importer. Se algo funcionar \"como está\" nesse módulo, é improvável que eu o tenha aqui.</p><p>Para começar, você pode encontrar minhas automações nos compêndios que começam com: \"CPR.\"</p><p>Você também pode clicar no ícone do kit médico na barra de título para atualizar o item com minha automação. Isso preservará sua descrição já presente no item.</p><hr><p>Qualquer item, magia ou recurso adicionado à sua ficha precisa temporariamente de uma descrição. As atualizações dos módulos substituirão os compêndios nos quais estão armazenados. Portanto, as descrições serão extraídas desta entrada de diário. Todas as páginas após esta não serão regeneradas ao atualizar este módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
+        "Light": {
+             "Bright": "Plena",
+             "Dim": "Penumbra"
+        },
         "Macros": {
+            "AberrantDragonmark": {
+                "ConfigId": "ID da Magia Associada",
+                "Damage": "Marca Dracônica Aberrante: Dano",
+                "Expend": "Gastar dado de vida?",
+                "Healing": "Marca Dracônica Aberrante: Cura",
+                "NoValid": "Nenhuma magia válida encontrada!",
+                "Select": "Selecione a magia associada para esta característica:"
+            },
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
@@ -391,6 +411,9 @@
                 "SelectWeapon": "Qual arma você está usando para conjurar esta magia?",
                 "WillingMove": "O(a) {actorName} se moveu voluntariamente?"
             },
+            "BootsOfElvenkind": {
+                "Silent": "Este teste depende de se mover em silêncio"
+            },
             "BorrowedKnowledge": {
                 "SelectSkill": "Selecione uma perícia para receber proficiência temporária:"
             },
@@ -404,6 +427,9 @@
             "BreathOfTheDragon": {
                 "Augment": "Aumentar (1 Ki)",
                 "Select": "Selecione Detalhes do Sopro"
+            },
+            "Bulwark": {
+                "Use": "Use Reação para evitar ser movido?"
             },
             "CallLightning": {
                 "StormBolt": "Raio da Tempestade",
@@ -471,6 +497,9 @@
                 "Select": "Qual Rito Carmesim?",
                 "Weapon": "Em qual arma você ativará o rito?"
             },
+            "Crusher": {
+                "Move": "Mover alvo?"
+            },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
@@ -498,6 +527,22 @@
             },
             "DraconicStrike": {
                 "Select": "Mudar o tipo do dano?"
+            },
+            "DragonVessel": {
+                "Ale": "Cerveja",
+                "Mead": "Hidromel",
+                "OliveOil": "Azeite",
+                "PotionOfClimbing": "Poção de Escalada",
+                "PotionOfDragonsMajesty": "Poção da Majestade do Dragão",
+                "PotionOfFireBreath": "Poção do Sopro de Fogo",
+                "PotionOfFlying": "Poção de Voo",
+                "PotionOfHealingGreater": "Poção de Cura (Maior)",
+                "PotionOfHealingNormal": "Poção de Cura (Normal)",
+                "PotionOfHealingSuperior": "Poção de Cura (Superior)",
+                "PotionOfHealingSupreme": "Poção de Cura (Suprema)",
+                "Select": "Qual item?",
+                "Whiskey": "Uísque",
+                "Wine": "Vinho"
             },
             "DragonsBreath": {
                 "DragonBreath": "Sopro de Dragão"
@@ -575,7 +620,10 @@
                 "Transformation": "Elixir Experimental: Transformação"
             },
             "ExpertDivination": {
-                "Select": "QUal nível de espaço de magia vpcê quer recuperar?"
+                "Select": "Qual nível de espaço de magia vpcê quer recuperar?"
+            },
+            "EyesOfMinuteSeeing": {
+                "Close": "Este teste é para algo dentro de 1 pé"
             },
             "Fall": {
                 "Acr": "Sim (Acrobacia)",
@@ -762,6 +810,9 @@
                 "PredatoryStrike": "Ataque do Predador",
                 "Revert": "Transformação Híbrida: Reverter"
             },
+            "ImbueCard": {
+                "Select": "Com qual magia você quer imbuir uma carta?"
+            },
             "InfectiousFury": {
                 "Attack": "Atacar Um Alvo Próximo",
                 "Curse": "Como você amaldiçoa o alvo?",
@@ -840,6 +891,11 @@
             "LabyrinthineRecall": {
                 "Skill": "Esta verificação é para navegar ou rastrear"
             },
+            "LanternOfRevealing": {
+                "Bright": "Luz da Lanterna (Plena)",
+                "Dim": "Luz da Lanterna (Penumbra)",
+                "Extinguish": "Extinguir Lanterna"
+            },
             "LayOnHands": {
                 "Empty": "Sua reserva de {itemName} está vazia.",
                 "RemoveCondition": "Remover uma Condição:",
@@ -848,6 +904,9 @@
             },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
+            },
+            "MaelstromAura": {
+                "Aura": "Aura do Redemoinho"
             },
             "MagicMissile": {
                 "Bolt": "Dardo de Míssil Mágico",
@@ -931,6 +990,9 @@
             "NaturesWrath": {
                 "Select": "Com qual atributo você vai fazer a salvaguarda?"
             },
+            "OilOfSharpness": {
+                "Select": "Qual arma revestir?"
+            },
             "OneWithShadows": {
                 "Bright": "O token está em luz plena!"
             },
@@ -943,8 +1005,20 @@
                 "Protect": "Proteger {name} com {item}?",
                 "Reaction": "Escudo do Pária: Proteger"
             },
+            "Piercer": {
+                "Reroll": "Rerolar qual dado mais baixo?"
+            },
             "PoisonousSkin": {
                 "Poison": "Grunge: Veneno"
+            },
+            "PotionOfAdvantage": {
+                "Select": "Ganhar vantagem nesta rolagem?"
+            },
+            "PotionOfFireBreath": {
+                "Attack": "Ataque da Poção de Sopro de Fogo"
+            },
+            "PotionOfPoison": {
+                "Damage": "Poção de Veneno: Dano"
             },
             "PreserveLife": {
                 "Select": "Distribuir PV (Quantidade a Distribuir: {maxAmount}. Os alvos não podem ser curados acima da metade da vida.)"
@@ -1031,6 +1105,10 @@
                 "Bladesong": "Você deve ser Lâmina Cantante para usar este recurso!",
                 "NoSpellSlots": "Você não tem espaços de magia disponíveis!",
                 "Select": "Usar sua reação para gastar um espaço de magia para reduzir o dano?"
+            },
+            "SoothePain": {
+                "Protect": "Reduzir o dano em {tokenName}?",
+                "Self": "Reduzir o dano em si mesmo?"
             },
             "SpikeGrowth": {
                 "Thorns": "Crescer Espinhos: Espinhos"
@@ -1224,6 +1302,9 @@
             "TavernBrawler": {
                 "Use": "Usar Ação Bônus para tentar agarrar??"
             },
+            "Telekinetic": {
+                "Select": "Qual direção?"
+            },
             "Teleport": {
                 "AssociatedObject": "Objeto Associado",
                 "Damage": "Teletransporte: Dano",
@@ -1327,6 +1408,10 @@
                 "Heal": "Murchar e Florescer: Cura",
                 "SelectHitDie": "Selecione quantos Dados de Vida serão jogados.",
                 "SelectTarget": "Quem pode rolar Dados de Vida não gastos?"
+            },
+            "WrapsOfDyamak": {
+                "CrimsonMist": "Névoa Carmesim",
+                "Heal": "Envoltórios de Dyamak: Cura"
             },
             "WrathfulSmite": {
                 "Frighten": "Destruição Colérica: Amedrontado"
