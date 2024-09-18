@@ -27,17 +27,17 @@ function mergeObject(original, other, options={}) {
 async function update(entity, updates, options={}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.update(updates, options);
-    await socket.executeAsGM(sockets.updateEntity.name, entity.uuid, updates);
+    return await socket.executeAsGM(sockets.updateEntity.name, entity.uuid, updates);
 }
 async function setFlag(entity, scope, key, value) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.setFlag(scope, key, value);
-    await socket.executeAsGM(sockets.setFlag.name, entity.uuid, scope, key, value);
+    return await socket.executeAsGM(sockets.setFlag.name, entity.uuid, scope, key, value);
 }
 async function remove(entity) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     if (hasPermission) return await entity.delete();
-    await socket.executeAsGM(sockets.deleteEntity.name, entity.uuid);
+    return await socket.executeAsGM(sockets.deleteEntity.name, entity.uuid);
 }
 function decimalToFraction(decimal) {
     if (!decimal) return 0;
