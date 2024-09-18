@@ -959,6 +959,9 @@
             "NaturesWrath": {
                 "Select": "Which ability will you make the save with?"
             },
+            "OilOfSharpness": {
+                "Select": "Which weapon to coat?"
+            },
             "OneWithShadows": {
                 "Bright": "Token is in bright light!"
             },
@@ -976,6 +979,15 @@
             },
             "PoisonousSkin": {
                 "Poison": "Grung: Poison"
+            },
+            "PotionOfAdvantage": {
+                "Select": "Gain advantage on this roll?"
+            },
+            "PotionOfFireBreath": {
+                "Attack": "Potion of Fire Breath Attack"
+            },
+            "PotionOfPoison": {
+                "Damage": "Potion of Poison: Damage"
             },
             "PreserveLife": {
                 "Select": "Distribute HP (Amount to Distribute: {maxAmount}. Targets cannot be healed above half health.)"

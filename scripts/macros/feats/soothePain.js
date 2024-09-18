@@ -10,7 +10,7 @@ async function helper(item, ditem, token, targetToken) {
     if (actorUtils.hasUsedReaction(item.actor)) return;
     let uses = item.system.uses.value;
     if (!uses) return;
-    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0) - ditem.oldTempHP;
+    let hpDamage = ditem.damageDetail.reduce((acc, i) => acc + ((i.type === 'temphp') ? 0 : i.value), 0) - ditem.oldTempHP;
     if (hpDamage <= 0) return;
     if (token) {
         if (targetToken.document.disposition !== token.document.disposition) return;
