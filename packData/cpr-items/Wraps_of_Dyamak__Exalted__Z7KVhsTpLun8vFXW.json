@@ -118,21 +118,6 @@
         "source": "chris-premades"
       },
       "equipment": {
-        "items": [
-          {
-            "name": "Crimson Mist",
-            "key": "chris-premades.CPR Item Features",
-            "uniqueName": "crimsonMist"
-          }
-        ],
-        "uses": {
-          "Crimson Mist": {
-            "value": 1,
-            "max": 1,
-            "per": "lr",
-            "recovery": ""
-          }
-        },
         "identifier": "wrapsOfDyamak1"
       },
       "macros": {
