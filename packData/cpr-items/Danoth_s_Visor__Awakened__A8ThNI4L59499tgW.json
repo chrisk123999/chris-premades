@@ -149,7 +149,6 @@
         "identifier": "danothsVisorA"
       },
       "macros": {
-        "equipment": "danothsVisorA",
         "skill": [
           "danothsVisorA"
         ]
