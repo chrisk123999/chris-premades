@@ -110,37 +110,12 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.9a1cWzKSGNra5OgZ"
-    },
     "midi-qol": {
       "effectActivation": false,
       "onUseMacroName": "",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.dragonVessel",
-            "option": "postActiveEffects"
-          }
-        }
-      },
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
-    "link-item-resource-5e": {
-      "resource-link": ""
     },
     "chris-premades": {
       "info": {

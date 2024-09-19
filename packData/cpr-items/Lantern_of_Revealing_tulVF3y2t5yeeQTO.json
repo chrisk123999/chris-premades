@@ -110,45 +110,17 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
       "effectActivation": false,
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.lanternOfRevealing.item",
-            "option": "postActiveEffects"
-          }
-        }
-      },
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
-    },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.2MyVyL5utxxWw2jM"
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
-    "inventory-plus": {
-      "category": "equipment"
     },
     "chris-premades": {
       "info": {
         "name": "Lantern of Revealing",
         "version": "0.12.70",
-        "settings": [
-          "Effect Auras"
-        ],
         "identifier": "lanternOfRevealing",
         "source": "chris-premades"
       },

@@ -110,13 +110,6 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.lgEAWfCY6gMRQY4k"
-    },
     "chris-premades": {
       "info": {
         "name": "Wraps of Dyamak",

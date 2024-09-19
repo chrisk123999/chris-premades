@@ -110,18 +110,6 @@
     "summons": null
   },
   "flags": {
-    "infusions": {
-      "maps": [],
-      "applied": [],
-      "infused": false
-    },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Actor.57T1iaC28BNqvhSo.Item.SYMqH2D9QOi5Xp9O"
-    },
-    "cf": null,
     "chris-premades": {
       "info": {
         "name": "Insignia of Claws",

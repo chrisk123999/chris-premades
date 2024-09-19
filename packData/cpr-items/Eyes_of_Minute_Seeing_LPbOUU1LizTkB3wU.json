@@ -110,26 +110,16 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.DPZvjgV8nSPS3clw"
-    },
     "chris-premades": {
       "info": {
         "name": "Eyes of Minute Seeing",
         "version": "0.12.70",
-        "settings": [
-          "Skill Patching"
-        ],
         "identifier": "eyesOfMinuteSeeing",
         "source": "chris-premades"
       },

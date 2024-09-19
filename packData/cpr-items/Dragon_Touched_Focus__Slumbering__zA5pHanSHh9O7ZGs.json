@@ -110,13 +110,6 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.TwlKMrhNrACqPSEM"
-    },
     "chris-premades": {
       "info": {
         "name": "Dragon-Touched Focus (Slumbering)",

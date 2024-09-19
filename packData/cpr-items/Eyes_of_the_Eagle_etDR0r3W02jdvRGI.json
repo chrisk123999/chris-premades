@@ -110,26 +110,16 @@
     "summons": null
   },
   "flags": {
-    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
     },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "core": {
-      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.S4LmFp7GRUvDCbUA"
-    },
     "chris-premades": {
       "info": {
         "name": "Eyes of the Eagle",
         "version": "0.12.70",
-        "settings": [
-          "Skill Patching"
-        ],
         "identifier": "eyesOfTheEagle",
         "source": "chris-premades"
       },
