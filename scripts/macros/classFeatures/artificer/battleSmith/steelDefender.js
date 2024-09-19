@@ -168,8 +168,8 @@ export let steelDefender = {
             type: 'file',
             default: '',
             category: 'summons'
-        }
-        ,{
+        },
+        {
             value: 'animation',
             label: 'CHRISPREMADES.Config.SpecificAnimation',
             i18nOption: 'CHRISPREMADES.Summons.CreatureNames.SteelDefender',

@@ -1,5 +1,8 @@
-async function skill({trigger: {skillId}}) {
+import {itemUtils} from '../../../utils.js';
+
+async function skill({trigger: {entity: item, skillId}}) {
     if (skillId !== 'inv') return;
+    if (!itemUtils.getEquipmentState(item)) return;
     return {label: 'CHRISPREMADES.Macros.EyesOfMinuteSeeing.Close', type: 'advantage'};
 }
 export let eyesOfMinuteSeeing = {

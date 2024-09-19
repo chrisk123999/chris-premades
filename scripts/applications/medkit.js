@@ -453,7 +453,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 if (value) await item.setFlag('chris-premades', 'macros.rest', value);
             }
             if (devTools.equipment != '') {
-                await item.setFlag('chris-premades', 'macros.equipment', devTools.equipment);
+                await item.setFlag('chris-premades', 'equipment', {identifier: devTools.equipment});
             }
             if (devTools.save != '') {
                 let value = undefined;

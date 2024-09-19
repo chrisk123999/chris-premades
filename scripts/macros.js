@@ -456,17 +456,24 @@ export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elem
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
+export {blackrazor} from './macros/items/weapons/blackrazor.js';
+export {bloodSpear} from './macros/items/weapons/bloodSpear.js';
 export {bootsOfElvenkind} from './macros/items/trinket/bootsOfElvenkind.js';
+export {crystalBlade, crystalBladeGreatsword, crystalBladeLight, crystalBladeLongsword, crystalBladeRapier, crystalBladeScimitar, crystalBladeShortsword} from './macros/items/weapons/crystalBlade.js';
+export {dancingSword, dancingSwordGreatsword, dancingSwordLongsword, dancingSwordRapier, dancingSwordScimitar, dancingSwordShortsword, dancingSwordToss} from './macros/items/weapons/dancingSword.js';
 export {danothsVisorD, danothsVisorA, danothsVisorE} from './macros/items/trinket/danothsVisor.js';
 export {dragonTouchedFocusSlumbering, dragonTouchedFocusStirringChromatic, dragonTouchedFocusStirringGem} from './macros/items/trinket/dragonTouchedFocus.js';
 export {dragonVessel, dragonVessel0, dragonVessel1, dragonVessel2, dragonVessel3} from './macros/items/trinket/dragonVessel.js';
+export {dragonsWrath, dragonsWrath0, dragonsWrath1, dragonsWrath2, dragonsWrath3, dragonsWrathBreath} from './macros/items/weapons/dragonsWrath.js';
 export {eldritchClawTattoo} from './macros/items/trinket/eldritchClawTattoo.js';
 export {elixirOfHealth} from './macros/items/consumable/elixirOfHealth.js';
 export {eyesOfMinuteSeeing} from './macros/items/trinket/eyesOfMinuteSeeing.js';
 export {eyesOfTheEagle} from './macros/items/trinket/eyesOfTheEagle.js';
 export {firearm} from './macros/mechanics/firearm.js';
+export {grovelthrash, grovelthrash0, grovelthrash1, grovelthrash2} from './macros/items/weapons/grovelthrash.js';
 export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';
 export {insigniaOfClaws} from './macros/items/trinket/insigniaOfClaws.js';
+export {javelinOfLightning} from './macros/items/weapons/javelinOfLightning.js';
 export {lanternOfRevealing} from './macros/items/trinket/lanternOfRevealing.js';
 export {oilOfSharpness} from './macros/items/consumable/oilOfSharpness.js';
 export {pariahsShield} from './macros/items/armor/pariahsShield.js';

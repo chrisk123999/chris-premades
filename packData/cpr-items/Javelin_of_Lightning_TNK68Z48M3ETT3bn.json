@@ -1,0 +1,167 @@
+{
+  "name": "Javelin of Lightning",
+  "type": "weapon",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Basic Rules, Player's Handbook pg 178"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 2,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": true,
+    "rarity": "uncommon",
+    "identified": true,
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": ""
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 30,
+      "long": 120,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 1,
+      "max": "1",
+      "per": "dawn",
+      "recovery": "",
+      "prompt": false
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "str",
+    "actionType": "mwak",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "1d6[piercing] + @mod",
+          "piercing"
+        ]
+      ],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "spell"
+    },
+    "armor": {
+      "value": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "properties": [
+      "mgc",
+      "thr"
+    ],
+    "proficient": null,
+    "unidentified": {
+      "description": "Javelin"
+    },
+    "type": {
+      "value": "simpleM",
+      "baseItem": "javelin"
+    },
+    "container": null,
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "attuned": false,
+    "enchantment": null,
+    "summons": null,
+    "magicalBonus": null
+  },
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "forceCEOff": true,
+      "fumbleThreshold": null,
+      "removeAttackDamageButtons": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {},
+    "chris-premades": {
+      "info": {
+        "name": "Javelin of Lightning",
+        "version": "0.12.70",
+        "identifier": "javelinOfLightning",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "javelinOfLightning"
+          ]
+        }
+      }
+    }
+  },
+  "effects": [],
+  "img": "icons/weapons/polearms/javelin-hooked.webp",
+  "folder": "8FSVAcUBcb3dM1uX",
+  "_id": "TNK68Z48M3ETT3bn",
+  "_key": "!items!TNK68Z48M3ETT3bn"
+}

@@ -375,6 +375,10 @@
                 "Interposing": "Interposing Hand",
                 "Move": "Bigby's Hand: Move"
             },
+            "Blackrazor": {
+                "Backlash": "Blackrazor: Backlash",
+                "Devoured": "Devoured Soul"
+            },
             "BladeFlourish": {
                 "Defensive": "Defensive Flourish",
                 "Master": "Use a d6 instead of Bardic Inspiration for Blade Flourish?",
@@ -500,6 +504,17 @@
             "Crusher": {
                 "Move": "Move target?"
             },
+            "CrystalBlade": {
+                "Bright": "Activate Blade (Bright)",
+                "Dim": "Activate Blade (Dim)",
+                "Douse": "Douse Blade",
+                "Heal": "Crystal Blade: Heal",
+                "Light": "Crystal Blade: Light"
+            },
+            "DancingSword": {
+                "Attack": "Dancing Sword: Attack",
+                "Toss": "Dancing Sword: Toss"
+            },
             "DangerSense": {
                 "CanSee": "This save is from an effect you can see."
             },
@@ -546,6 +561,11 @@
             },
             "DragonsBreath": {
                 "DragonBreath": "Dragon Breath"
+            },
+            "DragonsWrath": {
+                "AscendantBreath": "Dragon's Wrath: Ascendant Breath",
+                "Burst": "Dragon's Wrath: Critical Burst",
+                "WakenedBreath": "Dragon's Wrath: Wakened Breath"
             },
             "DreadLord": {
                 "ShadowAttack": "Dread Lord: Shadow Attack",
@@ -727,6 +747,11 @@
                 "NoWeapons": "No equipped weapons found!",
                 "SelectWeapon": "Attack with what weapon?"
             },
+            "Grovelthrash": {
+                "Damage": "Deal an extra 2d6 bludgeoning damage at the cost of 1d6 psychic damage?",
+                "Insight": "This check is to discern a lie spoken in a language you understand",
+                "Reaction": "Grovelthrash Reaction"
+            },
             "GuardianArmor": {
                 "DefensiveField": "Guardian Armor: Defensive Field",
                 "Distracted": "Thunder Gauntlets: Distracted",
@@ -880,6 +905,9 @@
             "InvestmentOfTheChainMaster": {
                 "Command": "Investment of the Chain Master: Command",
                 "Resistance": "Investment of the Chain Master: Familiar Resistance"
+            },
+            "JavelinOfLightning": {
+                "Bolt": "Javelin of Lightning: Bolt"
             },
             "KeenSenses": {
                 "Check": "This check relies on: ",
@@ -1978,7 +2006,12 @@
                 "ConstructSpiritClay": "Construct Spirit (Clay)",
                 "ConstructSpiritMetal": "Construct Spirit (Metal)",
                 "ConstructSpiritStone": "Construct Spirit (Stone)",
+                "DancingGreatsword": "Dancing Greatsword",
                 "DancingItem": "Dancing Item",
+                "DancingLongsword": "Dancing Longsword",
+                "DancingRapier": "Dancing Rapier",
+                "DancingScimitar": "Dancing Scimitar",
+                "DancingShortsword": "Dancing Shortsword",
                 "DraconicSpirit": "Draconic Spirit",
                 "DraconicSpiritChromatic": "Draconic Spirit (Chromatic)",
                 "DraconicSpiritGem": "Draconic Spirit (Gem)",
