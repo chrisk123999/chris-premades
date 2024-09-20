@@ -112,7 +112,7 @@
     "chris-premades": {
       "info": {
         "name": "Hadozee Dodge",
-        "version": "0.12.64",
+        "version": "0.12.70",
         "identifier": "hadozeeDodge"
       }
     }
@@ -158,7 +158,7 @@
         {
           "key": "system.traits.dm.midi.all",
           "mode": 2,
-          "value": "[[1d6 + @prof]]",
+          "value": "-[[1d6 + @prof]]",
           "priority": 20
         }
       ],

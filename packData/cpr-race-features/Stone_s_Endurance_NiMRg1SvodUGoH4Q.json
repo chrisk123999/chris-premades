@@ -113,7 +113,7 @@
     "chris-premades": {
       "info": {
         "name": "Stone's Endurance",
-        "version": "0.12.64",
+        "version": "0.12.70",
         "identifier": "stonesEndurance",
         "source": "chris-premades"
       }
@@ -162,7 +162,7 @@
         {
           "key": "system.traits.dm.midi.all",
           "mode": 2,
-          "value": "[[1d12 + @abilities.con.mod]]",
+          "value": "-[[1d12 + @abilities.con.mod]]",
           "priority": 20
         }
       ],
