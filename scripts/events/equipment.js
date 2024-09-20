@@ -71,10 +71,13 @@ async function addOrUpdate(item, updates, options, id) {
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.id', item.id);
             genericUtils.setProperty(itemData, 'flags.chris-premades.equipment.parent.key', key);
             delete itemData._id;
-            return itemData;
+            return [itemData, value.favorite];
         }));
         updates = updates.filter(i => i);
-        if (updates.length) await itemUtils.createItems(item.actor, updates, {section: item.name});
+        let favoriteUpdates = updates.filter(i => i[1]).map(i => i[0]);
+        let nonFavoriteUpdates = updates.filter(i => !i[1]).map(i => i[0]);
+        if (favoriteUpdates.length) await itemUtils.createItems(item.actor, favoriteUpdates, {favorite: true, section: item.name});
+        if (nonFavoriteUpdates.length) await itemUtils.createItems(item.actor, nonFavoriteUpdates, {section: item.name});
         if (callbacks.length) for (let i of callbacks) await i(item);
     }
 }

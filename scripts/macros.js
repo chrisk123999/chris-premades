@@ -456,6 +456,7 @@ export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elem
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
+export {bigbysBeneficentBracelet, forceSculpture} from './macros/items/trinket/bigbysBeneficentBracelet.js';
 export {blackrazor} from './macros/items/weapons/blackrazor.js';
 export {bloodSpear} from './macros/items/weapons/bloodSpear.js';
 export {bootsOfElvenkind} from './macros/items/trinket/bootsOfElvenkind.js';

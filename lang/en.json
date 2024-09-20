@@ -365,6 +365,9 @@
                 "SelectCurse": "What curse do you bestow?",
                 "Turn": "Waste Turn"
             },
+            "BigbysBeneficentBracelet": {
+                "ForceSculpture": "Force Sculpture"
+            },
             "BigbysHand": {
                 "Big": "Target is too big!",
                 "Clenched": "Clenched Fist",
@@ -372,6 +375,7 @@
                 "Direction": "Which direction would you like to push the target?",
                 "Forceful": "Forceful Hand",
                 "Grasping": "Grasping Hand",
+                "Hand": "Bigby's Hand",
                 "Interposing": "Interposing Hand",
                 "Move": "Bigby's Hand: Move"
             },
@@ -2041,6 +2045,7 @@
                 "FiendishSpiritYugoloth": "Fiendish Spirit (Yugoloth)",
                 "FireElemental": "Fire Elemental",
                 "Flumph": "Flumph",
+                "ForceSculpture": "Force Sculpture",
                 "FormOfDread": "Form of Dread",
                 "GuardianOfFaith": "Guardian of Faith",
                 "HealingSpirit": "Healing Spirit",
