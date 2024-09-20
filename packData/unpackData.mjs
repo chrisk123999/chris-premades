@@ -17,7 +17,7 @@ let itemPacks = [
     'cpr-feats',
     'cpr-miscellaneous-items',
     'cpr-3rd-party-class-features',
-    'cpr-3rd-party-class-items'
+    'cpr-3rd-party-items'
 ];
 let actorPacks = [
     'cpr-summons'
