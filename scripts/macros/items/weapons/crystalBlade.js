@@ -98,6 +98,7 @@ export let crystalBlade = {
             compendium: 'itemEquipment',
             useJournal: true,
             translate: 'CHRISPREMADES.Macros.CrystalBlade.Light',
+            favorite: true
         }
     }
 };

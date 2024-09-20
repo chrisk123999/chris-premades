@@ -98,7 +98,8 @@ export let wrapsOfDyamak1 = {
             name: 'Crimson Mist',
             compendium: 'itemEquipment',
             useJournal: true,
-            translate: 'CHRISPREMADES.Macros.WrapsOfDyamak.CrimsonMist'
+            translate: 'CHRISPREMADES.Macros.WrapsOfDyamak.CrimsonMist',
+            favorite: true
         }
     }
 };

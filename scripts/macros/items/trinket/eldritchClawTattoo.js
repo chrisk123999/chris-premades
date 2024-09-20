@@ -42,7 +42,8 @@ export let eldritchClawTattoo = {
     equipment: {
         magicalStrikes: {
             equipCallback: equip,
-            unequipCallback: unequip
+            unequipCallback: unequip,
+            favorite: true
         }
     },
     config: [

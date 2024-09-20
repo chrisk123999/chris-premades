@@ -247,6 +247,11 @@
             "InvalidTarget": "Invalid Target",
             "TemplateEffect": "{itemName} Template"
         },
+        "Grovelthrash": {
+            "Earthquake": "Earthquake (Grovelthrash)",
+            "MeldIntoStone": "Meld into Stone (Grovelthrash)",
+            "StoneShape": "Stone Shape (Grovelthrash)"
+        },
         "Journal": {
             "Chat": "View Chris's premades readme here:",
             "Readme": "Read Me",
@@ -366,7 +371,9 @@
                 "Turn": "Waste Turn"
             },
             "BigbysBeneficentBracelet": {
-                "ForceSculpture": "Force Sculpture"
+                "BigbysHand": "Bigby's Hand (9th Level)",
+                "ForceSculpture": "Force Sculpture",
+                "MageHand": "Mage Hand (Bigby's Beneficent Bracelet)"
             },
             "BigbysHand": {
                 "Big": "Target is too big!",
@@ -375,7 +382,6 @@
                 "Direction": "Which direction would you like to push the target?",
                 "Forceful": "Forceful Hand",
                 "Grasping": "Grasping Hand",
-                "Hand": "Bigby's Hand",
                 "Interposing": "Interposing Hand",
                 "Move": "Bigby's Hand: Move"
             },

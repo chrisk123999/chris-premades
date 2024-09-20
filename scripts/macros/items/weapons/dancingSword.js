@@ -118,7 +118,8 @@ export let dancingSword = {
             name: 'Dancing Sword: Toss',
             compendium: 'itemEquipment',
             useJournal: true,
-            translate: 'CHRISPREMADES.Macros.DancingSword.Toss'
+            translate: 'CHRISPREMADES.Macros.DancingSword.Toss',
+            favorite: true
         }
     }
 };

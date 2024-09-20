@@ -58,7 +58,8 @@ export let allPurposeTool1 = {
                 recovery: 1,
                 uses: 1
             },
-            translate: 'CHRISPREMADES.Macros.AllPurposeTool.Channel'
+            translate: 'CHRISPREMADES.Macros.AllPurposeTool.Channel',
+            favorite: true
         }
     }
 };

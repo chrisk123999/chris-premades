@@ -70,7 +70,7 @@ export let bigbysBeneficentBracelet = {
         bigbysHandFree: {
             name: 'Bigby\'s Hand',
             compendium: 'spell',
-            translate: 'CHRISPREMADES.Macros.BigbysHand.Hand',
+            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.BigbysHand',
             uses: {
                 value: 1,
                 max: 1,
@@ -85,6 +85,12 @@ export let bigbysBeneficentBracelet = {
                     properties: ['vocal', 'somatic', 'material', 'mgc']
                 }
             }
+        },
+        mageHand: {
+            name: 'Mage Hand',
+            compendium: 'personalSpell',
+            translate: 'CHRISPREMADES.Macros.BigbysBeneficentBracelet.MageHand',
+            preparation: 'atwill'
         }
     }
 };

@@ -66,7 +66,8 @@ export let dragonsWrath2 = {
             name: 'Dragon\'s Wrath: Wakened Breath',
             compendium: 'itemEquipment',
             useJournal: true,
-            translate: 'CHRISPREMADES.Macros.DragonsWrath.WakenedBreath'
+            translate: 'CHRISPREMADES.Macros.DragonsWrath.WakenedBreath',
+            favorite: true
         }
     }
 };
@@ -78,7 +79,8 @@ export let dragonsWrath3 = {
             name: 'Dragon\'s Wrath: Ascendant Breath',
             compendium: 'itemEquipment',
             useJournal: true,
-            translate: 'CHRISPREMADES.Macros.DragonsWrath.AscendantBreath'
+            translate: 'CHRISPREMADES.Macros.DragonsWrath.AscendantBreath',
+            favorite: true
         }
     }
 };

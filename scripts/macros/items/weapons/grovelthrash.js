@@ -89,7 +89,9 @@ export let grovelthrash2 = {
                 per: 'dawn',
                 max: 1,
                 recovery: 1
-            }
+            },
+            preparation: 'atwill',
+            translate: 'CHRISPREMADES.Grovelthrash.Earthquake'
         },
         meldIntoStone: {
             name: 'Meld into Stone',
@@ -99,7 +101,9 @@ export let grovelthrash2 = {
                 per: 'dawn',
                 max: 1,
                 recovery: 1
-            }
+            },
+            preparation: 'atwill',
+            translate: 'CHRISPREMADES.Grovelthrash.MeldIntoStone'
         },
         stoneShape: {
             name: 'Stone Shape',
@@ -109,7 +113,9 @@ export let grovelthrash2 = {
                 per: 'dawn',
                 max: 1,
                 recovery: 1
-            }
+            },
+            preparation: 'atwill',
+            translate: 'CHRISPREMADES.Grovelthrash.StoneShape'
         }
     }
 };
