@@ -182,6 +182,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
             });
         } else {
             Object.entries(formData.object).forEach(([resultDamageType, total]) => {
+                let originalTotal = genericUtils.duplicate(total);
                 let dice = (this.rolls.filter(roll => resultDamageType === (roll.options.type ?? roll.options.flavor)).reduce((dice, roll) => {
                     roll.terms.forEach(die => {
                         if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
@@ -196,8 +197,11 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                     });
                     return dice;
                 }, {terms: [], multiplier: 1})).terms;
-                dice.sort((a, b) => a > b ? 1 : -1);
-                let results = (dice.reduce((results, number) => {
+                let results;
+                if ((originalTotal instanceof String || typeof originalTotal === 'string') && originalTotal.includes(',')) {
+                    let diceResults = originalTotal.split(/[\s,]+/).map(Number);
+                    results = diceResults.map((i, index) => ({faces: dice[index], result: i}));
+                } else results = (dice.reduce((results, number) => {
                     results.diceLeft -= 1;
                     if (number + results.diceLeft <= total) {
                         results.diceArray.push({faces: number, result: number});
@@ -244,7 +248,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @param {boolean} [options.isNew=false]  Whether this term is a new addition to the already-rendered RollResolver.
      * @returns {Promise<DiceTerm[]>}
      */
-    async #identifyFulfillableTerms(rolls, { isNew=false }={}) { // updated
+    async #identifyFulfillableTerms(rolls, { isNew=false }={}) {
         const config = game.settings.get('core', 'diceConfiguration');
         const fulfillable = rolls.map(roll => {
             let terms = [];

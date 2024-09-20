@@ -112,7 +112,8 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "forceSculpture"
+        "identifier": "forceSculpture",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

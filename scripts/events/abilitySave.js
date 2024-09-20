@@ -155,7 +155,7 @@ async function save(wrapped, saveId, options = {}) {
         let advantages = selections.filter(i => i.type === 'advantage').map(j => ({label: j.label, name: 'advantage'}));
         let disadvantages = selections.filter(i => i.type === 'disadvantage').map(j => ({label: j.label, name: 'disadvantage'}));
         let selection = await DialogApp.dialog('CHRISPREMADES.AbilitySave.Title', undefined, [['checkbox', advantages, {displayAsRows: true}], ['checkbox', disadvantages, {displayAsRows: true}]], 'okCancel');
-        if (selection.buttons) {
+        if (selection?.buttons) {
             if (selection.advantage) {
                 switch(selection.advantage.constructor.name) {
                     case 'Boolean': options.advantage = true; break;

@@ -116,7 +116,8 @@
         "name": "Guile of the Cloud Giant: Cloudy Escape",
         "version": "0.12.70",
         "identifier": "cloudyEscape",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {

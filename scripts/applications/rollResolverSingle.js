@@ -121,6 +121,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             },
             buttons: [{type: 'submit', label: 'CHRISPREMADES.Generic.Submit', name: 'confirm', icon: 'fa-solid fa-check'}]
         };
+        context.options.content = (!context.options.name || !context.options.flavor) ? context.formula : context.options.name + ' - ' + context.options.flavor;
         if (this.roll.options?.flavor?.toLowerCase()?.includes('attack')) context.quickButtons = [
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Fumble', name: 'attack-fumble', icon: 'fa-solid fa-skull-crossbones'},
             {type: 'submit',  label: 'CHRISPREMADES.ManualRolls.Miss', name: 'attack-miss', icon: 'fa-solid fa-xmark'},
@@ -196,7 +197,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
     }
     static async _fulfillRoll(event, form, formData) {
         if (!event?.submitter?.name || event.submitter.name === 'confirm') {
-            if (!formData || !formData.object?.total) { // For fulfilling non-rolled terms
+            if (!formData || !formData?.object?.total) { // For fulfilling non-rolled terms
                 this.fulfillable.forEach(({term}) => {
                     for (let i = term.results.length; i != term.number; i++) {
                         const roll = { result: term.randomFace(), active: true};
@@ -204,7 +205,8 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                     }
                 });
             } else {
-                let total = formData.object.total;
+                let originalTotal = formData.object.total;
+                let total = genericUtils.duplicate(originalTotal);
                 let dice = (this.roll.terms.reduce((dice, die) => {
                     if (die instanceof CONFIG.Dice.termTypes.DiceTerm) {
                         let dieAmount = (die.options.advantage || die.options.disadvantage) ? 1 : die.number;
@@ -218,31 +220,35 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
                         total -= (die.number * dice.multiplier);
                     }
                     return dice;
-                }, {terms: [], max: 0, multiplier: 1})).terms;
-                dice.sort((a, b) => a > b ? 1 : -1);
-                let results = (dice.reduce((results, number) => {
+                }, {terms: [], max: 0, multiplier: 1}));
+                let results;
+                if ((originalTotal instanceof String || typeof originalTotal === 'string') && originalTotal.includes(',')) {
+                    let diceResults = originalTotal.split(/[\s,]+/).map(Number);
+                    results = diceResults.map((i, index) => ({faces: dice.terms[index], result: i}));
+                } else results = (dice.terms.reduce((results, number) => {
                     results.diceLeft -= 1;
                     if (number + results.diceLeft <= total) {
-                        results.diceArray.push({faces: number, result: number});
-                        total -= number;
+                        let value = ((number === this.roll?.options?.critical) && (total != dice.max)) ? number - 1 : number; 
+                        results.diceArray.push({faces: number, result: value});
+                        total -= value;
                     } else if (1 + results.diceLeft >= total) {
                         results.diceArray.push({faces: number, result: 1});
                         total -= 1;
                     } else {
-                        results.diceArray.push({faces: number, result: total - results.diceLeft});
-                        total -= results.diceLeft;
+                        results.diceArray.push({faces: number, result: total - results.diceLeft}); // 5 - 2 = 3
+                        total = results.diceLeft;
                     }
                     return results;
-                }, {diceLeft: dice.length, diceArray: []})).diceArray;
+                }, {diceLeft: dice.terms.length, diceArray: []})).diceArray;
                 for ( let [rollId, total] of Object.entries(formData.object) ) {
                     this.fulfillable.forEach(({term}) => {
-                        let index = results.findIndex(i => i.faces === term.faces);
-                        let result = results[index].result;
                         for (let i = term.results.length; i != term.number; i++) {
+                            let index = results.findIndex(i => i.faces === term.faces);
+                            let result = results[index].result;
                             const roll = { result: result, active: true };
                             term.results.push(roll);
+                            results.splice(index, 1);
                         }
-                        results.splice(index, 1);
                     });
                 }
             }

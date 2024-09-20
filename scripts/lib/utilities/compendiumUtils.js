@@ -18,6 +18,7 @@ async function getCPRAutomation(item) {
         case 'backpack':
         case 'loot':
             keys.push(constants.packs.items);
+            if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
             break;
         case 'feat':
             keys.push(constants.packs.classFeatures);

@@ -13,7 +13,8 @@ let packs = {
     featFeatures: 'chris-premades.CPRFeatFeatures',
     raceFeatures: 'chris-premades.CPRRaceFeatures',
     raceFeatureItems: 'chris-premades.CPRRaceFeatureItems',
-    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures'
+    thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
+    thirdPartyItems: 'chris-premades.CPRThirdPartyItems'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -48,6 +49,7 @@ function setUseLocalCompendium(value) {
         packs.raceFeatureItems = 'world.cpr-race-feature-items';
         featurePacks.raceFeatureItems = 'world.cpr-race-feature-items';
         packs.thirdPartyClassFeatures = 'world.cpr-3rd-party-class-features';
+        packs.thirdPartyItems = 'world.cpr-3rd-party-items';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -71,6 +73,7 @@ function setUseLocalCompendium(value) {
         packs.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
         featurePacks.raceFeatureItems = 'chris-premades.CPRRaceFeatureItems';
         packs.thirdPartyClassFeatures = 'chris-premades.CPRThirdPartyClassFeatures';
+        packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
     }
 }
 setUseLocalCompendium(false);

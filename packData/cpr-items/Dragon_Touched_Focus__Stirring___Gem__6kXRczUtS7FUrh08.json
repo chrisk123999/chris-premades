@@ -115,7 +115,8 @@
         "name": "Dragon-Touched Focus (Stirring / Gem)",
         "version": "0.12.70",
         "identifier": "dragonTouchedFocusStirringGem",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
@@ -207,7 +208,7 @@
     }
   ],
   "img": "icons/commodities/flowers/lily-water-pink.webp",
-  "folder": "WfYi7iDomehpTNuW",
+  "folder": "a3jNnHoMX36aG0mN",
   "_id": "6kXRczUtS7FUrh08",
   "_key": "!items!6kXRczUtS7FUrh08"
 }

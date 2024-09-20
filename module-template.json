@@ -61,7 +61,8 @@
         "type": "system",
         "compatibility": {
           "minimum": "3.3.1",
-          "verified": "3.3.1"
+          "verified": "3.3.1",
+          "maximum": "3.9.9"
         }
       }
     ],
@@ -222,6 +223,13 @@
       "path": "packs/cpr-3rd-party-class-features",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRThirdPartyItems",
+      "label": "CPR 3rd Party Items",
+      "path": "packs/cpr-3rd-party-items",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -244,7 +252,8 @@
         "CPRFeatFeatures",
         "CPRRaceFeatures",
         "CPRRaceFeatureItems",
-        "CPRThirdPartyClassFeatures"
+        "CPRThirdPartyClassFeatures",
+        "CPRThirdPartyItems"
       ]
     }
   ],

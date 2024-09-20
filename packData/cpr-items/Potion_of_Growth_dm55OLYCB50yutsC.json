@@ -128,7 +128,8 @@
         "name": "Potion of Growth",
         "version": "0.12.70",
         "identifier": "potionOfGrowth",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
