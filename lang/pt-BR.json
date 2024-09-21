@@ -1749,10 +1749,6 @@
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
             },
-            "chatCardTweak": {
-                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas. É necessário recarregar após desativar.",
-                "Name": "Ajuste Cartão do Chat"
-            },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
