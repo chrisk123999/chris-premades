@@ -21,8 +21,8 @@ async function speedHelper(workflow, item) {
         changes: [
             {
                 key: 'system.attributes.movement.all',
-                mode: 0,
-                value: 0,
+                mode: 2,
+                value: -10,
                 priority: 20
             }
         ],

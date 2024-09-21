@@ -27,7 +27,6 @@ import {miscPremades} from './integrations/miscPremades.js';
 import {updateCheck} from './extensions/update.js';
 import {troubleshooter} from './applications/troubleshooter.js';
 import {spotlightOmnisearch} from './integrations/spotlightOmnisearch.js';
-import {chat} from './extensions/chat.js';
 import {custom} from './events/custom.js';
 import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
@@ -46,7 +45,6 @@ Hooks.once('init', () => {
     if (utils.genericUtils.getCPRSetting('temporaryEffectHud')) effectHud.patchToggleEffect(true);
     if (utils.genericUtils.getCPRSetting('selectTool') && !game.modules.get('multi-token-edit')?.active && !game.modules.get('select-tool-everywhere')?.active) selectTool.init();
     if (utils.genericUtils.getCPRSetting('spotlightOmnisearchSummons') && game.modules.get('spotlight-omnisearch')?.active) Hooks.on('spotlightOmnisearch.indexBuilt', spotlightOmnisearch.registerSearchTerms);
-    if (utils.genericUtils.getCPRSetting('chatCardTweak')) chat.cssTweak();
 });
 Hooks.once('ready', () => {
     custom.ready();

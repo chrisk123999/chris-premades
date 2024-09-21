@@ -126,9 +126,8 @@ Goals:
         - [x] Undead fortitude 
   
 ## Extensions
-[ ] Folder maker for summons?
-[x] Update summon iniative/update companion initiative
-[x] Options for items to add for add generic actions setting
-[ ] Make all medkit coloring use a constants/setting to support a colorblind mode
-[x] Clean up the CSS
-[ ] Document things
+- [x] Update summon iniative/update companion initiative
+- [x] Options for items to add for add generic actions setting
+- [ ] Make all medkit coloring use a constants/setting to support a colorblind mode
+- [x] Clean up the CSS
+- [ ] Document things

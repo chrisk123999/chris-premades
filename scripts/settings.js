@@ -527,13 +527,6 @@ export function registerSettings() {
         onChange: async (value) => await customTypes.firearm(value)
     });
     addSetting({
-        key: 'chatCardTweak',
-        type: Boolean,
-        default: false,
-        category: 'interface',
-        onChange: () => chat.cssTweak()
-    });
-    addSetting({
         key: 'macroCompendium',
         type: String,
         default: null,

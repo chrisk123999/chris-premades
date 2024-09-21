@@ -19,20 +19,6 @@ async function createChatMessage(message, options, userId) {
         }  
     }
 }
-let alreadyEnabled = false;
-function cssTweak() {
-    if (alreadyEnabled) return;
-    alreadyEnabled = true;
-    let el = document.createElement('style');
-    el.type = 'text/css';
-    el.innerText = `.dice-result .dice-total:not(.fumble):not(.critical) {
-    background: var(--dnd5e-background-5);
-    border: 1px solid var(--color-border-light-2);
-    color: inherit;
-    }`;
-    document.head.appendChild(el);
-}
 export let chat = {
-    createChatMessage,
-    cssTweak
+    createChatMessage
 };

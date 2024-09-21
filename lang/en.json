@@ -1749,10 +1749,6 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
-            "chatCardTweak": {
-                "Hint": "When enabled, only critical hits and fumbles will have colored attack rolls. Reload required after disabling.",
-                "Name": "Chat Card Tweak"
-            },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
                 "Name": "Check for Updates"
@@ -1846,7 +1842,7 @@
                 "Name": "Hide Names"
             },
             "itemCompendium": {
-                "Hint": "Item compendium used for certain automations. Ideally should point to your D&D Beyond item commpendium.",
+                "Hint": "Item compendium used for certain automations. Ideally should point to your D&D Beyond item compendium.",
                 "Name": "Item Compendium"
             },
             "lastUpdateCheck": {
@@ -1896,7 +1892,7 @@
                 "Name": "Midi Item Showcase: Options"
             },
             "monsterCompendium": {
-                "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster commpendium.",
+                "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster compendium.",
                 "Name": "Monster Compendium"
             },
             "permissionsAutomateItem": {
@@ -1932,7 +1928,7 @@
                 "Name": "Select Tool Everywhere"
             },
             "spellCompendium": {
-                "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell commpendium.",
+                "Hint": "Spell compendium used for certain automations. Ideally should point to your D&D Beyond spell compendium.",
                 "Name": "Spell Compendium"
             },
             "spotlightOmnisearchSummons": {
