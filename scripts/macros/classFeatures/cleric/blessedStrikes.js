@@ -1,4 +1,4 @@
-import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function damage({workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageRoll) return;
@@ -11,9 +11,9 @@ async function damage({workflow}) {
     if (!selection) return;
     let damageType = itemUtils.getConfig(originItem, 'damageType');
     await workflowUtils.bonusDamage(workflow, '1d8[radiant]', {damageType});
-    await genericUtils.setFlag(originItem, 'chris-premades', 'blessedStrikes.used', true);
+    if (combatUtils.inCombat()) await genericUtils.setFlag(originItem, 'chris-premades', 'blessedStrikes.used', true);
 }
-async function turnStart({trigger: {entity: item}}) {
+async function clearUsed({trigger: {entity: item}}) {
     await genericUtils.setFlag(item, 'chris-premades', 'blessedStrikes.used', false);
 }
 export let blessedStrikes = {
@@ -31,7 +31,12 @@ export let blessedStrikes = {
     combat: [
         {
             pass: 'turnStart',
-            macro: turnStart,
+            macro: clearUsed,
+            priority: 50
+        },
+        {
+            pass: 'combatEnd',
+            macro: clearUsed,
             priority: 50
         }
     ],
