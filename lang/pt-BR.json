@@ -247,6 +247,11 @@
             "InvalidTarget": "Alvo Inválido",
             "TemplateEffect": "Modelo de {itemName}"
         },
+        "Grovelthrash": {
+              "Earthquake": "Terremoto (Grovelthrash)",
+              "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
+              "StoneShape": "Moldar Rochas (Grovelthrash)"
+        },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
             "Readme": "Leia-Me",
@@ -365,6 +370,11 @@
                 "SelectCurse": "Qual maldição você quer rogar?",
                 "Turn": "Desperdiçar Turno"
             },
+            "BigbysBeneficentBracelet": {
+                "BigbysHand": "Mão de Bigby (9º Nível)",
+                "ForceSculpture": "Escultura de Força",
+                "MageHand": "Mão Mágica (Pulseira Beneficente de Bigby)"
+            },
             "BigbysHand": {
                 "Big": "O alvo é grande demais!",
                 "Clenched": "Punho Cerrado",
@@ -374,6 +384,10 @@
                 "Grasping": "Mão Esmagadora",
                 "Interposing": "Mão Interposta",
                 "Move": "Mão de Bigby: Mover"
+            },
+            "Blackrazor": {
+                "Backlash": "Navalha Negra: Retaliação",
+                "Devoured": "Alma Devorada"
             },
             "BladeFlourish": {
                 "Defensive": "Floreio Defensivo",
@@ -500,6 +514,17 @@
             "Crusher": {
                 "Move": "Mover alvo?"
             },
+            "CrystalBlade": {
+                "Bright": "Ativar Lâmina (Plena)",
+                "Dim": "Ativar Lâmina (Penumbra)",
+                "Douse": "Apagar Lâmina",
+                "Heal": "Lâmina de Cristal: Cura",
+                "Light": "Lâmina de Cristal: Luz"
+            },
+            "DancingSword": {
+                "Attack": "Espada Dançante: Atacar",
+                "Toss": "Espada Dançante: Jogar"
+            },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
@@ -546,6 +571,11 @@
             },
             "DragonsBreath": {
                 "DragonBreath": "Sopro de Dragão"
+            },
+            "DragonsWrath": {
+                "AscendantBreath": "Ira do Dragão: Sopro Ascendente",
+                "Burst": "Ira do Dragão: Explosão Crítica",
+                "WakenedBreath": "Ira do Dragão: Sopro Desperto"
             },
             "DreadLord": {
                 "ShadowAttack": "Senhor do Pavor: Ataque da Sombra",
@@ -727,6 +757,11 @@
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?"
             },
+            "Grovelthrash": {
+                "Damage": "Causar 2d6 de dano contundente adicional ao custo de 1d6 de dano psíquico?",
+                "Insight": "Este teste é para identificar uma mentira falada em um idioma que você entende",
+                "Reaction": "Reação de Grovelthrash"
+            },
             "GuardianArmor": {
                 "DefensiveField": "Armadura do Guardião: Campo Defensivo",
                 "Distracted": "Manoplas Trovejantes: Distraído",
@@ -880,6 +915,9 @@
             "InvestmentOfTheChainMaster": {
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
+            },
+            "JavelinOfLightning": {
+                "Bolt": "Azagaia do Relâmpago: Raio"
             },
             "KeenSenses": {
                 "Check": "Este teste depende de: ",
@@ -1978,7 +2016,12 @@
                 "ConstructSpiritClay": "Espírito Mecânico (Argila)",
                 "ConstructSpiritMetal": "Espírito Mecânico (Metal)",
                 "ConstructSpiritStone": "Espírito Mecânico (Pedra)",
+                "DancingGreatsword": "Espada Grande Dançante",
                 "DancingItem": "Item Dançante",
+                "DancingLongsword": "Espada Longa Dançante",
+                "DancingRapier": "Rapieira Dançante",
+                "DancingScimitar": "Cimitarra Dançante",
+                "DancingShortsword": "Espada Curta Dançante",
                 "DraconicSpirit": "Espírito Dracônico",
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
@@ -2008,6 +2051,7 @@
                 "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
                 "FireElemental": "Elemental do Fogo",
                 "Flumph": "Flumph",
+                "ForceSculpture": "Escultura de Força",
                 "FormOfDread": "Forma de Pavor",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
