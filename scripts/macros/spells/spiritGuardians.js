@@ -2,10 +2,10 @@ import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dia
 async function use({trigger, workflow}) {
     let alignment = actorUtils.getAlignment(workflow.actor);
     let damageType;
-    if (alignment.includes('good') || alignment.includes('neutral')) {
-        damageType = 'radiant';
-    } else if (alignment.includes('evil')) {
+    if (alignment.includes(genericUtils.translate('CHRISPREMADES.Alignment.Evil').toLowerCase())) {
         damageType = 'necrotic';
+    } else if (alignment.includes(genericUtils.translate('CHRISPREMADES.Alignment.Good').toLowerCase()) || alignment.includes(genericUtils.translate('CHRISPREMADES.Alignment.Neutral').toLowerCase())) {
+        damageType = 'radiant';
     } else {
         damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.SpiritGuardians.Alignment', [['CHRISPREMADES.Alignment.Good', 'radiant'], ['CHRISPREMADES.Alignment.Neutral', 'radiant'], ['CHRISPREMADES.Alignment.Evil', 'necrotic']], {displayAsRows: true});
         if (!damageType) damageType = 'radiant';        
