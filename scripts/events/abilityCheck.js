@@ -191,7 +191,7 @@ async function rollCheck(wrapped, checkId, options = {}) {
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
     if (options.chatMessage !== false) {
-        genericUtils.mergeObject(messageData, { flags: options.flags ?? {} });
+        genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
         await returnData.toMessage(messageData);

@@ -190,7 +190,7 @@ async function save(wrapped, saveId, options = {}) {
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (options.chatMessage !== false) {
-        genericUtils.mergeObject(messageData, { flags: options.flags ?? {} });
+        genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
         await returnData.toMessage(messageData);

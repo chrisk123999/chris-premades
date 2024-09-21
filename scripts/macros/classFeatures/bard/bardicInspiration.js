@@ -16,7 +16,7 @@ async function use({workflow}) {
         flags: {
             'chris-premades': {
                 'bardicInspiration': {
-                    formula: scale.formula
+                    formula: scale.die
                 }
             }
         }
