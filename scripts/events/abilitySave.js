@@ -146,7 +146,7 @@ async function executeBonusMacroPass(actor, pass, saveId, options, roll) {
         let bonusRoll = await executeMacro(i);
         if (bonusRoll) roll = bonusRoll;
     }
-    return roll;
+    return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function save(wrapped, saveId, options = {}) {
     await executeMacroPass(this, 'situational', saveId, options);
@@ -170,12 +170,30 @@ async function save(wrapped, saveId, options = {}) {
             }
         }
     }
+    let overtimeActorUuid;
+    if (options.event) {
+        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+        if (target?.dataset?.midiOvertimeActorUuid) {
+            overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
+            options.rollMode = target.dataset.midiRollMode ?? options.rollMode;
+        }
+    }
+    let messageData;
+    Hooks.once('dnd5e.preRollAbilitySave', (actor, rollData) => {
+        messageData = rollData.messageData;
+        if (overtimeActorUuid)
+            messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+    });
     let returnData = await wrapped(saveId, {...options, chatMessage: false});
+    if (!returnData) return;
+    let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData);
+    if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     if (options.chatMessage !== false) {
-        await returnData.toMessage({
-            speaker: ChatMessage.implementation.getSpeaker({actor: this})
-        });
+        genericUtils.mergeObject(messageData, { flags: options.flags ?? {} });
+        genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
+        messageData.template = 'modules/midi-qol/templates/roll-base.html';
+        await returnData.toMessage(messageData);
     }
     return returnData;
 }

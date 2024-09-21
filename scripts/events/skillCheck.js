@@ -146,7 +146,7 @@ async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
         let bonusRoll = await executeMacro(i);
         if (bonusRoll) roll = bonusRoll;
     }
-    return roll;
+    return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollSkill(wrapped, skillId, options = {}) {
     await executeMacroPass(this, 'situational', skillId, options);
@@ -170,13 +170,26 @@ async function rollSkill(wrapped, skillId, options = {}) {
             }
         }
     }
+    let overtimeActorUuid;
+    if (options.event) {
+        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+        if (target?.dataset?.midiOvertimeActorUuid)
+            overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
+    }
+    let messageData;
+    Hooks.once('dnd5e.preRollSkill', (actor, rollData, skillId) => {
+        messageData = rollData.messageData;
+        if (overtimeActorUuid)
+            messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+    });
     let returnData = await wrapped(skillId, {...options, chatMessage: false});
+    if (!returnData) return;
+    let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
+    if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
     if (options.chatMessage !== false) {
-        await returnData.toMessage({
-            speaker: ChatMessage.implementation.getSpeaker({actor: this})
-        });
+        await returnData.toMessage(messageData);
     }
     return returnData;
 }

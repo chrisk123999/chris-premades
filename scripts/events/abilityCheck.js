@@ -146,7 +146,7 @@ async function executeBonusMacroPass(actor, pass, checkId, options, roll) {
         let bonusRoll = await executeMacro(i);
         if (bonusRoll) roll = bonusRoll;
     }
-    return roll;
+    return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
 async function rollCheck(wrapped, checkId, options = {}) {
     await executeMacroPass(this, 'situational', checkId, options);
@@ -170,13 +170,31 @@ async function rollCheck(wrapped, checkId, options = {}) {
             }
         }
     }
+    let overtimeActorUuid;
+    if (options.event) {
+        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+        if (target?.dataset?.midiOvertimeActorUuid) {
+            overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
+            options.rollMode = target.dataset.midiRollMode ?? options.rollMode;
+        }
+    }
+    let messageData;
+    Hooks.once('dnd5e.preRollAbilityTest', (actor, rollData) => {
+        messageData = rollData.messageData;
+        if (overtimeActorUuid)
+            messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+    });
     let returnData = await wrapped(checkId, {...options, chatMessage: false});
+    if (!returnData) return;
+    let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', checkId, options, returnData);
+    if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', checkId, options, returnData);
     if (options.chatMessage !== false) {
-        await returnData.toMessage({
-            speaker: ChatMessage.implementation.getSpeaker({actor: this})
-        });
+        genericUtils.mergeObject(messageData, { flags: options.flags ?? {} });
+        genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
+        messageData.template = 'modules/midi-qol/templates/roll-base.html';
+        await returnData.toMessage(messageData);
     }
     return returnData;
 }
