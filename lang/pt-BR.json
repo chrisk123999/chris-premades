@@ -1087,6 +1087,19 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
             },
+            "RingOfSpellStoring": {
+                "Clear": "Limpar magias usadas",
+                "Cleared": "Magias usadas removidas do inventário!",
+                "Name": "Armazenamento do Anel de Magias ({currSpellSlots}/{maxSpellSlots})",
+                "NoSpells": "Não há magias disponíveis para armazenar!",
+                "Reset": "Reverter magias armazenadas",
+                "ResetDone": "Redefinir anel!",
+                "SelectSpell": "Qual magia você gostaria de armazenar?",
+                "SpellName": "Anel de Armazenamento de Magia: {spellName}",
+                "Store": "Armazenar uma magia",
+                "Stored": "{spellName} armazenada!",
+                "Upcast": "Conjurar em qual nível?"
+            },
             "RunicShield": {
                 "Use": "Usar {item} para {name}?"
             },
@@ -1625,6 +1638,7 @@
         },
         "Section": {
             "Rage": "Fúria",
+            "RingOfSpellStoring": "Anel de Armazenamento de Magia",
             "SpellFeatures": "Recursos de Magia"
         },
         "Senses": {
