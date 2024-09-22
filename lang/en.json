@@ -1087,6 +1087,19 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
             },
+            "RingOfSpellStoring": {
+                "Clear": "Clear used spells",
+                "Cleared": "Used spells cleared from inventory!",
+                "Name": "Ring of Spell Storing ({currSpellSlots}/{maxSpellSlots})",
+                "NoSpells": "No spells available to store!",
+                "Reset": "Revert stored spells",
+                "ResetDone": "Ring reset!",
+                "SelectSpell": "Which spell would you like to store?",
+                "SpellName": "Ring of Spell Storing: {spellName}",
+                "Store": "Store a spell",
+                "Stored": "{spellName} stored!",
+                "Upcast": "Cast at what level?"
+            },
             "RunicShield": {
                 "Use": "Use {item} for {name}?"
             },
@@ -1625,6 +1638,7 @@
         },
         "Section": {
             "Rage": "Rage",
+            "RingOfSpellStoring": "Ring of Spell Storing",
             "SpellFeatures": "Spell Features"
         },
         "Senses": {

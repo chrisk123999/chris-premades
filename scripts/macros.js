@@ -491,6 +491,7 @@ export {potionOfMaximumPower} from './macros/items/consumable/potionOfMaximumPow
 export {potionOfPoison} from './macros/items/consumable/potionOfPoison.js';
 export {potionOfSpeed} from './macros/items/consumable/potionOfSpeed.js';
 export {potionOfVitality} from './macros/items/consumable/potionOfVitality.js';
+export {ringOfSpellStoring, ringOfSpellStoringSpell} from './macros/items/trinket/ringOfSpellStoring.js';
 export {stormgirdleD, stormgirdleA, stormgirdleE, stormAvatar} from './macros/items/trinket/stormgirdle.js';
 export {unarmedStrike} from './macros/items/misc/unarmedStrike.js';
 export {wandOfTheWarMage, wandOfTheWarMage1, wandOfTheWarMage2, wandOfTheWarMage3} from './macros/items/trinket/wandOfTheWarMage.js';
