@@ -152,7 +152,7 @@ export let bardicInspiration = {
             value: 'scaleIdentifier',
             label: 'CHRISPREMADES.Config.ScaleIdentifier',
             type: 'text',
-            default: 'bardic-inspiration',
+            default: 'inspiration',
             category: 'mechanics'
         }
     ]

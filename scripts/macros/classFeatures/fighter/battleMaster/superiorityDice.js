@@ -1,6 +1,6 @@
-import {dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-
+import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function hit({workflow}) {
+    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
     // TODO: Martial Adept, Superior Technique
     let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'superiorityDice');
@@ -14,9 +14,9 @@ async function hit({workflow}) {
         'maneuversManeuveringAttack',
         'maneuversMenacingAttack',
         'maneuversPushingAttack',
-        'maneuversSweepingAttack',
         'maneuversTripAttack'
     ];
+    if (workflow.item.system.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
     let validManeuvers = triggerManeuvers.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(i => i);
     if (!validManeuvers.length) return;
     let selected = await dialogUtils.selectDocumentDialog(originItem.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});

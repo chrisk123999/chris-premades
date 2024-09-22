@@ -58,7 +58,6 @@ async function use({workflow}) {
         }
         if (originalSpell.system.uses.max) await genericUtils.update(originalSpell, {'system.uses.value': originalSpell.system.uses.value - 1});
         spellData.name = genericUtils.format('CHRISPREMADES.Macros.RingOfSpellStoring.SpellName', {spellName: spellData.name});
-        
         genericUtils.mergeObject(spellData, {
             system:{
                 uses: {
