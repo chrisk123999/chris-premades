@@ -1,20 +1,23 @@
 import {constants, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function early({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size) return;
     if (workflow.item.type !== 'spell') return;
     if (workflow.item.system.school !== 'evo') return;
     if (!workflow.hasSave) return;
     let max = 1 + workflow.spellLevel;
-    let targets = Array.from(workflow.targets);
+    let selection = Array.from(workflow.targets);
     let allowEnemies = itemUtils.getConfig(item, 'allowEnemies');
-    if (!allowEnemies) targets = targets.filter(i => i.document.disposition === workflow.token.document.disposition);
-    let selection = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Macros.SculptSpells.Select', {max}), targets, {
-        type: 'multiple',
-        maxAmount: max
-    });
-    if (!selection?.length) return;
-    selection = selection[0];
+    if (!allowEnemies) selection = selection.filter(i => i.document.disposition === workflow.token.document.disposition);
+    if (!selection.length) return;
+    if (selection.length > max) {
+        selection = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Macros.SculptSpells.Select', {max}), selection, {
+            type: 'multiple',
+            maxAmount: max,
+            skipDeadAndUnconscious: false
+        });
+        if (!selection?.length) return;
+        selection = selection[0];
+    }
     let effectData = {
         name: item.name,
         img: constants.tempConditionIcon,

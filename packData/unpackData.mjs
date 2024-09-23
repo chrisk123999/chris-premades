@@ -8,7 +8,7 @@ let itemPacks = [
     'cpr-item-features',
     'cpr-items',
     //'cpr-monster-feature-items',
-    //'cpr-monster-features',
+    'cpr-monster-features',
     'cpr-race-feature-items',
     'cpr-race-features',
     'cpr-spells',

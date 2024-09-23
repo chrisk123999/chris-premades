@@ -154,6 +154,7 @@ export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 export {noConfiguration} from './macros/generic/noConfiguration.js';
 export {noReactions} from './macros/generic/noReactions.js';
 export {setAttackRoll} from './macros/generic/setAttackRoll.js';
+export {proneOnFail} from './macros/generic/proneOnFail.js';
 // Class Features
 export {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
 export {alchemicalSavant} from './macros/classFeatures/artificer/alchemist/alchemicalSavant.js';
@@ -408,6 +409,7 @@ export {windwrightsIntuition} from './macros/raceFeatures/halfElf/markOfStorm/wi
 // Monster Features
 export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
+export {sculptedExplosion} from './macros/monsterFeatures/humanoid/evokerWizard/sculptedExplosion.js';
 // Generic Monster Features
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';

@@ -29,9 +29,6 @@
             "ThreeMonths": "Three Months",
             "Weekly": "Weekly"
         },
-        "CONFIG": {
-            "SaveDC": "Save DC:"
-        },
         "CommonFeatures": {
             "Amphibious": "Amphibious",
             "Bite": "Bite",
@@ -122,7 +119,8 @@
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "Sound": "Sound:",
-            "SpecificAnimation": "{option} Animation:"
+            "SpecificAnimation": "{option} Animation:",
+            "SaveDC": "Save DC:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -220,6 +218,7 @@
             "Edit": "Edit",
             "Go": "Go",
             "Import": "Import",
+            "Max": "Max:",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
             "NoMoreResource": "Out of required resource!",

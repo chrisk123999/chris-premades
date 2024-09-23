@@ -97,7 +97,7 @@ export let stormgirdleD = {
         },
         {
             value: 'saveDC',
-            label: 'CHRISPREMADES.CONFIG.SaveDC',
+            label: 'CHRISPREMADES.Config.SaveDC',
             type: 'text',
             default: '15',
             homebrew: true,

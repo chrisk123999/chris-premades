@@ -230,6 +230,13 @@
       "path": "packs/cpr-3rd-party-items",
       "type": "Item",
       "module": "chris-premades"
+    },
+    {
+      "name": "CPRMonsterFeatures",
+      "label": "CPR Monster Features",
+      "path": "packs/cpr-monster-features",
+      "type": "Item",
+      "module": "chris-premades"
     }
   ],
   "packFolders": [
@@ -253,7 +260,8 @@
         "CPRRaceFeatures",
         "CPRRaceFeatureItems",
         "CPRThirdPartyClassFeatures",
-        "CPRThirdPartyItems"
+        "CPRThirdPartyItems",
+        "CPRMonsterFeatures"
       ]
     }
   ],
