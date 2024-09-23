@@ -8,7 +8,6 @@ export class Summons {
         this.originItem = originItem;
         this.summonerToken = summonerToken;
         this.options = options ?? {};
-        this.spawnOptions = {}; // uh do something?
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
@@ -160,15 +159,6 @@ export class Summons {
         this.currentIndex = 0;
     }
     async prepareData() {
-        let tokenDocument = await this.sourceActor.getTokenDocument();
-        if (this.summonerToken?.actor) {
-            this.spawnOptions = {
-                'controllingActor': this.summonerToken.actor,
-                'crosshairs': {
-                    'resolution': this.updates?.token?.width ?? tokenDocument.width % 2 === 0 ? 1 : -1
-                }
-            };
-        }
         if (this.options.animation != 'none' && !this.options.callbacks?.post) {
             let callbackFunction = animationUtils.summonEffects[this.options.animation];
             // TODO: Do we need this check here? Should be taking care of it per summoning spell/item
@@ -199,7 +189,7 @@ export class Summons {
             icon: tokenImg,
             name: tokenDocument.name,
             direction: 0,
-            resolution: (this.tokenUpdates?.width ?? tokenDocument.width) % 2 ? 1 : -1
+            resolution: ((this.tokenUpdates?.width ?? tokenDocument.width) % 2) ? 1 : -1
         }, {inplace: true, overwrite: false});
         crosshairsConfig.direction += rotation;
         const templateData = await crosshairUtils.aimCrosshair({

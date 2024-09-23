@@ -29,7 +29,7 @@ async function pushHelper(workflow, item) {
         crosshairsConfig: {
             size: canvas.grid.distance * targetToken.document.width / 2,
             icon: targetToken.document.texture.src,
-            resolution: targetToken.document.width % 2 === 0 ? -1 : 1
+            resolution: (targetToken.document.width % 2) ? 1 : -1
         }
     });
     if (position.cancelled) return;

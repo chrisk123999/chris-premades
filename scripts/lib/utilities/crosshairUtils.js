@@ -15,6 +15,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
     centerpoint = centerpoint ?? token.center;
     let drawing;
     let container;
+    let valid = true;
     let checkDistance = async (crosshairs) => {
         if (maxRange && drawBoundries) {
             let radius = (canvas.grid.size * ((maxRange + fudgeDistance + widthAdjust) / canvas.grid.distance));
@@ -40,9 +41,11 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
                 if (token.checkCollision(crosshairs, {origin: token.center, type: 'move', mode: 'any'}) || distance > maxRange || validityFunctions.some(i => !i(crosshairs))) {
                     crosshairs.icon = 'icons/svg/hazard.svg';
                     if (drawing) drawing.tint = 0xff0000;
+                    valid = false;
                 } else {
                     crosshairs.icon = crosshairsConfig?.icon;
                     if (drawing) drawing.tint = 0x32cd32;
+                    valid = true;
                 }
                 crosshairs.draw();
                 crosshairs.label = distance + '/' + maxRange + 'ft.';
@@ -65,7 +68,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         drawing.destroy();
         container.destroy();
     }
-    return result;
+    return {...result, valid};
 }
 export let crosshairUtils = {
     aimCrosshair

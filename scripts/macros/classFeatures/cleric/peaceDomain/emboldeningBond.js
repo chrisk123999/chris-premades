@@ -94,7 +94,7 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
             crosshairsConfig: {
                 size: canvas.grid.distance * token.document.width / 2,
                 icon: token.document.texture.src,
-                resolution: token.document.width % 2 === 0 ? -1 : 1
+                resolution: (token.document.width % 2) ? 1 : -1
             }
         });
         if (position.cancelled) continue;

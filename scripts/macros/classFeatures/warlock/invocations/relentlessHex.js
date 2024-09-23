@@ -15,7 +15,7 @@ async function use({workflow}) {
         crosshairsConfig: {
             size: canvas.grid.distance * workflow.token.document.width / 2,
             icon: workflow.token.document.texture.src,
-            resolution: workflow.token.document.width % 2 === 0 ? -1 : 1
+            resolution: (workflow.token.document.width % 2) ? 1 : -1
         }
     });
     if (position.cancelled) return;
