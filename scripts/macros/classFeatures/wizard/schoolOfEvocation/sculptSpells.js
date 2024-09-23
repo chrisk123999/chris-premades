@@ -5,11 +5,9 @@ async function early({trigger: {entity: item}, workflow}) {
     if (workflow.item.system.school !== 'evo') return;
     if (!workflow.hasSave) return;
     let max = 1 + workflow.spellLevel;
-    let selection = Array.from(workflow.targets);
     let allowEnemies = itemUtils.getConfig(item, 'allowEnemies');
-    if (!allowEnemies) selection = selection.filter(i => i.document.disposition === workflow.token.document.disposition);
-    if (!selection.length) return;
-    if (selection.length > max) {
+    let selection = allowEnemies ? Array.from(workflow.targets) : Array.from(workflow.targets).filter(i => i.document.disposition === workflow.token.document.disposition);
+    if (selection.length > max || allowEnemies) {
         selection = await dialogUtils.selectTargetDialog(item.name, genericUtils.format('CHRISPREMADES.Macros.SculptSpells.Select', {max}), selection, {
             type: 'multiple',
             maxAmount: max,
@@ -18,6 +16,7 @@ async function early({trigger: {entity: item}, workflow}) {
         if (!selection?.length) return;
         selection = selection[0];
     }
+    if (!selection.length) return;
     let effectData = {
         name: item.name,
         img: constants.tempConditionIcon,
