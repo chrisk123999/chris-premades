@@ -86,5 +86,20 @@ export let javelinOfLightning = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Javelin of Lightning': {
+                system: {
+                    uses: {
+                        value: 1,
+                        max: 1,
+                        per: 'dawn',
+                        recovery: '',
+                        prompt: false
+                    }
+                }
+            }
+        }
+    }
 };

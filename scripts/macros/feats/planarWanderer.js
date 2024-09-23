@@ -50,6 +50,13 @@ export let planarAdaptation = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        additonalItems: {
+            'Planar Wanderer': [
+                'Planar Wanderer: Planar Adaptation'
+            ]
+        }
     }
 };
 export let portalCracker = {

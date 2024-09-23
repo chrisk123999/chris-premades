@@ -59,5 +59,12 @@ export let blessingOfTheRavenQueen = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    ddbi: {
+        removedItems: {
+            'Blessing of the Raven Queen': [
+                'Blessing of the Raven Queen (Resistance)'
+            ]
+        }
+    }
 };

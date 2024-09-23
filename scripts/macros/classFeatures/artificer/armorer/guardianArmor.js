@@ -97,6 +97,15 @@ export let guardianArmor = {
                 'Arcane Armor: Guardian Model',
                 'Arcane Armor: Infiltrator Model'
             ]
+        },
+        removedItems: {
+            'Arcane Armor': [
+                'Guardian Armor: Thunder Gauntlets',
+                'Guardian Armor: Thunder Gauntlets (STR)',
+                'Guardian Armor: Defensive Field',
+                'Infiltrator Armor: Lightning Launcher',
+                'Infiltrator Armor: Lightning Launcher (DEX)'
+            ]
         }
     }
 };
