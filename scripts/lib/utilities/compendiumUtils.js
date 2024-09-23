@@ -7,31 +7,36 @@ import {genericUtils} from './genericUtils.js';
 import {itemUtils} from './itemUtils.js';
 async function getCPRAutomation(item) {
     let keys = [];
-    switch (item.type) {
-        case 'spell':
-            keys.push(constants.packs.spells);
-            break;
-        case 'weapon':
-        case 'equipment':
-        case 'consumable':
-        case 'tool':
-        case 'backpack':
-        case 'loot':
-            keys.push(constants.packs.items);
-            if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
-            break;
-        case 'feat':
-            keys.push(constants.packs.classFeatures);
-            keys.push(constants.packs.actions);
-            keys.push(constants.packs.raceFeatures);
-            if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
-            break;
-    }
-    if (!keys.length) return;
+    let type = item.actor?.type ?? 'character';
+    if (type === 'character' || item.type === 'spell') {
+        keys = [];
+        switch (item.type) {
+            case 'spell':
+                keys.push(constants.packs.spells);
+                break;
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                keys.push(constants.packs.items);
+                if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
+                break;
+            case 'feat':
+                keys.push(constants.packs.classFeatures);
+                keys.push(constants.packs.actions);
+                keys.push(constants.packs.raceFeatures);
+                if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
+                break;
+        }
+        if (!keys.length) return;
+    } else if (type === 'npc') {
+        keys.push(constants.packs.monsterFeatures);
+    } else return;
     let identifier = genericUtils.getIdentifier(item);
     let name = macros[identifier]?.name ?? item.name;
     let folderId;
-    let type = item.actor?.type ?? 'character';
     if (type === 'npc' && item.type != 'spell') {
         let name = item.actor.prototypeToken.name;
         let pack = game.packs.get(keys[0]);

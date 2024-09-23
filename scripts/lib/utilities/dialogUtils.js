@@ -243,7 +243,7 @@ async function selectHitDie(actor, title, content, {max = 1, userId = game.user.
     let inputs = [['selectAmount', inputFields, {displayAsRows: true, totalMax: max}]];
     let result;
     if (game.user.id != userId) {
-        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, undefined, {height: 'auto'});
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, 'okCancel', {height: 'auto'});
     } else {
         result = await DialogApp.dialog(title, content, inputs, 'okCancel', {height: 'auto'});
     }
