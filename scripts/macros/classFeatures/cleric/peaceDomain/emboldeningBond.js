@@ -1,96 +1,25 @@
 import {Teleport} from '../../../../lib/teleport.js';
-import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
-function getBonusEffectData() {
-    let bonusEffectData = {
-        name: genericUtils.translate('CHRISPREMADES.Macros.EmboldeningBond.Bonus'),
-        changes: [
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.count',
-                mode: 0,
-                value: 1,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.label',
-                mode: 0,
-                value: genericUtils.translate('CHRISPREMADES.Macros.EmboldeningBond.Bonus'),
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.save.all',
-                mode: 0,
-                value: '1d4',
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.attack.all',
-                mode: 0,
-                value: '1d4',
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.check.all',
-                mode: 0,
-                value: '1d4',
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.skill.all',
-                mode: 0,
-                value: '1d4',
-                priority: 20
-            },
-            {
-                key: 'system.attributes.init.bonus',
-                mode: 2,
-                value: '1d4',
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.emboldeningBond.macroToCall',
-                mode: 0,
-                value: 'function.chrisPremades.macros.emboldeningBond.utilFunctions.setUsedFlag',
-                priority: 20
-            }
-        ],
-        flags: {
-            'chris-premades': {
-                effect: {
-                    noAnimation: true
-                }
-            }
-        }
-    };
-    return bonusEffectData;
-}
 async function checkBonus(token, checkTurnOn, checkTurnOff) {
     if (!checkTurnOn && !checkTurnOff) return;
     let effect = effectUtils.getEffectByIdentifier(token.actor, 'emboldeningBond');
     if (!effect) return;
-    if (combatUtils.inCombat() && effect.flags['chris-premades']?.emboldeningBond?.used) return;
-    let bonusEffect = effectUtils.getEffectByIdentifier(token.actor, 'emboldeningBondBonus');
-    if (!checkTurnOff && bonusEffect) return;
-    if (!checkTurnOn && !bonusEffect) return;
+    if (!combatUtils.perTurnCheck(effect, 'emboldeningBond')) return;
+    let bonusActive = effect.flags['chris-premades']?.emboldeningBond?.inRange;
+    if (!checkTurnOff && bonusActive) return;
+    if (!checkTurnOn && !bonusActive) return;
     let expansive = effect.flags['chris-premades']?.emboldeningBond?.expansiveBond;
     let distance = expansive ?? 30;
     let nearbyTargets = tokenUtils.findNearby(token, distance, 'ally').filter(i => effectUtils.getEffectByIdentifier(i.actor, 'emboldeningBond'));
     if (!nearbyTargets.length) {
-        if (bonusEffect) genericUtils.remove(bonusEffect);
+        if (bonusActive) await genericUtils.setFlag(effect, 'chris-premades', 'emboldeningBond.inRange', false);
         return;
     }
-    if (bonusEffect) return;
-    let effectData = getBonusEffectData();
-    effectData.origin = effect.origin;
-    effectData.img = effect.img;
-    effectData.duration = {
-        seconds: effect.duration.seconds
-    };
-    await effectUtils.createEffect(token.actor, effectData, {parentEntity: effect, identifier: 'emboldeningBondBonus'});
-    return;
+    if (bonusActive) return;
+    await genericUtils.setFlag(effect, 'chris-premades', 'emboldeningBond.inRange', true);
 }
-async function turnStart({trigger: {entity: effect, token}}) {
-    await genericUtils.setFlag(effect, 'chris-premades', 'emboldeningBond.used', false);
+async function turnStart({trigger: {token}}) {
     await checkBonus(token, true, false);
 }
 async function moved({trigger: {token}}) {
@@ -105,23 +34,25 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         duration: itemUtils.convertDuration(workflow.item),
-        origin: workflow.item.uuid
+        origin: workflow.item.uuid,
+        flags: {
+            'chris-premades': {
+                emboldeningBond: {
+                    inRange: true
+                }
+            }
+        }
     };
-    effectUtils.addMacro(effectData, 'movement', ['emboldeningBondEmboldened']);
-    effectUtils.addMacro(effectData, 'combat', ['emboldeningBondEmboldened']);
-    let effectData2 = getBonusEffectData();
-    effectData2.origin = effectData.origin;
-    effectData2.img = effectData.img;
-    effectData2.duration = effectData.duration;
+    for (let triggerType of ['midi.actor', 'movement', 'combat', 'save', 'skill', 'check']) {
+        effectUtils.addMacro(effectData, triggerType, ['emboldeningBondEmboldened']);
+    }
     let expansive = itemUtils.getItemByIdentifier(workflow.actor, 'expansiveBond');
     let protective = itemUtils.getItemByIdentifier(workflow.actor, 'protectiveBond');
     if (expansive) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.expansiveBond', 60);
     if (protective) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.protectiveBond', true);
-    if (protective) effectUtils.addMacro(effectData, 'midi.actor', ['emboldeningBondEmboldened']);
     if (playAnimation) genericUtils.setProperty(effectData, 'flags.chris-premades.emboldeningBond.playAnimation', true);
     for (let target of workflow.targets) {
-        let effect = await effectUtils.createEffect(target.actor, effectData, {identifier: 'emboldeningBond'});
-        await effectUtils.createEffect(target.actor, effectData2, {identifier: 'emboldeningBondBonus', parentEntity: effect});
+        await effectUtils.createEffect(target.actor, effectData, {identifier: 'emboldeningBond'});
     }
 }
 async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) {
@@ -176,11 +107,25 @@ async function targetApplyDamaged({trigger: {entity: effect}, workflow, ditem}) 
         break;
     }
 }
-async function setUsedFlag({actor}) {
-    let effect = effectUtils.getEffectByIdentifier(actor, 'emboldeningBond');
-    if (!effect) return;
-    await genericUtils.setFlag(effect, 'chris-premades', 'emboldeningBond.used', true);
+async function attack({trigger: {entity: effect}, workflow}) {
+    if (workflow.targets.size !== 1 || workflow.isFumble) return;
+    if (!combatUtils.perTurnCheck(effect, 'emboldeningBond')) return;
+    if (!effect.flags['chris-premades'].emboldeningBond.inRange) return;
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseAttackDetail', {itemName: effect.name, bonusFormula: '1d4', attackTotal: workflow.attackTotal}));
+    if (!selection) return;
+    await combatUtils.setTurnCheck(effect, 'emboldeningBond');
+    await workflowUtils.bonusAttack(workflow, '1d4');
 }
+async function bonus({trigger: {roll, entity: effect}}) {
+    if (!combatUtils.perTurnCheck(effect, 'emboldeningBond')) return;
+    if (!effect.flags['chris-premades'].emboldeningBond.inRange) return;
+    let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Dialog.UseRollTotalDetail', {itemName: effect.name, bonusFormula: '1d4', rollTotal: roll.total}));
+    if (!selection) return;
+    await combatUtils.setTurnCheck(effect, 'emboldeningBond');
+    return await rollUtils.addToRoll(roll, '1d4');
+}
+// TODO: Handle bonus to initiative? Could be as simple as being automatic, since /turn means there's no downside to using it pre-combat
+// But can't just have it always be on the effect, since it's conditional on being in range
 export let emboldeningBond = {
     name: 'Emboldening Bond',
     version: '0.12.40',
@@ -201,16 +146,18 @@ export let emboldeningBond = {
             default: true,
             category: 'animation'
         },
-    ],
-    utilFunctions: {
-        setUsedFlag
-    }
+    ]
 };
 export let emboldeningBondEmboldened = {
     name: 'Emboldening Bond: Emboldened',
     version: emboldeningBond.version,
     midi: {
         actor: [
+            {
+                pass: 'postAttackRoll',
+                macro: attack,
+                priority: 50
+            },
             {
                 pass: 'targetApplyDamage',
                 macro: targetApplyDamaged,
@@ -232,4 +179,25 @@ export let emboldeningBondEmboldened = {
             priority: 50
         }
     ],
+    save: [
+        {
+            pass: 'bonus',
+            macro: bonus,
+            priroity: 50
+        }
+    ],
+    skill: [
+        {
+            pass: 'bonus',
+            macro: bonus,
+            priroity: 50
+        }
+    ],
+    check: [
+        {
+            pass: 'bonus',
+            macro: bonus,
+            priority: 50
+        }
+    ]
 };

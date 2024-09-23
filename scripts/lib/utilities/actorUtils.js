@@ -15,6 +15,15 @@ async function addFavorites(actor, items) {
         await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, items.map(i => i.uuid));
     }
 }
+async function removeFavorites(actor, items) {
+    if (!actor.system.removeFavorite) return;
+    let hasPermission = socketUtils.hasPermission(actor, game.user.id);
+    if (hasPermission) {
+        for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+    } else {
+        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, items.map(i => i.uuid));
+    }
+}
 function getTokens(actor) {
     return actor.getActiveTokens();
 }
@@ -143,6 +152,7 @@ async function polymorph(origActor, newActor, options, renderSheet=true) {
 export let actorUtils = {
     getEffects,
     addFavorites,
+    removeFavorites,
     getFirstToken,
     getLevelOrCR,
     checkTrait,

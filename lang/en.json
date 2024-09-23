@@ -145,10 +145,12 @@
             "RemoteMessage": "Waiting for remote dialog selection from",
             "Use": "Use {itemName}?",
             "UseAttack": "Use {itemName}? (Attack Total: {attackTotal})",
+            "UseAttackDetail": "Use {itemName} for an extra {bonusFormula}? (Attack Total: {attackTotal})",
             "UseExtraCost": "Use {itemName}? (Costs {quantity} {quantityName})",
             "UseName": "Use {itemName} [{tokenName}]?",
             "UseOn": "Use {itemName} on {tokenName}?",
             "UseRollTotal": "Use {itemName}? (Roll Total: {rollTotal})",
+            "UseRollTotalDetail": "Use {itemName} for an extra {bonusFormula}? (Roll Total: {rollTotal})",
             "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
             "WhatDo": "What would you like to do?",
             "YesDetail": "Yes ({detail})"

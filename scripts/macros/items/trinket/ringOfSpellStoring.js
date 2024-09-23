@@ -101,7 +101,7 @@ async function use({workflow}) {
             }
         });
         if (itemUtils.getEquipmentState(workflow.item)) {
-            await itemUtils.createItems(workflow.actor, [spellData], {parentEntity: workflow.item, section: genericUtils.translate('CHRISPREMADES.Section.RingOfSpellStoring')});
+            await itemUtils.createItems(workflow.actor, [spellData], {favorite: true, parentEntity: workflow.item, section: genericUtils.translate('CHRISPREMADES.Section.RingOfSpellStoring')});
         }
         genericUtils.notify(genericUtils.format('CHRISPREMADES.Macros.RingOfSpellStoring.Stored', {spellName: spellData.name}), 'info');
         return;
@@ -127,7 +127,7 @@ async function equipOrUpdateRing(item) {
     for (let i of storedSpells) {
         i.flags['chris-premades'].ross.itemUuid = item.uuid;
     }
-    await itemUtils.createItems(item.actor, storedSpells, {parentEntity: item, section: genericUtils.translate('CHRISPREMADES.Section.RingOfSpellStoring')});
+    await itemUtils.createItems(item.actor, storedSpells, {favorite: true, parentEntity: item, section: genericUtils.translate('CHRISPREMADES.Section.RingOfSpellStoring')});
 }
 async function unequipRing(item) {
     let rossSpells = item.actor.items.filter(i => i.type === 'spell' && i.flags['chris-premades']?.ross?.isStored && i.flags['chris-premades'].ross.itemUuid === item.uuid);
@@ -158,8 +158,8 @@ async function earlySpell({workflow}) {
             spellSlots
         }
     });
+    await actorUtils.removeFavorites(workflow.actor, [workflow.item]);
 }
-// TODO: on equip ring, create spells, give them midi.item macro for cast
 export let ringOfSpellStoring = {
     name: 'Ring of Spell Storing (0/5)',
     version: '0.12.73',
@@ -176,6 +176,11 @@ export let ringOfSpellStoring = {
         ringOfSpellStoring: {
             equipCallback: equipOrUpdateRing,
             unequipCallback: unequipRing
+        }
+    },
+    ddbi: {
+        renamedItems: {
+            'Ring of Spell Storing': 'Ring of Spell Storing (0/5)'
         }
     }
 };

@@ -103,6 +103,15 @@ async function addFavorites(actorUuid, itemUuids) {
         type: 'item'
     });
 }
+async function removeFavorites(actorUuid, itemUuids) {
+    let actor = await fromUuid(actorUuid);
+    if (!actor) return;
+    if (!actor.system.removeFavorite) return;
+    let items = await Promise.all(itemUuids.map(async i => {
+        return await fromUuid(i);
+    }).filter(j => j));
+    for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+}
 async function dialog(...options) {
     let message = await ChatMessage.create({
         speaker: {alias: game.user.name},
@@ -178,6 +187,7 @@ export let sockets = {
     addDependent,
     createEmbeddedDocuments,
     addFavorites,
+    removeFavorites,
     setFlag,
     dialog,
     rollItem,
