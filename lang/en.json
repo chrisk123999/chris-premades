@@ -116,11 +116,11 @@
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
+            "SaveDC": "Save DC:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "Sound": "Sound:",
-            "SpecificAnimation": "{option} Animation:",
-            "SaveDC": "Save DC:"
+            "SpecificAnimation": "{option} Animation:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -499,7 +499,7 @@
                 "Controlled": "Control Undead: Controlled"
             },
             "CreatePactWeapon": {
-                "CustomCompendium": "Custom Pact Weapon Compendium Key:",
+                "CustomCompendium": "Custom Pact Weapon Compendium:",
                 "Dismiss": "Dismiss Pact Weapon",
                 "Existing": "Enhance Existing Weapon",
                 "Select": "Select a Pact Weapon",
@@ -1433,7 +1433,7 @@
                 "MaxDistance": "Max Distance:"
             },
             "WildShape": {
-                "CustomCompendium": "Custom Wild Shape Compendium Key:",
+                "CustomCompendium": "Custom Wild Shape Compendium:",
                 "Equipment": "What happens to your equipment?",
                 "Ignore": "Ignore CR, Type, & Movement Restrictions:",
                 "KeepSpells": "Allow spellcasting while transformed:",

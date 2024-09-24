@@ -155,7 +155,8 @@ export let createPactWeapon = {
         {
             value: 'compendium',
             label: 'CHRISPREMADES.Macros.CreatePactWeapon.CustomCompendium',
-            type: 'text',
+            type: 'select',
+            options: constants.itemCompendiumPacks,
             default: '',
             category: 'mechanics'
         },

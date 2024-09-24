@@ -108,7 +108,9 @@ const unarmedAttacks = [
     'fightingStyleUnarmedFightingUnarmedStrike',
     'predatoryStrike'
 ];
-let damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
+const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
+const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
+const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const overTimeOptions = [
     {
         key: 'turn',
@@ -403,6 +405,8 @@ export let constants = {
     spellAttacks,
     unarmedAttacks,
     damageTypeOptions,
+    actorCompendiumPacks,
+    itemCompendiumPacks,
     setUseLocalCompendium,
     overTimeOptions,
     summonAnimationOptions,

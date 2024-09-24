@@ -166,7 +166,7 @@ async function executeTargetMacroPass(workflow, pass, onlyHit = false) {
     genericUtils.log('dev', 'Executing Midi Macro Pass: ' + pass);
     let triggers = [];
     let targets = onlyHit ? workflow.hitTargets : workflow.targets;
-    targets.forEach(i => {
+    targets?.filter(i => i).forEach(i => {
         triggers.push(...getSortedTriggers({token: i, actor: i.actor}, pass));
     });
     triggers = triggers.sort((a, b) => a.priority - b.priority);

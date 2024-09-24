@@ -209,7 +209,8 @@ export let wildShape = {
         {
             value: 'compendium',
             label: 'CHRISPREMADES.Macros.WildShape.CustomCompendium',
-            type: 'text',
+            type: 'select',
+            options: constants.actorCompendiumPacks,
             default: '',
             category: 'mechanics'
         },
