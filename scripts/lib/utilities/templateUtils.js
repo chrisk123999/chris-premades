@@ -29,7 +29,7 @@ function getTokensInTemplate(template) {
 }
 function getTemplatesInToken(token) {
     let templates = new Set();
-    let scene = token.document.parent;
+    let scene = token?.document?.parent;
     if (!scene) return templates;
     let {size} = scene.grid;
     let {width, height, x: tokx, y: toky} = token.document;
