@@ -411,8 +411,12 @@ export {heatedBody} from './macros/monsterFeatures/heatedBody.js';
 export {regeneration} from './macros/monsterFeatures/regeneration.js';
 export {sculptedExplosion} from './macros/monsterFeatures/humanoid/evokerWizard/sculptedExplosion.js';
 // Generic Monster Features
+export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
+export {gaze} from './macros/monsterFeatures/generic/gaze.js';
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
+export {reduceMaxHP} from './macros/monsterFeatures/generic/reduceMaxHP.js';
+export {surpriseAttack} from './macros/monsterFeatures/generic/surpriseAttack.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';

@@ -109,6 +109,7 @@ const unarmedAttacks = [
     'predatoryStrike'
 ];
 const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i => ({label: i[1].label, value: i[0]}));
+const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const overTimeOptions = [
@@ -405,6 +406,7 @@ export let constants = {
     spellAttacks,
     unarmedAttacks,
     damageTypeOptions,
+    creatureTypeOptions,
     actorCompendiumPacks,
     itemCompendiumPacks,
     setUseLocalCompendium,

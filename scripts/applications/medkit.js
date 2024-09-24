@@ -1,5 +1,5 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
-import {compendiumUtils, itemUtils, genericUtils} from '../utils.js';
+import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js';
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, itemDocument) {
@@ -281,6 +281,15 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                                 case 'select': {
                                     config.isSelect = true;
                                     config.options = configBase.options.map(i => {i.isSelected = i.value === config?.value; return i;});
+                                    break;
+                                }
+                                case 'creatureTypes': {
+                                    config.isSelectMany = true;
+                                    config.options = constants.creatureTypeOptions().map(i => ({
+                                        label: i.label, 
+                                        value: i.value,
+                                        isSelected: config?.value?.includes(i.value) 
+                                    }));
                                     break;
                                 }
                                 case 'damageTypes': {

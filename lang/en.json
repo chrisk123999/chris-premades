@@ -55,6 +55,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
+            "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
             "Animations": {
@@ -112,6 +113,7 @@
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
             "Formula": "Formula:",
+            "ImmuneCreatures": "Immune Creature Types:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
@@ -735,6 +737,12 @@
                 "Fear": "Form of Dread: Fear",
                 "Use": "Attempt to frighten target?"
             },
+            "Gaze": {
+                "AllowAvert": "Allow Averting Eyes:",
+                "AvertAdvantage": "Averting eyes grants the creature advantage on attacks against target:",
+                "AvertEffect": "Averted Eyes",
+                "AvertSelect": "Avert your eyes from the {tokenName}?"
+            },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
                 "ChooseSkillEscape": "How would you like to escape the grapple?",
@@ -1088,6 +1096,13 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
             },
+            "ReduceMaxHP": {
+                "DamageTypeFilter": "Only apply certain damage types to max hp reduction:",
+                "Half": "Reduce by half the damage/roll:",
+                "Long": "Expires on Long Rest:",
+                "ReduceByRoll": "Reduce by roll, not damage:",
+                "Short": "Expires on Short Rest:"
+            },
             "RingOfSpellStoring": {
                 "Clear": "Clear used spells",
                 "Cleared": "Used spells cleared from inventory!",
@@ -1345,6 +1360,10 @@
                 "FieryTeleportation": "Fiery Teleportation",
                 "FieryTeleportationDamage": "Fiery Teleportation: Damage",
                 "FlameSeed": "Flame Seed"
+            },
+            "SurpriseAttack": {
+                "Dialog": "Use Dialog instead of checking Surprised condition:",
+                "Surprised": "Is the target surprised?"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",

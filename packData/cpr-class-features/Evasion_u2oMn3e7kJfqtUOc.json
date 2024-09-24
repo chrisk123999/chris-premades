@@ -121,8 +121,8 @@
       "changes": [
         {
           "key": "flags.midi-qol.superSaver.dex",
-          "mode": 2,
-          "value": "",
+          "mode": 5,
+          "value": "1",
           "priority": 20
         }
       ],
@@ -169,7 +169,7 @@
     "chris-premades": {
       "info": {
         "identifier": "evasion",
-        "version": "0.12.46",
+        "version": "0.12.77",
         "source": "chris-premades"
       }
     }
