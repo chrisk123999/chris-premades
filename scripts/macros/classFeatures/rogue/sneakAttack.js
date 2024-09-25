@@ -179,7 +179,7 @@ async function damage({trigger, workflow}) {
     if (!doSneak) return;
     let autoSneak = itemUtils.getConfig(trigger.entity, 'auto');
     if (!autoSneak) {
-        let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.translate('CHRISPREMADES.Macros.SneakAttack.Use').replace('{name}', trigger.entity.name));
+        let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Macros.SneakAttack.Use', {name: trigger.entity.name}));
         if (!selection) return;
     }
     let rendMind = itemUtils.getItemByIdentifier(workflow.actor, 'rendMind');
@@ -259,5 +259,8 @@ export let sneakAttack = {
             default: false,
             category: 'mechanics'
         }
-    ]
+    ],
+    utilFunctions: {
+        animation
+    }
 };

@@ -418,6 +418,7 @@ export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
 export {reduceMaxHP} from './macros/monsterFeatures/generic/reduceMaxHP.js';
 export {surpriseAttack} from './macros/monsterFeatures/generic/surpriseAttack.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
+export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';

@@ -355,7 +355,6 @@
             },
             "Berserk": {
                 "Animation": "Berserk Animation:",
-                "DiceFormula": "Dice Roll Formula:",
                 "HPThreshold": "HP Threshold:"
             },
             "BestialSoul": {

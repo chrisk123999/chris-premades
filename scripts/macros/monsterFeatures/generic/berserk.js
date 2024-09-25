@@ -60,7 +60,7 @@ export let berserk = {
         },
         {
             value: 'diceFormula',
-            label: 'CHRISPREMADES.Macros.Berserk.DiceFormula',
+            label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: '1d6',
         },

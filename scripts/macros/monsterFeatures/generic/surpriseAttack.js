@@ -25,7 +25,7 @@ export let surpriseAttack = {
             {
                 pass: 'damageRollComplete',
                 macro: damage,
-                priority: 50
+                priority: 215
             }
         ]
     },
