@@ -29,9 +29,6 @@
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
         },
-        "CONFIG": {
-            "SaveDC": "CD da Salvaguarda:"
-        },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
             "Bite": "Mordida",
@@ -58,6 +55,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
             "Animations": {
@@ -115,10 +113,12 @@
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
             "Formula": "Fórmula:",
+            "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
+            "SaveDC": "CD da Salvaguarda:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "Sound": "Som:",
@@ -186,6 +186,8 @@
             "ActorNotFound": "Ator da barra lateral obrigatório não encontrado!",
             "CompendiumItemNotFound": "Item do compêndio não encontrado!",
             "CompendiumNotFound": "Compêndio inválido especificado!",
+            "ConfigureCompendium": "Esta automação requer que as seguintes configurações do compêndio de CPR sejam definidas:",
+            "EnableSetting": "Esta automação requer que as seguintes configurações de CPR estejam habilitadas para funcionar:",
             "MissingDescriptionJournal": "Diário CPR - Descriptions não encontrado!",
             "MissingDescriptionPage": "Página ausente do diário CPR - Descriptions!",
             "NoActors": "Nenhum ator encontrado na pasta: \"{folder}\"!",
@@ -220,6 +222,7 @@
             "Edit": "Editar",
             "Go": "Ir",
             "Import": "Importar",
+            "Max": "Máx:",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoMoreResource": "Sem o recurso necessário!",
@@ -736,6 +739,12 @@
                 "Fear": "Forma de Pavor: Medo",
                 "Use": "Tentativa de amedrontar o alvo?"
             },
+            "Gaze": {
+                "AllowAvert": "Permitir Desviar os Olhos:",
+                "AvertAdvantage": "Desviar os olhos concede à criatura vantagem em ataques contra o alvo:",
+                "AvertEffect": "Olhos Desviados",
+                "AvertSelect": "Desviar os olhos de {tokenName}?"
+            },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
                 "ChooseSkillEscape": "Como você quer escapar do agarrão?",
@@ -1089,6 +1098,13 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
             },
+            "ReduceMaxHP": {
+                "DamageTypeFilter": "Aplicar apenas certos tipos de dano à redução máxima de PV:",
+                "Half": "Reduzir o dano/rolagem pela metade:",
+                "Long": "Expira em Descanso Longo:",
+                "ReduceByRoll": "Reduzir por rolagem, não dano:",
+                "Short": "Expira em Descanso Curto:"
+            },
             "RingOfSpellStoring": {
                 "Clear": "Limpar magias usadas",
                 "Cleared": "Magias usadas removidas do inventário!",
@@ -1346,6 +1362,10 @@
                 "FieryTeleportation": "Teletransporte Feérico",
                 "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
                 "FlameSeed": "Semente de Fogo"
+            },
+            "SurpriseAttack": {
+                "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
+                "Surprised": "O alvo está surpreso?"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
@@ -1911,9 +1931,12 @@
                 "Hint": "Uso do compêndio de monstros para certas automações. O ideal é apontar para o seu compêndio de monstros do D&D Beyond.",
                 "Name": "Compêndio de Monstros"
             },
-            "spellCompendium": {
-                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
-                "Name": "Compêndio de Magias"
+            "movementPerformance": {
+                "0": "Baixo",
+                "1": "Médio",
+                "2": "Alto",
+                "Hint": "Precisão de eventos de movimento, maior precisão tem o custo do desempenho.",
+                "Name": "Desempenho de Eventos de Movimento"
             },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
@@ -1946,6 +1969,10 @@
             "selectTool": {
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
                 "Name": "Ferramenta de Seleção em Todo Lugar"
+            },
+            "spellCompendium": {
+                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
+                "Name": "Compêndio de Magias"
             },
             "spotlightOmnisearchSummons": {
                 "Hint": "Quando ativado, você pode usar o Spotlight Omnisearch para invocar criaturas do seu compêndio de monstros. É necessário recarregar após ativar.",
