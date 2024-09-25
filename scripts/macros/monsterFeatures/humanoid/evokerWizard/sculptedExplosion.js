@@ -56,9 +56,7 @@ async function early({trigger, workflow}) {
         }
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['sculptSpellsTarget']);
-    for (let target of selection) {
-        await effectUtils.createEffect(target.actor, effectData);
-    }
+    await Promise.all(selection.map(async i => await effectUtils.createEffect(i.actor, effectData)));
 }
 export let sculptedExplosion = {
     name: 'Sculpted Explosion',
