@@ -186,6 +186,8 @@
             "ActorNotFound": "Required sidebar actor not found!",
             "CompendiumItemNotFound": "Compendium item not found!",
             "CompendiumNotFound": "Invalid compendium specified!",
+            "ConfigureCompendium": "This automation requires the following CPR compendium settings to be configured:",
+            "EnableSetting": "This automation requires the following CPR settings to be enabled to function:",
             "MissingDescriptionJournal": "CPR - Descriptions journal not found!",
             "MissingDescriptionPage": "Missing Description journal page!",
             "NoActors": "No actors found in folder: \"{folder}\"!",
@@ -1930,11 +1932,11 @@
                 "Name": "Monster Compendium"
             },
             "movementPerformance": {
-                "Hint": "Accuracy of movement events, higher accuracy comes at the cost of performance.",
-                "Name": "Movement Event Performance",
                 "0": "Low",
                 "1": "Medium",
-                "2": "High"
+                "2": "High",
+                "Hint": "Accuracy of movement events, higher accuracy comes at the cost of performance.",
+                "Name": "Movement Event Performance"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",

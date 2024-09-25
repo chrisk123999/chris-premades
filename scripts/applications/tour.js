@@ -127,11 +127,11 @@ async function checkTour() {
     let message = game.messages.find(i => i.flags?.['chris-premades']?.tour);
     if (!message && doMessage) {
         message = await ChatMessage.create({
-            'speaker': {'alias': 'Chris\'s Premades'},
-            'content': genericUtils.translate('CHRISPREMADES.Tour.Chat'),
-            'flags': {
+            speaker: {alias: genericUtils.translate('CHRISPREMADES.Generic.CPR')},
+            content: genericUtils.translate('CHRISPREMADES.Tour.Chat'),
+            flags: {
                 'chris-premades': {
-                    'tour': true
+                    tour: true
                 }
             }
         });

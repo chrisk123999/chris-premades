@@ -184,17 +184,15 @@ async function preTargeting(workflow) {
 async function preItemRoll(workflow) {
     let stop = await requirements.versionCheck(workflow);
     if (stop) return true;
+    stop = await requirements.automationCheck(workflow);
+    if (stop) return true;
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) await diceSoNice.preItemRoll(workflow);
     await genericUtils.sleep(50);
     stop = await executeMacroPass(workflow, 'preItemRoll');
     if (stop) return true;
     stop = await executeTargetMacroPass(workflow, 'targetPreItemRoll');
     if (stop) return true;
-    // Only for non-synthetic items, check if anim should be killed (or unkilled)
-    if (workflow.actor.items.get(workflow.item.id) && game.modules.get('autoanimations')?.active) {
-        if (workflow.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(workflow.item, 'playAnimation') && !workflow.item.flags.autoanimations?.killAnim) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', true);
-        if (workflow.item?.flags?.autoanimations?.killAnim && !itemUtils.getConfig(workflow.item, 'playAnimation')) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', false);
-    }
+    if (workflow.actor.items.get(workflow.item.id) && game.modules.get('autoanimations')?.active) await automatedAnimations.disableAnimation(workflow);
 }
 async function preambleComplete(workflow) {
     await executeMacroPass(workflow, 'preambleComplete');

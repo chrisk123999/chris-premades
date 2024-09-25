@@ -1,3 +1,5 @@
+import {genericUtils, itemUtils} from '../utils.js';
+
 let keys = [
     'aaAutorec-melee',
     'aaAutorec-range',
@@ -62,7 +64,12 @@ async function aaSound(item, pass) {
     if (autoRec.primary?.sound?.enable) playItemSound(autoRec.primary.sound);
     if (autoRec.secondary?.sound?.enable) playItemSound(autoRec.secondary.sound);
 }
+async function disableAnimation(workflow) {
+    if (workflow.item?.flags?.['chris-premades']?.info?.hasAnimation && itemUtils.getConfig(workflow.item, 'playAnimation') && !workflow.item.flags.autoanimations?.killAnim) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', true);
+    if (workflow.item?.flags?.autoanimations?.killAnim && !itemUtils.getConfig(workflow.item, 'playAnimation')) await genericUtils.setFlag(workflow.item, 'autoanimations', 'killAnim', false);
+}
 export let automatedAnimations = {
     renderItemSheet,
-    aaSound
+    aaSound,
+    disableAnimation
 };

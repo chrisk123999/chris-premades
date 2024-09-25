@@ -418,7 +418,12 @@ export let enlargeReduce = {
             default: true,
             category: 'animation'
         }
-    ]
+    ],
+    requirements: {
+        settings: [
+            'syncActorSizeToTokens'
+        ]
+    }
 };
 export let enlargeReduceChanged = {
     name: 'Enlarge/Reduce: Changed',
