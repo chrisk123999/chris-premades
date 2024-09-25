@@ -663,6 +663,17 @@ export function registerSettings() {
         default: true,
         category: 'general'
     });
+    addSetting({
+        key: 'movementPerformance',
+        type: Number,
+        default: 2,
+        category: 'general',
+        choices: {
+            0: 'CHRISPREMADES.Settings.movementPerformance.0',
+            1: 'CHRISPREMADES.Settings.movementPerformance.1',
+            2: 'CHRISPREMADES.Settings.movementPerformance.2',
+        }
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

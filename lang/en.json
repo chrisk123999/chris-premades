@@ -1929,6 +1929,13 @@
                 "Hint": "Monster compendium used for certain automations. Ideally should point to your D&D Beyond monster compendium.",
                 "Name": "Monster Compendium"
             },
+            "movementPerformance": {
+                "Hint": "Accuracy of movement events, higher accuracy comes at the cost of performance.",
+                "Name": "Movement Event Performance",
+                "0": "Low",
+                "1": "Medium",
+                "2": "High"
+            },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",
                 "Name": "Medkit Apply Automation Permissions"

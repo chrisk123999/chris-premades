@@ -78,7 +78,7 @@ function getSortedTriggers(tokens, pass, token) {
     tokens.forEach(i => {
         let distance;
         if (token) {
-            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true});
+            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: genericUtils.getCPRSetting('movementPerformance') > 0});
             if (distance < 0) return;
         }
         allTriggers.push(...collectTokenMacros(i, pass, distance, token));
@@ -137,7 +137,6 @@ async function updateToken(token, updates, options, userId) {
     if (token.parent.id != canvas.scene.id) return;
     if (!updates.x && !updates.y && !updates.elevation) return;
     let coords = {x: updates.x ?? token.x, y: updates.y ?? token.y};
-    // Check if waypoint movement (should work for gridded & gridless):
     let destination = canvas.controls.getRulerForUser(userId)?.destination;
     let tokenBounds = token.object.bounds;
     let isFinalMovement = !destination || (coords.x + tokenBounds.width / 2 === Math.round(destination.x) && coords.y + tokenBounds.height / 2 === Math.round(destination.y));
@@ -150,13 +149,16 @@ async function updateToken(token, updates, options, userId) {
     previousCoords.x += xDiff;
     previousCoords.y += yDiff;
     let ignore = genericUtils.getProperty(options, 'chris-premades.movement.ignore');
+    let skipMove = genericUtils.getCPRSetting('movementPerformance') < 2 && !isFinalMovement;
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
     if (!ignore) {
         if (isFinalMovement) await auras.updateAuras(token, options);
-        await executeMacroPass([token], 'moved', undefined, options);
-        await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
-        await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
+        if (!skipMove) {
+            await executeMacroPass([token], 'moved', undefined, options);
+            await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
+            await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
+        }
         if (updates.x || updates.y) {
             let current = Array.from(templateUtils.getTemplatesInToken(token.object));
             let previous = options['chris-premades'].templates.wasIn.map(i => fromUuidSync(i)).filter(j => j);
