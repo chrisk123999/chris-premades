@@ -1,15 +1,13 @@
 import {animationUtils, combatUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-async function damage({trigger, workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || workflow.isFumble || workflow.item.type !== 'weapon') return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'divineStrike');
-    if (!originItem) return;
     let classLevels = workflow.actor.classes.cleric?.system?.levels;
     let subclassIdentifier = workflow.actor.classes.cleric?.subclass?.identifier;
     if (!classLevels || !subclassIdentifier) return;
-    if (!combatUtils.perTurnCheck(originItem, 'divineStrike', true, workflow.token.id)) return;
-    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}));
+    if (!combatUtils.perTurnCheck(item, 'divineStrike', true, workflow.token.id)) return;
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
-    let damageType = itemUtils.getConfig(originItem, 'damageType');
+    let damageType = itemUtils.getConfig(item, 'damageType');
     if (!damageType || damageType === 'default') {
         switch (subclassIdentifier.split('-')[0]) {
             case 'death':
@@ -19,7 +17,7 @@ async function damage({trigger, workflow}) {
                 damageType = 'fire';
                 break;
             case 'nature':
-                damageType = await dialogUtils.buttonDialog(originItem.name, 'CHRISPREMADES.Config.DamageType', [
+                damageType = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Config.DamageType', [
                     ['DND5E.DamageCold', 'cold'],
                     ['DND5E.DamageFire', 'fire'],
                     ['DND5E.DamageLightning', 'lightning']
@@ -46,8 +44,8 @@ async function damage({trigger, workflow}) {
     let diceNumber = classLevels >= 14 ? 2 : 1;
     let bonusFormula = diceNumber + 'd8[' + damageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType});
-    await combatUtils.setTurnCheck(originItem, 'divineStrike');
-    let playAnimation = itemUtils.getConfig(trigger.entity, 'playAnimation');
+    await combatUtils.setTurnCheck(item, 'divineStrike');
+    let playAnimation = itemUtils.getConfig(item, 'playAnimation');
     if (!animationUtils.aseCheck() || animationUtils.jb2aCheck() != 'patreon') playAnimation = false;
     if (!playAnimation) return;
     let target = workflow.targets.first();

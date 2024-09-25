@@ -1,13 +1,11 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
-async function late({workflow}) {
+async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.item.system.actionType !== 'mwak') return;
     if (workflow.item.system.type !== 'improv' && !constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedBonusAction(workflow.actor)) return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'tavernBrawler');
-    if (!originItem) return;
-    let selection = await dialogUtils.confirm(originItem.name, 'CHRISPREMADES.Macros.TavernBrawler.Use');
+    let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.TavernBrawler.Use');
     if (!selection) return;
     let feature = itemUtils.getItemByIdentifier(workflow.actor, 'grapple');
     if (feature) {

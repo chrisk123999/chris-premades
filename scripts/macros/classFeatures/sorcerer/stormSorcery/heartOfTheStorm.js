@@ -1,12 +1,10 @@
 import {dialogUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 
-async function early({workflow}) {
+async function early({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell' || workflow.item.system.level === 0) return;
     let damageParts = workflow.item.system.damage.parts;
     if (!damageParts.some(i => ['lightning', 'thunder'].some(j => i[0].includes(j) || i[1] === j))) return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'heartOfTheStorm');
-    if (!originItem) return;
-    await workflowUtils.completeItemUse(originItem);
+    await workflowUtils.completeItemUse(item);
 }
 async function damage({workflow}) {
     if (!workflow.targets.size) return;

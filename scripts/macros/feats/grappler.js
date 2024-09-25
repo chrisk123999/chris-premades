@@ -1,15 +1,13 @@
 import {actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 
-async function early({workflow}) {
+async function early({trigger: {entity: item}, workflow}) {
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflow.targets.size) return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'grappler');
-    if (!originItem) return;
     let grapplingEffects = effectUtils.getAllEffectsByIdentifier(workflow.actor, 'grappling');
     if (!grapplingEffects.length) return;
     if (!grapplingEffects.some(i => i.flags['chris-premades'].grapple.tokenId === workflow.targets.first()?.id)) return;
     workflow.advantage = true;
-    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + originItem.name);
+    workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + item.name);
 }
 async function use({workflow}) {
     if (!workflow.token || workflow.targets.size !== 1) return;

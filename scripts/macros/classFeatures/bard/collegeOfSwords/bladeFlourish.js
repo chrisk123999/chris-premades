@@ -1,23 +1,21 @@
 import {combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
-async function attack({workflow}) {
+async function attack({trigger: {entity: item}, workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'bladeFlourish');
-    if (!feature || !combatUtils.perTurnCheck(feature, 'bladeFlourishMovement', true, workflow.token.id)) return;
+    if (!combatUtils.perTurnCheck(item, 'bladeFlourishMovement', true, workflow.token.id)) return;
     let movementData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Blade Flourish: Movement', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Movement'});
     if (!movementData) {
         errors.missingPackItem();
         return;
     }
-    if (combatUtils.inCombat() && combatUtils.perTurnCheck(feature, 'bladeFlourishMovement', true, workflow.token.id)) await workflowUtils.syntheticItemDataRoll(movementData, workflow.actor, [workflow.token]);
-    await combatUtils.setTurnCheck(feature, 'bladeFlourishMovement');
+    if (combatUtils.inCombat() && combatUtils.perTurnCheck(item, 'bladeFlourishMovement', true, workflow.token.id)) await workflowUtils.syntheticItemDataRoll(movementData, workflow.actor, [workflow.token]);
+    await combatUtils.setTurnCheck(item, 'bladeFlourishMovement');
 }
-async function damage({workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (['boomingBlade', 'greenFlameBlade'].includes(genericUtils.getIdentifier(workflow.item))) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'bladeFlourish');
-    if (!feature || !combatUtils.perTurnCheck(feature, 'bladeFlourish', true, workflow.token.id)) return;
+    if (!combatUtils.perTurnCheck(item, 'bladeFlourish', true, workflow.token.id)) return;
     if (workflow.hitTargets.size !== 1) return;
     let defensiveData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Defensive Flourish', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Defensive'});
     let mobileData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Mobile Flourish', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BladeFlourish.Mobile'});
@@ -37,11 +35,11 @@ async function damage({workflow}) {
         [slashingData.name, 'SF', {image: slashingData.img}],
         ['CHRISPREMADES.Generic.No', false]
     ];
-    let selection = await dialogUtils.buttonDialog(feature.name, 'CHRISPREMADES.Macros.BladeFlourish.Select', buttons);
+    let selection = await dialogUtils.buttonDialog(item.name, 'CHRISPREMADES.Macros.BladeFlourish.Select', buttons);
     if (!selection) return;
     let skipUses = false;
     if (mastersFlourish) skipUses = uses ? await dialogUtils.confirm(mastersFlourish.name, 'CHRISPREMADES.Macros.BladeFlourish.Master') : true;
-    await combatUtils.setTurnCheck(feature, 'bladeFlourish');
+    await combatUtils.setTurnCheck(item, 'bladeFlourish');
     if (!skipUses) genericUtils.update(bardic, {'system.uses.value': uses - 1});
     let bardicDie = workflow.actor.system.scale.bard?.['bardic-inspiration'];
     if (skipUses) bardicDie = {'formula': '1d6'};

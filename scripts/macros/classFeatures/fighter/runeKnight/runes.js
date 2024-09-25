@@ -1,15 +1,13 @@
 import {actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function lateFireRune({workflow}) {
+async function lateFireRune({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'fireRune');
-    if (!originItem) return;
-    if (!originItem.system.uses.value) return;
-    if (!itemUtils.getConfig(originItem, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
+    if (!item.system.uses.value) return;
+    if (!itemUtils.getConfig(item, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     if (actorUtils.hasUsedReaction(workflow.actor)) return;
-    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}));
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
-    await workflowUtils.syntheticItemRoll(originItem, [workflow.targets.first()], {config: {consumeUsage: true}});
+    await workflowUtils.syntheticItemRoll(item, [workflow.targets.first()], {config: {consumeUsage: true}});
 }
 async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
     if (!item.system.uses.value) return;

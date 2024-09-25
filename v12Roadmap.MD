@@ -103,25 +103,25 @@ Goals:
         - [ ] Starts turn within rnage, save, immune for 24hrs on save (ie chasme drone) (save, effect, condition immunity, immunity time, immunity to one or all)
         - [x] Target's max  hitpoints (reduced by half?) the [damageType] taken (ie chasme proboscis, clay golem slam) (which damage, save if any) (short or long rest)
             - [x] Or reduced by a roll (1d6) 
-        - [ ] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
-        - [ ] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
+        - [x] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
+        - [x] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
         - [ ] Contextual bonuses (deep gnome stone camoflauge)
         - [ ] Enlarge only (duergar)
         - [ ] Reduce only (mind master)
-        - [ ] Sunlight sensitivity (dis on attack rolls, skill check certainly)
+        - [x] Sunlight sensitivity (dis on attack rolls, skill check certainly)
         - [ ] Touches or hitting it you take damage (ie fire elemental fire form, fire snake heated body) (damage)
         - [ ] Auto grapple
         - [ ] Swarm damage
         - [ ] Regeneration
         - [ ] Parry
-        - [ ] Grappler advantage on attacks against things its grappling (grell tentables, mimic)
-        - [ ] Discount sneak attack (hobgoblin martial advantage)
+        - [x] Grappler advantage on attacks against things its grappling (grell tentables, mimic) (feat itself is automated)
+        - [x] Discount sneak attack (hobgoblin martial advantage)
         - [ ] Pack tactics
-        - [ ] Death burst (save, effect)
-        - [ ] Death throes (save, damage)
+        - [x] Death burst (save, effect)
+        - ~~[ ] Death throes (save, damage)~~ (Same as above)
         - [ ] Immune to effect for [time] on save
         - [ ] Strength drain (roll for drain, short/long rest)
-        - [ ] Different damage if advantage on the attack (shadow demon claws)
+        - [x] Different damage if advantage on the attack (shadow demon claws)
         - [ ] Engulf (rug of smothering, shambling mound)
         - [x] Undead fortitude 
   

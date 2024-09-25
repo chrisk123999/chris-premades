@@ -20,18 +20,22 @@ async function damage({workflow, ditem}) {
         let distPer = dirRay.distance / distance;
         let position = canvas.grid.getTopLeftPoint(dirRay.project((distPer * pullDistance) / dirRay.distance));
         if (!workflow.failedSaves.size) position = targetToken.position;
-        await new Sequence()
-            .effect()
-            .atLocation(sourceToken)
-            .file('animated-spell-effects-cartoon.electricity.discharge.03')
-            .stretchTo(targetToken, {'attachTo': true})
-            .delay(0)
-            .filter('ColorMatrix', {'saturate':1, 'hue': 25})
-            .scaleIn(0, 750, {'ease': 'easeOutQuint'})
-            .repeats(2, 600, 600)
-
-            .wait(250)
-
+        if (isNaN(position?.x)) position = targetToken.position;
+        let seq = new Sequence();
+        if (targetToken !== sourceToken) {
+            seq = seq
+                .effect()
+                .atLocation(sourceToken)
+                .file('animated-spell-effects-cartoon.electricity.discharge.03')
+                .stretchTo(targetToken, {'attachTo': true})
+                .delay(0)
+                .filter('ColorMatrix', {'saturate':1, 'hue': 25})
+                .scaleIn(0, 750, {'ease': 'easeOutQuint'})
+                .repeats(2, 600, 600)
+        
+                .wait(250);
+        }
+        await seq
             .effect()
             .file('animated-spell-effects-cartoon.electricity.25')
             .atLocation(targetToken)

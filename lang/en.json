@@ -225,6 +225,7 @@
             "Max": "Max:",
             "MissingScale": "Actor does not have {scaleName} scale set!",
             "No": "No",
+            "NoEffect": "{itemName} must have an effect for its generic monster feature!",
             "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
             "Ok": "Ok",
@@ -282,6 +283,9 @@
                 "GrappleEscapeSelect": "Attempt to escape from whose grapple?",
                 "GrappledBy": "Grappled By {tokenName}",
                 "Grappling": "Grappling {tokenName}"
+            },
+            "AdvantageDamageBonus": {
+                "Bonus": "Bonus damage if attack has advantage:"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
@@ -524,6 +528,10 @@
                 "Douse": "Douse Blade",
                 "Heal": "Crystal Blade: Heal",
                 "Light": "Crystal Blade: Light"
+            },
+            "DamageTurnStart": {
+                "SpecificDamage": "Use formula instead of item damage:",
+                "SpecificType": "If so, damage type:"
             },
             "DancingSword": {
                 "Attack": "Dancing Sword: Attack",
@@ -1016,6 +1024,7 @@
                 "TransmutedFirst": "Which damage type will you replace?",
                 "TransmutedSecond": "Which damage type would you like to use instead?",
                 "TwinnedUpcast": "Not enough Sorcery Points to twin this spell when upcast!",
+                "TwinnedUpcastTargets": "Cannot upcast & twin this spell!",
                 "Which": "Spend {cost} Sorcery Point{plural} and cast which spell?"
             },
             "MirrorImage": {
@@ -1177,6 +1186,11 @@
             "SoothePain": {
                 "Protect": "Reduce damage to {tokenName}?",
                 "Self": "Reduce damage to self?"
+            },
+            "SpellTurning": {
+                "Advantage": "Advantage on saves:",
+                "SpellLevel": "Maximum spell level for retarget:",
+                "TargetCaster": "Target Caster if succeed:"
             },
             "SpikeGrowth": {
                 "Thorns": "Spike Growth: Thorns"
@@ -1361,6 +1375,11 @@
                 "FieryTeleportation": "Fiery Teleportation",
                 "FieryTeleportationDamage": "Fiery Teleportation: Damage",
                 "FlameSeed": "Flame Seed"
+            },
+            "SunlightSensitivity": {
+                "Attack": "Is {tokenName} in sunlight?",
+                "Auto": "Assume bright light means sunlight for attack disadvantage:",
+                "Skill": "This check relies on sight and the creature is in sunlight"
             },
             "SurpriseAttack": {
                 "Dialog": "Use Dialog instead of checking Surprised condition:",

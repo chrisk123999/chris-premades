@@ -18,12 +18,22 @@ async function use({workflow}) {
         let jb2aCheck = animationUtils.jb2aCheck();
         if (playAnimation && jb2aCheck) {
             let color = itemUtils.getConfig(workflow.item, 'color') ?? 'blue';
-            let sequenceObj = new Sequence()
-                .effect()
-                .atLocation(workflow.token)
-                .stretchTo(targetToken)
-                .file('jb2a.chain_lightning.primary.' + color)
-                .waitUntilFinished(-1250);
+            let sequenceObj;
+            if (workflow.token !== targetToken) {
+                sequenceObj = new Sequence()
+                    .effect()
+                    .atLocation(workflow.token)
+                    .stretchTo(targetToken)
+                    .file('jb2a.chain_lightning.primary.' + color)
+                    .waitUntilFinished(-1250);
+            } else {
+                sequenceObj = new Sequence()
+                    .effect()
+                    .atLocation(workflow.token)
+                    .file('jb2a.static_electricity.01.' + color)
+                    .scaleToObject(1.5)
+                    .waitUntilFinished(-1250);
+            }
             let prevTarget = targetToken;
             for (let target of newTargets) {
                 sequenceObj

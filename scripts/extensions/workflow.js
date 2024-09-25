@@ -21,6 +21,11 @@ function setup() {
             await midiEvents.attackRollComplete(this);
             return nextState;
         }
+        async WorkflowState_SavesComplete(context = {}) {
+            let nextState = await super.WorkflowState_SavesComplete(context);
+            await midiEvents.savesComplete(this);
+            return nextState;
+        }
         async WorkflowState_DamageRollComplete(context = {}) {
             let nextState = await super.WorkflowState_DamageRollComplete(context);
             await midiEvents.damageRollComplete(this);

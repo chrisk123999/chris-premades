@@ -1,11 +1,9 @@
 import {itemUtils} from '../../../../utils.js';
 
-async function late({workflow}) {
+async function late({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || !workflow.damageList) return;
     if (!workflow.damageList.some(i => i.oldHP > 0 && i.newHP === 0)) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'darkOnesBlessing');
-    if (!feature) return;
-    await feature.use();
+    await item.use();
 }
 export let darkOnesBlessing = {
     name: 'Dark One\'s Blessing',

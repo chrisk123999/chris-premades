@@ -1,6 +1,6 @@
 import {itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 
-async function damage({workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.item.system.properties.has('thr')) return;
     if (!['', 'str'].includes(workflow.item.system.ability)) return;
     let isFinesse = workflow.item.system.properties.has('fin') && workflow.item.system.ability === '';
@@ -11,8 +11,7 @@ async function damage({workflow}) {
     let formula = workflow.actor.system.scale.barbarian?.['rage-damage']?.value;
     if (!formula) return;
     await workflowUtils.bonusDamage(workflow, formula);
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'giantsHavocCrushingThrow');
-    if (feature) await feature.use();
+    await item.use();
 }
 export let giantsHavocCrushingThrow = {
     name: 'Giant\'s Havoc: Crushing Throw',

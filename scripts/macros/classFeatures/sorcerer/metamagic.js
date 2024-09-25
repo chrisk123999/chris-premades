@@ -109,7 +109,16 @@ async function useDistant({workflow}) {
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeUsage = newItem.system.hasLimitedUses;
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+        options: {
+            configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
+        }, config: {
+            consumeSpellSlot: shouldConsumeSlot ? true : null, 
+            consumeUsage: shouldConsumeUsage ? true : null
+        }
+    });
 }
 async function damageEmpowered({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size || workflow.item.type !== 'spell') return;
@@ -211,7 +220,16 @@ async function useExtended({workflow}) {
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeUsage = newItem.system.hasLimitedUses;
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+        options: {
+            configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
+        }, config: {
+            consumeSpellSlot: shouldConsumeSlot ? true : null, 
+            consumeUsage: shouldConsumeUsage ? true : null
+        }
+    });
 }
 async function useHeightened({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
@@ -306,7 +324,16 @@ async function useQuickened({workflow}) {
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeUsage = newItem.system.hasLimitedUses;
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+        options: {
+            configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
+        }, config: {
+            consumeSpellSlot: shouldConsumeSlot ? true : null, 
+            consumeUsage: shouldConsumeUsage ? true : null
+        }
+    });
 }
 async function attackSeeking({trigger: {entity: item}, workflow}) {
     if (!workflow.targets.size || workflow.item.type !== 'spell') return;
@@ -343,7 +370,16 @@ async function useSubtle({workflow}) {
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
-    await workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: true}, config: {consumeSpellSlot: true, consumeUsage: newItem.system.hasLimitedUses ? true : null}});
+    let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
+    let shouldConsumeUsage = newItem.system.hasLimitedUses;
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+        options: {
+            configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
+        }, config: {
+            consumeSpellSlot: shouldConsumeSlot ? true : null, 
+            consumeUsage: shouldConsumeUsage ? true : null
+        }
+    });
 }
 async function useTransmuted({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
@@ -385,13 +421,17 @@ async function useTransmuted({workflow}) {
     let newItem = selection.clone({'system.damage.parts': newDamageParts}, {keepId: true});
     await workflowUtils.completeItemUse(newItem);
 }
+const exceptions = ['banishment', 'charmPerson', 'fly', 'heroism', 'holdPerson'];
 async function useTwinned({workflow}) {
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
     if (!sorcPoints || !sorcPoints.system.uses.value) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NotEnough', 'info');
         return;
     }
-    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => i.system.target.value === 1 && !i.system.target.units?.length && i.system.level <= sorcPoints.system.uses.value);
+    let validSpells = actorUtils.getCastableSpells(workflow.actor).filter(i => 
+        (exceptions.includes(genericUtils.getIdentifier(i)) ||
+        (i.system.target.value === 1 && !i.system.target.units?.length)) && 
+        i.system.level <= sorcPoints.system.uses.value);
     if (!validSpells.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Metamagic.NoValid', 'info');
     }
@@ -410,9 +450,29 @@ async function useTwinned({workflow}) {
     newItem.applyActiveEffects();
     let shouldConsumeSlot = newItem.system.level && !['atwill', 'innate', 'ritual'].includes(newItem.system.preparation?.mode);
     let shouldConsumeUsage = newItem.system.hasLimitedUses;
-    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {options: {configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null}, config: {consumeSpellSlot: shouldConsumeSlot ? true : null, consumeUsage: shouldConsumeUsage ? true : null}});
+    workflowUtils.syntheticItemRoll(newItem, Array.from(workflow.targets), {
+        options: {
+            configureDialog: (shouldConsumeSlot || shouldConsumeUsage) ? true : null
+        }, config: {
+            consumeSpellSlot: shouldConsumeSlot ? true : null, 
+            consumeUsage: shouldConsumeUsage ? true : null
+        }
+    });
 }
 async function earlyTwinned({workflow}) {
+    if (exceptions.includes(genericUtils.getIdentifier(workflow.item)) && workflow.castData.baseLevel !== workflow.spellLevel) {
+        genericUtils.notify('CHRISPREMADES.Macros.Metamagic.TwinnedUpcastTargets', 'info');
+        if (workflow.dnd5eConsumptionConfig?.consumeSpellSlot) {
+            let slotLevel = workflow.dnd5eConsumptionConfig.slotLevel;
+            let key = 'system.spells.' + slotLevel + '.value';
+            let currValue = genericUtils.getProperty(workflow.actor, key);
+            await genericUtils.update(workflow.actor, {[key]: currValue + 1});
+        }
+        let concEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+        if (concEffect) await genericUtils.remove(concEffect);
+        workflow.aborted = true;
+        return;
+    }
     let sorcPoints = itemUtils.getItemByIdentifier(workflow.actor, 'sorceryPoints');
     let cost = Math.max(1, workflow.spellLevel);
     if (!sorcPoints || cost > sorcPoints.system.uses.value) {
@@ -424,6 +484,8 @@ async function earlyTwinned({workflow}) {
             let currValue = genericUtils.getProperty(workflow.actor, key);
             await genericUtils.update(workflow.actor, {[key]: currValue + 1});
         }
+        let concEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
+        if (concEffect) await genericUtils.remove(concEffect);
         workflow.aborted = true;
         return;
     }

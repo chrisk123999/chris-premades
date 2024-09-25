@@ -280,7 +280,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                                 }
                                 case 'select': {
                                     config.isSelect = true;
-                                    config.options = configBase.options.map(i => {i.isSelected = i.value === config?.value; return i;});
+                                    config.options = (configBase.options instanceof Function ? configBase.options() : configBase.options).map(i => {i.isSelected = i.value === config?.value; return i;});
                                     break;
                                 }
                                 case 'creatureTypes': {
@@ -401,98 +401,26 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
             if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source ?? 'chris-premades');
             if (devTools.hasAnimation) await item.setFlag('chris-premades', 'info.hasAnimation', devTools.hasAnimation);
-            if (devTools.midi.item != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.midi.item.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Midi Item field, see console');
-                    console.error(error);
+            let macroFields = ['midi.item', 'midi.actor', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
+            for (let field of macroFields) {
+                let currValue = genericUtils.getProperty(devTools, field);
+                if (currValue !== '') {
+                    let value = undefined;
+                    try {
+                        value = JSON.parse(currValue.replace(/'/g, '"'));
+                    } catch (error) {
+                        ui.notifications.error('Error with ' + field.split('.').map(i => i.capitalize()).join('.') + ' field, see console');
+                        console.error(error);
+                    }
+                    if (value) await item.setFlag('chris-premades', 'macros.' + field, value);
+                } else {
+                    await item.unsetFlag('chris-premades', 'macros.' + field);
                 }
-                if (value) await item.setFlag('chris-premades', 'macros.midi.item', value);
-            }
-            if (devTools.midi.actor != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.midi.actor.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Midi Actor field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.midi.actor', value);
-            }
-            if (devTools.aura != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.aura.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Aura field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.aura', value);
-            }
-            if (devTools.combat != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.combat.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Combat field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.combat', value);
-            }
-            if (devTools.movement != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.movement.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Movement field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.movement', value);
-            }
-            if (devTools.rest != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.rest.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Rest field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.rest', value);
             }
             if (devTools.equipment != '') {
                 await item.setFlag('chris-premades', 'equipment', {identifier: devTools.equipment});
-            }
-            if (devTools.save != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.save.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Save field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.save', value);
-            }
-            if (devTools.skill != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.skill.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Skill field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.skill', value);
-            }
-            if (devTools.check != '') {
-                let value = undefined;
-                try {
-                    value = JSON.parse(devTools.check.replace(/'/g, '"'));
-                } catch (error) {
-                    ui.notifications.error('Error with Check field, see console');
-                    console.error(error);
-                }
-                if (value) await item.setFlag('chris-premades', 'macros.check', value);
+            } else {
+                await item.unsetFlag('chris-premades', 'equipment');
             }
         }
         if (category) {

@@ -9,7 +9,7 @@ async function use({workflow}) {
         let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
         if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') continue;
         let centerPoint = target.getCenterPoint();
-        new Sequence()
+        let seq = new Sequence()
             .effect()
             .atLocation(workflow.token)
             .file('jb2a.magic_signs.circle.02.transmutation.loop.dark_green')
@@ -68,18 +68,21 @@ async function use({workflow}) {
             .tint('#d9df53')
             .scaleToObject(1.5)
 
-            .wait(500)
-
-            .effect()
-            .file('jb2a.disintegrate.green')
-            .atLocation(workflow.token)
-            .stretchTo(target)
-            .missed(workflow.failedSaves.size === 0)
-            .zIndex(1)
-
-            .wait(500)
-
-            //Death Effect
+            .wait(500);
+        
+        if (target !== workflow.token) {
+            seq = seq
+                .effect()
+                .file('jb2a.disintegrate.green')
+                .atLocation(workflow.token)
+                .stretchTo(target)
+                .missed(workflow.failedSaves.size === 0)
+                .zIndex(1)
+        
+                .wait(500);
+        }
+        //Death Effect
+        seq
             .animation()
             .on(target)
             .opacity(0)

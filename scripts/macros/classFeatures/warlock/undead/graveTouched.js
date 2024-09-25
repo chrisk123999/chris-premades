@@ -1,15 +1,13 @@
 import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 
-async function damage({workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.attacks.includes(workflow.item.system.actionType)) return;
-    let feature = itemUtils.getItemByIdentifier(workflow.actor, 'graveTouched');
-    if (!feature) return;
-    if (!combatUtils.perTurnCheck(feature, 'graveTouched', true, workflow.token.id)) return;
-    let selection = await dialogUtils.confirm(feature.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: feature.name}));
+    if (!combatUtils.perTurnCheck(item, 'graveTouched', true, workflow.token.id)) return;
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
-    await feature.use();
-    await combatUtils.setTurnCheck(feature, 'graveTouched');
+    await item.use();
+    await combatUtils.setTurnCheck(item, 'graveTouched');
     let newRolls = [];
     for (let roll of workflow.damageRolls) {
         newRolls.push(rollUtils.getChangedDamageRoll(roll, 'necrotic'));

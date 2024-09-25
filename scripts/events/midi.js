@@ -225,6 +225,10 @@ async function attackRollComplete(workflow) {
     }
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
 }
+async function savesComplete(workflow) {
+    await executeMacroPass(workflow, 'savesComplete');
+    await executeTargetMacroPass(workflow, 'targetSavesComplete');
+}
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
     let sceneTriggers = [];
@@ -282,6 +286,7 @@ export let midiEvents = {
     preTargeting,
     preItemRoll,
     attackRollComplete,
+    savesComplete,
     damageRollComplete,
     rollFinished,
     preambleComplete,

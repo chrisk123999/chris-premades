@@ -1,5 +1,6 @@
 import {dialogUtils, genericUtils} from '../../utils.js';
 async function check(maxTargets, workflow) {
+    if (maxTargets === 1 && workflow.item.system.target.value === 2) maxTargets = 2; // Twinned spell stuff
     if (workflow.targets.size <= maxTargets) return;
     let oldTargets = Array.from(workflow.targets);
     let newTargets;

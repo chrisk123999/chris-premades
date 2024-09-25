@@ -1,10 +1,9 @@
 import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-async function hit({workflow}) {
+async function hit({trigger: {entity: item}, workflow}) {
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
     // TODO: Martial Adept, Superior Technique
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'superiorityDice');
-    if (!originItem || !originItem.system.uses.value) return;
+    if (!item.system.uses.value) return;
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd8';
     let triggerManeuvers = [
         'maneuversDisarmingAttack',
@@ -19,7 +18,7 @@ async function hit({workflow}) {
     if (workflow.item.system.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
     let validManeuvers = triggerManeuvers.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(i => i);
     if (!validManeuvers.length) return;
-    let selected = await dialogUtils.selectDocumentDialog(originItem.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});
+    let selected = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});
     if (!selected) return;
     let selectedIdentifier = genericUtils.getIdentifier(selected);
     let rollTotal;
@@ -34,7 +33,7 @@ async function hit({workflow}) {
         }});
     }
     await selected.use();
-    await genericUtils.update(originItem, {'system.uses.value': originItem.system.uses.value - 1});
+    await genericUtils.update(item, {'system.uses.value': item.system.uses.value - 1});
 }
 export let superiorityDice = {
     name: 'Superiority Dice',

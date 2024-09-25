@@ -1,17 +1,15 @@
 import {actorUtils, constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
-async function damage({workflow}) {
+async function damage({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    let smiteItem = itemUtils.getItemByIdentifier(workflow.actor, 'divineSmite');
-    if (!smiteItem) return;
-    if (!itemUtils.getConfig(smiteItem, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
+    if (!itemUtils.getConfig(item, 'allowUnarmed') && constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     let validTypes = ['mwak'];
-    if (itemUtils.getConfig(smiteItem, 'allowRanged')) {
+    if (itemUtils.getConfig(item, 'allowRanged')) {
         validTypes.push('rwak');
     }
     if (!validTypes.includes(workflow.item.system.actionType)) return;
     if (!actorUtils.hasSpellSlots(workflow.actor)) return;
-    let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: smiteItem.name}), {no: true});
+    let selection = await dialogUtils.selectSpellSlot(workflow.actor, workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}), {no: true});
     if (!selection) return;
     let numDice;
     if (selection === 'pact') {
@@ -23,10 +21,10 @@ async function damage({workflow}) {
     }
     let targetActor = workflow.targets.first().actor;
     if (['undead', 'fiend'].includes(actorUtils.typeOrRace(targetActor))) numDice += 1;
-    let damageType = itemUtils.getConfig(smiteItem, 'damageType');
+    let damageType = itemUtils.getConfig(item, 'damageType');
     let bonusDamageFormula = numDice + 'd8[' + damageType + ']';
     await workflowUtils.bonusDamage(workflow, bonusDamageFormula, {damageType});
-    await smiteItem.use();
+    await item.use();
 }
 export let divineSmite = {
     name: 'Divine Smite',
