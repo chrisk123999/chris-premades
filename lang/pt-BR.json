@@ -29,9 +29,6 @@
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
         },
-        "CONFIG": {
-            "SaveDC": "CD da Salvaguarda:"
-        },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
             "Bite": "Mordida",
@@ -58,6 +55,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
             "Animations": {
@@ -115,10 +113,12 @@
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
             "Formula": "Fórmula:",
+            "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
+            "SaveDC": "CD da Salvaguarda:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "Sound": "Som:",
@@ -145,11 +145,13 @@
             "RemoteMessage": "Aguardando seleção de diálogo remoto de",
             "Use": "Usar {itemName}?",
             "UseAttack": "Usar {itemName}? (Ataques Totais: {attackTotal})",
+            "UseAttackDetail": "Usar {itemName} para {bonusFormula} adicional? (Total do Ataque: {attackTotal})",
             "UseExtraCost": "Usar {itemName}? (Custa {quantity} {quantityName})",
             "UseName": "Usar {itemName} de [{tokenName}]?",
             "UseOn": "Usar {itemName} em {tokenName}?",
             "UseRollTotal": "Usar {itemName}? (Total: {rollTotal})",
-            "UseWeaponDamageTotal": "Use {itemName}? (Weapon Damage: {damageTotal})",
+            "UseRollTotalDetail": "Usar {itemName} para {bonusFormula} adicional? (Total da Rolagem: {rollTotal})",
+            "UseWeaponDamageTotal": "Usar {itemName}? (Dano da Arma: {damageTotal})",
             "WhatDo": "O que você quer fazer?",
             "YesDetail": "Sim ({detail})"
         },
@@ -184,6 +186,8 @@
             "ActorNotFound": "Ator da barra lateral obrigatório não encontrado!",
             "CompendiumItemNotFound": "Item do compêndio não encontrado!",
             "CompendiumNotFound": "Compêndio inválido especificado!",
+            "ConfigureCompendium": "Esta automação requer que as seguintes configurações do compêndio de CPR sejam definidas:",
+            "EnableSetting": "Esta automação requer que as seguintes configurações de CPR estejam habilitadas para funcionar:",
             "MissingDescriptionJournal": "Diário CPR - Descriptions não encontrado!",
             "MissingDescriptionPage": "Página ausente do diário CPR - Descriptions!",
             "NoActors": "Nenhum ator encontrado na pasta: \"{folder}\"!",
@@ -218,6 +222,7 @@
             "Edit": "Editar",
             "Go": "Ir",
             "Import": "Importar",
+            "Max": "Máx:",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
             "NoMoreResource": "Sem o recurso necessário!",
@@ -246,6 +251,11 @@
             "CriticalThreshold": "Margem de Crítico",
             "InvalidTarget": "Alvo Inválido",
             "TemplateEffect": "Modelo de {itemName}"
+        },
+        "Grovelthrash": {
+              "Earthquake": "Terremoto (Grovelthrash)",
+              "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
+              "StoneShape": "Moldar Rochas (Grovelthrash)"
         },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
@@ -365,6 +375,11 @@
                 "SelectCurse": "Qual maldição você quer rogar?",
                 "Turn": "Desperdiçar Turno"
             },
+            "BigbysBeneficentBracelet": {
+                "BigbysHand": "Mão de Bigby (9º Nível)",
+                "ForceSculpture": "Escultura de Força",
+                "MageHand": "Mão Mágica (Pulseira Beneficente de Bigby)"
+            },
             "BigbysHand": {
                 "Big": "O alvo é grande demais!",
                 "Clenched": "Punho Cerrado",
@@ -374,6 +389,10 @@
                 "Grasping": "Mão Esmagadora",
                 "Interposing": "Mão Interposta",
                 "Move": "Mão de Bigby: Mover"
+            },
+            "Blackrazor": {
+                "Backlash": "Navalha Negra: Retaliação",
+                "Devoured": "Alma Devorada"
             },
             "BladeFlourish": {
                 "Defensive": "Floreio Defensivo",
@@ -500,6 +519,17 @@
             "Crusher": {
                 "Move": "Mover alvo?"
             },
+            "CrystalBlade": {
+                "Bright": "Ativar Lâmina (Plena)",
+                "Dim": "Ativar Lâmina (Penumbra)",
+                "Douse": "Apagar Lâmina",
+                "Heal": "Lâmina de Cristal: Cura",
+                "Light": "Lâmina de Cristal: Luz"
+            },
+            "DancingSword": {
+                "Attack": "Espada Dançante: Atacar",
+                "Toss": "Espada Dançante: Jogar"
+            },
             "DangerSense": {
                 "CanSee": "Esta salvaguarda é de um efeito que você pode ver."
             },
@@ -546,6 +576,11 @@
             },
             "DragonsBreath": {
                 "DragonBreath": "Sopro de Dragão"
+            },
+            "DragonsWrath": {
+                "AscendantBreath": "Ira do Dragão: Sopro Ascendente",
+                "Burst": "Ira do Dragão: Explosão Crítica",
+                "WakenedBreath": "Ira do Dragão: Sopro Desperto"
             },
             "DreadLord": {
                 "ShadowAttack": "Senhor do Pavor: Ataque da Sombra",
@@ -704,6 +739,12 @@
                 "Fear": "Forma de Pavor: Medo",
                 "Use": "Tentativa de amedrontar o alvo?"
             },
+            "Gaze": {
+                "AllowAvert": "Permitir Desviar os Olhos:",
+                "AvertAdvantage": "Desviar os olhos concede à criatura vantagem em ataques contra o alvo:",
+                "AvertEffect": "Olhos Desviados",
+                "AvertSelect": "Desviar os olhos de {tokenName}?"
+            },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
                 "ChooseSkillEscape": "Como você quer escapar do agarrão?",
@@ -726,6 +767,11 @@
                 "LeapFeature": "Lâmina da Chama Esverdeada: Salto",
                 "NoWeapons": "Nenhuma arma equipada encontrada!",
                 "SelectWeapon": "Atacar com qual arma?"
+            },
+            "Grovelthrash": {
+                "Damage": "Causar 2d6 de dano contundente adicional ao custo de 1d6 de dano psíquico?",
+                "Insight": "Este teste é para identificar uma mentira falada em um idioma que você entende",
+                "Reaction": "Reação de Grovelthrash"
             },
             "GuardianArmor": {
                 "DefensiveField": "Armadura do Guardião: Campo Defensivo",
@@ -880,6 +926,9 @@
             "InvestmentOfTheChainMaster": {
                 "Command": "Implemento do Mestre da Corrente: Comando",
                 "Resistance": "Implemento do Mestre da Corrente: Resistência do Familiar"
+            },
+            "JavelinOfLightning": {
+                "Bolt": "Azagaia do Relâmpago: Raio"
             },
             "KeenSenses": {
                 "Check": "Este teste depende de: ",
@@ -1048,6 +1097,26 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
+            },
+            "ReduceMaxHP": {
+                "DamageTypeFilter": "Aplicar apenas certos tipos de dano à redução máxima de PV:",
+                "Half": "Reduzir o dano/rolagem pela metade:",
+                "Long": "Expira em Descanso Longo:",
+                "ReduceByRoll": "Reduzir por rolagem, não dano:",
+                "Short": "Expira em Descanso Curto:"
+            },
+            "RingOfSpellStoring": {
+                "Clear": "Limpar magias usadas",
+                "Cleared": "Magias usadas removidas do inventário!",
+                "Name": "Armazenamento do Anel de Magias ({currSpellSlots}/{maxSpellSlots})",
+                "NoSpells": "Não há magias disponíveis para armazenar!",
+                "Reset": "Reverter magias armazenadas",
+                "ResetDone": "Redefinir anel!",
+                "SelectSpell": "Qual magia você gostaria de armazenar?",
+                "SpellName": "Anel de Armazenamento de Magia: {spellName}",
+                "Store": "Armazenar uma magia",
+                "Stored": "{spellName} armazenada!",
+                "Upcast": "Conjurar em qual nível?"
             },
             "RunicShield": {
                 "Use": "Usar {item} para {name}?"
@@ -1293,6 +1362,10 @@
                 "FieryTeleportation": "Teletransporte Feérico",
                 "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
                 "FlameSeed": "Semente de Fogo"
+            },
+            "SurpriseAttack": {
+                "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
+                "Surprised": "O alvo está surpreso?"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
@@ -1587,6 +1660,7 @@
         },
         "Section": {
             "Rage": "Fúria",
+            "RingOfSpellStoring": "Anel de Armazenamento de Magia",
             "SpellFeatures": "Recursos de Magia"
         },
         "Senses": {
@@ -1710,10 +1784,6 @@
             "backups": {
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
-            },
-            "chatCardTweak": {
-                "Hint": "Quando ativado, apenas acertos críticos e erros críticos terão jogadas de ataque coloridas. É necessário recarregar após desativar.",
-                "Name": "Ajuste Cartão do Chat"
             },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
@@ -1861,9 +1931,12 @@
                 "Hint": "Uso do compêndio de monstros para certas automações. O ideal é apontar para o seu compêndio de monstros do D&D Beyond.",
                 "Name": "Compêndio de Monstros"
             },
-            "spellCompendium": {
-                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
-                "Name": "Compêndio de Magias"
+            "movementPerformance": {
+                "0": "Baixo",
+                "1": "Médio",
+                "2": "Alto",
+                "Hint": "Precisão de eventos de movimento, maior precisão tem o custo do desempenho.",
+                "Name": "Desempenho de Eventos de Movimento"
             },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
@@ -1896,6 +1969,10 @@
             "selectTool": {
                 "Hint": "Quando ativada, a ferramenta de seleção fica disponível em mais locais. É necessário recarregar após ativar.",
                 "Name": "Ferramenta de Seleção em Todo Lugar"
+            },
+            "spellCompendium": {
+                "Hint": "Compêndio de magias usado para determinadas automações.  O ideal é apontar para o seu compêndio de magias do D&D Beyond.",
+                "Name": "Compêndio de Magias"
             },
             "spotlightOmnisearchSummons": {
                 "Hint": "Quando ativado, você pode usar o Spotlight Omnisearch para invocar criaturas do seu compêndio de monstros. É necessário recarregar após ativar.",
@@ -1978,7 +2055,12 @@
                 "ConstructSpiritClay": "Espírito Mecânico (Argila)",
                 "ConstructSpiritMetal": "Espírito Mecânico (Metal)",
                 "ConstructSpiritStone": "Espírito Mecânico (Pedra)",
+                "DancingGreatsword": "Espada Grande Dançante",
                 "DancingItem": "Item Dançante",
+                "DancingLongsword": "Espada Longa Dançante",
+                "DancingRapier": "Rapieira Dançante",
+                "DancingScimitar": "Cimitarra Dançante",
+                "DancingShortsword": "Espada Curta Dançante",
                 "DraconicSpirit": "Espírito Dracônico",
                 "DraconicSpiritChromatic": "Espírito Dracônico (Cromático)",
                 "DraconicSpiritGem": "Espírito Dracônico (Gema)",
@@ -2008,6 +2090,7 @@
                 "FiendishSpiritYugoloth": "Espírito Ínfero (Yugoloth)",
                 "FireElemental": "Elemental do Fogo",
                 "Flumph": "Flumph",
+                "ForceSculpture": "Escultura de Força",
                 "FormOfDread": "Forma de Pavor",
                 "GuardianOfFaith": "Guardião da Fé",
                 "HealingSpirit": "Espírito Curativo",
