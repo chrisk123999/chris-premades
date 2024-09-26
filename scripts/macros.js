@@ -420,15 +420,20 @@ export {thunderousStrike} from './macros/monsterFeatures/elemental/earthElementa
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
+export {autoGrapple} from './macros/monsterFeatures/generic/autoGrapple.js';
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
 export {damageTurnStart, damageTurnStartTarget} from './macros/monsterFeatures/generic/damageTurnStart.js';
 export {deathBurst} from './macros/monsterFeatures/generic/deathBurst.js';
 export {gaze} from './macros/monsterFeatures/generic/gaze.js';
+export {genericRegeneration} from './macros/monsterFeatures/generic/regeneration.js';
 export {keenSenses} from './macros/monsterFeatures/generic/keenSenses.js';
+export {packTactics} from './macros/monsterFeatures/generic/packTactics.js';
 export {reduceMaxHP} from './macros/monsterFeatures/generic/reduceMaxHP.js';
 export {spellTurning} from './macros/monsterFeatures/generic/spellTurning.js';
 export {sunlightSensitivity} from './macros/monsterFeatures/generic/sunlightSensitivity.js';
 export {surpriseAttack} from './macros/monsterFeatures/generic/surpriseAttack.js';
+export {swarmDamage} from './macros/monsterFeatures/generic/swarmDamage.js';
+export {touchDamage} from './macros/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
 export {parry} from './macros/monsterFeatures/generic/parry.js';

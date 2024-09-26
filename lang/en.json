@@ -341,6 +341,10 @@
             "AuraOfVitality": {
                 "Healing": "Aura of Vitality: Healing"
             },
+            "AutoGrapple": {
+                "DC": "Flat DC to escape grapple (contested if 0):",
+                "Disadvantage": "Grant disadvantage on escape check:"
+            },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"
             },
@@ -1117,6 +1121,16 @@
                 "ReduceByRoll": "Reduce by roll, not damage:",
                 "Short": "Expires on Short Rest:"
             },
+            "Regeneration": {
+                "Blocked": "Regeneration Blocked",
+                "Critical": "Crits always block regeneration",
+                "DamageTypes": "Damage Types to reduce/block regeneration:",
+                "Dead": "Dead?",
+                "Reduced": "Regeneration Reduced",
+                "ShowIcons": "Show icons for regeneration blocked/reduced:",
+                "Threshold": "Damage required to permanently kill if at 0hp:",
+                "ZeroHP": "Creature dies upon reaching 0hp"
+            },
             "RingOfSpellStoring": {
                 "Clear": "Clear used spells",
                 "Cleared": "Used spells cleared from inventory!",
@@ -1818,8 +1832,8 @@
             "cleave": {
                 "1": "Enabled (Any Health)",
                 "2": "Enabled (Full Health Only)",
-                "Name": "DMG Cleave",
-                "Hint": "Enables cleave mechanic from the Dungeon Master's Guide"
+                "Hint": "Enables cleave mechanic from the Dungeon Master's Guide",
+                "Name": "DMG Cleave"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",

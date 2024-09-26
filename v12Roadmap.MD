@@ -109,14 +109,14 @@ Goals:
         - [ ] Enlarge only (duergar)
         - [ ] Reduce only (mind master)
         - [x] Sunlight sensitivity (dis on attack rolls, skill check certainly)
-        - [ ] Touches or hitting it you take damage (ie fire elemental fire form, fire snake heated body) (damage)
-        - [ ] Auto grapple
-        - [ ] Swarm damage
-        - [ ] Regeneration
-        - [ ] Parry
+        - [x] Touches or hitting it you take damage (ie fire elemental fire form, fire snake heated body) (damage)
+        - [x] Auto grapple
+        - [x] Swarm damage
+        - [x] Regeneration
+        - [x] Parry
         - [x] Grappler advantage on attacks against things its grappling (grell tentables, mimic) (feat itself is automated)
         - [x] Discount sneak attack (hobgoblin martial advantage)
-        - [ ] Pack tactics
+        - [x] Pack tactics
         - [x] Death burst (save, effect)
         - ~~[ ] Death throes (save, damage)~~ (Same as above)
         - [ ] Immune to effect for [time] on save

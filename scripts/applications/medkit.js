@@ -359,11 +359,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         }
         let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
         if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
-        let oldOnUse = itemData.flags['midi-qol']?.onUseMacroName;
-        if (oldOnUse) {
-            let newOnUseString = oldOnUse.split(',').filter(i => !i.includes('function.chrisPremades')).join(',');
-            genericUtils.setProperty(sourceItemData, 'flags.midi-qol.onUseMacroName', newOnUseString);
-        }
+        let onUseFlag = genericUtils.getProperty(sourceItemData, 'flags.midi-qol.onUseMacroName');
+        if (!onUseFlag) genericUtils.setProperty(sourceItemData, 'flags.miid-qol.-=onUseMacroName', null);
         if (itemType === 'spell') sourceItemData.system.preparation = itemData.system.preparation;
         if (itemType != 'spell' && itemType != 'feat') {
             sourceItemData.system.attunement = itemData.system.attunement;
@@ -377,6 +374,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (source) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.source', source);
         if (version) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.version', version);
         if (identifier) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.info.identifier', identifier);
+        let macrosFlag = genericUtils.getProperty(sourceItemData, 'flags.chris-premades.macros');
+        if (!macrosFlag) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.-=macros', null);
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
@@ -466,7 +465,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             });
             let genericConfigs = genericFeatures.options.reduce((genericConfigs, option) => {
-                if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value].options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
+                if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value]?.options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
                     config[option.default === undefined ? option.id : option.value] = option.default ?? option.value;
                     return config;
                 }, {});
@@ -520,15 +519,16 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let currentSource = item?.flags?.['chris-premades']?.info?.source;
         if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
             let selectedSource = this.context?.options.find(i => i.isSelected);
-            let sourceItem = await fromUuid(selectedSource.value);
-            if (this.context?.options.find(i => i.isSelected).value === null && currentSource) {
+            if (selectedSource) {
+                let sourceItem = await fromUuid(selectedSource.value);
+                if (sourceItem) {
+                    let option = this.context.options.find(i => i.isSelected === true);
+                    item = await Medkit.update(item, sourceItem, {source: option.id, version: option.version});
+                }
+                if (selectedSource.id != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
+            } else if (currentSource) {
                 await item.update({'flags.-=chris-premades': null}); // May need to clear more flags here for MISC/GPS integration.
             }
-            if (sourceItem) {
-                let option = this.context.options.find(i => i.isSelected === true);
-                item = await Medkit.update(item, sourceItem, {source: option.id, version: option.version});
-            }
-            if (selectedSource.id != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
         }
         this.itemDocument = item;
         await this.updateContext(item);
