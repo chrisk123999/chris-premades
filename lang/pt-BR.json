@@ -29,6 +29,9 @@
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
         },
+        "Cleave": {
+            "Use": "Cortar um alvo próximo?"
+        },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
             "Bite": "Mordida",
@@ -121,6 +124,7 @@
             "SaveDC": "CD da Salvaguarda:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
+            "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:"
         },
@@ -225,6 +229,7 @@
             "Max": "Máx:",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
+            "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
@@ -282,6 +287,9 @@
                 "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
+            },
+            "AdvantageDamageBonus": {
+                "Bonus": "Dano adicional se o ataque tiver vantagem:"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -355,7 +363,6 @@
             },
             "Berserk": {
                 "Animation": "Animação Berserk:",
-                "DiceFormula": "Fórmula da Rolagem de Dados:",
                 "HPThreshold": "Limite de PV:"
             },
             "BestialSoul": {
@@ -525,6 +532,10 @@
                 "Douse": "Apagar Lâmina",
                 "Heal": "Lâmina de Cristal: Cura",
                 "Light": "Lâmina de Cristal: Luz"
+            },
+            "DamageTurnStart": {
+                "SpecificDamage": "Use fórmula ao invés do dano do item:",
+                "SpecificType": "Se sim, tipo de dano:"
             },
             "DancingSword": {
                 "Attack": "Espada Dançante: Atacar",
@@ -1017,6 +1028,7 @@
                 "TransmutedFirst": "Qual tipo de dano você vai substituir?",
                 "TransmutedSecond": "Qual tipo de dano você quer usar?",
                 "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
+                "TwinnedUpcastTargets": "Não é possível conjurar em nível acima e duplicar esta magia!",
                 "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
             },
             "MirrorImage": {
@@ -1178,6 +1190,11 @@
             "SoothePain": {
                 "Protect": "Reduzir o dano em {tokenName}?",
                 "Self": "Reduzir o dano em si mesmo?"
+            },
+            "SpellTurning": {
+                "Advantage": "Vantagem em salvaguardas:",
+                "SpellLevel": "Nível máximo de magia para redirecionamento:",
+                "TargetCaster": "Alvejar Conjurador se bem-sucedido:"
             },
             "SpikeGrowth": {
                 "Thorns": "Crescer Espinhos: Espinhos"
@@ -1362,6 +1379,11 @@
                 "FieryTeleportation": "Teletransporte Feérico",
                 "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
                 "FlameSeed": "Semente de Fogo"
+            },
+            "SunlightSensitivity": {
+                "Attack": "{tokenName} está na luz do sol?",
+                "Auto": "Assumir que luz plena significa luz solar para desvantagem do ataque:",
+                "Skill": "Este teste depende da visão e a criatura está sob a luz do sol"
             },
             "SurpriseAttack": {
                 "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
@@ -1792,6 +1814,12 @@
             "classSpellList": {
                 "Hint": "Diário com todas as listas de magias de classe configuradas.",
                 "Name": "Diário de Listas de Magias de Classe"
+            },
+            "cleave": {
+                "1": "Habilitar (Qualquer Vida)",
+                "2": "Habilitar (Somente Vida Cheia)",
+                "Name": "DMG Cleave",
+                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
