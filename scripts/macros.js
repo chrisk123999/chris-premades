@@ -416,6 +416,7 @@ export {sculptedExplosion} from './macros/monsterFeatures/humanoid/evokerWizard/
 export {devastatingBolt} from './macros/monsterFeatures/fey/hobgoblinDevastator/devastatingBolt.js';
 export {armyArcana} from './macros/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
 export {shieldBash} from './macros/monsterFeatures/fey/hobgoblinWarlord/shieldBash.js';
+export {thunderousStrike} from './macros/monsterFeatures/elemental/earthElementalMyrmidon/thunderousStrike.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
