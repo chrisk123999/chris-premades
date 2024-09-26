@@ -1,0 +1,263 @@
+{
+  "name": "Leadership",
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "custom": ""
+    },
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "self",
+      "prompt": true
+    },
+    "range": {
+      "value": null,
+      "long": null,
+      "units": "self"
+    },
+    "uses": {
+      "value": 1,
+      "max": "1",
+      "per": "sr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": null,
+    "actionType": "",
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [],
+      "versatile": ""
+    },
+    "formula": "",
+    "save": {
+      "ability": "",
+      "dc": null,
+      "scaling": "flat"
+    },
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    },
+    "properties": [],
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "enchantment": null,
+    "summons": null,
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "changes": [],
+      "transfer": false,
+      "_id": "joDGxX4mZMzL7lXu",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "flags": {
+        "babonus": {
+          "bonuses": {
+            "cuQGaFJt7nJtAu1D": {
+              "id": "cuQGaFJt7nJtAu1D",
+              "name": "Leadership",
+              "type": "attack",
+              "enabled": true,
+              "itemOnly": false,
+              "optional": false,
+              "description": "Leadership",
+              "consume": {
+                "enabled": false,
+                "type": null,
+                "scales": false,
+                "formula": "",
+                "value": {
+                  "min": null,
+                  "max": null,
+                  "step": null
+                }
+              },
+              "aura": {
+                "enabled": true,
+                "isTemplate": false,
+                "range": "30",
+                "self": false,
+                "disposition": 1,
+                "blockers": "Convenient Effect: Dead;Convenient Effect: Incapacitated;Convenient Effect: Unconscious;"
+              },
+              "filters": {},
+              "bonuses": {
+                "bonus": "1d4",
+                "criticalRange": "",
+                "fumbleRange": ""
+              }
+            },
+            "ra28BwlzAEis2jYk": {
+              "id": "ra28BwlzAEis2jYk",
+              "name": "Leadership",
+              "type": "throw",
+              "enabled": true,
+              "itemOnly": false,
+              "optional": false,
+              "description": "Leadership",
+              "consume": {
+                "enabled": false,
+                "type": null,
+                "scales": false,
+                "formula": "",
+                "value": {
+                  "min": null,
+                  "max": null,
+                  "step": null
+                }
+              },
+              "aura": {
+                "enabled": true,
+                "isTemplate": false,
+                "range": "30",
+                "self": false,
+                "disposition": 1,
+                "blockers": "Convenient Effect: Dead;Convenient Effect: Incapacitated;Convenient Effect: Unconscious;"
+              },
+              "filters": {},
+              "bonuses": {
+                "bonus": "1d4",
+                "deathSaveTargetValue": "",
+                "deathSaveCritical": ""
+              }
+            }
+          }
+        },
+        "dfreds-convenient-effects": {
+          "description": ""
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "zeroHP"
+          ]
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "undefined",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        }
+      },
+      "name": "Leadership",
+      "description": "",
+      "statuses": [],
+      "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "3.3.1",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!vCGges24eDK6Uauk.joDGxX4mZMzL7lXu"
+    }
+  ],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<strong>Leadership (Recharges after a Short or Long Rest).</strong>",
+      "fullName": "Leadership (Recharges after a Short or Long Rest).",
+      "actionCopy": false
+    },
+    "core": {
+      "sourceId": "Actor.4vST5SDv2GGweqGv.Item.6hyvKFyFaU2m0jYm"
+    },
+    "link-item-resource-5e": {
+      "resource-link": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
+  "folder": "WmpVShhDm4mGU8NS",
+  "_id": "vCGges24eDK6Uauk",
+  "_key": "!items!vCGges24eDK6Uauk"
+}

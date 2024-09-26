@@ -1,5 +1,5 @@
 {
-  "name": "Echo Avatar",
+  "name": "Reclaim Potential",
   "type": "feat",
   "system": {
     "description": {
@@ -10,13 +10,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "action",
+      "type": "special",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "10",
-      "units": "minute"
+      "value": "",
+      "units": ""
     },
     "cover": null,
     "crewed": false,
@@ -33,9 +33,9 @@
       "units": "self"
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 2,
+      "max": "2",
+      "per": "lr",
       "recovery": "",
       "prompt": true
     },
@@ -53,7 +53,12 @@
       "damage": ""
     },
     "damage": {
-      "parts": [],
+      "parts": [
+        [
+          "2d6[temphp] + @abilities.con.mod",
+          "temphp"
+        ]
+      ],
       "versatile": ""
     },
     "formula": "",
@@ -110,23 +115,16 @@
     "core": {},
     "chris-premades": {
       "info": {
-        "name": "Echo Avatar",
+        "name": "Reclaim Potential",
         "version": "0.12.46",
-        "identifier": "echoAvatar",
+        "identifier": "reclaimPotential",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "echoAvatar"
-          ]
-        }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/control/energy-stream-link-orange.webp",
-  "folder": "vAXUMsmBT5J49cVx",
-  "_id": "I9Vb2tytxW2dK3Xa",
-  "_key": "!items!I9Vb2tytxW2dK3Xa"
+  "img": "icons/magic/unholy/orb-glowing-purple.webp",
+  "folder": "e6vH0yYNcNPgCuGi",
+  "_id": "7Qznxqe5USJW4AEH",
+  "_key": "!items!7Qznxqe5USJW4AEH"
 }

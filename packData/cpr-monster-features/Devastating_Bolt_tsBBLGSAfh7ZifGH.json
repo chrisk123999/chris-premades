@@ -1,0 +1,182 @@
+{
+  "name": "Devastating Bolt",
+  "type": "weapon",
+  "system": {
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {
+      "book": "Mordenkainen Presents: Monsters of the Multiverse",
+      "page": "153",
+      "custom": "",
+      "license": ""
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "weight": {
+      "value": 0,
+      "units": "lb"
+    },
+    "price": {
+      "value": 0,
+      "denomination": "gp"
+    },
+    "rarity": "",
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "",
+      "width": null,
+      "units": "",
+      "type": "",
+      "prompt": true
+    },
+    "range": {
+      "value": 60,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": null,
+      "max": "",
+      "per": null,
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "int",
+    "actionType": "rsak",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "4d8[force] + @mod",
+          "force"
+        ]
+      ],
+      "versatile": ""
+    },
+    "enchantment": null,
+    "formula": "",
+    "save": {
+      "dc": null,
+      "ability": "",
+      "scaling": "flat"
+    },
+    "summons": null,
+    "armor": {
+      "value": null
+    },
+    "hp": {
+      "value": null,
+      "max": null,
+      "dt": null,
+      "conditions": ""
+    },
+    "type": {
+      "value": "simpleM",
+      "baseItem": ""
+    },
+    "magicalBonus": null,
+    "properties": [],
+    "proficient": 1
+  },
+  "effects": [],
+  "flags": {
+    "monsterMunch": {
+      "titleHTML": "<strong>Devastating Bolt.</strong>",
+      "fullName": "Devastating Bolt.",
+      "actionCopy": false,
+      "type": "action",
+      "actionInfo": {
+        "damage": {
+          "parts": [
+            [
+              "4d8[force] + @mod",
+              "force"
+            ]
+          ],
+          "versatile": ""
+        },
+        "baseAbility": "int",
+        "toHit": 5,
+        "proficient": true,
+        "extraAttackBonus": 0
+      }
+    },
+    "midiProperties": {
+      "magicdam": true,
+      "magiceffect": true,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "fumbleThreshold": null,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
+    "core": {
+      "sheetClass": "dnd5e.Tidy5eKgarItemSheet"
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "devastatingBolt",
+        "source": "chris-premades",
+        "version": "0.12.78"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "proneOnHit"
+          ]
+        }
+      }
+    }
+  },
+  "img": "icons/magic/lightning/bolt-strike-beam-purple.webp",
+  "folder": "EjwaeTVNmXmy2sSo",
+  "_id": "tsBBLGSAfh7ZifGH",
+  "_key": "!items!tsBBLGSAfh7ZifGH"
+}

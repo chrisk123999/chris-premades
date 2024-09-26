@@ -1,5 +1,5 @@
 {
-  "name": "Unleash Incarnation",
+  "name": "Legion of One",
   "type": "feat",
   "system": {
     "description": {
@@ -21,21 +21,21 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": ""
+      "units": "ft"
     },
     "uses": {
-      "value": 2,
-      "max": "2",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -46,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -85,7 +85,6 @@
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "onUseMacroName": "",
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
@@ -111,23 +110,21 @@
     "core": {},
     "chris-premades": {
       "info": {
-        "name": "Unleash Incarnation",
+        "name": "Legion of One",
         "version": "0.12.46",
-        "identifier": "unleashIncarnation",
+        "identifier": "legionOfOne",
         "source": "chris-premades"
       },
       "macros": {
-        "midi": {
-          "item": [
-            "unleashIncarnation"
-          ]
-        }
+        "combat": [
+          "legionOfOne"
+        ]
       }
     }
   },
   "effects": [],
-  "img": "icons/skills/melee/strike-weapon-polearm-ice-blue.webp",
-  "folder": "vAXUMsmBT5J49cVx",
-  "_id": "s6e1STUT4JG9CS55",
-  "_key": "!items!s6e1STUT4JG9CS55"
+  "img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+  "folder": "e6vH0yYNcNPgCuGi",
+  "_id": "5htXvxy2bZkQswQn",
+  "_key": "!items!5htXvxy2bZkQswQn"
 }

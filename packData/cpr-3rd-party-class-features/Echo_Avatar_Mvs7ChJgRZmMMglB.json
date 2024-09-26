@@ -1,5 +1,5 @@
 {
-  "name": "Manifest Echo",
+  "name": "Echo Avatar",
   "type": "feat",
   "system": {
     "description": {
@@ -10,13 +10,13 @@
       "custom": ""
     },
     "activation": {
-      "type": "bonus",
+      "type": "action",
       "cost": 1,
       "condition": ""
     },
     "duration": {
-      "value": "",
-      "units": ""
+      "value": "10",
+      "units": "minute"
     },
     "cover": null,
     "crewed": false,
@@ -24,13 +24,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
-      "value": 15,
+      "value": null,
       "long": null,
-      "units": "ft"
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -85,16 +85,12 @@
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "onUseMacroName": "",
-      "effectActivation": false,
+      "rollAttackPerTarget": "default",
       "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default"
+      "effectCondition": ""
     },
     "midiProperties": {
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
       "rollOther": false,
@@ -114,24 +110,23 @@
     "core": {},
     "chris-premades": {
       "info": {
-        "name": "Manifest Echo",
+        "name": "Echo Avatar",
         "version": "0.12.46",
-        "identifier": "manifestEcho",
-        "source": "chris-premades",
-        "hasAnimation": true
+        "identifier": "echoAvatar",
+        "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "manifestEcho"
+            "echoAvatar"
           ]
         }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/control/sihouette-hold-beam-green.webp",
-  "folder": "vAXUMsmBT5J49cVx",
-  "_id": "DVqj9yFSLAFIQF2U",
-  "_key": "!items!DVqj9yFSLAFIQF2U"
+  "img": "icons/magic/control/energy-stream-link-orange.webp",
+  "folder": "e6vH0yYNcNPgCuGi",
+  "_id": "Mvs7ChJgRZmMMglB",
+  "_key": "!items!Mvs7ChJgRZmMMglB"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Reclaim Potential",
+  "name": "Manifest Echo",
   "type": "feat",
   "system": {
     "description": {
@@ -10,7 +10,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "special",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -24,18 +24,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 15,
       "long": null,
-      "units": "self"
+      "units": "ft"
     },
     "uses": {
-      "value": 2,
-      "max": "2",
-      "per": "lr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "2d6[temphp] + @abilities.con.mod",
-          "temphp"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -90,12 +85,16 @@
   "flags": {
     "midi-qol": {
       "removeAttackDamageButtons": "default",
-      "rollAttackPerTarget": "default",
+      "onUseMacroName": "",
+      "effectActivation": false,
       "itemCondition": "",
-      "effectCondition": ""
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
     },
     "midiProperties": {
-      "confirmTargets": "default",
+      "confirmTargets": "never",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
       "rollOther": false,
@@ -115,16 +114,24 @@
     "core": {},
     "chris-premades": {
       "info": {
-        "name": "Reclaim Potential",
+        "name": "Manifest Echo",
         "version": "0.12.46",
-        "identifier": "reclaimPotential",
-        "source": "chris-premades"
+        "identifier": "manifestEcho",
+        "source": "chris-premades",
+        "hasAnimation": true
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "manifestEcho"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/magic/unholy/orb-glowing-purple.webp",
-  "folder": "vAXUMsmBT5J49cVx",
-  "_id": "wbcoagJAOy2vWR7K",
-  "_key": "!items!wbcoagJAOy2vWR7K"
+  "img": "icons/magic/control/sihouette-hold-beam-green.webp",
+  "folder": "e6vH0yYNcNPgCuGi",
+  "_id": "APDvgtH77rViroXu",
+  "_key": "!items!APDvgtH77rViroXu"
 }
