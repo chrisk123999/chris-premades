@@ -29,6 +29,9 @@
             "ThreeMonths": "Three Months",
             "Weekly": "Weekly"
         },
+        "Cleave": {
+            "Use": "Cleave a nearby target?"
+        },
         "CommonFeatures": {
             "Amphibious": "Amphibious",
             "Bite": "Bite",
@@ -121,6 +124,7 @@
             "SaveDC": "Save DC:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
+            "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
             "SpecificAnimation": "{option} Animation:"
         },
@@ -1810,6 +1814,12 @@
             "classSpellList": {
                 "Hint": "Journal with all class spell lists configured.",
                 "Name": "Class Spell List Journal"
+            },
+            "cleave": {
+                "1": "Enabled (Any Health)",
+                "2": "Enabled (Full Health Only)",
+                "Name": "DMG Cleave",
+                "Hint": "Enables cleave mechanic from the Dungeon Master's Guide"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",

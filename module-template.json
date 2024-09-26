@@ -120,56 +120,28 @@
   },
   "packs": [
     {
-      "name": "CPRSpells",
-      "label": "CPR Spells",
-      "path": "packs/cpr-spells",
-      "type": "Item",
-      "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerSpells.webp"
-    },
-    {
-      "name": "CPRSpellFeatures",
-      "label": "CPR Spell Features",
-      "path": "packs/cpr-spell-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRSummonFeatures",
-      "label": "CPR Summon Features",
-      "path": "packs/cpr-summon-features",
-      "type": "Item",
-      "module": "chris-premades"
-    },
-    {
       "name": "CPRSummons",
       "label": "CPR Summons",
       "path": "packs/cpr-summons",
       "type": "Actor",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSummons.webp"
     },
     {
-      "name": "CPRItems",
-      "label": "CPR Items",
-      "path": "packs/cpr-items",
+      "name": "CPRThirdPartyClassFeatures",
+      "label": "CPR 3rd Party Class Features",
+      "path": "packs/cpr-3rd-party-class-features",
       "type": "Item",
       "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerItems.webp"
+      "banner": "modules/chris-premades/images/bannerThirdParty.webp"
     },
     {
-      "name": "CPRClassFeatures",
-      "label": "CPR Class Features",
-      "path": "packs/cpr-class-features",
+      "name": "CPRThirdPartyItems",
+      "label": "CPR 3rd Party Items",
+      "path": "packs/cpr-3rd-party-items",
       "type": "Item",
       "module": "chris-premades",
-      "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
-    },
-    {
-      "name": "CPRClassFeatureItems",
-      "label": "CPR Class Feature Items",
-      "path": "packs/cpr-class-feature-items",
-      "type": "Item",
-      "module": "chris-premades"
+      "banner": "modules/chris-premades/images/bannerThirdParty.webp"
     },
     {
       "name": "CPRActions",
@@ -180,18 +152,28 @@
       "banner": "modules/chris-premades/images/bannerActions.webp"
     },
     {
-      "name": "CPRMiscellaneousItems",
-      "label": "CPR Miscellaneous Items",
-      "path": "packs/cpr-miscellaneous-items",
+      "name": "CPRClassFeatureItems",
+      "label": "CPR Class Feature Items",
+      "path": "packs/cpr-class-feature-items",
       "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
     },
     {
-      "name": "CPRItemFeatures",
-      "label": "CPR Item Features",
-      "path": "packs/cpr-item-features",
+      "name": "CPRClassFeatures",
+      "label": "CPR Class Features",
+      "path": "packs/cpr-class-features",
       "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerClassFeatures.webp"
+    },
+    {
+      "name": "CPRFeatFeatures",
+      "label": "CPR Feat Features",
+      "path": "packs/cpr-feat-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
     },
     {
       "name": "CPRFeats",
@@ -202,11 +184,44 @@
       "banner": "modules/chris-premades/images/bannerFeats.webp"
     },
     {
-      "name": "CPRFeatFeatures",
-      "label": "CPR Feat Features",
-      "path": "packs/cpr-feat-features",
+      "name": "CPRItemFeatures",
+      "label": "CPR Item Features",
+      "path": "packs/cpr-item-features",
       "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+    },
+    {
+      "name": "CPRItems",
+      "label": "CPR Items",
+      "path": "packs/cpr-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerItems.webp"
+    },
+    {
+      "name": "CPRMiscellaneousItems",
+      "label": "CPR Miscellaneous Items",
+      "path": "packs/cpr-miscellaneous-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown4.webp"
+    },
+    {
+      "name": "CPRMonsterFeatures",
+      "label": "CPR Monster Features",
+      "path": "packs/cpr-monster-features",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerMonsterFeatures.webp"
+    },
+    {
+      "name": "CPRRaceFeatureItems",
+      "label": "CPR Race Feature Items",
+      "path": "packs/cpr-race-feature-items",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown1.webp"
     },
     {
       "name": "CPRRaceFeatures",
@@ -217,32 +232,28 @@
       "banner": "modules/chris-premades/images/bannerRaceFeatures.webp"
     },
     {
-      "name": "CPRRaceFeatureItems",
-      "label": "CPR Race Feature Items",
-      "path": "packs/cpr-race-feature-items",
+      "name": "CPRSpellFeatures",
+      "label": "CPR Spell Features",
+      "path": "packs/cpr-spell-features",
       "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown2.webp"
     },
     {
-      "name": "CPRThirdPartyClassFeatures",
-      "label": "CPR 3rd Party Class Features",
-      "path": "packs/cpr-3rd-party-class-features",
+      "name": "CPRSpells",
+      "label": "CPR Spells",
+      "path": "packs/cpr-spells",
       "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerSpells.webp"
     },
     {
-      "name": "CPRThirdPartyItems",
-      "label": "CPR 3rd Party Items",
-      "path": "packs/cpr-3rd-party-items",
+      "name": "CPRSummonFeatures",
+      "label": "CPR Summon Features",
+      "path": "packs/cpr-summon-features",
       "type": "Item",
-      "module": "chris-premades"
-    },
-    {
-      "name": "CPRMonsterFeatures",
-      "label": "CPR Monster Features",
-      "path": "packs/cpr-monster-features",
-      "type": "Item",
-      "module": "chris-premades"
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerUnknown3.webp"
     }
   ],
   "packFolders": [

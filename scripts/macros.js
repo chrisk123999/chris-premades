@@ -155,6 +155,7 @@ export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 export {noConfiguration} from './macros/generic/noConfiguration.js';
 export {noReactions} from './macros/generic/noReactions.js';
 export {setAttackRoll} from './macros/generic/setAttackRoll.js';
+export {setDamageRoll} from './macros/generic/setDamageRoll.js';
 export {proneOnFail} from './macros/generic/proneOnFail.js';
 export {proneOnHit} from './macros/generic/proneOnHit.js';
 // Class Features
@@ -414,6 +415,7 @@ export {regeneration} from './macros/monsterFeatures/regeneration.js';
 export {sculptedExplosion} from './macros/monsterFeatures/humanoid/evokerWizard/sculptedExplosion.js';
 export {devastatingBolt} from './macros/monsterFeatures/fey/hobgoblinDevastator/devastatingBolt.js';
 export {armyArcana} from './macros/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
+export {shieldBash} from './macros/monsterFeatures/fey/hobgoblinWarlord/shieldBash.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
@@ -428,6 +430,7 @@ export {sunlightSensitivity} from './macros/monsterFeatures/generic/sunlightSens
 export {surpriseAttack} from './macros/monsterFeatures/generic/surpriseAttack.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
+export {parry} from './macros/monsterFeatures/generic/parry.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';

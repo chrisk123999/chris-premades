@@ -674,6 +674,17 @@ export function registerSettings() {
             2: 'CHRISPREMADES.Settings.movementPerformance.2',
         }
     });
+    addSetting({
+        key: 'cleave',
+        type: Number,
+        default: 0,
+        category: 'mechanics',
+        choices: {
+            0: 'CHRISPREMADES.Generic.Disabled',
+            1: 'CHRISPREMADES.Settings.cleave.1',
+            2: 'CHRISPREMADES.Settings.cleave.2'
+        }
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

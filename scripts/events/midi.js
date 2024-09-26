@@ -6,6 +6,7 @@ import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
+import {cleave} from '../macros/mechanics/cleave.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -256,8 +257,8 @@ async function rollFinished(workflow) {
     sceneTriggers = sceneTriggers.sort((a, b) => a.priority - b.priority);
     genericUtils.log('dev', 'Executing Midi Macro Pass: sceneRollFinished');
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
-    
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'done');
+    if (genericUtils.getCPRSetting('cleave')) await cleave(workflow);
 }
 async function postAttackRoll(workflow) {
     let sceneTriggers = [];
