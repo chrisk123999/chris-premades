@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6",
-          ""
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -121,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Hill Strike",
-        "version": "0.12.70",
+        "version": "0.12.82",
         "identifier": "hillStrike",
         "source": "chris-premades"
       },

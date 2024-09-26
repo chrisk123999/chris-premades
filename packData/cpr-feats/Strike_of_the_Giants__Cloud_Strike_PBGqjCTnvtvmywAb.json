@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d4[thunder]",
-          "thunder"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -121,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Cloud Strike",
-        "version": "0.12.70",
+        "version": "0.12.82",
         "identifier": "cloudStrike",
         "source": "chris-premades"
       },

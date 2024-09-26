@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[force]",
-          "force"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -121,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Stone Strike",
-        "version": "0.12.70",
+        "version": "0.12.82",
         "identifier": "stoneStrike",
         "source": "chris-premades"
       },

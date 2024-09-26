@@ -7,6 +7,36 @@ async function damage({trigger: {entity: item}, workflow}) {
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
     await combatUtils.setTurnCheck(item, 'strikeOfTheGiants');
+    let bonusFormula;
+    let bonusType;
+    switch (genericUtils.getIdentifier(item)) {
+        case 'cloudStrike':
+            bonusFormula = '1d4';
+            bonusType = 'thunder';
+            break;
+        case 'fireStrike':
+            bonusFormula = '1d10';
+            bonusType = 'fire';
+            break;
+        case 'frostStrike':
+            bonusFormula = '1d6';
+            bonusType = 'cold';
+            break;
+        case 'hillStrike':
+            bonusFormula = '1d6';
+            bonusType = workflow.defaultDamageType;
+            break;
+        case 'stoneStrike':
+            bonusFormula = '1d6';
+            bonusType = 'force';
+            break;
+        case 'stormStrike':
+            bonusFormula = '1d6';
+            bonusType = 'lightning';
+    }
+    if (!bonusFormula) return;
+    bonusFormula += '[' + bonusType + ']';
+    await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: bonusType});
     await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {options: {consumeUsage: true}, config: {configureDialog: false}});
 }
 async function combatEnd({trigger: {entity: item}}) {
@@ -45,7 +75,7 @@ export let strikeOfTheGiants = {
         }
     ]
 };
-let version = '0.12.70';
+let version = '0.12.82';
 export let cloudStrike = {
     name: 'Strike of the Giants: Cloud Strike',
     version,

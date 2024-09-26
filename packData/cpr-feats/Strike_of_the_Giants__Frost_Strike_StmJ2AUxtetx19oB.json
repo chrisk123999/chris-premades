@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d6[cold]",
-          "cold"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -91,7 +86,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Frost Strike",
-        "version": "0.12.70",
+        "version": "0.12.82",
         "identifier": "frostStrike",
         "source": "chris-premades"
       },

@@ -60,12 +60,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "2d6[fire]",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "enchantment": null,
@@ -195,7 +190,7 @@
       "info": {
         "identifier": "fireRune",
         "source": "chris-premades",
-        "version": "0.12.52"
+        "version": "0.12.82"
       },
       "macros": {
         "midi": {

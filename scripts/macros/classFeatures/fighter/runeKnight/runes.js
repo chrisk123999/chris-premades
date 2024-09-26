@@ -1,5 +1,5 @@
 import {actorUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-async function lateFireRune({trigger: {entity: item}, workflow}) {
+async function damageFireRune({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (!item.system.uses.value) return;
@@ -7,6 +7,7 @@ async function lateFireRune({trigger: {entity: item}, workflow}) {
     if (actorUtils.hasUsedReaction(workflow.actor)) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
+    await workflowUtils.bonusDamage(workflow, '2d6[fire]', {damageType: 'fire'});
     await workflowUtils.syntheticItemRoll(item, [workflow.targets.first()], {config: {consumeUsage: true}});
 }
 async function turnEndStoneRune({trigger: {entity: item, token, target}}) {
@@ -141,12 +142,12 @@ export let cloudRune = {
 };
 export let fireRune = {
     name: 'Fire Rune',
-    version: '0.12.52',
+    version: '0.12.82',
     midi: {
         actor: [
             {
-                pass: 'rollFinished',
-                macro: lateFireRune,
+                pass: 'damageRollComplete',
+                macro: damageFireRune,
                 priority: 50
             }
         ]

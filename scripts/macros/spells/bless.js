@@ -7,7 +7,7 @@ export let bless = {
         item: [
             {
                 pass: 'preambleComplete',
-                macro: upcastTargets.plusOne,
+                macro: upcastTargets.plusThree,
                 priority: 50
             }
         ]

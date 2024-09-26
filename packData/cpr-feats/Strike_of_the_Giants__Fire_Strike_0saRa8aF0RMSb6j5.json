@@ -53,12 +53,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "1d10[fire]",
-          "fire"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "formula": "",
@@ -119,7 +114,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Fire Strike",
-        "version": "0.12.70",
+        "version": "0.12.82",
         "identifier": "fireStrike",
         "source": "chris-premades"
       },
