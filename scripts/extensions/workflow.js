@@ -44,8 +44,8 @@ function setup() {
             else if (manualRollsInclusion === 1) '';
             else if ((manualRollsInclusion === 2) && (this.actor.type != 'character')) return false;
             else if ((manualRollsInclusion === 3) && (this.actor?.prototypeToken?.actorLink != true)) return false;
-            else if ((!(manualRollsInclusion === 4) && (this.actor?.prototypeToken?.actorLink === true) && (genericUtils.checkPlayerOwnership(this.actor.uuid) === true))) return false;
-            else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.rolls[0].data?.actorUuid)) != true)) return false;
+            else if ((manualRollsInclusion === 4) && ((this.actor?.prototypeToken?.actorLink != true) || (genericUtils.checkPlayerOwnership(this.actor) != true))) return false;
+            else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(this.actor) != true)) return false;
             let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
             let resolver = new CPRMultipleRollResolver(newRolls);
             await resolver.awaitFulfillment();

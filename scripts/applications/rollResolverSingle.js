@@ -60,6 +60,8 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         if ((Object.keys(this.roll.data).length === 0) && !genericUtils.getCPRSetting('manualRollsPromptNoData')) {log('roll has no data'); return false;}
         if (manualRollsInclusion === 1) return true;
         if ((manualRollsInclusion === 2) && (this.roll.data?.actorType === 'character')) return true;
+        if (genericUtils.getCPRSetting('updateCompanionInitiative') && this.roll.options.flavor.toLowerCase().includes('initiative') && (fromUuidSync(this.roll.data?.actorUuid).type === 'npc') && (genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true)) return false;
+        if (genericUtils.getCPRSetting('updateSummonInitiative') && this.roll.options.flavor.toLowerCase().includes('initiative') && fromUuidSync(this.roll.data?.actorUuid).flags['chris-premades']?.summons?.control?.actor) return false;
         else if ((manualRollsInclusion === 3) && (fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true)) return true;
         else if ((manualRollsInclusion === 4) && (fromUuidSync(this.roll.data?.actorUuid)?.prototypeToken?.actorLink === true) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true)) return true;
         else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(fromUuidSync(this.roll.data?.actorUuid)) === true)) return true;

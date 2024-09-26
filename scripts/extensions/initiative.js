@@ -1,12 +1,12 @@
 import { genericUtils } from '../utils.js';
 function updateSummonInitiative(actor, [combatant]) {
-    if (!actor || !combatant) return;
+    if (!actor || !combatant || (actor.type === 'character')) return;
     let summons = combatant.parent.combatants.contents.filter(i => i.actorId != actor.id)?.filter(i => i.actor.flags['chris-premades']?.summons?.control?.actor === actor?.uuid);
     if (!summons?.length) return;
     summons.forEach(c => combatantLoop(c, combatant));
 }
 function updateCompanionInitiative(actor, [combatant]) {
-    if (!actor || !combatant) return;
+    if (!actor || !combatant || (actor.type === 'character')) return;
     let actorOwnerUserIds = [];
     for (let [key, value] of Object.entries(actor.ownership)) {
         if (key === 'default' && value === 3) return;
