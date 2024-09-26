@@ -1,6 +1,5 @@
 import {DialogApp} from '../../../applications/dialog.js';
 import {dialogUtils, effectUtils, genericUtils} from '../../../utils.js';
-
 async function use({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'astralTrance');
     if (effect) await genericUtils.remove(effect);
