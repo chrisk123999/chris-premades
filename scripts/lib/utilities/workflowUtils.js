@@ -1,4 +1,4 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils} from '../../utils.js';
 async function bonusDamage(workflow, formula, {ignoreCrit = false, damageType}={}) {
     formula = String(formula);
     if (workflow.isCritical && !ignoreCrit) formula = await rollUtils.getCriticalFormula(formula, workflow.actor.getRollData());
@@ -29,7 +29,11 @@ async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}
 async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
-async function completeItemUse(item, config, options) {
+async function completeItemUse(item, config={}, options={}) {
+    if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
+        options.asUser = socketUtils.firstOwner(item.actor, true);
+        options.checkGMStatus = true;
+    }
     return await MidiQOL.completeItemUse(item, config, options);
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {

@@ -18,7 +18,7 @@ async function helper(item, ditem, token, targetToken) {
         let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.SoothePain.Protect', {tokenName: targetToken.name}), {userId: socketUtils.firstOwner(token.actor, true)});
         if (!selection) return;
     } else {
-        let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.SoothePain.Self');
+        let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.SoothePain.Self', {userId: socketUtils.firstOwner(item.actor, true)});
         if (!selection) return;
     }
     await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});

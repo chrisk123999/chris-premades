@@ -1,10 +1,10 @@
-import {actorUtils, dialogUtils, genericUtils, itemUtils} from '../../../../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, socketUtils} from '../../../../utils.js';
 async function damageApplication({trigger: {token}, ditem}) {
     if (!actorUtils.hasSpellSlots(token.actor)) return;
     if (actorUtils.hasUsedReaction(token.actor));
     let originItem = itemUtils.getItemByIdentifier(token.actor, 'songOfDefense');
     if (!originItem) return;
-    let selection = await dialogUtils.selectSpellSlot(token.actor, originItem.name, 'CHRISPREMADES.Macros.SongOfDefense.Select', {no: true});
+    let selection = await dialogUtils.selectSpellSlot(token.actor, originItem.name, 'CHRISPREMADES.Macros.SongOfDefense.Select', {no: true, userId: socketUtils.firstOwner(token.actor)});
     if (!selection) return;
     let damageReduction;
     if (selection === 'pact') {

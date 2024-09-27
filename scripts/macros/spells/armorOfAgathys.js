@@ -21,14 +21,12 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['armorOfAgathysArmor']);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'armorOfAgathys'});
 }
-async function hit({workflow}) {
+async function hit({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
     let targetToken = workflow.hitTargets.first();
-    let effect = effectUtils.getEffectByIdentifier(targetToken.actor, 'armorOfAgathys');
-    if (!effect) return;
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
+    if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Armor of Agathys: Reflect', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ArmorOfAgathys.Reflect'});
     if (!featureData) {
         errors.missingPackItem();
