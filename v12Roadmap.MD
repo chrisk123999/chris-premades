@@ -106,8 +106,8 @@ Goals:
         - [x] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
         - [x] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
         - [ ] Contextual bonuses (deep gnome stone camoflauge)
-        - [ ] Enlarge only (duergar)
-        - [ ] Reduce only (mind master)
+        - [x] Enlarge only (duergar)
+        - [x] Reduce only (mind master)
         - [x] Sunlight sensitivity (dis on attack rolls, skill check certainly)
         - [x] Touches or hitting it you take damage (ie fire elemental fire form, fire snake heated body) (damage)
         - [x] Auto grapple
@@ -120,7 +120,7 @@ Goals:
         - [x] Death burst (save, effect)
         - ~~[ ] Death throes (save, damage)~~ (Same as above)
         - [ ] Immune to effect for [time] on save
-        - [ ] Strength drain (roll for drain, short/long rest)
+        - [x] Strength drain (roll for drain, short/long rest)
         - [x] Different damage if advantage on the attack (shadow demon claws)
         - [ ] Engulf (rug of smothering, shambling mound)
         - [x] Undead fortitude 

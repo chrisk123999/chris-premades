@@ -654,6 +654,9 @@
                 "ProtectiveDamage": "Protective Bond: Damage",
                 "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
+            "Enlarge": {
+                "Double": "Double weapon dice, instead of providing +1d4:"
+            },
             "EnlargeReduce": {
                 "Enlarge": "Enlarge",
                 "Reduce": "Reduce",
@@ -1113,6 +1116,12 @@
             },
             "RayOfEnfeeblement": {
                 "Overtime": "Ray of Enfeeblement (End of Turn)"
+            },
+            "Reduce": {
+                "AlwaysTiny": "Always reduce to Tiny:",
+                "AttackDisadvantage": "Disadvantage on strength-based attacks:",
+                "OneDamage": "Strength-based attacks deal 1 weapon damage:",
+                "StealthACBonus": "+5 to Stealth & AC:"
             },
             "ReduceMaxHP": {
                 "DamageTypeFilter": "Only apply certain damage types to max hp reduction:",
