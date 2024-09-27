@@ -118,17 +118,13 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Baleful Scion: Grasp of Avarice",
-        "version": "0.12.70",
+        "version": "0.12.83",
         "identifier": "graspOfAvarice",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "actor": [
-            "graspOfAvarice"
-          ],
-          "item": [
             "graspOfAvarice"
           ]
         },

@@ -30,14 +30,27 @@ async function damageApplication({trigger: {entity: item}, workflow}) {
     if (!selection) return;
     await combatUtils.setTurnCheck(item, 'stasisStrike');
     let targetToken = selection[0];
-    await genericUtils.update(item, {'system.uses.value': item.system.uses.value - 1});
-    let tempItem = item.clone({'system.damage.parts': [
-        [
-            '1d8[force]',
-            'force'
-        ]
-    ]});
-    await workflowUtils.syntheticItemRoll(tempItem, [targetToken]);
+    let ditem = workflow.damageList.find(i => i.actorUuid === targetToken.actor.uuid);
+    if (!ditem) return;
+    let extraDamageRoll = await new CONFIG.Dice.DamageRoll('1d8[force]', {}, {type: 'force'}).evaluate();
+    extraDamageRoll.toMessage({
+        flavor: item.name,
+        speaker: ChatMessage.implementation.getSpeaker({token: workflow.token})
+    });
+    ditem.rawDamageDetail.push({
+        value: extraDamageRoll.total,
+        type: damageType
+    });
+    let multiplier = MidiQOL.getTraitMult(targetToken.actor, 'force') ?? 1;
+    let damageApplied = Math.floor(extraDamageRoll.total * multiplier);
+    ditem.damageDetail.push({
+        value: damageApplied,
+        type: damageType,
+        active: {
+            multiplier
+        }
+    });
+    await workflowUtils.completeItemUse(item, {consumeUsage: true}, {configureDialog: false});
 }
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'stasisStrike', true);
