@@ -1,13 +1,9 @@
 import {DialogApp} from '../../applications/dialog.js';
 import {combatUtils, constants, genericUtils, workflowUtils} from '../../utils.js';
 
-async function damage({trigger: {entity: item}, workflow}) {
+async function damageReroll(workflow, item) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
-    await rerollHelper(workflow, item);
-    await critHelper(workflow, item);
-}
-async function rerollHelper(workflow, item) {
     if (!combatUtils.perTurnCheck(item, 'piercer')) return;
     let newDamageRolls = workflow.damageRolls;
     let lowest = [];
@@ -67,8 +63,10 @@ async function rerollHelper(workflow, item) {
     newDamageRolls[roll].terms[term].results[worstInd].result = newRoll.total;
     await workflow.setDamageRolls(newDamageRolls);
 }
-async function critHelper(workflow, item) {
+async function damageCrit(workflow, item) {
     if (!workflow.isCritical) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('piercing')) return;
     let piercingRolls = workflow.damageRolls.filter(i => i.options.type === 'piercing');
     if (!piercingRolls.length) return;
     let bestDie = Math.max(...piercingRolls.map(i => i.terms.reduce((acc, term) => {
@@ -82,14 +80,14 @@ async function critHelper(workflow, item) {
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'piercer', true);
 }
-export let piercer = {
-    name: 'Piercer',
-    version: '0.12.70',
+export let piercerReroll = {
+    name: 'Piercer: Reroll Damage',
+    version: '0.12.83',
     midi: {
         actor: [
             {
                 pass: 'damageRollComplete',
-                macro: damage,
+                macro: damageReroll,
                 priority: 50
             }
         ]
@@ -101,4 +99,17 @@ export let piercer = {
             priority: 50
         }
     ]
+};
+export let piercerCrit = {
+    name: 'Piercer: Critical Hit',
+    version: '0.12.83',
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damageCrit,
+                priority: 51
+            }
+        ]
+    }
 };

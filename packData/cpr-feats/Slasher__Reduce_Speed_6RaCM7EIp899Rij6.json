@@ -1,5 +1,5 @@
 {
-  "name": "Slasher",
+  "name": "Slasher: Reduce Speed",
   "type": "feat",
   "system": {
     "description": {
@@ -91,15 +91,14 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Slasher: Critical Hit",
-        "version": "0.12.70",
-        "identifier": "slasher",
+        "version": "0.12.83",
+        "identifier": "slasherReduceSpeed",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "actor": [
-            "slasher"
+            "slasherReduceSpeed"
           ]
         }
       }
@@ -124,6 +123,6 @@
   "effects": [],
   "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "folder": null,
-  "_id": "TYmq0wAuf92oZO7a",
-  "_key": "!items!TYmq0wAuf92oZO7a"
+  "_id": "6RaCM7EIp899Rij6",
+  "_key": "!items!6RaCM7EIp899Rij6"
 }

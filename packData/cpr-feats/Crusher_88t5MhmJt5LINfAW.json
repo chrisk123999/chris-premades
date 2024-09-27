@@ -113,7 +113,6 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Crusher",
         "version": "0.12.70",
         "identifier": "crusher",
         "source": "chris-premades"
@@ -130,6 +129,6 @@
   "effects": [],
   "img": "icons/weapons/hammers/hammer-double-stone.webp",
   "folder": null,
-  "_id": "QFvOwz3nNponMgyo",
-  "_key": "!items!QFvOwz3nNponMgyo"
+  "_id": "88t5MhmJt5LINfAW",
+  "_key": "!items!88t5MhmJt5LINfAW"
 }

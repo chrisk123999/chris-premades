@@ -1,5 +1,5 @@
 {
-  "name": "Piercer",
+  "name": "Slasher: Critical Hit",
   "type": "feat",
   "system": {
     "description": {
@@ -24,13 +24,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -46,7 +46,7 @@
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "",
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -83,49 +83,46 @@
     }
   },
   "flags": {
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
+    "midi-qol": {
+      "forceCEOff": true,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
     },
     "chris-premades": {
       "info": {
-        "name": "Piercer: Critical Hit",
-        "version": "0.12.70",
-        "identifier": "piercer",
+        "version": "0.12.83",
+        "identifier": "slasherCrit",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "actor": [
-            "piercer"
+            "slasherCrit"
           ]
-        },
-        "combat": [
-          "piercer"
-        ]
+        }
       }
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
     }
   },
   "effects": [],
-  "img": "icons/weapons/polearms/spear-ornate-gold.webp",
+  "img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
   "folder": null,
-  "_id": "hoK2T0M5CwZaGDsv",
-  "_key": "!items!hoK2T0M5CwZaGDsv"
+  "_id": "o6D9oz69shGQir3B",
+  "_key": "!items!o6D9oz69shGQir3B"
 }

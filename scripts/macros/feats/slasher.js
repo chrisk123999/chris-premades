@@ -1,12 +1,8 @@
 import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 
-async function late({trigger: {entity: item}, workflow}) {
+async function lateSpeed(workflow, item) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
-    await speedHelper(workflow, item);
-    await critHelper(workflow, item);
-}
-async function speedHelper(workflow, item) {
     if (!combatUtils.perTurnCheck(item, 'slasher')) return;
     let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: item.name}));
     if (!selection) return;
@@ -34,8 +30,10 @@ async function speedHelper(workflow, item) {
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
-async function critHelper(workflow, item) {
+async function lateCrit(workflow, item) {
     if (!workflow.isCritical) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
     let effectData = {
         name: item.name + ': ' + genericUtils.translate('DND5E.Critical'),
         img: item.img,
@@ -59,14 +57,27 @@ async function critHelper(workflow, item) {
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
-export let slasher = {
-    name: 'Slasher',
-    version: '0.12.70',
+export let slasherReduceSpeed = {
+    name: 'Slasher: Reduce Speed',
+    version: '0.12.83',
     midi: {
         actor: [
             {
                 pass: 'rollFinished',
-                macro: late,
+                macro: lateSpeed,
+                priority: 50
+            }
+        ]
+    }
+};
+export let slasherCrit = {
+    name: 'Slasher: Critical Hit',
+    version: '0.12.83',
+    midi: {
+        actor: [
+            {
+                pass: 'rollFinished',
+                macro: lateCrit,
                 priority: 50
             }
         ]

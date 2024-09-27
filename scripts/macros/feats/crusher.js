@@ -3,10 +3,6 @@ import {actorUtils, combatUtils, constants, crosshairUtils, dialogUtils, effectU
 async function late({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
-    await pushHelper(workflow, item);
-    await critHelper(workflow, item);
-}
-async function pushHelper(workflow, item) {
     let targetToken = workflow.hitTargets.first();
     if (actorUtils.getSize(targetToken.actor) > actorUtils.getSize(workflow.actor) + 1) return;
     if (!combatUtils.perTurnCheck(item, 'crusher')) return;
@@ -38,8 +34,10 @@ async function pushHelper(workflow, item) {
     await genericUtils.update(targetToken.document, {x: (position.x ?? targetToken.document.center.x) - xOffset, y: (position.y ?? targetToken.document.center.y) - yOffset});
     await item.use();
 }
-async function critHelper(workflow, item) {
+async function lateCrit(workflow, item) {
     if (!workflow.isCritical) return;
+    if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
     let effectData = {
         name: item.name,
         img: item.img,
@@ -71,6 +69,19 @@ export let crusher = {
             {
                 pass: 'rollFinished',
                 macro: late,
+                priority: 50
+            }
+        ]
+    }
+};
+export let crusherCrit = {
+    name: 'Crusher: Critical',
+    version: '0.12.70',
+    midi: {
+        actor: [
+            {
+                pass: 'rollFinished',
+                macro: lateCrit,
                 priority: 50
             }
         ]
