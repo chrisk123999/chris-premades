@@ -320,7 +320,7 @@
             },
             "ArcaneJolt": {
                 "Harm": "Harm",
-                "HarmOrHeal": "Harm or Heal?",
+                "HarmOrHeal": "Arcane Jolt: Harm or Heal?",
                 "Heal": "Heal",
                 "WhoHeal": "Who to heal?"
             },

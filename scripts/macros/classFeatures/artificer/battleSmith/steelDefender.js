@@ -1,5 +1,6 @@
 import {Summons} from '../../../../lib/summons.js';
 import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {arcaneJoltHelper} from './arcaneJolt.js';
 
 async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Steel Defender');
@@ -100,9 +101,7 @@ async function arcaneJolt({workflow}) {
     let originItem = await fromUuid(effect?.origin);
     if (!originItem || originItem.system.uses.value === 0) return;
     if (!combatUtils.perTurnCheck(originItem, 'arcaneJolt')) return;
-    let selection = await dialogUtils.confirm(originItem.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: originItem.name}), {userId: socketUtils.firstOwner(originItem.parent, true)});
-    if (!selection) return;
-    await workflowUtils.syntheticItemRoll(originItem, [workflow.hitTargets.first()]);
+    await arcaneJoltHelper(workflow, originItem);
 }
 async function early({trigger: {entity: item, token}, workflow}) {
     if (workflow.token.document.disposition === token.document.disposition) return;

@@ -116,16 +116,12 @@
     },
     "chris-premades": {
       "info": {
-        "name": "Arcane Jolt",
-        "version": "0.12.28",
+        "version": "0.12.83",
         "identifier": "arcaneJolt",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
-          "item": [
-            "arcaneJolt"
-          ],
           "actor": [
             "arcaneJolt"
           ]
