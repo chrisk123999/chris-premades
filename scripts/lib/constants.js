@@ -112,6 +112,7 @@ const damageTypeOptions = () => Object.entries(CONFIG.DND5E.damageTypes).map(i =
 const creatureTypeOptions = () => Object.entries(CONFIG.DND5E.creatureTypes).map(i => ({label: i[1].label, value: i[0]}));
 const actorCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Actor').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
 const itemCompendiumPacks = () => [{label: '', value: ''}, ...game.packs.filter(i => i.documentName === 'Item').map(i => ({label: i.metadata.label, value: i.metadata.id}))];
+const abilityOptions = () => Object.values(CONFIG.DND5E.abilities).map(i => ({label: i.label, value: i.abbreviation}));
 const overTimeOptions = [
     {
         key: 'turn',
@@ -414,5 +415,6 @@ export let constants = {
     summonAnimationOptions,
     sizes,
     itemTypes,
-    tempConditionIcon
+    tempConditionIcon,
+    abilityOptions
 };

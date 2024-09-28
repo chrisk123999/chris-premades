@@ -432,7 +432,7 @@ export {packTactics} from './macros/monsterFeatures/generic/packTactics.js';
 export {reduce} from './macros/monsterFeatures/generic/reduce.js';
 export {reduceMaxHP} from './macros/monsterFeatures/generic/reduceMaxHP.js';
 export {spellTurning} from './macros/monsterFeatures/generic/spellTurning.js';
-export {strengthDrain} from './macros/monsterFeatures/generic/strengthDrain.js';
+export {abilityDrain} from './macros/monsterFeatures/generic/abilityDrain.js';
 export {sunlightSensitivity} from './macros/monsterFeatures/generic/sunlightSensitivity.js';
 export {surpriseAttack} from './macros/monsterFeatures/generic/surpriseAttack.js';
 export {swarmDamage} from './macros/monsterFeatures/generic/swarmDamage.js';

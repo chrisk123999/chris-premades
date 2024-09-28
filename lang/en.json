@@ -58,6 +58,7 @@
             "WeightOfSorrow": "Weight of Sorrow"
         },
         "Config": {
+            "Ability": "Ability:",
             "AffectAllies": "Should Affect Allies:",
             "AllowEnemies": "Allow selection of non-allied tokens?",
             "Animation": "Animation:",
@@ -115,6 +116,7 @@
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "Expire": "Expiration:",
             "Formula": "Formula:",
             "ImmuneCreatures": "Immune Creature Types:",
             "PlayAnimation": "Play Animation:",
