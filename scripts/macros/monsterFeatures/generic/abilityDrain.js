@@ -33,20 +33,17 @@ async function use({workflow}) {
                     value: -actualChange,
                     priority: 20
                 }
-            ]
+            ],
+            flags: {
+                dae: {
+                    showIcon: true
+                }
+            }
         };
         if (config.expire === 'short') {
-            effectData.flags = {
-                dae: {
-                    specialDuration: ['shortRest']
-                }
-            };
+            effectData.flags.dae.specialDuration = ['shortRest'];
         } else if (config.expire === 'long') {
-            effectData.flags = {
-                dae: {
-                    specialDuration: ['longRest']
-                }
-            };
+            effectData.flags.dae.specialDuration = ['longRest'];
         }
         await effectUtils.createEffect(targetToken.actor, effectData, {identifier: 'abilityDrain'});
     }
