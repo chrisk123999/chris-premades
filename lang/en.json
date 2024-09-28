@@ -512,6 +512,14 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "ContextualBonus": {
+                "Advantage": "Gives advantage:",
+                "Bonus": "If not advantage, what bonus:",
+                "Checks": "Ability Checks that may receive a bonus:",
+                "Condition": "When to receive bonus:",
+                "Saves": "Ability Saves that may receive a bonus:",
+                "Skills": "Skill Checks that may receive a bonus:"
+            },
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
             },
@@ -655,6 +663,11 @@
                 "Protective": "Protective Bond",
                 "ProtectiveDamage": "Protective Bond: Damage",
                 "ProtectiveTitle": "Protective Bond: Protect Target?"
+            },
+            "Engulf": {
+                "Grapples": "Initiates grapple",
+                "Grappling": "Grapple Behavior:",
+                "Requires": "Must be grappling already"
             },
             "Enlarge": {
                 "Double": "Double weapon dice, instead of providing +1d4:"
