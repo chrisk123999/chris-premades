@@ -11,6 +11,7 @@ async function turnEnd({trigger: {entity: item, token, target}}) {
 }
 export let auraDamageEnd = {
     name: 'Aura Damage: End of Turn',
+    translation: 'CHRISPREMADES.Macros.AuraDamage.Name',
     version: '0.12.77',
     combat: [
         {

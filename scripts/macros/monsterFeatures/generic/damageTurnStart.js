@@ -25,6 +25,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
 }
 export let damageTurnStart = {
     name: 'Damage on Turn Start',
+    translation: 'CHRISPREMADES.Macros.DamageTurnStart.Name',
     version: '0.12.78',
     midi: {
         item: [

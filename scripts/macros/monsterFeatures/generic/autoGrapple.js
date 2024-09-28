@@ -8,6 +8,7 @@ async function late({trigger: {entity: item}, workflow}) {
 }
 export let autoGrapple = {
     name: 'Auto Grapple',
+    translation: 'CHRISPREMADES.Macros.AutoGrapple.Name',
     version: '0.12.83',
     midi: {
         item: [

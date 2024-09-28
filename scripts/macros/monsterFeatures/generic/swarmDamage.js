@@ -14,6 +14,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let swarmDamage = {
     name: 'Swarm Damage',
+    translation: 'CHRISPREMADES.Macros.SwarmDamage.Name',
     version: '0.12.83',
     midi: {
         item: [

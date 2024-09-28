@@ -71,6 +71,7 @@ async function late({workflow}) {
 }
 export let reduceMaxHP = {
     name: 'Reduce Maximum HP',
+    translation: 'CHRISPREMADES.Macros.ReduceMaxHP.Name',
     version: '0.12.77',
     midi: {
         item: [

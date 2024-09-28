@@ -42,6 +42,7 @@ async function turnStart({trigger: {entity: item, token,}}) {
 }
 export let berserk = {
     name: 'Berserk',
+    translation: 'CHRISPREMADES.Macros.Berserk.Name',
     version: '12.0',
     combat: [
         {

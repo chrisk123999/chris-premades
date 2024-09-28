@@ -113,6 +113,7 @@ async function damage({workflow}) {
 }
 export let reduce = {
     name: 'Reduce',
+    translation: 'CHRISPREMADES.Macros.Reduce.Name',
     version: '0.12.83',
     midi: {
         item: [

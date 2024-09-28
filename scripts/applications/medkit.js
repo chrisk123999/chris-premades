@@ -248,11 +248,11 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             };
             context.genericFeatures.options = Object.entries(genericFeatures).map(([key, value]) => {
                 return {
-                    label: value.name,
+                    label: value.translation ? genericUtils.translate(value.translation) : value.name,
                     value: key,
                     isSelected: currentGenericFeaturesKeys.includes(key) ? true : false
                 };
-            });
+            }).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
             if (currentGenericFeaturesKeys.length) {
                 context.genericFeatures.configs = Object.entries(currentGenericFeatures).reduce((configs, [key, value]) => {
                     configs[key] = {

@@ -101,6 +101,7 @@ async function damage({workflow}) {
 }
 export let enlarge = {
     name: 'Enlarge',
+    translation: 'CHRISPREMADES.Macros.Enlarge.Name',
     version: '0.12.83',
     midi: {
         item: [

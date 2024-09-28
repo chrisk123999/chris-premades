@@ -9,6 +9,7 @@ async function early({trigger: {entity: item}, workflow}) {
 }
 export let packTactics = {
     name: 'Pack Tactics',
+    translation: 'CHRISPREMADES.Macros.PackTactics.Name',
     version: '0.12.83',
     midi: {
         actor: [

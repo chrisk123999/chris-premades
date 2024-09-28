@@ -48,6 +48,7 @@ async function postSave({trigger: {entity: item}, workflow}) {
 }
 export let spellTurning = {
     name: 'Spell Turning',
+    translation: 'CHRISPREMADES.Macros.SpellTurning.Name',
     version: '0.12.78',
     midi: {
         actor: [

@@ -52,6 +52,7 @@ async function use({workflow}) {
 }
 export let abilityDrain = {
     name: 'Ability Drain',
+    translation: 'CHRISPREMADES.Macros.AbilityDrain.Name',
     version: '0.12.83',
     midi: {
         item: [
