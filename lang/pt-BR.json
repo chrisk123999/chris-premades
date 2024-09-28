@@ -58,6 +58,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "Ability": "Atributo:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
@@ -115,6 +116,7 @@
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
+            "Expire": "Expiração:",
             "Formula": "Fórmula:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
@@ -340,6 +342,10 @@
             },
             "AuraOfVitality": {
                 "Healing": "Aura de Vitalidade: Cura"
+            },
+            "AutoGrapple": {
+                "DC": "CD fixo para escapar do agarrão (contestado se 0):",
+                "Disadvantage": "Dar desvantagem no teste de escape:"
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
@@ -649,6 +655,9 @@
                 "Protective": "Vínculo de Proteção",
                 "ProtectiveDamage": "Vínculo de Proteção: Dano",
                 "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
+            },
+            "Enlarge": {
+                "Double": "Dados de arma dobrados ao invpes de dar +1d4:"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -1110,12 +1119,28 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
             },
+            "Reduce": {
+                "AlwaysTiny": "Sempre reduzir para Minúsculo:",
+                "AttackDisadvantage": "Desvantagem em ataques baseados em força:",
+                "OneDamage": "Ataques baseados em força causam 1 de dano de arma:",
+                "StealthACBonus": "+5 em Furtividade e CA:"
+            },
             "ReduceMaxHP": {
                 "DamageTypeFilter": "Aplicar apenas certos tipos de dano à redução máxima de PV:",
                 "Half": "Reduzir o dano/rolagem pela metade:",
                 "Long": "Expira em Descanso Longo:",
                 "ReduceByRoll": "Reduzir por rolagem, não dano:",
                 "Short": "Expira em Descanso Curto:"
+            },
+            "Regeneration": {
+                "Blocked": "Regeneração Bloqueada",
+                "Critical": "Críticos sempre bloqueiam a regeneração",
+                "DamageTypes": "Tipos de dano para reduzir/bloquear a regeneração:",
+                "Dead": "Morto?",
+                "Reduced": "Regeneração Reduzida",
+                "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
+                "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
+                "ZeroHP": "A criatura morre ao atingir 0 PV"
             },
             "RingOfSpellStoring": {
                 "Clear": "Limpar magias usadas",
