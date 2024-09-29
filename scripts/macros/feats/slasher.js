@@ -1,6 +1,6 @@
 import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
 
-async function lateSpeed(workflow, item) {
+async function lateSpeed({trigger: {entity: item}, workflow}) {
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
     if (!combatUtils.perTurnCheck(item, 'slasher')) return;
@@ -30,7 +30,7 @@ async function lateSpeed(workflow, item) {
     };
     await effectUtils.createEffect(workflow.targets.first().actor, effectData);
 }
-async function lateCrit(workflow, item) {
+async function lateCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('slashing')) return;
