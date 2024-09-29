@@ -271,6 +271,10 @@ form .cpr-row-center .multi-select-label {
     margin-bottom: 0.4em;
 }
 
+.cpr-medkit-tab .cpr-fieldset-group .cpr-fieldset .cpr-row-center:has(> select) {
+    flex-basis: 100%;
+}
+
 /* Just some flex values */
 
 .cpr-config-flex {
