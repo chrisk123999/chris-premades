@@ -34,7 +34,7 @@ async function late({trigger: {entity: item}, workflow}) {
     await genericUtils.update(targetToken.document, {x: (position.x ?? targetToken.document.center.x) - xOffset, y: (position.y ?? targetToken.document.center.y) - yOffset});
     await item.use();
 }
-async function lateCrit(workflow, item) {
+async function lateCrit({trigger: {entity: item}, workflow}) {
     if (!workflow.isCritical) return;
     if (workflow.hitTargets.size !== 1 || !workflow.damageRoll || !constants.attacks.includes(workflow.item.system.actionType)) return;
     if (!workflowUtils.getDamageTypes(workflow.damageRolls).has('bludgeoning')) return;
