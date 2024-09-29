@@ -23,6 +23,7 @@ async function use({workflow}) {
 }
 async function hit({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
+    if (workflow.item.uuid === effect.origin) return;
     let targetToken = workflow.hitTargets.first();
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);

@@ -135,6 +135,9 @@ async function use({workflow}) {
     let [newToken] = await actorUtils.polymorph(workflow.actor, sourceActor, options, false);
     let newActor = newToken?.actor;
     if (!newActor) return;
+    await genericUtils.update(newToken, {
+        'sight.enabled': true
+    });
     if (oldSheetOpened) newActor.sheet.render(true);
     let effect = await effectUtils.createEffect(newActor, effectData, {vae: [{type: 'use', name: featureData.name, identifier: 'wildShapeRevert'}], identifier: 'wildShapeActive'});
     await itemUtils.createItems(newActor, [featureData], {favorite: true, parentEntity: effect});

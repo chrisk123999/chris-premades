@@ -169,7 +169,21 @@ export async function start({trigger: {entity: effect}}) {
     let {selection, playAnimation, origSize, newSize} = effect.flags['chris-premades'].enlargeReduce;
     let token = actorUtils.getFirstToken(effect.parent);
     if (!token) return;
-    if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') return;
+    if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') {
+        let updates = {
+            changes: effect.changes.concat(
+                {
+                    key: 'system.traits.size',
+                    mode: 5,
+                    value: newSize,
+                    priority: 20
+                }
+            ),
+            'flags.chris-premades.effect.sizeAnimation': true
+        };
+        await genericUtils.update(effect, updates);
+        return;
+    }
     // Animations by: eskiemoh
     if (selection === 'enlarge') {
         let scale = 1;

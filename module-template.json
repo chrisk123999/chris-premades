@@ -86,9 +86,10 @@
       {
         "id": "babonus",
         "type": "module",
+        "manifest": "https://github.com/krbz999/babonus/releases/download/v12.1.4/module.json",
         "compatibility": {
           "minimum": "12.1.2",
-          "verified": "12.1.2",
+          "verified": "12.1.4",
           "maximum": "12.1.4"
         }
       },
@@ -112,7 +113,7 @@
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.17",
+          "minimum": "11.3.14",
           "verified": "11.3.17"
         }
       }
