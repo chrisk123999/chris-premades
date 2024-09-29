@@ -2,9 +2,13 @@
 A collection of automated items including spells, class features, monster features, etc., mechanics to make those possible, and quality-of-life based extensions for a high-automation Midi-QOL based D&D5e environment. Compendiums included in this module do not include item's descriptions. While this module has several dependencies, do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module. Extra support can be recieved and bug reports can be made both on this GitHub, or on the [Discord server](https://discord.gg/BumxBcQDrT).
   
 ### Authors:
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O5G582S) [Chris](https://github.com/chrisk123999) <br> 
-[Michael](https://github.com/roth-michael) <br>
-[Autumn](https://github.com/Autumn225)
+[Chris](https://github.com/chrisk123999) <br> 
+[Autumn](https://github.com/Autumn225) <br>
+[Michael](https://github.com/roth-michael)
+
+### Support:
+[<img src="images/chris-kofi.svg" width=237px />](https://ko-fi.com/O5O5G582S) <br>
+[<img src="images/michael-kofi.svg" width=253px />](https://ko-fi.com/T6T8XKCII)
   
 # Required Modules  
 | Module | Verified Version |  
