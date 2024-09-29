@@ -29,6 +29,7 @@ async function combatEnd({trigger}) {
 }
 export let martialAdvantage = {
     name: 'Martial Advantage',
+    translation: 'CHRISPREMADES.Macros.MartialAdvantage.Name',
     version: '0.12.78',
     midi: {
         actor: [

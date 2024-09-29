@@ -13,6 +13,7 @@ async function targetLate({trigger: {entity: item, token}, workflow}) {
 }
 export let deathBurst = {
     name: 'Death Burst',
+    translation: 'CHRISPREMADES.Macros.DeathBurst.Name',
     version: '0.12.78',
     midi: {
         actor: [

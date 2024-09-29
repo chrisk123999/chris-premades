@@ -32,6 +32,7 @@ async function use({trigger, workflow}) {
 }
 export let parry = {
     name: 'Parry',
+    translation: 'CHRISPREMADES.Macros.Parry.Name',
     version: '0.7.78',
     midi: {
         item: [

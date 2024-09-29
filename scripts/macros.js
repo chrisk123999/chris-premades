@@ -422,6 +422,7 @@ export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDa
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
 export {autoGrapple} from './macros/monsterFeatures/generic/autoGrapple.js';
 export {berserk} from './macros/monsterFeatures/generic/berserk.js';
+export {contextualBonus} from './macros/monsterFeatures/generic/contextualBonus.js';
 export {damageTurnStart, damageTurnStartTarget} from './macros/monsterFeatures/generic/damageTurnStart.js';
 export {deathBurst} from './macros/monsterFeatures/generic/deathBurst.js';
 export {enlarge} from './macros/monsterFeatures/generic/enlarge.js';

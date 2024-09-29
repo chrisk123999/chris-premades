@@ -28,6 +28,7 @@ async function apply({trigger, workflow, ditem}) {
 }
 export let undeadFortitude = {
     name: 'Undead Fortitude',
+    translation: 'CHRISPREMADES.Macros.UndeadFortitude.Name',
     version: '0.12.0',
     midi: {
         actor: [

@@ -48,6 +48,7 @@ async function turnStart({trigger: {entity: item, token, target}}) {
 }
 export let gaze = {
     name: 'Gaze',
+    translation: 'CHRISPREMADES.Macros.Gaze.Name',
     version: '0.12.77',
     combat: [
         {

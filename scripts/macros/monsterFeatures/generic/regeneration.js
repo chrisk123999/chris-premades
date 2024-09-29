@@ -133,6 +133,7 @@ async function onHit({trigger: {entity: item, token}, workflow}) {
 }
 export let genericRegeneration = {
     name: 'Regeneration',
+    translation: 'CHRISPREMADES.Macros.Regeneration.Name',
     version: '0.12.82',
     midi: {
         actor: [

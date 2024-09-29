@@ -20,6 +20,7 @@ async function early({trigger: {entity: item}, workflow}) {
 }
 export let sunlightSensitivity = {
     name: 'Sunlight Sensitivity',
+    translation: 'CHRISPREMADES.Macros.SunlightSensitivity.Name',
     version: '0.12.78',
     midi: {
         actor: [

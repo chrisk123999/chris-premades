@@ -248,11 +248,11 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             };
             context.genericFeatures.options = Object.entries(genericFeatures).map(([key, value]) => {
                 return {
-                    label: value.name,
+                    label: value.translation ? genericUtils.translate(value.translation) : value.name,
                     value: key,
                     isSelected: currentGenericFeaturesKeys.includes(key) ? true : false
                 };
-            });
+            }).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
             if (currentGenericFeaturesKeys.length) {
                 context.genericFeatures.configs = Object.entries(currentGenericFeatures).reduce((configs, [key, value]) => {
                     configs[key] = {
@@ -295,6 +295,24 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                                 case 'damageTypes': {
                                     config.isSelectMany = true;
                                     config.options = Object.entries(CONFIG.DND5E.damageTypes).filter(([key, value]) => !key.toLowerCase().includes('none')).map(([key, value]) => ({
+                                        label: value.label,
+                                        value: key,
+                                        isSelected: config?.value?.includes(key) 
+                                    }));
+                                    break;
+                                }
+                                case 'abilities': {
+                                    config.isSelectMany = true;
+                                    config.options = Object.entries(CONFIG.DND5E.abilities).map(([key, value]) => ({
+                                        label: value.label,
+                                        value: key,
+                                        isSelected: config?.value?.includes(key) 
+                                    }));
+                                    break;
+                                }
+                                case 'skills': {
+                                    config.isSelectMany = true;
+                                    config.options = Object.entries(CONFIG.DND5E.skills).map(([key, value]) => ({
                                         label: value.label,
                                         value: key,
                                         isSelected: config?.value?.includes(key) 
@@ -439,7 +457,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 if (value instanceof Object && !(value instanceof Array)) {
                     Object.entries(value).forEach(async ([flagKey, flagValue]) => {
                         if (genericFeatures.configs) {
-                            Object.values(genericFeatures.configs).forEach(async option => {
+                            Object.values(genericFeatures.configs)?.forEach(async option => {
                                 let index = flagValue.indexOf(option.id);
                                 if (index > -1) {
                                     if (flagValue.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key + '.' + flagKey);
@@ -452,7 +470,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         }
                     });
                 } else {
-                    Object.values(genericFeatures.configs).forEach(async option => {
+                    Object.values(genericFeatures.configs)?.forEach(async option => {
                         let index = value.indexOf(option.id);
                         if (index > -1) {
                             if (value.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key);
@@ -472,47 +490,13 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return genericConfigs;
             }, {});
             if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
-            Object.keys(genericConfigs).forEach(async i => { // Has to be a better way to do this?
+            Object.keys(genericConfigs).forEach(async i => {
                 let macroInfo = macros[i];
-                if (macroInfo?.midi?.actor) {
-                    if (item?.flags['chris-premades']?.macros?.midi?.actor) {
-                        await item.setFlag('chris-premades', 'macros.midi.actor', item.flags['chris-premades'].macros.midi.actor.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.midi.actor', [i]);
-                }
-                if (macroInfo?.midi?.item) {
-                    if (item?.flags['chris-premades']?.macros?.midi?.item) {
-                        await item.setFlag('chris-premades', 'macros.midi.item', item.flags['chris-premades'].macros.midi.item.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.midi.item', [i]);
-                }
-                if (macroInfo?.aura) {
-                    if (item?.flags['chris-premades']?.macros?.aura) {
-                        await item.setFlag('chris-premades', 'macros.aura', item.flags['chris-premades'].macros.aura.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.aura', [i]);
-                }
-                if (macroInfo?.combat) {
-                    if (item?.flags['chris-premades']?.macros?.combat) {
-                        await item.setFlag('chris-premades', 'macros.combat', item.flags['chris-premades'].macros.combat.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.combat', [i]);
-                }
-                if (macroInfo?.movement) {
-                    if (item?.flags['chris-premades']?.macros?.movement) {
-                        await item.setFlag('chris-premades', 'macros.movement', item.flags['chris-premades'].macros.movement.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.movement', [i]);
-                }
-                if (macroInfo?.rest) {
-                    if (item?.flags['chris-premades']?.macros?.rest) {
-                        await item.setFlag('chris-premades', 'macros.rest', item.flags['chris-premades'].macros.rest.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.rest', [i]);
-                }
-                if (macroInfo?.save) {
-                    if (item?.flags['chris-premades']?.macros?.save) {
-                        await item.setFlag('chris-premades', 'macros.save', item.flags['chris-premades'].macros.save.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.save', [i]);
-                }
-                if (macroInfo?.skill) {
-                    if (item?.flags['chris-premades']?.macros?.skill) {
-                        await item.setFlag('chris-premades', 'macros.skill', item.flags['chris-premades'].macros.skill.concat([i]));
-                    } else await item.setFlag('chris-premades', 'macros.skill', [i]);
+                let macroFields = ['midi.actor', 'midi.item', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
+                for (let macroField of macroFields) {
+                    if (genericUtils.getProperty(macroInfo, macroField)) {
+                        if (item) await genericUtils.setFlag(item, 'chris-premades', 'macros.' + macroField, (genericUtils.getProperty(item, 'flags.chris-premades.macros.' + macroField) ?? []).concat([i]));
+                    }
                 }
             });
         }

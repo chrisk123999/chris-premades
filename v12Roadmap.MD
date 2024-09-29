@@ -105,7 +105,7 @@ Goals:
             - [x] Or reduced by a roll (1d6) 
         - [x] Specified target takes damage at the start of the attacker's turn (ie clockwork defender bite)
         - [x] Spell turning, adv on throws that only target it, spell of [level] or lower has no effect on save (ie crag cat) (if advantage, level, targets caster)
-        - [ ] Contextual bonuses (deep gnome stone camoflauge)
+        - [x] Contextual bonuses (deep gnome stone camoflauge)
         - [x] Enlarge only (duergar)
         - [x] Reduce only (mind master)
         - [x] Sunlight sensitivity (dis on attack rolls, skill check certainly)

@@ -282,6 +282,9 @@
                 "NoValid": "No valid spells found!",
                 "Select": "Select the associated spell for this feature:"
             },
+            "AbilityDrain": {
+                "Name": "Ability Drain"
+            },
             "Actions": {
                 "Dodge": "Dodge",
                 "Grapple": "Grapple",
@@ -291,7 +294,8 @@
                 "Grappling": "Grappling {tokenName}"
             },
             "AdvantageDamageBonus": {
-                "Bonus": "Bonus damage if attack has advantage:"
+                "Bonus": "Bonus damage if attack has advantage:",
+                "Name": "Advantage Damage Bonus"
             },
             "AllPurposeTool": {
                 "Channel": "All-Purpose Tool: Channel Creative Forces",
@@ -337,6 +341,9 @@
                 "WeapToolProf": "Weapon/Tool Proficiency",
                 "Which": "Select proficiencies:"
             },
+            "AuraDamage": {
+                "Name": "Aura Damage: End of Turn"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Temporarily remove existing hp max reduction while in aura:"
             },
@@ -345,7 +352,8 @@
             },
             "AutoGrapple": {
                 "DC": "Flat DC to escape grapple (contested if 0):",
-                "Disadvantage": "Grant disadvantage on escape check:"
+                "Disadvantage": "Grant disadvantage on escape check:",
+                "Name": "Auto Grapple"
             },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"
@@ -369,7 +377,8 @@
             },
             "Berserk": {
                 "Animation": "Berserk Animation:",
-                "HPThreshold": "HP Threshold:"
+                "HPThreshold": "HP Threshold:",
+                "Name": "Berserk"
             },
             "BestialSoul": {
                 "Already": "You already have a Bestial Soul benefit active!",
@@ -512,6 +521,15 @@
                 "Source": "Compelled Duel: Source",
                 "Target": "Compelled Duel: Target"
             },
+            "ContextualBonus": {
+                "Advantage": "Gives advantage:",
+                "Bonus": "If not advantage, what bonus:",
+                "Checks": "Ability Checks that may receive a bonus:",
+                "Condition": "When to receive bonus:",
+                "Name": "Contextual Bonus",
+                "Saves": "Ability Saves that may receive a bonus:",
+                "Skills": "Skill Checks that may receive a bonus:"
+            },
             "ControlUndead": {
                 "Controlled": "Control Undead: Controlled"
             },
@@ -540,6 +558,7 @@
                 "Light": "Crystal Blade: Light"
             },
             "DamageTurnStart": {
+                "Name": "Damage on Turn Start",
                 "SpecificDamage": "Use formula instead of item damage:",
                 "SpecificType": "If so, damage type:"
             },
@@ -564,6 +583,9 @@
             "Dawn": {
                 "EndTurn": "Dawn: End Turn",
                 "Move": "Dawn: Move"
+            },
+            "DeathBurst": {
+                "Name": "Death Burst"
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detect Thoughts: Probe Deeper"
@@ -656,8 +678,14 @@
                 "ProtectiveDamage": "Protective Bond: Damage",
                 "ProtectiveTitle": "Protective Bond: Protect Target?"
             },
+            "Engulf": {
+                "Grapples": "Initiates grapple",
+                "Grappling": "Grapple Behavior:",
+                "Requires": "Must be grappling already"
+            },
             "Enlarge": {
-                "Double": "Double weapon dice, instead of providing +1d4:"
+                "Double": "Double weapon dice, instead of providing +1d4:",
+                "Name": "Enlarge"
             },
             "EnlargeReduce": {
                 "Enlarge": "Enlarge",
@@ -763,7 +791,8 @@
                 "AllowAvert": "Allow Averting Eyes:",
                 "AvertAdvantage": "Averting eyes grants the creature advantage on attacks against target:",
                 "AvertEffect": "Averted Eyes",
-                "AvertSelect": "Avert your eyes from the {tokenName}?"
+                "AvertSelect": "Avert your eyes from the {tokenName}?",
+                "Name": "Gaze"
             },
             "Grapple": {
                 "ChooseSkill": "How would you like to contest the grapple?",
@@ -954,6 +983,7 @@
                 "Check": "This check relies on: ",
                 "DiceThreshold": "Dice Roll Threshold:",
                 "Hearing": "Hearing",
+                "Name": "Keen Senses",
                 "Sight": "Sight",
                 "Smell": "Smell"
             },
@@ -1013,6 +1043,9 @@
                 "Invalid": "Invalid Action Type!",
                 "Move": "Manifest Mind: Move"
             },
+            "MartialAdvantage": {
+                "Name": "Martial Advantage"
+            },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },
@@ -1070,10 +1103,16 @@
                 "Damage": "Use {itemName} at the cost of {damageFormula} damage?",
                 "DamageItem": "Overchannel: Damage"
             },
+            "PackTactics": {
+                "Name": "Pack Tactics"
+            },
             "PariahsShield": {
                 "MaxBonus": "Max AC Bonus:",
                 "Protect": "Protect {name} with {item}?",
                 "Reaction": "Pariah's Shield: Protect"
+            },
+            "Parry": {
+                "Name": "Parry"
             },
             "Piercer": {
                 "Reroll": "Reroll which lowest die?"
@@ -1122,6 +1161,7 @@
             "Reduce": {
                 "AlwaysTiny": "Always reduce to Tiny:",
                 "AttackDisadvantage": "Disadvantage on strength-based attacks:",
+                "Name": "Reduce",
                 "OneDamage": "Strength-based attacks deal 1 weapon damage:",
                 "StealthACBonus": "+5 to Stealth & AC:"
             },
@@ -1129,6 +1169,7 @@
                 "DamageTypeFilter": "Only apply certain damage types to max hp reduction:",
                 "Half": "Reduce by half the damage/roll:",
                 "Long": "Expires on Long Rest:",
+                "Name": "Reduce Maximum HP",
                 "ReduceByRoll": "Reduce by roll, not damage:",
                 "Short": "Expires on Short Rest:"
             },
@@ -1137,6 +1178,7 @@
                 "Critical": "Crits always block regeneration",
                 "DamageTypes": "Damage Types to reduce/block regeneration:",
                 "Dead": "Dead?",
+                "Name": "Regeneration",
                 "Reduced": "Regeneration Reduced",
                 "ShowIcons": "Show icons for regeneration blocked/reduced:",
                 "Threshold": "Damage required to permanently kill if at 0hp:",
@@ -1218,6 +1260,7 @@
             },
             "SpellTurning": {
                 "Advantage": "Advantage on saves:",
+                "Name": "Spell Turning",
                 "SpellLevel": "Maximum spell level for retarget:",
                 "TargetCaster": "Target Caster if succeed:"
             },
@@ -1408,11 +1451,16 @@
             "SunlightSensitivity": {
                 "Attack": "Is {tokenName} in sunlight?",
                 "Auto": "Assume bright light means sunlight for attack disadvantage:",
+                "Name": "Sunlight Sensitivity",
                 "Skill": "This check relies on sight and the creature is in sunlight"
             },
             "SurpriseAttack": {
                 "Dialog": "Use Dialog instead of checking Surprised condition:",
+                "Name": "Surprise Attack",
                 "Surprised": "Is the target surprised?"
+            },
+            "SwarmDamage": {
+                "Name": "Swarm Damage"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Lower Planes",
@@ -1463,6 +1511,9 @@
             "ThunderousSmite": {
                 "Push": "Thunderous Smite: Push"
             },
+            "TouchDamage": {
+                "Name": "Touch Damage"
+            },
             "TwilightSanctuary": {
                 "Charmed": "Remove the Charmed condition",
                 "Frightened": "Remove the Frightened condition",
@@ -1475,7 +1526,8 @@
             },
             "UndeadFortitude": {
                 "Critical": "Critical Hits bypass Undead Fortitude:",
-                "DamageTypes": "Damage Types to bypass Undead Fortitude:"
+                "DamageTypes": "Damage Types to bypass Undead Fortitude:",
+                "Name": "Undead Fortitude"
             },
             "Underwater": {
                 "TooFar": "Target is too far away while underwater!",

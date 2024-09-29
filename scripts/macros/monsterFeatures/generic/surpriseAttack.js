@@ -19,6 +19,7 @@ async function damage({trigger: {entity: item}, workflow}) {
 }
 export let surpriseAttack = {
     name: 'Surprise Attack',
+    translation: 'CHRISPREMADES.Macros.SurpriseAttack.Name',
     version: '0.12.77',
     midi: {
         actor: [
