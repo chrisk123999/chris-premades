@@ -212,6 +212,7 @@
             "UpdateItem": "Update Item"
         },
         "Firearm": {
+            "Ammunition": "Firearm Bullet",
             "Broken": "Broken",
             "Damaged": "Damaged",
             "Firearm": "Firearm",
@@ -219,7 +220,18 @@
             "IsBroken": "This firearm is broken and must be repaired!",
             "IsDamaged": "This firearm is damaged and must be repaired!",
             "Misfire": "Misfire",
+            "MisfireScore": "Misfire Score:",
+            "NoAmmo": "You have no ammunition!",
+            "NoReloads": "You have no firearms in need of reloading!",
+            "NoRepairs": "You have no firearms to repair!",
+            "NoTinkers": "You have no Tinker's Tools to make the repair with!",
             "Other": "Other",
+            "OutOfAmmo": "No remaining shots/ammo, must reload!",
+            "RepairFailure": "{weaponName} is now broken!",
+            "RepairSuccess": "{weaponName} is successfully repaired!",
+            "SelectAmmo": "Which ammo to use?",
+            "SelectReload": "Which firearm to reload?",
+            "SelectRepair": "Which firearm to repair?",
             "Status": "Status:",
             "TrickShot": "Trick Shot",
             "Undamaged": "Undamaged"
@@ -945,7 +957,7 @@
                 "Known": "Known Infusions:",
                 "New": "New {infusionLabel} infusion added to {newActorName}'s <b>{itemName}</b>.",
                 "NoArmor": "Target has no valid non-magical equipped armor!",
-                "NoFocus": "Target has no valid non-magical rod, staff, or wand equipped!",                
+                "NoFocus": "Target has no valid non-magical rod, staff, or wand equipped!",
                 "NoKnown": "You have no known infusions configured in the item medkit!",
                 "NoMissing": "No spell slots to recover!",
                 "NoShield": "Target has no valid non-magical equipped shield!",
@@ -1898,13 +1910,13 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
-            "bg3WeaponActionsEnabled": {
-                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped. (NOT FUNCTIONAL)",
-                "Name": "Baldur's Gate 3 Weapon Actions"
-            },
             "bg3WeaponActionConfig": {
                 "Hint": "Configure the Baldur's Gate 3 weapon actions. (NOT FUNCTIONAL)",
                 "Name": "Configure Baldur's Gate 3 Weapon Actions"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped. (NOT FUNCTIONAL)",
+                "Name": "Baldur's Gate 3 Weapon Actions"
             },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",

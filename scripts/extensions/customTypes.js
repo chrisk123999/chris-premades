@@ -17,12 +17,14 @@ async function firearm(enabled) {
         CONFIG.DND5E.weaponProficiencies.oth = genericUtils.translate('CHRISPREMADES.Firearm.Other');
         CONFIG.DND5E.weaponProficienciesMap.firearm = 'oth';
         CONFIG.DND5E.weaponTypes.firearm = genericUtils.translate('CHRISPREMADES.Firearm.Firearm');
+        CONFIG.DND5E.consumableTypes.ammo.subtypes['firearmAmmo'] = genericUtils.translate('CHRISPREMADES.Firearm.Ammunition');
     } else {
         delete CONFIG.DND5E.weaponIds.firearm;
         delete CONFIG.DND5E.featureTypes.class.subtypes.trickShot;
         delete CONFIG.DND5E.weaponProficiencies.oth;
         delete CONFIG.DND5E.weaponProficienciesMap.firearm;
         delete CONFIG.DND5E.weaponTypes.firearm;
+        delete CONFIG.DND5E.consumableTypes.ammo.subtypes.firearmAmmo;
     }
 }
 async function weaponAction(enabled) {

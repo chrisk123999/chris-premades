@@ -499,7 +499,7 @@ export {eldritchClawTattoo} from './macros/items/trinket/eldritchClawTattoo.js';
 export {elixirOfHealth} from './macros/items/consumable/elixirOfHealth.js';
 export {eyesOfMinuteSeeing} from './macros/items/trinket/eyesOfMinuteSeeing.js';
 export {eyesOfTheEagle} from './macros/items/trinket/eyesOfTheEagle.js';
-export {firearm} from './macros/mechanics/firearm.js';
+export {firearm, firearmReload, firearmRepair} from './macros/mechanics/firearm.js';
 export {grovelthrash, grovelthrash0, grovelthrash1, grovelthrash2} from './macros/items/weapons/grovelthrash.js';
 export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';
 export {insigniaOfClaws} from './macros/items/trinket/insigniaOfClaws.js';
