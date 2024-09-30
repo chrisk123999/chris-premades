@@ -16,6 +16,17 @@
         "Auras": {
             "Source": "{auraName}: Origem"
         },
+        "BG3": {
+            "Bleeding": "Sangrando",
+            "ChestTrauma": "Trauma Torácico",
+            "Dazed": "Ofuscado",
+            "GapingWounds": "Feridas Abertas",
+            "Hamstrung": "Hamstrung",
+            "Maimed": "Mutilado",
+            "OffBalance": "Desequilibrado",
+            "WeakGrip": "Aperto Fraco",
+            "WeaponAction": "Ação com Arma"
+        },
         "Backup": {
             "Daily": "Diário",
             "Forever": "Para Sempre",
@@ -282,6 +293,9 @@
                 "NoValid": "Nenhuma magia válida encontrada!",
                 "Select": "Selecione a magia associada para esta característica:"
             },
+            "AbilityDrain": {
+                "Name": "Drenagem de Habilidade"
+            },
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
@@ -291,7 +305,8 @@
                 "Grappling": "Agarrando {tokenName}"
             },
             "AdvantageDamageBonus": {
-                "Bonus": "Dano adicional se o ataque tiver vantagem:"
+                "Bonus": "Dano adicional se o ataque tiver vantagem:",
+                "Name": "Bônus Adicional de Vantagem"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -337,6 +352,9 @@
                 "WeapToolProf": "Proficiência com Armas/Ferramentas",
                 "Which": "Selecione proficiências:"
             },
+            "AuraDamage": {
+                "Name": "Dano de Aura: Fim do Turno"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
@@ -345,7 +363,8 @@
             },
             "AutoGrapple": {
                 "DC": "CD fixo para escapar do agarrão (contestado se 0):",
-                "Disadvantage": "Dar desvantagem no teste de escape:"
+                "Disadvantage": "Dar desvantagem no teste de escape:",
+                "Name": "Auto-Agarrão"
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
@@ -369,7 +388,8 @@
             },
             "Berserk": {
                 "Animation": "Animação Berserk:",
-                "HPThreshold": "Limite de PV:"
+                "HPThreshold": "Limite de PV:",
+                "Name": "Berserk"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -512,6 +532,15 @@
                 "Source": "Duelo Compelido: Origem",
                 "Target": "Duelo Compelido: Alvo"
             },
+            "ContextualBonus": {
+                "Advantage": "Dar vantagem:",
+                "Bonus": "Se não vantagem, qual bônus:",
+                "Checks": "Testes de Atributo que podem receber bônus:",
+                "Condition": "Quando receber bônus:",
+                "Name": "Bônus Contextual",
+                "Saves": "Atributos de Salvaguarda que podem receber bônus:",
+                "Skills": "Testes de Perícia que podem receber bônus:"
+            },
             "ControlUndead": {
                 "Controlled": "Controlar Morto-Vivo: Controlado"
             },
@@ -540,6 +569,7 @@
                 "Light": "Lâmina de Cristal: Luz"
             },
             "DamageTurnStart": {
+                "Name": "Dano no Início do Turno",
                 "SpecificDamage": "Use fórmula ao invés do dano do item:",
                 "SpecificType": "Se sim, tipo de dano:"
             },
@@ -564,6 +594,9 @@
             "Dawn": {
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
+            },
+            "DeathBurst": {
+                "Name": "Explosão da Morte"
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
@@ -656,8 +689,14 @@
                 "ProtectiveDamage": "Vínculo de Proteção: Dano",
                 "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
             },
+            "Engulf": {
+                "Grapples": "Iniciar agarrão",
+                "Grappling": "Comportamento do Agarrão:",
+                "Requires": "Já deve estar agarrando"
+            },
             "Enlarge": {
-                "Double": "Dados de arma dobrados ao invpes de dar +1d4:"
+                "Double": "Dados de arma dobrados ao invés de +1d4:",
+                "Name": "Aumentar"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -763,7 +802,8 @@
                 "AllowAvert": "Permitir Desviar os Olhos:",
                 "AvertAdvantage": "Desviar os olhos concede à criatura vantagem em ataques contra o alvo:",
                 "AvertEffect": "Olhos Desviados",
-                "AvertSelect": "Desviar os olhos de {tokenName}?"
+                "AvertSelect": "Desviar os olhos de {tokenName}?",
+                "Name": "Olhar"
             },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
@@ -954,6 +994,7 @@
                 "Check": "Este teste depende de: ",
                 "DiceThreshold": "Limite de Rolagem de Dados:",
                 "Hearing": "Audição",
+                "Name": "Sentidos Aguçados",
                 "Sight": "Visão",
                 "Smell": "Olfato"
             },
@@ -1013,6 +1054,9 @@
                 "Invalid": "Tipo de Ação Inválida!",
                 "Move": "Mente Manifestada: Mover"
             },
+            "MartialAdvantage": {
+                "Name": "Vantagem Marcial"
+            },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
@@ -1070,10 +1114,16 @@
                 "Damage": "Usar {itemName} ao custo de {damageFormula} de dano?",
                 "DamageItem": "Sobrecarga: Dano"
             },
+            "PackTactics": {
+                "Name": "Táticas de Bando"
+            },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
                 "Protect": "Proteger {name} com {item}?",
                 "Reaction": "Escudo do Pária: Proteger"
+            },
+            "Parry": {
+                "Name": "Aparar"
             },
             "Piercer": {
                 "Reroll": "Rerolar qual dado mais baixo?"
@@ -1122,6 +1172,7 @@
             "Reduce": {
                 "AlwaysTiny": "Sempre reduzir para Minúsculo:",
                 "AttackDisadvantage": "Desvantagem em ataques baseados em força:",
+                "Name": "Reduzir",
                 "OneDamage": "Ataques baseados em força causam 1 de dano de arma:",
                 "StealthACBonus": "+5 em Furtividade e CA:"
             },
@@ -1129,6 +1180,7 @@
                 "DamageTypeFilter": "Aplicar apenas certos tipos de dano à redução máxima de PV:",
                 "Half": "Reduzir o dano/rolagem pela metade:",
                 "Long": "Expira em Descanso Longo:",
+                "Name": "Reduzir PV Máximo",
                 "ReduceByRoll": "Reduzir por rolagem, não dano:",
                 "Short": "Expira em Descanso Curto:"
             },
@@ -1137,6 +1189,7 @@
                 "Critical": "Críticos sempre bloqueiam a regeneração",
                 "DamageTypes": "Tipos de dano para reduzir/bloquear a regeneração:",
                 "Dead": "Morto?",
+                "Name": "Regeneração",
                 "Reduced": "Regeneração Reduzida",
                 "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
                 "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
@@ -1218,6 +1271,7 @@
             },
             "SpellTurning": {
                 "Advantage": "Vantagem em salvaguardas:",
+                "Name": "Virar Magia",
                 "SpellLevel": "Nível máximo de magia para redirecionamento:",
                 "TargetCaster": "Alvejar Conjurador se bem-sucedido:"
             },
@@ -1408,11 +1462,16 @@
             "SunlightSensitivity": {
                 "Attack": "{tokenName} está na luz do sol?",
                 "Auto": "Assumir que luz plena significa luz solar para desvantagem do ataque:",
+                "Name": "Sensibilidade ao Sol",
                 "Skill": "Este teste depende da visão e a criatura está sob a luz do sol"
             },
             "SurpriseAttack": {
                 "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
+                "Name": "Ataque Surpresa",
                 "Surprised": "O alvo está surpreso?"
+            },
+            "SwarmDamage": {
+                "Name": "Dano do Enxame"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
@@ -1463,6 +1522,9 @@
             "ThunderousSmite": {
                 "Push": "Destruição Trovejante: Empurrão"
             },
+            "TouchDamage": {
+                "Name": "Dano do Toque"
+            },
             "TwilightSanctuary": {
                 "Charmed": "Remover a condição Enfeitiçado",
                 "Frightened": "Remover a condição Amedrontado",
@@ -1475,7 +1537,8 @@
             },
             "UndeadFortitude": {
                 "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:"
+                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:",
+                "Name": "Fortitude de Morto-Vivo"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -1831,6 +1894,14 @@
             "backups": {
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
+                "Name": "Ações de Armas Baldur's Gate 3"
+            },
+              "bg3WeaponActionConfig": {
+                "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
+                "Name": "Configuração Ações de Armas Baldur's Gate 3"
             },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
