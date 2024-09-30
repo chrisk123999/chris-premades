@@ -192,21 +192,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         config.options = config.options instanceof Function ? config.options() : config.options;
                         config.options.forEach(i => {
                             if (!configuration?.options) genericUtils.setProperty(configuration, 'options', []);
-                            if (config.requiredModules) {
-                                if (config.requiredModules.filter(j => game.modules.get(j)?.active === false).length === 0) {
-                                    configuration.options.push({
-                                        label: i.label,
-                                        value: i.value,
-                                        isSelected: i.value === (currentConfigs?.[config.value] ?? config.default)
-                                    });
-                                }
-                            } else {
-                                configuration.options.push({
-                                    label: i.label,
-                                    value: i.value,
-                                    isSelected: i.value === (currentConfigs?.[config.value] ?? config.default)
-                                });
-                            }
+                            if (i.requiredModules?.find(j => !game.modules.get(j)?.active)) return;
+                            configuration.options.push({
+                                label: i.label,
+                                value: i.value,
+                                isSelected: i.value === (currentConfigs?.[config.value] ?? config.default)
+                            });
                         });
                         break;
                     }
@@ -215,21 +206,12 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                         config.options = config.options instanceof Function ? config.options() : config.options;
                         config.options.forEach(i => {
                             if (!configuration?.options) genericUtils.setProperty(configuration, 'options', []);
-                            if (config.requiredModules) {
-                                if (config.requiredModules.filter(j => game.modules.get(j)?.active === false).length === 0) {
-                                    configuration.options.push({
-                                        label: i.label,
-                                        value: i.value,
-                                        isSelected: (currentConfigs?.[config.value] ?? config.default).includes(i.value)
-                                    });
-                                }
-                            } else {
-                                configuration.options.push({
-                                    label: i.label,
-                                    value: i.value,
-                                    isSelected: (currentConfigs?.[config.value] ?? config.default).includes(i.value)
-                                });
-                            }
+                            if (i.requiredModules?.find(j => !game.modules.get(j)?.active)) return;
+                            configuration.options.push({
+                                label: i.label,
+                                value: i.value,
+                                isSelected: (currentConfigs?.[config.value] ?? config.default).includes(i.value)
+                            });
                         });
                         break;
                     }
