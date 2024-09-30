@@ -193,6 +193,59 @@ async function use({workflow}) {
             await genericUtils.update(selectedItem, {'system.uses.value': 6});
             break;
         }
+        case 'enhancedArcaneFocus': {
+            let focuses = target.items.filter(i => i.type === 'equipment' && !i.system.properties.has('mgc') && i.system.type.value === 'trinket' && i.system.equipped);
+            if (!focuses.length) {
+                genericUtils.notify('CHRISPREMADES.Macros.InfuseItem.NoFocus', 'info');
+                return;
+            } else {
+                selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichFocus', focuses);
+                if (!selectedItem) return;
+            }
+            console.log(selectedItem);
+            originalName = selectedItem.name;
+            let effectData = {
+                name: workflow.item.name + ': ' + infusionLabel,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'system.bonuses.spell.attack',
+                        mode: 2,
+                        value: classLevel > 9 ? 2 : 1,
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantData = {
+                name: workflow.item.name,
+                img: workflow.item.img,
+                origin: workflow.item.uuid,
+                changes: [
+                    {
+                        key: 'name',
+                        mode: 5,
+                        value: '{} (' + workflow.item.name + ': ' + infusionLabel + ')',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.properties',
+                        mode: 2,
+                        value: 'mgc',
+                        priority: 20
+                    },
+                    {
+                        key: 'system.attunement',
+                        mode: 5,
+                        value: 'required',
+                        priority: 20
+                    }
+                ]
+            };
+            let enchantEffect = await itemUtils.enchantItem(selectedItem, enchantData, {identifier: selection});
+            await effectUtils.createEffect(selectedItem, effectData, {parentEntity: enchantEffect, strictlyInterdependent: true});
+            break;
+        }
         case 'enhancedDefense': {
             let armor = target.items.filter(i => i.type === 'equipment' && !i.system.properties.has('mgc') && i.system.isArmor && i.system.equipped);
             if (!armor.length) {
@@ -768,6 +821,10 @@ export let infuseItem = {
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.ArcanePropulsionArmor',
                     value: 'arcanePropulsionArmor'
+                },
+                {
+                    label: 'CHRISPREMADES.Macros.InfuseItem.EnhancedArcaneFocus',
+                    value: 'enhancedArcaneFocus'
                 },
                 {
                     label: 'CHRISPREMADES.Macros.InfuseItem.ArmorOfMagicalStrength',

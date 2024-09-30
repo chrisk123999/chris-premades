@@ -935,6 +935,7 @@
                 "ArmorOfMagicalStrength": "Armor of Magical Strength",
                 "ChannelMagic": "Homunculus Servant: Channel Magic",
                 "EndAll": "End All Infusions",
+                "EnhancedArcaneFocus": "Enhanced Arcane Focus",
                 "EnhancedDefense": "Enhanced Defense",
                 "EnhancedWeapon": "Enhanced Weapon",
                 "ForceStrike": "Force Strike",
@@ -944,6 +945,7 @@
                 "Known": "Known Infusions:",
                 "New": "New {infusionLabel} infusion added to {newActorName}'s <b>{itemName}</b>.",
                 "NoArmor": "Target has no valid non-magical equipped armor!",
+                "NoFocus": "Target has no valid non-magical rod, staff, or wand equipped!",                
                 "NoKnown": "You have no known infusions configured in the item medkit!",
                 "NoMissing": "No spell slots to recover!",
                 "NoShield": "Target has no valid non-magical equipped shield!",
@@ -964,6 +966,7 @@
                 "TooFar": "Homunculus Servant Too Far Away!",
                 "TooMany": "You have the maximum number of infusions already active!",
                 "WhichArmor": "Which armor would you like to infuse?",
+                "WhichFocus": "Which rod, staff, or wand would you like to infose?",
                 "WhichShield": "Which shield would you like to infuse?",
                 "WhichWeapon": "Which weapon would you like to infuse?"
             },
