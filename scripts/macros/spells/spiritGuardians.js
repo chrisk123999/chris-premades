@@ -57,6 +57,7 @@ async function use({trigger, workflow}) {
         color = 'blueyellow';
         variation = '.ring';
     }
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
     /* eslint-disable indent */
     new Sequence()
         .effect()
@@ -67,6 +68,9 @@ async function use({trigger, workflow}) {
             .name('spiritGuardians')
             .fadeIn(300)
             .fadeOut(300)
+        .sound()
+            .playIf(sound)
+            .file(sound)
         .play();
     /* eslint-enable indent */
 }
@@ -227,6 +231,7 @@ export let spiritGuardians = {
             label: 'CHRISPREMADES.Config.Formula',
             type: 'text',
             default: 'd8',
+            category: 'homebrew',
             homebrew: true
         }
     ]
