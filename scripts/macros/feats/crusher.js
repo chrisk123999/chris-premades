@@ -8,6 +8,7 @@ async function late({trigger: {entity: item}, workflow}) {
     if (!combatUtils.perTurnCheck(item, 'crusher')) return;
     let selection = await dialogUtils.confirm(item.name, 'CHRISPREMADES.Macros.Crusher.Move');
     if (!selection) return;
+    await (combatUtils.setTurnCheck(item, 'crusher'));
     let actualHalf = targetToken.document.width / 2;
     let widthAdjust = canvas.grid.distance * Math.floor(actualHalf);
     let fudgeDistance = 0;
