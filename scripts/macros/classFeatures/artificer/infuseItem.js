@@ -202,7 +202,6 @@ async function use({workflow}) {
                 selectedItem = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.InfuseItem.WhichFocus', focuses);
                 if (!selectedItem) return;
             }
-            console.log(selectedItem);
             originalName = selectedItem.name;
             let effectData = {
                 name: workflow.item.name + ': ' + infusionLabel,
@@ -217,6 +216,7 @@ async function use({workflow}) {
                     }
                 ]
             };
+            effectUtils.addMacro(effectData, 'midi.actor', ['wandOfTheWarMage']);
             let enchantData = {
                 name: workflow.item.name,
                 img: workflow.item.img,
