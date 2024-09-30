@@ -3,6 +3,7 @@ function init() {
     genericUtils.setProperty(CONFIG.DND5E.featureTypes, 'spellFeature', {
         label: genericUtils.translate('CHRISPREMADES.CustomTypes.SpellFeature')
     });
+    if (genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) weaponAction(true);
 }
 async function firearm(enabled) {
     if (enabled) {
@@ -24,7 +25,17 @@ async function firearm(enabled) {
         delete CONFIG.DND5E.weaponTypes.firearm;
     }
 }
+async function weaponAction(enabled) {
+    if (enabled) {
+        genericUtils.setProperty(CONFIG.DND5E.featureTypes, 'weaponAction', {
+            label: genericUtils.translate('CHRISPREMADES.BG3.WeaponAction')
+        });
+    } else {
+        delete CONFIG.DND5E.featureTypes.weaponAction;
+    }
+}
 export let customTypes = {
     init,
-    firearm
+    firearm,
+    weaponAction
 };

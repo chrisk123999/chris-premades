@@ -1,10 +1,8 @@
 import {effectHud} from './applications/effectHud.js';
 import {settings, settingsBackup, settingsCompendium, settingsDevelopment, settingsDialog, settingsGeneral, settingsHelp, settingsHomebrew, settingsIntegration, settingsInterface, settingsManualRolls, settingsMechanics} from './applications/settings.js';
-import {abilitySave} from './events/abilitySave.js';
 import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
-import {skillCheck} from './events/skillCheck.js';
 import {tokens} from './extensions/tokens.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
@@ -14,7 +12,6 @@ import {vae} from './integrations/vae.js';
 import {constants, genericUtils} from './utils.js';
 import {effectInterface} from './applications/effectInterface.js';
 import {customTypes} from './extensions/customTypes.js';
-import {chat} from './extensions/chat.js';
 import {initiative} from './extensions/initiative.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
@@ -684,6 +681,124 @@ export function registerSettings() {
             1: 'CHRISPREMADES.Settings.cleave.1',
             2: 'CHRISPREMADES.Settings.cleave.2'
         }
+    });
+    addSetting({
+        key: 'bg3WeaponActionsEnabled',
+        type: Boolean,
+        default: false,
+        category: 'development',
+        onChange: (value) => customTypes.weaponAction(value)
+    });
+    addSetting({
+        key: 'bg3WeaponActionConfig',
+        type: Object,
+        default: {
+            backbreaker: [
+                'warhammer',
+                'maul'
+            ],
+            braceMelee: [
+                'glaive',
+                'pike'
+            ],
+            cleave: [
+                'battleaxe',
+                'greateaxe',
+                'halberd',
+                'greatsword'
+            ],
+            concussiveSmash: [
+                'morningstar',
+                'club',
+                'lighthammer',
+                'mace',
+                'warhammer',
+                'greatclub',
+                'maul',
+                'flail'
+            ],
+            maimingStrike: [
+                'warpick',
+                'battleaxe'
+            ],
+            disarmingStrike: [
+                'trident'
+            ],
+            flourish: [
+                'scimitar',
+                'shortsword',
+                'rapier'
+            ],
+            heartstopper: [
+                'morningstar'
+            ],
+            lacerate: [
+                'handaxe',
+                'sickle',
+                'scimitar',
+                'battleaxe',
+                'longsword',
+                'glaive',
+                'greataxe',
+                'greatsword',
+                'halberd'
+            ],
+            piercingStrike: [
+                'dagger',
+                'rapier',
+                'shortsword',
+                'trident',
+                'pike',
+                'javelin'
+            ],
+            pommelStrike: [
+                'longsword',
+                'greatsword'
+            ],
+            prepare: [
+                'greataxe'
+            ],
+            rushAttack: [
+                'longsword',
+                'spear',
+                'trident',
+                'glaive',
+                'halberd',
+                'pike'
+            ],
+            tenacity: [
+                'morningstar',
+                'greatclub',
+                'maul',
+                'flail'
+            ],
+            topple: [
+                'quarterstaff'
+            ],
+            weakeningStrike: [
+                'rapier',
+                'warpick',
+                'warhammer',
+                'flail'
+            ],
+            braceRanged: [
+                'heavycrossbow',
+                'longbow'
+            ],
+            hamstringShot: [
+                'shortbow',
+                'longbow'
+            ],
+            mobileShot: [
+                'handcrossbow'
+            ],
+            piercingShot: [
+                'heavycrossbow',
+                'lightcrossbow',
+                'handcrossbow'
+            ]
+        },
+        category: 'development'
     });
 }
 export function registerMenus() {

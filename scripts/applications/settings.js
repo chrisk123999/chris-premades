@@ -8,6 +8,7 @@ import {tours} from './tour.js';
 import {troubleshooter} from './troubleshooter.js';
 import {rollResolver} from '../extensions/rollResolver.js';
 import {spellList} from '../extensions/spellList.js';
+import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
 let settingCategories = {};
 let buttonLabels = {
     additionalCompendiums: 'CHRISPREMADES.Generic.Configure',
@@ -22,7 +23,8 @@ let buttonLabels = {
     macroCompendium: 'CHRISPREMADES.Generic.Select',
     manualRollsUsers: 'CHRISPREMADES.Generic.Configure',
     classSpellList: 'CHRISPREMADES.Generic.Select',
-    itemCompendium: 'CHRISPREMADES.Generic.Select'
+    itemCompendium: 'CHRISPREMADES.Generic.Select',
+    bg3WeaponActionConfig: 'CHRISPREMADES.Generic.Configure'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -122,6 +124,7 @@ export async function settingButton(id) {
         case 'manualRollsUsers': await rollResolver.manualRollsUsersDialog(); break;
         case 'classSpellList': await spellList.selectJournal('classSpellList'); break;
         case 'itemCompendium': await selectCompendium('itemCompendium', 'Item'); break;
+        case 'bg3WeaponActionConfig': await bg3.configure(); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

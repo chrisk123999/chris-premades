@@ -16,6 +16,17 @@
         "Auras": {
             "Source": "{auraName}: Source"
         },
+        "BG3": {
+            "Bleeding": "Bleeding",
+            "ChestTrauma": "Chest Trauma",
+            "Dazed": "Dazed",
+            "GapingWounds": "Gaping Wounds",
+            "Hamstrung": "Hamstrung",
+            "Maimed": "Maimed",
+            "OffBalance": "OffBalance",
+            "WeakGrip": "Weak Grip",
+            "WeaponAction": "Weapon Action"
+        },
         "Backup": {
             "Daily": "Daily",
             "Forever": "Forever",
@@ -1883,6 +1894,14 @@
             "backups": {
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped. (NOT FUNCTIONAL)",
+                "Name": "Baldur's Gate 3 Weapon Actions"
+            },
+            "bg3WeaponActionConfig": {
+                "Hint": "Configure the Baldur's Gate 3 weapon actions. (NOT FUNCTIONAL)",
+                "Name": "Configure Baldur's Gate 3 Weapon Actions"
             },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",

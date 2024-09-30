@@ -222,6 +222,28 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                     });
                     break;
                 }
+                case 'selectMany': {
+                    let selectOptions = [];
+                    for (let currField of inputFields) {
+                        selectOptions.push({
+                            label: currField.label, 
+                            name: currField.name,
+                            currentValue: currField.options?.currentValue ?? [],
+                            options: currField.options?.options?.map(i => ({
+                                label: i.label,
+                                value: i.value,
+                                isSelected: (currField.options?.currentValue ?? []).includes(i.value)
+                            })) ?? {},
+                            image: currField.options?.image ?? undefined
+                        });
+                    }
+                    context.inputs.push({
+                        isSelectMany: true,
+                        displayAsRows: inputOptions?.displayAsRows ?? false,
+                        options: selectOptions
+                    });
+                    break;
+                }
                 case 'selectOption': {
                     let selectOptions = [];
                     for (let currField of inputFields) {
@@ -230,7 +252,8 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                             name: currField.name,
                             currentValue: currField.options?.currentValue ?? 'none',
                             options: currField.options?.options ?? ['none'],
-                            image: currField.options?.image ?? undefined});
+                            image: currField.options?.image ?? undefined
+                        });
                     }
                     context.inputs.push({
                         isSelectOption: true,

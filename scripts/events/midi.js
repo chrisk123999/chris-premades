@@ -232,6 +232,7 @@ async function savesComplete(workflow) {
 }
 async function damageRollComplete(workflow) {
     await executeMacroPass(workflow, 'damageRollComplete');
+    await executeTargetMacroPass(workflow, 'targetDamageRollComplete');
     let sceneTriggers = [];
     workflow.token?.document.parent.tokens.filter(i => i.uuid !== workflow.token?.document.uuid && i.actor).forEach(j => {
         sceneTriggers.push(...getSortedTriggers({token: j.object, actor: j.actor, sourceToken: workflow.token}, 'sceneDamageRollComplete'));

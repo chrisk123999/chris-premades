@@ -1,8 +1,8 @@
-import {dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
+import {constants, dialogUtils, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../../../utils.js';
 
 async function damage({trigger: {entity: item}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (genericUtils.getIdentifier(workflow.item) !== 'unarmedStrike') return;
+    if (!constants.unarmedAttacks.includes(genericUtils.getIdentifier(workflow.item))) return;
     let buttons = [
         ['DND5E.DamageAcid', 'acid', {image: 'icons/magic/acid/projectile-faceted-glob.webp'}],
         ['DND5E.DamageCold', 'cold', {image: 'icons/magic/air/wind-tornado-wall-blue.webp'}],
