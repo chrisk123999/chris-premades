@@ -29,11 +29,11 @@ A collection of automated items including spells, class features, monster featur
 - Gambit's Premades
 - Midi Item Showcase Community
 - Universal Animations
+- [Animated Spell Effects: Cartoon](https://github.com/chrisk123999/animated-spell-effects-cartoon/releases/download/0.4.6/module.json)
+- Visual Active Effects
 - D&D Beyond Importer
 - Tidy5e Sheet
 - Token Magic FX
-- Visual Active Effects
-- Animated Spell Effects: Cartoon
   
 # Main Features:
 - Compendiums of automated spells, items, class features, and more.
