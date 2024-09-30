@@ -935,6 +935,7 @@
                 "ArmorOfMagicalStrength": "Armadura da Força Mágica",
                 "ChannelMagic": "Servo Homúnculo: Canalizar Magia",
                 "EndAll": "Encerrar Todas Infusões",
+                "EnhancedArcaneFocus": "Foco Arcano Aprimorado",
                 "EnhancedDefense": "Defesa Aprimorada",
                 "EnhancedWeapon": "Arma Aprimorada",
                 "ForceStrike": "Disparo de Energia",
@@ -944,6 +945,7 @@
                 "Known": "Infusões Conhecidas:",
                 "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
                 "NoArmor": "O alvo não tem uma armadura não-mágica válida equipada!",
+                "NoFocus": "O alvo não possui nenhum Bastão, Cajado ou Varinha não-mágica válida equipada!",
                 "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
                 "NoMissing": "Não há slots de magia para recuperar!",
                 "NoShield": "O alvo não tem um escudo não-mágico válida equipada!",
@@ -964,6 +966,7 @@
                 "TooFar": "Servo Homúnculo Muito Longe!",
                 "TooMany": "Você tem o número máximo de infusões já ativas!",
                 "WhichArmor": "Qual armadura você quer infundir?",
+                "WhichFocus": "Qual Bastão, Cajado ou Varinha você quer de infundir?",
                 "WhichShield": "Qual escudo você quer infundir?",
                 "WhichWeapon": "Qual arma você quer infundir?"
             },
