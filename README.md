@@ -1,5 +1,8 @@
 # Readme
-A collection of automated items including spells, class features, monster features, etc., mechanics to make those possible, and quality-of-life based extensions for a high-automation Midi-QOL based D&D5e environment. Compendiums included in this module do not include item's descriptions. While this module has several dependencies, do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module. Extra support can be recieved and bug reports can be made both on this GitHub, or on the [Discord server](https://discord.gg/BumxBcQDrT).
+
+A collection of automated items including spells, class features, monster features, etc., mechanics to make those possible, and quality-of-life based extensions for a high-automation Midi-QOL based D&D5e environment. Compendiums included in this module do not include item's descriptions. While this module has several module dependencies by different authors, do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module. Bug reports and large module implementation requests may be made on the GitHub. Faster support and feature requests can be accessed on the [Discord server](https://discord.gg/BumxBcQDrT).
+
+![CauldronofPlentifulResourcesMedium](https://github.com/user-attachments/assets/58c729ba-c499-45a3-a62c-c6982ad1f725) 
   
 ### Authors:
 [Chris](https://github.com/chrisk123999) <br> 
@@ -26,11 +29,11 @@ A collection of automated items including spells, class features, monster featur
 - Gambit's Premades
 - Midi Item Showcase Community
 - Universal Animations
+- [Animated Spell Effects: Cartoon](https://github.com/chrisk123999/animated-spell-effects-cartoon/releases/download/0.4.6/module.json)
+- Visual Active Effects
 - D&D Beyond Importer
 - Tidy5e Sheet
 - Token Magic FX
-- Visual Active Effects
-- Animated Spell Effects: Cartoon
   
 # Main Features:
 - Compendiums of automated spells, items, class features, and more.
