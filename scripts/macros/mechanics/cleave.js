@@ -17,13 +17,14 @@ export async function cleave(workflow) {
     let selection = await dialogUtils.selectTargetDialog('CHRISPREMADES.Settings.cleave.Name', 'CHRISPREMADES.Cleave.Use', nearbyTargets, {skipDeadAndUnconscious: false, buttons: 'yesNo'});
     if (!selection?.length) return;
     selection = selection[0];
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'Cleave', {object: true, getDescription: true});
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, 'DMG Cleave', {object: true, getDescription: true});
     featureData.system.damage.parts = [
         [
             leftoverDamage + '[' + workflow.defaultDamageType + ']',
             workflow.defaultDamageType
         ]
     ];
+    if (workflow.item.system.properties.has('mgc')) featureData.system.properties.push('mgc');
     genericUtils.setProperty(featureData, 'flags.chris-premades.setAttackRoll.formula', workflow.attackRoll.total);
     genericUtils.setProperty(featureData, 'flags.chris-premades.setDamageRoll.formula', leftoverDamage);
     await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [selection]);

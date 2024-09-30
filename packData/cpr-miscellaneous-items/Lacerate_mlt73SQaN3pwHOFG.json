@@ -1,0 +1,109 @@
+{
+  "name": "Lacerate",
+  "type": "feat",
+  "system": {
+    "activation": {
+      "type": "action",
+      "cost": 1,
+      "condition": ""
+    },
+    "description": {
+      "value": "",
+      "chat": ""
+    },
+    "source": {},
+    "duration": {
+      "value": "2",
+      "units": "round"
+    },
+    "cover": null,
+    "crewed": false,
+    "target": {
+      "value": "1",
+      "width": null,
+      "units": "",
+      "type": "creature",
+      "prompt": true
+    },
+    "range": {
+      "value": 5,
+      "long": null,
+      "units": "ft"
+    },
+    "uses": {
+      "value": 1,
+      "max": "1",
+      "per": "sr",
+      "recovery": "",
+      "prompt": true
+    },
+    "consume": {
+      "type": "",
+      "target": null,
+      "amount": null,
+      "scale": false
+    },
+    "ability": "str",
+    "actionType": "mwak",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
+    "chatFlavor": "",
+    "critical": {
+      "threshold": null,
+      "damage": ""
+    },
+    "damage": {
+      "parts": [
+        [
+          "0[slashing]",
+          "slashing"
+        ]
+      ],
+      "versatile": ""
+    },
+    "enchantment": null,
+    "formula": "",
+    "save": {
+      "ability": "con",
+      "dc": null,
+      "scaling": "str"
+    },
+    "summons": null,
+    "type": {
+      "value": "weaponAction",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "",
+    "recharge": {
+      "value": null,
+      "charged": false
+    }
+  },
+  "img": "modules/chris-premades/images/bg3/Lacerate.webp",
+  "effects": [],
+  "folder": "VrBwPZA4IHdHNjx5",
+  "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "lacerate",
+        "source": "chris-premades",
+        "version": "0.12.84"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "lacerate"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "mlt73SQaN3pwHOFG",
+  "_key": "!items!mlt73SQaN3pwHOFG"
+}
