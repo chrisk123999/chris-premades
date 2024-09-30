@@ -17,7 +17,7 @@ async function buttonDialog(title, content, buttons, {displayAsRows = true, user
     } else result = await DialogApp.dialog(title, content, inputs, undefined, {width: 400});
     return result?.buttons ?? false;
 }
-async function numberDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, options) {
+async function numberDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, {buttons = 'okCancel', userId = game.user.id}={}) {
     let inputs = [
         ['number', 
             [{
@@ -27,10 +27,13 @@ async function numberDialog(title, content, input = {label: 'Label', name: 'iden
             }]
         ]
     ];
-    let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
+    let result;
+    if (userId && userId != game.user.id) {
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, buttons);
+    } else result = await DialogApp.dialog(title, content, inputs, buttons);
     return result[input.name];
 }
-async function selectDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, options) {
+async function selectDialog(title, content, input = {label: 'Label', name: 'identifier', options: {}}, {buttons = 'okCancel', userId = game.user.id}={}) {
     if (!input.options) input.options = {};
     let inputOptions = input.options.options ?? [];
     if (!inputOptions.length) inputOptions = ['None'];
@@ -47,7 +50,10 @@ async function selectDialog(title, content, input = {label: 'Label', name: 'iden
             }]
         ]
     ];
-    let result = await DialogApp.dialog(title, content, inputs, 'okCancel', options);
+    let result;
+    if (userId && userId != game.user.id) {
+        result = await socket.executeAsUser(sockets.dialog.name, userId, title, content, inputs, buttons);
+    } else result = await DialogApp.dialog(title, content, inputs, buttons);
     return result?.[input.name];
 }
 async function selectTargetDialog(title, content, targets, {type = 'one', selectOptions = [], skipDeadAndUnconscious = true, coverToken = undefined, reverseCover = false, displayDistance = true, maxAmount = 1, userId = game.user.id, buttons = 'okCancel'} = {}) {
