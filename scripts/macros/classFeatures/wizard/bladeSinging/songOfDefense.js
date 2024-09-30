@@ -4,7 +4,7 @@ async function damageApplication({trigger: {token}, ditem}) {
     if (actorUtils.hasUsedReaction(token.actor));
     let originItem = itemUtils.getItemByIdentifier(token.actor, 'songOfDefense');
     if (!originItem) return;
-    let selection = await dialogUtils.selectSpellSlot(token.actor, originItem.name, 'CHRISPREMADES.Macros.SongOfDefense.Select', {no: true, userId: socketUtils.firstOwner(token.actor)});
+    let selection = await dialogUtils.selectSpellSlot(token.actor, originItem.name, 'CHRISPREMADES.Macros.SongOfDefense.Select', {no: true, userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;
     let damageReduction;
     if (selection === 'pact') {
