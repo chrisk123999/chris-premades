@@ -348,7 +348,7 @@ export let maneuversBaitAndSwitch = {
 };
 export let maneuversBrace = {
     name: 'Maneuvers: Brace',
-    version: '0.12.43',
+    version: '1.0.2',
     midi: {
         item: [
             {
