@@ -1,4 +1,4 @@
 export let unarmedStrike = {
     name: 'Unarmed Strike',
-    version: '0.12.54'
+    version: '1.0.2'
 };

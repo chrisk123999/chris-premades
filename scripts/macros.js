@@ -147,6 +147,7 @@ export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 // Other
 export {actionDismissal} from './macros/generic/actionDismissal.js';
+export {removeOnMiss} from './macros/generic/removeOnMiss.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
 export {summonTurnHostile} from './macros/generic/summonTurnHostile.js';
 export {summonUtils} from './lib/summons.js';
@@ -190,6 +191,7 @@ export {bloodMaledict} from './macros/classFeatures/bloodHunter/bloodMaledict.js
 export {bolsteringMagic} from './macros/classFeatures/barbarian/wildMagic/bolsteringMagic.js';
 export {brandOfCastigation, brandOfCastigationActive} from './macros/classFeatures/bloodHunter/brandOfCastigation.js';
 export {breathOfTheDragon} from './macros/classFeatures/monk/wayOfTheAscendantDragon/breathOfTheDragon.js';
+export {bullyingShot, dazingShot, deadeyeShot, disarmingShot, forcefulShot, piercingShotTrickshot, violentShot, wingingShot} from './macros/classFeatures/fighter/gunslinger/trickShots.js';
 export {callTheHunt} from './macros/classFeatures/barbarian/beast/callTheHunt.js';
 export {carefulSpell, distantSpell, empoweredSpell, extendedSpell, heightenedSpell, quickenedSpell, seekingSpell, subtleSpell, transmutedSpell, twinnedSpell, twinnedSpellAttack} from './macros/classFeatures/sorcerer/metamagic.js';
 export {charmAnimalsAndPlants} from './macros/classFeatures/cleric/natureDomain/charmAnimalsAndPlants.js';

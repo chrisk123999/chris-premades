@@ -17,35 +17,35 @@
             "Source": "{auraName}: Source"
         },
         "BG3": {
-            "Bleeding": "Bleeding",
-            "ChestTrauma": "Chest Trauma",
-            "Dazed": "Dazed",
-            "GapingWounds": "Gaping Wounds",
-            "Hamstrung": "Hamstrung",
-            "Maimed": "Maimed",
-            "OffBalance": "OffBalance",
-            "WeakGrip": "Weak Grip",
-            "WeaponAction": "Weapon Action",
             "Backbreaker": "Backbreaker",
+            "Bleeding": "Bleeding",
             "BraceMelee": "Brace (Melee)",
+            "BraceRanged": "Brace (Ranged)",
+            "ChestTrauma": "Chest Trauma",
             "Cleave": "Cleave",
             "ConcussiveSmash": "Concussive Smash",
-            "MaimingStrike": "MaimingStrike",
+            "Dazed": "Dazed",
             "DisarmingStrike": "Disarming Strike",
             "Flourish": "Flourish",
+            "GapingWounds": "Gaping Wounds",
+            "HamstringShot": "Hamstring Shot",
+            "Hamstrung": "Hamstrung",
             "Heartstopper": "Heartstopper",
             "Lacerate": "Lacerate",
+            "Maimed": "Maimed",
+            "MaimingStrike": "MaimingStrike",
+            "MobileShot": "Mobile Shot",
+            "OffBalance": "OffBalance",
+            "PiercingShot": "Piercing Shot",
             "PiercingStrike": "Piercing Strike",
             "PommelStrike": "Pommel Strike",
             "Prepare": "Prepare",
             "Rush": "Rush",
             "Tenacity": "Tenacity",
             "Topple": "Topple",
+            "WeakGrip": "Weak Grip",
             "WeakeningStrike": "Weakening Strike",
-            "BraceRanged": "Brace (Ranged)",
-            "HamstringShot": "Hamstring Shot",
-            "MobileShot": "Mobile Shot",
-            "PiercingShot": "Piercing Shot"
+            "WeaponAction": "Weapon Action"
         },
         "Backup": {
             "Daily": "Daily",
@@ -237,6 +237,7 @@
             "Damaged": "Damaged",
             "Explosive": "Explosive:",
             "Firearm": "Firearm",
+            "Grit": "Grit",
             "GritRegain": "Grit regained! ({regained})",
             "HasMisfired": "has misfired!",
             "IsBroken": "This firearm is broken and must be repaired!",
@@ -244,6 +245,8 @@
             "Misfire": "Misfire",
             "MisfireScore": "Misfire Score:",
             "NoAmmo": "You have no ammunition!",
+            "NoGrit": "No Grit remaining!",
+            "NoGuns": "You have no firearms to use!",
             "NoReloads": "You have no firearms in need of reloading!",
             "NoRepairs": "You have no firearms to repair!",
             "NoTinkers": "You have no Tinker's Tools to make the repair with!",
@@ -254,8 +257,11 @@
             "SelectAmmo": "Which ammo to use?",
             "SelectReload": "Which firearm to reload?",
             "SelectRepair": "Which firearm to repair?",
+            "SelectUse": "Which firearm to use?",
+            "SelectViolent": "How much grit to spend?",
             "Status": "Status:",
             "TrickShot": "Trick Shot",
+            "TrickShotSelect": "Perform a Trick Shot?",
             "Undamaged": "Undamaged"
         },
         "Generic": {
@@ -1932,10 +1938,6 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
-            "bg3WeaponActionsEnabled": {
-                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped.",
-                "Name": "Baldur's Gate 3 Weapon Actions"
-            },
             "bg3WeaponActionConfig": {
                 "Hint": "Configure the Baldur's Gate 3 weapon actions.",
                 "Name": "Configure Baldur's Gate 3 Weapon Actions"
@@ -1943,6 +1945,10 @@
             "bg3WeaponActionUses": {
                 "Hint": "Maximum uses per a short rest the weapon action may be used.",
                 "Name": "Baldur's Gate 3 Weapon Action Uses"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped.",
+                "Name": "Baldur's Gate 3 Weapon Actions"
             },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
