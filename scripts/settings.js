@@ -686,7 +686,7 @@ export function registerSettings() {
         key: 'bg3WeaponActionsEnabled',
         type: Boolean,
         default: false,
-        category: 'development',
+        category: 'homebrew',
         onChange: (value) => customTypes.weaponAction(value)
     });
     addSetting({
@@ -758,7 +758,7 @@ export function registerSettings() {
             prepare: [
                 'greataxe'
             ],
-            rushAttack: [
+            rush: [
                 'longsword',
                 'spear',
                 'trident',
@@ -798,7 +798,13 @@ export function registerSettings() {
                 'handcrossbow'
             ]
         },
-        category: 'development'
+        category: 'homebrew'
+    });
+    addSetting({
+        key: 'bg3WeaponActionUses',
+        type: Number,
+        default: 1,
+        category: 'homebrew'
     });
 }
 export function registerMenus() {

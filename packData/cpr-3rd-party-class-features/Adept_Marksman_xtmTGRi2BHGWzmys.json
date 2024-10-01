@@ -1,20 +1,19 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Reload Firearm",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Adept Marksman",
   "type": "feat",
-  "_id": "YHISh0er9vLl1vgF",
-  "img": "icons/weapons/ammunition/shot-round-lead.webp",
+  "img": "icons/weapons/guns/gun-topbarrel.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": "Critical Role"
+      "custom": ""
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -27,18 +26,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
-      "value": null,
-      "max": "",
-      "per": null,
+      "value": 1,
+      "max": "max(1, @abilities.wis.mod)",
+      "per": "sr",
       "recovery": "",
       "prompt": true
     },
@@ -72,7 +71,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "class",
       "subtype": ""
     },
     "prerequisites": {
@@ -110,18 +109,12 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "firearmReload",
+        "identifier": "adeptMarksman",
         "version": "0.12.86",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "firearmReload"
-          ]
-        }
       }
     }
   },
-  "_key": "!items!YHISh0er9vLl1vgF"
+  "_id": "xtmTGRi2BHGWzmys",
+  "_key": "!items!xtmTGRi2BHGWzmys"
 }

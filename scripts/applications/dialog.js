@@ -228,11 +228,11 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
                         selectOptions.push({
                             label: currField.label, 
                             name: currField.name,
-                            currentValue: currField.options?.currentValue ?? [],
+                            value: currField.options?.value ?? [],
                             options: currField.options?.options?.map(i => ({
                                 label: i.label,
                                 value: i.value,
-                                isSelected: (currField.options?.currentValue ?? []).includes(i.value)
+                                isSelected: (currField.options?.value ?? []).includes(i.value)
                             })) ?? {},
                             image: currField.options?.image ?? undefined
                         });
@@ -374,6 +374,14 @@ export class DialogApp extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             case 'number': {
                 currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
+                break;
+            }
+            default: {
+                if (event.target.tagName?.toLowerCase() === 'multi-select') {
+                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].value = targetInput.value;
+                    currentContext.inputs[targetInputId[0]].options[targetInputId[1]].options.forEach(i => targetInput.value.includes(i.value) ? i.isSelected = true : i.isSelected = false);
+                }
+                break;
             }
         }
         if (targetInput.localName === 'file-picker') {

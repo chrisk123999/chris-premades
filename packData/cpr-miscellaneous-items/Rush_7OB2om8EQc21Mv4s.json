@@ -57,8 +57,8 @@
     "damage": {
       "parts": [
         [
-          "1d4[piercing] + @mod",
-          "piercing"
+          "1d4[bludgeoning] + @mod",
+          "bludgeoning"
         ]
       ],
       "versatile": ""

@@ -121,22 +121,9 @@
                 {{/each}}
             {{/if}}
         {{else if isSelectMany}}
-            {{#if displayAsRows}}
-                <div class="row-display">
-                    {{#each options}}
-                        <multi-select id="i{{@../index}}j{{@index}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                            {{#each options}}
-                                <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
-                                    {{localize label}}
-                                </option>
-                            {{/each}}
-                        </multi-select>
-                        <label for="i{{@../index}}j{{@index}}">{{localize label option=i18nOption}}</label>
-                    {{/each}}
-                </div>
-            {{else}}
+            <div class="flexcol">
                 {{#each options}}
-                    <div>
+                    <div class="select-many">
                         <label for="i{{@../index}}j{{@index}}">{{localize label option=i18nOption}}</label>
                         <multi-select id="i{{@../index}}j{{@index}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
                             {{#each options}}
@@ -147,7 +134,7 @@
                         </multi-select>
                     </div>
                 {{/each}}
-            {{/if}}
+            </div>
         {{else if isText}}
             {{#if displayAsRows}}
                 <div class="row-display">

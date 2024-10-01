@@ -1,9 +1,8 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Hemorrhaging Critical",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Rapid Repair",
   "type": "feat",
-  "_id": "M0abcksY9CUsdgCh",
-  "img": "icons/skills/ranged/cannon-barrel-firing-yellow.webp",
+  "img": "icons/tools/hand/wrench-steel-grey.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,8 +12,8 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "bonus",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -27,13 +26,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -43,13 +42,13 @@
       "prompt": true
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "charges",
+      "target": "Compendium.chris-premades.CPRClassFeatures.Item.jpgX38fzkim5bEAg",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
     "attack": {
       "bonus": "",
       "flat": false
@@ -87,6 +86,20 @@
   },
   "effects": [],
   "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "rapidRepair",
+        "version": "0.12.86",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "firearmRepair"
+          ]
+        }
+      }
+    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -107,14 +120,8 @@
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
-    },
-    "chris-premades": {
-      "info": {
-        "identifier": "hemorrhagingCritical",
-        "version": "0.12.86",
-        "source": "chris-premades"
-      }
     }
   },
-  "_key": "!items!M0abcksY9CUsdgCh"
+  "_id": "7NFJwLRuIdoQru4P",
+  "_key": "!items!7NFJwLRuIdoQru4P"
 }

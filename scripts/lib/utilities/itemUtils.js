@@ -141,6 +141,13 @@ function getGenericFeatureConfig(item, key) {
 function getItemByGenericFeature(actor, key) {
     return actor.items.find(i => getGenericFeatureConfig(i, key));
 }
+function isWeaponProficient(item) {
+    if (item.system.proficient) return true;
+    if (!item.actor) return false;
+    if (item.actor.system.traits.weaponProf.value.has(item.system.type.baseItem)) return true;
+    if (item.actor.system.traits.weaponProf.value.has(CONFIG.DND5E.weaponProficienciesMap[item.system.type.value])) return true;
+    return false;
+}
 export let itemUtils = {
     getSaveDC,
     createItems,
@@ -161,5 +168,6 @@ export let itemUtils = {
     getToolProficiency,
     getSavedCastData,
     getGenericFeatureConfig,
-    getItemByGenericFeature
+    getItemByGenericFeature,
+    isWeaponProficient
 };

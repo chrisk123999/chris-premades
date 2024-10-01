@@ -1,5 +1,6 @@
 import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils} from '../utils.js';
+import {bg3} from '../macros/homebrew/bg3WeaponActions.js';
 function getRestMacros(entity) {
     return entity.flags['chris-premades']?.macros?.rest ?? [];
 }
@@ -95,4 +96,5 @@ async function executeMacroPass(actor, pass) {
 export async function rest(actor, data) {
     let pass = data.longRest ? 'long' : 'short';
     await executeMacroPass(actor, pass);
+    if (genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.rest(actor);
 }

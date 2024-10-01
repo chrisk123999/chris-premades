@@ -82,6 +82,23 @@ form .better-dialog .form-group .flex-col button.form-button {
     margin-bottom: 3px;
 }
 
+form .better-dialog .form-group .flexcol > div.select-many {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+form .better-dialog .form-group .flexcol > div.select-many > label {
+    width: 100%;
+    flex: 1;
+}
+
+form .better-dialog .form-group .flexcol > div.select-many > multi-select {
+    width: 100%;
+    flex: 2;
+    margin: 0.625em 0 0.625em 0;
+}
+
 /* Common Formattings */
 
 form .cpr-row-center {

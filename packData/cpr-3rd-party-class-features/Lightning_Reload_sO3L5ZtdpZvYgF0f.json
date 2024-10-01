@@ -1,9 +1,8 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Rapid Repair",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Lightning Reload",
   "type": "feat",
-  "_id": "X3gRgKjtPVAEaJGO",
-  "img": "icons/tools/hand/wrench-steel-grey.webp",
+  "img": "icons/containers/ammunition/powder-horn-leather.webp",
   "system": {
     "description": {
       "value": "",
@@ -43,13 +42,13 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.chris-premades.CPRClassFeatures.Item.jpgX38fzkim5bEAg",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
-    "actionType": "other",
+    "actionType": "util",
     "attack": {
       "bonus": "",
       "flat": false
@@ -87,20 +86,6 @@
   },
   "effects": [],
   "flags": {
-    "chris-premades": {
-      "info": {
-        "identifier": "rapidRepair",
-        "version": "0.12.86",
-        "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "firearmRepair"
-          ]
-        }
-      }
-    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -121,7 +106,22 @@
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
+    },
+    "chris-premades": {
+      "info": {
+        "identifier": "lightningReload",
+        "version": "0.12.86",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "firearmReload"
+          ]
+        }
+      }
     }
   },
-  "_key": "!items!X3gRgKjtPVAEaJGO"
+  "_id": "sO3L5ZtdpZvYgF0f",
+  "_key": "!items!sO3L5ZtdpZvYgF0f"
 }

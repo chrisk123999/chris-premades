@@ -25,7 +25,7 @@ A collection of automated items including spells, class features, monster featur
 | Socket Lib | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fchrisk123999%2Fchris-premades%2Freleases%2Flatest%2Fdownload%2Fmodule.json&query=%24.relationships.requires%5B5%5D.compatibility.minimum&label=%20&color=green) |  
 | Time's Up | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fchrisk123999%2Fchris-premades%2Freleases%2Flatest%2Fdownload%2Fmodule.json&query=%24.relationships.requires%5B6%5D.compatibility.minimum&label=%20&color=green) |
   
-# Optional supported modules:  
+# Optional Supported Modules:  
 - Gambit's Premades
 - Midi Item Showcase Community
 - Universal Animations
@@ -49,6 +49,6 @@ A collection of automated items including spells, class features, monster featur
 - Automatic character backups.
 
 # Community Links:
-[Chris's Premades Discord](https://discord.gg/BumxBcQDrT)<br>
+[Cauldron of Plentiful Resources Discord](https://discord.gg/BumxBcQDrT)<br>
 [Foundry VTT Discord](https://discord.gg/foundryvtt)<br>
 [Posney's Foundry Automation Discord](https://discord.gg/Xd4NEvw5d7)<br>

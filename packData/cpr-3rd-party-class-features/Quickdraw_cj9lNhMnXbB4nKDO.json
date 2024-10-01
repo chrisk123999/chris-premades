@@ -1,8 +1,7 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
+  "folder": "B9z5xhylwGKtRIXX",
   "name": "Quickdraw",
   "type": "feat",
-  "_id": "fHngm3QCuLVBZV3K",
   "img": "icons/weapons/guns/gun-pistol-flintlock-metal.webp",
   "system": {
     "description": {
@@ -153,11 +152,11 @@
         "coreVersion": "12.331",
         "systemId": "dnd5e",
         "systemVersion": "3.3.1",
-        "createdTime": 1727747567329,
-        "modifiedTime": 1727747585318,
-        "lastModifiedBy": "wyNw8BrgTfPgbUM3"
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!items.effects!fHngm3QCuLVBZV3K.rtWuLBgDaRUwDp8j"
+      "_key": "!items.effects!cj9lNhMnXbB4nKDO.rtWuLBgDaRUwDp8j"
     }
   ],
   "flags": {
@@ -190,5 +189,6 @@
       }
     }
   },
-  "_key": "!items!fHngm3QCuLVBZV3K"
+  "_id": "cj9lNhMnXbB4nKDO",
+  "_key": "!items!cj9lNhMnXbB4nKDO"
 }

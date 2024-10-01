@@ -1,7 +1,7 @@
 {
   "id": "chris-premades",
-  "title": "Chris's Premades",
-  "description": "Chris's premade items for high-automation midi-qol games.",
+  "title": "Cauldron of Plentiful Resources",
+  "description": "Premade items for high-automation midi-qol games.",
   "version": "#{VERSION}#",
   "library": "false",
   "socket": true,
@@ -71,16 +71,16 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {
-          "minimum": "11.6.4.1",
-          "verified": "11.6.4.1"
+          "minimum": "11.6.19.1",
+          "verified": "11.6.19.1"
         }
       },
       {
         "id": "sequencer",
         "type": "module",
         "compatibility": {
-          "minimum": "3.2.11",
-          "verified": "3.2.11"
+          "minimum": "3.3.2",
+          "verified": "3.2.2"
         }
       },
       {
@@ -88,7 +88,7 @@
         "type": "module",
         "manifest": "https://github.com/krbz999/babonus/releases/download/v12.1.4/module.json",
         "compatibility": {
-          "minimum": "12.1.2",
+          "minimum": "12.1.4",
           "verified": "12.1.4",
           "maximum": "12.1.4"
         }
@@ -105,16 +105,16 @@
         "id": "dae",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.52",
-          "verified": "11.3.52"
+          "minimum": "11.3.64",
+          "verified": "11.3.64"
         }
       },
       {
         "id": "times-up",
         "type": "module",
         "compatibility": {
-          "minimum": "11.3.14",
-          "verified": "11.3.17"
+          "minimum": "11.3.19",
+          "verified": "11.3.19"
         }
       }
     ]
@@ -259,7 +259,7 @@
   ],
   "packFolders": [
     {
-      "name": "Chris's Premades",
+      "name": "Cauldron of Plentiful Resources",
       "sorting": "a",
       "color": "#348f2d",
       "packs": [

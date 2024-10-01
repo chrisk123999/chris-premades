@@ -1,20 +1,19 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Adept Marksman",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Repair Firearm",
   "type": "feat",
-  "_id": "jpgX38fzkim5bEAg",
-  "img": "icons/weapons/guns/gun-topbarrel.webp",
+  "img": "icons/tools/smithing/hammer-sledge-steel-grey.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Critical Role"
     },
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "action",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -27,18 +26,18 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
-      "value": 1,
-      "max": "max(1, @abilities.wis.mod)",
-      "per": "sr",
+      "value": null,
+      "max": "",
+      "per": null,
       "recovery": "",
       "prompt": true
     },
@@ -72,7 +71,7 @@
     },
     "summons": null,
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
     "prerequisites": {
@@ -110,11 +109,19 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "adeptMarksman",
+        "identifier": "firearmRepair",
         "version": "0.12.86",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "firearmRepair"
+          ]
+        }
       }
     }
   },
-  "_key": "!items!jpgX38fzkim5bEAg"
+  "_id": "vdQvI9VUSsnecV0t",
+  "_key": "!items!vdQvI9VUSsnecV0t"
 }

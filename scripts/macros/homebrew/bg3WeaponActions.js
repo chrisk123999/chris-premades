@@ -1,4 +1,5 @@
-import {actorUtils, constants, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
+import {DialogApp} from '../../applications/dialog.js';
+import {actorUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 import {proneOnFail} from '../generic/proneOnFail.js';
 async function used(actor, key, value) {
     await genericUtils.setFlag(actor, 'chris-premades', 'bg3WeaponActions.' + key, value);
@@ -847,9 +848,95 @@ let bg3Identifiers = [
     'mobileShot',
     'piercingShot'
 ];
-async function changeItem(item) {
+async function changeItem(item, equipped) {
+    let removeIds = [];
+    bg3Identifiers.forEach(i => {
+        let bg3Item = itemUtils.getItemByIdentifier(item.actor, i);
+        if (bg3Item) removeIds.push(bg3Item.id);
+    });
+    if (removeIds.length) await genericUtils.deleteEmbeddedDocuments(item.actor, 'Item', removeIds);
+    let equippedWeapons = item.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && itemUtils.isWeaponProficient(i));
+    if (equipped && itemUtils.isWeaponProficient(item)) {
+        equippedWeapons.push(item);
+    } else if (!equipped && itemUtils.isWeaponProficient(item)) {
+        equippedWeapons = equippedWeapons.filter(i => i.id != item.id);
+    }
+    if (!equippedWeapons.length) return;
     let settings = genericUtils.getCPRSetting('bg3WeaponActionConfig');
-    
+    let maxUses = genericUtils.getCPRSetting('bg3WeaponActionUses');
+    let addItems = [];
+    let addIdentifiers = new Set();
+    let pack = game.packs.get(constants.packs.miscellaneousItems);
+    if (!pack) return;
+    let index = await pack.getIndex({fields: ['flags.chris-premades.info.identifier']});
+    await Promise.all(Object.entries(settings).map(async ([key, value]) => {
+        if (addIdentifiers.has(key)) return;
+        await Promise.all(value.map(async j => {
+            let weapon = equippedWeapons.find(k => k.system.type.baseItem === j);
+            if (!weapon) return;
+            addIdentifiers.add(key);
+            let feature = index.find(l => l.flags['chris-premades']?.info?.identifier === key);
+            if (!feature) return;
+            let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.miscellaneousItems, feature.name, {object: true, translate: 'CHRISPREMADES.BG3.' + key.capitalize(), getDescription: true});
+            if (!featureData) return;
+            switch (key) {
+                case 'backbreaker':
+                case 'maimingStrike':
+                case 'disarmingStrike':
+                case 'heartstopper':
+                case 'rushAttack':
+                case 'weakeningStrike':
+                    featureData.system.damage.parts = [
+                        [
+                            featureData.system.damage.parts[0][0].replace('bludgeoning', weapon.system.damage.parts[0][1]),
+                            weapon.system.damage.parts[0][1]
+                        ]
+                    ];
+                    break;
+                case 'cleave':
+                    featureData.system.damage.parts = genericUtils.duplicate(weapon.toObject()).system.damage.parts.map(m => {
+                        return [
+                            '(' + m[0] + ' / 2)',
+                            m[1]
+                        ];
+                    });
+                    break;
+                case 'concussiveSmash':
+                case 'lacerate':
+                case 'piercingStrike':
+                case 'hamstringShot':
+                case 'mobileShot':
+                case 'piercingShot':
+                    featureData.system.damage.parts = genericUtils.duplicate(weapon.toObject()).system.damage.parts;
+                    break;
+            }
+            if (weapon.system.properties.has('mgc')) {
+                featureData.system.properties.push('mgc');
+                if (weapon.system.magicalBonus) featureData.system.magicalBonus = weapon.system.magicalBonus;
+            }
+            let rangedKeys = [
+                'braceRanged',
+                'hamstringShot',
+                'mobileShot',
+                'piercingShot'
+            ];
+            if (rangedKeys.includes(key)) {
+                featureData.system.range = weapon.system.range;
+            } else {
+                featureData.system.range.value = weapon.system.properties.has('thr') ? 5 : weapon.system.range.value;
+            }
+            featureData.system.ability = weapon.system.ability === '' ? 'str' : weapon.system.ability;
+            if (weapon.system.properties.has('fin') && weapon.system.ability === '' && item.actor.system.abilities.dex.mod >= item.actor.system.abilities.str.mod) {
+                featureData.system.ability = 'dex';
+            }
+            featureData.system.save.scaling = featureData.system.ability;
+            featureData.system.uses.value = item.actor.flags['chris-premades']?.bg3WeaponActions?.[key] ?? maxUses;
+            featureData.system.uses.max = maxUses;
+            delete featureData._id;
+            addItems.push(featureData);
+        }));
+    }));
+    if (addItems.length) await genericUtils.createEmbeddedDocuments(item.actor, 'Item', addItems);
 }
 async function configure() {
     let baseItems = (await Promise.all(Object.entries(CONFIG.DND5E.weaponIds).map(async ([key, value]) => {
@@ -872,11 +959,25 @@ async function configure() {
             value: key
         };
     }))).filter(j => j).sort((a, b) => a.label.localeCompare(b.label, 'en', {'sensitivity': 'base'}));
-    console.log(baseItems);
     let oldSettings = genericUtils.getCPRSetting('bg3WeaponActionConfig');
-    
+    let inputs = bg3Identifiers.map(i => ({
+        label: 'CHRISPREMADES.BG3.' + i.capitalize(),
+        name: i,
+        options: {
+            value: oldSettings[i],
+            options: baseItems
+        }
+    }));
+    let selection = await DialogApp.dialog('CHRISPREMADES.Settings.bg3WeaponActionConfig.Name', 'CHRISPREMADES.Settings.bg3WeaponActionConfig.Hint', [['selectMany', inputs, {displayAsRows: true}]], 'okCancel', {id: 'cpr-configure-bg3', width: 400, height: 800});
+    if (!selection?.buttons) return;
+    delete selection.buttons;
+    await game.settings.set('chris-premades', 'bg3WeaponActionConfig', selection);
+}
+async function rest(actor) {
+    await genericUtils.update(actor, {'flags.chris-premades.-=bg3WeaponActions': null});
 }
 export let bg3 = {
     changeItem,
-    configure
+    configure,
+    rest
 };

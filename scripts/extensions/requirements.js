@@ -29,7 +29,6 @@ async function automationCheck(workflow) {
     if (!identifier) return;
     let macro = custom.getMacro(identifier);
     if (!macro) return;
-    console.log(macro);
     if (!macro.requirements) return;
     let requiredSettings = [];
     if (macro.requirements.settings) {

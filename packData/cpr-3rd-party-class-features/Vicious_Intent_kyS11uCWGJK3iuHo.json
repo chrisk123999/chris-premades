@@ -1,9 +1,8 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Lightning Reload",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Vicious Intent",
   "type": "feat",
-  "_id": "lN2ltgRwex4n0H3Z",
-  "img": "icons/containers/ammunition/powder-horn-leather.webp",
+  "img": "icons/weapons/guns/gun-blunderbuss-steel.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,8 +12,8 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "bonus",
-      "cost": 1,
+      "type": "",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -27,13 +26,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -48,8 +47,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "util",
+    "ability": null,
+    "actionType": "",
     "attack": {
       "bonus": "",
       "flat": false
@@ -110,18 +109,12 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "lightningReload",
+        "identifier": "viciousIntent",
         "version": "0.12.86",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "firearmReload"
-          ]
-        }
       }
     }
   },
-  "_key": "!items!lN2ltgRwex4n0H3Z"
+  "_id": "kyS11uCWGJK3iuHo",
+  "_key": "!items!kyS11uCWGJK3iuHo"
 }

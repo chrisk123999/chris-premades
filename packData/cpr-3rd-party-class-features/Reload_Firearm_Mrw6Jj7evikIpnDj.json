@@ -1,9 +1,8 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Repair Firearm",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Reload Firearm",
   "type": "feat",
-  "_id": "rBPMbmb1LSPW53SA",
-  "img": "icons/tools/smithing/hammer-sledge-steel-grey.webp",
+  "img": "icons/weapons/ammunition/shot-round-lead.webp",
   "system": {
     "description": {
       "value": "",
@@ -110,18 +109,19 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "firearmRepair",
+        "identifier": "firearmReload",
         "version": "0.12.86",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "firearmRepair"
+            "firearmReload"
           ]
         }
       }
     }
   },
-  "_key": "!items!rBPMbmb1LSPW53SA"
+  "_id": "Mrw6Jj7evikIpnDj",
+  "_key": "!items!Mrw6Jj7evikIpnDj"
 }

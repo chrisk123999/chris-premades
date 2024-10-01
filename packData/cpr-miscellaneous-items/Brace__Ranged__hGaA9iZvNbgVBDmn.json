@@ -43,7 +43,7 @@
       "amount": null,
       "scale": false
     },
-    "ability": "str",
+    "ability": null,
     "actionType": "util",
     "attack": {
       "bonus": "",

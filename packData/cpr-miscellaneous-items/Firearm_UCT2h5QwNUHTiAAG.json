@@ -53,9 +53,9 @@
       "prompt": true
     },
     "consume": {
-      "type": "ammo",
+      "type": "",
       "target": null,
-      "amount": 1,
+      "amount": null,
       "scale": false
     },
     "ability": "dex",
@@ -145,16 +145,15 @@
     },
     "chris-premades": {
       "info": {
+        "version": "0.12.26",
         "identifier": "firearm",
-        "version": "0.12.86",
         "source": "chris-premades"
       },
       "macros": {
-        "midi": {
-          "item": [
-            "firearm"
-          ]
-        }
+        "midi": {}
+      },
+      "config": {
+        "status": 0
       }
     }
   },

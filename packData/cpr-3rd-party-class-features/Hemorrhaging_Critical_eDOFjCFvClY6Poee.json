@@ -1,9 +1,8 @@
 {
-  "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Vicious Intent",
+  "folder": "B9z5xhylwGKtRIXX",
+  "name": "Hemorrhaging Critical",
   "type": "feat",
-  "_id": "fX2C4LIEAZQkJ6IB",
-  "img": "icons/weapons/guns/gun-blunderbuss-steel.webp",
+  "img": "icons/skills/ranged/cannon-barrel-firing-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,7 +12,7 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "",
+      "type": "special",
       "cost": null,
       "condition": ""
     },
@@ -48,8 +47,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": null,
-    "actionType": "",
+    "ability": "",
+    "actionType": "util",
     "attack": {
       "bonus": "",
       "flat": false
@@ -110,11 +109,12 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "viciousIntent",
+        "identifier": "hemorrhagingCritical",
         "version": "0.12.86",
         "source": "chris-premades"
       }
     }
   },
-  "_key": "!items!fX2C4LIEAZQkJ6IB"
+  "_id": "eDOFjCFvClY6Poee",
+  "_key": "!items!eDOFjCFvClY6Poee"
 }

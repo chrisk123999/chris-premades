@@ -25,7 +25,27 @@
             "Maimed": "Maimed",
             "OffBalance": "OffBalance",
             "WeakGrip": "Weak Grip",
-            "WeaponAction": "Weapon Action"
+            "WeaponAction": "Weapon Action",
+            "Backbreaker": "Backbreaker",
+            "BraceMelee": "Brace (Melee)",
+            "Cleave": "Cleave",
+            "ConcussiveSmash": "Concussive Smash",
+            "MaimingStrike": "MaimingStrike",
+            "DisarmingStrike": "Disarming Strike",
+            "Flourish": "Flourish",
+            "Heartstopper": "Heartstopper",
+            "Lacerate": "Lacerate",
+            "PiercingStrike": "Piercing Strike",
+            "PommelStrike": "Pommel Strike",
+            "Prepare": "Prepare",
+            "Rush": "Rush",
+            "Tenacity": "Tenacity",
+            "Topple": "Topple",
+            "WeakeningStrike": "Weakening Strike",
+            "BraceRanged": "Brace (Ranged)",
+            "HamstringShot": "Hamstring Shot",
+            "MobileShot": "Mobile Shot",
+            "PiercingShot": "Piercing Shot"
         },
         "Backup": {
             "Daily": "Daily",
@@ -241,7 +261,7 @@
         "Generic": {
             "Actions": "Actions",
             "Available": "Available",
-            "CPR": "Chris's Premades",
+            "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancel",
             "Chat": "Chat",
             "Check": "Ability Check",
@@ -292,7 +312,7 @@
         "Journal": {
             "Chat": "View Chris's premades readme here:",
             "Readme": "Read Me",
-            "Welcome": "<p>Thank you for using my module! If you find any bugs or have any requests please either either message <strong>chrisk123999</strong> on Discord or make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>As a note, I generally work-around items that have been imported via the DDB importer module. If something works \"as-is\" from that module, it's unlikely I'll have it here.</p><p>To get started you can find my automations inside the compendiums that start with: \"CPR.\"</p><p>You can also click the medical kit icon on the title bar to update the item with my automation. This will preserve your description already on the item.</p><hr><p>Any item, spell, or feature that is added to your sheet temporarily needs a description. Module updates will replace the compendiums they're stored in, so instead the descriptions will be pulled from this journal entry. All pages after this one will not get regenerated when updating this module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
+            "Welcome": "<p>Thank you for using this module! If you find any bugs or please either make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue or bug report on our <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>Extended information on the module including a current FAQ, Getting Started, and feature information is available on the <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Cauldron of Plentiful Resources Wiki</a>. The wiki provides explanations, pictures, and examples that can answer most questions about the module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
         },
         "Light": {
             "Bright": "Bright",
@@ -1729,7 +1749,7 @@
             },
             "ModuleIds": {
                 "additionalCompendiums": "Additional Compendiums",
-                "chris-premades": "Chris's Premades",
+                "chris-premades": "Cauldron of Plentiful Resources",
                 "gambits-premades": "Gambit's Premades",
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
@@ -1912,13 +1932,17 @@
                 "Hint": "When enabled, player owned characters will be automatically backed up to the specified compendium.",
                 "Name": "Automatic Character Backups"
             },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped.",
+                "Name": "Baldur's Gate 3 Weapon Actions"
+            },
             "bg3WeaponActionConfig": {
-                "Hint": "Configure the Baldur's Gate 3 weapon actions. (NOT FUNCTIONAL)",
+                "Hint": "Configure the Baldur's Gate 3 weapon actions.",
                 "Name": "Configure Baldur's Gate 3 Weapon Actions"
             },
-            "bg3WeaponActionsEnabled": {
-                "Hint": "When enabled, Baldur's Gate 3 style weapon actions will be added to actors when weapons are equipped. (NOT FUNCTIONAL)",
-                "Name": "Baldur's Gate 3 Weapon Actions"
+            "bg3WeaponActionUses": {
+                "Hint": "Maximum uses per a short rest the weapon action may be used.",
+                "Name": "Baldur's Gate 3 Weapon Action Uses"
             },
             "checkForUpdates": {
                 "Hint": "When enabled, the module will check for updates once a day when a GM joins.",
@@ -2164,7 +2188,7 @@
         },
         "SpotlightOmnisearch": {
             "Actor": "Selected token is not associated with any actor!",
-            "Description": "Summon a {name} using Chris's Premades.",
+            "Description": "Summon a {name} using Cauldron of Plentiful Resources.",
             "Time": {
                 "Day": "1 Day",
                 "Hour": "1 Hour",
@@ -2280,7 +2304,7 @@
         },
         "Tour": {
             "0": {
-                "Content": "This tour will guide you through using some of the core features of using Chris's Premades.",
+                "Content": "This tour will guide you through using some of the core features of using Cauldron of Plentiful Resources.",
                 "Title": "Welcome!"
             },
             "1": {
@@ -2327,19 +2351,19 @@
                 "Content": "For example, the spell \"Dragon's Breath\" will make a temporary feature called \"Dragon Breath\" on the target actor.\nFilling in this journal page will populate the description when it's created.",
                 "Title": "Description Journal"
             },
-            "Chat": "<hr>View a guided tour of Chris's Premades here:<br><button type=\"button\">Start Tour</button>",
-            "Description": "Take a tour of Chris's Premades.",
-            "Hint": "Start a guided tour of Chris's Premades.",
-            "Title": "Chris's Premades Tour",
+            "Chat": "<hr>View a guided tour of Cauldron of Plentiful Resources here:<br><button type=\"button\">Start Tour</button>",
+            "Description": "Take a tour of Cauldron of Plentiful Resources.",
+            "Hint": "Start a guided tour of Cauldron of Plentiful Resources.",
+            "Title": "Cauldron of Plentiful Resources Tour",
             "TourFeatures": "Tour Features"
         },
         "Troubleshooter": {
             "Clipboard": "Text copied to clipboard!",
             "CopyToClipboard": "Copy to Clipboard",
-            "DisabledModule": "Chris's Premades requires the module {module} to be enabled!",
+            "DisabledModule": "Cauldron of Plentiful Resources requires the module {module} to be enabled!",
             "Discord": "Open Discord Support Channel",
             "Hint": "Open the troubleshooter.",
-            "MissingModule": "Chris's Premades requires the module {module} to be installed!",
+            "MissingModule": "Cauldron of Plentiful Resources requires the module {module} to be installed!",
             "Open": "Open Troubleshooter:",
             "SaveToFile": "Save to File",
             "Title": "Troubleshooter"
