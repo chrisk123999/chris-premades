@@ -237,6 +237,7 @@
             "Damaged": "Danificado",
             "Explosive": "Explosivo:",
             "Firearm": "Arma de Fogo",
+            "Grit": "Grit",
             "GritRegain": "Grit recuperado! ({regained})",
             "HasMisfired": "falhou!",
             "IsBroken": "Esta arma de fogo está quebrada e deve ser consertada!",
@@ -244,6 +245,8 @@
             "Misfire": "Falha",
             "MisfireScore": "Misfire Score:",
             "NoAmmo": "Você não tem munição!",
+            "NoGrit": "Nenhum Grit restante!",
+            "NoGuns": "Você não tem armas de fogo para usar!",
             "NoReloads": "Você não tem armas de fogo que precisam ser recarregadas!",
             "NoRepairs": "Você não tem armas de fogo para consertar!",
             "NoTinkers": "Você não tem Ferramentas de Funileiro para fazer o reparo!",
@@ -254,8 +257,11 @@
             "SelectAmmo": "Qual munição usar?",
             "SelectReload": "Qual arma de fogo recarregar?",
             "SelectRepair": "Qual arma de fogo consertar?",
+            "SelectUse": "Qual arma de fogo usar?",
+            "SelectViolent": "Quanto grit gastar?",
             "Status": "Estado:",
             "TrickShot": "Trick Shot",
+            "TrickShotSelect": "Fazer um Trick Shot?",
             "Undamaged": "Não-Danificado"
         },
         "Generic": {
