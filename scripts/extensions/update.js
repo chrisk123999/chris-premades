@@ -17,6 +17,8 @@ export async function updateCheck() {
             .replaceAll('\r\n', '<br>')
             .replaceAll('New Content:', '<b><u>New Content:</u></b>')
             .replaceAll('New Monster Content:', '<b><u>New Monster Content:</u></b>')
+            .replaceAll('New Generic Monster Features:', '<b><u>New Generic Monster Features:</u></b>')
+            .replaceAll('Updated Content:', '<b><u>Updated Content:</u></b>')
             .replaceAll('Bug Fixes:', '<b><u>Bug Fixes:</u></b>')
             .replaceAll('Update Notes:', '<b><u>Update Notes:</u></b>')
             .replaceAll('New Enhanced Animations:', '<b><u>New Enhanced Animations:</u></b>');
