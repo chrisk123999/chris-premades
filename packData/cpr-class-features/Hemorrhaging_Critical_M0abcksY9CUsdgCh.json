@@ -1,9 +1,9 @@
 {
   "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Reload Firearm",
+  "name": "Hemorrhaging Critical",
   "type": "feat",
-  "_id": "YHISh0er9vLl1vgF",
-  "img": "icons/weapons/ammunition/shot-round-lead.webp",
+  "_id": "M0abcksY9CUsdgCh",
+  "img": "icons/skills/ranged/cannon-barrel-firing-yellow.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,8 +13,8 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "action",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -27,13 +27,13 @@
       "value": "",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": "self"
+      "units": ""
     },
     "uses": {
       "value": null,
@@ -72,7 +72,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "class",
       "subtype": ""
     },
     "prerequisites": {
@@ -110,18 +110,11 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "firearmReload",
+        "identifier": "hemorrhagingCritical",
         "version": "0.12.86",
         "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "firearmReload"
-          ]
-        }
       }
     }
   },
-  "_key": "!items!YHISh0er9vLl1vgF"
+  "_key": "!items!M0abcksY9CUsdgCh"
 }

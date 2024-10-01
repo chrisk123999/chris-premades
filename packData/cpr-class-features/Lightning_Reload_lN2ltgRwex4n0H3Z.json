@@ -1,9 +1,9 @@
 {
   "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Reload Firearm",
+  "name": "Lightning Reload",
   "type": "feat",
-  "_id": "YHISh0er9vLl1vgF",
-  "img": "icons/weapons/ammunition/shot-round-lead.webp",
+  "_id": "lN2ltgRwex4n0H3Z",
+  "img": "icons/containers/ammunition/powder-horn-leather.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,7 +13,7 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -72,7 +72,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "class",
       "subtype": ""
     },
     "prerequisites": {
@@ -110,7 +110,7 @@
     },
     "chris-premades": {
       "info": {
-        "identifier": "firearmReload",
+        "identifier": "lightningReload",
         "version": "0.12.86",
         "source": "chris-premades"
       },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "_key": "!items!YHISh0er9vLl1vgF"
+  "_key": "!items!lN2ltgRwex4n0H3Z"
 }

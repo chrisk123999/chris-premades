@@ -1,9 +1,9 @@
 {
   "folder": "Wcf4FoDErOp9TUZt",
-  "name": "Reload Firearm",
+  "name": "Rapid Repair",
   "type": "feat",
-  "_id": "YHISh0er9vLl1vgF",
-  "img": "icons/weapons/ammunition/shot-round-lead.webp",
+  "_id": "X3gRgKjtPVAEaJGO",
+  "img": "icons/tools/hand/wrench-steel-grey.webp",
   "system": {
     "description": {
       "value": "",
@@ -13,7 +13,7 @@
       "custom": "Critical Role"
     },
     "activation": {
-      "type": "action",
+      "type": "bonus",
       "cost": 1,
       "condition": ""
     },
@@ -43,13 +43,13 @@
       "prompt": true
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "charges",
+      "target": "Compendium.chris-premades.CPRClassFeatures.Item.jpgX38fzkim5bEAg",
+      "amount": 1,
       "scale": false
     },
     "ability": "",
-    "actionType": "util",
+    "actionType": "other",
     "attack": {
       "bonus": "",
       "flat": false
@@ -72,7 +72,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "class",
       "subtype": ""
     },
     "prerequisites": {
@@ -87,6 +87,20 @@
   },
   "effects": [],
   "flags": {
+    "chris-premades": {
+      "info": {
+        "identifier": "rapidRepair",
+        "version": "0.12.86",
+        "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "firearmRepair"
+          ]
+        }
+      }
+    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -107,21 +121,7 @@
       "rollAttackPerTarget": "default",
       "itemCondition": "",
       "effectCondition": ""
-    },
-    "chris-premades": {
-      "info": {
-        "identifier": "firearmReload",
-        "version": "0.12.86",
-        "source": "chris-premades"
-      },
-      "macros": {
-        "midi": {
-          "item": [
-            "firearmReload"
-          ]
-        }
-      }
     }
   },
-  "_key": "!items!YHISh0er9vLl1vgF"
+  "_key": "!items!X3gRgKjtPVAEaJGO"
 }

@@ -1,4 +1,4 @@
-import {constants, dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function misfire({trigger, workflow}) {
     let baseItem = workflow.item.system.type?.baseItem;
     let proficient = workflow.item.system.proficient || workflow.actor.system.traits.weaponProf.value.has(baseItem) || workflow.actor.system.traits.weaponProf.value.has('oth');
@@ -73,14 +73,66 @@ async function status({trigger, workflow}) {
         return true;
     }
     await genericUtils.update(workflow.item, {'system.uses.value': shotsLeft - 1});
+    let viciousIntent = itemUtils.getItemByIdentifier(workflow.actor, 'viciousIntent');
+    if (!viciousIntent) return;
+    let critical = genericUtils.duplicate(workflow.item.system.critical);
+    if ((critical.threshold ?? 20) < 20) return;
+    critical.threshold = 19;
+    workflow.item = workflow.item.clone({'system.critical': critical}, {keepId: true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
+    workflow.item.applyActiveEffects();
 }
-// async function late({workflow}) {
-//     let viciousIntent = itemUtils.getItemByIdentifier(workflow.actor, 'viciousIntent');
-//     let hemorrhagingCritical = itemUtils.getItemByIdentifier(workflow.actor,' hemorrhagingCritical');
-//     let adeptMarksman = itemUtils.getItemByIdentifier(workflow.actor, 'adeptMarksman');
-//     if (workflow.hitTargets.size !== 1) return;
-//     let critRoll = 
-// }
+async function late({workflow}) {
+    let adeptMarksman = itemUtils.getItemByIdentifier(workflow.actor, 'adeptMarksman');
+    if (!adeptMarksman) return;
+    let viciousIntent = itemUtils.getItemByIdentifier(workflow.actor, 'viciousIntent');
+    let hemorrhagingCritical = itemUtils.getItemByIdentifier(workflow.actor, 'hemorrhagingCritical');
+    if (workflow.hitTargets.size !== 1) return;
+    let critRoll = viciousIntent ? 19 : 20;
+    let regained = 0;
+    let ditem = workflow.damageItem;
+    if (!workflow.damageItem.newHP && workflow.damageItem.oldHP) regained += 1;
+    if (workflow.d20AttackRoll >= critRoll) {
+        regained += 1;
+        if (hemorrhagingCritical) {
+            let damage = ditem.damageDetail.reduce((acc, i) => acc + i.value, 0);
+            damage = Math.floor(damage / 2);
+            let effectData = {
+                name: hemorrhagingCritical.name,
+                img: hemorrhagingCritical.img,
+                origin: hemorrhagingCritical.uuid,
+                duration: {
+                    seconds: 12
+                },
+                changes: [
+                    {
+                        key: 'flags.midi-qol.OverTime',
+                        mode: 0,
+                        value: 'turn=end,damageRoll=' + damage + ',damageType=' + workflow.defaultDamageType + ',label=' + hemorrhagingCritical.name,
+                        priority: 20
+                    }
+                ],
+                flags: {
+                    dae: {
+                        specialDuration: [
+                            'turnEnd'
+                        ]
+                    }
+                }
+            };
+            await effectUtils.createEffect(workflow.hitTargets.first().actor, effectData);
+            await workflowUtils.completeItemUse(hemorrhagingCritical);
+        }
+    }
+    if (!regained) return;
+    let max = adeptMarksman.system.uses.max;
+    let value = adeptMarksman.system.uses.value ?? 0;
+    if (value === max) return;
+    regained = Math.clamp(regained, 0, max - value);
+    await genericUtils.update(adeptMarksman, {'system.uses.value': value + regained});
+    genericUtils.notify(genericUtils.format('CHRISPREMADES.Firearm.GritRegain', {regained}), 'info');
+}
 async function repair({workflow}) {
     let repairFirearms = workflow.actor.items.filter(i => itemUtils.getConfig(i, 'status') == 1);
     if (!repairFirearms.length) {
@@ -166,6 +218,11 @@ export let firearm = {
                 pass: 'preItemRoll',
                 macro: status,
                 priority: 10
+            },
+            {
+                pass: 'rollFinished',
+                macro: late,
+                priority: 50
             }
         ]
     },
