@@ -14,7 +14,7 @@ A collection of automated items including spells, class features, monster featur
 [<img src="images/michael-kofi.svg" width=253px />](https://ko-fi.com/T6T8XKCII)
   
 # Required Modules  
-| Module | Verified Version |  
+| Module | Minimum Version |  
 | --- | --- | 
 | D&D 5e System | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fchrisk123999%2Fchris-premades%2Freleases%2Flatest%2Fdownload%2Fmodule.json&query=%24.relationships.systems%5B%3A1%5D.compatibility.minimum&label=%20&color=orange) | 
 | Midi-Qol | ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fchrisk123999%2Fchris-premades%2Freleases%2Flatest%2Fdownload%2Fmodule.json&query=%24.relationships.requires%5B0%5D.compatibility.minimum&label=%20&color=green) |  
