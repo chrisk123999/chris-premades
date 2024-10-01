@@ -26,6 +26,26 @@
             "OffBalance": "Desequilibrado",
             "WeakGrip": "Aperto Fraco",
             "WeaponAction": "Ação com Arma"
+            "Backbreaker": "Quebra-Costas",
+            "BraceMelee": "Brace (Corpo a Corpo)",
+            "Cleave": "Rachar",
+            "ConcussiveSmash": "Esmagamento Concussivo",
+            "MaimingStrike": "Golpe Mutilante",
+            "DisarmingStrike": "Golpe Desarmante",
+            "Flourish": "Florescer",
+            "Heartstopper": "Destruidor de Corações",
+            "Lacerate": "Dilacerar",
+            "PiercingStrike": "Golpe Perfurante",
+            "PommelStrike": "Golpe com Punho",
+            "Prepare": "Preparar",
+            "Rush": "Correr",
+            "Tenacity": "Tenacidade",
+            "Topple": "Derrubar",
+            "WeakeningStrike": "Golpe Enfraquecedor",
+            "BraceRanged": "Brace (À Distância)",
+            "HamstringShot": "Tiro no Tendão",
+            "MobileShot": "Tiro Móvel",
+            "PiercingShot": "Tiro Perfurante"
         },
         "Backup": {
             "Daily": "Diário",
@@ -212,14 +232,28 @@
             "UpdateItem": "Atualizar Item"
         },
         "Firearm": {
+            "Ammunition": "Bala de Arma de Fogo",
             "Broken": "Quebrado",
             "Damaged": "Danificado",
+            "Explosive": "Explosivo:",
             "Firearm": "Arma de Fogo",
+            "GritRegain": "Grit recuperado! ({regained})",
             "HasMisfired": "falhou!",
             "IsBroken": "Esta arma de fogo está quebrada e deve ser consertada!",
             "IsDamaged": "Esta arma de fogo está danificada e deve ser reparada!",
             "Misfire": "Falha",
+            "MisfireScore": "Misfire Score:",
+            "NoAmmo": "Você não tem munição!",
+            "NoReloads": "Você não tem armas de fogo que precisam ser recarregadas!",
+            "NoRepairs": "Você não tem armas de fogo para consertar!",
+            "NoTinkers": "Você não tem Ferramentas de Funileiro para fazer o reparo!",
             "Other": "Outro",
+            "OutOfAmmo": "Não há tiros/munições restantes, é necessário recarregar!",
+            "RepairFailure": "{weaponName} está quebrada!",
+            "RepairSuccess": "{weaponName} foi reparada com sucesso!",
+            "SelectAmmo": "Qual munição usar?",
+            "SelectReload": "Qual arma de fogo recarregar?",
+            "SelectRepair": "Qual arma de fogo consertar?",
             "Status": "Estado:",
             "TrickShot": "Trick Shot",
             "Undamaged": "Não-Danificado"
@@ -1905,6 +1939,10 @@
               "bg3WeaponActionConfig": {
                 "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
                 "Name": "Configuração Ações de Armas Baldur's Gate 3"
+            },
+            "bg3WeaponActionUses": {
+                "Hint": "Máximo de usos por descanso curto que a ação de arma pode ser usada.",
+                "Name": "Usos Ação de Arma Baldur's Gate 3"
             },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
