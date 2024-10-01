@@ -16,6 +16,17 @@
         "Auras": {
             "Source": "{auraName}: Origem"
         },
+        "BG3": {
+            "Bleeding": "Sangrando",
+            "ChestTrauma": "Trauma Torácico",
+            "Dazed": "Ofuscado",
+            "GapingWounds": "Feridas Abertas",
+            "Hamstrung": "Hamstrung",
+            "Maimed": "Mutilado",
+            "OffBalance": "Desequilibrado",
+            "WeakGrip": "Aperto Fraco",
+            "WeaponAction": "Ação com Arma"
+        },
         "Backup": {
             "Daily": "Diário",
             "Forever": "Para Sempre",
@@ -28,6 +39,9 @@
             "SixMonths": "Seis Meses",
             "ThreeMonths": "Três Meses",
             "Weekly": "Semanal"
+        },
+        "Cleave": {
+            "Use": "Cortar um alvo próximo?"
         },
         "CommonFeatures": {
             "Amphibious": "Anfíbio",
@@ -55,6 +69,7 @@
             "WeightOfSorrow": "Peso da Tristeza"
         },
         "Config": {
+            "Ability": "Atributo:",
             "AffectAllies": "Deve Afetar Aliados:",
             "AllowEnemies": "Permitir seleção de tokens não-aliados?",
             "Animation": "Animação:",
@@ -112,6 +127,7 @@
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
+            "Expire": "Expiração:",
             "Formula": "Fórmula:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
@@ -121,6 +137,7 @@
             "SaveDC": "CD da Salvaguarda:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
+            "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
             "SpecificAnimation": "Animação {option}:"
         },
@@ -225,6 +242,7 @@
             "Max": "Máx:",
             "MissingScale": "O ator não tem o conjunto de escala {scaleName} scale set!",
             "No": "Não",
+            "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
             "Ok": "Ok",
@@ -275,6 +293,9 @@
                 "NoValid": "Nenhuma magia válida encontrada!",
                 "Select": "Selecione a magia associada para esta característica:"
             },
+            "AbilityDrain": {
+                "Name": "Drenagem de Habilidade"
+            },
             "Actions": {
                 "Dodge": "Esquivar",
                 "Grapple": "Agarrar",
@@ -282,6 +303,10 @@
                 "GrappleEscapeSelect": "Tentativa de escapar do agarrão de quem?",
                 "GrappledBy": "Agarrado por {tokenName}",
                 "Grappling": "Agarrando {tokenName}"
+            },
+            "AdvantageDamageBonus": {
+                "Bonus": "Dano adicional se o ataque tiver vantagem:",
+                "Name": "Bônus Adicional de Vantagem"
             },
             "AllPurposeTool": {
                 "Channel": "Ferramenta Multifuncional: Canalizar Forças Criativas",
@@ -327,11 +352,19 @@
                 "WeapToolProf": "Proficiência com Armas/Ferramentas",
                 "Which": "Selecione proficiências:"
             },
+            "AuraDamage": {
+                "Name": "Dano de Aura: Fim do Turno"
+            },
             "AuraOfLife": {
                 "RemoveTempmax": "Remover temporariamente a redução de HP máximo existente enquanto estiver na aura:"
             },
             "AuraOfVitality": {
                 "Healing": "Aura de Vitalidade: Cura"
+            },
+            "AutoGrapple": {
+                "DC": "CD fixo para escapar do agarrão (contestado se 0):",
+                "Disadvantage": "Dar desvantagem no teste de escape:",
+                "Name": "Auto-Agarrão"
             },
             "AwakenedSpellbook": {
                 "Select": "Mudar tipo de dano?"
@@ -355,8 +388,8 @@
             },
             "Berserk": {
                 "Animation": "Animação Berserk:",
-                "DiceFormula": "Fórmula da Rolagem de Dados:",
-                "HPThreshold": "Limite de PV:"
+                "HPThreshold": "Limite de PV:",
+                "Name": "Berserk"
             },
             "BestialSoul": {
                 "Already": "Você já tem um benefício ativo da Alma Bestial!",
@@ -499,6 +532,15 @@
                 "Source": "Duelo Compelido: Origem",
                 "Target": "Duelo Compelido: Alvo"
             },
+            "ContextualBonus": {
+                "Advantage": "Dar vantagem:",
+                "Bonus": "Se não vantagem, qual bônus:",
+                "Checks": "Testes de Atributo que podem receber bônus:",
+                "Condition": "Quando receber bônus:",
+                "Name": "Bônus Contextual",
+                "Saves": "Atributos de Salvaguarda que podem receber bônus:",
+                "Skills": "Testes de Perícia que podem receber bônus:"
+            },
             "ControlUndead": {
                 "Controlled": "Controlar Morto-Vivo: Controlado"
             },
@@ -526,6 +568,11 @@
                 "Heal": "Lâmina de Cristal: Cura",
                 "Light": "Lâmina de Cristal: Luz"
             },
+            "DamageTurnStart": {
+                "Name": "Dano no Início do Turno",
+                "SpecificDamage": "Use fórmula ao invés do dano do item:",
+                "SpecificType": "Se sim, tipo de dano:"
+            },
             "DancingSword": {
                 "Attack": "Espada Dançante: Atacar",
                 "Toss": "Espada Dançante: Jogar"
@@ -547,6 +594,9 @@
             "Dawn": {
                 "EndTurn": "Aurora: Fim do Turno",
                 "Move": "Aurora: Mover"
+            },
+            "DeathBurst": {
+                "Name": "Explosão da Morte"
             },
             "DetectThoughts": {
                 "ProbeDeeper": "Detectar Pensamentos: Sondar Profundamente"
@@ -638,6 +688,15 @@
                 "Protective": "Vínculo de Proteção",
                 "ProtectiveDamage": "Vínculo de Proteção: Dano",
                 "ProtectiveTitle": "Vínculo de Proteção: Proteger Alvo?"
+            },
+            "Engulf": {
+                "Grapples": "Iniciar agarrão",
+                "Grappling": "Comportamento do Agarrão:",
+                "Requires": "Já deve estar agarrando"
+            },
+            "Enlarge": {
+                "Double": "Dados de arma dobrados ao invés de +1d4:",
+                "Name": "Aumentar"
             },
             "EnlargeReduce": {
                 "Enlarge": "Aumentar",
@@ -743,7 +802,8 @@
                 "AllowAvert": "Permitir Desviar os Olhos:",
                 "AvertAdvantage": "Desviar os olhos concede à criatura vantagem em ataques contra o alvo:",
                 "AvertEffect": "Olhos Desviados",
-                "AvertSelect": "Desviar os olhos de {tokenName}?"
+                "AvertSelect": "Desviar os olhos de {tokenName}?",
+                "Name": "Olhar"
             },
             "Grapple": {
                 "ChooseSkill": "Como você quer disputar o agarrão?",
@@ -875,6 +935,7 @@
                 "ArmorOfMagicalStrength": "Armadura da Força Mágica",
                 "ChannelMagic": "Servo Homúnculo: Canalizar Magia",
                 "EndAll": "Encerrar Todas Infusões",
+                "EnhancedArcaneFocus": "Foco Arcano Aprimorado",
                 "EnhancedDefense": "Defesa Aprimorada",
                 "EnhancedWeapon": "Arma Aprimorada",
                 "ForceStrike": "Disparo de Energia",
@@ -884,6 +945,7 @@
                 "Known": "Infusões Conhecidas:",
                 "New": "Nova infusão {infusionLabel} adicionada em <b>{itemName}</b> de {newActorName}.",
                 "NoArmor": "O alvo não tem uma armadura não-mágica válida equipada!",
+                "NoFocus": "O alvo não possui nenhum Bastão, Cajado ou Varinha não-mágica válida equipada!",
                 "NoKnown": "Você não possui infusões conhecidas configuradas no item medkit!",
                 "NoMissing": "Não há slots de magia para recuperar!",
                 "NoShield": "O alvo não tem um escudo não-mágico válida equipada!",
@@ -904,6 +966,7 @@
                 "TooFar": "Servo Homúnculo Muito Longe!",
                 "TooMany": "Você tem o número máximo de infusões já ativas!",
                 "WhichArmor": "Qual armadura você quer infundir?",
+                "WhichFocus": "Qual Bastão, Cajado ou Varinha você quer de infundir?",
                 "WhichShield": "Qual escudo você quer infundir?",
                 "WhichWeapon": "Qual arma você quer infundir?"
             },
@@ -934,6 +997,7 @@
                 "Check": "Este teste depende de: ",
                 "DiceThreshold": "Limite de Rolagem de Dados:",
                 "Hearing": "Audição",
+                "Name": "Sentidos Aguçados",
                 "Sight": "Visão",
                 "Smell": "Olfato"
             },
@@ -993,6 +1057,9 @@
                 "Invalid": "Tipo de Ação Inválida!",
                 "Move": "Mente Manifestada: Mover"
             },
+            "MartialAdvantage": {
+                "Name": "Vantagem Marcial"
+            },
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
@@ -1017,6 +1084,7 @@
                 "TransmutedFirst": "Qual tipo de dano você vai substituir?",
                 "TransmutedSecond": "Qual tipo de dano você quer usar?",
                 "TwinnedUpcast": "Pontos de Feitiçaria insuficientes para duplicar esta magia conjurando em nível superior!",
+                "TwinnedUpcastTargets": "Não é possível conjurar em nível acima e duplicar esta magia!",
                 "Which": "Gastar {cost} Ponto{plural} de Feitiçaria e conjurar qual magia?"
             },
             "MirrorImage": {
@@ -1049,10 +1117,16 @@
                 "Damage": "Usar {itemName} ao custo de {damageFormula} de dano?",
                 "DamageItem": "Sobrecarga: Dano"
             },
+            "PackTactics": {
+                "Name": "Táticas de Bando"
+            },
             "PariahsShield": {
                 "MaxBonus": "Bônus Máx. de CA:",
                 "Protect": "Proteger {name} com {item}?",
                 "Reaction": "Escudo do Pária: Proteger"
+            },
+            "Parry": {
+                "Name": "Aparar"
             },
             "Piercer": {
                 "Reroll": "Rerolar qual dado mais baixo?"
@@ -1098,12 +1172,31 @@
             "RayOfEnfeeblement": {
                 "Overtime": "Raio do Enfraquecimento (Fim do Turno)"
             },
+            "Reduce": {
+                "AlwaysTiny": "Sempre reduzir para Minúsculo:",
+                "AttackDisadvantage": "Desvantagem em ataques baseados em força:",
+                "Name": "Reduzir",
+                "OneDamage": "Ataques baseados em força causam 1 de dano de arma:",
+                "StealthACBonus": "+5 em Furtividade e CA:"
+            },
             "ReduceMaxHP": {
                 "DamageTypeFilter": "Aplicar apenas certos tipos de dano à redução máxima de PV:",
                 "Half": "Reduzir o dano/rolagem pela metade:",
                 "Long": "Expira em Descanso Longo:",
+                "Name": "Reduzir PV Máximo",
                 "ReduceByRoll": "Reduzir por rolagem, não dano:",
                 "Short": "Expira em Descanso Curto:"
+            },
+            "Regeneration": {
+                "Blocked": "Regeneração Bloqueada",
+                "Critical": "Críticos sempre bloqueiam a regeneração",
+                "DamageTypes": "Tipos de dano para reduzir/bloquear a regeneração:",
+                "Dead": "Morto?",
+                "Name": "Regeneração",
+                "Reduced": "Regeneração Reduzida",
+                "ShowIcons": "Mostrar ícones para regeneração bloqueada/reduzida:",
+                "Threshold": "Dano necessário para matar permanentemente se estiver com 0 PV:",
+                "ZeroHP": "A criatura morre ao atingir 0 PV"
             },
             "RingOfSpellStoring": {
                 "Clear": "Limpar magias usadas",
@@ -1178,6 +1271,12 @@
             "SoothePain": {
                 "Protect": "Reduzir o dano em {tokenName}?",
                 "Self": "Reduzir o dano em si mesmo?"
+            },
+            "SpellTurning": {
+                "Advantage": "Vantagem em salvaguardas:",
+                "Name": "Virar Magia",
+                "SpellLevel": "Nível máximo de magia para redirecionamento:",
+                "TargetCaster": "Alvejar Conjurador se bem-sucedido:"
             },
             "SpikeGrowth": {
                 "Thorns": "Crescer Espinhos: Espinhos"
@@ -1363,9 +1462,19 @@
                 "FieryTeleportationDamage": "Teletransporte Feérico: Dano",
                 "FlameSeed": "Semente de Fogo"
             },
+            "SunlightSensitivity": {
+                "Attack": "{tokenName} está na luz do sol?",
+                "Auto": "Assumir que luz plena significa luz solar para desvantagem do ataque:",
+                "Name": "Sensibilidade ao Sol",
+                "Skill": "Este teste depende da visão e a criatura está sob a luz do sol"
+            },
             "SurpriseAttack": {
                 "Dialog": "Usar Diálogo ao invés de verificar a condição Surpreso:",
+                "Name": "Ataque Surpresa",
                 "Surprised": "O alvo está surpreso?"
+            },
+            "SwarmDamage": {
+                "Name": "Dano do Enxame"
             },
             "TashasOtherworldlyGuise": {
                 "Lower": "Planos Inferiores",
@@ -1416,6 +1525,9 @@
             "ThunderousSmite": {
                 "Push": "Destruição Trovejante: Empurrão"
             },
+            "TouchDamage": {
+                "Name": "Dano do Toque"
+            },
             "TwilightSanctuary": {
                 "Charmed": "Remover a condição Enfeitiçado",
                 "Frightened": "Remover a condição Amedrontado",
@@ -1428,7 +1540,8 @@
             },
             "UndeadFortitude": {
                 "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:"
+                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:",
+                "Name": "Fortitude de Morto-Vivo"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -1785,6 +1898,14 @@
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
             },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
+                "Name": "Ações de Armas Baldur's Gate 3"
+            },
+              "bg3WeaponActionConfig": {
+                "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
+                "Name": "Configuração Ações de Armas Baldur's Gate 3"
+            },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
                 "Name": "Verificar Atualizações"
@@ -1792,6 +1913,12 @@
             "classSpellList": {
                 "Hint": "Diário com todas as listas de magias de classe configuradas.",
                 "Name": "Diário de Listas de Magias de Classe"
+            },
+            "cleave": {
+                "1": "Habilitar (Qualquer Vida)",
+                "2": "Habilitar (Somente Vida Cheia)",
+                "Name": "DMG Cleave",
+                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
