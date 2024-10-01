@@ -17,19 +17,16 @@ function collectMacros(effect, pass) {
     if (!macroList.length) return [];
     let triggers = [];
     let effectMacros = macroList.filter(i => i.effect?.find(j => j.pass === pass)).flatMap(k => k.effect).filter(l => l.pass === pass);
-    effectMacros.forEach(i => {
-        triggers.push({
-            entity: effect,
-            castData: {
-                castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                saveDC: effectUtils.getSaveDC(effect) ?? -1
-            },
-            macro: i.macro,
-            name: effect.name,
-            priority: i.priority,
-            custom: i.custom
-        });
+    if (!effectMacros.length) return [];
+    triggers.push({
+        entity: effect,
+        castData: {
+            castLevel: effectUtils.getCastLevel(effect) ?? -1,
+            baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+            saveDC: effectUtils.getSaveDC(effect) ?? -1
+        },
+        macros: effectMacros,
+        name: effect.name.slugify()
     });
     return triggers;
 }
@@ -59,7 +56,19 @@ function getSortedTriggers(effect, pass) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                entity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Effect Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);

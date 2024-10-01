@@ -151,7 +151,7 @@ export {removeOnMiss} from './macros/generic/removeOnMiss.js';
 export {removeTemplate} from './macros/generic/removeTemplate.js';
 export {summonTurnHostile} from './macros/generic/summonTurnHostile.js';
 export {summonUtils} from './lib/summons.js';
-export {test} from './macros/test.js';
+export {test, test2} from './macros/test.js';
 export {spotlightOmniSearchSummon} from './integrations/spotlightOmnisearch.js';
 export {noConfiguration} from './macros/generic/noConfiguration.js';
 export {noReactions} from './macros/generic/noReactions.js';

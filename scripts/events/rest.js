@@ -12,40 +12,34 @@ function collectRestMacros(entity, pass) {
 }
 function collectAllMacros(actor, pass) {
     let triggers = [];
-    actor.items.forEach(i => {
-        let macroList = collectRestMacros(i, pass);
-        if (pass === 'long') macroList.push(...collectRestMacros(i, 'short'));
-        macroList.forEach(j => {
-            triggers.push({
-                entity: i,
-                castData: {
-                    castLevel: i.system.level ?? -1,
-                    baseLevel: i.system.level ?? -1,
-                    saveDC: itemUtils.getSaveDC(i) ?? -1
-                },
-                macro: j.macro,
-                name: i.name,
-                priority: j.priority,
-                custom: i.custom
-            });
+    actor.items.forEach(item => {
+        let macroList = collectRestMacros(item, pass);
+        if (pass === 'long') macroList.push(...collectRestMacros(item, 'short'));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: item,
+            castData: {
+                castLevel: item.system.level ?? -1,
+                baseLevel: item.system.level ?? -1,
+                saveDC: itemUtils.getSaveDC(item) ?? -1
+            },
+            macros: macroList,
+            name: item.name.slugify()
         });
     });
-    actorUtils.getEffects(actor).forEach(i => {
-        let macroList = collectRestMacros(i, pass);
-        if (pass === 'long') macroList.push(...collectRestMacros(i, 'short'));
-        macroList.forEach(j => {
-            triggers.push({
-                entity: i,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(i) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(i) ?? -1,
-                    saveDC: effectUtils.getSaveDC(i) ?? -1
-                },
-                macro: j.macro,
-                name: i.name,
-                priority: j.priority,
-                custom: i.custom
-            });
+    actorUtils.getEffects(actor).forEach(effect => {
+        let macroList = collectRestMacros(effect, pass);
+        if (pass === 'long') macroList.push(...collectRestMacros(effect, 'short'));
+        if (!macroList.length) return;
+        triggers.push({
+            entity: effect,
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
+            },
+            macros: macroList,
+            name: effect.name.slugify()
         });
     });
     return triggers;
@@ -76,7 +70,19 @@ function getSortedTriggers(actor, pass) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                entity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, actor) {
     genericUtils.log('dev', 'Executing Rest Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);

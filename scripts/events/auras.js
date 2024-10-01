@@ -14,14 +14,16 @@ function collectTokenMacros(token, pass, target) {
     let triggers = [];
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor);
-        for (let effect of effects) {
+        effects.forEach(effect => {
             let macroList = collectAuraMacros(effect);
-            if (!macroList.length) continue;
+            if (!macroList.length) return;
             if (isNaN(distance) && target) {
                 distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
                 if (distance < 0) return [];
             }
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
+            if (!auraMacros.length) return;
+            let validAuraMacros = [];
             auraMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;
@@ -37,34 +39,39 @@ function collectTokenMacros(token, pass, target) {
                     if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
                     if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-                triggers.push({
-                    entity: effect,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                        saveDC: effectUtils.getSaveDC(effect) ?? -1
-                    },
+                validAuraMacros.push({
                     macro: i.macro,
-                    name: effect.name,
                     priority: i.priority,
-                    token: token.object,
-                    target: target?.object,
-                    distance: distance,
-                    identifier: i.identifier,
-                    custom: i.custom
+                    identifier: i.identifier
                 });
             });
-        }
+            if (!validAuraMacros.length) return;
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: validAuraMacros,
+                name: effect.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance
+            });
+        });
         let inCombat = combatUtils.inCombat();
-        for (let item of token.actor.items) {
-            if (!inCombat && itemUtils.getConfig(item, 'combatOnly')) continue;
+        token.actor.items.forEach(item => {
+            if (!inCombat && itemUtils.getConfig(item, 'combatOnly')) return;
             let macroList = collectAuraMacros(item);
-            if (!macroList.length) continue;
+            if (!macroList.length) return;
             if (isNaN(distance) && target) {
                 distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true});
                 if (distance < 0) return [];
             }
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
+            if (!auraMacros.length) return;
+            let validAuraMacros = [];
             auraMacros.forEach(i => {
                 if (i.conscious) {
                     if (!token.actor.system.attributes.hp.value) return;
@@ -80,23 +87,26 @@ function collectTokenMacros(token, pass, target) {
                     if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
                     if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item) ?? -1
-                    },
+                validAuraMacros.push({
                     macro: i.macro,
-                    name: item.name,
                     priority: i.priority,
-                    token: token.object,
-                    target: target?.object,
-                    distance: distance,
-                    identifier: i.identifier,
-                    custom: i.custom
+                    identifier: i.identifier
                 });
             });
-        }
+            if (!validAuraMacros.length) return;
+            triggers.push({
+                entity: item,
+                castData: {
+                    castLevel: -1,
+                    saveDC: itemUtils.getSaveDC(item) ?? -1
+                },
+                macros: validAuraMacros,
+                name: item.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance
+            });
+        });
     }
     return triggers;
 }
@@ -129,7 +139,23 @@ function getSortedTriggers(tokens, pass, token) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                entity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                identifier: macro.identifier,
+                name: trigger.name,
+                token: trigger.token,
+                target: trigger.target,
+                distance: trigger.distance
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Aura Macro: ' + trigger.macro.name);

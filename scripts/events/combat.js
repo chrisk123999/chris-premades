@@ -14,82 +14,89 @@ function collectTokenMacros(token, pass, distance, target) {
     let triggers = [];
     if (token.actor) {
         let effects = actorUtils.getEffects(token.actor);
-        for (let effect of effects) {
+        effects.forEach(effect => {
             let macroList = collectMacros(effect);
-            if (!macroList.length) continue;
+            if (!macroList.length) return;
             let effectMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass);
+            if (!effectMacros.length) return;
+            let validEffectMacros = [];
             effectMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
                     if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
                     if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-                triggers.push({
-                    entity: effect,
-                    castData: {
-                        castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                        baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                        saveDC: effectUtils.getSaveDC(effect) ?? -1
-                    },
+                validEffectMacros.push({
                     macro: i.macro,
-                    name: effect.name,
-                    priority: i.priority,
-                    token: token.object,
-                    target: target?.object,
-                    distance: distance,
-                    custom: i.custom
+                    priority: i.priority
                 });
             });
-        }
-        for (let item of token.actor.items) {
+            if (validEffectMacros.length) return;
+            triggers.push({
+                entity: effect,
+                castData: {
+                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                    saveDC: effectUtils.getSaveDC(effect) ?? -1
+                },
+                macros: validEffectMacros,
+                name: effect.name.slugify(),
+                token: token.object,
+                target: target?.object,
+                distance: distance,
+            });
+        });
+        token.actor.items.forEach(item => {
             let macroList = collectMacros(item);
-            if (!macroList.length) continue;
+            if (!macroList.length) return;
             let itemMacros = macroList.filter(i => i.combat?.find(j => j.pass === pass)).flatMap(k => k.combat).filter(l => l.pass === pass);
+            if (!itemMacros.length) return;
+            let validItemMacros = [];
             itemMacros.forEach(i => {
                 if (distance && i.distance < distance) return;
                 if (i.disposition) {
                     if (i.disposition === 'ally' && token.disposition != target?.disposition) return;
                     if (i.disposition === 'enemy' && token.disposition === target?.disposition) return;
                 }
-                triggers.push({
-                    entity: item,
-                    castData: {
-                        castLevel: -1,
-                        saveDC: itemUtils.getSaveDC(item)
-                    },
+                validItemMacros.push({
                     macro: i.macro,
-                    name: item.name,
-                    priority: i.priority,
-                    token: token.object,
-                    target: target?.object,
-                    distance: distance,
-                    custom: i.custom
+                    priority: i.priority
                 });
             });
-        }
-    }
-    let templates = templateUtils.getTemplatesInToken(token.object);
-    for (let template of templates) {
-        let macroList = templateEvents.collectMacros(template);
-        if (!macroList.length) continue;
-        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
-        templateMacros.forEach(i => {
+            if (validItemMacros.length) return;
             triggers.push({
-                entity: template,
+                entity: item,
                 castData: {
-                    castLevel: templateUtils.getCastLevel(template) ?? -1,
-                    saveDC: templateUtils.getSaveDC(template) ?? -1
+                    castLevel: -1,
+                    saveDC: itemUtils.getSaveDC(item)
                 },
-                macro: i.macro,
-                name: templateUtils.getName(template),
-                priority: i.priority,
+                macros: validItemMacros,
+                name: item.name,
                 token: token.object,
                 target: target?.object,
-                distance: distance,
-                custom: i.custom
+                distance: distance
             });
         });
     }
+    let templates = templateUtils.getTemplatesInToken(token.object);
+    templates.forEach(template => {
+        let macroList = templateEvents.collectMacros(template);
+        if (!macroList.length) return;
+        let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
+        if (!templateMacros.length) return;
+        triggers.push({
+            entity: template,
+            castData: {
+                castLevel: templateUtils.getCastLevel(template) ?? -1,
+                saveDC: templateUtils.getSaveDC(template) ?? -1
+            },
+            macros: templateMacros,
+            name: templateUtils.getName(template).slugify(),
+            token: token.object,
+            target: target?.object,
+            distance: distance
+        });
+    });
     return triggers;
 }
 function getSortedTriggers(tokens, pass, token) {
@@ -126,7 +133,21 @@ function getSortedTriggers(tokens, pass, token) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                entity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name,
+                token: trigger.token,
+                distance: trigger.distance
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Combat Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);

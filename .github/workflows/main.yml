@@ -66,4 +66,4 @@ jobs:
         url: 'https://api.foundryvtt.com/_api/packages/release_version'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
-        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "11", "verified": "11", "maximum": "11"} } }'
+        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "12", "verified": "12", "maximum": "12"} } }'

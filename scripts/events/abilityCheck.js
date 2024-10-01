@@ -14,76 +14,67 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
     let triggers = [];
     let effects = actorUtils.getEffects(actor);
     let token = actorUtils.getFirstToken(actor);
-    for (let effect of effects) {
+    effects.forEach(effect => {
         let macroList = collectMacros(effect);
-        if (!macroList.length) continue;
+        if (!macroList.length) return;
         let effectMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-        effectMacros.forEach(i => {
-            triggers.push({
-                entity: effect,
-                castData: {
-                    castLevel: effectUtils.getCastLevel(effect) ?? -1,
-                    baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
-                    saveDC: effectUtils.getSaveDC(effect) ?? -1
-                },
-                macro: i.macro,
-                name: effect.name,
-                priority: i.priority,
-                actor: actor,
-                custom: i.custom,
-                checkId: checkId,
-                options: options,
-                roll: roll
-            });
+        if (!effectMacros.length) return;
+        triggers.push({
+            entity: effect,
+            castData: {
+                castLevel: effectUtils.getCastLevel(effect) ?? -1,
+                baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
+                saveDC: effectUtils.getSaveDC(effect) ?? -1
+            },
+            macros: effectMacros,
+            name: effect.name.slugify(),
+            actor: actor,
+            checkId: checkId,
+            options: options,
+            roll: roll
         });
-    }
-    for (let item of actor.items) {
+    });
+    actor.items.forEach(item => {
         let macroList = collectMacros(item);
-        if (!macroList.length) continue;
+        if (!macroList.length) return;
         let itemMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-        itemMacros.forEach(i => {
-            triggers.push({
-                entity: item,
-                castData: {
-                    castLevel: -1,
-                    saveDC: itemUtils.getSaveDC(item)
-                },
-                macro: i.macro,
-                name: item.name,
-                priority: i.priority,
-                actor: actor,
-                custom: i.custom,
-                checkId: checkId,
-                options: options,
-                roll: roll
-            });
+        if (!itemMacros.length) return;
+        triggers.push({
+            entity: item,
+            castData: {
+                castLevel: -1,
+                saveDC: itemUtils.getSaveDC(item)
+            },
+            macro: itemMacros,
+            name: item.name.slugify(),
+            actor: actor,
+            checkId: checkId,
+            options: options,
+            roll: roll
         });
-    }
+    });
     if (token) {
         let templates = templateUtils.getTemplatesInToken(token);
-        for (let template of templates) {
+        templates.forEach(template => {
             let macroList = collectMacros(template);
-            if (!macroList.length) continue;
+            if (!macroList.length) return;
             let templateMacros = macroList.filter(i => i.check?.find(j => j.pass === pass)).flatMap(k => k.check).filter(l => l.pass === pass);
-            templateMacros.forEach(i => {
-                triggers.push({
-                    entity: template,
-                    castData: {
-                        castLevel: templateUtils.getCastLevel(template),
-                        baseLevel: templateUtils.getBaseLevel(template),
-                        saveDC: templateUtils.getSaveDC(template)
-                    },
-                    macro: i.macro,
-                    name: templateUtils.getName(template),
-                    priority: i.priority,
-                    actor: actor,
-                    custom: i.custom,
-                    checkId: checkId,
-                    options: options,
-                    roll: roll
-                });
+            if (!templateMacros.length) return;
+            triggers.push({
+                entity: template,
+                castData: {
+                    castLevel: templateUtils.getCastLevel(template),
+                    baseLevel: templateUtils.getBaseLevel(template),
+                    saveDC: templateUtils.getSaveDC(template)
+                },
+                macros: templateMacros,
+                name: templateUtils.getName(template).slugify(),
+                actor: actor,
+                checkId: checkId,
+                options: options,
+                roll: roll
             });
-        }
+        });
     }
     return triggers;
 }
@@ -113,7 +104,23 @@ function getSortedTriggers(actor, pass, checkId, options, roll) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                entity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name,
+                actor: trigger.actor,
+                checkId: trigger.checkId,
+                options: trigger.options,
+                roll: trigger.roll
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger) {
     genericUtils.log('dev', 'Executing Check Macro: ' + trigger.macro.name + ' from ' + trigger.name + ' with a priority of ' + trigger.priority);

@@ -11,23 +11,20 @@ function collectMacros(template) {
 }
 function collectTemplatesMacros(templates, pass, token) {
     let triggers = [];
-    for (let template of templates) {
+    templates.forEach(template => {
         let macroList = collectMacros(template);
-        if (!macroList.length) continue;
+        if (!macroList.length) return;
         let templateMacros = macroList.filter(i => i.template?.find(j => j.pass === pass)).flatMap(k => k.template).filter(l => l.pass === pass);
-        templateMacros.forEach(i => {
-            let trigger = {
-                entity: template,
-                castData: templateUtils.getCastData(template),
-                macro: i.macro,
-                name: templateUtils.getName(template),
-                priority: i.priority,
-                token: token,
-                custom: i.custom
-            };
-            triggers.push(trigger);
-        });
-    }
+        if (!templateMacros.length) return;
+        let trigger = {
+            entity: template,
+            castData: templateUtils.getCastData(template),
+            macros: templateMacros,
+            name: templateUtils.getName(template).slugify(),
+            token: token
+        };
+        triggers.push(trigger);
+    });
     return triggers;
 }
 function getSortedTriggers(templates, pass, token) {
@@ -56,7 +53,20 @@ function getSortedTriggers(templates, pass, token) {
         }
         triggers.push(selectedTrigger);
     });
-    return triggers.sort((a, b) => a.priority - b.priority);
+    let sortedTriggers = [];
+    triggers.forEach(trigger => {
+        trigger.macros.forEach(macro => {
+            sortedTriggers.push({
+                enity: trigger.entity,
+                castData: trigger.castData,
+                macro: macro.macro,
+                priority: macro.priority,
+                name: trigger.name,
+                token: trigger.token
+            });
+        });
+    });
+    return sortedTriggers.sort((a, b) => a.priority - b.priority);
 }
 async function executeMacro(trigger, options) {
     genericUtils.log('dev', 'Executing Template Macro: ' + trigger.macro.name);
