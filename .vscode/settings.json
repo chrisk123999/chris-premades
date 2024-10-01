@@ -4,9 +4,7 @@
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.autoImportFileExcludePatterns": ["**/node_modules/**"],
     "i18n-ally.localesPaths": [
-        "lang",
-        "symlinks/foundryLang",
-        "symlinks/dndLang"
+        "lang"
     ],
     "i18n-ally.keystyle": "nested",
     "i18n-ally.indent": 4,

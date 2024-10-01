@@ -6,7 +6,7 @@ import {Medkit} from './medkit.js';
 export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(actor) {
         super({id: 'medkit-window-actor'});
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + actor.name;
+        this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + actor.name;
         this.position.width = 550;
         //this.position.max-height = 800;
         this.actor = actor;

@@ -5,7 +5,7 @@ import * as macros from '../macros.js';
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, itemDocument) {
         super({id: 'medkit-window-item'});
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.name;
+        this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + context.name;
         this.position.width = 450;
         this.itemDocument = itemDocument;
         this.context = context;

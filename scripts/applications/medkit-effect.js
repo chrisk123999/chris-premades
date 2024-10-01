@@ -4,7 +4,7 @@ import * as macros from '../macros.js'; // Maybe see if the added macro exsists?
 export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, effectDocument) {
         super({id: 'medkit-window-effect'});
-        this.windowTitle = 'Chris\'s Premades Configuration: ' + context.label;
+        this.windowTitle = 'Cauldron of Plentiful Resources Configuration: ' + context.label;
         this.position.width = 650;
         this.effectDocument = effectDocument;
         this.context = context;

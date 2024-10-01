@@ -22,7 +22,7 @@ export async function updateCheck() {
             .replaceAll('Bug Fixes:', '<b><u>Bug Fixes:</u></b>')
             .replaceAll('Update Notes:', '<b><u>Update Notes:</u></b>')
             .replaceAll('New Enhanced Animations:', '<b><u>New Enhanced Animations:</u></b>');
-        let message = '<hr>Chris\'s Premades update <b>' + info.tag_name + '</b> available!<hr>' + body;
+        let message = '<hr>Cauldron of Plentiful Resources update <b>' + info.tag_name + '</b> available!<hr>' + body;
         await ChatMessage.create({
             speaker: {alias: name},
             content: message,

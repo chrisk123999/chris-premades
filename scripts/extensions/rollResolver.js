@@ -3,7 +3,7 @@ import {DialogApp} from '../applications/dialog.js';
 import {genericUtils} from '../utils.js';
 function registerFulfillmentMethod() {
     CONFIG.Dice.fulfillment.methods.chrispremades = {
-        label: 'Chris\'s Premades',
+        label: 'Cauldron of Plentiful Resources',
         icon: '<i class="fa-solid fa-kit-medical"></i>',
         interactive: true,
         resolver: CPRSingleRollResolver

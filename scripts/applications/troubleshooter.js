@@ -115,9 +115,9 @@ export async function run() {
     addLine('Language: ' + game.settings.get('core', 'language'));
     let cpr = game.modules.get('chris-premades');
     if (cpr.version === '#{VERSION}#') {
-        addLine('Chris\'s Premades: Development');
+        addLine('Cauldron of Plentiful Resources: Development');
     } else {
-        addLine('Chris\'s Premades: ' + game.modules.get('chris-premades').version);
+        addLine('Cauldron of Plentiful Resources: ' + game.modules.get('chris-premades').version);
     }
     addLine('');
     addLine('/////////////// Required Modules ///////////////');

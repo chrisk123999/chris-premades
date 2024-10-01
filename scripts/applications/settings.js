@@ -43,7 +43,7 @@ class settingsBase extends FormApplication {
             popOut: true,
             template: 'modules/chris-premades/templates/settings.hbs',
             id: 'chris-premades-settings',
-            title: 'Chris\'s Premades',
+            title: 'Cauldron of Plentiful Resources',
             width: 800,
             height: 'auto',
             closeOnSubmit: true

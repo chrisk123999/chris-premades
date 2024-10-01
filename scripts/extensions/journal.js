@@ -26,7 +26,7 @@ export async function setupJournal() {
             }
         });
         await ChatMessage.create({
-            speaker: {alias: 'Chris\'s Premades'},
+            speaker: {alias: 'Cauldron of Plentiful Resources'},
             content: '<hr>' + genericUtils.translate('CHRISPREMADES.Journal.Chat') + ' @UUID[JournalEntry.' + journal.id + ']{' + genericUtils.translate('CHRISPREMADES.Journal.Readme') + '}'
         });
     } else {

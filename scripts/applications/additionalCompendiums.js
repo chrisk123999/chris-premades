@@ -70,7 +70,7 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         let compendiums = { // Default that can be a const somewhere
             'chris-premades': {
                 id: 'chris-premades',
-                label: 'Chris\'s Premades',
+                label: 'Cauldron of Plentiful Resources',
                 priority: 1,
                 isChecked: false
             },

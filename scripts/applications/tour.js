@@ -6,7 +6,7 @@ let states = {
         await ui.sidebar.expand();
         await ui.sidebar.tabs.compendium.activate();
         await genericUtils.sleep(250);
-        let compendiumFolder = game.folders.find(i => i.name === 'Chris\'s Premades' && i.type === 'Compendium');
+        let compendiumFolder = game.folders.find(i => i.name === 'Cauldron of Plentiful Resources' && i.type === 'Compendium');
         if (compendiumFolder && !compendiumFolder.expanded) document.querySelector('[data-uuid="' + compendiumFolder.uuid + '"]').classList.remove('collapsed');
     },
     2: async () => {
@@ -84,7 +84,7 @@ async function register() {
     if (!journalEntry) return;
     let dragonBreath = journalEntry.pages.getName('Dragon Breath');
     if (!dragonBreath) return;
-    let compendiumFolder = game.folders.find(i => i.name === 'Chris\'s Premades' && i.type === 'Compendium');
+    let compendiumFolder = game.folders.find(i => i.name === 'Cauldron of Plentiful Resources' && i.type === 'Compendium');
     if (!compendiumFolder) return;
     let pack = game.packs.get(constants.packs.spells);
     if (!pack) return;
