@@ -41,12 +41,14 @@ async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}
         consumeUsage: false,
         consumeSpellSlot: false
     };
+    let autoRollDamage = game.settings.get('midi-qol', 'ConfigSettings').autoRollDamage;
+    if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';
     let defaultOptions = {
         targetUuids: targets.map(i => i.document.uuid),
         configureDialog: false,
         ignoreUserTargets: true,
         workflowOptions: {
-            autoRollDamage: 'always',
+            autoRollDamage,
             autoFastDamage: true,
             autoRollAttack: true
         }

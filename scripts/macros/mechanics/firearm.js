@@ -5,6 +5,8 @@ async function misfire({trigger, workflow}) {
     let misfireScore = Number(itemUtils.getConfig(workflow.item, 'misfire')) ?? 1;
     if (!proficient) misfireScore += 1;
     if (workflow.attackRoll.terms[0].total > misfireScore) return;
+    let trickShotEffect = effectUtils.getEffectByIdentifier(workflow.actor, 'trickShot');
+    if (trickShotEffect) await genericUtils.remove(trickShotEffect);
     await ChatMessage.create({
         speaker: ChatMessage.implementation.getSpeaker({token: workflow.token}),
         content: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Firearm.HasMisfired')
@@ -68,11 +70,12 @@ async function status({trigger, workflow}) {
     }
     let shotsLeft = workflow.item.system.uses.value;
     let selectedAmmo = workflow.actor.items.get(workflow.item.system.consume?.target);
-    if (!shotsLeft || !selectedAmmo?.system.quantity) {
+    let isPiercing = genericUtils.getProperty(workflow.item, 'flags.chris-premades.firearm.piercing');
+    if (!isPiercing && (!shotsLeft || !selectedAmmo?.system.quantity)) {
         genericUtils.notify('CHRISPREMADES.Firearm.OutOfAmmo', 'info');
         return true;
     }
-    await genericUtils.update(workflow.item, {'system.uses.value': shotsLeft - 1});
+    if (!isPiercing) await genericUtils.update(workflow.item, {'system.uses.value': shotsLeft - 1});
     let viciousIntent = itemUtils.getItemByIdentifier(workflow.actor, 'viciousIntent');
     if (!viciousIntent) return;
     let critical = genericUtils.duplicate(workflow.item.system.critical);
@@ -82,6 +85,82 @@ async function status({trigger, workflow}) {
     workflow.item.prepareData();
     workflow.item.prepareFinalAttributes();
     workflow.item.applyActiveEffects();
+}
+async function early({workflow}) {
+    let adeptMarksman = itemUtils.getItemByIdentifier(workflow.actor, 'adeptMarksman');
+    let currUses = adeptMarksman?.system.uses.value;
+    if (!currUses) return;
+    let isPiercing = genericUtils.getProperty(workflow.item, 'flags.chris-premades.firearm.piercing');
+    if (isPiercing) return;
+    let trickShots = ['dazingShot', 'deadeyeShot', 'disarmingShot', 'forcefulShot', 'violentShot', 'wingingShot'];
+    let possibleItems = trickShots.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(j => j);
+    if (!possibleItems.length) return;
+    let selectedShot = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Firearm.TrickShot', 'CHRISPREMADES.Firearm.TrickShotSelect', possibleItems, {addNoneDocument: true});
+    if (!selectedShot) return;
+    let cost = 1;
+    let createEffect = false;
+    let effectData = {
+        name: selectedShot.name,
+        img: selectedShot.img,
+        origin: selectedShot.uuid,
+        flags: {
+            'chris-premades': {
+                effect: {
+                    noAnimation: true
+                }
+            }
+        }
+    };
+    switch (genericUtils.getIdentifier(selectedShot)) {
+        case 'dazingShot':
+            effectUtils.addMacro(effectData, 'midi.actor', ['dazingShot']);
+            createEffect = true;
+            break;
+        case 'deadeyeShot':
+            workflow.advantage = true;
+            workflow.attackAdvAttribution.add(genericUtils.translate('DND5E.Advantage') + ': ' + selectedShot.name);
+            break;
+        case 'disarmingShot':
+            effectUtils.addMacro(effectData, 'midi.actor', ['disarmingShot']);
+            createEffect = true;
+            break;
+        case 'forcefulShot':
+            effectUtils.addMacro(effectData, 'midi.actor', ['forcefulShot']);
+            createEffect = true;
+            break;
+        case 'violentShot': {
+            let numSpent = await dialogUtils.selectDialog(selectedShot.name, 'CHRISPREMADES.Firearm.SelectViolent', {
+                label: 'CHRISPREMADES.Firearm.Grit',
+                name: 'grit',
+                options: {
+                    options: new Array(currUses).fill().map((_, ind) => ({label: (ind + 1).toString(), value: (ind + 1).toString()}))
+                }
+            });
+            if (!numSpent?.length) return;
+            cost = Number(numSpent);
+            let currMisfire = itemUtils.getConfig(workflow.item, 'misfire');
+            let damageParts = genericUtils.duplicate(workflow.item.system.damage.parts);
+            let origRoll = await new Roll(damageParts[0][0], workflow.item.getRollData()).evaluate();
+            let faces = origRoll.terms[0].faces;
+            if (!faces) return;
+            damageParts.push([cost + 'd' + faces + '[' + damageParts[0][1] + ']', damageParts[0][1]]);
+            workflow.item = workflow.item.clone({'system.damage.parts': damageParts, 'flags.chris-premades.config.misfire': Number(currMisfire) + 2 * cost}, {keepId: true});
+            workflow.item.prepareData();
+            workflow.item.prepareFinalAttributes();
+            workflow.item.applyActiveEffects();
+            break;
+        }
+        case 'wingingShot':
+            effectUtils.addMacro(effectData, 'midi.actor', ['wingingShot']);
+            createEffect = true;
+            break;
+    }
+    await workflowUtils.completeItemUse(selectedShot);
+    await genericUtils.update(adeptMarksman, {'system.uses.value': currUses - cost});
+    if (createEffect) {
+        effectUtils.addMacro(effectData, 'midi.actor', ['removeOnMiss']);
+        await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'trickShot'});
+    }
 }
 async function late({workflow}) {
     let adeptMarksman = itemUtils.getItemByIdentifier(workflow.actor, 'adeptMarksman');
@@ -222,6 +301,11 @@ export let firearm = {
             {
                 pass: 'rollFinished',
                 macro: late,
+                priority: 50
+            },
+            {
+                pass: 'preambleComplete',
+                macro: early,
                 priority: 50
             }
         ]

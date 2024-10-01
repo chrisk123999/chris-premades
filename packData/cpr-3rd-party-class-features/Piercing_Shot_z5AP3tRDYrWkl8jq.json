@@ -1,17 +1,20 @@
 {
-  "name": "Maneuvers: Brace",
+  "folder": "0PHDSAYyB8latZxN",
+  "name": "Piercing Shot",
   "type": "feat",
+  "_id": "z5AP3tRDYrWkl8jq",
+  "img": "icons/weapons/guns/gun-topbarrel.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
     "source": {
-      "custom": ""
+      "custom": "Critical Role"
     },
     "activation": {
-      "type": "reaction",
-      "cost": 1,
+      "type": "special",
+      "cost": null,
       "condition": ""
     },
     "duration": {
@@ -21,16 +24,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "1",
+      "value": "",
       "width": null,
       "units": "",
-      "type": "creature",
+      "type": "self",
       "prompt": true
     },
     "range": {
       "value": null,
       "long": null,
-      "units": ""
+      "units": "self"
     },
     "uses": {
       "value": null,
@@ -40,13 +43,17 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.chris-premades.CPRClassFeatures.Item.7rzbfDAYjJGCPfWn",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
     "actionType": "util",
+    "attack": {
+      "bonus": "",
+      "flat": false
+    },
     "chatFlavor": "",
     "critical": {
       "threshold": null,
@@ -56,84 +63,65 @@
       "parts": [],
       "versatile": ""
     },
+    "enchantment": null,
     "formula": "",
     "save": {
       "ability": "",
       "dc": null,
       "scaling": "spell"
     },
+    "summons": null,
     "type": {
       "value": "class",
-      "subtype": "maneuver"
+      "subtype": "trickShot"
     },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
     "requirements": "",
     "recharge": {
       "value": null,
       "charged": false
-    },
-    "properties": [],
-    "attack": {
-      "bonus": "",
-      "flat": false
-    },
-    "enchantment": null,
-    "summons": null,
-    "prerequisites": {
-      "level": null
     }
   },
+  "effects": [],
   "flags": {
-    "midi-qol": {
-      "forceCEOff": true,
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "false",
-      "effectCondition": ""
-    },
-    "core": {
-      "sourceId": "Actor.XauTPmdt4Drmy2f5.Item.9AXZWqYA09ofxmFd"
-    },
     "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
+      "confirmTargets": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
-      "rollOther": false,
       "critOther": false,
       "offHandWeapon": false,
       "magicdam": false,
       "magiceffect": false,
-      "concentration": false,
+      "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "chris-premades": {
       "info": {
-        "name": "Maneuvers: Brace",
+        "identifier": "piercingShotTrickshot",
         "version": "1.0.2",
-        "identifier": "maneuversBrace",
         "source": "chris-premades"
       },
       "macros": {
         "midi": {
           "item": [
-            "maneuversBrace"
+            "piercingShotTrickshot"
           ]
         }
       }
     }
   },
-  "effects": [],
-  "img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
-  "folder": "oVdapapXnBliYGb5",
-  "_id": "a9fOjoLuUX2cdqdP",
-  "_key": "!items!a9fOjoLuUX2cdqdP"
+  "_key": "!items!z5AP3tRDYrWkl8jq"
 }
