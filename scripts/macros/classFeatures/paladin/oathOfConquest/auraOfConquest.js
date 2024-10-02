@@ -51,12 +51,13 @@ async function create({trigger: {entity: item, target, identifier}}) {
     };
 }
 async function turnStart({trigger: {entity: effect, token}}) {
-    let originActor = (await fromUuid(effect.origin))?.actor;
+    let originItem = await fromUuid(effect.origin);
+    let originActor = originItem?.actor;
     if (!originActor) return;
     let frightened = effectUtils.getEffectByStatusID(token.actor, 'frightened');
     if (!frightened) return;
     let damageRoll = await new CONFIG.Dice.DamageRoll('floor(@classes.paladin.levels / 2)', originActor.getRollData(), {type: 'psychic'}).evaluate();
-    await workflowUtils.applyWorkflowDamage(actorUtils.getFirstToken(originActor), damageRoll, 'psychic', [token], {flavor: effect.name});
+    await workflowUtils.applyWorkflowDamage(actorUtils.getFirstToken(originActor), damageRoll, 'psychic', [token], {flavor: effect.name, sourceItem: originItem});
 }
 export let auraOfConquest = {
     name: 'Aura of Conquest',

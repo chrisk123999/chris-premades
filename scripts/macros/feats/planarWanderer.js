@@ -37,7 +37,7 @@ async function useCracker({workflow}) {
     let roll = await workflow.actor.rollSkill('arc');
     if (roll.total >= 20) return;
     let damageRoll = await new CONFIG.Dice.DamageRoll('3d8[psychic]', {}, {type: 'psychic'}).evaluate();
-    await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [workflow.token], {flavor: workflow.item.name, itemCardId: workflow.itemCardId});
+    await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [workflow.token], {flavor: workflow.item.name, itemCardId: workflow.itemCardId, sourceItem: workflow.item});
 }
 export let planarAdaptation = {
     name: 'Planar Wanderer: Planar Adaptation',

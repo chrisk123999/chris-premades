@@ -29,7 +29,7 @@ async function use({workflow}) {
     if (!selection) return;
     if (selection === 'damage') {
         let damageRoll = await new CONFIG.Dice.DamageRoll('2d12[psychic]', {}, {damageType: 'psychic'}).evaluate();
-        await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [targetToken], {flavor: workflow.item.name, itemCardId: workflow.itemCardId});
+        await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'psychic', [targetToken], {flavor: workflow.item.name, itemCardId: workflow.itemCardId, sourceItem: workflow.item});
     } else {
         let weapons = targetToken.actor.items.filter(i => i.type === 'weapon' && i.system.equipped);
         let selectedWeapon;

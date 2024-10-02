@@ -92,8 +92,16 @@ function setDamageItemDamage(ditem, damageAmount, adjustRaw = true) {
         ditem.rawDamageDetail[0].value = damageAmount;
     }
 }
-function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new'}={}) {
-    return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId});
+function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new', sourceItem}={}) {
+    let itemData = {};
+    if (sourceItem) {
+        itemData = {
+            name: sourceItem.name,
+            img: sourceItem.img,
+            type: sourceItem.type
+        };
+    }
+    return new MidiQOL.DamageOnlyWorkflow(sourceToken.actor, sourceToken, damageRoll.total, damageType, targets, damageRoll, {flavor, itemCardId, itemData});
 }
 function getDamageTypes(damageRolls) {
     return new Set(damageRolls.map(i => i.options.type));

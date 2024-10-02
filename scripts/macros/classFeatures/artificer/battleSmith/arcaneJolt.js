@@ -19,7 +19,7 @@ export async function arcaneJoltHelper(workflow, originItem) {
         if (!selected?.length) return;
         let target = selected[0];
         let damageRoll = await new CONFIG.Dice.DamageRoll(scale + '[healing]', {}, {type: 'healing'}).evaluate();
-        await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'healing', [target], {flavor: originItem.name, itemCardId: workflow.chatCard.id});
+        await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'healing', [target], {flavor: originItem.name, itemCardId: workflow.chatCard.id, sourceItem: originItem});
     }
     await combatUtils.setTurnCheck(workflow.item, 'arcaneJolt');
     await workflowUtils.completeItemUse(originItem, {consumeUsage: true}, {configureDialog: false});

@@ -36,7 +36,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
     let config = itemUtils.getGenericFeatureConfig(originItem, 'damageTurnStart');
     let damageRoll = config.specificDamage.length ? config.specificDamage : originItem.system.damage.parts.map(i => i[0]).join(' + ');
     let roll = await new Roll(damageRoll, originItem.getRollData()).evaluate();
-    await workflowUtils.applyWorkflowDamage(token.actor, roll, null, [targetToken], {flavor: originItem.name});
+    await workflowUtils.applyWorkflowDamage(token.actor, roll, null, [targetToken], {flavor: originItem.name, sourceItem: originItem});
 }
 export let damageTurnStart = {
     name: 'Damage on Turn Start',
