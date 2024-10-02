@@ -33,7 +33,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     priority: i.priority
                 });
             });
-            if (validMovementMacros.length) return;
+            if (!validMovementMacros.length) return;
             triggers.push({
                 entity: effect,
                 castData: {
@@ -41,7 +41,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     baseLevel: effectUtils.getBaseLevel(effect) ?? -1,
                     saveDC: effectUtils.getSaveDC(effect) ?? -1
                 },
-                macros: movementMacros,
+                macros: validMovementMacros,
                 name: effect.name.slugify(),
                 token: token.object,
                 target: target?.object,
