@@ -1,5 +1,4 @@
 import {genericUtils} from '../utils.js';
-
 let packs = [
     {
         key: 'gps-spells',
@@ -68,7 +67,13 @@ let packs = [
         thirdParty: false
     }
 ];
+let monsterPacks = [
+    {
+        key: 'gps-monster-features'
+    }
+];
 let gambitItems = [];
+let gambitMonsters = [];
 async function init(mode) {
     let validPacks;
     switch(mode) {
@@ -94,8 +99,28 @@ async function init(mode) {
             });
         });
     }));
+    await Promise.all(monsterPacks.map(async i => {
+        let pack = game.packs.get('gambits-premades.' + i.key);
+        if (!pack) return;
+        let index = await pack.getIndex({fields: ['name', 'system.source.custom', 'folder']});
+        index.forEach(j => {
+            let version = j.system.source.custom;
+            if (!version) {
+                genericUtils.log('dev', j.name + ' from GPS is missing version info.');
+            }
+            let folder = pack.folders.contents.find(k => k.id === j.folder);
+            if (!folder) return;
+            gambitMonsters.push({
+                name: j.name,
+                version: j.system.source.custom,
+                uuid: j.uuid,
+                monster: folder.name
+            });
+        });
+    }));
 }
 export let gambitPremades = {
     init,
-    gambitItems
+    gambitItems,
+    gambitMonsters
 };

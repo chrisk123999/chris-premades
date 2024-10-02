@@ -55,32 +55,44 @@ async function getCPRAutomation(item) {
 }
 async function getGPSAutomation(item) {
     let found;
-    switch(item.type) {
-        case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell'); break;
-        case 'weapon':
-        case 'equipment':
-        case 'consumable':
-        case 'tool':
-        case 'backpack':
-        case 'loot':
-            found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'item'); break;
-        case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
+    let type = item.actor?.type ?? 'character';
+    if (type === 'character' || item.type === 'spell') {
+        switch(item.type) {
+            case 'spell': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'spell'); break;
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'item'); break;
+            case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
+        }
+    } else if (type === 'npc') {
+        let monster = item.actor.prototypeToken.name;
+        found = gambitPremades.gambitMonsters.find(i => i.monster === monster && item.name === i.name);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
 }
 async function getMISCAutomation(item) {
     let found;
-    switch(item.type) {
-        case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell'); break;
-        case 'weapon':
-        case 'equipment':
-        case 'consumable':
-        case 'tool':
-        case 'backpack':
-        case 'loot':
-            found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'item'); break;
-        case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
+    let type = item.actor?.type ?? 'character';
+    if (type === 'character' || item.type === 'spell') {
+        switch(item.type) {
+            case 'spell': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'spell'); break;
+            case 'weapon':
+            case 'equipment':
+            case 'consumable':
+            case 'tool':
+            case 'backpack':
+            case 'loot':
+                found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'item'); break;
+            case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
+        }
+    } else if (type === 'npc') {
+        let monster = item.actor.prototypeToken.name;
+        found = miscPremades.miscMonsters.find(i => i.monster === monster && item.name === i.name);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
@@ -88,6 +100,10 @@ async function getMISCAutomation(item) {
 async function getAllAutomations(item) {
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
     let items = [];
+    let type = item.actor?.type ?? 'character';
+    if (type != 'character' && type != 'npc') return [];
+    let monster;
+    if (type === 'npc') monster = item.actor.prototypeToken.name;
     await Promise.all(Object.entries(setting).map(async i => {
         let found;
         let source;
@@ -105,12 +121,25 @@ async function getAllAutomations(item) {
             case 'gambits-premades': 
                 found = await getGPSAutomation(item);
                 source = 'gambits-premades';
-                version = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+                if (found) {
+                    if (type === 'npc') {
+                        version = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+                    } else {
+                        version = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+                    }
+                }
                 break;
             case 'midi-item-showcase-community':
                 found = await getMISCAutomation(item);
                 source = 'midi-item-showcase-community';
                 version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+                if (found) {
+                    if (type === 'npc') {
+                        version = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+                    } else {
+                        version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+                    }
+                }
                 break;
         }
         if (found) items.push({document: found, priority: i[1], source: source, version: version});

@@ -78,12 +78,24 @@ function isUpToDate(item) {
     let source = getSource(item);
     if (!version || !source) return (item.flags['chris-premades']?.config?.generic ? 2 : -1);
     let sourceVersion;
+    let type = item.actor?.type ?? 'character';
+    if (type != 'character' && type != 'npc') return;
+    let monster;
+    if (type === 'npc') monster = item.actor.prototypeToken.name;
     switch (source) {
         case 'gambits-premades':
-            sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+            if (type === 'character') {
+                sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
+            } else {
+                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+            }
             break;
         case 'midi-item-showcase-community':
-            sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+            if (type === 'character') {
+                sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
+            } else {
+                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+            }
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);

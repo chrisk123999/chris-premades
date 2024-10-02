@@ -1,5 +1,4 @@
 import {genericUtils} from '../utils.js';
-
 let packs = [
     {
         key: 'misc-items',
@@ -22,7 +21,13 @@ let packs = [
         type: 'feat'
     }
 ];
+let monsterPacks = [
+    {
+        key: 'misc-monster-features'
+    }
+];
 let miscItems = [];
+let miscMonsters = [];
 async function init(mode) {
     await Promise.all(packs.map(async i => {
         let pack = game.packs.get('midi-item-showcase-community.' + i.key);
@@ -114,8 +119,29 @@ async function init(mode) {
             }
         }
     }
+    await Promise.all(monsterPacks.map(async i => {
+        let pack = game.packs.get('midi-item-showcase-community.' + i.key);
+        if (!pack) return;
+        let index = await pack.getIndex({fields: ['name', 'folder']});
+        index.forEach(j => {
+            let folder = pack.folders.contents.find(k => k.id === j.folder);
+            if (!folder) return;
+            let monster = folder.name;
+            let version = CONFIG['midi-item-showcase-community']?.monsterAutomations?.[monster]?.[j.name]?.version;
+            if (!version) {
+                genericUtils.log('dev', j.name + ' (' + monster + ') from MISC is missing version info.');
+            }
+            miscMonsters.push({
+                name: j.name,
+                version: version,
+                uuid: j.uuid,
+                monster: monster
+            });
+        });
+    }));
 }
 export let miscPremades = {
     init,
-    miscItems
+    miscItems,
+    miscMonsters
 };
