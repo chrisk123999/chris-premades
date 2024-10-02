@@ -472,15 +472,20 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return genericConfigs;
             }, {});
             if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
+            let macroUpdates = {};
             Object.keys(genericConfigs).forEach(async i => {
                 let macroInfo = macros[i];
                 let macroFields = ['midi.actor', 'midi.item', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
                 for (let macroField of macroFields) {
                     if (genericUtils.getProperty(macroInfo, macroField)) {
-                        if (item) await genericUtils.setFlag(item, 'chris-premades', 'macros.' + macroField, (genericUtils.getProperty(item, 'flags.chris-premades.macros.' + macroField) ?? []).concat([i]));
+                        macroUpdates[macroField] = (macroUpdates[macroField] ?? item.flags['chris-premades']?.macros?.[macroField] ?? []).concat([i]);
                     }
                 }
             });
+            if (Object.keys(macroUpdates).length) {
+                let trueUpdates = Object.fromEntries(Object.entries(macroUpdates).map(i => ['flags.chris-premades.macros.' + i[0], i[1]]));
+                await genericUtils.update(item, trueUpdates);
+            }
         }
         let currentSource = item?.flags?.['chris-premades']?.info?.source;
         if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {

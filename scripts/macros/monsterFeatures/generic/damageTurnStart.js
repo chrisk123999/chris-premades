@@ -1,4 +1,4 @@
-import {actorUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
 
 async function late({workflow}) {
     if (!workflow.failedSaves.size) return;
@@ -9,19 +9,34 @@ async function late({workflow}) {
     for (let target of workflow.failedSaves) {
         let effect = Array.from(target.actor.allApplicableEffects()).find(i => i.origin === workflow.item.uuid);
         if (!effect) continue;
-        let currentCombatFlags = effect.flags['chris-premades']?.macros?.combat ?? [];
-        await genericUtils.update(effect, {
-            'flags.chris-premades.macros.combat': currentCombatFlags.concat('damageTurnStartTarget')
-        });
+        let effectData = {
+            name: workflow.item.name + ': ' + target.name,
+            img: workflow.item.img,
+            origin: workflow.item.uuid,
+            flags: {
+                'chris-premades': {
+                    damageTurnStart: {
+                        token: target.id
+                    },
+                    effect: {
+                        noAnimation: true
+                    }
+                }
+            }
+        };
+        effectUtils.addMacro(effectData, 'combat', ['damageTurnStart']);
+        await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: effect, strictlyInterdependent: true});
     }
 }
 async function turnStart({trigger: {entity: effect, token}}) {
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
+    let targetToken = token.scene.tokens.get(effect.flags['chris-premades']?.damageTurnStart?.token);
+    if (!targetToken) return;
     let config = itemUtils.getGenericFeatureConfig(originItem, 'damageTurnStart');
     let damageRoll = config.specificDamage.length ? config.specificDamage : originItem.system.damage.parts.map(i => i[0]).join(' + ');
     let roll = await new Roll(damageRoll, originItem.getRollData()).evaluate();
-    await workflowUtils.applyWorkflowDamage(actorUtils.getFirstToken(originItem.actor), roll, null, [token], {flavor: originItem.name});
+    await workflowUtils.applyWorkflowDamage(token.actor, roll, null, [targetToken], {flavor: originItem.name});
 }
 export let damageTurnStart = {
     name: 'Damage on Turn Start',
@@ -36,6 +51,13 @@ export let damageTurnStart = {
             }
         ]
     },
+    combat: [
+        {
+            pass: 'turnStart',
+            macro: turnStart,
+            priority: 50
+        }
+    ],
     isGenericFeature: true,
     genericConfig: [
         {
@@ -43,17 +65,6 @@ export let damageTurnStart = {
             label: 'CHRISPREMADES.Macros.DamageTurnStart.SpecificDamage',
             type: 'text',
             default: ''
-        }
-    ]
-};
-export let damageTurnStartTarget = {
-    name: 'Damage on Turn Start: Target',
-    version: damageTurnStart.version,
-    combat: [
-        {
-            pass: 'turnStart',
-            macro: turnStart,
-            priority: 50
         }
     ]
 };
