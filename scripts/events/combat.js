@@ -31,7 +31,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     priority: i.priority
                 });
             });
-            if (validEffectMacros.length) return;
+            if (!validEffectMacros.length) return;
             triggers.push({
                 entity: effect,
                 castData: {
@@ -63,7 +63,7 @@ function collectTokenMacros(token, pass, distance, target) {
                     priority: i.priority
                 });
             });
-            if (validItemMacros.length) return;
+            if (!validItemMacros.length) return;
             triggers.push({
                 entity: item,
                 castData: {
