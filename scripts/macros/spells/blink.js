@@ -1,5 +1,6 @@
+import {socket, sockets} from '../../lib/sockets.js';
 import {Teleport} from '../../lib/teleport.js';
-import {animationUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {animationUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -23,7 +24,7 @@ async function use({workflow}) {
 }
 async function turnStart({trigger: {entity: effect, token}}) {
     let playAnimation = effect.flags['chris-premades'].blink.playAnimation && animationUtils.jb2aCheck();
-    await Teleport.target([token], token, {range: 10, animation: playAnimation ? 'mistyStep' : 'none'});
+    await socket.executeAsUser(sockets.teleport.name, socketUtils.firstOwner(token.actor, true), [token.document.uuid], token.document.uuid, {range: 10, animation: playAnimation ? 'mistyStep' : 'none'});
     await genericUtils.remove(effect);
 }
 async function turnEnd({trigger: {entity: effect, token}}) {
