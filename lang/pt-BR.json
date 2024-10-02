@@ -1980,6 +1980,20 @@
                 "Hint": "Habilita automação de resistência e vulnerabilidde de condição.",
                 "Name": "Resistência e Vulnerabilidade de Condição"
             },
+            "criticalCompendium": {
+                "Hint": "Selecione seu Compêndio Crítico.",
+                "Name": "Compêndio Crítico"
+            },
+            "criticalFumbleMode": {
+                "1": "Aleatório",
+                "2": "Selecionado",
+                "3": "Aleatório - Apenas Crítico",
+                "4": "Selecionado - Apenas Crítico",
+                "5": "Aleatório - Apenas Falha Crítica",
+                "6": "Selecionado - Apenas Falha Crítica",
+                "Hint": "Quando ativado, jogadas de ataque crítica ou falha crítica também rolarão um item dos compêndios selecionados.",
+                "Name": "Modo Crítico e Falha Crítica"
+            },
             "devTools": {
                 "Hint": "Habilitar para exibir ferramentas de desenvolvimento.",
                 "Name": "Exibir Ferramentas de Desenvolvimento"
@@ -2023,6 +2037,10 @@
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
+            },
+            "fumbleCompendium": {
+                "Hint": "Selecione seu Compêndio de Falha Crítica.",
+                "Name": "Compêndio de Falha Crítica"
             },
             "gambitPremades": {
                 "1": "Sem Homebrew ou Terceiros",
