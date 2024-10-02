@@ -24,7 +24,9 @@ let buttonLabels = {
     manualRollsUsers: 'CHRISPREMADES.Generic.Configure',
     classSpellList: 'CHRISPREMADES.Generic.Select',
     itemCompendium: 'CHRISPREMADES.Generic.Select',
-    bg3WeaponActionConfig: 'CHRISPREMADES.Generic.Configure'
+    bg3WeaponActionConfig: 'CHRISPREMADES.Generic.Configure',
+    fumbleCompendium: 'CHRISPREMADES.Generic.Select',
+    criticalCompendium: 'CHRISPREMADES.Generic.Select'
 };
 function addMenuSetting(key, category) {
     genericUtils.setProperty(settingCategories, key.split(' ').join('-'), category);
@@ -125,6 +127,8 @@ export async function settingButton(id) {
         case 'classSpellList': await spellList.selectJournal('classSpellList'); break;
         case 'itemCompendium': await selectCompendium('itemCompendium', 'Item'); break;
         case 'bg3WeaponActionConfig': await bg3.configure(); break;
+        case 'fumbleCompendium': await selectCompendium('fumbleCompendium', 'Item'); break;
+        case 'criticalCompendium': await selectCompendium('criticalCompendium', 'Item'); break;
     }
 }
 export class settingsDevelopment extends settingsBase {

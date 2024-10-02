@@ -7,6 +7,7 @@ import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '.
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
 import {cleave} from '../macros/mechanics/cleave.js';
+import {critFumble} from '../macros/homebrew/critFumble.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -137,7 +138,7 @@ function getSortedTriggers({item, token, actor, sourceToken, targetToken}, pass)
         trigger.macros.forEach(macro => {
             sortedTriggers.push({
                 castData: trigger.castData,
-                enity: trigger.enity,
+                entity: trigger.entity,
                 macro: macro.macro,
                 priority: macro.priority,
                 name: trigger.name,
@@ -232,6 +233,7 @@ async function attackRollComplete(workflow) {
         if (workflow.aborted) break;
     }
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'attack');
+    if (genericUtils.getCPRSetting('criticalFumbleMode')) await critFumble.attack(workflow);
 }
 async function savesComplete(workflow) {
     await executeMacroPass(workflow, 'savesComplete');

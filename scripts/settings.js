@@ -806,6 +806,35 @@ export function registerSettings() {
         default: 1,
         category: 'homebrew'
     });
+    addSetting({
+        key: 'fumbleCompendium',
+        type: String,
+        default: null,
+        category: 'homebrew',
+        select: true
+    });
+    addSetting({
+        key: 'criticalCompendium',
+        type: String,
+        default: null,
+        category: 'homebrew',
+        select: true
+    });
+    addSetting({
+        key: 'criticalFumbleMode',
+        type: Number,
+        default: 0,
+        category: 'homebrew',
+        choices: {
+            0: 'CHRISPREMADES.Generic.Disabled',
+            1: 'CHRISPREMADES.Settings.criticalFumbleMode.1',
+            2: 'CHRISPREMADES.Settings.criticalFumbleMode.2',
+            3: 'CHRISPREMADES.Settings.criticalFumbleMode.3',
+            4: 'CHRISPREMADES.Settings.criticalFumbleMode.4',
+            5: 'CHRISPREMADES.Settings.criticalFumbleMode.5',
+            6: 'CHRISPREMADES.Settings.criticalFumbleMode.6',
+        }
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

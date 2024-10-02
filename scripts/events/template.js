@@ -57,7 +57,7 @@ function getSortedTriggers(templates, pass, token) {
     triggers.forEach(trigger => {
         trigger.macros.forEach(macro => {
             sortedTriggers.push({
-                enity: trigger.entity,
+                entity: trigger.entity,
                 castData: trigger.castData,
                 macro: macro.macro,
                 priority: macro.priority,

@@ -22,7 +22,7 @@ async function damage({trigger: {entity: effect}, workflow}) {
     await Promise.all(workflow.damageRolls.map(async (damageRoll, i, arr) => {
         if (validTypes.includes(damageRoll.options.type)) arr[i] = await damageRoll.reroll({maximize: true});
     }));
-    workflow.setDamageRolls(workflow.damageRolls);
+    await workflow.setDamageRolls(workflow.damageRolls);
     await genericUtils.remove(effect);
 }
 export let destructiveWrath = {

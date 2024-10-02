@@ -536,3 +536,5 @@ export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macro
 export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMist} from './macros/items/trinket/wrapsOfDyamak.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
+//Other
+export {maxDamage, maxDamageEffect, doubleDamage, doubleDamageEffect} from './macros/homebrew/critFumble.js';

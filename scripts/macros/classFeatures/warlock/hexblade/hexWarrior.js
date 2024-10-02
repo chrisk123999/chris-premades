@@ -1,5 +1,4 @@
 import {dialogUtils, genericUtils, itemUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && !i.system.properties.has('two'));
     let existingHexWeaponEffect = weapons.map(i => Array.from(i.allApplicableEffects()).find(j => genericUtils.getIdentifier(j) === 'hexWarriorWeapon')).filter(i => i);

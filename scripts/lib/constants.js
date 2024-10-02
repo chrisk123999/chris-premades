@@ -15,7 +15,8 @@ let packs = {
     raceFeatureItems: 'chris-premades.CPRRaceFeatureItems',
     thirdPartyClassFeatures: 'chris-premades.CPRThirdPartyClassFeatures',
     thirdPartyItems: 'chris-premades.CPRThirdPartyItems',
-    monsterFeatures: 'chris-premades.CPRMonsterFeatures'
+    monsterFeatures: 'chris-premades.CPRMonsterFeatures',
+    miscellaneous: 'chris-premades.CPRMiscellaneous'
 };
 let featurePacks = {
     spellFeatures: 'chris-premades.CPRSpellFeatures',
@@ -52,6 +53,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyClassFeatures = 'world.cpr-3rd-party-class-features';
         packs.thirdPartyItems = 'world.cpr-3rd-party-items';
         packs.monsterFeatures = 'world.cpr-monster-features';
+        packs.miscellaneous = 'world.cpr-miscellaneous';
     } else {
         packs.spellFeatures = 'chris-premades.CPRSpellFeatures';
         featurePacks.spellFeatures = 'chris-premades.CPRSpellFeatures';
@@ -77,6 +79,7 @@ function setUseLocalCompendium(value) {
         packs.thirdPartyClassFeatures = 'chris-premades.CPRThirdPartyClassFeatures';
         packs.thirdPartyItems = 'chris-premades.CPRThirdPartyItems';
         packs.monsterFeatures = 'chris-premades.CPRMonsterFeatures';
+        packs.miscellaneous = 'chris-premades.CPRMiscellaneous';
     }
 }
 const attacks = [

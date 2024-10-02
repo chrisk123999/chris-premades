@@ -221,7 +221,7 @@ export async function run() {
             }
         }
         async function discord() {
-            window.open('https://discord.gg/EhMdcMcUtU');
+            window.open('https://discord.gg/egH9AFtPJk');
         }
         let buttons = {
             close: {

@@ -316,7 +316,7 @@
             "StoneShape": "Stone Shape (Grovelthrash)"
         },
         "Journal": {
-            "Chat": "View Chris's premades readme here:",
+            "Chat": "View the Cauldron of Plentiful Resources readme here:",
             "Readme": "Read Me",
             "Welcome": "<p>Thank you for using this module! If you find any bugs or please either make a <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> issue or bug report on our <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Do not pester tposney, Zhell, or any other module authors with bugs or issues related to this module.</p><p>Extended information on the module including a current FAQ, Getting Started, and feature information is available on the <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Cauldron of Plentiful Resources Wiki</a>. The wiki provides explanations, pictures, and examples that can answer most questions about the module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
         },
@@ -1980,6 +1980,20 @@
                 "Hint": "Enables condition resistance and vulnerability automation.",
                 "Name": "Condition Resistance and Vulnerability"
             },
+            "criticalCompendium": {
+                "Hint": "Select your Critical Compendium.",
+                "Name": "Critical Compendium"
+            },
+            "criticalFumbleMode": {
+                "1": "Random",
+                "2": "Selected",
+                "3": "Random - Critical Only",
+                "4": "Selected - Critical Only",
+                "5": "Random - Fumble Only",
+                "6": "Selected - Fumble Only",
+                "Hint": "When enabled, critical or fumble attack rolls will also roll an item from the selected compendiums.",
+                "Name": "Critical And Fumble Mode"
+            },
             "devTools": {
                 "Hint": "Enable to display development tools.",
                 "Name": "Display Development Tools"
@@ -2023,6 +2037,10 @@
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
+            },
+            "fumbleCompendium": {
+                "Hint": "Select your Fumble Compendium.",
+                "Name": "Fumble Compendium"
             },
             "gambitPremades": {
                 "1": "No Homebrew or 3rd Party",

@@ -27,6 +27,7 @@ async function getCPRAutomation(item) {
                 keys.push(constants.packs.classFeatures);
                 keys.push(constants.packs.actions);
                 keys.push(constants.packs.raceFeatures);
+                keys.push(constants.packs.miscellaneous);
                 if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
                 break;
         }
@@ -198,8 +199,8 @@ async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types
     let filteredIndex = packIndex.filter(i => 
         (!specificNames?.length || specificNames.includes(i.name)) &&
         (!types?.length || types.includes(i.type)) &&
-        (!actionTypes?.length || actionTypes.includes(i.system.actionType)) &&
-        (!badProperties?.length || badProperties.every(j => !i.system.properties.includes(j)))
+        (!actionTypes?.length || actionTypes.includes(i.system?.actionType)) &&
+        (!badProperties?.length || badProperties.every(j => !i.system?.properties.includes(j)))
     );
     filteredIndex = game.dnd5e.moduleArt.apply(filteredIndex);
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'systems/dnd5e/icons/svg/items/weapon.svg'}, {overwrite: !i.img}));

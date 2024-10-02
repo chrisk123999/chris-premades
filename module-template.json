@@ -255,6 +255,14 @@
       "type": "Item",
       "module": "chris-premades",
       "banner": "modules/chris-premades/images/bannerUnknown3.webp"
+    },
+    {
+      "name": "CPRMiscellaneous",
+      "label": "CPR Miscellaneous",
+      "path": "packs/cpr-miscellaneous",
+      "type": "Item",
+      "module": "chris-premades",
+      "banner": "modules/chris-premades/images/bannerItems.webp"
     }
   ],
   "packFolders": [
@@ -279,7 +287,8 @@
         "CPRRaceFeatureItems",
         "CPRThirdPartyClassFeatures",
         "CPRThirdPartyItems",
-        "CPRMonsterFeatures"
+        "CPRMonsterFeatures",
+        "CPRMiscellaneous"
       ]
     }
   ],
