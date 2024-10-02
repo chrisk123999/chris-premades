@@ -284,8 +284,8 @@ async function reload({workflow}) {
     });
 }
 export let firearm = {
-    name: 'Firearm',
-    version: '0.12.86',
+    name: 'Firearm (CR)',
+    version: '1.0.4',
     midi: {
         item: [
             {

@@ -1,5 +1,5 @@
 {
-  "name": "Firearm",
+  "name": "Pepperbox (Exandria)",
   "type": "weapon",
   "system": {
     "description": {
@@ -19,7 +19,7 @@
       "denomination": "gp"
     },
     "attunement": "",
-    "equipped": true,
+    "equipped": false,
     "rarity": "",
     "identified": true,
     "activation": {
@@ -41,21 +41,21 @@
       "prompt": true
     },
     "range": {
-      "value": 60,
-      "long": 240,
+      "value": 80,
+      "long": 320,
       "units": "ft"
     },
     "uses": {
-      "value": 0,
-      "max": "4",
+      "value": 6,
+      "max": "6",
       "per": "charges",
       "recovery": "",
-      "prompt": true
+      "prompt": false
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "ammo",
+      "target": "",
+      "amount": 1,
       "scale": false
     },
     "ability": "dex",
@@ -93,7 +93,7 @@
       "fir",
       "rel"
     ],
-    "proficient": 1,
+    "proficient": null,
     "unidentified": {
       "description": "Pistol (Exandria)"
     },
@@ -112,16 +112,37 @@
     "magicalBonus": null
   },
   "flags": {
+    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.noConfiguration",
+            "option": "preItemRoll"
+          }
+        }
+      },
       "fumbleThreshold": null,
       "effectActivation": false,
-      "rollAttackPerTarget": "default",
       "removeAttackDamageButtons": "default",
       "itemCondition": "",
-      "effectCondition": ""
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
     },
     "core": {},
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -136,30 +157,42 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "link-item-resource-5e": {
+      "resource-link": ""
+    },
     "chris-premades": {
+      "configuration": {
+        "misfire": 2,
+        "status": 0
+      },
       "info": {
         "version": "1.0.4",
-        "identifier": "firearm",
+        "settings": [
+          "Critical Role Firearm Support"
+        ],
+        "name": "Pepperbox (Exandria)",
+        "identifier": "pepperbox",
         "source": "chris-premades"
       },
       "macros": {
-        "midi": {}
-      },
-      "config": {
-        "status": 0
+        "midi": {
+          "item": [
+            "pepperbox"
+          ]
+        }
       }
     }
   },
   "effects": [],
-  "img": "icons/weapons/guns/gun-pistol-flintlock-metal.webp",
-  "folder": null,
-  "_id": "UCT2h5QwNUHTiAAG",
-  "_key": "!items!UCT2h5QwNUHTiAAG"
+  "img": "icons/weapons/guns/gun-blunderbuss-worn-brown.webp",
+  "folder": "lf6Lia28C4JqL5HV",
+  "_id": "shDI29K76EWrejhG",
+  "_key": "!items!shDI29K76EWrejhG"
 }

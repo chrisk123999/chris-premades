@@ -1,5 +1,5 @@
 {
-  "name": "Firearm",
+  "name": "Firearm (CR)",
   "type": "weapon",
   "system": {
     "description": {
@@ -19,7 +19,7 @@
       "denomination": "gp"
     },
     "attunement": "",
-    "equipped": true,
+    "equipped": false,
     "rarity": "",
     "identified": true,
     "activation": {
@@ -46,16 +46,16 @@
       "units": "ft"
     },
     "uses": {
-      "value": 0,
+      "value": 4,
       "max": "4",
       "per": "charges",
       "recovery": "",
-      "prompt": true
+      "prompt": false
     },
     "consume": {
-      "type": "",
-      "target": null,
-      "amount": null,
+      "type": "ammo",
+      "target": "",
+      "amount": 1,
       "scale": false
     },
     "ability": "dex",
@@ -93,7 +93,7 @@
       "fir",
       "rel"
     ],
-    "proficient": 1,
+    "proficient": null,
     "unidentified": {
       "description": "Pistol (Exandria)"
     },
@@ -112,8 +112,17 @@
     "magicalBonus": null
   },
   "flags": {
+    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
+      "onUseMacroParts": {
+        "items": {
+          "0": {
+            "macroName": "function.chrisPremades.macros.noConfiguration",
+            "option": "preItemRoll"
+          }
+        }
+      },
       "fumbleThreshold": null,
       "effectActivation": false,
       "rollAttackPerTarget": "default",
@@ -121,7 +130,19 @@
       "itemCondition": "",
       "effectCondition": ""
     },
-    "core": {},
+    "core": {
+      "sourceId": "Compendium.world.ddb-development-testing-ddb-items.vJHvwqfVpej7wUVL"
+    },
+    "custom-character-sheet-sections": {
+      "sectionName": ""
+    },
+    "rest-recovery": {
+      "data": {
+        "recovery": {
+          "enabled": false
+        }
+      }
+    },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -136,30 +157,42 @@
       "concentration": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "confirmTargets": "never",
+      "confirmTargets": "default",
       "noConcentrationCheck": false,
       "idr": false,
       "idi": false,
       "idv": false,
       "ida": false
     },
+    "link-item-resource-5e": {
+      "resource-link": ""
+    },
     "chris-premades": {
+      "configuration": {
+        "misfire": 1,
+        "status": 0
+      },
       "info": {
+        "name": "Firearm (CR)",
         "version": "1.0.4",
+        "settings": [
+          "Critical Role Firearm Support"
+        ],
         "identifier": "firearm",
         "source": "chris-premades"
       },
       "macros": {
-        "midi": {}
-      },
-      "config": {
-        "status": 0
+        "midi": {
+          "item": [
+            "firearm"
+          ]
+        }
       }
     }
   },
   "effects": [],
   "img": "icons/weapons/guns/gun-pistol-flintlock-metal.webp",
-  "folder": null,
-  "_id": "UCT2h5QwNUHTiAAG",
-  "_key": "!items!UCT2h5QwNUHTiAAG"
+  "folder": "lf6Lia28C4JqL5HV",
+  "_id": "cjN8cOZpruUd8lSS",
+  "_key": "!items!cjN8cOZpruUd8lSS"
 }

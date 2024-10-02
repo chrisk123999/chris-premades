@@ -493,9 +493,11 @@ export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elem
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';
+export {badNews} from './macros/items/weapons/badNews.js';
 export {bigbysBeneficentBracelet, forceSculpture} from './macros/items/trinket/bigbysBeneficentBracelet.js';
 export {blackrazor} from './macros/items/weapons/blackrazor.js';
 export {bloodSpear} from './macros/items/weapons/bloodSpear.js';
+export {blunderbuss} from './macros/items/weapons/blunderbuss.js';
 export {bootsOfElvenkind} from './macros/items/trinket/bootsOfElvenkind.js';
 export {crystalBlade, crystalBladeGreatsword, crystalBladeLight, crystalBladeLongsword, crystalBladeRapier, crystalBladeScimitar, crystalBladeShortsword} from './macros/items/weapons/crystalBlade.js';
 export {dancingSword, dancingSwordGreatsword, dancingSwordLongsword, dancingSwordRapier, dancingSwordScimitar, dancingSwordShortsword, dancingSwordToss} from './macros/items/weapons/dancingSword.js';
@@ -513,8 +515,12 @@ export {guardianEmblem} from './macros/items/trinket/guardianEmblem.js';
 export {insigniaOfClaws} from './macros/items/trinket/insigniaOfClaws.js';
 export {javelinOfLightning} from './macros/items/weapons/javelinOfLightning.js';
 export {lanternOfRevealing} from './macros/items/trinket/lanternOfRevealing.js';
+export {musket} from './macros/items/weapons/musket.js';
 export {oilOfSharpness} from './macros/items/consumable/oilOfSharpness.js';
+export {palmPistol} from './macros/items/weapons/palmPistol.js';
 export {pariahsShield} from './macros/items/armor/pariahsShield.js';
+export {pepperbox} from './macros/items/weapons/pepperbox.js';
+export {pistol} from './macros/items/weapons/pistol.js';
 export {potionOfAdvantage} from './macros/items/consumable/potionOfAdvantage.js';
 export {potionOfAqueousForm} from './macros/items/consumable/potionOfAqueousForm.js';
 export {potionOfDiminution} from './macros/items/consumable/potionOfDiminution.js';
