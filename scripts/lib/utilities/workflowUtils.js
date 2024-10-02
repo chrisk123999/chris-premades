@@ -30,11 +30,14 @@ async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
 async function completeItemUse(item, config={}, options={}) {
+    let oldTargets = Array.from(game.user.targets); //Temp Fix
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
         options.asUser = socketUtils.firstOwner(item.actor, true);
         options.checkGMStatus = true;
     }
-    return await MidiQOL.completeItemUse(item, config, options);
+    let workflow = await MidiQOL.completeItemUse(item, config, options);
+    genericUtils.updateTargets(oldTargets); //Temp Fix
+    return workflow;
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {
     let defaultConfig = {
