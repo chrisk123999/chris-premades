@@ -57,6 +57,7 @@ async function useBrace({workflow}) {
         selected = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Antagonize.SelectWeapon', weapons);
     }
     if (!selected) return;
+    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -65,7 +66,7 @@ async function useBrace({workflow}) {
             {
                 key: 'system.bonuses.mwak.damage',
                 mode: 2,
-                value: '@scale.battle-master.combat-superiority-die',
+                value: superiorityDie,
                 priority: 20
             }
         ]
@@ -102,7 +103,7 @@ async function useCommandersStrike({workflow}) {
             {
                 key: 'system.bonuses.weapon.damage',
                 mode: 2,
-                value: workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die'] ?? '1d8',
+                value: workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die'] ?? '1d6',
                 priority: 20
             }
         ],
