@@ -4,7 +4,7 @@ async function hit({trigger: {entity: item}, workflow}) {
     if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
     // TODO: Martial Adept, Superior Technique
     if (!item.system.uses.value) return;
-    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd8';
+    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let triggerManeuvers = [
         'maneuversDisarmingAttack',
         'maneuversDistractingStrike',
