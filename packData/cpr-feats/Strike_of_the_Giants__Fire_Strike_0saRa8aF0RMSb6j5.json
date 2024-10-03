@@ -28,7 +28,7 @@
       "prompt": true
     },
     "range": {
-      "value": 5,
+      "value": null,
       "long": null,
       "units": ""
     },
@@ -114,7 +114,7 @@
     "chris-premades": {
       "info": {
         "name": "Strike of the Giants: Fire Strike",
-        "version": "0.12.82",
+        "version": "1.0.6",
         "identifier": "fireStrike",
         "source": "chris-premades"
       },

@@ -37,7 +37,7 @@ async function damage({trigger: {entity: item}, workflow}) {
     if (!bonusFormula) return;
     bonusFormula += '[' + bonusType + ']';
     await workflowUtils.bonusDamage(workflow, bonusFormula, {damageType: bonusType});
-    await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {options: {consumeUsage: true}, config: {configureDialog: false}});
+    await workflowUtils.syntheticItemRoll(item, [workflow.hitTargets.first()], {config: {consumeUsage: true}, options: {configureDialog: false}});
 }
 async function combatEnd({trigger: {entity: item}}) {
     await combatUtils.setTurnCheck(item, 'strikeOfTheGiants', true);
@@ -75,7 +75,7 @@ export let strikeOfTheGiants = {
         }
     ]
 };
-let version = '0.12.82';
+let version = '1.0.6';
 export let cloudStrike = {
     name: 'Strike of the Giants: Cloud Strike',
     version,
