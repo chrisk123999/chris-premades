@@ -1,8 +1,8 @@
-import * as macros from '../../macros.js';
 import {socket} from '../sockets.js';
 import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
+import {custom} from '../../events/custom.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -55,7 +55,7 @@ function getConfig(item, key) {
     if (flagValue !== undefined) return flagValue;
     let identifier = genericUtils.getIdentifier(item);
     if (!identifier) return;
-    let value = macros[identifier]?.config?.find(i => i.value === key)?.default;
+    let value = custom.getMacro(identifier)?.config?.find(i => i.value === key)?.default;
     return value === '' ? false : value;
 }
 async function setConfig(item, key, value) {
@@ -99,7 +99,7 @@ function isUpToDate(item) {
             break;
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
-            sourceVersion = macros[identifier]?.version;
+            sourceVersion = custom.getMacro(identifier)?.version;
             break;
         }
     }
