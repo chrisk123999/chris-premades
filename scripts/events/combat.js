@@ -143,7 +143,8 @@ function getSortedTriggers(tokens, pass, token) {
                 priority: macro.priority,
                 name: trigger.name,
                 token: trigger.token,
-                distance: trigger.distance
+                distance: trigger.distance,
+                target: trigger.target
             });
         });
     });
