@@ -281,6 +281,7 @@ form .cpr-row-center .multi-select-label {
     display: flex;
     justify-content: center;
     margin-top: 0;
+    user-select: text;
 }
 
 .cpr-medkit-tab .cpr-actor-summary legend {

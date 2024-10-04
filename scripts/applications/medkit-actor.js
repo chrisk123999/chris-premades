@@ -61,20 +61,20 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             identifier: genericUtils.getIdentifier(i), 
             source: itemUtils.getSource(i), 
             version: itemUtils.getVersion(i),
-            isUpToDate: itemUtils.isUpToDate(i),
+            isUpToDate: await itemUtils.isUpToDate(i),
             sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i)
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
             if (currentValue.isUpToDate === 1) {
                 accumulator.upToDate.value += 1;
-                accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.source);
+                accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
             } else if ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem) {
                 accumulator.available.value += 1;
                 accumulator.available.sources = this.countSource(accumulator.available.sources, this.itemSource(currentValue.sourceItem.pack));
             } else if (currentValue.isUpToDate === 0) {
                 accumulator.outOfDate.value += 1;
-                accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.source);
+                accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
             }
             return accumulator;
         }, {upToDate: {value: 0, sources: {}}, available: {value: 0, sources: {}}, outOfDate: {value: 0, sources: {}}});
@@ -117,7 +117,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     static async _update(event, target) {
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
-            if (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem)) {
+            if (currentValue.isUpToDate !== 1 && (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem))) {
                 let options = {source: undefined, version: undefined};
                 if (currentValue.sourceItem.pack.includes('gambits-premades')) {
                     options.source = 'gambits-premades';

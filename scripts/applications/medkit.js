@@ -58,7 +58,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     static async createContext(item) {
         let identifier = genericUtils.getIdentifier(item);
-        let isUpToDate = itemUtils.isUpToDate(item);
+        let isUpToDate = await itemUtils.isUpToDate(item);
         let context = {
             identifier: identifier,
             name: macros[identifier] ? macros[identifier].name : item.name,

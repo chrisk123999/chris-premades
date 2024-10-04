@@ -2,7 +2,7 @@ import {custom} from '../events/custom.js';
 import {genericUtils, itemUtils, socketUtils} from '../utils.js';
 async function versionCheck(workflow) {
     if (!workflow.item) return;
-    let isUpToDate = itemUtils.isUpToDate(workflow.item);
+    let isUpToDate = await itemUtils.isUpToDate(workflow.item);
     if (isUpToDate) return;
     let message = '<hr>@UUID[' + workflow.item.uuid + ']{' + workflow.item.name + '} ' + genericUtils.translate('CHRISPREMADES.Error.OutOfDateItem') + '<p><button class="chris-update-item">' + genericUtils.translate('CHRISPREMADES.Error.UpdateItem') + '</button></p>';
     await ChatMessage.create({

@@ -1,5 +1,5 @@
 import {socket} from '../sockets.js';
-import {actorUtils, effectUtils, genericUtils, socketUtils, errors} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUtils} from '../../utils.js';
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
@@ -68,12 +68,12 @@ function getAllItemsByIdentifier(actor, identifier) {
     return actor.items.filter(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getVersion(item) {
-    return item.flags['chris-premades']?.info?.version;
+    return item.flags['chris-premades']?.info?.version ?? item._stats?.modifiedTime;
 }
 function getSource(item) {
     return item.flags['chris-premades']?.info?.source;
 }
-function isUpToDate(item) {
+async function isUpToDate(item) {
     let version = getVersion(item);
     let source = getSource(item);
     if (!version || !source) return (item.flags['chris-premades']?.config?.generic ? 2 : -1);
@@ -100,6 +100,11 @@ function isUpToDate(item) {
         case 'chris-premades': {
             let identifier = genericUtils.getIdentifier(item);
             sourceVersion = custom.getMacro(identifier)?.version;
+            break;
+        }
+        default: {
+            let sourceObj = await compendiumUtils.getItemFromCompendium(source, item.name, {ignoreNotFound: true, object: true});
+            sourceVersion = sourceObj?._stats.modifiedTime;
             break;
         }
     }

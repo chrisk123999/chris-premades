@@ -32,7 +32,7 @@ export async function renderItemSheet(app, [elem], options) {
     if (!headerButton) return;
     let item = app.object;
     if (!item) return;
-    let updated = itemUtils.isUpToDate(item);
+    let updated = await itemUtils.isUpToDate(item);
     let source = itemUtils.getSource(item);
     let sources = [
         'chris-premades',
