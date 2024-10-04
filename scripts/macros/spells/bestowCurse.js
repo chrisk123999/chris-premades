@@ -183,7 +183,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     let extraDamageTargets = workflow.hitTargets.filter(target => validTargetUuids.includes(target.document.uuid));
     if (!extraDamageTargets.size) return;
     let targetActor = trigger.token.actor;
-    let damageRoll = await new CONFIG.Dice.DamageRoll(formula, workflow.actor.getRollData()).evaluate();
+    let damageRoll = await new CONFIG.Dice.DamageRoll(formula, workflow.item.getRollData()).evaluate();
     genericUtils.setProperty(damageRoll, 'options.type', damageType);
     damageRoll.toMessage({
         rollMode: 'roll',

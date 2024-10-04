@@ -19,7 +19,7 @@ async function use({workflow}) {
     let damageFormula = formula;
     if (itemUtils.getItemByIdentifier(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
     if (!rollEach) {
-        let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.actor.getRollData(), {type: damageType}).evaluate();
+        let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.item.getRollData(), {type: damageType}).evaluate();
         damageRoll.toMessage({
             rollMode: 'roll',
             speaker: workflow.chatCard.speaker,

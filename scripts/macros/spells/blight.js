@@ -16,7 +16,7 @@ async function damage({workflow}) {
         if (!creatureTypes.every(type => ['undead', 'construct'].includes(type))) return;
         newDamageRoll = '0[' + workflow.defaultDamageType + ']';
     }
-    let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.actor.getRollData()).evaluate();
+    let damageRoll = await new CONFIG.Dice.DamageRoll(newDamageRoll, workflow.item.getRollData()).evaluate();
     await workflow.setDamageRoll(damageRoll);
 }
 async function damageApplication({trigger, workflow, ditem}) {
