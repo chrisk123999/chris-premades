@@ -49,9 +49,9 @@ async function use({trigger, workflow}) {
                     priority: 20
                 },
                 {
-                    key: 'system.magicalBonus',
+                    key: 'system.attack.bonus',
                     mode: 5,
-                    value: bonus,
+                    value: '+ ' + bonus,
                     priority: 20
                 },
                 {

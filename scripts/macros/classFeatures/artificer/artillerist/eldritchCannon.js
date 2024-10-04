@@ -198,6 +198,80 @@ export let eldritchCannon = {
             }
         ]
     },
+    config: [
+        {
+            value: 'flamethrowerName',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Flamethrower',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'forceBallistaName',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.ForceBallista',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'protectorName',
+            label: 'CHRISPREMADES.Summons.CustomName',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Protector',
+            type: 'text',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'flamethrowerToken',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Flamethrower',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'forceBallistaToken',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.ForceBallista',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'protectorToken',
+            label: 'CHRISPREMADES.Summons.CustomToken',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Protector',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'flamethrowerAvatar',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Flamethrower',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'forceBallistaAvatar',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.ForceBallista',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+        {
+            value: 'protectorAvatar',
+            label: 'CHRISPREMADES.Summons.CustomAvatar',
+            i18nOption: 'CHRISPREMADES.Macros.EldritchCannon.Protector',
+            type: 'file',
+            default: '',
+            category: 'summons'
+        },
+    ],
     ddbi: {
         removedItems: {
             'Eldritch Cannon': [
