@@ -1,10 +1,44 @@
 import {constants, dialogUtils, genericUtils, itemUtils, workflowUtils} from '../../../../utils.js';
-async function hit({trigger: {entity: item}, workflow}) {
+async function hit({workflow}) {
+    await superiorityHelper(workflow);
+}
+export async function determineSuperiorityDie(actor) {
+    let superiorityDie = actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let isBattleMaster = superiorityDie !== 'd6';
+    let allSameDice = !isBattleMaster || (isBattleMaster && actor.classes.fighter?.system.levels >= 10);
+    let superiorityDiceItem = itemUtils.getItemByIdentifier(actor, 'superiorityDice');
+    let martialAdept = itemUtils.getItemByIdentifier(actor,'martialAdept');
+    let superiorTechnique = itemUtils.getItemByIdentifier(actor, 'fightingStyleSuperiorTechnique');
+    let itemToUse;
+    if (!allSameDice && superiorityDiceItem.system.uses.value && (martialAdept?.system.uses.value || superiorTechnique?.system.uses.value)) {
+        let buttons = [
+            [superiorityDiceItem.name + ': ' + superiorityDie + ' (' + superiorityDiceItem.system.uses.value + '/' + superiorityDiceItem.system.uses.max + ')', 'superiorityDice'],
+        ];
+        if (martialAdept?.system.uses.value) {
+            buttons.push([martialAdept.name + ': d6 (' + martialAdept.system.uses.value + '/' + martialAdept.system.uses.max + ')', 'martialAdept']);
+        }
+        if (superiorTechnique?.system.uses.value) {
+            buttons.push([superiorTechnique.name + ': d6 (' + superiorTechnique.system.uses.value + '/' + superiorTechnique.system.uses.max + ')', 'fightingStyleSuperiorTechnique']);
+        }
+        buttons.push(['DND5E.None', false]);
+        itemToUse = itemUtils.getItemByIdentifier(actor, await dialogUtils.buttonDialog(superiorityDiceItem.name, 'CHRISPREMADES.Macros.Maneuvers.SelectDice', buttons));
+        if (itemToUse !== superiorityDiceItem) superiorityDie = 'd6';
+    } else {
+        if (superiorityDiceItem?.system.uses.value) {
+            itemToUse = superiorityDiceItem;
+        } else if (martialAdept?.system.uses.value) {
+            itemToUse = martialAdept;
+        } else if (superiorTechnique?.system.uses.value) {
+            itemToUse = superiorTechnique;
+        }
+    }
+    return [itemToUse, superiorityDie];
+}
+export async function superiorityHelper(workflow) {
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (genericUtils.getIdentifier(workflow.item) === 'sweepingAttackAttack') return;
-    // TODO: Martial Adept, Superior Technique
-    if (!item.system.uses.value) return;
-    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+    if (!itemToUse) return;
     let triggerManeuvers = [
         'maneuversDisarmingAttack',
         'maneuversDistractingStrike',
@@ -18,7 +52,7 @@ async function hit({trigger: {entity: item}, workflow}) {
     if (workflow.item.system.actionType === 'mwak') triggerManeuvers.push('maneuversSweepingAttack');
     let validManeuvers = triggerManeuvers.map(i => itemUtils.getItemByIdentifier(workflow.actor, i)).filter(i => i);
     if (!validManeuvers.length) return;
-    let selected = await dialogUtils.selectDocumentDialog(item.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});
+    let selected = await dialogUtils.selectDocumentDialog(itemToUse.name, 'CHRISPREMADES.Macros.Maneuvers.SelectManeuver', validManeuvers, {addNoneDocument: true});
     if (!selected) return;
     let selectedIdentifier = genericUtils.getIdentifier(selected);
     let rollTotal;
@@ -32,8 +66,11 @@ async function hit({trigger: {entity: item}, workflow}) {
             currRange: workflow.item.system.range.value ?? 5
         }});
     }
-    await selected.use();
-    await genericUtils.update(item, {'system.uses.value': item.system.uses.value - 1});
+    let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');
+    if (!useSmall && superiorityDie === 'd6') await genericUtils.setFlag(workflow.actor, 'chris-premades', 'useSmallSuperiorityDie', true);
+    await workflowUtils.completeItemUse(selected);
+    if (!useSmall && superiorityDie === 'd6') await genericUtils.update(workflow.actor, {'flags.chris-premades.-=useSmallSuperiorityDie': null});
+    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
 }
 export let superiorityDice = {
     name: 'Superiority Dice',

@@ -40,9 +40,9 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.chris-premades.CPRClassFeatures.Item.7rzbfDAYjJGCPfWn",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
@@ -117,7 +117,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Commander's Strike",
-        "version": "0.12.43",
+        "version": "1.0.7",
         "identifier": "maneuversCommandersStrike",
         "source": "chris-premades"
       },

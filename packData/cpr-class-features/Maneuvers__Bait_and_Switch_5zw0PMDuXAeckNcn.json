@@ -40,9 +40,9 @@
       "prompt": true
     },
     "consume": {
-      "type": "charges",
-      "target": "Compendium.chris-premades.CPRClassFeatures.Item.7rzbfDAYjJGCPfWn",
-      "amount": 1,
+      "type": "",
+      "target": null,
+      "amount": null,
       "scale": false
     },
     "ability": "",
@@ -119,7 +119,7 @@
     "chris-premades": {
       "info": {
         "name": "Maneuvers: Bait and Switch",
-        "version": "0.12.51",
+        "version": "1.0.7",
         "identifier": "maneuversBaitAndSwitch",
         "source": "chris-premades"
       },

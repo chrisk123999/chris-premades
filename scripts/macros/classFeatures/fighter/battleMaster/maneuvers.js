@@ -1,11 +1,12 @@
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {determineSuperiorityDie} from './superiorityDice.js';
 
 async function useBaitAndSwitch({workflow}) {
     if (workflow.targets.size !== 1) return;
     let targetToken = workflow.targets.first();
     if (targetToken.id === workflow.token.id || targetToken.document.disposition * workflow.token.document.disposition < 0) return;
-    // TODO: Martial Adept, Superior Technique
-    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+    if (!itemToUse?.system.uses.value) return;
     let superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', workflow.actor.getRollData()).evaluate();
     superiorityRoll.toMessage({
         rollType: 'roll',
@@ -43,6 +44,7 @@ async function useBaitAndSwitch({workflow}) {
         x: workflow.token.document.x,
         y: workflow.token.document.y
     };
+    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
     await genericUtils.updateEmbeddedDocuments(workflow.token.scene, 'Token', [sourceUpdate, targetUpdate]);
     await effectUtils.createEffect(selection ? targetToken.actor : workflow.actor, effectData);
 }
@@ -50,6 +52,8 @@ async function useBrace({workflow}) {
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.token.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) return;
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+    if (!itemToUse?.system.uses.value) return;
     let selected;
     if (weapons.length === 1) {
         selected = weapons[0];
@@ -57,7 +61,6 @@ async function useBrace({workflow}) {
         selected = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.Antagonize.SelectWeapon', weapons);
     }
     if (!selected) return;
-    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
@@ -74,8 +77,11 @@ async function useBrace({workflow}) {
     let effect = await effectUtils.createEffect(workflow.actor, effectData);
     await workflowUtils.syntheticItemRoll(selected, [workflow.targets.first()]);
     if (effect) await genericUtils.remove(effect);
+    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
 }
 async function useCommandersStrike({workflow}) {
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+    if (!itemToUse?.system.uses.value) return;
     let allies = workflow.token.scene.tokens.filter(i => i.disposition === workflow.token.document.disposition && i.id !== workflow.token.document.id && !actorUtils.hasUsedReaction(i.actor) && tokenUtils.canSense(i, workflow.token)).map(i => i.object);
     if (!allies.length) {
         genericUtils.notify('CHRISPREMADES.Macros.Maneuvers.NoNearby', 'info');
@@ -103,7 +109,7 @@ async function useCommandersStrike({workflow}) {
             {
                 key: 'system.bonuses.weapon.damage',
                 mode: 2,
-                value: workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die'] ?? '1d6',
+                value: superiorityDie,
                 priority: 20
             }
         ],
@@ -117,6 +123,7 @@ async function useCommandersStrike({workflow}) {
     };
     await effectUtils.createEffect(selected.actor, effectData);
     await actorUtils.setReactionUsed(selected.actor);
+    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
 }
 async function useDistractingStrike({workflow}) {
     if (workflow.targets.size !== 1) return;
@@ -188,8 +195,10 @@ async function useGrapplingStrike({workflow}) {
             errors.missingPackItem();
             return;
         }
-    } 
+    }
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');
+    if (useSmall) superiorityDie = 'd6';
     let superiorityRoll = await new Roll(superiorityDie).evaluate();
     superiorityRoll.toMessage({
         rollType: 'roll',
@@ -228,8 +237,8 @@ async function useGrapplingStrike({workflow}) {
 async function useManeuveringAttack({workflow}) {
 }
 async function useParry({workflow}) {
-    // TODO: Martial Adept, Superior Technique
-    let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let [itemToUse, superiorityDie] = await determineSuperiorityDie(workflow.actor);
+    if (!itemToUse?.system.uses.value) return;
     let superiorityRoll = await new Roll(superiorityDie + ' + @abilities.dex.mod', workflow.actor.getRollData()).evaluate();
     superiorityRoll.toMessage({
         rollType: 'roll',
@@ -265,6 +274,7 @@ async function useParry({workflow}) {
         }
     };
     await effectUtils.createEffect(workflow.actor, effectData);
+    await genericUtils.update(itemToUse, {'system.uses.value': itemToUse.system.uses.value - 1});
 }
 async function usePushingAttack({workflow}) {
     let targetToken = workflow.targets.first();
@@ -289,6 +299,8 @@ async function usePushingAttack({workflow}) {
 async function useSweepingAttack({workflow}) {
     if (!workflow.targets.size) return;
     let superiorityDie = workflow.actor.system.scale?.['battle-master']?.['combat-superiority-die']?.die ?? 'd6';
+    let useSmall = genericUtils.getProperty(workflow.actor, 'flags.chris-premades.useSmallSuperiorityDie');
+    if (useSmall) superiorityDie = 'd6';
     let {currAttackRoll, currDamageType, currRange} = workflow.item.flags['chris-premades']?.sweepingAttack ?? {};
     if (!currAttackRoll) return;
     let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Sweeping Attack: Attack', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Maneuvers.Sweeping', identifier: 'sweepingAttackAttack'});
@@ -336,7 +348,7 @@ export let maneuversAmbush = {
 };
 export let maneuversBaitAndSwitch = {
     name: 'Maneuvers: Bait and Switch',
-    version: '0.12.43',
+    version: '1.0.7',
     midi: {
         item: [
             {
@@ -349,7 +361,7 @@ export let maneuversBaitAndSwitch = {
 };
 export let maneuversBrace = {
     name: 'Maneuvers: Brace',
-    version: '1.0.2',
+    version: '1.0.7',
     midi: {
         item: [
             {
@@ -362,7 +374,7 @@ export let maneuversBrace = {
 };
 export let maneuversCommandersStrike = {
     name: 'Maneuvers: Commander\'s Strike',
-    version: '0.12.43',
+    version: '1.0.7',
     midi: {
         item: [
             {
@@ -451,7 +463,7 @@ export let maneuversMenacingAttack = {
 };
 export let maneuversParry = {
     name: 'Maneuvers: Parry',
-    version: '0.12.43',
+    version: '1.0.7',
     midi: {
         item: [
             {

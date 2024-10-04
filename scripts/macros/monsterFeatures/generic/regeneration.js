@@ -6,6 +6,8 @@ async function turnStart({trigger: {entity: item, token}}) {
     let hp = actor.system.attributes.hp.value;
     if (token.combatant?.isDefeated) return;
     if (config.zeroHP && !hp) return;
+    let effMax = actor.system.attributes.hp.effectiveMax;
+    if (hp >= effMax) return;
     if (actorUtils.checkTrait(actor, 'di', 'healing')) return;
     let blockedEffect = effectUtils.getEffectByIdentifier(actor, 'regenerationBlocked');
     if (blockedEffect) {
@@ -29,7 +31,8 @@ async function onHit({trigger: {entity: item, token}, workflow}) {
     if (blockedEffect) return;
     let reducedEffect = effectUtils.getEffectByIdentifier(actor, 'regenerationReduced');
     let hp = actor.system.attributes.hp.value;
-    let ditem = workflow.damageList.find(i => i.actorUuid === actor.uuid);
+    let ditem = workflow.damageList?.find(i => i.actorUuid === actor.uuid);
+    if (!ditem) return;
     let damageTypes = config.damageTypes;
     let threshold = config.threshold;
     let block = false;
