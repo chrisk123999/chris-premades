@@ -137,10 +137,10 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'effect', ['rimesBindingIceFrozen']);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     await workflowUtils.handleInstantTemplate(workflow);
-    if (!playAnimation || !workflow.failedSaves.size) return;
+    if (!workflow.failedSaves.size) return;
     for (let target of workflow.failedSaves) {
         await effectUtils.createEffect(target.actor, effectData, {identifier: 'rimesBindingIceFrozen'});
-        freeze(target, 'bindingIce');
+        if (playAnimation) freeze(target, 'bindingIce');
     }
 }
 async function end({trigger: {entity: effect}}) {
