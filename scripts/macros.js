@@ -487,6 +487,7 @@ export {soothePain} from './macros/feats/soothePain.js';
 export {stasisStrike} from './macros/feats/stasisStrike.js';
 export {stoneThrow} from './macros/feats/stoneThrow.js';
 export {strikeOfTheGiants, cloudStrike, fireStrike, frostStrike, hillStrike, stoneStrike, stormStrike} from './macros/feats/strikeOfTheGiants.js';
+export {maelstromAura} from './macros/feats/maelstromAura.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/feats/telekinetic.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/feats/elementalAdept.js';
