@@ -57,7 +57,7 @@ async function early({workflow}) {
     let {shape, damageType, augment} = selection;
     let parts = genericUtils.duplicate(workflow.item.system.damage.parts);
     let target = genericUtils.duplicate(workflow.item.system.target);
-    parts[0][0] = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die[' + damageType + ']';
+    parts[0][0] = String(damageDice + (augment ? 1 : 0)) + '@scale.monk.die.die[' + damageType + ']';
     parts[0][1] = damageType;
     target.type = shape;
     target.value = augment ? 90 : 30;
