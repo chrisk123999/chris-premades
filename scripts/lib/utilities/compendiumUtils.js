@@ -5,7 +5,7 @@ import {constants} from '../constants.js';
 import {errors} from '../errors.js';
 import {genericUtils} from './genericUtils.js';
 import {itemUtils} from './itemUtils.js';
-async function getCPRAutomation(item) {
+async function getCPRAutomation(item, {identifier} = {}) {
     let keys = [];
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
@@ -36,11 +36,11 @@ async function getCPRAutomation(item) {
     } else if (type === 'npc') {
         keys.push(constants.packs.monsterFeatures);
     } else return;
-    let identifier = genericUtils.getIdentifier(item);
-    let name = macros[identifier]?.name ?? item.name;
+    let itemIdentifier = genericUtils.getIdentifier(item);
+    let name = macros[itemIdentifier]?.name ?? item.name;
     let folderId;
     if (type === 'npc' && item.type != 'spell') {
-        let name = item.actor.prototypeToken.name;
+        let name = identifier ?? item.actor.prototypeToken.name;
         let pack = game.packs.get(keys[0]);
         if (!pack) {
             errors.missingPack();
@@ -54,7 +54,7 @@ async function getCPRAutomation(item) {
         if (found) return found;
     }
 }
-async function getGPSAutomation(item) {
+async function getGPSAutomation(item, {identifier} = {}) {
     let found;
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
@@ -70,13 +70,13 @@ async function getGPSAutomation(item) {
             case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
         }
     } else if (type === 'npc') {
-        let monster = item.actor.prototypeToken.name;
+        let monster = identifier ?? item.actor.prototypeToken.name;
         found = gambitPremades.gambitMonsters.find(i => i.monster === monster && item.name === i.name);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
 }
-async function getMISCAutomation(item) {
+async function getMISCAutomation(item, {identifier} = {}) {
     let found;
     let type = item.actor?.type ?? 'character';
     if (type === 'character' || item.type === 'spell') {
@@ -92,13 +92,13 @@ async function getMISCAutomation(item) {
             case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
         }
     } else if (type === 'npc') {
-        let monster = item.actor.prototypeToken.name;
+        let monster = identifier ?? item.actor.prototypeToken.name;
         found = miscPremades.miscMonsters.find(i => i.monster === monster && item.name === i.name);
     }
     if (!found) return;
     return await fromUuid(found.uuid);
 }
-async function getAllAutomations(item) {
+async function getAllAutomations(item, options) {
     let setting = genericUtils.getCPRSetting('additionalCompendiums');
     let items = [];
     let type = item.actor?.type ?? 'character';
@@ -115,12 +115,12 @@ async function getAllAutomations(item) {
                 source = i[0];
                 break;
             case 'chris-premades':
-                found = await getCPRAutomation(item);
+                found = await getCPRAutomation(item, options);
                 source = 'chris-premades';
                 if (found) version = itemUtils.getVersion(found);
                 break;
             case 'gambits-premades': 
-                found = await getGPSAutomation(item);
+                found = await getGPSAutomation(item, options);
                 source = 'gambits-premades';
                 if (found) {
                     if (type === 'npc') {
@@ -131,7 +131,7 @@ async function getAllAutomations(item) {
                 }
                 break;
             case 'midi-item-showcase-community':
-                found = await getMISCAutomation(item);
+                found = await getMISCAutomation(item, options);
                 source = 'midi-item-showcase-community';
                 version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                 if (found) {
@@ -147,8 +147,8 @@ async function getAllAutomations(item) {
     }));
     return items.sort((a, b) => a.priority - b.priority);
 }
-async function getPreferredAutomation(item) {
-    let items = await getAllAutomations(item);
+async function getPreferredAutomation(item, options) {
+    let items = await getAllAutomations(item, options);
     return items.length ? items[0].document : undefined;
 }
 async function getItemFromCompendium(key, name, {ignoreNotFound, folderId, object = false, getDescription, translate, identifier, flatAttack, flatDC, castDataWorkflow, matchType} = {}) {
@@ -236,18 +236,18 @@ async function getFilteredItemDocumentsFromCompendium(key, {specificNames, types
     filteredIndex = filteredIndex.map(i => foundry.utils.mergeObject(i, {img: 'systems/dnd5e/icons/svg/items/weapon.svg'}, {overwrite: !i.img}));
     return filteredIndex;
 }
-async function getAppliedOrPreferredAutomation(item) {
+async function getAppliedOrPreferredAutomation(item, options) { // need to finish this - autumn
     let source = itemUtils.getSource(item);
     if (source) {
         switch (source) {
             case 'chris-premades': {
-                return await getCPRAutomation(item);
+                return await getCPRAutomation(item, options);
             }
             case 'gambits-premades':{
-                return await getGPSAutomation(item);
+                return await getGPSAutomation(item, options);
             }
             case 'midi-item-showcase-community': {
-                return await getMISCAutomation(item);
+                return await getMISCAutomation(item, options);
             }
             default: {
                 let document = await getItemFromCompendium(source, item.name, {ignoreNotFound: true});
@@ -256,7 +256,7 @@ async function getAppliedOrPreferredAutomation(item) {
             }
         }
     } else {
-        return await getPreferredAutomation(item);
+        return await getPreferredAutomation(item, options);
     }
 }
 export let compendiumUtils = {

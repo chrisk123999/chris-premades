@@ -112,6 +112,7 @@
                 "Water": "Water"
             },
             "ApplyFilter": "Apply Filter:",
+            "AttackBonus": "Attack Bonus",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
@@ -1793,6 +1794,10 @@
                     "Tooltip": "Information about the current and available automation"
                 },
                 "NPC": {
+                    "Identifier": {
+                        "Label": "Actor Identifier:",
+                        "Tooltip": "This identifier will be used for finding relevant automations that match by name, instead of using the actor's prototype token's name."
+                    },
                     "Label": "NPC",
                     "Tooltip": "Non-Player Character Automations Information"
                 },

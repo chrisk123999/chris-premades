@@ -10,7 +10,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.position.width = 550;
         //this.position.max-height = 800;
         this.actor = actor;
-        this.identifier = actor.flags['chris-premades']?.info?.identifier; // Not in use yet, will use to pull specific monster automations
+        this.identifier = actor.flags['chris-premades']?.info?.identifier ?? actor.prototypeToken.name; // Not in use yet, will use to pull specific monster automations
         this.summary = '';
     }
     static DEFAULT_OPTIONS = {
@@ -21,6 +21,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             closeOnSubmit: false,
         },
         actions: {
+            apply: ActorMedkit.apply,
             update: ActorMedkit._update,
             close: ActorMedkit.close
         },
@@ -62,22 +63,25 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             source: itemUtils.getSource(i), 
             version: itemUtils.getVersion(i),
             isUpToDate: await itemUtils.isUpToDate(i),
-            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i)
+            sourceItem: await compendiumUtils.getAppliedOrPreferredAutomation(i, {identifier: this.identifier})
         })));
         this.amounts = this.actorItems.reduce((accumulator, currentValue) => {
             if (['class', 'subclass'].includes(currentValue.item.type)) return accumulator;
             if (currentValue.isUpToDate === 1) {
                 accumulator.upToDate.value += 1;
+                accumulator.upToDate.items.push(currentValue.item.name);
                 accumulator.upToDate.sources = this.countSource(accumulator.upToDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
             } else if ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem) {
                 accumulator.available.value += 1;
+                accumulator.available.items.push(currentValue.item.name);
                 accumulator.available.sources = this.countSource(accumulator.available.sources, this.itemSource(currentValue.sourceItem.pack));
             } else if (currentValue.isUpToDate === 0) {
                 accumulator.outOfDate.value += 1;
+                accumulator.outOfDate.items.push(currentValue.item.name);
                 accumulator.outOfDate.sources = this.countSource(accumulator.outOfDate.sources, currentValue.sourceItem ? this.itemSource(currentValue.sourceItem.pack) : currentValue.source);
             }
             return accumulator;
-        }, {upToDate: {value: 0, sources: {}}, available: {value: 0, sources: {}}, outOfDate: {value: 0, sources: {}}});
+        }, {upToDate: {value: 0, sources: {}, items: []}, available: {value: 0, sources: {}, items: []}, outOfDate: {value: 0, sources: {}, items: []}});
         this.tooltips = {
             upToDate: this.generateTooltip(this.amounts.upToDate.sources),
             available: this.generateTooltip(this.amounts.available.sources),
@@ -142,6 +146,21 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.setPosition(position);
         this.render(true, {position: {top: null}});
     }
+    static async apply(event, target) {
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        switch (currentTabId) {
+            case 'npc': {
+                if (this.identifier != this.actor.prototypeToken.name) {
+                    await this.actor.setFlag('chris-premades', 'info.identifier', this.identifier);
+                } else if ((this.identifier === this.actor.prototypeToken.name) && this.actor.flags['chris-premades']?.info?.identifier) {
+                    await this.actor.unsetFlag('chris-premades', 'info.identifier');
+                }
+                break;
+            }
+        }
+        await this.readyData();
+        this.render(true);
+    }
     static async confirm(event, target) {
         await ActorMedkit._apply.bind(this)(event, target);
         this.close();
@@ -170,10 +189,14 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 cssClass: 'active'
             }
         };
-        const buttons = [
-            {type: 'button', action: 'update', label: 'CHRISPREMADES.Generic.Update', name: 'update', icon: 'fa-solid fa-download'},
-            {type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Close', name: 'close', icon: 'fa-solid fa-xmark'}
-        ];
+        const buttons = [];
+        if ((this.amounts.available.value != 0 || this.amounts.outOfDate.value != 0) && !this.summary.length) {
+            buttons.push({type: 'button', action: 'update', label: 'CHRISPREMADES.Generic.Update', name: 'update', icon: 'fa-solid fa-download'});
+        }
+        if (this.actor.type === 'npc' && !this.summary.length) {
+            buttons.push({type: 'button', action: 'apply', label: 'DND5E.Apply', name: 'apply', icon: 'fa-solid fa-download'});
+        }
+        buttons.push({type: 'submit', action: 'close', label: 'CHRISPREMADES.Generic.Close', name: 'close', icon: 'fa-solid fa-xmark'});
         let context = {
             tabs: this.summary.length ? {summary: tabsData.summary} : this.actor.type === 'npc' ? {npc: tabsData.npc} : {character: tabsData.character},
             buttons: buttons,
@@ -184,16 +207,25 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             },
             npc: {
                 amounts: this.amounts,
+                noAutomationFound: ((this.amounts.available.value === 0) && (this.amounts.outOfDate.value === 0) && (this.amounts.upToDate.value === 0)) ? true : false,
+                tooltips: this.tooltips,
                 identifier: this.identifier
             },
             summary: {
                 value: this.summary
             }
         };
-        if ((this.amounts.available.value === 0 & this.amounts.outOfDate.value === 0) || this.summary.length) context.buttons.splice(0, 1);
         return context;
     }
     async _onChangeForm(formConfig, event) {
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        switch (currentTabId) {
+            case 'npc': {
+                let targetInput = event.target;
+                this[targetInput.id] = targetInput.value;
+                break;
+            }
+        }
         // will want to take a textbox value from the NPC tab for a name to get automations from, keep that and apply when apply
     }
     changeTab(...args) {

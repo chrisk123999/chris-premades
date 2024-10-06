@@ -59,7 +59,7 @@ export async function renderItemSheet(app, [elem], options) {
             return;
         }
         case -1: {
-            let availableItem = await compendiumUtils.getPreferredAutomation(item);
+            let availableItem = await compendiumUtils.getPreferredAutomation(item, {identifier: item?.actor?.flags['chris-premades']?.info?.identifier});
             if (availableItem) headerButton.style.color = 'yellow';
             return;
         }

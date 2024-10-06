@@ -493,6 +493,7 @@ export {maelstromAura} from './macros/feats/maelstromAura.js';
 export {tavernBrawler, tavernBrawlerUnarmedStrike} from './macros/feats/tavernBrawler.js';
 export {telekineticShove} from './macros/feats/telekinetic.js';
 export {elementalAdeptA, elementalAdeptC, elementalAdeptF, elementalAdeptL, elementalAdeptT} from './macros/feats/elementalAdept.js';
+export {sharpshooter} from './macros/feats/sharpshooter.js';
 // Items
 export {allPurposeTool1, allPurposeTool2, allPurposeTool3, channelCreativeForces} from './macros/items/trinket/allPurposeTool.js';
 export {armorOfSafeguardingP, armorOfSafeguardingC, armorOfSafeguardingR, armorOfSafeguardingS} from './macros/items/armor/armorOfSafeguarding.js';

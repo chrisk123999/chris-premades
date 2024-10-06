@@ -1,3 +1,43 @@
 <div class="tab cpr-medkit-tab {{tabs.npc.cssClass}}" data-tab="npc" data-group="main">
-    This tab is not being used yet, you'll have to update NPC spells per item currently, sorry!
+    <div class="cpr-npc-amounts">
+        {{#if npc.amounts.upToDate.value}}
+            <div class="cpr-amounts-column green">
+                <h1 data-tooltip="{{npc.tooltips.upToDate}}">{{localize 'CHRISPREMADES.Medkit.Status.1'}}: {{npc.amounts.upToDate.value}}</h1>
+                <ul>
+                    {{#each npc.amounts.upToDate.items}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+        {{#if npc.amounts.available.value}}
+            <div class="cpr-amounts-column yellow">
+                <h1 data-tooltip="{{npc.tooltips.available}}">{{localize 'CHRISPREMADES.Generic.Available'}}: {{npc.amounts.available.value}}</h1>
+                <ul>
+                    {{#each npc.amounts.available.items}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+        {{#if npc.amounts.outOfDate.value}}
+            <div class="cpr-amounts-column red">
+                <h1 data-tooltip="{{npc.tooltips.outOfDate}}">{{localize 'CHRISPREMADES.Medkit.Status.0'}}: {{npc.amounts.outOfDate.value}}</h1>
+                <ul>
+                    {{#each npc.amounts.outOfDate.items}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+        {{#if npc.noAutomationFound}}
+            <div class="cpr-amounts-column grey">
+                <h1>{{localize 'CHRISPREMADES.Medkit.Status.false'}}</h1>
+            </div>
+        {{/if}}
+    </div>
+    <div class="cpr-row-center cpr-npc-identifier" data-tooltip="{{localize 'CHRISPREMADES.Medkit.Tabs.NPC.Identifier.Tooltip'}}">
+        <label for="identifier">{{localize 'CHRISPREMADES.Medkit.Tabs.NPC.Identifier.Label'}}</label>
+        <input class="cpr-input-short" type="text" id="identifier" name="identifier" value="{{npc.identifier}}">
+    </div>
 </div>
