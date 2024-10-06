@@ -125,10 +125,19 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 let options = {source: undefined, version: undefined};
                 if (currentValue.sourceItem.pack.includes('gambits-premades')) {
                     options.source = 'gambits-premades';
-                    options.version = gambitPremades.gambitItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                    if (currentValue.item?.actor?.type === 'character') {
+                        options.version = gambitPremades.gambitItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                    } else {
+                        options.version = gambitPremades.gambitMonsters.find(i => i.name === currentValue.sourceItem.name && i.monster === this.identifier)?.version;
+                    }
                 } else if (currentValue.sourceItem.pack.includes('midi-item-showcase-community')) {
                     options.source = 'midi-item-showcase-community';
                     options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                    if (currentValue.item?.actor?.type === 'character') {
+                        options.version = miscPremades.miscItems.find(i => i.name === currentValue.sourceItem.name)?.version;
+                    } else {
+                        options.version = miscPremades.miscMonsters.find(i => i.name === currentValue.sourceItem.name && i.monster === this.identifier)?.version;
+                    }
                 } else if (!currentValue.sourceItem.pack.includes('chris-premades') && !currentValue.sourceItem.flags['chris-premades']?.info) {
                     options.source = currentValue.sourceItem.pack;
                 }

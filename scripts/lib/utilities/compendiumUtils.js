@@ -124,7 +124,7 @@ async function getAllAutomations(item, options) {
                 source = 'gambits-premades';
                 if (found) {
                     if (type === 'npc') {
-                        version = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+                        version = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
                     } else {
                         version = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
                     }
@@ -136,7 +136,7 @@ async function getAllAutomations(item, options) {
                 version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                 if (found) {
                     if (type === 'npc') {
-                        version = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+                        version = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
                     } else {
                         version = miscPremades.miscItems.find(i => i.name === item.name)?.version;
                     }

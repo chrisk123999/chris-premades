@@ -87,14 +87,14 @@ async function isUpToDate(item) {
             if (type === 'character') {
                 sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
             } else {
-                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster);
+                sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
         case 'midi-item-showcase-community':
             if (type === 'character') {
                 sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             } else {
-                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster);
+                sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
         case 'chris-premades': {
