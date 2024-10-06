@@ -112,7 +112,6 @@
     "magicalBonus": null
   },
   "flags": {
-    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
       "onUseMacroParts": {
@@ -132,16 +131,6 @@
     },
     "core": {
       "sourceId": "Compendium.world.ddb-development-testing-ddb-items.vJHvwqfVpej7wUVL"
-    },
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
     },
     "midiProperties": {
       "nodam": false,

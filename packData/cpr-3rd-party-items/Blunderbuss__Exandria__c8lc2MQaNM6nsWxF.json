@@ -112,7 +112,6 @@
     "magicalBonus": null
   },
   "flags": {
-    "cf": null,
     "midi-qol": {
       "onUseMacroName": "",
       "onUseMacroParts": {
@@ -133,16 +132,6 @@
       "rollAttackPerTarget": "default"
     },
     "core": {},
-    "custom-character-sheet-sections": {
-      "sectionName": ""
-    },
-    "rest-recovery": {
-      "data": {
-        "recovery": {
-          "enabled": false
-        }
-      }
-    },
     "midiProperties": {
       "nodam": false,
       "fulldam": false,
@@ -188,8 +177,7 @@
           ]
         }
       }
-    },
-    "tidy5e-sheet-kgar": {}
+    }
   },
   "effects": [],
   "img": "icons/weapons/guns/gun-blunderbuss-bronze.webp",
