@@ -1,3 +1,232 @@
+# 1.0.11 Release:
+## Update Notes:
+- Updated Changelog
+- Fixed `manifest` URL in manifest - should now be static
+
+# 1.0.10 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.9 Release:
+## Bug Fixes:
+- NPC Actor Medkit
+
+# 1.0.8 Release:
+## New Content:
+- Sharpshooter
+
+## Bug Fixes:
+- Breath of the Dragon
+
+## Update Notes:
+- NPC Actor Medkit is now functioning.
+
+# 1.0.7 Release:
+## New Content:
+- Martial Adept
+- Superior Technique
+
+## Bug Fixes:
+- Rime's Binding Ice
+- Eldritch Cannon
+- Elemental Weapon
+
+# 1.0.6 Release:
+## Bug Fixes:
+- Maelstrom Aura
+- Item Medkit
+
+# 1.0.5 Release:
+## Bug Fixes:
+- Event API
+- Item Medkit
+- Damage Turn Start Generic Monster Features
+- Arcane Jolt
+- Infectious Fury
+- Aura of Conquest
+- Planer Wanderer
+
+# 1.0.4 Release:
+## Updated Content:
+- Critical Role Firearm Items
+
+## Bug Fixes:
+- Unarmed Strike
+- Event System
+
+# 1.0.3 Release:
+## Update Notes:
+- Added support for GPS and MISC monster automations for the item Medkit.
+
+# 1.0.2 Release
+## Updated Content:
+- Critical Role Gunslinger
+- Critical / Fumble Table
+
+## Bug Fixes:
+- Brace
+- Gaseous Form
+- Other Miscellaneous Fixes
+
+## Update Notes:
+- This update slight refactor to the underlying event system, do not update to this version right before a game.
+
+# 1.0.1 Release
+## Update Notes:
+- Fixed missing module name strings.
+
+# Cauldron of Plentiful Resources 1.0.0 Release!
+Cauldron of Plentiful Resources (Chris's Premades) has finally reached full v12 compatibility, and it's 1.0.0 release!
+### *Why the name change?*
+Chris started the module Chris's Premades to more easily share macros he had made, but the project has expanded since, and the module has multiple authors now, Autumn and, most recently, Michael. Michael has done a *huge* amount of work to help get Cauldron of Plentiful Resources to v12, and has improved and expanded many features.
+### *What took so long???*
+For the switch the v12, we decided to do a near-complete re-write of the module. Our best practices have changed and we've learned a lot in a year-and-a-half since the module was first published. This doesn't mean too much from the user's perspective, but on the back end, the code runs differently and is much cleaner.
+## Notes for migration
+***Any items from v11 Chris's Premades will not work in 1.0.0 of Cauldron of Plentiful Resources***. We recommend starting with fresh actors/items on v12 if you're migrating your world. Medkitting old items may have mixed results. ***Any customized macros from v11 will also not work***. All helpers have changed slightly. There is documentation on this in the Cauldron of Plentiful Resources discord server.
+## New Content:
+- All Purpose Tool
+- Armor of Safeguarding
+- Blessed Healer
+- Danoth's Visor
+- Disciple of Life
+- Earth Elemental Myrmidon: Thunderous Strike
+- Effect Interface (store custom effects in the sidebar, set them as Status Effects if desired, etc.)
+- Eldritch Claw Tattoo
+- Generic Monster Features: 
+    - Ability Drain
+    - Advantage Damage Bonus
+    - Auto Grapple
+    - Damage Turn Start
+    - Death Burst
+    - Enlarge
+    - Martial Advantage
+    - Parry
+    - Spell Turning
+    - Sunlight Sensitivity
+    - Pack Tactics
+    - Reduce
+    - Regeneration
+    - Swarm Damage
+    - Touch Damage
+- Grappler
+- Guardian Emblem
+- Hobgoblin Devastator: Army Arcana & Devastating Bolt
+- Hobgoblin Warlord: Shield Bash
+- Infuse Item: Enhanced Arcane Focus (Thanks dndcodemonkey)
+- Mighty Summoner
+- Pariah's Shield
+- Supreme Healing
+- Tavern Brawler
+- Unarmed Fighting Style
+- Wings of Flying
+- Wizard Evoker: Sculpted Explosion
+## Not-yet-updated Content:
+- Critical Role Firearms
+- Various specific Monster Features
+
+
+# 0.11.15 Release:
+## Update Notes:
+- Limited max D&D version to 3.2.1. Do not update your D&D version at this time if you are using this module.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- The V12 update is a work in progress.
+
+# 0.11.14 Release:
+## Update Notes:
+- Limited max D&D version to 3.1.2. Do not update your D&D version at this time if you are using this module.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- The V12 update is a work in progress.
+
+# 0.11.13 Release:
+## Bug Fixes:
+- Spike Growth
+- Blessing of the Forge (Thanks Elfrey)
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.12 Release:
+## Bug Fixes:
+- Song of Victory
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.11 Release:
+## Bug Fixes:
+- Song of Victory
+- Conjure Spells: overwrite initiative configuration (Thanks Elfrey)
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.10 Release:
+## Bug Fixes:
+- Create Eldritch Cannon
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.9 Release:
+## Bug Fixes:
+- Piercing Strike
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.8 Release:
+## Bug Fixes:
+- Enhanced Weapon
+- Radiant Weapon
+- Repeating Shot
+- Returning Weapon
+- Hybrid Transformation
+- Blessing of the Forge
+- Wildshape
+- Trickshot
+- Psychic Blades
+- Create Pact weapon
+- Cleave
+- Oil of Sharpness
+- Elemental Weapon
+
+## Update Notes:
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- Likely safe for D&D 3.2.0 and Foundry V11.
+- The V12 update is a work in progress.
+
+# 0.11.7 Release:
+## Bug Fixes:
+- Updated functions involving addDependents to use addDependent.
+
+## Update Notes:
+- Updated minimum versions of Midi-QOL, DAE, and Times Up.
+- Foundry V12 is not supported at all at this time, do not update Foundry at this time.
+- DND 3.2.0 has unknown compatibility and is not officially supported at this time, use at your own risk.
+
+# 0.11.6 Release:
+## Bug Fixes:
+- Added missing spell item for Globe of Invulnerability.
+## Update Notes:
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+
+# 0.11.5 Release:
+## New Content:
+- Artillerist Artificer: Eldritch Cannen, Explosive Cannon, Fortified Position
+## Update Notes:
+- Edited module and settings check
+- Foundry V12 and DND 3.2.0 are not supported at this time, do not update to those versions at this time.
+
 # 0.11.4 Release:
 ## Bug Fixes:
 - Regeneration
