@@ -28,7 +28,7 @@ jobs:
     - id: get_version
       run: |
         echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
-        echo "FOUNDRY_MANIFEST=https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json" >> $GITHUB_ENV
+        echo "FOUNDRY_MANIFEST=https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json" >> $GITHUB_ENV
         echo "FOUNDRY_DOWNLOAD=https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip" >> $GITHUB_ENV
 
     # Generate module.json
@@ -42,7 +42,7 @@ jobs:
       uses: restackio/update-json-file-action@2.1
       with:
         file: 'module.json'
-        fields: "{\"version\": \"${{env.VERSION}}\", \"manifest\": \"${{env.FOUNDRY_MANIFEST}}\", \"download\": \"${{env.FOUNDRY_DOWNLOAD}}\"}"
+        fields: "{\"version\": \"${{env.VERSION}}\", \"download\": \"${{env.FOUNDRY_DOWNLOAD}}\"}"
 
     # create a zip file with all files required by the module to add to the release
     - run: zip -r ./module.zip module.json dist packs styles templates LICENSE lang images
@@ -66,4 +66,4 @@ jobs:
         url: 'https://api.foundryvtt.com/_api/packages/release_version'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json", "Authorization" : "${{ secrets.FOUNDRY_KEY }}"}'
-        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "https://github.com/chrisk123999/chris-premades/releases/latest/download/module.json", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "12", "verified": "12", "maximum": "12"} } }'
+        data: '{"dry_run": false, "id" : "chris-premades", "release": {"version" :  "${{env.VERSION}}", "manifest": "${{env.FOUNDRY_MANIFEST}}", "notes" : "https://github.com/chrisk123999/chris-premades/blob/master/CHANGELOG.md", "compatibility" : {"minimum": "12", "verified": "12", "maximum": "12"} } }'
