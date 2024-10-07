@@ -112,6 +112,7 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
+            "AttackBonus": "Bônus Ataque",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -1793,6 +1794,10 @@
                     "Tooltip": "Informações sobre a automação atual e disponível"
                 },
                 "NPC": {
+                    "Identifier": {
+                        "Label": "Identificador do Ator:",
+                        "Tooltip": "Este identificador será usado para encontrar automações relevantes que correspondam por nome, em vez de usar o nome do token protótipo do ator."
+                    },
                     "Label": "PNJ",
                     "Tooltip": "Informações de Automações de Personagens Não-Jogadores"
                 },
