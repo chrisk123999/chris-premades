@@ -111,7 +111,7 @@ async function getAllAutomations(item, options) {
         let version;
         switch (i[0]) {
             default:
-                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true, matchType: constants.itemTypes.includes(item.type) ? 'item' : item.type});
+                found = await getItemFromCompendium(i[0], item.name, {ignoreNotFound: true, matchType: item.type});
                 source = i[0];
                 break;
             case 'chris-premades':

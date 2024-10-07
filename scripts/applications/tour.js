@@ -1,5 +1,5 @@
 import {compendiumUtils, constants, genericUtils} from '../utils.js';
-import {Medkit} from './medkit-item.js';
+import {Medkit} from './medkit.js';
 let registered = false;
 let states = {
     1: async () => {
