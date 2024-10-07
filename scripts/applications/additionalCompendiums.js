@@ -114,7 +114,14 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
                 isChecked: true
             };
         }
-        context.compendiums = compendiums;
+        context.compendiums = Array.from(Object.values(compendiums));
+        context.compendiums.sort((a,b) => {
+            let priorty = a.priority - b.priority;
+            if (priorty != 0) {
+                return priorty;
+            }
+            return a.label.localeCompare(b.label);
+        });
         context.buttons = [this.makeButton('CHRISPREMADES.Generic.Ok', 'true'), this.makeButton('CHRISPREMADES.Generic.Cancel', 'false')];
         this.context = context;
     }
