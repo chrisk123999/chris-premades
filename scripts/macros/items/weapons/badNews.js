@@ -2,7 +2,7 @@ import {firearm} from '../../mechanics/firearm.js';
 
 export let badNews = {
     name: 'Bad News (Exandria)',
-    version: '1.0.4',
+    version: '1.0.12',
     midi: firearm.midi,
     config: [
         {
@@ -33,5 +33,24 @@ export let badNews = {
             default: '3',
             category: 'mechanics'
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Bad News (Exandria)': {
+                system: {
+                    uses: {
+                        value: 1,
+                        max: '1',
+                        per: 'charges',
+                        prompt: false,
+                        recovery: ''
+                    },
+                    consume: {
+                        amount: 0,
+                        type: 'ammo'
+                    }
+                }
+            }
+        }
+    }
 };

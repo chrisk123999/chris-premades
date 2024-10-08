@@ -1,4 +1,11 @@
 # 1.0.12 Release:
+## Bug Fixes:
+- Bad News (Exandria)
+- Blunderbuss (Exandria)
+- Musket (Exandria)
+- Palm Pistol (Exandria)
+- Pepperbox (Exandria)
+- Pistol (Exandria)
 ## Update Notes:
 - Additional Compendiums will now sort checked compendia to the top, then sort by priority (thanks CaiusMartius)
 

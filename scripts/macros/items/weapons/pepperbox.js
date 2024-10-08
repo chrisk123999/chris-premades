@@ -2,7 +2,7 @@ import {firearm} from '../../mechanics/firearm.js';
 
 export let pepperbox = {
     name: 'Pepperbox (Exandria)',
-    version: '1.0.4',
+    version: '1.0.12',
     midi: firearm.midi,
     config: [
         {
@@ -33,5 +33,24 @@ export let pepperbox = {
             default: '2',
             category: 'mechanics'
         }
-    ]
+    ],
+    ddbi: {
+        correctedItems: {
+            'Pepperbox (Exandria)': {
+                system: {
+                    uses: {
+                        value: 6,
+                        max: '6',
+                        per: 'charges',
+                        prompt: false,
+                        recovery: ''
+                    },
+                    consume: {
+                        amount: 0,
+                        type: 'ammo'
+                    }
+                }
+            }
+        }
+    }
 };
