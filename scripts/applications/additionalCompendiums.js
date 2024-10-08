@@ -63,6 +63,13 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
     makeButton(label, name) {
         return {type: 'submit', action: 'confirm', label: label, name: name};
     }
+    sortByPriority(a,b) {
+        let priorty = a.priority - b.priority;
+        if (priorty != 0) {
+            return priorty;
+        }
+        return a.label.localeCompare(b.label);
+    }
     formatInputs() {
         let context = {};
         context.content = this.content;
@@ -114,7 +121,8 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
                 isChecked: true
             };
         }
-        context.compendiums = compendiums;
+        context.compendiums = Array.from(Object.values(compendiums));
+        context.compendiums.sort(this.sortByPriority);
         context.buttons = [this.makeButton('CHRISPREMADES.Generic.Ok', 'true'), this.makeButton('CHRISPREMADES.Generic.Cancel', 'false')];
         this.context = context;
     }
