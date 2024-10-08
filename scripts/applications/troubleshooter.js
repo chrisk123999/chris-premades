@@ -1,6 +1,7 @@
+import {custom} from '../events/custom.js';
 import {genericUtils} from '../utils.js';
 let names = {
-    'ATL': 'Advanced Token Effects',
+    'ATL': 'Active Token Effects',
     'JB2A_DnD5e': 'Jules&Ben\'s Animated Assets (F)',
     'about-time': 'About Time',
     'animated-spell-effects-cartoon': 'Animated Spell Effects: Cartoon',
@@ -173,6 +174,14 @@ export async function run() {
     cprSettings.forEach(i => {
         addLine(genericUtils.translate('CHRISPREMADES.Settings.' + i[1].key + '.Name') + ': ' + game.settings.get('chris-premades', i[1].key));
     });
+    let customMacros = custom.getCustomMacroList();
+    if (customMacros.length) {
+        addLine('');
+        addLine('/////////////// CPR Custom Macros ///////////////');
+        customMacros.forEach(i => {
+            addLine(' - ' + i.identifier);
+        });
+    }
     if (game.modules.get('midi-qol')?.active) {
         addLine('');
         addLine('/////////////// Midi-Qol Settings ///////////////');
@@ -196,7 +205,9 @@ export async function run() {
         addLine('Merge Card: ' + midiSettings.mergeCard);
         addLine('Actor On Use: ' + midiSettings.allowActorUseMacro);
         addLine('Item On Use: ' + midiSettings.allowUseMacro);
-        addLine('Auto Roll Damage: ' + midiSettings.autoRollDamage);
+        addLine('Player Auto Roll Damage: ' + midiSettings.autoRollDamage);
+        addLine('GM Auto Roll Damage: ' + midiSettings.gmAutoDamage);
+        addLine('Confirm Rolls: ' + midiSettings.confirmAttackDamage);
     }
     if (game.modules.get('plutonium') || game.modules.get('plutonium-addon-automation')) {
         addLine('');

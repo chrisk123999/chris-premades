@@ -1,4 +1,5 @@
 import * as macros from '../../macros.js';
+import {constants} from '../constants.js';
 import {genericUtils} from './genericUtils.js';
 async function setMacro(entityUuid, key, values = []) {
     if (!key) return;
@@ -10,6 +11,9 @@ export async function stripUnusedFlags(key) {
     let gamePack = game.packs.get(key);
     await gamePack.getDocuments();
     for (let i of gamePack.contents) {
+        if (!(Object.values(constants.featurePacks).includes(key) || key === 'world.cpr-summons')) {
+            if (!hasVersionInfo(i)) genericUtils.log('dev', i.name + ' is missing version info!');
+        }
         let updates = {
             'flags.-=ddbimporter': null,
             'flags.-=itemacro': null,
@@ -41,6 +45,9 @@ export async function stripUnusedFlags(key) {
         await i.update(updates);
     }
 }
+function hasVersionInfo(item) {
+    return !!item.flags['chris-premades']?.info?.version;
+}
 export async function updateAllCompendiums() {
     let packs = game.packs.filter(i => i.metadata.label.includes('CPR') && i.metadata.packageType === 'world');
     await Promise.all(packs.map(async i => {
@@ -51,5 +58,6 @@ export async function updateAllCompendiums() {
 export let devUtils = {
     setMacro,
     stripUnusedFlags,
-    updateAllCompendiums
+    updateAllCompendiums,
+    hasVersionInfo
 };

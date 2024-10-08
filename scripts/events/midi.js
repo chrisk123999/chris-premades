@@ -61,7 +61,6 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
                 name: i.name.slugify(),
                 token: token,
                 sourceToken: sourceToken,
-                custom: i.custom,
                 targetToken: targetToken
             });
         });
@@ -79,7 +78,6 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
                 name: i.name.slugify(),
                 token: token,
                 sourceToken: sourceToken,
-                custom: i.custom,
                 targetToken: targetToken
             });
         });
@@ -100,7 +98,6 @@ function collectAllMacros({item, token, actor, sourceToken, targetToken}, pass) 
                 name: templateUtils.getName(i).slugify(),
                 token: token,
                 sourceToken: sourceToken,
-                custom: i.custom,
                 targetToken: targetToken
             });
         });
@@ -255,6 +252,7 @@ async function damageRollComplete(workflow) {
 async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);
     await executeMacroPass(workflow, 'rollFinished');
+    await executeTargetMacroPass(workflow, 'targetRollFinished');
     if (genericUtils.getCPRSetting('conditionResistanceAndVulnerability')) {
         await conditionResistance.RollComplete(workflow);
         await conditionVulnerability.RollComplete(workflow);

@@ -1,7 +1,20 @@
 # 1.0.11 Release:
+## New Content:
+- Remarkable Recovery
+- Last Stand Armor
+- Titanstone Knuckles
+- Stabilize
+## Bug Fixes:
+- Troubleshooter
+- Item Medkit
+- Banishment
+- Enlarge / Reduce
 ## Update Notes:
 - Updated Changelog
-- Fixed `manifest` URL in manifest - should now be static
+## API Updates:
+- Added Death Event
+## API Bug Fixes:
+- Rest Event
 
 # 1.0.10 Release:
 ## Bug Fixes:

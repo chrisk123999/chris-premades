@@ -1,6 +1,7 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js';
+import {custom} from '../events/custom.js';
 export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(context, itemDocument) {
         super({id: 'medkit-window-item'});
@@ -61,8 +62,8 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let isUpToDate = await itemUtils.isUpToDate(item);
         let context = {
             identifier: identifier,
-            name: macros[identifier] ? macros[identifier].name : item.name,
-            label: macros[identifier] ? macros[identifier].name === item.name ? item.name : item.name + ' (' + macros[identifier].name + ')' : item.name,
+            name: custom.getMacro(identifier) ? custom.getMacro(identifier).name : item.name,
+            label: custom.getMacro(identifier) ? custom.getMacro(identifier).name === item.name ? item.name : item.name + ' (' + custom.getMacro(identifier).name + ')' : item.name,
             version: itemUtils.getVersion(item),
             source: itemUtils.getSource(item),
             isUpToDate: isUpToDate,
@@ -121,7 +122,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             case 1: {
                 if (context.source === 'chris-premades') {
-                    if (macros[identifier].config) {
+                    if (custom.getMacro(identifier).config) {
                         context.medkitColor = 'dodgerblue';
                     } else {
                         context.medkitColor = 'green';
@@ -144,7 +145,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             context.medkitColor = 'pink';
         }
         /** Config Tab */
-        let configs = macros[identifier]?.config;
+        let configs = custom.getMacro(identifier)?.config;
         if (!configs) configs = item.flags['chris-premades']?.customConfig;
         if (configs) {
             context.category = {};
@@ -319,7 +320,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'development',
                 isSelected: context?.source === 'development' ? true : context?.source ? false : true,
             });
-            let macroInfo = macros[identifier];
+            let macroInfo = custom.getMacro(identifier);
             let devTools = {
                 hasMacroInfo: macroInfo ? true : false,
                 identifier: item.flags?.['chris-premades']?.info?.identifier ?? '',
@@ -474,7 +475,7 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
             let macroUpdates = {};
             Object.keys(genericConfigs).forEach(async i => {
-                let macroInfo = macros[i];
+                let macroInfo = custom.getMacro(i);
                 let macroFields = ['midi.actor', 'midi.item', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
                 for (let macroField of macroFields) {
                     if (genericUtils.getProperty(macroInfo, macroField)) {

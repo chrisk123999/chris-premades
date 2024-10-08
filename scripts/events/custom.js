@@ -33,10 +33,13 @@ function updateOrDeleteMacro(document, updates, options, userId) {
     if (genericUtils.getCPRSetting('macroCompendium') != document.pack) return;
     ready();
 }
+function getCustomMacroList() {
+    return customMacroList;
+}
 export let custom = {
     ready,
     getMacro,
-    customMacroList,
     preCreateMacro,
-    updateOrDeleteMacro
+    updateOrDeleteMacro,
+    getCustomMacroList
 };

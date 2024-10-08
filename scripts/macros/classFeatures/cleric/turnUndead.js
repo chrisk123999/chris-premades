@@ -1,5 +1,4 @@
 import {actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
 async function early({workflow}) {
     if (!workflow.targets.size) return;
     let advData = {

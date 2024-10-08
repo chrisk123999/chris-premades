@@ -63,6 +63,7 @@ export function registerHooks() {
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);
+    Hooks.on('dnd5e.restCompleted', rest);
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
@@ -78,7 +79,6 @@ export function registerHooks() {
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
         auras.canvasReady(canvas);
-        Hooks.on('dnd5e.restCompleted', rest);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
             Hooks.on('deleteActiveEffect', tokens.createDeleteUpdateActiveEffect);

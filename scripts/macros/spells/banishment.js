@@ -1,6 +1,5 @@
-import {actorUtils, dialogUtils, effectUtils, genericUtils, socketUtils} from '../../utils.js';
+import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
 import {upcastTargets} from '../generic/upcastTargets.js';
-
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     if (!workflow.failedSaves.size) {
@@ -21,9 +20,7 @@ export async function banishmentHelper(workflow, otherPlanarTokens = []) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'flags.midi-qol.superSaver.all',

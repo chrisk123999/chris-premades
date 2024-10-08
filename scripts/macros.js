@@ -159,6 +159,7 @@ export {setAttackRoll} from './macros/generic/setAttackRoll.js';
 export {setDamageRoll} from './macros/generic/setDamageRoll.js';
 export {proneOnFail} from './macros/generic/proneOnFail.js';
 export {proneOnHit} from './macros/generic/proneOnHit.js';
+export {useOnDeath} from './macros/generic/useOnDeath.js';
 // Class Features
 export {adeptMarksman} from './macros/classFeatures/fighter/gunslinger/adeptMarksman.js';
 export {agonizingBlast} from './macros/classFeatures/warlock/invocations/agonizingBlast.js';
@@ -465,12 +466,14 @@ export {search} from './macros/actions/search.js';
 export {shove} from './macros/actions/shove.js';
 export {squeeze} from './macros/actions/squeeze.js';
 export {underwater, underwaterEffect} from './macros/actions/underwater.js';
+export {stabilize} from './macros/actions/stabilize.js';
 // Feats
 export {aberrantDragonmark} from './macros/feats/aberrantDragonmark.js';
 export {bulwark} from './macros/feats/bulwark.js';
 export {chromaticInfusion, reactiveResistance} from './macros/feats/giftOfTheChromaticDragon.js';
 export {cloudyEscape} from './macros/feats/cloudyEscape.js';
 export {crusher, crusherCrit} from './macros/feats/crusher.js';
+export {remarkableRecovery} from './macros/feats/remarkableRecovery.js';
 // export {dualWielder} from './macros/feats/dualWielder.js';
 export {frigidRetaliation} from './macros/feats/frigidRetaliation.js';
 export {grappler, grapplerPin} from './macros/feats/grappler.js';
@@ -544,6 +547,8 @@ export {unarmedStrike} from './macros/items/misc/unarmedStrike.js';
 export {wandOfTheWarMage, wandOfTheWarMage1, wandOfTheWarMage2, wandOfTheWarMage3} from './macros/items/trinket/wandOfTheWarMage.js';
 export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macros/items/clothing/wingsOfFlying.js';
 export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMist} from './macros/items/trinket/wrapsOfDyamak.js';
+export {titanstoneKnucklesD, titanstoneKnucklesA, titanstoneKnucklesE} from './macros/items/trinket/titanstoneKnuckles.js';
+export {lastStandArmorBR, lastStandArmorCM, lastStandArmorCS, lastStandArmorH, lastStandArmorHP, lastStandArmorL, lastStandArmorP, lastStandArmorPl, lastStandArmorRM, lastStandArmorS, lastStandArmorSL, lastStandArmorSM} from './macros/items/armor/lastStandArmor.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
 //Other

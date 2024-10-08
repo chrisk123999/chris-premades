@@ -76,7 +76,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "class",
       "subtype": ""
     },
     "prerequisites": {

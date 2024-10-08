@@ -1,19 +1,14 @@
 {
-  "name": "Mote of Potential Heal",
+  "name": "Remarkable Recovery: Regain Hit Points",
   "type": "feat",
-  "_id": "Bk0ehMzK4Fkqwnwi",
-  "img": "icons/magic/light/projectile-smoke-blue.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
     "activation": {
       "type": "special",
-      "cost": null,
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -31,8 +26,8 @@
     },
     "range": {
       "value": null,
-      "long": null,
-      "units": "self"
+      "units": "self",
+      "long": null
     },
     "uses": {
       "value": null,
@@ -47,7 +42,7 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
+    "ability": "con",
     "actionType": "heal",
     "attack": {
       "bonus": "",
@@ -61,8 +56,8 @@
     "damage": {
       "parts": [
         [
-          "0",
-          "temphp"
+          "max(1, @mod)[healing]",
+          "healing"
         ]
       ],
       "versatile": ""
@@ -76,7 +71,7 @@
     },
     "summons": null,
     "type": {
-      "value": "class",
+      "value": "feat",
       "subtype": ""
     },
     "prerequisites": {
@@ -87,11 +82,24 @@
     "recharge": {
       "value": null,
       "charged": false
-    }
+    },
+    "source": {}
   },
-  "effects": [],
-  "folder": null,
   "flags": {
+    "infusions": {
+      "infused": false
+    },
+    "obsidian": {
+      "source": {
+        "type": "feat"
+      }
+    },
+    "midi-qol": {
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": ""
+    },
     "midiProperties": {
       "confirmTargets": "default",
       "autoFailFriendly": false,
@@ -108,12 +116,24 @@
       "idv": false,
       "ida": false
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "removeAttackDamageButtons": "default"
+    "chris-premades": {
+      "info": {
+        "identifier": "remarkableRecovery",
+        "source": "chris-premades",
+        "version": "1.0.10"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "remarkableRecovery"
+          ]
+        }
+      }
     }
   },
-  "_key": "!items!Bk0ehMzK4Fkqwnwi"
+  "effects": [],
+  "img": "icons/magic/life/cross-explosion-burst-green.webp",
+  "folder": null,
+  "_id": "Cxipq4DjOQ4I4vMr",
+  "_key": "!items!Cxipq4DjOQ4I4vMr"
 }

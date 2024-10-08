@@ -145,11 +145,13 @@
             },
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
+            "CreatureTypes": "Creature Types:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
             "Expire": "Expiration:",
             "Formula": "Formula:",
+            "HideToken": "Hide Token:",
             "ImmuneCreatures": "Immune Creature Types:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -1351,6 +1353,10 @@
                 "UseDefault": "Use previously-saved token configuration:",
                 "Weapon": "What Weapon?"
             },
+            "Stabilize": {
+                "Stabilized": "Stabilized",
+                "WakeUp": "Hours Until Creature Wakes:"
+            },
             "StaggeringSmite": {
                 "Stagger": "Staggering Smite: Stagger"
             },
@@ -1778,6 +1784,14 @@
                 "Configuration": {
                     "Label": "Configuration",
                     "Tooltip": "Configure available parts of the automation"
+                },
+                "DevTools": {
+                    "HasAnimation": "Has Animation:",
+                    "Identifier": "Identifier:",
+                    "Label": "Dev Tools",
+                    "Source": "Source:",
+                    "Tooltip": "Tools for development, you shouldn\\'t be here...",
+                    "Version": "Version:"
                 },
                 "GenericFeatures": {
                     "Label": "Generic Features",
@@ -2394,6 +2408,7 @@
             "Discord": "Open Discord Support Channel",
             "Hint": "Open the troubleshooter.",
             "MissingModule": "Cauldron of Plentiful Resources requires the module {module} to be installed!",
+            "MovementLag": "Movement Events appears to be taking a long time! Try setting \"Movement Event Performance\" lower in the CPR general settings.",
             "Open": "Open Troubleshooter:",
             "SaveToFile": "Save to File",
             "Title": "Troubleshooter"

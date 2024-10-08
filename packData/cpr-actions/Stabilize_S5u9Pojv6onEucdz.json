@@ -1,19 +1,16 @@
 {
-  "name": "Mote of Potential Heal",
+  "name": "Stabilize",
   "type": "feat",
-  "_id": "Bk0ehMzK4Fkqwnwi",
-  "img": "icons/magic/light/projectile-smoke-blue.webp",
+  "img": "icons/magic/life/crosses-trio-red.webp",
   "system": {
     "description": {
       "value": "",
       "chat": ""
     },
-    "source": {
-      "custom": ""
-    },
+    "source": {},
     "activation": {
-      "type": "special",
-      "cost": null,
+      "type": "action",
+      "cost": 1,
       "condition": ""
     },
     "duration": {
@@ -23,16 +20,16 @@
     "cover": null,
     "crewed": false,
     "target": {
-      "value": "",
+      "value": "1",
       "width": null,
       "units": "",
-      "type": "self",
+      "type": "creature",
       "prompt": true
     },
     "range": {
-      "value": null,
+      "value": 5,
       "long": null,
-      "units": "self"
+      "units": "ft"
     },
     "uses": {
       "value": null,
@@ -47,8 +44,8 @@
       "amount": null,
       "scale": false
     },
-    "ability": "",
-    "actionType": "heal",
+    "ability": null,
+    "actionType": "util",
     "attack": {
       "bonus": "",
       "flat": false
@@ -59,12 +56,7 @@
       "damage": ""
     },
     "damage": {
-      "parts": [
-        [
-          "0",
-          "temphp"
-        ]
-      ],
+      "parts": [],
       "versatile": ""
     },
     "enchantment": null,
@@ -76,7 +68,7 @@
     },
     "summons": null,
     "type": {
-      "value": "class",
+      "value": "",
       "subtype": ""
     },
     "prerequisites": {
@@ -92,28 +84,21 @@
   "effects": [],
   "folder": null,
   "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "removeAttackDamageButtons": "default"
+    "chris-premades": {
+      "info": {
+        "identifier": "stabilize",
+        "source": "chris-premades",
+        "version": "1.0.11"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "stabilize"
+          ]
+        }
+      }
     }
   },
-  "_key": "!items!Bk0ehMzK4Fkqwnwi"
+  "_id": "S5u9Pojv6onEucdz",
+  "_key": "!items!S5u9Pojv6onEucdz"
 }

@@ -572,7 +572,7 @@ export function registerSettings() {
         key: 'classSpellList',
         type: String,
         default: null,
-        category: 'compendium',
+        category: 'general',
         select: true
     });
     let oldAddActions;

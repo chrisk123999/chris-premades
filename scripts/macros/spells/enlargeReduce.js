@@ -6,7 +6,8 @@ async function use({workflow}) {
         return;
     }
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.EnlargeReduce.Select', [['CHRISPREMADES.Macros.EnlargeReduce.Enlarge', 'enlarge'], ['CHRISPREMADES.Macros.EnlargeReduce.Reduce', 'reduce']]);
+    let titanStone = workflow.item.flags['chris-premades']?.titanStone;
+    let selection = titanStone ? 'enlarge' : await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.EnlargeReduce.Select', [['CHRISPREMADES.Macros.EnlargeReduce.Enlarge', 'enlarge'], ['CHRISPREMADES.Macros.EnlargeReduce.Reduce', 'reduce']]);
     if (!selection) {
         await genericUtils.remove(concentrationEffect);
         return;
@@ -16,9 +17,7 @@ async function use({workflow}) {
             name: workflow.item.name,
             img: workflow.item.img,
             origin: workflow.item.uuid,
-            duration: {
-                seconds: 60 * workflow.item.system.duration.value
-            },
+            duration: itemUtils.convertDuration(workflow.item),
             changes: [
                 {
                     key: 'system.bonuses.mwak.damage',
@@ -57,6 +56,34 @@ async function use({workflow}) {
                 }
             }
         };
+        if (titanStone === 2) {
+            effectData.changes = effectData.changes.concat([
+                {
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    priority: 20,
+                    value: 'cold'
+                },
+                {
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    priority: 20,
+                    value: 'fire'
+                },
+                {
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    priority: 20,
+                    value: 'lightning'
+                },
+                {
+                    key: 'system.traits.dr.value',
+                    mode: 2,
+                    priority: 20,
+                    value: 'thunder'
+                }
+            ]);
+        }
         effectUtils.addMacro(effectData, 'effect', ['enlargeReduceChanged']);
         for (let targetToken of workflow.failedSaves) {
             let currEffectData = genericUtils.duplicate(effectData);
@@ -96,9 +123,7 @@ async function use({workflow}) {
             name: workflow.item.name,
             img: workflow.item.img,
             origin: workflow.item.uuid,
-            duration: {
-                seconds: 60 * workflow.item.system.duration.value
-            },
+            duration: itemUtils.convertDuration(workflow.item),
             changes: [
                 {
                     key: 'system.bonuses.mwak.damage',

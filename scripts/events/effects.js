@@ -3,6 +3,7 @@ import {effects} from '../extensions/effects.js';
 import * as macros from '../macros.js';
 import {effectUtils, genericUtils, socketUtils} from '../utils.js';
 import {auras} from './auras.js';
+import {death} from './death.js';
 function getEffectMacroData(effect) {
     return effect.flags['chris-premades']?.macros?.effect ?? [];
 }
@@ -90,6 +91,7 @@ async function createActiveEffect(effect, options, userId) {
     if (!(effect.parent instanceof Actor)) return;
     await auras.effectCheck(effect);
     await executeMacroPass(effect, 'created');
+    if (effect.statuses.has('dead')) await death.executeMacroPass(effect.parent, 'dead');
 }
 async function deleteActiveEffect(effect, options, userId) {
     if (!socketUtils.isTheGM()) return;
@@ -104,8 +106,8 @@ let preUpdateMacros = [];
 function ready() {
     preCreateMacros = Object.values(macros).filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro);
     preUpdateMacros = Object.values(macros).filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro);
-    preCreateMacros.push(...custom.customMacroList.filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro));
-    preUpdateMacros.push(...custom.customMacroList.filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro));
+    preCreateMacros.push(...custom.getCustomMacroList().filter(i => i.preCreateEffect).flatMap(j => j.preCreateEffect).map(k => k.macro));
+    preUpdateMacros.push(...custom.getCustomMacroList().filter(i => i.preUpdateEffect).flatMap(j => j.preUpdateEffect).map(k => k.macro));
 }
 function preCreateActiveEffect(effect, updates, options, userId) {
     if (game.user.id != userId) return;

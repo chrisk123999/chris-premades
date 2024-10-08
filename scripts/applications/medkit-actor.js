@@ -235,7 +235,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 break;
             }
         }
-        // will want to take a textbox value from the NPC tab for a name to get automations from, keep that and apply when apply
     }
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};

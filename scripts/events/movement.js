@@ -3,6 +3,7 @@ import {custom} from './custom.js';
 import {actorUtils, effectUtils, genericUtils, itemUtils, socketUtils, templateUtils, tokenUtils} from '../utils.js';
 import {auras} from './auras.js';
 import {templateEvents} from './template.js';
+let lagWarningSeen = false;
 function getMovementMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.movement ?? [];
 }
@@ -177,6 +178,7 @@ async function updateToken(token, updates, options, userId) {
     let skipMove = genericUtils.getCPRSetting('movementPerformance') < 2 && !isFinalMovement;
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
+    let startTime = performance.now();
     if (!ignore) {
         if (isFinalMovement) await auras.updateAuras(token, options);
         if (!skipMove) {
@@ -206,6 +208,11 @@ async function updateToken(token, updates, options, userId) {
         }
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
+    let endTime = performance.now();
+    if (!lagWarningSeen && ((endTime - startTime) >= 500)) {
+        lagWarningSeen = true;
+        genericUtils.notify('CHRISPREMADES.Troubleshooter.MovementLag', 'error', {permanent: true});
+    }
 }
 export let movementEvents = {
     updateToken,
