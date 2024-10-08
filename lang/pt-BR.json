@@ -145,11 +145,13 @@
             },
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compendium {option}:",
+            "CreatureTypes": "Tipos de Criatura:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
             "Expire": "Expiração:",
             "Formula": "Fórmula:",
+            "HideToken": "Ocultar Token:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
@@ -1351,6 +1353,10 @@
                 "UseDefault": "Usar configuração de token salva anteriormente:",
                 "Weapon": "Qual Arma?"
             },
+            "Stabilize": {
+                "Stabilized": "Estabilizado",
+                "WakeUp": "Horas Até a Criatura Acordar:"
+            },
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
             },
@@ -1778,6 +1784,14 @@
                 "Configuration": {
                     "Label": "Configuração",
                     "Tooltip": "Configure as partes disponíveis da automação"
+                },
+                "DevTools": {
+                    "HasAnimation": "Tem Animação:",
+                    "Identifier": "Identificador:",
+                    "Label": "Ferramentas de Dev.",
+                    "Source": "Origem:",
+                    "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
+                    "Version": "Versão:"
                 },
                 "GenericFeatures": {
                     "Label": "Características Genéricas",
@@ -2394,6 +2408,7 @@
             "Discord": "Abra Canal de Suporte do Discord",
             "Hint": "Abre o troubleshooter.",
             "MissingModule": "Chris's Premades requer que o módulo {module} esteja instalado!",
+            "MovementLag": "Os Eventos de Movimento parecem estar demorando muito! Tente definir \"Desempenho de Eventos de Movimento\" mais baixo nas configurações gerais do CPR.",
             "Open": "Abrir Troubleshooter:",
             "SaveToFile": "Salvar em Arquivo",
             "Title": "Troubleshooter"
