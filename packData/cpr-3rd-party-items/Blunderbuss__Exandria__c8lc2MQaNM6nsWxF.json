@@ -55,7 +55,7 @@
     "consume": {
       "type": "ammo",
       "target": "",
-      "amount": 1,
+      "amount": 0,
       "scale": false
     },
     "ability": "dex",
@@ -114,14 +114,6 @@
   "flags": {
     "midi-qol": {
       "onUseMacroName": "",
-      "onUseMacroParts": {
-        "items": {
-          "0": {
-            "macroName": "function.chrisPremades.macros.noConfiguration",
-            "option": "preItemRoll"
-          }
-        }
-      },
       "fumbleThreshold": null,
       "effectActivation": false,
       "removeAttackDamageButtons": "default",
@@ -162,7 +154,7 @@
         "status": 0
       },
       "info": {
-        "version": "1.0.4",
+        "version": "1.0.12",
         "settings": [
           "Critical Role Firearm Support"
         ],
