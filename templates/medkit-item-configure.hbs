@@ -1,0 +1,41 @@
+<div class="tab cpr-medkit-tab {{tabs.configure.cssClass}} scrollable" data-tab="configure" data-group="main">
+    {{#each configure.configurationOptions}}
+        <fieldset class="cpr-fieldset">
+            <legend data-tooltip="{{localize tooltip}}">{{localize label}}</legend>
+            <div class="form-group cpr-medkit-config cpr-column" data-category="{{@key}}" data-options="configurationOptions">
+                {{#each configOptions}}
+                    <div class="cpr-row-center cpr-config-flex">
+                        {{#if isCheckbox}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <input type="checkbox" id="{{id}}" name="{{name}}" {{#if value}}checked{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        {{else if isText}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <input type="text" id="{{id}}" name="{{name}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                        {{else if isFile}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <file-picker id="{{id}}" name="{{name}}" type="{{type}}" value="{{value}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}></file-picker>
+                        {{else if isSelect}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                        {{localize label}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        {{else if isSelectMany}}
+                            <label for="{{id}}">{{localize label option=i18nOption}}</label>
+                            <multi-select id="{{id}}" name="{{name}}" {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if isSelected}}selected{{/if}} {{#if isDisabled}}disabled{{/if}} {{#if tooltip}}data-tooltip="{{tooltip}}"{{/if}}>
+                                        {{localize label}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </fieldset>
+    {{/each}}
+</div>

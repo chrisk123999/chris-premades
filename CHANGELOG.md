@@ -6,6 +6,7 @@
 - Palm Pistol (Exandria)
 - Pepperbox (Exandria)
 - Pistol (Exandria)
+- Mighty Summoner
 ## Update Notes:
 - Additional Compendiums will now sort checked compendia to the top, then sort by priority (thanks CaiusMartius)
 
