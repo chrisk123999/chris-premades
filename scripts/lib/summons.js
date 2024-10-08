@@ -264,7 +264,7 @@ export class Summons {
             });
         }
         if (itemUtils.getItemByIdentifier(this.originItem.actor, 'mightySummoner') && ['beast', 'fey'].includes(this.updates.actor?.system?.type?.value ?? actorUtils.typeOrRace(this.sourceActor))) {
-            let hitDieAmount = parseInt(this.hpFormula.match(/(\d+)d/)[1]);
+            let hitDieAmount = parseInt(this.hpFormula.match(/(\d+)d/)?.[1]) ?? 0;
             let extraHitPoints;
             if (hitDieAmount) extraHitPoints = hitDieAmount * 2;
             let updates = {};
@@ -499,7 +499,7 @@ export class Summons {
         return this.updates.actor?.system?.attributes?.hp?.value ?? this.sourceActor.system.attributes.hp.value;
     }
     get hpFormula() {
-        return this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula;
+        return String(this.updates.actor?.system?.attributes?.hp?.formula ?? this.sourceActor.system.attributes.hp.formula);
     }
     get hpMax() {
         return this.updates.actor?.system?.attributes?.hp?.max ?? this.sourceActor.system.attributes.hp.max;
