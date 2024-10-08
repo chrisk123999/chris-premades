@@ -64,6 +64,11 @@ export class AdditionalCompendiums extends HandlebarsApplicationMixin(Applicatio
         return {type: 'submit', action: 'confirm', label: label, name: name};
     }
     sortByPriority(a,b) {
+        if (a.isChecked) {
+            if (!b.isChecked) return -1;
+        } else if (b.isChecked) {
+            return 1;
+        }
         let priorty = a.priority - b.priority;
         if (priorty != 0) {
             return priorty;
