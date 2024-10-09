@@ -439,21 +439,19 @@ export class Medkit extends HandlebarsApplicationMixin(ApplicationV2) {
             if (itemFlags?.macros) Object.entries(itemFlags.macros).forEach(async ([key, value]) => {
                 if (value instanceof Object && !(value instanceof Array)) {
                     Object.entries(value).forEach(async ([flagKey, flagValue]) => {
-                        if (genericFeatures.configs) {
-                            Object.values(genericFeatures.configs)?.forEach(async option => {
-                                let index = flagValue.indexOf(option.id);
-                                if (index > -1) {
-                                    if (flagValue.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key + '.' + flagKey);
-                                    else {
-                                        flagValue.splice(index, 1);
-                                        await item.setFlag('chris-premades', 'macros.' + key + '.' + flagKey, flagValue);
-                                    }
+                        Object.values(genericFeatures.configs ?? {})?.forEach(async option => {
+                            let index = flagValue.indexOf(option.id);
+                            if (index > -1) {
+                                if (flagValue.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key + '.' + flagKey);
+                                else {
+                                    flagValue.splice(index, 1);
+                                    await item.setFlag('chris-premades', 'macros.' + key + '.' + flagKey, flagValue);
                                 }
-                            });
-                        }
+                            }
+                        });
                     });
                 } else {
-                    Object.values(genericFeatures.configs)?.forEach(async option => {
+                    Object.values(genericFeatures.configs ?? {})?.forEach(async option => {
                         let index = value.indexOf(option.id);
                         if (index > -1) {
                             if (value.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key);

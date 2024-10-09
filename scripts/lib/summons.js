@@ -285,7 +285,7 @@ export class Summons {
             }
             let items = new Set();
             this.sourceActor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i.toObject()));
-            Object?.values(this.updates.actor?.items)?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
+            this.updates.actor?.items?.filter(i => i.type === 'weapon')?.forEach(i => items.add(i));
             if (items.size > 0) items.forEach(i => {
                 i.system.properties.push('mgc');
                 genericUtils.setProperty(updates, 'actor.items[' + i.name + ']', i);
