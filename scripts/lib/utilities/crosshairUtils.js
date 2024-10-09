@@ -62,6 +62,7 @@ async function aimCrosshair({token, maxRange, crosshairsConfig, centerpoint, dra
         ...options,
         ...crosshairsConfig
     };
+    if (token?.document.rotation) options.direction = token.document.rotation;
     if (!maxRange) return await Crosshairs.showCrosshairs(options);
     let result = await Crosshairs.showCrosshairs(options, callbacks);
     if (drawing) {
