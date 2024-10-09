@@ -10,7 +10,7 @@ async function use({trigger, workflow}) {
     if (roll.total < 10 || !workflow.targets.size) return;
     let remarkableRecovery = itemUtils.getItemByIdentifier(targetActor, 'remarkableRecovery');
     if (!remarkableRecovery) {
-        await genericUtils.update(targetActor, {'system.attributes.death.success': 3});
+        await genericUtils.update(targetActor, {'system.attributes.death.success': 0, 'system.attributes.death.failure': 0});
         let effectData = {
             name: genericUtils.translate('CHRISPREMADES.Macros.Stabilize.Stabilized'),
             img: workflow.item.img,
@@ -18,7 +18,8 @@ async function use({trigger, workflow}) {
             flags: {
                 dae: {
                     specialDuration: [
-                        'isHealed'
+                        'isHealed',
+                        'isDamaged'
                     ],
                     showIcon: true
                 }
