@@ -2157,8 +2157,8 @@
                 "0": "Low",
                 "1": "Medium",
                 "2": "High",
-                "Hint": "Accuracy of movement events, higher accuracy comes at the cost of performance.",
-                "Name": "Movement Event Performance"
+                "Hint": "Accuracy mode for movement events. Higher accuracy modes will have a greater performance impact, especially on less powerful hardware.\r\n• High: Full accuracy.\r\n• Medium: Waypoint movement is ignored, except for the final segment.\r\n• Low: As Medium, and walls are ignored in distance calculations.",
+                "Name": "Movement Event Accuracy"
             },
             "permissionsAutomateItem": {
                 "Hint": "Lowest user ranking that can select and apply different automations in the Medkit:",

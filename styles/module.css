@@ -512,3 +512,8 @@ form .cpr-row-center .cpr-input-short {
 [data-medkit-color="orchid"] {
     color: orchid
 }
+
+/* Setting Styles */
+[id="chris-premades-settings"] p.notes {
+    white-space: pre-line
+}

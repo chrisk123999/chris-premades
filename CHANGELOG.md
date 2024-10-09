@@ -1,3 +1,11 @@
+# 1.0.13 Release:
+## Bug Fixes:
+- Song of Defense
+- Summoning
+- Crosshairs
+## Update Notes:
+- Effect Interface now properly visible/usable by non-GMs
+
 # 1.0.12 Release:
 ## Bug Fixes:
 - Bad News (Exandria)
