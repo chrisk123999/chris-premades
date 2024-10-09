@@ -44,6 +44,9 @@ class EffectCollection extends WorldCollection {
         super.set(document.id, document);
         this._source.push(document.toObject());
     }
+    _getVisibleTreeContents() {
+        return this.contents;
+    }
 }
 class EffectDirectory extends DocumentDirectory {
     static documentName = 'Effect';
@@ -194,6 +197,7 @@ class EffectDirectory extends DocumentDirectory {
                     });
                 },
                 condition: (header) => {
+                    if (!game.user.isGM) return;
                     let document = getDocument(header);
                     if (!document) return;
                     if (document.flags['chris-premades']?.effectInterface?.status) return;
@@ -211,6 +215,7 @@ class EffectDirectory extends DocumentDirectory {
                     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => i._id != document.id);
                 },
                 condition: (header) => {
+                    if (!game.user.isGM) return;
                     let document = getDocument(header);
                     if (!document) return;
                     if (document.flags['chris-premades']?.effectInterface?.status) return;
