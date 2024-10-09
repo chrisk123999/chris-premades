@@ -17,7 +17,7 @@ function getTokensInTemplate(template) {
                     x: tokx + x * size - tempx,
                     y: toky + y * size - tempy
                 };
-                let contains = object.shape.contains(curr.x, curr.y);
+                let contains = object.shape?.contains(curr.x, curr.y);
                 if (contains) {
                     tokens.add(token.object);
                     continue;
@@ -44,7 +44,7 @@ function getTemplatesInToken(token) {
                     x: tokx + x * size - tempx,
                     y: toky + y * size - tempy
                 };
-                let contains = object.shape.contains(curr.x, curr.y);
+                let contains = object.shape?.contains(curr.x, curr.y);
                 if (contains) {
                     templates.add(template);
                     continue;
