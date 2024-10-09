@@ -112,6 +112,7 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
+            "AttackBonus": "Bônus Ataque",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -144,11 +145,13 @@
             },
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compendium {option}:",
+            "CreatureTypes": "Tipos de Criatura:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
             "Expire": "Expiração:",
             "Formula": "Fórmula:",
+            "HideToken": "Ocultar Token:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
@@ -1074,6 +1077,7 @@
                 "NoNearby": "Nenhum aliado com reação pode ver ou ouvir você!",
                 "PushDistance": "O quão longe você empurra o alvo?",
                 "Pushing": "Ataque de Encontrão: Ataque",
+                "SelectDice": "Executar uma manobra com qual categoria de dado de superioridade?",
                 "SelectManeuver": "Qual manobra usar?",
                 "SelectTarget": "Quem você ataca?",
                 "Sweeping": "Ataque Trespassante: Ataque",
@@ -1348,6 +1352,10 @@
                 "Sword": "Espada",
                 "UseDefault": "Usar configuração de token salva anteriormente:",
                 "Weapon": "Qual Arma?"
+            },
+            "Stabilize": {
+                "Stabilized": "Estabilizado",
+                "WakeUp": "Horas Até a Criatura Acordar:"
             },
             "StaggeringSmite": {
                 "Stagger": "Destruição Estonteante: Tontear"
@@ -1777,6 +1785,14 @@
                     "Label": "Configuração",
                     "Tooltip": "Configure as partes disponíveis da automação"
                 },
+                "DevTools": {
+                    "HasAnimation": "Tem Animação:",
+                    "Identifier": "Identificador:",
+                    "Label": "Ferramentas de Dev.",
+                    "Source": "Origem:",
+                    "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
+                    "Version": "Versão:"
+                },
                 "GenericFeatures": {
                     "Label": "Características Genéricas",
                     "Monster": {
@@ -1792,6 +1808,10 @@
                     "Tooltip": "Informações sobre a automação atual e disponível"
                 },
                 "NPC": {
+                    "Identifier": {
+                        "Label": "Identificador do Ator:",
+                        "Tooltip": "Este identificador será usado para encontrar automações relevantes que correspondam por nome, em vez de usar o nome do token protótipo do ator."
+                    },
                     "Label": "PNJ",
                     "Tooltip": "Informações de Automações de Personagens Não-Jogadores"
                 },
@@ -2388,6 +2408,7 @@
             "Discord": "Abra Canal de Suporte do Discord",
             "Hint": "Abre o troubleshooter.",
             "MissingModule": "Chris's Premades requer que o módulo {module} esteja instalado!",
+            "MovementLag": "Os Eventos de Movimento parecem estar demorando muito! Tente definir \"Desempenho de Eventos de Movimento\" mais baixo nas configurações gerais do CPR.",
             "Open": "Abrir Troubleshooter:",
             "SaveToFile": "Salvar em Arquivo",
             "Title": "Troubleshooter"
