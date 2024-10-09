@@ -1786,9 +1786,22 @@
                     "Tooltip": "Configure available parts of the automation"
                 },
                 "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Configure Automation Info:",
+                    "Check": "Check:",
+                    "Combat": "Combat:",
+                    "Death": "Death:",
+                    "Equipment": "Equipment:",
                     "HasAnimation": "Has Animation:",
                     "Identifier": "Identifier:",
                     "Label": "Dev Tools",
+                    "MacroInfo": "Configure Macro Info:",
+                    "MidiActor": "Midi, Actor:",
+                    "MidiItem": "Midi, Item:",
+                    "Movement": "Movement:",
+                    "Rest": "Rest:",
+                    "Save": "Save:",
+                    "Skill": "Skill:",
                     "Source": "Source:",
                     "Tooltip": "Tools for development, you shouldn\\'t be here...",
                     "Version": "Version:"

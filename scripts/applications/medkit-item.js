@@ -68,7 +68,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             scrollable: ['']
         },
         devTools: {
-            template: 'modules/chris-premades/templates/medkit-dev-tools.hbs',
+            template: 'modules/chris-premades/templates/medkit-item-dev-tools.hbs',
             scrollable: ['']
         },
         footer: {
@@ -439,6 +439,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'item',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.MidiItem',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.midi?.item),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.midi.item',
@@ -449,6 +450,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'actor',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.MidiActor',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.midi?.actor),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.midi.actor',
@@ -459,6 +461,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'aura',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Aura',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.aura),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.aura',
@@ -469,6 +472,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'combat',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Combat',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.combat),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.combat',
@@ -479,6 +483,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'movement',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Movement',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.movement),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.movement',
@@ -489,6 +494,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'check',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Check',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.check),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.check',
@@ -499,6 +505,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'save',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Save',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.save),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.save',
@@ -509,6 +516,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'skill',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Skill',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.skill),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.skill',
@@ -519,6 +527,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'death',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Death',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.death),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.death',
@@ -529,6 +538,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'rest',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Rest',
                 value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.rest),
+                placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.rest',
@@ -539,6 +549,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 id: 'equipment',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Equipment',
                 value: this.flags?.['chris-premades']?.equipment?.identifier,
+                placeholder: 'string',
                 isText: true,
                 flag: {
                     key: 'equipment.identifier',
@@ -546,27 +557,18 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             }
         ];
-        if (!this._devToolsOptions && this.constants.devTools) {
-            this._devToolsOptions = {
-                identifier: this.item.flags?.['chris-premades']?.info?.identifier ?? '',
-                version: this.item.flags?.['chris-premades']?.info?.version ?? this._macro?.version ?? '',
-                source: this.item.flags?.['chris-premades']?.info?.source ?? '',
-                hasAnimation: this.item.flags?.['chris-premades']?.info?.hasAnimation ?? this._macro?.hasAnimation ?? false,
-                midi: {
-                    item: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.midi?.item) ?? '',
-                    actor: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.midi?.actor) ?? '',
-                },
-                aura: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.aura) ?? '',
-                combat: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.combat) ?? '',
-                movement: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.movement) ?? '',
-                rest: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.rest) ?? '',
-                equipment: this.item.flags?.['chris-premades']?.equipment?.identifier ?? '',
-                skill: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.skill) ?? '',
-                save: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.save) ?? '',
-                check: JSON?.stringify(this.item.flags?.['chris-premades']?.macros?.check) ?? '',
-            };
-        }
-        return this._devToolsOptions ?? false;
+        return {
+            automationInfo: {
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.AutomationInfo',
+                id: 'automationInfo',
+                configOptions: automationInfo
+            },
+            macroInfo: {
+                label: 'CHRISPREMADES.Medkit.Tabs.DevTools.MacroInfo',
+                id: 'macroInfo',
+                configOptions: macroInfo
+            }
+        };
     }
     get tabsData() {
         let tabsData = {
