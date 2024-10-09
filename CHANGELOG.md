@@ -3,6 +3,7 @@
 - Song of Defense
 - Summoning
 - Crosshairs
+- Gaseous Form
 ## Update Notes:
 - Effect Interface now properly visible/usable by non-GMs
 
