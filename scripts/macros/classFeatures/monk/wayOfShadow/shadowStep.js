@@ -8,7 +8,7 @@ async function use({workflow}) {
     }
     await Teleport.target(workflow.token, workflow.token, {
         animation,
-        range: 60
+        range: itemUtils.getConfig(workflow.item, 'range')
     });
 }
 export let shadowStep = {
@@ -30,6 +30,13 @@ export let shadowStep = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        },
+        {
+            value: 'range',
+            label: 'CHRISPREMADES.Config.Range',
+            type: 'number',
+            default: 60,
+            category: 'homebrew'
         }
     ]
 };
