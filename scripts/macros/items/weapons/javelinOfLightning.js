@@ -20,7 +20,7 @@ async function early({workflow}) {
         width: 5
     };
     genericUtils.setProperty(workflow, 'chrisPremades.javelinOfLightningUsed', true);
-    let [template] = await genericUtils.createEmbeddedDocuments(canvas.scene, 'MeasuredTemplate', [templateData]);
+    let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
     let effectData = {
         name: genericUtils.format('CHRISPREMADES.GenericEffects.TemplateEffect', {itemName: workflow.item.name}),
         img: workflow.item.img,
