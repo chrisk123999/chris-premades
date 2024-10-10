@@ -182,7 +182,7 @@ async function use({workflow}) {
                 user: game.user,
                 fillColor: game.user.color
             };
-            let [template] = await genericUtils.createEmbeddedDocuments(canvas.scene, 'MeasuredTemplate', [templateData]);
+            let [template] = await canvas.scene.createEmbeddedDocuments('MeasuredTemplate', [templateData]);
             await tokenUtils.attachToToken(workflow.token, [template.uuid]);
             effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: rageEffect, identifier: 'wildSurge'});
             await effectUtils.addDependent(effect, [template]);

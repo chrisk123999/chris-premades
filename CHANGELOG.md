@@ -4,6 +4,8 @@
 - Summoning
 - Crosshairs
 - Gaseous Form
+- Javelin of Lightning
+- Wild Surge
 ## Update Notes:
 - Effect Interface now properly visible/usable by non-GMs
 
