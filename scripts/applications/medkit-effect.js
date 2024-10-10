@@ -207,7 +207,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 case 'damageTypes': {
                     genericUtils.setProperty(i, 'isSelectOption', true);
                     if (!i.value) genericUtils.setProperty(i, 'value', i.default);
-                    genericUtils.setProperty(i, 'options', Object.entries(CONFIG.DND5E.damageTypes).map(([key, value]) => ({
+                    genericUtils.setProperty(i, 'options', Object.entries(CONFIG.DND5E.damageTypes).concat(Object.entries(CONFIG.DND5E.healingTypes)).map(([key, value]) => ({
                         label: value.label,
                         value: key,
                         isSelected: key === i.value

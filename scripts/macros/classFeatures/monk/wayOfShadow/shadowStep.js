@@ -1,6 +1,5 @@
 import {Teleport} from '../../../../lib/teleport.js';
 import {animationUtils, itemUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let animation = 'none';
     if (itemUtils.getConfig(workflow.item, 'playAnimation')) {

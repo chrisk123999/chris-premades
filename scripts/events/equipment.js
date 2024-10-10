@@ -9,7 +9,7 @@ async function addOrUpdate(item, updates, options, id) {
     if ((previouslyEquipped != currentlyEquipped) && item.type === 'weapon' && genericUtils.getCPRSetting('bg3WeaponActionsEnabled')) await bg3.changeItem(item, currentlyEquipped);
     let identifier = item.flags['chris-premades']?.equipment?.identifier;
     if (!identifier) return;
-    let equipmentData = custom.customMacroList.find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
+    let equipmentData = custom.getCustomMacroList().find(i => i.identifier === identifier)?.equipment ?? macros[identifier]?.equipment;
     if (!equipmentData) return;
     let currentlyAttuned = updates.system?.attuned ?? item.system.attuned;
     let previouslyAttuned = item.system?.attuned;

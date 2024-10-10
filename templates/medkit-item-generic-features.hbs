@@ -1,23 +1,21 @@
 <div class="tab cpr-medkit-tab {{tabs.genericFeatures.cssClass}}" data-tab="genericFeatures" data-group="main">
     <div>
-        {{#each genericFeatures.genericFeaturesOptions}}
-            <div class="cpr-row-center cpr-multi-select-row" data-options="genericFeaturesOptions">
-                <label for="{{id}}" data-tooltip="{{localize tooltip}}">{{localize label}}</label>
-                <multi-select id="{{id}}" name="{{id}}">
-                {{#each options}}
-                    <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
-                {{/each}}
-                </multi-select>
-            </div>
-        {{/each}}
+        <div class="cpr-row-center cpr-multi-select-row">
+            <label for="monster-features" data-tooltip="{{localize genericFeatures.tooltip}}">{{localize genericFeatures.label}}</label>
+            <multi-select id="monster-features" name="monster-features">
+            {{#each genericFeatures.options}}
+                <option value="{{value}}" {{#if isSelected}}selected{{/if}}>{{localize label}}</option>
+            {{/each}}
+            </multi-select>
+        </div>
         <div class="cpr-fieldset-group">
-            {{#each genericFeatures.genericFeaturesConfigs}}
-                {{#if configOptions.[0]}}
-                    <fieldset class="cpr-fieldset" data-options="genericFeaturesConfigs" data-category="{{@key}}">
+            {{#each genericFeatures.configs}}
+                {{#if options.[0]}}
+                    <fieldset class="cpr-fieldset">
                         <legend>{{label}}</legend>
                         <div class="form-group cpr-row">
-                            {{#each configOptions}}
-                            <div class="cpr-row-center">
+                            {{#each options}}
+                            <div class="cpr-row-center" data-id="{{../id}}" data-context="generic-features">
                                 {{#if isCheckbox}}
                                     <label for="{{id}}">{{localize label}}</label>
                                     <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}}>
