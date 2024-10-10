@@ -212,6 +212,20 @@ form .cpr-row-center .cpr-input-short {
     margin-bottom: 10px;
 }
 
+.cpr-medkit-tab .cpr-fieldset .cpr-checkbox {
+    height: 25px;
+    --checkbox-size: 25px;
+}
+
+.cpr-medkit-tab .cpr-fieldset div.cpr-row-center:has(.cpr-checkbox) label {
+    margin-right: 0.4em;
+    width: auto;
+}
+
+.cpr-medkit-tab .cpr-fieldset .cpr-label-40 {
+    width: 40%;
+}
+
 .cpr-medkit-tab .cpr-medkit-config .cpr-config-flex label {
     text-wrap: balance;
 }
@@ -414,6 +428,15 @@ form .cpr-row-center .cpr-input-short {
 .theme-dark .cpr-medkit-tabs .item.active {
     color: var(--color-light-3) !important;
 }
+
+.theme-light .cpr-medkit-tab div input:placeholder-shown {
+    --input-placeholder-color: var(--dnd5e-color-olive);
+}
+
+.theme-dark .cpr-medkit-tab div input:placeholder-shown {
+    --input-placeholder-color: var(--color-light-5);
+}
+
 
 /* Roll Resolver Styles */
 

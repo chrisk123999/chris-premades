@@ -1,13 +1,13 @@
-<div class="tab cpr-medkit-tab {{tabs.devTools.cssClass}}" data-tab="devTools" data-group="main">
+<div class="tab cpr-medkit-tab {{tabs.devTools.cssClass}} scrollable" data-tab="devTools" data-group="main">
     {{#each devTools.devToolsOptions}}
         <fieldset class="cpr-fieldset" data-options="devToolsOptions" data-category="{{@key}}">
             <legend>{{localize label}}</legend>
             <div class="form-group cpr-column">
                 {{#each configOptions}}
-                    <div class="cpr-row-center cpr-even-flex">
-                        <label for="{{id}}">{{localize label}}</label>
+                    <div class="cpr-row-center">
+                        <label for="{{id}}" class="cpr-label-40">{{localize label}}</label>
                         {{#if isCheckbox}}
-                            <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}}>
+                            <input type="checkbox" id="{{id}}" name="{{id}}" {{#if isChecked}}checked{{/if}} class="cpr-checkbox">
                         {{else if isText}}
                             <input type="text" id="{{id}}" name="{{id}}" value="{{value}}" placeholder="{{{placeholder}}}">
                         {{/if}}
