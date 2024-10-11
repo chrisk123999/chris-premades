@@ -366,6 +366,7 @@ export {zealousPresence} from './macros/classFeatures/barbarian/zealot/zealousPr
 export {discipleOfLife} from './macros/classFeatures/cleric/lifeDomain/discipleOfLife.js';
 export {blessedHealer} from './macros/classFeatures/cleric/lifeDomain/blessedHealer.js';
 export {supremeHealing} from './macros/classFeatures/cleric/lifeDomain/supremeHealing.js';
+export {colossusSlayer} from './macros/classFeatures/ranger/hunter/colossusSlayer.js';
 // Race Features
 export {aasimarNecroticShroud, aasimarRadiantConsumption, aasimarRadiantSoul, celestialRevelation} from './macros/raceFeatures/aasimar/celestialRevelation.js';
 export {acidBreathWeapon, coldBreathWeapon, fireBreathWeapon, lightningBreathWeapon, poisonBreathWeapon} from './macros/raceFeatures/dragonborn/chromatic/breathWeapon.js';
