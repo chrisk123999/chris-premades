@@ -1,3 +1,12 @@
+# 1.0.15 Release:
+## Bug Fixes:
+- Item Medkit
+- Colossus Slayer
+- Arcane Jolt
+- Spike Growth
+- Sacred Weapon
+- Vamperic Touch
+
 # 1.0.14 Release:
 ## New Content:
 - Colossus Slayer
