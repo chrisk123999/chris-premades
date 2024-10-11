@@ -21,6 +21,7 @@ async function use({workflow}) {
     });
 }
 async function enterOrPassThrough({trigger: {entity: template, token}, options}, left) {
+    if (options.teleport) return;
     let templateObj = template.object;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
@@ -63,6 +64,7 @@ async function left({trigger, options}) {
     await enterOrPassThrough({trigger, options}, true);
 }
 async function stay({trigger: {entity: template, token}, options}) {
+    if (options.teleport) return;
     let prevCoords = options?.['chris-premades']?.coords?.previous;
     if (!prevCoords) return;
     if (canvas.scene.grid.units !== 'ft') return;
