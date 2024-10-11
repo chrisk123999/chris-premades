@@ -84,14 +84,14 @@ async function isUpToDate(item) {
     if (type === 'npc') monster = item.actor.prototypeToken.name;
     switch (source) {
         case 'gambits-premades':
-            if (type === 'character') {
+            if (type === 'character' || item.type === 'spell') {
                 sourceVersion = gambitPremades.gambitItems.find(i => i.name === item.name)?.version;
             } else {
                 sourceVersion = gambitPremades.gambitMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
             }
             break;
         case 'midi-item-showcase-community':
-            if (type === 'character') {
+            if (type === 'character' || item.type === 'spell') {
                 sourceVersion = miscPremades.miscItems.find(i => i.name === item.name)?.version;
             } else {
                 sourceVersion = miscPremades.miscMonsters.find(i => i.name === item.name && i.monster === monster)?.version;
