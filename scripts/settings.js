@@ -835,6 +835,12 @@ export function registerSettings() {
             6: 'CHRISPREMADES.Settings.criticalFumbleMode.6',
         }
     });
+    addSetting({
+        key: 'makeGM',
+        type: Object,
+        default: null,
+        category: 'development'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({
