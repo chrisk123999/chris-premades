@@ -5,7 +5,7 @@
 - Arcane Jolt
 - Spike Growth
 - Sacred Weapon
-- Vamperic Touch
+- Vampiric Touch
 
 # 1.0.14 Release:
 ## New Content:
