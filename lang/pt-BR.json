@@ -2115,6 +2115,10 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
+            "makeGM": {
+                "Hint": "Torne-se o MJ principal.",
+                "Name": "Tornar-se MJ"
+            },
             "manualRollsEnabled": {
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
                 "Name": "Rolagens Manuais"
