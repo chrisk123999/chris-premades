@@ -60,7 +60,7 @@ async function use({workflow}) {
             {
                 key: 'system.attack.bonus',
                 mode: 2,
-                value: '+1',
+                value: '+' + Math.max(workflow.actor.system.abilities.cha.mod, 1),
                 priority: 20
             },
             {
