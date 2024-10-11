@@ -1,5 +1,4 @@
 import {combatUtils, constants, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 export async function arcaneJoltHelper(workflow, originItem) {
     let targetToken = workflow.hitTargets.first();
     let scale = originItem.actor.system?.scale?.['battle-smith']?.['arcane-jolt']?.formula;
@@ -21,18 +20,16 @@ export async function arcaneJoltHelper(workflow, originItem) {
         let damageRoll = await new CONFIG.Dice.DamageRoll(scale + '[healing]', {}, {type: 'healing'}).evaluate();
         await workflowUtils.applyWorkflowDamage(workflow.token, damageRoll, 'healing', [target], {flavor: originItem.name, itemCardId: workflow.chatCard.id, sourceItem: originItem});
     }
-    await combatUtils.setTurnCheck(workflow.item, 'arcaneJolt');
+    await combatUtils.setTurnCheck(originItem, 'arcaneJolt');
     await workflowUtils.completeItemUse(originItem, {consumeUsage: true}, {configureDialog: false});
 }
-async function damage({workflow}) {
+async function damage({trigger, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (!workflow.item.system.properties.has('mgc')) return;
-    let originItem = itemUtils.getItemByIdentifier(workflow.actor, 'arcaneJolt');
-    if (!originItem) return;
-    if (!combatUtils.perTurnCheck(originItem, 'arcaneJolt')) return;
-    if (!originItem.system.uses.value) return;
-    await arcaneJoltHelper(workflow, originItem);
+    if (!combatUtils.perTurnCheck(trigger.entity, 'arcaneJolt')) return;
+    if (!trigger.entity.system.uses.value) return;
+    await arcaneJoltHelper(workflow, trigger.entity);
 }
 export let arcaneJolt = {
     name: 'Arcane Jolt',
