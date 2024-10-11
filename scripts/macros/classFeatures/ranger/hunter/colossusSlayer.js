@@ -1,7 +1,7 @@
 import {constants} from '../../../../lib/constants.js';
 import {combatUtils, itemUtils, workflowUtils} from '../../../../utils.js';
 async function damage({trigger, workflow}) {
-    if (!workflow.targets.size) return;
+    if (!workflow.hitTargets.size) return;
     if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
     if (!combatUtils.perTurnCheck(trigger.entity, 'colossusSlayer')) return;
     if (workflow.targets.first().actor.system.attributes.hp.value >= workflow.targets.first().actor.system.attributes.hp.max) return;
