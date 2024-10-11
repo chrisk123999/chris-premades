@@ -1,6 +1,5 @@
 import {Summons} from '../../../../lib/summons.js';
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
-
 async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Drake Companion');
     if (!sourceActor) return;
@@ -9,13 +8,11 @@ async function use({workflow}) {
     let drakeUpgrades = Math.floor((classLevel + 1) / 8);
     let commandData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Drake Companion: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Command', identifier: 'summonDrakeCompanionCommand'});
     let resistanceData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.classFeatureItems, 'Reflexive Resistance', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Reflexive', identifier: 'summonDrakeCompanionReflexiveResistance'});
-    
     let dodgeData = await compendiumUtils.getItemFromCompendium(constants.packs.actions, 'Dodge', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Actions.Dodge', identifier: 'summonDrakeCompanionDodge'});
     let biteData = await Summons.getSummonItem('Bite (Drake Companion)', {}, workflow.item, {translate: 'CHRISPREMADES.CommonFeatures.Bite', identifier: 'summonDrakeCompanionBite'});
     let essenceData = await Summons.getSummonItem('Draconic Essence', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.Essence', identifier: 'summonDrakeCompanionDraconicEssence'});
     let strikesData = await Summons.getSummonItem('Infused Strikes', {}, workflow.item, {translate: 'CHRISPREMADES.Macros.SummonDrakeCompanion.InfusedStrikes', identifier: 'summonDrakeCompanionInfusedStrikes'});
     let itemsToAdd = [essenceData, strikesData, biteData, dodgeData];
-
     if (!commandData || !resistanceData || itemsToAdd.some(i => !i)) {
         errors.missingPackItem();
         return;

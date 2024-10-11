@@ -34,7 +34,8 @@ let names = {
     'gambits-premades': 'Gambit\'s Premades',
     'midi-item-showcase-community': 'Midi Item Showcase - Community',
     'automated-conditions-5e': 'Automated Conditions 5e',
-    'bugs': 'Bugbear\'s Scripts'
+    'bugs': 'Bugbear\'s Scripts',
+    'multilevel-tokens': 'Multilevel Tokens'
 };
 let optionalModules = [
     'ATL',
@@ -73,7 +74,8 @@ let incompatibleModules = [
     'ready-set-roll-5e',
     'retroactive-advantage-5e',
     'rollgroups',
-    'wire'
+    'wire',
+    'multilevel-tokens'
 ];
 let defunctModules = [
     'itemacro',

@@ -1,10 +1,8 @@
 import {Summons} from '../../lib/summons.js';
 import {compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
-
 async function use({workflow}) {
     await findSteedHelper(workflow, 'Steed', 'Steeds', 'findSteed');
 }
-
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findSteed');
 }
@@ -38,8 +36,8 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
             options: Array.from(workflow.actor.system.traits.languages.value).map(i => {return {value: i, label: 'DND5E.Languages' + i.capitalize()};})
         }
     };
-    let languageSeletcted = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.Macros.FindSteed.Language', input);
-    if (!languageSeletcted) return;
+    let languageSelected = await dialogUtils.selectDialog(workflow.item.name, 'CHRISPREMADES.Macros.FindSteed.Language', input);
+    if (!languageSelected) return;
     let sourceActorInt = Math.max(sourceActor.system.abilities.int.value, 6);
     let name = itemUtils.getConfig(workflow.item, 'steedName');
     if (!name || !name.length) name = sourceActor.name + ' ' + defaultNameSuffix;
@@ -58,7 +56,7 @@ export async function findSteedHelper(workflow, defaultNameSuffix, defaultFolder
                     }
                 },
                 traits: {
-                    languages: languageSeletcted
+                    languages: languageSelected
                 }
             },
             prototypeToken: {

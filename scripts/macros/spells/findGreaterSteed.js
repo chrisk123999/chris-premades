@@ -1,10 +1,8 @@
 import {constants} from '../../utils.js';
 import {findSteedEarlyHelper, findSteedHelper} from './findSteed.js';
-
 async function use({workflow}) {
     await findSteedHelper(workflow, 'Steed', 'Greater Steeds', 'findGreaterSteed');
 }
-
 async function early({workflow}) {
     await findSteedEarlyHelper(workflow, 'findGreaterSteed');
 }
