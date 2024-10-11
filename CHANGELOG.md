@@ -1,3 +1,7 @@
+# 1.0.14 Release:
+## New Content:
+- Colossus Slayer
+
 # 1.0.13 Release:
 ## Bug Fixes:
 - Song of Defense
