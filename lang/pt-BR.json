@@ -1786,9 +1786,22 @@
                     "Tooltip": "Configure as partes disponíveis da automação"
                 },
                 "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Configurar Informações de Automação:",
+                    "Check": "Teste:",
+                    "Combat": "Combate:",
+                    "Death": "Morte:",
+                    "Equipment": "Equipmento:",
                     "HasAnimation": "Tem Animação:",
                     "Identifier": "Identificador:",
                     "Label": "Ferramentas de Dev.",
+                    "MacroInfo": "Configurar Informações de Macro:",
+                    "MidiActor": "Midi, Ator:",
+                    "MidiItem": "Midi, Item:",
+                    "Movement": "Movimento:",
+                    "Rest": "Descansar:",
+                    "Save": "Salvaguarda:",
+                    "Skill": "Perícia:",
                     "Source": "Origem:",
                     "Tooltip": "Ferramentas para desenvolvimento, você não deveria estar aqui...",
                     "Version": "Versão:"
