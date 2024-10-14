@@ -149,6 +149,7 @@ async function executeMacroPass(tokens, pass, token, options) {
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i, options);
+    return triggers.length;
 }
 function preUpdateToken(token, updates, options, userId) {
     //This runs on the local client only!
@@ -179,12 +180,13 @@ async function updateToken(token, updates, options, userId) {
     // eslint-disable-next-line no-undef
     await CanvasAnimation.getAnimation(token.object.animationName)?.promise;
     let startTime = performance.now();
+    let count = 0;
     if (!ignore) {
         if (isFinalMovement) await auras.updateAuras(token, options);
         if (!skipMove) {
-            await executeMacroPass([token], 'moved', undefined, options);
-            await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
-            await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
+            count += await executeMacroPass([token], 'moved', undefined, options);
+            count += await executeMacroPass(token.parent.tokens.filter(i => i != token), 'movedNear', token, options);
+            count += await executeMacroPass(token.parent.tokens.filter(i => i), 'movedScene', token, options);
         }
         if (updates.x || updates.y) {
             let current = Array.from(templateUtils.getTemplatesInToken(token.object));
@@ -201,15 +203,17 @@ async function updateToken(token, updates, options, userId) {
             let enteredAndLeft = through.filter(i => {
                 return !leaving.includes(i) && !entering.includes(i) && !staying.includes(i);
             });
-            if (leaving.length) await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
-            if (entering.length) await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
-            if (staying.length) await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
-            if (enteredAndLeft.length) await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
+            if (leaving.length) count += await templateEvents.executeMacroPass(leaving, 'left', token.object, options);
+            if (entering.length) count += await templateEvents.executeMacroPass(entering, 'enter', token.object, options);
+            if (staying.length) count += await templateEvents.executeMacroPass(staying, 'stay', token.object, options);
+            if (enteredAndLeft.length) count += await templateEvents.executeMacroPass(enteredAndLeft, 'passedThrough', token.object, options);
         }
     }
     await attach.updateAttachments(token, {x: coords.x - previousCoords.x, y: coords.y - previousCoords.y});
     let endTime = performance.now();
-    if (!lagWarningSeen && ((endTime - startTime) >= 500)) {
+    let diff = endTime - startTime;
+    genericUtils.log('dev', 'Movement Event Timing: ' + diff);
+    if (!count && !lagWarningSeen && (diff >= 500)) {
         lagWarningSeen = true;
         genericUtils.notify('CHRISPREMADES.Troubleshooter.MovementLag', 'error', {permanent: true});
     }
