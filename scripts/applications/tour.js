@@ -1,5 +1,5 @@
 import {compendiumUtils, constants, genericUtils} from '../utils.js';
-import {Medkit} from './medkit.js';
+import {ItemMedkit} from './medkit-item.js';
 let registered = false;
 let states = {
     1: async () => {
@@ -24,7 +24,7 @@ let states = {
     4: async () => {
         let item = await compendiumUtils.getItemFromCompendium(constants.packs.spells, 'Fire Shield');
         if (!item) return;
-        Medkit.item(item);
+        ItemMedkit.item(item);
         await genericUtils.sleep(500);
     },
     7: async () => {

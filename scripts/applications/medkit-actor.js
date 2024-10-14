@@ -54,7 +54,13 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     static async actor(actor) {
         let medkit = new ActorMedkit(actor);
         await medkit.readyData();
-        medkit.render(true);
+        await medkit.render(true);
+    }
+    static async actorUpdateAll(actor) {
+        let medkit = new ActorMedkit(actor);
+        await medkit.readyData();
+        await ActorMedkit._update.bind(medkit)();
+        return medkit.summary;
     }
     async readyData() {
         this.actorItems = await Promise.all(this.actor.items.map(async i => ({
@@ -120,6 +126,7 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return Medkit.update(item, sourceItem, options);
     }
     static async _update(event, target) {
+        console.log('here');
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
             if (currentValue.isUpToDate !== 1 && (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem))) {
                 let options = {source: undefined, version: undefined};
@@ -150,10 +157,12 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
             return accumulator;
         }, []));
-        let maxHeight = (canvas.screenDimensions[1] * 0.9);
-        let position = {...this.position, height: ((this.amounts.available.value + this.amounts.outOfDate.value) * 15 + 310) > (maxHeight) ? maxHeight : 'auto'};
-        this.setPosition(position);
-        this.render(true, {position: {top: null}});
+        if (this.rendered) {
+            let maxHeight = (canvas.screenDimensions[1] * 0.9);
+            let position = {...this.position, height: ((this.amounts.available.value + this.amounts.outOfDate.value) * 15 + 310) > (maxHeight) ? maxHeight : 'auto'};
+            this.setPosition(position);
+            await this.render(true, {position: {top: null}});
+        }
     }
     static async apply(event, target) {
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');

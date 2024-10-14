@@ -8,8 +8,9 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.position.width = 450;
         this.item = item;
         /* These are the variables we want to keep in local memory and apply when needed */
-        this.flags = genericUtils.deepClone(item.flags['chris-premades']);
-        this.selectedGenericFeatures = Object.keys(this.flags.config.generic);
+        this.flags = genericUtils?.deepClone(item?.flags['chris-premades']) ?? {};
+        this.selectedGenericFeatures = Object.keys(this.flags?.config?.generic ?? {});
+        this.selectedSource = this.flags?.info?.source;
         /* --- */
         this.medkitColor;
         this.constants = {
@@ -133,7 +134,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 return this._source === 'chris-premades' ? 'red' : 'orange';
             case 1: {
                 if (this._source === 'chris-premades') {
-                    return this._macro.config ? 'dodgerblue' : 'green';
+                    return this._macro?.config ? 'dodgerblue' : 'green';
                 } else {
                     return 'orchid';
                 }
@@ -166,8 +167,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'DND5E.None',
                 value: null,
                 id: null,
-                isSelected: (this.source && this.source != '') ? false : true,
-                version: null
+                isSelected: (this.selectedSource && this.selectedSource != '') ? false : true,
+                version: null,
             });
             this.availableAutomations.forEach(automation => {
                 let label;
@@ -180,8 +181,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     label: label,
                     value: automation.document.uuid,
                     id: automation.source,
-                    isSelected: this.source === automation.source,
-                    version: automation.version
+                    isSelected: this.selectedSource === automation.source,
+                    version: automation.version,
                 });
             });
         }
@@ -189,7 +190,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             label: 'Development',
             value: 'development',
             id: 'development',
-            isSelected: this.source === 'development',
+            isSelected: this.selectedSource === 'development',
         });
         return [
             {
@@ -197,11 +198,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: 'CHRISPREMADES.Medkit.SelectedAutomation',
                 tooltip: this.constants.canAutomate.tooltip,
                 disabled: this.constants.canAutomate.value ? false : true,
-                value: this.source ?? null,
-                flag: {
-                    key: 'info.source',
-                    value: 'id'
-                },
+                value: this.selectedSource ?? null,
                 options: options
             }
         ];
@@ -288,7 +285,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     get genericFeaturesOptions () {
         if (this.item?.actor?.type != 'npc') return false;
-        console.log(this.constants.genericFeatureMacros);
         return [
             {
                 id: 'select-generic-monster-features',
@@ -307,7 +303,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         ];
     }
     get genericFeaturesConfigs() {
-        Object.keys(this.flags?.config?.generic).forEach(i => {if (!this.selectedGenericFeatures.includes(i)) delete this.flags.config.generic[i];});
+        Object.keys(this.flags?.config?.generic ?? {}).forEach(i => {if (!this.selectedGenericFeatures.includes(i)) delete this.flags.config.generic[i];});
         return this.selectedGenericFeatures.reduce((configs, key) => {
             let genericFeature = this.constants.genericFeatureMacros[key];
             let value = this.flags?.config?.generic?.[key];
@@ -438,117 +434,117 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             {
                 id: 'item',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.MidiItem',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.midi?.item),
+                value: JSON?.stringify(this.flags?.macros?.midi?.item),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.midi.item',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'actor',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.MidiActor',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.midi?.actor),
+                value: JSON?.stringify(this.flags?.macros?.midi?.actor),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.midi.actor',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'aura',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Aura',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.aura),
+                value: JSON?.stringify(this.flags?.macros?.aura),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.aura',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'combat',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Combat',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.combat),
+                value: JSON?.stringify(this.flags?.macros?.combat),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.combat',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'movement',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Movement',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.movement),
+                value: JSON?.stringify(this.flags?.macros?.movement),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.movement',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'check',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Check',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.check),
+                value: JSON?.stringify(this.flags?.macros?.check),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.check',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'save',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Save',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.save),
+                value: JSON?.stringify(this.flags?.macros?.save),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.save',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'skill',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Skill',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.skill),
+                value: JSON?.stringify(this.flags?.macros?.skill),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.skill',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'death',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Death',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.death),
+                value: JSON?.stringify(this.flags?.macros?.death),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.death',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'rest',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Rest',
-                value: JSON?.stringify(this.flags?.['chris-premades']?.macros?.rest),
+                value: JSON?.stringify(this.flags?.macros?.rest),
                 placeholder: '[&quot;macroNameOne&quot;, &quot;macroNameTwo&quot;]',
                 isText: true,
                 flag: {
                     key: 'macros.rest',
-                    value: 'value'
+                    value: 'array'
                 }
             },
             {
                 id: 'equipment',
                 label: 'CHRISPREMADES.Medkit.Tabs.DevTools.Equipment',
-                value: this.flags?.['chris-premades']?.equipment?.identifier,
+                value: this.flags?.equipment?.identifier,
                 placeholder: 'string',
                 isText: true,
                 flag: {
@@ -570,6 +566,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             }
         };
     }
+    /* Tabs data and keeping the active tab */
     get tabsData() {
         let tabsData = {
             info: {
@@ -611,12 +608,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     set activeTab(tab) {
         this._activeTab = tab;
     }
+    /* Our async function to call before rendering so that we can fetch documents from compendiums */
     async readyData() {
         this.isUpToDate = await itemUtils.isUpToDate(this.item);
         this.availableAutomations = await compendiumUtils.getAllAutomations(this.item, {identifier: this.item?.actor?.flags['chris-premades']?.info?.identifier});
         this._prepared = true;
     }
-    static async update(item, sourceItem, {source, version, identifier} = {}) { // --- Need to fix up this to use new paths
+    /* Outwards facing function that all other medkits will also use to update any given item with another */
+    static async update(item, sourceItem, {source, version, identifier} = {}) {
         let itemData = genericUtils.duplicate(item.toObject());
         let sourceItemData = genericUtils.duplicate(sourceItem.toObject());
         let itemType = item.type;
@@ -631,7 +630,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let advancementOrigin = itemData.flags.dnd5e?.advancementOrigin;
         if (advancementOrigin) genericUtils.setProperty(sourceItemData, 'flags.dnd5e.advancementOrigin', advancementOrigin);
         let onUseFlag = genericUtils.getProperty(sourceItemData, 'flags.midi-qol.onUseMacroName');
-        if (!onUseFlag) genericUtils.setProperty(sourceItemData, 'flags.miid-qol.-=onUseMacroName', null);
+        if (!onUseFlag) genericUtils.setProperty(sourceItemData, 'flags.midi-qol.-=onUseMacroName', null);
         if (itemType === 'spell') sourceItemData.system.preparation = itemData.system.preparation;
         if (itemType != 'spell' && itemType != 'feat') {
             sourceItemData.system.attunement = itemData.system.attunement;
@@ -654,134 +653,83 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await item.update(sourceItemData);
         return item;
     }
-    static async _update(event, target) { // --- Need to fix up this to use new paths
-        let item = this.itemDocument;
-        if (!item) return;
-        let option = this.context.options.find(i => i.isSelected === true);
-        let sourceItem = await fromUuid(option?.value);
-        if (!sourceItem) return;
-        let updatedItem = await ItemMedkit.update(item, sourceItem, {source: option.id, version: option.version});
-        this.updateContext(updatedItem);
+    static async _update(event, target) {
+        let source = this.availableAutomations.find(i => i.source === this._source);
+        if (!source) return;
+        await ItemMedkit.update(this.item, source.document, {source: source.source, version: source.version});
+        await this.readyData();
+        await this.render(true);
     }
-    static async _apply(event, target) { // --- Need to fix up this to use new paths
-        let item = this.itemDocument;
-        let {devTools, category, genericFeatures} = this.context;
-        if (devTools) {
-            if (devTools.identifier != '') await item.setFlag('chris-premades', 'info.identifier', devTools.identifier);
-            if (devTools.version != '') await item.setFlag('chris-premades', 'info.version', devTools.version);
-            if (devTools.source != '') await item.setFlag('chris-premades', 'info.source', devTools.source ?? 'chris-premades');
-            if (devTools.hasAnimation) await item.setFlag('chris-premades', 'info.hasAnimation', devTools.hasAnimation);
-            let macroFields = ['midi.item', 'midi.actor', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
-            for (let field of macroFields) {
-                let currValue = genericUtils.getProperty(devTools, field);
-                if (currValue !== '') {
-                    let value = undefined;
-                    try {
-                        value = JSON.parse(currValue.replace(/'/g, '"'));
-                    } catch (error) {
-                        ui.notifications.error('Error with ' + field.split('.').map(i => i.capitalize()).join('.') + ' field, see console');
-                        console.error(error);
+    static async _apply(event, target) {
+        /* Keep track of current tab */
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
+        /* Get the data ready and add it to the current item */
+        this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
+        await this.item.update({flags: {'chris-premades': genericUtils.deepClone(this.flags)}}, {diff: false, recursive: false});
+        // If the current source is not the selected source, change it, if the select source is none, clear out the flags we add, if the selected source is development, do nothing.
+        if (this._source != this.selectedSource) {
+            // Different sources, do something about it
+            if (!this.selectedSource) {
+                genericUtils.log('dev', 'Applying "NONE" automation');
+                // The 'none' option was selected, so we want to clear out the CPR flags
+                await this.item.update({'flags.-=chris-premades': null}); // May need to clear more flags here for MISC/GPS integration.
+            } else if (this.selectedSource === 'development') { // This takes slightly too long, but is there any way to change that??
+                if (this._macro) {
+                    genericUtils.log('dev', 'Applying source, version, and macros for ' + this.identifier);
+                    if (!this.flags.info.source) {
+                        await this.item.setFlag('chris-premades', 'info.source', this._macro?.source ?? 'chris-premades');
                     }
-                    if (value) await item.setFlag('chris-premades', 'macros.' + field, value);
-                } else {
-                    await item.unsetFlag('chris-premades', 'macros.' + field);
-                }
-            }
-            if (devTools.equipment != '') {
-                await item.setFlag('chris-premades', 'equipment', {identifier: devTools.equipment});
-            } else {
-                await item.unsetFlag('chris-premades', 'equipment');
-            }
-        }
-        if (category) {
-            let configs = {};
-            for (let i of Object.values(category)) {
-                for (let j of i.configuration) {
-                    configs[j.id] = j.value;
-                }
-            }
-            await item.setFlag('chris-premades', 'config', configs);
-        }
-        if (genericFeatures) { // This whole section needs help 
-            await item.unsetFlag('chris-premades', 'config.generic');
-            // Remove ALL generic flags from the macros flags
-            let itemFlags = item.flags['chris-premades'];
-            if (itemFlags?.macros) Object.entries(itemFlags.macros).forEach(async ([key, value]) => {
-                if (value instanceof Object && !(value instanceof Array)) {
-                    Object.entries(value).forEach(async ([flagKey, flagValue]) => {
-                        Object.values(genericFeatures.configs ?? {})?.forEach(async option => {
-                            let index = flagValue.indexOf(option.id);
-                            if (index > -1) {
-                                if (flagValue.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key + '.' + flagKey);
-                                else {
-                                    flagValue.splice(index, 1);
-                                    await item.setFlag('chris-premades', 'macros.' + key + '.' + flagKey, flagValue);
+                    if (!this.flags.info.version && this._macro?.version) {
+                        await this.item.setFlag('chris-premades', 'info.version', this._macro.version);
+                    }
+                    if (!this.flags.info.hasAnimation && this._macro.hasAnimation) {
+                        await this.item.setFlag('chris-premades', 'info.hasAnimation', this._macro.hasAnimation);
+                    }
+                    // The Object.values part gets us the nested macros (item and actor) and the Object.keys adds in all the keys otherwise (all the macros plus everything else)
+                    let flagKeys = Object.values(this._macro).filter(i => (i instanceof Object) && (!Array.isArray(i))).flatMap(i => Object.keys(i)).concat(Object.keys(this._macro));
+                    if (flagKeys) {
+                        // Macro info config options will have the flag path we need, and will have all macros, match those with the keys we have to get the bases for what we insert.
+                        let flagBases = this.devToolsOptions.macroInfo.configOptions.filter(i => flagKeys.includes(i.id));
+                        // For each of the flag bases, if there's already a flag, add to it, otherwise, just set it.
+                        await flagBases.forEach(async i => {
+                            let currentFlag = genericUtils.getProperty(this.flags, i.flag.key);
+                            if (currentFlag) { // If there's already a flag there, is it this one? Otherwise, add to it.
+                                if (!currentFlag.includes(this.identifier)) {
+                                    await this.item.setFlag('chris-premades', i.flag.key, currentFlag.concat([this.identifier]));
                                 }
+                            } else { // No flag yet, make it.
+                                await this.item.setFlag('chris-premades', i.flag.key, [this.identifier]);
                             }
                         });
-                    });
-                } else {
-                    Object.values(genericFeatures.configs ?? {})?.forEach(async option => {
-                        let index = value.indexOf(option.id);
-                        if (index > -1) {
-                            if (value.length === 1) await item.unsetFlag('chris-premades', 'macros.' + key);
-                            else {
-                                value.splice(index, 1);
-                                await item.setFlag('chris-premades', 'macros.' + key, value);
-                            }
-                        }
-                    });
-                }
-            });
-            let genericConfigs = genericFeatures.options.reduce((genericConfigs, option) => {
-                if (option.isSelected) genericConfigs[option.value] = (genericFeatures?.configs?.[option.value]?.options ?? macros?.[option.value]?.genericConfig)?.reduce((config, option) => {
-                    config[option.default === undefined ? option.id : option.value] = option.default ?? option.value;
-                    return config;
-                }, {});
-                return genericConfigs;
-            }, {});
-            if (Object.keys(genericConfigs).length) await item.setFlag('chris-premades', 'config.generic', genericConfigs);
-            let macroUpdates = {};
-            Object.keys(genericConfigs).forEach(async i => {
-                let macroInfo = macros[i];
-                let macroFields = ['midi.actor', 'midi.item', 'aura', 'combat', 'movement', 'rest', 'save', 'skill', 'check'];
-                for (let macroField of macroFields) {
-                    if (genericUtils.getProperty(macroInfo, macroField)) {
-                        macroUpdates[macroField] = (macroUpdates[macroField] ?? item.flags['chris-premades']?.macros?.[macroField] ?? []).concat([i]);
                     }
                 }
-            });
-            if (Object.keys(macroUpdates).length) {
-                let trueUpdates = Object.fromEntries(Object.entries(macroUpdates).map(i => ['flags.chris-premades.macros.' + i[0], i[1]]));
-                await genericUtils.update(item, trueUpdates);
-            }
-        }
-        let currentSource = item?.flags?.['chris-premades']?.info?.source;
-        if ((currentSource && this.context?.options?.find(i => i.isSelected && (i.id != currentSource))) || (!currentSource || currentSource === '')) {
-            let selectedSource = this.context?.options.find(i => i.isSelected);
-            if (selectedSource) {
-                let sourceItem = await fromUuid(selectedSource.value);
-                if (sourceItem) {
-                    let option = this.context.options.find(i => i.isSelected === true);
-                    item = await ItemMedkit.update(item, sourceItem, {source: option.id, version: option.version});
+            } else {
+                let source = this.availableAutomations.find(i => i.source === this.selectedSource);
+                if (source) {
+                    genericUtils.log('dev', 'Applying "' + source.id + '" automation');
+                    await ItemMedkit.update(this.item, source.document, {source: source.id, version: source.version});
                 }
-                if (selectedSource.id != 'development') await item.setFlag('chris-premades', 'info', {source: selectedSource.id});
-            } else if (currentSource) {
-                await item.update({'flags.-=chris-premades': null}); // May need to clear more flags here for MISC/GPS integration.
             }
         }
-        this.itemDocument = item;
-        await this.updateContext(item);
+        /* Update the data in the application and re-render */
+        await genericUtils.sleep(50); // This makes the macro flags actually get applied the first time around, not sure what else to do about it.
+        this.flags = genericUtils.deepClone(this.item?.flags['chris-premades']) ?? {};
+        this.selectedGenericFeatures = Object.keys(this.flags?.config?.generic ?? {});
+        this._prepared = false;
+        await this.readyData();
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
+        await this.render(true);
+        let maxHeight = canvas.screenDimensions[1] * 0.9;
+        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
+        this.setPosition(newPos);
     }
     static async confirm(event, target) {
         await ItemMedkit._apply.bind(this)(event, target);
         this.close();
     }
-    async updateContext(item) { // -- Need to get rid of
-        let newContext = await ItemMedkit.createContext(item);
-        this.context = newContext;
-        this.render(true);
-    }
+    /* Internally called functions */
     async _prepareContext(options) {
         let context = {
             label: this.label,
@@ -811,24 +759,34 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             ],
             tabs: this.tabsData
         };
-        console.log(context);
         return context;
     }
-    // Handles changes to the form, checkbox marks etc, updates the context store and forces a re-render
-    // ---- Need to fix up this to use new paths
-    async _onChangeForm(formConfig, event) { // Clean this up to get the relevent part of the context in the least ass-backwards way possible (be brave with jquery and keep more attributes on the elements)
+    _cleanObject(obj) {
+        for (let key in obj) {
+            if (obj[key] && typeof obj[key] === 'object') {
+                this._cleanObject(obj[key]);
+                if (Object.keys(obj[key]).length === 0) {
+                    delete obj[key];
+                }
+            }
+            if ((obj[key] == undefined) || (obj[key] == '')) {
+                delete obj[key];
+            }
+        }
+        return obj;
+    }
+    async _onChangeForm(formConfig, event) {
+        /* Keep track of the current tab */
         let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
         this.activeTab = currentTabId;
+        /* Get our data out of the html so we can find what option the input coresponds with */
         let dataOptions = event.target.closest('[data-options]')?.getAttribute('data-options');
         let dataCategory = event.target.closest('[data-category]')?.getAttribute('data-category');
         let inputType = event.target.type ?? event.target.tagName.toLowerCase();
-        console.log(dataOptions, dataCategory, inputType);
-        console.log(this[dataOptions]);
         let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[event.target.id];
-        console.log(optionGroup);
-        let option;
-        option = optionGroup.find(i => (i.id ?? null) === event.target.id);
-        switch (inputType) { // these should be setting a copy of the configs
+        let option = optionGroup.find(i => (i.id ?? null) === event.target.id);
+        /* Set the option's value based on the input type */
+        switch (inputType) {
             case 'checkbox': {
                 option.value = event.target.checked;
                 break;
@@ -840,18 +798,99 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                 option.value = event.target.value;
             }
         }
-        if (option?.flag) await genericUtils.setProperty(this.flags, option.flag.key, option.flag.value === 'id' ? event.target.querySelector('option:checked').id : option.value);
-        if (event.target.id === 'select-generic-monster-features') this.selectedGenericFeatures = option.value;
+        /* Now, actually set the value that will be kept, via this.flags */
+        if (option?.flag) {
+            switch (option.flag.value) {
+                case 'array': {
+                    let value = undefined;
+                    if (event.target.value === '') {
+                        genericUtils.setProperty(this.flags, option.flag.key, undefined);
+                    } else {
+                        try {
+                            value = JSON.parse(event.target.value.replace(/'/g, '"'));
+                        } catch (error) {
+                            ui.notifications.error('Error with ' + event.target.previousElementSibling.innerHTML + ' field, see console');
+                            console.error(error);
+                        }
+                        if (value) genericUtils.setProperty(this.flags, option.flag.key, value);
+                    }
+                    break;
+                }
+                case 'value':
+                default:
+                    genericUtils.setProperty(this.flags, option.flag.key, option.value);
+            }
+        }
+        /* Special casing for selecting an automation */
+        if (event.target.id === 'select-automation') {
+            this.selectedSource = event.target.querySelector('option:checked').id;
+        }
+        /* Special casing for generic monster features */
+        if (event.target.id === 'select-generic-monster-features') {
+            let oldFeatures = genericUtils.duplicate(this.selectedGenericFeatures);
+            let newFeatures = option.value;
+            let featureIdentifierToAdd = newFeatures.find(i => !oldFeatures.includes(i));
+            if (featureIdentifierToAdd) {
+                if (!this.flags?.config?.generic?.[featureIdentifierToAdd]) genericUtils.setProperty(this.flags, 'config.generic.' + featureIdentifierToAdd, {applied: true});
+                let featureToAdd = this.constants.genericFeatureMacros[featureIdentifierToAdd];
+                if (featureToAdd) {
+                    // The Object.values part gets us the nested macros (item and actor) and the Object.keys adds in all the keys otherwise (all the macros plus everything else)
+                    let flagKeys = Object.values(featureToAdd).filter(i => (i instanceof Object) && (!Array.isArray(i))).flatMap(i => Object.keys(i)).concat(Object.keys(featureToAdd));
+                    if (flagKeys) {
+                        // Macro info config options will have the flag path we need, and will have all macros, match those with the keys we have to get the bases for what we insert.
+                        let flagBases = this.devToolsOptions.macroInfo.configOptions.filter(i => flagKeys.includes(i.id));
+                        // For each of the flag bases, if there's already a flag, add to it, otherwise, just set it.
+                        flagBases.forEach(i => {
+                            let currentFlag = genericUtils.getProperty(this.flags, i.flag.key);
+                            if (currentFlag) {
+                                genericUtils.setProperty(this.flags, i.flag.key, currentFlag.concat([featureIdentifierToAdd]));
+                            } else {
+                                genericUtils.setProperty(this.flags, i.flag.key, [featureIdentifierToAdd]);
+                            }
+                        });
+                    }
+                }
+            }
+            let featureIdentifierToRemove = oldFeatures.find(i => !newFeatures.includes(i));
+            if (featureIdentifierToRemove) {
+                let featureToRemove = this.constants.genericFeatureMacros[featureIdentifierToRemove];
+                if (featureToRemove) {
+                    // The Object.values part gets us the nested macros (item and actor) and the Object.keys adds in all the keys otherwise (all the macros plus everything else)
+                    let flagKeys = Object.values(featureToRemove).filter(i => (i instanceof Object) && (!Array.isArray(i))).flatMap(i => Object.keys(i)).concat(Object.keys(featureToRemove));
+                    if (flagKeys) {
+                        // Macro info config options will have the flag path we need, and will have all macros, match those with the keys we have to get the bases for what we insert.
+                        let flagBases = this.devToolsOptions.macroInfo.configOptions.filter(i => flagKeys.includes(i.id));
+                        // For each of the flag bases, take the current flag, find and splice out the feature we're removing.
+                        flagBases.forEach( i => {
+                            let currentFlag = genericUtils.getProperty(this.flags, i.flag.key);
+                            let index = currentFlag.indexOf(featureIdentifierToRemove);
+                            currentFlag.splice(index, 1);
+                            // If that ends up with an empty array, just set it as undefined.
+                            let newFlag = currentFlag.length === 0 ? undefined : currentFlag;
+                            genericUtils.setProperty(this.flags, i.flag.key, newFlag);
+                        });
+                    }
+                }
+            }
+            this.selectedGenericFeatures = option.value;
+        }
+        /* --- */
         let autoPos = {...this.position, height: 'auto'};
         this.setPosition(autoPos);
-        this.render(true);
-        console.log(this.flags);
+        await this.render(true);
+        let maxHeight = canvas.screenDimensions[1] * 0.9;
+        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
+        this.setPosition(newPos);
+    }
+    async _onSubmitForm(formConfig, event) {
+        event.preventDefault();
     }
     changeTab(...args) {
         let autoPos = {...this.position, height: 'auto'};
         this.setPosition(autoPos);
         super.changeTab(...args);
-        let newPos = {...this.position, height: this.element.scrollHeight};
+        let maxHeight = canvas.screenDimensions[1] * 0.9;
+        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
         this.setPosition(newPos);
     }
 }

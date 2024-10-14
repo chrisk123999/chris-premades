@@ -32,9 +32,6 @@ import {tours} from './applications/tour.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {dae} from './integrations/dae.js';
 import {abilityCheck} from './events/abilityCheck.js';
-// Testing
-import {ItemMedkit} from './applications/medkit-item.js';
-//
 Hooks.once('socketlib.ready', registerSockets);
 Hooks.once('init', () => {
     registerSettings();
@@ -83,7 +80,4 @@ globalThis['chrisPremades'] = {
     utils,
     macros,
     settingButton,
-    // Testing
-    ItemMedkit
-    //
 };

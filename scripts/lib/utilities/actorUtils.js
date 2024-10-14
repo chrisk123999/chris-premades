@@ -1,5 +1,6 @@
 import {socket, sockets} from '../sockets.js';
 import {genericUtils, socketUtils} from '../../utils.js';
+import {ActorMedkit} from '../../applications/medkit-actor.js';
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
@@ -149,6 +150,10 @@ async function polymorph(origActor, newActor, options, renderSheet=true) {
         return Promise.all(tokenUuids.map(async i => await fromUuid(i)));
     }
 }
+async function updateAll(actor) {
+    let summary = await ActorMedkit.actorUpdateAll(actor);
+    return summary;
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -172,5 +177,6 @@ export let actorUtils = {
     getCastableSpells,
     isShapeChanger,
     doConcentrationCheck,
-    polymorph
+    polymorph,
+    updateAll
 };

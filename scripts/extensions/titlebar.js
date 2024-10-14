@@ -1,6 +1,6 @@
 import * as macros from '../macros.js';
 import {compendiumUtils, genericUtils, itemUtils} from '../utils.js';
-import {Medkit} from '../applications/medkit.js';
+import {ItemMedkit} from '../applications/medkit-item.js';
 import {EffectMedkit} from '../applications/medkit-effect.js';
 import {ActorMedkit} from '../applications/medkit-actor.js';
 export function createHeaderButton(config, buttons) {
@@ -19,7 +19,7 @@ export function createHeaderButton(config, buttons) {
     });
 }
 async function itemMedkit(item) {
-    await Medkit.item(item);
+    await ItemMedkit.item(item);
 }
 async function actorMedkit(actor) {
     await ActorMedkit.actor(actor);

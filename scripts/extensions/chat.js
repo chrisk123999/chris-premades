@@ -1,4 +1,4 @@
-import {Medkit} from '../applications/medkit.js';
+import {ItemMedkit} from '../applications/medkit-item.js';
 import {genericUtils} from '../utils.js';
 async function createChatMessage(message, options, userId) {
     let buttonData = message.flags?.['chris-premades']?.button;
@@ -13,7 +13,7 @@ async function createChatMessage(message, options, userId) {
             button.addEventListener('click', async () => {
                 let item = await fromUuid(buttonData.data.itemUuid);
                 if (!item) return;
-                await Medkit.item(item);
+                await ItemMedkit.item(item);
                 await message.delete();
             });
         }  
