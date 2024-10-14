@@ -126,7 +126,6 @@ export class ActorMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return Medkit.update(item, sourceItem, options);
     }
     static async _update(event, target) {
-        console.log('here');
         await Promise.all(this.actorItems.reduce((accumulator, currentValue) => {
             if (currentValue.isUpToDate !== 1 && (currentValue.isUpToDate === 0 || ((!currentValue.source || currentValue?.source?.includes('.')) && currentValue.sourceItem))) {
                 let options = {source: undefined, version: undefined};
