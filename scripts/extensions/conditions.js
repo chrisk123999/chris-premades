@@ -58,10 +58,10 @@ let ignoredStatusEffects = [
     'silenced',
     'dodging'
 ];
-const { addWoundedStyle, midiWoundedCondition } = game.settings.get('midi-qol', 'ConfigSettings');
-if (addWoundedStyle === 'none' || midiWoundedCondition !== 'bleeding')
-    ignoredStatusEffects.push('bleeding');
 function disableNonConditionStatusEffects() {
+    const { addWoundedStyle, midiWoundedCondition } = game.settings.get('midi-qol', 'ConfigSettings');
+    if (addWoundedStyle === 'none' || midiWoundedCondition !== 'bleeding')
+        ignoredStatusEffects.push('bleeding');
     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ignoredStatusEffects.includes(i.id));
 }
 async function preCreateActiveEffect(effect, updates, options, userId) {
