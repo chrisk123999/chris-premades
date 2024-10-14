@@ -44,7 +44,6 @@ async function configureStatusEffectIcons() {
     await genericUtils.setCPRSetting('statusEffectIcons', selection);
 }
 let ignoredStatusEffects = [
-    'bleeding',
     'burrowing',
     'cursed',
     'ethereal',
@@ -59,6 +58,9 @@ let ignoredStatusEffects = [
     'silenced',
     'dodging'
 ];
+const { addWoundedStyle, midiWoundedCondition } = game.settings.get('midi-qol', 'ConfigSettings');
+if (addWoundedStyle === 'none' || midiWoundedCondition !== 'bleeding')
+    ignoredStatusEffects.push('bleeding');
 function disableNonConditionStatusEffects() {
     CONFIG.statusEffects = CONFIG.statusEffects.filter(i => !ignoredStatusEffects.includes(i.id));
 }
