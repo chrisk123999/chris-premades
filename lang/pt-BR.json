@@ -2123,6 +2123,10 @@
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
                 "Name": "Rolagens Manuais"
             },
+            "manualRollsGMFulfils": {
+                "Hint": "Quando ativado, o Mestre executa todas as rolagens.",
+                "Name": "Mestre Executa Rolagens"
+            },
             "manualRollsInclusion": {
                 "Hint": "Quais rolagens de ator devem ser solicitadas.",
                 "Name": "Inclusão de Rolagens Manuais",
