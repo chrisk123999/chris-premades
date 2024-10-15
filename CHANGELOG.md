@@ -1,3 +1,20 @@
+# 1.0.17 Release:
+## Updated Content:
+- Scorching Ray (new medkit config options)
+## Bug Fixes:
+- Metamagic: Extended Spell
+- Scorching Ray
+- Magic Missile
+- Eldritch Blast
+
+# 1.0.16 Release:
+## Bug Fixes:
+- Death Burst Generic Monster Feature (You will need to re-apply this generic monster feature)
+- Movement Event
+- Effect Interface
+- Item Medkit
+- Manual Rolls
+
 # 1.0.15 Release:
 ## Bug Fixes:
 - Item Medkit

@@ -8,6 +8,10 @@ async function use({workflow}) {
         return;
     }
     featureData.system.ability = workflow.item.system.ability;
+    featureData.system.damage.parts[0] = [
+        itemUtils.getConfig(workflow.item, 'formula'),
+        itemUtils.getConfig(workflow.item, 'damageType')
+    ];
     let jb2a = animationUtils.jb2aCheck();
     let shouldPlayAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && jb2a;
     let animation = jb2a === 'patreon' ? itemUtils.getConfig(workflow.item, 'animation') : 'simple';
@@ -87,7 +91,7 @@ async function use({workflow}) {
             if (isNaN(numRays) || numRays == 0) continue;
             if (skipDead && targetToken.actor.system.attributes.hp.value === 0) continue;
             for (let i = 0; i < numRays; i++) {
-                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken], {killAnim: shouldPlayAnimation});
+                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}, killAnim: shouldPlayAnimation});
                 maxRays -= 1;
                 if (shouldPlayAnimation) {
                     if (animation === 'simple') {
@@ -190,6 +194,23 @@ export let scorchingRay = {
         ]
     },
     config: [
+        {
+            value: 'damageType',
+            label: 'CHRISPREMADES.Config.DamageType',
+            type: 'select',
+            default: 'fire',
+            options: constants.damageTypeOptions,
+            homebrew: true,
+            category: 'homebrew'
+        },
+        {
+            value: 'formula',
+            label: 'CHRISPREMADES.Config.Formula',
+            type: 'text',
+            default: '2d6[fire]',
+            homebrew: true,
+            category: 'homebrew'
+        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',

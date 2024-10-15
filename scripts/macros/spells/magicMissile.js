@@ -78,7 +78,7 @@ async function use({workflow}) {
                 }
                 new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targetToken).randomizeMirrorY().missed(isShielded).play();
             }
-            await workflowUtils.syntheticItemDataRoll(isShielded ? shieldedFeatureData : featureData, workflow.actor, [targetToken], {killAnim: playAnimation});
+            await workflowUtils.syntheticItemDataRoll(isShielded ? shieldedFeatureData : featureData, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}, killAnim: playAnimation});
         }
     }
 }
