@@ -1,4 +1,5 @@
 import {epicRolls} from '../../integrations/epicRolls.js';
+import {socket, sockets} from '../sockets.js';
 import {genericUtils} from './genericUtils.js';
 import {socketUtils} from './socketUtils.js';
 async function getCriticalFormula(formula, rollData) {
@@ -97,6 +98,16 @@ async function addToRoll(roll, formula, {rollData} = {}) {
     let bonusRoll = await new Roll(formula, rollData).evaluate();
     return MidiQOL.addRollTo(roll, bonusRoll);
 }
+async function remoteRoll(roll, userId) {
+    let rollJSON = roll.toJSON();
+    let resultJSON = await socket.executeAsUser(sockets.remoteRoll.name, userId, rollJSON);
+    return Roll.fromData(resultJSON);
+}
+async function remoteDamageRolls(rolls, userId) {
+    let rollJSONs = rolls.map(i => i.toJSON());
+    let resultJSONs = await socket.executeAsUser(sockets.remoteDamageRolls.name, userId, rollJSONs);
+    return resultJSONs.map(i => CONFIG.Dice.DamageRoll.fromData(i));
+}
 export let rollUtils = {
     getCriticalFormula,
     contestedRoll,
@@ -104,5 +115,7 @@ export let rollUtils = {
     requestRoll,
     rollDice,
     damageRoll,
-    addToRoll
+    addToRoll,
+    remoteRoll,
+    remoteDamageRolls
 };

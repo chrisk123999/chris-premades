@@ -1,4 +1,5 @@
 import {DialogApp} from '../applications/dialog.js';
+import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {genericUtils} from '../utils.js';
 import {Summons} from './summons.js';
 import {Teleport} from './teleport.js';
@@ -177,6 +178,21 @@ async function polymorph(origActorUuid, newActorUuid, options, renderSheet=true)
     let tokens = await origActor.transformInto(newActor, options, {renderSheet});
     return tokens.map(i => i.uuid);
 }
+async function remoteRoll(rollJSON) {
+    let roll = await Roll.fromData(rollJSON).evaluate();
+    return roll.toJSON();
+}
+async function remoteDamageRolls(rollJSONs) {
+    let rolls = rollJSONs.map(i => CONFIG.Dice.DamageRoll.fromData(i));
+    let resolver = new CPRMultipleRollResolver(rolls);
+    await resolver.awaitFulfillment();
+    rolls.forEach(async roll => {
+        const ast = CONFIG.Dice.parser.toAST(roll.terms);
+        roll._total = await roll._evaluateASTAsync(ast);
+    });
+    resolver.close();
+    return rolls.map(i => i.toJSON());
+}
 export let sockets = {
     createEffect,
     createEffects,
@@ -200,7 +216,9 @@ export let sockets = {
     removeReactionUsed,
     setBonusActionUsed,
     removeBonusActionUsed,
-    polymorph
+    polymorph,
+    remoteRoll,
+    remoteDamageRolls
 };
 export let socket;
 export function registerSockets() {

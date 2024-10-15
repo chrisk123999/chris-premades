@@ -1,6 +1,6 @@
 import {CPRSingleRollResolver} from '../applications/rollResolverSingle.js';
 import {DialogApp} from '../applications/dialog.js';
-import {genericUtils} from '../utils.js';
+import {genericUtils, rollUtils, socketUtils} from '../utils.js';
 function registerFulfillmentMethod() {
     CONFIG.Dice.fulfillment.methods.chrispremades = {
         label: 'Cauldron of Plentiful Resources',
@@ -49,8 +49,28 @@ async function manualRollsUsersDialog() {
     delete result.buttons;
     genericUtils.setCPRSetting('manualRollsUsers', result);
 }
+async function evaluate(wrapped, options) {
+    let gmID = socketUtils.gmID();
+    if (gmID === game.user.id || !game.users.get(gmID)?.active) return await wrapped(options);
+    let remoteRoll = await rollUtils.remoteRoll(this, gmID);
+    this.terms = remoteRoll.terms;
+    this._dice = remoteRoll._dice;
+    this._evaluated = remoteRoll._evaluated;
+    this._total = remoteRoll._total;
+    return this;
+}
+function patch(enabled) {
+    if (enabled) {
+        genericUtils.log('dev', 'Evaluate Roll Patched!');
+        libWrapper.register('chris-premades', 'Roll.prototype.evaluate', evaluate, 'MIXED');
+    } else {
+        genericUtils.log('dev', 'Evaluate Roll Patch Removed!');
+        libWrapper.unregister('chris-premades', 'Roll.prototype.evaluate');
+    }
+}
 export let rollResolver = {
-    registerFulfillmentMethod: registerFulfillmentMethod,
-    unregisterFulfillmentMethod: unregisterFulfillmentMethod,
-    manualRollsUsersDialog: manualRollsUsersDialog
+    registerFulfillmentMethod,
+    unregisterFulfillmentMethod,
+    manualRollsUsersDialog,
+    patch
 };
