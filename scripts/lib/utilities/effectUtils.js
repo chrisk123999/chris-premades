@@ -176,7 +176,7 @@ function getSidebarEffectData(name) {
     let effect = effectsItem.collections.effects.getName(name);
     if (!effect) return;
     let effectData = effect.toObject();
-    delete effectData._id;
+    if (!(effect.flags['chris-premades']?.effectInterface?.customStatus || effect.flags['chris-premades']?.effectInterface?.status)) delete effectData._id;
     delete effectData.origin;
     return effectData;
 }

@@ -841,6 +841,13 @@ export function registerSettings() {
         default: null,
         category: 'development'
     });
+    addSetting({
+        key: 'manualRollsGMFulfils',
+        type: Boolean,
+        default: false,
+        category: 'manualRolls',
+        onChange: (value) => rollResolver.patch(value)
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

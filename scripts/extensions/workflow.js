@@ -1,5 +1,5 @@
 import {midiEvents} from '../events/midi.js';
-import {genericUtils, workflowUtils} from '../utils.js';
+import {genericUtils, rollUtils, socketUtils} from '../utils.js';
 import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
 let CPRClass;
@@ -47,13 +47,18 @@ function setup() {
             else if ((manualRollsInclusion === 4) && ((this.actor?.prototypeToken?.actorLink != true) || (genericUtils.checkPlayerOwnership(this.actor) != true))) return false;
             else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(this.actor) != true)) return false;
             let newRolls = this.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
-            let resolver = new CPRMultipleRollResolver(newRolls);
-            await resolver.awaitFulfillment();
-            newRolls.forEach(async roll => {
-                const ast = CONFIG.Dice.parser.toAST(roll.terms);
-                roll._total = await roll._evaluateASTAsync(ast);
-            });
-            resolver.close();
+            let gmID = socketUtils.gmID();
+            if (genericUtils.getCPRSetting('manualRollsGMFulfils') && game.user.id != gmID && game.users.get(gmID)?.active) {
+                newRolls = await rollUtils.remoteDamageRolls(newRolls, gmID);
+            } else {
+                let resolver = new CPRMultipleRollResolver(newRolls);
+                await resolver.awaitFulfillment();
+                newRolls.forEach(async roll => {
+                    const ast = CONFIG.Dice.parser.toAST(roll.terms);
+                    roll._total = await roll._evaluateASTAsync(ast);
+                });
+                resolver.close();
+            }
             await this.setDamageRolls(newRolls);
         }
         async WorkflowState_RollFinished(context = {}) {

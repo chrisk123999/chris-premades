@@ -2235,6 +2235,10 @@
             "makeGM": {
                 "Hint": "Become the primary GM.",
                 "Name": "Make GM"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "When enabled the Gamemaster fulfils all rolls.",
+                "Name": "Gamemaster Fulfils Rolls"
             }
         },
         "SkillCheck": {
