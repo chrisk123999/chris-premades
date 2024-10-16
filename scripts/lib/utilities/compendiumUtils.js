@@ -146,7 +146,7 @@ async function getAllAutomations(item, options) {
                 }
                 break;
         }
-        if (found) items.push({document: found, priority: i[1], source: source, version: version});
+        if (found) items.push({document: found, priority: i[1], source: source, version: version ?? itemUtils.getVersion(found)});
     }));
     return items.sort((a, b) => a.priority - b.priority);
 }

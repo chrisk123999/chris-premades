@@ -59,12 +59,12 @@ function getIntersections(region, A, B, boolOnly = false) {
             let points = shape.points;
             for (let i = 0; i < points.length; i += 2) {
                 let currCoord = {
-                    x: points[i] + shape.center.x,
-                    y: points[i + 1] + shape.center.y
+                    x: points[i],
+                    y: points[i + 1]
                 };
                 let nextCoord = {
-                    x: points[(i + 2) % points.length] + shape.center.x,
-                    y: points[(i + 3) % points.length] + shape.center.y
+                    x: points[(i + 2) % points.length],
+                    y: points[(i + 3) % points.length]
                 };
                 if (foundry.utils.lineSegmentIntersects(A, B, currCoord, nextCoord)) {
                     if (boolOnly) return true;

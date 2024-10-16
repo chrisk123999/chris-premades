@@ -23,6 +23,8 @@ import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 export function registerHooks() {
+    Hooks.on('createSetting', genericUtils.createUpdateSetting);
+    Hooks.on('updateSetting', genericUtils.createUpdateSetting);
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);

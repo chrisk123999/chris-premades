@@ -90,7 +90,8 @@ function getSortedTriggers(tokens, pass, token) {
     tokens.forEach(i => {
         let distance;
         if (token) {
-            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: genericUtils.getCPRSetting('movementPerformance') > 0});
+            let perfSetting = genericUtils.getCPRSetting('movementPerformance');
+            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: perfSetting > 0, checkCover: perfSetting === 3});
             if (distance < 0) return;
         }
         allTriggers.push(...collectTokenMacros(i, pass, distance, token));

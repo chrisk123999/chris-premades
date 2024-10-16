@@ -669,6 +669,7 @@ export function registerSettings() {
             0: 'CHRISPREMADES.Settings.movementPerformance.0',
             1: 'CHRISPREMADES.Settings.movementPerformance.1',
             2: 'CHRISPREMADES.Settings.movementPerformance.2',
+            3: 'CHRISPREMADES.Settings.movementPerformance.3'
         }
     });
     addSetting({

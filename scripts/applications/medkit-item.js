@@ -707,8 +707,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             } else {
                 let source = this.availableAutomations.find(i => i.source === this.selectedSource);
                 if (source) {
-                    genericUtils.log('dev', 'Applying "' + source.id + '" automation');
-                    await ItemMedkit.update(this.item, source.document, {source: source.id, version: source.version});
+                    genericUtils.log('dev', 'Applying "' + source.source + '" automation');
+                    await ItemMedkit.update(this.item, source.document, {source: source.source, version: source.version});
                 }
             }
         }

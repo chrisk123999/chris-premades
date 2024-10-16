@@ -6,6 +6,7 @@
 - Scorching Ray
 - Magic Missile
 - Eldritch Blast
+- Item Medkit
 
 # 1.0.16 Release:
 ## Bug Fixes:

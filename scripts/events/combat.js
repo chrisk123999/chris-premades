@@ -123,7 +123,7 @@ function getSortedTriggers(tokens, pass, token) {
     tokens.forEach(i => {
         let distance;
         if (token) {
-            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true});
+            distance = tokenUtils.getDistance(token.object, i.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
             if (distance < 0) return;
         }
         allTriggers.push(...collectTokenMacros(i, pass, distance, token));
