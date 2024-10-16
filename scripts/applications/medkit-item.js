@@ -125,7 +125,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     get canApplyAutomation() {
         if (!this._prepared) return null; // Return null if prepareData with our async functions hasn't been called yet.
-        return (this.automationOptions.find(i => i.id === 'select-automation').options.length > 1 || this.status === true) ? true : false;
+        return ((this.automationOptions.find(i => i.id === 'select-automation').options.length > 1) || (this.status === true) || this.constants._isDev) ? true : false;
     }
     get medkitColor() {
         if (!this._prepared) return null; // Return null if prepareData with our async functions hasn't been called yet.
@@ -161,15 +161,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     /* Data getters for tabs context */
     get automationOptions() {
         if (!this._prepared) return null; // Return null if prepareData with our async functions hasn't been called yet.
-        let options = [];
+        let options = [{
+            label: 'DND5E.None',
+            value: null,
+            id: null,
+            isSelected: (this.selectedSource && this.selectedSource != '') ? false : true,
+            version: null,
+        }];
         if (this.availableAutomations.length > 0) {
-            options.push({
-                label: 'DND5E.None',
-                value: null,
-                id: null,
-                isSelected: (this.selectedSource && this.selectedSource != '') ? false : true,
-                version: null,
-            });
             this.availableAutomations.forEach(automation => {
                 let label;
                 if (automation.source.includes('.')) { // If it has . in the source, it's from a personal compendium
@@ -668,6 +667,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
         await this.item.update({flags: {'chris-premades': genericUtils.deepClone(this.flags)}}, {diff: false, recursive: false});
         // If the current source is not the selected source, change it, if the select source is none, clear out the flags we add, if the selected source is development, do nothing.
+        console.log(this._source, this.selectedSource);
         if (this._source != this.selectedSource) {
             // Different sources, do something about it
             if (!this.selectedSource) {

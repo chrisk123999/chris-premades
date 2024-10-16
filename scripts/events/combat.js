@@ -1,6 +1,7 @@
 import {custom} from './custom.js';
-import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils} from '../utils.js';
+import {actorUtils, socketUtils, templateUtils, effectUtils, genericUtils, tokenUtils, itemUtils, regionUtils} from '../utils.js';
 import {templateEvents} from './template.js';
+import {regionEvents} from './region.js';
 function getMacroData(entity) {
     return entity.flags['chris-premades']?.macros?.combat ?? [];
 }
@@ -92,6 +93,24 @@ function collectTokenMacros(token, pass, distance, target) {
             },
             macros: templateMacros,
             name: templateUtils.getName(template).slugify(),
+            token: token.object,
+            target: target?.object,
+            distance: distance
+        });
+    });
+    token.regions.forEach(region => {
+        let macroList = regionEvents.collectMacros(region);
+        if (!macroList.length) return;
+        let regionMacros = macroList.filter(i => i.region?.find(j => j.pass === pass)).flatMap(k => k.region).filter(l => l.pass === pass);
+        if (!regionMacros.length) return;
+        triggers.push({
+            entity: region,
+            castData: {
+                castLevel: regionUtils.getCastLevel(region),
+                saveDC: regionUtils.getSaveDC(region)
+            },
+            macros: regionMacros,
+            name: region.name,
             token: token.object,
             target: target?.object,
             distance: distance

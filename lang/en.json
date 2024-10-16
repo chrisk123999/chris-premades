@@ -1608,6 +1608,16 @@
                 "Attack": "Vampiric Touch: Attack",
                 "HealingModifier": "0.5"
             },
+            "WallOfFire": {
+                "CircleFacing": "Which way is the fire facing?",
+                "Diameter": "What diameter?",
+                "Flames": "Flames",
+                "Height": "How tall?",
+                "Inward": "Inward",
+                "Length": "How long?",
+                "Outward": "Outward",
+                "Shape": "What shape?"
+            },
             "WardingBond": {
                 "Damage": "Warding Bond: Damage",
                 "Dismiss": "Warding Bond: Dismiss",
@@ -2115,9 +2125,17 @@
                 "Hint": "Adds a sidebar tab for Macros. Reload required after enabling.",
                 "Name": "Enable Macro Interface"
             },
+            "makeGM": {
+                "Hint": "Become the primary GM.",
+                "Name": "Make GM"
+            },
             "manualRollsEnabled": {
                 "Hint": "Enable CPR's Roll Resolver for Unfulfilled Rolls.",
                 "Name": "Manual Rolls"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "When enabled the Gamemaster fulfils all rolls.",
+                "Name": "Gamemaster Fulfils Rolls"
             },
             "manualRollsInclusion": {
                 "0": "None - No Manual Rolls",
@@ -2231,14 +2249,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "makeGM": {
-                "Hint": "Become the primary GM.",
-                "Name": "Make GM"
-            },
-            "manualRollsGMFulfils": {
-                "Hint": "When enabled the Gamemaster fulfils all rolls.",
-                "Name": "Gamemaster Fulfils Rolls"
             }
         },
         "SkillCheck": {
