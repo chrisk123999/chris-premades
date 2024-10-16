@@ -7,6 +7,8 @@
 - Magic Missile
 - Eldritch Blast
 - Item Medkit
+## Update Notes:
+- Greatly improved movement listener performance (thanks thatlonelybugbear)
 
 # 1.0.16 Release:
 ## Bug Fixes:
