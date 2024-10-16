@@ -214,9 +214,18 @@ async function useExtended({workflow}) {
     });
     if (!selection) return;
     await genericUtils.update(sorcPoints, {'system.uses.value': sorcPoints.system.uses.value - 1});
-    let newDuration = Math.min(86400, itemUtils.convertDuration(selection).seconds * 2);
-    newDuration /= 60;
-    let newItem = selection.clone({'system.duration': {value: newDuration, units: 'minute'}}, {keepId: true});
+    let oldDuration = itemUtils.convertDuration(selection).seconds;
+    let newDuration = Math.min(86400, oldDuration * 2);
+    let newItem = selection.clone({
+        'system.duration': {value: newDuration / 60, units: 'minute'},
+        effects: Array.from(selection.effects).map(i => {
+            if (i.duration?.seconds === oldDuration) {
+                return genericUtils.mergeObject(i.toObject(), {'duration.seconds': newDuration});
+            } else {
+                return i.toObject();
+            }
+        })
+    }, {keepId: true});
     newItem.prepareData();
     newItem.prepareFinalAttributes();
     newItem.applyActiveEffects();
