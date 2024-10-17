@@ -1,12 +1,12 @@
 import { genericUtils } from '../utils.js';
 function updateSummonInitiative(actor, [combatant]) {
-    if (!actor || !combatant || (actor.type === 'character')) return;
-    let summons = combatant.parent.combatants.contents.filter(i => i.actorId != actor.id)?.filter(i => i.actor.flags['chris-premades']?.summons?.control?.actor === actor?.uuid);
+    if (!actor || !combatant || (actor.type != 'character')) return;
+    let summons = combatant.parent.combatants.contents.filter(i => (i.actor.type != 'character') && (i.actorId != actor.id))?.filter(i => i.actor.flags['chris-premades']?.summons?.control?.actor === actor?.uuid);
     if (!summons?.length) return;
     summons.forEach(c => combatantLoop(c, combatant));
 }
 function updateCompanionInitiative(actor, [combatant]) {
-    if (!actor || !combatant || (actor.type === 'character')) return;
+    if (!actor || !combatant || (actor.type != 'character')) return;
     let actorOwnerUserIds = [];
     for (let [key, value] of Object.entries(actor.ownership)) {
         if (key === 'default' && value === 3) return;
@@ -14,7 +14,7 @@ function updateCompanionInitiative(actor, [combatant]) {
         if (value === 3 && game.users.get(key).isGM === false) actorOwnerUserIds.push(key);
     }
     if (!actorOwnerUserIds) return;
-    let companions = combatant.parent.combatants.contents.filter(c => (c.actorId != actor.id) && (Object.entries(c.actor.ownership).find(([key, value]) => (actorOwnerUserIds.includes(key) && value === 3))));
+    let companions = combatant.parent.combatants.contents.filter(c => (c.actor.type != 'character') && (c.actorId != actor.id) && (Object.entries(c.actor.ownership).find(([key, value]) => (actorOwnerUserIds.includes(key) && value === 3))));
     if (!companions?.length) return;
     companions.forEach(c => combatantLoop(c, combatant));
 }

@@ -145,7 +145,7 @@ export {wardingBond, wardingBondTarget, wardingBondSource, wardingBondDismiss} f
 export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
-export {wallOfFire} from './macros/spells/wallOfFire.js';
+//export {wallOfFire} from './macros/spells/wallOfFire.js';
 // Other
 export {actionDismissal} from './macros/generic/actionDismissal.js';
 export {removeOnMiss} from './macros/generic/removeOnMiss.js';

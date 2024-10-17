@@ -77,8 +77,8 @@ async function early({trigger, workflow}) {
                     type: 'ellipse',
                     x: template.x,
                     y: template.y,
-                    radiusX: (template.object.shape.radius / radius) * (radius + 0.5),
-                    radiusY: (template.object.shape.radius / radius) * (radius + 0.5),
+                    radiusX: (template.object.shape.radius / radius) * (radius + 2.5),
+                    radiusY: (template.object.shape.radius / radius) * (radius + 2.5),
                     rotation: 0,
                     hole: false
                 },
@@ -86,8 +86,8 @@ async function early({trigger, workflow}) {
                     type: 'ellipse',
                     x: template.x,
                     y: template.y,
-                    radiusX: (template.object.shape.radius / radius) * (radius - 0.5),
-                    radiusY: (template.object.shape.radius / radius) * (radius - 0.5),
+                    radiusX: (template.object.shape.radius / radius) * (radius - 2.5),
+                    radiusY: (template.object.shape.radius / radius) * (radius - 2.5),
                     rotation: 0,
                     hole: true
                 }
@@ -126,14 +126,36 @@ async function early({trigger, workflow}) {
                 hole: false
             });
             regionData.shapes[1].hole = true;
-            regionData.shapes[1].radiusX = (template.object.shape.radius / radius) * (radius - 0.5);
-            regionData.shapes[1].radiusY = (template.object.shape.radius / radius) * (radius - 0.5);
+            
+        } else {
+            regionData.shapes[0].radiusX = (template.object.shape.radius / radius) * (radius + 0.5);
+            regionData.shapes[0].radiusY = (template.object.shape.radius / radius) * (radius + 0.5);
         }
-        regions = await regionUtils.createRegions([visionRegionData, regionData], workflow.token.scene, {parentEntity: concentration});
-        console.log(regions);
-        let visibilityRegion = regions.find(i => i.flags['chris-premades']?.region?.visibility?.obscured);
-        //TODO: Figure out how to check if a token in in the region. Foundry doesn't appear to do an initial check.
-        //genericUtils.updateTargets(visibilityRegion.tokens.map(i => i.object));
+        let [visibilityRegion] = await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        genericUtils.updateTargets(visibilityRegion.tokens.map(i => i.object));
+        await genericUtils.update(visibilityRegion, {
+            shapes: [
+                {
+                    type: 'ellipse',
+                    x: template.x,
+                    y: template.y,
+                    radiusX: (template.object.shape.radius / radius) * (radius + 0.5),
+                    radiusY: (template.object.shape.radius / radius) * (radius + 0.5),
+                    rotation: 0,
+                    hole: false
+                },
+                {
+                    type: 'ellipse',
+                    x: template.x,
+                    y: template.y,
+                    radiusX: (template.object.shape.radius / radius) * (radius - 0.5),
+                    radiusY: (template.object.shape.radius / radius) * (radius - 0.5),
+                    rotation: 0,
+                    hole: true
+                }
+            ]
+        });
+        await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
         await genericUtils.remove(template);
     } else {
         let length = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Length', [['60 ft.', 60], ['55 ft.', 55], ['50 ft.', 50], ['45 ft.', 45], ['40 ft.', 40], ['35 ft.', 35], ['30 ft.', 30], ['25 ft.', 25], ['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
@@ -158,7 +180,10 @@ async function early({trigger, workflow}) {
         await workflow.actor.sheet.maximize();
         await genericUtils.sleep(100);
         let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', [['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
-        if (!height) return;
+        if (!height) {
+            await genericUtils.remove(template);
+            return;
+        }
         let regionData = {
             name: workflow.item.name,
             color: game.user.color,
@@ -182,10 +207,24 @@ async function early({trigger, workflow}) {
                 }
             }
         };
-        //TODO: Select which side of the line the wall of fire is on.
         effectUtils.addMacro(regionData, 'region', ['wallOfFireRegion']);
-        await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
-        await genericUtils.remove(template);
+        console.log(template);
+        let angle = Math.toDegrees(template.object.ray.angle);
+        if (angle < 0) angle = 360 + angle;
+        console.log(angle);
+        let direction;
+        if ((angle >= 135 && angle <= 225) || (angle >= 315 && angle < 360) || (angle >= 0 && angle <= 45)) {
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Up', 'up'], ['Down', 'down']]);
+        } else {
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Left', 'left'], ['Right', 'right']]);
+        }
+        if (!direction) {
+            await genericUtils.remove(template);
+            return;
+        }
+        //Finish this, ray stuff here
+        //await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
+        //await genericUtils.remove(template);
     }
 }
 export let wallOfFire = {

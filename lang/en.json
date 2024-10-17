@@ -1616,7 +1616,8 @@
                 "Inward": "Inward",
                 "Length": "How long?",
                 "Outward": "Outward",
-                "Shape": "What shape?"
+                "Shape": "What shape?",
+                "Side": "Which side is the wall on?"
             },
             "WardingBond": {
                 "Damage": "Warding Bond: Damage",
