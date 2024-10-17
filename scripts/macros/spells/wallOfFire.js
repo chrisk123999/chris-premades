@@ -1,7 +1,6 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils, regionUtils, templateUtils} from '../../utils.js';
+import {combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, regionUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function early({trigger, workflow}) {
     let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    let regions;
     let shape = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Shape', [['REGION.SHAPES.circle', 'circle'], ['DND5E.TargetLine', 'line']], {displayAsRows: true});
     if (!shape) return;
     if (shape === 'circle') {
@@ -25,7 +24,7 @@ async function early({trigger, workflow}) {
         await workflow.actor.sheet.minimize();
         let template = await templateUtils.placeTemplate(templateData);
         await workflow.actor.sheet.maximize();
-        await genericUtils.sleep(100);
+        await genericUtils.sleep(50);
         let facing = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.CircleFacing', [['CHRISPREMADES.Macros.WallOfFire.Inward', 'inward'], ['CHRISPREMADES.Macros.WallOfFire.Outward', 'outward']], {displayAsRows: true});
         if (!facing) {
             await genericUtils.remove(template);
@@ -65,6 +64,9 @@ async function early({trigger, workflow}) {
                         visibility: {
                             obscured: true
                         }
+                    },
+                    wallOfFire: {
+                        casterUuid: workflow.actor.uuid
                     }
                 }
             }
@@ -110,11 +112,14 @@ async function early({trigger, workflow}) {
                         visibility: {
                             obscured: true
                         }
+                    },
+                    wallOfFire: {
+                        casterUuid: workflow.actor.uuid
                     }
                 }
             }
         };
-        effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireVisionRegion']);
+        effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireWallRegion']);
         effectUtils.addMacro(regionData, 'region', ['wallOfFireRegion']);
         if (facing === 'outward') {
             regionData.shapes.unshift({
@@ -178,12 +183,102 @@ async function early({trigger, workflow}) {
         await workflow.actor.sheet.minimize();
         let template = await templateUtils.placeTemplate(templateData);
         await workflow.actor.sheet.maximize();
-        await genericUtils.sleep(100);
+        await genericUtils.sleep(50);
         let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', [['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
         if (!height) {
             await genericUtils.remove(template);
             return;
         }
+        let angle = Math.toDegrees(template.object.ray.angle);
+        if (angle < 0) angle = 360 + angle;
+        let direction;
+        if ((angle >= 135 && angle <= 225) || (angle >= 315 && angle < 360) || (angle >= 0 && angle <= 45)) {
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Up', 'up'], ['Down', 'down']]);
+        } else {
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Left', 'left'], ['Right', 'right']]);
+        }
+        if (!direction) {
+            await genericUtils.remove(template);
+            return;
+        }
+        let smallDistance = (template.object.ray.distance / length) * 5;
+        let shortAngle;
+        if (angle >= 135 && angle <= 225) {
+            if (direction === 'up') {
+                shortAngle = 90;
+            } else {
+                shortAngle = -90;
+            }
+        } else if (angle > 225 && angle < 315) {
+            if (direction === 'right') {
+                shortAngle = 90;
+            } else {
+                shortAngle = -90;
+            }
+        } else if ((angle >= 315 && angle <= 359) || (angle >= 0 && angle <= 45)) {
+            if (direction === 'up') {
+                shortAngle = -90;
+            } else {
+                shortAngle = 90;
+            }
+        } else if (angle > 45 && angle <= 135) {
+            if (direction === 'right') {
+                shortAngle = -90;
+            } else {
+                shortAngle = -90;
+            }
+        }
+        let shortRay = template.object.ray.shiftAngle(Math.toRadians(shortAngle), smallDistance);
+        await genericUtils.update(template, {
+            x: shortRay.B.x,
+            y: shortRay.B.y,
+            width: 1
+        });
+        await genericUtils.sleep(50);
+        let visionRegionData = {
+            name: workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.WallOfFire.Flames'),
+            color: game.user.color,
+            shapes: [
+                regionUtils.templateToRegionShape(template)
+            ],
+            elevation: {
+                bottom: workflow.token.document.elevation,
+                top: workflow.token.document.elevation + height
+            },
+            behaviors: [],
+            visibility: 2,
+            locked: false,
+            flags: {
+                'chris-premades': {
+                    castData: {
+                        castLevel: workflow.castData.castLevel,
+                        baseLevel: workflow.castData.baseLevel,
+                        saveDC: itemUtils.getSaveDC(workflow.item)
+                    },
+                    region: {
+                        visibility: {
+                            obscured: true
+                        }
+                    },
+                    wallOfFire: {
+                        casterUuid: workflow.actor.uuid
+                    }
+                }
+            }
+        };
+        effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireWallRegion']);
+        await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        await genericUtils.update(template, {
+            width: 5
+        });
+        await genericUtils.sleep(50);
+        let targets = templateUtils.getTokensInTemplate(template);
+        await genericUtils.update(template, {
+            x: shortRay.A.x,
+            y: shortRay.A.y,
+            width: 11
+        });
+        await genericUtils.sleep(50);
         let regionData = {
             name: workflow.item.name,
             color: game.user.color,
@@ -204,28 +299,43 @@ async function early({trigger, workflow}) {
                         baseLevel: workflow.castData.baseLevel,
                         saveDC: itemUtils.getSaveDC(workflow.item)
                     }
+                },
+                wallOfFire: {
+                    casterUuid: workflow.actor.uuid
                 }
             }
         };
         effectUtils.addMacro(regionData, 'region', ['wallOfFireRegion']);
-        console.log(template);
-        let angle = Math.toDegrees(template.object.ray.angle);
-        if (angle < 0) angle = 360 + angle;
-        console.log(angle);
-        let direction;
-        if ((angle >= 135 && angle <= 225) || (angle >= 315 && angle < 360) || (angle >= 0 && angle <= 45)) {
-            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Up', 'up'], ['Down', 'down']]);
-        } else {
-            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Left', 'left'], ['Right', 'right']]);
-        }
-        if (!direction) {
-            await genericUtils.remove(template);
-            return;
-        }
-        //Finish this, ray stuff here
-        //await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
-        //await genericUtils.remove(template);
+        await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
+        await genericUtils.remove(template);
+        genericUtils.updateTargets(targets);
     }
+}
+async function movement({trigger}) {
+    await save(trigger, 'Movement');
+}
+async function endTurn({trigger}) {
+    await save(trigger, 'End Turn');
+}
+async function save(trigger, type) {
+    if (combatUtils.inCombat()) {
+        let touchedTokens = trigger.entity.flags['chris-premades']?.wallOfFire?.touchedTokens?.[combatUtils.currentTurn()] ?? [];
+        if (touchedTokens.includes(trigger.token.id)) return;
+        touchedTokens.push(trigger.token.id);
+        await genericUtils.setFlag(trigger.entity, 'chris-premades', 'wallOfFire.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
+    }
+    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Wall of Fire: ' + type, {object: true, getDescription: true});
+    if (!featureData) return;
+    let castLevel = trigger.castData.castLevel;
+    featureData.system.damage.parts[0][0] = (castLevel + 1) + 'd8[fire]';
+    let casterUuid = trigger.entity.flags['chris-premades']?.wallOfFire?.casterUuid;
+    if (!casterUuid) return;
+    let actor = await fromUuid(casterUuid);
+    if (!actor) return;
+    await workflowUtils.syntheticItemDataRoll(featureData, actor, [trigger.token], {killAnim: true});
+}
+async function endCombat({trigger}) {
+    await genericUtils.setFlag(trigger.entity, 'chris-premades', 'wallOfFire.touchedTokens', null);
 }
 export let wallOfFire = {
     name: 'Wall of Fire',
@@ -242,5 +352,38 @@ export let wallOfFire = {
 };
 export let wallOfFireRegion = {
     name: 'Wall of Fire Region',
-    version: wallOfFire.version
+    version: wallOfFire.version,
+    region: [
+        {
+            pass: 'turnEnd',
+            macro: endTurn,
+            priority: 50
+        },
+        {
+            pass: 'combatEnd',
+            macro: endCombat,
+            priority: 50
+        }
+    ]
+};
+export let wallOfFireWallRegion = {
+    name: 'Wall of Fire Wall Region',
+    version: wallOfFire.version,
+    region: [
+        {
+            pass: 'enter',
+            macro: movement,
+            priority: 50
+        },
+        {
+            pass: 'passedThrough',
+            macro: movement,
+            priority: 50
+        },
+        {
+            pass: 'combatEnd',
+            macro: endCombat,
+            priority: 50
+        }
+    ]
 };
