@@ -1,7 +1,11 @@
 # 1.0.19 Release:
+## New Content:
+- Wall of Fire
 ## Bug Fixes:
 - Item Medkit
 - Spike Growth
+## API Bug Fixes:
+- Template and Region Combat Start and Combat End
 
 # 1.0.18 Release:
 ## Bug Fixes:

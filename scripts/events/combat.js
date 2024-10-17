@@ -205,13 +205,16 @@ async function combatStart(combat, changes) {
     if (!socketUtils.isTheGM()) return;
     let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)).filter(j => j);
     for (let i of tokens) await executeMacroPass([i], 'combatStart');
-    //TODO: Template and Region Start Combat.
+    await templateEvents.executeMacroPass(combat.scene.templates, 'combatStart');
+    await regionEvents.executeMacroPass(combat.scene.regions, 'combatStart');
+
 }
 async function deleteCombat(combat, changes, context) {
     if (!socketUtils.isTheGM()) return;
     let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)).filter(j => j);
     for (let i of tokens) await executeMacroPass([i], 'combatEnd'); //The last turnEnd macro may need to be run before this?
-    //TODO: Template and Region End Combat.
+    await templateEvents.executeMacroPass(combat.scene.templates, 'combatEnd');
+    await regionEvents.executeMacroPass(combat.scene.regions, 'combatEnd');
 }
 export let combatEvents = {
     combatStart,
