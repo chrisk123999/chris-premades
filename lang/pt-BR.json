@@ -1608,6 +1608,17 @@
                 "Attack": "Toque Vampírico: Ataque",
                 "HealingModifier": "0.5"
             },
+            "WallOfFire": {
+                "CircleFacing": "Para que lado o fogo está voltado?",
+                "Diameter": "Qual diâmetro?",
+                "Flames": "Chamas",
+                "Height": "Qual altura?",
+                "Inward": "Para Dentro",
+                "Length": "Quanto tempo?",
+                "Outward": "Para Fora",
+                "Shape": "Qual formato?",
+                "Side": "De que lado fica a parede?"
+            },
             "WardingBond": {
                 "Damage": "Vínculo Protetor: Dano",
                 "Dismiss": "Vínculo Protetor: Dispansar",
@@ -2165,6 +2176,7 @@
                 "0": "Baixo",
                 "1": "Médio",
                 "2": "Alto",
+                "3": "Ultra",
                 "Hint": "Precisão de eventos de movimento, maior precisão tem o custo do desempenho.",
                 "Name": "Desempenho de Eventos de Movimento"
             },
