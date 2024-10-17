@@ -87,15 +87,6 @@ async function early({trigger, workflow}) {
                     radiusY: (template.object.shape.radius / radius) * (radius + 2.5),
                     rotation: 0,
                     hole: false
-                },
-                {
-                    type: 'ellipse',
-                    x: template.x,
-                    y: template.y,
-                    radiusX: (template.object.shape.radius / radius) * (radius - 2.5),
-                    radiusY: (template.object.shape.radius / radius) * (radius - 2.5),
-                    rotation: 0,
-                    hole: true
                 }
             ],
             elevation: {
@@ -123,6 +114,17 @@ async function early({trigger, workflow}) {
                 }
             }
         };
+        if (radius != 2.5) {
+            visionRegionData.shapes.push({
+                type: 'ellipse',
+                x: template.x,
+                y: template.y,
+                radiusX: (template.object.shape.radius / radius) * (radius - 2.5),
+                radiusY: (template.object.shape.radius / radius) * (radius - 2.5),
+                rotation: 0,
+                hole: true
+            });
+        }
         effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireWallRegion']);
         effectUtils.addMacro(regionData, 'region', ['wallOfFireRegion']);
         if (facing === 'outward') {
