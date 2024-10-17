@@ -3,6 +3,10 @@ async function early({trigger, workflow}) {
     let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let shape = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Shape', [['REGION.SHAPES.circle', 'circle'], ['DND5E.TargetLine', 'line']], {displayAsRows: true});
     if (!shape) return;
+    let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
+    let color = itemUtils.getConfig(workflow.item, 'color');
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
+    if (sound === '') sound = undefined;
     if (shape === 'circle') {
         let radius = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Diameter', [['20 ft.', 10], ['15 ft.', 7.5], ['10 ft.', 5], ['5 ft.', 2.5]], {displayAsRows: true});
         if (!radius) return;
@@ -162,6 +166,24 @@ async function early({trigger, workflow}) {
         });
         await regionUtils.createRegions([regionData], workflow.token.scene, {parentEntity: concentration});
         await genericUtils.remove(template);
+        if (playAnimation) {
+            /* eslint-disable indent */
+            new Sequence()
+                .effect()
+                    .file('jb2a.wall_of_fire.500x100.' + color)
+                    .scaleToObject(1.05)
+                    .attachTo(visibilityRegion, {offset: {x: visibilityRegion.object.center.x, y: visibilityRegion.object.center.y}})
+                    .persist()
+                    .name('wallOfFire')
+                    .fadeIn(300)
+                    .fadeOut(300)
+                    .aboveInterface()
+                .sound()
+                    .playIf(sound)
+                    .file(sound)
+                .play();
+            /* eslint-enable indent */
+        }
     } else {
         let length = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Length', [['60 ft.', 60], ['55 ft.', 55], ['50 ft.', 50], ['45 ft.', 45], ['40 ft.', 40], ['35 ft.', 35], ['30 ft.', 30], ['25 ft.', 25], ['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
         if (!length) return;
@@ -232,7 +254,7 @@ async function early({trigger, workflow}) {
         await genericUtils.update(template, {
             x: shortRay.B.x,
             y: shortRay.B.y,
-            width: 1
+            width: 2.5
         });
         await genericUtils.sleep(50);
         let visionRegionData = {
@@ -267,12 +289,38 @@ async function early({trigger, workflow}) {
             }
         };
         effectUtils.addMacro(visionRegionData, 'region', ['wallOfFireWallRegion']);
-        await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        let [visibilityRegion] = await regionUtils.createRegions([visionRegionData], workflow.token.scene, {parentEntity: concentration});
+        let targets = Array.from(visibilityRegion.tokens);
         await genericUtils.update(template, {
-            width: 5
+            width: 1
         });
         await genericUtils.sleep(50);
-        let targets = templateUtils.getTokensInTemplate(template);
+        await genericUtils.update(visibilityRegion, {
+            shapes: [
+                regionUtils.templateToRegionShape(template)
+            ]
+        });
+        if (playAnimation) {
+            /* eslint-disable indent */
+            new Sequence()
+                .effect()
+                    .file('jb2a.wall_of_fire.300x100.' + color)
+                    .atLocation({x: template.object.ray.A.x, y: template.object.ray.A.y})
+                    .stretchTo({x: template.object.ray.B.x, y: template.object.ray.B.y})
+                    .scale({x: 1, y: (15 / length)})
+                    .persist() //Not working???
+                    .duration(Math.floor(Number.MAX_SAFE_INTEGER / 1000)) //See: https://github.com/fantasycalendar/FoundryVTT-Sequencer/issues/269
+                    .name('wallOfFire')
+                    .tieToDocuments(visibilityRegion)
+                    .fadeIn(300)
+                    .fadeOut(300)
+                    .aboveInterface()
+                .sound()
+                    .playIf(sound)
+                    .file(sound)
+                .play();
+            /* eslint-enable indent */
+        }
         await genericUtils.update(template, {
             x: shortRay.A.x,
             y: shortRay.A.y,
@@ -348,7 +396,40 @@ export let wallOfFire = {
                 priority: 50
             }
         ]
-    }
+    },
+    config: [
+        {
+            value: 'playAnimation',
+            label: 'CHRISPREMADES.Config.PlayAnimation',
+            type: 'checkbox',
+            default: true,
+            category: 'animation'
+        },
+        {
+            value: 'color',
+            label: 'CHRISPREMADES.Config.Color',
+            type: 'select',
+            default: 'yellow',
+            category: 'animation',
+            options: [
+                {
+                    value: 'yellow',
+                    label: 'CHRISPREMADES.Config.Colors.Yellow'
+                },
+                {
+                    value: 'blue',
+                    label: 'CHRISPREMADES.Config.Colors.Blue'
+                }
+            ]
+        },
+        {
+            value: 'sound',
+            label: 'CHRISPREMADES.Config.Sound',
+            type: 'file',
+            default: '',
+            category: 'sound'
+        }
+    ]
 };
 export let wallOfFireRegion = {
     name: 'Wall of Fire Region',
