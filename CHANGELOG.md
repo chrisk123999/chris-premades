@@ -9,6 +9,8 @@
 - Item Medkit
 ## Update Notes:
 - Greatly improved movement listener performance (thanks thatlonelybugbear)
+## API Updates:
+- Added Region Events
 
 # 1.0.16 Release:
 ## Bug Fixes:
