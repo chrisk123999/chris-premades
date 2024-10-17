@@ -1,3 +1,7 @@
+# 1.0.18 Release:
+## Bug Fixes:
+- Item Medkit
+
 # 1.0.17 Release:
 ## Updated Content:
 - Scorching Ray (new medkit config options)
