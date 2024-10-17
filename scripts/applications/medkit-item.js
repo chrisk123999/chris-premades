@@ -667,7 +667,6 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
         await this.item.update({flags: {'chris-premades': genericUtils.deepClone(this.flags)}}, {diff: false, recursive: false});
         // If the current source is not the selected source, change it, if the select source is none, clear out the flags we add, if the selected source is development, do nothing.
-        console.log(this._source, this.selectedSource);
         if (this._source != this.selectedSource) {
             // Different sources, do something about it
             if (!this.selectedSource) {
@@ -769,7 +768,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     delete obj[key];
                 }
             }
-            if ((obj[key] == undefined) || (obj[key] == '')) {
+            if ((obj[key] == undefined) || (obj[key] === '')) {
                 delete obj[key];
             }
         }
