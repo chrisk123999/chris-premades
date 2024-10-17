@@ -1,6 +1,7 @@
 # 1.0.19 Release:
 ## Bug Fixes:
 - Item Medkit
+- Spike Growth
 
 # 1.0.18 Release:
 ## Bug Fixes:

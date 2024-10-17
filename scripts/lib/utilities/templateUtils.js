@@ -153,7 +153,7 @@ function getIntersections(templateObj, A, B, boolOnly = false) {
         };
         let intersections = templateObj.shape.segmentIntersections(adjustedA, adjustedB);
         if (boolOnly) return intersections.length;
-        return intersections;
+        return intersections.map(i => ({x: i.x + templateObj.center.x, y: i.y + templateObj.center.y}));
     }
     let intersections = [];
     let points = templateObj.shape.points;
