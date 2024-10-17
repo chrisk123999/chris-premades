@@ -1608,6 +1608,17 @@
                 "Attack": "Toque Vampírico: Ataque",
                 "HealingModifier": "0.5"
             },
+            "WallOfFire": {
+                "CircleFacing": "Para que lado o fogo está voltado?",
+                "Diameter": "Qual diâmetro?",
+                "Flames": "Chamas",
+                "Height": "Qual altura?",
+                "Inward": "Para Dentro",
+                "Length": "Quanto tempo?",
+                "Outward": "Para Fora",
+                "Shape": "Qual formato?",
+                "Side": "De que lado fica a parede?"
+            },
             "WardingBond": {
                 "Damage": "Vínculo Protetor: Dano",
                 "Dismiss": "Vínculo Protetor: Dispansar",
@@ -2115,9 +2126,17 @@
                 "Hint": "Adiciona uma guia na barra lateral para macros. É necessário recarregar após ativar.",
                 "Name": "Habilitar Interface de Macros"
             },
+            "makeGM": {
+                "Hint": "Torne-se o MJ principal.",
+                "Name": "Tornar-se MJ"
+            },
             "manualRollsEnabled": {
                 "Hint": "Habilita o CPR Roll Resolver para Rolagens Não-Finalizadas.",
                 "Name": "Rolagens Manuais"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "Quando ativado, o Mestre executa todas as rolagens.",
+                "Name": "Mestre Executa Rolagens"
             },
             "manualRollsInclusion": {
                 "Hint": "Quais rolagens de ator devem ser solicitadas.",
@@ -2157,8 +2176,9 @@
                 "0": "Baixo",
                 "1": "Médio",
                 "2": "Alto",
-                "Hint": "Precisão de eventos de movimento, maior precisão tem o custo do desempenho.",
-                "Name": "Desempenho de Eventos de Movimento"
+                "3": "Ultra",
+                "Hint": "Modo de precisão para eventos de movimento. Modos de precisão mais alto terão um impacto maior no desempenho, especialmente em hardware menos potente.\r\n• Ultra: Precisão total.\r\n• Alta: Ignora o cálculo de cobertura ao calcular a distância.\r\n• Média: Como Alta, porém o movimento da parada é ignorado, exceto o segmento final.\r\n• Baixo: Como Média, porém as paredes são ignoradas nos cálculos de distância.",
+                "Name": "Precisão de Eventos de Movimento"
             },
             "permissionsAutomateItem": {
                 "Hint": "Classificação mais baixa de usuários que podem selecionar e aplicar diferentes automações no Medkit:",
