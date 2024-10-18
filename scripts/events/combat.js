@@ -179,7 +179,7 @@ async function executeMacro(trigger) {
     }
 }
 async function executeMacroPass(tokens, pass, token) {
-    genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass + ' for ' + token?.name ?? tokens[0].name);
+    genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass + ' for ' + (token?.name ?? tokens[0].name));
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);
