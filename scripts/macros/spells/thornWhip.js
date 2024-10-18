@@ -1,16 +1,16 @@
-import {actorUtils, dialogUtils, itemUtils, tokenUtils} from '../../utils.js';
+import {actorUtils, dialogUtils, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
     if (!workflow.hitTargets.size) return;
     let checkSize = itemUtils.getConfig(workflow.item, 'checkSize');
     for (let target of workflow.hitTargets) {
         if (actorUtils.getSize(target.actor) > 3 && checkSize) break;
         let options = [
-            ['CHRISPREMADES.Distance.0', 0]
+            [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 0}), 0]
         ];
         let distance = tokenUtils.getDistance(workflow.token, target);
         if (distance <= 5) break;
-        if (distance > 5) options.push(['CHRISPREMADES.Distance.5', 5]);
-        if (distance > 10) options.push(['CHRISPREMADES.Distance.10', 10]);
+        if (distance > 5) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 5}), 5]);
+        if (distance > 10) options.push([genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: 10}), 10]);
         let selection = Number(await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.ThornWhip.Pull', options));
         if (!selection) return;
         await tokenUtils.pushToken(workflow.token, target, -selection);

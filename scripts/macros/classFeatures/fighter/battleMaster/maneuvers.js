@@ -288,11 +288,8 @@ async function usePushingAttack({workflow}) {
     }
     let pushWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken]);
     if (!pushWorkflow.failedSaves.size) return;
-    let distance = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Maneuvers.PushDistance', [
-        ['CHRISPREMADES.Distance.5', 5],
-        ['CHRISPREMADES.Distance.10', 10],
-        ['CHRISPREMADES.Distance.15', 15]
-    ]);
+    let buttons = [5, 10, 15].map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
+    let distance = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.Maneuvers.PushDistance', buttons);
     if (!distance) return;
     await tokenUtils.pushToken(workflow.token, targetToken, distance);
 }

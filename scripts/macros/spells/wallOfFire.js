@@ -7,8 +7,9 @@ async function early({trigger, workflow}) {
     let color = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
     if (sound === '') sound = undefined;
+    let distance20Buttons = [20, 15, 10, 5].map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
     if (shape === 'circle') {
-        let radius = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Diameter', [['20 ft.', 10], ['15 ft.', 7.5], ['10 ft.', 5], ['5 ft.', 2.5]], {displayAsRows: true});
+        let radius = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Diameter', distance20Buttons.map(i => [i[0], i[1] / 2]), {displayAsRows: true});
         if (!radius) return;
         radius = Number(radius);
         let templateData = {
@@ -34,7 +35,7 @@ async function early({trigger, workflow}) {
             await genericUtils.remove(template);
             return;
         }
-        let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', [['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
+        let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', distance20Buttons, {displayAsRows: true});
         if (!height) return;
         let regionData = {
             name: workflow.item.name,
@@ -187,7 +188,9 @@ async function early({trigger, workflow}) {
             /* eslint-enable indent */
         }
     } else {
-        let length = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Length', [['60 ft.', 60], ['55 ft.', 55], ['50 ft.', 50], ['45 ft.', 45], ['40 ft.', 40], ['35 ft.', 35], ['30 ft.', 30], ['25 ft.', 25], ['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
+        // I didn't feel like writing [60, 55, 50...] so I did this
+        let lengthButtons = Array.from(Array(12).keys().map(i => 5 * (i + 1))).toSorted((a, b) => b - a).map(i => [genericUtils.format('CHRISPREMADES.Distance.DistanceFeet', {distance: i}), i]);
+        let length = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Length', lengthButtons, {displayAsRows: true});
         if (!length) return;
         length = Number(length);
         let templateData = {
@@ -208,7 +211,7 @@ async function early({trigger, workflow}) {
         let template = await templateUtils.placeTemplate(templateData);
         await workflow.actor.sheet.maximize();
         await genericUtils.sleep(50);
-        let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', [['20 ft.', 20], ['15 ft.', 15], ['10 ft.', 10], ['5 ft.', 5]], {displayAsRows: true});
+        let height = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Height', distance20Buttons, {displayAsRows: true});
         if (!height) {
             await genericUtils.remove(template);
             return;
@@ -217,9 +220,9 @@ async function early({trigger, workflow}) {
         if (angle < 0) angle = 360 + angle;
         let direction;
         if ((angle >= 135 && angle <= 225) || (angle >= 315 && angle < 360) || (angle >= 0 && angle <= 45)) {
-            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Up', 'up'], ['Down', 'down']]);
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['CHRISPREMADES.Direction.Up', 'up'], ['CHRISPREMADES.Direction.Down', 'down']]);
         } else {
-            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['Left', 'left'], ['Right', 'right']]);
+            direction = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Side', [['CHRISPREMADES.Direction.Left', 'left'], ['CHRISPREMADES.Direction.Right', 'right']]);
         }
         if (!direction) {
             await genericUtils.remove(template);
@@ -229,25 +232,25 @@ async function early({trigger, workflow}) {
         let shortAngle;
         if (angle >= 135 && angle <= 225) {
             if (direction === 'up') {
-                shortAngle = 90;
-            } else {
                 shortAngle = -90;
+            } else {
+                shortAngle = 90;
             }
         } else if (angle > 225 && angle < 315) {
             if (direction === 'right') {
-                shortAngle = 90;
-            } else {
                 shortAngle = -90;
+            } else {
+                shortAngle = 90;
             }
         } else if ((angle >= 315 && angle <= 359) || (angle >= 0 && angle <= 45)) {
             if (direction === 'up') {
-                shortAngle = -90;
-            } else {
                 shortAngle = 90;
+            } else {
+                shortAngle = -90;
             }
         } else if (angle > 45 && angle <= 135) {
             if (direction === 'right') {
-                shortAngle = -90;
+                shortAngle = 90;
             } else {
                 shortAngle = -90;
             }
