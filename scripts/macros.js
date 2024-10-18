@@ -251,7 +251,7 @@ export {formulas, formulaAether, formulaAlluring, formulaCelerity, formulaConver
 export {geniesWrathDao, geniesWrathDjinni, geniesWrathEfreeti, geniesWrathMarid} from './macros/classFeatures/warlock/genie/geniesWrath.js';
 export {giantsHavocCrushingThrow} from './macros/classFeatures/barbarian/giant/crushingThrow.js';
 export {giantsHavocGiantStature} from './macros/classFeatures/barbarian/giant/giantStature.js';
-export {giantsMight} from './macros/classFeatures/fighter/runeKnight/giantsMight.js';
+export {giantsMight, giantsMightEffect} from './macros/classFeatures/fighter/runeKnight/giantsMight.js';
 export {graspOfHadar} from './macros/classFeatures/warlock/invocations/graspOfHadar.js';
 export {graveTouched} from './macros/classFeatures/warlock/undead/graveTouched.js';
 export {greatStature} from './macros/classFeatures/fighter/runeKnight/greatStature.js';

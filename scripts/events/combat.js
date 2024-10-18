@@ -179,7 +179,7 @@ async function executeMacro(trigger) {
     }
 }
 async function executeMacroPass(tokens, pass, token) {
-    genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass);
+    genericUtils.log('dev', 'Executing Combat Macro Pass: ' + pass + ' for ' + tokens[0].name); //When is this ever more than just one token? This may need a refactor!
     let triggers = getSortedTriggers(tokens, pass, token);
     if (triggers.length) await genericUtils.sleep(50);
     for (let i of triggers) await executeMacro(i);

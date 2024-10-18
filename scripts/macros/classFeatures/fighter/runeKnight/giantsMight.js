@@ -1,4 +1,4 @@
-import {actorUtils, animationUtils, effectUtils, genericUtils, itemUtils, tokenUtils} from '../../../../utils.js';
+import {actorUtils, animationUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 import {start as enlargeReduceStart} from '../../../spells/enlargeReduce.js';
 async function use({workflow}) {
     if (effectUtils.getEffectByIdentifier(workflow.actor, 'giantsMight')) return;
@@ -25,33 +25,18 @@ async function use({workflow}) {
                 mode: 5,
                 value: 1,
                 priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.GiantsMight.damage.mwak',
-                mode: 5,
-                value: bonusDamage,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.GiantsMight.damage.rwak',
-                mode: 5,
-                value: bonusDamage,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.GiantsMight.label',
-                mode: 5,
-                value: workflow.item.name,
-                priority: 20
-            },
-            {
-                key: 'flags.midi-qol.optional.GiantsMight.count',
-                mode: 5,
-                value: 'turn',
-                priority: 20
             }
-        ]
+        ],
+        flags: {
+            'chris-premades': {
+                giantsMight: {
+                    bonusDamage: bonusDamage
+                }
+            }
+        }
     };
+    effectUtils.addMacro(effectData, 'midi.actor', ['giantsMightEffect']);
+    effectUtils.addMacro(effectData, 'combat', ['giantsMightEffect']);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     if (canBeLarge) {
         if (playAnimation) {
@@ -75,9 +60,28 @@ async function use({workflow}) {
     if (!playAnimation) return;
     if (effect.flags['chris-premades']?.enlargeReduce) await enlargeReduceStart({trigger: {entity: effect}});
 }
+async function damage({trigger, workflow}) {
+    if (!workflow.hitTargets.size || !workflow.item.system.damage.parts.length) return;
+    if (!constants.weaponAttacks.includes(workflow.item.system.actionType)) return;
+    if (combatUtils.inCombat()) {
+        if (!combatUtils.perTurnCheck(trigger.entity, 'giantsMight', true, workflow.token.id)) return;
+    }
+    let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: trigger.entity.name}));
+    if (!selection) return;
+    let feature = await fromUuid(trigger.entity.origin);
+    if (!feature) return;
+    await feature.displayCard({flags: {dnd5e: {use: {consumedUsage: true, consumeResource: true}}}});
+    if (combatUtils.inCombat()) await combatUtils.setTurnCheck(trigger.entity, 'giantsMight');
+    let bonusDamage = trigger.entity.flags['chris-premades']?.giantsMight?.bonusDamage;
+    if (!bonusDamage) return;
+    await workflowUtils.bonusDamage(workflow, bonusDamage + '[' + workflow.defaultDamageType + ']', {damageType: workflow.defaultDamageType});
+}
+async function endCombat({trigger}) {
+    await combatUtils.setTurnCheck(trigger.entity, 'giantsMight', true);
+}
 export let giantsMight = {
     name: 'Giant\'s Might',
-    version: '0.12.52',
+    version: '1.0.20',
     midi: {
         item: [
             {
@@ -94,6 +98,26 @@ export let giantsMight = {
             type: 'checkbox',
             default: true,
             category: 'animation'
+        }
+    ]
+};
+export let giantsMightEffect = {
+    name: 'Giant\'s Might Effect',
+    version: giantsMight.version,
+    midi: {
+        actor: [
+            {
+                pass: 'damageRollComplete',
+                macro: damage,
+                priority: 150
+            }
+        ]
+    },
+    combat: [
+        {
+            pass: 'combatEnd',
+            macro: endCombat,
+            priority: 50
         }
     ]
 };
