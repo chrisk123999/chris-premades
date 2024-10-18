@@ -1614,10 +1614,10 @@
                 "Flames": "Chamas",
                 "Height": "Qual altura?",
                 "Inward": "Para Dentro",
-                "Length": "Quanto tempo?",
+                "Length": "Qual comprimento?",
                 "Outward": "Para Fora",
                 "Shape": "Qual formato?",
-                "Side": "De que lado fica a parede?"
+                "Side": "De que lado o fogo está?"
             },
             "WardingBond": {
                 "Damage": "Vínculo Protetor: Dano",
