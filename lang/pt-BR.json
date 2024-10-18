@@ -198,21 +198,27 @@
         "Direction": {
             "Away": "Longe",
             "Direction": "Direção",
+            "Down": "Abaixo",
             "East": "leste",
+            "Left": "Esquerda",
             "North": "norte",
             "Northeast": "nordeste",
             "Northwest": "noroeste",
+            "Right": "Direita",
             "South": "sul",
             "Southeast": "sudeste",
             "Southwest": "sudoeste",
             "Towards": "Em direção a",
+            "Up": "Acima",
             "West": "oeste"
         },
         "Distance": {
             "0": "0 pés",
             "10": "10 pés",
             "15": "15 pés",
-            "5": "5 pés"
+            "20": "20 pés",
+            "5": "5 pés",
+            "DistanceFeet": "{distance} pés"
         },
         "EffectInterface": {
             "Copy": "(Cópia)",
