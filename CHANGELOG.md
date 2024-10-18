@@ -2,6 +2,7 @@
 ## Bug Fixes:
 - Item Medkit
 - Wall of Fire
+- Manual Rolls
 
 # 1.0.19 Release:
 ## New Content:
