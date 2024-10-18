@@ -75,7 +75,7 @@
     },
     "summons": null,
     "type": {
-      "value": "",
+      "value": "spellFeature",
       "subtype": ""
     },
     "prerequisites": {

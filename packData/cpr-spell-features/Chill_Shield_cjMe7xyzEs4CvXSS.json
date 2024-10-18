@@ -69,7 +69,7 @@
       "scaling": "spell"
     },
     "type": {
-      "value": "",
+      "value": "spellFeature",
       "subtype": ""
     },
     "requirements": "",
