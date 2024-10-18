@@ -2,6 +2,13 @@
     <p class="roll-resolver-content" data-bonus-total="{{options.bonusTotal}}">
         {{options.content}}
     </p>
+    {{#if options.modifiers}}
+        <div class="roll-resolver-modifiers">
+            <p>
+                {{localize 'CHRISPREMADES.ManualRolls.HasModifers'}}: <span>{{options.modifiers}}</span>, {{localize 'CHRISPREMADES.ManualRolls.PleaseResolve'}}
+            </p>
+        </div>
+    {{/if}}
     {{#each groups}}
         <div class="roll-resolver-group roll-resolver-flex" data-ids="{{ids}}">
             {{formula}}

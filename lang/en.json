@@ -1678,8 +1678,10 @@
             "Critical": "Critical",
             "Failure": "Failure",
             "Fumble": "Fumble",
+            "HasModifers": "Roll has modifers",
             "Hit": "Hit",
             "Miss": "Miss",
+            "PleaseResolve": "please resolve manually before entering total",
             "QuickButtons": {
                 "Label": "Quick Buttons",
                 "Tooltip": "Shortcuts to complete the roll with the desired result"

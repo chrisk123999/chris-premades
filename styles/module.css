@@ -465,13 +465,36 @@ form .cpr-row-center .cpr-input-short {
     font-size: var(--font-size-16);
 }
 
+.theme-dark .roll-resolver-content {
+    border-color: var(--color-light-5);
+}
+
+[id="cpr-roll-resolver"] .roll-resolver-modifiers {
+    display: flex;
+    justify-content: center;
+}
+
+[id="cpr-roll-resolver"] .roll-resolver-modifiers p {
+    font-style: italic;
+}
+
+.theme-dark [id="cpr-roll-resolver"] .roll-resolver-modifiers p {
+    color: var(--color-light-4);
+}
+
+.theme-light [id="cpr-roll-resolver"] .roll-resolver-modifiers p {
+    color: var(--color-dark-3);
+}
+
+[id="cpr-roll-resolver"] .roll-resolver-modifiers p span {
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--color-text-primary);
+}
+
 [id="cpr-roll-resolver"] .roll-resolver-group .damage-type-icon {
     width: 30px;
     border: none;
-}
-
-.theme-dark .roll-resolver-content {
-    border-color: var(--color-light-5);
 }
 
 .theme-dark .roll-resolver-group .damage-type-icon {

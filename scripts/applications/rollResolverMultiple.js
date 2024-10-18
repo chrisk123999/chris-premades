@@ -173,7 +173,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         });
     }
     static async _fulfillRoll(event, form, formData) {
-        if (!formData || (Object?.values(formData?.object).some(i => i === null))) { // For fulfilling non-rolled terms
+        if (!formData || (Object?.values(formData?.object).some(i => i === ''))) { // For fulfilling non-rolled terms, if any are left blank, just roll them all for simplicity.
             this.fulfillable.forEach(({term}) => {
                 for (let i = term.results.length; i != term.number; i++) {
                     const roll = { result: term.randomFace(), active: true};

@@ -52,7 +52,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
         else await this.digitalRoll();
         return promise;
     }
-    checkPreferences() { 
+    checkPreferences() {
         if (this.roll instanceof CONFIG.Dice.DamageRoll) {log('is damage roll'); return false;}
         if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) {log('user does not have manual rolls enabled'); return false;}
         let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
@@ -83,7 +83,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @param {number} result        The rolled number.
      * @returns {boolean}            Whether the result was consumed.
      */
-    registerResult(method, denomination, result) {
+    registerResult(method, denomination, result) { // Is this needed???
         const query = `label[data-denomination="${denomination}"][data-method="${method}"] > input:not(:disabled)`;
         const term = Array.from(this.element.querySelectorAll(query)).find(input => input.value === '');
         if ( !term ) {
@@ -115,6 +115,12 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
             }],
             options: {
                 advantageMode: this.roll.options.advantageMode,
+                modifiers: this.roll.terms.reduce((modifiersString, term) => {
+                    if (term?.modifiers) term.modifiers.forEach(mod => {
+                        modifiersString.length ? modifiersString.concat(', ' + mod) : modifiersString = mod;
+                    });
+                    return modifiersString;
+                }, false),
                 name: this.roll.data.name,
                 flavor: this.roll.options.flavor ?? this.roll.data?.item?.name,
                 bonusTotal: this.roll.terms.reduce((acc, cur) => {
@@ -156,52 +162,25 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @param {object} [options]
      * @returns {Promise<number|void>}
      */
-    async resolveResult(term, method, { reroll=false, explode=false }={}) {
+    async resolveResult(term, method, { reroll=false, explode=false }={}) { // Need to like, actually do something about this...
         if (!this.element) return term.randomFace();
-        const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
-        if ( !group ) {
-            console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
-            return;
+        let rerolledResult = term.results.find(i => i.rerolled === true)?.result;
+        if (term.results.filter(i => i.rerolled === true).length >= 10) {
+            ui.notifications.error('CPR Roll Resolver | Maximum reroll depth reached, please resolve modified rolls manually before entering total!');
+            return term.randomFace();
         }
-        const fields = document.createElement('div');
-        fields.classList.add('form-fields');
-        fields.innerHTML = `
-    <label class="icon die-input new-addition" data-denomination="${term.denomination}" data-method="${method}">
-        <input type="number" min="1" max="${term.faces}" step="1" name="${term._id}"
-                ${method === 'chrispremades' ? '' : 'readonly'} placeholder="${game.i18n.localize(term.denomination)}">
-        ${reroll ? '<i class="fas fa-arrow-rotate-right"></i>' : ''}
-        ${explode ? '<i class="fas fa-burst"></i>' : ''}
-        ${CONFIG.Dice.fulfillment.dice[term.denomination]?.icon ?? ''}
-    </label>
-    <button type="button" class="submit-result" data-tooltip="DICE.SubmitRoll"
-            aria-label="${game.i18n.localize('DICE.SubmitRoll')}">
-        <i class="fas fa-arrow-right"></i>
-    </button>
-    `;
-        group.appendChild(fields);
-        this.setPosition({ height: 'auto' });
-        return new Promise(resolve => {
-            const button = fields.querySelector('button');
-            const input = fields.querySelector('input');
-            button.addEventListener('click', () => {
-                if ( !input.validity.valid ) {
-                    input.form.reportValidity();
-                    return;
-                }
-                let value = input.valueAsNumber;
-                if ( !value ) value = term.randomFace();
-                input.value = `${value}`;
-                input.disabled = true;
-                button.remove();
-                resolve(value);
-            });
-        });
+        if (rerolledResult) {
+            return rerolledResult;
+        } else {
+            console.warn('CPR Roll Resolver | Please share w/ Autumn225 - Term is not a reroll and needs to be resolved', term);
+            return term.randomFace();
+        }
     }
     static async _fulfillRoll(event, form, formData) {
         if (!event?.submitter?.name || event.submitter.name === 'confirm') {
             if (!formData || !formData?.object?.total) { // For fulfilling non-rolled terms
                 this.fulfillable.forEach(({term}) => {
-                    for (let i = term.results.length; i != term.number; i++) {
+                    for (let i = term.results.length; i < (term.number ?? term._number); i++) {
                         const roll = { result: term.randomFace(), active: true};
                         term.results.push(roll);
                     }

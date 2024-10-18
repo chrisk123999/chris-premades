@@ -148,6 +148,7 @@ function getIdentifier(entity) {
     return entity.flags['chris-premades']?.info?.identifier;
 }
 function checkPlayerOwnership(entity) {
+    if (!entity) return false;
     return Object.entries(entity.ownership).some(([userId, permission]) => {
         if (game.users.get(userId)?.isGM) return false;
         else if (permission === 3) return true;
