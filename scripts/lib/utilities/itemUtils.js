@@ -68,7 +68,7 @@ function getAllItemsByIdentifier(actor, identifier) {
     return actor.items.filter(i => genericUtils.getIdentifier(i) === identifier);
 }
 function getVersion(item) {
-    return item?.flags['chris-premades']?.info?.version ?? item._stats?.modifiedTime;
+    return item?.flags['chris-premades']?.info?.version ?? item?._stats?.modifiedTime;
 }
 function getSource(item) {
     return item.flags['chris-premades']?.info?.source;
