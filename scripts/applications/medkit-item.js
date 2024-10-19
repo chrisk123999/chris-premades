@@ -649,7 +649,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
-        await item.update(sourceItemData);
+        await item.update(sourceItemData, {diff: false, recursive: false});
         return item;
     }
     static async _update(event, target) {
@@ -781,9 +781,11 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         /* Get our data out of the html so we can find what option the input coresponds with */
         let dataOptions = event.target.closest('[data-options]')?.getAttribute('data-options');
         let dataCategory = event.target.closest('[data-category]')?.getAttribute('data-category');
-        let inputType = event.target.type ?? event.target.tagName.toLowerCase();
-        let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[event.target.id];
-        let option = optionGroup.find(i => (i.id ?? null) === event.target.id);
+        let tagName = event.target?.tagName?.toLowerCase();
+        let inputType = ['file-picker', 'multi-select'].includes(tagName) ? tagName : event.target.type;
+        let elementId = event.target.id === '' ? event.target.parentElement.id : event.target.id;
+        let optionGroup = dataCategory ? this[dataOptions][dataCategory].configOptions : dataOptions ? this[dataOptions] : this[elementId];
+        let option = optionGroup.find(i => (i.id ?? null) === elementId);
         /* Set the option's value based on the input type */
         switch (inputType) {
             case 'checkbox': {
@@ -793,6 +795,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             case 'text':
             case 'number': 
             case 'select-one':
+            case 'file-picker':
             case 'multi-select': {
                 option.value = event.target.value;
             }
