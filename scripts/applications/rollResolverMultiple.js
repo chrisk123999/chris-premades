@@ -133,6 +133,7 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
      * @returns {Promise<number|void>}
      */
     async resolveResult(term, method, { reroll=false, explode=false }={}) { // Needed???
+        genericUtils.log('dev', 'Multiple roll resolver resolveResult has been called!');
         const group = this.element.querySelector(`fieldset[data-term-id="${term._id}"]`);
         if ( !group ) {
             console.warn('Attempted to resolve a single result for an unregistered DiceTerm.');
@@ -141,18 +142,18 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
         const fields = document.createElement('div');
         fields.classList.add('form-fields');
         fields.innerHTML = `
-    <label class="icon die-input new-addition" data-denomination="${term.denomination}" data-method="${method}">
-        <input type="number" min="1" max="${term.faces}" step="1" name="${term._id}"
-                ${method === 'chrispremades' ? '' : 'readonly'} placeholder="${game.i18n.localize(term.denomination)}">
-        ${reroll ? '<i class="fas fa-arrow-rotate-right"></i>' : ''}
-        ${explode ? '<i class="fas fa-burst"></i>' : ''}
-        ${CONFIG.Dice.fulfillment.dice[term.denomination]?.icon ?? ''}
-    </label>
-    <button type="button" class="submit-result" data-tooltip="DICE.SubmitRoll"
-            aria-label="${game.i18n.localize('DICE.SubmitRoll')}">
-        <i class="fas fa-arrow-right"></i>
-    </button>
-    `;
+            <label class="icon die-input new-addition" data-denomination="${term.denomination}" data-method="${method}">
+                <input type="number" min="1" max="${term.faces}" step="1" name="${term._id}"
+                        ${method === 'chrispremades' ? '' : 'readonly'} placeholder="${game.i18n.localize(term.denomination)}">
+                ${reroll ? '<i class="fas fa-arrow-rotate-right"></i>' : ''}
+                ${explode ? '<i class="fas fa-burst"></i>' : ''}
+                ${CONFIG.Dice.fulfillment.dice[term.denomination]?.icon ?? ''}
+            </label>
+            <button type="button" class="submit-result" data-tooltip="DICE.SubmitRoll"
+                    aria-label="${game.i18n.localize('DICE.SubmitRoll')}">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            `;
         group.appendChild(fields);
         this.setPosition({ height: 'auto' });
         return new Promise(resolve => {
@@ -198,20 +199,27 @@ export class CPRMultipleRollResolver extends HandlebarsApplicationMixin(Applicat
                     return dice;
                 }, {terms: [], multiplier: 1})).terms;
                 let results;
-                if ((originalTotal instanceof String || typeof originalTotal === 'string') && originalTotal.includes(',')) {
+                if ((originalTotal instanceof String || typeof originalTotal === 'string') && originalTotal.includes(',')) { // If we were given a comma seperated list, assume it's in order and map it against the dice
                     let diceResults = originalTotal.split(/[\s,]+/).map(Number);
                     results = diceResults.map((i, index) => ({faces: dice[index], result: i}));
                 } else results = (dice.reduce((results, number) => {
-                    results.diceLeft -= 1;
-                    if (number + results.diceLeft <= total) {
+                    results.diceLeft -= 1; // Remove one from the total left, since we're determining that one now.
+                    if (number + results.diceLeft <= total) { 
+                        // If the die we're on plus the amount of dice we have left is less than what we have to work with, make the die it's max value
+                        // ie total is 10, we have 2 dice left, our current number is a 6, we have at least enough to make this 6 and max and the others at least 1.
+                        genericUtils.log('dev', 'Roll Resolver Multiple - max amount for d' + number);
                         results.diceArray.push({faces: number, result: number});
                         total -= number;
                     } else if (1 + results.diceLeft >= total) {
+                        // If we don't have enough left to make the die anything but 1, make it 1.
+                        genericUtils.log('dev', 'Roll Resolver Multiple - min amount for d' + number);
                         results.diceArray.push({faces: number, result: 1});
                         total -= 1;
                     } else {
+                        // If we don't have enough to make the dice it's max, but it's more than the minimum left, make the dice as big as it can be and let the rest be 1's
                         results.diceArray.push({faces: number, result: total - results.diceLeft});
-                        total -= results.diceLeft;
+                        genericUtils.log('dev', 'Roll Resolver Multiple - middle amount for d' + number);
+                        total = results.diceLeft;
                     }
                     return results;
                 }, {diceLeft: dice.length, diceArray: []})).diceArray;

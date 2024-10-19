@@ -17,35 +17,35 @@
             "Source": "{auraName}: Origem"
         },
         "BG3": {
-            "Bleeding": "Sangrando",
-            "ChestTrauma": "Trauma Torácico",
-            "Dazed": "Ofuscado",
-            "GapingWounds": "Feridas Abertas",
-            "Hamstrung": "Hamstrung",
-            "Maimed": "Mutilado",
-            "OffBalance": "Desequilibrado",
-            "WeakGrip": "Aperto Fraco",
-            "WeaponAction": "Ação com Arma",
             "Backbreaker": "Quebra-Costas",
+            "Bleeding": "Sangrando",
             "BraceMelee": "Brace (Corpo a Corpo)",
+            "BraceRanged": "Brace (À Distância)",
+            "ChestTrauma": "Trauma Torácico",
             "Cleave": "Rachar",
             "ConcussiveSmash": "Esmagamento Concussivo",
-            "MaimingStrike": "Golpe Mutilante",
+            "Dazed": "Ofuscado",
             "DisarmingStrike": "Golpe Desarmante",
             "Flourish": "Florescer",
+            "GapingWounds": "Feridas Abertas",
+            "HamstringShot": "Tiro no Tendão",
+            "Hamstrung": "Hamstrung",
             "Heartstopper": "Destruidor de Corações",
             "Lacerate": "Dilacerar",
+            "Maimed": "Mutilado",
+            "MaimingStrike": "Golpe Mutilante",
+            "MobileShot": "Tiro Móvel",
+            "OffBalance": "Desequilibrado",
+            "PiercingShot": "Tiro Perfurante",
             "PiercingStrike": "Golpe Perfurante",
             "PommelStrike": "Golpe com Punho",
             "Prepare": "Preparar",
             "Rush": "Correr",
             "Tenacity": "Tenacidade",
             "Topple": "Derrubar",
+            "WeakGrip": "Aperto Fraco",
             "WeakeningStrike": "Golpe Enfraquecedor",
-            "BraceRanged": "Brace (À Distância)",
-            "HamstringShot": "Tiro no Tendão",
-            "MobileShot": "Tiro Móvel",
-            "PiercingShot": "Tiro Perfurante"
+            "WeaponAction": "Ação com Arma"
         },
         "Backup": {
             "Daily": "Diário",
@@ -112,7 +112,7 @@
                 "Water": "Água"
             },
             "ApplyFilter": "Aplicar Filtro:",
-            "AttackBonus": "Bônus Ataque",
+            "AttackBonus": "Bônus Ataque:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -320,9 +320,9 @@
             "TemplateEffect": "Modelo de {itemName}"
         },
         "Grovelthrash": {
-              "Earthquake": "Terremoto (Grovelthrash)",
-              "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
-              "StoneShape": "Moldar Rochas (Grovelthrash)"
+            "Earthquake": "Terremoto (Grovelthrash)",
+            "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
+            "StoneShape": "Moldar Rochas (Grovelthrash)"
         },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
@@ -330,8 +330,8 @@
             "Welcome": "<p>Obrigado por usar meu módulo! Se você encontrar algum bug ou tiver alguma solicitação, envie uma mensagem para <strong>chrisk123999</strong> no Discord ou faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Como observação, eu geralmente trabalho ao redor de itens que foram importados por meio do módulo DDB importer. Se algo funcionar \"como está\" nesse módulo, é improvável que eu o tenha aqui.</p><p>Para começar, você pode encontrar minhas automações nos compêndios que começam com: \"CPR.\"</p><p>Você também pode clicar no ícone do kit médico na barra de título para atualizar o item com minha automação. Isso preservará sua descrição já presente no item.</p><hr><p>Qualquer item, magia ou recurso adicionado à sua ficha precisa temporariamente de uma descrição. As atualizações dos módulos substituirão os compêndios nos quais estão armazenados. Portanto, as descrições serão extraídas desta entrada de diário. Todas as páginas após esta não serão regeneradas ao atualizar este módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
         },
         "Light": {
-             "Bright": "Plena",
-             "Dim": "Penumbra"
+            "Bright": "Plena",
+            "Dim": "Penumbra"
         },
         "Macros": {
             "AberrantDragonmark": {
@@ -1927,6 +1927,13 @@
             }
         },
         "Settings": {
+            "Permissions": {
+                "1": "Jogador",
+                "2": "Jogador Confiável",
+                "3": "Assistente do MJ",
+                "4": "Mestre do Jogo"
+            },
+            "SelectCompendium": "Selecione um compêndio:",
             "addActions": {
                 "0": "Desabilitado",
                 "1": "Personagens Vinculados",
@@ -1938,16 +1945,9 @@
                 "7": "Personagens Vinculados e PnJs",
                 "8": "Personagens Desvinculados e PnJs",
                 "9": "Todos os Personagens e PnJs",
-                "Name": "Adicionar Ações aos Tokens",
-                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado."
+                "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
+                "Name": "Adicionar Ações aos Tokens"
             },
-            "Permissions": {
-                "1": "Jogador",
-                "2": "Jogador Confiável",
-                "3": "Assistente do MJ",
-                "4": "Mestre do Jogo"
-            },
-            "SelectCompendium": "Selecione um compêndio:",
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
@@ -1988,17 +1988,17 @@
                 "Hint": "Quando ativado, os personagens de propriedade do jogador serão automaticamente copiados para o compêndio especificado.",
                 "Name": "Backups Automáticos de Personagens"
             },
-            "bg3WeaponActionsEnabled": {
-                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
-                "Name": "Ações de Armas Baldur's Gate 3"
-            },
-              "bg3WeaponActionConfig": {
+            "bg3WeaponActionConfig": {
                 "Hint": "Configurar as ações das armas do Baldur's Gate 3. (NÃO FUNCIONAL)",
                 "Name": "Configuração Ações de Armas Baldur's Gate 3"
             },
             "bg3WeaponActionUses": {
                 "Hint": "Máximo de usos por descanso curto que a ação de arma pode ser usada.",
                 "Name": "Usos Ação de Arma Baldur's Gate 3"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Quando ativado, ações de armas no estilo Baldur's Gate 3 serão adicionadas aos atores quando as armas estiverem equipadas. (NÃO FUNCIONAL)",
+                "Name": "Ações de Armas Baldur's Gate 3"
             },
             "checkForUpdates": {
                 "Hint": "Quando ativado, o módulo verificará atualizações uma vez por dia quando um MJ entrar.",
@@ -2011,8 +2011,8 @@
             "cleave": {
                 "1": "Habilitar (Qualquer Vida)",
                 "2": "Habilitar (Somente Vida Cheia)",
-                "Name": "DMG Cleave",
-                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide"
+                "Hint": "Ativa a mecânica de Cleave do Dungeon Master's Guide",
+                "Name": "DMG Cleave"
             },
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando ativado, o ícone da barra de título do Automated Animations será recolorido com base no status da configuração.",
@@ -2145,22 +2145,22 @@
                 "Name": "Mestre Executa Rolagens"
             },
             "manualRollsInclusion": {
-                "Hint": "Quais rolagens de ator devem ser solicitadas.",
-                "Name": "Inclusão de Rolagens Manuais",
                 "0": "Nenhuma - Sem Rolagens Manuais",
                 "1": "Todas - Solicitação para Qualquer Ator",
                 "2": "Apenas Todos Personagens",
                 "3": "Apenas Todos Vinculados",
                 "4": "Apenas Vinculados e Pertencentes a Jogador",
-                "5": "Todos Pertencentes e Controlados por jogador"
-            },
-            "manualRollsPromptOnMiss": {
-                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
-                "Name": "Solicitar em Erros"
+                "5": "Todos Pertencentes e Controlados por jogador",
+                "Hint": "Quais rolagens de ator devem ser solicitadas.",
+                "Name": "Inclusão de Rolagens Manuais"
             },
             "manualRollsPromptNoData": {
                 "Hint": "Solicita rolagens sem dados, provavelmente usados em macros.",
                 "Name": "Solicitar Sem Dados"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Solicita jogadas de dano mesmo para ataques perdidos.",
+                "Name": "Solicitar em Erros"
             },
             "manualRollsUsers": {
                 "Hint": "Configura quais usuários usam Rolagens Manuais.",
@@ -2210,7 +2210,7 @@
                 "Hint": "Quando ativado, os ícones de status serão substituídos.",
                 "Name": "Substituir Ícones de Status"
             },
-             "seenTour": {
+            "seenTour": {
                 "Hint": "O aviso do tour foi visualizado? Definir automaticamente.",
                 "Name": "Aviso do Tour"
             },

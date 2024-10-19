@@ -6,7 +6,7 @@ async function attack({trigger, workflow}) {
     let selection = await dialogUtils.confirm(trigger.entity.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: trigger.entity.name}));
     if (!selection) return;
     await trigger.entity.use();
-    let parts = workflow.item.system.damage.parts;
+    let parts = workflow.item.toObject().system.damage.parts;
     let bonusFormula = itemUtils.getConfig(trigger.entity, 'bonus');
     let bonus = workflow.item.system.attack.bonus === '' ? bonusFormula : workflow.item.system.attack.bonus + ' + ' + bonusFormula;
     let formula = itemUtils.getConfig(trigger.entity, 'formula');
