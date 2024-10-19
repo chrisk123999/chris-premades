@@ -1,3 +1,8 @@
+# 1.0.21 Release:
+## Bug Fixes:
+- Item Medkit
+- Wall of Fire
+
 # 1.0.20 Release:
 ## Bug Fixes:
 - Item Medkit
