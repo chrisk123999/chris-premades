@@ -25,7 +25,7 @@ function preCreateMacro(document, updates, options, userId) {
     if (!key) return;
     if (key != document.pack) return;
     if (document.command != '') return;
-    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils}} = chrisPremades;
+    let script = `const {DialogApp, Crosshairs, Summons, Teleport, utils: {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, crosshairUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils, tokenUtils, workflowUtils, spellUtils, regionUtils}} = chrisPremades;
     `;
     document.updateSource({command: script});
 }

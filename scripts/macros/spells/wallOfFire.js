@@ -65,11 +65,6 @@ async function early({trigger, workflow}) {
                         baseLevel: workflow.castData.baseLevel,
                         saveDC: itemUtils.getSaveDC(workflow.item)
                     },
-                    region: {
-                        visibility: {
-                            obscured: true
-                        }
-                    },
                     wallOfFire: {
                         casterUuid: workflow.actor.uuid
                     }
@@ -351,10 +346,10 @@ async function early({trigger, workflow}) {
                         castLevel: workflow.castData.castLevel,
                         baseLevel: workflow.castData.baseLevel,
                         saveDC: itemUtils.getSaveDC(workflow.item)
+                    },
+                    wallOfFire: {
+                        casterUuid: workflow.actor.uuid
                     }
-                },
-                wallOfFire: {
-                    casterUuid: workflow.actor.uuid
                 }
             }
         };
