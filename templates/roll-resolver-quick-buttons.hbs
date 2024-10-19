@@ -1,5 +1,6 @@
 <footer class="roll-resolver-quick-buttons">
     {{#if quickButtons}}
+        <input hidden type="submit" name="confirm"/>
         <fieldset class="cpr-fieldset cpr-row-center">
             <legend data-tooltip="{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Tooltip"}}">{{localize "CHRISPREMADES.ManualRolls.QuickButtons.Label"}}</legend>
             {{#each quickButtons as |button|}}

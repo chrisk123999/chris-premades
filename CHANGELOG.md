@@ -1,3 +1,7 @@
+# 1.0.22 Release:
+## Bug Fixes:
+- Manual Rolls
+
 # 1.0.21 Release:
 ## Bug Fixes:
 - Item Medkit
