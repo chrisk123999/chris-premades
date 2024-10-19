@@ -665,7 +665,20 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.activeTab = currentTabId;
         /* Get the data ready and add it to the current item */
         this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
-        await this.item.update({flags: {'chris-premades': genericUtils.deepClone(this.flags)}}, {diff: false, recursive: false});
+        await this.item.update({'flags.-=chris-premades': null});
+        let genericConfigs = genericUtils.getProperty(this.flags, 'config.generic');
+        if (genericConfigs) {
+            let configs = this.genericFeaturesConfigs;
+            this.flags.config.generic = Object.fromEntries(Object.entries(genericConfigs).map(([key, value]) => {
+                let setKeys = Object.keys(value);
+                let neededKeys = configs[key]?.configOptions.map(i => i.id) ?? [];
+                for (let currKey of neededKeys) {
+                    if (!setKeys.includes(currKey)) value[currKey] = configs[key].configOptions.find(i => i.id === currKey)?.value;
+                }
+                return [key, value];
+            }));
+        }
+        await this.item.update({'flags.chris-premades': genericUtils.deepClone(this.flags)});
         // If the current source is not the selected source, change it, if the select source is none, clear out the flags we add, if the selected source is development, do nothing.
         if (this._source != this.selectedSource) {
             // Different sources, do something about it
