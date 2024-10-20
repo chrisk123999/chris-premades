@@ -1,3 +1,7 @@
+#1.0.24 Release:
+## Bug Fixes:
+- Item Medkit
+
 # 1.0.23 Release:
 ## Bug Fixes:
 - Item Medkit
