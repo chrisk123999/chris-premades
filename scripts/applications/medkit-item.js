@@ -653,17 +653,8 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return item;
     }
     static async _update(event, target) {
-        /* Keep track of current tab */
-        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
-        this.activeTab = currentTabId;
-        /* --- */
         let source = this.availableAutomations.find(i => i.source === this._source);
         if (!source) return;
-        /* Keep the CPR flags */
-        await this.item.update({'flags.-=chris-premades': null});
-        this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
-        await this.item.update({'flags.chris-premades': genericUtils.deepClone(this.flags)});
-        /* --- */
         await ItemMedkit.update(this.item, source.document, {source: source.source, version: source.version});
         await this.readyData();
         await this.render(true);
