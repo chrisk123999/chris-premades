@@ -1,3 +1,9 @@
+# 1.0.23 Release:
+## Bug Fixes:
+- Item Medkit
+- Giant's Might
+- Region Handling for GPS
+
 # 1.0.22 Release:
 ## Bug Fixes:
 - Manual Rolls

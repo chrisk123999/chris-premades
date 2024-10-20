@@ -2,7 +2,6 @@
   "folder": "OU0OTCbfs088RoH0",
   "name": "Giant's Might",
   "type": "feat",
-  "_id": "5up3Wiyv0hC6eaRy",
   "img": "icons/skills/social/intimidation-impressing.webp",
   "system": {
     "description": {
@@ -36,7 +35,7 @@
       "units": "self"
     },
     "uses": {
-      "value": 4,
+      "value": 2,
       "max": "@prof",
       "per": "lr",
       "recovery": "",
@@ -87,31 +86,10 @@
   },
   "effects": [],
   "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": ""
-    },
     "chris-premades": {
       "info": {
         "identifier": "giantsMight",
-        "version": "0.12.52",
+        "version": "1.0.20",
         "source": "chris-premades",
         "hasAnimation": true
       },
@@ -125,7 +103,15 @@
       "config": {
         "playAnimation": true
       }
+    },
+    "autoanimations": {
+      "isEnabled": false,
+      "isCustomized": false,
+      "fromAmmo": false,
+      "version": 5,
+      "killAnim": true
     }
   },
-  "_key": "!items!5up3Wiyv0hC6eaRy"
+  "_id": "1uMADZxzjRMl630n",
+  "_key": "!items!1uMADZxzjRMl630n"
 }

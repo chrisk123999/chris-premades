@@ -1,7 +1,12 @@
 import {effectUtils} from './effectUtils.js';
 import {genericUtils} from './genericUtils.js';
-async function createRegions(regionDatas, scene, {parentEntity} = {}) {
+async function createRegions(regionDatas, scene, {parentEntity, excludeGPSRegionHandling = true} = {}) {
     let regions = await genericUtils.createEmbeddedDocuments(scene, 'Region', regionDatas);
+    if (excludeGPSRegionHandling) {
+        regionDatas.forEach(i => {
+            genericUtils.setProperty(i, 'flags.gambits-premades.excludeGRegionHandling', true);
+        });
+    }
     if (parentEntity) await effectUtils.addDependent(parentEntity, regions);
     return regions;
 }

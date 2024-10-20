@@ -18,5 +18,6 @@ export let touchDamage = {
             }
         ]
     },
-    isGenericFeature: true
+    isGenericFeature: true,
+    genericConfig: []
 };
