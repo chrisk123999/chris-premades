@@ -1,3 +1,7 @@
+# 1.0.27 Release:
+## Bug Fixes:
+- Flaming Sphere
+
 # 1.0.26 Release:
 ## Bug Fixes:
 - Flaming Sphere
