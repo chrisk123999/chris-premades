@@ -24,14 +24,15 @@ async function getCPRAutomation(item, {identifier} = {}) {
                 if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyItems);
                 break;
             case 'feat':
-                keys.push(constants.packs.classFeatures);
-                keys.push(constants.packs.actions);
-                keys.push(constants.packs.raceFeatures);
-                keys.push(constants.packs.miscellaneous);
-                keys.push(constants.packs.feats);
-                if (genericUtils.getCPRSetting('thirdParty')) {
-                    keys.push(constants.packs.thirdPartyClassFeatures);
-                    keys.push(constants.packs.thirdPartyFeats);
+                if (item.system.type.value === 'race') {
+                    keys.push(constants.packs.raceFeatures);
+                    //if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyRaceFeatures);
+                } else {
+                    keys.push(constants.packs.classFeatures);
+                    if (genericUtils.getCPRSetting('thirdParty')) keys.push(constants.packs.thirdPartyClassFeatures);
+                    keys.push(constants.packs.feats);
+                    keys.push(constants.packs.actions);
+                    keys.push(constants.packs.miscellaneous);
                 }
                 break;
         }
