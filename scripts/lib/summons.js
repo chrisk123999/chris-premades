@@ -134,7 +134,7 @@ export class Summons {
         await Summons.dismiss({trigger});
         return true;
     }
-    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier} = {}) {
+    static async getSummonItem(name, updates, originItem, {flatAttack = false, flatDC = false, damageBonus = null, translate, identifier, damageFlat = null} = {}) {
         let bonuses = (new Roll(originItem.actor.system.bonuses.rsak.attack + ' + 0', originItem.actor.getRollData()).evaluateSync({strict: false})).total;
         let prof = originItem.actor.system.attributes.prof;
         let abilityModifier = originItem.actor.system.abilities[originItem.abilityMod ?? originItem.actor.system.attributes?.spellcasting].mod;
@@ -149,6 +149,7 @@ export class Summons {
             flatDC: flatDC ? itemUtils.getSaveDC(originItem) : false
         });
         if (damageBonus) documentData.system.damage.parts[0][0] += ' + ' + damageBonus;
+        if (damageFlat) documentData.system.damage.parts[0][0] = damageFlat;
         return genericUtils.mergeObject(documentData, updates, {inplace: false});
     }
     async prepareAllData() {

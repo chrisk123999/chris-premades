@@ -142,7 +142,7 @@ export let cloudRune = {
 };
 export let fireRune = {
     name: 'Fire Rune',
-    version: '0.12.82',
+    version: '1.0.25',
     midi: {
         actor: [
             {

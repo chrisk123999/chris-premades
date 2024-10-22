@@ -162,7 +162,7 @@ export class CPRSingleRollResolver extends HandlebarsApplicationMixin(Applicatio
      * @param {object} [options]
      * @returns {Promise<number|void>}
      */
-    async resolveResult(term, method, { reroll=false, explode=false }={}) { // Need to like, actually do something about this...
+    async resolveResult(term, method, {reroll = false, explode = false} = {}) {
         if (!this.element) return term.randomFace();
         let rerolledResult = term.results.find(i => i.rerolled === true)?.result;
         if (term.results.filter(i => i.rerolled === true).length >= 10) {

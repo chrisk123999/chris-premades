@@ -158,6 +158,7 @@
             "Range": "Range:",
             "RealDarkness": "Use Real Darkness:",
             "SaveDC": "Save DC:",
+            "Scale": "Scale:",
             "ScaleIdentifier": "Scale Identifier",
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
@@ -833,6 +834,12 @@
             "FlameBlade": {
                 "Evoke": "Evoke Flame Blade",
                 "Scimitar": "Flame Blade Scimitar"
+            },
+            "FlamingSphere": {
+                "EndTurn": "Flaming Sphere: End Turn",
+                "Move": "Flaming Sphere: Move",
+                "Ram": "Ram Target?",
+                "RamItem": "Flaming Sphere: Ram"
             },
             "FlockOfFamiliars": {
                 "Command": "Flock of Familiars: Command",

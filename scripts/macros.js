@@ -146,6 +146,7 @@ export {witherAndBloom} from './macros/spells/witherAndBloom.js';
 export {wrathfulSmite, wrathfulSmiteDamage} from './macros/spells/wrathfulSmite.js';
 export {zoneOfTruth} from './macros/spells/zoneOfTruth.js';
 export {wallOfFire, wallOfFireWallRegion, wallOfFireRegion} from './macros/spells/wallOfFire.js';
+export {flamingSphere, flamingSphereEndTurn, flamingSphereMove, flamingSphereRam} from './macros/spells/flamingSphere.js';
 // Other
 export {actionDismissal} from './macros/generic/actionDismissal.js';
 export {removeOnMiss} from './macros/generic/removeOnMiss.js';

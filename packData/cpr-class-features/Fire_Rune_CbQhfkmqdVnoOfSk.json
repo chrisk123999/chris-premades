@@ -13,7 +13,7 @@
       "custom": ""
     },
     "activation": {
-      "type": "reaction",
+      "type": "special",
       "cost": 1,
       "condition": ""
     },
@@ -190,7 +190,7 @@
       "info": {
         "identifier": "fireRune",
         "source": "chris-premades",
-        "version": "0.12.82"
+        "version": "1.0.25"
       },
       "macros": {
         "midi": {

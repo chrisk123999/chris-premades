@@ -1,4 +1,13 @@
-#1.0.24 Release:
+# 1.0.25 Release:
+## New Content:
+- Flaming Sphere
+## Bug Fixes:
+- Item Medkit
+- Summons
+- Spiritual Weapon
+- Fire Rune
+
+# 1.0.24 Release:
 ## Bug Fixes:
 - Item Medkit
 

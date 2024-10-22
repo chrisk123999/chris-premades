@@ -1,9 +1,9 @@
 import {Summons} from '../../lib/summons.js';
 import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
-
 async function use({workflow}) {
     let jb2a = animationUtils.jb2aCheck();
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Spiritual Weapon');
+    if (!sourceActor) return;
     let name = itemUtils.getConfig(workflow.item, 'name');
     if (!name || !name.length) name = workflow.item.name;
     let updates = {
@@ -73,7 +73,7 @@ async function use({workflow}) {
             if (!selection2) return;
             selectedImg = 'jb2a.spiritual_weapon.' + selection + '.' + selection2;
         }
-        selectedImg = await Sequencer.Database.getEntry(selectedImg).file;
+        selectedImg = Sequencer.Database.getEntry(selectedImg).file;
         return selectedImg;
     }
     if (!tokenImg && jb2a) {
@@ -107,7 +107,7 @@ async function use({workflow}) {
             damageType
         ]
     ];
-    let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: 60, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
+    let summonedTokens = await Summons.spawn(sourceActor, updates, workflow.item, workflow.token, {duration: itemUtils.convertDuration(workflow.item).seconds, range: 60, animation, initiativeType: 'none', additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'spiritualWeaponAttack'}]});
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
     if (!effect) return;
     let [item] = await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});

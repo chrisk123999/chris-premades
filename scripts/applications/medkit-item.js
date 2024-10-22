@@ -653,11 +653,21 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return item;
     }
     static async _update(event, target) {
+        /* Keep track of current tab */
+        let currentTabId = this.element.querySelector('.item.active').getAttribute('data-tab');
+        this.activeTab = currentTabId;
         let source = this.availableAutomations.find(i => i.source === this._source);
         if (!source) return;
+        /* Keep the CPR flags */
+        await this.item.update({'flags.-=chris-premades': null});
+        this._cleanObject(this.flags); // Clean up any leftover undefined flags from adding/removing properties
+        await this.item.update({'flags.chris-premades': genericUtils.deepClone(this.flags)});
         await ItemMedkit.update(this.item, source.document, {source: source.source, version: source.version});
+        this.flags = genericUtils?.deepClone(this.item?.flags['chris-premades']) ?? {};
+        this.selectedGenericFeatures = Object.keys(this.flags?.config?.generic ?? {});
+        this._prepared = false;
         await this.readyData();
-        await this.render(true);
+        await this._reRender();
     }
     static async _apply(event, target) {
         /* Keep track of current tab */
@@ -730,12 +740,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         this.selectedGenericFeatures = Object.keys(this.flags?.config?.generic ?? {});
         this._prepared = false;
         await this.readyData();
-        let autoPos = {...this.position, height: 'auto'};
-        this.setPosition(autoPos);
-        await this.render(true);
-        let maxHeight = canvas.screenDimensions[1] * 0.9;
-        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
-        this.setPosition(newPos);
+        await this._reRender();
     }
     static async confirm(event, target) {
         await ItemMedkit._apply.bind(this)(event, target);
@@ -772,6 +777,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             tabs: this.tabsData
         };
         return context;
+    }
+    async _reRender() {
+        let autoPos = {...this.position, height: 'auto'};
+        this.setPosition(autoPos);
+        await this.render(true);
+        let maxHeight = canvas.screenDimensions[1] * 0.9;
+        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
+        this.setPosition(newPos);
     }
     _cleanObject(obj) {
         for (let key in obj) {
@@ -890,12 +903,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
             this.selectedGenericFeatures = option.value;
         }
         /* --- */
-        let autoPos = {...this.position, height: 'auto'};
-        this.setPosition(autoPos);
-        await this.render(true);
-        let maxHeight = canvas.screenDimensions[1] * 0.9;
-        let newPos = {...this.position, height: Math.min(this.element.scrollHeight, maxHeight), top:null};
-        this.setPosition(newPos);
+        await this._reRender();
     }
     async _onSubmitForm(formConfig, event) {
         event.preventDefault();
