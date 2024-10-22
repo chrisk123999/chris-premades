@@ -6,6 +6,7 @@
 - Summons
 - Spiritual Weapon
 - Fire Rune
+- Auras (Thanks costonb)
 
 # 1.0.24 Release:
 ## Bug Fixes:
