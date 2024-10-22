@@ -19,8 +19,8 @@ function collectTokenMacros(token, pass, target) {
             if (!macroList.length) return;
             if (isNaN(distance) && target) {
                 distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-                if (distance < 0) return [];
             }
+            if (distance < 0) return [];
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
@@ -67,8 +67,8 @@ function collectTokenMacros(token, pass, target) {
             if (!macroList.length) return;
             if (isNaN(distance) && target) {
                 distance = tokenUtils.getDistance(token.object, target.object, {wallsBlock: true, checkCover: genericUtils.getCPRSetting('movementPerformance') === 3});
-                if (distance < 0) return [];
             }
+            if (distance < 0) return [];
             let auraMacros = macroList.filter(i => i.aura?.find(j => j.pass === pass)).flatMap(k => k.aura).filter(l => l.pass === pass);
             if (!auraMacros.length) return;
             let validAuraMacros = [];
