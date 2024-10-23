@@ -552,6 +552,7 @@ export {wingsOfFlying, wingsOfFlyingEffect, wingsOfFlyingRecharge} from './macro
 export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMist} from './macros/items/trinket/wrapsOfDyamak.js';
 export {titanstoneKnucklesD, titanstoneKnucklesA, titanstoneKnucklesE} from './macros/items/trinket/titanstoneKnuckles.js';
 export {lastStandArmorBR, lastStandArmorCM, lastStandArmorCS, lastStandArmorH, lastStandArmorHP, lastStandArmorL, lastStandArmorP, lastStandArmorPl, lastStandArmorRM, lastStandArmorS, lastStandArmorSL, lastStandArmorSM} from './macros/items/armor/lastStandArmor.js';
+export {mysteryKey} from './macros/items/trinket/mysteryKey.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
 //Other
