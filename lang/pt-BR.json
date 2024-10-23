@@ -158,6 +158,7 @@
             "Range": "Alcance:",
             "RealDarkness": "Usar Escuridão Real:",
             "SaveDC": "CD da Salvaguarda:",
+            "Scale": "Escala:",
             "ScaleIdentifier": "Identificador de Escala",
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
@@ -833,6 +834,12 @@
             "FlameBlade": {
                 "Evoke": "Evocar Lâmina Flamejante",
                 "Scimitar": "Cimitarra de Lâmina Flamejante"
+            },
+            "FlamingSphere": {
+                "EndTurn": "Esfera Flamejante: Fim do Turno",
+                "Move": "Esfera Flamejante: Mover",
+                "Ram": "Forçar Alvo?",
+                "RamItem": "Esfera Flamejante: Forçar"
             },
             "FlockOfFamiliars": {
                 "Command": "Bando de Familiares: Comando",
@@ -1678,8 +1685,10 @@
             "Critical": "Crítico",
             "Failure": "Falha",
             "Fumble": "Falha Crítica",
+            "HasModifers": "Rolagem tem modificadores",
             "Hit": "Acerto",
             "Miss": "Erro",
+            "PleaseResolve": "Resolva manualmente antes de inserir o total",
             "QuickButtons": {
                 "Label": "Botões Rápidos",
                 "Tooltip": "Atalhos para completar o rolagem com o resultado desejado"
