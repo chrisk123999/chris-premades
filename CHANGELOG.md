@@ -1,3 +1,11 @@
+# 1.0.28 Release:
+## New Content:
+- Mystery Key
+## Bug Fixes:
+- Cloudkill
+- Transmuted Spell
+- Item Medkit
+
 # 1.0.27 Release:
 ## Bug Fixes:
 - Flaming Sphere

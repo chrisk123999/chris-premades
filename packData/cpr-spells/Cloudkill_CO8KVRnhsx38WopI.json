@@ -128,15 +128,17 @@
     "core": {
       "sourceId": "Actor.iDTsfmjce9HF9WmK.Item.ELsVomopMwIhXcWT"
     },
+    "dnd5e": {},
     "chris-premades": {
       "info": {
         "name": "Cloudkill",
-        "version": "0.12.0",
+        "version": "1.0.28",
         "settings": [
           "Template Listener"
         ],
         "identifier": "cloudkill",
-        "source": "chris-premades"
+        "source": "chris-premades",
+        "hasAnimation": true
       },
       "macros": {
         "midi": {
@@ -145,8 +147,7 @@
           ]
         }
       }
-    },
-    "dnd5e": {}
+    }
   },
   "folder": null,
   "_id": "CO8KVRnhsx38WopI",
