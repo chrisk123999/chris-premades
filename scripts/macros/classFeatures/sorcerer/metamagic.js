@@ -422,7 +422,7 @@ async function useTransmuted({workflow}) {
     let newDamageParts = [];
     for (let damageParts of selection.system.damage.parts) {
         if (damageParts[1] === damageTypeToChange) {
-            newDamageParts.push([damageParts[0], newDamageType]);
+            newDamageParts.push([damageParts[0].replaceAll(damageTypeToChange, newDamageType), newDamageType]);
         } else {
             newDamageParts.push(damageParts);
         }
