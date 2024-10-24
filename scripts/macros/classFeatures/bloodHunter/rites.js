@@ -22,6 +22,11 @@ export let riteOfTheDawn = {
                 priority: 50
             }
         ]
+    },
+    ddbi: {
+        renamedItems: {
+            'Crimson Rite - Rite of the Dawn': 'Crimson Rite: Rite of the Dawn'
+        }
     }
 };
 export let riteOfTheDead = {
