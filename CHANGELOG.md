@@ -1,3 +1,14 @@
+# 1.0.29 Release:
+## New Monster Content:
+- Dune Mimic: Adhesive and Pseudopod
+- Giant Mimic: Adhesive and Pseudopod
+- Hoard Mimic: Caustic Mist and Pseudopod
+- Mimic: Adhesive and Pseudopod
+- Minotaur: Charge and Gore
+- Spitting Mimic: Adhesive, Pseudopods, and Spit Acid
+## Update Notes:
+- Condition Resistance and Condition Vulnerability will now take into account the prone condition when it's being applied via the CPR "proneOnFail" macro.
+
 # 1.0.28 Release:
 ## New Content:
 - Mystery Key

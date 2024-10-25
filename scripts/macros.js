@@ -430,6 +430,13 @@ export {devastatingBolt} from './macros/monsterFeatures/fey/hobgoblinDevastator/
 export {armyArcana} from './macros/monsterFeatures/fey/hobgoblinDevastator/armyArcana.js';
 export {shieldBash} from './macros/monsterFeatures/fey/hobgoblinWarlord/shieldBash.js';
 export {thunderousStrike} from './macros/monsterFeatures/elemental/earthElementalMyrmidon/thunderousStrike.js';
+export {minotaurCharge} from './macros/monsterFeatures/monstrosity/minotaur/charge.js';
+export {minotaurGore} from './macros/monsterFeatures/monstrosity/minotaur/gore.js';
+export {mimicAdhesive} from './macros/monsterFeatures/monstrosity/mimic/adhesive.js';
+export {mimicPseudopod} from './macros/monsterFeatures/monstrosity/mimic/pseudopod.js';
+export {causticMist} from './macros/monsterFeatures/monstrosity/hoardMimic/causticMist.js';
+export {hoardMimicPseudopod} from './macros/monsterFeatures/monstrosity/hoardMimic/pseudopod.js';
+export {spittingMimicAcid} from './macros/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';

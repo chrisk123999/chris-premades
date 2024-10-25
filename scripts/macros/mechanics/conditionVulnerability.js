@@ -31,7 +31,8 @@ let effectData = {
 async function preambleComplete(workflow) {
     if (!workflow.targets.size) return;
     if (workflow.item.system.save?.dc === null || workflow.item.system.save === undefined) return;
-    if (!workflow.item.effects.size) return;
+    let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
+    if (!workflow.item.effects.size && !macros.length) return;
     let itemConditions = new Set();
     workflow.item.effects.forEach(effect => {
         effect.changes.forEach(element => {
@@ -41,6 +42,10 @@ async function preambleComplete(workflow) {
         if (effectConditions) effectConditions.forEach(c => itemConditions.add(c.toLowerCase()));
         itemConditions = itemConditions.union(effect.statuses ?? new Set());
     });
+    let proneMacros = [
+        'proneOnFail'
+    ];
+    if (macros.some(i => proneMacros.includes(i))) itemConditions.add('prone');
     if (!itemConditions.size) return;
     await Promise.all(workflow.targets.map(async token => {
         await Promise.all(itemConditions.map(async condition => {
