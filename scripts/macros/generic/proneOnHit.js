@@ -1,6 +1,6 @@
 import {actorUtils, effectUtils} from '../../utils.js';
 async function late({trigger, workflow}) {
-    await Promise.all(workflow.target.map(async token => {
+    await Promise.all(workflow.targets.map(async token => {
         if (!actorUtils.checkTrait(token.actor, 'ci', 'prone') && !effectUtils.getEffectByStatusID(token.actor, 'prone')) await effectUtils.applyConditions(token.actor, ['prone']);
     }));
 }
