@@ -1,6 +1,4 @@
-import {epicRolls} from '../../integrations/epicRolls.js';
 import {actorUtils, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
-
 function getDistance(sourceToken, targetToken, {wallsBlock, checkCover} = {}) {
     // return MidiQOL.computeDistance(sourceToken, targetToken, wallsBlock, checkCover);
     if (checkCover) {
@@ -128,26 +126,12 @@ function getDistanceTemp(t1 /*Token*/, t2 /*Token*/, wallblocking = false) {
     if (!(t2.document instanceof WallDocument)) {
         for (x = t1StartX; x < t1DocWidth; x++) {
             for (y = t1StartY; y < t1DocHeight; y++) {
-                let origin;
-                //@ts-expect-error
-                if (game.release.generation > 11) {
-                    //@ts-expect-error
-                    const point = canvas.grid.getCenterPoint({ x: Math.round(t1.document.x + (canvas.dimensions.size * x)), y: Math.round(t1.document.y + (canvas.dimensions.size * y)) });
-                    origin = new PIXI.Point(point.x, point.y);
-                }
-                else
-                    origin = new PIXI.Point(...canvas.grid.getCenter(Math.round(t1.document.x + (canvas.dimensions.size * x)), Math.round(t1.document.y + (canvas.dimensions.size * y))));
+                const point = canvas.grid.getCenterPoint({ x: Math.round(t1.document.x + (canvas.dimensions.size * x)), y: Math.round(t1.document.y + (canvas.dimensions.size * y)) });
+                let origin = new PIXI.Point(point.x, point.y);
                 for (x1 = t2StartX; x1 < t2DocWidth; x1++) {
                     for (y1 = t2StartY; y1 < t2DocHeight; y1++) {
-                        let dest;
-                        //@ts-expect-error
-                        if (game.release.generation > 11) {
-                            //@ts-expect-error
-                            const point = canvas.grid.getCenterPoint({ x: Math.round(t2.document.x + (canvas.dimensions.size * x1)), y: Math.round(t2.document.y + (canvas.dimensions.size * y1)) });
-                            dest = new PIXI.Point(point.x, point.y);
-                        }
-                        else
-                            dest = new PIXI.Point(...canvas.grid.getCenter(Math.round(t2.document.x + (canvas.dimensions.size * x1)), Math.round(t2.document.y + (canvas.dimensions.size * y1))));
+                        const point = canvas.grid.getCenterPoint({ x: Math.round(t2.document.x + (canvas.dimensions.size * x1)), y: Math.round(t2.document.y + (canvas.dimensions.size * y1)) });
+                        let dest = new PIXI.Point(point.x, point.y);
                         const r = new Ray(origin, dest);
                         if (wallblocking) {
                             switch (configSettings.optionalRules.wallsBlockRange) {
@@ -159,6 +143,7 @@ function getDistanceTemp(t1 /*Token*/, t2 /*Token*/, wallblocking = false) {
                                     if (collisionCheck)
                                         continue;
                                     break;
+                                case 'levelsautocover':
                                 case 'centerLevels':
                                     // //@ts-expect-error
                                     // TODO include auto cover calcs in checking console.error(AutoCover.calculateCover(t1, t2));
@@ -219,7 +204,7 @@ function getDistanceTemp(t1 /*Token*/, t2 /*Token*/, wallblocking = false) {
         rdistance = segments.map(ray => midiMeasureDistances([ray], { gridSpaces: true }));
         distance = Math.min(...rdistance);
         if (configSettings.optionalRules.distanceIncludesHeight) {
-            let t1ElevationRange = Math.max(t1DocHeight, t1DocWidth) * (canvas?.dimensions?.distance ?? 5);
+            //let t1ElevationRange = Math.max(t1DocHeight, t1DocWidth) * (canvas?.dimensions?.distance ?? 5);
             if ((t2Elevation > t1Elevation && t2Elevation < t1TopElevation) || (t1Elevation > t2Elevation && t1Elevation < t2TopElevation)) {
                 //check if bottom elevation of each token is within the other token's elevation space, if so make the height difference 0
                 heightDifference = 0;
@@ -234,16 +219,7 @@ function getDistanceTemp(t1 /*Token*/, t2 /*Token*/, wallblocking = false) {
     }
     else {
         const w = t2.document;
-        let closestPoint;
-        //@ts-expect-error
-        if (game.release.generation === 11) {
-            //@ts-expect-error
-            closestPoint = foundry.utils.closestPointToSegment(t1.center, w.object.A, w.object.B);
-        }
-        else {
-            //@ts-expect-error
-            closestPoint = foundry.utils.closestPointToSegment(t1.center, w.object.edge.a, w.object.edge.b);
-        }
+        let closestPoint  = foundry.utils.closestPointToSegment(t1.center, w.object.edge.a, w.object.edge.b);
         distance = midiMeasureDistances([{ ray: new Ray(t1.center, closestPoint) }], { gridSpaces: true });
         if (configSettings.optionalRules.distanceIncludesHeight) {
             if (!w.flags?.['wall-height'])
@@ -281,7 +257,7 @@ function getDistanceTemp(t1 /*Token*/, t2 /*Token*/, wallblocking = false) {
             let nd = Math.min(distance, heightDifference);
             let ns = Math.abs(distance - heightDifference);
             // distance = nd + ns;
-            let dimension = canvas?.dimensions?.distance ?? 5;
+            //let dimension = canvas?.dimensions?.distance ?? 5;
             let diagonals = safeGetGameSetting('core', 'gridDiagonals');
             //@ts-expect-error GRID_DIAGONALS
             const GRID_DIAGONALS = CONST.GRID_DIAGONALS;
