@@ -1,3 +1,8 @@
+# 1.0.30 Release:
+## Bug Fixes:
+- Movement Event
+- Prone On Hit Macro
+
 # 1.0.29 Release:
 ## New Monster Content:
 - Dune Mimic: Adhesive and Pseudopod
