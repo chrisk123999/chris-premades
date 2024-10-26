@@ -48,9 +48,9 @@
       "flags": {}
     },
     {
-      "lang": "fr-FR",
+      "lang": "fr",
       "name": "Français",
-      "path": "lang/fr-FR.json",
+      "path": "lang/fr.json",
       "flags": {}
     }
   ],
