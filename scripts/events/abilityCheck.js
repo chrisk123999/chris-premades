@@ -45,7 +45,7 @@ function collectActorCheckMacros(actor, pass, checkId, options, roll) {
                 castLevel: -1,
                 saveDC: itemUtils.getSaveDC(item)
             },
-            macro: itemMacros,
+            macros: itemMacros,
             name: item.name.slugify(),
             actor: actor,
             checkId: checkId,
