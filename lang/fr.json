@@ -331,7 +331,7 @@
         "WillingMove": "{actorName} a-t-il bougé volontairement ?"
       },
       "BorrowedKnowledge": {
-        "SelectSkill": "Sélectionnez une compétence pour acquérir une compétence temporaire dans :"
+        "SelectSkill": "Sélectionnez une compétence pour acquérir une maîtrise temporaire dans :"
       },
       "BrandingSmite": {
         "Branded": "Châtiment de marque : Marqué"
