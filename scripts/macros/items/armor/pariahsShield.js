@@ -14,6 +14,7 @@ async function moved({trigger}) {
 }
 async function damage({trigger, workflow, ditem}) {
     if (!workflow.hitTargets.size) return;
+    if (['healing', 'temphp'].includes(workflow.defaultDamageType)) return;
     let sourceToken = workflow.token;
     let targetToken = trigger.targetToken;
     if (sourceToken.document.uuid === targetToken.document.uuid) return;
@@ -30,7 +31,7 @@ async function damage({trigger, workflow, ditem}) {
     for (let i of nearbyAllies) {
         let item = itemUtils.getItemByIdentifier(i.actor, 'pariahsShield');
         let userId = socketUtils.firstOwner(i.document, true);
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.PariahsShield.Protect', {name: i.actor.name, item: item.name}), {userId: userId});
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.PariahsShield.Protect', {name: targetToken.name, item: item.name}), {userId: userId});
         if (!selection) continue;
         let damage = ditem.hpDamage + ditem.tempDamage;
         workflowUtils.negateDamageItemDamage(ditem);

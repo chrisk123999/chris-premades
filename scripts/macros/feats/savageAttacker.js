@@ -19,7 +19,7 @@ async function damage({trigger: {entity: item}, workflow}) {
         trueOld.push(currRoll);
         trueNew.push(await new CONFIG.Dice.DamageRoll(currRoll.formula, currRoll.data, currRoll.options).evaluate());
     }
-    if (trueOld.reduce((acc, i) => acc + i.total) >= trueNew.reduce((acc, i) => acc + i.total)) return;
+    if (trueOld.reduce((acc, i) => acc + i.total, 0) >= trueNew.reduce((acc, i) => acc + i.total, 0)) return;
     let newDamageRolls = workflow.damageRolls;
     for (let i = 0; i < numWeaponDamageRolls; i++) {
         newDamageRolls[i] = trueNew[i];

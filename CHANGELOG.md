@@ -1,3 +1,11 @@
+# 1.0.32 Release:
+## Bug Fixes
+- Savage Attacker
+- Combat Events
+- Pariah's Shield
+- Runic Shield
+- Ready Spell
+
 # 1.0.31 Release:
 ## Bug Fixes
 - Ability Check Event

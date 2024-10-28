@@ -14,7 +14,7 @@ async function attack({trigger, workflow}) {
     for (let i of nearbyShields) {
         let item = itemUtils.getItemByIdentifier(i.actor, 'runicShield');
         let userId = socketUtils.firstOwner(i.document, true);
-        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.RunicShield.Use', {item: item.name, name: i.actor.name}), {userId: userId});
+        let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Macros.RunicShield.Use', {item: item.name, name: target.name}), {userId: userId});
         if (!selection) continue;
         workflow.aborted = true;
         let itemData = genericUtils.duplicate(workflow.item.toObject());
