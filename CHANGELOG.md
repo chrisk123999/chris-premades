@@ -1,3 +1,9 @@
+# 1.0.31 Release:
+## Bug Fixes
+- Ability Check Event
+## Update Notes:
+- Updated French translations. Thanks SooZyx
+
 # 1.0.30 Release:
 ## Bug Fixes:
 - Movement Event
