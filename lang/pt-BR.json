@@ -329,6 +329,11 @@
             "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
             "StoneShape": "Moldar Rochas (Grovelthrash)"
         },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copiar ID do Compêndio"
+            }
+        },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
             "Readme": "Leia-Me",
@@ -1726,6 +1731,11 @@
                     "Tooltip": "Personalize certos visuais"
                 }
             },
+            "Compendium": {
+                "Apply": "Usar Medkit em todos os documentos do compêndio?",
+                "Done": "Atualização do compêndio concluída!",
+                "Start": "Atualizando documentos..."
+            },
             "Effect": {
                 "Conditions": {
                     "Label": "Condições",
@@ -1798,6 +1808,13 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "Você não tem permissão para alterar isso",
+            "Scene": {
+                "Done": "Atualização de cena concluída!",
+                "Start": "Atualizando tokens...",
+                "UpdateAll": "Atualizar todos PJs e PNJs",
+                "UpdateCharacters": "Atualizar todos PJs",
+                "UpdateNPCs": "Atualizar todos PNJs"
+            },
             "SelectedAutomation": "Automação Selecionada:",
             "Status": {
                 "0": "Desatualizado",
@@ -1960,6 +1977,10 @@
                 "9": "Todos os Personagens e PnJs",
                 "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
                 "Name": "Adicionar Ações aos Tokens"
+            },
+            "addCompendiumButton": {
+                "Hint": "Quando ativado, um botão será adicionado ao cabeçalho dos compêndios para copiar a ID.",
+                "Name": "Botão de ID de Compêndio"
             },
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
