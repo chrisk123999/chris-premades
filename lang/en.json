@@ -1726,6 +1726,11 @@
                     "Tooltip": "Customize certain visuals"
                 }
             },
+            "Compendium": {
+                "Apply": "Medkit all compendium documents?",
+                "Done": "Compendium update complete!",
+                "Start": "Updating documents..."
+            },
             "Effect": {
                 "Conditions": {
                     "Label": "Conditions",
@@ -1798,6 +1803,13 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "You do not have permissions to change this",
+            "Scene": {
+                "Done": "Scene update complete!",
+                "Start": "Updating tokens...",
+                "UpdateAll": "Update all Characterse and NPCs",
+                "UpdateCharacters": "Update all Characters",
+                "UpdateNPCs": "Update all NPCs"
+            },
             "SelectedAutomation": "Selected Automation:",
             "Status": {
                 "0": "Out of Date",
@@ -2270,6 +2282,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "addCompendiumButton": {
+                "Hint": "When enabled, a button will be added to compendium headers to copy the id.",
+                "Name": "Compendium ID Button"
             }
         },
         "SkillCheck": {

@@ -161,6 +161,7 @@ function getItemByGenericFeature(actor, key) {
 function isWeaponProficient(item) {
     if (item.system.proficient) return true;
     if (!item.actor) return false;
+    if (item.actor.type === 'npc') return true;
     if (item.actor.system.traits.weaponProf.value.has(item.system.type.baseItem)) return true;
     if (item.actor.system.traits.weaponProf.value.has(CONFIG.DND5E.weaponProficienciesMap[item.system.type.value])) return true;
     return false;

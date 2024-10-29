@@ -849,6 +849,12 @@ export function registerSettings() {
         category: 'manualRolls',
         onChange: (value) => rollResolver.patch(value)
     });
+    addSetting({
+        key: 'addCompendiumButton',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
 }
 export function registerMenus() {
     if (game.settings.get('chris-premades', 'devTools')) addMenu({

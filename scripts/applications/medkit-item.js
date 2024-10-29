@@ -84,6 +84,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await medkit.readyData();
         medkit.render(true);
     }
+    static async itemUpdate(item) {
+        let medkit = new ItemMedkit(item);
+        await medkit.readyData();
+        let source = medkit.availableAutomations.find(i => i.source === medkit._source);
+        if (!source) return;
+        await ItemMedkit.update(item, source);
+        return item;
+    }
     /* Protected getters get the original data of the actual item, non-protected get the in-memory value stored in our duplicate flags */
     get identifier() {
         return this.flags?.info?.identifier;

@@ -29,7 +29,6 @@ export function registerHooks() {
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
-    //Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
@@ -80,6 +79,8 @@ export function registerHooks() {
         Hooks.on('createToken', auras.createToken);
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
+        Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
+        Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
         auras.canvasReady(canvas);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);
