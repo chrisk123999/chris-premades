@@ -1,6 +1,5 @@
 import {compendiumUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../utils.js';
 async function rollItem(type, token, targets) {
-    console.log('here');
     let key = genericUtils.getCPRSetting(type === 'critical' ? 'criticalCompendium' : 'fumbleCompendium');
     let pack = game.packs.get(key);
     if (!pack) {

@@ -329,6 +329,11 @@
             "MeldIntoStone": "Meld into Stone (Grovelthrash)",
             "StoneShape": "Stone Shape (Grovelthrash)"
         },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copy Pack ID"
+            }
+        },
         "Journal": {
             "Chat": "View the Cauldron of Plentiful Resources readme here:",
             "Readme": "Read Me",
@@ -1973,6 +1978,10 @@
                 "Hint": "When enabled, generic actions will be added when a token is placed.",
                 "Name": "Add Actions to Tokens"
             },
+            "addCompendiumButton": {
+                "Hint": "When enabled, a button will be added to compendium headers to copy the id.",
+                "Name": "Compendium ID Button"
+            },
             "additionalCompendiums": {
                 "Hint": "Select additional item compendiums to be used by the medkit and adjust their priority.",
                 "Name": "Additional Compendiums"
@@ -2282,10 +2291,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "addCompendiumButton": {
-                "Hint": "When enabled, a button will be added to compendium headers to copy the id.",
-                "Name": "Compendium ID Button"
             }
         },
         "SkillCheck": {

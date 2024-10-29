@@ -6,21 +6,8 @@ import {ActorMedkit} from '../applications/medkit-actor.js';
 export function createHeaderButton(config, buttons) {
     // eslint-disable-next-line no-undef
     if (config instanceof Compendium) {
-        if (genericUtils.getCPRSetting('addCompendiumButton')) {
-            buttons.unshift({
-                class: 'document-id-link',
-                icon: 'fa-solid fa-passport',
-                onclick: () => {
-                    try {
-                        let id = config.collection.metadata.id;
-                        navigator.clipboard.writeText(id);
-                        genericUtils.notify(genericUtils.format('DOCUMENT.IdCopiedClipboard', {id: id, type: 'id', label: genericUtils.translate('PACKAGE.TagCompendium')}), 'info', {localize: false});
-                    } catch (error) { /* empty */ }
-                }
-            });
-        }
         if (config.collection.locked) return;
-        let validTypes = ['Actor']; //Finish this.
+        let validTypes = ['Actor', 'Item'];
         if (!validTypes.includes(config.collection.metadata.type)) return;
     }
     buttons.unshift({
@@ -135,7 +122,27 @@ async function compendiumMedkit(compendium) {
     if (compendium.collection.metadata.type === 'Actor') {
         for (let i of documents) await actorUtils.updateAll(i);
     } else if (compendium.collection.metadata.type === 'Item') {
-        //Finish this.
+        for (let i of documents) await itemUtils.itemUpdate(i);
     }
     genericUtils.notify('CHRISPREMADES.Medkit.Compendium.Done', 'info');
+}
+export async function renderCompendium(app, html, data) {
+    if (!genericUtils.getCPRSetting('addCompendiumButton')) return;
+    let header = html[0].querySelector('h4.window-title');
+    if (!header) return;
+    let button = document.createElement('a');
+    button.classList.add('document-id-link');
+    button.dataset.tooltip = 'CHRISPREMADES.HeaderButtons.PackId.Tooltip';
+    button.dataset.tooltipDirection = 'UP';
+    button.addEventListener('click', () => {
+        try {
+            let id = data.collection.metadata.id;
+            navigator.clipboard.writeText(id);
+            genericUtils.notify(genericUtils.format('DOCUMENT.IdCopiedClipboard', {id: id, type: 'id', label: genericUtils.translate('PACKAGE.TagCompendium')}), 'info', {localize: false});
+        } catch (error) { /* empty */ }
+    });
+    let icon = document.createElement('i');
+    icon.setAttribute('class', 'fa-solid fa-passport');
+    button.append(icon);
+    header.append(button);
 }

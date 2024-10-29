@@ -1,4 +1,7 @@
 # 1.0.32 Release:
+## Update Notes:
+- Added Medkit button to scenes and compendiums.
+- Added compendium id button setting.
 ## Bug Fixes
 - Savage Attacker
 - Combat Events
