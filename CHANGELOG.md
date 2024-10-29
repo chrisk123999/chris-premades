@@ -1,3 +1,7 @@
+# 1.0.33 Release:
+## Bug Fixes:
+- Item Medkit
+
 # 1.0.32 Release:
 ## Update Notes:
 - Added Medkit button to scenes and compendiums.

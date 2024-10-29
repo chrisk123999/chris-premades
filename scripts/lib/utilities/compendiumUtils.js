@@ -70,7 +70,7 @@ async function getGPSAutomation(item, {identifier} = {}) {
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'item'); break;
+                found = gambitPremades.gambitItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type)); break;
             case 'feat': found = gambitPremades.gambitItems.find(i => i.name === item.name && i.type === 'feat'); break;
         }
     } else if (type === 'npc') {
@@ -92,7 +92,7 @@ async function getMISCAutomation(item, {identifier} = {}) {
             case 'tool':
             case 'backpack':
             case 'loot':
-                found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'item'); break;
+                found = miscPremades.miscItems.find(i => i.name === item.name && constants.itemTypes.includes(i.type)); break;
             case 'feat': found = miscPremades.miscItems.find(i => i.name === item.name && i.type === 'feat'); break;
         }
     } else if (type === 'npc') {
