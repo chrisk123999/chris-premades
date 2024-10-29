@@ -1,4 +1,4 @@
 export let readySpell = {
     name: 'Ready Spell',
-    version: '0.12.12'
+    version: '1.0.32'
 };

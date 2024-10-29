@@ -193,28 +193,29 @@ async function updateCombat(combat, changes, context) {
     if (!changes.turn && !changes.round) return;
     if (!combat.started || !combat.isActive) return;
     if (currentRound < previousRound || (currentTurn < previousTurn && currentTurn === previousRound)) return;
-    let currentToken = combat.scene.tokens.get(combat.current.tokenId);
-    let previousToken = combat.scene.tokens.get(combat.previous.tokenId);
+    let sceneTokens = combat.scene?.tokens ?? [];
+    let currentToken = sceneTokens.get(combat.current.tokenId);
+    let previousToken = sceneTokens.get(combat.previous.tokenId);
     if (previousToken) await executeMacroPass([previousToken], 'turnEnd');
     if (currentToken) await executeMacroPass([currentToken], 'turnStart');
-    for (let token of combat.scene.tokens) await executeMacroPass([token], 'everyTurn');
-    if (previousToken) await executeMacroPass(combat.scene.tokens.filter(i => i != previousToken), 'turnEndNear', previousToken);
-    if (currentToken) await executeMacroPass(combat.scene.tokens.filter(i => i != currentToken), 'turnStartNear', currentToken);
+    for (let token of (sceneTokens ?? [])) await executeMacroPass([token], 'everyTurn');
+    if (previousToken) await executeMacroPass(sceneTokens.filter(i => i != previousToken), 'turnEndNear', previousToken);
+    if (currentToken) await executeMacroPass(sceneTokens.filter(i => i != currentToken), 'turnStartNear', currentToken);
 }
 async function combatStart(combat, changes) {
     if (!socketUtils.isTheGM()) return;
-    let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)).filter(j => j);
+    let tokens = combat.combatants.map(i => combat.scene?.tokens.get(i.tokenId)).filter(j => j);
     for (let i of tokens) await executeMacroPass([i], 'combatStart');
-    await templateEvents.executeMacroPass(combat.scene.templates, 'combatStart');
-    await regionEvents.executeMacroPass(combat.scene.regions, 'combatStart');
+    await templateEvents.executeMacroPass(combat.scene?.templates ?? [], 'combatStart');
+    await regionEvents.executeMacroPass(combat.scene?.regions ?? [], 'combatStart');
 
 }
 async function deleteCombat(combat, changes, context) {
     if (!socketUtils.isTheGM()) return;
-    let tokens = combat.combatants.map(i => combat.scene.tokens.get(i.tokenId)).filter(j => j);
+    let tokens = combat.combatants.map(i => combat.scene?.tokens.get(i.tokenId)).filter(j => j);
     for (let i of tokens) await executeMacroPass([i], 'combatEnd'); //The last turnEnd macro may need to be run before this?
-    await templateEvents.executeMacroPass(combat.scene.templates, 'combatEnd');
-    await regionEvents.executeMacroPass(combat.scene.regions, 'combatEnd');
+    await templateEvents.executeMacroPass(combat.scene?.templates ?? [], 'combatEnd');
+    await regionEvents.executeMacroPass(combat.scene?.regions ?? [], 'combatEnd');
 }
 export let combatEvents = {
     combatStart,
