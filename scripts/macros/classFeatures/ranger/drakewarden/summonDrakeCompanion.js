@@ -1,5 +1,5 @@
 import {Summons} from '../../../../lib/summons.js';
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
+import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../../utils.js';
 async function use({workflow}) {
     let sourceActor = await compendiumUtils.getActorFromCompendium(constants.packs.summons, 'CPR - Drake Companion');
     if (!sourceActor) return;
@@ -195,7 +195,7 @@ async function postDamage({trigger: {entity: item, token}, workflow}) {
     if (!damageType) return;
     if (tokenUtils.getDistance(token, workflow.token) > 30) return;
     if (!tokenUtils.canSee(token, workflow.token)) return;
-    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseName', {itemName: item.name, tokenName: token.name}));
+    let selection = await dialogUtils.confirm(item.name, genericUtils.format('CHRISPREMADES.Dialog.UseName', {itemName: item.name, tokenName: token.name}), {userId: socketUtils.firstOwner(token.actor, true)});
     if (!selection) return;
     await workflowUtils.bonusDamage(workflow, '1d6[' + damageType + ']', {damageType});
     await actorUtils.setReactionUsed(token.actor);

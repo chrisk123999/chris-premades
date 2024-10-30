@@ -1,3 +1,7 @@
+# 1.0.34 Release:
+## Bug Fixes:
+- Infused Strikes
+
 # 1.0.33 Release:
 ## Bug Fixes:
 - Item Medkit
