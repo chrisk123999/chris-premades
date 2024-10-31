@@ -113,6 +113,7 @@
             },
             "ApplyFilter": "Aplicar Filtro:",
             "AttackBonus": "Bônus Ataque:",
+            "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -146,15 +147,19 @@
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compendium {option}:",
             "CreatureTypes": "Tipos de Criatura:",
+            "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
+            "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
             "Distance": "Distância:",
             "Expire": "Expiração:",
             "Formula": "Fórmula:",
             "HideToken": "Ocultar Token:",
+            "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "Range": "Alcance:",
@@ -165,7 +170,8 @@
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
-            "SpecificAnimation": "Animação {option}:"
+            "SpecificAnimation": "Animação {option}:",
+            "UseFormula": "Usar Fórmula:"
         },
         "Cover": {
             "Full": "Cobertura Total",
@@ -298,6 +304,7 @@
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
+            "None": "Nenhum(a)",
             "Ok": "Ok",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
@@ -1079,6 +1086,14 @@
                 "RemoveCondition": "Remover uma Condição:",
                 "RestoreHitpoints": "Restaurar Pontos de Vida:",
                 "Select": "Como você quer ajudar?"
+            },
+            "LifeSteal": {
+                "HealingType": "Tipo de Cura:"
+            },
+            "Lifesteal": {
+                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "ReduceMaxHP": "Reduzir PV Máx.:",
+                "excessAsTemp": "Excesso de Cura como PV Temp.:"
             },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
