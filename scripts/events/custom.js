@@ -1,6 +1,7 @@
 import {genericUtils} from '../utils.js';
 import * as macros from '../macros.js';
 let customMacroList = [];
+let registeredMacroList = [];
 async function ready() {
     let key = genericUtils.getCPRSetting('macroCompendium');
     let pack = game.packs.get(key);
@@ -34,12 +35,24 @@ function updateOrDeleteMacro(document, updates, options, userId) {
     ready();
 }
 function getCustomMacroList() {
-    return customMacroList;
+    return customMacroList.concat(registeredMacroList);
+}
+function registerMacros(input) {
+    let validatedMacros = input.filter(i => {
+        let identifier = i.identifier ?? i.name?.slugify();
+        if (!identifier) {
+            genericUtils.notify('CHRISPREMADES.CustomMacros.NoIdentifier');
+            return false;
+        }
+        return true;
+    });
+    registeredMacroList.push(...validatedMacros);
 }
 export let custom = {
     ready,
     getMacro,
     preCreateMacro,
     updateOrDeleteMacro,
-    getCustomMacroList
+    getCustomMacroList,
+    registerMacros
 };

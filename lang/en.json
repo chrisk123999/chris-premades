@@ -181,6 +181,7 @@
             "Unknown": "Unknown Cover"
         },
         "CustomMacros": {
+            "NoIdentifier": "A registered macro was missing an identifier and was skipped!",
             "NoReturn": "The macro \"{name}\" is not returning valid data and has been skipped!"
         },
         "CustomTypes": {
