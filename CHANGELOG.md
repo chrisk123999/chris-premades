@@ -1,6 +1,9 @@
 # 1.0.34 Release:
+## New Monster Content:
+- Lifesteal (Generic Monster Feature)
 ## Bug Fixes:
 - Infused Strikes
+- Crown of Madness
 
 # 1.0.33 Release:
 ## Bug Fixes:

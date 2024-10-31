@@ -1,5 +1,4 @@
 import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
-
 async function late({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (!workflow.damageRoll) return;

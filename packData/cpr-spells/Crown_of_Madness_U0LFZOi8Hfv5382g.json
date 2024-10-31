@@ -94,13 +94,15 @@
     "core": {
       "sourceId": "Item.kBxT64wY3ib8DmDO"
     },
+    "dnd5e": {},
     "chris-premades": {
       "info": {
         "name": "Crown of Madness",
-        "version": "0.7.01"
+        "source": "chris-premades",
+        "identifier": "crownOfMadness",
+        "version": "0.12.0"
       }
-    },
-    "dnd5e": {}
+    }
   },
   "system": {
     "description": {

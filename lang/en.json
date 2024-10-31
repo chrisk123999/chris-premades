@@ -113,6 +113,7 @@
             },
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
+            "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
@@ -146,15 +147,19 @@
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
             "CreatureTypes": "Creature Types:",
+            "CriticalOnly": "Critical Only:",
             "DC": "DC:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
             "Expire": "Expiration:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
+            "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
@@ -165,7 +170,8 @@
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
-            "SpecificAnimation": "{option} Animation:"
+            "SpecificAnimation": "{option} Animation:",
+            "UseFormula": "Use Formula:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -298,6 +304,7 @@
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
             "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
+            "None": "None",
             "Ok": "Ok",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
@@ -1079,6 +1086,14 @@
                 "RemoveCondition": "Remove a Condition:",
                 "RestoreHitpoints": "Restore Hitpoints:",
                 "Select": "How would you like to aid?"
+            },
+            "LifeSteal": {
+                "HealingType": "Healing Type:"
+            },
+            "Lifesteal": {
+                "MaxHPCure": "Max HP Reduction Recovery:",
+                "ReduceMaxHP": "Reduce Max HP:",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
             },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
