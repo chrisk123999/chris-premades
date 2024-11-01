@@ -110,7 +110,8 @@
       "idr": false,
       "idi": false,
       "idv": false,
-      "ida": false
+      "ida": false,
+      "saveDamage": "halfdam"
     },
     "core": {
       "sourceId": "Item.yUQzXxFDU3jWbWGF"

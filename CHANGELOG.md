@@ -1,3 +1,7 @@
+# 1.0.36 Release:
+## Beg Fixes:
+- Cloudkill
+
 # 1.0.35 Release:
 ## Update Notes:
 - Added the ability to register CPR macros via the API.
