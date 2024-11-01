@@ -113,6 +113,7 @@
             },
             "ApplyFilter": "Aplicar Filtro:",
             "AttackBonus": "Bônus Ataque:",
+            "Character": "Personagem",
             "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
@@ -181,6 +182,7 @@
             "Unknown": "Cobertura Desconhecida"
         },
         "CustomMacros": {
+            "NoIdentifier": "Uma macro registrada não tinha um identificador e foi ignorada!",
             "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
         },
         "CustomTypes": {
@@ -340,6 +342,16 @@
             "PackId": {
                 "Tooltip": "Copiar ID do Compêndio"
             }
+        },
+        "Item": {
+            "Condense": "Condensar",
+            "SelectAmount": "Selecione a quantidade para dada:",
+            "Send": "Enviar",
+            "Split": "Dividir",
+            "SplitSize": "Nova Quantidade:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Exportar Dados (Para Compartilhamento)"
         },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
@@ -2133,6 +2145,10 @@
                 "Hint": "Quando ativado, todas as fórmulas de rolagem de cura serão automaticamente ajustadas para explodir.",
                 "Name": "Curas Explosivas"
             },
+            "exportForSharing": {
+                "Hint": "Quando ativado, um botão de alternativo de exportação será adicionado ao menu do item e do ator, para exportar um item com descrições removidas. É necessário recarregar após ativar.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
@@ -2168,6 +2184,10 @@
             "itemCompendium": {
                 "Hint": "Compêndio de itens usados para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
                 "Name": "Compêndio de Itens"
+            },
+            "itemContext": {
+                "Hint": "Quando habilitado, o menu do item terá opções adicionais (Enviar, Condensar e Dividir).",
+                "Name": "Opções Adicionais de Contexto de Item"
             },
             "lastUpdateCheck": {
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
