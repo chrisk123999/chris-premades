@@ -134,7 +134,7 @@ async function early({workflow}) {
 }
 export let breathOfTheDragon = {
     name: 'Breath of the Dragon',
-    version: '0.12.49',
+    version: '1.0.36',
     midi: {
         item: [
             {

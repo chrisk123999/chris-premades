@@ -111,7 +111,7 @@
       "noConcentrationCheck": false,
       "toggleEffect": false,
       "ignoreTotalCover": false,
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "idr": false,
       "idi": false,
@@ -133,7 +133,7 @@
     "chris-premades": {
       "info": {
         "name": "Rime's Binding Ice",
-        "version": "0.12.0",
+        "version": "1.0.36",
         "hasAnimation": true,
         "identifier": "rimesBindingIce",
         "source": "chris-premades"

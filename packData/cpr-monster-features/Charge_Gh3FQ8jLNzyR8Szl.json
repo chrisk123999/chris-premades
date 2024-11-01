@@ -117,7 +117,7 @@
     "midiProperties": {
       "confirmTargets": "default",
       "fulldam": true,
-      "saveDamage": "default",
+      "saveDamage": "fulldam",
       "bonusSaveDamage": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
@@ -137,7 +137,7 @@
       "info": {
         "source": "chris-premades",
         "identifier": "minotaurCharge",
-        "version": "1.0.29"
+        "version": "1.0.36"
       },
       "macros": {
         "midi": {

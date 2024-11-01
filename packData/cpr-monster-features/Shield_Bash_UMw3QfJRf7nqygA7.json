@@ -201,7 +201,7 @@
     "midiProperties": {
       "confirmTargets": "default",
       "fulldam": true,
-      "saveDamage": "default",
+      "saveDamage": "fulldam",
       "bonusSaveDamage": "default",
       "autoFailFriendly": false,
       "autoSaveFriendly": false,
@@ -221,7 +221,7 @@
       "info": {
         "identifier": "shieldBash",
         "source": "chris-premades",
-        "version": "0.12.78"
+        "version": "1.0.36"
       },
       "macros": {
         "midi": {

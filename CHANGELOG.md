@@ -1,18 +1,31 @@
 # 1.0.36 Release:
 ## Bug Fixes:
+- Agent of Order: Stasis Strike
+- Breath of the Dragon
+- Call Lightning
+- Channel Divinity: Radiance of the Dawn
 - Cloudkill
 - Dawn
+- Dragonborn Breath Weapons
+- Frost Fingers
+- Guardian of Faith
 - Hail of Thorns
 - Holy Weapon
 - Lightning Arrow
+- Mind Sliver
+- Monster Feature: Charge
+- Monster Feature: Shield Bash
+- Monster Feature: Thunderous Strike
 - Moonbeam
-- Summon Draconic Spirit
-- Summon Fiend
-- Guardian of Faith
+- Potion of Poison
 - Primal Companion
-- Wild Surge
+- Rime's Binding Ice
 - Sickening Radiance
 - Storm Sphere
+- Summon Draconic Spirit
+- Summon Fiend
+- Vitriolic Sphere
+- Wild Surge
 
 # 1.0.35 Release:
 ## Update Notes:
