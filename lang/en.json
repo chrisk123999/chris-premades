@@ -113,6 +113,7 @@
             },
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
+            "Character": "Character",
             "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
@@ -341,6 +342,16 @@
             "PackId": {
                 "Tooltip": "Copy Pack ID"
             }
+        },
+        "Item": {
+            "Condense": "Condense",
+            "SelectAmount": "Select amount to give:",
+            "Send": "Send",
+            "Split": "Split",
+            "SplitSize": "New Quantity:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Export Data (For Sharing)"
         },
         "Journal": {
             "Chat": "View the Cauldron of Plentiful Resources readme here:",
@@ -2134,6 +2145,10 @@
                 "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
                 "Name": "Exploding Heals"
             },
+            "exportForSharing": {
+                "Hint": "When enabled, an alternative export button will be added to the item and actor context menu to export an item with descriptions removed. Reload required after enabling.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
@@ -2307,6 +2322,10 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
+            },
+            "itemContext": {
+                "Hint": "When enabled, the item context menu will have additional options (Send, Condense, and Split).",
+                "Name": "Additional Item Context Options"
             }
         },
         "SkillCheck": {

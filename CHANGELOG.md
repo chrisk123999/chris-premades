@@ -1,3 +1,9 @@
+# 1.0.35 Release:
+## Update Notes:
+- Added the ability to register CPR macros via the API.
+- Added an option to add additional item context choices (Send, Condense, and Split).
+- Added an option to export items and actors which also removes all descriptions.
+
 # 1.0.34 Release:
 ## New Monster Content:
 - Lifesteal (Generic Monster Feature)

@@ -22,6 +22,7 @@ import {initiative} from './extensions/initiative.js';
 import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
+import {item} from './applications/item.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -67,6 +68,7 @@ export function registerHooks() {
     Hooks.on('preCreateItem', equipment.addOrUpdate);
     Hooks.on('dnd5e.restCompleted', rest);
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
+    if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);

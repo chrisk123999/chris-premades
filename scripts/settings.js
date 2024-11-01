@@ -16,6 +16,7 @@ import {initiative} from './extensions/initiative.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {rollResolver} from './extensions/rollResolver.js';
 import {actions} from './extensions/actions.js';
+import {item} from './applications/item.js';
 function addSetting(options) {
     let setting = {
         scope: options.scope ?? 'world',
@@ -854,6 +855,25 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'interface'
+    });
+    addSetting({
+        key: 'exportForSharing',
+        type: Boolean,
+        default: false,
+        category: 'interface'
+    });
+    addSetting({
+        key: 'itemContext',
+        type: Boolean,
+        default: false,
+        category: 'interface',
+        onChange: (value) => {
+            if (value) {
+                Hooks.on('dnd5e.getItemContextOptions', item.send);
+            } else {
+                Hooks.off('dnd5e.getItemContextOptions', item.send);
+            }
+        }
     });
 }
 export function registerMenus() {
