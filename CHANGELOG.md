@@ -9,6 +9,10 @@
 - Summon Draconic Spirit
 - Summon Fiend
 - Guardian of Faith
+- Primal Companion
+- Wild Surge
+- Sickening Radiance
+- Storm Sphere
 
 # 1.0.35 Release:
 ## Update Notes:
