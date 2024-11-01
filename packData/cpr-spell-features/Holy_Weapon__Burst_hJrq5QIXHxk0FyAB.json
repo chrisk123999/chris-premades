@@ -175,7 +175,7 @@
       "ignoreTotalCover": false,
       "autoSaveFriendly": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false
     },

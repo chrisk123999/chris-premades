@@ -1,6 +1,14 @@
 # 1.0.36 Release:
-## Beg Fixes:
+## Bug Fixes:
 - Cloudkill
+- Dawn
+- Hail of Thorns
+- Holy Weapon
+- Lightning Arrow
+- Moonbeam
+- Summon Draconic Spirit
+- Summon Fiend
+- Guardian of Faith
 
 # 1.0.35 Release:
 ## Update Notes:
