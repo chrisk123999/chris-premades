@@ -1,0 +1,2505 @@
+{
+    "CHRISPREMADES": {
+        "AbilityCheck": {
+            "Title": "Prova di Abilità"
+        },
+        "AbilitySave": {
+            "Title": "Tiro Salvezza"
+        },
+        "Alignment": {
+            "Chaotic": "Caotico",
+            "Evil": "Malvagio",
+            "Good": "Buono",
+            "Lawful": "Legale",
+            "Neutral": "Neutrale"
+        },
+        "Auras": {
+            "Source": "{auraName}: Origine"
+        },
+        "BG3": {
+            "Backbreaker": "Spezzaschiena",
+            "Bleeding": "Sanguinamento",
+            "BraceMelee": "Preparazione (Mischia)",
+            "BraceRanged": "Preparazione (A Distanza)",
+            "ChestTrauma": "Trauma al Torace",
+            "Cleave": "Spaccatura",
+            "ConcussiveSmash": "Colpo Concussivo",
+            "Dazed": "Stordito",
+            "DisarmingStrike": "Colpo Disarmante",
+            "Flourish": "Esibizione",
+            "GapingWounds": "Ferite Aperte",
+            "HamstringShot": "Colpo ai Tendini",
+            "Hamstrung": "Mutilato",
+            "Heartstopper": "Ferma Cuore",
+            "Lacerate": "Lacerazione",
+            "Maimed": "Mutilato",
+            "MaimingStrike": "Colpo Mutilante",
+            "MobileShot": "Colpo Mobile",
+            "OffBalance": "Sbilanciato",
+            "PiercingShot": "Colpo Perforante a distanza",
+            "PiercingStrike": "Colpo Perforante",
+            "PommelStrike": "Colpo con l'Impugnatura",
+            "Prepare": "Preparazione",
+            "Rush": "Assalto",
+            "Tenacity": "Tenacia",
+            "Topple": "Abbattere",
+            "WeakGrip": "Presa Debole",
+            "WeakeningStrike": "Colpo Indebolente",
+            "WeaponAction": "Azione con Arma"
+        },
+        "Backup": {
+            "Daily": "Giornaliero",
+            "Forever": "Per Sempre",
+            "HalfMonth": "Metà Mese",
+            "MissingPack": "Compendio di backup non valido specificato! Non sono stati effettuati backup!",
+            "Monthly": "Mensile",
+            "OneMonth": "Un Mese",
+            "OneWeek": "Una Settimana",
+            "OneYear": "Un Anno",
+            "SixMonths": "Sei Mesi",
+            "ThreeMonths": "Tre Mesi",
+            "Weekly": "Settimanale"
+        },
+        "Cleave": {
+            "Use": "Spezzare un bersaglio vicino?"
+        },
+        "CommonFeatures": {
+            "Amphibious": "Anfibio",
+            "Bite": "Morso",
+            "BreathWeapon": "Arma da Soffio",
+            "ChangeShape": "Cambio Forma",
+            "Charge": "Carica",
+            "Claws": "Artigli",
+            "DevilsSight": "Vista del Diavolo",
+            "Evasion": "Schivata",
+            "Flyby": "Volo Ravvicinato",
+            "HeatedBody": "Corpo Riscaldato",
+            "MagicResistance": "Resistenza alla Magia",
+            "Maul": "Sbranamento",
+            "Mending": "Riparazione",
+            "Multiattack": "Attacco Multiplo ({numAttacks} Attacchi)",
+            "PackTactics": "Tattiche di Branco",
+            "Regeneration": "Rigenerazione",
+            "ShadowStealth": "Furtività dell'Ombra",
+            "Shapechanger": "Mutante",
+            "Shred": "Lacerazione",
+            "StoneLethargy": "Letargia di Pietra",
+            "Tail": "Coda",
+            "WaterBreathing": "Respirazione Acquatica",
+            "WeightOfSorrow": "Peso del Dolore"
+        },
+        "Config": {
+            "Ability": "Abilità:",
+            "AffectAllies": "Dovrebbe Influenzare gli Alleati:",
+            "AllowEnemies": "Consentire la selezione di token non alleati?",
+            "Animation": "Animazione:",
+            "Animations": {
+                "Air": "Aria",
+                "Celestial": "Celestiale",
+                "Complex": "Complesso",
+                "Default": "Predefinito",
+                "Earth": "Terra",
+                "Fiend": "Demone",
+                "Fire": "Fuoco",
+                "Future": "Futuro",
+                "Lightning": "Fulmine",
+                "Nature": "Natura",
+                "None": "Nessuna",
+                "Saiyan": "Saiyan",
+                "Shadow": "Ombra",
+                "Simple": "Semplice",
+                "Smoke": "Fumo",
+                "Water": "Acqua"
+            },
+            "ApplyFilter": "Applica Filtro:",
+            "AttackBonus": "Bonus Attacco:",
+            "ClassIdentifier": "Identificatore di Classe",
+            "Color": "Colore:",
+            "Colors": {
+                "Blue": "Blu",
+                "Blue02": "Blu (alternativo)",
+                "BlueYellow": "Blu & Giallo",
+                "Cycle": "Ciclo",
+                "DarkBlack": "Nero Scuro",
+                "DarkBlue": "Blu Scuro",
+                "DarkGreen": "Verde Scuro",
+                "DarkPink": "Rosa Scuro",
+                "DarkPurple": "Viola Scuro",
+                "DarkRed": "Rosso Scuro",
+                "DarkWhiteBlue": "Bianco Scuro & Blu",
+                "Green": "Verde",
+                "Green02": "Verde (alternativo)",
+                "GreenOrange": "Verde & Arancione",
+                "Grey": "Grigio",
+                "LightBlue": "Azzurro",
+                "LightGreen": "Verde Chiaro",
+                "Orange": "Arancione",
+                "Pink": "Rosa",
+                "PinkPurple": "Rosa & Viola",
+                "Purple": "Viola",
+                "Rainbow": "Arcobaleno",
+                "Random": "Casuale",
+                "Red": "Rosso",
+                "White": "Bianco",
+                "Yellow": "Giallo"
+            },
+            "CombatOnly": "Abilita solo in Combattimento",
+            "CompendiumName": "Nome del Compendio {option}:",
+            "CreatureTypes": "Tipi di Creature:",
+            "DC": "CD:",
+            "DamageType": "Tipo di Danno:",
+            "DamageTypes": "Tipi di Danno:",
+            "DarknessAnimation": "Animazione Oscurità:",
+            "Distance": "Distanza:",
+            "Expire": "Scadenza:",
+            "Formula": "Formula:",
+            "HideToken": "Nascondi Token:",
+            "ImmuneCreatures": "Tipi di Creature Immuni:",
+            "PlayAnimation": "Riproduci Animazione:",
+            "PlayTeleportAnimation": "Riproduci Animazione Teletrasporto:",
+            "Range": "Portata:",
+            "RealDarkness": "Usa Oscurità Reale:",
+            "SaveDC": "CD Tiro Salvezza:",
+            "Scale": "Scala:",
+            "ScaleIdentifier": "Identificatore di Scala",
+            "ShowIcon": "Mostra Sempre l'Icona dell'Aura",
+            "ShowRoll": "Mostra Tiro:",
+            "Sound": "Suono:",
+            "SpecificAnimation": "Animazione {option}:"
+        },
+        "Cover": {
+            "Full": "Copertura Totale",
+            "Half": "Mezza Copertura",
+            "No": "Nessuna Copertura",
+            "ThreeQuarters": "Tre Quarti di Copertura",
+            "Unknown": "Copertura Sconosciuta"
+        },
+        "CustomMacros": {
+            "NoReturn": "La macro \"{name}\" non sta restituendo dati validi ed è stata saltata!"
+        },
+        "CustomTypes": {
+            "SpellFeature": "Caratteristica Incantesimo"
+        },
+        "Dialog": {
+            "DamageType": "Quale tipo di danno?",
+            "HitDieLabel": "{className} ({denomination}) - {remaining}/{max}",
+            "Invalid": "Voce non valida!",
+            "Missed": "Il tiro per colpire ({attackTotal}) ha mancato il bersaglio. Usare {itemName}?",
+            "RemoteMessage": "In attesa della selezione del dialogo remoto da",
+            "Use": "Usare {itemName}?",
+            "UseAttack": "Usare {itemName}? (Tiro Attacco: {attackTotal})",
+            "UseAttackDetail": "Usare {itemName} per un bonus extra di {bonusFormula}? (Tiro Attacco: {attackTotal})",
+            "UseExtraCost": "Usare {itemName}? (Costa {quantity} {quantityName})",
+            "UseName": "Usare {itemName} [{tokenName}]?",
+            "UseOn": "Usare {itemName} su {tokenName}?",
+            "UseRollTotal": "Usare {itemName}? (Tiro Totale: {rollTotal})",
+            "UseRollTotalDetail": "Usare {itemName} per un bonus extra di {bonusFormula}? (Tiro Totale: {rollTotal})",
+            "UseWeaponDamageTotal": "Usare {itemName}? (Danno Arma: {damageTotal})",
+            "WhatDo": "Cosa vorresti fare?",
+            "YesDetail": "Sì ({detail})"
+        },
+        "Direction": {
+            "Away": "Lontano",
+            "Direction": "Direzione",
+            "Down": "Giù",
+            "East": "Est",
+            "Left": "Sinistra",
+            "North": "Nord",
+            "Northeast": "Nord-est",
+            "Northwest": "Nord-ovest",
+            "Right": "Destra",
+            "South": "Sud",
+            "Southeast": "Sud-est",
+            "Southwest": "Sud-ovest",
+            "Towards": "Verso",
+            "Up": "Su",
+            "West": "Ovest"
+        },
+        "Distance": {
+            "0": "0 piedi",
+            "5": "5 piedi",
+            "10": "10 piedi",
+            "15": "15 piedi",
+            "20": "20 piedi",
+            "DistanceFeet": "{distance} piedi"
+        },
+        "EffectInterface": {
+            "Copy": "(Copia)",
+            "ImportData": "Importa Dati: ",
+            "Item": "Questo oggetto viene utilizzato per memorizzare i dati per l'Interfaccia Effetti CPR. Eliminando questo oggetto si perderanno gli effetti attivi memorizzati! Questo oggetto si nasconderà quando l'impostazione Interfaccia Effetti è abilitata.",
+            "SelectToken": "Seleziona prima un token!",
+            "StatusAdd": "Aggiungi agli Effetti di Stato",
+            "StatusRemove": "Rimuovi dagli Effetti di Stato"
+        },
+        "Error": {
+            "ActorNotFound": "Attore richiesto nella barra laterale non trovato!",
+            "CompendiumItemNotFound": "Oggetto del compendio non trovato!",
+            "CompendiumNotFound": "Compendio specificato non valido!",
+            "ConfigureCompendium": "Questa automazione richiede che le seguenti impostazioni del compendio CPR siano configurate:",
+            "EnableSetting": "Questa automazione richiede che le seguenti impostazioni CPR siano abilitate per funzionare:",
+            "MissingDescriptionJournal": "CPR - Diario delle descrizioni non trovato!",
+            "MissingDescriptionPage": "Pagina del diario delle descrizioni mancante!",
+            "NoActors": "Nessun attore trovato nella cartella: \"{folder}\"!",
+            "OutOfDateItem": "Automazione obsoleta!",
+            "UpdateItem": "Aggiorna Oggetto"
+        },
+        "Firearm": {
+            "Ammunition": "Proiettile d'Arma da Fuoco",
+            "Broken": "Rotto",
+            "Damaged": "Danneggiato",
+            "Explosive": "Esplosivo:",
+            "Firearm": "Arma da Fuoco",
+            "Grit": "Grit",
+            "GritRegain": "Grit recuperato! ({regained})",
+            "HasMisfired": "ha fallito!",
+            "IsBroken": "Quest'arma da fuoco è rotta e deve essere riparata!",
+            "IsDamaged": "Quest'arma da fuoco è danneggiata e deve essere riparata!",
+            "Misfire": "Inceppamento",
+            "MisfireScore": "Punteggio di Inceppamento:",
+            "NoAmmo": "Non hai munizioni!",
+            "NoGrit": "Grit esaurito!",
+            "NoGuns": "Non hai armi da fuoco da usare!",
+            "NoReloads": "Non ci sono armi da fuoco da ricaricare!",
+            "NoRepairs": "Non ci sono armi da fuoco da riparare!",
+            "NoTinkers": "Non hai attrezzi da artigiano per effettuare la riparazione!",
+            "Other": "Altro",
+            "OutOfAmmo": "Colpi/munizioni esauriti, è necessario ricaricare!",
+            "RepairFailure": "{weaponName} è ora rotta!",
+            "RepairSuccess": "{weaponName} è stata riparata con successo!",
+            "SelectAmmo": "Quale munizione usare?",
+            "SelectReload": "Quale arma da fuoco ricaricare?",
+            "SelectRepair": "Quale arma da fuoco riparare?",
+            "SelectUse": "Quale arma da fuoco usare?",
+            "SelectViolent": "Quanta grinta spendere?",
+            "Status": "Stato:",
+            "TrickShot": "Colpo Abile",
+            "TrickShotSelect": "Eseguire un Colpo Abile?",
+            "Undamaged": "Intatto"
+        },
+        "Generic": {
+            "Actions": "Azioni",
+            "Available": "Disponibile",
+            "CPR": "Calderone delle Risorse Abbondanti (CPR)",
+            "Cancel": "Annulla",
+            "Chat": "Chat",
+            "Check": "Prova di Abilità",
+            "CheckSpelling": "Controlla Ortografia",
+            "Close": "Chiudi",
+            "Configure": "Configura",
+            "Disabled": "Disabilitato",
+            "Distance": "Distanza",
+            "Edit": "Modifica",
+            "Failure": "Fallimento",
+            "Go": "Vai",
+            "Import": "Importa",
+            "Max": "Max:",
+            "MissingScale": "L'attore non ha la scala {scaleName} impostata!",
+            "No": "No",
+            "NoEffect": "{itemName} deve avere un effetto per la sua caratteristica generica di mostro!",
+            "NoMoreResource": "Risorsa richiesta esaurita!",
+            "NoType": "Nessun Tipo",
+            "Ok": "Ok",
+            "Recharge": "Ricarica:",
+            "RecoverSpellSlot": "Seleziona uno slot incantesimo da recuperare:",
+            "Replace": "Sostituisci",
+            "Rerolling": "Rilancio di {origDie} ({origResult}):",
+            "Select": "Seleziona",
+            "SelectSpellSlot": "Seleziona uno slot incantesimo:",
+            "Skill": "Prova di Abilità",
+            "Submit": "Invia",
+            "Success": "Successo",
+            "Summon": "Evoca",
+            "Total": "Totale",
+            "Uncontested": "Non Contrastato",
+            "Update": "Aggiorna",
+            "Yes": "Sì",
+            "You": "Tu"
+        },
+        "GenericEffects": {
+            "ConditionAdvantage": "Vantaggio di Condizione",
+            "ConditionDisadvantage": "Svantaggio di Condizione",
+            "ConditionFailure": "Fallimento di Condizione",
+            "ConditionImmunity": "Immunità alla Condizione",
+            "CriticalThreshold": "Soglia di Critico",
+            "InvalidTarget": "Bersaglio Non Valido",
+            "TemplateEffect": "Modello {itemName}"
+        },
+        "Grovelthrash": {
+            "Earthquake": "Terremoto (Grovelthrash)",
+            "MeldIntoStone": "Fondersi con la Pietra (Grovelthrash)",
+            "StoneShape": "Forma di Pietra (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copia ID del Pacchetto"
+            }
+        },
+        "Journal": {
+            "Chat": "Visualizza il readme del Calderone delle Risorse Abbondanti (CPR) qui:",
+            "Readme": "Leggimi",
+            "Welcome": "<p>Grazie per aver utilizzato questo modulo! Se riscontri bug o problemi, crea un <a href=\"https://github.com/chrisk123999/chris-premades\">issue su Github</a> o un report su <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Non infastidire tposney, Zhell o altri autori di moduli con bug o problemi relativi a questo modulo.</p><p>Ulteriori informazioni sul modulo, incluse una FAQ aggiornata, guida iniziale e dettagli sulle funzionalità, sono disponibili nella <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Wiki del Calderone delle Risorse Abbondanti (CPR)</a>. La wiki fornisce spiegazioni, immagini ed esempi che possono rispondere alla maggior parte delle domande sul modulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\" src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
+        },
+        "Light": {
+            "Bright": "Luminoso",
+            "Dim": "Fioco"
+        },
+        "Macros": {
+            "AberrantDragonmark": {
+                "ConfigId": "ID Incantesimo Associato",
+                "Damage": "Marchio Draconico Aberrante: Danno",
+                "Expend": "Spendere un dado vita?",
+                "Healing": "Marchio Draconico Aberrante: Cura",
+                "NoValid": "Nessun incantesimo valido trovato!",
+                "Select": "Seleziona l'incantesimo associato a questa caratteristica:"
+            },
+            "AbilityDrain": {
+                "Name": "Sottrazione di Abilità"
+            },
+            "Actions": {
+                "Dodge": "Schivare",
+                "Grapple": "Afferrare",
+                "GrappleEscape": "Afferrare: Fuga",
+                "GrappleEscapeSelect": "Tentare di sfuggire a chi ha afferrato?",
+                "GrappledBy": "Afferrato da {tokenName}",
+                "Grappling": "Afferrare {tokenName}"
+            },
+            "AdvantageDamageBonus": {
+                "Bonus": "Bonus danno se l'attacco ha vantaggio:",
+                "Name": "Bonus Danno da Vantaggio"
+            },
+            "AllPurposeTool": {
+                "Channel": "Strumento Universale: Canalizzare Forze Creative",
+                "Name": "Strumento Universale",
+                "Select": "Seleziona uno strumento da artigiano:",
+                "Spell": "Seleziona un trucchetto:"
+            },
+            "AncestralProtectors": {
+                "Target": "Protettori Ancestrali: Bersaglio"
+            },
+            "AnimateDead": {
+                "Command": "Animare i Morti: Comando"
+            },
+            "AnimatingPerformance": {
+                "Command": "Performance Animante: Comando",
+                "Dance": "Danza Irrefrenabile",
+                "ForceEmpoweredSlam": "Schianto Potenziato dalla Forza",
+                "ImmutableForm": "Forma Immutabile",
+                "Size": "Quale taglia dell'oggetto?"
+            },
+            "Antagonize": {
+                "NoWeapons": "Il bersaglio non ha armi equipaggiate!",
+                "SelectTarget": "Chi viene attaccato?",
+                "SelectWeapon": "Quale arma viene usata per attaccare?"
+            },
+            "ArcaneAbjuration": {
+                "Plane": "{name} è lontano dal suo piano d'origine?"
+            },
+            "ArcaneJolt": {
+                "Harm": "Danneggiare",
+                "HarmOrHeal": "Impulso Arcano: Danneggiare o Curare?",
+                "Heal": "Curare",
+                "WhoHeal": "Chi curare?"
+            },
+            "ArcaneWard": {
+                "Protect": "Proteggi {tokenName} con la tua barriera arcana?"
+            },
+            "ArmorOfAgathys": {
+                "Reflect": "Armatura di Agathys: Riflettere"
+            },
+            "AstralTrance": {
+                "Ability": "Quale abilità per le prove con strumenti?",
+                "WeapToolProf": "Competenza in Armi/Strumenti",
+                "Which": "Seleziona competenze:"
+            },
+            "AuraDamage": {
+                "Name": "Danno d'Aura: Fine del Turno"
+            },
+            "AuraOfLife": {
+                "RemoveTempmax": "Rimuovi temporaneamente la riduzione del massimo PF esistente mentre sei nell'aura:"
+            },
+            "AuraOfVitality": {
+                "Healing": "Aura di Vitalità: Cura"
+            },
+            "AutoGrapple": {
+                "DC": "CD fissa per sfuggire all'afferramento (contrastata se 0):",
+                "Disadvantage": "Concedi svantaggio sulla prova di fuga:",
+                "Name": "Afferrare Automatico"
+            },
+            "AwakenedSpellbook": {
+                "Select": "Modificare il tipo di danno?"
+            },
+            "BalmOfPeace": {
+                "Balm": "Balsamo di Pace"
+            },
+            "BalmOfTheSummerCourt": {
+                "Num": "d6",
+                "Select": "Quanti balsami?"
+            },
+            "Banishment": {
+                "PlaneSelect": "Seleziona tutti i bersagli che non sono di questo piano."
+            },
+            "BardicInspiration": {
+                "MoteAttack": "Mote del Potenziale Attacco",
+                "MoteHeal": "Mote del Potenziale Cura"
+            },
+            "BeguilingTwist": {
+                "Select": "Quale Condizione?"
+            },
+            "Berserk": {
+                "Animation": "Animazione Berserk:",
+                "HPThreshold": "Soglia PF:",
+                "Name": "Berserk"
+            },
+            "BestialSoul": {
+                "Already": "Hai già un beneficio di Anima Bestiale attivo!",
+                "Climbing": "Arrampicata",
+                "Form": "Quale forma?",
+                "Jumping": "Salto",
+                "Swimming": "Nuoto"
+            },
+            "BestowCurse": {
+                "Ability": "Svantaggio su punteggi di abilità",
+                "AbilitySelect": "Quale abilità?",
+                "Attack": "Svantaggio sugli attacchi",
+                "Damage": "Danno Extra",
+                "DamageFlavor": "Danno Extra della Maledizione",
+                "Other": "Altro",
+                "SelectCurse": "Quale maledizione intendi infliggere?",
+                "Turn": "Sprecare il Turno"
+            },
+            "BigbysBeneficentBracelet": {
+                "BigbysHand": "Mano di Bigby (9° livello)",
+                "ForceSculpture": "Scultura di Forza",
+                "MageHand": "Mano Magica (Braccialetto Benefico di Bigby)"
+            },
+            "BigbysHand": {
+                "Big": "Il bersaglio è troppo grande!",
+                "Clenched": "Pugno Serrato",
+                "Crush": "Mano Afferra: Schiacciare",
+                "Direction": "In quale direzione vuoi spingere il bersaglio?",
+                "Forceful": "Mano Forzosa",
+                "Grasping": "Mano Afferra",
+                "Interposing": "Mano Interposta",
+                "Move": "Mano di Bigby: Muovere"
+            },
+            "Blackrazor": {
+                "Backlash": "Blackrazor: Contraccolpo",
+                "Devoured": "Anima Divorata"
+            },
+            "BladeFlourish": {
+                "Defensive": "Esibizione Difensiva",
+                "Master": "Usare un d6 invece dell'Ispirazione Bardica per l'Esibizione di Lama?",
+                "Mobile": "Esibizione Mobile",
+                "Movement": "Esibizione di Lama: Movimento",
+                "Push": "Spingere il bersaglio di {distance} piedi?",
+                "Select": "Usare un'Esibizione di Lama?",
+                "Slashing": "Esibizione Tagliente"
+            },
+            "BlessingOfTheForge": {
+                "None": "Il bersaglio non ha armi o armature non magiche valide equipaggiate!",
+                "Select": "Quale oggetto intendi immettere?"
+            },
+            "BlindingSmite": {
+                "Blind": "Colpo Accecante: Accecare"
+            },
+            "Blink": {
+                "Away": "Sparito con Blink"
+            },
+            "BloodCurses": {
+                "Amplify": "Amplificare la Maledizione del Sangue?"
+            },
+            "BolsteringMagic": {
+                "Already": "Il bersaglio è già potenziato!",
+                "Bonus": "Bonus Attacco e Abilità",
+                "None": "Nessuno slot incantesimo da recuperare!",
+                "Regain": "Recupera Slot Incantesimo",
+                "Select": "Quale beneficio?",
+                "SlotRegained": "Slot incantesimo (livello {slotLevel}) recuperato!"
+            },
+            "BoomingBlade": {
+                "Moved": "Lama Rimbombante: Spostato",
+                "NoWeapons": "Non hai un'arma valida equipaggiata!",
+                "SelectWeapon": "Quale arma usi per lanciare questo incantesimo?",
+                "WillingMove": "{actorName} si è spostato volontariamente?"
+            },
+            "BootsOfElvenkind": {
+                "Silent": "Questo controllo dipende dal muoversi in silenzio"
+            },
+            "BorrowedKnowledge": {
+                "SelectSkill": "Seleziona un'abilità per ottenere competenza temporanea:"
+            },
+            "BrandOfCastigation": {
+                "Branded": "Marchio di Castigo: Marchiato",
+                "Damage": "Marchio di Castigo: Danno"
+            },
+            "BrandingSmite": {
+                "Branded": "Colpo Marchiante: Marchiato"
+            },
+            "BreathOfTheDragon": {
+                "Augment": "Aumentare (1 Ki)",
+                "Select": "Seleziona i Dettagli del Soffio"
+            },
+            "Bulwark": {
+                "Use": "Usare la Reazione per evitare di essere spostato?"
+            },
+            "CallLightning": {
+                "StormBolt": "Dardo della Tempesta",
+                "Storming": "C'è già una tempesta in corso?"
+            },
+            "CallTheHunt": {
+                "Bonus": "Applicare il bonus al danno di Chiamata alla Caccia? (1d6)",
+                "Select": "Seleziona bersagli (max: {maxTargets})"
+            },
+            "CelestialRevelation": {
+                "Damage": "Consumo Radioso: Danno",
+                "End": "Rivelazione Celestiale: Fine"
+            },
+            "ChainLightning": {
+                "Leap": "Catena Fulminante: Balzo",
+                "Select": "Dove dovrebbe rimbalzare il fulmine? Max: {maxTargets}"
+            },
+            "ChangeSeason": {
+                "Autumn": "Autunno",
+                "Select": "Quale stagione?",
+                "Spring": "Primavera",
+                "Summer": "Estate",
+                "Winter": "Inverno"
+            },
+            "ChaosBolt": {
+                "AlwaysBounce": "Rimbalza Sempre:",
+                "Bounce": "Dove dovrebbe rimbalzare il Caos Bolt?",
+                "BounceFeature": "Caos Bolt: Rimbalzo",
+                "Select": "Seleziona tipo di danno:"
+            },
+            "CheckCover": {
+                "TargetCover": "Copertura del Bersaglio:",
+                "YourCover": "La Tua Copertura:"
+            },
+            "ChillTouch": {
+                "Undead": "Tocco Gelido: Debuff Non Morti"
+            },
+            "CloudRune": {
+                "Reaction": "Usare {item} per deviare l'attacco da {name}?"
+            },
+            "Cloudkill": {
+                "Damage": "Nuvola Mortale: Danno",
+                "NoRoom": "Non c'è spazio per spostare la nuvola mortale!"
+            },
+            "CompelledDuel": {
+                "EndEffect": "L'incantatore ha terminato il turno a più di 30 piedi dal bersaglio. Rimuovere l'effetto?",
+                "Moved": "Duello Compulsivo: Spostato",
+                "Source": "Duello Compulsivo: Fonte",
+                "Target": "Duello Compulsivo: Bersaglio"
+            },
+            "ContextualBonus": {
+                "Advantage": "Concede vantaggio:",
+                "Bonus": "Se non è vantaggio, qual è il bonus:",
+                "Checks": "Prove di Abilità che possono ricevere un bonus:",
+                "Condition": "Quando ricevere il bonus:",
+                "Name": "Bonus Contestuale",
+                "Saves": "Salvezze che possono ricevere un bonus:",
+                "Skills": "Prove di Abilità che possono ricevere un bonus:"
+            },
+            "ControlUndead": {
+                "Controlled": "Controllo Non Morti: Controllato"
+            },
+            "CreatePactWeapon": {
+                "CustomCompendium": "Compendio dell'Arma del Patto Personalizzato:",
+                "Dismiss": "Rimuovi Arma del Patto",
+                "Existing": "Potenzia Arma Esistente",
+                "Select": "Seleziona un'Arma del Patto",
+                "Summon": "Evoca Nuova Arma",
+                "Type": "Come usi questa caratteristica?",
+                "Weapon": "Arma del Patto"
+            },
+            "CrimsonRite": {
+                "NoRites": "Nessun rito trovato sull'attore!",
+                "Select": "Quale Rito Cremisi?",
+                "Weapon": "Su quale arma attivi il rito?"
+            },
+            "Crusher": {
+                "Move": "Spostare il bersaglio?"
+            },
+            "CrystalBlade": {
+                "Bright": "Attivare la Lama (Luminoso)",
+                "Dim": "Attivare la Lama (Fioco)",
+                "Douse": "Spegnere la Lama",
+                "Heal": "Lama di Cristallo: Cura",
+                "Light": "Lama di Cristallo: Luce"
+            },
+            "DamageTurnStart": {
+                "Name": "Danno all'Inizio del Turno",
+                "SpecificDamage": "Usare formula invece del danno dell'oggetto:",
+                "SpecificType": "Se sì, tipo di danno:"
+            },
+            "DancingSword": {
+                "Attack": "Spada Danzante: Attacco",
+                "Toss": "Spada Danzante: Lancio"
+            },
+            "DangerSense": {
+                "CanSee": "Questo tiro salvezza da un effetto che puoi vedere."
+            },
+            "DanothsVisor": {
+                "Check": "Questo controllo dipende dalla vista",
+                "Spyglass": "Visore di Danoth: Cannocchiale",
+                "XRay": "Visore di Danoth: Raggi X"
+            },
+            "DanseMacabre": {
+                "CommandUndead": "Danza Macabra: Comanda Non Morti"
+            },
+            "Darkness": {
+                "Attach": "Allegare a se stesso?"
+            },
+            "Dawn": {
+                "EndTurn": "Alba: Fine del Turno",
+                "Move": "Alba: Sposta"
+            },
+            "DeathBurst": {
+                "Name": "Esplosione Mortale"
+            },
+            "DetectThoughts": {
+                "ProbeDeeper": "Rileva Pensieri: Scavare Più a Fondo"
+            },
+            "DivineSmite": {
+                "Ranged": "Permettere Colpi Divini negli Attacchi a Distanza",
+                "Unarmed": "Permettere Colpi Divini nei Colpi a Mani Nude"
+            },
+            "DraconicStrike": {
+                "Select": "Cambiare tipo di danno?"
+            },
+            "DragonVessel": {
+                "Ale": "Birra",
+                "Mead": "Idromele",
+                "OliveOil": "Olio d'Oliva",
+                "PotionOfClimbing": "Pozione della Scalata",
+                "PotionOfDragonsMajesty": "Pozione della Maestà del Drago",
+                "PotionOfFireBreath": "Pozione del Respiro di Fuoco",
+                "PotionOfFlying": "Pozione del Volo",
+                "PotionOfHealingGreater": "Pozione della Guarigione (Maggiore)",
+                "PotionOfHealingNormal": "Pozione della Guarigione (Normale)",
+                "PotionOfHealingSuperior": "Pozione della Guarigione (Superiore)",
+                "PotionOfHealingSupreme": "Pozione della Guarigione (Suprema)",
+                "Select": "Quale oggetto?",
+                "Whiskey": "Whisky",
+                "Wine": "Vino"
+            },
+            "DragonsBreath": {
+                "DragonBreath": "Respiro del Drago"
+            },
+            "DragonsWrath": {
+                "AscendantBreath": "Furia del Drago: Respiro Ascendente",
+                "Burst": "Furia del Drago: Esplosione Critica",
+                "WakenedBreath": "Furia del Drago: Respiro Risvegliato"
+            },
+            "DreadLord": {
+                "ShadowAttack": "Signore dell'Orrore: Attacco Ombra",
+                "ShadowAura": "Ombra del Signore dell'Orrore",
+                "Turn": "Signore dell'Orrore: Inizio del Turno"
+            },
+            "DreadfulAspect": {
+                "Turn": "Aspetto Terribile: Fine del Turno"
+            },
+            "EldritchBlast": {
+                "Beam": "Raggio Eldritch: Raggio",
+                "Target": "Quali bersagli?"
+            },
+            "EldritchCannon": {
+                "Cannon": "Eldritch Cannon",
+                "Command": "Eldritch Cannon: Comando",
+                "Dismiss": "Eldritch Cannon: Rimuovi",
+                "ExplosiveCannon": "Cannone Esplosivo",
+                "Flamethrower": "Lanciafiamme",
+                "ForceBallista": "Balista della Forza",
+                "FortifiedPosition": "Posizione Fortificata",
+                "Maximum": "Hai già il numero massimo di Cannoni Eldritch!",
+                "NoSlots": "Non hai più usi o slot incantesimo!",
+                "Protector": "Protettore",
+                "SelectType": "Seleziona Tipo di Eldritch Cannon",
+                "Size": "Quale dimensione del cannone {cannonName}?",
+                "SpendPact": "Creare un Eldritch Cannon a spese di uno slot incantesimo di patto? ({slotValue} di {slotMax} rimanenti)",
+                "SpendPactAgain": "Creare un secondo Eldritch Cannon a spese di uno slot incantesimo di patto? ({slotValue} di {slotMax} rimanenti)",
+                "SpendSlot": "Creare un Eldritch Cannon a spese di uno slot incantesimo di livello {slotLevel}? ({slotValue} di {slotMax} rimanenti)",
+                "SpendSlotAgain": "Creare un secondo Eldritch Cannon a spese di uno slot incantesimo di livello {slotLevel}? ({slotValue} di {slotMax} rimanenti)"
+            },
+            "EldritchSmite": {
+                "Prone": "Abbattere il bersaglio a terra?"
+            },
+            "ElementalAdept": {
+                "DowngradeImmunity": "Abbassa Immunità a Resistenza",
+                "DowngradeResistanceImmunity": "Abbassa Immunità a Resistenza e Ignora Resistenza",
+                "IgnoreImmunity": "Ignora Immunità",
+                "IgnoreResistance": "Ignora Resistenza",
+                "IgnoreResistanceImmunity": "Ignora Resistenza e Immunità",
+                "Mode": "Modalità Abbassamento:",
+                "SpellOnly": "Solo Incantesimi:"
+            },
+            "ElementalCleaver": {
+                "Change": "Spaccadimensioni: Cambia Tipo di Danno",
+                "ElementalCleaver": "Spaccadimensioni",
+                "SelectWeapon": "Quale arma vuoi infondere?"
+            },
+            "ElementalWeapon": {
+                "NoWeapons": "Il bersaglio non ha armi non magiche valide equipaggiate!",
+                "SelectWeapon": "Quale arma vuoi incantare?"
+            },
+            "EmboldeningBond": {
+                "Bonus": "Bonus del Legame Incoraggiante",
+                "Protective": "Legame Protettivo",
+                "ProtectiveDamage": "Legame Protettivo: Danno",
+                "ProtectiveTitle": "Legame Protettivo: Proteggere il Bersaglio?"
+            },
+            "Engulf": {
+                "Grapples": "Inizia un'afferramento",
+                "Grappling": "Comportamento Afferrare:",
+                "Requires": "Deve già essere afferrato"
+            },
+            "Enlarge": {
+                "Double": "Raddoppia i dadi dell'arma, invece di fornire +1d4:",
+                "Name": "Ingrandire"
+            },
+            "EnlargeReduce": {
+                "Enlarge": "Ingrandire",
+                "Reduce": "Rimpicciolire",
+                "Select": "Ingrandire o Rimpicciolire?"
+            },
+            "ExperimentalElixir": {
+                "Boldness": "Elisir Sperimentale: Audacia",
+                "Flight": "Elisir Sperimentale: Volo",
+                "Healing": "Elisir Sperimentale: Cura",
+                "MakeAnother": "Creare un altro Elisir a costo di uno slot incantesimo di livello {slotLevel}? ({slotValue} di {slotMax} rimanenti)",
+                "MakeAnotherPact": "Creare un altro Elisir a costo di uno slot incantesimo di patto? ({slotValue} di {slotMax} rimanenti)",
+                "Resilience": "Elisir Sperimentale: Resilienza",
+                "Swiftness": "Elisir Sperimentale: Velocità",
+                "Transformation": "Elisir Sperimentale: Trasformazione"
+            },
+            "ExpertDivination": {
+                "Select": "Quale livello di slot incantesimo vuoi recuperare?"
+            },
+            "EyesOfMinuteSeeing": {
+                "Close": "Questo controllo è per qualcosa entro 1 piede"
+            },
+            "Fall": {
+                "Acr": "Sì (Acrobazia)",
+                "Ath": "Sì (Atletica)",
+                "Creature": "Su un'Altra Creatura",
+                "Distance": "Distanza (piedi):",
+                "Ground": "Sulla Terra",
+                "Reaction": "Usa la tua reazione per colpire la superficie con testa o piedi prima?",
+                "Save": "Tiro Salvezza Destrezza (CD: 15)",
+                "SkillCheck": "Prova di Abilità (CD: 15)",
+                "Target": "Seleziona un bersaglio e riprova!",
+                "Tiny": "Una o entrambe le creature sono piccole!",
+                "Type": "Tipo di Caduta:",
+                "Water": "In Acqua"
+            },
+            "FallenPuppet": {
+                "NoTargets": "Nessun bersaglio valido a portata!"
+            },
+            "FarStep": {
+                "Teleport": "Passo Lontano: Teletrasporto"
+            },
+            "FeyStep": {
+                "Autumn": "Passo Fey (Autunno)",
+                "Charmed": "Passo Fey (Autunno): Affascinato",
+                "Frightened": "Passo Fey (Inverno): Impaurito",
+                "SelectAutumn": "Seleziona bersagli da affascinare (Max: {max})",
+                "SelectSpring": "Chi si teletrasporta?",
+                "SelectWinter": "Seleziona bersaglio da impaurire",
+                "Spring": "Passo Fey (Primavera)",
+                "Summer": "Passo Fey (Estate)",
+                "Winter": "Passo Fey (Inverno)"
+            },
+            "FindFamiliar": {
+                "Choose": "Scegli Familiare",
+                "Command": "Trova Familiare: Comando",
+                "Error": "Nessun token o dato familiare trovato!",
+                "InvalidSpell": "Tipo di Incantesimo Non Valido!",
+                "Movement": "Quale Tipo di Movimento?",
+                "PocketDimension": "Trova Familiare: Dimensione Tascabile",
+                "ReactionUsed": "Il familiare ha già usato la sua reazione!",
+                "TooFar": "Familiare Troppo Lontano!",
+                "Touch": "Trova Familiare: Toccare"
+            },
+            "FindSteed": {
+                "Choose": "Scegli Destriero",
+                "Dismiss": "Congeda Destriero",
+                "Language": "Quale lingua?",
+                "Target": "Bersagliare anche il Destriero? (Se montato)",
+                "Type": "Quale tipo di creatura?"
+            },
+            "FireRune": {
+                "AllowUnarmed": "Permetti l'uso della Runa del Fuoco sui Colpi a Mani Nude"
+            },
+            "FireShield": {
+                "ChillShield": "Scudo Gelido",
+                "Dismiss": "Scudo del Fuoco: Congeda",
+                "Select": "Che tipo di scudo?",
+                "WarmShield": "Scudo Caldo"
+            },
+            "FireStorm": {
+                "Place": "Posiziona fino a 10 sagome. Clicca destro per terminare",
+                "Templates": "Sagome"
+            },
+            "FlameBlade": {
+                "Evoke": "Evochi Lama di Fiamma",
+                "Scimitar": "Scimitarra della Lama di Fiamma"
+            },
+            "FlamingSphere": {
+                "EndTurn": "Sfera Fiammeggiante: Fine del Turno",
+                "Move": "Sfera Fiammeggiante: Sposta",
+                "Ram": "Colpire il Bersaglio?",
+                "RamItem": "Sfera Fiammeggiante: Colpire"
+            },
+            "FlockOfFamiliars": {
+                "Command": "Sciame di Familiari: Comando",
+                "ReactionUsed": "I familiari sono troppo lontani o hanno già usato la loro reazione!",
+                "TooFar": "I familiari sono troppo lontani!",
+                "Touch": "Sciame di Familiari: Toccare"
+            },
+            "FocusedAim": {
+                "Bonus": "Sì ({kiCost} Ki / +{bonus} per colpire)"
+            },
+            "FormOfDread": {
+                "Fear": "Forma dell'Orrore: Paura",
+                "Use": "Tentare di impaurire il bersaglio?"
+            },
+            "Gaze": {
+                "AllowAvert": "Permetti di distogliere lo sguardo:",
+                "AvertAdvantage": "Distogliere lo sguardo concede vantaggio sugli attacchi contro il bersaglio:",
+                "AvertEffect": "Sguardo Distolto",
+                "AvertSelect": "Distogliere lo sguardo da {tokenName}?",
+                "Name": "Sguardo"
+            },
+            "Grapple": {
+                "ChooseSkill": "Come vuoi contrastare l'afferramento?",
+                "ChooseSkillEscape": "Come vuoi sfuggire all'afferramento?",
+                "Immune": "Il bersaglio non può essere afferrato!",
+                "Size": "Il bersaglio è troppo grande per essere afferrato!"
+            },
+            "Grappler": {
+                "Pin": "Afferra: Immobilizzare",
+                "Pinned": "Afferra: Immobilizzato da {tokenName}",
+                "Pinning": "Afferra: Immobilizzare {tokenName}"
+            },
+            "GraspOfHadar": {
+                "Select": "Quale bersaglio?"
+            },
+            "Grease": {
+                "Fall": "Grasso: Caduta"
+            },
+            "GreenFlameBlade": {
+                "Leap": "Dove salta il fuoco?",
+                "LeapFeature": "Lama della Fiamma Verde: Salto",
+                "NoWeapons": "Nessuna arma equipaggiata trovata!",
+                "SelectWeapon": "Con quale arma attacchi?"
+            },
+            "Grovelthrash": {
+                "Damage": "Infliggere un danno contundente extra di 2d6 a costo di un danno psichico di 1d6?",
+                "Insight": "Questo controllo è per discernere una bugia detta in una lingua che comprendi",
+                "Reaction": "Reazione Grovelthrash"
+            },
+            "GuardianArmor": {
+                "DefensiveField": "Armatura del Guardiano: Campo Difensivo",
+                "Distracted": "Guanti Tuonanti: Distratto",
+                "ThunderGauntlets": "Armatura del Guardiano: Guanti Tuonanti"
+            },
+            "GuardianEmblem": {
+                "Protect": "Usare {item} per proteggere {name} da un colpo critico?"
+            },
+            "GuardianOfFaith": {
+                "Damage": "Guardiano della Fede: Danno"
+            },
+            "GuardianOfNature": {
+                "Beast": "Bestia Primordiale",
+                "Select": "Quale forma assumi?",
+                "Tree": "Grande Albero"
+            },
+            "GustOfWind": {
+                "Move": "Soffio di Vento: Spostare",
+                "Push": "Soffio di Vento: Spingere"
+            },
+            "HailOfThorns": {
+                "Burst": "Pioggia di Spine: Esplosione"
+            },
+            "HealingLight": {
+                "Select": "Quanti dadi vuoi usare?"
+            },
+            "HealingSpirit": {
+                "Apply": "Spirito Guaritore: Applicare Cura? ({numUses} uso/i rimanente/i)",
+                "Heal": "Spirito Guaritore: Cura",
+                "Move": "Spirito Guaritore: Sposta"
+            },
+            "HeatMetal": {
+                "Damage": "Metallo Rovente: Danno",
+                "Dialog": "Metallo Rovente: Dialogo",
+                "Drop": "Lasciare l'oggetto riscaldato?",
+                "Held": "Metallo Rovente: Tenuto",
+                "MustDrop": "Hai fallito il tiro salvezza, devi lasciare l'oggetto di metallo!",
+                "Pulse": "Metallo Rovente: Pulsazione",
+                "Unable": "Impossibile (Armatura)"
+            },
+            "Hex": {
+                "Hexed": "Maledetto",
+                "Move": "Maledizione: Sposta",
+                "Multiple": "Quale bersaglio desideri maledire?",
+                "SelectAbility": "Quale abilità dovrebbe avere svantaggio?"
+            },
+            "HexWarrior": {
+                "NoWeapons": "Nessuna arma valida equipaggiata da scegliere!"
+            },
+            "HexbladesCurse": {
+                "Healing": "Maledizione della Lama Nera: Cura",
+                "Transfer": "Maestro delle Maledizioni: Trasferire Maledizione?"
+            },
+            "HoldPerson": {
+                "Overtime": "Blocca Persona (Fine del Turno)"
+            },
+            "HolyNimbus": {
+                "Damage": "Nimbus Sacro: Danno",
+                "Save": "Questo tiro salvezza arriva da un incantesimo lanciato da un demone o non morto."
+            },
+            "HolyWeapon": {
+                "Burst": "Arma Sacra: Esplosione",
+                "BurstOvertime": "Arma Sacra: Esplosione (Fine del Turno)",
+                "Dismiss": "Arma Sacra: Congeda",
+                "NoWeapons": "Il bersaglio non ha armi equipaggiate!",
+                "SelectWeapon": "Quale arma vuoi incantare?",
+                "Target": "Arma Sacra: Bersaglio"
+            },
+            "HungerOfHadar": {
+                "Cold": "Fame di Hadar: Freddo",
+                "Tentacles": "Fame di Hadar: Tentacoli"
+            },
+            "HuntersMark": {
+                "Marked": "Marchio del Cacciatore: Marcato",
+                "Move": "Marchio del Cacciatore: Sposta",
+                "Select": "Quale bersaglio desideri smarcare?"
+            },
+            "HybridTransformation": {
+                "Bloodlust": "Sete di Sangue",
+                "LycanRegeneration": "Rigenerazione Licantropa",
+                "PredatoryStrike": "Colpo Predatorio",
+                "Revert": "Trasformazione Ibrida: Reverti"
+            },
+            "ImbueCard": {
+                "Select": "Quale incantesimo infondere in una carta?"
+            },
+            "InfectiousFury": {
+                "Attack": "Attaccare un Bersaglio Vicino",
+                "Curse": "Come maledici il bersaglio?",
+                "Damage": "Subire Danno"
+            },
+            "InfiltratorArmor": {
+                "ExtraDamage": "Applica danno extra di 1d6 fulmine?",
+                "LightningLauncher": "Armatura Infiltratore: Lancia Fulmini"
+            },
+            "InfuseItem": {
+                "AlreadyServant": "Hai già un Servitore Homunculus attivo!",
+                "ArcanePropulsionArmor": "Armatura di Propulsione Arcana",
+                "ArcanePropulsionGauntlet": "Guanto di Propulsione Arcana",
+                "ArmorOfMagicalStrength": "Armatura della Forza Magica",
+                "ChannelMagic": "Servitore Homunculus: Canale Magico",
+                "EndAll": "Termina tutte le Infusioni",
+                "EnhancedArcaneFocus": "Focus Arcano Potenziato",
+                "EnhancedDefense": "Difesa Potenziata",
+                "EnhancedWeapon": "Arma Potenziata",
+                "ForceStrike": "Colpo di Forza",
+                "HomunculusCommand": "Servitore Homunculus: Comando",
+                "HomunculusHeart": "Cuore del Servitore Homunculus",
+                "HomunculusServant": "Servitore Homunculus",
+                "Known": "Infusioni Conosciute:",
+                "New": "Nuova infusione {infusionLabel} aggiunta a <b>{itemName}</b> di {newActorName}.",
+                "NoArmor": "Il bersaglio non ha armature non magiche valide equipaggiate!",
+                "NoFocus": "Il bersaglio non ha un bastone, verga o bacchetta non magico equipaggiato!",
+                "NoKnown": "Non hai infusioni conosciute configurate nel medikit dell'oggetto!",
+                "NoMissing": "Nessuno slot incantesimo da recuperare!",
+                "NoShield": "Il bersaglio non ha uno scudo non magico valido equipaggiato!",
+                "Override": "Infusione {infusionLabel} esistente rimossa da <b>{itemName}</b> di {oldActorName}.",
+                "RadiantBlind": "Arma Radiante: Accecare",
+                "RadiantLight": "Arma Radiante: Luce",
+                "RadiantWeapon": "Arma Radiante",
+                "ReactionUsed": "Il Servitore Homunculus ha già usato la sua reazione!",
+                "RepeatingShot": "Colpo Ripetuto",
+                "RepulsionPush": "Scudo di Repulsione: Spingere",
+                "RepulsionShield": "Scudo di Repulsione",
+                "ResistProne": "Armatura della Forza Magica: Resistere a Terra",
+                "ResistanceType": "Resistenza a quale tipo di danno?",
+                "ResistantArmor": "Armatura Resistente",
+                "ReturningWeapon": "Arma Ritorno",
+                "Select": "Quale infusione?",
+                "SpellRefuelingRing": "Anello di Rifornimento Magico",
+                "TooFar": "Servitore Homunculus Troppo Lontano!",
+                "TooMany": "Hai già attive il numero massimo di infusioni!",
+                "WhichArmor": "Quale armatura vuoi infondere?",
+                "WhichFocus": "Quale bastone, verga o bacchetta vuoi infondere?",
+                "WhichShield": "Quale scudo vuoi infondere?",
+                "WhichWeapon": "Quale arma vuoi infondere?"
+            },
+            "InsectPlague": {
+                "Damage": "Piaga d'Insetti: Danno"
+            },
+            "InspiringSmite": {
+                "Select": "Distribuisci PF Temporanei (Importo da Distribuire: {maxAmount})"
+            },
+            "InvestitureOfFlame": {
+                "Fire": "Investitura della Fiamma: Fuoco",
+                "Heat": "Investitura della Fiamma: Calore"
+            },
+            "InvestitureOfIce": {
+                "Cone": "Investitura del Ghiaccio: Cono"
+            },
+            "InvestitureOfStone": {
+                "Earthquake": "Investitura della Pietra: Terremoto"
+            },
+            "InvestmentOfTheChainMaster": {
+                "Command": "Investitura del Padrone della Catena: Comando",
+                "Resistance": "Investitura del Padrone della Catena: Resistenza Familiare"
+            },
+            "JavelinOfLightning": {
+                "Bolt": "Giavellotto del Fulmine: Dardo"
+            },
+            "KeenSenses": {
+                "Check": "Questo controllo dipende da: ",
+                "DiceThreshold": "Soglia del Tiro del Dado:",
+                "Hearing": "Udito",
+                "Name": "Sensi Acuti",
+                "Sight": "Vista",
+                "Smell": "Olfatto"
+            },
+            "LabyrinthineRecall": {
+                "Skill": "Questo controllo è per navigare o tracciare"
+            },
+            "LanternOfRevealing": {
+                "Bright": "Accendi Lanterna (Luminoso)",
+                "Dim": "Accendi Lanterna (Fioco)",
+                "Extinguish": "Spegni Lanterna"
+            },
+            "LayOnHands": {
+                "Empty": "La tua riserva di {itemName} è vuota.",
+                "RemoveCondition": "Rimuovere una Condizione:",
+                "RestoreHitpoints": "Ripristina Punti Ferita:",
+                "Select": "Come vuoi aiutare?"
+            },
+            "LightningArrow": {
+                "Burst": "Freccia Fulminante: Esplosione"
+            },
+            "MaelstromAura": {
+                "Aura": "Aura di Maelstrom"
+            },
+            "MagicMissile": {
+                "Bolt": "Dardo Incantato",
+                "RollEach": "Tirare il Danno per Ogni Dardo?",
+                "Select": "Quanti? (Max: {maxMissiles})",
+                "Shield": "Scudo come reazione?"
+            },
+            "Maneuvers": {
+                "BaitSwitchAC": "Chi riceve il bonus CA?",
+                "CommanderConfirm": "Usare la tua reazione per fare un singolo attacco con arma?",
+                "CommanderSelect": "Quale alleato dovrebbe fare un attacco?",
+                "NoNearby": "Nessun alleato con una reazione può vederti o sentirti!",
+                "PushDistance": "Quanto lontano spingi il bersaglio?",
+                "Pushing": "Attacco Spingente: Attacco",
+                "SelectDice": "Esegui una manovra con quale dado di superiorità?",
+                "SelectManeuver": "Quale manovra usare?",
+                "SelectTarget": "Chi attacchi?",
+                "Sweeping": "Attacco a Spazzata: Attacco",
+                "Tripping": "Attacco di Sgambetto: Attacco"
+            },
+            "ManifestEcho": {
+                "Attack": "Manifestare Eco: Attacco",
+                "Dismiss": "Manifestare Eco: Rimuovi",
+                "Echo": "{name} Eco",
+                "Far": "L'eco di {actorName} è troppo lontano. Rimuoverlo?",
+                "Legion": "Creare due echi anziché uno?",
+                "NoWeapons": "Non hai armi equipaggiate con cui attaccare!",
+                "Teleport": "Manifestare Eco: Teletrasporto",
+                "Weapon": "Con cosa vuoi attaccare?",
+                "Which": "Quale Eco?"
+            },
+            "ManifestMind": {
+                "Cast": "Manifestare Mente: Lancia Incantesimo",
+                "Dismiss": "Manifestare Mente: Rimuovi",
+                "Far": "La Mente Manifestata di {actorName} è troppo lontana. Rimuoverla?",
+                "Invalid": "Tipo di Azione Non Valido!",
+                "Move": "Manifestare Mente: Muovi"
+            },
+            "MartialAdvantage": {
+                "Name": "Vantaggio Marziale"
+            },
+            "MassCureWounds": {
+                "Select": "Quali bersagli desideri curare? (Max: 6)"
+            },
+            "MaximiliansEarthenGrasp": {
+                "Crush": "Mano di Terra di Massimiliano: Schiacciare",
+                "Grasp": "Mano di Terra di Massimiliano: Afferrare",
+                "NoNearby": "Nessun bersaglio vicino da afferrare!",
+                "Overtime": "Mano di Terra di Massimiliano: Rompere",
+                "Select": "Seleziona un bersaglio da afferrare:"
+            },
+            "MetallicBreathWeapon": {
+                "Enervating": "Soffio Inibente",
+                "Repulsion": "Soffio di Repulsione",
+                "Select": "Quale tipo di soffio?"
+            },
+            "Metamagic": {
+                "CarefulWhich": "Quali bersagli salvano automaticamente? (Max {max})",
+                "Empowered": "Spendere 1 Punto Stregoneria per rilanciare i dadi del danno? (Max {max})",
+                "HeightenedWhich": "Quale bersaglio ha svantaggio?",
+                "NoValid": "Nessun incantesimo applicabile da lanciare!",
+                "NotEnough": "Non hai abbastanza punti stregoneria!",
+                "TransmutedFirst": "Quale tipo di danno sostituiresti?",
+                "TransmutedSecond": "Quale tipo di danno vorresti usare al suo posto?",
+                "TwinnedUpcast": "Non hai abbastanza punti stregoneria per gemellare questo incantesimo quando potenziato!",
+                "TwinnedUpcastTargets": "Non è possibile potenziare e gemellare questo incantesimo!",
+                "Which": "Spendere {cost} Punto/i Stregoneria e lanciare quale incantesimo?"
+            },
+            "MirrorImage": {
+                "Hit": "L'attacco ha colpito un duplicato e l'ha distrutto.",
+                "Miss": "L'attacco ha mirato a un duplicato e ha mancato."
+            },
+            "Moonbeam": {
+                "Damage": "Raggio di Luna: Danno",
+                "Move": "Raggio di Luna: Sposta"
+            },
+            "Mutagencraft": {
+                "AttackSunlight": "Sia {sourceTokenName} che {targetTokenName} sono alla luce diretta del sole?",
+                "Create": "Quale Mutagene crei?",
+                "Flush": "Mutagencraft: Elimina Mutageni",
+                "Negative": "Effetti Negativi",
+                "Positive": "Effetti Positivi",
+                "ReconstructionHealing": "Formula Ricostruzione: Cura",
+                "SkillSunlight": "Questo è un controllo basato sulla vista e {actorName} o il bersaglio del controllo sono alla luce diretta del sole?"
+            },
+            "NaturesWrath": {
+                "Select": "Con quale abilità effettui il tiro salvezza?"
+            },
+            "OilOfSharpness": {
+                "Select": "Quale arma rivestire?"
+            },
+            "OneWithShadows": {
+                "Bright": "Il token è in piena luce!"
+            },
+            "Overchannel": {
+                "Damage": "Usare {itemName} a costo di {damageFormula} danni?",
+                "DamageItem": "Sovraccaricare: Danno"
+            },
+            "PackTactics": {
+                "Name": "Tattiche di Branco"
+            },
+            "PariahsShield": {
+                "MaxBonus": "Bonus CA Massimo:",
+                "Protect": "Proteggi {name} con {item}?",
+                "Reaction": "Scudo del Paria: Proteggere"
+            },
+            "Parry": {
+                "Name": "Parata"
+            },
+            "Piercer": {
+                "Reroll": "Ritirare quale dado minore?"
+            },
+            "PoisonousSkin": {
+                "Poison": "Grung: Veleno"
+            },
+            "PotionOfAdvantage": {
+                "Select": "Guadagnare vantaggio su questo tiro?"
+            },
+            "PotionOfFireBreath": {
+                "Attack": "Attacco della Pozione del Respiro di Fuoco"
+            },
+            "PotionOfPoison": {
+                "Damage": "Pozione di Veleno: Danno"
+            },
+            "PreserveLife": {
+                "Select": "Distribuisci PF (Importo da Distribuire: {maxAmount}. I bersagli non possono essere curati oltre la metà della salute.)"
+            },
+            "PrimalCompanion": {
+                "BindingStrike": "Colpo Vincolante",
+                "Command": "Compagno Primordiale: Comando",
+                "Land": "Terra",
+                "PrimalBond": "Vincolo Primordiale",
+                "Sea": "Mare",
+                "Select": "Quale tipo di compagno?",
+                "Sky": "Cielo"
+            },
+            "ProtectionFromEvilAndGood": {
+                "Save": "Questo tiro salvezza è dovuto a un effetto di un'aberrazione, celestiale, elementale, fey, demone o non morto che ti ha affascinato, spaventato o posseduto."
+            },
+            "Rage": {
+                "End": "Rabbia: Fine",
+                "EndEarly": "{actorName} non ha attaccato un nemico o subito danni dall'ultimo turno. Rimuovere Rabbia?",
+                "FormOfBeastTailReaction": "Forma della Bestia: Reazione della Coda",
+                "FormOfBeastWeapon": "Manifestare un'arma naturale?",
+                "FormOfTheBeastBite": "Forma della Bestia: Morso",
+                "FormOfTheBeastClaws": "Forma della Bestia: Artigli",
+                "FormOfTheBeastTail": "Forma della Bestia: Coda",
+                "Huge": "Diventare enorme?",
+                "LargeOrHuge": "Quale taglia?"
+            },
+            "RayOfEnfeeblement": {
+                "Overtime": "Raggio di Indebolimento (Fine del Turno)"
+            },
+            "Reduce": {
+                "AlwaysTiny": "Ridurre sempre a Piccolo:",
+                "AttackDisadvantage": "Svantaggio sugli attacchi basati sulla forza:",
+                "Name": "Ridurre",
+                "OneDamage": "Gli attacchi basati sulla forza infliggono 1 danno d'arma:",
+                "StealthACBonus": "+5 a Furtività e CA:"
+            },
+            "ReduceMaxHP": {
+                "DamageTypeFilter": "Applica solo determinati tipi di danno alla riduzione del massimo HP:",
+                "Half": "Ridurre a metà il danno/tira:",
+                "Long": "Scade al Riposo Lungo:",
+                "Name": "Ridurre HP Massimi",
+                "ReduceByRoll": "Ridurre dal tiro, non dal danno:",
+                "Short": "Scade al Riposo Breve:"
+            },
+            "Regeneration": {
+                "Blocked": "Rigenerazione Bloccata",
+                "Critical": "I critici bloccano sempre la rigenerazione",
+                "DamageTypes": "Tipi di Danno per ridurre/bloccare la rigenerazione:",
+                "Dead": "Morto?",
+                "Name": "Rigenerazione",
+                "Reduced": "Rigenerazione Ridotta",
+                "ShowIcons": "Mostra icone per rigenerazione bloccata/ridotta:",
+                "Threshold": "Danno necessario per uccidere permanentemente se a 0pf:",
+                "ZeroHP": "La creatura muore raggiungendo 0pf"
+            },
+            "RingOfSpellStoring": {
+                "Clear": "Cancella incantesimi usati",
+                "Cleared": "Incantesimi usati rimossi dall'inventario!",
+                "Name": "Anello di Conservazione degli Incantesimi ({currSpellSlots}/{maxSpellSlots})",
+                "NoSpells": "Nessun incantesimo disponibile da conservare!",
+                "Reset": "Ripristina incantesimi conservati",
+                "ResetDone": "Anello ripristinato!",
+                "SelectSpell": "Quale incantesimo vuoi conservare?",
+                "SpellName": "Anello di Conservazione degli Incantesimi: {spellName}",
+                "Store": "Conserva un incantesimo",
+                "Stored": "{spellName} conservato!",
+                "Upcast": "Lanciare a quale livello?"
+            },
+            "RunicShield": {
+                "Use": "Usare {item} per {name}?"
+            },
+            "SacredWeapon": {
+                "Dismiss": "Arma Sacra: Congeda",
+                "NoWeapons": "Non hai armi equipaggiate!",
+                "Sacred": "Arma Sacra",
+                "SelectWeapon": "Quale arma vuoi immettere?"
+            },
+            "Sanctuary": {
+                "Failed": "Non è possibile attaccare questo bersaglio - deve scegliere un altro bersaglio o perdere l'attacco/incantesimo!",
+                "Save": "Santuario: Salvezza"
+            },
+            "ScorchingRay": {
+                "Bolt": "Raggio Rovente",
+                "Select": "Seleziona i bersagli (Max raggi: {maxRays})"
+            },
+            "SculptSpells": {
+                "Select": "Quali bersagli hanno successo e non subiscono danno? (Max: {max})"
+            },
+            "Search": {
+                "Skill": "Quale abilità?"
+            },
+            "SearingSmite": {
+                "Fire": "Colpo Fiammeggiante: Fuoco"
+            },
+            "ShadowBlade": {
+                "Sword": "Spada di Ombre"
+            },
+            "ShadowOfMoil": {
+                "Damage": "Ombra di Moil: Danno"
+            },
+            "Shove": {
+                "Big": "Il bersaglio è troppo grande per essere spinto!",
+                "ChooseSkill": "Come vuoi contrastare la spinta?",
+                "KnockProne": "Abbattere",
+                "MoveOrProne": "Cosa vuoi fare al bersaglio?",
+                "Shove": "Spingere"
+            },
+            "SickeningRadiance": {
+                "Damage": "Bagliore Radiane: Danno"
+            },
+            "SkillEmpowerment": {
+                "SelectSkill": "Seleziona un'abilità per concedere competenza temporanea:"
+            },
+            "SleetStorm": {
+                "Prone": "Tempesta di Grandine: A Terra"
+            },
+            "SneakAttack": {
+                "Scale": "L'attore non ha un valore di scala per l'attacco furtivo!",
+                "Use": "Usare {name}?"
+            },
+            "SongOfDefense": {
+                "Bladesong": "Devi attivare Canto della Lama per usare questa caratteristica!",
+                "NoSpellSlots": "Non hai slot incantesimo disponibili!",
+                "Select": "Usa la tua reazione per spendere uno slot incantesimo per ridurre il danno?"
+            },
+            "SoothePain": {
+                "Protect": "Ridurre il danno a {tokenName}?",
+                "Self": "Ridurre il danno a te stesso?"
+            },
+            "SpellTurning": {
+                "Advantage": "Vantaggio sui tiri salvezza:",
+                "Name": "Ritorno degli Incantesimi",
+                "SpellLevel": "Livello massimo degli incantesimi per ritornare:",
+                "TargetCaster": "Bersagliare l'Incantatore se riesci:"
+            },
+            "SpikeGrowth": {
+                "Thorns": "Crescita di Spine: Spine"
+            },
+            "SpiritGuardians": {
+                "Alignment": "Qual è il tuo allineamento?",
+                "Damage": "Guardiani Spirituali: Danno",
+                "NoRing": "Nessun Anello",
+                "Particles": "Particelle",
+                "Ring": "Anello",
+                "Spirits": "Spiriti",
+                "Variation": "Variante:"
+            },
+            "SpiritShroud": {
+                "Hit": "Mantello Spirituale: Colpo",
+                "Slow": "Mantello Spirituale: Rallentare"
+            },
+            "SpiritualWeapon": {
+                "Attack": "Arma Spirituale: Attacco",
+                "Color": "Quale Colore?",
+                "Dark": "Scuro",
+                "Flaming": "Infuocato",
+                "Mace": "Mazza",
+                "Maul": "Martello",
+                "SaveDefault": "Usare la configurazione selezionata in futuro?",
+                "Scythe": "Falce",
+                "Select": "Seleziona un bersaglio da attaccare:",
+                "Style": "Quale Stile?",
+                "Sword": "Spada",
+                "UseDefault": "Usare la configurazione token salvata in precedenza:",
+                "Weapon": "Quale Arma?"
+            },
+            "Stabilize": {
+                "Stabilized": "Stabilizzato",
+                "WakeUp": "Ore prima che la Creatura si svegli:"
+            },
+            "StaggeringSmite": {
+                "Stagger": "Colpo Stordente: Stordimento"
+            },
+            "StarryForm": {
+                "Archer": "Arciere",
+                "ArcherFeature": "Forma di Stelle: Freccia Luminosa",
+                "Chalice": "Calice",
+                "ChaliceFeature": "Forma di Stelle: Calice Guaritore",
+                "Change": "Cambiare Costellazione?",
+                "Dragon": "Drago",
+                "DragonFeature": "Forma di Stelle: Drago Saggio",
+                "Heal": "Chi desideri curare?",
+                "Select": "Quale Costellazione?"
+            },
+            "SteelDefender": {
+                "Command": "Difensore d'Acciaio: Comando",
+                "DeflectAttack": "Deviare Attacco",
+                "ForceEmpoweredRend": "Squarcio Potenziato dalla Forza",
+                "Repair": "Riparare",
+                "Vigilant": "Vigilante"
+            },
+            "StillnessOfMind": {
+                "Select": "Quale condizione desideri rimuovere?"
+            },
+            "StormRune": {
+                "AdvDis": "Concedere a {tokenName} vantaggio/svantaggio sulla loro {actionType}?"
+            },
+            "StormSphere": {
+                "Bolt": "Sfera della Tempesta: Dardo",
+                "Turn": "Sfera della Tempesta: Turno"
+            },
+            "Stormgirdle": {
+                "LightningStrike": "Cintura della Tempesta: Colpo di Fulmine"
+            },
+            "Stormgridle": {
+                "Avatar": "Avatar della Tempesta"
+            },
+            "StrangeMetabolism": {
+                "Select": "Quale Mutagene?"
+            },
+            "SummonAberration": {
+                "Beholderkin": "Beholderkin",
+                "EyeRay": "Raggio Occhio",
+                "PsychicSlam": "Schianto Psichico",
+                "Slaad": "Slaad",
+                "StarSpawn": "Generazione Stellare",
+                "Type": "Quale tipo di Aberrazione?",
+                "WhisperingAura": "Aura Sussurrante"
+            },
+            "SummonBeast": {
+                "Air": "Aria",
+                "Flyby": "Passaggio",
+                "Land": "Terra",
+                "Maul": "Squarcio (Spirito Bestiale)",
+                "Type": "Quale tipo di Bestia?",
+                "Water": "Acqua"
+            },
+            "SummonCelestial": {
+                "Avenger": "Vendicatore",
+                "Defender": "Difensore",
+                "HealingTouch": "Tocco Curativo (Spirito Celestiale)",
+                "RadiantBow": "Arco Radiante",
+                "RadiantMace": "Mazza Radiante",
+                "Temp": "Chi ottiene punti ferita temporanei?",
+                "Type": "Quale tipo di Celestiale?"
+            },
+            "SummonConstruct": {
+                "BerserkLashing": "Frustata Furiosa",
+                "Clay": "Argilla",
+                "Metal": "Metallo",
+                "Slam": "Schianto (Spirito Costrutto)",
+                "Stone": "Pietra",
+                "Type": "Quale tipo di Costrutto?"
+            },
+            "SummonDraconicSpirit": {
+                "Chromatic": "Cromatico",
+                "Gem": "Gemma",
+                "Metallic": "Metallico",
+                "Rend": "Squarcio (Spirito Draconico)",
+                "ResistanceType": "Resistenze Condivise: Quale tipo di danno?",
+                "SharedResistances": "Resistenze Condivise",
+                "Type": "Quale tipo di Drago?"
+            },
+            "SummonDrakeCompanion": {
+                "Command": "Compagno Drake: Comando",
+                "Essence": "Essenza Draconica",
+                "InfusedStrikes": "Colpi Infusi",
+                "Reflexive": "Resistenza Riflessiva",
+                "Resistance": "Usare la reazione per concedere resistenza al danno?",
+                "ResistanceSelf": "Usare la reazione per ottenere resistenza al danno?",
+                "Select": "Quale tipo di Drake?",
+                "Self": "Sì: Se stesso",
+                "Summon": "Sì: Compagno Drake"
+            },
+            "SummonElemental": {
+                "Air": "Aria",
+                "AmorphousForm": "Forma Amorfa",
+                "Earth": "Terra",
+                "Fire": "Fuoco",
+                "Slam": "Schianto (Spirito Elementale)",
+                "Type": "Quale tipo di Elementale?",
+                "Water": "Acqua"
+            },
+            "SummonFey": {
+                "FeyStep": "Passo Fey",
+                "Fuming": "Fumante",
+                "Mirthful": "Gioioso",
+                "Select": "Chi affascinare?",
+                "Shortsword": "Spada Corta",
+                "Tricksy": "Astuto",
+                "Type": "Quale tipo di Fey?"
+            },
+            "SummonFiend": {
+                "DeathThroes": "Agonie",
+                "Demon": "Demone",
+                "Devil": "Diavolo",
+                "HurlFlame": "Lanciare Fiamma",
+                "Type": "Quale tipo di Fiend?",
+                "UseTeleportation": "Usare il Teletrasporto?",
+                "Yugoloth": "Yugoloth"
+            },
+            "SummonLesserDemons": {
+                "Demons": "Demoni",
+                "Draw": "Disegnare cerchio protettivo?"
+            },
+            "SummonShadowspawn": {
+                "ChillingRend": "Squarcio Gelido",
+                "Despair": "Disperazione",
+                "DreadfulScream": "Urlo Spaventoso",
+                "Fear": "Paura",
+                "Fury": "Furia",
+                "TerrorFrenzy": "Furia del Terrore",
+                "Type": "Quale tipo di Generazione d'Ombra?"
+            },
+            "SummonUndead": {
+                "DeathlyTouch": "Tocco Mortale",
+                "FesteringAura": "Aura Fetida",
+                "Ghostly": "Spettrale",
+                "GraveBolt": "Dardo Sepolcrale",
+                "IncorporealPassage": "Passaggio Incorporeo",
+                "Putrid": "Putrido",
+                "RottingClaw": "Artiglio Marcescente",
+                "RottingClawParalyze": "Artiglio Marcescente: Paralisi",
+                "Skeletal": "Scheletrico",
+                "Type": "Quale tipo di Non Morto?"
+            },
+            "SummonWildfireSpirit": {
+                "Command": "Spirito del Fuoco Selvaggio: Comando",
+                "Damage": "Evoca Spirito del Fuoco Selvaggio: Danno",
+                "FieryTeleportation": "Teletrasporto Infuocato",
+                "FieryTeleportationDamage": "Teletrasporto Infuocato: Danno",
+                "FlameSeed": "Seme di Fiamma"
+            },
+            "SunlightSensitivity": {
+                "Attack": "{tokenName} è al sole?",
+                "Auto": "Presupponi che la luce intensa significhi sole per lo svantaggio d'attacco:",
+                "Name": "Sensibilità alla Luce Solare",
+                "Skill": "Questo controllo si basa sulla vista e la creatura è al sole"
+            },
+            "SurpriseAttack": {
+                "Dialog": "Usa il Dialogo anziché controllare la condizione Sorprese:",
+                "Name": "Attacco a Sorpresa",
+                "Surprised": "Il bersaglio è sorpreso?"
+            },
+            "SwarmDamage": {
+                "Name": "Danno da Sciame"
+            },
+            "TashasOtherworldlyGuise": {
+                "Lower": "Piani Inferiori",
+                "Select": "Da quali piani trai la magia?",
+                "Upper": "Piani Superiori"
+            },
+            "TavernBrawler": {
+                "Use": "Usare un'Azione Bonus per tentare un afferramento?"
+            },
+            "Telekinetic": {
+                "Select": "Quale direzione?"
+            },
+            "Teleport": {
+                "AssociatedObject": "Oggetto Associato",
+                "Damage": "Teletrasporto: Danno",
+                "Description": "Descrizione",
+                "Direction": "Direzione Fuori Bersaglio",
+                "Distance": "Distanza Fuori Bersaglio",
+                "FalseDestination": "Destinazione Falsa",
+                "Familiarity": "Qual è il grado di familiarità?",
+                "HowFar": "Quanto è lontana la destinazione?",
+                "Mishap": "Disavventura",
+                "OffTarget": "Fuori Bersaglio",
+                "OffTargetString": "La destinazione è {distance} {units} {direction} rispetto alla posizione prevista.",
+                "OnTarget": "Sul Bersaglio",
+                "PermanentCircle": "Cerchio Permanente",
+                "SeenCasually": "Visto Casual",
+                "Select": "Chi altro viene teletrasportato?",
+                "SelectDestination": "Seleziona Destinazione?",
+                "SimilarArea": "Area Simile",
+                "VeryFamiliar": "Molto Familiare",
+                "ViewedOnce": "Visto una Volta"
+            },
+            "TentacleOfTheDeeps": {
+                "Attack": "Tentacolo delle Profondità: Attacco",
+                "Name": "Tentacolo Spettrale"
+            },
+            "ThornWhip": {
+                "CheckSize": "Controllare la Dimensione:",
+                "Pull": "Quanto distante tiri il bersaglio?"
+            },
+            "ThunderStep": {
+                "Select": "Teletrasportare una Creatura?"
+            },
+            "ThunderboltStrike": {
+                "Select": "Seleziona i bersagli da spingere:"
+            },
+            "ThunderousSmite": {
+                "Push": "Colpo Tonante: Spingere"
+            },
+            "TouchDamage": {
+                "Name": "Danno da Tocco"
+            },
+            "TwilightSanctuary": {
+                "Charmed": "Rimuovi la condizione Affascinato",
+                "Frightened": "Rimuovi la condizione Spaventato",
+                "Heal": "Concedi {formula} PF temporanei",
+                "Temp": "Santuario Crepuscolare: PF Temporanei"
+            },
+            "UnarmedFighting": {
+                "Grapple": "Combattimento a Mani Nude: Danno Afferra",
+                "Select": "Infliggere danno a quale creatura afferrata?"
+            },
+            "UndeadFortitude": {
+                "Critical": "I colpi critici ignorano la Resistenza Non Morta:",
+                "DamageTypes": "Tipi di danno per ignorare la Resistenza Non Morta:",
+                "Name": "Resistenza Non Morta"
+            },
+            "Underwater": {
+                "TooFar": "Il bersaglio è troppo lontano mentre è sott'acqua!",
+                "Underwater": "Sott'Acqua"
+            },
+            "UpcastTargets": {
+                "Select": "Troppi bersagli selezionati! Seleziona fino a {maxTargets} bersagli."
+            },
+            "VampiricBite": {
+                "Bonus": "Bonus al prossimo attacco/controllo",
+                "Heal": "Rigenerare PF",
+                "LowHealth": "Vantaggio: Sotto metà dei PF",
+                "Select": "Empower te stesso?"
+            },
+            "VampiricTouch": {
+                "Attack": "Tocco Vampirico: Attacco",
+                "HealingModifier": "0.5"
+            },
+            "WallOfFire": {
+                "CircleFacing": "Quale lato è il fuoco?",
+                "Diameter": "Quale diametro?",
+                "Flames": "Fiamme",
+                "Height": "Quale altezza?",
+                "Inward": "All'interno",
+                "Length": "Quale lunghezza?",
+                "Outward": "All'esterno",
+                "Shape": "Quale forma?",
+                "Side": "Quale lato è il fuoco?"
+            },
+            "WardingBond": {
+                "Damage": "Legame di Protezione: Danno",
+                "Dismiss": "Legame di Protezione: Congeda",
+                "Distance": "La distanza del legame è troppo lontana, rimuovere il legame?",
+                "MaxDistance": "Distanza Massima:"
+            },
+            "WildShape": {
+                "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
+                "Equipment": "Cosa succede al tuo equipaggiamento?",
+                "Ignore": "Ignora CR, Tipo e Restrizioni di Movimento:",
+                "KeepSpells": "Permetti incantesimi durante la trasformazione:",
+                "Merge": "Fondere / Abbandonare",
+                "Revert": "Forma Selvatica: Reverti",
+                "Select": "Seleziona Forma",
+                "Wear": "Indossare"
+            },
+            "WildSurge": {
+                "BoltOfLight": "Dardo di Luce",
+                "FlowersAndVines": "Fiori e Viti",
+                "Form": "Quale forma assume lo spirito immateriale?",
+                "IntangibleSpirit": "Spirito Immateriale",
+                "IntangibleSpiritExplode": "Sovraccarico Selvaggio: Esplosione Spirito Immateriale",
+                "MagicInfusion": "Infusione Magica",
+                "ProtectiveLights": "Luci Protettive",
+                "Retribution": "Retribuzione",
+                "Select": "Quale effetto?",
+                "ShadowyTendrils": "Tentacoli Oscuri",
+                "Target": "Seleziona un bersaglio:",
+                "Teleport": "Teletrasporto"
+            },
+            "WitherAndBloom": {
+                "Heal": "Appassire e Fiorire: Cura",
+                "SelectHitDie": "Seleziona quanti Dadi Vita tirare.",
+                "SelectTarget": "Chi può tirare Dadi Vita non spesi?"
+            },
+            "WrapsOfDyamak": {
+                "CrimsonMist": "Nebbia Cremisi",
+                "Heal": "Avvolgimenti di Dyamak: Cura"
+            },
+            "WrathfulSmite": {
+                "Frighten": "Colpo Irato: Impaurire"
+            },
+            "ZealousPresence": {
+                "Select": "Chi dovrebbe essere bersagliato? (Max: {maxTargets})"
+            },
+            "ZoneOfTruth": {
+                "Save": "Zona di Verità: Salvezza"
+            }
+        },
+        "ManualRolls": {
+            "Critical": "Critico",
+            "Failure": "Fallimento",
+            "Fumble": "Fallimento Critico",
+            "HasModifers": "Il tiro ha modificatori",
+            "Hit": "Colpito",
+            "Miss": "Mancato",
+            "PleaseResolve": "risolvere manualmente prima di inserire il totale",
+            "QuickButtons": {
+                "Label": "Pulsanti Rapidi",
+                "Tooltip": "Scorciatoie per completare il tiro con il risultato desiderato"
+            },
+            "Success": "Successo"
+        },
+        "Medkit": {
+            "Categories": {
+                "animation": {
+                    "Label": "Animazione:",
+                    "Tooltip": "Personalizza le Animazioni Incluse"
+                },
+                "homebrew": {
+                    "Label": "Homebrew:",
+                    "Tooltip": "Personalizzazioni Homebrew Disponibili"
+                },
+                "mechanics": {
+                    "Label": "Meccaniche:",
+                    "Tooltip": "Personalizza le meccaniche dell'oggetto"
+                },
+                "sound": {
+                    "Label": "Suono:",
+                    "Tooltip": "Aggiungi un suono da riprodurre"
+                },
+                "summons": {
+                    "Label": "Evocazioni",
+                    "Tooltip": "Personalizza Evocazioni"
+                },
+                "visuals": {
+                    "Label": "Aspetti Visivi",
+                    "Tooltip": "Personalizza alcuni aspetti visivi"
+                }
+            },
+            "Compendium": {
+                "Apply": "Applicare il Medkit a tutti i documenti del compendio?",
+                "Done": "Aggiornamento del compendio completato!",
+                "Start": "Aggiornamento dei documenti..."
+            },
+            "Effect": {
+                "Conditions": {
+                    "Label": "Condizioni",
+                    "Tooltip": "Condizioni da applicare e rimuovere con questo effetto usando l'API di CPR"
+                },
+                "NoAnimation": {
+                    "Label": "Nessuna Animazione",
+                    "Tooltip": "Disattiva il testo a scorrimento quando questo effetto è applicato o rimosso"
+                },
+                "OverTime": {
+                    "Add": "Aggiungi nel Tempo",
+                    "Labels": {
+                        "Ability": "DC Basato sull'Abilità",
+                        "ActionSave": "Il Tiro Salvezza è un'Azione:",
+                        "AllowIncapacitated": "Permetti Bersagli Incapacitati:",
+                        "ApplyCondition": "Applica Valutazione Condizione:",
+                        "BlindRoll": "Tiro Nascosto",
+                        "DamageBeforeSave": "Danno Applicato Prima del Tiro Salvezza:",
+                        "DamageRoll": "Formula del Tiro Danno:",
+                        "DamageType": "Tipo di Danno:",
+                        "End": "Fine del Turno",
+                        "Flat": "DC Fisso",
+                        "FullDamage": "Danno Completo",
+                        "GMRoll": "Tiro del GM",
+                        "HalfDamage": "Danno Ridotto",
+                        "Item": "DC dell'Oggetto",
+                        "Label": "Sapore della Carta:",
+                        "Macro": "Macro da Chiamare:",
+                        "NoDamage": "Nessun Danno",
+                        "PublicRoll": "Tiro Pubblico",
+                        "RemoveCondition": "Rimuovi Valutazione Condizione:",
+                        "RollMode": "Modalità Tiro per Tiro nel Tempo:",
+                        "RollType": "Tipo di Tiro:",
+                        "SaveAbility": "Abilità o Competenza per il tiro:",
+                        "SaveDC": "Classe Difficoltà per il tiro:",
+                        "SaveDCAbility": "DC Basato sull'Abilità:",
+                        "SaveDCNumber": "DC Fisso:",
+                        "SaveDamage": "Quantità di Danno al Salvataggio:",
+                        "SaveMagic": "Tiro Salvezza Magico:",
+                        "SaveRemove": "Rimuovi Effetto al Salvataggio:",
+                        "SelfRoll": "Tiro Personale",
+                        "Spellcasting": "DC di Incantamento",
+                        "Start": "Inizio del Turno",
+                        "Turn": "Attivazione:"
+                    }
+                }
+            },
+            "Fieldsets": {
+                "damage": {
+                    "Label": "Danno",
+                    "Tooltip": "Configura le opzioni di tiro danno"
+                },
+                "macros": {
+                    "Label": "Macro",
+                    "Tooltip": "Configura le macro da chiamare"
+                },
+                "parameters": {
+                    "Label": "Parametri",
+                    "Tooltip": "Opzioni di base per le azioni nel Tempo"
+                },
+                "rolls": {
+                    "Label": "Tiri",
+                    "Tooltip": "Configura tipi e opzioni di tiro"
+                }
+            },
+            "ModuleIds": {
+                "additionalCompendiums": "Compendi Aggiuntivi",
+                "chris-premades": "Calderone delle Risorse Abbondanti (CPR)",
+                "gambits-premades": "Gambit's Premades",
+                "midi-item-showcase-community": "Vetrina Midi Item Comunità"
+            },
+            "NoPermission": "Non hai permessi per cambiare questo",
+            "Scene": {
+                "Done": "Aggiornamento della scena completato!",
+                "Start": "Aggiornamento dei token...",
+                "UpdateAll": "Aggiorna tutti i Personaggi e PNG",
+                "UpdateCharacters": "Aggiorna tutti i Personaggi",
+                "UpdateNPCs": "Aggiorna tutti i PNG"
+            },
+            "SelectedAutomation": "Automazione Selezionata:",
+            "Status": {
+                "0": "Non Aggiornato",
+                "1": "Aggiornato",
+                "2": "Caratteristica Generica Applicata",
+                "false": "Automazione Non Trovata",
+                "true": "Automazione Disponibile"
+            },
+            "Tabs": {
+                "Character": {
+                    "Label": "Personaggio",
+                    "Tooltip": "Informazioni sulle Automazioni per i Personaggi Giocanti"
+                },
+                "Configuration": {
+                    "Label": "Configurazione",
+                    "Tooltip": "Configura le parti disponibili dell'automazione"
+                },
+                "DevTools": {
+                    "Aura": "Aura:",
+                    "AutomationInfo": "Configura Info Automazione:",
+                    "Check": "Controllo:",
+                    "Combat": "Combattimento:",
+                    "Death": "Morte:",
+                    "Equipment": "Equipaggiamento:",
+                    "HasAnimation": "Ha Animazione:",
+                    "Identifier": "Identificatore:",
+                    "Label": "Strumenti di Sviluppo",
+                    "MacroInfo": "Configura Info Macro:",
+                    "MidiActor": "Midi, Attore:",
+                    "MidiItem": "Midi, Oggetto:",
+                    "Movement": "Movimento:",
+                    "Rest": "Riposo:",
+                    "Save": "Salva:",
+                    "Skill": "Competenza:",
+                    "Source": "Fonte:",
+                    "Tooltip": "Strumenti per lo sviluppo, non dovresti essere qui...",
+                    "Version": "Versione:"
+                },
+                "GenericFeatures": {
+                    "Label": "Caratteristiche Generiche",
+                    "Monster": {
+                        "Select": {
+                            "Label": "Seleziona Caratteristiche Generiche Mostro:",
+                            "Tooltip": "Aggiungi Caratteristiche Generiche Configurabili del Mostro"
+                        }
+                    },
+                    "Tooltip": "Aggiungi e Configura Caratteristiche Generiche per questo Oggetto"
+                },
+                "Info": {
+                    "Label": "Info",
+                    "Tooltip": "Informazioni sull'automazione corrente e disponibile"
+                },
+                "NPC": {
+                    "Identifier": {
+                        "Label": "Identificatore dell'Attore:",
+                        "Tooltip": "Questo identificatore verrà utilizzato per trovare automazioni rilevanti che corrispondono per nome, anziché utilizzare il nome del token prototipo dell'attore."
+                    },
+                    "Label": "PNG",
+                    "Tooltip": "Informazioni sulle Automazioni per i PNG"
+                },
+                "Overtime": {
+                    "Label": "Nel Tempo",
+                    "Tooltip": "UI per creare effetti nel Tempo di Midi-QOL"
+                },
+                "Summary": {
+                    "Label": "Riepilogo",
+                    "Legend": {
+                        "Label": "Oggetti Aggiornati"
+                    },
+                    "Tooltip": "Riepilogo delle Automazioni Aggiornate"
+                }
+            }
+        },
+        "Movement": {
+            "UnableToBeMoved": "Il bersaglio non può essere spostato!"
+        },
+        "Section": {
+            "Rage": "Rabbia",
+            "RingOfSpellStoring": "Anello di Conservazione degli Incantesimi",
+            "SpellFeatures": "Caratteristiche Incantesimo"
+        },
+        "Senses": {
+            "MagicalDarkness": "Oscurità Magica"
+        },
+        "SettingCategory": {
+            "backup": {
+                "Hint": "Impostazioni per il backup del personaggio.",
+                "Label": "Backup Personaggio",
+                "Name": "Backup Personaggio"
+            },
+            "compendium": {
+                "Hint": "Impostazioni per i compendi.",
+                "Label": "Opzioni Compendio",
+                "Name": "Opzioni Compendio"
+            },
+            "development": {
+                "Hint": "Impostazioni per sviluppatori.",
+                "Label": "Opzioni di Sviluppo",
+                "Name": "Opzioni di Sviluppo"
+            },
+            "dialog": {
+                "Hint": "Impostazioni per i dialoghi.",
+                "Label": "Opzioni Dialogo",
+                "Name": "Opzioni Dialogo"
+            },
+            "general": {
+                "Hint": "Impostazioni per opzioni generali.",
+                "Label": "Opzioni Generali",
+                "Name": "Opzioni Generali"
+            },
+            "help": {
+                "Hint": "Ricevi aiuto per questo modulo.",
+                "Label": "Aiuto",
+                "Name": "Aiuto"
+            },
+            "homebrew": {
+                "Hint": "Impostazioni per opzioni homebrew.",
+                "Label": "Opzioni Homebrew",
+                "Name": "Opzioni Homebrew"
+            },
+            "integration": {
+                "Hint": "Impostazioni per le opzioni di integrazione del modulo.",
+                "Label": "Integrazione Moduli",
+                "Name": "Integrazione Moduli"
+            },
+            "interface": {
+                "Hint": "Impostazioni per l'interfaccia utente.",
+                "Label": "Opzioni Interfaccia Utente",
+                "Name": "Opzioni Interfaccia Utente"
+            },
+            "manualRolls": {
+                "Hint": "Impostazioni per i tiri manuali.",
+                "Label": "Tiri Manuali",
+                "Name": "Tiri Manuali"
+            },
+            "mechanics": {
+                "Hint": "Impostazioni per meccaniche di gioco.",
+                "Label": "Opzioni Meccaniche di Gioco",
+                "Name": "Opzioni Meccaniche di Gioco"
+            }
+        },
+        "Settings": {
+            "Permissions": {
+                "1": "Giocatore",
+                "2": "Giocatore Affidabile",
+                "3": "Assistente Dungeon Master",
+                "4": "Dungeon Master"
+            },
+            "SelectCompendium": "Seleziona un compendio:",
+            "addActions": {
+                "0": "Disabilitato",
+                "1": "Personaggi Collegati",
+                "2": "Personaggi Scollegati",
+                "3": "Tutti i Personaggi",
+                "4": "PNG Collegati",
+                "5": "PNG Scollegati",
+                "6": "Tutti i PNG",
+                "7": "Personaggi e PNG Collegati",
+                "8": "Personaggi e PNG Scollegati",
+                "9": "Tutti i Personaggi e PNG",
+                "Hint": "Quando abilitato, verranno aggiunte azioni generiche quando viene posizionato un token.",
+                "Name": "Aggiungi Azioni ai Token"
+            },
+            "addCompendiumButton": {
+                "Hint": "Quando abilitato, un pulsante verrà aggiunto all'intestazione dei compendi per copiare l'id.",
+                "Name": "Pulsante ID Compendio"
+            },
+            "additionalCompendiums": {
+                "Hint": "Seleziona compendi aggiuntivi di oggetti da usare con il medkit e regola la loro priorità.",
+                "Name": "Compendi Aggiuntivi"
+            },
+            "applyConditionChanges": {
+                "Hint": "Quando abilitato, le condizioni applicheranno automaticamente gli effetti di Midi-QOL.",
+                "Name": "Applica Effetti Condizione di Midi-QOL"
+            },
+            "automatedAnimationSounds": {
+                "Hint": "Quando abilitato, gli oggetti con Animazioni Automatiche disabilitate riprodurranno comunque suoni configurati nel menu di Riconoscimento Automatico.",
+                "Name": "Animazioni Automatiche: Riproduci Suoni"
+            },
+            "babonusOverlappingEffects": {
+                "Hint": "Quando abilitato, i bonus dell'aura Build A Bonus rispetteranno le regole di sovrapposizione degli effetti degli incantesimi e del gioco.",
+                "Name": "Build A Bonus: Sovrapposizione Effetti Incantesimi"
+            },
+            "backupCompendium": {
+                "Hint": "Seleziona il compendio di backup degli attori.",
+                "Name": "Compendio di Backup Attori"
+            },
+            "backupFrequency": {
+                "Hint": "Con che frequenza devono essere eseguiti i backup automatici.",
+                "Name": "Frequenza di Backup"
+            },
+            "backupMake": {
+                "Hint": "Esegui un backup adesso utilizzando il compendio specificato.",
+                "Name": "Esegui un Backup"
+            },
+            "backupRetention": {
+                "Hint": "Per quanto tempo vengono conservati i backup dei personaggi.",
+                "Name": "Ritenzione dei Backup"
+            },
+            "backupTime": {
+                "Hint": "Ultima volta che è stato effettuato un backup (in millisecondi). Impostato automaticamente.",
+                "Name": "Tempo Ultimo Backup"
+            },
+            "backups": {
+                "Hint": "Quando abilitato, i personaggi di proprietà dei giocatori verranno automaticamente salvati nel compendio specificato.",
+                "Name": "Backup Automatico dei Personaggi"
+            },
+            "bg3WeaponActionConfig": {
+                "Hint": "Configura le azioni delle armi di Baldur's Gate 3.",
+                "Name": "Configura Azioni delle Armi di Baldur's Gate 3"
+            },
+            "bg3WeaponActionUses": {
+                "Hint": "Utilizzi massimi per ogni riposo breve che l'azione dell'arma può avere.",
+                "Name": "Utilizzi Azioni Armi di Baldur's Gate 3"
+            },
+            "bg3WeaponActionsEnabled": {
+                "Hint": "Quando abilitato, le azioni delle armi in stile Baldur's Gate 3 verranno aggiunte agli attori quando le armi sono equipaggiate.",
+                "Name": "Azioni delle Armi di Baldur's Gate 3"
+            },
+            "checkForUpdates": {
+                "Hint": "Quando abilitato, il modulo controllerà gli aggiornamenti una volta al giorno quando un Dungeon Master si unisce.",
+                "Name": "Controllo Aggiornamenti"
+            },
+            "classSpellList": {
+                "Hint": "Registro con tutte le liste degli incantesimi delle classi configurate.",
+                "Name": "Registro Liste Incantesimi Classi"
+            },
+            "cleave": {
+                "1": "Abilitato (Qualsiasi Salute)",
+                "2": "Abilitato (Solo Salute Completa)",
+                "Hint": "Abilita la meccanica di fenditura dal Dungeon Master's Guide",
+                "Name": "Fenditura DMG"
+            },
+            "colorizeAutomatedAnimations": {
+                "Hint": "Quando abilitato, l'icona della barra del titolo delle Animazioni Automatiche verrà colorata in base allo stato di configurazione.",
+                "Name": "Animazioni Automatiche: Colora Icona Barra del Titolo"
+            },
+            "colorizeBuildABonus": {
+                "Hint": "Quando abilitato, l'icona della barra del titolo Build A Bonus verrà colorata se è presente un bonus sull'oggetto o sull'effetto.",
+                "Name": "Build A Bonus: Colora Icona Barra del Titolo"
+            },
+            "colorizeDAE": {
+                "Hint": "Quando abilitato, l'icona della barra del titolo DAE verrà colorata se è presente un effetto sull'oggetto.",
+                "Name": "Effetti Attivi Dinamici: Colora Icona Barra del Titolo"
+            },
+            "conditionResistanceAndVulnerability": {
+                "Hint": "Abilita l'automazione della resistenza e vulnerabilità alle condizioni.",
+                "Name": "Resistenza e Vulnerabilità alle Condizioni"
+            },
+            "criticalCompendium": {
+                "Hint": "Seleziona il tuo Compendio Critico.",
+                "Name": "Compendio Critico"
+            },
+            "criticalFumbleMode": {
+                "1": "Casuale",
+                "2": "Selezionato",
+                "3": "Casuale - Solo Critico",
+                "4": "Selezionato - Solo Critico",
+                "5": "Casuale - Solo Fallimento Critico",
+                "6": "Selezionato - Solo Fallimento Critico",
+                "Hint": "Quando abilitato, i tiri di attacco critico o fallimento critico tireranno anche un oggetto dai compendi selezionati.",
+                "Name": "Modalità Critico e Fallimento Critico"
+            },
+            "devTools": {
+                "Hint": "Abilita per visualizzare gli strumenti di sviluppo.",
+                "Name": "Visualizza Strumenti di Sviluppo"
+            },
+            "diceSoNice": {
+                "Hint": "Quando abilitato, le animazioni dei tiri danno di Dice So Nice verranno ritardate fino a quando tutte le macro dei tiri danno saranno complete.",
+                "Name": "Dice So Nice: Tiri di Danno"
+            },
+            "disableNonConditionStatusEffects": {
+                "Hint": "Quando abilitato, tutti gli effetti di stato non condizione verranno rimossi.",
+                "Name": "Disabilita Effetti di Stato Non Condizione"
+            },
+            "disableSpecialEffects": {
+                "Hint": "Quando abilitato, le condizioni accecato e invisibile non applicano effetti visivi.",
+                "Name": "Disabilita Effetti Speciali"
+            },
+            "displayNestedConditions": {
+                "Hint": "Quando abilitato, gli effetti condizione annidati saranno visibili. Ad esempio: Paralizzato aggiungerà anche Incapacitato visibilmente.",
+                "Name": "Visualizza Condizioni Annidate"
+            },
+            "effectDescriptionNPC": {
+                "Hint": "Quando abilitato, l'impostazione Descrizione Effetto Automatico non verrà applicata per gli effetti creati dai PNG.",
+                "Name": "Nascondi Descrizioni Effetto PNG"
+            },
+            "effectDescriptions": {
+                "Hint": "Quando abilitato, gli effetti senza descrizioni verranno automaticamente completati dall'oggetto di origine.",
+                "Name": "Descrizioni Effetti Automatici"
+            },
+            "effectInterface": {
+                "Hint": "Aggiunge una scheda laterale per gli Effetti Attivi. Ricarica richiesta dopo l'abilitazione.",
+                "Name": "Abilita Interfaccia Effetti"
+            },
+            "epicRolls": {
+                "Hint": "Quando abilitato, alcune macro utilizzeranno i tiri Epici quando possibile.",
+                "Name": "Tiri Epici: Abilitato"
+            },
+            "explodingHeals": {
+                "Hint": "Quando abilitato, tutte le formule di cura verranno automaticamente regolate per esplodere.",
+                "Name": "Cure Esplosive"
+            },
+            "firearmSupport": {
+                "Hint": "Quando abilitato, sarà disponibile l'automazione delle armi da fuoco (dalla classe Gunslinger di Critical Role).",
+                "Name": "Supporto Armi da Fuoco"
+            },
+            "fumbleCompendium": {
+                "Hint": "Seleziona il tuo Compendio Fallimento Critico.",
+                "Name": "Compendio Fallimento Critico"
+            },
+            "gambitPremades": {
+                "1": "Nessun Homebrew o Terze parti",
+                "2": "Nessun Homebrew",
+                "3": "Nessun Terze parti",
+                "4": "Includi Homebrew e Terze parti",
+                "Hint": "Quali compendi dovrebbero essere inclusi nella ricerca di compendi aggiuntivi per i Gambit's Premades.",
+                "Name": "Opzioni Gambit's Premades"
+            },
+            "gmID": {
+                "Hint": "ID Dungeon Master utilizzato per le comunicazioni. Impostato automaticamente.",
+                "Name": "ID Dungeon Master"
+            },
+            "hiddenCompendiumFolders": {
+                "Hint": "Le cartelle selezionate del compendio saranno nascoste.",
+                "Name": "Cartelle Compendio Nascoste"
+            },
+            "hiddenCompendiums": {
+                "Hint": "I compendi selezionati saranno nascosti.",
+                "Name": "Compendi Nascosti"
+            },
+            "hideNames": {
+                "Hint": "I nomi dei nemici devono essere nascosti nei dialoghi.",
+                "Name": "Nascondi Nomi"
+            },
+            "itemCompendium": {
+                "Hint": "Compendio di oggetti usato per alcune automazioni. Ideale per il compendio oggetti di D&D Beyond.",
+                "Name": "Compendio Oggetti"
+            },
+            "lastUpdateCheck": {
+                "Hint": "Data dell'ultimo controllo aggiornamenti (in millisecondi). Impostato automaticamente.",
+                "Name": "Ultimo Controllo Aggiornamenti"
+            },
+            "macroCompendium": {
+                "Hint": "Compendio delle macro usato per sovrascrivere o aggiungere macro alla CPR API. Vedi la documentazione per l'uso. (WIP)",
+                "Name": "Compendio Macro"
+            },
+            "macroInterface": {
+                "Hint": "Aggiunge una scheda laterale per le Macro. Ricarica richiesta dopo l'abilitazione.",
+                "Name": "Abilita Interfaccia Macro"
+            },
+            "makeGM": {
+                "Hint": "Diventa il Dungeon Master primario.",
+                "Name": "Diventa DM"
+            },
+            "manualRollsEnabled": {
+                "Hint": "Abilita Roll Resolver di CPR per i tiri non completati.",
+                "Name": "Tiri Manuali"
+            },
+            "manualRollsGMFulfils": {
+                "Hint": "Quando abilitato, il Dungeon Master soddisfa tutti i tiri.",
+                "Name": "Il Dungeon Master Soddisfa i Tiri"
+            },
+            "manualRollsInclusion": {
+                "0": "Nessuno - Nessun Tiro Manuale",
+                "1": "Tutti - Richiesta per Qualsiasi Attore",
+                "2": "Solo Tutti i Personaggi",
+                "3": "Solo Collegati",
+                "4": "Solo Proprietà Giocatore Collegati",
+                "5": "Proprietà Giocatore e Controllati",
+                "Hint": "Quali tiri dell'attore devono essere richiesti.",
+                "Name": "Inclusione Tiri Manuali"
+            },
+            "manualRollsPromptNoData": {
+                "Hint": "Richiesta per tiri senza dati, usati spesso nelle macro.",
+                "Name": "Richiesta su Nessun Dato"
+            },
+            "manualRollsPromptOnMiss": {
+                "Hint": "Richiesta per tiri danno anche su attacchi mancati.",
+                "Name": "Richiesta su Mancato"
+            },
+            "manualRollsUsers": {
+                "Hint": "Configura quali utenti usano i Tiri Manuali.",
+                "Name": "Utenti Tiri Manuali"
+            },
+            "miscPremades": {
+                "1": "Nessun Homebrew o Unearthed Arcana",
+                "2": "No Unearthed Arcana",
+                "3": "No Homebrew",
+                "4": "Includi Homebrew e Unearthed Arcana",
+                "Hint": "Quali compendi includere nella ricerca aggiuntiva per la Vetrina Midi Item - Comunità.",
+                "Name": "Opzioni Vetrina Midi Item"
+            },
+            "monsterCompendium": {
+                "Hint": "Compendio mostri usato per certe automazioni. Ideale per il compendio mostri di D&D Beyond.",
+                "Name": "Compendio Mostri"
+            },
+            "movementPerformance": {
+                "0": "Basso",
+                "1": "Medio",
+                "2": "Alto",
+                "3": "Ultra",
+                "Hint": "Modalità precisione per eventi di movimento. Modalità più alte avranno un maggiore impatto sulle prestazioni, specialmente su hardware meno potente. • Ultra: Massima precisione. • Alto: Ignora calcolo copertura nella distanza. • Medio: Come Alto, movimento intermedio ignorato tranne l'ultimo segmento. • Basso: Come Medio, muri ignorati nel calcolo distanza.",
+                "Name": "Precisione Evento Movimento"
+            },
+            "permissionsAutomateItem": {
+                "Hint": "Classifica utente più bassa che può selezionare e applicare diverse automazioni nel Medkit:",
+                "Name": "Permessi Applicazione Automazione Medkit"
+            },
+            "permissionsConfigureHomebrew": {
+                "Hint": "Classifica utente più bassa che può configurare personalizzazioni homebrew nel Medkit:",
+                "Name": "Permessi Configurazione Homebrew Medkit"
+            },
+            "permissionsConfigureItem": {
+                "Hint": "Classifica utente più bassa che può configurare le automazioni nel Medkit:",
+                "Name": "Permessi Configurazione Medkit"
+            },
+            "permissionsUpdateItem": {
+                "Hint": "Classifica utente più bassa che può aggiornare l'automazione selezionata nel Medkit:",
+                "Name": "Permessi Aggiornamento Automazione Medkit"
+            },
+            "playerSelectsConjures": {
+                "Hint": "Quando lancia incantesimi \"Evoca X\", il giocatore (non il DM) può selezionare le creature da evocare.",
+                "Name": "Giocatore Seleziona Evocazioni"
+            },
+            "replaceStatusEffectIcons": {
+                "Hint": "Quando abilitato, le icone di stato verranno sostituite.",
+                "Name": "Sostituisci Icone di Stato"
+            },
+            "seenTour": {
+                "Hint": "Il messaggio di tour è stato visto? Impostato automaticamente.",
+                "Name": "Messaggio Tour"
+            },
+            "selectTool": {
+                "Hint": "Quando abilitato, lo strumento di selezione è disponibile in più luoghi. Ricarica richiesta dopo l'abilitazione.",
+                "Name": "Strumento di Selezione Ovunque"
+            },
+            "spellCompendium": {
+                "Hint": "Compendio di incantesimi usato per alcune automazioni. Ideale per il compendio incantesimi di D&D Beyond.",
+                "Name": "Compendio Incantesimi"
+            },
+            "spotlightOmnisearchSummons": {
+                "Hint": "Quando abilitato, puoi usare Spotlight Omnisearch per evocare creature dal tuo compendio mostri. Ricarica richiesta dopo l'abilitazione.",
+                "Name": "Spotlight Omnisearch: Evocazioni"
+            },
+            "statusEffectIcons": {
+                "Hint": "Configura le immagini delle icone di stato.",
+                "Name": "Configura Immagini Icone di Stato"
+            },
+            "syncActorSizeToTokens": {
+                "Hint": "Quando abilitato, gli effetti che cambiano la dimensione di un attore cambieranno anche la dimensione del token sul canvas.",
+                "Name": "Sincronizza Dimensioni Attore e Token"
+            },
+            "temporaryEffectHud": {
+                "Hint": "Aggiunge effetti temporanei all'HUD di stato del token.",
+                "Name": "HUD Effetti Temporanei"
+            },
+            "thirdParty": {
+                "Hint": "Quando abilitato, il Medkit includerà anche automazioni Homebrew.",
+                "Name": "Contenuti di Terze Parti"
+            },
+            "updateCompanionInitiative": {
+                "Hint": "Imposta automaticamente l'iniziativa del compagno subito dopo l'iniziativa del giocatore.",
+                "Name": "Aggiorna Iniziativa Compagno"
+            },
+            "updateSummonInitiative": {
+                "Hint": "Imposta automaticamente l'iniziativa delle evocazioni subito dopo l'iniziativa del giocatore.",
+                "Name": "Aggiorna Iniziativa Evocazione"
+            },
+            "useLocalCompendiums": {
+                "Hint": "Utilizza i compendi locali del mondo invece dei compendi del modulo per la ricerca degli oggetti.",
+                "Name": "Usa Compendi Locali"
+            },
+            "vaeButtons": {
+                "Hint": "Quando abilitato, alcune macro aggiungeranno pulsanti all'interfaccia VAE.",
+                "Name": "Effetti Attivi Visivi: Pulsanti"
+            }
+        },
+        "SkillCheck": {
+            "Title": "Prova di Abilità"
+        },
+        "SkipDeadAndUnconscious": "Ignora Morti e Inconsci?",
+        "SneakAttack": {
+            "Auto": "Usa Automaticamente:"
+        },
+        "Spells": {
+            "BeaconOfHope": "Faro di Speranza"
+        },
+        "SpotlightOmnisearch": {
+            "Actor": "Il token selezionato non è associato ad alcun attore!",
+            "Description": "Evoca un {name} utilizzando il Calderone delle Risorse Abbondanti (CPR).",
+            "Time": {
+                "Day": "1 Giorno",
+                "Hour": "1 Ora",
+                "Minute": "1 Minuto"
+            },
+            "Token": "Per favore seleziona un token prima di usare questa funzione!"
+        },
+        "Summons": {
+            "ActorName": "Nome Attore {option}",
+            "CRSelection": "{numSummons} {typePl} di CR {cr} o inferiore",
+            "CreatureNames": {
+                "AberrantSpirit": "Spirito Aberrante",
+                "AberrantSpiritBeholderkin": "Spirito Aberrante (Beholderkin)",
+                "AberrantSpiritSlaad": "Spirito Aberrante (Slaad)",
+                "AberrantSpiritStarSpawn": "Spirito Aberrante (Progenie Stellare)",
+                "AirElemental": "Elementale dell'Aria",
+                "BeastOfTheLand": "Bestia della Terra",
+                "BeastOfTheSea": "Bestia del Mare",
+                "BeastOfTheSky": "Bestia del Cielo",
+                "BestialSpirit": "Spirito Bestiale",
+                "BestialSpiritAir": "Spirito Bestiale (Aria)",
+                "BestialSpiritLand": "Spirito Bestiale (Terra)",
+                "BestialSpiritWater": "Spirito Bestiale (Acqua)",
+                "BigbysHand": "Mano di Bigby",
+                "CelestialSpirit": "Spirito Celestiale",
+                "CelestialSpiritAvenger": "Spirito Celestiale (Vendicatore)",
+                "CelestialSpiritDefender": "Spirito Celestiale (Difensore)",
+                "ConstructSpirit": "Spirito Costrutto",
+                "ConstructSpiritClay": "Spirito Costrutto (Argilla)",
+                "ConstructSpiritMetal": "Spirito Costrutto (Metallo)",
+                "ConstructSpiritStone": "Spirito Costrutto (Pietra)",
+                "DancingGreatsword": "Spada Lunga Danzante",
+                "DancingItem": "Oggetto Danzante",
+                "DancingLongsword": "Spada Lunga Danzante",
+                "DancingRapier": "Stocco Danzante",
+                "DancingScimitar": "Scimitarra Danzante",
+                "DancingShortsword": "Spada Corta Danzante",
+                "DraconicSpirit": "Spirito Draconico",
+                "DraconicSpiritChromatic": "Spirito Draconico (Cromatico)",
+                "DraconicSpiritGem": "Spirito Draconico (Gemma)",
+                "DraconicSpiritMetallic": "Spirito Draconico (Metallico)",
+                "DrakeCompanionAcid": "Compagno Drago: Acido",
+                "DrakeCompanionCold": "Compagno Drago: Freddo",
+                "DrakeCompanionFire": "Compagno Drago: Fuoco",
+                "DrakeCompanionLightning": "Compagno Drago: Fulmine",
+                "DrakeCompanionPoison": "Compagno Drago: Veleno",
+                "DreadLord": "Signore della Paura",
+                "EarthElemental": "Elementale della Terra",
+                "EarthenHand": "Mano di Terra",
+                "Echo": "Eco",
+                "ElementalSpirit": "Spirito Elementale",
+                "ElementalSpiritAir": "Spirito Elementale (Aria)",
+                "ElementalSpiritEarth": "Spirito Elementale (Terra)",
+                "ElementalSpiritFire": "Spirito Elementale (Fuoco)",
+                "ElementalSpiritWater": "Spirito Elementale (Acqua)",
+                "Familiar": "Familiare",
+                "FeySpirit": "Spirito Fatato",
+                "FeySpiritFuming": "Spirito Fatato (Iroso)",
+                "FeySpiritMirthful": "Spirito Fatato (Gioioso)",
+                "FeySpiritTricksy": "Spirito Fatato (Astuto)",
+                "FiendishSpirit": "Spirito Demoniaco",
+                "FiendishSpiritDemon": "Spirito Demoniaco (Demone)",
+                "FiendishSpiritDevil": "Spirito Demoniaco (Diavolo)",
+                "FiendishSpiritYugoloth": "Spirito Demoniaco (Yugoloth)",
+                "FireElemental": "Elementale del Fuoco",
+                "Flumph": "Flumph",
+                "ForceSculpture": "Scultura di Forza",
+                "FormOfDread": "Forma di Terrore",
+                "GuardianOfFaith": "Guardiano della Fede",
+                "HealingSpirit": "Spirito Curativo",
+                "HomunculusServant": "Servitore Homunculus",
+                "HybridTransformation": "Trasformazione Ibrida",
+                "ManifestMind": "Mente Manifestata",
+                "Pixie": "Folletto",
+                "ShadowSpirit": "Spirito Ombra",
+                "ShadowSpiritDespair": "Spirito Ombra (Disperazione)",
+                "ShadowSpiritFear": "Spirito Ombra (Paura)",
+                "ShadowSpiritFury": "Spirito Ombra (Furia)",
+                "Shifter": "Mutante",
+                "Skeleton": "Scheletro",
+                "SpiritualWeapon": "Arma Spirituale",
+                "Steed": "Cavallo",
+                "SteelDefender": "Difensore d'Acciaio",
+                "TentacleOfTheDeeps": "Tentacolo degli Abissi",
+                "UndeadSpirit": "Spirito Non Morto",
+                "UndeadSpiritGhostly": "Spirito Non Morto (Spettrale)",
+                "UndeadSpiritPutrid": "Spirito Non Morto (Putrido)",
+                "UndeadSpiritSkeletal": "Spirito Non Morto (Scheletrico)",
+                "WaterElemental": "Elementale dell'Acqua",
+                "WildfireSpirit": "Spirito Selvaggio",
+                "Zombie": "Zombie"
+            },
+            "CustomAvatar": "Avatar Personalizzato {option}",
+            "CustomName": "Nome Personalizzato {option}",
+            "CustomToken": "Token Personalizzato {option}",
+            "DismissHP": "L'evocazione ha raggiunto 0 punti ferita! Dovrebbe essere dissolta?",
+            "DismissSummon": "Dissolvi Evocazione",
+            "FamiliarDefault": "Familiare {option}",
+            "Folder": "Nome della Cartella",
+            "HowMany": "Quanti?",
+            "NoMatching": "Nessun attore corrispondente trovato nel compendio specificato!",
+            "SelectSummon": "Seleziona Evocazione",
+            "SelectSummonType": "Seleziona Tipo di Evocazione",
+            "SelectSummons": "Seleziona Evocazioni (Massimo: {totalSummons})",
+            "SummonedCreature": "Creatura Evocata"
+        },
+        "Template": {
+            "AttackerCantSeeTarget": "L'attaccante non può vedere il bersaglio",
+            "Cone": "Cono",
+            "Line": "Linea",
+            "TargetCantSeeAttacker": "Il bersaglio non può vedere l'attaccante",
+            "UnknownTemplate": "Modello Sconosciuto"
+        },
+        "Tour": {
+            "0": {
+                "Content": "Questo tour ti guiderà nell'utilizzo di alcune delle funzionalità principali del Calderone delle Risorse Abbondanti (CPR).",
+                "Title": "Benvenuto!"
+            },
+            "1": {
+                "Content": "Tutte le automazioni disponibili in questo modulo sono memorizzate qui.",
+                "Title": "Compendi"
+            },
+            "2": {
+                "Content": "Ad esempio, l'incantesimo \"Scudo di Fuoco\" si trova nel compendio \"Incantesimi CPR\". Puoi trascinare l'incantesimo da questo compendio sul tuo attore per usarlo.",
+                "Title": "Compendi"
+            },
+            "3": {
+                "Content": "In alternativa, puoi premere l'icona del Medkit su un oggetto per aprire l'applicazione Medkit e sostituire automaticamente l'oggetto con la sua automazione.",
+                "Title": "Medkit Oggetto"
+            },
+            "4": {
+                "Content": "Il Medkit mostra lo stato dell'oggetto qui.\nRosso: Non aggiornato.\nGiallo: Automazione disponibile\nVerde: Oggetto aggiornato.\nBlu: Oggetto aggiornato con opzioni di configurazione.",
+                "Title": "Stato Oggetto"
+            },
+            "5": {
+                "Content": "Qui puoi selezionare quale automazione applicare se sono disponibili più fonti di automazione.",
+                "Title": "Automazioni Disponibili"
+            },
+            "6": {
+                "Content": "Se un oggetto ha opzioni di configurazione, puoi impostarle nella scheda di configurazione.",
+                "Title": "Configurazione Oggetto"
+            },
+            "7": {
+                "Content": "L'icona del Medkit su un attore è un aggiornamento collettivo. Puoi aggiornare tutti gli oggetti di un attore qui.",
+                "Title": "Medkit Attore"
+            },
+            "8": {
+                "Content": "Alcune automazioni richiedono la creazione di oggetti temporanei nella scheda dell'attore. Questo modulo utilizza pagine di diario (che devi compilare tu stesso) per aggiungere descrizioni.",
+                "Title": "Diario Descrizione"
+            },
+            "9": {
+                "Content": "Ad esempio, l'incantesimo \"Respiro del Drago\" creerà una funzione temporanea chiamata \"Respiro del Drago\" sull'attore bersaglio.\nCompilare questa pagina del diario riempirà la descrizione quando sarà creata.",
+                "Title": "Diario Descrizione"
+            },
+            "10": {
+                "Content": "Questo modulo ha molte impostazioni. Assicurati di esaminarle attentamente e abilitare solo quelle di cui hai bisogno.",
+                "Title": "Impostazioni del Modulo"
+            },
+            "11": {
+                "Content": "Ulteriori informazioni sono disponibili nella sezione aiuto.",
+                "Title": "Aiuto"
+            },
+            "Chat": "<hr>Visualizza un tour guidato del Calderone delle Risorse Abbondanti (CPR) qui:<br><button type=\"button\">Inizia il Tour</button>",
+            "Description": "Fai un tour del Calderone delle Risorse Abbondanti (CPR).",
+            "Hint": "Avvia un tour guidato del Calderone delle Risorse Abbondanti (CPR).",
+            "Title": "Tour del Calderone delle Risorse Abbondanti (CPR)",
+            "TourFeatures": "Funzionalità del Tour"
+        },
+        "Troubleshooter": {
+            "Clipboard": "Testo copiato negli appunti!",
+            "CopyToClipboard": "Copia negli Appunti",
+            "DisabledModule": "Il Calderone delle Risorse Abbondanti (CPR) richiede che il modulo {module} sia abilitato!",
+            "Discord": "Apri il Canale di Supporto su Discord",
+            "Hint": "Apri il risolutore di problemi.",
+            "MissingModule": "Il Calderone delle Risorse Abbondanti (CPR) richiede che il modulo {module} sia installato!",
+            "MovementLag": "Gli Eventi di Movimento sembrano richiedere molto tempo! Prova a impostare \"Prestazioni Evento Movimento\" più basso nelle impostazioni generali CPR.",
+            "Open": "Apri il Risolutore di Problemi:",
+            "SaveToFile": "Salva su File",
+            "Title": "Risolutore di Problemi"
+        },
+        "Turns": {
+            "EndOfTurn": "Fine del Turno",
+            "StartOfTurn": "Inizio del Turno"
+        },
+        "Units": {
+            "Feet": "Piedi",
+            "Miles": "Miglia",
+            "Units": "Unità:"
+        },
+        "UnknownTarget": "Bersaglio Sconosciuto"
+    },
+    "CONTROLS": {
+        "LightSelect": "Seleziona Luci",
+        "SoundSelect": "Seleziona Suoni",
+        "TemplateSelect": "Seleziona Modelli"
+    }
+}
