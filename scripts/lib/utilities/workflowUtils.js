@@ -92,7 +92,21 @@ function setDamageItemDamage(ditem, damageAmount, adjustRaw = true) {
         ditem.rawDamageDetail[0].value = damageAmount;
     }
 }
-function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor='', itemCardId='new', sourceItem}={}) {
+function reduceDamageAppliedFlat(ditem, modificationAmount) {
+    console.log(modificationAmount);
+    ditem.damageDetail.push({
+        value: modificationAmount,
+        active: {multiplier: 1},
+        type: 'none'
+    });
+    ditem.rawDamageDetail.push({
+        value: modificationAmount,
+        type: 'none'
+    });
+    ditem.hpDamage = Math.min(ditem.oldHP, ditem.damageDetail.reduce((acc, i) => acc + i.value, 0));
+    ditem.hpDamage = Math.sign(ditem.hpDamage) * Math.floor(Math.abs(ditem.hpDamage));
+}
+function applyWorkflowDamage(sourceToken, damageRoll, damageType, targets, {flavor = '', itemCardId = 'new', sourceItem} = {}) {
     let itemData = {};
     if (sourceItem) {
         itemData = {
@@ -160,5 +174,6 @@ export let workflowUtils = {
     getDamageTypes,
     getTotalDamageOfType,
     handleInstantTemplate,
-    getCastData
+    getCastData,
+    reduceDamageAppliedFlat
 };

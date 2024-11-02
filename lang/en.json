@@ -1156,6 +1156,11 @@
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
             },
+            "MastersAmulet": {
+                "Linked": "Amulet has been linked!",
+                "MissingBound": "Target does not have the CPR bound feature!",
+                "Unlinked": "Target is an unlinked token and the link will only work with this token on this scene!"
+            },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Maximilian's Earthen Grasp: Crush",
                 "Grasp": "Maximilian's Earthen Grasp: Grasp",
@@ -2185,6 +2190,10 @@
                 "Hint": "Item compendium used for certain automations. Ideally should point to your D&D Beyond item compendium.",
                 "Name": "Item Compendium"
             },
+            "itemContext": {
+                "Hint": "When enabled, the item context menu will have additional options (Send, Condense, and Split).",
+                "Name": "Additional Item Context Options"
+            },
             "lastUpdateCheck": {
                 "Hint": "When was the last update check run (in milliseconds). Automatically set.",
                 "Name": "Last Update Check"
@@ -2322,10 +2331,6 @@
             "vaeButtons": {
                 "Hint": "When enabled, certain macros will add buttons to the VAE interface.",
                 "Name": "Visual Active Effects: Buttons"
-            },
-            "itemContext": {
-                "Hint": "When enabled, the item context menu will have additional options (Send, Condense, and Split).",
-                "Name": "Additional Item Context Options"
             }
         },
         "SkillCheck": {

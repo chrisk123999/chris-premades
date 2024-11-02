@@ -437,6 +437,7 @@ export {mimicPseudopod} from './macros/monsterFeatures/monstrosity/mimic/pseudop
 export {causticMist} from './macros/monsterFeatures/monstrosity/hoardMimic/causticMist.js';
 export {hoardMimicPseudopod} from './macros/monsterFeatures/monstrosity/hoardMimic/pseudopod.js';
 export {spittingMimicAcid} from './macros/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
+export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuardian/bound.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
@@ -561,6 +562,7 @@ export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMi
 export {titanstoneKnucklesD, titanstoneKnucklesA, titanstoneKnucklesE} from './macros/items/trinket/titanstoneKnuckles.js';
 export {lastStandArmorBR, lastStandArmorCM, lastStandArmorCS, lastStandArmorH, lastStandArmorHP, lastStandArmorL, lastStandArmorP, lastStandArmorPl, lastStandArmorRM, lastStandArmorS, lastStandArmorSL, lastStandArmorSM} from './macros/items/armor/lastStandArmor.js';
 export {mysteryKey} from './macros/items/trinket/mysteryKey.js';
+export {mastersAmulet} from './macros/items/trinket/mastersAmulet.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
 //Other
