@@ -113,6 +113,8 @@
             },
             "ApplyFilter": "Applica Filtro:",
             "AttackBonus": "Bonus Attacco:",
+            "Character": "Personaggio",
+            "CheckSaves": "Tiro Salvezza:",
             "ClassIdentifier": "Identificatore di Classe",
             "Color": "Colore:",
             "Colors": {
@@ -146,15 +148,19 @@
             "CombatOnly": "Abilita solo in Combattimento",
             "CompendiumName": "Nome del Compendio {option}:",
             "CreatureTypes": "Tipi di Creature:",
+            "CriticalOnly": "Solo Colpo Critico:",
             "DC": "CD:",
             "DamageType": "Tipo di Danno:",
             "DamageTypes": "Tipi di Danno:",
             "DarknessAnimation": "Animazione Oscurità:",
+            "DisplayFormulaRoll": "Mostra il Tiro della Formula:",
             "Distance": "Distanza:",
             "Expire": "Scadenza:",
             "Formula": "Formula:",
             "HideToken": "Nascondi Token:",
+            "IgnoredCreatureTypes": "Tipi di creature ignorate:",
             "ImmuneCreatures": "Tipi di Creature Immuni:",
+            "Percentage": "Percentuale:",
             "PlayAnimation": "Riproduci Animazione:",
             "PlayTeleportAnimation": "Riproduci Animazione Teletrasporto:",
             "Range": "Portata:",
@@ -165,7 +171,8 @@
             "ShowIcon": "Mostra Sempre l'Icona dell'Aura",
             "ShowRoll": "Mostra Tiro:",
             "Sound": "Suono:",
-            "SpecificAnimation": "Animazione {option}:"
+            "SpecificAnimation": "Animazione {option}:",
+            "UseFormula": "Utilizzare la formula:"
         },
         "Cover": {
             "Full": "Copertura Totale",
@@ -175,6 +182,7 @@
             "Unknown": "Copertura Sconosciuta"
         },
         "CustomMacros": {
+            "NoIdentifier": "In una macro registrata mancava un identificatore ed è stata saltata!",
             "NoReturn": "La macro \"{name}\" non sta restituendo dati validi ed è stata saltata!"
         },
         "CustomTypes": {
@@ -298,6 +306,7 @@
             "NoEffect": "{itemName} deve avere un effetto per la sua caratteristica generica di mostro!",
             "NoMoreResource": "Risorsa richiesta esaurita!",
             "NoType": "Nessun Tipo",
+            "None": "Nessuno",
             "Ok": "Ok",
             "Recharge": "Ricarica:",
             "RecoverSpellSlot": "Seleziona uno slot incantesimo da recuperare:",
@@ -333,6 +342,16 @@
             "PackId": {
                 "Tooltip": "Copia ID del Pacchetto"
             }
+        },
+        "Item": {
+            "Condense": "Condensa",
+            "SelectAmount": "Selezionare l'importo da donare:",
+            "Send": "Dona",
+            "Split": "Dividi",
+            "SplitSize": "Nuova Quantità:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Export Data (For Sharing)"
         },
         "Journal": {
             "Chat": "Visualizza il readme del Calderone delle Risorse Abbondanti (CPR) qui:",
@@ -1080,6 +1099,14 @@
                 "RestoreHitpoints": "Ripristina Punti Ferita:",
                 "Select": "Come vuoi aiutare?"
             },
+            "LifeSteal": {
+                "HealingType": "Tipo di Cura:"
+            },
+            "Lifesteal": {
+                "MaxHPCure": "Recupero della riduzione di PF:",
+                "ReduceMaxHP": "Riduzione dei PF Massimi:",
+                "excessAsTemp": "Guarigione in eccesso come punti ferita temporanei:"
+            },
             "LightningArrow": {
                 "Burst": "Freccia Fulminante: Esplosione"
             },
@@ -1128,6 +1155,11 @@
             },
             "MassCureWounds": {
                 "Select": "Quali bersagli desideri curare? (Max: 6)"
+            },
+            "MastersAmulet": {
+                "Linked": "L'amuleto è stato collegato!",
+                "MissingBound": "Il target non ha la funzione CPR vincolata!",
+                "Unlinked": "Il target è un token non collegato e il link funzionerà solo con questo token su questa scena!"
             },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Mano di Terra di Massimiliano: Schiacciare",
@@ -2118,6 +2150,10 @@
                 "Hint": "Quando abilitato, tutte le formule di cura verranno automaticamente regolate per esplodere.",
                 "Name": "Cure Esplosive"
             },
+            "exportForSharing": {
+                "Hint": "Quando è abilitato, viene aggiunto un pulsante di esportazione alternativo al menu contestuale dell'elemento e dell'attore per esportare un elemento con le descrizioni rimosse. È necessario ricaricare dopo l'abilitazione.",
+                "Name": "Esportazione per condivisione"
+            },
             "firearmSupport": {
                 "Hint": "Quando abilitato, sarà disponibile l'automazione delle armi da fuoco (dalla classe Gunslinger di Critical Role).",
                 "Name": "Supporto Armi da Fuoco"
@@ -2153,6 +2189,10 @@
             "itemCompendium": {
                 "Hint": "Compendio di oggetti usato per alcune automazioni. Ideale per il compendio oggetti di D&D Beyond.",
                 "Name": "Compendio Oggetti"
+            },
+            "itemContext": {
+                "Hint": "Quando è abilitato, il menu contestuale dell'elemento presenta opzioni aggiuntive (Invia, Condensa e Dividi).",
+                "Name": "Opzioni di contesto dell'elemento aggiuntivo"
             },
             "lastUpdateCheck": {
                 "Hint": "Data dell'ultimo controllo aggiornamenti (in millisecondi). Impostato automaticamente.",
