@@ -124,7 +124,7 @@
       "offHandWeapon": false,
       "autoSaveFriendly": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "fulldam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -136,7 +136,7 @@
     "chris-premades": {
       "info": {
         "name": "Potion of Poison",
-        "version": "0.12.70",
+        "version": "1.0.36",
         "identifier": "potionOfPoison",
         "source": "chris-premades"
       },

@@ -70,7 +70,7 @@ async function endTurn({trigger: {entity: template, castData, token}}) {
 }
 export let dawn = {
     name: 'Dawn',
-    version: '0.12.0',
+    version: '1.0.36',
     midi: {
         item: [
             {

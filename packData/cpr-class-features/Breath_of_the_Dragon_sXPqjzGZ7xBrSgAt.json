@@ -114,7 +114,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -125,7 +125,7 @@
     "chris-premades": {
       "info": {
         "name": "Breath of the Dragon",
-        "version": "0.12.49",
+        "version": "1.0.36",
         "identifier": "breathOfTheDragon",
         "source": "chris-premades",
         "hasAnimation": true

@@ -113,7 +113,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -124,7 +124,7 @@
     "chris-premades": {
       "info": {
         "name": "Channel Divinity: Radiance of the Dawn",
-        "version": "0.12.40",
+        "version": "1.0.36",
         "identifier": "radianceOfTheDawn",
         "source": "chris-premades"
       }

@@ -117,7 +117,7 @@
       "offHandWeapon": false,
       "confirmTargets": "never",
       "noConcentrationCheck": false,
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default"
     },
     "core": {

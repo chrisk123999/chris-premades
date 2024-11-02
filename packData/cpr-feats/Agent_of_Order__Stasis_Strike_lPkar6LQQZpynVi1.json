@@ -105,7 +105,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "fulldam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -116,7 +116,7 @@
     "chris-premades": {
       "info": {
         "name": "Agent of Order: Stasis Strike",
-        "version": "0.12.70",
+        "version": "1.0.36",
         "identifier": "stasisStrike",
         "source": "chris-premades"
       },

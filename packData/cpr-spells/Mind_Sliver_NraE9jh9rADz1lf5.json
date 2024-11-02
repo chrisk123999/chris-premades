@@ -87,7 +87,7 @@
       "autoSaveFriendly": false,
       "offHandWeapon": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "nodam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -101,7 +101,7 @@
     "chris-premades": {
       "info": {
         "name": "Mind Sliver",
-        "version": "0.12.0",
+        "version": "1.0.36",
         "identifier": "mindSliver",
         "source": "chris-premades"
       }

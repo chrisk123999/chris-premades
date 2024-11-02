@@ -128,7 +128,7 @@
     "chris-premades": {
       "info": {
         "name": "Breath Weapon (Force)",
-        "version": "0.12.64",
+        "version": "1.0.36",
         "identifier": "breathWeaponForce",
         "source": "chris-premades"
       }
