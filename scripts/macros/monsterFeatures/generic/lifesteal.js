@@ -82,7 +82,7 @@ async function use({trigger, workflow}) {
     }));
     totalHeal = Math.floor(Math.floor(totalHeal) * percentage);
     if (healingType === 'temphp') {
-        workflowUtils.applyDamage(workflow.token, totalHeal, 'temphp');
+        workflowUtils.applyDamage([workflow.token], totalHeal, 'temphp');
     } else {
         if (excessAsTemp) {
             if (workflow.actor.system.attributes.hp.value === workflow.actor.system.attributes.hp.max) {
