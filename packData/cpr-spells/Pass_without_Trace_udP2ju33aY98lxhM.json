@@ -127,96 +127,21 @@
     "chris-premades": {
       "info": {
         "name": "Pass without Trace",
-        "version": "0.12.0",
+        "version": "1.0.37",
         "identifier": "passWithoutTrace",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "passWithoutTrace"
+          ]
+        }
       }
     },
     "dnd5e": {}
   },
-  "effects": [
-    {
-      "changes": [],
-      "transfer": false,
-      "_id": "b4043DKe7UwuankG",
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "origin": null,
-      "tint": "#ffffff",
-      "flags": {
-        "babonus": {
-          "bonuses": {
-            "OrIQfm4vQXMVVgB6": {
-              "name": "PassWithoutTrace",
-              "description": "Pass Without Trace",
-              "bonuses": {
-                "bonus": "10"
-              },
-              "filters": {
-                "skillIds": [
-                  "ste"
-                ],
-                "healthPercentages": {
-                  "value": null,
-                  "type": null
-                }
-              },
-              "id": "OrIQfm4vQXMVVgB6",
-              "type": "test",
-              "enabled": true,
-              "itemOnly": false,
-              "optional": false,
-              "consume": {
-                "enabled": false,
-                "type": null,
-                "scales": false,
-                "formula": "",
-                "value": {
-                  "min": null,
-                  "max": null,
-                  "step": null
-                }
-              },
-              "aura": {
-                "enabled": true,
-                "isTemplate": false,
-                "range": "30",
-                "self": true,
-                "disposition": 1,
-                "blockers": ""
-              }
-            }
-          }
-        }
-      },
-      "name": "Pass without Trace",
-      "description": "",
-      "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "3.3.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "img": "icons/magic/air/fog-gas-smoke-brown.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!udP2ju33aY98lxhM.b4043DKe7UwuankG"
-    }
-  ],
+  "effects": [],
   "img": "icons/magic/air/fog-gas-smoke-brown.webp",
   "folder": null,
   "_id": "udP2ju33aY98lxhM",

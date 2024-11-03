@@ -1,3 +1,16 @@
+# 1.0.37 Release:
+## Update Notes:
+- Removed Build-A-Bonus as a requirement, resulting in changes in implementation of:
+    - Alchemical Savant
+    - All-Purpose Tool
+    - Crusader's Mantle
+    - Dragon-Touched Focus (Stirring / Chromatic)
+    - Empowered Evocation
+    - Enhanced Bond
+    - Hearth of Moonlight and Shadow
+    - Pass Without Trace
+    - Potent Spellcasting
+
 # 1.0.36 Release:
 ## Bug Fixes:
 - Agent of Order: Stasis Strike

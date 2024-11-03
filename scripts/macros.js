@@ -35,7 +35,7 @@ export {conjureFey} from './macros/spells/conjureFey.js';
 export {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js';
 export {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js';
 export {crownOfMadness} from './macros/spells/crownOfMadness.js';
-export {crusadersMantle} from './macros/spells/crusadersMantle.js';
+export {crusadersMantle, crusadersMantleAura} from './macros/spells/crusadersMantle.js';
 export {danseMacabre} from './macros/spells/danseMacabre.js';
 export {darkness} from './macros/spells/darkness.js';
 export {dawn, dawnMove, dawnShining} from './macros/spells/dawn.js';
@@ -93,7 +93,7 @@ export {mindSliver} from './macros/spells/mindSliver.js';
 export {mirrorImage, mirrorImageMirrored} from './macros/spells/mirrorImage.js';
 export {mistyStep} from './macros/spells/mistyStep.js';
 export {moonbeam, moonbeamMove, moonbeamBeam} from './macros/spells/moonbeam.js';
-export {passWithoutTrace} from './macros/spells/passWithoutTrace.js';
+export {passWithoutTrace, passWithoutTraceAura} from './macros/spells/passWithoutTrace.js';
 export {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 export {raulothimsPsychicLance} from './macros/spells/raulothimsPsychicLance.js';
 export {rayOfEnfeeblement, rayOfEnfeeblementEnfeebled} from './macros/spells/rayOfEnfeeblement.js';
@@ -438,6 +438,7 @@ export {causticMist} from './macros/monsterFeatures/monstrosity/hoardMimic/caust
 export {hoardMimicPseudopod} from './macros/monsterFeatures/monstrosity/hoardMimic/pseudopod.js';
 export {spittingMimicAcid} from './macros/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
 export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuardian/bound.js';
+export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin/leadership.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';

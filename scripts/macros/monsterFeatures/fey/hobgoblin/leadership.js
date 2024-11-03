@@ -1,4 +1,4 @@
-import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils} from '../../../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -8,8 +8,8 @@ async function use({workflow}) {
         origin: workflow.item.uuid,
         duration: itemUtils.convertDuration(workflow.item)
     };
-    effectUtils.addMacro(effectData, 'aura', ['passWithoutTraceAura']);
-    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'passWithoutTrace'});
+    effectUtils.addMacro(effectData, 'aura', ['leadershipAura']);
+    await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'leadership'});
     if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration': effectData.duration});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
@@ -24,9 +24,15 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         },
         changes: [
             {
-                key: 'system.skills.ste.bonuses.check',
+                key: 'system.bonuses.All-Attacks',
                 mode: 2,
-                value: '10',
+                value: '1d4',
+                priority: 20
+            },
+            {
+                key: 'system.bonuses.abilities.save',
+                mode: 2,
+                value: '1d4',
                 priority: 20
             }
         ],
@@ -46,8 +52,8 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         }
     };
 }
-export let passWithoutTrace = {
-    name: 'passWithoutTrace',
+export let leadership = {
+    name: 'Leadership',
     version: '1.0.37',
     midi: {
         item: [
@@ -57,18 +63,22 @@ export let passWithoutTrace = {
                 priority: 50
             }
         ]
-    }
+    },
+    monster: [
+        'Hobgoblin Captain',
+        'Hobgoblin Warlord'
+    ]
 };
-export let passWithoutTraceAura = {
-    name: 'Pass Without Trace: Aura',
-    version: passWithoutTrace.version,
+export let leadershipAura = {
+    name: 'Leadership: Aura',
+    version: leadership.version,
     aura: [
         {
             pass: 'create',
             macro: create,
             priority: 50,
             distance: 30,
-            identifier: 'passWithoutTraceAura',
+            identifier: 'leadershipAura',
             disposition: 'ally'
         }
     ]
