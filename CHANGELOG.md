@@ -1,19 +1,3 @@
-# 1.0.37 Release:
-## Bug Fixes:
-- Javelin of Lightning
-- Lifesteal
-## Update Notes:
-- Removed Build-A-Bonus as a requirement, resulting in changes in implementation of:
-    - Alchemical Savant
-    - All-Purpose Tool
-    - Crusader's Mantle
-    - Dragon-Touched Focus (Stirring / Chromatic)
-    - Empowered Evocation
-    - Enhanced Bond
-    - Hearth of Moonlight and Shadow
-    - Pass Without Trace
-    - Potent Spellcasting
-
 # 1.0.36 Release:
 ## Bug Fixes:
 - Agent of Order: Stasis Strike
@@ -42,6 +26,20 @@
 - Summon Fiend
 - Vitriolic Sphere
 - Wild Surge
+- Javelin of Lightning
+- Lifesteal
+- Alchemical Savant
+- All-Purpose Tool
+- Crusader's Mantle
+- Dragon-Touched Focus (Stirring / Chromatic)
+- Empowered Evocation
+- Enhanced Bond
+- Hearth of Moonlight and Shadow
+- Pass Without Trace
+- Potent Spellcasting
+
+## Update Notes:
+- Removed Build-A-Bonus as a requirement.
 
 # 1.0.35 Release:
 ## Update Notes:
