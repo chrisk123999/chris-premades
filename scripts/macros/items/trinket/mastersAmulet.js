@@ -31,7 +31,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     let bound = itemUtils.getItemByIdentifier(firstToken.actor, 'shieldGuardianBound');
     if (!bound) return;
     let reduction = Math.ceil(ditem.totalDamage / 2);
-    workflowUtils.reduceDamageAppliedFlat(ditem, -reduction);  //This needs fixing.
+    workflowUtils.modifyDamageAppliedFlat(ditem, -reduction);  //This needs fixing.
     let featureData = genericUtils.duplicate(bound.toObject());
     featureData.system.damage.parts[0][0] = reduction;
     await workflowUtils.syntheticItemDataRoll(featureData, actor, [firstToken]);

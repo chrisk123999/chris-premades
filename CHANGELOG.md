@@ -1,4 +1,6 @@
 # 1.0.37 Release:
+## Bug Fixes:
+- Javelin of Lightning
 ## Update Notes:
 - Removed Build-A-Bonus as a requirement, resulting in changes in implementation of:
     - Alchemical Savant
