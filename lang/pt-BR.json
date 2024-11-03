@@ -1156,6 +1156,11 @@
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
+            "MastersAmulet": {
+                "Linked": "Amuleto foi vinculado!",
+                "MissingBound": "O alvo não possui o recurso vinculado do CPR!",
+                "Unlinked": "O alvo é um token desvinculado e o link só funcionará com esse token nesta cena!"
+            },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Abraço Terrestre de Maximilian: Esmagar",
                 "Grasp": "Abraço Terrestre de Maximilian: Agarrão",
