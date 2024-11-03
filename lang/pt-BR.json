@@ -113,6 +113,8 @@
             },
             "ApplyFilter": "Aplicar Filtro:",
             "AttackBonus": "Bônus Ataque:",
+            "Character": "Personagem",
+            "CheckSaves": "Verificar Salvaguardas:",
             "ClassIdentifier": "Identificador de Classe",
             "Color": "Cor:",
             "Colors": {
@@ -146,15 +148,19 @@
             "CombatOnly": "Habilitar Somente em Combate",
             "CompendiumName": "Nome no Compendium {option}:",
             "CreatureTypes": "Tipos de Criatura:",
+            "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
             "DamageType": "Tipo de Dano:",
             "DamageTypes": "Tipos de Dano:",
             "DarknessAnimation": "Animação de Escuridão:",
+            "DisplayFormulaRoll": "Exibir Fórmula da Rolagem:",
             "Distance": "Distância:",
             "Expire": "Expiração:",
             "Formula": "Fórmula:",
             "HideToken": "Ocultar Token:",
+            "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
             "Range": "Alcance:",
@@ -165,7 +171,8 @@
             "ShowIcon": "Sempre Mostrar Ícone da Aura",
             "ShowRoll": "Exibir Rolagem:",
             "Sound": "Som:",
-            "SpecificAnimation": "Animação {option}:"
+            "SpecificAnimation": "Animação {option}:",
+            "UseFormula": "Usar Fórmula:"
         },
         "Cover": {
             "Full": "Cobertura Total",
@@ -175,6 +182,7 @@
             "Unknown": "Cobertura Desconhecida"
         },
         "CustomMacros": {
+            "NoIdentifier": "Uma macro registrada não tinha um identificador e foi ignorada!",
             "NoReturn": "A macro \"{name}\" não está retornando dados válidos e foi ignorada!"
         },
         "CustomTypes": {
@@ -298,6 +306,7 @@
             "NoEffect": "{itemName} deve ter um efeito para seu recurso genérico de monstro!",
             "NoMoreResource": "Sem o recurso necessário!",
             "NoType": "Sem Tipo",
+            "None": "Nenhum(a)",
             "Ok": "Ok",
             "Recharge": "Recarga:",
             "RecoverSpellSlot": "Selecione um espaço de magia para recuperar:",
@@ -328,6 +337,21 @@
             "Earthquake": "Terremoto (Grovelthrash)",
             "MeldIntoStone": "Mesclar-se às Rochas (Grovelthrash)",
             "StoneShape": "Moldar Rochas (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copiar ID do Compêndio"
+            }
+        },
+        "Item": {
+            "Condense": "Condensar",
+            "SelectAmount": "Selecione a quantidade para dada:",
+            "Send": "Enviar",
+            "Split": "Dividir",
+            "SplitSize": "Nova Quantidade:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Exportar Dados (Para Compartilhamento)"
         },
         "Journal": {
             "Chat": "Ver o leia-me do Chris's Premades aqui:",
@@ -1075,6 +1099,14 @@
                 "RestoreHitpoints": "Restaurar Pontos de Vida:",
                 "Select": "Como você quer ajudar?"
             },
+            "LifeSteal": {
+                "HealingType": "Tipo de Cura:"
+            },
+            "Lifesteal": {
+                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "ReduceMaxHP": "Reduzir PV Máx.:",
+                "excessAsTemp": "Excesso de Cura como PV Temp.:"
+            },
             "LightningArrow": {
                 "Burst": "Flecha Relampejante: Explosão"
             },
@@ -1726,6 +1758,11 @@
                     "Tooltip": "Personalize certos visuais"
                 }
             },
+            "Compendium": {
+                "Apply": "Usar Medkit em todos os documentos do compêndio?",
+                "Done": "Atualização do compêndio concluída!",
+                "Start": "Atualizando documentos..."
+            },
             "Effect": {
                 "Conditions": {
                     "Label": "Condições",
@@ -1798,6 +1835,13 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "Você não tem permissão para alterar isso",
+            "Scene": {
+                "Done": "Atualização de cena concluída!",
+                "Start": "Atualizando tokens...",
+                "UpdateAll": "Atualizar todos PJs e PNJs",
+                "UpdateCharacters": "Atualizar todos PJs",
+                "UpdateNPCs": "Atualizar todos PNJs"
+            },
             "SelectedAutomation": "Automação Selecionada:",
             "Status": {
                 "0": "Desatualizado",
@@ -1961,6 +2005,10 @@
                 "Hint": "Quando ativado, ações genéricas serão adicionadas quando um token for colocado.",
                 "Name": "Adicionar Ações aos Tokens"
             },
+            "addCompendiumButton": {
+                "Hint": "Quando ativado, um botão será adicionado ao cabeçalho dos compêndios para copiar a ID.",
+                "Name": "Botão de ID de Compêndio"
+            },
             "additionalCompendiums": {
                 "Hint": "Selecione compêndios de itens adicionais a serem usados pelo medkit e ajuste sua prioridade.",
                 "Name": "Compêndios Adicionais"
@@ -2097,6 +2145,10 @@
                 "Hint": "Quando ativado, todas as fórmulas de rolagem de cura serão automaticamente ajustadas para explodir.",
                 "Name": "Curas Explosivas"
             },
+            "exportForSharing": {
+                "Hint": "Quando ativado, um botão de alternativo de exportação será adicionado ao menu do item e do ator, para exportar um item com descrições removidas. É necessário recarregar após ativar.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "Quando ativado, a automação de armas de fogo estará disponível (da classe Gunslinger do Critical Role).",
                 "Name": "Suporte Arma de Fogo"
@@ -2132,6 +2184,10 @@
             "itemCompendium": {
                 "Hint": "Compêndio de itens usados para determinadas automações. O ideal é apontar para o seu compêndio de itens do D&D Beyond.",
                 "Name": "Compêndio de Itens"
+            },
+            "itemContext": {
+                "Hint": "Quando habilitado, o menu do item terá opções adicionais (Enviar, Condensar e Dividir).",
+                "Name": "Opções Adicionais de Contexto de Item"
             },
             "lastUpdateCheck": {
                 "Hint": "Quando foi executada a última verificação de atualização (em milissegundos). Definir automaticamente.",
