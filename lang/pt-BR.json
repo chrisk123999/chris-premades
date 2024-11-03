@@ -1636,9 +1636,9 @@
                 "Select": "Causar dano a uma criatura agarrada?"
             },
             "UndeadFortitude": {
-                "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:",
-                "Name": "Fortitude de Morto-Vivo"
+                "Critical": "Acertos críticos ignoram Fortaleza Imortal:",
+                "DamageTypes": "Tipos de Dano que ignoram Fortaleza Imortal:",
+                "Name": "Fortaleza Imortal"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
