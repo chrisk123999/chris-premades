@@ -146,7 +146,7 @@
                 "Yellow": "Amarelo"
             },
             "CombatOnly": "Habilitar Somente em Combate",
-            "CompendiumName": "Nome no Compendium {option}:",
+            "CompendiumName": "Nome no Compêndio {option}:",
             "CreatureTypes": "Tipos de Criatura:",
             "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
