@@ -1,6 +1,7 @@
 # 1.0.37 Release:
 ## Bug Fixes:
 - Wild Shape
+- Pass without Trace
 
 # 1.0.36 Release:
 ## Bug Fixes:
