@@ -1050,11 +1050,9 @@
           "RestoreHitpoints": "Restaurer des Points de Vie :",
           "Select": "Comment souhaitez-vous aider ?"
       },
-      "LifeSteal": {
-        "HealingType": "Type de soin :"
-      },
       "Lifesteal": {
           "MaxHPCure": "Récupération de la Réduction des PV Max :",
+          "HealingType": "Type de soin :",
           "ReduceMaxHP": "Réduire les PV Max :",
           "excessAsTemp": "Soin Excédentaire en Points de Vie Temporaires :"
       },

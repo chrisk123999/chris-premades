@@ -1099,11 +1099,9 @@
                 "RestoreHitpoints": "Restaurar Pontos de Vida:",
                 "Select": "Como você quer ajudar?"
             },
-            "LifeSteal": {
-                "HealingType": "Tipo de Cura:"
-            },
             "Lifesteal": {
                 "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "HealingType": "Tipo de Cura:",
                 "ReduceMaxHP": "Reduzir PV Máx.:",
                 "excessAsTemp": "Excesso de Cura como PV Temp.:"
             },

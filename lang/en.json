@@ -1099,11 +1099,10 @@
                 "RestoreHitpoints": "Restore Hitpoints:",
                 "Select": "How would you like to aid?"
             },
-            "LifeSteal": {
-                "HealingType": "Healing Type:"
-            },
             "Lifesteal": {
                 "MaxHPCure": "Max HP Reduction Recovery:",
+                "HealingType": "Healing Type:",
+                "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduce Max HP:",
                 "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
             },
@@ -1680,6 +1679,7 @@
                 "MaxDistance": "Max Distance:"
             },
             "WildShape": {
+                "AllowElementals": "Always allow elementals:",
                 "CustomCompendium": "Custom Wild Shape Compendium:",
                 "Equipment": "What happens to your equipment?",
                 "Ignore": "Ignore CR, Type, & Movement Restrictions:",

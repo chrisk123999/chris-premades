@@ -105,6 +105,7 @@ async function use({trigger, workflow}) {
 }
 export let lifesteal = {
     name: 'Lifesteal',
+    translation: 'CHRISPREMADES.Macros.Lifesteal.Name',
     version: '1.0.34',
     isGenericFeature: true,
     midi: {
@@ -187,7 +188,7 @@ export let lifesteal = {
         },
         {
             value: 'healingType',
-            label: 'CHRISPREMADES.Macros.LifeSteal.HealingType',
+            label: 'CHRISPREMADES.Macros.Lifesteal.HealingType',
             type: 'select',
             options: constants.healingTypeOptions,
             default: 'healing'

@@ -1099,11 +1099,9 @@
                 "RestoreHitpoints": "Ripristina Punti Ferita:",
                 "Select": "Come vuoi aiutare?"
             },
-            "LifeSteal": {
-                "HealingType": "Tipo di Cura:"
-            },
             "Lifesteal": {
                 "MaxHPCure": "Recupero della riduzione di PF:",
+                "HealingType": "Tipo di Cura:",
                 "ReduceMaxHP": "Riduzione dei PF Massimi:",
                 "excessAsTemp": "Guarigione in eccesso come punti ferita temporanei:"
             },

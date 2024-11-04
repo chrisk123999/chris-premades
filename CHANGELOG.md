@@ -1,3 +1,7 @@
+# 1.0.37 Release:
+## Bug Fixes:
+- Wild Shape
+
 # 1.0.36 Release:
 ## Bug Fixes:
 - Agent of Order: Stasis Strike
