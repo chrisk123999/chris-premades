@@ -47,7 +47,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
     };
 }
 export let passWithoutTrace = {
-    name: 'passWithoutTrace',
+    name: 'Pass without Trace',
     version: '1.0.37',
     midi: {
         item: [
@@ -60,7 +60,7 @@ export let passWithoutTrace = {
     }
 };
 export let passWithoutTraceAura = {
-    name: 'Pass Without Trace: Aura',
+    name: 'Pass without Trace: Aura',
     version: passWithoutTrace.version,
     aura: [
         {
