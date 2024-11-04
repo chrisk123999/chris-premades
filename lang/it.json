@@ -1679,6 +1679,7 @@
             },
             "WildShape": {
                 "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
+                "AllowElementals": "Permettere sempre gli elementali:",
                 "Equipment": "Cosa succede al tuo equipaggiamento?",
                 "Ignore": "Ignora CR, Tipo e Restrizioni di Movimento:",
                 "KeepSpells": "Permetti incantesimi durante la trasformazione:",
