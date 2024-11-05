@@ -1,7 +1,7 @@
 {
     "CHRISPREMADES": {
         "AbilityCheck": {
-            "Title": "Prova di Abilità"
+            "Title": "Prova di Caratteristica"
         },
         "AbilitySave": {
             "Title": "Tiro Salvezza"
@@ -89,7 +89,7 @@
             "WeightOfSorrow": "Peso del Dolore"
         },
         "Config": {
-            "Ability": "Abilità:",
+            "Ability": "Caratteristica:",
             "AffectAllies": "Dovrebbe Influenzare gli Alleati:",
             "AllowEnemies": "Consentire la selezione di token non alleati?",
             "Animation": "Animazione:",
@@ -372,7 +372,7 @@
                 "Select": "Seleziona l'incantesimo associato a questa caratteristica:"
             },
             "AbilityDrain": {
-                "Name": "Sottrazione di Abilità"
+                "Name": "Risucchio di Caratteristica"
             },
             "Actions": {
                 "Dodge": "Schivare",
@@ -426,7 +426,7 @@
                 "Reflect": "Armatura di Agathys: Riflettere"
             },
             "AstralTrance": {
-                "Ability": "Quale abilità per le prove con strumenti?",
+                "Ability": "Quale caratteristica per le prove con strumenti?",
                 "WeapToolProf": "Competenza in Armi/Strumenti",
                 "Which": "Seleziona competenze:"
             },
@@ -477,8 +477,8 @@
                 "Swimming": "Nuoto"
             },
             "BestowCurse": {
-                "Ability": "Svantaggio su punteggi di abilità",
-                "AbilitySelect": "Quale abilità?",
+                "Ability": "Svantaggio su punteggi di caratteristica",
+                "AbilitySelect": "Quale caratteristica?",
                 "Attack": "Svantaggio sugli attacchi",
                 "Damage": "Danno Extra",
                 "DamageFlavor": "Danno Extra della Maledizione",
@@ -961,7 +961,7 @@
                 "Hexed": "Maledetto",
                 "Move": "Maledizione: Sposta",
                 "Multiple": "Quale bersaglio desideri maledire?",
-                "SelectAbility": "Quale abilità dovrebbe avere svantaggio?"
+                "SelectAbility": "Quale caratteristica dovrebbe avere svantaggio?"
             },
             "HexWarrior": {
                 "NoWeapons": "Nessuna arma valida equipaggiata da scegliere!"
@@ -1679,6 +1679,7 @@
             },
             "WildShape": {
                 "CustomCompendium": "Compendio Forma Selvatica Personalizzato:",
+                "AllowElementals": "Permettere sempre gli elementali:",
                 "Equipment": "Cosa succede al tuo equipaggiamento?",
                 "Ignore": "Ignora CR, Tipo e Restrizioni di Movimento:",
                 "KeepSpells": "Permetti incantesimi durante la trasformazione:",
@@ -1778,7 +1779,7 @@
                 "OverTime": {
                     "Add": "Aggiungi nel Tempo",
                     "Labels": {
-                        "Ability": "DC Basato sull'Abilità",
+                        "Ability": "DC Basato sulla Caratteristica",
                         "ActionSave": "Il Tiro Salvezza è un'Azione:",
                         "AllowIncapacitated": "Permetti Bersagli Incapacitati:",
                         "ApplyCondition": "Applica Valutazione Condizione:",
@@ -1799,9 +1800,9 @@
                         "RemoveCondition": "Rimuovi Valutazione Condizione:",
                         "RollMode": "Modalità Tiro per Tiro nel Tempo:",
                         "RollType": "Tipo di Tiro:",
-                        "SaveAbility": "Abilità o Competenza per il tiro:",
+                        "SaveAbility": "Caratteristica o Competenza per il tiro:",
                         "SaveDC": "Classe Difficoltà per il tiro:",
-                        "SaveDCAbility": "DC Basato sull'Abilità:",
+                        "SaveDCAbility": "DC Basato sulla Caratteristica:",
                         "SaveDCNumber": "DC Fisso:",
                         "SaveDamage": "Quantità di Danno al Salvataggio:",
                         "SaveMagic": "Tiro Salvezza Magico:",
