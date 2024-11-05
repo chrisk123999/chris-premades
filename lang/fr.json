@@ -65,6 +65,10 @@
         "Simple": "Simple",
         "Water": "Eau"
       },
+      "ApplyFilter": "Appliquer le filtre :",
+      "AttackBonus": "Bonus d'attaque :",
+      "Character": "Personnage",
+      "CheckSaves": "Jets de sauvegarde :",
       "ClassIdentifier": "Identifiant de classe",
       "Color": "Couleur:",
       "Colors": {
@@ -96,16 +100,29 @@
         "Yellow": "Jaune"
       },
       "CombatOnly": "Activer uniquement en combat",
+      "CompendiumName": "{option} Nom du compendium :",
+      "CreatureTypes": "Types de creature :",
+      "CriticalOnly": "Critique uniquement :",
+      "DC": "DD :",
       "DamageType": "Type de dégât :",
       "DamageTypes": "Types de dégâts :",
       "DarknessAnimation": "Animation des ténèbres :",
+      "DisplayFormulaRoll": "Afficher la formule du jet :",
       "Formula": "Formule:",
+      "HideToken": "Cacher le jeton :",
+      "IgnoredCreatureTypes": "Ignorer les types de créature :",
       "PlayAnimation": "Jouer une animation :",
+      "PlayTeleportAnimation": "Jouer une annimation de téléportation :",
+      "Range": "Portée :",
       "RealDarkness": "Utilisez la vraie obscurité :",
+      "SaveDC": "DD de sauvegarde :",
+      "Scale": "Échelle :",
       "ScaleIdentifier": "Identificateur d'échelle",
       "ShowIcon": "Toujours afficher l'icône Aura",
-      "Sound": "Son:",
-      "SpecificAnimation": "{option} Animation :"
+      "ShowRoll": "Afficher le jet :",
+      "Sound": "Son :",
+      "SpecificAnimation": "{option} Animation :",
+      "UseFormula": "Utiliser la formule :"
     },
     "Cover": {
       "Full": "Abri total",
@@ -115,6 +132,7 @@
       "Unknown": "Abri inconnue"
     },
     "CustomMacros": {
+      "NoIdentifier": "Il manquait un identifiant à une macro enregistrée, elle a donc été ignorée !",
       "MissingIdentifier": "Il manque un identifiant à la macro \"{name}\" et a été ignorée !",
       "NoReturn": "La macro \"{name}\" ne renvoie pas de données valides et a été ignorée !"
     },
@@ -122,28 +140,47 @@
       "SpellFeature": "Fonctionnalité de sort"
     },
     "Dialog": {
-      "DamageType": "Quel type de dégâts ?",
+      "DamageType": "Quel type de dégâts ?",
+      "HitDieLabel": "{className} ({denomination}) - {remaining}/{max}",
       "Invalid": "Entrée invalide !",
-      "RemoteMessage": "En attente de la sélection de la boîte de dialogue depuis",
+      "Missed": "Le jet d'attaque ({attackTotal}) a raté. Utiliser {itemName} ?",
+      "RemoteMessage": "Waiting for remote dialog selection from",
       "Use": "Utiliser {itemName} ?",
-      "UseAttack": "Utiliser {itemName} ? ",
-      "WhatDo": "Qu'aimeriez-vous faire ?"
+      "UseAttack": "Utiliser {itemName} ? (Total de l'attaque : {attackTotal})",
+      "UseAttackDetail": "Utiliser {itemName} pour ajouter {bonusFormula} ? (Total de l'attaque : {attackTotal})",
+      "UseExtraCost": "Utiliser {itemName} ? (Coûte {quantity} {quantityName})",
+      "UseName": "Utiliser {itemName} [{tokenName}] ?",
+      "UseOn": "Utiliser {itemName} sur {tokenName} ?",
+      "UseRollTotal": "Utiliser {itemName} ? (Total du jet : {rollTotal})",
+      "UseRollTotalDetail": "Utiliser {itemName} pour ajouter {bonusFormula} ? (Total du jet : {rollTotal})",
+      "UseWeaponDamageTotal": "Utiliser {itemName} ? (Dégât de l'arme : {damageTotal})",
+      "WhatDo": "Qu'aimeriez-vous faire ?",
+      "YesDetail": "Oui ({detail})"
     },
     "Direction": {
+      "Away": "Au loin",
       "Direction": "Direction",
+      "Down": "Bas",
       "East": "Est",
+      "Left": "Gauche",
       "North": "Nord",
       "Northeast": "Nord-est",
       "Northwest": "Nord-ouest",
+      "Right": "Droite",
       "South": "Sud",
       "Southeast": "Sud-est",
       "Southwest": "Sud-ouest",
+      "Towards": "En direction de",
+      "Up": "Haut",
       "West": "Ouest"
     },
     "Distance": {
       "0": "0 pied",
-      "5": "5 pieds.",
-      "10": "10 pieds."
+      "10": "10 pieds",
+      "15": "15 pieds",
+      "20": "20 pieds",
+      "5": "5 pieds",
+      "DistanceFeet": "{distance} pieds"
     },
     "EffectInterface": {
       "Copy": "(Copie)",
@@ -157,6 +194,8 @@
       "ActorNotFound": "Acteur de la barre latérale requis introuvable !",
       "CompendiumItemNotFound": "Élément du compendium introuvable !",
       "CompendiumNotFound": "Compendium spécifié non valide !",
+      "ConfigureCompendium": "Cette automatisation nécessite que les paramètres suivants du compendium CPR soient configurés :",
+      "EnableSetting": "Cette automatisation nécessite que les paramètres suivants du compendium CPR soient activés pour fonctionner :",
       "MissingDescriptionJournal": "CPR - Journal de descriptions introuvable !",
       "MissingDescriptionPage": "Page de journal de description manquante !",
       "NoActors": "Aucun acteur trouvé dans le dossier : \"{folder}\" !",
@@ -164,1472 +203,2292 @@
       "UpdateItem": "Mettre à jour l'élément"
     },
     "Firearm": {
+      "Ammunition": "Munition d'arme à feu",
       "Broken": "Cassé",
       "Damaged": "Endommagé",
+      "Explosive": "Explosif :",
       "Firearm": "Arme à feu",
-      "HasMisfired": "a raté le coup !",
-      "IsBroken": "Cette arme à feu est cassée et doit être réparée !",
-      "IsDamaged": "Cette arme à feu est endommagée et doit être réparée !",
+      "Grit": "Ténacité",
+      "GritRegain": "Ténacité regagnée ! ({regained})",
+      "HasMisfired": "a raté son tir !",
+      "IsBroken": "Cette arme à feu est cassée et doit être réparée !",
+      "IsDamaged": "Cette arme a feu est endommagée et doit être réparée !",
       "Misfire": "Tir raté",
+      "MisfireScore": "Nombre de tir ratés :",
+      "NoAmmo": "Vous n'avez pas de munitions !",
+      "NoGrit": "Pas de ténacité regagnée !",
+      "NoGuns": "Vous n'avez pas d'arme à feu à utiliser !",
+      "NoReloads": "Vous n'avez pas d'arme à feu qui nécessite d'être rechargée !",
+      "NoRepairs": "Vous n'avez pas d'arme à feu à réparer !",
+      "NoTinkers": "Vous n'avez pas d'outils de bricoleur pour la réparer !",
       "Other": "Autre",
-      "Status": "Statut:",
-      "TrickShot": "Tir astucieux",
+      "OutOfAmmo": "Pas de munition restante, vous devez recharger !",
+      "RepairFailure": "{weaponName} est maintenant cassée !",
+      "RepairSuccess": "{weaponName} est rechargée avec succès !",
+      "SelectAmmo": "Quelle munition voulez-vous utiliser ?",
+      "SelectReload": "Quelle arme à feu voulez-vous recharger ?",
+      "SelectRepair": "Quelle arme à feu voulez-vous réparer ?",
+      "SelectUse": "Quelle arme à feu voulez-vous utiliser ?",
+      "SelectViolent": "Combien de ténacité voulez-vous dépenser ?",
+      "Status": "Status :",
+      "TrickShot": "Tir Astucieux",
+      "TrickShotSelect": "Voulez-vous faire un Tir Astucieux ?",
       "Undamaged": "En bon état"
     },
     "Generic": {
+      "Actions": "Actions",
       "Available": "Disponible",
-      "CPR": "Les préfabriqués de Chris",
+      "CPR": "Le Chaudron de Ressources Abondantes (Cauldron of Plentiful Resources)",
       "Cancel": "Annuler",
       "Chat": "Chat",
-      "Check": "Vérification des capacités",
+      "Check": "Test de Caractéristique",
       "CheckSpelling": "Vérifier l'orthographe",
       "Close": "Fermer",
       "Configure": "Configurer",
       "Disabled": "Désactivé",
       "Distance": "Distance",
       "Edit": "Modifier",
-      "Go": "Aller",
+      "Failure": "Échec",
+      "Go": "Démarrer",
       "Import": "Importer",
+      "Max": "Max:",
       "MissingScale": "L'acteur n'a pas l'échelle {scaleName} de configuré !",
       "No": "Non",
+      "NoEffect": "{itemName} doit avoir un effet pour cet attribut de monstre générique !",
+      "NoMoreResource": "À court de la ressource requise !",
       "NoType": "Aucun type",
-      "Ok": "D'accord",
+      "None": "Aucun(e)",
+      "Ok": "Ok",
+      "Recharge": "Recharge :",
       "RecoverSpellSlot": "Sélectionnez un emplacement de sort à récupérer :",
       "Replace": "Remplacer",
-      "Select": "Sélectionner",
+      "Rerolling": "Relancer {origDie} ({origResult}):",
+      "Select": "Selectionner",
       "SelectSpellSlot": "Sélectionnez un emplacement de sort :",
-      "Skill": "Vérification des compétences",
-      "Summon": "Convoquer",
+      "Skill": "Test de Compétence",
+      "Submit": "Envoyer",
+      "Success": "Succès",
+      "Summon": "Invoquer",
+      "Total": "Total(e)",
       "Uncontested": "Incontesté",
       "Update": "Mise à jour",
-      "Yes": "Oui"
+      "Yes": "Oui",
+      "You": "Vous"
     },
     "GenericEffects": {
-      "ConditionAdvantage": "Condition avantage",
-      "ConditionDisadvantage": "Condition désavantage",
-      "ConditionImmunity": "Immunité aux conditions",
+      "ConditionAdvantage": "Avantage à la condition",
+      "ConditionDisadvantage": "Désavantage à la condition",
+      "ConditionFailure": "Échec à la condition",
+      "ConditionImmunity": "Immunité à la condition",
+      "CriticalThreshold": "Seuil Critique",
       "InvalidTarget": "Cible invalide",
       "TemplateEffect": "Modèle {itemName}"
     },
-    "Journal": {
-      "Chat": "Consultez les préfabriqués de Chris ici :",
-      "Readme": "Lisez-moi",
-      "Welcome": "<p>Merci d'utiliser mon module ! Si vous trouvez des bugs ou avez des demandes, veuillez soit envoyer un message à <strong>chrisk123999</strong> sur Discord, soit créer un <a href=\"https://github.com/chrisk123999/chris-premades\">Github< /a> problème. Ne harcelez pas tposney, Zhell ou tout autre auteur de module avec des bugs ou des problèmes liés à ce module.</p><p>À noter, je contourne généralement les éléments qui ont été importés via le module d'importation DDB. Si quelque chose fonctionne \"tel quel\" à partir de ce module, il est peu probable que je l'aille ici.</p><p>Pour commencer, vous pouvez trouver mes automatisations dans les recueils qui commencent par : \"CPR.\"</p><p>Vous pouvez également cliquer sur l'icône du kit médical dans la barre de titre pour mettre à jour l'élément avec mon automatisation. Cela conservera votre description déjà présente sur l'objet.</p><hr><p>Tout objet, sort ou fonctionnalité ajouté à votre feuille a temporairement besoin d'une description. Les mises à jour des modules remplaceront les recueils dans lesquels ils sont stockés, donc les descriptions seront extraites de cette entrée de journal. Toutes les pages suivantes ne seront pas régénérées lors de la mise à jour de ce module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https:/ /ko-fi.com/img/githubbutton_sm.svg\"></a>"
+    "Grovelthrash": {
+        "Earthquake": "Tremblement de terre (Grovelthrash)",
+        "MeldIntoStone": "Fusion dans la pierre (Grovelthrash)",
+        "StoneShape": "Façonnage de la pierre (Grovelthrash)"
+      },
+    "HeaderButtons": {
+      "PackId": {
+          "Tooltip": "Copier l'ID du pack"
+      }
     },
-    "Macros": {
+    "Item": {
+        "Condense": "Condensé",
+        "SelectAmount": "Selectionnez le montant à donner :",
+        "Send": "Envoyer",
+        "Split": "Diviser",
+        "SplitSize": "Nouvelle quantité :"
+    },
+    "ItemDirectory": {
+        "ExportForSharing": "Exporter les données (à partager)"
+    },
+    "Journal": {
+      "Chat": "Consultez le Chaudron de Ressources Abondantes (Cauldron of Plentiful Resources) ici :",
+      "Readme": "Lisez-moi",
+      "Welcome": "<p>Merci d'utiliser ce module ! Si vous trouvez des bugs, veuillez soit créer un ticket sur <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a>, soit signaler le bug sur notre <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Ne dérangez pas tposney, Zhell ou d'autres auteurs de modules pour des bugs ou des problèmes liés à ce module.</p><p>Des informations supplémentaires sur le module, y compris une FAQ à jour, un guide de démarrage et des informations sur les fonctionnalités, sont disponibles sur le <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Wiki du Chaudron de Ressources Abondantes (Cauldron of Plentiful Resources)</a>. Le wiki fournit des explications, des images et des exemples qui peuvent répondre à la plupart des questions concernant le module.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
+    },
+    "Light": {
+      "Bright": "Vive",
+      "Dim": "Faible"
+  },
+  "Macros": {
+      "AberrantDragonmark": {
+          "ConfigId": "ID du sort associé",
+          "Damage": "Marque Draconique Aberrante : Dégâts",
+          "Expend": "Dépenser un dé de vie ?",
+          "Healing": "Marque Draconique Aberrante : Soin",
+          "NoValid": "Aucun sort valide trouvé !",
+          "Select": "Sélectionnez le sort associé pour cette caractéristique :"
+      },
+      "AbilityDrain": {
+          "Name": "Drain de Caractéristique"
+      },
       "Actions": {
-        "Dodge": "Esquiver"
+          "Dodge": "Esquiver",
+          "Grapple": "Agripper",
+          "GrappleEscape": "Agripper : Évasion",
+          "GrappleEscapeSelect": "Essayer de s'échapper de l'étreinte de..?",
+          "GrappledBy": "Agrippé par {tokenName}",
+          "Grappling": "Agrippant {tokenName}"
+      },
+      "AdvantageDamageBonus": {
+          "Bonus": "Bonus de dégâts si l'attaque a un avantage :",
+          "Name": "Bonus de Dégâts avec Avantage"
+      },
+      "AllPurposeTool": {
+          "Channel": "Outil Polyvalent : Canaliser les Forces Créatives",
+          "Name": "Outil Polyvalent",
+          "Select": "Sélectionnez un outil d'artisan :",
+          "Spell": "Sélectionnez un tour de magie :"
       },
       "AncestralProtectors": {
-        "Target": "Protecteurs ancestraux : cible"
+          "Target": "Protecteurs Ancestraux : Cible"
       },
       "AnimateDead": {
-        "Command": "Animer les morts : Commande"
+          "Command": "Animation des Morts : Commande"
       },
       "AnimatingPerformance": {
-        "Command": "Animation de performances : commande",
-        "Dance": "Danse irrépressible",
-        "ForceEmpoweredSlam": "Frappe renforcée par la Force",
-        "ImmutableForm": "Forme immuable",
-        "Size": "Quelle taille d'article ?"
+          "Command": "Performance Animée : Commande",
+          "Dance": "Danse Irrépressible",
+          "ForceEmpoweredSlam": "Coup Renforcé par la Force",
+          "ImmutableForm": "Forme Immuable",
+          "Size": "Quelle taille de l'objet ?"
       },
       "Antagonize": {
-        "NoWeapons": "La cible n'a aucune arme équipée !",
-        "SelectTarget": "Qui est attaqué ?",
-        "SelectWeapon": "Quelle arme est utilisée pour attaquer ?"
+          "NoWeapons": "La cible n'a pas d'armes équipées !",
+          "SelectTarget": "Qui est attaqué ?",
+          "SelectWeapon": "Quelle arme est utilisée pour attaquer ?"
       },
       "ArcaneAbjuration": {
-        "Plane": "Est-ce que {name} est éloigné de son plan d'origine ?"
+          "Plane": "{name} est-il éloigné de son plan d'origine ?"
       },
       "ArcaneJolt": {
-        "Harm": "Blesser",
-        "HarmOrHeal": "Blesser ou guérir ?",
-        "Heal": "Guérir",
-        "WhoHeal": "Qui soigner ?"
+          "Harm": "Blesser",
+          "HarmOrHeal": "Décharge arcanique : Blesser ou Soigner ?",
+          "Heal": "Soigner",
+          "WhoHeal": "Qui soigner ?"
+      },
+      "ArcaneWard": {
+          "Protect": "Protéger {tokenName} avec votre protection arcanique ?"
       },
       "ArmorOfAgathys": {
-        "Reflect": "Armure d'Agathys : Réflexion"
+          "Reflect": "Armure d'Agathys : Renvoyer"
+      },
+      "AstralTrance": {
+          "Ability": "Quelle caractéristique pour les tests d'outils ?",
+          "WeapToolProf": "Maîtrise des Armes/Outils",
+          "Which": "Sélectionnez les maîtrises :"
+      },
+      "AuraDamage": {
+          "Name": "Dégâts d'Aura : Fin de Tour"
       },
       "AuraOfLife": {
-        "RemoveTempmax": "Supprimez temporairement la réduction maximale d'PV existante dans l'aura :"
+          "RemoveTempmax": "Retirer temporairement la réduction maximale de PV existante dans l'aura :"
       },
       "AuraOfVitality": {
-        "Healing": "Aura de vitalité : guérison"
+          "Healing": "Aura de Vitalité : Soin"
+      },
+      "AutoGrapple": {
+          "DC": "DD fixe pour échapper à l'agrippement (contesté si 0) :",
+          "Disadvantage": "Donner un désavantage au test d'évasion :",
+          "Name": "Agripper Automatique"
+      },
+      "AwakenedSpellbook": {
+          "Select": "Changer le type de dégâts ?"
       },
       "BalmOfPeace": {
-        "Balm": "Baume de Paix"
+          "Balm": "Baume de Paix"
       },
       "BalmOfTheSummerCourt": {
-        "Num": "d6s",
-        "Select": "Combien de baumes ?"
+          "Num": "d6",
+          "Select": "Combien de baumes ?"
       },
       "Banishment": {
-        "PlaneSelect": "Sélectionnez toutes les cibles qui ne proviennent pas de ce plan."
+          "PlaneSelect": "Sélectionnez toutes les cibles qui ne sont pas de ce plan."
       },
       "BardicInspiration": {
-        "MoteAttack": "Particule d'attaque potentielle",
-        "MoteHeal": "Particule de guérison potentielle"
+          "MoteAttack": "Note de Potentiel Attaque",
+          "MoteHeal": "Note de Potentiel Soin"
+      },
+      "BeguilingTwist": {
+          "Select": "Quelle condition ?"
+      },
+      "Berserk": {
+          "Animation": "Animation Berserk :",
+          "HPThreshold": "Seuil de PV :",
+          "Name": "Berserk"
       },
       "BestialSoul": {
-        "Already": "Vous disposez déjà d’un avantage d'âme bestial actif !",
-        "Climbing": "Escalade",
-        "Form": "Quelle forme ?",
-        "Jumping": "Sauter",
-        "Swimming": "Natation"
+          "Already": "Vous avez déjà un avantage de l'Âme Bestiale actif !",
+          "Climbing": "Escalade",
+          "Form": "Quelle forme ?",
+          "Jumping": "Saut",
+          "Swimming": "Nager"
       },
       "BestowCurse": {
-        "Ability": "Inconvénient sur le score de capacité",
-        "AbilitySelect": "Quelle capacité ?",
-        "Attack": "Inconvénient sur les attaques",
-        "Damage": "Dégâts supplémentaires",
-        "DamageFlavor": "Accorder des dégâts supplémentaires à la malédiction",
-        "Other": "Autre",
-        "SelectCurse": "Quelle malédiction voulez-vous appliquer?",
-        "Turn": "Perdre son tour"
+          "Ability": "Désavantage sur un modificateur de caractéristique",
+          "AbilitySelect": "Quelle caractéristique ?",
+          "Attack": "Désavantage sur les Attaques",
+          "Damage": "Dégâts supplémentaires",
+          "DamageFlavor": "Dégâts supplémentaires de Malédiction",
+          "Other": "Autre",
+          "SelectCurse": "Quelle malédiction voulez-vous imposer ?",
+          "Turn": "Sauter le Tour"
+      },
+      "BigbysBeneficentBracelet": {
+          "BigbysHand": "Main de Bigby (Niveau 9)",
+          "ForceSculpture": "Sculpture de Force",
+          "MageHand": "Main de Mage (Bracelet Bénéfique de Bigby)"
       },
       "BigbysHand": {
-        "Big": "La cible est trop grande !",
-        "Clenched": "Poing serré",
-        "Crush": "Main saisissante : écraser",
-        "Direction": "Dans quelle direction souhaiteriez-vous pousser la cible ?",
-        "Forceful": "Main puissante",
-        "Grasping": "Saisir la main",
-        "Interposing": "Interposition de la main",
-        "Move": "La main de Bigby : bougez"
+          "Big": "La cible est trop grande !",
+          "Clenched": "Poing de Bigby",
+          "Crush": "Main broyeuse : Broyer",
+          "Direction": "Dans quelle direction voulez-vous pousser la cible ?",
+          "Forceful": "Main de force de Bigby",
+          "Grasping": "Main broyeuse de Bigby",
+          "Interposing": "Main d'interposition de Bigby",
+          "Move": "Main de Bigby : Déplacer"
+      },
+      "Blackrazor": {
+          "Backlash": "Blackrazor : Répercussion",
+          "Devoured": "Âme Dévorée"
       },
       "BladeFlourish": {
-        "Defensive": "Épanouissement défensif",
-        "Master": "Utiliser un d6 au lieu d'Inspiration bardique pour la floraison de la lame ?",
-        "Mobile": "S'épanouir sur mobile",
-        "Movement": "Floraison de la lame : mouvement",
-        "Push": "Pousser la cible à {distance} pieds ?",
-        "Select": "Utiliser floraison de la lame ?",
-        "Slashing": "S'épanouir"
+          "Defensive": "Moulinet Défensif",
+          "Master": "Utiliser un d6 au lieu de l'Inspiration Bardique pour le Moulinet ?",
+          "Mobile": "Moulinet Mobile",
+          "Movement": "Moulinet : Mouvement",
+          "Push": "Pousser la cible de {distance} pieds ?",
+          "Select": "Utiliser un Moulinet ?",
+          "Slashing": "Moulinet Tranchant"
       },
       "BlessingOfTheForge": {
-        "None": "La cible n'est équipée d'aucune arme ou armure non magique valide !",
-        "Select": "Quel objet voulez-vous imprégner ?"
+          "None": "La cible n'a pas d'armes ou d'armures non magiques équipées !",
+          "Select": "Quel objet voulez-vous imprégner ?"
       },
       "BlindingSmite": {
-        "Blind": "Châtiment aveuglant : Aveugle"
+          "Blind": "Frappe Aveuglante : Aveugler"
       },
       "Blink": {
-        "Away": "Clignoté"
+          "Away": "Disparu"
+      },
+      "BloodCurses": {
+          "Amplify": "Amplifier la Malédiction du Sang ?"
       },
       "BolsteringMagic": {
-        "Already": "La cible est déjà renforcée !",
-        "Bonus": "Bonus d'attaque et de capacité",
-        "None": "Aucun emplacement de sort à récupérer !",
-        "Regain": "Récupérer l'emplacement de sort",
-        "Select": "Quel bénéfice ?",
-        "SlotRegained": "Emplacement de sort (niveau {slotLevel}) récupéré !"
+          "Already": "La cible est déjà renforcée !",
+          "Bonus": "Bonus aux Attaques et Caractéristiques",
+          "None": "Pas d'emplacement de sort à récupérer !",
+          "Regain": "Récupérer un emplacement de Sort",
+          "Select": "Quel avantage ?",
+          "SlotRegained": "Emplacement de sort (niveau {slotLevel}) récupéré !"
       },
       "BoomingBlade": {
-        "Moved": "Lame retentissante : déplacée",
-        "NoWeapons": "Vous n'avez aucune arme valide équipée !",
-        "SelectWeapon": "Quelle arme utilisez-vous pour lancer ce sort ?",
-        "WillingMove": "{actorName} a-t-il bougé volontairement ?"
+          "Moved": "Lame Retentissante : Déplacé",
+          "NoWeapons": "Vous n'avez aucune arme valide équipée !",
+          "SelectWeapon": "Quelle arme utilisez-vous pour lancer ce sort ?",
+          "WillingMove": "{actorName} s'est-il déplacé volontairement ?"
+      },
+      "BootsOfElvenkind": {
+          "Silent": "Ce jet repose sur le déplacement silencieux"
       },
       "BorrowedKnowledge": {
-        "SelectSkill": "Sélectionnez une compétence pour acquérir une maîtrise temporaire dans :"
+          "SelectSkill": "Choisissez une compétence pour obtenir une maîtrise temporaire :"
+      },
+      "BrandOfCastigation": {
+          "Branded": "Marque de Châtiment : Marqué",
+          "Damage": "Marque de Châtiment : Dégâts"
       },
       "BrandingSmite": {
-        "Branded": "Châtiment de marque : Marqué"
+          "Branded": "Châtiment Révélateur : Marqué"
+      },
+      "BreathOfTheDragon": {
+          "Augment": "Augmenter (1 Ki)",
+          "Select": "Sélectionner les détails du souffle"
+      },
+      "Bulwark": {
+          "Use": "Utiliser une réaction pour éviter d'être déplacé ?"
       },
       "CallLightning": {
-        "StormBolt": "Éclair de tempête",
-        "Storming": "Fait-il déjà tempête ?"
+          "StormBolt": "Éclair",
+          "Storming": "Y a-t-il déjà une tempête ?"
       },
       "CallTheHunt": {
-        "Bonus": "Appliquer les dégâts bonus d'appel de la chasse ? ",
-        "Select": "Sélectionnez des cibles (max : {maxTargets})"
+          "Bonus": "Appliquer les dégâts bonus de l'Appel de la Chasse ? (1d6)",
+          "Select": "Sélectionner les cibles (max : {maxTargets})"
+      },
+      "CelestialRevelation": {
+          "Damage": "Consommation Radieuse : Dégâts",
+          "End": "Révélation Céleste : Fin"
       },
       "ChainLightning": {
-        "Leap": "Chaîne d'éclairs : saut",
-        "Select": "Où doit rebondir la foudre ? "
+          "Leap": "Chaîne d'éclairs : Rebond",
+          "Select": "Où doit rebondir l'éclair ? Max : {maxTargets}"
+      },
+      "ChangeSeason": {
+          "Autumn": "Automne",
+          "Select": "Quelle saison ?",
+          "Spring": "Printemps",
+          "Summer": "Été",
+          "Winter": "Hiver"
       },
       "ChaosBolt": {
-        "AlwaysBounce": "Rebondit toujours :",
-        "Bounce": "Vers qui le trait de chaos devrait-il rebondir ?",
-        "BounceFeature": "Trait du chaos : rebond",
-        "Select": "Sélectionnez le type de dégât :"
+          "AlwaysBounce": "Toujours rebondir :",
+          "Bounce": "Vers qui l'Éclair de Chaos doit-il rebondir ?",
+          "BounceFeature": "Éclair de Chaos : Rebond",
+          "Select": "Sélectionner le type de dégâts :"
       },
       "CheckCover": {
-        "TargetCover": "Abris de la cible :",
-        "YourCover": "Votre abris :"
+          "TargetCover": "Couverture de la cible :",
+          "YourCover": "Votre couverture :"
       },
       "ChillTouch": {
-        "Undead": "Contact glacial : Affaiblissement des morts-vivants"
+          "Undead": "Contact Glacial : Affaiblissement des Morts-vivants"
+      },
+      "CloudRune": {
+          "Reaction": "Utiliser {item} pour rediriger l'attaque de {name} ?"
       },
       "Cloudkill": {
-        "Damage": "Brume mortelle : Dégâts",
-        "NoRoom": "Pas de place pour déplacer la brume mortelle !"
+          "Damage": "Brume mortelle : Dégâts",
+          "NoRoom": "Pas assez de place pour déplacer la Brume mortelle !"
       },
       "CompelledDuel": {
-        "EndEffect": "Le lanceur a terminé son tour à plus de 30 pieds de sa cible. ",
-        "Moved": "Duel forcé : déplacé",
-        "Source": "Duel forcé : Source",
-        "Target": "Duel obligé : cible"
+          "EndEffect": "Le lanceur a terminé son tour à plus de 30 pieds de sa cible. Retirer l'effet ?",
+          "Moved": "Duel Forcé : Déplacé",
+          "Source": "Duel Forcé : Source",
+          "Target": "Duel Forcé : Cible"
+      },
+      "ContextualBonus": {
+          "Advantage": "Donne un avantage :",
+          "Bonus": "Si pas d'avantage, quel bonus :",
+          "Checks": "Jets de caractéristiques pouvant recevoir un bonus :",
+          "Condition": "Quand recevoir le bonus :",
+          "Name": "Bonus Contextuel",
+          "Saves": "Jets de sauvegarde pouvant recevoir un bonus :",
+          "Skills": "Jets de compétences pouvant recevoir un bonus :"
       },
       "ControlUndead": {
-        "Controlled": "Contrôler les morts-vivants : contrôlé"
+          "Controlled": "Contrôle d'un mort-vivant : Contrôlé"
+      },
+      "CreatePactWeapon": {
+          "CustomCompendium": "Compendium d'Arme de Pacte personnalisé :",
+          "Dismiss": "Renvoyer l'Arme de Pacte",
+          "Existing": "Améliorer une arme existante",
+          "Select": "Sélectionner une Arme de Pacte",
+          "Summon": "Invoquer une nouvelle arme",
+          "Type": "Comment utilisez-vous cette capacité ?",
+          "Weapon": "Arme de Pacte"
+      },
+      "CrimsonRite": {
+          "NoRites": "Aucun rite trouvé sur l'acteur !",
+          "Select": "Quel Rite Cramoisi ?",
+          "Weapon": "Sur quelle arme allez-vous activer le rite ?"
+      },
+      "Crusher": {
+          "Move": "Déplacer la cible ?"
+      },
+      "CrystalBlade": {
+          "Bright": "Activer la Lame (Vive)",
+          "Dim": "Activer la Lame (Faible)",
+          "Douse": "Éteindre la Lame",
+          "Heal": "Lame de Cristal : Soins",
+          "Light": "Lame de Cristal : Lumière"
+      },
+      "DamageTurnStart": {
+          "Name": "Dégâts au Début du Tour",
+          "SpecificDamage": "Utiliser une formule au lieu des dégâts de l'objet :",
+          "SpecificType": "Si oui, quel type de dégâts :"
+      },
+      "DancingSword": {
+          "Attack": "Épée Dansante : Attaque",
+          "Toss": "Épée Dansante : Lancer"
       },
       "DangerSense": {
-        "CanSee": "Cette sauvegarde provient d'un effet que vous pouvez voir."
+          "CanSee": "Ce jet provient d'un effet que vous pouvez voir."
+      },
+      "DanothsVisor": {
+          "Check": "Ce test repose sur la vue",
+          "Spyglass": "Visière de Danoth : Longue-Vue",
+          "XRay": "Visière de Danoth : Rayon-X"
       },
       "DanseMacabre": {
-        "CommandUndead": "Danse Macabre : Commandez les morts-vivants"
+          "CommandUndead": "Danse Macabre : Commandement des morts-vivants"
       },
       "Darkness": {
-        "Attach": "S'attacher à soi ?"
+          "Attach": "Attacher à soi ?"
       },
       "Dawn": {
-        "EndTurn": "Aube : Fin du tour",
-        "Move": "Aube : bougez"
+          "EndTurn": "Aube : Fin de tour",
+          "Move": "Aube : Déplacer"
+      },
+      "DeathBurst": {
+          "Name": "Explosion Mortelle"
       },
       "DetectThoughts": {
-        "ProbeDeeper": "Détecter les pensées : sonder plus profondément"
+          "ProbeDeeper": "Détection des Pensées : Sondage Approfondi"
       },
       "DivineSmite": {
-        "Ranged": "Autoriser les châtiments lors des attaques à distance",
-        "Unarmed": "Autoriser les châtiments lors des frappes à mains nues"
+          "Ranged": "Permettre les châtiments sur les attaques à distance",
+          "Unarmed": "Permettre les châtiments sur les frappes à mains nues"
+      },
+      "DraconicStrike": {
+          "Select": "Changer le type de dégâts ?"
+      },
+      "DragonVessel": {
+          "Ale": "Bière",
+          "Mead": "Hydromel",
+          "OliveOil": "Huile d'Olive",
+          "PotionOfClimbing": "Potion d'Escalade",
+          "PotionOfDragonsMajesty": "Potion de Majesté du Dragon",
+          "PotionOfFireBreath": "Potion de Souffle Enflammé",
+          "PotionOfFlying": "Potion de Vol",
+          "PotionOfHealingGreater": "Potion de Soin (Supérieure)",
+          "PotionOfHealingNormal": "Potion de Soin (Normale)",
+          "PotionOfHealingSuperior": "Potion de Soin (Excellente)",
+          "PotionOfHealingSupreme": "Potion de Soin (Suprême)",
+          "Select": "Quel objet ?",
+          "Whiskey": "Whisky",
+          "Wine": "Vin"
       },
       "DragonsBreath": {
-        "DragonBreath": "Souffle du dragon"
+          "DragonBreath": "Souffle de Dragon"
+      },
+      "DragonsWrath": {
+          "AscendantBreath": "Courroux du Dragon : Souffle Ascendant",
+          "Burst": "Courroux du Dragon : Explosion Critique",
+          "WakenedBreath": "Courroux du Dragon : Souffle Éveillé"
       },
       "DreadLord": {
-        "ShadowAttack": "Seigneur de l'Effroi : Attaque de l'Ombre",
-        "ShadowAura": "L'Ombre du Seigneur de l'Effroi",
-        "Turn": "Seigneur de l'effroi : Début de tour"
+          "ShadowAttack": "Seigneur de l'effroi : Attaque des Ombres",
+          "ShadowAura": "Aura d'Obscurité du Seigneur de l'effroi",
+          "Turn": "Seigneur de l'effroi : Début du Tour"
       },
       "DreadfulAspect": {
-        "Turn": "Aspect épouvantable : fin du tour"
+          "Turn": "Aspect Effroyable : Fin de Tour"
       },
       "EldritchBlast": {
-        "Target": "Quelles cibles ?"
+          "Beam": "Explosion occulte : Rayon",
+          "Target": "Quels cibles ?"
       },
       "EldritchCannon": {
-        "Cannon": "Canon occulte",
-        "Command": "Canon occulte : Commandement",
-        "ExplosiveCannon": "Canon explosif",
-        "Flamethrower": "Lance-flammes",
-        "ForceBallista": "Baliste de force",
-        "FortifiedPosition": "Position Fortifiée",
-        "Maximum": "Vous disposez déjà du nombre maximum de canons occultes !",
-        "NoSlots": "Il ne vous reste plus aucune utilisation ni aucun emplacement de sort !",
-        "Protector": "Protecteur",
-        "SelectType": "Sélectionnez le type de canon occulte",
-        "Size": "Quelle taille de canon {cannonName} ?",
-        "SpendPact": "Créer un canon occulte au détriment d'un emplacement de sort de pacte ? ",
-        "SpendPactAgain": "Créer un deuxième canon occulte au détriment d'un emplacement de sort de pacte ? ",
-        "SpendSlot": "Créer un canon occulte au détriment d'un emplacement de sort de niveau {slotLevel} ? ",
-        "SpendSlotAgain": "Créer un deuxième canon occulte au détriment d'un emplacement de sort de niveau {slotLevel} ? "
+          "Cannon": "Canon Occulte",
+          "Command": "Canon Occulte : Commander",
+          "Dismiss": "Canon Occulte : Renvoyer",
+          "ExplosiveCannon": "Canon Explosif",
+          "Flamethrower": "Lance-Flammes",
+          "ForceBallista": "Baliste de Force",
+          "FortifiedPosition": "Position Fortifiée",
+          "Maximum": "Vous avez déjà le nombre maximum de canons occultes !",
+          "NoSlots": "Vous n'avez plus d'utilisations ou d'emplacements de sorts restants !",
+          "Protector": "Protecteur",
+          "SelectType": "Sélectionnez le type de canon occulte",
+          "Size": "Quelle taille de canon {cannonName}s ?",
+          "SpendPact": "Créer un canon occulte au détriment d'un emplacement de pacte ? ({slotValue} sur {slotMax} restants)",
+          "SpendPactAgain": "Créer un deuxième canon occulte au détriment d'un emplacement de pacte ? ({slotValue} sur {slotMax} restants)",
+          "SpendSlot": "Créer un canon Éldritch au détriment d'un slot de sort de niveau {slotLevel} ? ({slotValue} sur {slotMax} restants)",
+          "SpendSlotAgain": "Créer un deuxième canon occulte au détriment d'un emplacement de sort de niveau {slotLevel} ? ({slotValue} sur {slotMax} restants)"
+      },
+      "EldritchSmite": {
+          "Prone": "Faire tomber la cible au sol ?"
+      },
+      "ElementalAdept": {
+          "DowngradeImmunity": "Réduire d'immunité à résistance",
+          "DowngradeResistanceImmunity": "Réduire d'immunité à résistance & Ignorer la résistance",
+          "IgnoreImmunity": "Ignorer l'immunité",
+          "IgnoreResistance": "Ignorer la résistance",
+          "IgnoreResistanceImmunity": "Ignorer la résistance & l'immunité",
+          "Mode": "Mode de réduction :",
+          "SpellOnly": "Seulement les sorts :"
       },
       "ElementalCleaver": {
-        "Change": "Couperet élémentaire : changer le type de dégâts",
-        "ElementalCleaver": "Couperet élémentaire",
-        "SelectWeapon": "Quelle arme souhaiteriez-vous infuser ?"
+          "Change": "Couperet élémentaire : Changer le type de dégâts",
+          "ElementalCleaver": "Couperet élémentaire",
+          "SelectWeapon": "Quelle arme souhaitez-vous infuser ?"
       },
       "ElementalWeapon": {
-        "NoWeapons": "La cible n'a pas d'armes valides équipées non magiques !",
-        "SelectWeapon": "Quelle arme souhaiteriez-vous enchanter ?"
+          "NoWeapons": "La cible n'a pas d'armes non-magiques équipées valides !",
+          "SelectWeapon": "Quelle arme souhaitez-vous enchanter ?"
       },
       "EmboldeningBond": {
-        "Bonus": "Bonus de lien enhardissant",
-        "Protective": "Lien de protection",
-        "ProtectiveDamage": "Lien de protection : dégâts",
-        "ProtectiveTitle": "Lien de protection : protéger la cible ?"
+          "Bonus": "Bonus d'Instrument de la Paix",
+          "Protective": "Lien Protecteur",
+          "ProtectiveDamage": "Lien Protecteur : Dégâts",
+          "ProtectiveTitle": "Lien Protecteur : Protéger la cible ?"
+      },
+      "Engulf": {
+          "Grapples": "Initie une étreinte",
+          "Grappling": "Comportement d'étreinte :",
+          "Requires": "Doit déjà être en train d'agripper"
+      },
+      "Enlarge": {
+          "Double": "Doublez les dés d'arme, au lieu d'ajouter +1d4 :",
+          "Name": "Agrandissement"
       },
       "EnlargeReduce": {
-        "Enlarge": "Agrandir",
-        "Reduce": "Réduire",
-        "Select": "Agrandir ou réduire ?"
+          "Enlarge": "Agrandissement",
+          "Reduce": "Rapetissement",
+          "Select": "Agrandir ou Rapetisser ?"
       },
       "ExperimentalElixir": {
-        "Boldness": "Elixir expérimental : Audace",
-        "Flight": "Elixir expérimental : Vol",
-        "Healing": "Élixir expérimental : Guérison",
-        "MakeAnother": "Créer un autre élixir au prix d'un emplacement de sort de niveau {slotLevel} ? ",
-        "MakeAnotherPact": "Créer un autre élixir au prix d'un emplacement de sort de pacte ? ",
-        "Resilience": "Elixir expérimental : résilience",
-        "Swiftness": "Elixir expérimental : Rapidité",
-        "Transformation": "Élixir expérimental : Transformation"
+          "Boldness": "Élixir Expérimental : Audace",
+          "Flight": "Élixir Expérimental : Vol",
+          "Healing": "Élixir Expérimental : Guérison",
+          "MakeAnother": "Créer un autre Élixir au détriment d'un emplacement de sort de niveau {slotLevel} ? ({slotValue} sur {slotMax} restants)",
+          "MakeAnotherPact": "Créer un autre Élixir au détriment d'un emplacement de pacte ? ({slotValue} sur {slotMax} restants)",
+          "Resilience": "Élixir Expérimental : Résistance",
+          "Swiftness": "Élixir Expérimental : Rapidité",
+          "Transformation": "Élixir Expérimental : Transformation"
+      },
+      "ExpertDivination": {
+          "Select": "Quel niveau d'emplacement de sort souhaitez-vous récupérer ?"
+      },
+      "EyesOfMinuteSeeing": {
+          "Close": "Ce jet est pour quelque chose dans un rayon d'1 pied"
       },
       "Fall": {
-        "Acr": "Oui (Acrobaties)",
-        "Ath": "Oui (Athlétisme)",
-        "Creature": "Sur une autre créature",
-        "Distance": "Distance (pieds) :",
-        "Ground": "Au sol",
-        "Reaction": "Utiliser votre réaction pour frapper la surface, la tête ou les pieds en premier ?",
-        "Save": "Jet de sauvegarde de dextérité (DD : 15)",
-        "SkillCheck": "Test de compétence (DD : 15)",
-        "Target": "Sélectionnez une cible et réessayez !",
-        "Tiny": "Une ou les deux créatures sont minuscules !",
-        "Type": "Type de chute :",
-        "Water": "Dans l'eau"
+          "Acr": "Oui (Acrobaties)",
+          "Ath": "Oui (Athlétisme)",
+          "Creature": "Sur une autre créature",
+          "Distance": "Distance (pieds) :",
+          "Ground": "Au sol",
+          "Reaction": "Utilisez votre réaction pour toucher la surface tête ou pieds en premier ?",
+          "Save": "Jet de sauvegarde en Dextérité (DD : 15)",
+          "SkillCheck": "Contrôle de compétence (DD : 15)",
+          "Target": "Sélectionnez une cible et réessayez !",
+          "Tiny": "Une ou deux créatures sont minuscules !",
+          "Type": "Type de chute :",
+          "Water": "Dans l'eau"
+      },
+      "FallenPuppet": {
+          "NoTargets": "Aucune cible valide à portée !"
       },
       "FarStep": {
-        "Teleport": "Foulée dimensionnelle : téléportation"
+          "Teleport": "Foulée Dimensionnelle : Téléportation"
+      },
+      "FeyStep": {
+          "Autumn": "Pas Féérique (Automne)",
+          "Charmed": "Pas Féérique (Automne) : Charmé",
+          "Frightened": "Pas Féérique (Hiver) : Effrayé",
+          "SelectAutumn": "Sélectionnez les cibles à charmer (Max : {max})",
+          "SelectSpring": "Qui se téléporte ?",
+          "SelectWinter": "Sélectionnez la cible à effrayer",
+          "Spring": "Pas Féérique (Printemps)",
+          "Summer": "Pas Féérique (Été)",
+          "Winter": "Pas Féérique (Hiver)"
       },
       "FindFamiliar": {
-        "Choose": "Choisissez un familier",
-        "Command": "Trouver un familier : commande",
-        "Error": "Aucun jeton ou donnée familier trouvé !",
-        "InvalidSpell": "Type de sort invalide !",
-        "Movement": "Quel type de mouvement ?",
-        "PocketDimension": "Trouver un familier : Dimension de poche",
-        "ReactionUsed": "Familier a déjà utilisé sa réaction !",
-        "TooFar": "Familier trop loin !",
-        "Touch": "Rechercher un familier : touchez"
+          "Choose": "Choisissez un familier",
+          "Command": "Appel de Familier : Commande",
+          "Error": "Aucun jeton de familier ou données trouvés !",
+          "InvalidSpell": "Type de sort invalide !",
+          "Movement": "Quel type de mouvement ?",
+          "PocketDimension": "Appel de Familier : Poche dimensionnelle",
+          "ReactionUsed": "Le familier a déjà utilisé sa réaction !",
+          "TooFar": "Familier trop éloigné !",
+          "Touch": "Appel de Familier : Toucher"
       },
       "FindSteed": {
-        "Choose": "Choisissez un destrier",
-        "Language": "Quelle langue ?",
-        "Target": "Cibler le destrier également ? ",
-        "Type": "Quel type de créature ?"
+          "Choose": "Choisissez une monture",
+          "Dismiss": "Dissiper la monture",
+          "Language": "Quelle langue ?",
+          "Target": "Cibler aussi la monture ? (Si monté)",
+          "Type": "Quel type de créature ?"
+      },
+      "FireRune": {
+          "AllowUnarmed": "Autoriser l'utilisation de la rune de feu sur les attaques non armées"
       },
       "FireShield": {
-        "ChillShield": "Bouclier de froid",
-        "Dismiss": "Bouclier de feu : rejeter",
-        "Select": "Quel genre de bouclier ?",
-        "WarmShield": "Bouclier de chaleur"
+          "ChillShield": "Bouclier de Froid",
+          "Dismiss": "Bouclier de Feu : Dissiper",
+          "Select": "Quel type de bouclier ?",
+          "WarmShield": "Bouclier de Chaleur"
       },
       "FireStorm": {
-        "Place": "Placez jusqu'à 10 modèles. ",
-        "Templates": "Modèles"
+          "Place": "Placez jusqu'à 10 gabarits. Faites un clique droit pour terminer",
+          "Templates": "Gabarits"
       },
       "FlameBlade": {
-        "Evoke": "Évocation de la lame de feu",
-        "Scimitar": "Cimeterre de feu"
+          "Evoke": "Invoquer la Lame de Feu",
+          "Scimitar": "Lame de Feu Cimeterre"
+      },
+      "FlamingSphere": {
+          "EndTurn": "Sphère de Feu : Fin de Tour",
+          "Move": "Sphère de Feu : Déplacer",
+          "Ram": "Entrer en collission avec la cible ?",
+          "RamItem": "Sphère de Feu : Entrer en collision"
       },
       "FlockOfFamiliars": {
-        "Command": "Troupeau de Familiers : Commandement",
-        "ReactionUsed": "Les familiers sont trop loin ou ont déjà utilisé leur réaction !",
-        "TooFar": "Les familiers sont trop loin !",
-        "Touch": "Troupeau de familiers : Touchez"
+          "Command": "Troupeau de Familiers : Commande",
+          "ReactionUsed": "Les familiers sont trop éloignés ou ont déjà utilisé leur réaction !",
+          "TooFar": "Les familiers sont trop éloignés !",
+          "Touch": "tRoupeau de Familiers : Toucher"
+      },
+      "FocusedAim": {
+          "Bonus": "Oui ({kiCost} Ki / +{bonus} pour toucher)"
+      },
+      "FormOfDread": {
+          "Fear": "Forme d'Effroi' : Peur",
+          "Use": "Tenter d'effrayer la cible ?"
+      },
+      "Gaze": {
+          "AllowAvert": "Autoriser le détournement du regard :",
+          "AvertAdvantage": "Détourner le regard accordae à la créature un avantage sur les attaques contre la cible :",
+          "AvertEffect": "Regard détourné",
+          "AvertSelect": "Détournez-vous le regard de {tokenName} ?",
+          "Name": "Regard"
       },
       "Grapple": {
-        "ChooseSkill": "Comment aimeriez-vous contester la lutte ?",
-        "Immune": "La cible ne peut pas être attaquée !",
-        "Size": "La cible est trop grande pour être attaquée !"
+          "ChooseSkill": "Comment souhaitez-vous contester l'agrippement ?",
+          "ChooseSkillEscape": "Comment souhaitez-vous échapper à l'agrippement ?",
+          "Immune": "La cible ne peut pas être agrippée !",
+          "Size": "La cible est trop grande pour être agrippée !"
+      },
+      "Grappler": {
+          "Pin": "Lutteur : Bloquer",
+          "Pinned": "Lutteur : BLoqué par {tokenName}",
+          "Pinning": "Lutteur : Bloqueur {tokenName}"
+      },
+      "GraspOfHadar": {
+          "Select": "Quelle cible ?"
       },
       "Grease": {
-        "Fall": "Graisse : Tombez"
+          "Fall": "Graisse : Chute"
       },
       "GreenFlameBlade": {
-        "Leap": "Où se répand le feu ?",
-        "LeapFeature": "Lame aux flammes vertes : bond",
-        "NoWeapons": "Aucune arme équipée trouvée !",
-        "SelectWeapon": "Attaquer avec quelle arme ?"
+          "Leap": "Où le feu rebondit-il ?",
+          "LeapFeature": "Lame aux Flammes Vertes : Rebond",
+          "NoWeapons": "Aucune arme équipée trouvée !",
+          "SelectWeapon": "Attaquer avec quelle arme ?"
+      },
+      "Grovelthrash": {
+          "Damage": "Infliger 2d6 de dégâts contondants supplémentaires au prix de 1d6 de dégâts psychiques ?",
+          "Insight": "Ce contrôle sert à discerner un mensonge prononcé dans une langue que vous comprenez",
+          "Reaction": "Réaction Grovelthrash"
       },
       "GuardianArmor": {
-        "DefensiveField": "Armure de gardien : champ défensif",
-        "Distracted": "Gantelets du tonnerre : Distraction",
-        "ThunderGauntlets": "Armure de gardien : Gantelets du tonnerre"
+          "DefensiveField": "Armure de Gardien : Champ protecteur",
+          "Distracted": "Gantelets Tonnerre : Distrait",
+          "ThunderGauntlets": "Armure de Gardien : Gantelets Tonnerre"
+      },
+      "GuardianEmblem": {
+          "Protect": "Utilisez {item} pour protéger {name} d'un coup critique ?"
       },
       "GuardianOfFaith": {
-        "Damage": "Gardien de la Foi : Dommages"
+          "Damage": "Gardien de la Foi : Dégâts"
       },
       "GuardianOfNature": {
-        "Beast": "Bête primordiale",
-        "Select": "Quelle forme prenez-vous ?",
-        "Tree": "Grand arbre"
+          "Beast": "Bête Primitive",
+          "Select": "Quelle forme prenez-vous ?",
+          "Tree": "Grand Arbre"
       },
       "GustOfWind": {
-        "Move": "Coup de vent : bougez",
-        "Push": "Coup de vent : pousser"
+          "Move": "Bourrasque : Déplacer",
+          "Push": "Bourrasque : Pousser"
       },
       "HailOfThorns": {
-        "Burst": "Grêle d'épines : Explosion"
+          "Burst": "Grêle d'Épines : Éclatement"
+      },
+      "HealingLight": {
+          "Select": "Combien de dés souhaitez-vous utiliser ?"
       },
       "HealingSpirit": {
-        "Apply": "Esprit guérisseur : Appliquer les soins ? ",
-        "Heal": "Esprit guérisseur : Soignez",
-        "Move": "Esprit guérisseur : Bougez"
+          "Apply": "Esprit Guérisseur : Appliquer la guérison ? ({numUses} utilisation(s) restante(s))",
+          "Heal": "Esprit Guérisseur : Guérison",
+          "Move": "Esprit Guérisseur : Déplacer"
       },
       "HeatMetal": {
-        "Damage": "Métal brûlant : Dégâts",
-        "Dialog": "Métal brûlant : Boîte de dialogue",
-        "Drop": "Faire tomber un objet brûlant ?",
-        "Held": "Métal brûlant : Tenir",
-        "MustDrop": "Échec de leur sauvegarde et doit laisser tomber l'objet métallique !",
-        "Pulse": "Métal brûlant : Impulsion",
-        "Unable": "Incapable (Armure)"
+          "Damage": "Métal Brûlant : Dégâts",
+          "Dialog": "Métal Brûlant : Dialogue",
+          "Drop": "Laisser tomber l'objet brûlant ?",
+          "Held": "Métal Brûlant : Maintenu",
+          "MustDrop": "A échoué à son jet de sauvegarde et doit laisser tomber l'objet en métal !",
+          "Pulse": "Métal Brûlant : Pulsation",
+          "Unable": "Incapable (Armure)"
       },
       "Hex": {
-        "Hexed": "Ensorcelé",
-        "Move": "Ensorcelé : Déplacer", 
-        "Multiple": "Quelle cible aimeriez-vous ensorceler ?",
-        "SelectAbility": "Quelle capacité devrait être désavantagée ?"
+          "Hexed": "Maudit",
+          "Move": "Maléfice : Déplacer",
+          "Multiple": "Quelle cible souhaitez-vous maudire ?",
+          "SelectAbility": "Quelle caractéristique devrait avoir un désavantage ?"
+      },
+      "HexWarrior": {
+          "NoWeapons": "Aucune arme équipée valide à choisir !"
+      },
+      "HexbladesCurse": {
+          "Healing": "Malédiction de la Lame Maudite : Guérison",
+          "Transfer": "Maître des Malédictions : Transférer la Malédiction ?"
       },
       "HoldPerson": {
-        "Overtime": "Maintenir une personne (fin du tour)"
+          "Overtime": "Immobilisation de Personne (Fin de Tour)"
       },
       "HolyNimbus": {
-        "Damage": "Nimbus sacré : dégâts",
-        "Save": "Cette sauvegarde provient d'un sort lancé par un démon ou un mort-vivant."
+          "Damage": "Nimbe Sacré : Dégâts",
+          "Save": "Ce jet de sauvegarde provient d'un sort lancé par un démon ou un mort-vivant."
       },
       "HolyWeapon": {
-        "Burst": "Arme sacrée : Explosion",
-        "BurstOvertime": "Arme sacrée : Explosion (Fin du tour)",
-        "Dismiss": "Arme sacrée : Rejeter",
-        "NoWeapons": "La cible n'a pas d'armes équipées !",
-        "SelectWeapon": "Quelle arme souhaiteriez-vous enchanter ?",
-        "Target": "Arme sacrée : cible"
+          "Burst": "Arme Sacrée : Explosion",
+          "BurstOvertime": "Arme Sacrée : Explosion (Fin de Tour)",
+          "Dismiss": "Arme Sacrée : Dissiper",
+          "NoWeapons": "La cible n'a pas d'armes équipées !",
+          "SelectWeapon": "Quelle arme souhaitez-vous enchanter ?",
+          "Target": "Arme Sacrée : Cible"
       },
       "HungerOfHadar": {
-        "Cold": "Faim de Hadar : Froid",
-        "Tentacles": "Faim de Hadar : tentacules"
+          "Cold": "Faim de Hadar : Froid",
+          "Tentacles": "Faim de Hadar : Tentacules"
       },
       "HuntersMark": {
-        "Marked": "Marque du chasseur : Marqué",
-        "Move": "Marque du chasseur : déplacement",
-        "Select": "Quelle cible souhaitez-vous retirer la marque ?"
+          "Marked": "Marque du Chasseur : Marqué",
+          "Move": "Marque du Chasseur : Déplacer",
+          "Select": "De quelle cible souhaitez-vous retirer la marque ?"
+      },
+      "HybridTransformation": {
+          "Bloodlust": "Soif de Sang",
+          "LycanRegeneration": "Régénération Lycan",
+          "PredatoryStrike": "Frappe Prédatrice",
+          "Revert": "Transformation Hybride : Revenir à soi"
+      },
+      "ImbueCard": {
+          "Select": "Quel sort souhaitez-vous imprégner avec une carte ?"
       },
       "InfectiousFury": {
-        "Attack": "Attaquer une cible proche",
-        "Curse": "Comment maudir votre cible ?",
-        "Damage": "Prendre des dégâts"
+          "Attack": "Attaquer une cible proche",
+          "Curse": "Comment maudissez-vous votre cible ?",
+          "Damage": "Subir des dégâts"
       },
       "InfiltratorArmor": {
-        "ExtraDamage": "Appliquer 1d6 dégâts de foudre supplémentaires ?",
-        "LightningLauncher": "Armure d'infiltrateur : lanceur de foudre"
+          "ExtraDamage": "Appliquer 1d6 de dégâts électriques supplémentaires ?",
+          "LightningLauncher": "Armure Infiltré : Lance-Foudre"
       },
       "InfuseItem": {
-        "AlreadyServant": "Vous avez déjà un Serviteur Homunculus actif !",
-        "ArcanePropulsionArmor": "Armure de propulsion arcanique",
-        "ArcanePropulsionGauntlet": "Gantelet de propulsion arcanique",
-        "ArmorOfMagicalStrength": "Armure de force magique",
-        "ChannelMagic": "Serviteur Homunculus : canaliser la magie",
-        "EndAll": "Mettre fin à toutes les perfusions",
-        "EnhancedDefense": "Défense améliorée",
-        "EnhancedWeapon": "Arme améliorée",
-        "ForceStrike": "Frappe de force",
-        "HomunculusCommand": "Serviteur Homunculus : Commandement",
-        "HomunculusHeart": "Serviteur du Cœur d'Homonculus",
-        "HomunculusServant": "Serviteur Homunculus",
-        "Known": "Infusions connues :",
-        "New": "Nouvelle perfusion {infusionLabel} ajoutée à celle de {newActorName} <b>{Nom de l'article}</b>.",
-        "NoArmor": "La cible n'a pas d'armure valide non magique équipée !",
-        "NoKnown": "Vous n'avez aucune perfusion connue configurée dans l'élément medkit !",
-        "NoMissing": "Aucun emplacement de sort à récupérer !",
-        "NoShield": "La cible n'a pas de bouclier équipé non magique valide !",
-        "Override": "Infusion {infusionLabel} existante supprimée de celle de {oldActorName} <b>{Nom de l'article}</b>.",
-        "RadiantBlind": "Arme radiante : Aveugle",
-        "RadiantLight": "Arme radiante : Lumière",
-        "RadiantWeapon": "Arme rayonnante",
-        "ReactionUsed": "Servant Homunculus a déjà utilisé sa réaction !",
-        "RepeatingShot": "Tir répété",
-        "RepulsionPush": "Bouclier de répulsion : Pousser",
-        "RepulsionShield": "Bouclier de répulsion",
-        "ResistProne": "Armure de force magique : résiste à terre",
-        "ResistanceType": "Résistance à quel type de dégâts ?",
-        "ResistantArmor": "Armure résistante",
-        "ReturningWeapon": "Arme de retour",
-        "Select": "Quelle infusion ?",
-        "SpellRefuelingRing": "Anneau de ravitaillement en sorts",
-        "TooFar": "Serviteur Homunculus trop loin !",
-        "TooMany": "Vous disposez du nombre maximum d'infusions déjà actives !",
-        "WhichArmor": "Quelle armure souhaiteriez-vous infuser ?",
-        "WhichShield": "Quel bouclier souhaiteriez-vous infuser ?",
-        "WhichWeapon": "Quelle arme souhaiteriez-vous infuser ?"
+          "AlreadyServant": "Vous avez déjà un Serviteur Homoncule actif !",
+          "ArcanePropulsionArmor": "Armure à Propulsion Arcanique",
+          "ArcanePropulsionGauntlet": "Gantelet à Propulsion Arcanique",
+          "ArmorOfMagicalStrength": "Armure de Force Magique",
+          "ChannelMagic": "Serviteur Homoncule : Canaliser la Magie",
+          "EndAll": "Mettre fin à tous les Influx",
+          "EnhancedArcaneFocus": "Focaliseur Arcanique Amélioré",
+          "EnhancedDefense": "Défense Améliorée",
+          "EnhancedWeapon": "Arme Améliorée",
+          "ForceStrike": "Choc",
+          "HomunculusCommand": "Serviteur Homoncule : Commande",
+          "HomunculusHeart": "Cœur de Serviteur Homoncule",
+          "HomunculusServant": "Serviteur Homoncule",
+          "Known": "Influx Connus :",
+          "New": "Nouvel influx {infusionLabel} ajouté à <b>{itemName}</b> de {newActorName}.",
+          "NoArmor": "La cible n'a pas d'armure non magique équipée valide !",
+          "NoFocus": "La cible n'a pas de bâton, de staff ou de baguette non magique équipé valide !",
+          "NoKnown": "Vous n'avez pas d'influx connus configurés dans le medkit !",
+          "NoMissing": "Aucun emplacement de sort à récupérer !",
+          "NoShield": "La cible n'a pas de bouclier non magique équipé valide !",
+          "Override": "L'influx {infusionLabel} existant a été retiré de <b>{itemName}</b> de {oldActorName}.",
+          "RadiantBlind": "Arme Radiante : Aveugler",
+          "RadiantLight": "Arme Radiante : Lumière",
+          "RadiantWeapon": "Arme Radiante",
+          "ReactionUsed": "Le Serviteur Homoncule a déjà utilisé sa réaction !",
+          "RepeatingShot": "Salve",
+          "RepulsionPush": "Bouclier Répulsif : Pousser",
+          "RepulsionShield": "Bouclier Répulsif",
+          "ResistProne": "Armure de Force Magique : Résister à la Position Couchée",
+          "ResistanceType": "Résistance à quel type de dégâts ?",
+          "ResistantArmor": "Armure Résistante",
+          "ReturningWeapon": "Arme Boomerang",
+          "Select": "Quelle influx?",
+          "SpellRefuelingRing": "Anneau de Ravitaillement Magique",
+          "TooFar": "Serviteur Homoncule trop éloigné !",
+          "TooMany": "Vous avez déjà le nombre maximum d'influx actifs !",
+          "WhichArmor": "Quelle armure souhaitez-vous infuser ?",
+          "WhichFocus": "Quel bâton, staff ou baguette souhaitez-vous infuser ?",
+          "WhichShield": "Quel bouclier souhaitez-vous infuser ?",
+          "WhichWeapon": "Quelle arme souhaitez-vous infuser ?"
       },
       "InsectPlague": {
-        "Damage": "Fléau d'insectes : dégâts"
+          "Damage": "Fléau d'Insectes : Dégâts"
       },
       "InspiringSmite": {
-        "Select": "Distribuer PV temporaire (Montant à distribuer : {maxAmount})"
+          "Select": "Distribuer des PV temporaires (Montant à Distribuer : {maxAmount})"
       },
       "InvestitureOfFlame": {
-        "Fire": "Sacre de Flamme : Feu",
-        "Heat": "Sacre de Flamme : Chaleur"
+          "Fire": "Sacre des Flammes : Feu",
+          "Heat": "Sacre des Flammes : Chaleur"
       },
       "InvestitureOfIce": {
-        "Cone": "Sacre de Glace : Cône"
+          "Cone": "Sacre de Glace : Cône"
       },
       "InvestitureOfStone": {
-        "Earthquake": "Sacre de pierre : Tremblement de terre"
+          "Earthquake": "Sacre de Pierre : Tremblement de Terre"
       },
       "InvestmentOfTheChainMaster": {
-        "Command": "Sacre du Chain Master : Commandement",
-        "Resistance": "Sacre du Chain Master : Résistance Familiale"
+          "Command": "Engagement du Maître des Chaînes : Commande",
+          "Resistance": "Engagement du Maître des Chaînes : Résistance du Familier"
       },
-      "Item": {
-        "DanothsVisor": {
-          "Check": "Ce jet nécessite la vue."
-        }
+      "JavelinOfLightning": {
+          "Bolt": "Javelot de Foudre : Éclair"
+      },
+      "KeenSenses": {
+          "Check": "Ce contrôle dépend de :",
+          "DiceThreshold": "Seuil de Lancer de Dés :",
+          "Hearing": "Ouïe",
+          "Name": "Sens Aiguisés",
+          "Sight": "Vue",
+          "Smell": "Odorat"
+      },
+      "LabyrinthineRecall": {
+          "Skill": "Ce jet sert à naviguer ou pister"
+      },
+      "LanternOfRevealing": {
+          "Bright": "Lanterne de Révélation (Vive)",
+          "Dim": "Lanterne de Révélation (Faible)",
+          "Extinguish": "Éteindre la Lampe"
       },
       "LayOnHands": {
-        "Empty": "Votre réserve {itemName} est vide.",
-        "RemoveCondition": "Supprimer une condition :",
-        "RestoreHitpoints": "Restaurer les points de vie :",
-        "Select": "Comment souhaiteriez-vous aider ?"
+          "Empty": "Votre réserve de {itemName} est vide.",
+          "RemoveCondition": "Retirer une Condition :",
+          "RestoreHitpoints": "Restaurer des Points de Vie :",
+          "Select": "Comment souhaitez-vous aider ?"
+      },
+      "Lifesteal": {
+          "MaxHPCure": "Récupération de la Réduction des PV Max :",
+          "HealingType": "Type de soin :",
+          "ReduceMaxHP": "Réduire les PV Max :",
+          "excessAsTemp": "Soin Excédentaire en Points de Vie Temporaires :"
       },
       "LightningArrow": {
-        "Burst": "Flèche de foudre : Explosion"
+          "Burst": "Flèche de Foudre : Explosion"
+      },
+      "MaelstromAura": {
+          "Aura": "Aura de Maelstrom"
       },
       "MagicMissile": {
-        "Bolt": "Trait de missile magique",
-        "RollEach": "Lancer le dégât pour chaque trait ?",
-        "Select": "Combien? ",
-        "Shield": "Bouclier comme réaction ?"
+          "Bolt": "Projectile Magique",
+          "RollEach": "Lancer les dégâts pour chaque projectile ?",
+          "Select": "Combien ? (Max : {maxMissiles})",
+          "Shield": "Bouclier en réaction ?"
+      },
+      "Maneuvers": {
+          "BaitSwitchAC": "Qui reçoit le bonus de CA ?",
+          "CommanderConfirm": "Utilisez votre réaction pour effectuer une seule attaque avec une arme ?",
+          "CommanderSelect": "Quel allié devrait effectuer une attaque ?",
+          "NoNearby": "Aucun allié avec une réaction ne peut vous voir ou vous entendre !",
+          "PushDistance": "De combien poussez-vous la cible ?",
+          "Pushing": "Repousser : Attaque",
+          "SelectDice": "Effectuez une manœuvre avec quelle taille de dé de supériorité ?",
+          "SelectManeuver": "Quelle manœuvre utiliser ?",
+          "SelectTarget": "Qui attaquez-vous ?",
+          "Sweeping": "Balayge : Attaque",
+          "Tripping": "Croc-en-jambe : Attaque"
+      },
+      "ManifestEcho": {
+          "Attack": "Manifestation d'Écho : Attaque",
+          "Dismiss": "Manifestation d'Écho : Dissiper",
+          "Echo": "Écho de {name}",
+          "Far": "L'écho de {actorName} est trop loin. Voulez-vous l'enlever ?",
+          "Legion": "Créer deux échos au lieu d'un ?",
+          "NoWeapons": "Vous n'avez aucune arme équipée pour attaquer !",
+          "Teleport": "Manifestation d'Écho : Téléportation",
+          "Weapon": "Avec quoi souhaitez-vous attaquer ?",
+          "Which": "Quel Écho ?"
+      },
+      "ManifestMind": {
+          "Cast": "Manifestation d'esprit : Lancer un Sort",
+          "Dismiss": "Manifestation d'esprit : Dissiper",
+          "Far": "L'Esprit de {actorName} est trop loin. Voulez-vous l'enlever ?",
+          "Invalid": "Type d'action invalide !",
+          "Move": "Manifestation d'esprit : Déplacer"
+      },
+      "MartialAdvantage": {
+          "Name": "Avantage Martial"
       },
       "MassCureWounds": {
-        "Select": "Quelles cibles souhaiteriez-vous soigner ? "
+          "Select": "Quelles cibles souhaitez-vous soigner ? (Max : 6)"
       },
+      "MastersAmulet": {
+        "Linked": "L'amulette a été liée !",
+        "MissingBound": "La cible n'a pas la caractéristique liée de CPR !",
+        "Unlinked": "La cible est un jeton non lié et le lien ne fonctionnera qu'avec ce jeton sur cette scène !"
+      }, 
       "MaximiliansEarthenGrasp": {
-        "Crush": "Poigne terreuse de Maximilien : Écrasement",
-        "Grasp": "Poigne terreuse de Maximilien : Emprise",
-        "NoNearby": "Aucune cible à proximité à saisir !",
-        "Overtime": "Poigne terreuse de Maximilien : Libérez-vous",
-        "Select": "Sélectionnez une cible à saisir :"
+          "Crush": "Poigne terreuse de Maximilien : Écraser",
+          "Grasp": "Poigne terreuse de Maximilien : Entraver",
+          "NoNearby": "Aucune cible à proximité à saisir !",
+          "Overtime": "Poigne terreuse de Maximilien : Se libérer",
+          "Select": "Sélectionnez une cible à entraver :"
+      },
+      "MetallicBreathWeapon": {
+          "Enervating": "Souffle débilitant",
+          "Repulsion": "Souffle répulsif",
+          "Select": "Quel type de souffle ?"
+      },
+      "Metamagic": {
+          "CarefulWhich": "Quels cibles réussissent automatiquement ? (Max {max})",
+          "Empowered": "Dépenser 1 Point de Sorcellerie pour relancer les dés de dégâts ? (Max {max})",
+          "HeightenedWhich": "Quelle cible a un désavantage ?",
+          "NoValid": "Aucun sort applicable à lancer !",
+          "NotEnough": "Pas assez de points de sorcellerie !",
+          "TransmutedFirst": "Quel type de dégâts allez-vous remplacer ?",
+          "TransmutedSecond": "Quel type de dégâts souhaitez-vous utiliser à la place ?",
+          "TwinnedUpcast": "Pas assez de Points de Sorcellerie pour doubler ce sort lors de son lancement !",
+          "TwinnedUpcastTargets": "Impossible de lancer ce sort à un emplacement plus élevé et de le doubler !",
+          "Which": "Dépenser {cost} Point{plural} de Sorcellerie et lancer quel sort ?"
       },
       "MirrorImage": {
-        "Hit": "L'attaque a touché un double et l'a détruit.",
-        "Miss": "L'attaque a ciblé un doublon et a manqué."
+          "Hit": "L'attaque a touché un duplicata et l'a détruit.",
+          "Miss": "L'attaque a ciblé un duplicata et a échoué."
       },
       "Moonbeam": {
-        "Damage": "Rayon de lune : Dégâts",
-        "Move": "Rayon de lune : Déplacer"
+          "Damage": "Rayon de Lune : Dégâts",
+          "Move": "Rayon de Lune : Déplacer"
+      },
+      "Mutagencraft": {
+          "AttackSunlight": "Est-ce que {sourceTokenName} ou {targetTokenName} sont directement sous le soleil ?",
+          "Create": "Quel Mutagène créez-vous ?",
+          "Flush": "Mutagencraft : Éliminer les Mutagènes",
+          "Negative": "Effets Négatifs",
+          "Positive": "Effets Positifs",
+          "ReconstructionHealing": "Formule de Reconstruction : Soins",
+          "SkillSunlight": "S'agit-il d'un jet basé sur la vue avec soit {actorName} ou la cible du jet directement sous le soleil ?"
       },
       "NaturesWrath": {
-        "Select": "Avec quelle capacité allez-vous effectuer la sauvegarde ?"
+          "Select": "Avec quelle caractéristique allez-vous effectuer le jet de sauvegarde ?"
+      },
+      "OilOfSharpness": {
+          "Select": "Quelle arme enduire ?"
+      },
+      "OneWithShadows": {
+          "Bright": "Le jeton est en pleine lumière !"
+      },
+      "Overchannel": {
+          "Damage": "Utiliser {itemName} au prix de {damageFormula} dégâts ?",
+          "DamageItem": "Surcharge : Dégâts"
+      },
+      "PackTactics": {
+          "Name": "Tactiques de Meute"
+      },
+      "PariahsShield": {
+          "MaxBonus": "Bonus de CA Max :",
+          "Protect": "Protéger {name} avec {item} ?",
+          "Reaction": "Bouclier du Paria : Protéger"
+      },
+      "Parry": {
+          "Name": "Parade"
+      },
+      "Piercer": {
+          "Reroll": "Quel dé (le plus bas) relancer ?"
+      },
+      "PoisonousSkin": {
+          "Poison": "Grung : Poison"
+      },
+      "PotionOfAdvantage": {
+          "Select": "Gagner un avantage sur ce jet ?"
+      },
+      "PotionOfFireBreath": {
+          "Attack": "Attaque avec Potion de Souffle de Feu"
+      },
+      "PotionOfPoison": {
+          "Damage": "Potion de Poison : Dégâts"
       },
       "PreserveLife": {
-        "Select": "Distribuez des PVs (Montant à distribuer : {maxAmount}. Les cibles ne peuvent pas être soignées au-dessus de la moitié de leur santé.)"
+          "Select": "Distribuer des PV (Montant à Distribuer : {maxAmount}. Les cibles ne peuvent pas être soignées au-delà de la moitié de leurs PV.)"
+      },
+      "PrimalCompanion": {
+          "BindingStrike": "Frappe Contraignante",
+          "Command": "Compagnon du rôdeur : Commande",
+          "Land": "Terre",
+          "PrimalBond": "Lien Primitif",
+          "Sea": "Mer",
+          "Select": "Quel type de compagnon ?",
+          "Sky": "Ciel"
       },
       "ProtectionFromEvilAndGood": {
-        "Save": "Cette sauvegarde provient d'un effet d'une aberration, céleste, élémentaire, fée, démon ou mort-vivant qui vous a charmé, effrayé ou possédé."
+          "Save": "Cette sauvegarde provient d'un effet d'un aberration, céleste, élémentaire, fey, démon ou mort-vivant qui vous a charmé, effrayé ou possédé."
       },
       "Rage": {
-        "End": "Colère : Fin",
-        "EndEarly": "{actorName} n'a pas attaqué d'ennemi ni subi de dégâts depuis son dernier tour. ",
-        "FormOfBeastTailReaction": "Forme de la bête : Réaction de la queue",
-        "FormOfBeastWeapon": "Manifester une arme naturelle ?",
-        "FormOfTheBeastBite": "Forme de la bête : Morsure",
-        "FormOfTheBeastClaws": "Forme de la bête : Griffes",
-        "FormOfTheBeastTail": "Forme de la bête : Queue",
-        "Huge": "Devenir énorme ?",
-        "LargeOrHuge": "Quelle taille ?"
+          "End": "Rage : Fin",
+          "EndEarly": "{actorName} n'a pas attaqué un ennemi ou subi de dégâts depuis son dernier tour. Enlever Rage ?",
+          "FormOfBeastTailReaction": "Forme de la Bête : Queue (réaction)",
+          "FormOfBeastWeapon": "Manifester une arme naturelle ?",
+          "FormOfTheBeastBite": "Forme de la Bête : Morsure",
+          "FormOfTheBeastClaws": "Forme de la Bête : Griffes",
+          "FormOfTheBeastTail": "Forme de la Bête : Queue",
+          "Huge": "Grandir pour être énorme ?",
+          "LargeOrHuge": "Quelle taille ?"
       },
       "RayOfEnfeeblement": {
-        "Overtime": "Rayon d'affaiblissement (fin du tour)"
+          "Overtime": "Rayon d'affaiblissement (Fin du tour)"
+      },
+      "Reduce": {
+          "AlwaysTiny": "Toujours réduire à Minuscule :",
+          "AttackDisadvantage": "Désavantage sur les attaques basées sur la force :",
+          "Name": "Rapetissement",
+          "OneDamage": "Les attaques basées sur la force infligent 1 dé de dégâts :",
+          "StealthACBonus": "+5 à la discrétion et à l'AC :"
+      },
+      "ReduceMaxHP": {
+          "DamageTypeFilter": "N'appliquer que certains types de dégâts à la réduction des PV max :",
+          "Half": "Réduire de moitié les dégâts/le jet :",
+          "Long": "Expire au repos long :",
+          "Name": "Réduire les PV Maximum",
+          "ReduceByRoll": "Réduire par jet, pas par dégâts :",
+          "Short": "Expire au repos court :"
+      },
+      "Regeneration": {
+          "Blocked": "Régénération Bloquée",
+          "Critical": "Les coups critiques bloquent toujours la régénération",
+          "DamageTypes": "Types de dégâts pour réduire/bloquer la régénération :",
+          "Dead": "Mort ?",
+          "Name": "Régénération",
+          "Reduced": "Régénération Réduite",
+          "ShowIcons": "Afficher les icônes pour la régénération bloquée/réduite :",
+          "Threshold": "Dégâts nécessaires pour tuer définitivement si à 0PV :",
+          "ZeroHP": "La créature meurt lorsqu'elle atteint 0PV"
+      },
+      "RingOfSpellStoring": {
+          "Clear": "Effacer les sorts utilisés",
+          "Cleared": "Sorts utilisés effacés de l'inventaire !",
+          "Name": "Anneau de Stockage de Sorts ({currSpellSlots}/{maxSpellSlots})",
+          "NoSpells": "Aucun sort disponible à stocker !",
+          "Reset": "Réinitialiser les sorts stockés",
+          "ResetDone": "Anneau réinitialisé !",
+          "SelectSpell": "Quel sort aimeriez-vous stocker ?",
+          "SpellName": "Anneau de Stockage de Sorts : {spellName}",
+          "Store": "Stocker un sort",
+          "Stored": "{spellName} stocké !",
+          "Upcast": "Lancer à quel niveau ?"
+      },
+      "RunicShield": {
+          "Use": "Utiliser {item} pour {name} ?"
       },
       "SacredWeapon": {
-        "Dismiss": "Arme sacrée : Dissiper",
-        "NoWeapons": "Vous n'avez aucune arme équipée !",
-        "Sacred": "Arme sacrée",
-        "SelectWeapon": "Quelle arme souhaiteriez-vous imprégner ?"
+          "Dismiss": "Arme Sacrée : Renvoyer",
+          "NoWeapons": "Vous n'avez pas d'armes équipées !",
+          "Sacred": "Arme Sacrée",
+          "SelectWeapon": "Quelle arme aimeriez-vous imprégner ?"
       },
       "Sanctuary": {
-        "Failed": "Impossible d'attaquer cette cible - vous devez choisir une autre cible ou perdre son attaque/sort !",
-        "Save": "Sanctuaire : Enregistrer"
+          "Failed": "Impossible d'attaquer cette cible - vous devez choisir une autre cible ou perdre votre attaque/sort !",
+          "Save": "Sanctuaire : Sauvegarde"
       },
       "ScorchingRay": {
-        "Bolt": "Trait de rayon ardent",
-        "Select": "Sélectionnez vos cibles (Rayons max : {maxRays})"
+          "Bolt": "Rayon Ardent",
+          "Select": "Sélectionnez vos cibles (Rayons Max : {maxRays})"
+      },
+      "SculptSpells": {
+          "Select": "Quelles cibles réussissent et ne subissent aucun dommage ? (Max : {max})"
       },
       "Search": {
-        "Skill": "Quelle compétence ?"
+          "Skill": "Quelle compétence ?"
       },
       "SearingSmite": {
-        "Fire": "Châtiment brûlant : Feu"
+          "Fire": "Châtiment Calcinant : Feu"
       },
       "ShadowBlade": {
-        "Sword": "Épée d'ombre"
+          "Sword": "Lame d'Ombres"
       },
       "ShadowOfMoil": {
-        "Damage": "Ombre d'égarement : Dégâts"
+          "Damage": "Ombre d'Égarement : Dégâts"
       },
       "Shove": {
-        "Big": "La cible est trop grosse pour être poussée !",
-        "ChooseSkill": "Comment aimeriez-vous contester le coup ?",
-        "KnockProne": "Sujet aux coups",
-        "MoveOrProne": "Que veux-tu faire à la cible ?",
-        "Shove": "Pousser"
+          "Big": "La cible est trop grande pour être poussée !",
+          "ChooseSkill": "Comment aimeriez-vous contester la poussée ?",
+          "KnockProne": "Faire tomber à terre",
+          "MoveOrProne": "Que voulez-vous faire à la cible ?",
+          "Shove": "Pousser"
       },
       "SickeningRadiance": {
-        "Damage": "Rayonnement écoeurant : dégâts"
+          "Damage": "Rayonnement écœurant : Dégâts"
       },
       "SkillEmpowerment": {
-        "SelectSkill": "Sélectionnez une compétence pour accorder une expertise temporaire dans :"
+          "SelectSkill": "Sélectionnez une compétence pour accorder une expertise temporaire :"
       },
       "SleetStorm": {
-        "Prone": "Tempête de neige : À terre"
+          "Prone": "Tempête de Neige : À terre"
       },
       "SneakAttack": {
-        "Scale": "Il manque à l'acteur une valeur d'échelle d'attaque sournoise !",
-        "Use": "Utiliser {nom} ?"
+          "Scale": "L'acteur manque d'une valeur d'échelle pour l'attaque sournoise !",
+          "Use": "Utiliser {name} ?"
       },
       "SongOfDefense": {
-        "Bladesong": "Vous devez être un magicien Chant des lames pour utiliser cette fonctionnalité !",
-        "NoSpellSlots": "Vous n'avez aucun emplacement de sort disponible !"
+          "Bladesong": "Vous devez être en train de chanter pour utiliser cette compétence !",
+          "NoSpellSlots": "Vous n'avez pas d'emplacement de sort disponible !",
+          "Select": "Utiliser votre réaction pour dépenser un emplacement de sort afin de réduire les dégâts ?"
+      },
+      "SoothePain": {
+          "Protect": "Réduire les dégâts à {tokenName} ?",
+          "Self": "Réduire les dégâts à soi-même ?"
+      },
+      "SpellTurning": {
+          "Advantage": "Avantage sur les sauvegardes :",
+          "Name": "Renvoyer les Sorts",
+          "SpellLevel": "Niveau de sort maximum pour rediriger :",
+          "TargetCaster": "Cibler le lanceur en cas de réussite :"
       },
       "SpikeGrowth": {
-        "Thorns": "Croissance d'épines : Épines"
+          "Thorns": "Croissance d'Épines : Épines"
       },
       "SpiritGuardians": {
-        "Alignment": "Quel est votre alignement ?",
-        "Damage": "Esprits gardiens : dégâts",
-        "NoRing": "Pas d'anneau",
-        "Particles": "Particules",
-        "Ring": "Anneau",
-        "Spirits": "Esprits",
-        "Variation": "Variation:"
+          "Alignment": "Quel est votre alignement ?",
+          "Damage": "Esprits gardiens : Dégâts",
+          "NoRing": "Pas d'Anneau",
+          "Particles": "Particules",
+          "Ring": "Anneau",
+          "Spirits": "Esprits",
+          "Variation": "Variation :"
       },
       "SpiritShroud": {
-        "Hit": "Voile spirituel : Frapper",
-        "Slow": "Voile spirituel : Lenteur"
+          "Hit": "Voile Spirituel : Frapper",
+          "Slow": "Voile Spirituel : Ralentir"
       },
       "SpiritualWeapon": {
-        "Attack": "Arme spirituelle : attaque",
-        "Color": "Quelle couleur ?",
-        "Dark": "Sombre",
-        "Flaming": "Flamboyant",
-        "Mace": "Masse",
-        "Maul": "Maillet",
-        "Scythe": "Faux",
-        "Style": "Quel style ?",
-        "Sword": "Épée",
-        "Weapon": "Quelle arme ?"
+          "Attack": "Arme Spirituelle : Attaque",
+          "Color": "Quelle couleur ?",
+          "Dark": "Sombre",
+          "Flaming": "Flamboyante",
+          "Mace": " Masse",
+          "Maul": "Grosse Masse",
+          "SaveDefault": "Utiliser la configuration sélectionnée à l'avenir ?",
+          "Scythe": "Faux",
+          "Select": "Sélectionnez une cible à attaquer :",
+          "Style": "Quel style ?",
+          "Sword": "Épée",
+          "UseDefault": "Utiliser la configuration de jeton précédemment enregistrée :",
+          "Weapon": "Quelle arme ?"
+      },
+      "Stabilize": {
+          "Stabilized": "Stabilisé",
+          "WakeUp": "Heures avant que la créature se réveille :"
       },
       "StaggeringSmite": {
-        "Stagger": "Châtiment débilitant : Retirer la réaction"
+          "Stagger": "Frappe Étourdissante : Étourdir"
       },
       "StarryForm": {
-        "Archer": "Archer",
-        "ArcherFeature": "Forme étoilée : Flèche Lumineuse",
-        "Chalice": "Calice",
-        "ChaliceFeature": "Forme étoilée : Calice de guérison",
-        "Change": "Changer de constellation ?",
-        "Dragon": "Dragon",
-        "DragonFeature": "Forme étoilée : Dragon sage",
-        "Heal": "Qui veux-tu guérir ?",
-        "Select": "Quelle Constellation ?"
+          "Archer": "Archer",
+          "ArcherFeature": "Forme Étoilée : Flèche Lumineuse",
+          "Chalice": "Calice",
+          "ChaliceFeature": "Forme Étoilée : Calice de Soin",
+          "Change": "Changer de Constellation ?",
+          "Dragon": "Dragon",
+          "DragonFeature": "Forme Étoilée : Dragon Sage",
+          "Heal": "Qui souhaitez-vous soigner ?",
+          "Select": "Quelle Constellation ?"
       },
       "SteelDefender": {
-        "Command": "Défenseur d'Acier : Commandement",
-        "DeflectAttack": "Dévier l’attaque",
-        "ForceEmpoweredRend": "Déchirure par la force",
-        "Repair": "Réparation",
-        "Vigilant": "Vigilant"
+          "Command": "Défenseur d'Acier : Commande",
+          "DeflectAttack": "Parade d'Attaque",
+          "ForceEmpoweredRend": "Morsure de Force",
+          "Repair": "Réparation",
+          "Vigilant": "Vigilant"
+      },
+      "StillnessOfMind": {
+          "Select": "Quelle condition souhaitez-vous supprimer ?"
+      },
+      "StormRune": {
+          "AdvDis": "Accorder à {tokenName} un avantage/désavantage sur leur {actionType} ?"
       },
       "StormSphere": {
-        "Bolt": "Sphère de tempête : Éclair",
-        "Turn": "Sphère de tempête : Tour"
+          "Bolt": "Sphère de Tempête : Éclair",
+          "Turn": "Sphère de Tempête : Tour"
+      },
+      "Stormgirdle": {
+          "LightningStrike": "Corset de Tempête : Frappe de Foudre"
+      },
+      "Stormgridle": {
+          "Avatar": "Avatar de Tempête"
+      },
+      "StrangeMetabolism": {
+          "Select": "Quel Mutagène ?"
       },
       "SummonAberration": {
-        "Beholderkin": "Spectateur",
-        "EyeRay": "Rayon oculaire",
-        "PsychicSlam": "Claquement psychique",
-        "Slaad": "Slaad",
-        "StarSpawn": "Apparition d'étoiles",
-        "Type": "Quel type d'aberration ?",
-        "WhisperingAura": "Aura murmurante"
+          "Beholderkin": "Tyrannœillidé",
+          "EyeRay": "Rayon Oculaire",
+          "PsychicSlam": "Choc Psychique",
+          "Slaad": "Slaad",
+          "StarSpawn": "Rejeton Stellaire",
+          "Type": "Quel type d'Aberration ?",
+          "WhisperingAura": "Aura de Murmures"
       },
       "SummonBeast": {
-        "Air": "Air",
-        "Flyby": "Survol",
-        "Land": "Atterrir",
-        "Maul": "Maul (esprit bestial)",
-        "Type": "Quel type de bête ?",
-        "Water": "Eau"
+          "Air": "Air",
+          "Flyby": "Repli aérien",
+          "Land": "Terre",
+          "Maul": "Perforation (Esprit Bestial)",
+          "Type": "Quel type de Bête ?",
+          "Water": "Eau"
       },
       "SummonCelestial": {
-        "Avenger": "Vengeur",
-        "Defender": "Défenseur",
-        "HealingTouch": "Toucher curatif (Esprit céleste)",
-        "RadiantBow": "Arc radiant",
-        "RadiantMace": "Masse radiante",
-        "Temp": "Qui obtient des points de vie temporaires ?",
-        "Type": "Quel type céleste ?"
+          "Avenger": "Vengeur",
+          "Defender": "Protecteur",
+          "HealingTouch": "Contact guérisseur (Esprit Céleste)",
+          "RadiantBow": "Coup radiant",
+          "RadiantMace": "Masse d'armes radiante",
+          "Temp": "Qui obtient des points de vie temporaires ?",
+          "Type": "Quel type Céleste ?"
       },
       "SummonConstruct": {
-        "BerserkLashing": "Fou furieux",
-        "Clay": "Argile",
-        "Metal": "Métal",
-        "Slam": "Slam (Construire l'Esprit)",
-        "Stone": "Pierre",
-        "Type": "Quel type de construction ?"
+          "BerserkLashing": "Riposte rageuse",
+          "Clay": "Argile",
+          "Metal": "Métal",
+          "Slam": "Coup (Esprit Construct)",
+          "Stone": "Pierre",
+          "Type": "Quel type de d'Artificiel ?"
       },
       "SummonDraconicSpirit": {
-        "Chromatic": "Chromatique",
-        "Gem": "Gemme",
-        "Metallic": "Métallique",
-        "Rend": "Déchirure (Esprit draconique)",
-        "ResistanceType": "Résistances partagées : quel type de dégâts ?",
-        "SharedResistances": "Résistances partagées",
-        "Type": "Quel type de dragon ?"
+          "Chromatic": "Chromatique",
+          "Gem": "Gemme",
+          "Metallic": "Métallique",
+          "Rend": "Déchirure (Esprit Draconique)",
+          "ResistanceType": "Résistances Partagées : Quel type de dommage ?",
+          "SharedResistances": "Résistances Partagées",
+          "Type": "Quel type de Dragon ?"
+      },
+      "SummonDrakeCompanion": {
+          "Command": "Compagnon Drake : Commande",
+          "Essence": "Essence Draconique",
+          "InfusedStrikes": "Coups Infusés",
+          "Reflexive": "Résistance Réflexive",
+          "Resistance": "Utiliser une réaction pour accorder une résistance aux dégâts ?",
+          "ResistanceSelf": "Utiliser une réaction pour obtenir une résistance aux dégâts ?",
+          "Select": "Quel type de Drake ?",
+          "Self": "Oui : Soi",
+          "Summon": "Oui : Compagnon Drake"
       },
       "SummonElemental": {
-        "Air": "Air",
-        "AmorphousForm": "Forme amorphe",
-        "Earth": "Terre",
-        "Fire": "Feu",
-        "Slam": "Déchirure (Esprit Élémentaire)",
-        "Type": "Quel type d'élémentaire ?",
-        "Water": "Eau"
+          "Air": "Air",
+          "AmorphousForm": "État Informe",
+          "Earth": "Terre",
+          "Fire": "Feu",
+          "Slam": "Coup (Esprit Élémentaire)",
+          "Type": "Quel type d'Élémentaire ?",
+          "Water": "Eau"
       },
       "SummonFey": {
-        "FeyStep": "Pas féérique",
-        "Fuming": "Fumant",
-        "Mirthful": "Joyeux",
-        "Select": "Qui charmer ?",
-        "Shortsword": "Épée courte",
-        "Tricksy": "Délicat",
-        "Type": "Quel type de fée ?"
+          "FeyStep": "Foulée Féérique",
+          "Fuming": "Furibonde",
+          "Mirthful": "Rieuse",
+          "Select": "Qui charmer ?",
+          "Shortsword": "Épée Courte",
+          "Tricksy": "Espiègle",
+          "Type": "Quel type d'Esprit Féérique ?"
       },
       "SummonFiend": {
-        "DeathThroes": "L'agonie",
-        "Demon": "Démon",
-        "Devil": "Diable",
-        "HurlFlame": "Lancer une flamme",
-        "Type": "Quel type de démon ?",
-        "UseTeleportation": "Utiliser la téléportation ?",
-        "Yugoloth": "Yugoloth"
+          "DeathThroes": "Spasme d'Agonie",
+          "Demon": "Démon",
+          "Devil": "Diable",
+          "HurlFlame": "Jet de Flammes",
+          "Type": "Quel type de Fiélon ?",
+          "UseTeleportation": "Utiliser la Téléportation ?",
+          "Yugoloth": "Yugoloth"
       },
       "SummonLesserDemons": {
-        "Demons": "Démons",
-        "Draw": "Dessiner un cercle de protection ?"
+          "Demons": "Démons",
+          "Draw": "Dessiner un cercle protecteur ?"
       },
       "SummonShadowspawn": {
-        "ChillingRend": "Déchirement glacial",
-        "Despair": "Désespoir",
-        "DreadfulScream": "Cri épouvantable",
-        "Fear": "Peur",
-        "Fury": "Fureur",
-        "TerrorFrenzy": "Frénésie de terreur",
-        "Type": "Quel type de rejeton d'ombre ?"
+          "ChillingRend": "Griffes Glaciales",
+          "Despair": "Désespoir",
+          "DreadfulScream": "Hurlement Effroyable",
+          "Fear": "Peur",
+          "Fury": "Fureur",
+          "TerrorFrenzy": "Frénésie Terrifiante",
+          "Type": "Quel type de Spawn d'Ombre ?"
       },
       "SummonUndead": {
-        "DeathlyTouch": "Toucher mortel",
-        "FesteringAura": "Aura purulente",
-        "Ghostly": "Fantomatique",
-        "GraveBolt": "Trait funéraire",
-        "IncorporealPassage": "Passage incorporel",
-        "Putrid": "Putride",
-        "RottingClaw": "Griffe pourrie",
-        "RottingClawParalyze": "Griffe pourrie : Paralysie",
-        "Skeletal": "Squelettique",
-        "Type": "Quel type de mort-vivant ?"
+          "DeathlyTouch": "Contact Funeste",
+          "FesteringAura": "Aura Suppurante",
+          "Ghostly": "Fantomatique",
+          "GraveBolt": "Trait Sépulcral",
+          "IncorporealPassage": "Passage Intangible",
+          "Putrid": "Putride",
+          "RottingClaw": "Griffe Putréfiée",
+          "RottingClawParalyze": "Griffe Putréfiée : Paralyser",
+          "Skeletal": "Squelettique",
+          "Type": "Quel type de Mort-Vivant ?"
       },
       "SummonWildfireSpirit": {
-        "Command": "Esprit du Feu de forêt : Commandement",
-        "Damage": "Invocation d'un esprit de feu sauvage : dégâts",
-        "FieryTeleportation": "Téléportation enflammée",
-        "FieryTeleportationDamage": "Téléportation enflammée : dégâts",
-        "FlameSeed": "Graine de flamme",
-        "PlayAnimation": "Jouer à l'animation de téléportation :"
+          "Command": "Esprit des Fournaises : Commande",
+          "Damage": "Invoquer Esprit des Fournaises : Dégâts",
+          "FieryTeleportation": "Téléportation Enflammée",
+          "FieryTeleportationDamage": "Téléportation Enflammée : Dégâts",
+          "FlameSeed": "Germe ardent"
+      },
+      "SunlightSensitivity": {
+          "Attack": "{tokenName} est-il en plein soleil ?",
+          "Auto": "Suppose que 'lumière vive' équivaut à 'plein soleil' concernant le désavantage à l'attaque :",
+          "Name": "Sensibilité à la Lumière du Soleil",
+          "Skill": "Cette vérification dépend de la vue et la créature est en plein soleil"
+      },
+      "SurpriseAttack": {
+          "Dialog": "Utiliser une modale au lieu de vérifier la condition Surpris :",
+          "Name": "Attaque Surprise",
+          "Surprised": "La cible est-elle surprise ?"
+      },
+      "SwarmDamage": {
+          "Name": "Dégâts de nuée"
       },
       "TashasOtherworldlyGuise": {
-        "Lower": "Plans inférieurs",
-        "Select": "De quels avions tirez-vous la magie ?",
-        "Upper": "Plans supérieurs"
+          "Lower": "Plans Inférieurs",
+          "Select": "De quels plans tirez-vous de la magie ?",
+          "Upper": "Plans Supérieurs"
+      },
+      "TavernBrawler": {
+          "Use": "Utiliser une action bonus pour tenter d'engager une lutte ?"
+      },
+      "Telekinetic": {
+          "Select": "Quelle direction ?"
       },
       "Teleport": {
-        "AssociatedObject": "Objet associé",
-        "Damage": "Téléportation : Dégâts",
-        "Description": "Description",
-        "Direction": "Hors cible - Direction",
-        "Distance": "Hors cible - Distance",
-        "FalseDestination": "Fausse destination",
-        "Familiarity": "Quelle est la familiarité ?",
-        "HowFar": "À quelle distance se trouve la destination ?",
-        "Mishap": "Mésaventure",
-        "OffTarget": "Hors cible",
-        "OffTargetString": "La destination est {distance} {unités} {direction} de l'emplacement prévu.",
-        "OnTarget": "Sur la cible",
-        "PermanentCircle": "Cercle Permanent",
-        "SeenCasually": "Vu par hasard",
-        "Select": "Qui d'autre est téléporté ?",
-        "SelectDestination": "Sélectionner la destination ?",
-        "SimilarArea": "Zone similaire",
-        "VeryFamiliar": "Très familier",
-        "ViewedOnce": "Vu une fois"
+          "AssociatedObject": "Objet Associé",
+          "Damage": "Téléportation : Dégâts",
+          "Description": "Description",
+          "Direction": "Hors Cible - Direction",
+          "Distance": "Hors Cible - Distance",
+          "FalseDestination": "Destination Erronée",
+          "Familiarity": "Quelle est la familiarité ?",
+          "HowFar": "Quelle est la distance de la destination ?",
+          "Mishap": "Échec",
+          "OffTarget": "Hors Cible",
+          "OffTargetString": "La destination est {distance} {units} {direction} de l'emplacement prévu.",
+          "OnTarget": "Sur Cible",
+          "PermanentCircle": "Cercle Permanent",
+          "SeenCasually": "Vu de manière occasionnelle",
+          "Select": "Qui d'autre sera téléporté ?",
+          "SelectDestination": "Sélectionner la destination ?",
+          "SimilarArea": "Zone Similaire",
+          "VeryFamiliar": "Très Familier",
+          "ViewedOnce": "Vu Une Fois"
+      },
+      "TentacleOfTheDeeps": {
+          "Attack": "Tentacule Abyssal : Attaque",
+          "Name": "Tentacule Abyssal"
       },
       "ThornWhip": {
-        "CheckSize": "Vérifier la taille :",
-        "Pull": "Jusqu’où tirez-vous la cible ?"
+          "CheckSize": "Vérifier la Taille :",
+          "Pull": "De combien tirez-vous la cible ?"
       },
       "ThunderStep": {
-        "Select": "Téléporter une créature ?"
+          "Select": "Téléporter une créature ?"
       },
       "ThunderboltStrike": {
-        "Select": "Sélectionnez les cibles à pousser :"
+          "Select": "Sélectionnez les cibles à pousser :"
       },
       "ThunderousSmite": {
-        "Push": "Châtiment tonitruant : Pousser"
+          "Push": "Châtiment Tonitruant : Pousser"
+      },
+      "TouchDamage": {
+          "Name": "Dégâts de Contact"
       },
       "TwilightSanctuary": {
-        "Charmed": "Supprimer la condition Charmé",
-        "Frightened": "Supprimer la condition Effrayée",
-        "Heal": "Accorder {formule} PV temporaires",
-        "Temp": "Sanctuaire du Crépuscule : PV temporaires"
+          "Charmed": "Retirer la condition Charmé",
+          "Frightened": "Retirer la condition Effrayé",
+          "Heal": "Accorder {formula} points de vie temporaires",
+          "Temp": "Sanctuaire du Crépuscule : PV Temporaires"
+      },
+      "UnarmedFighting": {
+          "Grapple": "Combat à Main Nue : Dégâts de Saisie",
+          "Select": "À quelle créature infliger des dégâts de saisie ?"
+      },
+      "UndeadFortitude": {
+          "Critical": "Les coups critiques contournent la Ténacité des Mort-vivant :",
+          "DamageTypes": "Types de Dégâts pour contourner la Ténacité des Mort-vivant :",
+          "Name": "Ténacité de Mort-vivant"
       },
       "Underwater": {
-        "TooFar": "La cible est trop loin sous l’eau !",
-        "Underwater": "Sous l'eau"
+          "TooFar": "La cible est trop loin sous l'eau !",
+          "Underwater": "Sous l'eau"
       },
       "UpcastTargets": {
-        "Select": "Trop de cibles sélectionnées ! "
+          "Select": "Trop de cibles sélectionnées ! Veuillez sélectionner jusqu'à {maxTargets} cibles."
+      },
+      "VampiricBite": {
+          "Bonus": "Bonus à la prochaine attaque/vérification",
+          "Heal": "Regagner des PV",
+          "LowHealth": "Avantage : En dessous de la moitié des PV",
+          "Select": "Voulez-vous vous être renforcé ?"
       },
       "VampiricTouch": {
-        "Attack": "Toucher vampirique : attaque",
-        "HealingModifier": "0,5"
+          "Attack": "Toucher du Vampire : Attaque",
+          "HealingModifier": "0.5"
+      },
+      "WallOfFire": {
+          "CircleFacing": "Dans quelle direction le feu est-il orienté ?",
+          "Diameter": "Quel diamètre ?",
+          "Flames": "Flammes",
+          "Height": "Quelle hauteur ?",
+          "Inward": "Vers l'intérieur",
+          "Length": "Quelle longueur ?",
+          "Outward": "Vers l'extérieur",
+          "Shape": "Quelle forme ?",
+          "Side": "Sur quel côté le feu se trouve-t-il ?"
       },
       "WardingBond": {
-        "Damage": "Lien de protection : Dégâts",
-        "Dismiss": "Lien de protection : Dissiper",
-        "Distance": "La distance de liaison est trop grande, supprimer la liaison ?",
-        "MaxDistance": "Distance maximale :"
+          "Damage": "Lien de Protection : Dégâts",
+          "Dismiss": "Lien de Protection : Dissiper",
+          "Distance": "La distance du lien est trop éloignée, dissiper le lien ?",
+          "MaxDistance": "Distance Maximale :"
       },
       "WildShape": {
-        "CustomCompendium": "Clé du compendium de formes sauvages personnalisé :",
-        "Equipment": "Que devient votre équipement ?",
-        "KeepSpells": "Autoriser le lancement de sorts pendant la transformation :",
-        "Merge": "Fusionner / Supprimer",
-        "Revert": "Forme sauvage : Revenir",
-        "Select": "Sélectionnez une forme",
-        "Wear": "Porter"
+          "CustomCompendium": "Compendium de Forme Sauvage Personnalisé :",
+          "Equipment": "Que se passe-t-il avec votre équipement ?",
+          "Ignore": "Ignorer le CR, Type et Restrictions de Mouvement :",
+          "KeepSpells": "Permettre le lancement de sorts pendant la transformation :",
+          "Merge": "Fusionner / Laisser tomber",
+          "Revert": "Forme Sauvage : Revenir à soi",
+          "Select": "Sélectionner la Forme",
+          "Wear": "Porter"
       },
       "WildSurge": {
-        "BoltOfLight": "Éclair de lumière",
-        "FlowersAndVines": "Fleurs et vignes",
-        "Form": "Quelle forme prend l’esprit intangible ?",
-        "IntangibleSpirit": "Esprit intangible",
-        "IntangibleSpiritExplode": "Sursaut sauvage : l'explosion de l'esprit intangible",
-        "MagicInfusion": "Infusion Magique",
-        "ProtectiveLights": "Feux de protection",
-        "Retribution": "Châtiment",
-        "Select": "Quel effet ?",
-        "ShadowyTendrils": "Vrilles ténébreuses",
-        "Target": "Sélectionnez une cible :",
-        "Teleport": "Téléportation"
+          "BoltOfLight": "Éclair de Lumière",
+          "FlowersAndVines": "Fleurs et Vignes",
+          "Form": "Quelle forme prend l'esprit intangible ?",
+          "IntangibleSpirit": "Esprit Intangible",
+          "IntangibleSpiritExplode": "Sursaut Sauvage : Explosion de l'Esprit Intangible",
+          "MagicInfusion": "Infusion Magique",
+          "ProtectiveLights": "Lumières Protectrices",
+          "Retribution": "Vengeance",
+          "Select": "Quel effet ?",
+          "ShadowyTendrils": "Tendril d'Ombre",
+          "Target": "Sélectionnez une cible :",
+          "Teleport": "Téléportation"
       },
       "WitherAndBloom": {
-        "Heal": "Flétrissement et floraison : guérir",
-        "SelectHitDie": "Sélectionnez le nombre de dés de vie à lancer.",
-        "SelectTarget": "Qui peut lancer des dés de vie non dépensés ?"
+          "Heal": "Flétrir et Fleurir : Soigner",
+          "SelectHitDie": "Sélectionnez combien de dés de vie à lancer.",
+          "SelectTarget": "Qui peut lancer des dés de vie non dépensés ?"
+      },
+      "WrapsOfDyamak": {
+          "CrimsonMist": "Brume Cramoisie",
+          "Heal": "Bandes de Dyamak : Soigner"
       },
       "WrathfulSmite": {
-        "Frighten": "Châtiment courroucé : Effrayer"
+          "Frighten": "Châtiment Courroucé : Effrayer"
       },
       "ZealousPresence": {
-        "Select": "Qui doit être ciblé ? "
+          "Select": "Qui doit être ciblé ? (Max : {maxTargets})"
       },
       "ZoneOfTruth": {
-        "Save": "Zone de vérité : Sauvegarde"
+          "Save": "Zone de Vérité : Sauvegarde"
       }
-    },
-    "Medkit": {
+  },
+  "ManualRolls": {
+      "Critical": "Critique",
+      "Failure": "Échec",
+      "Fumble": "Raté",
+      "HasModifers": "Le lancer a des modificateurs",
+      "Hit": "Touché",
+      "Miss": "Manqué",
+      "PleaseResolve": "veuillez résoudre manuellement avant d'entrer le total",
+      "QuickButtons": {
+          "Label": "Boutons Rapides",
+          "Tooltip": "Raccourcis pour compléter le lancer avec le résultat souhaité"
+      },
+      "Success": "Succès"
+  },
+  "Medkit": {
       "Categories": {
-        "animation": {
-          "Label": "Animation:",
-          "Tooltip": "Personnaliser les animations incluses"
-        },
-        "homebrew": {
-          "Label": "Homebrew :",
-          "Tooltip": "Personnalisations Homebrew disponibles"
-        },
-        "mechanics": {
-          "Label": "Mécanique:",
-          "Tooltip": "Personnaliser la mécanique de l'article"
-        },
-        "sound": {
-          "Label": "Son:",
-          "Tooltip": "Ajouter un son à jouer"
-        },
-        "summons": {
-          "Label": "Assignation",
-          "Tooltip": "Personnaliser les invocations"
-        },
-        "visuals": {
-          "Label": "Visuels",
-          "Tooltip": "Personnaliser certains visuels"
-        }
+          "animation": {
+              "Label": "Animation :",
+              "Tooltip": "Personnaliser les animations incluses"
+          },
+          "homebrew": {
+              "Label": "Homebrew :",
+              "Tooltip": "Personnalisations des règles maisons disponibles"
+          },
+          "mechanics": {
+              "Label": "Mécaniques :",
+              "Tooltip": "Personnaliser les mécaniques de l'objet"
+          },
+          "sound": {
+              "Label": "Son :",
+              "Tooltip": "Ajouter un son à jouer"
+          },
+          "summons": {
+              "Label": "Appels",
+              "Tooltip": "Personnaliser les appels"
+          },
+          "visuals": {
+              "Label": "Visuels",
+              "Tooltip": "Personnaliser certains visuels"
+          }
+      },
+      "Compendium": {
+        "Apply": "Appliquer la trousse de secours (medkit) à tous les documents du compendium ?",
+        "Done": "Mise à jour du compendium terminée !",
+        "Start": "Mise à jour des documents..."
       },
       "Effect": {
-        "Conditions": {
-          "Label": "Conditions",
-          "Tooltip": "Conditions à appliquer et à supprimer avec cet effet à l'aide de l'API de CPR"
-        },
-        "NoAnimation": {
-          "Label": "Aucune animation",
-          "Tooltip": "Désactive le texte défilant lorsque cet effet est appliqué et supprimé"
-        },
-        "OverTime": {
-          "Add": "Ajouter des heures supplémentaires",
-          "Labels": {
-            "Ability": "DD basé sur les capacités",
-            "ActionSave": "Le jet de sauvegarde est une action :",
-            "AllowIncapacitated": "Autoriser les cibles neutralisées :",
-            "ApplyCondition": "Appliquer l'expression d'évaluation de condition :",
-            "BlindRoll": "Lancer aveugle",
-            "DamageBeforeSave": "Dégâts appliqués avant le jet de sauvegarde :",
-            "DamageRoll": "Formule de jet de dégâts :",
-            "DamageType": "Type de dégât :",
-            "End": "Fin du tour",
-            "Flat": "Fixe DD",
-            "FullDamage": "Dégâts complets",
-            "GMRoll": "Jet GM",
-            "HalfDamage": "Demi-dégâts",
-            "Item": "Article DD",
-            "Label": "Carte :",
-            "Macro": "Macro à appeler :",
-            "NoDamage": "Aucun dégât",
-            "PublicRoll": "Jet publique",
-            "RemoveCondition": "Supprimer l'expression d'évaluation de condition :",
-            "RollMode": "Mode de jet pour les effets au fil du temps :",
-            "RollType": "Type de jet :",
-            "SaveAbility": "Capacité ou compétence pour le jet :",
-            "SaveDC": "DD pour le jet :",
-            "SaveDCAbility": "DD basé sur les capacités :",
-            "SaveDCNumber": "DD Fixe :",
-            "SaveDamage": "Quantité de dégât lors de la sauvegarde :",
-            "SaveMagic": "Jet de sauvegarde magique :",
-            "SaveRemove": "Supprimer l'effet après sauvegarde :",
-            "SelfRoll": "Jet pour soi",
-            "Spellcasting": "DD de lanceur de sorts",
-            "Start": "Début du tour",
-            "Turn": "Déclenchement:"
+          "Conditions": {
+              "Label": "Conditions",
+              "Tooltip": "Conditions à appliquer et à retirer avec cet effet en utilisant l'API de CPR"
+          },
+          "NoAnimation": {
+              "Label": "Pas d'animation",
+              "Tooltip": "Désactive le texte défilant lorsque cet effet est appliqué et retiré"
+          },
+          "OverTime": {
+              "Add": "Ajouter l'OverTime",
+              "Labels": {
+                  "Ability": "DD basé sur la caractéristique",
+                  "ActionSave": "Le jet de sauvegarde est une action :",
+                  "AllowIncapacitated": "Autoriser les cibles neutralisées :",
+                  "ApplyCondition": "Appliquer l'expression d'évaluation des conditions :",
+                  "BlindRoll": "Jet à l'aveugle",
+                  "DamageBeforeSave": "Dégâts appliqués avant le jet de sauvegarde :",
+                  "DamageRoll": "Formule de jet de dégâts :",
+                  "DamageType": "Type de dégâts :",
+                  "End": "Fin du tour",
+                  "Flat": "DD fixe",
+                  "FullDamage": "Dégâts totaux",
+                  "GMRoll": "Jet de MJ",
+                  "HalfDamage": "Dégâts réduits",
+                  "Item": "DD de l'objet",
+                  "Label": "Élément narratif (flavour) de la carte :",
+                  "Macro": "Macro à appeler :",
+                  "NoDamage": "Pas de dégâts",
+                  "PublicRoll": "Jet public",
+                  "RemoveCondition": "Retirer l'expression d'évaluation des conditions :",
+                  "RollMode": "Mode de lancer pour le jet de l'objet Over Time :",
+                  "RollType": "Type de jet :",
+                  "SaveAbility": "Caractéristique ou compétence pour le jet :",
+                  "SaveDC": "Degré de difficulté pour le jet :",
+                  "SaveDCAbility": "DD basé sur la caractéristique :",
+                  "SaveDCNumber": "DD fixe :",
+                  "SaveDamage": "Total de dégâts sur sauvegarde :",
+                  "SaveMagic": "Jet de sauvegarde magique :",
+                  "SaveRemove": "Retirer l'effet sur sauvegarde :",
+                  "SelfRoll": "Jet sur soi",
+                  "Spellcasting": "DD de lancement de sort",
+                  "Start": "Début du tour",
+                  "Turn": "Déclencheur :"
+              }
           }
-        }
       },
       "Fieldsets": {
-        "damage": {
-          "Label": "Dégât",
-          "Tooltip": "Configurer les options de jet de dégâts"
-        },
-        "macros": {
-          "Label": "Macro",
-          "Tooltip": "Configurer les macros à appeler"
-        },
-        "parameters": {
-          "Label": "Paramètres",
-          "Tooltip": "Options de base pour les effets au fil du temps"
-        },
-        "rolls": {
-          "Label": "Jets",
-          "Tooltip": "Configurer les types et options de jets"
-        }
+          "damage": {
+              "Label": "Dégâts",
+              "Tooltip": "Configurer les options de jet de dégâts"
+          },
+          "macros": {
+              "Label": "Macros",
+              "Tooltip": "Configurer les macros à appeler"
+          },
+          "parameters": {
+              "Label": "Paramètres",
+              "Tooltip": "Options de base pour OverTimes"
+          },
+          "rolls": {
+              "Label": "Jets",
+              "Tooltip": "Configurer les types et options de jet"
+          }
       },
       "ModuleIds": {
-        "additionalCompendiums": "Compendiums supplémentaires",
-        "chris-premades": "Les préfabriqués de Chris",
-        "gambits-premades": "Les préfabriqués de Gambit",
-        "midi-item-showcase-community": "Communauté d'objets Midi"
+          "additionalCompendiums": "Compendiums supplémentaires",
+          "chris-premades": "Chaudron de Ressources Abondantes",
+          "gambits-premades": "Premades de Gambit",
+          "midi-item-showcase-community": "Vitrine des objets Midi Community"
       },
-      "NoPermission": "Vous n'êtes pas autorisé à modifier cela",
+      "NoPermission": "Vous n'avez pas l'autorisation de modifier ceci",
+      "Scene": {
+        "Done": "Mise à jour de la scène terminée !",
+        "Start": "Mise à jour des jetons...",
+        "UpdateAll": "Mettre à jour tous les Personnages et PNJs",
+        "UpdateCharacters": "Mettre à jour tous les Personnages",
+        "UpdateNPCs": "Mettre à jour tous les PNJs"
+      },
       "SelectedAutomation": "Automatisation sélectionnée :",
       "Status": {
-        "0": "Obsolète",
-        "1": "À jour",
-        "false": "Aucune automatisation trouvée",
-        "true": "Automatisation disponible"
+          "0": "Obsolète",
+          "1": "À jour",
+          "2": "Fonctionnalité générique appliquée",
+          "false": "Aucune automatisation trouvée",
+          "true": "Automatisation disponible"
       },
       "Tabs": {
-        "Character": {
-          "Label": "Personnage",
-          "Tooltip": "Informations sur les automatisations des personnages du joueur"
-        },
-        "Configuration": {
-          "Label": "Configuration",
-          "Tooltip": "Configurer les parties disponibles de l'automatisation"
-        },
-        "Info": {
-          "Label": "Informations",
-          "Tooltip": "Informations sur l'automatisation actuelle et disponible"
-        },
-        "NPC": {
-          "Label": "PNJ",
-          "Tooltip": "Informations sur les automatisations des personnages non-joueurs"
-        },
-        "Overtime": {
-          "Label": "Au fil du temps",
-          "Tooltip": "Interface utilisateur pour créer des effets Midi-QOL au fil du temps"
-        },
-        "Summary": {
-          "Label": "Résumé",
-          "Legend": {
-            "Label": "Articles mis à jour"
+          "Character": {
+              "Label": "Personnage",
+              "Tooltip": "Informations sur les automatisations des personnages joueurs"
           },
-          "Tooltip": "Résumé des automatisations mises à jour"
-        }
+          "Configuration": {
+              "Label": "Configuration",
+              "Tooltip": "Configurer les endroits où l'automatisation est possible"
+          },
+          "DevTools": {
+              "Aura": "Aura :",
+              "AutomationInfo": "Configurer les informations d'automatisation :",
+              "Check": "Jet (Check) :",
+              "Combat": "Combat :",
+              "Death": "Mort :",
+              "Equipment": "Équipement :",
+              "HasAnimation": "A une animation :",
+              "Identifier": "Identifiant (Identifier) :",
+              "Label": "Outils de développement",
+              "MacroInfo": "Configurer les informations de macro :",
+              "MidiActor": "Midi, Acteur :",
+              "MidiItem": "Midi, Objet :",
+              "Movement": "Mouvement :",
+              "Rest": "Repos :",
+              "Save": "Sauvegarde (Save) :",
+              "Skill": "Compétence (Skill) :",
+              "Source": "Source :",
+              "Tooltip": "Outils pour le développement, vous ne devriez pas être ici...",
+              "Version": "Version :"
+          },
+          "GenericFeatures": {
+              "Label": "Attributs génériques",
+              "Monster": {
+                  "Select": {
+                      "Label": "Sélectionner les attributs génériques du monstre :",
+                      "Tooltip": "Ajouter des attributs de monstre génériques configurables"
+                  }
+              },
+              "Tooltip": "Ajouter et configurer des attributs génériques pour cet objet"
+          },
+          "Info": {
+              "Label": "Informations",
+              "Tooltip": "Informations sur l'automatisation actuelle et disponible"
+          },
+          "NPC": {
+              "Identifier": {
+                  "Label": "Identifiant de l'acteur :",
+                  "Tooltip": "Cet identifiant sera utilisé pour trouver les automatisations pertinentes qui correspondent à son nom, au lieu d'utiliser le nom du jeton prototype de l'acteur."
+              },
+              "Label": "PNJ",
+              "Tooltip": "Informations sur les automatisations des personnages non joueurs"
+          },
+          "Overtime": {
+              "Label": "Overtime",
+              "Tooltip": "Interface utilisateur pour créer des effets Midi-QOL Over Time"
+          },
+          "Summary": {
+              "Label": "Résumé",
+              "Legend": {
+                  "Label": "Éléments mis à jour"
+              },
+              "Tooltip": "Résumé des automatisations qui ont été mises à jour"
+          }
       }
-    },
-    "Movement": {
+  },
+  "Movement": {
       "UnableToBeMoved": "La cible ne peut pas être déplacée !"
-    },
-    "Section": {
+  },
+  "Section": {
       "Rage": "Rage",
-      "SpellFeatures": "Caractéristiques des sorts"
-    },
-    "Senses": {
-      "MagicalDarkness": "Ténèbres magiques"
-    },
-    "SettingCategory": {
+      "RingOfSpellStoring": "Anneau de stockage de sorts",
+      "SpellFeatures": "Attributs des sorts"
+  },
+  "Senses": {
+      "MagicalDarkness": "Obscurité magique"
+  },
+  "SettingCategory": {
       "backup": {
-        "Hint": "Paramètres de sauvegarde des personnages.",
-        "Label": "Sauvegarde de personnage",
-        "Name": "Sauvegarde de personnage"
+          "Hint": "Paramètres pour la sauvegarde des personnages.",
+          "Label": "Sauvegarde des personnages",
+          "Name": "Sauvegarde des personnages"
       },
       "compendium": {
-        "Hint": "Paramètres des compendiums.",
-        "Label": "Options du compendium",
-        "Name": "Options du compendium"
+          "Hint": "Paramètres pour les compendiums.",
+          "Label": "Options de compendium",
+          "Name": "Options de compendium"
       },
       "development": {
-        "Hint": "Paramètres pour les développeurs.",
-        "Label": "Options de développement",
-        "Name": "Options de développement"
+          "Hint": "Paramètres pour les développeurs.",
+          "Label": "Options de développement",
+          "Name": "Options de développement"
       },
       "dialog": {
-        "Hint": "Paramètres des boîtes de dialogue.",
-        "Label": "Options de boîte de dialogue",
-        "Name": "Options de boîte de dialogue"
+          "Hint": "Paramètres pour les dialogues.",
+          "Label": "Options de dialogue",
+          "Name": "Options de dialogue"
       },
       "general": {
-        "Hint": "Paramètres des options générales.",
-        "Label": "Options générales",
-        "Name": "Options générales"
+          "Hint": "Paramètres pour les options générales.",
+          "Label": "Options générales",
+          "Name": "Options générales"
       },
       "help": {
-        "Hint": "Obtenez de l'aide avec ce module.",
-        "Label": "Aide",
-        "Name": "Aide"
+          "Hint": "Obtenez de l'aide avec ce module.",
+          "Label": "Aide",
+          "Name": "Aide"
+      },
+      "homebrew": {
+          "Hint": "Paramètres pour les options des règles maisons (homebrew).",
+          "Label": "Options homebrew",
+          "Name": "Options homebrew"
       },
       "integration": {
-        "Hint": "Paramètres des options d'intégration du module.",
-        "Label": "Intégration des modules",
-        "Name": "Intégration des modules"
+          "Hint": "Paramètres pour les options d'intégration des modules.",
+          "Label": "Intégration de module",
+          "Name": "Intégration de module"
       },
       "interface": {
-        "Hint": "Paramètres de l'interface utilisateur.",
-        "Label": "Options de l'interface utilisateur",
-        "Name": "Options de l'interface utilisateur"
+          "Hint": "Paramètres pour l'interface utilisateur.",
+          "Label": "Options de l'interface utilisateur",
+          "Name": "Options de l'interface utilisateur"
+      },
+      "manualRolls": {
+          "Hint": "Paramètres pour les jets manuels.",
+          "Label": "Jets manuels",
+          "Name": "Jets manuels"
       },
       "mechanics": {
-        "Hint": "Paramètres des mécanismes de jeu.",
-        "Label": "Options de mécanique de jeu",
-        "Name": "Options de mécanique de jeu"
+          "Hint": "Paramètres pour les mécaniques de jeu.",
+          "Label": "Options de mécanique de jeu",
+          "Name": "Options de mécanique de jeu"
       }
-    },
-    "Settings": {
+  },
+  "Settings": {
       "Permissions": {
-        "1": "Joueur",
-        "2": "Joueur de confiance",
-        "3": "Maître de jeu adjoint",
-        "4": "Maître de jeu"
+          "1": "Joueur",
+          "2": "Joueur de confiance",
+          "3": "Assistant Maître de jeu",
+          "4": "Maître de jeu"
       },
-      "SelectCompendium": "Sélectionnez un compendium :",
-      "abilitySave": {
-        "Hint": "Lorsque activé, certaines macros inviteront le joueur à fournir plus d'informations pour le jet de sauvegarde.",
-        "Name": "Jets de sauvegarde contextuels"
+      "SelectCompendium": "Sélectionner un compendium :",
+      "addActions": {
+          "0": "Désactivé",
+          "1": "Personnages liés",
+          "2": "Personnages non liés",
+          "3": "Tous les personnages",
+          "4": "PNJs liés",
+          "5": "PNJs non liés",
+          "6": "Tous les PNJs",
+          "7": "Personnages et PNJs liés",
+          "8": "Personnages et PNJs non liés",
+          "9": "Tous les personnages et PNJs",
+          "Hint": "Lorsqu'il est activé, des actions génériques seront ajoutées lorsqu'un jeton est placé.",
+          "Name": "Ajouter des actions aux jetons"
+      },
+      "addCompendiumButton": {
+        "Hint": "Lorsqu'activé, un bouton sera ajouté aux en-têtes des compendiums pour copier l'ID.",
+        "Name": "Bouton de l'ID du Compendium"
       },
       "additionalCompendiums": {
-        "Hint": "Sélectionnez des compendiums d'éléments supplémentaires à utiliser par le kit médical et ajustez leur priorité.",
-        "Name": "Compendiums supplémentaires"
+          "Hint": "Sélectionnez des compendiums d'objets supplémentaires à utiliser avec le medkit et ajustez leur priorité.",
+          "Name": "Compendiums supplémentaires"
       },
       "applyConditionChanges": {
-        "Hint": "Lorsque activé, les conditions se verront automatiquement appliquer des effets Midi-QOL.",
-        "Name": "Appliquer les effets de condition Midi-QOL"
+          "Hint": "Lorsqu'il est activé, les conditions auront automatiquement des effets Midi-QOL appliqués.",
+          "Name": "Appliquer les effets de condition Midi-QOL"
       },
       "automatedAnimationSounds": {
-        "Hint": "Lorsque activé, les éléments pour lesquels les animations automatisées sont désactivées joueront toujours les sons configurés dans le menu Reconnaissance automatique.",
-        "Name": "Animations automatisées : jouer des sons"
+          "Hint": "Lorsqu'il est activé, les objets ayant des animations automatisées désactivées joueront tout de même les sons configurés dans le menu de reconnaissance automatique.",
+          "Name": "Animations automatisées : Jouer des sons"
       },
       "babonusOverlappingEffects": {
-        "Hint": "Lorsque activé, les bonus d'aura Build A Bonus respecteront les effets de sorts qui se chevauchent et les règles de combinaison des effets de jeu.",
-        "Name": "Build A Bonus : effets de sorts superposés"
+          "Hint": "Lorsqu'il est activé, les bonus d'aura de Build A Bonus respecteront l'effet de sort qui se superpose et les règles de combinaison des effets de jeu.",
+          "Name": "Build A Bonus : Effets de sorts chevauchants"
       },
       "backupCompendium": {
-        "Hint": "Sélectionnez votre compendium de sauvegarde d'acteur.",
-        "Name": "Compendium de sauvegarde des acteurs"
+          "Hint": "Sélectionnez votre compendium de sauvegarde d'acteur.",
+          "Name": "Compendium de sauvegarde d'acteur"
       },
       "backupFrequency": {
-        "Hint": "À quelle fréquence les sauvegardes automatiques doivent être effectuées.",
-        "Name": "Fréquence de sauvegarde"
+          "Hint": "À quelle fréquence les sauvegardes automatiques doivent être effectuées.",
+          "Name": "Fréquence de sauvegarde"
       },
       "backupMake": {
-        "Hint": "Faites une sauvegarde dès maintenant en utilisant le compendium spécifié.",
-        "Name": "Faire une sauvegarde"
+          "Hint": "Faites une sauvegarde maintenant en utilisant le compendium spécifié.",
+          "Name": "Faire une sauvegarde"
       },
       "backupRetention": {
-        "Hint": "Combien de temps les caractères de sauvegarde sont conservés.",
-        "Name": "Rétention des sauvegardes"
+          "Hint": "Combien de temps les personnages sauvegardés sont conservés.",
+          "Name": "Conservation des sauvegardes"
       },
       "backupTime": {
-        "Hint": "Dernière fois qu'une sauvegarde a été effectuée (en millisecondes). ",
-        "Name": "Heure de la dernière sauvegarde"
+          "Hint": "Dernière fois qu'une sauvegarde a été effectuée (en millisecondes). Définie automatiquement.",
+          "Name": "Dernière heure de sauvegarde"
       },
       "backups": {
-        "Hint": "Lorsque activé, les personnages appartenant aux joueurs seront automatiquement sauvegardés dans le compendium spécifié.",
-        "Name": "Sauvegardes automatiques des personnages"
+          "Hint": "Lorsqu'il est activé, les personnages possédés par les joueurs seront automatiquement sauvegardés dans le compendium spécifié.",
+          "Name": "Sauvegardes automatiques de personnages"
       },
-      "chatCardTweak": {
-        "Hint": "Lorsque activé, seuls les coups critiques et les échecs auront des jets d'attaque colorés. ",
-        "Name": "Ajustement de la carte de discussion"
+      "bg3WeaponActionConfig": {
+          "Hint": "Configurez les actions d'arme de Baldur's Gate 3.",
+          "Name": "Configurer les actions d'arme de Baldur's Gate 3"
+      },
+      "bg3WeaponActionUses": {
+          "Hint": "Utilisations maximales pour un court repos où l'action d'une arme peut être utilisée.",
+          "Name": "Utilisations d'action d'arme de Baldur's Gate 3"
+      },
+      "bg3WeaponActionsEnabled": {
+          "Hint": "Lorsqu'il est activé, les actions d'arme de style Baldur's Gate 3 seront ajoutées aux acteurs lorsque des armes sont équipées.",
+          "Name": "Actions d'arme de Baldur's Gate 3"
       },
       "checkForUpdates": {
-        "Hint": "Lorsque activé, le module vérifiera les mises à jour une fois par jour lorsqu'un maître de jeu se joindra.",
-        "Name": "Vérifier les mises à jour"
+          "Hint": "Lorsqu'il est activé, le module vérifiera les mises à jour une fois par jour lorsqu'un MJ se connecte.",
+          "Name": "Vérifier les mises à jour"
+      },
+      "classSpellList": {
+          "Hint": "Journal avec toutes les listes de sorts de classe configurées.",
+          "Name": "Journal des listes de sorts de classe"
+      },
+      "cleave": {
+          "1": "Activé (Peu importe les PV)",
+          "2": "Activé (Indemne uniquement)",
+          "Hint": "Active la mécanique 'Trancher les créatures' du Manuel du Maître de jeu",
+          "Name": "Trancher les créatures (DMG)"
       },
       "colorizeAutomatedAnimations": {
-        "Hint": "Lorsque activé, l'icône de la barre de titre des animations automatisées sera recolorée en fonction de l'état de la configuration.",
-        "Name": "Animations automatisées : coloriser l'icône de la barre de titre"
+          "Hint": "Lorsqu'il est activé, l'icône de la barre de titre des animations automatisées sera recolorée en fonction de l'état de configuration.",
+          "Name": "Animations automatisées : Coloriser l'icône de la barre de titre"
       },
       "colorizeBuildABonus": {
-        "Hint": "Lorsque activé, l'icône de la barre de titre Build A Bonus sera recolorée si un bonus est sur l'objet ou l'effet.",
-        "Name": "Build A Bonus : colorisez l'icône de la barre de titre"
+          "Hint": "Lorsqu'il est activé, l'icône de la barre de titre de Build A Bonus sera recolorée si un bonus est sur l'objet ou l'effet.",
+          "Name": "Build A Bonus : Coloriser l'icône de la barre de titre"
       },
       "colorizeDAE": {
-        "Hint": "Lorsqu'elle est activée, l'icône de la barre de titre DAE sera recolorée si un effet est sur l'élément.",
-        "Name": "DAE : coloriser l'icône de la barre de titre"
+          "Hint": "Lorsqu'il est activé, l'icône de la barre de titre DAE sera recolorée si un effet est sur l'objet.",
+          "Name": "Effets actifs dynamiques : Coloriser l'icône de la barre de titre"
       },
       "conditionResistanceAndVulnerability": {
-        "Hint": "Permet l’automatisation de la résistance aux conditions et des vulnérabilités.",
-        "Name": "Résistance aux conditions et vulnérabilité"
+          "Hint": "Active l'automatisation de la résistance et de la vulnérabilité aux conditions.",
+          "Name": "Résistance et vulnérabilité aux conditions"
+      },
+      "criticalCompendium": {
+          "Hint": "Sélectionnez votre compendium critique.",
+          "Name": "Compendium critique"
+      },
+      "criticalFumbleMode": {
+          "1": "Aléatoire",
+          "2": "Sélectionné",
+          "3": "Aléatoire - Critique uniquement",
+          "4": "Sélectionné - Critique uniquement",
+          "5": "Aléatoire - Échec uniquement",
+          "6": "Sélectionné - Échec uniquement",
+          "Hint": "Lorsqu'il est activé, les jets d'attaque critiques ou d'échec lanceront également un objet des compendiums sélectionnés.",
+          "Name": "Mode critique et échec"
       },
       "devTools": {
-        "Hint": "Activer l'affichage des outils de développement.",
-        "Name": "Outils de développement d'affichage"
+          "Hint": "Activer pour afficher les outils de développement.",
+          "Name": "Afficher les outils de développement"
       },
       "diceSoNice": {
-        "Hint": "Lorsque activé, les animations des jets de dégâts de Dice So Nice seront retardées jusqu'à ce que toutes les macros de jets de dégâts soient terminées.",
-        "Name": "Dice So Nice : jets de dégâts"
+          "Hint": "Lorsque activé, les animations de lancer de dés de Dice So Nice seront retardées jusqu'à ce que tous les macros de lancer de dégâts soient terminés.",
+          "Name": "Dice So Nice : Lancers de Dégâts"
       },
       "disableNonConditionStatusEffects": {
-        "Hint": "Lorsque activé, tous les principaux effets de statut sans condition seront supprimés.",
-        "Name": "Désactiver les effets de statut sans condition"
+          "Hint": "Lorsque activé, tous les effets d'état non liés aux conditions seront supprimés.",
+          "Name": "Désactiver les effets d'état non conditionnels"
       },
       "disableSpecialEffects": {
-        "Hint": "Lorsque activé, les conditions aveugles et invisibles n'appliquent pas d'effets visuels.",
-        "Name": "Désactiver les effets spéciaux"
+          "Hint": "Lorsque activé, les conditions d'aveuglement et d'invisibilité n'appliqueront pas d'effets visuels.",
+          "Name": "Désactiver les effets spéciaux"
       },
       "displayNestedConditions": {
-        "Hint": "Lorsque activé, les effets de conditions imbriqués seront visibles. ",
-        "Name": "Afficher les conditions imbriquées"
+          "Hint": "Lorsque activé, les effets de conditions imbriquées seront visibles. Par exemple : Paralysé ajoutera également Incapacité de manière visible.",
+          "Name": "Afficher les conditions imbriquées"
       },
       "effectDescriptionNPC": {
-        "Hint": "Lorsque activé, le paramètre Description automatique des effets ne s'appliquera pas aux effets créés par les PNJ.",
-        "Name": "Masquer les descriptions des effets des PNJ"
+          "Hint": "Lorsque activé, le paramètre de description d'effet automatique ne s'appliquera pas aux effets créés pour les PNJ.",
+          "Name": "Masquer les descriptions d'effet des PNJ"
       },
       "effectDescriptions": {
-        "Hint": "Lorsque activé, les effets sans description seront automatiquement renseignés à partir de l'élément d'origine.",
-        "Name": "Descriptions des effets automatiques"
+          "Hint": "Lorsque activé, les effets sans descriptions seront automatiquement remplis à partir de l'objet d'origine.",
+          "Name": "Descriptions d'effet automatiques"
       },
       "effectInterface": {
-        "Hint": "Ajoute un onglet de barre latérale pour les effets actifs. ",
-        "Name": "Activer l'interface d'effet"
+          "Hint": "Ajoute un onglet latéral pour les effets actifs. Un rechargement de la page est nécessaire après activation.",
+          "Name": "Activer l'interface des effets"
       },
       "epicRolls": {
-        "Hint": "Lorsque activé, certaines macros utiliseront Epic Rolls lorsque possible.",
-        "Name": "Epic Rolls : activé"
+          "Hint": "Lorsque activé, certaines macros utiliseront les lancers épiques lorsque possible.",
+          "Name": "Lancers épiques : Activé"
+      },
+      "explodingHeals": {
+          "Hint": "Lorsque activé, toutes les formules de lancer de guérison seront automatiquement ajustées pour exploser.",
+          "Name": "Guérisons explosives"
+      },
+      "exportForSharing": {
+        "Hint": "Lorsqu'activé, un bouton d'exportation alternatif sera ajouté au menu contextuel des objets et acteurs pour exporter un objet sans les descriptions. Un rechargement est nécessaire après activation.",
+        "Name": "Exporter pour Partager"
       },
       "firearmSupport": {
-        "Hint": "Lorsque activé, l'automatisation des armes à feu sera disponible (de la classe Gunslinger du rôle critique).",
-        "Name": "Soutien aux armes à feu"
+          "Hint": "Lorsque activé, l'automatisation des armes à feu sera disponible (de la classe Gunslinger de Critical Role).",
+          "Name": "Support des armes à feu"
+      },
+      "fumbleCompendium": {
+          "Hint": "Sélectionnez votre compendium d'échec (fumble).",
+          "Name": "Compendium d'échec (fumble)"
       },
       "gambitPremades": {
-        "1": "Pas de homebrew ou de tiers",
-        "2": "Pas de homebrew",
-        "3": "Pas de tiers",
-        "4": "Inclure Homebrew et tiers",
-        "Hint": "Quels compendiums doivent être inclus dans la recherche de compendium supplémentaire pour les préfabriqués de Gambit.",
-        "Name": "Les préfabriqués de Gambit : options"
+          "1": "Pas de règles maisons (Homebrew) ni de tiers",
+          "2": "Pas de règles maisons (Homebrew)",
+          "3": "Pas de tiers",
+          "4": "Inclure les règles maisons (Homebrew) et tiers",
+          "Hint": "Quels compendiums devraient être inclus dans la recherche de compendium supplémentaire pour les prémades de Gambit.",
+          "Name": "Gambit's Premades : Options"
       },
       "gmID": {
-        "Hint": "L'ID Gamemaster utilisé pour les sockets. ",
-        "Name": "Identifiant utilisateur du maître de jeu"
+          "Hint": "L'ID du maître de jeu utilisé pour les sockets. Défini automatiquement.",
+          "Name": "ID Utilisateur du Maître de Jeu"
       },
       "hiddenCompendiumFolders": {
-        "Hint": "Les dossiers du compendium sélectionnés seront masqués.",
-        "Name": "Dossiers de compendium cachés"
+          "Hint": "Les dossiers de compendium sélectionnés seront cachés.",
+          "Name": "Dossiers de Compendium Cachés"
       },
       "hiddenCompendiums": {
-        "Hint": "Les compendiums sélectionnés seront masqués.",
-        "Name": "Compendiums cachés"
+          "Hint": "Les compendiums sélectionnés seront cachés.",
+          "Name": "Compendiums Cachés"
       },
       "hideNames": {
-        "Hint": "Les noms des ennemis doivent-ils être masqués dans les boîtes de dialogue.",
-        "Name": "Masquer les noms"
+          "Hint": "Les noms des ennemis doivent-ils être cachés dans les dialogues.",
+          "Name": "Cacher les noms"
+      },
+      "itemCompendium": {
+          "Hint": "Compendium d'objets utilisé pour certaines automatisations. Devrait idéalement pointer vers votre compendium d'objets D&D Beyond.",
+          "Name": "Compendium d'Objets"
+      },
+      "itemContext": {
+        "Hint": "Lorsqu'activé, le menu contextuel des objets aura des options supplémentaires (Envoyer, Condenser et Diviser).",
+        "Name": "Options Contextuelles d'Objet Supplémentaires"
       },
       "lastUpdateCheck": {
-        "Hint": "À quand remonte la dernière vérification de mise à jour (en millisecondes). ",
-        "Name": "Vérification de la dernière mise à jour"
+          "Hint": "Quand la dernière vérification des mises à jour a-t-elle été effectuée (en millisecondes). Défini automatiquement.",
+          "Name": "Dernière Vérification de Mise à Jour"
       },
       "macroCompendium": {
-        "Hint": "Compendium de macros utilisé pour écraser ou ajouter des macros supplémentaires à l'API CPR. ",
-        "Name": "Compendium de macros"
+          "Hint": "Compendium de macros utilisé pour remplacer ou ajouter des macros supplémentaires à l'API CPR. Veuillez consulter la documentation sur son utilisation. (En cours)",
+          "Name": "Compendium de Macros"
       },
       "macroInterface": {
-        "Hint": "Ajoute un onglet de barre latérale pour les macros. ",
-        "Name": "Activer l'interface des macros"
+          "Hint": "Ajoute un onglet latéral pour les macros. Un rechargement de la page est nécessaire après activation.",
+          "Name": "Activer l'interface des macros"
       },
-      "manualRollsPreferences": {
-        "Hint": "Configurer les options pour les jets manuels",
-        "Label": "Préférences des jets manuels",
-        "Name": "Préférences des jets manuels"
+      "makeGM": {
+          "Hint": "Devenir le maître de jeu principal.",
+          "Name": "Devenir le Maître de Jeu"
+      },
+      "manualRollsEnabled": {
+          "Hint": "Activer le 'Roll Resolver' de CPR pour les lancers non terminés.",
+          "Name": "Lancers Manuels"
+      },
+      "manualRollsGMFulfils": {
+          "Hint": "Lorsque activé, le maître de jeu résout tous les lancers.",
+          "Name": "Le Maître de Jeu Résout les Lancers"
+      },
+      "manualRollsInclusion": {
+          "0": "Aucun - Pas de Lancers Manuels",
+          "1": "Tous - Invite (prompt) pour Tout Acteur",
+          "2": "Tous les Personnages Uniquement",
+          "3": "Tous les Liés Uniquement",
+          "4": "Uniquement les Liés Possédés par des Joueurs",
+          "5": "Tous les Possédés par des Joueurs et Contrôlés",
+          "Hint": "Pour quels lancers d'acteurs faut-il une invite (prompt).",
+          "Name": "Inclusion des Lancers Manuels"
+      },
+      "manualRollsPromptNoData": {
+          "Hint": "Invite (prompt) pour les lancers sans données, probablement utilisés dans les macros.",
+          "Name": "Invite(prompt) sur Aucune Donnée"
+      },
+      "manualRollsPromptOnMiss": {
+          "Hint": "Invite (prompt) pour les lancers de dégâts, même pour les attaques ratées.",
+          "Name": "Invite (prompt) sur Échec"
+      },
+      "manualRollsUsers": {
+          "Hint": "Configurer quels utilisateurs utilisent les Lancers Manuels.",
+          "Name": "Utilisateurs des Lancers Manuels"
       },
       "miscPremades": {
-        "1": "Pas de homebrew ou d'UA",
-        "2": "Aucun UA",
-        "3": "Pas de homebrew",
-        "4": "Inclure les UA et homebrew",
-        "Hint": "Quels compendiums doivent être inclus dans la recherche de compendium supplémentaire pour Midi Item Showcase - Community.",
-        "Name": "Midi Item Showcase - Community : options"
+          "1": "Pas de règles maisons (Homebrew) ni d'Unearthed Arcana",
+          "2": "Pas d'Unearthed Arcana",
+          "3": "Pas de règles maisons (Homebrew)",
+          "4": "Inclure règles maisons (Homebrew) et Unearthed Arcana",
+          "Hint": "Quels compendiums devraient être inclus dans la recherche de compendium supplémentaire pour Midi Item Showcase - Communauté.",
+          "Name": "Midi Item Showcase : Options"
       },
       "monsterCompendium": {
-        "Hint": "Compendium de monstres utilisé pour certaines automatisations. ",
-        "Name": "Compendium des monstres"
+          "Hint": "Compendium de monstres utilisé pour certaines automatisations. Devrait idéalement pointer vers votre compendium de monstres D&D Beyond.",
+          "Name": "Compendium de Monstres"
+      },
+      "movementPerformance": {
+          "0": "Bas",
+          "1": "Moyen",
+          "2": "Élevé",
+          "3": "Ultra",
+          "Hint": "Mode de précision pour les événements de mouvement. Les modes de précision plus élevés auront un impact sur les performances, surtout sur du matériel moins puissant.\r\n• Ultra : Précision totale.\r\n• Élevé : Ignore le calcul de couverture lors de l'obtention de la distance.\r\n• Moyen : Aussi élevé, et le mouvement par waypoint est ignoré, sauf pour le segment final.\r\n• Bas : Comme Moyen, et les murs sont ignorés dans les calculs de distance.",
+          "Name": "Précision des Événements de Mouvement"
       },
       "permissionsAutomateItem": {
-        "Hint": "Autorisation d'utilisateur le plus bas pouvant sélectionner et appliquer différentes automatisations dans le Medkit :",
-        "Name": "Medkit Appliquer les autorisations d'automatisation"
+          "Hint": "Classement de l'utilisateur le plus bas qui peut sélectionner et appliquer différentes automatisations dans le Medkit :",
+          "Name": "Autorisations d'Application d'Automatisation du Medkit"
       },
       "permissionsConfigureHomebrew": {
-        "Hint": "Autorisation d'utilisateur le plus bas pouvant configurer les personnalisations homebrew dans le Medkit :",
-        "Name": "Medkit configurer les autorisations Homebrew"
+          "Hint": "Classement de l'utilisateur le plus bas qui peut configurer des personnalisations homebrew dans le Medkit :",
+          "Name": "Autorisations de Configuration Homebrew du Medkit"
       },
       "permissionsConfigureItem": {
-        "Hint": "Autorisation d'utilisateur le plus bas pouvant configurer des automatisations dans le Medkit :",
-        "Name": "Autorisations de configuration du Medkit"
+          "Hint": "Classement de l'utilisateur le plus bas qui peut configurer les automatisations dans le Medkit :",
+          "Name": "Autorisations de Configuration d'Objet du Medkit"
       },
       "permissionsUpdateItem": {
-        "Hint": "Autorisation d'utilisateur le plus bas pouvant mettre à jour l'automatisation actuellement sélectionnée dans le Medkit :",
-        "Name": "Autorisations d’automatisation des mises à jour Medkit"
+          "Hint": "Classement de l'utilisateur le plus bas qui peut mettre à jour l'automatisation actuellement sélectionnée dans le Medkit :",
+          "Name": "Autorisations de Mise à Jour d'Automatisation du Medkit"
       },
       "playerSelectsConjures": {
-        "Hint": "Lors du lancement des sorts « Invoquer X », le joueur (et non le MJ) peut sélectionner les créatures à invoquer.",
-        "Name": "Le joueur sélectionne les invocations"
+          "Hint": "Lors du lancement de sorts \"Conjure X\", le joueur (et non le MJ) peut sélectionner les créatures à convoquer.",
+          "Name": "Le Joueur Sélectionne les Conjurations"
       },
       "replaceStatusEffectIcons": {
-        "Hint": "Lorsque activé, les icônes d'état seront remplacées.",
-        "Name": "Remplacer les icônes d'état"
+          "Hint": "Lorsqu'il est activé, les icônes de statut seront remplacées.",
+          "Name": "Remplacer les Icônes de Statut"
+      },
+      "seenTour": {
+          "Hint": "L'invite (prompt) de la visite guidée a-t-elle été consulté ? Défini automatiquement.",
+          "Name": "Invite (Prompt) de la Visite"
       },
       "selectTool": {
-        "Hint": "Lorsque activé, l'outil de sélection est disponible à plusieurs endroits. ",
-        "Name": "Sélectionnez un outil partout"
-      },
-      "skillCheck": {
-        "Hint": "Lorsque activé, certaines macros inviteront le joueur à fournir plus d'informations pour le contrôle de compétence.",
-        "Name": "Vérifications de compétences contextuelles"
+          "Hint": "Lorsqu'il est activé, l'outil de sélection est disponible dans plus d'endroits. Un rechargement de la page est requis après activation.",
+          "Name": "Outil de Sélection Partout"
       },
       "spellCompendium": {
-        "Hint": "Compendium de sorts utilisé pour certaines automatisations. ",
-        "Name": "Compendium de sorts"
+          "Hint": "Compendium de sorts utilisé pour certaines automatisations. Devrait idéalement pointer vers votre compendium de sorts D&D Beyond.",
+          "Name": "Compendium de Sorts"
       },
       "spotlightOmnisearchSummons": {
-        "Hint": "Lorsqu'il est activé, vous pouvez utiliser Spotlight Omnisearch pour invoquer des créatures de votre compendium de monstres. ",
-        "Name": "Spotlight Omnisearch : invocation"
+          "Hint": "Lorsqu'il est activé, vous pouvez utiliser Spotlight Omnisearch pour invoquer des créatures à partir de votre compendium de monstres. Un rechargement de la page est requis après activation.",
+          "Name": "Spotlight Omnisearch : Invocations"
       },
       "statusEffectIcons": {
-        "Hint": "Configurez les images des icônes d'état.",
-        "Name": "Configurer les images d'icônes d'état"
+          "Hint": "Configurer les images des icônes de statut.",
+          "Name": "Configurer les Images des Icônes de Statut"
       },
       "syncActorSizeToTokens": {
-        "Hint": "Lorsque activé, les effets qui modifient la taille d'un acteur modifieront également la taille du jeton sur le canevas.",
-        "Name": "Acteur de synchronisation et taille du jeton"
+          "Hint": "Lorsqu'il est activé, les effets qui changent la taille d'un acteur changeront également la taille du jeton sur le canevas.",
+          "Name": "Synchroniser la Taille des Acteurs et des Jetons"
       },
       "temporaryEffectHud": {
-        "Hint": "Ajoute des effets temporaires à l'interface du jeton d'effet de statut.",
-        "Name": "Interface d'effets temporaires"
+          "Hint": "Ajoute des effets temporaires au HUD de l'icône d'effet de statut.",
+          "Name": "HUD des Effets Temporaires"
+      },
+      "thirdParty": {
+          "Hint": "Lorsqu'il est activé, le Medkit inclura également des automatisations Homebrew.",
+          "Name": "Contenu de 3ème Partie"
       },
       "updateCompanionInitiative": {
-        "Hint": "Définit automatiquement l'initiative du compagnon juste après celle du joueur lors du lancer.",
-        "Name": "Mettre à jour l'initiative du compagnon"
+          "Hint": "Définit automatiquement l'initiative du compagnon juste après celle du joueur lorsqu'elle est lancée.",
+          "Name": "Mettre à Jour l'Initiative du Compagnon"
       },
       "updateSummonInitiative": {
-        "Hint": "Définit automatiquement l'initiative de l'invocation juste après l'initiative du joueur lors du lancer.",
-        "Name": "Mettre à jour l'initiative d'invocation"
+          "Hint": "Définit automatiquement l'initiative des invocations juste après celle du joueur lorsqu'elle est lancée.",
+          "Name": "Mettre à Jour l'Initiative de l'Invocation"
       },
       "useLocalCompendiums": {
-        "Hint": "Utilisez les compendiums du monde local au lieu des compendiums de modules pour la recherche d'articles.",
-        "Name": "Utiliser des compendiums locaux"
+          "Hint": "Utiliser les compendiums locaux du monde au lieu des compendiums de module pour la recherche d'objets.",
+          "Name": "Utiliser les Compendiums Locaux"
       },
       "vaeButtons": {
-        "Hint": "Lorsque activé, certaines macros ajouteront des boutons à l'interface VAE.",
-        "Name": "Effets visuels actifs : boutons"
+          "Hint": "Lorsqu'il est activé, certaines macros ajouteront des boutons à l'interface VAE.",
+          "Name": "Effets Actifs Visuels : Boutons"
       }
-    },
-    "SkillCheck": {
-      "Title": "Vérification des compétences"
-    },
-    "SkipDeadAndUnconscious": "Sauter mort et inconscient ?",
-    "SneakAttack": {
-      "Auto": "Utiliser automatiquement :"
-    },
-    "SpotlightOmnisearch": {
-      "Actor": "Le jeton sélectionné n’est associé à aucun acteur !",
-      "Description": "Invoquez un {name} en utilisant les préfabriqués de Chris.",
+  },
+  "SkillCheck": {
+      "Title": "Vérification de Compétence"
+  },
+  "SkipDeadAndUnconscious": "Ignorer les Morts & Inconscients ?",
+  "SneakAttack": {
+      "Auto": "Utiliser Automatiquement :"
+  },
+  "Spells": {
+      "BeaconOfHope": "Lueur d'Espoir"
+  },
+  "SpotlightOmnisearch": {
+      "Actor": "Le jeton sélectionné n'est associé à aucun acteur !",
+      "Description": "Invoquer un {name} en utilisant le Chaudron de Ressources Abondantes.",
       "Time": {
-        "Day": "1 jour",
-        "Hour": "1 heure",
-        "Minute": "1 minute"
+          "Day": "1 Jour",
+          "Hour": "1 Heure",
+          "Minute": "1 Minute"
       },
       "Token": "Veuillez sélectionner un jeton avant d'utiliser cette fonctionnalité !"
-    },
-    "Summons": {
+  },
+  "Summons": {
       "ActorName": "{option} Nom de l'acteur",
       "CRSelection": "{numSummons} {typePl} de CR {cr} ou inférieur",
       "CreatureNames": {
-        "AberrantSpirit": "Esprit aberrant",
-        "AberrantSpiritBeholderkin": "Esprit aberrant (Observateur)",
-        "AberrantSpiritSlaad": "Esprit aberrant (Slaad)",
-        "AberrantSpiritStarSpawn": "Esprit aberrant (Star Spawn)",
-        "BestialSpirit": "Esprit bestial",
-        "BestialSpiritAir": "Esprit bestial (Air)",
-        "BestialSpiritLand": "Esprit bestial (Terre)",
-        "BestialSpiritWater": "Esprit bestial (Eau)",
-        "BigbysHand": "Main de Bigby",
-        "CelestialSpirit": "Esprit céleste",
-        "CelestialSpiritAvenger": "Esprit céleste (Avenger)",
-        "CelestialSpiritDefender": "Esprit céleste (défenseur)",
-        "ConstructSpirit": "Esprit de construction",
-        "ConstructSpiritClay": "Esprit de construction (argile)",
-        "ConstructSpiritMetal": "Esprit de construction (métal)",
-        "ConstructSpiritStone": "Esprit de construction (pierre)",
-        "DancingItem": "Objet de danse",
-        "DraconicSpirit": "Esprit draconique",
-        "DraconicSpiritChromatic": "Esprit Draconique (Chromatique)",
-        "DraconicSpiritGem": "Esprit draconique (gemme)",
-        "DraconicSpiritMetallic": "Esprit draconique (métallique)",
-        "DreadLord": "Seigneur de l'effroi",
-        "EarthenHand": "Main de terre",
-        "ElementalSpirit": "Esprit élémentaire",
-        "ElementalSpiritAir": "Esprit élémentaire (Air)",
-        "ElementalSpiritEarth": "Esprit élémentaire (Terre)",
-        "ElementalSpiritFire": "Esprit élémentaire (Feu)",
-        "ElementalSpiritWater": "Esprit élémentaire (eau)",
-        "Familiar": "Familier",
-        "FeySpirit": "Esprit féerique",
-        "FeySpiritFuming": "Esprit féerique (Fumant)",
-        "FeySpiritMirthful": "Esprit féerique (joyeux)",
-        "FeySpiritTricksy": "Esprit féerique (délicat)",
-        "FiendishSpirit": "Esprit diabolique",
-        "FiendishSpiritDemon": "Esprit diabolique (démon)",
-        "FiendishSpiritDevil": "Esprit diabolique (diable)",
-        "FiendishSpiritYugoloth": "Esprit diabolique (Yugoloth)",
-        "Flumph": "Flumph",
-        "GuardianOfFaith": "Gardien de la foi",
-        "HealingSpirit": "Esprit de guérison",
-        "HomunculusServant": "Serviteur Homunculus",
-        "Pixie": "Lutin",
-        "ShadowSpirit": "Esprit de l'Ombre",
-        "ShadowSpiritDespair": "Esprit de l'Ombre (Désespoir)",
-        "ShadowSpiritFear": "Esprit de l'Ombre (Peur)",
-        "ShadowSpiritFury": "Esprit de l'Ombre (Fureur)",
-        "Skeleton": "Squelette",
-        "SpiritualWeapon": "Arme spirituelle",
-        "Steed": "Destrier",
-        "SteelDefender": "Défenseur d'acier",
-        "UndeadSpirit": "Esprit mort-vivant",
-        "UndeadSpiritGhostly": "Esprit mort-vivant (fantomatique)",
-        "UndeadSpiritPutrid": "Esprit mort-vivant (putride)",
-        "UndeadSpiritSkeletal": "Esprit mort-vivant (squelettique)",
-        "WildfireSpirit": "Esprit de feu de forêt",
-        "Zombie": "Zombie"
+          "AberrantSpirit": "Esprit Aberrant",
+          "AberrantSpiritBeholderkin": "Esprit Aberrant (Tyrannœillidé)",
+          "AberrantSpiritSlaad": "Esprit Aberrant (Slaad)",
+          "AberrantSpiritStarSpawn": "Esprit Aberrant (Rejeton Stellaire)",
+          "AirElemental": "Élémentaire de l'Air",
+          "BeastOfTheLand": "Bête de la Terre",
+          "BeastOfTheSea": "Bête de la Mer",
+          "BeastOfTheSky": "Bête du Ciel",
+          "BestialSpirit": "Esprit Bestial",
+          "BestialSpiritAir": "Esprit Bestial (Air)",
+          "BestialSpiritLand": "Esprit Bestial (Terre)",
+          "BestialSpiritWater": "Esprit Bestial (Eau)",
+          "BigbysHand": "Main de Bigby",
+          "CelestialSpirit": "Esprit Céleste",
+          "CelestialSpiritAvenger": "Esprit Céleste (Vengeur)",
+          "CelestialSpiritDefender": "Esprit Céleste (Protecteur)",
+          "ConstructSpirit": "Esprit Artificiel",
+          "ConstructSpiritClay": "Esprit Artificiel (Argile)",
+          "ConstructSpiritMetal": "Esprit Artificiel (Métal)",
+          "ConstructSpiritStone": "Esprit Artificiel (Pierre)",
+          "DancingGreatsword": "Grande Épée Dansante",
+          "DancingItem": "Objet Dansant",
+          "DancingLongsword": "Épée Longue Dansante",
+          "DancingRapier": "Rapière Dansante",
+          "DancingScimitar": "Cimeterre Dansant",
+          "DancingShortsword": "Épée Courte Dansante",
+          "DraconicSpirit": "Esprit Draconique",
+          "DraconicSpiritChromatic": "Esprit Draconique (Chromatique)",
+          "DraconicSpiritGem": "Esprit Draconique (Gemme)",
+          "DraconicSpiritMetallic": "Esprit Draconique (Métallique)",
+          "DrakeCompanionAcid": "Compagnon Drake : Acide",
+          "DrakeCompanionCold": "Compagnon Drake : Froid",
+          "DrakeCompanionFire": "Compagnon Drake : Feu",
+          "DrakeCompanionLightning": "Compagnon Drake : Foudre",
+          "DrakeCompanionPoison": "Compagnon Drake : Poison",
+          "DreadLord": "Seigneur de l'Effroi",
+          "EarthElemental": "Élémentaire de la Terre",
+          "EarthenHand": "Main Terrestre",
+          "Echo": "Écho",
+          "ElementalSpirit": "Esprit Élémentaire",
+          "ElementalSpiritAir": "Esprit Élémentaire (Air)",
+          "ElementalSpiritEarth": "Esprit Élémentaire (Terre)",
+          "ElementalSpiritFire": "Esprit Élémentaire (Feu)",
+          "ElementalSpiritWater": "Esprit Élémentaire (Eau)",
+          "Familiar": "Familié",
+          "FeySpirit": "Esprit Féérique",
+          "FeySpiritFuming": "Esprit Féérique (Furibonde)",
+          "FeySpiritMirthful": "Esprit Féérique (Rieuse)",
+          "FeySpiritTricksy": "Esprit Féérique (Espiègle)",
+          "FiendishSpirit": "Esprit Fiélon",
+          "FiendishSpiritDemon": "Esprit Fiélon (Démon)",
+          "FiendishSpiritDevil": "Esprit Fiélon (Diable)",
+          "FiendishSpiritYugoloth": "Esprit Fiélon (Yugoloth)",
+          "FireElemental": "Élémentaire de Feu",
+          "Flumph": "Flumph",
+          "ForceSculpture": "Sculpture de Force",
+          "FormOfDread": "Forme d'Effroi'",
+          "GuardianOfFaith": "Gardien de la Foi",
+          "HealingSpirit": "Esprit de Guérison",
+          "HomunculusServant": "Serviteur Homoncule",
+          "HybridTransformation": "Transformation Hybride",
+          "ManifestMind": "Esprit Manifeste",
+          "Pixie": "Pixie",
+          "ShadowSpirit": "Esprit Ombreux",
+          "ShadowSpiritDespair": "Esprit Ombreux (Désespoir)",
+          "ShadowSpiritFear": "Esprit Ombreux (Peur)",
+          "ShadowSpiritFury": "Esprit Ombreux (Fureur)",
+          "Shifter": "Changeur",
+          "Skeleton": "Squelette",
+          "SpiritualWeapon": "Arme Spirituelle",
+          "Steed": "Monture",
+          "SteelDefender": "Défenseur d'Acier",
+          "TentacleOfTheDeeps": "Tentacule Abyssal",
+          "UndeadSpirit": "Esprit Mort-Vivant",
+          "UndeadSpiritGhostly": "Esprit Mort-Vivant (Fantomatique)",
+          "UndeadSpiritPutrid": "Esprit Mort-Vivant (Putride)",
+          "UndeadSpiritSkeletal": "Esprit Mort-Vivant (Squelettique)",
+          "WaterElemental": "Élémentaire d'Eau",
+          "WildfireSpirit": "Esprit des Fournaises",
+          "Zombie": "Zombie"
       },
-      "CustomAvatar": "{option} Avatar personnalisé",
-      "CustomName": "{option} Nom personnalisé",
-      "CustomToken": "{option} Jeton personnalisé",
-      "DismissHP": "L'invocation a atteint 0 point de vie ! ",
-      "DismissSummon": "Dissiper l'invocation",
-      "FamiliarDefault": "{option} Familier",
-      "Folder": "Nom du dossier",
-      "HowMany": "Combien?",
+      "CustomAvatar": "{option} Avatar Personnalisé",
+      "CustomName": "{option} Nom Personnalisé",
+      "CustomToken": "{option} Jeton Personnalisé",
+      "DismissHP": "L'invocation a atteint 0 point de vie ! Faut-il la renvoyer ?",
+      "DismissSummon": "Renvoyer l'invocation",
+      "FamiliarDefault": "{option} Familié",
+      "Folder": "Nom du Dossier",
+      "HowMany": "Combien ?",
       "NoMatching": "Aucun acteur correspondant trouvé dans le compendium spécifié !",
-      "SelectSummon": "Sélectionnez Invoquer",
-      "SelectSummonType": "Sélectionnez le type d'invocation",
-      "SelectSummons": "Sélectionnez les invocations (Max : {totalSummons})",
-      "SummonedCreature": "Créature invoquée"
-    },
-    "Template": {
-      "AttackerCantSeeTarget": "L'attaquant ne peut pas voir la cible",
-      "TargetCantSeeAttacker": "La cible ne peut pas voir l'attaquant",
-      "UnknownTemplate": "Modèle inconnu"
-    },
-    "Tour": {
+      "SelectSummon": "Sélectionner l'invocation",
+      "SelectSummonType": "Sélectionner le Type d'invocation'",
+      "SelectSummons": "Sélectionner les invocations (Max : {totalSummons})",
+      "SummonedCreature": "Créature Invoquée"
+  },
+  "Template": {
+      "AttackerCantSeeTarget": "L'Attaquant ne peut pas voir la Cible",
+      "Cone": "Cône",
+      "Line": "Ligne",
+      "TargetCantSeeAttacker": "La Cible ne peut pas voir l'Attaquant",
+      "UnknownTemplate": "Modèle Inconnu"
+  },
+  "Tour": {
       "0": {
-        "Content": "Cette visite guidée vous guidera dans l'utilisation de certaines des fonctionnalités principales de Chris's Premades.",
-        "Title": "Accueillir!"
+          "Content": "Cette visite guidée vous accompagnera à travers certaines des fonctionnalités principales de l'utilisation du Chaudron de Ressources Abondantes.",
+          "Title": "Bienvenue !"
       },
       "1": {
-        "Content": "Toutes les automatisations disponibles dans ce module sont stockées ici.",
-        "Title": "Compendiums"
-      },
-      "2": {
-        "Content": "A titre d'exemple, le sort « Bouclier de Feu » est stocké dans le recueil « CPR Spells ». ",
-        "Title": "Compendiums"
-      },
-      "3": {
-        "Content": "Alternativement, vous pouvez appuyer sur l'icône Medkit sur un élément. ",
-        "Title": "Article Kit médical"
-      },
-      "4": {
-        "Content": "Le kit médical affiche l'état de l'élément ici.\n",
-        "Title": "Statut de l'article"
-      },
-      "5": {
-        "Content": "Ici, vous pouvez sélectionner l'automatisation à appliquer si plusieurs sources d'automatisation sont disponibles.",
-        "Title": "Automatisations disponibles"
-      },
-      "6": {
-        "Content": "Si un élément possède des options de configuration, vous pouvez les définir dans l'onglet de configuration.",
-        "Title": "Configuration de l'élément"
-      },
-      "7": {
-        "Content": "L'icône Medkit sur un acteur permet de faire une mise à jour en masse. ",
-        "Title": "Acteur Medkit"
-      },
-      "8": {
-        "Content": "Certaines automatisations nécessitent de créer des éléments temporaires sur une feuille d'acteur. ",
-        "Title": "Description Journal"
-      },
-      "9": {
-        "Content": "Par exemple, le sort \"Souffle du Dragon\" créera une fonctionnalité temporaire appelée \"Souffle du Dragon\" sur l'acteur ciblé.\n",
-        "Title": "Description Journal"
+          "Content": "Toutes les automatisations disponibles dans ce module sont stockées ici.",
+          "Title": "Compendiums"
       },
       "10": {
-        "Content": "Ce module possède de nombreux paramètres. ",
-        "Title": "Paramètres des modules"
+          "Content": "Ce module a de nombreux paramètres. Veuillez vous assurer de les examiner soigneusement et d'activer uniquement ceux dont vous avez besoin.",
+          "Title": "Paramètres du Module"
       },
       "11": {
-        "Content": "Une aide supplémentaire peut être trouvée dans la catégorie d'aide.",
-        "Title": "Aide"
+          "Content": "Une assistance supplémentaire peut être trouvée dans la catégorie d'aide.",
+          "Title": "Aide"
       },
-      "Chat": "<hr>Voir une visite guidée de Chris's Premades ici :<br><button type=\"button\">Démarrer la visite</button>",
-      "Description": "Faites le tour des préfabriqués de Chris.",
-      "Hint": "Commencez une visite guidée des préfabriqués de Chris.",
-      "Title": "La tournée des préfabriqués de Chris",
-      "TourFeatures": "Caractéristiques de la visite"
-    },
-    "Troubleshooter": {
-      "Clipboard": "Texte copié dans le presse-papier !",
+      "2": {
+          "Content": "Par exemple, le sort \"Bouclier de Feu\" est stocké dans le compendium \"Sorts CPR\". Vous pouvez faire glisser le sort de ce compendium sur votre acteur pour l'utiliser.",
+          "Title": "Compendiums"
+      },
+      "3": {
+          "Content": "Alternativement, vous pouvez appuyer sur l'icône du Medkit sur un objet. Cela ouvrira l'application de la trousse de secours, qui peut être utilisée pour remplacer automatiquement un objet par son automatisation.",
+          "Title": "Medkit (Trousse de Secours) d'Objet"
+      },
+      "4": {
+          "Content": "La trousse de secours affiche l'état de l'objet ici.\nRouge : Obsolète.\nJaune : Une automatisation est disponible.\nVert : L'objet est à jour.\nBleu : L'objet est à jour et a des options de configuration.",
+          "Title": "État de l'Objet"
+      },
+      "5": {
+          "Content": "Ici, vous pouvez sélectionner quelle automatisation appliquer si plusieurs sources d'automatisation sont disponibles.",
+          "Title": "Automatisations Disponibles"
+      },
+      "6": {
+          "Content": "Si un objet a des options de configuration, vous pouvez les définir dans l'onglet de configuration.",
+          "Title": "Configuration de l'Objet"
+      },
+      "7": {
+          "Content": "L'icône de la trousse de secours sur un acteur est un mise à jour en masse. Vous pouvez mettre à jour tous les objets sur un acteur ici.",
+          "Title": "Trousse de Secours d'Acteur"
+      },
+      "8": {
+          "Content": "Certaines automatisations nécessitent de créer des objets temporaires sur une fiche d'acteur. Ce module utilise des pages de journal (que vous devez remplir vous-même) pour ajouter des descriptions à ces objets.",
+          "Title": "Journal de Description"
+      },
+      "9": {
+          "Content": "Par exemple, le sort \"Souffle de Dragon\" créera une caractéristique temporaire appelée \"Souffle de Dragon\" sur l'acteur cible.\nRemplir cette page de journal peuplera la description lors de sa création.",
+          "Title": "Journal de Description"
+      },
+      "Chat": "<hr>Voir la visite guidée du Chaudron de Ressources Abondantes ici :<br><button type=\"button\">Démarrer la Visite</button>",
+      "Description": "Faites une visite guidée du Chaudron de Ressources Abondantes.",
+      "Hint": "Démarrez une visite guidée du Chaudron de Ressources Abondantes.",
+      "Title": "Visite du Chaudron de Ressources Abondantes",
+      "TourFeatures": "Fonctionnalités de la Visite"
+  },
+  "Troubleshooter": {
+      "Clipboard": "Texte copié dans le presse-papiers !",
       "CopyToClipboard": "Copier dans le Presse-papiers",
-      "DisabledModule": "Chris's Premades nécessite que le module {module} soit activé !",
-      "Discord": "Ouvrir le canal d'assistance Discord",
-      "Hint": "Ouvrez l'utilitaire de résolution des problèmes.",
-      "MissingModule": "Chris's Premades nécessite que le module {module} soit installé !",
-      "Open": "Ouvrez l'utilitaire de résolution des problèmes :",
-      "SaveToFile": "Enregistrer dans un fichier",
+      "DisabledModule": "Le Chaudron de Ressources Abondantes nécessite que le module {module} soit activé !",
+      "Discord": "Ouvrir le Canal de Support Discord",
+      "Hint": "Ouvrir le dépanneur.",
+      "MissingModule": "Le Chaudron de Ressources Abondantes nécessite que le module {module} soit installé !",
+      "MovementLag": "Les événements de mouvement semblent prendre beaucoup de temps ! Essayez de régler \"Performance des Événements de Mouvement\" plus bas dans les paramètres généraux du CPR.",
+      "Open": "Ouvrir le Dépanneur :",
+      "SaveToFile": "Enregistrer dans un Fichier",
       "Title": "Dépanneur"
-    },
-    "Turns": {
-      "EndOfTurn": "Fin du tour",
-      "StartOfTurn": "Début du tour"
-    },
-    "Units": {
+  },
+  "Turns": {
+      "EndOfTurn": "Fin du Tour",
+      "StartOfTurn": "Début du Tour"
+  },
+  "Units": {
       "Feet": "Pieds",
-      "Miles": "Milles",
-      "Units": "Unités :"
-    },
-    "UnknownTarget": "Cible inconnue"
+      "Miles": "Miles",
+      "Units": "Unités :"
+  },
+  "UnknownTarget": "Cible Inconnue"
   },
   "CONTROLS": {
-    "LightSelect": "Sélectionnez les lumières",
-    "SoundSelect": "Sélectionnez les sons",
-    "TemplateSelect": "Sélectionnez des modèles"
+      "LightSelect": "Sélectionner les Lumières",
+      "SoundSelect": "Sélectionner les Sons",
+      "TemplateSelect": "Sélectionner les Modèles"
   }
 }

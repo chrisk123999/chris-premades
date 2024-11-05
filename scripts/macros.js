@@ -35,7 +35,7 @@ export {conjureFey} from './macros/spells/conjureFey.js';
 export {conjureMinorElementals} from './macros/spells/conjureMinorElementals.js';
 export {conjureWoodlandBeings} from './macros/spells/conjureWoodlandBeings.js';
 export {crownOfMadness} from './macros/spells/crownOfMadness.js';
-export {crusadersMantle} from './macros/spells/crusadersMantle.js';
+export {crusadersMantle, crusadersMantleAura} from './macros/spells/crusadersMantle.js';
 export {danseMacabre} from './macros/spells/danseMacabre.js';
 export {darkness} from './macros/spells/darkness.js';
 export {dawn, dawnMove, dawnShining} from './macros/spells/dawn.js';
@@ -93,7 +93,7 @@ export {mindSliver} from './macros/spells/mindSliver.js';
 export {mirrorImage, mirrorImageMirrored} from './macros/spells/mirrorImage.js';
 export {mistyStep} from './macros/spells/mistyStep.js';
 export {moonbeam, moonbeamMove, moonbeamBeam} from './macros/spells/moonbeam.js';
-export {passWithoutTrace} from './macros/spells/passWithoutTrace.js';
+export {passWithoutTrace, passWithoutTraceAura} from './macros/spells/passWithoutTrace.js';
 export {protectionFromEvilAndGood} from './macros/spells/protectionFromEvilAndGood.js';
 export {raulothimsPsychicLance} from './macros/spells/raulothimsPsychicLance.js';
 export {rayOfEnfeeblement, rayOfEnfeeblementEnfeebled} from './macros/spells/rayOfEnfeeblement.js';
@@ -437,6 +437,10 @@ export {mimicPseudopod} from './macros/monsterFeatures/monstrosity/mimic/pseudop
 export {causticMist} from './macros/monsterFeatures/monstrosity/hoardMimic/causticMist.js';
 export {hoardMimicPseudopod} from './macros/monsterFeatures/monstrosity/hoardMimic/pseudopod.js';
 export {spittingMimicAcid} from './macros/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
+export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuardian/bound.js';
+export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/monsterFeatures/construct/shieldGuardian/shield.js';
+export {shieldGuardianSpellStoring} from './macros/monsterFeatures/construct/shieldGuardian/spellStoring.js';
+export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin/leadership.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';
 export {auraDamageEnd} from './macros/monsterFeatures/generic/auraDamageEnd.js';
@@ -461,6 +465,7 @@ export {touchDamage} from './macros/monsterFeatures/generic/touchDamage.js';
 export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.js';
 export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
 export {parry} from './macros/monsterFeatures/generic/parry.js';
+export {lifesteal} from './macros/monsterFeatures/generic/lifesteal.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';
@@ -560,6 +565,7 @@ export {wrapsOfDyamak, wrapsOfDyamak0, wrapsOfDyamak1, wrapsOfDyamak2, crimsonMi
 export {titanstoneKnucklesD, titanstoneKnucklesA, titanstoneKnucklesE} from './macros/items/trinket/titanstoneKnuckles.js';
 export {lastStandArmorBR, lastStandArmorCM, lastStandArmorCS, lastStandArmorH, lastStandArmorHP, lastStandArmorL, lastStandArmorP, lastStandArmorPl, lastStandArmorRM, lastStandArmorS, lastStandArmorSL, lastStandArmorSM} from './macros/items/armor/lastStandArmor.js';
 export {mysteryKey} from './macros/items/trinket/mysteryKey.js';
+export {mastersAmulet} from './macros/items/trinket/mastersAmulet.js';
 //BG3 Weapon Actions
 export {backbreaker, braceMelee, braceMeleeDamage, cleave, concussiveSmash, maimingStrike, disarmingStrike, flourish, heartstopper, lacerate, piercingStrike, piercingStrikeEffect, pommelStrike, prepare, rush, tenacity, topple, weakeningStrike, braceRanged, braceRangedDamage, hamstringShot, mobileShot, piercingShot} from './macros/homebrew/bg3WeaponActions.js';
 //Other

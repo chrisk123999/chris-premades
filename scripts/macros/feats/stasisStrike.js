@@ -57,7 +57,7 @@ async function combatEnd({trigger: {entity: item}}) {
 }
 export let stasisStrike = {
     name: 'Agent of Order: Stasis Strike',
-    version: '0.12.70',
+    version: '1.0.36',
     midi: {
         actor: [
             {

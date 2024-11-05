@@ -5,7 +5,7 @@ async function use({workflow}) {
 }
 export let vitriolicSphere = {
     name: 'Vitriolic Sphere',
-    version: '0.12.0',
+    version: '1.0.36',
     midi: {
         item: [
             {

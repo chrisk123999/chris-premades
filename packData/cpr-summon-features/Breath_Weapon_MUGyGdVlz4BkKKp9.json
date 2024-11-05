@@ -116,7 +116,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,

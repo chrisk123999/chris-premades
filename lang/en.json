@@ -113,6 +113,8 @@
             },
             "ApplyFilter": "Apply Filter:",
             "AttackBonus": "Attack Bonus:",
+            "Character": "Character",
+            "CheckSaves": "Check Saves:",
             "ClassIdentifier": "Class Identifier",
             "Color": "Color:",
             "Colors": {
@@ -146,15 +148,20 @@
             "CombatOnly": "Only Enable When in Combat",
             "CompendiumName": "{option} Compendium Name:",
             "CreatureTypes": "Creature Types:",
+            "CriticalOnly": "Critical Only:",
             "DC": "DC:",
             "DamageType": "Damage Type:",
             "DamageTypes": "Damage Types:",
             "DarknessAnimation": "Darkness Animation:",
+            "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
             "Expire": "Expiration:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
+            "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "MaxLevel": "Max Level:",
+            "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
             "Range": "Range:",
@@ -165,7 +172,8 @@
             "ShowIcon": "Always Show Aura Icon",
             "ShowRoll": "Show Roll:",
             "Sound": "Sound:",
-            "SpecificAnimation": "{option} Animation:"
+            "SpecificAnimation": "{option} Animation:",
+            "UseFormula": "Use Formula:"
         },
         "Cover": {
             "Full": "Full Cover",
@@ -175,6 +183,7 @@
             "Unknown": "Unknown Cover"
         },
         "CustomMacros": {
+            "NoIdentifier": "A registered macro was missing an identifier and was skipped!",
             "NoReturn": "The macro \"{name}\" is not returning valid data and has been skipped!"
         },
         "CustomTypes": {
@@ -298,6 +307,7 @@
             "NoEffect": "{itemName} must have an effect for its generic monster feature!",
             "NoMoreResource": "Out of required resource!",
             "NoType": "No Type",
+            "None": "None",
             "Ok": "Ok",
             "Recharge": "Recharge:",
             "RecoverSpellSlot": "Select a spell slot to recover:",
@@ -328,6 +338,21 @@
             "Earthquake": "Earthquake (Grovelthrash)",
             "MeldIntoStone": "Meld into Stone (Grovelthrash)",
             "StoneShape": "Stone Shape (Grovelthrash)"
+        },
+        "HeaderButtons": {
+            "PackId": {
+                "Tooltip": "Copy Pack ID"
+            }
+        },
+        "Item": {
+            "Condense": "Condense",
+            "SelectAmount": "Select amount to give:",
+            "Send": "Send",
+            "Split": "Split",
+            "SplitSize": "New Quantity:"
+        },
+        "ItemDirectory": {
+            "ExportForSharing": "Export Data (For Sharing)"
         },
         "Journal": {
             "Chat": "View the Cauldron of Plentiful Resources readme here:",
@@ -1075,6 +1100,13 @@
                 "RestoreHitpoints": "Restore Hitpoints:",
                 "Select": "How would you like to aid?"
             },
+            "Lifesteal": {
+                "HealingType": "Healing Type:",
+                "MaxHPCure": "Max HP Reduction Recovery:",
+                "Name": "Lifesteal",
+                "ReduceMaxHP": "Reduce Max HP:",
+                "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
+            },
             "LightningArrow": {
                 "Burst": "Lightning Arrow: Burst"
             },
@@ -1123,6 +1155,11 @@
             },
             "MassCureWounds": {
                 "Select": "Which targets would you like to heal? (Max: 6)"
+            },
+            "MastersAmulet": {
+                "Linked": "Amulet has been linked!",
+                "MissingBound": "Target does not have the CPR bound feature!",
+                "Unlinked": "Target is an unlinked token and the link will only work with this token on this scene!"
             },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Maximilian's Earthen Grasp: Crush",
@@ -1303,6 +1340,9 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
+            },
+            "ShieldGuardianShield": {
+                "Use": "Shield {name}? Attack Roll: {attack}"
             },
             "Shove": {
                 "Big": "Target is too big to shove!",
@@ -1643,6 +1683,7 @@
                 "MaxDistance": "Max Distance:"
             },
             "WildShape": {
+                "AllowElementals": "Always allow elementals:",
                 "CustomCompendium": "Custom Wild Shape Compendium:",
                 "Equipment": "What happens to your equipment?",
                 "Ignore": "Ignore CR, Type, & Movement Restrictions:",
@@ -1726,6 +1767,11 @@
                     "Tooltip": "Customize certain visuals"
                 }
             },
+            "Compendium": {
+                "Apply": "Medkit all compendium documents?",
+                "Done": "Compendium update complete!",
+                "Start": "Updating documents..."
+            },
             "Effect": {
                 "Conditions": {
                     "Label": "Conditions",
@@ -1798,6 +1844,13 @@
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
             "NoPermission": "You do not have permissions to change this",
+            "Scene": {
+                "Done": "Scene update complete!",
+                "Start": "Updating tokens...",
+                "UpdateAll": "Update all Characterse and NPCs",
+                "UpdateCharacters": "Update all Characters",
+                "UpdateNPCs": "Update all NPCs"
+            },
             "SelectedAutomation": "Selected Automation:",
             "Status": {
                 "0": "Out of Date",
@@ -1961,6 +2014,10 @@
                 "Hint": "When enabled, generic actions will be added when a token is placed.",
                 "Name": "Add Actions to Tokens"
             },
+            "addCompendiumButton": {
+                "Hint": "When enabled, a button will be added to compendium headers to copy the id.",
+                "Name": "Compendium ID Button"
+            },
             "additionalCompendiums": {
                 "Hint": "Select additional item compendiums to be used by the medkit and adjust their priority.",
                 "Name": "Additional Compendiums"
@@ -2097,6 +2154,10 @@
                 "Hint": "When enabled, all healing roll formulas will automatically be adjusted to explode.",
                 "Name": "Exploding Heals"
             },
+            "exportForSharing": {
+                "Hint": "When enabled, an alternative export button will be added to the item and actor context menu to export an item with descriptions removed. Reload required after enabling.",
+                "Name": "Export For Sharing"
+            },
             "firearmSupport": {
                 "Hint": "When enabled, Firearms automation will be available (From Critical Role's Gunslinger class).",
                 "Name": "Firearm Support"
@@ -2132,6 +2193,10 @@
             "itemCompendium": {
                 "Hint": "Item compendium used for certain automations. Ideally should point to your D&D Beyond item compendium.",
                 "Name": "Item Compendium"
+            },
+            "itemContext": {
+                "Hint": "When enabled, the item context menu will have additional options (Send, Condense, and Split).",
+                "Name": "Additional Item Context Options"
             },
             "lastUpdateCheck": {
                 "Hint": "When was the last update check run (in milliseconds). Automatically set.",

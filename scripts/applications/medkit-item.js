@@ -84,6 +84,14 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         await medkit.readyData();
         medkit.render(true);
     }
+    static async itemUpdate(item) {
+        let medkit = new ItemMedkit(item);
+        await medkit.readyData();
+        let source = medkit.availableAutomations.find(i => i.source === medkit._source) ?? medkit.availableAutomations[0];
+        if (!source) return;
+        await ItemMedkit.update(item, source.document, {source: source.source, version: source.version, identifier: genericUtils.getIdentifier(item)});
+        return item;
+    }
     /* Protected getters get the original data of the actual item, non-protected get the in-memory value stored in our duplicate flags */
     get identifier() {
         return this.flags?.info?.identifier;
@@ -648,6 +656,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         let config = itemData.flags['chris-premades']?.config;
         if (config) genericUtils.setProperty(sourceItemData, 'flags.chris-premades.config', config);
         if (CONFIG.DND5E.defaultArtwork.Item[itemType] != itemData.img) sourceItemData.img = itemData.img;
+        if (itemData.folder) sourceItemData.folder = itemData.folder;
         if (item.effects.size) await item.deleteEmbeddedDocuments('ActiveEffect', item.effects.map(i => i.id));
         await item.update(sourceItemData, {diff: false, recursive: false});
         return item;

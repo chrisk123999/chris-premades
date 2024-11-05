@@ -8,7 +8,7 @@ import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
 import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
-import {createHeaderButton, renderItemSheet, renderEffectConfig} from './extensions/titlebar.js';
+import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
 import {chat} from './extensions/chat.js';
 import {sidebar} from './extensions/sidebar.js';
@@ -22,6 +22,7 @@ import {initiative} from './extensions/initiative.js';
 import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
+import {item} from './applications/item.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
@@ -29,10 +30,10 @@ export function registerHooks() {
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
-    //Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
+    Hooks.on('renderCompendium', renderCompendium);
     Hooks.on('renderItemSheet', renderItemSheet);
     Hooks.on('renderDAEActiveEffectConfig', renderEffectConfig);
     Hooks.on('preCreateActiveEffect', effects.noAnimation);
@@ -67,6 +68,7 @@ export function registerHooks() {
     Hooks.on('preCreateItem', equipment.addOrUpdate);
     Hooks.on('dnd5e.restCompleted', rest);
     if (genericUtils.getCPRSetting('addActions')) Hooks.on('createToken', actions.createToken);
+    if (genericUtils.getCPRSetting('itemContext')) Hooks.on('dnd5e.getItemContextOptions', item.send);
     if (game.user.isGM) {
         Hooks.on('updateCombat', combatEvents.updateCombat);
         Hooks.on('combatStart', combatEvents.combatStart);
@@ -80,6 +82,8 @@ export function registerHooks() {
         Hooks.on('createToken', auras.createToken);
         Hooks.on('deleteToken', auras.deleteToken);
         Hooks.on('canvasReady', auras.canvasReady);
+        Hooks.on('getSceneConfigHeaderButtons', createHeaderButton);
+        Hooks.on('getCompendiumHeaderButtons', createHeaderButton);
         auras.canvasReady(canvas);
         if (genericUtils.getCPRSetting('syncActorSizeToTokens')) {
             Hooks.on('createActiveEffect', tokens.createDeleteUpdateActiveEffect);

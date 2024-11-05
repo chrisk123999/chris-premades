@@ -83,87 +83,20 @@
     }
   },
   "flags": {
-    "babonus": {
-      "bonuses": {
-        "j8YoPNZ7BlzTW9LJ": {
-          "id": "j8YoPNZ7BlzTW9LJ",
-          "name": "Empowered Evocation",
-          "type": "damage",
-          "enabled": true,
-          "optional": false,
-          "description": "",
-          "consume": {
-            "enabled": false,
-            "type": "",
-            "scales": false,
-            "formula": "",
-            "value": {
-              "min": null,
-              "max": null,
-              "step": null
-            },
-            "subtype": ""
-          },
-          "aura": {
-            "enabled": false,
-            "range": null,
-            "self": true,
-            "disposition": 2,
-            "blockers": [],
-            "template": false,
-            "require": {
-              "sight": false,
-              "move": false
-            }
-          },
-          "filters": {
-            "itemTypes": [
-              "spell"
-            ],
-            "spellSchools": [
-              "evo"
-            ]
-          },
-          "bonuses": {
-            "bonus": "@abilities.int.mod",
-            "criticalBonusDice": "",
-            "criticalBonusDamage": "",
-            "modifiers": {
-              "amount": {
-                "enabled": false
-              },
-              "reroll": {
-                "enabled": false,
-                "recursive": false
-              },
-              "explode": {
-                "enabled": false,
-                "once": false
-              },
-              "minimum": {
-                "enabled": false
-              },
-              "maximum": {
-                "enabled": false
-              },
-              "config": {
-                "first": false
-              }
-            }
-          },
-          "img": "icons/svg/dice-target.svg",
-          "exclusive": false,
-          "flags": {}
-        }
-      }
-    },
     "core": {},
     "chris-premades": {
       "info": {
         "name": "Empowered Evocation",
-        "version": "0.12.62",
+        "version": "1.0.37",
         "identifier": "empoweredEvocation",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "empoweredEvocation"
+          ]
+        }
       }
     },
     "midiProperties": {

@@ -2,128 +2,7 @@
   "name": "Crusader's Mantle",
   "type": "spell",
   "img": "icons/skills/melee/strike-hammer-destructive-blue.webp",
-  "effects": [
-    {
-      "_id": "vjtsdvz72mhx6skv",
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "transfer": false,
-      "flags": {
-        "dae": {
-          "selfTarget": false,
-          "stackable": "noneName",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "transfer": false,
-          "selfTargetAlways": false
-        },
-        "core": {
-          "statusId": ""
-        },
-        "babonus": {
-          "bonuses": {
-            "2FV0kUC8xRxGHMYw": {
-              "name": "Crusader's Mantle",
-              "description": "Crusader's Mantle",
-              "bonuses": {
-                "bonus": "1d4[radiant]",
-                "criticalBonusDice": "",
-                "criticalBonusDamage": ""
-              },
-              "filters": {
-                "attackTypes": [
-                  "mwak",
-                  "rwak"
-                ],
-                "itemRequirements": {
-                  "equipped": null,
-                  "attuned": null
-                },
-                "arbitraryComparison": [],
-                "statusEffects": [],
-                "targetEffects": [],
-                "creatureTypes": {
-                  "needed": [],
-                  "unfit": []
-                },
-                "customScripts": null,
-                "remainingSpellSlots": {
-                  "min": null,
-                  "max": null
-                },
-                "itemTypes": [],
-                "damageTypes": [],
-                "abilities": [],
-                "spellComponents": {
-                  "types": [],
-                  "match": null
-                },
-                "spellLevels": [],
-                "spellSchools": [],
-                "baseWeapons": [],
-                "weaponProperties": {
-                  "needed": [],
-                  "unfit": []
-                }
-              },
-              "type": "damage",
-              "itemOnly": false,
-              "optional": false,
-              "consume": {
-                "enabled": false,
-                "type": null,
-                "scales": false,
-                "value": {
-                  "min": null,
-                  "max": null
-                }
-              },
-              "aura": {
-                "enabled": true,
-                "isTemplate": false,
-                "range": 30,
-                "self": true,
-                "disposition": 1,
-                "blockers": ""
-              },
-              "id": "2FV0kUC8xRxGHMYw",
-              "enabled": true
-            }
-          }
-        }
-      },
-      "tint": "#ffffff",
-      "origin": null,
-      "name": "Crusader's Mantle",
-      "description": "",
-      "statuses": [],
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "3.3.1",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "img": "icons/skills/melee/strike-hammer-destructive-blue.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!bx5SbbDad3F9z5kB.vjtsdvz72mhx6skv"
-    }
-  ],
+  "effects": [],
   "flags": {
     "core": {
       "sourceId": "Item.20aT1iPzWayOKg4G"
@@ -159,15 +38,19 @@
     "chris-premades": {
       "info": {
         "name": "Crusader's Mantle",
-        "version": "0.12.0",
+        "version": "1.0.37",
         "identifier": "crusadersMantle",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "item": [
+            "crusadersMantle"
+          ]
+        }
       }
     },
-    "dnd5e": {},
-    "babonus": {
-      "bonuses": []
-    }
+    "dnd5e": {}
   },
   "system": {
     "description": {

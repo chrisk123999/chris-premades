@@ -81,6 +81,10 @@ async function use({workflow}) {
                 }
             });
         }
+        let spellMod = itemUtils.getMod(originalSpell);
+        spellData.system.damage.parts.forEach(i => {
+            i[0] = i[0].replaceAll('@mod', spellMod);
+        });
         genericUtils.setProperty(spellData, 'flags.chris-premades.ross', {
             isStored: true,
             castLevel,

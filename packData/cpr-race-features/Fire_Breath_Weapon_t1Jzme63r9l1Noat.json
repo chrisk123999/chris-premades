@@ -114,7 +114,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "halfdam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,
@@ -128,7 +128,7 @@
     "chris-premades": {
       "info": {
         "name": "Fire Breath Weapon",
-        "version": "0.12.64",
+        "version": "1.0.36",
         "identifier": "fireBreathWeapon",
         "source": "chris-premades"
       }

@@ -52,7 +52,7 @@ async function turnStart({trigger: {entity: effect, token}}) {
 }
 export let potionOfPoison = {
     name: 'Potion of Poison',
-    version: '0.12.70',
+    version: '1.0.36',
     midi: {
         item: [
             {

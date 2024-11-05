@@ -1,4 +1,4 @@
-import {effectUtils, constants, genericUtils} from '../../utils.js';
+import {effectUtils, constants, genericUtils, actorUtils} from '../../utils.js';
 let cleanUpList = [];
 let validKeys = [
     'macro.CE',
@@ -31,10 +31,15 @@ let effectData = {
 async function preambleComplete(workflow) {
     if (!workflow.targets.size) return;
     if (workflow.item.system.save?.dc === null || workflow.item.system.save === undefined) return;
-    let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
-    if (!workflow.item.effects.size && !macros.length) return;
+    let item = workflow.item;
+    if (workflow.workflowOptions.isOverTime) {
+        let effect = actorUtils.getEffects(workflow.targets.first().actor).find(i => i.name === workflow.item.name);
+        if (effect.origin) item = (await fromUuid(effect.origin)) ?? workflow.item;
+    }
+    let macros = item.flags['chris-premades']?.macros?.midi?.item ?? [];
+    if (!item.effects.size && !macros.length) return;
     let itemConditions = new Set();
-    workflow.item.effects.forEach(effect => {
+    item.effects.forEach(effect => {
         effect.changes.forEach(element => {
             if (validKeys.includes(element.key)) itemConditions.add(element.value.toLowerCase());
         });
@@ -52,7 +57,7 @@ async function preambleComplete(workflow) {
             let flagData = token.document.actor?.flags?.['chris-premades']?.CR?.[condition];
             if (flagData) {
                 let types = String(flagData).split(',').map(i => i.toLowerCase());
-                if (types.includes('1') || types.includes('true') || types.includes(workflow.item.system.save.ability)) {
+                if (types.includes('1') || types.includes('true') || types.includes(item.system.save.ability)) {
                     let effect = await effectUtils.createEffect(token.document.actor, effectData);
                     cleanUpList.push(effect.uuid);
                 }

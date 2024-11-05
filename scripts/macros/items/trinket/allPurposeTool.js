@@ -1,4 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils, itemUtils, spellUtils} from '../../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, itemUtils, spellUtils, workflowUtils} from '../../../utils.js';
 async function use({trigger, workflow}) {
     if (!itemUtils.getEquipmentState(workflow.item)) return;
     let key = genericUtils.getCPRSetting('itemCompendium');
@@ -35,9 +35,41 @@ async function spell({trigger, workflow}) {
     let effect = await effectUtils.createEffect(workflow.actor, effectData, {parentEntity: workflow.item});
     await itemUtils.createItems(workflow.actor, [itemData], {parentEntity: effect});
 }
+async function early({trigger: {entity: item}, workflow}) {
+    if (!workflow.item.hasSave) return;
+    if (!spellUtils.isClassSpell(workflow.item, 'artificer')) return;
+    let identifier = genericUtils.getIdentifier(item);
+    let bonus;
+    if (identifier === 'allPurposeTool1') {
+        bonus = 1;
+    } else if (identifier === 'allPurposeTool2') {
+        bonus = 2;
+    } else if (identifier === 'allPurposeTool3') {
+        bonus = 3;
+    }
+    if (!bonus) return;
+    workflow.item = workflow.item.clone({'system.save.dc': workflow.item.system.save.dc + bonus, 'system.save.scaling': 'flat'}, {keepId: true});
+    workflow.item.prepareData();
+    workflow.item.prepareFinalAttributes();
+    workflow.item.applyActiveEffects();
+}
+async function attack({trigger: {entity: item}, workflow}) {
+    if (!spellUtils.isClassSpell(workflow.item, 'artificer')) return;
+    let identifier = genericUtils.getIdentifier(item);
+    let bonus;
+    if (identifier === 'allPurposeTool1') {
+        bonus = 1;
+    } else if (identifier === 'allPurposeTool2') {
+        bonus = 2;
+    } else if (identifier === 'allPurposeTool3') {
+        bonus = 3;
+    }
+    if (!bonus) return;
+    await workflowUtils.bonusAttack(workflow, '+' + bonus);
+}
 export let allPurposeTool1 = {
     name: 'All Purpose Tool + 1',
-    version: '0.12.43',
+    version: '1.0.37',
     midi: {
         item: [
             {
@@ -45,6 +77,18 @@ export let allPurposeTool1 = {
                 macro: use,
                 priority: 50
             }
+        ],
+        actor: [
+            {
+                pass: 'preItemRoll',
+                macro: early,
+                priority: 50
+            },
+            {
+                pass: 'postAttackRoll',
+                macro: attack,
+                priority: 50
+            },
         ]
     },
     equipment: {

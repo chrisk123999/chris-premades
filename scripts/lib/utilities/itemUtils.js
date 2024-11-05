@@ -3,6 +3,7 @@ import {actorUtils, effectUtils, genericUtils, socketUtils, errors, compendiumUt
 import {gambitPremades} from '../../integrations/gambitsPremades.js';
 import {miscPremades} from '../../integrations/miscPremades.js';
 import {custom} from '../../events/custom.js';
+import {ItemMedkit} from '../../applications/medkit-item.js';
 function getSaveDC(item) {
     if (item.hasSave) return item.getSaveDC();
     let spellDC;
@@ -161,9 +162,13 @@ function getItemByGenericFeature(actor, key) {
 function isWeaponProficient(item) {
     if (item.system.proficient) return true;
     if (!item.actor) return false;
+    if (item.actor.type === 'npc') return true;
     if (item.actor.system.traits.weaponProf.value.has(item.system.type.baseItem)) return true;
     if (item.actor.system.traits.weaponProf.value.has(CONFIG.DND5E.weaponProficienciesMap[item.system.type.value])) return true;
     return false;
+}
+async function itemUpdate(item) {
+    return await ItemMedkit.itemUpdate(item);
 }
 export let itemUtils = {
     getSaveDC,
@@ -186,5 +191,6 @@ export let itemUtils = {
     getSavedCastData,
     getGenericFeatureConfig,
     getItemByGenericFeature,
-    isWeaponProficient
+    isWeaponProficient,
+    itemUpdate
 };

@@ -142,197 +142,24 @@
       "alwaysActive": false,
       "activeEquipped": true
     },
-    "babonus": {
-      "bonuses": [
-        {
-          "name": "All-Purpose Tool, +2",
-          "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
-          "id": "KQTnZRhzRJbpXFAL",
-          "sort": 0,
-          "type": "attack",
-          "enabled": true,
-          "exclusive": false,
-          "optional": false,
-          "reminder": false,
-          "description": "",
-          "consume": {
-            "enabled": false,
-            "type": "",
-            "subtype": "",
-            "scales": false,
-            "formula": "",
-            "value": {
-              "min": "",
-              "max": "",
-              "step": null
-            }
-          },
-          "aura": {
-            "enabled": false,
-            "template": false,
-            "range": "",
-            "self": true,
-            "disposition": 2,
-            "blockers": [],
-            "require": {
-              "light": false,
-              "sight": false,
-              "sound": false,
-              "move": false
-            }
-          },
-          "flags": {},
-          "bonuses": {
-            "bonus": "2",
-            "criticalRange": "",
-            "fumbleRange": ""
-          },
-          "filters": {
-            "actorCreatureSizes": [],
-            "actorCreatureTypes": [],
-            "actorLanguages": [],
-            "baseArmors": [],
-            "customScripts": "return chrisPremades.utils.spellUtils.isClassSpell(item, 'artificer');",
-            "healthPercentages": {
-              "value": 50,
-              "type": null
-            },
-            "remainingSpellSlots": {
-              "min": null,
-              "max": null,
-              "size": false
-            },
-            "statusEffects": [],
-            "abilities": [],
-            "attackTypes": [],
-            "baseWeapons": [],
-            "creatureTypes": [],
-            "damageTypes": [],
-            "featureTypes": {
-              "subtype": ""
-            },
-            "itemTypes": [],
-            "preparationModes": [],
-            "spellComponents": {
-              "types": [],
-              "match": "ANY"
-            },
-            "spellLevels": [],
-            "spellSchools": [],
-            "targetArmors": [],
-            "targetEffects": [],
-            "tokenSizes": {
-              "size": null,
-              "type": 0,
-              "self": false
-            },
-            "weaponProperties": [],
-            "proficiencyLevels": [],
-            "arbitraryComparisons": []
-          }
-        },
-        {
-          "name": "All-Purpose Tool, +2",
-          "img": "icons/weapons/sickles/sickle-hooked-wood.webp",
-          "id": "7oMe1MXzb9kWqlMh",
-          "sort": 0,
-          "type": "save",
-          "enabled": true,
-          "exclusive": false,
-          "optional": false,
-          "reminder": false,
-          "description": "",
-          "consume": {
-            "enabled": false,
-            "type": "",
-            "subtype": "",
-            "scales": false,
-            "formula": "",
-            "value": {
-              "min": "",
-              "max": "",
-              "step": null
-            }
-          },
-          "aura": {
-            "enabled": false,
-            "template": false,
-            "range": "",
-            "self": true,
-            "disposition": 2,
-            "blockers": [],
-            "require": {
-              "light": false,
-              "sight": false,
-              "sound": false,
-              "move": false
-            }
-          },
-          "flags": {},
-          "bonuses": {
-            "bonus": "2"
-          },
-          "filters": {
-            "actorCreatureSizes": [],
-            "actorCreatureTypes": [],
-            "actorLanguages": [],
-            "arbitraryComparisons": [],
-            "baseArmors": [],
-            "customScripts": "return chrisPremades.utils.spellUtils.isClassSpell(item, 'artificer');",
-            "healthPercentages": {
-              "value": 50,
-              "type": null
-            },
-            "remainingSpellSlots": {
-              "min": null,
-              "max": null,
-              "size": false
-            },
-            "statusEffects": [],
-            "abilities": [],
-            "attackTypes": [],
-            "baseWeapons": [],
-            "creatureTypes": [],
-            "damageTypes": [],
-            "featureTypes": {
-              "subtype": ""
-            },
-            "itemTypes": [],
-            "preparationModes": [],
-            "spellComponents": {
-              "types": [],
-              "match": "ANY"
-            },
-            "spellLevels": [],
-            "spellSchools": [],
-            "targetArmors": [],
-            "targetEffects": [],
-            "tokenSizes": {
-              "size": null,
-              "type": 0,
-              "self": false
-            },
-            "weaponProperties": [],
-            "saveAbilities": []
-          }
-        }
-      ]
-    },
     "chris-premades": {
       "info": {
         "identifier": "allPurposeTool2",
         "source": "chris-premades",
-        "version": "0.12.43"
+        "version": "1.0.37"
       },
       "macros": {
         "midi": {
           "item": [
             "allPurposeTool2"
+          ],
+          "actor": [
+            "allPurposeTool2"
           ]
         }
       },
       "equipment": {
-        "identifier": "allPurposeTool1"
+        "identifier": "allPurposeTool2"
       }
     },
     "dnd5e": {

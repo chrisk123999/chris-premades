@@ -1,5 +1,6 @@
 import {DialogApp} from '../../../applications/dialog.js';
 import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../../utils.js';
+import {compelledDuel} from '../../spells/compelledDuel.js';
 
 async function use({workflow}) {
     if (workflow.actor.isPolymorphed) return;
@@ -30,20 +31,28 @@ async function use({workflow}) {
     let compendiumDocs;
     let elementals = ['air', 'earth', 'fire', 'water'];
     let ignoreRestrictions = itemUtils.getConfig(workflow.item, 'ignoreRestrictions');
+    let allowElementals = itemUtils.getConfig(workflow.item, 'allowElementals');
+    let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
+    if (elementalWildShape) {
+        elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
+    } else {
+        elementals = elementals.map(i => genericUtils.translate('CHRISPREMADES.Summons.CreatureNames.' + i.capitalize + 'Elemental'));
+    }
     if (ignoreRestrictions) {
         compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey);
+        if (!allowElementals && (!elementalWildShape || !workflow.item.system.uses.value)) {
+            compendiumDocs = compendiumDocs.filter(i => !elementals.includes(i.name));
+        }
     } else {
         compendiumDocs = await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey, {maxCR, creatureTypes: ['beast']});
         compendiumDocs = compendiumDocs.filter(i => !disallowedMovements.some(j => i.system.attributes.movement[j]));
-        let elementalWildShape = itemUtils.getItemByIdentifier(workflow.actor, 'elementalWildShape');
-        if (elementalWildShape && workflow.item.system.uses.value) {
-            elementals = elementals.map(i => itemUtils.getConfig(elementalWildShape, i + 'Name'));
+        if (allowElementals || (elementalWildShape && workflow.item.system.uses.value)) {
             compendiumDocs = compendiumDocs.concat(await compendiumUtils.getFilteredActorDocumentsFromCompendium(packKey, {specificNames: elementals}));
         }
     }
     let sourceActor = await dialogUtils.selectDocumentDialog(workflow.item.name, 'CHRISPREMADES.Macros.WildShape.Select', compendiumDocs, {sortAlphabetical: true, sortCR: true, showCR: true});
     if (!sourceActor) return;
-    if (!ignoreRestrictions && elementals.includes(sourceActor.name)) await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
+    if (!allowElementals && elementals.includes(sourceActor.name)) await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
     let equippedItems = workflow.actor.items.filter(i => i.system.equipped && i.type !== 'container');
     let selection;
     if (equippedItems.length) {
@@ -228,6 +237,14 @@ export let wildShape = {
         {
             value: 'ignoreRestrictions',
             label: 'CHRISPREMADES.Macros.WildShape.Ignore',
+            type: 'checkbox',
+            default: false,
+            category: 'homebrew',
+            homebrew: true
+        },
+        {
+            value: 'allowElementals',
+            label: 'CHRISPREMADES.Macros.WildShape.AllowElementals',
             type: 'checkbox',
             default: false,
             category: 'homebrew',

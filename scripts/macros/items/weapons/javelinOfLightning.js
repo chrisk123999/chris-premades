@@ -4,7 +4,7 @@ async function early({workflow}) {
     if (!workflow.item.system.uses.value || !workflow.targets.size) return;
     let selection = await dialogUtils.confirm(workflow.item.name, genericUtils.format('CHRISPREMADES.Dialog.Use', {itemName: workflow.item.name}));
     if (!selection) return;
-    await genericUtils.update(workflow.item, {'system.uses.value': 0});
+    await genericUtils.update(workflow.item, {'system.uses.value': workflow.item.system.uses.value - 1});
     let targetToken = workflow.targets.first();
     let ray = new Ray(workflow.token.center, targetToken.center);
     if (!ray.distance) return;

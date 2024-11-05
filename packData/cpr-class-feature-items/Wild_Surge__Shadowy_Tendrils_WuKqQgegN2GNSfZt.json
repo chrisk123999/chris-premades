@@ -118,7 +118,7 @@
       "idi": false,
       "idv": false,
       "ida": false,
-      "saveDamage": "default",
+      "saveDamage": "nodam",
       "bonusSaveDamage": "default"
     },
     "core": {}

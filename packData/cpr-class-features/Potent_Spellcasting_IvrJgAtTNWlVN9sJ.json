@@ -113,57 +113,19 @@
       "idv": false,
       "ida": false
     },
-    "babonus": {
-      "bonuses": {
-        "NMohhILKjgl6onu8": {
-          "id": "NMohhILKjgl6onu8",
-          "name": "Potent Spellcasting",
-          "type": "damage",
-          "enabled": true,
-          "itemOnly": false,
-          "optional": false,
-          "description": "",
-          "consume": {
-            "enabled": false,
-            "type": null,
-            "scales": false,
-            "formula": "",
-            "value": {
-              "min": null,
-              "max": null,
-              "step": null
-            }
-          },
-          "aura": {
-            "enabled": false,
-            "isTemplate": false,
-            "range": null,
-            "self": true,
-            "disposition": 2,
-            "blockers": null
-          },
-          "filters": {
-            "itemTypes": [
-              "spell"
-            ],
-            "spellLevels": [
-              "0"
-            ]
-          },
-          "bonuses": {
-            "bonus": "@abilities.wis.mod",
-            "criticalBonusDice": "",
-            "criticalBonusDamage": ""
-          }
-        }
-      }
-    },
     "chris-premades": {
       "info": {
         "name": "Potent Spellcasting",
-        "version": "0.12.40",
+        "version": "1.0.37",
         "identifier": "potentSpellcasting",
         "source": "chris-premades"
+      },
+      "macros": {
+        "midi": {
+          "actor": [
+            "potentSpellcasting"
+          ]
+        }
       }
     }
   },

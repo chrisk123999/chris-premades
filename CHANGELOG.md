@@ -1,3 +1,95 @@
+# 1.0.39 Release:
+## Update Notes:
+- Condition Resistance and Condition Vulnerability now works with Midi-Qol overtime effects.
+## Bug Fixes:
+- Lifesteal
+
+# 1.0.38 Release:
+## API Bug Fixes:
+- Macro Registration
+
+# 1.0.37 Release:
+## New Generic Monster Features:
+- Shield Guardian: Shield & Spell Storing
+## Updated Content:
+- Shield Guardian: Bound & Regeneration
+- Master's Amulet
+## Bug Fixes:
+- Wild Shape
+- Pass without Trace
+- Ring of Spell Storing
+
+# 1.0.36 Release:
+## Bug Fixes:
+- Agent of Order: Stasis Strike
+- Breath of the Dragon
+- Call Lightning
+- Channel Divinity: Radiance of the Dawn
+- Cloudkill
+- Dawn
+- Dragonborn Breath Weapons
+- Frost Fingers
+- Guardian of Faith
+- Hail of Thorns
+- Holy Weapon
+- Lightning Arrow
+- Mind Sliver
+- Monster Feature: Charge
+- Monster Feature: Shield Bash
+- Monster Feature: Thunderous Strike
+- Moonbeam
+- Potion of Poison
+- Primal Companion
+- Rime's Binding Ice
+- Sickening Radiance
+- Storm Sphere
+- Summon Draconic Spirit
+- Summon Fiend
+- Vitriolic Sphere
+- Wild Surge
+- Javelin of Lightning
+- Lifesteal
+- Alchemical Savant
+- All-Purpose Tool
+- Crusader's Mantle
+- Dragon-Touched Focus (Stirring / Chromatic)
+- Empowered Evocation
+- Enhanced Bond
+- Hearth of Moonlight and Shadow
+- Pass Without Trace
+- Potent Spellcasting
+
+## Update Notes:
+- Removed Build-A-Bonus as a requirement.
+
+# 1.0.35 Release:
+## Update Notes:
+- Added the ability to register CPR macros via the API.
+- Added an option to add additional item context choices (Send, Condense, and Split).
+- Added an option to export items and actors which also removes all descriptions.
+
+# 1.0.34 Release:
+## New Monster Content:
+- Lifesteal (Generic Monster Feature)
+## Bug Fixes:
+- Infused Strikes
+- Crown of Madness
+
+# 1.0.33 Release:
+## Bug Fixes:
+- Item Medkit
+
+# 1.0.32 Release:
+## Update Notes:
+- Added Medkit button to scenes and compendiums.
+- Added compendium id button setting.
+## Bug Fixes
+- Savage Attacker
+- Combat Events
+- Pariah's Shield
+- Runic Shield
+- Ready Spell
+
 # 1.0.31 Release:
 ## Bug Fixes
 - Ability Check Event

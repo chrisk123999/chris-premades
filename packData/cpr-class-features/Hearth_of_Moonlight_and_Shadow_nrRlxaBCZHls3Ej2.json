@@ -112,59 +112,10 @@
       "idv": false,
       "ida": false
     },
-    "babonus": {
-      "bonuses": {
-        "Lg2sHK4NMHqI1vDO": {
-          "name": "Hearth of Moonlight and Shadow",
-          "img": "icons/magic/water/orb-water-transparent.webp",
-          "type": "test",
-          "id": "Lg2sHK4NMHqI1vDO",
-          "sort": 0,
-          "enabled": true,
-          "exclusive": false,
-          "optional": false,
-          "description": "",
-          "consume": {
-            "enabled": false,
-            "type": "",
-            "subtype": "",
-            "scales": false,
-            "formula": "",
-            "value": {
-              "min": "",
-              "max": "",
-              "step": null
-            }
-          },
-          "aura": {
-            "enabled": true,
-            "template": true,
-            "range": "",
-            "self": true,
-            "disposition": 1,
-            "blockers": [],
-            "require": {
-              "sight": false,
-              "move": false
-            }
-          },
-          "flags": {},
-          "bonuses": {
-            "bonus": "+5"
-          },
-          "filters": {
-            "skillIds": [
-              "prc",
-              "ste"
-            ]
-          }
-        }
-      }
-    },
     "chris-premades": {
       "info": {
         "name": "Hearth of Moonlight and Shadow",
-        "version": "0.12.41",
+        "version": "1.0.37",
         "identifier": "hearthOfMoonlightAndShadow",
         "source": "chris-premades"
       },

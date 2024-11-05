@@ -114,7 +114,7 @@
       "toggleEffect": false,
       "ignoreTotalCover": false,
       "confirmTargets": "default",
-      "saveDamage": "default",
+      "saveDamage": "nodam",
       "bonusSaveDamage": "default",
       "noConcentrationCheck": false,
       "idr": false,

@@ -16,7 +16,7 @@ async function setTurnCheck(entity, name, reset) {
     await entity.setFlag('chris-premades', name + '.turn', turn);
 }
 function getCurrentCombatantToken() {
-    return game.combat.scene.tokens.get(game.combat.current.tokenId).object;
+    return game.combat.scene?.tokens.get(game.combat.current.tokenId)?.object;
 }
 export let combatUtils = {
     currentTurn,

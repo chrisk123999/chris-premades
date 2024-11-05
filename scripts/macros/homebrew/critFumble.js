@@ -1,6 +1,5 @@
 import {compendiumUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, rollUtils, workflowUtils} from '../../utils.js';
 async function rollItem(type, token, targets) {
-    console.log('here');
     let key = genericUtils.getCPRSetting(type === 'critical' ? 'criticalCompendium' : 'fumbleCompendium');
     let pack = game.packs.get(key);
     if (!pack) {
@@ -16,7 +15,9 @@ async function rollItem(type, token, targets) {
         let {roll} = await rollUtils.rollDice('1d' + index.size, {chatMessage: true});
         itemData = await compendiumUtils.getItemFromCompendium(key, index.contents[roll.total - 1].name, {object: true});
     } else {
-        let item = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Generic.Select', undefined, index);
+        let item = await dialogUtils.selectDocumentDialog('CHRISPREMADES.Generic.Select', undefined, index.contents.sort((a, b) => {
+            return a.name.localeCompare(b.name, 'en', {'sensitivity': 'base'});
+        }));
         if (!item) return;
         itemData = await compendiumUtils.getItemFromCompendium(key, item.name, {object: true});
     }
