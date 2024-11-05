@@ -146,7 +146,7 @@
                 "Yellow": "Amarelo"
             },
             "CombatOnly": "Habilitar Somente em Combate",
-            "CompendiumName": "Nome no Compendium {option}:",
+            "CompendiumName": "Nome no Compêndio {option}:",
             "CreatureTypes": "Tipos de Criatura:",
             "CriticalOnly": "Apenas Críticos:",
             "DC": "CD:",
@@ -287,7 +287,7 @@
         "Generic": {
             "Actions": "Ações",
             "Available": "Disponível",
-            "CPR": "Chris's Premades",
+            "CPR": "Cauldron of Plentiful Resources",
             "Cancel": "Cancelar",
             "Chat": "Chat",
             "Check": "Teste de Atributo",
@@ -354,9 +354,9 @@
             "ExportForSharing": "Exportar Dados (Para Compartilhamento)"
         },
         "Journal": {
-            "Chat": "Ver o leia-me do Chris's Premades aqui:",
+            "Chat": "Ver o leia-me do Cauldron of Plentiful Resources aqui:",
             "Readme": "Leia-Me",
-            "Welcome": "<p>Obrigado por usar meu módulo! Se você encontrar algum bug ou tiver alguma solicitação, envie uma mensagem para <strong>chrisk123999</strong> no Discord ou faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Como observação, eu geralmente trabalho ao redor de itens que foram importados por meio do módulo DDB importer. Se algo funcionar \"como está\" nesse módulo, é improvável que eu o tenha aqui.</p><p>Para começar, você pode encontrar minhas automações nos compêndios que começam com: \"CPR.\"</p><p>Você também pode clicar no ícone do kit médico na barra de título para atualizar o item com minha automação. Isso preservará sua descrição já presente no item.</p><hr><p>Qualquer item, magia ou recurso adicionado à sua ficha precisa temporariamente de uma descrição. As atualizações dos módulos substituirão os compêndios nos quais estão armazenados. Portanto, as descrições serão extraídas desta entrada de diário. Todas as páginas após esta não serão regeneradas ao atualizar este módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img src=\"https://ko-fi.com/img/githubbutton_sm.svg\"></a>"
+            "Welcome": "<p>Obrigado por usar este módulo! Se você encontrar algum bug, faça um report no <a href=\"https://github.com/chrisk123999/chris-premades\">Github</a> ou um bug report no nosso <a href=\"https://discord.gg/BumxBcQDrT\">Discord</a>. Não incomode tposney, Zhell ou qualquer outro autor de módulo com bugs ou problemas relacionados a este módulo.</p><p>Informações adicionais sobre o módulo, incluindo FAQ, Primeiros Passos e informações sobre recursos, estão disponíveis na <a href=\"https://github.com/chrisk123999/chris-premades/wiki\">Cauldron of Plentiful Resources Wiki</a>. A wiki fornece explicações, imagens e exemplos que podem responder à maioria das perguntas sobre o módulo.</p><hr><a href=\"https://ko-fi.com/chrisk123999\"><img width=\"60%\" src=\"modules/chris-premades/images/chris-kofi.svg\"></a><a href=\"https://ko-fi.com/hi25114\"><img width=\"60%\"  src=\"modules/chris-premades/images/michael-kofi.svg\"></a>"
         },
         "Light": {
             "Bright": "Plena",
@@ -1154,6 +1154,11 @@
             "MassCureWounds": {
                 "Select": "Quais alvos você quer curar? (Máx: 6)"
             },
+            "MastersAmulet": {
+                "Linked": "Amuleto foi vinculado!",
+                "MissingBound": "O alvo não possui o recurso vinculado do CPR!",
+                "Unlinked": "O alvo é um token desvinculado e o link só funcionará com esse token nesta cena!"
+            },
             "MaximiliansEarthenGrasp": {
                 "Crush": "Abraço Terrestre de Maximilian: Esmagar",
                 "Grasp": "Abraço Terrestre de Maximilian: Agarrão",
@@ -1634,9 +1639,9 @@
                 "Select": "Causar dano a uma criatura agarrada?"
             },
             "UndeadFortitude": {
-                "Critical": "Acertos críticos ignoram Fortitude de Morto-Vivo:",
-                "DamageTypes": "Tipos de Dano que ignoram Fortitude de Morto-Vivo:",
-                "Name": "Fortitude de Morto-Vivo"
+                "Critical": "Acertos críticos ignoram Fortaleza Imortal:",
+                "DamageTypes": "Tipos de Dano que ignoram Fortaleza Imortal:",
+                "Name": "Fortaleza Imortal"
             },
             "Underwater": {
                 "TooFar": "O alvo está muito longe enquanto submerso!",
@@ -1828,7 +1833,7 @@
             },
             "ModuleIds": {
                 "additionalCompendiums": "Compêndios Adicionais",
-                "chris-premades": "Chris's Premades",
+                "chris-premades": "Cauldron of Plentiful Resources",
                 "gambits-premades": "Gambit's Premades",
                 "midi-item-showcase-community": "Midi Item Showcase Community"
             },
@@ -2338,7 +2343,7 @@
         },
         "SpotlightOmnisearch": {
             "Actor": "O token selecionado não está associado a nenhum ator!",
-            "Description": "Invoque um(a) {name} usando o Chris's Premades.",
+            "Description": "Invoque um(a) {name} usando o Cauldron of Plentiful Resources.",
             "Time": {
                 "Day": "1 Dia",
                 "Hour": "1 Hora",
@@ -2454,7 +2459,7 @@
         },
         "Tour": {
             "0": {
-                "Content": "Este tour irá guiá-lo através do uso de alguns dos principais recursos do Chris's Premades.",
+                "Content": "Este tour irá guiá-lo através do uso de alguns dos principais recursos do Cauldron of Plentiful Resources.",
                 "Title": "Bem-Vindo(a)!"
             },
             "1": {
@@ -2501,19 +2506,19 @@
                 "Content": "Por exemplo, a magia \"Dragon's Breath\" criará um recurso temporário chamado \"Sopro de Dragão\" no ator alvo.\nO preenchimento desta página do diário preencherá a descrição quando ela for criada.",
                 "Title": "Diário de Descrições"
             },
-            "Chat": "<hr>Veja um tour guiado pelo Chris's Premades aqui:<br><button type=\"button\">Começar Tour</button>",
-            "Description": "Faça um tour pelo Chris's Premades.",
-            "Hint": "Comece um tour guiado pelo Chris's Premades.",
-            "Title": "Tour do Chris's Premades",
+            "Chat": "<hr>Veja um tour guiado pelo Cauldron of Plentiful Resources aqui:<br><button type=\"button\">Começar Tour</button>",
+            "Description": "Faça um tour pelo Cauldron of Plentiful Resources.",
+            "Hint": "Comece um tour guiado pelo Cauldron of Plentiful Resources.",
+            "Title": "Tour do Cauldron of Plentiful Resources",
             "TourFeatures": "Recursos do Tour"
         },
         "Troubleshooter": {
             "Clipboard": "Texto copiado para a área de transferência!",
             "CopyToClipboard": "Copiar para a Área de Transferência",
-            "DisabledModule": "Chris's Premades requer que o módulo {module} esteja habilitado!",
+            "DisabledModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja habilitado!",
             "Discord": "Abra Canal de Suporte do Discord",
             "Hint": "Abre o troubleshooter.",
-            "MissingModule": "Chris's Premades requer que o módulo {module} esteja instalado!",
+            "MissingModule": "Cauldron of Plentiful Resources requer que o módulo {module} esteja instalado!",
             "MovementLag": "Os Eventos de Movimento parecem estar demorando muito! Tente definir \"Desempenho de Eventos de Movimento\" mais baixo nas configurações gerais do CPR.",
             "Open": "Abrir Troubleshooter:",
             "SaveToFile": "Salvar em Arquivo",
