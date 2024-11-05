@@ -164,8 +164,7 @@ export let lifesteal = {
         {
             value: 'ignoredCreatureTypes',
             label: 'CHRISPREMADES.Config.IgnoredCreatureTypes',
-            type: 'select-many',
-            options: constants.creatureTypeOptions,
+            type: 'creatureTypes',
             default: ['undead', 'construct']
         },
         {

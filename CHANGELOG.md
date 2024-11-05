@@ -1,3 +1,7 @@
+# 1.0.39 Release:
+## Bug Fixes:
+- Lifesteal
+
 # 1.0.38 Release:
 ## API Bug Fixes:
 - Macro Registration
