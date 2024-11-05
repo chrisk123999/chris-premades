@@ -1,7 +1,8 @@
 # 1.0.37 Release:
-## New Monster Content:
-- Sheild Guardian: Bound, Regeneration, Shield, Spell Storing
-## New Content:
+## New Generic Monster Features:
+- Shield Guardian: Shield & Spell Storing
+## Updated Content:
+- Shield Guardian: Bound & Regeneration
 - Master's Amulet
 ## Bug Fixes:
 - Wild Shape
