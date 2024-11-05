@@ -168,7 +168,6 @@ async function executeMacro(trigger, options) {
 }
 async function executeMacroPass(tokens, pass, token, options) {
     genericUtils.log('dev', 'Executing Aura Macro Pass: ' + pass + ' for ' + token.name);
-    let inCombat = combatUtils.inCombat();
     let triggers = getSortedTriggers(tokens, pass, token);
     let removedEffects = [];
     let effects = actorUtils.getEffects(token.actor).filter(j => j.flags['chris-premades']?.aura);

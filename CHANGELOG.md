@@ -1,3 +1,7 @@
+# 1.0.38 Release:
+## API Bug Fixes:
+- Macro Registration
+
 # 1.0.37 Release:
 ## New Generic Monster Features:
 - Shield Guardian: Shield & Spell Storing

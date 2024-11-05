@@ -19,7 +19,7 @@ async function ready() {
     }))).filter(j => j);
 }
 function getMacro(identifier) {
-    return customMacroList.find(i => i.identifier === identifier) ?? macros[identifier];
+    return customMacroList.find(i => i.identifier === identifier) ?? registeredMacroList.find(j => j.identifier === identifier) ?? macros[identifier];
 }
 function preCreateMacro(document, updates, options, userId) {
     let key = genericUtils.getCPRSetting('macroCompendium');

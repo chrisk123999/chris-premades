@@ -21,7 +21,9 @@ export async function updateCheck() {
             .replaceAll('Updated Content:', '<b><u>Updated Content:</u></b>')
             .replaceAll('Bug Fixes:', '<b><u>Bug Fixes:</u></b>')
             .replaceAll('Update Notes:', '<b><u>Update Notes:</u></b>')
-            .replaceAll('New Enhanced Animations:', '<b><u>New Enhanced Animations:</u></b>');
+            .replaceAll('New Enhanced Animations:', '<b><u>New Enhanced Animations:</u></b>')
+            .replaceAll('API Bug Fixes:', '<b><u>API Bug Fixes:</u></b>')
+            .replaceAll('API Updates', '<b><u>API Updates:</u></b>');
         let message = '<hr>Cauldron of Plentiful Resources update <b>' + info.tag_name + '</b> available!<hr>' + body;
         await ChatMessage.create({
             speaker: {alias: name},
