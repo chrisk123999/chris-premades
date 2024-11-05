@@ -1,4 +1,6 @@
 # 1.0.39 Release:
+## Update Notes:
+- Condition Resistance and Condition Vulnerability now works with Midi-Qol overtime effects.
 ## Bug Fixes:
 - Lifesteal
 
