@@ -438,6 +438,8 @@ export {causticMist} from './macros/monsterFeatures/monstrosity/hoardMimic/caust
 export {hoardMimicPseudopod} from './macros/monsterFeatures/monstrosity/hoardMimic/pseudopod.js';
 export {spittingMimicAcid} from './macros/monsterFeatures/monstrosity/spittingMimic/spitAcid.js';
 export {shieldGuardianBound} from './macros/monsterFeatures/construct/shieldGuardian/bound.js';
+export {shieldGuardianShield, shieldGuardianShieldEffect} from './macros/monsterFeatures/construct/shieldGuardian/shield.js';
+export {shieldGuardianSpellStoring} from './macros/monsterFeatures/construct/shieldGuardian/spellStoring.js';
 export {leadership, leadershipAura} from './macros/monsterFeatures/fey/hobgoblin/leadership.js';
 // Generic Monster Features
 export {advantageDamageBonus} from './macros/monsterFeatures/generic/advantageDamageBonus.js';

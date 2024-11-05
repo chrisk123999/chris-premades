@@ -189,5 +189,5 @@ export let workflowUtils = {
     getTotalDamageOfType,
     handleInstantTemplate,
     getCastData,
-    reduceDamageAppliedFlat: modifyDamageAppliedFlat
+    modifyDamageAppliedFlat
 };

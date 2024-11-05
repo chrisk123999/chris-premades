@@ -160,6 +160,7 @@
             "HideToken": "Hide Token:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
             "ImmuneCreatures": "Immune Creature Types:",
+            "MaxLevel": "Max Level:",
             "Percentage": "Percentage:",
             "PlayAnimation": "Play Animation:",
             "PlayTeleportAnimation": "Play Teleport Animation:",
@@ -1100,8 +1101,8 @@
                 "Select": "How would you like to aid?"
             },
             "Lifesteal": {
-                "MaxHPCure": "Max HP Reduction Recovery:",
                 "HealingType": "Healing Type:",
+                "MaxHPCure": "Max HP Reduction Recovery:",
                 "Name": "Lifesteal",
                 "ReduceMaxHP": "Reduce Max HP:",
                 "excessAsTemp": "Excess Healing as Temporary Hitpoints:"
@@ -1339,6 +1340,9 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Shadow of Moil: Damage"
+            },
+            "ShieldGuardianShield": {
+                "Use": "Shield {name}? Attack Roll: {attack}"
             },
             "Shove": {
                 "Big": "Target is too big to shove!",

@@ -1,7 +1,12 @@
 # 1.0.37 Release:
+## New Monster Content:
+- Sheild Guardian: Bound, Regeneration, Shield, Spell Storing
+## New Content:
+- Master's Amulet
 ## Bug Fixes:
 - Wild Shape
 - Pass without Trace
+- Ring of Spell Storing
 
 # 1.0.36 Release:
 ## Bug Fixes:

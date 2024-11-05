@@ -15,8 +15,6 @@ async function use({trigger, workflow}) {
     genericUtils.notify('CHRISPREMADES.Macros.MastersAmulet.Linked', 'info');
 }
 async function damageApplication({trigger, workflow, ditem}) {
-    console.log(trigger);
-    console.log(ditem);
     if (!itemUtils.getEquipmentState(trigger.entity)) return;
     if (!workflow.hitTargets.has(trigger.token)) return;
     let actorUuid = trigger.entity.flags['chris-premades']?.mastersAmulet?.actorUuid;
@@ -31,7 +29,7 @@ async function damageApplication({trigger, workflow, ditem}) {
     let bound = itemUtils.getItemByIdentifier(firstToken.actor, 'shieldGuardianBound');
     if (!bound) return;
     let reduction = Math.ceil(ditem.totalDamage / 2);
-    workflowUtils.modifyDamageAppliedFlat(ditem, -reduction);  //This needs fixing.
+    workflowUtils.modifyDamageAppliedFlat(ditem, -reduction);
     let featureData = genericUtils.duplicate(bound.toObject());
     featureData.system.damage.parts[0][0] = reduction;
     await workflowUtils.syntheticItemDataRoll(featureData, actor, [firstToken]);
