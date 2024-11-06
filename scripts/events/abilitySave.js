@@ -186,11 +186,15 @@ async function save(wrapped, saveId, options = {}) {
         }
     }
     let messageData;
-    Hooks.once('dnd5e.preRollAbilitySave', (actor, rollData) => {
+    let messageDataFunc = (actor, rollData, saveIdInternal) => {
+        if (actor.uuid !== this.uuid || saveIdInternal !== saveId) {
+            Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
+            return;
+        }
         messageData = rollData.messageData;
-        if (overtimeActorUuid)
-            messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
-    });
+        if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+    };
+    Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
     let returnData = await wrapped(saveId, {...options, chatMessage: false});
     if (!returnData) return;
     let oldOptions = returnData.options;

@@ -184,11 +184,15 @@ async function rollSkill(wrapped, skillId, options = {}) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
     }
     let messageData;
-    Hooks.once('dnd5e.preRollSkill', (actor, rollData, skillId) => {
+    let messageDataFunc = (actor, rollData, skillIdInt) => {
+        if (actor.uuid !== this.uuid || skillIdInt !== skillId) {
+            Hooks.once('dnd5e.preRollSkill', messageDataFunc);
+            return;
+        }
         messageData = rollData.messageData;
-        if (overtimeActorUuid)
-            messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
-    });
+        if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
+    };
+    Hooks.once('dnd5e.preRollSkill', messageDataFunc);
     let returnData = await wrapped(skillId, {...options, chatMessage: false});
     if (!returnData) return;
     let oldOptions = returnData.options;
