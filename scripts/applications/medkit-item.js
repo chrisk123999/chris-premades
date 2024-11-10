@@ -1,6 +1,7 @@
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 import {compendiumUtils, itemUtils, genericUtils, constants} from '../utils.js';
 import * as macros from '../macros.js';
+import {custom} from '../events/custom.js';
 export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(item) {
         super({id: 'medkit-window-item'});
@@ -112,7 +113,7 @@ export class ItemMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
         return itemUtils.getVersion(this.item);
     }
     get _macro() {
-        return macros[this.identifier];
+        return custom.getMacro(this.identifier);
     }
     /* Only expected to change when the actual item is changed upon update/apply */
     get name() {

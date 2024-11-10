@@ -1,3 +1,8 @@
+# 1.0.41 Release:
+## Bug Fixes:
+- Condition Resistance and Condition Vulnerability
+- Item Medkit
+
 # 1.0.40 Release:
 ## API Bug Fixes:
 - Ability Check and Saving Throw Events

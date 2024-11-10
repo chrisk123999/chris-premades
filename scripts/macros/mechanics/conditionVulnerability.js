@@ -34,7 +34,7 @@ async function preambleComplete(workflow) {
     let item = workflow.item;
     if (workflow.workflowOptions.isOverTime) {
         let effect = actorUtils.getEffects(workflow.targets.first().actor).find(i => i.name === workflow.item.name);
-        if (effect.origin) item = (await fromUuid(effect.origin)) ?? workflow.item;
+        if (effect?.origin) item = (await fromUuid(effect.origin)) ?? workflow.item;
     }
     let macros = item.flags['chris-premades']?.macros?.midi?.item ?? [];
     if (!item.effects.size && !macros.length) return;
