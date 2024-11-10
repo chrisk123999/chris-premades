@@ -184,8 +184,8 @@ async function rollSkill(wrapped, skillId, options = {}) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
     }
     let messageData;
-    let messageDataFunc = (actor, rollData, skillIdInt) => {
-        if (actor.uuid !== this.uuid || skillIdInt !== skillId) {
+    let messageDataFunc = (actor, rollData, skillIdInternal) => {
+        if (actor.uuid !== this.uuid || skillIdInternal !== skillId) {
             Hooks.once('dnd5e.preRollSkill', messageDataFunc);
             return;
         }
