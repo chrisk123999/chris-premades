@@ -160,6 +160,7 @@
             "HideToken": "Ocultar Token:",
             "IgnoredCreatureTypes": "Tipos de Criatura Ignorados:",
             "ImmuneCreatures": "Tipos de Criaturas Imunes:",
+            "MaxLevel": "Nível Máx.:",
             "Percentage": "Porcentagem:",
             "PlayAnimation": "Reproduzir Animação:",
             "PlayTeleportAnimation": "Tocar Animação de Teleporte:",
@@ -1100,8 +1101,9 @@
                 "Select": "Como você quer ajudar?"
             },
             "Lifesteal": {
-                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
                 "HealingType": "Tipo de Cura:",
+                "MaxHPCure": "Recuperação de Redução de PV Máx.:",
+                "Name": "Roubo de Vida",
                 "ReduceMaxHP": "Reduzir PV Máx.:",
                 "excessAsTemp": "Excesso de Cura como PV Temp.:"
             },
@@ -1338,6 +1340,9 @@
             },
             "ShadowOfMoil": {
                 "Damage": "Sombra de Transtorno: Dano"
+            },
+            "ShieldGuardianShield": {
+                "Use": "Dar Escudo para {name}? Rolagem de Ataque: {attack}"
             },
             "Shove": {
                 "Big": "O alvo é grande demais para ser empurrado!",
@@ -1678,6 +1683,7 @@
                 "MaxDistance": "Distância Máxima:"
             },
             "WildShape": {
+                "AllowElementals": "Sempre permitir elementais:",
                 "CustomCompendium": "Chave de Compêndio Personalizado da Forma Selvagem:",
                 "Equipment": "O que acontece com o seu equipamento?",
                 "Ignore": "Ignorar ND, Tipo & Restrição de Movimento:",
