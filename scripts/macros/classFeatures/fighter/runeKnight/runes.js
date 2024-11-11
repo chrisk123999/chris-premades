@@ -112,7 +112,7 @@ async function cloudRuneAttack({trigger, workflow}) {
             units: ''
         };
         await workflowUtils.syntheticItemRoll(item, [target], {config: {consumeUsage: true}});
-        genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {formula: workflow.attackRoll.total});
+        genericUtils.setProperty(itemData, 'flags.chris-premades.setAttackRoll', {rollJSON: workflow.attackRoll.toJSON()});
         let macros = workflow.item.flags['chris-premades']?.macros?.midi?.item ?? [];
         macros.push('setAttackRoll');
         genericUtils.setProperty(itemData, 'flags.chris-premades.macros.midi.item', macros);
