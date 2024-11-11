@@ -1,3 +1,10 @@
+# 1.0.42 Release:
+## Bug Fixes:
+- Spiritual Weapon
+- Cloud Rune
+- Stormgirdle
+- Remarkable Recovery
+
 # 1.0.41 Release:
 ## Bug Fixes:
 - Condition Resistance and Condition Vulnerability
