@@ -125,8 +125,9 @@ async function use({workflow}) {
         target = target[0];
     }
     if (!target) return;
-    let tempItem = item.clone({'system.activation': {type: 'special'}});
-    await workflowUtils.syntheticItemRoll(tempItem, [target]);
+    let tempItemData = genericUtils.duplicate(item.toObject());
+    genericUtils.setProperty(tempItemData, 'system.activation.type', 'special');
+    await workflowUtils.syntheticItemDataRoll(tempItemData, workflow.actor, [target]);
 }
 async function early({workflow}) {
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritualWeapon');
