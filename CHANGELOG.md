@@ -1,3 +1,7 @@
+# 1.0.44 Release:
+## Bug Fixes:
+- Hunter's Mark
+
 # 1.0.43 Release:
 ## Bug Fixes:
 - Effect Medkit

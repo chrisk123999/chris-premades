@@ -87,11 +87,11 @@ async function move({workflow}) {
             selection = targets[0];
         }
     }
-    if (selection.actor) {
+    if (selection?.actor) {
         let effect = effectUtils.getEffectByIdentifier(selection.actor, 'huntersMarkMarked');
         if (effect) await genericUtils.remove(effect);
     }
-    targetUuids = targetUuids.filter(i => i !== selection.document.uuid);
+    targetUuids = targetUuids.filter(i => i !== selection?.document.uuid);
     targetUuids.push(workflow.targets.first().document.uuid);
     await genericUtils.setFlag(effect, 'chris-premades', 'huntersMark.targets', targetUuids);
     let seconds = effect.duration.remaining;
