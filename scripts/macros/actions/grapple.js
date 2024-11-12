@@ -75,6 +75,8 @@ export async function grappleHelper(sourceToken, targetToken, item, {noContest =
             }
         }
     };
+    effectUtils.addMacro(sourceEffectData, 'death', ['grapple']);
+    effectUtils.addMacro(targetEffectData, 'death', ['grapple']);
     let grappler = itemUtils.getItemByIdentifier(sourceActor, 'grappler');
     let pinData;
     if (grappler && !itemUtils.getItemByIdentifier(sourceActor, 'grapplerPin')) {
@@ -179,6 +181,9 @@ async function escape({workflow}) {
         await itemUtils.createItems(targetToken.actor, [escapeData], {favorite: true, parentEntity: remainingGrappledEffects[0]});
     }
 }
+async function remove({trigger}) {
+    await genericUtils.remove(trigger.entity);
+}
 export let grapple = {
     name: 'Grapple',
     version: '0.12.12',
@@ -190,7 +195,14 @@ export let grapple = {
                 priority: 50
             }
         ]
-    }
+    },
+    death: [
+        {
+            pass: 'dead',
+            macro: remove,
+            priority: 50
+        }
+    ]
 };
 export let grappleEscape = {
     name: 'Grapple: Escape',
