@@ -23,6 +23,7 @@ async function createToken(token, options, userId) {
     let updates = await Promise.all(pack.contents.filter(i => !token.actor.items.getName(i.name)).map(async j => {
         let itemData = genericUtils.duplicate(j.toObject());
         delete itemData._id;
+        itemData.system.description.value = itemUtils.getItemDescription(itemData.name);
         return itemData;
     }));
     if (!updates.length) return;

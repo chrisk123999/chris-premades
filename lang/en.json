@@ -1786,6 +1786,9 @@
                     "Labels": {
                         "Ability": "Ability Based DC",
                         "ActionSave": "Saving Throw is an Action:",
+                        "ActionSaveDialog": "Dialog",
+                        "ActionSaveDisabled": "Disabled",
+                        "ActionSaveRoll": "Chat Button",
                         "AllowIncapacitated": "Allow Incapacitated Targets:",
                         "ApplyCondition": "Apply Condition Evaluation Expression:",
                         "BlindRoll": "Blind Roll",

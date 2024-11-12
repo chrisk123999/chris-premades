@@ -379,7 +379,7 @@ export class EffectMedkit extends HandlebarsApplicationMixin(ApplicationV2) {
                     });
                 });
                 if (event.target.id === 'actionSave') {
-                    if (event.target.checked === true) {
+                    if (event.target.value === 'roll' || event.target.value === 'dialog') {
                         this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility').isSelectOption = false;
                         genericUtils.setProperty(this.context.overTime.fieldsets.rolls.options.find(i => i.key === 'saveAbility'), 'isSelectMultiple', true);
                     } else {

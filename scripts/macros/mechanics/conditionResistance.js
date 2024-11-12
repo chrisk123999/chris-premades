@@ -29,16 +29,25 @@ let effectData = {
     }
 };
 async function preambleComplete(workflow) {
-    if (!workflow.targets.size) return;
+    if (!workflow.targets.size || !workflow.item) return;
     if (workflow.item.system.save?.dc === null || workflow.item.system.save === undefined) return;
     let item = workflow.item;
+    let itemConditions = new Set();
     if (workflow.workflowOptions.isOverTime) {
-        let effect = actorUtils.getEffects(workflow.targets.first().actor).find(i => i.name === workflow.item.name);
-        if (effect?.origin) item = (await fromUuid(effect.origin)) ?? workflow.item;
+        try {
+            let effects = actorUtils.getEffects(workflow.targets.first().actor);
+            let effect = effects.find(i => i.changes.find(j => j.key === 'flags.midi-qol.OverTime' && j.value.includes(workflow.item.name))) ?? effects.find(i => i.name === workflow.item.name && i.changes.find(j => j.key === 'flags.midi-qol.OverTime'));
+            if (effect) {
+                effect.changes.forEach(element => {
+                    if (validKeys.includes(element.key)) itemConditions.add(element.value.toLowerCase());
+                });
+                let effectConditions = effect.flags['chris-premades']?.conditions;
+                if (effectConditions) effectConditions.forEach(c => itemConditions.add(c.toLowerCase()));
+                itemConditions = itemConditions.union(effect.statuses ?? new Set());
+            }
+        } catch (error) { /* empty */ }
     }
     let macros = item.flags['chris-premades']?.macros?.midi?.item ?? [];
-    if (!item.effects.size && !macros.length) return;
-    let itemConditions = new Set();
     item.effects.forEach(effect => {
         effect.changes.forEach(element => {
             if (validKeys.includes(element.key)) itemConditions.add(element.value.toLowerCase());

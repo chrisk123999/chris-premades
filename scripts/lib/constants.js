@@ -139,7 +139,7 @@ const overTimeOptions = [
         fieldset: 'parameters'
     },
     {
-        key: 'label',
+        key: 'name',
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.Label',
         default: null,
         type: 'text',
@@ -265,7 +265,21 @@ const overTimeOptions = [
         key: 'actionSave',
         label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ActionSave',
         default: false,
-        type: 'boolean',
+        type: 'select',
+        options: [
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ActionSaveDisabled',
+                value: false
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ActionSaveRoll',
+                value: 'roll'
+            },
+            {
+                label: 'CHRISPREMADES.Medkit.Effect.OverTime.Labels.ActionSaveDialog',
+                value: 'dialog'
+            }
+        ],
         requires: 'rollType',
         fieldset: 'rolls'
     },
