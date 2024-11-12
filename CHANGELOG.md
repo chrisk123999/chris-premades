@@ -3,7 +3,7 @@
 - Effect Medkit
 - Condition Resistance and Condition Vulnerability
 ## Update Notes:
-- Updated the overtime creator to no longer use depricated label and added action save types.
+- Updated the overtime creator to no longer use deprecated label and added action save types.
 
 # 1.0.42 Release:
 ## Bug Fixes:
