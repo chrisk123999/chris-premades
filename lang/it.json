@@ -160,6 +160,7 @@
             "HideToken": "Nascondi Token:",
             "IgnoredCreatureTypes": "Tipi di creature ignorate:",
             "ImmuneCreatures": "Tipi di Creature Immuni:",
+            "MaxLevel": "Livello Massimo:",
             "Percentage": "Percentuale:",
             "PlayAnimation": "Riproduci Animazione:",
             "PlayTeleportAnimation": "Riproduci Animazione Teletrasporto:",
@@ -1100,8 +1101,9 @@
                 "Select": "Come vuoi aiutare?"
             },
             "Lifesteal": {
-                "MaxHPCure": "Recupero della riduzione di PF:",
                 "HealingType": "Tipo di Cura:",
+                "MaxHPCure": "Recupero della riduzione di PF:",
+                "Name": "Furto Vitale",
                 "ReduceMaxHP": "Riduzione dei PF Massimi:",
                 "excessAsTemp": "Guarigione in eccesso come punti ferita temporanei:"
             },
@@ -1339,6 +1341,9 @@
             "ShadowOfMoil": {
                 "Damage": "Ombra di Moil: Danno"
             },
+            "ShieldGuardianShield": {
+                "Use": "Scudo {name}? Tiro di Attacco: {attack}"
+            },
             "Shove": {
                 "Big": "Il bersaglio è troppo grande per essere spinto!",
                 "ChooseSkill": "Come vuoi contrastare la spinta?",
@@ -1361,8 +1366,8 @@
             },
             "SongOfDefense": {
                 "Bladesong": "Devi attivare Canto della Lama per usare questa caratteristica!",
-                "NoSpellSlots": "Non hai slot incantesimo disponibili!",
-                "Select": "Usa la tua reazione per spendere uno slot incantesimo per ridurre il danno?"
+                "NoSpellSlots": "Non hai slot  disponibili!",
+                "Select": "Usa la tua reazione per spendere uno slot  per ridurre il danno?"
             },
             "SoothePain": {
                 "Protect": "Ridurre il danno a {tokenName}?",
@@ -1781,6 +1786,9 @@
                     "Labels": {
                         "Ability": "DC Basato sulla Caratteristica",
                         "ActionSave": "Il Tiro Salvezza è un'Azione:",
+                        "ActionSaveDialog": "Messaggio",
+                        "ActionSaveDisabled": "Disabilitato",
+                        "ActionSaveRoll": "Pulsante in Chat",
                         "AllowIncapacitated": "Permetti Bersagli Incapacitati:",
                         "ApplyCondition": "Applica Valutazione Condizione:",
                         "BlindRoll": "Tiro Nascosto",
@@ -1925,7 +1933,7 @@
         "Section": {
             "Rage": "Rabbia",
             "RingOfSpellStoring": "Anello di Conservazione degli Incantesimi",
-            "SpellFeatures": "Caratteristiche Incantesimo"
+            "SpellFeatures": "Caratteristiche "
         },
         "Senses": {
             "MagicalDarkness": "Oscurità Magica"
@@ -2468,7 +2476,7 @@
                 "Title": "Compendi"
             },
             "2": {
-                "Content": "Ad esempio, l'incantesimo \"Scudo di Fuoco\" si trova nel compendio \"Incantesimi CPR\". Puoi trascinare l'incantesimo da questo compendio sul tuo attore per usarlo.",
+                "Content": "Ad esempio, il \"Fire Shield\" si trova nel compendio \"CPR Spells\". Puoi trascinare l'incantesimo da questo compendio sul tuo attore per usarlo.",
                 "Title": "Compendi"
             },
             "3": {
@@ -2496,7 +2504,7 @@
                 "Title": "Diario Descrizione"
             },
             "9": {
-                "Content": "Ad esempio, l'incantesimo \"Respiro del Drago\" creerà una funzione temporanea chiamata \"Respiro del Drago\" sull'attore bersaglio.\nCompilare questa pagina del diario riempirà la descrizione quando sarà creata.",
+                "Content": "Ad esempio, l'incantesimo \"Dragon's Breath\" creerà una funzione temporanea chiamata \"Dragon Breath\" sull'attore bersaglio.\nCompilare questa pagina del diario riempirà la descrizione quando sarà creata.",
                 "Title": "Diario Descrizione"
             },
             "10": {
