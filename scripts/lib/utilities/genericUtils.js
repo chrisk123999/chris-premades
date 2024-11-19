@@ -145,7 +145,7 @@ function camelCaseToWords(s) {
     return result.charAt(0).toUpperCase() + result.slice(1);
 }
 function getIdentifier(entity) {
-    return entity.flags['chris-premades']?.info?.identifier;
+    return entity.flags?.['chris-premades']?.info?.identifier;
 }
 function checkPlayerOwnership(entity) {
     if (!entity) return false;
