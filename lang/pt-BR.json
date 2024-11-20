@@ -1786,6 +1786,9 @@
                     "Labels": {
                         "Ability": "Atributo Baseado da CD",
                         "ActionSave": "Salvaguarda é uma Ação:",
+                        "ActionSaveDialog": "Diálogo",
+                        "ActionSaveDisabled": "Desabilitado",
+                        "ActionSaveRoll": "Botão de Chat",
                         "AllowIncapacitated": "Permitir Alvos Incapacitados:",
                         "ApplyCondition": "Aplicar Expressão de Avaliação de Condição:",
                         "BlindRoll": "Rolagem Cega",
