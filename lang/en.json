@@ -157,6 +157,7 @@
             "Distance": "Distance:",
             "DurationSeconds": "Duration (Seconds):",
             "Expire": "Expiration:",
+            "FailedSave": "Failed Save:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
             "IgnoredCreatureTypes": "Ignored Creature Types:",
@@ -445,6 +446,9 @@
                 "DC": "Flat DC to escape grapple (contested if 0):",
                 "Disadvantage": "Grant disadvantage on escape check:",
                 "Name": "Auto Grapple"
+            },
+            "AutoPush": {
+                "Name": "Auto Push"
             },
             "AwakenedSpellbook": {
                 "Select": "Change damage type?"

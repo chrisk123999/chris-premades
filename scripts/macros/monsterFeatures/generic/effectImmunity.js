@@ -4,12 +4,13 @@ async function use({trigger, workflow}) {
     let config = itemUtils.getGenericFeatureConfig(workflow.item, 'effectImmunity');
     let name = workflow.item.name + ' ' + genericUtils.translate('CHRISPREMADES.Macros.EffectImmunity.Immune');
     let savedTargets = workflow.targets.filter(i => !workflow.failedSaves.has(i));
+    let seconds = isNaN(Number(config.duration)) ? 86400 : Number(config.duration);
     let effectData = {
         name: name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
         duration: {
-            seconds: Number(config.duration)
+            seconds: seconds
         }
     };
     await Promise.all(savedTargets.map(async token => await effectUtils.createEffect(token.actor, effectData)));
@@ -38,12 +39,13 @@ async function removed({trigger}) {
     if (!origin) return;
     let config = itemUtils.getGenericFeatureConfig(origin, 'effectImmunity');
     let name = origin.name +  ' ' + genericUtils.translate('CHRISPREMADES.Macros.EffectImmunity.Immune');
+    let seconds = isNaN(Number(config.duration)) ? 86400 : Number(config.duration);
     let effectData = {
         name: name,
         img: origin.img,
         origin: origin.uuid,
         duration: {
-            seconds: Number(config.duration)
+            seconds: seconds
         }
     };
     await effectUtils.createEffect(trigger.entity.parent, effectData);
