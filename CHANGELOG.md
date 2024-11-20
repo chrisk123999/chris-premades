@@ -1,3 +1,7 @@
+# 1.0.45 Release:
+## New Generic Monster Features:
+- Auto Push
+
 # 1.0.44 Release:
 ## New Generic Monster Features:
 - Effect Immunity (Frightful Presence)
