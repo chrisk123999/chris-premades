@@ -155,6 +155,7 @@
             "DarknessAnimation": "Darkness Animation:",
             "DisplayFormulaRoll": "Display Formula Roll:",
             "Distance": "Distance:",
+            "DurationSeconds": "Duration (Seconds):",
             "Expire": "Expiration:",
             "Formula": "Formula:",
             "HideToken": "Hide Token:",
@@ -718,6 +719,10 @@
             },
             "DreadfulAspect": {
                 "Turn": "Dreadful Aspect: End of Turn"
+            },
+            "EffectImmunity": {
+                "Immune": "Immune",
+                "Name": "Effect Immunity"
             },
             "EldritchBlast": {
                 "Beam": "Eldritch Blast: Beam",

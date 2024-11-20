@@ -1,6 +1,5 @@
 import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../../utils.js';
-import { start as enlargeReduceStart } from '../../spells/enlargeReduce.js';
-
+import {start as enlargeReduceStart} from '../../spells/enlargeReduce.js';
 async function use({workflow}) {
     let concentrationEffects = Array.from(workflow.actor.concentration.effects);
     await Promise.all(concentrationEffects.map(async effect => await genericUtils.remove(effect)));

@@ -1,4 +1,6 @@
 # 1.0.44 Release:
+## New Generic Monster Features:
+- Effect Immunity (Frightful Presence)
 ## Bug Fixes:
 - Hunter's Mark
 - Grapple
@@ -9,6 +11,7 @@
 - Condition Resistance and Condition Vulnerability
 ## Update Notes:
 - Updated the overtime creator to no longer use deprecated label and added action save types.
+- Generic Actions will now pull descriptions from the description journal when automatically added.
 
 # 1.0.42 Release:
 ## Bug Fixes:

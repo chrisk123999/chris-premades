@@ -466,6 +466,7 @@ export {undeadFortitude} from './macros/monsterFeatures/generic/undeadFortitude.
 export {martialAdvantage} from './macros/monsterFeatures/generic/martialAdvantage.js';
 export {parry} from './macros/monsterFeatures/generic/parry.js';
 export {lifesteal} from './macros/monsterFeatures/generic/lifesteal.js';
+export {effectImmunity, effectImmunityRemove} from './macros/monsterFeatures/generic/effectImmunity.js';
 // Actions
 export {checkCover} from './macros/actions/checkCover.js';
 export {dash} from './macros/actions/dash.js';
