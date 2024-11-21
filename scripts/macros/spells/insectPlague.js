@@ -1,6 +1,7 @@
-import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -16,8 +17,7 @@ async function use({workflow}) {
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {
                     template: ['insectPlagueTemplate']
-                },
-                damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                }
             }
         }
     });
@@ -27,40 +27,18 @@ async function enter({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'insectPlague')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'insectPlague');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InsectPlague.Damage', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let damageType = template.flags['chris-premades'].damageType;
-    featureData.system.damage.parts = [
-        [
-            (castData.castLevel - 1) + 'd10[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'insectPlagueDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Insect Plague: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.InsectPlague.Damage', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let damageType = template.flags['chris-premades'].damageType;
-    featureData.system.damage.parts = [
-        [
-            (castData.castLevel - 1) + 'd10[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'insectPlagueDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 export let insectPlague = {
     name: 'Insect Plague',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -69,18 +47,7 @@ export let insectPlague = {
                 priority: 50
             }
         ]
-    },
-    config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'piercing',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-    ]
+    }
 };
 export let insectPlagueTemplate = {
     name: 'Insect Plague: Template',

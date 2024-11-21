@@ -15,7 +15,7 @@ async function damage({workflow}) {
 }
 export let lifeTransference = {
     name: 'Life Transference',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

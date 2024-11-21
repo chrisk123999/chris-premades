@@ -46,7 +46,7 @@ export {detectThoughts, detectThoughtsProbeDeeper} from './macros/spells/detectT
 export {disintegrate} from './macros/spells/disintegrate.js';
 export {dragonsBreath} from './macros/spells/dragonsBreath.js';
 export {earthTremor} from './macros/spells/earthTremor.js';
-export {eldritchBlast, eldritchBlastBeam} from './macros/spells/eldritchBlast.js';
+export {eldritchBlast} from './macros/spells/eldritchBlast.js';
 export {elementalWeapon} from './macros/spells/elementalWeapon.js';
 export {enlargeReduce, enlargeReduceChanged} from './macros/spells/enlargeReduce.js';
 export {faerieFire, faerieFireOutlined} from './macros/spells/faerieFire.js';

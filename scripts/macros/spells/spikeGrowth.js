@@ -1,5 +1,6 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -80,19 +81,14 @@ async function damageHelper(pointA, pointB, template, token, {stay, gridless} = 
         timesToDamage = Math.floor(gridsMoved * canvas.grid.distance / 5);
     }
     if (timesToDamage <= 0) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Spike Growth: Thorns', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SpikeGrowth.Thorns'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'spikeGrowthDamage');
     for (let i = 0; i < timesToDamage; i++) {
-        await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+        await workflowUtils.syntheticActivityRoll(feature, [token]);
     }
 }
 export let spikeGrowth = {
     name: 'Spike Growth',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

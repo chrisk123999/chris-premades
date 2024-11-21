@@ -1,17 +1,15 @@
-import {actorUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: workflow.item.name}),
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     effectUtils.addMacro(effectData, 'aura', ['auraOfPurityAura']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'auraOfPurity'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
@@ -27,13 +25,13 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         changes: [
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'diseased',
                 priority: 20
             },
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: 'poison',
                 priority: 20
             },
@@ -66,7 +64,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 }
 export let auraOfPurity = {
     name: 'Aura of Purity',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -7,7 +7,7 @@ async function use({workflow}) {
         let targetDeath = workflow.damageList.find(i => i.tokenId === target.id)?.newHP === 0;
         if (targetDeath && target.actor.type === 'character') await effectUtils.applyConditions(target.actor, ['dead']);
         let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
-        if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon') continue;
+        if (!playAnimation || animationUtils.jb2aCheck() !== 'patreon' || !animationUtils.aseCheck()) continue;
         let centerPoint = target.getCenterPoint();
         let seq = new Sequence()
             .effect()
@@ -522,7 +522,8 @@ async function use({workflow}) {
 }
 export let disintegrate ={
     name: 'Disintegrate',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

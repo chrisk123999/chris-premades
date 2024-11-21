@@ -1,19 +1,14 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, constants, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 3600 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
-                armorOfAgathys: {
-                    damage: workflow.castData.castLevel * 5,
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
-                    playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
-                }
+                castLevel: workflow.castData.castLevel
             }
         }
     };
@@ -28,19 +23,11 @@ async function hit({trigger: {entity: effect}, workflow}) {
     let tempHP = targetToken.actor.system.attributes.hp.temp;
     if (tempHP === 0) await genericUtils.remove(effect);
     if (!constants.meleeAttacks.includes(workflow.item?.system?.actionType)) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Armor of Agathys: Reflect', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ArmorOfAgathys.Reflect'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let damage = effect.flags['chris-premades'].armorOfAgathys.damage;
-    let damageType = effect.flags['chris-premades'].armorOfAgathys.damageType;
-    featureData.system.damage.parts[0] = [
-        damage + '[' + damageType + ']',
-        damageType
-    ];
-    await workflowUtils.syntheticItemDataRoll(featureData, effect.parent, [workflow.token]);
-    let playAnimation = effect.flags['chris-premades'].armorOfAgathys.playAnimation;
+    let originItem = fromUuidSync(effect.origin);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'armorOfAgathysReflect', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token], {atLevel: effect.flags['chris-premades'].castLevel});
+    let playAnimation = itemUtils.getConfig(originItem, 'playAnimation');
     if (!playAnimation) return;
     //Animations by: eskiemoh
     new Sequence()
@@ -74,7 +61,7 @@ async function hit({trigger: {entity: effect}, workflow}) {
         .play();
 }
 async function start({trigger: {entity}}) {
-    let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
+    let playAnimation = itemUtils.getConfig(fromUuidSync(entity.origin), 'playAnimation');
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
@@ -167,7 +154,7 @@ async function start({trigger: {entity}}) {
         .play();
 }
 async function end({trigger: {entity}}) {
-    let playAnimation = entity.flags['chris-premades'].armorOfAgathys.playAnimation;
+    let playAnimation = itemUtils.getConfig(fromUuidSync(entity.origin), 'playAnimation');
     if (!playAnimation) return;
     let token = actorUtils.getFirstToken(entity.parent);
     if (!token) return;
@@ -186,7 +173,8 @@ async function end({trigger: {entity}}) {
 }
 export let armorOfAgathys = {
     name: 'Armor of Agathys',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -197,15 +185,6 @@ export let armorOfAgathys = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'cold',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',

@@ -1,5 +1,6 @@
-import {compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, dialogUtils, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let friendlyTargets = workflow.targets.filter(i => i.document.disposition === workflow.token.document.disposition && i.actor.type === 'character');
     if (!friendlyTargets.size) return;
@@ -19,19 +20,21 @@ async function use({trigger, workflow}) {
         formula += i.amount + i.document.system.hitDice + ' + ';
         await genericUtils.update(i.document, {'system.hitDiceUsed': i.document.system.hitDiceUsed + i.amount});
     }
-    formula += itemUtils.getMod(workflow.item);
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Wither and Bloom: Heal', {object: true, translate: 'CHRISPREMADES.Macros.WitherAndBloom.Heal'});
-    featureData.system.damage.parts[0][0] = formula;
-    await workflowUtils.syntheticItemDataRoll(featureData, selection.actor, [selection]);
+    formula += workflow.actor.system.attributes.spellmod;
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'witherAndBloomHeal', {strict: true});
+    if (!feature) return;
+    await activityUtils.setDamage(feature, formula);
+    await workflowUtils.syntheticActivityRoll(feature, [selection]);
 }
 async function damage({trigger, workflow, ditem}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let tokenDocument = await fromUuid(ditem.tokenUuid);
     if (workflow.token.document.disposition != tokenDocument.disposition) return;
     workflowUtils.negateDamageItemDamage(ditem);
 }
 export let witherAndBloom = {
     name: 'Wither and Bloom',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

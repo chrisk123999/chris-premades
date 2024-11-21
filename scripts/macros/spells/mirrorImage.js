@@ -1,12 +1,10 @@
-import {effectUtils, genericUtils, tokenUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils, tokenUtils} from '../../utils.js';
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'macro.tokenMagic',
@@ -26,7 +24,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['mirrorImageMirrored']);
     await effectUtils.createEffect(workflow.actor, effectData, {identifier: 'mirrorImage'});
 }
-async function attacked({workflow}) {
+async function attacked({trigger: {entity: effect}, workflow}) {
     if (workflow.targets.size !== 1) return;
     if (workflow.isFumble) return;
     let targetToken = workflow.targets.first();
@@ -34,19 +32,12 @@ async function attacked({workflow}) {
     let attackingToken = workflow.token;
     if (!tokenUtils.canSee(attackingToken, targetToken)) return;
     if (tokenUtils.canSense(attackingToken, targetToken, ['blindsight', 'seeAll'])) return;
-    let effect = effectUtils.getEffectByIdentifier(targetActor, 'mirrorImage');
-    if (!effect) return;
     let duplicates = effect.flags['chris-premades'].mirrorImage.images;
     if (!duplicates) return;
     let roll = await new Roll('1d20').evaluate();
     roll.toMessage({
         rollMode: 'roll',
-        speaker: {
-            scene: targetToken.scene.id,
-            actor: targetActor.id,
-            token: targetToken.id,
-            alias: targetToken.name
-        },
+        speaker: ChatMessage.implementation.getSpeaker({token: targetToken}),
         flavor: effect.name
     });
     let rollTotal = roll.total;
@@ -83,7 +74,7 @@ async function attacked({workflow}) {
 }
 export let mirrorImage = {
     name: 'Mirror Image',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

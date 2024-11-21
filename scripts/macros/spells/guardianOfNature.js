@@ -1,4 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils, workflowUtils} from '../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -15,9 +15,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: []
     };
     if (selection === 'beast') {
@@ -77,11 +75,11 @@ async function use({workflow}) {
         if (workflow.token) await workflowUtils.applyDamage([workflow.token], 10, 'temphp');
     }
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 export let guardianOfNature = {
     name: 'Guardian of Nature',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

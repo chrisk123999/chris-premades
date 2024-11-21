@@ -57,7 +57,8 @@ async function use({workflow}) {
 }
 export let conjureAnimals = {
     name: 'Conjure Animals',
-    version: '0.12.12',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

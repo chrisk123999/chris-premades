@@ -1,6 +1,7 @@
-import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let template = workflow.template;
     if (!template) return;
     await genericUtils.update(template, {
@@ -20,17 +21,14 @@ async function use({workflow}) {
 async function enterOrEnd({trigger: {entity: template, castData, token}}) {
     if (actorUtils.checkTrait(token.actor, 'ci', 'prone')) return;
     if (effectUtils.getEffectByStatusID(token.actor, 'prone')) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Grease: Fall', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Grease.Fall', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'greaseFall', {strict: true});
+    if (!feature) return;
+    let saveWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
+    if (saveWorkflow.failedSaves.size) await effectUtils.applyConditions(token.actor, ['prone']);
 }
 export let grease = {
     name: 'Grease',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -54,7 +54,8 @@ async function early({workflow}) {
 }
 export let chromaticOrb = {
     name: 'Chromatic Orb',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

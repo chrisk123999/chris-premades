@@ -1,45 +1,31 @@
-import {actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
-        flags: {
-            'chris-premades': {
-                thunderousSmite: {
-                    dc: itemUtils.getSaveDC(workflow.item),
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType')
-                }
-            }
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['thunderousSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'thunderousSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
-async function damage({workflow}) {
+async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.item.system.actionType !== 'mwak') return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'thunderousSmite');
-    if (!effect) return;
-    let damageType = effect.flags['chris-premades'].thunderousSmite.damageType;
+    if (workflow.activity.actionType !== 'mwak') return;
+    let originItem = fromUuidSync(effect.origin);
+    let damageType = itemUtils.getConfig(originItem, 'damageType');
     let formula = '2d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Thunderous Smite: Push', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ThunderousSmite.Push'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.save.dc = effect.flags['chris-premades'].thunderousSmite.dc;
-    let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.hitTargets.first()]);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'thunderousSmitePush', {strict: true});
+    if (!feature) return;
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [workflow.hitTargets.first()]);
     if (featureWorkflow.failedSaves.size) {
         let targetToken = workflow.targets.first();
         await tokenUtils.pushToken(workflow.token, targetToken, 10);
-        if (!actorUtils.checkTrait(targetToken.actor, 'ci', 'prone')) {
+        if (!actorUtils.checkTrait(targetToken.actor, 'ci', 'prone') && !effectUtils.getEffectByStatusID(targetToken.actor, 'prone')) {
             effectUtils.applyConditions(targetToken.actor, ['prone']);
         }
     }
@@ -47,7 +33,7 @@ async function damage({workflow}) {
 }
 export let thunderousSmite = {
     name: 'Thunderous Smite',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

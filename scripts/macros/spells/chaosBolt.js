@@ -1,6 +1,10 @@
-import {animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) === genericUtils.getIdentifier(workflow.item)) {
+        // Clear flags
+        await genericUtils.setFlag(workflow.item, 'chris-premades', '-=chaosBolt', null);
+    }
     if (!workflow.hitTargets.size) return;
     let chrisFlags = workflow.item.flags['chris-premades'];
     let buttons = [
@@ -50,25 +54,21 @@ async function use({workflow}) {
             let targetSelect = await dialogUtils.selectTargetDialog(workflow.item.name, 'CHRISPREMADES.Macros.ChaosBolt.Bounce', nearbyTargets);
             if (targetSelect) nextTarget = targetSelect[0];
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Chaos Bolt: Bounce', {getDescription: true, translate: 'CHRISPREMADES.Macros.ChaosBolt.BounceFeature', object: true});
-        if (!featureData) {
-            errors.missingPackItem();
-            return;
-        }
-        genericUtils.setProperty(featureData, 'flags.chris-premades.chaosBolt', {
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'chaosBoltBounce', {strict: true});
+        if (!feature) return;
+        await genericUtils.setFlag(workflow.item, 'chris-premades', 'chaosBolt', {
             ignoreList,
             targetUuid: currentTarget.document.uuid,
             castLevel,
             alwaysBounce,
             playAnimation
         });
-        featureData.system.damage.parts[1][0] = castLevel + 'd6';
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [nextTarget], {killAnim: playAnimation});
+        await workflowUtils.syntheticActivityRoll(feature, [nextTarget], {atLevel: castLevel});
     }
 }
 export let chaosBolt = {
     name: 'Chaos Bolt',
-    version: '0.12.0',
+    version: '1.1.0',
     hasAnimation: true,
     midi: {
         item: [

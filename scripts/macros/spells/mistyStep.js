@@ -6,7 +6,8 @@ async function use({workflow}) {
 }
 export let mistyStep = {
     name: 'Misty Step',
-    version: '0.12.47',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -24,6 +25,5 @@ export let mistyStep = {
             default: true,
             category: 'animation'
         }
-    ],
-    hasAnimation: true
+    ]
 };

@@ -1,16 +1,14 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 staggeringSmite: {
-                    dc: itemUtils.getSaveDC(workflow.item),
                     damageType: itemUtils.getConfig(workflow.item, 'damageType')
                 }
             }
@@ -19,28 +17,22 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['staggeringSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'staggeringSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
-async function damage({workflow}) {
+async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.item.system.actionType !== 'mwak') return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'staggeringSmite');
-    if (!effect) return;
+    if (workflow.activity.actionType !== 'mwak') return;
     let damageType = effect.flags['chris-premades'].staggeringSmite.damageType;
     let formula = '4d6';
     await workflowUtils.bonusDamage(workflow, formula, {damageType: damageType});
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Staggering Smite: Stagger', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.StaggeringSmite.Stagger'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.save.dc = effect.flags['chris-premades'].staggeringSmite.dc;
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [workflow.hitTargets.first()]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'staggeringSmiteStagger', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.hitTargets.first()]);
     await genericUtils.remove(effect);
 }
 export let staggeringSmite = {
     name: 'Staggering Smite',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

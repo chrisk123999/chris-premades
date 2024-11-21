@@ -1,4 +1,4 @@
 export let bladeWard = {
     name: 'Blade Ward',
-    version: '0.12.0'
+    version: '1.1.0'
 };

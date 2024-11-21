@@ -1,11 +1,13 @@
 import {workflowUtils} from '../../utils.js';
+import {proneOnFail} from '../generic/proneOnFail.js';
 
 async function use({workflow}) {
     await workflowUtils.handleInstantTemplate(workflow);
+    await proneOnFail.midi.item[0].macro({workflow});
 }
 export let tidalWave = {
     name: 'Tidal Wave',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

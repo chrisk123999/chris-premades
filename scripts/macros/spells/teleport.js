@@ -1,7 +1,8 @@
 import {socket, sockets} from '../../lib/sockets.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let targets = tokenUtils.findNearby(workflow.token, 10, 'ally', {includeIncapacitated: true});
     let toTeleport = [workflow.token];
     if (workflow.actor.sheet.rendered) workflow.actor.sheet.minimize();
@@ -98,16 +99,13 @@ async function use({workflow}) {
         });
     }
     if (totalDamage > 0) {
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Teleport: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Teleport.Damage'});
-        if (!featureData) {
-            errors.missingPackItem();
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'teleportDamage', {strict: true});
+        if (!feature) {
             if (workflow.actor.sheet.rendered) workflow.actor.sheet.maximize();
             return;
         }
-        featureData.system.damage.parts = [
-            [totalDamage + 'd10[force]', 'force']
-        ];
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, toTeleport);
+        await activityUtils.setDamage(feature, totalDamage + 'd10[force]', ['force']);
+        await workflowUtils.syntheticActivityRoll(feature, toTeleport);
     }
     if (flavor === 'offTarget') {
         let roll = await new Roll('1d10 * 1d10').evaluate();
@@ -405,7 +403,8 @@ async function use({workflow}) {
 }
 export let teleport = {
     name: 'Teleport',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -17,7 +17,8 @@ async function early({workflow}) {
 }
 export let thunderStep = {
     name: 'Thunder Step',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -1,5 +1,6 @@
-import {animationUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, combatUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -18,8 +19,7 @@ async function use({workflow}) {
                 castData: {...workflow.castData, saveDC: itemUtils.getSaveDC(workflow.item)},
                 macros: {
                     template: ['cloudkillCloud']
-                },
-                damageType: itemUtils.getConfig(workflow.item, 'damageType')
+                }
             },
             walledTemplates: {
                 wallRestriction: 'move',
@@ -87,20 +87,9 @@ async function enterOrTurn({trigger: {entity: template, castData, token}}) {
         touchedTokens.push(token.id);
         await genericUtils.setFlag(template, 'chris-premades', 'cloudkill.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Cloudkill: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.Cloudkill.Damage', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem(constants.packs.spellFeatures, 'Cloudkill: Damage');
-        return;
-    }
-    let damageType = template.flags['chris-premades']?.damageType;
-    featureData.system.damage.parts = [
-        [
-            castData.castLevel + 'd8[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'cloudkillDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token], {atLevel: castData.castLevel});
 }
 async function endCombat({trigger}) {
     await genericUtils.setFlag(trigger.entity, 'chris-premades', 'cloudkill.touchedTokens', null);
@@ -108,7 +97,8 @@ async function endCombat({trigger}) {
 // TODO: Maybe add darkness source attached to template
 export let cloudkill = {
     name: 'Cloudkill',
-    version: '1.0.28',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -119,15 +109,6 @@ export let cloudkill = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'poison',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',

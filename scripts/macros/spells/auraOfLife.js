@@ -1,13 +1,11 @@
-import {actorUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: genericUtils.format('CHRISPREMADES.Auras.Source', {auraName: workflow.item.name}),
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 auraOfLife: {
@@ -18,7 +16,7 @@ async function use({workflow}) {
     };
     effectUtils.addMacro(effectData, 'aura', ['auraOfLifeAura']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'auraOfLife'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function create({trigger: {entity: effect, target, identifier}}) {
     let targetEffect = effectUtils.getEffectByIdentifier(target.actor, identifier);
@@ -33,7 +31,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: 'necrotic',
                 priority: 50
             }
@@ -88,7 +86,7 @@ function preEffect(effect, updates, options) {
 }
 export let auraOfLife = {
     name: 'Aura of Life',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

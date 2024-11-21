@@ -1,4 +1,4 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.failedSaves.size) {
         let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -39,16 +39,8 @@ async function use({workflow}) {
         let unnecessaryConcentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (unnecessaryConcentration) await genericUtils.remove(unnecessaryConcentration);
     }
-    let buttons = [
-        ['CHRISPREMADES.Macros.BestowCurse.Ability', 'Ability'],
-        ['CHRISPREMADES.Macros.BestowCurse.Attack', 'Attack'],
-        ['CHRISPREMADES.Macros.BestowCurse.Turn', 'Turn'],
-        ['CHRISPREMADES.Macros.BestowCurse.Damage', 'Damage'],
-        ['CHRISPREMADES.Macros.BestowCurse.Other', 'Other']
-    ];
-    let selection = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.BestowCurse.SelectCurse', buttons);
-    if (!selection) return;
-    let effectName = workflow.item.name + ': ' + genericUtils.translate(buttons.find(x => x[1] === selection)[0]);
+    let activityIdentifier = activityUtils.getIdentifier(workflow.activity);
+    let effectName = workflow.activity.name;
     let targetEffectData = {
         name: effectName,
         img: workflow.item.img,
@@ -59,8 +51,8 @@ async function use({workflow}) {
             seconds: duration
         };
     }
-    switch (selection) {
-        case 'Ability': {
+    switch (activityIdentifier) {
+        case 'bestowCurseAbility': {
             let abilityChoices = Object.entries(CONFIG.DND5E.abilities).map(([abbr, {label}]) => [label, abbr]);
             let ability = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.BestowCurse.AbilitySelect', abilityChoices);
             if (!ability) return;
@@ -80,7 +72,7 @@ async function use({workflow}) {
             ];
             break;
         }
-        case 'Damage':
+        case 'bestowCurseDamage':
             casterEffectData = {
                 name: effectName,
                 img: workflow.item.img,
@@ -103,7 +95,7 @@ async function use({workflow}) {
             effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseDamageTarget']);
             if (!isNaN(duration)) casterEffectData.duration.seconds = duration;
             break;
-        case 'Attack':
+        case 'bestowCurseAttack':
             targetEffectData.flags = {
                 'chris-premades': {
                     bestowCurse: {
@@ -113,7 +105,7 @@ async function use({workflow}) {
             };
             effectUtils.addMacro(targetEffectData, 'midi.actor', ['bestowCurseAttack']);
             break;
-        case 'Turn': {
+        case 'bestowCurseTurn': {
             let saveDC = itemUtils.getSaveDC(workflow.item);
             targetEffectData.changes = [
                 {
@@ -127,13 +119,13 @@ async function use({workflow}) {
         }
     }
     let targetEffectOptions = {
-        identifier: 'bestowCurse' + selection
+        identifier: activityIdentifier
     };
-    if (concentration && selection !== 'Damage') {
+    if (concentration && activityIdentifier !== 'bestowCurseDamage') {
         targetEffectOptions.concentrationItem = workflow.item;
         targetEffectOptions.interdependent = true;
     }
-    if (selection === 'Damage') targetEffectOptions.parentEntity = true;
+    if (activityIdentifier === 'bestowCurseDamage') targetEffectOptions.parentEntity = true;
     if (concentration) {
         casterEffectOptions.concentrationItem = workflow.item;
         casterEffectOptions.interdependent = true;
@@ -217,7 +209,7 @@ async function remove({trigger: {entity}}) {
 }
 export let bestowCurse = {
     name: 'Bestow Curse',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

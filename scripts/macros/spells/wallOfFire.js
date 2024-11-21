@@ -1,5 +1,6 @@
-import {combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, regionUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, combatUtils, dialogUtils, effectUtils, genericUtils, itemUtils, regionUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function early({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentration = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let shape = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Macros.WallOfFire.Shape', [['REGION.SHAPES.circle', 'circle'], ['DND5E.TargetLine', 'line']], {displayAsRows: true});
     if (!shape) return;
@@ -66,7 +67,8 @@ async function early({trigger, workflow}) {
                         saveDC: itemUtils.getSaveDC(workflow.item)
                     },
                     wallOfFire: {
-                        casterUuid: workflow.actor.uuid
+                        casterUuid: workflow.actor.uuid,
+                        origin: workflow.item.uuid
                     }
                 }
             }
@@ -105,7 +107,8 @@ async function early({trigger, workflow}) {
                         }
                     },
                     wallOfFire: {
-                        casterUuid: workflow.actor.uuid
+                        casterUuid: workflow.actor.uuid,
+                        origin: workflow.item.uuid
                     }
                 }
             }
@@ -283,7 +286,8 @@ async function early({trigger, workflow}) {
                         }
                     },
                     wallOfFire: {
-                        casterUuid: workflow.actor.uuid
+                        casterUuid: workflow.actor.uuid,
+                        origin: workflow.item.uuid
                     }
                 }
             }
@@ -348,7 +352,8 @@ async function early({trigger, workflow}) {
                         saveDC: itemUtils.getSaveDC(workflow.item)
                     },
                     wallOfFire: {
-                        casterUuid: workflow.actor.uuid
+                        casterUuid: workflow.actor.uuid,
+                        origin: workflow.item.uuid
                     }
                 }
             }
@@ -363,7 +368,7 @@ async function movement({trigger}) {
     await save(trigger, 'Movement');
 }
 async function endTurn({trigger}) {
-    await save(trigger, 'End Turn');
+    await save(trigger, 'EndTurn');
 }
 async function save(trigger, type) {
     if (combatUtils.inCombat()) {
@@ -372,22 +377,20 @@ async function save(trigger, type) {
         touchedTokens.push(trigger.token.id);
         await genericUtils.setFlag(trigger.entity, 'chris-premades', 'wallOfFire.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
     }
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Wall of Fire: ' + type, {object: true, getDescription: true});
-    if (!featureData) return;
+    // Change back if end up using different ones I guess
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(trigger.entity.flags['chris-premades'].wallOfFire.origin), 'wallOfFireDamage', {strict: true});
+    // let feature = activityUtils.getActivityByIdentifier(fromUuidSync(trigger.entity.flags['chris-premades'].wallOfFire.origin), 'wallOfFire' + type, {strict: true});
+    if (!feature) return;
     let castLevel = trigger.castData.castLevel;
-    featureData.system.damage.parts[0][0] = (castLevel + 1) + 'd8[fire]';
-    let casterUuid = trigger.entity.flags['chris-premades']?.wallOfFire?.casterUuid;
-    if (!casterUuid) return;
-    let actor = await fromUuid(casterUuid);
-    if (!actor) return;
-    await workflowUtils.syntheticItemDataRoll(featureData, actor, [trigger.token], {killAnim: true});
+    await workflowUtils.syntheticActivityRoll(feature, [trigger.token], {atLevel: castLevel});
 }
 async function endCombat({trigger}) {
     await genericUtils.setFlag(trigger.entity, 'chris-premades', 'wallOfFire.touchedTokens', null);
 }
 export let wallOfFire = {
     name: 'Wall of Fire',
-    version: '1.0.17',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

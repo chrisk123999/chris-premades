@@ -11,13 +11,11 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'frightened',
                 priority: 20
             }
@@ -52,7 +50,7 @@ async function turnStart({trigger: {token}}) {
 }
 export let heroism = {
     name: 'Heroism',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

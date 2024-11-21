@@ -4,7 +4,6 @@ import {backup} from './extensions/backup.js';
 import {conditions} from './extensions/conditions.js';
 import {effects} from './extensions/effects.js';
 import {tokens} from './extensions/tokens.js';
-import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {gambitPremades} from './integrations/gambitsPremades.js';
 import {miscPremades} from './integrations/miscPremades.js';
@@ -173,23 +172,6 @@ export function registerSettings() {
         }
     });
     addSetting({
-        key: 'colorizeBuildABonus',
-        type: Boolean,
-        default: false,
-        category: 'integration',
-        onChange: value => {
-            if (value) {
-                Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
-                Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-                Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
-            } else {
-                Hooks.off('renderItemSheet', buildABonus.renderItemSheet);
-                Hooks.off('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-                Hooks.off('renderActorSheet5e', buildABonus.renderActorSheet5e);
-            }
-        }
-    });
-    addSetting({
         key: 'colorizeAutomatedAnimations',
         type: Boolean,
         default: false,
@@ -207,19 +189,6 @@ export function registerSettings() {
         type: Boolean,
         default: false,
         category: 'integration'
-    });
-    addSetting({
-        key: 'babonusOverlappingEffects',
-        type: Boolean,
-        default: true,
-        category: 'integration',
-        onChange: value => {
-            if (value) {
-                Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
-            } else {
-                Hooks.off('babonus.filterBonuses', buildABonus.filterBonuses);
-            }
-        }
     });
     addSetting({
         key: 'colorizeDAE',

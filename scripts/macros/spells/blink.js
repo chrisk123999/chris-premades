@@ -1,5 +1,4 @@
 import {socket, sockets} from '../../lib/sockets.js';
-import {Teleport} from '../../lib/teleport.js';
 import {animationUtils, effectUtils, genericUtils, itemUtils, socketUtils} from '../../utils.js';
 
 async function use({workflow}) {
@@ -8,9 +7,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 blink: {
@@ -99,7 +96,8 @@ async function turnEnd({trigger: {entity: effect, token}}) {
 }
 export let blink = {
     name: 'Blink',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

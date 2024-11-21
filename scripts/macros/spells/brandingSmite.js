@@ -4,9 +4,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 brandingSmite: {
@@ -20,7 +18,7 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['brandingSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'brandingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function damage({workflow}) {
     if (!workflow.hitTargets.size) return;
@@ -48,7 +46,7 @@ async function damage({workflow}) {
             }, 
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'invisible',
                 priority: 20
             }
@@ -58,7 +56,7 @@ async function damage({workflow}) {
 }
 export let brandingSmite = {
     name: 'Branding Smite',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -49,7 +49,7 @@ async function early({workflow}) {
 }
 export let holdPerson = {
     name: 'Hold Person',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -155,7 +155,10 @@ async function executeBonusMacroPass(actor, pass, skillId, options, roll) {
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
-async function rollSkill(wrapped, skillId, options = {}) {
+async function rollSkill(wrapped, config, dialog = {}, message = {}) {
+    let skillId = config.skill;
+    let event = config.event;
+    let options = {};
     await executeMacroPass(this, 'situational', skillId, options);
     let selections = await executeContextMacroPass(this, 'context', skillId, options);
     if (selections.length) {
@@ -178,31 +181,34 @@ async function rollSkill(wrapped, skillId, options = {}) {
         }
     }
     let overtimeActorUuid;
-    if (options.event) {
-        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+    if (event) {
+        let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
         if (target?.dataset?.midiOvertimeActorUuid)
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
     }
     let messageData;
-    let messageDataFunc = (actor, rollData, skillIdInternal) => {
+    let messageDataFunc = (config, dialog, message) => {
+        let actor = config.subject;
+        let skillIdInternal = config.skill;
         if (actor.uuid !== this.uuid || skillIdInternal !== skillId) {
-            Hooks.once('dnd5e.preRollSkill', messageDataFunc);
+            Hooks.once('dnd5e.preRollSkillV2', messageDataFunc);
             return;
         }
-        messageData = rollData.messageData;
+        messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
     };
-    Hooks.once('dnd5e.preRollSkill', messageDataFunc);
-    let returnData = await wrapped(skillId, {...options, chatMessage: false});
+    Hooks.once('dnd5e.preRollSkillV2', messageDataFunc);
+    if (Object.entries(options).length) config.rolls = [{options}];
+    let [returnData] = await wrapped(config, dialog, {...message, create: false});
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', skillId, options, returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
     //await executeMacroPass(this, 'optionalBonus', skillId, options, returnData);
-    if (options.chatMessage !== false) {
+    if (message.create !== false) {
         await returnData.toMessage(messageData);
     }
-    return returnData;
+    return [returnData];
 }
 function patch() {
     genericUtils.log('dev', 'Skill Checks Patched!');

@@ -1,6 +1,7 @@
-import {actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
     let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
     let template = workflow.template;
@@ -38,17 +39,14 @@ async function enterOrStart({trigger: {entity: template, castData, token}}) {
     if (effectUtils.getConcentrationEffect(token.actor)) await actorUtils.doConcentrationCheck(token.actor, castData.saveDC);
     if (actorUtils.checkTrait(token.actor, 'ci', 'prone')) return;
     if (effectUtils.getEffectByStatusID(token.actor, 'prone')) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sleet Storm: Prone', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SleetStorm.Prone', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'sleetStormProne', {strict: true});
+    if (!feature) return;
+    let saveWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
+    if (saveWorkflow.failedSaves.size) await effectUtils.applyConditions(token.actor, ['prone']);
 }
 export let sleetStorm = {
     name: 'Sleet Storm',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -243,6 +243,7 @@
             "StatusRemove": "Remove from Status Effects"
         },
         "Error": {
+            "ActivityNotFound": "Activity (identifier {identifier}) not found on item!",
             "ActorNotFound": "Required sidebar actor not found!",
             "CompendiumItemNotFound": "Compendium item not found!",
             "CompendiumNotFound": "Invalid compendium specified!",
@@ -2042,10 +2043,6 @@
                 "Hint": "When enabled, items that have Automated Animations disabled will still play sounds setup in the Automatic Recognition menu.",
                 "Name": "Automated Animations: Play Sounds"
             },
-            "babonusOverlappingEffects": {
-                "Hint": "When enabled, Build A Bonus aura bonuses will respect the overlapping spell effect and combining game effects rules.",
-                "Name": "Build A Bonus: Overlapping Spell Effects"
-            },
             "backupCompendium": {
                 "Hint": "Select your actor backup compendium.",
                 "Name": "Actor Backup Compendium"
@@ -2099,10 +2096,6 @@
             "colorizeAutomatedAnimations": {
                 "Hint": "When enabled, the Automated Animations titlebar icon will be recolored based on the configuration status.",
                 "Name": "Automated Animations: Colorize Titlebar Icon"
-            },
-            "colorizeBuildABonus": {
-                "Hint": "When enabled, the Build A Bonus titlebar icon will be recolored if a bonus is on the item or effect.",
-                "Name": "Build A Bonus: Colorize Titlebar Icon"
             },
             "colorizeDAE": {
                 "Hint": "When enabled, the DAE titlebar icon will be recolored if an effect is on the item.",

@@ -1,13 +1,11 @@
-import {actorUtils, effectUtils, genericUtils} from '../../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function use({workflow}) {
     if (!workflow.targets.size) return;
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'flags.midi-qol.advantage.ability.save.wis',
@@ -28,7 +26,7 @@ async function use({workflow}) {
         await effectUtils.createEffect(token.actor, effectData, {concentrationItem: workflow.item, identifier: 'beaconOfHope'});
     }
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function damageApplication({workflow, ditem}) {
     if (!workflow.targets.size) return;
@@ -59,7 +57,7 @@ async function damageApplication({workflow, ditem}) {
 }
 export let beaconOfHope = {
     name: 'Beacon of Hope',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

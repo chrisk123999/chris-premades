@@ -1,6 +1,7 @@
-import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let template = workflow.template;
     if (!template) {
@@ -26,13 +27,9 @@ async function startOrEnter({trigger: {entity: template, castData, token}}) {
     if (!targetCombatant) return;
     if (!combatUtils.perTurnCheck(targetCombatant, 'sickeningRadiance')) return;
     await combatUtils.setTurnCheck(targetCombatant, 'sickeningRadiance');
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Sickening Radiance: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.SickeningRadiance.Damage', flatDC: castData.saveDC});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'sickeningRadianceDamage', {strict: true});
+    if (!feature) return;
+    let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (!featureWorkflow.failedSaves.size) return;
     let exhaustionLevel = template.flags['chris-premades'].sickeningRadiance?.[token.id]?.exhaustionLevel;
     if (exhaustionLevel === undefined) {
@@ -55,7 +52,7 @@ async function startOrEnter({trigger: {entity: template, castData, token}}) {
                 },
                 {
                     key: 'system.traits.ci.value',
-                    mode: 0,
+                    mode: 2,
                     value: 'invisible',
                     priority: 20
                 }
@@ -83,7 +80,7 @@ async function end({trigger: {entity: effect}}) {
 }
 export let sickeningRadiance = {
     name: 'Sickening Radiance',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

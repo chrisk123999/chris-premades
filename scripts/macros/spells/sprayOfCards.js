@@ -6,7 +6,7 @@ async function use({workflow}) {
 
 export let sprayOfCards = {
     name: 'Spray of Cards',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

@@ -32,9 +32,7 @@ async function use({trigger, workflow}) {
             name: workflow.item.name,
             img: workflow.item.img,
             origin: workflow.item.uuid,
-            duration: {
-                seconds: 3600 * workflow.item.system.duration.value
-            },
+            duration: itemUtils.convertDuration(workflow.item),
             changes: [
                 {
                     key: 'name',
@@ -67,7 +65,7 @@ async function use({trigger, workflow}) {
 }
 export let elementalWeapon = {
     name: 'Elemental Weapon',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

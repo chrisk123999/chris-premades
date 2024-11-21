@@ -1,14 +1,10 @@
-import {combatUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, combatUtils, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 async function save(token, template) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Zone of Truth: Save', {getDescription: true, translate: 'CHRISPREMADES.Macros.ZoneOfTruth.Save', identifier: 'zoneOfTruthSave', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.save.dc = templateUtils.getSaveDC(template);
     let originItem = await fromUuid(template.flags['chris-premades'].zoneOfTruth.origin);
     if (!originItem) return;
-    let workflow = await workflowUtils.syntheticItemDataRoll(featureData, originItem.actor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(originItem, 'zoneOfTruthSave', {strict: true});
+    if (!feature) return;
+    let workflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (!workflow.failedSaves.size) return;
     let startTime = template.flags['chris-premades'].zoneOfTruth.startTime;
     let worldTime = game.time.worldTime;
@@ -24,19 +20,20 @@ async function save(token, template) {
     };
     await effectUtils.createEffect(token.actor, effectData, {parentEntity: template, identifier: 'zoneOfTruthSave'});
 }
-async function enterOrStart({trigger}) {
-    if (!trigger.token.actor) return;
-    let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'zoneOfTruthSave');
+async function enterOrStart({trigger: {token, entity: template}}) {
+    if (!token.actor) return;
+    let effect = effectUtils.getEffectByIdentifier(token.actor, 'zoneOfTruthSave');
     if (effect) return;
     if (combatUtils.inCombat()) {
-        let touchedTokens = trigger.entity.flags['chris-premades']?.zoneOfTruth?.touchedTokens?.[combatUtils.currentTurn()] ?? [];
-        if (touchedTokens.includes(trigger.token.id)) return;
-        touchedTokens.push(trigger.token.id);
-        await genericUtils.setFlag(trigger.entity, 'chris-premades', 'zoneOfTruth.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
+        let touchedTokens = template.flags['chris-premades']?.zoneOfTruth?.touchedTokens?.[combatUtils.currentTurn()] ?? [];
+        if (touchedTokens.includes(token.id)) return;
+        touchedTokens.push(token.id);
+        await genericUtils.setFlag(template, 'chris-premades', 'zoneOfTruth.touchedTokens.' + combatUtils.currentTurn(), touchedTokens);
     }
-    await save(trigger.token, trigger.entity);
+    await save(token, template);
 }
 async function use({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.template) return;
     await genericUtils.update(workflow.template, {
         flags: {
@@ -55,7 +52,7 @@ async function use({trigger, workflow}) {
                 zoneOfTruth: {
                     origin: workflow.item.uuid,
                     startTime: game.time.worldTime,
-                    duration: workflow.item.system.duration.value * 60
+                    duration: itemUtils.convertDuration(workflow.item)
                 }
             }
         }
@@ -63,7 +60,7 @@ async function use({trigger, workflow}) {
 }
 export let zoneOfTruth = {
     name: 'Zone of Truth',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

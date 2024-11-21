@@ -10,7 +10,7 @@ async function use({workflow}) {
 }
 export let tashasCausticBrew = {
     name: 'Tasha\'s Caustic Brew',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

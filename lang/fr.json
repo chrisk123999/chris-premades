@@ -1975,10 +1975,6 @@
           "Hint": "Lorsqu'il est activé, les objets ayant des animations automatisées désactivées joueront tout de même les sons configurés dans le menu de reconnaissance automatique.",
           "Name": "Animations automatisées : Jouer des sons"
       },
-      "babonusOverlappingEffects": {
-          "Hint": "Lorsqu'il est activé, les bonus d'aura de Build A Bonus respecteront l'effet de sort qui se superpose et les règles de combinaison des effets de jeu.",
-          "Name": "Build A Bonus : Effets de sorts chevauchants"
-      },
       "backupCompendium": {
           "Hint": "Sélectionnez votre compendium de sauvegarde d'acteur.",
           "Name": "Compendium de sauvegarde d'acteur"
@@ -2032,10 +2028,6 @@
       "colorizeAutomatedAnimations": {
           "Hint": "Lorsqu'il est activé, l'icône de la barre de titre des animations automatisées sera recolorée en fonction de l'état de configuration.",
           "Name": "Animations automatisées : Coloriser l'icône de la barre de titre"
-      },
-      "colorizeBuildABonus": {
-          "Hint": "Lorsqu'il est activé, l'icône de la barre de titre de Build A Bonus sera recolorée si un bonus est sur l'objet ou l'effet.",
-          "Name": "Build A Bonus : Coloriser l'icône de la barre de titre"
       },
       "colorizeDAE": {
           "Hint": "Lorsqu'il est activé, l'icône de la barre de titre DAE sera recolorée si un effet est sur l'objet.",

@@ -2,7 +2,7 @@ import {upcastTargets} from '../generic/upcastTargets.js';
 
 export let bless = {
     name: 'Bless',
-    version: '0.12.78',
+    version: '1.1.0',
     midi: {
         item: [
             {

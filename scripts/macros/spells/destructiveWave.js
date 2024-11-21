@@ -1,4 +1,5 @@
 import {animationUtils, dialogUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {proneOnFail} from '../generic/proneOnFail.js';
 
 async function damage({workflow}) {
     let damageType = await dialogUtils.buttonDialog(workflow.item.name, 'CHRISPREMADES.Dialog.DamageType', [['DND5E.DamageRadiant', 'radiant'], ['DND5E.DamageNecrotic', 'necrotic']]);
@@ -18,14 +19,16 @@ async function damage({workflow}) {
 }
 export let destructiveWave = {
     name: 'Destructive Wave',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
                 pass: 'damageRollComplete',
                 macro: damage,
                 priority: 250
-            }
+            },
+            proneOnFail.midi.item[0]
         ]
     },
     config: [

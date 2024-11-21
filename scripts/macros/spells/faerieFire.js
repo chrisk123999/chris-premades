@@ -9,9 +9,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'flags.midi-qol.grants.advantage.attack.all',
@@ -21,7 +19,7 @@ async function use({workflow}) {
             },
             {
                 key: 'system.traits.ci.value',
-                mode: 0,
+                mode: 2,
                 value: 'invisible',
                 priority: 20
             },
@@ -195,7 +193,8 @@ async function end({trigger: {entity}}) {
 }
 export let faerieFire = {
     name: 'Faerie Fire',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -59,7 +59,8 @@ async function use ({workflow}) {
 }
 export let burningHands = {
     name: 'Burning Hands',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -1,6 +1,7 @@
-import {actorUtils, animationUtils, combatUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, socketUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.failedSaves.size) {
         let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
         if (concentrationEffect) await genericUtils.remove(concentrationEffect);
@@ -10,9 +11,7 @@ async function use({workflow}) {
         name: genericUtils.translate('CHRISPREMADES.Macros.CompelledDuel.Target'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 compelledDuel: {
@@ -28,9 +27,7 @@ async function use({workflow}) {
         name: genericUtils.translate('CHRISPREMADES.Macros.CompelledDuel.Source'),
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: targetEffectData.duration,
         flags: {
             'chris-premades': {
                 compelledDuel: {
@@ -131,15 +128,11 @@ async function targetMoved({trigger: {entity: effect}, options}) {
     if (oldDistance >= distance || distance <= 30) return;
     let turnCheck = combatUtils.perTurnCheck(effect, 'compelledDuel');
     if (!turnCheck) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Compelled Duel: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.CompelledDuel.Moved'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'compelledDuelMoved', {strict: true});
+    if (!feature) return;
     let originItem = await fromUuid(effect.origin);
     if (!originItem) return;
-    featureData.system.save.dc = itemUtils.getSaveDC(originItem);
-    let spellWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, originItem.actor, [token]);
+    let spellWorkflow = await workflowUtils.syntheticActivityRoll(feature, [token]);
     if (!spellWorkflow.failedSaves.size) {
         await combatUtils.setTurnCheck(effect, 'compelledDuel');
         return;
@@ -179,7 +172,7 @@ async function targetMoved({trigger: {entity: effect}, options}) {
 }
 export let compelledDuel = {
     name: 'Compelled Duel',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

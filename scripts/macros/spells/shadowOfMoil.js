@@ -1,18 +1,17 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, constants, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.traits.dr.value',
-                mode: 0,
+                mode: 2,
                 value: 'radiant',
                 priority: 20
             }
@@ -62,16 +61,13 @@ async function onHit({trigger, workflow}) {
     if (distance > 10) return;
     let effect = effectUtils.getEffectByIdentifier(trigger.token.actor, 'shadowOfMoil');
     if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Shadow of Moil: Damage', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ShadowOfMoil.Damage'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await workflowUtils.syntheticItemDataRoll(featureData, trigger.token.actor, [workflow.token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'shadowOfMoilDamage', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [workflow.token]);
 }
 export let shadowOfMoil = {
     name: 'Shadow of Moil',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

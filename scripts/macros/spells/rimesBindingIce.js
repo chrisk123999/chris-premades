@@ -115,9 +115,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.attributes.movement.all',
@@ -125,14 +123,7 @@ async function use({workflow}) {
                 value: '*0',
                 priority: 20
             }
-        ],
-        flags: {
-            'chris-premades': {
-                rimesBindingIce: {
-                    playAnimation: itemUtils.getConfig(workflow.item, 'playAnimation')
-                }
-            }
-        }
+        ]
     };
     effectUtils.addMacro(effectData, 'effect', ['rimesBindingIceFrozen']);
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
@@ -144,7 +135,7 @@ async function use({workflow}) {
     }
 }
 async function end({trigger: {entity: effect}}) {
-    let playAnimation = effect.flags['chris-premades'].rimesBindingIce.playAnimation && animationUtils.jb2aCheck() === 'patreon';
+    let playAnimation = itemUtils.getConfig(fromUuidSync(effect.origin), 'playAnimation') && animationUtils.jb2aCheck() === 'patreon';
     let token = actorUtils.getFirstToken(effect.parent);
     if (!playAnimation || !token) return;
     await unfreeze(token, 'bindingIce');
@@ -213,7 +204,8 @@ export async function unfreeze(token, name) {
 }
 export let rimesBindingIce = {
     name: 'Rime\'s Binding Ice',
-    version: '1.0.36',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

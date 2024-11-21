@@ -1,4 +1,4 @@
 export let shieldOfFaith = {
     name: 'Shield of Faith',
-    version: '0.12.0'
+    version: '1.1.0'
 };

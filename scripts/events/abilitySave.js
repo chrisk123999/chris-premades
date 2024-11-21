@@ -155,7 +155,10 @@ async function executeBonusMacroPass(actor, pass, saveId, options, roll) {
     }
     return CONFIG.Dice.D20Roll.fromRoll(roll);
 }
-async function save(wrapped, saveId, options = {}) {
+async function rollSave(wrapped, config, dialog = {}, message = {}) {
+    let saveId = config.ability;
+    let event = config.event;
+    let options = {};
     await executeMacroPass(this, 'situational', saveId, options);
     let selections = await executeContextMacroPass(this, 'context', saveId, options);
     if (selections.length) {
@@ -178,39 +181,42 @@ async function save(wrapped, saveId, options = {}) {
         }
     }
     let overtimeActorUuid;
-    if (options.event) {
-        let target = options.event?.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
+    if (event) {
+        let target = event.target?.closest('.roll-link, [data-action="rollRequest"], [data-action="concentration"]');
         if (target?.dataset?.midiOvertimeActorUuid) {
             overtimeActorUuid = target.dataset.midiOvertimeActorUuid;
-            options.rollMode = target.dataset.midiRollMode ?? options.rollMode;
+            options.rollMode = target.dataset.midiRollMode ?? target.dataset.rollMode ?? options.rollMode;
         }
     }
     let messageData;
-    let messageDataFunc = (actor, rollData, saveIdInternal) => {
+    let messageDataFunc = (config, dialog, message) => {
+        let actor = config.subject;
+        let saveIdInternal = config.ability;
         if (actor.uuid !== this.uuid || saveIdInternal !== saveId) {
-            Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
+            Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
             return;
         }
-        messageData = rollData.messageData;
+        messageData = message.data;
         if (overtimeActorUuid) messageData['flags.midi-qol.overtimeActorUuid'] = overtimeActorUuid;
     };
-    Hooks.once('dnd5e.preRollAbilitySave', messageDataFunc);
-    let returnData = await wrapped(saveId, {...options, chatMessage: false});
+    Hooks.once('dnd5e.preRollSavingThrowV2', messageDataFunc);
+    if (Object.entries(options).length) config.rolls = [{options}];
+    let [returnData] = await wrapped(config, dialog, {...message, create: false});
     if (!returnData) return;
     let oldOptions = returnData.options;
     returnData = await executeBonusMacroPass(this, 'bonus', saveId, options, returnData);
     if (returnData.options) genericUtils.mergeObject(returnData.options, oldOptions);
-    if (options.chatMessage !== false) {
+    if (message.create !== false) {
         genericUtils.mergeObject(messageData, {flags: options.flags ?? {} });
         genericUtils.setProperty(messageData, 'flags.midi-qol.lmrtfy.requestId', options.flags?.lmrtfy?.data?.requestId);
         messageData.template = 'modules/midi-qol/templates/roll-base.html';
-        await returnData.toMessage(messageData);
+        await returnData.toMessage(messageData, {rollMode: returnData.options?.rollMode});
     }
-    return returnData;
+    return [returnData];
 }
 function patch() {
     genericUtils.log('dev', 'Ability Saves Patched!');
-    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollAbilitySave', save, 'WRAPPER');
+    libWrapper.register('chris-premades', 'CONFIG.Actor.documentClass.prototype.rollSavingThrow', rollSave, 'WRAPPER');
 }
 export let abilitySave = {
     patch

@@ -154,6 +154,9 @@ async function updateAll(actor) {
     let summary = await ActorMedkit.actorUpdateAll(actor);
     return summary;
 }
+function getEquivalentSpellSlotName(actor, level) {
+    return Object.entries(actor.system.spells)?.find(i => i[1].level == level)?.[0];
+}
 export let actorUtils = {
     getEffects,
     addFavorites,
@@ -178,5 +181,6 @@ export let actorUtils = {
     isShapeChanger,
     doConcentrationCheck,
     polymorph,
-    updateAll
+    updateAll,
+    getEquivalentSpellSlotName
 };

@@ -1,24 +1,16 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, workflowUtils} from '../../utils.js';
 async function use({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let boltsLeft = 1 + Math.floor((level + 1) * (1/6)); //Todo: Make this work with twinned spell somehow.
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Eldritch Blast: Beam', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.EldritchBlast.Beam', identifier: 'eldritchBlastBeam'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.damage.parts[0] = [
-        itemUtils.getConfig(workflow.item, 'formula'),
-        itemUtils.getConfig(workflow.item, 'damageType')
-    ];
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'eldritchBlastBeam', {strict: true});
+    if (!feature) return;
     let agonizingBlast = itemUtils.getItemByIdentifier(workflow.actor, 'agonizingBlast');
-    if (agonizingBlast) featureData.system.damage.parts[0][0] += ' + ' + workflow.actor.system.abilities.cha.mod;
-    featureData.system.ability = workflow.item.system.ability;
+    if (agonizingBlast) feature.damage.parts[0].custom.formula += ' + @abilities.cha.mod';
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
     let color = itemUtils.getConfig(workflow.item, 'color');
     let sound = itemUtils.getConfig(workflow.item, 'sound');
-    genericUtils.setProperty(featureData, 'flags.chris-premades.eldritchBlast.sound', sound);
     while (boltsLeft) {
         let selection, skip;
         if (workflow.targets.size > 1) {
@@ -32,19 +24,23 @@ async function use({trigger, workflow}) {
                 let colors = eldritchBlast.config.find(i => i.value === 'color').options.map(j => j.value).filter(k => k !== 'random');
                 color = colors[Math.floor(Math.random() * colors.length)];
             }
-            genericUtils.setProperty(featureData, 'flags.chris-premades.eldritchBlast.color', color);
+            await genericUtils.setFlag(workflow.item, 'chris-premades', 'eldritchBlast', {
+                color,
+                sound
+            });
         }
         for (let i of selection) {
             for (let j = 0; j < i.value; j++) {
                 let hp = i.document.actor?.system?.attributes?.hp?.value;
                 if (!hp && skip) continue;
-                await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [i.document], {options: {workflowOptions: {targetConfirmation: 'none'}}, killAnim: playAnimation});
+                await workflowUtils.syntheticActivityRoll(feature, [i.document], {options: {targetConfirmation: 'none'}});
                 boltsLeft -= 1;
             }
         }
     }
 }
 async function beam({trigger, workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== 'eldritchBlastBeam') return;
     let color = workflow.item.flags['chris-premades']?.eldritchBlast?.color;
     if (!color) return;
     let sound = workflow.item.flags['chris-premades']?.eldritchBlast?.sound;
@@ -53,9 +49,15 @@ async function beam({trigger, workflow}) {
 }
 export let eldritchBlast = {
     name: 'Eldritch Blast',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
+            {
+                pass: 'attackRollComplete',
+                macro: beam,
+                priority: 50
+            },
             {
                 pass: 'rollFinished',
                 macro: use,
@@ -64,23 +66,6 @@ export let eldritchBlast = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'force',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '1d10[force]',
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',
@@ -169,17 +154,4 @@ export let eldritchBlast = {
             category: 'sound'
         }
     ]
-};
-export let eldritchBlastBeam = {
-    name: 'Eldritch Blast: Beam',
-    version: eldritchBlast.version,
-    midi: {
-        item: [
-            {
-                pass: 'attackRollComplete',
-                macro: beam,
-                priority: 50
-            }
-        ]
-    }
 };

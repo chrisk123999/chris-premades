@@ -2033,10 +2033,6 @@
                 "Hint": "Quando abilitato, gli oggetti con Animazioni Automatiche disabilitate riprodurranno comunque suoni configurati nel menu di Riconoscimento Automatico.",
                 "Name": "Animazioni Automatiche: Riproduci Suoni"
             },
-            "babonusOverlappingEffects": {
-                "Hint": "Quando abilitato, i bonus dell'aura Build A Bonus rispetteranno le regole di sovrapposizione degli effetti degli incantesimi e del gioco.",
-                "Name": "Build A Bonus: Sovrapposizione Effetti Incantesimi"
-            },
             "backupCompendium": {
                 "Hint": "Seleziona il compendio di backup degli attori.",
                 "Name": "Compendio di Backup Attori"
@@ -2090,10 +2086,6 @@
             "colorizeAutomatedAnimations": {
                 "Hint": "Quando abilitato, l'icona della barra del titolo delle Animazioni Automatiche verrà colorata in base allo stato di configurazione.",
                 "Name": "Animazioni Automatiche: Colora Icona Barra del Titolo"
-            },
-            "colorizeBuildABonus": {
-                "Hint": "Quando abilitato, l'icona della barra del titolo Build A Bonus verrà colorata se è presente un bonus sull'oggetto o sull'effetto.",
-                "Name": "Build A Bonus: Colora Icona Barra del Titolo"
             },
             "colorizeDAE": {
                 "Hint": "Quando abilitato, l'icona della barra del titolo DAE verrà colorata se è presente un effetto sull'oggetto.",

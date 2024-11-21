@@ -40,7 +40,8 @@ async function use({workflow}) {
 }
 export let shockingGrasp = {
     name: 'Shocking Grasp',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

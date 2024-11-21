@@ -1,21 +1,15 @@
-import {animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, dialogUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let maxRays = 1 + workflow.castData.castLevel;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Scorching Ray Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.ScorchingRay.Bolt', castDataWorkflow: workflow});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    featureData.system.ability = workflow.item.system.ability;
-    featureData.system.damage.parts[0] = [
-        itemUtils.getConfig(workflow.item, 'formula'),
-        itemUtils.getConfig(workflow.item, 'damageType')
-    ];
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'scorchingRayBolt', {strict: true});
+    if (!feature) return;
     let jb2a = animationUtils.jb2aCheck();
     let shouldPlayAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && jb2a;
     let animation = jb2a === 'patreon' ? itemUtils.getConfig(workflow.item, 'animation') : 'simple';
     let color = itemUtils.getConfig(workflow.item, 'color');
+    let sound = itemUtils.getConfig(workflow.item, 'sound');
     let particle = 'jb2a.particles.outward.orange.01.03';
     if (shouldPlayAnimation && animation === 'complex') {
         //Animations by: eskiemoh
@@ -91,17 +85,11 @@ async function use({workflow}) {
             if (isNaN(numRays) || numRays == 0) continue;
             if (skipDead && targetToken.actor.system.attributes.hp.value === 0) continue;
             for (let i = 0; i < numRays; i++) {
-                let featureWorkflow = await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}, killAnim: shouldPlayAnimation});
+                let featureWorkflow = await workflowUtils.syntheticActivityRoll(feature, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
                 maxRays -= 1;
                 if (shouldPlayAnimation) {
                     if (animation === 'simple') {
-                        new Sequence()
-                            .effect()
-                            .file('jb2a.scorching_ray.01.' + color)
-                            .atLocation(workflow.token)
-                            .stretchTo(targetToken)
-                            .missed(!featureWorkflow.hitTargets.size)
-                            .play();
+                        animationUtils.simpleAttack(workflow.token, targetToken, 'jb2a.scorching_ray.01.' + color, {sound, missed: !featureWorkflow.hitTargets.size});
                     } else if (animation === 'complex') {
                         let path = 'jb2a.scorching_ray.{{num}}.';
                         if (color === 'random') {
@@ -147,6 +135,10 @@ async function use({workflow}) {
                             .randomizeMirrorY()
                             .zIndex(1)
                             .missed(!featureWorkflow.hitTargets.size)
+
+                            .sound()
+                            .playIf(sound)
+                            .file(sound)
                             
                             .effect()
                             .delay(200)
@@ -177,13 +169,13 @@ async function use({workflow}) {
         }
     }
     if (shouldPlayAnimation && animation === 'complex') {
-        await genericUtils.sleep(1500);
-        await Sequencer.EffectManager.endEffects({name: 'Scorching Ray', object: workflow.token});
+        genericUtils.sleep(1500).then(() => Sequencer.EffectManager.endEffects({name: 'Scorching Ray', object: workflow.token}));
     }
 }
 export let scorchingRay = {
     name: 'Scorching Ray',
-    version: '0.12.26',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -194,23 +186,6 @@ export let scorchingRay = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'fire',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '2d6[fire]',
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',
@@ -278,6 +253,13 @@ export let scorchingRay = {
                     requiredModules: ['jb2a_patreon']
                 }
             ]
+        },
+        {
+            value: 'sound',
+            label: 'CHRISPREMADES.Config.Sound',
+            type: 'file',
+            default: '',
+            category: 'sound'
         }
     ]
 };

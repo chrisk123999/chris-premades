@@ -13,7 +13,7 @@ async function use({workflow}) {
     }
     let otherPlanarTokens = selection[0] ?? [];
     await banishmentHelper(workflow, otherPlanarTokens);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': 60 * workflow.item.system.duration.value});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: itemUtils.convertDuration(workflow.item)});
 }
 export async function banishmentHelper(workflow, otherPlanarTokens = []) {
     let effectData = {
@@ -30,13 +30,13 @@ export async function banishmentHelper(workflow, otherPlanarTokens = []) {
             }, 
             {
                 key: 'system.attributes.ac.bonus',
-                mode: 0,
+                mode: 5,
                 value: 99,
                 priority: 20
             },
             {
                 key: 'flags.midi-qol.min.ability.save.all',
-                mode: 0,
+                mode: 5,
                 value: 99,
                 priority: 20
             },
@@ -84,7 +84,7 @@ async function remove({trigger: {entity}}) {
 }
 export let banishment = {
     name: 'Banishment',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

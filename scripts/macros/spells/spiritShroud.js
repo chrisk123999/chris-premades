@@ -1,4 +1,4 @@
-import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {combatUtils, constants, dialogUtils, effectUtils, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
@@ -13,9 +13,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 spiritShroud: {
@@ -28,11 +26,11 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['spiritShroudShrouded']);
     effectUtils.addMacro(effectData, 'combat', ['spiritShroudShrouded']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'spiritShroud'});
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
 async function damage({workflow}) {
     if (workflow.hitTargets.size !== 1) return;
-    if (!constants.attacks.includes(workflow.item.system.actionType)) return;
+    if (!constants.attacks.includes(workflow.activity.actionType)) return;
     if (tokenUtils.getDistance(workflow.token, workflow.hitTargets.first()) > 10) return;
     let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'spiritShroud');
     if (!effect) return;
@@ -106,7 +104,7 @@ async function everyTurn({trigger: {entity: effect, token, target}}) {
 }
 export let spiritShroud = {
     name: 'Spirit Shroud',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

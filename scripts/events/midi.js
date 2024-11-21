@@ -3,11 +3,13 @@ import {requirements} from '../extensions/requirements.js';
 import {conditionResistance} from '../macros/mechanics/conditionResistance.js';
 import {conditionVulnerability} from '../macros/mechanics/conditionVulnerability.js';
 import {templateVisibility} from '../macros/mechanics/templateVisibility.js';
-import {actorUtils, effectUtils, genericUtils, itemUtils, templateUtils} from '../utils.js';
+import {actorUtils, effectUtils, genericUtils, itemUtils, rollUtils, socketUtils, templateUtils} from '../utils.js';
 import {automatedAnimations} from '../integrations/automatedAnimations.js';
 import {diceSoNice} from '../integrations/diceSoNice.js';
 import {cleave} from '../macros/mechanics/cleave.js';
 import {critFumble} from '../macros/homebrew/critFumble.js';
+import {explodingHeals} from '../macros/homebrew/explodingHeals.js';
+import {CPRMultipleRollResolver} from '../applications/rollResolverMultiple.js';
 function getItemMacroData(item) {
     return item.flags['chris-premades']?.macros?.midi?.item ?? [];
 }
@@ -248,6 +250,37 @@ async function damageRollComplete(workflow) {
     for (let trigger of sceneTriggers) await executeMacro(trigger, workflow);
     if (genericUtils.getCPRSetting('automatedAnimationSounds') && workflow.item) automatedAnimations.aaSound(workflow.item, 'damage');
     if (genericUtils.getCPRSetting('diceSoNice') && game.modules.get('dice-so-nice')?.active) diceSoNice.damageRollComplete(workflow);
+    // Temp (maybe)
+    if (genericUtils.getCPRSetting('explodingHeals')) await explodingHeals(workflow);
+    let manualRollsEnabled = genericUtils.getCPRSetting('manualRollsEnabled');
+    if (manualRollsEnabled && (workflow.hitTargets?.size === 0 ? genericUtils.getCPRSetting('manualRollsPromptOnMiss') : true)) await _manualRollsNewRolls(workflow);
+    await workflow.displayDamageRolls(game.settings.get('midi-qol', 'ConfigSettings'), true);
+    workflow.damageDetail = MidiQOL.createDamageDetail({roll: workflow.damageRolls, item: workflow.item, defaultType: workflow.defaultDamageType});
+}
+async function _manualRollsNewRolls(workflow) {
+    genericUtils.log('dev', 'New Rolls for Midi Workflow');
+    if (!genericUtils.getCPRSetting('manualRollsUsers')?.[game.user.id]) return false;
+    let manualRollsInclusion = genericUtils.getCPRSetting('manualRollsInclusion');
+    if (manualRollsInclusion === 0) return false;
+    else if (manualRollsInclusion === 1) '';
+    else if ((manualRollsInclusion === 2) && (workflow.actor.type != 'character')) return false;
+    else if ((manualRollsInclusion === 3) && (workflow.actor?.prototypeToken?.actorLink != true)) return false;
+    else if ((manualRollsInclusion === 4) && ((workflow.actor?.prototypeToken?.actorLink != true) || (genericUtils.checkPlayerOwnership(workflow.actor) != true))) return false;
+    else if ((manualRollsInclusion === 5) && (genericUtils.checkPlayerOwnership(workflow.actor) != true)) return false;
+    let newRolls = workflow.damageRolls.map(roll => new CONFIG.Dice.DamageRoll(roll.formula, roll.data, roll.options));
+    let gmID = socketUtils.gmID();
+    if (genericUtils.getCPRSetting('manualRollsGMFulfils') && game.user.id != gmID && game.users.get(gmID)?.active) {
+        newRolls = await rollUtils.remoteDamageRolls(newRolls, gmID);
+    } else {
+        let resolver = new CPRMultipleRollResolver(newRolls);
+        await resolver.awaitFulfillment();
+        newRolls.forEach(async roll => {
+            const ast = CONFIG.Dice.parser.toAST(roll.terms);
+            roll._total = await roll._evaluateASTAsync(ast);
+        });
+        resolver.close();
+    }
+    await workflow.setDamageRolls(newRolls);
 }
 async function rollFinished(workflow) {
     if (genericUtils.getCPRSetting('devTools')) console.log(workflow);

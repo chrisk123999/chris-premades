@@ -29,6 +29,14 @@ async function replaceDamage(workflow, formula, {ignoreCrit = false, damageType}
 async function applyDamage(tokens, value, damageType) {
     return await MidiQOL.applyTokenDamage([{damage: value, type: damageType}], value, new Set(tokens));
 }
+async function completeActivityUse(activity, config={}, dialog={}, message={}) {
+    if (!config.midiOptions.asUser && !socketUtils.hasPermission(activity.actor, game.userId)) {
+        config.midiOptions.asUser = socketUtils.firstOwner(activity.actor, true);
+        config.midiOptions.checkGMStatus = true;
+    }
+    let workflow = await MidiQOL.completeActivityUse(activity, config, dialog, message);
+    return workflow;
+}
 async function completeItemUse(item, config={}, options={}) {
     //let oldTargets = Array.from(game.user.targets); //Temp Fix
     if (!options.asUser && !socketUtils.hasPermission(item.actor, game.userId)) {
@@ -38,6 +46,32 @@ async function completeItemUse(item, config={}, options={}) {
     let workflow = await MidiQOL.completeItemUse(item, config, options);
     //genericUtils.updateTargets(oldTargets); //Temp Fix
     return workflow;
+}
+async function syntheticActivityRoll(activity, targets, {options = {}, config = {}, atLevel = undefined} = {}) {
+    let defaultConfig = {
+        consumeUsage: false,
+        consumeSpellSlot: false
+    };
+    let autoRollDamage = MidiQOL.configSettings().autoRollDamage;
+    if (!['always', 'onHit'].includes(autoRollDamage)) autoRollDamage = 'onHit';
+    let defaultOptions = {
+        targetUuids: targets.map(i => i.document.uuid),
+        configureDialog: false,
+        ignoreUserTargets: true,
+        workflowOptions: {
+            autoRollDamage,
+            autoFastDamage: true,
+            autoRollAttack: true
+        }
+    };
+    if (atLevel) {
+        let spellLabel = actorUtils.getEquivalentSpellSlotName(activity.actor, atLevel);
+        if (spellLabel) defaultConfig.spell = {slot: spellLabel};
+    }
+    options = genericUtils.mergeObject(defaultOptions, options);
+    config = genericUtils.mergeObject(defaultConfig, config);
+    config.midiOptions = options;
+    return await completeActivityUse(activity, config);
 }
 async function syntheticItemRoll(item, targets, {options = {}, config = {}} = {}) {
     let defaultConfig = {
@@ -179,7 +213,9 @@ export let workflowUtils = {
     bonusAttack,
     replaceDamage,
     applyDamage,
+    completeActivityUse,
     completeItemUse,
+    syntheticActivityRoll,
     syntheticItemRoll,
     syntheticItemDataRoll,
     negateDamageItemDamage,

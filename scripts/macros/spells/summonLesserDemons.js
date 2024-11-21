@@ -99,7 +99,8 @@ async function use({workflow}) {
 }
 export let summonLesserDemons = {
     name: 'Summon Lesser Demons',
-    version: '0.12.12',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -1,6 +1,7 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let maxMissiles = 2 + workflow.castData.castLevel;
     let [selection] = await dialogUtils.selectTargetDialog(workflow.item.name, genericUtils.format('CHRISPREMADES.Macros.MagicMissile.Select', {maxMissiles}), workflow.targets, {
@@ -8,39 +9,25 @@ async function use({workflow}) {
         maxAmount: maxMissiles
     });
     if (!selection || !selection.length) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Magic Missile Bolt', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.MagicMissile.Bolt', castDataWorkflow: workflow});
-    if (!featureData) {
-        errors.missingPackItem();
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'magicMissileBolt');
+    let featureFlat = activityUtils.getActivityByIdentifier(workflow.item, 'magicMissileFlat');
+    if (!feature && rollEach) {
+        errors.missingActivity('magicMissileBolt');
+        return;
+    } else if (!featureFlat && !rollEach) {
+        errors.missingActivity('magicMissileFlat');
         return;
     }
     let rollEach = itemUtils.getConfig(workflow.item, 'rollEach');
-    let formula = itemUtils.getConfig(workflow.item, 'formula');
-    let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    let damageFormula = formula;
+    let damageFormula = feature.damage.parts[0].formula;
     if (itemUtils.getItemByIdentifier(workflow.actor, 'empoweredEvocation')) damageFormula += ' + ' + workflow.actor.system.abilities.int.mod;
+    let damageType = feature.damage.parts[0].types.first();
     if (!rollEach) {
         let damageRoll = await new CONFIG.Dice.DamageRoll(damageFormula, workflow.item.getRollData(), {type: damageType}).evaluate();
-        damageRoll.toMessage({
-            rollMode: 'roll',
-            speaker: workflow.chatCard.speaker,
-            flavor: workflow.item.name
-        });
-        featureData.system.damage.parts = [
-            [
-                damageRoll.total + '[' + damageType + ']',
-                damageType
-            ]
-        ];
-    } else {
-        featureData.system.damage.parts = [
-            [
-                damageFormula,
-                damageType
-            ]
-        ];
+        await MidiQOL.displayDSNForRoll(damageRoll);
+        await activityUtils.setDamage(featureFlat, damageRoll.total.toString(), ['force']);
     }
-    let shieldedFeatureData = genericUtils.duplicate(featureData);
-    shieldedFeatureData.system.damage.parts = [];
+    let shieldedFeature = feature.clone({'damage.parts': []}, {keepId: true});
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation') && animationUtils.jb2aCheck();
     let colors = [ 'grey', 'dark_red', 'orange', 'yellow', 'green', 'blue', 'purple'];
     let lastColor = Math.floor((Math.random() * colors.length));
@@ -78,13 +65,13 @@ async function use({workflow}) {
                 }
                 new Sequence().effect().file(path).atLocation(workflow.token).stretchTo(targetToken).randomizeMirrorY().missed(isShielded).play();
             }
-            await workflowUtils.syntheticItemDataRoll(isShielded ? shieldedFeatureData : featureData, workflow.actor, [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}, killAnim: playAnimation});
+            await workflowUtils.syntheticActivityRoll(isShielded ? shieldedFeature : (rollEach ? feature : featureFlat), [targetToken], {options: {workflowOptions: {targetConfirmation: 'none'}}});
         }
     }
 }
 export let magicMissile = {
     name: 'Magic Missile',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -95,23 +82,6 @@ export let magicMissile = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'force',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-        {
-            value: 'formula',
-            label: 'CHRISPREMADES.Config.Formula',
-            type: 'text',
-            default: '1d4 + 1',
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'rollEach',
             label: 'CHRISPREMADES.Macros.MagicMissile.RollEach',

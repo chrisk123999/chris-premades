@@ -1,6 +1,7 @@
-import {actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
@@ -17,9 +18,18 @@ async function use({workflow}) {
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let diceNumber = Math.floor((level + 1) / 6);
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
-    delete weaponData._id;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    if (diceNumber) weaponData.system.damage.parts.push([diceNumber + 'd8[' + damageType + ']', damageType]);
+    if (diceNumber) {
+        let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
+        if (!attackId) return;
+        weaponData.system.activities[attackId].damage.parts.push({
+            custom: {
+                enabled: true,
+                formula: diceNumber + 'd8[' + damageType + ']'
+            },
+            types: [damageType]
+        });
+    }
     let attackWorkflow = await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
     if (!attackWorkflow) return;
     if (!attackWorkflow.hitTargets.size) return;
@@ -31,22 +41,13 @@ async function use({workflow}) {
         if (targetSelect) target = targetSelect[0];
     }
     if (!target) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Green-Flame Blade: Leap', {getDescription: true, translate: 'CHRISPREMADES.Macros.GreenFlameBlade.LeapFeature', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let modifier = itemUtils.getMod(workflow.item);
-    let damageFormula = modifier + '[' + damageType + ']';
-    if (diceNumber) damageFormula = diceNumber + 'd8[' + damageType + '] + ' + modifier;
-    featureData.system.damage.parts = [
-        [damageFormula, damageType]
-    ];
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, [target]);
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'greenFlameBladeLeap', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [target]);
 }
 export let greenFlameBlade = {
     name: 'Green-Flame Blade',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

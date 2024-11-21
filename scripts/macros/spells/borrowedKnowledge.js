@@ -1,4 +1,4 @@
-import {dialogUtils, effectUtils, genericUtils} from '../../utils.js';
+import {dialogUtils, effectUtils, genericUtils, itemUtils} from '../../utils.js';
 async function use({workflow}) {
     let input = {
         label: 'DND5E.Skill',
@@ -13,9 +13,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 3600 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'system.skills.' + selection + '.value',
@@ -31,7 +29,7 @@ async function use({workflow}) {
 }
 export let borrowedKnowledge = {
     name: 'Borrowed Knowledge',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

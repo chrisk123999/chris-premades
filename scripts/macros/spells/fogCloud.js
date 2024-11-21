@@ -75,9 +75,7 @@ async function early({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 3600 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             dnd5e: {
                 dependents: [{uuid: template.uuid}]
@@ -88,7 +86,8 @@ async function early({workflow}) {
 }
 export let fogCloud = {
     name: 'Fog Cloud',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

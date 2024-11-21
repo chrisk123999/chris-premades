@@ -6,7 +6,6 @@ import {effectEvents} from './events/effects.js';
 import {midiEvents} from './events/midi.js';
 import {movementEvents} from './events/movement.js';
 import {templateEvents} from './events/template.js';
-import {buildABonus} from './integrations/buildABonus.js';
 import {dae} from './integrations/dae.js';
 import {createHeaderButton, renderItemSheet, renderEffectConfig, renderCompendium} from './extensions/titlebar.js';
 import {genericUtils} from './utils.js';
@@ -23,13 +22,24 @@ import {custom} from './events/custom.js';
 import {automatedAnimations} from './integrations/automatedAnimations.js';
 import {actions} from './extensions/actions.js';
 import {item} from './applications/item.js';
+import {activities} from './extensions/activities.js';
 export function registerHooks() {
     Hooks.on('createSetting', genericUtils.createUpdateSetting);
     Hooks.on('updateSetting', genericUtils.createUpdateSetting);
     if (genericUtils.getCPRSetting('effectInterface')) effectInterface.ready();
     Hooks.on('changeSidebarTab', sidebar.removeCompendiums);
     Hooks.on('renderCompendiumDirectory', sidebar.removeCompendiums);
+
     Hooks.on('midi-qol.preTargeting', midiEvents.preTargeting);
+    Hooks.on('midi-qol.premades.postNoAction', midiEvents.preItemRoll);
+    Hooks.on('midi-qol.premades.postPreambleComplete', midiEvents.preambleComplete);
+    Hooks.on('midi-qol.premades.postWaitForAttackRoll', midiEvents.postAttackRoll); // Check this
+    Hooks.on('midi-qol.premades.postAttackRollComplete', midiEvents.attackRollComplete);
+    Hooks.on('midi-qol.premades.postDamageRollComplete', midiEvents.damageRollComplete); // Check this
+    Hooks.on('midi-qol.premades.postSavesComplete', midiEvents.savesComplete);
+    Hooks.on('midi-qol.preTargetDamageApplication', midiEvents.preTargetDamageApplication);
+    Hooks.on('midi-qol.premades.postRollFinished', midiEvents.rollFinished);
+
     Hooks.on('getItemSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActorSheetHeaderButtons', createHeaderButton);
     Hooks.on('getActiveEffectConfigHeaderButtons', createHeaderButton);
@@ -49,12 +59,6 @@ export function registerHooks() {
         Hooks.on('preDeleteActiveEffect', tokens.preDeleteActiveEffect);
         Hooks.on('preUpdateActiveEffect', tokens.preCreateUpdateActiveEffect);
     }
-    if (genericUtils.getCPRSetting('colorizeBuildABonus')) {
-        Hooks.on('renderItemSheet', buildABonus.renderItemSheet);
-        Hooks.on('renderDAEActiveEffectConfig', buildABonus.renderDAEActiveEffectConfig);
-        Hooks.on('renderActorSheet5e', buildABonus.renderActorSheet5e);
-    }
-    if (genericUtils.getCPRSetting('babonusOverlappingEffects')) Hooks.on('babonus.filterBonuses', buildABonus.filterBonuses);
     if (genericUtils.getCPRSetting('colorizeDAE', Hooks.on('renderItemSheet', dae.renderItemSheet)));
     if (genericUtils.getCPRSetting('colorizeAutomatedAnimations')) Hooks.on('renderItemSheet', automatedAnimations.renderItemSheet);
     if (genericUtils.getCPRSetting('effectDescriptions') !== 'disabled') Hooks.on('preCreateActiveEffect', effects.preCreateActiveEffect);
@@ -63,6 +67,7 @@ export function registerHooks() {
     if (genericUtils.getCPRSetting('updateSummonInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateSummonInitiative);
     if (genericUtils.getCPRSetting('updateCompanionInitiative')) Hooks.on('dnd5e.rollInitiative', initiative.updateCompanionInitiative);
     Hooks.on('preUpdateToken', movementEvents.preUpdateToken);
+    Hooks.on('preUpdateItem', activities.flagAllRiders);
     Hooks.on('preUpdateItem', equipment.addOrUpdate);
     Hooks.on('preDeleteItem', equipment.remove);
     Hooks.on('preCreateItem', equipment.addOrUpdate);

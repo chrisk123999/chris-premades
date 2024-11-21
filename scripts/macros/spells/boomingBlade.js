@@ -1,5 +1,6 @@
-import {actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils, socketUtils, workflowUtils} from '../../utils.js';
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (workflow.targets.size !== 1) return;
     let weapons = workflow.actor.items.filter(i => i.type === 'weapon' && i.system.equipped && i.system.actionType === 'mwak');
     if (!weapons.length) {
@@ -16,9 +17,18 @@ async function use({workflow}) {
     let level = actorUtils.getLevelOrCR(workflow.actor);
     let diceNumber = Math.floor((level + 1) / 6);
     let weaponData = genericUtils.duplicate(selectedWeapon.toObject());
-    delete weaponData._id;
     let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-    if (diceNumber) weaponData.system.damage.parts.push([diceNumber + 'd8[' + damageType + ']', damageType]);
+    if (diceNumber) {
+        let attackId = selectedWeapon.system.activities.getByType('attack')?.[0]?.id;
+        if (!attackId) return;
+        weaponData.system.activities[attackId].damage.parts.push({
+            custom: {
+                enabled: true,
+                formula: diceNumber + 'd8[' + damageType + ']'
+            },
+            types: [damageType]
+        });
+    }
     let attackWorkflow = await workflowUtils.syntheticItemDataRoll(weaponData, workflow.actor, [workflow.targets.first()]);
     if (!attackWorkflow) return;
     let playAnimation = itemUtils.getConfig(workflow.item, 'playAnimation');
@@ -66,7 +76,6 @@ async function use({workflow}) {
             },
             'chris-premades': {
                 boomingBlade: {
-                    diceNumber: diceNumber,
                     damageType: damageType
                 }
             }
@@ -80,25 +89,14 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'movement', ['boomingBladeMoved']);
     await effectUtils.createEffect(workflow.targets.first().actor, effectData, {identifier: 'boomingBlade'});
 }
-async function moved({trigger}) {
-    let effect = trigger.entity;
+async function moved({trigger: {entity: effect}}) {
     let selection = await dialogUtils.confirm(effect.name, genericUtils.format('CHRISPREMADES.Macros.BoomingBlade.WillingMove', {actorName: effect.parent.name}));
     if (!selection) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Booming Blade: Moved', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.BoomingBlade.Moved'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    let {diceNumber, damageType} = effect.flags['chris-premades'].boomingBlade;
-    featureData.system.damage.parts = [
-        [
-            (diceNumber + 1) + 'd8[' + damageType + ']',
-            damageType
-        ]
-    ];
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'boomingBladeMoved', {strict: true});
+    if (!feature) return;
     let parentActor = (await fromUuid(effect.origin))?.actor;
     if (!parentActor) return;
-    await workflowUtils.syntheticItemDataRoll(featureData, parentActor, [actorUtils.getFirstToken(effect.parent)]);
+    await workflowUtils.syntheticActivityRoll(feature, [actorUtils.getFirstToken(effect.parent)]);
     await genericUtils.remove(effect);
 }
 export let boomingBlade = {
@@ -193,7 +191,8 @@ export let boomingBlade = {
                 }
             ]
         },
-    ]
+    ],
+    hasAnimation: true
 };
 export let boomingBladeMoved = {
     name: 'Booming Blade: Moved',

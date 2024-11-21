@@ -48,7 +48,7 @@ async function create({trigger: {entity: effect, target, identifier}}) {
 }
 export let crusadersMantle = {
     name: 'Crusader\'s Mantle',
-    version: '1.0.37',
+    version: '1.1.0',
     midi: {
         item: [
             {

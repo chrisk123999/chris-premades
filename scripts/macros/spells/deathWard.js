@@ -1,13 +1,11 @@
-import {effectUtils, genericUtils} from '../../utils.js';
+import {effectUtils, genericUtils, itemUtils} from '../../utils.js';
 
 async function use({workflow}) {
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 3600 * workflow.item.system.duration.value
-        }
+        duration: itemUtils.convertDuration(workflow.item)
     };
     effectUtils.addMacro(effectData, 'midi.actor', ['deathWardWarded']);
     for (let target of workflow.targets) {
@@ -24,7 +22,7 @@ async function damageApplication({trigger: {entity: effect}, ditem}) {
 }
 export let deathWard = {
     name: 'Death Ward',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

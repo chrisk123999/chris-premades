@@ -1,6 +1,7 @@
-import {animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     if (!workflow.targets.size) return;
     let maxTargets = workflow.castData.castLevel - 3;
     for (let targetToken of workflow.targets) {
@@ -46,25 +47,16 @@ async function use({workflow}) {
             }
             sequenceObj.play();
         }
-        let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Chain Lightning: Leap', {object: true, getDescription: true, castDataWorkflow: workflow, translate: 'CHRISPREMADES.Macros.ChainLightning.Leap'});
-        if (!featureData) {
-            errors.missingPackItem();
-            continue;
-        }
-        featureData.system.save.dc = itemUtils.getSaveDC(workflow.item);
-        let damageType = itemUtils.getConfig(workflow.item, 'damageType');
-        featureData.system.damage.parts = [
-            [
-                workflow.damageTotal + '[' + damageType + ']',
-                damageType
-            ]
-        ];
-        await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, newTargets, {killAnim: playAnimation});
+        let feature = activityUtils.getActivityByIdentifier(workflow.item, 'chainLightningLeap', {strict: true});
+        if (!feature) return;
+        await activityUtils.setDamage(feature, workflow.damageTotal);
+        await workflowUtils.syntheticActivityRoll(feature, newTargets);
     }
 }
 export let chainLightning = {
     name: 'Chain Lightning',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -75,15 +67,6 @@ export let chainLightning = {
         ]
     },
     config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'lightning',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
         {
             value: 'playAnimation',
             label: 'CHRISPREMADES.Config.PlayAnimation',

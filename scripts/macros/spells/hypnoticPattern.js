@@ -13,7 +13,7 @@ async function everyTurn({trigger: {entity: effect}}) {
 }
 export let hypnoticPattern = {
     name: 'Hypnotic Pattern',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

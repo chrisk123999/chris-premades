@@ -56,7 +56,8 @@ async function late({workflow}) {
 }
 export let frostFingers = {
     name: 'Frost Fingers',
-    version: '1.0.36',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

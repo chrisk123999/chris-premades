@@ -10,9 +10,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         changes: [
             {
                 key: 'flags.midi-qol.OverTime',
@@ -41,7 +39,7 @@ async function damage({workflow}) {
 }
 export let rayOfEnfeeblement = {
     name: 'Ray of Enfeeblement',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

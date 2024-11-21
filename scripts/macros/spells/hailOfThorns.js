@@ -1,21 +1,17 @@
-import {compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, actorUtils, compendiumUtils, constants, effectUtils, errors, genericUtils, itemUtils, tokenUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = await effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let effectData = {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 hailOfThorns: {
-                    castLevel: workflow.castData?.castLevel ?? 1,
-                    dc: itemUtils.getSaveDC(workflow.item),
-                    damageType: itemUtils.getConfig(workflow.item, 'damageType'),
-                    school: workflow.item.system.school
+                    castLevel: workflow.castData?.castLevel ?? 1
                 }
             }
         }
@@ -24,35 +20,20 @@ async function use({workflow}) {
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'hailOfThornsBurst'});
     if (concentrationEffect) genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
 }
-async function late({workflow}) {
+async function late({trigger: {entity: effect}, workflow}) {
     if (workflow.hitTargets.size !== 1) return;
     if (workflow.item?.system?.actionType !== 'rwak') return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'hailOfThornsBurst');
-    if (!effect) return;
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.featurePacks.spellFeatures, 'Hail of Thorns: Burst', {getDescription: true, translate: 'CHRISPREMADES.Macros.HailOfThorns.Burst', object: true});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    genericUtils.setProperty(featureData, 'flags.chris-premades.castData.school', effect.flags['chris-premades'].hailOfThorns.school);
-    let damageDice = Math.min(effect.flags['chris-premades']?.hailOfThorns?.castLevel ?? 1, 6);
-    let damageType = effect.flags['chris-premades']?.hailOfThorns?.damageType;
-    featureData.system.damage.parts = [
-        [
-            damageDice + 'd10[' + damageType + ']',
-            damageType
-        ]
-    ];
-    let saveDC = effect.flags['chris-premades']?.hailOfThorns?.dc ?? 10;
-    featureData.system.save.dc = saveDC;
+    let feature = await activityUtils.getActivityByIdentifier(fromUuidSync(effect.origin), 'hailOfThornsBurst', {strict: true});
+    if (!feature) return;
+    let castLevel = Math.min(effect.flags['chris-premades'].hailOfThorns.castLevel, 6);
     let targetToken = workflow.targets.first();
     let allTargets = tokenUtils.findNearby(targetToken, 5).concat(targetToken);
-    await workflowUtils.syntheticItemDataRoll(featureData, workflow.actor, allTargets);
+    await workflowUtils.syntheticActivityRoll(feature, allTargets, {atLevel: castLevel});
     await genericUtils.remove(effect);
 }
 export let hailOfThorns = {
     name: 'Hail of Thorns',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
@@ -61,18 +42,7 @@ export let hailOfThorns = {
                 priority: 50
             }
         ]
-    },
-    config: [
-        {
-            value: 'damageType',
-            label: 'CHRISPREMADES.Config.DamageType',
-            type: 'select',
-            default: 'piercing',
-            options: constants.damageTypeOptions,
-            homebrew: true,
-            category: 'homebrew'
-        },
-    ]
+    }
 };
 export let hailOfThornsBurst = {
     name: 'Hail of Thorns: Burst',

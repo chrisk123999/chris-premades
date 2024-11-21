@@ -38,7 +38,8 @@ async function use({workflow}) {
 }
 export let conjureFey = {
     name: 'Conjure Fey',
-    version: '0.12.12',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {

@@ -439,7 +439,8 @@ export async function start({trigger: {entity: effect}}) {
 }
 export let enlargeReduce = {
     name: 'Enlarge/Reduce',
-    version: '0.12.0',
+    version: '1.1.0',
+    hasAnimation: true,
     midi: {
         item: [
             {
@@ -466,7 +467,7 @@ export let enlargeReduce = {
 };
 export let enlargeReduceChanged = {
     name: 'Enlarge/Reduce: Changed',
-    version: '0.12.0',
+    version: enlargeReduce.version,
     effect: [
         {
             pass: 'created',

@@ -4,9 +4,7 @@ async function use({workflow}) {
         name: workflow.item.name,
         img: workflow.item.img,
         origin: workflow.item.uuid,
-        duration: {
-            seconds: 60 * workflow.item.system.duration.value
-        },
+        duration: itemUtils.convertDuration(workflow.item),
         flags: {
             'chris-premades': {
                 searingSmite: {
@@ -21,13 +19,11 @@ async function use({workflow}) {
     effectUtils.addMacro(effectData, 'midi.actor', ['searingSmiteDamage']);
     await effectUtils.createEffect(workflow.actor, effectData, {concentrationItem: workflow.item, strictlyInterdependent: true, identifier: 'searingSmite'});
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
-    if (concentrationEffect) await genericUtils.update(concentrationEffect, {'duration.seconds': effectData.duration.seconds});
+    if (concentrationEffect) await genericUtils.update(concentrationEffect, {duration: effectData.duration});
 }
-async function damage({workflow}) {
+async function damage({trigger: {entity: effect}, workflow}) {
     if (!workflow.hitTargets.size) return;
-    if (workflow.item.system.actionType !== 'mwak') return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'searingSmite');
-    if (!effect) return;
+    if (workflow.activity.actionType !== 'mwak') return;
     if (effect.flags['chris-premades'].searingSmite.used) return;
     await genericUtils.setFlag(effect, 'chris-premades', 'searingSmite.used', true);
     let damageType = effect.flags['chris-premades'].searingSmite.damageType;
@@ -53,7 +49,7 @@ async function damage({workflow}) {
 }
 export let searingSmite = {
     name: 'Searing Smite',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {

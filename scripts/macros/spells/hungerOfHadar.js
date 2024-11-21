@@ -1,6 +1,7 @@
-import {compendiumUtils, constants, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
+import {activityUtils, compendiumUtils, constants, effectUtils, genericUtils, itemUtils, templateUtils, workflowUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let concentrationEffect = effectUtils.getConcentrationEffect(workflow.actor, workflow.item);
     let useRealDarkness = itemUtils.getConfig(workflow.item, 'useRealDarkness');
     let darknessAnimation = itemUtils.getConfig(workflow.item, 'darknessAnimation');
@@ -47,14 +48,14 @@ async function use({workflow}) {
     for (let target of targets) await effectUtils.createEffect(target.actor, effectData, {parentEntity: template, identifier: 'hungerOfHadarBlinded'});
 }
 async function startTurn({trigger: {entity: template, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Cold', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HungerOfHadar.Cold'});
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'hungerOfHadarCold', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token]);
 }
-async function endTurn({trigger: {entity: template, castData, token}}) {
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Hunger of Hadar: Tentacles', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.HungerOfHadar.Tentacles', flatDC: castData.saveDC});
-    let sourceActor = (await templateUtils.getSourceActor(template)) ?? token.actor;
-    await workflowUtils.syntheticItemDataRoll(featureData, sourceActor, [token]);
+async function endTurn({trigger: {entity: template, token}}) {
+    let feature = activityUtils.getActivityByIdentifier(fromUuidSync(template.flags.dnd5e.item), 'hungerOfHadarTentacles', {strict: true});
+    if (!feature) return;
+    await workflowUtils.syntheticActivityRoll(feature, [token]);
 }
 async function enter({trigger: {entity: template, token}}) {
     let originItem = await fromUuid(template.flags.dnd5e?.origin);
@@ -76,7 +77,7 @@ async function left({trigger: {entity: template, token}}) {
 }
 export let hungerOfHadar = {
     name: 'Hunger of Hadar',
-    version: '0.12.0',
+    version: '1.1.0',
     midi: {
         item: [
             {
