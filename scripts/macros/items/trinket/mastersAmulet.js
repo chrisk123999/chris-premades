@@ -17,6 +17,7 @@ async function use({trigger, workflow}) {
 async function damageApplication({trigger, workflow, ditem}) {
     if (!itemUtils.getEquipmentState(trigger.entity)) return;
     if (!workflow.hitTargets.has(trigger.token)) return;
+    if (ditem.oldHP <= ditem.newHP && ditem.newTempHP >= ditem.oldTempHP) return;
     let actorUuid = trigger.entity.flags['chris-premades']?.mastersAmulet?.actorUuid;
     if (!actorUuid) return;
     let actor = await fromUuid(actorUuid);

@@ -1,3 +1,7 @@
+# 1.0.46 Release:
+## Bug Fixes:
+- Master's Amulet
+
 # 1.0.45 Release:
 ## New Generic Monster Features:
 - Auto Push
