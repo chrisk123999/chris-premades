@@ -175,6 +175,7 @@ async function setHiddenActivities(item, activityIdentifiers, replace=true) {
     let existingHidden = replace ? [] : item.flags?.['chris-premades']?.hiddenActivities ?? [];
     existingHidden = existingHidden.concat(activityIdentifiers);
     await genericUtils.setFlag(item, 'chris-premades', 'hiddenActivities', existingHidden);
+    await genericUtils.update(item);
 }
 export let itemUtils = {
     getSaveDC,

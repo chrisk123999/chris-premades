@@ -11,7 +11,7 @@ export class Summons {
         this.spawnedTokens = [];
         this.currentIndex = 0;
     }
-    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissItem: undefined/*dontAnimateOnDismiss: false*/}) {
+    static async spawn(sourceActors, updates = [{}], originItem, summonerToken, options = {duration: undefined, callbacks: undefined, range: 100, animation: 'default', onDeleteMacros: undefined, concentrationNonDependent: false, initiativeType: 'separate', additionalVaeButtons: [], additionalSummonVaeButtons: [], dontDismissOnDefeat: false, dismissItem: undefined, unhideActivities: undefined/*dontAnimateOnDismiss: false*/}) {
         if (!Array.isArray(sourceActors)) sourceActors = [sourceActors];
         if (sourceActors.length && sourceActors[0]?.documentName !== 'Actor') {
             // Maybe from selectDocumentsDialog, in which case, transform from {document: Actor5e, amount: Int}[] to Actor5e[]:
@@ -319,6 +319,8 @@ export class Summons {
         let effectOptions = {
             identifier: genericUtils.getIdentifier(this.originItem) ?? this.originItem.name
         };
+        // For unhiding activities
+        if (this.options?.unhideActivities) effectOptions.unhideActivities = this.options.unhideActivities;
         // Account for concentration special cases
         let concentrationEffect = effectUtils.getConcentrationEffect(this.originItem.actor, this.originItem);
         if (this.originItem.requiresConcentration && !this.options?.concentrationNonDependent && concentrationEffect) {

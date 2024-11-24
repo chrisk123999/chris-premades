@@ -30,11 +30,12 @@ async function setSaveDC(effect, dc) {
     data.saveDC = dc;
     await setCastData(effect, data);
 }
-async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, keepId} = {}) {
+async function createEffect(entity, effectData, {concentrationItem, parentEntity, identifier, vae, interdependent, strictlyInterdependent, keepId, unhideActivities} = {}) {
     let hasPermission = socketUtils.hasPermission(entity, game.user.id);
     let concentrationEffect;
     if (concentrationItem) concentrationEffect = getConcentrationEffect(concentrationItem.actor, concentrationItem);
     if (identifier) genericUtils.setProperty(effectData, 'flags.chris-premades.info.identifier', identifier);
+    if (unhideActivities) genericUtils.setProperty(effectData, 'flags.chris-premades.unhideActivities', unhideActivities);
     if (parentEntity) genericUtils.setProperty(effectData, 'flags.chris-premades.parentEntityUuid', parentEntity.uuid);
     if (concentrationEffect) genericUtils.setProperty(effectData, 'flags.chris-premades.concentrationEffectUuid', concentrationEffect.uuid);
     if (interdependent && (parentEntity || concentrationItem)) genericUtils.setProperty(effectData, 'flags.chris-premades.interdependent', true);

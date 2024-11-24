@@ -1,7 +1,8 @@
 import {Summons} from '../../lib/summons.js';
-import {animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
+import {activityUtils, animationUtils, compendiumUtils, constants, dialogUtils, effectUtils, errors, genericUtils, itemUtils} from '../../utils.js';
 
 async function use({workflow}) {
+    if (activityUtils.getIdentifier(workflow.activity) !== genericUtils.getIdentifier(workflow.item)) return;
     let monsterCompendium = genericUtils.getCPRSetting('monsterCompendium');
     let zombieActorName = itemUtils.getConfig(workflow.item, 'zombieActorName');
     let skeletonActorName = itemUtils.getConfig(workflow.item, 'skeletonActorName');
@@ -28,16 +29,24 @@ async function use({workflow}) {
     };
     let animation = itemUtils.getConfig(workflow.item, 'animation') ?? 'shadow';
     if (animationUtils.jb2aCheck() !== 'patreon') animation = 'none';
-    let featureData = await compendiumUtils.getItemFromCompendium(constants.packs.spellFeatures, 'Animate Dead: Command', {object: true, getDescription: true, translate: 'CHRISPREMADES.Macros.AnimateDead.Command', identifier: 'animateDeadCommand'});
-    if (!featureData) {
-        errors.missingPackItem();
-        return;
-    }
-    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {duration: 86400, range: 10, animation, additionalVaeButtons: [{type: 'use', name: featureData.name, identifier: 'animateDeadCommand'}]});
-    if (itemUtils.getItemByIdentifier(workflow.actor, 'animateDeadCommand')) return;
-    let effect = effectUtils.getEffectByIdentifier(workflow.actor, 'animateDead');
-    if (!effect) return;
-    await itemUtils.createItems(workflow.actor, [featureData], {favorite: true, section: genericUtils.translate('CHRISPREMADES.Section.SpellFeatures'), parentEntity: effect});
+    let feature = activityUtils.getActivityByIdentifier(workflow.item, 'animateDeadCommand', {strict: true});
+    if (!feature) return;
+    await Summons.spawn(sourceActors, updates, workflow.item, workflow.token, {
+        duration: 86400, 
+        range: 10, 
+        animation, 
+        additionalVaeButtons: [{
+            type: 'use', 
+            name: feature.name, 
+            identifier: 'animateDead', 
+            activityIdentifier: 'animateDeadCommand'
+        }],
+        unhideActivities: {
+            itemUuid: workflow.item.uuid,
+            activityIdentifiers: ['animateDeadCommand'],
+            favorite: true
+        }
+    });
 }
 export let animateDead = {
     name: 'Animate Dead',

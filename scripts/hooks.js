@@ -51,6 +51,8 @@ export function registerHooks() {
     Hooks.on('createChatMessage', chat.createChatMessage);
     Hooks.on('preCreateActiveEffect', effectEvents.preCreateActiveEffect);
     Hooks.on('preUpdateActiveEffect', effectEvents.preUpdateActiveEffect);
+    Hooks.on('preCreateActiveEffect', effects.unhideActivities);
+    Hooks.on('preDeleteActiveEffect', effects.rehideActivities);
     Hooks.on('preCreateMacro', custom.preCreateMacro);
     Hooks.on('updateMacro', custom.updateOrDeleteMacro);
     Hooks.on('deleteMacro', custom.updateOrDeleteMacro);

@@ -92,26 +92,37 @@ async function deleteEmbeddedDocuments(entityUuid, type, ids, options) {
     let documents = await entity.deleteEmbeddedDocuments(type, ids, options ?? undefined);
     return documents.map(i => i.uuid);
 }
-async function addFavorites(actorUuid, itemUuids) {
+async function addFavorites(actorUuid, entityUuids, type='item') {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
     if (!actor.system.addFavorite) return;
-    let items = await Promise.all(itemUuids.map(async i => {
+    let entities = await Promise.all(entityUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    for (let i of items) await actor.system.addFavorite({
-        id: i.getRelativeUUID(i.actor),
-        type: 'item'
-    });
+    if (type === 'item') {
+        for (let i of entities) await actor.system.addFavorite({
+            id: i.getRelativeUUID(i.actor),
+            type: 'item'
+        });
+    } else if (type === 'activity') {
+        for (let i of entities) await actor.system.addFavorite({
+            id: i.relativeUUID,
+            type: 'activity'
+        });
+    }
 }
-async function removeFavorites(actorUuid, itemUuids) {
+async function removeFavorites(actorUuid, entityUuids, type='item') {
     let actor = await fromUuid(actorUuid);
     if (!actor) return;
     if (!actor.system.removeFavorite) return;
-    let items = await Promise.all(itemUuids.map(async i => {
+    let entities = await Promise.all(entityUuids.map(async i => {
         return await fromUuid(i);
     }).filter(j => j));
-    for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+    if (type === 'item') {
+        for (let i of entities) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+    } else if (type === 'activity') {
+        for (let i of entities) await actor.system.removeFavorite(i.relativeUUID);
+    }
 }
 async function dialog(...options) {
     let message = await ChatMessage.create({

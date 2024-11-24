@@ -4,25 +4,36 @@ import {ActorMedkit} from '../../applications/medkit-actor.js';
 function getEffects(actor) {
     return Array.from(actor.allApplicableEffects());
 }
-async function addFavorites(actor, items) {
+async function addFavorites(actor, entities, type='item') {
     if (!actor.system.addFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        for (let i of items) await actor.system.addFavorite({
-            id: i.getRelativeUUID(i.actor),
-            type: 'item'
-        });
+        if (type === 'item') {
+            for (let i of entities) await actor.system.addFavorite({
+                id: i.getRelativeUUID(i.actor),
+                type: 'item'
+            });
+        } else if (type === 'activity') {
+            for (let i of entities) await actor.system.addFavorite({
+                id: i.relativeUUID,
+                type: 'activity'
+            });
+        }
     } else {
-        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, items.map(i => i.uuid));
+        await socket.executeAsGM(sockets.addFavorites.name, actor.uuid, entities.map(i => i.uuid));
     }
 }
-async function removeFavorites(actor, items) {
+async function removeFavorites(actor, entities, type='item') {
     if (!actor.system.removeFavorite) return;
     let hasPermission = socketUtils.hasPermission(actor, game.user.id);
     if (hasPermission) {
-        for (let i of items) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+        if (type === 'item') {
+            for (let i of entities) await actor.system.removeFavorite(i.getRelativeUUID(i.actor));
+        } else if (type === 'activity') {
+            for (let i of entities) await actor.system.removeFavorite(i.relativeUUID);
+        }
     } else {
-        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, items.map(i => i.uuid));
+        await socket.executeAsGM(sockets.removeFavorites.name, actor.uuid, entities.map(i => i.uuid));
     }
 }
 function getTokens(actor) {
